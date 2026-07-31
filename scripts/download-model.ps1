@@ -20,7 +20,9 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'Continue'
 
 $fileName = "Llama-3.2-3B-Instruct-$Quant.gguf"
-$url = "https://huggingface.co/$Repo/resolve/main/$fileName?download=true"
+# Bọc ${} vì PowerShell coi '?' là ký tự hợp lệ trong tên biến: "$fileName?download" sẽ
+# được đọc thành biến $fileName?download (rỗng) thay vì $fileName + "?download".
+$url = "https://huggingface.co/$Repo/resolve/main/${fileName}?download=true"
 $outDir = (Resolve-Path $OutDir).Path
 $target = Join-Path $outDir $fileName
 
