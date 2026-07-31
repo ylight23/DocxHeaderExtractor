@@ -65,6 +65,7 @@ public sealed class CommandLineOptions
                 case "--seed": llama.Seed = uint.Parse(Next(a)); break;
                 case "--no-grammar": llama.GrammarMode = GrammarMode.None; break;
                 case "--free-grammar": llama.GrammarMode = GrammarMode.Free; break;
+                case "--no-reuse-prefix": llama.ReusePromptPrefix = false; break;
                 case "--gpu-layers" or "-ngl": llama.GpuLayerCount = int.Parse(Next(a)); break;
                 case "--verbose-native": llama.VerboseNativeLog = true; break;
 
@@ -134,6 +135,8 @@ public sealed class CommandLineOptions
               --temp <f>            Nhiệt độ (mặc định 0 = greedy)
               --seed <n>            Seed
               --free-grammar        GBNF chỉ ép lược đồ, mô hình tự chọn liệt kê mục nào
+              --no-reuse-prefix     Nạp lại toàn bộ prompt ở từng khối thay vì tái dùng phần chung.
+                                    Chậm hơn ~2 lần; chỉ dùng khi cần tái lập chính xác từng bước.
               --no-grammar          Tắt GBNF hoàn toàn
 
         Bộ lọc OpenXML:

@@ -162,6 +162,11 @@ public sealed class HeaderExtractionPipeline(PipelineOptions options)
         using var llm = await LlamaHeaderExtractor.LoadAsync(_options.Llama, ct);
         Log($"Đã nạp. Ngữ cảnh {llm.ContextSize} token, CPU {_options.Llama.Threads ?? LlamaHeaderExtractor.DefaultThreads()} luồng.");
 
+        if (_options.Llama.ReusePromptPrefix)
+            Log(llm.SharedPrefixTokens > 0
+                ? $"Tái dùng prefill: {llm.SharedPrefixTokens} token phần chung nạp một lần cho mọi khối."
+                : "Không cắt được prompt thành phần chung — quay về nạp lại từng khối.");
+
         var passA = await RunPassAsync(llm, lines, _options.Llama.ChunkTokenBudget,
             _options.Llama.MaxCandidatesPerChunk, _options.TwoPass ? "lượt 1" : null, shouldAsk, ct);
 

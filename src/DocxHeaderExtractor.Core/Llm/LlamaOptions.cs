@@ -65,6 +65,28 @@ public sealed class LlamaOptions
     /// <summary>In log gốc của llama.cpp.</summary>
     public bool VerboseNativeLog { get; set; }
 
+    /// <summary>
+    /// Nạp phần prompt dùng chung (system + ví dụ one-shot, ~900 token) MỘT LẦN rồi tái dùng
+    /// cho mọi khối, thay vì nạp lại từ đầu ở từng khối.
+    /// <para>
+    /// Cơ sở đo được: thêm 3 khối làm tổng thời gian tăng 164 s (~55 s/khối), trong khi cắt 90%
+    /// số token phải SINH lại tiết kiệm 0 giây. Tức là thời gian nằm ở khâu nạp prompt, và phần
+    /// lớn prompt mỗi khối là đoạn giống hệt nhau.
+    /// </para>
+    /// <para>
+    /// Kết quả: phần khối nhanh hơn 58% trên bộ test, 38% trên tài liệu 898 đoạn. Chỉ số đo được
+    /// KHÔNG đổi trên cả 8 tài liệu (P 100%, R 97,2%, đúng cấp 100%).
+    /// </para>
+    /// <para>
+    /// LƯU Ý: không bảo đảm cho ra đúng từng bit. BatchedExecutor gộp batch khác StatelessExecutor
+    /// nên thứ tự cộng dồn dấu phẩy động khác, đủ lật vài quyết định sát ranh giới — quan sát được
+    /// ở khối 3 và 4 của tài liệu thật. Kết quả cuối vẫn trùng nhờ hai lưới an toàn hấp thụ:
+    /// cấp đọc từ outlineLvl và TrustStyles khôi phục đoạn bị bỏ. Tắt bằng --no-reuse-prefix
+    /// nếu cần tái lập chính xác từng bước.
+    /// </para>
+    /// </summary>
+    public bool ReusePromptPrefix { get; set; } = true;
+
     public void Validate()
     {
         if (string.IsNullOrWhiteSpace(ModelPath))

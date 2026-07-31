@@ -61,7 +61,8 @@ Chạy `dhx eval bench` để tự đo lại. Số dưới đây đo trên một
 | Qwen2.5-7B, 40 ứng viên/khối | 97,0 % | 93,8 % | 9,6 phút |
 | + cấp đọc từ `w:outlineLvl` | 97,0 % | **100 %** | 9,6 phút |
 | + 12 ứng viên/khối | 97,0 % | 100 % | 13,0 phút |
-| **+ phủ quyết gạch đầu dòng** | **100 %** | **100 %** | **12,3 phút** |
+| + phủ quyết gạch đầu dòng | **100 %** | **100 %** | 12,3 phút |
+| **+ tái dùng prefill prompt** | **100 %** | **100 %** | **9,2 phút** |
 
 Lệnh cho cấu hình cuối:
 
@@ -81,6 +82,20 @@ Việt, để 4096 sẽ tràn ngữ cảnh ngay khối đầu.
    mỗi ứng viên **trong một chuỗi tự hồi quy**, nên một dãy `0` đúng sẽ kéo chữ số kế tiếp về `0`
    sai. Ở 40 ứng viên/khối có khối cho ra 7/40; cùng tài liệu ở 12 ứng viên/khối thì các tiêu đề
    đó đều đúng.
+
+### Tăng tốc: tái dùng prefill (`ReusePromptPrefix`, mặc định bật)
+
+Thời gian **không** nằm ở khâu sinh token mà ở khâu nạp prompt — đo được: cắt 90 % số token phải
+sinh ra tiết kiệm 0 giây, còn mỗi khối thêm vào tốn ~55 giây. Mà prompt mỗi khối gồm 1098 token
+phần chung (system + luật + ví dụ) giống hệt nhau, chỉ ~600 token XML là khác.
+
+Nên phần chung được nạp một lần vào một `Conversation` gốc; mỗi khối `Fork()` ra nhánh dùng lại
+nguyên KV cache đó rồi bị huỷ sau khi xong, nên các khối vẫn độc lập.
+
+Phần khối nhanh hơn **58 %** trên bộ test, **38 %** trên tài liệu 898 đoạn, và mọi chỉ số giữ
+nguyên trên cả 8 tài liệu. Không bảo đảm đúng từng bit: `BatchedExecutor` gộp batch khác nên vài
+quyết định sát ranh giới bị lật, nhưng hai lưới an toàn (cấp từ `outlineLvl`, `TrustStyles`) hấp
+thụ hết. `--no-reuse-prefix` để tắt.
 
 ### Những hướng đã thử và ĐÃ BỎ
 

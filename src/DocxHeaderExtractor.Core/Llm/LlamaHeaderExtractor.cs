@@ -18,6 +18,7 @@ public sealed class LlamaHeaderExtractor : IDisposable
     private readonly StatelessExecutor _executor;
     private readonly LlamaOptions _options;
     private readonly bool _hasBuiltInTemplate;
+    private PrefixCachedRunner? _prefixRunner;
 
     /// <summary>Số token dành sẵn cho system prompt (kèm ví dụ one-shot) và phần đệm template.</summary>
     private const int SystemPromptReserve = 800;
@@ -87,8 +88,17 @@ public sealed class LlamaHeaderExtractor : IDisposable
         bool hasTemplate = weights.Metadata.TryGetValue("tokenizer.chat_template", out var tpl)
                            && !string.IsNullOrWhiteSpace(tpl);
 
-        return new LlamaHeaderExtractor(weights, modelParams, options, hasTemplate);
+        var extractor = new LlamaHeaderExtractor(weights, modelParams, options, hasTemplate);
+
+        if (options.ReusePromptPrefix)
+            extractor._prefixRunner = await PrefixCachedRunner.CreateAsync(
+                weights, modelParams, extractor.BuildPrompt, ct);
+
+        return extractor;
     }
+
+    /// <summary>Số token của phần prompt dùng chung, 0 nếu không bật tái dùng.</summary>
+    public int SharedPrefixTokens => _prefixRunner?.SharedPrefixTokens ?? 0;
 
     /// <summary>
     /// llama.cpp chạy chậm đi khi số luồng vượt số nhân vật lý (siêu phân luồng làm tranh chấp
@@ -106,8 +116,6 @@ public sealed class LlamaHeaderExtractor : IDisposable
         IReadOnlyList<int> allowedIndexes,
         CancellationToken ct = default)
     {
-        var prompt = BuildPrompt(HeaderPrompt.System, HeaderPrompt.BuildUser(chunkXml));
-
         var grammar = _options.GrammarMode switch
         {
             GrammarMode.Enumerated => new Grammar(HeaderPrompt.BuildEnumeratedGbnf(allowedIndexes), HeaderPrompt.GrammarRoot),
@@ -134,20 +142,30 @@ public sealed class LlamaHeaderExtractor : IDisposable
             maxTokens = Math.Clamp(allowedIndexes.Count * 16 + 32, _options.MaxOutputTokens, Math.Max(256, headroom));
         }
 
-        var inferenceParams = new InferenceParams
-        {
-            MaxTokens = maxTokens,
-            AntiPrompts = [.. HeaderPrompt.AntiPrompts],
-            SamplingPipeline = pipeline,
-        };
-
         var sw = Stopwatch.StartNew();
-        var sb = new StringBuilder();
-        await foreach (var token in _executor.InferAsync(prompt, inferenceParams, ct))
-            sb.Append(token);
-        sw.Stop();
+        string raw;
 
-        var raw = sb.ToString();
+        if (_prefixRunner is { } runner)
+        {
+            raw = await runner.RunAsync(chunkXml, pipeline, maxTokens, ct);
+        }
+        else
+        {
+            var prompt = BuildPrompt(HeaderPrompt.System, HeaderPrompt.BuildUser(chunkXml));
+            var inferenceParams = new InferenceParams
+            {
+                MaxTokens = maxTokens,
+                AntiPrompts = [.. HeaderPrompt.AntiPrompts],
+                SamplingPipeline = pipeline,
+            };
+
+            var sb = new StringBuilder();
+            await foreach (var token in _executor.InferAsync(prompt, inferenceParams, ct))
+                sb.Append(token);
+            raw = sb.ToString();
+        }
+
+        sw.Stop();
         var parsed = ModelJson.Parse(raw);
 
         // Chốt chặn chống ảo giác: bỏ mọi chỉ số không nằm trong khối, kẹp cấp về 1..9, khử trùng lặp.
@@ -184,7 +202,11 @@ public sealed class LlamaHeaderExtractor : IDisposable
         }
     }
 
-    public void Dispose() => _weights.Dispose();
+    public void Dispose()
+    {
+        _prefixRunner?.Dispose();
+        _weights.Dispose();
+    }
 }
 
 public sealed record ChunkResult(
