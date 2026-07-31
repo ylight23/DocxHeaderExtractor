@@ -65,7 +65,7 @@ public sealed class CommandLineOptions
                 case "--seed": llama.Seed = uint.Parse(Next(a)); break;
                 case "--no-grammar": llama.GrammarMode = GrammarMode.None; break;
                 case "--free-grammar": llama.GrammarMode = GrammarMode.Free; break;
-                case "--gpu-layers": llama.GpuLayerCount = int.Parse(Next(a)); break;
+                case "--gpu-layers" or "-ngl": llama.GpuLayerCount = int.Parse(Next(a)); break;
                 case "--verbose-native": llama.VerboseNativeLog = true; break;
 
                 case "--max-text": extraction.MaxTextLength = int.Parse(Next(a)); break;
@@ -124,6 +124,8 @@ public sealed class CommandLineOptions
         Mô hình / hiệu năng CPU:
               --ctx <n>             Cửa sổ ngữ cảnh (mặc định 4096)
           -t, --threads <n>         Số luồng CPU (mặc định số lõi - 1)
+              --gpu-layers <n>      Số lớp đẩy lên GPU (mặc định 0 = chạy hoàn toàn CPU).
+                                    Chỉ có tác dụng khi build với -p:UseCuda=true.
               --chunk-tokens <n>    Ngân sách token mỗi khối XML (mặc định 2200)
               --chunk-candidates <n> Trần số ứng viên mỗi khối (mặc định 12). Khối càng dài,
                                     mô hình càng dễ trượt theo dãy 0 — xem LlamaOptions.
@@ -133,7 +135,6 @@ public sealed class CommandLineOptions
               --seed <n>            Seed
               --free-grammar        GBNF chỉ ép lược đồ, mô hình tự chọn liệt kê mục nào
               --no-grammar          Tắt GBNF hoàn toàn
-              --gpu-layers <n>      >0 nếu đổi sang backend GPU
 
         Bộ lọc OpenXML:
               --max-text <n>        Độ dài text tối đa đưa vào XML (mặc định 160)

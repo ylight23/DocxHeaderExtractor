@@ -18,3 +18,6 @@ samples/*.docx
 bench/*.docx
 bench/*.doc
 !bench/07-mau-that.docx
+
+# Bản build CUDA tuỳ chọn (dotnet publish -p:UseCuda=true -o out-cuda)
+out-cuda/
