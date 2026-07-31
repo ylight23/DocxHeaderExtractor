@@ -1,0 +1,20 @@
+bin/
+obj/
+*.user
+.vs/
+.idea/
+
+# Mô hình rất lớn – không đưa vào git
+models/*.gguf
+models/*.gguf.part
+
+samples/*.docx
+!samples/mau.docx
+*.log
+
+# Bộ test: giữ đáp án và bộ sinh, KHÔNG giữ tài liệu.
+# .docx trong bench/ đều sinh lại được bằng `dhx bench`; riêng tài liệu thật của người dùng
+# thì không được đẩy lên — nội dung có thể nhạy cảm.
+bench/*.docx
+bench/*.doc
+!bench/07-mau-that.docx

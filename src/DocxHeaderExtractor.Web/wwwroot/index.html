@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dhx — Trích xuất tiêu đề tài liệu Word</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --panel: #fff; --ink: #16181d; --muted: #6b7280; --line: #e3e6ea;
+    --accent: #2f6feb; --ok: #1a7f4b; --warn: #a4620a; --bad: #b3261e;
+    --okbg: #e6f4ec; --accbg: #e8effd; --warnbg: #fbf1e0; --badbg: #fceceb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a; --panel: #1c1f25; --ink: #e6e8ec; --muted: #9aa1ad; --line: #2c313a;
+      --accent: #6b9bff; --ok: #4cc38a; --warn: #d99a3e; --bad: #f2726a;
+      --okbg: #17301f; --accbg: #17233c; --warnbg: #302615; --badbg: #33191a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.55 "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 64px; }
+  h1 { font-size: 21px; margin: 0 0 4px; letter-spacing: -.01em; }
+  .sub { color: var(--muted); font-size: 13.5px; margin: 0 0 24px; }
+  .panel {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 10px; padding: 18px; margin-bottom: 16px;
+  }
+  .panel h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em;
+              color: var(--muted); margin: 0 0 14px; font-weight: 600; }
+
+  #drop {
+    border: 1.5px dashed var(--line); border-radius: 9px; padding: 26px 18px;
+    text-align: center; cursor: pointer; transition: .15s; background: transparent;
+  }
+  #drop:hover, #drop.over { border-color: var(--accent); background: var(--accbg); }
+  #drop strong { display: block; font-size: 15px; margin-bottom: 3px; }
+  #drop span { color: var(--muted); font-size: 13px; }
+
+  .opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 16px; }
+  label.f { display: block; font-size: 12.5px; color: var(--muted); margin-bottom: 5px; }
+  select, input[type=number] {
+    width: 100%; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px;
+    background: var(--bg); color: var(--ink); font: inherit; font-size: 13.5px;
+  }
+  .checks { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 14px; font-size: 13.5px; }
+  .checks label { display: flex; align-items: center; gap: 7px; cursor: pointer; }
+
+  button {
+    margin-top: 16px; padding: 9px 20px; border: 0; border-radius: 7px;
+    background: var(--accent); color: #fff; font: inherit; font-weight: 600;
+    font-size: 14px; cursor: pointer;
+  }
+  button:disabled { opacity: .5; cursor: default; }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 10px; }
+  .tile { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 11px 13px; }
+  .tile .v { font-size: 21px; font-weight: 650; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+  .tile .k { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+  .tile.big .v { color: var(--accent); }
+
+  #log {
+    font: 12.5px/1.6 ui-monospace, "Cascadia Mono", Consolas, monospace;
+    white-space: pre-wrap; color: var(--muted); max-height: 190px; overflow-y: auto;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 7px; padding: 11px 13px;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em;
+       color: var(--muted); font-weight: 600; padding: 0 10px 8px; border-bottom: 1px solid var(--line); }
+  td { padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+  tr:last-child td { border-bottom: 0; }
+  td.i, td.c { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; white-space: nowrap; }
+  td.c { text-align: right; }
+  .lvl { color: var(--muted); font-size: 12px; margin-right: 8px; font-variant-numeric: tabular-nums; }
+
+  .tag { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag.Style { background: var(--okbg); color: var(--ok); }
+  .tag.Model { background: var(--accbg); color: var(--accent); }
+  .tag.Heuristic { background: var(--warnbg); color: var(--warn); }
+  .tag.miss { background: var(--badbg); color: var(--bad); }
+  .tag.dis { background: var(--warnbg); color: var(--warn); margin-left: 8px; }
+  tr.dis td { background: color-mix(in srgb, var(--warnbg) 45%, transparent); }
+
+  .note { font-size: 12.5px; color: var(--muted); margin-top: 12px; }
+  .err { background: var(--badbg); color: var(--bad); padding: 11px 13px; border-radius: 7px; font-size: 13.5px; }
+  textarea {
+    width: 100%; min-height: 86px; padding: 9px 11px; border: 1px solid var(--line);
+    border-radius: 7px; background: var(--bg); color: var(--ink); resize: vertical;
+    font: 12.5px/1.6 ui-monospace, Consolas, monospace;
+  }
+  .hidden { display: none; }
+  .scroll { overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Trích xuất tiêu đề tài liệu Word</h1>
+  <p class="sub">Nạp file .docx / .docm / .doc / .rtf / .odt — OpenXML lọc ứng viên, mô hình cục bộ quyết định đoạn nào là tiêu đề và ở cấp mấy.</p>
+
+  <div class="panel">
+    <h2>Nạp tài liệu</h2>
+    <div id="drop">
+      <strong id="dropName">Kéo thả file vào đây, hoặc bấm để chọn</strong>
+      <span>.docx · .docm · .doc · .rtf · .odt</span>
+    </div>
+    <input id="file" type="file" class="hidden" accept=".docx,.docm,.doc,.rtf,.odt">
+
+    <div class="opts">
+      <div>
+        <label class="f" for="model">Mô hình cục bộ</label>
+        <select id="model"></select>
+      </div>
+      <div>
+        <label class="f" for="ctx">Cửa sổ ngữ cảnh (token)</label>
+        <input id="ctx" type="number" min="1024" step="1024" value="4096">
+      </div>
+      <div>
+        <label class="f" for="chunkCandidates">Ứng viên mỗi khối</label>
+        <input id="chunkCandidates" type="number" min="2" max="64" step="1" value="12">
+      </div>
+      <div>
+        <label class="f" for="threshold">Ngưỡng giữ ứng viên</label>
+        <input id="threshold" type="number" min="0" max="1" step="0.05" value="0.45">
+      </div>
+    </div>
+    <p class="note" id="cfgNote" style="margin-top:10px"></p>
+
+    <div class="checks">
+      <label><input type="checkbox" id="noLlm"> Chỉ dùng luật OpenXML (nhanh, không cần mô hình)</label>
+      <label><input type="checkbox" id="structuralOnly" checked> Bỏ luật từ ngữ</label>
+      <label><input type="checkbox" id="noTrustStyles"> Không khôi phục theo style</label>
+      <label><input type="checkbox" id="twoPass"> Quét hai lượt, đánh dấu chỗ bất đồng (chậm gấp đôi)</label>
+    </div>
+
+    <button id="run" disabled>Phân tích</button>
+  </div>
+
+  <div class="panel hidden" id="progressPanel">
+    <h2>Tiến trình</h2>
+    <div id="log"></div>
+  </div>
+
+  <div id="errBox" class="panel hidden"><div class="err" id="errText"></div></div>
+
+  <div class="panel hidden" id="statsPanel">
+    <h2>Tổng quan</h2>
+    <div class="tiles" id="tiles"></div>
+    <p class="note" id="confNote"></p>
+  </div>
+
+  <div class="panel hidden" id="evalPanel">
+    <h2>Đối chiếu đáp án — độ chính xác thật</h2>
+    <p class="note" style="margin: 0 0 10px">
+      Dán đáp án: mỗi dòng một chỉ số đoạn, kèm cấp nếu muốn chấm cả cấp — ví dụ <code>95 1</code>.
+      Không có đáp án thì con số duy nhất đọc được là độ tin cậy tự đánh giá ở trên, không phải độ chính xác.
+    </p>
+    <textarea id="key" placeholder="95 1&#10;96 2&#10;99 2"></textarea>
+    <button id="evalBtn">Chấm</button>
+    <div class="tiles" id="evalTiles" style="margin-top: 16px"></div>
+    <div id="evalDetail"></div>
+  </div>
+
+  <div class="panel hidden" id="treePanel">
+    <h2>Cấu trúc tiêu đề</h2>
+    <div class="scroll"><table id="tree"></table></div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+let picked = null, outline = null, serverError = false;
+
+// ---------- chọn file ----------
+$('drop').onclick = () => $('file').click();
+$('drop').ondragover = e => { e.preventDefault(); $('drop').classList.add('over'); };
+$('drop').ondragleave = () => $('drop').classList.remove('over');
+$('drop').ondrop = e => {
+  e.preventDefault(); $('drop').classList.remove('over');
+  if (e.dataTransfer.files[0]) setFile(e.dataTransfer.files[0]);
+};
+$('file').onchange = e => { if (e.target.files[0]) setFile(e.target.files[0]); };
+
+function setFile(f) {
+  picked = f;
+  $('dropName').textContent = f.name + '  ·  ' + (f.size / 1024).toFixed(0) + ' KB';
+  $('run').disabled = false;
+}
+
+// ---------- mặc định + danh sách mô hình ----------
+// Mặc định lấy từ máy chủ (đọc thẳng Core) để giao diện không lệch khỏi CLI.
+fetch('/api/defaults').then(r => r.json()).then(d => {
+  $('chunkCandidates').value = d.chunkCandidates;
+  $('threshold').value = d.threshold;
+  $('structuralOnly').checked = d.structuralOnly;
+});
+
+fetch('/api/models').then(r => r.json()).then(list => {
+  const sel = $('model');
+  if (!list.length) {
+    sel.innerHTML = '<option value="">— không tìm thấy .gguf —</option>';
+    $('noLlm').checked = true;
+    $('cfgNote').textContent = 'Không tìm thấy .gguf nào trong models/ — chỉ chạy được bằng luật OpenXML.';
+    return;
+  }
+  // Mô hình khuyên dùng đứng đầu danh sách nên tự được chọn.
+  sel.innerHTML = list.map(m =>
+    `<option value="${esc(m.path)}" data-ctx="${m.suggestedCtx}">${esc(m.name)} · ${m.sizeGb} GB${
+      m.recommended ? ' · khuyên dùng' : ''}</option>`).join('');
+  syncCtx();
+  sel.onchange = syncCtx;
+
+  function syncCtx() {
+    const opt = sel.selectedOptions[0];
+    $('ctx').value = opt.dataset.ctx;
+    $('cfgNote').textContent = opt.textContent.includes('khuyên dùng')
+      ? 'Đang dùng cấu hình đã đo đạt precision 100% — mô hình lớn nhất tìm thấy, ngữ cảnh '
+        + opt.dataset.ctx + ', 12 ứng viên mỗi khối.'
+      : 'Mô hình này KHÔNG phải cấu hình đã đo. Mô hình nhỏ hơn tụt precision rõ rệt '
+        + '(Llama-3.2-3B đo được 73%, Qwen2.5-7B 100% trên cùng tài liệu).';
+  }
+});
+
+// ---------- chạy ----------
+$('run').onclick = async () => {
+  if (!picked) return;
+  $('run').disabled = true;
+  outline = null; serverError = false;
+  ['statsPanel', 'treePanel', 'evalPanel', 'errBox'].forEach(id => $(id).classList.add('hidden'));
+  $('progressPanel').classList.remove('hidden');
+  $('log').textContent = '';
+
+  const fd = new FormData();
+  fd.append('file', picked);
+  fd.append('model', $('model').value);
+  fd.append('ctx', $('ctx').value);
+  fd.append('threshold', $('threshold').value);
+  fd.append('chunkCandidates', $('chunkCandidates').value);
+  fd.append('noLlm', $('noLlm').checked ? '1' : '0');
+  fd.append('structuralOnly', $('structuralOnly').checked ? '1' : '0');
+  fd.append('noTrustStyles', $('noTrustStyles').checked ? '1' : '0');
+  fd.append('twoPass', $('twoPass').checked ? '1' : '0');
+
+  const started = Date.now();
+  const timer = setInterval(() => {
+    $('run').textContent = 'Đang chạy… ' + Math.round((Date.now() - started) / 1000) + ' s';
+  }, 1000);
+
+  try {
+    const res = await fetch('/api/extract', { method: 'POST', body: fd });
+    if (!res.ok) throw new Error(await res.text());
+
+    // NDJSON: đọc từng dòng ngay khi máy chủ đẩy ra, không đợi chạy xong.
+    const reader = res.body.getReader(), dec = new TextDecoder();
+    let buf = '';
+    for (;;) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      const lines = buf.split('\n');
+      buf = lines.pop();
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        handle(JSON.parse(line));
+      }
+    }
+    // Máy chủ đã báo lỗi cụ thể rồi thì giữ nguyên, đừng đè bằng thông báo chung chung.
+    if (!outline && !serverError) throw new Error('Máy chủ đóng kết nối trước khi trả kết quả.');
+  } catch (e) {
+    showError(e.message);
+  } finally {
+    clearInterval(timer);
+    $('run').textContent = 'Phân tích';
+    $('run').disabled = false;
+  }
+};
+
+function handle(evt) {
+  if (evt.type === 'log') {
+    $('log').textContent += evt.message + '\n';
+    $('log').scrollTop = $('log').scrollHeight;
+  } else if (evt.type === 'error') {
+    serverError = true;
+    showError(evt.message);
+  } else if (evt.type === 'result') {
+    outline = evt.outline;
+    render(evt.outline, evt.stats);
+  }
+}
+
+function showError(msg) {
+  $('errBox').classList.remove('hidden');
+  $('errText').textContent = msg;
+}
+
+// ---------- hiển thị kết quả ----------
+function render(o, s) {
+  const secs = (o.elapsedMs / 1000).toFixed(1);
+  const t = [
+    [o.paragraphCount, 'đoạn trong file'],
+    [s.candidates, 'ứng viên'],
+    [s.headings, 'tiêu đề', true],
+    [s.rejected, 'bị loại'],
+    [s.maxLevel, 'cấp sâu nhất'],
+    [pct(s.avgConfidence), 'độ tin cậy TB'],
+    [secs + ' s', 'thời gian'],
+  ];
+  if (o.disputedCount) t.splice(4, 0, [o.disputedCount, 'cần xem lại']);
+  tiles('tiles', t);
+
+  $('confNote').innerHTML =
+    `Nguồn: <span class="tag Style">Style</span> ${s.byStyle} · ` +
+    `<span class="tag Model">Model</span> ${s.byModel} · ` +
+    `<span class="tag Heuristic">Heuristic</span> ${s.byHeuristic}` +
+    (o.model ? ` — mô hình <code>${esc(o.model)}</code>` : ' — chạy bằng luật OpenXML') +
+    `.<br><b>Độ tin cậy TB là pipeline tự chấm, không phải độ chính xác đo được.</b> ` +
+    `Muốn con số chính xác thật thì dán đáp án ở ô bên dưới.`;
+
+  $('tree').innerHTML =
+    '<thead><tr><th style="width:64px">Đoạn</th><th>Tiêu đề</th>' +
+    '<th style="width:96px">Nguồn</th><th style="width:78px;text-align:right">Tin cậy</th></tr></thead><tbody>' +
+    o.headings.map(h => `<tr class="${h.disputed ? 'dis' : ''}">
+        <td class="i">${h.index}</td>
+        <td style="padding-left:${10 + (h.level - 1) * 22}px">
+          <span class="lvl">H${h.level}</span>${esc(h.text)}${
+            h.disputed ? '<span class="tag dis">cần xem lại</span>' : ''}</td>
+        <td><span class="tag ${h.source}">${h.source}</span></td>
+        <td class="c">${pct(h.confidence)}</td>
+      </tr>`).join('') + '</tbody>';
+
+  $('statsPanel').classList.remove('hidden');
+  $('treePanel').classList.remove('hidden');
+  $('evalPanel').classList.remove('hidden');
+  $('evalTiles').innerHTML = '';
+  $('evalDetail').innerHTML = '';
+}
+
+// ---------- chấm với đáp án ----------
+$('evalBtn').onclick = () => {
+  if (!outline) return;
+
+  const truth = new Map();
+  for (const raw of $('key').value.split(/[\n;]+/)) {
+    const m = raw.trim().match(/^(\d+)(?:[\s,:]+(\d+))?$/);
+    if (m) truth.set(+m[1], m[2] ? +m[2] : null);
+  }
+  if (!truth.size) {
+    $('evalDetail').innerHTML = '<p class="note">Chưa đọc được chỉ số nào từ đáp án.</p>';
+    $('evalTiles').innerHTML = '';
+    return;
+  }
+
+  const got = new Map(outline.headings.map(h => [h.index, h.level]));
+  const tp = [...got.keys()].filter(i => truth.has(i));
+  const fp = [...got.keys()].filter(i => !truth.has(i));
+  const fn = [...truth.keys()].filter(i => !got.has(i));
+
+  // Chỉ chấm cấp trên phần giao, và chỉ với những dòng đáp án có ghi cấp.
+  const levelled = tp.filter(i => truth.get(i) !== null);
+  const levelOk = levelled.filter(i => truth.get(i) === got.get(i));
+
+  const precision = got.size ? tp.length / got.size : 0;
+  const recall = truth.size ? tp.length / truth.size : 0;
+  const f1 = (precision + recall) ? 2 * precision * recall / (precision + recall) : 0;
+
+  tiles('evalTiles', [
+    [pct(precision), 'precision — ' + tp.length + '/' + got.size, true],
+    [pct(recall), 'recall — ' + tp.length + '/' + truth.size],
+    [pct(f1), 'F1'],
+    [levelled.length ? pct(levelOk.length / levelled.length) : '—',
+     'đúng cấp — ' + levelOk.length + '/' + levelled.length],
+    [fp.length, 'thừa (false positive)'],
+    [fn.length, 'thiếu (false negative)'],
+  ]);
+
+  const rows = [];
+  for (const i of fp) rows.push([i, textOf(i), 'thừa']);
+  for (const i of fn) rows.push([i, '(không có trong kết quả)', 'thiếu']);
+  for (const i of levelled) {
+    if (truth.get(i) !== got.get(i))
+      rows.push([i, textOf(i), `cấp ${got.get(i)} ≠ đáp án ${truth.get(i)}`]);
+  }
+
+  $('evalDetail').innerHTML = rows.length
+    ? '<div class="scroll"><table style="margin-top:16px"><thead><tr><th style="width:64px">Đoạn</th>' +
+      '<th>Nội dung</th><th style="width:190px">Sai ở đâu</th></tr></thead><tbody>' +
+      rows.sort((a, b) => a[0] - b[0]).map(r =>
+        `<tr><td class="i">${r[0]}</td><td>${esc(r[1])}</td>
+             <td><span class="tag miss">${esc(r[2])}</span></td></tr>`).join('') +
+      '</tbody></table></div>'
+    : '<p class="note" style="margin-top:16px">Khớp hoàn toàn với đáp án.</p>';
+};
+
+function textOf(i) {
+  const h = outline.headings.find(x => x.index === i);
+  return h ? h.text : '(không có trong kết quả)';
+}
+
+// ---------- tiện ích ----------
+function tiles(id, items) {
+  $(id).innerHTML = items.map(([v, k, big]) =>
+    `<div class="tile${big ? ' big' : ''}"><div class="v">${esc(String(v))}</div><div class="k">${esc(k)}</div></div>`
+  ).join('');
+}
+const pct = x => (x * 100).toFixed(1).replace(/\.0$/, '') + '%';
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+</script>
+</body>
+</html>
