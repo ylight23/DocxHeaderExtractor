@@ -7,6 +7,25 @@ using Xunit;
 
 namespace DocxHeaderExtractor.Tests;
 
+public class PromptTests
+{
+    /// <summary>
+    /// Prompt ghép từ hằng Rules + ExampleInput. Ghép hụt thì mô hình mất luật phân loại mà
+    /// chương trình vẫn chạy bình thường — hỏng theo kiểu chỉ lộ ra sau 12 phút suy luận.
+    /// </summary>
+    [Fact]
+    public void System_prompt_contains_rules_example_and_output_schema()
+    {
+        var s = HeaderPrompt.System;
+
+        Assert.Contains("tbl=1 (nằm trong bảng) LUÔN l=0", s);          // luật
+        Assert.Contains("PHỤ LỤC B – BIỂU MẪU", s);                     // ví dụ one-shot
+        Assert.Contains("""{"h":[{"i":0,"l":1}""", s);                   // lược đồ đầu ra
+        Assert.DoesNotContain("{Rules}", s);                            // chỗ nội suy đã thay
+        Assert.DoesNotContain("{ExampleInput}", s);
+    }
+}
+
 public class ChunkerTests
 {
     private static IReadOnlyList<XmlLine> MakeLines(int candidates)

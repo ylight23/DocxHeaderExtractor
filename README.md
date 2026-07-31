@@ -50,6 +50,57 @@ Pipeline chia làm hai tầng:
 3. **Lưới an toàn theo style.** Đoạn có style Heading mà mô hình gán `l=0` vẫn được khôi phục
    (tắt bằng `--no-trust-styles`).
 
+## Kết quả đo
+
+Chạy `dhx eval bench` để tự đo lại. Số dưới đây đo trên một tài liệu hành chính thật
+(898 đoạn, 48 ứng viên, 33 tiêu đề) — xem `bench/08-plph2.key`.
+
+| Cấu hình | Precision | Đúng cấp | Thời gian |
+|---|--:|--:|--:|
+| Llama-3.2-3B, 40 ứng viên/khối | 73,3 % | 75,8 % | 4,3 phút |
+| Qwen2.5-7B, 40 ứng viên/khối | 97,0 % | 93,8 % | 9,6 phút |
+| + cấp đọc từ `w:outlineLvl` | 97,0 % | **100 %** | 9,6 phút |
+| + 12 ứng viên/khối | 97,0 % | 100 % | 13,0 phút |
+| **+ phủ quyết gạch đầu dòng** | **100 %** | **100 %** | **12,3 phút** |
+
+Lệnh cho cấu hình cuối:
+
+```powershell
+dhx extract "<file.docx>" -m models\Qwen2.5-7B-Instruct-Q4_K_M.gguf --ctx 8192 -f md
+```
+
+`--ctx 8192` là bắt buộc với Qwen: bộ tách token của nó sinh nhiều token hơn Llama cho tiếng
+Việt, để 4096 sẽ tràn ngữ cảnh ngay khối đầu.
+
+### Ba yếu tố thực sự tạo ra khác biệt
+
+1. **Kích cỡ mô hình.** 3B → 7B đưa precision từ 73 % lên 97 %. Không có mẹo prompt nào bù được.
+2. **Đọc cấp từ `w:outlineLvl` thay vì để mô hình đoán** (`LevelFromOutline`). Đây là đặc tả
+   OOXML do người soạn đặt, chính xác hơn mọi suy luận từ hình thức.
+3. **Khối ngắn** (`MaxCandidatesPerChunk = 12`). Grammar liệt kê buộc mô hình sinh một chữ số cho
+   mỗi ứng viên **trong một chuỗi tự hồi quy**, nên một dãy `0` đúng sẽ kéo chữ số kế tiếp về `0`
+   sai. Ở 40 ứng viên/khối có khối cho ra 7/40; cùng tài liệu ở 12 ứng viên/khối thì các tiêu đề
+   đó đều đúng.
+
+### Những hướng đã thử và ĐÃ BỎ
+
+Ghi lại để khỏi thử lại. Tất cả đều đo trên cùng tài liệu, cùng mô hình.
+
+| Hướng | Kỳ vọng | Đo được |
+|---|---|---|
+| Viết lại prompt theo nguyên tắc ngữ nghĩa | Lọc bớt rác | Không loại thêm dòng nào, **và phá cấp bậc** (gần hết thành cấp 1) |
+| Quét hai lượt, đánh dấu chỗ bất đồng | Khoanh vùng chỗ sai | 2× thời gian; 16 cờ báo động, **0 cờ trúng lỗi thật** |
+| Bỏ hỏi ứng viên đã có style | Nhanh hơn, kết quả không đổi | Nhanh 24 % nhưng precision **100 % → 94,1 %** |
+| Đầu ra chỉ là dãy chữ số | Cắt 90 % token sinh ⇒ nhanh hơn nhiều | **Không nhanh hơn** (742 s vs 738 s) và precision **→ 73,3 %** |
+| Backend CUDA 12 | Tăng tốc bằng GPU | Driver 528.79 (CUDA 12.0) quá cũ, native lib không nạp, rơi về CPU và **chậm hơn 15 %** |
+
+Hai bài học rút ra từ bảng này:
+
+- **Không tín hiệu tự động nào khoanh được chỗ mô hình sai.** Cờ bất đồng hai lượt và cờ
+  `src=Style` đều trỏ vào những dòng đúng. Mô hình sai ở chỗ nó tự tin.
+- **Thời gian nằm ở khâu nạp prompt, không phải khâu sinh token.** Cắt 90 % token sinh ra mà
+  tổng thời gian đứng yên.
+
 ## Yêu cầu
 
 - .NET SDK 9.0

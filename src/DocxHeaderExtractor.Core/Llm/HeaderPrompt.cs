@@ -8,7 +8,11 @@ namespace DocxHeaderExtractor.Core.Llm;
 /// </summary>
 public static class HeaderPrompt
 {
-    public const string System = """
+    /// <summary>
+    /// Phần luật phân loại, KHÔNG phụ thuộc định dạng đầu ra. Hai biến thể prompt (JSON và chữ số)
+    /// dùng chung nguyên văn phần này, nên khi so tốc độ giữa hai lược đồ thì luật không đổi.
+    /// </summary>
+    private const string Rules = """
         Bạn là bộ phân tích cấu trúc tài liệu Word. Đầu vào là XML rút gọn từ file .docx.
 
         Mỗi <p> là một đoạn ứng viên với các thuộc tính:
@@ -42,9 +46,10 @@ public static class HeaderPrompt
         6. tbl=1 (nằm trong bảng) LUÔN l=0 — kể cả khi in đậm, viết hoa, canh giữa và trông hệt
            số hiệu mục ("II.1", "III.2") hay tên cột ("Ký hiệu", "Giải thích"). Ô bảng là dữ liệu:
            thứ nó gọi tên nằm ở ô bên cạnh, không nằm ở phần văn bản sau nó.
-        7. Trả lời theo ĐÚNG thứ tự các <p> xuất hiện, mỗi <p> đúng một mục.
-        8. Không giải thích. Chỉ in JSON.
+        """;
 
+    /// <summary>Ví dụ one-shot, dùng chung; chỉ dòng "Đầu ra" khác nhau giữa hai lược đồ.</summary>
+    private const string ExampleInput = """
         Ví dụ:
         Đầu vào
           <p i="0" s="Heading1" out="0" lvl="1" b="1">Chương 1. Quy định chung</p>
@@ -56,9 +61,25 @@ public static class HeaderPrompt
             <ctx>Hệ thống văn kiện diễn tập</ctx>
           <p i="12" s="Normal" b="1">Hình 3: Sơ đồ khối của hệ thống.</p>
           <p i="14" s="Normal" out="3" sz="14">- Kích thước dữ liệu: khoảng 200 GB trong 5 năm đầu.</p>
+        """;
+
+    // $$ để dấu ngoặc nhọn của ví dụ JSON là ký tự thật; chỗ nội suy dùng {{…}}.
+    /// <summary>Lược đồ JSON: mỗi ứng viên một object {"i":…,"l":…}.</summary>
+    public static readonly string System = $$"""
+        {{Rules}}
+        7. Trả lời theo ĐÚNG thứ tự các <p> xuất hiện, mỗi <p> đúng một mục.
+        8. Không giải thích. Chỉ in JSON.
+
+        {{ExampleInput}}
         Đầu ra
           {"h":[{"i":0,"l":1},{"i":6,"l":1},{"i":9,"l":2},{"i":11,"l":0},{"i":12,"l":0},{"i":14,"l":0}]}
         """;
+
+    // ĐÃ THỬ VÀ BỎ: lược đồ đầu ra chỉ gồm dãy chữ số, chỉ số suy từ vị trí (1 token/ứng viên
+    // thay vì ~16). Đo trên tài liệu thật: precision 100% → 73,3%, và KHÔNG nhanh hơn một giây
+    // nào (742 s so với 738 s). Mô hình mất luôn nhiệm vụ — có khối nó chép thẳng chỉ số đoạn
+    // ra làm đáp án ("445448551552"). Con số đó cũng bác bỏ giả thuyết "sinh token là nút cổ
+    // chai": cắt 90% token sinh ra mà tổng thời gian đứng yên ⇒ thời gian nằm ở khâu nạp prompt.
 
     public static string BuildUser(string chunkXml) =>
         $"""
@@ -67,6 +88,7 @@ public static class HeaderPrompt
 
          Trả lời cho từng <p> theo đúng thứ tự.
          """;
+
 
     /// <summary>
     /// GBNF liệt kê: ép mô hình sinh đúng một mục cho mỗi ứng viên, đúng thứ tự, với chỉ số
