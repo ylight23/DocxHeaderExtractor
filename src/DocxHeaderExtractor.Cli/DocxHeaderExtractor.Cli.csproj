@@ -21,9 +21,13 @@
       Backend llama.cpp. Mặc định CPU (AVX/AVX2/AVX512, tự chọn theo CPU).
       Build với -p:UseCuda=true để dùng CUDA 12 — chỉ có ích khi máy có GPU NVIDIA;
       gói CUDA nặng ~700 MB nên không đặt mặc định.
+      Build với -p:UseVulkan=true cho GPU AMD/Intel (và cả NVIDIA) — máy cần sẵn
+      vulkan-1.dll của driver. Chỉ đặt MỘT trong hai cờ: bật cả hai thì cả hai gói
+      cùng đổ native lib vào runtimes/ và LLamaSharp sẽ chọn theo thứ tự riêng của nó.
     -->
-    <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.27.0" Condition="'$(UseCuda)' != 'true'" />
+    <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.27.0" Condition="'$(UseCuda)' != 'true' AND '$(UseVulkan)' != 'true'" />
     <PackageReference Include="LLamaSharp.Backend.Cuda12" Version="0.27.0" Condition="'$(UseCuda)' == 'true'" />
+    <PackageReference Include="LLamaSharp.Backend.Vulkan" Version="0.27.0" Condition="'$(UseVulkan)' == 'true'" />
   </ItemGroup>
 
   <ItemGroup>

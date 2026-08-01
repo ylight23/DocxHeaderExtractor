@@ -16,9 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Xem ghi chú ở DocxHeaderExtractor.Cli.csproj: -p:UseCuda=true để đổi sang CUDA 12 -->
-    <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.27.0" Condition="'$(UseCuda)' != 'true'" />
+    <!-- Xem ghi chú ở DocxHeaderExtractor.Cli.csproj: -p:UseCuda=true để đổi sang CUDA 12,
+         -p:UseVulkan=true cho GPU AMD/Intel -->
+    <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.27.0" Condition="'$(UseCuda)' != 'true' AND '$(UseVulkan)' != 'true'" />
     <PackageReference Include="LLamaSharp.Backend.Cuda12" Version="0.27.0" Condition="'$(UseCuda)' == 'true'" />
+    <PackageReference Include="LLamaSharp.Backend.Vulkan" Version="0.27.0" Condition="'$(UseVulkan)' == 'true'" />
   </ItemGroup>
 
   <ItemGroup>

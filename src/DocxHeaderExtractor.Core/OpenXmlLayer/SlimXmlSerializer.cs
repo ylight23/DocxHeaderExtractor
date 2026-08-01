@@ -31,7 +31,18 @@ public static class SlimXmlSerializer
     }
 
     /// <summary>Danh sách dòng đã tinh gọn cho LLM (ứng viên + đoạn gom + ngữ cảnh).</summary>
-    public static IReadOnlyList<XmlLine> BuildLines(SlimDocument doc, ExtractionOptions options)
+    public static IReadOnlyList<XmlLine> BuildLines(SlimDocument doc, ExtractionOptions options) =>
+        BuildLines(doc, options, reviewIndexes: null);
+
+    /// <summary>
+    /// Sinh dòng cho LLM. Khi <paramref name="reviewIndexes"/> có giá trị, mọi paragraph vẫn được
+    /// giữ nguyên làm ngữ cảnh; chỉ các index trong tập đó bị grammar yêu cầu trả lời. Nhờ vậy
+    /// pipeline có thể review cả tài liệu mà không để ngưỡng heuristic làm mất heading lạ.
+    /// </summary>
+    public static IReadOnlyList<XmlLine> BuildLines(
+        SlimDocument doc,
+        ExtractionOptions options,
+        IReadOnlySet<int>? reviewIndexes)
     {
         var lines = new List<XmlLine>();
         int normalRun = 0;
@@ -51,16 +62,19 @@ public static class SlimXmlSerializer
 
             if (p.Role == ParagraphRole.Empty) continue;
 
-            if (!p.IsCandidate)
+            var review = reviewIndexes?.Contains(p.Index) ?? p.IsCandidate;
+            var preserveEveryParagraph = reviewIndexes is not null;
+
+            if (!p.IsCandidate && !preserveEveryParagraph)
             {
                 normalRun++;
                 continue;
             }
 
             FlushNormal();
-            lines.Add(new XmlLine(Element(p, options.MaxTextLength, includeScore: false), p.Index, true));
+            lines.Add(new XmlLine(Element(p, options.MaxTextLength, includeScore: false), p.Index, review));
 
-            if (options.IncludeFollowingContext)
+            if (options.IncludeFollowingContext && !preserveEveryParagraph)
             {
                 var next = paragraphs.Skip(i + 1)
                     .FirstOrDefault(x => x.Role != ParagraphRole.Empty);
@@ -94,11 +108,18 @@ public static class SlimXmlSerializer
     {
         var sb = new StringBuilder(96);
         sb.Append("<p i=\"").Append(p.Index).Append('"');
+        if (!string.IsNullOrEmpty(p.StableId)) sb.Append(" sid=\"").Append(Escape(p.StableId)).Append('"');
 
         if (!string.IsNullOrEmpty(p.StyleId)) sb.Append(" s=\"").Append(Escape(p.StyleId)).Append('"');
         if (p.OutlineLevel is { } ol) sb.Append(" out=\"").Append(ol).Append('"');
         if (p.GuessedLevel is { } gl) sb.Append(" lvl=\"").Append(gl).Append('"');
         if (p.Bold) sb.Append(" b=\"1\"");
+        var boldRanges = p.TextSpans.Where(x => x.Bold).Select(x => $"{x.Start}-{x.End}").ToList();
+        if (boldRanges.Count > 0 && p.TextSpans.Any(x => !x.Bold))
+            sb.Append(" br=\"").Append(string.Join(',', boldRanges)).Append('"');
+        if (p.VerifiedHeadingEnd is { } headingEnd && p.VerifiedBodyStart is { } bodyStart)
+            sb.Append(" hs=\"0-").Append(headingEnd).Append("\" bs=\"").Append(bodyStart).Append("-")
+              .Append(p.Text.Length).Append('"');
         if (p.AllCaps) sb.Append(" caps=\"1\"");
         if (p.Italic) sb.Append(" it=\"1\"");
         if (p.Underline) sb.Append(" u=\"1\"");
@@ -107,6 +128,7 @@ public static class SlimXmlSerializer
             sb.Append(" al=\"").Append(Escape(p.Alignment)).Append('"');
         if (p.NumberingId is { } nid) sb.Append(" num=\"").Append(nid)
             .Append('.').Append(p.NumberingLevel ?? 0).Append('"');
+        if (!string.IsNullOrEmpty(p.NumberLabel)) sb.Append(" nlab=\"").Append(Escape(p.NumberLabel)).Append('"');
         if (p.KeepNext) sb.Append(" kn=\"1\"");
         if (p.PageBreakBefore) sb.Append(" pb=\"1\"");
         if (p.TableDepth > 0) sb.Append(" tbl=\"").Append(p.TableDepth).Append('"');

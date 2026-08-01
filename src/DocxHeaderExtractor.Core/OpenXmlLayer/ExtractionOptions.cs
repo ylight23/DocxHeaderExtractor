@@ -35,4 +35,5 @@ public sealed class ExtractionOptions
 
     /// <summary>Độ dài tối đa của đoạn ngữ cảnh đi kèm.</summary>
     public int ContextTextLength { get; set; } = 60;
+
 }

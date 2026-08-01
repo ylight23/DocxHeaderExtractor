@@ -2,6 +2,7 @@ using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Cli;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Output;
 using DocxHeaderExtractor.Core.Pipeline;
@@ -47,6 +48,8 @@ try
         "sample" => RunSample(options),
         "bench" => RunBench(options),
         "eval" => await RunEvalAsync(options, cts.Token),
+        "review" => await RunReviewAsync(options, cts.Token),
+        "review-key" => RunReviewKey(options),
         _ => await RunExtractAsync(options, cts.Token),
     };
 }
@@ -65,7 +68,8 @@ catch (Exception ex)
 
 static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken ct)
 {
-    if (!o.Pipeline.DisableLlm && string.IsNullOrWhiteSpace(o.Pipeline.Llama.ModelPath))
+    if (!o.Pipeline.DisableLlm && o.Pipeline.Backend == InferenceBackend.Local &&
+        string.IsNullOrWhiteSpace(o.Pipeline.Llama.ModelPath))
     {
         var found = ModelLocator.Locate();
         if (found is null)
@@ -88,7 +92,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
         return 2;
     }
 
-    var pipeline = new HeaderExtractionPipeline(o.Pipeline);
+    using var pipeline = new HeaderExtractionPipeline(o.Pipeline);
     var outputs = new List<string>();
     int failed = 0;
 
@@ -143,8 +147,12 @@ static int RunDumpXml(CommandLineOptions o)
 
             if (o.CompactXml)
             {
-                // Đúng bằng nội dung sẽ gửi cho mô hình: chỉ ứng viên + đoạn gom + ngữ cảnh.
-                var lines = SlimXmlSerializer.BuildLines(slim, o.Pipeline.Extraction);
+                // Đúng bằng nội dung sẽ gửi cho mô hình. Production chỉ hỏi ứng viên;
+                // --review-all dùng khi audit/thu nhãn toàn văn bản.
+                var review = o.Pipeline.ReviewAllParagraphs
+                    ? slim.Paragraphs.Where(p => p.Role != ParagraphRole.Empty).Select(p => p.Index).ToHashSet()
+                    : null;
+                var lines = SlimXmlSerializer.BuildLines(slim, o.Pipeline.Extraction, review);
                 Console.WriteLine(SlimXmlSerializer.WrapChunk(lines, 1, 1));
             }
             else
@@ -176,7 +184,8 @@ static int RunBench(CommandLineOptions o)
 
 static async Task<int> RunEvalAsync(CommandLineOptions o, CancellationToken ct)
 {
-    if (!o.Pipeline.DisableLlm && string.IsNullOrWhiteSpace(o.Pipeline.Llama.ModelPath))
+    if (!o.Pipeline.DisableLlm && o.Pipeline.Backend == InferenceBackend.Local &&
+        string.IsNullOrWhiteSpace(o.Pipeline.Llama.ModelPath))
     {
         var found = ModelLocator.Locate();
         if (found is null)
@@ -188,7 +197,89 @@ static async Task<int> RunEvalAsync(CommandLineOptions o, CancellationToken ct)
     }
 
     var dir = Path.GetFullPath(o.Inputs.FirstOrDefault() ?? "bench");
-    return await EvalRunner.RunAsync(dir, o.Pipeline, o.Quiet, ct);
+    return await EvalRunner.RunAsync(dir, o.Pipeline, o.Quiet, ct, o.CalibrationOutputPath);
+}
+
+static async Task<int> RunReviewAsync(CommandLineOptions o, CancellationToken ct)
+{
+    if (!o.Pipeline.DisableLlm && o.Pipeline.Backend == InferenceBackend.Local &&
+        string.IsNullOrWhiteSpace(o.Pipeline.Llama.ModelPath))
+    {
+        var found = ModelLocator.Locate();
+        if (found is null)
+        {
+            Console.Error.WriteLine("Chưa có mô hình. Dùng --no-llm hoặc chỉ định --model để tạo review.");
+            return 2;
+        }
+        o.Pipeline.Llama.ModelPath = found;
+    }
+
+    var files = ExpandInputs(o.Inputs);
+    if (files.Count == 0)
+    {
+        Console.Error.WriteLine("Không tìm thấy tài liệu để review.");
+        return 2;
+    }
+    if (files.Count > 1 && o.OutputPath is not null)
+    {
+        Console.Error.WriteLine("Chỉ dùng --out khi review đúng một tài liệu.");
+        return 2;
+    }
+
+    using var pipeline = new HeaderExtractionPipeline(o.Pipeline);
+    foreach (var file in files)
+    {
+        if (!o.Quiet) Console.Error.WriteLine($"» Review: {Path.GetFileName(file)}");
+        var conversion = LegacyDocConverter.EnsureDocx(file);
+        try
+        {
+            var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(conversion.Path);
+            var outline = await pipeline.RunAsync(file, ct);
+            var bundle = ReviewBundle.Create(outline, slim);
+            var output = o.OutputPath ?? Path.ChangeExtension(file, ".review.json");
+            await File.WriteAllTextAsync(output, bundle.ToJson(), new UTF8Encoding(false), ct);
+            if (!o.Quiet)
+                Console.Error.WriteLine($"  Đã ghi {bundle.Rows.Count} paragraph cần duyệt: {output}");
+        }
+        finally
+        {
+            LegacyDocConverter.Cleanup(conversion);
+        }
+    }
+    return 0;
+}
+
+static int RunReviewKey(CommandLineOptions o)
+{
+    if (o.Inputs.Count != 1)
+    {
+        Console.Error.WriteLine("review-key cần đúng một file .review.json.");
+        return 2;
+    }
+
+    var reviewPath = Path.GetFullPath(o.Inputs[0]);
+    if (!File.Exists(reviewPath))
+    {
+        Console.Error.WriteLine($"Không tìm thấy file review: {reviewPath}");
+        return 2;
+    }
+
+    var bundle = ReviewBundle.Load(reviewPath);
+    var stem = Path.GetFileName(reviewPath).EndsWith(".review.json", StringComparison.OrdinalIgnoreCase)
+        ? Path.GetFileName(reviewPath)[..^12]
+        : Path.GetFileNameWithoutExtension(reviewPath);
+    var directory = Path.GetDirectoryName(reviewPath)!;
+    var keyPath = Path.GetFullPath(o.OutputPath ?? Path.Combine(directory, stem + ".key"));
+    var trainingPath = Path.GetFullPath(o.TrainingOutputPath ?? Path.Combine(directory, stem + ".training.jsonl"));
+
+    File.WriteAllText(keyPath, bundle.ToAnswerKeyText(), new UTF8Encoding(false));
+    File.WriteAllText(trainingPath, bundle.ToTrainingJsonl(), new UTF8Encoding(false));
+    if (!o.Quiet)
+    {
+        Console.Error.WriteLine($"Đã ghi key đánh giá: {keyPath}");
+        Console.Error.WriteLine($"Đã ghi dữ liệu huấn luyện: {trainingPath}");
+    }
+    return 0;
 }
 
 static int RunSample(CommandLineOptions o)

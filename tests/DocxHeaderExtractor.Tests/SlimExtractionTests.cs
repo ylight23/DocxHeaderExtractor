@@ -1,6 +1,11 @@
 using DocxHeaderExtractor.Core.Chunking;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.Core.Pipeline;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using Vml = DocumentFormat.OpenXml.Vml;
 using Xunit;
 
 namespace DocxHeaderExtractor.Tests;
@@ -107,9 +112,144 @@ public sealed class SlimExtractionTests : IDisposable
     }
 
     [Fact]
+    public void Stable_ids_are_unique_and_repeatable_across_extractions()
+    {
+        var first = Extract().Paragraphs.Select(p => p.StableId).ToList();
+        var second = Extract().Paragraphs.Select(p => p.StableId).ToList();
+
+        Assert.Equal(first, second);
+        Assert.Equal(first.Count, first.Distinct(StringComparer.Ordinal).Count());
+        Assert.All(first, id => Assert.StartsWith("body[1]/", id));
+    }
+
+    [Fact]
     public void Tables_can_be_excluded()
     {
         var doc = Extract(new ExtractionOptions { IncludeTables = false });
         Assert.DoesNotContain(doc.Paragraphs, p => p.TableDepth > 0);
     }
+
+    [Fact]
+    public async Task Heuristic_only_run_reports_only_candidates_as_reviewed()
+    {
+        var log = new List<string>();
+        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions
+        {
+            DisableLlm = true,
+            ReviewAllParagraphs = true,
+            Log = log.Add,
+        });
+
+        var outline = await pipeline.RunAsync(_docx);
+        var expectedCandidates = Extract().Candidates.Count();
+
+        Assert.Equal(expectedCandidates, outline.CandidateCount);
+        Assert.Contains(log, line => line.Contains($"luật xét {expectedCandidates} ứng viên"));
+        Assert.DoesNotContain(log, line => line.Contains("LLM review"));
+    }
+
+    [Fact]
+    public void Textbox_paragraph_is_extracted_separately_from_its_anchor()
+    {
+        var path = Path.Combine(Path.GetTempPath(), $"dhx-textbox-{Guid.NewGuid():N}.docx");
+        try
+        {
+            using (var doc = WordprocessingDocument.Create(path, WordprocessingDocumentType.Document))
+            {
+                var main = doc.AddMainDocumentPart();
+                var boxContent = new TextBoxContent(
+                    new Paragraph(new Run(new Text("TIÊU ĐỀ TRONG TEXTBOX"))));
+                var picture = new Picture(new Vml.Shape(new Vml.TextBox(boxContent)));
+                var anchor = new Paragraph(new Run(new Text("Đoạn neo")), new Run(picture));
+                main.Document = new Document(new Body(anchor));
+                main.Document.Save();
+            }
+
+            var paragraphs = new DocxSlimExtractor().Extract(path).Paragraphs;
+
+            Assert.Contains(paragraphs, p => p.Text == "Đoạn neo");
+            Assert.Contains(paragraphs, p => p.Text == "TIÊU ĐỀ TRONG TEXTBOX");
+            Assert.DoesNotContain(paragraphs, p => p.Text.Contains("Đoạn neoTIÊU ĐỀ", StringComparison.Ordinal));
+        }
+        finally
+        {
+            LegacyDocConverter.TryDelete(path);
+        }
+    }
+
+    [Fact]
+    public void Preserves_normalized_run_offsets_for_inline_heading_boundary()
+    {
+        var path = Path.Combine(Path.GetTempPath(), $"dhx-runs-{Guid.NewGuid():N}.docx");
+        try
+        {
+            using (var doc = WordprocessingDocument.Create(path, WordprocessingDocumentType.Document))
+            {
+                var main = doc.AddMainDocumentPart();
+                main.Document = new Document(new Body(new Paragraph(
+                    new Run(new RunProperties(new Bold()), new Text("2.3.1. Thành công")),
+                    new Run(new Text(":   Tỉ lệ thành công: 20%") { Space = SpaceProcessingModeValues.Preserve }))));
+                main.Document.Save();
+            }
+
+            var paragraph = new DocxSlimExtractor().Extract(path).Paragraphs.Single();
+
+            Assert.Equal("2.3.1. Thành công: Tỉ lệ thành công: 20%", paragraph.Text);
+            Assert.Equal(2, paragraph.TextSpans.Count);
+            Assert.True(paragraph.TextSpans[0].Bold);
+            Assert.False(paragraph.TextSpans[1].Bold);
+            Assert.Equal(17, paragraph.TextSpans[1].Start);
+            Assert.Contains("br=\"0-17\"", SlimXmlSerializer.ToFullXml(
+                new SlimDocument { FileName = "test.docx", SourcePath = path, Paragraphs = [paragraph] }.Build(),
+                new ExtractionOptions()));
+            Assert.True(InlineHeadingSplitter.TryFindBoundary(paragraph, out var headingEnd, out var bodyStart));
+            Assert.Equal(17, headingEnd);
+            Assert.Equal(19, bodyStart);
+        }
+        finally
+        {
+            LegacyDocConverter.TryDelete(path);
+        }
+    }
+}
+
+public sealed class NumberingResolverTests : IDisposable
+{
+    private readonly string _docx = Path.Combine(Path.GetTempPath(), "dhx-numbering-" + Guid.NewGuid().ToString("N") + ".docx");
+
+    public void Dispose() => LegacyDocConverter.TryDelete(_docx);
+
+    [Fact]
+    public void Reads_displayed_labels_and_level_override_from_numbering_xml()
+    {
+        using (var doc = WordprocessingDocument.Create(_docx, WordprocessingDocumentType.Document))
+        {
+            var main = doc.AddMainDocumentPart();
+            main.Document = new Document(new Body(
+                P(0, "Phần một"), P(1, "Mục một"), P(1, "Mục hai"), P(0, "Phần hai"), P(1, "Mục một")));
+            var numbering = main.AddNewPart<NumberingDefinitionsPart>();
+            using var xml = new MemoryStream(System.Text.Encoding.UTF8.GetBytes("""
+                <w:numbering xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+                  <w:abstractNum w:abstractNumId="0">
+                    <w:lvl w:ilvl="0"><w:start w:val="1"/><w:numFmt w:val="upperRoman"/><w:lvlText w:val="%1."/></w:lvl>
+                    <w:lvl w:ilvl="1"><w:start w:val="1"/><w:numFmt w:val="decimal"/><w:lvlText w:val="%1.%2."/></w:lvl>
+                  </w:abstractNum><w:num w:numId="1"><w:abstractNumId w:val="0"/>
+                    <w:lvlOverride w:ilvl="1"><w:lvl w:ilvl="1"><w:numFmt w:val="lowerLetter"/><w:lvlText w:val="%2)"/></w:lvl></w:lvlOverride>
+                  </w:num>
+                </w:numbering>
+                """));
+            numbering.FeedData(xml);
+            main.Document.Save();
+        }
+
+        var paragraphs = new DocxSlimExtractor().Extract(_docx).Paragraphs;
+
+        Assert.Equal(["I.", "a)", "b)", "II.", "a)"], paragraphs.Select(p => p.NumberLabel));
+        Assert.Equal([1, 2, 2, 1, 2], paragraphs.Select(p => p.NumberingDepth));
+    }
+
+    private static Paragraph P(int level, string text) => new(
+        new ParagraphProperties(new NumberingProperties(
+            new NumberingLevelReference { Val = level }, new NumberingId { Val = 1 })),
+        new Run(new Text(text)));
 }

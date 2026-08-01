@@ -47,6 +47,62 @@ public class AnswerKeyTests
         Assert.Equal(1, key.LevelOf(7));
         Assert.Equal(2, key.LevelOf(2));
     }
+
+    [Fact]
+    public void Stable_key_resolves_against_current_document_indexes()
+    {
+        var key = AnswerKey.Parse("@body[1]/p[2] 2\n@body[1]/p[8] 1");
+        var resolved = key.ResolveStableIds(new Dictionary<string, int>
+        {
+            ["body[1]/p[2]"] = 9,
+            ["body[1]/p[8]"] = 14,
+        });
+
+        Assert.Equal(2, resolved.Count);
+        Assert.Equal(2, resolved.LevelOf(9));
+        Assert.Equal(1, resolved.LevelOf(14));
+        Assert.Empty(resolved.StableIds);
+    }
+}
+
+public class ReviewBundleTests
+{
+    [Fact]
+    public void Complete_review_generates_stable_key_and_training_rows()
+    {
+        var review = new ReviewBundle
+        {
+            SourceFile = "bao-cao.docx",
+            Rows =
+            [
+                new ReviewRow { StableId = "body[1]/p[1]", Index = 0, Text = "Mở đầu", PredictedLevel = 1, CorrectedLevel = 1 },
+                new ReviewRow { StableId = "body[1]/p[2]", Index = 1, Text = "Nội dung", PredictedLevel = 0, CorrectedLevel = 0 },
+            ],
+        };
+
+        var key = AnswerKey.Parse(review.ToAnswerKeyText());
+        Assert.True(key.HasStableIds);
+        Assert.Equal(1, key.Count);
+        Assert.Equal(1, key.StableLevelOf("body[1]/p[1]"));
+
+        var jsonl = review.ToTrainingJsonl().Split('\n', StringSplitOptions.RemoveEmptyEntries);
+        Assert.Equal(2, jsonl.Length);
+        Assert.Contains("\"label\":0", jsonl[1]);
+    }
+
+    [Fact]
+    public void Incomplete_review_cannot_be_promoted_to_gold_data()
+    {
+        var review = new ReviewBundle
+        {
+            SourceFile = "bao-cao.docx",
+            Rows =
+            [new ReviewRow { StableId = "body[1]/p[1]", Index = 0, Text = "Mở đầu", PredictedLevel = 1 }],
+        };
+
+        Assert.Throws<InvalidOperationException>(() => review.ToAnswerKeyText());
+        Assert.Throws<InvalidOperationException>(() => review.ToTrainingJsonl());
+    }
 }
 
 public class EvaluatorTests

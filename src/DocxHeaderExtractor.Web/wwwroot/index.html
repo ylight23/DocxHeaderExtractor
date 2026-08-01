@@ -81,6 +81,7 @@
   .tag.Style { background: var(--okbg); color: var(--ok); }
   .tag.Model { background: var(--accbg); color: var(--accent); }
   .tag.Heuristic { background: var(--warnbg); color: var(--warn); }
+  .tag.HumanCorrection { background: var(--okbg); color: var(--ok); }
   .tag.miss { background: var(--badbg); color: var(--bad); }
   .tag.dis { background: var(--warnbg); color: var(--warn); margin-left: 8px; }
   tr.dis td { background: color-mix(in srgb, var(--warnbg) 45%, transparent); }
@@ -94,12 +95,17 @@
   }
   .hidden { display: none; }
   .scroll { overflow-x: auto; }
+  .review-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; margin: 0 0 12px; }
+  .review-tools button { margin-top: 0; }
+  .review-tools input[type=file] { max-width: 280px; font-size: 12.5px; }
+  .review-level { width: 92px; min-width: 92px; }
+  .sid { font: 11px/1.25 ui-monospace, Consolas, monospace; color: var(--muted); word-break: break-all; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>Trích xuất tiêu đề tài liệu Word</h1>
-  <p class="sub">Nạp file .docx / .docm / .doc / .rtf / .odt — OpenXML lọc ứng viên, mô hình cục bộ quyết định đoạn nào là tiêu đề và ở cấp mấy.</p>
+  <p class="sub">Nạp file .docx / .docm / .doc / .rtf / .odt — OpenXML lọc ứng viên, Qwen local hoặc OpenRouter quyết định vai trò và cấp heading.</p>
 
   <div class="panel">
     <h2>Nạp tài liệu</h2>
@@ -110,6 +116,13 @@
     <input id="file" type="file" class="hidden" accept=".docx,.docm,.doc,.rtf,.odt">
 
     <div class="opts">
+      <div>
+        <label class="f" for="backend">Backend suy luận</label>
+        <select id="backend">
+          <option value="local">Qwen local</option>
+          <option value="openrouter" disabled>OpenRouter · chưa có API key</option>
+        </select>
+      </div>
       <div>
         <label class="f" for="model">Mô hình cục bộ</label>
         <select id="model"></select>
@@ -126,7 +139,13 @@
         <label class="f" for="threshold">Ngưỡng giữ ứng viên</label>
         <input id="threshold" type="number" min="0" max="1" step="0.05" value="0.45">
       </div>
+      <div>
+        <label class="f" for="gpuLayers">Lớp đẩy lên GPU</label>
+        <input id="gpuLayers" type="number" min="0" step="1" value="0">
+      </div>
     </div>
+    <p class="note" id="gpuNote" style="margin-top:10px"></p>
+    <p class="note" id="privacyNote" style="margin-top:10px"></p>
     <p class="note" id="cfgNote" style="margin-top:10px"></p>
 
     <div class="checks">
@@ -164,6 +183,30 @@
     <div id="evalDetail"></div>
   </div>
 
+  <div class="panel hidden" id="reviewPanel">
+    <h2>Review / Correction — tạo nhãn vàng</h2>
+    <p class="note" style="margin: 0 0 12px">
+      Mỗi paragraph có stable ID. Chọn <b>0</b> nếu không phải heading, hoặc <b>1–9</b> cho cấp đúng.
+      Chỉ bundle đã xác nhận toàn bộ mới tạo được answer key và JSONL huấn luyện.
+    </p>
+    <div class="review-tools">
+      <div>
+        <label class="f" for="reviewFilter">Hiển thị</label>
+        <select id="reviewFilter"><option value="all">Tất cả paragraph</option><option value="unreviewed">Chưa xác nhận</option><option value="predicted">Model đoán heading</option></select>
+      </div>
+      <button id="acceptPredictions">Chấp nhận toàn bộ dự đoán</button>
+      <button id="downloadReview">Tải review JSON</button>
+      <button id="saveCorrections">Lưu các dòng đã sửa vào memory</button>
+      <div>
+        <label class="f" for="correctedFile">Nạp review đã sửa</label>
+        <input id="correctedFile" type="file" accept=".json,application/json">
+      </div>
+      <button id="makeGold">Tạo .key + .training.jsonl</button>
+    </div>
+    <p class="note" id="reviewStatus"></p>
+    <div class="scroll"><table id="reviewTable"></table></div>
+  </div>
+
   <div class="panel hidden" id="treePanel">
     <h2>Cấu trúc tiêu đề</h2>
     <div class="scroll"><table id="tree"></table></div>
@@ -172,7 +215,8 @@
 
 <script>
 const $ = id => document.getElementById(id);
-let picked = null, outline = null, serverError = false;
+let picked = null, outline = null, reviewBundle = null, serverError = false;
+let defaults = null;
 
 // ---------- chọn file ----------
 $('drop').onclick = () => $('file').click();
@@ -193,10 +237,42 @@ function setFile(f) {
 // ---------- mặc định + danh sách mô hình ----------
 // Mặc định lấy từ máy chủ (đọc thẳng Core) để giao diện không lệch khỏi CLI.
 fetch('/api/defaults').then(r => r.json()).then(d => {
+  defaults = d;
   $('chunkCandidates').value = d.chunkCandidates;
   $('threshold').value = d.threshold;
   $('structuralOnly').checked = d.structuralOnly;
+
+  // Ô GPU chỉ có nghĩa khi bản dựng có backend GPU; bản CPU thì khoá lại thay vì để người
+  // dùng gõ số rồi tưởng đang chạy GPU mà thực ra không.
+  $('gpuLayers').value = d.gpuLayers;
+  $('gpuLayers').disabled = !d.gpuBackend;
+  $('gpuNote').textContent = d.gpuBackend
+    ? 'Bản dựng có backend GPU. GPU 4 GB nên dùng khoảng 15–20 lớp; chỉ dùng 99 khi VRAM đủ chứa toàn bộ model và context.'
+    : 'Bản dựng CPU — ô này không có tác dụng. Dựng lại với -p:UseVulkan=true (AMD/Intel) '
+      + 'hoặc -p:UseCuda=true (NVIDIA) để bật.';
+
+  const remote = $('backend').querySelector('option[value="openrouter"]');
+  remote.disabled = !d.openRouterAvailable;
+  remote.textContent = d.openRouterAvailable
+    ? 'OpenRouter · ' + d.openRouterModel
+    : 'OpenRouter · chưa có OPENROUTER_API_KEY';
+  if (d.openRouterAvailable) {
+    $('backend').value = 'openrouter';
+    $('noLlm').checked = false;
+  }
+  syncBackend();
 });
+
+$('backend').onchange = syncBackend;
+$('noLlm').onchange = syncBackend;
+
+function syncBackend() {
+  const remote = $('backend').value === 'openrouter' && !$('noLlm').checked;
+  ['model', 'ctx', 'gpuLayers'].forEach(id => $(id).disabled = remote || (id === 'gpuLayers' && defaults && !defaults.gpuBackend));
+  $('privacyNote').textContent = remote
+    ? 'Tài liệu sẽ được gửi ra OpenRouter bằng HTTPS. Request bắt buộc ZDR, cấm provider thu thập dữ liệu và yêu cầu JSON; kết quả được kiểm tra schema/ID tại server và API key không được gửi xuống trình duyệt.'
+    : 'Backend local: nội dung tài liệu không rời khỏi máy.';
+}
 
 fetch('/api/models').then(r => r.json()).then(list => {
   const sel = $('model');
@@ -217,8 +293,8 @@ fetch('/api/models').then(r => r.json()).then(list => {
     const opt = sel.selectedOptions[0];
     $('ctx').value = opt.dataset.ctx;
     $('cfgNote').textContent = opt.textContent.includes('khuyên dùng')
-      ? 'Đang dùng cấu hình đã đo đạt precision 100% — mô hình lớn nhất tìm thấy, ngữ cảnh '
-        + opt.dataset.ctx + ', 12 ứng viên mỗi khối.'
+      ? 'Đang dùng cấu hình chất lượng đã đo — mô hình lớn nhất tìm thấy, ngữ cảnh '
+        + opt.dataset.ctx + ', 12 ứng viên mỗi khối. Kết quả 100% chỉ áp dụng cho tài liệu benchmark đã đo.'
       : 'Mô hình này KHÔNG phải cấu hình đã đo. Mô hình nhỏ hơn tụt precision rõ rệt '
         + '(Llama-3.2-3B đo được 73%, Qwen2.5-7B 100% trên cùng tài liệu).';
   }
@@ -229,16 +305,18 @@ $('run').onclick = async () => {
   if (!picked) return;
   $('run').disabled = true;
   outline = null; serverError = false;
-  ['statsPanel', 'treePanel', 'evalPanel', 'errBox'].forEach(id => $(id).classList.add('hidden'));
+  ['statsPanel', 'treePanel', 'evalPanel', 'reviewPanel', 'errBox'].forEach(id => $(id).classList.add('hidden'));
   $('progressPanel').classList.remove('hidden');
   $('log').textContent = '';
 
   const fd = new FormData();
   fd.append('file', picked);
+  fd.append('backend', $('backend').value);
   fd.append('model', $('model').value);
   fd.append('ctx', $('ctx').value);
   fd.append('threshold', $('threshold').value);
   fd.append('chunkCandidates', $('chunkCandidates').value);
+  fd.append('gpuLayers', $('gpuLayers').value);
   fd.append('noLlm', $('noLlm').checked ? '1' : '0');
   fd.append('structuralOnly', $('structuralOnly').checked ? '1' : '0');
   fd.append('noTrustStyles', $('noTrustStyles').checked ? '1' : '0');
@@ -287,7 +365,7 @@ function handle(evt) {
     showError(evt.message);
   } else if (evt.type === 'result') {
     outline = evt.outline;
-    render(evt.outline, evt.stats);
+    render(evt.outline, evt.stats, evt.review);
   }
 }
 
@@ -297,12 +375,14 @@ function showError(msg) {
 }
 
 // ---------- hiển thị kết quả ----------
-function render(o, s) {
+function render(o, s, review) {
   const secs = (o.elapsedMs / 1000).toFixed(1);
   const t = [
     [o.paragraphCount, 'đoạn trong file'],
     [s.candidates, 'ứng viên'],
     [s.headings, 'tiêu đề', true],
+    [s.autoAccepted, 'tự động nhận'],
+    [s.requiresReview, 'cần duyệt'],
     [s.rejected, 'bị loại'],
     [s.maxLevel, 'cấp sâu nhất'],
     [pct(s.avgConfidence), 'độ tin cậy TB'],
@@ -315,9 +395,10 @@ function render(o, s) {
     `Nguồn: <span class="tag Style">Style</span> ${s.byStyle} · ` +
     `<span class="tag Model">Model</span> ${s.byModel} · ` +
     `<span class="tag Heuristic">Heuristic</span> ${s.byHeuristic}` +
+    ` · <span class="tag HumanCorrection">Người sửa</span> ${s.byHumanCorrection}` +
     (o.model ? ` — mô hình <code>${esc(o.model)}</code>` : ' — chạy bằng luật OpenXML') +
-    `.<br><b>Độ tin cậy TB là pipeline tự chấm, không phải độ chính xác đo được.</b> ` +
-    `Muốn con số chính xác thật thì dán đáp án ở ô bên dưới.`;
+    `.<br><b>Evidence 93–95% chỉ là mục tiêu nội bộ; holdout_wilson_lower95 mới là cận dưới precision đo được.</b> ` +
+    `Mục chưa đủ chuẩn được giữ ở trạng thái cần duyệt.`;
 
   $('tree').innerHTML =
     '<thead><tr><th style="width:64px">Đoạn</th><th>Tiêu đề</th>' +
@@ -326,6 +407,12 @@ function render(o, s) {
         <td class="i">${h.index}</td>
         <td style="padding-left:${10 + (h.level - 1) * 22}px">
           <span class="lvl">H${h.level}</span>${esc(h.text)}${
+            h.inlineBody ? '<span class="tag dis">tách nội dung cùng dòng</span>' : ''}${
+            h.evidence ? `<span class="tag ${h.evidence.status === 'verified_by_multiple_checks' ? 'Style' : 'dis'}">${evidenceCount(h.evidence)}/5 kiểm tra</span>` : ''}${
+            h.decisionStatus === 'AutoAcceptedCalibrated' ? '<span class="tag Style">đã calibration</span>' :
+            h.decisionStatus === 'AutoAcceptedEvidence' ? '<span class="tag Model">evidence ≥ mục tiêu</span>' :
+            h.decisionStatus === 'HumanVerified' ? '<span class="tag HumanCorrection">người xác nhận</span>' :
+            h.decisionStatus === 'RequiresReview' ? '<span class="tag dis">chưa đạt cổng precision</span>' : ''}${
             h.disputed ? '<span class="tag dis">cần xem lại</span>' : ''}</td>
         <td><span class="tag ${h.source}">${h.source}</span></td>
         <td class="c">${pct(h.confidence)}</td>
@@ -336,6 +423,116 @@ function render(o, s) {
   $('evalPanel').classList.remove('hidden');
   $('evalTiles').innerHTML = '';
   $('evalDetail').innerHTML = '';
+  reviewBundle = review;
+  renderReview();
+  $('reviewPanel').classList.remove('hidden');
+}
+
+function evidenceCount(e) {
+  return ['numberingValid', 'siblingSequenceValid', 'formattingConsistent', 'modelConfirmed', 'treeValid']
+    .filter(k => e[k]).length;
+}
+
+// ---------- review / correction ----------
+function renderReview() {
+  if (!reviewBundle || !Array.isArray(reviewBundle.rows)) return;
+  const all = reviewBundle.rows;
+  const done = all.filter(r => r.correctedLevel !== null && r.correctedLevel !== undefined).length;
+  $('reviewStatus').textContent = `${done}/${all.length} paragraph đã xác nhận. ` +
+    (done === all.length ? 'Có thể tạo nhãn vàng.' : 'Chưa thể tạo key: cần xác nhận toàn bộ.');
+  renderReviewRows();
+}
+
+function renderReviewRows() {
+  if (!reviewBundle) return;
+  const filter = $('reviewFilter').value;
+  const rows = reviewBundle.rows.filter(r =>
+    filter === 'all' ||
+    (filter === 'unreviewed' && (r.correctedLevel === null || r.correctedLevel === undefined)) ||
+    (filter === 'predicted' && r.predictedLevel > 0));
+  $('reviewTable').innerHTML =
+    '<thead><tr><th style="width:58px">Đoạn</th><th style="min-width:180px">Stable ID</th><th>Nội dung</th>' +
+    '<th style="width:100px">Model</th><th style="width:106px">Nhãn đúng</th></tr></thead><tbody>' +
+    rows.map(r => `<tr><td class="i">${r.index}</td><td class="sid">${esc(r.stableId)}</td><td>${esc(r.text)}</td>` +
+      `<td class="c">${r.predictedLevel ? 'H' + r.predictedLevel : 'không'}</td>` +
+      `<td><select class="review-level" data-sid="${esc(r.stableId)}">${levelOptions(r.correctedLevel)}</select></td></tr>`).join('') +
+    '</tbody>';
+  document.querySelectorAll('.review-level').forEach(select => {
+    select.onchange = async () => {
+      const row = reviewBundle.rows.find(r => r.stableId === select.dataset.sid);
+      if (row) row.correctedLevel = select.value === '' ? null : Number(select.value);
+      renderReview();
+      if (row && row.correctedLevel !== null && row.correctedLevel !== row.predictedLevel)
+        await saveCorrectionMemory(true);
+    };
+  });
+}
+
+function levelOptions(value) {
+  let html = `<option value=""${value === null || value === undefined ? ' selected' : ''}>—</option>`;
+  html += `<option value="0"${value === 0 ? ' selected' : ''}>0 · không</option>`;
+  for (let level = 1; level <= 9; level++)
+    html += `<option value="${level}"${value === level ? ' selected' : ''}>H${level}</option>`;
+  return html;
+}
+
+$('reviewFilter').onchange = renderReviewRows;
+$('acceptPredictions').onclick = () => {
+  if (!reviewBundle) return;
+  reviewBundle.rows.forEach(r => r.correctedLevel = r.predictedLevel);
+  renderReview();
+};
+$('downloadReview').onclick = () => {
+  if (!reviewBundle) return;
+  downloadText(JSON.stringify(reviewBundle, null, 2), reviewName('.review.json'), 'application/json');
+};
+async function saveCorrectionMemory(automatic = false) {
+  if (!reviewBundle) return;
+  try {
+    const response = await fetch('/api/corrections', {
+      method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(reviewBundle)
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.message || 'Không lưu được correction.');
+    $('reviewStatus').textContent = result.saved
+      ? `${automatic ? 'Đã tự lưu' : 'Đã lưu'} ${result.saved} dòng sửa mới; memory hiện có ${result.total} correction.`
+      : `Không có dòng nào đổi khác dự đoán; không tự lấy dự đoán làm nhãn. Memory hiện có ${result.total} correction.`;
+  } catch (err) { showError('Không lưu được correction: ' + err.message); }
+}
+$('saveCorrections').onclick = () => saveCorrectionMemory(false);
+$('correctedFile').onchange = async e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const imported = JSON.parse(await file.text());
+    if (!Array.isArray(imported.rows) || !imported.rows.length) throw new Error('Không thấy rows trong review JSON.');
+    reviewBundle = imported;
+    renderReview();
+  } catch (err) { showError('Không đọc được review: ' + err.message); }
+};
+$('makeGold').onclick = async () => {
+  if (!reviewBundle) return;
+  try {
+    const res = await fetch('/api/review/key', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(reviewBundle),
+    });
+    const payload = await res.json();
+    if (!res.ok) throw new Error(payload.message || 'Không tạo được nhãn vàng.');
+    downloadText(payload.key, reviewName('.key'), 'text/plain;charset=utf-8');
+    downloadText(payload.trainingJsonl, reviewName('.training.jsonl'), 'application/x-ndjson;charset=utf-8');
+  } catch (err) { showError(err.message); }
+};
+
+function reviewName(extension) {
+  const source = reviewBundle && reviewBundle.sourceFile ? reviewBundle.sourceFile : 'document.docx';
+  return source.replace(/\.[^.]+$/, '') + extension;
+}
+function downloadText(text, name, type) {
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(new Blob([text], { type }));
+  link.download = name;
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(link.href), 0);
 }
 
 // ---------- chấm với đáp án ----------

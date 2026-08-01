@@ -19,5 +19,25 @@ bench/*.docx
 bench/*.doc
 !bench/07-mau-that.docx
 
-# Bản build CUDA tuỳ chọn (dotnet publish -p:UseCuda=true -o out-cuda)
+# Holdout thật có thể chứa tài liệu/ngữ cảnh nhạy cảm. Chỉ giữ hướng dẫn, không commit dữ liệu,
+# key có comment văn bản hay manifest hash/provenance.
+bench/holdout/*
+!bench/holdout/README.md
+
+# Review bundle chứa TOÀN VĂN mọi paragraph của tài liệu, không chỉ tiêu đề — nhạy cảm hơn cả
+# .docx gốc. File .key chỉ có chỉ số + cấp nên vẫn commit được.
+*.review.json
+*.training.jsonl
+
+# Bản build GPU tuỳ chọn (dotnet publish -p:UseCuda=true -o out-cuda,
+# -p:UseVulkan=true -o out-vulkan / -o out-vulkan-ui)
 out-cuda/
+out-cuda-ui/
+out-vulkan/
+out-vulkan-ui/
+out-vulkan-next/
+
+# Nhãn sinh từ tài liệu thật dùng khi phát triển cục bộ, không đưa lên remote công khai.
+bench/09-dien-mat-di.key
+
+.fake

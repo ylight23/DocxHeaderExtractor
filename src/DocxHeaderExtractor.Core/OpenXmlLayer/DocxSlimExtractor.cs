@@ -31,7 +31,10 @@ public sealed class DocxSlimExtractor
         var state = new WalkState(resolver, _options, paragraphs);
 
         var body = main.Document?.Body;
-        if (body is not null) Walk(body, state, tableDepth: 0);
+        if (body is not null) Walk(body, state, tableDepth: 0, path: "body[1]");
+
+        // numbering.xml chứa phần số Word hiển thị nhưng không nằm trong text paragraph.
+        NumberingResolver.Apply(main, paragraphs);
 
         var bodySize = EstimateBodyFontSize(paragraphs) ?? resolver.DefaultFontSizePt;
         foreach (var p in paragraphs) p.BodyFontSizePt = bodySize;
@@ -69,19 +72,32 @@ public sealed class DocxSlimExtractor
         public int SectionIndex;
     }
 
-    private void Walk(OpenXmlElement parent, WalkState state, int tableDepth)
+    private void Walk(OpenXmlElement parent, WalkState state, int tableDepth, string path)
     {
+        var ordinalByName = new Dictionary<string, int>(StringComparer.Ordinal);
         foreach (var child in parent.ChildElements)
         {
+            var name = child.LocalName;
+            var ordinal = ordinalByName.GetValueOrDefault(name) + 1;
+            ordinalByName[name] = ordinal;
+            var childPath = $"{path}/{name}[{ordinal}]";
             switch (child)
             {
                 case Paragraph p:
-                    state.Sink.Add(BuildParagraph(p, state, tableDepth));
+                    state.Sink.Add(BuildParagraph(p, state, tableDepth, childPath));
+                    // Textbox (w:txbxContent) nằm lồng trong drawing của paragraph. Nếu chỉ lấy
+                    // document.paragraphs/Paragraph cấp ngoài thì text trong hộp bị nối vào đoạn
+                    // neo hoặc biến mất. Tách mỗi textbox thành các paragraph riêng, ngay sau neo.
+                    var textBoxes = p.Descendants<TextBoxContent>()
+                        .Where(t => !t.Ancestors<TextBoxContent>().Any())
+                        .ToList();
+                    for (var box = 0; box < textBoxes.Count; box++)
+                        Walk(textBoxes[box], state, tableDepth, $"{childPath}/txbxContent[{box + 1}]");
                     if (p.ParagraphProperties?.SectionProperties is not null) state.SectionIndex++;
                     break;
 
                 case Table t when _options.IncludeTables:
-                    Walk(t, state, tableDepth + 1);
+                    Walk(t, state, tableDepth + 1, childPath);
                     break;
 
                 case Table:
@@ -94,13 +110,13 @@ public sealed class DocxSlimExtractor
                 default:
                     // sdt, customXml, TableRow, TableCell, bookmark container… – đệ quy nếu còn đoạn bên trong.
                     if (child.HasChildren && child.Descendants<Paragraph>().Any())
-                        Walk(child, state, tableDepth);
+                        Walk(child, state, tableDepth, childPath);
                     break;
             }
         }
     }
 
-    private static SlimParagraph BuildParagraph(Paragraph p, WalkState state, int tableDepth)
+    private static SlimParagraph BuildParagraph(Paragraph p, WalkState state, int tableDepth, string stableId)
     {
         var pPr = p.ParagraphProperties;
         var styleId = pPr?.ParagraphStyleId?.Val?.Value ?? state.Resolver.DefaultParagraphStyleId;
@@ -108,7 +124,8 @@ public sealed class DocxSlimExtractor
 
         // Định dạng trực tiếp trên đoạn ghi đè style; nếu không có thì lấy từ style.
         var markRun = pPr?.ParagraphMarkRunProperties;
-        var runFmt = AggregateRunFormat(p);
+        var nestedTextBoxes = p.Descendants<TextBoxContent>().ToHashSet();
+        var runFmt = AggregateRunFormat(p, nestedTextBoxes);
 
         bool bold = runFmt.Bold
                     ?? StyleResolver.OnOff(markRun?.GetFirstChild<Bold>())
@@ -125,7 +142,7 @@ public sealed class DocxSlimExtractor
                        ?? style?.FontSizePt
                        ?? state.Resolver.DefaultFontSizePt;
 
-        var text = Normalize(GetText(p));
+        var (text, textSpans) = BuildTextAndSpans(p, nestedTextBoxes, style);
 
         // Chữ hoa toàn bộ do người dùng gõ tay cũng tính là AllCaps.
         if (!caps && text.Length > 3 && HasLetters(text) && text == text.ToUpperInvariant())
@@ -137,7 +154,9 @@ public sealed class DocxSlimExtractor
         return new SlimParagraph
         {
             Index = state.Index++,
+            StableId = stableId,
             Text = text,
+            TextSpans = textSpans,
             StyleId = styleId,
             StyleName = style?.Name,
             OutlineLevel = pPr?.OutlineLevel?.Val?.Value ?? style?.OutlineLevel,
@@ -191,13 +210,14 @@ public sealed class DocxSlimExtractor
     /// Gộp định dạng của các run có chữ: chỉ coi là bold/caps khi TOÀN BỘ đoạn như vậy.
     /// Cỡ chữ lấy giá trị lớn nhất.
     /// </summary>
-    private static RunFormat AggregateRunFormat(Paragraph p)
+    private static RunFormat AggregateRunFormat(Paragraph p, IReadOnlySet<TextBoxContent> nestedTextBoxes)
     {
         bool any = false, allBold = true, allItalic = true, allUnderline = true, allCaps = true;
         double? maxSize = null;
 
         foreach (var run in p.Descendants<Run>())
         {
+            if (run.Ancestors<TextBoxContent>().Any(nestedTextBoxes.Contains)) continue;
             if (run.Ancestors<DeletedRun>().Any()) continue;
             if (!run.Descendants<Text>().Any(t => !string.IsNullOrWhiteSpace(t.Text))) continue;
 
@@ -225,13 +245,15 @@ public sealed class DocxSlimExtractor
     }
 
     /// <summary>Lấy text hiển thị, bỏ qua nội dung đã xoá (track changes) và field code.</summary>
-    private static string GetText(OpenXmlElement? root)
+    private static string GetText(OpenXmlElement? root, IReadOnlySet<TextBoxContent>? excludedTextBoxes = null)
     {
         if (root is null) return string.Empty;
         var sb = new StringBuilder();
 
         foreach (var el in root.Descendants())
         {
+            if (excludedTextBoxes is not null &&
+                el.Ancestors<TextBoxContent>().Any(excludedTextBoxes.Contains)) continue;
             switch (el)
             {
                 case Text t:
@@ -250,6 +272,70 @@ public sealed class DocxSlimExtractor
         }
 
         return sb.ToString();
+    }
+
+    private static (string Text, IReadOnlyList<SlimTextSpan> Spans) BuildTextAndSpans(
+        Paragraph paragraph,
+        IReadOnlySet<TextBoxContent> excludedTextBoxes,
+        ResolvedStyle? paragraphStyle)
+    {
+        var text = new StringBuilder();
+        var spans = new List<SlimTextSpan>();
+
+        foreach (var run in paragraph.Descendants<Run>())
+        {
+            if (run.Ancestors<TextBoxContent>().Any(excludedTextBoxes.Contains)) continue;
+            if (run.Ancestors<DeletedRun>().Any()) continue;
+
+            var raw = GetText(run, excludedTextBoxes);
+            if (raw.Length == 0) continue;
+            var rPr = run.RunProperties;
+            var bold = StyleResolver.OnOff(rPr?.Bold) ?? paragraphStyle?.Bold ?? false;
+            var italic = StyleResolver.OnOff(rPr?.Italic) ?? paragraphStyle?.Italic ?? false;
+            var underline = rPr?.Underline?.Val is { } u
+                ? !string.Equals(u.InnerText, "none", StringComparison.OrdinalIgnoreCase)
+                : paragraphStyle?.Underline ?? false;
+            var size = StyleResolver.HalfPointToPt(rPr?.FontSize?.Val?.Value)
+                ?? paragraphStyle?.FontSizePt;
+
+            foreach (var c in raw)
+            {
+                if (char.IsWhiteSpace(c))
+                {
+                    if (text.Length == 0 || text[^1] == ' ') continue;
+                    Append(' ');
+                }
+                else
+                {
+                    Append(c);
+                }
+            }
+
+            void Append(char c)
+            {
+                var start = text.Length;
+                text.Append(c);
+                if (spans.Count > 0 && spans[^1] is var last && last.End == start &&
+                    last.Bold == bold && last.Italic == italic && last.Underline == underline &&
+                    last.FontSizePt == size)
+                    spans[^1] = last with { End = start + 1 };
+                else
+                    spans.Add(new SlimTextSpan(start, start + 1, bold, italic, underline, size));
+            }
+        }
+
+        if (text.Length > 0 && text[^1] == ' ')
+        {
+            text.Length--;
+            if (spans.Count > 0)
+            {
+                var last = spans[^1];
+                if (last.Start == text.Length) spans.RemoveAt(spans.Count - 1);
+                else spans[^1] = last with { End = text.Length };
+            }
+        }
+
+        return (text.ToString(), spans);
     }
 
     /// <summary>

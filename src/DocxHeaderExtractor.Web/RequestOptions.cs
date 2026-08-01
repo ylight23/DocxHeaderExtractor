@@ -17,6 +17,31 @@ public static class RequestOptions
         o.DisableLlm = Flag(form, "noLlm");
         if (!o.DisableLlm)
         {
+            o.Backend = string.Equals(form["backend"].ToString(), "openrouter", StringComparison.OrdinalIgnoreCase)
+                ? InferenceBackend.OpenRouter
+                : InferenceBackend.Local;
+
+            if (o.Backend == InferenceBackend.OpenRouter)
+            {
+                o.OpenRouter = DocxHeaderExtractor.Core.Llm.OpenRouterOptions.FromEnvironment();
+                // Chunking vẫn thuộc pipeline chung; RPC không bị giới hạn VRAM local nên dùng
+                // profile 8K/5K đã nghiên cứu cho Qwen.
+                o.Llama.ContextSize = 8192;
+                o.Llama.ChunkTokenBudget = 5000;
+                if (string.IsNullOrWhiteSpace(o.OpenRouter.ApiKey))
+                {
+                    problem = "Backend OpenRouter chưa được cấu hình OPENROUTER_API_KEY trên server.";
+                    return o;
+                }
+            }
+
+            if (o.Backend == InferenceBackend.OpenRouter)
+            {
+                o.TrustStyles = !Flag(form, "noTrustStyles");
+                o.TwoPass = Flag(form, "twoPass");
+                return o;
+            }
+
             var model = form["model"].ToString();
             if (string.IsNullOrWhiteSpace(model))
             {
@@ -44,6 +69,11 @@ public static class RequestOptions
 
             if (Number(form, "chunkCandidates") is { } cc and >= 2 and <= 64)
                 o.Llama.MaxCandidatesPerChunk = (int)cc;
+
+            // Bản CPU bỏ qua giá trị này; bản dựng với -p:UseVulkan=true / -p:UseCuda=true thì
+            // 0 nghĩa là vẫn chạy CPU, nên không truyền xuống là giao diện không bao giờ dùng GPU.
+            if (Number(form, "gpuLayers") is { } gl and >= 0)
+                o.Llama.GpuLayerCount = (int)gl;
         }
 
         o.TrustStyles = !Flag(form, "noTrustStyles");

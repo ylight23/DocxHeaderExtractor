@@ -18,6 +18,9 @@ public enum ParagraphRole
     Empty = 3,
 }
 
+/// <summary>Một span định dạng lấy trực tiếp từ các w:r, offset trên <see cref="SlimParagraph.Text"/> đã chuẩn hoá.</summary>
+public sealed record SlimTextSpan(int Start, int End, bool Bold, bool Italic, bool Underline, double? FontSizePt);
+
 /// <summary>
 /// Một đoạn văn đã được rút gọn: chỉ giữ những thuộc tính có ích cho việc nhận diện tiêu đề.
 /// </summary>
@@ -26,8 +29,22 @@ public sealed class SlimParagraph
     /// <summary>Chỉ số đoạn theo thứ tự tài liệu (ổn định, dùng làm khoá khi LLM trả kết quả).</summary>
     public required int Index { get; init; }
 
+    /// <summary>
+    /// Địa chỉ XML ổn định trong document.xml (không thay đổi khi bật/tắt lọc bảng). Dùng để
+    /// gán nhãn/evaluate lâu dài; Index vẫn giữ cho grammar ngắn gọn trong từng lần suy luận.
+    /// </summary>
+    public string StableId { get; init; } = "";
+
     /// <summary>Văn bản đã chuẩn hoá khoảng trắng (chưa cắt ngắn).</summary>
     public required string Text { get; init; }
+
+    /// <summary>Ranh giới run OOXML để phát hiện heading lẫn nội dung trong cùng paragraph.</summary>
+    public IReadOnlyList<SlimTextSpan> TextSpans { get; init; } = [];
+
+    /// <summary>Span heading/body do parser xác minh, truyền cho lượt model cross-verification.</summary>
+    public int? VerifiedHeadingEnd { get; set; }
+    public int? VerifiedBodyStart { get; set; }
+    public string? VerifiedBoundarySource { get; set; }
 
     /// <summary>w:pStyle/@w:val</summary>
     public string? StyleId { get; init; }
@@ -37,6 +54,12 @@ public sealed class SlimParagraph
 
     /// <summary>w:outlineLvl (0..8) lấy từ đoạn hoặc kế thừa từ style.</summary>
     public int? OutlineLevel { get; init; }
+
+    /// <summary>
+    /// Chỉ true với style heading dựng sẵn của OOXML (Heading1..9/Title/Subtitle).
+    /// Đây là bằng chứng mạnh hơn tên style tự đặt hay outline level bị gán nhầm.
+    /// </summary>
+    public bool HasBuiltInHeadingStyle { get; set; }
 
     public bool Bold { get; init; }
     public bool Italic { get; init; }
@@ -60,6 +83,15 @@ public sealed class SlimParagraph
 
     public int? NumberingId { get; init; }
     public int? NumberingLevel { get; init; }
+
+    /// <summary>Nhãn numbering Word đã dựng từ numbering.xml, ví dụ "2.3." hoặc "IV.".</summary>
+    public string? NumberLabel { get; set; }
+
+    /// <summary>Độ sâu list OOXML, 1-based; độc lập với cấp heading do model quyết định.</summary>
+    public int? NumberingDepth { get; set; }
+
+    /// <summary>Định dạng numbering OOXML: decimal, upperRoman, lowerLetter…</summary>
+    public string? NumberingFormat { get; set; }
 
     public bool KeepNext { get; init; }
     public bool PageBreakBefore { get; init; }

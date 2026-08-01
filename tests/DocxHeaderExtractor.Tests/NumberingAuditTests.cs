@@ -1,0 +1,156 @@
+using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Pipeline;
+
+namespace DocxHeaderExtractor.Tests;
+
+public class NumberingAuditTests
+{
+    private static HeadingRecord H(int index, int level, string text) => new()
+    {
+        Index = index,
+        Level = level,
+        Text = text,
+        Source = HeadingSource.Model,
+        Confidence = 1.0,
+    };
+
+    [Theory]
+    [InlineData("I. TÌNH HÌNH TRÊN KHÔNG", NumberKind.Roman, 1, 1)]
+    [InlineData("IV. KÍP BAN NGÀY 02/01/2026", NumberKind.Roman, 1, 4)]
+    [InlineData("2. Nội dung cấp hai", NumberKind.Arabic, 1, 2)]
+    [InlineData("3.1. Trong dự báo", NumberKind.Arabic, 2, 1)]
+    [InlineData("1.2.3 Chi tiết", NumberKind.Arabic, 3, 3)]
+    [InlineData("A) Phụ lục", NumberKind.Letter, 1, 1)]
+    public void Parse_tach_dung_ky_hieu(string text, NumberKind kind, int depth, int value)
+    {
+        var t = NumberingAudit.Parse(text);
+
+        Assert.NotNull(t);
+        Assert.Equal(kind, t!.Value.Kind);
+        Assert.Equal(depth, t.Value.Depth);
+        Assert.Equal(value, t.Value.Value);
+    }
+
+    /// <summary>Bản gõ tay hay quên dấu cách; tầng chấm điểm bỏ qua, hậu kiểm thì không được phép.</summary>
+    [Fact]
+    public void Parse_chap_nhan_thieu_dau_cach_sau_so()
+    {
+        var t = NumberingAudit.Parse("1.MUC (chỉ số tổng hợp): 5005/2401");
+
+        Assert.NotNull(t);
+        Assert.Equal(NumberKind.Arabic, t!.Value.Kind);
+        Assert.Equal(1, t.Value.Value);
+    }
+
+    [Theory]
+    [InlineData("MIL. Viết tắt không phải số La Mã")]
+    [InlineData("Không có đánh số ở đây")]
+    [InlineData("- Gạch đầu dòng")]
+    // Mất luôn dấu chấm thì không nhận: "1MUC" không phân biệt được với "3G", "4K".
+    [InlineData("1MUC (chỉ số tổng hợp): 5005/2401")]
+    // Số dài không được cắt thành mục: "2024" không phải mục 20.
+    [InlineData("2024 Báo cáo năm")]
+    [InlineData("50339/5039/2401")]
+    [InlineData("32/32/0 dòng số liệu")]
+    [InlineData("A: 04, B: 04,")]
+    [InlineData("1: 04/04")]
+    [InlineData("a) 01/02")]
+    public void Parse_tra_null_khi_khong_phai_danh_so(string text) =>
+        Assert.Null(NumberingAudit.Parse(text));
+
+    [Fact]
+    public void Cung_dang_danh_so_ma_khac_cap_thi_bi_danh_dau()
+    {
+        // Ca tổng quát: mô hình trượt cấp cho II. còn I./III./IV. thì đúng.
+        var headings = new List<HeadingRecord>
+        {
+            H(13, 1, "I. PHẦN ALPHA"),
+            H(48, 5, "II. PHẦN BETA"),
+            H(320, 1, "III. PHẦN GAMMA"),
+            H(329, 1, "IV. PHẦN DELTA"),
+        };
+
+        var warnings = NumberingAudit.Run(headings);
+
+        Assert.Single(warnings);
+        Assert.Equal([48], warnings[0].Indexes);
+        Assert.True(headings.Single(h => h.Index == 48).Disputed);
+        Assert.All(headings.Where(h => h.Index != 48), h => Assert.False(h.Disputed));
+    }
+
+    [Fact]
+    public void Cung_dang_va_cung_cap_thi_khong_canh_bao()
+    {
+        var headings = new List<HeadingRecord>
+        {
+            H(1, 1, "I. Phần một"),
+            H(2, 1, "II. Phần hai"),
+            H(3, 1, "III. Phần ba"),
+        };
+
+        Assert.Empty(NumberingAudit.Run(headings));
+        Assert.All(headings, h => Assert.False(h.Disputed));
+    }
+
+    [Fact]
+    public void Day_bat_dau_tu_2_thi_bao_thieu_muc_1()
+    {
+        // "1.MUC" bị tầng lọc đánh rơi (điểm 0.40 < ngưỡng 0.45) nên chỉ còn 2. và 3.
+        var headings = new List<HeadingRecord>
+        {
+            H(22, 2, "2. Nội dung Beta"),
+            H(26, 2, "3. Nội dung Gamma"),
+        };
+
+        var warnings = NumberingAudit.Run(headings);
+
+        Assert.Single(warnings);
+        Assert.Contains("thiếu mục 1", warnings[0].Message);
+        Assert.Equal([22], warnings[0].Indexes);
+    }
+
+    [Fact]
+    public void Nhay_coc_giua_day_thi_bao_thieu_muc_o_giua()
+    {
+        var headings = new List<HeadingRecord>
+        {
+            H(1, 1, "1. Một"),
+            H(2, 1, "2. Hai"),
+            H(3, 1, "5. Năm"),
+        };
+
+        var warnings = NumberingAudit.Run(headings);
+
+        Assert.Single(warnings);
+        Assert.Contains("thiếu mục 3, 4", warnings[0].Message);
+        Assert.True(headings.Single(h => h.Index == 3).Disputed);
+    }
+
+    /// <summary>Số nhỏ lại nghĩa là đã sang mục cha khác, không phải nhảy cóc ngược.</summary>
+    [Fact]
+    public void Day_moi_bat_dau_lai_tu_1_khong_bi_coi_la_lo_hong()
+    {
+        var headings = new List<HeadingRecord>
+        {
+            H(10, 2, "1. Con của mục I"),
+            H(11, 2, "2. Con của mục I"),
+            H(20, 2, "1. Con của mục II"),
+            H(21, 2, "2. Con của mục II"),
+        };
+
+        Assert.Empty(NumberingAudit.Run(headings));
+    }
+
+    [Fact]
+    public void Khong_co_danh_so_thi_khong_lam_gi()
+    {
+        var headings = new List<HeadingRecord>
+        {
+            H(1, 1, "TÊN TÀI LIỆU"),
+            H(2, 3, "Tiêu đề không đánh số"),
+        };
+
+        Assert.Empty(NumberingAudit.Run(headings));
+        Assert.All(headings, h => Assert.False(h.Disputed));
+    }
+}

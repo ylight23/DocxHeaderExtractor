@@ -87,14 +87,36 @@ public sealed class LlamaOptions
     /// </summary>
     public bool ReusePromptPrefix { get; set; } = true;
 
+    /// <summary>
+    /// Profile thực dụng cho Qwen2.5-7B: 8K context nhưng chỉ dành khoảng 5K cho XML, phần còn
+    /// lại cho chat template, system prompt, JSON và đệm. Chỉ thay các giá trị mặc định, nên
+    /// cấu hình người dùng đặt khác vẫn được giữ nguyên.
+    /// </summary>
+    public void ApplyRecommendedModelProfile()
+    {
+        if (!Path.GetFileName(ModelPath).Contains("qwen", StringComparison.OrdinalIgnoreCase)) return;
+        if (ContextSize == 4096) ContextSize = 8192;
+        if (ChunkTokenBudget == 2200) ChunkTokenBudget = 5000;
+    }
+
+    /// <summary>
+    /// Phần prompt không đổi giữa các khối: system prompt + ví dụ one-shot + GBNF.
+    /// ĐO ĐƯỢC 1.212 token bằng tokenizer Qwen2.5-7B (3.757 ký tự, 3.10 ký tự/token vì gần như
+    /// toàn tiếng Anh và markup); làm tròn lên cho chat template và lề.
+    /// </summary>
+    public const int FixedPromptTokens = 1400;
+
     public void Validate()
     {
         if (string.IsNullOrWhiteSpace(ModelPath))
             throw new InvalidOperationException("Chưa cấu hình đường dẫn mô hình .gguf (--model hoặc appsettings.json).");
         if (!File.Exists(ModelPath))
             throw new FileNotFoundException($"Không tìm thấy file mô hình: {ModelPath}", ModelPath);
-        if (ChunkTokenBudget + MaxOutputTokens + 800 > ContextSize)
+        // 1400 = prompt cố định (system + one-shot + GBNF) ĐO ĐƯỢC 1.212 token bằng tokenizer
+        // Qwen2.5-7B, cộng lề cho chat template. Hằng số cũ 800 nhỏ hơn phần cố định thật.
+        if (ChunkTokenBudget + MaxOutputTokens + FixedPromptTokens > ContextSize)
             throw new InvalidOperationException(
-                $"ContextSize ({ContextSize}) quá nhỏ so với ChunkTokenBudget ({ChunkTokenBudget}) + MaxOutputTokens ({MaxOutputTokens}).");
+                $"ContextSize ({ContextSize}) quá nhỏ: ChunkTokenBudget ({ChunkTokenBudget}) + " +
+                $"MaxOutputTokens ({MaxOutputTokens}) + prompt cố định ({FixedPromptTokens}) vượt quá.");
     }
 }

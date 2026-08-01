@@ -39,9 +39,22 @@ public static class HeadingHeuristics
         @"chapter|section|part|article|appendix|annex|unit|lesson)\s*[:\-–]?\s*([0-9]+|[ivxlcdm]+|[a-z])\b",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-    /// <summary>"1.", "1.2", "2.3.4)" ở đầu dòng.</summary>
+    /// <summary>
+    /// "1.", "1.2", "2.3.4)" ở đầu dòng — kể cả khi thiếu dấu cách sau dấu chấm.
+    /// <para>
+    /// Bản gõ tay rất hay quên dấu cách, ví dụ: "1.MUC (chỉ số tổng hợp…)"
+    /// mất trọn 0.35 điểm thưởng đánh số nên chỉ còn 0.40, dưới ngưỡng 0.45 và bị loại — trong
+    /// khi hai mục anh em "2. MB…" và "3. MB…" được 0.75. Mô hình không cứu được vì đoạn bị loại
+    /// từ trước khi nó nhìn thấy.
+    /// </para>
+    /// <para>
+    /// Vẫn CỐ Ý không nhận "1MUC" (mất luôn dấu chấm): không phân biệt được với "3G", "4K", "2B".
+    /// Sau số phải có dấu ngắt hoặc khoảng trắng — không chấp nhận nối thẳng chữ.
+    /// <c>(?!\d)</c> chặn nuốt nhầm số dài: "2024 Báo cáo" không được thành mục "20".
+    /// </para>
+    /// </summary>
     private static readonly Regex DecimalPrefixRx = new(
-        @"^\s*(\d{1,2}(?:\.\d{1,2}){0,4})\s*[\.\)\-–:]?\s+\S",
+        @"^\s*(\d{1,2}(?:\.\d{1,2}){0,4})(?!\d)\s*(?:[\.\)\-–:]\s*|\s+)\S",
         RegexOptions.Compiled);
 
     private static readonly Regex RomanPrefixRx = new(
@@ -97,11 +110,15 @@ public static class HeadingHeuristics
         //    định dạng còn cơ hội trở lại làm ứng viên.
         var looksLikeListItem = BulletPrefixRx.IsMatch(p.Text);
 
-        var styleLevel = looksLikeListItem ? null : LevelFromStyle(p, options);
-        if (styleLevel is not null)
+        // Chỉ style built-in mới đủ mạnh để được khôi phục vô điều kiện. outlineLvl và tên
+        // style tự đặt là evidence tốt nhưng đều có thể bị người soạn gán nhầm, nhất là trong
+        // bảng biểu mẫu; chúng phải còn cơ hội để mô hình bác bỏ.
+        var builtInLevel = looksLikeListItem ? null : BuiltInLevel(p);
+        if (builtInLevel is not null)
         {
             p.Role = ParagraphRole.StyledHeading;
-            p.GuessedLevel = styleLevel;
+            p.HasBuiltInHeadingStyle = true;
+            p.GuessedLevel = builtInLevel;
             p.Score = 1.0;
             return;
         }
@@ -116,7 +133,20 @@ public static class HeadingHeuristics
         double score = 0;
         int? prefixLevel = null;
 
-        if (options.UseLexicalRules && KeywordPrefixRx.IsMatch(p.Text)) { score += 0.55; prefixLevel = 1; }
+        if (!looksLikeListItem && p.OutlineLevel is >= 0 and <= 8)
+        {
+            // Outline level là tín hiệu mạnh, nhưng không return sớm: một câu hướng dẫn trong
+            // bảng hoặc bullet có outline level sai vẫn phải bị ngữ cảnh/model phản biện.
+            score += p.TableDepth > 0 ? 0.25 : 0.65;
+            prefixLevel = p.OutlineLevel.Value + 1;
+        }
+        else if (options.UseLexicalRules && LocalizedStyleLevel(p) is { } localizedLevel)
+        {
+            score += 0.55;
+            prefixLevel = localizedLevel;
+        }
+
+        if (options.UseLexicalRules && KeywordPrefixRx.IsMatch(p.Text)) { score += 0.55; prefixLevel ??= 1; }
 
         var dec = DecimalPrefixRx.Match(p.Text);
         if (dec.Success)
@@ -175,7 +205,13 @@ public static class HeadingHeuristics
     /// </summary>
     public static int? LevelFromStyle(SlimParagraph p, ExtractionOptions options)
     {
-        // 1) Style dựng sẵn của OOXML — từ vựng của đặc tả, không phải của ngôn ngữ tài liệu.
+        return BuiltInLevel(p) ?? (p.OutlineLevel is >= 0 and <= 8 ? p.OutlineLevel.Value + 1 : (int?)null)
+               ?? (options.UseLexicalRules ? LocalizedStyleLevel(p) : (int?)null);
+    }
+
+    /// <summary>Chỉ nhận style chuẩn OOXML, không nhận outline level hay tên người dùng tự đặt.</summary>
+    public static int? BuiltInLevel(SlimParagraph p)
+    {
         foreach (var candidate in new[] { p.StyleName, p.StyleId })
         {
             if (string.IsNullOrWhiteSpace(candidate)) continue;
@@ -186,14 +222,11 @@ public static class HeadingHeuristics
             if (m.Groups[2].Success) return int.Parse(m.Groups[2].Value);
             return m.Value.StartsWith("subtitle", StringComparison.OrdinalIgnoreCase) ? 2 : 1;
         }
+        return null;
+    }
 
-        // 2) w:outlineLvl — thuộc tính cấu trúc thuần, đúng với mọi ngôn ngữ và mọi tên style.
-        if (p.OutlineLevel is >= 0 and <= 8)
-            return p.OutlineLevel.Value + 1;
-
-        // 3) Style tự đặt tên theo ngôn ngữ người dùng — chỉ khi chấp nhận luật từ ngữ.
-        if (!options.UseLexicalRules) return null;
-
+    private static int? LocalizedStyleLevel(SlimParagraph p)
+    {
         var name = p.StyleName ?? p.StyleId;
         if (string.IsNullOrEmpty(name)) return null;
 

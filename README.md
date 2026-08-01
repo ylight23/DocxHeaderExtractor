@@ -19,11 +19,11 @@ Pipeline chia làm hai tầng:
                     │  – gộp run format    │  caps, size, align, numbering,
                     │  – chấm điểm luật    │  keepNext, pageBreakBefore
                     └──────────┬───────────┘
-                               │  XML tinh gọn: chỉ ứng viên + <n c="k"/>
+                               │  XML tinh gọn: ứng viên + ngữ cảnh + evidence OOXML
                     ┌──────────▼───────────┐
                     │ Tầng 2: LLamaSharp   │  GGUF Q4_K_M, CPU, greedy
-                    │  – chia khối         │  GBNF liệt kê ép đầu ra
-                    │  – GBNF liệt kê      │  {"h":[{"i":0,"l":1},…]}
+                    │  – chia khối ngữ cảnh │  GBNF liệt kê ép đầu ra
+                    │  – lượt 1 chọn heading; lượt 2 dựng hierarchy toàn cục
                     └──────────┬───────────┘
                                │
                     Outline JSON / Markdown / CSV / XML
@@ -38,17 +38,28 @@ Pipeline chia làm hai tầng:
 
    ```gbnf
    root ::= "{\"h\":[" it0 "," it1 "," it2 "]}"
-   it0  ::= "{\"i\":0,\"l\":" lvl "}"
-   it1  ::= "{\"i\":7,\"l\":" lvl "}"
-   it2  ::= "{\"i\":15,\"l\":" lvl "}"
-   lvl  ::= [0-9]
+   it0  ::= heading-0 | nonheading-0
+   heading-0    ::= "{\"i\":0,\"r\":\"h\",\"l\":" hlvl "}"
+   nonheading-0 ::= "{\"i\":0,\"r\":" nonrole ",\"l\":0}"
+   hlvl         ::= [1-9]
+   nonrole      ::= [dtfscnu]
    ```
 
-   Mô hình chỉ còn tự do chọn **một chữ số cấp cho mỗi ứng viên** — không thể bỏ sót, không thể bịa
-   chỉ số, không thể trả về JSON sai cú pháp. Đây là điểm khác biệt lớn nhất: khi để mô hình 3B tự do
+   Mô hình chỉ còn chọn vai trò (`heading`, `document_title`, `table_header`, `form_label`,
+   `signature_label`, `caption`, `normal_text`, `uncertain`) và cấp cho mỗi paragraph được hỏi —
+   không thể bỏ sót, bịa chỉ số hay trả JSON sai cú pháp. Đây là điểm khác biệt lớn nhất: khi để mô hình 3B tự do
    liệt kê, nó chỉ trả 3/6 ứng viên; khi ép liệt kê, nó trả đủ 6/6.
-3. **Lưới an toàn theo style.** Đoạn có style Heading mà mô hình gán `l=0` vẫn được khôi phục
-   (tắt bằng `--no-trust-styles`).
+3. **Lưới an toàn theo style.** Style Heading dựng sẵn là evidence rất mạnh và được khôi phục khi
+   mô hình không trả kết quả cho đoạn đó (tắt bằng `--no-trust-styles`). Một quyết định `l=0` rõ ràng
+   của mô hình vẫn được tôn trọng: nhờ vậy tiêu đề giả trong template/form không bị style ép giữ lại.
+
+Khi một paragraph chứa cả heading và nội dung cùng dòng, parser giữ các khoảng định dạng run theo
+offset. Pipeline chỉ tự tách khi OOXML cho ranh giới rõ (ví dụ bold → normal đúng tại dấu `:`);
+output lưu text gốc, heading/body span và nguồn ranh giới. Trường hợp cùng định dạng còn mơ hồ được
+giữ nguyên để review, không cắt mù theo dấu câu.
+Ngoài ranh giới run, suffix sau `:`/`;` được tách an toàn khi chứa số/ký hiệu nhưng không có từ ngữ
+(ví dụ số liệu thống kê). Phần mô tả trong ngoặc trước dấu phân cách vẫn thuộc heading; suffix có
+từ ngữ vẫn được giữ nguyên để model/review quyết định.
 
 ## Kết quả đo
 
@@ -141,6 +152,38 @@ dhx extract .\tai-lieu\ -f csv -o outline.csv
 dhx info models\Llama-3.2-3B-Instruct-Q4_K_M.gguf
 ```
 
+### OpenRouter RPC (không cần GPU)
+
+Đặt API key trong biến môi trường của tiến trình/server, không ghi vào source, `appsettings.json`
+hoặc trình duyệt:
+
+```powershell
+$env:OPENROUTER_API_KEY = "sk-or-v1-..."
+dhx extract tai-lieu.docx --openrouter -f json
+```
+
+Model mặc định là `qwen/qwen-2.5-7b-instruct`; đổi bằng `--openrouter-model` hoặc biến
+`OPENROUTER_MODEL`. Mọi request bắt buộc HTTPS + JSON object (được hậu kiểm schema/ID cục bộ) và gửi provider preferences
+`zdr=true`, `data_collection=deny`, `require_parameters=true`. Nếu không có endpoint đáp ứng đủ,
+pipeline báo lỗi thay vì âm thầm hạ mức riêng tư. Nội dung DOCX vẫn được gửi ra dịch vụ bên ngoài;
+không dùng cho tài liệu mật khi chưa được phép.
+
+### Correction memory (học từ dòng người dùng sửa)
+
+Trong giao diện web, thay đổi dropdown **Nhãn đúng** được tự lưu ngay khi nhãn khác dự đoán; nút
+**Lưu các dòng đã sửa vào memory** dùng để kiểm tra hoặc thử lại khi có lỗi kết nối. Thao tác chấp
+nhận hàng loạt không biến dự đoán của model thành ground truth và không kích hoạt tự lưu. Correction được
+dedup và lưu cục bộ tại `%LOCALAPPDATA%\DocxHeaderExtractor\verified-corrections.jsonl` (đổi bằng
+`DHX_CORRECTION_MEMORY`). Ở request sau, model local có thể nhận tối đa ba ví dụ cùng dạng numbering
+và có độ tương đồng cao. Ví dụ chỉ mang tính tư vấn; pipeline vẫn phân loại và hậu kiểm lại.
+
+Memory đầy đủ không được đưa vào OpenRouter, nhằm tránh gửi nội dung lịch sử của tài liệu khác ra
+dịch vụ bên ngoài. Tuy nhiên correction khớp chính xác đồng thời tên file + stable ID + nguyên văn
+được áp dụng cục bộ sau suy luận với cả hai backend; vì vậy model/API không thể lặp lại đúng lỗi mà
+người dùng đã sửa trong chính tài liệu đó. Việc fine-tune LoRA/QLoRA cũng không chạy sau từng
+correction: JSONL này là hàng đợi dữ liệu đã xác nhận để benchmark và huấn luyện theo batch có
+version/rollback sau này.
+
 Đường dẫn mô hình được tìm theo thứ tự: `--model` → biến môi trường `DHX_MODEL`
 → `appsettings.json` → file `.gguf` trong `./models`.
 
@@ -161,7 +204,8 @@ dhx info models\Llama-3.2-3B-Instruct-Q4_K_M.gguf
 ```
 
 Hai dòng `PHỤ LỤC A` và `2.1 Kết quả thử nghiệm` **không dùng style Heading** — chỉ in đậm/chữ hoa/canh
-giữa — nhưng vẫn được nhận đúng. Sáu ô trong bảng dữ liệu bị loại ngay từ tầng OpenXML.
+giữa — nhưng vẫn được nhận đúng. Ô bảng không bị loại cứng: chúng được gửi kèm thuộc tính `tbl` để
+mô hình phân biệt tiêu đề bảng thật với dữ liệu biểu mẫu.
 
 `src` cho biết tiêu đề đến từ mô hình (`Model`), từ lưới an toàn theo style (`Style`),
 hay từ luật khi chạy `--no-llm` (`Heuristic`).
@@ -171,31 +215,32 @@ hay từ luật khi chạy `--no-llm` (`Heuristic`).
 | Thành phần | Vai trò |
 |---|---|
 | `OpenXmlLayer/StyleResolver.cs` | Làm phẳng `styles.xml`: đi hết chuỗi `w:basedOn`, lấy `docDefaults` |
-| `OpenXmlLayer/DocxSlimExtractor.cs` | Duyệt body (kể cả bảng, `w:sdt`), gộp định dạng run, chuẩn hoá text, bỏ nội dung `w:del` |
+| `OpenXmlLayer/DocxSlimExtractor.cs` | Duyệt body đúng thứ tự (paragraph, bảng, `w:sdt`, textbox), gộp định dạng run, chuẩn hoá text, bỏ nội dung `w:del` |
 | `OpenXmlLayer/HeadingHeuristics.cs` | Chấm điểm ứng viên: style heading, `outlineLvl`, đậm/hoa/cỡ chữ/canh giữa, mẫu `Chương/Điều/1.2.3` |
-| `OpenXmlLayer/SlimXmlSerializer.cs` | Sinh XML tinh gọn `<p i s out lvl b caps sz al num kn pb tbl>` + `<n c="k"/>` + `<ctx>` |
+| `OpenXmlLayer/SlimXmlSerializer.cs` | Sinh XML tinh gọn, có chỉ số, stable ID, số thứ tự đã dựng (`nlab`) và evidence OOXML |
 | `OpenXmlLayer/LegacyDocConverter.cs` | `.doc/.rtf/.odt` → `.docx` qua LibreOffice headless, dự phòng Word COM |
-| `Chunking/SlimXmlChunker.cs` | Cắt khối theo ngân sách token **và** trần số ứng viên, chồng lấn N ứng viên ở mép |
+| `Chunking/SlimXmlChunker.cs` | Cắt khối theo ngân sách token và trần số paragraph cần mô hình review, chồng lấn ngữ cảnh ở mép |
 | `Llm/HeaderPrompt.cs` | System prompt + one-shot + **sinh GBNF liệt kê** + template Llama 3 dự phòng |
 | `Llm/ModelHeading.cs` | Đọc JSON chịu lỗi: nhận cả `{"h":[…]}` lẫn `{"headings":[…]}`, vớt vát khi bị cắt |
 | `Llm/LlamaHeaderExtractor.cs` | Nạp GGUF, `StatelessExecutor`, greedy, tính `MaxTokens` theo số ứng viên |
-| `Pipeline/HeaderExtractionPipeline.cs` | Ghép các tầng, bỏ phiếu cấp giữa các khối chồng lấn, chuẩn hoá cấp |
+| `Pipeline/HeaderExtractionPipeline.cs` | Ghép các tầng, bỏ phiếu, hierarchy toàn cục, đối soát numbering và chuẩn hoá cấp |
 
 ## Tuỳ chọn đáng chú ý
 
 | Tuỳ chọn | Ý nghĩa |
 |---|---|
-| `--threshold 0.45` | Ngưỡng điểm để đoạn không có style heading trở thành ứng viên. Giảm → recall cao hơn, tốn token hơn |
-| `--chunk-tokens 2200` | Ngân sách token mỗi khối XML. Tăng thì ít lượt suy luận hơn nhưng cần `--ctx` lớn hơn |
+| `--threshold 0.45` | Ngưỡng heuristic dùng làm evidence/xếp hạng; mặc định không chặn paragraph trước khi model review |
+| `--chunk-tokens 2200` | Ngân sách token XML cho model thường; profile Qwen 8K tự dùng 5000. Đây không gồm system prompt và output |
 | `--ctx 4096` | Cửa sổ ngữ cảnh. Phải `> chunk-tokens + max-out + 800` |
 | `-t/--threads` | Số luồng CPU. Mặc định = **số nhân vật lý ước lượng** (một nửa số luồng logic), vì llama.cpp chậm đi khi vượt số nhân vật lý |
 | `--show-raw` | In nguyên văn JSON mô hình trả về từng khối |
 | `--free-grammar` | GBNF chỉ ép lược đồ, để mô hình tự chọn liệt kê — dùng để so sánh, kém tin cậy hơn |
 | `--no-grammar` | Tắt GBNF hoàn toàn (vẫn có bộ đọc JSON chịu lỗi) |
 | `--no-trust-styles` | Không khôi phục heading theo style — dùng khi cần đánh giá riêng chất lượng mô hình |
-| `--dump-xml out.xml` | Ghi XML tinh gọn kèm `role`/`sc` để soi bộ lọc |
+| `--dump-xml out.xml` | Ghi XML tinh gọn kèm stable ID, numbering và evidence để soi đầu vào mô hình |
 | `--structural-only` | Tắt toàn bộ luật theo từ ngữ, xem bên dưới |
-| `--compact` (lệnh `xml`) | Chỉ in phần ứng viên — đúng nội dung gửi cho mô hình |
+| `--compact` (lệnh `xml`) | In đúng nội dung gửi cho mô hình: mặc định là các ứng viên heuristic cùng ngữ cảnh |
+| `--review-all` | Gửi mọi paragraph không rỗng; chỉ dùng audit/thu nhãn vì rất chậm |
 
 ## Ranh giới tín hiệu cấu trúc và luật từ ngữ
 
@@ -248,9 +293,62 @@ bị đánh giá lại cho từng khối vì `StatelessExecutor` tạo ngữ c�
 dotnet test
 ```
 
-23 test, không cần mô hình: kế thừa style/`outlineLvl`, nhận diện heading định dạng thủ công,
-loại ô bảng, tỉ lệ nén XML, cắt khối + chồng lấn + trần ứng viên, sinh GBNF liệt kê,
-parse JSON hỏng/bị cắt, chuẩn hoá cấp.
+78 test, không cần mô hình: kế thừa style/`outlineLvl`, nhận diện heading định dạng thủ công,
+full-paragraph review, numbering thực (`numbering.xml`, kể cả override), stable ID, cắt khối +
+chồng lấn, sinh GBNF liệt kê, parse JSON hỏng/bị cắt và chuẩn hoá/hierarchy cấp.
+
+Để đo được khả năng tổng quát thay vì tinh chỉnh theo vài file quen thuộc, đặt tài liệu chưa từng dùng
+để sửa code vào [`bench/holdout`](bench/holdout/README.md), mỗi file có answer key tương ứng, rồi chạy:
+
+```powershell
+dhx eval bench\holdout -m models\Qwen2.5-7B-Instruct-Q4_K_M.gguf --ctx 8192 --gpu-layers 99
+.\scripts\benchmark-model.ps1
+```
+
+### Cổng precision-first 93–95%
+
+Mặc định pipeline chạy một critic ngữ nghĩa tập trung trên các heading Model/Style đã được chọn.
+Critic bác hoặc trả `uncertain` thì mục không vào cây. Kết quả còn lại có bốn trạng thái:
+
+- `AutoAcceptedEvidence`: evidence nội bộ đạt 93–95%, chưa phải accuracy đo được;
+- `AutoAcceptedCalibrated`: đúng evidence bucket đã đạt target trên holdout;
+- `RequiresReview`: không đủ bằng chứng hoặc có bất đồng;
+- `HumanVerified`: correction khớp chính xác file + stable ID + nội dung.
+
+```powershell
+.\dhx.cmd eval .\bench\holdout --openrouter --two-pass `
+  --calibration-out .\bench\precision-calibration.json
+$env:DHX_CALIBRATION_PROFILE = ".\bench\precision-calibration.json"
+.\dhx-ui.cmd
+```
+
+Target mặc định là `0.93`, tối thiểu 52 mẫu/evidence bucket và xét cận dưới Wilson 95%; pipeline
+không dùng precision quan sát thô của một tập quá nhỏ để tự động nhận.
+
+## Review / correction: biến lỗi thành dữ liệu vàng
+
+Đừng cho mô hình tự học âm thầm từ mọi lần chạy. Hãy tạo một review bundle, để người duyệt xác nhận
+mọi paragraph (`0` là không phải heading, `1..9` là cấp đúng), rồi mới đưa nhãn đó vào development.
+
+```powershell
+# 1. Dự đoán và xuất toàn bộ paragraph cùng stable ID; file chưa có nhãn vàng.
+dhx review bao-cao.docx -m models\Qwen2.5-7B-Instruct-Q4_K_M.gguf -o bao-cao.review.json
+
+# 2. Duyệt/sửa bao-cao.review.json trong giao diện dhx-ui, hoặc sửa trường correctedLevel.
+#    Có thể chọn "Chấp nhận toàn bộ dự đoán" rồi chỉ sửa các lỗi, nhưng người duyệt vẫn chịu trách nhiệm
+#    kiểm tra toàn bộ tài liệu.
+
+# 3. Chỉ khi tất cả correctedLevel đã được xác nhận, sinh hai artefact:
+dhx review-key bao-cao.review.json -o bench\development\bao-cao.key `
+  --training-out data\heading-gold.jsonl
+```
+
+- `.key` dùng stable ID (`@body[1]/…`) thay vì paragraph index, nên vẫn đối chiếu đúng khi các đoạn
+  phía trước bị thêm hoặc xoá; `dhx eval` tự resolve stable ID trên bản DOCX được chấm.
+- `.training.jsonl` chứa **cả nhãn 0** và heading. Đó là dữ liệu có thể dùng cho LoRA/fine-tuning,
+  đồng thời tránh chỉ dạy model các heading rồi làm nó thiên về dự đoán heading.
+- Giao diện web có nút tải/nạp review JSON và tạo đồng thời hai file trên máy người dùng. Server không
+  lưu tài liệu hoặc review bundle.
 
 ## Giới hạn đã biết
 
@@ -259,6 +357,8 @@ parse JSON hỏng/bị cắt, chuẩn hoá cấp.
   chương trình báo lỗi rõ ràng, thoát mã 1. Nhánh `.docx` đã chạy thật đầu-cuối.
 - Mô hình 3B trên CPU chậm; nếu tài liệu vốn dùng style Heading chuẩn thì `--no-llm` cho kết quả
   tương đương trong chưa tới một giây.
-- `w:numbering` chỉ được dùng làm tín hiệu; chương trình không dựng lại số mục đầy đủ từ `numbering.xml`.
+- `w:numbering` được dựng thành nhãn hiển thị (`I.`, `2.3.`…) từ `numbering.xml` và dùng làm
+  evidence cho hierarchy. Các biến thể numbering hiếm (restart phức tạp trong table/style kế thừa
+  nhiều tầng) vẫn cần bổ sung corpus thật để kiểm chứng.
 - Ước lượng token dùng hằng số 3 ký tự/token; với tài liệu nhiều ký tự Latin không dấu, ngân sách
   thực tế sẽ dư một chút.

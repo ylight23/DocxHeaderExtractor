@@ -52,6 +52,22 @@ public class LexicalGatingTests
         Assert.Equal(3, HeadingHeuristics.LevelFromStyle(p, Structural));
     }
 
+    [Fact]
+    public void Outline_level_in_table_is_evidence_not_trusted_style()
+    {
+        var p = P("Câu hướng dẫn biểu mẫu.", styleId: "Normal", outline: 0, size: 14);
+        p = new SlimParagraph
+        {
+            Index = p.Index, Text = p.Text, StyleId = p.StyleId, OutlineLevel = p.OutlineLevel,
+            FontSizePt = p.FontSizePt, BodyFontSizePt = p.BodyFontSizePt, TableDepth = 1,
+        };
+
+        HeadingHeuristics.Classify(p, Structural);
+
+        Assert.NotEqual(ParagraphRole.StyledHeading, p.Role);
+        Assert.False(p.HasBuiltInHeadingStyle);
+    }
+
     [Theory]
     [InlineData("Tiêu đề 2")]
     [InlineData("Überschrift 2")]

@@ -18,9 +18,9 @@ public class PromptTests
     {
         var s = HeaderPrompt.System;
 
-        Assert.Contains("tbl=1 (nằm trong bảng) LUÔN l=0", s);          // luật
+        Assert.Contains("tbl=1 là bằng chứng yếu", s);                  // luật, không hardcode bảng
         Assert.Contains("PHỤ LỤC B – BIỂU MẪU", s);                     // ví dụ one-shot
-        Assert.Contains("""{"h":[{"i":0,"l":1}""", s);                   // lược đồ đầu ra
+        Assert.Contains("""{"h":[{"i":0,"r":"h","l":1}""", s);           // lược đồ đầu ra
         Assert.DoesNotContain("{Rules}", s);                            // chỗ nội suy đã thay
         Assert.DoesNotContain("{ExampleInput}", s);
     }
@@ -85,6 +85,36 @@ public class ChunkerTests
 public class EnumeratedGrammarTests
 {
     [Fact]
+    public void Prompt_distinguishes_front_matter_and_document_title_from_heading_tree()
+    {
+        Assert.Contains("front-matter/form_label", HeaderPrompt.System);
+        Assert.Contains("document_title", HeaderPrompt.System);
+        Assert.Contains("Chỉ dùng r=h khi đoạn mở một phần nội dung", HeaderPrompt.System);
+    }
+
+    [Fact]
+    public void Critic_prompt_challenges_weak_model_heading_without_document_phrase_hardcode()
+    {
+        Assert.Contains("CHỦ ĐỘNG tìm phản ví dụ", HeaderPrompt.CriticSystem);
+        Assert.Contains("địa chỉ/người gửi-người", HeaderPrompt.CriticSystem);
+        Assert.Contains("nhận, lời chuyển/kính gửi", HeaderPrompt.CriticSystem);
+        Assert.Contains("không theo", HeaderPrompt.CriticSystem);
+        Assert.Contains("một từ khóa riêng lẻ", HeaderPrompt.CriticSystem);
+        Assert.DoesNotContain("Đơn vị Alpha", HeaderPrompt.CriticSystem);
+        Assert.DoesNotContain("Đơn vị Beta", HeaderPrompt.CriticSystem);
+    }
+
+    [Fact]
+    public void Role_grammar_separates_heading_from_non_heading_roles()
+    {
+        var gbnf = HeaderPrompt.BuildRoleEnumeratedGbnf([7]);
+
+        Assert.Contains("\\\"r\\\":\\\"h\\\",\\\"l\\\":" , gbnf);
+        Assert.Contains("nonheading ::= [dtfscnu]", gbnf);
+        Assert.Contains("hlvl ::= [1-9]", gbnf);
+    }
+
+    [Fact]
     public void Grammar_pins_every_index_in_order()
     {
         var gbnf = HeaderPrompt.BuildEnumeratedGbnf([0, 7, 42]);
@@ -103,6 +133,14 @@ public class EnumeratedGrammarTests
     }
 
     [Fact]
+    public void Hierarchy_grammar_cannot_emit_zero_level()
+    {
+        var gbnf = HeaderPrompt.BuildEnumeratedGbnf([3, 9], allowZero: false);
+        Assert.Contains("lvl ::= [1-9]", gbnf);
+        Assert.DoesNotContain("lvl ::= [0-9]", gbnf);
+    }
+
+    [Fact]
     public void Grammar_output_shape_round_trips_through_the_parser()
     {
         // Chuỗi mà grammar cho phép sinh ra phải parse được thành đúng các mục cấp ≥ 1.
@@ -111,6 +149,47 @@ public class EnumeratedGrammarTests
         Assert.Equal(2, hs.Count);                       // mục l=0 bị loại
         Assert.Equal([0, 42], hs.Select(h => h.Index));
         Assert.Equal([1, 3], hs.Select(h => h.Level));
+    }
+
+    [Fact]
+    public void Parser_can_preserve_explicit_model_rejection_when_requested()
+    {
+        var decisions = ModelJson.Parse("""{"h":[{"i":4,"l":0},{"i":5,"l":2}]}""", includeNonHeadings: true);
+        Assert.Equal([0, 2], decisions.Select(x => x.Level));
+    }
+
+    [Fact]
+    public void Parser_preserves_semantic_non_heading_role()
+    {
+        var decisions = ModelJson.Parse(
+            """{"h":[{"i":3,"r":"d","l":0},{"i":4,"r":"h","l":2}]}""",
+            includeNonHeadings: true);
+
+        Assert.Equal(SemanticRole.DocumentTitle, decisions[0].Role);
+        Assert.Equal(SemanticRole.Heading, decisions[1].Role);
+    }
+}
+
+public class FullReviewSerializationTests
+{
+    [Fact]
+    public void Full_review_keeps_normal_paragraphs_as_model_questions()
+    {
+        var doc = new SlimDocument
+        {
+            FileName = "x.docx",
+            SourcePath = "x.docx",
+            Paragraphs =
+            [
+                new SlimParagraph { Index = 0, Text = "Một đoạn không có định dạng", StyleId = "Normal" },
+                new SlimParagraph { Index = 1, Text = "Một heading theo style", StyleId = "Heading1", Role = ParagraphRole.StyledHeading },
+            ],
+        }.Build();
+
+        var lines = SlimXmlSerializer.BuildLines(doc, new ExtractionOptions(), new HashSet<int> { 0, 1 });
+
+        Assert.Equal([0, 1], lines.Where(x => x.IsCandidate).Select(x => x.ParagraphIndex));
+        Assert.DoesNotContain(lines, x => x.Text.StartsWith("<n ", StringComparison.Ordinal));
     }
 }
 
@@ -156,6 +235,36 @@ public class ModelJsonTests
     {
         var json = ModelJson.ExtractFirstObject("""{"note":"a } b","headings":[]}""");
         Assert.Equal("""{"note":"a } b","headings":[]}""", json);
+    }
+}
+
+public class ModelProfileTests
+{
+    [Fact]
+    public void Qwen_profile_uses_8k_context_with_5k_document_budget()
+    {
+        var options = new LlamaOptions { ModelPath = "Qwen2.5-7B-Instruct-Q4_K_M.gguf" };
+
+        options.ApplyRecommendedModelProfile();
+
+        Assert.Equal(8192u, options.ContextSize);
+        Assert.Equal(5000, options.ChunkTokenBudget);
+    }
+
+    [Fact]
+    public void Qwen_profile_preserves_explicit_non_default_budget()
+    {
+        var options = new LlamaOptions
+        {
+            ModelPath = "Qwen2.5-7B-Instruct-Q4_K_M.gguf",
+            ContextSize = 6144,
+            ChunkTokenBudget = 3200,
+        };
+
+        options.ApplyRecommendedModelProfile();
+
+        Assert.Equal(6144u, options.ContextSize);
+        Assert.Equal(3200, options.ChunkTokenBudget);
     }
 }
 

@@ -4,8 +4,8 @@ using System.Text;
 namespace DocxHeaderExtractor.Core.Eval;
 
 /// <summary>
-/// Đáp án cho một tài liệu: chỉ số đoạn → cấp tiêu đề. Cấp có thể bỏ trống (null) khi chỉ
-/// muốn chấm việc chọn đúng đoạn mà không chấm cấp.
+/// Đáp án cho một tài liệu: chỉ số đoạn hoặc stable ID → cấp tiêu đề. Cấp có thể bỏ trống (null) khi
+/// chỉ muốn chấm việc chọn đúng đoạn mà không chấm cấp.
 /// <para>
 /// Định dạng file .key — mỗi dòng một mục, phần sau '#' là chú thích:
 /// <code>
@@ -13,32 +13,58 @@ namespace DocxHeaderExtractor.Core.Eval;
 /// 31 1      # DANH MỤC KÝ HIỆU VÀ TỪ VIẾT TẮT
 /// 95 1
 /// 96        # không ghi cấp ⇒ chỉ chấm việc chọn
+/// @body[1]/p[12] 2 # stable ID từ review bundle
 /// </code>
 /// </para>
 /// </summary>
 public sealed class AnswerKey
 {
     private readonly Dictionary<int, int?> _levels;
+    private readonly Dictionary<string, int?> _stableLevels;
 
     public string? Title { get; }
 
-    private AnswerKey(Dictionary<int, int?> levels, string? title)
+    private AnswerKey(Dictionary<int, int?> levels, Dictionary<string, int?> stableLevels, string? title)
     {
         _levels = levels;
+        _stableLevels = stableLevels;
         Title = title;
     }
 
     public IReadOnlyCollection<int> Indexes => _levels.Keys;
-    public int Count => _levels.Count;
+    public IReadOnlyCollection<string> StableIds => _stableLevels.Keys;
+    public bool HasStableIds => _stableLevels.Count > 0;
+    public int Count => _levels.Count + _stableLevels.Count;
     public bool Contains(int index) => _levels.ContainsKey(index);
     public int? LevelOf(int index) => _levels.TryGetValue(index, out var l) ? l : null;
+    public int? StableLevelOf(string stableId) => _stableLevels.TryGetValue(stableId, out var l) ? l : null;
 
     /// <summary>Các chỉ số có ghi cấp — chỉ những dòng này mới được chấm cấp.</summary>
     public IEnumerable<int> IndexesWithLevel => _levels.Where(kv => kv.Value is not null).Select(kv => kv.Key);
 
+    /// <summary>Đổi stable ID của review key thành index của đúng tài liệu đang được chấm.</summary>
+    public AnswerKey ResolveStableIds(IReadOnlyDictionary<string, int> stableIdToIndex)
+    {
+        if (_stableLevels.Count == 0) return this;
+
+        var resolved = new Dictionary<int, int?>(_levels);
+        foreach (var (stableId, level) in _stableLevels)
+        {
+            if (!stableIdToIndex.TryGetValue(stableId, out var index))
+                throw new InvalidOperationException(
+                    $"Stable ID trong key không có trong tài liệu hiện tại: {stableId}. " +
+                    "Không dùng key này cho bản DOCX khác.");
+            if (resolved.TryGetValue(index, out var existing) && existing != level)
+                throw new InvalidOperationException($"Key ghi hai cấp khác nhau cho paragraph {index}.");
+            resolved[index] = level;
+        }
+        return new AnswerKey(resolved, [], Title);
+    }
+
     public static AnswerKey Parse(string text, string? title = null)
     {
         var levels = new Dictionary<int, int?>();
+        var stableLevels = new Dictionary<string, int?>(StringComparer.Ordinal);
 
         foreach (var rawLine in text.Split('\n'))
         {
@@ -53,9 +79,6 @@ public sealed class AnswerKey
             {
                 var parts = item.Split([' ', '\t', ',', ':'], StringSplitOptions.RemoveEmptyEntries);
                 if (parts.Length == 0) continue;
-                if (!int.TryParse(parts[0], NumberStyles.Integer, CultureInfo.InvariantCulture, out var index))
-                    throw new FormatException($"Không đọc được chỉ số đoạn từ: \"{item}\"");
-
                 int? level = null;
                 if (parts.Length > 1)
                 {
@@ -64,11 +87,23 @@ public sealed class AnswerKey
                     level = lvl;
                 }
 
-                levels[index] = level;
+                if (parts[0].StartsWith('@'))
+                {
+                    var stableId = parts[0][1..];
+                    if (string.IsNullOrWhiteSpace(stableId))
+                        throw new FormatException($"Stable ID rỗng trong: \"{item}\"");
+                    stableLevels[stableId] = level;
+                }
+                else
+                {
+                    if (!int.TryParse(parts[0], NumberStyles.Integer, CultureInfo.InvariantCulture, out var index))
+                        throw new FormatException($"Không đọc được chỉ số đoạn từ: \"{item}\"");
+                    levels[index] = level;
+                }
             }
         }
 
-        return new AnswerKey(levels, title);
+        return new AnswerKey(levels, stableLevels, title);
     }
 
     public static AnswerKey Load(string path) =>
@@ -81,6 +116,16 @@ public sealed class AnswerKey
         sb.AppendLine("# <chỉ số đoạn> <cấp>   — sinh tự động cùng tài liệu, không gán nhãn tay");
         foreach (var (index, level, text) in headings.OrderBy(h => h.Index))
             sb.Append(index).Append(' ').Append(level).Append("   # ").AppendLine(text);
+        return sb.ToString();
+    }
+
+    public static string WriteStable(IEnumerable<(string StableId, int Level, string Text)> headings, string title)
+    {
+        var sb = new StringBuilder();
+        sb.Append("# ").AppendLine(title);
+        sb.AppendLine("# @<stable-id> <cấp> — sinh từ review đã duyệt; ổn định khi index thay đổi");
+        foreach (var (stableId, level, text) in headings.OrderBy(h => h.StableId, StringComparer.Ordinal))
+            sb.Append('@').Append(stableId).Append(' ').Append(level).Append("   # ").AppendLine(text);
         return sb.ToString();
     }
 }

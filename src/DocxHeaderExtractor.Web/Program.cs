@@ -2,7 +2,10 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Channels;
+using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Learning;
+using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
 using DocxHeaderExtractor.Web;
 using Microsoft.AspNetCore.Http.Features;
@@ -17,6 +20,12 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 });
 
 builder.Services.Configure<FormOptions>(o => o.MultipartBodyLengthLimit = 128L * 1024 * 1024);
+builder.Services.AddSingleton<LlamaModelCache>();
+builder.Services.AddSingleton(_ => new CorrectionMemory(CorrectionMemory.DefaultPath()));
+builder.Services.AddHttpClient("OpenRouter", client =>
+{
+    client.Timeout = TimeSpan.FromMinutes(5);
+});
 builder.Logging.SetMinimumLevel(LogLevel.Warning);
 builder.WebHost.UseUrls(Environment.GetEnvironmentVariable("DHX_UI_URL") ?? "http://localhost:5099");
 
@@ -38,7 +47,52 @@ app.MapGet("/api/models", () => Results.Json(ModelCatalog.List(), json));
 // Mặc định lấy thẳng từ Core, để giao diện luôn khớp với lệnh CLI tương ứng.
 app.MapGet("/api/defaults", () => Results.Json(Defaults.Current(), json));
 
-app.MapPost("/api/extract", async (HttpRequest req, HttpResponse res, CancellationToken ct) =>
+// Nhận lại review bundle người dùng đã sửa và chỉ cho phép sinh nhãn vàng khi mọi paragraph
+// đã được xác nhận. Không lưu tài liệu hay dữ liệu review trên server.
+app.MapPost("/api/review/key", async (HttpRequest req, CancellationToken ct) =>
+{
+    try
+    {
+        using var reader = new StreamReader(req.Body, Encoding.UTF8,
+            detectEncodingFromByteOrderMarks: true, bufferSize: 1024, leaveOpen: false);
+        var bundle = ReviewBundle.Parse(await reader.ReadToEndAsync(ct));
+        return Results.Json(new
+        {
+            key = bundle.ToAnswerKeyText(),
+            trainingJsonl = bundle.ToTrainingJsonl(),
+        }, json);
+    }
+    catch (Exception ex) when (ex is FormatException or InvalidOperationException or JsonException)
+    {
+        return Results.BadRequest(new { message = ex.Message });
+    }
+});
+
+// Chỉ lưu những dòng người dùng đổi khác dự đoán. Correction nằm cục bộ và chỉ được retrieval
+// làm ví dụ; endpoint không fine-tune hoặc tự deploy model mới.
+app.MapPost("/api/corrections", async (HttpRequest req, CorrectionMemory memory, CancellationToken ct) =>
+{
+    try
+    {
+        using var reader = new StreamReader(req.Body, Encoding.UTF8,
+            detectEncodingFromByteOrderMarks: true, bufferSize: 1024, leaveOpen: false);
+        var bundle = ReviewBundle.Parse(await reader.ReadToEndAsync(ct));
+        var saved = await memory.SaveChangedAsync(bundle, ct);
+        return Results.Json(new { saved, total = memory.Count }, json);
+    }
+    catch (Exception ex) when (ex is FormatException or InvalidOperationException or JsonException)
+    {
+        return Results.BadRequest(new { message = ex.Message });
+    }
+});
+
+app.MapPost("/api/extract", async (
+    HttpRequest req,
+    HttpResponse res,
+    LlamaModelCache modelCache,
+    IHttpClientFactory httpClientFactory,
+    CorrectionMemory correctionMemory,
+    CancellationToken ct) =>
 {
     if (!req.HasFormContentType)
     {
@@ -86,18 +140,41 @@ app.MapPost("/api/extract", async (HttpRequest req, HttpResponse res, Cancellati
         }
 
         options.Log = m => events.Writer.TryWrite(new { type = "log", message = m });
+        // Cả hai backend đều áp dụng correction khớp chính xác ở local sau suy luận. Chỉ model
+        // local mới retrieval ví dụ tương tự; pipeline không gửi lịch sử correction ra OpenRouter.
+        options.CorrectionMemoryPath = correctionMemory.PathOnDisk;
 
-        // Một mô hình 7B chiếm ~4,5 GB; hai request song song sẽ vắt kiệt RAM máy để bàn.
-        // Xếp hàng thay vì để cả hai cùng chết.
-        if (!await Gate.WaitAsync(0, ct))
+        // Dùng đúng extractor/options như pipeline để bundle review có stable ID khớp tài liệu.
+        var conversion = LegacyDocConverter.EnsureDocx(inputPath);
+        SlimDocument slim;
+        try { slim = new DocxSlimExtractor(options.Extraction).Extract(conversion.Path); }
+        finally { LegacyDocConverter.Cleanup(conversion); }
+
+        // Chỉ backend local cần khóa: một model 7B chiếm ~4,5 GB. RPC OpenRouter có thể chạy
+        // đồng thời và không được giữ hàng chỉ vì GPU local đang bận.
+        var gateHeld = false;
+        if (!options.DisableLlm && options.Backend == InferenceBackend.Local && !await Gate.WaitAsync(0, ct))
         {
             await EmitAsync(new { type = "log", message = "Đang có tài liệu khác chạy — xếp hàng chờ…" });
             await Gate.WaitAsync(ct);
+            gateHeld = true;
         }
+        else if (!options.DisableLlm && options.Backend == InferenceBackend.Local)
+            gateHeld = true;
 
         try
         {
-            var pipeline = new HeaderExtractionPipeline(options);
+            DocxHeaderExtractor.Core.Llm.IHeaderClassifier? classifier = null;
+            if (!options.DisableLlm)
+            {
+                classifier = options.Backend == InferenceBackend.OpenRouter
+                    ? new DocxHeaderExtractor.Core.Llm.OpenRouterHeaderExtractor(
+                        httpClientFactory.CreateClient("OpenRouter"), options.OpenRouter)
+                    : await modelCache.GetAsync(options.Llama, ct);
+            }
+            using var pipeline = classifier is null
+                ? new HeaderExtractionPipeline(options)
+                : new HeaderExtractionPipeline(options, classifier);
             var run = Task.Run(() => pipeline.RunAsync(inputPath, ct), ct);
             _ = run.ContinueWith(_ => events.Writer.TryComplete(), TaskScheduler.Default);
 
@@ -110,11 +187,12 @@ app.MapPost("/api/extract", async (HttpRequest req, HttpResponse res, Cancellati
                 type = "result",
                 outline,
                 stats = Stats.From(outline),
+                review = ReviewBundle.Create(outline, slim),
             });
         }
         finally
         {
-            Gate.Release();
+            if (gateHeld) Gate.Release();
         }
     }
     catch (OperationCanceledException)

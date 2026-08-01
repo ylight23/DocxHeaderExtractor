@@ -4,11 +4,24 @@ using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.Core.Llm;
 
-/// <summary>Một mục do mô hình trả về: chỉ số đoạn + cấp tiêu đề (0 = không phải tiêu đề).</summary>
+public enum SemanticRole
+{
+    Heading,
+    DocumentTitle,
+    TableHeader,
+    FormLabel,
+    SignatureLabel,
+    Caption,
+    NormalText,
+    Uncertain,
+}
+
+/// <summary>Một quyết định của mô hình: vai trò ngữ nghĩa và cấp (0 = ngoài cây heading).</summary>
 public sealed class ModelHeading
 {
     public int Index { get; set; }
     public int Level { get; set; }
+    public SemanticRole Role { get; set; }
 }
 
 /// <summary>
@@ -20,22 +33,26 @@ public static class ModelJson
     private static readonly string[] ArrayKeys = ["h", "headings", "items", "result"];
     private static readonly string[] IndexKeys = ["i", "index", "idx"];
     private static readonly string[] LevelKeys = ["l", "level", "lvl"];
+    private static readonly string[] RoleKeys = ["r", "role", "type"];
 
     private static readonly Regex SalvageRx = new(
         @"""(?:i|index)""\s*:\s*(\d+)\s*,\s*""(?:l|level|lvl)""\s*:\s*(\d+)",
         RegexOptions.Compiled);
 
-    /// <summary>Trả về các mục có cấp ≥ 1; mục cấp 0 nghĩa là mô hình từ chối, bị loại tại đây.</summary>
-    public static IReadOnlyList<ModelHeading> Parse(string raw)
+    /// <summary>
+    /// Mặc định trả về heading (cấp ≥1). Khi <paramref name="includeNonHeadings"/> bật, giữ cả
+    /// l=0 để pipeline phân biệt model chủ động bác một đoạn với đầu ra bị cắt/mất.
+    /// </summary>
+    public static IReadOnlyList<ModelHeading> Parse(string raw, bool includeNonHeadings = false)
     {
         var json = ExtractFirstObject(raw);
-        if (json is null) return Salvage(raw);   // đầu ra bị cắt giữa chừng
+        if (json is null) return Salvage(raw, includeNonHeadings);   // đầu ra bị cắt giữa chừng
 
         try
         {
             using var doc = JsonDocument.Parse(json);
             var array = FindArray(doc.RootElement);
-            if (array is null) return Salvage(json);
+            if (array is null) return Salvage(json, includeNonHeadings);
 
             var result = new List<ModelHeading>();
             foreach (var item in array.Value.EnumerateArray())
@@ -43,16 +60,21 @@ public static class ModelJson
                 if (item.ValueKind != JsonValueKind.Object) continue;
                 if (TryReadInt(item, IndexKeys, out var index) &&
                     TryReadInt(item, LevelKeys, out var level) &&
-                    level >= 1)
+                    (includeNonHeadings || level >= 1))
                 {
-                    result.Add(new ModelHeading { Index = index, Level = level });
+                    result.Add(new ModelHeading
+                    {
+                        Index = index,
+                        Level = level,
+                        Role = ReadRole(item, level),
+                    });
                 }
             }
             return result;
         }
         catch (JsonException)
         {
-            return Salvage(json);
+            return Salvage(json, includeNonHeadings);
         }
     }
 
@@ -83,6 +105,26 @@ public static class ModelJson
         }
         value = 0;
         return false;
+    }
+
+    private static SemanticRole ReadRole(JsonElement obj, int level)
+    {
+        foreach (var key in RoleKeys)
+        {
+            if (!obj.TryGetProperty(key, out var value) || value.ValueKind != JsonValueKind.String) continue;
+            return value.GetString()?.Trim().ToLowerInvariant() switch
+            {
+                "h" or "heading" or "section_heading" or "subsection_heading" => SemanticRole.Heading,
+                "d" or "document_title" => SemanticRole.DocumentTitle,
+                "t" or "table_header" => SemanticRole.TableHeader,
+                "f" or "form_label" => SemanticRole.FormLabel,
+                "s" or "signature_label" => SemanticRole.SignatureLabel,
+                "c" or "caption" => SemanticRole.Caption,
+                "u" or "uncertain" => SemanticRole.Uncertain,
+                _ => SemanticRole.NormalText,
+            };
+        }
+        return level > 0 ? SemanticRole.Heading : SemanticRole.NormalText;
     }
 
     /// <summary>Cắt lấy object JSON đầu tiên cân bằng ngoặc, bỏ qua ngoặc nằm trong chuỗi.</summary>
@@ -121,15 +163,20 @@ public static class ModelJson
     }
 
     /// <summary>Vớt vát khi JSON hỏng hoặc bị cắt: quét thủ công các cặp i/l.</summary>
-    private static List<ModelHeading> Salvage(string text)
+    private static List<ModelHeading> Salvage(string text, bool includeNonHeadings = false)
     {
         var result = new List<ModelHeading>();
         foreach (Match m in SalvageRx.Matches(text))
         {
             if (int.TryParse(m.Groups[1].Value, out var i) &&
-                int.TryParse(m.Groups[2].Value, out var lvl) && lvl >= 1)
+                int.TryParse(m.Groups[2].Value, out var lvl) && (includeNonHeadings || lvl >= 1))
             {
-                result.Add(new ModelHeading { Index = i, Level = lvl });
+                result.Add(new ModelHeading
+                {
+                    Index = i,
+                    Level = lvl,
+                    Role = lvl > 0 ? SemanticRole.Heading : SemanticRole.NormalText,
+                });
             }
         }
         return result;

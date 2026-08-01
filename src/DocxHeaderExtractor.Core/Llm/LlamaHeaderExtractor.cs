@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.Core.Llm;
 /// Bọc LLamaSharp: nạp mô hình .gguf lượng tử hoá, chạy suy luận trên CPU cho từng khối XML.
 /// Dùng <see cref="StatelessExecutor"/> nên mỗi khối là một lượt độc lập, không bị nhiễm ngữ cảnh khối trước.
 /// </summary>
-public sealed class LlamaHeaderExtractor : IDisposable
+public sealed class LlamaHeaderExtractor : IHeaderClassifier
 {
     private readonly LLamaWeights _weights;
     private readonly ModelParams _modelParams;
@@ -21,10 +21,24 @@ public sealed class LlamaHeaderExtractor : IDisposable
     private PrefixCachedRunner? _prefixRunner;
 
     /// <summary>Số token dành sẵn cho system prompt (kèm ví dụ one-shot) và phần đệm template.</summary>
-    private const int SystemPromptReserve = 800;
+    private const int SystemPromptReserve = LlamaOptions.FixedPromptTokens;
 
     public string ModelName { get; }
     public int ContextSize => (int)(_modelParams.ContextSize ?? 0);
+    public string RuntimeDescription => _options.GpuLayerCount > 0
+        ? $"GPU {_options.GpuLayerCount} lớp"
+        : $"CPU {_options.Threads ?? DefaultThreads()} luồng";
+
+    /// <summary>
+    /// Đếm token THẬT bằng tokenizer của chính mô hình đang nạp.
+    /// <para>
+    /// Cần thiết vì ước lượng theo ký tự lệch rất xa và lệch KHÔNG ĐỀU: đo trên Qwen2.5-7B,
+    /// prompt cố định đạt 3.10 ký tự/token còn thân bài tiếng Việt chỉ 1.85. Ngân sách khối
+    /// tính bằng đơn vị ước lượng sẽ vượt cửa sổ ngữ cảnh đúng ở tài liệu tiếng Việt dày chữ.
+    /// </para>
+    /// </summary>
+    public int CountTokens(string text) =>
+        string.IsNullOrEmpty(text) ? 0 : _weights.Tokenize(text, false, false, Encoding.UTF8).Length;
 
     private LlamaHeaderExtractor(LLamaWeights weights, ModelParams modelParams, LlamaOptions options, bool hasTemplate)
     {
@@ -69,6 +83,7 @@ public sealed class LlamaHeaderExtractor : IDisposable
 
     public static async Task<LlamaHeaderExtractor> LoadAsync(LlamaOptions options, CancellationToken ct = default)
     {
+        options.ApplyRecommendedModelProfile();
         options.Validate();
 
         ConfigureNativeLogging(options.VerboseNativeLog);
@@ -114,11 +129,27 @@ public sealed class LlamaHeaderExtractor : IDisposable
     public async Task<ChunkResult> ClassifyAsync(
         string chunkXml,
         IReadOnlyList<int> allowedIndexes,
-        CancellationToken ct = default)
+        CancellationToken ct = default) =>
+        await ClassifyRolesAsync(
+            HeaderPrompt.System, HeaderPrompt.BuildUser(chunkXml), chunkXml, allowedIndexes, ct);
+
+    public async Task<ChunkResult> CritiqueAsync(
+        string chunkXml,
+        IReadOnlyList<int> allowedIndexes,
+        CancellationToken ct = default) =>
+        await ClassifyRolesAsync(
+            HeaderPrompt.CriticSystem, HeaderPrompt.BuildCriticUser(chunkXml), chunkXml, allowedIndexes, ct);
+
+    private async Task<ChunkResult> ClassifyRolesAsync(
+        string system,
+        string user,
+        string chunkXml,
+        IReadOnlyList<int> allowedIndexes,
+        CancellationToken ct)
     {
         var grammar = _options.GrammarMode switch
         {
-            GrammarMode.Enumerated => new Grammar(HeaderPrompt.BuildEnumeratedGbnf(allowedIndexes), HeaderPrompt.GrammarRoot),
+            GrammarMode.Enumerated => new Grammar(HeaderPrompt.BuildRoleEnumeratedGbnf(allowedIndexes), HeaderPrompt.GrammarRoot),
             GrammarMode.Free => new Grammar(HeaderPrompt.Gbnf, HeaderPrompt.GrammarRoot),
             _ => null,
         };
@@ -139,19 +170,24 @@ public sealed class LlamaHeaderExtractor : IDisposable
         if (_options.GrammarMode == GrammarMode.Enumerated)
         {
             var headroom = (int)_options.ContextSize - _options.ChunkTokenBudget - SystemPromptReserve;
-            maxTokens = Math.Clamp(allowedIndexes.Count * 16 + 32, _options.MaxOutputTokens, Math.Max(256, headroom));
+            var ceiling = Math.Max(64, Math.Min(_options.MaxOutputTokens, headroom));
+            // Đa nhãn dài hơn lược đồ i/l cũ, nhưng 24 token/mục vẫn dư rộng. MaxOutputTokens
+            // là trần, không phải sàn (code cũ vô tình luôn cấp ít nhất 900 token).
+            maxTokens = Math.Clamp(allowedIndexes.Count * 24 + 32, 64, ceiling);
         }
 
         var sw = Stopwatch.StartNew();
         string raw;
 
-        if (_prefixRunner is { } runner)
+        // Prefix cache chỉ được dựng cho prompt phân loại chính. Critic có system/user khác,
+        // nên phải chạy stateless để không tái dùng nhầm KV cache của nhiệm vụ trước.
+        if (_prefixRunner is { } runner && system == HeaderPrompt.System)
         {
             raw = await runner.RunAsync(chunkXml, pipeline, maxTokens, ct);
         }
         else
         {
-            var prompt = BuildPrompt(HeaderPrompt.System, HeaderPrompt.BuildUser(chunkXml));
+            var prompt = BuildPrompt(system, user);
             var inferenceParams = new InferenceParams
             {
                 MaxTokens = maxTokens,
@@ -166,22 +202,70 @@ public sealed class LlamaHeaderExtractor : IDisposable
         }
 
         sw.Stop();
-        var parsed = ModelJson.Parse(raw);
+        var parsed = ModelJson.Parse(raw, includeNonHeadings: true);
 
         // Chốt chặn chống ảo giác: bỏ mọi chỉ số không nằm trong khối, kẹp cấp về 1..9, khử trùng lặp.
         var seen = new HashSet<int>();
         var kept = new List<ModelHeading>();
+        var explicitNonHeadings = new HashSet<int>();
         int rejected = 0;
 
         foreach (var h in parsed)
         {
             if (!allowedIndexes.Contains(h.Index)) { rejected++; continue; }
             if (!seen.Add(h.Index)) continue;
+            if (h.Level <= 0)
+            {
+                // uncertain không phải lời bác dứt khoát; hậu kiểm cấu trúc vẫn được phép cứu.
+                if (h.Role != SemanticRole.Uncertain) explicitNonHeadings.Add(h.Index);
+                continue;
+            }
             h.Level = Math.Clamp(h.Level, 1, 9);
             kept.Add(h);
         }
 
-        return new ChunkResult(kept, raw, rejected, sw.ElapsedMilliseconds);
+        return new ChunkResult(kept, raw, rejected, sw.ElapsedMilliseconds, explicitNonHeadings);
+    }
+
+    /// <summary>
+    /// Lượt hai chỉ gán cấp cho heading đã xác nhận. Grammar không cho l=0 nên mô hình không thể
+    /// làm mất một heading vì ngữ cảnh chunk trước đó.
+    /// </summary>
+    public async Task<ChunkResult> ClassifyHierarchyAsync(
+        IReadOnlyList<HierarchyItem> headings,
+        CancellationToken ct = default)
+        => await ClassifyHierarchyAsync([], headings, ct);
+
+    /// <summary>Gán cấp cho batch hiện tại, dùng các heading trước đó làm mốc nhưng không trả lại chúng.</summary>
+    public async Task<ChunkResult> ClassifyHierarchyAsync(
+        IReadOnlyList<HierarchyItem> context,
+        IReadOnlyList<HierarchyItem> headings,
+        CancellationToken ct = default)
+    {
+        var indexes = headings.Select(h => h.Index).ToArray();
+        var prompt = BuildPrompt(HeaderPrompt.HierarchySystem, HeaderPrompt.BuildHierarchyUser(context, headings));
+        using var pipeline = new DefaultSamplingPipeline
+        {
+            Temperature = 0,
+            TopK = 1,
+            TopP = 0.9f,
+            Seed = _options.Seed,
+            RepeatPenalty = 1.0f,
+            Grammar = new Grammar(HeaderPrompt.BuildEnumeratedGbnf(indexes, allowZero: false), HeaderPrompt.GrammarRoot),
+        };
+        var parameters = new InferenceParams
+        {
+            MaxTokens = Math.Clamp(indexes.Length * 16 + 32, 256, _options.MaxOutputTokens),
+            AntiPrompts = [.. HeaderPrompt.AntiPrompts],
+            SamplingPipeline = pipeline,
+        };
+        var sw = Stopwatch.StartNew();
+        var sb = new StringBuilder();
+        await foreach (var token in _executor.InferAsync(prompt, parameters, ct)) sb.Append(token);
+        sw.Stop();
+        var raw = sb.ToString();
+        var parsed = ModelJson.Parse(raw, includeNonHeadings: true);
+        return new ChunkResult(parsed, raw, 0, sw.ElapsedMilliseconds, new HashSet<int>());
     }
 
     private string BuildPrompt(string system, string user)
@@ -213,4 +297,14 @@ public sealed record ChunkResult(
     IReadOnlyList<ModelHeading> Headings,
     string RawOutput,
     int RejectedIndexes,
-    long ElapsedMs);
+    long ElapsedMs,
+    IReadOnlySet<int> ExplicitNonHeadings);
+
+/// <summary>Một heading trong lượt dựng hierarchy toàn cục.</summary>
+public sealed record HierarchyItem(
+    int Index,
+    string Text,
+    int? StyleLevel,
+    int? OutlineLevel,
+    int? HintLevel,
+    string? Numbering);

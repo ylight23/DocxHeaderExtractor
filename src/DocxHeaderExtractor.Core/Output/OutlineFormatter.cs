@@ -38,6 +38,7 @@ public static class OutlineFormatter
               .Append(h.Text)
               .Append("  <!-- lvl=").Append(h.Level)
               .Append(" i=").Append(h.Index)
+              .Append(string.IsNullOrEmpty(h.StableId) ? "" : " sid=" + h.StableId)
               .Append(" src=").Append(h.Source)
               .Append(h.Disputed ? " CẦN-XEM-LẠI" : "")
               .AppendLine(" -->");
@@ -46,8 +47,10 @@ public static class OutlineFormatter
         if (o.DisputedCount > 0)
         {
             sb.AppendLine();
+            // Không nói "hai lượt" ở đây: từ khi có hậu kiểm đánh số, một đoạn bị đánh dấu vì
+            // hai lượt lệch nhau HOẶC vì cấp của nó lệch khỏi các mục cùng dạng đánh số.
             sb.Append("> ").Append(o.DisputedCount)
-              .AppendLine(" đoạn hai lượt quét bất đồng (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.");
+              .AppendLine(" đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.");
         }
         return sb.ToString();
     }
@@ -68,7 +71,8 @@ public static class OutlineFormatter
         foreach (var h in o.Headings)
         {
             sb.Append("  <h level=\"").Append(h.Level)
-              .Append("\" index=\"").Append(h.Index)
+               .Append("\" index=\"").Append(h.Index)
+               .Append(string.IsNullOrEmpty(h.StableId) ? "" : "\" stableId=\"" + Esc(h.StableId))
               .Append("\" source=\"").Append(h.Source)
               .Append("\">").Append(Esc(h.Text)).AppendLine("</h>");
         }
@@ -79,10 +83,11 @@ public static class OutlineFormatter
     private static string ToCsv(DocumentOutline o)
     {
         var sb = new StringBuilder();
-        sb.AppendLine("index,level,source,confidence,styleId,text");
+        sb.AppendLine("index,stableId,level,source,confidence,styleId,text");
         foreach (var h in o.Headings)
         {
             sb.Append(h.Index).Append(',')
+              .Append(Csv(h.StableId ?? "")).Append(',')
               .Append(h.Level).Append(',')
               .Append(h.Source).Append(',')
               .Append(h.Confidence.ToString("0.##", CultureInfo.InvariantCulture)).Append(',')

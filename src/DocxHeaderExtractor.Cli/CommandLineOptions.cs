@@ -9,6 +9,8 @@ public sealed class CommandLineOptions
     public string Command { get; private set; } = "extract";
     public List<string> Inputs { get; } = [];
     public string? OutputPath { get; private set; }
+    public string? TrainingOutputPath { get; private set; }
+    public string? CalibrationOutputPath { get; private set; }
     public OutlineFormat Format { get; private set; } = OutlineFormat.Json;
     public bool Quiet { get; private set; }
 
@@ -27,7 +29,7 @@ public sealed class CommandLineOptions
 
         int i = 0;
         if (!args[0].StartsWith('-') &&
-            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval")
+            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key")
         {
             o.Command = args[0];
             i = 1;
@@ -45,12 +47,34 @@ public sealed class CommandLineOptions
                 case "-h" or "--help": o.ShowHelp = true; break;
                 case "-m" or "--model": llama.ModelPath = Next(a); break;
                 case "-o" or "--out": o.OutputPath = Next(a); break;
+                case "--training-out": o.TrainingOutputPath = Next(a); break;
+                case "--calibration-out": o.CalibrationOutputPath = Next(a); break;
+                case "--calibration-profile": o.Pipeline.CalibrationProfilePath = Next(a); break;
+                case "--target-precision":
+                    o.Pipeline.TargetPrecision = double.Parse(Next(a), System.Globalization.CultureInfo.InvariantCulture);
+                    break;
+                case "--calibration-min-samples": o.Pipeline.MinimumCalibrationSamples = int.Parse(Next(a)); break;
+                case "--no-high-precision": o.Pipeline.HighPrecisionMode = false; break;
                 case "-f" or "--format": o.Format = ParseFormat(Next(a)); break;
                 case "--no-llm": o.Pipeline.DisableLlm = true; break;
+                case "--openrouter":
+                    o.Pipeline.Backend = InferenceBackend.OpenRouter;
+                    llama.ContextSize = 8192;
+                    llama.ChunkTokenBudget = 5000;
+                    break;
+                case "--openrouter-model":
+                    o.Pipeline.Backend = InferenceBackend.OpenRouter;
+                    o.Pipeline.OpenRouter.Model = Next(a);
+                    llama.ContextSize = 8192;
+                    llama.ChunkTokenBudget = 5000;
+                    break;
+                case "--candidates-only": o.Pipeline.ReviewAllParagraphs = false; break;
+                case "--review-all": o.Pipeline.ReviewAllParagraphs = true; break;
                 case "--no-trust-styles": o.Pipeline.TrustStyles = false; break;
                 case "--skip-styled": o.Pipeline.SkipStyledCandidates = true; break;
                 case "--raw-levels": o.Pipeline.NormalizeLevels = false; break;
                 case "--two-pass": o.Pipeline.TwoPass = true; break;
+                case "--no-global-hierarchy": o.Pipeline.GlobalHierarchy = false; break;
                 case "--model-levels": o.Pipeline.LevelFromOutline = false; break;
                 case "--dump-xml": o.Pipeline.DumpXmlPath = Next(a); break;
                 case "--show-raw": o.Pipeline.ShowRawOutput = true; break;
@@ -68,6 +92,8 @@ public sealed class CommandLineOptions
                 case "--no-reuse-prefix": llama.ReusePromptPrefix = false; break;
                 case "--gpu-layers" or "-ngl": llama.GpuLayerCount = int.Parse(Next(a)); break;
                 case "--verbose-native": llama.VerboseNativeLog = true; break;
+                case "--no-audit": o.Pipeline.AuditNumbering = false; break;
+                case "--no-structural-recovery": o.Pipeline.RecoverNumberedSiblings = false; break;
 
                 case "--max-text": extraction.MaxTextLength = int.Parse(Next(a)); break;
                 case "--threshold": extraction.CandidateThreshold = double.Parse(Next(a), System.Globalization.CultureInfo.InvariantCulture); break;
@@ -111,22 +137,35 @@ public sealed class CommandLineOptions
           dhx bench   [thư-mục]              # sinh bộ tài liệu thử + đáp án (mặc định ./bench)
           dhx eval    [thư-mục]              # chấm trên bộ có đáp án, in precision/recall/cấp
                                              # mỗi X.docx cần một X.key đi kèm
+          dhx review  <file.docx>             # chạy dự đoán, xuất .review.json để người duyệt sửa
+          dhx review-key <file.review.json>   # sinh .key + .training.jsonl từ review đã duyệt
 
         Tuỳ chọn chính:
           -m, --model <path.gguf>   Mô hình GGUF (mặc định: biến DHX_MODEL, appsettings.json
                                     hoặc file .gguf duy nhất trong thư mục ./models)
           -o, --out <path>          Ghi kết quả ra file (mặc định in ra màn hình)
+              --training-out <path> Với review-key: nơi ghi JSONL nhãn vàng (mặc định cạnh .key)
           -f, --format <fmt>        json | md | txt | xml | csv   (mặc định json)
               --no-llm              Chỉ dùng luật OpenXML, bỏ qua mô hình
+              --openrouter          Gọi OpenRouter RPC; đọc key từ OPENROUTER_API_KEY
+              --openrouter-model m  Model slug (mặc định qwen/qwen-2.5-7b-instruct)
+              --candidates-only      Chỉ gửi ứng viên heuristic cho model (mặc định production)
+              --review-all           Gửi mọi paragraph cho model (audit/thu nhãn; rất chậm)
               --dump-xml <path>     Ghi XML tinh gọn (đầy đủ đoạn + điểm số) để kiểm tra bộ lọc
               --show-raw            In nguyên văn JSON mô hình trả về cho từng khối
+              --target-precision p  Mục tiêu auto-accept (mặc định 0.93)
+              --calibration-profile <json>  Profile holdout dùng để calibration confidence
+              --calibration-min-samples n   Mẫu tối thiểu mỗi evidence bucket (mặc định 52)
+              --no-high-precision   Không critic mọi heading; chỉ phản biện mục model-only yếu
+              --calibration-out <json> Với lệnh eval: ghi profile precision từ bộ holdout
           -q, --quiet               Không in tiến trình
 
         Mô hình / hiệu năng CPU:
               --ctx <n>             Cửa sổ ngữ cảnh (mặc định 4096)
           -t, --threads <n>         Số luồng CPU (mặc định số lõi - 1)
               --gpu-layers <n>      Số lớp đẩy lên GPU (mặc định 0 = chạy hoàn toàn CPU).
-                                    Chỉ có tác dụng khi build với -p:UseCuda=true.
+                                    Cần build với -p:UseCuda=true (NVIDIA) hoặc
+                                    -p:UseVulkan=true (AMD/Intel/NVIDIA). Bản CPU bỏ qua.
               --chunk-tokens <n>    Ngân sách token mỗi khối XML (mặc định 2200)
               --chunk-candidates <n> Trần số ứng viên mỗi khối (mặc định 12). Khối càng dài,
                                     mô hình càng dễ trượt theo dãy 0 — xem LlamaOptions.
@@ -152,14 +191,20 @@ public sealed class CommandLineOptions
                                     ~24% nhưng ĐO ĐƯỢC là precision tụt 100% → 94%: các đoạn có
                                     style nằm xen kẽ đóng vai trò neo cho mô hình. Chỉ dùng khi
                                     ưu tiên tốc độ hơn độ chính xác.
+              --no-audit            Tắt hậu kiểm theo ký hiệu đánh số. Mặc định BẬT: đối chiếu
+                                    cấp giữa các mục cùng dạng đánh số và tìm lỗ hổng trong dãy
+                                    anh em, đánh dấu (?) chỗ đáng ngờ. Không gọi mô hình.
               --raw-levels          Giữ nguyên cấp do mô hình trả về (không chuẩn hoá)
               --two-pass            Quét hai lượt với cách cắt khối khác nhau, đánh dấu (?)
                                     những đoạn hai lượt bất đồng để xem lại. Tốn gấp ~2 lần.
+              --no-global-hierarchy Không chạy lượt gán cấp riêng trên toàn bộ heading đã chọn
               --model-levels        Lấy cấp do mô hình đoán thay vì đọc w:outlineLvl trong file
 
         Ví dụ:
           dhx extract bao-cao.docx -m models\Llama-3.2-3B-Instruct-Q4_K_M.gguf -f md
           dhx extract *.docx --no-llm -f csv -o outline.csv
+          dhx review bao-cao.docx -m models\Qwen2.5-7B-Instruct-Q4_K_M.gguf -o bao-cao.review.json
+          dhx review-key bao-cao.review.json -o bao-cao.key
           dhx xml bao-cao.docx | less
         """;
 }
