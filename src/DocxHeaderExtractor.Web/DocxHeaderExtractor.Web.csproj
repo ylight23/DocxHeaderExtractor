@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DocxHeaderExtractor.AgentHarness\DocxHeaderExtractor.AgentHarness.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.Core\DocxHeaderExtractor.Core.csproj" />
   </ItemGroup>
 

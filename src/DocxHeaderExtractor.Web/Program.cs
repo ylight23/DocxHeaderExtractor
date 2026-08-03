@@ -2,6 +2,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Channels;
+using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Learning;
@@ -22,6 +23,7 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 builder.Services.Configure<FormOptions>(o => o.MultipartBodyLengthLimit = 128L * 1024 * 1024);
 builder.Services.AddSingleton<LlamaModelCache>();
 builder.Services.AddSingleton(_ => new CorrectionMemory(CorrectionMemory.DefaultPath()));
+builder.Services.AddSingleton<DocumentAgentHarnessFactory>();
 builder.Services.AddHttpClient("OpenRouter", client =>
 {
     client.Timeout = TimeSpan.FromMinutes(5);
@@ -90,6 +92,7 @@ app.MapPost("/api/extract", async (
     HttpRequest req,
     HttpResponse res,
     LlamaModelCache modelCache,
+    DocumentAgentHarnessFactory harnessFactory,
     IHttpClientFactory httpClientFactory,
     CorrectionMemory correctionMemory,
     CancellationToken ct) =>
@@ -172,22 +175,51 @@ app.MapPost("/api/extract", async (
                         httpClientFactory.CreateClient("OpenRouter"), options.OpenRouter)
                     : await modelCache.GetAsync(options.Llama, ct);
             }
-            using var pipeline = classifier is null
-                ? new HeaderExtractionPipeline(options)
-                : new HeaderExtractionPipeline(options, classifier);
-            var run = Task.Run(() => pipeline.RunAsync(inputPath, ct), ct);
+            using var tool = classifier is null
+                ? new PipelineDocumentExtractionTool(options)
+                : new PipelineDocumentExtractionTool(
+                    options,
+                    classifier,
+                    ownsClassifier: options.Backend == InferenceBackend.OpenRouter);
+            var sink = new DelegateAgentRunSink((evt, _) =>
+            {
+                events.Writer.TryWrite(new
+                {
+                    type = "agent",
+                    runId = evt.RunId,
+                    sequence = evt.Sequence,
+                    stage = evt.Stage,
+                    kind = evt.Kind.ToString(),
+                    message = evt.Message,
+                });
+                return ValueTask.CompletedTask;
+            });
+            var harness = harnessFactory.Create(tool, sink);
+            var request = new DocumentAgentRequest(
+                inputPath,
+                AllowExternalDataTransfer:
+                    !options.DisableLlm && options.Backend == InferenceBackend.OpenRouter);
+            var run = Task.Run(() => harness.RunAsync(request, ct), ct);
             _ = run.ContinueWith(_ => events.Writer.TryComplete(), TaskScheduler.Default);
 
             await foreach (var evt in events.Reader.ReadAllAsync(ct))
                 await EmitAsync(evt);
 
-            var outline = await run;
+            var agentRun = await run;
+            var outline = agentRun.Outline;
             await EmitAsync(new
             {
                 type = "result",
                 outline,
                 stats = Stats.From(outline),
                 review = ReviewBundle.Create(outline, slim),
+                agent = new
+                {
+                    runId = agentRun.RunId,
+                    outcome = agentRun.Outcome.ToString(),
+                    steps = agentRun.Steps,
+                    requiresReview = agentRun.RequiresReview,
+                },
             });
         }
         finally

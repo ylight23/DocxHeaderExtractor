@@ -74,14 +74,11 @@ public sealed class CorrectionMemory
         }
     }
 
-    public IReadOnlyList<VerifiedCorrection> FindExamples(string chunkXml, int limit = 3)
+    public IReadOnlyList<VerifiedCorrection> FindExamples(string documentView, int limit = 3)
     {
         if (_items.Count == 0 || limit <= 0) return [];
-        XDocument doc;
-        try { doc = XDocument.Parse(chunkXml, LoadOptions.PreserveWhitespace); }
-        catch { return []; }
-
-        var texts = doc.Descendants("p").Select(x => x.Value.Trim()).Where(x => x.Length > 0).ToList();
+        var texts = ExtractTexts(documentView);
+        if (texts.Count == 0) return [];
         var ranked = _items
             .Select(c => (Correction: c, Score: texts.Select(t => Similarity(t, c.Text)).DefaultIfEmpty(0).Max()))
             .Where(x => x.Score >= 0.78)
@@ -92,20 +89,57 @@ public sealed class CorrectionMemory
         return ranked;
     }
 
-    public static string InjectExamples(string chunkXml, IReadOnlyList<VerifiedCorrection> examples)
+    public static string InjectExamples(string documentView, IReadOnlyList<VerifiedCorrection> examples)
     {
-        if (examples.Count == 0) return chunkXml;
-        var close = chunkXml.LastIndexOf("</doc>", StringComparison.Ordinal);
-        if (close < 0) return chunkXml;
-        var sb = new StringBuilder(chunkXml.Length + examples.Count * 180);
-        sb.Append(chunkXml.AsSpan(0, close));
-        sb.Append("<verified_examples advisory=\"1\">");
+        if (examples.Count == 0) return documentView;
+
+        var neutralClose = documentView.LastIndexOf("END_DOCUMENT_VIEW", StringComparison.Ordinal);
+        if (neutralClose >= 0)
+        {
+            var sb = new StringBuilder(documentView.Length + examples.Count * 180);
+            sb.Append(documentView.AsSpan(0, neutralClose));
+            sb.AppendLine("VERIFIED_EXAMPLES advisory=true");
+            foreach (var example in examples)
+                sb.AppendLine(JsonSerializer.Serialize(new
+                {
+                    level = example.CorrectedLevel,
+                    text = Truncate(example.Text, 300),
+                }, JsonOptions));
+            sb.AppendLine("END_VERIFIED_EXAMPLES");
+            sb.Append(documentView.AsSpan(neutralClose));
+            return sb.ToString();
+        }
+
+        // Tương thích các review bundle/prompt cũ đã lưu ở dạng XML.
+        var xmlClose = documentView.LastIndexOf("</doc>", StringComparison.Ordinal);
+        if (xmlClose < 0) return documentView;
+        var legacy = new StringBuilder(documentView.Length + examples.Count * 180);
+        legacy.Append(documentView.AsSpan(0, xmlClose));
+        legacy.Append("<verified_examples advisory=\"1\">");
         foreach (var example in examples)
-            sb.Append("<ex level=\"").Append(example.CorrectedLevel).Append("\">")
-              .Append(Escape(Truncate(example.Text, 300))).Append("</ex>");
-        sb.Append("</verified_examples>");
-        sb.Append(chunkXml.AsSpan(close));
-        return sb.ToString();
+            legacy.Append("<ex level=\"").Append(example.CorrectedLevel).Append("\">")
+                .Append(Escape(Truncate(example.Text, 300))).Append("</ex>");
+        legacy.Append("</verified_examples>");
+        legacy.Append(documentView.AsSpan(xmlClose));
+        return legacy.ToString();
+    }
+
+    private static IReadOnlyList<string> ExtractTexts(string documentView)
+    {
+        if (documentView.Contains("DOCUMENT_VIEW", StringComparison.Ordinal))
+            return [.. NeutralContentRx.Matches(documentView)
+                .Select(match => match.Groups[1].Value.Trim())
+                .Where(text => text.Length > 0)];
+
+        try
+        {
+            var doc = XDocument.Parse(documentView, LoadOptions.PreserveWhitespace);
+            return [.. doc.Descendants("p").Select(x => x.Value.Trim()).Where(x => x.Length > 0)];
+        }
+        catch
+        {
+            return [];
+        }
     }
 
     /// <summary>
@@ -218,6 +252,9 @@ public sealed class CorrectionMemory
 
     private static readonly Regex WordRx = new(@"\p{L}[\p{L}\p{N}]*", RegexOptions.Compiled);
     private static readonly Regex WhitespaceRx = new(@"\s+", RegexOptions.Compiled);
+    private static readonly Regex NeutralContentRx = new(
+        @"(?:^|\n)content:\r?\n {4}([^\r\n]*)",
+        RegexOptions.Compiled | RegexOptions.CultureInvariant);
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,

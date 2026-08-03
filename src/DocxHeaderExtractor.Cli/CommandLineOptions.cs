@@ -166,7 +166,7 @@ public sealed class CommandLineOptions
               --gpu-layers <n>      Số lớp đẩy lên GPU (mặc định 0 = chạy hoàn toàn CPU).
                                     Cần build với -p:UseCuda=true (NVIDIA) hoặc
                                     -p:UseVulkan=true (AMD/Intel/NVIDIA). Bản CPU bỏ qua.
-              --chunk-tokens <n>    Ngân sách token mỗi khối XML (mặc định 2200)
+              --chunk-tokens <n>    Ngân sách token mỗi khối document view (mặc định 2200)
               --chunk-candidates <n> Trần số ứng viên mỗi khối (mặc định 12). Khối càng dài,
                                     mô hình càng dễ trượt theo dãy 0 — xem LlamaOptions.
               --max-out <n>         Token đầu ra tối đa mỗi khối (mặc định 900)

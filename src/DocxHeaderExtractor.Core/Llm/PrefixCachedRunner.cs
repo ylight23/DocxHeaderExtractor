@@ -10,7 +10,7 @@ namespace DocxHeaderExtractor.Core.Llm;
 /// <summary>
 /// Chạy suy luận với phần prompt dùng chung được nạp MỘT LẦN.
 /// <para>
-/// Prompt mỗi khối = [phần chung: system + luật + ví dụ one-shot + mở đầu user] + [XML khối] +
+/// Prompt mỗi khối = [phần chung: system + luật + ví dụ one-shot + mở đầu user] + [document view] +
 /// [đuôi: câu lệnh trả lời + mở lượt assistant]. Phần chung chiếm phần lớn và giống hệt nhau ở
 /// mọi khối, nhưng <see cref="StatelessExecutor"/> nạp lại toàn bộ ở từng khối.
 /// </para>
@@ -22,7 +22,7 @@ namespace DocxHeaderExtractor.Core.Llm;
 /// </summary>
 internal sealed class PrefixCachedRunner : IDisposable
 {
-    /// <summary>Chuỗi đánh dấu chỗ chèn XML khối, để cắt template thành phần chung và phần riêng.</summary>
+    /// <summary>Chuỗi đánh dấu chỗ chèn document view, để cắt template thành phần chung và phần riêng.</summary>
     private const string Sentinel = "«DHX-CHUNK»";
 
     private readonly BatchedExecutor _executor;

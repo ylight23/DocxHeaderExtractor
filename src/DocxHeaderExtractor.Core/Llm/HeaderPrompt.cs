@@ -3,7 +3,7 @@ using System.Text;
 namespace DocxHeaderExtractor.Core.Llm;
 
 /// <summary>
-/// Prompt và GBNF grammar cho tác vụ: từ XML tinh gọn, chọn ra đoạn nào là tiêu đề và ở cấp mấy.
+/// Prompt và GBNF grammar cho tác vụ: từ view trung lập của tài liệu, chọn đoạn nào là tiêu đề.
 /// Mô hình chỉ trả về chỉ số + cấp; phần văn bản luôn lấy lại từ OpenXML để tránh bịa nội dung.
 /// </summary>
 public static class HeaderPrompt
@@ -13,33 +13,35 @@ public static class HeaderPrompt
     /// dùng chung nguyên văn phần này, nên khi so tốc độ giữa hai lược đồ thì luật không đổi.
     /// </summary>
     private const string Rules = """
-        Bạn là bộ phân tích cấu trúc tài liệu Word. Đầu vào là XML rút gọn từ file .docx.
+        Bạn là bộ phân tích cấu trúc tài liệu Word. Đầu vào là DOCUMENT_VIEW trung lập được chiếu
+        từ OOXML; nó không phải dữ liệu chuẩn để ghi ngược và không đánh dấu sẵn heading bằng #/##.
 
-        Mỗi <p> là một đoạn của thân tài liệu với các thuộc tính:
-        - i: chỉ số đoạn (BẮT BUỘC dùng đúng giá trị này khi trả lời)
-        - s: tên style trong Word (vd Heading1, Normal, TieuDe)
-        - out: giá trị w:outlineLvl (0 = cấp 1)
-        - lvl: cấp tiêu đề do bộ lọc đoán trước (có thể sai)
-        - b=1 in đậm, caps=1 chữ hoa, it=1 in nghiêng, u=1 gạch chân
-        - br="0-17,...": các khoảng ký tự in đậm khi chỉ một phần paragraph được in đậm
-        - hs="0-k", bs="m-n": code đã xác minh span heading và inline body bằng ranh giới run
-          hoặc payload thuần số; dùng span này làm evidence mạnh, không đưa bs vào tên heading
-        - sz: cỡ chữ (point), al: canh lề, num: danh sách đánh số
-        - kn=1 giữ cùng trang với đoạn sau, pb=1 ngắt trang trước, tbl: nằm trong bảng
-        <n c="k"/> nghĩa là k đoạn thân bài đã bị lược bỏ.
-        <verified_examples advisory="1"> chứa correction do người dùng từng sửa thật sự. Đây chỉ
-        là ví dụ tham khảo: không có i, không phải paragraph cần trả lời và không được sao chép máy móc.
-        Các <p> kề nhau là ngữ cảnh của nhau; hãy dùng chuỗi đoạn trước/sau, không quyết định
+        Mỗi BLOCK gồm metadata JSON và content nguyên văn:
+        - i: chỉ số đoạn; requested=true nghĩa là BẮT BUỘC trả đúng một quyết định cho i đó
+        - requested=false chỉ là context, tuyệt đối không đưa i của nó vào output
+        - stableId: địa chỉ nguồn ổn định trong OOXML
+        - source: paragraph hoặc table_cell; tableDepth là độ sâu bảng
+        - styleId/styleName; outlineLevel (0 = cấp 1); guessedLevel có thể sai
+        - bold/allCaps/italic/underline; boldSpans là các khoảng ký tự in đậm
+        - verifiedHeadingSpan/verifiedBodySpan: code đã xác minh ranh giới heading/body; dùng làm
+          evidence mạnh và không đưa phần body vào tên heading
+        - fontSizePt, alignment, numberingId/numberingLevel/numberLabel
+        - keepNext, pageBreakBefore, sectionIndex, inTableOfContents
+        OMITTED_NORMAL_BLOCKS chỉ cho biết số đoạn thân bài đã lược bỏ.
+        VERIFIED_EXAMPLES chứa correction do người dùng từng sửa thật sự. Đây chỉ là ví dụ tham
+        khảo: không có i cần trả lời và không được sao chép máy móc.
+        Các BLOCK kề nhau là ngữ cảnh của nhau; hãy dùng chuỗi đoạn trước/sau, không quyết định
         chỉ từ một kiểu chữ hoặc một từ khoá.
 
-        Nhiệm vụ: với MỖI thẻ <p>, phân loại vai trò rồi quyết định có đưa vào cây heading không.
+        Nhiệm vụ: với MỖI BLOCK được yêu cầu, phân loại vai trò rồi quyết định có đưa vào cây heading không.
         Mã vai trò: h=heading; d=document_title; t=table_header; f=form_label;
         s=signature_label; c=caption; n=normal_text; u=uncertain.
         Chỉ r=h mới có l=1..9; mọi vai trò khác có l=0. Document title là tiêu đề ngữ nghĩa
         nhưng không tự động thuộc cây mục lục.
 
         Quy tắc:
-        1. Style, out, lvl, b, caps, sz, al, num và tbl chỉ là BẰNG CHỨNG, không phải luật tuyệt đối.
+        1. Style, outlineLevel, guessedLevel, định dạng, numbering và tableDepth chỉ là BẰNG CHỨNG,
+           không phải luật tuyệt đối.
            File Word thường gán nhầm outline level hoặc dùng bảng để dàn trang.
         2. Heading có thể không đậm, không đánh số, không khác cỡ chữ. Hãy nhận ra nó từ vai trò
            trong luồng tài liệu: mở một chủ đề, sau đó là nội dung chi tiết, hoặc thuộc một chuỗi
@@ -53,11 +55,11 @@ public static class HeaderPrompt
             - Tên chính của báo cáo/văn bản là document_title (r=d,l=0), dù trông nổi bật như H1.
             - Chỉ dùng r=h khi đoạn mở một phần nội dung và có vai trò tổ chức thân bài. Định dạng
               nổi bật hoặc vị trí gần đầu tài liệu tự nó không đủ biến nhãn/title thành heading.
-        4. tbl=1 là bằng chứng yếu: bảng đầu/cuối tài liệu thường là biểu mẫu hoặc chữ ký, nhưng
+        4. source=table_cell là bằng chứng yếu: bảng đầu/cuối thường là biểu mẫu hoặc chữ ký, nhưng
            bảng giữa thân bài vẫn có thể chứa heading thật.
         5. Cấp phải nhất quán với ngữ cảnh. "1." không luôn là H1: sau "I." nó thường là H2;
            "3.1" thường là con của "3". lvl chỉ là gợi ý, có thể sai.
-        6. Trả lời theo ĐÚNG thứ tự các <p> xuất hiện, mỗi <p> đúng một mục. Không giải thích,
+        6. Trả lời theo ĐÚNG thứ tự BLOCK xuất hiện, mỗi BLOCK được hỏi đúng một mục. Không giải thích,
            chỉ in JSON.
         """;
 
@@ -65,22 +67,26 @@ public static class HeaderPrompt
     private const string ExampleInput = """
         Ví dụ:
         Đầu vào
-          <p i="0" s="Heading1" out="0" lvl="1" b="1">Chương 1. Quy định chung</p>
-          <n c="4"/>
-          <p i="6" s="Normal" lvl="1" b="1" caps="1" al="center" sz="14">PHỤ LỤC B – BIỂU MẪU</p>
-            <ctx>Các biểu mẫu dưới đây áp dụng thống nhất cho toàn bộ đơn vị trực…</ctx>
-          <p i="9" s="Normal" lvl="2" b="1" sz="13">2.1 Trình tự thực hiện</p>
-          <p i="11" s="Normal" b="1" caps="1" al="center" tbl="1">II.3</p>
-            <ctx>Hệ thống văn kiện diễn tập</ctx>
-          <p i="12" s="Normal" b="1">Hình 3: Sơ đồ khối của hệ thống.</p>
-          <p i="14" s="Normal" out="3" sz="14">- Kích thước dữ liệu: khoảng 200 GB trong 5 năm đầu.</p>
+          BLOCK metadata: {"i":0,"requested":true,"styleId":"Heading1","outlineLevel":0,"guessedLevel":1,"bold":true}
+          content: Chương 1. Quy định chung
+          OMITTED_NORMAL_BLOCKS {"count":4}
+          BLOCK metadata: {"i":6,"requested":true,"styleId":"Normal","guessedLevel":1,"bold":true,"allCaps":true,"alignment":"center","fontSizePt":14}
+          content: PHỤ LỤC B – BIỂU MẪU
+          BLOCK metadata: {"i":9,"requested":true,"styleId":"Normal","guessedLevel":2,"bold":true,"fontSizePt":13}
+          content: 2.1 Trình tự thực hiện
+          BLOCK metadata: {"i":11,"requested":true,"source":"table_cell","tableDepth":1,"bold":true,"allCaps":true,"alignment":"center"}
+          content: II.3
+          BLOCK metadata: {"i":12,"requested":true,"bold":true}
+          content: Hình 3: Sơ đồ khối của hệ thống.
+          BLOCK metadata: {"i":14,"requested":true,"outlineLevel":3,"fontSizePt":14}
+          content: - Kích thước dữ liệu: khoảng 200 GB trong 5 năm đầu.
         """;
 
     // $$ để dấu ngoặc nhọn của ví dụ JSON là ký tự thật; chỗ nội suy dùng {{…}}.
     /// <summary>Lược đồ JSON: mỗi ứng viên một object {"i":…,"l":…}.</summary>
     public static readonly string System = $$"""
         {{Rules}}
-        7. Trả lời theo ĐÚNG thứ tự các <p> xuất hiện, mỗi <p> đúng một mục.
+        7. Trả lời theo ĐÚNG thứ tự các BLOCK xuất hiện, mỗi BLOCK được hỏi đúng một mục.
         8. Không giải thích. Chỉ in JSON.
 
         {{ExampleInput}}
@@ -94,12 +100,12 @@ public static class HeaderPrompt
     // ra làm đáp án ("445448551552"). Con số đó cũng bác bỏ giả thuyết "sinh token là nút cổ
     // chai": cắt 90% token sinh ra mà tổng thời gian đứng yên ⇒ thời gian nằm ở khâu nạp prompt.
 
-    public static string BuildUser(string chunkXml) =>
+    public static string BuildUser(string documentView) =>
         $"""
-         XML tài liệu:
-         {chunkXml}
+         View tài liệu trung lập:
+         {documentView}
 
-         Trả lời cho từng <p> theo đúng thứ tự.
+         Trả lời cho từng BLOCK được hỏi theo đúng thứ tự.
          """;
 
 
@@ -123,16 +129,16 @@ public static class HeaderPrompt
         viết hoa hoặc đứng đầu trang. Hãy quyết định theo toàn bộ ngữ cảnh trước/sau, không theo
         một từ khóa riêng lẻ. Nếu cả hai cách hiểu còn hợp lý và không đủ bằng chứng, trả r=u.
 
-        Không đồng ý chỉ vì mô hình trước đã chọn. Với MỖI <p>, trả đúng một quyết định theo
+        Không đồng ý chỉ vì mô hình trước đã chọn. Với MỖI BLOCK được hỏi, trả đúng một quyết định theo
         đúng i và thứ tự; không giải thích, chỉ JSON.
         """;
 
-    public static string BuildCriticUser(string chunkXml) =>
+    public static string BuildCriticUser(string documentView) =>
         $"""
-         XML tài liệu (các <p> là giả thuyết cần phản biện; <ctx>/<n> là ngữ cảnh):
-         {chunkXml}
+         View tài liệu trung lập (BLOCK được hỏi là giả thuyết cần phản biện; các block khác là ngữ cảnh):
+         {documentView}
 
-         Phân loại lại từng <p> độc lập với quyết định trước.
+         Phân loại lại từng BLOCK được hỏi độc lập với quyết định trước.
          """;
 
     /// <summary>

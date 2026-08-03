@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Cli;
+using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
@@ -92,7 +93,8 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
         return 2;
     }
 
-    using var pipeline = new HeaderExtractionPipeline(o.Pipeline);
+    using var tool = new PipelineDocumentExtractionTool(o.Pipeline);
+    var harness = new DocumentAgentHarness(tool);
     var outputs = new List<string>();
     int failed = 0;
 
@@ -101,10 +103,12 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
         if (!o.Quiet) Console.Error.WriteLine($"» {Path.GetFileName(file)}");
         try
         {
-            var outline = await pipeline.RunAsync(file, ct);
+            var agentRun = await harness.RunAsync(AgentRequest(file, o.Pipeline), ct);
+            var outline = agentRun.Outline;
             if (!o.Quiet)
                 Console.Error.WriteLine(
-                    $"  Xong: {outline.Headings.Count} tiêu đề / {outline.ParagraphCount} đoạn ({outline.ElapsedMs} ms)");
+                    $"  Xong: {outline.Headings.Count} tiêu đề / {outline.ParagraphCount} đoạn " +
+                    $"({outline.ElapsedMs} ms) · agent={agentRun.Outcome} · run={agentRun.RunId:N}");
             outputs.Add(OutlineFormatter.Format(outline, o.Format));
         }
         catch (Exception ex) when (ex is not OperationCanceledException)
@@ -147,8 +151,8 @@ static int RunDumpXml(CommandLineOptions o)
 
             if (o.CompactXml)
             {
-                // Đúng bằng nội dung sẽ gửi cho mô hình. Production chỉ hỏi ứng viên;
-                // --review-all dùng khi audit/thu nhãn toàn văn bản.
+                // XML tinh gọn chỉ để debug/đối chiếu. Prompt production dùng neutral document
+                // view (text + JSON metadata) để không biến markup thành gợi ý heading.
                 var review = o.Pipeline.ReviewAllParagraphs
                     ? slim.Paragraphs.Where(p => p.Role != ParagraphRole.Empty).Select(p => p.Index).ToHashSet()
                     : null;
@@ -226,7 +230,8 @@ static async Task<int> RunReviewAsync(CommandLineOptions o, CancellationToken ct
         return 2;
     }
 
-    using var pipeline = new HeaderExtractionPipeline(o.Pipeline);
+    using var tool = new PipelineDocumentExtractionTool(o.Pipeline);
+    var harness = new DocumentAgentHarness(tool);
     foreach (var file in files)
     {
         if (!o.Quiet) Console.Error.WriteLine($"» Review: {Path.GetFileName(file)}");
@@ -234,7 +239,8 @@ static async Task<int> RunReviewAsync(CommandLineOptions o, CancellationToken ct
         try
         {
             var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(conversion.Path);
-            var outline = await pipeline.RunAsync(file, ct);
+            var agentRun = await harness.RunAsync(AgentRequest(file, o.Pipeline), ct);
+            var outline = agentRun.Outline;
             var bundle = ReviewBundle.Create(outline, slim);
             var output = o.OutputPath ?? Path.ChangeExtension(file, ".review.json");
             await File.WriteAllTextAsync(output, bundle.ToJson(), new UTF8Encoding(false), ct);
@@ -281,6 +287,10 @@ static int RunReviewKey(CommandLineOptions o)
     }
     return 0;
 }
+
+static DocumentAgentRequest AgentRequest(string file, PipelineOptions options) =>
+    new(file, AllowExternalDataTransfer:
+        !options.DisableLlm && options.Backend == InferenceBackend.OpenRouter);
 
 static int RunSample(CommandLineOptions o)
 {
