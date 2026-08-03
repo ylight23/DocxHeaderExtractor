@@ -1,5 +1,8 @@
 # DocxHeaderExtractor
 
+Kiến trúc runtime dùng một [agent harness có guardrail, trace và human-review gate](docs/agent-harness.md).
+LLM là tool suy luận có giới hạn; nó không tự sửa code, tự tạo nhãn vàng hay bỏ qua precision gate.
+
 Trích xuất cấu trúc tiêu đề (heading) từ file **.docx / .doc** bằng **OpenXML SDK** + **LLamaSharp**
 chạy mô hình **GGUF lượng tử hoá** (`Llama-3.2-3B-Instruct-Q4_K_M`) **hoàn toàn trên CPU**.
 
@@ -191,7 +194,7 @@ version/rollback sau này.
 
 ```
   OpenXML: 19 đoạn → 6 ứng viên (4 theo style, 2 theo heuristic)
-  Chia thành 1 khối XML (ngân sách 2200 token/khối)
+  Chia thành 1 khối context trung lập (ngân sách 2200 token/khối)
     khối 1/1: 6 ứng viên → 6 tiêu đề (56010 ms)
       ↳ {"h":[{"i":0,"l":1},{"i":2,"l":2},{"i":5,"l":2},{"i":7,"l":1},{"i":15,"l":2},{"i":17,"l":1}]}
 
@@ -204,8 +207,8 @@ version/rollback sau này.
 ```
 
 Hai dòng `PHỤ LỤC A` và `2.1 Kết quả thử nghiệm` **không dùng style Heading** — chỉ in đậm/chữ hoa/canh
-giữa — nhưng vẫn được nhận đúng. Ô bảng không bị loại cứng: chúng được gửi kèm thuộc tính `tbl` để
-mô hình phân biệt tiêu đề bảng thật với dữ liệu biểu mẫu.
+giữa — nhưng vẫn được nhận đúng. Ô bảng không bị loại cứng: context gửi `source=table_cell`,
+`stableId` và metadata cấu trúc để mô hình phân biệt tiêu đề bảng thật với dữ liệu biểu mẫu.
 
 `src` cho biết tiêu đề đến từ mô hình (`Model`), từ lưới an toàn theo style (`Style`),
 hay từ luật khi chạy `--no-llm` (`Heuristic`).
@@ -217,29 +220,31 @@ hay từ luật khi chạy `--no-llm` (`Heuristic`).
 | `OpenXmlLayer/StyleResolver.cs` | Làm phẳng `styles.xml`: đi hết chuỗi `w:basedOn`, lấy `docDefaults` |
 | `OpenXmlLayer/DocxSlimExtractor.cs` | Duyệt body đúng thứ tự (paragraph, bảng, `w:sdt`, textbox), gộp định dạng run, chuẩn hoá text, bỏ nội dung `w:del` |
 | `OpenXmlLayer/HeadingHeuristics.cs` | Chấm điểm ứng viên: style heading, `outlineLvl`, đậm/hoa/cỡ chữ/canh giữa, mẫu `Chương/Điều/1.2.3` |
-| `OpenXmlLayer/SlimXmlSerializer.cs` | Sinh XML tinh gọn, có chỉ số, stable ID, số thứ tự đã dựng (`nlab`) và evidence OOXML |
+| `OpenXmlLayer/NeutralDocumentViewSerializer.cs` | Chiếu canonical model thành content + JSON metadata trung lập cho LLM, không gợi heading bằng `#`/`##` |
+| `OpenXmlLayer/SlimXmlSerializer.cs` | Sinh XML tinh gọn chỉ để debug và đối chiếu source OOXML |
 | `OpenXmlLayer/LegacyDocConverter.cs` | `.doc/.rtf/.odt` → `.docx` qua LibreOffice headless, dự phòng Word COM |
 | `Chunking/SlimXmlChunker.cs` | Cắt khối theo ngân sách token và trần số paragraph cần mô hình review, chồng lấn ngữ cảnh ở mép |
 | `Llm/HeaderPrompt.cs` | System prompt + one-shot + **sinh GBNF liệt kê** + template Llama 3 dự phòng |
 | `Llm/ModelHeading.cs` | Đọc JSON chịu lỗi: nhận cả `{"h":[…]}` lẫn `{"headings":[…]}`, vớt vát khi bị cắt |
 | `Llm/LlamaHeaderExtractor.cs` | Nạp GGUF, `StatelessExecutor`, greedy, tính `MaxTokens` theo số ứng viên |
 | `Pipeline/HeaderExtractionPipeline.cs` | Ghép các tầng, bỏ phiếu, hierarchy toàn cục, đối soát numbering và chuẩn hoá cấp |
+| `DocxHeaderExtractor.AgentHarness` | Guardrail, step budget, source-grounding validator, trace và human-review gate |
 
 ## Tuỳ chọn đáng chú ý
 
 | Tuỳ chọn | Ý nghĩa |
 |---|---|
 | `--threshold 0.45` | Ngưỡng heuristic dùng làm evidence/xếp hạng; mặc định không chặn paragraph trước khi model review |
-| `--chunk-tokens 2200` | Ngân sách token XML cho model thường; profile Qwen 8K tự dùng 5000. Đây không gồm system prompt và output |
+| `--chunk-tokens 2200` | Ngân sách token document view cho model thường; profile Qwen 8K tự dùng 5000. Đây không gồm system prompt và output |
 | `--ctx 4096` | Cửa sổ ngữ cảnh. Phải `> chunk-tokens + max-out + 800` |
 | `-t/--threads` | Số luồng CPU. Mặc định = **số nhân vật lý ước lượng** (một nửa số luồng logic), vì llama.cpp chậm đi khi vượt số nhân vật lý |
 | `--show-raw` | In nguyên văn JSON mô hình trả về từng khối |
 | `--free-grammar` | GBNF chỉ ép lược đồ, để mô hình tự chọn liệt kê — dùng để so sánh, kém tin cậy hơn |
 | `--no-grammar` | Tắt GBNF hoàn toàn (vẫn có bộ đọc JSON chịu lỗi) |
 | `--no-trust-styles` | Không khôi phục heading theo style — dùng khi cần đánh giá riêng chất lượng mô hình |
-| `--dump-xml out.xml` | Ghi XML tinh gọn kèm stable ID, numbering và evidence để soi đầu vào mô hình |
+| `--dump-xml out.xml` | Ghi XML tinh gọn từ canonical model để debug/đối chiếu; production gửi neutral document view |
 | `--structural-only` | Tắt toàn bộ luật theo từ ngữ, xem bên dưới |
-| `--compact` (lệnh `xml`) | In đúng nội dung gửi cho mô hình: mặc định là các ứng viên heuristic cùng ngữ cảnh |
+| `--compact` (lệnh `xml`) | In XML compact phục vụ debug; đây không còn là prompt production |
 | `--review-all` | Gửi mọi paragraph không rỗng; chỉ dùng audit/thu nhãn vì rất chậm |
 
 ## Ranh giới tín hiệu cấu trúc và luật từ ngữ

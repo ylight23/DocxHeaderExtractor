@@ -24,10 +24,10 @@ public sealed class LlamaOptions
     /// <summary>Đường dẫn tới file .gguf.</summary>
     public string ModelPath { get; set; } = "";
 
-    /// <summary>Kích thước cửa sổ ngữ cảnh. 4096 đủ cho một khối XML tinh gọn và tiết kiệm RAM.</summary>
+    /// <summary>Kích thước cửa sổ ngữ cảnh. 4096 đủ cho một document-view chunk nhỏ và tiết kiệm RAM.</summary>
     public uint ContextSize { get; set; } = 4096;
 
-    /// <summary>Số token tối đa cho mỗi khối XML gửi vào mô hình (phần còn lại dành cho prompt + đầu ra).</summary>
+    /// <summary>Số token tối đa cho mỗi document-view chunk (phần còn lại dành cho prompt + đầu ra).</summary>
     public int ChunkTokenBudget { get; set; } = 2200;
 
     /// <summary>Số token tối đa mô hình được sinh ra cho mỗi khối.</summary>

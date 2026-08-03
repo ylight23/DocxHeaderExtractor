@@ -18,7 +18,7 @@ public class PromptTests
     {
         var s = HeaderPrompt.System;
 
-        Assert.Contains("tbl=1 là bằng chứng yếu", s);                  // luật, không hardcode bảng
+        Assert.Contains("source=table_cell là bằng chứng yếu", s);      // luật, không hardcode bảng
         Assert.Contains("PHỤ LỤC B – BIỂU MẪU", s);                     // ví dụ one-shot
         Assert.Contains("""{"h":[{"i":0,"r":"h","l":1}""", s);           // lược đồ đầu ra
         Assert.DoesNotContain("{Rules}", s);                            // chỗ nội suy đã thay
@@ -190,6 +190,41 @@ public class FullReviewSerializationTests
 
         Assert.Equal([0, 1], lines.Where(x => x.IsCandidate).Select(x => x.ParagraphIndex));
         Assert.DoesNotContain(lines, x => x.Text.StartsWith("<n ", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void Neutral_view_preserves_source_identity_without_markdown_heading_bias()
+    {
+        var doc = new SlimDocument
+        {
+            FileName = "x.docx",
+            SourcePath = "x.docx",
+            Paragraphs =
+            [
+                new SlimParagraph
+                {
+                    Index = 7,
+                    StableId = "body[1]/tbl[0]/tr[3]/tc[0]/p[0]",
+                    Text = "3.2. Ngoài dự báo",
+                    StyleId = "Normal",
+                    Bold = true,
+                    TableDepth = 1,
+                    Role = ParagraphRole.HeadingCandidate,
+                },
+            ],
+        }.Build();
+
+        var lines = NeutralDocumentViewSerializer.BuildLines(
+            doc, new ExtractionOptions(), new HashSet<int> { 7 });
+        var view = NeutralDocumentViewSerializer.WrapChunk(lines, 1, 1);
+
+        Assert.Contains("\"i\":7", view);
+        Assert.Contains("\"requested\":true", view);
+        Assert.Contains("\"stableId\":\"body[1]/tbl[0]/tr[3]/tc[0]/p[0]\"", view);
+        Assert.Contains("\"source\":\"table_cell\"", view);
+        Assert.Contains("3.2. Ngoài dự báo", view);
+        Assert.DoesNotContain("# 3.2. Ngoài dự báo", view);
+        Assert.DoesNotContain("<p ", view);
     }
 }
 

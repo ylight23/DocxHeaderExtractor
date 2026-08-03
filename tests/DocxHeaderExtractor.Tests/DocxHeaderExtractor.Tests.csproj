@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\DocxHeaderExtractor.AgentHarness\DocxHeaderExtractor.AgentHarness.csproj" />
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Core\DocxHeaderExtractor.Core.csproj" />
   </ItemGroup>
 

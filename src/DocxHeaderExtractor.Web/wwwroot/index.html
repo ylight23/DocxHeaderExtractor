@@ -360,6 +360,9 @@ function handle(evt) {
   if (evt.type === 'log') {
     $('log').textContent += evt.message + '\n';
     $('log').scrollTop = $('log').scrollHeight;
+  } else if (evt.type === 'agent') {
+    $('log').textContent += `[agent:${evt.stage}] ${evt.message}\n`;
+    $('log').scrollTop = $('log').scrollHeight;
   } else if (evt.type === 'error') {
     serverError = true;
     showError(evt.message);

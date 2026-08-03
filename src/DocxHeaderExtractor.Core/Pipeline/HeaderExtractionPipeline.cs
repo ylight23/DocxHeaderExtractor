@@ -72,7 +72,7 @@ public sealed class PipelineOptions
     /// </summary>
     public bool RecoverNumberedSiblings { get; set; } = true;
 
-    /// <summary>Ghi XML tinh gọn đã gửi cho mô hình ra file (debug).</summary>
+    /// <summary>Ghi XML tinh gọn từ canonical model ra file để debug/đối chiếu source.</summary>
     public string? DumpXmlPath { get; set; }
 
     /// <summary>In nguyên văn đầu ra của mô hình cho từng khối (debug prompt/grammar).</summary>
@@ -267,7 +267,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
         if (review.Count == 0) return [];
 
         var reviewIndexes = review.Select(p => p.Index).ToHashSet();
-        var lines = SlimXmlSerializer.BuildLines(slim, _options.Extraction, reviewIndexes);
+        var lines = NeutralDocumentViewSerializer.BuildLines(slim, _options.Extraction, reviewIndexes);
 
         // Chỉ bỏ qua được khi TrustStyles bật — tắt nó đi thì câu trả lời của mô hình mới có trọng lượng.
         var skipStyled = _options.SkipStyledCandidates && _options.TrustStyles;
@@ -395,7 +395,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             : weakModelIndexes;
         if (criticIndexes.Count > 0)
         {
-            var criticLines = SlimXmlSerializer.BuildLines(slim, _options.Extraction, criticIndexes);
+            var criticLines = NeutralDocumentViewSerializer.BuildLines(slim, _options.Extraction, criticIndexes);
             var critic = await RunPassAsync(llm, criticLines,
                 Math.Min(_options.Llama.ChunkTokenBudget, 3000),
                 Math.Min(_options.Llama.MaxCandidatesPerChunk, 12),
@@ -482,7 +482,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             .Select(h => h.Index).ToHashSet();
         if (structureIndexes.Count > 0)
         {
-            var verifyLines = SlimXmlSerializer.BuildLines(slim, _options.Extraction, structureIndexes);
+            var verifyLines = NeutralDocumentViewSerializer.BuildLines(slim, _options.Extraction, structureIndexes);
             var verification = await RunPassAsync(llm, verifyLines,
                 Math.Min(_options.Llama.ChunkTokenBudget, 3000),
                 Math.Min(_options.Llama.MaxCandidatesPerChunk, 16),
@@ -571,7 +571,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             countTokens);
         var prefix = passLabel is null ? "" : passLabel + " — ";
         var unit = countTokens is null ? "token ước lượng" : "token thật";
-        Log($"{prefix}chia thành {chunks.Count} khối XML (ngân sách {chunkTokens} {unit}/khối)");
+        Log($"{prefix}chia thành {chunks.Count} khối context trung lập (ngân sách {chunkTokens} {unit}/khối)");
 
         var votes = new Dictionary<int, List<int>>();
         var explicitNonHeadings = new HashSet<int>();
@@ -580,21 +580,21 @@ public sealed class HeaderExtractionPipeline : IDisposable
         {
             ct.ThrowIfCancellationRequested();
 
-            var xml = SlimXmlSerializer.WrapChunk(chunk.Lines, chunk.Number, chunks.Count);
+            var documentView = NeutralDocumentViewSerializer.WrapChunk(chunk.Lines, chunk.Number, chunks.Count);
             if (!useCritic && _correctionMemory is not null && _options.Backend == InferenceBackend.Local)
             {
-                var examples = _correctionMemory.FindExamples(xml);
+                var examples = _correctionMemory.FindExamples(documentView);
                 if (examples.Count > 0)
                 {
-                    xml = CorrectionMemory.InjectExamples(xml, examples);
+                    documentView = CorrectionMemory.InjectExamples(documentView, examples);
                     Log($"    ↳ memory: {examples.Count} correction tương tự đã xác nhận (chỉ làm ví dụ, không ép kết quả)");
                 }
             }
             var allowed = chunk.CandidateIndexes;
 
             var result = useCritic
-                ? await llm.CritiqueAsync(xml, allowed, ct)
-                : await llm.ClassifyAsync(xml, allowed, ct);
+                ? await llm.CritiqueAsync(documentView, allowed, ct)
+                : await llm.ClassifyAsync(documentView, allowed, ct);
             Log($"  {prefix}khối {chunk.Number}/{chunks.Count}: {allowed.Count} ứng viên → " +
                 $"{result.Headings.Count} tiêu đề ({result.ElapsedMs} ms" +
                 (result.RejectedIndexes > 0 ? $", loại {result.RejectedIndexes} chỉ số bịa" : "") + ")");

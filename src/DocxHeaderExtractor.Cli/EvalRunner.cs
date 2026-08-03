@@ -1,4 +1,5 @@
 using System.Text;
+using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
@@ -37,7 +38,8 @@ public static class EvalRunner
             return 2;
         }
 
-        using var pipeline = new HeaderExtractionPipeline(options);
+        using var tool = new PipelineDocumentExtractionTool(options);
+        var harness = new DocumentAgentHarness(tool);
         var scores = new List<DocScore>();
         var calibration = new PrecisionCalibrationBuilder(PrecisionCalibrationProfile.ConfigurationFor(options));
         var processingFailures = 0;
@@ -69,7 +71,11 @@ public static class EvalRunner
                 }
                 finally { LegacyDocConverter.Cleanup(conversion); }
 
-                var outline = await pipeline.RunAsync(docx, ct);
+                var run = await harness.RunAsync(new DocumentAgentRequest(
+                    docx,
+                    AllowExternalDataTransfer:
+                        !options.DisableLlm && options.Backend == InferenceBackend.OpenRouter), ct);
+                var outline = run.Outline;
                 scores.Add(Evaluator.Score(name, outline, candidates, key));
                 calibration.Add(outline, key);
             }

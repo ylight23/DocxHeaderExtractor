@@ -3,13 +3,13 @@ using DocxHeaderExtractor.Core.OpenXmlLayer;
 namespace DocxHeaderExtractor.Core.Chunking;
 
 /// <summary>
-/// Một khối XML gửi cho mô hình. <see cref="CandidateIndexes"/> là những đoạn mô hình PHẢI
+/// Một khối các dòng prompt gửi cho mô hình. <see cref="CandidateIndexes"/> là những đoạn mô hình PHẢI
 /// trả lời; các ứng viên khác vẫn nằm trong <see cref="Lines"/> làm ngữ cảnh nhưng không bị hỏi.
 /// </summary>
 public sealed record XmlChunk(int Number, IReadOnlyList<XmlLine> Lines, IReadOnlyList<int> CandidateIndexes);
 
 /// <summary>
-/// Cắt danh sách dòng XML thành các khối vừa cửa sổ ngữ cảnh của mô hình,
+/// Cắt danh sách dòng prompt thành các khối vừa cửa sổ ngữ cảnh của mô hình,
 /// có chồng lấn vài ứng viên để không mất tiêu đề ở mép khối.
 /// </summary>
 public static class SlimXmlChunker
