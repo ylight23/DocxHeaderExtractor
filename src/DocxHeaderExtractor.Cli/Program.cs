@@ -92,9 +92,21 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
         Console.Error.WriteLine("Không tìm thấy file nào khớp đầu vào.");
         return 2;
     }
+    if (files.Count > 1 && o.WritebackPath is not null)
+    {
+        Console.Error.WriteLine("Chỉ dùng --write-docx khi xử lý đúng một tài liệu.");
+        return 2;
+    }
 
     using var tool = new PipelineDocumentExtractionTool(o.Pipeline);
-    var harness = new DocumentAgentHarness(tool);
+    // Tool ghi chỉ được nạp khi người dùng nêu đích rõ ràng: một harness có sẵn quyền ghi mà
+    // không ai yêu cầu là bề mặt rủi ro không cần thiết.
+    using IDocumentActionTool? actionTool = o.WritebackPath is null
+        ? null
+        : new OutlineWritebackTool(o.Pipeline.Extraction);
+    var harness = new DocumentAgentHarness(tool, actionTool: actionTool);
+    if (!o.Quiet)
+        Console.Error.WriteLine($"  policy: {harness.Skill}");
     var outputs = new List<string>();
     int failed = 0;
 
@@ -103,17 +115,18 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
         if (!o.Quiet) Console.Error.WriteLine($"» {Path.GetFileName(file)}");
         try
         {
-            var agentRun = await harness.RunAsync(AgentRequest(file, o.Pipeline), ct);
+            var agentRun = await harness.RunAsync(AgentRequest(file, o), ct);
             var outline = agentRun.Outline;
             if (!o.Quiet)
-                Console.Error.WriteLine(
-                    $"  Xong: {outline.Headings.Count} tiêu đề / {outline.ParagraphCount} đoạn " +
-                    $"({outline.ElapsedMs} ms) · agent={agentRun.Outcome} · run={agentRun.RunId:N}");
+            {
+                Console.Error.WriteLine($"  {AgentRunNarrator.Describe(agentRun)}");
+                Console.Error.WriteLine($"  agent={agentRun.Outcome} · run={agentRun.RunId:N}");
+            }
             outputs.Add(OutlineFormatter.Format(outline, o.Format));
         }
         catch (Exception ex) when (ex is not OperationCanceledException)
         {
-            Console.Error.WriteLine($"  Thất bại: {ex.Message}");
+            Console.Error.WriteLine($"  {AgentRunNarrator.DescribeError(ex)}");
             failed++;
         }
     }
@@ -121,10 +134,22 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
     var text = string.Join(Environment.NewLine, outputs);
     if (o.OutputPath is { } path)
     {
-        await File.WriteAllTextAsync(path, text, new UTF8Encoding(false), ct);
-        if (!o.Quiet) Console.Error.WriteLine($"Đã ghi: {path}");
+        // Không tài liệu nào qua được thì không ghi. Mã thoát đã khác 0 từ trước, nhưng lần chạy
+        // hỏng vẫn tạo file rỗng — và nếu đường dẫn đó đang giữ kết quả lần trước thì nó vừa bị
+        // xoá. Script đọc file thay vì đọc mã thoát sẽ hiểu thành "tài liệu không có heading nào".
+        if (outputs.Count == 0)
+            Console.Error.WriteLine(
+                $"Không ghi {path}: cả {failed} tài liệu đều lỗi nên không có kết quả nào để ghi.");
+        else
+        {
+            await File.WriteAllTextAsync(path, text, new UTF8Encoding(false), ct);
+            if (!o.Quiet)
+                Console.Error.WriteLine(failed == 0
+                    ? $"Đã ghi: {path}"
+                    : $"Đã ghi {outputs.Count}/{files.Count} tài liệu vào {path} — {failed} tài liệu lỗi và KHÔNG có trong file.");
+        }
     }
-    else
+    else if (outputs.Count > 0)
     {
         Console.WriteLine(text);
     }
@@ -151,13 +176,15 @@ static int RunDumpXml(CommandLineOptions o)
 
             if (o.CompactXml)
             {
-                // XML tinh gọn chỉ để debug/đối chiếu. Prompt production dùng neutral document
-                // view (text + JSON metadata) để không biến markup thành gợi ý heading.
+                // Trợ giúp CLI hứa "--compact = đúng nội dung gửi cho mô hình", nhưng nhánh này vẫn
+                // in XML tinh gọn trong khi pipeline đã chuyển sang neutral document view (text +
+                // metadata JSON) từ lâu — dump lệch khỏi thứ mô hình thật sự đọc thì mọi phiên gỡ
+                // lỗi dựa vào nó đều đi sai hướng. Dùng đúng bộ serializer của pipeline.
                 var review = o.Pipeline.ReviewAllParagraphs
                     ? slim.Paragraphs.Where(p => p.Role != ParagraphRole.Empty).Select(p => p.Index).ToHashSet()
                     : null;
-                var lines = SlimXmlSerializer.BuildLines(slim, o.Pipeline.Extraction, review);
-                Console.WriteLine(SlimXmlSerializer.WrapChunk(lines, 1, 1));
+                var lines = NeutralDocumentViewSerializer.BuildLines(slim, o.Pipeline.Extraction, review);
+                Console.WriteLine(NeutralDocumentViewSerializer.WrapChunk(lines, 1, 1));
             }
             else
             {
@@ -239,7 +266,7 @@ static async Task<int> RunReviewAsync(CommandLineOptions o, CancellationToken ct
         try
         {
             var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(conversion.Path);
-            var agentRun = await harness.RunAsync(AgentRequest(file, o.Pipeline), ct);
+            var agentRun = await harness.RunAsync(AgentRequest(file, o), ct);
             var outline = agentRun.Outline;
             var bundle = ReviewBundle.Create(outline, slim);
             var output = o.OutputPath ?? Path.ChangeExtension(file, ".review.json");
@@ -288,9 +315,14 @@ static int RunReviewKey(CommandLineOptions o)
     return 0;
 }
 
-static DocumentAgentRequest AgentRequest(string file, PipelineOptions options) =>
+static DocumentAgentRequest AgentRequest(string file, CommandLineOptions o) =>
     new(file, AllowExternalDataTransfer:
-        !options.DisableLlm && options.Backend == InferenceBackend.OpenRouter);
+        !o.Pipeline.DisableLlm && o.Pipeline.Backend == InferenceBackend.OpenRouter)
+    {
+        WritebackTargetPath = o.WritebackPath,
+        AllowWritebackOverwrite = o.WritebackOverwrite,
+        ApplyHeadingStyles = o.WritebackHeadingStyles,
+    };
 
 static int RunSample(CommandLineOptions o)
 {

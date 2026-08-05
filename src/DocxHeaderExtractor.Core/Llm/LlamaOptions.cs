@@ -24,11 +24,27 @@ public sealed class LlamaOptions
     /// <summary>Đường dẫn tới file .gguf.</summary>
     public string ModelPath { get; set; } = "";
 
-    /// <summary>Kích thước cửa sổ ngữ cảnh. 4096 đủ cho một document-view chunk nhỏ và tiết kiệm RAM.</summary>
+    /// <summary>
+    /// Context ban đầu trước khi áp model profile. Model đã biết như Qwen2.5/Llama 3.2 được nâng
+    /// lên 8192; model 4K không nhận diện sẽ được co ngân sách chunk cho vừa.
+    /// </summary>
     public uint ContextSize { get; set; } = 4096;
 
     /// <summary>Số token tối đa cho mỗi document-view chunk (phần còn lại dành cho prompt + đầu ra).</summary>
     public int ChunkTokenBudget { get; set; } = 2200;
+
+    /// <summary>
+    /// Profile chunk cho backend chạy qua RPC (OpenRouter, LM Studio). Mặc định 4096/2200 là của
+    /// bản local bị giới hạn VRAM; backend RPC không có ràng buộc đó nên dùng bộ 8K/5K đã đo cho
+    /// Qwen. Không dùng chung mà để mặc định 2200 thì tài liệu bị xé vụn: đo được trên tài liệu
+    /// thật là 13 ứng viên → 27 khối, tức 27 lượt RPC cho thứ nhét vừa vài lượt, và mỗi lượt lại
+    /// gửi lại toàn bộ prompt hệ thống.
+    /// </summary>
+    public void UseRemoteChunkProfile()
+    {
+        ContextSize = 8192;
+        ChunkTokenBudget = 5000;
+    }
 
     /// <summary>Số token tối đa mô hình được sinh ra cho mỗi khối.</summary>
     public int MaxOutputTokens { get; set; } = 900;
@@ -44,9 +60,15 @@ public sealed class LlamaOptions
     public int GpuLayerCount { get; set; }
 
     /// <summary>0 = greedy, cho kết quả ổn định và lặp lại được.</summary>
+    /// <summary>
+    /// Seed dùng chung cho mọi backend. Backend RPC phải khai báo đúng seed này thì so sánh
+    /// local-vs-LM Studio mới là so hai backend, không phải so hai cấu hình sampler.
+    /// </summary>
+    public const uint SharedSamplerSeed = 1234;
+
     public float Temperature { get; set; }
 
-    public uint Seed { get; set; } = 1234;
+    public uint Seed { get; set; } = SharedSamplerSeed;
 
     /// <summary>Cách ràng buộc đầu ra bằng GBNF.</summary>
     public GrammarMode GrammarMode { get; set; } = GrammarMode.Enumerated;
@@ -60,7 +82,9 @@ public sealed class LlamaOptions
     /// Đo trên Qwen2.5-7B: 40 ứng viên/khối cho 7/40, cùng tài liệu ở 13 ứng viên/khối cho 6/13
     /// với các tiêu đề then chốt đều đúng. Nhỏ hơn thì chính xác hơn nhưng tốn prefill nhiều lần.
     /// </summary>
-    public int MaxCandidatesPerChunk { get; set; } = 12;
+    // Batch vừa đủ lớn cho Qwen 7B: giảm số request nhưng tránh nhầm ID/cấp khi
+    // mỗi ứng viên mang theo các đoạn lân cận.
+    public int MaxCandidatesPerChunk { get; set; } = 6;
 
     /// <summary>In log gốc của llama.cpp.</summary>
     public bool VerboseNativeLog { get; set; }
@@ -88,15 +112,58 @@ public sealed class LlamaOptions
     public bool ReusePromptPrefix { get; set; } = true;
 
     /// <summary>
-    /// Profile thực dụng cho Qwen2.5-7B: 8K context nhưng chỉ dành khoảng 5K cho XML, phần còn
+    /// Profile thực dụng cho Qwen2.5-7B: 8K context nhưng chỉ dành khoảng 5K cho document view, phần còn
     /// lại cho chat template, system prompt, JSON và đệm. Chỉ thay các giá trị mặc định, nên
     /// cấu hình người dùng đặt khác vẫn được giữ nguyên.
     /// </summary>
     public void ApplyRecommendedModelProfile()
     {
-        if (!Path.GetFileName(ModelPath).Contains("qwen", StringComparison.OrdinalIgnoreCase)) return;
-        if (ContextSize == 4096) ContextSize = 8192;
-        if (ChunkTokenBudget == 2200) ChunkTokenBudget = 5000;
+        var fileName = Path.GetFileName(ModelPath);
+        var qwen = fileName.Contains("qwen", StringComparison.OrdinalIgnoreCase);
+        var knownLongContext = qwen ||
+            fileName.Contains("llama-3.2", StringComparison.OrdinalIgnoreCase) ||
+            fileName.Contains("llama3.2", StringComparison.OrdinalIgnoreCase);
+
+        // Qwen 7B đã được đo với ngân sách 5K. Chỉ thay giá trị mặc định, không ghi đè cấu hình
+        // chunk do người dùng chủ động đặt.
+        if (qwen && ChunkTokenBudget == 2200) ChunkTokenBudget = 5000;
+
+        var required = RequiredContextSize(ChunkTokenBudget, MaxOutputTokens);
+        if (ContextSize >= required) return;
+
+        if (knownLongContext && ContextSize == 4096)
+        {
+            // Qwen2.5 và Llama 3.2 đều hỗ trợ hơn 8K; 8192 là mức nhỏ nhất dạng power-of-two
+            // chứa đủ document view + output + system prompt hiện tại.
+            ContextSize = NextPowerOfTwo(required);
+            return;
+        }
+
+        // Dưới mức tối thiểu cho prompt + output + một chunk hữu dụng thì không có cách co tiếp;
+        // nâng lên power-of-two nhỏ nhất (thực tế là 4096).
+        var minimumUsable = RequiredContextSize(400, MaxOutputTokens);
+        if (ContextSize < minimumUsable) ContextSize = NextPowerOfTwo(minimumUsable);
+
+        // Model không nhận diện được có thể thật sự chỉ hỗ trợ 4K. Không tự nâng lên 8K khi chưa
+        // biết khả năng của model; thu nhỏ document chunk để cấu hình vẫn chạy được.
+        ChunkTokenBudget = Math.Max(400, (int)ContextSize - MaxOutputTokens - FixedPromptTokens);
+    }
+
+    public static uint SuggestedContextForModel(string modelPath)
+    {
+        var options = new LlamaOptions { ModelPath = modelPath };
+        options.ApplyRecommendedModelProfile();
+        return options.ContextSize;
+    }
+
+    public static uint RequiredContextSize(int chunkTokenBudget, int maxOutputTokens) =>
+        checked((uint)(chunkTokenBudget + maxOutputTokens + FixedPromptTokens));
+
+    private static uint NextPowerOfTwo(uint value)
+    {
+        var result = 1024u;
+        while (result < value && result < 1u << 30) result <<= 1;
+        return result;
     }
 
     /// <summary>

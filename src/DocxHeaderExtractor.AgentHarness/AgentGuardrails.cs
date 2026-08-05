@@ -8,7 +8,8 @@ public sealed record AgentGuardrailDecision(bool Allowed, string Code, string Me
 
 public sealed record DocumentAgentGuardrailContext(
     DocumentAgentRequest Request,
-    AgentToolDescriptor Tool);
+    AgentToolDescriptor Tool,
+    AgentToolDescriptor? ActionTool = null);
 
 public interface IDocumentAgentGuardrail
 {
@@ -70,6 +71,66 @@ public sealed class ExternalDataTransferGuardrail : IDocumentAgentGuardrail
             context.Tool.SendsDataExternally
                 ? "Đã xác nhận cho phép suy luận từ xa cho run này."
                 : "Run chỉ xử lý cục bộ."));
+    }
+}
+
+/// <summary>
+/// Kiểm tra đích ghi TRƯỚC khi tốn một lượt suy luận, và chặn mọi cách ghi đè ngoài ý muốn.
+/// Quan trọng nhất: đích không được trùng file nguồn — tài liệu gốc là source of truth, agent
+/// không có quyền sửa nó.
+/// </summary>
+public sealed class WritebackTargetGuardrail : IDocumentAgentGuardrail
+{
+    private static readonly HashSet<string> WritableExtensions =
+        new(StringComparer.OrdinalIgnoreCase) { ".docx", ".docm" };
+
+    public string Name => "writeback_target";
+
+    public ValueTask<AgentGuardrailDecision> EvaluateAsync(
+        DocumentAgentGuardrailContext context,
+        CancellationToken ct = default)
+    {
+        ct.ThrowIfCancellationRequested();
+        var request = context.Request;
+
+        if (!request.WantsWriteback)
+        {
+            return ValueTask.FromResult(context.ActionTool is null
+                ? AgentGuardrailDecision.Pass("read_only", "Run chỉ đọc, không có hành động ghi.")
+                : AgentGuardrailDecision.Block(
+                    "writeback_target_missing",
+                    "Đã nạp tool ghi nhưng run không chỉ định đích; không suy đoán đường dẫn hộ caller."));
+        }
+
+        if (context.ActionTool is null)
+            return ValueTask.FromResult(AgentGuardrailDecision.Block(
+                "writeback_tool_not_configured",
+                "Run yêu cầu ghi outline nhưng harness không được nạp tool ghi nào."));
+
+        var target = Path.GetFullPath(request.WritebackTargetPath!);
+        if (!WritableExtensions.Contains(Path.GetExtension(target)))
+            return ValueTask.FromResult(AgentGuardrailDecision.Block(
+                "writeback_extension_unsupported",
+                $"Chỉ ghi được ra .docx/.docm, nhận: {Path.GetExtension(target)}"));
+
+        if (File.Exists(request.InputPath) &&
+            string.Equals(Path.GetFullPath(request.InputPath), target, StringComparison.OrdinalIgnoreCase))
+            return ValueTask.FromResult(AgentGuardrailDecision.Block(
+                "writeback_overwrites_source",
+                "Đích ghi trùng tài liệu nguồn; agent không được sửa file gốc."));
+
+        if (File.Exists(target) && !request.AllowWritebackOverwrite)
+            return ValueTask.FromResult(AgentGuardrailDecision.Block(
+                "writeback_target_exists",
+                $"File đích đã tồn tại và run chưa cho phép ghi đè: {Path.GetFileName(target)}"));
+
+        var directory = Path.GetDirectoryName(target);
+        if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+            return ValueTask.FromResult(AgentGuardrailDecision.Block(
+                "writeback_directory_missing", $"Thư mục đích không tồn tại: {directory}"));
+
+        return ValueTask.FromResult(AgentGuardrailDecision.Pass(
+            "writeback_target_valid", $"Đích ghi hợp lệ: {Path.GetFileName(target)}"));
     }
 }
 

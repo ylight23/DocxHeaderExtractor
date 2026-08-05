@@ -99,6 +99,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         var seen = new HashSet<int>();
         var kept = new Dictionary<int, ModelHeading>();
         var explicitNonHeadings = new HashSet<int>();
+        var rejectedRoles = new Dictionary<int, SemanticRole>();
         var rawOutputs = new List<string>();
         var rejected = 0;
         long elapsedMs = 0;
@@ -179,7 +180,11 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
                 if (!seen.Add(decision.Index)) continue;
                 if ((roles && decision.Role != SemanticRole.Heading) || decision.Level <= 0)
                 {
-                    if (decision.Role != SemanticRole.Uncertain) explicitNonHeadings.Add(decision.Index);
+                    if (decision.Role != SemanticRole.Uncertain)
+                    {
+                        explicitNonHeadings.Add(decision.Index);
+                        rejectedRoles[decision.Index] = decision.Role;
+                    }
                     continue;
                 }
                 decision.Level = Math.Clamp(decision.Level, 1, 9);
@@ -201,7 +206,8 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             string.Join(Environment.NewLine, rawOutputs),
             rejected,
             elapsedMs,
-            explicitNonHeadings);
+            explicitNonHeadings,
+            rejectedRoles);
     }
 
     private static string ExtractContent(string response)

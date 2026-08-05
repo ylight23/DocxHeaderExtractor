@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "docx-header-extractor": {
+      "command": "dotnet",
+      "args": [
+        "C:\\DocxHeaderExtractor\\out-mcp\\dhx-mcp.dll"
+      ],
+      "env": {
+        "DHX_MCP_ALLOWED_ROOTS": "C:\\DocxHeaderExtractor",
+        "LMSTUDIO_ENDPOINT": "http://127.0.0.1:1234/v1/chat/completions",
+        "LMSTUDIO_MODEL": "model-identifier-from-v1-models",
+        "LMSTUDIO_CONTEXT_SIZE": "4096"
+      }
+    }
+  }
+}

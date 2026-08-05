@@ -10,4 +10,14 @@
     <ProjectReference Include="..\DocxHeaderExtractor.Core\DocxHeaderExtractor.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!--
+      Policy skill được nạp lúc chạy và harness fail-closed khi thiếu, nên nó phải đi theo mọi
+      output (kể cả project tham chiếu và test runner) — không chỉ tồn tại trong cây nguồn.
+    -->
+    <Content Include="..\..\skills\heading-extraction\SKILL.md"
+             Link="skills\heading-extraction\SKILL.md"
+             CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

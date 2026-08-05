@@ -1,0 +1,173 @@
+# Handoff — chuyển trích xuất heading sang hướng cấu trúc quyết định
+
+Tài liệu này ghi lại một phiên làm việc: đổi kiến trúc quyết định heading, đo lại từng bước, và
+những chỗ suýt kết luận sai. Viết cho người tiếp nhận, nên phần "vì sao" quan trọng hơn phần
+"đã sửa gì".
+
+## 1. Kiến trúc mới
+
+Trước: LLM quyết định đoạn nào là heading **và** cấp của nó; các luật cấu trúc chạy sau như lưới
+cứu, và có quyền bị LLM phủ quyết.
+
+Sau: **cấu trúc quyết định, LLM chỉ xác nhận ngữ nghĩa.**
+
+Thứ tự quyền lực khi gán cấp (`HeaderExtractionPipeline.ResolveLevel`):
+
+1. `w:lvl/w:pStyle` — danh sách đa cấp tự khai cấp này gắn với style Heading N
+2. Style Heading built-in trên chính đoạn
+3. Phiếu mô hình
+
+Nguyên tắc xuyên suốt: **phán quyết của mô hình được quyền hạ độ tin cậy, không được quyền xoá
+bằng chứng cấu trúc tường minh.** Mục bị bác mà có bằng chứng cấu trúc thì rơi vào trạng thái
+*cần duyệt* (`Disputed`, confidence ≤ 0.5), không biến mất.
+
+## 2. Kết quả đo
+
+Bộ bench 8 tài liệu tổng hợp (`dhx bench`), mô hình Qwen2.5-7B-Instruct-Q4_K_M, GPU 20 lớp.
+
+| Mốc | Precision | Recall | F1 | Đúng cấp | Tuyệt đối |
+|---|---|---|---|---|---|
+| Đầu phiên | 100% | 70,6% | 82,8% | 54,2% | 1/7 |
+| + không cho critic xoá bằng chứng cấu trúc | 100% | 88,2% | 90,9% | 90,0% | 5/7 |
+| + bỏ hardcode khỏi prompt, bench 8 tài liệu | 97,4% | **97,4%** | **97,4%** | **100%** | 6/8 |
+| Cùng bản trên, chạy `--structural-only` | 97,4% | **97,4%** | **97,4%** | **100%** | 6/8 |
+| **Bản bàn giao** (`--structural-only`) | **97,5%** | **100%** | **98,7%** | **100%** | **7/8** |
+
+Dòng cuối quan trọng vì **giao diện web mặc định tick "Bỏ luật từ ngữ"** (`structuralOnly`), còn
+`dhx eval` thì không — tức mọi con số trước đó đo ở một cấu hình khác cấu hình chạy thật. Sau khi
+thay danh sách từ khoá bằng luật hình dạng, hai cấu hình cho kết quả trùng khít.
+
+Trần trên đo bằng Claude Sonnet đọc **đúng cùng document view và cùng prompt**: recall 97,1%,
+đúng cấp 100%. Nghĩa là Qwen 7B trong pipeline này đã chạm mức của một mô hình mạnh hơn nhiều khi
+cả hai nhận cùng lượng thông tin — dư địa còn lại không nằm ở việc đổi mô hình.
+
+## 3. Những gì đã đổi, theo mức đóng góp đo được
+
+### 3.1 Ngừng để mô hình xoá bằng chứng cấu trúc (+17,6 điểm recall)
+
+Bốn nhánh trong `HeaderExtractionPipeline` cho phép một phán quyết — hoặc cả sự **im lặng** — của
+mô hình xoá hẳn heading:
+
+- `document_title` ở lượt critic
+- `document_title` ở lượt phân loại (chí mạng nhất: `accepted` chỉ dựng từ phiếu, nên đoạn bị gán
+  `d` ngay lượt đầu không bao giờ tới được critic)
+- critic bác đoạn mang style Heading built-in
+- critic **không trả lời** cho đoạn mang style built-in (xoá vì *thiếu* bằng chứng)
+
+`document_title` không phải lời bác: nó khẳng định đoạn CÓ vai trò tiêu đề, chỉ khác là tiêu đề của
+cả văn bản. Đo được: đoạn 0 bị mất ở 6/7 tài liệu vì heading mở đầu trông giống tiêu đề chính.
+
+### 3.2 Bỏ hardcode khỏi prompt
+
+Lượt đo đưa recall từ 88,2% lên 97,4% gộp ba thay đổi (bỏ hardcode, siết luật vớt dòng độc lập,
+thêm tài liệu bench thứ tám) nên **không quy được toàn bộ 9,2 điểm cho riêng phần này**. Bằng chứng
+riêng cho nó là ở mức tài liệu: `02-dinh-dang-thu-cong` từ thiếu 3 heading + sai 3 cấp thành tuyệt
+đối, và đó là tài liệu gõ tay không có bằng chứng cấu trúc nào để hai thay đổi kia tác động.
+
+Prompt critic từng liệt kê `"dòng điều phối hành chính, địa chỉ/người gửi-người nhận, lời
+chuyển/kính gửi, tên cơ quan, mã biểu mẫu, dấu mật/khẩn…"` — một bảng phân loại cứng cho văn bản
+hành chính Việt Nam, và **chỉ có vế phủ định**. Hệ quả đo được: critic loại 3 heading trong tài
+liệu dùng toàn style Heading chuẩn.
+
+Thay bằng phép thử quan hệ: *đoạn này có mở ra phạm vi nội dung bên dưới không, hay sau nó chỉ toàn
+dòng cùng loại với nó?* — kèm vế khẳng định *"thì nó là heading, kể cả khi ngắn, không đậm, không
+đánh số"*. `ChunkerAndJsonTests` khoá chiều ngược: prompt **không được** chứa lại các cụm đặc thù đó.
+
+Cùng lý do, `KeywordPrefixRx` (`chương|phần|mục|điều|chapter|section|…`) được thay bằng
+`LabelledNumberPrefixRx` — nhận theo **hình dạng** "từ viết hoa + số + phần tên", không quan tâm từ
+đó là gì. Test có cả `Quyển 3.` và `Abschnitt 4.` (tiếng Đức).
+
+### 3.3 Tắt chuẩn hoá cấp theo độ sâu ngăn xếp (đúng cấp 54% → 100%)
+
+`NormalizeLevels` gán cấp theo độ sâu ngăn xếp nên heading đầu tiên **còn sống** luôn thành cấp 1 —
+mất một heading cha là mọi con tụt theo. Dấu vân tay: 10/10 lỗi cấp đều một chiều "trả về 1, đáp án
+2". Giờ mặc định tắt; bật lại bằng `--normalize-levels`.
+
+### 3.4 Đọc thêm OOXML
+
+- `w:lvl/w:pStyle` → `SlimParagraph.NumberingStyleLevel`
+- `w:numStyleLink` → lần theo thư viện danh sách dùng chung (trước đây mọi tài liệu dùng list style
+  đều ra numbering rỗng)
+- Đoạn đứng ngay trước các dòng mục lục → `PrecedesTableOfContents`, thay cho danh sách từ khoá
+  ("MỤC LỤC", "Danh mục hình ảnh", "Inhaltsverzeichnis" đều nhận được)
+
+### 3.5 Tốc độ
+
+Không hỏi lại những gì cấu trúc đã quyết:
+
+- critic bỏ qua đoạn có `NumberingStyleLevel` hoặc style built-in (câu trả lời không dùng được vào
+  việc gì: chúng đã được bảo vệ khỏi xoá và cấp lấy từ cấu trúc)
+- lượt gán cấp toàn cục chỉ hỏi phần cấu trúc chưa quyết được; bỏ hẳn nếu không còn gì để hỏi
+
+Đo được: `01-style-chuan` từ ~424 s xuống ~144 s. Hiệu quả phụ thuộc tài liệu — file soạn bằng
+style/multilevel list chuẩn nhanh gấp ~3, file gõ tay gần như không đổi.
+
+### 3.6 Sửa lỗi tái lập
+
+- **LM Studio không được khai báo sampler** → kết quả phụ thuộc preset trong GUI. Cùng file, cùng
+  model, khác preset là khác đáp án. Giờ gửi tường minh `top_k=1, top_p=0.9, repeat_penalty=1.0,
+  seed` dùng chung hằng `LlamaOptions.SharedSamplerSeed` với backend local. Đo được: recall 40% →
+  100% trên một tài liệu.
+- **Backend local không nhận danh sách ID cần trả lời**, trong khi hai backend RPC đều gửi. Grammar
+  ép được cú pháp nhưng không nằm trong ngữ cảnh mô hình đọc. Đo được: 4/5 → 5/5.
+- `JsonSerializer` mặc định escape non-ASCII → dev log hiện `ạ`, trông như lỗi font.
+- `dhx xml --compact` in `SlimXmlSerializer` trong khi pipeline gửi `NeutralDocumentViewSerializer` —
+  dump lệch khỏi thứ mô hình thật sự đọc, dù trợ giúp CLI hứa ngược lại.
+- CLI ghi đè file `-o` bằng nội dung rỗng khi mọi tài liệu đều lỗi (xoá mất kết quả lần trước).
+
+## 4. Cách đo và những cái bẫy đã gặp
+
+`dhx eval <thư-mục> -m <model.gguf> -ngl 20 --calibration-out <profile.json>` — mỗi `X.docx` cần một
+`X.key` đi kèm; `dhx bench <thư-mục>` sinh cả hai.
+
+Bốn cái bẫy đã thật sự làm sai kết luận trong phiên này:
+
+1. **Đổi thành phần batch làm mô hình trả lời khác đi cho những mục KHÔNG liên quan.** Thêm 2 mục
+   vào batch critic đưa một tài liệu từ "giữ 3, loại 0" sang "giữ 3, loại 3", kéo recall toàn bộ
+   bench từ 73,5% xuống 70,6%. Không bao giờ gộp nhiều thay đổi vào một lượt đo.
+2. **Chẩn đoán đúng triệu chứng nhưng vá sai tầng.** Bản vá `document_title` đặt ở critic trong khi
+   đoạn chết từ lượt phân loại — chỉ lộ ra khi đo lại.
+3. **Cấu hình đo lệch cấu hình chạy.** Giao diện mặc định tick "Bỏ luật từ ngữ" (`structuralOnly`),
+   còn `dhx eval` không truyền cờ nên chạy ở cấu hình dễ hơn.
+4. **Log nói dối.** `"Đang nạp mô hình"` in ra ở mọi tài liệu trong một lượt eval khiến tưởng weights
+   bị nạp lại 7 lần; dòng native của llama.cpp chỉ xuất hiện một lần. Đã sửa câu log.
+5. **Đạt ngưỡng không có nghĩa là xong.** Bản vá tiêu đề mục lục đưa recall lên 100% và F1 96,3% —
+   vượt mọi ngưỡng — nhưng đồng thời biến hai DÒNG MỤC của mục lục thành heading, vì một dòng mục
+   cũng đứng ngay trước dòng mục kế tiếp. Lượt đo sau khi sửa: precision 92,9% → 97,5%. Nếu dừng ở
+   lượt trước vì con số đã đủ đẹp thì đã giao một lỗi tự gây.
+
+Test đi kèm đều có **kiểm tra đột biến**: tạm vô hiệu hoá logic rồi chạy lại để chắc test đổ. Ba
+lần làm vậy đều bắt được — ví dụ bỏ đọc `pStyle` thì `MultilevelListHeadingTests` đổ, bỏ lưới an
+toàn `document_title` thì cây heading rỗng sạch (`Collection: []`).
+
+## 5. Còn lại
+
+- **`07-chen-chi-thi` thừa 1 đoạn** — dòng tiêm chỉ thị, và là lỗi DUY NHẤT còn lại trên cả 39
+  heading của bộ bench. Critic từng bác đúng nó; sau khi cắt batch critic (mục 3.5) thì nó đổi ý.
+  Đây là cái giá thật của nhát cắt tốc độ, không phải nhiễu. Muốn đòi lại thì đánh đổi bằng thời
+  gian: cho đoạn không có bằng chứng cấu trúc đi cùng batch với phần cấu trúc đã khai báo như cũ.
+- **Chuỗi đánh số gõ tay chưa làm nguồn quyết định cấp.** `StructuralHierarchyResolver.PathOf` chỉ
+  hiểu số Ả Rập có dấu chấm, nên không biết `PHẦN I` nằm trên `1.`. Hướng: dùng bất biến
+  `NumberToken.Signature` (`Kind:Depth`) — gom chữ ký theo thứ tự xuất hiện, suy quan hệ lồng nhau,
+  gán cấp bằng độ sâu lồng. Chưa làm vì nó đổi cấp của mọi heading trong mọi tài liệu.
+- **Profile calibration phải sinh lại.** Chữ ký cấu hình đã đổi (`chunkTokens`, `normalizeLevels`),
+  nên profile cũ không còn áp được.
+- **Bench là 8 tài liệu tổng hợp, 39 heading** — một heading sai là ~2,5 điểm phần trăm. Con số
+  97,4% không đảm bảo cho tài liệu thật. Muốn có số thật thì cần `.key` cho vài tài liệu thật; bảng
+  Review trong giao diện web sinh ra đúng thứ đó.
+
+## 6. Phần cứng
+
+Máy đo: Radeon Pro WX 5100 **4 GB**, runtime Vulkan. Qwen2.5-7B Q4_K_M nặng 4,36 GiB nên **không
+nằm vừa VRAM** — chạy chủ yếu bằng CPU, ~45 token/s prefill. Đo được: `--gpu max` và `--gpu 0.4` ở
+các mức context khác nhau đều cùng một dải tốc độ. Mọi tối ưu phần mềm chỉ giảm **số lượng** và
+**kích thước** câu hỏi.
+
+Hai lưu ý khi nạp model trong LM Studio:
+
+- Đặt TTL rỗng (`lms load … ` không kèm `--ttl`). Model nạp kiểu JIT có TTL 1 giờ và bị đá ra giữa
+  chừng — đó là nguyên nhân các lỗi `terminated` khi chạy dài.
+- `--parallel 1`. llama.cpp **chia** context cho từng slot, nên `--parallel 4 -c 16384` chỉ còn 4096
+  token/slot, nhỏ hơn chính khối 5000 token pipeline gửi. Cache prefix cũng theo slot nên chạy song
+  song còn làm mất phần đã tiết kiệm được; đo được độ trễ mỗi request phình 354 s → 569 s.
+  `LMSTUDIO_PARALLEL` mặc định 1 vì lý do đó.

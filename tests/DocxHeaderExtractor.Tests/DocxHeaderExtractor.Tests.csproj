@@ -20,7 +20,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.AgentHarness\DocxHeaderExtractor.AgentHarness.csproj" />
+    <!-- Phân tích tham số dòng lệnh quyết định cả ngân sách chunk lẫn backend, nên nó cần test
+         thật chứ không chỉ chạy tay một lần. -->
+    <ProjectReference Include="..\..\src\DocxHeaderExtractor.Cli\DocxHeaderExtractor.Cli.csproj" />
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Core\DocxHeaderExtractor.Core.csproj" />
+    <ProjectReference Include="..\..\src\DocxHeaderExtractor.Mcp\DocxHeaderExtractor.Mcp.csproj" />
+    <!-- Chỉ để kiểm giới hạn của WritebackStore: nó giữ tài liệu của người dùng trong bộ nhớ nên
+         các mức trần phải có test, không thể chỉ tin vào review. -->
+    <ProjectReference Include="..\..\src\DocxHeaderExtractor.Web\DocxHeaderExtractor.Web.csproj" />
   </ItemGroup>
 
 </Project>
