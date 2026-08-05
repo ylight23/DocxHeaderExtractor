@@ -2,7 +2,11 @@ using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
-public sealed record AgentValidationIssue(string Code, string Message);
+/// <summary>
+/// <paramref name="Index"/> là chỉ số đoạn nguồn gây lỗi, null khi lỗi thuộc về cả outline.
+/// Có nó thì lượt sửa mới cách ly được đúng đoạn thay vì bỏ cả tài liệu.
+/// </summary>
+public sealed record AgentValidationIssue(string Code, string Message, int? Index = null);
 
 public sealed record AgentValidationResult(IReadOnlyList<AgentValidationIssue> Issues)
 {
@@ -46,19 +50,19 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
         foreach (var heading in outline.Headings)
         {
             if (!seen.Add(heading.Index))
-                issues.Add(new("duplicate_source_index", $"Index {heading.Index} xuất hiện nhiều lần."));
+                issues.Add(new("duplicate_source_index", $"Index {heading.Index} xuất hiện nhiều lần.", heading.Index));
             if (heading.Index < 0 || heading.Index >= outline.ParagraphCount)
-                issues.Add(new("source_index_out_of_range", $"Index {heading.Index} không thuộc tài liệu nguồn."));
+                issues.Add(new("source_index_out_of_range", $"Index {heading.Index} không thuộc tài liệu nguồn.", heading.Index));
             if (heading.Index < previous)
-                issues.Add(new("source_order_changed", "Heading không còn đúng thứ tự tài liệu nguồn."));
+                issues.Add(new("source_order_changed", "Heading không còn đúng thứ tự tài liệu nguồn.", heading.Index));
             previous = heading.Index;
 
             if (heading.Level is < 1 or > 9)
-                issues.Add(new("invalid_heading_level", $"Cấp của index {heading.Index} nằm ngoài 1..9."));
+                issues.Add(new("invalid_heading_level", $"Cấp của index {heading.Index} nằm ngoài 1..9.", heading.Index));
             if (string.IsNullOrWhiteSpace(heading.Text))
-                issues.Add(new("empty_heading_text", $"Heading index {heading.Index} không có văn bản nguồn."));
+                issues.Add(new("empty_heading_text", $"Heading index {heading.Index} không có văn bản nguồn.", heading.Index));
             if (!double.IsFinite(heading.Confidence) || heading.Confidence is < 0 or > 1)
-                issues.Add(new("invalid_confidence", $"Confidence của index {heading.Index} nằm ngoài 0..1."));
+                issues.Add(new("invalid_confidence", $"Confidence của index {heading.Index} nằm ngoài 0..1.", heading.Index));
 
             ValidateSpans(heading, issues);
         }
@@ -73,7 +77,7 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
         if (heading.OriginalText is null)
         {
             if (heading.HeadingSpan is not null || heading.InlineBodySpan is not null || heading.InlineBody is not null)
-                issues.Add(new("span_without_source", $"Index {heading.Index} có span nhưng thiếu originalText."));
+                issues.Add(new("span_without_source", $"Index {heading.Index} có span nhưng thiếu originalText.", heading.Index));
             return;
         }
 
@@ -81,7 +85,7 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
             !ValidRange(headingSpan, heading.OriginalText.Length) ||
             heading.OriginalText[headingSpan.Start..headingSpan.End] != heading.Text)
         {
-            issues.Add(new("heading_span_not_grounded", $"Heading span của index {heading.Index} không khớp nguồn."));
+            issues.Add(new("heading_span_not_grounded", $"Heading span của index {heading.Index} không khớp nguồn.", heading.Index));
         }
 
         if (heading.InlineBodySpan is { } bodySpan)
@@ -89,11 +93,11 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
             if (!ValidRange(bodySpan, heading.OriginalText.Length) ||
                 heading.InlineBody is null ||
                 heading.OriginalText[bodySpan.Start..bodySpan.End] != heading.InlineBody)
-                issues.Add(new("body_span_not_grounded", $"Body span của index {heading.Index} không khớp nguồn."));
+                issues.Add(new("body_span_not_grounded", $"Body span của index {heading.Index} không khớp nguồn.", heading.Index));
         }
         else if (heading.InlineBody is not null)
         {
-            issues.Add(new("body_missing_span", $"Inline body của index {heading.Index} thiếu span nguồn."));
+            issues.Add(new("body_missing_span", $"Inline body của index {heading.Index} thiếu span nguồn.", heading.Index));
         }
     }
 

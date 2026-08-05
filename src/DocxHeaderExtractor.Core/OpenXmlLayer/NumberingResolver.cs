@@ -10,7 +10,7 @@ namespace DocxHeaderExtractor.Core.OpenXmlLayer;
 /// </summary>
 public static class NumberingResolver
 {
-    private sealed record LevelDefinition(int Start, string Format, string Text);
+    private sealed record LevelDefinition(int Start, string Format, string Text, string? StyleId);
 
     public static void Apply(MainDocumentPart mainPart, IReadOnlyList<SlimParagraph> paragraphs)
     {
@@ -18,7 +18,7 @@ public static class NumberingResolver
         if (numbering is null) return;
 
         var abstractLevels = ReadAbstractLevels(numbering);
-        var instances = ReadInstances(numbering, abstractLevels);
+        var instances = ReadInstances(numbering, abstractLevels, mainPart);
         var counters = new Dictionary<(int NumId, int Level), int>();
 
         foreach (var paragraph in paragraphs)
@@ -35,6 +35,9 @@ public static class NumberingResolver
             paragraph.NumberingDepth = level + 1;
             paragraph.NumberingFormat = definition.Format;
             paragraph.NumberLabel = Render(definition.Text, levels, counters, numId, level);
+            // Cấp của danh sách chỉ trở thành cấp heading khi CHÍNH danh sách khai báo nó gắn với
+            // style Heading — không suy ra từ độ sâu list, vì danh sách gạch đầu dòng cũng có độ sâu.
+            paragraph.NumberingStyleLevel = HeadingHeuristics.BuiltInLevelFromStyleId(definition.StyleId);
         }
     }
 
@@ -60,30 +63,49 @@ public static class NumberingResolver
             : result;
     }
 
-    private static Dictionary<int, Dictionary<int, (int Start, string Format, string Text)>> ReadAbstractLevels(OpenXmlElement numbering)
+    private sealed record AbstractDefinition(
+        Dictionary<int, LevelDefinition> Levels,
+        string? NumStyleLink,
+        string? StyleLink);
+
+    private static Dictionary<int, AbstractDefinition> ReadAbstractLevels(OpenXmlElement numbering)
     {
-        var result = new Dictionary<int, Dictionary<int, (int Start, string Format, string Text)>>();
+        var result = new Dictionary<int, AbstractDefinition>();
         foreach (var abstractNum in numbering.ChildElements.Where(e => e.LocalName == "abstractNum"))
         {
             if (!TryInt(Attr(abstractNum, "abstractNumId"), out var id)) continue;
-            var levels = new Dictionary<int, (int Start, string Format, string Text)>();
+            var levels = new Dictionary<int, LevelDefinition>();
             foreach (var level in abstractNum.ChildElements.Where(e => e.LocalName == "lvl"))
             {
                 if (!TryInt(Attr(level, "ilvl"), out var index)) continue;
                 var start = ChildValue(level, "start");
                 var format = ChildValue(level, "numFmt") ?? "decimal";
                 var text = ChildValue(level, "lvlText") ?? $"%{index + 1}.";
-                levels[index] = (TryInt(start, out var parsedStart) ? parsedStart : 1, format, text);
+                // w:pStyle trong w:lvl là ánh xạ cấp danh sách → paragraph style. Đây là chỗ Word
+                // ghi lại lựa chọn "Link level to style" của hộp thoại multilevel list.
+                var styleId = ChildValue(level, "pStyle");
+                levels[index] = new LevelDefinition(
+                    TryInt(start, out var parsedStart) ? parsedStart : 1, format, text, styleId);
             }
-            result[id] = levels;
+            result[id] = new AbstractDefinition(
+                levels,
+                ChildValue(abstractNum, "numStyleLink"),
+                ChildValue(abstractNum, "styleLink"));
         }
         return result;
     }
 
     private static Dictionary<int, Dictionary<int, LevelDefinition>> ReadInstances(
         OpenXmlElement numbering,
-        Dictionary<int, Dictionary<int, (int Start, string Format, string Text)>> abstractLevels)
+        Dictionary<int, AbstractDefinition> abstractLevels,
+        MainDocumentPart mainPart)
     {
+        var byStyleLink = abstractLevels
+            .Where(x => !string.IsNullOrWhiteSpace(x.Value.StyleLink))
+            .GroupBy(x => x.Value.StyleLink!, StringComparer.OrdinalIgnoreCase)
+            .ToDictionary(g => g.Key, g => g.First().Key, StringComparer.OrdinalIgnoreCase);
+        var styleNumIds = ReadStyleNumberingIds(mainPart);
+
         var result = new Dictionary<int, Dictionary<int, LevelDefinition>>();
         foreach (var num in numbering.ChildElements.Where(e => e.LocalName == "num"))
         {
@@ -91,7 +113,8 @@ public static class NumberingResolver
                 !abstractLevels.TryGetValue(abstractId, out var source))
                 continue;
 
-            var levels = source.ToDictionary(x => x.Key, x => new LevelDefinition(x.Value.Start, x.Value.Format, x.Value.Text));
+            source = ResolveStyleLink(source, abstractLevels, byStyleLink, styleNumIds, numbering);
+            var levels = source.Levels.ToDictionary(x => x.Key, x => x.Value);
             foreach (var overrideElement in num.ChildElements.Where(e => e.LocalName == "lvlOverride"))
             {
                 if (!TryInt(Attr(overrideElement, "ilvl"), out var level) || !levels.TryGetValue(level, out var original)) continue;
@@ -116,6 +139,60 @@ public static class NumberingResolver
                 levels[level] = overridden;
             }
             result[numId] = levels;
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// Lần theo "list style" (thư viện numbering dùng chung). Một abstractNum có thể không chứa
+    /// định nghĩa nào mà chỉ mang <c>w:numStyleLink</c> trỏ tới một paragraph style; style đó lại
+    /// gắn với một numId khác, và abstractNum thật nằm ở cuối chuỗi trỏ. Không lần thì mọi đoạn
+    /// dùng thư viện danh sách sẽ ra numbering rỗng — đúng kiểu tài liệu hành chính dùng chung
+    /// một bộ danh sách cho cả cơ quan.
+    /// </summary>
+    private static AbstractDefinition ResolveStyleLink(
+        AbstractDefinition source,
+        Dictionary<int, AbstractDefinition> abstractLevels,
+        Dictionary<string, int> byStyleLink,
+        Dictionary<string, int> styleNumIds,
+        OpenXmlElement numbering)
+    {
+        var seen = new HashSet<int>();
+        // Theo đặc tả, abstractNum mang w:numStyleLink là bản trỏ chứ không phải bản định nghĩa —
+        // luôn đi tiếp. Chuỗi trỏ có thể vòng lại chính nó trong file hỏng nên chặn bằng tập đã thăm.
+        while (!string.IsNullOrWhiteSpace(source.NumStyleLink))
+        {
+            var styleId = source.NumStyleLink!;
+            int? target = byStyleLink.TryGetValue(styleId, out var direct) ? direct : null;
+            if (target is null && styleNumIds.TryGetValue(styleId, out var numId))
+            {
+                var num = numbering.ChildElements
+                    .FirstOrDefault(e => e.LocalName == "num" && Attr(e, "numId") == numId.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                if (num is not null && TryInt(ChildValue(num, "abstractNumId"), out var abstractId)) target = abstractId;
+            }
+
+            if (target is not { } resolved || !seen.Add(resolved) || !abstractLevels.TryGetValue(resolved, out var next))
+                break;
+            source = next;
+        }
+        return source;
+    }
+
+    /// <summary>styleId → numId mà chính style đó khai trong <c>w:pPr/w:numPr</c> của styles.xml.</summary>
+    private static Dictionary<string, int> ReadStyleNumberingIds(MainDocumentPart mainPart)
+    {
+        var result = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        var styles = mainPart.StyleDefinitionsPart?.Styles;
+        if (styles is null) return result;
+
+        foreach (var style in styles.ChildElements.Where(e => e.LocalName == "style"))
+        {
+            var styleId = Attr(style, "styleId");
+            if (string.IsNullOrWhiteSpace(styleId)) continue;
+            var numPr = style.ChildElements.FirstOrDefault(e => e.LocalName == "pPr")?
+                .ChildElements.FirstOrDefault(e => e.LocalName == "numPr");
+            if (numPr is null) continue;
+            if (TryInt(ChildValue(numPr, "numId"), out var numId)) result[styleId] = numId;
         }
         return result;
     }

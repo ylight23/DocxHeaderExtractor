@@ -112,9 +112,12 @@ public static class EvalRunner
         var sb = new StringBuilder();
         var mode = options.DisableLlm
             ? "chỉ luật OpenXML"
-            : options.Backend == InferenceBackend.OpenRouter
-                ? options.OpenRouter.Model
-                : Path.GetFileNameWithoutExtension(options.Llama.ModelPath);
+            : options.Backend switch
+            {
+                InferenceBackend.OpenRouter => options.OpenRouter.Model,
+                InferenceBackend.LmStudio => $"LM Studio/{options.LmStudio.Model}",
+                _ => Path.GetFileNameWithoutExtension(options.Llama.ModelPath),
+            };
 
         sb.AppendLine($"Bộ test: {suite.Documents} tài liệu · chế độ: {mode}");
         sb.AppendLine();

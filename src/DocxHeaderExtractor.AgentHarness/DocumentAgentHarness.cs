@@ -3,31 +3,55 @@ using DocxHeaderExtractor.Core.Models;
 namespace DocxHeaderExtractor.AgentHarness;
 
 /// <summary>
-/// Harness điều phối một workflow agent có giới hạn: guardrail → tool → human-review gate.
-/// Model không được tự bỏ qua guardrail, tự ghi nhãn vàng hoặc tự thay đổi code/prompt.
+/// Harness điều phối một workflow agent có giới hạn:
+/// skill contract → guardrail → tool (± lượt sửa) → validator → human-review gate → hành động ghi.
+/// <para>
+/// Thứ tự và điều kiện dừng do code quyết định, không do model chọn. Model không được bỏ qua
+/// guardrail, tự ghi nhãn vàng, tự thay đổi code/prompt hay tự nâng quyền tool.
+/// </para>
 /// </summary>
 public sealed class DocumentAgentHarness
 {
-    private readonly IDocumentExtractionTool _tool;
+    private readonly IAgentToolRegistry _registry;
     private readonly IReadOnlyList<IDocumentAgentGuardrail> _guardrails;
     private readonly IReadOnlyList<IDocumentAgentValidator> _validators;
     private readonly IAgentRunSink _sink;
     private readonly AgentHarnessOptions _options;
+    private readonly AgentSkill _skill;
 
     public DocumentAgentHarness(
         IDocumentExtractionTool tool,
         IEnumerable<IDocumentAgentGuardrail>? guardrails = null,
         IEnumerable<IDocumentAgentValidator>? validators = null,
         IAgentRunSink? sink = null,
-        AgentHarnessOptions? options = null)
+        AgentHarnessOptions? options = null,
+        IDocumentActionTool? actionTool = null,
+        AgentSkill? skill = null)
+        : this(new AgentToolRegistry(tool, actionTool), guardrails, validators, sink, options, skill)
     {
-        _tool = tool ?? throw new ArgumentNullException(nameof(tool));
+    }
+
+    public DocumentAgentHarness(
+        IAgentToolRegistry registry,
+        IEnumerable<IDocumentAgentGuardrail>? guardrails = null,
+        IEnumerable<IDocumentAgentValidator>? validators = null,
+        IAgentRunSink? sink = null,
+        AgentHarnessOptions? options = null,
+        AgentSkill? skill = null)
+    {
+        _registry = registry ?? throw new ArgumentNullException(nameof(registry));
         _guardrails = (guardrails ?? DefaultGuardrails()).ToArray();
         _validators = (validators ?? DefaultValidators()).ToArray();
         _sink = sink ?? NullAgentRunSink.Instance;
         _options = options ?? new AgentHarnessOptions();
         _options.Validate();
+        _skill = skill ?? AgentSkillLoader.LoadDefault();
     }
+
+    public AgentSkill Skill => _skill;
+
+    /// <summary>Bề mặt quyền của harness này: mọi tool có thể được chọn, kèm rủi ro đã khai báo.</summary>
+    public IReadOnlyList<AgentToolDescriptor> Tools => _registry.Descriptors;
 
     public async Task<DocumentAgentRunResult> RunAsync(
         DocumentAgentRequest request,
@@ -57,9 +81,30 @@ public sealed class DocumentAgentHarness
         try
         {
             await EmitAsync("run", AgentRunEventKind.Started,
-                $"Bắt đầu run với tool {_tool.Descriptor.Name}.");
+                $"Bắt đầu run trên {_registry.Descriptors.Count} tool đã đăng ký.");
 
-            var guardrailContext = new DocumentAgentGuardrailContext(request, _tool.Descriptor);
+            // 1. Hợp đồng skill. Chạy trước mọi thứ khác: nếu cấu hình harness không thoả policy
+            // đã version-control thì không có lý do gì để tiêu một giây suy luận nào.
+            TakeStep("skill.contract");
+            var contractIssue = CheckSkillContract();
+            if (contractIssue is not null)
+            {
+                await EmitAsync("skill.contract", AgentRunEventKind.Blocked, contractIssue);
+                throw new AgentSkillContractException(runId, _skill, contractIssue, trace.ToArray());
+            }
+            await EmitAsync("skill.contract", AgentRunEventKind.Passed,
+                $"Cấu hình thoả policy {_skill.Name}@{_skill.Version} ({_skill.Digest}).");
+
+            // 2. Chọn tool bằng luật của code, rồi ghi lựa chọn kèm lý do vào trace.
+            TakeStep("plan.tools");
+            var selection = _registry.Select(request);
+            var tool = selection.Extraction;
+            var actionTool = selection.Action;
+            await EmitAsync("plan.tools", AgentRunEventKind.Passed, $"Chọn {selection.Rationale}");
+
+            // 3. Guardrail.
+            var guardrailContext = new DocumentAgentGuardrailContext(
+                request, tool.Descriptor, actionTool?.Descriptor);
             foreach (var guardrail in _guardrails)
             {
                 TakeStep($"guardrail.{guardrail.Name}");
@@ -73,28 +118,67 @@ public sealed class DocumentAgentHarness
                 await EmitAsync(stage, AgentRunEventKind.Passed, decision.Message);
             }
 
-            TakeStep($"tool.{_tool.Descriptor.Name}");
-            await EmitAsync($"tool.{_tool.Descriptor.Name}", AgentRunEventKind.Started,
-                "Bắt đầu phân tích tài liệu.");
-            var outline = await _tool.ExecuteAsync(request, ct);
-            await EmitAsync($"tool.{_tool.Descriptor.Name}", AgentRunEventKind.Completed,
-                $"Tool trả {outline.Headings.Count} heading từ {outline.ParagraphCount} đoạn.");
+            // 4. Tool + validator, có tối đa MaxRepairAttempts lượt dựng lại.
+            var toolStage = $"tool.{tool.Descriptor.Name}";
+            DocumentOutline outline;
+            AgentRepairFeedback? feedback = null;
+            var attempt = 0;
 
-            foreach (var validator in _validators)
+            while (true)
             {
-                TakeStep($"validator.{validator.Name}");
-                var validation = await validator.ValidateAsync(outline, ct);
-                var stage = $"validator.{validator.Name}";
-                if (!validation.IsValid)
+                attempt++;
+                TakeStep(toolStage);
+                await EmitAsync(toolStage, AgentRunEventKind.Started,
+                    feedback is null
+                        ? "Bắt đầu phân tích tài liệu."
+                        : $"Dựng lại lượt {attempt} sau khi cách ly {feedback.QuarantineIndexes.Count} đoạn.");
+
+                outline = await tool.ExecuteAsync(new AgentToolInvocation(request, attempt, feedback), ct);
+                await EmitAsync(toolStage, AgentRunEventKind.Completed,
+                    $"Tool trả {outline.Headings.Count} heading từ {outline.ParagraphCount} đoạn.");
+
+                var issues = new List<AgentValidationIssue>();
+                foreach (var validator in _validators)
                 {
+                    TakeStep($"validator.{validator.Name}");
+                    var validation = await validator.ValidateAsync(outline, ct);
+                    var stage = $"validator.{validator.Name}";
+                    if (validation.IsValid)
+                    {
+                        await EmitAsync(stage, AgentRunEventKind.Passed,
+                            "Index, cấp, thứ tự và source span đều hợp lệ.");
+                        continue;
+                    }
+
+                    issues.AddRange(validation.Issues);
                     await EmitAsync(stage, AgentRunEventKind.Blocked,
                         $"Chặn output vì {validation.Issues.Count} bất biến nguồn bị vi phạm.");
-                    throw new AgentOutputValidationException(runId, validation.Issues, trace.ToArray());
                 }
-                await EmitAsync(stage, AgentRunEventKind.Passed,
-                    "Index, cấp, thứ tự và source span đều hợp lệ.");
+
+                if (issues.Count == 0) break;
+
+                var quarantine = issues
+                    .Select(i => i.Index)
+                    .Where(i => i is not null)
+                    .Select(i => i!.Value)
+                    .Distinct()
+                    .OrderBy(i => i)
+                    .ToArray();
+
+                // Không sửa được thì fail-closed. Ba trường hợp: hết lượt, tool không biết dựng
+                // lại, hoặc lỗi không quy được về đoạn nào (cách ly mù không phải là sửa).
+                if (attempt > _options.MaxRepairAttempts ||
+                    !tool.Descriptor.SupportsRepair ||
+                    quarantine.Length == 0)
+                    throw new AgentOutputValidationException(runId, issues, trace.ToArray());
+
+                await EmitAsync("repair", AgentRunEventKind.Repairing,
+                    $"Cách ly {quarantine.Length} đoạn vi phạm rồi dựng lại " +
+                    $"(lượt {attempt}/{_options.MaxRepairAttempts}).");
+                feedback = new AgentRepairFeedback(issues, quarantine);
             }
 
+            // 5. Human-review gate.
             TakeStep("gate.human_review");
             var reviewCount = outline.Headings.Count(h =>
                 h.DecisionStatus == HeadingDecisionStatus.RequiresReview || h.Disputed);
@@ -105,9 +189,38 @@ public sealed class DocumentAgentHarness
                 reviewCount > 0
                     ? $"Chuyển {reviewCount} heading sang người duyệt."
                     : "Không còn heading bắt buộc người duyệt.");
+
+            // 6. Hành động ghi — chỉ sau khi output đã qua validator VÀ qua gate.
+            AgentWritebackReport? writeback = null;
+            if (actionTool is not null && request.WantsWriteback)
+            {
+                var actionStage = $"action.{actionTool.Descriptor.Name}";
+                if (outcome == AgentRunOutcome.NeedsHumanReview && _skill.Requires.HumanReviewBeforeWriteback)
+                {
+                    TakeStep(actionStage);
+                    await EmitAsync(actionStage, AgentRunEventKind.Skipped,
+                        $"Policy {_skill.Name}@{_skill.Version} yêu cầu duyệt xong {reviewCount} mục " +
+                        "trước khi tác động ra ngoài.");
+                }
+                else
+                {
+                    TakeStep(actionStage);
+                    await EmitAsync(actionStage, AgentRunEventKind.Started, "Ghi outline vào bản sao.");
+                    writeback = await actionTool.ExecuteAsync(request, outline, ct);
+                    await EmitAsync(actionStage, AgentRunEventKind.Completed,
+                        $"Đã ghi {writeback.Applied} heading, bỏ qua {writeback.Skipped} mục: " +
+                        Path.GetFileName(writeback.OutputPath));
+                }
+            }
+
             await EmitAsync("run", AgentRunEventKind.Completed, $"Kết thúc run: {outcome}.");
 
-            return new DocumentAgentRunResult(runId, outcome, outline, steps, trace.ToArray());
+            return new DocumentAgentRunResult(runId, outcome, outline, steps, trace.ToArray())
+            {
+                Skill = _skill,
+                RepairAttempts = attempt - 1,
+                Writeback = writeback,
+            };
         }
         catch (OperationCanceledException)
         {
@@ -115,6 +228,10 @@ public sealed class DocumentAgentHarness
             throw;
         }
         catch (AgentRunBlockedException)
+        {
+            throw;
+        }
+        catch (AgentSkillContractException)
         {
             throw;
         }
@@ -128,6 +245,31 @@ public sealed class DocumentAgentHarness
                 $"Run thất bại: {ex.GetType().Name}.", trace, runId, ++sequence);
             throw;
         }
+    }
+
+    /// <summary>
+    /// Đối chiếu cấu hình thực tế với ràng buộc skill. Đây là chỗ SKILL.md có hiệu lực: bỏ một
+    /// validator, hạ một guardrail hay nới số lượt sửa quá trần đều làm run dừng trước khi chạy.
+    /// </summary>
+    private string? CheckSkillContract()
+    {
+        var guardrails = _guardrails.Select(g => g.Name).ToHashSet(StringComparer.Ordinal);
+        var missingGuardrails = _skill.Requires.Guardrails.Where(g => !guardrails.Contains(g)).ToArray();
+        if (missingGuardrails.Length > 0)
+            return $"Thiếu guardrail mà skill yêu cầu: {string.Join(", ", missingGuardrails)}.";
+
+        var validators = _validators.Select(v => v.Name).ToHashSet(StringComparer.Ordinal);
+        var missingValidators = _skill.Requires.Validators.Where(v => !validators.Contains(v)).ToArray();
+        if (missingValidators.Length > 0)
+            return $"Thiếu validator mà skill yêu cầu: {string.Join(", ", missingValidators)}.";
+
+        if (_options.MaxRepairAttempts > _skill.Requires.MaxRepairAttempts)
+            return $"MaxRepairAttempts={_options.MaxRepairAttempts} vượt trần " +
+                   $"{_skill.Requires.MaxRepairAttempts} của skill.";
+
+        // Việc "run muốn ghi nhưng không có tool ghi" thuộc về writeback_target guardrail: nó đã
+        // giữ toàn bộ luật về đích ghi, tách ra hai nơi thì sớm muộn hai nơi sẽ lệch nhau.
+        return null;
     }
 
     private async ValueTask EmitWithoutCancellationAsync(
@@ -147,6 +289,7 @@ public sealed class DocumentAgentHarness
     {
         yield return new InputDocumentGuardrail();
         yield return new ExternalDataTransferGuardrail();
+        yield return new WritebackTargetGuardrail();
     }
 
     private static IEnumerable<IDocumentAgentValidator> DefaultValidators()
@@ -155,11 +298,38 @@ public sealed class DocumentAgentHarness
     }
 }
 
+public sealed class AgentSkillContractException(
+    Guid runId,
+    AgentSkill skill,
+    string message,
+    IReadOnlyList<AgentRunEvent> trace)
+    : InvalidOperationException($"Cấu hình harness không thoả skill {skill.Name}@{skill.Version}: {message}")
+{
+    public Guid RunId { get; } = runId;
+    public AgentSkill Skill { get; } = skill;
+    public IReadOnlyList<AgentRunEvent> Trace { get; } = trace;
+}
+
+/// <summary>
+/// Composition root cho host: nạp policy skill đúng MỘT lần rồi tái dùng, để mọi run trong cùng
+/// tiến trình chạy trên cùng một phiên bản policy thay vì đọc lại file ở mỗi request.
+/// </summary>
 public sealed class DocumentAgentHarnessFactory
 {
+    private readonly Lazy<AgentSkill> _skill = new(AgentSkillLoader.LoadDefault, isThreadSafe: true);
+
+    public AgentSkill Skill => _skill.Value;
+
     public DocumentAgentHarness Create(
         IDocumentExtractionTool tool,
         IAgentRunSink? sink = null,
+        AgentHarnessOptions? options = null,
+        IDocumentActionTool? actionTool = null) =>
+        new(tool, sink: sink, options: options, actionTool: actionTool, skill: _skill.Value);
+
+    public DocumentAgentHarness Create(
+        IAgentToolRegistry registry,
+        IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null) =>
-        new(tool, sink: sink, options: options);
+        new(registry, sink: sink, options: options, skill: _skill.Value);
 }

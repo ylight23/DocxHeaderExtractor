@@ -1,6 +1,6 @@
 namespace DocxHeaderExtractor.Core.Llm;
 
-/// <summary>Backend suy luận dùng chung cho GGUF local và RPC OpenRouter.</summary>
+/// <summary>Backend suy luận dùng chung cho GGUF local, LM Studio local RPC và OpenRouter.</summary>
 public interface IHeaderClassifier : IDisposable
 {
     string ModelName { get; }

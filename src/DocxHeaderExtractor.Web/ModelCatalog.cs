@@ -1,3 +1,5 @@
+using DocxHeaderExtractor.Core.Llm;
+
 namespace DocxHeaderExtractor.Web;
 
 public sealed record ModelEntry(string Name, string Path, double SizeGb, uint SuggestedCtx, bool Recommended);
@@ -44,11 +46,11 @@ public static class ModelCatalog
     }
 
     /// <summary>
-    /// Bộ tách token của Qwen sinh nhiều token hơn Llama cho cùng một đoạn tiếng Việt, nên
-    /// 4096 tràn ngữ cảnh ngay ở khối đầu. Đo trên máy: Qwen2.5-7B cần 8192 mới chạy được.
+    /// Dùng đúng profile trong Core để Web/CLI/model loader không đưa ra ba context khác nhau.
+    /// Qwen2.5 và Llama 3.2 hiện đều cần 8192 với prompt cố định + ngân sách mặc định.
     /// </summary>
     private static uint SuggestCtx(string fileName) =>
-        fileName.Contains("qwen", StringComparison.OrdinalIgnoreCase) ? 8192u : 4096u;
+        LlamaOptions.SuggestedContextForModel(fileName);
 
     private static IEnumerable<string> Directories()
     {

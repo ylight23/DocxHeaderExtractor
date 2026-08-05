@@ -40,6 +40,8 @@ public sealed record AuditWarning(string Message, IReadOnlyList<int> Indexes);
 /// </summary>
 public static class NumberingAudit
 {
+    private sealed record AuditItem(HeadingRecord Heading, NumberToken Token, string Scope);
+
     /// <summary>
     /// <c>1.</c>, <c>3.1.</c>, <c>2.3.4)</c>, kể cả <c>1.MUC</c> thiếu dấu cách.
     /// Giữ giống hệt <c>HeadingHeuristics.DecimalPrefixRx</c>: hai bên lệch nhau thì hậu kiểm sẽ
@@ -76,7 +78,8 @@ public static class NumberingAudit
         var tokens = ordered
             .Select(h => (Heading: h, Token: Parse(h.Text)))
             .Where(x => x.Token is not null)
-            .Select(x => (x.Heading, Token: x.Token!.Value))
+            .Select(x => new AuditItem(x.Heading, x.Token!.Value,
+                ScopeKey(ordered, ordered.IndexOf(x.Heading))))
             .ToList();
 
         if (tokens.Count == 0) return [];
@@ -89,9 +92,9 @@ public static class NumberingAudit
 
     /// <summary>Cùng chữ ký mà khác cấp ⇒ dòng lệch khỏi cấp phổ biến nhất là dòng đáng ngờ.</summary>
     private static IEnumerable<AuditWarning> CheckLevelConsistency(
-        List<(HeadingRecord Heading, NumberToken Token)> tokens)
+        List<AuditItem> tokens)
     {
-        foreach (var group in tokens.GroupBy(x => x.Token.Signature))
+        foreach (var group in tokens.GroupBy(x => (x.Token.Signature, x.Scope)))
         {
             var members = group.ToList();
             if (members.Count < 2) continue;
@@ -123,31 +126,39 @@ public static class NumberingAudit
     /// (<c>… 2. 3.</c> rồi <c>1.</c> nghĩa là đã sang mục cha khác), nên không cần biết cây cha con.
     /// </summary>
     private static IEnumerable<AuditWarning> CheckSequenceGaps(
-        List<(HeadingRecord Heading, NumberToken Token)> tokens)
+        List<AuditItem> tokens)
     {
         foreach (var group in tokens.GroupBy(x => x.Token.Signature))
         {
-            var run = new List<(HeadingRecord Heading, NumberToken Token)>();
-
-            foreach (var item in group)
+            // Một dãy chỉ liên tục trong cùng một parent/sibling scope. Các mục 1..9
+            // của chương I không được nối với 1..9 của chương II.
+            foreach (var scoped in group.GroupBy(x => x.Scope))
             {
-                if (run.Count > 0 && item.Token.Value <= run[^1].Token.Value)
-                {
-                    foreach (var w in InspectRun(run, item.Token)) yield return w;
-                    run = [];
-                }
-                run.Add(item);
-            }
+                var run = new List<AuditItem>();
 
-            foreach (var w in InspectRun(run, group.First().Token)) yield return w;
+                foreach (var item in scoped)
+                {
+                    if (run.Count > 0 && item.Token.Value <= run[^1].Token.Value)
+                    {
+                        foreach (var w in InspectRun(run, item.Token)) yield return w;
+                        run = [];
+                    }
+                    run.Add(item);
+                }
+
+                foreach (var w in InspectRun(run, scoped.First().Token)) yield return w;
+            }
         }
     }
 
     private static IEnumerable<AuditWarning> InspectRun(
-        List<(HeadingRecord Heading, NumberToken Token)> run,
+        List<AuditItem> run,
         NumberToken sample)
     {
         if (run.Count == 0) yield break;
+        // Một nhánh chỉ có một mục không đủ bằng chứng để kết luận mất mục trước đó;
+        // đây thường là mục con đầu tiên hoặc tài liệu bắt đầu giữa chừng.
+        if (run.Count == 1) yield break;
 
         var kind = Describe(sample);
         var first = run[0];
@@ -186,6 +197,25 @@ public static class NumberingAudit
 
     private static string Excerpt(string text) =>
         text.Length <= 40 ? text : text[..40] + "…";
+
+    /// <summary>
+    /// Xác định phạm vi sibling bằng heading cha gần nhất. Đây là điểm quan trọng:
+    /// cùng dạng 3.1 ở hai chương khác nhau không phải cùng một nhóm kiểm tra.
+    /// </summary>
+    private static string ScopeKey(IReadOnlyList<HeadingRecord> ordered, int at)
+    {
+        var current = ordered[at];
+        // La Mã ở đầu chương là chuỗi section-level; giữ chung một scope để phát hiện
+        // I → III, nhưng không suy ra parent từ cấp model có thể đang lệch.
+        if (Parse(current.Text)?.Kind == NumberKind.Roman)
+            return "roman-root";
+        for (var i = at - 1; i >= 0; i--)
+        {
+            if (ordered[i].Level < current.Level)
+                return $"parent:{ordered[i].Index}";
+        }
+        return "root";
+    }
 
     /// <summary>
     /// Tách ký hiệu đánh số ở đầu chuỗi. Thử La Mã trước số Ả Rập vì <c>I.</c>, <c>V.</c>, <c>X.</c>

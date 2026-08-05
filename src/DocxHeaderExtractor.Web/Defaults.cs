@@ -15,17 +15,20 @@ public sealed record Defaults(
     int GpuLayers,
     bool GpuBackend,
     bool OpenRouterAvailable,
-    string OpenRouterModel)
+    string OpenRouterModel,
+    string LmStudioEndpoint,
+    string LmStudioModel,
+    int LmStudioContextSize)
 {
     public static Defaults Current()
     {
         var llama = new LlamaOptions();
         var extraction = new ExtractionOptions();
         var gpu = HasGpuBackend();
+        var lmStudio = LmStudioOptions.FromEnvironment();
         return new Defaults(
             ChunkTokens: llama.ChunkTokenBudget,
-            // 12 là cấu hình đã đo về độ chính xác. Tăng lên 24 không chỉ đổi chất lượng mà còn
-            // làm mỗi lượt giữ nhiều KV/buffer hơn, dễ thrash trên GPU 4 GB.
+            // 6 là mức cân bằng giữa số request và độ chính xác ID/cấp trên Qwen 7B.
             ChunkCandidates: llama.MaxCandidatesPerChunk,
             Threshold: extraction.CandidateThreshold,
             // Đo được: bật luật từ ngữ không đổi kết quả trên cả hai bộ test, nhưng luật loại
@@ -36,7 +39,10 @@ public sealed record Defaults(
             GpuLayers: gpu ? GpuLayersFromEnvironment(defaultValue: 20) : 0,
             GpuBackend: gpu,
             OpenRouterAvailable: !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY")),
-            OpenRouterModel: Environment.GetEnvironmentVariable("OPENROUTER_MODEL") ?? "qwen/qwen-2.5-7b-instruct");
+            OpenRouterModel: Environment.GetEnvironmentVariable("OPENROUTER_MODEL") ?? "qwen/qwen-2.5-7b-instruct",
+            LmStudioEndpoint: lmStudio.Endpoint.GetLeftPart(UriPartial.Authority),
+            LmStudioModel: lmStudio.Model,
+            LmStudioContextSize: lmStudio.ContextSize);
     }
 
     private static int GpuLayersFromEnvironment(int defaultValue) =>

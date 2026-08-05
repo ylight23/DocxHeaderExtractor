@@ -14,7 +14,7 @@ public sealed class AgentHarnessTests : IDisposable
     public async Task Remote_tool_is_blocked_without_per_run_consent()
     {
         using var tool = new FakeTool(Outline(), sendsDataExternally: true);
-        var harness = new DocumentAgentHarness(tool);
+        var harness = Harness(tool);
 
         var error = await Assert.ThrowsAsync<AgentRunBlockedException>(() =>
             harness.RunAsync(new DocumentAgentRequest(_input)));
@@ -36,14 +36,17 @@ public sealed class AgentHarnessTests : IDisposable
             observed.Add(evt);
             return ValueTask.CompletedTask;
         });
-        var harness = new DocumentAgentHarness(tool, sink: sink);
+        var harness = Harness(tool, sink: sink);
 
         var result = await harness.RunAsync(new DocumentAgentRequest(
             _input, AllowExternalDataTransfer: true));
 
         Assert.Equal(AgentRunOutcome.Completed, result.Outcome);
         Assert.Equal(1, tool.Calls);
-        Assert.Equal(5, result.Steps);
+        // skill contract + chọn tool + 3 guardrail + tool + validator + gate
+        Assert.Equal(8, result.Steps);
+        Assert.Equal(0, result.RepairAttempts);
+        Assert.Null(result.Writeback);
         Assert.Equal(result.Trace, observed);
         Assert.All(result.Trace, e => Assert.Equal(result.RunId, e.RunId));
         Assert.Equal(Enumerable.Range(1, result.Trace.Count), result.Trace.Select(e => e.Sequence));
@@ -52,15 +55,8 @@ public sealed class AgentHarnessTests : IDisposable
     [Fact]
     public async Task Precision_gate_hands_uncertain_heading_to_human()
     {
-        var heading = new HeadingRecord
-        {
-            Index = 1,
-            Level = 1,
-            Text = "Mục Alpha",
-            DecisionStatus = HeadingDecisionStatus.RequiresReview,
-        };
-        using var tool = new FakeTool(Outline(heading));
-        var harness = new DocumentAgentHarness(tool);
+        using var tool = new FakeTool(Outline(Heading(1, review: true)));
+        var harness = Harness(tool);
 
         var result = await harness.RunAsync(new DocumentAgentRequest(_input));
 
@@ -78,7 +74,8 @@ public sealed class AgentHarnessTests : IDisposable
         var harness = new DocumentAgentHarness(
             tool,
             guardrails,
-            options: new AgentHarnessOptions { MaxSteps = 4 });
+            options: new AgentHarnessOptions { MaxSteps = 4, MaxRepairAttempts = 0 },
+            skill: Skill());
 
         var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
             harness.RunAsync(new DocumentAgentRequest(_input)));
@@ -98,7 +95,7 @@ public sealed class AgentHarnessTests : IDisposable
             Confidence = 0.9,
         };
         using var tool = new FakeTool(Outline(heading));
-        var harness = new DocumentAgentHarness(tool);
+        var harness = Harness(tool, repairAttempts: 0);
 
         var error = await Assert.ThrowsAsync<AgentOutputValidationException>(() =>
             harness.RunAsync(new DocumentAgentRequest(_input)));
@@ -121,13 +118,285 @@ public sealed class AgentHarnessTests : IDisposable
             Confidence = 0.9,
         };
         using var tool = new FakeTool(Outline(heading));
-        var harness = new DocumentAgentHarness(tool);
+        var harness = Harness(tool, repairAttempts: 0);
 
         var error = await Assert.ThrowsAsync<AgentOutputValidationException>(() =>
             harness.RunAsync(new DocumentAgentRequest(_input)));
 
         Assert.Contains(error.Issues, issue => issue.Code == "heading_span_not_grounded");
     }
+
+    // ─── Vòng sửa có giới hạn ────────────────────────────────────────────────────────────────
+
+    [Fact]
+    public async Task Validator_failure_quarantines_offending_index_and_rebuilds()
+    {
+        var bad = new HeadingRecord { Index = 99, Level = 1, Text = "Bịa", Confidence = 0.9 };
+        using var tool = new FakeTool(Outline(bad), Outline(Heading(1)));
+        var harness = Harness(tool);
+
+        var result = await harness.RunAsync(new DocumentAgentRequest(_input));
+
+        Assert.Equal(AgentRunOutcome.Completed, result.Outcome);
+        Assert.Equal(2, tool.Calls);
+        Assert.Equal(1, result.RepairAttempts);
+        Assert.Equal([99], tool.Invocations[1].Feedback!.QuarantineIndexes);
+        Assert.Contains(result.Trace, e => e.Stage == "repair" && e.Kind == AgentRunEventKind.Repairing);
+    }
+
+    [Fact]
+    public async Task Repair_budget_is_exhausted_then_run_fails_closed()
+    {
+        var bad = new HeadingRecord { Index = 99, Level = 1, Text = "Bịa", Confidence = 0.9 };
+        using var tool = new FakeTool(Outline(bad), Outline(bad), Outline(bad));
+        var harness = Harness(tool);
+
+        await Assert.ThrowsAsync<AgentOutputValidationException>(() =>
+            harness.RunAsync(new DocumentAgentRequest(_input)));
+
+        // Một lượt đầu + đúng một lượt sửa; không lặp thêm dù kết quả vẫn hỏng.
+        Assert.Equal(2, tool.Calls);
+    }
+
+    [Fact]
+    public async Task Tool_without_repair_support_is_not_asked_twice()
+    {
+        var bad = new HeadingRecord { Index = 99, Level = 1, Text = "Bịa", Confidence = 0.9 };
+        using var tool = new FakeTool(Outline(bad), Outline(Heading(1))) { SupportsRepair = false };
+        var harness = Harness(tool);
+
+        await Assert.ThrowsAsync<AgentOutputValidationException>(() =>
+            harness.RunAsync(new DocumentAgentRequest(_input)));
+
+        Assert.Equal(1, tool.Calls);
+    }
+
+    // ─── Hợp đồng skill ──────────────────────────────────────────────────────────────────────
+
+    [Fact]
+    public async Task Skill_contract_blocks_run_when_a_required_validator_is_missing()
+    {
+        using var tool = new FakeTool(Outline());
+        var harness = new DocumentAgentHarness(
+            tool,
+            validators: [],
+            skill: Skill(validators: ["outline_grounding"]));
+
+        var error = await Assert.ThrowsAsync<AgentSkillContractException>(() =>
+            harness.RunAsync(new DocumentAgentRequest(_input)));
+
+        Assert.Contains("outline_grounding", error.Message);
+        Assert.Equal(0, tool.Calls);
+    }
+
+    [Fact]
+    public async Task Skill_contract_caps_repair_attempts()
+    {
+        using var tool = new FakeTool(Outline());
+        var harness = new DocumentAgentHarness(
+            tool,
+            options: new AgentHarnessOptions { MaxRepairAttempts = 3 },
+            skill: Skill(maxRepairAttempts: 1));
+
+        var error = await Assert.ThrowsAsync<AgentSkillContractException>(() =>
+            harness.RunAsync(new DocumentAgentRequest(_input)));
+
+        Assert.Contains("MaxRepairAttempts", error.Message);
+        Assert.Equal(0, tool.Calls);
+    }
+
+    [Fact]
+    public async Task Shipped_skill_is_satisfied_by_the_default_harness_configuration()
+    {
+        using var tool = new FakeTool(Outline());
+        var harness = new DocumentAgentHarness(tool);   // nạp SKILL.md thật từ đĩa
+
+        var result = await harness.RunAsync(new DocumentAgentRequest(_input));
+
+        Assert.Equal("heading-extraction", harness.Skill.Name);
+        Assert.Equal(harness.Skill, result.Skill);
+        Assert.Contains(result.Trace, e =>
+            e.Stage == "skill.contract" && e.Kind == AgentRunEventKind.Passed &&
+            e.Message.Contains(harness.Skill.Version));
+    }
+
+    // ─── Hành động ghi ───────────────────────────────────────────────────────────────────────
+
+    [Fact]
+    public async Task Writeback_is_skipped_while_headings_still_need_review()
+    {
+        using var tool = new FakeTool(Outline(Heading(1, review: true)));
+        using var action = new FakeActionTool();
+        var harness = Harness(tool, actionTool: action);
+
+        var result = await harness.RunAsync(Request(target: _input + ".out.docx"));
+
+        Assert.Equal(AgentRunOutcome.NeedsHumanReview, result.Outcome);
+        Assert.Equal(0, action.Calls);
+        Assert.Null(result.Writeback);
+        Assert.Contains(result.Trace, e =>
+            e.Stage == "action.fake_write" && e.Kind == AgentRunEventKind.Skipped);
+    }
+
+    [Fact]
+    public async Task Writeback_runs_only_after_validator_and_gate_both_pass()
+    {
+        using var tool = new FakeTool(Outline(Heading(1)));
+        using var action = new FakeActionTool();
+        var harness = Harness(tool, actionTool: action);
+
+        var result = await harness.RunAsync(Request(target: _input + ".out.docx"));
+
+        Assert.Equal(AgentRunOutcome.Completed, result.Outcome);
+        Assert.Equal(1, action.Calls);
+        Assert.Equal(1, result.Writeback!.Applied);
+
+        var stages = result.Trace.Select(e => e.Stage).ToList();
+        Assert.True(stages.IndexOf("validator.outline_grounding") < stages.IndexOf("action.fake_write"));
+        Assert.True(stages.IndexOf("gate.human_review") < stages.IndexOf("action.fake_write"));
+    }
+
+    [Fact]
+    public async Task Writeback_target_may_not_be_the_source_document()
+    {
+        using var tool = new FakeTool(Outline(Heading(1)));
+        using var action = new FakeActionTool();
+        var harness = Harness(tool, actionTool: action);
+
+        var error = await Assert.ThrowsAsync<AgentRunBlockedException>(() =>
+            harness.RunAsync(Request(target: _input)));
+
+        Assert.Equal("writeback_overwrites_source", error.Code);
+        Assert.Equal(0, tool.Calls);
+        Assert.Equal(0, action.Calls);
+    }
+
+    [Fact]
+    public async Task Writeback_without_an_action_tool_is_refused_up_front()
+    {
+        using var tool = new FakeTool(Outline(Heading(1)));
+        var harness = Harness(tool);
+
+        var error = await Assert.ThrowsAsync<AgentRunBlockedException>(() =>
+            harness.RunAsync(Request(target: _input + ".out.docx")));
+
+        Assert.Equal("writeback_tool_not_configured", error.Code);
+        Assert.Equal(0, tool.Calls);
+    }
+
+    // ─── Chọn tool bằng luật của code ────────────────────────────────────────────────────────
+
+    [Fact]
+    public async Task Registry_picks_the_local_tool_when_the_run_has_no_transfer_consent()
+    {
+        using var remote = new FakeTool(Outline(Heading(1)), sendsDataExternally: true);
+        using var local = new FakeTool(Outline(Heading(0)));
+        var harness = new DocumentAgentHarness(
+            new AgentToolRegistry([remote, local]), skill: Skill());
+
+        var result = await harness.RunAsync(new DocumentAgentRequest(_input));
+
+        Assert.Equal(0, remote.Calls);
+        Assert.Equal(1, local.Calls);
+        Assert.Contains(result.Trace, e =>
+            e.Stage == "plan.tools" && e.Message.Contains("cục bộ"));
+    }
+
+    [Fact]
+    public async Task Registry_records_the_chosen_tool_and_the_reason_in_the_trace()
+    {
+        using var tool = new FakeTool(Outline(Heading(1)), sendsDataExternally: true);
+        var harness = Harness(tool);
+
+        var result = await harness.RunAsync(new DocumentAgentRequest(
+            _input, AllowExternalDataTransfer: true));
+
+        var plan = Assert.Single(result.Trace, e => e.Stage == "plan.tools");
+        Assert.Contains("fake_extract", plan.Message);
+        Assert.Contains("gửi dữ liệu ra ngoài", plan.Message);
+        Assert.Contains("không hành động ghi", plan.Message);
+    }
+
+    [Fact]
+    public async Task Registry_does_not_silently_downgrade_to_a_tool_the_run_did_not_ask_for()
+    {
+        // Chỉ có tool từ xa và run chưa cho phép gửi dữ liệu: đúng đắn là để guardrail chặn với
+        // lý do chính xác, không phải lặng lẽ đổi sang một tool khác.
+        using var remote = new FakeTool(Outline(Heading(1)), sendsDataExternally: true);
+        var harness = new DocumentAgentHarness(
+            new AgentToolRegistry(remote), skill: Skill());
+
+        var error = await Assert.ThrowsAsync<AgentRunBlockedException>(() =>
+            harness.RunAsync(new DocumentAgentRequest(_input)));
+
+        Assert.Equal("external_data_not_approved", error.Code);
+        Assert.Equal(0, remote.Calls);
+    }
+
+    [Fact]
+    public void Registry_exposes_every_registered_tool_as_the_permission_surface()
+    {
+        using var tool = new FakeTool(Outline());
+        using var action = new FakeActionTool();
+        var harness = Harness(tool, actionTool: action);
+
+        Assert.Equal(
+            ["fake_extract", "fake_write"],
+            harness.Tools.Select(t => t.Name));
+        Assert.Contains(harness.Tools, t => t.MutatesExternalState);
+    }
+
+    [Fact]
+    public async Task Narrator_states_review_backlog_and_the_reason_nothing_was_written()
+    {
+        using var tool = new FakeTool(Outline(Heading(1, review: true)));
+        using var action = new FakeActionTool();
+        var harness = Harness(tool, actionTool: action);
+
+        var message = AgentRunNarrator.Describe(
+            await harness.RunAsync(Request(target: _input + ".out.docx")));
+
+        Assert.Contains("chờ người duyệt", message);
+        Assert.Contains("Chưa ghi ra file", message);
+    }
+
+    // ─── Hạ tầng test ────────────────────────────────────────────────────────────────────────
+
+    private DocumentAgentRequest Request(string target) =>
+        new(_input) { WritebackTargetPath = target };
+
+    private static DocumentAgentHarness Harness(
+        IDocumentExtractionTool tool,
+        IAgentRunSink? sink = null,
+        IDocumentActionTool? actionTool = null,
+        int repairAttempts = 1) =>
+        new(tool,
+            sink: sink,
+            options: new AgentHarnessOptions { MaxRepairAttempts = repairAttempts },
+            actionTool: actionTool,
+            skill: Skill());
+
+    private static AgentSkill Skill(
+        IReadOnlyList<string>? validators = null,
+        int maxRepairAttempts = 1) =>
+        new("test-skill", "skill dùng cho test", "0.0.1", "deadbeef0000", "(memory)",
+            new AgentSkillRequirements
+            {
+                Validators = validators ?? [],
+                MaxRepairAttempts = maxRepairAttempts,
+            },
+            []);
+
+    private static HeadingRecord Heading(int index, bool review = false) => new()
+    {
+        Index = index,
+        Level = 1,
+        Text = "Mục Alpha",
+        Confidence = 0.9,
+        DecisionStatus = review
+            ? HeadingDecisionStatus.RequiresReview
+            : HeadingDecisionStatus.AutoAcceptedEvidence,
+    };
 
     private static DocumentOutline Outline(params HeadingRecord[] headings) => new()
     {
@@ -142,24 +411,56 @@ public sealed class AgentHarnessTests : IDisposable
         if (File.Exists(_input)) File.Delete(_input);
     }
 
-    private sealed class FakeTool(DocumentOutline outline, bool sendsDataExternally = false)
-        : IDocumentExtractionTool
+    /// <summary>Trả lần lượt từng outline đã kịch bản hoá; hết kịch bản thì lặp lại cái cuối.</summary>
+    private sealed class FakeTool(params DocumentOutline[] outlines) : IDocumentExtractionTool
+    {
+        private readonly List<AgentToolInvocation> _invocations = [];
+        private bool _sendsDataExternally;
+
+        public FakeTool(DocumentOutline outline, bool sendsDataExternally)
+            : this([outline]) => _sendsDataExternally = sendsDataExternally;
+
+        public bool SupportsRepair { get; init; } = true;
+        public int Calls => _invocations.Count;
+        public IReadOnlyList<AgentToolInvocation> Invocations => _invocations;
+
+        public AgentToolDescriptor Descriptor => new(
+            "fake_extract",
+            "Synthetic test tool",
+            _sendsDataExternally ? AgentToolRisk.Medium : AgentToolRisk.Low,
+            _sendsDataExternally,
+            MutatesExternalState: false)
+        {
+            SupportsRepair = SupportsRepair,
+        };
+
+        public Task<DocumentOutline> ExecuteAsync(
+            AgentToolInvocation invocation,
+            CancellationToken ct = default)
+        {
+            _invocations.Add(invocation);
+            return Task.FromResult(outlines[Math.Min(_invocations.Count - 1, outlines.Length - 1)]);
+        }
+
+        public void Dispose() { }
+    }
+
+    private sealed class FakeActionTool : IDocumentActionTool
     {
         public int Calls { get; private set; }
 
         public AgentToolDescriptor Descriptor { get; } = new(
-            "fake_extract",
-            "Synthetic test tool",
-            sendsDataExternally ? AgentToolRisk.Medium : AgentToolRisk.Low,
-            sendsDataExternally,
-            MutatesExternalState: false);
+            "fake_write", "Synthetic writeback", AgentToolRisk.High,
+            SendsDataExternally: false, MutatesExternalState: true);
 
-        public Task<DocumentOutline> ExecuteAsync(
+        public Task<AgentWritebackReport> ExecuteAsync(
             DocumentAgentRequest request,
+            DocumentOutline outline,
             CancellationToken ct = default)
         {
             Calls++;
-            return Task.FromResult(outline);
+            return Task.FromResult(new AgentWritebackReport(
+                request.WritebackTargetPath!, outline.Headings.Count, 0));
         }
 
         public void Dispose() { }

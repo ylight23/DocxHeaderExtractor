@@ -93,6 +93,25 @@ public sealed class SlimParagraph
     /// <summary>Định dạng numbering OOXML: decimal, upperRoman, lowerLetter…</summary>
     public string? NumberingFormat { get; set; }
 
+    /// <summary>
+    /// Cấp heading do CHÍNH danh sách đa cấp khai báo, lấy từ <c>w:lvl/w:pStyle</c>: nếu cấp ilvl
+    /// của danh sách trỏ tới style Heading N thì danh sách đó chính là cây đề mục của tài liệu.
+    /// <para>
+    /// Đây là bằng chứng mạnh nhất trong OOXML về cấu trúc — mạnh hơn cả style trên từng đoạn, vì
+    /// nó do người soạn cấu hình một lần cho cả tài liệu qua hộp thoại "Define New Multilevel List"
+    /// rồi mọi đoạn tự bám theo. Khác với <see cref="OutlineLevel"/> vốn hay bị gán nhầm khi copy
+    /// định dạng, ánh xạ cấp→style không đi kèm thao tác định dạng lẻ nên không nhiễm lỗi đó.
+    /// </para>
+    /// </summary>
+    public int? NumberingStyleLevel { get; set; }
+
+    /// <summary>
+    /// Đoạn đứng ngay trước các dòng mục của mục lục — tức nó là TIÊU ĐỀ của mục lục đó. Quan hệ
+    /// vị trí này là bằng chứng cấu trúc thay cho danh sách từ khoá ("MỤC LỤC", "Contents",
+    /// "Danh mục hình ảnh"), nên nhận được cả những cách gọi không ai liệt kê trước.
+    /// </summary>
+    public bool PrecedesTableOfContents { get; set; }
+
     public bool KeepNext { get; init; }
     public bool PageBreakBefore { get; init; }
 
