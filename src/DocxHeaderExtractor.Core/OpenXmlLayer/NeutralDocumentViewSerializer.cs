@@ -82,6 +82,23 @@ public static class NeutralDocumentViewSerializer
         return sb.ToString();
     }
 
+    /// <summary>
+    /// Style Heading built-in ĐÃ nói cấp; gửi kèm <c>w:outlineLvl</c> thô chỉ tạo mâu thuẫn.
+    /// <para>
+    /// ĐO ĐƯỢC: một báo cáo thật (chuyển từ PDF) khai <c>Heading1 → w:outlineLvl=1</c> trong
+    /// styles.xml, lệch quy ước 0-based — cả 73/73 đoạn mang style Heading đều lệch. Metadata khi
+    /// đó chở <c>outlineLevel:1</c> cạnh <c>guessedLevel:1</c>, còn system prompt thì dạy
+    /// "outlineLevel: 0 = cấp 1". Mô hình mạnh chọn guessedLevel, mô hình yếu chọn outlineLevel và
+    /// đẩy MỌI mục cấp 1 xuống cấp 2 — 6 trong 10 lỗi cấp của Haiku đúng là ca này.
+    /// </para>
+    /// <para>
+    /// Với đoạn KHÔNG mang style Heading built-in thì <c>outlineLvl</c> vẫn là bằng chứng thật và
+    /// vẫn được gửi: ở đó nó là nguồn duy nhất nói về cấp.
+    /// </para>
+    /// </summary>
+    private static int? OutlineLevelForModel(SlimParagraph p) =>
+        p.HasBuiltInHeadingStyle ? null : p.OutlineLevel;
+
     private static string Block(SlimParagraph p, int maxText, bool requested)
     {
         var boldRanges = p.TextSpans.Where(x => x.Bold)
@@ -101,7 +118,7 @@ public static class NeutralDocumentViewSerializer
             p.TableDepth > 0 ? p.TableDepth : null,
             EmptyToNull(p.StyleId),
             EmptyToNull(p.StyleName),
-            p.OutlineLevel,
+            OutlineLevelForModel(p),
             p.GuessedLevel,
             p.Bold ? true : null,
             p.AllCaps ? true : null,

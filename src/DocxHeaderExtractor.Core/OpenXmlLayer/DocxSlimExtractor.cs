@@ -43,6 +43,9 @@ public sealed class DocxSlimExtractor
         var bodySize = EstimateBodyFontSize(paragraphs) ?? resolver.DefaultFontSizePt;
         foreach (var p in paragraphs) p.BodyFontSizePt = bodySize;
 
+        // Quan hệ vị trí với bảng phải biết TRƯỚC khi chấm điểm: luật chú thích trong Classify dựa
+        // vào nó, mà PostProcess thì chạy sau nên đặt ở đó là cờ luôn false lúc cần.
+        MarkParagraphsBeforeTables(paragraphs);
         foreach (var p in paragraphs) HeadingHeuristics.Classify(p, _options);
         PostProcess(paragraphs);
 
@@ -353,6 +356,38 @@ public sealed class DocxSlimExtractor
             var prev = PrevNonEmpty(ps, i);
             if (prev is { Role: ParagraphRole.StyledHeading }) p.Score = Math.Min(1, p.Score + 0.05);
         }
+    }
+
+    /// <summary>
+    /// Chú thích bảng ("Bảng 1.2: Tình hình huy động vốn") đứng ngay trước chính bảng nó đặt tên.
+    /// Đây là quan hệ VỊ TRÍ, đọc được cho mọi ngôn ngữ — khác hẳn danh sách từ khoá trong
+    /// <c>CaptionRx</c> vốn chỉ đúng với tiếng Việt/Anh VÀ bị tắt cùng cờ luật từ ngữ, nên ở chế độ
+    /// mà giao diện chạy mặc định thì không còn bộ lọc chú thích nào.
+    /// <para>
+    /// Cửa sổ 4 đoạn chứ không phải 1: giữa chú thích và bảng thường còn dòng đơn vị tính, dòng năm
+    /// hoặc số trang ("ĐVT: Tỷ đồng", "2022-2024", "12"). Đo trên báo cáo thật: cửa sổ 1 bắt 9/13,
+    /// cửa sổ 3 bắt 11/13, cửa sổ 4 bắt 12/13; nới lên 5 KHÔNG bắt thêm gì nên dừng ở 4.
+    /// </para>
+    /// </summary>
+    private static void MarkParagraphsBeforeTables(List<SlimParagraph> ps)
+    {
+        for (var i = 0; i < ps.Count; i++)
+            ps[i].PrecedesTable = ps[i].TableDepth == 0 && !ps[i].InTableOfContents
+                                  && StartsTableWithin(ps, i, 4);
+    }
+
+    /// <summary>Có đoạn nằm trong bảng xuất hiện trong <paramref name="window"/> đoạn không rỗng kế tiếp.</summary>
+    private static bool StartsTableWithin(List<SlimParagraph> ps, int i, int window)
+    {
+        var seen = 0;
+        for (var k = i + 1; k < ps.Count && seen < window; k++)
+        {
+            // Chạy TRƯỚC Classify nên Role chưa được gán; xét trực tiếp nội dung rỗng.
+            if (string.IsNullOrWhiteSpace(ps[k].Text) && ps[k].TableDepth == 0) continue;
+            seen++;
+            if (ps[k].TableDepth > 0) return true;
+        }
+        return false;
     }
 
     private static SlimParagraph? NextNonEmpty(List<SlimParagraph> ps, int i)

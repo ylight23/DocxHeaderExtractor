@@ -16,6 +16,13 @@ public sealed class CommandLineOptions
 
     /// <summary>Lệnh `xml`: chỉ in phần ứng viên (đúng nội dung gửi cho mô hình) thay vì mọi đoạn.</summary>
     public bool CompactXml { get; private set; }
+
+    /// <summary>
+    /// Thư mục ghi ĐÚNG các khối mà pipeline sẽ gửi cho mô hình, kèm system prompt. Có nó thì đo
+    /// "một mô hình khác trả lời ra sao trên cùng đầu vào" mới là so hai mô hình, chứ không phải
+    /// so hai cách dựng prompt.
+    /// </summary>
+    public string? DumpChunksDir { get; private set; }
     public bool ShowHelp { get; private set; }
     public PipelineOptions Pipeline { get; } = new();
 
@@ -127,6 +134,7 @@ public sealed class CommandLineOptions
 
                 case "-q" or "--quiet": o.Quiet = true; break;
                 case "--compact": o.CompactXml = true; break;
+                case "--dump-chunks": o.DumpChunksDir = Next(a); break;
 
                 case "--write-docx": o.WritebackPath = Next(a); break;
                 case "--write-overwrite": o.WritebackOverwrite = true; break;
@@ -192,6 +200,7 @@ public sealed class CommandLineOptions
               --lmstudio-context n  Context đã nạp trong LM Studio (mặc định 16384)
               --candidates-only      Chỉ gửi ứng viên heuristic cho model (mặc định production)
               --review-all           Gửi mọi paragraph cho model (audit/thu nhãn; rất chậm)
+              --dump-chunks <thư mục> (lệnh xml) Ghi từng khối sẽ gửi cho mô hình + system prompt
               --dump-xml <path>     Ghi XML tinh gọn (đầy đủ đoạn + điểm số) để kiểm tra bộ lọc
               --show-raw            In nguyên văn JSON mô hình trả về cho từng khối
               --target-precision p  Mục tiêu auto-accept (mặc định 0.93)
