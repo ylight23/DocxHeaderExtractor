@@ -128,7 +128,16 @@ public static class SlimXmlChunker
         if (current.Count > 0 && (current.Any(Asked) || chunks.Count == 0))
             Close();
 
-        return [.. chunks.Where(c => c.CandidateIndexes.Count > 0)];
+        // ĐÁNH SỐ LẠI SAU KHI LỌC. Close() gán Number theo thứ tự lúc tạo, rồi dòng dưới bỏ các
+        // khối không còn câu hỏi nào — nên Number giữ ordinal TRƯỚC khi lọc còn Count là số SAU khi
+        // lọc. Quan sát được trên tài liệu thật: lượt xác minh Structure báo "chia thành 8 khối" rồi
+        // in tới "khối 14/8".
+        //
+        // Không chỉ là log: Number đi thẳng vào NeutralDocumentViewSerializer.WrapChunk và thành
+        // `DOCUMENT_VIEW {"part":14,"totalParts":8}` trong prompt — tức ta nói với mô hình rằng nó
+        // đang xem phần 14 của 8. Cùng họ với lỗi outlineLevel mâu thuẫn: metadata tự phủ định nhau.
+        var kept = chunks.Where(c => c.CandidateIndexes.Count > 0).ToList();
+        return [.. kept.Select((c, i) => c with { Number = i + 1 })];
     }
 
     /// <summary>Số dòng ngữ cảnh giữ kèm trước mỗi ứng viên chồng lấn.</summary>
