@@ -43,8 +43,8 @@ public sealed class AgentHarnessTests : IDisposable
 
         Assert.Equal(AgentRunOutcome.Completed, result.Outcome);
         Assert.Equal(1, tool.Calls);
-        // skill contract + chọn tool + 4 guardrail + tool + validator + gate
-        Assert.Equal(9, result.Steps);
+        // skill contract + chọn tool + 4 guardrail + tool + 2 validator + gate
+        Assert.Equal(10, result.Steps);
         Assert.Equal(0, result.RepairAttempts);
         Assert.Null(result.Writeback);
         Assert.Equal(result.Trace, observed);
@@ -83,6 +83,48 @@ public sealed class AgentHarnessTests : IDisposable
 
         Assert.Equal("side_effect_directory_missing", error.Code);
         Assert.Equal(0, tool.Calls);
+    }
+
+    /// <summary>
+    /// Guardrail chặn theo LỜI HỨA của descriptor — một cờ tính đúng một lần lúc dựng tool, trong
+    /// khi bên trong tool có tới năm lượt hỏi mô hình. Validator này là vế còn lại: đối chiếu bằng
+    /// cái ĐÃ XẢY RA. Ở đây tool khai "chỉ chạy cục bộ" nên guardrail cho qua, nhưng provenance nói
+    /// backend OpenRouter đã chạy — run phải fail chứ không được im lặng cho qua.
+    /// </summary>
+    [Fact]
+    public async Task Provenance_to_cao_gui_du_lieu_ra_ngoai_thi_run_fail_du_descriptor_hua_cuc_bo()
+    {
+        var outline = Outline();
+        outline.Provenance = new OutlineRunProvenance("OpenRouter", true,
+        [
+            new OutlinePass("classify", 3, 12, true),
+            new OutlinePass("critic", 1, 2, true),
+        ]);
+        using var tool = new FakeTool(outline);
+        var harness = Harness(tool, repairAttempts: 0);
+
+        var error = await Assert.ThrowsAsync<AgentOutputValidationException>(() =>
+            harness.RunAsync(new DocumentAgentRequest(_input)));
+
+        Assert.Contains(error.Issues, i => i.Code == "provenance_external_without_consent");
+        Assert.Contains(error.Issues, i => i.Code == "provenance_contradicts_descriptor");
+    }
+
+    /// <summary>Cấp quyền rồi, và descriptor cũng khai đúng, thì provenance không cản gì.</summary>
+    [Fact]
+    public async Task Provenance_khop_voi_quyen_da_cap_thi_khong_can_gi()
+    {
+        var outline = Outline();
+        outline.Provenance = new OutlineRunProvenance("OpenRouter", true,
+            [new OutlinePass("classify", 2, 8, true)]);
+        using var tool = new FakeTool(outline, sendsDataExternally: true);
+        var harness = Harness(tool);
+
+        var result = await harness.RunAsync(new DocumentAgentRequest(
+            _input, AllowExternalDataTransfer: true));
+
+        Assert.Equal(AgentRunOutcome.Completed, result.Outcome);
+        Assert.Equal("OpenRouter", result.Outline.Provenance!.Backend);
     }
 
     [Fact]

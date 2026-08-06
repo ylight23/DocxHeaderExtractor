@@ -14,11 +14,20 @@ public sealed record AgentValidationResult(IReadOnlyList<AgentValidationIssue> I
     public static AgentValidationResult Valid { get; } = new([]);
 }
 
+/// <summary>
+/// Ngữ cảnh của lượt chạy để validator đối chiếu kết quả với ĐIỀU KIỆN đã cho phép trước khi chạy,
+/// chứ không chỉ soi outline như một vật thể rời.
+/// </summary>
+public sealed record DocumentAgentValidationContext(
+    DocumentAgentRequest Request,
+    AgentToolDescriptor Tool);
+
 public interface IDocumentAgentValidator
 {
     string Name { get; }
     ValueTask<AgentValidationResult> ValidateAsync(
         DocumentOutline outline,
+        DocumentAgentValidationContext context,
         CancellationToken ct = default);
 }
 
@@ -32,6 +41,7 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
 
     public ValueTask<AgentValidationResult> ValidateAsync(
         DocumentOutline outline,
+        DocumentAgentValidationContext context,
         CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(outline);
@@ -114,4 +124,48 @@ public sealed class AgentOutputValidationException(
     public Guid RunId { get; } = runId;
     public IReadOnlyList<AgentValidationIssue> Issues { get; } = issues;
     public IReadOnlyList<AgentRunEvent> Trace { get; } = trace;
+}
+
+/// <summary>
+/// Đối chiếu những gì lượt chạy ĐÃ LÀM (<see cref="DocumentOutline.Provenance"/>) với những gì đã
+/// được cho phép TRƯỚC khi chạy.
+/// <para>
+/// Guardrail chặn theo lời hứa của descriptor — một cờ tính một lần lúc dựng tool, trong khi bên
+/// trong tool có tới năm lượt hỏi mô hình. Validator này là vế còn lại: nếu dữ liệu đã thực sự đi
+/// ra ngoài mà run không được cấp quyền đó, run FAIL, không sửa lại. Lượt sửa chỉ có nghĩa cho lỗi
+/// dựng cây; dữ liệu đã gửi đi rồi thì chạy lại không thu hồi được gì, và im lặng cho qua thì
+/// guardrail chỉ còn là hình thức.
+/// </para>
+/// </summary>
+public sealed class RunProvenanceValidator : IDocumentAgentValidator
+{
+    public string Name => "run_provenance";
+
+    public ValueTask<AgentValidationResult> ValidateAsync(
+        DocumentOutline outline,
+        DocumentAgentValidationContext context,
+        CancellationToken ct = default)
+    {
+        ArgumentNullException.ThrowIfNull(outline);
+        ArgumentNullException.ThrowIfNull(context);
+        ct.ThrowIfCancellationRequested();
+
+        if (outline.Provenance is not { } provenance) return ValueTask.FromResult(AgentValidationResult.Valid);
+
+        var issues = new List<AgentValidationIssue>();
+
+        if (provenance.SentDataExternally && !context.Request.AllowExternalDataTransfer)
+            issues.Add(new AgentValidationIssue(
+                "provenance_external_without_consent",
+                $"Backend {provenance.Backend} đã gửi nội dung ra ngoài ở " +
+                $"{provenance.Passes.Count(x => x.SentDataExternally)} lượt, nhưng run không được cấp quyền đó."));
+
+        if (provenance.SentDataExternally && !context.Tool.SendsDataExternally)
+            issues.Add(new AgentValidationIssue(
+                "provenance_contradicts_descriptor",
+                $"Tool khai SendsDataExternally=false nhưng lượt chạy dùng backend {provenance.Backend}."));
+
+        return ValueTask.FromResult(
+            issues.Count == 0 ? AgentValidationResult.Valid : new AgentValidationResult(issues));
+    }
 }

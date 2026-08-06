@@ -137,11 +137,12 @@ public sealed class DocumentAgentHarness
                 await EmitAsync(toolStage, AgentRunEventKind.Completed,
                     $"Tool trả {outline.Headings.Count} heading từ {outline.ParagraphCount} đoạn.");
 
+                var validationContext = new DocumentAgentValidationContext(request, tool.Descriptor);
                 var issues = new List<AgentValidationIssue>();
                 foreach (var validator in _validators)
                 {
                     TakeStep($"validator.{validator.Name}");
-                    var validation = await validator.ValidateAsync(outline, ct);
+                    var validation = await validator.ValidateAsync(outline, validationContext, ct);
                     var stage = $"validator.{validator.Name}";
                     if (validation.IsValid)
                     {
@@ -296,6 +297,7 @@ public sealed class DocumentAgentHarness
     private static IEnumerable<IDocumentAgentValidator> DefaultValidators()
     {
         yield return new OutlineGroundingValidator();
+        yield return new RunProvenanceValidator();
     }
 }
 
