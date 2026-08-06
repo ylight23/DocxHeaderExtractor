@@ -42,6 +42,43 @@ public class StructuralHierarchyResolverTests
         Assert.Equal(2, headings.Single(h => h.Index == 4).Level);
     }
 
+    /// <summary>
+    /// Nhánh chữ ký đã có chốt "cấu trúc đã khai cấp thì không suy lại" (SignatureTierTests), nhưng
+    /// nhánh đường dẫn số Ả Rập — ngay bên cạnh trong cùng file — thì từng không có. Ở đây danh sách
+    /// đa cấp khai "2." là cấp 3, còn quan hệ cha–con "2." dưới "1." lại suy ra cấp 2. Tuyên bố của
+    /// tài liệu phải thắng suy luận; nếu không thì hai bộ suy luận cấu trúc nói hai điều khác nhau
+    /// về cùng một đoạn, tuỳ vào cái nào chạy sau.
+    /// </summary>
+    [Fact]
+    public void Nhanh_duong_dan_so_khong_ghi_de_cap_ma_danh_sach_da_cap_da_khai()
+    {
+        // "2." là anh em của "1.", nên suy luận anh-em muốn kéo nó về cấp 2. Nhưng danh sách đa cấp
+        // đã khai nó là cấp 3. Đoạn thứ ba chứng minh nó VẪN nằm trong tập đường dẫn: "2.1." tìm cha
+        // "2." và lấy cấp 3 + 1 = 4. Cấm ghi cấp của chính nó, không phải gỡ nó khỏi cây.
+        var document = Doc((0, "1. Mục một"), (2, "2. Mục hai"), (4, "2.1. Mục con"));
+        document.ByIndex(2)!.NumberingStyleLevel = 3;
+        var headings = Headings((0, 2), (2, 3), (4, 1));
+
+        StructuralHierarchyResolver.Apply(headings, document);
+
+        Assert.Equal(3, headings.Single(h => h.Index == 2).Level);
+        Assert.Equal(4, headings.Single(h => h.Index == 4).Level);
+    }
+
+    /// <summary>Cùng chốt đó cho style Heading built-in trên chính đoạn.</summary>
+    [Fact]
+    public void Nhanh_duong_dan_so_khong_ghi_de_cap_ma_style_built_in_da_khai()
+    {
+        var document = Doc((0, "1. Mục một"), (2, "2. Mục hai"));
+        document.ByIndex(2)!.HasBuiltInHeadingStyle = true;
+        var headings = Headings((0, 2), (2, 3));
+
+        var fixes = StructuralHierarchyResolver.Apply(headings, document);
+
+        Assert.Equal(0, fixes);
+        Assert.Equal(3, headings.Single(h => h.Index == 2).Level);
+    }
+
     private static SlimDocument Doc(params (int Index, string Text)[] items) => new SlimDocument
     {
         FileName = "x.docx", SourcePath = "x.docx",

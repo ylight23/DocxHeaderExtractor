@@ -81,6 +81,44 @@ public sealed class OutlineStructureResolverTests
         Assert.Equal(1, accepted[320].Level);
     }
 
+    /// <summary>
+    /// Cây La Mã→số→chữ là SUY LUẬN; <c>w:lvl/w:pStyle</c> và style Heading built-in là TUYÊN BỐ của
+    /// người soạn. Thứ tự quyền lực trong <c>HeaderExtractionPipeline.ResolveLevel</c> đặt tuyên bố
+    /// trên suy luận, và <c>StructuralHierarchyResolver</c> đã tôn trọng điều đó — nhưng bộ suy luận
+    /// cấu trúc thứ hai này thì từng không. Kết quả là cùng một đoạn được gán hai cấp khác nhau tuỳ
+    /// vào bộ nào chạy sau.
+    /// </summary>
+    [Fact]
+    public void Khong_ghi_de_cap_ma_tai_lieu_da_tu_khai()
+    {
+        var paragraphs = new[]
+        {
+            P(0, "I. VÙNG TRỜI", bold: true, caps: true),
+            P(1, "1. Mục Alpha", bold: true),
+            P(2, "2. Mục Beta", bold: true),
+            P(3, "II. VÙNG BIỂN", bold: true, caps: true),
+        };
+        // Danh sách đa cấp khai "1." là cấp 5; style built-in khai "2." là cấp 6. Cây suy luận muốn
+        // kéo cả hai về cấp 2.
+        paragraphs[1].NumberingStyleLevel = 5;
+        paragraphs[2].HasBuiltInHeadingStyle = true;
+        var accepted = new Dictionary<int, HeadingRecord>
+        {
+            [0] = H(0, 1, paragraphs),
+            [1] = H(1, 5, paragraphs),
+            [2] = H(2, 6, paragraphs),
+            [3] = H(3, 1, paragraphs),
+        };
+
+        var result = OutlineStructureResolver.Apply(paragraphs, accepted);
+
+        Assert.Equal(0, result.LevelsFixed);
+        Assert.Equal(5, accepted[1].Level);
+        Assert.Equal(6, accepted[2].Level);
+        // Đoạn La Mã không tự khai gì thì vẫn do cây quyết định như cũ.
+        Assert.Equal(1, accepted[0].Level);
+    }
+
     private static SlimParagraph P(int index, string text, bool bold = false, bool caps = false) =>
         new() { Index = index, StableId = $"p[{index}]", Text = text, Bold = bold, AllCaps = caps };
 
