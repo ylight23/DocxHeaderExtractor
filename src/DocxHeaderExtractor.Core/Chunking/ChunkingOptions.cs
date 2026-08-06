@@ -34,9 +34,32 @@ public sealed class ChunkingOptions
     /// <summary>Số ứng viên chồng lấn giữa hai khối liên tiếp.</summary>
     public int Overlap { get; set; } = 2;
 
+    /// <summary>Người dùng đã tự đặt ngân sách; đừng suy lại từ context của backend.</summary>
+    public bool TokenBudgetExplicit { get; private set; }
+
+    /// <summary>Đặt ngân sách theo yêu cầu tường minh của người dùng (cờ CLI, form, tham số MCP).</summary>
+    public void SetExplicitTokenBudget(int tokens)
+    {
+        TokenBudget = tokens;
+        TokenBudgetExplicit = true;
+    }
+
     /// <summary>
     /// Profile cho backend chạy qua RPC (LM Studio, OpenRouter). Mặc định 2200 là của bản local bị
     /// giới hạn VRAM; backend RPC không có ràng buộc đó nên dùng bộ 5K đã đo cho Qwen.
     /// </summary>
     public void UseRemoteProfile() => TokenBudget = 5000;
+
+    /// <summary>
+    /// Ngân sách suy từ context mà CHÍNH backend khai báo, trừ đi chỗ dành cho prompt hệ thống và
+    /// phần đầu ra.
+    /// <para>
+    /// Lý do cần: hằng 5000 ở <see cref="UseRemoteProfile"/> là con số đo cho Qwen 7B chạy cục bộ
+    /// với context 8192, rồi bị đem dùng cho mọi backend RPC. LM Studio khai 16384 qua
+    /// <c>IHeaderClassifier.ContextSize</c> nhưng pipeline vẫn cắt theo 5000 — tài liệu bị chia
+    /// nhỏ hơn mức cần, mà mỗi khối lại là một lượt RPC.
+    /// </para>
+    /// </summary>
+    public static int DeriveTokenBudget(int contextSize, int maxOutputTokens, int promptReserve) =>
+        Math.Max(400, contextSize - maxOutputTokens - promptReserve);
 }
