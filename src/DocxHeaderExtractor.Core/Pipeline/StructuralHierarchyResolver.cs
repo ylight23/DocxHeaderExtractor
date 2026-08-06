@@ -149,8 +149,14 @@ public static class StructuralHierarchyResolver
     private static int[]? PathOf(HeadingRecord heading, SlimDocument document)
     {
         var paragraph = document.ByIndex(heading.Index);
-        var label = paragraph?.NumberLabel;
-        return NumberingAudit.ParseArabicPath(label ?? paragraph?.Text ?? heading.Text);
+        // Trước đây truyền NHÃN TRƠ khi có NumberLabel ("3.1." không kèm tên mục), nên
+        // ParseArabicPath (đòi HasTitleRemainder) luôn loại nó — cùng lỗi mà 13ac456 đã gom về
+        // NumberingAudit.ParseParagraph ở sáu chỗ khác nhưng bỏ sót đúng chỗ này. Hệ quả đo được:
+        // với văn bản Word đánh số bằng danh sách đa cấp (numPr), path luôn null nên
+        // FindSiblingLevel/FindParentLevel không bao giờ chạy, phải rơi xuống tầng chữ ký — vốn chỉ
+        // xếp hạng theo THỨ TỰ XUẤT HIỆN chữ ký chứ không tính đúng quan hệ cha–con, nên có thể ghi
+        // đè nhầm cả cấp của chính mục cha (xem test kèm theo).
+        return NumberingAudit.ParseArabicPath(NumberingAudit.TextWithNumberLabel(paragraph, heading.Text));
     }
 
     private static bool SameParent(int[] left, int[] right) =>

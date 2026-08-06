@@ -51,3 +51,9 @@ out-mcp/
 bench/09-dien-mat-di.key
 
 .fake
+
+# Đáp án gán nhãn và correction memory mang NGUYÊN VĂN tên đề mục của tài liệu thật.
+# Chặn .docx thôi là chưa đủ: nội dung tài liệu rò ra ngoài qua chính các file phái sinh này.
+data/*.key
+data/*.jsonl
+data/*.review.json

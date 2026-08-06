@@ -65,6 +65,27 @@ public class StructuralHierarchyResolverTests
         Assert.Equal(4, headings.Single(h => h.Index == 4).Level);
     }
 
+    /// <summary>
+    /// Word đánh số qua w:numPr thì con số không nằm trong Text, chỉ có ở NumberLabel — đúng dạng
+    /// đánh số bài bản nhất mà commit 13ac456 nói đã "gom về một điểm" qua NumberingAudit.ParseParagraph.
+    /// PathOf lại bỏ sót: nó ghép <c>label ?? text</c> (chỉ lấy MỘT trong hai), nên khi có label lại
+    /// truyền NHÃN TRƠ ("3.1.") cho ParseArabicPath — không có tên mục theo sau nên HasTitleRemainder
+    /// loại, path ra null, và quan hệ cha–con không đọc được cho đúng nhóm tài liệu này.
+    /// </summary>
+    [Fact]
+    public void Dotted_number_via_word_numbering_label_is_still_child_of_its_parent()
+    {
+        var document = Doc((0, "Cha"), (2, "Con"));
+        document.ByIndex(0)!.NumberLabel = "3.";
+        document.ByIndex(2)!.NumberLabel = "3.1.";
+        var headings = Headings((0, 2), (2, 1));
+
+        var fixes = StructuralHierarchyResolver.Apply(headings, document);
+
+        Assert.Equal(1, fixes);
+        Assert.Equal(3, headings.Single(h => h.Index == 2).Level);
+    }
+
     /// <summary>Cùng chốt đó cho style Heading built-in trên chính đoạn.</summary>
     [Fact]
     public void Nhanh_duong_dan_so_khong_ghi_de_cap_ma_style_built_in_da_khai()
