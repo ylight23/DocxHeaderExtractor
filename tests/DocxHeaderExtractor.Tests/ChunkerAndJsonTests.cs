@@ -116,6 +116,9 @@ public class EnumeratedGrammarTests
         Assert.Contains("từ khóa riêng lẻ", HeaderPrompt.CriticSystem);
         // Và phải có vế KHẲNG ĐỊNH: bản cũ chỉ toàn vế phủ định nên critic thiên về bác bỏ.
         Assert.Contains("thì nó là heading", HeaderPrompt.CriticSystem);
+        // Phân biệt cụm đặt tên với câu hoàn chỉnh — luật cấu trúc câu, không phải danh sách loại
+        // văn bản. Đây là thứ duy nhất tách được dòng tiêm chỉ thị khỏi một heading in đậm căn giữa.
+        Assert.Contains("không phải một câu", HeaderPrompt.CriticSystem);
         Assert.DoesNotContain("Đơn vị Alpha", HeaderPrompt.CriticSystem);
         Assert.DoesNotContain("Đơn vị Beta", HeaderPrompt.CriticSystem);
         foreach (var hardcoded in DomainHardcodedPhrases)
