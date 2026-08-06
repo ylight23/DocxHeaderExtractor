@@ -3,7 +3,9 @@ using System.Text.Json;
 using DocxHeaderExtractor.Cli;
 using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Chunking;
 using DocxHeaderExtractor.Core.Eval;
+using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Output;
 using DocxHeaderExtractor.Core.Pipeline;
@@ -157,6 +159,42 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
     return failed == 0 ? 0 : 1;
 }
 
+/// <summary>
+/// Ghi ĐÚNG các khối pipeline sẽ gửi cho mô hình, kèm system prompt. Dùng để đo một mô hình khác
+/// trên cùng đầu vào: nếu tự dựng lại prompt thì phép so biến thành so hai cách dựng prompt.
+/// Chia khối bằng ước lượng ký tự (không có tokenizer của model ở đây), nên số khối có thể lệch
+/// vài đơn vị so với lượt chạy thật — file ghi rõ điều đó.
+/// </summary>
+static void DumpChunks(SlimDocument slim, CommandLineOptions o, string directory)
+{
+    Directory.CreateDirectory(directory);
+    var review = o.Pipeline.ReviewAllParagraphs
+        ? slim.Paragraphs.Where(p => p.Role != ParagraphRole.Empty).Select(p => p.Index).ToHashSet()
+        : null;
+    var lines = NeutralDocumentViewSerializer.BuildLines(slim, o.Pipeline.Extraction, review);
+    var chunks = SlimXmlChunker.Split(
+        lines,
+        o.Pipeline.Chunking.TokenBudget,
+        o.Pipeline.Chunking.Overlap,
+        o.Pipeline.Chunking.MaxCandidatesPerChunk);
+
+    File.WriteAllText(Path.Combine(directory, "system.txt"), HeaderPrompt.System);
+    File.WriteAllText(Path.Combine(directory, "system-critic.txt"), HeaderPrompt.CriticSystem);
+
+    for (var i = 0; i < chunks.Count; i++)
+    {
+        var view = NeutralDocumentViewSerializer.WrapChunk(chunks[i].Lines, chunks[i].Number, chunks.Count);
+        File.WriteAllText(
+            Path.Combine(directory, $"chunk-{i + 1:00}.txt"),
+            HeaderPrompt.WithIdConstraint(view, chunks[i].CandidateIndexes));
+    }
+
+    if (!o.Quiet)
+        Console.Error.WriteLine(
+            $"  Đã ghi {chunks.Count} khối (ngân sách {o.Pipeline.Chunking.TokenBudget} token ước lượng) " +
+            $"và system prompt vào {directory}");
+}
+
 static int RunDumpXml(CommandLineOptions o)
 {
     foreach (var file in ExpandInputs(o.Inputs))
@@ -172,6 +210,12 @@ static int RunDumpXml(CommandLineOptions o)
                 Console.Error.WriteLine(
                     $"{slim.FileName}: {slim.Paragraphs.Count} đoạn, {candidates.Count} ứng viên, " +
                     $"{candidates.Count(p => p.Role == ParagraphRole.StyledHeading)} theo style");
+            }
+
+            if (o.DumpChunksDir is { } chunkDir)
+            {
+                DumpChunks(slim, o, chunkDir);
+                continue;
             }
 
             if (o.CompactXml)

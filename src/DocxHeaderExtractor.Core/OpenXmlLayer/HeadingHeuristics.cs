@@ -87,6 +87,23 @@ public static class HeadingHeuristics
         @"^\s*(\p{Lu})\s*[\.\)]\s+\S",
         RegexOptions.Compiled);
 
+    /// <summary>
+    /// Nhãn đặt tên cho một đối tượng, dạng "TỪ + SỐ NHIỀU PHẦN": "Bảng 1.2:", "Hình 2.4", "Table 3.1".
+    /// <para>
+    /// CỐ Ý đòi số nhiều phần (<c>1.2</c>, không phải <c>1</c>). Đó là thứ tách nó khỏi đề mục thật
+    /// dạng "Chương 1.", "Điều 5.", "Phụ lục 1:" — cũng là "từ + số" nhưng số một phần. Không có
+    /// ràng buộc này thì luật ăn nhầm đúng họ đề mục phổ biến nhất của văn bản hành chính.
+    /// </para>
+    /// <para>
+    /// Không liệt kê từ nào: "Bảng"/"Hình"/"Table"/"Figure" đều chỉ là "một từ 2–12 chữ cái".
+    /// Bản thân mẫu này KHÔNG đủ để kết luận — nó phải đi cùng bằng chứng vị trí
+    /// <see cref="SlimParagraph.PrecedesTable"/>.
+    /// </para>
+    /// </summary>
+    private static readonly Regex ObjectLabelPrefixRx = new(
+        @"^\s*\p{L}{2,12}\s+\d{1,3}(?:[.\-–]\d{1,3})+\s*[:.\-–)]?\s+\S",
+        RegexOptions.Compiled);
+
     /// <summary>Kết thúc bằng dấu câu của câu văn thường ⇒ ít khả năng là tiêu đề.</summary>
     private static readonly Regex SentenceEndRx = new(@"[\.;,:]\s*$", RegexOptions.Compiled);
 
@@ -115,7 +132,16 @@ public static class HeadingHeuristics
 
         // 0) Loại thẳng hai họ nhiễu lớn nhất trong luận văn/báo cáo: dòng mục lục
         //    (tín hiệu cấu trúc: hyperlink tới neo _Toc) và chú thích hình/bảng (tín hiệu từ ngữ).
-        if (p.InTableOfContents || (options.UseLexicalRules && CaptionRx.IsMatch(p.Text)))
+        // Chú thích bảng nhận diện bằng CẤU TRÚC, không bằng từ vựng: nhãn "từ + số nhiều phần"
+        // đứng ngay trước chính bảng nó đặt tên, và con số là gõ tay (NumberingId null) chứ không
+        // do danh sách numbering của Word sinh ra. Mọi heading đánh số thật trong tài liệu Word đều
+        // mang NumberingId — đó là vế tách hai nhóm sạch nhất.
+        // ĐO ĐƯỢC: trên một báo cáo thật 1183 đoạn, 13 chú thích bị tác giả gán style Heading3 nên
+        // nhánh style cho điểm 1.0 và thoát sớm. Ở chế độ --structural-only (mặc định của giao
+        // diện) thì CaptionRx bị tắt cùng cờ luật từ ngữ, tức không còn bộ lọc chú thích nào.
+        var objectCaption = p.PrecedesTable && p.NumberingId is null && ObjectLabelPrefixRx.IsMatch(p.Text);
+
+        if (p.InTableOfContents || objectCaption || (options.UseLexicalRules && CaptionRx.IsMatch(p.Text)))
         {
             p.Role = ParagraphRole.Normal;
             p.Score = 0;

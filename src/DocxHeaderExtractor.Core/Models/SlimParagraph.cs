@@ -112,6 +112,13 @@ public sealed class SlimParagraph
     /// </summary>
     public bool PrecedesTableOfContents { get; set; }
 
+    /// <summary>
+    /// Một bảng bắt đầu trong vài đoạn ngay sau đoạn này. Dùng để tách CHÚ THÍCH BẢNG khỏi tiêu đề
+    /// bằng quan hệ vị trí thay vì bằng danh sách từ khoá ("Bảng|Hình|Table|Figure") vốn chỉ đúng
+    /// với vài thứ tiếng và bị tắt cùng cờ luật từ ngữ.
+    /// </summary>
+    public bool PrecedesTable { get; set; }
+
     public bool KeepNext { get; init; }
     public bool PageBreakBefore { get; init; }
 
