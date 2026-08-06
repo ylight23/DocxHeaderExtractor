@@ -46,7 +46,7 @@ try
 {
     return options.Command switch
     {
-        "xml" => RunDumpXml(options),
+        "xml" => await RunDumpXmlAsync(options, cts.Token),
         "info" => RunModelInfo(options),
         "sample" => RunSample(options),
         "bench" => RunBench(options),
@@ -162,12 +162,30 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
 /// <summary>
 /// Ghi ĐÚNG các khối pipeline sẽ gửi cho mô hình, kèm system prompt. Dùng để đo một mô hình khác
 /// trên cùng đầu vào: nếu tự dựng lại prompt thì phép so biến thành so hai cách dựng prompt.
-/// Chia khối bằng ước lượng ký tự (không có tokenizer của model ở đây), nên số khối có thể lệch
-/// vài đơn vị so với lượt chạy thật — file ghi rõ điều đó.
+/// <para>
+/// Truyền <c>--model</c> thì chia khối bằng ĐÚNG tokenizer của mô hình đó và in tỉ lệ ký tự/token
+/// đo được. Không truyền thì rơi về ước lượng <see cref="SlimXmlChunker.CharsPerToken"/> — mà
+/// chính hằng số đó đang bị nghi sai nặng cho tiếng Việt, nên bản dump khi ấy KHÔNG khớp lượt chạy
+/// thật và tệp ghi rõ điều đó.
+/// </para>
 /// </summary>
-static void DumpChunks(SlimDocument slim, CommandLineOptions o, string directory)
+static async Task DumpChunksAsync(SlimDocument slim, CommandLineOptions o, string directory, CancellationToken ct)
 {
     Directory.CreateDirectory(directory);
+
+    // Tokenizer thật chỉ có ở backend GGUF cục bộ. Nạp riêng ở đây thay vì dùng lại pipeline: lệnh
+    // này không suy luận, chỉ cần bộ đếm token.
+    LlamaHeaderExtractor? local = null;
+    Func<string, int>? countTokens = null;
+    if (!string.IsNullOrWhiteSpace(o.Pipeline.Llama.ModelPath))
+    {
+        o.Pipeline.PrepareLocalModelProfile();
+        local = await LlamaHeaderExtractor.LoadAsync(o.Pipeline.Llama, ct);
+        countTokens = local.CountTokens;
+    }
+
+    using (local)
+    {
     var review = o.Pipeline.ReviewAllParagraphs
         ? slim.Paragraphs.Where(p => p.Role != ParagraphRole.Empty).Select(p => p.Index).ToHashSet()
         : null;
@@ -176,26 +194,47 @@ static void DumpChunks(SlimDocument slim, CommandLineOptions o, string directory
         lines,
         o.Pipeline.Chunking.TokenBudget,
         o.Pipeline.Chunking.Overlap,
-        o.Pipeline.Chunking.MaxCandidatesPerChunk);
+        o.Pipeline.Chunking.MaxCandidatesPerChunk,
+        shouldAsk: null,
+        countTokens: countTokens);
 
     File.WriteAllText(Path.Combine(directory, "system.txt"), HeaderPrompt.System);
     File.WriteAllText(Path.Combine(directory, "system-critic.txt"), HeaderPrompt.CriticSystem);
 
+    long chars = 0, tokens = 0;
     for (var i = 0; i < chunks.Count; i++)
     {
         var view = NeutralDocumentViewSerializer.WrapChunk(chunks[i].Lines, chunks[i].Number, chunks.Count);
-        File.WriteAllText(
-            Path.Combine(directory, $"chunk-{i + 1:00}.txt"),
-            HeaderPrompt.WithIdConstraint(view, chunks[i].CandidateIndexes));
+        var body = HeaderPrompt.WithIdConstraint(view, chunks[i].CandidateIndexes);
+        File.WriteAllText(Path.Combine(directory, $"chunk-{i + 1:00}.txt"), body);
+        chars += view.Length;
+        if (countTokens is not null) tokens += countTokens(view);
     }
 
-    if (!o.Quiet)
+    if (o.Quiet) return;
+
+    var unit = countTokens is null ? "token ƯỚC LƯỢNG" : "token THẬT";
+    Console.Error.WriteLine(
+        $"  Đã ghi {chunks.Count} khối (ngân sách {o.Pipeline.Chunking.TokenBudget} {unit}) " +
+        $"và system prompt vào {directory}");
+
+    if (countTokens is null)
+    {
         Console.Error.WriteLine(
-            $"  Đã ghi {chunks.Count} khối (ngân sách {o.Pipeline.Chunking.TokenBudget} token ước lượng) " +
-            $"và system prompt vào {directory}");
+            "  ⚠ Không có --model nên chia khối bằng ước lượng ký tự; bản dump này KHÔNG khớp " +
+            "lượt chạy thật. Truyền --model <file.gguf> để đo bằng tokenizer thật.");
+        return;
+    }
+
+    Console.Error.WriteLine(
+        $"  Đo bằng tokenizer thật: {chars} ký tự / {tokens} token = " +
+        $"{(double)chars / tokens:0.###} ký tự/token " +
+        $"(hằng ước lượng đang dùng: {SlimXmlChunker.CharsPerToken:0.##}; " +
+        $"lệch {SlimXmlChunker.CharsPerToken / ((double)chars / tokens):0.##} lần)");
+    }
 }
 
-static int RunDumpXml(CommandLineOptions o)
+static async Task<int> RunDumpXmlAsync(CommandLineOptions o, CancellationToken ct)
 {
     foreach (var file in ExpandInputs(o.Inputs))
     {
@@ -214,7 +253,7 @@ static int RunDumpXml(CommandLineOptions o)
 
             if (o.DumpChunksDir is { } chunkDir)
             {
-                DumpChunks(slim, o, chunkDir);
+                await DumpChunksAsync(slim, o, chunkDir, ct);
                 continue;
             }
 
