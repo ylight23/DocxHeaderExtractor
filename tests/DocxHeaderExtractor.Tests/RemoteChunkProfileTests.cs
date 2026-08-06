@@ -89,11 +89,14 @@ public sealed class RemoteChunkProfileTests
     }
 
     [Theory]
-    // LM Studio khai 16384 → 16384 - 768 (đầu ra) - 1600 (dự trữ prompt) = 14016.
-    [InlineData(16384, 768, 14016)]
-    // Server context nhỏ thì ngân sách co theo, không giữ hằng 5000 rồi tràn cửa sổ.
+    // Tái tạo đúng profile đã đo: Qwen 7B, context 8192 → ngân sách 5000.
+    [InlineData(8192, 768, 5000)]
+    // Context gấp đôi thì ngân sách gấp đôi theo tỉ lệ đã đo — KHÔNG dùng kịch 14016, vì khối
+    // phình ra đo được là chậm hơn ~60% (attention bậc hai theo độ dài prompt).
+    [InlineData(16384, 768, 10000)]
+    // Context nhỏ thì ràng buộc cứng của cửa sổ thắng, ngân sách co lại cho vừa.
     [InlineData(4096, 768, 1728)]
-    public void Ngan_sach_suy_tu_context_backend_khai_bao(int context, int maxOutput, int expected)
+    public void Ngan_sach_uoc_luong_theo_context_backend_khai_bao(int context, int maxOutput, int expected)
     {
         Assert.Equal(expected, ChunkingOptions.DeriveTokenBudget(context, maxOutput, 1600));
     }

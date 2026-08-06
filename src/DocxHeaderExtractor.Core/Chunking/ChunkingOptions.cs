@@ -26,10 +26,20 @@ public sealed class ChunkingOptions
     public int TokenBudget { get; set; } = 2200;
 
     /// <summary>
-    /// Trần số ứng viên mỗi khối. Ở grammar liệt kê, mô hình sinh một quyết định cho mỗi ứng viên
-    /// trong CÙNG một chuỗi tự hồi quy, nên khối càng dài thì lỗi càng bám theo vị trí.
+    /// Trần số ứng viên mỗi khối; <c>0</c> = không chặn, để ngân sách token quyết định một mình.
+    /// <para>
+    /// MẶC ĐỊNH 0. Trần cứng 6 trước đây sinh từ một phép đo trên Qwen 7B với context 8192
+    /// (40 ứng viên/khối cho đúng 7/40, 13 ứng viên/khối cho 6/13) rồi được áp cho mọi model, mọi
+    /// context, mọi tài liệu. Nó cũng vô hiệu hoá việc suy ngân sách từ context server khai: đo
+    /// được là ngân sách nhảy 5000 → 14216 mà số khối không đổi, vì trần 6 mới là thứ ràng buộc.
+    /// </para>
+    /// <para>
+    /// ĐÁNH ĐỔI CÓ THẬT: khối dài hơn nghĩa là mô hình phải giữ nhiều quyết định hơn trong cùng
+    /// một chuỗi tự hồi quy, và phép đo 40 → 7/40 ở trên là cảnh báo trực tiếp. Đặt lại một con số
+    /// khác 0 nếu đo được rằng tài liệu của bạn cần chặn.
+    /// </para>
     /// </summary>
-    public int MaxCandidatesPerChunk { get; set; } = 6;
+    public int MaxCandidatesPerChunk { get; set; }
 
     /// <summary>Số ứng viên chồng lấn giữa hai khối liên tiếp.</summary>
     public int Overlap { get; set; } = 2;
@@ -51,15 +61,31 @@ public sealed class ChunkingOptions
     public void UseRemoteProfile() => TokenBudget = 5000;
 
     /// <summary>
-    /// Ngân sách suy từ context mà CHÍNH backend khai báo, trừ đi chỗ dành cho prompt hệ thống và
-    /// phần đầu ra.
+    /// Phần context dành cho document view, suy từ profile DUY NHẤT đã đo: Qwen 7B dùng ngân sách
+    /// 5000 trên context 8192 — tức khoảng 61%, phần còn lại cho prompt hệ thống, chat template,
+    /// JSON đầu ra và đệm.
+    /// </summary>
+    public const double MeasuredContextShare = 5000d / 8192d;
+
+    /// <summary>
+    /// Ngân sách ước lượng theo context mà CHÍNH backend khai báo.
     /// <para>
-    /// Lý do cần: hằng 5000 ở <see cref="UseRemoteProfile"/> là con số đo cho Qwen 7B chạy cục bộ
-    /// với context 8192, rồi bị đem dùng cho mọi backend RPC. LM Studio khai 16384 qua
-    /// <c>IHeaderClassifier.ContextSize</c> nhưng pipeline vẫn cắt theo 5000 — tài liệu bị chia
-    /// nhỏ hơn mức cần, mà mỗi khối lại là một lượt RPC.
+    /// Hai thái cực đều đã đo và đều sai. Hằng 5000 cứng: đúng cho Qwen 7B ở context 8192 nhưng bị
+    /// đem áp cho mọi server, kể cả LM Studio khai 16384. Dùng kịch context (14216): khối phình ra
+    /// và <b>chậm hơn ~60%</b> — cùng tài liệu, 2 khối mất 143 s còn 1 khối mất 231 s, vì attention
+    /// là bậc hai theo độ dài prompt nên gộp khối không hề rẻ đi. Chưa kể phép đo cũ trong repo:
+    /// 40 ứng viên/khối cho đúng 7/40.
+    /// </para>
+    /// <para>
+    /// Nên lấy tỉ lệ đã đo mà nhân lên, rồi chặn bằng ràng buộc cứng của cửa sổ ngữ cảnh. Ở 8192
+    /// nó tái tạo đúng con số 5000 đã đo; ở 16384 cho ~10000 thay vì 14216; ở 4096 thì ràng buộc
+    /// cứng thắng và ngân sách co lại cho vừa.
     /// </para>
     /// </summary>
-    public static int DeriveTokenBudget(int contextSize, int maxOutputTokens, int promptReserve) =>
-        Math.Max(400, contextSize - maxOutputTokens - promptReserve);
+    public static int DeriveTokenBudget(int contextSize, int maxOutputTokens, int promptReserve)
+    {
+        var hardLimit = contextSize - maxOutputTokens - promptReserve;
+        var measured = (int)(contextSize * MeasuredContextShare);
+        return Math.Max(400, Math.Min(hardLimit, measured));
+    }
 }
