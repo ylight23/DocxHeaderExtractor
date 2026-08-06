@@ -34,7 +34,12 @@ public sealed class CriticAnchorContextTests : IDisposable
     {
         var path = BenchDocumentFactory.Write(Document(), _dir);
         using var classifier = new AnchorCapturingClassifier();
-        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions(), classifier);
+        // Chặn 6 ứng viên/khối cho riêng test này. Anchor được dựng bằng cách LOẠI các mục đang bị
+        // hỏi, nên nếu cả tài liệu lọt vào một khối thì không còn mốc nào — đúng thứ xảy ra khi
+        // chạy không trần. Ở đây cần nhiều khối mới kiểm được tính cục bộ của anchor.
+        var options = new PipelineOptions();
+        options.Chunking.MaxCandidatesPerChunk = 6;
+        using var pipeline = new HeaderExtractionPipeline(options, classifier);
 
         await pipeline.RunAsync(path);
 

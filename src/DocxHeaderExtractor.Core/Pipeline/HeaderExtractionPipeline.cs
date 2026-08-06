@@ -379,9 +379,13 @@ public sealed class HeaderExtractionPipeline : IDisposable
             _options.Chunking.MaxCandidatesPerChunk, _options.TwoPass ? "lượt 1" : null, shouldAsk, ct);
 
         // Lượt 2 cắt khối nhỏ hơn hẳn ⇒ mép khối rơi vào chỗ khác, mỗi ứng viên có lân cận khác.
+        // Khi không chặn theo số ứng viên (0), việc halve ngân sách token đã đủ dịch mép khối.
         var passB = _options.TwoPass
             ? await RunPassAsync(llm, lines, Math.Max(400, _options.Chunking.TokenBudget / 2),
-                Math.Max(4, _options.Chunking.MaxCandidatesPerChunk / 2), "lượt 2", shouldAsk, ct)
+                _options.Chunking.MaxCandidatesPerChunk > 0
+                    ? Math.Max(4, _options.Chunking.MaxCandidatesPerChunk / 2)
+                    : 0,
+                "lượt 2", shouldAsk, ct)
             : null;
 
         var accepted = new Dictionary<int, HeadingRecord>();
@@ -541,7 +545,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             var acceptedAtCritic = accepted.Values.ToList();
             var critic = await RunPassAsync(llm, criticLines,
                 _options.Chunking.TokenBudget,
-                Math.Min(_options.Chunking.MaxCandidatesPerChunk, 12),
+                _options.Chunking.MaxCandidatesPerChunk,
                 _options.HighPrecisionMode ? "critic precision-first" : "phản biện model-only yếu",
                 null, ct, useCritic: true,
                 anchorsFor: asked => BuildCriticAnchorContext(acceptedAtCritic, slim, asked));
@@ -697,7 +701,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             var verifyLines = NeutralDocumentViewSerializer.BuildLines(slim, _options.Extraction, structureIndexes);
             var verification = await RunPassAsync(llm, verifyLines,
                 _options.Chunking.TokenBudget,
-                Math.Min(_options.Chunking.MaxCandidatesPerChunk, 16),
+                _options.Chunking.MaxCandidatesPerChunk,
                 "xác minh Structure", null, ct);
             foreach (var index in structureIndexes)
                 if (accepted.TryGetValue(index, out var heading))
@@ -740,7 +744,11 @@ public sealed class HeaderExtractionPipeline : IDisposable
             return;
         }
 
-        var batchSize = Math.Clamp(_options.Chunking.MaxCandidatesPerChunk, 6, 32);
+        // 0 = không chặn: hỏi cấp cho toàn bộ danh sách trong một lượt. Mỗi mục ở đây chỉ là một
+        // dòng tiêu đề nên khối không phình như lượt phân loại vốn mang theo cả đoạn lân cận.
+        var batchSize = _options.Chunking.MaxCandidatesPerChunk > 0
+            ? _options.Chunking.MaxCandidatesPerChunk
+            : Math.Max(1, askable.Count);
         const int anchorCount = 6;
 
         for (var start = 0; start < askable.Count; start += batchSize)
