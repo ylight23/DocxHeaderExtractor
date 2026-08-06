@@ -43,13 +43,46 @@ public sealed class AgentHarnessTests : IDisposable
 
         Assert.Equal(AgentRunOutcome.Completed, result.Outcome);
         Assert.Equal(1, tool.Calls);
-        // skill contract + chọn tool + 3 guardrail + tool + validator + gate
-        Assert.Equal(8, result.Steps);
+        // skill contract + chọn tool + 4 guardrail + tool + validator + gate
+        Assert.Equal(9, result.Steps);
         Assert.Equal(0, result.RepairAttempts);
         Assert.Null(result.Writeback);
         Assert.Equal(result.Trace, observed);
         Assert.All(result.Trace, e => Assert.Equal(result.RunId, e.RunId));
         Assert.Equal(Enumerable.Range(1, result.Trace.Count), result.Trace.Select(e => e.Sequence));
+    }
+
+    /// <summary>
+    /// Pipeline ghi document view ra DumpXmlPath ngay giữa lượt chạy, không qua IDocumentActionTool.
+    /// Chốt "agent không sửa file gốc" phải áp cho cả đường ghi đó, nếu không thì một cờ debug đủ
+    /// để ghi đè tài liệu nguồn mà không guardrail nào lên tiếng.
+    /// </summary>
+    [Fact]
+    public async Task Duong_ghi_phu_cua_tool_khong_duoc_de_len_tai_lieu_nguon()
+    {
+        using var tool = new FakeTool(Outline()) { SideEffectPaths = [_input] };
+        var harness = Harness(tool);
+
+        var error = await Assert.ThrowsAsync<AgentRunBlockedException>(() =>
+            harness.RunAsync(new DocumentAgentRequest(_input)));
+
+        Assert.Equal("side_effect_overwrites_source", error.Code);
+        Assert.Equal("tool_side_effect_paths", error.Guardrail);
+        Assert.Equal(0, tool.Calls);
+    }
+
+    [Fact]
+    public async Task Duong_ghi_phu_tro_vao_thu_muc_khong_ton_tai_bi_chan_truoc_khi_chay()
+    {
+        var missing = Path.Combine(Path.GetTempPath(), $"dhx-no-dir-{Guid.NewGuid():N}", "dump.xml");
+        using var tool = new FakeTool(Outline()) { SideEffectPaths = [missing] };
+        var harness = Harness(tool);
+
+        var error = await Assert.ThrowsAsync<AgentRunBlockedException>(() =>
+            harness.RunAsync(new DocumentAgentRequest(_input)));
+
+        Assert.Equal("side_effect_directory_missing", error.Code);
+        Assert.Equal(0, tool.Calls);
     }
 
     [Fact]
@@ -421,6 +454,7 @@ public sealed class AgentHarnessTests : IDisposable
             : this([outline]) => _sendsDataExternally = sendsDataExternally;
 
         public bool SupportsRepair { get; init; } = true;
+        public IReadOnlyList<string> SideEffectPaths { get; init; } = [];
         public int Calls => _invocations.Count;
         public IReadOnlyList<AgentToolInvocation> Invocations => _invocations;
 
@@ -429,9 +463,10 @@ public sealed class AgentHarnessTests : IDisposable
             "Synthetic test tool",
             _sendsDataExternally ? AgentToolRisk.Medium : AgentToolRisk.Low,
             _sendsDataExternally,
-            MutatesExternalState: false)
+            MutatesExternalState: SideEffectPaths.Count > 0)
         {
             SupportsRepair = SupportsRepair,
+            SideEffectPaths = SideEffectPaths,
         };
 
         public Task<DocumentOutline> ExecuteAsync(

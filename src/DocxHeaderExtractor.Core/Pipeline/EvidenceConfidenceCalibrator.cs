@@ -18,8 +18,14 @@ public static class EvidenceConfidenceCalibrator
         var eligible = ordered.Where(x => x.Source is HeadingSource.Structure or HeadingSource.Model).ToList();
         if (eligible.Count == 0) return 0;
 
+        // ParseParagraph chứ không Parse(text): heading do Word tự đánh số qua w:numPr không có con
+        // số trong text, và đọc trần thì numberingValid/siblingsValid/formattingConsistent cùng trượt
+        // — mất 3/5 kiểm tra cho đúng nhóm tài liệu đánh số bài bản nhất, đẩy chúng xuống cần duyệt.
         var siblingGroups = ordered
-            .Select((h, i) => (Heading: h, Token: NumberingAudit.Parse(h.Text), Parent: ParentIndex(ordered, i)))
+            .Select((h, i) => (
+                Heading: h,
+                Token: NumberingAudit.ParseParagraph(document.ByIndex(h.Index), h.Text),
+                Parent: ParentIndex(ordered, i)))
             .Where(x => x.Token is not null)
             .GroupBy(x => (x.Parent, x.Heading.Level, x.Token!.Value.Signature))
             .ToDictionary(g => g.Key, g => g.OrderBy(x => x.Heading.Index).ToList());
@@ -27,7 +33,7 @@ public static class EvidenceConfidenceCalibrator
         foreach (var heading in eligible)
         {
             var at = ordered.IndexOf(heading);
-            var token = NumberingAudit.Parse(heading.Text);
+            var token = NumberingAudit.ParseParagraph(document.ByIndex(heading.Index), heading.Text);
             var parent = ParentIndex(ordered, at);
             var numberingValid = token is not null;
             var siblingsValid = false;

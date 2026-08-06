@@ -290,6 +290,7 @@ public sealed class DocumentAgentHarness
         yield return new InputDocumentGuardrail();
         yield return new ExternalDataTransferGuardrail();
         yield return new WritebackTargetGuardrail();
+        yield return new ToolSideEffectPathGuardrail();
     }
 
     private static IEnumerable<IDocumentAgentValidator> DefaultValidators()

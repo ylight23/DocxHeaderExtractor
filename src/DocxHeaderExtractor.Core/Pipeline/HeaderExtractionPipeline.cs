@@ -117,10 +117,17 @@ public sealed class PipelineOptions
     public string? CorrectionMemoryPath { get; set; }
 
     /// <summary>
-    /// Precision-first: mọi heading do model/style đề xuất phải qua prompt critic độc lập.
-    /// Đổi lại thêm một lượt RPC nhỏ chỉ chứa các mục đã chọn, không quét lại toàn tài liệu.
+    /// Phản biện MỌI heading do model/style đề xuất, không cần dấu hiệu gì.
+    /// <para>
+    /// MẶC ĐỊNH TẮT. Bật lên là hỏi lại theo lịch chứ không theo bằng chứng, và cái giá đã đo
+    /// được: trên công văn 344 đoạn, lượt critic chạy 6 khối mất khoảng 37 phút rồi kết luận
+    /// "giữ 14, bác 0" — không đổi một mục nào. Khi tắt, critic chỉ nhận hai nhóm: mục bằng chứng
+    /// yếu theo <see cref="ModelHeadingCriticGate"/>, và mục nằm trong khối mà mô hình có dấu hiệu
+    /// trôi (bịa chỉ số, hoặc sập về một cấp duy nhất).
+    /// </para>
+    /// <para>Giữ lại làm công tắc cho lúc cần siết precision bằng mọi giá, ví dụ khi hiệu chuẩn.</para>
     /// </summary>
-    public bool HighPrecisionMode { get; set; } = true;
+    public bool HighPrecisionMode { get; set; }
 
     /// <summary>Ngưỡng precision mong muốn cho selective auto-accept.</summary>
     public double TargetPrecision { get; set; } = 0.93;
@@ -260,7 +267,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             var auditConflicts = new HashSet<int>();
             if (_options.AuditNumbering)
             {
-                var warnings = NumberingAudit.Run(headings);
+                var warnings = NumberingAudit.Run(headings, slim);
                 auditConflicts.UnionWith(warnings.SelectMany(w => w.Indexes));
                 foreach (var w in warnings) Log($"  ⚠ {w.Message}");
                 if (warnings.Count > 0)
@@ -502,10 +509,19 @@ public sealed class HeaderExtractionPipeline : IDisposable
             .Where(h => slim.ByIndex(h.Index) is { } p && ModelHeadingCriticGate.NeedsCritique(h, p))
             .Select(h => h.Index)
             .ToHashSet();
+        // Chỉ phản biện khi CÓ DẤU HIỆU, không phản biện theo lịch. Hai nguồn dấu hiệu:
+        //  - bằng chứng yếu: mục do model tự đề xuất, điểm heuristic thấp, không style/outline/
+        //    numbering và không tách được ký hiệu đánh số (ModelHeadingCriticGate);
+        //  - mô hình trôi trong chính khối đó: bịa chỉ số, hoặc sập về một cấp duy nhất.
+        // Đo được cái giá của việc hỏi tất: trên công văn 344 đoạn, critic chạy 6 khối (~37 phút)
+        // rồi "giữ 14, bác 0" — không đổi một mục nào. Mọi heading ở đó đều có đánh số, tức đều
+        // có bằng chứng cấu trúc để tự đứng.
         var criticIndexes = _options.HighPrecisionMode
             ? accepted.Values.Where(h => h.Source is HeadingSource.Model or HeadingSource.Style)
                 .Select(h => h.Index).ToHashSet()
             : weakModelIndexes;
+        criticIndexes.UnionWith(passA.UnreliableIndexes.Where(accepted.ContainsKey));
+        if (passB is not null) criticIndexes.UnionWith(passB.UnreliableIndexes.Where(accepted.ContainsKey));
 
         // Không hỏi critic về đoạn mà CẤU TRÚC đã khai báo là heading (cấp lấy từ w:lvl/w:pStyle
         // hoặc style Heading built-in). Ba lý do, không phải để đi tắt:
@@ -838,6 +854,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
         var votes = new Dictionary<int, List<int>>();
         var explicitNonHeadings = new HashSet<int>();
         var rejectedRoles = new Dictionary<int, SemanticRole>();
+        var unreliable = new HashSet<int>();
         var degree = Math.Clamp(ChunkParallelism, 1, 16);
         if (degree > 1 && chunks.Count > 1)
             Log($"{prefix}gửi tối đa {degree} khối song song — nội dung từng request không đổi, chỉ bớt thời gian chờ.");
@@ -873,6 +890,22 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 if (result.RejectedRoles is { } roles)
                     foreach (var (paragraph, role) in roles) rejectedRoles[paragraph] = role;
 
+                // Dấu hiệu mô hình đang "trôi" trong CHÍNH khối này. Không phải nghi ngờ chung
+                // chung mà là hai hiện tượng đo được:
+                //  - bịa chỉ số: trả về ID không có trong khối ⇒ nó đang không bám vào dữ liệu;
+                //  - sập về một câu trả lời: mọi mục cùng một cấp, đúng kiểu lỗi bám theo vị trí
+                //    mà grammar liệt kê gây ra (một dãy 0 kéo các chữ số sau về 0).
+                // Chỉ những khối như vậy mới đáng đem đi phản biện lại.
+                var levels = result.Headings.Select(h => h.Level).Distinct().Count();
+                var collapsed = result.Headings.Count >= 3 && levels == 1;
+                if (result.RejectedIndexes > 0 || collapsed)
+                {
+                    foreach (var index in chunk.CandidateIndexes) unreliable.Add(index);
+                    Log($"  ⚠ khối {chunk.Number}: " +
+                        (result.RejectedIndexes > 0 ? $"bịa {result.RejectedIndexes} chỉ số" : "mọi mục cùng một cấp") +
+                        " — đánh dấu để phản biện lại.");
+                }
+
                 foreach (var h in result.Headings)
                 {
                     if (!votes.TryGetValue(h.Index, out var list)) votes[h.Index] = list = [];
@@ -893,7 +926,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             _options.LmStudio.DebugLog = directDebug;
         }
 
-        return new PassResult(votes, explicitNonHeadings, rejectedRoles);
+        return new PassResult(votes, explicitNonHeadings, rejectedRoles, unreliable);
 
         async Task<ChunkResult> RunChunkAsync(int index)
         {
@@ -936,18 +969,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
         p.NumberingStyleLevel is not null ||
         p.HasBuiltInHeadingStyle ||
         p.PrecedesTableOfContents ||
-        NumberingAudit.Parse(p.Text) is not null;
+        NumberingAudit.ParseParagraph(p, p.Text) is not null;
 
-    /// <summary>
-    /// Mốc cấu trúc cho một khối critic. Hai điều kiện làm nên tính đúng của nó:
-    /// <list type="number">
-    /// <item>Anchor phải là heading GẦN đoạn đang bị phản biện. Bản đầu lấy 12 heading đầu tài
-    /// liệu theo index, nên với tài liệu 344 đoạn thì đoạn ở index 147 được phản biện bằng mốc
-    /// của phần mở đầu — coi như không có ngữ cảnh.</item>
-    /// <item>Anchor KHÔNG được chứa chính các đoạn đang bị hỏi. Đưa lại giả thuyết cũ kèm cấp của
-    /// nó là mớm đáp án cho đúng cái prompt được giao nhiệm vụ đi phản bác.</item>
-    /// </list>
-    /// </summary>
     /// <summary>
     /// Lấy ngân sách khối từ context mà chính backend khai báo, thay cho hằng số đoán sẵn.
     /// <para>
@@ -977,6 +1000,16 @@ public sealed class HeaderExtractionPipeline : IDisposable
         _options.Chunking.TokenBudget = derived;
     }
 
+    /// <summary>
+    /// Mốc cấu trúc cho một khối critic. Hai điều kiện làm nên tính đúng của nó:
+    /// <list type="number">
+    /// <item>Anchor phải là heading GẦN đoạn đang bị phản biện. Bản đầu lấy 12 heading đầu tài
+    /// liệu theo index, nên với tài liệu 344 đoạn thì đoạn ở index 147 được phản biện bằng mốc
+    /// của phần mở đầu — coi như không có ngữ cảnh.</item>
+    /// <item>Anchor KHÔNG được chứa chính các đoạn đang bị hỏi. Đưa lại giả thuyết cũ kèm cấp của
+    /// nó là mớm đáp án cho đúng cái prompt được giao nhiệm vụ đi phản bác.</item>
+    /// </list>
+    /// </summary>
     private static string BuildCriticAnchorContext(
         IEnumerable<HeadingRecord> accepted,
         SlimDocument slim,
@@ -1023,14 +1056,11 @@ public sealed class HeaderExtractionPipeline : IDisposable
     private sealed record PassResult(
         Dictionary<int, List<int>> Votes,
         HashSet<int> ExplicitNonHeadings,
-        Dictionary<int, SemanticRole> RejectedRoles);
+        Dictionary<int, SemanticRole> RejectedRoles,
+        HashSet<int> UnreliableIndexes);
 
     /// <summary>
-    /// Cấp cuối cùng cho một đoạn. Chỉ built-in heading style được lấy cấp trực tiếp từ OOXML;
-    /// outline level tự đặt là evidence có thể sai nên lấy phiếu mô hình làm chính.
-    /// </summary>
-    /// <summary>
-    /// Thứ tự quyền lực khi gán cấp, mạnh trước yếu sau:
+    /// Cấp cuối cùng cho một đoạn. Thứ tự quyền lực khi gán cấp, mạnh trước yếu sau:
     /// <list type="number">
     /// <item>Danh sách đa cấp khai báo cấp này gắn với style Heading N (<c>w:lvl/w:pStyle</c>) —
     /// người soạn cấu hình một lần cho cả tài liệu, không dính thao tác định dạng lẻ.</item>

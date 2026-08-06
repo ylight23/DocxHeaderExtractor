@@ -49,6 +49,37 @@ public sealed class EvidenceConfidenceCalibratorTests
         Assert.Equal(0.95, headings.Single(x => x.Index == 30).Confidence);
     }
 
+    /// <summary>
+    /// Word đánh số qua danh sách nhiều cấp thì con số KHÔNG có trong text của run — nó chỉ tồn tại
+    /// ở <see cref="SlimParagraph.NumberLabel"/> do NumberingResolver tính. Đọc trần text làm ba
+    /// kiểm tra numbering/sibling/formatting cùng trượt, và đúng nhóm tài liệu đánh số bài bản nhất
+    /// lại bị đẩy xuống "cần duyệt". Ở đây text hoàn toàn không có chữ số nào.
+    /// </summary>
+    [Fact]
+    public void Danh_so_tu_dong_cua_Word_van_duoc_tinh_la_co_numbering()
+    {
+        var ps = new[]
+        {
+            Numbered(11, "1.", "Phạm vi điều chỉnh"),
+            Numbered(13, "2.", "Đối tượng áp dụng"),
+        };
+        var doc = new SlimDocument { FileName = "x.docx", SourcePath = "x.docx", Paragraphs = ps }.Build();
+        List<HeadingRecord> headings =
+        [
+            new() { Index = 11, Level = 1, Text = "Phạm vi điều chỉnh", Source = HeadingSource.Structure, ModelConfirmed = true },
+            new() { Index = 13, Level = 1, Text = "Đối tượng áp dụng", Source = HeadingSource.Structure, ModelConfirmed = true },
+        ];
+
+        EvidenceConfidenceCalibrator.Apply(headings, doc);
+
+        Assert.All(headings, h =>
+        {
+            Assert.True(h.Evidence!.NumberingValid);
+            Assert.True(h.Evidence.SiblingSequenceValid);
+            Assert.Equal(0.95, h.Confidence);
+        });
+    }
+
     [Theory]
     [InlineData(3, 0.80)]
     [InlineData(4, 0.85)]
@@ -79,5 +110,11 @@ public sealed class EvidenceConfidenceCalibratorTests
     private static SlimParagraph P(int index, string text, bool bold) => new()
     {
         Index = index, StableId = $"p[{index}]", Text = text, Bold = bold, FontSizePt = 13, Alignment = "left",
+    };
+
+    private static SlimParagraph Numbered(int index, string label, string text) => new()
+    {
+        Index = index, StableId = $"p[{index}]", Text = text, Bold = true, FontSizePt = 13, Alignment = "left",
+        NumberingId = 4, NumberingLevel = 0, NumberLabel = label,
     };
 }

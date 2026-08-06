@@ -38,7 +38,10 @@ public static class StructuralRecovery
             // Chỉ xét đánh số nhiều cấp ("3.2"). Với một cấp ("2.") thì không có tiền tố cha để
             // xác định anh em, mà tài liệu hành chính đầy dòng số liệu mở đầu bằng số — cứu bừa
             // ở đó sẽ đổ vào hàng loạt dòng không phải tiêu đề.
-            if (NumberingAudit.ParseArabicPath(p.Text) is { Length: >= 2 } path) paths[p.Index] = path;
+            // Đọc qua NumberLabel như StructuralHierarchyResolver.PathOf: Word đánh số bằng danh
+            // sách nhiều cấp thì "3.2" không nằm trong text, và cứu-anh-em mù hẳn với nhóm đó.
+            var numbering = NumberingAudit.TextWithNumberLabel(p, p.Text);
+            if (NumberingAudit.ParseArabicPath(numbering) is { Length: >= 2 } path) paths[p.Index] = path;
         }
         if (paths.Count == 0) return [];
 

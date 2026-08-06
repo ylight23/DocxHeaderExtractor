@@ -77,29 +77,22 @@ public sealed class SlimExtractionTests : IDisposable
         Assert.Equal(ParagraphRole.Normal, body.Role);
     }
 
-    [Fact]
-    public void Slim_xml_is_much_smaller_than_raw_document_xml()
-    {
-        var doc = Extract();
-        var lines = SlimXmlSerializer.BuildLines(doc, new ExtractionOptions());
-        var slim = SlimXmlSerializer.WrapChunk(lines, 1, 1);
-
-        using var zip = System.IO.Compression.ZipFile.OpenRead(_docx);
-        var entry = zip.GetEntry("word/document.xml")!;
-        using var reader = new StreamReader(entry.Open());
-        var raw = reader.ReadToEnd();
-
-        Assert.True(slim.Length < raw.Length / 2,
-            $"XML tinh gọn {slim.Length} ký tự, document.xml gốc {raw.Length} ký tự");
-    }
+    // Ở đây từng có test "XML tinh gọn nhỏ hơn một nửa document.xml gốc". Nó đo bản dựng dòng kiểu
+    // XML — định dạng đã bị bỏ vì không còn người gọi nào trong src/. Chạy lại đúng phép đo đó trên
+    // view THẬT gửi cho mô hình (BLOCK + metadata JSON) cho 2864 so với 3089 ký tự: tiết kiệm 7%,
+    // không phải 50%. Metadata JSON dài hơn thuộc tính XML viết tắt, và trên tài liệu mẫu 14 đoạn
+    // thì hầu hết đoạn đều là ứng viên nên phần gom OMITTED_NORMAL_BLOCKS gần như không có việc gì
+    // để làm. Một ngưỡng tỉ lệ đo trên tài liệu bé như vậy không khoá được điều gì thật, nên bỏ hẳn
+    // thay vì hạ ngưỡng cho vừa; phần tiết kiệm thật sự nằm ở chỗ gom đoạn thường, do test dưới khoá.
 
     [Fact]
     public void Collapsed_runs_report_number_of_skipped_paragraphs()
     {
         var doc = Extract();
-        var lines = SlimXmlSerializer.BuildLines(doc, new ExtractionOptions { IncludeFollowingContext = false });
+        var lines = NeutralDocumentViewSerializer.BuildLines(
+            doc, new ExtractionOptions { IncludeFollowingContext = false }, reviewIndexes: null);
 
-        Assert.Contains(lines, l => l.Text.StartsWith("<n c="));
+        Assert.Contains(lines, l => l.Text.StartsWith("OMITTED_NORMAL_BLOCKS"));
         Assert.All(lines.Where(l => l.IsCandidate), l => Assert.NotNull(l.ParagraphIndex));
     }
 

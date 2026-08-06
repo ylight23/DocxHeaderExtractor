@@ -134,6 +134,58 @@ public sealed class WritebackTargetGuardrail : IDocumentAgentGuardrail
     }
 }
 
+/// <summary>
+/// Soi các đường ghi phụ mà tool tự khai (<see cref="AgentToolDescriptor.SideEffectPaths"/>), áp
+/// đúng hai chốt như đích writeback: không được trùng tài liệu nguồn, và thư mục đích phải có sẵn.
+/// <para>
+/// Lý do tồn tại: pipeline ghi document view ra <c>DumpXmlPath</c> ngay giữa lượt chạy, không đi
+/// qua <c>IDocumentActionTool</c> nên <see cref="WritebackTargetGuardrail"/> không hề thấy. Chốt
+/// "agent không sửa file gốc" mà thủng ở một đường ghi thì nó không còn là chốt.
+/// </para>
+/// </summary>
+public sealed class ToolSideEffectPathGuardrail : IDocumentAgentGuardrail
+{
+    public string Name => "tool_side_effect_paths";
+
+    public ValueTask<AgentGuardrailDecision> EvaluateAsync(
+        DocumentAgentGuardrailContext context,
+        CancellationToken ct = default)
+    {
+        ct.ThrowIfCancellationRequested();
+        var paths = context.Tool.SideEffectPaths
+            .Concat(context.ActionTool?.SideEffectPaths ?? [])
+            .Where(x => !string.IsNullOrWhiteSpace(x))
+            .ToArray();
+
+        if (paths.Length == 0)
+            return ValueTask.FromResult(AgentGuardrailDecision.Pass(
+                "no_side_effect_paths", "Tool không khai đường ghi phụ nào."));
+
+        var source = File.Exists(context.Request.InputPath)
+            ? Path.GetFullPath(context.Request.InputPath)
+            : null;
+
+        foreach (var raw in paths)
+        {
+            var full = Path.GetFullPath(raw);
+            if (source is not null && string.Equals(full, source, StringComparison.OrdinalIgnoreCase))
+                return ValueTask.FromResult(AgentGuardrailDecision.Block(
+                    "side_effect_overwrites_source",
+                    $"Tool khai sẽ ghi đè chính tài liệu nguồn: {Path.GetFileName(full)}"));
+
+            var directory = Path.GetDirectoryName(full);
+            if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+                return ValueTask.FromResult(AgentGuardrailDecision.Block(
+                    "side_effect_directory_missing",
+                    $"Thư mục cho đường ghi phụ không tồn tại: {directory}"));
+        }
+
+        return ValueTask.FromResult(AgentGuardrailDecision.Pass(
+            "side_effect_paths_valid",
+            $"{paths.Length} đường ghi phụ hợp lệ: {string.Join(", ", paths.Select(Path.GetFileName))}"));
+    }
+}
+
 public sealed class AgentRunBlockedException : InvalidOperationException
 {
     public Guid RunId { get; }

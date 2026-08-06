@@ -88,6 +88,12 @@ public sealed class LlamaOptions
     public bool ReusePromptPrefix { get; set; } = true;
 
     /// <summary>
+    /// Bản sao nông để backend áp <see cref="ApplyRecommendedModelProfile"/> mà không ghi ngược lên
+    /// cấu hình của người gọi. Mọi field đều là kiểu giá trị hoặc chuỗi bất biến nên sao nông là đủ.
+    /// </summary>
+    public LlamaOptions Clone() => (LlamaOptions)MemberwiseClone();
+
+    /// <summary>
     /// Nới context cho vừa ngân sách khối, và với model đã đo thì đề xuất ngân sách lớn hơn.
     /// <para>
     /// Nhận <paramref name="chunking"/> từ ngoài chứ không tự giữ: ngân sách khối là quyết định của
