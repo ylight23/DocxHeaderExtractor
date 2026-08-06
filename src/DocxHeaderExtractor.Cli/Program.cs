@@ -186,9 +186,15 @@ static async Task DumpChunksAsync(SlimDocument slim, CommandLineOptions o, strin
 
     using (local)
     {
-    var review = o.Pipeline.ReviewAllParagraphs
-        ? slim.Paragraphs.Where(p => p.Role != ParagraphRole.Empty).Select(p => p.Index).ToHashSet()
-        : null;
+    // Sao đúng cách pipeline dựng view (HeaderExtractionPipeline.RunModelAsync): reviewIndexes
+    // LUÔN khác null, nên MỌI đoạn không rỗng vào view làm ngữ cảnh và chỉ tập được liệt kê mới
+    // mang requested=true. Bản đầu của lệnh này truyền null khi không có --review-all, tức chỉ đưa
+    // ứng viên — view nhỏ hơn 4 lần và thiếu hẳn phần thân bài quanh mỗi ứng viên. Dùng nó để so
+    // hai mô hình thì cả hai cùng đọc một đầu vào KHÔNG PHẢI đầu vào thật.
+    var review = (o.Pipeline.ReviewAllParagraphs
+            ? slim.Paragraphs.Where(p => p.Role != ParagraphRole.Empty)
+            : slim.Candidates)
+        .Select(p => p.Index).ToHashSet();
     var lines = NeutralDocumentViewSerializer.BuildLines(slim, o.Pipeline.Extraction, review);
     var chunks = SlimXmlChunker.Split(
         lines,

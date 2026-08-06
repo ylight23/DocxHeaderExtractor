@@ -232,9 +232,9 @@ toàn `document_title` thì cây heading rỗng sạch (`Collection: []`).
 - **`InlineHeadingSplitter` không tách được block dính hai heading.** Ở báo cáo thật, i=452 chứa cả
   "Tình hình hoạt động kinh doanh trong 3 năm" lẫn "Tình hình huy động vốn" vì file gốc thiếu ngắt
   đoạn. Lược đồ chỉ cho một quyết định trên một `i` nên mô hình không có cách nào tách.
-- **`CharsPerToken` là một hằng số phục vụ nhiều tokenizer chênh nhau ~5 lần** — xem §7.5. Ảnh
-  hưởng trực tiếp LM Studio và OpenRouter: tràn cửa sổ ngữ cảnh với họ Qwen, chia quá nhỏ với họ
-  Llama. Chưa sửa, và hướng sửa phải lấy số token từ chính backend chứ không phải thay hằng số.
+- **`CharsPerToken = 1.85` quá bi quan ~1,64 lần** (đo được: 3,03 với Qwen, 3,21 với Llama-3.2) —
+  xem §7.5. LM Studio và OpenRouter chia 26 khối trong khi 15 là đủ, tức ~73% lượt gọi RPC thừa.
+  Chưa sửa vì đổi ngân sách là đổi thành phần khối.
 - **Đáp án tài liệu thật do agent gán nhãn, chưa có người xác nhận.** Cả hai file `.key` trong
   §7 đều là phán đoán của mô hình. Agent tự đánh dấu vài mục "không chắc" (`* Nhận xét:`,
   `- Biển Đông:`, nhãn phòng ban kết thúc bằng `:`). Muốn có thước đo thật thì cần người duyệt.
@@ -352,9 +352,15 @@ nào trước khi chọn ngưỡng, chứ không phải tinh chỉnh một bộ 
 
 ### 7.2 Đo bằng agent Sonnet/Haiku — và một lỗi thiết kế phép đo
 
-Cờ CLI mới `xml --dump-chunks <thư mục>` ghi ĐÚNG các khối + system prompt pipeline sẽ gửi. Nhờ đó
-đo "mô hình khác trả lời ra sao" là so hai mô hình **trên cùng đầu vào**, không phải so hai cách
-dựng prompt. Trên 14 khối của báo cáo thật, đáp án 61 heading:
+Cờ CLI mới `xml --dump-chunks <thư mục>` ghi các khối + system prompt pipeline sẽ gửi.
+
+**CẢNH BÁO về chính bảng dưới**: bản ĐẦU của cờ này truyền `reviewIndexes: null` trong khi pipeline
+luôn truyền khác null — nghĩa là view của nó chỉ chứa ứng viên, thiếu hẳn phần thân bài quanh mỗi
+ứng viên mà mô hình thật được đọc (51.658 ký tự thay vì 217.733). Bảng dưới đo trên bộ khối THIẾU
+ngữ cảnh đó, nên nó KHÔNG phải trần trên của mô hình trên đầu vào thật. Đã sửa cờ; bản sau cho đúng
+15 khối như lượt chạy thật, nhưng phép đo Sonnet/Haiku thì chưa chạy lại.
+
+Trên 14 khối (thiếu ngữ cảnh) của báo cáo thật, đáp án 61 heading:
 
 | | n | P | R | F1 | đúng cấp |
 |---|---|---|---|---|---|
@@ -440,37 +446,39 @@ chạy cả ở chế độ giao diện dùng.
 `PrecedesTable` phải tính ở một lượt TRƯỚC `Classify`. Đặt trong `PostProcess` — nơi đã có
 `PrecedesTableOfContents` — thì cờ luôn false đúng lúc `Classify` cần đọc.
 
-### 7.5 Một hằng số ước lượng token không thể phục vụ nhiều tokenizer — CHƯA SỬA
+### 7.5 `CharsPerToken` quá BI QUAN ~1,64 lần — CHƯA SỬA
 
-**Bản đầu của mục này nói sai và đã được thay.** Nó viết "hằng 1.85 quá lạc quan, khối thật lớn hơn
-2,5 lần", suy từ việc Qwen chia 15 khối trong khi ước lượng chia 6. Đo trực tiếp bằng tokenizer thật
-(cờ `xml --dump-chunks --model`) cho thấy điều đó chỉ đúng với ĐÚNG MỘT họ mô hình.
+**Mục này đã bị viết sai HAI LẦN trước khi có số đo trực tiếp. Giữ lại cả hai bản sai vì cơ chế
+gây sai mới là phần đáng học.**
 
-Cùng tài liệu, cùng ngân sách 5000 token, cùng 99 ứng viên:
+- Bản 1: *"hằng 1.85 quá lạc quan, khối thật lớn hơn 2,5 lần, LM Studio sẽ tràn cửa sổ ngữ cảnh."*
+- Bản 2: *"hai tokenizer lệch nhau ~5 lần; hằng số sai theo hai hướng ngược nhau."*
 
-| Cách đếm | Số khối | Ký tự/token |
+Cả hai suy tỉ lệ từ SỐ KHỐI của những lượt chạy dùng **view khác nhau**: lượt pipeline thật dựng
+view toàn văn (217.733 ký tự) còn công cụ `--dump-chunks` bản đầu chỉ dựng view ứng viên (51.658 ký
+tự). So táo với cam rồi quy chênh lệch cho tokenizer.
+
+Số đo trực tiếp, cùng một view, cùng ngân sách 5000 token:
+
+| | Số khối | Ký tự/token |
 |---|---|---|
-| Tokenizer Qwen2.5-7B | **15** | ~0,64 (suy từ số khối) |
-| Ước lượng `CharsPerToken = 1.85` | 6 | 1,85 |
-| Tokenizer Llama-3.2-3B | **3** | **3,206** (đo trực tiếp) |
+| Tokenizer Qwen2.5-7B | **15** (khớp lượt chạy thật) | **3,029** |
+| Tokenizer Llama-3.2-3B | — | **3,206** |
+| Ước lượng `CharsPerToken = 1.85` | **26** | 1,85 |
 
-Hai tokenizer lệch nhau **~5 lần** trên cùng đoạn văn tiếng Việt: Qwen2.5 có vocab nghiêng
-Trung/Anh nên chữ có dấu rơi xuống token mức byte, Llama-3.2 phủ đa ngữ tốt hơn nhiều.
+Hai tokenizer **gần như bằng nhau**. Hằng 1.85 **quá bi quan ~1,64 lần** cho cả hai, nên triệu
+chứng KHÔNG phải tràn context mà là **chia nhỏ thừa: 26 khối thay vì 15 — khoảng 73% lượt gọi RPC
+thừa** cho LM Studio và OpenRouter (hai backend duy nhất chạy bằng ước lượng, vì `countTokens` chỉ
+khác null với `LlamaHeaderExtractor`).
 
-Phát biểu đúng: **một hằng số toàn cục sai theo HAI HƯỚNG NGƯỢC NHAU tuỳ mô hình** — với họ Qwen thì
-khối thật lớn hơn ngân sách (rủi ro tràn cửa sổ ngữ cảnh), với họ Llama thì khối nhỏ hơn cần thiết
-(lãng phí lượt gọi). `countTokens` chỉ khác null khi backend là `LlamaHeaderExtractor`, nên
-**LM Studio và OpenRouter đều chạy bằng ước lượng** và chịu đúng một trong hai triệu chứng, tuỳ
-mô hình họ đang phục vụ.
+Chưa sửa: nâng hằng số lên ~3 làm khối to gần gấp đôi, tức đổi thành phần khối — biến đã đo được là
+làm lật câu trả lời cho cả những mục không liên quan (§4). Phải đo riêng. Hướng bền hơn là lấy số
+token từ chính backend (LM Studio có endpoint tokenize; OpenRouter trả usage sau mỗi request).
 
-Hướng sửa "đổi sang đếm byte UTF-8" nêu ở bản đầu **cũng không đủ**: chênh lệch nằm ở bảng từ vựng
-của tokenizer, không nằm ở cách mã hoá ký tự. Hướng đúng là lấy số token từ chính backend (LM Studio
-có endpoint tokenize; OpenRouter trả usage sau mỗi request) hoặc để một hệ số an toàn theo họ mô
-hình. Chưa làm vì đổi cách chia khối là đổi thành phần khối — phải đo riêng.
-
-**Bài học về cách kết luận**: con số 2,5× ban đầu suy từ một quan sát gián tiếp (số khối) trên MỘT
-mô hình, rồi được phát biểu như một tính chất của tiếng Việt. Đo trực tiếp trên mô hình thứ hai lật
-ngược dấu. Cờ `--dump-chunks --model` sinh ra chính vì việc này, và nó trả công ngay ở lần dùng đầu.
+**Bài học, và là loại lỗi lặp lại ba lần trong phiên này**: suy một đại lượng từ một quan sát gián
+tiếp rồi phát biểu như tính chất của hệ thống. Lần một sai dấu, lần hai sai độ lớn, lần ba mới đúng
+— và chỉ đúng khi đo trực tiếp trên đúng cùng một đầu vào. Khi một con số quan trọng, hãy dựng công
+cụ đo nó, đừng suy từ triệu chứng.
 
 ### 7.6 Rò rỉ nội dung tài liệu qua file PHÁI SINH
 
