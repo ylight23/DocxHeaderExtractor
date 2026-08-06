@@ -148,6 +148,14 @@ public static class HeaderPrompt
     /// Prompt phản biện chỉ dùng cho các mục model-only yếu. Không tiết lộ câu trả lời lượt đầu
     /// để tránh hiệu ứng neo; yêu cầu chủ động tìm vai trò ngoài cây heading.
     /// </summary>
+    // ĐO ĐƯỢC VỀ CÂU "tên mục là một cụm từ ĐẶT TÊN, không phải một câu": thêm nó vào KHÔNG đổi
+    // được gì trên bench — trước và sau đều P 97,5% · R 100% · F1 98,7% · đúng cấp 100% · 7/8, và
+    // vẫn đúng một lỗi cũ (dòng tiêm chỉ thị ở 07-chen-chi-thi được critic xác nhận là heading).
+    // Nó được thêm vào để nhắm chính dòng đó và đã thất bại: Qwen 7B không lật quyết định chỉ vì
+    // một câu luật, khi đoạn mang đủ bốn tín hiệu hình thức của heading (đậm, hoa, căn giữa, cỡ lớn).
+    // Giữ lại vì giá gần bằng không và luật thì đúng, nhưng ĐỪNG ghi nó vào cột "đã cải thiện
+    // precision". Thứ từng bác đúng dòng này là NGỮ CẢNH SO SÁNH: hồi critic còn được hỏi 5 mục
+    // cùng lúc, có heading thật đứng cạnh, nó bác đúng. Muốn đòi lại thì phải trả bằng tốc độ.
     public const string CriticSystem = """
         Bạn là bộ phản biện cấu trúc tài liệu Word. Một mô hình khác đã nghi rằng các đoạn đầu
         vào là heading, nhưng bằng chứng định dạng/cấu trúc của chúng yếu. Hãy đánh giá lại từ
@@ -163,6 +171,9 @@ public static class HeaderPrompt
         là nhãn chứ không phải heading. Ngược lại, nếu nó mở ra một phần nội dung, hoặc đứng cùng
         dãy với những đề mục khác đã được nhận, thì nó là heading — kể cả khi ngắn, không đậm,
         không đánh số, hay nằm ngay đầu tài liệu.
+        Tên mục là một cụm từ ĐẶT TÊN cho phần nội dung, không phải một câu. Đoạn đọc như một câu
+        trần thuật hoặc một câu ra lệnh — có chủ ngữ vị ngữ, kết thúc bằng dấu chấm — là văn bản
+        thường, dù được in đậm, viết hoa, căn giữa hay để cỡ chữ lớn.
         Đừng suy từ hình thức (đậm, viết hoa, căn giữa, cỡ chữ, vị trí trang) và đừng suy từ một
         từ khóa riêng lẻ. Nếu cả hai cách hiểu còn hợp lý và không đủ bằng chứng, trả r=u.
 
