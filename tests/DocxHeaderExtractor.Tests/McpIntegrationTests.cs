@@ -108,7 +108,14 @@ public sealed class McpStdioIntegrationTests : IDisposable
 
     public McpStdioIntegrationTests() => Directory.CreateDirectory(_root);
 
-    [Fact(Timeout = 20_000)]
+    /// <summary>
+    /// Trần 90 s chứ không phải 20 s: test này spawn một tiến trình `dotnet` thật rồi bắt tay MCP
+    /// qua stdio, nên nó đo cả thời gian khởi động runtime. Trên máy đang chạy suy luận 7B cục bộ,
+    /// 20 s bị vượt và test đỏ vì HẾT GIỜ chứ không phải vì sai — đã gặp 3 lần trong một phiên, và
+    /// lần nào chạy lại một mình cũng xanh. Một test đỏ theo tải máy là test dạy người ta bỏ qua
+    /// màu đỏ, nên nới trần chứ không giữ để "nhắc nhở".
+    /// </summary>
+    [Fact(Timeout = 90_000)]
     public async Task Stdio_server_advertises_only_the_three_read_only_tools()
     {
         var environment = StdioClientTransportOptions.GetDefaultEnvironmentVariables();
