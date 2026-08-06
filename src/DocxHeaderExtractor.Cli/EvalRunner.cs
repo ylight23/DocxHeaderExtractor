@@ -55,7 +55,9 @@ public static class EvalRunner
                 var key = AnswerKey.Load(keyPath);
 
                 // Tập ứng viên đọc riêng: cần biết tầng OpenXML có đánh rơi tiêu đề nào không,
-                // vì đó là trần trên của recall — mô hình không cứu được cái đã bị loại.
+                // vì đó là trần của phần MÔ HÌNH quyết được — nó không nhìn thấy cái đã bị loại.
+                // Recall cuối vẫn có thể vượt tỉ lệ này nhờ StructuralRecovery/OutlineStructureResolver
+                // chạy SAU mô hình và cứu theo quan hệ đánh số.
                 var conversion = LegacyDocConverter.EnsureDocx(docx);
                 HashSet<int> candidates;
                 try
@@ -148,7 +150,9 @@ public static class EvalRunner
             : "Tiêu đề lọt vào tập ứng viên";
         var coverageNote = !options.DisableLlm && options.ReviewAllParagraphs
             ? "(không bị heuristic chặn trước khi model thấy)"
-            : "(trần trên của recall — tầng OpenXML đánh rơi thì mô hình không cứu được)";
+            : "(trần của phần MÔ HÌNH quyết được — nó không nhìn thấy đoạn đã bị loại. Recall cuối "
+              + "CÓ THỂ CAO HƠN nhờ tầng cứu theo cấu trúc chạy sau: đo được 88,9% recall trên một công "
+              + "văn thật có tỉ lệ này chỉ 66,7%)";
         sb.AppendLine($"{coverageName}: {Pct(suite.MicroCandidateRecall)}  {coverageNote}");
         sb.AppendLine($"Tài liệu đạt tuyệt đối: {suite.Perfect}/{suite.Documents}");
 

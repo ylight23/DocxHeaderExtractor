@@ -22,7 +22,11 @@ public sealed record DocScore(
     public double F1 => Precision + Recall == 0 ? 0 : 2 * Precision * Recall / (Precision + Recall);
 
     /// <summary>
-    /// Tỉ lệ tiêu đề đúng LỌT ĐƯỢC vào tập ứng viên. Đây là trần trên của recall cuối cùng:
+    /// Tỉ lệ tiêu đề đúng LỌT ĐƯỢC vào tập ứng viên. Đây là trần của phần MÔ HÌNH quyết được —
+    /// KHÔNG phải trần của recall cuối cùng: các tầng cứu theo cấu trúc chạy SAU mô hình và có thể
+    /// thêm heading nằm ngoài tập ứng viên. Đo được trên một công văn thật: tỉ lệ này 66,7% nhưng
+    /// recall cuối đạt 88,9% nhờ 4 heading do StructuralRecovery cứu lại.
+    /// Cách đọc cũ:
     /// tầng OpenXML đánh rơi thì mô hình không có cơ hội nào cứu lại.
     /// </summary>
     public double CandidateRecall => TruthCount == 0 ? 0 : (double)CandidateHits / TruthCount;

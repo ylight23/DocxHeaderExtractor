@@ -46,10 +46,12 @@ thay danh sách từ khoá bằng luật hình dạng, hai cấu hình cho kết
 Và đây là số đo trên TÀI LIỆU THẬT với cùng bản code — **bảng trên KHÔNG dự báo được bảng dưới**,
 §7 giải thích vì sao:
 
-| Tài liệu thật | P | R | F1 | Đúng cấp | Trần recall |
-|---|---|---|---|---|---|
-| Báo cáo thực tập 1183 đoạn (tầng OpenXML, chưa qua LLM) | 61,6% | 100% | 76,3% | 39,3% | 100% |
-| Công văn hành chính 344 đoạn (tầng OpenXML) | — | — | — | — | **66,7%** |
+| Tài liệu thật, END-TO-END | P | R | F1 | Đúng cấp |
+|---|---|---|---|---|
+| Báo cáo thực tập 1183 đoạn, 61 heading | 83,1% | 96,7% | **89,4%** | **40,7%** |
+| Công văn hành chính 344 đoạn, 18 heading | 88,9% | 88,9% | **88,9%** | **100%** |
+
+Đáp án của báo cáo có HAI người gán nhãn độc lập đồng thuận 96,8% ở chọn đoạn và 100% ở cấp (§7.2).
 
 Trần trên đo bằng Claude Sonnet đọc **đúng cùng document view và cùng prompt**: recall 97,1%,
 đúng cấp 100%. Nghĩa là Qwen 7B trong pipeline này đã chạm mức của một mô hình mạnh hơn nhiều khi
@@ -335,8 +337,27 @@ tài liệu thật có đáp án. Kết luận ngắn: **F1 98,7% của bench kh
 | | công văn hành chính gõ tay | báo cáo thực tập dùng style Word |
 |---|---|---|
 | quy mô | 344 đoạn, 18 heading | 1183 đoạn, 61 heading |
-| **trần recall** (heading lọt vào tập ứng viên) | **66,7%** — rơi 6/18 | **100%** |
+| heading lọt vào tập ứng viên | **66,7%** — rơi 6/18 | **100%** |
 | precision tầng OpenXML | tốt | **55%** — 50/111 ứng viên là thừa |
+| **end-to-end P / R / F1** | 88,9% / **88,9%** / 88,9% | 83,1% / 96,7% / **89,4%** |
+| **end-to-end đúng cấp** | **100%** | **40,7%** |
+
+Hai dòng cuối là kết quả đáng chú ý nhất của cả mục 7, và chúng NGƯỢC NHAU:
+
+- **Công văn gõ tay đạt đúng cấp 100%** vì chuỗi đánh số do người soạn gõ ra là nguồn quyết định
+  cấp, và nó nhất quán.
+- **Báo cáo dùng style đạt 40,7%** vì tác giả gán `Heading2` cho gần như mọi thứ, kể cả mục cấp 3,
+  4, 5. Pipeline đọc đúng tuyên bố đó rồi CẤM mô hình ghi đè — lượt hierarchy chỉ được hỏi 9/71
+  heading. **Chính nguyên tắc đưa bench từ 54,2% lên 100% đúng cấp (§1) là thứ giữ tài liệu này ở
+  40,7%.** Bench toàn tài liệu style đúng nên "tin cấu trúc" luôn thắng; tài liệu thật có style sai
+  hệ thống thì "tin cấu trúc" là tin vào cái sai. Cần một tín hiệu đo được rằng *style của tài liệu
+  NÀY có đáng tin không* trước khi quyết định trao quyền cho ai — chưa có.
+
+**Và "trần recall" là cách gọi SAI, đã sửa nhãn trong bộ eval.** Công văn có 66,7% heading lọt vào
+tập ứng viên nhưng recall cuối đạt **88,9%**: `StructuralRecovery` chạy SAU mô hình và cứu lại 4
+trong 6 heading mà bộ lọc heuristic đánh rơi (log: `Tự đánh giá evidence: 4 heading Structure`).
+Đúng là *mô hình* không thấy chúng; nhưng *pipeline* thì cứu được. Nhãn cũ nói "mô hình không cứu
+được" rồi bị đọc thành "recall không thể vượt" — hai điều khác nhau.
 
 Công văn gõ tay hỏng ở **recall**: mục `b.`/`c.` mất in đậm, mục `4.` bị tác giả quên bôi đậm
 trong khi `1./2./3.` đều có, nhãn `* Kết quả bay…` không phải số/La Mã/chữ cái, ô bảng
