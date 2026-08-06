@@ -29,7 +29,7 @@ public static class RequestOptions
                 o.OpenRouter = DocxHeaderExtractor.Core.Llm.OpenRouterOptions.FromEnvironment();
                 // Chunking vẫn thuộc pipeline chung; RPC không bị giới hạn VRAM local nên dùng
                 // profile 8K/5K đã nghiên cứu cho Qwen.
-                o.Llama.UseRemoteChunkProfile();
+                o.Chunking.UseRemoteProfile();
                 if (string.IsNullOrWhiteSpace(o.OpenRouter.ApiKey))
                 {
                     problem = "Backend OpenRouter chưa được cấu hình OPENROUTER_API_KEY trên server.";
@@ -55,7 +55,7 @@ public static class RequestOptions
                 // Cùng lý do như OpenRouter: LM Studio là RPC, không bị VRAM local ràng buộc. Thiếu
                 // dòng này thì ngân sách rơi về 2200 của bản local và tài liệu bị xé thành hàng
                 // chục khối — 13 ứng viên thành 27 lượt RPC.
-                o.Llama.UseRemoteChunkProfile();
+                o.Chunking.UseRemoteProfile();
                 o.TrustStyles = !Flag(form, "noTrustStyles");
                 o.SkipStyledCandidates = o.TrustStyles;
                 o.ShowRawOutput = Flag(form, "showRaw");
@@ -99,7 +99,7 @@ public static class RequestOptions
                     ?? DocxHeaderExtractor.Core.Llm.LlamaOptions.SuggestedContextForModel(model);
 
             if (Number(form, "chunkCandidates") is { } cc and >= 2 and <= 64)
-                o.Llama.MaxCandidatesPerChunk = (int)cc;
+                o.Chunking.MaxCandidatesPerChunk = (int)cc;
 
             // Bản CPU bỏ qua giá trị này; bản dựng với -p:UseVulkan=true / -p:UseCuda=true thì
             // 0 nghĩa là vẫn chạy CPU, nên không truyền xuống là giao diện không bao giờ dùng GPU.
@@ -108,7 +108,7 @@ public static class RequestOptions
 
             // Chốt profile ở server. Trình duyệt cũ có thể vẫn gửi 4096; không để request đi
             // tới bước nạp model rồi mới vỡ vì tổng ngân sách lớn hơn context.
-            o.Llama.ApplyRecommendedModelProfile();
+            o.Llama.ApplyRecommendedModelProfile(o.Chunking);
         }
 
         o.TrustStyles = !Flag(form, "noTrustStyles");

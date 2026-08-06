@@ -1,6 +1,7 @@
 using System.Net.Http.Headers;
 using System.Text.Json;
 using DocxHeaderExtractor.AgentHarness;
+using DocxHeaderExtractor.Core.Chunking;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Pipeline;
 
@@ -121,13 +122,12 @@ public sealed class McpExtractionService : IDisposable
             Llama = new LlamaOptions
             {
                 ContextSize = checked((uint)lm.ContextSize),
-                ChunkTokenBudget = chunk,
+                
                 MaxOutputTokens = maxOutput,
-                // Giữ batch vừa đủ lớn để giảm số request nhưng không làm Qwen nhầm
-                // ID/cấp khi mỗi ứng viên mang theo lân cận. Với context 4096, 5–6
-                // ứng viên là mức ổn định hơn 12 ứng viên.
-                MaxCandidatesPerChunk = 6,
             },
+            // Giữ batch vừa đủ lớn để giảm số request nhưng không làm Qwen nhầm ID/cấp khi mỗi
+            // ứng viên mang theo lân cận. Với context 4096, 5–6 ứng viên ổn định hơn 12.
+            Chunking = new ChunkingOptions { TokenBudget = chunk, MaxCandidatesPerChunk = 6 },
             ReviewAllParagraphs = false,
             HighPrecisionMode = true,
             TrustStyles = true,

@@ -219,7 +219,7 @@ app.MapPost("/api/extract", async (
                         httpClientFactory.CreateClient("OpenRouter"), options.OpenRouter),
                     InferenceBackend.LmStudio => new DocxHeaderExtractor.Core.Llm.LmStudioHeaderExtractor(
                         httpClientFactory.CreateClient("LmStudio"), options.LmStudio),
-                    _ => await modelCache.GetAsync(options.Llama, ct),
+                    _ => await modelCache.GetAsync(options.Llama, options.Chunking, ct),
                 };
             }
             using var tool = classifier is null

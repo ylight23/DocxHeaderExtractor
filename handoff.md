@@ -91,7 +91,31 @@ mất một heading cha là mọi con tụt theo. Dấu vân tay: 10/10 lỗi c�
 - Đoạn đứng ngay trước các dòng mục lục → `PrecedesTableOfContents`, thay cho danh sách từ khoá
   ("MỤC LỤC", "Danh mục hình ảnh", "Inhaltsverzeichnis" đều nhận được)
 
-### 3.5 Tốc độ
+### 3.5 Tách cấu hình chia khối ra khỏi backend
+
+`ChunkTokenBudget`, `MaxCandidatesPerChunk`, `ChunkOverlap` từng nằm trong `LlamaOptions` — lớp
+mang tên backend GGUF cục bộ — chỉ vì backend đó ra đời trước. Chia khối là việc của pipeline:
+cùng một tài liệu, cùng cách cắt, dù câu hỏi đi tới GGUF, LM Studio hay OpenRouter. Bốn hậu quả
+đã đo được:
+
+1. Nhánh LM Studio quên gọi profile chunk nên im lặng thừa hưởng mặc định 2200 của bản local bị
+   giới hạn VRAM: 13 ứng viên thành 27 lượt RPC thay vì ~7.
+2. Luật nâng ngân sách lên 5000 bám vào **tên file .gguf** chứa "qwen". Chạy đúng bộ trọng số đó
+   qua LM Studio thì luật không bao giờ kích hoạt vì không có đường dẫn file nào.
+3. Backend RPC phải ghi giá trị giả vào `Llama.ContextSize` chỉ để phép chia khối ra đúng.
+4. Khoá cache model trong web gồm cả hai trường chunking, nên đổi ngân sách khối làm nạp lại
+   4,4 GB weights một cách vô ích.
+
+Nay là `PipelineOptions.Chunking`. `LlamaOptions` chỉ còn giữ phần thuộc về nó — "model này chịu
+được context bao nhiêu" — và nhận ngân sách từ ngoài qua `ApplyRecommendedModelProfile(chunking)`.
+`RemoteChunkProfileTests` khoá bằng phản chiếu rằng ba trường kia không quay lại `LlamaOptions`:
+còn hai nguồn sự thật cho cùng một quyết định thì sớm muộn một trong hai đi lệch.
+
+**Chưa làm, và là bước tiếp theo tự nhiên**: cho pipeline suy ngân sách từ
+`IHeaderClassifier.ContextSize` (LM Studio đã trả đúng 16384) thay vì hằng 5000. Việc đó **đổi
+thành phần khối** nên phải đo riêng, không gộp.
+
+### 3.6 Tốc độ
 
 Không hỏi lại những gì cấu trúc đã quyết:
 
@@ -102,7 +126,7 @@ Không hỏi lại những gì cấu trúc đã quyết:
 Đo được: `01-style-chuan` từ ~424 s xuống ~144 s. Hiệu quả phụ thuộc tài liệu — file soạn bằng
 style/multilevel list chuẩn nhanh gấp ~3, file gõ tay gần như không đổi.
 
-### 3.6 Sửa lỗi tái lập
+### 3.7 Sửa lỗi tái lập
 
 - **LM Studio không được khai báo sampler** → kết quả phụ thuộc preset trong GUI. Cùng file, cùng
   model, khác preset là khác đáp án. Giờ gửi tường minh `top_k=1, top_p=0.9, repeat_penalty=1.0,
@@ -161,8 +185,16 @@ toàn `document_title` thì cây heading rỗng sạch (`Collection: []`).
   hiểu số Ả Rập có dấu chấm, nên không biết `PHẦN I` nằm trên `1.`. Hướng: dùng bất biến
   `NumberToken.Signature` (`Kind:Depth`) — gom chữ ký theo thứ tự xuất hiện, suy quan hệ lồng nhau,
   gán cấp bằng độ sâu lồng. Chưa làm vì nó đổi cấp của mọi heading trong mọi tài liệu.
-- **Profile calibration phải sinh lại.** Chữ ký cấu hình đã đổi (`chunkTokens`, `normalizeLevels`),
-  nên profile cũ không còn áp được.
+- **Profile calibration: sinh được nhưng CHƯA dùng được.** Chữ ký cấu hình đã đổi (`chunkTokens`,
+  `normalizeLevels`) nên profile cũ hết hiệu lực, và profile mới sinh từ bench cũng không đủ mẫu:
+  `MinimumCalibrationSamples = 52` cho mỗi bucket evidence, trong khi cả 8 tài liệu chỉ cho
+  `model_critic_numbered` 22 mẫu, `model_critic_unnumbered` 16 mẫu, các bucket còn lại 1 mẫu.
+  Vì vậy mọi lượt chạy đều báo *"evidence chưa calibration bằng holdout"* và cổng precision rơi về
+  chấp nhận theo evidence thay vì theo cận dưới Wilson.
+
+  Muốn có profile thật thì cần vài trăm heading đã gán nhãn — tức vài chục tài liệu thật đi qua
+  bảng Review, không phải thêm tài liệu tổng hợp. Tài liệu tổng hợp chỉ chứng minh được đường code,
+  không sinh ra được phân phối đúng của tài liệu thật.
 - **Bench là 8 tài liệu tổng hợp, 39 heading** — một heading sai là ~2,5 điểm phần trăm. Con số
   97,4% không đảm bảo cho tài liệu thật. Muốn có số thật thì cần `.key` cho vài tài liệu thật; bảng
   Review trong giao diện web sinh ra đúng thứ đó.

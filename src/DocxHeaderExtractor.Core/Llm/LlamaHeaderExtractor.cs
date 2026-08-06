@@ -88,7 +88,7 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
 
     public static async Task<LlamaHeaderExtractor> LoadAsync(LlamaOptions options, CancellationToken ct = default)
     {
-        options.ApplyRecommendedModelProfile();
+        options.ApplyRecommendedModelProfile(new Chunking.ChunkingOptions { TokenBudget = options.ChunkTokenBudget });
         options.Validate();
 
         ConfigureNativeLogging(options.VerboseNativeLog);

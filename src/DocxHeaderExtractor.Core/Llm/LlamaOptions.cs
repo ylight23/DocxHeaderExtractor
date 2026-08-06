@@ -1,3 +1,5 @@
+using DocxHeaderExtractor.Core.Chunking;
+
 namespace DocxHeaderExtractor.Core.Llm;
 
 public enum GrammarMode
@@ -33,19 +35,6 @@ public sealed class LlamaOptions
     /// <summary>Số token tối đa cho mỗi document-view chunk (phần còn lại dành cho prompt + đầu ra).</summary>
     public int ChunkTokenBudget { get; set; } = 2200;
 
-    /// <summary>
-    /// Profile chunk cho backend chạy qua RPC (OpenRouter, LM Studio). Mặc định 4096/2200 là của
-    /// bản local bị giới hạn VRAM; backend RPC không có ràng buộc đó nên dùng bộ 8K/5K đã đo cho
-    /// Qwen. Không dùng chung mà để mặc định 2200 thì tài liệu bị xé vụn: đo được trên tài liệu
-    /// thật là 13 ứng viên → 27 khối, tức 27 lượt RPC cho thứ nhét vừa vài lượt, và mỗi lượt lại
-    /// gửi lại toàn bộ prompt hệ thống.
-    /// </summary>
-    public void UseRemoteChunkProfile()
-    {
-        ContextSize = 8192;
-        ChunkTokenBudget = 5000;
-    }
-
     /// <summary>Số token tối đa mô hình được sinh ra cho mỗi khối.</summary>
     public int MaxOutputTokens { get; set; } = 900;
 
@@ -73,19 +62,6 @@ public sealed class LlamaOptions
     /// <summary>Cách ràng buộc đầu ra bằng GBNF.</summary>
     public GrammarMode GrammarMode { get; set; } = GrammarMode.Enumerated;
 
-    /// <summary>Số ứng viên chồng lấn giữa hai khối liên tiếp.</summary>
-    public int ChunkOverlap { get; set; } = 2;
-
-    /// <summary>
-    /// Trần số ứng viên mỗi khối. Ở grammar liệt kê, mô hình sinh một chữ số cho mỗi ứng viên
-    /// trong MỘT chuỗi tự hồi quy, nên khối càng dài thì một dãy 0 càng dễ kéo theo các 0 sai.
-    /// Đo trên Qwen2.5-7B: 40 ứng viên/khối cho 7/40, cùng tài liệu ở 13 ứng viên/khối cho 6/13
-    /// với các tiêu đề then chốt đều đúng. Nhỏ hơn thì chính xác hơn nhưng tốn prefill nhiều lần.
-    /// </summary>
-    // Batch vừa đủ lớn cho Qwen 7B: giảm số request nhưng tránh nhầm ID/cấp khi
-    // mỗi ứng viên mang theo các đoạn lân cận.
-    public int MaxCandidatesPerChunk { get; set; } = 6;
-
     /// <summary>In log gốc của llama.cpp.</summary>
     public bool VerboseNativeLog { get; set; }
 
@@ -112,12 +88,16 @@ public sealed class LlamaOptions
     public bool ReusePromptPrefix { get; set; } = true;
 
     /// <summary>
-    /// Profile thực dụng cho Qwen2.5-7B: 8K context nhưng chỉ dành khoảng 5K cho document view, phần còn
-    /// lại cho chat template, system prompt, JSON và đệm. Chỉ thay các giá trị mặc định, nên
-    /// cấu hình người dùng đặt khác vẫn được giữ nguyên.
+    /// Nới context cho vừa ngân sách khối, và với model đã đo thì đề xuất ngân sách lớn hơn.
+    /// <para>
+    /// Nhận <paramref name="chunking"/> từ ngoài chứ không tự giữ: ngân sách khối là quyết định của
+    /// pipeline, dùng chung cho mọi backend. Riêng phần "model này chịu được bao nhiêu" thì đúng là
+    /// việc của backend cục bộ, nên vẫn nằm ở đây.
+    /// </para>
     /// </summary>
-    public void ApplyRecommendedModelProfile()
+    public void ApplyRecommendedModelProfile(ChunkingOptions chunking)
     {
+        ArgumentNullException.ThrowIfNull(chunking);
         var fileName = Path.GetFileName(ModelPath);
         var qwen = fileName.Contains("qwen", StringComparison.OrdinalIgnoreCase);
         var knownLongContext = qwen ||
@@ -126,9 +106,10 @@ public sealed class LlamaOptions
 
         // Qwen 7B đã được đo với ngân sách 5K. Chỉ thay giá trị mặc định, không ghi đè cấu hình
         // chunk do người dùng chủ động đặt.
-        if (qwen && ChunkTokenBudget == 2200) ChunkTokenBudget = 5000;
+        if (qwen && chunking.TokenBudget == 2200) chunking.TokenBudget = 5000;
+        ChunkTokenBudget = chunking.TokenBudget;
 
-        var required = RequiredContextSize(ChunkTokenBudget, MaxOutputTokens);
+        var required = RequiredContextSize(chunking.TokenBudget, MaxOutputTokens);
         if (ContextSize >= required) return;
 
         if (knownLongContext && ContextSize == 4096)
@@ -146,13 +127,14 @@ public sealed class LlamaOptions
 
         // Model không nhận diện được có thể thật sự chỉ hỗ trợ 4K. Không tự nâng lên 8K khi chưa
         // biết khả năng của model; thu nhỏ document chunk để cấu hình vẫn chạy được.
-        ChunkTokenBudget = Math.Max(400, (int)ContextSize - MaxOutputTokens - FixedPromptTokens);
+        chunking.TokenBudget = Math.Max(400, (int)ContextSize - MaxOutputTokens - FixedPromptTokens);
+        ChunkTokenBudget = chunking.TokenBudget;
     }
 
     public static uint SuggestedContextForModel(string modelPath)
     {
         var options = new LlamaOptions { ModelPath = modelPath };
-        options.ApplyRecommendedModelProfile();
+        options.ApplyRecommendedModelProfile(new ChunkingOptions());
         return options.ContextSize;
     }
 
