@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.Chunking;
 using DocxHeaderExtractor.Core.Llm;
 
 namespace DocxHeaderExtractor.Web;
@@ -11,9 +12,10 @@ public sealed class LlamaModelCache : IDisposable
     private LlamaHeaderExtractor? _model;
     private ModelLoadKey? _key;
 
-    public async Task<LlamaHeaderExtractor> GetAsync(LlamaOptions options, CancellationToken ct)
+    public async Task<LlamaHeaderExtractor> GetAsync(
+        LlamaOptions options, ChunkingOptions chunking, CancellationToken ct)
     {
-        options.ApplyRecommendedModelProfile();
+        options.ApplyRecommendedModelProfile(chunking);
         var key = ModelLoadKey.From(options);
         if (_model is not null && key == _key) return _model;
 
@@ -49,14 +51,11 @@ public sealed class LlamaModelCache : IDisposable
         float Temperature,
         uint Seed,
         GrammarMode GrammarMode,
-        int ChunkOverlap,
-        int MaxCandidatesPerChunk,
         bool VerboseNativeLog)
     {
         public static ModelLoadKey From(LlamaOptions o) => new(
             System.IO.Path.GetFullPath(o.ModelPath), o.ContextSize, o.ChunkTokenBudget,
             o.MaxOutputTokens, o.Threads, o.BatchThreads, o.BatchSize, o.GpuLayerCount,
-            o.Temperature, o.Seed, o.GrammarMode, o.ChunkOverlap, o.MaxCandidatesPerChunk,
-            o.VerboseNativeLog);
+            o.Temperature, o.Seed, o.GrammarMode, o.VerboseNativeLog);
     }
 }

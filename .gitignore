@@ -19,6 +19,14 @@ bench/*.docx
 bench/*.doc
 !bench/07-mau-that.docx
 
+# data/ là chỗ để tài liệu thật đang thử. Repo này public, mà tài liệu thử thực tế có cả bản
+# mang dấu MẬT kèm tên người và số liệu tác chiến — đẩy lên là không thu hồi được, kể cả khi
+# xoá commit sau đó. Không có ngoại lệ ở đây.
+data/*.docx
+data/*.doc
+data/*.rtf
+data/*.odt
+
 # Holdout thật có thể chứa tài liệu/ngữ cảnh nhạy cảm. Chỉ giữ hướng dẫn, không commit dữ liệu,
 # key có comment văn bản hay manifest hash/provenance.
 bench/holdout/*
@@ -37,8 +45,15 @@ out-vulkan/
 out-vulkan-ui/
 out-vulkan-next/
 out-vulkan-next-cli/
+out-mcp/
 
 # Nhãn sinh từ tài liệu thật dùng khi phát triển cục bộ, không đưa lên remote công khai.
 bench/09-dien-mat-di.key
 
 .fake
+
+# Đáp án gán nhãn và correction memory mang NGUYÊN VĂN tên đề mục của tài liệu thật.
+# Chặn .docx thôi là chưa đủ: nội dung tài liệu rò ra ngoài qua chính các file phái sinh này.
+data/*.key
+data/*.jsonl
+data/*.review.json

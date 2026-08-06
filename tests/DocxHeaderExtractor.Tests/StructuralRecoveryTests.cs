@@ -105,10 +105,10 @@ public class StructuralRecoveryTests
     {
         var reviewed = new List<SlimParagraph>
         {
-            P(10, "1. Phòng không"),
-            P(11, "2. Không quân"),
+            P(10, "1. Phân xưởng cơ khí"),
+            P(11, "2. Phân xưởng lắp ráp"),
         };
-        var accepted = new Dictionary<int, HeadingRecord> { [10] = H(10, 2, "1. Phòng không") };
+        var accepted = new Dictionary<int, HeadingRecord> { [10] = H(10, 2, "1. Phân xưởng cơ khí") };
 
         Assert.Empty(StructuralRecovery.Find(reviewed, accepted));
     }

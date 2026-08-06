@@ -16,8 +16,20 @@ public sealed class CommandLineOptions
 
     /// <summary>Lệnh `xml`: chỉ in phần ứng viên (đúng nội dung gửi cho mô hình) thay vì mọi đoạn.</summary>
     public bool CompactXml { get; private set; }
+
+    /// <summary>
+    /// Thư mục ghi ĐÚNG các khối mà pipeline sẽ gửi cho mô hình, kèm system prompt. Có nó thì đo
+    /// "một mô hình khác trả lời ra sao trên cùng đầu vào" mới là so hai mô hình, chứ không phải
+    /// so hai cách dựng prompt.
+    /// </summary>
+    public string? DumpChunksDir { get; private set; }
     public bool ShowHelp { get; private set; }
     public PipelineOptions Pipeline { get; } = new();
+
+    /// <summary>Đích .docx cho hành động ghi outline; null = run chỉ đọc.</summary>
+    public string? WritebackPath { get; private set; }
+    public bool WritebackOverwrite { get; private set; }
+    public bool WritebackHeadingStyles { get; private set; }
 
     public static CommandLineOptions Parse(string[] args)
     {
@@ -35,6 +47,8 @@ public sealed class CommandLineOptions
             i = 1;
         }
         if (o.Command == "help") { o.ShowHelp = true; return o; }
+
+        var explicitChunkTokens = false;
 
         for (; i < args.Length; i++)
         {
@@ -54,25 +68,41 @@ public sealed class CommandLineOptions
                     o.Pipeline.TargetPrecision = double.Parse(Next(a), System.Globalization.CultureInfo.InvariantCulture);
                     break;
                 case "--calibration-min-samples": o.Pipeline.MinimumCalibrationSamples = int.Parse(Next(a)); break;
+                // Phản biện giờ chạy theo dấu hiệu; cờ này bật lại chế độ hỏi TẤT CẢ.
                 case "--no-high-precision": o.Pipeline.HighPrecisionMode = false; break;
+                case "--critique-all": o.Pipeline.HighPrecisionMode = true; break;
                 case "-f" or "--format": o.Format = ParseFormat(Next(a)); break;
                 case "--no-llm": o.Pipeline.DisableLlm = true; break;
                 case "--openrouter":
                     o.Pipeline.Backend = InferenceBackend.OpenRouter;
-                    llama.ContextSize = 8192;
-                    llama.ChunkTokenBudget = 5000;
                     break;
                 case "--openrouter-model":
                     o.Pipeline.Backend = InferenceBackend.OpenRouter;
                     o.Pipeline.OpenRouter.Model = Next(a);
-                    llama.ContextSize = 8192;
-                    llama.ChunkTokenBudget = 5000;
+                    break;
+                case "--lmstudio":
+                    o.Pipeline.Backend = InferenceBackend.LmStudio;
+                    break;
+                case "--lmstudio-model":
+                    o.Pipeline.Backend = InferenceBackend.LmStudio;
+                    o.Pipeline.LmStudio.Model = Next(a);
+                    break;
+                case "--lmstudio-endpoint":
+                    o.Pipeline.Backend = InferenceBackend.LmStudio;
+                    o.Pipeline.LmStudio.Endpoint = new Uri(Next(a), UriKind.Absolute);
+                    break;
+                case "--lmstudio-context":
+                    o.Pipeline.Backend = InferenceBackend.LmStudio;
+                    o.Pipeline.LmStudio.ContextSize = int.Parse(Next(a));
                     break;
                 case "--candidates-only": o.Pipeline.ReviewAllParagraphs = false; break;
                 case "--review-all": o.Pipeline.ReviewAllParagraphs = true; break;
                 case "--no-trust-styles": o.Pipeline.TrustStyles = false; break;
                 case "--skip-styled": o.Pipeline.SkipStyledCandidates = true; break;
+                // Cấp thô là mặc định từ khi cấu trúc quyết định cấp; cờ này giữ lại để bật chuẩn
+                // hoá theo độ sâu ngăn xếp khi cần so với hành vi cũ.
                 case "--raw-levels": o.Pipeline.NormalizeLevels = false; break;
+                case "--normalize-levels": o.Pipeline.NormalizeLevels = true; break;
                 case "--two-pass": o.Pipeline.TwoPass = true; break;
                 case "--no-global-hierarchy": o.Pipeline.GlobalHierarchy = false; break;
                 case "--model-levels": o.Pipeline.LevelFromOutline = false; break;
@@ -81,10 +111,10 @@ public sealed class CommandLineOptions
 
                 case "--ctx": llama.ContextSize = uint.Parse(Next(a)); break;
                 case "--threads" or "-t": llama.Threads = int.Parse(Next(a)); break;
-                case "--chunk-tokens": llama.ChunkTokenBudget = int.Parse(Next(a)); break;
-                case "--chunk-candidates": llama.MaxCandidatesPerChunk = int.Parse(Next(a)); break;
+                case "--chunk-tokens": o.Pipeline.Chunking.SetExplicitTokenBudget(int.Parse(Next(a))); explicitChunkTokens = true; break;
+                case "--chunk-candidates": o.Pipeline.Chunking.MaxCandidatesPerChunk = int.Parse(Next(a)); break;
                 case "--max-out": llama.MaxOutputTokens = int.Parse(Next(a)); break;
-                case "--overlap": llama.ChunkOverlap = int.Parse(Next(a)); break;
+                case "--overlap": o.Pipeline.Chunking.Overlap = int.Parse(Next(a)); break;
                 case "--temp": llama.Temperature = float.Parse(Next(a), System.Globalization.CultureInfo.InvariantCulture); break;
                 case "--seed": llama.Seed = uint.Parse(Next(a)); break;
                 case "--no-grammar": llama.GrammarMode = GrammarMode.None; break;
@@ -104,12 +134,27 @@ public sealed class CommandLineOptions
 
                 case "-q" or "--quiet": o.Quiet = true; break;
                 case "--compact": o.CompactXml = true; break;
+                case "--dump-chunks": o.DumpChunksDir = Next(a); break;
+
+                case "--write-docx": o.WritebackPath = Next(a); break;
+                case "--write-overwrite": o.WritebackOverwrite = true; break;
+                case "--write-heading-styles": o.WritebackHeadingStyles = true; break;
 
                 default:
                     if (a.StartsWith('-')) throw new ArgumentException($"Tham số không hợp lệ: {a}");
                     o.Inputs.Add(a);
                     break;
             }
+        }
+
+        // Áp profile RPC SAU vòng lặp, không áp ngay trong nhánh cờ backend: `--chunk-tokens 3000
+        // --openrouter` từng bị chính nhánh backend ghi đè mất giá trị người dùng vừa gõ, chỉ vì
+        // thứ tự hai cờ. Ở đây override tường minh luôn thắng, bất kể viết trước hay sau.
+        if (o.Pipeline.Backend is InferenceBackend.OpenRouter or InferenceBackend.LmStudio)
+        {
+            var chunkTokens = o.Pipeline.Chunking.TokenBudget;
+            o.Pipeline.Chunking.UseRemoteProfile();
+            if (explicitChunkTokens) o.Pipeline.Chunking.SetExplicitTokenBudget(chunkTokens);
         }
 
         return o;
@@ -149,8 +194,13 @@ public sealed class CommandLineOptions
               --no-llm              Chỉ dùng luật OpenXML, bỏ qua mô hình
               --openrouter          Gọi OpenRouter RPC; đọc key từ OPENROUTER_API_KEY
               --openrouter-model m  Model slug (mặc định qwen/qwen-2.5-7b-instruct)
+              --lmstudio            Gọi LM Studio OpenAI-compatible trên loopback
+              --lmstudio-model m    Model identifier trả bởi GET /v1/models
+              --lmstudio-endpoint u Chat endpoint (mặc định http://127.0.0.1:1234/v1/chat/completions)
+              --lmstudio-context n  Context đã nạp trong LM Studio (mặc định 16384)
               --candidates-only      Chỉ gửi ứng viên heuristic cho model (mặc định production)
               --review-all           Gửi mọi paragraph cho model (audit/thu nhãn; rất chậm)
+              --dump-chunks <thư mục> (lệnh xml) Ghi từng khối sẽ gửi cho mô hình + system prompt
               --dump-xml <path>     Ghi XML tinh gọn (đầy đủ đoạn + điểm số) để kiểm tra bộ lọc
               --show-raw            In nguyên văn JSON mô hình trả về cho từng khối
               --target-precision p  Mục tiêu auto-accept (mặc định 0.93)
@@ -159,6 +209,14 @@ public sealed class CommandLineOptions
               --no-high-precision   Không critic mọi heading; chỉ phản biện mục model-only yếu
               --calibration-out <json> Với lệnh eval: ghi profile precision từ bộ holdout
           -q, --quiet               Không in tiến trình
+
+        Ghi outline ngược vào tài liệu (chỉ lệnh extract, mỗi lần một file):
+              --write-docx <path>   Ghi w:outlineLvl của các heading đã chốt vào BẢN SAO .docx
+                                    tại <path>. File nguồn không bao giờ bị sửa và không một ký
+                                    tự nội dung nào bị thay đổi. Policy skill yêu cầu duyệt xong:
+                                    còn mục chờ người duyệt thì harness bỏ qua bước ghi.
+              --write-overwrite     Cho phép đè file đích đã tồn tại
+              --write-heading-styles Gán thêm style Heading N có sẵn trong tài liệu (đổi hình thức)
 
         Mô hình / hiệu năng CPU:
               --ctx <n>             Cửa sổ ngữ cảnh (mặc định 4096)

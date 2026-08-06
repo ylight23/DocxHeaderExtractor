@@ -13,7 +13,9 @@ namespace DocxHeaderExtractor.Core.Eval;
 public sealed class PrecisionCalibrationProfile
 {
     public const string CurrentFormat = "dhx-precision-calibration/v1";
-    public const string CurrentPipelineSignature = "dhx-semantic-precision/2026-08-01-v1";
+    // Bumped after critic contradiction handling and CRITIC_ANCHORS changed the prediction
+    // distribution; old holdout precision must not silently calibrate this pipeline.
+    public const string CurrentPipelineSignature = "dhx-semantic-precision/2026-08-04-v2";
 
     public string FormatVersion { get; init; } = CurrentFormat;
     public string PipelineSignature { get; init; } = CurrentPipelineSignature;
@@ -70,9 +72,9 @@ public sealed class PrecisionCalibrationProfile
         $"includeTables={o.Extraction.IncludeTables}",
         $"includeContext={o.Extraction.IncludeFollowingContext}",
         $"ctx={o.Llama.ContextSize}",
-        $"chunkTokens={o.Llama.ChunkTokenBudget}",
-        $"chunkCandidates={o.Llama.MaxCandidatesPerChunk}",
-        $"overlap={o.Llama.ChunkOverlap}",
+        $"chunkTokens={o.Chunking.TokenBudget}",
+        $"chunkCandidates={o.Chunking.MaxCandidatesPerChunk}",
+        $"overlap={o.Chunking.Overlap}",
         $"grammar={o.Llama.GrammarMode}",
         $"temperature={o.Llama.Temperature.ToString("R", CultureInfo.InvariantCulture)}",
         $"threshold={o.Extraction.CandidateThreshold.ToString("R", CultureInfo.InvariantCulture)}");

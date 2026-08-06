@@ -40,10 +40,30 @@ public sealed record AuditWarning(string Message, IReadOnlyList<int> Indexes);
 /// </summary>
 public static class NumberingAudit
 {
+    private sealed record AuditItem(HeadingRecord Heading, NumberToken Token, string Scope);
+
+    // ── Quan hệ với HeadingHeuristics ────────────────────────────────────────────────────────
+    // Hai file cùng đọc tiền tố đánh số nhưng KHÔNG cùng một hợp đồng, và đó là chủ đích:
+    //
+    //   HeadingHeuristics  — chạy TRƯỚC mô hình, quyết định "có đáng hỏi không". Sai theo hướng
+    //                        rộng: bỏ sót một ứng viên là mất hẳn, vì mô hình không bao giờ thấy nó.
+    //   NumberingAudit     — chạy SAU mô hình, quyết định "dãy số này có nhất quán không". Sai theo
+    //                        hướng hẹp: nhận nhầm "1: 03/04" là mục số 1 thì hậu kiểm sẽ báo thiếu
+    //                        mục 2, 3 không hề tồn tại.
+    //
+    // Từ đó ba chỗ lệch dưới đây là CÓ CHỦ ĐÍCH, không phải quên đồng bộ:
+    //   • HasTitleRemainder: chỉ file này đòi phần còn lại có một từ ≥2 chữ cái.
+    //   • LetterRx nhận cả chữ thường; LetterPrefixRx bên kia chỉ nhận \p{Lu}.
+    //   • RomanRx/LetterRx cho \s* sau dấu ngắt; bên kia đòi \s+.
+    // Chỉ riêng mẫu số Ả Rập là giữ giống hệt nhau — lệch ở đó thì hậu kiểm sẽ nói về những mục mà
+    // tầng chấm điểm chưa từng thấy.
+    //
+    // KHÔNG có mẫu nào tương ứng LabelledNumberPrefixRx ở đây: "Chương 1. Tổng quan" không phân
+    // tích được thành token. Hệ quả đã đo được nằm ở StructuralHierarchyResolver.SignatureTiers.
+
     /// <summary>
     /// <c>1.</c>, <c>3.1.</c>, <c>2.3.4)</c>, kể cả <c>1.MUC</c> thiếu dấu cách.
-    /// Giữ giống hệt <c>HeadingHeuristics.DecimalPrefixRx</c>: hai bên lệch nhau thì hậu kiểm sẽ
-    /// nói về những mục mà tầng chấm điểm không hề thấy, hoặc ngược lại.
+    /// Giữ giống hệt <c>HeadingHeuristics.DecimalPrefixRx</c>.
     /// </summary>
     private static readonly Regex ArabicRx = new(
         @"^\s*(\d{1,2}(?:\.\d{1,2}){0,4})(?!\d)\s*(?:[\.\)\-–:]\s*|\s+)(\S.*)$",
@@ -68,15 +88,22 @@ public static class NumberingAudit
     /// được cấp tuyệt đối (<c>I.</c> và <c>1.</c> cùng Depth 1 nhưng khác tầng), nên sửa mù dễ
     /// thay một lỗi bằng một lỗi khác. Việc của nó là chỉ đúng chỗ cần nhìn lại.
     /// </summary>
-    public static IReadOnlyList<AuditWarning> Run(IReadOnlyList<HeadingRecord> headings)
+    /// <param name="document">
+    /// Nguồn <see cref="SlimParagraph.NumberLabel"/> cho heading được Word tự đánh số. Bỏ trống thì
+    /// hậu kiểm chỉ đọc được số gõ tay trong text — đủ cho unit test, thiếu cho tài liệu thật.
+    /// </param>
+    public static IReadOnlyList<AuditWarning> Run(
+        IReadOnlyList<HeadingRecord> headings,
+        SlimDocument? document = null)
     {
         if (headings.Count == 0) return [];
 
         var ordered = headings.OrderBy(h => h.Index).ToList();
         var tokens = ordered
-            .Select(h => (Heading: h, Token: Parse(h.Text)))
+            .Select(h => (Heading: h, Token: ParseParagraph(document?.ByIndex(h.Index), h.Text)))
             .Where(x => x.Token is not null)
-            .Select(x => (x.Heading, Token: x.Token!.Value))
+            .Select(x => new AuditItem(x.Heading, x.Token!.Value,
+                ScopeKey(ordered, ordered.IndexOf(x.Heading), document)))
             .ToList();
 
         if (tokens.Count == 0) return [];
@@ -89,9 +116,9 @@ public static class NumberingAudit
 
     /// <summary>Cùng chữ ký mà khác cấp ⇒ dòng lệch khỏi cấp phổ biến nhất là dòng đáng ngờ.</summary>
     private static IEnumerable<AuditWarning> CheckLevelConsistency(
-        List<(HeadingRecord Heading, NumberToken Token)> tokens)
+        List<AuditItem> tokens)
     {
-        foreach (var group in tokens.GroupBy(x => x.Token.Signature))
+        foreach (var group in tokens.GroupBy(x => (x.Token.Signature, x.Scope)))
         {
             var members = group.ToList();
             if (members.Count < 2) continue;
@@ -123,31 +150,39 @@ public static class NumberingAudit
     /// (<c>… 2. 3.</c> rồi <c>1.</c> nghĩa là đã sang mục cha khác), nên không cần biết cây cha con.
     /// </summary>
     private static IEnumerable<AuditWarning> CheckSequenceGaps(
-        List<(HeadingRecord Heading, NumberToken Token)> tokens)
+        List<AuditItem> tokens)
     {
         foreach (var group in tokens.GroupBy(x => x.Token.Signature))
         {
-            var run = new List<(HeadingRecord Heading, NumberToken Token)>();
-
-            foreach (var item in group)
+            // Một dãy chỉ liên tục trong cùng một parent/sibling scope. Các mục 1..9
+            // của chương I không được nối với 1..9 của chương II.
+            foreach (var scoped in group.GroupBy(x => x.Scope))
             {
-                if (run.Count > 0 && item.Token.Value <= run[^1].Token.Value)
-                {
-                    foreach (var w in InspectRun(run, item.Token)) yield return w;
-                    run = [];
-                }
-                run.Add(item);
-            }
+                var run = new List<AuditItem>();
 
-            foreach (var w in InspectRun(run, group.First().Token)) yield return w;
+                foreach (var item in scoped)
+                {
+                    if (run.Count > 0 && item.Token.Value <= run[^1].Token.Value)
+                    {
+                        foreach (var w in InspectRun(run, item.Token)) yield return w;
+                        run = [];
+                    }
+                    run.Add(item);
+                }
+
+                foreach (var w in InspectRun(run, scoped.First().Token)) yield return w;
+            }
         }
     }
 
     private static IEnumerable<AuditWarning> InspectRun(
-        List<(HeadingRecord Heading, NumberToken Token)> run,
+        List<AuditItem> run,
         NumberToken sample)
     {
         if (run.Count == 0) yield break;
+        // Một nhánh chỉ có một mục không đủ bằng chứng để kết luận mất mục trước đó;
+        // đây thường là mục con đầu tiên hoặc tài liệu bắt đầu giữa chừng.
+        if (run.Count == 1) yield break;
 
         var kind = Describe(sample);
         var first = run[0];
@@ -188,6 +223,25 @@ public static class NumberingAudit
         text.Length <= 40 ? text : text[..40] + "…";
 
     /// <summary>
+    /// Xác định phạm vi sibling bằng heading cha gần nhất. Đây là điểm quan trọng:
+    /// cùng dạng 3.1 ở hai chương khác nhau không phải cùng một nhóm kiểm tra.
+    /// </summary>
+    private static string ScopeKey(IReadOnlyList<HeadingRecord> ordered, int at, SlimDocument? document)
+    {
+        var current = ordered[at];
+        // La Mã ở đầu chương là chuỗi section-level; giữ chung một scope để phát hiện
+        // I → III, nhưng không suy ra parent từ cấp model có thể đang lệch.
+        if (ParseParagraph(document?.ByIndex(current.Index), current.Text)?.Kind == NumberKind.Roman)
+            return "roman-root";
+        for (var i = at - 1; i >= 0; i--)
+        {
+            if (ordered[i].Level < current.Level)
+                return $"parent:{ordered[i].Index}";
+        }
+        return "root";
+    }
+
+    /// <summary>
     /// Tách ký hiệu đánh số ở đầu chuỗi. Thử La Mã trước số Ả Rập vì <c>I.</c>, <c>V.</c>, <c>X.</c>
     /// cũng khớp mẫu chữ cái đơn.
     /// </summary>
@@ -214,6 +268,28 @@ public static class NumberingAudit
 
         return null;
     }
+
+    /// <summary>
+    /// Đọc ký hiệu đánh số của một ĐOẠN chứ không của một chuỗi rời.
+    /// <para>
+    /// Khi Word đánh số qua <c>w:numPr</c>, con số KHÔNG nằm trong text của run —
+    /// <c>NumberingResolver</c> tính nó ra <see cref="SlimParagraph.NumberLabel"/>. Gọi thẳng
+    /// <see cref="Parse"/> trên text hiển thị thì cả nhóm tài liệu dùng danh sách nhiều cấp kiểu
+    /// Word đều trả null, tức là "không có đánh số" cho đúng những đoạn được đánh số bài bản nhất.
+    /// </para>
+    /// <para>
+    /// Ghép nhãn vào trước text thay vì phân tích riêng: nhãn của cấp con là "1.1." nguyên vẹn nên
+    /// cùng một luật đọc được cả hai nguồn, và ràng buộc "sau tiền tố phải có tên mục" vẫn giữ.
+    /// </para>
+    /// </summary>
+    public static NumberToken? ParseParagraph(SlimParagraph? paragraph, string fallbackText) =>
+        Parse(TextWithNumberLabel(paragraph, fallbackText));
+
+    /// <summary>Chuỗi dùng để đọc đánh số: nhãn do OOXML sinh (nếu có) ghép trước text hiển thị.</summary>
+    public static string TextWithNumberLabel(SlimParagraph? paragraph, string fallbackText) =>
+        paragraph?.NumberLabel is { Length: > 0 } label
+            ? label + " " + (paragraph.Text ?? fallbackText)
+            : paragraph?.Text ?? fallbackText;
 
     /// <summary>
     /// Trả đường dẫn số Ả Rập đầy đủ, ví dụ "3.1." → [3, 1]. Khác <see cref="Parse"/>
