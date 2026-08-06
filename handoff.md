@@ -43,6 +43,14 @@ Dòng `Bản bàn giao` quan trọng vì **giao diện web mặc định tick "B
 `dhx eval` thì không — tức mọi con số trước đó đo ở một cấu hình khác cấu hình chạy thật. Sau khi
 thay danh sách từ khoá bằng luật hình dạng, hai cấu hình cho kết quả trùng khít.
 
+Và đây là số đo trên TÀI LIỆU THẬT với cùng bản code — **bảng trên KHÔNG dự báo được bảng dưới**,
+§7 giải thích vì sao:
+
+| Tài liệu thật | P | R | F1 | Đúng cấp | Trần recall |
+|---|---|---|---|---|---|
+| Báo cáo thực tập 1183 đoạn (tầng OpenXML, chưa qua LLM) | 61,6% | 100% | 76,3% | 39,3% | 100% |
+| Công văn hành chính 344 đoạn (tầng OpenXML) | — | — | — | — | **66,7%** |
+
 Trần trên đo bằng Claude Sonnet đọc **đúng cùng document view và cùng prompt**: recall 97,1%,
 đúng cấp 100%. Nghĩa là Qwen 7B trong pipeline này đã chạm mức của một mô hình mạnh hơn nhiều khi
 cả hai nhận cùng lượng thông tin — dư địa còn lại không nằm ở việc đổi mô hình.
@@ -207,9 +215,23 @@ toàn `document_title` thì cây heading rỗng sạch (`Collection: []`).
   Muốn có profile thật thì cần vài trăm heading đã gán nhãn — tức vài chục tài liệu thật đi qua
   bảng Review, không phải thêm tài liệu tổng hợp. Tài liệu tổng hợp chỉ chứng minh được đường code,
   không sinh ra được phân phối đúng của tài liệu thật.
-- **Bench là 8 tài liệu tổng hợp, 39 heading** — một heading sai là ~2,5 điểm phần trăm. Con số
-  97,4% không đảm bảo cho tài liệu thật. Muốn có số thật thì cần `.key` cho vài tài liệu thật; bảng
+- **Bench là 8 tài liệu tổng hợp, 39 heading** — một heading sai là ~2,5 điểm phần trăm. §7 đã đo
+  và xác nhận điều này bằng số: trên tài liệu thật F1 tầng OpenXML chỉ 76,3%, và trần recall của
+  một công văn gõ tay là 66,7%. Con số 97,4%/98,7% KHÔNG đảm bảo cho tài liệu thật. Muốn có số thật thì cần `.key` cho vài tài liệu thật; bảng
   Review trong giao diện web sinh ra đúng thứ đó.
+
+- **Ràng buộc "tối đa MỘT document_title" sai với tài liệu có bìa lặp.** Báo cáo thật có trang bìa
+  lặp hai lần; "BÁO CÁO THỰC TẬP" xuất hiện y hệt ở i=56 và i=74. Prompt buộc mô hình phá thế đối
+  xứng một cách tuỳ tiện — gán `d` cho lần đầu, hạ lần sau xuống `f`, không có tín hiệu khách quan
+  nào để chọn. Không sửa được bằng đổi mô hình.
+- **`InlineHeadingSplitter` không tách được block dính hai heading.** Ở báo cáo thật, i=452 chứa cả
+  "Tình hình hoạt động kinh doanh trong 3 năm" lẫn "Tình hình huy động vốn" vì file gốc thiếu ngắt
+  đoạn. Lược đồ chỉ cho một quyết định trên một `i` nên mô hình không có cách nào tách.
+- **`CharsPerToken` sai ~2,5 lần cho tiếng Việt** — xem §7.5. Ảnh hưởng trực tiếp LM Studio và
+  OpenRouter, có thể tràn cửa sổ ngữ cảnh. Chưa sửa.
+- **Đáp án tài liệu thật do agent gán nhãn, chưa có người xác nhận.** Cả hai file `.key` trong
+  §7 đều là phán đoán của mô hình. Agent tự đánh dấu vài mục "không chắc" (`* Nhận xét:`,
+  `- Biển Đông:`, nhãn phòng ban kết thúc bằng `:`). Muốn có thước đo thật thì cần người duyệt.
 
 ## 6. Lượt refactor theo kiến trúc harness
 
@@ -296,7 +318,125 @@ lý do tại chỗ; phần tiết kiệm thật sự (gom đoạn thường) do 
 
 Toàn bộ test mới đều qua **kiểm đột biến**: gỡ logic ra thì đổ, gắn lại thì xanh.
 
-## 7. Phần cứng
+## 7. Đo trên tài liệu THẬT — và vì sao bench không dự báo được
+
+Toàn bộ số đo trước mục này đến từ 8 tài liệu tổng hợp, 39 heading. Mục này là lần đầu chấm trên
+tài liệu thật có đáp án. Kết luận ngắn: **F1 98,7% của bench không chuyển sang tài liệu thật**, và
+điểm nghẽn khác nhau tuỳ loại tài liệu.
+
+### 7.1 Hai tài liệu thật, hai chế độ hỏng ngược nhau
+
+| | công văn hành chính gõ tay | báo cáo thực tập dùng style Word |
+|---|---|---|
+| quy mô | 344 đoạn, 18 heading | 1183 đoạn, 61 heading |
+| **trần recall** (heading lọt vào tập ứng viên) | **66,7%** — rơi 6/18 | **100%** |
+| precision tầng OpenXML | tốt | **55%** — 50/111 ứng viên là thừa |
+
+Công văn gõ tay hỏng ở **recall**: mục `b.`/`c.` mất in đậm, mục `4.` bị tác giả quên bôi đậm
+trong khi `1./2./3.` đều có, nhãn `* Kết quả bay…` không phải số/La Mã/chữ cái, ô bảng
+`TRỰC CHỈ HUY` bold+hoa+căn giữa giống hệt một mục đã lọt. Tầng OpenXML đánh rơi thì **không mô
+hình nào cứu được** — nó chưa từng nhìn thấy đoạn đó.
+
+Báo cáo dùng style hỏng ở **precision**: tác giả gán style Heading cho chú thích bảng, dòng bìa,
+khối chữ ký, mục liệt kê. Việc của mô hình ở đây là **cắt bỏ 45% số ứng viên** — một chế độ làm
+việc mà bench chưa bao giờ luyện, vì trên bench mô hình gần như không có gì để loại.
+
+Không có một chỉnh sửa nào chữa được cả hai. Bước tiếp theo đúng đắn là biết tài liệu thuộc nhóm
+nào trước khi chọn ngưỡng, chứ không phải tinh chỉnh một bộ tham số cho cả hai.
+
+### 7.2 Đo bằng agent Sonnet/Haiku — và một lỗi thiết kế phép đo
+
+Cờ CLI mới `xml --dump-chunks <thư mục>` ghi ĐÚNG các khối + system prompt pipeline sẽ gửi. Nhờ đó
+đo "mô hình khác trả lời ra sao" là so hai mô hình **trên cùng đầu vào**, không phải so hai cách
+dựng prompt. Trên 14 khối của báo cáo thật, đáp án 61 heading:
+
+| | n | P | R | F1 | đúng cấp |
+|---|---|---|---|---|---|
+| Sonnet | 61 | *100%* | *100%* | *100%* | *100%* |
+| Haiku | 63 | 96,8% | 100% | 98,4% | 83,6% |
+
+**Dòng Sonnet KHÔNG dùng được làm điểm chất lượng**: đáp án cũng do một agent Sonnet gán nhãn, nên
+nó đo *tự nhất quán*, không đo *đúng*. Đây là lỗi thiết kế phép đo, ghi lại để không lặp: thước đo
+và đối tượng đo phải khác mô hình.
+
+Điều nó CÓ chứng minh: Sonnet đọc 14 khối rời cho ra đúng cùng kết quả với Sonnet đọc toàn văn 621
+đoạn — chia khối không làm hỏng câu trả lời của nó, ngược hẳn với Qwen (đổi thành phần khối là lật
+câu trả lời cho cả mục không liên quan, xem §4).
+
+Thêm một lý do đừng tin lời khai của agent yếu: Haiku tự báo "46 heading" trong khi file `.key` nó
+ghi ra có 60 mục. Chấm theo file, không theo báo cáo.
+
+### 7.3 `outlineLevel` mâu thuẫn — lỗi nằm ở thứ MÌNH gửi cho mô hình
+
+Báo cáo thật khai `Heading1 → w:outlineLvl = 1` trong `styles.xml` (quy ước Word là 0). **Cả 73/73
+đoạn mang style Heading đều lệch.** Pipeline xử lý đúng ở trong — `guessedLevel` lấy từ tên style
+built-in — nhưng metadata gửi cho mô hình chở CẢ HAI:
+
+```json
+"styleId":"Heading1", "outlineLevel":1, "guessedLevel":1
+```
+
+…trong khi system prompt dạy "outlineLevel: 0 = cấp 1". Tức ta đưa cho mô hình hai trường mâu thuẫn
+cộng một luật sai với tài liệu này. Sonnet chọn `guessedLevel`; **Haiku chọn `outlineLevel` và đẩy
+MỌI mục cấp 1 xuống cấp 2** — 6 trong 10 lỗi cấp của nó đúng là ca này.
+
+Đã sửa: không gửi `outlineLvl` thô cho đoạn đã mang style Heading built-in (style đã nói cấp rồi).
+Đoạn KHÔNG có style built-in vẫn được gửi — ở đó nó là nguồn duy nhất nói về cấp. 97 trường mâu
+thuẫn biến mất, prompt nhẹ 2,3 KB.
+
+Chạy lại Haiku trên metadata đã sửa: **đúng cả 6 mục cấp 1 kia**, đúng cấp 83,6% → 91,4%. Nhưng
+recall tụt 100% → 95,1% và F1 tụt 98,4% → 95,9%, **không quy được** cho bản sửa vì agent Haiku
+không tất định và chỉ có một lượt mỗi bên. Thước đo đúng cho thay đổi này là Qwen (`top_k=1`,
+`temperature=0`, seed cố định — tất định).
+
+### 7.4 Lọc chú thích bằng cấu trúc thay danh sách từ khoá
+
+Nhóm dương tính giả lớn nhất là 13 chú thích bảng/hình mang style Heading3. `CaptionRx` đã có nhưng
+nằm sau cờ `UseLexicalRules`, mà **giao diện web mặc định tắt cờ đó** — cùng họ với lỗi
+`SkipStyledCandidates`: cấu hình đo khác cấu hình chạy.
+
+Luật mới cần ba vế cùng đúng, không dùng một từ tiếng Việt nào: nhãn "TỪ + số NHIỀU PHẦN" (đòi
+nhiều phần là chốt chống ăn nhầm "Chương 1.", "Điều 5.", "Phụ lục 1:"), `NumberingId` null (heading
+đánh số thật luôn mang numbering của Word; số trong "Bảng 1.2:" là gõ tay — tách sạch 13/13), và có
+bảng bắt đầu trong 4 đoạn kế tiếp.
+
+Đo `--no-llm --structural-only`: bench **không đổi một chữ số**; báo cáo thật 111 → 99 ứng viên,
+P 55% → 61,6%, F1 70,9% → 75,8%, recall giữ 100%. Bằng đúng mức `CaptionRx` từ vựng đạt được, nhưng
+chạy cả ở chế độ giao diện dùng.
+
+`PrecedesTable` phải tính ở một lượt TRƯỚC `Classify`. Đặt trong `PostProcess` — nơi đã có
+`PrecedesTableOfContents` — thì cờ luôn false đúng lúc `Classify` cần đọc.
+
+### 7.5 Ước lượng token sai ~2,5 lần cho tiếng Việt — CHƯA SỬA
+
+Cùng ngân sách 5000 token, cùng tài liệu: tokenizer thật của Qwen chia **15 khối**, ước lượng
+`CharsPerToken = 1.85` chia **6 khối**. Và `countTokens` chỉ khác null khi backend là
+`LlamaHeaderExtractor` — nghĩa là **LM Studio và OpenRouter đều chạy bằng ước lượng**.
+
+Ghép với `AdoptBackendContextBudget`: LM Studio khai context 16384 → ngân sách suy ra ≈ 10000 →
+khối thật ≈ 25000 token, **vượt hẳn cửa sổ**. Không phải hơi chật mà là tràn chắc chắn trên tài
+liệu tiếng Việt.
+
+Hằng 1.85 hợp lý cho tiếng Anh; đo trên tài liệu này tỉ lệ thật ≈ 0,7–0,75 ký tự/token. Hướng đúng
+là đếm theo **byte UTF-8** (ổn định hơn nhiều giữa các ngôn ngữ) chứ không phải thay một hằng số
+bằng một hằng số khác. Chưa sửa vì đổi cách chia khối là đổi thành phần khối — phải đo riêng.
+Con số 2,5× suy từ "15 khối × 5000" mà khối không đầy đều và có chồng lấn, nên hướng và độ lớn thì
+chắc, con số chính xác thì chưa.
+
+### 7.6 Rò rỉ nội dung tài liệu qua file PHÁI SINH
+
+`.gitignore` chặn `data/*.docx` là chưa đủ. Trong phiên này nội dung tài liệu thật rò ra qua ba
+đường khác: file đáp án `.key` do agent gán nhãn ghi vào `data/`, `data/verified-corrections.jsonl`
+(correction memory lưu nguyên văn tên đề mục), và hai file test chép thẳng tên đề mục thật.
+
+Đã mở rộng `.gitignore` (`data/*.key`, `*.jsonl`, `*.review.json`) và thay nội dung test bằng văn
+bản trung tính — test khoá HÌNH DẠNG (dãy La Mã → số, đậm, hoa), không khoá chữ nghĩa.
+`verified-corrections.jsonl` đã nằm trên `main` từ trước, không gỡ được bằng git.
+
+**Nguyên tắc rút ra**: mọi thứ phái sinh từ tài liệu — đáp án, correction memory, test fixture,
+dump — đều mang nội dung tài liệu. Danh sách chặn phải theo *nguồn gốc dữ liệu*, không theo đuôi file.
+
+## 8. Phần cứng
 
 Máy đo: Radeon Pro WX 5100 **4 GB**, runtime Vulkan. Qwen2.5-7B Q4_K_M nặng 4,36 GiB nên **không
 nằm vừa VRAM** — chạy chủ yếu bằng CPU, ~45 token/s prefill. Đo được: `--gpu max` và `--gpu 0.4` ở
