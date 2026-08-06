@@ -4,7 +4,15 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class AgentSkillTests
 {
-    private const string Minimal = """
+    /// <summary>
+    /// Chuẩn hoá xuống dòng về LF. Các test dưới cắt bỏ nguyên một DÒNG bằng Replace kèm ký tự
+    /// xuống dòng; raw string literal lại mang đúng kiểu xuống dòng của FILE NGUỒN, mà git tự đổi
+    /// LF↔CRLF theo cấu hình máy. Không chuẩn hoá thì test xanh trên cây checkout LF và đỏ trên
+    /// cây CRLF — đúng như đã xảy ra sau một lượt checkout lại.
+    /// </summary>
+    private static string Minimal => MinimalRaw.ReplaceLineEndings("\n");
+
+    private const string MinimalRaw = """
         ---
         name: heading-extraction
         description: mô tả
