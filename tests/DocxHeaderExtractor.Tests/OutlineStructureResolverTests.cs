@@ -119,6 +119,36 @@ public sealed class OutlineStructureResolverTests
         Assert.Equal(1, accepted[0].Level);
     }
 
+    /// <summary>
+    /// Ca nghi vấn: <c>declared</c> bật vì <c>HasBuiltInHeadingStyle</c> nhưng <c>GuessedLevel</c> lại
+    /// null (không đi qua <c>HeadingHeuristics.Classify</c> — hai field này luôn được gán cùng lúc ở
+    /// đó, nên tổ hợp này không xảy ra trên pipeline thật, chỉ dựng tay được như ở đây). Với một
+    /// heading MỚI (chưa có trong <c>accepted</c>), nhánh <c>declared ? … ?? level : level</c> rơi về
+    /// <c>level</c> của cây suy luận — kết quả giống hệt như <c>declared=false</c>, vì Source/
+    /// Confidence/Disputed đều gán y hệt nhau ở cả hai nhánh. KẾT LUẬN ÂM: không phải lỗi, chỉ là
+    /// một nhánh phòng thủ không quan sát được từ output.
+    /// </summary>
+    [Fact]
+    public void Declared_ma_khong_co_cap_tuong_minh_thi_heading_moi_van_lay_cap_cay()
+    {
+        var paragraphs = new[]
+        {
+            P(0, "I. PHẦN MỘT", bold: true, caps: true),
+            P(1, "1. Mục Alpha", bold: true),
+            P(2, "2. Mục Beta", bold: true),
+            P(3, "II. PHẦN HAI", bold: true, caps: true),
+        };
+        paragraphs[1].HasBuiltInHeadingStyle = true; // declared=true, GuessedLevel vẫn null
+        var accepted = new Dictionary<int, HeadingRecord> { [0] = H(0, 1, paragraphs) };
+
+        var result = OutlineStructureResolver.Apply(paragraphs, accepted);
+
+        Assert.Equal(3, result.Recovered); // đoạn 1, 2 (Ả Rập) và 3 (La Mã "II.") đều được cứu mới
+        Assert.Equal(2, accepted[1].Level); // rơi về cấp cây, không phải null/0/ngoại lệ
+        Assert.Equal(2, accepted[2].Level);
+    }
+
+
     private static SlimParagraph P(int index, string text, bool bold = false, bool caps = false) =>
         new() { Index = index, StableId = $"p[{index}]", Text = text, Bold = bold, AllCaps = caps };
 
