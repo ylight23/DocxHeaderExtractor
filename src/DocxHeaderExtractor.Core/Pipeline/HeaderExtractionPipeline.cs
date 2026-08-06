@@ -161,6 +161,19 @@ public sealed class HeaderExtractionPipeline : IDisposable
 {
     private readonly PipelineOptions _options;
     private IHeaderClassifier? _model;
+
+    /// <summary>
+    /// Bản ghi các lượt hỏi mô hình của LƯỢT CHẠY HIỆN TẠI. Ghi lại vì harness chốt
+    /// <c>SendsDataExternally</c> đúng một lần lúc dựng tool, còn bên trong có tới năm lượt hỏi —
+    /// không có bản ghi thì lời hứa "chỉ xử lý cục bộ" không kiểm lại được sau khi chạy.
+    /// </summary>
+    private readonly List<OutlinePass> _passes = [];
+
+    private bool BackendSendsDataExternally =>
+        !_options.DisableLlm && _options.Backend == InferenceBackend.OpenRouter;
+
+    private void RecordPass(string name, int chunks, int requestedParagraphs) =>
+        _passes.Add(new OutlinePass(name, chunks, requestedParagraphs, BackendSendsDataExternally));
     private readonly bool _ownsModel;
     private readonly bool _usesPreloadedModel;
     private readonly CorrectionMemory? _correctionMemory;
@@ -207,6 +220,9 @@ public sealed class HeaderExtractionPipeline : IDisposable
     {
         var sw = Stopwatch.StartNew();
         var quarantined = quarantinedIndexes ?? new HashSet<int>();
+        // Lượt sửa gọi lại RunAsync trên cùng đối tượng pipeline; không xoá thì bản ghi của lượt
+        // trước cộng dồn vào lượt sau và provenance mô tả một lượt chạy không tồn tại.
+        _passes.Clear();
 
         // 1. .doc / .rtf / .odt → .docx (OpenXML SDK không đọc được nhị phân đời cũ).
         var conversion = LegacyDocConverter.EnsureDocx(inputPath);
@@ -299,6 +315,12 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 Headings = headings,
                 ElapsedMs = sw.ElapsedMilliseconds,
                 Model = _options.DisableLlm ? null : _model?.ModelName,
+                Provenance = _options.DisableLlm
+                    ? null
+                    : new OutlineRunProvenance(
+                        _options.Backend.ToString(),
+                        _passes.Any(x => x.SentDataExternally),
+                        [.. _passes]),
             };
         }
         finally
@@ -392,7 +414,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 _options.Chunking.MaxCandidatesPerChunk > 0
                     ? Math.Max(4, _options.Chunking.MaxCandidatesPerChunk / 2)
                     : 0,
-                "lượt 2", shouldAsk, ct)
+                "lượt 2", shouldAsk, ct, passName: "classify-2")
             : null;
 
         var accepted = new Dictionary<int, HeadingRecord>();
@@ -564,7 +586,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 _options.Chunking.MaxCandidatesPerChunk,
                 _options.HighPrecisionMode ? "critic precision-first" : "phản biện model-only yếu",
                 null, ct, useCritic: true,
-                anchorsFor: asked => BuildCriticAnchorContext(acceptedAtCritic, slim, asked));
+                anchorsFor: asked => BuildCriticAnchorContext(acceptedAtCritic, slim, asked),
+                passName: "critic");
 
             // "document_title" KHÔNG PHẢI lời bác. Nó nói "đoạn này là tiêu đề, chỉ khác là tiêu đề
             // của cả văn bản" — khác hẳn "n"/"f"/"t" vốn khẳng định đoạn không phải tiêu đề. Xoá nó
@@ -718,7 +741,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             var verification = await RunPassAsync(llm, verifyLines,
                 _options.Chunking.TokenBudget,
                 _options.Chunking.MaxCandidatesPerChunk,
-                "xác minh Structure", null, ct);
+                "xác minh Structure", null, ct, passName: "verify-structure");
             foreach (var index in structureIndexes)
                 if (accepted.TryGetValue(index, out var heading))
                     heading.ModelConfirmed = verification.Votes.ContainsKey(index);
@@ -766,6 +789,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             ? _options.Chunking.MaxCandidatesPerChunk
             : Math.Max(1, askable.Count);
         const int anchorCount = 6;
+        RecordPass("hierarchy", (askable.Count + batchSize - 1) / batchSize, askable.Count);
 
         for (var start = 0; start < askable.Count; start += batchSize)
         {
@@ -811,7 +835,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
         Func<int, bool>? shouldAsk,
         CancellationToken ct,
         bool useCritic = false,
-        Func<IReadOnlyList<int>, string>? anchorsFor = null)
+        Func<IReadOnlyList<int>, string>? anchorsFor = null,
+        string passName = "classify")
     {
         // Đếm bằng tokenizer của chính mô hình: ngân sách chỉ có nghĩa khi đơn vị của nó trùng
         // với đơn vị mà cửa sổ ngữ cảnh dùng. Chỉ backend local mới có tokenizer trong tiến trình;
@@ -821,6 +846,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
         var chunks = SlimXmlChunker.Split(
             lines, chunkTokens, _options.Chunking.Overlap, maxCandidatesPerChunk, shouldAsk,
             countTokens);
+        RecordPass(passName, chunks.Count, chunks.Sum(c => c.CandidateIndexes.Count));
         var prefix = passLabel is null ? "" : passLabel + " — ";
         var unit = countTokens is null ? "token ước lượng" : "token thật";
         Log($"{prefix}chia thành {chunks.Count} khối context trung lập (ngân sách {chunkTokens} {unit}/khối)");

@@ -128,6 +128,27 @@ public sealed record TextOffsetSpan(
     [property: JsonPropertyName("start")] int Start,
     [property: JsonPropertyName("end")] int End);
 
+/// <summary>Một lượt hỏi mô hình đã thực sự chạy trong lượt trích xuất này.</summary>
+public sealed record OutlinePass(
+    [property: JsonPropertyName("name")] string Name,
+    [property: JsonPropertyName("chunks")] int Chunks,
+    [property: JsonPropertyName("requestedParagraphs")] int RequestedParagraphs,
+    [property: JsonPropertyName("sentDataExternally")] bool SentDataExternally);
+
+/// <summary>
+/// Những gì lượt chạy ĐÃ LÀM, đối lại với những gì <c>AgentToolDescriptor</c> hứa trước khi chạy.
+/// <para>
+/// Lý do tồn tại: harness nhìn cả pipeline là MỘT tool và chốt <c>SendsDataExternally</c> đúng một
+/// lần lúc dựng tool, trong khi bên trong có tới năm lượt hỏi mô hình, mỗi lượt gửi một tập nội
+/// dung khác nhau. Không có bản ghi này thì lời hứa "run chỉ xử lý cục bộ" không kiểm lại được —
+/// nó chỉ là một cờ do code khác tính, không phải một quan sát.
+/// </para>
+/// </summary>
+public sealed record OutlineRunProvenance(
+    [property: JsonPropertyName("backend")] string Backend,
+    [property: JsonPropertyName("sentDataExternally")] bool SentDataExternally,
+    [property: JsonPropertyName("passes")] IReadOnlyList<OutlinePass> Passes);
+
 public sealed class DocumentOutline
 {
     [JsonPropertyName("file")]
@@ -147,6 +168,11 @@ public sealed class DocumentOutline
 
     [JsonPropertyName("model")]
     public string? Model { get; set; }
+
+    /// <summary>Bản ghi các lượt hỏi mô hình đã chạy thật; null khi chạy <c>--no-llm</c>.</summary>
+    [JsonPropertyName("provenance")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public OutlineRunProvenance? Provenance { get; set; }
 
     /// <summary>
     /// Số đoạn đáng ngờ cần trọng tài xem lại: hai lượt quét bất đồng, hoặc hậu kiểm đánh số

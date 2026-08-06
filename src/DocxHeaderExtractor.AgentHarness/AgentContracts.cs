@@ -122,11 +122,16 @@ public sealed class AgentHarnessOptions
 {
     /// <summary>
     /// Giới hạn cứng số bước có tác dụng (guardrail/tool/validator/gate/action), ngăn vòng lặp
-    /// agent vô hạn. Workflow đọc mặc định cần 8 bước: skill contract, BỐN guardrail (input,
-    /// external data, writeback target, side-effect paths), tool, validator và human-review gate.
-    /// Mỗi lượt sửa thêm 2 bước, mỗi hành động ghi thêm 1.
+    /// agent vô hạn. Workflow đọc mặc định cần 9 bước: skill contract, chọn tool, BỐN guardrail
+    /// (input, external data, writeback target, side-effect paths), tool, HAI validator
+    /// (outline grounding, run provenance) và human-review gate. Mỗi lượt sửa thêm số bước bằng
+    /// số validator cộng một (ở đây là 3), mỗi hành động ghi thêm 1.
+    /// <para>
+    /// Mặc định 16 chứ không phải 10: một lượt sửa kèm hành động ghi cần 14 bước. Trần đặt sát quá
+    /// thì thêm một validator là run hỏng ở gate — đúng cái vừa xảy ra khi thêm run_provenance.
+    /// </para>
     /// </summary>
-    public int MaxSteps { get; set; } = 12;
+    public int MaxSteps { get; set; } = 16;
 
     /// <summary>
     /// Số lượt được phép dựng lại kết quả sau khi validator bác. 0 = fail-closed ngay lượt đầu.
