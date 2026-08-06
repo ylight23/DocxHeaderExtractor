@@ -19,6 +19,12 @@ public static class StructuralHierarchyResolver
         {
             var current = ordered[i];
             var path = paths[current.Index];
+
+            // Cùng một chốt mà nhánh chữ ký đã có (xem SignatureTiers): cấu trúc đã khai cấp thì
+            // không suy lại. Đoạn vẫn nằm trong `paths` vì nó là NEO cha/anh em cho các mục khác —
+            // chỉ riêng việc GHI cấp của chính nó là bị cấm.
+            if (Declared(current, document)) continue;
+
             if (path is null)
             {
                 // Đường dẫn chỉ đọc được số Ả Rập có dấu chấm, nên "PHẦN I." hay "A)" rơi ra ngoài
@@ -77,12 +83,9 @@ public static class StructuralHierarchyResolver
             // xuống 87,2%. Lý do kép: vừa vi phạm thứ tự quyền lực (cấu trúc trên suy luận), vừa
             // xếp hạng sai vì "Chương 1." không phân tích được nên chữ ký đầu tiên gặp lại là
             // Arabic:2 của "1.1." và nó bị coi là tầng ngoài cùng.
-            if (paragraph is { NumberingStyleLevel: not null } or { HasBuiltInHeadingStyle: true }) continue;
+            if (Declared(heading, document)) continue;
 
-            var text = paragraph?.NumberLabel is { Length: > 0 } label
-                ? label + " " + (paragraph.Text ?? heading.Text)
-                : paragraph?.Text ?? heading.Text;
-            if (NumberingAudit.Parse(text) is not { } token) continue;
+            if (NumberingAudit.ParseParagraph(paragraph, heading.Text) is not { } token) continue;
 
             tokens[heading.Index] = token;
             if (!rank.ContainsKey(token.Signature)) rank[token.Signature] = rank.Count + 1;
@@ -133,6 +136,15 @@ public static class StructuralHierarchyResolver
         }
         return null;
     }
+
+    /// <summary>
+    /// Đoạn đã được chính tài liệu khai cấp: danh sách đa cấp gắn style Heading N
+    /// (<c>w:lvl/w:pStyle</c>) hoặc style Heading built-in trên chính đoạn. Đây là hai nguồn đứng
+    /// trên suy luận trong thứ tự quyền lực của <c>HeaderExtractionPipeline.ResolveLevel</c>.
+    /// </summary>
+    private static bool Declared(HeadingRecord heading, SlimDocument document) =>
+        document.ByIndex(heading.Index)
+            is { NumberingStyleLevel: not null } or { HasBuiltInHeadingStyle: true };
 
     private static int[]? PathOf(HeadingRecord heading, SlimDocument document)
     {

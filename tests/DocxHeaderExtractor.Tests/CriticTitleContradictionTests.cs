@@ -117,7 +117,10 @@ public sealed class CriticTitleContradictionTests : IDisposable
         Assert.NotNull(section);
         Assert.Equal(1, chapter!.Level);
         Assert.Equal(2, section!.Level);
-        Assert.Contains(log, line => line.Contains("Bỏ qua critic"));
+        // Không khoá theo dòng log nữa: từ khi phản biện chạy theo dấu hiệu, đoạn có style built-in
+        // không lọt vào diện phản biện ngay từ đầu nên chẳng có gì để "bỏ qua". Điều cần khoá là
+        // KẾT QUẢ — critic bác sạch mà chúng vẫn còn, với cấp do file khai.
+        Assert.DoesNotContain(log, line => line.Contains("Critic ngữ nghĩa: giữ 0"));
     }
 
     private async Task<(Core.Models.DocumentOutline Outline, List<string> Log)> RunAsync(

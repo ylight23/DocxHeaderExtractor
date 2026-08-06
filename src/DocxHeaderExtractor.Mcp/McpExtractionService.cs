@@ -129,7 +129,6 @@ public sealed class McpExtractionService : IDisposable
             // ứng viên mang theo lân cận. Với context 4096, 5–6 ứng viên ổn định hơn 12.
             Chunking = BuildChunking(chunk),
             ReviewAllParagraphs = false,
-            HighPrecisionMode = true,
             TrustStyles = true,
             // Heading built-in đã có bằng chứng OOXML chắc chắn; giữ trong context
             // làm mốc nhưng không gửi lại cho LLM như ứng viên cần quyết định.

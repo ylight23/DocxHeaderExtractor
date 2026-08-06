@@ -1,9 +1,9 @@
 ---
 name: heading-extraction
 description: Phân tích cây heading DOCX theo source-grounded, precision-first workflow.
-version: 1.1.0
+version: 1.2.0
 requires:
-  guardrails: [input_document, external_data_transfer, writeback_target]
+  guardrails: [input_document, external_data_transfer, writeback_target, tool_side_effect_paths]
   validators: [outline_grounding]
   humanReviewBeforeWriteback: true
   maxRepairAttempts: 1
@@ -46,6 +46,14 @@ Xác định vai trò ngữ nghĩa và cấp heading nhưng không bịa, sửa 
 ## Hành động ghi
 
 - Writeback chỉ chạm bản sao; file nguồn không bao giờ bị sửa.
+- Chốt đó áp cho MỌI đường ghi, không riêng đích writeback. Tool phải khai trước các đường ghi
+  phụ của nó (ví dụ file dump document view) qua `SideEffectPaths`; guardrail
+  `tool_side_effect_paths` chặn trước khi chạy nếu chúng trỏ vào tài liệu nguồn hoặc vào thư mục
+  không tồn tại.
+- Chốt đó áp cho MỌI đường ghi, không riêng đích writeback. Tool phải khai trước các đường ghi
+  phụ của nó (ví dụ file dump document view) qua `SideEffectPaths`; guardrail
+  `tool_side_effect_paths` chặn trước khi chạy nếu chúng trỏ vào tài liệu nguồn hoặc vào thư mục
+  không tồn tại.
 - Chỉ đặt `w:outlineLvl` (và `w:pStyle` khi được yêu cầu rõ); không sửa một ký tự nội dung nào.
 - `requires.humanReviewBeforeWriteback: true` nghĩa là còn mục chờ duyệt thì không được ghi, kể
   cả khi caller yêu cầu bỏ qua. Muốn đổi thì phải sửa chính file policy này và commit.

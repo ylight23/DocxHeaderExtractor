@@ -207,10 +207,10 @@ public class FullReviewSerializationTests
             ],
         }.Build();
 
-        var lines = SlimXmlSerializer.BuildLines(doc, new ExtractionOptions(), new HashSet<int> { 0, 1 });
+        var lines = NeutralDocumentViewSerializer.BuildLines(doc, new ExtractionOptions(), new HashSet<int> { 0, 1 });
 
         Assert.Equal([0, 1], lines.Where(x => x.IsCandidate).Select(x => x.ParagraphIndex));
-        Assert.DoesNotContain(lines, x => x.Text.StartsWith("<n ", StringComparison.Ordinal));
+        Assert.DoesNotContain(lines, x => x.Text.StartsWith("OMITTED_NORMAL_BLOCKS", StringComparison.Ordinal));
     }
 
     [Fact]

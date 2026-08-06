@@ -43,6 +43,14 @@ public sealed record AgentToolDescriptor(
     /// Tool không hỗ trợ thì harness fail ngay ở lượt đầu — lặp lại y hệt chỉ tốn thời gian.
     /// </summary>
     public bool SupportsRepair { get; init; }
+
+    /// <summary>
+    /// Đường dẫn mà tool sẽ ghi TRONG khi chạy, ngoài đích writeback của request — ví dụ file dump
+    /// document view khi bật cờ debug. Khai ở đây thì <see cref="ToolSideEffectPathGuardrail"/> soi
+    /// được; bỏ trống thì đường ghi đó nằm ngoài mọi guardrail và harness hứa "chỉ đọc" trong khi
+    /// tool có ghi file.
+    /// </summary>
+    public IReadOnlyList<string> SideEffectPaths { get; init; } = [];
 }
 
 /// <summary>
@@ -114,8 +122,9 @@ public sealed class AgentHarnessOptions
 {
     /// <summary>
     /// Giới hạn cứng số bước có tác dụng (guardrail/tool/validator/gate/action), ngăn vòng lặp
-    /// agent vô hạn. Workflow đọc mặc định cần 6 bước: skill contract, hai guardrail, tool,
-    /// validator và human-review gate. Mỗi lượt sửa thêm 2 bước, mỗi hành động ghi thêm 1.
+    /// agent vô hạn. Workflow đọc mặc định cần 8 bước: skill contract, BỐN guardrail (input,
+    /// external data, writeback target, side-effect paths), tool, validator và human-review gate.
+    /// Mỗi lượt sửa thêm 2 bước, mỗi hành động ghi thêm 1.
     /// </summary>
     public int MaxSteps { get; set; } = 12;
 

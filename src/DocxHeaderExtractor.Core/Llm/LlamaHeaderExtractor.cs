@@ -86,8 +86,16 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
         }
     }
 
+    /// <summary>
+    /// Nạp weights. Profile model được áp lên BẢN SAO: cả hai người gọi (pipeline qua
+    /// <c>PrepareLocalModelProfile</c>, web qua <c>LlamaModelCache</c>) đều đã áp profile lên
+    /// <c>ChunkingOptions</c> thật trước khi tới đây, nên đây chỉ còn là lưới an toàn cho người gọi
+    /// thứ ba. Áp lên chính <paramref name="options"/> thì một hàm tên "Load" lại âm thầm sửa
+    /// context/ngân sách khối của đối tượng người gọi đang giữ và dùng lại cho lượt chạy sau.
+    /// </summary>
     public static async Task<LlamaHeaderExtractor> LoadAsync(LlamaOptions options, CancellationToken ct = default)
     {
+        options = options.Clone();
         options.ApplyRecommendedModelProfile(new Chunking.ChunkingOptions { TokenBudget = options.ChunkTokenBudget });
         options.Validate();
 

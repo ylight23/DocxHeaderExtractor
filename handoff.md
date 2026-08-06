@@ -32,8 +32,14 @@ Bộ bench 8 tài liệu tổng hợp (`dhx bench`), mô hình Qwen2.5-7B-Instru
 | + bỏ hardcode khỏi prompt, bench 8 tài liệu | 97,4% | **97,4%** | **97,4%** | **100%** | 6/8 |
 | Cùng bản trên, chạy `--structural-only` | 97,4% | **97,4%** | **97,4%** | **100%** | 6/8 |
 | **Bản bàn giao** (`--structural-only`) | **97,5%** | **100%** | **98,7%** | **100%** | **7/8** |
+| + phản biện theo dấu hiệu (thay vì hỏi tất) | 97,5% | 100% | 98,7% | 100% | 7/8 |
+| + lượt refactor harness (§6), hai lượt đo | 97,5% | 100% | 98,7% | 100% | 7/8 |
 
-Dòng cuối quan trọng vì **giao diện web mặc định tick "Bỏ luật từ ngữ"** (`structuralOnly`), còn
+Hai dòng cuối là **điều kiện nghiệm thu chứ không phải tiến bộ**: cả hai lượt đó nhằm bỏ code
+sai/chết/trùng và đổi cách kích hoạt critic, nên số đo giữ nguyên mới là đạt. Riêng phản biện
+theo dấu hiệu rút thời gian bench 1542 s → 1350 s.
+
+Dòng `Bản bàn giao` quan trọng vì **giao diện web mặc định tick "Bỏ luật từ ngữ"** (`structuralOnly`), còn
 `dhx eval` thì không — tức mọi con số trước đó đo ở một cấu hình khác cấu hình chạy thật. Sau khi
 thay danh sách từ khoá bằng luật hình dạng, hai cấu hình cho kết quả trùng khít.
 
@@ -181,10 +187,16 @@ toàn `document_title` thì cây heading rỗng sạch (`Collection: []`).
   thật đứng cạnh, nó bác đúng. Sau khi cắt batch (mục 3.5) nó chỉ còn được hỏi 1 mục đơn độc. Đòi
   lại được bằng cách bỏ nhát cắt đó, giá là `01-style-chuan` từ ~144 s trở lại ~424 s. Đây là đánh
   đổi precision ↔ tốc độ, không phải một lỗi chờ sửa.
-- **Chuỗi đánh số gõ tay chưa làm nguồn quyết định cấp.** `StructuralHierarchyResolver.PathOf` chỉ
-  hiểu số Ả Rập có dấu chấm, nên không biết `PHẦN I` nằm trên `1.`. Hướng: dùng bất biến
-  `NumberToken.Signature` (`Kind:Depth`) — gom chữ ký theo thứ tự xuất hiện, suy quan hệ lồng nhau,
-  gán cấp bằng độ sâu lồng. Chưa làm vì nó đổi cấp của mọi heading trong mọi tài liệu.
+- ~~**Chuỗi đánh số gõ tay chưa làm nguồn quyết định cấp.**~~ ĐÃ LÀM —
+  `StructuralHierarchyResolver.SignatureTiers` gom chữ ký `NumberToken.Signature` (`Kind:Depth`)
+  theo thứ tự XUẤT HIỆN LẦN ĐẦU và suy quan hệ lồng nhau từ đó, nên `PHẦN I` nằm trên `1.` mà không
+  cần biết chữ "PHẦN". Chỉ chạy cho đoạn mà `PathOf` không đọc được và cấu trúc chưa tự khai cấp;
+  thiếu hai chốt đó thì kéo độ chính xác cấp 100% → 87,2% (đã đo).
+- **`NumberingAudit` vẫn không đọc được "Chương 1."** — không có mẫu nào tương ứng
+  `HeadingHeuristics.LabelledNumberPrefixRx`, nên dạng "nhãn + số" không sinh ra `NumberToken`. Đây
+  là lý do gốc của bug 87,2% ở trên, hiện đang được *vá bằng chốt* chứ chưa được *sửa*. Thêm mẫu đó
+  vào `Parse` sẽ đổi output của cả tám điểm gọi cùng lúc (audit, tiers, calibrator, precision gate,
+  recovery, correction memory, critic gate, inline splitter) — phải đo riêng, không gộp.
 - **Profile calibration: sinh được nhưng CHƯA dùng được.** Chữ ký cấu hình đã đổi (`chunkTokens`,
   `normalizeLevels`) nên profile cũ hết hiệu lực, và profile mới sinh từ bench cũng không đủ mẫu:
   `MinimumCalibrationSamples = 52` cho mỗi bucket evidence, trong khi cả 8 tài liệu chỉ cho
@@ -199,7 +211,92 @@ toàn `document_title` thì cây heading rỗng sạch (`Collection: []`).
   97,4% không đảm bảo cho tài liệu thật. Muốn có số thật thì cần `.key` cho vài tài liệu thật; bảng
   Review trong giao diện web sinh ra đúng thứ đó.
 
-## 6. Phần cứng
+## 6. Lượt refactor theo kiến trúc harness
+
+Lượt này **không nhằm đổi số đo** mà nhằm bỏ code sai, code chết và code trùng chức năng. Điều kiện
+nghiệm thu vì vậy là *số đo không đổi*: hai lượt bench riêng (`eval-m6`, `eval-m7`, Qwen 7B,
+`--structural-only`) đều cho lại đúng **P 97,5% · R 100% · F1 98,7% · đúng cấp 100% · 7/8**.
+
+### 6.1 Một lỗi thật, cùng một họ, ở sáu chỗ
+
+`NumberingAudit.Parse(text)` đọc ký hiệu đánh số từ **text hiển thị**. Nhưng khi Word đánh số qua
+`w:numPr`, con số **không nằm trong text của run** — nó chỉ tồn tại ở `SlimParagraph.NumberLabel` do
+`NumberingResolver` tính ra. Chỉ `StructuralHierarchyResolver` biết ghép nhãn vào trước khi đọc;
+tám điểm gọi còn lại thì không.
+
+Hệ quả: đúng nhóm tài liệu được đánh số bài bản nhất lại bị tính là "không có numbering" —
+`numberingValid`, `siblingsValid`, `formattingConsistent` cùng trượt, mất 3/5 kiểm tra evidence, và
+heading rơi xuống *cần duyệt*.
+
+Đã gom về một điểm vào duy nhất `NumberingAudit.ParseParagraph(paragraph, fallbackText)` và dùng ở
+`EvidenceConfidenceCalibrator`, `NumberingAudit.Run`, `HasStructuralEvidence`, `StructuralRecovery`,
+`OutlineStructureResolver`, `HeadingAcceptanceSignature`.
+
+Bằng chứng nó có tác dụng thật nằm ở **phân bố bucket calibration**, không ở chỉ số tổng:
+
+| bucket | trước | sau |
+|---|---|---|
+| `model_single_numbered` | 23/23 | **28/28** |
+| `model_single_unnumbered` | 16/16 | **11/11** |
+
+Năm heading chuyển đúng rổ. Chỉ số tổng không đổi vì cả hai rổ đều đang 100%, nhưng nếu cứ để vậy
+thì profile calibration sau này học sai phân phối — và đó mới là chỗ nó gây hại.
+
+### 6.2 Thứ tự quyền lực bị vi phạm ở hai chỗ
+
+`StructuralHierarchyResolver.SignatureTiers` có chốt "cấu trúc đã khai cấp thì không suy lại", kèm
+số đo lý do (thiếu chốt: 100% → 87,2%). Nhưng **nhánh path Ả Rập ngay bên cạnh trong cùng file**
+không có chốt đó, và `OutlineStructureResolver.Upsert` cũng không. Cả hai đều ghi đè `Level` của
+đoạn mà tài liệu đã tự khai qua `w:lvl/w:pStyle` hoặc style built-in.
+
+Đã thêm cùng một chốt ở cả hai. Ở `OutlineStructureResolver` chỉ cấm **ghi đè** cấp — vẫn cho phép
+cứu đoạn chưa có mặt, vì cây La Mã nói được là đoạn CÓ vai trò đề mục, chỉ không nói được cấp; khi
+cứu thì lấy cấp đã khai chứ không lấy cấp suy ra.
+
+### 6.3 Code chết và trùng chức năng
+
+- `SlimXmlSerializer.BuildLines` (2 overload) + `WrapChunk` là **bản song song từng dòng** của
+  `NeutralDocumentViewSerializer`, không còn caller nào trong `src/` — chỉ test giữ nó sống. Xoá 74
+  dòng; ba test chuyển sang serializer thật.
+- `RequestOptions.Build` gán `SkipStyledCandidates = TrustStyles` ở cả ba nhánh backend, tức **mọi
+  request web** chạy ở chế độ mà chính doc của `PipelineOptions.SkipStyledCandidates` đã bác bỏ
+  bằng số đo (precision 100% → 94,1%), và giao diện không có ô nào cho nó. Bỏ. Ba cờ chung
+  (`TrustStyles`, `ShowRawOutput`, `TwoPass`) gom về một chỗ thay vì lặp ở cuối mỗi nhánh.
+- `LlamaHeaderExtractor.LoadAsync` áp `ApplyRecommendedModelProfile` lên chính `LlamaOptions` của
+  caller — một hàm tên "Load" âm thầm sửa `ContextSize`/`ChunkTokenBudget` của đối tượng người gọi
+  đang giữ và dùng lại cho lượt sau. Nay áp lên bản sao (`LlamaOptions.Clone()`).
+- `OutlineStructureResolver.BulletRx` thiếu ký tự `o` so với `HeadingHeuristics.BulletPrefixRx`.
+- Biến chết `explicitContext`; hai khối `<summary>` chồng nhau; một khối `<summary>` mồ côi cách
+  method nó mô tả ~30 dòng. Build còn **0 warning**.
+
+`HeadingHeuristics` và `NumberingAudit` vẫn giữ hai bộ mẫu riêng — **có chủ đích**, vì một bên sai
+theo hướng rộng (bỏ sót ứng viên là mất hẳn) còn một bên sai theo hướng hẹp (nhận nhầm thì hậu kiểm
+báo thiếu mục không tồn tại). Ba chỗ lệch cụ thể và lý do nay ghi rõ ở đầu `NumberingAudit`, thay
+cho comment cũ nói chúng "giữ giống hệt nhau" — điều chỉ đúng với mẫu số Ả Rập.
+
+### 6.4 Một lỗ trong hợp đồng harness
+
+`WritebackTargetGuardrail` chốt "agent không được sửa file gốc". Nhưng pipeline ghi document view ra
+`DumpXmlPath` **giữa lượt chạy**, không qua `IDocumentActionTool`, nên không guardrail nào thấy —
+một cờ debug là đủ để ghi đè tài liệu nguồn trong khi harness vẫn báo *"run chỉ đọc"*. Descriptor
+cũng khai cứng `MutatesExternalState: false`.
+
+Đã thêm `AgentToolDescriptor.SideEffectPaths` (tool khai bằng code lúc dựng, không phải model tự
+khai) và `ToolSideEffectPathGuardrail` áp đúng hai chốt như đích writeback. `SKILL.md` lên 1.2.0 với
+`tool_side_effect_paths` trong `requires.guardrails`, để host không bỏ nó đi trong im lặng.
+
+### 6.5 Một test đo nhầm thứ
+
+`Slim_xml_is_much_smaller_than_raw_document_xml` đòi view nhỏ hơn **một nửa** `document.xml`. Chạy
+lại đúng phép đo đó trên view **thật** gửi cho mô hình cho **2864 so với 3089 ký tự — tiết kiệm 7%**.
+Con số 50% đúng với định dạng XML đã bị bỏ, không đúng với định dạng đang chạy: metadata JSON dài
+hơn thuộc tính XML viết tắt, và tài liệu mẫu 14 đoạn thì gần như đoạn nào cũng là ứng viên nên phần
+gom `OMITTED_NORMAL_BLOCKS` không có việc để làm. Đã **bỏ hẳn test thay vì hạ ngưỡng cho vừa**, ghi
+lý do tại chỗ; phần tiết kiệm thật sự (gom đoạn thường) do test kế bên khoá.
+
+Toàn bộ test mới đều qua **kiểm đột biến**: gỡ logic ra thì đổ, gắn lại thì xanh.
+
+## 7. Phần cứng
 
 Máy đo: Radeon Pro WX 5100 **4 GB**, runtime Vulkan. Qwen2.5-7B Q4_K_M nặng 4,36 GiB nên **không
 nằm vừa VRAM** — chạy chủ yếu bằng CPU, ~45 token/s prefill. Đo được: `--gpu max` và `--gpu 0.4` ở

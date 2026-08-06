@@ -41,7 +41,6 @@ public sealed class CommandLineOptions
         }
         if (o.Command == "help") { o.ShowHelp = true; return o; }
 
-        var explicitContext = false;
         var explicitChunkTokens = false;
 
         for (; i < args.Length; i++)
@@ -62,7 +61,9 @@ public sealed class CommandLineOptions
                     o.Pipeline.TargetPrecision = double.Parse(Next(a), System.Globalization.CultureInfo.InvariantCulture);
                     break;
                 case "--calibration-min-samples": o.Pipeline.MinimumCalibrationSamples = int.Parse(Next(a)); break;
+                // Phản biện giờ chạy theo dấu hiệu; cờ này bật lại chế độ hỏi TẤT CẢ.
                 case "--no-high-precision": o.Pipeline.HighPrecisionMode = false; break;
+                case "--critique-all": o.Pipeline.HighPrecisionMode = true; break;
                 case "-f" or "--format": o.Format = ParseFormat(Next(a)); break;
                 case "--no-llm": o.Pipeline.DisableLlm = true; break;
                 case "--openrouter":
@@ -101,7 +102,7 @@ public sealed class CommandLineOptions
                 case "--dump-xml": o.Pipeline.DumpXmlPath = Next(a); break;
                 case "--show-raw": o.Pipeline.ShowRawOutput = true; break;
 
-                case "--ctx": llama.ContextSize = uint.Parse(Next(a)); explicitContext = true; break;
+                case "--ctx": llama.ContextSize = uint.Parse(Next(a)); break;
                 case "--threads" or "-t": llama.Threads = int.Parse(Next(a)); break;
                 case "--chunk-tokens": o.Pipeline.Chunking.SetExplicitTokenBudget(int.Parse(Next(a))); explicitChunkTokens = true; break;
                 case "--chunk-candidates": o.Pipeline.Chunking.MaxCandidatesPerChunk = int.Parse(Next(a)); break;

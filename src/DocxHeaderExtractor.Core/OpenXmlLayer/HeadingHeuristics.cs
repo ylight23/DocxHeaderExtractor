@@ -6,6 +6,12 @@ namespace DocxHeaderExtractor.Core.OpenXmlLayer;
 /// <summary>
 /// Luật nhận diện tiêu đề chạy trước LLM. Mục tiêu: giữ lại đúng tập ứng viên nhỏ
 /// (recall cao, precision vừa phải) để LLM chỉ phải lọc và gán cấp.
+/// <para>
+/// Các mẫu tiền tố đánh số ở đây CỐ Ý rộng hơn <see cref="Pipeline.NumberingAudit"/>: bỏ sót một
+/// ứng viên ở tầng này là mất hẳn vì mô hình không bao giờ nhìn thấy nó, còn nhận rộng thì mô hình
+/// và hậu kiểm vẫn còn cơ hội bác. Danh sách đầy đủ các chỗ lệch và lý do nằm ở đầu
+/// <c>NumberingAudit</c>; sửa một bên thì đọc bên kia trước.
+/// </para>
 /// </summary>
 public static class HeadingHeuristics
 {
@@ -33,7 +39,6 @@ public static class HeadingHeuristics
 
     private static readonly Regex StyleLevelRx = new(@"(\d+)\s*$", RegexOptions.Compiled);
 
-    /// <summary>"Chương 1", "Điều 5", "Phần II", "Bài 3", "Phụ lục A", "Article 2"…</summary>
     /// <summary>
     /// Dạng đánh số có từ nhãn đứng trước: "PHẦN I. …", "Chương 2. …", "Điều 5. …", "Section 3: …".
     /// <para>

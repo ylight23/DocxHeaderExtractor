@@ -67,14 +67,20 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         // LM Studio bị khóa vào loopback nên vẫn là local processing. Chỉ OpenRouter chuyển
         // nội dung ra dịch vụ bên ngoài và cần consent theo từng run.
         var remote = !options.DisableLlm && options.Backend == InferenceBackend.OpenRouter;
+        // Pipeline ghi document view ra đĩa khi DumpXmlPath được đặt — đường ghi này không đi qua
+        // IDocumentActionTool nên WritebackTargetGuardrail không thấy. Khai ra cả cờ lẫn đường dẫn
+        // để ToolSideEffectPathGuardrail soi được, thay vì để harness hứa "chỉ đọc".
+        var dump = options.DumpXmlPath;
+        var writes = !string.IsNullOrWhiteSpace(dump);
         return new AgentToolDescriptor(
             "extract_document_headings",
             "Đọc cấu trúc Word, gọi classifier khi cần, dựng cây heading và áp precision gate.",
             remote ? AgentToolRisk.Medium : AgentToolRisk.Low,
             SendsDataExternally: remote,
-            MutatesExternalState: false)
+            MutatesExternalState: writes)
         {
             SupportsRepair = true,
+            SideEffectPaths = writes ? [dump!] : [],
         };
     }
 
