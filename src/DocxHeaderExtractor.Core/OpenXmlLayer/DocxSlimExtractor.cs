@@ -28,10 +28,14 @@ public sealed class DocxSlimExtractor
 
         var resolver = new StyleResolver(main);
         var paragraphs = new List<SlimParagraph>();
-        var state = new WalkState(resolver, _options, paragraphs);
 
         var body = main.Document?.Body;
-        if (body is not null) Walk(body, state, tableDepth: 0, path: "body[1]");
+        if (body is not null)
+        {
+            var index = 0;
+            foreach (var walked in ParagraphWalker.Enumerate(body, _options))
+                paragraphs.Add(BuildParagraph(walked, resolver, index++));
+        }
 
         // numbering.xml chứa phần số Word hiển thị nhưng không nằm trong text paragraph.
         NumberingResolver.Apply(main, paragraphs);
@@ -39,6 +43,9 @@ public sealed class DocxSlimExtractor
         var bodySize = EstimateBodyFontSize(paragraphs) ?? resolver.DefaultFontSizePt;
         foreach (var p in paragraphs) p.BodyFontSizePt = bodySize;
 
+        // Quan hệ vị trí với bảng phải biết TRƯỚC khi chấm điểm: luật chú thích trong Classify dựa
+        // vào nó, mà PostProcess thì chạy sau nên đặt ở đó là cờ luôn false lúc cần.
+        MarkParagraphsBeforeTables(paragraphs);
         foreach (var p in paragraphs) HeadingHeuristics.Classify(p, _options);
         PostProcess(paragraphs);
 
@@ -63,64 +70,12 @@ public sealed class DocxSlimExtractor
         }.Build();
     }
 
-    private sealed class WalkState(StyleResolver resolver, ExtractionOptions options, List<SlimParagraph> sink)
+    private static SlimParagraph BuildParagraph(WalkedParagraph walked, StyleResolver resolver, int index)
     {
-        public StyleResolver Resolver { get; } = resolver;
-        public ExtractionOptions Options { get; } = options;
-        public List<SlimParagraph> Sink { get; } = sink;
-        public int Index;
-        public int SectionIndex;
-    }
-
-    private void Walk(OpenXmlElement parent, WalkState state, int tableDepth, string path)
-    {
-        var ordinalByName = new Dictionary<string, int>(StringComparer.Ordinal);
-        foreach (var child in parent.ChildElements)
-        {
-            var name = child.LocalName;
-            var ordinal = ordinalByName.GetValueOrDefault(name) + 1;
-            ordinalByName[name] = ordinal;
-            var childPath = $"{path}/{name}[{ordinal}]";
-            switch (child)
-            {
-                case Paragraph p:
-                    state.Sink.Add(BuildParagraph(p, state, tableDepth, childPath));
-                    // Textbox (w:txbxContent) nằm lồng trong drawing của paragraph. Nếu chỉ lấy
-                    // document.paragraphs/Paragraph cấp ngoài thì text trong hộp bị nối vào đoạn
-                    // neo hoặc biến mất. Tách mỗi textbox thành các paragraph riêng, ngay sau neo.
-                    var textBoxes = p.Descendants<TextBoxContent>()
-                        .Where(t => !t.Ancestors<TextBoxContent>().Any())
-                        .ToList();
-                    for (var box = 0; box < textBoxes.Count; box++)
-                        Walk(textBoxes[box], state, tableDepth, $"{childPath}/txbxContent[{box + 1}]");
-                    if (p.ParagraphProperties?.SectionProperties is not null) state.SectionIndex++;
-                    break;
-
-                case Table t when _options.IncludeTables:
-                    Walk(t, state, tableDepth + 1, childPath);
-                    break;
-
-                case Table:
-                    break;
-
-                case SectionProperties:
-                    state.SectionIndex++;
-                    break;
-
-                default:
-                    // sdt, customXml, TableRow, TableCell, bookmark container… – đệ quy nếu còn đoạn bên trong.
-                    if (child.HasChildren && child.Descendants<Paragraph>().Any())
-                        Walk(child, state, tableDepth, childPath);
-                    break;
-            }
-        }
-    }
-
-    private static SlimParagraph BuildParagraph(Paragraph p, WalkState state, int tableDepth, string stableId)
-    {
+        var p = walked.Element;
         var pPr = p.ParagraphProperties;
-        var styleId = pPr?.ParagraphStyleId?.Val?.Value ?? state.Resolver.DefaultParagraphStyleId;
-        var style = state.Resolver.Resolve(styleId);
+        var styleId = pPr?.ParagraphStyleId?.Val?.Value ?? resolver.DefaultParagraphStyleId;
+        var style = resolver.Resolve(styleId);
 
         // Định dạng trực tiếp trên đoạn ghi đè style; nếu không có thì lấy từ style.
         var markRun = pPr?.ParagraphMarkRunProperties;
@@ -140,7 +95,7 @@ public sealed class DocxSlimExtractor
         double? size = runFmt.FontSizePt
                        ?? StyleResolver.HalfPointToPt(markRun?.GetFirstChild<FontSize>()?.Val?.Value)
                        ?? style?.FontSizePt
-                       ?? state.Resolver.DefaultFontSizePt;
+                       ?? resolver.DefaultFontSizePt;
 
         var (text, textSpans) = BuildTextAndSpans(p, nestedTextBoxes, style);
 
@@ -153,8 +108,8 @@ public sealed class DocxSlimExtractor
 
         return new SlimParagraph
         {
-            Index = state.Index++,
-            StableId = stableId,
+            Index = index,
+            StableId = walked.StableId,
             Text = text,
             TextSpans = textSpans,
             StyleId = styleId,
@@ -165,14 +120,14 @@ public sealed class DocxSlimExtractor
             Underline = underline,
             AllCaps = caps,
             FontSizePt = size,
-            BodyFontSizePt = state.Resolver.DefaultFontSizePt,   // sẽ được ghi đè bằng cỡ chữ thân bài thực tế
+            BodyFontSizePt = resolver.DefaultFontSizePt,   // sẽ được ghi đè bằng cỡ chữ thân bài thực tế
             Alignment = alignment,
             NumberingId = numPr?.NumberingId?.Val?.Value ?? style?.NumberingId,
             NumberingLevel = numPr?.NumberingLevelReference?.Val?.Value ?? style?.NumberingLevel,
             KeepNext = StyleResolver.OnOff(pPr?.KeepNext) ?? style?.KeepNext ?? false,
             PageBreakBefore = StyleResolver.OnOff(pPr?.PageBreakBefore) ?? style?.PageBreakBefore ?? false,
-            TableDepth = tableDepth,
-            SectionIndex = state.SectionIndex,
+            TableDepth = walked.TableDepth,
+            SectionIndex = walked.SectionIndex,
             InTableOfContents = IsTableOfContentsEntry(p, style?.Name ?? styleId),
         };
     }
@@ -375,6 +330,24 @@ public sealed class DocxSlimExtractor
         for (int i = 0; i < ps.Count; i++)
         {
             var p = ps[i];
+
+            // Đoạn đứng ngay trước các DÒNG MỤC của mục lục chính là TIÊU ĐỀ của mục lục
+            // ("MỤC LỤC", "Contents", "Danh mục hình ảnh"). Quan hệ này là bằng chứng cấu trúc —
+            // dòng mục lục do Word đánh dấu bằng hyperlink neo _Toc, không phải do đoán từ chữ.
+            // Nhờ đó không cần một danh sách từ khoá nào cho họ tiêu đề này.
+            // `!p.InTableOfContents` là điều kiện bắt buộc: một DÒNG MỤC của mục lục cũng đứng ngay
+            // trước dòng mục kế tiếp. Thiếu vế này thì cả danh sách mục lục thành heading — đo được
+            // trên bench: recall lên 100% nhưng 04-bia-muc-luc-chu-thich thừa đúng hai dòng mục.
+            if (!p.InTableOfContents && NextNonEmpty(ps, i) is { InTableOfContents: true })
+            {
+                p.PrecedesTableOfContents = true;
+                if (p.Role is ParagraphRole.Normal or ParagraphRole.HeadingCandidate)
+                {
+                    p.Role = ParagraphRole.HeadingCandidate;
+                    p.Score = Math.Max(p.Score, 0.80);
+                }
+            }
+
             if (p.Role != ParagraphRole.HeadingCandidate) continue;
 
             var next = NextNonEmpty(ps, i);
@@ -383,6 +356,38 @@ public sealed class DocxSlimExtractor
             var prev = PrevNonEmpty(ps, i);
             if (prev is { Role: ParagraphRole.StyledHeading }) p.Score = Math.Min(1, p.Score + 0.05);
         }
+    }
+
+    /// <summary>
+    /// Chú thích bảng ("Bảng 1.2: Tình hình huy động vốn") đứng ngay trước chính bảng nó đặt tên.
+    /// Đây là quan hệ VỊ TRÍ, đọc được cho mọi ngôn ngữ — khác hẳn danh sách từ khoá trong
+    /// <c>CaptionRx</c> vốn chỉ đúng với tiếng Việt/Anh VÀ bị tắt cùng cờ luật từ ngữ, nên ở chế độ
+    /// mà giao diện chạy mặc định thì không còn bộ lọc chú thích nào.
+    /// <para>
+    /// Cửa sổ 4 đoạn chứ không phải 1: giữa chú thích và bảng thường còn dòng đơn vị tính, dòng năm
+    /// hoặc số trang ("ĐVT: Tỷ đồng", "2022-2024", "12"). Đo trên báo cáo thật: cửa sổ 1 bắt 9/13,
+    /// cửa sổ 3 bắt 11/13, cửa sổ 4 bắt 12/13; nới lên 5 KHÔNG bắt thêm gì nên dừng ở 4.
+    /// </para>
+    /// </summary>
+    private static void MarkParagraphsBeforeTables(List<SlimParagraph> ps)
+    {
+        for (var i = 0; i < ps.Count; i++)
+            ps[i].PrecedesTable = ps[i].TableDepth == 0 && !ps[i].InTableOfContents
+                                  && StartsTableWithin(ps, i, 4);
+    }
+
+    /// <summary>Có đoạn nằm trong bảng xuất hiện trong <paramref name="window"/> đoạn không rỗng kế tiếp.</summary>
+    private static bool StartsTableWithin(List<SlimParagraph> ps, int i, int window)
+    {
+        var seen = 0;
+        for (var k = i + 1; k < ps.Count && seen < window; k++)
+        {
+            // Chạy TRƯỚC Classify nên Role chưa được gán; xét trực tiếp nội dung rỗng.
+            if (string.IsNullOrWhiteSpace(ps[k].Text) && ps[k].TableDepth == 0) continue;
+            seen++;
+            if (ps[k].TableDepth > 0) return true;
+        }
+        return false;
     }
 
     private static SlimParagraph? NextNonEmpty(List<SlimParagraph> ps, int i)

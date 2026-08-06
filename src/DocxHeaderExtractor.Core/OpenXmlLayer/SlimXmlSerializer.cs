@@ -7,9 +7,13 @@ namespace DocxHeaderExtractor.Core.OpenXmlLayer;
 public sealed record XmlLine(string Text, int? ParagraphIndex, bool IsCandidate);
 
 /// <summary>
-/// Sinh XML tinh gọn để nạp vào LLM. Nguyên tắc: mỗi đoạn ứng viên là một dòng,
-/// các đoạn thân bài liên tiếp gom thành &lt;n c="k"/&gt;.
-/// Thuộc tính chỉ xuất hiện khi có giá trị ⇒ giảm mạnh số token so với document.xml gốc.
+/// XML tinh gọn để CON NGƯỜI đọc: lệnh <c>xml</c> của CLI và file <c>--dump-xml</c>.
+/// <para>
+/// Đây KHÔNG còn là đầu vào của mô hình. View gửi cho LLM là
+/// <see cref="NeutralDocumentViewSerializer"/> — định dạng BLOCK/metadata JSON, cố ý không dùng
+/// cú pháp thẻ có thể gợi sẵn đáp án. Hai bản dựng dòng song song từng cùng tồn tại ở đây; bản
+/// XML không còn người gọi nào trong <c>src/</c> nên đã bỏ, chỉ giữ lại phần dump toàn văn.
+/// </para>
 /// </summary>
 public static class SlimXmlSerializer
 {
@@ -26,80 +30,6 @@ public static class SlimXmlSerializer
             sb.Append(Element(p, options.MaxTextLength, includeScore: true)).Append('\n');
         }
 
-        sb.Append("</doc>");
-        return sb.ToString();
-    }
-
-    /// <summary>Danh sách dòng đã tinh gọn cho LLM (ứng viên + đoạn gom + ngữ cảnh).</summary>
-    public static IReadOnlyList<XmlLine> BuildLines(SlimDocument doc, ExtractionOptions options) =>
-        BuildLines(doc, options, reviewIndexes: null);
-
-    /// <summary>
-    /// Sinh dòng cho LLM. Khi <paramref name="reviewIndexes"/> có giá trị, mọi paragraph vẫn được
-    /// giữ nguyên làm ngữ cảnh; chỉ các index trong tập đó bị grammar yêu cầu trả lời. Nhờ vậy
-    /// pipeline có thể review cả tài liệu mà không để ngưỡng heuristic làm mất heading lạ.
-    /// </summary>
-    public static IReadOnlyList<XmlLine> BuildLines(
-        SlimDocument doc,
-        ExtractionOptions options,
-        IReadOnlySet<int>? reviewIndexes)
-    {
-        var lines = new List<XmlLine>();
-        int normalRun = 0;
-
-        void FlushNormal()
-        {
-            if (normalRun == 0) return;
-            if (options.CollapseNormalRuns)
-                lines.Add(new XmlLine($"<n c=\"{normalRun}\"/>", null, false));
-            normalRun = 0;
-        }
-
-        var paragraphs = doc.Paragraphs;
-        for (int i = 0; i < paragraphs.Count; i++)
-        {
-            var p = paragraphs[i];
-
-            if (p.Role == ParagraphRole.Empty) continue;
-
-            var review = reviewIndexes?.Contains(p.Index) ?? p.IsCandidate;
-            var preserveEveryParagraph = reviewIndexes is not null;
-
-            if (!p.IsCandidate && !preserveEveryParagraph)
-            {
-                normalRun++;
-                continue;
-            }
-
-            FlushNormal();
-            lines.Add(new XmlLine(Element(p, options.MaxTextLength, includeScore: false), p.Index, review));
-
-            if (options.IncludeFollowingContext && !preserveEveryParagraph)
-            {
-                var next = paragraphs.Skip(i + 1)
-                    .FirstOrDefault(x => x.Role != ParagraphRole.Empty);
-                if (next is not null && !next.IsCandidate && next.Text.Length > 0)
-                {
-                    var snippet = Truncate(next.Text, options.ContextTextLength);
-                    lines.Add(new XmlLine($"  <ctx>{Escape(snippet)}</ctx>", null, false));
-                }
-            }
-        }
-
-        FlushNormal();
-        return lines;
-    }
-
-    /// <summary>
-    /// Bọc một khối để gửi cho mô hình. KHÔNG kèm tên file: chuỗi này là đầu vào của mô hình,
-    /// mà tên file không mang thông tin gì về cấu trúc tài liệu — để nó vào thì đổi tên file
-    /// là đổi prompt, và cùng một nội dung lại cho ra kết quả khác (đã đo được).
-    /// </summary>
-    public static string WrapChunk(IEnumerable<XmlLine> lines, int chunkNo, int chunkTotal)
-    {
-        var sb = new StringBuilder();
-        sb.Append("<doc part=\"").Append(chunkNo).Append('/').Append(chunkTotal).Append("\">\n");
-        foreach (var l in lines) sb.Append(l.Text).Append('\n');
         sb.Append("</doc>");
         return sb.ToString();
     }

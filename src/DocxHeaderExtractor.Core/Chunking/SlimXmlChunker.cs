@@ -77,7 +77,10 @@ public static class SlimXmlChunker
         {
             var cost = Cost(line);
             var wouldExceedTokens = currentTokens + cost > maxTokensPerChunk;
-            var wouldExceedCandidates = Asked(line) && currentAsked >= maxCandidatesPerChunk;
+            // maxCandidatesPerChunk <= 0 nghĩa là KHÔNG chặn theo số ứng viên: để ngân sách token
+            // quyết định một mình. Dùng khi không muốn một hằng số cố định áp lên mọi tài liệu.
+            var wouldExceedCandidates = maxCandidatesPerChunk > 0
+                && Asked(line) && currentAsked >= maxCandidatesPerChunk;
 
             if ((wouldExceedTokens || wouldExceedCandidates) && current.Count > 0)
             {

@@ -19,7 +19,7 @@ public static partial class OutlineStructureResolver
         var byIndex = reviewed.ToDictionary(p => p.Index);
 
         var numbered = reviewed
-            .Select(p => (Paragraph: p, Token: NumberingAudit.Parse(p.Text)))
+            .Select(p => (Paragraph: p, Token: NumberingAudit.ParseParagraph(p, p.Text)))
             .Where(x => x.Token is not null)
             .Select(x => (x.Paragraph, Token: x.Token!.Value))
             .OrderBy(x => x.Paragraph.Index)
@@ -82,9 +82,16 @@ public static partial class OutlineStructureResolver
 
         void Upsert(SlimParagraph paragraph, int level)
         {
+            // Cấp do chính tài liệu khai (danh sách đa cấp gắn style, hoặc style Heading built-in)
+            // đứng trên suy luận cây La Mã→số→chữ, đúng thứ tự quyền lực của ResolveLevel. Cùng một
+            // chốt đã có ở StructuralHierarchyResolver; thiếu ở đây thì hai bộ suy luận cấu trúc
+            // nói hai điều khác nhau về cùng một đoạn. Chỉ cấm GHI ĐÈ cấp — vẫn cho phép cứu đoạn
+            // chưa có mặt, vì cây La Mã nói được là nó CÓ vai trò đề mục, chỉ không nói được cấp.
+            var declared = paragraph.NumberingStyleLevel is not null || paragraph.HasBuiltInHeadingStyle;
+
             if (accepted.TryGetValue(paragraph.Index, out var existing))
             {
-                if (existing.Level == level) return;
+                if (declared || existing.Level == level) return;
                 existing.Level = level;
                 existing.Disputed = true;
                 fixedLevels++;
@@ -95,7 +102,7 @@ public static partial class OutlineStructureResolver
             {
                 Index = paragraph.Index,
                 StableId = paragraph.StableId,
-                Level = level,
+                Level = declared ? paragraph.NumberingStyleLevel ?? paragraph.GuessedLevel ?? level : level,
                 Text = paragraph.Text,
                 StyleId = paragraph.StyleId,
                 Source = HeadingSource.Structure,
@@ -106,6 +113,11 @@ public static partial class OutlineStructureResolver
         }
     }
 
-    [GeneratedRegex(@"^\s*[-–—•*▪+]\s+\S", RegexOptions.CultureInvariant)]
+    /// <summary>
+    /// Giữ đúng bộ ký tự của <c>HeadingHeuristics.BulletPrefixRx</c>, kể cả chữ <c>o</c> mà Word
+    /// dùng làm bullet cấp hai. Lệch bộ ký tự thì một dòng "o Ghi chú" bị tầng chấm điểm coi là
+    /// gạch đầu dòng nhưng lại thoát khỏi lượt loại bullet ở đây.
+    /// </summary>
+    [GeneratedRegex(@"^\s*[-–—•*▪+o]\s+\S", RegexOptions.CultureInvariant)]
     private static partial Regex BulletRx();
 }

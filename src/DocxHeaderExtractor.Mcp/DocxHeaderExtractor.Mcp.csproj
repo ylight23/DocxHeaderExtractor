@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>dhx-mcp</AssemblyName>
+    <RootNamespace>DocxHeaderExtractor.Mcp</RootNamespace>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DocxHeaderExtractor.AgentHarness\DocxHeaderExtractor.AgentHarness.csproj" />
+    <ProjectReference Include="..\DocxHeaderExtractor.Core\DocxHeaderExtractor.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Stable official MCP C# SDK. Stdio is the local transport expected by LM Studio mcp.json. -->
+    <PackageReference Include="ModelContextProtocol" Version="1.4.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.6" />
+  </ItemGroup>
+
+</Project>

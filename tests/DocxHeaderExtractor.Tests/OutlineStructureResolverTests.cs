@@ -81,6 +81,74 @@ public sealed class OutlineStructureResolverTests
         Assert.Equal(1, accepted[320].Level);
     }
 
+    /// <summary>
+    /// Cây La Mã→số→chữ là SUY LUẬN; <c>w:lvl/w:pStyle</c> và style Heading built-in là TUYÊN BỐ của
+    /// người soạn. Thứ tự quyền lực trong <c>HeaderExtractionPipeline.ResolveLevel</c> đặt tuyên bố
+    /// trên suy luận, và <c>StructuralHierarchyResolver</c> đã tôn trọng điều đó — nhưng bộ suy luận
+    /// cấu trúc thứ hai này thì từng không. Kết quả là cùng một đoạn được gán hai cấp khác nhau tuỳ
+    /// vào bộ nào chạy sau.
+    /// </summary>
+    [Fact]
+    public void Khong_ghi_de_cap_ma_tai_lieu_da_tu_khai()
+    {
+        var paragraphs = new[]
+        {
+            P(0, "I. VÙNG TRỜI", bold: true, caps: true),
+            P(1, "1. Mục Alpha", bold: true),
+            P(2, "2. Mục Beta", bold: true),
+            P(3, "II. VÙNG BIỂN", bold: true, caps: true),
+        };
+        // Danh sách đa cấp khai "1." là cấp 5; style built-in khai "2." là cấp 6. Cây suy luận muốn
+        // kéo cả hai về cấp 2.
+        paragraphs[1].NumberingStyleLevel = 5;
+        paragraphs[2].HasBuiltInHeadingStyle = true;
+        var accepted = new Dictionary<int, HeadingRecord>
+        {
+            [0] = H(0, 1, paragraphs),
+            [1] = H(1, 5, paragraphs),
+            [2] = H(2, 6, paragraphs),
+            [3] = H(3, 1, paragraphs),
+        };
+
+        var result = OutlineStructureResolver.Apply(paragraphs, accepted);
+
+        Assert.Equal(0, result.LevelsFixed);
+        Assert.Equal(5, accepted[1].Level);
+        Assert.Equal(6, accepted[2].Level);
+        // Đoạn La Mã không tự khai gì thì vẫn do cây quyết định như cũ.
+        Assert.Equal(1, accepted[0].Level);
+    }
+
+    /// <summary>
+    /// Ca nghi vấn: <c>declared</c> bật vì <c>HasBuiltInHeadingStyle</c> nhưng <c>GuessedLevel</c> lại
+    /// null (không đi qua <c>HeadingHeuristics.Classify</c> — hai field này luôn được gán cùng lúc ở
+    /// đó, nên tổ hợp này không xảy ra trên pipeline thật, chỉ dựng tay được như ở đây). Với một
+    /// heading MỚI (chưa có trong <c>accepted</c>), nhánh <c>declared ? … ?? level : level</c> rơi về
+    /// <c>level</c> của cây suy luận — kết quả giống hệt như <c>declared=false</c>, vì Source/
+    /// Confidence/Disputed đều gán y hệt nhau ở cả hai nhánh. KẾT LUẬN ÂM: không phải lỗi, chỉ là
+    /// một nhánh phòng thủ không quan sát được từ output.
+    /// </summary>
+    [Fact]
+    public void Declared_ma_khong_co_cap_tuong_minh_thi_heading_moi_van_lay_cap_cay()
+    {
+        var paragraphs = new[]
+        {
+            P(0, "I. PHẦN MỘT", bold: true, caps: true),
+            P(1, "1. Mục Alpha", bold: true),
+            P(2, "2. Mục Beta", bold: true),
+            P(3, "II. PHẦN HAI", bold: true, caps: true),
+        };
+        paragraphs[1].HasBuiltInHeadingStyle = true; // declared=true, GuessedLevel vẫn null
+        var accepted = new Dictionary<int, HeadingRecord> { [0] = H(0, 1, paragraphs) };
+
+        var result = OutlineStructureResolver.Apply(paragraphs, accepted);
+
+        Assert.Equal(3, result.Recovered); // đoạn 1, 2 (Ả Rập) và 3 (La Mã "II.") đều được cứu mới
+        Assert.Equal(2, accepted[1].Level); // rơi về cấp cây, không phải null/0/ngoại lệ
+        Assert.Equal(2, accepted[2].Level);
+    }
+
+
     private static SlimParagraph P(int index, string text, bool bold = false, bool caps = false) =>
         new() { Index = index, StableId = $"p[{index}]", Text = text, Bold = bold, AllCaps = caps };
 

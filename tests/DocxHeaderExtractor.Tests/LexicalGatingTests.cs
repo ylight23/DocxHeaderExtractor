@@ -68,6 +68,25 @@ public class LexicalGatingTests
         Assert.False(p.HasBuiltInHeadingStyle);
     }
 
+    [Fact]
+    public void Multi_level_numbering_in_table_remains_a_candidate()
+    {
+        var p = new SlimParagraph
+        {
+            Index = 0,
+            Text = "3.2. Ngoài dự báo (tổng số tốp/số chiếc/tốp đêm): 02/02/0",
+            StyleId = "Normal",
+            BodyFontSizePt = 12,
+            FontSizePt = 12,
+            TableDepth = 1,
+        };
+
+        HeadingHeuristics.Classify(p, Structural);
+
+        Assert.True(p.IsCandidate);
+        Assert.Equal(2, p.GuessedLevel);
+    }
+
     [Theory]
     [InlineData("Tiêu đề 2")]
     [InlineData("Überschrift 2")]
@@ -81,16 +100,21 @@ public class LexicalGatingTests
     }
 
     [Fact]
-    public void Keyword_prefix_only_scores_when_lexical_rules_are_on()
+    public void Dang_tu_nhan_kem_so_la_bang_chung_cau_truc_nen_khong_phu_thuoc_luat_tu_ngu()
     {
+        // Đổi hợp đồng có chủ đích: "Chương 1 Tổng quan" từng được nhận nhờ một DANH SÁCH TỪ KHOÁ
+        // (chương|phần|mục|điều|chapter|section|…) nằm sau cờ luật-từ-ngữ. Danh sách đó chỉ đúng
+        // với vốn từ ai đó nghĩ ra sẵn, và giao diện lại mặc định TẮT cờ này — nên ở đúng cấu hình
+        // chạy thật, dạng đánh số phổ biến nhất của văn bản Việt Nam không được điểm nào.
+        // Giờ nó được nhận bằng HÌNH DẠNG (từ nhãn + số + phần tên), nên hai cấu hình phải bằng nhau.
         var lex = P("Chương 1 Tổng quan", bold: true);
         var str = P("Chương 1 Tổng quan", bold: true);
 
         HeadingHeuristics.Classify(lex, Lexical);
         HeadingHeuristics.Classify(str, Structural);
 
-        Assert.True(lex.Score > str.Score,
-            $"lexical={lex.Score} phải cao hơn structural={str.Score}");
+        Assert.Equal(lex.Score, str.Score);
+        Assert.Equal(ParagraphRole.HeadingCandidate, str.Role);
     }
 
     [Fact]
@@ -148,7 +172,7 @@ public class LexicalGatingTests
         Assert.Equal(ParagraphRole.Normal, p.Role);
     }
 
-    /// <summary>Phủ quyết là hạ xuống chấm điểm, không phải loại thẳng: đoạn đủ nổi bật vẫn quay lại được.</summary>
+    /// <summary>Không có numbering/list metadata thì định dạng đậm không đủ cứu bullet.</summary>
     [Fact]
     public void Bullet_prefix_veto_still_allows_strong_formatting_to_win_back()
     {
@@ -168,7 +192,7 @@ public class LexicalGatingTests
 
         HeadingHeuristics.Classify(p, Structural);
 
-        Assert.Equal(ParagraphRole.HeadingCandidate, p.Role);
+        Assert.Equal(ParagraphRole.Normal, p.Role);
     }
 
     [Fact]

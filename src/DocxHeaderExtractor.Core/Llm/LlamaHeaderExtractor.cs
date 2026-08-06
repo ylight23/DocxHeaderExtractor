@@ -25,9 +25,14 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
 
     public string ModelName { get; }
     public int ContextSize => (int)(_modelParams.ContextSize ?? 0);
-    public string RuntimeDescription => _options.GpuLayerCount > 0
-        ? $"GPU {_options.GpuLayerCount} lớp"
-        : $"CPU {_options.Threads ?? DefaultThreads()} luồng";
+    // Nguồn template nằm trong mô tả runtime vì nó quyết định chuỗi token thật sự đưa vào model:
+    // rơi về template Llama-3 dựng tay trong khi đang chạy Qwen là lệch hẳn định dạng hội thoại,
+    // mà trước đây không có cách nào nhìn thấy điều đó từ log.
+    public string RuntimeDescription =>
+        (_options.GpuLayerCount > 0
+            ? $"GPU {_options.GpuLayerCount} lớp"
+            : $"CPU {_options.Threads ?? DefaultThreads()} luồng")
+        + (_hasBuiltInTemplate ? ", chat template của GGUF" : ", chat template Llama-3 dựng tay");
 
     /// <summary>
     /// Đếm token THẬT bằng tokenizer của chính mô hình đang nạp.
@@ -81,9 +86,17 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
         }
     }
 
+    /// <summary>
+    /// Nạp weights. Profile model được áp lên BẢN SAO: cả hai người gọi (pipeline qua
+    /// <c>PrepareLocalModelProfile</c>, web qua <c>LlamaModelCache</c>) đều đã áp profile lên
+    /// <c>ChunkingOptions</c> thật trước khi tới đây, nên đây chỉ còn là lưới an toàn cho người gọi
+    /// thứ ba. Áp lên chính <paramref name="options"/> thì một hàm tên "Load" lại âm thầm sửa
+    /// context/ngân sách khối của đối tượng người gọi đang giữ và dùng lại cho lượt chạy sau.
+    /// </summary>
     public static async Task<LlamaHeaderExtractor> LoadAsync(LlamaOptions options, CancellationToken ct = default)
     {
-        options.ApplyRecommendedModelProfile();
+        options = options.Clone();
+        options.ApplyRecommendedModelProfile(new Chunking.ChunkingOptions { TokenBudget = options.ChunkTokenBudget });
         options.Validate();
 
         ConfigureNativeLogging(options.VerboseNativeLog);
@@ -125,20 +138,29 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
         return logical > 4 ? Math.Max(2, logical / 2) : Math.Max(1, logical);
     }
 
+    // Dòng ràng buộc ID được ghép NGAY SAU document view, không phải ở cuối user message như bản
+    // RPC: phần đuôi của user message nằm trong prefix cache dùng chung cho mọi khối, nên thứ thay
+    // đổi theo khối phải nằm trong phần chunk. Nội dung thông tin là như nhau.
     /// <summary>Chạy một khối XML tinh gọn, trả về các mục mô hình cho là tiêu đề.</summary>
     public async Task<ChunkResult> ClassifyAsync(
         string chunkXml,
         IReadOnlyList<int> allowedIndexes,
-        CancellationToken ct = default) =>
-        await ClassifyRolesAsync(
-            HeaderPrompt.System, HeaderPrompt.BuildUser(chunkXml), chunkXml, allowedIndexes, ct);
+        CancellationToken ct = default)
+    {
+        var view = HeaderPrompt.WithIdConstraint(chunkXml, allowedIndexes);
+        return await ClassifyRolesAsync(
+            HeaderPrompt.System, HeaderPrompt.BuildUser(view), view, allowedIndexes, ct);
+    }
 
     public async Task<ChunkResult> CritiqueAsync(
         string chunkXml,
         IReadOnlyList<int> allowedIndexes,
-        CancellationToken ct = default) =>
-        await ClassifyRolesAsync(
-            HeaderPrompt.CriticSystem, HeaderPrompt.BuildCriticUser(chunkXml), chunkXml, allowedIndexes, ct);
+        CancellationToken ct = default)
+    {
+        var view = HeaderPrompt.WithIdConstraint(chunkXml, allowedIndexes);
+        return await ClassifyRolesAsync(
+            HeaderPrompt.CriticSystem, HeaderPrompt.BuildCriticUser(view), view, allowedIndexes, ct);
+    }
 
     private async Task<ChunkResult> ClassifyRolesAsync(
         string system,
@@ -208,6 +230,7 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
         var seen = new HashSet<int>();
         var kept = new List<ModelHeading>();
         var explicitNonHeadings = new HashSet<int>();
+        var rejectedRoles = new Dictionary<int, SemanticRole>();
         int rejected = 0;
 
         foreach (var h in parsed)
@@ -217,14 +240,18 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
             if (h.Level <= 0)
             {
                 // uncertain không phải lời bác dứt khoát; hậu kiểm cấu trúc vẫn được phép cứu.
-                if (h.Role != SemanticRole.Uncertain) explicitNonHeadings.Add(h.Index);
+                if (h.Role != SemanticRole.Uncertain)
+                {
+                    explicitNonHeadings.Add(h.Index);
+                    rejectedRoles[h.Index] = h.Role;
+                }
                 continue;
             }
             h.Level = Math.Clamp(h.Level, 1, 9);
             kept.Add(h);
         }
 
-        return new ChunkResult(kept, raw, rejected, sw.ElapsedMilliseconds, explicitNonHeadings);
+        return new ChunkResult(kept, raw, rejected, sw.ElapsedMilliseconds, explicitNonHeadings, rejectedRoles);
     }
 
     /// <summary>
@@ -298,7 +325,13 @@ public sealed record ChunkResult(
     string RawOutput,
     int RejectedIndexes,
     long ElapsedMs,
-    IReadOnlySet<int> ExplicitNonHeadings);
+    IReadOnlySet<int> ExplicitNonHeadings,
+    /// <summary>
+    /// Vai trò mô hình đã gán cho các đoạn bị bác. Cần thiết vì không phải phủ định nào cũng
+    /// đáng tin như nhau: "document_title" gán cho nhiều đoạn trong cùng một tài liệu là mâu
+    /// thuẫn tự thân, còn form_label/table_header thì không.
+    /// </summary>
+    IReadOnlyDictionary<int, SemanticRole>? RejectedRoles = null);
 
 /// <summary>Một heading trong lượt dựng hierarchy toàn cục.</summary>
 public sealed record HierarchyItem(

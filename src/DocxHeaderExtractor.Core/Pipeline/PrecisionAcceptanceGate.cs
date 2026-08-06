@@ -16,8 +16,13 @@ public static class HeadingAcceptanceSignature
         if (heading.Source == HeadingSource.Model)
         {
             var critic = heading.CriticConfirmed ? "critic" : "single";
-            var numbered = NumberingAudit.Parse(heading.Text) is null ? "unnumbered" : "numbered";
-            return $"model_{critic}_{numbered}";
+            // Lấy lại kết quả EvidenceConfidenceCalibrator đã tính (chạy ngay trước cổng này) thay
+            // vì đọc số lần thứ hai từ text: bản đọc trần không thấy heading do Word tự đánh số qua
+            // w:numPr, nên chúng rơi vào bucket "unnumbered" trong khi chúng có số. Chỉ tự đọc khi
+            // chưa có Evidence — đường mà unit test của chính cổng này đi.
+            var hasNumbering = heading.Evidence?.NumberingValid
+                ?? NumberingAudit.Parse(heading.Text) is not null;
+            return $"model_{critic}_{(hasNumbering ? "numbered" : "unnumbered")}";
         }
         return heading.Source.ToString().ToLowerInvariant();
     }

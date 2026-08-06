@@ -22,18 +22,30 @@
     margin: 0; background: var(--bg); color: var(--ink);
     font: 15px/1.55 "Segoe UI", system-ui, -apple-system, sans-serif;
   }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 64px; }
-  h1 { font-size: 21px; margin: 0 0 4px; letter-spacing: -.01em; }
-  .sub { color: var(--muted); font-size: 13.5px; margin: 0 0 24px; }
+  .wrap { max-width: none; margin: 0; padding: 12px 14px 32px; }
   .panel {
     background: var(--panel); border: 1px solid var(--line);
-    border-radius: 10px; padding: 18px; margin-bottom: 16px;
+    border-radius: 10px; padding: 12px 14px; margin-bottom: 12px;
   }
   .panel h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em;
-              color: var(--muted); margin: 0 0 14px; font-weight: 600; }
+              color: var(--muted); margin: 0 0 10px; font-weight: 600;
+              display: flex; align-items: center; flex-wrap: wrap; gap: 7px; }
+
+  /* Ba câu ghi chú về privacy / GPU / chất lượng cấu hình từng là ba đoạn văn nằm dưới hàng
+     select, đẩy nút Phân tích xuống gần cuối màn. Giờ chúng là chip cạnh tiêu đề panel: nhãn
+     ngắn nhìn là biết, còn nguyên văn giải thích nằm ở tooltip nên không mất thông tin nào. */
+  .chip {
+    display: inline-flex; align-items: center; padding: 2px 9px; border-radius: 999px;
+    font-size: 11px; font-weight: 600; text-transform: none; letter-spacing: 0;
+    background: var(--bg); border: 1px solid var(--line); color: var(--muted); cursor: help;
+  }
+  .chip:empty { display: none; }
+  .chip.ok { background: var(--okbg); color: var(--ok); border-color: transparent; }
+  .chip.acc { background: var(--accbg); color: var(--accent); border-color: transparent; }
+  .chip.warn { background: var(--warnbg); color: var(--warn); border-color: transparent; }
 
   #drop {
-    border: 1.5px dashed var(--line); border-radius: 9px; padding: 26px 18px;
+    border: 1.5px dashed var(--line); border-radius: 9px; padding: 14px 16px;
     text-align: center; cursor: pointer; transition: .15s; background: transparent;
   }
   #drop:hover, #drop.over { border-color: var(--accent); background: var(--accbg); }
@@ -62,11 +74,56 @@
   .tile .k { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
   .tile.big .v { color: var(--accent); }
 
+  /* min-height:0 là bắt buộc: mặc định min-height của flex item là auto, log dài bao nhiêu thì
+     card cao bấy nhiêu và tràn khỏi màn hình thay vì tự cuộn bên trong. */
   #log {
     font: 12.5px/1.6 ui-monospace, "Cascadia Mono", Consolas, monospace;
-    white-space: pre-wrap; color: var(--muted); max-height: 190px; overflow-y: auto;
+    white-space: pre-wrap; color: var(--muted); overflow-y: auto; overflow-wrap: anywhere;
     background: var(--bg); border: 1px solid var(--line); border-radius: 7px; padding: 11px 13px;
+    flex: 1 1 auto; min-height: 0;
   }
+  .devbar { display: flex; align-items: center; gap: 9px; margin: -3px 0 8px; }
+  .devdot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); flex: 0 0 auto; }
+  .devdot.live { background: var(--accent); box-shadow: 0 0 0 4px var(--accbg); }
+  .devdot.done { background: var(--ok); }
+  .devdot.error { background: var(--bad); }
+  #devState { font-weight: 650; font-size: 13px; }
+  #devElapsed { margin-left: auto; color: var(--muted); font: 12px ui-monospace, Consolas, monospace; }
+  #devMeta { margin: 0 0 10px; color: var(--muted); font-size: 12px; }
+  .workgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .workitem { padding: 10px 14px 10px 0; margin-right: 14px; border-right: 1px solid var(--line); min-width: 0; }
+  .workitem:nth-child(2n) { border-right: 0; margin-right: 0; }
+  .worklabel { display: block; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
+  .workvalue { display: block; font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #workHint { margin: 12px 0 0; color: var(--muted); font-size: 12.5px; }
+
+  /* Hai cột trải hết chiều ngang: trái là thao tác — cấu hình rồi tới trạng thái backend;
+     phải chỉ có dev log thô của LLM, cao bằng cả cột trái. Panel log luôn hiển thị (trước đây bị
+     `hidden` tới lúc bấm chạy nên nửa màn hình bên phải trống trơn). */
+  .duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: start; }
+  .duo > .col { display: flex; flex-direction: column; min-width: 0; }
+  /* Card log cao tối đa bằng khung nhìn và dính khi cuộn: chính nó không bao giờ dài quá màn hình,
+     phần chảy tràn là dòng log bên trong. */
+  .duo > #progressPanel {
+    display: flex; flex-direction: column; min-width: 0; overflow: hidden;
+    position: sticky; top: 12px;
+    min-height: min(520px, calc(100vh - 24px)); max-height: calc(100vh - 24px);
+  }
+  @media (max-width: 1000px) {
+    .duo { grid-template-columns: minmax(0, 1fr); }
+    .duo > #progressPanel { position: static; min-height: 320px; max-height: 70vh; }
+  }
+
+  /* Danh sách bước suy ra từ chính các dòng log, để cột trái nói được "đang ở đâu trong pipeline"
+     chứ không chỉ lặp lại trạng thái một dòng của cột phải. */
+  .stages { list-style: none; margin: 14px 0 0; padding: 0; }
+  .stage { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-size: 13px; color: var(--muted); }
+  .stage .sdot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); flex: 0 0 auto; }
+  .stage.done { color: var(--ink); }
+  .stage.done .sdot { background: var(--ok); }
+  .stage.live { color: var(--ink); font-weight: 650; }
+  .stage.live .sdot { background: var(--accent); box-shadow: 0 0 0 4px var(--accbg); }
+  .spacer { flex: 1 1 auto; }
 
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
   th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em;
@@ -86,8 +143,16 @@
   .tag.dis { background: var(--warnbg); color: var(--warn); margin-left: 8px; }
   tr.dis td { background: color-mix(in srgb, var(--warnbg) 45%, transparent); }
 
-  .note { font-size: 12.5px; color: var(--muted); margin-top: 12px; }
+  /* Trang giờ trải hết chiều ngang màn hình; đoạn giải thích dài mà kéo tới 2000px thì mắt
+     không bắt được dòng kế tiếp, nên giới hạn riêng phần chữ chứ không giới hạn cả layout. */
+  .note { font-size: 12.5px; color: var(--muted); margin-top: 12px; max-width: 100ch; }
   .err { background: var(--badbg); color: var(--bad); padding: 11px 13px; border-radius: 7px; font-size: 13.5px; }
+
+  details#advanced { margin-top: 16px; border: 1px solid var(--line); border-radius: 7px; padding: 10px 13px; }
+  details#advanced > summary { cursor: pointer; font-size: 13px; color: var(--muted); font-weight: 600; }
+  details#advanced[open] > summary { margin-bottom: 4px; }
+  details#advanced .opts { margin-top: 10px; }
+  details#advanced .note { margin-top: 5px; }
   textarea {
     width: 100%; min-height: 86px; padding: 9px 11px; border: 1px solid var(--line);
     border-radius: 7px; background: var(--bg); color: var(--ink); resize: vertical;
@@ -104,11 +169,16 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>Trích xuất tiêu đề tài liệu Word</h1>
-  <p class="sub">Nạp file .docx / .docm / .doc / .rtf / .odt — OpenXML lọc ứng viên, Qwen local hoặc OpenRouter quyết định vai trò và cấp heading.</p>
-
+  <!-- Không còn h1/mô tả: tên app đã nằm ở <title> của tab, còn định dạng nhận được thì ô kéo thả
+       đang nói rồi — hai dòng đó chỉ đẩy hai panel làm việc xuống dưới. -->
+  <div class="duo">
+  <div class="col">
   <div class="panel">
-    <h2>Nạp tài liệu</h2>
+    <h2>Thông tin &amp; cấu hình
+      <span class="chip" id="privacyNote"></span>
+      <span class="chip" id="gpuNote"></span>
+      <span class="chip" id="cfgNote"></span>
+    </h2>
     <div id="drop">
       <strong id="dropName">Kéo thả file vào đây, hoặc bấm để chọn</strong>
       <span>.docx · .docm · .doc · .rtf · .odt</span>
@@ -120,6 +190,7 @@
         <label class="f" for="backend">Backend suy luận</label>
         <select id="backend">
           <option value="local">Qwen local</option>
+          <option value="lmstudio">LM Studio local</option>
           <option value="openrouter" disabled>OpenRouter · chưa có API key</option>
         </select>
       </div>
@@ -127,48 +198,93 @@
         <label class="f" for="model">Mô hình cục bộ</label>
         <select id="model"></select>
       </div>
-      <div>
-        <label class="f" for="ctx">Cửa sổ ngữ cảnh (token)</label>
-        <input id="ctx" type="number" min="1024" step="1024" value="4096">
-      </div>
-      <div>
-        <label class="f" for="chunkCandidates">Ứng viên mỗi khối</label>
-        <input id="chunkCandidates" type="number" min="2" max="64" step="1" value="12">
-      </div>
-      <div>
-        <label class="f" for="threshold">Ngưỡng giữ ứng viên</label>
-        <input id="threshold" type="number" min="0" max="1" step="0.05" value="0.45">
+      <div id="lmStudioModelWrap" class="hidden">
+        <label class="f" for="lmStudioModel">Mô hình trong LM Studio</label>
+        <select id="lmStudioModel"><option value="">— đang kết nối —</option></select>
       </div>
       <div>
         <label class="f" for="gpuLayers">Lớp đẩy lên GPU</label>
         <input id="gpuLayers" type="number" min="0" step="1" value="0">
       </div>
     </div>
-    <p class="note" id="gpuNote" style="margin-top:10px"></p>
-    <p class="note" id="privacyNote" style="margin-top:10px"></p>
-    <p class="note" id="cfgNote" style="margin-top:10px"></p>
-
     <div class="checks">
       <label><input type="checkbox" id="noLlm"> Chỉ dùng luật OpenXML (nhanh, không cần mô hình)</label>
-      <label><input type="checkbox" id="structuralOnly" checked> Bỏ luật từ ngữ</label>
-      <label><input type="checkbox" id="noTrustStyles"> Không khôi phục theo style</label>
       <label><input type="checkbox" id="twoPass"> Quét hai lượt, đánh dấu chỗ bất đồng (chậm gấp đôi)</label>
+      <label><input type="checkbox" id="writeback"> Ghi outline vào bản sao .docx để tải về</label>
     </div>
+
+    <!--
+      Năm nút dưới đây đang ở giá trị đã đo. Chúng bị gập lại không phải cho gọn: `threshold` và
+      `structuralOnly` nằm trong chữ ký cấu hình của calibration profile, nên chỉnh chúng làm lệch
+      chữ ký → cổng precision không dùng được profile → mọi heading rơi về "cần duyệt" → writeback
+      cũng không chạy. Một ô nhập trông vô hại mà tắt được cả hai tính năng thì không nên nằm ở
+      lớp ngoài cùng.
+    -->
+    <details id="advanced">
+      <summary>Tuỳ chọn nâng cao — chỉ đổi khi đang benchmark</summary>
+      <p class="note">Mặc định là cấu hình đã đo. Đổi giá trị ở đây gần như chỉ làm kết quả xấu đi,
+        và hai ô đầu tiên còn làm mất khả năng tự nhận heading (xem cảnh báo sau khi chạy).</p>
+      <div class="opts">
+        <div>
+          <label class="f" for="threshold">Ngưỡng giữ ứng viên</label>
+          <input id="threshold" type="number" min="0" max="1" step="0.05" value="0.45">
+          <p class="note">Nâng lên là loại paragraph TRƯỚC khi model kịp nhìn — mất recall, không báo gì.</p>
+        </div>
+        <div>
+          <label class="f" for="chunkCandidates">Ứng viên mỗi khối</label>
+          <input id="chunkCandidates" type="number" min="2" max="64" step="1" value="6">
+          <p class="note">6 là mức cân bằng cho Qwen 7B; tăng quá cao dễ nhầm ID/cấp.</p>
+        </div>
+        <div>
+          <label class="f" for="ctx">Cửa sổ ngữ cảnh (token)</label>
+          <input id="ctx" type="number" min="4096" step="1024" value="8192">
+          <p class="note">Server tự nâng theo model nếu thiếu; đặt tay hầu như không có tác dụng.</p>
+        </div>
+      </div>
+      <div class="checks">
+        <label><input type="checkbox" id="structuralOnly" checked> Bỏ luật từ ngữ</label>
+        <label><input type="checkbox" id="noTrustStyles"> Không khôi phục theo style</label>
+        <label><input type="checkbox" id="showRaw" checked> Hiện JSON LLM trả về (debug)</label>
+      </div>
+      <p class="note">"Không khôi phục theo style" là nút để đánh giá riêng chất lượng mô hình:
+        với một lần chạy bình thường nó chỉ có thể làm mất heading mà chính Word đã khẳng định.</p>
+    </details>
+    
 
     <button id="run" disabled>Phân tích</button>
   </div>
 
-  <div class="panel hidden" id="progressPanel">
-    <h2>Tiến trình</h2>
-    <div id="log"></div>
+    <div class="panel" id="workCard">
+      <h2>Backend làm việc</h2>
+      <div class="workgrid">
+        <div class="workitem"><span class="worklabel">Trạng thái</span><span id="workState" class="workvalue">Chờ tài liệu</span></div>
+        <div class="workitem"><span class="worklabel">Tài liệu</span><span id="workFile" class="workvalue">Chưa chọn file</span></div>
+        <div class="workitem"><span class="worklabel">Backend / model</span><span id="workModel" class="workvalue">—</span></div>
+        <div class="workitem"><span class="worklabel">Context / batch</span><span id="workConfig" class="workvalue">—</span></div>
+      </div>
+      <ol class="stages" id="stages"></ol>
+      <div class="spacer"></div>
+      <p id="workHint">Chọn tài liệu để bắt đầu một lượt phân tích có thể theo dõi.</p>
+    </div>
+    </div>
+
+    <div class="panel" id="progressPanel">
+      <h2>Dev log LLM</h2>
+      <div class="devbar"><span id="devDot" class="devdot"></span><span id="devState">Đang chờ</span><span id="devElapsed">0 s</span></div>
+      <p id="devMeta">Chưa có lượt xử lý.</p>
+      <div id="log"></div>
+    </div>
   </div>
 
   <div id="errBox" class="panel hidden"><div class="err" id="errText"></div></div>
 
   <div class="panel hidden" id="statsPanel">
     <h2>Tổng quan</h2>
+    <p class="err hidden" id="cfgWarn"></p>
     <div class="tiles" id="tiles"></div>
     <p class="note" id="confNote"></p>
+    <button id="downloadDocx" class="hidden">Tải bản .docx đã gắn outline</button>
+    <p class="note hidden" id="downloadNote">Link chỉ dùng được một lần; tải xong là bản ghi rời khỏi bộ nhớ server.</p>
   </div>
 
   <div class="panel hidden" id="evalPanel">
@@ -216,7 +332,8 @@
 <script>
 const $ = id => document.getElementById(id);
 let picked = null, outline = null, reviewBundle = null, serverError = false;
-let defaults = null;
+let defaults = null, gpuBaseNote = '', gpuBaseLabel = '';
+let devStarted = 0, devLogLines = 0;
 
 // ---------- chọn file ----------
 $('drop').onclick = () => $('file').click();
@@ -231,6 +348,9 @@ $('file').onchange = e => { if (e.target.files[0]) setFile(e.target.files[0]); }
 function setFile(f) {
   picked = f;
   $('dropName').textContent = f.name + '  ·  ' + (f.size / 1024).toFixed(0) + ' KB';
+  $('workFile').textContent = f.name;
+  $('workState').textContent = 'Sẵn sàng phân tích';
+  $('workHint').textContent = 'Pipeline sẽ đọc OpenXML, lọc ứng viên rồi gọi LLM cho phần chưa chắc chắn.';
   $('run').disabled = false;
 }
 
@@ -241,15 +361,18 @@ fetch('/api/defaults').then(r => r.json()).then(d => {
   $('chunkCandidates').value = d.chunkCandidates;
   $('threshold').value = d.threshold;
   $('structuralOnly').checked = d.structuralOnly;
+  $('workConfig').textContent = `${d.lmStudioContextSize || d.chunkTokens} token · ${d.chunkCandidates} ứng viên/khối`;
 
   // Ô GPU chỉ có nghĩa khi bản dựng có backend GPU; bản CPU thì khoá lại thay vì để người
   // dùng gõ số rồi tưởng đang chạy GPU mà thực ra không.
   $('gpuLayers').value = d.gpuLayers;
   $('gpuLayers').disabled = !d.gpuBackend;
-  $('gpuNote').textContent = d.gpuBackend
+  gpuBaseLabel = d.gpuBackend ? 'bản dựng GPU' : 'bản dựng CPU';
+  gpuBaseNote = d.gpuBackend
     ? 'Bản dựng có backend GPU. GPU 4 GB nên dùng khoảng 15–20 lớp; chỉ dùng 99 khi VRAM đủ chứa toàn bộ model và context.'
     : 'Bản dựng CPU — ô này không có tác dụng. Dựng lại với -p:UseVulkan=true (AMD/Intel) '
       + 'hoặc -p:UseCuda=true (NVIDIA) để bật.';
+  chip('gpuNote', gpuBaseLabel, gpuBaseNote, d.gpuBackend ? 'acc' : '');
 
   const remote = $('backend').querySelector('option[value="openrouter"]');
   remote.disabled = !d.openRouterAvailable;
@@ -260,18 +383,110 @@ fetch('/api/defaults').then(r => r.json()).then(d => {
     $('backend').value = 'openrouter';
     $('noLlm').checked = false;
   }
+  loadLmStudioModels(d);
   syncBackend();
 });
+
+async function loadLmStudioModels(d) {
+  const backendOption = $('backend').querySelector('option[value="lmstudio"]');
+  const select = $('lmStudioModel');
+  try {
+    const response = await fetch('/api/lmstudio/models');
+    if (!response.ok) throw new Error('unavailable');
+    const models = await response.json();
+    if (!models.length) throw new Error('empty');
+    const ids = models.map(m => m.id);
+    if (d.lmStudioModel && !ids.includes(d.lmStudioModel)) ids.unshift(d.lmStudioModel);
+    select.innerHTML = ids.map(id => `<option value="${esc(id)}">${esc(id)}</option>`).join('');
+    if (d.lmStudioModel) select.value = d.lmStudioModel;
+    backendOption.textContent = `LM Studio local · ${d.lmStudioEndpoint}`;
+    backendOption.disabled = false;
+    if (!$('noLlm').checked) $('backend').value = 'lmstudio';
+  } catch {
+    select.innerHTML = d.lmStudioModel
+      ? `<option value="${esc(d.lmStudioModel)}">${esc(d.lmStudioModel)}</option>`
+      : '<option value="">— không kết nối được —</option>';
+    backendOption.textContent = `LM Studio · chưa kết nối ${d.lmStudioEndpoint}`;
+  }
+  syncBackend();
+}
 
 $('backend').onchange = syncBackend;
 $('noLlm').onchange = syncBackend;
 
 function syncBackend() {
-  const remote = $('backend').value === 'openrouter' && !$('noLlm').checked;
-  ['model', 'ctx', 'gpuLayers'].forEach(id => $(id).disabled = remote || (id === 'gpuLayers' && defaults && !defaults.gpuBackend));
-  $('privacyNote').textContent = remote
-    ? 'Tài liệu sẽ được gửi ra OpenRouter bằng HTTPS. Request bắt buộc ZDR, cấm provider thu thập dữ liệu và yêu cầu JSON; kết quả được kiểm tra schema/ID tại server và API key không được gửi xuống trình duyệt.'
-    : 'Backend local: nội dung tài liệu không rời khỏi máy.';
+  const noLlm = $('noLlm').checked;
+  const backend = $('backend').value;
+  const remote = backend === 'openrouter' && !noLlm;
+  const lmStudio = backend === 'lmstudio' && !noLlm;
+  const rpc = remote || lmStudio;
+  // Ô mô hình/ngữ cảnh vô nghĩa cả khi chạy từ xa lẫn khi tắt LLM — khoá lại thay vì để người
+  // dùng chỉnh một giá trị không đi tới đâu.
+  ['model', 'ctx', 'gpuLayers'].forEach(id =>
+    $(id).disabled = rpc || noLlm || (id === 'gpuLayers' && defaults && !defaults.gpuBackend));
+  $('lmStudioModelWrap').classList.toggle('hidden', !lmStudio);
+  $('lmStudioModel').disabled = !lmStudio;
+  if (remote)
+    chip('privacyNote', 'gửi ra OpenRouter', 'Tài liệu sẽ được gửi ra OpenRouter bằng HTTPS. Request bắt buộc ZDR, cấm provider thu thập dữ liệu và yêu cầu JSON; kết quả được kiểm tra schema/ID tại server và API key không được gửi xuống trình duyệt.', 'warn');
+  else if (lmStudio)
+    chip('privacyNote', 'loopback · không rời máy', 'LM Studio chạy qua loopback trên chính máy này. API key (nếu bật) chỉ nằm ở server; nội dung không được gửi tới OpenRouter.', 'ok');
+  else
+    chip('privacyNote', 'local · không rời máy', 'Backend local: nội dung tài liệu không rời khỏi máy.', 'ok');
+
+  if (lmStudio) {
+    const ctxSize = defaults?.lmStudioContextSize ?? 16384;
+    chip('gpuNote', `ctx ${ctxSize}`,
+      `Context/GPU/parallel được cấu hình khi nạp model trong LM Studio; DHX đang khai báo context ${ctxSize} token.`);
+  } else {
+    chip('gpuNote', gpuBaseLabel, gpuBaseNote, defaults?.gpuBackend ? 'acc' : '');
+  }
+  renderCfgNote();
+}
+
+// cfgNote nói về CHẤT LƯỢNG cấu hình, nên nó phải phản ứng với cả lựa chọn mô hình lẫn việc tắt
+// LLM. Trước đây nó chỉ được đặt lúc đổi mô hình: tick "chỉ dùng luật OpenXML" xong panel vẫn
+// khoe "đang dùng cấu hình chất lượng đã đo" trong khi sẽ không có mô hình nào chạy.
+let modelNote = '', modelLabel = '', modelTone = '';
+
+function renderCfgNote() {
+  if ($('noLlm').checked) {
+    chip('cfgNote', 'không dùng model',
+      'Chỉ chạy luật OpenXML, không gọi mô hình: nhanh và không cần .gguf, nhưng chỉ nhận ra được '
+      + 'tiêu đề mà style/đánh số đã nói rõ. Đây KHÔNG phải cấu hình đã đo.', 'warn');
+    return;
+  }
+  if ($('backend').value === 'openrouter') {
+    chip('cfgNote', 'chưa đo trên server này',
+      'Suy luận từ xa: chất lượng phụ thuộc model slug đang cấu hình trên server, không phải bộ số đo cục bộ.', 'warn');
+    return;
+  }
+  if ($('backend').value === 'lmstudio') {
+    chip('cfgNote', 'JSON schema · chưa calibration',
+      'LM Studio local RPC: dùng structured JSON schema và hậu kiểm đủ ID. Confidence vẫn cần calibration riêng cho đúng model identifier này.');
+    return;
+  }
+  chip('cfgNote', modelLabel, modelNote, modelTone);
+}
+
+// Model đang thật sự chạy phải đọc theo backend đang chọn. Bản trước viết
+// `$('lmStudioModel').value || $('model')...` nên chỉ cần LM Studio có model nào đó là ô "Backend /
+// model" và dev log khoe id của LM Studio, kể cả khi đang chạy Qwen local bằng file .gguf — nhìn
+// vào tưởng nạp nhầm model trong khi server vẫn chạy đúng thứ được chọn.
+function activeModelLabel() {
+  if ($('noLlm').checked) return 'không gọi model — chỉ luật OpenXML';
+  const backend = $('backend').value;
+  if (backend === 'lmstudio') return $('lmStudioModel').value || 'chưa chọn model LM Studio';
+  if (backend === 'openrouter')
+    return (defaults && defaults.openRouterModel) || 'model cấu hình trên server';
+  return $('model').selectedOptions[0]?.textContent || 'model mặc định';
+}
+
+// Nhãn ngắn hiện trên chip, câu đầy đủ nằm ở tooltip — không rút gọn nội dung, chỉ đổi chỗ đặt.
+function chip(id, label, detail, tone = '') {
+  const el = $(id);
+  el.textContent = label || '';
+  el.title = detail || '';
+  el.className = 'chip' + (tone ? ' ' + tone : '');
 }
 
 fetch('/api/models').then(r => r.json()).then(list => {
@@ -279,7 +494,9 @@ fetch('/api/models').then(r => r.json()).then(list => {
   if (!list.length) {
     sel.innerHTML = '<option value="">— không tìm thấy .gguf —</option>';
     $('noLlm').checked = true;
-    $('cfgNote').textContent = 'Không tìm thấy .gguf nào trong models/ — chỉ chạy được bằng luật OpenXML.';
+    modelLabel = 'không có .gguf'; modelTone = 'warn';
+    modelNote = 'Không tìm thấy .gguf nào trong models/ — chỉ chạy được bằng luật OpenXML.';
+    syncBackend();
     return;
   }
   // Mô hình khuyên dùng đứng đầu danh sách nên tự được chọn.
@@ -292,11 +509,18 @@ fetch('/api/models').then(r => r.json()).then(list => {
   function syncCtx() {
     const opt = sel.selectedOptions[0];
     $('ctx').value = opt.dataset.ctx;
-    $('cfgNote').textContent = opt.textContent.includes('khuyên dùng')
+    // Không hứa "100%" trống không: con số đó là MỘT lần chạy trên MỘT tài liệu, và batched
+    // executor không tái lập từng bit nên chạy lại có thể lệch vài phần trăm.
+    const measured = opt.textContent.includes('khuyên dùng');
+    modelLabel = measured ? 'cấu hình đã đo' : 'không phải cấu hình đã đo';
+    modelTone = measured ? 'ok' : 'warn';
+    modelNote = measured
       ? 'Đang dùng cấu hình chất lượng đã đo — mô hình lớn nhất tìm thấy, ngữ cảnh '
-        + opt.dataset.ctx + ', 12 ứng viên mỗi khối. Kết quả 100% chỉ áp dụng cho tài liệu benchmark đã đo.'
-      : 'Mô hình này KHÔNG phải cấu hình đã đo. Mô hình nhỏ hơn tụt precision rõ rệt '
-        + '(Llama-3.2-3B đo được 73%, Qwen2.5-7B 100% trên cùng tài liệu).';
+        + opt.dataset.ctx + ', 6 ứng viên mỗi khối. Mốc 100% là một lần đo trên đúng tài liệu '
+        + 'benchmark; chạy lại có thể lệch vài phần trăm và tài liệu khác thì chưa nói lên gì.'
+      : 'Mô hình này KHÔNG phải cấu hình đã đo. Mô hình nhỏ hơn tụt precision rõ rệt — trên cùng '
+        + 'tài liệu benchmark, Llama-3.2-3B đo được 73% còn Qwen2.5-7B 100% (mỗi bên một lần chạy).';
+    renderCfgNote();
   }
 });
 
@@ -306,13 +530,23 @@ $('run').onclick = async () => {
   $('run').disabled = true;
   outline = null; serverError = false;
   ['statsPanel', 'treePanel', 'evalPanel', 'reviewPanel', 'errBox'].forEach(id => $(id).classList.add('hidden'));
-  $('progressPanel').classList.remove('hidden');
   $('log').textContent = '';
+  devStarted = Date.now(); devLogLines = 0;
+  stageIndex = 0; renderStages();
+  $('devDot').className = 'devdot live';
+  $('devState').textContent = 'Đang khởi tạo pipeline…';
+  $('devElapsed').textContent = '0 s';
+  $('devMeta').textContent = `${$('backend').selectedOptions[0]?.textContent || 'Backend'} · ${activeModelLabel()}`;
+  $('workState').textContent = 'Đang xử lý';
+  $('workModel').textContent = activeModelLabel();
+  $('workConfig').textContent = `${$('ctx').value} token · ${$('chunkCandidates').value} ứng viên/khối`;
+  $('workHint').textContent = 'Đang theo dõi request, JSON trả về và các bước hậu kiểm trong Dev log LLM.';
 
   const fd = new FormData();
   fd.append('file', picked);
   fd.append('backend', $('backend').value);
   fd.append('model', $('model').value);
+  fd.append('lmStudioModel', $('lmStudioModel').value);
   fd.append('ctx', $('ctx').value);
   fd.append('threshold', $('threshold').value);
   fd.append('chunkCandidates', $('chunkCandidates').value);
@@ -321,10 +555,14 @@ $('run').onclick = async () => {
   fd.append('structuralOnly', $('structuralOnly').checked ? '1' : '0');
   fd.append('noTrustStyles', $('noTrustStyles').checked ? '1' : '0');
   fd.append('twoPass', $('twoPass').checked ? '1' : '0');
+  fd.append('showRaw', $('showRaw').checked ? '1' : '0');
+  fd.append('writeback', $('writeback').checked ? '1' : '0');
 
   const started = Date.now();
   const timer = setInterval(() => {
-    $('run').textContent = 'Đang chạy… ' + Math.round((Date.now() - started) / 1000) + ' s';
+    const elapsed = Math.round((Date.now() - started) / 1000);
+    $('run').textContent = 'Đang chạy… ' + elapsed + ' s';
+    $('devElapsed').textContent = elapsed + ' s';
   }, 1000);
 
   try {
@@ -358,6 +596,8 @@ $('run').onclick = async () => {
 
 function handle(evt) {
   if (evt.type === 'log') {
+    devLogLines++;
+    updateDevState(evt.message);
     $('log').textContent += evt.message + '\n';
     $('log').scrollTop = $('log').scrollHeight;
   } else if (evt.type === 'agent') {
@@ -365,11 +605,52 @@ function handle(evt) {
     $('log').scrollTop = $('log').scrollHeight;
   } else if (evt.type === 'error') {
     serverError = true;
+    $('devDot').className = 'devdot error';
+    $('devState').textContent = 'Lỗi xử lý';
+    $('workState').textContent = 'Lỗi';
+    $('workHint').textContent = evt.message;
     showError(evt.message);
   } else if (evt.type === 'result') {
+    $('devDot').className = 'devdot done';
+    $('devState').textContent = 'Đã hoàn tất · ' + devLogLines + ' sự kiện';
+    renderStages(true);
+    $('workState').textContent = 'Hoàn tất';
+    $('workHint').textContent = 'Đã qua pipeline; xem Tổng quan và Cấu trúc tiêu đề bên dưới.';
     outline = evt.outline;
-    render(evt.outline, evt.stats, evt.review);
+    if (evt.agent) {
+      $('log').textContent +=
+        `[agent] ${evt.agent.message} (policy ${evt.agent.skill}, ${evt.agent.steps} bước)\n`;
+      $('log').scrollTop = $('log').scrollHeight;
+    }
+    render(evt.outline, evt.stats, evt.review, evt.agent);
   }
+}
+
+// Cột trái đọc cùng một luồng log với cột phải, chỉ quy nó về năm bước. Chỉ số bước không lùi:
+// log của lượt hai (twoPass) lặp lại các mẫu chuỗi của lượt một, mà lùi thanh tiến trình về giữa
+// chừng thì trông như pipeline chạy lại từ đầu.
+const STAGES = [
+  ['Nạp backend / mô hình', /Mô hình sẵn sàng|Dùng backend|Kết nối LM Studio/i, 'LLM đã sẵn sàng'],
+  ['Đọc cấu trúc OpenXML', /OpenXML/i, 'Đang đọc cấu trúc DOCX…'],
+  ['Chia context thành khối', /chia thành/i, 'Đang chia context thành các khối…'],
+  ['LLM phân loại ứng viên', /khối .* ứng viên/i, 'LLM đang phân tích ứng viên…'],
+  ['Hậu kiểm & cổng precision', /Critic|xác minh|hierarchy/i, 'Đang hậu kiểm ngữ nghĩa/cấu trúc…'],
+];
+let stageIndex = -1;
+
+function renderStages(allDone = false) {
+  $('stages').innerHTML = STAGES.map(([label], i) => {
+    const cls = allDone || i < stageIndex ? ' done' : i === stageIndex ? ' live' : '';
+    return `<li class="stage${cls}"><span class="sdot"></span>${label}</li>`;
+  }).join('');
+}
+renderStages();
+
+function updateDevState(message) {
+  const m = String(message);
+  const hit = STAGES.findIndex(([, pattern]) => pattern.test(m));
+  $('devState').textContent = hit < 0 ? 'Đang xử lý…' : STAGES[hit][2];
+  if (hit > stageIndex) { stageIndex = hit; renderStages(); }
 }
 
 function showError(msg) {
@@ -378,7 +659,7 @@ function showError(msg) {
 }
 
 // ---------- hiển thị kết quả ----------
-function render(o, s, review) {
+function render(o, s, review, agent) {
   const secs = (o.elapsedMs / 1000).toFixed(1);
   const t = [
     [o.paragraphCount, 'đoạn trong file'],
@@ -394,7 +675,25 @@ function render(o, s, review) {
   if (o.disputedCount) t.splice(4, 0, [o.disputedCount, 'cần xem lại']);
   tiles('tiles', t);
 
+  // Cấu hình lệch khỏi profile thì cổng precision bỏ qua profile và mọi mục rơi về "cần duyệt" —
+  // kéo theo cả bước ghi .docx bị bỏ. Trước đây tín hiệu duy nhất là chuỗi confidenceBasis nằm
+  // sâu trong JSON, nên người dùng chỉ thấy "cần duyệt" mà không biết là do chính mình vừa gõ.
+  const mismatch = o.headings.filter(h => h.confidenceBasis === 'calibration_profile_mismatch').length;
+  $('cfgWarn').classList.toggle('hidden', !mismatch);
+  if (mismatch) {
+    $('cfgWarn').textContent =
+      `${mismatch} mục không dùng được profile calibration: cấu hình lần chạy này khác cấu hình đã `
+      + 'hiệu chuẩn, thường là do đổi "Ngưỡng giữ ứng viên" hoặc "Bỏ luật từ ngữ" trong mục nâng cao, '
+      + 'hoặc do đổi mô hình. Khi đó mọi mục bị ép về trạng thái cần duyệt — chặt hơn cả khi KHÔNG '
+      + 'có profile nào, vì lúc đó còn tự nhận được theo evidence — nên bước ghi .docx cũng bị bỏ. '
+      + 'Trả các ô nâng cao về mặc định, hoặc hiệu chuẩn lại bằng dhx eval --calibration-out.';
+    $('advanced').open = true;
+  }
+
   $('confNote').innerHTML =
+    // Câu tường thuật do harness dựng từ outline đã qua validator — hiển thị nguyên văn để UI
+    // không diễn giải lại các con số theo hướng dễ chịu hơn thực tế.
+    (agent ? `${esc(agent.message)}<br>` : '') +
     `Nguồn: <span class="tag Style">Style</span> ${s.byStyle} · ` +
     `<span class="tag Model">Model</span> ${s.byModel} · ` +
     `<span class="tag Heuristic">Heuristic</span> ${s.byHeuristic}` +
@@ -402,6 +701,13 @@ function render(o, s, review) {
     (o.model ? ` — mô hình <code>${esc(o.model)}</code>` : ' — chạy bằng luật OpenXML') +
     `.<br><b>Evidence 93–95% chỉ là mục tiêu nội bộ; holdout_wilson_lower95 mới là cận dưới precision đo được.</b> ` +
     `Mục chưa đủ chuẩn được giữ ở trạng thái cần duyệt.`;
+
+  // Nút tải chỉ hiện khi harness thật sự đã ghi được file. Không dựng link từ runId ở phía
+  // trình duyệt: run bị gate chặn thì không có gì để tải, và một link chết còn khó hiểu hơn.
+  const download = agent && agent.download;
+  $('downloadDocx').classList.toggle('hidden', !download);
+  $('downloadNote').classList.toggle('hidden', !download);
+  if (download) $('downloadDocx').onclick = () => { window.location.href = download; };
 
   $('tree').innerHTML =
     '<thead><tr><th style="width:64px">Đoạn</th><th>Tiêu đề</th>' +

@@ -9,7 +9,7 @@ public interface IDocumentExtractionTool : IDisposable
     AgentToolDescriptor Descriptor { get; }
 
     Task<DocumentOutline> ExecuteAsync(
-        DocumentAgentRequest request,
+        AgentToolInvocation invocation,
         CancellationToken ct = default);
 }
 
@@ -45,20 +45,43 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 
     public AgentToolDescriptor Descriptor { get; }
 
+    /// <summary>
+    /// Lượt sửa cách ly các đoạn bị validator bác rồi chạy lại pipeline từ đầu. Không lọc kết quả
+    /// cũ: cây, cấp, evidence và cổng precision đều được dựng lại trên tập ứng viên đã hẹp hơn,
+    /// nên một mục bị gỡ không để lại cấp mồ côi trong cây.
+    /// </summary>
     public Task<DocumentOutline> ExecuteAsync(
-        DocumentAgentRequest request,
-        CancellationToken ct = default) =>
-        _pipeline.RunAsync(request.InputPath, ct);
+        AgentToolInvocation invocation,
+        CancellationToken ct = default)
+    {
+        ArgumentNullException.ThrowIfNull(invocation);
+        var quarantine = invocation.Feedback?.QuarantineIndexes;
+        return _pipeline.RunAsync(
+            invocation.Request.InputPath,
+            quarantine is { Count: > 0 } ? quarantine.ToHashSet() : null,
+            ct);
+    }
 
     private static AgentToolDescriptor Describe(PipelineOptions options)
     {
+        // LM Studio bị khóa vào loopback nên vẫn là local processing. Chỉ OpenRouter chuyển
+        // nội dung ra dịch vụ bên ngoài và cần consent theo từng run.
         var remote = !options.DisableLlm && options.Backend == InferenceBackend.OpenRouter;
+        // Pipeline ghi document view ra đĩa khi DumpXmlPath được đặt — đường ghi này không đi qua
+        // IDocumentActionTool nên WritebackTargetGuardrail không thấy. Khai ra cả cờ lẫn đường dẫn
+        // để ToolSideEffectPathGuardrail soi được, thay vì để harness hứa "chỉ đọc".
+        var dump = options.DumpXmlPath;
+        var writes = !string.IsNullOrWhiteSpace(dump);
         return new AgentToolDescriptor(
             "extract_document_headings",
             "Đọc cấu trúc Word, gọi classifier khi cần, dựng cây heading và áp precision gate.",
             remote ? AgentToolRisk.Medium : AgentToolRisk.Low,
             SendsDataExternally: remote,
-            MutatesExternalState: false);
+            MutatesExternalState: writes)
+        {
+            SupportsRepair = true,
+            SideEffectPaths = writes ? [dump!] : [],
+        };
     }
 
     public void Dispose()

@@ -55,8 +55,8 @@ public sealed class OpenRouterTests
         using var request = JsonDocument.Parse(handler.Body);
         var system = request.RootElement.GetProperty("messages")[0].GetProperty("content").GetString()!;
         Assert.Contains("CHỦ ĐỘNG tìm phản ví dụ", system);
-        Assert.Contains("không theo", system);
-        Assert.Contains("một từ khóa riêng lẻ", system);
+        Assert.Contains("MỞ RA phạm vi nội dung", system);
+        Assert.Contains("từ khóa riêng lẻ", system);
     }
 
     [Fact]

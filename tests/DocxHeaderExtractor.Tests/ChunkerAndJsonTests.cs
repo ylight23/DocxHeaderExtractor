@@ -87,21 +87,42 @@ public class EnumeratedGrammarTests
     [Fact]
     public void Prompt_distinguishes_front_matter_and_document_title_from_heading_tree()
     {
-        Assert.Contains("front-matter/form_label", HeaderPrompt.System);
         Assert.Contains("document_title", HeaderPrompt.System);
         Assert.Contains("Chỉ dùng r=h khi đoạn mở một phần nội dung", HeaderPrompt.System);
+        // Phân biệt bằng QUAN HỆ (cụm nhãn liền nhau, không có nội dung triển khai bên dưới),
+        // không bằng cách gọi tên loại văn bản.
+        Assert.Contains("không dòng nào có phần", HeaderPrompt.System);
+        foreach (var hardcoded in DomainHardcodedPhrases)
+            Assert.DoesNotContain(hardcoded, HeaderPrompt.System);
     }
+
+    /// <summary>
+    /// Những cụm từ mô tả riêng văn bản hành chính Việt Nam. Prompt từng liệt kê chúng để chặn
+    /// phần đầu công văn thành heading, nhưng liệt kê theo LOẠI văn bản thì chỉ đúng với loại đó
+    /// và đo được là bắn quá tay: trên bench, critic loại 3 mục của một tài liệu dùng toàn style
+    /// Heading chuẩn — đúng bằng số mục bị thiếu.
+    /// </summary>
+    private static readonly string[] DomainHardcodedPhrases =
+    [
+        "nơi nhận", "kính gửi", "dấu mật", "bảo mật/khẩn", "tên cơ quan", "số hiệu", "mã biểu mẫu",
+    ];
 
     [Fact]
     public void Critic_prompt_challenges_weak_model_heading_without_document_phrase_hardcode()
     {
         Assert.Contains("CHỦ ĐỘNG tìm phản ví dụ", HeaderPrompt.CriticSystem);
-        Assert.Contains("địa chỉ/người gửi-người", HeaderPrompt.CriticSystem);
-        Assert.Contains("nhận, lời chuyển/kính gửi", HeaderPrompt.CriticSystem);
-        Assert.Contains("không theo", HeaderPrompt.CriticSystem);
-        Assert.Contains("một từ khóa riêng lẻ", HeaderPrompt.CriticSystem);
+        // Phép thử là quan hệ phạm vi, không phải danh sách loại văn bản.
+        Assert.Contains("MỞ RA phạm vi nội dung", HeaderPrompt.CriticSystem);
+        Assert.Contains("từ khóa riêng lẻ", HeaderPrompt.CriticSystem);
+        // Và phải có vế KHẲNG ĐỊNH: bản cũ chỉ toàn vế phủ định nên critic thiên về bác bỏ.
+        Assert.Contains("thì nó là heading", HeaderPrompt.CriticSystem);
+        // Phân biệt cụm đặt tên với câu hoàn chỉnh — luật cấu trúc câu, không phải danh sách loại
+        // văn bản. Đây là thứ duy nhất tách được dòng tiêm chỉ thị khỏi một heading in đậm căn giữa.
+        Assert.Contains("không phải một câu", HeaderPrompt.CriticSystem);
         Assert.DoesNotContain("Đơn vị Alpha", HeaderPrompt.CriticSystem);
         Assert.DoesNotContain("Đơn vị Beta", HeaderPrompt.CriticSystem);
+        foreach (var hardcoded in DomainHardcodedPhrases)
+            Assert.DoesNotContain(hardcoded, HeaderPrompt.CriticSystem);
     }
 
     [Fact]
@@ -186,10 +207,10 @@ public class FullReviewSerializationTests
             ],
         }.Build();
 
-        var lines = SlimXmlSerializer.BuildLines(doc, new ExtractionOptions(), new HashSet<int> { 0, 1 });
+        var lines = NeutralDocumentViewSerializer.BuildLines(doc, new ExtractionOptions(), new HashSet<int> { 0, 1 });
 
         Assert.Equal([0, 1], lines.Where(x => x.IsCandidate).Select(x => x.ParagraphIndex));
-        Assert.DoesNotContain(lines, x => x.Text.StartsWith("<n ", StringComparison.Ordinal));
+        Assert.DoesNotContain(lines, x => x.Text.StartsWith("OMITTED_NORMAL_BLOCKS", StringComparison.Ordinal));
     }
 
     [Fact]
@@ -279,11 +300,12 @@ public class ModelProfileTests
     public void Qwen_profile_uses_8k_context_with_5k_document_budget()
     {
         var options = new LlamaOptions { ModelPath = "Qwen2.5-7B-Instruct-Q4_K_M.gguf" };
+        var chunking = new ChunkingOptions();
 
-        options.ApplyRecommendedModelProfile();
+        options.ApplyRecommendedModelProfile(chunking);
 
         Assert.Equal(8192u, options.ContextSize);
-        Assert.Equal(5000, options.ChunkTokenBudget);
+        Assert.Equal(5000, chunking.TokenBudget);
     }
 
     [Fact]
@@ -293,13 +315,41 @@ public class ModelProfileTests
         {
             ModelPath = "Qwen2.5-7B-Instruct-Q4_K_M.gguf",
             ContextSize = 6144,
-            ChunkTokenBudget = 3200,
         };
+        var chunking = new ChunkingOptions { TokenBudget = 3200 };
 
-        options.ApplyRecommendedModelProfile();
+        options.ApplyRecommendedModelProfile(chunking);
 
         Assert.Equal(6144u, options.ContextSize);
-        Assert.Equal(3200, options.ChunkTokenBudget);
+        Assert.Equal(3200, chunking.TokenBudget);
+    }
+
+    [Fact]
+    public void Llama_3_2_profile_raises_invalid_4k_context_to_8k()
+    {
+        var options = new LlamaOptions { ModelPath = "Llama-3.2-3B-Instruct-Q4_K_M.gguf" };
+        var chunking = new ChunkingOptions();
+
+        options.ApplyRecommendedModelProfile(chunking);
+
+        Assert.Equal(8192u, options.ContextSize);
+        Assert.Equal(2200, chunking.TokenBudget);
+        Assert.True(LlamaOptions.RequiredContextSize(
+            chunking.TokenBudget, options.MaxOutputTokens) <= options.ContextSize);
+    }
+
+    [Fact]
+    public void Unknown_4k_model_keeps_context_and_fits_chunk_budget()
+    {
+        var options = new LlamaOptions { ModelPath = "unknown-model.gguf" };
+        var chunking = new ChunkingOptions();
+
+        options.ApplyRecommendedModelProfile(chunking);
+
+        Assert.Equal(4096u, options.ContextSize);
+        Assert.Equal(1796, chunking.TokenBudget);
+        Assert.Equal(options.ContextSize,
+            LlamaOptions.RequiredContextSize(chunking.TokenBudget, options.MaxOutputTokens));
     }
 }
 
