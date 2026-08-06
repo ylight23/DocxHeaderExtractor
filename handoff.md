@@ -212,6 +212,11 @@ toàn `document_title` thì cây heading rỗng sạch (`Collection: []`).
   Vì vậy mọi lượt chạy đều báo *"evidence chưa calibration bằng holdout"* và cổng precision rơi về
   chấp nhận theo evidence thay vì theo cận dưới Wilson.
 
+  Số học của ngưỡng, để biết còn thiếu bao xa: với `TargetPrecision = 0,93`, một bucket **không có
+  lỗi nào** cần n=52 (Wilson = 0,931) — đúng giá trị `MinimumCalibrationSamples`. Nhưng chỉ cần
+  **một** lỗi thì yêu cầu nhảy lên **n=80** (Wilson 0,933; ở n=52 chỉ còn 0,899). Bucket lớn nhất
+  hiện có 28 mẫu, tức mới ~35% đường tới ngưỡng LẠC QUAN NHẤT.
+
   Muốn có profile thật thì cần vài trăm heading đã gán nhãn — tức vài chục tài liệu thật đi qua
   bảng Review, không phải thêm tài liệu tổng hợp. Tài liệu tổng hợp chỉ chứng minh được đường code,
   không sinh ra được phân phối đúng của tài liệu thật.
@@ -227,8 +232,9 @@ toàn `document_title` thì cây heading rỗng sạch (`Collection: []`).
 - **`InlineHeadingSplitter` không tách được block dính hai heading.** Ở báo cáo thật, i=452 chứa cả
   "Tình hình hoạt động kinh doanh trong 3 năm" lẫn "Tình hình huy động vốn" vì file gốc thiếu ngắt
   đoạn. Lược đồ chỉ cho một quyết định trên một `i` nên mô hình không có cách nào tách.
-- **`CharsPerToken` sai ~2,5 lần cho tiếng Việt** — xem §7.5. Ảnh hưởng trực tiếp LM Studio và
-  OpenRouter, có thể tràn cửa sổ ngữ cảnh. Chưa sửa.
+- **`CharsPerToken` là một hằng số phục vụ nhiều tokenizer chênh nhau ~5 lần** — xem §7.5. Ảnh
+  hưởng trực tiếp LM Studio và OpenRouter: tràn cửa sổ ngữ cảnh với họ Qwen, chia quá nhỏ với họ
+  Llama. Chưa sửa, và hướng sửa phải lấy số token từ chính backend chứ không phải thay hằng số.
 - **Đáp án tài liệu thật do agent gán nhãn, chưa có người xác nhận.** Cả hai file `.key` trong
   §7 đều là phán đoán của mô hình. Agent tự đánh dấu vài mục "không chắc" (`* Nhận xét:`,
   `- Biển Đông:`, nhãn phòng ban kết thúc bằng `:`). Muốn có thước đo thật thì cần người duyệt.
@@ -359,6 +365,33 @@ dựng prompt. Trên 14 khối của báo cáo thật, đáp án 61 heading:
 nó đo *tự nhất quán*, không đo *đúng*. Đây là lỗi thiết kế phép đo, ghi lại để không lặp: thước đo
 và đối tượng đo phải khác mô hình.
 
+**Đã vá bằng một người gán nhãn ĐỘC LẬP.** Một agent Opus đọc cùng toàn văn, không được phép nhìn
+bản của Sonnet:
+
+| | |
+|---|---|
+| Đáp án A (Sonnet) | 61 heading |
+| Đáp án B (Opus) | 63 heading |
+| Trùng chọn đoạn | **61 — Jaccard 96,8%** |
+| Trùng cả cấp trên phần chung | **61/61 = 100%** |
+
+Bất đồng duy nhất là `i=56` và `i=74` — dòng "BÁO CÁO THỰC TẬP" trên trang bìa BỊ LẶP HAI LẦN; Opus
+tính cả hai là cấp 1, Sonnet loại cả hai. **Cả hai đều tự đánh dấu ca này là "không chắc"** trước khi
+biết bên kia nghĩ gì. Nhờ vậy mọi con số P/R/F1 trên tài liệu này đứng trên đồng thuận của hai người
+gán nhãn độc lập, không phải ý kiến của một mô hình.
+
+**Sàn nhiễu của phép đo bằng agent** (đo riêng, 3 lượt mỗi nhóm, đầu vào y hệt nhau):
+
+| | F1 | đúng cấp |
+|---|---|---|
+| Haiku, metadata cũ, n=3 | 97,8% ±0,9 | **62,4% ±21,1** |
+| Haiku, metadata mới, n=3 | 93,8% ±5,7 | **83,7% ±20,2** |
+
+Hai lượt CÙNG đầu vào chỉ đồng ý **33%** về cấp ở ca xấu nhất. Độ lệch giữa hai nhóm nhỏ hơn độ lệch
+bên trong một nhóm, nên **agent-đóng-vai-LLM không đủ ổn định để NGHIỆM THU một thay đổi**. Nó dùng
+được để TÌM lỗi cơ chế (trường `outlineLevel` mâu thuẫn ở §7.3 là phát hiện thật, giá trị thật),
+nhưng thước đo nghiệm thu phải là backend tất định (`top_k=1`, `temperature=0`, seed cố định).
+
 Điều nó CÓ chứng minh: Sonnet đọc 14 khối rời cho ra đúng cùng kết quả với Sonnet đọc toàn văn 621
 đoạn — chia khối không làm hỏng câu trả lời của nó, ngược hẳn với Qwen (đổi thành phần khối là lật
 câu trả lời cho cả mục không liên quan, xem §4).
@@ -407,21 +440,37 @@ chạy cả ở chế độ giao diện dùng.
 `PrecedesTable` phải tính ở một lượt TRƯỚC `Classify`. Đặt trong `PostProcess` — nơi đã có
 `PrecedesTableOfContents` — thì cờ luôn false đúng lúc `Classify` cần đọc.
 
-### 7.5 Ước lượng token sai ~2,5 lần cho tiếng Việt — CHƯA SỬA
+### 7.5 Một hằng số ước lượng token không thể phục vụ nhiều tokenizer — CHƯA SỬA
 
-Cùng ngân sách 5000 token, cùng tài liệu: tokenizer thật của Qwen chia **15 khối**, ước lượng
-`CharsPerToken = 1.85` chia **6 khối**. Và `countTokens` chỉ khác null khi backend là
-`LlamaHeaderExtractor` — nghĩa là **LM Studio và OpenRouter đều chạy bằng ước lượng**.
+**Bản đầu của mục này nói sai và đã được thay.** Nó viết "hằng 1.85 quá lạc quan, khối thật lớn hơn
+2,5 lần", suy từ việc Qwen chia 15 khối trong khi ước lượng chia 6. Đo trực tiếp bằng tokenizer thật
+(cờ `xml --dump-chunks --model`) cho thấy điều đó chỉ đúng với ĐÚNG MỘT họ mô hình.
 
-Ghép với `AdoptBackendContextBudget`: LM Studio khai context 16384 → ngân sách suy ra ≈ 10000 →
-khối thật ≈ 25000 token, **vượt hẳn cửa sổ**. Không phải hơi chật mà là tràn chắc chắn trên tài
-liệu tiếng Việt.
+Cùng tài liệu, cùng ngân sách 5000 token, cùng 99 ứng viên:
 
-Hằng 1.85 hợp lý cho tiếng Anh; đo trên tài liệu này tỉ lệ thật ≈ 0,7–0,75 ký tự/token. Hướng đúng
-là đếm theo **byte UTF-8** (ổn định hơn nhiều giữa các ngôn ngữ) chứ không phải thay một hằng số
-bằng một hằng số khác. Chưa sửa vì đổi cách chia khối là đổi thành phần khối — phải đo riêng.
-Con số 2,5× suy từ "15 khối × 5000" mà khối không đầy đều và có chồng lấn, nên hướng và độ lớn thì
-chắc, con số chính xác thì chưa.
+| Cách đếm | Số khối | Ký tự/token |
+|---|---|---|
+| Tokenizer Qwen2.5-7B | **15** | ~0,64 (suy từ số khối) |
+| Ước lượng `CharsPerToken = 1.85` | 6 | 1,85 |
+| Tokenizer Llama-3.2-3B | **3** | **3,206** (đo trực tiếp) |
+
+Hai tokenizer lệch nhau **~5 lần** trên cùng đoạn văn tiếng Việt: Qwen2.5 có vocab nghiêng
+Trung/Anh nên chữ có dấu rơi xuống token mức byte, Llama-3.2 phủ đa ngữ tốt hơn nhiều.
+
+Phát biểu đúng: **một hằng số toàn cục sai theo HAI HƯỚNG NGƯỢC NHAU tuỳ mô hình** — với họ Qwen thì
+khối thật lớn hơn ngân sách (rủi ro tràn cửa sổ ngữ cảnh), với họ Llama thì khối nhỏ hơn cần thiết
+(lãng phí lượt gọi). `countTokens` chỉ khác null khi backend là `LlamaHeaderExtractor`, nên
+**LM Studio và OpenRouter đều chạy bằng ước lượng** và chịu đúng một trong hai triệu chứng, tuỳ
+mô hình họ đang phục vụ.
+
+Hướng sửa "đổi sang đếm byte UTF-8" nêu ở bản đầu **cũng không đủ**: chênh lệch nằm ở bảng từ vựng
+của tokenizer, không nằm ở cách mã hoá ký tự. Hướng đúng là lấy số token từ chính backend (LM Studio
+có endpoint tokenize; OpenRouter trả usage sau mỗi request) hoặc để một hệ số an toàn theo họ mô
+hình. Chưa làm vì đổi cách chia khối là đổi thành phần khối — phải đo riêng.
+
+**Bài học về cách kết luận**: con số 2,5× ban đầu suy từ một quan sát gián tiếp (số khối) trên MỘT
+mô hình, rồi được phát biểu như một tính chất của tiếng Việt. Đo trực tiếp trên mô hình thứ hai lật
+ngược dấu. Cờ `--dump-chunks --model` sinh ra chính vì việc này, và nó trả công ngay ở lần dùng đầu.
 
 ### 7.6 Rò rỉ nội dung tài liệu qua file PHÁI SINH
 
