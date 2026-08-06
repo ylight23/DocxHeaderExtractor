@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.Chunking;
 using DocxHeaderExtractor.Cli;
 using DocxHeaderExtractor.Core.Pipeline;
 
@@ -85,6 +86,33 @@ public sealed class RemoteChunkProfileTests
         // Ngân sách RPC do nhánh backend quyết, không bị profile của file .gguf trên đĩa chen vào.
         Assert.Equal(5000, o.Pipeline.Chunking.TokenBudget);
         Assert.Equal(LocalDefaultContext, o.Pipeline.Llama.ContextSize);
+    }
+
+    [Theory]
+    // LM Studio khai 16384 → 16384 - 768 (đầu ra) - 1600 (dự trữ prompt) = 14016.
+    [InlineData(16384, 768, 14016)]
+    // Server context nhỏ thì ngân sách co theo, không giữ hằng 5000 rồi tràn cửa sổ.
+    [InlineData(4096, 768, 1728)]
+    public void Ngan_sach_suy_tu_context_backend_khai_bao(int context, int maxOutput, int expected)
+    {
+        Assert.Equal(expected, ChunkingOptions.DeriveTokenBudget(context, maxOutput, 1600));
+    }
+
+    [Fact]
+    public void Nguoi_dung_dat_tay_thi_khong_bi_suy_lai()
+    {
+        var o = CommandLineOptions.Parse(["a.docx", "--lmstudio", "--chunk-tokens", "3000"]);
+
+        Assert.True(o.Pipeline.Chunking.TokenBudgetExplicit);
+        Assert.Equal(3000, o.Pipeline.Chunking.TokenBudget);
+    }
+
+    [Fact]
+    public void Khong_dat_tay_thi_de_ngo_cho_pipeline_suy()
+    {
+        var o = CommandLineOptions.Parse(["a.docx", "--lmstudio"]);
+
+        Assert.False(o.Pipeline.Chunking.TokenBudgetExplicit);
     }
 
     [Fact]

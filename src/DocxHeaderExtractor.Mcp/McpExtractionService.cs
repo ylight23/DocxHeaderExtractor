@@ -127,7 +127,7 @@ public sealed class McpExtractionService : IDisposable
             },
             // Giữ batch vừa đủ lớn để giảm số request nhưng không làm Qwen nhầm ID/cấp khi mỗi
             // ứng viên mang theo lân cận. Với context 4096, 5–6 ứng viên ổn định hơn 12.
-            Chunking = new ChunkingOptions { TokenBudget = chunk, MaxCandidatesPerChunk = 6 },
+            Chunking = BuildChunking(chunk),
             ReviewAllParagraphs = false,
             HighPrecisionMode = true,
             TrustStyles = true,
@@ -211,4 +211,12 @@ public sealed class McpExtractionService : IDisposable
     }
 
     public void Dispose() => _http.Dispose();
+
+    /// <summary>Tham số MCP là yêu cầu tường minh, nên khoá lại để pipeline không suy lại từ context.</summary>
+    private static ChunkingOptions BuildChunking(int chunkTokens)
+    {
+        var chunking = new ChunkingOptions { MaxCandidatesPerChunk = 6 };
+        chunking.SetExplicitTokenBudget(chunkTokens);
+        return chunking;
+    }
 }

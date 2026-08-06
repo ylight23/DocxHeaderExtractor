@@ -368,6 +368,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             });
         var llm = await GetModelAsync(ct);
         Log($"Mô hình sẵn sàng. Ngữ cảnh {llm.ContextSize} token, {llm.RuntimeDescription}.");
+        AdoptBackendContextBudget(llm);
 
         if (llm is LlamaHeaderExtractor && _options.Llama.ReusePromptPrefix)
             Log(llm.SharedPrefixTokens > 0
@@ -531,11 +532,15 @@ public sealed class HeaderExtractionPipeline : IDisposable
         if (criticIndexes.Count > 0)
         {
             var criticLines = NeutralDocumentViewSerializer.BuildLines(slim, _options.Extraction, criticIndexes);
+            // Lượt critic dùng CÙNG ngân sách khối với lượt phân loại. Trần cứng 3000 trước đây là
+            // khoản tốn kém lớn nhất trên tài liệu thật không có style Heading — nơi mọi ứng viên
+            // đều phải qua critic: đo trên công văn 344 đoạn, lượt phân loại chia 7 khối còn lượt
+            // critic chia 10, mỗi khối 280–350 s, tức riêng critic tốn nhiều hơn cả lượt chính.
             // Chụp lại danh sách heading tại thời điểm này: vòng lặp bên dưới sẽ sửa `accepted`,
             // còn anchor phải mô tả cùng một trạng thái cho mọi khối của lượt critic.
             var acceptedAtCritic = accepted.Values.ToList();
             var critic = await RunPassAsync(llm, criticLines,
-                Math.Min(_options.Chunking.TokenBudget, 3000),
+                _options.Chunking.TokenBudget,
                 Math.Min(_options.Chunking.MaxCandidatesPerChunk, 12),
                 _options.HighPrecisionMode ? "critic precision-first" : "phản biện model-only yếu",
                 null, ct, useCritic: true,
@@ -691,7 +696,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
         {
             var verifyLines = NeutralDocumentViewSerializer.BuildLines(slim, _options.Extraction, structureIndexes);
             var verification = await RunPassAsync(llm, verifyLines,
-                Math.Min(_options.Chunking.TokenBudget, 3000),
+                _options.Chunking.TokenBudget,
                 Math.Min(_options.Chunking.MaxCandidatesPerChunk, 16),
                 "xác minh Structure", null, ct);
             foreach (var index in structureIndexes)
@@ -935,6 +940,35 @@ public sealed class HeaderExtractionPipeline : IDisposable
     /// nó là mớm đáp án cho đúng cái prompt được giao nhiệm vụ đi phản bác.</item>
     /// </list>
     /// </summary>
+    /// <summary>
+    /// Lấy ngân sách khối từ context mà chính backend khai báo, thay cho hằng số đoán sẵn.
+    /// <para>
+    /// Chỉ áp cho backend RPC: bản GGUF cục bộ đã tự suy ngân sách từ context của nó trong
+    /// <see cref="LlamaOptions.ApplyRecommendedModelProfile"/>, còn nhánh RPC thì đang dùng hằng
+    /// 5000 — con số đo cho Qwen 7B chạy cục bộ với context 8192, rồi đem dùng cho mọi server.
+    /// LM Studio khai 16384 mà pipeline vẫn cắt theo 5000, tức chia tài liệu nhỏ hơn mức cần
+    /// trong khi mỗi khối là một lượt RPC.
+    /// </para>
+    /// <para>Người dùng đặt tay thì giữ nguyên; chỉ NÂNG, không tự hạ.</para>
+    /// </summary>
+    private void AdoptBackendContextBudget(IHeaderClassifier llm)
+    {
+        if (_options.Chunking.TokenBudgetExplicit) return;
+        if (_options.Backend is not (InferenceBackend.LmStudio or InferenceBackend.OpenRouter)) return;
+        if (llm.ContextSize <= 0) return;
+
+        var maxOutput = _options.Backend == InferenceBackend.LmStudio
+            ? _options.LmStudio.MaxOutputTokens
+            : _options.OpenRouter.MaxOutputTokens;
+        var derived = ChunkingOptions.DeriveTokenBudget(
+            llm.ContextSize, maxOutput, LlamaOptions.FixedPromptTokens);
+        if (derived <= _options.Chunking.TokenBudget) return;
+
+        Log($"Ngân sách khối theo context backend khai báo: {_options.Chunking.TokenBudget} → {derived} " +
+            $"token (context {llm.ContextSize}, đầu ra {maxOutput}, dự trữ prompt {LlamaOptions.FixedPromptTokens}).");
+        _options.Chunking.TokenBudget = derived;
+    }
+
     private static string BuildCriticAnchorContext(
         IEnumerable<HeadingRecord> accepted,
         SlimDocument slim,

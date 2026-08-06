@@ -103,7 +103,7 @@ public sealed class CommandLineOptions
 
                 case "--ctx": llama.ContextSize = uint.Parse(Next(a)); explicitContext = true; break;
                 case "--threads" or "-t": llama.Threads = int.Parse(Next(a)); break;
-                case "--chunk-tokens": o.Pipeline.Chunking.TokenBudget = int.Parse(Next(a)); explicitChunkTokens = true; break;
+                case "--chunk-tokens": o.Pipeline.Chunking.SetExplicitTokenBudget(int.Parse(Next(a))); explicitChunkTokens = true; break;
                 case "--chunk-candidates": o.Pipeline.Chunking.MaxCandidatesPerChunk = int.Parse(Next(a)); break;
                 case "--max-out": llama.MaxOutputTokens = int.Parse(Next(a)); break;
                 case "--overlap": o.Pipeline.Chunking.Overlap = int.Parse(Next(a)); break;
@@ -145,7 +145,7 @@ public sealed class CommandLineOptions
         {
             var chunkTokens = o.Pipeline.Chunking.TokenBudget;
             o.Pipeline.Chunking.UseRemoteProfile();
-            if (explicitChunkTokens) o.Pipeline.Chunking.TokenBudget = chunkTokens;
+            if (explicitChunkTokens) o.Pipeline.Chunking.SetExplicitTokenBudget(chunkTokens);
         }
 
         return o;
