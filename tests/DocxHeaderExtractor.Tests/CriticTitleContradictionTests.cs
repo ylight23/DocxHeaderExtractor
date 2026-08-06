@@ -6,9 +6,14 @@ namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
 /// Critic được phép bác heading, nhưng không được phép tự mâu thuẫn rồi xoá. Quan sát thực tế:
-/// một request critic trả document_title cho cả "II. THỰC LỰC CHIẾN ĐẤU", "1. Phòng không" và
-/// "2. Không quân" — ba tiêu đề chính trong một tài liệu là điều không tồn tại, mà cả ba đã bị
-/// xoá khỏi cây lẫn khỏi danh sách cần duyệt.
+/// một request critic trả document_title cho CẢ BA mục của một dãy "La Mã → số" — ba tiêu đề
+/// chính trong một tài liệu là điều không tồn tại, mà cả ba đã bị xoá khỏi cây lẫn khỏi danh
+/// sách cần duyệt.
+/// <para>
+/// Nội dung mẫu ở đây là văn bản trung tính dựng riêng cho test. Bản đầu chép nguyên tên đề mục
+/// từ tài liệu thật đã quan sát; điều mà test khoá là HÌNH DẠNG (dãy La Mã → số, in đậm, viết
+/// hoa), không phải chữ nghĩa — nên chép nội dung thật vào repo là rủi ro không đổi lấy gì.
+/// </para>
 /// </summary>
 public sealed class CriticTitleContradictionTests : IDisposable
 {
@@ -19,15 +24,15 @@ public sealed class CriticTitleContradictionTests : IDisposable
         "Dãy đề mục La Mã → số, đúng dạng critic hay gán nhầm là document_title",
     [
         new("BÁO CÁO NGÀY 14/01/2026", Bold: true, Caps: true, Center: true, SizePt: 14),
-        new("II. THỰC LỰC CHIẾN ĐẤU", 1, Bold: true, Caps: true, SizePt: 14),
-        new("Phần này tổng hợp thực lực theo từng quân chủng, kèm số liệu trực ban và tình trạng " +
-            "kỹ thuật của các đơn vị đang làm nhiệm vụ sẵn sàng chiến đấu."),
-        new("1. Phòng không", 2, Bold: true, SizePt: 14),
-        new("Số liệu trực ban của các đơn vị phòng không được tổng hợp theo ca trực trong ngày " +
-            "và đối chiếu với báo cáo của sở chỉ huy."),
-        new("2. Không quân", 2, Bold: true, SizePt: 14),
-        new("Các trung đoàn không quân duy trì lực lượng trực ban theo kế hoạch, số máy bay bảo " +
-            "đảm kỹ thuật giữ nguyên so với ngày trước."),
+        new("II. NĂNG LỰC SẢN XUẤT", 1, Bold: true, Caps: true, SizePt: 14),
+        new("Phần này tổng hợp năng lực theo từng phân xưởng, kèm số liệu vận hành và tình trạng " +
+            "kỹ thuật của các dây chuyền đang hoạt động."),
+        new("1. Phân xưởng cơ khí", 2, Bold: true, SizePt: 14),
+        new("Số liệu vận hành của các dây chuyền cơ khí được tổng hợp theo ca trong ngày " +
+            "và đối chiếu với báo cáo của bộ phận điều độ."),
+        new("2. Phân xưởng lắp ráp", 2, Bold: true, SizePt: 14),
+        new("Các tổ lắp ráp duy trì nhân lực theo kế hoạch, số thiết bị bảo đảm kỹ thuật giữ " +
+            "nguyên so với ngày trước."),
     ]);
 
     [Fact]
@@ -41,12 +46,12 @@ public sealed class CriticTitleContradictionTests : IDisposable
             Role = SemanticRole.DocumentTitle,
         }));
 
-        Assert.Contains(outline.Headings, h => h.Text.Contains("THỰC LỰC CHIẾN ĐẤU"));
-        Assert.Contains(outline.Headings, h => h.Text.Contains("Phòng không"));
-        Assert.Contains(outline.Headings, h => h.Text.Contains("Không quân"));
+        Assert.Contains(outline.Headings, h => h.Text.Contains("NĂNG LỰC SẢN XUẤT"));
+        Assert.Contains(outline.Headings, h => h.Text.Contains("Phân xưởng cơ khí"));
+        Assert.Contains(outline.Headings, h => h.Text.Contains("Phân xưởng lắp ráp"));
         // Giữ lại không có nghĩa là tin: chúng phải hiện ra như mục cần người xem lại.
         Assert.All(
-            outline.Headings.Where(h => h.Text.Contains("Phòng không") || h.Text.Contains("Không quân")),
+            outline.Headings.Where(h => h.Text.Contains("Phân xưởng cơ khí") || h.Text.Contains("Phân xưởng lắp ráp")),
             h => Assert.True(h.Disputed));
         Assert.Contains(log, line => line.Contains("document_title"));
     }

@@ -263,7 +263,7 @@ server tự chọn khi `/v1/models` chỉ trả đúng một model; nếu có nh
 Ví dụ nhắc Bionic sau khi tool xuất hiện:
 
 ```text
-Dùng extract_docx_headings cho C:\DocxHeaderExtractor\data\dung_test.docx,
+Dùng extract_docx_headings cho C:\DocxHeaderExtractor\samples\mau.docx,
 lấy jobId rồi gọi get_docx_extraction_result cho tới khi Completed; sau đó tóm tắt các mục
 requiresReview và không tự đoán nội dung ngoài kết quả tool.
 ```
