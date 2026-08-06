@@ -300,11 +300,12 @@ public class ModelProfileTests
     public void Qwen_profile_uses_8k_context_with_5k_document_budget()
     {
         var options = new LlamaOptions { ModelPath = "Qwen2.5-7B-Instruct-Q4_K_M.gguf" };
+        var chunking = new ChunkingOptions();
 
-        options.ApplyRecommendedModelProfile();
+        options.ApplyRecommendedModelProfile(chunking);
 
         Assert.Equal(8192u, options.ContextSize);
-        Assert.Equal(5000, options.ChunkTokenBudget);
+        Assert.Equal(5000, chunking.TokenBudget);
     }
 
     [Fact]
@@ -314,39 +315,41 @@ public class ModelProfileTests
         {
             ModelPath = "Qwen2.5-7B-Instruct-Q4_K_M.gguf",
             ContextSize = 6144,
-            ChunkTokenBudget = 3200,
         };
+        var chunking = new ChunkingOptions { TokenBudget = 3200 };
 
-        options.ApplyRecommendedModelProfile();
+        options.ApplyRecommendedModelProfile(chunking);
 
         Assert.Equal(6144u, options.ContextSize);
-        Assert.Equal(3200, options.ChunkTokenBudget);
+        Assert.Equal(3200, chunking.TokenBudget);
     }
 
     [Fact]
     public void Llama_3_2_profile_raises_invalid_4k_context_to_8k()
     {
         var options = new LlamaOptions { ModelPath = "Llama-3.2-3B-Instruct-Q4_K_M.gguf" };
+        var chunking = new ChunkingOptions();
 
-        options.ApplyRecommendedModelProfile();
+        options.ApplyRecommendedModelProfile(chunking);
 
         Assert.Equal(8192u, options.ContextSize);
-        Assert.Equal(2200, options.ChunkTokenBudget);
+        Assert.Equal(2200, chunking.TokenBudget);
         Assert.True(LlamaOptions.RequiredContextSize(
-            options.ChunkTokenBudget, options.MaxOutputTokens) <= options.ContextSize);
+            chunking.TokenBudget, options.MaxOutputTokens) <= options.ContextSize);
     }
 
     [Fact]
     public void Unknown_4k_model_keeps_context_and_fits_chunk_budget()
     {
         var options = new LlamaOptions { ModelPath = "unknown-model.gguf" };
+        var chunking = new ChunkingOptions();
 
-        options.ApplyRecommendedModelProfile();
+        options.ApplyRecommendedModelProfile(chunking);
 
         Assert.Equal(4096u, options.ContextSize);
-        Assert.Equal(1796, options.ChunkTokenBudget);
+        Assert.Equal(1796, chunking.TokenBudget);
         Assert.Equal(options.ContextSize,
-            LlamaOptions.RequiredContextSize(options.ChunkTokenBudget, options.MaxOutputTokens));
+            LlamaOptions.RequiredContextSize(chunking.TokenBudget, options.MaxOutputTokens));
     }
 }
 

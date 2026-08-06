@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.Chunking;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 
@@ -23,13 +24,14 @@ public sealed record Defaults(
     public static Defaults Current()
     {
         var llama = new LlamaOptions();
+        var chunking = new ChunkingOptions();
         var extraction = new ExtractionOptions();
         var gpu = HasGpuBackend();
         var lmStudio = LmStudioOptions.FromEnvironment();
         return new Defaults(
-            ChunkTokens: llama.ChunkTokenBudget,
+            ChunkTokens: chunking.TokenBudget,
             // 6 là mức cân bằng giữa số request và độ chính xác ID/cấp trên Qwen 7B.
-            ChunkCandidates: llama.MaxCandidatesPerChunk,
+            ChunkCandidates: chunking.MaxCandidatesPerChunk,
             Threshold: extraction.CandidateThreshold,
             // Đo được: bật luật từ ngữ không đổi kết quả trên cả hai bộ test, nhưng luật loại
             // chú thích có thể chém nhầm tiêu đề dạng "Bảng 2 cột dữ liệu" mà không cho gỡ.

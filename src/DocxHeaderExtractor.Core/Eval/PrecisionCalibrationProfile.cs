@@ -72,9 +72,9 @@ public sealed class PrecisionCalibrationProfile
         $"includeTables={o.Extraction.IncludeTables}",
         $"includeContext={o.Extraction.IncludeFollowingContext}",
         $"ctx={o.Llama.ContextSize}",
-        $"chunkTokens={o.Llama.ChunkTokenBudget}",
-        $"chunkCandidates={o.Llama.MaxCandidatesPerChunk}",
-        $"overlap={o.Llama.ChunkOverlap}",
+        $"chunkTokens={o.Chunking.TokenBudget}",
+        $"chunkCandidates={o.Chunking.MaxCandidatesPerChunk}",
+        $"overlap={o.Chunking.Overlap}",
         $"grammar={o.Llama.GrammarMode}",
         $"temperature={o.Llama.Temperature.ToString("R", CultureInfo.InvariantCulture)}",
         $"threshold={o.Extraction.CandidateThreshold.ToString("R", CultureInfo.InvariantCulture)}");

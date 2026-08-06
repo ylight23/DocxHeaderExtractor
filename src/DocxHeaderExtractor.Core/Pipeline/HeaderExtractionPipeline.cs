@@ -19,6 +19,13 @@ public enum InferenceBackend
 public sealed class PipelineOptions
 {
     public ExtractionOptions Extraction { get; set; } = new();
+
+    /// <summary>
+    /// Cách cắt khối — thuộc pipeline, không thuộc backend. Xem <see cref="ChunkingOptions"/> để
+    /// biết bốn lỗi đã đo được hồi ba giá trị này còn nằm trong <see cref="LlamaOptions"/>.
+    /// </summary>
+    public ChunkingOptions Chunking { get; set; } = new();
+
     public LlamaOptions Llama { get; set; } = new();
     public OpenRouterOptions OpenRouter { get; set; } = OpenRouterOptions.FromEnvironment();
     public LmStudioOptions LmStudio { get; set; } = LmStudioOptions.FromEnvironment();
@@ -124,6 +131,23 @@ public sealed class PipelineOptions
     /// <summary>Profile sinh từ `dhx eval ... --calibration-out`; null = evidence chưa calibration.</summary>
     public string? CalibrationProfilePath { get; set; } =
         Environment.GetEnvironmentVariable("DHX_CALIBRATION_PROFILE");
+
+    /// <summary>
+    /// Áp profile của model GGUF lên NGÂN SÁCH THẬT mà pipeline dùng để chia khối, rồi chép sang
+    /// backend cục bộ để nó tự nới context cho vừa.
+    /// <para>
+    /// Phải gọi trước khi chia khối. Bản đầu của refactor tách chunking để
+    /// <c>LlamaHeaderExtractor.LoadAsync</c> tự áp profile lên một <see cref="ChunkingOptions"/>
+    /// TẠM — cú nâng "qwen thì 2200 → 5000" rơi vào vật thể tạm rồi bị vứt, pipeline vẫn chia khối
+    /// bằng 2200. Đo được ngay ở dòng log "ngân sách … token thật/khối": 5000 tụt về 2200.
+    /// </para>
+    /// </summary>
+    public void PrepareLocalModelProfile()
+    {
+        if (DisableLlm || Backend != InferenceBackend.Local) return;
+        if (string.IsNullOrWhiteSpace(Llama.ModelPath)) return;
+        Llama.ApplyRecommendedModelProfile(Chunking);
+    }
 }
 
 public sealed class HeaderExtractionPipeline : IDisposable
@@ -350,13 +374,13 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 ? $"Tái dùng prefill: {llm.SharedPrefixTokens} token phần chung nạp một lần cho mọi khối."
                 : "Không cắt được prompt thành phần chung — quay về nạp lại từng khối.");
 
-        var passA = await RunPassAsync(llm, lines, _options.Llama.ChunkTokenBudget,
-            _options.Llama.MaxCandidatesPerChunk, _options.TwoPass ? "lượt 1" : null, shouldAsk, ct);
+        var passA = await RunPassAsync(llm, lines, _options.Chunking.TokenBudget,
+            _options.Chunking.MaxCandidatesPerChunk, _options.TwoPass ? "lượt 1" : null, shouldAsk, ct);
 
         // Lượt 2 cắt khối nhỏ hơn hẳn ⇒ mép khối rơi vào chỗ khác, mỗi ứng viên có lân cận khác.
         var passB = _options.TwoPass
-            ? await RunPassAsync(llm, lines, Math.Max(400, _options.Llama.ChunkTokenBudget / 2),
-                Math.Max(4, _options.Llama.MaxCandidatesPerChunk / 2), "lượt 2", shouldAsk, ct)
+            ? await RunPassAsync(llm, lines, Math.Max(400, _options.Chunking.TokenBudget / 2),
+                Math.Max(4, _options.Chunking.MaxCandidatesPerChunk / 2), "lượt 2", shouldAsk, ct)
             : null;
 
         var accepted = new Dictionary<int, HeadingRecord>();
@@ -511,8 +535,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // còn anchor phải mô tả cùng một trạng thái cho mọi khối của lượt critic.
             var acceptedAtCritic = accepted.Values.ToList();
             var critic = await RunPassAsync(llm, criticLines,
-                Math.Min(_options.Llama.ChunkTokenBudget, 3000),
-                Math.Min(_options.Llama.MaxCandidatesPerChunk, 12),
+                Math.Min(_options.Chunking.TokenBudget, 3000),
+                Math.Min(_options.Chunking.MaxCandidatesPerChunk, 12),
                 _options.HighPrecisionMode ? "critic precision-first" : "phản biện model-only yếu",
                 null, ct, useCritic: true,
                 anchorsFor: asked => BuildCriticAnchorContext(acceptedAtCritic, slim, asked));
@@ -667,8 +691,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
         {
             var verifyLines = NeutralDocumentViewSerializer.BuildLines(slim, _options.Extraction, structureIndexes);
             var verification = await RunPassAsync(llm, verifyLines,
-                Math.Min(_options.Llama.ChunkTokenBudget, 3000),
-                Math.Min(_options.Llama.MaxCandidatesPerChunk, 16),
+                Math.Min(_options.Chunking.TokenBudget, 3000),
+                Math.Min(_options.Chunking.MaxCandidatesPerChunk, 16),
                 "xác minh Structure", null, ct);
             foreach (var index in structureIndexes)
                 if (accepted.TryGetValue(index, out var heading))
@@ -711,7 +735,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             return;
         }
 
-        var batchSize = Math.Clamp(_options.Llama.MaxCandidatesPerChunk, 6, 32);
+        var batchSize = Math.Clamp(_options.Chunking.MaxCandidatesPerChunk, 6, 32);
         const int anchorCount = 6;
 
         for (var start = 0; start < askable.Count; start += batchSize)
@@ -766,7 +790,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
         Func<string, int>? countTokens = llm is LlamaHeaderExtractor local ? local.CountTokens : null;
 
         var chunks = SlimXmlChunker.Split(
-            lines, chunkTokens, _options.Llama.ChunkOverlap, maxCandidatesPerChunk, shouldAsk,
+            lines, chunkTokens, _options.Chunking.Overlap, maxCandidatesPerChunk, shouldAsk,
             countTokens);
         var prefix = passLabel is null ? "" : passLabel + " — ";
         var unit = countTokens is null ? "token ước lượng" : "token thật";
@@ -1015,6 +1039,12 @@ public sealed class HeaderExtractionPipeline : IDisposable
     private async Task<IHeaderClassifier> GetModelAsync(CancellationToken ct)
     {
         if (_model is not null) return _model;
+
+        // Profile của model (ví dụ Qwen 7B dùng ngân sách 5K) phải áp lên CHÍNH ngân sách pipeline
+        // dùng để chia khối, không phải lên một bản sao. Sau đó backend cục bộ tự nới context.
+        _options.PrepareLocalModelProfile();
+        _options.Llama.ChunkTokenBudget = _options.Chunking.TokenBudget;
+
         _model = _options.Backend switch
         {
             InferenceBackend.OpenRouter => OpenRouterHeaderExtractor.CreateOwned(_options.OpenRouter),
