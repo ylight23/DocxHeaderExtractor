@@ -129,8 +129,14 @@ public sealed class SlimParagraph
     /// Đoạn thuộc mục lục / danh mục hình bảng: nội dung nằm trong w:hyperlink trỏ tới
     /// neo _Toc… hoặc _heading…, hoặc dùng style TOC1..TOC9. Đây là tham chiếu tới tiêu đề,
     /// bản thân nó không phải tiêu đề.
+    /// <para>
+    /// <c>set</c> chứ không <c>init</c> vì mục lục GÕ TAY không có cả hai dấu hiệu trên; một lượt
+    /// hậu xử lý theo hình dạng (<c>MarkTypedTableOfContentsRuns</c>) bổ sung chúng sau khi đã đọc
+    /// xong toàn bộ đoạn — nhận diện theo dãy chứ không theo từng đoạn rời nên không thể tính lúc
+    /// dựng.
+    /// </para>
     /// </summary>
-    public bool InTableOfContents { get; init; }
+    public bool InTableOfContents { get; set; }
 
     /// <summary>Chỉ số section (tăng sau mỗi w:sectPr).</summary>
     public int SectionIndex { get; init; }
