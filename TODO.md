@@ -107,7 +107,17 @@ cùng lúc. Không được gộp với bất kỳ thay đổi nào khác.
 
 </details>
 
-## 3b. Cấp theo chuỗi đánh số khi style bất nhất theo phần — *lỗi lớn nhất còn lại* (§16)
+## 3b. ~~Cấp theo chuỗi đánh số khi style bất nhất theo phần~~ — **XONG một phần (§17)**
+
+> **Trạng thái.** Đã thêm vế thứ ba cho `StyleTrust`: đối chiếu cấp style với ĐỘ SÂU của chuỗi đánh
+> số gõ tay. Khoá luận thật **đúng cấp 26,5% → 37,2%**; P/R/F1 không đổi; bench 10 tài liệu giữ
+> 10/10 · cấp 100%. 309/309 test xanh, đã kiểm đột biến.
+>
+> **Còn lại:** 37,2% vẫn thấp vì luật chỉ chạm được đoạn CÓ chuỗi đánh số. `MỞ ĐẦU`, `KẾT LUẬN`,
+> `Tiểu kết chương 1` không có số để bám nên cấp vẫn theo style. Hướng tiếp: suy cấp cho mục không
+> đánh số theo vị trí giữa hai mục có đánh số (kẹp giữa), chưa đo.
+
+<details><summary>Ghi chép gốc của mục này</summary>
 
 Trên khoá luận thật, đúng cấp **26,5%** và chuỗi mục 2 + mục 3 **không chạm tới nó**: `StyleTrust`
 chấm tài liệu này là "5 cấp riêng biệt ⇒ quyền gán cấp GIỮ", và chấm ĐÚNG theo định nghĩa hiện có.
@@ -125,6 +135,8 @@ nên nhìn được thứ thống kê mức tài liệu bỏ sót.
 
 **Rủi ro đã biết:** §5 ghi thiếu chốt "cấu trúc đã khai thì không suy lại" từng kéo đúng cấp
 100% → 87,2%. Nới nguồn quyết định cấp là đụng đúng chỗ đó.
+
+</details>
 
 ## 4. Đáp án có người xác nhận — *thắt cổ chai của mọi thứ phía sau*
 

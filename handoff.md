@@ -1302,3 +1302,48 @@ style đã khai cấp và `LevelTrusted` thì đúng.
 Phép đo cần làm: khi ĐỘ SÂU của chuỗi đánh số gõ tay mâu thuẫn có hệ thống với cấp style, ưu tiên
 chuỗi đánh số. Đây là tín hiệu **mức đoạn** nên nó nhìn được thứ mà thống kê mức tài liệu mù. Chưa
 làm, và phải đo riêng — nó đổi nguồn quyết định cấp cho mọi tài liệu có đánh số gõ tay.
+
+## 17. Cấp theo độ sâu đánh số — vế đối chiếu độc lập đầu tiên của StyleTrust
+
+TODO 3b, và nó là bản sửa đầu tiên nhích được đúng cấp trên tài liệu thật.
+
+### 17.1 Vì sao hai vế cũ mù
+
+`StyleTrust` đo *số cấp riêng biệt* và *có bỏ cấp giữa chừng không*. Cả hai đều **chỉ soi chính
+style**. Khoá luận thật khoẻ mạnh theo cả hai — dùng đủ 5 cấp, liên tục — nên `LevelTrusted` đúng và
+toàn bộ chuỗi mục 2 + mục 3 không bao giờ kích hoạt (§16.1).
+
+Vế mới đối chiếu style với một nguồn **ĐỘC LẬP**: độ sâu của chuỗi đánh số người soạn gõ
+(`1.1.2.` ⇒ sâu 3). Đây là thứ duy nhất trong ba vế không tự soi mình.
+
+| | |
+|---|---|
+| Mẫu tối thiểu | 8 đoạn vừa có style vừa có đường dẫn số |
+| Ngưỡng bất đồng | > 1/3 |
+
+Ngưỡng 1/3 vì lệch lác đác là chuyện thường (một mục đánh số sai, một mục cố ý nâng cấp); một phần
+ba trở lên thì đó là *cách dùng style*, không phải lỗi lẻ.
+
+### 17.2 Đo được
+
+| | Trước | Sau |
+|---|--:|--:|
+| Khoá luận thật — **đúng cấp** | 26,5% | **37,2%** |
+| Khoá luận thật — P / R / F1 | 94,2 / 86,3 / 90 | **không đổi** |
+| Bench 10 tài liệu | 10/10 · cấp 100% | **10/10 · cấp 100%** |
+
+Phán quyết trên khoá luận đổi từ *"quyền gán cấp GIỮ"* sang *"HẠ"*, và dòng mô tả nay in kèm tỉ lệ
+bất đồng để lần sau không phải đoán vì sao.
+
+**Chưa đủ.** 37,2% vẫn thấp: luật chỉ chạm được đoạn CÓ chuỗi đánh số. `MỞ ĐẦU`, `KẾT LUẬN`,
+`Tiểu kết chương 1` không có số nào để bám, và cấp của chúng vẫn theo style.
+
+### 17.3 Fixture phải cô lập đúng vế đang kiểm
+
+Bản đầu của test dùng `Heading1` + `Heading3` cho tài liệu bất nhất — nhưng như thế là **bỏ cấp 2**,
+tức kích hoạt vế CŨ (`SkipsLevels`), và test xanh mà không chạm tới vế mới. Phải dựng lại cho dùng
+liên tục cả ba cấp, bất nhất nằm ở chỗ cùng độ sâu 2 mà ba mục mang `Heading2` còn sáu mục mang
+`Heading3` — đúng hình dạng khoá luận thật.
+
+Đây là lần thứ ba trong hai phiên một fixture xanh vì **không chạm tới chốt** chứ không phải vì chốt
+đúng (xem §14.4, §15.4). Ba lần đều chỉ lộ ra nhờ kiểm đột biến.

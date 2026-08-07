@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.Pipeline;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.OpenXmlLayer;
@@ -23,12 +24,28 @@ public static class StyleTrustAudit
         var skips = levels.Count > 1 &&
                     Enumerable.Range(levels.Min(), levels.Max() - levels.Min() + 1).Any(l => !levels.Contains(l));
 
+        // Vế thứ ba: đối chiếu style với một nguồn cấp ĐỘC LẬP — độ sâu của chuỗi đánh số người
+        // soạn gõ ("1.1.2." ⇒ sâu 3). Hai vế trên chỉ soi chính style nên chúng mù với kiểu hỏng
+        // mà §16 đo được: cùng một style mang hai độ sâu khác nhau ở hai phần của cùng tài liệu,
+        // trong khi số cấp riêng biệt và tính liên tục đều khoẻ mạnh.
+        var numbered = 0;
+        var disagree = 0;
+        foreach (var p in styled)
+        {
+            var path = NumberingAudit.ParseArabicPath(NumberingAudit.TextWithNumberLabel(p, p.Text));
+            if (path is not { Length: > 0 }) continue;
+            numbered++;
+            if (path.Length != HeadingHeuristics.BuiltInLevel(p)!.Value) disagree++;
+        }
+
         return new StyleTrust(
             styled.Count,
             suspect,
             levels.Count,
             skips,
-            nonEmpty == 0 ? 0 : (double)styled.Count / nonEmpty);
+            nonEmpty == 0 ? 0 : (double)styled.Count / nonEmpty,
+            numbered,
+            disagree);
     }
 
     /// <summary>
