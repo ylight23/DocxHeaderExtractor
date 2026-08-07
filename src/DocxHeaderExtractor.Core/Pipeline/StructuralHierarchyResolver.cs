@@ -8,11 +8,17 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// </summary>
 public static class StructuralHierarchyResolver
 {
-    public static int Apply(IList<HeadingRecord> headings, SlimDocument document)
+    /// <param name="respectStyleTrust">
+    /// Cờ <c>--style-trust</c>. Mặc định FALSE để giữ đúng hợp đồng của cờ: StyleTrust luôn được ĐO
+    /// và ghi vào <see cref="SlimDocument.StyleTrust"/> để báo cáo, nhưng chỉ được phép ĐỔI HÀNH VI
+    /// khi người dùng bật. Chỗ tương đương ở <c>HeaderExtractionPipeline</c> cũng kiểm cờ như vậy.
+    /// </param>
+    public static int Apply(IList<HeadingRecord> headings, SlimDocument document,
+        bool respectStyleTrust = false)
     {
         var ordered = headings.OrderBy(h => h.Index).ToList();
         var paths = ordered.ToDictionary(h => h.Index, h => PathOf(h, document));
-        var tiers = SignatureTiers(ordered, document);
+        var tiers = SignatureTiers(ordered, document, respectStyleTrust);
         var changed = 0;
 
         for (var i = 0; i < ordered.Count; i++)
@@ -23,7 +29,7 @@ public static class StructuralHierarchyResolver
             // Cùng một chốt mà nhánh chữ ký đã có (xem SignatureTiers): cấu trúc đã khai cấp thì
             // không suy lại. Đoạn vẫn nằm trong `paths` vì nó là NEO cha/anh em cho các mục khác —
             // chỉ riêng việc GHI cấp của chính nó là bị cấm.
-            if (Declared(current, document)) continue;
+            if (Declared(current, document, respectStyleTrust)) continue;
 
             if (path is null)
             {
@@ -68,7 +74,7 @@ public static class StructuralHierarchyResolver
     /// </para>
     /// </summary>
     private static Dictionary<int, int> SignatureTiers(
-        IReadOnlyList<HeadingRecord> ordered, SlimDocument document)
+        IReadOnlyList<HeadingRecord> ordered, SlimDocument document, bool respectStyleTrust)
     {
         var result = new Dictionary<int, int>();
         var rank = new Dictionary<string, int>(StringComparer.Ordinal);
@@ -83,7 +89,7 @@ public static class StructuralHierarchyResolver
             // xuống 87,2%. Lý do kép: vừa vi phạm thứ tự quyền lực (cấu trúc trên suy luận), vừa
             // xếp hạng sai vì "Chương 1." không phân tích được nên chữ ký đầu tiên gặp lại là
             // Arabic:2 của "1.1." và nó bị coi là tầng ngoài cùng.
-            if (Declared(heading, document)) continue;
+            if (Declared(heading, document, respectStyleTrust)) continue;
 
             if (NumberingAudit.ParseParagraph(paragraph, heading.Text) is not { } token) continue;
 
@@ -140,11 +146,28 @@ public static class StructuralHierarchyResolver
     /// <summary>
     /// Đoạn đã được chính tài liệu khai cấp: danh sách đa cấp gắn style Heading N
     /// (<c>w:lvl/w:pStyle</c>) hoặc style Heading built-in trên chính đoạn. Đây là hai nguồn đứng
-    /// trên suy luận trong thứ tự quyền lực của <c>HeaderExtractionPipeline.ResolveLevel</c>.
+    /// trên suy luận trong thứ tự quyền lực của <c>HeaderExtractionPipeline.ResolveLevel</c> — nếu rồi thì không suy lại (§6.2).
+    /// <para>
+    /// NGOẠI LỆ: style Heading chỉ được tính là "đã khai" khi nó THẬT SỰ mang thông tin cấp.
+    /// <c>StyleTrust.LevelTrusted</c> sai nghĩa là mọi đề mục dùng chung một cấp style hoặc con số
+    /// trong tên style không phải độ sâu — lúc đó coi nó là tuyên bố cấp thì chốt này khoá luôn bộ
+    /// suy cấp tất định duy nhất đọc được chuỗi đánh số.
+    /// </para>
+    /// <para>
+    /// ĐO ĐƯỢC (§13.4): trên <c>10-cap-style-thoai-hoa</c>, cả 9 đề mục mang <c>Heading2</c> nên
+    /// chốt này đứng chặn, và nhánh <c>LevelTrusted</c> chuyển quyền cho mô hình — vốn trả về đúng
+    /// cấp 2 cho tất cả. Danh sách đa cấp (<c>NumberingStyleLevel</c>) thì KHÔNG nới: nó khai cấp
+    /// bằng cấu hình một lần cho cả tài liệu, không nhiễm lỗi copy định dạng như style.
+    /// </para>
     /// </summary>
-    private static bool Declared(HeadingRecord heading, SlimDocument document) =>
-        document.ByIndex(heading.Index)
-            is { NumberingStyleLevel: not null } or { HasBuiltInHeadingStyle: true };
+    private static bool Declared(HeadingRecord heading, SlimDocument document, bool respectStyleTrust)
+    {
+        var p = document.ByIndex(heading.Index);
+        if (p is { NumberingStyleLevel: not null }) return true;
+        if (p is not { HasBuiltInHeadingStyle: true }) return false;
+        if (!respectStyleTrust) return true;
+        return document.StyleTrust is null || document.StyleTrust.LevelTrusted;
+    }
 
     private static int[]? PathOf(HeadingRecord heading, SlimDocument document)
     {

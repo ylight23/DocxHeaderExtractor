@@ -10,15 +10,32 @@ public enum NumberKind
     Arabic,
     Roman,
     Letter,
+
+    /// <summary>
+    /// "Nhãn + số": <c>Chương 1.</c>, <c>PHẦN I.</c>, <c>Abschnitt 4.</c>. Nhãn là chữ đọc được từ
+    /// chính tài liệu, KHÔNG phải danh sách từ khoá cài sẵn — cùng nguyên tắc với
+    /// <c>HeadingHeuristics.LabelledNumberPrefixRx</c> đã thay <c>KeywordPrefixRx</c> ở §3.2.
+    /// </summary>
+    Labelled,
 }
 
 /// <summary>
 /// Ký hiệu đánh số đã tách: <c>3.1.</c> → Arabic, Depth 2, Value 1. <c>IV.</c> → Roman, Depth 1, Value 4.
 /// </summary>
-public readonly record struct NumberToken(NumberKind Kind, int Depth, int Value)
+public readonly record struct NumberToken(NumberKind Kind, int Depth, int Value, string Label = "")
 {
-    /// <summary>Hai tiêu đề cùng chữ ký thì phải cùng cấp — đó là bất biến mà kiểm tra này dựa vào.</summary>
-    public string Signature => $"{Kind}:{Depth}";
+    /// <summary>
+    /// Hai tiêu đề cùng chữ ký thì phải cùng cấp — đó là bất biến mà kiểm tra này dựa vào.
+    /// <para>
+    /// Với <see cref="NumberKind.Labelled"/>, NHÃN phải nằm trong chữ ký. Nếu không, <c>Chương 1.</c>
+    /// và <c>1.</c> trần cùng ra <c>Arabic:1</c> và <c>SignatureTiers</c> gộp hai tầng khác nhau làm
+    /// một. Trước khi có kind này, <c>PHẦN I</c> nằm trên <c>1.</c> đúng chỉ vì TÌNH CỜ hai loại số
+    /// khác nhau (La Mã vs Ả Rập); với <c>Chương 1.</c> và <c>1.1.</c> thì sự tình cờ đó không có.
+    /// </para>
+    /// </summary>
+    public string Signature => Kind == NumberKind.Labelled
+        ? $"Labelled({Label}):{Depth}"
+        : $"{Kind}:{Depth}";
 }
 
 /// <summary>Một điểm đáng ngờ do hậu kiểm phát hiện, kèm các đoạn liên quan.</summary>
@@ -58,8 +75,10 @@ public static class NumberingAudit
     // Chỉ riêng mẫu số Ả Rập là giữ giống hệt nhau — lệch ở đó thì hậu kiểm sẽ nói về những mục mà
     // tầng chấm điểm chưa từng thấy.
     //
-    // KHÔNG có mẫu nào tương ứng LabelledNumberPrefixRx ở đây: "Chương 1. Tổng quan" không phân
-    // tích được thành token. Hệ quả đã đo được nằm ở StructuralHierarchyResolver.SignatureTiers.
+    // Mẫu "nhãn + số" ĐÃ CÓ (LabelledRx) từ TODO mục 3. Bản ở đây HẸP hơn bên HeadingHeuristics,
+    // đúng theo hợp đồng ghi trên: audit sai theo hướng hẹp. Cụ thể là đòi dấu ngắt tường minh và
+    // đòi phần còn lại bắt đầu bằng CHỮ — nếu không, "Bảng 1.2 Đối chiếu…" sẽ tách thành nhãn
+    // "Bảng" + số 1 và hậu kiểm đi báo thiếu những mục không tồn tại.
 
     /// <summary>
     /// <c>1.</c>, <c>3.1.</c>, <c>2.3.4)</c>, kể cả <c>1.MUC</c> thiếu dấu cách.
@@ -81,6 +100,14 @@ public static class NumberingAudit
     // Điều này loại các dòng số liệu kiểu "A: 04, B: 04" hoặc "1: 03/04" mà không cần
     // hardcode tên trường. Hai chữ cái liên tiếp vẫn chấp nhận viết tắt tổng quát.
     private static readonly Regex TitleWordRx = new(@"\p{L}{2,}", RegexOptions.Compiled);
+
+    /// <summary>
+    /// <c>Chương 1. Tổng quan</c>, <c>PHẦN I. Cơ sở</c>. Nhãn 2–12 chữ cái bắt đầu bằng chữ hoa,
+    /// rồi số Ả Rập hoặc La Mã, rồi dấu ngắt, rồi phần tên bắt đầu bằng CHỮ.
+    /// </summary>
+    private static readonly Regex LabelledRx = new(
+        @"^\s*(\p{Lu}[\p{L}]{1,11})\s+(\d{1,3}|[IVXLCDM]{1,7})\s*[\.\):\-–]\s*(\p{L}.*)$",
+        RegexOptions.Compiled);
 
     /// <summary>
     /// Chạy hậu kiểm, đánh dấu <see cref="HeadingRecord.Disputed"/> cho các dòng lệch và trả về
@@ -266,6 +293,17 @@ public static class NumberingAudit
             if (c is >= 'A' and <= 'Z') return new NumberToken(NumberKind.Letter, 1, c - 'A' + 1);
         }
 
+        // Sau cùng: ba mẫu trên đều bắt đầu bằng chính ký hiệu số nên không thể va vào "nhãn + số".
+        if (LabelledRx.Match(text) is { Success: true } labelled && HasTitleRemainder(labelled, 3))
+        {
+            var label = labelled.Groups[1].Value.ToLowerInvariant();
+            var numeral = labelled.Groups[2].Value;
+            if (int.TryParse(numeral, out var labelledValue))
+                return new NumberToken(NumberKind.Labelled, 1, labelledValue, label);
+            if (RomanToInt(numeral) is { } labelledRoman)
+                return new NumberToken(NumberKind.Labelled, 1, labelledRoman, label);
+        }
+
         return null;
     }
 
@@ -305,8 +343,20 @@ public static class NumberingAudit
         return path;
     }
 
-    private static bool HasTitleRemainder(Match match) =>
-        match.Groups.Count > 2 && TitleWordRx.IsMatch(match.Groups[2].Value);
+    private static bool HasTitleRemainder(Match match) => HasTitleRemainder(match, 2);
+
+    /// <summary>
+    /// Phần tên nằm ở nhóm nào là tuỳ mẫu. Ba mẫu số nguyên thuỷ đặt nó ở nhóm 2; mẫu "nhãn + số"
+    /// có thêm nhóm nhãn nên phần tên lùi xuống nhóm 3.
+    /// <para>
+    /// Chốt này suýt lọt: gọi bản mặc định cho <c>LabelledRx</c> thì nhóm 2 là CHỮ SỐ, và
+    /// <c>TitleWordRx</c> (≥2 chữ cái) khớp <c>II</c> nhưng không khớp <c>I</c> — nên
+    /// <c>PHẦN I.</c> trượt còn <c>PHẦN II.</c> lọt, hai mục cùng dạng ra hai chữ ký khác nhau.
+    /// <c>SignatureTierTests</c> bắt được đúng ca đó.
+    /// </para>
+    /// </summary>
+    private static bool HasTitleRemainder(Match match, int titleGroup) =>
+        match.Groups.Count > titleGroup && TitleWordRx.IsMatch(match.Groups[titleGroup].Value);
 
     /// <summary>Trả null khi chuỗi không phải số La Mã hợp lệ (vd "IIII", "VV").</summary>
     private static int? RomanToInt(string s)

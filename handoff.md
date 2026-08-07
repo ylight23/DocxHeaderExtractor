@@ -1123,3 +1123,72 @@ xong vẫn không có token để suy.
   thật không chia sẻ được.
 - **Con số bench mới**: `--style-trust` cho P 100% · R 100% · F1 100% · đúng cấp 88,5% · **8/10**;
   không cờ cho P 94,5% · F1 97,2% · 7/10. Chênh lệch đến từ §12, không phải từ mục này.
+
+## 14. "Chương 1." đọc được — bench đạt tuyệt đối toàn phần
+
+TODO mục 3, và nó gỡ nốt chỗ tắc mà §13.4 chỉ ra. Hai thay đổi TÁCH BẠCH, đo riêng từng cái.
+
+### 14.1 Thêm `NumberKind.Labelled`
+
+`Parse` trước đây chỉ có mẫu Ả Rập / La Mã / chữ cái, nên `Chương 1. Tổng quan` không sinh ra
+`NumberToken` — lý do gốc của bug 87,2% ở §5, lâu nay *vá bằng chốt* chứ chưa *sửa*.
+
+Quyết định thiết kế đáng nhất là **chữ ký**. `PHẦN I` nằm trên `1.` đúng, nhưng đúng chỉ vì TÌNH CỜ
+hai loại số khác nhau (La Mã vs Ả Rập). Với `Chương 1.` và `1.1.` thì sự tình cờ đó không có: nếu
+`Chương 1.` ra `Arabic:1` thì nó **trùng chữ ký với `1.` trần** và `SignatureTiers` gộp hai tầng
+khác nhau làm một. Nên nhãn phải nằm trong chữ ký — `Labelled(chương):1`. Nhãn đọc từ chính tài
+liệu, không phải danh sách cài sẵn, đúng nguyên tắc §3.2 đã dùng khi bỏ `KeywordPrefixRx`.
+
+Mẫu ở đây **hẹp hơn** `HeadingHeuristics.LabelledNumberPrefixRx`, theo đúng hợp đồng ghi ở đầu file:
+đòi dấu ngắt tường minh và đòi phần còn lại bắt đầu bằng CHỮ. Thiếu vế sau thì
+`Bảng 1.2 Đối chiếu…` tách thành nhãn "Bảng" + số 1 và hậu kiểm đi báo thiếu những mục không tồn tại.
+
+**Đo riêng vế này** (không cờ): bench đúng cấp 88,5% → **90,4%**, tuyệt đối 7/10 → **8/10**. Nhỏ,
+dương, không hồi quy — đúng kỳ vọng, vì phần lớn tài liệu bench có style khai cấp nên `Declared`
+vẫn chặn.
+
+### 14.2 Nới `Declared` để tôn trọng `LevelTrusted`
+
+Style chỉ được tính là "đã khai cấp" khi nó THẬT SỰ mang thông tin cấp. Danh sách đa cấp
+(`NumberingStyleLevel`) thì **không nới**: nó khai cấp bằng cấu hình một lần cho cả tài liệu, không
+nhiễm lỗi copy định dạng như style.
+
+| Bench 10 tài liệu, có `--style-trust` | Đúng cấp | Tuyệt đối |
+|---|--:|--:|
+| trước | 88,5% | 8/10 |
+| **sau** | **100%** | **10/10** |
+
+`10-cap-style-thoai-hoa` đi từ **44,4% → 100%**. Lần đầu bench đạt tuyệt đối toàn phần:
+**P 100% · R 100% · F1 100% · đúng cấp 100% · 10/10**.
+
+### 14.3 Một lỗi của chính tôi, và vì sao nó khó thấy
+
+Bản đầu của §14.2 móc `Declared` thẳng vào `document.StyleTrust` mà **quên kiểm cờ**
+`--style-trust`. Nhánh mặc định vì thế cũng lên 100% — trông như một chiến thắng lớn hơn.
+
+Cái bẫy tinh vi hơn một lỗi cờ thường: `StyleTrust` **luôn được đo** và ghi vào `SlimDocument` để
+báo cáo, kể cả khi cờ tắt. Nên đọc nó mà không kiểm cờ thì **không có gì báo lỗi** — chỉ có bảng số
+đẹp lên, và đẹp lên vì một cơ chế người dùng không hề bật. Đúng loại quyết định §10.4 gọi là "mua
+một vé số vừa trúng trên bộ đo".
+
+Đã gắn cờ: `Apply(headings, document, respectStyleTrust)` mặc định `false`, pipeline truyền
+`UseStyleTrust` vào. Sau khi gắn, nhánh mặc định về đúng 90,4% / 8/10 và toàn bộ cải thiện nằm sau
+cờ.
+
+### 14.4 Ba lần test suýt xanh giả
+
+Đáng ghi vì cả ba đều lộ ra nhờ **kiểm đột biến**, không phải nhờ đọc lại code:
+
+1. `SignatureTierTests.La_Ma_bao_ngoai_A_Rap` đỏ ngay khi thêm mẫu mới. Nguyên nhân:
+   `HasTitleRemainder` đọc cứng `Groups[2]`, mà ở regex mới `Groups[2]` là CHỮ SỐ. `TitleWordRx`
+   đòi ≥2 chữ cái nên nó khớp `II` mà không khớp `I` — `PHẦN I.` trượt còn `PHẦN II.` lọt, hai mục
+   cùng dạng ra hai chữ ký khác nhau. Nếu bộ test không sẵn có ca La Mã bao ngoài Ả Rập thì lỗi này
+   đã lọt và chỉ lộ ra rất lâu sau trên một tài liệu thật.
+2. Test đầu tôi viết cho năng lực mới đặt ở tầng `StructuralHierarchyResolver` và **không bắt được
+   đột biến nào**: trên fixture đó cấp do nhánh đường dẫn Ả Rập quyết, token `Labelled` không tham
+   gia. Siết từ quan hệ `>` sang cấp tuyệt đối — **vẫn không bắt được**.
+3. Chuyển xuống tầng `Parse` thì bắt được cả ba đột biến: bỏ nhãn khỏi chữ ký, tắt mẫu mới, và đúng
+   lỗi nhóm regex ở mục 1.
+
+Bài học: **test phải đặt ở tầng mà thay đổi thật sự xảy ra.** Hai lần đầu test xanh vì nó đo một
+tầng khác, không phải vì code đúng.

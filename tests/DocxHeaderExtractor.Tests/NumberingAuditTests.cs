@@ -153,4 +153,43 @@ public class NumberingAuditTests
         Assert.Empty(NumberingAudit.Run(headings));
         Assert.All(headings, h => Assert.False(h.Disputed));
     }
+
+    /// <summary>
+    /// TODO mục 3: dạng "nhãn + số" phải sinh ra token. Trước đây <c>Parse</c> chỉ có mẫu Ả Rập /
+    /// La Mã / chữ cái nên <c>Chương 1.</c> không phân tích được — lý do gốc của bug 87,2% ở §5.
+    /// <para>
+    /// NHÃN phải nằm trong chữ ký: nếu <c>Chương 1.</c> ra <c>Arabic:1</c> thì nó trùng chữ ký với
+    /// <c>1.</c> trần và <c>SignatureTiers</c> gộp hai tầng khác nhau làm một.
+    /// </para>
+    /// </summary>
+    [Theory]
+    [InlineData("Chương 1. Tổng quan", "chương", 1)]
+    [InlineData("PHẦN I. CƠ SỞ LÝ LUẬN", "phần", 1)]
+    [InlineData("Abschnitt 4. Grundlagen", "abschnitt", 4)]
+    public void Nhan_cong_so_sinh_ra_token_va_nhan_nam_trong_chu_ky(string text, string label, int value)
+    {
+        var token = NumberingAudit.Parse(text);
+
+        Assert.NotNull(token);
+        Assert.Equal(NumberKind.Labelled, token!.Value.Kind);
+        Assert.Equal(label, token.Value.Label);
+        Assert.Equal(value, token.Value.Value);
+        Assert.Equal($"Labelled({label}):1", token.Value.Signature);
+
+        // Và chữ ký đó phải KHÁC chữ ký của số trần cùng giá trị.
+        Assert.NotEqual(NumberingAudit.Parse("1. Khái niệm")!.Value.Signature, token.Value.Signature);
+    }
+
+    /// <summary>
+    /// Hẹp hơn bên HeadingHeuristics theo đúng hợp đồng ghi ở đầu NumberingAudit: nhận nhầm thì hậu
+    /// kiểm đi báo thiếu những mục không tồn tại. Chú thích bảng phải trượt.
+    /// </summary>
+    [Theory]
+    [InlineData("Bảng 1.2 Đối chiếu thuật ngữ")]
+    [InlineData("Trang 5")]
+    [InlineData("Ngày 14 tháng 01 năm 2026")]
+    public void Nhan_cong_so_khong_an_nham_chu_thich_va_cau_van(string text)
+    {
+        Assert.NotEqual(NumberKind.Labelled, NumberingAudit.Parse(text)?.Kind);
+    }
 }
