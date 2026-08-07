@@ -132,6 +132,7 @@ public sealed class CommandLineOptions
                 case "--page-headers": extraction.IncludePageHeadersFooters = true; break;
                 case "--no-context": extraction.IncludeFollowingContext = false; break;
                 case "--structural-only": extraction.UseLexicalRules = false; break;
+                case "--style-trust": extraction.UseStyleTrust = true; break;
 
                 case "-q" or "--quiet": o.Quiet = true; break;
                 case "--compact": o.CompactXml = true; break;
@@ -244,6 +245,8 @@ public sealed class CommandLineOptions
               --page-headers        Đọc thêm w:hdr/w:ftr
               --no-context          Không kèm đoạn văn ngữ cảnh
               --structural-only     Chỉ dùng tín hiệu cấu trúc OOXML, tắt luật theo từ ngữ
+              --style-trust         Chấm độ tin cậy của style Word ở mức TÀI LIỆU; tài liệu áp
+                                    style bừa thì style mất quyền phủ quyết (không mất bằng chứng)
               --style-auto-assign   Gán thẳng heading cho đoạn mang style Heading built-in và
                                     rút chúng khỏi luồng LLM (luật R1 của spec filter OOXML).
                                     Cờ để ĐO, mặc định tắt — xem OoxmlStyleAutoAssign.

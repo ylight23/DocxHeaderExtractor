@@ -15,6 +15,12 @@ public sealed class SlimDocument
 
     public double? DefaultFontSizePt { get; init; }
 
+    /// <summary>
+    /// Style Word của tài liệu này có đáng tin không, và cho việc gì. Xem
+    /// <c>StyleTrustAudit</c>. Null khi chưa chấm (đường dựng SlimDocument trong test).
+    /// </summary>
+    public StyleTrust? StyleTrust { get; init; }
+
     /// <summary>Nội dung w:hdr / w:ftr (header–footer của trang), nếu được yêu cầu.</summary>
     public IReadOnlyList<string> PageHeaders { get; init; } = [];
     public IReadOnlyList<string> PageFooters { get; init; } = [];

@@ -930,3 +930,52 @@ Ba hàng rào đã dựng, tất cả là **cơ chế** chứ không phải quy 
 - `dhx eval` **cảnh báo đáp án mồ côi** (có `.key`, không có tài liệu). Phép duyệt đi từ tài liệu
   nên nhóm này trước đây hoàn toàn vô hình — đúng cách `08` biến mất mà không ai hay.
 - `bench/README.md` nói thẳng rằng bộ đo trên mỗi máy có thể khác nhau, kèm bảng tên thật.
+
+## 11. StyleTrust — tín hiệu §7.1/§9.7 đòi, và vì sao nó chưa đủ
+
+§7.1 và §9.7 cùng dừng ở một câu: *"cần một tín hiệu đo được rằng style của tài liệu NÀY có đáng tin
+không — chưa có"*. Mục này dựng tín hiệu đó (`StyleTrustAudit`, cờ `--style-trust`, mặc định tắt),
+và ghi lại kết quả **một phần âm**.
+
+### 11.1 Hai quyền, đo tách nhau
+
+Style Word mang hai quyền và hai tài liệu thật hỏng ở hai quyền khác nhau — khoá luận tin được
+quyền CHỌN (68/68) nhưng không tin được quyền GÁN CẤP (H1→H3→H4, đúng cấp ~28%); báo cáo thì hỏng
+cả hai (precision tầng OpenXML 55%, đúng cấp 40,7%). `StyleTrust` chấm riêng từng quyền:
+
+- **SelectionTrusted** — tỉ lệ đoạn mang style mà lại mang hình dạng của thứ không phải đề mục
+  (dùng LẠI đúng các luật đã có: chú thích đối tượng, dòng mục lục, gạch đầu dòng, dấu câu cuối,
+  ô bảng), cộng mật độ style trên toàn tài liệu.
+- **LevelTrusted** — số cấp riêng biệt, và có bỏ cấp giữa chừng không.
+
+Dưới `MinimumStyledSample = 8` đoạn thì không kết luận gì. Nguyên tắc xuyên suốt: **chỉ hạ quyền,
+không bao giờ xoá đoạn** — cấp vẫn giữ qua `prefixLevel`, thứ mất đi là quyền phủ quyết.
+
+### 11.2 Kết quả: bộ dò đúng, nhưng CHƯA CÓ bộ chấp hành
+
+Trên `09-style-ap-sai`, tín hiệu bắn đúng — *"style built-in 8 đoạn (50% tài liệu), 1 đoạn trông
+không phải đề mục (12%), 3 cấp riêng biệt ⇒ quyền chọn HẠ, quyền gán cấp GIỮ"*. Nhưng kết quả
+**không đổi một chữ số**: vẫn P 57,1%, vẫn thừa đúng 4, 12, 13.
+
+Truy nguyên: ba dương tính giả là `Hà Nội, tháng 8 năm 2026`, `Người lập biểu`, `Nguyễn Văn A` —
+dòng bìa và nhãn khối chữ ký. Hạ quyền style nghĩa là "để các luật hình dạng quyết", nhưng **không
+luật hình dạng nào hiện có nói được gì về chúng**: không trong bảng, không gạch đầu dòng, không
+kết thúc bằng dấu câu, không phải chú thích. Chuyển quyền cho một chỗ trống.
+
+Và §10.3 đã đo rằng mô hình cũng không cắt được chúng. Tức với chế độ hỏng "dòng bìa / khối chữ ký
+mang style Heading", hiện **không có tầng nào trong pipeline có khả năng bác** — không phải chuyện
+trao quyền cho ai.
+
+### 11.3 Trạng thái và bước tiếp
+
+- `SelectionTrusted`: bộ dò xong, **hiệu lực bằng 0** cho tới khi có luật hình dạng nhận được dòng
+  bìa/khối chữ ký. Đó mới là việc tiếp theo, không phải tinh chỉnh ngưỡng.
+- `LevelTrusted`: đã cài ở cả `ResolveLevel` lẫn khâu chọn đoạn để hỏi cấp, nhưng **CHƯA ĐO** —
+  `--no-llm` không đi qua `ResolveLevel` nên chỉ đo được bằng một lượt LLM, và cần thêm một fixture
+  có cấp style thoái hoá (mọi mục cùng một cấp). Đây là nhánh nhắm thẳng vào 40,7% và ~28%.
+- Bench giữ nguyên P 86,8% · R 100% · F1 92,9% · đúng cấp 76,1% · 5/8 ở cả hai trạng thái cờ — luật
+  không kích hoạt vì mọi tài liệu bench đều dưới ngưỡng mẫu.
+
+Một lỗi đáng ghi vì nó suýt lọt: test cho nhánh "bỏ cấp giữa chừng" đỏ, và nguyên nhân nằm trong
+CHÍNH TEST — C# parse `i % 3 switch { … }` thành `i % (3 switch { … })`, nên cấp sinh ra là 0,1,2,3
+chứ không phải 1,3,4. Nếu test đó xanh giả thì `SkipsLevels` sẽ không có gì bảo chứng.
