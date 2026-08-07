@@ -38,6 +38,21 @@ public static class EvalRunner
             return 2;
         }
 
+        // Đáp án MỒ CÔI: có .key mà không có tài liệu. Phép duyệt trên đi từ tài liệu nên nhóm này
+        // hoàn toàn vô hình — bộ đo thiếu một tài liệu và không ai được báo, trong khi mọi bảng số
+        // vẫn ghi "bench 8 tài liệu". Đó là cách bộ đo trôi mà không để lại dấu vết; ĐÃ xảy ra thật
+        // (`08-plph2.key` còn, `.docx` thì không, xem handoff §10).
+        var orphanKeys = Directory.EnumerateFiles(directory, "*.key")
+            .Where(k => !pairs.Any(p => string.Equals(p.Key, k, StringComparison.OrdinalIgnoreCase)))
+            .Select(Path.GetFileNameWithoutExtension)
+            .OrderBy(n => n, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+        if (orphanKeys.Count > 0)
+            Console.Error.WriteLine(
+                $"⚠ {orphanKeys.Count} đáp án không có tài liệu đi kèm nên KHÔNG được chấm: " +
+                $"{string.Join(", ", orphanKeys)}. Bộ đo nhỏ hơn bộ đáp án — đừng so con số này với " +
+                "bảng nào ghi số tài liệu lớn hơn.");
+
         using var tool = new PipelineDocumentExtractionTool(options);
         var harness = new DocumentAgentHarness(tool);
         var scores = new List<DocScore>();
@@ -122,6 +137,11 @@ public static class EvalRunner
             };
 
         sb.AppendLine($"Bộ test: {suite.Documents} tài liệu · chế độ: {mode}");
+        // Con số và điều kiện sinh ra nó phải đi cùng một chỗ. Handoff §8.1 từng chốt bằng LỜI rằng
+        // "mọi con số phải ghi kèm số lớp offload", nhưng công cụ sinh ra con số lại không ghi — nên
+        // một lượt CPU và một lượt GPU trông giống hệt nhau trên giấy. Cùng họ với bẫy §4.3 (cấu
+        // hình đo lệch cấu hình chạy) và §4.4 (log nói dối).
+        sb.AppendLine($"Cấu hình: {PrecisionCalibrationProfile.ConfigurationFor(options)}");
         sb.AppendLine();
         sb.AppendLine("| Tài liệu | Đáp án | Trả về | Ứng viên | P | R | Cấp | Thừa | Thiếu | Sai cấp |");
         sb.AppendLine("|---|--:|--:|--:|--:|--:|--:|--:|--:|--:|");

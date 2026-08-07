@@ -55,13 +55,23 @@ public sealed class PrecisionCalibrationProfile
         return Math.Max(0, (center - margin) / denominator);
     }
 
-    /// <summary>Các option có thể làm đổi phân phối dự đoán phải khóa cùng profile.</summary>
+    /// <summary>
+    /// Các option có thể làm đổi phân phối dự đoán phải khóa cùng profile.
+    /// <para>
+    /// <b>Trục tái lập của RUNTIME cũng nằm ở đây, không chỉ trục thuật toán.</b> Thiếu chúng thì
+    /// hai lượt chạy ở hai mức offload GPU sinh ra CÙNG một chữ ký, nên profile dựng ở mức này được
+    /// coi là còn hiệu lực ở mức kia — trong khi §3.7 đo được `-ngl 20` cho đúng cấp 100% còn
+    /// `-ngl 99` cho 85,7%, tái lập ở cả hai lượt. Đó là hai cấu hình đo khác nhau, và chữ ký phải
+    /// nói ra điều đó thay vì để tài liệu nhắc suông.
+    /// </para>
+    /// </summary>
     public static string ConfigurationFor(PipelineOptions o) => string.Join('|',
         $"backend={o.Backend}",
         $"twoPass={o.TwoPass}",
         $"highPrecision={o.HighPrecisionMode}",
         $"trustStyles={o.TrustStyles}",
         $"skipStyled={o.SkipStyledCandidates}",
+        $"styleAutoAssign={o.StyleAutoAssign}",
         $"reviewAll={o.ReviewAllParagraphs}",
         $"globalHierarchy={o.GlobalHierarchy}",
         $"normalizeLevels={o.NormalizeLevels}",
@@ -77,6 +87,8 @@ public sealed class PrecisionCalibrationProfile
         $"overlap={o.Chunking.Overlap}",
         $"grammar={o.Llama.GrammarMode}",
         $"temperature={o.Llama.Temperature.ToString("R", CultureInfo.InvariantCulture)}",
+        $"seed={o.Llama.Seed}",
+        $"gpuLayers={o.Llama.GpuLayerCount}",
         $"threshold={o.Extraction.CandidateThreshold.ToString("R", CultureInfo.InvariantCulture)}");
 
     private static readonly JsonSerializerOptions JsonOptions = new()

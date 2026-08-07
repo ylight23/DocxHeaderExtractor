@@ -52,6 +52,14 @@ public sealed class PipelineOptions
     public bool SkipStyledCandidates { get; set; }
 
     /// <summary>
+    /// Bật luật R1 của spec filter OOXML: đoạn mang style Heading built-in, ngoài bảng/textbox,
+    /// ngắn và không kết thúc bằng dấu chấm câu thì gán thẳng heading + cấp với confidence 1.0 và
+    /// KHÔNG đi qua mô hình. Xem <see cref="OoxmlStyleAutoAssign"/>.
+    /// <para>MẶC ĐỊNH TẮT — cờ này tồn tại để có số cho chính nó, không phải để dùng.</para>
+    /// </summary>
+    public bool StyleAutoAssign { get; set; }
+
+    /// <summary>
     /// Chuẩn hoá cấp để không nhảy cóc (1 → 3 thành 1 → 2).
     /// <para>
     /// MẶC ĐỊNH TẮT từ khi cấp do cấu trúc quyết định. Bộ chuẩn hoá gán cấp theo ĐỘ SÂU NGĂN XẾP,
@@ -235,6 +243,15 @@ public sealed class HeaderExtractionPipeline : IDisposable
             var extractor = new DocxSlimExtractor(_options.Extraction);
             var slim = extractor.Extract(conversion.Path);
 
+            // 2b. R1 của spec filter OOXML — chạy TRƯỚC khi lập tập ứng viên, vì cả điểm của nó là
+            //     rút đoạn ra khỏi luồng LLM. Mặc định tắt; xem OoxmlStyleAutoAssign.
+            var autoAssigned = _options.StyleAutoAssign
+                ? OoxmlStyleAutoAssign.Apply(slim, quarantined)
+                : [];
+            if (autoAssigned.Count > 0)
+                Log($"R1 gán thẳng {autoAssigned.Count} heading theo style OOXML — " +
+                    "chúng KHÔNG đi qua mô hình và không bị cổng precision hạ xuống cần duyệt.");
+
             var styled = slim.Paragraphs.Count(p => p.Role == ParagraphRole.StyledHeading);
             var candidates = slim.Candidates.Where(p => !quarantined.Contains(p.Index)).ToList();
             if (quarantined.Count > 0)
@@ -268,6 +285,15 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // kéo lại một đoạn theo luật cấu trúc. Đoạn đang bị cách ly thì không được quay lại
             // bằng bất kỳ đường nào.
             if (quarantined.Count > 0) headings.RemoveAll(h => quarantined.Contains(h.Index));
+
+            // Nhập heading R1 vào TRƯỚC hậu kiểm để chúng vẫn làm anh em cho các mục còn lại —
+            // cài R1 ở dạng mạnh nhất thì kết luận của phép đo mới dùng được.
+            if (autoAssigned.Count > 0)
+            {
+                var present = headings.Select(h => h.Index).ToHashSet();
+                headings.AddRange(autoAssigned.Where(h => !present.Contains(h.Index)));
+                headings.Sort((a, b) => a.Index.CompareTo(b.Index));
+            }
 
             if (_options.NormalizeLevels) NormalizeLevels(headings);
 
@@ -314,7 +340,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 CandidateCount = reviewCount,
                 Headings = headings,
                 ElapsedMs = sw.ElapsedMilliseconds,
-                Model = _options.DisableLlm ? null : _model?.ModelName,
+                Model = _options.DisableLlm ? null : _model?.ModelName ?? ConfiguredModelName(),
                 Provenance = _options.DisableLlm
                     ? null
                     : new OutlineRunProvenance(
@@ -328,6 +354,22 @@ public sealed class HeaderExtractionPipeline : IDisposable
             LegacyDocConverter.Cleanup(conversion);
         }
     }
+
+    /// <summary>
+    /// Model của lượt chạy là thứ CẤU HÌNH nói, không phải thứ tình cờ đã nạp. Một tài liệu không
+    /// còn ứng viên nào để hỏi thì <c>_model</c> vẫn null, và nếu để <c>Model</c> null theo thì
+    /// <c>PrecisionCalibrationBuilder</c> thấy hai tài liệu trong CÙNG một lượt eval khai hai model
+    /// khác nhau rồi ném "Không được trộn nhiều model". Lượt hỏi nào thực sự chạy đã có
+    /// <see cref="OutlineRunProvenance"/> ghi riêng, nên trường này không cần gánh thêm việc đó.
+    /// </summary>
+    private string? ConfiguredModelName() => _options.Backend switch
+    {
+        InferenceBackend.OpenRouter => _options.OpenRouter.Model,
+        InferenceBackend.LmStudio => _options.LmStudio.Model,
+        _ => string.IsNullOrWhiteSpace(_options.Llama.ModelPath)
+            ? null
+            : Path.GetFileName(_options.Llama.ModelPath),
+    };
 
     private static List<HeadingRecord> HeuristicOnly(IReadOnlyList<SlimParagraph> candidates) =>
     [
