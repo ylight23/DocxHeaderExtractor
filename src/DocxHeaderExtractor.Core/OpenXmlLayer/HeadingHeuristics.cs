@@ -141,7 +141,8 @@ public static class HeadingHeuristics
         // diện) thì CaptionRx bị tắt cùng cờ luật từ ngữ, tức không còn bộ lọc chú thích nào.
         var objectCaption = p.PrecedesTable && p.NumberingId is null && ObjectLabelPrefixRx.IsMatch(p.Text);
 
-        if (p.InTableOfContents || objectCaption || (options.UseLexicalRules && CaptionRx.IsMatch(p.Text)))
+        if (p.InTableOfContents || objectCaption ||
+            (options.UseLexicalRules && CaptionRx.IsMatch(p.Text)))
         {
             p.Role = ParagraphRole.Normal;
             p.Score = 0;

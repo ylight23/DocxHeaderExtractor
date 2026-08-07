@@ -34,6 +34,7 @@ Bộ bench 8 tài liệu tổng hợp (`dhx bench`), mô hình Qwen2.5-7B-Instru
 | **Bản bàn giao** (`--structural-only`) | **97,5%** | **100%** | **98,7%** | **100%** | **7/8** |
 | + phản biện theo dấu hiệu (thay vì hỏi tất) | 97,5% | 100% | 98,7% | 100% | 7/8 |
 | + lượt refactor harness (§6), hai lượt đo | 97,5% | 100% | 98,7% | 100% | 7/8 |
+| + chuẩn hoá `outlineLevel` (§7.3), hai lượt đo | **100%** | **100%** | **100%** | **100%** | **8/8** |
 
 Hai dòng cuối là **điều kiện nghiệm thu chứ không phải tiến bộ**: cả hai lượt đó nhằm bỏ code
 sai/chết/trùng và đổi cách kích hoạt critic, nên số đo giữ nguyên mới là đạt. Riêng phản biện
@@ -148,6 +149,14 @@ style/multilevel list chuẩn nhanh gấp ~3, file gõ tay gần như không đ�
   model, khác preset là khác đáp án. Giờ gửi tường minh `top_k=1, top_p=0.9, repeat_penalty=1.0,
   seed` dùng chung hằng `LlamaOptions.SharedSamplerSeed` với backend local. Đo được: recall 40% →
   100% trên một tài liệu.
+- **Số lớp offload lên GPU là một trục tái lập nữa, ngang hàng với sampler.** Cùng model, cùng seed,
+  cùng `top_k=1`/`temperature=0`, cùng một thư mục một tài liệu: backend CPU cho đúng cấp 100% trên
+  `02-dinh-dang-thu-cong`, chính bản build Vulkan chạy `-ngl 0` cũng 100%, `-ngl 20` vẫn 100% — chỉ
+  `-ngl 99` mới rơi xuống 85,7% (i=10 trả về cấp 2, đáp án 1). Bản build không phải nguyên nhân; tám
+  lớp cuối cộng lớp output chạy trên GPU đủ đổi logit để argmax lật ở một ca sát nút. Hai lượt
+  `-ngl 99` cho kết quả giống hệt nhau, nên đây **không phải nhiễu mà là một cấu hình đo khác** —
+  gộp số của hai mức offload vào cùng một bảng là lặp lại bẫy §4.1. Mọi con số phải ghi kèm số lớp
+  offload; xem §8.1.
 - **Backend local không nhận danh sách ID cần trả lời**, trong khi hai backend RPC đều gửi. Grammar
   ép được cú pháp nhưng không nằm trong ngữ cảnh mô hình đọc. Đo được: 4/5 → 5/5.
 - `JsonSerializer` mặc định escape non-ASCII → dev log hiện `ạ`, trông như lỗi font.
@@ -182,7 +191,12 @@ toàn `document_title` thì cây heading rỗng sạch (`Collection: []`).
 
 ## 5. Còn lại
 
-- **`07-chen-chi-thi` thừa 1 đoạn** — dòng tiêm chỉ thị, và là lỗi DUY NHẤT còn lại trên cả 39
+- ~~**`07-chen-chi-thi` thừa 1 đoạn**~~ **ĐÃ HẾT** — bench giờ tuyệt đối **8/8, P/R/F1 đều 100%**.
+  Không phải nhờ prompt hay nhờ trả lại ngữ cảnh so sánh, mà nhờ **chuẩn hoá `outlineLevel`** ở
+  §7.3: dòng tiêm không có `outlineLevel`, heading thật thì có, và tương phản đó đủ để loại nó.
+  Phần dưới giữ nguyên vì nó ghi lại những cần gạt đã thử và vì sao chúng không phải câu trả lời.
+
+  Bối cảnh cũ: dòng tiêm chỉ thị từng là lỗi DUY NHẤT còn lại trên cả 39
   heading của bộ bench. Nó mang đủ bốn tín hiệu hình thức của heading (đậm, hoa, căn giữa, 14pt)
   nên vào được tập ứng viên, không có bằng chứng cấu trúc nào để phân định, và critic — đúng chỗ
   phải quyết — trả lời sai.
@@ -196,7 +210,7 @@ toàn `document_title` thì cây heading rỗng sạch (`Collection: []`).
   Thứ từng bác đúng nó là **ngữ cảnh so sánh**: hồi critic còn được hỏi 5 mục cùng lúc, có heading
   thật đứng cạnh, nó bác đúng. Sau khi cắt batch (mục 3.5) nó chỉ còn được hỏi 1 mục đơn độc. Đòi
   lại được bằng cách bỏ nhát cắt đó, giá là `01-style-chuan` từ ~144 s trở lại ~424 s. Đây là đánh
-  đổi precision ↔ tốc độ, không phải một lỗi chờ sửa.
+  đổi precision ↔ tốc độ, không phải một lỗi chờ sửa — và hoá ra cũng không phải cần gạt duy nhất.
 - ~~**Chuỗi đánh số gõ tay chưa làm nguồn quyết định cấp.**~~ ĐÃ LÀM —
   `StructuralHierarchyResolver.SignatureTiers` gom chữ ký `NumberToken.Signature` (`Kind:Depth`)
   theo thứ tự XUẤT HIỆN LẦN ĐẦU và suy quan hệ lồng nhau từ đó, nên `PHẦN I` nằm trên `1.` mà không
@@ -449,6 +463,63 @@ recall tụt 100% → 95,1% và F1 tụt 98,4% → 95,9%, **không quy được*
 không tất định và chỉ có một lượt mỗi bên. Thước đo đúng cho thay đổi này là Qwen (`top_k=1`,
 `temperature=0`, seed cố định — tất định).
 
+#### Đã đo bằng Qwen — và kết quả là ÂM
+
+Tài liệu thật không còn trên máy (`.gitignore` chặn đúng như §7.6 muốn), nên ca lỗi được tái tạo:
+lấy `01-style-chuan.docx`, vá `styles.xml` thành `Heading1→outlineLvl=1, Heading2→2, Heading3→3` —
+lệch đúng 1 đơn vị như báo cáo thật — giữ nguyên `.key`. Kiểm chứng fixture TRƯỚC khi đo: bản tắt
+sửa cho `"outlineLevel":1,"guessedLevel":1`, bản bật sửa thì trường đó biến mất. Qwen Vulkan
+`-ngl 20`, `--structural-only`, hai lượt mỗi bên:
+
+| | fixture lệch outlineLvl | bench 8 tài liệu |
+|---|---|---|
+| **bật** bản sửa (HEAD) | 100% mọi chỉ số | P 97,5% · **7/8** |
+| **tắt** bản sửa | 100% mọi chỉ số | **P 100% · 8/8** |
+
+Hai điều, cả hai đều tái lập ở cả hai lượt:
+
+1. **Trên đúng ca nó nhắm tới, bản sửa không đổi một chữ số** — vì theo thứ tự quyền lực §1, đoạn
+   mang style Heading built-in thì cấp lấy từ style, phiếu mô hình bị bỏ (log: *"Bỏ qua lượt gán cấp
+   toàn cục: cấu trúc đã quyết cấp cho mọi heading"*). Bản sửa lại giấu `outlineLevel` cho **đúng
+   nhóm đoạn đó**. Nó giấu một trường mà mô hình đọc sai cũng không ảnh hưởng đến kết quả.
+2. **Trên bench nó có hại**: tắt đi thì `07-chen-chi-thi` hết thừa đoạn, bench lên tuyệt đối 8/8.
+   Cơ chế hợp lý: heading thật đều mang `outlineLevel`, dòng tiêm chỉ thị thì không — đó là một
+   tương phản để loại nó, và bỏ trường đi là san phẳng tương phản. Tức lỗi cuối cùng ở §5 còn một
+   nguyên nhân thứ hai, rẻ hơn nhiều so với việc trả lại ngữ cảnh so sánh (144 s → 424 s).
+
+Con số "6/10 lỗi cấp" ghi công cho bản sửa ở trên là đo trên **Haiku đọc dump**, một đường đi
+**không tồn tại trong pipeline**: pipeline không để mô hình quyết cấp cho đoạn có style. Đây là lần
+thứ hai trong cùng tài liệu này agent-đóng-vai-LLM dẫn tới kết luận sai (lần đầu: §7.2).
+
+Bệnh gốc không nằm ở "gửi `outlineLevel` cho đoạn nào" mà ở chỗ **hai trường nói cùng một chuyện
+bằng hai quy ước** (`outlineLevel` 0-based, `guessedLevel` 1-based). Bản vá đầu chỉ *giấu có điều
+kiện* một trong hai, nên vẫn còn hai nguồn sự thật — chỉ khác là giờ một nguồn lúc có lúc không.
+
+#### Cách sửa thứ ba: chuẩn hoá thay vì giấu — ĐÃ LÀM
+
+Đoạn có style built-in thì phát ra `outlineLevel` **suy từ `GuessedLevel`** về đúng quy ước 0-based
+mà prompt dạy, thay vì chép lại con số trong file. Hết mâu thuẫn mà trường vẫn còn, nên tương phản
+"heading thật thì có outlineLevel" không mất.
+
+Để phân biệt bản này với bản "gửi số thô" cần một phép đo mà **phiếu cấp của mô hình thật sự có
+trọng lượng** — hai bản hoà nhau ở mọi phép đo khác, vì mặc định cấp do cấu trúc quyết (§1). Cờ
+`--model-levels` làm đúng việc đó:
+
+| bản | fixture lệch, cấp do cấu trúc | fixture lệch, `--model-levels` | bench 8 tài liệu |
+|---|---|---|---|
+| giấu trường (bản vá đầu) | 100% | 100% | P 97,5% · 7/8 |
+| gửi số thô | 100% | **71,4%** | P 100% · 8/8 |
+| **chuẩn hoá** | 100% | **100%** | **P 100% · 8/8** |
+
+Dòng 71,4% là lần đầu **mối lo gốc của §7.3 được xác nhận bằng mô hình tất định** — trước đó chỉ có
+bằng chứng Haiku một lượt. Nó có thật; chỉ là bản vá đầu chọn sai cần gạt. Chuẩn hoá thắng cả hai
+trục, và bench lên tuyệt đối **8/8** — lỗi cuối cùng ở §5 biến mất mà không phải trả 144 s → 424 s.
+
+Khoá bằng `ModelMetadataContractTests.OutlineLevel_gui_cho_mo_hinh_luon_khop_quy_uoc_voi_guessedLevel`,
+đã kiểm đột biến **cả hai chiều**: đổi thành giấu trường thì đổ, đổi thành số thô cũng đổ. Test cũ
+khoá *cách làm* ("không có trường") nên nó chặn luôn cách sửa tốt hơn; test mới khoá *ý định*
+("trường gửi đi không được mâu thuẫn với `guessedLevel`").
+
 ### 7.4 Lọc chú thích bằng cấu trúc thay danh sách từ khoá
 
 Nhóm dương tính giả lớn nhất là 13 chú thích bảng/hình mang style Heading3. `CaptionRx` đã có nhưng
@@ -516,10 +587,56 @@ dump — đều mang nội dung tài liệu. Danh sách chặn phải theo *ngu�
 
 ## 8. Phần cứng
 
+### 8.1 Máy đo hiện tại — RTX 3060 12 GB (từ 06/08/2026)
+
+| | |
+|---|---|
+| GPU | NVIDIA GeForce RTX 3060 **12 GB** (10,6 GB trống), driver 591.86, compute 8.6 |
+| CPU / RAM | Intel i5-14400F, 16 luồng / 32 GB |
+| Backend dùng được | **Vulkan** — CUDA không kích hoạt được, xem bên dưới |
+
+Tiền đề của §8.2 đã hết hiệu lực: Qwen2.5-7B Q4_K_M **nằm gọn trong VRAM**. Trọng số 4,36 GiB, KV
+cache f16 **56 KiB/token** (28 lớp × 4 KV head × 128 dim × 2 × 2 byte) nên ctx 8192 chỉ tốn thêm
+0,44 GiB; cộng compute buffer ≈ **5,3 GiB**. Còn dư ~5 GB — ctx 16384 hoặc mức lượng tử cao hơn đều
+nằm trong tầm.
+
+Bộ bench 8 tài liệu tổng hợp, `--structural-only`, sinh vào thư mục sạch bằng `dhx bench <thư-mục>`:
+
+| Cấu hình | Thời gian cả bộ | P | R | F1 | Đúng cấp | Tuyệt đối |
+|---|--:|--:|--:|--:|--:|--:|
+| WX 5100, `-ngl 20` (§8.2) | 1350 s | 97,5% | 100% | 98,7% | 100% | 7/8 |
+| RTX 3060 Vulkan, `-ngl 20` | **62 s** | 97,5% | 100% | 98,7% | **100%** | **7/8** |
+| RTX 3060 Vulkan, `-ngl 99` | **27 s** | 97,5% | 100% | 98,7% | 97,4% | 6/8 |
+
+`-ngl 20` tái lập nguyên vẹn bảng §2 kể cả chi tiết lỗi — vẫn chỉ `07-chen-chi-thi` thừa 1 đoạn —
+và nhanh hơn **21,8×**. Dòng `-ngl 99` lệch không phải vì hồi quy: đó là cấu hình đo khác, lý do ở
+trục offload §3.7.
+
+Ba dòng trên đo TRƯỚC bản chuẩn hoá `outlineLevel` của §7.3; sau bản đó, cùng cấu hình
+`Vulkan -ngl 20` cho **P/R/F1 100% · 8/8**. Giữ nguyên bảng vì mục này so **phần cứng**, và so phần
+cứng thì phải giữ nguyên phần mềm.
+
+**CUDA không kích hoạt được, và nó thất bại trong im lặng.** `-p:UseCuda=true` publish ra
+`ggml-cuda.dll` 502 MB, nhưng DLL đó cần `cudart64_12.dll` + `cublas64_12.dll` mà máy không có vì
+chưa cài CUDA Toolkit (`CUDA_PATH` rỗng; `nvcuda.dll` của driver là API *driver*, không thay được API
+*runtime*). Đã thử và **thất bại**: tải redist NVIDIA (411 MB) rồi đặt ba DLL vào
+`runtimes/win-x64/native/cuda12/`, đặt cạnh `dhx.exe`, và set cả `CUDA_PATH` lẫn `PATH` — vẫn
+42,4 s/khối, tức vẫn CPU. Vulkan ngược lại chạy được ngay không cài thêm gì, vì driver NVIDIA đã kèm
+`vulkan-1.dll`: **2,7 s/khối so với 43,3 s/khối của CPU, nhanh 15,7×**.
+
+Kèm theo là một lỗi cùng họ với bẫy §4.4 *"log nói dối"*: CLI vẫn in `"Mô hình sẵn sàng … GPU 99
+lớp"` **ngay cả khi backend đã âm thầm rơi về CPU** — câu log chỉ phản chiếu cờ người dùng gõ, không
+phản ánh thư viện native thật sự nạp được. Thứ lộ ra sự thật là **thời gian mỗi khối**, không phải
+log. Tin log thì sẽ ghi một lượt đo CPU vào bảng như là số GPU.
+
+### 8.2 Máy đã sinh ra mọi số ở §2 — WX 5100 4 GB
+
 Máy đo: Radeon Pro WX 5100 **4 GB**, runtime Vulkan. Qwen2.5-7B Q4_K_M nặng 4,36 GiB nên **không
 nằm vừa VRAM** — chạy chủ yếu bằng CPU, ~45 token/s prefill. Đo được: `--gpu max` và `--gpu 0.4` ở
 các mức context khác nhau đều cùng một dải tốc độ. Mọi tối ưu phần mềm chỉ giảm **số lượng** và
 **kích thước** câu hỏi.
+
+### 8.3 LM Studio
 
 Hai lưu ý khi nạp model trong LM Studio:
 
@@ -529,3 +646,143 @@ Hai lưu ý khi nạp model trong LM Studio:
   token/slot, nhỏ hơn chính khối 5000 token pipeline gửi. Cache prefix cũng theo slot nên chạy song
   song còn làm mất phần đã tiết kiệm được; đo được độ trễ mỗi request phình 354 s → 569 s.
   `LMSTUDIO_PARALLEL` mặc định 1 vì lý do đó.
+
+## 9. Vòng lặp trên MỘT khoá luận thật — F1 67,1% → 95,1%
+
+Mục này ghi lại một phiên khác hẳn §7: thay vì đo rồi kết luận "bench không dự báo được tài liệu
+thật", lần này lấy đúng một tài liệu thật làm đích và sửa cho tới khi đạt. Điều đáng giữ lại không
+nằm ở con số mà ở **cách chọn luật**: bảy luật mới, không luật nào chứa một từ tiếng Việt nào.
+
+### 9.1 Thước đo dựng trước, không dựng sau
+
+Khoá luận 1498 đoạn, đặt trong `bench/holdout/` (đã bị `.gitignore` chặn). Đáp án do **hai agent
+độc lập** gán nhãn, mỗi bên đọc toàn văn 1232 đoạn không rỗng và không được nhìn bản của bên kia:
+
+| | |
+|---|---|
+| Opus | 131 mục (tự đánh dấu 15 mục không chắc) |
+| Sonnet | 147 mục (26 mục không chắc) |
+| Trùng chọn đoạn | 130 — Jaccard 87,8% |
+| **Trùng cả CẤP trên phần chung** | **130/130 = 100%** |
+| Tập chắc chắn dùng làm `.key` | **110 mục** |
+
+Trùng cấp tuyệt đối giữa hai mô hình khác nhau, đọc độc lập, là bằng chứng cây này có thật chứ
+không phải ý kiến của một mô hình — lặp lại đúng điều §7.2 đã thấy.
+
+**Quy tắc chấm cố định từ đầu, trước khi biết kết quả**: 13 mục mà hai người gán nhãn bất đồng hoặc
+tự đánh dấu ngờ được **loại khỏi phép chấm**, không tính đúng cũng không tính sai. Ép chúng vào một
+phía nào cũng là tự chấm điểm cho mình. Con số thô chưa loại trừ: F1 89,8%.
+
+Thêm một agent Haiku làm người gán nhãn thứ ba và **loại bỏ**: nó trả đúng 68 mục, tự mô tả là lấy
+từ `style=Heading*`, khai 0 mục không chắc — nhưng đối chiếu ra 7 mục nó gán không hề có style và 7
+mục có style thì nó bỏ. Vừa không làm việc được giao, vừa mô tả sai việc mình đã làm, dù prompt đã
+có hẳn một câu bắt nó đếm lại file trước khi báo cáo. Đây là lần thứ hai (sau §7.2) agent yếu dẫn
+tới kết luận sai nếu tin lời khai của nó.
+
+### 9.2 Đặc điểm quyết định hướng đi
+
+| | |
+|---|---|
+| Đoạn mang `style=Heading*` | 68 |
+| Trong đó là heading thật | **68/68 — không sai một mục** |
+| Heading thật KHÔNG có style | **63** |
+
+Tin style Word trên tài liệu này là **precision 100%, recall 52%**. Toàn bộ phần khó nằm ở 63 mục
+không style — và nó giải thích vì sao hai bản sửa hiệu quả nhất đều là "đừng để mô hình xoá bằng
+chứng cấu trúc" chứ không phải "dạy mô hình giỏi hơn".
+
+### 9.3 Bảy luật, đo từng luật một
+
+Mỗi vòng đổi ĐÚNG một biến, giữ nếu F1 tăng và bench 8 tài liệu không hồi quy, hoàn nguyên nếu giảm.
+
+| Vòng | Luật | P | R | F1 | Ứng viên |
+|---|---|--:|--:|--:|--:|
+| — | mốc đầu | 59,4% | 77,1% | 67,1% | 295 |
+| 1 | mục lục gõ tay (§9.4) | 66,9% | 74,0% | 70,3% | 274 |
+| 2 | lời bác lượt phân loại không được xoá style (§9.5) | 68,6% | 80,2% | 73,9% | 274 |
+| 3 | khối trang bìa | 73,4% | 80,2% | 76,6% | 256 |
+| 4 | nhấn mạnh thân bài (đậm+nghiêng, không cấu trúc) | 77,0% | 79,4% | 78,2% | 220 |
+| 5 | thân bài không đậm, không cấu trúc | 90,2% | 84,7% | 87,4% | 138 |
+| 6 | đậm + numbering không được xoá | 90,6% | **96,4%** | 93,4% | 138 |
+| 7 | dãy ứng viên không tự mở ra văn xuôi | **93,8%** | **96,4%** | **95,1%** | 138 |
+
+*(vòng 1–5 đo trên đáp án Opus để so được liên tiếp; vòng 6–7 trên đáp án đồng thuận đã loại mục
+tranh cãi — hai thang khác nhau nên chỉ so trong cùng nhóm)*
+
+Bench 8 tài liệu giữ **8/8 ở từng vòng**, test xanh ở từng vòng.
+
+### 9.4 Mục lục gõ tay — hàng phòng thủ cũ phụ thuộc hoàn toàn vào neo `_Toc`
+
+`IsTableOfContentsEntry` chỉ nhận dòng mục lục qua style TOC1..TOC9 hoặc neo `_Toc`/`_heading`, và
+comment tại chỗ khẳng định hai thứ đó "chính xác hơn nhiều so với đoán theo số trang cuối dòng".
+Đúng — nhưng tài liệu gõ tay hoặc chuyển từ PDF thì **không có cả hai**, và khi đó không còn gì chặn.
+
+Đo bằng cách lấy `04-bia-muc-luc-chu-thich` và **chỉ gỡ ba neo `_Toc`**, giữ nguyên mọi thứ khác:
+
+| | Ứng viên | Thừa | P | R | F1 |
+|---|--:|--:|--:|--:|--:|
+| có neo | 7 | 3 | 100% | 100% | 100% |
+| **gỡ neo** | 10 | 6 | **66,7%** | **50%** | **57,1%** |
+
+Mất neo không chỉ thêm rác: **recall tụt một nửa**. Mô hình không phân biệt được bản sao với bản
+gốc nên loại nhầm chính heading thật.
+
+Luật thay thế nhận theo DÃY, ba vế: kết thúc bằng số trang và còn phần tên mục; ≥3 dòng LIỀN NHAU
+cùng dạng; số trang không giảm — nhưng **cắt dãy tại mỗi chỗ tụt** thay vì loại cả cụm. Vế cuối do
+chính tài liệu thật dạy: mục lục của nó có 21 dòng liên tiếp với dãy `5,6,6,7,1,16,16,37…` vì phần
+đầu đánh số trang riêng rồi phần thân quay về 1. Bản đầu đòi cả dãy không giảm nên **loại sạch cả
+21 dòng — luật chạy mà không bắt được gì**, và nếu chỉ nhìn bench thì không bao giờ phát hiện.
+
+### 9.5 Cùng một nguyên tắc §1, hai điểm gọi bỏ sót
+
+§3.1 đã chốt "mô hình được hạ độ tin cậy, không được xoá bằng chứng cấu trúc" cho nhánh critic.
+Nhưng lưới an toàn `TrustStyles` vẫn từ chối cứu đoạn bị **lượt phân loại** bác tường minh — cùng
+bằng chứng, khác điểm gọi, khác số phận. Đo được: 9 đoạn mang style Heading biến mất hẳn; giữ chúng
+ở trạng thái *cần duyệt* cho recall 74,0% → 80,2% **và precision cũng tăng** 66,9% → 68,6%, tức cả
+9 mục bị xoá đều đúng.
+
+Vòng 6 mở thêm một tầng YẾU HƠN: đoạn **đậm + có numbering của Word**. Trong 50 ứng viên mang cả
+hai dấu hiệu, cả 50 đều là đề mục theo HỢP của hai đáp án. Nhóm này được cứu khỏi bị xoá nhưng
+**luôn ở trạng thái cần duyệt, không bao giờ tự nhận** — bằng chứng yếu hơn thì quyền cũng nhỏ hơn.
+
+### 9.6 Bốn ý tưởng bị chính số liệu bác
+
+Ghi lại vì cả bốn đều nghe rất hợp lý, và ba trong số đó chỉ lộ ra sau khi đo:
+
+1. **Italic làm dấu hiệu loại.** Nhóm thừa lớn nhất đều `bold+italic` nên trông rất gọn. Đo: tài
+   liệu có 113 đoạn nghiêng mà **13 trong số đó là đề mục thật** → luật một vế đổi 26 mục thừa lấy
+   13 mục thiếu. Phải thêm hai vế "không numbering, không style" mới còn 3 mục thật dính vào.
+2. **Luật nhấn mạnh không có chốt mức tài liệu.** Bản đầu cắt đúng 21 mục thừa trên tài liệu thật
+   nhưng làm `02-dinh-dang-thu-cong` mất 2 heading (recall 100% → 94,9%): tài liệu đó KHÔNG dùng
+   style hay numbering ở đâu cả, nên đậm/nghiêng là cách duy nhất tác giả đánh dấu đề mục. Nguyên
+   tắc rút ra: **việc THIẾU dấu hiệu cấu trúc chỉ mang thông tin khi tài liệu có dùng dấu hiệu đó ở
+   chỗ khác.** Đây là lần bench làm đúng việc nó sinh ra để làm — chặn một luật
+   đúng-với-một-tài-liệu bị nâng thành luật chung.
+3. **Chốt "cả dãy số trang không được giảm"** ở §9.4 — quá chặt, xem trên.
+4. **Một test viết cho bản sửa §9.5 hoá ra không phân biệt được gì**: nó đỏ ở cả ba trạng thái
+   (nguyên bản / đột biến / khôi phục). Nguyên nhân nằm trong harness — `ScriptedClassifier` được
+   ghi chú là *"lượt một nhận mọi ứng viên là heading"*, nên lượt phân loại trong test không bao giờ
+   sinh ra lời bác, đúng thứ cần dựng. Theo tiền lệ §6.5, gỡ hẳn test thay vì để một test xanh giả.
+   **Bản sửa đó hiện chỉ được bảo chứng bằng phép đo trên tài liệu thật, không có unit test** — muốn
+   có thì phải mở rộng harness cho lượt phân loại nhận kịch bản.
+
+### 9.7 Còn lại
+
+7 mục sai và 4 mục thiếu trên 110. Đáng chú ý là **không nhóm nào còn đủ lớn để đáng một luật**:
+
+- 3 tiêu đề trong phụ lục mà chính hai người gán nhãn cũng bất đồng về ranh giới tiêu đề nhiều dòng
+- 2 dòng ghi nguồn **in đậm** căn giữa — lọt lưới vì luật vòng 5 đòi "không đậm"
+- 1 dòng liệt kê chương trong phần "bố cục", 1 ô bảng
+- 4 mục thiếu: 2 dòng "tiểu kết" in đậm căn giữa không style, 2 nhãn phân nhóm trong danh mục tham khảo
+
+Ba giới hạn cần biết trước khi tin con số 95,1%:
+
+1. **Một tài liệu.** Bảy luật đều đo trên đúng một khoá luận. Chúng qua được bench nên không hồi
+   quy, nhưng bench chỉ có 8 tài liệu tổng hợp — §7.1 đã chỉ ra hai loại tài liệu hỏng theo hai
+   chiều ngược nhau, và ở đây mới chữa được một chiều.
+2. **Đáp án do agent gán, chưa có người xác nhận** — vẫn đúng như §5 đã ghi, dù nay là đồng thuận
+   hai bên độc lập thay vì một bên.
+3. **Đúng cấp vẫn chỉ ~28%**, và đó KHÔNG phải lỗi: tài liệu dùng `Heading1 → Heading3 → Heading4`,
+   bỏ qua Heading2, nên pipeline trả 1,3,4 (trung thành với file) còn đáp án ghi 1,2,3 (lồng nhau
+   thật). Cây cùng hình dạng, khác gốc đánh số. Cờ `--normalize-levels` sửa được phần lớn nhưng
+   chưa khớp hẳn. **Đây là lựa chọn quy ước chưa được quyết, không phải bug chờ sửa.**

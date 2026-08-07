@@ -495,18 +495,30 @@ public sealed class HeaderExtractionPipeline : IDisposable
         }
 
         // Lưới an toàn: style Word đã khẳng định là heading thì không để mô hình làm mất.
+        //
+        // Lời bác TƯỜNG MINH của lượt phân loại cũng KHÔNG được xoá — chỉ được hạ xuống *cần duyệt*.
+        // Đây đúng nguyên tắc §1 mà §3.1 đã áp cho nhánh critic, nhưng nhánh này thì bỏ sót: cùng một
+        // bằng chứng cấu trúc, khác điểm gọi, khác số phận. ĐO ĐƯỢC trên một khoá luận thật: ba mục
+        // phần đầu mang style Heading1 và một mục cấp ba mang Heading4 biến mất khỏi kết quả vì mô
+        // hình trả "n" — trong khi cả bốn đều là đề mục thật theo đáp án của hai người gán nhãn độc
+        // lập. Trên tài liệu đó, CẢ 68 đoạn mang style Heading đều là đề mục thật, không sai mục nào.
+        // Tầng thứ hai, YẾU HƠN: đoạn được Word đánh số VÀ in đậm. Numbering là cấu hình người soạn
+        // đặt qua hộp thoại danh sách, không phải định dạng lỡ tay; cộng với in đậm thì đó là tuyên
+        // bố có chủ đích. ĐO ĐƯỢC trên khoá luận thật: trong 50 ứng viên mang cả hai dấu hiệu, CẢ 50
+        // đều là đề mục theo HỢP của hai đáp án độc lập — không một ngoại lệ. Nhưng bằng chứng này
+        // vẫn yếu hơn style Heading built-in nên nhóm này LUÔN ở trạng thái cần duyệt, không bao giờ
+        // được tự nhận.
+        static bool HasWeakStructuralClaim(SlimParagraph p) => p.Bold && p.NumberingId is not null;
+
         if (_options.TrustStyles)
         {
-            int restored = 0;
-            foreach (var p in candidates.Where(p => p.HasBuiltInHeadingStyle))
+            int restored = 0, restoredDisputed = 0;
+            foreach (var p in candidates.Where(p => p.HasBuiltInHeadingStyle || HasWeakStructuralClaim(p)))
             {
                 if (accepted.ContainsKey(p.Index)) continue;
-                if (passA.ExplicitNonHeadings.Contains(p.Index) ||
-                    (passB?.ExplicitNonHeadings.Contains(p.Index) ?? false))
-                {
-                    Log($"Không khôi phục heading style ở đoạn {p.Index}: model đã chủ động bác từ ngữ cảnh.");
-                    continue;
-                }
+                var rejected = passA.ExplicitNonHeadings.Contains(p.Index) ||
+                               (passB?.ExplicitNonHeadings.Contains(p.Index) ?? false)
+                               || !p.HasBuiltInHeadingStyle;
                 accepted[p.Index] = new HeadingRecord
                 {
                     Index = p.Index,
@@ -515,11 +527,16 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     Text = p.Text,
                     StyleId = p.StyleId,
                     Source = HeadingSource.Style,
-                    Confidence = 1.0,
+                    Confidence = rejected ? 0.5 : 1.0,
+                    Disputed = rejected,
+                    CriticConfirmed = false,
                 };
-                restored++;
+                if (rejected) restoredDisputed++; else restored++;
             }
             if (restored > 0) Log($"Khôi phục {restored} tiêu đề theo style mà mô hình bỏ sót.");
+            if (restoredDisputed > 0)
+                Log($"Giữ {restoredDisputed} tiêu đề mang style Heading ở trạng thái cần duyệt: mô hình " +
+                    "bác nhưng style của tài liệu khẳng định. Không tự nhận, cũng không xoá.");
         }
 
         // Precision-first: mọi heading Model/Style phải qua prompt đối nghịch. Khi tắt chế độ này,

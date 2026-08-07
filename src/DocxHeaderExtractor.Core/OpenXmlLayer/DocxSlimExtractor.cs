@@ -43,10 +43,20 @@ public sealed class DocxSlimExtractor
         var bodySize = EstimateBodyFontSize(paragraphs) ?? resolver.DefaultFontSizePt;
         foreach (var p in paragraphs) p.BodyFontSizePt = bodySize;
 
+        // Mục lục gõ tay phải nhận diện TRƯỚC hai lượt dưới: cả MarkParagraphsBeforeTables lẫn
+        // PostProcess đều đọc InTableOfContents, đặt sau thì chúng đọc phải cờ chưa cập nhật.
+        MarkTypedTableOfContentsRuns(paragraphs);
+
         // Quan hệ vị trí với bảng phải biết TRƯỚC khi chấm điểm: luật chú thích trong Classify dựa
         // vào nó, mà PostProcess thì chạy sau nên đặt ở đó là cờ luôn false lúc cần.
         MarkParagraphsBeforeTables(paragraphs);
         foreach (var p in paragraphs) HeadingHeuristics.Classify(p, _options);
+
+        // Cần IsCandidate nên phải chạy SAU Classify; và chạy TRƯỚC PostProcess để lượt cộng điểm
+        // ngữ cảnh ở đó không kéo ngược dòng bìa vừa hạ lên lại.
+        DemoteCoverPageBlock(paragraphs);
+        DemoteInlineEmphasis(paragraphs);
+        DemoteRunsWithoutOwnProse(paragraphs);
         PostProcess(paragraphs);
 
         var headers = new List<string>();
@@ -321,6 +331,164 @@ public sealed class DocxSlimExtractor
         if (!string.IsNullOrWhiteSpace(s) && !list.Contains(s)) list.Add(s);
     }
 
+    /// <summary>Đoạn văn xuôi thân bài: không phải ứng viên và đủ dài để là nội dung thật.</summary>
+    private const int BodyProseMinLength = 120;
+
+    /// <summary>Số đề mục có dấu hiệu cấu trúc tối thiểu để coi tài liệu là "có đánh dấu bài bản".</summary>
+    private const int MinStructuralMarkersForEmphasisRule = 5;
+
+    /// <summary>
+    /// Nhấn mạnh trong THÂN BÀI, không phải đề mục: đậm + nghiêng cùng lúc mà KHÔNG có một dấu hiệu
+    /// cấu trúc nào — không numbering của Word, không style Heading, không outlineLvl.
+    /// <para>
+    /// ĐO ĐƯỢC trên khoá luận thật 1498 đoạn: 86 đoạn khớp mô tả này, trong đó 83 KHÔNG phải đề mục
+    /// và 21 đang bị nhận nhầm; chỉ 3 đề mục thật dính vào. Trong cùng vùng văn bản, đề mục thật
+    /// (403, 420, 477, 480, 498) là đậm + CÓ numbering, còn câu liệt kê ("Một là,… / Hai là,…") là
+    /// đậm + nghiêng + KHÔNG numbering — hai nhóm tách nhau sạch bằng đúng hai vế đó.
+    /// </para>
+    /// <para>
+    /// Riêng "nghiêng" KHÔNG dùng được một mình: cùng tài liệu có 113 đoạn nghiêng mà 13 trong số đó
+    /// là đề mục thật, nên luật một vế đổi 26 mục thừa lấy 13 mục thiếu — tệ hơn không làm gì.
+    /// </para>
+    /// <para>
+    /// Vế MỨC TÀI LIỆU là chốt quan trọng nhất và được chính bench dạy cho: bản đầu không có nó làm
+    /// <c>02-dinh-dang-thu-cong</c> mất 2 đề mục (recall 100% → 94,9%). Tài liệu đó KHÔNG dùng style
+    /// hay numbering ở bất kỳ đâu — đậm/nghiêng là cách duy nhất tác giả đánh dấu đề mục. Việc
+    /// *thiếu* dấu hiệu cấu trúc chỉ mang thông tin khi tài liệu có dùng dấu hiệu đó ở chỗ khác.
+    /// </para>
+    /// </summary>
+    private static void DemoteInlineEmphasis(List<SlimParagraph> ps)
+    {
+        var structuralMarkers = ps.Count(p =>
+            p.HasBuiltInHeadingStyle || p.NumberingStyleLevel is not null || p.NumberingId is not null);
+        if (structuralMarkers < MinStructuralMarkersForEmphasisRule) return;
+
+        foreach (var p in ps)
+        {
+            if (!p.IsCandidate) continue;
+            if (p.HasBuiltInHeadingStyle || p.NumberingId is not null
+                || p.NumberingStyleLevel is not null || p.OutlineLevel is not null) continue;
+
+            // Hai dạng "không có tuyên bố cấu trúc nào" đều thuộc thân bài, không phải đề mục:
+            //   • đậm + nghiêng → câu dẫn liệt kê trong đoạn ("Một là,… / Hai là,…")
+            //   • KHÔNG đậm     → dòng ghi nguồn dưới bảng/hình, dòng ngày tháng, câu hỏi phiếu khảo sát
+            // Vế "không đậm" gánh phần lớn: trong tài liệu đánh dấu bài bản, đề mục nào cũng ít nhất
+            // được làm đậm — không đậm mà cũng không style, không numbering, không outlineLvl thì
+            // không còn dấu hiệu nào để gọi là đề mục.
+            // ĐO ĐƯỢC trên khoá luận thật: 932 đoạn khớp vế "không đậm", và theo HỢP của hai đáp án
+            // độc lập chỉ ĐÚNG MỘT đoạn trong đó là đề mục — mà đoạn ấy cả hai người gán nhãn đều tự
+            // đánh dấu là không chắc. Dùng HỢP chứ không phải GIAO là cố ý: lấy tiêu chuẩn rộng nhất
+            // mà vẫn không có phản ví dụ thì kết luận mới chắc.
+            var listRunIn = p.Bold && p.Italic;
+            if (!listRunIn && p.Bold) continue;
+
+            p.Role = ParagraphRole.Normal;
+            p.Score = 0;
+        }
+    }
+
+    /// <summary>Số ứng viên tối thiểu của khối bìa. Dưới mức này thì đó là tài liệu mở đầu bằng đề mục.</summary>
+    private const int MinCoverBlockCandidates = 5;
+
+    /// <summary>
+    /// Trang bìa: khối ứng viên đứng TRƯỚC đoạn văn xuôi đầu tiên của tài liệu.
+    /// <para>
+    /// Một tiêu đề phải MỞ RA nội dung bên dưới nó. Dòng bìa thì không mở ra gì — sau nó lại là dòng
+    /// bìa nữa, cho tới tận đoạn văn xuôi đầu tiên. Nên trong vùng trước prose đầu tiên, chỉ ứng
+    /// viên CUỐI CÙNG là tiêu đề thật (nó mở ra chính đoạn prose đó); phần còn lại là siêu dữ liệu
+    /// bìa: tên trường, tên tác giả, ngành, năm.
+    /// </para>
+    /// <para>
+    /// ĐO ĐƯỢC trên một khoá luận thật: trang bìa LẶP HAI LẦN, 19 ứng viên liên tiếp không một đoạn
+    /// văn xuôi nào, mãi tới đoạn thứ 83 mới có prose — và ứng viên cuối cùng trước nó đúng là một
+    /// đề mục thật. §5 từng ghi ca bìa lặp là "không sửa được bằng đổi mô hình"; nó sửa được bằng
+    /// cấu trúc.
+    /// </para>
+    /// <para>
+    /// Ba chốt chống ăn nhầm: cần ít nhất <see cref="MinCoverBlockCandidates"/> ứng viên (tài liệu mở
+    /// đầu bằng một chuỗi đề mục lồng nhau rồi mới tới prose thì không đủ dài để thành khối bìa);
+    /// đoạn mang style Heading built-in hoặc numbering của Word thì miễn trừ (người soạn đã tuyên bố
+    /// tường minh — §1); và ứng viên cuối cùng luôn được giữ.
+    /// </para>
+    /// </summary>
+    private static void DemoteCoverPageBlock(List<SlimParagraph> ps)
+    {
+        var firstProse = ps.FindIndex(p =>
+            p.Role != ParagraphRole.Empty && !p.IsCandidate && p.Text.Length >= BodyProseMinLength);
+        if (firstProse < 0) return;
+
+        var block = new List<SlimParagraph>();
+        for (var i = 0; i < firstProse; i++)
+        {
+            var p = ps[i];
+            if (p.Role == ParagraphRole.Empty || !p.IsCandidate) continue;
+            if (p.HasBuiltInHeadingStyle || p.NumberingId is not null) continue;
+            block.Add(p);
+        }
+
+        if (block.Count < MinCoverBlockCandidates) return;
+        foreach (var p in block.SkipLast(1))
+        {
+            p.Role = ParagraphRole.Normal;
+            p.Score = 0;
+        }
+    }
+
+    /// <summary>
+    /// Cùng nguyên tắc với <see cref="DemoteCoverPageBlock"/> nhưng áp cho MỌI vị trí trong tài liệu:
+    /// trong một dãy ứng viên liên tiếp không có đoạn văn xuôi nào xen giữa, chỉ ứng viên CUỐI CÙNG
+    /// mở ra được văn xuôi — những ứng viên trước nó chỉ mở ra… ứng viên khác.
+    /// <para>
+    /// Bắt nhóm "đuôi mục": dòng ký tên, chức danh, tên người đứng cuối một phần trước khi phần kế
+    /// tiếp bắt đầu. ĐO ĐƯỢC trên khoá luận thật: 4 dòng như vậy nằm cuối hai phần mở đầu, cả bốn
+    /// đều bị nhận nhầm là đề mục.
+    /// </para>
+    /// <para>
+    /// Hai chốt bắt buộc, nếu không sẽ giết cả cây đề mục thật: đoạn có style Heading built-in hoặc
+    /// numbering của Word được MIỄN TRỪ (chuỗi "CHƯƠNG 1 → 1.1 → 1.1.1" cũng là một dãy liên tiếp
+    /// không xen văn xuôi, và cả ba đều là đề mục thật — chúng thoát nhờ vế này); và luật chỉ chạy
+    /// trên tài liệu có đánh dấu cấu trúc bài bản, vì ở tài liệu gõ tay thuần thì việc thiếu dấu hiệu
+    /// không mang thông tin gì.
+    /// </para>
+    /// </summary>
+    private static void DemoteRunsWithoutOwnProse(List<SlimParagraph> ps)
+    {
+        var structuralMarkers = ps.Count(p =>
+            p.HasBuiltInHeadingStyle || p.NumberingStyleLevel is not null || p.NumberingId is not null);
+        if (structuralMarkers < MinStructuralMarkersForEmphasisRule) return;
+
+        var run = new List<SlimParagraph>();
+        void Flush()
+        {
+            foreach (var p in run.SkipLast(1))
+            {
+                p.Role = ParagraphRole.Normal;
+                p.Score = 0;
+            }
+            run.Clear();
+        }
+
+        foreach (var p in ps)
+        {
+            if (p.Role == ParagraphRole.Empty) continue;
+            if (p.IsCandidate)
+            {
+                // Tuyên bố cấu trúc tường minh thì không bị dãy cuốn theo (§1).
+                if (p.HasBuiltInHeadingStyle || p.NumberingId is not null || p.NumberingStyleLevel is not null)
+                {
+                    Flush();
+                    continue;
+                }
+                run.Add(p);
+                continue;
+            }
+
+            // Gặp văn xuôi thân bài ⇒ ứng viên cuối dãy đã mở ra được nội dung, giữ nguyên cả dãy.
+            if (p.Text.Length >= BodyProseMinLength) run.Clear();
+        }
+        Flush();
+    }
+
     /// <summary>
     /// Hậu xử lý dựa trên ngữ cảnh: một dòng in đậm đứng ngay trước đoạn thân bài dài
     /// khả năng cao là tiêu đề; ngược lại một "ứng viên" nằm giữa hai đoạn ngắn thì đáng ngờ.
@@ -356,6 +524,85 @@ public sealed class DocxSlimExtractor
             var prev = PrevNonEmpty(ps, i);
             if (prev is { Role: ParagraphRole.StyledHeading }) p.Score = Math.Min(1, p.Score + 0.05);
         }
+    }
+
+    /// <summary>
+    /// Số trang ở cuối dòng mục lục: khoảng trắng rồi 1–4 chữ số kết thúc đoạn, và phải còn phần
+    /// tên mục ở trước. Tab và dấu chấm dẫn (dot leader) KHÔNG dùng được vì lớp trích text đã nuốt
+    /// chúng thành một dấu cách.
+    /// </summary>
+    private static readonly Regex TrailingPageNumberRx = new(
+        @"^(?<title>.*\S)\s+(?<page>\d{1,4})$", RegexOptions.Compiled);
+
+    /// <summary>
+    /// Nhận diện mục lục GÕ TAY — thứ mà <see cref="IsTableOfContentsEntry"/> không thấy vì nó chỉ
+    /// đọc neo <c>_Toc</c> và style TOC1..TOC9.
+    /// <para>
+    /// ĐO ĐƯỢC: lấy đúng <c>04-bia-muc-luc-chu-thich</c> và chỉ gỡ ba neo <c>_Toc</c> đi, giữ nguyên
+    /// mọi thứ khác — tầng OpenXML từ 7 ứng viên (3 thừa) lên 10 ứng viên (6 thừa), P 57,1% → 40%;
+    /// qua cả mô hình thì P 100% → 66,7% và <b>R 100% → 50%</b>. Mất neo không chỉ thêm rác: mô hình
+    /// không phân biệt được bản sao với bản gốc nên loại nhầm chính heading thật. Tài liệu chuyển từ
+    /// PDF hoặc gõ tay đều rơi vào ca này.
+    /// </para>
+    /// <para>
+    /// Nhận theo DÃY chứ không theo từng đoạn, và cả ba vế phải cùng đúng — đây là chốt chống ăn
+    /// nhầm, không phải trang trí:
+    /// </para>
+    /// <list type="number">
+    /// <item>kết thúc bằng số trang và còn phần tên mục ở trước;</item>
+    /// <item>ít nhất <see cref="MinTocRunLength"/> đoạn LIỀN NHAU cùng dạng — một đề mục lẻ kết thúc
+    /// bằng số ("Phụ lục 2") không đủ làm thành dãy;</item>
+    /// <item>số trang không giảm dần — nhưng dãy được CẮT tại mỗi chỗ tụt chứ không bị loại cả cụm,
+    /// vì mục lục thật hay tụt một lần: phần đầu (mục lục, danh mục bảng/hình) đánh số trang riêng
+    /// rồi phần thân quay về 1. ĐO ĐƯỢC trên khoá luận thật: 21 dòng liên tiếp với dãy
+    /// <c>5,6,6,7,1,16,16,37,…</c> — chốt "cả dãy phải không giảm" loại sạch cả 21 dòng, trong khi
+    /// cắt tại chỗ tụt cho hai đoạn con 4 và 17 dòng, cả hai đều hợp lệ. "PHỤ LỤC 1/2/3" thì vẫn
+    /// trượt vì chúng nằm rải rác, đã bị vế 2 loại từ trước.</item>
+    /// </list>
+    /// <para>
+    /// Thêm hai chốt nữa: đoạn trong bảng bị loại (bảng số liệu đầy dòng kết thúc bằng số), và đoạn
+    /// mang numbering của Word bị loại (mục lục không bao giờ được Word đánh số).
+    /// </para>
+    /// </summary>
+    private const int MinTocRunLength = 3;
+
+    private static void MarkTypedTableOfContentsRuns(List<SlimParagraph> ps)
+    {
+        var run = new List<SlimParagraph>();
+        var pages = new List<int>();
+
+        void Flush()
+        {
+            if (run.Count >= MinTocRunLength)
+                foreach (var p in run) p.InTableOfContents = true;
+            run.Clear();
+            pages.Clear();
+        }
+
+        foreach (var p in ps)
+        {
+            if (p.Role == ParagraphRole.Empty) continue;   // dòng trống không cắt dãy
+            if (!LooksLikeTocLine(p, out var page))
+            {
+                Flush();
+                continue;
+            }
+
+            // Số trang tụt ⇒ kết thúc đoạn con hiện tại, mở đoạn mới TỪ chính dòng này.
+            if (pages.Count > 0 && page < pages[^1]) Flush();
+            run.Add(p);
+            pages.Add(page);
+        }
+        Flush();
+    }
+
+    private static bool LooksLikeTocLine(SlimParagraph p, out int page)
+    {
+        page = 0;
+        if (p.TableDepth > 0 || p.NumberingId is not null) return false;
+        var m = TrailingPageNumberRx.Match(p.Text.Trim());
+        if (!m.Success) return false;
+        return int.TryParse(m.Groups["page"].Value, out page);
     }
 
     /// <summary>
