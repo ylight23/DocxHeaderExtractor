@@ -107,7 +107,9 @@ public sealed class DocxSlimExtractor
                        ?? style?.FontSizePt
                        ?? resolver.DefaultFontSizePt;
 
-        var (text, textSpans) = BuildTextAndSpans(p, nestedTextBoxes, style);
+        var built = BuildTextAndSpans(p, nestedTextBoxes, style);
+        var text = built.Text;
+        var textSpans = built.Spans;
 
         // Chữ hoa toàn bộ do người dùng gõ tay cũng tính là AllCaps.
         if (!caps && text.Length > 3 && HasLetters(text) && text == text.ToUpperInvariant())
@@ -122,6 +124,8 @@ public sealed class DocxSlimExtractor
             StableId = walked.StableId,
             Text = text,
             TextSpans = textSpans,
+            LineBreakOffsets = built.LineBreaks,
+            SourceSegments = built.Sources,
             StyleId = styleId,
             StyleName = style?.Name,
             OutlineLevel = pPr?.OutlineLevel?.Val?.Value ?? style?.OutlineLevel,
@@ -239,20 +243,34 @@ public sealed class DocxSlimExtractor
         return sb.ToString();
     }
 
-    private static (string Text, IReadOnlyList<SlimTextSpan> Spans) BuildTextAndSpans(
+    private readonly record struct ParagraphText(
+        string Text,
+        IReadOnlyList<SlimTextSpan> Spans,
+        IReadOnlyList<int> LineBreaks,
+        IReadOnlyList<SlimSourceSegment> Sources);
+
+    /// <summary>
+    /// Dựng text đã chuẩn hoá khoảng trắng, kèm ba thứ mà bản chuẩn hoá tự nó làm mất:
+    /// ranh giới định dạng, vị trí <c>w:br</c>, và đường về nguồn của từng ký tự.
+    /// </summary>
+    private static ParagraphText BuildTextAndSpans(
         Paragraph paragraph,
         IReadOnlySet<TextBoxContent> excludedTextBoxes,
         ResolvedStyle? paragraphStyle)
     {
         var text = new StringBuilder();
         var spans = new List<SlimTextSpan>();
+        var lineBreaks = new List<int>();
+        var sources = new List<SlimSourceSegment>();
+        var runIndex = -1;
 
         foreach (var run in paragraph.Descendants<Run>())
         {
             if (run.Ancestors<TextBoxContent>().Any(excludedTextBoxes.Contains)) continue;
             if (run.Ancestors<DeletedRun>().Any()) continue;
 
-            var raw = GetText(run, excludedTextBoxes);
+            runIndex++;
+            var (raw, breakOffsets) = GetRunText(run, excludedTextBoxes);
             if (raw.Length == 0) continue;
             var rPr = run.RunProperties;
             var bold = StyleResolver.OnOff(rPr?.Bold) ?? paragraphStyle?.Bold ?? false;
@@ -263,20 +281,48 @@ public sealed class DocxSlimExtractor
             var size = StyleResolver.HalfPointToPt(rPr?.FontSize?.Val?.Value)
                 ?? paragraphStyle?.FontSizePt;
 
-            foreach (var c in raw)
+            for (var rawIndex = 0; rawIndex < raw.Length; rawIndex++)
             {
+                var c = raw[rawIndex];
+
+                // Vị trí w:br ghi lại TRƯỚC khi biết dấu cách của nó có bị gộp hay không: điều đáng
+                // giữ là "nguồn xuống dòng ở CHỖ NÀY", không phải "có một dấu cách sống sót".
+                if (breakOffsets.Contains(rawIndex)) AddLineBreak(text.Length);
+
                 if (char.IsWhiteSpace(c))
                 {
                     if (text.Length == 0 || text[^1] == ' ') continue;
-                    Append(' ');
+                    Append(' ', rawIndex);
                 }
                 else
                 {
-                    Append(c);
+                    Append(c, rawIndex);
                 }
             }
 
-            void Append(char c)
+            void AddLineBreak(int at)
+            {
+                if (lineBreaks.Count == 0 || lineBreaks[^1] != at) lineBreaks.Add(at);
+            }
+
+            void Append(char c, int rawIndex)
+            {
+                var at = text.Length;
+                // Nối tiếp segment cũ chỉ khi CẢ HAI phía đều liền mạch: cùng run, và raw offset đi
+                // đúng một bước. Vế thứ hai tự nó bắt mọi chỗ ký tự nguồn bị bỏ (khoảng trắng gộp),
+                // nên không cần thêm cờ "vừa bỏ ký tự" — đã thử, và kiểm đột biến chứng minh cờ đó
+                // không phân biệt được gì.
+                var continues = sources.Count > 0 && sources[^1] is var prev
+                    && prev.End == at && prev.RunIndex == runIndex
+                    && prev.RawStart + (at - prev.Start) == rawIndex;
+
+                if (continues) sources[^1] = sources[^1] with { End = at + 1 };
+                else sources.Add(new SlimSourceSegment(at, at + 1, runIndex, rawIndex));
+
+                AppendSpan(c);
+            }
+
+            void AppendSpan(char c)
             {
                 var start = text.Length;
                 text.Append(c);
@@ -298,9 +344,56 @@ public sealed class DocxSlimExtractor
                 if (last.Start == text.Length) spans.RemoveAt(spans.Count - 1);
                 else spans[^1] = last with { End = text.Length };
             }
+            if (sources.Count > 0)
+            {
+                var last = sources[^1];
+                if (last.Start == text.Length) sources.RemoveAt(sources.Count - 1);
+                else sources[^1] = last with { End = text.Length };
+            }
         }
 
-        return (text.ToString(), spans);
+        // Text bị Trim ở hai đầu nên một w:br ngay đầu/cuối đoạn có thể trỏ ra ngoài chuỗi.
+        // Kẹp về biên thay vì vứt: "đoạn này CÓ ngắt dòng" là thông tin, vị trí chỉ là chi tiết.
+        var clamped = lineBreaks.Select(b => Math.Clamp(b, 0, text.Length)).Distinct().ToList();
+
+        return new ParagraphText(text.ToString(), spans, clamped, sources);
+    }
+
+    /// <summary>
+    /// Text thô của một run, kèm vị trí các <c>w:br</c> trong chính chuỗi thô đó.
+    /// <para>
+    /// Tách khỏi <see cref="GetText"/> vì hàm kia phục vụ header/footer và không cần biết ngắt dòng;
+    /// gộp lại thì mọi caller phải gánh thêm một giá trị trả về không dùng đến.
+    /// </para>
+    /// </summary>
+    private static (string Raw, HashSet<int> BreakOffsets) GetRunText(
+        Run run, IReadOnlySet<TextBoxContent> excludedTextBoxes)
+    {
+        var sb = new StringBuilder();
+        var breaks = new HashSet<int>();
+
+        foreach (var el in run.Descendants())
+        {
+            if (el.Ancestors<TextBoxContent>().Any(excludedTextBoxes.Contains)) continue;
+            switch (el)
+            {
+                case Text t:
+                    if (!t.Ancestors<DeletedRun>().Any()) sb.Append(t.Text);
+                    break;
+                case TabChar:
+                    sb.Append('\t');
+                    break;
+                case Break:
+                    breaks.Add(sb.Length);
+                    sb.Append(' ');
+                    break;
+                case NoBreakHyphen:
+                    sb.Append('-');
+                    break;
+            }
+        }
+
+        return (sb.ToString(), breaks);
     }
 
     /// <summary>
