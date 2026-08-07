@@ -20,7 +20,13 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
     ContentRootPath = AppContext.BaseDirectory,
 });
 
-builder.Services.Configure<FormOptions>(o => o.MultipartBodyLengthLimit = 128L * 1024 * 1024);
+// Trần upload phải đặt ở CẢ HAI tầng, nếu không tầng thấp hơn quyết định trong im lặng: Kestrel
+// mặc định chặn ở 30 MB và ném BadHttpRequestException TRƯỚC khi handler chạy, nên trình duyệt chỉ
+// thấy ERR_CONNECTION_RESET chứ không nhận được thông báo lỗi nào. Một hằng số cho cả hai để chúng
+// không đi lệch nhau.
+const long MaxUploadBytes = 128L * 1024 * 1024;
+builder.Services.Configure<FormOptions>(o => o.MultipartBodyLengthLimit = MaxUploadBytes);
+builder.WebHost.ConfigureKestrel(o => o.Limits.MaxRequestBodySize = MaxUploadBytes);
 builder.Services.AddSingleton<LlamaModelCache>();
 builder.Services.AddSingleton(_ => new CorrectionMemory(CorrectionMemory.DefaultPath()));
 builder.Services.AddSingleton<DocumentAgentHarnessFactory>();
@@ -138,7 +144,20 @@ app.MapPost("/api/extract", async (
         return;
     }
 
-    var form = await req.ReadFormAsync(ct);
+    IFormCollection form;
+    try
+    {
+        form = await req.ReadFormAsync(ct);
+    }
+    catch (BadHttpRequestException ex)
+    {
+        // Vượt trần thì Kestrel huỷ kết nối; không bắt ở đây thì phía trình duyệt chỉ thấy
+        // ERR_CONNECTION_RESET và không có cách nào biết vì sao.
+        res.StatusCode = StatusCodes.Status413PayloadTooLarge;
+        await res.WriteAsync($"File quá lớn (trần {MaxUploadBytes / (1024 * 1024)} MB): {ex.Message}", ct);
+        return;
+    }
+
     var upload = form.Files["file"];
     if (upload is null || upload.Length == 0)
     {
