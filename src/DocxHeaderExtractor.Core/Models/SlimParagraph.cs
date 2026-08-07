@@ -22,6 +22,20 @@ public enum ParagraphRole
 public sealed record SlimTextSpan(int Start, int End, bool Bold, bool Italic, bool Underline, double? FontSizePt);
 
 /// <summary>
+/// Ánh xạ ngược một đoạn liên tục của <see cref="SlimParagraph.Text"/> (đã chuẩn hoá khoảng trắng)
+/// về vị trí thật trong nguồn: run thứ mấy, và lệch bao nhiêu ký tự trong text thô của run đó.
+/// <para>
+/// Cần vì chuẩn hoá là phép mất mát: mọi chuỗi khoảng trắng — kể cả <c>w:tab</c> và <c>w:br</c> —
+/// gộp thành MỘT dấu cách, nên offset trên <c>Text</c> không còn cộng thẳng vào nguồn được. Không có
+/// ánh xạ này thì mọi thứ tính bằng offset chuẩn hoá đều không ghi ngược lại DOCX được:
+/// <c>OutlineWriteback</c> hiện từ chối với lý do <c>inline_body_not_splittable</c> mỗi khi heading
+/// chỉ chiếm một phần paragraph.
+/// </para>
+/// <para>Một segment được cắt ở mỗi chỗ mạch đứt: đổi run, hoặc có ký tự nguồn bị bỏ đi.</para>
+/// </summary>
+public sealed record SlimSourceSegment(int Start, int End, int RunIndex, int RawStart);
+
+/// <summary>
 /// Một đoạn văn đã được rút gọn: chỉ giữ những thuộc tính có ích cho việc nhận diện tiêu đề.
 /// </summary>
 public sealed class SlimParagraph
@@ -40,6 +54,25 @@ public sealed class SlimParagraph
 
     /// <summary>Ranh giới run OOXML để phát hiện heading lẫn nội dung trong cùng paragraph.</summary>
     public IReadOnlyList<SlimTextSpan> TextSpans { get; init; } = [];
+
+    /// <summary>
+    /// Vị trí trên <see cref="Text"/> nơi nguồn có một <c>w:br</c> (Shift+Enter).
+    /// <para>
+    /// Trước đây <c>w:br</c> bị biến thành một dấu cách và KHÔNG để lại dấu vết nào, nên ba trường
+    /// hợp xuống dòng hoàn toàn khác nhau của DOCX — Word tự ngắt theo chiều rộng, Shift+Enter, và
+    /// Enter thật — chỉ còn phân biệt được hai. Một tiêu đề bị Shift+Enter cắt đôi trông y hệt một
+    /// tiêu đề bình thường có dấu cách.
+    /// </para>
+    /// <para>
+    /// CỐ Ý không đổi ký tự trong <see cref="Text"/> thành <c>\n</c>: <c>Text</c> là hợp đồng của
+    /// <see cref="TextSpans"/>, <c>InlineHeadingSplitter</c>, view gửi cho mô hình và writeback —
+    /// thêm một mảng offset là phép cộng, đổi ký tự là đổi mọi offset cùng lúc.
+    /// </para>
+    /// </summary>
+    public IReadOnlyList<int> LineBreakOffsets { get; init; } = [];
+
+    /// <summary>Ánh xạ <see cref="Text"/> đã chuẩn hoá về run + offset thô. Xem <see cref="SlimSourceSegment"/>.</summary>
+    public IReadOnlyList<SlimSourceSegment> SourceSegments { get; init; } = [];
 
     /// <summary>Span heading/body do parser xác minh, truyền cho lượt model cross-verification.</summary>
     public int? VerifiedHeadingEnd { get; set; }
