@@ -1239,3 +1239,66 @@ fail-closed. Ba đột biến đều bị bắt — nhưng **hai trong ba chỉ 
 
 Cùng bài học §14.4 ở dạng khác: **fixture phải chứa đúng tình huống mà chốt sinh ra để chặn**, nếu
 không test xanh vì không chạm tới chốt, chứ không phải vì chốt đúng.
+
+## 16. Đúng cấp 26,5% trên khoá luận thật — và hai lần tôi mô tả sai nó
+
+Mục 3 gỡ chốt cho mục 2, nên §13.4 dự đoán chuỗi này sẽ chữa được đúng cấp ~28% trên khoá luận thật.
+**Đo lại: không đổi một chữ số** — P 94,2% · R 86,3% · F1 90% · đúng cấp 26,5% ở cả hai nhánh cờ.
+
+### 16.1 Một lỗi thực tế của tôi, đã lan qua nhiều chỗ
+
+§9.7 viết, và §13/§14 cùng nhiều thông điệp commit lặp lại, rằng khoá luận này *"dùng
+Heading1→Heading3→Heading4, bỏ qua Heading2"*. **Sai.** Đếm ra:
+
+| Heading1 | Heading2 | Heading3 | Heading4 | Heading5 |
+|--:|--:|--:|--:|--:|
+| 12 | **8** | 17 | 15 | 16 |
+
+Đủ cả năm cấp, liên tục, không bỏ cấp nào. Tôi suy "bỏ qua Heading2" từ bốn mục đã lấy mẫu chứ chưa
+đếm, rồi dùng lại kết luận đó nhiều lần mà không kiểm.
+
+Hệ quả: `StyleTrust` chấm tài liệu này là *"5 cấp riêng biệt ⇒ quyền gán cấp GIỮ"* — và nó **chấm
+đúng** theo định nghĩa hiện có. `SkipsLevels` sai, `DistinctLevels = 5 > 1`, nên `LevelTrusted` đúng
+và không có gì được nới. Chuỗi mục 2 + mục 3 không bao giờ kích hoạt ở đây.
+
+### 16.2 Vấn đề thật: cùng một style mang hai độ sâu
+
+Đối chiếu 68 đoạn có style với đáp án đồng thuận — 28 khớp, **40 lệch**:
+
+| style | → cấp đáp án | số mục |
+|---|--:|--:|
+| Heading1 | 1 | 12 ✓ |
+| Heading2 | 2 | 8 ✓ |
+| **Heading3** | **2** | **9** ✗ |
+| **Heading3** | **3** | **8** ✓ |
+| Heading4 | 3 | 15 ✗ |
+| Heading5 | 4 | 16 ✗ |
+
+`Heading3` mang **hai độ sâu khác nhau ở hai phần khác nhau** của cùng một tài liệu: ở những chương
+tác giả có dùng Heading2 thì Heading3 là cấp 3, ở những chương tác giả nhảy thẳng từ Heading1 thì
+Heading3 là cấp 2. Heading4/Heading5 lệch đều một cấp vì chúng nằm dưới nhóm chương thứ hai.
+
+### 16.3 Vì sao không bộ dò mức tài liệu nào thấy được
+
+`StyleTrust` đo hai thứ: số cấp riêng biệt, và có bỏ cấp giữa chừng không. Tài liệu này **khoẻ mạnh
+theo cả hai** — dùng đủ 5 cấp, liên tục. Bất nhất nằm ở mức PHẦN, không ở mức tài liệu, nên mọi
+thống kê gộp toàn tài liệu đều mù với nó. Thêm ngưỡng cũng không cứu được: không có ngưỡng nào phân
+biệt "5 cấp dùng nhất quán" với "5 cấp dùng bất nhất theo phần".
+
+### 16.4 Hai lần mô tả sai, và cái đúng
+
+- §9.7 bản đầu: *"lựa chọn quy ước, không phải bug"* — sai, vì cây không cùng hình dạng: `Heading3`
+  ở hai chỗ ra hai độ sâu, đổi gốc đánh số không sửa được.
+- §9.7 bản sửa (và §13, §14): *"lệch đều một cấp, bỏ qua Heading2"* — cũng sai, như 16.1.
+- Đúng: **bất nhất theo phần**, không phải lệch đều, không phải quy ước.
+
+### 16.5 Hướng đo tiếp, và nó KHÔNG phải nới thêm ngưỡng
+
+Tài liệu này có sẵn một nguồn cấp đáng tin hơn style: **chuỗi đánh số người soạn gõ** (`1.1.`,
+`1.1.1.`, `2.2.3.2.`) — nó nhất quán suốt tài liệu trong khi style thì không. `NumberingAudit`
+đọc được nó, `SignatureTiers` suy được tầng từ nó, nhưng cả hai đứng ngoài vì `Declared()` thấy
+style đã khai cấp và `LevelTrusted` thì đúng.
+
+Phép đo cần làm: khi ĐỘ SÂU của chuỗi đánh số gõ tay mâu thuẫn có hệ thống với cấp style, ưu tiên
+chuỗi đánh số. Đây là tín hiệu **mức đoạn** nên nó nhìn được thứ mà thống kê mức tài liệu mù. Chưa
+làm, và phải đo riêng — nó đổi nguồn quyết định cấp cho mọi tài liệu có đánh số gõ tay.
