@@ -191,6 +191,10 @@ toàn `document_title` thì cây heading rỗng sạch (`Collection: []`).
 
 ## 5. Còn lại
 
+> Danh sách việc **đang mở** và thứ tự làm nằm ở [`TODO.md`](TODO.md). Mục này giữ lại
+> bối cảnh và những cần gạt đã thử — phần "vì sao", không phải phần "làm gì tiếp".
+
+
 - ~~**`07-chen-chi-thi` thừa 1 đoạn**~~ **ĐÃ HẾT** — bench giờ tuyệt đối **8/8, P/R/F1 đều 100%**.
   Không phải nhờ prompt hay nhờ trả lại ngữ cảnh so sánh, mà nhờ **chuẩn hoá `outlineLevel`** ở
   §7.3: dòng tiêm không có `outlineLevel`, heading thật thì có, và tương phản đó đủ để loại nó.
