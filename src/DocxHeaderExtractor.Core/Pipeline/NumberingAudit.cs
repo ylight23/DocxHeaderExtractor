@@ -64,6 +64,9 @@ public static class NumberingAudit
     //
     //   HeadingHeuristics  — chạy TRƯỚC mô hình, quyết định "có đáng hỏi không". Sai theo hướng
     //                        rộng: bỏ sót một ứng viên là mất hẳn, vì mô hình không bao giờ thấy nó.
+    //                        LƯU Ý: vế "sai theo hướng rộng" ĐÚNG với phần chấm điểm ở đây, nhưng
+    //                        KHÔNG áp cho nhóm luật hạ cấp theo cấu trúc trong DocxSlimExtractor —
+    //                        §21 đo được rằng nới chúng ra làm F1 tụt 90,8% → 78,4%.
     //   NumberingAudit     — chạy SAU mô hình, quyết định "dãy số này có nhất quán không". Sai theo
     //                        hướng hẹp: nhận nhầm "1: 03/04" là mục số 1 thì hậu kiểm sẽ báo thiếu
     //                        mục 2, 3 không hề tồn tại.

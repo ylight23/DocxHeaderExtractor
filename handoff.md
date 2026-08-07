@@ -1515,3 +1515,64 @@ dưới trần pipeline 7 điểm, tệ nhất ở cả đầu lẫn cuối tài
 
 Nhìn tất cả cùng lúc làm mô hình **thận trọng hơn**, không phải bao quát hơn. Đó là kết quả đo được,
 ngược với giả thuyết thường gặp rằng context dài giúp "thấy hết".
+
+## 21. "Tầng lọc phải sai theo hướng rộng" — đúng nguyên tắc, sai khi áp cho luật cấu trúc
+
+Hợp đồng ghi ở đầu `NumberingAudit` nói tầng chấm điểm phải **sai theo hướng rộng**, vì *"bỏ sót một
+ứng viên là mất hẳn"*. Bốn luật hạ cấp thêm ở §12–§15 (`DemoteCoverPageBlock`,
+`DemoteInlineEmphasis`, `DemoteRunsWithoutOwnProse`, luật mục lục gõ tay) đều SIẾT đúng tầng ấy, và
+mục này không nói ra điều đó — chỉ báo cáo F1 tăng.
+
+Nặng hơn: chúng đặt `Role = Normal`, tức **xoá hẳn**, đúng thứ §3.1 cấm (*"được quyền hạ độ tin cậy,
+không được quyền xoá bằng chứng"*). Nguyên tắc đó được áp cho phán quyết của mô hình nhưng miễn trừ
+cho heuristic của chính mình.
+
+### 21.1 Giá của việc siết, đo bằng cách tắt từng luật
+
+13 mục thiếu trên khoá luận thật, truy nguyên bằng cách vô hiệu hoá từng luật một:
+
+| Nguyên nhân | Mục |
+|---|---|
+| `DemoteInlineEmphasis` | 1202, 1205, 1209 |
+| `DemoteRunsWithoutOwnProse` | 1294, 1335 |
+| Nhãn gạch đầu dòng `●` ⇒ list item | 1239, 1256 |
+| Điểm 0,35 < ngưỡng 0,45 | 1116 |
+| Điểm 0 — định dạng không nổi bật | 215, 964, 979, 1000, 1113 |
+
+Tức **5/13 là do luật mới**, 8/13 là tầng chấm điểm cũ.
+
+### 21.2 Nới ra thì sao — đo, không đoán
+
+Đổi hai luật đó từ "xoá tư cách ứng viên" sang "hạ điểm, giữ ứng viên", tức trả lại đúng tinh thần
+§3.1 và hợp đồng của tầng. Tập ứng viên **129 → 256**; cả 5 mục quay lại.
+
+| Khoá luận thật, 7B khối 28K | Siết | **Nới** |
+|---|--:|--:|
+| Precision | 91,5% | **76,6%** |
+| Recall | 90,1% | **80,2%** |
+| F1 | **90,8%** | **78,4%** |
+| Mục thừa | 11 | **32** |
+
+**Xuống cả hai trục.** Precision tụt là điều dự đoán được. Recall tụt mới đáng chú ý: thêm 127 ứng
+viên **đổi thành phần khối**, và mô hình lật câu trả lời cho cả những mục không liên quan — đúng bẫy
+§4.1, nay đo được ở quy mô lớn.
+
+Bench 10 tài liệu **giữ nguyên 10/10** ở cả hai nhánh: bộ bench hoàn toàn mù với đánh đổi này.
+
+### 21.3 Kết luận, và đính chính hợp đồng thay vì lờ đi
+
+Vế *"bỏ sót một ứng viên là mất hẳn"* vẫn ĐÚNG — 5 mục kia mất thật. Nhưng kết luận rút ra từ nó
+(*"nên luôn sai theo hướng rộng"*) **bị số liệu bác** cho nhóm luật cấu trúc: mô hình không cắt được
+chúng (§10.3, §11.2 đã đo hai lần), nên giữ chúng lại chỉ đổi 5 mục thiếu lấy 21 mục thừa, cộng thêm
+thiệt hại lan sang các mục khác.
+
+Phân biệt cần giữ:
+
+- **Tầng chấm điểm hình thức** (đậm/hoa/cỡ chữ) — vẫn phải sai theo hướng rộng. Nó ĐOÁN, và đoán sai
+  theo hướng hẹp thì mất vĩnh viễn.
+- **Luật hạ cấp theo cấu trúc** (dòng bìa, dãy không mở ra văn xuôi, mục lục theo dãy số trang) — đây
+  không phải phỏng đoán mà là dữ kiện cấu trúc đọc được từ tài liệu, và mô hình đã được đo là không
+  bác nổi. Siết ở đây là đúng chỗ.
+
+Comment ở đầu `NumberingAudit` đã được đính chính để không còn phát biểu một luật mà code cố ý làm
+ngược. Nếu chỉ sửa code mà để nguyên câu chữ thì lần sau người đọc sẽ tin vào câu chữ.
