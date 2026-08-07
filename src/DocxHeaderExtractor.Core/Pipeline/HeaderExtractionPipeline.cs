@@ -813,7 +813,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             await ReconcileHierarchyAsync(llm, accepted, slim, ct);
 
         var result = accepted.Values.OrderBy(h => h.Index).ToList();
-        var structuralFixes = StructuralHierarchyResolver.Apply(result, slim);
+        var structuralFixes = StructuralHierarchyResolver.Apply(result, slim, _options.Extraction.UseStyleTrust);
         if (structuralFixes > 0) Log($"Hậu xử lý hierarchy: sửa {structuralFixes} cấp theo quan hệ numbering cha–con/anh–em.");
         return result;
     }

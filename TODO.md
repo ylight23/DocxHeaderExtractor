@@ -79,7 +79,21 @@ Cần hai thứ:
 
 </details>
 
-## 3. `NumberingAudit` không đọc được "Chương 1."
+## 3. ~~`NumberingAudit` không đọc được "Chương 1."~~ — **XONG (§14)**
+
+> **Trạng thái.** Đã thêm `NumberKind.Labelled` với NHÃN nằm trong chữ ký (`Labelled(chương):1`), và
+> nới `Declared` để tôn trọng `LevelTrusted`. Hai thay đổi đo riêng:
+> - token `Labelled` một mình (không cờ): bench đúng cấp 88,5% → **90,4%**, 7/10 → **8/10**;
+> - + nới `Declared` (có `--style-trust`): `10-cap-style-thoai-hoa` **44,4% → 100%**, bench đúng cấp
+>   88,5% → **100%**, và lần đầu bench đạt **tuyệt đối toàn phần: P/R/F1 100% · đúng cấp 100% · 10/10**.
+>
+> Việc này cũng gỡ nốt chỗ tắc của mục 2 (§13.4). 305/305 test xanh; ba lần test suýt xanh giả đều
+> bị kiểm đột biến bắt — xem §14.4.
+>
+> **Còn lại:** cải thiện nằm sau cờ `--style-trust`. Đổi mặc định là quyết định riêng, chung số phận
+> với phần còn lại của mục 1.
+
+<details><summary>Ghi chép gốc của mục này</summary>
 
 Dạng "nhãn + số" không sinh ra `NumberToken` vì `Parse` chỉ có mẫu Ả Rập / La Mã / chữ cái. Đây là
 lý do gốc của bug 87,2% ở §5, hiện đang được *vá bằng chốt* chứ chưa được *sửa*.
@@ -90,6 +104,8 @@ lý do gốc của bug 87,2% ở §5, hiện đang được *vá bằng chốt* 
 `PrecisionAcceptanceGate`, `StructuralHierarchyResolver`, `StructuralRecovery`). Thêm một
 `NumberToken` kind mới đổi cả `Signature` → `SignatureTiers` → suy cấp, tức đổi output của tất cả
 cùng lúc. Không được gộp với bất kỳ thay đổi nào khác.
+
+</details>
 
 ## 4. Đáp án có người xác nhận — *thắt cổ chai của mọi thứ phía sau*
 
