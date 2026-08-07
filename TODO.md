@@ -107,6 +107,25 @@ cùng lúc. Không được gộp với bất kỳ thay đổi nào khác.
 
 </details>
 
+## 3b. Cấp theo chuỗi đánh số khi style bất nhất theo phần — *lỗi lớn nhất còn lại* (§16)
+
+Trên khoá luận thật, đúng cấp **26,5%** và chuỗi mục 2 + mục 3 **không chạm tới nó**: `StyleTrust`
+chấm tài liệu này là "5 cấp riêng biệt ⇒ quyền gán cấp GIỮ", và chấm ĐÚNG theo định nghĩa hiện có.
+
+Vấn đề nằm ở mức PHẦN chứ không mức tài liệu: cùng `Heading3` mang cấp 2 ở 9 mục và cấp 3 ở 8 mục,
+tuỳ chương tác giả có dùng Heading2 hay không. Mọi thống kê gộp toàn tài liệu đều mù với nó, nên
+**thêm ngưỡng cho `StyleTrust` không phải hướng đi**.
+
+**Hướng:** chuỗi đánh số gõ tay (`1.1.`, `2.2.3.2.`) nhất quán suốt tài liệu trong khi style thì
+không. Khi ĐỘ SÂU của nó mâu thuẫn có hệ thống với cấp style, ưu tiên nó. Đây là tín hiệu mức đoạn
+nên nhìn được thứ thống kê mức tài liệu bỏ sót.
+
+**Nghiệm thu:** khoá luận thật đúng cấp 26,5% → cao hơn; bench 10 tài liệu giữ đúng cấp 100% với
+`--style-trust`. Cần lượt LLM (~6 phút/lượt trên RTX 3060).
+
+**Rủi ro đã biết:** §5 ghi thiếu chốt "cấu trúc đã khai thì không suy lại" từng kéo đúng cấp
+100% → 87,2%. Nới nguồn quyết định cấp là đụng đúng chỗ đó.
+
 ## 4. Đáp án có người xác nhận — *thắt cổ chai của mọi thứ phía sau*
 
 **Việc duy nhất không tự động hoá được.** Mọi `.key` tài liệu thật hiện có đều do agent gán (§5,
