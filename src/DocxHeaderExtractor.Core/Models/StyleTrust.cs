@@ -34,7 +34,9 @@ public sealed record StyleTrust(
     int SuspectCount,
     int DistinctLevels,
     bool SkipsLevels,
-    double Density)
+    double Density,
+    int NumberedSample = 0,
+    int NumberedDisagree = 0)
 {
     /// <summary>
     /// Tỉ lệ đoạn mang style built-in mà lại mang hình dạng của thứ KHÔNG phải đề mục.
@@ -52,8 +54,30 @@ public sealed record StyleTrust(
     /// Style có mang thông tin CẤP không. Một cấp duy nhất trên nhiều mục nghĩa là tác giả không
     /// phân biệt cấp bằng style; bỏ cấp giữa chừng nghĩa là con số trong tên style không phải độ sâu.
     /// </summary>
+    /// <summary>
+    /// Tỉ lệ đoạn vừa mang style Heading vừa có chuỗi đánh số gõ tay mà HAI NGUỒN NÓI KHÁC NHAU
+    /// về độ sâu. Đây là vế duy nhất đối chiếu style với một nguồn ĐỘC LẬP; hai vế kia chỉ soi
+    /// chính style (bao nhiêu cấp, có bỏ cấp không).
+    /// </summary>
+    public double NumberedDisagreeRatio =>
+        NumberedSample == 0 ? 0 : (double)NumberedDisagree / NumberedSample;
+
     public bool LevelTrusted =>
-        StyledCount < MinimumStyledSample || (DistinctLevels > 1 && !SkipsLevels);
+        StyledCount < MinimumStyledSample
+        || ((DistinctLevels > 1 && !SkipsLevels)
+            && !(NumberedSample >= MinimumNumberedSample && NumberedDisagreeRatio > MaxNumberedDisagree));
+
+    /// <summary>Dưới ngưỡng này thì không đủ mẫu để nói style có bám độ sâu đánh số hay không.</summary>
+    public const int MinimumNumberedSample = 8;
+
+    /// <summary>
+    /// Trên mức này thì style không còn bám độ sâu của chuỗi đánh số. Chọn 1/3 vì lệch lác đác là
+    /// chuyện thường (một mục đánh số sai, một mục cố ý nâng cấp), còn một phần ba trở lên thì đó
+    /// là cách dùng style chứ không phải lỗi lẻ.
+    /// ĐO ĐƯỢC trên khoá luận thật (§16.2): 40/68 đoạn có style lệch cấp so với đáp án, và trong
+    /// nhóm vừa có style vừa có đánh số thì tỉ lệ bất đồng cao hơn hẳn ngưỡng này.
+    /// </summary>
+    public const double MaxNumberedDisagree = 1.0 / 3;
 
     /// <summary>
     /// Dưới ngưỡng này thì mẫu quá nhỏ để nói gì về tài liệu — giữ nguyên hành vi cũ. Chọn 8 vì
@@ -71,5 +95,8 @@ public sealed record StyleTrust(
         $"style built-in {StyledCount} đoạn ({Density:P0} tài liệu), {SuspectCount} đoạn trông không " +
         $"phải đề mục ({SuspectRatio:P0}), {DistinctLevels} cấp riêng biệt" +
         (SkipsLevels ? ", CÓ bỏ cấp giữa" : "") +
+        (NumberedSample > 0
+            ? $", {NumberedDisagree}/{NumberedSample} lệch so với độ sâu đánh số ({NumberedDisagreeRatio:P0})"
+            : "") +
         $" ⇒ quyền chọn {(SelectionTrusted ? "GIỮ" : "HẠ")}, quyền gán cấp {(LevelTrusted ? "GIỮ" : "HẠ")}";
 }
