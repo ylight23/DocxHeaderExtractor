@@ -1347,3 +1347,119 @@ liên tục cả ba cấp, bất nhất nằm ở chỗ cùng độ sâu 2 mà b
 
 Đây là lần thứ ba trong hai phiên một fixture xanh vì **không chạm tới chốt** chứ không phải vì chốt
 đúng (xem §14.4, §15.4). Ba lần đều chỉ lộ ra nhờ kiểm đột biến.
+
+## 18. Đo trực tiếp document view: 129 546 token — và §7.5 sai chiều
+
+Thí nghiệm one-pass (multi-pass so với một lượt trên toàn bộ ứng viên) đòi biết view thật lớn bao
+nhiêu. Đo bằng `xml --dump-chunks --model`, tức tokenizer thật:
+
+| | |
+|---|---|
+| Document view khoá luận (1498 đoạn, 129 ứng viên) | **416 289 ký tự / 129 546 token** |
+| Trần context Qwen2.5-7B | 32 768 |
+
+**One-pass trên Qwen2.5-7B là bất khả** — thiếu gần 4 lần. Ước lượng "129 ứng viên ≈ 16 000 token"
+mà tôi nêu trước đó **sai ~8 lần**: tôi suy từ SỐ ỨNG VIÊN chứ chưa đo, đúng lỗi §7.5 đã cảnh báo và
+tôi vẫn lặp lại.
+
+### 18.1 §7.5 sai, và sai theo chiều ngược
+
+§7.5 ghi bảng này:
+
+| Cách đếm | Ký tự/token |
+|---|---|
+| Tokenizer Qwen2.5-7B | ~0,64 — **"suy từ số khối"** |
+| Tokenizer Llama-3.2-3B | 3,206 — **đo trực tiếp** |
+
+và kết luận *"hai tokenizer lệch nhau ~5 lần trên cùng đoạn văn tiếng Việt"*, giải thích bằng vocab
+Qwen nghiêng Trung/Anh nên chữ có dấu rơi xuống token mức byte.
+
+**Đo trực tiếp Qwen2.5 trên khoá luận thật: 3,213 ký tự/token** — gần như trùng khít 3,206 của
+Llama-3.2. Hai tokenizer **không lệch 5 lần; chúng gần bằng nhau**.
+
+Con số 0,64 là suy từ số khối, và §7.5 tự ghi rõ như vậy — nhưng vẫn dùng nó để phát biểu một tính
+chất về tokenizer. Đây đúng là lỗi mà chính §7.5 đã tự phê bình ở đoạn cuối (*"con số 2,5× ban đầu
+suy từ một quan sát gián tiếp trên MỘT mô hình, rồi được phát biểu như một tính chất của tiếng
+Việt"*) — lặp lại lần hai, trong cùng một mục, với cùng một cơ chế.
+
+### 18.2 Hệ quả thực tế cũng đảo chiều
+
+§7.5 kết luận: *"với họ Qwen thì khối thật LỚN HƠN ngân sách (rủi ro tràn cửa sổ ngữ cảnh)"*.
+
+Với 3,213 ký tự/token thì ngược lại: hằng ước lượng `CharsPerToken = 1.85` đóng gói 5000 × 1,85 =
+9250 ký tự mỗi khối, mà 9250 ký tự thật ra chỉ là **~2879 token** — tức khối thật **NHỎ HƠN** ngân
+sách ~1,7 lần. Không phải rủi ro tràn, mà là **lãng phí cửa sổ và tốn thêm lượt gọi**.
+
+Phạm vi ảnh hưởng vẫn như §7.5 nói: chỉ backend dùng ước lượng (LM Studio, OpenRouter). Backend local
+đã đếm bằng tokenizer thật — dòng log in "ngân sách 28000 token THẬT" là bằng chứng.
+
+### 18.3 Thí nghiệm one-pass chỉ đo được trên model context dài
+
+Với 129 546 token, nhánh "một lượt" cần model ≥ 130K context. Qwen3.5-9B khai 262 144 nên nó là
+model đầu tiên trong tay chạy được nhánh đó. Trên Qwen2.5-7B chỉ so được "nhiều khối nhỏ" với "ít
+khối lớn" (29 khối ở ngân sách 5000 so với 5 khối ở ngân sách 28000), không phải one-pass thật.
+
+## 19. One-pass so multi-pass, đo thật — và Qwen3.5-9B
+
+Câu hỏi "7B/9B có suy được bố cục toàn văn bản trong một lượt không" lâu nay chỉ trả lời được bằng
+lập luận. §18 cho biết document view khoá luận là **129 546 token**, nên nhánh one-pass thật đòi model
+≥130K context. Qwen3.5-9B khai 262 144 — đủ. Mục này đo cả ba nhánh trên cùng tài liệu, cùng đáp án.
+
+### 19.1 Ba nhánh, cùng tài liệu, cùng đáp án
+
+| | Qwen2.5 · 29 khối (5K) | Qwen2.5 · 5 khối (28K) | Qwen3.5 · **1 khối** (150K) |
+|---|--:|--:|--:|
+| Precision | 94,2% | 91,5% | **99,1%** |
+| Recall | 86,3% | **90,1%** | 83,2% |
+| F1 | 90,0% | **90,8%** | 90,5% |
+| Đúng cấp | **37,2%** | 35,6% | 36,7% |
+| Mục thừa | 7 | 11 | **1** |
+| Thời gian | ~330 s | 267 s | **195 s** |
+
+**F1 gần như không đổi qua cả ba** (90,0 / 90,8 / 90,5). Cách đóng gói context không đổi *chất lượng
+tổng*, nó đổi **cán cân precision ↔ recall**.
+
+### 19.2 Recall theo vị trí — phép kiểm quyết định
+
+| | đầu | giữa | cuối |
+|---|--:|--:|--:|
+| A · 29 khối | 97,7% | 84,1% | 77,3% |
+| **B · 5 khối** | 97,7% | **93,2%** | 79,5% |
+| one-pass | 93,0% | 84,1% | **72,7%** |
+
+Ba điều, cả ba đều đo được:
+
+1. **Recall tụt dần về CUỐI tài liệu ở cả ba nhánh** — 97,7% → 84,1% → 77,3% ở nhánh A. Đây là hiệu
+   ứng vị trí thật, không phải nhiễu.
+2. **Khối vừa (28K) chữa được phần GIỮA**: 84,1% → 93,2%. Giả thuyết "chia khối làm hỏng ngữ cảnh"
+   có cơ sở — nhưng chỉ ở mức khối nhỏ.
+3. **One-pass TỆ NHẤT ở cả hai đầu** (93,0% và 72,7%). Nhét cả tài liệu vào một lượt **không** chữa
+   được "lost in the middle"; nó làm recall xấu đi ở mọi vị trí.
+
+Đổi lại, one-pass cho precision **99,1%** — đúng 1 mục thừa trên ~110 mục. Nhìn tất cả cùng lúc làm
+mô hình **thận trọng hơn**, không phải bao quát hơn.
+
+### 19.3 Kết luận thực dụng
+
+**Cấu hình tốt nhất đo được là Qwen2.5-7B với khối ~28K** (nhánh B): F1 cao nhất, recall cân nhất,
+nhanh hơn mặc định 20%. Đây là một dòng cờ, không phải đổi model.
+
+**Đổi sang Qwen3.5-9B không cải thiện gì**: bench 10 tài liệu cho 9/10 · đúng cấp 88,5%, thua
+Qwen2.5-7B (10/10 · 100%). Context 262K mở ra nhánh one-pass, mà one-pass lại là nhánh kém nhất.
+
+### 19.4 Một chi phí kiến trúc không lập luận lý thuyết nào nêu ra
+
+Qwen3.5 **không chạy được** với tối ưu tái dùng prefill của pipeline:
+
+```
+find_slot: seq_id=1 >= n_seq_max=1
+init_batch: failed to prepare recurrent ubatches
+decode: failed to find a memory slot for batch of size 512
+```
+
+Các lớp linear-attention mang **trạng thái hồi quy** — đúng thứ khiến nó tiết kiệm KV cache — nên
+llama.cpp đòi slot chuỗi riêng cho chuỗi thứ hai. Phải chạy `--no-reuse-prefix`, thứ mà trợ giúp CLI
+ghi là "chậm hơn ~2 lần".
+
+Tức lợi ích context dài đi kèm một khoản trả bằng tối ưu khác, và nó chỉ lộ ra khi chạy thật. Đây là
+lần thứ hai trong dự án một suy luận từ kiến trúc bị phép đo trực tiếp bổ sung ngược (lần đầu: §7.5).
