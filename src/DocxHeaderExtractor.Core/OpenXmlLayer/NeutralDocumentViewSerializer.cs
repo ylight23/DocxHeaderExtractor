@@ -83,21 +83,31 @@ public static class NeutralDocumentViewSerializer
     }
 
     /// <summary>
-    /// Style Heading built-in ĐÃ nói cấp; gửi kèm <c>w:outlineLvl</c> thô chỉ tạo mâu thuẫn.
+    /// Style Heading built-in ĐÃ nói cấp, nên <c>w:outlineLvl</c> thô của tài liệu không được phép
+    /// nói ngược lại: trường gửi đi suy từ <c>GuessedLevel</c> về đúng quy ước 0-based mà system
+    /// prompt dạy, thay vì chép lại con số trong file.
     /// <para>
     /// ĐO ĐƯỢC: một báo cáo thật (chuyển từ PDF) khai <c>Heading1 → w:outlineLvl=1</c> trong
     /// styles.xml, lệch quy ước 0-based — cả 73/73 đoạn mang style Heading đều lệch. Metadata khi
     /// đó chở <c>outlineLevel:1</c> cạnh <c>guessedLevel:1</c>, còn system prompt thì dạy
     /// "outlineLevel: 0 = cấp 1". Mô hình mạnh chọn guessedLevel, mô hình yếu chọn outlineLevel và
-    /// đẩy MỌI mục cấp 1 xuống cấp 2 — 6 trong 10 lỗi cấp của Haiku đúng là ca này.
+    /// đẩy MỌI mục cấp 1 xuống cấp 2.
+    /// </para>
+    /// <para>
+    /// Bản vá đầu tiên GIẤU HẲN trường này cho đoạn có style built-in, và đo được là sai cần gạt:
+    /// bench 8 tài liệu tụt từ P 100% · 8/8 xuống P 97,5% · 7/8, vì mất tương phản "heading thật
+    /// thì có outlineLevel" nên dòng tiêm chỉ thị của <c>07-chen-chi-thi</c> lọt vào. Còn gửi số
+    /// thô thì trên tài liệu khai lệch, chạy <c>--model-levels</c>, đúng cấp chỉ còn 71,4%. Chuẩn
+    /// hoá lấy được cả hai vế: bench 8/8 và fixture lệch 100%. Khoá bằng
+    /// <c>ModelMetadataContractTests</c>, đã qua kiểm đột biến cả hai chiều.
     /// </para>
     /// <para>
     /// Với đoạn KHÔNG mang style Heading built-in thì <c>outlineLvl</c> vẫn là bằng chứng thật và
-    /// vẫn được gửi: ở đó nó là nguồn duy nhất nói về cấp.
+    /// vẫn được gửi nguyên: ở đó nó là nguồn duy nhất nói về cấp, không có gì để đối chiếu.
     /// </para>
     /// </summary>
     private static int? OutlineLevelForModel(SlimParagraph p) =>
-        p.HasBuiltInHeadingStyle ? null : p.OutlineLevel;
+        p.HasBuiltInHeadingStyle ? (p.GuessedLevel is { } g ? g - 1 : null) : p.OutlineLevel;
 
     private static string Block(SlimParagraph p, int maxText, bool requested)
     {

@@ -15,11 +15,23 @@ public sealed class ModelMetadataContractTests
     /// ĐO ĐƯỢC trên một báo cáo thật (chuyển từ PDF): styles.xml khai
     /// <c>Heading1 → w:outlineLvl = 1</c>, lệch quy ước 0-based, và cả 73/73 đoạn mang style Heading
     /// đều lệch. Khi đó metadata chở <c>outlineLevel:1</c> cạnh <c>guessedLevel:1</c> còn system
-    /// prompt dạy "outlineLevel: 0 = cấp 1" — hai trường mâu thuẫn cộng một luật sai. Mô hình yếu
-    /// chọn outlineLevel và đẩy MỌI mục cấp 1 xuống cấp 2 (6/10 lỗi cấp của Haiku là ca này).
+    /// prompt dạy "outlineLevel: 0 = cấp 1" — hai trường mâu thuẫn cộng một luật sai.
+    /// <para>
+    /// Bất biến ở đây là <b>không mâu thuẫn</b>, KHÔNG phải "không có trường". Bản vá đầu tiên chọn
+    /// cách giấu hẳn <c>outlineLevel</c> cho đoạn có style built-in, và đo được là nó tốn tiền: trên
+    /// bench 8 tài liệu, giấu trường cho P 97,5% · 7/8 còn giữ trường cho P 100% · 8/8 — dòng tiêm
+    /// chỉ thị của <c>07-chen-chi-thi</c> lọt vào vì mất tương phản "heading thật thì có
+    /// outlineLevel". Chuẩn hoá trường theo <c>guessedLevel</c> lấy được cả hai vế (Qwen tất định,
+    /// `-ngl 20`, hai lượt mỗi bên):
+    /// </para>
+    /// <para>
+    /// giấu trường → bench 7/8, fixture lệch `--model-levels` 100%;
+    /// gửi số thô → bench 8/8, fixture lệch `--model-levels` <b>71,4%</b> (mô hình đi theo số hỏng);
+    /// chuẩn hoá → bench <b>8/8</b>, fixture lệch <b>100%</b>.
+    /// </para>
     /// </summary>
     [Fact]
-    public void Doan_co_style_Heading_built_in_khong_gui_kem_outlineLevel_tho()
+    public void OutlineLevel_gui_cho_mo_hinh_luon_khop_quy_uoc_voi_guessedLevel()
     {
         var view = View(new SlimParagraph
         {
@@ -31,8 +43,10 @@ public sealed class ModelMetadataContractTests
             Role = ParagraphRole.StyledHeading,
         });
 
-        Assert.DoesNotContain("\"outlineLevel\"", view);
+        // Suy từ guessedLevel về đúng quy ước 0-based mà prompt dạy, KHÔNG chép lại số thô của tài liệu.
+        Assert.Contains("\"outlineLevel\":0", view);
         Assert.Contains("\"guessedLevel\":1", view);
+        Assert.DoesNotContain("\"outlineLevel\":1", view);
     }
 
     /// <summary>
