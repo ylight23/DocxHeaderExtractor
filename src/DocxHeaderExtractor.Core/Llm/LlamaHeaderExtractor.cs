@@ -28,11 +28,54 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     // Nguồn template nằm trong mô tả runtime vì nó quyết định chuỗi token thật sự đưa vào model:
     // rơi về template Llama-3 dựng tay trong khi đang chạy Qwen là lệch hẳn định dạng hội thoại,
     // mà trước đây không có cách nào nhìn thấy điều đó từ log.
-    public string RuntimeDescription =>
-        (_options.GpuLayerCount > 0
-            ? $"GPU {_options.GpuLayerCount} lớp"
-            : $"CPU {_options.Threads ?? DefaultThreads()} luồng")
-        + (_hasBuiltInTemplate ? ", chat template của GGUF" : ", chat template Llama-3 dựng tay");
+    /// <summary>
+    /// Mô tả backend THẬT SỰ nạp được, không phải cờ người dùng gõ.
+    /// <para>
+    /// Bản cũ in "GPU {GpuLayerCount} lớp" ngay khi cờ khác 0. Nhưng thư viện native có thể rơi về
+    /// CPU trong im lặng — bản dựng CUDA thiếu `cudart64_12.dll`, hoặc bản dựng Vulkan chạy trên máy
+    /// không có `vulkan-1.dll` dùng được. Khi đó log nói "GPU 20 lớp" còn thực tế mỗi khối mất 48 s
+    /// thay vì 2,7 s. ĐÃ DẪN TỚI KẾT LUẬN SAI HAI LẦN trong dự án này: một lượt đo CPU suýt được ghi
+    /// vào bảng như số GPU, và thứ lộ ra sự thật là thời gian mỗi khối chứ không phải log.
+    /// </para>
+    /// <para>
+    /// <c>llama_supports_gpu_offload()</c> hỏi chính thư viện native đã nạp, nên nó trả lời được câu
+    /// "có offload được không" mà cờ không trả lời được. Cùng nguyên tắc với
+    /// <c>RunProvenanceValidator</c>: đối chiếu lời hứa bằng cái đã xảy ra.
+    /// </para>
+    /// </summary>
+    public string RuntimeDescription => Describe(
+        _options.GpuLayerCount, _options.Threads ?? DefaultThreads(),
+        SupportsGpuOffload(), _hasBuiltInTemplate);
+
+    /// <summary>
+    /// Phần thuần của <see cref="RuntimeDescription"/>, tách ra để kiểm được mà không phải nạp
+    /// 4,4 GB trọng số — nếu không thì đúng cái nhánh "đã yêu cầu GPU nhưng rơi về CPU" sẽ không bao
+    /// giờ có test, vì nó chỉ xảy ra trên máy thiếu thư viện native.
+    /// </summary>
+    internal static string Describe(int gpuLayers, int threads, bool supportsOffload, bool hasTemplate)
+    {
+        var template = hasTemplate ? ", chat template của GGUF" : ", chat template Llama-3 dựng tay";
+        if (gpuLayers <= 0) return $"CPU {threads} luồng" + template;
+
+        return (supportsOffload
+                   ? $"GPU {gpuLayers} lớp"
+                   : $"CPU {threads} luồng — ĐÃ YÊU CẦU GPU {gpuLayers} lớp nhưng thư viện native "
+                     + "không hỗ trợ offload, đang chạy CPU")
+               + template;
+    }
+
+    private static bool SupportsGpuOffload()
+    {
+        try
+        {
+            return NativeApi.llama_supports_gpu_offload();
+        }
+        catch (Exception)
+        {
+            // Không hỏi được thì đừng khẳng định gì: giữ nguyên cách đọc cũ còn hơn báo sai chiều.
+            return true;
+        }
+    }
 
     /// <summary>
     /// Đếm token THẬT bằng tokenizer của chính mô hình đang nạp.

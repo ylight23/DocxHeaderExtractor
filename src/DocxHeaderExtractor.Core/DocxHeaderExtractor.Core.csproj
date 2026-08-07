@@ -11,4 +11,9 @@
     <PackageReference Include="LLamaSharp" Version="0.27.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- Phần thuần của RuntimeDescription phải kiểm được mà không nạp 4,4 GB trọng số. -->
+    <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
+  </ItemGroup>
+
 </Project>
