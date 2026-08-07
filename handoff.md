@@ -782,7 +782,20 @@ Ba giới hạn cần biết trước khi tin con số 95,1%:
    chiều ngược nhau, và ở đây mới chữa được một chiều.
 2. **Đáp án do agent gán, chưa có người xác nhận** — vẫn đúng như §5 đã ghi, dù nay là đồng thuận
    hai bên độc lập thay vì một bên.
-3. **Đúng cấp vẫn chỉ ~28%**, và đó KHÔNG phải lỗi: tài liệu dùng `Heading1 → Heading3 → Heading4`,
-   bỏ qua Heading2, nên pipeline trả 1,3,4 (trung thành với file) còn đáp án ghi 1,2,3 (lồng nhau
-   thật). Cây cùng hình dạng, khác gốc đánh số. Cờ `--normalize-levels` sửa được phần lớn nhưng
-   chưa khớp hẳn. **Đây là lựa chọn quy ước chưa được quyết, không phải bug chờ sửa.**
+3. **Đúng cấp vẫn chỉ ~28%.** Tài liệu dùng `Heading1 → Heading3 → Heading4`, bỏ qua Heading2, nên
+   pipeline trả 1,3,4 (trung thành với file) còn đáp án ghi 1,2,3 (lồng nhau thật). Cây cùng hình
+   dạng, khác gốc đánh số; cờ `--normalize-levels` sửa được phần lớn nhưng chưa khớp hẳn.
+
+   **Bản đầu của mục này xếp đó là "lựa chọn quy ước, không phải bug chờ sửa" — kết luận vội.** Lượt
+   đo trên tài liệu thật thứ hai (§7, commit *"Số end-to-end cho tài liệu thật thứ hai"*) chỉ vào
+   cùng một cơ chế từ hướng khác: ở đó tác giả gán `Heading2` cho gần như mọi thứ, pipeline CẤM mô
+   hình ghi đè tuyên bố style nên lượt hierarchy chỉ được hỏi 9/71 heading, và đúng cấp dừng ở
+   40,7%. Hai tài liệu khác nhau, hai kiểu lạm dụng style khác nhau, cùng một hậu quả — tức đây là
+   **vấn đề thật**: nguyên tắc "cấu trúc quyết định cấp" đưa bench từ 54,2% lên 100% nhưng không có
+   tín hiệu nào đo được rằng style của MỘT tài liệu cụ thể có đáng tin hay không.
+
+Một đính chính về thuật ngữ, do lượt đo tài liệu thật thứ hai phát hiện: con số *"tiêu đề lọt vào
+tập ứng viên"* từng được nhãn trong bộ eval gọi là **"trần trên của recall"**, và mục này lúc viết
+cũng dùng theo. Sai: công văn có tỉ lệ đó 66,7% mà recall cuối vẫn đạt 88,9%, vì lượt cứu theo cấu
+trúc vớt lại được đoạn chưa từng là ứng viên. Nhãn đã sửa trong code; đọc các con số 93,9% / 98,2%
+ở phiên này là *tỉ lệ lọt vào tập ứng viên*, không phải trần.
