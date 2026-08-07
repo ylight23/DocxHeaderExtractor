@@ -21,6 +21,13 @@ public sealed class ExtractionOptions
     /// </summary>
     public bool UseLexicalRules { get; set; } = true;
 
+    /// <summary>
+    /// Chấm độ tin cậy của style Word ở mức TÀI LIỆU và hạ quyền của nó khi tài liệu áp style bừa.
+    /// Xem <see cref="StyleTrustAudit"/>.
+    /// <para>MẶC ĐỊNH TẮT cho tới khi có số đo; kỷ luật §9.3 là một biến mỗi vòng.</para>
+    /// </summary>
+    public bool UseStyleTrust { get; set; }
+
     /// <summary>Đi vào cả đoạn nằm trong bảng.</summary>
     public bool IncludeTables { get; set; } = true;
 

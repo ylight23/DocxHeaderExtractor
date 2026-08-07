@@ -252,6 +252,9 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 Log($"R1 gán thẳng {autoAssigned.Count} heading theo style OOXML — " +
                     "chúng KHÔNG đi qua mô hình và không bị cổng precision hạ xuống cần duyệt.");
 
+            if (_options.Extraction.UseStyleTrust && slim.StyleTrust is { StyledCount: > 0 } trust)
+                Log($"Tin cậy style: {trust.Describe()}");
+
             var styled = slim.Paragraphs.Count(p => p.Role == ParagraphRole.StyledHeading);
             var candidates = slim.Candidates.Where(p => !quarantined.Contains(p.Index)).ToList();
             if (quarantined.Count > 0)
@@ -478,7 +481,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             {
                 Index = p.Index,
                 StableId = p.StableId,
-                Level = ResolveLevel(p, levels),
+                Level = ResolveLevel(p, levels, slim.StyleTrust),
                 Text = p.Text,
                 StyleId = p.StyleId,
                 Source = HeadingSource.Model,
@@ -515,7 +518,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             {
                 Index = p.Index,
                 StableId = p.StableId,
-                Level = ResolveLevel(p, []),
+                Level = ResolveLevel(p, [], slim.StyleTrust),
                 Text = p.Text,
                 StyleId = p.StyleId,
                 Source = HeadingSource.Model,
@@ -831,10 +834,15 @@ public sealed class HeaderExtractionPipeline : IDisposable
         // đã bị bỏ qua ở khâu ÁP kết quả bên dưới, nhưng vẫn bị gửi đi trong batch — trả tiền
         // prefill cho một câu trả lời chắc chắn không dùng. Cấp do danh sách đa cấp khai cũng vậy.
         // Chúng vẫn nằm trong `ordered` để làm neo, chỉ không nằm trong phần được hỏi.
+        // Style chỉ được miễn hỏi khi nó THẬT SỰ quyết cấp. Tài liệu mà StyleTrust chấm là không
+        // mang thông tin cấp thì đoạn có style phải quay lại hàng đợi — nếu không, ta vừa bỏ quyền
+        // của style ở ResolveLevel vừa không hỏi ai thay, và cấp rơi về GuessedLevel cũ.
+        var styleMayPinLevel = !_options.Extraction.UseStyleTrust
+                               || slim.StyleTrust is null || slim.StyleTrust.LevelTrusted;
         var askable = ordered
             .Where(h => slim.ByIndex(h.Index) is { } p &&
                         p.NumberingStyleLevel is null &&
-                        !(p.HasBuiltInHeadingStyle && _options.LevelFromOutline))
+                        !(p.HasBuiltInHeadingStyle && _options.LevelFromOutline && styleMayPinLevel))
             .ToList();
         if (askable.Count == 0)
         {
@@ -1153,12 +1161,22 @@ public sealed class HeaderExtractionPipeline : IDisposable
     /// <item>Phiếu mô hình.</item>
     /// </list>
     /// Mô hình KHÔNG quyết cấp khi cấu trúc đã khai báo — nó chỉ còn việc xác nhận ngữ nghĩa.
+    /// <para>
+    /// NGOẠI LỆ: mục 2 bị bỏ khi <see cref="StyleTrust.LevelTrusted"/> nói con số trong tên style
+    /// của TÀI LIỆU NÀY không phải độ sâu thật — tác giả dùng một cấp duy nhất cho mọi mục, hoặc bỏ
+    /// cấp giữa chừng. Đo được: đúng cấp 40,7% trên một báo cáo gán Heading2 cho gần như mọi thứ, và
+    /// ~28% trên một khoá luận dùng Heading1→3→4 (§7.1, §9.7). Chính nguyên tắc đưa bench từ 54,2%
+    /// lên 100% là thứ giữ hai tài liệu đó ở mức đó, vì "tin cấu trúc" khi cấu trúc sai là tin vào
+    /// cái sai. Mục 1 KHÔNG có ngoại lệ: <c>w:lvl/w:pStyle</c> do người soạn cấu hình một lần cho cả
+    /// tài liệu nên không nhiễm lỗi định dạng lẻ.
+    /// </para>
     /// </summary>
-    private int ResolveLevel(SlimParagraph p, List<int> modelLevels)
+    private int ResolveLevel(SlimParagraph p, List<int> modelLevels, StyleTrust? styleTrust = null)
     {
         if (p.NumberingStyleLevel is { } fromList) return fromList;
 
-        if (_options.LevelFromOutline && p.HasBuiltInHeadingStyle && p.GuessedLevel is { } fromFile)
+        var styleMayPinLevel = !_options.Extraction.UseStyleTrust || styleTrust is null || styleTrust.LevelTrusted;
+        if (styleMayPinLevel && _options.LevelFromOutline && p.HasBuiltInHeadingStyle && p.GuessedLevel is { } fromFile)
             return fromFile;
 
         if (modelLevels.Count == 0) return p.GuessedLevel ?? 1;

@@ -52,6 +52,19 @@ public sealed class DocxSlimExtractor
         MarkParagraphsBeforeTables(paragraphs);
         foreach (var p in paragraphs) HeadingHeuristics.Classify(p, _options);
 
+        // Style của TÀI LIỆU NÀY có đáng tin không — chấm sau lượt Classify đầu vì vế "trông không
+        // phải đề mục" dùng lại chính các luật hình dạng ở đó. Không tin thì chấm LẠI, lần này style
+        // không được thoát sớm; đoạn vẫn giữ bằng chứng, chỉ mất quyền phủ quyết. Xem StyleTrustAudit.
+        var styleTrust = StyleTrustAudit.Measure(paragraphs);
+        if (_options.UseStyleTrust && !styleTrust.SelectionTrusted)
+        {
+            foreach (var p in paragraphs)
+            {
+                p.HasBuiltInHeadingStyle = false;
+                HeadingHeuristics.Classify(p, _options, trustStyleSelection: false);
+            }
+        }
+
         // Cần IsCandidate nên phải chạy SAU Classify; và chạy TRƯỚC PostProcess để lượt cộng điểm
         // ngữ cảnh ở đó không kéo ngược dòng bìa vừa hạ lên lại.
         DemoteCoverPageBlock(paragraphs);
@@ -75,6 +88,7 @@ public sealed class DocxSlimExtractor
             SourcePath = path,
             Paragraphs = paragraphs,
             DefaultFontSizePt = resolver.DefaultFontSizePt,
+            StyleTrust = styleTrust,
             PageHeaders = headers,
             PageFooters = footers,
         }.Build();

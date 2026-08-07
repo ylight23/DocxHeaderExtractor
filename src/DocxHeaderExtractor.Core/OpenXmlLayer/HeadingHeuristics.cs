@@ -120,9 +120,29 @@ public static class HeadingHeuristics
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     /// <summary>
+    /// Nhãn đặt tên đối tượng đứng ngay trước chính bảng nó đặt tên, số gõ tay chứ không do Word
+    /// sinh. Công khai để <see cref="StyleTrustAudit"/> dùng lại đúng luật này thay vì dựng bộ thứ
+    /// hai — hai bộ luật cho cùng một khái niệm thì sớm muộn đi lệch nhau.
+    /// </summary>
+    public static bool IsObjectCaption(SlimParagraph p) =>
+        p.PrecedesTable && p.NumberingId is null && ObjectLabelPrefixRx.IsMatch(p.Text);
+
+    /// <summary>Mở đầu bằng ký hiệu gạch đầu dòng — quy ước ký hiệu, không gắn với ngôn ngữ nào.</summary>
+    public static bool LooksLikeListItem(string text) => BulletPrefixRx.IsMatch(text);
+
+    /// <summary>Kết thúc bằng dấu câu của câu văn thường.</summary>
+    public static bool EndsLikeSentence(string text) => SentenceEndRx.IsMatch(text);
+
+    /// <summary>
     /// Gán <see cref="SlimParagraph.Role"/>, <see cref="SlimParagraph.GuessedLevel"/> và điểm số.
     /// </summary>
-    public static void Classify(SlimParagraph p, ExtractionOptions options)
+    /// <param name="trustStyleSelection">
+    /// Cho phép style built-in thoát sớm với <c>Score = 1.0</c>. Đặt false khi
+    /// <see cref="StyleTrustAudit"/> chấm rằng style của TÀI LIỆU NÀY bị áp bừa: khi đó đoạn mang
+    /// style vẫn đi tiếp xuống phần tính điểm — nó KHÔNG bị xoá, chỉ mất quyền phủ quyết mọi luật
+    /// hình dạng phía dưới (bảng, chú thích, gạch đầu dòng, dấu câu cuối).
+    /// </param>
+    public static void Classify(SlimParagraph p, ExtractionOptions options, bool trustStyleSelection = true)
     {
         if (string.IsNullOrWhiteSpace(p.Text))
         {
@@ -162,7 +182,7 @@ public static class HeadingHeuristics
         //    mạnh nhất trong OOXML: người soạn cấu hình MỘT LẦN cho cả tài liệu qua hộp thoại
         //    multilevel list, nên nó không nhiễm lỗi copy định dạng như w:outlineLvl. Đặt trước
         //    cả nhánh style built-in vì nó khai báo cả cấp lẫn quan hệ cha–con của cả cây.
-        if (!looksLikeListItem && p.NumberingStyleLevel is { } listHeadingLevel)
+        if (trustStyleSelection && !looksLikeListItem && p.NumberingStyleLevel is { } listHeadingLevel)
         {
             p.Role = ParagraphRole.StyledHeading;
             p.HasBuiltInHeadingStyle = true;
@@ -175,7 +195,7 @@ public static class HeadingHeuristics
         // style tự đặt là evidence tốt nhưng đều có thể bị người soạn gán nhầm, nhất là trong
         // bảng biểu mẫu; chúng phải còn cơ hội để mô hình bác bỏ.
         var builtInLevel = looksLikeListItem ? null : BuiltInLevel(p);
-        if (builtInLevel is not null)
+        if (builtInLevel is not null && trustStyleSelection)
         {
             p.Role = ParagraphRole.StyledHeading;
             p.HasBuiltInHeadingStyle = true;
@@ -193,6 +213,19 @@ public static class HeadingHeuristics
 
         double score = 0;
         int? prefixLevel = null;
+
+        // Style built-in trong tài liệu bị StyleTrustAudit chấm là áp bừa: KHÔNG mất bằng chứng,
+        // chỉ mất quyền thoát sớm. Điểm đủ cao để một mình nó vẫn vượt ngưỡng ứng viên, nhưng giờ
+        // các luật hình dạng bên dưới (ô bảng, gạch đầu dòng, dấu câu cuối) trừ được vào nó.
+        if (builtInLevel is not null)
+        {
+            // CỐ Ý không đặt HasBuiltInHeadingStyle: đó là cờ miễn trừ — nó chặn mô hình xoá đoạn và
+            // cho critic bỏ qua. Đặt lại ở đây là vừa tuyên bố "không tin style của tài liệu này"
+            // vừa trả cho nó nguyên quyền phủ quyết, tức luật thành vô hiệu. Cấp vẫn giữ qua
+            // prefixLevel nên KHÔNG mất bằng chứng — chỉ chuyển quyền phán quyết sang mô hình.
+            score += 0.80;
+            prefixLevel = builtInLevel;
+        }
 
         if (!looksLikeListItem && p.OutlineLevel is >= 0 and <= 8)
         {
