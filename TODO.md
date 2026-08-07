@@ -116,7 +116,17 @@ bucket khi không có lỗi nào, nhảy lên n=80 nếu có **một** lỗi —
 Cần vài chục tài liệu thật đi qua bảng Review trong giao diện web. Tài liệu tổng hợp không thay
 được: nó chứng minh đường code, không sinh ra phân phối đúng của tài liệu thật.
 
-## 5. Dùng `SlimSourceSegment` để mở khoá writeback
+## 5. ~~Dùng `SlimSourceSegment` để mở khoá writeback~~ — **XONG, phạm vi hẹp (§15)**
+
+> **Trạng thái.** Đã nối. Tách được khi ranh giới rơi đúng đầu một run VÀ mọi run là con trực tiếp
+> của `w:p`; mọi ca khác giữ nguyên `inline_body_not_splittable`. `Verify` nay có bản đồ chỉ số —
+> ràng buộc mà mô tả gốc bỏ sót. Round-trip test + ca fail-closed, ba đột biến đều bị bắt (§15.4).
+> 307/307 test xanh.
+>
+> **Còn lại:** ca ranh giới nằm giữa run (phải cắt đôi text trong run) và ca run lồng trong
+> `w:hyperlink`. Cả hai vẫn từ chối, có chủ đích.
+
+<details><summary>Ghi chép gốc của mục này</summary>
 
 `OutlineWriteback` từ chối bằng `inline_body_not_splittable` mỗi khi heading chỉ chiếm một phần
 paragraph. Ánh xạ offset → (run, offset thô) nay đã có (`8b95302`) nhưng **chưa có caller nào dùng**.
@@ -147,6 +157,8 @@ trong run — phần fiddly nhất — mà vẫn mở được ca phổ biến.
 **Chưa làm.** Đây là thành phần DUY NHẤT ghi ra tài liệu người dùng, và bất biến 2 của nó là "không
 chạm vào một ký tự nội dung nào". Tách đoạn không đổi ký tự nào nhưng đổi CẤU TRÚC, nên bất biến đó
 phải được phát biểu lại cho chính xác trước khi có dòng code đầu tiên.
+
+</details>
 
 ## 6. Ứng viên đa block — heading trải qua nhiều paragraph
 
