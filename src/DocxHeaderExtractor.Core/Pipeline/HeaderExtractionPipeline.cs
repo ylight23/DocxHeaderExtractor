@@ -814,6 +814,13 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
         var result = accepted.Values.OrderBy(h => h.Index).ToList();
         var structuralFixes = StructuralHierarchyResolver.Apply(result, slim, _options.Extraction.UseStyleTrust);
+
+        // Mục lục của chính tài liệu pin cấp SAU bộ suy cấp, không phải trước. Đặt trước thì
+        // StructuralHierarchyResolver chạy sau và ghi đè lại — đo được: pin 8 cấp mà đúng cấp không
+        // đổi một chữ số. Mục lục là TUYÊN BỐ TƯỜNG MINH của tác giả nên nó đứng trên mọi suy luận
+        // trong thứ tự quyền lực §1, tức phải nói lời cuối.
+        var tocPinned = TableOfContentsAnchor.Apply(result, slim);
+        if (tocPinned > 0) Log($"Mục lục của tài liệu pin lại {tocPinned} cấp.");
         if (structuralFixes > 0) Log($"Hậu xử lý hierarchy: sửa {structuralFixes} cấp theo quan hệ numbering cha–con/anh–em.");
         return result;
     }
