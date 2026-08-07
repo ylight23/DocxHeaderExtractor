@@ -12,7 +12,21 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
 
 ---
 
-## 1. Luật nhận được dòng bìa / khối chữ ký — *chặn hai thứ khác*
+## 1. Luật nhận được dòng bìa / khối chữ ký — ~~*chặn hai thứ khác*~~ **PHẦN LỚN ĐÃ XONG (§12)**
+
+> **Trạng thái.** Đã chữa trên đường `--style-trust`: `09-style-ap-sai` precision **57,1% → 100%**
+> (hết cả ba dương tính giả), bench 9 tài liệu F1 **92,5% → 95,6%**, tuyệt đối 5/9 → 6/9. Trên khoá
+> luận thật là **hoà** (đáp án đồng thuận: F1 95,1% → 95,0%); đáp án Opus đơn lẻ nói giảm 1,1 điểm
+> nhưng ba trong bốn mục mất nằm đúng vùng hai người gán nhãn bất đồng — xem §12.3.
+>
+> Nguyên nhân hoá ra **không phải** thiếu luật hình dạng như mục này phỏng đoán, mà là hai lỗi trong
+> luật đã có: hạ quyền style tự tắt luật thay thế, và "mở ra văn xuôi" bị tính bắc cầu (§12.1, §12.2).
+>
+> **Còn lại:** đường mặc định (không `--style-trust`) vẫn 57,1% vì ba đoạn đó mang style Heading và
+> luật miễn trừ đoạn có tuyên bố cấu trúc. Chữa nốt nghĩa là đổi mặc định của `--style-trust`, và
+> §10.4 cảnh báo đúng loại quyết định này — cần đo trên nhiều tài liệu thật hơn, không phải một dòng cờ.
+
+<details><summary>Ghi chép gốc của mục này</summary>
 
 **Vì sao đứng đầu.** Đây là chế độ hỏng mà **không tầng nào trong pipeline bác được**, đã đo hai
 lần theo hai đường độc lập:
@@ -34,6 +48,8 @@ họ với `DemoteCoverPageBlock` đã có, nhưng nhóm này nằm ở CUỐI t
 
 **Nghiệm thu:** `09-style-ap-sai` precision 57,1% → cao hơn, và bench 9 tài liệu không hồi quy. Đo
 được bằng `--no-llm --structural-only`, vài giây, không cần lượt LLM nào.
+
+</details>
 
 ## 2. Đo nhánh `LevelTrusted` của StyleTrust
 

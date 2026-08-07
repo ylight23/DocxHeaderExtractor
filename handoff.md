@@ -983,3 +983,70 @@ trao quyền cho ai.
 Một lỗi đáng ghi vì nó suýt lọt: test cho nhánh "bỏ cấp giữa chừng" đỏ, và nguyên nhân nằm trong
 CHÍNH TEST — C# parse `i % 3 switch { … }` thành `i % (3 switch { … })`, nên cấp sinh ra là 0,1,2,3
 chứ không phải 1,3,4. Nếu test đó xanh giả thì `SkipsLevels` sẽ không có gì bảo chứng.
+
+## 12. Dòng bìa / khối chữ ký — StyleTrust có bộ chấp hành
+
+TODO mục 1. §11.2 kết luận *"bộ dò đúng, nhưng CHƯA CÓ bộ chấp hành"*: `StyleTrust` nhận đúng rằng
+style của `09-style-ap-sai` không đáng tin, mà kết quả không đổi một chữ số. Mục này tìm ra vì sao —
+và hoá ra có **hai** khiếm khuyết chồng lên nhau, cái thứ hai mới là nút thắt.
+
+### 12.1 Khiếm khuyết thứ nhất: hạ quyền style tự tắt luật thay thế
+
+Các luật hình dạng (`DemoteInlineEmphasis`, `DemoteRunsWithoutOwnProse`) chỉ chạy trên tài liệu "có
+đánh dấu cấu trúc bài bản", và chúng đo điều đó bằng `HasBuiltInHeadingStyle`. Nhưng nhánh hạ quyền
+của StyleTrust **xoá sạch chính cờ đó** trước khi các luật chạy. Số đếm về 0, chốt không đạt, luật
+trả về ngay.
+
+Tức hạ quyền style không chỉ *"chuyển quyền cho một chỗ trống"* như §11.2 mô tả — nó **tắt luôn**
+luật lẽ ra tiếp quản. Đã sửa: đếm trước khi hạ (`CountStructuralMarkers`).
+
+**Sửa xong, kết quả không đổi.** Ghi lại vì đó là thông tin: nó loại một giả thuyết và ép phải tìm
+tiếp, thay vì tưởng đã xong.
+
+### 12.2 Khiếm khuyết thứ hai: "mở ra văn xuôi" là quan hệ BẮC CẦU
+
+`DemoteRunsWithoutOwnProse` gặp văn xuôi thì `run.Clear()` — **tha cả dãy**. Nhưng một đề mục phải
+mở ra văn xuôi *của chính nó*, tức văn xuôi xuất hiện trước ứng viên kế tiếp. Với `run.Clear()`, một
+nhãn khối chữ ký đứng ngay trước đề mục của phần sau cũng được tính là đã mở ra văn xuôi của phần ấy.
+
+Đổi một chữ thành `Flush()` — chỉ ứng viên CUỐI dãy được tha:
+
+| `--no-llm --structural-only --style-trust` | P | R | F1 | Thừa |
+|---|--:|--:|--:|---|
+| trước | 57,1% | 100% | 72,7% | 4, 12, 13 |
+| **sau** | **100%** | **100%** | **100%** | **—** |
+
+Bench 9 tài liệu: F1 92,5% → **95,6%**, tuyệt đối 5/9 → **6/9**. Đường mặc định (không
+`--style-trust`) **không đổi một chữ số** — ba dương tính giả ở đó vẫn còn, vì chúng mang style
+Heading và luật miễn trừ đoạn có tuyên bố cấu trúc. Đó là chốt bắt buộc: bỏ nó thì chuỗi
+`Chương 1 → 1.1 → 1.1.1` bị chính luật này giết (đã kiểm đột biến).
+
+### 12.3 Trên tài liệu thật: HOÀ, và vì sao hai thước nói khác nhau
+
+| Khoá luận 1498 đoạn | P | R | F1 |
+|---|--:|--:|--:|
+| đáp án Opus, trước | 92,9% | 89,3% | **91,1%** |
+| đáp án Opus, sau | 94,2% | 86,3% | **90,0%** |
+| đồng thuận (loại mục tranh cãi), trước | 93,8% | 96,4% | **95,1%** |
+| đồng thuận, sau | 95,4% | 94,5% | **95,0%** |
+
+Đáp án Opus đơn lẻ nói **giảm 1,1 điểm**; đáp án đồng thuận nói **hoà** (0,1 điểm, trong khi một mục
+đã đáng 0,9 điểm trên 110 mục). Truy nguyên bốn mục recall mất đi: `PHỤ LỤC 1`, `PHỤ LỤC 2` và hai
+nhãn nền tảng — **ba trong bốn nằm đúng vùng mà hai người gán nhãn bất đồng** (§9.7 đã ghi: "tiêu đề
+phụ lục nhiều dòng"). Ở đó luật giữ dòng CUỐI của dãy, còn đáp án Opus giữ dòng ĐẦU; cả hai đều
+biện hộ được.
+
+Bài học phương pháp, cùng họ với §10.4: **khi hai bộ đo nói ngược nhau, đừng chọn bộ nào hợp ý —
+hãy xem bất đồng nằm ở đâu.** Ở đây nó nằm gọn trong vùng đã biết là mơ hồ, nên con số "giảm 1,1"
+là phạt oan chứ không phải hồi quy.
+
+Giữ thay đổi: hoà trên tài liệu thật, thắng rõ trên đúng lớp lỗi nó nhắm tới.
+
+### 12.4 Còn lại của mục này
+
+- **Đường mặc định vẫn 57,1% trên `09-style-ap-sai`.** Muốn chữa thì phải để luật hình dạng lấn
+  quyền style ngay cả khi `--style-trust` tắt — tức đổi mặc định. §10.4 đã cảnh báo đúng loại quyết
+  định này ("mua một vé số vừa trúng trên bộ đo"), nên nó cần một phép đo riêng trên nhiều tài liệu
+  thật hơn, không phải một dòng cờ.
+- **Một dương tính giả mới xuất hiện** trên khoá luận thật (i=114, nhãn chữ ký) trong khi ba cái
+  khác biến mất. Ranh giới dãy đổi thì thành viên sống sót cũng đổi; chưa truy tới cùng.

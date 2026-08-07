@@ -56,6 +56,14 @@ public sealed class DocxSlimExtractor
         // phải đề mục" dùng lại chính các luật hình dạng ở đó. Không tin thì chấm LẠI, lần này style
         // không được thoát sớm; đoạn vẫn giữ bằng chứng, chỉ mất quyền phủ quyết. Xem StyleTrustAudit.
         var styleTrust = StyleTrustAudit.Measure(paragraphs);
+
+        // Đếm TRƯỚC khi hạ quyền. Các luật hình dạng bên dưới chỉ chạy trên tài liệu "có đánh dấu
+        // cấu trúc bài bản", và chúng đo điều đó bằng chính HasBuiltInHeadingStyle — thứ mà nhánh
+        // hạ quyền ngay dưới đây xoá sạch. Đếm sau thì hạ quyền style không chỉ chuyển quyền cho một
+        // chỗ trống (§11.2) mà còn TẮT LUÔN luật lẽ ra tiếp quản: số đếm về 0, chốt không đạt, luật
+        // trả về ngay. Đây là lý do StyleTrust "nhận đúng mà kết quả không đổi một chữ số".
+        var structuralMarkers = CountStructuralMarkers(paragraphs);
+
         if (_options.UseStyleTrust && !styleTrust.SelectionTrusted)
         {
             foreach (var p in paragraphs)
@@ -68,8 +76,8 @@ public sealed class DocxSlimExtractor
         // Cần IsCandidate nên phải chạy SAU Classify; và chạy TRƯỚC PostProcess để lượt cộng điểm
         // ngữ cảnh ở đó không kéo ngược dòng bìa vừa hạ lên lại.
         DemoteCoverPageBlock(paragraphs);
-        DemoteInlineEmphasis(paragraphs);
-        DemoteRunsWithoutOwnProse(paragraphs);
+        DemoteInlineEmphasis(paragraphs, structuralMarkers);
+        DemoteRunsWithoutOwnProse(paragraphs, structuralMarkers);
         PostProcess(paragraphs);
 
         var headers = new List<string>();
@@ -445,6 +453,14 @@ public sealed class DocxSlimExtractor
     private const int MinStructuralMarkersForEmphasisRule = 5;
 
     /// <summary>
+    /// Tài liệu này có đánh dấu đề mục bài bản không. Phải gọi TRƯỚC nhánh hạ quyền của StyleTrust:
+    /// nhánh đó xoá <see cref="SlimParagraph.HasBuiltInHeadingStyle"/> nên gọi sau sẽ luôn ra 0 trên
+    /// đúng những tài liệu cần luật hình dạng nhất.
+    /// </summary>
+    private static int CountStructuralMarkers(List<SlimParagraph> ps) => ps.Count(p =>
+        p.HasBuiltInHeadingStyle || p.NumberingStyleLevel is not null || p.NumberingId is not null);
+
+    /// <summary>
     /// Nhấn mạnh trong THÂN BÀI, không phải đề mục: đậm + nghiêng cùng lúc mà KHÔNG có một dấu hiệu
     /// cấu trúc nào — không numbering của Word, không style Heading, không outlineLvl.
     /// <para>
@@ -464,10 +480,8 @@ public sealed class DocxSlimExtractor
     /// *thiếu* dấu hiệu cấu trúc chỉ mang thông tin khi tài liệu có dùng dấu hiệu đó ở chỗ khác.
     /// </para>
     /// </summary>
-    private static void DemoteInlineEmphasis(List<SlimParagraph> ps)
+    private static void DemoteInlineEmphasis(List<SlimParagraph> ps, int structuralMarkers)
     {
-        var structuralMarkers = ps.Count(p =>
-            p.HasBuiltInHeadingStyle || p.NumberingStyleLevel is not null || p.NumberingId is not null);
         if (structuralMarkers < MinStructuralMarkersForEmphasisRule) return;
 
         foreach (var p in ps)
@@ -558,10 +572,8 @@ public sealed class DocxSlimExtractor
     /// không mang thông tin gì.
     /// </para>
     /// </summary>
-    private static void DemoteRunsWithoutOwnProse(List<SlimParagraph> ps)
+    private static void DemoteRunsWithoutOwnProse(List<SlimParagraph> ps, int structuralMarkers)
     {
-        var structuralMarkers = ps.Count(p =>
-            p.HasBuiltInHeadingStyle || p.NumberingStyleLevel is not null || p.NumberingId is not null);
         if (structuralMarkers < MinStructuralMarkersForEmphasisRule) return;
 
         var run = new List<SlimParagraph>();
@@ -590,8 +602,12 @@ public sealed class DocxSlimExtractor
                 continue;
             }
 
-            // Gặp văn xuôi thân bài ⇒ ứng viên cuối dãy đã mở ra được nội dung, giữ nguyên cả dãy.
-            if (p.Text.Length >= BodyProseMinLength) run.Clear();
+            // Gặp văn xuôi thân bài ⇒ chỉ ứng viên CUỐI dãy mở ra được nó; những cái trước chỉ mở ra
+            // ứng viên khác. Bản đầu viết `run.Clear()` — tha cả dãy — nên "mở ra văn xuôi" trở thành
+            // quan hệ BẮC CẦU: một nhãn khối chữ ký đứng ngay trước đề mục của phần sau cũng được
+            // tính là đã mở ra văn xuôi của phần ấy. Đo được trên 09-style-ap-sai: cả `Người lập
+            // biểu` lẫn `Nguyễn Văn A` thoát nhờ đúng kẽ hở đó.
+            if (p.Text.Length >= BodyProseMinLength) Flush();
         }
         Flush();
     }
