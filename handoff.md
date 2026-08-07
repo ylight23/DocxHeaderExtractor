@@ -1050,3 +1050,76 @@ Giữ thay đổi: hoà trên tài liệu thật, thắng rõ trên đúng lớp
   thật hơn, không phải một dòng cờ.
 - **Một dương tính giả mới xuất hiện** trên khoá luận thật (i=114, nhãn chữ ký) trong khi ba cái
   khác biến mất. Ranh giới dãy đổi thì thành viên sống sót cũng đổi; chưa truy tới cùng.
+
+## 13. Đo nhánh `LevelTrusted` — ba kết quả ÂM liên tiếp, và cái thứ ba chỉ đúng chỗ tắc
+
+TODO mục 2. §11.3 ghi nhánh này *"đã cài nhưng CHƯA ĐO"* và kỳ vọng nó chữa được đúng cấp 40,7% /
+~28% trên hai tài liệu thật. Mục này đo, và câu trả lời là **không** — nhưng quan trọng hơn là **vì
+sao không**, vì lý do thật khác hẳn lý do §11.2 dự đoán.
+
+### 13.1 Fixture: `10-cap-style-thoai-hoa`
+
+Thứ TODO đòi. 9 đề mục **cùng mang `Heading2`**, cây thật ba cấp nhìn ra được từ chuỗi đánh số người
+soạn gõ (`Chương 1.` / `1.1.` / `1.1.1.`). Style nói ĐÚNG "đây là đề mục", nói SAI "cấp mấy".
+
+Một chi tiết dựng fixture đáng ghi: bản đầu có 18 đoạn, 9 mang style ⇒ mật độ 50%, vượt
+`MaxDensity` nên StyleTrust hạ **cả hai** quyền — đo như vậy là đo hai biến cùng lúc. Giãn thân bài
+lên 36 đoạn để mật độ về đúng 25%; nay nó báo *"quyền chọn GIỮ, quyền gán cấp HẠ"*, đúng một biến.
+
+Mốc `--no-llm`: chọn đoạn hoàn hảo (P 100% · R 100%) nhưng **đúng cấp 44,4%** — 5/9 sai. Chế độ hỏng
+của hai tài liệu thật nay tái tạo được trong vài giây.
+
+### 13.2 Ba lượt đo, ba kết quả âm
+
+| Bước | Đúng cấp trên fixture | Bench 10 tài liệu |
+|---|--:|---|
+| mốc `--no-llm` | 44,4% | — |
+| bật `--style-trust` | **44,4%** | P 100% · F1 100% · 8/10 |
+| + giấu `outlineLevel`/`guessedLevel` | **44,4%** | không đổi |
+| + bỏ chữ số khỏi tên style | **33,3%** | đúng cấp bench 88,5% → 86,5% |
+
+Hai bản sửa metadata **đã hoàn nguyên**: một cái đo được 0, cái kia đo được âm.
+
+### 13.3 Chẩn đoán: cơ chế CHẠY ĐÚNG, người nhận quyền chỉ nói lại
+
+Khác hẳn §11.2 (nơi quyền được chuyển cho một chỗ trống), ở đây log chứng minh việc chuyển quyền
+thành công:
+
+- không cờ → *"Bỏ qua lượt gán cấp toàn cục: cấu trúc đã quyết cấp cho mọi heading"* — mô hình
+  **không bao giờ được hỏi**;
+- có cờ → *"hierarchy 1: 9 heading → gán cấp toàn cục"*, kết quả ghi `src=Model` — mô hình **được
+  hỏi cả 9 mục** và trả về `l=2` cho tất cả.
+
+Giả thuyết đầu: tại metadata chở sẵn câu trả lời (`"outlineLevel":1,"guessedLevel":2` ở cả 9 block),
+cùng họ §7.3. Giấu đi ⇒ **vẫn 44,4%**, mô hình vẫn trả `l:2` cho cả chín.
+
+Giả thuyết hai: tại tên style tự nói cấp (`"styleName":"heading 2"`) ngay cạnh chỗ vừa bịt. Bỏ chữ
+số ⇒ **33,3%, tệ hơn**.
+
+Kết luận: **không phải lỗi ở thứ mình gửi.** Qwen 7B ở lượt gán cấp toàn cục không suy được cấp từ
+chuỗi đánh số trong nội dung; bỏ bớt tín hiệu chỉ làm nó đoán tệ hơn. Đây là lần đầu trong dự án một
+chẩn đoán "lỗi nằm ở thứ mình gửi" bị bác — hai lần trước (§7.3, §12.2) thì đúng.
+
+### 13.4 Chỗ tắc thật, và nó là TODO mục 3
+
+Có sẵn một bộ suy cấp TẤT ĐỊNH đọc đúng thứ mô hình không đọc được:
+`StructuralHierarchyResolver.SignatureTiers` gom chữ ký `NumberToken` và suy quan hệ lồng nhau. Nó
+không chạy trên fixture này vì dòng đầu vòng lặp là `if (Declared(current, document)) continue;` —
+style đã "khai" cấp 2 nên nó đứng ngoài. Và `--style-trust` **không với tới chốt đó**: cờ chỉ tác
+động `ResolveLevel` cùng khâu chọn đoạn để hỏi, không tác động `Declared`.
+
+Nhưng cho nó chạy cũng chưa đủ: `NumberingAudit.Parse` **không đọc được `Chương 1.`** (TODO mục 3,
+§5) nên `Chương 1./2./3.` không sinh ra token, chỉ `1.1.` và `1.1.1.` tạo tầng. Tức mục 2 **bị chặn
+bởi mục 3**, không phải bởi thiếu tín hiệu hay thiếu quyền.
+
+Thứ tự đúng từ đây: mục 3 trước (thêm mẫu "nhãn + số" vào `Parse`, đo riêng vì nó đổi output của 13
+điểm gọi trên 9 file), rồi mới nới `Declared` để tôn trọng `LevelTrusted`. Làm ngược lại thì nới
+xong vẫn không có token để suy.
+
+### 13.5 Thứ giữ lại
+
+- **Fixture `10-cap-style-thoai-hoa`** — bench lên 10 tài liệu. Nó là dụng cụ đo cho cả mục 2 lẫn
+  mục 3, và nó tái tạo được trong vài giây một chế độ hỏng trước đây chỉ quan sát được trên tài liệu
+  thật không chia sẻ được.
+- **Con số bench mới**: `--style-trust` cho P 100% · R 100% · F1 100% · đúng cấp 88,5% · **8/10**;
+  không cờ cho P 94,5% · F1 97,2% · 7/10. Chênh lệch đến từ §12, không phải từ mục này.

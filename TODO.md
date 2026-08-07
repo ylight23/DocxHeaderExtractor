@@ -51,7 +51,20 @@ họ với `DemoteCoverPageBlock` đã có, nhưng nhóm này nằm ở CUỐI t
 
 </details>
 
-## 2. Đo nhánh `LevelTrusted` của StyleTrust
+## 2. ~~Đo nhánh `LevelTrusted`~~ — **ĐÃ ĐO, kết quả ÂM; bị chặn bởi mục 3 (§13)**
+
+> **Trạng thái.** Đã dựng fixture `10-cap-style-thoai-hoa` và đo: nhánh này **không cải thiện gì**
+> (đúng cấp 44,4% ở cả hai nhánh cờ). Nhưng cơ chế CHẠY ĐÚNG — log cho thấy mô hình được hỏi cả 9
+> mục, `src=Model` — nó chỉ trả lời y hệt cấp mà style đã ghim. Hai giả thuyết "lỗi ở thứ mình gửi"
+> đều bị bác bằng số (giấu metadata cấp: 0 tác dụng; bỏ chữ số khỏi tên style: 44,4% → 33,3%), cả
+> hai đã hoàn nguyên.
+>
+> **Chỗ tắc thật:** bộ suy cấp tất định `SignatureTiers` không chạy vì `Declared()` thấy style đã
+> khai cấp, và `--style-trust` không với tới chốt đó. Nhưng nới chốt cũng chưa đủ — `NumberingAudit`
+> không đọc được `Chương 1.` nên không có token để suy tầng. **Mục 2 bị chặn bởi mục 3.** Thứ tự
+> đúng: làm mục 3 trước, rồi mới nới `Declared` để tôn trọng `LevelTrusted`.
+
+<details><summary>Ghi chép gốc của mục này</summary>
 
 Đã cài (`ResolveLevel` + khâu chọn đoạn để hỏi cấp) nhưng **CHƯA ĐO** — xem §11.3. Đây là nhánh
 nhắm thẳng vào lỗi lớn nhất còn lại: đúng cấp **40,7%** trên một báo cáo gán `Heading2` cho gần như
@@ -63,6 +76,8 @@ Cần hai thứ:
   mọi mục đều cùng một cấp, đáp án thì có cây thật nhiều cấp.
 - **Một lượt LLM.** `--no-llm` đi qua `HeuristicOnly` chứ không qua `ResolveLevel`, nên không đo
   được nhánh này. Trên WX 5100 là ~2 h/lượt (xem §8.2); hai lượt mỗi nhánh.
+
+</details>
 
 ## 3. `NumberingAudit` không đọc được "Chương 1."
 
