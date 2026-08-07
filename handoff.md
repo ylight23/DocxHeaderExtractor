@@ -1576,3 +1576,74 @@ Phân biệt cần giữ:
 
 Comment ở đầu `NumberingAudit` đã được đính chính để không còn phát biểu một luật mà code cố ý làm
 ngược. Nếu chỉ sửa code mà để nguyên câu chữ thì lần sau người đọc sẽ tin vào câu chữ.
+
+## 22. Nới tầng lọc cho LLM tự luận — ba cách, ba lần bị số liệu bác
+
+§21 đo "nới tầng lọc, giữ nguyên harness" và thấy F1 sụp. Phản biện đúng: model được thêm 127 ứng
+viên mà **không thêm một tín hiệu nào** để phân biệt chúng — đúng điều literature về LMDX nói, rằng
+model nhỏ cần được "mã hoá layout hộ" chứ không phải nhận thêm dữ liệu thô. Mục này đo nốt.
+
+### 22.1 Ba nhánh, khoá luận thật, 7B khối 28K
+
+| | Ứng viên | P | R | F1 |
+|---|--:|--:|--:|--:|
+| **Siết** (hiện tại) | 129 | 91,5% | **90,1%** | **90,8%** |
+| Nới, không tín hiệu | 256 | 76,6% | 80,2% | 78,4% |
+| Nới + **tín hiệu cấu trúc trong metadata** | 256 | 88,4% | 75,6% | 81,5% |
+
+Tín hiệu gửi kèm là phán quyết của chính ba luật hạ cấp — `opens_no_prose`, `inline_emphasis`,
+`unmarked_body` — cộng một câu trong prompt nói rõ đây là *bằng chứng mạnh nghiêng về l=0, KHÔNG
+phải phán quyết*.
+
+**Mô hình CÓ dùng tín hiệu**: precision 76,6% → 88,4%, mục thừa 32 → 13. Nhưng recall tụt xuống
+75,6%, thấp nhất cả ba nhánh, và F1 vẫn thua luật tất định 9,3 điểm.
+
+### 22.2 Vì sao thua — tính được trước khi chạy
+
+Đo độ chuẩn của chính ba cờ đó trên khoá luận thật, đối chiếu HỢP hai đáp án:
+
+| Cờ | Số mục | Thực ra là đề mục | Tỉ lệ sai |
+|---|--:|--:|--:|
+| `unmarked_body` | 35 | 0 | **0%** |
+| `opens_no_prose` | 61 | 2 | **3%** |
+| `inline_emphasis` | 33 | 3 | **9%** |
+| **Tổng** | **129** | **5** | **4%** |
+
+Ba luật đó **đúng 96%** khi dùng làm tín hiệu phủ định. Nên phép đo thực chất hỏi: *giao quyết định
+cho một model, trên đúng lớp mà luật tất định đã đúng 96%, có tốt hơn không?* Để hoà vốn model phải
+loại đúng ≥96% của 129 mục, vì phần được nhiều nhất chỉ là 5 đề mục thật.
+
+**Nguyên tắc rút ra**: khi một luật tất định đã đúng ~96% trên một lớp, chuyển quyền cho mô hình chỉ
+có lãi nếu mô hình đúng hơn 96% **trên đúng lớp đó** — không phải "trên trung bình". Đây là phép thử
+mà mọi đề xuất "nới lỏng cho LLM tự luận" phải vượt qua.
+
+### 22.3 Nhưng cách hiểu "mục lục chuẩn, đầy đủ" mở ra thứ khác — và nó ăn
+
+Đặt lại bài toán thành *dựng lại bố cục đáng lẽ phải có* thay vì *phân loại từng đoạn*, thì tài liệu
+**tự khai bố cục đó**: 21 dòng mục lục. Pipeline loại chúng (đúng — chúng không phải đề mục) rồi
+**vứt luôn thông tin chúng mang**.
+
+Đối chiếu với đáp án đồng thuận: **21/21 dòng khớp đúng một đề mục thật**, phủ 23/110 mục, kèm cả
+cấp. Đây là tín hiệu chính xác 100% mà pipeline chưa từng đọc.
+
+`TableOfContentsAnchor` chỉ **pin cấp**, không thêm và không xoá mục nào — dòng mục lục nói "mục này
+tồn tại và sâu chừng này", nó không nói gì về mục nó không nhắc tới. Ghép theo text đã chuẩn hoá (bỏ
+số trang, tiền tố đánh số, dấu câu) nên không phụ thuộc ngôn ngữ.
+
+| Khoá luận thật, 7B khối 28K | Trước | Sau |
+|---|--:|--:|
+| **Đúng cấp** | 35,6% | **45,8%** |
+| P / R / F1 | 91,5 / 90,1 / 90,8 | **không đổi** |
+| Bench 10 tài liệu | 10/10 · cấp 100% | **10/10 · cấp 100%** |
+
+### 22.4 Comment nói một đằng, code làm một nẻo — lần thứ ba
+
+Bản đầu đặt lượt neo **TRƯỚC** `StructuralHierarchyResolver`, kèm comment nói mục lục *"đứng trên
+mọi suy luận trong thứ tự quyền lực §1"* — tức để bộ suy luận nói lời cuối, đúng ngược điều comment
+tuyên bố. Đo được: pin 8 cấp mà **đúng cấp không đổi một chữ số**. Đổi sang chạy sau: +10,2 điểm.
+
+Cùng họ với §7.4 (`PrecedesTable` tính sau `Classify` nên cờ luôn false đúng lúc cần) và §12.1 (chốt
+mức tài liệu đếm sau khi StyleTrust xoá cờ). Ba lần, cùng một cơ chế: **thứ tự các lượt là một phần
+của hợp đồng, và comment không thi hành được nó.**
+
+Thứ phát hiện ra là số đo, không phải đọc lại code — log in "pin lại 8 cấp" trông như đã chạy đúng.
