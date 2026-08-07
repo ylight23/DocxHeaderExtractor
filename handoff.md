@@ -1647,3 +1647,65 @@ mức tài liệu đếm sau khi StyleTrust xoá cờ). Ba lần, cùng một c�
 của hợp đồng, và comment không thi hành được nó.**
 
 Thứ phát hiện ra là số đo, không phải đọc lại code — log in "pin lại 8 cấp" trông như đã chạy đúng.
+
+## 23. Chốt: F1 95,1% — và đúng cấp gần gấp đôi
+
+Cấu hình tốt nhất đo được, trên đáp án đồng thuận 110 mục, quy tắc chấm cố định từ §9.1 (loại mục
+hai người gán nhãn bất đồng):
+
+**Qwen3.5-9B · khối 28K · `--style-trust` · `--no-reuse-prefix` · lượt neo mục lục**
+
+| | |
+|---|--:|
+| Precision | **93,8%** |
+| Recall | **96,4%** |
+| **F1** | **95,1%** |
+| Đúng cấp | **51,9%** |
+| Thời gian | 293 s |
+
+Còn 7 mục sai thật và 4 mục thiếu trên 110.
+
+### 23.1 Đọc con số cho đúng
+
+**F1 95,1% KHÔNG phải tiến bộ so với §9** — phiên trước đã đạt đúng 95,1% với 7B và cấu hình cũ.
+Trên 110 mục thì một mục đáng 0,9 điểm, nên **mốc "hơn 95%" đang được vượt qua bằng đúng một mục**.
+Đó là ngưỡng chạm tới, không phải ngưỡng bỏ xa.
+
+Thứ THẬT SỰ tiến bộ trong hai phiên này là **đúng cấp: 26,5% → 51,9%**, gần gấp đôi, đến từ ba
+nguồn tách bạch và đo riêng từng cái:
+
+| Nguồn | Đóng góp |
+|---|---|
+| Vế đối chiếu độ sâu đánh số cho `StyleTrust` (§17) | 26,5% → 37,2% |
+| Đổi 7B sang 9B, cùng cách đóng gói (§20) | 37,2% → 37,3% |
+| Lượt neo theo mục lục tài liệu (§22) | 35,6% → 45,8% (trên thước Opus) |
+| Cộng dồn trên thước đồng thuận | **51,9%** |
+
+### 23.2 Bốn mục thiếu — và vì sao mục lục không cứu được chúng
+
+`1239`, `1256` (nhãn phân nhóm trong danh mục tham khảo) mang nhãn gạch đầu dòng `●` nên bị coi là
+list item ngay ở tầng chấm điểm. `1294`, `1335` (`PHỤ LỤC 1`, `PHỤ LỤC 2`) bị `DemoteRunsWithoutOwnProse`
+hạ.
+
+Mục lục có dòng `PHỤ LỤC 157` nhưng chuẩn hoá xong nó thành `phụ lục`, còn đề mục thật là
+`phụ lục 1` — **không khớp**. Tức mục lục chỉ nhắc tới mục CHA, không nhắc hai mục con. Đây là giới
+hạn thật của tín hiệu này: nó pin được những gì nó liệt kê, và mục lục của tài liệu này chỉ liệt kê
+tới cấp 2.
+
+### 23.3 Bảy mục sai thật
+
+`114` (nhãn chữ ký), `262` (liệt kê chương trong phần "bố cục"), `1031`/`1032`/`1033`/`1063` (chỉ
+xuất hiện ở khối 28K — hệ quả của việc đổi thành phần khối, §4.1), `1336`.
+
+Nhóm `1031`–`1063` đáng chú ý: chúng KHÔNG xuất hiện ở khối 5K. Tức một phần "cái giá" của khối lớn
+là mục thừa mới ở vùng giữa tài liệu — đánh đổi mà bảng F1 tổng che mất.
+
+### 23.4 Trần còn lại nằm ở đâu
+
+Recall 96,4% với 4 mục thiếu, cả 4 đều bị loại **trước khi mô hình nhìn thấy**. §20.2 đã đo: hai
+model khác thế hệ bỏ sót đúng cùng một tập. Nên mọi cải thiện recall tiếp theo phải đến từ tầng lọc
+ứng viên, không từ mô hình — và §21/§22 đã đo rằng nới tầng lọc ra (dù có kèm tín hiệu) làm F1 tụt.
+
+Đường còn lại chưa thử: dùng mục lục để **pin việc CHỌN**, không chỉ pin cấp. Nhưng §23.2 vừa cho
+thấy mục lục tài liệu này không phủ được bốn mục đang thiếu, nên đường đó không cứu được ca cụ thể
+này — nó chỉ có giá trị với tài liệu mà mục lục liệt kê sâu hơn.
