@@ -46,7 +46,53 @@ public static class BenchDocumentFactory
         InjectedInstructions(),
         MultilevelList(),
         MisappliedHeadingStyles(),
+        DegenerateStyleLevels(),
     ];
+
+    /// <summary>
+    /// Style nói ĐÚNG chuyện "đây là đề mục" nhưng nói SAI chuyện "đề mục cấp mấy": mọi mục đều
+    /// mang cùng một style Heading2, trong khi cây thật có ba cấp và nhìn ra được từ chuỗi đánh số
+    /// người soạn gõ.
+    /// <para>
+    /// Chế độ hỏng này đã đo trên tài liệu thật hai lần theo hai kiểu ngược nhau: một báo cáo gán
+    /// <c>Heading2</c> cho gần như mọi thứ (đúng cấp 40,7%), và một khoá luận dùng
+    /// <c>Heading1→Heading3→Heading4</c> bỏ qua Heading2 (đúng cấp ~28%). Cả hai đều do nguyên tắc
+    /// "cấu trúc quyết định cấp" — thứ đưa bench từ 54,2% lên 100% — CẤM mô hình ghi đè tuyên bố
+    /// style.
+    /// </para>
+    /// <para>
+    /// Đây là fixture mà <see cref="Models.StyleTrust.LevelTrusted"/> đòi: cần ≥8 đoạn mang style
+    /// (dưới ngưỡng đó StyleTrust coi mẫu quá nhỏ để phán xét) và ĐÚNG MỘT cấp riêng biệt, để
+    /// <c>DistinctLevels > 1</c> không thoả và quyền gán cấp của style bị hạ.
+    /// </para>
+    /// <para>
+    /// KHÔNG đo được bằng <c>--no-llm</c>: đường đó đi qua HeuristicOnly chứ không qua
+    /// <c>ResolveLevel</c>, nên nhánh này chỉ hiện ra ở một lượt có mô hình.
+    /// </para>
+    /// </summary>
+    private static BenchDoc DegenerateStyleLevels() => new(
+        "10-cap-style-thoai-hoa",
+        "Mọi đề mục cùng một style Heading2 — style nói đúng \"là đề mục\", nói sai \"cấp mấy\"",
+    [
+        new("Chương 1. Tổng quan", 1, Style: "Heading2"),
+        new(Body1), new(Body2), new(Body1),
+        new("1.1. Phạm vi áp dụng", 2, Style: "Heading2"),
+        new(Body2), new(Body1), new(Body2),
+        new("1.1.1. Đối tượng điều chỉnh", 3, Style: "Heading2"),
+        new(Body1), new(Body2), new(Body1),
+        new("1.2. Trình tự thực hiện", 2, Style: "Heading2"),
+        new(Body2), new(Body1), new(Body2),
+        new("Chương 2. Tổ chức thực hiện", 1, Style: "Heading2"),
+        new(Body1), new(Body2), new(Body1),
+        new("2.1. Phân công nhiệm vụ", 2, Style: "Heading2"),
+        new(Body2), new(Body1), new(Body2),
+        new("2.1.1. Bộ phận kỹ thuật", 3, Style: "Heading2"),
+        new(Body1), new(Body2), new(Body1),
+        new("2.2. Kinh phí", 2, Style: "Heading2"),
+        new(Body2), new(Body1), new(Body2),
+        new("Chương 3. Điều khoản thi hành", 1, Style: "Heading2"),
+        new(Body1), new(Body2), new(Body1),
+    ]);
 
     /// <summary>
     /// Style Heading bị áp cho thứ KHÔNG phải đề mục — chế độ hỏng của tài liệu thật mà bộ bench
