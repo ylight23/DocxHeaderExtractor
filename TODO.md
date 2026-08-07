@@ -124,6 +124,30 @@ Nối nó vào là ghi ngược được phần `InlineHeadingSplitter` đã tá
 
 **Nghiệm thu:** test round-trip mở/ghi/đọc lại, không cần bench.
 
+### Khảo sát trước khi làm — LỚN HƠN mô tả trên
+
+Mô tả "nối nó vào là ghi ngược được" bỏ sót ba ràng buộc, cả ba đều nằm trong chính hợp đồng của
+`OutlineWriteback`:
+
+1. **Tách đoạn làm DỊCH CHỈ SỐ.** Bất biến 3 của `OutlineWriteback` là đọc lại bản đích rồi đối
+   chiếu `heading.Index` → đoạn. Chèn một `w:p` mới làm mọi chỉ số phía sau lệch +1, nên khâu xác
+   minh sẽ đổ ngay ở mục kế tiếp. Cần một BẢN ĐỒ chỉ số (gốc → sau tách) dùng chung cho cả xác minh
+   lẫn caller.
+2. **`StableId` cũng dịch.** Nó là địa chỉ theo vị trí (`body[1]/p[N]`), nên vế `stable_id_mismatch`
+   phải được tính lại chứ không so thẳng được.
+3. **Run có thể nằm trong `w:hyperlink`.** `SourceSegments.RunIndex` đếm theo
+   `paragraph.Descendants<Run>()`, tức tính cả run lồng trong hyperlink. Tách ở một run như vậy đòi
+   tách cả hyperlink bao ngoài — phải fail-closed khi run ranh giới không phải con trực tiếp của
+   `w:p`.
+
+**Phạm vi hẹp nên làm trước:** chỉ tách khi ranh giới rơi ĐÚNG đầu một run VÀ run đó là con trực
+tiếp của `w:p`; mọi ca khác giữ nguyên `inline_body_not_splittable`. Như vậy không phải cắt đôi text
+trong run — phần fiddly nhất — mà vẫn mở được ca phổ biến.
+
+**Chưa làm.** Đây là thành phần DUY NHẤT ghi ra tài liệu người dùng, và bất biến 2 của nó là "không
+chạm vào một ký tự nội dung nào". Tách đoạn không đổi ký tự nào nhưng đổi CẤU TRÚC, nên bất biến đó
+phải được phát biểu lại cho chính xác trước khi có dòng code đầu tiên.
+
 ## 6. Ứng viên đa block — heading trải qua nhiều paragraph
 
 Một tiêu đề bị Enter thật cắt đôi hiện không biểu diễn được: lược đồ chỉ cho **một quyết định trên
@@ -132,6 +156,15 @@ một `i`** (§5). Cùng khe hở với việc `InlineHeadingSplitter` không t�
 
 Đắt nhất, đổi lược đồ, và **chưa tài liệu thật nào trong bộ đo chứng minh nó đáng**. Làm sau cùng,
 hoặc sau khi gặp một tài liệu hỏng đúng kiểu đó.
+
+**Bằng chứng hiện có, và nó chưa đủ.** §5 ghi đúng một ca: báo cáo thật có `i=452` chứa cả hai đề
+mục vì file gốc thiếu ngắt đoạn. Một ca trên hai tài liệu thật, và nó là ca NGƯỢC (hai heading trong
+một block) chứ không phải ca mục này mô tả (một heading trải qua nhiều block). Khoá luận 1498 đoạn
+đo ở §9 không có ca nào thuộc cả hai dạng.
+
+Tức chi phí thì chắc chắn (đổi lược đồ, đổi mọi điểm đọc `i`), còn lợi ích vẫn là 1 mục trên hơn 240
+heading của hai tài liệu thật. **Giữ nguyên vị trí cuối hàng.** Điều kiện mở lại: gặp một tài liệu
+mà dạng này chiếm từ vài mục trở lên, hoặc mục 4 cho đủ tài liệu thật để đo được tần suất thật.
 
 ---
 
