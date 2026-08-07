@@ -587,7 +587,12 @@ dump — đều mang nội dung tài liệu. Danh sách chặn phải theo *ngu�
 
 ## 8. Phần cứng
 
-### 8.1 Máy đo hiện tại — RTX 3060 12 GB (từ 06/08/2026)
+### 8.1 Máy đo — RTX 3060 12 GB (06/08/2026 – 07/08/2026)
+
+> **HẾT HIỆU LỰC từ 07/08/2026.** Máy đã quay lại **WX 5100 4 GB** (§8.2): `Win32_VideoController`
+> báo `Radeon (TM) Pro WX 5100`, và số đo §10 khớp hồ sơ §8.2 chứ không khớp bảng dưới. Đừng đọc
+> "máy đo hiện tại" ở tiêu đề cũ — hãy kiểm GPU trước mỗi lượt đo, vì tốc độ lệch ~22× và **số lớp
+> offload là một trục tái lập ngang hàng với sampler** (§3.7).
 
 | | |
 |---|---|
@@ -799,3 +804,129 @@ tập ứng viên"* từng được nhãn trong bộ eval gọi là **"trần tr
 cũng dùng theo. Sai: công văn có tỉ lệ đó 66,7% mà recall cuối vẫn đạt 88,9%, vì lượt cứu theo cấu
 trúc vớt lại được đoạn chưa từng là ứng viên. Nhãn đã sửa trong code; đọc các con số 93,9% / 98,2%
 ở phiên này là *tỉ lệ lọt vào tập ứng viên*, không phải trần.
+
+## 10. Đo luật R1 "auto_assign theo style OOXML" — F1 tăng, nhưng vì lý do khác
+
+Một spec đề xuất thay tầng lọc hiện tại bằng router hai nhánh `auto_assign | route_pass1`: đoạn mang
+style Heading built-in, ngoài bảng/textbox, ngắn, không kết thúc bằng dấu chấm câu thì **gán thẳng
+heading + cấp với confidence 1.0 và rút hẳn khỏi luồng LLM**.
+
+Bằng chứng chống lại nó trước lượt này chỉ **gián tiếp**: `SkipStyledCandidates` (§6.3) bỏ HỎI nhưng
+vẫn giữ đoạn trong khối làm ngữ cảnh, và riêng thế đã đủ làm precision tụt 100% → 94,1%. R1 mạnh hơn
+hẳn nên **phải có số của chính nó**. Cài sau cờ `--style-auto-assign`, mặc định tắt
+(`OoxmlStyleAutoAssign`).
+
+**Cấu hình đo — đọc trước khi so với bất kỳ bảng nào ở trên**: máy là **WX 5100 4 GB** (hồ sơ §8.2),
+KHÔNG phải RTX 3060 của §8.1; Qwen2.5-7B Q4_K_M, `-ngl 20`, `--structural-only`, sampler tất định.
+Và `bench/` trên máy này **không phải bộ 8 tài liệu tổng hợp mà mọi bảng ở trên nói tới** — khác cả
+về thành phần lẫn về tên:
+
+| | `BenchDocumentFactory` sinh ra | git theo dõi `.key` | thực có trên máy |
+|---|---|---|---|
+| 01–06 | tổng hợp | ✔ | ✔ |
+| 07 | `07-chen-chi-thi` | `07-mau-that` | `07-mau-that` (tài liệu THẬT) |
+| 08 | `08-danh-sach-da-cap` | `08-plph2` | chỉ còn `.key`, không có `.docx` |
+| 09 | — | — | `09-dien-mat-di` (tài liệu THẬT, `.gitignore` chặn) |
+
+Tức **`07` là hai tài liệu khác nhau tuỳ bạn chạy `dhx bench` hay checkout repo**, và
+`07-chen-chi-thi` — tài liệu mà §5 và §7.3 bàn suốt, lỗi cuối cùng của bench, thứ làm nên 8/8 —
+KHÔNG có mặt. Bộ thực chấm là 01–06 + `07-mau-that` + `09-dien-mat-di`, trong đó **2 tài liệu thật**.
+
+Vì vậy baseline ở đây là F1 90,9% · 6/8 chứ không phải 100% · 8/8 của §7.3, và toàn bộ dương tính
+giả nằm ở `09-dien-mat-di`. Khác bộ đo, không phải hồi quy — nhưng phải mất một lượt truy nguyên mới
+biết, nên xem §10.4 để biết hai hàng rào đã dựng.
+
+Cài ở dạng **mạnh nhất có thể** để R1 không thua vì lý do phụ: R4 chạy trước R1; heading auto-assign
+nhập vào TRƯỚC hậu kiểm nên vẫn làm anh em cho mục khác; cổng precision có ngoại lệ giữ chúng ở
+trạng thái tự nhận, đúng như spec đòi. Ngưỡng "dấu chấm câu" lấy nghĩa hẹp (`.!?`) để phủ nhiều nhất.
+
+### 10.1 Trên bench, R1 thắng
+
+| | P | R | F1 | Đúng cấp | Tuyệt đối |
+|---|--:|--:|--:|--:|--:|
+| R1 tắt | 84,9% | 97,8% | 90,9% | 100% | 6/8 |
+| **R1 bật** | 85,2% | **100%** | **92,0%** | 100% | **7/8** |
+
+### 10.2 …nhưng phần việc riêng của nó đóng góp BẰNG 0
+
+Toàn bộ chênh lệch là đúng một heading ở `07-mau-that`, tái lập 2/2 mỗi nhánh khi cô lập tài liệu đó.
+Bốn đoạn R1 gán thẳng (i=0, 2, 5, 17 — Heading1/Heading2) thì nhánh tắt **cũng đã trả đúng cả bốn**.
+
+Đoạn được cứu là **i=7 `PHỤ LỤC A – BẢNG ĐỐI CHIẾU`, `styleId: Normal`** — R1 không hề chạm tới. Nó
+lật vì R1 rút 4 ứng viên ra khỏi khối, nên mô hình xét 2 ứng viên còn lại trong một thành phần khối
+khác. Đó **đúng là cơ chế §4.1**, và cũng đúng là cơ chế đã lấy đi 6 điểm precision của
+`SkipStyledCandidates`. Cùng một cần gạt, lần này ngửa thay vì sấp.
+
+### 10.3 Phép đo quyết định: fixture style bị áp sai
+
+Bench không có tài liệu nào style bị áp bừa, tức nó **không thể** bác mà cũng không thể xác nhận mối
+lo gốc (§7.1: 13 chú thích bảng mang Heading3, precision tầng OpenXML 55%). Tái tạo bằng cách thêm
+vào `07-mau-that` ba đoạn KHÔNG phải tiêu đề mang `Heading3` — dòng bìa, nhãn chú thích, nhãn khối
+chữ ký — đặt ở CUỐI nên không chỉ số nào xê dịch và `.key` giữ nguyên. Kiểm chứng fixture trước khi
+đo: cả ba thành ứng viên ở đúng cấu hình đo, và R1 gán thẳng 7 (4 thật + 3 rác).
+
+Hai lượt mỗi nhánh, tái lập 2/2:
+
+| | P | R | F1 | Đúng cấp | **Tự nhận / cần duyệt** |
+|---|--:|--:|--:|--:|--:|
+| R1 tắt | 66,7% | 100% | 80% | 66,7% | **0 / 9** |
+| R1 bật | 66,7% | 100% | 80% | 100% | **7 / 2** |
+
+**P/R/F1 GIỐNG HỆT NHAU, và cả hai nhánh đều thừa đúng 19, 20, 21** — mô hình không cắt được đoạn
+nào kể cả khi còn được hỏi. Khác biệt nằm ở chỗ **không chỉ số nào trong bảng F1 nhìn thấy**:
+
+- nhánh tắt đẩy cả 9 mục sang *cần duyệt*, nên ba mục rác đến tay người;
+- nhánh bật **tự nhận 7 mục với confidence 1.0, trong đó 3 mục sai** — độ chính xác auto_assign
+  **4/7 = 57,1%**, đối lại mục tiêu "gần 100%" mà chính §7 của spec đặt ra, và không có gì phía sau
+  bắt lại.
+
+### 10.3b Fixture đã vào bench, và nó cắn ngay ở `--no-llm`
+
+Fixture nay là `09-style-ap-sai` trong `BenchDocumentFactory` — đáp án sinh từ định nghĩa đoạn nên
+không có khâu gán nhãn tay để mà sai, và `dhx bench` dựng lại được. Chấm nó bằng
+`--no-llm --structural-only`, tức KHÔNG tốn một giây suy luận nào:
+
+| | P | R | F1 | Thừa |
+|---|--:|--:|--:|---|
+| R1 tắt | 57,1% | 100% | 72,7% | 4, 12, 13 |
+| R1 bật | **50%** | 100% | **66,7%** | 4, **5**, 12, 13 |
+
+R1 thêm dương tính giả **i=5 `Bảng 1.2 Đối chiếu thuật ngữ và viết tắt`**. Lý do là một lỗ thật
+trong bảng luật của spec: `HeadingHeuristics.Classify` đã hạ đoạn đó xuống `Normal` bằng luật chú
+thích cấu trúc của §7.4 (nhãn "từ + số nhiều phần" + `NumberingId` null + có bảng bắt đầu ngay sau
+— luật cắt sạch 13/13 chú thích trên báo cáo thật), nhưng **R1 đọc thẳng `style_raw`, không đọc
+`Role`**, nên nó đi vòng qua đúng hàng phòng thủ đó. Spec chỉ có R4 cho bảng/textbox và không có vế
+nào cho chú thích.
+
+Đáng chú ý về phương pháp: kết luận này **rẻ hơn hẳn** ba lượt đo bằng LLM ở trên và mạnh hơn — nó
+tất định tuyệt đối. Khi một luật là deterministic thì hãy chấm nó ở chế độ deterministic trước;
+lượt LLM chỉ cần cho phần mà LLM thật sự tham gia.
+
+### 10.4 Kết luận và hai thứ nhặt được dọc đường
+
+Giữ cờ, **mặc định tắt**. Con số đầu bảng nói R1 tốt hơn; truy nguyên thì lợi ích không đến từ nó,
+còn thiệt hại thì đến từ đúng cơ chế nó tuyên bố là ưu điểm. Bật mặc định là mua một vé số vừa trúng
+trên bộ đo mà R1 thậm chí không kích hoạt ở tài liệu thật duy nhất trong đó.
+
+Bài học phương pháp: **F1 không phải thước đo đủ cho một thay đổi về QUYỀN.** R1 và bản gốc cho cùng
+P/R/F1 trên fixture; thứ phân biệt chúng là ai được tự nhận. Nếu chỉ nhìn bảng F1 thì đây là một
+thay đổi trung tính — trong khi nó biến ba dương tính giả từ "có người duyệt" thành "đã chốt".
+
+Hai thứ nhặt được:
+
+1. **`Model` của một lượt chạy từng nói dối.** Tài liệu không còn ứng viên nào để hỏi thì `_model`
+   vẫn null nên `outline.Model` null, và `PrecisionCalibrationBuilder` thấy hai tài liệu trong CÙNG
+   một lượt eval khai hai model khác nhau rồi ném *"Không được trộn nhiều model"*. Lỗi có sẵn, R1
+   chỉ làm nó lộ ra. Đã sửa: `Model` báo theo CẤU HÌNH; lượt hỏi thực sự chạy đã có
+   `OutlineRunProvenance` ghi riêng. Cùng họ với bẫy §4.4.
+2. **`§8.1 đã hết hiệu lực`** — xem ghi chú ở đầu mục đó.
+
+Ba hàng rào đã dựng, tất cả là **cơ chế** chứ không phải quy ước viết trong tài liệu:
+
+- Báo cáo eval in **chữ ký cấu hình** đầy đủ. `ConfigurationFor` nay gồm cả `gpuLayers` và `seed` —
+  trước đó nó có 21 trường mà thiếu đúng trục §3.7 đo được là lệch 14 điểm, nên profile dựng ở
+  `-ngl 99` được coi là còn hiệu lực ở `-ngl 20`. `MeasurementConfigSignatureTests` khoá lại, đã
+  kiểm đột biến.
+- `dhx eval` **cảnh báo đáp án mồ côi** (có `.key`, không có tài liệu). Phép duyệt đi từ tài liệu
+  nên nhóm này trước đây hoàn toàn vô hình — đúng cách `08` biến mất mà không ai hay.
+- `bench/README.md` nói thẳng rằng bộ đo trên mỗi máy có thể khác nhau, kèm bảng tên thật.

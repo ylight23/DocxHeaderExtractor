@@ -1,0 +1,67 @@
+using DocxHeaderExtractor.Core.Eval;
+using DocxHeaderExtractor.Core.Pipeline;
+
+namespace DocxHeaderExtractor.Tests;
+
+/// <summary>
+/// Khoá chữ ký cấu hình đo — nơi một con số được phép so với một con số khác.
+/// <para>
+/// Lý do tồn tại nằm ở handoff §3.7 và §8.1: cùng model, cùng seed, cùng <c>top_k=1</c>, cùng một
+/// tài liệu, <c>-ngl 20</c> cho đúng cấp 100% còn <c>-ngl 99</c> cho 85,7% — TÁI LẬP ở cả hai lượt,
+/// nên đó là hai cấu hình đo khác nhau chứ không phải nhiễu. §8.1 chốt điều đó bằng LỜI
+/// ("mọi con số phải ghi kèm số lớp offload"), nhưng lời không phải cơ chế: chữ ký từng bỏ qua cả
+/// <c>GpuLayerCount</c> lẫn <c>Seed</c>, nên profile dựng ở mức offload này được coi là còn hiệu lực
+/// ở mức kia — chính cái bẫy §3.7 cảnh báo, do code thi hành thay vì ngăn.
+/// </para>
+/// </summary>
+public sealed class MeasurementConfigSignatureTests
+{
+    [Fact]
+    public void So_lop_offload_GPU_lam_doi_chu_ky_cau_hinh()
+    {
+        var a = new PipelineOptions();
+        var b = new PipelineOptions();
+        a.Llama.GpuLayerCount = 20;
+        b.Llama.GpuLayerCount = 99;
+
+        Assert.NotEqual(
+            PrecisionCalibrationProfile.ConfigurationFor(a),
+            PrecisionCalibrationProfile.ConfigurationFor(b));
+    }
+
+    [Fact]
+    public void Seed_sampler_lam_doi_chu_ky_cau_hinh()
+    {
+        var a = new PipelineOptions();
+        var b = new PipelineOptions();
+        b.Llama.Seed = a.Llama.Seed + 1;
+
+        Assert.NotEqual(
+            PrecisionCalibrationProfile.ConfigurationFor(a),
+            PrecisionCalibrationProfile.ConfigurationFor(b));
+    }
+
+    /// <summary>
+    /// R1 rút đoạn ra khỏi luồng LLM nên nó đổi hẳn phân phối dự đoán — xem §10. Hai lượt khác cờ
+    /// này mà chung một profile thì profile học trên hai phân phối trộn lẫn.
+    /// </summary>
+    [Fact]
+    public void Co_style_auto_assign_lam_doi_chu_ky_cau_hinh()
+    {
+        var a = new PipelineOptions();
+        var b = new PipelineOptions { StyleAutoAssign = true };
+
+        Assert.NotEqual(
+            PrecisionCalibrationProfile.ConfigurationFor(a),
+            PrecisionCalibrationProfile.ConfigurationFor(b));
+    }
+
+    /// <summary>Cùng cấu hình thì phải cùng chữ ký — nếu không, mọi profile đều tự vô hiệu.</summary>
+    [Fact]
+    public void Cung_cau_hinh_thi_cung_chu_ky()
+    {
+        Assert.Equal(
+            PrecisionCalibrationProfile.ConfigurationFor(new PipelineOptions()),
+            PrecisionCalibrationProfile.ConfigurationFor(new PipelineOptions()));
+    }
+}

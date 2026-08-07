@@ -99,6 +99,7 @@ public sealed class CommandLineOptions
                 case "--review-all": o.Pipeline.ReviewAllParagraphs = true; break;
                 case "--no-trust-styles": o.Pipeline.TrustStyles = false; break;
                 case "--skip-styled": o.Pipeline.SkipStyledCandidates = true; break;
+                case "--style-auto-assign": o.Pipeline.StyleAutoAssign = true; break;
                 // Cấp thô là mặc định từ khi cấu trúc quyết định cấp; cờ này giữ lại để bật chuẩn
                 // hoá theo độ sâu ngăn xếp khi cần so với hành vi cũ.
                 case "--raw-levels": o.Pipeline.NormalizeLevels = false; break;
@@ -243,6 +244,9 @@ public sealed class CommandLineOptions
               --page-headers        Đọc thêm w:hdr/w:ftr
               --no-context          Không kèm đoạn văn ngữ cảnh
               --structural-only     Chỉ dùng tín hiệu cấu trúc OOXML, tắt luật theo từ ngữ
+              --style-auto-assign   Gán thẳng heading cho đoạn mang style Heading built-in và
+                                    rút chúng khỏi luồng LLM (luật R1 của spec filter OOXML).
+                                    Cờ để ĐO, mặc định tắt — xem OoxmlStyleAutoAssign.
                                     (không phụ thuộc ngôn ngữ tài liệu)
               --no-trust-styles     Không tự động giữ heading theo style khi mô hình bỏ sót
               --skip-styled         Không hỏi mô hình về đoạn đã có style/outlineLvl. Nhanh hơn

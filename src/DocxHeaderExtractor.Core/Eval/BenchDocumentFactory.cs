@@ -45,7 +45,48 @@ public static class BenchDocumentFactory
         LocalizedStyles(),
         InjectedInstructions(),
         MultilevelList(),
+        MisappliedHeadingStyles(),
     ];
+
+    /// <summary>
+    /// Style Heading bị áp cho thứ KHÔNG phải đề mục — chế độ hỏng của tài liệu thật mà bộ bench
+    /// trước đây hoàn toàn không có, nên nó không thể bác mà cũng không thể xác nhận bất cứ luật nào
+    /// dựa vào style.
+    /// <para>
+    /// Đo được trên báo cáo thật (§7.1, §7.4): tác giả gán style Heading cho chú thích bảng, dòng
+    /// bìa, khối chữ ký, mục liệt kê — precision tầng OpenXML chỉ 55%, riêng chú thích bảng mang
+    /// <c>Heading3</c> đã là 13 mục. Trên bench cũ mọi tài liệu đều dùng style đúng, nên "tin style"
+    /// luôn thắng; tài liệu này là vế còn lại.
+    /// </para>
+    /// <para>
+    /// Ba đoạn nhiễu CỐ Ý ngắn, không kết thúc bằng dấu chấm câu và nằm ngoài bảng — tức khớp trọn
+    /// vẹn luật R1 của spec filter OOXML (<c>OoxmlStyleAutoAssign</c>). §10 đo trên đúng hình dạng
+    /// này: hai nhánh cho CÙNG P/R/F1, nhưng nhánh R1 tự nhận 3 mục sai ở confidence 1.0 trong khi
+    /// nhánh kia đẩy tất cả sang cần duyệt — khác biệt mà bảng F1 không nhìn thấy.
+    /// </para>
+    /// </summary>
+    private static BenchDoc MisappliedHeadingStyles() => new(
+        "09-style-ap-sai",
+        "Style Heading áp nhầm cho dòng bìa, chú thích bảng và nhãn khối chữ ký — style nói dối",
+    [
+        new("Chương 1. Tổng quan", 1, Style: "Heading1"),
+        new(Body1),
+        new("1.1. Phạm vi áp dụng", 2, Style: "Heading2"),
+        new(Body2),
+        // Từ đây là nhiễu: mang style Heading nhưng KHÔNG phải đề mục (Level = null).
+        new("Hà Nội, tháng 8 năm 2026", Style: "Heading3"),
+        new("Bảng 1.2 Đối chiếu thuật ngữ và viết tắt", Style: "Heading3"),
+        new("Mã", InTable: true, Bold: true, Center: true),
+        new("Diễn giải", InTable: true, Bold: true, Center: true),
+        new("OOXML", InTable: true),
+        new("Định dạng mở của Microsoft Office", InTable: true),
+        new("1.2. Đối tượng nghiên cứu", 2, Style: "Heading2"),
+        new(Body1),
+        new("Người lập biểu", Style: "Heading3"),
+        new("Nguyễn Văn A", Style: "Heading3"),
+        new("Chương 2. Kết luận", 1, Style: "Heading1"),
+        new(Body2),
+    ]);
 
     /// <summary>
     /// Tài liệu soạn đúng chuẩn Word: cấu trúc nằm ở danh sách đa cấp gắn style Heading, còn đoạn
