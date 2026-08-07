@@ -1463,3 +1463,55 @@ ghi là "chậm hơn ~2 lần".
 
 Tức lợi ích context dài đi kèm một khoản trả bằng tối ưu khác, và nó chỉ lộ ra khi chạy thật. Đây là
 lần thứ hai trong dự án một suy luận từ kiến trúc bị phép đo trực tiếp bổ sung ngược (lần đầu: §7.5).
+
+## 20. Lưới model × cách đóng gói — và chỗ tôi kết luận vội hai lần
+
+§19 so Qwen2.5 ở hai cách chia khối với Qwen3.5 ở một-khối-khổng-lồ, rồi kết luận *"đổi sang
+Qwen3.5-9B không cải thiện gì"*. **Phép so đó lẫn HAI biến** — vừa đổi model vừa đổi cách đóng gói —
+đúng bẫy §4.1. Mục này chạy nốt các ô còn thiếu.
+
+### 20.1 Lưới đầy đủ, khoá luận thật, đáp án Opus
+
+| | khối 5K | khối 28K | 1 khối 150K |
+|---|--:|--:|--:|
+| **Qwen2.5-7B** | P 94,2 · R 86,3 · **F1 90,0** · cấp 37,2 | P 91,5 · R 90,1 · **F1 90,8** · cấp 35,6 | *bất khả* (trần 32K) |
+| **Qwen3.5-9B** | P 92,2 · R 90,1 · **F1 91,1** · cấp **39,0** | P 92,9 · R 90,1 · **F1 91,5** · cấp 37,3 | P 99,1 · R 83,2 · **F1 90,5** · cấp 36,7 |
+
+Thời gian: 7B 330s / 267s; 9B 394s / 295s / 195s. 9B **buộc** chạy `--no-reuse-prefix` (§19.4).
+
+**Kết luận §19 sai.** Ở phép so hợp lệ, 9B thắng ở mọi ô so được: F1 90,0 → 91,1 và 90,8 → 91,5.
+Cấu hình tốt nhất đo được là **9B ở khối 28K, F1 91,5%**; nếu ưu tiên đúng cấp thì **9B ở khối 5K,
+cấp 39,0%** — cao nhất trong mọi cấu hình.
+
+### 20.2 Trần recall là của PIPELINE, không phải của model
+
+Cả 13 mục thiếu ở nhánh 28K **chưa bao giờ là ứng viên** — 0/13 tới được model. Kiểm trực tiếp bằng
+cách đối chiếu danh sách thiếu với tập ứng viên tầng OpenXML.
+
+Vì vậy **R 90,1% là TRẦN của pipeline** trên tài liệu này, và cả hai model đều chạm đúng trần đó khi
+dùng khối 28K. Hệ quả:
+
+- Muốn recall cao hơn thì **đổi model là vô ích** — phải sửa tầng lọc ứng viên. §7.1 đã ghi điều này
+  (*"tầng OpenXML đánh rơi thì không mô hình nào cứu được"*), nay có bằng chứng mạnh hơn: hai model
+  khác thế hệ, khác kiến trúc, context lệch 8 lần, bỏ sót **đúng cùng một tập 13 mục**.
+- Trục duy nhất model có tiếng nói là **precision**, và ở đó 9B tốt hơn thật.
+
+### 20.3 Nhưng "recall do đóng gói quyết định" cũng là kết luận vội
+
+Sau khi thấy hai model trùng khít ở khối 28K, tôi viết *"recall do pipeline quyết định, không phải
+model"*. Ô cuối bác lại: **7B ở khối 5K chỉ đạt R 86,3%, còn 9B ở cùng khối 5K đạt 90,1%** — tức
+chạm trần.
+
+Phát biểu đúng: **trần recall do pipeline đặt ra; khả năng CHẠM trần thì tuỳ model và cách đóng
+gói.** 7B cần khối lớn mới chạm được; 9B chạm ngay ở khối 5K. Nói cách khác 9B **bền hơn với việc
+chia nhỏ context** — đúng chiều mà §4.1 mô tả điểm yếu của model nhỏ (*"đổi thành phần khối là lật
+câu trả lời cho cả mục không liên quan"*).
+
+### 20.4 One-pass vẫn là nhánh kém nhất — và nay biết vì sao
+
+One-pass thua không phải vì 9B yếu (9B thắng ở hai ô kia) mà vì **chính cách đóng gói**: R 83,2%,
+dưới trần pipeline 7 điểm, tệ nhất ở cả đầu lẫn cuối tài liệu (93,0% / 72,7%). Đổi lại precision
+99,1% — đúng 1 mục thừa.
+
+Nhìn tất cả cùng lúc làm mô hình **thận trọng hơn**, không phải bao quát hơn. Đó là kết quả đo được,
+ngược với giả thuyết thường gặp rằng context dài giúp "thấy hết".
