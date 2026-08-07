@@ -1192,3 +1192,50 @@ cờ.
 
 Bài học: **test phải đặt ở tầng mà thay đổi thật sự xảy ra.** Hai lần đầu test xanh vì nó đo một
 tầng khác, không phải vì code đúng.
+
+## 15. Writeback tách được đoạn dính — hẹp, fail-closed
+
+TODO mục 5. `OutlineWriteback` từ chối bằng `inline_body_not_splittable` mỗi khi heading chỉ chiếm
+một phần paragraph; `SlimSourceSegment` (ánh xạ offset chuẩn hoá → run + offset thô) mở khoá được ca
+đó. Nay đã nối, nhưng chỉ ở phạm vi hẹp.
+
+### 15.1 Phạm vi: hai vế, cả hai đều fail-closed
+
+Chỉ tách khi ranh giới rơi ĐÚNG đầu một run (`Start == offset` và `RawStart == 0`), VÀ mọi run của
+đoạn là con trực tiếp của `w:p`. Vế đầu tránh phải cắt đôi text trong run — việc đó đổi cách chia
+run của tài liệu. Vế sau vì `SourceSegments.RunIndex` đếm theo `Descendants<Run>()` nên nó tính cả
+run lồng trong `w:hyperlink`; tách ở một run như vậy đòi tách cả hyperlink bao ngoài, và chỉ số cũng
+không còn khớp `Elements<Run>()`. Mọi ca khác giữ nguyên `inline_body_not_splittable`.
+
+Các `w:r` được **di chuyển nguyên vẹn**, không dựng lại — nên bất biến 2 ("không chạm vào một ký tự
+nội dung nào") vẫn đúng theo nghĩa ký tự. Cái ĐỔI là cấu trúc: một `w:p` thành hai. `w:pPr` của phần
+sau là bản sao của phần đầu nhưng bỏ `outlineLvl` và `pStyle`, vì thân bài không được vào cây điều
+hướng và cũng không được mang hình thức tiêu đề.
+
+### 15.2 Ràng buộc mà mô tả TODO bỏ sót: chỉ số dịch
+
+Chèn một `w:p` làm mọi đoạn phía sau lệch +1. Bất biến 3 của writeback là đọc lại bản đích rồi đối
+chiếu `heading.Index` → đoạn, nên **không có bản đồ chỉ số thì khâu xác minh đi soi nhầm đoạn ngay ở
+mục kế tiếp**. `Verify` nay nhận danh sách chỉ số đã tách và dịch theo; riêng `stableId` (địa chỉ
+theo vị trí `body[1]/p[N]`) chỉ so khi phía trước chưa có lần tách nào.
+
+### 15.3 Một lỗi lúc cài, đáng ghi
+
+Bản đầu đọc `SlimDocument` từ chính **bản đích đang mở để ghi** → 8 test đổ với
+`IOException: file đang được tiến trình khác dùng`. Đọc từ NGUỒN là đủ và không tranh khoá: hai file
+lúc đó giống hệt nhau từng byte. Lỗi này lộ ra ngay vì bộ test writeback vốn đã dày.
+
+### 15.4 Test và kiểm đột biến
+
+`InlineBodyWritebackTests`: round-trip mở/ghi/đọc lại (đúng tiêu chí nghiệm thu TODO đặt), cộng ca
+fail-closed. Ba đột biến đều bị bắt — nhưng **hai trong ba chỉ bị bắt sau khi siết fixture**:
+
+- tắt hẳn việc tách → đổ ngay từ đầu;
+- bỏ chốt "đầu run" → ban đầu KHÔNG đổ, vì fixture một-run không có segment nào bắt đầu đúng ở ranh
+  giới. Phải thêm ca ba dấu cách liên tiếp (chuẩn hoá gộp lại) mới sinh ra segment `RawStart != 0`
+  tại đúng chỗ đó;
+- bỏ bản đồ chỉ số → ban đầu KHÔNG đổ, vì test chỉ có một heading nên không có mục nào phía sau để
+  lệch. Phải thêm một đề mục thứ hai đứng sau chỗ tách.
+
+Cùng bài học §14.4 ở dạng khác: **fixture phải chứa đúng tình huống mà chốt sinh ra để chặn**, nếu
+không test xanh vì không chạm tới chốt, chứ không phải vì chốt đúng.

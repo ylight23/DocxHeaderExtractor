@@ -64,6 +64,13 @@ public static class OutlineWriteback
 
         var skipped = new List<OutlineWritebackSkip>();
         var applied = new List<HeadingRecord>();
+        // Ngoài khối using: Verify chạy sau khi đóng file và cần biết đã tách ở những chỉ số nào.
+        var splits = new List<PendingSplit>();
+
+        // Đường về nguồn của từng ký tự — thứ duy nhất cho phép tách đoạn mà không đoán mò offset.
+        // Đọc từ NGUỒN chứ không từ đích: hai file lúc này giống hệt nhau từng byte, còn đích thì
+        // sắp bị mở để ghi và đọc song song sẽ tranh khoá.
+        var slim = new DocxSlimExtractor(extraction).Extract(source);
         try
         {
             using (var doc = WordprocessingDocument.Open(target, true))
@@ -76,6 +83,7 @@ public static class OutlineWriteback
                 var paragraphs = ParagraphWalker.Enumerate(body, extraction).ToList();
                 var headingStyles = options.ApplyHeadingStyles ? HeadingStyleIds(main) : [];
 
+
                 foreach (var heading in outline.Headings)
                 {
                     if (Skip(heading, paragraphs.Count) is { } reason)
@@ -85,6 +93,18 @@ public static class OutlineWriteback
                     }
 
                     var walked = paragraphs[heading.Index];
+
+                    // Heading dính nội dung cùng dòng: tách được thì tách, không thì từ chối như cũ.
+                    if (heading.InlineBodySpan is { } bodySpan)
+                    {
+                        if (TrySplitPoint(slim.ByIndex(heading.Index), walked.Element, bodySpan.Start)
+                            is not { } runIndex)
+                        {
+                            skipped.Add(new OutlineWritebackSkip(heading.Index, "inline_body_not_splittable"));
+                            continue;
+                        }
+                        splits.Add(new PendingSplit(heading.Index, walked.Element, runIndex));
+                    }
                     if (heading.StableId is { Length: > 0 } stableId && walked.StableId != stableId)
                     {
                         skipped.Add(new OutlineWritebackSkip(heading.Index, "stable_id_mismatch"));
@@ -105,10 +125,14 @@ public static class OutlineWriteback
                     applied.Add(heading);
                 }
 
+                // Tách SAU khi đã đặt xong outlineLvl: chèn w:p mới làm mọi chỉ số phía sau lệch,
+                // nên mọi thao tác dựa trên `paragraphs` phải xong trước.
+                foreach (var split in splits) SplitParagraph(split);
+
                 main.Document!.Save();
             }
 
-            Verify(target, extraction, applied);
+            Verify(target, extraction, applied, splits.Select(x => x.Index).ToList());
         }
         catch
         {
@@ -126,32 +150,46 @@ public static class OutlineWriteback
         // Cổng precision chưa cho mục này đi qua thì writeback cũng không được đi trước nó.
         if (heading.DecisionStatus == HeadingDecisionStatus.RequiresReview) return "requires_review";
 
-        // Đoạn chứa cả heading lẫn nội dung cùng dòng: đặt outlineLvl cho cả đoạn sẽ kéo phần
-        // thân bài vào cây điều hướng. Muốn ghi được thì phải tách đoạn trong file, mà tách đoạn
-        // là sửa nội dung — nằm ngoài phạm vi của tool này.
-        if (heading.InlineBody is not null) return "inline_body_not_splittable";
+        // Đoạn chứa cả heading lẫn nội dung cùng dòng: đặt outlineLvl cho cả đoạn sẽ kéo phần thân
+        // bài vào cây điều hướng. Nay tách được — nhưng chỉ khi ranh giới rơi đúng đầu một run là
+        // con trực tiếp của w:p (xem TrySplitPoint); quyết định đó nằm ở vòng lặp chính vì nó cần
+        // SourceSegments. Ca không tách được vẫn trả về "inline_body_not_splittable" ở đó.
+        if (heading.InlineBody is not null && heading.InlineBodySpan is null)
+            return "inline_body_not_splittable";
 
         if (heading.Level is < 1 or > 9) return "invalid_level";
         return null;
     }
 
+    /// <param name="splitIndexes">
+    /// Chỉ số (theo bản GỐC) của những đoạn đã bị tách làm hai. Mỗi lần tách chèn thêm một
+    /// <c>w:p</c> nên mọi đoạn phía sau dịch +1 — không có bản đồ này thì khâu xác minh đi tìm nhầm
+    /// đoạn ngay ở mục kế tiếp, và cả `stableId` (địa chỉ theo vị trí) cũng lệch theo.
+    /// </param>
     private static void Verify(
         string target,
         ExtractionOptions extraction,
-        IReadOnlyList<HeadingRecord> applied)
+        IReadOnlyList<HeadingRecord> applied,
+        IReadOnlyCollection<int> splitIndexes)
     {
         var written = new DocxSlimExtractor(extraction).Extract(target);
         foreach (var heading in applied)
         {
-            var paragraph = written.ByIndex(heading.Index)
+            var shift = splitIndexes.Count(i => i < heading.Index);
+            var wasSplit = splitIndexes.Contains(heading.Index);
+            var at = heading.Index + shift;
+
+            var paragraph = written.ByIndex(at)
                             ?? throw new InvalidOperationException(
                                 $"Sau khi ghi, đoạn {heading.Index} không còn tồn tại trong bản đích.");
 
-            if (heading.StableId is { Length: > 0 } stableId && paragraph.StableId != stableId)
+            // Địa chỉ XML là theo vị trí nên chỉ so được khi phía trước chưa có lần tách nào.
+            if (shift == 0 && heading.StableId is { Length: > 0 } stableId && paragraph.StableId != stableId)
                 throw new InvalidOperationException(
                     $"Sau khi ghi, đoạn {heading.Index} đổi địa chỉ XML ({paragraph.StableId} ≠ {stableId}).");
 
-            var expected = heading.OriginalText ?? heading.Text;
+            // Đoạn đã tách thì phần còn lại đúng bằng phần TIÊU ĐỀ, không còn là text gốc.
+            var expected = wasSplit ? heading.Text : heading.OriginalText ?? heading.Text;
             if (paragraph.Text != expected)
                 throw new InvalidOperationException(
                     $"Sau khi ghi, nội dung đoạn {heading.Index} không còn khớp nguồn.");
@@ -161,6 +199,71 @@ public static class OutlineWriteback
                     $"Sau khi ghi, đoạn {heading.Index} có outline level {paragraph.OutlineLevel}, " +
                     $"khác cấp {heading.Level} đã chốt.");
         }
+    }
+
+
+    private sealed record PendingSplit(int Index, Paragraph Element, int RunIndex);
+
+    /// <summary>
+    /// Ranh giới heading/thân bài có tách được thành hai <c>w:p</c> không, và nếu có thì ở run nào.
+    /// <para>
+    /// FAIL-CLOSED theo hai vế, cả hai đều cần thiết:
+    /// </para>
+    /// <list type="number">
+    /// <item>ranh giới phải rơi ĐÚNG đầu một run (<c>Start == offset</c> và <c>RawStart == 0</c>) —
+    /// nếu không thì phải cắt đôi text bên trong run, việc đó đổi cách chia run của tài liệu;</item>
+    /// <item>MỌI run của đoạn phải là con trực tiếp của <c>w:p</c>. <c>SourceSegments.RunIndex</c>
+    /// đếm theo <c>Descendants&lt;Run&gt;()</c> nên nó tính cả run lồng trong <c>w:hyperlink</c>;
+    /// tách ở một run như vậy đòi tách cả hyperlink bao ngoài, và chỉ số run cũng không còn khớp
+    /// với <c>Elements&lt;Run&gt;()</c>.</item>
+    /// </list>
+    /// </summary>
+    private static int? TrySplitPoint(SlimParagraph? paragraph, Paragraph element, int bodyStart)
+    {
+        if (paragraph is null || bodyStart <= 0) return null;
+
+        var descendants = element.Descendants<Run>().ToList();
+        if (descendants.Count == 0 || descendants.Any(r => !ReferenceEquals(r.Parent, element))) return null;
+
+        foreach (var segment in paragraph.SourceSegments)
+        {
+            if (segment.Start != bodyStart || segment.RawStart != 0) continue;
+            return segment.RunIndex >= 0 && segment.RunIndex < descendants.Count ? segment.RunIndex : null;
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// Cắt đoạn làm hai tại đầu run <see cref="PendingSplit.RunIndex"/>: phần đầu giữ nguyên vị trí
+    /// và giữ <c>outlineLvl</c> vừa đặt, phần sau thành một <c>w:p</c> mới chèn ngay sau.
+    /// <para>
+    /// Không một ký tự nội dung nào bị đổi — các <c>w:r</c> được DI CHUYỂN nguyên vẹn, không dựng
+    /// lại. <c>w:pPr</c> của phần sau là bản sao của phần đầu nhưng BỎ <c>outlineLvl</c> và
+    /// <c>pStyle</c>: phần thân bài không được vào cây điều hướng, và cũng không được mang hình thức
+    /// tiêu đề.
+    /// </para>
+    /// </summary>
+    private static void SplitParagraph(PendingSplit split)
+    {
+        var runs = split.Element.Elements<Run>().ToList();
+        if (split.RunIndex >= runs.Count) return;
+
+        var tail = new Paragraph();
+        if (split.Element.ParagraphProperties is { } pPr)
+        {
+            var clone = (ParagraphProperties)pPr.CloneNode(true);
+            clone.OutlineLevel?.Remove();
+            clone.ParagraphStyleId?.Remove();
+            tail.PrependChild(clone);
+        }
+
+        foreach (var run in runs.Skip(split.RunIndex))
+        {
+            run.Remove();
+            tail.AppendChild(run);
+        }
+
+        split.Element.InsertAfterSelf(tail);
     }
 
     /// <summary>Chỉ nhận style Heading 1..9 CÓ SẴN trong tài liệu; không tạo style mới.</summary>
