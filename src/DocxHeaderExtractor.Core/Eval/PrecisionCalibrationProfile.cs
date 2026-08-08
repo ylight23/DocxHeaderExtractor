@@ -68,6 +68,7 @@ public sealed class PrecisionCalibrationProfile
     public static string ConfigurationFor(PipelineOptions o) => string.Join('|',
         $"backend={o.Backend}",
         $"twoPass={o.TwoPass}",
+        $"rollingOutline={o.RollingOutline}",
         $"highPrecision={o.HighPrecisionMode}",
         $"trustStyles={o.TrustStyles}",
         $"skipStyled={o.SkipStyledCandidates}",

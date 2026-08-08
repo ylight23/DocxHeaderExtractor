@@ -1818,3 +1818,83 @@ giữ nguyên dưới dạng no-op kèm ghi chú, thay vì xoá.
 Kết luận về reasoning cho bài toán này: **ba lần đo, không lần nào thinking hay nhìn-toàn-cục mang
 lại gì thật.** Mọi tiến bộ đo được đều đến từ đọc dữ kiện cấu trúc có sẵn trong tài liệu (§17, §22,
 §24.1), không từ việc bắt mô hình suy nghĩ nhiều hơn.
+
+## 26. Neo vào literature, và baseline kiểu pandoc lật một kết luận của tôi
+
+Đến giờ dự án chưa từng neo vào công trình nào. Đã xác thực: nhánh nghiên cứu đúng tên là
+**hierarchical document structure reconstruction / ToC extraction**, có từ trước LLM. Mốc chính là
+**HRDoc** (AAAI 2023, arXiv 2303.13839): 2.500 tài liệu nhiều trang, ~2 triệu đơn vị ngữ nghĩa,
+baseline **DSPS** encoder–decoder (không phải prompt một LLM lớn), metric **Semantic-TEDS**.
+
+Chi tiết đắt nhất không phải dataset mà là **cách chia bài toán**. HRDoc chia làm BA bài toán con:
+*semantic unit classification*, **parent finding**, *relation classification*. Không phải
+"phân loại + gán cấp" như tôi vẫn đo.
+
+### 26.1 Baseline kiểu pandoc: style là tín hiệu CHỌN hoàn hảo, tín hiệu CẤP tệ
+
+Cách Claude (skill `docx`) đọc file .docx là `pandoc -t markdown`, tức style `HeadingN` → `#`×N.
+Đúng bằng R1 và chỉ R1. Mô phỏng đúng luật đó trên khoá luận rồi chấm với đáp án đồng thuận:
+
+| KLTN, 1.498 đoạn, 110 mục trong đáp án | pandoc (chỉ style) | Pipeline |
+|---|--:|--:|
+| Precision | **100,0%** | 83,5% |
+| Recall | 61,8% | **96,4%** |
+| F1 | 76,4% | **89,5%** |
+| Đúng cấp | 41,2% | **66,0%** |
+
+Bỏ sót 42/110, bắt nhầm **0**. Pipeline mua được +34,6 điểm recall và +24,8 điểm cấp, trả bằng
+16,5 điểm precision. Đây là lần đầu có con số cho câu "cả tầng LLM này đáng giá bao nhiêu".
+
+### 26.2 Đo bằng metric của HRDoc thì kết luận lật ngược
+
+Chấm đúng 68 mục style-only đó bằng **parent finding** thay vì cấp tuyệt đối:
+
+```
+dung CAP TUYET DOI : 41,2%  (28/68)
+dung CHA (parent)  : 100,0% (68/68)   <- sai cha o 0 muc
+```
+
+Cây **không sai một cạnh nào**. 40 lỗi cấp đều lệch ĐỀU một bậc: `H5→4: 16, H4→3: 15, H3→2: 9`.
+Tác giả dùng Heading3 ở chỗ ngữ nghĩa là cấp 2 — **con số sai, quan hệ đúng**.
+
+Nên thử luật hiển nhiên theo sau: bỏ con số trong tên style, chỉ giữ thứ tự lồng nhau, gán
+cấp = độ sâu trong cây đó:
+
+```
+cap = so trong ten style (kieu pandoc) :  41,2%  (28/68)
+cap = DO SAU trong cay do style dung nen: 100,0% (68/68)
+```
+
+**41,2% → 100%**, thuần xác định, không một giây suy luận.
+
+### 26.3 Lỗi thiết kế của chính tôi: `LevelTrusted` nhị phân nên vứt cả phần đúng
+
+§17 dựng `LevelTrusted` như một công tắc: style không bám độ sâu đánh số ⇒ **bỏ hẳn** tín hiệu
+style, thay bằng độ sâu đánh số (§24.1, +14,1 điểm). Nhưng chỉ **giá trị tuyệt đối** của style sai;
+**thứ tự lồng nhau** thì đúng tuyệt đối. Tôi đã ném phần tốt đi cùng phần xấu, và mất 34 điểm cấp
+trên chính tập mục mà tài liệu khai rõ nhất.
+
+Thêm `StyleTrust.NestingTrusted` làm trục thứ ba, và `StructuralHierarchyResolver.StyleNestingDepths`
+làm bộ chấp hành, đứng TRƯỚC nhánh độ sâu đánh số.
+
+### 26.4 Tiền đề của luật không phải trang trí
+
+Quét luật này trên cả 10 tài liệu bench:
+
+| | raw (số trong tên style) | độ sâu lồng nhau |
+|---|--:|--:|
+| 9 tài liệu còn lại | 100% | 100% |
+| `10-cap-style-thoai-hoa` | 44,4% | **33,3%** ← tệ hơn |
+
+Tài liệu đó cho **mọi** đề mục mang `Heading2`: cây lồng nhau sập hết về một cấp. Nên
+`DistinctLevels > 1` là **điều kiện tồn tại** của luật, không phải điều kiện cho chắc — và nó đã có
+sẵn trong `StyleTrust` từ §17, chỉ chưa ai nối vào đúng chỗ.
+
+### 26.5 Ba điều còn nợ
+
+1. **Metric.** Đang chấm "đúng cấp tuyệt đối", trong khi chuẩn của nhánh này là so khớp CÂY. Chính
+   §25.1 đã vấp: một chỉ số tính trên tập được giữ lại tự đẹp lên khi tập bị lọc bớt. Metric cây
+   không có lỗ đó. Chưa cài.
+2. **Đáp án vẫn là đồng thuận của model** (TODO 4). Mọi con số ở trên đứng trên nền đó.
+3. **Đối chứng model chuyên dụng** (kiểu DSPS) chưa làm được: không đủ dữ liệu gán nhãn. Cùng cổ
+   chai với điểm 2.

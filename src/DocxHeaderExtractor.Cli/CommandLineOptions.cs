@@ -105,6 +105,7 @@ public sealed class CommandLineOptions
                 case "--raw-levels": o.Pipeline.NormalizeLevels = false; break;
                 case "--normalize-levels": o.Pipeline.NormalizeLevels = true; break;
                 case "--two-pass": o.Pipeline.TwoPass = true; break;
+                case "--rolling-outline": o.Pipeline.RollingOutline = true; break;
                 case "--no-global-hierarchy": o.Pipeline.GlobalHierarchy = false; break;
                 case "--model-levels": o.Pipeline.LevelFromOutline = false; break;
                 case "--dump-xml": o.Pipeline.DumpXmlPath = Next(a); break;
