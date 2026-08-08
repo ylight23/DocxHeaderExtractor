@@ -11,8 +11,11 @@ namespace DocxHeaderExtractor.Core.Models;
 /// </para>
 /// <list type="bullet">
 /// <item><b>Khoá luận</b> (§9.2, §9.7): 68/68 đoạn mang style đều là đề mục thật ⇒ quyền CHỌN tin
-/// được. Nhưng tác giả dùng Heading1 → Heading3 → Heading4, bỏ hẳn Heading2 ⇒ con số trong tên style
-/// không phải độ sâu thật, đúng cấp chỉ ~28%.</item>
+/// được. Nhưng con số trong tên style không phải độ sâu thật: chấm riêng lớp style-only cho ra đúng
+/// cấp 41,2%, và 40/40 lỗi đều là lệch ĐỀU một bậc (H5→4: 16, H4→3: 15, H3→2: 9).
+/// <para>Bản đầu của ghi chú này viết <i>"tác giả dùng Heading1 → Heading3 → Heading4, bỏ hẳn
+/// Heading2"</i> — SAI, đã đính chính ở §16: tài liệu dùng đủ 5 cấp, Heading2 xuất hiện 8 lần.
+/// Hỏng thật là bất nhất theo từng phần, không phải bỏ cấp.</para></item>
 /// <item><b>Báo cáo thực tập</b> (§7.1, §7.4): style bị áp cho chú thích bảng, dòng bìa, khối chữ ký
 /// — precision tầng OpenXML 55%, riêng chú thích mang Heading3 đã 13 mục ⇒ quyền CHỌN không tin
 /// được. Và gần như mọi thứ đều là Heading2 ⇒ quyền GÁN CẤP cũng không, đúng cấp 40,7%.</item>
@@ -66,6 +69,25 @@ public sealed record StyleTrust(
         StyledCount < MinimumStyledSample
         || ((DistinctLevels > 1 && !SkipsLevels)
             && !(NumberedSample >= MinimumNumberedSample && NumberedDisagreeRatio > MaxNumberedDisagree));
+
+    /// <summary>
+    /// Thứ tự LỒNG NHAU của style có mang thông tin độ sâu không — tách hẳn khỏi câu hỏi "con số
+    /// trong tên style có phải độ sâu không".
+    /// <para>
+    /// Đây là bản sửa một lỗi thiết kế của chính lớp này. <see cref="LevelTrusted"/> là nhị phân,
+    /// nên khi nó hạ quyền thì pipeline vứt CẢ tín hiệu style rồi thay bằng độ sâu đánh số. Đo trên
+    /// khoá luận (§26) thì chỉ <i>giá trị tuyệt đối</i> của style sai, còn <i>thứ tự lồng nhau</i>
+    /// đúng tuyệt đối: chấm bằng metric parent-finding của HRDoc được 68/68, và gán cấp = độ sâu
+    /// trong cây do style dựng nên đưa đúng cấp từ 41,2% lên 100% trên chính 68 mục đó. Phần tốt đã
+    /// bị ném đi cùng phần xấu.
+    /// </para>
+    /// <para>
+    /// Tiền đề là style phải THỰC SỰ biến thiên. Trên <c>10-cap-style-thoai-hoa</c> mọi đề mục đều
+    /// mang Heading2: cây lồng nhau sập hết về một cấp và luật này TỆ HƠN cách cũ (44,4% → 33,3%).
+    /// Vì vậy <c>DistinctLevels > 1</c> không phải điều kiện trang trí — nó là điều kiện tồn tại.
+    /// </para>
+    /// </summary>
+    public bool NestingTrusted => StyledCount >= MinimumStyledSample && DistinctLevels > 1;
 
     /// <summary>Dưới ngưỡng này thì không đủ mẫu để nói style có bám độ sâu đánh số hay không.</summary>
     public const int MinimumNumberedSample = 8;

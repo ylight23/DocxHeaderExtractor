@@ -19,12 +19,22 @@ public static class StructuralHierarchyResolver
         var ordered = headings.OrderBy(h => h.Index).ToList();
         var paths = ordered.ToDictionary(h => h.Index, h => PathOf(h, document));
         var tiers = SignatureTiers(ordered, document, respectStyleTrust);
+        var nesting = StyleNestingDepths(ordered, document, respectStyleTrust);
         var changed = 0;
 
         for (var i = 0; i < ordered.Count; i++)
         {
             var current = ordered[i];
             var path = paths[current.Index];
+
+            // Style không khai đúng CẤP nhưng khai đúng THỨ TỰ LỒNG NHAU (xem StyleNestingDepths).
+            // Đứng trước nhánh độ sâu đánh số vì nó mạnh hơn hẳn trên chính tập mục nó phủ: đo
+            // riêng lớp style-only trên khoá luận, đúng cấp 41,2% → 100% (§26).
+            if (nesting.TryGetValue(current.Index, out var depth))
+            {
+                if (depth != current.Level) { current.Level = depth; changed++; }
+                continue;
+            }
 
             // Cùng một chốt mà nhánh chữ ký đã có (xem SignatureTiers): cấu trúc đã khai cấp thì
             // không suy lại. Đoạn vẫn nằm trong `paths` vì nó là NEO cha/anh em cho các mục khác —
@@ -114,6 +124,50 @@ public static class StructuralHierarchyResolver
 
         if (rank.Count < 2) return result;
         foreach (var (index, token) in tokens) result[index] = rank[token.Signature];
+        return result;
+    }
+
+    /// <summary>
+    /// Cấp suy từ THỨ TỰ LỒNG NHAU của style Heading, không từ con số trong tên style.
+    /// <para>
+    /// Xuất phát từ một phép đo theo metric <i>parent finding</i> của HRDoc (AAAI 2023, arXiv
+    /// 2303.13839) — bài toán con mà nhánh nghiên cứu tái dựng cấu trúc phân cấp dùng, thay cho việc
+    /// chấm cấp tuyệt đối. Trên khoá luận thật, lớp style-only chấm được:
+    /// </para>
+    /// <list type="bullet">
+    /// <item>đúng cấp tuyệt đối: <b>41,2%</b> (28/68) — và 40/40 lỗi đều lệch ĐỀU một bậc;</item>
+    /// <item>đúng cha: <b>100%</b> (68/68) — cây không sai một cạnh nào.</item>
+    /// </list>
+    /// <para>
+    /// Tức tác giả dùng Heading3 ở chỗ ngữ nghĩa là cấp 2: con số sai, quan hệ đúng. Gán cấp = độ
+    /// sâu trong cây do chính style dựng nên đưa 41,2% → <b>100%</b> trên đúng 68 mục đó.
+    /// </para>
+    /// <para>
+    /// CHỈ chạy khi <c>StyleTrust.NestingTrusted</c>: cần style thực sự biến thiên. Đo trên
+    /// <c>10-cap-style-thoai-hoa</c> (mọi đề mục đều Heading2) thì luật này sập cả cây về một cấp và
+    /// TỆ HƠN cách cũ — 44,4% → 33,3%. Điều kiện không phải để cho chắc, nó là điều kiện tồn tại.
+    /// </para>
+    /// </summary>
+    private static Dictionary<int, int> StyleNestingDepths(
+        IReadOnlyList<HeadingRecord> ordered, SlimDocument document, bool respectStyleTrust)
+    {
+        var result = new Dictionary<int, int>();
+        if (!respectStyleTrust) return result;
+        // LevelTrusted đúng ⇒ Declared() đã chặn từ trước và cấp lấy thẳng từ style; không tới đây.
+        if (document.StyleTrust is not { LevelTrusted: false, NestingTrusted: true }) return result;
+
+        var ancestors = new List<int>();
+        foreach (var heading in ordered)
+        {
+            if (document.ByIndex(heading.Index)
+                is not { HasBuiltInHeadingStyle: true, GuessedLevel: { } styleLevel }) continue;
+
+            // Mục không đánh style thì không đụng tới ngăn xếp: cấp của chúng đến từ độ sâu đánh số,
+            // và trộn hai thang vào một ngăn xếp là lấy cái sai của thang này đè lên cái đúng của thang kia.
+            while (ancestors.Count > 0 && ancestors[^1] >= styleLevel) ancestors.RemoveAt(ancestors.Count - 1);
+            result[heading.Index] = Math.Clamp(ancestors.Count + 1, 1, 9);
+            ancestors.Add(styleLevel);
+        }
         return result;
     }
 

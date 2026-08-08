@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Chunking;
 using DocxHeaderExtractor.Core.Eval;
@@ -86,6 +86,19 @@ public sealed class PipelineOptions
     /// chỗ nào hai lượt lệch nhau là chỗ mô hình lung lay, đánh dấu để trọng tài xem lại.
     /// </summary>
     public bool TwoPass { get; set; }
+
+    /// <summary>
+    /// Mang khung outline đã dựng được sang khối sau. Khối 1 chốt "Chương 1"; khối 2 nhận lại khung
+    /// đó rồi mới quyết định "1.1" đứng ở cấp nào; khối 3 nhận cả hai. Nhằm đúng cơ chế hỏng đã đo
+    /// hai lần (§4.1, §21): đổi thành phần khối là lật câu trả lời cho cả mục không liên quan, vì
+    /// mỗi khối tự quyết cấp trong ngữ cảnh riêng của nó mà không biết phần trước đã dựng gì.
+    /// <para>
+    /// Giá phải trả: lượt phân loại buộc phải TUẦN TỰ — view của khối i chỉ dựng được sau khi khối
+    /// i-1 trả kết quả. Mất khả năng gửi song song, nên chỉ có nghĩa với backend RPC khi người dùng
+    /// chấp nhận đánh đổi. Model local vốn đã tuần tự (<see cref="ChunkParallelism"/>) nên không mất gì.
+    /// </para>
+    /// </summary>
+    public bool RollingOutline { get; set; }
 
     /// <summary>
     /// Hậu kiểm bằng ký hiệu đánh số của chính tài liệu: cùng dạng đánh số phải cùng cấp, và
@@ -449,8 +462,16 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 ? $"Tái dùng prefill: {llm.SharedPrefixTokens} token phần chung nạp một lần cho mọi khối."
                 : "Không cắt được prompt thành phần chung — quay về nạp lại từng khối.");
 
+        Func<IReadOnlyList<(int Index, int Level)>, IReadOnlyList<int>, string>? rollingOutline = _options.RollingOutline
+            ? (skeleton, asked) => BuildRollingOutline(skeleton, slim, asked)
+            : null;
+        if (rollingOutline is not null)
+            Log("Khung outline tăng dần: mỗi khối nhận lại mục lục đã dựng từ các khối trước " +
+                "(buộc chạy tuần tự, không gửi song song).");
+
         var passA = await RunPassAsync(llm, lines, _options.Chunking.TokenBudget,
-            _options.Chunking.MaxCandidatesPerChunk, _options.TwoPass ? "lượt 1" : null, shouldAsk, ct);
+            _options.Chunking.MaxCandidatesPerChunk, _options.TwoPass ? "lượt 1" : null, shouldAsk, ct,
+            rollingOutlineFor: rollingOutline);
 
         // Lượt 2 cắt khối nhỏ hơn hẳn ⇒ mép khối rơi vào chỗ khác, mỗi ứng viên có lân cận khác.
         // Khi không chặn theo số ứng viên (0), việc halve ngân sách token đã đủ dịch mép khối.
@@ -459,7 +480,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 _options.Chunking.MaxCandidatesPerChunk > 0
                     ? Math.Max(4, _options.Chunking.MaxCandidatesPerChunk / 2)
                     : 0,
-                "lượt 2", shouldAsk, ct, passName: "classify-2")
+                "lượt 2", shouldAsk, ct, passName: "classify-2", rollingOutlineFor: rollingOutline)
             : null;
 
         var accepted = new Dictionary<int, HeadingRecord>();
@@ -910,7 +931,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
         CancellationToken ct,
         bool useCritic = false,
         Func<IReadOnlyList<int>, string>? anchorsFor = null,
-        string passName = "classify")
+        string passName = "classify",
+        Func<IReadOnlyList<(int Index, int Level)>, IReadOnlyList<int>, string>? rollingOutlineFor = null)
     {
         // Đếm bằng tokenizer của chính mô hình: ngân sách chỉ có nghĩa khi đơn vị của nó trùng
         // với đơn vị mà cửa sổ ngữ cảnh dùng. Chỉ backend local mới có tokenizer trong tiến trình;
@@ -925,37 +947,30 @@ public sealed class HeaderExtractionPipeline : IDisposable
         var unit = countTokens is null ? "token ước lượng" : "token thật";
         Log($"{prefix}chia thành {chunks.Count} khối context trung lập (ngân sách {chunkTokens} {unit}/khối)");
 
+        var views = new string[chunks.Count];
+        var memoryNotes = new string?[chunks.Count];
+        // Khung outline dựng dần, chỉ dùng khi rollingOutlineFor bật. Không khoá vì nhánh đó chạy
+        // tuần tự: bản chất của nó là khối i phải đợi kết quả khối i-1.
+        var skeleton = new List<(int Index, int Level)>();
+
         // Dựng view của mọi khối TRƯỚC, vẫn tuần tự: FindExamples đọc danh sách correction không
         // khoá, và view phải giống hệt bản tuần tự thì kết quả mới không đổi. Bước này không gọi
         // mạng nên không phải chỗ tốn thời gian.
-        var views = new string[chunks.Count];
-        var memoryNotes = new string?[chunks.Count];
-        for (var i = 0; i < chunks.Count; i++)
-        {
-            ct.ThrowIfCancellationRequested();
-            var documentView = NeutralDocumentViewSerializer.WrapChunk(chunks[i].Lines, chunks[i].Number, chunks.Count);
-            // Anchor dựng theo từng khối: mốc phải nằm quanh đúng các đoạn khối này đang hỏi.
-            var anchors = anchorsFor?.Invoke(chunks[i].CandidateIndexes);
-            if (!string.IsNullOrWhiteSpace(anchors))
-                documentView += "\n" + anchors;
-            if (!useCritic && _correctionMemory is not null &&
-                _options.Backend is InferenceBackend.Local or InferenceBackend.LmStudio)
+        // Nhánh khung tăng dần KHÔNG dựng trước được — view của khối i chứa kết quả khối i-1 —
+        // nên nó dựng ngay trước lúc gửi, trong vòng lặp tiêu thụ bên dưới.
+        if (rollingOutlineFor is null)
+            for (var i = 0; i < chunks.Count; i++)
             {
-                var examples = _correctionMemory.FindExamples(documentView);
-                if (examples.Count > 0)
-                {
-                    documentView = CorrectionMemory.InjectExamples(documentView, examples);
-                    memoryNotes[i] = $"    ↳ memory: {examples.Count} correction tương tự đã xác nhận (chỉ làm ví dụ, không ép kết quả)";
-                }
+                ct.ThrowIfCancellationRequested();
+                views[i] = BuildView(i);
             }
-            views[i] = documentView;
-        }
 
         var votes = new Dictionary<int, List<int>>();
         var explicitNonHeadings = new HashSet<int>();
         var rejectedRoles = new Dictionary<int, SemanticRole>();
         var unreliable = new HashSet<int>();
-        var degree = Math.Clamp(ChunkParallelism, 1, 16);
+        // Khung tăng dần loại trừ song song theo định nghĩa, không phải theo lựa chọn.
+        var degree = rollingOutlineFor is not null ? 1 : Math.Clamp(ChunkParallelism, 1, 16);
         if (degree > 1 && chunks.Count > 1)
             Log($"{prefix}gửi tối đa {degree} khối song song — nội dung từng request không đổi, chỉ bớt thời gian chờ.");
 
@@ -970,10 +985,17 @@ public sealed class HeaderExtractionPipeline : IDisposable
         var pending = new Task<ChunkResult>[chunks.Count];
         try
         {
-            for (var i = 0; i < chunks.Count; i++) pending[i] = RunChunkAsync(i);
+            if (rollingOutlineFor is null)
+                for (var i = 0; i < chunks.Count; i++) pending[i] = RunChunkAsync(i);
 
             for (var i = 0; i < chunks.Count; i++)
             {
+                // Khung tăng dần: dựng view NGAY ĐÂY, sau khi khối i-1 đã góp vào skeleton.
+                if (rollingOutlineFor is not null)
+                {
+                    views[i] = BuildView(i);
+                    pending[i] = RunChunkAsync(i);
+                }
                 var result = await pending[i];
                 var chunk = chunks[i];
 
@@ -1011,6 +1033,11 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     if (!votes.TryGetValue(h.Index, out var list)) votes[h.Index] = list = [];
                     list.Add(h.Level);
                 }
+
+                // Góp vào khung để khối sau nhìn thấy. Đặt SAU vòng gộp phiếu để khung mang đúng
+                // những gì khối này vừa chốt, không phải giả thuyết nửa vời.
+                if (rollingOutlineFor is not null)
+                    foreach (var h in result.Headings) skeleton.Add((h.Index, h.Level));
             }
         }
         catch
@@ -1027,6 +1054,32 @@ public sealed class HeaderExtractionPipeline : IDisposable
         }
 
         return new PassResult(votes, explicitNonHeadings, rejectedRoles, unreliable);
+
+        string BuildView(int i)
+        {
+            var documentView = NeutralDocumentViewSerializer.WrapChunk(chunks[i].Lines, chunks[i].Number, chunks.Count);
+            // Anchor dựng theo từng khối: mốc phải nằm quanh đúng các đoạn khối này đang hỏi.
+            var anchors = anchorsFor?.Invoke(chunks[i].CandidateIndexes);
+            if (!string.IsNullOrWhiteSpace(anchors))
+                documentView += "\n" + anchors;
+            if (rollingOutlineFor is not null && chunks[i].CandidateIndexes.Count > 0)
+            {
+                var outline = rollingOutlineFor(skeleton, chunks[i].CandidateIndexes);
+                if (!string.IsNullOrWhiteSpace(outline))
+                    documentView += "\n" + outline;
+            }
+            if (!useCritic && _correctionMemory is not null &&
+                _options.Backend is InferenceBackend.Local or InferenceBackend.LmStudio)
+            {
+                var examples = _correctionMemory.FindExamples(documentView);
+                if (examples.Count > 0)
+                {
+                    documentView = CorrectionMemory.InjectExamples(documentView, examples);
+                    memoryNotes[i] = $"    ↳ memory: {examples.Count} correction tương tự đã xác nhận (chỉ làm ví dụ, không ép kết quả)";
+                }
+            }
+            return documentView;
+        }
 
         async Task<ChunkResult> RunChunkAsync(int index)
         {
@@ -1139,6 +1192,62 @@ public sealed class HeaderExtractionPipeline : IDisposable
             : "CRITIC_ANCHORS (mốc cấu trúc, không cần trả quyết định):\n" +
               JsonSerializer.Serialize(anchors) + "\nEND_CRITIC_ANCHORS";
     }
+
+    /// <summary>
+    /// Khung outline các khối trước đã dựng — "mục lục đang viết dở" đưa cho khối kế tiếp.
+    /// <para>
+    /// Không phải toàn bộ lịch sử mà là KHUNG, hai thành phần có vai trò khác nhau:
+    /// mọi mục cấp 1–2 (bộ xương chương/mục lớn, để biết đang ở nhánh nào của tài liệu) cộng
+    /// <see cref="RollingRecentCount"/> mục gần nhất bất kể cấp (để nối tiếp đúng nhánh đang mở).
+    /// Gửi cả 127 mục thì vừa tốn token vừa loãng — mục ở chương 1 không giúp xếp cấp cho mục ở
+    /// chương 4, chỉ có tổ tiên của nó mới giúp.
+    /// </para>
+    /// <para>
+    /// Loại theo TẬP ĐANG HỎI, không theo vị trí. Bản đầu cắt <c>index &lt; asked.Min()</c> cho gọn;
+    /// đo ra thì vùng chồng lấn giữa hai khối liên tiếp bị loại sạch — tức mất đúng những mục gần
+    /// nhất, thành phần duy nhất mang ngữ cảnh cục bộ. Điều cần tránh là mớm lại cấp cũ của chính
+    /// đoạn đang hỏi (cùng cái bẫy <see cref="BuildCriticAnchorContext"/> đã tránh), và đúng tập đó
+    /// mới phải loại.
+    /// </para>
+    /// </summary>
+    private static string BuildRollingOutline(
+        IReadOnlyList<(int Index, int Level)> skeleton,
+        SlimDocument slim,
+        IReadOnlyList<int> askedIndexes)
+    {
+        var asked = askedIndexes.ToHashSet();
+        // Khối chồng lấn ⇒ cùng một đoạn có thể vào skeleton hai lần; lần chốt sau thắng.
+        var latest = new Dictionary<int, int>();
+        foreach (var (index, level) in skeleton)
+            if (!asked.Contains(index)) latest[index] = level;
+        if (latest.Count == 0) return string.Empty;
+
+        var keep = new SortedSet<int>(latest.Where(kv => kv.Value <= 2).Select(kv => kv.Key));
+        foreach (var index in latest.Keys.OrderBy(i => i).TakeLast(RollingRecentCount)) keep.Add(index);
+
+        var items = keep
+            .Select(index => new
+            {
+                i = index,
+                level = latest[index],
+                text = SlimXmlSerializer.Truncate(slim.ByIndex(index)?.Text ?? "", 120),
+                numbering = slim.ByIndex(index)?.NumberLabel,
+            })
+            .Where(x => x.text.Length > 0)
+            .ToArray();
+
+        return items.Length == 0
+            ? string.Empty
+            : "OUTLINE_DA_DUNG (mục lục dựng được từ các phần TRƯỚC khối này; không phải câu hỏi, " +
+              "không trả quyết định cho các mục ở đây):\n" +
+              JsonSerializer.Serialize(items) +
+              "\nDùng nó để xếp cấp NHẤT QUÁN với phần đã dựng: mục thuộc cùng một nhánh phải cùng " +
+              "cấp, mục con phải sâu hơn tổ tiên gần nhất đúng một cấp. Khung này có thể chưa đủ; " +
+              "nếu tài liệu ở đây khai cấp khác thì tin tài liệu.\nEND_OUTLINE_DA_DUNG";
+    }
+
+    /// <summary>Số mục gần nhất mang theo trong khung, ngoài bộ xương cấp 1–2.</summary>
+    private const int RollingRecentCount = 12;
 
     private static int DistanceToWindow(int index, int from, int to) =>
         index < from ? from - index : index > to ? index - to : 0;
