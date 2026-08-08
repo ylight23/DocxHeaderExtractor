@@ -2085,3 +2085,72 @@ từ chỗ model "sai", và đó là con đường quen thuộc dẫn tới vi�
 Hai điều đã làm để chặn: (a) một cửa sổ **giữ lại** (tr 142–149) chưa từng dùng để tinh chỉnh, và
 (b) sau lần sửa thứ năm thì chốt bộ chấm, chạy MỘT lần cho cả hai cửa sổ, lấy số bất kể ra sao.
 Kịch bản đã đưa vào repo (`scripts/vl-probe.py`) để kiểm lại được.
+
+## 30. Khung outline tăng dần: không giúp. Và metric cây đổi việc cần làm tiếp
+
+### 30.1 Trước hết, một lỗi thật mà chỉ phép đo mới lộ
+
+Lượt đo đầu trên GPU **hỏng hẳn** ở khối 4:
+
+```
+init_batch: failed to prepare attention ubatches
+decode: failed to find a memory slot for batch of size 205
+Thất bại: llama_decode failed: 'NoKvSlot'
+```
+
+Tràn context. Khối khung được cộng vào view mà ngân sách 28000 token vốn đã tính để lấp gần đầy cửa
+sổ 32768; tới khối 4, khi khung tích đủ mục, prompt vượt trần và cả lượt chạy trả về 0%.
+
+**Luật:** thứ cộng thêm vào prompt phải được trừ khỏi ngân sách của prompt. Không có ngoại lệ cho
+"chỉ một khối nhỏ thôi". Đã vá: trả lại `min(2000, ngân sách/4)` token, trần ký tự của khung bám
+theo đúng phần dự trữ đó.
+
+Bản vá ĐẦU dùng hằng 2000 cứng — nó nuốt gần trọn ngân sách mặc định 2200 và làm vỡ hai test khung
+ngay lần build đầu. Trần phải TỈ LỆ, không phải hằng số. Test bắt được trước khi nó thành phép đo sai.
+
+### 30.2 Kết quả
+
+Một biến, cùng mọi cờ khác, cùng phiên, cùng GPU:
+
+| Đáp án đồng thuận | Mốc §28 | + khung tăng dần |
+|---|--:|--:|
+| Precision | 83,5% | **82,2%** |
+| Recall | 96,4% | 96,4% |
+| F1 | 89,5% | **88,7%** |
+| Đúng cấp | 81,1% | 81,1% |
+| Đúng cha | 97,2% | 97,2% |
+
+**Không giúp gì, còn mất 1,3 điểm precision.** Ý tưởng nhắm đúng cơ chế hỏng đã đo hai lần (§4.1,
+§21: đổi thành phần khối là lật câu trả lời cho cả mục không liên quan), được cài đúng như mô tả —
+khối 2 nhận lại mục lục khối 1 chốt, khối 3 nhận cả hai — và vẫn không đổi được gì.
+
+Đây là lần thứ **tư** một hướng "cho mô hình nhiều ngữ cảnh / nhiều suy nghĩ hơn" cho số không:
+
+| Hướng | Kết quả |
+|---|---|
+| §19 one-pass 129.546 token, một khối | R 83,2% — kém nhất |
+| §24.2 thinking toàn bộ | mất 10 điểm recall, +4,5 cấp là ảo giác (§25.1) |
+| §25 thinking riêng lượt gán cấp | không đổi một chữ số |
+| §30 khung outline tăng dần | −1,3 precision, còn lại không đổi |
+
+Giữ cờ `--rolling-outline`, mặc định tắt, cùng lý do §10.4/§25.2: nó là đối chứng có số.
+
+### 30.3 Metric cây nói việc còn lại là gì
+
+Cài `ParentAccuracy` (bài toán con *parent finding* của HRDoc) bên cạnh cấp tuyệt đối:
+
+| | đúng cấp | đúng cha |
+|---|--:|--:|
+| Lớp style-only (§26.2) | 41,2% | **100%** |
+| Pipeline hiện tại | 81,1% | **97,2%** |
+
+Cây gần như hoàn hảo: chỉ **2,8% quan hệ cha–con sai**, trong khi 18,9% cấp tuyệt đối sai. Nghĩa là
+gần như toàn bộ lỗi cấp còn lại là **lệch gốc của một nhánh ĐÚNG HÌNH**, không phải hiểu sai cấu
+trúc.
+
+Việc tiếp theo vì thế KHÔNG phải "làm mô hình hiểu cấp giỏi hơn" — nó đã hiểu đúng quan hệ tới
+97,2%. Nó là **neo độ sâu tuyệt đối cho một nhúm nhánh**, và đó là luật tất định.
+
+Mutation test bắt được một lỗ của chính metric này: đổi `>=` thành `>` khi đẩy ngăn xếp biến anh em
+cùng cấp thành cha–con, mà ba test đầu vẫn xanh — vì chúng dựng CẢ HAI cây bằng cùng một hàm nên lỗi
+triệt tiêu. Chỉ ca mà đáp án có anh em còn kết quả trả về thì không mới lộ ra.

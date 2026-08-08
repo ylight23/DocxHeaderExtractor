@@ -12,6 +12,7 @@ public sealed record DocScore(
     int CandidateHits,
     int LevelJudged,
     int LevelCorrect,
+    int ParentCorrect,
     IReadOnlyList<int> FalsePositives,
     IReadOnlyList<int> FalseNegatives,
     IReadOnlyList<(int Index, int Got, int Expected)> WrongLevels,
@@ -32,6 +33,24 @@ public sealed record DocScore(
     public double CandidateRecall => TruthCount == 0 ? 0 : (double)CandidateHits / TruthCount;
 
     public double LevelAccuracy => LevelJudged == 0 ? 0 : (double)LevelCorrect / LevelJudged;
+
+    /// <summary>
+    /// Tỉ lệ tiêu đề có CHA đúng — bài toán con <i>parent finding</i> của HRDoc (AAAI 2023,
+    /// arXiv 2303.13839), thước đo chuẩn của nhánh tái dựng cấu trúc phân cấp.
+    /// <para>
+    /// Vì sao cần thêm nó bên cạnh <see cref="LevelAccuracy"/>: cấp tuyệt đối phạt cả những cây
+    /// ĐÚNG HÌNH nhưng lệch gốc. Đo được ở §26.2 trên lớp style-only của khoá luận — đúng cấp tuyệt
+    /// đối 41,2% nhưng đúng cha 100%, không sai một cạnh nào; toàn bộ 40 lỗi là lệch đều một bậc.
+    /// Chỉ đọc con số 41,2% thì sẽ kết luận "style vô dụng cho cấp" và ném đi một tín hiệu hoàn hảo,
+    /// đúng như §17 đã lỡ làm.
+    /// </para>
+    /// <para>
+    /// Tính trên PHẦN GIAO đã chấm cấp, cả hai cây dựng từ cùng tập mục đó. Nếu để mỗi bên tự dựng
+    /// trên tập riêng thì lỗi chọn (thừa/thiếu) trộn vào lỗi quan hệ, và con số không còn trả lời
+    /// được câu hỏi nào cả — P/R đã đo phần chọn rồi.
+    /// </para>
+    /// </summary>
+    public double ParentAccuracy => LevelJudged == 0 ? 0 : (double)ParentCorrect / LevelJudged;
 }
 
 /// <summary>Tổng hợp trên cả bộ. Vi mô = gộp mọi đoạn; vĩ mô = trung bình theo tài liệu.</summary>
@@ -46,6 +65,7 @@ public sealed record SuiteScore(IReadOnlyList<DocScore> Docs)
         : 2 * MicroPrecision * MicroRecall / (MicroPrecision + MicroRecall);
     public double MicroCandidateRecall => Div(Docs.Sum(d => d.CandidateHits), Docs.Sum(d => d.TruthCount));
     public double MicroLevelAccuracy => Div(Docs.Sum(d => d.LevelCorrect), Docs.Sum(d => d.LevelJudged));
+    public double MicroParentAccuracy => Div(Docs.Sum(d => d.ParentCorrect), Docs.Sum(d => d.LevelJudged));
 
     public double MacroF1 => Docs.Count == 0 ? 0 : Docs.Average(d => d.F1);
 
@@ -77,6 +97,11 @@ public static class Evaluator
                           .OrderBy(x => x.Index)
                           .ToList();
 
+        var ordered = judged.OrderBy(i => i).ToList();
+        var truthParent = Parents(ordered, i => key.LevelOf(i)!.Value);
+        var gotParent = Parents(ordered, i => got[i]);
+        var parentCorrect = ordered.Count(i => truthParent[i] == gotParent[i]);
+
         return new DocScore(
             File: file,
             TruthCount: key.Count,
@@ -86,9 +111,29 @@ public static class Evaluator
             CandidateHits: key.Indexes.Count(candidateIndexes.Contains),
             LevelJudged: judged.Count,
             LevelCorrect: judged.Count - wrong.Count,
+            ParentCorrect: parentCorrect,
             FalsePositives: fp,
             FalseNegatives: fn,
             WrongLevels: wrong,
             ElapsedMs: outline.ElapsedMs);
+    }
+
+    /// <summary>
+    /// Cha của mỗi mục = mục GẦN NHẤT ĐỨNG TRƯỚC có cấp NHỎ HƠN; <c>null</c> nếu không có (mục ở
+    /// tầng ngoài cùng). Đây là định nghĩa cây ngầm định của một dãy tiêu đề đánh cấp — cùng cách
+    /// <see cref="Pipeline.StructuralHierarchyResolver"/> hiểu quan hệ cha–con.
+    /// </summary>
+    private static Dictionary<int, int?> Parents(IReadOnlyList<int> ordered, Func<int, int> levelOf)
+    {
+        var result = new Dictionary<int, int?>(ordered.Count);
+        var stack = new List<int>();
+        foreach (var index in ordered)
+        {
+            var level = levelOf(index);
+            while (stack.Count > 0 && levelOf(stack[^1]) >= level) stack.RemoveAt(stack.Count - 1);
+            result[index] = stack.Count > 0 ? stack[^1] : null;
+            stack.Add(index);
+        }
+        return result;
     }
 }
