@@ -121,10 +121,7 @@ public sealed class CommandLineOptions
                 case "--no-grammar": llama.GrammarMode = GrammarMode.None; break;
                 // Thinking và GBNF loại trừ nhau: <think>…</think> đứng trước JSON thì grammar
                 // chặn ngay token đầu. Bật --think là tự tắt grammar, không để người dùng tự vấp.
-                case "--think":
-                    llama.EnableThinking = true;
-                    llama.GrammarMode = GrammarMode.None;
-                    break;
+                case "--think": llama.EnableThinking = true; break;
                 case "--free-grammar": llama.GrammarMode = GrammarMode.Free; break;
                 case "--no-reuse-prefix": llama.ReusePromptPrefix = false; break;
                 case "--gpu-layers" or "-ngl": llama.GpuLayerCount = int.Parse(Next(a)); break;
