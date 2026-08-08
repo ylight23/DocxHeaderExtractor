@@ -1956,3 +1956,40 @@ Bài học kép, và vế thứ hai đắt hơn:
 Tôi bọc lệnh đo trong `… | grep -vE … | tee log | grep -E …`. `grep` **đệm theo khối khi đầu ra
 không phải terminal**, nên `log` đứng ở 0 byte suốt cả phép chạy và tôi mù hoàn toàn với tiến độ —
 đúng lúc cần thấy nhất. Phải dùng `grep --line-buffered`, hoặc ghi thẳng log rồi lọc sau.
+
+## 28. Luật độ sâu lồng nhau: đúng cấp 66,0% → 81,1%
+
+Đo lại đúng môi trường (§27.2), một biến, cùng mọi cờ khác:
+
+| Đáp án đồng thuận, 9B khối 28K, `--style-trust` | Mốc | + `StyleNestingDepths` |
+|---|--:|--:|
+| Precision | 83,5% | **83,5%** |
+| Recall | 96,4% | **96,4%** |
+| F1 | 89,5% | **89,5%** |
+| **Đúng cấp** | 66,0% | **81,1%** |
+| Bench 10 tài liệu | 100% · 10/10 | **100% · 10/10** |
+| Thời gian | 295 s | 314 s |
+
+P/R/F1 **không đổi một chữ số**. Đó chính là dấu hiệu một luật chỉ động vào cấp mà không lấn sang
+việc chọn — nếu ba con số kia nhúc nhích thì luật đang làm gì đó ngoài phạm vi của nó và phải đi
+tìm nguyên nhân trước khi nhận.
+
+Chi phí: +19 s (6%), toàn bộ là suy luận tất định, không thêm một lượt gọi model nào.
+
+### 28.1 Đường đi của "đúng cấp" trên tài liệu thật
+
+| | đúng cấp |
+|---|--:|
+| Trước §16 | 26,5% |
+| §17 hạ quyền gán cấp của style | 37,2% |
+| §22 neo theo mục lục của tác giả | 51,9% |
+| §24.1 dùng thẳng độ sâu đánh số | 66,0% |
+| §28 độ sâu lồng nhau của style | **81,1%** |
+
+Cả năm bước đều là **đọc dữ kiện cấu trúc có sẵn trong tài liệu**. Không bước nào đến từ mô hình lớn
+hơn, prompt khéo hơn, hay nhiều suy luận hơn — ba thứ đó đã đo và đều cho số không (§19, §24.2, §25).
+
+### 28.2 Còn lại gì
+
+Precision 83,5% giờ là điểm yếu nhất, và §26.1 chỉ đúng chỗ: lớp style-only có precision **100%**,
+mọi dương tính giả đều đến từ 61 ứng viên heuristic. Đó là chỗ tiếp theo, không phải cấp.
