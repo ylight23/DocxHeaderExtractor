@@ -1993,3 +1993,95 @@ hơn, prompt khéo hơn, hay nhiều suy luận hơn — ba thứ đó đã đo 
 
 Precision 83,5% giờ là điểm yếu nhất, và §26.1 chỉ đúng chỗ: lớp style-only có precision **100%**,
 mọi dương tính giả đều đến từ 61 ứng viên heuristic. Đó là chỗ tiếp theo, không phải cấp.
+
+## 29. Thị giác: Qwen3.5-9B nhìn ảnh trang in
+
+Câu hỏi: model 9B có "nhìn" tài liệu như Claude vẫn làm không, và nếu có thì tốt tới đâu.
+
+### 29.1 Dựng nhánh
+
+Qwen3.5 **có** thị giác, và đó là bộ trọng số ĐANG dùng — không phải model khác. Kiểm bằng metadata:
+
+| | arch | tensor | tensor thị giác |
+|---|---|--:|--:|
+| `Qwen3.5-9B-Q4_K_M.gguf` | `qwen35` | 427 | 0 |
+| `mmproj-Qwen3.5-9B-F16.gguf` | `clip` | 352 | **352** |
+
+Thị giác nằm ở file projector RỜI (`general.name = Qwen3.5-9B`, `projector_type = qwen3vl_merger`),
+0,86 GB. llama.cpp luôn cần nó tách rời. Nhờ vậy phép đo này **một biến**: cùng trọng số, đổi đầu
+vào từ text OOXML sang ảnh trang in.
+
+Chuỗi dựng: Word COM → PDF (máy này không có LibreOffice) → PyMuPDF 150 DPI → 171 ảnh. Suy luận qua
+`llama-server` của llama.cpp b10327 bản Vulkan, KHÔNG qua LLamaSharp. VRAM 7 868 / 12 288 MiB.
+
+### 29.2 Kết quả
+
+Chấm trên cùng đáp án đồng thuận, hai cửa sổ trang, cùng một bộ chấm, mỗi trang một lượt hỏi:
+
+| | tr 17–24 (dùng để tinh chỉnh thước đo) | tr 142–149 (**giữ lại**) |
+|---|--:|--:|
+| Precision | 100% | 100% |
+| Recall | 100% | 100% |
+| F1 | **100%** | **100%** |
+| Đúng cấp | 83,3% (10/12) | 66,7% (6/9) |
+| Thời gian | ~5 s/trang | ~5 s/trang |
+
+Gộp: 21 đề mục, 11 trang — **chọn đúng tuyệt đối, đúng cấp 76,2%**.
+
+Đối chiếu pipeline đọc OOXML trên CẢ tài liệu: P 83,5 · R 96,4 · F1 89,5 · cấp 81,1.
+
+### 29.3 Đọc số cho đúng — bốn điều làm nhẹ kết quả này
+
+1. **Quy mô lệch hẳn.** 21 đề mục / 11 trang so với 110 đề mục / 1.498 đoạn.
+2. **Chọn mẫu có lợi.** Hai cửa sổ đều là trang thân bài. Con số của pipeline tính trên cả bìa, mục
+   lục, danh mục tài liệu tham khảo — chính những phần sinh dương tính giả.
+3. **Chi phí.** ~5 s/trang × 171 trang ≈ 14 phút, chưa kể render, so với 314 s cho cả pipeline.
+4. **Không có đường về XML.** Ảnh trả lời "dòng này trông như đề mục", không trả lời "sửa ở đâu
+   trong `document.xml`". Muốn ghi ngược vẫn phải khớp text về đoạn.
+
+### 29.4 Nhưng lỗi cấp thì có hình dạng rất rõ
+
+Cả ba lỗi cấp ở cửa sổ giữ lại đều cùng một kiểu: `a. Hạn chế về…`, `b. Hạn chế về…`,
+`c. Chưa chú trọng…` — model gán cấp 3, đáp án cấp 4. Nhìn MỘT trang thì không thể biết quy ước độ
+sâu của cả tài liệu. Đó đúng là thông tin mà OOXML có và ảnh không có.
+
+Ngược lại, ở phần CHỌN thì ảnh không bỏ sót gì, kể cả đề mục **không đánh số, không style**
+(`Hạn chế về phát triển nội dung số`) — đúng lớp mà §26.1 đo được là style bỏ sót 42/110.
+
+### 29.5 Kết luận kiến trúc
+
+Hai tín hiệu bù nhau chứ không thay nhau:
+
+| | chọn | cấp |
+|---|--:|--:|
+| Style built-in (§26.1) | P 100%, R 61,8% | 41,2% (100% nếu đọc thứ tự lồng nhau — §28) |
+| Ảnh trang in (§29.2) | **P 100%, R 100%** | 76,2% |
+| Pipeline hiện tại | P 83,5%, R 96,4% | 81,1% |
+
+Hướng đáng thử: **thị giác làm tầng ỨNG VIÊN cho riêng những đoạn không có bằng chứng cấu trúc**,
+còn CẤP vẫn lấy từ cấu trúc tài liệu. Vì toàn bộ dương tính giả hiện nay đến từ 61 ứng viên heuristic
+(§28.2), mà đúng chỗ đó thì ảnh đang đo được P 100%.
+
+Chưa cài. Đây là giả thuyết có số đỡ, không phải kết luận.
+
+### 29.6 Bộ chấm phải sửa năm lần — và đó là phần đáng cảnh giác nhất
+
+Con số đi 66,7 → 81,5 → 88,0 → 94,7 → 100 qua năm lần tôi sửa **thước đo**, không phải sửa model:
+
+1. `max_tokens` 700 bị thinking ăn sạch (698/700 token vào `reasoning_content`, `content` rỗng cả 5
+   trang) — cùng cơ chế §24 đã đo ở phía văn bản, chỉ khác là ở đây nó giết cả câu trả lời.
+2. Prompt tôi gõ KHÔNG DẤU nên model bắt chước, trả về "CHUONG 1: CO SO LY LUAN"; hàm khớp giữ dấu
+   nên cả trang 24 bị chấm sai.
+3. Định vị trang lấy khớp text đầu tiên, nên ba tên chương bị gán vào mục "Bố cục khoá luận" — nơi
+   chúng là VĂN BẢN TRONG ĐOẠN (14pt, không đậm), không phải đề mục (14pt, đậm, in hoa, trang sau).
+4. Khoá khớp 60 ký tự dài hơn một dòng in nên dòng heading thật không khớp.
+5. Điều kiện `len(k) > 10` loại hẳn mọi đề mục ngắn: `2.3.2. Hạn chế` → `232hanche`, 9 ký tự, không
+   bao giờ khớp được nên bị tính dương tính giả — dù nó nằm ngay trong đáp án (đoạn 1118).
+
+Mỗi lần sửa đều được kiểm bằng bằng chứng ĐỘC LẬP (cỡ chữ/đậm đọc từ PDF, tư cách thành viên trong
+đáp án), không phải bằng việc đối chiếu với câu trả lời của model. Nhưng **động cơ đi tìm** thì đến
+từ chỗ model "sai", và đó là con đường quen thuộc dẫn tới việc gọt thước đo cho vừa kết quả.
+
+Hai điều đã làm để chặn: (a) một cửa sổ **giữ lại** (tr 142–149) chưa từng dùng để tinh chỉnh, và
+(b) sau lần sửa thứ năm thì chốt bộ chấm, chạy MỘT lần cho cả hai cửa sổ, lấy số bất kể ra sao.
+Kịch bản đã đưa vào repo (`scripts/vl-probe.py`) để kiểm lại được.
