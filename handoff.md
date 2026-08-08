@@ -1916,14 +1916,42 @@ quên `-p:UseVulkan=true`; NuGet thay backend Vulkan trong thư mục output b�
 Cùng họ với hai lỗi đã ghi: fixture patch âm thầm no-op (§ trước) và CUDA lặng lẽ rơi về CPU (§7).
 Cả ba đều là **đổi môi trường rồi tin kết quả mà không đọc dòng log xác nhận môi trường**.
 
-### 27.1 Luật kiểm trước khi tin bất kỳ con số nào
+### 27.1 Chẩn đoán đầu tiên của tôi cũng sai — và chính dòng log đã nói ra
 
-1. `dotnet build` cho mọi phép đo có model **phải** kèm `-p:UseVulkan=true`.
-2. Đọc dòng `Mô hình sẵn sàng…` và xác nhận nó nói **GPU N lớp**, không phải `CPU N luồng`.
+Viết xong mục trên, tôi build sạch lại chỉ với Vulkan rồi chạy thử: **vẫn** `CPU 8 luồng`. Nên
+nguyên nhân không phải (chỉ) cờ build.
+
+Câu trả lời nằm ngay trong `LlamaHeaderExtractor.Describe()`, hàm mà §7 đã viết riêng cho đúng
+tình huống này. Nó có HAI nhánh CPU khác nhau:
+
+```csharp
+if (gpuLayers <= 0) return $"CPU {threads} luồng" + template;          // <- không ai yêu cầu GPU
+return supportsOffload ? $"GPU {gpuLayers} lớp"
+                       : $"CPU {threads} luồng — ĐÃ YÊU CẦU GPU {gpuLayers} lớp nhưng thư viện
+                          native không hỗ trợ offload, đang chạy CPU";
+```
+
+Log in ra nhánh THỨ NHẤT, không kèm cảnh báo. Tức `GpuLayerCount == 0`: **tôi chưa bao giờ truyền
+`-ngl 99`** trong các lệnh hôm nay. Thêm vào thì lượt chạy thử đi từ *"CPU 8 luồng"* sang
+*"GPU 99 lớp"*, 7 giây.
+
+Bài học kép, và vế thứ hai đắt hơn:
+
+* **Vế một:** cờ build (`-p:UseVulkan=true`) và cờ chạy (`-ngl 99`) là HAI thứ. Thiếu cờ build thì
+  được nhánh cảnh báo; thiếu cờ chạy thì được nhánh im lặng. Tôi thiếu cả hai nên thấy nhánh im lặng
+  và quy sai cho cờ build.
+* **Vế hai:** §7 đã dựng sẵn công cụ phân biệt đúng hai ca này, viết hẳn tài liệu cho nó, mà tôi
+  vẫn đọc lướt dòng log rồi đoán. Công cụ chẩn đoán chỉ có giá trị khi người ta ĐỌC nó.
+
+### 27.2 Luật kiểm trước khi tin bất kỳ con số nào
+
+1. Build kèm `-p:UseVulkan=true`, và chạy kèm `-ngl 99`. Thiếu một trong hai là chạy CPU.
+2. Đọc dòng `Mô hình sẵn sàng…`: phải là **GPU N lớp**. `CPU N luồng` trơn nghĩa là thiếu `-ngl`;
+   `CPU … — ĐÃ YÊU CẦU GPU …` nghĩa là thiếu backend. Hai lỗi khác nhau, log đã phân biệt sẵn.
 3. Đối chiếu thời gian mỗi khối với mốc đã biết (~30–40 s/khối cho 9B khối 28K). Lệch một bậc độ
    lớn nghĩa là môi trường khác, không phải tính năng khác.
 
-### 27.2 Và một lỗi quan sát nữa của tôi
+### 27.3 Và một lỗi quan sát nữa của tôi
 
 Tôi bọc lệnh đo trong `… | grep -vE … | tee log | grep -E …`. `grep` **đệm theo khối khi đầu ra
 không phải terminal**, nên `log` đứng ở 0 byte suốt cả phép chạy và tôi mù hoàn toàn với tiến độ —
