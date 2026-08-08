@@ -208,7 +208,11 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     /// <summary>Chỉ thị bật thinking của họ Qwen3; không có tác dụng với model không hiểu nó.</summary>
     private static readonly string ThinkDirective = Environment.NewLine + Environment.NewLine + "/think";
 
-    private string Think(string user) => _options.EnableThinking ? user + ThinkDirective : user;
+    /// <summary>
+    /// Lượt phân loại KHÔNG bao giờ bật thinking — §24.2 đo được nó làm 5/10 khối trả về rỗng và
+    /// recall tụt 10 điểm, vì phải tắt grammar ở đúng nơi recall được quyết định.
+    /// </summary>
+    private static string Think(string user) => user;
 
     private async Task<ChunkResult> ClassifyRolesAsync(
         string system,
@@ -318,7 +322,18 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
         CancellationToken ct = default)
     {
         var indexes = headings.Select(h => h.Index).ToArray();
-        var prompt = BuildPrompt(HeaderPrompt.HierarchySystem, HeaderPrompt.BuildHierarchyUser(context, headings));
+
+        // Thinking CHỈ bật ở lượt này, và grammar tắt CỤC BỘ tại đây.
+        //
+        // ĐO ĐƯỢC (§24.2): bật thinking cho cả lượt phân loại làm 5/10 khối trả về 0 tiêu đề —
+        // recall 96,4% → 86,4% — vì nó tắt grammar ở đúng nơi recall được quyết định. Lượt gán cấp
+        // thì khác: tập heading đã chốt xong, lượt này chỉ đổi CẤP nên recall không còn gì để mất.
+        // Cùng phép đo cho thấy thinking nâng đúng cấp 66,0% → 70,5%; đây là cách lấy phần đó mà
+        // không trả giá.
+        var thinking = _options.EnableThinking;
+        var prompt = BuildPrompt(
+            HeaderPrompt.HierarchySystem,
+            HeaderPrompt.BuildHierarchyUser(context, headings) + (thinking ? ThinkDirective : ""));
         using var pipeline = new DefaultSamplingPipeline
         {
             Temperature = 0,
@@ -326,11 +341,16 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
             TopP = 0.9f,
             Seed = _options.Seed,
             RepeatPenalty = 1.0f,
-            Grammar = new Grammar(HeaderPrompt.BuildEnumeratedGbnf(indexes, allowZero: false), HeaderPrompt.GrammarRoot),
+            Grammar = thinking
+                ? null
+                : new Grammar(HeaderPrompt.BuildEnumeratedGbnf(indexes, allowZero: false), HeaderPrompt.GrammarRoot),
         };
         var parameters = new InferenceParams
         {
-            MaxTokens = Math.Clamp(indexes.Length * 16 + 32, 256, _options.MaxOutputTokens),
+            // Thinking cần chỗ cho phần <think> trước JSON; trần cũ tính vừa đủ cho JSON thôi.
+            MaxTokens = thinking
+                ? _options.MaxOutputTokens
+                : Math.Clamp(indexes.Length * 16 + 32, 256, _options.MaxOutputTokens),
             AntiPrompts = [.. HeaderPrompt.AntiPrompts],
             SamplingPipeline = pipeline,
         };

@@ -1776,3 +1776,45 @@ Rào cản không phải thiếu luật mà là kiến trúc: `RunPassAsync` d�
 gửi — có chủ đích, để gửi song song và giữ dev-log đúng thứ tự. Khung tăng dần đòi view khối 2 chỉ
 dựng sau khi có kết quả khối 1, tức **tuần tự hoá lượt phân loại**. Backend local vốn đã song song 1
 nên không mất gì; LM Studio và OpenRouter thì mất. Phải làm thành cờ riêng và đo tách bạch.
+
+## 25. Thinking chỉ ở lượt gán cấp — giả thuyết §24.4 bị bác
+
+§24.4 lập luận: thinking phá recall vì tắt grammar ở lượt PHÂN LOẠI, còn lượt gán cấp thì tập heading
+đã chốt nên recall không còn gì để mất — bật riêng ở đó sẽ lấy được +4,5 điểm cấp miễn phí.
+
+Đã cài đúng như vậy: `--think` không còn tắt grammar toàn cục; grammar tắt **cục bộ** trong
+`ClassifyHierarchyAsync`; `MaxTokens` nới cho lượt đó vì trần cũ chỉ đủ cho JSON.
+
+| Đáp án đồng thuận, 9B khối 28K | Mốc | Thinking ở lượt gán cấp |
+|---|--:|--:|
+| Recall | 96,4% | **96,4%** |
+| Khối trả về rỗng | 0 | **0** |
+| P / F1 | 83,5 / 89,5 | 83,5 / 89,5 |
+| **Đúng cấp** | 66,0% | **66,0%** |
+
+Nửa đầu giả thuyết ĐÚNG: recall được bảo vệ trọn vẹn, không khối nào trả về rỗng. Nửa sau **SAI**:
+cấp không nhích một chữ số. Và lượt đó có chạy thật — log ghi `hierarchy 1: 127 heading → gán cấp
+toàn cục (22 856 ms)` — nên đây không phải ca "cờ không có gì để tác động".
+
+### 25.1 +4,5 điểm cấp ở §24.2 là ảo giác thống kê
+
+Nếu thinking không giúp gì ở lượt gán cấp, thì +4,5 điểm ở §24.2 đến từ đâu? Từ chính **10 điểm
+recall bị mất**: bỏ đi 10 mục khó thì phần còn lại có tỉ lệ đúng cấp cao hơn. Mẫu số nhỏ đi và
+"dễ" đi, không phải tử số tốt lên.
+
+Đây là cùng một lỗi đọc số mà §10.4 đã ghi (*"F1 không phải thước đo đủ cho một thay đổi về QUYỀN"*),
+lần này ở dạng khác: **một chỉ số tính trên tập được giữ lại sẽ tự đẹp lên khi tập đó bị lọc bớt.**
+Muốn so đúng cấp giữa hai nhánh thì recall phải bằng nhau, nếu không so nhầm hai mẫu số.
+
+Cách tránh, ghi lại để dùng: khi một thay đổi làm đổi recall, đừng đọc "đúng cấp" như một cải thiện
+độc lập — hoặc so trên cùng tập giao nhau, hoặc chốt recall trước rồi mới so cấp.
+
+### 25.2 Trạng thái cờ
+
+`--think` giữ lại, **mặc định tắt**, cùng lý do §10.4 giữ `--style-auto-assign`: nó là đối chứng có
+số, và xoá đi thì người sau sẽ thử lại đúng cái đã đo là vô ích. Hàm `Think()` ở lượt phân loại cũng
+giữ nguyên dưới dạng no-op kèm ghi chú, thay vì xoá.
+
+Kết luận về reasoning cho bài toán này: **ba lần đo, không lần nào thinking hay nhìn-toàn-cục mang
+lại gì thật.** Mọi tiến bộ đo được đều đến từ đọc dữ kiện cấu trúc có sẵn trong tài liệu (§17, §22,
+§24.1), không từ việc bắt mô hình suy nghĩ nhiều hơn.
