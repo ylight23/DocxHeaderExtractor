@@ -62,6 +62,16 @@ public sealed class LlamaOptions
     /// <summary>Cách ràng buộc đầu ra bằng GBNF.</summary>
     public GrammarMode GrammarMode { get; set; } = GrammarMode.Enumerated;
 
+    /// <summary>
+    /// Bật chế độ thinking của họ Qwen3 bằng cách gắn <c>/think</c> vào cuối message người dùng.
+    /// <para>
+    /// LOẠI TRỪ LẪN NHAU VỚI GRAMMAR: thinking sinh <c>&lt;think&gt;…&lt;/think&gt;</c> trước JSON,
+    /// còn GBNF ép output khớp lược đồ ngay từ token đầu. Bật cờ này thì <see cref="GrammarMode"/>
+    /// phải về <c>None</c>, và khi đó phần parse JSON mất lưới an toàn cú pháp — đó là cái giá.
+    /// </para>
+    /// </summary>
+    public bool EnableThinking { get; set; }
+
     /// <summary>In log gốc của llama.cpp.</summary>
     public bool VerboseNativeLog { get; set; }
 
