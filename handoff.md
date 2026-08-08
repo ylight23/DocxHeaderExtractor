@@ -1709,3 +1709,70 @@ model khác thế hệ bỏ sót đúng cùng một tập. Nên mọi cải thi�
 Đường còn lại chưa thử: dùng mục lục để **pin việc CHỌN**, không chỉ pin cấp. Nhưng §23.2 vừa cho
 thấy mục lục tài liệu này không phủ được bốn mục đang thiếu, nên đường đó không cứu được ca cụ thể
 này — nó chỉ có giá trị với tài liệu mà mục lục liệt kê sâu hơn.
+
+## 24. Reasoning/thinking và độ sâu đánh số — hai phép đo, hai chiều ngược nhau
+
+### 24.1 Độ sâu đánh số quyết cấp khi style bất nhất: +14,1 điểm
+
+§17 cài BỘ DÒ (`StyleTrust` hạ quyền gán cấp khi style không bám độ sâu đánh số) nhưng bộ chấp hành
+phía sau vẫn đi qua `FindSiblingLevel`/`FindParentLevel` — **suy cấp từ hàng xóm, mà hàng xóm cũng
+sai đúng cùng kiểu.** Hạ quyền style xong rồi giao cho một bộ suy luận kế thừa đúng lỗi vừa hạ.
+
+Chẩn đoán từ bảng lỗi: **39/51 lỗi cấp là "sâu hơn đúng một bậc"** (5→4: 24 mục, 4→3: 15 mục), theo
+style thì `Heading5` (16) + `Heading4` (15) chiếm 31 — đúng nhóm §16.2 truy ra.
+
+Luật: khi `--style-trust` bật VÀ `LevelTrusted` sai VÀ đoạn có đường dẫn số, lấy **thẳng** độ sâu làm
+cấp. `1.1.1.` sâu 3 thì cấp 3, không hỏi hàng xóm.
+
+| Đáp án đồng thuận, 9B khối 28K | Trước | Sau |
+|---|--:|--:|
+| **Đúng cấp** | 51,9% | **66,0%** |
+| P / R / F1 | 83,5 / 96,4 / 89,5 | **không đổi** |
+
+### 24.2 Thinking: mất recall để đổi lấy cấp
+
+Qwen3.5 GGUF có `/think`, `<think>`, `enable_thinking` trong chat template nên bật được thật. Nhưng
+**thinking và GBNF loại trừ nhau**: `<think>…</think>` đứng trước JSON, còn grammar ép output khớp
+lược đồ ngay từ token đầu. Cờ `--think` vì vậy tự tắt grammar.
+
+| Đáp án đồng thuận | Không thinking | **Thinking** |
+|---|--:|--:|
+| Precision | 83,5% | **86,4%** |
+| Recall | **96,4%** | 86,4% |
+| F1 | **89,5%** | 86,4% |
+| Đúng cấp | 66,0% | **70,5%** |
+| Thời gian | 293 s | 352 s |
+
+**Nguyên nhân recall tụt, đo được: 5 trong 10 khối trả về 0 tiêu đề.** Mất trắng nửa số khối, không
+phải suy giảm dần. Không có "chỉ số bịa" nào nên model không bịa ID — output chỉ không parse được
+thành kết quả dùng được. Đó là cái giá của việc tắt grammar, và nó đắt hơn phần thinking mang lại.
+
+### 24.3 Một mẫu lặp lại qua ba phép đo
+
+| Chế độ "suy nghĩ nhiều hơn" | Precision | Recall |
+|---|--:|--:|
+| One-pass 150K, 1 khối (§19) | 99,1% | 83,2% |
+| Thinking, grammar tắt (§24.2) | 86,4% | 86,4% |
+| Nhiều khối vừa, grammar bật | 83,5% | **96,4%** |
+
+Ba lần, cùng một chiều: **mọi cách làm mô hình cân nhắc nhiều hơn đều nâng precision và hạ recall.**
+Nó trở nên thận trọng hơn, không bao quát hơn. Đây là mẫu đủ nhất quán để dùng làm dự đoán, không
+còn là quan sát lẻ.
+
+### 24.4 Chỗ thinking đáng dùng — và chưa đo
+
+Thinking nâng đúng cấp **66,0% → 70,5%**, và đúng cấp là chỉ số yếu nhất còn lại. Nhưng nó phá recall
+vì phải tắt grammar cho **lượt phân loại** — nơi recall được quyết định.
+
+Lượt gán cấp toàn cục thì khác: ở đó tập heading đã chốt, recall không còn gì để mất. Bật thinking
+**chỉ cho lượt đó** có thể lấy được +4,5 điểm cấp mà không trả giá recall. Chưa cài, chưa đo.
+
+### 24.5 Khung outline tăng dần — đã tồn tại một nửa
+
+Ý tưởng "luôn mang theo khung đã dựng" đã có trong repo: tham số `anchorsFor` truyền khung heading đã
+chốt vào **lượt phản biện** qua `BuildCriticAnchorContext`. Thiếu là áp cho **lượt phân loại**.
+
+Rào cản không phải thiếu luật mà là kiến trúc: `RunPassAsync` dựng view của MỌI khối trước rồi mới
+gửi — có chủ đích, để gửi song song và giữ dev-log đúng thứ tự. Khung tăng dần đòi view khối 2 chỉ
+dựng sau khi có kết quả khối 1, tức **tuần tự hoá lượt phân loại**. Backend local vốn đã song song 1
+nên không mất gì; LM Studio và OpenRouter thì mất. Phải làm thành cờ riêng và đo tách bạch.
