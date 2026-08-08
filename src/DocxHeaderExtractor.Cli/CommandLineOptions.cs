@@ -119,6 +119,12 @@ public sealed class CommandLineOptions
                 case "--temp": llama.Temperature = float.Parse(Next(a), System.Globalization.CultureInfo.InvariantCulture); break;
                 case "--seed": llama.Seed = uint.Parse(Next(a)); break;
                 case "--no-grammar": llama.GrammarMode = GrammarMode.None; break;
+                // Thinking và GBNF loại trừ nhau: <think>…</think> đứng trước JSON thì grammar
+                // chặn ngay token đầu. Bật --think là tự tắt grammar, không để người dùng tự vấp.
+                case "--think":
+                    llama.EnableThinking = true;
+                    llama.GrammarMode = GrammarMode.None;
+                    break;
                 case "--free-grammar": llama.GrammarMode = GrammarMode.Free; break;
                 case "--no-reuse-prefix": llama.ReusePromptPrefix = false; break;
                 case "--gpu-layers" or "-ngl": llama.GpuLayerCount = int.Parse(Next(a)); break;

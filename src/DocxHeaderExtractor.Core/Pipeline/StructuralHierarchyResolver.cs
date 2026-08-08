@@ -43,6 +43,21 @@ public static class StructuralHierarchyResolver
                 continue;
             }
 
+            // Khi style của tài liệu KHÔNG bám độ sâu đánh số (StyleTrust hạ quyền gán cấp), thì
+            // chính độ sâu ấy là câu trả lời — không cần suy từ hàng xóm. "1.1.1." sâu 3 thì cấp 3.
+            //
+            // ĐO ĐƯỢC vì sao cần vế này: §17 cài BỘ DÒ (hạ quyền style) nhưng bộ chấp hành vẫn đi
+            // qua FindSibling/FindParent, tức suy cấp từ hàng xóm — mà hàng xóm cũng đang sai cùng
+            // một kiểu. Trên khoá luận thật, 39/51 lỗi cấp là "sâu hơn đúng một cấp" (5→4: 24 mục,
+            // 4→3: 15 mục), đúng nhóm Heading4/Heading5 mà §16.2 đã truy ra.
+            if (respectStyleTrust && document.StyleTrust is { LevelTrusted: false }
+                && path.Length is >= 1 and <= 9 && path.Length != current.Level)
+            {
+                current.Level = path.Length;
+                changed++;
+                continue;
+            }
+
             // Tầng chữ ký CHỈ dùng cho mục mà đường dẫn số không đọc được (La Mã, chữ cái). Đưa nó
             // vào cả nhánh này thì nó ghi đè cả những mục đường dẫn vốn xử lý đúng: đo được ở ca
             // "3. Cha" / "3.1. Con" — nó kéo cấp của "3." từ 2 xuống 1 rồi "3.1." tụt theo.
