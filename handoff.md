@@ -1898,3 +1898,33 @@ sẵn trong `StyleTrust` từ §17, chỉ chưa ai nối vào đúng chỗ.
 2. **Đáp án vẫn là đồng thuận của model** (TODO 4). Mọi con số ở trên đứng trên nền đó.
 3. **Đối chứng model chuyên dụng** (kiểu DSPS) chưa làm được: không đủ dữ liệu gán nhãn. Cùng cổ
    chai với điểm 2.
+
+## 27. Một phép đo vô hiệu vì build sai backend, và cách chặn nó tái diễn
+
+Phép đo `--rolling-outline` đầu tiên chạy **36 phút rồi bị dừng**, mới xong 1/5 khối. Nhìn số thì
+tưởng "khung tăng dần đắt kinh khủng". Log nói khác:
+
+```
+Mô hình sẵn sàng. Ngữ cảnh 32768 token, CPU 8 luồng      <- mốc trước: "GPU 99 lớp"
+khối 1/5: 43 ứng viên → 43 tiêu đề (1 156 524 ms)        <- 19 phút cho MỘT khối
+```
+
+Nguyên nhân không nằm ở tính năng đang đo. Trước đó tôi chạy `dotnet build -c Release` **trần**,
+quên `-p:UseVulkan=true`; NuGet thay backend Vulkan trong thư mục output bằng bản CPU. Toàn bộ phép
+đo chạy trên CPU.
+
+Cùng họ với hai lỗi đã ghi: fixture patch âm thầm no-op (§ trước) và CUDA lặng lẽ rơi về CPU (§7).
+Cả ba đều là **đổi môi trường rồi tin kết quả mà không đọc dòng log xác nhận môi trường**.
+
+### 27.1 Luật kiểm trước khi tin bất kỳ con số nào
+
+1. `dotnet build` cho mọi phép đo có model **phải** kèm `-p:UseVulkan=true`.
+2. Đọc dòng `Mô hình sẵn sàng…` và xác nhận nó nói **GPU N lớp**, không phải `CPU N luồng`.
+3. Đối chiếu thời gian mỗi khối với mốc đã biết (~30–40 s/khối cho 9B khối 28K). Lệch một bậc độ
+   lớn nghĩa là môi trường khác, không phải tính năng khác.
+
+### 27.2 Và một lỗi quan sát nữa của tôi
+
+Tôi bọc lệnh đo trong `… | grep -vE … | tee log | grep -E …`. `grep` **đệm theo khối khi đầu ra
+không phải terminal**, nên `log` đứng ở 0 byte suốt cả phép chạy và tôi mù hoàn toàn với tiến độ —
+đúng lúc cần thấy nhất. Phải dùng `grep --line-buffered`, hoặc ghi thẳng log rồi lọc sau.
