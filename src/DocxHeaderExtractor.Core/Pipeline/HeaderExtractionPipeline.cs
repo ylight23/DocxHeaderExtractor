@@ -463,20 +463,28 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 : "Không cắt được prompt thành phần chung — quay về nạp lại từng khối.");
 
         Func<IReadOnlyList<(int Index, int Level)>, IReadOnlyList<int>, string>? rollingOutline = _options.RollingOutline
-            ? (skeleton, asked) => BuildRollingOutline(skeleton, slim, asked)
+            ? (skeleton, asked) => BuildRollingOutline(
+                  skeleton, slim, asked,
+                  (int)(RollingReserve(_options.Chunking.TokenBudget) * MeasuredCharsPerToken))
             : null;
+        // Khung chiếm chỗ trong CÙNG cửa sổ ngữ cảnh với view, nên phải trả lại phần đó cho ngân
+        // sách. Thiếu bước này thì khối 4 trở đi ném 'NoKvSlot' và cả lượt chạy trả về 0%.
+        var classifyBudget = rollingOutline is null
+            ? _options.Chunking.TokenBudget
+            : _options.Chunking.TokenBudget - RollingReserve(_options.Chunking.TokenBudget);
         if (rollingOutline is not null)
-            Log("Khung outline tăng dần: mỗi khối nhận lại mục lục đã dựng từ các khối trước " +
-                "(buộc chạy tuần tự, không gửi song song).");
+            Log($"Khung outline tăng dần: mỗi khối nhận lại mục lục đã dựng từ các khối trước " +
+                $"(tuần tự, không gửi song song; ngân sách khối {_options.Chunking.TokenBudget} → " +
+                $"{classifyBudget} token để chừa chỗ cho khung).");
 
-        var passA = await RunPassAsync(llm, lines, _options.Chunking.TokenBudget,
+        var passA = await RunPassAsync(llm, lines, classifyBudget,
             _options.Chunking.MaxCandidatesPerChunk, _options.TwoPass ? "lượt 1" : null, shouldAsk, ct,
             rollingOutlineFor: rollingOutline);
 
         // Lượt 2 cắt khối nhỏ hơn hẳn ⇒ mép khối rơi vào chỗ khác, mỗi ứng viên có lân cận khác.
         // Khi không chặn theo số ứng viên (0), việc halve ngân sách token đã đủ dịch mép khối.
         var passB = _options.TwoPass
-            ? await RunPassAsync(llm, lines, Math.Max(400, _options.Chunking.TokenBudget / 2),
+            ? await RunPassAsync(llm, lines, Math.Max(400, classifyBudget / 2),
                 _options.Chunking.MaxCandidatesPerChunk > 0
                     ? Math.Max(4, _options.Chunking.MaxCandidatesPerChunk / 2)
                     : 0,
@@ -1213,7 +1221,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
     private static string BuildRollingOutline(
         IReadOnlyList<(int Index, int Level)> skeleton,
         SlimDocument slim,
-        IReadOnlyList<int> askedIndexes)
+        IReadOnlyList<int> askedIndexes,
+        int maxChars)
     {
         var asked = askedIndexes.ToHashSet();
         // Khối chồng lấn ⇒ cùng một đoạn có thể vào skeleton hai lần; lần chốt sau thắng.
@@ -1225,7 +1234,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
         var keep = new SortedSet<int>(latest.Where(kv => kv.Value <= 2).Select(kv => kv.Key));
         foreach (var index in latest.Keys.OrderBy(i => i).TakeLast(RollingRecentCount)) keep.Add(index);
 
-        var items = keep
+        var all = keep
             .Select(index => new
             {
                 i = index,
@@ -1235,6 +1244,12 @@ public sealed class HeaderExtractionPipeline : IDisposable
             })
             .Where(x => x.text.Length > 0)
             .ToArray();
+
+        // Cắt cho vừa trần. Bỏ từ ĐẦU tài liệu trở đi: mục gần khối hiện tại giúp xếp cấp nhiều hơn
+        // mục ở chương đầu, nên khi phải bỏ bớt thì bỏ cái xa trước.
+        var items = all;
+        while (items.Length > 1 && JsonSerializer.Serialize(items).Length > maxChars)
+            items = items[1..];
 
         return items.Length == 0
             ? string.Empty
@@ -1248,6 +1263,31 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
     /// <summary>Số mục gần nhất mang theo trong khung, ngoài bộ xương cấp 1–2.</summary>
     private const int RollingRecentCount = 12;
+
+    /// <summary>
+    /// Trần ký tự của khối khung, và phần token phải TRẢ LẠI cho ngân sách khối vì khung chiếm chỗ
+    /// trong cùng cửa sổ ngữ cảnh.
+    /// <para>
+    /// ĐO ĐƯỢC vì sao cần: bản đầu cộng khung vào view mà không đụng tới ngân sách. Ngân sách 28000
+    /// token vốn đã tính để lấp gần đầy context 32768, nên tới khối 4 — khi khung đã tích đủ mục —
+    /// llama.cpp ném <c>llama_decode failed: 'NoKvSlot'</c> và cả lượt chạy trả về 0%. Thứ cộng thêm
+    /// vào prompt phải được trừ khỏi ngân sách của prompt; không có ngoại lệ nào cho "chỉ một khối
+    /// nhỏ thôi".
+    /// </para>
+    /// <para>6000 ký tự ≈ 1900 token theo tỉ lệ 3,2 ký tự/token đã đo cho tiếng Việt ở §18.</para>
+    /// </summary>
+    private const int RollingOutlineReserveTokens = 2000;
+
+    /// <summary>3,2 ký tự/token — tỉ lệ đo trực tiếp cho tiếng Việt ở §18.</summary>
+    private const double MeasuredCharsPerToken = 3.2;
+
+    /// <summary>
+    /// Phần ngân sách trả lại cho khung. Lấy min với 1/4 ngân sách vì hằng 2000 nuốt gần trọn một
+    /// ngân sách nhỏ: với mặc định 2200 nó còn 200 (bị chặn sàn lên 400), khối vỡ vụn và cách chia
+    /// đổi hẳn — hai test khung đổ ngay lần build đầu sau khi thêm luật này.
+    /// </summary>
+    private static int RollingReserve(int tokenBudget) =>
+        Math.Min(RollingOutlineReserveTokens, tokenBudget / 4);
 
     private static int DistanceToWindow(int index, int from, int to) =>
         index < from ? from - index : index > to ? index - to : 0;

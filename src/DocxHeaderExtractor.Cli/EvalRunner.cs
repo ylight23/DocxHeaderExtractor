@@ -163,7 +163,8 @@ public static class EvalRunner
 
         sb.AppendLine();
         sb.AppendLine($"Gộp toàn bộ đoạn:  P {Pct(suite.MicroPrecision)}  ·  R {Pct(suite.MicroRecall)}  ·  " +
-                      $"F1 {Pct(suite.MicroF1)}  ·  đúng cấp {Pct(suite.MicroLevelAccuracy)}");
+                      $"F1 {Pct(suite.MicroF1)}  ·  đúng cấp {Pct(suite.MicroLevelAccuracy)}  ·  " +
+                      $"đúng cha {Pct(suite.MicroParentAccuracy)}");
         sb.AppendLine($"Trung bình theo tài liệu: F1 {Pct(suite.MacroF1)}");
         var coverageName = !options.DisableLlm && options.ReviewAllParagraphs
             ? "Tiêu đề được model review"
