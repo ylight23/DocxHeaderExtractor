@@ -2343,3 +2343,62 @@ Cờ `--no-standalone-lines` tồn tại để cái giá đó đo được, cùn
 Hướng đúng nếu muốn cả hai: giữ đường này nhưng **hạ cấp sau khi mô hình quyết**, bằng một luật tất
 định nhắm đúng lớp nhiễu nó sinh ra (`Nguồn: …` lặp lại, phương án trắc nghiệm, dòng mục lục gõ tay
 kèm số trang). Chưa cài.
+
+## 34. `Nguồn: …` — model có đủ dữ kiện và vẫn đọc sai; ba luật thay thế đều hỏng
+
+Câu hỏi: vì sao LLM không thấy `Nguồn: Facebook` là thứ không thuộc khung chính.
+
+### 34.1 Nó THẤY — 11/12 lần
+
+Trong 12 đoạn `Nguồn: …` lọt vào tập ứng viên, mô hình **bác 11**. Chỉ `Nguồn: Tik Tok` (đoạn 1063)
+lọt ra kết quả. Đây là tỉ lệ lỗi, không phải bất lực hệ thống.
+
+### 34.2 Và nó có đủ dữ kiện — dump chứng minh
+
+`dhx xml --dump-chunks` cho đúng thứ mô hình đọc:
+
+```
+BLOCK  metadata: {"i":1062,"requested":false,...}
+content:   Hình… Title bài đăng “khai thác” nội dung từ chương trình Đường lên đỉnh Olympia…
+END_BLOCK
+BLOCK  metadata: {"i":1063,"requested":true,"bold":true,...}
+content:   Nguồn: Tik Tok
+END_BLOCK
+```
+
+Khối ngay trên là chú thích hình, và tầng lọc đã nhận ra (`requested: false`). Hai khối nằm liền
+nhau trong cùng một prompt. Không thiếu dữ kiện nào — **mô hình đọc sai**.
+
+Ghi lại vì nó bác một giả thuyết dễ tin: *"mô hình sai vì không thấy khung tổng thể"*. Ở ca này nó
+thấy đủ. Và §19 (one-pass toàn văn) với §30.2 (khung tăng dần) đã đo hai lần rằng đưa thêm khung
+toàn cục không cải thiện gì.
+
+Lý do sâu hơn: khung chính phân biệt được *đề mục đánh số* với *phần còn lại*, nhưng ranh giới thật
+nằm BÊN TRONG phần còn lại — giữa `Về ngôn ngữ` (đề mục thật, không đánh số) và `Nguồn: Tik Tok`
+(chú thích). Khung không cắt qua ranh giới đó.
+
+### 34.3 Ba luật thay thế, đo hết, hỏng hết
+
+Mục tiêu: loại lớp này bằng luật tất định, KHÔNG thêm danh sách từ khoá tiếng Việt.
+
+| Luật | Loại được | Làm mất |
+|---|--:|--:|
+| Văn bản lặp ≥ 3 lần trong tài liệu | 2/21 | **4 đề mục thật** |
+| Đứng ngay sau đoạn chứa `w:drawing` | **0/21** | 0 |
+| Đứng ngay dưới dòng đã bị nhận là chú thích | 1/21 (nới lỏng) | **6 đề mục thật** |
+
+* **Lặp** hỏng vì khoá luận dùng cấu trúc song song: `Về ngôn ngữ` là đề mục thật, lặp ở ba chương.
+* **Kề ảnh** không kích hoạt: ảnh nằm trong ô bảng hoặc cấu trúc khác, không phải đoạn liền trước.
+* **Kề chú thích** với `CaptionRx` bản chặt loại được 0 vì regex đòi chữ số sau từ khoá, mà tài liệu
+  viết `Hình…` (dấu ba chấm). Nới ra cho khớp thì nó bắt luôn dòng mục lục bắt đầu bằng `Bảng…` và
+  giết 6 đề mục thật đứng sau.
+
+### 34.4 Đặt đúng tỉ lệ trước khi đầu tư thêm
+
+Lớp này đáng **1 trong 21** dương tính giả — khoảng **0,8 điểm precision**. Nó gây khó chịu khi nhìn
+danh sách ứng viên (12 lần xuất hiện), nhưng 11/12 đã bị mô hình chặn.
+
+Cách duy nhất còn lại là một mẫu ĐẶC NGỮ (`Từ: DanhTừRiêng` hoặc thêm `nguồn`/`source` vào
+`CaptionRx`). Đáng nói: `CaptionRx` **đã chứa** từ khoá tiếng Việt (`hình`, `ảnh`, `bảng`,
+`biểu đồ`…), nên đó là nới một luật chú thích đã có chứ không phải lập danh sách từ khoá mới để nhận
+heading. Nhưng ranh giới ấy là quyết định của người dùng, không phải của tôi — chưa làm.
