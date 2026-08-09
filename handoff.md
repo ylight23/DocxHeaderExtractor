@@ -2219,3 +2219,65 @@ hai vế: nếu chỉ nhìn "đúng cấp" thì vế mất đi vô hình, và đ
 
 Sáu bước, sáu lần đọc dữ kiện cấu trúc có sẵn trong tài liệu. Không bước nào đến từ mô hình lớn hơn
 hay nhiều suy luận hơn — bốn lần thử hướng đó đều cho số không (§19, §24.2, §25, §30.2).
+
+## 32. Thị giác làm tầng lọc ứng viên: giả thuyết §29.5 KHÔNG đủ đỡ
+
+§29.5 đề xuất dùng thị giác làm tầng ứng viên cho riêng đoạn không có bằng chứng cấu trúc, vì
+style-only đo được P 100% và ảnh đo được P 100%. Đo thẳng vào chế độ hỏng thì nó không đứng.
+
+### 32.1 Trước hết, xác thực khẳng định đã lặp nhiều lần
+
+"Toàn bộ dương tính giả đến từ ứng viên heuristic" — kiểm trực tiếp: **0/21** dương tính giả mang
+style Heading built-in. Khẳng định đúng, và giờ có bằng chứng thay vì suy ra.
+
+Nhưng soi từng mục thì "thuộc danh sách" KHÔNG tách được chúng: 14/21 có `num=`. Chúng là
+`1920 x 1080 pixels tỉ lệ 16:9`, `Nguồn: Tik Tok`, `Nguyễn Hà Phương`, `Thử nghiệm nhiều khung giờ`
+— phán đoán ngữ nghĩa, không phải hình thức.
+
+Một ca sạch: `Mạng xã hội Facebook` xuất hiện hai lần — đoạn 348 có `num="39.0" nlab="b."` (đề mục
+thật, điểm 0,8) và đoạn 634 chỉ in đậm không đánh số (điểm 0,55, đáp án nói không). Đáp án phân
+biệt đúng, pipeline thì không.
+
+### 32.2 Kết quả
+
+Tập kiểm là CHÍNH 19 dương tính giả định vị được, cộng 8 đề mục thật trên cùng những trang đó — để
+đo cả cái được lẫn cái mất, không chỉ cái được:
+
+```
+loai dung  8/19 duong tinh gia cua pipeline
+giu lai    7/8  de muc THAT tren cung nhung trang do
+```
+
+Ngoại suy lên cả tài liệu: P 83,5% → ~89,1%, R 96,4% → ~95,5%, F1 89,5% → ~92,1%.
+
+**Không đáng cài.** +2,6 điểm F1 đổi lấy: render 171 trang qua Word/LibreOffice, ~5 s/trang suy
+luận, tức ~15 phút cho một tài liệu mà cả pipeline hiện chạy 5 phút — **gấp ba thời gian**. Và mẫu
+chỉ 27 mục.
+
+### 32.3 Vì sao thị giác không loại được 11 mục còn lại
+
+Nhìn danh sách nó GIỮ: `Mạng xã hội Facebook`, `Nghiên cứu "đối thủ"`, `Thử nghiệm nhiều khung giờ`,
+`KẾT QUẢ KHẢO SÁT`. Đó đúng là những dòng **trông y hệt đề mục** — in đậm, đứng riêng một dòng.
+
+Thị giác không thể phân biệt vì trên trang in chúng KHÔNG khác đề mục. Thứ phân biệt chúng là
+`num="39.0"` — dữ kiện chỉ tồn tại trong OOXML và biến mất khi rasterize. Đây là mặt trái của cùng
+một quan sát ở §29.4: ảnh không biết quy ước độ sâu của tài liệu, và cũng không biết đoạn nào thuộc
+danh sách nào.
+
+Kết luận: thị giác mạnh ở chỗ OOXML yếu (đề mục không style, không đánh số) và **yếu ở đúng chỗ
+OOXML mạnh**. Nó không phải tầng lọc thay thế được, ít nhất không với giá này.
+
+### 32.4 Lần thứ ba cùng một lỗi phép đo
+
+Lượt chạy đầu của phép thử này cho "loại 10/19, mất 15/29" — nhìn thì kết luận ngay "thị giác phá
+recall". Sai. `Truyền hình` chuẩn hoá thành `truyenhinh`, 10 ký tự, khớp MỌI trang chứa cụm từ đó,
+nên một đề mục bị tính là "bị làm mất" ở bốn trang khác nhau.
+
+Đây là lần thứ BA cùng một lớp lỗi (xem §29.6 mục 3 và 4), và tôi đã tự viết cảnh báo về nó rồi vẫn
+đi vào. Bản vá tạm (đòi văn bản ≥ 20 ký tự và duy nhất một trang) loại mất 13/21 dương tính giả và
+để lại **0** đề mục đối chứng — tức nó sẽ cho một con số một chiều, đẹp và vô nghĩa.
+
+Sửa đúng gốc: **căn theo THỨ TỰ**, không tìm text tự do. Đoạn trong docx và text trong PDF cùng một
+trật tự đọc nên con trỏ trang chỉ được TIẾN. Nhờ vậy đoạn 348 và đoạn 634 — cùng văn bản
+`Mạng xã hội Facebook` — được gán trang 36 và trang 80, phân biệt đúng. Bảng ánh xạ đoạn→trang này
+là công cụ dùng lại được cho mọi phép đo thị giác sau.
