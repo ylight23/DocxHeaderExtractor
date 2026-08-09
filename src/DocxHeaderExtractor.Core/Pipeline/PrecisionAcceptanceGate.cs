@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Core.Eval;
+﻿using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -117,20 +117,45 @@ public static class PrecisionAcceptanceGate
         }
     }
 
+    /// <summary>
+    /// Điểm để so với cổng precision, do BẰNG CHỨNG dẫn dắt.
+    /// <para>
+    /// Bản cũ đặt <c>CriticConfirmed</c> lên trên mọi bằng chứng: mục đã qua phản biện nhận 0,93 kể
+    /// cả khi không có evidence nào, còn mục qua đủ 5/5 kiểm tra bị chặn trần 0,85 — dưới cổng 93%.
+    /// </para>
+    /// <para>
+    /// ĐO ĐƯỢC (§37) trên khoá luận, chấm bằng đáp án có nhãn người:
+    /// nhóm hiển thị 0,93 (TỰ NHẬN) đúng <b>47,6%</b>; nhóm 0,85 (bị bắt duyệt) đúng <b>100%</b>.
+    /// Ở mức quyết định: tự nhận 16 mục đúng 62,5%, bắt duyệt 111 mục đúng 82,0% — cổng tự nhận
+    /// đúng nhóm TỆ HƠN cả nhóm nó bắt người đi duyệt.
+    /// </para>
+    /// <para>
+    /// Vì sao phản biện lại phản chỉ báo: lượt phản biện CHỈ chạy trên những khối mà chính pipeline
+    /// đã đánh dấu là không đáng tin (bịa chỉ số, hoặc mọi mục cùng một cấp). "Đã qua phản biện"
+    /// vì thế là dấu hiệu ĐẾN TỪ VÙNG ĐÁNG NGỜ, không phải dấu hiệu đúng. Nó bị bỏ khỏi thang điểm.
+    /// </para>
+    /// </summary>
     private static double EvidenceScore(HeadingRecord heading)
     {
-        if (heading.Source == HeadingSource.Model && heading.CriticConfirmed)
+        // Structure đã được bộ 5 evidence checks chấm riêng bằng ConfidenceForChecks.
+        if (heading.Source == HeadingSource.Structure) return heading.Confidence;
+
+        // Không có evidence thì không được nhận điểm cao. Nhóm này đo được 0/5 đúng (§37.2) —
+        // toàn bộ là mục mang style nhưng chưa qua một kiểm tra cấu trúc nào.
+        if (heading.Evidence is not { } e) return Math.Min(heading.Confidence, NoEvidenceCeiling);
+
+        var passed = new[]
         {
-            var e = heading.Evidence;
-            var independentStructure = e is
-                { NumberingValid: true, SiblingSequenceValid: true, FormattingConsistent: true, TreeValid: true };
-            return independentStructure ? 0.95 : 0.93;
-        }
-        if (heading.Source == HeadingSource.Style && heading.CriticConfirmed) return 0.93;
-        if (heading.Source is HeadingSource.Model or HeadingSource.Style)
-            return Math.Min(heading.Confidence, 0.85);
-        if (heading.Source == HeadingSource.Heuristic)
-            return Math.Min(heading.Confidence, 0.75);
-        return heading.Confidence; // Structure đã được bộ 5 evidence checks chấm riêng.
+            e.NumberingValid, e.SiblingSequenceValid, e.FormattingConsistent, e.ModelConfirmed, e.TreeValid,
+        }.Count(x => x);
+
+        var score = EvidenceConfidenceCalibrator.ConfidenceForChecks(passed);
+        return heading.Source == HeadingSource.Heuristic ? Math.Min(score, HeuristicCeiling) : score;
     }
+
+    /// <summary>Trần cho mục không có một kiểm tra cấu trúc nào — dưới mọi cổng thực dụng.</summary>
+    private const double NoEvidenceCeiling = 0.60;
+
+    /// <summary>Ứng viên thuần heuristic vẫn giữ trần cũ: hình thức không thay được cấu trúc.</summary>
+    private const double HeuristicCeiling = 0.75;
 }

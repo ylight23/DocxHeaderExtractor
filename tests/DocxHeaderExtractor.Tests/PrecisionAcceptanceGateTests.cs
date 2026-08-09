@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Core.Eval;
+﻿using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Pipeline;
 
@@ -7,14 +7,22 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class PrecisionAcceptanceGateTests
 {
     [Fact]
-    public void Independent_critic_reaches_93_evidence_tier_without_numbering()
+    public void Phan_bien_mot_minh_khong_con_du_de_tu_nhan()
     {
+        // ĐẢO NGƯỢC khẳng định cũ của test này ("phản biện một mình đạt bậc 0,93 và được tự nhận").
+        // §37.2 đo trên khoá luận với đáp án có NHÃN NGƯỜI: nhóm 0,93 — nhóm được tự nhận — đúng
+        // 47,6%, còn nhóm 0,85 bị bắt duyệt tay đúng 100%. Ở mức quyết định: tự nhận 16 mục đúng
+        // 62,5%, bắt duyệt 111 mục đúng 82,0%.
+        //
+        // Lý do: lượt phản biện CHỈ chạy trên khối mà chính pipeline đã đánh dấu là không đáng tin
+        // (bịa chỉ số, hoặc mọi mục cùng một cấp). "Đã qua phản biện" vì thế là dấu hiệu ĐẾN TỪ
+        // VÙNG ĐÁNG NGỜ, không phải dấu hiệu đúng.
         var heading = H("Phạm vi nghiên cứu", critic: true);
 
         PrecisionAcceptanceGate.Apply([heading], profile: null, targetPrecision: 0.93, minimumSamples: 30);
 
-        Assert.Equal(0.93, heading.Confidence);
-        Assert.Equal(HeadingDecisionStatus.AutoAcceptedEvidence, heading.DecisionStatus);
+        Assert.True(heading.Confidence < 0.93, $"phản biện một mình vẫn được {heading.Confidence}");
+        Assert.Equal(HeadingDecisionStatus.RequiresReview, heading.DecisionStatus);
         Assert.Equal("evidence_not_calibrated", heading.ConfidenceBasis);
     }
 
@@ -117,8 +125,11 @@ public sealed class PrecisionAcceptanceGateTests
 
         PrecisionAcceptanceGate.Apply([style, heuristic], null, 0.93, 30);
 
-        Assert.Equal(0.85, style.Confidence);
-        Assert.Equal(0.75, heuristic.Confidence);
+        // Ý ĐỊNH của test giữ nguyên: không nguồn nào một mình đòi được 93%. Bậc điểm đổi vì
+        // thang mới do bằng chứng dẫn dắt, mà hai mục này KHÔNG có evidence nào — nên rơi về trần
+        // "không bằng chứng" (0,60) thay vì 0,85/0,75. Chặt hơn bản cũ, cùng chiều với ý định.
+        Assert.True(style.Confidence <= 0.60, $"style một mình được {style.Confidence}");
+        Assert.True(heuristic.Confidence <= 0.60, $"heuristic một mình được {heuristic.Confidence}");
         Assert.All([style, heuristic], h => Assert.Equal(HeadingDecisionStatus.RequiresReview, h.DecisionStatus));
     }
 
