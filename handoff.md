@@ -2154,3 +2154,68 @@ Việc tiếp theo vì thế KHÔNG phải "làm mô hình hiểu cấp giỏi h
 Mutation test bắt được một lỗ của chính metric này: đổi `>=` thành `>` khi đẩy ngăn xếp biến anh em
 cùng cấp thành cha–con, mà ba test đầu vẫn xanh — vì chúng dựng CẢ HAI cây bằng cùng một hàm nên lỗi
 triệt tiêu. Chỉ ca mà đáp án có anh em còn kết quả trả về thì không mới lộ ra.
+
+## 31. Neo cục bộ cho item danh sách: đúng cấp 81,1% → 91,5%
+
+§30.3 nói việc còn lại không phải "làm mô hình hiểu cấp giỏi hơn" mà là neo độ sâu tuyệt đối. Chẩn
+đoán trước khi sửa, và nó chỉ ra một thủ phạm cụ thể chứ không phải một khiếm khuyết chung.
+
+### 31.1 20 lỗi cấp nằm trong ba vùng, mỗi vùng lệch một hằng số
+
+| vùng | đoạn | lệch |
+|---|---|--:|
+| A | 266, 282, 287, 297, 302 | +1 |
+| B | 1120, 1150, 1152 | +1 |
+| C | 1170, 1175, 1183, 1192, 1201, 1222 | +2 |
+| D | 1446, 1447, 1453, 1460, 1467, 1473 | −1 |
+
+Không một lỗi nào rải rác. Đúng hình dạng mà metric cây đã báo (cha 97,2% / cấp 81,1%): nhánh đúng
+hình, sai gốc.
+
+Cả 20 đều `style="Normal"`, và phần lớn mang `num="20.0" nlab="a."` — item của danh sách đa cấp.
+Nhãn "a." không phải đường dẫn số Ả Rập nên `PathOf` trả null và chúng rơi xuống `SignatureTiers`.
+
+### 31.2 Tầng chữ ký gán một con số TOÀN CỤC cho một quan hệ CỤC BỘ
+
+`SignatureTiers` xếp hạng chữ ký theo **thứ tự xuất hiện lần đầu trong cả tài liệu**. Nhưng
+"a., b., c." là quan hệ với mục cha ngay trên nó:
+
+| đoạn | cha gần nhất | tier gán | đáp án |
+|---|---|--:|--:|
+| 266 | `1.1.1.` — cấp 3 | 5 | **4** |
+| 1120 | `2.3.2.` — cấp 3 | 5 | **4** |
+| 1175 | `3.1.` — cấp 2 | 5 | **3** |
+
+Cùng một chữ ký, ba độ sâu khác nhau. Một con số toàn cục chỉ đúng ở chỗ nó xuất hiện lần đầu.
+Cả ba đều đúng bằng **cha + 1**.
+
+### 31.3 `LocalListDepth` và kết quả
+
+Luật: đoạn CÓ `NumberingId` mà không đọc được đường dẫn số Ả Rập thì lấy cấp = cấp của mục gần nhất
+đứng trước **không cùng `NumberingId`**, cộng một. Bỏ qua anh em cùng danh sách — nếu không thì mục
+thứ hai lấy mục thứ nhất làm cha và cả dãy sâu dần.
+
+| Đáp án đồng thuận | Mốc §28 | + `LocalListDepth` |
+|---|--:|--:|
+| P / R / F1 | 83,5 / 96,4 / 89,5 | **83,5 / 96,4 / 89,5** |
+| **Đúng cấp** | 81,1% | **91,5%** |
+| Đúng cha | 97,2% | 96,2% |
+| Bench 10 tài liệu | 100% · 10/10 | **100% · 10/10** (cha 100%) |
+
++10,4 điểm cấp, P/R/F1 không đổi một chữ số. Nhưng **đúng cha giảm 1,0 điểm** — luật sửa được 10
+điểm độ sâu tuyệt đối và làm hỏng một quan hệ cha–con. Đổi chác rõ ràng có lợi, nhưng phải ghi cả
+hai vế: nếu chỉ nhìn "đúng cấp" thì vế mất đi vô hình, và đó chính là lý do §30.3 cài metric cây.
+
+### 31.4 Đường đi của "đúng cấp"
+
+| | đúng cấp |
+|---|--:|
+| Trước §16 | 26,5% |
+| §17 hạ quyền gán cấp của style | 37,2% |
+| §22 neo theo mục lục của tác giả | 51,9% |
+| §24.1 dùng thẳng độ sâu đánh số | 66,0% |
+| §28 độ sâu lồng nhau của style | 81,1% |
+| §31 neo cục bộ cho item danh sách | **91,5%** |
+
+Sáu bước, sáu lần đọc dữ kiện cấu trúc có sẵn trong tài liệu. Không bước nào đến từ mô hình lớn hơn
+hay nhiều suy luận hơn — bốn lần thử hướng đó đều cho số không (§19, §24.2, §25, §30.2).

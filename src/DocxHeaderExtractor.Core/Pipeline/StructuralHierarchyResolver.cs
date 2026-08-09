@@ -43,6 +43,13 @@ public static class StructuralHierarchyResolver
 
             if (path is null)
             {
+                // Item của danh sách đa cấp thì NEO CỤC BỘ thắng tầng chữ ký — xem LocalListDepth.
+                if (LocalListDepth(i, ordered, document) is { } anchored)
+                {
+                    if (anchored != current.Level) { current.Level = anchored; changed++; }
+                    continue;
+                }
+
                 // Đường dẫn chỉ đọc được số Ả Rập có dấu chấm, nên "PHẦN I." hay "A)" rơi ra ngoài
                 // và cấp của chúng phải trông chờ vào mô hình. Tầng chữ ký lấp đúng chỗ đó.
                 if (tiers.TryGetValue(current.Index, out var tier) && tier != current.Level)
@@ -169,6 +176,42 @@ public static class StructuralHierarchyResolver
             ancestors.Add(styleLevel);
         }
         return result;
+    }
+
+    /// <summary>
+    /// Cấp của một item danh sách đa cấp, neo vào mục ĐỨNG NGAY TRƯỚC nó mà KHÔNG thuộc cùng danh
+    /// sách: cấp của mục đó cộng một.
+    /// <para>
+    /// Sửa một sai lệch có hệ thống của <see cref="SignatureTiers"/>. Tầng chữ ký xếp hạng theo
+    /// THỨ TỰ XUẤT HIỆN LẦN ĐẦU TRONG CẢ TÀI LIỆU, tức một con số TOÀN CỤC; nhưng "a., b., c." là
+    /// quan hệ CỤC BỘ với mục cha ngay trên nó. Khi cùng một chữ ký được dùng ở hai độ sâu khác
+    /// nhau trong tài liệu, con số toàn cục chỉ đúng ở chỗ đầu tiên.
+    /// </para>
+    /// <para>
+    /// ĐO ĐƯỢC trên khoá luận (§31): ba cụm "a./b./c." nằm dưới ba mục cha ở ba độ sâu khác nhau,
+    /// tầng chữ ký gán cả ba là cấp 5 trong khi đáp án là 4, 4 và 3. Cả ba đều đúng bằng
+    /// <c>cha + 1</c>. Đây chính là hình dạng mà metric cây chỉ ra (§30.3): cha đúng 97,2% còn cấp
+    /// tuyệt đối chỉ 81,1% — nhánh đúng hình, sai gốc.
+    /// </para>
+    /// <para>
+    /// Chỉ áp cho đoạn CÓ <c>NumberingId</c> và không đọc được đường dẫn số Ả Rập. Đoạn đánh số
+    /// "1.1.2" đã có đường dẫn nên đi nhánh khác, và đoạn không đánh số thì không có "cùng danh sách"
+    /// để loại trừ nên neo sẽ bám nhầm vào chính anh em của nó.
+    /// </para>
+    /// </summary>
+    private static int? LocalListDepth(
+        int at, IReadOnlyList<HeadingRecord> ordered, SlimDocument document)
+    {
+        if (document.ByIndex(ordered[at].Index) is not { NumberingId: { } listId }) return null;
+
+        for (var i = at - 1; i >= 0; i--)
+        {
+            var previous = document.ByIndex(ordered[i].Index);
+            // Cùng danh sách ⇒ anh em, không phải cha. Bỏ qua để đi tiếp lên trên.
+            if (previous?.NumberingId == listId) continue;
+            return Math.Clamp(ordered[i].Level + 1, 1, 9);
+        }
+        return null;
     }
 
     private static int? FindSiblingLevel(
