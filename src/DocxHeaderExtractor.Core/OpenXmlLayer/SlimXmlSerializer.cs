@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.OpenXmlLayer;
@@ -43,6 +43,7 @@ public static class SlimXmlSerializer
         if (!string.IsNullOrEmpty(p.StyleId)) sb.Append(" s=\"").Append(Escape(p.StyleId)).Append('"');
         if (p.OutlineLevel is { } ol) sb.Append(" out=\"").Append(ol).Append('"');
         if (p.GuessedLevel is { } gl) sb.Append(" lvl=\"").Append(gl).Append('"');
+        if (p.InContentControl) sb.Append(" sdt=\"1\"");
         if (p.Bold) sb.Append(" b=\"1\"");
         var boldRanges = p.TextSpans.Where(x => x.Bold).Select(x => $"{x.Start}-{x.End}").ToList();
         if (boldRanges.Count > 0 && p.TextSpans.Any(x => !x.Bold))

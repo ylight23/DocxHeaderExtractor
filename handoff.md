@@ -2447,3 +2447,63 @@ khối 30/30 ✓
 Cờ dùng để LÀM SẠCH phép đo (`--no-reuse-prefix`) đã vô tình trở thành lớp che một lỗi chỉ xuất hiện
 ở đường mặc định. Phép đo sạch và đường người dùng đi là hai thứ khác nhau; ít nhất một lượt chạy
 phải đi đúng đường mặc định.
+
+## 36. Hai cờ mới: cả hai đều SỐ KHÔNG — và phân tích dẫn tới chúng dựa trên artifact cũ
+
+Ý tưởng: dùng `w:sdt` (content control) làm dấu hiệu cấu trúc. Đo được trước khi cài (tưởng vậy):
+21/129 ứng viên nằm trong `w:sdt`, 0 mục là đề mục thật; và mẫu `NHÃN + SỐ + HẾT` tách sạch 8/8
+trong sdt (dòng mục lục kèm số trang) với 5/5 ngoài sdt (`PHỤ LỤC 1`, `Tiểu kết chương 2`…).
+
+Cài hai cờ độc lập, 339 test xanh, 3 mutation bị giết. Kết quả đo, mỗi cờ một lượt:
+
+| Khoá luận | Mốc §31 | `--skip-content-controls` | `--bare-labels` |
+|---|--:|--:|--:|
+| Ứng viên | 129 | **129** | **129** |
+| P / R / F1 | 83,5 / 96,4 / 89,5 | không đổi | không đổi |
+| Đúng cấp / cha | 91,5 / 96,2 | không đổi | không đổi |
+
+**Không một chữ số nào thay đổi.**
+
+### 36.1 Vì sao — và lỗi ở đâu
+
+Sinh lại dump bằng ĐÚNG cờ của lượt đo (`--style-trust`):
+
+| | đoạn có `sdt=1` | trong đó là ứng viên |
+|---|--:|--:|
+| Dump đúng cờ, build hiện tại | 21 | **0** |
+| `kltn-full.xml` — build phiên trước, không `--style-trust` | 21 | **21** |
+
+Con số "21/129 ứng viên nằm trong sdt" đọc từ một artifact **cũ, sinh bằng build khác và cờ khác**.
+Pipeline hiện tại đã loại 21 đoạn đó bằng đường khác từ trước. Cờ A không có gì để làm.
+
+Đây là **lỗi thứ hai cùng loại trong hai mục liên tiếp**: §33.3 đã ghi đúng bài học này ("phân tích
+một tập, kết luận cho một tập khác") và tôi vẫn lặp lại ngay sau đó. Nguyên nhân hệ thống: dump nằm
+trong scratchpad không mang dấu vết cấu hình sinh ra nó, nên nhìn tên file không biết nó thuộc lượt
+nào. Luật từ nay: **mọi dump dùng để suy luận phải sinh lại bằng đúng cờ của lượt đang bàn, ngay
+trước khi đọc.**
+
+### 36.2 Cờ B không sai, nhưng nối vào chỗ không tác động được
+
+Bộ đọc `NHÃN + SỐ + HẾT` chạy đúng (có test và mutation test). Nhưng nó chỉ nuôi
+`HasStructuralEvidence`, mà chỗ đó dùng đúng MỘT lần: cứu đoạn đã bị mô hình gắn nhãn
+`DocumentTitle` rồi loại — tức đoạn **phải từng là ứng viên**. `PHỤ LỤC 1` (đoạn 1294) có
+`role="Normal"`, chưa bao giờ là ứng viên, nên không có đường nào tới.
+
+Muốn cờ B có tác dụng thật thì phải mở rộng `StructuralRecovery` sang token `Labelled` — hiện nó
+chỉ xử lý đường dẫn số Ả Rập nhiều cấp ("3.2"). Chưa làm.
+
+### 36.3 Đính chính một khẳng định trước đó
+
+Tôi đã nói 4 mục bỏ sót chia làm hai kiểu: hai mục "model thấy và bác" (`PHỤ LỤC 1`, `PHỤ LỤC 2`).
+**Sai** — đọc từ chính dump cũ đó. Với cấu hình thật, cả bốn (`1239`, `1256`, `1294`, `1335`) đều
+`role="Normal"`: **không mục nào tới được mô hình**. Cả bốn là mất mát ở TẦNG ỨNG VIÊN, không phải
+lỗi phán đoán của mô hình.
+
+Điều này đổi hướng việc cần làm: chỗ phải sửa là tầng ứng viên, không phải prompt hay mô hình.
+
+### 36.4 Giữ lại gì
+
+* `SlimParagraph.InContentControl` + thuộc tính `sdt="1"` trong dump — **giữ**. Chính nó phơi ra sai
+  lệch giữa hai dump và giúp bắt lỗi ở 36.1.
+* Cả hai cờ — **giữ, mặc định tắt**, cùng lý do §10.4/§25.2/§30.2/§33: số không cũng là số đo, và
+  không ghi lại thì người sau sẽ thử lại đúng cái đã đo là vô ích.

@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.OpenXmlLayer;
+﻿namespace DocxHeaderExtractor.Core.OpenXmlLayer;
 
 public sealed class ExtractionOptions
 {
@@ -26,6 +26,38 @@ public sealed class ExtractionOptions
     /// </para>
     /// </summary>
     public bool PromoteStandaloneLines { get; set; } = true;
+
+    /// <summary>
+    /// Bỏ đoạn nằm trong <c>w:sdt</c> (content control) ra khỏi tập ứng viên.
+    /// <para>
+    /// ĐO ĐƯỢC (§36): 21/129 ứng viên trên khoá luận nằm trong khối này và KHÔNG mục nào là đề mục
+    /// thật — chúng là dòng mục lục tự động kèm số trang. Vì văn bản của chúng chính là TÊN của đề
+    /// mục khác nên không luật hình thức nào tách được; chỉ dấu hiệu cấu trúc của Word mới tách.
+    /// </para>
+    /// <para>
+    /// MẶC ĐỊNH TẮT: hợp đồng của tầng ứng viên là chọn rộng, và một tài liệu không đủ để kết luận
+    /// mọi content control đều là mục lục — Word còn dùng <c>w:sdt</c> cho form và vùng nội dung
+    /// có cấu trúc, nơi đề mục thật hoàn toàn có thể nằm trong.
+    /// </para>
+    /// </summary>
+    public bool SkipContentControls { get; set; }
+
+    /// <summary>
+    /// Cho phép hậu kiểm đọc chuỗi đánh số dạng <c>NHÃN + SỐ</c> khi KHÔNG còn chữ nào phía sau
+    /// (<c>PHỤ LỤC 1</c>), thay vì đòi phần đuôi như hiện tại.
+    /// <para>
+    /// Lý do ràng buộc cũ tồn tại: bỏ nó đi thì <c>Bảng 1.2 Đối chiếu…</c> bị tách thành nhãn
+    /// "Bảng" + số 1 rồi hậu kiểm báo thiếu những mục không tồn tại. Nhưng chú thích LUÔN có phần
+    /// đuôi; <c>NHÃN + SỐ + HẾT</c> là hình dạng khác hẳn.
+    /// </para>
+    /// <para>
+    /// ĐO ĐƯỢC (§36): trên khoá luận, mẫu này khớp 13 đoạn — 8 trong <c>w:sdt</c> (dòng mục lục kèm
+    /// số trang, không phải đề mục) và 5 ngoài <c>w:sdt</c> (<c>PHỤ LỤC 1</c>, <c>PHỤ LỤC 2</c>,
+    /// <c>Tiểu kết chương 1/2/3</c>) — <b>5/5 là đề mục thật</b>. Vì vậy luật này chỉ áp cho đoạn
+    /// NGOÀI content control; hai vế tách nhau sạch 8/8 và 5/5.
+    /// </para>
+    /// </summary>
+    public bool AllowBareLabelledNumbers { get; set; }
 
     /// <summary>
     /// Bật các luật dựa trên TỪ NGỮ: danh sách từ khoá mở đầu ("Chương", "Điều", "Phụ lục",

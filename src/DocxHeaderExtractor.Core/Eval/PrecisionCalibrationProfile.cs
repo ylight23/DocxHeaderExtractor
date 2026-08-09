@@ -91,7 +91,9 @@ public sealed class PrecisionCalibrationProfile
         $"seed={o.Llama.Seed}",
         $"gpuLayers={o.Llama.GpuLayerCount}",
         $"threshold={o.Extraction.CandidateThreshold.ToString("R", CultureInfo.InvariantCulture)}",
-        $"standaloneLines={o.Extraction.PromoteStandaloneLines}");
+        $"standaloneLines={o.Extraction.PromoteStandaloneLines}",
+        $"skipContentControls={o.Extraction.SkipContentControls}",
+        $"bareLabels={o.Extraction.AllowBareLabelledNumbers}");
 
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
