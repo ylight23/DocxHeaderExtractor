@@ -2281,3 +2281,65 @@ Sửa đúng gốc: **căn theo THỨ TỰ**, không tìm text tự do. Đoạn 
 trật tự đọc nên con trỏ trang chỉ được TIẾN. Nhờ vậy đoạn 348 và đoạn 634 — cùng văn bản
 `Mạng xã hội Facebook` — được gán trang 36 và trang 80, phân biệt đúng. Bảng ánh xạ đoạn→trang này
 là công cụ dùng lại được cho mọi phép đo thị giác sau.
+
+## 33. `PromoteStandaloneLine`: đắt, nhưng không vô dụng như tôi vừa nói
+
+### 33.1 Hai phát hiện phụ, cả hai đáng giữ
+
+**Pipeline TẤT ĐỊNH.** Hai lượt chạy y hệt cho trùng khít từng chữ số
+(`P 83.5 · R 96.4 · F1 89.5 · cấp 91.5 · cha 96.2`). Phép kiểm này đáng lẽ phải làm từ đầu: nó xác
+nhận mọi chênh lệch ±1 điểm trong handoff là hiệu ứng thật, không phải nhiễu chạy lại.
+
+**`--threshold` không làm cái tên nó hứa.** Số ứng viên Y HỆT ở 0,45 và 0,55 (129 = 68 + 61) nhưng
+kết quả vẫn đổi (P 83,5→84,0, R 96,4→95,5). Cơ chế nằm ở `PromoteStandaloneLine`:
+
+```csharp
+p.Role = ParagraphRole.HeadingCandidate;
+p.Score = options.CandidateThreshold;   // gán ĐIỂM = NGƯỠNG
+```
+
+Đường này nhận đoạn làm ứng viên KHÔNG qua cổng điểm, rồi gán điểm bằng đúng ngưỡng. Nâng ngưỡng
+chỉ đổi **con số tự tin hiển thị cho mô hình** trong document view (`sc="0.55"`) — cùng tập ứng viên,
+mô hình thấy số khác nên trả lời khác. Cái tên `--threshold` nói dối về việc nó làm.
+
+### 33.2 Cái giá của đường "dòng đứng riêng"
+
+| Khoá luận, một biến | Mốc | `--no-standalone-lines` |
+|---|--:|--:|
+| Ứng viên | 129 (68 style + 61 heuristic) | **111** (68 + 43) |
+| Precision | 83,5% | **92,8%** |
+| Recall | 96,4% | **93,6%** |
+| F1 | 89,5% | **93,2%** |
+| Đúng cấp | 91,5% | 94,2% |
+| Đúng cha | 96,2% | 99,0% |
+| Bench 10 tài liệu | 100% · 10/10 | **100% · 10/10** |
+
++9,3 precision đổi lấy −2,8 recall; F1 +3,7.
+
+### 33.3 Và một con số tôi vừa báo SAI
+
+Trước khi đo, tôi đếm trên dump và tuyên bố: *"75 ứng viên, 0 đề mục thật, độ chính xác 0%"*. Sai.
+
+Dump đó sinh bằng `dhx xml` mặc định — **khác cấu hình** với lượt eval đang bàn (không `--style-trust`,
+nên các tầng hạ cấp chạy khác). Tôi phân tích một tập và kết luận cho một tập khác. Cùng lớp lỗi với
+§27 (đo môi trường này, kết luận cho môi trường kia).
+
+Con số đúng, đọc từ chính hai lượt eval: đường này đóng góp **18 ứng viên**, trong đó **3 là đề mục
+thật** — độ chính xác **16,7%**, không phải 0%.
+
+Ba mục đó là `590`, `1170` (`Tiểu kết chương 2`) và `1222` (`Tiểu kết chương 3`): in đậm, căn giữa,
+**không đánh số, không style**. Không tầng nào khác trong pipeline bắt được chúng — đó chính là lý do
+đường này tồn tại.
+
+### 33.4 Quyết định
+
+**Giữ mặc định BẬT.** Hợp đồng của tầng ứng viên là chọn RỘNG, không đánh rơi; tắt đường này làm rơi
+3 đề mục thật và recall xuống 93,6%. Đổi 2,8 điểm recall lấy 9,3 điểm precision là một lựa chọn về
+SẢN PHẨM, không phải về kỹ thuật — và nó thuộc về người dùng, không thuộc về tôi.
+
+Cờ `--no-standalone-lines` tồn tại để cái giá đó đo được, cùng lý do §10.4/§25.2/§30.2 giữ các cờ
+đối chứng khác.
+
+Hướng đúng nếu muốn cả hai: giữ đường này nhưng **hạ cấp sau khi mô hình quyết**, bằng một luật tất
+định nhắm đúng lớp nhiễu nó sinh ra (`Nguồn: …` lặp lại, phương án trắc nghiệm, dòng mục lục gõ tay
+kèm số trang). Chưa cài.

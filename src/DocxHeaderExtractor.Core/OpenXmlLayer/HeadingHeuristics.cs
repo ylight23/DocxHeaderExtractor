@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.OpenXmlLayer;
@@ -342,6 +342,7 @@ public static class HeadingHeuristics
     /// </summary>
     private static void PromoteStandaloneLine(SlimParagraph p, ExtractionOptions options)
     {
+        if (!options.PromoteStandaloneLines) return;
         if (p.TableDepth > 0) return;
         var text = p.Text.Trim();
         if (text.Length is < 3 or > 80) return;

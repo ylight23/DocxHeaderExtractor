@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Core.Llm;
+﻿using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Output;
 using DocxHeaderExtractor.Core.Pipeline;
 
@@ -136,6 +136,7 @@ public sealed class CommandLineOptions
                 case "--page-headers": extraction.IncludePageHeadersFooters = true; break;
                 case "--no-context": extraction.IncludeFollowingContext = false; break;
                 case "--structural-only": extraction.UseLexicalRules = false; break;
+                case "--no-standalone-lines": extraction.PromoteStandaloneLines = false; break;
                 case "--style-trust": extraction.UseStyleTrust = true; break;
 
                 case "-q" or "--quiet": o.Quiet = true; break;
