@@ -1,4 +1,4 @@
-using System.Text.Encodings.Web;
+﻿using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Globalization;
 using DocxHeaderExtractor.Core.Models;
@@ -90,7 +90,8 @@ public sealed class PrecisionCalibrationProfile
         $"temperature={o.Llama.Temperature.ToString("R", CultureInfo.InvariantCulture)}",
         $"seed={o.Llama.Seed}",
         $"gpuLayers={o.Llama.GpuLayerCount}",
-        $"threshold={o.Extraction.CandidateThreshold.ToString("R", CultureInfo.InvariantCulture)}");
+        $"threshold={o.Extraction.CandidateThreshold.ToString("R", CultureInfo.InvariantCulture)}",
+        $"standaloneLines={o.Extraction.PromoteStandaloneLines}");
 
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
