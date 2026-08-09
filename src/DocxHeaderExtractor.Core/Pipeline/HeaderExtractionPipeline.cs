@@ -457,10 +457,12 @@ public sealed class HeaderExtractionPipeline : IDisposable
         Log($"Mô hình sẵn sàng. Ngữ cảnh {llm.ContextSize} token, {llm.RuntimeDescription}.");
         AdoptBackendContextBudget(llm);
 
-        if (llm is LlamaHeaderExtractor && _options.Llama.ReusePromptPrefix)
-            Log(llm.SharedPrefixTokens > 0
-                ? $"Tái dùng prefill: {llm.SharedPrefixTokens} token phần chung nạp một lần cho mọi khối."
-                : "Không cắt được prompt thành phần chung — quay về nạp lại từng khối.");
+        if (llm is LlamaHeaderExtractor local2 && _options.Llama.ReusePromptPrefix)
+            Log(local2.PrefixReuseBlockedReason is { } blocked
+                ? $"Tắt tái dùng prefill: {blocked}."
+                : llm.SharedPrefixTokens > 0
+                    ? $"Tái dùng prefill: {llm.SharedPrefixTokens} token phần chung nạp một lần cho mọi khối."
+                    : "Không cắt được prompt thành phần chung — quay về nạp lại từng khối.");
 
         Func<IReadOnlyList<(int Index, int Level)>, IReadOnlyList<int>, string>? rollingOutline = _options.RollingOutline
             ? (skeleton, asked) => BuildRollingOutline(
