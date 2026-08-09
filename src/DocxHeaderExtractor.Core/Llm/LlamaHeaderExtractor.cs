@@ -162,14 +162,59 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
         var extractor = new LlamaHeaderExtractor(weights, modelParams, options, hasTemplate);
 
         if (options.ReusePromptPrefix)
-            extractor._prefixRunner = await PrefixCachedRunner.CreateAsync(
-                weights, modelParams, extractor.BuildPrompt, ct);
+        {
+            if (RecurrentStateReason(weights.Metadata) is { } reason)
+                extractor.PrefixReuseBlockedReason = reason;
+            else
+                extractor._prefixRunner = await PrefixCachedRunner.CreateAsync(
+                    weights, modelParams, extractor.BuildPrompt, ct);
+        }
 
         return extractor;
     }
 
     /// <summary>Số token của phần prompt dùng chung, 0 nếu không bật tái dùng.</summary>
     public int SharedPrefixTokens => _prefixRunner?.SharedPrefixTokens ?? 0;
+
+    /// <summary>
+    /// Vì sao tái dùng prefill bị TỪ CHỐI dù người dùng bật; <c>null</c> nếu không từ chối.
+    /// Tách khỏi "cắt không được phần chung" vì hai ca cần hai câu trả lời khác nhau.
+    /// </summary>
+    public string? PrefixReuseBlockedReason { get; private set; }
+
+    /// <summary>
+    /// Mô hình có lớp mang TRẠNG THÁI HỒI QUY không — nếu có thì tái dùng prefill là sai về bản chất,
+    /// không phải chậm hay kém tối ưu.
+    /// <para>
+    /// Tái dùng prefill giữ lại KV của phần prompt chung rồi nối phần riêng của từng khối. Với
+    /// attention thuần thì đúng: KV của một token chỉ phụ thuộc các token trước nó. Với lớp
+    /// state-space (SSM / linear attention), trạng thái được CUỘN theo toàn bộ chuỗi và không tách
+    /// ra thành từng token được, nên "phần chung" không tái dùng được.
+    /// </para>
+    /// <para>
+    /// ĐO ĐƯỢC (§35): trên khoá luận thật với cấu hình mặc định của Web (ctx 8192, 5000 token/khối,
+    /// 30 khối), Qwen3.5-9B + tái dùng prefill chết ở khối ĐẦU TIÊN với
+    /// <c>llama_decode failed: 'NoKvSlot'</c> — 0/30 khối. Tắt tái dùng, cùng mọi tham số khác:
+    /// 30/30 khối chạy hết. Đường CLI không bao giờ chạm phải vì mọi phép đo đều truyền
+    /// <c>--no-reuse-prefix</c>; đường Web thì bật mặc định, nên người dùng lãnh trọn.
+    /// </para>
+    /// <para>
+    /// Nhận biết bằng METADATA của GGUF chứ không bằng tên file — tên file là anti-pattern đã bị
+    /// <c>ChunkingOptions</c> phê. Khoá <c>{arch}.ssm.*</c> có ở Qwen3.5 (<c>qwen35.ssm.state_size</c>…)
+    /// và KHÔNG có ở Qwen2.5, vốn tái dùng prefill bình thường. Luật này vì thế phủ luôn Mamba,
+    /// Jamba, Falcon-H1, RWKV và mọi kiến trúc lai sau này, không chỉ riêng <c>qwen35</c>.
+    /// </para>
+    /// </summary>
+    internal static string? RecurrentStateReason(IReadOnlyDictionary<string, string> metadata)
+    {
+        var marker = metadata.Keys.FirstOrDefault(
+            k => k.Contains(".ssm.", StringComparison.OrdinalIgnoreCase));
+        if (marker is null) return null;
+
+        metadata.TryGetValue("general.architecture", out var arch);
+        return $"mô hình {arch ?? "này"} có lớp trạng thái hồi quy ({marker}) — " +
+               "phần prompt chung không tách ra tái dùng được";
+    }
 
     /// <summary>
     /// llama.cpp chạy chậm đi khi số luồng vượt số nhân vật lý (siêu phân luồng làm tranh chấp

@@ -2402,3 +2402,48 @@ Cách duy nhất còn lại là một mẫu ĐẶC NGỮ (`Từ: DanhTừRiêng`
 `CaptionRx`). Đáng nói: `CaptionRx` **đã chứa** từ khoá tiếng Việt (`hình`, `ảnh`, `bảng`,
 `biểu đồ`…), nên đó là nới một luật chú thích đã có chứ không phải lập danh sách từ khoá mới để nhận
 heading. Nhưng ranh giới ấy là quyết định của người dùng, không phải của tôi — chưa làm.
+
+## 35. Lỗi UI `NoKvSlot`: tái dùng prefill sai bản chất với mô hình có trạng thái hồi quy
+
+Người dùng chạy qua giao diện Web và nhận `llama.cpp decode thất bại: NoKvSlot`. Tái hiện được từ
+CLI bằng đúng cấu hình UI (ctx 8192, 5000 token/khối, 30 khối, `-ngl 20`), rồi cô lập một biến:
+
+| Cấu hình UI | Kết quả |
+|---|---|
+| **Có** tái dùng prefill | **0/30 khối** — `NoKvSlot` ngay khối đầu |
+| **Không** tái dùng prefill | **30/30 khối chạy hết** |
+
+### 35.1 Vì sao
+
+Tái dùng prefill giữ KV của phần prompt chung rồi nối phần riêng từng khối. Với attention thuần thì
+đúng — KV của một token chỉ phụ thuộc các token trước nó. Với lớp **state-space (SSM / linear
+attention)**, trạng thái được cuộn theo toàn bộ chuỗi và không tách ra theo token, nên "phần chung"
+không tái dùng được. Đây là sai về BẢN CHẤT, không phải kém tối ưu.
+
+Handoff đã ghi Qwen3.5 dùng Gated DeltaNet, nhưng **đường CLI không bao giờ chạm phải** vì mọi phép
+đo đều truyền `--no-reuse-prefix`. Đường Web bật mặc định, nên người dùng lãnh trọn. Một cờ tôi luôn
+bật "cho sạch phép đo" đã che mất một lỗi sản phẩm suốt nhiều phiên.
+
+### 35.2 Nhận biết bằng metadata, không bằng tên file
+
+| | arch | khoá SSM |
+|---|---|---|
+| Qwen3.5-9B (hỏng) | `qwen35` | `qwen35.ssm.state_size`, `.conv_kernel`, `.group_count`… |
+| Qwen2.5-7B (chạy được) | `qwen2` | **không có** |
+
+Luật: có bất kỳ khoá `{arch}.ssm.*` nào thì từ chối tái dùng prefill và **nói ra lý do trong log**.
+Bám vào kiến trúc đọc từ GGUF chứ không vào tên file — tên file là anti-pattern mà `ChunkingOptions`
+đã phê. Nhờ vậy luật phủ luôn Mamba, Jamba, Falcon-H1, RWKV và mọi kiến trúc lai sau này.
+
+Sau khi vá, đúng cấu hình UI đó:
+```
+Tắt tái dùng prefill: mô hình qwen35 có lớp trạng thái hồi quy (qwen35.ssm.inner_size)
+  — phần prompt chung không tách ra tái dùng được.
+khối 30/30 ✓
+```
+
+### 35.3 Bài học phương pháp
+
+Cờ dùng để LÀM SẠCH phép đo (`--no-reuse-prefix`) đã vô tình trở thành lớp che một lỗi chỉ xuất hiện
+ở đường mặc định. Phép đo sạch và đường người dùng đi là hai thứ khác nhau; ít nhất một lượt chạy
+phải đi đúng đường mặc định.
