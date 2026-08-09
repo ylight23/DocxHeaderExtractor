@@ -2507,3 +2507,72 @@ lỗi phán đoán của mô hình.
   lệch giữa hai dump và giúp bắt lỗi ở 36.1.
 * Cả hai cờ — **giữ, mặc định tắt**, cùng lý do §10.4/§25.2/§30.2/§33: số không cũng là số đo, và
   không ghi lại thì người sau sẽ thử lại đúng cái đã đo là vô ích.
+
+## 37. Người dùng gán nhãn thật, và nó phơi ra một phép đảo trong thang confidence
+
+### 37.1 Nhãn của người — TODO 4 bắt đầu đóng
+
+Người dùng duyệt kết quả trên UI và chỉ ra 5 mục mà **đáp án đồng thuận (Sonnet+Opus+Haiku) xếp là
+đề mục cấp 3 nhưng thực tế không phải**: đoạn 1447, 1453, 1460, 1467, 1473 — tên người được phỏng
+vấn bên trong `PHỤ LỤC 3: CÁC BIÊN BẢN PHỎNG VẤN SÂU`.
+
+| Khoá luận | Đáp án model (110 mục) | Sau chỉnh của người (105) |
+|---|--:|--:|
+| Precision | 83,5% | **79,5%** |
+| Recall | 96,4% | 96,2% |
+| F1 | 89,5% | **87,1%** |
+| Đúng cấp | 91,5% | **96,0%** |
+| Đúng cha | 96,2% | 96,0% |
+
+Nhãn người làm precision xấu đi 4 điểm và đúng cấp tốt lên 4,5 — vì 5 mục đó vừa được tính "bắt
+đúng" vừa bị tính "sai cấp". Đúng loại sai lệch mà đáp án do model dựng không tự thấy được.
+
+Người dùng cũng XÁC NHẬN đáp án đúng ở các mục khác họ nêu (1031–1033 pixel, 634/657/665
+`Mạng xã hội …`, 1296, 1315) — chúng vốn đã nằm ngoài đáp án.
+
+### 37.2 Và phơi ra một lỗi lớn hơn: thang confidence gán NGƯỢC
+
+Log của mọi lượt chạy: `Cổng precision 93%: 16 tự nhận, 111 cần duyệt (evidence chưa calibration)`.
+Nghĩa là 111/127 mục bị bắt duyệt tay — người dùng thấy gần như mọi thứ đều "chưa đạt cổng", kể cả
+`Lý do chọn đề tài`. Nhưng chấm lại theo đúng nhãn:
+
+| `evidence.status` | số mục | precision THẬT |
+|---|--:|--:|
+| `verified_by_multiple_checks` (5/5) | 86 | **95,3%** |
+| `supporting_checks` (2/5) | 36 | 52,8% |
+| *(không có evidence)* | 5 | **0,0%** |
+
+| **confidence hiển thị** | số mục | precision THẬT |
+|---|--:|--:|
+| **0,93 — TỰ NHẬN, qua cổng** | 21 | **47,6%** |
+| 0,85 — "chưa đạt cổng" | 64 | **100,0%** |
+| 0,80 — "chưa đạt cổng" | 42 | 64,3% |
+
+**Cổng đang tự nhận đúng nhóm tệ nhất và bắt duyệt đúng nhóm hoàn hảo.**
+
+Nguyên nhân, trong `PrecisionAcceptanceGate.EvidenceScore`:
+
+```csharp
+if (Source == Model && CriticConfirmed) return independentStructure ? 0.95 : 0.93;
+if (Source == Style && CriticConfirmed) return 0.93;          // không xét evidence
+if (Source is Model or Style)           return Math.Min(Confidence, 0.85);
+```
+
+`CriticConfirmed` được đặt trên MỌI bằng chứng cấu trúc. Nhưng lượt phản biện chỉ chạy trên những
+khối mà **chính pipeline đã đánh dấu là không đáng tin** (bịa chỉ số, hoặc mọi mục cùng một cấp).
+Nên "đã qua phản biện" thực chất là dấu hiệu *đến từ vùng đáng ngờ* — và nó đang được thưởng điểm
+cao nhất, trong khi mục qua đủ 5/5 kiểm tra bị chặn trần 0,85, dưới cổng 93%.
+
+Thành phần nhóm 0,93: 16 mục `supporting_checks` (2/5) + **5 mục `Style` KHÔNG có evidence nào** —
+đúng 5 biên bản mà người dùng vừa loại. Nhóm không-evidence ấy đúng **0/5**.
+
+### 37.3 Việc phải làm
+
+1. Thang confidence phải do **bằng chứng** dẫn dắt, không do `CriticConfirmed`. `ConfidenceForChecks`
+   (5/5→0,95, 4/5→0,85, 3/5→0,80) đã đúng chiều và đã tồn tại — nhưng chỉ áp cho nguồn `Structure`.
+2. Mục **không có evidence** không được nhận điểm cao nhất; 0/5 đúng là bằng chứng đủ mạnh.
+3. Khi chưa có calibration profile, UI không nên trình bày một CỔNG như một phán quyết. Nói
+   "chưa calibration" và xếp theo `evidence.status` — thứ đã đo được là tách 95,3% với 52,8%.
+
+Chưa cài. Cả ba đều đổi hành vi tự-nhận nên phải đo từng cái, và số nền phải là đáp án đã có nhãn
+người (105 mục), không phải đáp án đồng thuận model.
