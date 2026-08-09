@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.Models;
+﻿namespace DocxHeaderExtractor.Core.Models;
 
 /// <summary>
 /// Vai trò của đoạn văn sau khi lọc bằng OpenXML (trước khi hỏi LLM).
@@ -115,6 +115,21 @@ public sealed class SlimParagraph
     public string? Alignment { get; init; }
 
     public int? NumberingId { get; init; }
+
+    /// <summary>
+    /// Đoạn nằm bên trong một <c>w:sdt</c> (content control) — khối mà Word dựng cho mục lục tự
+    /// động, form, và các vùng nội dung có cấu trúc.
+    /// <para>
+    /// ĐO ĐƯỢC (§36) trên khoá luận thật: 21 ứng viên nằm trong <c>w:sdt</c> và <b>KHÔNG một mục nào
+    /// là đề mục thật</b>. Chúng là dòng mục lục kèm số trang (<c>MỞ ĐẦU 1</c>, <c>KẾT LUẬN 154</c>)
+    /// — tức chính TÊN của đề mục khác, nên mọi luật dựa vào hình thức đều nhận nhầm.
+    /// </para>
+    /// <para>
+    /// Đây là dấu hiệu do CHÍNH WORD đặt, không phải suy đoán về hình thức và không phụ thuộc ngôn
+    /// ngữ. Ghi lại vô điều kiện; việc dùng nó để đổi hành vi thì nằm sau cờ.
+    /// </para>
+    /// </summary>
+    public bool InContentControl { get; init; }
     public int? NumberingLevel { get; init; }
 
     /// <summary>Nhãn numbering Word đã dựng từ numbering.xml, ví dụ "2.3." hoặc "IV.".</summary>

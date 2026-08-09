@@ -137,6 +137,8 @@ public sealed class CommandLineOptions
                 case "--no-context": extraction.IncludeFollowingContext = false; break;
                 case "--structural-only": extraction.UseLexicalRules = false; break;
                 case "--no-standalone-lines": extraction.PromoteStandaloneLines = false; break;
+                case "--skip-content-controls": extraction.SkipContentControls = true; break;
+                case "--bare-labels": extraction.AllowBareLabelledNumbers = true; break;
                 case "--style-trust": extraction.UseStyleTrust = true; break;
 
                 case "-q" or "--quiet": o.Quiet = true; break;

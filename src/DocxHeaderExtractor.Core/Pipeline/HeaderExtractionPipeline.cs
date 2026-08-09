@@ -325,7 +325,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             var auditConflicts = new HashSet<int>();
             if (_options.AuditNumbering)
             {
-                var warnings = NumberingAudit.Run(headings, slim);
+                var warnings = NumberingAudit.Run(headings, slim, _options.Extraction);
                 auditConflicts.UnionWith(warnings.SelectMany(w => w.Indexes));
                 foreach (var w in warnings) Log($"  ⚠ {w.Message}");
                 if (warnings.Count > 0)
@@ -1128,11 +1128,11 @@ public sealed class HeaderExtractionPipeline : IDisposable
     /// đứng đầu đoạn (kể cả gõ tay — "3.1", "II.", "a)"). Không tính cỡ chữ, in đậm, căn giữa:
     /// đó là hình thức, và bìa văn bản nào cũng có.
     /// </summary>
-    private static bool HasStructuralEvidence(SlimParagraph p) =>
+    private bool HasStructuralEvidence(SlimParagraph p) =>
         p.NumberingStyleLevel is not null ||
         p.HasBuiltInHeadingStyle ||
         p.PrecedesTableOfContents ||
-        NumberingAudit.ParseParagraph(p, p.Text) is not null;
+        NumberingAudit.ParseParagraph(p, p.Text, _options.Extraction) is not null;
 
     /// <summary>
     /// Lấy ngân sách khối từ context mà chính backend khai báo, thay cho hằng số đoán sẵn.

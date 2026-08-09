@@ -1,5 +1,6 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -124,13 +125,15 @@ public static class NumberingAudit
     /// </param>
     public static IReadOnlyList<AuditWarning> Run(
         IReadOnlyList<HeadingRecord> headings,
-        SlimDocument? document = null)
+        SlimDocument? document = null,
+        ExtractionOptions? options = null)
     {
         if (headings.Count == 0) return [];
 
+        options ??= new ExtractionOptions();
         var ordered = headings.OrderBy(h => h.Index).ToList();
         var tokens = ordered
-            .Select(h => (Heading: h, Token: ParseParagraph(document?.ByIndex(h.Index), h.Text)))
+            .Select(h => (Heading: h, Token: ParseParagraph(document?.ByIndex(h.Index), h.Text, options)))
             .Where(x => x.Token is not null)
             .Select(x => new AuditItem(x.Heading, x.Token!.Value,
                 ScopeKey(ordered, ordered.IndexOf(x.Heading), document)))
@@ -325,6 +328,42 @@ public static class NumberingAudit
     /// </summary>
     public static NumberToken? ParseParagraph(SlimParagraph? paragraph, string fallbackText) =>
         Parse(TextWithNumberLabel(paragraph, fallbackText));
+
+    /// <summary>
+    /// Như <see cref="ParseParagraph"/>, nhưng đọc thêm được dạng <c>NHÃN + SỐ + HẾT</c>
+    /// (<c>PHỤ LỤC 1</c>) khi <see cref="ExtractionOptions.AllowBareLabelledNumbers"/> bật.
+    /// <para>
+    /// Chỉ áp cho đoạn NGOÀI <c>w:sdt</c>. Trong content control, cùng hình dạng ấy là dòng mục lục
+    /// kèm số TRANG (<c>MỞ ĐẦU 1</c>, <c>KẾT LUẬN 154</c>) — đọc nó thành chuỗi đánh số thì hậu kiểm
+    /// sẽ đi báo thiếu những mục không tồn tại. Đo được: trong sdt 0/8 là đề mục, ngoài sdt 5/5 là
+    /// đề mục (§36).
+    /// </para>
+    /// </summary>
+    public static NumberToken? ParseParagraph(
+        SlimParagraph? paragraph, string fallbackText, ExtractionOptions options)
+    {
+        if (ParseParagraph(paragraph, fallbackText) is { } token) return token;
+        if (!options.AllowBareLabelledNumbers) return null;
+        if (paragraph is null or { InContentControl: true }) return null;
+
+        var text = TextWithNumberLabel(paragraph, fallbackText);
+        if (BareLabelledRx.Match(text) is not { Success: true } m) return null;
+        var value = int.TryParse(m.Groups[2].Value, out var arabic)
+            ? arabic
+            : RomanToInt(m.Groups[2].Value);
+        return value is { } v
+            ? new NumberToken(NumberKind.Labelled, 1, v, Label: m.Groups[1].Value.ToUpperInvariant())
+            : null;
+    }
+
+    /// <summary>
+    /// <c>PHỤ LỤC 1</c>, <c>Tiểu kết chương 2</c> — nhãn rồi số rồi HẾT. Khác
+    /// <see cref="LabelledRx"/> ở chỗ cấm phần đuôi thay vì đòi nó: chú thích (<c>Bảng 1.2 Đối
+    /// chiếu…</c>) luôn có đuôi, nên hai mẫu không giẫm lên nhau.
+    /// </summary>
+    private static readonly Regex BareLabelledRx = new(
+        @"^\s*(\p{L}[\p{L}\s]{1,24}?)\s+(\d{1,3}|[IVXLCDM]{1,7})\s*[\.\):\-–]?\s*$",
+        RegexOptions.Compiled);
 
     /// <summary>Chuỗi dùng để đọc đánh số: nhãn do OOXML sinh (nếu có) ghép trước text hiển thị.</summary>
     public static string TextWithNumberLabel(SlimParagraph? paragraph, string fallbackText) =>

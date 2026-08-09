@@ -150,6 +150,16 @@ public static class HeadingHeuristics
             return;
         }
 
+        // Khối w:sdt của Word: mục lục tự động, form, vùng nội dung có cấu trúc. Xem
+        // ExtractionOptions.SkipContentControls — 21/129 ứng viên nằm ở đây và không mục nào là
+        // đề mục thật. Chỉ HẠ vai trò, không xoá đoạn: nó vẫn là ngữ cảnh cho các đoạn khác.
+        if (options.SkipContentControls && p.InContentControl)
+        {
+            p.Role = ParagraphRole.Normal;
+            p.Score = 0;
+            return;
+        }
+
         // 0) Loại thẳng hai họ nhiễu lớn nhất trong luận văn/báo cáo: dòng mục lục
         //    (tín hiệu cấu trúc: hyperlink tới neo _Toc) và chú thích hình/bảng (tín hiệu từ ngữ).
         // Chú thích bảng nhận diện bằng CẤU TRÚC, không bằng từ vựng: nhãn "từ + số nhiều phần"

@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using System.Text.RegularExpressions;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
@@ -144,6 +144,7 @@ public sealed class DocxSlimExtractor
         {
             Index = index,
             StableId = walked.StableId,
+            InContentControl = p.Ancestors<SdtElement>().Any(),
             Text = text,
             TextSpans = textSpans,
             LineBreakOffsets = built.LineBreaks,
