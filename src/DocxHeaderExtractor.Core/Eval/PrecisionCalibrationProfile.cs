@@ -93,7 +93,8 @@ public sealed class PrecisionCalibrationProfile
         $"threshold={o.Extraction.CandidateThreshold.ToString("R", CultureInfo.InvariantCulture)}",
         $"standaloneLines={o.Extraction.PromoteStandaloneLines}",
         $"skipContentControls={o.Extraction.SkipContentControls}",
-        $"bareLabels={o.Extraction.AllowBareLabelledNumbers}");
+        $"bareLabels={o.Extraction.AllowBareLabelledNumbers}",
+        $"repeatedLabels={o.Extraction.FlagRepeatedLabels}");
 
     private static readonly JsonSerializerOptions JsonOptions = new()
     {

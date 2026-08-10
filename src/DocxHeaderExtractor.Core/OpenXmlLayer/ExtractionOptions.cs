@@ -59,6 +59,14 @@ public sealed class ExtractionOptions
     /// </summary>
     public bool AllowBareLabelledNumbers { get; set; }
 
+    /// <summary>
+    /// Đánh dấu nhãn lặp (<c>Nguồn: Facebook</c>, <c>Nhận xét:</c>) là ô cấu trúc, không phải đề mục
+    /// điều hướng — spec §6.3c. Xem <see cref="Pipeline.RepeatedLabelAudit"/>.
+    /// <para>MẶC ĐỊNH TẮT: spec nói rõ đây là quyết định cấu hình MỘT LẦN cho cả tập, tuỳ mục đích
+    /// outline (điều hướng hay tái dựng cấu trúc đầy đủ), không phải phán đoán từng ca.</para>
+    /// </summary>
+    public bool FlagRepeatedLabels { get; set; }
+
     /// <summary>Lệnh `xml --mode-only`: chỉ in chế độ tài liệu đo được, không dựng gì thêm.</summary>
     public bool ReportModeOnly { get; set; }
 

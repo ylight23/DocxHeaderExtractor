@@ -2671,3 +2671,60 @@ Khi `confidenceBasis == evidence_not_calibrated`:
 
 Cái giá của việc nói nhầm đo được ở chính phiên này: người dùng thấy 111/127 mục "chưa đạt cổng" và
 không còn phân biệt được đâu là chỗ thật sự cần xem.
+
+## 39. Refactor bước 2 — nhãn lặp (spec §6.3c): số không, có lý do đo được
+
+§34.3 đã đo luật "lặp ≥ 3 lần thì không phải heading" và nó hỏng: loại 2 dương tính giả, mất **4 đề
+mục thật**. Spec §6.3c thêm hai điều kiện — không mang đánh số, và không có anh em liền kề cùng cấp
+— nhắm đúng chỗ luật cũ chết. Cài thành `RepeatedLabelAudit`, cờ `--flag-repeated-labels`, mặc định
+tắt (spec: đây là quyết định cấu hình một lần cho cả tập, tuỳ outline dùng để điều hướng hay tái
+dựng cấu trúc).
+
+### 39.1 Lượt đo đầu ra số không — và đó là lỗi ĐO, không phải lỗi luật
+
+Tôi đếm số lần lặp trên **tập heading ĐÃ NHẬN**. Nhưng `Nguồn: Facebook` lặp 13 lần trong tài liệu
+mà **không lần nào lọt vào kết quả** — mô hình đã bác sạch. Nhóm không bao giờ đủ ngưỡng.
+
+Nhãn cấu trúc là thuộc tính của **TÀI LIỆU**; việc mô hình đã chặn phần lớn không làm nó bớt là nhãn.
+Đếm sai tầng thì một luật đúng vẫn cho số không. Đã sửa sang đếm trên toàn tài liệu.
+
+Lần thứ ba trong dự án một phép đo "không đổi gì" hoá ra là lỗi đo chứ không phải lỗi ý tưởng —
+cùng họ §27 (thiếu `-ngl`) và §36 (dump cũ). Ba lần đều lộ ra khi hỏi *"vì sao KHÔNG đổi"* thay vì
+ghi nhận số không rồi đi tiếp.
+
+### 39.2 Sau khi sửa vẫn số không — lần này là kết quả thật
+
+| Khoá luận, đáp án nhãn người (105 mục) | Mốc | `--flag-repeated-labels` |
+|---|--:|--:|
+| P / R / F1 | 79,5 / 96,2 / 87,1 | **không đổi** |
+| Đúng cấp / cha | 96,0 / 96,0 | **không đổi** |
+
+Truy từng mục:
+
+| đoạn | lặp trong tài liệu | vì sao không bị đánh dấu |
+|---|--:|---|
+| `Nguồn: Tik Tok` (1063) | **1** | 13 lần lặp là `Nguồn: Facebook`, khác chuỗi |
+| `Nguyễn Hà Phương` (114) | 3 | có hàng xóm cùng cấp 1 ⇒ điều kiện 3 bảo vệ |
+| `Về ngôn ngữ` | 3 | đúng ý đồ — đề mục thật, được bảo vệ |
+
+Hai giới hạn đo được của luật spec:
+
+1. **So khớp theo chuỗi CHÍNH XÁC quá hẹp.** `Nguồn: Facebook` / `Youtube` / `Tik Tok` là cùng một
+   lớp nhãn nhưng ba chuỗi khác nhau. Muốn bắt cần so theo MẪU (`Nguồn: <tên riêng>`), mà đó lại là
+   luật đặc ngữ — thứ §34.4 đã ghi là quyết định của người dùng, không phải của tôi.
+2. **Điều kiện "không có anh em liền kề cùng cấp" quá lỏng ở cấp 1**, nơi mọi mục front/back matter
+   đều cùng cấp nên ai cũng có hàng xóm. Nó bảo vệ luôn cả `Nguyễn Hà Phương`.
+
+Giữ luật, mặc định tắt, cùng lý do §10.4/§25.2/§30.2/§33/§36: số không cũng là số đo.
+
+### 39.3 Bốn luật lớn của phiên Claude gần đây đều ĐÃ CÓ từ trước
+
+| Đề nghị của phiên đó | Trạng thái |
+|---|---|
+| Bỏ R1 (style → auto_assign 1.0), style sai 51% | đã có — `StyleTrust` §17, `--style-auto-assign` mặc định tắt §10.4 |
+| R0 loại caption `Bảng/Hình` bất kể style | đã có — `CaptionRx` |
+| R7 TOC làm ground truth ưu tiên cao nhất | đã có — `TableOfContentsAnchor` §22 |
+| Bỏ suy level từ style | đã có — `StyleNestingDepths` đọc thứ tự lồng nhau, không đọc con số §28 |
+
+Còn thiếu thật: `is_doubled` (§3.6), kiểm chéo hình dạng anh em, `vn-legal` thành chế độ riêng,
+`toc-anchored`, `custom-style`, `w:instrText` (§3.2.3), phân loại bảng ba nhóm (§5.5).

@@ -856,6 +856,14 @@ public sealed class HeaderExtractionPipeline : IDisposable
         // trong thứ tự quyền lực §1, tức phải nói lời cuối.
         var tocPinned = TableOfContentsAnchor.Apply(result, slim);
         if (tocPinned > 0) Log($"Mục lục của tài liệu pin lại {tocPinned} cấp.");
+
+        // Chạy SAU khi cấp đã chốt: điều kiện "có anh em liền kề cùng cấp" chỉ đúng khi cấp đã đúng.
+        if (_options.Extraction.FlagRepeatedLabels)
+        {
+            var labels = RepeatedLabelAudit.Apply(result, slim);
+            if (labels > 0)
+                Log($"Nhãn lặp: {labels} mục là ô cấu trúc lặp, không phải đề mục điều hướng.");
+        }
         if (structuralFixes > 0) Log($"Hậu xử lý hierarchy: sửa {structuralFixes} cấp theo quan hệ numbering cha–con/anh–em.");
         return result;
     }
