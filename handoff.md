@@ -8,8 +8,18 @@ những chỗ suýt kết luận sai. Viết cho người tiếp nhận, nên ph
 
 ## 0. Trạng thái hiện tại — đọc mục này trước
 
-**Cập nhật 2026-08-10.** Số nền là `key-human.key` (105 mục, **có nhãn người** — xem §37), không còn
+**Cập nhật 2026-08-11.** Số nền là `key-human.key` (105 mục, **có nhãn người** — xem §37), không còn
 là đáp án đồng thuận model.
+
+> **Ba tài liệu có đáp án người kiểm đạt 100%, và đó vẫn là toàn bộ nền tảng thực nghiệm.**
+> §45–§49 chạy trên corpus 95 file `todo10_8` cho nhiều con số, nhưng corpus đó **không có đáp án**.
+> Mọi bảng ở §45.3, §47.2, §48.1 chỉ nói *luật nào kích hoạt*, không nói *gán đúng hay sai*.
+> Đọc §45.4, §46.3 và §48.4 trước khi trích bất kỳ con số nào trong đó.
+>
+> Ba việc mới đã cài, đều **mặc định tắt hoặc chỉ chẩn đoán**:
+> `--split-merged` (§45.2, 95 file 3.712 → 6.357 mục), ba bảng chữ cái tiếng Việt cho `NumberingAudit`
+> (§45.1, hai đột biến bị test giết), và `mode` lộ ra thuộc tính `<doc>` (§47.2).
+> 384 test xanh, bench không đổi.
 
 | Khoá luận thật (1.498 đoạn) | |
 |---|--:|
