@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Cli;
 using DocxHeaderExtractor.AgentHarness;
@@ -255,6 +255,12 @@ static async Task<int> RunDumpXmlAsync(CommandLineOptions o, CancellationToken c
                 Console.Error.WriteLine(
                     $"{slim.FileName}: {slim.Paragraphs.Count} đoạn, {candidates.Count} ứng viên, " +
                     $"{candidates.Count(p => p.Role == ParagraphRole.StyledHeading)} theo style");
+            }
+
+            if (o.Pipeline.Extraction.ReportModeOnly)
+            {
+                Console.WriteLine($"{Path.GetFileName(file)}	{slim.Mode?.Mode}	{slim.Mode?.Describe()}");
+                continue;
             }
 
             if (o.DumpChunksDir is { } chunkDir)
