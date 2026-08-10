@@ -2968,3 +2968,85 @@ một dòng regex — và nó chưa được đo trên tài liệu nào.
 
 Ca 9, 10, 11 chưa gặp trong bất kỳ tài liệu nào đang có đáp án. Theo đúng kỷ luật §10.4, cài luật
 cho ca chưa có dữ liệu là thêm mã không kiểm chứng được — điều kiện mở lại đã ghi ở TODO mục 6.
+
+## §45. Chạy 95 file corpus todo10_8 — hai luật mới, một lỗ hổng kiến trúc
+
+### 45.1 Bảng chữ cái tiếng Việt (Nghị định 30/2020)
+
+`NumberingAudit` xếp thứ tự chữ cái bằng `c - 'A' + 1` và regex `[A-Za-z]`. Hai lỗi:
+`đ)` **không khớp regex nên vô hình hoàn toàn**; và kể cả khớp thì `d) → đ)` bị tính là nhảy.
+
+Không có một bảng chữ cái cố định nào đúng cho cả hai phía: chọn Latin thì mọi văn bản hành
+chính có `đ)` báo đứt quãng sai; chọn tiếng Việt thì mọi tài liệu Latin có `d) e)` báo "thiếu đ)".
+Quyết định phải nhìn **cả dãy** — chấm theo ba bảng ứng viên (Latin 26, tiếng Việt 23 quan sát
+được, tiếng Việt 29 đầy đủ), lấy bảng có tổng độ hụt nhỏ nhất, hoà thì ưu tiên Latin.
+
+Giá trị token lưu theo **thứ tự hợp nhất** `aăâbcdđeêfghijklmnoôơpqrstuưvwxyz`, đơn điệu tương
+thích với cả ba bảng, nên việc cắt dãy ở `CheckSequenceGaps` đúng cho mọi quy ước.
+
+Mutation test: bỏ hai bảng tiếng Việt → 1 test đỏ; bỏ bảng Latin → 1 test đỏ. Cả hai đột biến
+đều bị giết.
+
+### 45.2 Lỗ hổng kiến trúc: heading nằm LỌT GIỮA paragraph
+
+Đây là phát hiện lớn nhất, và nó **không phải thiếu regex**.
+
+| | |
+|---|--:|
+| file là bản chuyển PDF→DOCX | **83/95** |
+| mục mà cả đoạn là heading | 2.060 |
+| mục phải cắt bên trong đoạn | **4.590 (67%)** |
+
+Toàn bộ pipeline coi paragraph là đơn vị nguyên tử. Với 67% mục của corpus này, giả định đó sai.
+`001_Bo_luat_Dan_su` ra **đúng 1 mục trên 151 đoạn**, và mục đó là *tên file PDF*.
+
+`ParagraphHeadingSplitter` (cờ `--split-merged`, **mặc định tắt**) cắt theo dạng "nhãn + số"
+tổng quát — cùng hình dạng `LabelledRx`, **không dùng danh sách từ khoá**, nên chạy được cả
+`Article 4.` tiếng Anh. Chỉ số paragraph **không đổi**: lát cắt cùng trỏ về một `Index`, vì tách
+đoạn thật sẽ làm dịch chỉ số và hỏng mọi đáp án trong `keys/`.
+
+**Chi tiết quyết định nằm ở dữ liệu, không ở luật.** Bản chuyển PDF xoá xuống dòng mà không chèn
+dấu cách: `…Bộ luật dân sự1. Bộ luật này…`. Lookbehind `(?<![\p{L}\d])` làm mọi mốc kiểu đó
+trượt hết. Nới thành `(?<![\p{Lu}\d])` — cho phép chữ thường đứng trước (dấu hiệu chỗ dán),
+vẫn chặn chữ hoa và chữ số. Thứ chặn tham chiếu chéo là **dấu ngắt bắt buộc sau số**:
+`Điều 3 của Bộ luật này` không có dấu ngắt nên không bao giờ khớp.
+
+### 45.3 Đo được
+
+```
+95 file, --no-llm            TẮT      BẬT     tăng   file tăng
+UNCLASSIFIED      (55)        186     1435   +1249         52
+vn-administrative (18)        320      820    +500         18
+format-driven      (6)       2454     3169    +715          6
+vn-legal           (3)          3       59     +56          3
+numpr-driven       (2)        495      558     +63          2
+typed-numbering    (1)        244      306     +62          1
+insufficient_text (10)         10       10      +0          0
+TỔNG                         3712     6357   +2645         82
+```
+
+Bench 10 (có đáp án): TẮT và BẬT **giống hệt** — P 92,3 · R 100 · F1 96 · cấp 86,1 · cha 91,7.
+Không hồi quy. 382 test xanh.
+
+### 45.4 Ba điều KHÔNG được suy ra từ bảng trên
+
+1. **6.357 là số lượng, không phải độ đúng.** 95 file này *không có đáp án*. Bản Python ra 6.858
+   nhưng nó cũng chưa được người kiểm. Hai bản cài không có đáp án thì trùng nhau không chứng
+   minh cái nào đúng.
+2. **`001_Bo_luat_Dan_su` vẫn chỉ 3 mục** trong khi 013 và 015 lên 26 và 30. Nguyên nhân: thân các
+   Điều trong 001 là văn xuôi dài **không có khoản đánh số**, nên mốc kết thúc tiêu đề nằm xa hơn
+   `MaxHeadingLength = 200` và lát cắt bị loại. Đây là lựa chọn cố ý — thà bỏ còn hơn nhận cả thân
+   bài làm nhan đề — nhưng nới nó cần đáp án để đo, chưa có thì không đụng.
+3. **Mặc định vẫn tắt.** Cờ này đổi giả định "mỗi đoạn nhiều nhất một mục" mà phần còn lại của
+   pipeline và mọi đáp án đang dựa vào. Bật mặc định là đổi hành vi cả tập vì một thể loại.
+
+### 45.5 Trả lời "đã đủ cho mọi văn bản Việt Nam chưa"
+
+**Chưa.** Bằng chứng đo được, không phải phỏng đoán:
+- 55/95 file bản Python xếp `UNCLASSIFIED` — hơn nửa corpus không rơi vào chế độ nào.
+- 4/9 chế độ (`outlinelvl`, `custom-style`, `semantic-only`, `vn-legal`) **chưa từng chạy có đáp án**.
+- Tài liệu ghép nhiều chế độ trong một file vẫn chưa có hướng giải: tầng 1 gán một chế độ cho cả file.
+- Ca 13 (La Mã thường `i. ii. iii.`) vẫn treo: `i.` vừa là La Mã 1 vừa là chữ cái thứ 9.
+
+Ba tài liệu **có** đáp án người xác nhận vẫn đạt 100%, nhưng ba tài liệu không đại diện cho
+mọi văn bản Việt Nam, và bảng ở 45.3 nói rõ tại sao.

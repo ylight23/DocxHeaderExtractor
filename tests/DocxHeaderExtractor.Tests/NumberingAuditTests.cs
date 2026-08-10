@@ -192,4 +192,78 @@ public class NumberingAuditTests
     {
         Assert.NotEqual(NumberKind.Labelled, NumberingAudit.Parse(text)?.Kind);
     }
+
+    // ---- Bảng chữ cái tiếng Việt (Nghị định 30/2020) -------------------------------------
+    // Điểm đánh bằng "chữ cái tiếng Việt theo thứ tự bảng chữ cái tiếng Việt": đ đứng ngay sau
+    // d, và f j w z không tồn tại. Ba test dưới ghim ba tình huống mà một bảng chữ cái cố định
+    // chắc chắn làm sai một trong hai.
+
+    /// <summary>d) → đ) → e) là liên tục theo tiếng Việt. Bảng Latin sẽ báo "nhảy từ 4 sang 5".</summary>
+    [Fact]
+    public void Day_diem_tieng_Viet_co_chu_d_khong_bi_bao_dut_quang()
+    {
+        List<HeadingRecord> headings =
+        [
+            H(1, 1, "a) Cơ quan chủ trì"),
+            H(2, 1, "b) Cơ quan phối hợp"),
+            H(3, 1, "c) Thời hạn thực hiện"),
+            H(4, 1, "d) Kinh phí bảo đảm"),
+            H(5, 1, "đ) Tổ chức thực hiện"),
+            H(6, 1, "e) Chế độ báo cáo"),
+        ];
+
+        Assert.Empty(NumberingAudit.Run(headings));
+    }
+
+    /// <summary>
+    /// Chiều ngược lại phải giữ được: dãy Latin thuần a..f không được vì có bảng tiếng Việt mà
+    /// bịa ra "thiếu đ)". Đây là test giết mutation "luôn dùng bảng tiếng Việt".
+    /// </summary>
+    [Fact]
+    public void Day_chu_cai_Latin_khong_bi_bia_them_chu_d_thieu()
+    {
+        List<HeadingRecord> headings =
+        [
+            H(1, 1, "a) Overview"),
+            H(2, 1, "b) Scope"),
+            H(3, 1, "c) Method"),
+            H(4, 1, "d) Results"),
+            H(5, 1, "e) Discussion"),
+            H(6, 1, "f) Conclusion"),
+        ];
+
+        Assert.Empty(NumberingAudit.Run(headings));
+    }
+
+    /// <summary>
+    /// Chọn bảng chữ cái không được bịt miệng hậu kiểm: dãy thiếu mục thật vẫn phải báo dù chấm
+    /// theo bảng nào. Không có test này thì "luôn trả về dãy hoàn hảo" cũng qua được hai test trên.
+    /// </summary>
+    [Fact]
+    public void Day_chu_cai_thieu_muc_that_van_bi_bao()
+    {
+        List<HeadingRecord> headings =
+        [
+            H(1, 1, "a) Cơ quan chủ trì"),
+            H(2, 1, "b) Cơ quan phối hợp"),
+            H(3, 1, "m) Điều khoản thi hành"),
+        ];
+
+        var warnings = NumberingAudit.Run(headings);
+
+        Assert.NotEmpty(warnings);
+        Assert.Contains(warnings, w => w.Message.Contains("nhảy từ 2 sang"));
+    }
+
+    /// <summary>Chữ có dấu phải lọt được qua regex; trước đây [A-Za-z] khiến đ) vô hình hoàn toàn.</summary>
+    [Theory]
+    [InlineData("đ) Kinh phí bảo đảm")]
+    [InlineData("ă) Mục có dấu")]
+    public void Parse_nhan_dien_chu_cai_tieng_Viet_co_dau(string text)
+    {
+        var t = NumberingAudit.Parse(text);
+
+        Assert.NotNull(t);
+        Assert.Equal(NumberKind.Letter, t!.Value.Kind);
+    }
 }
