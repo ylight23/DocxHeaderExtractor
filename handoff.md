@@ -2576,3 +2576,44 @@ Thành phần nhóm 0,93: 16 mục `supporting_checks` (2/5) + **5 mục `Style`
 
 Chưa cài. Cả ba đều đổi hành vi tự-nhận nên phải đo từng cái, và số nền phải là đáp án đã có nhãn
 người (105 mục), không phải đáp án đồng thuận model.
+
+### 37.4 Sửa xong: cổng tự nhận 62,5% → 95,3%
+
+Bỏ hẳn `CriticConfirmed` khỏi thang điểm; chấm theo số kiểm tra bằng chứng đã qua
+(`ConfidenceForChecks`: 5/5→0,95, 3/5→0,80); mục **không có evidence** rơi về trần 0,60; ứng viên
+heuristic giữ trần 0,75.
+
+Đo trên khoá luận, chấm bằng đáp án **có nhãn người** (105 mục):
+
+| | TỰ NHẬN | BẮT NGƯỜI DUYỆT |
+|---|---|---|
+| Trước | 16 mục, đúng 10 — **62,5%** | 111 mục, đúng 91 — 82,0% |
+| Sau | 86 mục, đúng 82 — **95,3%** | 41 mục, đúng 19 — **46,3%** |
+
+Người duyệt **41 thay vì 111** mục (giảm 63% công) mà nhóm tự nhận đáng tin hơn hẳn; nhóm bắt duyệt
+giờ đúng nghĩa "chỗ có lỗi".
+
+**Tập heading trả về KHÔNG đổi** (127 mục, cùng index và cấp) — cổng chỉ đổi quyết định
+tự-nhận/bắt-duyệt, không đụng P/R/F1/cấp. Đúng phạm vi của thay đổi.
+
+Hai test cũ đổ vì mã hoá đúng hành vi sai. Không sửa test cho khớp code:
+* `Independent_critic_reaches_93_...` khẳng định "phản biện một mình đạt 0,93 và được tự nhận" —
+  **đảo ngược** khẳng định đó, ghi số đo vào chỗ, đổi tên thành
+  `Phan_bien_mot_minh_khong_con_du_de_tu_nhan`.
+* `Style_or_heuristic_alone_cannot_claim_93_percent` giữ nguyên Ý ĐỊNH, chỉ đổi bậc 0,85/0,75 →
+  ≤ 0,60 vì hai mục đó không có evidence. Chặt hơn bản cũ, cùng chiều với ý định.
+
+### 37.5 Và ngừng phát biểu như một phán quyết khi chưa có holdout
+
+Log cũ: `Cổng precision 93%: 16 tự nhận, 111 cần duyệt (evidence chưa calibration)`. UI dịch
+`RequiresReview` thành **"chưa đạt cổng precision"** — một phát biểu về precision, trong khi không
+hề có ước lượng precision nào.
+
+Khi `confidenceBasis == evidence_not_calibrated`:
+* log: `Xếp theo bằng chứng (chưa calibration bằng holdout): N bằng chứng đủ, M bằng chứng yếu — nên xem.`
+* UI: nhãn `bằng chứng đủ` / `bằng chứng yếu — nên xem` thay cho `evidence ≥ mục tiêu` /
+  `chưa đạt cổng precision`; con số tin cậy kèm dấu `~` và tooltip nói rõ đây là bậc theo số kiểm
+  tra, không phải precision đo được.
+
+Cái giá của việc nói nhầm đo được ở chính phiên này: người dùng thấy 111/127 mục "chưa đạt cổng" và
+không còn phân biệt được đâu là chỗ thật sự cần xem.
