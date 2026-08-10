@@ -108,6 +108,13 @@ public sealed class PipelineOptions
     public bool StyleDeclaredOutline { get; set; }
 
     /// <summary>
+    /// Outline theo DANH SÁCH ĐA CẤP của Word: chọn theo <c>numPr</c>, cấp = <c>ilvl + 1</c>, cộng
+    /// từ khoá cấu trúc cho phần không đánh số. Chế độ <c>numpr-driven</c> của spec §4.3 — dùng khi
+    /// style của tài liệu không tin được. Xem <see cref="StyleDeclaredOutline.BuildFromNumbering"/>.
+    /// </summary>
+    public bool NumberingDeclaredOutline { get; set; }
+
+    /// <summary>
     /// Hậu kiểm bằng ký hiệu đánh số của chính tài liệu: cùng dạng đánh số phải cùng cấp, và
     /// dãy anh em phải liên tục từ 1. Không tốn giây suy luận nào và bắt được cả lỗi trượt cấp
     /// của mô hình lẫn tiêu đề bị tầng lọc đánh rơi — xem <see cref="NumberingAudit"/>.
@@ -464,6 +471,13 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     $"Kết nối LM Studio local: {_options.LmStudio.Model} tại {_options.LmStudio.Endpoint.Authority}…",
                 _ => $"Đang nạp mô hình: {Path.GetFileName(_options.Llama.ModelPath)} …",
             });
+        if (_options.NumberingDeclaredOutline)
+        {
+            var declared = StyleDeclaredOutline.BuildFromNumbering(slim);
+            Log($"Outline theo danh sách đa cấp: {declared.Count} đề mục, không gọi mô hình.");
+            return declared;
+        }
+
         if (_options.StyleDeclaredOutline)
         {
             var declared = StyleDeclaredOutline.Build(slim);

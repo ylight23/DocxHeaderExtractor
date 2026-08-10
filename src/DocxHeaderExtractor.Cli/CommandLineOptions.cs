@@ -107,6 +107,7 @@ public sealed class CommandLineOptions
                 case "--two-pass": o.Pipeline.TwoPass = true; break;
                 case "--rolling-outline": o.Pipeline.RollingOutline = true; break;
                 case "--style-outline": o.Pipeline.StyleDeclaredOutline = true; break;
+                case "--numbering-outline": o.Pipeline.NumberingDeclaredOutline = true; break;
                 case "--no-global-hierarchy": o.Pipeline.GlobalHierarchy = false; break;
                 case "--model-levels": o.Pipeline.LevelFromOutline = false; break;
                 case "--dump-xml": o.Pipeline.DumpXmlPath = Next(a); break;
