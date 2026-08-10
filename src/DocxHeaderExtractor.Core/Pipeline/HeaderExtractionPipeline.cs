@@ -101,6 +101,13 @@ public sealed class PipelineOptions
     public bool RollingOutline { get; set; }
 
     /// <summary>
+    /// Outline = ĐÚNG các đoạn mang style Heading của Word, cấp suy từ ký hiệu đánh số. Không gọi
+    /// mô hình. Đây là định nghĩa outline do người dùng xác nhận — xem
+    /// <see cref="StyleDeclaredOutline"/> và §41.
+    /// </summary>
+    public bool StyleDeclaredOutline { get; set; }
+
+    /// <summary>
     /// Hậu kiểm bằng ký hiệu đánh số của chính tài liệu: cùng dạng đánh số phải cùng cấp, và
     /// dãy anh em phải liên tục từ 1. Không tốn giây suy luận nào và bắt được cả lỗi trượt cấp
     /// của mô hình lẫn tiêu đề bị tầng lọc đánh rơi — xem <see cref="NumberingAudit"/>.
@@ -457,6 +464,13 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     $"Kết nối LM Studio local: {_options.LmStudio.Model} tại {_options.LmStudio.Endpoint.Authority}…",
                 _ => $"Đang nạp mô hình: {Path.GetFileName(_options.Llama.ModelPath)} …",
             });
+        if (_options.StyleDeclaredOutline)
+        {
+            var declared = StyleDeclaredOutline.Build(slim);
+            Log($"Outline theo style tác giả khai: {declared.Count} đề mục, không gọi mô hình.");
+            return declared;
+        }
+
         var llm = await GetModelAsync(ct);
         Log($"Mô hình sẵn sàng. Ngữ cảnh {llm.ContextSize} token, {llm.RuntimeDescription}.");
         AdoptBackendContextBudget(llm);
