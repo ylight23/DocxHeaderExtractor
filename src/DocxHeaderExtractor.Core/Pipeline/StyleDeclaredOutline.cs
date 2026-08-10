@@ -109,7 +109,7 @@ public static class StyleDeclaredOutline
 
             int level;
             if (p.NumberingLevel is { } ilvl && ilvl >= 1 &&
-                p.NumberingId is { } id && headingLists.Contains(id))
+                p.NumberingId is { } id && headingLists.Contains((id, ilvl)))
             {
                 level = Math.Clamp(ilvl + 1, 1, 9);
             }
@@ -145,14 +145,18 @@ public static class StyleDeclaredOutline
     /// mục là một câu dài). Không lọc thì 5 danh sách nội dung lọt vào outline.
     /// </para>
     /// </summary>
-    private static HashSet<int> HeadingNumberingIds(SlimDocument document) =>
+    private static HashSet<(int Id, int Level)> HeadingNumberingIds(SlimDocument document) =>
     [
         .. document.Paragraphs
             .Where(p => p.NumberingId is not null && p.NumberingLevel >= 1 && !string.IsNullOrWhiteSpace(p.Text))
-            .GroupBy(p => p.NumberingId!.Value)
-            .Where(g => g.Count(p => p.HasBuiltInHeadingStyle) >= g.Count() * HeadingStyleShare)
+            .GroupBy(p => (Id: p.NumberingId!.Value, Level: p.NumberingLevel!.Value))
+            .Where(g => g.Count() >= MinimumListItems &&
+                        g.Count(p => p.HasBuiltInHeadingStyle) >= g.Count() * HeadingStyleShare)
             .Select(g => g.Key),
     ];
+
+    /// <summary>Danh sách phải có bấy nhiêu mục thì tỉ lệ mới có nghĩa.</summary>
+    private const int MinimumListItems = 3;
 
     /// <summary>
     /// Tỉ lệ mục trong một danh sách phải mang style Heading để coi danh sách đó là danh sách ĐỀ MỤC.
@@ -163,12 +167,14 @@ public static class StyleDeclaredOutline
     /// vẫn tin được — sai lẻ tẻ không kéo được tỉ lệ của cả một numId.
     /// </para>
     /// <para>
-    /// ĐO ĐƯỢC: <c>numId=3</c> (đề mục thật) hầu hết mang <c>Heading2</c>; <c>numId=4</c> là danh
-    /// sách nội dung, mang <c>ListParagraph</c>. Lọc theo độ dài trung bình KHÔNG tách được vì
-    /// numId=4 có nhiều mục ngắn kéo trung bình xuống dưới ngưỡng.
+    /// ĐO ĐƯỢC: khoá theo <c>numId</c> ĐƠN LẺ là SAI. Trên báo cáo thực tập, <c>numId=4</c> có 21
+    /// mục — 10 là đề mục thật (ilvl 1–2), 11 là danh sách nội dung (ilvl 3). Khoá theo numId thì
+    /// hoặc mất trắng 10 đề mục của chương 2, hoặc nhận cả 11 mục nội dung.
+    /// Khoá theo CẶP <c>(numId, ilvl)</c> tách sạch: giữ {(3,1),(3,2),(4,1),(4,2)}, bỏ (4,3).
+    /// Lọc theo độ dài trung bình cũng KHÔNG tách được vì numId=4 có nhiều mục ngắn.
     /// </para>
     /// </summary>
-    private const double HeadingStyleShare = 0.5;
+    private const double HeadingStyleShare = 0.8;
 
     /// <summary>Trung bình độ dài để một danh sách được coi là danh sách ĐỀ MỤC, không phải nội dung.</summary>
     private const int HeadingTextMaxLength = 90;

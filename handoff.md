@@ -2887,3 +2887,49 @@ báo, mắc ngay trong lúc đang cài N1.
 
 Nó chỉ lộ ra vì tôi chạy lại KHOÁ LUẬN sau khi sửa cho BÁO CÁO. Luật rút ra: **mọi thay đổi phải đo
 lại trên MỌI tài liệu đã có đáp án, không chỉ tài liệu đang sửa.**
+
+## 43. Khoá theo CẶP (numId, ilvl) — cả hai tài liệu về 100% tuyệt đối
+
+| | `--style-outline` | `--numbering-outline` |
+|---|--:|--:|
+| Khoá luận (68 mục) | **100 · 100 · 100 · 100** | — |
+| Báo cáo thực tập (29 mục) | — | **100 · 100 · 100 · 100** |
+
+*(P · R · đúng cấp · đúng cha)*
+
+### 43.1 Khoá theo `numId` đơn lẻ là SAI — đo được
+
+`numId=4` trên báo cáo thực tập có **21 mục: 10 đề mục thật (ilvl 1–2) + 11 mục nội dung (ilvl 3)**,
+dùng chung một danh sách. Khoá ở mức `numId` thì chỉ có hai kết cục, cả hai đều sai:
+
+* ngưỡng chặt (≥80% mang style Heading) → loại cả `numId=4` → **mất trắng 10 đề mục chương 2**,
+  recall tụt còn 65,5%;
+* ngưỡng lỏng (≥50%) → nhận cả 11 mục nội dung → precision 72,5%.
+
+Khoá theo **cặp `(numId, ilvl)`** tách sạch: giữ `{(3,1),(3,2),(4,1),(4,2)}`, bỏ `(4,3)`.
+
+Tôi đã thử hai ngưỡng ở mức numId và cả hai đều hỏng trước khi nhận ra rằng **đơn vị khoá mới là
+chỗ sai**, không phải giá trị ngưỡng. Chỉnh ngưỡng của một luật sai đơn vị thì chỉ đổi được kiểu
+hỏng, không sửa được.
+
+### 43.2 Ba luật loại trừ đưa precision 37,7% → 100%
+
+| nhóm | dấu hiệu |
+|---|---|
+| dòng mục lục (217–245) | style `TOC1`–`TOC9` |
+| `Chương 1:` trong thân bài (296, 303) | style `BodyText`, có dấu `:` |
+| danh sách nội dung (715–803) | cặp `(4,3)` |
+
+### 43.3 Hai chế độ, hai luật, cùng một khung
+
+```
+khoá luận  → style Heading chọn mục, cấp = độ sâu số gõ tay + 1
+báo cáo    → (numId, ilvl) chọn mục,  cấp = ilvl + 1, style CHỈ dùng để nhận diện danh sách nào
+             là danh sách đề mục — không dùng để chọn từng đoạn
+```
+
+Điểm tinh tế đáng ghi: ở báo cáo thực tập style **sai 51% khi chọn từng đoạn**, nhưng vẫn **tin được
+khi nhận diện cả một danh sách** — sai lẻ tẻ không kéo nổi tỉ lệ của một cặp `(numId, ilvl)` xuống
+dưới 80%. Cùng một tín hiệu, hai mức tin cậy khác nhau tuỳ đơn vị áp dụng.
+
+Cả hai đều **không gọi mô hình** và chạy trong ~1 giây.
