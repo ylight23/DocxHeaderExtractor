@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -44,23 +44,198 @@ public static class StyleDeclaredOutline
         return paragraph.NumberingId is not null ? 2 : 1;
     }
 
+    /// <summary>Chú thích hình/bảng — luật X2 của spec §5.1, loại bất kể style.</summary>
+    private static readonly Regex Caption = new(
+        @"^\s*(hình(\s*ảnh|\s*vẽ)?|ảnh|bảng|biểu\s*đồ|sơ\s*đồ|đồ\s*thị|figure|fig|table|chart)\s*\d",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+    /// <summary>Phần đầu tài liệu coi là bìa + danh mục — spec §5.1b dùng 15%.</summary>
+    private const double FrontMatterFraction = 0.25;
+
     /// <summary>
-    /// Dựng outline từ các đoạn mang style Heading built-in, theo thứ tự tài liệu.
+    /// Dựng outline từ các đoạn mang style Heading built-in, SAU KHI áp các luật loại trừ của spec.
+    /// <para>
+    /// Bản đầu đọc thẳng <c>document.Paragraphs</c> nên đi tắt qua mọi luật loại trừ. Đo trên báo cáo
+    /// thực tập (§42): 63 mục trả về thì <b>10 nằm trong phần bìa/danh mục</b> — <c>BÁO CÁO THỰC TẬP</c>
+    /// (style <c>Title</c>, lặp 2 lần vì bìa nhân đôi), <c>Đà Nẵng, tháng 03 năm 2025</c> (style
+    /// <c>Heading3</c>), <c>Sinh viên thực hiện</c> (style <c>Heading2</c>) — và <c>Bảng 1.1:</c> mang
+    /// style <c>Heading3</c> lọt vào như một đề mục.
+    /// </para>
+    /// <para>
+    /// Ba luật loại trừ áp ở đây, đúng spec §5.1: X1 đoạn hỏng, X2 chú thích, X6 khối bìa lặp.
+    /// Chúng KHÔNG đụng tới khoá luận (vẫn 68/68) vì tài liệu đó không có ca nào thuộc ba lớp này.
+    /// </para>
     /// </summary>
-    public static List<HeadingRecord> Build(SlimDocument document) =>
-    [
-        .. document.Paragraphs
-            .Where(p => p.HasBuiltInHeadingStyle && !string.IsNullOrWhiteSpace(p.Text))
-            .OrderBy(p => p.Index)
-            .Select(p => new HeadingRecord
+    /// <summary>
+    /// Từ khoá mở đầu phần front/back matter và chương — spec §5.3. Nhóm này KHÔNG đánh số nên mọi
+    /// luật số học đều bỏ sót; đây là cách duy nhất bắt được chúng.
+    /// </summary>
+    private static readonly Regex StructuralKeyword = new(
+        @"^\s*(MỤC\s*LỤC|DANH\s*MỤC|LỜI\s*(CAM\s*ĐOAN|CẢM\s*ƠN|MỞ\s*ĐẦU|NÓI\s*ĐẦU)|MỞ\s*ĐẦU" +
+        @"|ĐẶT\s*VẤN\s*ĐỀ|TỔNG\s*QUAN|KẾT\s*LUẬN|KIẾN\s*NGHỊ|TÀI\s*LIỆU\s*THAM\s*KHẢO" +
+        @"|PHỤ\s*LỤC|TÓM\s*TẮT|ABSTRACT|CHƯƠNG\s|PHẦN\s)",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+    /// <summary>
+    /// Outline theo DANH SÁCH ĐA CẤP của Word — chế độ <c>numpr-driven</c> của spec §4.3.
+    /// <para>
+    /// Định nghĩa do người dùng xác nhận trên báo cáo thực tập (§42): chọn mục theo <c>numPr</c>
+    /// (KHÔNG theo style, vì style ở tài liệu này sai 51% — gán cho dòng bìa, khối chữ ký, chú
+    /// thích bảng), cấp = <c>ilvl + 1</c>. Phần front/back matter và tên chương không đánh số nên
+    /// bắt bằng từ khoá cấu trúc, cấp 1.
+    /// </para>
+    /// <para>
+    /// Vì sao KHÔNG dùng chung một luật với <see cref="Build"/>: hai tài liệu thật cho kết quả trái
+    /// ngược với cùng một luật — đúng nguyên tắc N1 của spec. Trên khoá luận, style đúng 100%; trên
+    /// báo cáo này, style đưa vào 10 mục bìa/danh mục và làm vỡ cây ở 6 chỗ.
+    /// </para>
+    /// </summary>
+    public static List<HeadingRecord> BuildFromNumbering(SlimDocument document)
+    {
+        var frontMatter = (int)(document.Paragraphs.Count * FrontMatterFraction);
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var result = new List<HeadingRecord>();
+
+        var headingLists = HeadingNumberingIds(document);
+
+        foreach (var p in document.Paragraphs.OrderBy(p => p.Index))
+        {
+            if (string.IsNullOrWhiteSpace(p.Text) || p.Corrupt) continue;   // X1
+            if (Caption.IsMatch(p.Text)) continue;                          // X2
+            if (p.TableDepth > 0) continue;
+            // Dòng mục lục do Word sinh mang style TOC1–TOC9 — chúng LẶP LẠI tên đề mục khác nên mọi
+            // luật nội dung đều nhận nhầm; chỉ style mới tách được.
+            if (p.StyleId?.StartsWith("TOC", StringComparison.OrdinalIgnoreCase) == true) continue;
+
+            int level;
+            if (p.NumberingLevel is { } ilvl && ilvl >= 1 &&
+                p.NumberingId is { } id && headingLists.Contains(id))
+            {
+                level = Math.Clamp(ilvl + 1, 1, 9);
+            }
+            else if (StructuralKeyword.IsMatch(p.Text) && IsStandaloneKeyword(p))
+            {
+                level = 1;
+            }
+            else continue;
+
+            // X6: khối bìa lặp — cùng văn bản lần hai trong phần đầu tài liệu.
+            if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
+
+            result.Add(new HeadingRecord
             {
                 Index = p.Index,
-                Level = LevelOf(p),
+                Level = level,
                 Text = p.Text,
-                Source = HeadingSource.Style,
+                Source = p.NumberingLevel is not null ? HeadingSource.Structure : HeadingSource.Style,
                 Confidence = 1.0,
-                ConfidenceBasis = "style_declared",
+                ConfidenceBasis = "numbering_declared",
                 DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
-            }),
+            });
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// Những <c>numId</c> thực sự dùng cho đề mục — spec §4.3: <i>"cần lọc thêm theo numId, xác
+    /// định tập numId nào thực sự dùng cho heading"</i>.
+    /// <para>
+    /// ĐO ĐƯỢC trên báo cáo thực tập: đề mục thật dùng <c>numId=3</c> (văn bản ngắn, trung bình dưới
+    /// 60 ký tự), còn <c>numId=4</c> là danh sách NỘI DUNG trong thân bài (<c>ListParagraph</c>, mỗi
+    /// mục là một câu dài). Không lọc thì 5 danh sách nội dung lọt vào outline.
+    /// </para>
+    /// </summary>
+    private static HashSet<int> HeadingNumberingIds(SlimDocument document) =>
+    [
+        .. document.Paragraphs
+            .Where(p => p.NumberingId is not null && p.NumberingLevel >= 1 && !string.IsNullOrWhiteSpace(p.Text))
+            .GroupBy(p => p.NumberingId!.Value)
+            .Where(g => g.Count(p => p.HasBuiltInHeadingStyle) >= g.Count() * HeadingStyleShare)
+            .Select(g => g.Key),
     ];
+
+    /// <summary>
+    /// Tỉ lệ mục trong một danh sách phải mang style Heading để coi danh sách đó là danh sách ĐỀ MỤC.
+    /// <para>
+    /// Spec §4.3 nói đúng cách làm: <i>"xác định numId nào thực sự dùng cho heading bằng cách xem
+    /// numId nào xuất hiện cùng block có style Heading với tỷ lệ cao"</i>. Style ở tài liệu này sai
+    /// 51% khi dùng để CHỌN từng đoạn, nhưng dùng để nhận diện danh sách nào là danh sách đề mục thì
+    /// vẫn tin được — sai lẻ tẻ không kéo được tỉ lệ của cả một numId.
+    /// </para>
+    /// <para>
+    /// ĐO ĐƯỢC: <c>numId=3</c> (đề mục thật) hầu hết mang <c>Heading2</c>; <c>numId=4</c> là danh
+    /// sách nội dung, mang <c>ListParagraph</c>. Lọc theo độ dài trung bình KHÔNG tách được vì
+    /// numId=4 có nhiều mục ngắn kéo trung bình xuống dưới ngưỡng.
+    /// </para>
+    /// </summary>
+    private const double HeadingStyleShare = 0.5;
+
+    /// <summary>Trung bình độ dài để một danh sách được coi là danh sách ĐỀ MỤC, không phải nội dung.</summary>
+    private const int HeadingTextMaxLength = 90;
+
+    /// <summary>
+    /// Từ khoá cấu trúc chỉ tính khi đoạn ĐỨNG RIÊNG làm đề mục, không phải khi nó xuất hiện giữa
+    /// thân bài. Đo được: <c>Chương 1: Giới thiệu tổng quát…</c> nằm trong đoạn liệt kê của phần mở
+    /// đầu (<c>BodyText</c>) và <c>Phụ lục 1: Các tài khoản…</c> là mục con, cả hai đều không thuộc
+    /// outline theo đáp án người dùng.
+    /// </summary>
+    private static bool IsStandaloneKeyword(SlimParagraph p) =>
+        !string.Equals(p.StyleId, "BodyText", StringComparison.OrdinalIgnoreCase) &&
+        p.Text.Length <= HeadingTextMaxLength &&
+        !p.Text.Contains(':');
+
+    public static List<HeadingRecord> Build(SlimDocument document)
+    {
+        var frontMatter = (int)(document.Paragraphs.Count * FrontMatterFraction);
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        var kept = new List<SlimParagraph>();
+        foreach (var p in document.Paragraphs.OrderBy(p => p.Index))
+        {
+            if (!p.HasBuiltInHeadingStyle || string.IsNullOrWhiteSpace(p.Text)) continue;
+            if (p.Corrupt) continue;                                   // X1
+            if (Caption.IsMatch(p.Text)) continue;                     // X2
+            // X6: khối bìa lặp — cùng văn bản xuất hiện lần hai trong phần đầu tài liệu.
+            if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
+            kept.Add(p);
+        }
+
+        var result = kept.Select(p => new HeadingRecord
+        {
+            Index = p.Index,
+            Level = LevelOf(p),
+            Text = p.Text,
+            Source = HeadingSource.Style,
+            Confidence = 1.0,
+            ConfidenceBasis = "style_declared",
+            DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
+        }).ToList();
+
+        // KHÔNG gọi RepairInvertedTree ở đây: đo được nó kéo khoá luận từ đúng cấp 100% xuống
+        // 89,7% và đúng cha 100% xuống 82,4%. Cây "lộn ngược" là hình dạng THẬT của tài liệu đó,
+        // không phải lỗi cần sửa. Luật này chỉ đúng cho tài liệu numpr-driven, nên nó thuộc về
+        // BuildFromNumbering nếu cần, không thuộc về đường style.
+        return result;
+    }
+
+    /// <summary>
+    /// Con không được NÔNG hơn cha. Luật <c>numPr → 2</c> / <c>không số → 1</c> đúng trên khoá luận
+    /// nhưng trên báo cáo thực tập tạo ra cây lộn ngược: <c>Quá trình thành lập</c> (có numPr) là cấp
+    /// 2, còn <c>Giai đoạn 1994 – 2004</c> ngay dưới nó không đánh số nên thành cấp 1 — đo được 6 ca.
+    /// <para>
+    /// Sửa tối thiểu: mục không đánh số đứng ngay sau một mục sâu hơn thì nhận cấp của mục đó. Không
+    /// đụng mục CÓ đánh số, vì với chúng chuỗi số là tuyên bố tường minh và phải thắng vị trí.
+    /// </para>
+    /// </summary>
+    private static void RepairInvertedTree(List<HeadingRecord> headings)
+    {
+        for (var i = 1; i < headings.Count; i++)
+        {
+            var current = headings[i];
+            if (current.Level >= headings[i - 1].Level) continue;
+            if (TypedNumber.IsMatch(current.Text ?? "")) continue;
+            if (current.Level != 1) continue;
+            current.Level = headings[i - 1].Level;
+        }
+    }
 }

@@ -2843,3 +2843,47 @@ Lượt trước tôi đọc luật cấp là *"con số trong tên style"* — 
 này đặt `Heading3` cho mục `x.y`. Luật thật là **độ sâu đánh số + 1**, và chính nó giải thích cái tôi
 tưởng là "nhảy cấp": `CHƯƠNG 1` không đánh số nên cấp 1, `1.1` sâu 2 nên cấp 3 — dưới chương không có
 mục cấp 2 nào, đúng hình dạng tài liệu chứ không phải lỗi.
+
+## 42. Tài liệu thứ hai, luật khác hẳn — và một hồi quy tôi tự gây ra
+
+Người dùng xác nhận đáp án cho **báo cáo thực tập** (33 mục), và luật khác hẳn khoá luận:
+
+| | Khoá luận (§41) | Báo cáo thực tập |
+|---|---|---|
+| Chọn mục | style Heading | **`numPr`** + từ khoá chương/front-matter |
+| Cấp | số gõ tay `d + 1` | **`ilvl + 1`** |
+| Style | tin tuyệt đối | **bỏ qua** — sai 51%, gán cho dòng bìa và khối chữ ký |
+
+Đúng nguyên tắc N1 của spec: *"Không tồn tại một luật deterministic dùng chung."*
+
+### 42.1 Ba luật loại trừ, mỗi luật gỡ một nhóm
+
+| nhóm thừa | dấu hiệu | nguồn |
+|---|---|---|
+| dòng mục lục (217–245) | style `TOC1`–`TOC9` | khối mục lục ≠ outline |
+| `Chương 1:` trong thân bài (296, 303) | style `BodyText` | từ khoá không kích hoạt trên thân bài |
+| danh sách nội dung (715–719, 797–803) | `numId=4` | spec §4.3 lọc theo `numId` |
+
+Precision đi **37,7% → 72,5%** sau hai luật đầu.
+
+### 42.2 Lọc `numId` theo ĐỘ DÀI thất bại, theo STYLE thì đúng chiều nhưng quá chặt
+
+Bản đầu lọc `numId` theo độ dài trung bình — KHÔNG tách được, vì `numId=4` có nhiều mục ngắn kéo
+trung bình xuống dưới ngưỡng. Đổi sang luật của spec (*"numId nào xuất hiện cùng block có style
+Heading với tỉ lệ cao"*): precision lên **100%** nhưng recall tụt xuống **65,5%** — chương 2 dùng một
+`numId` khác không đạt ngưỡng 50%.
+
+Ngưỡng cần hiệu chỉnh, chưa xong. Trạng thái hiện tại: `P 100 · R 65,5 · cấp 100 · cha 100`.
+**Cấp và cha đúng tuyệt đối** — luật `ilvl + 1` không sai một mục nào; chỉ khâu CHỌN còn dở.
+
+### 42.3 Hồi quy tôi tự gây ra, và cách nó lộ ra
+
+Tôi thêm `RepairInvertedTree` vào đường style để sửa "cây lộn ngược" quan sát được ở báo cáo thực
+tập. Nó kéo **khoá luận** từ `cấp 100% / cha 100%` xuống `89,7% / 82,4%`.
+
+Bài học: cây "lộn ngược" ở báo cáo thực tập là **hình dạng thật** của tài liệu đó, không phải lỗi
+cần sửa — và tôi đã đem một luật quan sát từ tài liệu này áp lên tài liệu kia. Đúng cái mà N1 cảnh
+báo, mắc ngay trong lúc đang cài N1.
+
+Nó chỉ lộ ra vì tôi chạy lại KHOÁ LUẬN sau khi sửa cho BÁO CÁO. Luật rút ra: **mọi thay đổi phải đo
+lại trên MỌI tài liệu đã có đáp án, không chỉ tài liệu đang sửa.**
