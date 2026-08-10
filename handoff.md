@@ -2728,3 +2728,49 @@ Giữ luật, mặc định tắt, cùng lý do §10.4/§25.2/§30.2/§33/§36: 
 
 Còn thiếu thật: `is_doubled` (§3.6), kiểm chéo hình dạng anh em, `vn-legal` thành chế độ riêng,
 `toc-anchored`, `custom-style`, `w:instrText` (§3.2.3), phân loại bảng ba nhóm (§5.5).
+
+## 40. Refactor bước 3 — cài nốt phần còn lại của spec
+
+Người dùng yêu cầu làm hết rồi đo sau. Mọi thứ cài trong mục này đều **sau cờ, mặc định tắt**, nên
+đường mặc định không đổi — đã xác nhận: khoá luận `P 79,5 · R 96,2 · F1 87,1 · cấp 96,0 · cha 96,0`
+và bench `100% · 10/10`, trùng khít mốc.
+
+### 40.1 Một mục hoá ra KHÔNG phải khoảng trống
+
+§3.2.3 field code `w:instrText`: đọc code thì thấy SDK map nó thành `FieldCode`, còn vòng lặp gom
+text chỉ nhận `Text` (`<w:t>`) — **đã loại sẵn theo cấu trúc**. Không cài gì. Đây là lần thứ ba
+trong hai phiên việc kiểm code trước khi viết cứu được một thay đổi thừa.
+
+### 40.2 Đã cài
+
+| Spec | Lớp | Cờ |
+|---|---|---|
+| §3.6 paragraph hỏng (`is_doubled`) | `CorruptParagraphDetector` | `--skip-corrupt` |
+| §5.5 phân loại bảng ba nhóm | `TableRoleClassifier` | `--skip-data-tables` |
+| §4.3 chế độ `vn-legal` | `DocumentModeClassifier` | (chẩn đoán) |
+| §4.2 chế độ `toc-anchored`, `custom-style` | `DocumentModeClassifier` | (chẩn đoán) |
+| kiểm chéo hình dạng anh em | `SiblingShapeAudit` | `--audit-sibling-shape` |
+
+`vn-legal` phải kiểm **TRƯỚC** ký hiệu hành chính: `Điều 5.` cũng khớp mẫu `\d+\.` của lớp hành
+chính nên bị bắt nhầm nếu để sau. Trên corpus 95 tài liệu, `vn-legal` khớp **3/3** với bản Python.
+
+Phân loại bảng gom theo *dãy đoạn liên tiếp có `TableDepth > 0`* — xấp xỉ, vì hai bảng kề nhau
+không có đoạn ngoài bảng xen giữa sẽ bị gộp làm một. Ghi ra để người sau biết chỗ cần dựng lưới ô
+nếu muốn chặt hơn.
+
+### 40.3 Mutation test bắt được một lỗ về THAM SỐ, không phải về hành vi
+
+Hạ ngưỡng `is_doubled` từ 0,55 xuống 0,30 mà **không test nào đổ**. Bốn test đầu chỉ ghim hai đầu —
+rõ hỏng và rõ bình thường — nên khoảng giữa bỏ trống. Phải thêm một chuỗi có đúng 33% cặp trùng
+(`aabbccddefghijklmnopqrst`) mới ghim được ngưỡng.
+
+Lỗ này đáng nhớ: test đúng HÀNH VI nhưng không đúng THAM SỐ. Với mọi hằng số có ngưỡng, cần một ca
+nằm giữa hai bên ngưỡng, không chỉ hai ca ở hai đầu.
+
+### 40.4 Còn nợ
+
+Toàn bộ phần cài trong mục này **chưa có số đo đầu-cuối** — đúng như yêu cầu "làm hết rồi test sau".
+Mỗi cờ phải đo riêng trên `key-human.key` + bench trước khi bàn chuyện đổi mặc định.
+
+Và điều lớn nhất vẫn đứng nguyên: **chế độ tài liệu mới là chẩn đoán, chưa luật nào đổi hành vi theo
+nó.** Đó là chỗ spec kỳ vọng tạo khác biệt, và cũng là chỗ rủi ro nhất.

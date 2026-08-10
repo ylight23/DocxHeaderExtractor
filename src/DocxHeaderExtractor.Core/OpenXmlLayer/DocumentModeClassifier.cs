@@ -24,6 +24,9 @@ public enum DocumentMode
     /// <summary>Hệ đánh số hành chính Việt Nam gõ tay: <c>I.</c> <c>1.</c> <c>1.1.</c> <c>a)</c>.</summary>
     VietnameseAdministrative,
 
+    /// <summary>Văn bản quy phạm pháp luật: <c>Phần / Chương / Mục / Điều</c> — spec §4.3.</summary>
+    VietnameseLegal,
+
     /// <summary>Số gõ tay nhiều cấp trong text (<c>1.2.3</c>), nhất quán với style.</summary>
     TypedNumbering,
 
@@ -49,7 +52,8 @@ public sealed record DocumentModeReport(
     double VietnameseAdminRatio,
     double TypedNumberRatio,
     double NumberingRatio,
-    bool FormatDiffers)
+    bool FormatDiffers,
+    double LegalMarkerRatio = 0)
 {
     public string Describe() =>
         $"Chế độ tài liệu: {Mode} " +
@@ -86,6 +90,27 @@ public static class DocumentModeClassifier
         new(@"^\s*\d{1,2}\.\s*\D", RegexOptions.Compiled),          // 1.  2.
         new(@"^\s*[IVXLC]+\.\s*\S", RegexOptions.Compiled),         // I.  II.
     ];
+
+    /// <summary>
+    /// Hệ <c>Phần / Chương / Mục / Điều</c> của văn bản quy phạm pháp luật — spec §4.3, nhánh
+    /// <c>vn-legal</c>. Khác hẳn <c>I./1./a)</c> nên phải tách riêng, và <c>Điều</c> là đơn vị chính
+    /// chứ KHÔNG phải cấp 1.
+    /// <para>
+    /// Đo trên corpus 95 tài liệu: 3 tài liệu bản Python gán <c>vn-legal</c> có trung vị tỉ lệ ký
+    /// hiệu hành chính <b>60,4%</b>, cao hơn hẳn nhóm hành chính (24,3%) — nhưng luật ký hiệu hành
+    /// chính bắt trước nên chúng bị gộp nhầm. Cần một luật riêng, kiểm TRƯỚC.
+    /// </para>
+    /// </summary>
+    private static readonly Regex[] LegalMarkers =
+    [
+        new(@"^\s*Phần\s+(thứ\s+)?[IVXLC\d]", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new(@"^\s*Chương\s+[IVXLC\d]", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new(@"^\s*Mục\s+\d", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new(@"^\s*Điều\s+\d", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+    ];
+
+    /// <summary>Ngưỡng cho <see cref="DocumentMode.VietnameseLegal"/>.</summary>
+    public const double LegalThreshold = 0.05;
 
     /// <summary>Số gõ tay nhiều cấp: <c>1.2</c>, <c>2.3.4</c>.</summary>
     private static readonly Regex TypedNumber = new(@"^\s*\d+(\.\d+)+", RegexOptions.Compiled);
@@ -130,23 +155,31 @@ public static class DocumentModeClassifier
         var typedRatio = Ratio(styled.Count(p => TypedNumber.IsMatch(p.Text)), styled.Count);
         var numberingRatio = Ratio(styled.Count(p => p.NumberingId is not null), styled.Count);
 
-        var mode = Decide(styled.Count, outlineRatio, adminRatio, typedRatio, numberingRatio,
-            FormatDiffersFromBody(body), out var formatDiffers);
+        var legalRatio = Ratio(outsideTables.Count(p => IsLegalMarker(p.Text)), outsideTables.Count);
+        var tocEntries = body.Count(p => p.PrecedesTableOfContents);
+
+        var mode = Decide(styled.Count, outlineRatio, legalRatio, adminRatio, typedRatio,
+            numberingRatio, tocEntries, FormatDiffersFromBody(body), HasCustomHeadingStyle(body),
+            out var formatDiffers);
 
         return new DocumentModeReport(mode, body.Count, styled.Count,
-            outlineRatio, adminRatio, typedRatio, numberingRatio, formatDiffers);
+            outlineRatio, adminRatio, typedRatio, numberingRatio, formatDiffers, legalRatio);
     }
 
     private static DocumentMode Decide(
-        int styledCount, double outlineRatio, double adminRatio, double typedRatio,
-        double numberingRatio, bool formatDiffers, out bool format)
+        int styledCount, double outlineRatio, double legalRatio, double adminRatio, double typedRatio,
+        double numberingRatio, int tocEntries, bool formatDiffers, bool customStyle, out bool format)
     {
         format = formatDiffers;
         if (outlineRatio > 0) return DocumentMode.OutlineLevelDriven;
+        if (tocEntries >= TocAnchorMinimum) return DocumentMode.TocAnchored;
+        // Kiểm TRƯỚC ký hiệu hành chính: "Điều 5." cũng khớp mẫu "\d+\." của lớp hành chính.
+        if (legalRatio >= LegalThreshold) return DocumentMode.VietnameseLegal;
         if (adminRatio >= AdministrativeThreshold) return DocumentMode.VietnameseAdministrative;
         if (styledCount > 0 && typedRatio >= TypedNumberThreshold) return DocumentMode.TypedNumbering;
         if (styledCount > 0 && numberingRatio >= NumberingThreshold) return DocumentMode.NumberingDriven;
         if (styledCount > 0) return DocumentMode.CustomStyle;
+        if (customStyle) return DocumentMode.CustomStyle;
         return formatDiffers ? DocumentMode.FormatDriven : DocumentMode.SemanticOnly;
     }
 
@@ -173,6 +206,40 @@ public static class DocumentModeClassifier
                              (p.Bold != baseline.Bold ||
                               (p.FontSizePt is { } s && baseline.Size is { } b && Math.Abs(s - b) >= 1)));
     }
+
+    /// <summary>
+    /// Tài liệu dùng style TÊN TỰ ĐẶT (không thuộc họ <c>Heading*</c>) làm đề mục — spec §4.2/§4.3,
+    /// phổ biến với template cơ quan (<c>Tieu de 1</c>, <c>Muc cap 2</c>, <c>Chuong</c>). Mọi luật
+    /// khớp theo tên họ <c>Heading*</c> đều trượt hoàn toàn trên nhóm này.
+    /// <para>
+    /// Bốn điều kiện của spec, đo trên chính style đó: lặp ≥ <see cref="CustomStyleMinimumUses"/>
+    /// lần, độ dài trung bình &lt; <see cref="CustomStyleMaxLength"/> ký tự, và phần lớn đứng ngay
+    /// trước một đoạn dài. Thiếu vế cuối thì style thân bài cũng lọt.
+    /// </para>
+    /// </summary>
+    private static bool HasCustomHeadingStyle(IReadOnlyList<SlimParagraph> body)
+    {
+        var longFollows = new HashSet<int>();
+        for (var i = 0; i + 1 < body.Count; i++)
+            if (body[i + 1].Text.Length > BodyTextMinLength) longFollows.Add(body[i].Index);
+
+        return body
+            .Where(p => !p.HasBuiltInHeadingStyle && !string.IsNullOrWhiteSpace(p.StyleId))
+            .GroupBy(p => p.StyleId!, StringComparer.OrdinalIgnoreCase)
+            .Any(g => g.Count() >= CustomStyleMinimumUses &&
+                      g.Average(p => p.Text.Length) < CustomStyleMaxLength &&
+                      g.Count(p => longFollows.Contains(p.Index)) >= g.Count() * CustomStyleFollowShare);
+    }
+
+    public const int CustomStyleMinimumUses = 5;
+    public const int CustomStyleMaxLength = 90;
+    public const double CustomStyleFollowShare = 0.6;
+
+    /// <summary>Số mục lục tối thiểu để coi tài liệu là <c>toc-anchored</c> — spec §4.2 dùng 5.</summary>
+    public const int TocAnchorMinimum = 5;
+
+    public static bool IsLegalMarker(string text) =>
+        !string.IsNullOrWhiteSpace(text) && LegalMarkers.Any(rx => rx.IsMatch(text));
 
     public static bool IsAdministrativeMarker(string text) =>
         !string.IsNullOrWhiteSpace(text) && AdministrativeMarkers.Any(rx => rx.IsMatch(text));

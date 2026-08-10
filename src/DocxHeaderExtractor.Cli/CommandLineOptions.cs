@@ -141,6 +141,9 @@ public sealed class CommandLineOptions
                 case "--bare-labels": extraction.AllowBareLabelledNumbers = true; break;
                 case "--mode-only": extraction.ReportModeOnly = true; break;
                 case "--flag-repeated-labels": extraction.FlagRepeatedLabels = true; break;
+                case "--skip-corrupt": extraction.SkipCorruptParagraphs = true; break;
+                case "--skip-data-tables": extraction.SkipDataTables = true; break;
+                case "--audit-sibling-shape": extraction.AuditSiblingShape = true; break;
                 case "--style-trust": extraction.UseStyleTrust = true; break;
 
                 case "-q" or "--quiet": o.Quiet = true; break;
