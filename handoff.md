@@ -3260,3 +3260,61 @@ Không có đáp án chế độ cho 95 file. "19% dự phòng" chỉ nói **lu�
 **gán đúng hay sai**. Thư mục thể loại là tín hiệu ngoài yếu — nó xác nhận được `vn-legal` và bác
 được `vn-administrative`, thế thôi. Con số duy nhất còn được bảo chứng bằng đáp án người kiểm vẫn
 là ba tài liệu ở `keys/`.
+
+## §49. Giả thuyết "tín hiệu rời nhau" — dự đoán đúng một nửa, cài đặt hỏng cả hai lần
+
+Đề xuất: `1.1` xuất hiện ở CẢ hành chính lẫn số gõ tay nên sức phân biệt bằng 0; bỏ nó khỏi
+`AdministrativeMarkers` thì hai tập tín hiệu rời nhau và thứ tự nhánh không còn ảnh hưởng. Kèm
+sáu dự đoán đặt TRƯỚC khi chạy — đúng cách, vì nhờ vậy nó bác bỏ được.
+
+### 49.1 Kết quả sáu dự đoán
+
+| dự đoán | kết quả |
+|---|---|
+| `04_giao_trinh` → Typed đa số | ✅ **13/15 Typed** (trước: VnAdmin 11) |
+| `05_bien_ban_hop` → không đổi | ✅ FormatDriven 10 |
+| `01_phap_quy` → không đổi | ⚠️ Legal 14 và SemanticOnly 6 giữ nguyên, nhưng 5 VnAdmin bay đi |
+| `06_dich_song_ngu` → Typed đa số | ❌ **FormatDriven 8**, Typed 1 |
+| `03_tai_chinh_ke_toan` → chia đôi | ❌ **không chia** — Typed 13, VnAdmin 0 |
+| `07_system_generated` → không chắc | Typed 5 |
+
+Dự đoán quan trọng nhất **đúng**: giáo trình thoát khỏi `VietnameseAdministrative`. Nguyên lý
+"tín hiệu dùng chung không mang thông tin phân biệt" được xác nhận.
+
+### 49.2 Nhưng cả hai lần cài đều xoá sổ chế độ hành chính
+
+`VietnameseAdministrative` = **0/95** ở cả hai lần thử, và nhánh dự phòng tăng ngược
+19% → **34%**. Nguyên nhân đo được, không phải phỏng đoán:
+
+```
+bo 2 mau -> ty le hanh chinh cao nhat tren ca 95 tai lieu = 0,129  <  nguong 0,15
+```
+
+`AdministrativeThreshold = 0.15` được hiệu chỉnh cho bộ **BỐN** mẫu (chính docstring của nó ghi
+"ngưỡng 0,15 bắt 14/18 tài liệu hành chính"). Bỏ hai mẫu số làm tử số giảm ~10 lần, nên ngưỡng
+trở thành **bất khả thi** — không tài liệu nào CÓ THỂ đạt, chứ không phải không tài liệu nào
+tình cờ đạt. `VietnameseAdministrative` thành nhánh chết.
+
+Lần thử thứ hai tách vai trò (La Mã/chữ cái làm bộ PHÂN BIỆT, bộ bốn mẫu làm thước đo ĐỘ MẠNH,
+giữ nguyên ngưỡng) cho phân bố **y hệt** — nên điều kiện `adminCount >= 3` mới là chỗ chặn, chứ
+không phải ngưỡng tỉ lệ. Cả hai lần đều không dùng được.
+
+### 49.3 Bài học: đổi định nghĩa không bao giờ miễn phí
+
+Lập luận "đây là câu hỏi định nghĩa, trả lời từ spec, không cần đáp án" **đúng một nửa**:
+
+- Phần **định nghĩa** đúng, và dự đoán giáo trình chứng minh điều đó.
+- Phần **ngưỡng** vẫn là thực nghiệm. Mọi hằng số đã hiệu chỉnh đều sống trên một THANG do chính
+  tập tín hiệu quy định. Đổi tập tín hiệu là đổi thang, tức làm mọi hằng số phía sau mất hiệu
+  lực — kể cả khi định nghĩa mới đúng hơn định nghĩa cũ.
+
+Nên "sửa định nghĩa" và "giữ nguyên ngưỡng" là **hai biến đổi cùng lúc**, dù nhìn như một.
+
+### 49.4 Đã trả về trạng thái đã đo
+
+`git checkout` `DocumentModeClassifier.cs` về `8258036`: VnAdmin 46, Legal 14, FormatDriven 12,
+OutlineLevelDriven 10, Typed 7, SemanticOnly 6. 384 test xanh. Trạng thái này vẫn có khuyết tật
+đã ghi ở §48.2 (VnAdmin quá rộng), nhưng nó là khuyết tật ĐÃ ĐO, còn trạng thái kia là nhánh chết.
+
+**Thứ mở khoá:** ba file giáo trình có nhãn chế độ người kiểm. Có chúng thì hiệu chỉnh lại được
+ngưỡng trên tập tín hiệu mới, và giả thuyết §49 dùng được ngay — nó đã đúng ở phần khó nhất.
