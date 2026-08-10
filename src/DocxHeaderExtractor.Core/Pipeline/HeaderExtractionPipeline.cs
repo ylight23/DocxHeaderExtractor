@@ -858,6 +858,12 @@ public sealed class HeaderExtractionPipeline : IDisposable
         if (tocPinned > 0) Log($"Mục lục của tài liệu pin lại {tocPinned} cấp.");
 
         // Chạy SAU khi cấp đã chốt: điều kiện "có anh em liền kề cùng cấp" chỉ đúng khi cấp đã đúng.
+        if (_options.Extraction.AuditSiblingShape)
+        {
+            var odd = SiblingShapeAudit.Apply(result, slim);
+            if (odd > 0) Log($"Hình dạng anh em: {odd} mục lệch bất thường so với mục cùng cha.");
+        }
+
         if (_options.Extraction.FlagRepeatedLabels)
         {
             var labels = RepeatedLabelAudit.Apply(result, slim);

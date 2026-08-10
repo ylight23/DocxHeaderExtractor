@@ -67,6 +67,27 @@ public sealed class ExtractionOptions
     /// </summary>
     public bool FlagRepeatedLabels { get; set; }
 
+    /// <summary>
+    /// Loại đoạn HỎNG (ký tự bị nhân đôi) khỏi tập ứng viên — spec §5.1 luật X1.
+    /// <para>MẶC ĐỊNH TẮT: chưa gặp ca nào trên corpus đang đo, nên bật mặc định là đổi hành vi mà
+    /// không có số đỡ. Cờ tồn tại để đo khi gặp tài liệu có đoạn hỏng.</para>
+    /// </summary>
+    public bool SkipCorruptParagraphs { get; set; }
+
+    /// <summary>
+    /// Loại đoạn nằm trong bảng DỮ LIỆU khỏi tập ứng viên — spec §5.5. Bảng dàn trang và bảng nội
+    /// dung vẫn xét bình thường.
+    /// <para>MẶC ĐỊNH TẮT: loại bảng sai là chỗ mất dữ liệu lớn nhất theo chính spec (40 heading
+    /// trên tài liệu D), nên phải có số đo trước khi bật.</para>
+    /// </summary>
+    public bool SkipDataTables { get; set; }
+
+    /// <summary>
+    /// Đánh dấu mục lệch hình dạng so với anh em cùng cha — xem <see cref="Pipeline.SiblingShapeAudit"/>.
+    /// <para>MẶC ĐỊNH TẮT: chỉ đánh dấu để đẩy lên phản biện, chưa có số đo trên corpus hiện có.</para>
+    /// </summary>
+    public bool AuditSiblingShape { get; set; }
+
     /// <summary>Lệnh `xml --mode-only`: chỉ in chế độ tài liệu đo được, không dựng gì thêm.</summary>
     public bool ReportModeOnly { get; set; }
 

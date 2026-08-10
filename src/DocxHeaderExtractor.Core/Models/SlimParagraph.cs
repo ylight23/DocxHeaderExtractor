@@ -130,6 +130,19 @@ public sealed class SlimParagraph
     /// </para>
     /// </summary>
     public bool InContentControl { get; init; }
+
+    /// <summary>
+    /// Đoạn hỏng trong chính file nguồn — ký tự bị nhân đôi do hai luồng run xen kẽ. Spec §3.6,
+    /// xem <see cref="OpenXmlLayer.CorruptParagraphDetector"/>. Ghi lại vô điều kiện; việc loại nó
+    /// khỏi tập ứng viên nằm sau cờ <c>--skip-corrupt</c>.
+    /// </summary>
+    public bool Corrupt { get; set; }
+
+    /// <summary>
+    /// Vai trò của BẢNG chứa đoạn này — spec §5.5. Xem <see cref="OpenXmlLayer.TableRoleClassifier"/>.
+    /// Ghi lại vô điều kiện; việc loại bảng dữ liệu nằm sau cờ <c>--skip-data-tables</c>.
+    /// </summary>
+    public OpenXmlLayer.TableRole TableRole { get; set; }
     public int? NumberingLevel { get; init; }
 
     /// <summary>Nhãn numbering Word đã dựng từ numbering.xml, ví dụ "2.3." hoặc "IV.".</summary>

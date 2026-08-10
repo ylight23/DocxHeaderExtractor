@@ -153,6 +153,22 @@ public static class HeadingHeuristics
         // Khối w:sdt của Word: mục lục tự động, form, vùng nội dung có cấu trúc. Xem
         // ExtractionOptions.SkipContentControls — 21/129 ứng viên nằm ở đây và không mục nào là
         // đề mục thật. Chỉ HẠ vai trò, không xoá đoạn: nó vẫn là ngữ cảnh cho các đoạn khác.
+        // X1 cua spec §5.1: doan hong loai TRUOC moi luat thu nhan.
+        if (options.SkipCorruptParagraphs && p.Corrupt)
+        {
+            p.Role = ParagraphRole.Normal;
+            p.Score = 0;
+            return;
+        }
+
+        // Bang DU LIEU khong chua de muc — spec §5.5. Bang LAYOUT va CONTENT thi van xet binh thuong.
+        if (options.SkipDataTables && p.TableRole == TableRole.Data)
+        {
+            p.Role = ParagraphRole.Normal;
+            p.Score = 0;
+            return;
+        }
+
         if (options.SkipContentControls && p.InContentControl)
         {
             p.Role = ParagraphRole.Normal;

@@ -55,6 +55,21 @@ public class DocumentModeTests
         Assert.Equal(DocumentMode.SemanticOnly, mode.Mode);
     }
 
+    /// <summary>
+    /// Văn bản quy phạm pháp luật dùng hệ <c>Chương / Điều</c> — phải tách khỏi hành chính, vì
+    /// <c>Điều 5.</c> cũng khớp mẫu <c>\d+\.</c> của lớp hành chính nên bị bắt nhầm nếu không kiểm
+    /// trước. Đo trên corpus: 3/3 tài liệu bản Python gán <c>vn-legal</c> nay khớp đúng.
+    /// </summary>
+    [Fact]
+    public void Van_ban_phap_luat_tach_khoi_hanh_chinh()
+    {
+        var mode = Measure(
+            P("Chương I"), P("Điều 1. Phạm vi điều chỉnh"), P("Điều 2. Đối tượng áp dụng"),
+            P("Điều 3. Giải thích từ ngữ"), P(Body), P(Body));
+
+        Assert.Equal(DocumentMode.VietnameseLegal, mode.Mode);
+    }
+
     private const string Body =
         "Phần thân bài trình bày phạm vi áp dụng và các bước thực hiện của quy trình này, kèm ví dụ " +
         "minh hoạ cho từng bước để người đọc đối chiếu khi triển khai thực tế, và nêu rõ trách nhiệm " +

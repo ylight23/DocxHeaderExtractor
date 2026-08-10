@@ -55,6 +55,7 @@ public sealed class DocxSlimExtractor
         // Style của TÀI LIỆU NÀY có đáng tin không — chấm sau lượt Classify đầu vì vế "trông không
         // phải đề mục" dùng lại chính các luật hình dạng ở đó. Không tin thì chấm LẠI, lần này style
         // không được thoát sớm; đoạn vẫn giữ bằng chứng, chỉ mất quyền phủ quyết. Xem StyleTrustAudit.
+        TableRoleClassifier.Apply(paragraphs);
         var styleTrust = StyleTrustAudit.Measure(paragraphs);
 
         // Đếm TRƯỚC khi hạ quyền. Các luật hình dạng bên dưới chỉ chạy trên tài liệu "có đánh dấu
@@ -146,6 +147,7 @@ public sealed class DocxSlimExtractor
             Index = index,
             StableId = walked.StableId,
             InContentControl = p.Ancestors<SdtElement>().Any(),
+            Corrupt = CorruptParagraphDetector.IsDoubled(text),
             Text = text,
             TextSpans = textSpans,
             LineBreakOffsets = built.LineBreaks,
