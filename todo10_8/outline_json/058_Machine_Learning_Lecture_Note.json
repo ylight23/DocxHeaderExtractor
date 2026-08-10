@@ -1,0 +1,1191 @@
+{
+ "file": "058_Machine_Learning_Lecture_Note.docx",
+ "mode": "UNCLASSIFIED",
+ "outline": [
+  {
+   "_idx": 0,
+   "block_id": "p0",
+   "marker": null,
+   "rank": null,
+   "num": "",
+   "prefix": "",
+   "heading": "058_Machine_Learning_Lecture_Note.pdf",
+   "body": null,
+   "split_src": "từ khóa",
+   "confidence": 0.7,
+   "flags": [],
+   "why": [
+    "đậm"
+   ],
+   "merged_from": null,
+   "level": 1,
+   "parent_id": null
+  },
+  {
+   "_idx": 12,
+   "block_id": "p23",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.1",
+   "prefix": "2.1.",
+   "heading": "CLASSIFICATION 7 the true outcome y, i.e., e([x, y], ∅, θ), is lower than the energy associated with any other y ′ ̸= y. This goal can then be written down as satisfying the following inequality",
+   "body": "e([x, y], ∅, θ) ≤ e([x, ŷ ′ ], ∅, θ) − m, (2.9) where m > 0 and ŷ ′ = arg ′ min e([x, y ′ ], ∅, θ). (2.10) y ∈Y\\{y} By rearranging terms in this inequality we get m + e([x, y], ∅, θ) − e([x, ŷ ′ ], ∅, θ) ≤ 0. (2.11) In order to satisfy this inequality, we need to minimize the left hand side (l.h.s.) until it hits 0. We do not need to further minimize l.h.s. after hitting 0, since the inequality is already satisfied. This translates to the following so-called margin loss (or a hinge loss): Lmargin ([x, y], θ) = max(0, m + e([x, y], ∅, θ) − e([x, ŷ ′ ], ∅, θ)). (2.12) This loss is called a margin loss, because it ensures that there exists at least the margin of m between the energy values of the correct outcome y and the second best outcome ŷ ′ . The margin loss is at the heart of support vector ma- chines [Cortes, 1995]. Consider the case where m = 0: Lperceptron ([x, y], θ) = max(0, e([x, y], ∅, θ) − e([x, ŷ ′ ], ∅, θ)). (2.13) If y = ŷ (not ŷ ′ ), the loss is already minimized at 0, since e([x, y], ∅, θ) < e([x, ŷ ′ ], ∅, θ). (2.14) In other words, if a given example [x, y] is already correctly solved, we do not need to change θ for this example. We only update θ when y ̸= ŷ. This loss is called a perceptron loss and dates back to 1950’s [Rosenblatt, 1958]. 2.1.2 Softmax and cross entropy loss It is often convenient to rely on the probabilistic framework, since it allows us to use a large set of tools developed for probabilistic inference and statistical techniques. As an example of doing so, we will now derive a probabilistic classi- fier from the energy function e([x, y], ∅, θ). The first step is to turn this energy function into a Categorical distribution over Y given the input x. Let pθ (y|x) be the Categorical probability of y given x. There are two major constraints that must be satisfied: 1. Non-negativity: pθ (y|x) ≥ 0 for all y ∈ Y.",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 14,
+   "block_id": "p27",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.1",
+   "prefix": "2.1.",
+   "heading": "CLASSIFICATION 9 Let us first compute the partial derivative of J with respect to pi and set it to 0",
+   "body": "∂J = −ai − log pi − 1 + λi + γ = 0 (2.21) ∂pi ⇐⇒ log pi = −ai + λi − 1 + γ (2.22) ⇐⇒ pi = exp(−ai + λi − 1 + γ) > 0. (2.23) We notice that pi is already greater than 0 at this extreme point, meaning that the first constraint pi ≥ 0 is already satisfied. We can just set λi to any arbitrary value, and we will pick 0, i.e., λi = 0 for all i = 1, . . . , d. This results in pi = exp(−ai ) exp(−1 + γ). (2.24) Let us now plug it into the second constraint and solve for γ: d X exp(−1 + γ) exp(−ai ) = 1 (2.25) i=1 d X ⇐⇒ − 1 + γ + log exp(−ai ) = 0 (2.26) i=1 d X ⇐⇒ γ = 1 − log exp(−ai ). (2.27) i=1 By plugging it into pi above, we get d X pi = exp(−ai ) exp(−1 + 1 − log exp(−aj )) (2.28) j=1 exp(−ai ) = Pd . (2.29) j=1 exp(−aj ) This formulation is often referred to as softmax [Bridle, 1990]. Now, we have the Categorical probability pi = pθ (y = i|x). We can then define an objective function under the probabilistic framework, as X Lce ([x, y]; θ) = − log pθ (y|x) = e([x, y], ∅, θ) + log exp(−e([x, y ′ ], ∅, θ)). y ′ ∈Y (2.30) We often call this a cross-entropy loss, or equivalently negative log-likelihood. Unlike the margin and perceptron losses from above, it is more informative",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 16,
+   "block_id": "p31",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.2",
+   "prefix": "2.2.",
+   "heading": "BACKPROPAGATION 11 correct outcome y while increasing the energy value associated with the current prediction ŷ. This continues until the prediction matches the correct outcome. These two extreme cases tell us what happens with the cross entropy loss. It softly adjust the energy values associated with all possible outcomes however based on how likely they are to be the prediction. The cross entropy loss has become more or less de facto standard when it comes to training a neural network in recent years. 2.2 Backpropagation Once you decide the loss function, it is time for us to train a classifier to minimize the average loss. In doing so, one of the most effective approaches has been stochastic gradient descent, or its variant. Stochastic gradient descent, which we will discuss more in-depth later, takes a subset of training instances from D, computes and averages the gradients of the loss of each instance in this subset and updates the parameters in the negative direction of this stochastic gradient. This makes it both interesting and important for us to think of how to compute the gradient of a loss function. Let us consider both the margin loss and cross entropy loss, since there is no meaningful gradient of the zero-one loss function and the perceptron loss is a special case of the margin loss",
+   "body": "( ∇θ e([x, y], ∅, θ) − ∇θ e([x, ŷ ′ ], ∅, θ), if Lmargin ([x, y], θ) > 0. ∇θ Lmargin ([x, y], θ) = 0, otherwise. (2.37) ∇θ Lce ([x, y], θ) = ∇θ e([x, y], ∅, θ) − Ey|x;θ [∇θ e([x, y ′ ], ∅, θ))] . (2.38) In both cases, the gradient of the energy function shows up: ∇θ e([x, y], ∅, θ)). We thus focus on the gradient of the energy function in this case. 2.2.1 A Linear Energy Function Let us start with a very simple case we considered earlier. We assume that x is a real-valued vector of d dimensions, i.e., x ∈ Rd . We will further assume that y takes one of K potential values, i.e., y ∈ {1, 2, . . . , K}. The parameters θ consist of   w1  w2  1. The weight matrix W =  .  ∈ RK×d    ..  wK   b1  b2  2. The bias vector b =  .  ∈ RK    ..  bK",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 18,
+   "block_id": "p35",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.2",
+   "prefix": "2.2.",
+   "heading": "BACKPROPAGATION 13 At this point, we start to see that the derivation and argument above equally apply to x, the input. Instead of the gradient of the energy w.r.t. the weight vector wy , but we can compute that w.r.t. the input x as well",
+   "body": "∇x e = −wy , assuming that x is continuous and the energy function is differentiable w.r.t. x. By following the (opposite of the) gradient in the input space, we can alter the loss function, instead of modifying the weight vectors and biases. Of course this is absolutely the opposite of what we are trying to do here, since the main goal is to find a classifier that classifies a given input x into the correct category y. This perspective however leads us naturally to the idea of backpropagation [Rumelhart et al., 1986]. 2.2.2 A Nonlinear Energy Function Instead of adjusting the weight vector W and the bias vector b, we can adjust the input x directly in order to modify the associated energy value. More specifically, with the perceptron loss, that is the margin loss with zero margin, when the prediction is incorrect, i.e. y ̸= ŷ, the gradient of the perceptron loss with respect to the input x is4 ∇x Lperceptron ([x, y], θ) = ∇x e([x, y], θ) − ∇x e([x, ŷ], θ) = −wy + wŷ . (2.47) Similarly to the weight matrix and bias vector above, if we update the input x following the opposite of this direction, we can increase the energy value associated with the correct outcome y while lowering that with the incorrectly- predicted outcome ŷ. Although this is generally useless with a linear energy function, as we discussed just now, this is an interesting thought experiment, as this tells us that we can solve the problem either by adapting the parameters, i.e. the weight matrix and bias vector, or by adapting the input data points themselves. The latter sounds like an attractive alternative, because it would break us free from being constrained by the linearity of the energy function. There is however a major issue with the latter alternative. That is, we do not know how to change the new input in the future (not included in the training set), since such a new input may not come together with the associated correct outcome. We thus need to build a system that predicts what the altered input would be given a new input in the future. To overcome this issue, we start by using some transformation h of the input x, with its own parameters θ′ , instead of the original input x. That is, h = F (x, θ′ ). Analogously, we refer to the newly updated input by ĥ. We obtain ĥ by following the gradient direction from Eq. (2.47). We now define a new energy function e′ such that the combination (h, ĥ) is assigned a lower energy than the other combinations if h and ĥ are close to each other. Under this energy function, the energy is low if this transformation of the input h = F (x, θ′ ) is 4 When it is clear that there is no latent (unobserved) variable z, I will skip φ for brevity.",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 20,
+   "block_id": "p39",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.2",
+   "prefix": "2.2.",
+   "heading": "BACKPROPAGATION 15 xi hj is subtracted from uij . This term tells us how strongly the value of xi is reflected on the value of hj . Since hj is now being updated away, the effect of xi on the j-th dimension of the transformation via uij must be reduced. On the other hand, the second term xi ĥj does the opposite. It states that the effect of xi on the j-th dimension of the transformation, according to the newly updated value ĥj , must be reflected more on uij . If the new value of the j-th dimension has the same sign as xi , uij should tend toward the positive value. Otherwise, it should tend toward the negative value. We can now imagine a procedure where we alternate between computing ĥ and updating U and c to match ĥ. Of course, this procedure may not be optimal, since there is no guarantee (or it is difficult to obtain any guarantee) that repeatedly updating U and c following the gradient of the second energy function leads to improvement in the overall loss when h = σ(U ⊤ x + c) is used in place of the target ĥ. When the second energy function is truly minimized so that σ(U ′⊤ x + c′ ) coincides with ĥ, the loss will be smaller than the original h = σ(U ⊤ x + c). It is however unclear whether the loss will be smaller until this minimum is achieved. Instead, we can think of a procedure in which we update U and c directly without producing ĥ as an intermediate quantity. Assume we take just a unit step to update ĥ",
+   "body": "ĥ = h + (wy − wŷ ) (2.54) ⇐⇒ ĥ − h = −∇h L(h). (2.55) That is, we use the learning rate (or step size) of 1. Then, ⊤ ∇U = x (∇h L(h) ⊙ h′ ) (2.56) ′ ∇c = ∇h L(h) ⊙ h . (2.57) In other words, we can skip computing ĥ and directly compute the gradients of the loss w.r.t. U and c using the gradient w.r.t. h. Just like what we did with h (or originally x), we can check how we would change this new x to minimize the second energy function e′ . This is done by computing the gradient of e′ w.r.t. x: ∇x = U (h − ĥ) ⊙ h′ , (2.58) which is similar to the gradient w.r.t. U . If we replace (h − ĥ) with ∇h L(h), we get ∇x = U (∇h L(h) ⊙ h′ ) . (2.59) It is the third time we are discussing it, but yes, we know what h′ does here: it decides the sign of the update. If we ignore h′ by simply assuming that σ",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 22,
+   "block_id": "p43",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.3",
+   "prefix": "2.3.",
+   "heading": "STOCHASTIC GRADIENT DESCENT 17 backpropgation. This can be generalized to any computation graph without any loops (though, loops can be unrolled for a finite number of cycles in practice) and is a special case of automatic differentiation [Baydin et al., 2018], called reverse-mode automatic differentiation. Because reverse-mode automatic differentiation is efficient both in terms of computation and memory (both linear), it is universally used for computing the gradient and is well-implemented in many widely used deep learning tools, such as PyTorch and Jax. This universality implies that once we decide on a loss function and an energy function such that the loss function is differentiable w.r.t. the parameters of the energy function, we can simply assume the gradient would be readily available. 2.3 Stochastic Gradient Descent Once we have defined an energy function and an associated loss function, we can compute the gradient of this loss function w.r.t. the parameters. With the gradient, we can update the parameters repeatedly so that we can minimize the loss function. It is important to observe that we have defined the loss function for each individual training example, and eventually our goal becomes minimizing the average of the loss of all training examples. For a random reason, we will use fi (θ) to denote the loss function of the i-th example at θ, and thereby the overall loss is N 1 X f (θ) = fi (θ). (2.68) N i=1 When the overall loss is the average (or sum) of the individual loss functions, we say that the loss is decomposable. We can view such an overall loss function as computing the expected indi- vidual loss function",
+   "body": "f (θ) = Ei [fi (θ)] , (2.69) where i ∼ U(1, . . . , N ). Of course, we can replace this uniform distribution with an arbitrary data distribution and write this as f (θ) = Ex∼pdata [f (x; θ)] , (2.70) although we will for now stick to the uniform indexing over the training set. With Eq. (2.69), we also get ∇f = Ei [∇fi ] , (2.71) because the expectation over a finite, discrete random variable can be written down using a finite sum. There are two constants we should consider when deciding how we are going to minimize f w.r.t. θ. They are the number of training examples N and the",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 24,
+   "block_id": "p47",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.3",
+   "prefix": "2.3.",
+   "heading": "STOCHASTIC GRADIENT DESCENT 19 2.3.1 Descent Lemma We start by stating and proving one of the most fundamental results in opti- mization, called the descent lemma. According to the descent lemma, the fol- lowing inequality holds when ∇f is an L-Lipschitz continuous function, i.e., ∥∇f (x) − ∇f (y)∥ ≤ L∥x − y∥",
+   "body": "L f (y) ≤ f (x) + ∇f (x)⊤ (y − x) + ∥y − x∥2 . (2.74) 2 This inequality allow us to upper-bound the value of a function at a point y given the value as well as the gradient at another point x. Let g(t) = f (x + t(y − x)) so that g(0) = f (x) and g(1) = f (y). Then, Z 1 Z 1 f (y) − f (x) = g(1) − g(0) = g ′ (u)du = ∇f (x + t(y − x))⊤ (y − x)dt. 0 0 (2.75) By subtracting ∇f (x)⊤ (y − x) from both sides, we get Z 1 ⊤ f (y) − f (x) − ∇f (x) (y − x) = (∇f (x + t(y − x)) − ∇f (x))⊤ (y − x)dt. 0 (2.76) We can upperbound it using the Cauchy-Schwarz inequality, i.e. a⊤ b ≤ ∥a∥∥b∥: Z 1 ⊤ f (y) − f (x) − ∇f (x) (y − x) ≤ ∥∇f (x + t(y − x)) − ∇f (x)∥∥y − x∥dt. 0 (2.77) We can use the assumption above that ∇f is an L-Lipschitz function to simplify it into Z 1 ⊤ L f (y) − f (x) − ∇f (x) (y − x) ≤ Lt∥y − x∥2 dt = ∥y − x∥2 , (2.78) 0 2 which is in turn L f (y) ≤ f (x) + ∇f (x)⊤ (y − x) + ∥y − x∥2 . (2.79) 2 If we assume that N is not too large, we can compute the gradient exactly and update the parameters following the negative gradient direction: θt+1 = θt − αt ∇f (θt ) (2.80) ⇐⇒ θt+1 − θt = −αt ∇f (θt ) (2.81) Let us plug (θt , θt+1 ) into (x, y) in the descent lemma: L f (θt+1 ) ≤ f (θt ) − αt ∥∇f (θt )∥2 + αt2 ∥∇f (θt )∥2 (2.82) 2 L 2 = f (θt ) − (αt − αt )∥∇f (θt )∥2 . (2.83) 2",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 26,
+   "block_id": "p51",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.3",
+   "prefix": "2.3.",
+   "heading": "STOCHASTIC GRADIENT DESCENT 21 convergence rate(s) of stochastic gradient descent are out of the scope of this course. In summary, we use stochastic gradient descent in modern machine learning, and with a small learning rate stochastic gradient descent exhibits the descent property on expectation. We will therefore worry less and rely on stochastic gradient descent throughout the course. 2.3.3 Adaptive Learning Rate Methods Although we have approached the problem of stochastic optimization by stating that we follow the (negative) stochastic gradient estimate at each update, it is not necessarily the only way to view this problem. We can instead view the problem of learning as online optimization. In online optimization, or online learning, we play a game in which at each turn t we receive the stochastic gradient estimate gt = ∇θ fit (θt−1 ) and use it to update our estimate of the parameters, θt−1 , gt → θt . We receive the penalty as the difference between the stochastic estimate of the loss at the updated parameter and that at the optimal parameter configuration,6 i.e., fit (θt ) − fit (θ∗ ). We call this penalty a regret, since this quantifies how much better we could’ve done in hindsight (that is, regret.) The goal is to minimize the regret over time",
+   "body": "T X R(T ) = fit (θt ) − fit (θ∗ ) . (2.89) t=1 | {z } ≥0 The regret must grow sub-linearly, i.e, R(T ) = o(T ), since linear growth, i.e., R(T ) = O(T ), implies that the learning algorithm is not converging toward the optimal solution (or its associated minimum value.) We (try to) achieve this goal by finding an appropriate update rule that maps θt−1 and gt to θt . In doing so, it is relatively straightforward to think of the following simplified framework, that generalizes stochastic gradient descent: θt ← θt−1 + ηt ⊙ gt , (2.90) where ηt is a collection of learning rates for all parameters.7 By adapting ηt appropriately, we can achieve the sublinear regret. In SGD above, ηt was often √ a scalar, i.e. ηti = ηtj for all i ̸= j. SGD in fact achieves the sublinear regret, O( T ) with ηt = √1T , but it turned out that we can do better either asymptotically or 6 The optimality in this context of online adaptation is defined as the final solution reached by the online optimization procedure. If we follow the direction that is correlated with the gradient, we know that we are making progress on average toward the local extreme configu- ration due to the decent lemma above. We thus know that asymptotically the optimal solution here θ∗ would have a lower loss than any other intermediate points. This makes the online learning perspective different from the optimization perspective from above. 7 It is possible to use a matrix η instead of a vector η , and there could be a good chance that t t we would achieve a better regret bound. Unfortunately, this could increase the computationally complexity dramatically for each update, from O(|θ|) to O(|θ|2 ), which can be prohibitive in many modern applications.",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 28,
+   "block_id": "p55",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.4",
+   "prefix": "2.4.",
+   "heading": "GENERALIZATION AND MODEL SELECTION 23 where α ∈ (0, 1] is a default √ step size. Adam also has O( T ) regret and exhibits an overall similar asymptotic behaviour to Adagrad. Adam is however often favoured over Adagrad, because the per-parameter learning rate is not monotonically decreasing anymore. Since it was proposed earlier, there have been a number of improvements to Adam, although they are out of the scope of this course. Overall, whenever we refer to stochastic gradient descent in the rest of the course, we are generally referring to Adam or its variants that adaptively update the learning rate of each parameter on the fly. Although it is just a folk wisdom, quite a few researchers, including myself, attribute the recently-observed surpris- ing successes of many conventional machine learning algorithms with gradient- descent optimization to these adaptive learning rate algorithms. 2.4 Generalization and Model Selection 2.4.1 Expected risk vs. empirical risk",
+   "body": "a generalization bound A risk is another word we use to refer to the loss. In this section, we will use risk instead of loss, as the former is more often used in this particular context. If you are confused by the term “risk”, simply read it out loud as “loss” whenever you run into it. For each example (x, y), we now know how to construct an energy function and also an associate loss function L([x, y], θ). Let pdata (x, y) be some unknown distribution from which we draw an example (x, y). We do not know what this distribution is, but we assume that this is the distribution from which the training examples were drawn and any future instance would be drawn as well.8 Then, our goal must be to minimize R(θ) = Edata [L([x, y], θ)] . (2.96) Unfortunately, this expected risk is not computable, and we only have access to a sample-based proxy to the expected risk, called the empirical risk: N 1 X R̂(θ) = L([xn , y n ], θ). (2.97) N n=1 Pn k For brevity and clarity, let Sn = k=1 L([x , y k ], θ). Then, we can express these risks as 1 1 R(θ) = Edata×···×data SN , and R̂(θ) = SN . (2.98) N N The former holds because each instance (x, y) is drawn independently from the same data distribution. 8 This is certainly not true in reality but is a reasonable starting point. We will discuss later in the course what we can do if this assumption does not hold, hopefully if time permits.",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 30,
+   "block_id": "p59",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.4",
+   "prefix": "2.4.",
+   "heading": "GENERALIZATION AND MODEL SELECTION 25 1 − δ, we equate the right-hand side above with δ",
+   "body": "2 exp(−2N ϵ2 ) = δ (2.101) δ ⇐⇒ − 2N ϵ2 = log (2.102) 2 1 2 ⇐⇒ ϵ2 = log (2.103) r 2N δ 1 2 ⇐⇒ ϵ = log . (2.104) 2N δ Combining these two together, we can now state that with probability at least 1 − δ, we have r 1 2 R(θ) < R̂(θ) + log . (2.105) 2N δ given the model parameter θ. This generalization bound makes sense. If we want to get a strong guarantee, i.e., (1 − δ) → 1 (equivalently q δ → 0), we end up with a much loser bound, since the bound is O( log 1δ ). We can counter this by collecting more training 1 examples, i.e., N → ∞, since the bound shrinks rapidly as N grows: O(N − 2 ). This bound looks reasonable, but there is a catch. The catch is that this is based on a single, given model θ. In other words, this bound is too optimistic, as in reality, we often need to choose θ ourselves among many alternatives by the process of learning. In doing so, we need to consider the possibility that we somehow picked one that has the worst generalization gap |R(θ) − R̂(θ)|. In other words, we need to consider the generalization bounds of all possible model parameters. For simplicity, we assume that θ ∈ Θ where Θ is a finite set of size K. Learning is then a process of selecting one of K possible parameter configura- tions based on data. We use the idea of so-called union bound from the basic probability theory, which states that N X p(e1 ∪ e2 ∪ · · · ∪ eN ) ≤ p(ei ). (2.106) i=1 This is somewhat obvious, because a pair (ei , ej ) may not be mutually exclusive. Think of a Venn diagram. With this, we want to compute X p(|R(θ) − R̂(θ)| ≥ ϵ) ≤ 2|Θ| exp −2N ϵ2 . p(∪θ∈Θ |R(θ) − R̂(θ)| ≥ ϵ) ≤ θ∈Θ | {z } =2 exp(log |Θ|−2N ϵ2 ) (2.107) We can follow the exactly same logic above: 2 exp(log |Θ| − 2N ϵ2 ) = δ (2.108) r log |Θ| − log 2δ ⇐⇒ ϵ = . (2.109) 2N",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 32,
+   "block_id": "p63",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.4",
+   "prefix": "2.4.",
+   "heading": "GENERALIZATION AND MODEL SELECTION 27 prior belief. This effect will however vanish rapidly as the number of training examples increases due to N1 . We can read two things from the second term N1 log N δ+1 . Because δ is in the denominator, we know that we would potentially get a greater discrepancy if we want to get a stronger guarantee, that is, δ → 0. log(N N +1) vanishes toward 0 as the data size increases, i.e. N → ∞. The rate of this convergence is however quite slow, i.e. sublinear. Similarly to what we did earlier, we can turn this inequality in Eq. (2.110) into a generalization bound. In particular, we use the Pinsker’s inequality. In our case with Bernoulli random variables, we get 2 1 R̂(Q) − R(Q) ≤ DKL (B(R̂(Q))∥B(R(Q))). (2.113) 2 Then, s 1 N +1 |R̂(Q) − R(Q)| ≤ DKL (Q∥P ) + log . (2.114) 2N δ We end up with the following generalization bound",
+   "body": "s 1 N +1 R(Q) ≤ R̂(Q) + DKL (Q∥P ) + log . (2.115) 2N δ Unlike the earlier generalization bound, and its variants, this PAC-Bayesian bound provides us with more actionable insights. First, we want the posterior distribution Q to be good in that it results in a lower empirical risk on average. It sounds obvious, but the earlier generalization bound was designed to work with any parameter configuration (uniform convergence) and did not tell us what it means to choose a good parameter configuration. With the PAC-Bayesian bound, we already know that we want to choose the parameter configuration so that the empirical risk is low on average. In other words, we should use a good learning algorithm. The posterior distribution Q however cannot be too far away from where we start from. As the bound is a function of the discrepancy between Q and our prior belief P . Flipping the coin around, it also states that we must choose our prior P so that it puts high probabilities on parameter configurations that are likely to be probable under the posterior distribution Q. In other words, we want to ensure that we need a minimum amount of work to go from P to Q, in order to minimize the generalization bound. In summary, the PAC-Bayesian bound tells us that we should have some good prior knowledge of the problem and that we should not train a predictive model too much, thereby ensuring that the posterior distribution Q stays close to the prior distribution P . This will ensure that the expected risk does not deviate too much from the empirical risk.",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 34,
+   "block_id": "p67",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.4",
+   "prefix": "2.4.",
+   "heading": "GENERALIZATION AND MODEL SELECTION 29 There are so many terms we need to consider in this equation, but we will consider them one at a time, from the back. First, let us start with (µy − µ̂y )2 . This term (c) tells us about how well our learner captures the mean of the true output y. This term does not care about how much variance there is either under the data distribution pdata (y|x) nor under the model distribution q(θ). It only talks about getting the outcome correct on average. This term is referred to as a bias. When this term (c) is zero, we call our predictor unbiased. The second term from the back, which is zero, is the (negative) covariance between the true outcome y and the predicted one ŷ(x, θ), both of which are random variables. Because we did not assume anything about q(θ), in general we cannot assume θ is in anyway correlated with y|x, implying that there should not be any covariance. We can ignore this term. Let us continue with the two remaining terms, (a) and (b). The first term (a) is the variance of the true outcome y. This reflect inherent uncertainty present in the true outcome given an input x. This inherent uncertainty cannot be reduced, since it is not what we control but is given to us by the nature of the problem we are tackling. If this quantity is large, there is only so much we can do. We often refer to this as aleatoric uncertainty or irreducible uncertainty. The second term (b) is also uncertainty, as it measures the variance arising from the uncertainty in the model parameters. This uncertainty is however con- trollable and thereby reducible with efforts, since it arises from our uncertainty q(θ) in choosing the parameters θ. When the model is simpler, we tend to have a better grasp at learning and can reduce this reducible (or epistemic) uncertainty greatly. When the model is complex and thereby exhibits many symmetries that must be broken arbitrarily, it is difficult (if not impossible) to reduce this epis- temic uncertainty much. This term is often referred to as variance. It should be quite clear at this point that there must be some inherent trade off between the bias (c) and the variance (b). The more complex a classifier is the higher variance we end up with, but due to its complexity, it would be able to fit data well, resulting in a lower bias. When a classifier is simple, the variance will be lower, but the bias will be higher. Learning can thus be thought of as finding a good balance between these two competing quantities.10 The explanation above is slightly different from a usual way in which bias- variance tradeoff is described [Wikipedia contributors, 2023]. In particular, we are considering a generic distribution q(θ) that may or may not be directly related to any particular training dataset, when the conventional approach often sticks to the strong dependence on the training dataset and the distribution over the training set. This is a minor difference, but this can come in handy when we start thinking about more exotic ways by which we come with q(θ). If time and space permits later in the course, we may learn one or two techniques that involve such exotic techniques, such as transfer learning and multi-task learning. 10 I must emphasize here that the complexity of a classifier is not easy to quantify. When I speak of ‘complex’ or ‘simple’ here, I am referring to this mythical measure of the classifier’s complexity and do not mean that we can compute it easily",
+   "body": null,
+   "split_src": "toàn bộ là heading",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 36,
+   "block_id": "p71",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.4",
+   "prefix": "2.4.",
+   "heading": "GENERALIZATION AND MODEL SELECTION 31 ¯lN is a random variable that refers to the average loss computed over the N examples. In other words, with larger N , we expect that the average accuracy we get from considering N examples is centered at the true average µ with the 2 variance σN . So, the more N , the more confidence we have in trusting that the sample average does not deviate too much from the true average. With small N , however, we cannot be confident that our sample average accuracy is close enough to the true average, and this lack of confidence is proportional to the true variance underlying the accuracy. Unfortunately, we do not have access to the true variance of the accuracy but often can get a rough sense of it by considering the sample variance. If N is large, we can compute the confidence interval11 and use it to compare against another classifier or your prior expectation on the accuracy. For instance, because the accuracy estimate converges to the normal distribution, we can use so-called t-test, since the difference between the true mean and the mean of the estimate converges toward the Student’s t distribution. In that case, the confidence interval for the binary accuracy (simply 1 − l⋆ , where l⋆ is the true loss of the classifier) is given by \" r r # ¯lN (1 − ¯lN ) ¯lN (1 − ¯lN ) ¯ CI ≈ (1 − lN ) − Z ¯ , (1 − lN ) + Z , (2.129) N N where Z is determined based on the target confidence level γ. If γ = 0.99, Z would be approximately 2.576. Let l0 be the accuracy by the existing classifier. We will assume this is the exact quantity because we have been running this classifier for a very long time. We can use this confidence interval to get some sense of whether we want to replace the existing classifier with this new one. If l0 lies comfortably outside this confidence interval, we would feel more comfortable considering this option. This approach focuses on estimating the error rate, and associated confi- dence, given a classifier θ. In other words, the randomness we are considering stems from the choice of the test set D. If we repeatedly obtain new test sets and compute the associated confidence intervals, we anticipate the true accuracy to be included in the confidence interval approximately γ times. This however tells us only one side of the story. Let us consider two additional aspects. Credible interval",
+   "body": "capturing model variations. There are quite a few factors that make our learning algorithm stochastic. First, our objective function tends to have many local minima, arising from reasons such as co-linear features and scaling invariance. For instance, if we use the zero-one loss, the following classifiers are all equivalent: ŷ = arg max α W ⊤ x + b y , α > 0, (2.130) y=1,...,|y| 11 The confidence interval for a quantity with the confidence level γ means that if we repeat the process of inferring the target quantity and measure the confidence interval, the true target quantity would be included in the confidence interval proportional to γ.",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 38,
+   "block_id": "p75",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.4",
+   "prefix": "2.4.",
+   "heading": "GENERALIZATION AND MODEL SELECTION 33 probability γ. Let γ = 1−α for convenience. Then, we are looking for an interval [l, u]",
+   "body": "α α p(¯lN ≤ l|D, D′ ) = and p(¯lN ≥ u|D, D′ ) = . (2.135) 2 2 This credible interval is reasonable when p(¯lN |D, D′ ) is unimodal, but this may not be the case. The probability density may be concentrated in two well- separated sub-regions, in which case this credible interval would be unnecessarily wide and uninformative. In that case, we can try to define a credible region C, which may not be contiguous. The credible region is define to satisfy Z p(¯lN |D, D′ )d¯lN = γ, (2.136) l̄N ∈C p(¯lN |D, D′ ) ≥ p(¯lN ′ |D, D′ ) for all ¯lN ∈ C ∧ ¯lN ′ ∈ / C. (2.137) The second condition is often referred as density dominance. Effectively, the credible region consists of one or more contiguous sub-regions such that no point within these sub-regions have lower densities than any other points outside these regions. By inspecting this credible region, we can get a good sense of how the true accuracy (or error) rate would be with the probability of γ. In practice, we often cannot compute any of those quantities exactly, because the posterior distribution θ|D is tractable nor not even known. Instead, we use Monte Carlo approximation by training models many times, benefitting from the stochasticity in learning. Let {θ1 , . . . , θM } be a set of resulting models. For each θm , we draw a sample of the test loss ¯lN m , resulting in ¯lN 1 , . . . , ¯lN M . We can then use these samples to characterize, understand and analyze how the true test accuracy would be with the learning algorithm given the training and test sets, D and D′ . Capturing training set variations. In addition to the randomness arising from the construction of the test set as well as the learning process itself, there is yet another source of randomness we want to take into account. This source of randomness arises from the construction of the training set D. If we continue from the credible region above, we do not want p(¯lN |D, D′ ) but rather XX p(¯l) = p(¯l|D′ | |D, D′ )p(D)p(D′ )dDdD′ . (2.138) D D′ In words, we want to check the variability of the test-set accuracy ¯l after marginalizing out both training and test sets. Unfortunately, we often do not have access to the distribution over the dataset. Rather, we are only given a single dataset which is split into two data sets; one for training and the other for evaluation. In this case, we can resort to the idea of so-called bootstrap resampling. The idea is simple: (1) we resample N examples from the original set of N training",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 40,
+   "block_id": "p79",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.5",
+   "prefix": "2.5.",
+   "heading": "HYPERPARAMETER TUNING",
+   "body": "MODEL SELECTION 35 or θ̂ = Learn(D ∪ Dval ; Tune(Dval , D; ϵ′ ), ϵ). (2.142) We can furthermore obtain several such models by repeated sampling ϵ.12 We will learn about what we can do with such a case of having multiple models and what it means to have them later when we talk about Bayesian machine learning (if time permits) in §6.2. The question is then how to implement and execute hyperparameter opti- mization in Eq. (2.140). One could be tempted to use gradient-based optimiza- tion here as well, which is perfectly the right first reaction. There is however a major issue. We already saw this issue earlier and had to come up with stochas- tic gradient descent, and this issue is the computational cost of computing the gradient, since the gradient requires us to compute Jacλ Learn(D; λ, ϵ). (2.143) There are many different ways to approximate this quantity, such as forward- mode automatic differentiation as well as implicit function theorem. Neverthe- less, this quantity is ultimately a fairly expensive quantity to compute due to many factors including the ever-increasing dataset size |D| and thereby the ever-increasing optimization cost of learning. It is thus more usual to treat hyperparameter optimization as a black-box optimization problem, where we can evaluate the outcome (that is, the loss computed on the validation set) of a particular hyperparameter combination but cannot access anything else of this learning process. Random search is one of the most widely used black-box optimization based approaches to hyperparameter optimization. In random search, we start by defining a prior distribution p(λ) over the hyperparameters λ. We draw K sam- ples from this prior distribution, {λ1 , . . . , λK }, and in parallel evaluate them by training a model using each of these sampled hyperparameters. We then pick the best hyperparameter based on the validation risk, rk = R̂(Learn(D; λk , ϵ); Dval ). Instead of simply picking the best one, one can update the prior over the hyperparameters based on {(λ1 , r1 ), . . . , (λK , rK )} , (2.144) such that the probability is concentrated in the neighbourhood of low-risk hy- perparameter configurations. The whole process can then be repeated using this updated distribution as the prior over the hyperparameters. This iterative ap- proach is akin to the widely used method called the cross-entropy method [Ru- binstein and Kroese, 2004]. 12 We can also repeatedly sample ϵ′ to obtain more than one set of good hyperparameters as well, but this process tends to be too expensive computationally to be practical, since we need to repeatedly train many new models for the purpose of optimization.",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 42,
+   "block_id": "p83",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.5",
+   "prefix": "2.5.",
+   "heading": "HYPERPARAMETER TUNING",
+   "body": "MODEL SELECTION 37 to narrow down the space by make the density concentrated locally around the best hyperparameter so far: q(λ|Dn−1 ) ∝ exp(βEI(λ) − αD(λ, λ̂n−1 ), (2.150) where λ̂n−1 is the best hyperparameter configuration so far, and D is a problem- specific distance metric. We can then readily sample from this distribution by first drawing a random set of samples in the neighbourhood of the best hyper- parameter configuration so far and picking one of them proportionally to the expected improvement. This variation resembles iterative optimization, such as stochastic gradient descent. Overall, this approach, often called sequential model based optimization [Jones et al., 1998], consists of repeating three steps; (1) fit an uncertainty-aware pre- dictor of the risk given a hyperparameter configuration, (2) draw the next hyper- parameter configuration that maximizes the expected improvement according to the trained predictor, and (3) test the newly selected hyperparameter con- figuration. Of course, it is easy to see that we do not have to test only one hyperparameter configuration at a time. Instead, we can draw many samples from the proposal distribution q, test all of them (by training multiple models and evaluating them on the validation set) and update the uncertainty-aware predictor on all accumulated pairs of hyperparameter configuration and associ- ated validation risk. This approach has become de facto standard when training a new deep neural network with many hyperparameters [Bergstra et al., 2011]. 2.5.2 We still need to report the test set accuracy sepa- rately The hyperparameter optimization algorithm above can be thought of as the implementation of Tune in θ̂ = Learn(D; Tune(Dval , D; ϵ′ ), ϵ), (2.151) Once we found the best hyperparameter configuration, we train the final model on the training set D to obtain our final model parameter θ̂. How well would it work? Unfortunately, we cannot use the validation risk, as that was the objective by which θ̂ was selected. Meanwhile, when this model is deployed in the wild, the world will not be so kind and a set of examples thrown at this model will not be so perfect for the model. We thus need another set, called the test set, Dtest in order to check the test accuracy. This set must be separate from both the training and validation sets, and we can report the risk on this set as is, or we can report more statistics, as we discussed earlier in §2.4.3.",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 46,
+   "block_id": "p91",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "3.1",
+   "prefix": "3.1.",
+   "heading": "NORMALIZATION 41 eigenvalues of the Hessian to be similar to each other, for such an iterative op- timization algorithm to work well. For more rigorous discussion, refer to your favourite convex optimization book [Nocedal and Wright, 2006]. Based on this definition, an identity matrix has the minimal condition num- ber. In other words, we can transform the Hessian matrix into the identity matrix, in order to facilitiate gradient-based optimization [LeCun et al., 1998]. In this particular case, because the Hessian matrix does not depend on θ but only on the observations xn ’s, we can simply transform the input in advance by N 1 X (1) xn ← xn − x n′ (centering) (3.9) N ′ n =1 N !− 12 1 X ⊤ (2) xn ← xn′ xn′ xn (whitening) (3.10) N ′ n =1 This will result in the identity Hessian matrix, improving the convergence of gradient-based optimization. Such normalization is a key to the success in optimization, but it is challeng- ing to apply it in practice exactly, as the Hessian matrix is often non-stationary when we train a deep neural network. The Hessian matrix changes as we update the model parameters, and there is no tractable way to turn the Hessian matrix into the identity matrix. Furthermore, it is even more challenging to invert this Hessian matrix. It however turned out that normalizing (as a weaker version of whitening) of the input to each block helps in learning. Such normalization could also be considered as a building block, and let us look at a few widely used ones here. Batch normalization [Ioffe and Szegedy, 2015]. This is one of the build- ing blocks that sparked the revolution in deep learning, greatly facilitating learn- ing",
+   "body": "Fbatch−norm (x; θ = (m, s)) = m + exp(s) · ((x − µ) ⊘ σ) , (3.11) where µ and σ 2 are the mean and diagonal covariance of the input to this block. Because the inverse of a full covariance matrix, which is often similar to the Hessian matrix up to an additive term, is costly, we are only consider the diagonal of the covariance matrix, which is readily invertible. Instead of using the full training set to estimate µ and σ 2 , which will be prohibitively expensive, we use the minibatch at each update during training to get stochastic estimates of these two quantities. This practice is perfectly fine during training but it becomes problematic when the model is deployed, as the model will receive one example at a time. With a single example, we cannot estimate either µ nor σ 2 , or if we do, it will simply subtract out the input in its entirety. It is a usual practice instead to either fully re-estimate µ and σ 2 using the full training set once training is over or keep the running estimates of µ and σ 2 during training and use them after training is over.",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 48,
+   "block_id": "p95",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "3.2",
+   "prefix": "3.2.",
+   "heading": "CONVOLUTIONAL BLOCKS 43 Any invariance could be implemented as a stack of equivariant blocks fol- lowed by a reduction operator, such as summation. We thus need to implement a translation equivariant block. In this section, we consider a so-called convolution block, or more precisely correlation block. We start by considering an infinitely long discretized time series, x = [. . . , xt−1 , xt , xt+1 , . . .] with |x| → ∞, as an input to this block. Each item xt is a finite-dimensional real vector. The parameter of this block is a set of finite-length filter sequences, f k = [f1k , f2k , . . . , f2M k +1 ] with M ≪ ∞ and k = 1, . . . , K. Similarly to xt , each ft is also a finite-dimensional real vector with |ftk | = |xt |. The convolution k block then returns an infinitely-long time series, h = [. . . , ht−1 , ht , ht+1 , . . .], where |ht | = K. Let hkt be the k-th element of ht . We then compute it as ′ mX =M hkt = x⊤ k t+m′ fm′ +M +1 . (3.15) m′ =−M In other words, we apply the k-th filter f k at each position t to check how similar (in the sense of dot product) the signal centered at t is to the filter f k . Another way to write it down is ′ mX =M ht = Fm′ +M +1 xt+m′ , (3.16) m′ =−M where  1 fm fm2 Fm =  .  ∈ Rd×K (3.17)    ..  K vm with d = |xt |. The full parameters of this 1-D convolution block can be summa- rized as a 3-D tensor of size d × K × (2M + 1). It is pretty straightforward to see that this operation is translation equivari- ant. If we shift every xt by δ, the resulting ht will shift by δ without any impact on its computed value. Unfortunately, in practice, this does not hold perfectly, as we do not work with an infinitely long sequence. We must decide how to handle the boundaries of the sequence with a finite-length sequence, and this choice will impact the degree of translation equivariance near the boundaries. Detailed discussion on how we handle boundaries is out of the scope of this course, though. We can now readily extend this 1-D convolution to N -D convolution. For instance, 2-D convolution would work on an infinitely large image, and 3-D convolution on an infinitely large-and-long video. Furthermore, we can extend it by introducing various features, such as a stride. These are also out of the scope of this course, but I recommend the first half of the classic by LeCun et al. [1998]",
+   "body": null,
+   "split_src": "toàn bộ là heading",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 50,
+   "block_id": "p99",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "3.4",
+   "prefix": "3.4.",
+   "heading": "PERMUTATION EQUIVARIANCE",
+   "body": "ATTENTION 45 layer to be equivariant to permutation such that F ((xσ(i) )N N i=1 ) = (hσ(i) )i=1 , where σ : {1, . . . , N } → {1, . . . , N } is a permutation operator. Let’s consider one canonical way to build such a permutation equivariant block. This block begins with three linear blocks: ki = Flinear (xi ; θk ), (3.23) qi = Flinear (xi ; θq ), (3.24) vi = Flinear (xi ; θv ). (3.25) We are referred to as the key, query and value vectors of the i-th item xi . For each j-th item xj , we check how compatible it is to the current i-th item xi : exp(qi⊤ kj ) αij = PN . (3.26) ⊤ ′ j ′ =1 exp(qi kj ) We normalize it to sum to one using softmax. Now, we use these importance weights to compute the weighted average of the values: N X v̂i = αij vi . (3.27) j=1 It is a usual practice to repeat this process K times to produce  1 v̂i  ..  v̂i ←  .  . (3.28) v̂iK When we do this, each of K such processes is called an attention head. At this point, v̂i is a linear function of the input X = {x1 , . . . , xN }. We want to introduces some nonlinearity here by introducing the final linear layer together with a residual connection: σ hi = Flayer−norm (Flinear (v̂i ; θh ); θl ) + Flinear (xi ; θr ), (3.29) where the lack of the superscript in the second term means that there is no nonlinearity. If |hi | = |xi |, it is customary to fix θr = (I, 0). It is usual to add a layer normalization block after v̂i or at hi , to facilitate optimization. When implemented in a single block, this block is often referred to as the (multi-headed) attention block [Bahdanau et al., 2015, Vaswani et al., 2017]. Positional Encoding. Another way to think of the attention block above is to view it as a way to handle a variable-sized input. Regardless of the size of the input set, this attention block can work with the input. It is thus tempting to use the attention block for a variable-length sequence, which was the orig- inal motivation behind the attention block. There is one hurdle that must be",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 52,
+   "block_id": "p103",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "3.4",
+   "prefix": "3.4.",
+   "heading": "PERMUTATION EQUIVARIANCE",
+   "body": "ATTENTION 47 the diagonal:  2  R1 (m) 0 ··· 0 2  0 R2 (m) ··· 0  Rm =  , (3.34)  0 0 ··· 0  2 0 ··· 0 R|x|/2 (m) where Rk2 (m) is a 2-dimensional rotation matrix that rotates a 2-dimensional real vector and defined as cos(mLk/|x| ) − sin(mLk/|x| ) 2 Rk (m) = . (3.35) sin(mLk/|x| ) cos(mLk/|x| ) In other words, we rotate every pair of elements of the query/key vector based on its position before computing the dot product between these two vectors. Since this rotation depends on the relative position between the query and key vectors, this approach can capture position-dependent semantic relationship between the i-th input and the j-th input. This idea has become one of the standard approaches to incorporating positional information in the attention block in recent years [Su et al., 2021].",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 56,
+   "block_id": "p111",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.2",
+   "prefix": "4.2.",
+   "heading": "VARIATIONAL INFERENCE AND GAUSSIAN MIXTURE MODELS51 In the rest of this chapter, we focus on the case where we have input-only observations. We often call such a setup unsupervised learning. 4.2 Variational inference and Gaussian mixture models We will derive something magical in this section, although it will not look mag- ical at all in hindsight by the end of this section. To do so, let us first re-state that it is challenging to derive the posterior distribution p(z|x) over the latent variable given an observation, unless we explicitly put severe constraints on the forms of p(x|z) and p(z).2 Instead of computing p(z|x) directly, we can perhaps find a proxy q(z; ϕ(x)) to this exact posterior distribution, called an approximate posterior. This approximate posterior probability function is parametrized by ϕ(x), where we use (x) to denote that these parameters are specific to x. When it is not confusing, we would drop (x) here and there for both brevity and clarity. We are now faced with a task to make the proxy q(z; ϕ(x)) a good approxi- mation to the true posterior p(z|x). We will do so by minimizing the Kullback- Leibler (KL) divergence which is defined as Z p(z|x) DKL (q∥p) = − q(z; ϕ(x)) log dz (4.9) q(z; ϕ(x)) = −Ez∼q [log p(z|x)] − H(q) ≥ 0 (4.10) where H(q) is the entropy of q defined as Z H(q) = − q(z) log q(z)dz. (4.11) It is important to notice the inequality above, that is, the KL divergence is by definition non-negative. Let us continue from the KL divergence",
+   "body": "Z p(z|x) DKL (q∥p) = − q(z; ϕ(x)) log dz (4.12) q(z; ϕ(x)) Z p(x|z)p(z) = − q(z; ϕ(x)) log dz (4.13) p(x)q(z; ϕ(x)) Z Z p(z) = log p(x) − q(z; ϕ(x)) log p(x|z)dz − q(z; ϕ(x)) log dz q(z; ϕ(x)) (4.14) = log p(x) − Ez∼q [log p(x|z)] + DKL (q(z; ϕ(x))∥p(z)). (4.15) 2 In short, p(z) should be a so-called conjugate prior to the likelihood p(x|z), so that the posterior p(z|x) follows the same distributional family as p(x|z).",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 58,
+   "block_id": "p115",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.2",
+   "prefix": "4.2.",
+   "heading": "VARIATIONAL INFERENCE AND GAUSSIAN MIXTURE MODELS53 that there exist a finite number of Gaussian distributions, which are referred to as “components”, and a latent variable z selects one of these components. Once the component is selected, an observation x is drawn from the corresponding Gaussian distribution. To map this story onto the probability functions, we begin with a prior distribution over the components",
+   "body": "1 p(z) = , (4.20) M where M is the number of Gaussian components. This prior states that each and every component is equally likely to be selected. This can be relaxed, but we will stick to this for now. z can take any one of {1, . . . , M }. Once the component is selected, we draw an observation x from p(x|z) = N (x|µz , Σz ), (4.21) where µz and Σz are the mean and covariance of the z-th Gaussian component. For simplicity, let us assume that Σz = I, that is, the covariance is an identity matrix. In such a case, we say that the component is spherical Gaussian. We introduce an approximate posterior for each training example xn . This approximate posterior is q(z = k; ϕn ) = αkn , (4.22) PM where αzn ≥ 0 and k=1 αkn = 1 for all n = 1, . . . , N . We can now write down the objective J: N M 1 N 1 X X n 1 n 2 d J(α , . . . , α , µ1 , . . . , µM ) = αm − ∥x − µm ∥ − log 2π N n=1 m=1 2 2 (4.23) M M ! X X n n n + αm log M − αm log αm , m=1 m=1 (4.24) where d = dim(xn ). Let’s compute the gradient of J w.r.t. µk : ! 1 X n n 1 X X ∇µk = (αk (x − µk )) = αkn xn − µk αkn =0 (4.25) N n N n n N X αkn ⇐⇒ µk = PN ′ xn . (4.26) n=1 n′ =1 αkn We can compute the exact solution to µk analytically, that maximizes J.",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 60,
+   "block_id": "p119",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.2",
+   "prefix": "4.2.",
+   "heading": "VARIATIONAL INFERENCE AND GAUSSIAN MIXTURE MODELS55 draw more samples and (b) infer the posterior distribution over the components given a new observation. 4.2.2 K-means clustering Let us introduce a temperature β ≥ 0 as a hyperparameter in Eq. (4.30)",
+   "body": "1 exp − 2β ∥xn − µk ∥2 αkn = P . (4.32) K 1 n ′ 2 k′ =1 exp − 2β ∥x − µk ∥ When the temperature is high, i.e. β → ∞, the posterior distribution is closer to the uniform distribution. This is understandable if you think of sta- tistical thermodynamics. When the temperature is high, there is no particular configuration that is more likely than others, since all molecules are bouncing around non-stop with high energy. On the other hand, when the temperature approaches 0, the posterior converges toward one of the corners of the (K − 1)- dimensional simplex, meaning that only one of the components is probable and all the others are not at all. This would be an extreme case that interests us here. When β → 0, we can rewrite the solution to posterior inference as ( n 1, if ∥xn − µk ∥2 = mink′ =1,...,K ∥xn − µk′ ∥2 αk = (4.33) 0, otherwise. In this case, we can be more economical by storing ẑ n = arg max αkn , (4.34) k=1,...K instead of K values for each n-th training example. In other words, we need only ⌈log2 K⌉ bits as opposed to K × B bits where B is the number of bits for representing a real value in one’s system. In this case, the update rule for the mean of each component in Eq. (4.26) can be simplified as well: N X αkn µk = PN xn (4.35) n′ n=1 n′ =1 αk N X = 1(ẑ n = k)xn . (4.36) n=1 That is, we collect all training examples that belong to the k-th component and compute the average of these training examples. This further saves a significant amount of compute, as we only go through on average N/K training examples for each component to compute its mean vector. Because we are effectively making the hard choice of to which component each training example belongs to (4.34), we often refer to this special case as",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 62,
+   "block_id": "p123",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.3",
+   "prefix": "4.3.",
+   "heading": "CONTINUOUS LATENT VARIABLE MODELS 57 Then, the objective for each training example xn becomes K + ||µn ||2 1 2 |x| 1 Jn = Ez∼qn − ∥xn − W z − b∥ − log 2π − ∗ − K + 2K ln(σ) 2 2 2 σ2 (4.41) 1 1 1 = −Ez ∥xn ∥2 + ∥W z + b∥2 − x⊤ n (W z + b) − ∥µn ∥2 (4.42) 2 2 2σ 2 1 ⊤ ⊤ 1 1 = −Ez z W W z + ∥b∥2 + b⊤ W z − x⊤ n W z − x ⊤ n b − 2 ∥µn ∥2 + const. 2 2 2σ (4.43) 1 1 1 1 = − tr W Ez [(z − µn )(z − µn )⊤ ]W ⊤ − tr W µn Ez [z]⊤ W ⊤ − tr W Ez [z]µ⊤ ⊤ ⊤ n W + tr W µn µn W ⊤ 2 2 2 2 (4.44) 1 1 − ∥b∥2 − b⊤ W µn + x⊤ ⊤ n W µn + xn b − ∥µn ∥2 + const. (4.45) 2 2σ 2 1 1 1 1 = − tr W W ⊤ − µ⊤ W ⊤ W µn − ∥b∥2 − b⊤ W µn + x⊤ ⊤ n W µn + xn b − ∥µn ∥2 + const. 2 2 n 2 2σ 2 (4.46) where const. refers to the terms that do not depend on either ϕ(xn ) nor θ. Let’s perform posterior inference first by computing the gradient of J = 1 P N n Jn w.r.t. ϕ(xn )",
+   "body": "1 ∇µn = −W ⊤ W µn + W ⊤ (xn − b) − µn = 0 (4.47) σ2 − (W ⊤ W + σ −2 I)µn + W ⊤ (xn − b) = 0 (4.48) ⊤ −2 −1 ⊤ µn = (W W + σ I) W (xn − b). (4.49) Just like with the MoG above, we get a clean, analytical solution to each µn . Because we need to compute the inverse of W ⊤ W + I ∈ RK×K , this may be somewhat expensive, but we need to compute it once and use it for all N µn ’s. Let’s look at the role of σ 2 from the prior p(z) earlier in this context. When 2 σ → ∞, the expression above simplifies to µn = (W ⊤ W )−1 W ⊤ (xn − b), (4.50) | {z } =(a) where (a) is the pseudoinverse of W . When W is a square and invertible matrix, this corresponds to W −1 . In that case, we can think of µn as the solution to µn = W −1 (xn − b), (4.51) which is equivalent to xn = W µn + b. (4.52)",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 64,
+   "block_id": "p127",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.3",
+   "prefix": "4.3.",
+   "heading": "CONTINUOUS LATENT VARIABLE MODELS 59 procedure, µn ’s will be distributed such that their collectively covariance will be closer to the identity, which is what we imposed by saying that the prior over the latent variable should be a spherical Gaussian distribution. In other words, this is also the effect of regularization due to the prior distribution. By cycling through these steps of updating µn ’s, W and b, the variational lowerbound will improve gradually until convergence. In the limit of σ 2 → ∞ ⊤ and withPN the constraints that W is orthogonal, i.e., W W = I and that 1 b = N n=1 xn , we recover principal component analysis [Hotelling, 1933]. Our derivation here is a special case of a more general version called probabilis- tic principal component analysis [Tipping and Bishop, 1999]. In particular, we follow the variational inference approach [Ilin and Raiko, 2010]. This variational lowerbound based approach again enables us to use stochas- tic gradient descent which is much more scalable than the exact EM procedure. At each iteration, we pick a minibatch of training examples, infer the (approxi- mate) posterior means and use them to compute the gradient of the variational lowerbound w.r.t. W and b . Instead of computing the optimal values given this minibatch, we simply update them slightly following the stochastic gradient direction. 4.3.1 Variational autoencoders A natural question, based on what we have already seen in §2.2.2, is whether we can use a nonlinear transformation for p(x|z) instead of the linear one in Eq. (4.38). This is totally possible with p(x|z; θ) = N (x|F (z; θ), I |x| ), (4.58) where F is an arbitrary nonlinear function, parametrized by θ, that maps z to x and is differentiable w.r.t. θ. In other words, we are okay with any kind of parametrization as long as we can compute3 ∂F Jacθ F (z; θ) = (z; θ). (4.59) ∂θ This small change has a big consequence in terms of the modeling power of the continuous latent variable model. This is due to the peculiar (and amazing) properties of normal distributions. Let us revisit the linear case above (4.38)",
+   "body": "p(z) = N (z; 0, σ 2 I |z| ) (4.60) |x| p(x|z; θ) = N (x; W z + b, I ), (4.61) 3 I will use ∂ ∂x notation to refer to the Jacobian matrix unless it is confusing.",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 66,
+   "block_id": "p131",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.3",
+   "prefix": "4.3.",
+   "heading": "CONTINUOUS LATENT VARIABLE MODELS 61 not be stationary but change dynamically depending on x and z. We would rather get a mixture of Gaussians with an infinitely many components",
+   "body": "Z Z p(x) = p(x|z)p(z)dz = p(z)N (x|F (z; θ), I)dz. (4.69) Let’s consider the variational lowerbound with this nonlinear formulation for one particular example xn : 1 K + ∥µn ∥2 1 2 |x| Jn = Ez∼qn − ∥xn − F (z; θ)∥ − log 2π − − K + 2K ln(σ) . 2 2 2 σ2 (4.70) The gradient of Jn w.r.t. µn is then exp − 12 ∥z − µn ∥2 1 Z µn ∇µ n = − |z|/2 (z − µn )∥xn − F (z; θ)∥2 − 2 (4.71) (2π) 2 σ 1 µn = − Ez (z − µn )∥xn − F (z; θ)∥2 − 2 (4.72) 2 σ 1 µn = − 2xn Ez [zF (z; θ)] − 2xn µn Ez [F (z; θ)] + Ez z∥F (z; θ)∥2 − µn Ez ∥F (z; θ)∥2 − 2 . 2 σ (4.73) It is clear that without knowing the form of F , it is not possible to come up with an analytical solution to µn in general. Even worse, it is unclear how to compute the gradient analytically either, due to the challenging expectations that must be computed. We can however use sampled-based Monte Carlo approximation, since we can choose the approximate posterior q to be readily samplable: ˜ µ = − 1 (z̃ − µn )∥xn − F (z̃; θ)∥2 − µn . ∇µn ≈ ∇ (4.74) n 2 σ2 In this particular case of Gaussian posterior, we can draw a sample using a reparametrization trick:4 z̃ = µn + σϵ, (4.76) where ϵ ∼ N (0, I|z| ). Plugging this in, we get ˜ µ = − σ ϵ∥xn − F (µn + σϵ; θ)∥2 − µn . ∇ (4.77) n 2 σ2 4 A reparametrization trick refers to formulating the process of sampling from a particu- lar distribution as nonlinearly and deterministically transforming noise drawn from another distribution: z = g(ϵ; ϕ), ϵ ∼ p(ϵ). (4.75) This allows us to compute the derivative of the sample z w.r.t. the parameters of this de- ∂g terministic function, i.e., ∂ϕ (z). This is a handy trick, since sampling is often considered a non-differentiable operator. Despite its usefulness, it is not always possible to come up with such reparametrization.",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 68,
+   "block_id": "p135",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.3",
+   "prefix": "4.3.",
+   "heading": "CONTINUOUS LATENT VARIABLE MODELS 63 sample estimate of Jn",
+   "body": "1 1 J˜n = − ∥xn − F (G(xn ; θG ) + σϵ; θ)∥2 − 2 ∥G(xn ; θG )∥2 + const., (4.81) 2 2σ where ϵ ∼ N (0, I). There are two non-constant terms in this approximate objective. The first term is the reconstruction error. The input xn is processed by the inference network G first, and then the noisy version of the output of G is then processed by F to reconstruct the input. The objective is maximized when the difference between the original input and the reconstructed input is minimized (see the negation in front of the L2 norm.) This process is often referred as autoencoding, and this is why this whole framework is called a variational autoencoder [Kingma and Welling, 2013]. The second term is a regularizer that pushes the L2 norm of the output from the inference network to be small. This ensures that all the inputs {x1 , . . . , xM } are mapped to the latent space, i.e. the space of the latent variable z, as tightly as possible. Without this term, the norm of the output of G can grow indefinitely, pushing the inferred posteriors of all the inputs to be as far away as possible, since this would ensure that F can reconstruct the original input perfectly even with the injected noise. This would however make it impossible for F to cope with any z sampled from the prior or located between any pair of inputs’ inferred posterior distributions, resulting in a lousy generative model. Thanks to the reparametrization trick, we can compute the gradient of J˜n w.r.t. all parameters, including those of F and those of G. In other words, we can use backpropagation to train both the inference and generation networks, G and F , respectively. This allows us to train the inference network extremely efficiently, without having to maintain a whole database of instance-specific ap- proximate posterior parameters. Furthermore, as discussed earlier, this inference network can be used with a novel input, making it useful for analyzing a set of inputs that are not present during training. The approximate posterior com- puted by the inference network can be further finetuned using gradient descent to match the true posterior better [Hjelm et al., 2016]. Perhaps more importantly, this implies that such end-to-end learning of in- ference and generation networks is possible with backpropagation and stochastic gradient descent as long as we can use a reparametrization trick to sample from an approximate posterior without breaking the differentiability. This opens wide a door to a whole new set of opportunities to scale up various probabilistic mod- els that were cumbersome to derive and use before, although these are out of the scope of this course. 4.3.2 Importance sampling and its variance. Before ending this section, let us think of how we should compute the log- marginal probability of an observation x from Eq. (4.69): p(x) = Ez∼p(z) [p(x|z)] . (4.82)",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 70,
+   "block_id": "p139",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.3",
+   "prefix": "4.3.",
+   "heading": "CONTINUOUS LATENT VARIABLE MODELS 65 where ⟨·, ·⟩ is an inner product that generalizes a standard dot product. We can define an inner product on the square-integrable functions5 as Z ⟨f, g⟩ = f (x)g(x)dx (4.91) over the domain of x. Then, we can write the Cauchy-Schwarz inequality as Z Z Z f (x)g(x)dx ≤ f 2 (x)dx g 2 (x)dx. (4.92) R Because q(z)dz = 1 by definition, we observe that  !2  Z !2 Z Z Z 2 p(x|z)pz (z) p(x|z)pz (z) p  p dz  q(z)dz ≥ p q(z)dz = p(x|z)pz (z)dz . q(z) q(z) | {z } =1 (4.93) Considering both sides carefully, we see that they are equal when Cq(z) = p(x|z)pz (z). (4.94) This is easy to check by plugging it into the left hand side of the inequality above",
+   "body": " !2  Z Z Cq(z)  p dz  q(z)dz = C 2 , (4.95) q(z) and then into the right hand side of the inequality: Z 2 Cq(z)dz = C 2. (4.96) R Because q(z)dz = 1, Z C= p(x|z)pz (z)dz. (4.97) Putting them all together, we get the following optimal q: p(x|z)pz (z) q ∗ (z) = R , (4.98) p(x|z ′ )pz (z ′ )dz ′ 5 A function f is square-integrable when Z f (x)dx < ∞. (4.90)",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 74,
+   "block_id": "p147",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "5.1",
+   "prefix": "5.1.",
+   "heading": "RESTRICTED BOLTZMANN MACHINES",
+   "body": "THE PRODUCT OF EXPERTS69 Instead of summing exponentially many terms, we can multiply |z| terms only: |x| |z| X X Y Y exp(−e(x, z, θ)) = exp(xi bi ) exp(wij xi zj + zj cj ) z∈{0,1}|z| z∈{0,1}|z| i=1 j=1 (5.11) |x| |z| Y X Y = exp(xi bi ) exp(wij xi zj + zj cj ) i=1 z∈{0,1} |z| j=1 (5.12)   |x| |z| X Y = exp  xi bi  (1 + exp(wij xi + cj )) (5.13) i=1 j=1 (5.14) You can think of the left-hand side of this derivation as the unnormalized probability function p̃(x; θ) of x, since the normalization constant of p(x, z; θ) is neither a function of x nor z. In that case, we can write it down as |z| Y p̃(x; θ) ∝ ϕ0 (x) ϕj (x), (5.15) j=1 where log ϕ0 (x) = x⊤ b, (5.16) ⊤ log ϕj (x) = log(1 + exp(w·j x + cj )). (5.17) We call each ϕk an expert, and this is a typical formulation of a product of experts [PoE; Hinton, 2002]. PoE’s are unlike a mixture of experts (MoE), such as a mixture of Gaus- sians from §4.2.1. MoE’s have a significant advantage over PoE’s in that they are readily normalized as long as each and every expert is well-normalized. PoE’s however can model a much sharper distribution, unlike MoE’s. The entropy of a MoE is always lowerbounded by the entropy of an individual component. This is not the case with a PoE, because the scores from the experts are multiplied rather than averaged. It is possible for any one expert to simply veto by out- puting a value close to 0, while this wouldn’t affect the overall outcome in the case of an MoE. We use the log-likelihood objective, averaged over the whole training set, for training this RBM: Z Lll (x, θ) = e(x, θ) + log exp (−e(x′ , θ)) dx′ . (5.18) Just like earlier, we use stochastic gradient descent, and to do so, we need to be able to compute the gradient of this per-example loss w.r.t. the energy e.",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 76,
+   "block_id": "p151",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "5.1",
+   "prefix": "5.1.",
+   "heading": "RESTRICTED BOLTZMANN MACHINES",
+   "body": "THE PRODUCT OF EXPERTS71 and be convinced that the collected series of samples form collectively a set of samples from the target distribution. In addition to this condition (p∞ = p∗ ), we need to meet an extra condi- tion. That is, this stationary distribution has to be unique. If there are other stationary distributions, we may not be able to tell that even after running this transition operator indefinitely that we are collecting samples from the true distribution. To do so, we further put a constraint that this Markov chain is ergodic. In an ergodic Markov chain, any state (or a region of the state space, in the case of an infinitely large X ) is reachable from any other state within a finite number of transition steps. This ergodicity guarantees that there is only one sta- tionary distribution, and that repeated applications of the transition operator will eventually converge toward this unique stationary distribution. Sampling from a complicated target distribution p∗ then boils down to de- signing a transition operator T such that the resulting Markov chain has a unique stationary distribution. The next question is how we can guarantee that there exists a stationary distribution, since the ergodicity tells us that there is a unique stationary distribution if there is a stationary distribution under this Markov chain. There are more than one way to do so, and one relatively well- known way is the principle of detailed balance. Detailed balance in a Markov chain is defined as having the transition operator T satisfy T (x′ |x)p∞ (x) = T (x|x′ )p∞ (x′ ). (5.22) As pretty clear from the equation, it says that whatever flows from one state to another must flow back. This is stronger than having a stationary distribution, as a stationary distribution p∞ may not satisfy this. When detailed balance is satisfied, we often refer to such a Markov chain as a reversible Markov chain, since we will not be able to tell the direction of time once it converged. Our goal is then to design a transition operator T such that the resulting Markov chain is ergodic and satisfies detailed balance.1 We refer to the procedure of sampling by collecting a series of visited states from such a Markov chain by Markov Chain Monte Carlo (MCMC) methods. One of the most popular and widely-used MCMC algorithm is Metropolis- Hastings (M-H) algorithm [Hastings, 1970]. The M-H algorithm assumes that we have access to the unnormalized probability p̃∗ (x) of the target distribution: p̃∗ (x) p∗ (x) = R . (5.23) p̃∗ (x)dx This assumption makes the M-H algorithm particularly suitable for many energy- based models, such as restricted Boltzmann machines (RBM), since we can easily often the unnormalized probability but cannot tractably compute the normal- ization constant. 1 This statement does not exclude the possibility of designing a Markov chain that allows us to sample from a target distribution even when it does not satisfy detailed balance. Fur- thermore, this statement does not exclude the possibility of expanding the state space by augmenting x with an extra variable. It has been shown that this can be beneficial with so-called Hamiltonian Monte Carlos methods [Neal, 1993].",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 78,
+   "block_id": "p155",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "5.1",
+   "prefix": "5.1.",
+   "heading": "RESTRICTED BOLTZMANN MACHINES",
+   "body": "THE PRODUCT OF EXPERTS73 In order to compute the acceptance probability, we must compute ∗ ′ ′ ′ ′ ′ ′ ′ ′ ′ p̃∗ (x)pd (x′ |x) p̃ ([x1 , . . . , xd−1 , xd , xd+1 , . . . , x|x| ])pd (xd |[x1 , . . . , xd−1 , xd+1 , . . . , x|x| ]) = ∗ ′ p̃ (x )pd (x|x ) ′ p̃∗ ([x′1 , . . . , x′|x| ])pd (xd |[x′1 , . . . , x′d−1 , x′d+1 , . . . , x′|x| ]) (5.32) ( (( ((′(( ( ((( p̃∗ ([x′1 , . . . , x ′ ′( ′ ∗ ′ ′ ′ ( ′ (( . , x|x| ])C([x′1 , . . .( ′ x′d+1 , . . . , x′| ( ( d−1 ( (, x (d , x ( d+1 , . . . , x |x| ]) p̃ ([x 1 , . . . , x ( d−1 ( , ( x (d , xd+1 , . . , x(d−1 (,( (( = (((( ( (((( ( ((′(( ((( ( ( ∗ ′ ((( ′(( ∗ ′ ′ ′ (( ′ ′ ′((( (( ′ (p̃ (([x(1 , . . . , x |x| ]) p̃ ([x 1 , . . . , x ( d−1 ( (, x (d , x ( d+1 , . . . , x |x| ]) C([x 1 , . . . ( , x ( d−1 ( ,(xd+1 , . . . , x |x| ]) (( ((( ((( (5.33)( =1 (5.34) In other words, the acceptance probability is 1, and we always accept this new sample which differs from the previous sample in just one dimension d. This procedure is called Gibbs sampling. We pick one coordinate, sample from the conditional distribution of that particular coordinate, replace it with the newly sampled coordinate value and repeat it. This procedure is often ap- plicable even when we have access only to the unnormalized probability, since the conditional probability is often tractable in that case. Furthermore, because every sample is automatically accepted, there is almost no extra overhead in implementation, which makes it an attractive algorithm choice. Variational inference would not work. Based on what we have learned in §4.2, one may wonder whether we could use variational inference instead of MCMC sampling. The answer is unfortunately no. The core idea of variational inference is to approximate a complex target distribution (the posterior distri- bution in §4.2, and here the target distribution p∗ ) with a simpler distribution q by minimizing Z KL(q∥p ) = −Ex∼q [log p̃ (x)] + log p̃∗ (x)dx +H(q). ∗ ∗ (5.35) | {z } const. w.r.t. q If we focus on the first term of the KL divergence, we observe that we only care about the region of the observation space where q is high. That is, the KL divergence only cares about the highly probable regions under q and ignores any other regions that are highly probable under p∗ but not under q. In other words, samples we draw from q after minimizing the KL divergence above would not be representative of p∗ , because they will largely miss high probable regions under p∗ . This issue disappears as the complexity of q increases and approaches that of p∗ . This however comes with the very issue we want to solve; that is, we must sample from this equally complex q in order to approximately compute and minimize the KL divergence above. Later in this chapter, we consider directly building a sampler so that an implicitly defined q is both complex enough and approximately minimizes the KL divergence above.",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 80,
+   "block_id": "p159",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "5.2",
+   "prefix": "5.2.",
+   "heading": "ENERGY-BASED GENERATIVE ADVERSARIAL NETWORKS 75 If we run it too short, our stochastic gradient estimate will likely be incorrect, resulting in a disastrous outcome. Instead, it turned out that we can simply start the Gibbs sampling chain from a positive example, run it only a small number of steps (as few as just one) and use the resulting sample as the negative example. That is, S 1X ∇θ Lk (θ; x) = ∇θ e(x, θ) − ∇e(x′s , θ), (5.42) | {z } S s=1 =positive | {z } =negative where x′s is one of the S samples drawn after running k steps of Gibbs sampling starting from x. It is usual to set S to 1. In the limit of k → ∞, this is exact, since the negative sample x′ would be from the stationary distribution which coincides with the true distribution p(x; θ). It is however not so with a finite k, and there is not even a guarantee that a larger k leads to a better approximation, when k is small. This strategy nevertheless results in a reasonably well trained RBM and is often called contrastive divergence. It turned out that we can maintain the computational complexity with a minimal overhead in memory complexity by maintaining S samples across mul- tiple stochastic gradient steps while ensuring that learning converges to the exact solution asymptotically. We do so by running S chains of Gibbs sampling in parallel to stochastic gradient descent. Between consecutive steps of SGD, we run S chains of Gibbs sampling for T ≈ 1 steps each to update the a set of S samples that are more likely to have been drawn from the latest model. Then, we use these newly updated samples to compute the stochastic gradient estimate, to update the model parameters. As learning continues, the change to the model parameters slows down (since we are getting increasingly closer to a local minimum), and thereby Gibbs sam- pling chains in the background are increasingly getting closer to the stationary distribution of the final model. This makes it such that the early stage of learn- ing is inexact but has a low variance (because we are not perturbing negative examples too much) but the later stage is exact since the model parameters change very slowly. This strategy is called persistent contrastive divergence. 5.2 Energy-based generative adversarial networks It is challenging to draw samples from a complex, high-dimensional distribution even with an advanced MCMC algorithm. Instead, we may want to consider training a neural network to draw samples from such a distribution. Any such neural network can be described as x = g(ϵ; θg ), (5.43) where ϵ ∼ p(ϵ) and p(ϵ) is some easy-to-sample distribution of our choice. This sampler is parametrized by θg",
+   "body": null,
+   "split_src": "toàn bộ là heading",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 82,
+   "block_id": "p163",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "5.2",
+   "prefix": "5.2.",
+   "heading": "ENERGY-BASED GENERATIVE ADVERSARIAL NETWORKS 77 distributions when we have only two sets of samples",
+   "body": "1 X X MMD2 (D, D′ ) = k(x, x′ ) (5.49) |D|(|D| − 1) x∈D x′ ∈D ′ :x′ ̸=x | {z } =(a) 1 X X + k(x, x′ ) (5.50) |D′ |(|D′ | − 1) x∈D ′ x′ ∈D ′ :x′ ̸=x | {z } =(b) 2 X X − k(x, x′ ), (5.51) |D||D′ | x∈D x′ ∈D ′ | {z } =(c) where k(·, ·) is a kernel function. We will not discuss what kernel functions are, but you can think of the kernel function as some kind of a distance metric, such that any kernel function k(a, b) satisfies two properties. First, it is symmetric: k(a, b) = k(b, a). (5.52) Second, it is semi-positive definite: x⊤ Kx ≥ 0, for all x ∈ Rn , (5.53) n where K is an n × n matrix with each entry Kij = k(vi , vj ) for any set {vi }i=1 . For real vectors, one conventional choice is a Gaussian kernel defined as 1 2 k(a, b) = exp − 2 ∥a − b∥ . (5.54) σ Because the kernelized MMD above is differentiable w.r.t. the samples, as long as the kernel function was selected to be differentiable, we can compute the gradient of the MMD w.r.t. the parameters of the sampler g and use it in place of the gradient of (b) from Eq. (5.55). Although we will not go into any technical detail behind this kernelized MMD, it is instructive to inspect it at an intuitive level. Let us start from the back. The third term (c) is intuitively correct, as it computes the average pair-wise distance between all possible pairs of samples from two distributions. If the average pair-wise distance is larger, the discrepancy between two underlying distributions must be high as well. Let’s assume |D| = |D′ | (that is, we have the same number of samples from each distribution.) Then, the minimum this pair-wise distance can at- tain is determined by the average pair-wise distance within each set, since all these samples would be placed on top of the samples from the other distribu- tion. Furthermore, when this happens, the first two terms, (a) and (b), would coincide with each other. Considering that the first two terms and the final term have opposite signs, they would cancel out each other, resulting in 0, as",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 84,
+   "block_id": "p167",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "5.3",
+   "prefix": "5.3.",
+   "heading": "AUTOREGRESSIVE MODELS 79 natural choice is a deterministic autoencoder which is similar to the variational autoencoder from §4.3.1 however without any noise in the middle. With the deterministic autoencoder, the energy function is defined as e(x; θ) = ∥F (G(x; θG ); θF ) − x∥2 , (5.60) where θ = θG ∪ θF . The energy value is lower if x can be reconstructed better. One can view this as the energy function e and the sampler g are playing an adversarial game. The energy function’s job is to ensure that the sampler’s samples are less likely than the true inputs, while the sampler’s job is to ensure that the generated samples are as likely as true inputs according to the energy function. This approach was pioneered by Goodfellow et al. [2014], and this particular way to describe this approach using the energy function was explored soon after by Zhao et al. [2016]. Once training is over, one can either use the sampler as is, or can use the sampler as the initialization for sampling from the trained energy function. 5.3 Autoregressive models We have so far considered a family of generative models, called latent variable models. Regardless of whether the probabilistic dependencies were described using directed or undirected edges, we used unobserved variables, or latent vari- ables, in order to capture complex distributions. For each latent variable config- uration, we define a relatively simple distribution over the observation. We call a distribution simple when this distribution has a small number of parameters and if we can build a differentiable neural net that maps the latent variable con- figuration to these parameters of the distribution. By marginalizing out these latent variables, we end up with a model that is able to capture a complex distribution. Then, is there any alternative? Such a simple distribution is often inadequate to capture all variations of a full observation X which almost always consists of simpler (lower-dimensional) constituents, i.e., X = {x1 , . . . , xd }. Such a simple distribution is however often enough to capture the conditional distribution over an individual constituent which is often significantly lower-dimensional. For instance, if xi is a categorical variable with C categories, we can easily use softmax with C parameters to capture this distribution. X however can take C d many possible values, and this will not be easy to capture with simple softmax based parametrization. It is then tempting to imagine modeling these d constituents of X separately and combine them to build a model of X. Recall the chain rule of probabilities",
+   "body": "p(X) = p(xΠ(1) )p(xΠ(2) |xΠ(1) )p(xΠ(3) |xΠ(1) , xΠ(2) ) · · · (5.61) d Y = p(xΠ(i) |xΠ(1) , . . . , xΠ(i−1) ), (5.62) i=1 | {z } =(a)",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 86,
+   "block_id": "p171",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "5.3",
+   "prefix": "5.3.",
+   "heading": "AUTOREGRESSIVE MODELS 81 where we are being explicit about the possibility of variable-size observations by writing dn . The attention block however requires one small modification. This mod- ification is necessary, since we must ensure that hi is computed only using (x0 , x1 , . . . , xi ). This can be implemented by masking out the attention weights from Eq. (3.26) as exp(qi⊤ kj − mij ) αij = PN , (5.68) ⊤ ′ j ′ =1 exp(qi kj − mij ) ′ where ( 0, if j < i mij = (5.69) ∞, if j ≥ i This would ensure that the output v̂i from the attention block is not computed using any input vectors (xi , xi+1 , . . . , xd ). Some refer to this as causal masking by borrowing from the concept of a causal system in signal processing. We must be careful when we are dealing with continuous xi ’s. We will discuss why this is the case, and how we can deal with it properly in §6.4, if time permits. A major advantage of this autoregressive modeling approach is that we can compute the log-probability of any observation exactly. We simply need to com- pute the conditional log-probabilities and sum them to get the log-probability of the observation. This is unlike any latent variable approaches we have con- sidered above. In the case of a variational autoencoder, we have to solve an intractable marginalization problem, and in the case of RBM’s, we must com- pute the intractable log-partition function, or the log-normaliztaion constant. Furthermore, we can readily draw independent samples tractably with this au- toregressive model, which is a great advantage for RBM’s which require costly and challenging MCMC sampling. This autoregressive modeling paradigm has become de facto standard in building conversational agents in recent years since the successful demonstra- tions by Brown et al. [2020] and Ouyang et al. [2022]. To learn more about the fundamentals behind language modeling and related ideas, see this somewhat outdated lecture note [Cho, 2015]. We do not go into any further detail, as these topics are out of the scope of this course",
+   "body": null,
+   "split_src": "toàn bộ là heading",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 90,
+   "block_id": "p179",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "6.1",
+   "prefix": "6.1.",
+   "heading": "REINFORCEMENT LEARNING 85 stochastic gradient estimate. This suggests that it is critical for us to control the magnitude of the reward, although this is impossible if we are working with the truly black box R. The second factor is the norm of the gradient of the log-probability of the selected action w.r.t. the parameters θ. In other words, the variance will be greater if the predictive probability computed by the model is sensitive to the change in the parameters. This suggests a very explicit way to regularize learning by minimizing this quantity directly, in order to stabilize learning. This technique is often referred to as gradient penalty. At this point, we begin to wonder if there is another stochastic estimator that is equally unbiased but potentially has a lower variance. Consider the following estimator, which is often referred to as a policy gradient estimator",
+   "body": "∇θ Ey|x;θ [R(y)] ≈ (R(ỹ) − b(x))∇θ log p(ỹ|x; θ), (6.17) where b may be a function of x but is independent of y. If we consider the expected value of the left-hand side, we notice that E [R(ỹ)∇θ log p(y|x; θ)] − b(x) E [∇θ log p(y|x; θ)] . (6.18) | {z } =(a) Let us dig deeper into (a) above:2 C C C X X 1 X p(y)∇ log p(y) = p(y) ∇p(y) = ∇ p(y) = 0. (6.19) y=1 y=1 p(y) y=1 | {z } =1 In other words, the estimator in Eq. (6.17) is an unbiased estimator. Although this estimator is identical to the original one in terms of the bias, this extra subtraction of b(x) from R(ỹ) has an important consequence for the variance. Let us consider the first term of the variance using the new estimator in Eq. (6.16). We are particularly interested to find b(x) that minimizes this term: 1 ∇b Ey|x;θ (R(y) − b)2 ∥s(y)∥2 = −E (R(y) − b)∥s(y)∥2 = 0 (6.20) 2 ⇐⇒ bE∥s(y)∥2 − E R(y)∥s(y)∥2 = 0 (6.21) E R(y)∥s(y)∥2 ⇐⇒ b∗ = . (6.22) E∥s(y)∥2 where s(y) = ∇ log p(y|x; θ). Unfortunately, this optimal baseline is intractable or impossible to compute, since it requires us to query the blackbox R for each and every possible outcome for the input x. It is rather more informative to consider the upperbound to the first term of the variance. Let cmax = maxy=1,...,C ∥s(y)∥2 ≪ ∞, which we can encourage by the technique of gradient penalty. Then, E (R(y) − b(x))2 ∥s(y)∥2 ≤ cmax E (R(y) − b(x))2 . (6.23) 2 I will omit |x; θ for the brevity without loss of generality.",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 92,
+   "block_id": "p183",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "6.1",
+   "prefix": "6.1.",
+   "heading": "REINFORCEMENT LEARNING 87 where b̂(x) refers to a predicted baseline, e.g. the value of x. θb is the parameters of this value function. Unfortunately, this estimator will have an extra variance due to noisy reward. Similarly to what we did with the baseline above, we can lower the variance by predicting the expected reward at (x, ỹ) using a predictor trained on samples. That is, ∇θ Ey|x;θ Eϵ [R(y, x; ϵ)] ≈ (R̂(ỹ, x; θr ) − b̂(x; θb ))∇θ log p(ỹ|x; θ), (6.31) | {z } =(a) where R̂ is the reward predictor, parametrized by θr . Such a reward predictor is often referred to as a Q value of the state-action (x, y) pair.4 This difference (a) between the Q value R̂ and the value b̂ is called an advantage, since this is tells us about the advantage of choosing ỹ over other outputs/actions. An interesting observation here is that if we have R̂(y, x; θr ) and if C, the number of all possible y values, is small, we can replace the value network b̂ with h i b̂(x) = Ey|x;θ R̂(y, x; θr ) , (6.32) which may help reduce the variance from having to train two separator pre- dictors. With a reasonable C, this can implemented quite efficiently by having R̂ to output a C-dimensional real-valued vector, multiplying the output with the output from the y predictor (which is often called a policy) and sum these values. Sometimes we call this R̂ a critic and p(y|x; θ) an actor. This approach is thus called an actor-critic algorithm. Multi-step reinforcement learning Let us assume there exist C-many |X | × |X | stochastic transition matrix Σ(y) such that C X Σij (y) ≥ 0 and Σi· (y) = 1, (6.33) i=1 for y ∈ {1, 2, . . . , C}. This transition matrix gives us the distribution over the next state given the current state xt−1 and the selected action yt , as q(x = k|xt−1 , yt ) = Σxt−1 ,k (yt ), (6.34) where we assume X is a finite set, although it is easy to extend it to a continuous state space X . In defining this transition operator q, we have made an important assumption called Markov assumption. That is, at time t − 1, where we will end up at time t given my choice of yt is independent of the past states (x1 , . . . , xt−2 ) I have visited so far nor the action choices (y1 , . . . , yt−1 ) I have made so far. We further 4 Although almost no paper explicitly mentions what ‘Q’ stands for, it is widely acknowl- edged that it stands for quality",
+   "body": null,
+   "split_src": "toàn bộ là heading",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 94,
+   "block_id": "p187",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "6.1",
+   "prefix": "6.1.",
+   "heading": "REINFORCEMENT LEARNING 89 because Q̂ is an unbiased sample drawn from the true distribution of the quality defined immediately above. Unfortunately this is not possible, if we are working with an infinitely-long episode. Such an infinitely-long episode is not common in the current-day setups, but it is something we aspire to working with in the future, where we would anticipate a learning based system to be deployed in real world situations and adapt itself on the fly. Of course, in this case, we must updaate the Q network also on-the-fly. It is unfortunately not possible to get even a single sample Q̃, since we never see the end of any episode. Let us re-arrange terms in Eq. (6.35)",
+   "body": "Tn X ′ Q̃(xnt−1 , ytn ) =snt + γ t −t snt′ (6.40) t′ =t+1    Tn   X ′  =snt + γ snt+1 + γ t −t snt′  . (6.41)     | t′ =2 {z } =Q̃(xn n t ,yt+1 ) We see that the quality is recursively defined: Q̃(xnt−1 , ytn ) = snt + γ Q̃(xnt , yt+1 n ). (6.42) This allows us to write a loss function to train the Q network without waiting for the full episode to end (or never end) by considering the temporal difference at time t: N 2 1 X min R̂(xnt−1 , ytn ; θr ) − γ snt + R̂(xnt , yt+1n ; θ̃r ) (6.43) θr N n=1 2 XN 2 γ 1 ⇐⇒ min R̂(xnt−1 , ytn ; θr ) − R̂(xnt , yt+1 n ; θ̃r ) − snt , (6.44) θr N γ n=1 where θ̃r is a previous estimate of θr . We bootstrap from some random Q func- tion (or its estimate) and iteratively improve our estimate of the Q function by learning to predict the temporal difference. Unsurprisingly, we refer to this kind of learning as the method of temporal difference [Sutton, 1988]. It turned out that such temporal difference methods are effective even when we are dealing with finite-length episodes, when these episodes are long. It is however generally challenging to train the Q network with such a temporal difference method due to many factors. For instance, the objective function above effectively tells us that the objective function itself is a function of our previous estimate θ̃r , meaning that a minimum one finds now will not continue to be a minimum once you plug the new estimate θ̂r into θ̃r . Furthermore, it will take a long time for the quality estimate the capture the longer-term",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 96,
+   "block_id": "p191",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "6.2",
+   "prefix": "6.2.",
+   "heading": "ENSEMBLE METHODS 91 Then,   2 2 Ex,y (y − ŷ(x)) ∝ Ex Ey|x (y − µy ) −2 ŷ(x) Ey|x [y] + ŷ 2 (x) (6.50)   | {z } |{z} | {z } | {z } =(a’) =µ̂y =µy =µ̂2y   2 2 = Ex Ey|x (y − µy ) −µ2y + (µ̂y − µy )  . (6.51)  | {z } |{z} | {z } =(a’) =(b’) =(c’) Now, let us consider the difference between these two loss function. Since (a) and (a’) are equivalent and (c) and (c’) are equivalent, we just need to consider (b) and (b’)",
+   "body": "2 Eθ (ŷ(x; θ) − µ̂y ) + µ2y = Eθ ŷ 2 (x; θ) − 2µ̂y Eθ [ŷ(x; θ)] +µ̂2y + µ̂2y = Eθ ŷ 2 (x; θ) ≥ 0. | {z } =µ̂y (6.52) In other words, this tells us that the average loss over the predictors is always greater than or equal to the loss of the average prediction by the predictors. This motivates the idea of bagging [Breiman, 1996]. As long as we have q, or a sampler that draws predictors, or the correspond- ing parameters, from this distribution q, bagging tells us that it is never a bad idea to use many of those sampled predictors and average their predictions, rather than using any one of them solely, on average. It turned out there are many different ways that make our predictor θ random rather than determin- istic. We have already covered most of them earlier in the course, but let us briefly go through them here once more. In modern machine learning, a major source of randomness is the use of stochastic gradient descent on a non-convex loss function. The loss function is not convex w.r.t. the parameters, as we stack highly nonlinear blocks to build a deep neural network based predictor, and in doing so, we introduce a large degree of redundancies (or ambiguities). These ambiguities are more or less arbitrarily resolved by randomness in stochastic gradient descent. For instance, our choice of the initial values of the parameters affect a subspace over which stochastic gradient descent can explore and find a local minimum. In addition to initialization, there are other types of randomness in stochastic gradient descent, that is, how we construct minibatches by selecting random subsets of the training set. Furthermore, quite a few building blocks are inherently stochastic. Recall the variational autoencoder from §4.3.1, where we injected noise for processing each and every instance during training. In other words, we can think of the resulting solution by running stochastic gradient descent as a sample drawn from some distribution implicitly defined by this process of learning. Of course, another major source of randomness is the choice of the training set. As we have discussed earlier in §2.4.3, we can imitate the randomness in data collection even when we have a single set of data points drawn from the",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 98,
+   "block_id": "p195",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "6.2",
+   "prefix": "6.2.",
+   "heading": "ENSEMBLE METHODS 93 Boltzmann formulation, as we have done over and over by now",
+   "body": "P exp −β x∈D L(x; θ) q(θ|D, β) = R (6.54) exp −β x∈D L(x; θ′ ) dθ′ P Θ Y exp (−βL(x; θ)) = R (6.55) exp −β x∈D L(x; θ′ ) dθ′ P x∈D Θ exp (−βL(x′ ; θ)) dx′ R Y exp (−βL(x; θ)) X = R ′ ′ R (6.56) exp (−βL(x ; θ)) dx Θ exp −β x∈D L(x; θ′ ) dθ′ P x∈D X exp (−βL(x′ ; θ)) dx′ exp (−βL(x′ ; θ′ )) dx′ dθ′ R R R Y X Θ X = p(x|θ, β) R R exp (−βL(x′ ; θ′ )) dx′ dθ′ Θ exp −β x∈D L(x; θ′ ) dθ′ R P x∈D Θ X (6.57) Y p(θ) = p(x|θ, β) Q ′ . (6.58) x∈D x′ ∈D p(x |β) This is precisely the posterior distribution over θ, where we consider θ to be a random variable. It states that our belief (probability) of a particular parameter configuration Q θ is proportional to the product of the likelihood p(D|θ, β) = x∈D p(x|θ, β) and the prior belief of θ. With this our updated (that is, posterior) belief over θ, we probably want to marginalize θ out when we make a prediction on a new instance x′ ∈ / D: Z p(x′ |D, β) = p(x′ |θ, β)q(θ|D, β)dθ. (6.59) Θ This formulation tells us that we should sample many predictors according to q(θ|D, β) and average their predictions, just like bagging above: M 1 X p(x′ |D, β) ≈ p(x′ |θm , β), (6.60) M m=1 where θm ∼ q(θ|D, β). In other words, if we follow the Bayes’ rule and think of the loss function as an energy function of the parameter θ given an individual instance, we arrive at the conclusion that we should draw predictors from the posterior distribution q(θ|D, β). This is a great property, since we now have a good guideline on what we should do, although the inclusion of β here was quite intentional, as it says that we still need some kind of hyperparameter search even in so-called Bayesian machine learning. Let us now connect this (log-)posterior distribution with what we have learned so far by writing it as X log p(θ|D, β) = log p(x|θ, β) + log p(θ) − log Z(D, β) (6.61) x∈D X =−β L(x; θ) + log p(θ) − log Z ′ (D, β), (6.62) x∈D",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 100,
+   "block_id": "p199",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "6.2",
+   "prefix": "6.2.",
+   "heading": "ENSEMBLE METHODS 95 make better prediction on x. We can approach this by first defining an aggregate predictor as h(x; {θ, θ′ }) = f (x; θ) + αg(x; θ), (6.65) where α > 0. We can then write the energy function that includes h as e′ ([x; y], {θ, θ′ }) = ∥y − h(x; {θ, θ′ })∥2 (6.66) ′ 2 = ∥ (y − f (x; θ)) −αg(x; θ )∥ . (6.67) | {z } (a) We can minimize this energy function w.r.t. α and θ′ , which results in g that complements the existing predictor f to minimize any remaining error by f . This idea is often referred as boosting [Schapire, 1990], as it boosts the represen- tational power of weak predictors by combining two weak predictors, here f and g, to form a stronger predictor. This procedure can be repeated by considering h as f and introducing yet another weak predictor g into the mix, until the point at which a satisfyingly low level of the loss is achieved. Although we have derived it in the context of a single example (x, y), it should be readily extended to multiple example pairs. By carefully inspecting (a), we realize that this term is the negative gradient of Eq. (6.64) w.r.t. f (x; θ)",
+   "body": "∂e = −(y − f (x; θ)). (6.68) ∂f (x; θ) Instead of e, which was equivalent to the loss, because it was formulated using L2 distance, we can use a more generic loss l(θ; [x, y]). We can then further rewrite e′ as e′ ([x; y], {θ, θ′ }) ∝ ∥ − ∇ŷ l(θ; [x, y]) − αg(x; θ′ )∥2 , (6.69) where ŷ = f (x; θ) . By minimizing e′ w.r.t. θ′ and α, we effectively let g capture the (scaled) negative gradient of the loss w.r.t. ŷ. As we have learned repeatedly over the course so far, the gradient is only meaningful in some small neighbourhood. In other words, taking the full step in the direction of the negative gradient may not necessarily decrease the overall loss, and we must scale the gradient accordingly. We thus search for the right step size by solving min l({θ, θ′ }; [x, y]), (6.70) γ≥0 where the loss l is computed by comparing y and ŷ = f (x; θ) + γg(x; θ′ ). (6.71) This procedure resembles the process of gradient descent from §2.3.2, and is thereby referred to as gradient boosting [Friedman, 2001].",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 102,
+   "block_id": "p203",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "6.3",
+   "prefix": "6.3.",
+   "heading": "META-LEARNING 97 In this case, we would call D1 , . . . , DM a meta-training set. Just like what we have seen earlier in §4, this K-fold cross-validation loss is not easy to compute nor to minimize. Instead, we can use the same technique from variational inference from earlier to minimize the upperbound to LKCV",
+   "body": "K B 1 X X 1 X LKCV (ϕ; Dm ) ≤ − log p(x|θb ), (6.75) K B k=1 x∈D m b=1 σk (1):σk (⌈ 1 |D m |⌉) K where θb ∼ q θ|Dσmk (⌈ 1 |Dm |⌉+1):σk (|Dm |) ; ϕ . Since θ is often continuous, we can K for instance compute the gradient of LKCV w.r.t. ϕ with the reparametrization trick as long as q is differentiable w.r.t. ϕ. This is interesting, since we can be flexible about how we parametrize q, and this q is directly optimized to result in a distribution over θ or a set of θ’s under which the predictive loss is minimal. In other words, q is a learning algorithm, and we are training a learning algorithm by minimizing the meta- objective function in Eq. (6.74) w.r.t. q. For instance, we can define q implicitly by drawing a sample of the parame- ters θ from q using just a few steps N of stochastic gradient descent, as opposed to running it until convergence as from §2.3.2. In doing so, we can consider the initialization θ0 of the parameters as ϕ. By minimizing the meta-objective func- tion w.r.t. θ0 , we are looking for the initialization of the parameters that are optimal with N SGD steps. If the new training set after such meta-learning is similar to the meta-training sets, we would expect that N SGD steps would be enough if not optimal to obtain the best predictor. This approach was originally proposed by [Finn et al., 2017] and called model-agnostic meta-learning. Of course, we can completely forego of any iterative optimization when de- signing q and build a predictor that directly maps a set of training data points D to the prediction on a new observation x′ . In doing so, it is important to real- ize that this predictor cannot simply take as input D but needs to model noise in learning itself. This naturally calls for including latent variables z into this predictor, just like how we did earlier with generative models in §4. In this case, the posterior distribution q(θ) is implicit, and we directly predict the predictive probability by Z p(x|D; ϕ) = p(x|z; ϕx )pz (z|D; ϕz )dz, (6.76) Z where pz is the prior over z and we marginalize out z. This approach is often referred as neural processes [Garnelo et al., 2018]. Because this marginalization is often intractable, it is a common practice to approach it from variational inference and learning which we learned already in §4.3.1. Overall, these approaches are referred as meta-learning, since such a proce- dure results in a predictor that knows how to learn to solve a problem given a set of new examples. Meta-learning can then be used to solve not only learning problems but also any kind of set-to-set problems, such as causal discovery and statistical inference problems. This is an exciting and active area of research.",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 104,
+   "block_id": "p207",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "6.4",
+   "prefix": "6.4.",
+   "heading": "REGRESSION",
+   "body": "MIXTURE DENSITY NETWORKS 99 This is exactly a mixture of Gaussians however conditioned on x. F (x; θF ) is a feature extractor of the input x, and this extractor is shared between µ and σ 2 . We further assumed that the prior over the mixture components was uniform, 1 i.e. p(z) = K . This is not strictly necessary, but simply makes learning easier, as we remove any extra parameters for computing the prior from the input x. As long as µz and σz2 are differentiable w.r.t. θµ , θσ and θF (collectively, comprising θ,) we can train this predictor all together without having to rely on some approximate marginalization by N K 1 X X 1 min − log N (y n ; µz (xn ), σz2 (xn )I). (6.82) θF ,θµ ,θσ N n=1 z=1 K Such a predictor is called a mixture density network and outdates all the other approaches above [Bishop, 1994]. A main special case of this mixture density network is when there is only one mixture component, i.e. K = 1. In that case, this reduces to a more famil- iar linear regression with the mean squared error loss function, assuming the constant variance, i.e., σz2 (x) = c. Although this is a usual approach and also what we did earlier when we derived backpropagation in §2.2.2, this approach of a single mixture component has a major disadvantage is that there can only be a single mode in the predictive distribution. This is particularly problematic when the underlying true distribution has multiple local modes, as learning with the criterion above would make this predicted distribution to be dispersed in order to cover all those multiple modes of the true distribution, resulting in an unnecessarily uncertain prediction with the probability mass concentrated on a region of the output space that is relevant to where true modes are. By increas- ing K beyond 1, we increase the chance of capturing the inherent uncertainty in regression. Although training can be done exactly, this does not imply that we can make prediction readily with the mixture density network. Unless K = 1, there is no analytical solution to K X ŷ(x) = arg max log N (y; µz (x), σz2 (x)I) − log K. (6.83) y∈Rd z=1 We can solve this problem by gradient descent which will find one of at most K modes of this complex distribution or find a saddle point. It however is unsatisfactory to return a single point estimate of the solution, when we trained our predictor to capture the full distribution over the output space. Rather, it may be desirable to return a set of possible values of the outcome y that are within a credible region, following the procedure from §2.4.3. This is particularly desirable, as we can readily draw as many independent samples from the mixture of Gaussians. Once the samples {y1 , . . . , yM } are drawn, we score each sample with the mixture density network, which is again trivial, resulting in {p1 , . . . , pM }. We can then fit a cumulative density function on these scores and pick only those that are above a predefined threshold. These selected outputs can be considered a credible set of outputs for x.",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 106,
+   "block_id": "p211",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "6.5",
+   "prefix": "6.5.",
+   "heading": "CAUSALITY 101 unless Z Z p(x|z)p(y|z)p(z)dz = p(x) p(y|z)p(z)dz, (6.87) which would imply that there is no edge going from z to x in the first place. That we cannot factor p(x, y) into the product of the marginals of x and y implies that x and y are dependent on each other. Equivalently, we can say that x and y are correlated with each other (potentially nonlinearly.) They are however unrelated to each other causally, since intervening on x would not cause any change in y and vice versa. An example of this case of an unobserved confounder can be found in driving. If one is not aware of how driving works and only looks at the dashboard of a car,9 it is easy to see that the turn indicator and the steering wheel angle are highly correlated with each other, which may result in an incorrect causal conclusion that the turn indicator causes the steering wheel to turn, or vice versa. This is missing a big confounder that is a driver and their intention to turn the car. The second case is what we often referred to as confirmation bias. Consider the following causal model",
+   "body": "x y z In this case, x and y are independent of each other a priori. It is clear that they are not causally related to each other, since manually setting one of these to a particular value should not change the value taken by the other variable. It is however interesting to observe that these two variables, x and y, are suddenly dependent on each other, once we observe z. That is, under the posterior distribution, x and y are not independent: p(x)p(y)p(z|x, y) p(x, y|z) = R . (6.88) p(x′ )p(y ′ )p(z|x′ , y ′ )dx′ dy ′ Because of p(z|x, y), we cannot factor p(x, y|z) into the product of two terms, each of which depends only on either x or y. If we could, that would imply that z is caused by either one of x or y (or neither.) The input and outcome are correlated in this case, because we only selectively consider a subset of (x, y) pairs that are associated with a particular value of z. This is thus also called a selection bias. Let us consider an example, where x corresponds to a burglary and y to an earthquake. z is a house alarm. The house alarm goes off (z = 1) when either there is burglary (x = 1) or there is an earthquake (y = 1). It is pretty safe for 9 Imagine you are collecting data from the car to build a self-driving model.",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  }
+ ],
+ "issues": [
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p27",
+   "expected": 2,
+   "found": "2.1",
+   "text": "CLASSIFICATION 9 Let us first compute the partial derivative"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p35",
+   "expected": 3,
+   "found": "2.2",
+   "text": "BACKPROPAGATION 13 At this point, we start to see that the d"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p39",
+   "expected": 3,
+   "found": "2.2",
+   "text": "BACKPROPAGATION 15 xi hj is subtracted from uij . This term "
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p47",
+   "expected": 4,
+   "found": "2.3",
+   "text": "STOCHASTIC GRADIENT DESCENT 19 2.3.1 Descent Lemma We start "
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p51",
+   "expected": 4,
+   "found": "2.3",
+   "text": "STOCHASTIC GRADIENT DESCENT 21 convergence rate(s) of stocha"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p59",
+   "expected": 5,
+   "found": "2.4",
+   "text": "GENERALIZATION AND MODEL SELECTION 25 1 − δ, we equate the r"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p63",
+   "expected": 5,
+   "found": "2.4",
+   "text": "GENERALIZATION AND MODEL SELECTION 27 prior belief. This eff"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p67",
+   "expected": 5,
+   "found": "2.4",
+   "text": "GENERALIZATION AND MODEL SELECTION 29 There are so many term"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p71",
+   "expected": 5,
+   "found": "2.4",
+   "text": "GENERALIZATION AND MODEL SELECTION 31 ¯lN is a random variab"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p75",
+   "expected": 5,
+   "found": "2.4",
+   "text": "GENERALIZATION AND MODEL SELECTION 33 probability γ. Let γ ="
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p83",
+   "expected": 6,
+   "found": "2.5",
+   "text": "HYPERPARAMETER TUNING"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p99",
+   "expected": 3,
+   "found": "3.4",
+   "text": "PERMUTATION EQUIVARIANCE"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p103",
+   "expected": 5,
+   "found": "3.4",
+   "text": "PERMUTATION EQUIVARIANCE"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p115",
+   "expected": 3,
+   "found": "4.2",
+   "text": "VARIATIONAL INFERENCE AND GAUSSIAN MIXTURE MODELS53 that the"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p119",
+   "expected": 3,
+   "found": "4.2",
+   "text": "VARIATIONAL INFERENCE AND GAUSSIAN MIXTURE MODELS55 draw mor"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p127",
+   "expected": 4,
+   "found": "4.3",
+   "text": "CONTINUOUS LATENT VARIABLE MODELS 59 procedure, µn ’s will b"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p131",
+   "expected": 4,
+   "found": "4.3",
+   "text": "CONTINUOUS LATENT VARIABLE MODELS 61 not be stationary but c"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p135",
+   "expected": 4,
+   "found": "4.3",
+   "text": "CONTINUOUS LATENT VARIABLE MODELS 63 sample estimate of Jn"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p139",
+   "expected": 4,
+   "found": "4.3",
+   "text": "CONTINUOUS LATENT VARIABLE MODELS 65 where ⟨·, ·⟩ is an inne"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p151",
+   "expected": 2,
+   "found": "5.1",
+   "text": "RESTRICTED BOLTZMANN MACHINES"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p155",
+   "expected": 2,
+   "found": "5.1",
+   "text": "RESTRICTED BOLTZMANN MACHINES"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p163",
+   "expected": 3,
+   "found": "5.2",
+   "text": "ENERGY-BASED GENERATIVE ADVERSARIAL NETWORKS 77 distribution"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p171",
+   "expected": 4,
+   "found": "5.3",
+   "text": "AUTOREGRESSIVE MODELS 81 where we are being explicit about t"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p183",
+   "expected": 2,
+   "found": "6.1",
+   "text": "REINFORCEMENT LEARNING 87 where b̂(x) refers to a predicted "
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p187",
+   "expected": 2,
+   "found": "6.1",
+   "text": "REINFORCEMENT LEARNING 89 because Q̂ is an unbiased sample d"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p195",
+   "expected": 3,
+   "found": "6.2",
+   "text": "ENSEMBLE METHODS 93 Boltzmann formulation, as we have done o"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p199",
+   "expected": 3,
+   "found": "6.2",
+   "text": "ENSEMBLE METHODS 95 make better prediction on x. We can appr"
+  },
+  {
+   "type": "sibling_asymmetry",
+   "block_id": "p67",
+   "len": 3474,
+   "median": 685,
+   "text": "GENERALIZATION AND MODEL SELECTION 29 There are so many term"
+  },
+  {
+   "type": "sibling_asymmetry",
+   "block_id": "p71",
+   "len": 2369,
+   "median": 685,
+   "text": "GENERALIZATION AND MODEL SELECTION 31 ¯lN is a random variab"
+  },
+  {
+   "type": "sibling_asymmetry",
+   "block_id": "p95",
+   "len": 2360,
+   "median": 685,
+   "text": "CONVOLUTIONAL BLOCKS 43 Any invariance could be implemented "
+  },
+  {
+   "type": "sibling_asymmetry",
+   "block_id": "p127",
+   "len": 2105,
+   "median": 685,
+   "text": "CONTINUOUS LATENT VARIABLE MODELS 59 procedure, µn ’s will b"
+  },
+  {
+   "type": "sibling_asymmetry",
+   "block_id": "p159",
+   "len": 2655,
+   "median": 685,
+   "text": "ENERGY-BASED GENERATIVE ADVERSARIAL NETWORKS 75 If we run it"
+  },
+  {
+   "type": "sibling_asymmetry",
+   "block_id": "p167",
+   "len": 2605,
+   "median": 685,
+   "text": "AUTOREGRESSIVE MODELS 79 natural choice is a deterministic a"
+  },
+  {
+   "type": "sibling_asymmetry",
+   "block_id": "p183",
+   "len": 2352,
+   "median": 685,
+   "text": "REINFORCEMENT LEARNING 87 where b̂(x) refers to a predicted "
+  }
+ ],
+ "n_merged_two_line": 0
+}

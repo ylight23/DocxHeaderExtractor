@@ -1,0 +1,399 @@
+{
+ "file": "059_Lectures_on_Statistics_in_Theory.docx",
+ "mode": "UNCLASSIFIED",
+ "outline": [
+  {
+   "_idx": 0,
+   "block_id": "p0",
+   "marker": null,
+   "rank": null,
+   "num": "",
+   "prefix": "",
+   "heading": "059_Lectures_on_Statistics_in_Theory.pdf",
+   "body": null,
+   "split_src": "từ khóa",
+   "confidence": 0.7,
+   "flags": [],
+   "why": [
+    "đậm"
+   ],
+   "merged_from": null,
+   "level": 1,
+   "parent_id": null
+  },
+  {
+   "_idx": 4,
+   "block_id": "p7",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "6.5",
+   "prefix": "6.5",
+   "heading": "Confidence intervals for binomial parameter ρ . . . . . . . . . . . . . . . . . 30 6.5.1 What central confidence interval should we report for ρ? . . . . . . . 30 6.5.2 Gaussian approximation for binomial confidence intervals",
+   "body": "Wilson score interval of 1927 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32 6.5.3 Gaussian approximation for binomial confidence intervals: potentially disastrous Wald interval to avoid . . . . . . . . . . . . . . . . . . . . 33 6.5.4 HEP applications of confidence intervals for binomial parameter . . . 33 6.6 Perceived problems with upper/lower limits and hence for central confidence intervals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33 6.7 Beyond upper/lower limits and central confidence intervals . . . . . . . . . . 34 6.8 Neyman’s Construction of Confidence Intervals . . . . . . . . . . . . . . . . . 34 6.9 Famous confusion re Gaussian p(x|µ) where µ is mass ≥ 0 . . . . . . . . . . 35 6.10 Confidence belts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37 6.11 Confidence intervals and coverage . . . . . . . . . . . . . . . . . . . . . . . . 37 6.11.1 Over-coverage when observable x is discrete . . . . . . . . . . . . . . 38 7 Frequentist (classical) hypothesis testing 38 7.1 Hypothesis testing jargon, ROC curves . . . . . . . . . . . . . . . . . . . . . 39 7.1.1 Jargon in HEP . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40 7.1.2 Jargon for medical tests . . . . . . . . . . . . . . . . . . . . . . . . . 41 7.2 The choice of Type I error probability α . . . . . . . . . . . . . . . . . . . . 41 7.3 Frequentist hypothesis testing: Simple hypotheses . . . . . . . . . . . . . . . 42 7.3.1 Testing Simple hypotheses: Neyman–Pearson lemma . . . . . . . . . 42 7.4 Nested hypothesis testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42 7.5 Nested hypothesis testing: Duality with intervals . . . . . . . . . . . . . . . 43 7.6 Feldman-Cousins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43 7.7 Post-data p-values and Z-values . . . . . . . . . . . . . . . . . . . . . . . . . 44 7.7.1 Interpreting p-values and Z-values . . . . . . . . . . . . . . . . . . . . 44 7.7.2 Early CMS Higgs boson spin-parity test of 0+ vs. 0− . . . . . . . . . 45 7.7.3 Post-data choice of the C.L. . . . . . . . . . . . . . . . . . . . . . . . 46 7.8 Classical frequentist goodness of fit (g.o.f.) . . . . . . . . . . . . . . . . . . . 46 8 Likelihood (ratio) intervals for 1 parameter 47 8.1 LR interval example: Gaussian pdf p(x|µ, σ) with σ = 0.2µ . . . . . . . . . . 48 8.2 Binomial likelihood-ratio interval example . . . . . . . . . . . . . . . . . . . 48 8.3 Poisson likelihood-ratio interval example . . . . . . . . . . . . . . . . . . . . 48 9 Likelihood principle 48 9.1 Likelihood principle example #1: the “Karmen problem” . . . . . . . . . . . 50 9.2 Likelihood principle example #2: binomial stopping rule . . . . . . . . . . . 50 9.3 Stopping rule principle . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51 9.4 Likelihood principle discussion . . . . . . . . . . . . . . . . . . . . . . . . . . 51 10 Summary of three ways to make intervals 52 3",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 9,
+   "block_id": "p17",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.3",
+   "prefix": "2.3",
+   "heading": "Key tasks",
+   "body": "Important to distinguish The most common tasks to be performed in statistical inference are typically classified as follows. • Point estimation: What single “measured” value of a parameter do you report? While much is written about point estimation, in the end it is not clear what the criteria are for a “best” estimator. Decision Theory can be used to specify criteria and choose among point estimators. However, in HEP this is only implicitly done, and point estimation is usually not a contentious issue: typically the maximum-likelihood (point) estimator (MLE) serves our needs rather well, sometimes with a small correction for bias if desired. (See Appendix E.) We generally put a “hat” (accent circumflex) over a variable to denote a point estimate, e.g., µ̂. • Interval estimation : What interval (giving a measure of uncertainty of the param- eter inference) do you report? This is crucial in HEP (and in introductory physics laboratory courses), and as discussed below, is deeply connected to frequentist hy- pothesis testing. In HEP it is fairly mandatory that there is a confidence level that gives the frequentist coverage probability (Section 6.11) of a method, even if it is a Bayesian-inspired recipe. Point estimation and interval estimation can be approached consistently by insisting that the interval estimate contain the point estimate; in that case, one can construct the point estimate by taking the limit of interval estimates as intervals get smaller (limit of confidence level going to zero). For many problems in HEP, there is reasonable hope of approximate reconciliation between Bayesian and frequentist methods for point and interval estimation, especially with large sample sizes. • Hypothesis testing: There are many special cases, including a test of: (a) A given functional form (“model”) vs another functional form. Also known as “model selection”; (b) A single value of a parameter (say 0 or 1) vs all other values; (c) Goodness of Fit: A given functional form against all other (unspecified) functional forms (also known as “model checking”) Bayesian methods for hypothesis testing generally attempt to calculate the probability that a hypothesis is true. Frequentist methods cannot do this, and often lead to results expressed as p-values (Section 7.7). There is a large literature bashing p-values, but they are still deemed essential in HEP. • Decision making: What action should I take (tell no one, issue press release, propose a new experiment, . . . ) based on the observed data? Decision making is rarely performed formally in HEP, but it is important to understand the outline of the formal theory, in order to avoid confusion with statistical inference that stops short of a decision, and to inform informal application. 8",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 13,
+   "block_id": "p25",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "3.3",
+   "prefix": "3.3",
+   "heading": "Example of Bayes’s theorem using Bayesian P In a background-free experiment, a theorist uses a “model” to predict a signal with Poisson mean of 3.0 events. From the Poisson formula (Eqn. 9) we know",
+   "body": "P (0 events|model true) = 3.00 e−3.0 /0! = 0.05 P (0 events|model false) = 1.0 P (> 0 events|model true) = 0.95 P (> 0 events|model false) = 0.0. The experiment is performed, and zero events are observed. Question: Given the result of the experiment, what is the probability that the model is true? I.e., What is P (model true|0 events)? Answer: Cannot be determined from the given information! One needs in addition: P (model true), the degree of belief in the model prior to the experi- ment. Then Bayes’s Theorem inverts the conditionality: P (model true|0 events) ∝ P (0 events|model true)P (model true) (3) (again suppressing the normalization). It is instructive to apply Bayes’s Theorem in a little more detail, with the normalization. In Eqn. 1, let “A” correspond to “0 events” and “B” correspond to “model true”. Similarly, with P (not B) = 1 − P (B), we can write a version of Bayes’s Theorem (replacing B with “not B”) as P (not B|A) = P (A|not B) × P (not B)/P (A). (4) (As a check, we can add Eqns. 1 and 4 and get unity, confirming that P (A) is the correct nor- malization.) Solving Eqn. 4 for P (A) and substituting into Eqn. 1, and inserting numerical values from above, yields P (B|A) = 0.05P (B)/(1 − 0.95P (B)), i.e., 0.05 × P (model true) P (model true|0 events) = . (5) (1 − 0.95P (model true)) We can examine the limiting cases of strong prior belief in the model and very low prior belief. If we let the “model” be the Standard Model (SM), then we could express our high prior belief as P (model true) = 1 − ϵ1 , where ϵ1 ≪ 1. Plugging in gives, to lowest order, P (model true|0 events) ≈ 1 − 20ϵ1 . (6) This is still very high degree of belief in the SM. Unfortunately, one still finds (in the press and even among scientists) the fallacy that is analogous to people saying, “P (0 events|model true) = 5%, with 0 events observed, means there is 5% chance the SM is true.” (UGH!) In contrast, let the “model” be large extra dimensions, so that for a skeptic, the prior belief can be expressed as P (model true) = ϵ2 , for some other small ϵ2 . Then to lowest order we have, P (model true|0 events) ≈ 0.05ϵ. (7) Low prior belief becomes even lower. More realistic examples are of course more complex. But this example is good prepara- tion for avoiding misinterpretation of p-values in Section 7.7. 12",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 14,
+   "block_id": "p27",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "3.4",
+   "prefix": "3.4",
+   "heading": "A note re Decisions Suppose that as a result of the previous experiment, your degree of belief in the model is P (model true|0 events) = 1%, and you need to decide on an action, e.g., announcing in a press release that the model is false, or making no announcement while taking more data. Question",
+   "body": "What should you decide? Answer: Cannot be determined from the given information! One needs in addition: The utility function (or its negative, the loss function), which quan- tifies the relative costs (to You) of Type I error: announcing that the model is false, when it is true (thus eventually harming your reputation); and of Type II error: not announcing that the model is false when it is false, thus potentially allowing another experiment to make the announcement first. Thus, Your decision requires two subjective inputs: Your prior probabilities, and the relative costs (or benefits) to You of outcomes. Statisticians often focus on decision-making. In HEP, the tradition thus far is to com- municate experimental results (well) short of formal decision calculations. It is important to realize that frequentist (classical) “hypothesis testing” as discussed in Section 7 below (espe- cially with conventions like 95% C.L. or 5σ) is not a complete theory of decision-making! One must always keep this in mind, since the traditional “accept/reject” language of frequentist hypothesis testing is too simplistic for “deciding”. 3.5 Aside: What is the “whole space”? For probabilities to be well-defined, the “whole space” needs to be defined. This can be difficult or impossible for both frequentists and Bayesians. For frequentists, specification of the whole space may require listing the experimental protocol in detail, including the experimenters’ reaction to potentially unexpected results that did not occur! For Bayesians, normalization of probabilities of hypotheses requires enumerating all possible hypotheses and assigning degree of belief to them, including hypotheses not yet formulated! Thus, the “whole space” itself is more properly thought of as a conditional space, con- ditional on the assumptions going into the model (Poisson process, whether or not the total number of events was fixed, etc.), and simplifying assumptions or approximations. Furthermore, it is widely accepted that restricting the “whole space” to a relevant (“con- ditional”) subspace can sometimes improve the quality of statistical inference. The important topic of such “conditioning” in frequentist inference is discussed in detail in Section 11.1. In general, I do not clutter the notation with explicit mention of the assumptions defining the “whole space”, but some prefer to do so. In any case, it is important to keep them in mind and to be aware of their effect on the results obtained. 13",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 17,
+   "block_id": "p33",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.2",
+   "prefix": "4.2",
+   "heading": "Change of parameter µ in pdf p(x|µ) The pdf for x given parameter µ = 3 is the same as the pdf for x given 1/µ =",
+   "body": "1/3, or given µ2 = 9, or given any specified function of µ. They all imply the same µ, and hence the same pdf for x. In slightly confusing notation, that is what we mean by changing the parameter from µ to f (µ), and saying that p(x|f (µ)) = p(x|µ). (13) Inserting an observed value of x, we see the important result that the likelihood function L(µ) is invariant (!) under reparameterization from parameter µ to f (µ): L(f (µ)) = L(µ). The absence of a Jacobian reinforces the fact that L(µ) is not a pdf in µ. Furthermore, the mode of L(µ) is thus also invariant: if we let µ̂ be the value of µ for which L(µ) is a maximum, and if we let fˆ be the value of f (µ) for which L(f ) is a maximum, then fˆ = f (µ̂). (14) This is an important property of the popular ML technique of point estimation. (See dis- cussion in Ref. [11], Section 5.3.1.) 4.3 Probability integral transform In 1938 Egon Pearson commented on a paper of his father Karl (of χ2 fame), noting that the probability integral transform “. . . seems likely to be one of the most fruitful conceptions introduced into statistical theory in the last few years” [12]. Indeed this simple transforma- tion makes many issues more clear (or trivial). Given continuous x ∈ (a, b), and its pdf p(x), one transforms to y given by Z x y(x) = p(x′ )dx′ . (15) a Then trivially y ∈ (0, 1), and with the chain rule and the fundamental theorem of calculus, it follows that the pdf for y is p(y) = 1 (uniform) for all y ! (If x is discrete, there are complications.) So, for continuous variables, there always exists a metric y in which the pdf is uniform. As an aside, the inverse transformation can provide for efficient Monte Carlo (MC) generation of p(x) starting from a pseudo-random number generator uniform on (0,1). See Section 42.2 in Ref. [13]. Looking ahead to Section 5, I mention here that the specification of a Bayesian prior pdf p(µ) for parameter µ is thus equivalent to the choice of the metric g(µ) in which the pdf is uniform. This is a deep issue, not always recognized by users of uniform prior pdf’s in HEP! 4.4 Bayes’s theorem generalized to probability densities Recall (Eqn. 1) that P (B|A) ∝ P (A|B)P (B). For Bayesian P , continuous parameters such as µ are random variables with pdf’s. 16",
+   "split_src": "payload",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 19,
+   "block_id": "p37",
+   "marker": "bullet",
+   "rank": 9,
+   "num": "•",
+   "prefix": "•",
+   "heading": "Hypothesis testing",
+   "body": "Unlike frequentist statistics, testing credibility of whether or not µ equals a particular value µ0 is not performed by examining interval estimates (at least assuming a regular posterior pdf). One starts over with Bayesian model selection, as discussed in Appendix D. (Dirac δ-functions in the prior and posterior pdfs can however connect interval estimation to model selection, with its issues.) • Decision making: All decisions about µ require not only p(µ|x0 ) but also further input: the utility function (or its negative, the loss function). See, e.g., Ref. [3] (Chapter 6) and Ref. [14] (Chapter 2). Since Bayesian analysis requires a prior pdf, big issues in Bayesian estimation include: • What prior pdf to use, and how sensitive is the result to the prior? • How to interpret posterior probability if the prior pdf is not Your personal subjective belief? Frequentist tools can be highly relevant to both questions! 5.1 Can “subjective” be taken out of “degree of belief ”? There are compelling arguments (Savage [8], De Finetti [7] and others) that Bayesian rea- soning with personal subjective P is the uniquely “coherent” way (with technical definition of coherent) of updating personal beliefs upon obtaining new data and making decisions based on them. However, these foundational works can be very heavy going. For a more accessible review by an outspoken subjectivist, with more complete references, see Lindley’s 2000 review [15]. A 2018 book by Diaconis and Skyrms [6] is also very detailed and at a deep level that seems mostly comprehensible to physicists. A huge question is: Can the Bayesian formalism be used by scientists to report the results of their experiments in an “objective” way (however one defines “objective”), and does any of the glow of coherence remain when subjective P is replaced by something else? An idea vigorously pursued by physicist Harold Jeffreys [16] in the mid-20th century is: Can one define a prior p(µ) that contains as little information as possible? The really really thoughtless idea (despite having a fancy name, “Laplace’s Principle of Insufficient Reason”), recognized by Jeffreys as such, but dismayingly common historically in HEP is: just choose prior p(µ) uniform in whatever metric you happen to be using! 5.2 “Uniform prior” requires a choice of metric Recall that the probability integral transform always allows one to find a metric in which p is uniform (for continuous µ). Thus the question, “What is the prior pdf p(µ)?” is equivalent to the question, “For what function g(µ) is p(g) uniform?” There is usually no reason to choose g arbitrarily as g(µ) = µ (!). 18",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:bullet"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p33"
+  },
+  {
+   "_idx": 20,
+   "block_id": "p39",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "5.3",
+   "prefix": "5.3",
+   "heading": "Jeffreys’s choice of metric in which prior is uniform The modern foundation of the vast literature on prior pdfs that one may hope (in vain) to be uninformative is the monograph by Harold Jeffreys [16]. He proposes more than one approach, but the one that is commonly referred to as the “Jeffreys prior” (and considered the default “noninformative” prior by statisticians for estimation in 1-parameter problems) is derived from the statistical model p(x|µ). This means that the prior pdf depends on the measurement apparatus! For example, if the measurement apparatus has a resolution function that is Gaussian for mass m (with σ independent of m), then the Jeffreys prior pdf p(m) for the mass is uniform in m. If a different measurement apparatus has a resolution function that is Gaussian for m2 , then the Jeffreys prior pdf p(m2 ) is uniform in m2 . In the latter case, by the rules of probability (Eqn. 11), the prior pdf p(m) is not uniform, but rather proportional to m (!). Jeffreys’s derivation of his eponymous prior is based on the idea that the prior should be uniform in a metric related to the Fisher information, calculated from the curvature of the log-likelihood function averaged over sample space. Some examples are",
+   "body": "√ Poisson signal mean µ, no background: p(µ) = 1/ µ √ Poisson signal mean µ, known mean background b: p(µ) = 1/ µ + b Mean µ of Gaussian with fixed σ (unbounded or bounded µ): p(µ) = 1 rms deviation σ of a Gaussian when mean fixed: p(σ) = 1/σ Binomial parameter ρ, 0 ≤ ρ ≤ 1 : p(ρ) = ρ−1/2 (1 − ρ)−1/2 = Beta(1/2, 1/2). If parameter µ is changed to f (µ), the recipe for obtaining the Jeffreys prior for f (µ) yields a different-looking prior that corresponds to the same choice of uniform metric. So if you use Jeffreys’s recipe to obtain a prior pdf for µ, and your friend uses Jeffreys’s recipe to obtain a prior pdf for f (µ), then those pdfs will be correctly related by the appropriate Jacobian. (This is not true for some other rules, in particular if each of you takes a uniform prior in the metric you are using.) Thus probabilities (integrals of pdfs over equivalent endpoints) using Jeffreys prior are invariant under choices of different parameterizations. For a detailed modern review of Jeffreys’s entire book, including his prior, with discus- sion by six prominent statisticians (including outspoken subjectivist Lindley), and rejoinder, see Ref. [17]. 5.3.1 Reference priors of Bernardo and Berger As Jeffreys noted, his recipe encounters difficulties with models having more than one pa- rameter. José Bernardo [18] and J.O. Berger [19, 20] advocate an approach that they argue works well in higher dimensions, with the crucial observation that one must choose an order- ing of the parameters in order to well-define the multi-dimensional prior pdf. Their so-called “Reference prior” reduces to the Jeffreys prior in 1D, with a different rationale, namely the prior that leads to a posterior pdf that is most dominated by the likelihood. Earlier this year, Berger and Bernardo (with Donchu Sun) published a new book [21] discussing in detail these issues of estimation (though not hypothesis testing). 19",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 26,
+   "block_id": "p51",
+   "marker": "bullet",
+   "rank": 9,
+   "num": "•",
+   "prefix": "•",
+   "heading": "Not P (SUSY is true | data) • Not P (Standard Model is false | data) Rather, without a prior, we can compute",
+   "body": "1. Confidence Intervals for constants of nature or other parameter values, as defined in the 1930’s by Jerzy Neyman. Statements are made about probabilities in ensembles of intervals (fraction containing unknown true value). Confidence intervals have further applications in frequentist hypothesis testing. 2. Likelihoods and thus likelihood ratios, the basis for a large set of techniques for point estimation, interval estimation, and hypothesis testing. Both can be constructed using the frequentist definition of P . In this section, we introduce confidence intervals, and in Section 8, introduce likelihood ratios for interval estimation. “Confidence intervals”, and this phrase to describe them, were invented by Jerzy Ney- man in 1934-37 [44]. Statisticians typically mean Neyman’s intervals (or an approximation thereof) when they say “confidence interval”. In HEP the language is a little loose. I highly recommend using “confidence interval” (and “confidence regions” when multi-D) only to de- scribe intervals and regions corresponding to Neyman’s construction, described below, or by recipes of other origins (including Bayesian recipes) only if they yield good approximations thereof. The following subsections use upper/lower limits and closely related central confidence intervals to introduce and illustrate the basic notions, and then discuss Neyman’s more general construction (used e.g. by Feldman and Cousins). Then, after introducing frequentist hypothesis testing (Section 7), we return to make the connection between confidence intervals and hypothesis testing of a particular value of parameter vs other values (Section 7.5). 6.1 Notation x denotes observable(s). More generally, x is any convenient or useful function of the observable(s), and is called a “statistic” or “test statistic”. µ denotes parameter(s). (Statisticians often use θ.) p(x|µ) is the probability or pdf (from context) characterizing everything that determines the probabilities/densities of the observations, from laws of physics to experimental setup and protocol. The function p(x|µ) is called “the statistical model”, or simply “the model”, by statisticians. 6.2 The conceptual idea of confidence intervals in two sentences Given the model p(x|µ) and the observed value x0 , we ask: For what values of µ is x0 an “extreme” value of x? Then we include in the confidence interval [µ1 , µ2 ] those values of µ for which x0 is not “extreme”. (Note that this basic idea sticks strictly to the frequentist probability of obtaining x, and makes no mention of probability (or density) for µ.) 25",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:bullet"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p39"
+  },
+  {
+   "_idx": 27,
+   "block_id": "p53",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "6.2.1",
+   "prefix": "6.2.1",
+   "heading": "Ordering principle is required for possible values of x In order to define “extreme”, one needs to choose an ordering principle that ranks the possible values of x applicable to each µ. By convention high rank means not extreme. Some common ordering choices in 1D (when p(x|µ) is such that higher µ implies higher average x) are",
+   "body": "• Order x from largest to smallest: the smallest values of x are the most extreme. Given x0 , the confidence interval that contains µ for which x0 is not extreme will typically not contain the largest values of µ. This leads to confidence intervals known as upper limits on µ. • Order x from smallest to largest. This leads to lower limits on µ. • Order x using central quantiles of p(x|µ), with the quantiles shorter in x (least inte- grated probability of x) containing higher-ranked x, with lower-ranked x added as the central quantile gets longer (contains more integrated probability of x). This leads to central confidence intervals for µ. These three orderings apply only when x is 1D. A fourth ordering, using a particular likelihood ratio advocated by Feldman and Cousins, is still to come (Section 6.7); it is applicable in both 1D and multi-D. 6.2.2 A “confidence level” must be specified Given model p(x|µ) and an ordering of x, one chooses a particular fraction of highest-ranked values of x that are not considered as “extreme”. This fraction is called the confidence level (C.L.), say 68% or 95%. (In this discussion, 68% is more precisely 68.27%; 84% is 84.13%; etc. Also, in the statis- tics literature there is a fine distinction between confidence level and confidence coefficient, which we ignore here.) We also define α = 1−C.L., i.e., the fraction that is the lower-ranked, “extreme” set of values. 6.2.3 One-sentence summary Then the confidence interval [µ1 , µ2 ] contains those values of µ for which x0 is not “extreme” at the chosen C.L., given the chosen ordering of x. E.g., at 68% C.L., [µ1 , µ2 ] contains those µ for which x0 is in the highest-ranked (least extreme) 68% values of x for each respective µ, according probabilities obtained from the model p(x|µ). 6.3 Correspondence between upper/lower limits and central con- fidence intervals As illustrated in Fig. 3, the 84% C.L. upper limit µ2 excludes µ for which x0 is in the lowest 16% values of x. The 84% C.L. lower limit µ1 excludes µ for which x0 is in the highest 16% 26",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 31,
+   "block_id": "p61",
+   "marker": "num",
+   "rank": 6,
+   "num": "2",
+   "prefix": "2.",
+   "heading": "Then one estimates σ by σ̂ = 0.2 × µ̂ = 2.0. (This is potentially dangerous since it estimates one parameter by plugging the point estimate of another parameter into a relationship between true values of parameters.) 3. Then µ̂ ± σ̂ yields the interval [8.0, 12.0]. (Again this is potentially dangerous, as it evaluates tail probabilities of a model having true parameters via plugging in estimates of the parameters.) Such “Wald intervals” are at best only approximations to exact intervals. For (“exact”) confidence intervals, the reasoning must always involve probabilities for x calculated con- sidering particular possible true values of parameters, as in the Wilson reasoning! Clearly, the validity of the approximate Wald-interval reasoning (i.e., how dangerous the “potentially dangerous” steps are) depends on how much σ(µ) changes for µ relevant to problem at hand. The important point is that the Wald reasoning is not the correct reasoning for confidence intervals. Beware! 6.5 Confidence intervals for binomial parameter ρ The binomial model is directly relevant to efficiency calculations in HEP, as well as other contexts. Recall the binomial distribution Bi(non |ntot , ρ) from Eqn. 8 for the probability of non successes in ntot trials, each with binomial parameter ρ. In repeated trials, non has mean ntot ρ (19) and rms deviation p ntot ρ (1 − ρ) . (20) For asymptotically large ntot , Bi(non |ntot , ρ) can be approximated by a normal distribution with this mean and rms deviation. With observed number of successes non , the likelihood function L(ρ) follows from reading Eqn. 8 as a function of ρ. The maximum is at ρ̂ = non /ntot . (21) Suppose one observes non = 3 successes in ntot = 10 trials. The likelihood function L(ρ) is plotted in Fig. 7. 6.5.1 What central confidence interval should we report for ρ? We have non = 3, ntot = 10. Let us find the “exact” 68% C.L. central confidence interval [ρ1 , ρ2 ]. Recall the shortcut in Section 6.4.1 for central intervals",
+   "body": "Find the lower limit ρ1 with C.L. = (1 + 0.68)/2 = 84%; and find upper limit ρ2 with C.L. = 84%. Then [ρ1 , ρ2 ] is a 68% C.L. central confidence interval. 1. For lower limit at 84% C.L., find ρ1 such that Bi(non < 3|ρ1 ) = 84%, i.e., Bi(non ≥ 3|ρ1 ) = 16%. Solve: ρ1 = 0.142 as in Fig. 8 (left). 2. For upper limit at 84% C.L.), find ρ2 such that Bi(non > 3|ρ2 ) = 84%, i.e., Bi(non ≤ 3|ρ2 ) = 16%. Solve: ρ2 = 0.508 as in Fig. 8 (right). 30",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 33,
+   "block_id": "p65",
+   "marker": "num",
+   "rank": 6,
+   "num": "3",
+   "prefix": "3.",
+   "heading": "Then [ρ1 , ρ2 ] = [0.142, 0.508] is a central confidence interval with 68% C.L. This is the same result as obtained by Clopper and Pearson (C-P) in 1934 [46], citing Fisher, Neyman, and Neyman’s students. In HEP, such C-P intervals are the standard for a binomial parameter; they have been in PDG RPP since 2002 [13] (although the connection of the given formula with C-P is obscure). The same method was applied to confidence intervals for a Poisson mean by Garwood in his 1934 thesis, and published in 1936 [47]. (See Ref. [32], and references therein.) They are also the standard in HEP when there is no background. There is controversy when there is background; see PDG RPP (Section 39.4.2.4). Many tables and online calculators for C-P intervals and Garwood intervals exist; I usually use Ref [48]. The use of the word “exact” (dating to Fisher) for intervals such as C-P refers to the construction above. But the discreteness of observed x (non in this case) causes the fre- quentist coverage (defined and discussed Section 6.11 below) not to be exact, but rather generally greater than the chosen C.L. C-P intervals are thus criticized by some as “waste- fully conservative”. For a comprehensive review of both central and non-central confidence intervals for a binomial parameter and for the ratio of Poisson means, see Cousins, Hymes, and Tucker [49]. Many choices, including C-P, are implemented in ROOT [50]. For the closely related construction of upper/lower limits and central confidence intervals for a Poisson mean, see Ref. [32]. 6.5.2 Gaussian approximation for binomial confidence intervals",
+   "body": "Wilson score interval of 1927 As mentioned above, non has mean and rms deviation given by Eqns. 19 and 20, and for p ntot , Bi(non |ntot , ρ) converges to a Gaussian with mean µ(ρ) = ntot ρ asymptotically large and rms σ(ρ) = ntot ρ(1 − ρ). We can thus compute approximate confidence intervals for ρ while invoking this Gaussian approximation to the binomial distribution. The idea is not to substitute ρ̂ for ρ in Eqns. 19 and 20 (potentially big mistake!), but rather to follow the logic already used above from E.B. Wilson in 1927 [45]. (This is in fact the example that he was illustrating in that paper!) That is, we use the above recipe for upper and lower limits: 1. Find ρ1 such that Gauss(x ≥ 3|mean ρ1 , σ(ρ1 )) = 0.16. 2. Find ρ2 such that Gauss(x ≤ 3|mean ρ2 , σ(ρ2 )) = 0.16. This consistently uses the (different) values of σ associated with each ρ, not σ(ρ̂). It leads to a quadratic equation that, for our example, has solution [ρ1 , ρ2 ] == [0.18, 0.46]. This is the approximate 68% C.L. confidence interval known as the Wilson score interval. (See Ref. [49] and references therein.) Although this Wilson score interval needs only the quadratic formula, it is for some reason relatively unknown, as students are taught the Wald interval (UGH) of the next subsection. 32",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 34,
+   "block_id": "p67",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "6.5.3",
+   "prefix": "6.5.3",
+   "heading": "Gaussian approximation for binomial confidence intervals",
+   "body": "potentially dis- astrous Wald interval to avoid It is tempting instead to follow the so-called “Wald reasoning” mentioned in Section 6.4.2, and to substitute p ρ̂ = ntot ρ for ρ in the expression for the rms deviation in Eqn. 20. One obtains: σ̂ = ntot ρ̂(1 − ρ̂) and it seems a simple step to the potentially disastrous “Wald interval” ρ̂ ± σ̂, i.e., [ρ1 , ρ2 ] = [ρ̂ − σ̂, ρ̂ + σ̂]. The Wald interval does not use the correct logic for frequentist confidence! In fact, σ̂ = 0 when non = 0 or non = ntot . Incredibly, the failure of the Wald interval when non = 0 (or non = ntot ) has been used as a foundational argument in favor of Bayesian intervals in at least four public HEP postings (one retracted) and one published astrophysics paper! Of all the misguided things that have been written about statistics (sometimes by me) in nominally scholarly writings, this is among the most uninformed that I have seen. (Typically the authors were not informed about Bayesian statistics either, and thought that a prior uniform in ρ was obvious, without having read the vast Bayesian literature on priors for a binomial parameter.) Beware! Avoid the Wald interval except for “hallway estimates” — there is no reason to use it. And certainly do not make the silly claim that problems with the Wald interval point to foundational issues with confidence intervals. The Wald interval does not use “confidence” reasoning, and was already obsolete in 1927 as the Gaussian approximation to binomial confidence intervals; and by 1934 the exact intervals using confidence reasoning were published by C-P! They have no problem with the cases “fatal” to Wald intervals, non = 0 or non = ntot , as can be easily verified. 6.5.4 HEP applications of confidence intervals for binomial parameter As mentioned, the binomial model is directly relevant to efficiency calculations in the usual case where non is not fixed by the experiment design but rather sampled. Using a famous math identity, the binomial model is also directly applicable to con- fidence intervals for the ratio of Poisson means [49, 51]. Thus, it applies to statistical significance (ZBi ) of an excess in a signal bin when a sideband is used to estimate the mean background. (See Cousins, Linnemann, and Tucker [52].) As discussed in our paper, one can even stretch the use of ZBi (using a “rough correspondence”) to the problem of a signal bin when a Gaussian estimate of mean background exists. 6.6 Perceived problems with upper/lower limits and hence for central confidence intervals For decades, issues with upper limits and central confidence intervals have been discussed in two prototype problems in HEP: • Gaussian measurement resolution near a physical boundary (e.g., neutrino mass-squared is positive, but the sample x is negative); • Poisson signal mean measurement when observed number of events is less than the 33",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p65"
+  },
+  {
+   "_idx": 43,
+   "block_id": "p85",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "7.3",
+   "prefix": "7.3",
+   "heading": "Frequentist hypothesis testing",
+   "body": "Simple hypotheses In idealized cases that are sometimes reasonably well-approximated in HEP, a hypothesis may have no floating (unfixed) parameters. N-P called such hypotheses simple, in contrast to composite hypotheses that have unfixed parameters. Examples in HEP where both H0 and H1 are truly simple are rare, but we do have a few examples where the quantity of interest is simple in both hypotheses, and the role of unfixed nuisance parameters does not badly spoil the “simplicity”. For example, the hypotheses H0 vs H1 might be: • “jet originated from a quark” vs “jet originated from a gluon”, for a jet reconstructed in the detector • spin-1 vs spin-2 for a new resonance in µ+ µ− • JP = 0+ vs JP = 0− for the Higgs-like boson A simplified, detailed illustration of the spin test is in Appendix A, while an example of the JP test published by CMS is in Section 7.7.2. Of course, framing these tests in this way makes strong assumptions (in particular that one of the two hypotheses is true) that need to be revisited once data are in hand. 7.3.1 Testing Simple hypotheses: Neyman–Pearson lemma If the Type I error probability α is specified in a test of simple hypothesis H0 against simple hypothesis H1 , then the Type II error probability β is minimized by ordering x according to the likelihood ratio [57], λ = L(x|H0 )/L(x|H1 ). (25) One finds the cutoff λcut,α for the desired α and rejects H0 if λ ≤ λcut,α . For an outline of a proof, see Ref. [56] (p. 176). As mentioned, Appendix A has an example. This “Neyman–Pearson lemma” applies only to a very special case: no fitted parameters, not even undetermined parameters of interest! However, it has inspired many generalizations, and likelihood ratios are an oft-used component of both frequentist and Bayesian methods. 7.4 Nested hypothesis testing In contrast to two disjoint simple hypotheses, it is common in HEP for H0 to be nested in H1 . For example, commonly H0 corresponds to the parameter µ in H1 being equal to a particular value µ0 . (Typical values of µ0 are 0 or 1.) So we often consider: H0 : µ = µ0 (the “point null”, or “sharp hypothesis”) vs H1 : µ ̸= µ0 (the “continuous alternative”). Common examples, including a decay of the Higgs boson H0 , are: • Signal strength µ of new physics: null µ0 = 0, alternative µ > 0 42",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p65"
+  },
+  {
+   "_idx": 44,
+   "block_id": "p87",
+   "marker": "bullet",
+   "rank": 9,
+   "num": "•",
+   "prefix": "•",
+   "heading": "H0 → γγ before discovery of this decay, µ = signal strength",
+   "body": "null µ0 = 0, alternative µ>0 • H0 → γγ after discovery of this decay: µ is the ratio of the signal strength to the SM prediction; null µ0 = 1 (i.e., SM prediction), alternative is any other µ ̸= µ0 . 7.5 Nested hypothesis testing: Duality with intervals In the classical frequentist formalism (but not the Bayesian formalism), the theory of these tests maps to that of confidence intervals! The argument is as follows. 1. Having observed data x0 , suppose the 90% C.L. confidence interval for µ is [µ1 , µ2 ]. This contains all values of µ for which the observed x0 is ranked in the least extreme 90% of possible outcomes x according to p(x|µ) and the ordering principle in use. 2. With the same data x0 , suppose that we wish to test H0 vs H1 (as defined in Section 7.4) at Type I error probability α = 10%. We reject H0 if x0 is ranked in the most extreme 10% of x according to p(x|µ) and the ordering principle in use. Comparing the two procedures, we see that we reject H0 at α = 10% if and only if µ0 is outside the 90% C.L. confidence interval [µ1 , µ2 ]. (In this verbal description, I am implicitly assuming that x is continuous and that p(x|µ) is a pdf that puts zero probability on a point x with measure zero. Thus I ignore any issues concerning endpoints of intervals.) We conclude: Given an ordering: a test of H0 vs H1 at significance level α is equivalent to asking: Is µ0 outside the confidence interval for µ with C.L. = 1 − α? As Kendall and Stuart put it, “There is thus no need to derive optimum properties separately for tests and for intervals; there is a one-to-one correspondence between the problems as in the dictionary in Table 20.1” [56] (p. 175). The table mentioned maps the terminology that historically developed separately for intervals and for testing, e.g., α ↔ 1 − C.L. Most powerful ↔ Uniformly most accurate Equal-tailed tests ↔ central confidence intervals Use of this duality is referred to as “inverting a test” to obtain confidence intervals, and vice versa. 7.6 Feldman-Cousins As mentioned in Section 6.7, the “new” likelihood-ratio (LR) ordering principle that Gary Feldman and I advocated for confidence intervals in Ref. [55] turned out to be one and the same as the time-honored ordering (generalized to include nuisance parameters) described in Ref. [56] in the chapter of hypothesis testing using likelihood ratios. We had scoured statistics literature for precedents of “our” intervals without finding anything. But we over-looked the 43",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:bullet"
+   ],
+   "merged_from": null,
+   "level": 4,
+   "parent_id": "p85"
+  },
+  {
+   "_idx": 59,
+   "block_id": "p117",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "11.1.2",
+   "prefix": "11.1.2",
+   "heading": "Efron example that is structurally similar to Welch example Brad Efron’s talk at PhyStat-2003 [9] included a similar example using the Cauchy distribu- tion, where the ancillary statistic is the curvature of L(µ). He called the conditional answer “correct”. 11.1.3 Cox two-measuring device example (1957) For measuring a mean µ with Gaussian resolution, one of two devices is selected randomly with equal probability",
+   "body": "Device #1 with σ1 Device #2 with σ2 ≪ σ1 . Then a single measurement sample is made with the chosen device. In my notation, x1 is an index (1 or 2) chosen randomly and specifying the device, and x2 is the single sample from the selected Gaussian measurement. The total observed data is then, as before, {x1 , x2 }. But in this example, x1 and x2 are samples of two different quantities from the joint density p(x1 , x2 |µ). In Ref. [43] (p. 112) Luc Demortier gives a nice example in HEP: µ is the mass of a decaying particle with probability ph to decay hadronically (mass resolution σ1 ) and proba- bility 1 − ph to decay leptonically with mass resolution σ2 ). Thus the “measuring machine” chosen randomly is the detector used to measure the decay mode that is randomly chosen by quantum mechanics. So µ̂ = x2 . What is the confidence interval? The index x1 is an ancillary statistic, and it is reasonable (obvious?) to condition on it. I.e., we report a confidence interval giving correct coverage in the subspace of measurements that used the same measuring device that we used. So the 68% C.L. confidence interval is: µ̂ ± σ1 if Device #1 was randomly selected µ̂ ± σ2 if Device #2 was randomly selected Again it turns out that more powerful tests can be found. Demortier gives details on how the average length of intervals optimized in the unconditional sample space is shorter in the HEP example. Here I give Cox’s discussion. If one is testing µ = 0 vs µ = µ1 , with µ1 roughly the size of σ1 (the larger σ), consider the following intervals: µ̂ ± (0.48)σ1 if Device #1 used (covers true µ in 37% of uses), and µ̂ ± 5σ2 if Device #2 used (covers true µ nearly 100% of uses). Then the true µ is covered in (37/2 + 100/2)% = 68% of all intervals! The unconditional (full sample space) coverage is correct, but conditional coverage is not. Due to the smallness of σ2 , the average length of all intervals when averaging over the entire unconditional sample space is smaller than for conditional intervals with independent coverage. One gives up power with Device #1 and uses it in Device #2. Cox asserts: “If, however, our object is to say ‘what can we learn from the data that we have’, the unconditional test is surely no good.” [77] (p. 361) (See also Ref. [30] (pp. 47-48).) 58",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p65"
+  },
+  {
+   "_idx": 60,
+   "block_id": "p119",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "11.2",
+   "prefix": "11.2",
+   "heading": "Conditioning in HEP A classic example is a measurement of the branching fraction of a particular decay mode when the total number of decays N can fluctuate because the experimental design is to run for a fixed length of time. Then N is an ancillary statistic. You perform an experiment and obtain N total decays, and then do a toy MC simulation (Section 13) of repetitions of the experiment. Do you let N fluctuate, or do you fix it to the value observed? It may seem that the toy MC should include your complete procedure, including fluctuations in N . However, the above arguments would point toward conditioning on the value of the ancillary statistic actually obtained. So your branching fraction measurement is binomial with trials N . This was originally discussed in HEP by F. James and M. Roos [51]. For a more complete discussion, see Ref. [49]. 11.3 Conditioning and the likelihood principle In summary, conditioning on an ancillary statistic A means",
+   "body": "Even though A was randomly sampled in the experimental procedure, after data are obtained, proceed as if A had been fixed to the value observed. Ignore the rest of the sample space with all those other values of A that you could have obtained, but did not. The Welch and Cox (and Efron) examples reveal a real conflict between N-P optimization for power and conditioning to optimize relevance. The assertion that inference should be conditioned on an ancillary in the Welch exam- ple (where it comes out of the math) is often called the “Conditionality Principle” (CP). Conditioning in the Cox example (a “mixture experiment” where the ancillary has physical meaning about which experiment was performed) is then called the “Weak Conditionality Principle” (WCP). But note: in sufficiently complicated cases (for example if there is more than one an- cillary statistic), the procedure is less clear. In many situations, ancillary statistics do not exist, and it is not at all clear how to restrict the “whole space” to the relevant part for fre- quentist coverage. For a comprehensive review of ancillary statistics and their applications, see Ref. [79]. The pure Bayesian answer is to collapse the whole sample space to the data observed, and refer only to the probability of the data observed, i.e., the likelihood principle discussed in Section 9. This is literally the ultimate extreme in conditioning, conditioning (in the continuous case) on a point of measure zero! (You can’t get any more “relevant”.) But the price is giving up coverage. When there are “recognizable subsets” with varying coverage, Buehler [80] has discussed how a “conditional frequentist” can win bets against an “unconditional frequentist”. (See Refs. [53, 54].) I emphasize conditioning not only for the practical issues, but also to explain that there are intermediate positions between the full unconditional frequentist philosophy and the Likelihood Principle of Section 9. A key point is that unconditional frequentist coverage is a pre-data assessment: the entire confidence belt is constructed independent of where the observation lies. Thus a big argument is whether unconditional coverage remains appropriate post-data, after one knows where one’s observed data lies in the sample space. When the 59",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p65"
+  },
+  {
+   "_idx": 64,
+   "block_id": "p127",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "12.3.1",
+   "prefix": "12.3.1",
+   "heading": "Priors for nuisance parameters It used to be (unfortunately) common practice to express, say, a 50% systematic uncertainty on a positive quantity as a Gaussian with 50% rms. Then one “truncated” the Gaussian by not using non-positive values. As mentioned in Section 5.11 but worth repeating, in Bayesian calculations, the inter- action of a uniform prior for a Poisson mean and a “truncated Gaussian” for systematic uncertainty in efficiency leads to an integral that diverges if the truncation is at origin [40]. In evaluating the integral numerically, some people did not even notice! Recommendation",
+   "body": "Use lognormal or (certain) Gamma distributions instead of truncated Gaussian. Recipes are in my note [84]. 12.4 Nuisance parameters II: Neyman construction For each point in the subspace of nuisance parameters, treat them as fixed true values and perform a Neyman construction for multi-D confidence regions in the full space of all parameters. Project these regions onto the subspace of the parameter of interest. Problems: Typically intractable and causes overcoverage, and therefore rarely attempted. Tractability can sometimes be recovered by doing the construction in the lower dimen- sional space of the profile likelihood function, obtaining approximate coverage. (This is one way to interpret the pages in Kendall and Stuart on the likelihood ratio test with nuisance parameters [56]. See Ref. [85]) for some history.) Typically “elimination” is done in a way technically feasible, including parametric boot- strap (Section 13.1), and the coverage is studied with simulation (Section 13). 12.5 Nuisance parameters III: Likelihood ratio intervals Many of us raised on MINUIT MINOS read the article by F. James, “Interpretation of the Shape of the Likelihood Function around Its Minimum,” [86]. Whereas the 2D region in Section 12.1 has m = 2 and hence 2∆ ln L ≤ 2.3, for 1D intervals on µ1 , we first a make 2D contour with the m = 1 value, 2∆ ln L = 1, as shown by the black dashed curve in Fig. 22(right). Then the extrema in µ1 of this curve correspond to the endpoints of the approximate confidence interval for µ1 . 12.5.1 Profile likelihood function At the Fermilab Confidence Limits Workshop in 2000, statistician Wolfgang Rolke expressed the construction in a different (but exactly equivalent) way [87, 88], as illustrated in Fig. 23 and paraphrased as follows: ˆ2 that minimizes −2 ln L(µ1 , µ̂ • For each µ1 , find the value µ̂ ˆ2 ), shown in red. Make a 1D plot vs µ1 of (twice the negative log of) this “profile likelihood function” −2 ln Lprofile (µ1 ). Use the m = 1 threshold on −2 ln Lprofile (µ1 ), i.e., Eqn. 26, to obtain intervals at the desired C.L. The interval one obtains in Fig. 23 is the exact same interval as obtained by “MINOS” in Fig. 22(right). Can you see why? Since 2000, the “profile” statistical terminology has 63",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p65"
+  },
+  {
+   "_idx": 69,
+   "block_id": "p137",
+   "marker": "bullet",
+   "rank": 9,
+   "num": "•",
+   "prefix": "•",
+   "heading": "Or, use the Bayesian framework (even without the priors recommended by statisti- cians), but evaluate the frequentist performance [26]. In effect (as in profile likelihood) one gets approximate coverage while respecting the L.P. In fact, the statistics litera- ture has attempts to find prior pdfs that lead to posterior pdfs with good frequentist coverage",
+   "body": "probability matching priors. At lowest order in 1D, the matching prior is the Jeffreys prior! [93]. 13.3 A few looks at the literature on nuisance parameters, and studies of coverage In the mid-2000s, Luc Demortier and I both looked in the statistics literature regarding nuisance parameters. I thought that my note was fairly thorough until I read his! Our writeups: • R.D. Cousins, “Treatment of Nuisance Parameters in High Energy Physics, and Pos- sible Justifications and Improvements in the Statistics Literature,” presented at the PhyStat 2005 at Oxford [94] with response by statistician Nancy Reid [95]. • Luc Demortier, “P Values: What They Are and How to Use Them,” [96]. See also Luc’s scholarly Chapter 4 on interval estimation in Ref. [43]. Recently, statistician Larry Wasserman and I performed an “informal review” of marginal- ization versus profiling at a dedicated PhyStat meeting, and posted our writeups on the arxiv [85], including a discussion of the parametric bootstrap. Numerous studies have been done for elimination of nuisance parameters in the test statistic (typically a likelihood ratio), many concluding that results are relatively insensitive to profiling vs marginalization, so that the choice can be made based on CPU time. See for example John Conway’s talk and writeup at PhyStat-2011 [97]. It seems that the method for treating nuisance parameters in the toy MC generation of events may be more important than the treatment chosen in the test statistic: with poor treatment in the test statistic, one may lose statistical power but still calculate coverage correctly, while poor treatment in the toy MC generation may lead to incorrect coverage calculation. 13.4 “State of the art” for dealing with nuisance parameters In HEP, all three main classes of methods are used for the parameter of interest. In addition: • Both marginalization and profiling are used to treat nuisance parameters. At present, I think that profiling is (much) more common at the LHC. • Many people have the good practice of checking coverage. • The parametric bootstrap is increasingly used to improve coverage. • Too little attention is given to priors, in my opinion. But the uniform prior for Poisson mean is “safe” (from frequentist point of view) for upper limits (only!). 68",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:bullet"
+   ],
+   "merged_from": null,
+   "level": 4,
+   "parent_id": "p127"
+  }
+ ],
+ "issues": [
+  {
+   "type": "sibling_asymmetry",
+   "block_id": "p39",
+   "len": 1235,
+   "median": 225,
+   "text": "Jeffreys’s choice of metric in which prior is uniform The mo"
+  }
+ ],
+ "n_merged_two_line": 0
+}

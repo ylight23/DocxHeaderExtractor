@@ -1,0 +1,320 @@
+{
+ "file": "067_Algorithms_for_Massive_Data_Lecture_Notes.docx",
+ "mode": "UNCLASSIFIED",
+ "outline": [
+  {
+   "_idx": 0,
+   "block_id": "p0",
+   "marker": null,
+   "rank": null,
+   "num": "",
+   "prefix": "",
+   "heading": "067_Algorithms_for_Massive_Data_Lecture_Notes.pdf",
+   "body": null,
+   "split_src": "từ khóa",
+   "confidence": 0.7,
+   "flags": [],
+   "why": [
+    "đậm"
+   ],
+   "merged_from": null,
+   "level": 1,
+   "parent_id": null
+  },
+  {
+   "_idx": 9,
+   "block_id": "p17",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "1.1.3",
+   "prefix": "1.1.3",
+   "heading": "Suffix array Despite using linear O(n) words of space, the constant hidden in the big-O notation of the suffix tree’s space usage is very large. In fact, for every node and edge we need to record lots of information",
+   "body": "pointers to children, count information, pointers to the leftmost/rightmost leaf in the node’s subtree, etc. A good suffix tree implementation uses at least (approximately) 8n words, and each word takes 4 bytes (even 8 bytes if the text is very long). In total, at least 32n bytes. For example, if T is the DNA reference sequence of the Human genome, n is approximately 3.2 · 109 . The text T can be stored in about 3 Gigabytes, while the suffix tree requires at least 32n ≈ 95 GiB. In total, our data structure (text + suffix tree) uses approximately 98 GiB: more than 32 times the text itself! Observe that we ordered the leaves of the suffix tree and suffix trie according to the lexicographic order of their corresponding suffixes: $ (6) < aab$ (3) < ab$ (4) < abaab$ (1) < b$ (5) < baab$ (2) This is not a coincidence: since suffixes are sorted, the idea is that we can use binary search to find efficiently all suffixes prefixed by any query pattern. This array of numbers on the leaves, 6, 3, 4, 1, 5, 2 is called the suffix array (SA). Suppose we want to find the suffixes prefixed by pattern P = aa. We do this by binary search. First, we jump in the middle of the suffix array, and read number 4. Then, we jump on the text and start reading T [4..] = ab... We compare this string with the pattern aa, discovering that it is larger: ab... > aa. It follows that we can ignore all entries of the suffix array 4,1,5,2, because they correspond to suffixes being larger than the pattern: aa < ab$ (4) < abaab$ (1) < b$ (5) < baab. We repeat recursively on the remaining suffix array interval (6,3), until finding the range of all suffixes starting with our pattern (exactly as when we perform binary search on an array of sorted integers to find all occurrences of some query integer). Note that we perform O(log n) binary search steps, and in each step we need to compare the pattern with a text substring of length at most m. Binary search thus runs in O(m log n) time and allows finding the suffix array range containing all suffixes prefixed by the pattern P . The length of this range is the answer to count(P ), while the numbers contained inside the suffix array range are the answer to locate(P ). We obtain: Theorem 1.1.7. The suffix array uses n words of space on top of the text, supports count queries in time O(m log n), and locate queries in time O(m log n + occ). On the Human genome (n ≈ 3.2 × 109 ), each suffix array entry can be stored using words of 4 bytes. The text itself can be stored using 1 byte per character. In total, our data structure (text + SA) uses 5n ≈ 15 GiB: this is more than 6 times smaller than the suffix tree. 1.2 Basics of information theory Consider again our example of the previous section where the text T is the human genome, of length n = 3.2 × 109 (we use equality here for simplicity). The human genome is a sequence over a 4-letters alphabet: Σ = {A, C, G, T }. But then, there is no need of using the whole ASCII alphabet (1 byte per character): 2 bits per character are sufficient! Let γ : Σ → {0, 1}+ be an encoding of our alphabet. For example, we could encode γ(A) = 00, γ(C) = 01, γ(G) = 10, γ(T ) = 11. Then, the whole human genome fits in 2n bits, which is just about 700 MiB! This makes the suffix tree (95 GiB) and suffix array (12 GiB) appear even larger than they need to be: the former uses 135 times the space of the text, while the latter 17 times. Things could be much worse than this. Consider, for example, the following text: T = ACGT T T T T . . . T 7",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 15,
+   "block_id": "p29",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "1.3.1",
+   "prefix": "1.3.1",
+   "heading": "Random access in n bits First, we show how to pack a bitvector using exactly n bits (plus a constant number of memory words, which we will ignore for simplicity since they are negligible with respect to the n bits). While a bit can be stored as an integer, it is not a good idea to allocate n integers to represent B in your favorite programming language",
+   "body": "each integer typically uses 32 bits (4 bytes), so the whole array uses 32n bits! The idea is that, precisely because an integer is formed by 32 bits, we can use it to pack 32 bits of B. To be more general, let us denote with w the size of an integer in our computer. Parameter w is known in the literature as memory word size. In standard computers, we have w = 32 (or w = 64 if we use long int). Note that it is reasonable to assume w ∈ Ω(log n) because it should be possible to store any position i ∈ [n] pointing inside B using one (or a constant number of) integers. A standard assumption in the research field is w ∈ Θ(log n). We will follow this assumption. The following example shows how we can pack a bitvector, so to use just n bits. Example 1.3.3. Let B = 011100010100110011. Assume the word size is w = 6. Then, we break B in n/w blocks of w bits: B = 011100 010100 110011 We store B as an array B ′ of integers of w bits each (i.e. treat each block as a binary integer of w bits): B ′ = 28, 20, 51 Et voilà. B ′ is a standard array of integers (you can create it in your favorite programming language), contains exactly the same information as B, and it uses n bits. Remark 1.3.4. To be precise, the encoding shown in Example 1.3.3 uses n + Θ(w) = n + Θ(log n) bits because the computer also needs to store the address of B ′ in memory and its length. Those extra integers however use Θ(w) = Θ(log n) bits so they are negligible with respect to the size n of the bitvector. To simplify our discussion, in the rest of the notes we will ignore this small overhead. Be careful, however, that in general it is not always safe to ignore it! (it will be safe in our data structures). Remark 1.3.5. In general, w does not divide n so the last block could contain less than w bits. In this case, just pad B with bits ’0’ until its length is a multiple of w. This adds just O(w) bits of overhead and we will still be able to solve all our queries. We use notation (·)2 to indicate an integer written in base 2. Otherwise, integers are expressed in base 10. For example, (011)2 = 3. Let’s see how to do random access in constant time, with an example. Example 1.3.6. Consider again bitvector B of the previous example, divided in blocks: B = 011100 010100 110011 Stored as the following integer array: B ′ = 28, 20, 51 Assume we want to extract bit B[10](= 1). The idea is that we locate the block containing the 10-th bit: this is the second block, B ′ [2] = 20. In general, B[i] is inside the block B ′ [⌊(i − 1)/w⌋ + 1]. Now, we know that our bit B[10] is hidden inside the binary representation of B ′ [2] = 20. In particular, B[10] is the 4-th bit in the binary representation of B ′ [2] = 20 = (010100)2 . In general, B[i] is the bit in position i′ = (i − 1) mod w + 1 of B ′ [⌊(i − 1)/w⌋ + 1]. To extract the 4-th bit of B ′ [2] = 20 = (010100)2 , we first right-shift this number by w − 4 = 2 bits, i.e. move every bit to the right by 2 positions; the rightmost 2 bits will disappear, and 2 new bits equal to 0 will appear to the left. Our bit (shown underlined here) will end up at the end of the block of bits: 20 ≫ 2 = (010100)2 ≫ 2 = (000101)2 = 5 13",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 19,
+   "block_id": "p37",
+   "marker": "num",
+   "rank": 6,
+   "num": "3",
+   "prefix": "3.",
+   "heading": "we remember the relative starting position of each block inside its macroblock. Example 1.3.18. Continuing our example, we store the following extra information",
+   "body": "O1 O2 O3 O4 O5 O6 O7 encoded offsets 01 10 00 10 0 00 0 starting position of macroblock 1 7 12 relative starting position of offset inside macroblock 1 3 5 1 3 4 1 This information is clearly sufficient to reconstruct the initial position of any offset. Take for example O6 : using the stored information, we know that O6 starts in relative position 4 inside its macroblock (the second), which starts in absolute position 7. The absolute starting position of O6 is then 7 + 4 − 1 = 10. The total number of bits in the encoded offsets is nH0 + o(n) = O(n), so absolute macroblock positions use O(log2 n) bits each. We store them using Theorem 1.3.9. Each of those positions uses many bits, but they are few: there are in total n/b2 macroblocks, so these integers use in total (n/b2 ) · O(log2 n) = O(n/ log n) = o(n) bits. Relative block positions inside macroblocks, on the other hand, are more numerous: n/b. However, these relative positions are small numbers: recall that each offset is encoded using ⌈log2 Cbi ⌉ ≤ log2 2b = b bits. This means that the b offsets inside each macroblock are encoded using at most b2 bits, so each relative position inside a macroblock will use at most ⌈log2 b2 ⌉ bits. We encode 2 the n/b relative positions using ⌈log 2 b ⌉ bits each with Theorem 1.3.9. In total, these integers use n log log n (n/b)⌈log2 b2 ⌉ ∈ O((n/b) log b) = O log n = o(n) bits. This gives us: Lemma 1.3.19. Our encoding of C1 , . . . , Cn/b and O1 , . . . , On/b , in addition to absolute macroblock positions and relative block positions, uses nH0 + o(n) bits of space and allows retrieving any class Cj and any offset Oj in O(1) time. Decoding the block given its class and offset The last problem to solve is how to locally decompress a block: given Cj and Oj , retrieve Bj packed in a memory word. Our solution is simply to pre-compute all combinations of class and offset. We store a two-dimensional table T [Cj ][Oj ] = Bj How much space does the table use? the total number of √classes is b + 1 = O(log n). The total number of offsets for each class is Cbi ≤ 2b = 2⌈(log2 n)/2⌉ = O( n). For each class-offset combination, √ we store a bitvector Bj of b = O(log n) bits. In total: O( n log2 n) = o(n) bits. Example 1.3.20. Table T is just a way to encode our lists Bb,j : • B3,0 = (000) • B3,1 = (001, 010, 100) • B3,2 = (011, 101, 110) • B3,3 = (111) The table is shown in Figure 1.3. Putting everything together: Lemma 1.3.21. Our encoding of C1 , . . . , Cn/b and O1 , . . . , On/b , in addition to absolute macroblock positions, relative block positions, and table T , uses nH0 + o(n) bits of space and allows retrieving any bit B[i] in O(1) time. 17",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 34,
+   "block_id": "p67",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "1.6.2",
+   "prefix": "1.6.2",
+   "heading": "The Burrows-Wheeler Transform",
+   "body": "BWT In 1994, Michael Burrows and David Wheeler [9] introduced the following string permutation, today known as the Burrows-Wheeler transform. In this section we will assume that the string S ∈ Σn ends with a special character $ being alphabetically smaller than all the other characters and not appearing anywhere else in S. 1. Sort all circular rotations of S. This yields a matrix: the BWT matrix of S. See Figure 1.11 for an example. 2. Concatenate in a new string BW T (S) the last character of each rotation of S, in sorted order. F L = BW T (S) $ m i s s i s s i p p i i $ m i s s i s s i p p i p p i $ m i s s i s s i s s i p p i $ m i s s i s s i s s i p p i $ m m i s s i s s i p p i $ p i $ m i s s i s s i p p p i $ m i s s i s s i s i p p i $ m i s s i s s i s s i p p i $ m i s s s i p p i $ m i s s i s s i s s i p p i $ m i Figure 1.11: BWT matrix of S = mississippi$. The rows of the BWT matrix contain all and only the circular rotations of S. The last column L (in green) is BW T (S) = ipssm$pissii. We have already encountered the first column F = $iiiimppssss in Section 1.5. As we will see, the BWT possesses several remarkable properties which boost compression and enable indexing. At the core of most properties, stands the LF property (see Figure 1.12): Theorem 1.6.8. LF property. The i-th occurrence of c ∈ Σ on column L (i.e. L[L.selectc (i)]) corresponds to the i-th occurrence of c on column F (i.e. F [F.selectc (i)]). In other words, these two characters correspond to the same position in the original string S. It is not hard to prove the LF-property. The key idea is to think about the ordering of equal characters on the two columns. In column F, equal characters (for example, the ’i’s) are ordered according to the lexicographic order of the text suffixes that follow them. For example, in Figure 1.11 the second ’i’ in column F is followed by ppi$, which is smaller than the suffix ssissippi$ which follows the fourth ’i’ in column F. It is easy to see that the same property holds for equal characters on the L column. For example, in Figure 1.11 the second ’i’ in column L is followed by ppi$, which is smaller than the suffix ssissippi$ which follows the fourth ’i’. It follows that occurrences of any c ∈ Σ appear in the same order in the F and L columns. As shown in Figure 1.12, the LF property yields a function (in fact, a permutation) LF : [n] → [n]. Note that LF = ψ −1 (ψ is the function we defined in Section 1.5 to compress the suffix array). In fact, the FM-index we are going to describe in Section 1.6 is just another way to compress the suffix array! A first important consequence of the LF mapping is that BW T (S) can be inverted. As displayed in Figure 1.13, by repeatedly applying function LF starting from position 1 (note: L[1] always contains the character preceding $), we reconstruct S backwards. Note that F can be obtained by sorting BW T (S), so all we need to reconstruct S is just BW T (S). 32",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p37"
+  },
+  {
+   "_idx": 36,
+   "block_id": "p71",
+   "marker": "num",
+   "rank": 6,
+   "num": "2",
+   "prefix": "2.",
+   "heading": "The first k columns of the BWT matrix contain all substrings of length k of S, in sorted order. But then, BW T (S) is formed by the characters preceding those contexts",
+   "body": "in other words, BW T (S) is the concatenation of strings Sw (see Section 1.2.4). This suggests that local zero-order entropy compression of BW T (S) yields k-order entropy compression of S. 1.6.3 FM-index = WT(BWT) The FM-index of string S is W T (BW T (S)): a zero-order compressed wavelet tree over the Burrows- Wheeler transform of S. In the next subsection we show that this data structure supports efficient count queries, then we use the same strategy of Section 1.5.2 to support also locate and extract queries. Finally, we show that actually W T (BW T (S)) automatically achieves high-order entropy-compressed space, without any further intervention (just analysis). This index has been described for the first time by Ferragina and Manzini in the year 2000 [19]. The original paper [19] used a more complicated compression strategy without Wavelet trees and only achieved O(nHk ) + o(n log σ) bits of space. The version of the FM-index that we present is more modern, easier to describe and analyze, and more efficient than the original one. Count queries: the backward search algorithm We show how to solve query count(P ): return the number of occurrences of string P ∈ Σm in S (more in general, the query returns the suffix array range SA[l, r] of all suffixes prefixed by P ). The reason for this name is that we search the pattern from its last to first character (right-to-left instead of left-to-right as done in suffix trees, suffix arrays, and in the CSA). The algorithm is based on two observations: 1. All occurrences of P appear contiguously in a range of rows in the BWT matrix, and 2. Let SA[l, r] be the range of suffixes prefixed by some string P ′ . Then, the characters in BW T [l, r] precede the occurrences of P ′ in S. In other words, String BW T [i] · P ′ is a substring of S for all l ≤ i ≤ r (unless BW T [i] = $). Observations (1) and (2), together with the LF property, imply that we can find the range [l, r] of all suffixes prefixed by P iteratively, in m steps. See Figure 1.14 for an example of one such step. The resulting algorithm is called backward search. Backward search works as follows. We start from the range [1, n] of all suffixes prefixed by the empty string and LF-map all characters equal to P [m] inside BW T [1, n] to column F . The range [lm , rm ] we obtain is the range of all suffixes prefixed by P [m]. We repeat this process with P [m − 1]: we LF-map all characters equal to P [m − 1] inside BW T [lm , rm ] to the F column, obtaining the range [lm−1 , rm−1 ] of all suffixes prefixed by P [m − 1, m]. By repeating this process with P [m − 2], P [m − 3], . . . , we finally obtain the range [l1 , r1 ] of all suffixes prefixed by P . Observe that at step i in the above process we do not really need to LF-map all the characters equal to P [i] inside BW T [li+1 , ri+1 ] to column F: we only need to LF-map the first and last occurrence of P [i] in BW T [li+1 , ri+1 ]. These occurrences can be quickly located with two rank queries on the BWT. Let c = P [i]. The first occurrence of c in BW T [li+1 , ri+1 ] is the L-th occurrence of c in BW T (S), where L = BW T.rankc (li+1 − 1) + 1 Similarly, the last occurrence of c in BW T [li+1 , ri+1 ] is the R-th occurrence of c in BW T (S), where R = BW T.rankc (ri+1 ) Note that R < L if and only if there are no occurrences of P [i] in BW T [li+1 , ri+1 ]. 34",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 45,
+   "block_id": "p89",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.2",
+   "prefix": "2.2",
+   "heading": "Concentration inequalities Concentration inequalities provide bounds on how likely it is that a random variable deviates from some value (typically, its expected value). These will be useful in the next sections to calculate the probability of obtaining a good enough approximation with our randomized algorithms. 2.2.1 Markov’s inequality Suppose we know the mean E[X] of a nonnegative R.V. X. Markov’s inequality can be used to bound the probability that a random variable takes a value larger than some positive constant. It goes as follows",
+   "body": "Lemma 2.2.1 (Markov’s inequality). For any nonnegative R.V. X and any a > 0 we have: P (X ≥ a) ≤ E[X]/a P∞ Proof. We prove P∞ the inequality for discrete P∞ R.V.s (the continuous case is similar). E[X] = x=0 x · P (X = x) ≥ x=a x · P (X = x) ≥ a · x=a P (X = x) = a · P (X ≥ a). 2.2.2 Chebyshev’s inequality Chebyshev’s inequality gives us a stronger bound than Markov’s, provided that we know the random variable’s variance. This inequality bounds the probability that the R.V. deviates from its mean by some fixed value. Note that we do not require X to be nonnegative. Lemma 2.2.2 (Chebyshev’s inequality). For any k > 0: P (|X − E[X]| ≥ k) ≤ V ar[X]/k 2 Proof. We simply apply Markov to to the (nonnegative) R.V. (X − E[X])2 : P (|X − E[X]| ≥ k) = P ((X − E[X])2 ≥ k 2 ) ≤ E[(X − E[X])2 ]/k 2 = V ar[X]/k 2 Boosting by averaging A trick to get a better bound is to draw s pairwise-independent realizations of the R.V. X and average them out. Lemma 2.2.3 (Boosted Chebyshev’s inequality). Let X be a R.V. Fix k P > 0 and integer s ≥ 1. Let s X1 , . . . , Xs be pairwise independent and distributed as X, and define X̂ = i=1 Xi /s. Then: V ar[X] P (|X̂ − E[X]| ≥ k) ≤ s · k2 Ps linearity of expectation that E[ i=1 Xi /s] = E[X]. Moreover, Proof. Since Xi ∼ X, it is easy to see by P s by pairwise independence we have V ar[ i=1 Xi ] = s · V ar[X]. Then: Ps Ps P (|X̂ − E[X]| ≥ k) = P | 1s i=1 Xi − E 1s i=1 Xi | ≥ k Ps Ps = P 1s | i=1 Xi − E [ i=1 Xi ] | ≥ k Ps Ps = P (| i=1 Xi − E [ i=1 Xi ] | ≥ sk) Ps ≤ V ar[ i=1 Xi ]/(s2 k 2 ) = s · V ar[X]/(s2 k 2 ) = V ar[X]/(sk 2 ) 43",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p71"
+  },
+  {
+   "_idx": 46,
+   "block_id": "p91",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.2.3",
+   "prefix": "2.2.3",
+   "heading": "Chernoff-Hoeffding’s inequalities Pn Chernoff-Hoeffding’s inequalities are used to bound the probability that the sum Y = i=1 Yi of n independent identically distributed (iid) R.V.s Yi exceeds by a given value its expectation. The inequalities come in two flavors",
+   "body": "with additive error and with relative (multiplicative) error. We will prove both for completeness, but only use the former in these notes. The inequalities give a much stronger bound w.r.t. Markov precisely because we know a particular property of the R.V. Y (i.e. it is a sum of iid. R.V.’s). Here we study the simplified case of Bernoullian R.V.s. Lemma 2.2.4 (Chernoff-Hoeffding Pn bound, additive form). Let Y1 , . . . , Yn be fully independent Be(p) random variables. Denote Y = i=1 Yi . Then, for all t ≥ 0: −t2 • P (Y ≥ E[Y ] + t) ≤ e 2n [one sided, right] −t2 • P (Y ≤ E[Y ] − t) ≤ e 2n [one sided, left] −t2 • P (|Y − E[Y ]| ≥ t) ≤ 2e 2n [double sided] Proof. Let Xi = Yi − E[Yi ]. Each Xi is distributed in the interval [−1, 1], has mean E[Xi ] = E[Yi − E[Yi ]] = E[Yi ]−E[Yi ] = 0, and takes value 1−E[Yi ] = 1−p with probability p and value 0−E[Yi ] = −p Pn −t2 with probability 1 − p. Let X = i=1 Xi . In particular, X = Y − E[Y ]. We prove P (X ≥ t) ≤ e 2n . −t2 The same argument will hold for P (−X ≥ t) ≤ e 2n , so by union bound we will get P (|Y − E[Y ]| ≥ −t2 t) = P (|X| ≥ t) ≤ 2e 2n . Let s > 0 be some free parameter that we will later fix to optimize our bound. The event X ≥ t is equivalent to the event esX ≥ est , so: Pn P (X ≥ t) = P (es i=1 Xi ≥ est ) Pn We apply Markov to the (non-negative1 ) R.V. es i=1 Xi , obtaining \" n # Pn Y P (X ≥ t) ≤ E[es i=1 Xi ]/est = E esXi /est i=1 which, since the Xi ’s are fully independent and identically distributed (in particular, they have the same expected value), yields the inequality n P (X ≥ t) ≤ E[esX1 ] /est (2.1) The goal is now to bound the expected value E[esX1 ] appearing in the above quantity. Define A = 1+X 2 1 and B = 1−X 2 . Note that: 1 • A ≥ 0 and B ≥ 0 • A + B = (1+X1 )+(1−X 2 1) =1 • A − B = (1+X1 )−(1−X 2 1) = X1 We recall Jensen’s inequality: if f (x) is convex, then for any 0 ≤ a ≤ 1 we have f (ax + (1 − a)y) ≤ af (x) + (1 − a)f (y). Note that ex is convex so, by the above three observations: 1 Note: X might be negative, but esX is always positive, so we can indeed apply Markov’s inequality 44",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p71"
+  },
+  {
+   "_idx": 51,
+   "block_id": "p101",
+   "marker": "num",
+   "rank": 6,
+   "num": "1",
+   "prefix": "1.",
+   "heading": "Ŷ is constructed from O(st) = O(ϵ−2 log(1/δ)) independent realizations of X, and 2. P (|Y − E[X]| ≥ ϵE[X]) ≤ δ. In other words, the above corollary says that if a random variable X satisfies V ar[X] = O(E[X]2 ), then we can boost the accuracy of our prediction of E[X] by sampling O(ϵ−2 log(1/δ)) realizations of X, combining them as described in the corollary (i.e. taking a median of means) and obtaining a random variable Ŷ whose realizations exceed E[X] by more than a relative fraction ϵ with arbitrarily small probability δ. We will use this powerful corollary several times in these notes. 2.3 Hashing A hash function is a function h",
+   "body": "U → [0, M ) from some universe U (usually, an interval of integers) to an interval of numbers (usually the integers, but we will also work with the reals). Informally speaking, h is used to randomize our data and should have the following basic features: 1. h(x) should be “as random” as possible. Ideally, h should map the elements of U completely uniformly (but we will see that this has a big cost). 2. h(x) should be quick to compute algorithmically. Ideally, we would like to compute h(x) in time proportional to the time needed to read x (O(1) if x is an integer, or O(n) if x is a string of length n). 3. h occupies space in memory, since it is implemented with some kind of data structure. This space should be as small as possible (ideally, O(1) words of space, or logarithmic space). h(x) will also be called the fingerprint of x. Note that, while h accepts as input any value from U , typically the algorithms using h will apply it to much smaller subsets of U (for example, U might be the set of all 232 possible IPv4 addresses, but the algorithm will work on just a small subset of them). We now formalize the notion of hashing. Definition 2.3.1. The set of all functions h : U → [0, M ) from domain U to codomain [0, M ) is denoted as [0, M )U . Definition 2.3.2. A family of hash functions H is a subset of [0, M )U . Remark 2.3.3. Note that each h ∈ [0, M )U assigns a unique value from [0, M ) to each of the |U | uni- verse elements. Then, a function h ∈ H is fully characterized by the vector (h(x1 ), h(x2 ), . . . , h(x|U | )) of length |U |, where U = {x1 , x2 , . . . , x|U | }. Conversely, each such vector defines exactly one function of [0, M )U . We conclude that the cardinality of [0, M )U is M |U | . Given a family H of hash functions, our randomized algorithm will first extract a uniform2 h ∈ H. Then, the algorithm will randomize the input data by applying h to it. The expected-case analysis of the algorithm will take into account the structure of H and the fact that h has been chosen uniformly from it. Remark 2.3.4. From Section 1.2.1, in the worst case we need at least log2 |H| bits in order to represent (and store in memory) any h ∈ H. This shows a trade-off: the larger H is, the more random (i.e. higher independence) our hash function h will be. On the other hand, a large H means that we have to waste more bits to represent h. 2 One (strong) assumption is always needed for this to work: we can draw uniform integers. This is actually impossible, since computers are deterministic. However, there is a vast literature on pseudo-random number generators (PRNG) which behave reasonably well in practice. We will thus ignore this problem for simplicity. 49",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 61,
+   "block_id": "p121",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "3.1.2",
+   "prefix": "3.1.2",
+   "heading": "Analysis Suppose we have inserted S = {x1 , . . . , xm } in the Bloom filter. We want to compute the probability P F P that, for any x ∈/ S, the filter erroneously reports that x belongs to S. The insertion of one element in the filter causes the modification of at most k bits in the bitvector B, one for each sub-interval of size M/k of the range [0, M ) of indexes of B. Moreover, by definition of full-independence and uniformity of the hash functions, the random variables ht (xj ) are independent for all 1 ≤ t ≤ k and 1 ≤ j ≤ m. We now compute the probability that any bit B[i] is equal to 1. Note that position i belongs to the t-th sub-interval of size M/k of [0, M ), where t = ⌊ik/M ⌋ + 1. W P (B[i] = 1) = P h (x j∈[m] t j ) = i V = 1−P j∈[m] ht (xj ) ̸ = i Q = 1 − j∈[m] P (ht (xj ) ̸= i) Q = 1 − j∈[m] (1 − k/M ) k m = 1− 1− M mk/M k M/k = 1− 1− M M/k→∞ = 1 − e−mk/M Where the last equality holds for M/k (the size of each sub-interval) tending to infinity; this hypothesis is justified in our case since we are performing an asymptotic analysis (m → ∞) and, as we show next, M/k > m will hold by construction. We obtain a false positive if and only if B[hj (x)] = 1 for all 1 ≤ j ≤ k. Then",
+   "body": "P F P = P (B[h1 (x)] = 1 ∧ B[h2 (x)] = 1 ∧ · · · ∧ B[hk (x)] = 1) where P (B[hj (x)] = 1) = 1−e−mk/M for all 1 ≤ j ≤ k, as proved above. Since the functions h1 , . . . , hk are independent and have disjoint domains, the events B[h1 (x)] = 1, B[h2 (x)] = 1, . . . , B[hk (x)] = 1 are independent. We obtain: k Y P F P = P (B[h1 (x)] = 1 ∧ B[h2 (x)] = 1 ∧ . . . B[hk (x)] = 1) = P (B[hj (x)] = 1) = (1 − e−mk/M )k j=1 Where the last equality holds for M/k → ∞ (again, true asymptotically). It can be shown that the quantity (1 − e−mk/M )k is minimized for k = (M/m) ln 2; replacing this value into the above probability, we get that the false positive probability is P F P = (1/2)(M/m) ln 2 Solving (1/2)(M/m) ln 2 = δ as a function of M , we finally get M = m log2 e·log2 (1/δ) ≈ 1.44·m log2 (1/δ) and k = (M/m) ln 2 = log2 (1/δ). Note that, indeed, M/k = m/ ln 2 > m (we assumed this earlier). Remark 3.1.2. An interesting observation: using k = (M/m) ln 2, after exactly m insertions the probability that any bit B[i] is 0 is (for M → ∞) equal to e−mk/M = 1/2. In other words, after m insertions B is a uniform bitvector. This makes sense because it means that the entropy of B is maximized, i.e., we have packed as much information as possible inside it. We obtained: 59",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p101"
+  },
+  {
+   "_idx": 82,
+   "block_id": "p163",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.8.1",
+   "prefix": "4.8.1",
+   "heading": "Karp-Rabin’s algorithm Rabin’s hashing is the main tool we will use to solve the problem. First, we note that the technique itself yields a straightforward solution, even though in O(n) space. In the next section we refine this solution to use O(log n) space. Suppose we have processed the stream up to x1 , . . . , xi (i ≥ n) and that we know the hash values κq,z (xi−n+1 xi−n+2 . . . xi ) and κq,z (y). By simply comparing these two hash values (in constant time) we can discover whether or not the patter occurs in the last n stream’s characters. The crucial step is to update the hash of the stream when a new element xi+1 arrives. This is not too hard",
+   "body": "we have to subtract character xi−n+1 from the stream’s hash and add the new character xi+1 . This can be achieved as follows: κq,z (xi−n+2 xi−n+2 . . . xi+1 ) = (κq,z (xi−n+1 xi−n+2 . . . xi ) − xi−n+1 · z n−1 ) · z + xi+1 mod q The value z n−1 mod q can be pre-computed, so the above operation takes constant time. Note that, since we need to access character xi−n+1 , at any time the algorithm must keep the last n characters seen in the stream, thereby using O(n) space. Analysis From Section 4.2, the probability that the pattern collides with a stream’s substring is at most n/q. By union bound, the probability that the pattern collides with at least one substring is mn/q ≤ m2 /q. We want this to happen with small (inverse polynomial probability): this can be achieved by choosing a prime q in the range [mc+2 , 2 · mc+2 ], for any constant c. Such a prime (and therefore the output of Rabin’s hash function) can be stored in O(log m) bits = O(1) words. We obtain: Theorem 4.8.2. The Karp-Rabin algorithm solves the pattern matching problem in the streaming model using O(n) words of memory and O(1) delay. The correct solution is returned with high (inverse- polynomial) probability 1 − m−c , for any constant c ≥ 1 chosen at initialization time. There exist also deterministic algorithms with O(1) delay and O(n) space. However, as we show in the next section, Karp-Rabin’s randomization enables an exponentially more space-efficient solution. 4.8.2 Porat&Porat’s algorithm The big disadvantage of Karp-Rabin’s algorithm is that it uses too much memory: O(n) words per pattern. In this section we study an algorithm described by Benny Porat and Ely Porat in [41] that uses just O(log n) words of space and has O(log n) delay per stream’s character 4 . Other algorithms are able to reduce the delay to the optimal O(1) (see [7]). For simplicity, assume that n is a power of two: n = 2e for some e ≥ 0. The algorithm can be generalized to any n in a straightforward way. The overall idea is to: • Keep the hashes of all 1 + e = 1 + log2 n prefixes of y whose length is a power of two. • Keep the occurrences of those prefixes of y on the stream, working in e levels: level 0 ≤ i < e stores the set Wi of all occurrences of the prefix y[1, 2i ] in the window containing the last 2i+1 stream’s characters. Using a clever argument based on string periodicity, show that this set can be “compressed” in just O(1) words of space per level (O(log n) space in total). • When a new stream character xj arrives: – If it is an occurrence of y1 , insert j in W0 . 4 Note that, no matter how large n is, O(log n) words will fit in cache. O(log n) delay in cache is by far more desirable than O(1) delay in RAM: the former is hundreds of times faster than the latter. 80",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p101"
+  },
+  {
+   "_idx": 94,
+   "block_id": "p187",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.9.4",
+   "prefix": "4.9.4",
+   "heading": "Generalization",
+   "body": "sum of integers The algorithm can be used as a basis for many generalizations. Consider for example a stream formed by integers of q bits each. We are interested in computing the sum of the last m̄ integers in the stream. The solution is to break the stream into q parallel streams, one per bit in the integers: see Figure 4.13. window Sums Stream 5 7 2 1 0 1 4 3 6 2 19 = 2⋅22 + 4⋅21 + 3⋅20 1 1 0 0 0 0 1 0 1 0 2 sub-streams 0 1 1 0 0 0 0 1 1 1 4 1 1 0 1 0 1 0 1 0 0 3 Figure 4.13: The sum of the last m̄ q-bits integers can be reduced to the sum of the last m̄ bits in the q = 3 streams corresponding to the binary representations of the integers. In other words: the i-th bit stream contains the binary weight of power 2i in each integer of the original stream. Let si be the sum of the i-th bit stream in the window. The correct answer is d = i=0 si 2i . From the analysis of DGIM, we conclude that the answer d˜ we return is d ≤ d˜ ≤ Pq−1 Pq−1 i i=0 (1 + ϵ)si 2 = (1 + ϵ) · d. 4.10 Estimating frequencies on a stream Suppose we observe a stream of m integers x1 , x2 , x3 , . . . , xm , each with domain xi ∈ [1, n]. For any y ∈ [1, n] define the frequency of y as the number of times y appears in the stream: fy = |{i : xi = y}| In this section and in and the following we tackle a class of problems related with estimating particular functions of the frequency vector (f1 , . . . , fn ). In this section, we discuss how to estimate each individual frequency fy . Then, in the next sections we move to frequency moments. The k-th frequency moment, for k ≥ 0, is defined as follows: X Fk = fyk y∈[1,n] If we take 00 = 0, then F0 = |{x1 , . . . , xm }| is simply the number of distinct elements in the stream. Counting distinct elements in a stream is probably the most emblematic problem in the field, and it is tackled in Section 4.11. P Quantity F1 , instead, corresponds simply to the stream’s length: F1 = y∈[1,n] fy = m. While it is trivial to compute F1 exactly on a stream using O(log m) bits of space, using asymptotically less space is not trivial at all. In Section 4.12 we will show an algorithm estimating F1 in O(log log m) bits of space. The second-order frequency moment, F2 = y∈[1,n] fy2 , is also called the surprise number of the P stream since it reflects how unbalanced the frequencies in the stream are: the more uneven the fre- quencies are, the larger F2 is. Estimating this quantity finds unexpected deep applications in other contexts, such as estimating the size of table joins in relational databases, and sketches for dimension- ality reduction under the Euclidean distance. These topics are covered in Section 4.13. 92",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p101"
+  },
+  {
+   "_idx": 95,
+   "block_id": "p189",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.10.1",
+   "prefix": "4.10.1",
+   "heading": "Sampling The first solution that we discuss for estimating individual frequencies fy is just sampling. Assume that we know the stream length m. Choose q i.i.d. uniform values j1 , . . . , jq ∈ [1, m] (i.e. q values with replacement), where q is a value that will be determined later. When the stream arrives, memorize the elements x′1 = xj1 , . . . , x′q = xjq . This sample is our sketch, of size q. Remark 4.10.1. It’s possible to sample q elements with replacement from the stream on-the-fly, without knowing a priori the stream length m. The algorithm solving this task is called reservoir sampling with replacement and is discussed in [40]. Define the boolean indicator 1x=y to be equal to 1 if and only if x = y. Observe that, for any given y and any x′j",
+   "body": "E[1x′j =y ] = fy /m In fact, 1x′j =y is a Bernoullian variable taking value 1 if and only if x′j = y; since x′j is a uniform stream element, the probability of choosing a value equal to y is fy /m. In particular:   q 1x′j =y  = (q/m)fy X E j=1 Our estimator for fy is: q mX f˜y = 1x′ =y q j=1 j In other words, f˜y is the number of occurrences of y in our sample of stream elements, scaled by the factor m/q. It is easy to see that E[f˜y ] = fy . Then:     q q P (|f˜y − fy | ≥ ϵ · m) = P ((q/m)|f˜y − fy | ≥ ϵ · q) = P  1x′ =y − E  1x′ =y  ≥ ϵ · q X X j j j=1 j=1 Since our sampling is with replacement (i.e. the sampled stream positions are i.i.d. uniform random variables in [1, m]), the random variables 1x′1 =y , . . . , 1x′q =y are independent so we can apply Chernoff- Hoeffding (additive form, double sided: Lemma 2.2.4) to the random variable j=1 1x′j =y and obtain Pq that the above probability is upper-bounded by 2 2 2e−(ϵ·q) /(2q) = 2e−ϵ q/2 2 We want this probability to be at most 2e−ϵ q/2 = δ. Solving this equation as a function of q, this gives us the final result: Theorem 4.10.2. By sampling q = ⌈2ϵ−2 ln(2/δ)⌉ ∈ Θ(ϵ−2 log(1/δ)) uniform stream values with replacement, we can approximate any frequency fy up to additive error ϵ · m and failure probability δ, i.e. for any y ∈ [1, n], the sample yields an estimator f˜y such that: P (|f˜y − fy | ≥ ϵ · m) ≤ δ. Note that our sampling-based sketch has a double-sided error: the estimate f˜y can be smaller, equal to, or larger than the true value fy . 93",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p101"
+  },
+  {
+   "_idx": 96,
+   "block_id": "p191",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.10.2",
+   "prefix": "4.10.2",
+   "heading": "Count-Min sketch Count-Min sketch uses less asymptotic space than the sampling-based sketch described in the previous section, and additionally offers a one-sided error guarantee. As we now show, the estimator returned by Count-Min sketch always satisfies f˜y ≥ fy . In addition, with probability at least 1 − δ the bound f˜y ≤ fy + ϵ · m will hold. Definition of the sketch The Count-Min sketch is a matrix of (non-negative) integers CM ∈ Nt×s , initialized with all entries equal to zero. The size s × t of the matrix determines the error rate and the success probability, and will be determined later. Each row is associated with a universal hash function (see Section 2.3.2) hj",
+   "body": "[1, n] → [1, s], for j = 1, . . . , t. Insertion of an element in the sketch To insert a stream element x in the sketch, we perform the following operation: CM [j, hj (x)] ← CM [j, hj (x)] + 1, for all j = 1, . . . , t. In other words, in the j-th row we increment by one unit the entry at column hj (x). Estimating a frequency Observe that, by the way we defined the sketch, the counter CM [j, hj (y)] is incremented each time an occurrence of y is seen in our stream (for each row j = 1, . . . t). In fact, if the stream contains only one distinct integer y, then CM [j, hj (y)] = fy is exactly the frequency of y, for any row j = 1, . . . , t. Problems start occurring when the stream contains more than one distinct integer, due to hash collisions. Assume there is an element y ′ ̸= y such that hj (y) = hj (y ′ ), for some j ∈ [1, t]. Then, CM [j, hj (y)] ≥ fy + fy′ (the inequality is strict if even more integers collide with y and y ′ ). Due to hash collisions, we can therefore only assume CM [j, hj (y)] ≥ fy for every j = 1, . . . , t. Then, our best estimate for fy is the minimum of those estimates: f˜y = min{CM [j, hj (y)] : j = 1, . . . , t} As observed above, f˜y ≥ fy is always true. The next goal is to show an upper bound as well. Fix a row j ∈ [1, t]. We study the probability that CM [j, hj (y)] > fy + ϵ · m, for some error ϵ > 0. Define the boolean indicator 1jx,y to be equal to 1 if and only if hj (x) = hj (y), i.e. if x and y collide through hash function hj . Let S = {x1 , . . . , xm } denote the set of distinct elements appearing in the stream. The expected value of CM [j, hj (y)] can be written as: 1jx,y P E[CM [j, hj (y)]] = E x∈S fx · hP i x∈S,x̸=y fx · 1x,y j = fy + E = fy + x∈S,x̸=y fx · E 1jx,y P P ≤ fy + x∈S,x̸=y fx · (1/s) P = fy + (1/s) x∈S,x̸=y fx ≤ fy + m/s where in the first inequality we used the fact that the universality of hj implies P (hj (x) = hj (y)) ≤ 1/s for any x ̸= y. We conclude that: E[CM [j, hj (y)] − fy ] ≤ m/s that is, on expectation the difference between our estimate (in any row j) and fy is at most m/s. Applying Markov’s inequality: 94",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p101"
+  }
+ ],
+ "issues": [
+  {
+   "type": "sequence_gap",
+   "marker": "num",
+   "block_id": "p71",
+   "expected": 4,
+   "found": "2",
+   "text": "The first k columns of the BWT matrix contain all substrings"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "num",
+   "block_id": "p101",
+   "expected": 3,
+   "found": "1",
+   "text": "Ŷ is constructed from O(st) = O(ϵ−2 log(1/δ)) independent re"
+  },
+  {
+   "type": "sibling_asymmetry",
+   "block_id": "p101",
+   "len": 640,
+   "median": 167,
+   "text": "Ŷ is constructed from O(st) = O(ϵ−2 log(1/δ)) independent re"
+  }
+ ],
+ "n_merged_two_line": 0
+}

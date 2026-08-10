@@ -1,0 +1,90 @@
+{
+ "file": "060_Elements_of_Linear_Algebra_Lecture_Notes.docx",
+ "mode": "UNCLASSIFIED",
+ "outline": [
+  {
+   "_idx": 0,
+   "block_id": "p0",
+   "marker": null,
+   "rank": null,
+   "num": "",
+   "prefix": "",
+   "heading": "060_Elements_of_Linear_Algebra_Lecture_Notes.pdf",
+   "body": null,
+   "split_src": "từ khóa",
+   "confidence": 0.7,
+   "flags": [],
+   "why": [
+    "đậm"
+   ],
+   "merged_from": null,
+   "level": 1,
+   "parent_id": null
+  },
+  {
+   "_idx": 8,
+   "block_id": "p15",
+   "marker": "num",
+   "rank": 6,
+   "num": "2",
+   "prefix": "2)",
+   "heading": "any vector x ∈ V is linearly expanded as n X x= xi ei = xi ei (Einstein′ s convention) (3) i=1 where the numbers xi ∈ K are the components (or coordinates) of the vector x in this basis. The (finite) number of the basis vectors defines the dimension of the vector space, dimV = n. Remark 1 We use the Einstein convention of dummy indices only for pairs of identical upper and lower indices. When their positions are ambiguous we use explicit sums. The major challenge is to find rational generalizations of this definition for n → ∞ when we desire to have a countable basis e1 , e2 , ...ei , .. in which a vector x should have a countable number of components x1 , x2 , ...xi , ... Then we can calculate only finite linear combinations, n X x(n) = xi ei n∈N (4) i=1 that form the sequence {x(n) |n ∈ N}. The problem is how could we define the convergence of this sequence, x(n) → x, to the vector x represented by the mentioned components. Obviously, this cannot be done using algebra - in addition, we need topology. 2.3 Topologies The minimal conditions in which the convergence of a sequence can be defined are offered by the topological spaces where the topology is given by open sets. Definition 7 We say that X is topological space if this has a family of subsets τ (X), called open subsets, such that",
+   "body": "1) X and and ∅ are open subsets, 2) any union of open sets is an open subset, 3) the finite intersections of open sets are open subsets Then there are collections of open subsets {Uα }α∈A ⊂ τS(X), labelled by some sets the indices, A, that form covers of X obeying X ⊆ α∈A Uα . Every point p ∈ X is contained in some open set Up ∈ τ (X) called neighbourhood of p. A boundary point of a set S in a topological space X is a point p such that any of its neighbourhood Up contains both some points in S and some points not in S. The boundary ∂S of the set S is the set of boundary points of S. When ∂S ⊂ S then S is closed. The closed set S = S ∪ ∂S is called the closure of the set S. 7",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 11,
+   "block_id": "p21",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "3.1",
+   "prefix": "3.1",
+   "heading": "Duality and tensors The duality is a crucial and somewhat natural mechanism that enables us to define correctly different linear structures introduced in physics sometimes in a intuitive but superficial manner. Our purpose here is to present the tensors as well-defined mathematical objects getting over the naive definition of ”quantities carrying indices which transform as...”. 3.1.1 Linear mappings We consider vector space, denoted by V , W , U..., defined over a numeric field K (of real, R or complex, C, numbers) and denote by x, y, ... ∈ V the vectors and by α, β... ∈ K the scalars. Any subset of V which is a vector space is called a subspace of V . The set {0} and V are trivial subspaces of V . Two subspaces V1 and V2 are said to be complementary subspaces if V1 ∪ V2 = V and V1 ∩ V2 = {0}. The dimensions of the non-trivial subspaces V1 ⊂ V satisfy 1 ≤ dim(V1 ) < dim(V ) while the dimension of the complementary subspaces satisfy dimV1 + dimV2 = dimV . Moreover, any basis e1 , e2 , ...en in V can be split in two disjoint bases in V1 and V2 respectively. This property is somewhat similar to the orthogonal sum of subspaces but now we cannot speak about orthogonality since this has to be defined with respect to a inner product. In general, the linear mappings can be defined between arbitrary vector spaces over the same field K. Definition 18 A map f",
+   "body": "V → W is linear if f (x + y) = f (x) + f (y) ∀ x, y ∈ V f (αx) = αf (x) ∀ α ∈ K , x ∈ V The identical map idV : V → V is linear, the composition f ◦ g of two linear maps, f and g, is a linear map too and the inverse f −1 of a bijective linear map f is linear. Lemma 1 The linear maps f : V → W form a vector space, denoted by Lin(V, W ), with respect to the addition and scalar multiplication of mappings, (f + f ′ )(x) = f (x) + f ′ (x) ∀ x, ∈ V (αf )(x) = αf (x) ∀α ∈ K, x ∈ V Proof: The null element is the null map f0 giving f0 (x) = 0 ∈ W for all x ∈ V while the inverse of f is −f since (f + (−f ))(x) = f (x) + (−f (x)) = 0 = f0 (x). Each linear map f : V → W is related to a pair of important vector sub- spaces: the kernel Kerf = {x ∈ V |f (x) = 0 ∈ W } ⊂ V (5) 10",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p15"
+  },
+  {
+   "_idx": 13,
+   "block_id": "p25",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "3.1.2",
+   "prefix": "3.1.2",
+   "heading": "Duality A special case of linear maps is when the image is just the field K considered as one-dimensional vector space defined over itself. Definition 22 The linear map ŷ",
+   "body": "V → K is called a linear functional (or form). The linear functionals defined on V , denoted from now by x̂, ŷ, ..., are called covectors. Any functional ŷ : V → K maps a vector x ∈ V into the number ŷ(x) ∈ K. The covectors form the dual space V ∗ = Lin(V, K) of V which is a vector space over the same field K with respect to the addition and scalar multiplications, (ŷ + ŷ ′ )(x) = ŷ(x) + ŷ ′ (x) ∀x ∈ V (9) (αŷ)(x) = αŷ(x) (10) as it results from lemma (1). Reversely, the vectors x ∈ V can be seen as linear functionals x : V ∗ → K on V ∗ . Lemma 2 There exists a natural isomorphism between the spaces V and Lin(V ∗ , K) called the canonical isomorphism. Proof: We define this isomorphism, φ : V → Lin(V ∗ , K), so that (φ(x))(ŷ) = ŷ(x) ∈ K Thus we find the rule (V ∗ )∗ ∼ =V. Definition 23 The map h , i : V ∗ × V → K defined as hŷ, xi = ŷ(x) for all x ∈ V and ŷ ∈ V ∗ is called the dual form of the pair of dual spaces (V, V ∗ ). The dual form is linear in both their arguments, hαŷ + β ŷ ′ , xi = αhŷ, xi + βhŷ ′ , xi , (11) hŷ, αx + βx′ i = αhŷ, xi + βhŷ, x′ i . (12) Notice that the dual form should not be confused with scalar or inner products which are defined on V × V and have supplementary symmetries. Definition 24 If f : V → W is a linear map then the map f ∗ : W ∗ → V ∗ which satisfies hf ∗ (ŷ), xi = hŷ, f (x)i for all x ∈ V and ŷ ∈ W ∗ is called the dual map of f . It is no difficult to show that f ∗ is also a linear map uniquely determined by the map f so that the spaces Lin(V, W ) and Lin(W ∗ , V ∗ ) are isomorphic. We note that if f = f0 is the null map of Lin(V, W ) then f ∗ is the null map of Lin(W ∗ , V ∗ ). Similar properties have the pairs of isomorphic spaces End(V ) and End(V ∗ ) and respectively Aut(V ) and Aut(V ∗ ). Moreover, the following calculation rules are obvious: (f ∗ )∗ = f and (αf + βg)∗ = αf ∗ + βg ∗ , α, β ∈ K , (13) (f ◦ g)∗ = g ∗ ◦ f ∗ . (14) 12",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p15"
+  }
+ ],
+ "issues": [],
+ "n_merged_two_line": 0
+}

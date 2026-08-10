@@ -1,0 +1,48 @@
+{
+ "file": "077_ICP_TAG_Minutes_Nov_2023.docx",
+ "mode": "vn-administrative",
+ "outline": [
+  {
+   "_idx": 0,
+   "block_id": "p0",
+   "marker": null,
+   "rank": null,
+   "num": "",
+   "prefix": "",
+   "heading": "077_ICP_TAG_Minutes_Nov_2023.pdf",
+   "body": null,
+   "split_src": "từ khóa",
+   "confidence": 0.7,
+   "flags": [],
+   "why": [
+    "đậm"
+   ],
+   "merged_from": null,
+   "level": 1,
+   "parent_id": null
+  },
+  {
+   "_idx": 7,
+   "block_id": "p13",
+   "marker": "roman",
+   "rank": 5,
+   "num": "II",
+   "prefix": "II.",
+   "heading": "To estimate non-linear weights in interim years, in order to approximate the expenditure structure for interim year 2020 closer to 2021, and for interim years 2018 and 2019 closer to 2017. III. To not estimate any weights and apply the 2021 expenditure structure to 2020, and the 2017 structure to 2018 and 2019. The TAG agreed to proceed with option III",
+   "body": "applying the expenditure structure as reported in the benchmark year 2017 to the interim years 2018 and 2019, and to apply the expenditure structure as reported in the benchmark year 2021 to the interim year 2020. Approach to produce ICP 2021 cycle non-benchmark country estimates Mizuki Yamanaka, World Bank, presented on plans for producing ICP 2021 results for non-benchmark countries. The presentation covered the extension of non-benchmark imputation to include Actual Individual Consumption (AIC) and the application of imputation, retro/extrapolation, or interpolation to economies with varying participation status. It was noted that the inclusion of AIC with ICP 2017 results was tested by including AIC in the model in the current method of seemingly unrelated regression (SUR) alongside Gross Domestic Product (GDP) and household consumption (HHC). The results demonstrated that the estimated AIC-level PPPs are in line with those of GDP and HHC, and the inclusion of AIC in the SUR method had minimum impacts on the estimation of GDP and HHC estimation in comparison to the original estimation. Therefore, it was suggested to include AIC in the imputation for ICP 2021 cycle. Furthermore, for countries with varying participation cycles over recent ICP cycles, specific cases where inconsistency issues can possibly arise due to a change in estimation method were summarized and discussed to confirm the principle ICP 2021 approach for the specific cases. The TAG endorsed the inclusion of AIC estimates for non-benchmark countries, noting their usefulness in assessing the material well-being of households. The TAG confirmed the principle of respecting the most recent benchmark data if it exists and employing imputation only where no benchmark data or no reliable data for extrapolation exists. Therefore, for a country that is participating in the 2021 cycle but was not in the 2017 cycle, 2021 results should be retropolated to 2017. Where 2011 was the most recent participation cycle, as far as extrapolation factors such as the Consumer Price Index are regarded as reliable, it needs to be extrapolated from 2011 benchmark data. However, where extrapolation factors are assessed as unreliable, imputation would be considered. Furthermore, the length of period of extrapolation from the last benchmark year would need to be assessed carefully in each cycle to avoid unreasonably long-term extrapolation. The availability of underlying data for extrapolation and imputation will be assessed for each case, and calculating results for 2017-2021 will be tested once final benchmark data are available. The TAG will be consulted in case any further consideration is necessary. Plans for the ICP 2021 cycle release Marko Rissanen, World Bank, presented plans for the global release of the ICP 2021 cycle results which would comprise revised 2017 PPPs, 2021 PPPs, and a 2018-2020 PPP time series. A new publication heading of “Total Consumption Expenditure” – the sum of households and NPISH final consumption expenditure and individual consumption expenditure by government and collective consumption expenditure by government – was suggested, bringing the total number of published headings to 45. It was also proposed to introduce a new indicator “Expenditure component share of AIC (AIC = 100%)”. 6",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:roman"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  }
+ ],
+ "issues": [],
+ "n_merged_two_line": 0
+}
