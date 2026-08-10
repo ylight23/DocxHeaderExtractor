@@ -22,7 +22,13 @@ public static class SlimXmlSerializer
     {
         var sb = new StringBuilder();
         sb.Append("<doc file=\"").Append(Escape(doc.FileName)).Append("\" n=\"")
-          .Append(doc.Paragraphs.Count).Append("\">\n");
+          .Append(doc.Paragraphs.Count)
+          // Chế độ vốn đã được đo ở DocxSlimExtractor nhưng không lộ ra đâu cả, nên không kiểm
+          // chứng được trên tập lớn. Đây là chẩn đoán, không phải dữ liệu gửi cho mô hình.
+          // Mode có thể null với SlimDocument dựng tay (test, dựng lại từ cache), nên không được
+          // truy thẳng — serializer là đường in chẩn đoán, không được làm hỏng lời gọi nào.
+          .Append("\" mode=\"").Append(doc.Mode?.Mode.ToString() ?? "Unknown")
+          .Append("\">\n");
 
         foreach (var p in doc.Paragraphs)
         {
