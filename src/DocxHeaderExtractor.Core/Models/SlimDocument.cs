@@ -1,3 +1,5 @@
+﻿using DocxHeaderExtractor.Core.OpenXmlLayer;
+
 namespace DocxHeaderExtractor.Core.Models;
 
 /// <summary>
@@ -20,6 +22,12 @@ public sealed class SlimDocument
     /// <c>StyleTrustAudit</c>. Null khi chưa chấm (đường dựng SlimDocument trong test).
     /// </summary>
     public StyleTrust? StyleTrust { get; init; }
+
+    /// <summary>
+    /// Chế độ tài liệu theo cây quyết định §4.2 của <c>spec-heading-outline-v2.md</c>. Hiện là
+    /// CHẨN ĐOÁN: đo và báo cáo, chưa đổi hành vi luật nào — xem <see cref="DocumentModeClassifier"/>.
+    /// </summary>
+    public DocumentModeReport? Mode { get; init; }
 
     /// <summary>Nội dung w:hdr / w:ftr (header–footer của trang), nếu được yêu cầu.</summary>
     public IReadOnlyList<string> PageHeaders { get; init; } = [];

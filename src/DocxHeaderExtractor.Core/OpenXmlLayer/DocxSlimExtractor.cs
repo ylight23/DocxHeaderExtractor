@@ -97,6 +97,7 @@ public sealed class DocxSlimExtractor
             Paragraphs = paragraphs,
             DefaultFontSizePt = resolver.DefaultFontSizePt,
             StyleTrust = styleTrust,
+            Mode = DocumentModeClassifier.Measure(paragraphs),
             PageHeaders = headers,
             PageFooters = footers,
         }.Build();

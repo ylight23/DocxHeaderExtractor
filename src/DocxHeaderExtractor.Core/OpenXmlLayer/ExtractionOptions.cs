@@ -59,6 +59,9 @@ public sealed class ExtractionOptions
     /// </summary>
     public bool AllowBareLabelledNumbers { get; set; }
 
+    /// <summary>Lệnh `xml --mode-only`: chỉ in chế độ tài liệu đo được, không dựng gì thêm.</summary>
+    public bool ReportModeOnly { get; set; }
+
     /// <summary>
     /// Bật các luật dựa trên TỪ NGỮ: danh sách từ khoá mở đầu ("Chương", "Điều", "Phụ lục",
     /// "Chapter"…) và mẫu chú thích ("Hình 2.4.", "Bảng 1.2", "Figure 3:").
