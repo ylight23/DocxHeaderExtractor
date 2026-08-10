@@ -3050,3 +3050,76 @@ Không hồi quy. 382 test xanh.
 
 Ba tài liệu **có** đáp án người xác nhận vẫn đạt 100%, nhưng ba tài liệu không đại diện cho
 mọi văn bản Việt Nam, và bảng ở 45.3 nói rõ tại sao.
+
+## §46. Bác chẩn đoán "53% tài liệu không có lớp text"
+
+Một phiên khác đọc `outline_all.csv` và kết luận: 50/95 file (53%) là vỏ `.docx` bọc PDF, không
+có lớp text, "việc đầu tiên là lấy lại nguồn có text, không phải sửa pipeline". Kèm theo là một
+nhánh `no_text_layer` mới trong `tier1_batch.py`.
+
+**Chẩn đoán đó sai.** Đo trực tiếp trên `word/document.xml` của cả 95 file:
+
+| file bị gọi là "không có text" | ký tự text | ảnh |
+|---|--:|--:|
+| `006_Luat_Dat_dai` | 188.690 | 0 |
+| `007_Luat_Nha_o` | 209.042 | 0 |
+| `028_WB_RFB_Works` | 793.161 | 0 |
+| `041_IBRD_Financial` | 547.714 | 0 |
+
+- **0/95 file thiếu lớp text.** 89 file > 2.000 ký tự, 6 file ít hơn, không file nào < 200.
+- **86/95 file không có `w:drawing` nào.**
+- Nhánh `no_text_layer` (`len(blocks) <= 3 and n_drawing >= 1`) **thoả 0/95 file** — mã chết.
+
+### 46.1 Lỗi suy luận, không phải lỗi số học
+
+Phiên kia đọc **đầu ra của pipeline** rồi suy ngược về **đầu vào**: pipeline trả về đúng một mục
+và mục đó trùng tên file PDF, nên kết luận file rỗng. Sự thật ngược lại — chữ có đủ, pipeline
+không tìm ra. Đây là cùng một dữ liệu dẫn tới hai kết luận trái ngược, và chỉ một cách phân biệt
+được: mở file gốc ra đếm.
+
+Hệ quả thực tế: lời khuyên "lấy lại nguồn có text" sẽ là công toi trên toàn bộ 50 file.
+
+### 46.2 Bằng chứng ngược từ chính pipeline C#
+
+```
+                                       python   C#    C# +split
+006_Luat_Dat_dai_31-2024-QH15               1    1        37
+007_Luat_Nha_o_27-2023-QH15                 1    1        42
+028_WB_RFB_Works_Without_Prequal_2017       1   19       100
+```
+
+Mẫu trích từ 006 — tiêu đề sạch, không lẫn thân bài: *Điều 9. Phân loại đất* · *Điều 24. Quyền
+tiếp cận thông tin đất đai* · *Điều 28. Nhận quyền sử dụng đất*. Trung vị 60 ký tự, dài nhất 182.
+
+### 46.3 So sánh chất lượng hai bản cài
+
+Phiên kia tự xác định lỗi nặng nhất của họ là "tách heading/body sai 16%".
+
+| bản cài | mục | trung vị | dài nhất | > 300 ký tự | > 1000 |
+|---|--:|--:|--:|--:|--:|
+| Python | 6.858 | 49 | **4.444** | **16,1%** | 6,9% |
+| C# `--split-merged` | 6.357 | 43 | 1.007 | **0,4%** | 0,0% |
+
+Bản C# gần như không có lỗi đó, **do thiết kế chứ không do may**: `MaxHeadingLength = 200` thì
+BỎ lát cắt thay vì phát ra. Đây là đánh đổi có chủ ý — mất recall để giữ precision. Bản Python
+chọn ngược lại nên sinh heading 4.444 ký tự chứa Điều 4→8 dính liền.
+
+Cùng lý do đó khiến `001_Bo_luat_Dan_su` của tôi dừng ở 3 mục (§45.4 mục 2): thân các Điều là
+văn xuôi dài không có khoản đánh số. Đây là **giới hạn đã biết và có chủ đích**, không phải lỗi
+chưa thấy.
+
+### 46.4 Điều vẫn đúng từ phiên kia
+
+Ba việc họ nêu vẫn có giá trị và không phụ thuộc chẩn đoán sai:
+- **Mẫu số `r_typed` sai** — giáo trình dùng `1.1`/`2.3.1` nhất quán nhưng không dùng style, nên
+  mẫu số bằng 0. Cùng dạng lỗi với `r_numpr` trước đây. Đây là lỗi thật.
+- **Gạch đầu dòng mặc định là body** trừ khi in đậm.
+- **Biến thể tiếng Anh** cho văn bản pháp quy. `ParagraphHeadingSplitter` của C# **đã xử lý sẵn**
+  vì mốc là DẠNG "nhãn + số" chứ không phải bảng từ — có test `Article 4.` ghim điều đó.
+
+### 46.5 Kỷ luật rút ra
+
+Thêm vào §10: **không được suy về đầu vào từ đầu ra của chính pipeline đang nghi ngờ.** Pipeline
+trả về rỗng có hai nguyên nhân không phân biệt được từ kết quả — đầu vào rỗng, hoặc pipeline hỏng.
+Phải mở dữ liệu gốc ra đo. Ở đây khoảng cách giữa hai cách đọc là 50 file và một khuyến nghị
+lấy lại toàn bộ nguồn.
