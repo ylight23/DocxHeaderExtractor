@@ -341,11 +341,15 @@ public sealed class HeaderExtractionPipeline : IDisposable
             PrecisionAcceptanceGate.Apply(headings, _calibrationProfile,
                 _options.TargetPrecision, _options.MinimumCalibrationSamples,
                 _model?.ModelName, PrecisionCalibrationProfile.ConfigurationFor(_options));
-            Log($"Cổng precision {_options.TargetPrecision:P0}: " +
-                $"{headings.Count(h => h.DecisionStatus is not HeadingDecisionStatus.RequiresReview)} tự nhận, " +
-                $"{headings.Count(h => h.DecisionStatus == HeadingDecisionStatus.RequiresReview)} cần duyệt" +
-                (_calibrationProfile is null ? " (evidence chưa calibration bằng holdout)." :
-                    $" (profile {_calibrationProfile.Documents} tài liệu holdout)."));
+            var auto = headings.Count(h => h.DecisionStatus is not HeadingDecisionStatus.RequiresReview);
+            var review = headings.Count(h => h.DecisionStatus == HeadingDecisionStatus.RequiresReview);
+            // Chưa có holdout thì KHÔNG phát biểu như một phán quyết về precision: con số lúc đó chỉ
+            // là bậc theo số kiểm tra bằng chứng đã qua. §37 đo được cái giá của việc nói nhầm.
+            Log(_calibrationProfile is null
+                ? $"Xếp theo bằng chứng (chưa calibration bằng holdout): {auto} bằng chứng đủ, " +
+                  $"{review} bằng chứng yếu — nên xem."
+                : $"Cổng precision {_options.TargetPrecision:P0}: {auto} tự nhận, {review} cần duyệt " +
+                  $"(profile {_calibrationProfile.Documents} tài liệu holdout).");
 
             sw.Stop();
 

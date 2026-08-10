@@ -134,6 +134,7 @@
   td.c { text-align: right; }
   .lvl { color: var(--muted); font-size: 12px; margin-right: 8px; font-variant-numeric: tabular-nums; }
 
+  .approx { opacity: .55; margin-left: 2px; font-weight: 400; }
   .tag { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
   .tag.Style { background: var(--okbg); color: var(--ok); }
   .tag.Model { background: var(--accbg); color: var(--accent); }
@@ -712,19 +713,34 @@ function render(o, s, review, agent) {
   $('tree').innerHTML =
     '<thead><tr><th style="width:64px">Đoạn</th><th>Tiêu đề</th>' +
     '<th style="width:96px">Nguồn</th><th style="width:78px;text-align:right">Tin cậy</th></tr></thead><tbody>' +
-    o.headings.map(h => `<tr class="${h.disputed ? 'dis' : ''}">
+    // Chưa calibration thì KHÔNG được phát biểu như một phán quyết về precision: con số hiển thị
+  // lúc đó chỉ là bậc theo số kiểm tra đã qua. §37 đo được cái giá của việc nói nhầm — người dùng
+  // thấy 111/127 mục "chưa đạt cổng" và không còn phân biệt được đâu là chỗ thật sự cần xem.
+  const decisionTag = h => {
+    const raw = h.confidenceBasis === 'evidence_not_calibrated';
+    if (h.decisionStatus === 'AutoAcceptedCalibrated') return '<span class="tag Style">đã calibration</span>';
+    if (h.decisionStatus === 'HumanVerified') return '<span class="tag HumanCorrection">người xác nhận</span>';
+    if (h.decisionStatus === 'AutoAcceptedEvidence')
+      return raw ? '<span class="tag Model">bằng chứng đủ</span>'
+                 : '<span class="tag Model">evidence ≥ mục tiêu</span>';
+    if (h.decisionStatus === 'RequiresReview')
+      return raw ? '<span class="tag dis">bằng chứng yếu — nên xem</span>'
+                 : '<span class="tag dis">chưa đạt cổng precision</span>';
+    return '';
+  };
+  o.headings.map(h => `<tr class="${h.disputed ? 'dis' : ''}">
         <td class="i">${h.index}</td>
         <td style="padding-left:${10 + (h.level - 1) * 22}px">
           <span class="lvl">H${h.level}</span>${esc(h.text)}${
             h.inlineBody ? '<span class="tag dis">tách nội dung cùng dòng</span>' : ''}${
             h.evidence ? `<span class="tag ${h.evidence.status === 'verified_by_multiple_checks' ? 'Style' : 'dis'}">${evidenceCount(h.evidence)}/5 kiểm tra</span>` : ''}${
-            h.decisionStatus === 'AutoAcceptedCalibrated' ? '<span class="tag Style">đã calibration</span>' :
-            h.decisionStatus === 'AutoAcceptedEvidence' ? '<span class="tag Model">evidence ≥ mục tiêu</span>' :
-            h.decisionStatus === 'HumanVerified' ? '<span class="tag HumanCorrection">người xác nhận</span>' :
-            h.decisionStatus === 'RequiresReview' ? '<span class="tag dis">chưa đạt cổng precision</span>' : ''}${
+            decisionTag(h)}${
             h.disputed ? '<span class="tag dis">cần xem lại</span>' : ''}</td>
         <td><span class="tag ${h.source}">${h.source}</span></td>
-        <td class="c">${pct(h.confidence)}</td>
+        <td class="c" title="${h.confidenceBasis === 'evidence_not_calibrated'
+          ? 'Chưa calibration bằng holdout — đây là bậc theo số kiểm tra đã qua, không phải precision đo được.'
+          : 'Precision đo trên holdout cho chữ ký bằng chứng này.'}">${pct(h.confidence)}${
+          h.confidenceBasis === 'evidence_not_calibrated' ? '<span class="approx">~</span>' : ''}</td>
       </tr>`).join('') + '</tbody>';
 
   $('statsPanel').classList.remove('hidden');
