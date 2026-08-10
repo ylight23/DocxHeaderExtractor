@@ -57,3 +57,22 @@ bench/09-dien-mat-di.key
 data/*.key
 data/*.jsonl
 data/*.review.json
+
+# todo10_8/: corpus 95+ tài liệu thật (luật, tài chính, hợp đồng...) dùng để đo tầng 1/2.
+# Cùng lý do với data/ ở trên — repo public, không có ngoại lệ.
+todo10_8/heading_corpus_95_word/**/*.docx
+todo10_8/heading_corpus_95_word/**/*.doc
+todo10_8/heading_corpus_95_word/**/*.pdf
+todo10_8/heading_corpus_100/**/*.docx
+todo10_8/heading_corpus_100/**/*.doc
+todo10_8/heading_corpus_100/**/*.pdf
+
+# canon.py/vn_outline.py sinh ra khi chạy thử cục bộ — chứa TOÀN VĂN paragraph
+# của tài liệu thật (giống lý do chặn *.review.json ở data/ phía trên).
+todo10_8/blocks.json
+todo10_8/outline.json
+todo10_8/unpacked/
+__pycache__/
+*.pyc
+*.thongke.csv
+thongke*.csv
