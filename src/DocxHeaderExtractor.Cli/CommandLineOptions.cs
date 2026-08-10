@@ -140,6 +140,7 @@ public sealed class CommandLineOptions
                 case "--skip-content-controls": extraction.SkipContentControls = true; break;
                 case "--bare-labels": extraction.AllowBareLabelledNumbers = true; break;
                 case "--mode-only": extraction.ReportModeOnly = true; break;
+                case "--flag-repeated-labels": extraction.FlagRepeatedLabels = true; break;
                 case "--style-trust": extraction.UseStyleTrust = true; break;
 
                 case "-q" or "--quiet": o.Quiet = true; break;
