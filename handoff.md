@@ -3197,3 +3197,66 @@ Cắt đoạn phải chạy **trước** tầng phân loại, không chỉ trư�
 `DocumentModeClassifier.Measure` chạy trong `DocxSlimExtractor`, còn `ParagraphHeadingSplitter`
 chạy trong `HeaderExtractionPipeline` — tức là bộ phân loại vẫn nhìn đoạn gộp. Đây là thay đổi
 kiến trúc thật, và phải đo lại toàn bộ §45.3 sau khi làm.
+
+## §48. Cắt đoạn TRƯỚC tầng phân loại — nửa thành công, và nửa kia phải nói ra
+
+§47.4 kết luận bộ phân loại vẫn nhìn đoạn gộp. Đã sửa: các tỉ lệ THEO MỐC
+(`adminRatio`, `legalRatio`, `typedRatio`) nay đo trên **lát cắt** qua
+`ParagraphHeadingSplitter.Segments`, còn tín hiệu ĐỊNH DẠNG (style, `numPr`, đậm, cỡ chữ) vẫn đo
+trên đoạn thật vì lát cắt không mang định dạng riêng. Chỉ số đoạn **không đổi**, `Mode` chỉ dùng
+để in nên đây là thay đổi chẩn đoán thuần — bench giữ nguyên P 92,3 · R 100 · cấp 86,1, 384 test xanh.
+
+Thêm đường vào thứ hai cho `TypedNumbering`: `typedCount >= 8 && typedRatio >= 0.08`, không đòi
+tài liệu có style Heading — đường cũ `styledCount > 0` khiến 55/55 tài liệu không style không bao
+giờ tới được.
+
+### 48.1 Đo được
+
+```
+                          TRƯỚC   SAU
+VietnameseAdministrative     19    46
+VietnameseLegal               4    14
+FormatDriven                 56    12
+OutlineLevelDriven           10    10
+TypedNumbering                0     7
+SemanticOnly                  6     6
+```
+
+**Nhánh dự phòng (FormatDriven + SemanticOnly): 62/95 = 65% → 18/95 = 19%.**
+
+### 48.2 Kiểm chứng bằng tín hiệu ngoài: thư mục thể loại do người xếp
+
+```
+01_phap_quy          25 | VietnameseLegal 14, SemanticOnly 6, VnAdmin 5
+02_hop_dong_mua_sam  15 | OutlineLevelDriven 9, VnAdmin 6
+03_tai_chinh_ke_toan 15 | VnAdmin 9, TypedNumbering 4, FormatDriven 2
+04_giao_trinh        15 | VnAdmin 11, TypedNumbering 3, FormatDriven 1
+05_bien_ban_hop      10 | FormatDriven 9, VnAdmin 1
+06_dich_song_ngu     10 | VnAdmin 9, OutlineLevelDriven 1
+07_system_generated   5 | VnAdmin 5
+```
+
+**Chiều tốt:** cả 14 `VietnameseLegal` rơi trọn vào `01_phap_quy`, không lọt ra thư mục nào khác.
+Hợp đồng ra `OutlineLevelDriven`, biên bản họp ra `FormatDriven` — đều hợp lý.
+
+**Chiều xấu, và đây mới là điều phải nói ra:** `VietnameseAdministrative` phình từ 19 lên
+**46/95 = 48%** và đang nuốt cả giáo trình (11/15) lẫn tài liệu sinh tự động (5/5) lẫn bản dịch
+song ngữ (9/10). **Tôi đã đổi một cái sọt quá rộng lấy một cái sọt quá rộng khác.**
+
+### 48.3 Nguyên nhân xác định được, không cần đáp án
+
+`AdministrativeMarkers[0]` là `^\s*\d{1,2}\.\d{1,2}\.?\s` còn `TypedNumber` là
+`^\s*\d+(\.\d+)+`. **Hai mẫu này khớp cùng một chuỗi `1.1`.** Trong `Decide`, nhánh hành chính
+đứng TRƯỚC nhánh số gõ tay, nên mọi tài liệu mà mốc chính là `1.1`/`2.3.1` — tức toàn bộ giáo
+trình — luôn ra `VietnameseAdministrative` và không bao giờ tới được `TypedNumbering`.
+
+Đây là lỗi logic chứng minh được bằng chính hai biểu thức, không cần dữ liệu. Nhưng SỬA nó thì
+cần đáp án: phải quyết định tài liệu chỉ có `1.1` thuộc chế độ nào, và không tài liệu nào trong
+`keys/` thuộc nhóm đó. Nên tôi dừng ở chỗ ghi nhận, không đoán.
+
+### 48.4 Không được kết luận gì từ §48.1
+
+Không có đáp án chế độ cho 95 file. "19% dự phòng" chỉ nói **luật nào kích hoạt**, không nói
+**gán đúng hay sai**. Thư mục thể loại là tín hiệu ngoài yếu — nó xác nhận được `vn-legal` và bác
+được `vn-administrative`, thế thôi. Con số duy nhất còn được bảo chứng bằng đáp án người kiểm vẫn
+là ba tài liệu ở `keys/`.

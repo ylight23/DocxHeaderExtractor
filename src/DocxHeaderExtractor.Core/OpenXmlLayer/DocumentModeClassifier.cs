@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Core.OpenXmlLayer;
 
@@ -133,6 +134,10 @@ public static class DocumentModeClassifier
     /// </summary>
     public const double AdministrativeThreshold = 0.15;
     public const double TypedNumberThreshold = 0.6;
+
+    /// <summary>Số mục "1.1"/"2.3.1" tối thiểu để kết luận mà KHÔNG cần tài liệu có style Heading.</summary>
+    public const int TypedNumberMinimum = 8;
+    public const double TypedNumberWeakRatio = 0.08;
     public const double NumberingThreshold = 0.20;
 
     /// <summary>Đoạn dài hơn mức này được coi là thân bài khi tìm baseline định dạng (spec §4.1).</summary>
@@ -149,16 +154,29 @@ public static class DocumentModeClassifier
 
         // Mẫu số là MỌI đoạn ngoài bảng, KHÔNG lọc theo in đậm — xem AdministrativeThreshold.
         var outsideTables = body.Where(p => p.TableDepth == 0).ToList();
-        var adminRatio = Ratio(outsideTables.Count(p => IsAdministrativeMarker(p.Text)), outsideTables.Count);
 
-        // Hai tỉ lệ dưới đo TRÊN tập đoạn mang style Heading, theo đúng spec.
-        var typedRatio = Ratio(styled.Count(p => TypedNumber.IsMatch(p.Text)), styled.Count);
+        // Đơn vị đo cho các tín hiệu THEO MỐC là lát cắt, không phải đoạn. Xem
+        // ParagraphHeadingSplitter.Segments: 94% mốc của corpus nằm giữa đoạn, nên đo trên đoạn
+        // gộp thì mọi tử số bằng 0 bất kể ngưỡng đặt ở đâu. Tín hiệu ĐỊNH DẠNG (style, numPr,
+        // đậm, cỡ chữ) vẫn đo trên đoạn thật, vì lát cắt không mang định dạng riêng.
+        var markerUnits = outsideTables
+            .SelectMany(p => ParagraphHeadingSplitter.Segments(p.Text))
+            .ToList();
+
+        var adminRatio = Ratio(markerUnits.Count(IsAdministrativeMarker), markerUnits.Count);
+        var legalRatio = Ratio(markerUnits.Count(IsLegalMarker), markerUnits.Count);
+
+        // numPr là thuộc tính của ĐOẠN nên vẫn đo trên tập đoạn mang style Heading.
         var numberingRatio = Ratio(styled.Count(p => p.NumberingId is not null), styled.Count);
 
-        var legalRatio = Ratio(outsideTables.Count(p => IsLegalMarker(p.Text)), outsideTables.Count);
+        // Số gõ tay đo trên lát cắt. Giữ thêm số tuyệt đối: tài liệu không dùng style thì
+        // styled.Count == 0 và mọi tỉ lệ dựa trên nó vô nghĩa, nhưng 200 mục "1.1" vẫn là
+        // bằng chứng mạnh.
+        var typedCount = markerUnits.Count(TypedNumber.IsMatch);
+        var typedRatio = Ratio(typedCount, Math.Max(styled.Count, markerUnits.Count));
         var tocEntries = body.Count(p => p.PrecedesTableOfContents);
 
-        var mode = Decide(styled.Count, outlineRatio, legalRatio, adminRatio, typedRatio,
+        var mode = Decide(styled.Count, typedCount, outlineRatio, legalRatio, adminRatio, typedRatio,
             numberingRatio, tocEntries, FormatDiffersFromBody(body), HasCustomHeadingStyle(body),
             out var formatDiffers);
 
@@ -167,7 +185,7 @@ public static class DocumentModeClassifier
     }
 
     private static DocumentMode Decide(
-        int styledCount, double outlineRatio, double legalRatio, double adminRatio, double typedRatio,
+        int styledCount, int typedCount, double outlineRatio, double legalRatio, double adminRatio, double typedRatio,
         double numberingRatio, int tocEntries, bool formatDiffers, bool customStyle, out bool format)
     {
         format = formatDiffers;
@@ -176,7 +194,12 @@ public static class DocumentModeClassifier
         // Kiểm TRƯỚC ký hiệu hành chính: "Điều 5." cũng khớp mẫu "\d+\." của lớp hành chính.
         if (legalRatio >= LegalThreshold) return DocumentMode.VietnameseLegal;
         if (adminRatio >= AdministrativeThreshold) return DocumentMode.VietnameseAdministrative;
+        // Hai đường vào TypedNumbering. Đường cũ đòi có style Heading, nên tài liệu KHÔNG dùng
+        // style không bao giờ tới được — đo trên corpus: 55/55 tài liệu không phân loại được đều
+        // có tử số 0. Đường thứ hai chỉ hỏi bằng chứng tuyệt đối, không hỏi tài liệu có style.
         if (styledCount > 0 && typedRatio >= TypedNumberThreshold) return DocumentMode.TypedNumbering;
+        if (typedCount >= TypedNumberMinimum && typedRatio >= TypedNumberWeakRatio)
+            return DocumentMode.TypedNumbering;
         if (styledCount > 0 && numberingRatio >= NumberingThreshold) return DocumentMode.NumberingDriven;
         if (styledCount > 0) return DocumentMode.CustomStyle;
         if (customStyle) return DocumentMode.CustomStyle;
