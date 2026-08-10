@@ -63,6 +63,37 @@ public static class ParagraphHeadingSplitter
     public readonly record struct Slice(int Start, int Length, string Text);
 
     /// <summary>
+    /// Phân hoạch ĐẦY ĐỦ đoạn thành các lát tại mọi mốc — khác <see cref="Split"/> ở chỗ giữ cả
+    /// lát không phải tiêu đề. Dùng cho tầng phân loại, nơi cần biết tỉ lệ mốc trên toàn tài liệu
+    /// chứ không chỉ các mốc đủ điều kiện làm tiêu đề.
+    /// <para>
+    /// Vì sao tầng phân loại cần cái này: mọi luật nhận dạng chế độ đều neo <c>^</c>, trong khi
+    /// bản chuyển PDF gộp cả trang vào một đoạn (~1.900 ký tự). Đo trên 55 tài liệu không phân
+    /// loại được: <b>1.596 mốc nằm ở đầu đoạn, 24.220 mốc nằm bên trong</b> — 94% cấu trúc vô
+    /// hình. Sửa ngưỡng ở tầng phân loại mà chưa cắt đoạn thì không thể ăn, vì tử số bằng 0.
+    /// </para>
+    /// Đoạn không phải đoạn gộp trả về chính nó, nên nơi gọi không cần phân nhánh.
+    /// </summary>
+    public static IReadOnlyList<string> Segments(string? text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return [];
+
+        var marks = MarkerRx.Matches(text);
+        if (marks.Count < 2) return [text];
+
+        List<string> parts = [];
+        var starts = marks.Select(m => m.Index).ToList();
+        if (starts[0] > 0) starts.Insert(0, 0);
+        for (var i = 0; i < starts.Count; i++)
+        {
+            var end = i + 1 < starts.Count ? starts[i + 1] : text.Length;
+            var seg = text[starts[i]..end].Trim();
+            if (seg.Length > 0) parts.Add(seg);
+        }
+        return parts.Count > 0 ? parts : [text];
+    }
+
+    /// <summary>
     /// Trả về các tiêu đề tìm được bên trong <paramref name="text"/>. Rỗng nghĩa là đoạn này
     /// không chứa mốc nào — nơi gọi giữ nguyên hành vi cũ, coi cả đoạn là một đơn vị.
     /// </summary>
