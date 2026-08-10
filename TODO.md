@@ -9,6 +9,14 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
   trách nhiệm cho từng cái.
 - **Mọi con số ghi kèm cấu hình đo.** Báo cáo `dhx eval` nay in chữ ký đầy đủ (kể cả `gpuLayers`,
   `seed`); đọc dòng đó trước khi so với bất kỳ bảng nào trong `handoff.md`.
+- **Xác minh MÔI TRƯỜNG trước khi tin con số** (§27). Build kèm `-p:UseVulkan=true`, chạy kèm
+  `-ngl 99`, và đọc dòng `Mô hình sẵn sàng…` phải nói **GPU N lớp**. Thiếu một trong hai là chạy CPU
+  và phép đo vô hiệu — đã mất hai lượt chạy vì điều này.
+- **Dump dùng để suy luận phải sinh lại bằng ĐÚNG cờ của lượt đang bàn, ngay trước khi đọc** (§33.3,
+  §36.1). Đã sai hai lần liên tiếp: phân tích một artifact cũ rồi kết luận cho lượt chạy khác. File
+  trong scratchpad không mang dấu vết cấu hình sinh ra nó.
+- **Phép đo sạch và đường người dùng đi là hai thứ khác nhau** (§35.3). Cờ bật để làm sạch phép đo
+  có thể che một lỗi chỉ xuất hiện ở đường mặc định; ít nhất một lượt chạy phải đi đúng mặc định.
 
 ---
 
@@ -138,14 +146,24 @@ nên nhìn được thứ thống kê mức tài liệu bỏ sót.
 
 </details>
 
-## 4. Đáp án có người xác nhận — *thắt cổ chai của mọi thứ phía sau*
+## 4. Đáp án có người xác nhận — **ĐÃ BẮT ĐẦU (§37), vẫn là thắt cổ chai**
 
-**Việc duy nhất không tự động hoá được.** Mọi `.key` tài liệu thật hiện có đều do agent gán (§5,
-§9.7 giới hạn 2). Và calibration profile vẫn **sinh được nhưng chưa dùng được**: cần n=52 mẫu mỗi
-bucket khi không có lỗi nào, nhảy lên n=80 nếu có **một** lỗi — bucket lớn nhất đang có 28.
+**Việc duy nhất không tự động hoá được**, và 2026-08-10 nó có bước đầu tiên: người dùng duyệt kết
+quả trên UI và bác 5 mục mà **cả ba model đều xếp nhầm** thành đề mục (1447/1453/1460/1467/1473 —
+tên người được phỏng vấn trong PHỤ LỤC 3). Đã chốt vào `key-human.key` (105 mục), thay đáp án đồng
+thuận model làm số nền.
 
-Cần vài chục tài liệu thật đi qua bảng Review trong giao diện web. Tài liệu tổng hợp không thay
-được: nó chứng minh đường code, không sinh ra phân phối đúng của tài liệu thật.
+Tác động lập tức: P 83,5 → **79,5**, đúng cấp 91,5 → **96,0**. Và chính 5 mục đó phơi ra §37 — thang
+confidence gán ngược, cổng tự nhận nhóm 62,5% còn bắt duyệt nhóm 82,0%. **Một câu "thừa này" của
+người dùng bắt được một lỗi hệ thống mà ba model đồng thuận với nhau nên không ai thấy.**
+
+Còn lại:
+- Duyệt nốt khoá luận (127 mục trả về, 41 mục đang ở nhóm "bằng chứng yếu — nên xem").
+- Vài chục tài liệu thật nữa cho calibration profile: cần n=52 mẫu mỗi bucket khi không lỗi, n=80
+  nếu có một lỗi — bucket lớn nhất đang có 28. Tài liệu tổng hợp không thay được: nó chứng minh
+  đường code, không sinh ra phân phối đúng của tài liệu thật.
+- **Đáp án thật cho bench 10 tài liệu vẫn do agent gán.** Bench đang 10/10 tuyệt đối; nếu nó cũng
+  chứa sai lệch kiểu 5 biên bản thì mọi "bench giữ 10/10" trong handoff đều đứng trên nền chưa kiểm.
 
 ## 5. ~~Dùng `SlimSourceSegment` để mở khoá writeback~~ — **XONG, phạm vi hẹp (§15)**
 
@@ -208,6 +226,54 @@ một block) chứ không phải ca mục này mô tả (một heading trải qu
 Tức chi phí thì chắc chắn (đổi lược đồ, đổi mọi điểm đọc `i`), còn lợi ích vẫn là 1 mục trên hơn 240
 heading của hai tài liệu thật. **Giữ nguyên vị trí cuối hàng.** Điều kiện mở lại: gặp một tài liệu
 mà dạng này chiếm từ vài mục trở lên, hoặc mục 4 cho đủ tài liệu thật để đo được tần suất thật.
+
+## 7. Bốn đề mục bị đánh rơi ở TẦNG ỨNG VIÊN — *recall, và đã biết chỗ*
+
+Trên khoá luận, 4 mục đáp án mà pipeline không trả về: `1239`, `1256` (`Tài liệu trong nước:` /
+`nước ngoài:`) và `1294`, `1335` (`PHỤ LỤC 1`, `PHỤ LỤC 2`). Sinh dump bằng ĐÚNG cờ của lượt đo cho
+thấy **cả bốn đều `role="Normal"`** — không mục nào tới được mô hình (§36.3).
+
+Nên chỗ phải sửa là tầng ứng viên, **không phải** prompt, mô hình hay thị giác — ba hướng đó đã đo
+và đều cho số không (§19, §24.2, §25, §30.2).
+
+Hai mục đầu kết thúc bằng `:` và là item bullet nên bị trừ điểm hai lần. Hai mục sau là dạng
+`NHÃN + SỐ + HẾT`; cờ `--bare-labels` (§36) đọc được chúng thành chuỗi đánh số nhưng **chưa có
+đường tác động**: token chỉ nuôi `HasStructuralEvidence`, mà chỗ đó chỉ dùng để cứu đoạn đã bị mô
+hình gắn nhãn `DocumentTitle` — tức đoạn phải TỪNG là ứng viên.
+
+**Cách nghiệm thu.** Mở rộng `StructuralRecovery` sang token `Labelled` (hiện chỉ xử lý đường dẫn số
+Ả Rập nhiều cấp). Recall trên `key-human.key` phải tăng, P không được giảm quá 1 điểm, bench giữ
+10/10. Đo riêng, không gộp với bất kỳ thay đổi nào khác.
+
+## 8. Precision 79,5% — *con số kém nhất hiện nay*
+
+Trên `key-human.key`: P 79,5 · R 96,2 · F1 87,1 · đúng cấp 96,0 · đúng cha 96,0.
+
+Đã biết chắc: **0/21 dương tính giả mang style Heading** — toàn bộ đến từ ứng viên heuristic (§32.1).
+Và chúng cần phán đoán NGỮ NGHĨA, không phải hình thức: 14/21 nằm trong danh sách, nên "thuộc danh
+sách" không tách được (`1920 x 1080 pixels`, `Nguồn: Tik Tok`, `Nguyễn Hà Phương`).
+
+Đã thử và **đo là hỏng**, đừng thử lại:
+- thị giác làm tầng lọc: loại 8/19, giữ 7/8 đề mục thật, ~15 phút/tài liệu — không đáng (§32.2);
+- văn bản lặp ≥ 3 lần: loại 2, mất 4 đề mục thật (§34.3);
+- kề đoạn chứa ảnh: loại 0/21 (§34.3);
+- kề dòng chú thích: loại 1, mất 6 đề mục thật (§34.3).
+
+Còn lại và chưa thử: hạ cấp SAU khi mô hình quyết, bằng luật nhắm lớp nhiễu có hình dạng đo được.
+Hoặc `--no-standalone-lines` (§33): P 83,5 → 92,8 nhưng R 96,4 → 93,6, làm rơi `Tiểu kết chương 2/3`.
+Đổi 2,8 điểm recall lấy 9,3 điểm precision là **lựa chọn về sản phẩm**, thuộc về người dùng.
+
+## 9. Đưa cấu hình đã đo thành mặc định — *đang có hai bộ số khác nhau*
+
+Mọi con số tốt trong handoff đo với `--style-trust --chunk-tokens 28000 --ctx 32768 -ngl 99`. Giao
+diện Web mặc định `ctx 8192`, `5000 token/khối`, và người dùng còn tick "Bỏ luật từ ngữ". Hai đường
+cho hai kết quả khác nhau — §36 cho thấy UI trả về `1296`/`1315` mà cấu hình đã đo thì không.
+
+§35 đã chứng minh cái giá của việc để hai đường khác nhau: lỗi `NoKvSlot` chỉ tồn tại ở đường mặc
+định và sống sót nhiều phiên vì mọi phép đo đều truyền `--no-reuse-prefix`.
+
+**Cách nghiệm thu.** Đo cấu hình mặc định của Web trên `key-human.key` và bench; nếu kém hơn thì
+đổi mặc định Web, không phải đổi phép đo. §10.4 cấm lật mặc định chỉ vì bench.
 
 ---
 
