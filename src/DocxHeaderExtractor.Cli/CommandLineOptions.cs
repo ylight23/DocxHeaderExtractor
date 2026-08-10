@@ -141,6 +141,7 @@ public sealed class CommandLineOptions
                 case "--no-standalone-lines": extraction.PromoteStandaloneLines = false; break;
                 case "--skip-content-controls": extraction.SkipContentControls = true; break;
                 case "--bare-labels": extraction.AllowBareLabelledNumbers = true; break;
+                case "--split-merged": extraction.SplitMergedParagraphs = true; break;
                 case "--mode-only": extraction.ReportModeOnly = true; break;
                 case "--flag-repeated-labels": extraction.FlagRepeatedLabels = true; break;
                 case "--skip-corrupt": extraction.SkipCorruptParagraphs = true; break;

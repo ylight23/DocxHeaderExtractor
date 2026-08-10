@@ -68,6 +68,15 @@ public sealed class ExtractionOptions
     public bool FlagRepeatedLabels { get; set; }
 
     /// <summary>
+    /// Tìm tiêu đề nằm LỌT GIỮA paragraph — xem <see cref="Pipeline.ParagraphHeadingSplitter"/>.
+    /// Cần cho tài liệu chuyển từ PDF, nơi cả trang bị gộp thành một đoạn.
+    /// <para>MẶC ĐỊNH TẮT: nó sinh nhiều heading dùng chung một <c>Index</c>, tức đổi luôn giả
+    /// định "mỗi đoạn nhiều nhất một mục" mà phần còn lại của pipeline và mọi đáp án trong
+    /// <c>keys/</c> đang dựa vào. Bật mặc định là đổi hành vi trên cả tập chỉ vì một thể loại.</para>
+    /// </summary>
+    public bool SplitMergedParagraphs { get; set; }
+
+    /// <summary>
     /// Loại đoạn HỎNG (ký tự bị nhân đôi) khỏi tập ứng viên — spec §5.1 luật X1.
     /// <para>MẶC ĐỊNH TẮT: chưa gặp ca nào trên corpus đang đo, nên bật mặc định là đổi hành vi mà
     /// không có số đỡ. Cờ tồn tại để đo khi gặp tài liệu có đoạn hỏng.</para>

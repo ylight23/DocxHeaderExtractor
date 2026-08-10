@@ -97,8 +97,40 @@ public static class NumberingAudit
         RegexOptions.Compiled);
 
     private static readonly Regex LetterRx = new(
-        @"^\s*([A-Za-z])\s*[\.\)]\s*(\S.*)$",
+        @"^\s*([A-Za-zĂÂĐÊÔƠƯăâđêôơư])\s*[\.\)]\s*(\S.*)$",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+    // Nghị định 30/2020 quy định điểm đánh bằng "chữ cái tiếng Việt theo thứ tự bảng chữ cái
+    // tiếng Việt". Bảng đó có đ ngay sau d và KHÔNG có f j w z. Hệ quả: d) → đ) → e) là liên
+    // tục, còn d) → e) chỉ liên tục nếu tài liệu dùng thứ tự Latin.
+    //
+    // Không có một thứ tự cố định nào đúng cho cả hai. Chọn Latin thì mọi văn bản hành chính có
+    // đ) bị báo đứt quãng sai; chọn tiếng Việt thì mọi tài liệu Latin có d) e) bị báo "thiếu đ)".
+    // Cả hai đều là cảnh báo do ta tự tạo ra chứ không phải lỗi của tài liệu.
+    //
+    // Nên quyết định phải nhìn CẢ DÃY chứ không nhìn từng mục — cùng dạng với việc phân biệt số
+    // La Mã thường với chữ cái. Ta chấm dãy theo từng thứ tự ứng viên rồi lấy thứ tự ít đứt quãng
+    // nhất; hoà thì ưu tiên Latin vì nó phổ biến hơn trong corpus.
+    private static readonly string[] LetterAlphabets =
+    [
+        "abcdefghijklmnopqrstuvwxyz",      // Latin
+        "abcdđeghiklmnopqrstuvxy",         // tiếng Việt, biến thể quan sát được ở điểm văn bản
+        "aăâbcdđeêghiklmnoôơpqrstuưvxy",   // tiếng Việt đầy đủ 29 chữ, đọc sát Nghị định 30
+    ];
+
+    /// <summary>
+    /// Thứ tự hợp nhất: mọi chữ của cả ba bảng trên, xếp sao cho nếu x đứng trước y ở BẤT KỲ bảng
+    /// nào thì x cũng đứng trước y ở đây. Nhờ vậy giá trị token vẫn đơn điệu tăng cho cả tài liệu
+    /// Latin lẫn tiếng Việt, nên việc cắt dãy ở <see cref="CheckSequenceGaps"/> — vốn chỉ cần tính
+    /// đơn điệu — đúng cho cả hai mà không phải biết trước tài liệu theo quy ước nào.
+    /// </summary>
+    private const string MergedLetterOrder = "aăâbcdđeêfghijklmnoôơpqrstuưvwxyz";
+
+    private static int? LetterOrdinal(char c, string alphabet)
+    {
+        var at = alphabet.IndexOf(char.ToLowerInvariant(c));
+        return at < 0 ? null : at + 1;
+    }
 
     // Một prefix giống numbering chỉ mang ý nghĩa cấu trúc khi sau nó có nhãn ngôn ngữ.
     // Điều này loại các dòng số liệu kiểu "A: 04, B: 04" hoặc "1: 03/04" mà không cần
@@ -219,30 +251,75 @@ public static class NumberingAudit
 
         var kind = Describe(sample);
         var first = run[0];
+        // Dãy chữ cái được chấm lại theo bảng chữ cái hợp với chính nó, xem chú thích ở
+        // LetterAlphabets. Các dạng khác giữ nguyên giá trị token.
+        var values = sample.Kind == NumberKind.Letter
+            ? RescoreLetters(run)
+            : [.. run.Select(x => x.Token.Value)];
 
         // Dãy bắt đầu từ 2 nghĩa là mục số 1 đã bị đánh rơi ở tầng lọc — mô hình không cứu được
         // vì nó chưa từng nhìn thấy đoạn đó.
-        if (first.Token.Value > 1)
+        if (values[0] > 1)
         {
-            var missing = string.Join(", ", Enumerable.Range(1, first.Token.Value - 1));
+            var missing = string.Join(", ", Enumerable.Range(1, values[0] - 1));
             yield return new AuditWarning(
-                $"{kind}: dãy bắt đầu từ {first.Token.Value} tại đoạn {first.Heading.Index} " +
+                $"{kind}: dãy bắt đầu từ {values[0]} tại đoạn {first.Heading.Index} " +
                 $"(\"{Excerpt(first.Heading.Text)}\") — thiếu mục {missing}",
                 [first.Heading.Index]);
         }
 
         for (var i = 1; i < run.Count; i++)
         {
-            var gap = run[i].Token.Value - run[i - 1].Token.Value;
+            var gap = values[i] - values[i - 1];
             if (gap <= 1) continue;
 
-            var missing = string.Join(", ", Enumerable.Range(run[i - 1].Token.Value + 1, gap - 1));
+            var missing = string.Join(", ", Enumerable.Range(values[i - 1] + 1, gap - 1));
             run[i].Heading.Disputed = true;
             yield return new AuditWarning(
-                $"{kind}: nhảy từ {run[i - 1].Token.Value} sang {run[i].Token.Value} " +
+                $"{kind}: nhảy từ {values[i - 1]} sang {values[i]} " +
                 $"tại đoạn {run[i].Heading.Index} — thiếu mục {missing}",
                 [run[i - 1].Heading.Index, run[i].Heading.Index]);
         }
+    }
+
+    /// <summary>
+    /// Chọn bảng chữ cái khớp với dãy này nhất rồi trả về thứ tự theo bảng đó. Tiêu chí là tổng
+    /// độ hụt (<c>Σ max(0, bước − 1)</c>) chứ không phải số lần đứt, để một bảng gây một bước
+    /// nhảy dài bị phạt nặng hơn bảng gây hai bước nhảy ngắn. Bảng không chứa đủ chữ của dãy bị
+    /// loại. Không bảng nào chứa đủ thì giữ nguyên giá trị hợp nhất — thà cảnh báo theo thứ tự
+    /// xấp xỉ còn hơn im lặng bỏ qua cả dãy.
+    /// </summary>
+    private static int[] RescoreLetters(List<AuditItem> run)
+    {
+        var letters = new char[run.Count];
+        for (var i = 0; i < run.Count; i++)
+        {
+            if (LetterRx.Match(run[i].Heading.Text ?? "") is not { Success: true } m)
+                return [.. run.Select(x => x.Token.Value)];
+            letters[i] = m.Groups[1].Value[0];
+        }
+
+        int[]? best = null;
+        var bestCost = int.MaxValue;
+        foreach (var alphabet in LetterAlphabets)
+        {
+            var scored = new int[letters.Length];
+            var cost = 0;
+            var usable = true;
+            for (var i = 0; i < letters.Length && usable; i++)
+            {
+                if (LetterOrdinal(letters[i], alphabet) is not { } v) usable = false;
+                else scored[i] = v;
+            }
+            if (!usable) continue;
+
+            cost += Math.Max(0, scored[0] - 1);
+            for (var i = 1; i < scored.Length; i++) cost += Math.Max(0, scored[i] - scored[i - 1] - 1);
+            if (cost >= bestCost) continue;
+            (best, bestCost) = (scored, cost);
+        }
+
+        return best ?? [.. run.Select(x => x.Token.Value)];
     }
 
     private static string Describe(NumberToken t) => t.Kind switch
@@ -295,8 +372,9 @@ public static class NumberingAudit
 
         if (LetterRx.Match(text) is { Success: true } letter && HasTitleRemainder(letter))
         {
-            var c = char.ToUpperInvariant(letter.Groups[1].Value[0]);
-            if (c is >= 'A' and <= 'Z') return new NumberToken(NumberKind.Letter, 1, c - 'A' + 1);
+            // Giá trị lưu theo thứ tự hợp nhất; đứt quãng được chấm lại theo dãy ở InspectRun.
+            if (LetterOrdinal(letter.Groups[1].Value[0], MergedLetterOrder) is { } ordinal)
+                return new NumberToken(NumberKind.Letter, 1, ordinal);
         }
 
         // Sau cùng: ba mẫu trên đều bắt đầu bằng chính ký hiệu số nên không thể va vào "nhãn + số".

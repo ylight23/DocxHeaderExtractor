@@ -311,6 +311,19 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 ? HeuristicOnly(candidates)
                 : await RunModelAsync(slim, candidates, quarantined, ct);
 
+            // Chạy trên TOÀN BỘ đoạn chứ không phải tập ứng viên: đoạn bị gộp khi chuyển từ PDF
+            // có score 0 và role Normal, nên nó không bao giờ lọt vào ứng viên để mà cứu.
+            if (_options.Extraction.SplitMergedParagraphs)
+            {
+                var added = MergedParagraphHeadings(slim, headings);
+                if (added.Count > 0)
+                {
+                    headings.AddRange(added);
+                    headings.Sort((a, b) => a.Index.CompareTo(b.Index));
+                    Log($"Đoạn gộp: thêm {added.Count} mục nằm giữa paragraph.");
+                }
+            }
+
             // Lưới cuối: TrustStyles, StructuralRecovery và OutlineStructureResolver đều có thể
             // kéo lại một đoạn theo luật cấu trúc. Đoạn đang bị cách ly thì không được quay lại
             // bằng bất kỳ đường nào.
@@ -404,6 +417,40 @@ public sealed class HeaderExtractionPipeline : IDisposable
             ? null
             : Path.GetFileName(_options.Llama.ModelPath),
     };
+
+    /// <summary>
+    /// Các mục nằm lọt giữa paragraph. Đoạn nào đã cho ra heading rồi thì bỏ qua: nó là đoạn
+    /// heading lành lặn, chẻ tiếp chỉ tạo mục trùng.
+    /// </summary>
+    private static List<HeadingRecord> MergedParagraphHeadings(
+        SlimDocument slim,
+        List<HeadingRecord> existing)
+    {
+        var taken = existing.Select(h => h.Index).ToHashSet();
+        List<HeadingRecord> added = [];
+
+        foreach (var p in slim.Paragraphs)
+        {
+            if (taken.Contains(p.Index)) continue;
+            foreach (var slice in ParagraphHeadingSplitter.Split(p.Text))
+            {
+                added.Add(new HeadingRecord
+                {
+                    Index = p.Index,
+                    StableId = p.StableId,
+                    Level = 1,
+                    Text = slice.Text,
+                    StyleId = p.StyleId,
+                    Source = HeadingSource.Heuristic,
+                    // Chưa có holdout nào cho đường này nên confidence chỉ là chỗ giữ vị trí,
+                    // không phải xác suất đã calibration. PrecisionAcceptanceGate sẽ chặn trần.
+                    Confidence = 0.5,
+                });
+            }
+        }
+
+        return added;
+    }
 
     private static List<HeadingRecord> HeuristicOnly(IReadOnlyList<SlimParagraph> candidates) =>
     [
