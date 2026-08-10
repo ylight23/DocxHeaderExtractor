@@ -2933,3 +2933,38 @@ khi nhận diện cả một danh sách** — sai lẻ tẻ không kéo nổi t�
 dưới 80%. Cùng một tín hiệu, hai mức tin cậy khác nhau tuỳ đơn vị áp dụng.
 
 Cả hai đều **không gọi mô hình** và chạy trong ~1 giây.
+
+## 44. Đối chiếu 13 ca còn thiếu của spec với code — 9/13 đã có
+
+| # | ca | C# |
+|---|---|---|
+| 1 | bảng layout/content/data (mâu thuẫn X3 ↔ 5.5) | **có** — `TableRoleClassifier` §40 |
+| 2 | trang bìa lặp | **có** — `DemoteCoverPageBlock` + X6 |
+| 3 | tracked changes `w:del` | **có** — bỏ `DeletedRun` khi gom text |
+| 4 | content control `w:sdt` | **có** — `InContentControl` §36 |
+| 5 | field code `w:instrText` | **không phải khoảng trống** — SDK map thành `FieldCode`, vòng gom text chỉ nhận `Text` |
+| 6 | section break | **có** — `ParagraphWalker` |
+| 7 | textbox | **có** — `TextBoxContent` |
+| 8 | văn bản quy phạm `Chương/Điều` | **có** — `DocumentMode.VietnameseLegal` §40 |
+| 12 | file `.doc` cũ | **có** — `LegacyDocConverter` |
+| 9 | numbering reset theo chương | **chưa** |
+| 10 | heading bị Enter thật cắt đôi | **chưa** — TODO 6, đã ghi điều kiện mở lại |
+| 11 | phụ lục có hệ đánh số riêng | **chưa** |
+| 13 | số La Mã thường `i. ii. iii.` | **chưa — và có va chạm, xem dưới** |
+
+### 44.1 Ca 13 không phải "thêm regex" — nó va chạm với lớp chữ cái
+
+`i.` vừa là **La Mã thường số 1**, vừa là **chữ cái thứ 9** trong dãy `a) b) c)`. Hai lớp ký hiệu
+giẫm lên nhau ở đúng ký tự đó, và cả `v.` `x.` `l.` `c.` `d.` `m.` cũng vậy.
+
+Nên bật `IgnoreCase` cho mẫu La Mã là tạo ra lỗi mới, không phải sửa lỗi cũ: mọi mục `c.` `d.` `i.`
+trong một dãy chữ cái sẽ bị đọc nhầm thành La Mã và nhảy lên cấp 1.
+
+Luật đúng phải nhìn **cả dãy**, không nhìn từng mục: chỉ coi là La Mã thường khi dãy có chứa một
+ký hiệu không thể là chữ cái đơn (`ii`, `iii`, `iv`, `vi`…). Đây là quyết định thiết kế, không phải
+một dòng regex — và nó chưa được đo trên tài liệu nào.
+
+### 44.2 Ba ca còn lại đều cần tài liệu để đo
+
+Ca 9, 10, 11 chưa gặp trong bất kỳ tài liệu nào đang có đáp án. Theo đúng kỷ luật §10.4, cài luật
+cho ca chưa có dữ liệu là thêm mã không kiểm chứng được — điều kiện mở lại đã ghi ở TODO mục 6.
