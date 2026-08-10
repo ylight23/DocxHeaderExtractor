@@ -2774,3 +2774,72 @@ Mỗi cờ phải đo riêng trên `key-human.key` + bench trước khi bàn chu
 
 Và điều lớn nhất vẫn đứng nguyên: **chế độ tài liệu mới là chẩn đoán, chưa luật nào đổi hành vi theo
 nó.** Đó là chỗ spec kỳ vọng tạo khác biệt, và cũng là chỗ rủi ro nhất.
+
+## 41. Người dùng chốt định nghĩa outline — và nó cho 100% tuyệt đối
+
+### 41.1 Định nghĩa
+
+Người dùng xác nhận danh sách 68 mục là chuẩn, kèm cột `evidence`. Luật rút ra, **tất định hoàn toàn**:
+
+```
+outline = ĐÚNG các đoạn Word đã gán style Heading built-in
+cấp     = số gõ tay độ sâu d  →  d + 1      (1.1 sâu 2 ⇒ cấp 3)
+        | numPr, không số trong text →  2
+        | còn lại                    →  1
+```
+
+Kiểm trên chính 68 mục: **tái tạo đúng 68/68 cấp**.
+
+Và tập mục tách sạch tuyệt đối:
+
+| bằng chứng | trong đáp án | mục pipeline trả THÊM |
+|---|--:|--:|
+| **style Heading** | **68** | **0** |
+| `numPr` | 0 | 46 |
+| không có gì | 0 | 13 |
+
+Không một mục thừa nào mang style; không một mục đáp án nào thiếu style. Ranh giới trùng khít.
+
+### 41.2 Kết quả
+
+| Khoá luận, đáp án người dùng xác nhận (68 mục) | Pipeline đầy đủ | `--style-outline` |
+|---|--:|--:|
+| Precision | 53,5% | **100%** |
+| Recall | **100%** | **100%** |
+| F1 | 69,7% | **100%** |
+| Đúng cấp | 41,2% | **100%** |
+| Đúng cha | 100% | **100%** |
+| Thời gian | 314 s | **1,1 s** |
+
+Pipeline đầy đủ đã có **recall 100% và đúng cha 100%** — nó tìm đủ và dựng cây đúng; chỉ thừa 59 mục
+và lệch gốc cấp. Chế độ mới bỏ hẳn phần thừa bằng một điều kiện duy nhất, và không cần mô hình.
+
+### 41.3 Nhưng KHÔNG phổ quát — bench nói ngược lại
+
+| Bench 10 tài liệu | Pipeline đầy đủ | `--style-outline` |
+|---|--:|--:|
+| P / R / F1 | 100 / 100 / 100 | 92,3 / **69,2** / 79,1 |
+| Đúng cấp | 100% | **41,7%** |
+| Đạt tuyệt đối | **10/10** | **0/10** |
+
+Bench có 5 tài liệu dựng riêng cho ca style vắng hoặc sai (`02-dinh-dang-thu-cong`,
+`06-style-ban-dia`, `08-danh-sach-da-cap`, `09-style-ap-sai`, `10-cap-style-thoai-hoa`), và đáp án
+của chúng TÍNH CẢ đề mục không có style.
+
+Nên hai đáp án mã hoá **hai định nghĩa outline khác nhau**, không phải một cái đúng một cái sai:
+
+* **"Tác giả khai gì"** — outline là tuyên bố tường minh qua style. Đúng cho tài liệu soạn chuẩn;
+  trên khoá luận cho 100% tuyệt đối trong 1,1 giây.
+* **"Cấu trúc thật là gì"** — outline gồm cả đề mục tác giả quên gán style. Đúng cho tài liệu gõ ẩu;
+  đó là định nghĩa mà bench và `key-human.key` (105 mục) dùng.
+
+`--style-outline` **mặc định TẮT**. Chọn định nghĩa nào là quyết định sản phẩm, và nó phụ thuộc tập
+tài liệu thật của người dùng — nếu phần lớn soạn chuẩn thì chế độ này vừa chính xác hơn vừa nhanh
+gấp 280 lần.
+
+### 41.4 Đính chính của tôi
+
+Lượt trước tôi đọc luật cấp là *"con số trong tên style"* — SAI. Trùng khớp là ngẫu nhiên vì tài liệu
+này đặt `Heading3` cho mục `x.y`. Luật thật là **độ sâu đánh số + 1**, và chính nó giải thích cái tôi
+tưởng là "nhảy cấp": `CHƯƠNG 1` không đánh số nên cấp 1, `1.1` sâu 2 nên cấp 3 — dưới chương không có
+mục cấp 2 nào, đúng hình dạng tài liệu chứ không phải lỗi.
