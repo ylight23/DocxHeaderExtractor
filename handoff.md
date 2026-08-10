@@ -3123,3 +3123,77 @@ Thêm vào §10: **không được suy về đầu vào từ đầu ra của ch�
 trả về rỗng có hai nguyên nhân không phân biệt được từ kết quả — đầu vào rỗng, hoặc pipeline hỏng.
 Phải mở dữ liệu gốc ra đo. Ở đây khoảng cách giữa hai cách đọc là 50 file và một khuyến nghị
 lấy lại toàn bộ nguồn.
+
+## §47. Chạy bản Python đã sửa trên 95 file — dự đoán sai cả hai vế
+
+Dự đoán của phiên kia sau khi sửa: `no_text_layer` tách riêng ~50 file, `UNCLASSIFIED` giảm từ
+36% xuống dưới 10%. Chạy thật trên corpus:
+
+```
+UNCLASSIFIED       55   57.9%     <- KHÔNG ĐỔI một file nào
+vn-administrative  18   18.9%
+insufficient_text  10   10.5%
+format-driven       6    6.3%
+vn-legal            3    3.2%
+numpr-driven        2    2.1%
+typed-numbering     1    1.1%
+no_text_layer       0    0.0%     <- nhánh không bao giờ chạy
+```
+
+### 47.1 Vì sao sửa mẫu số `r_typed` không ăn
+
+**Cả 55 file UNCLASSIFIED đều có `n_typed == 0`.** Tử số bằng không thì mẫu số đúng hay sai đều
+không đổi kết quả. Bản sửa nhắm vào mẫu số, trong khi thứ hỏng là tử số.
+
+Tử số bằng 0 vì `TYPED.match` đòi mốc ở ĐẦU đoạn. Đo trên đúng 55 file đó:
+
+| | |
+|---|--:|
+| mốc nằm ở **đầu** đoạn | 1.596 |
+| mốc nằm **bên trong** đoạn | **24.220** |
+
+**94% cấu trúc vô hình** với bộ phân loại, vì mọi luật đều neo `^` còn mỗi đoạn dài ~1.900 ký tự.
+`006_Luat_Dat_dai`: 0 mốc ở đầu đoạn, 196 mốc bên trong. `062_Lectures_on_Probability`: 0 và 210.
+
+Đây là **cùng một nguyên nhân gốc** với §45.2, chỉ khác nơi biểu hiện: ở tầng trích thì nó làm
+mất heading, ở tầng phân loại thì nó làm mất chế độ. Sửa bất cứ ngưỡng nào ở tầng phân loại mà
+chưa cắt đoạn đều không thể ăn.
+
+### 47.2 Bộ phân loại C# — 0% "không phân loại" là con số gây hiểu nhầm
+
+Lộ `mode` ra thuộc tính `<doc>` của XML tinh gọn rồi chạy 95 file:
+
+```
+FormatDriven               56
+VietnameseAdministrative   19
+OutlineLevelDriven         10
+SemanticOnly                6
+VietnameseLegal             4
+```
+
+Không file nào ra `Unknown`. Nhưng dòng cuối của `Decide` là
+`return formatDiffers ? FormatDriven : SemanticOnly` — **hai nhánh cuối cùng, không phải chẩn
+đoán**. Nên **62/95 = 65% tài liệu rơi vào nhánh dự phòng**, tương đương 57,9% UNCLASSIFIED của
+bản Python. Cùng một thất bại, chỉ khác nhãn.
+
+Không được báo cáo "C# phân loại được 100%". Nó gán nhãn được 100%; nó nhận dạng được 35%.
+
+### 47.3 Ba lần neo sai vào `tier1_batch.py`
+
+Tôi sửa `tier1_batch.py` bằng cách thay chuỗi lấy từ bản phiên kia dán, và trượt hai lần
+(`r_typed = (sum(...TYPED.match...))` chứ không phải dạng họ có; không tồn tại `parse_docx`).
+Lần thứ ba tôi đã **báo cáo nhầm kết quả cũ như thể là kết quả có cắt đoạn** — assertion ném ở
+giữa nên `EXPLODE` chưa từng chạy, nhưng phần đuôi của lệnh vẫn in ra 57,9% cũ.
+
+Bản trong repo và bản phiên kia sửa là **hai biến thể khác nhau của cùng một file**. Áp diff mù
+giữa chúng đúng là lỗi §33/§36 đã ghi. Đã trả file về nguyên trạng.
+
+Kỷ luật bổ sung: khi một lệnh gồm nhiều bước, **bước sửa file và bước đo phải tách rời**, để
+bước đo không in ra số liệu của trạng thái mà bước sửa chưa kịp tạo ra.
+
+### 47.4 Việc tiếp theo có giá trị nhất
+
+Cắt đoạn phải chạy **trước** tầng phân loại, không chỉ trước tầng trích. Ở C# hiện tại
+`DocumentModeClassifier.Measure` chạy trong `DocxSlimExtractor`, còn `ParagraphHeadingSplitter`
+chạy trong `HeaderExtractionPipeline` — tức là bộ phân loại vẫn nhìn đoạn gộp. Đây là thay đổi
+kiến trúc thật, và phải đo lại toàn bộ §45.3 sau khi làm.
