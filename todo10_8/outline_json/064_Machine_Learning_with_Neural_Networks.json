@@ -1,0 +1,69 @@
+{
+ "file": "064_Machine_Learning_with_Neural_Networks.docx",
+ "mode": "UNCLASSIFIED",
+ "outline": [
+  {
+   "_idx": 0,
+   "block_id": "p0",
+   "marker": null,
+   "rank": null,
+   "num": "",
+   "prefix": "",
+   "heading": "064_Machine_Learning_with_Neural_Networks.pdf",
+   "body": null,
+   "split_src": "từ khóa",
+   "confidence": 0.7,
+   "flags": [],
+   "why": [
+    "đậm"
+   ],
+   "merged_from": null,
+   "level": 1,
+   "parent_id": null
+  },
+  {
+   "_idx": 6,
+   "block_id": "p14",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.5",
+   "prefix": "4.5",
+   "heading": "Restricted Boltzmann machines . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62 4.6 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 68 4.7 Further reading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 68 II Supervised learning 71 5 Perceptrons 73 5.1 A classification problem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 75 5.2 Iterative learning algorithm . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 78 5.3 Gradient descent for linear units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 79 5.4 Classification capacity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 82 5.5 Multi-layer perceptrons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 85 5.6 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 89 5.7 Further reading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 90 6 Stochastic gradient descent 91 6.1 Chain rule and error backpropagation . . . . . . . . . . . . . . . . . . . . . . . . . 91 6.2 Stochastic gradient-descent algorithm . . . . . . . . . . . . . . . . . . . . . . . . . 94 6.3 Preprocessing the input data . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 97 6.4 Overfitting and cross validation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 101 6.5 Adaptation of the learning rate . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 104 6.6 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 106 6.7 Further reading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 106 7 Deep learning 108 7.1 How many hidden layers? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 108 7.2 Vanishing and exploding gradients . . . . . . . . . . . . . . . . . . . . . . . . . . . . 113 7.3 Rectified linear units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 120 7.4 Residual networks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 122 7.5 Outputs and energy functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 124 7.6 Regularisation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 127 7.7 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 134 7.8 Further reading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 134 8 Convolutional networks 136 8.1 Convolution layers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 137 8.2 Pooling layers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 139 8.3 Learning to read handwritten digits . . . . . . . . . . . . . . . . . . . . . . . . . . . 140 8.4 Coping with deformations of the input distribution . . . . . . . . . . . . . . . . 143 8.5 Deep learning for object recognition . . . . . . . . . . . . . . . . . . . . . . . . . . . 144",
+   "body": null,
+   "split_src": "toàn bộ là heading",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 7,
+   "block_id": "p16",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "8.6",
+   "prefix": "8.6",
+   "heading": "Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 147 8.7 Further reading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 149 9 Supervised recurrent networks 150 9.1 Recurrent backpropagation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 152 9.2 Backpropagation through time . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 155 9.3 Vanishing gradients . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 160 9.4 Recurrent networks for machine translation . . . . . . . . . . . . . . . . . . . . . 162 9.5 Reservoir computing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 165 9.6 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 168 9.7 Further reading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 168 III Learning without labels 169 10 Unsupervised learning 171 10.1 Oja’s rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 171 10.2 Competitive learning . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 175 10.3 Self-organising maps . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 177 10.4 K -means clustering . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 184 10.5 Radial basis functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 186 10.6 Autoencoders . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 190 10.7 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 193 10.8 Further reading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 194 11 Reinforcement learning 196 11.1 Associative reward-penalty algorithm . . . . . . . . . . . . . . . . . . . . . . . . . . 199 11.2 Temporal difference learning . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 202 11.3 Q -learning . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 206 11.4 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 213 11.5 Further reading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 213",
+   "body": null,
+   "split_src": "toàn bộ là heading",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  }
+ ],
+ "issues": [],
+ "n_merged_two_line": 0
+}

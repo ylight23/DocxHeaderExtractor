@@ -1,0 +1,67 @@
+{
+ "file": "065_Numerical_Linear_Algebra_Lecture_Notes.docx",
+ "mode": "vn-administrative",
+ "outline": [
+  {
+   "_idx": 0,
+   "block_id": "p0",
+   "marker": null,
+   "rank": null,
+   "num": "",
+   "prefix": "",
+   "heading": "065_Numerical_Linear_Algebra_Lecture_Notes.pdf",
+   "body": null,
+   "split_src": "từ khóa",
+   "confidence": 0.7,
+   "flags": [],
+   "why": [
+    "đậm"
+   ],
+   "merged_from": null,
+   "level": 1,
+   "parent_id": null
+  },
+  {
+   "_idx": 33,
+   "block_id": "p65",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.1",
+   "prefix": "4.1",
+   "heading": "Geometric interpretation The SVD of a matrix A can be described by the following geometric fact",
+   "body": "The image of the unit sphere S = {x ∈ Rn : ∥x∥2 = 1} in Rn under any matrix A ∈ Rm×n is the hyperellipsoid E = {Ax : ∥x∥2 = 1} in Rm . Hyperellipsoid is just the m-dimensional generalization of an ellipse, i.e., the surface obtained by stretching the unit sphere in Rm by some factors σ1 , . . . , σm (possibly zero) in some orthonormal directions u1 , . . . , um ∈ Rm . The vectors {σk uk } are the principal semiaxes of the hyperellipse, with lengths σ1 , . . . , σm . If A has rank r, exactly r of the lengths uk will turn out to be nonzero, and in particular, if m ⩾ n, at most n of them will be nonzero. v2 v1 σ2 u2 σ1 u1 S AS Figure 7: SVD of a 2 × 2 matrix A Let S be the unit sphere in Rn and A ∈ Rm×n with m ⩾ n. For simplicity assume that A has full rank n. The image AS is a hyperellipse in Rm . We define n singular values of A as the length of n principal semiaxes of AS, i.e., σ1 , σ2 , . . . , σn . We assume that singular values are numbered in degreasing order, σ1 ⩾ σ2 ⩾ · · · ⩾ σn ⩾ 0. Then we define the left singular vectors of A as the direction of principal semiaxes of AS. These are orthonormal vectors u1 , u2 , . . . , un corresponding to singular values σ1 , . . . , σn . This means that the vector σk uk is the k-th largest semiaxis of AS. The right singular vectors of A are the orthonormal vectors v1 , v2 , . . . , vn that are the preimages of the principal semiaxes of AS, numbered so that Avk = σk uk , k = 1, 2, . . . , n. (4.1) Equations (4.1) in a compact form can be written as AV = U1 Σ1 where V = [v1 v2 · · · vn ] ∈ Rn×n , U1 = [u1 u2 · · · un ] ∈ Rm×n and Σ1 = diag(σ1 , . . . , σn ) ∈ Rn×n . Since V is an orthogonal matrix, we may write A = U1 Σ1 V T (4.2) which is called the reduced SVD of A. Here is an illustration for case m = 5 and n = 3: 30",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 48,
+   "block_id": "p95",
+   "marker": "roman",
+   "rank": 5,
+   "num": "C",
+   "prefix": "C.",
+   "heading": "Since C is symmetric and semi-positive definite, all eigenvalues are real and nonnegative and eigenvectors form an orthonormal basis for Rd . The eigenvalue λ corresponding to eigenvector u of C is indeed the variance of the linear combination defined by u, i.e. X T u, because var(X T u) = uT Cu = uT (λu) = λuT u = λ. Let us denote the pair of eigenvalues and eigenvectors of C by (λj , u·j ) for j = 1, 2, . . . , d and sort eigenvalues is such way that λ1 ⩾ λ2 ⩾ · · · ⩾ λd ⩾ 0. The maximum variance is attained at the dominant pair (λ1 , u·1 ). Recalling (4.8), this shows that the maximum variance of the data happens across the direction u·1 with variance σ12 T σ12 λ1 = var(X u·1 ) = var(σ1 v·1 ) = T v v·1 = . n − 1 ·1 n−1 σ2 This means that u·1 is the first principle component of data X and n−1 1 is the highest variance in the data along the direction u1 . A Lagrange multipliers approach, with the added restrictions of orthogonality of different vectors u·j can be used to show that the full set {u·1 , . . . , u·d } are the solutions to the problem of obtaining up to d new linear combinations X T u·j which successively maximize the variance, subject to uncorrelatedness with previous linear combinations. Uncorrelatedness results from the fact that the covariance between two such linear combinations is zero; cov(X T u·j , X T u·k ) = uT·j Cu·k = λk uT·j u·k = 0, j ̸= k. As the above formulation reveals, PCA is essentially connected to the SVD. From (4.8) we have X = U ΣV T (4.9) where U = [u·1 u·2 . . . u·d ] ∈ Rd×d and V = [v·1 v·2 . . . v·d ] ∈ Rd×n have orthonormal columns and Σ = diag(σ1 , σ2 , . . . , σd ). Consequently, the reduced SVD (4.9) gives all principal components as columns of the factor U . The variances in each direction are calculated as the squares of the singular values divided by (n − 1). Figure 11",
+   "body": "A dataset in R2 (left) and its 1-rank approximation using SVD. Up to here we have found all the principal components in order of significance. The next 45",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:roman"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  }
+ ],
+ "issues": [],
+ "n_merged_two_line": 0
+}

@@ -1,0 +1,78 @@
+{
+ "file": "072_ICP_TAG_Minutes_Mar_2025.docx",
+ "mode": "UNCLASSIFIED",
+ "outline": [
+  {
+   "_idx": 0,
+   "block_id": "p0",
+   "marker": null,
+   "rank": null,
+   "num": "",
+   "prefix": "",
+   "heading": "072_ICP_TAG_Minutes_Mar_2025.pdf",
+   "body": null,
+   "split_src": "từ khóa",
+   "confidence": 0.7,
+   "flags": [],
+   "why": [
+    "đậm"
+   ],
+   "merged_from": null,
+   "level": 1,
+   "parent_id": null
+  },
+  {
+   "_idx": 4,
+   "block_id": "p7",
+   "marker": "num",
+   "rank": 6,
+   "num": "2",
+   "prefix": "2.",
+   "heading": "Regional updates Representatives from each Regional Implementing Agency (RIA) provided brief updates on the concluding activities of the ICP 2021 cycle and on the implementation status of the ICP 2024 cycle. Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), presented the status of ICP 2024 implementation in the Africa region. The same fifty-two economies are expected to participate in the ICP 2024 cycle, with the possible inclusion of Eritrea and Libya in the future. The implementation of the cycle is underway and the regional item lists have been revised considering the experience drawn from the previous cycle. Budget constraints, staff turnover, and proximity between the two cycles are identified as the main challenges for the implementation of the cycle. In addition, rebasing of GDP is expected in a number of participating economies. Asia and the Pacific Kaushal Joshi, Asian Development Bank (ADB), presented the dissemination activities of the ICP 2021 results and the status of ICP 2024 cycle implementation in the Asia and Pacific region. The ICP 2021 results, including revised 2017 estimates, were finalized in April 2024 and were endorsed by the Regional Advisory Board and Heads of National Implementing Agencies. Results for twenty-one participating economies were published on the ADB website and database, and a regional report was released in August 2024. The same twenty-one economies are participating in the ICP 2024 cycle, with the addition of Timor-Leste. The product lists and operational guidelines for ICP surveys have been revised and finalized for the ICP 2024 cycle. The ICP Asia Pacific Software Suite (ICP APSS) was updated based on feedback from the ICP 2021 cycle and other software tools are under development such as an online survey tool to update the ICP item lists, a computer-assisted personal interview (CAPI) tool for household consumption (HHC) data collection, and a web-scraping tool. The price data collection began in Q1 of 2024 and is expected to last until Q4 2025, while national accounts compilation will continue until Q2 2026. Data validation is underway, and a number of regional workshops have already been held. The initial feedback on the Construction and Machinery and Equipment surveys is that products available locally are different from the ones based on the Eurostat/OECD list. The new COICOP classification and annual PPP production is being discussed, with the support of Eurostat, OECD and the ICP Global Office. Commonwealth of Independent States (CIS) Andrey Kosarev, Interstate Statistical Committee of the Commonwealth of Independent States (CIS-Stat), presented the status of ICP 2024 implementation and dissemination of the ICP 2021 results in the CIS region. ICP 2021 results were approved and adopted by the Economic Council and published as a report in both English and Russian, in October 2024. Despite the methodological challenge related to the change of linking approach of the region, the results showed overall stability, as highlighted by the simulations provided by the Global Office. The current ICP 2024 cycle is underway both in terms of data collection and data validation workshops. In this cycle, constructions PPPs will be estimated following the global ICP approach, instead of the previous regional approach. CIS-Stat is exploring the adoption of annual PPP production following the rolling survey approach, but resources and funding constraints are a challenge, as highlighted by a statement from Belarus on the matter. Member economies have expressed concerns about discrepancies with official figures in the data sources used for the extrapolation of PPPs as published in the WB World Development Indicators (WDI) 3",
+   "body": null,
+   "split_src": "toàn bộ là heading",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 13,
+   "block_id": "p25",
+   "marker": "num",
+   "rank": 6,
+   "num": "6",
+   "prefix": "6.",
+   "heading": "Improving Reliability of Price Comparisons Professor Erwin Diewert, University of British Columbia and University of New South Wales, presented his paper on Basic Heading PPPs and the Lack of Matching Problem. The paper analyses three alternative methods for the calculation of basic heading PPPs at the global level",
+   "body": "i) the Country Product Dummy Method; ii) The Jevons “Star” Country Method and iii) the Jevons-GEKS Method. In all these methods, missing item prices affects the outcome of basic heading PPPs. The “lack of matching” problem occurs when a large portion of items within a basic heading is not priced by two or more regions, which affects the reliability of PPPs. The paper showcases this issue by presenting several examples taken from the ICP 2017 cycle. An alternative solution would be through similarity linking, choosing five pairs of countries between the five ICP regions with the highest matching price data between them. The problem is that determining which pairs of countries would be optimal for interregional linking is a difficult task. Yuri Dikhanov, World Bank, presented a paper under the title “Fisher versus Törnqvist when Relative Price Changes are Large” and the foundation paper “Range of possible results for certain classes of superlative price indices” which establishes how superlative indices are different from each other. The paper argues that the basic aggregation method used in the ICP (the Fisher-based GEKS) is unstable in the face of price and expenditure volatility and proposes using the Törnqvist-based CCD (Caves, Christensen and Diewert) index instead. The paper analyses both spatial and temporal indices. For temporal analyses, three types of indices are considered: (i) multilateral, or GEKS (multilateral Fisher) and CCD (multilateral Törnqvist), (ii) direct, or 2023/1990 direct estimates using only two years, and (iii) chained indices. These indices are used on two aggregation scopes: (i) over all items, and (ii) over all items without fast-moving technology items. The fast-moving technology items are the temporal proxies for volatile items present in the ICP. The results reveal that the chained Törnqvist index has the lowest discrepancies between the two aggregation scopes. The paper proceeds to simulate effects of price shocks on indices, showing that a price shock always has a larger effect on Fisher compared to Törnqvist indices. For spatial analysis, the ratio between Fisher and Törnqvist indices is found to be even higher than temporal analysis. In addition, the GEKS and CCD PPP ratios were also compared for the ICP 2021 results and found significant differences for some countries. The paper suggest that the Törnqvist-based CCD index is preferrable to the Fisher-based GEKS index under the condition of strong price and expenditure shocks. The TAG discussed each presentation separately, but the main arguments and conclusions between these topics naturally overlap. On the issue of missing prices, while they may have adverse effects on PPPs, the alternative of pricing every item regardless of its representativeness, introduces other biases. Finding a middle ground, where most but not all items are priced, is probably the best option to ensure a meaningful comparison. On the topic of similarity linking as an alternative to the current global linking approach, the TAG considered that would be a step back towards the former ring linking approach. Regarding the use of different indices, it was noted that the main discrepancies in spatial comparisons are attributable to certain regions which may require further investigation. Session VI: Any Other Business Inyoung Song, World Bank, informed the TAG that the ICP Global Office is suggesting publishing a series of ICP blogs on the World Bank Data Blog platform, including potentially a blog focusing on the role of the TAG within the ICP. The TAG welcomed these initiatives and suggested exploring synergies with existing expert groups and conferences on international comparisons. 12",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  }
+ ],
+ "issues": [
+  {
+   "type": "sequence_gap",
+   "marker": "num",
+   "block_id": "p25",
+   "expected": 3,
+   "found": "6",
+   "text": "Improving Reliability of Price Comparisons Professor Erwin D"
+  }
+ ],
+ "n_merged_two_line": 0
+}

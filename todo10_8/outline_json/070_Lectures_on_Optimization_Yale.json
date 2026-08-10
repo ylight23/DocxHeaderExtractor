@@ -1,0 +1,263 @@
+{
+ "file": "070_Lectures_on_Optimization_Yale.docx",
+ "mode": "UNCLASSIFIED",
+ "outline": [
+  {
+   "_idx": 0,
+   "block_id": "p0",
+   "marker": null,
+   "rank": null,
+   "num": "",
+   "prefix": "",
+   "heading": "070_Lectures_on_Optimization_Yale.pdf",
+   "body": null,
+   "split_src": "từ khóa",
+   "confidence": 0.7,
+   "flags": [],
+   "why": [
+    "đậm"
+   ],
+   "merged_from": null,
+   "level": 1,
+   "parent_id": null
+  },
+  {
+   "_idx": 11,
+   "block_id": "p21",
+   "marker": "num",
+   "rank": 6,
+   "num": "2",
+   "prefix": "2.",
+   "heading": "If 𝑓 is twice continuously differentiable, then ∇2 𝑓 (𝑥★) ⪰ 0. Proof. Let 𝑣∫∈ R𝑑 and 𝜀 > 0; then, 𝑓 (𝑥★ +𝜀𝑣) − 𝑓 (𝑥★) ≥ 0. If 𝑓 is continuously differentiable, 1 this yields 0 ⟨∇𝑓 (𝑥★ + 𝜀𝑡𝑣), 𝑣⟩ d𝑡 ≥ 0. By continuity of ∇𝑓 , sending 𝜀 ↘ 0 proves that ⟨∇𝑓 (𝑥★), 𝑣⟩ ≥ 0 for all 𝑣 ∈ R𝑑 , which entails ∇𝑓 (𝑥★) = 0. ∫ 1 If∫ 𝑓1 is twice continuously differentiable, we can expand once more to obtain 0 ≤ 0 𝑡 0 ⟨∇2 𝑓 (𝑥★ + 𝜀𝑠𝑡𝑣) 𝑣, 𝑣⟩ d𝑠 d𝑡. By continuity of ∇2 𝑓 , sending 𝜀 ↘ 0 then proves that ⟨∇2 𝑓 (𝑥★) 𝑣, 𝑣⟩ ≥ 0 for all 𝑣 ∈ R𝑑 . □ The conditions ∇𝑓 (𝑥★) = 0, ∇2 𝑓 (𝑥★) ⪰ 0 are necessary for optimality, but not sufficient in general. The issue is that the proof of Lemma 1.8 is entirely local, so the same conclusion holds even if 𝑥★ is only assumed to be a local minimizer. On the other hand, under the assumption of convexity, the first-order necessary condition becomes sufficient. Lemma 1.9 (sufficient condition for optimality). Let 𝑓",
+   "body": "R𝑑 → R be convex and continuously differentiable, and let ∇𝑓 (𝑥★) = 0. Then, 𝑥★ is a global minimizer of 𝑓 . In particular, every local minimizer of 𝑓 is a global minimizer. Proof. This easily follows from (1.4) with 𝑥 = 𝑥★. □ Next, we note that the minimizer is unique if 𝑓 is strictly convex. Lemma 1.10 (uniqueness of minimizer). Assume that 𝑓 : R𝑑 → R is strictly convex, i.e., for all distinct 𝑥, 𝑦 ∈ R𝑑 and 𝑡 ∈ (0, 1), 𝑓 ((1 − 𝑡) 𝑥 + 𝑡 𝑦) < (1 − 𝑡) 𝑓 (𝑥) + 𝑡 𝑓 (𝑦). Then, if 𝑓 admits a minimizer 𝑥★, it is unique. Proof. If we had two distinct minimizers 𝑥★, 𝑥˜★, so that 𝑓 (𝑥★) = 𝑓 (𝑥˜★), then strict convex- ity would imply 𝑓 ( 12 𝑥★ + 12 𝑥˜★) < 𝑓 (𝑥★), which is a contradiction. □ If 𝑓 is strongly convex, then it is strictly convex. Also, from, e.g., (1.4), we see that 𝑓 grows at least quadratically at ∞, which implies that it has bounded level sets. We can therefore conclude: Corollary 1.11. Let 𝑓 : R𝑑 → R be strongly convex and continuously differentiable. Then, it admits a unique minimizer 𝑥★, which is characterized by ∇𝑓 (𝑥★) = 0. Finally, when discussing algorithms, we also need a dual condition—an upper bound on the Hessian—which in this context is called smoothness.2 2 This is not to be confused with the mathematical usage of “smoothness” as “infinitely differentiable”. 10",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 25,
+   "block_id": "p49",
+   "marker": "num",
+   "rank": 6,
+   "num": "2",
+   "prefix": "2.",
+   "heading": "Show that 𝑓𝛽 is strongly convex and smooth, and compute the parameters in terms of 𝛽, 𝜆, and 𝐴, where 𝐴 ∈ R𝑚×𝑑 has rows 𝑎𝑖T , 𝑖 ∈ [𝑚]. 3. Suppose that 𝑅𝛽 ≥ ∥𝑥 0 − 𝑥 𝛽,★ ∥ where 𝑥 𝛽,★ ∈ arg min 𝑓𝛽 , and run GD on 𝑓𝛽 with initialization 𝑥 0 . Find choices for 𝛽 and the number of steps 𝑁 such that GD obtains an 𝜀-approximate minimizer for the original function 𝑓 . 4 Lower bounds for smooth optimization The goal of this section is to establish lower complexity bounds for convex smooth optimization. Refer to §1.1 for a conceptual first discussion of the oracle model. Before doing so, we present some reductions between the convex and strongly convex settings which save us some effort. 4.1 Reductions between the convex and strongly convex settings For brevity, let us say that an algorithm successfully optimizes a function class ℱ in 𝜙 (ℱ, 𝑅, 𝜀) iterations if, given any 𝑓 ∈ ℱ and 𝑥 0 ∈ R𝑑 with ∥𝑥 0 − 𝑥★ ∥ ≤ 𝑅, it outputs 𝑥 with 𝑓 (𝑥) − 𝑓★ ≤ 𝜀 using no more than 𝜙 (ℱ, 𝑅, 𝜀) queries to a first-order oracle for 𝑓 . Lemma 4.1. Assume there is an algorithm which successfully optimizes the class of convex and 𝛽-smooth functions in 𝜙 (𝛽𝑅 2 /𝜀) iterations. Then, there is an explicit algorithm which successfully optimizes the class of 𝛼-convex and 𝛽-smooth functions in 𝑂 (𝜙 (8𝜅) log(𝛼𝑅 2 /𝜀)) iterations. Proof. For any 𝑥¯ ∈ R𝑑 and 𝜀 > 0, let A(𝑥, ¯ 𝜀¯) denote the output of the given algorithm, starting from 𝑥¯ and with error tolerance 𝜀¯. By assumption, it outputs 𝑥ˆ with 𝑓 (𝑥)ˆ − 𝑓★ ≤ 𝜀¯ ¯ 2 ¯",
+   "body": "in 𝜙 (𝛽 𝑅 /¯𝜀 ) iterations, where 𝑅 = ∥𝑥¯ − 𝑥★ ∥. Let 𝑓 be 𝛼-strongly convex and 𝛽-smooth, and let 𝑅 := ∥𝑥 0 −𝑥★ ∥. We define a sequence of points as follows. Let 𝑥 1 := A(𝑥 0, 𝜀 1 ). By (QG), we have 𝛼 ∥𝑥 1 − 𝑥★ ∥ 2 ≤ 𝑓 (𝑥 1 ) − 𝑓★ ≤ 𝜀 1 . 2 Set 𝜀 1 = 𝛼𝑅 2 /8, so that ∥𝑥 1 − 𝑥★ ∥ ≤ 𝑅1 := 𝑅/2 = ∥𝑥 0 − 𝑥★ ∥/2 . (4.1) For 𝜅 := 𝛽/𝛼, this requires 𝜙 (8𝜅) iterations. 24",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 51,
+   "block_id": "p101",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "6.3",
+   "prefix": "6.3",
+   "heading": "Cutting plane methods Non-smooth optimization uses subgradient directions in order to “localize” the solution set. Pursuing this line of reasoning further leads to the family of cutting plane methods. Suppose that we wish to minimize 𝑓 over a bounded, closed, convex set C. Let C★ denote the set of minimizers. The idea is to construct a sequence of convex sets C = C0, C1, C2, . . . , which shrink toward C★. The set C𝑛 represents possible candidates for the solution to the problem at iteration 𝑛. If 𝑥𝑛 ∈ C𝑛 and 𝑝𝑛 ∈ 𝜕𝑓 (𝑥𝑛 ), then the subgradient inequality reads 0 ≥ 𝑓 (𝑥★) − 𝑓 (𝑥𝑛 ) ≥ ⟨𝑝𝑛 , 𝑥★ − 𝑥𝑛 ⟩ for all 𝑥★ ∈ C★ . Thus, C★ ⊆ C𝑛 ∩ {𝑥 ∈ R𝑑",
+   "body": "⟨𝑝𝑛 , 𝑥⟩ ≤ ⟨𝑝𝑛 , 𝑥𝑛 ⟩} . We can take C𝑛+1 to be any superset of the right-hand side above. To finish specifying the scheme, we need a rule for choosing the points 𝑥𝑛 and the sets C𝑛 , with the goal of C𝑛 shrinking as fast as possible. The key is the following lemma from convex geometry, which we do not prove. Lemma 6.18 (Grünbaum). Let C ⊆ R𝑑 be a convex body (i.e., a compact convex ∫ set with non-empty interior) and let 𝑥 C denote the centroid of C: 𝑥 C := (vol C) −1 C 𝑥 d𝑥. Then, for any half-space H containing 𝑥 C , vol(C ∩ H) 𝑑 𝑑 1 ≥ ≥ , vol(C) 𝑑 +1 e where e ≈ 2.72 is a numerical constant. Consequently, if we choose 𝑥𝑛 to be the centroid of C𝑛 and set C𝑛+1 = C𝑛 ∩ {⟨𝑝𝑛 , ·⟩ ≤ ⟨𝑝𝑛 , 𝑥𝑛 ⟩} , 𝑥𝑛 = 𝑥 C𝑛 , (CoGM) then Grünbaum’s inequality shows that vol(C𝑛 \\ C𝑛+1 )/vol(C𝑛 ) ≤ 1/e, or vol(C𝑛+1 ) 1 ≤1− . vol(C𝑛 ) e Thus, we cut away a constant fraction of the volume at each iteration. This is known as the center of gravity method. 50",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p49"
+  },
+  {
+   "_idx": 80,
+   "block_id": "p159",
+   "marker": "num",
+   "rank": 6,
+   "num": "2",
+   "prefix": "2.",
+   "heading": "Let 𝜙 (𝑥) = 𝑑𝑖=1 {𝑥 [𝑖] log 𝑥 [𝑖] − 𝑥 [𝑖]} for 𝑥 ∈ R𝑑+ . Then, ∇𝜙 (𝑥) = log 𝑥, where Í log is applied coordinate-wise. The associated Bregman divergence is the Kullback–Leibler divergence 𝐷𝜙 (𝑥, 𝑦) = 𝑑𝑖=1 {𝑥 [𝑖] log(𝑥 [𝑖]/𝑦 [𝑖]) − 𝑥 [𝑖] +𝑦 [𝑖]}. Í 3. Let 𝜙 (𝑋 ) = tr(𝑋 log 𝑋 − 𝑋 ) for 𝑋 ≻ 0; this is known as the von Neumann entropy. The associated Bregman divergence is the quantum relative entropy 𝐷𝜙 (𝑋, 𝑌 ) = tr(𝑋 (log 𝑋 − log 𝑌 ) − 𝑋 + 𝑌 ). Let us define notions of convexity and smoothness relative to 𝜙. Definition 10.4. Let 𝑓",
+   "body": "R𝑑 → R ∪ {∞} be differentiable on int dom 𝑓 ⊆ C𝜙 . • We say that 𝑓 is 𝛼-convex relative to 𝜙 if 𝐷 𝑓 ≥ 𝛼𝐷𝜙 . • We say that 𝑓 is 𝛽-smooth relative to 𝜙 if 𝐷 𝑓 ≤ 𝛽𝐷𝜙 . Similarly to §1.2, there are equivalent reformulations of these definitions; see [LFN18, Proposition 1.1] for details. Proposition 10.5 (relative convexity). For any 𝛼 ≥ 0, the following are equivalent. • 𝑓 is 𝛼-convex relative to 𝜙. • 𝑓 − 𝛼𝜙 is convex. • ⟨∇𝑓 (𝑦) − ∇𝑓 (𝑥), 𝑦 − 𝑥⟩ ≥ 𝛼 ⟨∇𝜙 (𝑦) − ∇𝜙 (𝑥), 𝑦 − 𝑥⟩ for all 𝑥, 𝑦 ∈ int dom 𝑓 . If 𝑓 is twice continuously differentiable on int dom 𝑓 , the above are also equivalent to: • ∇2 𝑓 ⪰ 𝛼 ∇2𝜙 on int dom 𝑓 . Proposition 10.6 (relative smoothness). For any 𝛽 ≥ 0, the following are equivalent. • 𝑓 is 𝛽-smooth relative to 𝜙. • 𝛽𝜙 − 𝑓 is convex. • ⟨∇𝑓 (𝑦) − ∇𝑓 (𝑥), 𝑦 − 𝑥⟩ ≤ 𝛽 ⟨∇𝜙 (𝑦) − ∇𝜙 (𝑥), 𝑦 − 𝑥⟩ for all 𝑥, 𝑦 ∈ int dom 𝑓 . If 𝑓 is twice continuously differentiable on int dom 𝑓 , the above are also equivalent to: 79",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 81,
+   "block_id": "p161",
+   "marker": "bullet",
+   "rank": 9,
+   "num": "•",
+   "prefix": "•",
+   "heading": "∇2 𝑓 ⪯ 𝛽 ∇2𝜙 on int dom 𝑓 . For the case of 𝜙 = 12 ∥·∥ 2 , we recover the usual notions of convexity and smooth- ness described in §1.2. These relative definitions satisfy similar properties as convex- ity/smoothness, e.g., if 𝑓1 , 𝑓2 are respectively 𝛼 1 - and 𝛼 2 -convex relative to 𝜙 and 𝜆1, 𝜆2 > 0, then 𝜆1 𝑓1 + 𝜆2 𝑓2 is (𝜆1𝛼 1 + 𝜆2𝛼 2 )-convex relative to 𝜙. Also, we have a growth bound. Lemma 10.7 (relative growth). Suppose that 𝑓 is 𝛼-convex relative to 𝜙 for some 𝛼 > 0, and that 𝑓 is minimized at an interior point 𝑥★ of its domain. Then, for all 𝑥 ∈ R𝑑 , 𝑓 (𝑥) − 𝑓★ ≥ 𝛼 𝐷𝜙 (𝑥, 𝑥★) . Proof. The left-hand side is 𝐷 𝑓 (𝑥, 𝑥★). □ Other useful properties of Bregman divergences are explored in Exercise 10.1. 10.2 Algorithms and convergence analysis Briefly, let us first consider the continuous-time picture. Since we add the gradient of 𝑓 in the dual space, the dynamics we consider evolve according to 𝜕𝑡 ∇𝜙 (𝑥𝑡 ) = −∇𝑓 (𝑥𝑡 ) . (10.2) By the chain rule, this is equivalent to the following evolution in the primal space",
+   "body": "𝑥¤𝑡 = −[∇2𝜙 (𝑥𝑡 )] −1 ∇𝑓 (𝑥𝑡 ) . (10.3) This can be interpreted as a preconditioned gradient flow. Despite the fact that (10.2) and (10.3) are equivalent in continuous time, they lead to different discretizations. The discretization of (10.3) is usually called natural gradient descent and it is related to the subject of information geometry [AN00]. In fact, one can view the use of the mirror map 𝜙 as equipping the space C𝜙 with a Riemannian metric, namely, a local inner product ⟨𝑢, 𝑣⟩𝑥 := ⟨𝑢, ∇2𝜙 (𝑥) 𝑣⟩. This turns C𝜙 into a so-called Hessian manifold. From this perspective, the natural objects are geometric in nature: geodesics, length, curvature, etc. However, this is not what we consider; mirror descent is obtained from discretization of (10.2) in the dual. This conceptual point is so important that we isolate it into a remark. 80",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:bullet"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p159"
+  },
+  {
+   "_idx": 89,
+   "block_id": "p177",
+   "marker": "num",
+   "rank": 6,
+   "num": "1",
+   "prefix": "1.",
+   "heading": "Prove that for all 𝑥, 𝑥 ′ ∈ C𝜙 , 𝐷𝜙 (𝑥, 𝑥 ′) = 𝐷𝜙 ∗ (∇𝜙 (𝑥 ′), ∇𝜙 (𝑥)). 2. Let C ⊆ C𝜙 be a closed convex set and let Π C",
+   "body": "C𝜙 → C denote the Bregman 𝜙 projection operator: Π C (𝑥) := arg min 𝐷𝜙 (·, 𝑥) . 𝜙 C∩C𝜙 Show that ⟨∇𝜙 (ΠC (𝑥)) − ∇𝜙 (𝑥), ΠC (𝑥) − 𝑧⟩ ≤ 0 for all 𝑧 ∈ C. Use this to justify the 𝜙 𝜙 Pythagorean inequality 𝐷𝜙 (𝑧, 𝑥) ≥ 𝐷𝜙 (𝑧, Π C (𝑥)) + 𝐷𝜙 (Π C (𝑥), 𝑥) . 𝜙 𝜙 3. Let 𝑋 be a random variable with E|𝜙 (𝑋 )| < ∞. For any 𝑣 ∈ C𝜙 , establish the iden- tity E 𝐷𝜙 (𝑋, 𝑣) − E 𝐷𝜙 (𝑋, E 𝑋 ) = 𝐷𝜙 (E 𝑋, 𝑣). From this, deduce that the Bregman barycenter coincides with the usual mean: arg min𝑣 ∈C𝜙 E 𝐷𝜙 (𝑋, 𝑣) = E 𝑋 . Exercise 10.2. Show that if 𝜙 is 𝛼-convex relative to a norm |||·|||, then 𝜙 ∗ is 𝛼 −1 -smooth relative to the dual norm |||·||| ∗ . Exercise 10.3. Prove that the entropic mirror map is 1-convex relative to ∥·∥ 1 over the probability simplex Δ𝑑 . Exercise 10.4. For the entropic mirror map 𝜙, prove that the Bregman projection Π Δ𝑑 𝜙 onto the probability simplex simply normalizes the vector: 𝑥 ↦→ 𝑥/∥𝑥 ∥ 1 . Exercise 10.5. 1. More generally, show that MPGD can be rewritten as the update 𝑥𝑛+1 = proxℎ𝑔 ∇𝜙 ∗ (∇𝜙 (𝑥𝑛 ) − ℎ ∇𝑓 (𝑥𝑛 )) . 𝜙 2. Consider the mirror map 𝜙 : 𝑥 ↦→ − 𝑑𝑖=1 log 𝑥 [𝑖], defined over R𝑑+ . Compute Í proxℎ ∥·∥ , the Bregman proximal operator for ∥·∥ 1 . 𝜙 1 Exercise 10.6. Let 𝜙 be a mirror map and assume that 𝐹 = 𝑓 + 𝑔, where 𝑓 is 𝛼 𝑓 -convex and 𝑔 is 𝛼𝑔 -convex, 𝛼 𝑓 , 𝛼𝑔 ≥ 0. Instead of assuming that 𝑓 is relatively smooth, however, we instead assume that 𝐷 𝑓 ≤ 𝛽 𝑓 𝐷𝜙(1+𝑠)/2 for some 0 ≤ 𝑠 < 1. Note that when 𝜙 = ∥·∥ 2 /2, this corresponds to ∥𝑦 − 𝑥 ∥ 1+𝑠 𝑓 (𝑦) − 𝑓 (𝑥) − ⟨∇𝑓 (𝑥), 𝑦 − 𝑥⟩ ≤ 𝛽 𝑓 , for all 𝑥, 𝑦 ∈ R𝑑 . 2 88",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 104,
+   "block_id": "p207",
+   "marker": "num",
+   "rank": 6,
+   "num": "1",
+   "prefix": "1.",
+   "heading": "Show that 1 𝑥𝑛+1 = arg min 𝑓 (𝑥𝑛 ) + ⟨∇𝑓 (𝑥𝑛 ), 𝑥 − 𝑥𝑛 ⟩ + ∥𝑥 − 𝑥𝑛 ∥ 21 . 𝑥 ∈R𝑑 2ℎ 2. Therefore, argue that if 𝑓 is smooth in the ℓ1 -norm, 𝛽 𝑓 (𝑦) ≤ 𝑓 (𝑥) + ⟨∇𝑓 (𝑥), 𝑦 − 𝑥⟩ + ∥𝑦 − 𝑥 ∥ 21 , 2 then for ℎ = 1/𝛽 we have the descent lemma 1 𝑓 (𝑥𝑛+1 ) ≤ 𝑓 (𝑥𝑛 ) − ∥∇𝑓 (𝑥𝑛 )∥ 2∞ . 2𝛽 3. If 𝑓 satisfies a PŁ inequality in the ℓ 1 -norm, ∥∇𝑓 (𝑥)∥ 2∞ ≥ 2𝛼 (𝑓 (𝑥) − 𝑓★) , for all 𝑥 ∈ R𝑑 , then for 𝜅 = 𝛽/𝛼, 1 𝑁 𝑓 (𝑥 𝑁 ) − 𝑓★ ≤ 1 − (𝑓 (𝑥 0 ) − 𝑓★) . 𝜅 The moral of the story is that coordinate methods operate in the ℓ1 geometry. Exercise 11.4. 1. Setting 𝜀 reg = 1 in (11.2), show that the objective is equivalent to minimizing 𝛾 ↦→ KL(𝛾 ∥ 𝛾 0 ), where 𝛾𝑥,𝑦 0 = 𝜇 𝜈 exp(−𝑐 ). 𝑥 𝑦 𝑥,𝑦 2. Introduce two Lagrange multipliers 𝜅, 𝜆 ∈ R and argue that (11.2) is equivalent to min max KL(𝛾 ∥ 𝛾 0 ) + 𝜅 (𝛾1Y − 𝜇) + 𝜆 (𝛾 T 1X − 𝜈) . 𝛾 ∈RX×Y + 𝜅,𝜆∈R Without justification, assume that we can switch the min and max, so that the above problem is equivalent to max min KL(𝛾 ∥ 𝛾 0 ) + 𝜅 (𝛾1Y − 𝜇) + 𝜆 (𝛾 T 1X − 𝜈) . 𝜅,𝜆∈R 𝛾 ∈RX×Y + Argue that the solution 𝛾 to this problem is of the form 𝛾𝑥,𝑦 = exp(𝑓𝑥 +𝑔𝑦 −𝑐 𝑥,𝑦 ) 𝜇𝑥 𝜈𝑦 for some 𝑓 ∈ RX , 𝑔 ∈ RY . Exercise 11.5. For a joint distribution 𝛾, let (ΠX ) #𝛾 denote its X-marginal. Consider the objective functional F",
+   "body": "𝛾 ↦→ KL((ΠX ) #𝛾 ∥ 𝜇). Show that the iteration 𝛾 𝑛 ↦→ 𝛾 𝑛+1 of Sinkhorn’s algorithm can be viewed as one step of mirror descent on F with the entropic mirror map 𝜙, constraint set C𝜈 , and step size 1. By checking relative convexity and smoothness, prove Theorem 11.8. 103",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 128,
+   "block_id": "p255",
+   "marker": "num",
+   "rank": 6,
+   "num": "1",
+   "prefix": "1.",
+   "heading": "Show that the population risk is given by R(𝜃 ) = 𝜎 2 + ∥𝑋 (𝜃 − 𝜃 ★)∥ 2 /𝑛, where 𝑋 ∈ R𝑛×𝑑 is the matrix whose rows are {𝑋𝑖T }𝑖∈[𝑛] . † 2. Show that the ERM of minimal norm is the least-squares estimator 𝜃b𝑛 = (𝑋 T𝑋 ) 𝑋 T𝑌 , where † denotes the Moore–Penrose pseudoinverse. Show that the excess risk of the ERM is given by 2 𝜎 rank 𝑋 E R(𝜃b𝑛 ) − R(𝜃 ★) = . 𝑛 3. Consider the iterates of GD on the empirical risk R𝑛 . Show that for a step size ℎ sufficiently small, it holds that 𝜎 2 rank 𝑋 ∥𝜃 − 𝜃 ★ ∥ 2 0 E R(𝜃 𝑁 ) − R(𝜃 ) ≤ ★ +𝑂 . 𝑛 𝑁ℎ Hints",
+   "body": "For all of these parts, make extensive use of the singular value decomposition of 𝑋 . For the third part, write an exact recursion for 𝜃 𝑘 − 𝜃 ★, iterate this recursion, and then compute the excess risk. Use the fact that max𝑥 ∈[0,1] 𝑥 (1 − 𝑥) 𝑁 ≲ 1/𝑁 for 𝑁 ≥ 1. 13 Interior point methods We present polynomial-time methods for solving linear programs (LPs) and semidefinite programs (SDPs), among other structured optimization problems, through the family of interior point methods originally introduced in [Kar84]. 13.1 Self-concordant analysis of Newton’s method We begin with an analysis of Newton’s method: to minimize a function 𝑓 : R𝑑 → R, we consider the iteration 𝑥𝑛+1 = 𝑥𝑛 − [∇2 𝑓 (𝑥𝑛 )] −1 ∇𝑓 (𝑥𝑛 ) . (NM) The method is derived as follows: consider the local quadratic approximation of 𝑓 around the current iterate 𝑥𝑛 : 1 𝑓 (𝑥) ≈ 𝑓 (𝑥𝑛 ) + ⟨∇𝑓 (𝑥𝑛 ), 𝑥 − 𝑥𝑛 ⟩ + ⟨𝑥 − 𝑥𝑛 , ∇2 𝑓 (𝑥𝑛 ) (𝑥 − 𝑥𝑛 )⟩ . 2 It is straightforward to check that, provided ∇2 𝑓 (𝑥𝑛 ) ≻ 0, the minimizer of the quadratic approximation is given by the next iterate 𝑥𝑛+1 of NM. Unlike the methods we have studied 127",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 132,
+   "block_id": "p263",
+   "marker": "num",
+   "rank": 6,
+   "num": "4",
+   "prefix": "4.",
+   "heading": "If 𝑦 ∈ Dikin(𝑥, 1/𝑀) and 𝑣 ∈ R𝑑 , then 1 (1 − 𝑀 ∥𝑦 − 𝑥 ∥𝑥 ) 2 ∇2 𝑓 (𝑥) ⪯ ∇2 𝑓 (𝑦) ⪯ 2 ∇2 𝑓 (𝑥) . (1 − 𝑀 ∥𝑦 − 𝑥 ∥𝑥 ) 5. It holds that ∥𝑦 − 𝑥 ∥𝑥2 ⟨∇𝑓 (𝑦) − ∇𝑓 (𝑥), 𝑦 − 𝑥⟩ ≥ . 1 + 𝑀 ∥𝑦 − 𝑥 ∥𝑥 Proof. The first statement follows from general theory about multilinear forms, see [NN94, Appendix 1]. Let 𝑧𝑡",
+   "body": "= (1 − 𝑡) 𝑥 + 𝑡 𝑦 and 𝜙 (𝑡) := ⟨𝑦 − 𝑥, ∇2 𝑓 (𝑧𝑡 ) (𝑦 − 𝑥)⟩ −1/2 . Then, by the definition of self-concordance, ∇3 𝑓 (𝑧𝑡 ) [𝑦 − 𝑥, 𝑦 − 𝑥, 𝑦 − 𝑥] |𝜙 ′ (𝑡)| = ≤𝑀. 2 ⟨𝑦 − 𝑥, ∇2 𝑓 (𝑧𝑡 ) (𝑦 − 𝑥)⟩ 3/2 Hence, 𝜙 (0) − 𝑀 ≤ 𝜙 (1) ≤ 𝜙 (0) + 𝑀, which yields the third statement. The second statement follows from the third since 𝑦 ∈ Dikin(𝑥, 1/𝑀) implies that ∥𝑦 −𝑥 ∥𝑧𝑡 is bounded for 𝑡 ∈ [0, 1], which contradicts the fact that 𝑓 blows up at 𝜕 dom 𝑓 . For the fourth statement, let 𝜓 (𝑡) := ⟨𝑣, ∇2 𝑓 (𝑧𝑡 ) 𝑣⟩. Then, by the definition of self- concordance and the first and third statements, 2𝑀 |𝜓 ′ (𝑡)| ≤ |∇3 𝑓 (𝑧𝑡 ) [𝑦 − 𝑥, 𝑣, 𝑣]| ≤ 2𝑀 ∥𝑦 − 𝑥 ∥𝑥𝑡 ∥𝑣 ∥𝑥2𝑡 = ∥𝑧𝑡 − 𝑥 ∥𝑥𝑡 ∥𝑣 ∥𝑥2𝑡 𝑡 2𝑀 ∥𝑦 − 𝑥 ∥𝑥 ≤ 𝜓 (𝑡) . 1 − 𝑀𝑡 ∥𝑦 − 𝑥 ∥𝑥 Letting ∫ 1 2𝑀 ∥𝑦 − 𝑥 ∥𝑥 1 𝐶 := d𝑡 = 2 log , 0 1 − 𝑀𝑡 ∥𝑦 − 𝑥 ∥𝑥 1 − 𝑀 ∥𝑦 − 𝑥 ∥𝑥 a suitable generalization of Grönwall’s inequality (Lemma 2.3) implies 𝜓 (0) exp(−𝐶) ≤ 𝜓 (1) ≤ 𝜓 (0) exp(𝐶) . For the last statement, ∫ 1 ∫ 1 2 ∥𝑦 − 𝑥 ∥𝑥2 ⟨∇𝑓 (𝑦) − ∇𝑓 (𝑥), 𝑦 − 𝑥⟩ = ⟨∇ 𝑓 (𝑧𝑡 ) (𝑦 − 𝑥), 𝑦 − 𝑥⟩ d𝑡 ≥ d𝑡 0 0 (1 + 𝑀𝑡 ∥𝑦 − 𝑥 ∥𝑥 ) 2 ∥𝑦 − 𝑥 ∥𝑥2 = . □ 1 + 𝑀 ∥𝑦 − 𝑥 ∥𝑥 131",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  }
+ ],
+ "issues": [
+  {
+   "type": "sequence_gap",
+   "marker": "num",
+   "block_id": "p49",
+   "expected": 3,
+   "found": "2",
+   "text": "Show that 𝑓𝛽 is strongly convex and smooth, and compute the "
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "num",
+   "block_id": "p159",
+   "expected": 3,
+   "found": "2",
+   "text": "Let 𝜙 (𝑥) = 𝑑𝑖=1 {𝑥 [𝑖] log 𝑥 [𝑖] − 𝑥 [𝑖]} for 𝑥 ∈ R𝑑+ . The"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "num",
+   "block_id": "p177",
+   "expected": 3,
+   "found": "1",
+   "text": "Prove that for all 𝑥, 𝑥 ′ ∈ C𝜙 , 𝐷𝜙 (𝑥, 𝑥 ′) = 𝐷𝜙 ∗ (∇𝜙 (𝑥 ′"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "num",
+   "block_id": "p207",
+   "expected": 2,
+   "found": "1",
+   "text": "Show that 1 𝑥𝑛+1 = arg min 𝑓 (𝑥𝑛 ) + ⟨∇𝑓 (𝑥𝑛 ), 𝑥 − 𝑥𝑛 ⟩ + ∥"
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "num",
+   "block_id": "p255",
+   "expected": 2,
+   "found": "1",
+   "text": "Show that the population risk is given by R(𝜃 ) = 𝜎 2 + ∥𝑋 ("
+  },
+  {
+   "type": "sequence_gap",
+   "marker": "num",
+   "block_id": "p263",
+   "expected": 2,
+   "found": "4",
+   "text": "If 𝑦 ∈ Dikin(𝑥, 1/𝑀) and 𝑣 ∈ R𝑑 , then 1 (1 − 𝑀 ∥𝑦 − 𝑥 ∥𝑥 ) "
+  }
+ ],
+ "n_merged_two_line": 0
+}

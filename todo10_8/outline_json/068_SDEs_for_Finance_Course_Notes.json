@@ -1,0 +1,286 @@
+{
+ "file": "068_SDEs_for_Finance_Course_Notes.docx",
+ "mode": "UNCLASSIFIED",
+ "outline": [
+  {
+   "_idx": 0,
+   "block_id": "p0",
+   "marker": null,
+   "rank": null,
+   "num": "",
+   "prefix": "",
+   "heading": "068_SDEs_for_Finance_Course_Notes.pdf",
+   "body": null,
+   "split_src": "từ khóa",
+   "confidence": 0.7,
+   "flags": [],
+   "why": [
+    "đậm"
+   ],
+   "merged_from": null,
+   "level": 1,
+   "parent_id": null
+  },
+  {
+   "_idx": 8,
+   "block_id": "p15",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "1.3",
+   "prefix": "1.3",
+   "heading": "Contingent Claims A corporation is interested in purchasing a derivative product to provide specific cash- flows for each of the elementary events that (they believe) the market can take. Let Ω = {ω1 , ω2 , . . . , ωN } be these elementary events that can occur at time t = T , and let the proposed derivative security be a function Ct (ω) such that, CT (ωi ) = ci ∀i ≤ N , where each ci is the corporations desired cash flow. The derivative product C is a contingent claim, because it pays a fixed amount for all events in the market. Below are some general examples of contingent claims",
+   "body": "Example 1.3.1. European Call Option. At time T the holder of the option has the right to buy an asset at a pre-determined strike price K. This is a contingent claim that pays, (ST (ω) − K)+ = max(ST (ω) − K, 0) , where ST is some risk asset (e.g. a stock or bond). The payoff on this call option is seen in Figure 1.1. Example 1.3.2. European Put Option. At time T the holder of the option has the right to sell an asset at a pre-determined strike price K. This is a contingent claim that pays, (K − ST (ω))+ = max(K − ST (ω), 0) . Figure 1.2 shows the payoff for the put. Example 1.3.3. American Call/Put Option. At any time t ≤ T the holder of the option has the right to buy/sell an asset at a pre-determined strike price K. Exercise of this claim at time t ≤ T is contingent on the event At = {ωi | it is optimal to exercise at time t}. Example 1.3.4. Bermuda Call/Put Option. At either time T /2 or time T , the holder of the option has the right to buy/sell an asset at a pre-determined strike price K. Similar to an American option except only one early strike time. Example 1.3.5. Asian Call Option. At time T the holder of the option has the right to buy the averaged asset at a pre-determined strike price K, M !+ 1 X St` (ω) − K , M `=1 T where t` = ` M for integer M > 0. Example 1.3.6. Exchange Option. At time T the holder of the option has the right to buy one asset at the price of another, (ST1 (ω) − ST2 (ω))+ , where St1 is the price of an asset and St2 is the price of another. 7",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 11,
+   "block_id": "p21",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "1.4",
+   "prefix": "1.4",
+   "heading": "Option Pricing Terminology The following is a list of terms commonly used in option pricing",
+   "body": "• Long position, a portfolio is ‘long asset X’ if it has net positive holdings of contracts in asset X. • Short position, a portfolio is ‘short asset X’ if it has net negative holdings of contracts in asset X (i.e. has short sales of contracts). • Hedge, or ‘hedging portfolio’ is a portfolio that has minimal or possibly a floor on the losses it might obtain. • In-the-money (ITM), a derivative contract that would have positive payoff if set- tlement based on today’s market prices (e.g. a call option with very low strike). • Out-of-the-money (OTM), a derivative contract that would be worthless if set- tlement based on today’s market prices (e.g. a call option with very high strike). • At-the-money (ATM), a derivative contract exactly at it’s breaking point between ITM and OTM. • Far-from-the-money, a derivative contract with very little chance of finishing ITM. • Underlying, the stock, bond, ETF, exchange rate, etc. on which a derivative con- tract is written. • Strike, The price upon which a call or put option is settled. • Maturity, the latest time at which a derivative contract can be settled. • Exercise, the event that the long party decides to use a derivative’s embedded option (e.g. using a call option to buy a share of stock at lower than market value). 1.5 Completeness & Fundamental Theorems The nice thing about the discrete time-space market is that any contingent claim can be replicated. In general, for Ω = {ω1 , ω2 , . . . , ωN }, and with N −1 risky-assets (S 1 , S 2 , . . . , S N −1 ) and a risk-free bank account (with r = 0), replicating portfolio weights the contingent claim C can be found by solving, 1 ST1 (ω1 ) . . . . . . STN −1 (ω1 )      β c1 1 S 1 (ω2 ) . . . . . . S N −1 (ω2 )   α1   c2   T T     . .. .. ..   ..   ..   .. . . .  .  =  .  ,        .. .. .. .. .   .    ..   ..    . . . . 1 ST1 (ωN ) . . . . . . STN −1 (ωN ) αN −1 cN 10",
+   "split_src": "dấu :",
+   "confidence": 0.9,
+   "flags": [],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 16,
+   "block_id": "p31",
+   "marker": "bullet",
+   "rank": 9,
+   "num": "•",
+   "prefix": "•",
+   "heading": "In fact, the Itô integral is normally distributed when f is a non-stochastic function, and its variance is given by te Itô isometry, Z T Z T 2 f (t)dWt ∼ N 0 , f (t)dt . 0 0 • The Itô integral is also defined for functions of another random variable. For instance, f",
+   "body": "R → R and another random variable Xt , the Itô integral is, Z T NX−1 f (Xt )dWt = lim f (Xtn )(Wtn+1 − Wtn ) . 0 N →∞ n=0 The Itô isometry for this integral is, Z T 2 Z T E f (Xt )dWt = Ef 2 (Xt )dt , 0 0 provided that X is non-anticipative of W . 2.3 Stochastic Differential Equations & Itô’s Lemma With the stochastic integral defined, we can now start talking about differentials. In applications the stochastic differential is how we think about random process that evolve over time. For instance, the return on a portfolio or the evolution of a bond yield. The idea is not that various physical phenomena are Brownian motion, but that they are driven by a Brownian motion. Instead of a differential equation, the integrands in Itô integrals satisfy stochastic dif- ferential equations (SDEs). For instance, dSt = µSt dt + σSt dWt geometric Brownian motion, dYt = κ(θ − Yt )dt + γdWt an Ornstein-Uhlenbeck process, dXt = a(Xt )dt + b(Xt )dWt a general SDE. Essentially, the formulation of an SDE tells us the Itô integral representation. For instance, Z t Z t dXt = a(Xt )dt + b(Xt )dWt ⇔ Xt = X0 + a(Xs )ds + b(Xs )dWs . 0 0 Hence, any SDE that has no dt-terms is a martingale. For instance, if dSt = rSt dt+σSt dWt , then Ft = e−rt St satisfies the SDE dFt = σFt dWt and is therefore a martingale. On any given day, mathematicians, physicists, and practitioners may or may not recall the conditions on functions a and b that provide a sound mathematical framework, but the safest thing to do is to work with coefficients that are known to provide existence and uniqueness of solutions to the SDE (see page 68 of [Øksendal, 2003]). 15",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:bullet"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p21"
+  },
+  {
+   "_idx": 20,
+   "block_id": "p39",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "2.4",
+   "prefix": "2.4",
+   "heading": "Multivariate Itô Lemma Let Wt = (Wt1 , Wt2 , . . . , Wtn ) be an n-dimensional Brownian motion such that 1t EWti Wjj = 1[i=j] . Now suppose that we also have a system of SDEs, Xt = (Xt1 , Xt2 , . . . , Xtm ) (with m possibly not equal to n) such that n bij (Xt )dWtj X dXti = ai (Xt )dt + for each i ≤ m j=1 where αi",
+   "body": "Rm → R are the drift coefficients, and the diffusion coefficients bij : Rm → R are such that bij = bji and m X X n bi` (x)bj` (x)vi vj > 0 ∀v ∈ Rm and ∀x ∈ Rm , i,j=1 `=1 i.e. for each x ∈ Rm the covariance matrix is positive definite. For some differentiable function, there is a multivariate version of the Itô lemma. Lemma 2.4.1. (The Multivariate Itô Lemma). Let f : R+ × Rm → R with at least one derivative in the first argument and at least two derivatives in the remaining m arguments. The differential of f (t, Xt ) is   m m 2 ∂ X ∂ 1 X ∂ df (t, Xt ) =  + αi (Xt ) + bij (Xt )  f (t, Xt )dt ∂t ∂xi 2 ∂xi ∂xj i=1 i,j=1 m X n X ∂ + bi` (Xt ) f (t, Xt )dWt` (2.3) ∂xi i=1 `=1 Pn where bij (x) = `=1 bi` (x)bj` (x). Equation (2.3) is essentially a 2nd-order Taylor expansion like the univariate case of equa- tion (2.2). Of course, Theorem 2.3.1 still applies to to the system of SDEs (make sure ai and bij have linear growth and are Lipschitz continuous for each i and j), and in the multidimensional case it is also important whether or not n ≥ m, and if so it is important that there is some constant c such that inf x b(x) > c > 0. If there is not such constant c > 0, then we are possibly dealing with a system that is degenerate and there could be (mathematically) technical problems. Correlated Brownian Motion. Sometimes the multivariate case is formulated with a correlation structure among the Wti ’s, in which the Itô lemma of equation (2.3) will have 19",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 26,
+   "block_id": "p51",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "3.3",
+   "prefix": "3.3",
+   "heading": "The Black-Scholes Equation For general functions f (t, s), the Itô lemma for the geometric Brownian motion process is σ 2 St2 ∂ 2 ∂ ∂ ∂ df (t, St ) = + µSt + 2 f (t, St )dt + σSt f (t, St )dWt ∂t ∂s 2 ∂s ∂s (recall equation (2.2) from Chapter 2). Hence, applying the Itô lemma to the price function C(t, St ), the dynamics of the option and the self-financing portfolio are σ 2 St2 ∂ 2 ∂ ∂ ∂ dC(t, St ) = + µSt + 2 C(t, St )dt + σSt C(t, St )dWt (3.1) ∂t ∂s 2 ∂s ∂s dVt = αt dSt + rβt dt . (3.2) The idea is to find αt that can be known to us at time t (given our observed history of ∂ prices) so that Vt replicates C(t, St ) as closely as possible. Setting αt = ∂s C(t, St ) and βt = Vt − αt St , then buying the portfolio and shorting C gets a risk-less portfolio σ 2 St2 ∂ 2 ∂ ∂ d(Vt − C(t, St )) = r Vt − St C(t, St ) dt − + C(t, St )dt ∂s ∂t 2 ∂s2 and by arbitrage arguments, this must be equal to the risk-free rate, = r(Vt − C(t, St ))dt . Hence, we arrive at the Black-Scholes PDE σ 2 s2 ∂ 2 ∂ ∂ + + rs − r C(t, s) = 0 (3.3) ∂t 2 ∂s2 ∂s with C(T, s) = ψ(s) (recall we denote payoff function for general European claim with function ψ(s)). The power of the Black -Scholes PDE is that it replicates perfectly. Observe",
+   "body": "if V0 = C(0, S0 ), then d(Vt − C(t, St )) = 0 ∀t ≤ T, and so VT = C(T, ST ) = ψ(ST ). In fact, it can be shown that any contingent claim (not just Europeans) is replicable under the Black-Scholes model. Hence, the market is complete. 3.4 Feynman-Kac, the EMM, & Heat Equations Feynman-Kac is a probabilistic formula for solving PDEs like (3.3). It also has financial meaning because it explicitly provides a unique equivalent martingale measure (EMM). Since we have assume no-arbitrage, the 1st Fundamental theorem of asset pricing (see Section 1) necessarily asserts the existence of an EMM. The structure of this probability measure is given to us by the Feynman-Kac formula: 25",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 28,
+   "block_id": "p55",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "3.5",
+   "prefix": "3.5",
+   "heading": "The Black-Scholes Call Option Formula Let ψ(s) = (s − K)+ . From Feynman-Kac we have C(t, s) = e−r(T −t) EQ [(ST − K)+ |St = s] with dSt = rSt dt + σSt dWtQ . Through a verification with Itô’s Lemma we can see that underlying’s value at time of maturity can be written as a log-normal random variable, 1 2 ST = St exp r − σ (T − t) + σ(WT − Wt ) . 2 And so log(ST /St ) is in fact normally distributed under the risk-neutral measure, 1 2 2 log(ST /St ) ∼ N r − σ (T − t), σ (T − t) . 2 Hence, we compute the expectation for ψ(s) = (s − K)+ , EQ {(ST − K)+ |St = s} Z ∞ St 1 1 2 2 2 =p ex e− 2 (x−(r− 2 σ )(T −t)) /(σ (T −t)) dx 2πσ 2 (T − t) log(K/St ) | {z } =(†) − KQ(log(ST /St ) > log(K/St )) | {z } =(?) where Q is the risk-neutral probability measure. (†). First compute (†) (W.L.O.G. for t = 0)",
+   "body": "1 σ 2 )T 2 Z ∞ x−(r− 2 S0 − 12 √ (†) = √ ex e σ T dx 2πσ 2 T log(K/S0 ) Z ∞ S0 1 2 2 2 2 2 2 =√ e− 2σ2 T (−2x σ T +x −2x(r−.5σ )T +((r−.5σ )T ) ) dx 2πσ 2 T log(K/S0 ) Z ∞ S0 1 2 2 2 2 =√ e− 2σ2 T (x −2x(r+.5σ )T +((r−.5σ )T ) ) dx 2πσ 2 T log(K/S0 ) Z ∞ S0 erT 1 2 2 2 =√ e− 2σ2 T (x −(r+.5σ )T ) dx 2πσ 2 T log(K/S0 ) 27",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 29,
+   "block_id": "p57",
+   "marker": "num",
+   "rank": 6,
+   "num": "2",
+   "prefix": "2 )",
+   "heading": "T √ change of variables v = x−(r+.5σ √ σ T , dv = dx/(σ T ), so that Z ∞ S0 erT 1 2 (†) = √ √ e 2 v dv 2π (log(K/S0 )−(r+.5σ 2 )T )/(σ T ) Z (log(K/S0 )−(r+.5σ2 )T )/(σ√T ) ! rT 1 1 2 v = S0 e 1− √ e 2 dv 2π −∞ = S0 erT (1 − N (−d1 )) 2 where d1 = log(S0 /K)+(r+.5σ √ σ T )T and N (·) is the standard normal CDF. But the normal CDF has the property that N (−x) = 1 − N (x), so (†) = S0 erT N (d1 ) . (?). Then, computing (?) is much simpler, (?) = KQ (log(ST /S0 ) ≥ log(K/S0 )) log(ST /S0 ) − (r − .5σ 2 )T log(K/S0 ) − (r − .5σ 2 )T = KQ √ ≥ √ σ T σ T log(ST /S0 ) − (r − .5σ 2 )T log(K/S0 ) − (r − .5σ 2 )T =K 1−Q √ ≤ √ σ T σ T = K (1 − N (−d2 )) = KN (d2 ) log(S0 /K)+(r−.5σ 2 )T √ where d2 = σ T √ = d1 − σ T . Hence, we have the Black-Scholes formula for a European Call Option, Proposition 3.5.1. (Black-Scholes Call Option Formula). The call option on ST with strike K at time t with price St is given by C(t, St ) = St N (d1 ) − Ke−r(T −t) N (d2 ) where N (·) is the standard normal CDF and log(St /K) + (r + .5σ 2 )(T − t) d1 = √ σ T −t √ d2 = d1 − σ T − t . A plot of the Black-Scholes call option price with K = 50, r = .02, T =",
+   "body": "3/12, and σ = .2 with varying S0 is shown in Figure 3.1. 28",
+   "split_src": "payload",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:num"
+   ],
+   "merged_from": null,
+   "level": 2,
+   "parent_id": "p0"
+  },
+  {
+   "_idx": 31,
+   "block_id": "p61",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "3.6",
+   "prefix": "3.6",
+   "heading": "Put-Call Parity and the Put Option Formula It is straight forward to verify the relationship (ST − K)+ − (K − ST )+ = ST − K . (3.4) Then applying the risk-neutral expectionan e−r(T −t) EQ t to both sides of (3.4) to get the put-call parity, C(t, St ) − P (t, St ) = St − Ke−r(T −t) (3.5) where C(t, St ) is the price of a European call option and P (t, St ) the price of a European put option with the same strike. From put-call parity we have P (t, s) = C(t, s) + Ke−r(T −t) − s = −Ke−r(T −t) (N (d2 ) − 1) + s(N (d1 ) − 1) = Ke−r(T −t) N (−d2 ) − sN (−d1 ) , because 1 − N (x) = N (−x) for any x ∈ R. Proposition 3.6.1. (Black-Scholes Put Option Formula). The put option on ST with strike K at time t with price St is given by P (t, St ) = Ke−r(T −t) N (−d2 ) − St N (−d1 ) where log(St /K) + (r + .5σ 2 )(T − t) d1 = √ σ T −t √ d2 = d1 − σ T − t . The Black-Scholes put option price for K = 50, r = .02, T =",
+   "body": "3/12, and σ = .2 and varying S0 is shown in Figure 3.2. 3.7 Options on Futures and Stocks with Dividends This section will explain how to compute European derivative prices on stocks with a con- tinuously paying dividend rate, and on future prices. There is some technical issues with stocks paying dividends at a discrete times, but in the case of European options it is merely of matter of considering the future price. Dividends can be an issue in the Black-Scholes theory, particularly because they will determine whether or not Black-Scholes applies for American options (see Section 5.3). 30",
+   "split_src": "payload",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p57"
+  },
+  {
+   "_idx": 42,
+   "block_id": "p83",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "4.5",
+   "prefix": "4.5",
+   "heading": "The Rho The ρ is the sensitivity of to changes in the risk-free rate ∂ ρ= C . ∂r Of the 5 main Greeks it widely considered to be the least sensitive. For the Black-Scholes call and put options, the ρ is ρcall = K(T − t)e−r(T −t) N (d2 ) ρput = −K(T − t)e−r(T −t) N (−d2 ) . Notice that ρcall > 0 because higher interest rates means risky assets should rise in price and hence it will be more likely that you will exercise. Similarly, ρput < 0 because higher interest rates means it is less likely that you will exercise. 4.6 Other Greeks There are also other Greeks of interest in derivatives. Some of the are ∂ S • Λ, ∂S C×C , elasticity, or measure of leverage. ∂ 2 • Vanna, ∂s∂σ C, The sensitivity of the ∆ to changes in volatility. ∂ 2 • Volga, ∂σ 2 C, used for more elaborate volatility hedging. 41",
+   "body": null,
+   "split_src": "toàn bộ là heading",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p57"
+  },
+  {
+   "_idx": 72,
+   "block_id": "p143",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "7.2",
+   "prefix": "7.2",
+   "heading": "Monte Carlo Methods A slow but often reliable method for pricing derivatives is to approximate the risk-neutral expectation with independent samples. Essentially, sample paths of Brownian motion are obtained using a pseudo-random number generated, the realized derivative payoff is computed for each sample, and then the average of these sample payoffs is an approximation (`) of the true average. For example, let ` = 1, 2, . . . , N , let ST be the index for an independent Q 2 sample from ST ’s probability distribution. If E ST < ∞, then by the law of large numbers we have N 1 X (`) N →∞ (ST − K)+ −→ EQ (ST − K)+ . N `=1 For stochastic differential equations, the typical method is to generate samples that are approximately from the same distribution as the price. The basic idea is to use an Euler-Maruyama scheme, (`) (`) 1 2 (`) (`) log S̃t+∆t = log S̃t + µ − σ ∆t + σ(Wt+∆t − Wt ) , (7.9) 2 for some small ∆t > 0, with (`) (`) Wt+∆t − Wt ∼ iidN (0, ∆t) . This scheme is basically the discrete backward Riemann sum from which the Itô integral was derived (see Chapter 2). In the limit, the Monte-Carlo average will be with little-o of the true expectation, N 1 X (`) lim (S̃T − K)+ = EQ (ST − K)+ + o(∆t) . N →∞ N `=1 The scheme in (7.9) can easily be adapted for a local volatility model, and can also be adapted to stochastic volatility models, but the latter will also need a scheme for generating the volatility process Xt . Example 7.2.1. (The exponential OU model). Consider the stochastic volatility model dSt = rdt + eXt dWtQ St dXt = κ(X̄ − Xt )dt + γdBtQ with correlation ρ between WtQ and BtQ . The Euler-Maruyama scheme is 1 p log S̃t+∆t = log S̃t + r − e2X̃t ∆t + eX̃t ρ(Bt+∆t − Bt ) + 1 − ρ2 (Wt+∆t − Wt ) 2 X̃t+∆t = X̃t + κ X̄ − X̃t ∆t + γ(Bt+∆t − Bt ) 71",
+   "body": null,
+   "split_src": "toàn bộ là heading",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p57"
+  },
+  {
+   "_idx": 74,
+   "block_id": "p147",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "7.3",
+   "prefix": "7.3",
+   "heading": "Fourier Transform Methods The most acclaimed way to compute a European option price is with the so-called Fourier transform methods. In particular, the class of affine models in [Duffie et al., 2000] have tractable pricing formulae because they have explicit expressions for their Fourier trans- forms. The essential ingredient to these methods is the characteristic function, . √ φT (u) = EQ exp(iu log(ST )) ∀u ∈ C, i = −1 , where EQ now denotes expectation under an EMM. The function φT (u) is the Fourier transform of the log ST ’s distribution function, Z ∞ φT (u) = eius f (s)ds −∞ where R ∞ f (s) is the density function for log ST . The inverse Fourier transform is f (s) = 1 −ius 2π −∞ e φT (u)du, which leads to the cumulative distribution function Z ∞ 1 − e−ius Z s 1 F (s) − F (0) = f (v)dv = φT (u)du . 0 2π −∞ iu The crucial piece of information is the characteristic function, as any European claim can be priced provided there is also a Fourier transform for the payoff function. Let pT denote the density function on the risk-neutral distribution of log(ST ) and let ψb denote the Fourier transform of the payoff function. It is shown in [Lewis, 2000] that Z ∞ Z ∞ Z iz+∞ 1 EQ ψ(log(ST )) = ψ(s)f (s)ds = e−ius ψ(u)duf b (s)ds −∞ −∞ 2π iz−∞ Z iz+∞ Z ∞ Z iz+∞ 1 1 = ψ(u) b e−ius pT (s)dsdu = ψ(u)φ b T (−u)du 2π iz−∞ −∞ 2π iz−∞ where the constant z ∈ R in the limit of integration is the appropriate strip of regularity for non-smooth payoff functions (see Table 7.1). This usage of characteristic functions is far reaching, as the class of Lévy jump models are defined in terms of their characteristic function, or equivalently with the Lévy-Khintchine representation (for more on financial models with jumps see [Cont. and Tankov, 2003]). 7.4 Call-Option Pricing An important tool is the formula of Gil-Pelaez",
+   "body": "73",
+   "split_src": "dấu :",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p57"
+  },
+  {
+   "_idx": 88,
+   "block_id": "p175",
+   "marker": "dec2",
+   "rank": 7,
+   "num": "8.5",
+   "prefix": "8.5",
+   "heading": "Stochastic Volatility Now let’s consider the same optimal terminal wealth problem as the Merton problem, with exponential utility 1 U (x) = − e−γx where γ > 0 , γ and in the incomplete market of stochastic volatility, dSt = µSt dt + σ(Yt )St dWt (8.10) dYt = α(Yt )dt + β(Yt )dBt , (8.11) where dWt · dBt = ρdt. From (8.10) and (8.11), we have the wealth process, dSt dXt = rXt dt + πt − rdt , St no longer enforcing the non-negativity constraint. The optimization problem is h i V (t, x, y) = max E U (XT ) Xt = x, Yt = y , π but the technique used in Example 8.1.1 does not apply because there is some local martin- gale behavior in the stochastic integrals. Instead, we arrive at the optimal solution using the HJB equation. The HJB equation is β 2 (y) ∂ 2 ∂ ∂ ∂ + rx + + α(y) V (t, x, y) ∂t ∂x 2 ∂y 2 ∂y σ 2 (y)π 2 ∂ 2 ∂ + max V (t, x, y) + π(µ − r) V (t, x, y) π 2 ∂x2 ∂x ! ∂2 +ρπβ(y)σ(y) V (t, x, y) = 0 , (8.12) ∂x∂y V (T, x) = U (x) . Using the ansatz V (t, x, y) = U (xer(T −t) )g(t, y), we have ∂ ∂ V = γrxer(T −t) V + U (xer(T −t) ) g(t, y) , ∂t ∂t ∂ V = −γer(T −t) V , ∂x ∂2 V = γ 2 e2r(T −t) V , ∂x2 ∂2 ∂ V = −γer(T −t) U (xer(T −t) ) g(t, y) , ∂x∂y ∂y 87",
+   "body": null,
+   "split_src": "toàn bộ là heading",
+   "confidence": 0.8,
+   "flags": [
+    "needs_split"
+   ],
+   "why": [
+    "ký hiệu:dec2"
+   ],
+   "merged_from": null,
+   "level": 3,
+   "parent_id": "p57"
+  }
+ ],
+ "issues": [
+  {
+   "type": "sequence_gap",
+   "marker": "dec2",
+   "block_id": "p55",
+   "expected": 4,
+   "found": "3.5",
+   "text": "The Black-Scholes Call Option Formula Let ψ(s) = (s − K)+ . "
+  }
+ ],
+ "n_merged_two_line": 0
+}
