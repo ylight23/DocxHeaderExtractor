@@ -4,6 +4,60 @@ Tài liệu này ghi lại một phiên làm việc: đổi kiến trúc quyết
 những chỗ suýt kết luận sai. Viết cho người tiếp nhận, nên phần "vì sao" quan trọng hơn phần
 "đã sửa gì".
 
+---
+
+## 0. Trạng thái hiện tại — đọc mục này trước
+
+**Cập nhật 2026-08-10.** Số nền là `key-human.key` (105 mục, **có nhãn người** — xem §37), không còn
+là đáp án đồng thuận model.
+
+| Khoá luận thật (1.498 đoạn) | |
+|---|--:|
+| Precision | 79,5% |
+| Recall | 96,2% |
+| F1 | 87,1% |
+| Đúng cấp | **96,0%** |
+| Đúng cha (parent finding, HRDoc) | 96,0% |
+| Bench 10 tài liệu | 100% · 10/10 |
+| Cổng: tự nhận / bắt duyệt | 86 mục ở **95,3%** / 41 mục ở 46,3% |
+
+Cấu hình đo: `--style-trust --chunk-tokens 28000 --ctx 32768 -ngl 99 --no-reuse-prefix`,
+Qwen3.5-9B-Q4_K_M. **Pipeline tất định** — hai lượt chạy y hệt cho trùng khít từng chữ số (§33.1).
+
+### Kết luận lớn nhất của dự án
+
+**Mọi tiến bộ đo được đều đến từ việc đọc dữ kiện cấu trúc có sẵn trong tài liệu.**
+Đúng cấp đi `26,5% → 37,2% → 51,9% → 66,0% → 81,1% → 91,5% → 96,0%` qua sáu luật tất định
+(§17, §22, §24.1, §28, §31) cộng một lần sửa đáp án (§37).
+
+**Năm hướng "cho mô hình nhiều hơn" đều cho số không:**
+
+| Hướng | Kết quả |
+|---|---|
+| One-pass 129.546 token một khối (§19) | R 83,2% — kém nhất |
+| Thinking toàn bộ (§24.2) | mất 10 điểm recall; +4,5 cấp là ảo giác (§25.1) |
+| Thinking riêng lượt gán cấp (§25) | không đổi một chữ số |
+| Khung outline tăng dần (§30.2) | −1,3 precision |
+| Thị giác làm tầng lọc (§32) | +2,6 F1 nhưng gấp ba thời gian |
+
+### Việc tiếp theo, theo thứ tự giá trị
+
+1. **Người duyệt tiếp** (TODO 4) — cổ chai dưới mọi con số. Một câu "thừa này" của người dùng vừa
+   bắt được một cổng quyết định chạy ngược suốt từ đầu (§37).
+2. **Recall**: 4 mục bị đánh rơi ở TẦNG ỨNG VIÊN, không phải do mô hình (TODO 7, §36.3).
+3. **Precision 79,5%** — con số kém nhất; bốn luật đã thử và đo là hỏng, đừng thử lại (TODO 8).
+4. **Hai bộ cấu hình khác nhau** giữa CLI đã đo và mặc định Web (TODO 9, §35).
+
+### Bốn kỷ luật đã trả giá để học
+
+- Xác minh **môi trường** trước khi tin con số: log phải nói `GPU N lớp` (§27).
+- Dump dùng để suy luận phải **sinh lại bằng đúng cờ** của lượt đang bàn (§33.3, §36.1 — sai hai lần
+  liên tiếp).
+- Chỉ số tính trên **tập được giữ lại** tự đẹp lên khi tập bị lọc bớt (§25.1).
+- Cờ bật để **làm sạch phép đo** có thể che lỗi ở đường mặc định (§35.3).
+
+---
+
 ## 1. Kiến trúc mới
 
 Trước: LLM quyết định đoạn nào là heading **và** cấp của nó; các luật cấu trúc chạy sau như lưới
