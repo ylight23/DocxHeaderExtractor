@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
@@ -134,5 +135,92 @@ public class StructuralRecoveryTests
         var accepted = new Dictionary<int, HeadingRecord> { [10] = H(10, 3, "3.1. Một") };
 
         Assert.Empty(StructuralRecovery.Find(reviewed, accepted));
+    }
+
+    // ──────────────────────────── TODO mục 7: nhãn + số (PHỤ LỤC 1, PHỤ LỤC 2…) ────────────────────────────
+
+    /// <summary>
+    /// Ca thật (TODO mục 7): "PHỤ LỤC 1"/"PHỤ LỤC 2" có role=Normal nên chưa từng tới được mô hình
+    /// — đường cứu qua HasStructuralEvidence (cứu đoạn ĐÃ từng bị gắn nhãn document_title) không
+    /// chạm tới. Bản NHÃN+SỐ+HẾT cần cờ AllowBareLabelledNumbers (--bare-labels).
+    /// </summary>
+    [Fact]
+    public void Cuu_phu_luc_2_khi_phu_luc_1_da_duoc_nhan()
+    {
+        var reviewed = new List<SlimParagraph>
+        {
+            P(1294, "PHỤ LỤC 1"),
+            P(1300, "Nội dung phụ lục thứ nhất."),
+            P(1335, "PHỤ LỤC 2"),
+        };
+        var accepted = new Dictionary<int, HeadingRecord> { [1294] = H(1294, 1, "PHỤ LỤC 1") };
+        var options = new ExtractionOptions { AllowBareLabelledNumbers = true };
+
+        var found = StructuralRecovery.Find(reviewed, accepted, options);
+
+        var one = Assert.Single(found);
+        Assert.Equal(1335, one.Paragraph.Index);
+        Assert.Equal(1, one.Level);            // cùng cấp với PHỤ LỤC 1
+        Assert.Contains("PHỤ LỤC 1", one.Reason);
+    }
+
+    /// <summary>Không bật cờ thì "PHỤ LỤC 1"/"PHỤ LỤC 2" không đọc được thành đánh số — giữ hành vi cũ.</summary>
+    [Fact]
+    public void Khong_cuu_nhan_so_tran_khi_chua_bat_co()
+    {
+        var reviewed = new List<SlimParagraph> { P(1294, "PHỤ LỤC 1"), P(1335, "PHỤ LỤC 2") };
+        var accepted = new Dictionary<int, HeadingRecord> { [1294] = H(1294, 1, "PHỤ LỤC 1") };
+
+        Assert.Empty(StructuralRecovery.Find(reviewed, accepted, new ExtractionOptions()));
+        Assert.Empty(StructuralRecovery.Find(reviewed, accepted));   // options mặc định null cũng vậy
+    }
+
+    /// <summary>Dây chuyền: PHỤ LỤC 2 được cứu mở đường cho PHỤ LỤC 3, giống ca Ả Rập nhiều cấp.</summary>
+    [Fact]
+    public void Cuu_day_chuyen_phu_luc_2_roi_den_3()
+    {
+        var reviewed = new List<SlimParagraph>
+        {
+            P(10, "PHỤ LỤC 1"),
+            P(20, "PHỤ LỤC 2"),
+            P(30, "PHỤ LỤC 3"),
+        };
+        var accepted = new Dictionary<int, HeadingRecord> { [10] = H(10, 1, "PHỤ LỤC 1") };
+        var options = new ExtractionOptions { AllowBareLabelledNumbers = true };
+
+        var found = StructuralRecovery.Find(reviewed, accepted, options);
+
+        Assert.Equal([20, 30], found.Select(f => f.Paragraph.Index));
+        Assert.All(found, f => Assert.Equal(1, f.Level));
+    }
+
+    /// <summary>Khác nhãn thì không phải anh em — "CHƯƠNG 2" không cứu vào chuỗi "PHỤ LỤC".</summary>
+    [Fact]
+    public void Khong_cuu_khi_khac_nhan()
+    {
+        var reviewed = new List<SlimParagraph> { P(10, "PHỤ LỤC 1"), P(20, "CHƯƠNG 2") };
+        var accepted = new Dictionary<int, HeadingRecord> { [10] = H(10, 1, "PHỤ LỤC 1") };
+        var options = new ExtractionOptions { AllowBareLabelledNumbers = true };
+
+        Assert.Empty(StructuralRecovery.Find(reviewed, accepted, options));
+    }
+
+    /// <summary>Dạng CÓ tiêu đề sau nhãn+số ("Chương 1. Mở đầu") không cần cờ --bare-labels —
+    /// LabelledRx của NumberingAudit đọc được vô điều kiện, khác BareLabelledRx.</summary>
+    [Fact]
+    public void Cuu_nhan_so_co_tieu_de_khong_can_co_bare_labels()
+    {
+        var reviewed = new List<SlimParagraph>
+        {
+            P(10, "Chương 1. Mở đầu"),
+            P(11, "Nội dung mở đầu."),
+            P(20, "Chương 2. Nội dung"),
+        };
+        var accepted = new Dictionary<int, HeadingRecord> { [10] = H(10, 1, "Chương 1. Mở đầu") };
+
+        var found = StructuralRecovery.Find(reviewed, accepted);   // KHÔNG bật AllowBareLabelledNumbers
+
+        var one = Assert.Single(found);
+        Assert.Equal(20, one.Paragraph.Index);
     }
 }
