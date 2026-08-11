@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -18,11 +19,24 @@ public sealed record RecoveredHeading(SlimParagraph Paragraph, int Level, string
 /// phải ít nhất được giữ lại để người duyệt xem — cấu trúc do người soạn đánh số ra, không phải
 /// suy đoán của mô hình. Không hardcode tên mục nào; chỉ dùng quan hệ số học.
 /// </para>
+/// <para>
+/// TODO mục 7: cũng nhận <see cref="NumberKind.Labelled"/> (<c>PHỤ LỤC 1</c>, <c>PHỤ LỤC 2</c>) —
+/// trước đây token này chỉ nuôi <c>HasStructuralEvidence</c> để cứu đoạn ĐÃ từng là ứng viên bị mô
+/// hình gắn nhãn sai <c>DocumentTitle</c>; bốn đề mục thật (<c>PHỤ LỤC 1</c>, <c>PHỤ LỤC 2</c>...)
+/// có <c>role=Normal</c> nên chưa từng tới được mô hình, đường cứu đó không chạm tới. Nhãn + số an
+/// toàn hơn số trần một cấp: đòi một TỪ nhãn thật đứng trước (<c>LabelledRx</c>/<c>BareLabelledRx</c>
+/// của <see cref="NumberingAudit"/>) nên không lẫn vào dòng số liệu trần như <c>Khong_cuu_danh_so_mot_cap</c>
+/// đã kiểm.
+/// </para>
 /// </summary>
 public static class StructuralRecovery
 {
     /// <summary>Cứu dây chuyền: 3.2 được cứu lại mở đường cho 3.3. Chặn trên phòng vòng lặp bệnh lý.</summary>
     private const int MaxRounds = 8;
+
+    /// <summary>Nhóm anh em + giá trị thứ tự trong nhóm đó — dùng chung cho cả đường dẫn Ả Rập nhiều
+    /// cấp ("3." là nhóm của 3.1/3.2/...) lẫn nhãn+số ("label:phụ lục" là nhóm của PHỤ LỤC 1/2/...).</summary>
+    private readonly record struct Series(string GroupKey, int Value);
 
     /// <summary>
     /// Tìm các đoạn cần cứu. <paramref name="reviewed"/> là những đoạn mô hình đã được hỏi —
@@ -30,9 +44,11 @@ public static class StructuralRecovery
     /// </summary>
     public static IReadOnlyList<RecoveredHeading> Find(
         IReadOnlyList<SlimParagraph> reviewed,
-        IReadOnlyDictionary<int, HeadingRecord> accepted)
+        IReadOnlyDictionary<int, HeadingRecord> accepted,
+        ExtractionOptions? options = null)
     {
-        var paths = new Dictionary<int, int[]>();
+        options ??= new ExtractionOptions();
+        var series = new Dictionary<int, Series>();
         foreach (var p in reviewed)
         {
             // Chỉ xét đánh số nhiều cấp ("3.2"). Với một cấp ("2.") thì không có tiền tố cha để
@@ -41,9 +57,18 @@ public static class StructuralRecovery
             // Đọc qua NumberLabel như StructuralHierarchyResolver.PathOf: Word đánh số bằng danh
             // sách nhiều cấp thì "3.2" không nằm trong text, và cứu-anh-em mù hẳn với nhóm đó.
             var numbering = NumberingAudit.TextWithNumberLabel(p, p.Text);
-            if (NumberingAudit.ParseArabicPath(numbering) is { Length: >= 2 } path) paths[p.Index] = path;
+            if (NumberingAudit.ParseArabicPath(numbering) is { Length: >= 2 } path)
+            {
+                series[p.Index] = new Series(string.Join('.', path[..^1]), path[^1]);
+                continue;
+            }
+
+            // Nhãn+số ("PHỤ LỤC 1") không cần độ sâu ≥ 2: bản thân yêu cầu có từ nhãn thật đứng
+            // trước đã đủ để loại dòng số liệu trần — xem ghi chú ở đầu file.
+            if (NumberingAudit.ParseParagraph(p, p.Text, options) is { Kind: NumberKind.Labelled } token)
+                series[p.Index] = new Series($"label:{token.Label}", token.Value);
         }
-        if (paths.Count == 0) return [];
+        if (series.Count == 0) return [];
 
         var byIndex = reviewed.ToDictionary(p => p.Index);
         var current = new Dictionary<int, HeadingRecord>(accepted);
@@ -55,18 +80,17 @@ public static class StructuralRecovery
 
             foreach (var anchor in current.Values.OrderBy(h => h.Index).ToList())
             {
-                if (!paths.TryGetValue(anchor.Index, out var anchorPath)) continue;
+                if (!series.TryGetValue(anchor.Index, out var anchorSeries)) continue;
 
-                var next = FindNextSibling(anchor, anchorPath, paths, byIndex, current, recovered);
+                var next = FindNextSibling(anchor, anchorSeries, series, byIndex, current, recovered);
                 if (next is null) continue;
 
-                var label = string.Join('.', anchorPath);
-                var nextLabel = string.Join('.', paths[next.Index]);
+                var nextSeries = series[next.Index];
                 recovered[next.Index] = new RecoveredHeading(
                     next,
                     anchor.Level,
-                    $"{nextLabel} là em kế tiếp của {label} (đã nhận ở cấp H{anchor.Level}) " +
-                    $"nhưng mô hình loại — bằng chứng định dạng yếu hơn" +
+                    $"{Describe(nextSeries)} là em kế tiếp của {Describe(anchorSeries)} " +
+                    $"(đã nhận ở cấp H{anchor.Level}) nhưng mô hình loại — bằng chứng định dạng yếu hơn" +
                     (next.TableDepth > 0 ? ", đoạn nằm trong bảng" : ""));
                 addedThisRound++;
             }
@@ -92,14 +116,19 @@ public static class StructuralRecovery
         return [.. recovered.Values.OrderBy(r => r.Paragraph.Index)];
     }
 
+    private static string Describe(Series s) =>
+        s.GroupKey.StartsWith("label:", StringComparison.Ordinal)
+            ? $"{s.GroupKey["label:".Length..].ToUpperInvariant()} {s.Value}"
+            : $"{s.GroupKey}{s.Value}";
+
     /// <summary>
-    /// Em kế tiếp hợp lệ: cùng tiền tố cha, giá trị cuối đúng bằng +1, nằm SAU neo, và giữa hai
+    /// Em kế tiếp hợp lệ: cùng nhóm anh em, giá trị đúng bằng +1, nằm SAU neo, và giữa hai
     /// đoạn không có heading nào nông hơn hoặc bằng neo — nghĩa là vẫn còn trong phạm vi mục cha.
     /// </summary>
     private static SlimParagraph? FindNextSibling(
         HeadingRecord anchor,
-        int[] anchorPath,
-        Dictionary<int, int[]> paths,
+        Series anchorSeries,
+        Dictionary<int, Series> series,
         Dictionary<int, SlimParagraph> byIndex,
         Dictionary<int, HeadingRecord> current,
         Dictionary<int, RecoveredHeading> recovered)
@@ -110,22 +139,14 @@ public static class StructuralRecovery
             .DefaultIfEmpty(int.MaxValue)
             .Min();
 
-        foreach (var (index, path) in paths.OrderBy(kv => kv.Key))
+        foreach (var (index, s) in series.OrderBy(kv => kv.Key))
         {
             if (index <= anchor.Index || index >= scopeEnd) continue;
             if (current.ContainsKey(index) || recovered.ContainsKey(index)) continue;
-            if (!IsNextSibling(anchorPath, path)) continue;
+            if (s.GroupKey != anchorSeries.GroupKey || s.Value != anchorSeries.Value + 1) continue;
             if (byIndex.TryGetValue(index, out var p)) return p;
         }
 
         return null;
-    }
-
-    private static bool IsNextSibling(int[] anchor, int[] candidate)
-    {
-        if (anchor.Length != candidate.Length) return false;
-        for (var i = 0; i < anchor.Length - 1; i++)
-            if (anchor[i] != candidate[i]) return false;
-        return candidate[^1] == anchor[^1] + 1;
     }
 }

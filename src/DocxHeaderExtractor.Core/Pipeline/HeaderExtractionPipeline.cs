@@ -860,7 +860,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
         // đi qua bộ sắp cấp, thay vì mang cấp của neo mãi mãi.
         if (_options.RecoverNumberedSiblings && accepted.Count > 0)
         {
-            foreach (var r in StructuralRecovery.Find(review, accepted))
+            foreach (var r in StructuralRecovery.Find(review, accepted, _options.Extraction))
             {
                 accepted[r.Paragraph.Index] = new HeadingRecord
                 {
