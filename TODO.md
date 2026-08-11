@@ -81,6 +81,16 @@ họ với `DemoteCoverPageBlock` đã có, nhưng nhóm này nằm ở CUỐI t
 > khai cấp, và `--style-trust` không với tới chốt đó. Nhưng nới chốt cũng chưa đủ — `NumberingAudit`
 > không đọc được `Chương 1.` nên không có token để suy tầng. **Mục 2 bị chặn bởi mục 3.** Thứ tự
 > đúng: làm mục 3 trước, rồi mới nới `Declared` để tôn trọng `LevelTrusted`.
+>
+> **Thêm một tài liệu thật tái hiện đúng lớp lỗi này (2026-08-11), khi điều tra TODO mục 13.** Báo
+> cáo thực tập MBBank (`keys/bao-cao-thuc-tap.key`) dùng `Heading2` cho CẢ cấp 2 lẫn cấp 3 (numbering
+> phân biệt, style thì không). Đo `--no-llm --style-trust`: log tự in `"12/18 lệch so với độ sâu
+> đánh số (67%) ⇒ quyền chọn HẠ, quyền gán cấp HẠ"` — đúng cơ chế phát hiện. Nhưng đúng cấp **giảm**
+> so với không bật cờ (58,6% → 46,2%): tiêu đề Chương/front-matter (cấp 1, không đánh số) và mục cấp
+> 2 bị đẩy lên +1 đều — khớp nguyên văn "chỗ tắc thật" ở trên (`--no-llm` không qua `ResolveLevel`
+> nên "hạ quyền" không có nơi tiếp nhận). Không đo được qua LLM (máy này không có đúng Qwen3.5-9B),
+> nhưng đây là tài liệu THẬT thứ hai (ngoài fixture tổng hợp `10-cap-style-thoai-hoa`) xác nhận đúng
+> lớp lỗi — dùng khi bắt tay đo mục 2 bằng LLM.
 
 <details><summary>Ghi chép gốc của mục này</summary>
 
@@ -387,18 +397,20 @@ lỗi có thật, tái lập 100%.
   NGUỒN GỐC KHÁC, chưa xác định (không phải `TableOfContentsAnchor`). Đừng nhầm "đã sửa lỗi thật" với
   "đã sửa lỗi đang thấy trên `--no-llm`" — hai mệnh đề khác nhau, chỉ mệnh đề đầu đã có bằng chứng.
 
-**Còn treo thật sự — hai việc riêng, đừng gộp:**
+**12 lỗi "sai cấp: trả về 2, đáp án 3" — ĐÃ GIẢI THÍCH, không phải bug mới (2026-08-11).** Nguồn gốc:
+lượt đo `--no-llm` ban đầu **thiếu cờ `--style-trust`**. Bật cờ lên thì đúng 12 lỗi này biến mất —
+cơ chế đối chiếu style-vs-độ-sâu-đánh-số ở §17 đã xử lý đúng. Nhưng bật `--style-trust` lại lộ ra
+**14 lỗi khác** (front-matter/chương cấp 1 và mục cấp 2 bị đẩy +1 đều) — đúng lớp lỗi "hạ quyền
+chuyển cho chỗ trống" đã ghi ở mục 2 phía trên, không phải lỗi mới. Xem addendum ở mục 2 — tài liệu
+này giờ là bằng chứng thật thứ hai cho mục đó, dùng khi bắt tay đo bằng LLM ở đó.
 
-1. **Đo bản sửa trên đường ĐẦY ĐỦ (có LLM, khác `--no-llm`)** — máy này chỉ có Qwen2.5-7B và
-   Llama-3.2-3B cục bộ, không phải Qwen3.5-9B đã dùng để chốt "100%" trong handoff.md. Chạy được
-   một so sánh TRƯỚC/SAU sạch (một biến = bản sửa, giữ nguyên model+cờ) nhưng con số tuyệt đối
-   **không so được** với "100%" đã chốt — khác model. Muốn con số so được thì cần đúng Qwen3.5-9B.
-2. **Tìm nguồn gốc thật của 12 lỗi "sai cấp: trả về 2, đáp án 3"** (`i=401,419,422,426,436,698,701,
-   711,792,844,905,976` — toàn bộ đúng cấp 3 theo `NumberingDepth`/`nlab` nhưng đường `--no-llm` trả
-   2) — không phải `TableOfContentsAnchor`, chưa điều tra tiếp.
+**Còn treo thật sự:** đo bản sửa `TableOfContentsAnchor` trên đường ĐẦY ĐỦ (có LLM) — máy này chỉ có
+Qwen2.5-7B/Llama-3.2-3B cục bộ, không phải Qwen3.5-9B đã dùng để chốt "100%" trong handoff.md. Chạy
+được một so sánh TRƯỚC/SAU sạch (một biến = bản sửa, giữ nguyên model+cờ) nhưng con số tuyệt đối
+**không so được** với "100%" đã chốt — khác model. Muốn con số so được thì cần đúng Qwen3.5-9B.
 
-**Cách nghiệm thu (việc 1).** Chạy `dhx eval` với đúng cấu hình đã chốt trên máy có Qwen3.5-9B, so
-trước/sau bản sửa — một biến, không gộp việc khác.
+**Cách nghiệm thu.** Chạy `dhx eval` với đúng cấu hình đã chốt trên máy có Qwen3.5-9B, so trước/sau
+bản sửa — một biến, không gộp việc khác.
 
 ---
 
