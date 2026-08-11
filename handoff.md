@@ -19,7 +19,16 @@ là đáp án đồng thuận model.
 > Ba việc mới đã cài, đều **mặc định tắt hoặc chỉ chẩn đoán**:
 > `--split-merged` (§45.2, 95 file 3.712 → 6.357 mục), ba bảng chữ cái tiếng Việt cho `NumberingAudit`
 > (§45.1, hai đột biến bị test giết), và `mode` lộ ra thuộc tính `<doc>` (§47.2).
-> 384 test xanh, bench không đổi.
+>
+> **2026-08-11, tiếp:** thêm `dhx toc-keys` — suy đáp án ứng viên từ mục lục Word để mở rộng bench
+> (TODO mục hạ tầng, xem `keys/README.md`). Khi xác thực độc lập trên chính tài liệu nguồn của
+> `keys/bao-cao-thuc-tap.key`, phát hiện và SỬA một bug thật trong `TableOfContentsAnchor.Apply`
+> (pin sai cấp cho heading `numPr`-driven khi mục lục không có số trong text — xem TODO mục 13).
+> Điều tra tiếp lộ ra: 12 lỗi cấp ban đầu chỉ do thiếu cờ `--style-trust` trong lượt đo, không phải
+> bug; nhưng bật cờ đó lại tái hiện đúng lớp lỗi "hạ quyền style = chuyển quyền cho chỗ trống" đã ghi
+> ở TODO mục 2 — nay có thêm một tài liệu thật làm bằng chứng, xem addendum ở đó.
+>
+> 392 test xanh, bench không đổi (đối chiếu byte-identical trước/sau bản sửa `TableOfContentsAnchor`).
 
 | Khoá luận thật (1.498 đoạn) | |
 |---|--:|
@@ -57,6 +66,11 @@ Qwen3.5-9B-Q4_K_M. **Pipeline tất định** — hai lượt chạy y hệt cho
 2. **Recall**: 4 mục bị đánh rơi ở TẦNG ỨNG VIÊN, không phải do mô hình (TODO 7, §36.3).
 3. **Precision 79,5%** — con số kém nhất; bốn luật đã thử và đo là hỏng, đừng thử lại (TODO 8).
 4. **Hai bộ cấu hình khác nhau** giữa CLI đã đo và mặc định Web (TODO 9, §35).
+5. **Đo bằng LLM cần đúng Qwen3.5-9B, máy hiện chỉ có Qwen2.5-7B/Llama-3.2-3B** (TODO mục 2 và 13) —
+   chặn hai việc cùng lúc: (a) xác nhận bản sửa `TableOfContentsAnchor` không hồi quy trên đường đầy
+   đủ, (b) đo nhánh `LevelTrusted`/"hạ quyền chuyển chỗ trống" mà mục 2 đã chờ từ trước — nay có 2
+   tài liệu thật (báo cáo thực tập + fixture `10-cap-style-thoai-hoa`) sẵn sàng để đo cùng lúc, một
+   lượt LLM trả lời được cả hai câu hỏi nếu tách đúng biến.
 
 ### Bốn kỷ luật đã trả giá để học
 
