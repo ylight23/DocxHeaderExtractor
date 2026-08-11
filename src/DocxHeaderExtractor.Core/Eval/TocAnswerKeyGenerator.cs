@@ -81,7 +81,7 @@ public static class TocAnswerKeyGenerator
             // không để lại số nào trong TEXT của mục lục, nhưng NumberLabel vẫn đúng — đo được trên
             // tài liệu thật: TableOfContentsAnchor.DepthOf mặc định cả 14 mục về cấp 1 vì rơi vào
             // nhánh "không có ký hiệu số trong text -> cấp 1", trong khi NumberLabel ghi rõ "1.1.1".
-            var depth = DepthFromNumberLabel(p.NumberLabel) ?? TableOfContentsAnchor.DepthOf(p.Text);
+            var depth = TableOfContentsAnchor.DepthFromNumberLabel(p.NumberLabel) ?? TableOfContentsAnchor.DepthOf(p.Text);
             if (depth is not { } d) continue;
             var key = TableOfContentsAnchor.Normalize(p.Text);
             if (key.Length < 4) continue;
@@ -141,15 +141,6 @@ public static class TocAnswerKeyGenerator
         var status = ratio >= matchThreshold ? TocKeyStatus.Accepted : TocKeyStatus.BelowMatchThreshold;
         return new TocKeyResult(document.FileName, status, usableEntries.Count, ambiguousDepth,
             ambiguousBody, ratio, matches, unmatchedToc, ambiguousToc);
-    }
-
-    /// <summary>Đếm số đoạn ngăn cách bởi dấu chấm trong nhãn numbering đã resolve ("1.1.1." -> 3,
-    /// "IV." -> 1). Null nếu đoạn không mang numPr (headings kiểu Chương/từ khoá thường không có).</summary>
-    private static int? DepthFromNumberLabel(string? label)
-    {
-        if (string.IsNullOrWhiteSpace(label)) return null;
-        var parts = label.Trim().TrimEnd('.').Split('.', StringSplitOptions.RemoveEmptyEntries);
-        return parts.Length > 0 ? parts.Length : null;
     }
 
     public static string ToAnswerKeyText(this TocKeyResult result)

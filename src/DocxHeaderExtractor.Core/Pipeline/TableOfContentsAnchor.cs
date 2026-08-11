@@ -33,7 +33,13 @@ public static class TableOfContentsAnchor
         foreach (var p in document.Paragraphs)
         {
             if (!p.InTableOfContents) continue;
-            var depth = DepthOf(p.Text);
+            // Ưu tiên NumberLabel đã resolve từ numbering.xml ("1.1.1" -> cấp 3) trước khi đọc TEXT:
+            // heading numPr-driven (numbering do Word vẽ, không gõ tay) không để số nào trong TEXT
+            // của dòng mục lục. ĐO ĐƯỢC trên báo cáo thực tập MBBank thật (numbering-driven, đáp án
+            // người kiểm): thiếu vế này khiến DepthOf mặc định 14/23 mục về cấp 1 — Apply "nói lời
+            // cuối" nên ghi đè cấp ĐÚNG đã có từ numPr thành cấp SAI. Xác nhận bằng test cô lập
+            // TableOfContentsAnchorNumberLabelTests trước khi sửa ở đây.
+            var depth = DepthFromNumberLabel(p.NumberLabel) ?? DepthOf(p.Text);
             if (depth is not { } d) continue;
             var key = Normalize(p.Text);
             if (key.Length < 4) continue;
@@ -67,6 +73,16 @@ public static class TableOfContentsAnchor
         if (token is { Kind: NumberKind.Arabic }) return token.Value.Depth;
         if (token is not null) return 1;
         return NumberPrefixRx.IsMatch(body) ? null : 1;
+    }
+
+    /// <summary>Đếm số đoạn ngăn cách bởi dấu chấm trong nhãn numbering đã resolve ("1.1.1." -> 3,
+    /// "IV." -> 1). Null nếu đoạn không mang numPr (headings kiểu Chương/từ khoá thường không có).</summary>
+    /// <remarks>internal: dùng chung với <see cref="Eval.TocAnswerKeyGenerator"/>.</remarks>
+    internal static int? DepthFromNumberLabel(string? label)
+    {
+        if (string.IsNullOrWhiteSpace(label)) return null;
+        var parts = label.Trim().TrimEnd('.').Split('.', StringSplitOptions.RemoveEmptyEntries);
+        return parts.Length > 0 ? parts.Length : null;
     }
 
     internal static string Normalize(string text)

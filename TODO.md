@@ -360,29 +360,45 @@ lý dùng được, chỉ thiếu ngưỡng hiệu chỉnh trên tập tín hi�
 
 ---
 
-## 13. `TableOfContentsAnchor.Apply` có thể pin SAI cấp cho heading numPr-driven — ĐÃ XÁC NHẬN bằng test cô lập, CHƯA đo tác động lên số đã chốt
+## 13. `TableOfContentsAnchor.Apply` pin sai cấp cho heading numPr-driven — ĐÃ SỬA, đo `--no-llm` sạch, đo đầy đủ (có LLM) VẪN CÒN TREO
 
 **Phát hiện khi xây `dhx toc-keys`** (đối chiếu với `keys/bao-cao-thuc-tap.key` trên chính tài liệu
 nguồn thật): `TableOfContentsAnchor.DepthOf` chỉ đọc SỐ trong TEXT của dòng mục lục. Heading
 `numPr`-driven (numbering do Word vẽ, không gõ tay) không để số nào trong TEXT dòng mục lục — chỉ
-còn ở `NumberLabel` đã resolve riêng từ `numbering.xml`. Kết quả: `DepthOf` mặc định các mục này về
-cấp 1.
+còn ở `NumberLabel` đã resolve riêng từ `numbering.xml`. Kết quả cũ: `DepthOf` mặc định các mục này
+về cấp 1.
 
-**Test cô lập `TableOfContentsAnchorNumberLabelTests.cs` (đang `Skip`, không phải `Fact` thường vì
-sẽ đỏ) đã đo trực tiếp `TableOfContentsAnchor.Apply`, không đoán:** heading được gán ĐÚNG cấp 2 từ
-nguồn khác (numPr) trước đó, sau khi `Apply` chạy bị ghi đè thành cấp 1 — đúng cơ chế "mục lục phải
-nói lời cuối" mà code đã tự ghi chú. Cơ chế lỗi có thật, tái lập được 100%.
+**Test cô lập `TableOfContentsAnchorNumberLabelTests.cs` đo trực tiếp `TableOfContentsAnchor.Apply`,
+không đoán:** heading được gán ĐÚNG cấp 2 từ nguồn khác (numPr) trước đó, sau khi `Apply` chạy (bản
+cũ) bị ghi đè thành cấp 1 sai — đúng cơ chế "mục lục phải nói lời cuối" mà code đã tự ghi chú. Cơ chế
+lỗi có thật, tái lập 100%.
 
-**Chưa đo:** liệu cơ chế này có ĐANG làm sai con số cấp 100% đã chốt cho `bao-cao-thuc-tap.key`
-trong đường đo đầy đủ (`--style-trust`, có LLM) hay không — test cô lập chứng minh CƠ CHẾ hỏng, không
-chứng minh nó đã ăn vào con số cụ thể đó (có thể một tầng khác chạy sau `Apply` sửa lại, hoặc
-`Normalize(heading.Text)` trong pipeline đầy đủ không khớp y hệt raw text nên `Apply` không chạm tới
-đúng những heading này trong thực tế).
+**ĐÃ SỬA**: `Apply` nay ưu tiên `NumberLabel` trước khi rơi về đọc TEXT. Test hết `Skip`, xanh.
 
-**Cách nghiệm thu.** Chạy `dhx eval` đầy đủ (cấu hình đã chốt: `--style-trust --chunk-tokens 28000
---ctx 32768 -ngl 99`) trên báo cáo thực tập MBBank thật, so với trước/sau khi sửa
-`TableOfContentsAnchor.DepthOf` để ưu tiên `NumberLabel`. Đo riêng — đổi `DepthOf` đổi `Apply` đổi
-mọi con số cấp trong handoff.md cùng lúc, không được gộp với việc khác. Gỡ `Skip` ở test khi bắt tay.
+**Đo tác động — hai kết quả khác nhau, đọc kỹ kẻo lẫn:**
+
+- **`dhx eval bench --no-llm` (10 tài liệu tổng hợp): 0 khác biệt trước/sau, byte-identical.** Không
+  fixture nào của bench chạm đúng tổ hợp "TOC + numPr không số trong text" nên không đo được gì thêm
+  từ bộ này — chỉ xác nhận không hồi quy.
+- **`dhx eval --no-llm` trên chính báo cáo thực tập MBBank thật (đáp án `bao-cao-thuc-tap.key`): CŨNG
+  byte-identical trước/sau, và log không có dòng "Mục lục pin lại N cấp"** — tức `tocPinned = 0` cả
+  hai lượt. `Apply` KHÔNG chạm tới bất kỳ heading nào trong đường `--no-llm` của tài liệu thật này,
+  nên bản sửa **không đổi được** 12 lỗi "sai cấp: trả về 2, đáp án 3" đang thấy ở đó — chúng có
+  NGUỒN GỐC KHÁC, chưa xác định (không phải `TableOfContentsAnchor`). Đừng nhầm "đã sửa lỗi thật" với
+  "đã sửa lỗi đang thấy trên `--no-llm`" — hai mệnh đề khác nhau, chỉ mệnh đề đầu đã có bằng chứng.
+
+**Còn treo thật sự — hai việc riêng, đừng gộp:**
+
+1. **Đo bản sửa trên đường ĐẦY ĐỦ (có LLM, khác `--no-llm`)** — máy này chỉ có Qwen2.5-7B và
+   Llama-3.2-3B cục bộ, không phải Qwen3.5-9B đã dùng để chốt "100%" trong handoff.md. Chạy được
+   một so sánh TRƯỚC/SAU sạch (một biến = bản sửa, giữ nguyên model+cờ) nhưng con số tuyệt đối
+   **không so được** với "100%" đã chốt — khác model. Muốn con số so được thì cần đúng Qwen3.5-9B.
+2. **Tìm nguồn gốc thật của 12 lỗi "sai cấp: trả về 2, đáp án 3"** (`i=401,419,422,426,436,698,701,
+   711,792,844,905,976` — toàn bộ đúng cấp 3 theo `NumberingDepth`/`nlab` nhưng đường `--no-llm` trả
+   2) — không phải `TableOfContentsAnchor`, chưa điều tra tiếp.
+
+**Cách nghiệm thu (việc 1).** Chạy `dhx eval` với đúng cấu hình đã chốt trên máy có Qwen3.5-9B, so
+trước/sau bản sửa — một biến, không gộp việc khác.
 
 ---
 
