@@ -360,6 +360,32 @@ lý dùng được, chỉ thiếu ngưỡng hiệu chỉnh trên tập tín hi�
 
 ---
 
+## 13. `TableOfContentsAnchor.Apply` có thể pin SAI cấp cho heading numPr-driven — ĐÃ XÁC NHẬN bằng test cô lập, CHƯA đo tác động lên số đã chốt
+
+**Phát hiện khi xây `dhx toc-keys`** (đối chiếu với `keys/bao-cao-thuc-tap.key` trên chính tài liệu
+nguồn thật): `TableOfContentsAnchor.DepthOf` chỉ đọc SỐ trong TEXT của dòng mục lục. Heading
+`numPr`-driven (numbering do Word vẽ, không gõ tay) không để số nào trong TEXT dòng mục lục — chỉ
+còn ở `NumberLabel` đã resolve riêng từ `numbering.xml`. Kết quả: `DepthOf` mặc định các mục này về
+cấp 1.
+
+**Test cô lập `TableOfContentsAnchorNumberLabelTests.cs` (đang `Skip`, không phải `Fact` thường vì
+sẽ đỏ) đã đo trực tiếp `TableOfContentsAnchor.Apply`, không đoán:** heading được gán ĐÚNG cấp 2 từ
+nguồn khác (numPr) trước đó, sau khi `Apply` chạy bị ghi đè thành cấp 1 — đúng cơ chế "mục lục phải
+nói lời cuối" mà code đã tự ghi chú. Cơ chế lỗi có thật, tái lập được 100%.
+
+**Chưa đo:** liệu cơ chế này có ĐANG làm sai con số cấp 100% đã chốt cho `bao-cao-thuc-tap.key`
+trong đường đo đầy đủ (`--style-trust`, có LLM) hay không — test cô lập chứng minh CƠ CHẾ hỏng, không
+chứng minh nó đã ăn vào con số cụ thể đó (có thể một tầng khác chạy sau `Apply` sửa lại, hoặc
+`Normalize(heading.Text)` trong pipeline đầy đủ không khớp y hệt raw text nên `Apply` không chạm tới
+đúng những heading này trong thực tế).
+
+**Cách nghiệm thu.** Chạy `dhx eval` đầy đủ (cấu hình đã chốt: `--style-trust --chunk-tokens 28000
+--ctx 32768 -ngl 99`) trên báo cáo thực tập MBBank thật, so với trước/sau khi sửa
+`TableOfContentsAnchor.DepthOf` để ưu tiên `NumberLabel`. Đo riêng — đổi `DepthOf` đổi `Apply` đổi
+mọi con số cấp trong handoff.md cùng lúc, không được gộp với việc khác. Gỡ `Skip` ở test khi bắt tay.
+
+---
+
 ## Đã đóng, giữ lại để không mở lại
 
 - **Luật R1 `auto_assign` theo style OOXML** — đã đo đầy đủ, §10. Trên bench F1 tăng 90,9% → 92,0%
