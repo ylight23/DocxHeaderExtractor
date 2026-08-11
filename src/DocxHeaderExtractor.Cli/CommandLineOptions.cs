@@ -31,6 +31,12 @@ public sealed class CommandLineOptions
     public bool WritebackOverwrite { get; private set; }
     public bool WritebackHeadingStyles { get; private set; }
 
+    /// <summary>Lệnh `toc-keys`: tỉ lệ khớp tối thiểu giữa mục lục và thân bài để nhận file.</summary>
+    public double TocMatchThreshold { get; private set; } = Core.Eval.TocAnswerKeyGenerator.DefaultMatchThreshold;
+
+    /// <summary>Lệnh `toc-keys`: in từng mục lục không khớp/mơ hồ để chẩn đoán.</summary>
+    public bool Verbose { get; private set; }
+
     public static CommandLineOptions Parse(string[] args)
     {
         var o = new CommandLineOptions();
@@ -41,7 +47,7 @@ public sealed class CommandLineOptions
 
         int i = 0;
         if (!args[0].StartsWith('-') &&
-            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key")
+            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys")
         {
             o.Command = args[0];
             i = 1;
@@ -153,6 +159,11 @@ public sealed class CommandLineOptions
                 case "--compact": o.CompactXml = true; break;
                 case "--dump-chunks": o.DumpChunksDir = Next(a); break;
 
+                case "--toc-match-threshold":
+                    o.TocMatchThreshold = double.Parse(Next(a), System.Globalization.CultureInfo.InvariantCulture);
+                    break;
+                case "-v" or "--verbose": o.Verbose = true; break;
+
                 case "--write-docx": o.WritebackPath = Next(a); break;
                 case "--write-overwrite": o.WritebackOverwrite = true; break;
                 case "--write-heading-styles": o.WritebackHeadingStyles = true; break;
@@ -201,6 +212,8 @@ public sealed class CommandLineOptions
                                              # mỗi X.docx cần một X.key đi kèm
           dhx review  <file.docx>             # chạy dự đoán, xuất .review.json để người duyệt sửa
           dhx review-key <file.review.json>   # sinh .key + .training.jsonl từ review đã duyệt
+          dhx toc-keys <thư-mục|file.docx>    # suy đáp án ỨNG VIÊN từ mục lục Word, mở rộng bench
+                                              # KHÔNG thay đáp án người kiểm — xem keys/README.md
 
         Tuỳ chọn chính:
           -m, --model <path.gguf>   Mô hình GGUF (mặc định: biến DHX_MODEL, appsettings.json
@@ -234,6 +247,11 @@ public sealed class CommandLineOptions
                                     còn mục chờ người duyệt thì harness bỏ qua bước ghi.
               --write-overwrite     Cho phép đè file đích đã tồn tại
               --write-heading-styles Gán thêm style Heading N có sẵn trong tài liệu (đổi hình thức)
+
+        Lệnh toc-keys (mở rộng bench bằng mục lục Word):
+              -o, --out <thư-mục>   Nơi ghi .key (mặc định ./keys/toc-derived)
+              --toc-match-threshold p  Tỉ lệ khớp tối thiểu để nhận file (mặc định 0.80)
+                                    Dưới ngưỡng: in báo cáo, KHÔNG ghi .key.
 
         Mô hình / hiệu năng CPU:
               --ctx <n>             Cửa sổ ngữ cảnh (mặc định 4096)

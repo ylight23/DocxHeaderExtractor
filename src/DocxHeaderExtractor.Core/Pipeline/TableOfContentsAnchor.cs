@@ -58,7 +58,9 @@ public static class TableOfContentsAnchor
     /// Dòng không có ký hiệu nào (<c>MỞ ĐẦU</c>, <c>KẾT LUẬN</c>) ⇒ cấp 1, vì mục lục chỉ liệt kê
     /// mục cấp ngoài cùng khi chúng không đánh số.
     /// </summary>
-    private static int? DepthOf(string text)
+    /// <remarks>internal (không private): dùng chung với <see cref="Eval.TocAnswerKeyGenerator"/> —
+    /// một nguồn chuẩn hoá duy nhất, không nhân đôi logic đã kiểm chứng ở đây.</remarks>
+    internal static int? DepthOf(string text)
     {
         var body = TrailingPageRx.Replace(text.Trim(), string.Empty);
         var token = NumberingAudit.Parse(body);
@@ -67,7 +69,7 @@ public static class TableOfContentsAnchor
         return NumberPrefixRx.IsMatch(body) ? null : 1;
     }
 
-    private static string Normalize(string text)
+    internal static string Normalize(string text)
     {
         var body = TrailingPageRx.Replace(text.Trim(), string.Empty);
         body = NumberPrefixRx.Replace(body, string.Empty);
