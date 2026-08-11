@@ -114,7 +114,10 @@ public static class HeadingHeuristics
     /// Chú thích hình/bảng/biểu đồ: "Hình ảnh 2.4. …", "Bảng 1.2 …", "Figure 3: …".
     /// Bắt buộc có chữ số ngay sau từ khoá nên "Bảng phân công nhiệm vụ" không bị dính.
     /// </summary>
-    private static readonly Regex CaptionRx = new(
+    /// <remarks>internal (không private): <see cref="Eval.TocAnswerKeyGenerator"/> dùng lại để loại
+    /// mục "Danh mục hình ảnh"/"Danh mục bảng biểu" khỏi mục lục coi là đề mục — Word đánh dấu
+    /// chúng bằng đúng cơ chế TOC field/hyperlink _Toc như mục lục chương, dù chúng là chú thích.</remarks>
+    internal static readonly Regex CaptionRx = new(
         @"^\s*(hình(\s*ảnh|\s*vẽ)?|ảnh|bảng|biểu\s*đồ|sơ\s*đồ|đồ\s*thị|phụ\s*biểu|" +
         @"figure|fig|table|chart|picture|image|diagram)\s*\d+([.\-–]\d+)*\s*[.:\-–)]?\s+\S",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);

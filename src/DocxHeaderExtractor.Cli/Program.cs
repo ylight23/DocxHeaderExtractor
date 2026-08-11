@@ -53,6 +53,7 @@ try
         "eval" => await RunEvalAsync(options, cts.Token),
         "review" => await RunReviewAsync(options, cts.Token),
         "review-key" => RunReviewKey(options),
+        "toc-keys" => RunTocKeys(options),
         _ => await RunExtractAsync(options, cts.Token),
     };
 }
@@ -407,6 +408,88 @@ static int RunReviewKey(CommandLineOptions o)
         Console.Error.WriteLine($"Đã ghi key đánh giá: {keyPath}");
         Console.Error.WriteLine($"Đã ghi dữ liệu huấn luyện: {trainingPath}");
     }
+    return 0;
+}
+
+static int RunTocKeys(CommandLineOptions o)
+{
+    if (o.Inputs.Count == 0)
+    {
+        Console.Error.WriteLine("Chưa chỉ định thư mục hoặc file .docx cho toc-keys.");
+        return 2;
+    }
+
+    var files = new List<string>();
+    foreach (var input in o.Inputs)
+    {
+        if (Directory.Exists(input))
+            files.AddRange(Directory.EnumerateFiles(input, "*.docx", SearchOption.AllDirectories)
+                .Where(f => !Path.GetFileName(f).StartsWith('~')));
+        else if (File.Exists(input))
+            files.Add(Path.GetFullPath(input));
+        else
+            Console.Error.WriteLine($"Bỏ qua (không tồn tại): {input}");
+    }
+    files = files.Distinct().OrderBy(f => f).ToList();
+    if (files.Count == 0)
+    {
+        Console.Error.WriteLine("Không tìm thấy .docx nào.");
+        return 2;
+    }
+
+    var outDir = Path.GetFullPath(o.OutputPath ?? Path.Combine("keys", "toc-derived"));
+    Directory.CreateDirectory(outDir);
+
+    var results = new List<TocKeyResult>();
+    foreach (var file in files)
+    {
+        var conversion = LegacyDocConverter.EnsureDocx(file);
+        try
+        {
+            var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(conversion.Path);
+            var result = TocAnswerKeyGenerator.Generate(slim, o.TocMatchThreshold);
+            results.Add(result with { FileName = Path.GetFileName(file) });
+        }
+        finally
+        {
+            LegacyDocConverter.Cleanup(conversion);
+        }
+    }
+
+    var accepted = 0;
+    foreach (var r in results)
+    {
+        var label = r.Status switch
+        {
+            TocKeyStatus.Accepted =>
+                $"OK    {r.MatchedCount}/{r.TocEntryCount} ({r.MatchRatio:P0})",
+            TocKeyStatus.BelowMatchThreshold =>
+                $"DƯỚI  {r.MatchedCount}/{r.TocEntryCount} ({r.MatchRatio:P0})  " +
+                $"[không tìm thấy {r.TocEntryCount - r.MatchedCount - r.AmbiguousBodyMatchCount}, " +
+                $"mơ hồ {r.AmbiguousBodyMatchCount}]",
+            _ => "THIẾU mục lục",
+        };
+        if (!o.Quiet) Console.Error.WriteLine($"  {r.FileName,-52} {label}");
+        if (o.Verbose)
+        {
+            foreach (var t in r.UnmatchedTocText)
+                Console.Error.WriteLine($"    không tìm thấy: {t}");
+            foreach (var t in r.AmbiguousTocText)
+                Console.Error.WriteLine($"    mơ hồ (>1 đoạn thân bài trùng text): {t}");
+        }
+
+        if (!r.Accepted) continue;
+        var keyPath = Path.Combine(outDir, Path.GetFileNameWithoutExtension(r.FileName) + ".key");
+        File.WriteAllText(keyPath, r.ToAnswerKeyText(), new UTF8Encoding(false));
+        accepted++;
+    }
+
+    Console.Error.WriteLine();
+    Console.Error.WriteLine($"{accepted}/{results.Count} file đủ ngưỡng {o.TocMatchThreshold:P0} — đã ghi .key vào {outDir}");
+    var insufficient = results.Count(r => r.Status == TocKeyStatus.InsufficientTocEntries);
+    var below = results.Count(r => r.Status == TocKeyStatus.BelowMatchThreshold);
+    Console.Error.WriteLine($"  thiếu mục lục: {insufficient}   dưới ngưỡng: {below}");
+    Console.Error.WriteLine("Đáp án toc_derived CHƯA qua người duyệt — xem keys/README.md trước khi dùng làm nền so sánh.");
     return 0;
 }
 
