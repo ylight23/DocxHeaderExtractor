@@ -56,17 +56,11 @@ public sealed class TableOfContentsAnchorNumberLabelTests : IDisposable
         new Hyperlink(new Run(new Text(text))) { Anchor = "_Toc" + Math.Abs(text.GetHashCode()) });
 
     /// <summary>
-    /// ĐÃ ĐO — KẾT QUẢ DƯƠNG: Apply trả cấp 1 (sai) thay vì 2 (đúng). Xác nhận lỗ hổng NumberLabel
-    /// phát hiện khi xây TocAnswerKeyGenerator CŨNG ăn vào đường production, không chỉ công cụ mới.
-    /// <para>
-    /// Đánh dấu Skip thay vì để đỏ: sửa TableOfContentsAnchor.DepthOf đổi hành vi Apply, tức đổi mọi
-    /// con số cấp đã chốt trong handoff.md (đo bằng --style-trust) cùng lúc — cần một lượt đo riêng
-    /// (bench + eval trên khoá luận/báo cáo thực tập thật) trước khi sửa, không được gộp vào việc
-    /// khác. Gỡ Skip khi bắt tay lượt đo đó.
-    /// </para>
+    /// ĐÃ SỬA: TableOfContentsAnchor.Apply nay ưu tiên NumberLabel đã resolve từ numbering.xml trước
+    /// khi rơi về đọc số trong TEXT dòng mục lục — không còn ghi đè cấp đúng bằng cấp 1 sai cho
+    /// heading numPr-driven. Xem TODO.md mục 13 cho lịch sử phát hiện + đo tác động thật.
     /// </summary>
-    [Fact(Skip = "ĐÃ XÁC NHẬN lỗi thật (Apply trả 1 thay vì 2) — chưa sửa, cần đo riêng tác động lên " +
-                 "handoff.md trước. Xem TODO.md.")]
+    [Fact]
     public void Apply_voi_muc_luc_numPr_driven_khong_so_trong_text()
     {
         var path = WriteWithNumbering(
