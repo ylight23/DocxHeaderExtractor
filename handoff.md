@@ -4046,3 +4046,45 @@ Ba lần mutation sống sót trong dự án, ba nguyên nhân khác nhau:
 Nguyên nhân thứ ba nguy hiểm nhất vì test vẫn XANH và trông như đang bảo vệ thứ gì đó.
 
 **464 test xanh.**
+
+### 57.7 Sửa lần một quá hẹp — kiểm tra chéo ANH EM mới là tín hiệu đúng
+
+Người dùng báo tiếp, nguyên văn một dãy khác cùng tài liệu:
+
+```
+a) Hoạt động của tàu Trung Quốc.                      ← KHÔNG dấu ngắt, dừng đúng chỗ
+b) Hoạt động của tàu Philippin: Tàu BVBB-4409 ở ĐĐN bãi cạn Scarborough 52hl.
+c) Hoạt động của tàu Malaysia: Tàu TTP-114 ở Kỳ Vân; CSB-8305 ở Nam Luconia.
+d) Hoạt động của tàu Mỹ: Biên đội tàu Sân bay CVN-72 (…) ở ĐĐB Cỏ Rong 90hl.
+```
+
+Luật §57.3 đòi phần sau dấu ngắt **bắt đầu bằng số**, mà ở đây là `Tàu`, `Hải tuần`, `Biên đội` —
+toàn chữ. Nên nó không cứu được nhóm này.
+
+**Tín hiệu đúng nằm ở `a)`.** Cùng ký hiệu, cùng cha, không dùng dấu ngắt và dừng lại đúng chỗ —
+đó là **chính tài liệu nói cho ta biết ranh giới của b) c) d) nằm ở đâu**. Anh em cùng dãy phải
+cùng hình dạng. Không cần một từ khoá nào: luật chỉ đọc ký hiệu đánh số và sự CÓ MẶT của dấu ngắt.
+
+**Vì sao không cắt tại `:` cho mọi mục.** `3.1. Kết quả thử nghiệm: đánh giá tổng thể` là nhan đề
+trọn vẹn, cắt nó là lỗi nặng hơn hẳn lỗi đang sửa. Điều kiện anh em phân biệt được hai ca vì nó
+đòi tài liệu **tự đưa ra** một mục cùng dãy không dùng dấu ngắt, chứ không suy từ nội dung.
+
+Đo: bench `--no-llm` **không đổi** (P 92,3 · cấp 100 · 6/7). Mutation "bỏ điều kiện anh em" → 1 đỏ.
+**468 test xanh.**
+
+Mutation "bỏ `items.Count < 2`" thì SỐNG — và lần này là **đột biến không thật** (§55.5), không
+phải test yếu: nhóm một mục hoặc có dấu ngắt (⇒ không anh em nào thiếu dấu ngắt ⇒ bỏ qua), hoặc
+không có (⇒ chẳng có gì để cắt). Điều kiện đó dư thừa về logic; giữ lại để nói rõ ý định, không
+viết test giả cho nó.
+
+### 57.8 Ba lần sửa cùng một chỗ, ba tín hiệu khác nhau
+
+| ca | tín hiệu cắt được nó |
+|---|---|
+| `b. KQ Mỹ: 0/0 (0/0).` | payload thuần số (luật gốc) |
+| `a) Trong dự báo: 01 tốp (như ngày 13/01).` | payload **bắt đầu** bằng số (§57.3) |
+| `b) Hoạt động của tàu Philippin: Tàu BVBB-4409…` | **anh em không có dấu ngắt** (§57.7) |
+| `c. KQ Philippin 0/0 (0/0)` | *chưa có* — không dấu ngắt, anh em thì có |
+
+Không tín hiệu nào là "dấu hai chấm". Ba lần đều phải tìm thứ khác chứng minh ranh giới, và lần
+thứ tư vẫn treo. Đó là lý do spec gốc viết *"không cắt chỉ vì gặp dấu hai chấm"*.

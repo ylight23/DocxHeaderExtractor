@@ -92,4 +92,85 @@ public class TachHeadingBodyCungDongTests
     {
         Assert.Null(Split(text));
     }
+
+    // ──────── Kiểm tra chéo ANH EM: mục không dấu ngắt chỉ ra ranh giới cho mục có ────────
+
+    private static List<HeadingRecord> Day(params string[] texts)
+    {
+        List<SlimParagraph> ps = [];
+        List<HeadingRecord> hs = [];
+        for (var i = 0; i < texts.Length; i++)
+        {
+            ps.Add(new SlimParagraph { Index = i, Text = texts[i], FontSizePt = 13 });
+            hs.Add(new HeadingRecord
+            {
+                Index = i, Level = 3, Text = texts[i],
+                Source = HeadingSource.Heuristic, Confidence = 0.85,
+            });
+        }
+        var doc = new SlimDocument { FileName = "t.docx", SourcePath = "t.docx", Paragraphs = ps }.Build();
+        InlineHeadingSplitter.Apply(hs, doc);
+        return hs;
+    }
+
+    /// <summary>
+    /// Nguyên văn một dãy người dùng báo. Phần sau dấu hai chấm bắt đầu bằng CHỮ nên luật payload
+    /// không cứu được — nhưng <c>a)</c> cùng dãy không có dấu ngắt và dừng đúng chỗ, đó là bằng
+    /// chứng do CHÍNH TÀI LIỆU đưa ra về nơi ranh giới nằm.
+    /// </summary>
+    [Fact]
+    public void Anh_em_khong_dau_ngat_chi_ra_ranh_gioi_cho_anh_em_co_dau_ngat()
+    {
+        var d = Day(
+            "a) Hoạt động của tàu Trung Quốc.",
+            "b) Hoạt động của tàu Philippin: Tàu BVBB-4409 ở ĐĐN bãi cạn Scarborough 52hl.",
+            "c) Hoạt động của tàu Malaysia: Tàu TTP-114 ở Kỳ Vân; CSB-8305 ở Nam Luconia.",
+            "d) Hoạt động của tàu Mỹ: Biên đội tàu Sân bay CVN-72 (gồm CVN-72; tàu Khu trục DDG-111, 112) ở ĐĐB Cỏ Rong 90hl.");
+
+        Assert.Equal("a) Hoạt động của tàu Trung Quốc.", d[0].Text);   // không dấu ngắt → giữ nguyên
+        Assert.Equal("b) Hoạt động của tàu Philippin", d[1].Text);
+        Assert.Equal("c) Hoạt động của tàu Malaysia", d[2].Text);
+        Assert.Equal("d) Hoạt động của tàu Mỹ", d[3].Text);
+        Assert.StartsWith("Tàu BVBB-4409", d[1].InlineBody!);
+        Assert.StartsWith("Biên đội tàu", d[3].InlineBody!);
+    }
+
+    /// <summary>
+    /// Dấu ngắt bên trong THÂN không được cắt lần hai: <c>c)</c> có <c>;</c> giữa thân, phải nằm
+    /// trọn trong <c>InlineBody</c>.
+    /// </summary>
+    [Fact]
+    public void Dau_ngat_ben_trong_than_khong_bi_cat_tiep()
+    {
+        var d = Day(
+            "a) Hoạt động của tàu Trung Quốc.",
+            "c) Hoạt động của tàu Malaysia: Tàu TTP-114 ở Kỳ Vân; CSB-8305 ở Nam Luconia.");
+
+        Assert.Contains("; CSB-8305", d[1].InlineBody!);
+    }
+
+    /// <summary>
+    /// <b>Điều kiện anh em là thứ giữ luật hẹp.</b> Không mục nào trong dãy thiếu dấu ngắt thì
+    /// KHÔNG cắt — <c>3.1. Kết quả thử nghiệm: đánh giá tổng thể</c> là nhan đề trọn vẹn, và cắt
+    /// nó là lỗi nặng hơn hẳn lỗi đang sửa. Test này giết đột biến "cứ có dấu hai chấm là cắt".
+    /// </summary>
+    [Fact]
+    public void Ca_day_deu_co_dau_ngat_thi_khong_cat()
+    {
+        var d = Day(
+            "3.1. Kết quả thử nghiệm: đánh giá tổng thể",
+            "3.2. Phạm vi áp dụng: toàn bộ hệ thống");
+
+        Assert.Equal("3.1. Kết quả thử nghiệm: đánh giá tổng thể", d[0].Text);
+        Assert.Null(d[0].InlineBody);
+    }
+
+    /// <summary>Một mục lẻ loi không có anh em thì không suy được gì — giữ nguyên.</summary>
+    [Fact]
+    public void Muc_le_loi_khong_co_anh_em_thi_giu_nguyen()
+    {
+        var d = Day("a) Hoạt động của tàu Philippin: Tàu BVBB-4409 ở Scarborough.");
+
+        Assert.Equal("a) Hoạt động của tàu Philippin: Tàu BVBB-4409 ở Scarborough.", d[0].Text);
+    }
 }

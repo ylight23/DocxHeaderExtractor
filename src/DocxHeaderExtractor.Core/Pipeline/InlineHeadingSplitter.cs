@@ -12,11 +12,18 @@ public static class InlineHeadingSplitter
     public static int Apply(ICollection<HeadingRecord> headings, SlimDocument document)
     {
         var split = 0;
-        foreach (var heading in headings)
+        var ordered = headings.OrderBy(h => h.Index).ToList();
+        var khongDauNgat = AnhEmKhongCoDauNgat(ordered, document);
+
+        foreach (var heading in ordered)
         {
             var paragraph = document.ByIndex(heading.Index);
-            if (paragraph is null || !TryFindBoundary(paragraph, out var headingEnd, out var bodyStart, out var source))
+            if (paragraph is null) continue;
+            if (!TryFindBoundary(paragraph, out var headingEnd, out var bodyStart, out var source)
+                && !(khongDauNgat.Contains(heading)
+                     && TrySeparatorBoundary(paragraph.Text, out headingEnd, out bodyStart)))
                 continue;
+            if (source.Length == 0) source = "SiblingWithoutSeparator";
 
             heading.OriginalText = paragraph.Text;
             heading.Text = paragraph.Text[..headingEnd];
@@ -57,6 +64,76 @@ public static class InlineHeadingSplitter
             return true;
         }
         return false;
+    }
+
+    /// <summary>
+    /// Các mục có dấu ngắt mà ANH EM CÙNG DÃY lại KHÔNG có dấu ngắt nào.
+    /// <para>
+    /// Ca thật do người dùng báo, nguyên văn một dãy:
+    /// </para>
+    /// <code>
+    /// a) Hoạt động của tàu Trung Quốc.                     ← không dấu hai chấm, dừng đúng chỗ
+    /// b) Hoạt động của tàu Philippin: Tàu BVBB-4409 ở…     ← có, phần sau là CHỮ
+    /// c) Hoạt động của tàu Malaysia: Tàu TTP-114 ở Kỳ Vân…
+    /// </code>
+    /// <para>
+    /// Luật payload không cứu được nhóm này vì phần sau dấu ngắt bắt đầu bằng chữ
+    /// (<c>Tàu</c>, <c>Hải tuần</c>, <c>Biên đội</c>), không phải số. Nhưng chính <c>a)</c> —
+    /// cùng ký hiệu, cùng cha, không dấu ngắt và dừng lại đúng chỗ — <b>là bằng chứng cho biết
+    /// ranh giới của b) c) d) nằm ở đâu</b>. Anh em cùng dãy phải cùng hình dạng.
+    /// </para>
+    /// <para>
+    /// Vì sao KHÔNG cắt tại <c>:</c> cho mọi mục: <c>3.1. Kết quả thử nghiệm: đánh giá tổng thể</c>
+    /// là một nhan đề trọn vẹn. Điều kiện anh em là thứ phân biệt hai ca — nó đòi CHÍNH TÀI LIỆU
+    /// đưa ra một mục cùng dãy không dùng dấu ngắt, chứ không suy từ nội dung.
+    /// </para>
+    /// <para>Không có từ khoá nào: luật chỉ đọc ký hiệu đánh số và sự CÓ MẶT của dấu ngắt.</para>
+    /// </summary>
+    private static HashSet<HeadingRecord> AnhEmKhongCoDauNgat(
+        IReadOnlyList<HeadingRecord> ordered, SlimDocument document)
+    {
+        HashSet<HeadingRecord> ket = new(ReferenceEqualityComparer.Instance);
+        Dictionary<string, List<HeadingRecord>> nhom = new(StringComparer.Ordinal);
+
+        foreach (var h in ordered)
+        {
+            var text = document.ByIndex(h.Index)?.Text;
+            if (text is null || NumberingAudit.Parse(text) is not { } token) continue;
+            nhom.TryAdd(token.Signature, []);
+            nhom[token.Signature].Add(h);
+        }
+
+        foreach (var (_, items) in nhom)
+        {
+            if (items.Count < 2) continue;
+            var coMucKhongDauNgat = items.Any(h =>
+                document.ByIndex(h.Index)?.Text is { } t && !t.Contains(':') && !t.Contains(';'));
+            if (!coMucKhongDauNgat) continue;
+
+            foreach (var h in items)
+                if (document.ByIndex(h.Index)?.Text is { } t && (t.Contains(':') || t.Contains(';')))
+                    ket.Add(h);
+        }
+        return ket;
+    }
+
+    /// <summary>Cắt tại dấu ngắt ĐẦU TIÊN; hai phía đều phải còn chữ.</summary>
+    private static bool TrySeparatorBoundary(string text, out int headingEnd, out int bodyStart)
+    {
+        headingEnd = bodyStart = 0;
+        var at = text.IndexOfAny([':', ';']);
+        if (at <= 0) return false;
+
+        var end = at;
+        while (end > 0 && char.IsWhiteSpace(text[end - 1])) end--;
+        var start = at + 1;
+        while (start < text.Length && char.IsWhiteSpace(text[start])) start++;
+        if (end <= 0 || start >= text.Length) return false;
+        if (text[..end].Count(char.IsLetter) < 2 || !text[start..].Any(char.IsLetter)) return false;
+
+        headingEnd = end;
+        bodyStart = start;
+        return true;
     }
 
     private static bool TryRunBoundary(SlimParagraph paragraph, out int headingEnd, out int bodyStart)
