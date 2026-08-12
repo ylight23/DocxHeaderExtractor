@@ -3401,3 +3401,69 @@ Viết khuyết tật thành test có giá trị hơn viết vào TODO: TODO kh�
 - **`keys/plph1-dqp.outline`** (41 mục) — thiếu file nguồn, chưa chấm lần nào.
 - **Mọi con số trên corpus 95 file** — không có đáp án, nên không thể thành test hồi quy. Chúng là
   phép đo một lần, không phải bất biến.
+
+## §51. Bộ suy cấp tất định không chạy trên đường `--no-llm` — sửa, đúng cấp 86,1% → 100%
+
+### 51.1 Lỗi
+
+`StructuralHierarchyResolver.Apply` và `TableOfContentsAnchor.Apply` **đều tất định và không cần
+mô hình**, nhưng cả hai nằm bên trong `RunModelAsync`. Đường `--no-llm` đi qua `HeuristicOnly` nên
+**chưa bao giờ chạy chúng**. Bất đối xứng này là tai nạn vị trí mã, không phải lựa chọn thiết kế.
+
+Hệ quả: **mọi con số `--no-llm` từ trước tới nay đều thiếu bước suy cấp** — kể cả toàn bộ loạt
+95 file §45–§48, và kể cả bảng phân bố cấp ở §45.3.
+
+### 51.2 Cách tìm ra, và một test suýt đánh lừa tôi
+
+`bench/02-dinh-dang-thu-cong` có đúng cấp **28,6%**: 5/7 mục nông hơn đáp án đúng một cấp. Cấu
+trúc là `PHẦN I → 1. → 1.1.`, đáp án `0→1, 2→2, 4→3, 6→3, 8→2, 10→1, 12→2`.
+
+Tôi viết test cô lập dựng lại đúng tài liệu đó rồi gọi `StructuralHierarchyResolver.Apply` —
+**test XANH ngay lượt đầu**. Nếu dừng ở đó thì kết luận "resolver không có lỗi" và bỏ qua lỗi thật.
+Test cô lập gọi thẳng thành phần nên nó không đi qua chỗ hỏng; **chỗ hỏng là đường nối, không phải
+thành phần**. Đã giữ cả hai test lại và ghi rõ điều này trong `NhanLabelledLamChaTests`.
+
+### 51.3 Đo được — có đáp án, một biến số
+
+```
+bench (7 tài liệu có đáp án)      TẮT      BẬT
+đúng cấp                        86,1%    100%
+đúng cha                        91,7%    100%
+tài liệu đạt tuyệt đối            5/7      6/7
+precision                       92,3%   92,3%   (không đổi)
+```
+
+Trên 95 file: chạy hết 95/95, **số mục không đổi (6.357 cả hai)** — đúng bất biến mong đợi, cờ chỉ
+đổi CẤP chứ không đổi tuyển chọn. Phân bố cấp 9 sập từ **221 → 20**; 221 mục đụng trần clamp là
+dấu hiệu hỏng, 20 hợp lý hơn. Nhưng 95 file **không có đáp án**, nên đây là "hợp lý hơn", không
+phải "đúng hơn".
+
+### 51.4 Vì sao cờ này MẶC ĐỊNH BẬT, khác mọi cờ mới khác
+
+§10.4 cấm lật mặc định CHỈ vì bench. Ở đây lý do khác:
+
+- `StructuralHierarchyResolver` **không phải mã chưa kiểm chứng** — nó có bằng chứng đáp án NGƯỜI
+  KIỂM từ §31 (đúng cấp 81,1% → 91,5% trên khoá luận thật).
+- Đường có mô hình **đã chạy nó vô điều kiện** từ trước.
+- Bật cho `--no-llm` là **sửa bất đối xứng**, không phải thêm một suy đoán mới.
+
+Vẫn giữ `--no-deterministic-hierarchy` để đối chứng, và một test ghim mặc định BẬT để không ai tắt
+nhầm khi dọn dẹp.
+
+### 51.5 Tài liệu bench còn lại chưa đạt, và vì sao KHÔNG sửa
+
+`04-bia-muc-luc-chu-thich`: 3 dương tính giả ở đoạn 0, 1, 2 — dòng tiêu ngữ trang bìa
+(`BỘ KHOA HỌC VÀ CÔNG NGHỆ`, `VIỆN NGHIÊN CỨU ỨNG DỤNG`, `Hà Nội, tháng 6 năm 2026`).
+
+Không sửa được sạch: `MỤC LỤC` ở đoạn 3 **cũng đậm, cũng in hoa, cũng canh giữa, cũng không có
+`outlineLvl`** — mà nó là mục ĐÚNG trong đáp án. Không có tín hiệu cấu trúc nào tách được hai
+nhóm. Tách bằng từ khoá thì vi phạm ràng buộc "không danh sách từ tiếng Việt trong luật"; tách
+bằng cỡ chữ (14 với 13) là fit vào đúng một tài liệu bench.
+
+Đây là TODO mục 1, §12 đã kết luận cần thêm tài liệu thật chứ không phải thêm luật. Giữ nguyên.
+
+### 51.6 Điều này KHÔNG chứng minh
+
+Bench có 7 tài liệu **sinh tự động**. "Đúng cấp 100%" nghĩa là 100% trên 7 tài liệu đó, cộng với
+việc bộ suy cấp đã có bằng chứng độc lập trên một khoá luận thật. Nó **không** nghĩa là đúng 100%
+trên mọi văn bản Việt Nam — 95 file corpus vẫn không có đáp án, và §45.5 vẫn đúng nguyên văn.

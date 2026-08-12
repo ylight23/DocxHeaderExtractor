@@ -331,6 +331,22 @@ cho hai kết quả khác nhau — §36 cho thấy UI trả về `1296`/`1315` m
 
 ---
 
+## 9b. ~~Bộ suy cấp tất định không chạy trên `--no-llm`~~ — **XONG (§51)**
+
+> `StructuralHierarchyResolver` và `TableOfContentsAnchor` đều tất định nhưng nằm trong
+> `RunModelAsync`, nên đường `--no-llm` chưa bao giờ chạy chúng. Sửa: bench đúng cấp
+> **86,1% → 100%**, đúng cha **91,7% → 100%**, tuyệt đối 5/7 → 6/7, precision không đổi.
+> 95 file: số mục không đổi (6.357), cấp 9 sập 221 → 20.
+>
+> **Mặc định BẬT** — ngoại lệ có lý do: bộ suy cấp đã có bằng chứng đáp án người kiểm (§31) và
+> đường có mô hình chạy nó vô điều kiện; bật cho `--no-llm` là sửa bất đối xứng chứ không thêm
+> suy đoán. Tắt bằng `--no-deterministic-hierarchy`.
+>
+> **Hệ quả phải nhớ:** mọi con số `--no-llm` ghi TRƯỚC §51 đều thiếu bước này, kể cả bảng phân bố
+> cấp ở §45.3.
+
+---
+
 ## 10. `--split-merged` — *mở khoá 83/95 tài liệu, nhưng chưa có đáp án để bật mặc định*
 
 **Đã có (§45.2).** `ParagraphHeadingSplitter` cắt tiêu đề nằm lọt giữa paragraph. Cần vì 83/95 file

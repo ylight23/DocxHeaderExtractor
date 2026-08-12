@@ -146,6 +146,25 @@ public sealed class PipelineOptions
     /// </summary>
     public bool GlobalHierarchy { get; set; } = true;
 
+    /// <summary>
+    /// Chạy bộ suy cấp TẤT ĐỊNH (<see cref="StructuralHierarchyResolver"/> +
+    /// <see cref="TableOfContentsAnchor"/>) trên đường <c>--no-llm</c>.
+    /// <para>
+    /// Hai bộ này không cần mô hình nhưng nằm trong <c>RunModelAsync</c>, nên đường không mô hình
+    /// chưa bao giờ chạy chúng. Đo được trên <c>bench/02-dinh-dang-thu-cong</c>: đúng cấp 28,6%
+    /// với 5/7 mục nông hơn đáp án một cấp, trong khi gọi thẳng resolver cho đúng cả 7.
+    /// </para>
+    /// <para>
+    /// <b>MẶC ĐỊNH BẬT</b>, khác với các cờ mới khác của dự án. Lý do: §10.4 cấm lật mặc định CHỈ
+    /// vì bench, nhưng đây không phải mã chưa kiểm chứng. <see cref="StructuralHierarchyResolver"/>
+    /// đã có bằng chứng đáp án NGƯỜI KIỂM (§31: đúng cấp 81,1% → 91,5% trên khoá luận thật) và
+    /// đường có mô hình chạy nó VÔ ĐIỀU KIỆN. Đường <c>--no-llm</c> bỏ nó là tai nạn vị trí mã,
+    /// không phải lựa chọn thiết kế — nên bật là sửa bất đối xứng, không phải thêm suy đoán.
+    /// </para>
+    /// <para>Tắt bằng <c>--no-deterministic-hierarchy</c> để đối chứng. Xem handoff §51.</para>
+    /// </summary>
+    public bool DeterministicHierarchy { get; set; } = true;
+
     public Action<string>? Log { get; set; }
 
     /// <summary>JSONL correction đã được người dùng sửa thật sự; null thì không dùng memory.</summary>
@@ -310,6 +329,19 @@ public sealed class HeaderExtractionPipeline : IDisposable
             List<HeadingRecord> headings = _options.DisableLlm
                 ? HeuristicOnly(candidates)
                 : await RunModelAsync(slim, candidates, quarantined, ct);
+
+            // StructuralHierarchyResolver và TableOfContentsAnchor đều TẤT ĐỊNH và không cần mô
+            // hình, nhưng cả hai nằm trong RunModelAsync nên đường --no-llm chưa bao giờ chạy
+            // chúng. Bất đối xứng này đo được trên bench/02-dinh-dang-thu-cong: đúng cấp 28,6%,
+            // 5/7 mục nông hơn đáp án đúng một cấp, trong khi gọi thẳng resolver cho đúng cả 7.
+            // Mọi con số --no-llm trước đây — kể cả loạt 95 file §45–§48 — đều thiếu bước này.
+            if (_options.DisableLlm && _options.DeterministicHierarchy)
+            {
+                var fixes = StructuralHierarchyResolver.Apply(headings, slim, _options.Extraction.UseStyleTrust);
+                var pinned = TableOfContentsAnchor.Apply(headings, slim);
+                if (fixes > 0) Log($"Hậu xử lý hierarchy (không mô hình): sửa {fixes} cấp.");
+                if (pinned > 0) Log($"Mục lục của tài liệu pin lại {pinned} cấp.");
+            }
 
             // Chạy trên TOÀN BỘ đoạn chứ không phải tập ứng viên: đoạn bị gộp khi chuyển từ PDF
             // có score 0 và role Normal, nên nó không bao giờ lọt vào ứng viên để mà cứu.
