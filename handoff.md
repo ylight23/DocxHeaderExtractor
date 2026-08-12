@@ -20,33 +20,26 @@ là đáp án đồng thuận model.
 > `--split-merged` (§45.2, 95 file 3.712 → 6.357 mục), ba bảng chữ cái tiếng Việt cho `NumberingAudit`
 > (§45.1, hai đột biến bị test giết), và `mode` lộ ra thuộc tính `<doc>` (§47.2).
 >
-> **2026-08-11, tiếp:** thêm `dhx toc-keys` — suy đáp án ứng viên từ mục lục Word để mở rộng bench
-> (TODO mục hạ tầng, xem `keys/README.md`). Khi xác thực độc lập trên chính tài liệu nguồn của
-> `keys/bao-cao-thuc-tap.key`, phát hiện và SỬA một bug thật trong `TableOfContentsAnchor.Apply`
-> (pin sai cấp cho heading `numPr`-driven khi mục lục không có số trong text — xem TODO mục 13).
-> Điều tra tiếp lộ ra: 12 lỗi cấp ban đầu chỉ do thiếu cờ `--style-trust` trong lượt đo, không phải
-> bug; nhưng bật cờ đó lại tái hiện đúng lớp lỗi "hạ quyền style = chuyển quyền cho chỗ trống" đã ghi
-> ở TODO mục 2 — nay có thêm một tài liệu thật làm bằng chứng, xem addendum ở đó.
+> **2026-08-11, tiếp — bốn việc, đọc phần chi tiết ở §52–§54 trước khi trích số:**
 >
-> `StructuralRecovery` mở rộng sang `NumberKind.Labelled` — cứu được `PHỤ LỤC 1`/`PHỤ LỤC 2` (nửa
-> đầu TODO mục 7); nửa sau (hai mục kết thúc bằng `:` bị trừ điểm kép vì vừa là bullet) **vẫn treo,
-> chưa có hướng cụ thể**.
->
-> **§50 — kiểm lại chính mình.** Số test tôi từng báo cáo (`384`) SAI — `dotnet test` gia tăng không
-> chạy 13 test, build sạch mới đúng là `397` lúc đó. Bù 17 test cho ba mảng mã (§45–§48) từng sinh
-> mọi bảng số liệu trong handoff mà không một test nào giữ lại chúng.
->
-> **§51 — lỗi bất đối xứng LLM/không-LLM, ĐÃ SỬA.** `StructuralHierarchyResolver` và
-> `TableOfContentsAnchor` đều tất định nhưng nằm trong `RunModelAsync`, nên đường `--no-llm` **chưa
-> từng chạy chúng**. Sửa, mặc định bật: bench đúng cấp 86,1% → **100%**, đúng cha 91,7% → **100%**.
-> **Hệ quả phải nhớ:** mọi con số `--no-llm` ghi TRƯỚC §51 — kể cả phép đo "byte-identical trước/sau"
-> dùng để xác nhận bản sửa `TableOfContentsAnchor` ở TODO mục 13 — đứng trên nền `Apply` **chưa từng
-> được gọi**; kết luận "`Apply` không chạm heading nào" cũ **mất hiệu lực tham chiếu**.
->
-> **Đo lại ngay sau §51, một biến sạch (giữ §51 cố định, chỉ bật/tắt bản sửa `NumberLabel`):** trên
-> báo cáo thực tập MBBank thật, `--no-llm`, đúng cấp **44,8% (16 sai) → 96,6% (1 sai)**. Log giờ in
-> thật `"Mục lục pin lại 11 cấp"` và `"Hậu xử lý hierarchy: sửa 15 cấp"` — cả hai bộ suy cấp tất định
-> đều chạy. TODO mục 13 coi như đã đo xong phần `--no-llm`; chỉ còn treo phần có LLM.
+> - **§52** — `dhx toc-keys`: mục lục Word làm đáp án miễn phí mở rộng bench, PHẢI khớp với toàn bộ
+>   thân bài chứ không phải với đầu ra của chính pipeline. Tự phát hiện và sửa luôn một bug khi chạy
+>   thử: "Danh mục hình ảnh"/"Danh mục bảng biểu" lẫn vào mục lục chương (13/32 mục sai ban đầu).
+>   0/95 file corpus `todo10_8` đạt ngưỡng — đã xác minh là đặc điểm corpus (PDF→DOCX + template lặp
+>   tiêu đề), không phải lỗi công cụ.
+> - **§53** — `TableOfContentsAnchor.Apply` pin SAI cấp cho heading `numPr`-driven (đọc số trong TEXT
+>   mục lục, bỏ qua `NumberLabel`). Đã sửa. **Đo lần 1 mất hiệu lực tham chiếu** (byte-identical —
+>   hoá ra vì lý do ở §51, không phải vì bản sửa vô dụng); **đo lại sau §51, một biến sạch: đúng cấp
+>   44,8% → 96,6%** trên báo cáo thực tập MBBank thật. Tác dụng phụ: giải thích được 12 lỗi cấp tưởng
+>   là bug mới (chỉ thiếu cờ `--style-trust`) và tìm thêm bằng chứng thật thứ hai cho TODO mục 2.
+> - **§54** — `StructuralRecovery` nhận thêm `NumberKind.Labelled`, cứu được `PHỤ LỤC 1`/`PHỤ LỤC 2`
+>   (nửa đầu TODO mục 7). Nửa sau (2 mục kết thúc bằng `:` bị trừ điểm kép) **vẫn treo, chưa có
+>   hướng cụ thể**.
+> - **§50** — kiểm lại chính mình: số test tôi từng báo cáo (`384`) SAI, build sạch lúc đó là `397`
+>   (`dotnet test` gia tăng không chạy 13 test). Bù 17 test cho ba mảng mã (§45–§48) sinh mọi bảng số
+>   liệu trong handoff mà chưa từng có test.
+> - **§51** — `StructuralHierarchyResolver`/`TableOfContentsAnchor` tất định nhưng chưa từng chạy
+>   trên `--no-llm` (nằm trong `RunModelAsync`). Đã sửa, mặc định bật: bench đúng cấp 86,1%→100%.
 >
 > **417 test xanh (build sạch).**
 
@@ -3489,3 +3482,163 @@ bằng cỡ chữ (14 với 13) là fit vào đúng một tài liệu bench.
 Bench có 7 tài liệu **sinh tự động**. "Đúng cấp 100%" nghĩa là 100% trên 7 tài liệu đó, cộng với
 việc bộ suy cấp đã có bằng chứng độc lập trên một khoá luận thật. Nó **không** nghĩa là đúng 100%
 trên mọi văn bản Việt Nam — 95 file corpus vẫn không có đáp án, và §45.5 vẫn đúng nguyên văn.
+
+---
+
+## §52. `dhx toc-keys` — mục lục Word là đáp án miễn phí, nhưng phải khớp với thân bài chứ không phải với chính pipeline
+
+### 52.1 Vì sao cần
+
+Bench có 7 tài liệu, `keys/` có 3 đáp án người kiểm. Mọi con số trong handoff đứng trên nền đó.
+Mục lục do Word tự sinh (`w:hyperlink` neo `_Toc`, hoặc style `TOC1..TOC9`) là **tuyên bố của chính
+tác giả** về heading + cấp — một nguồn đáp án gần như miễn phí, nếu khớp được đúng cách.
+
+**Bẫy phải tránh:** khớp mục lục với chính đầu ra của pipeline (headings pipeline đã chọn) không đo
+được gì độc lập — đúng nguyên tắc "không suy về ĐẦU VÀO từ ĐẦU RA của pipeline đang nghi ngờ" đã ghi
+ở đầu TODO.md (§46.5). `TocAnswerKeyGenerator` (`Core/Eval/`) vì vậy khớp mục lục với **toàn bộ**
+`SlimDocument.Paragraphs`, không lọc qua `Role`/`IsCandidate`.
+
+### 52.2 Thiết kế
+
+- File đạt ≥80% khớp mới ghi `.key`, dùng `@stableId` (không dùng index số — tránh lệch khi đổi tuỳ
+  chọn trích xuất, cùng lý do `review-key` đã chọn `stableId`).
+- Dùng chung `Normalize`/`DepthOf` với `TableOfContentsAnchor` đã có — một nguồn chuẩn hoá, không
+  nhân đôi logic đã kiểm chứng.
+- Ghi vào `keys/toc-derived/`, tách khỏi đáp án người kiểm; luôn đánh dấu `toc_derived`, không được
+  lẫn với `keys/*.key`.
+
+### 52.3 Một bug tự phát hiện khi chạy thử: "Danh mục hình ảnh" lẫn vào mục lục chương
+
+Chạy trên chính tài liệu nguồn của `keys/bao-cao-thuc-tap.key`: chỉ 15/32 "mục lục" khớp (47%).
+Soi bằng cờ `-v` mới thêm: **13/15 mục không tìm thấy đều là `Hình 1.1:`/`Bảng 1.2:`** — chú thích
+hình/bảng, không phải đề mục. Word đánh dấu "Danh mục hình ảnh"/"Danh mục bảng biểu" bằng ĐÚNG cơ
+chế TOC field/hyperlink `_Toc` như mục lục chương thật, nên `InTableOfContents` không phân biệt được
+hai loại — 13 mục sai này pha loãng sai mẫu số, không phải lỗi khớp text.
+
+Sửa: loại trước bằng `HeadingHeuristics.CaptionRx` đã có sẵn (đổi `private` → `internal`, không viết
+lại luật). Sau khi lọc: 15/17 khớp (88%) — vượt ngưỡng 80%, `Accepted`.
+
+### 52.4 Vẫn còn 0/95 file corpus `todo10_8` đạt ngưỡng — không phải lỗi công cụ
+
+Chạy `dhx toc-keys` trên `todo10_8/heading_corpus_95_word` (95 file, không commit tài liệu gốc):
+0/95 đạt 80%. Lý do đã xác minh, không phải bug: **86/95 là bản PDF→DOCX**, không giữ mục lục Word
+thật; 9 file `.docx` gốc còn lại là mẫu hợp đồng World Bank có tiêu đề lặp lại nhiều nơi ("Request
+for Proposals", "Phạm vi áp dụng"…) nên phần lớn bị loại vì **mơ hồ** (nhiều đoạn thân bài cùng
+chuẩn hoá về một chuỗi) — đúng thiết kế: bỏ khi không rõ đoạn nào đúng, không đoán đại. Corpus này
+không phù hợp để mở rộng bench bằng đường này; cần tài liệu văn xuôi có mục lục Word thật.
+
+---
+
+## §53. `TableOfContentsAnchor.Apply` pin sai cấp cho heading `numPr`-driven — sửa, đúng cấp +51,8 điểm (một biến, sau §51)
+
+### 53.1 Phát hiện
+
+Xác thực `dhx toc-keys` ở §52 xong, đối chiếu `keys/bao-cao-thuc-tap.key` phát hiện thêm một lớp
+lỗi khác hẳn: `TableOfContentsAnchor.DepthOf` chỉ đọc SỐ nằm trong **TEXT** của dòng mục lục
+(`"1.1. Giới thiệu…"` → depth 2). Nhưng heading `numPr`-driven (numbering do Word **vẽ**, không gõ
+tay) không để số nào trong TEXT — dòng mục lục hiển thị `"Giới thiệu chung về Ngân hàng… 2"` (số 2
+cuối là SỐ TRANG), số cấp thật (`"1.1"`) chỉ còn ở `SlimParagraph.NumberLabel`, một trường resolve
+riêng từ `numbering.xml`. `DepthOf` không đọc trường đó → mặc định các mục này về cấp 1.
+
+### 53.2 Test cô lập trước khi sửa
+
+Dựng tài liệu tổng hợp tối thiểu tái hiện đúng điều kiện (mục lục mang `numPr` nhưng TEXT không có
+số), gán heading đã ĐÚNG cấp 2 từ nguồn khác (mô phỏng `numPr`), rồi gọi thẳng
+`TableOfContentsAnchor.Apply` — không đoán. Kết quả: `Apply` ghi đè cấp 2 đúng thành cấp 1 sai, đúng
+cơ chế "mục lục phải nói lời cuối" mà chính code đã ghi chú (đứng trên mọi nguồn cấp khác trong
+`HeaderExtractionPipeline`). Cơ chế lỗi có thật, tái lập 100% — `TableOfContentsAnchorNumberLabelTests`.
+
+### 53.3 Sửa
+
+`Apply` nay ưu tiên `NumberLabel` ("1.1.1" → đếm số đoạn cách nhau bởi dấu chấm → cấp 3), chỉ rơi về
+đọc TEXT khi đoạn không mang `numPr`. Hàm dùng chung (`DepthFromNumberLabel`) đặt trong
+`TableOfContentsAnchor`, cả nó lẫn `TocAnswerKeyGenerator` gọi cùng một chỗ.
+
+### 53.4 Đo tác động, lần 1 — MẤT HIỆU LỰC THAM CHIẾU
+
+Lượt đo đầu tiên (`dhx eval --no-llm` trên bench và trên báo cáo thực tập thật): **byte-identical
+trước/sau bản sửa**, log không in dòng "Mục lục pin lại N cấp" ở cả hai lượt. Kết luận lúc đó:
+`Apply` không chạm heading nào trên đường `--no-llm`, nên bản sửa "chưa đo được tác động thật".
+
+Kết luận ấy **đúng với dữ kiện lúc đó** — nhưng dữ kiện sai. §51 (viết sau, cùng phiên) phát hiện
+`TableOfContentsAnchor.Apply` **chưa từng được gọi trên đường `--no-llm`** trước khi sửa (nằm trong
+`RunModelAsync`). "Byte-identical" chỉ phản ánh việc CẢ HAI lượt đều không gọi `Apply` — không nói
+được gì về bản sửa `NumberLabel`. Bài học: một phép đo "không đổi gì" không tự động là bằng chứng an
+toàn; phải biết chắc đường đo có thật sự đi qua đoạn code vừa sửa hay không (đúng tinh thần §33.3 —
+dump dùng để suy luận phải sinh lại đúng cờ, mở rộng thêm: **đường đo phải được xác nhận có chạm tới
+code đang đo**, không chỉ tin ở việc input/config giống nhau).
+
+### 53.5 Đo lại sau §51 — một biến sạch
+
+Giữ §51 cố định (đã có sẵn trong HEAD), chỉ cô lập RIÊNG đóng góp của bản sửa `NumberLabel`: tạm đổi
+một dòng (`DepthFromNumberLabel(p.NumberLabel) ?? DepthOf(p.Text)` → `DepthOf(p.Text)`), build, đo,
+rồi hoàn nguyên — không để lại trong lịch sử git.
+
+```
+báo cáo thực tập MBBank thật, --no-llm     đúng cấp    sai cấp
+§51 + DepthOf cũ (không NumberLabel)        44,8%         16
+§51 + NumberLabel (bản sửa)                 96,6%          1
+```
+
+**+51,8 điểm đúng cấp**, một biến, giữ mọi thứ khác cố định. Log giờ in thật `"Mục lục của tài liệu
+pin lại 11 cấp"` và `"Hậu xử lý hierarchy (không mô hình): sửa 15 cấp"` — xác nhận cả
+`TableOfContentsAnchor` lẫn `StructuralHierarchyResolver` đều chạy, không còn nghi ngờ như 53.4.
+
+1 lỗi "sai cấp" còn lại (`i=701`, "Chức năng nhiệm vụ của từng vị trí") khớp đúng mục mà `dhx
+toc-keys` (§52) từng báo "không tìm thấy" khi xác thực — nhiều khả năng cùng loại lệch nhẹ
+TOC-vs-thân-bài như ca "CHƯƠNG 2" ở 53.6, chưa điều tra sâu thêm.
+
+### 53.6 Tác dụng phụ: 12 lỗi "sai cấp" ban đầu tưởng là bug mới, hoá ra là thiếu cờ
+
+Trước khi hiểu ra §53.4, đã điều tra 12 lỗi "trả về 2, đáp án 3" xuất hiện ở lượt đo đầu — nghi là
+bug mới. Hoá ra lượt đo đó **thiếu cờ `--style-trust`**; bật lên thì đúng 12 lỗi biến mất (cơ chế
+đối chiếu style-vs-độ-sâu-đánh-số ở §17 đã xử lý đúng). Nhưng bật `--style-trust` lại lộ ra **14 lỗi
+khác** (front-matter/chương cấp 1 và mục cấp 2 bị đẩy +1 đều) — log tự in `"12/18 lệch so với độ sâu
+đánh số (67%) ⇒ quyền chọn HẠ, quyền gán cấp HẠ"`, đúng nguyên văn lớp lỗi "hạ quyền style là chuyển
+quyền cho một chỗ trống" đã ghi ở TODO mục 2/§13. Không phải bug mới — là bằng chứng thật thứ hai
+(ngoài fixture tổng hợp `10-cap-style-thoai-hoa`) cho một vấn đề đã biết, còn chờ đo bằng LLM.
+
+Cũng phát hiện luôn: TOC ghi `"CHƯƠNG 2. GIỚI THIỆU CÁC DỊCH VỤ…"` trong khi thân bài ghi `"…CÁC SẢN
+PHẨM DỊCH VỤ…"` — **đúng nguyên văn ca "TOC lỗi thời" đã ghi ở §12** của spec cũ, công cụ tự tìm lại
+được một cách độc lập trên chính tài liệu đã sinh ra phát hiện gốc.
+
+### 53.7 Còn treo
+
+Đo trên đường ĐẦY ĐỦ (có LLM, và/hoặc `--style-trust` sau §51) cần đúng Qwen3.5-9B — máy này chỉ có
+Qwen2.5-7B/Llama-3.2-3B. Gộp chung với TODO mục 2 và nửa sau mục 7 (§54) — một lượt LLM trả lời được
+cả ba câu hỏi nếu tách đúng biến.
+
+---
+
+## §54. `StructuralRecovery` nhận token `Labelled` — cứu được `PHỤ LỤC 1`/`PHỤ LỤC 2`
+
+### 54.1 Vì sao
+
+TODO mục 7: 4 đề mục thật bị đánh rơi ở tầng ứng viên trên khoá luận thật — `1294`, `1335` (`PHỤ LỤC
+1`, `PHỤ LỤC 2`) có `role=Normal`, chưa từng tới được mô hình. Cờ `--bare-labels` (TODO mục 3) đã đọc
+được chúng thành `NumberKind.Labelled`, nhưng token đó trước đây chỉ nuôi `HasStructuralEvidence` —
+chỉ dùng để cứu đoạn ĐÃ TỪNG là ứng viên bị mô hình gắn nhãn sai `DocumentTitle`. `PHỤ LỤC 1`/`PHỤ
+LỤC 2` chưa từng là ứng viên nên đường cứu đó không chạm tới — token đọc được nhưng không có tác dụng.
+
+### 54.2 Sửa
+
+Mở rộng `StructuralRecovery.Find` — trước đây chỉ nhận đường dẫn số Ả Rập nhiều cấp (`3.1` → `3.2`)
+— sang cả `NumberKind.Labelled`. Khái quát hoá `IsNextSibling` thành một cặp `(nhóm anh em, giá trị
+thứ tự)` dùng chung cho cả hai loại, thay vì viết lại logic cứu-anh-em riêng cho Labelled.
+
+Không cần ràng buộc "độ sâu ≥ 2" như đường Ả Rập (ràng buộc đó tồn tại để tránh cứu nhầm dòng số
+liệu hành chính mở đầu bằng số trần, xem `Khong_cuu_danh_so_mot_cap`): nhãn+số đòi một TỪ nhãn thật
+đứng trước con số, nên đã tự loại trừ rủi ro đó theo đúng cấu trúc của chính `LabelledRx`/`BareLabelledRx`.
+
+### 54.3 Đo được
+
+5 test mới khoá lại: cứu `PHỤ LỤC 2` khi `PHỤ LỤC 1` đã nhận; dây chuyền `PHỤ LỤC 2 → 3`; khác nhãn
+thì không cứu; dạng có tiêu đề (`Chương 1. Mở đầu`) không cần cờ `--bare-labels`; không bật cờ thì
+giữ nguyên hành vi cũ (không cứu). `dhx eval bench --no-llm`: byte-identical trước/sau — không hồi
+quy, nhưng bench không có fixture nhãn+số trần nên không đo thêm được gì từ đó.
+
+### 54.4 Còn treo
+
+**Chỉ nửa đầu của TODO mục 7 được giải quyết.** Hai mục còn lại (`1239`, `1256` — kết thúc bằng `:`
+và là item bullet nên bị trừ điểm hai lần) **chưa đụng tới, chưa có hướng cụ thể**. Và "Cách nghiệm
+thu" gốc của mục 7 đòi đo recall trên `key-human.key` — cần LLM, gộp vào §53.7.
