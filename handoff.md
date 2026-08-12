@@ -4088,3 +4088,67 @@ viết test giả cho nó.
 
 Không tín hiệu nào là "dấu hai chấm". Ba lần đều phải tìm thứ khác chứng minh ranh giới, và lần
 thứ tư vẫn treo. Đó là lý do spec gốc viết *"không cắt chỉ vì gặp dấu hai chấm"*.
+
+## §58. Mục V và mục 5 biến mất — trần độ dài loại đoạn TRƯỚC khi nhìn ký hiệu
+
+### 58.1 Triệu chứng người dùng báo
+
+Outline nhảy `IV → VI` và `4 → 6`. Hậu kiểm báo đúng *"nhảy từ 4 sang 6 — thiếu mục 5"*: hệ thống
+BIẾT thiếu mà không cứu được.
+
+### 58.2 Nguyên nhân
+
+`HeadingHeuristics` loại thẳng mọi đoạn dài quá `MaxCandidateTextLength` = 200 **trước khi xét ký
+hiệu đánh số**. Trong văn bản hành chính Việt Nam phần lớn mục viết kiểu `N. Tiêu đề: nội dung…` —
+heading và body chung một paragraph — nên trần độ dài loại đúng nhóm cần xử lý nhất.
+`V. KHÔNG GIAN MẠNG: Thông tin liên quan…` dài 236 ký tự; `5. Tàu cá ngư dân ta…` dài 166.
+
+Ký hiệu đánh số là bằng chứng do NGƯỜI SOẠN gõ ra. Một ngưỡng độ dài do ta chọn không được đè lên nó.
+
+### 58.3 Sửa — và hai lần đoán sai trước khi đo
+
+Lần 1: miễn trần cho đoạn có ký hiệu, kèm phạt −0,15. **Tự huỷ chính bản sửa**: `1.2. …` tụt từ
+0,55 xuống 0,40, dưới ngưỡng 0,45.
+
+Lần 2: giảm phạt còn −0,05 và bỏ phạt "kết câu". Nhóm số qua, **nhóm La Mã rớt**.
+
+Chỉ khi in ĐIỂM THẬT ra mới thấy nguyên nhân:
+
+```
+0,35  V. KHÔNG GIAN MẠNG: <dài>      0,50  V. KHÔNG GIAN MẠNG
+0,50  1.2. Phạm vi áp dụng: <dài>    0,65  1.2. Phạm vi áp dụng
+```
+
+Bản dài mất đúng **+0,10 thưởng "ngắn ≤ 80 ký tự"**. Nhưng với heading-dính-body thì *phần nhan đề*
+mới là thứ ngắn — `V. KHÔNG GIAN MẠNG` chỉ 18 ký tự. **Chấm theo 236 ký tự của cả đoạn là chấm nhầm
+đối tượng.**
+
+Sửa: độ dài dùng để chấm điểm là độ dài PHẦN NHAN ĐỀ (tới dấu ngắt đầu tiên). Kết quả hai bản
+**cùng điểm** — và đó là đúng: nhan đề y hệt nhau, khác biệt nằm ở chỗ có thân đi kèm hay không,
+việc của `InlineHeadingSplitter` chứ không phải của bộ chấm điểm.
+
+Bỏ luôn hình phạt độ dài: nó không phải tín hiệu, chỉ là hệ quả của việc dính body.
+
+### 58.4 Đo được
+
+```
+V. KHÔNG GIAN MẠNG: <dài>   0,35 → 0,50   (ngưỡng 0,45)
+1.2. Phạm vi áp dụng: <dài> 0,50 → 0,65
+văn xuôi dài                0,00 → 0,00   (không đổi)
+bench --no-llm              P 92,3 · cấp 100 · 6/7 — không đổi
+474 test xanh
+```
+
+Mutation: loại cứng theo độ dài → 4 đỏ · chấm theo độ dài cả đoạn → 2 đỏ.
+
+### 58.5 Hai điều chưa xong, nói rõ
+
+**Điểm `a)` chữ thường** vẫn bị loại: `LetterPrefixRx` chỉ khớp `\p{Lu}` — chủ ý có sẵn, vì nới sang
+chữ thường làm mọi đoạn văn xuôi mở đầu bằng một chữ cái đơn thành ứng viên. Đã ghim thành test
+khuyết tật; sửa cần đáp án thể loại hành chính.
+
+**`MaxCandidateTextLength = 200` gần như không còn tải trọng.** Mutation "bỏ hẳn trần" SỐNG SÓT kể
+cả với đoạn dài đậm + canh giữa + cỡ chữ lớn — các hình phạt khác (kết câu, ô bảng, gạch đầu dòng)
+đã chặn hết trước nó. Đây là một phần câu trả lời cho yêu cầu bỏ hardcode: hằng số vẫn nằm đó
+nhưng không quyết định gì. Chưa xoá vì "không quyết định gì trên các ca dựng được" khác với
+"không quyết định gì".

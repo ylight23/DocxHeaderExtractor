@@ -78,6 +78,27 @@ public static class HeadingHeuristics
         @"^\s*(\d{1,2}(?:\.\d{1,2}){0,4})(?!\d)\s*(?:[\.\)\-–:]\s*|\s+)\S",
         RegexOptions.Compiled);
 
+    /// <summary>
+    /// Đoạn có mở đầu bằng một ký hiệu đánh số bất kỳ hay không — dùng để MIỄN trần độ dài, không
+    /// dùng để chấm điểm (điểm vẫn do từng luật riêng cộng vào như cũ).
+    /// </summary>
+    private static bool CoKyHieuDanhSo(string text) =>
+        DecimalPrefixRx.IsMatch(text)
+        || RomanPrefixRx.IsMatch(text)
+        || LetterPrefixRx.IsMatch(text)
+        || (!CaptionRx.IsMatch(text) && LabelledNumberPrefixRx.IsMatch(text));
+
+    /// <summary>
+    /// Độ dài phần NHAN ĐỀ: tới dấu ngắt đầu tiên nếu đoạn là heading-dính-body, ngược lại là cả
+    /// đoạn. Không đoán ranh giới ở đây — chỉ cần một ước lượng đủ tốt để chấm điểm.
+    /// </summary>
+    private static int DoDaiNhanDe(string text)
+    {
+        if (!CoKyHieuDanhSo(text)) return text.Length;
+        var at = text.IndexOfAny([':', ';']);
+        return at > 0 ? at : text.Length;
+    }
+
     private static readonly Regex RomanPrefixRx = new(
         @"^\s*([IVXLCDM]{1,7})\s*[\.\)\-–:]\s+\S",
         RegexOptions.Compiled);
@@ -234,7 +255,20 @@ public static class HeadingHeuristics
         }
 
         // 2) Định dạng trực tiếp + mẫu đánh số.
-        if (p.Text.Length > options.MaxCandidateTextLength)
+        //
+        // ĐỘ DÀI KHÔNG ĐƯỢC LOẠI MỘT ĐOẠN ĐÃ MANG KÝ HIỆU ĐÁNH SỐ.
+        //
+        // Bản cũ loại thẳng mọi đoạn dài quá MaxCandidateTextLength (200) TRƯỚC khi nhìn ký hiệu.
+        // Trong văn bản hành chính Việt Nam phần lớn mục cấp 2 viết theo kiểu
+        // "N. Tiêu đề: nội dung…" — heading và body nằm chung một paragraph — nên trần độ dài loại
+        // đúng nhóm cần xử lý nhất. Ca thật người dùng báo: `V. KHÔNG GIAN MẠNG: Thông tin liên
+        // quan…` và `5. Tàu cá ngư dân ta…` (166 ký tự) biến mất, còn hậu kiểm thì báo đúng
+        // "nhảy từ IV sang VI" và "nhảy từ 4 sang 6" — hệ thống biết thiếu mà không cứu được.
+        //
+        // Ký hiệu đánh số là bằng chứng do NGƯỜI SOẠN gõ ra, mạnh hơn hẳn một ngưỡng độ dài do ta
+        // chọn. Nên khi có ký hiệu: giữ lại, chỉ trừ điểm; InlineHeadingSplitter cắt phần thân sau.
+        var coKyHieu = CoKyHieuDanhSo(p.Text);
+        if (p.Text.Length > options.MaxCandidateTextLength && !coKyHieu)
         {
             p.Role = ParagraphRole.Normal;
             return;
@@ -242,6 +276,8 @@ public static class HeadingHeuristics
 
         double score = 0;
         int? prefixLevel = null;
+
+
 
         // Style built-in trong tài liệu bị StyleTrustAudit chấm là áp bừa: KHÔNG mất bằng chứng,
         // chỉ mất quyền thoát sớm. Điểm đủ cao để một mình nó vẫn vượt ngưỡng ứng viên, nhưng giờ
@@ -326,8 +362,22 @@ public static class HeadingHeuristics
         }
 
         if (string.Equals(p.Alignment, "center", StringComparison.OrdinalIgnoreCase)) score += 0.20;
-        if (p.Text.Length <= 80) score += 0.10;
-        if (SentenceEndRx.IsMatch(p.Text) && !p.Text.EndsWith(':')) score -= 0.25;
+        // Độ dài dùng để chấm điểm là độ dài PHẦN NHAN ĐỀ, không phải cả đoạn. Với
+        // heading-dính-body ("V. KHÔNG GIAN MẠNG: <một đoạn dài>") thì nhan đề chỉ 18 ký tự —
+        // chấm theo 236 ký tự của cả đoạn là chấm nhầm đối tượng.
+        //
+        // ĐO ĐƯỢC vì sao phải sửa: bản cũ cho "V. KHÔNG GIAN MẠNG" ngắn 0,50 nhưng bản dính body
+        // chỉ 0,35 — dưới ngưỡng 0,45 nên biến mất, đúng mục V mà người dùng báo thiếu. Nay hai
+        // bản cùng điểm, và đó là ĐÚNG: nhan đề y hệt nhau, khác biệt nằm ở chỗ có thân đi kèm
+        // hay không — việc của InlineHeadingSplitter, không phải việc của bộ chấm điểm.
+        if (DoDaiNhanDe(p.Text) <= 80) score += 0.10;
+        // Câu hoàn chỉnh ở cuối đoạn là dấu hiệu THÂN BÀI — trừ khi đoạn có ký hiệu đánh số VÀ
+        // một dấu ngắt, tức nó là heading-dính-body. Lúc đó câu ấy thuộc phần thân, không thuộc
+        // nhan đề, nên phạt là tính hai lần cho cùng một sự việc: đoạn đã bị phạt vì dài rồi.
+        // Đo được: "1.2. Phạm vi áp dụng: <một câu dài>." nhận +0,55 rồi bị trừ 0,05 (dài) và
+        // 0,25 (kết câu) còn 0,25 — dưới ngưỡng 0,45, nên bản sửa trần độ dài tự vô hiệu.
+        var headingDinhBody = coKyHieu && (p.Text.Contains(':') || p.Text.Contains(';'));
+        if (SentenceEndRx.IsMatch(p.Text) && !p.Text.EndsWith(':') && !headingDinhBody) score -= 0.25;
         if (p.Text.EndsWith(':') && p.Text.Length > 60) score -= 0.25;
         if (looksLikeListItem) score -= 0.35;
         // Ô bảng thường là nhiễu; mục nhiều cấp đã được cộng evidence ở nhánh decimal.
