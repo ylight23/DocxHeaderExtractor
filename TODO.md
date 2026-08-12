@@ -33,6 +33,11 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
   trạng thái cũ khi bước sửa ném lỗi ở giữa — đã suýt báo cáo 57,9% cũ như thể là kết quả sau khi cắt đoạn.
 - **Phép đo sạch và đường người dùng đi là hai thứ khác nhau** (§35.3). Cờ bật để làm sạch phép đo
   có thể che một lỗi chỉ xuất hiện ở đường mặc định; ít nhất một lượt chạy phải đi đúng mặc định.
+- **"Không đổi gì" không tự động là bằng chứng an toàn — phải biết đường đo có THẬT SỰ chạm tới code
+  vừa sửa hay không** (§53.4). Đo `TableOfContentsAnchor` trên `--no-llm`: byte-identical trước/sau
+  bản sửa, kết luận "chưa đo được tác động". Kết luận sai — nguyên nhân là `Apply` **chưa từng được
+  gọi** trên đường đó (chỗ tắc ở §51, phát hiện SAU). Trước khi tin một phép đo "không đổi gì", xác
+  nhận log/dấu vết cho thấy đoạn code đang sửa THỰC SỰ chạy, không chỉ tin input/config giống nhau.
 
 ---
 
@@ -268,6 +273,8 @@ mà dạng này chiếm từ vài mục trở lên, hoặc mục 4 cho đủ tà
 
 ## 7. Bốn đề mục bị đánh rơi ở TẦNG ỨNG VIÊN — *recall, và đã biết chỗ* — **NỬA ĐẦU ĐÃ CÀI (2026-08-11), CHƯA ĐO BẰNG LLM**
 
+*(Chi tiết đầy đủ về nửa đã cài: `handoff.md` §54.)*
+
 Trên khoá luận, 4 mục đáp án mà pipeline không trả về: `1239`, `1256` (`Tài liệu trong nước:` /
 `nước ngoài:`) và `1294`, `1335` (`PHỤ LỤC 1`, `PHỤ LỤC 2`). Sinh dump bằng ĐÚNG cờ của lượt đo cho
 thấy **cả bốn đều `role="Normal"`** — không mục nào tới được mô hình (§36.3).
@@ -413,6 +420,8 @@ giá trị SAI hiện tại; sửa xong thì test đỏ và buộc phải cập 
 ---
 
 ## 13. `TableOfContentsAnchor.Apply` pin sai cấp cho heading numPr-driven — ĐÃ SỬA, ĐÃ ĐO LẠI SAU §51: đúng cấp 44,8% → 96,6%
+
+*(Chi tiết đầy đủ, kể cả công cụ `dhx toc-keys` phát hiện ra nó: `handoff.md` §52–§53.)*
 
 **Phát hiện khi xây `dhx toc-keys`** (đối chiếu với `keys/bao-cao-thuc-tap.key` trên chính tài liệu
 nguồn thật): `TableOfContentsAnchor.DepthOf` chỉ đọc SỐ trong TEXT của dòng mục lục. Heading
