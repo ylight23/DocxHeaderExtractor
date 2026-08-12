@@ -3643,9 +3643,9 @@ quy, nhưng bench không có fixture nhãn+số trần nên không đo thêm đ�
 và là item bullet nên bị trừ điểm hai lần) **chưa đụng tới, chưa có hướng cụ thể**. Và "Cách nghiệm
 thu" gốc của mục 7 đòi đo recall trên `key-human.key` — cần LLM, gộp vào §53.7.
 
-## §52. Rà việc còn lại: hai việc đo ra là KHÔNG đáng làm, và một crash tôi tự tạo ra
+## §55. Rà việc còn lại: hai việc đo ra là KHÔNG đáng làm, và một crash tôi tự tạo ra
 
-### 52.1 Hai việc "làm được ngay" — đo trước khi cài, và cả hai đều dừng
+### 55.1 Hai việc "làm được ngay" — đo trước khi cài, và cả hai đều dừng
 
 `TODO` mục 6 (heading trải hai paragraph) ghi điều kiện mở lại là "đo được tần suất thật".
 §45.2 phát hiện Nghị định 30/2020 **bắt buộc** dạng này nên tưởng đã đủ căn cứ. Đo:
@@ -3670,7 +3670,7 @@ cái vốn có 601 mục. **Không đáng.** Giữ nguyên, cũng đã có con s
 *Ghi nhận cách làm:* đo tần suất TRƯỚC khi cài đã chặn hai lần viết mã vô ích. Cả hai lần trực
 giác đều nói "đáng làm".
 
-### 52.2 Nhãn + số KHÔNG có dấu ngắt — lỗi thật, tìm ra nhờ đo lại
+### 55.2 Nhãn + số KHÔNG có dấu ngắt — lỗi thật, tìm ra nhờ đo lại
 
 §51 ghi rằng mọi bảng `--no-llm` trước đó đã lỗi thời. Đo lại thì lộ ra:
 **cả 2.645 mục sinh từ đoạn gộp đều nằm cấp 1**, cấp 2..9 giống hệt hai lượt.
@@ -3689,7 +3689,7 @@ Sửa: cho phép **dấu cách** làm phân cách, với chốt chặn phần c�
 Không có chốt đó thì `Điều 3 của Bộ luật này` và `khoản 2 Điều này` bị nhận thành đề mục. Chốt là
 tín hiệu cấu trúc, không phải danh sách từ.
 
-### 52.3 Crash tiềm ẩn do chính §51 tạo ra
+### 55.3 Crash tiềm ẩn do chính §51 tạo ra
 
 Lát cắt của `--split-merged` **dùng chung một `Index`** (chủ đích, để đáp án trong `keys/` không
 hỏng vì dịch chỉ số). `StructuralHierarchyResolver.Apply` mở đầu bằng
@@ -3707,7 +3707,7 @@ và `StyleNestingDepths`. Hai bảng sau dùng indexer nên **không ném mà GH
 `Index` khác chữ ký (`Chương I` và `Điều 1` cùng đoạn) nhận chung một tầng, sai không dấu hiệu.
 Khoá theo tham chiếu cũng đúng nghĩa hơn: hai lát có text khác nhau thì phải có đường dẫn khác nhau.
 
-### 52.4 Đo được
+### 55.4 Đo được
 
 ```
 bench (có đáp án)   P 92,3 · R 100 · F1 96 · cấp 100% · cha 100% · 6/7   (không đổi — guard giữ)
@@ -3719,7 +3719,7 @@ bench (có đáp án)   P 92,3 · R 100 · F1 96 · cấp 100% · cha 100% · 6/
 
 Mutation: khoá lại theo `Index` → 1 đỏ · bỏ nhánh không-dấu-ngắt → 3 đỏ. Cả hai bị giết.
 
-### 52.5 Một mutation test đầu tiên SỐNG SÓT, và đó là điều đáng ghi
+### 55.5 Một mutation test đầu tiên SỐNG SÓT, và đó là điều đáng ghi
 
 Lượt mutation đầu tôi viết đột biến `h => h` cho `paths` — vẫn là khoá tham chiếu, nên **không phải
 đột biến**. Nó "sống sót" vì tôi đột biến sai, không vì test yếu. Còn đột biến thứ hai thì sống sót
@@ -3728,3 +3728,62 @@ tham chiếu chéo là thứ giết đột biến "bỏ lookahead `\p{Lu}`".
 
 Bài học: mutation sống sót có hai nguyên nhân — test yếu, hoặc đột biến không thật. Phải phân biệt
 trước khi kết luận, nếu không thì hoặc bỏ qua lỗ hổng thật, hoặc đi viết test cho một thứ không hỏng.
+
+### 55.6 Va chạm số hiệu mục: hai §52
+
+Phiên khác đã đẩy §52–§54 (`dhx toc-keys`, sửa `TableOfContentsAnchor`, `StructuralRecovery` nhận
+`Labelled`) trước khi tôi commit. Tôi thêm một §52 nữa, và **cả hai đều có tiểu mục 52.1–52.4**,
+nên mọi tham chiếu thành nhập nhằng. Đã đánh số lại phần của tôi thành **§55** và sửa các chỗ trỏ
+tới trong `TODO.md` và chú thích mã.
+
+Kỷ luật: trước khi đánh số mục mới trong handoff, đọc `grep -oE "^## §[0-9]+" handoff.md | sort |
+uniq -c` — nhánh có thể đã tiến lên trong lúc mình làm.
+
+### 55.7 Nới `LabelledRx` suýt phá đúng thứ chú thích gốc đã cảnh báo
+
+Chú thích ở đầu `NumberingAudit` viết sẵn từ trước: *"đòi dấu ngắt tường minh và đòi phần còn lại
+bắt đầu bằng CHỮ — nếu không, `Bảng 1.2 Đối chiếu…` sẽ tách thành nhãn `Bảng` + số 1 và hậu kiểm
+đi báo thiếu những mục không tồn tại."*
+
+Nới nhánh không-dấu-ngắt đã phá đúng bảo đảm đó. Đo được sau khi nới:
+
+```
+Bảng 3 Thống kê số liệu       → Labelled   ✗
+Hình 2 Sơ đồ tổng thể         → Labelled   ✗
+Table 5 Summary Of Results    → Labelled   ✗
+Figure 1 System Architecture  → Labelled   ✗
+```
+
+**Nguy hiểm hơn vẻ ngoài:** §54 vừa cho `StructuralRecovery` cứu MỌI đoạn có token `Labelled`, mà
+`StructuralRecovery.Find` nằm trong `RunModelAsync` — tức `bench --no-llm`, phép đo tôi dùng suốt
+loạt này, **không chạy tới đó**. Bench vẫn xanh 6/7 trong khi một lớp dương tính giả mới đã mở ra
+trên đường người dùng thật sự đi.
+
+Sửa bằng chốt CẤU TRÚC, không phải danh sách từ: nhánh không-dấu-ngắt đòi phần còn lại **không có
+chữ thường nào**. Nghị định 30/2020 quy định tiêu đề phần và chương trình bày bằng *chữ in hoa,
+đậm*, nên đây là căn cứ chứ không phải mẹo. Nó chặn cả hai nhóm cùng lúc:
+
+| | |
+|---|---|
+| `Chương II QUY ĐỊNH CHUNG` · `Chapter II EMPLOYMENT AND RECRUITMENT` | nhận ✓ |
+| `Bảng 3 Thống kê số liệu` · `Table 5 Summary Of Results` | loại ✓ |
+| `Điều 3 của Bộ luật này` · `khoản 2 Điều này` | loại ✓ |
+
+Giá phải trả: `Chương II Quy định chung` (không in hoa) bị bỏ qua. Đó là hướng sai ĐÚNG với hợp
+đồng của file — hậu kiểm sai theo hướng HẸP.
+
+Đo lại sau khi thêm chốt: 95 file **6.357 mục, cấp>1 = 2.045 — y hệt**, tức chốt không tốn gì trên
+corpus trong khi đóng lại một lớp dương tính giả không đo được bằng bench. Bench giữ cấp 100% ·
+cha 100% · 6/7. Mutation "bỏ chốt không-chữ-thường" → 5 đỏ. **431 test xanh.**
+
+### 55.8 Bài học lớn nhất của mục này
+
+Ba lỗi liên tiếp đều cùng một dạng: **thay đổi ở A làm hỏng B, mà phép đo thường dùng không chạy
+qua B.**
+
+- §55.3: lật mặc định `DeterministicHierarchy` (§51) ghép nó với `--split-merged` → crash trùng khoá.
+- §55.7: nới `LabelledRx` ghép nó với `StructuralRecovery` (§54) → chú thích thành đề mục.
+- Cả hai đều **xanh trên `bench --no-llm`**, vì bench không đi qua đường có mô hình.
+
+Nên trước khi đổi một hàm dùng chung, phải liệt kê MỌI nơi gọi nó và hỏi *"phép đo của tôi có chạy
+qua chỗ đó không"*. Nếu không, phải viết test cho chỗ đó — bench xanh không nói gì về nó.

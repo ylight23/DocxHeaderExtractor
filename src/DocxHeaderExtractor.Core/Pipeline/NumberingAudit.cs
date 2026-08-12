@@ -150,13 +150,25 @@ public static class NumberingAudit
     /// lồng nhau. Không tài liệu nào có 26 chương và 221 điều mà chỉ một cấp.
     /// </para>
     /// <para>
-    /// <b>Chốt chặn tham chiếu chéo</b> là phần còn lại phải bắt đầu bằng chữ HOA. Thiếu nó thì
-    /// <c>Điều 3 của Bộ luật này</c> và <c>khoản 2 Điều này</c> — vốn nằm giữa câu — bị nhận thành
-    /// đề mục. Đây là tín hiệu cấu trúc (nhan đề mở đầu bằng chữ hoa), không phải danh sách từ.
+    /// <b>Chốt chặn của nhánh không-dấu-ngắt: phần còn lại phải KHÔNG có chữ thường nào.</b>
+    /// Nghị định 30/2020 quy định tiêu đề phần và chương trình bày bằng <i>chữ in hoa, đậm</i>, nên
+    /// đây là tín hiệu cấu trúc có căn cứ, không phải danh sách từ khoá.
+    /// </para>
+    /// <para>
+    /// Chốt này chặn hai nhóm cùng lúc, cả hai đều đã có test:
+    /// <list type="bullet">
+    /// <item>Tham chiếu chéo giữa câu — <c>Điều 3 của Bộ luật này</c>, <c>khoản 2 Điều này</c>.</item>
+    /// <item>Chú thích hình/bảng — <c>Bảng 3 Thống kê số liệu</c>, <c>Table 5 Summary Of Results</c>.
+    /// Nhóm này nguy hiểm hơn: <see cref="StructuralRecovery"/> cứu MỌI đoạn có token
+    /// <see cref="NumberKind.Labelled"/>, mà <c>bench --no-llm</c> không chạy tới đó nên phép đo
+    /// thường dùng KHÔNG bắt được. Đúng cái bẫy mà chú thích ở đầu file đã cảnh báo.</item>
+    /// </list>
+    /// Đổi lại: <c>Chương II Quy định chung</c> (không in hoa) sẽ bị bỏ qua. Đó là hướng sai ĐÚNG
+    /// với hợp đồng của file này — hậu kiểm sai theo hướng HẸP.
     /// </para>
     /// </summary>
     private static readonly Regex LabelledRx = new(
-        @"^\s*(\p{Lu}[\p{L}]{1,11})\s+(\d{1,3}|[IVXLCDM]{1,7})(?:\s*[\.\):\-–]\s*|\s+(?=\p{Lu}))(\p{L}.*)$",
+        @"^\s*(\p{Lu}[\p{L}]{1,11})\s+(\d{1,3}|[IVXLCDM]{1,7})(?:\s*[\.\):\-–]\s*|\s+(?=[^\p{Ll}]*$))(\p{L}.*)$",
         RegexOptions.Compiled);
 
     /// <summary>

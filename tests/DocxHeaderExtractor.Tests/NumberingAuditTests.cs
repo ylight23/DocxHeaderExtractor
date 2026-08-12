@@ -316,4 +316,25 @@ public class NumberingAuditTests
         Assert.Equal(label, t.Value.Label);
         Assert.Equal(value, t.Value.Value);
     }
+
+    /// <summary>
+    /// <b>Rủi ro do nới nhánh không-dấu-ngắt.</b> Chú thích hình/bảng có đúng hình dạng
+    /// "nhãn + số + chữ hoa": <c>Bảng 3 Thống kê</c>, <c>Hình 2 Sơ đồ</c>. Trước khi nới, dấu ngắt
+    /// bắt buộc đã loại chúng; sau khi nới thì không còn gì loại.
+    /// <para>
+    /// Quan trọng vì <see cref="StructuralRecovery"/> (§54) cứu mọi đoạn có token
+    /// <see cref="NumberKind.Labelled"/> — chú thích lọt vào đó là dương tính giả trên đường có
+    /// mô hình, nơi <c>bench --no-llm</c> KHÔNG đo tới.
+    /// </para>
+    /// </summary>
+    [Theory]
+    [InlineData("Bảng 3 Thống kê số liệu khảo sát")]
+    [InlineData("Hình 2 Sơ đồ tổng thể hệ thống")]
+    [InlineData("Biểu 4 Kết quả đối chiếu")]
+    [InlineData("Table 5 Summary Of Results")]
+    [InlineData("Figure 1 System Architecture")]
+    public void Chu_thich_hinh_bang_khong_thanh_nhan_cau_truc(string text)
+    {
+        Assert.NotEqual(NumberKind.Labelled, NumberingAudit.Parse(text)?.Kind);
+    }
 }

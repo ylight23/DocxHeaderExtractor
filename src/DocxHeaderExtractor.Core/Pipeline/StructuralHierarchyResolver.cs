@@ -17,9 +17,9 @@ public static class StructuralHierarchyResolver
         bool respectStyleTrust = false)
     {
         var ordered = headings.OrderBy(h => h.Index).ToList();
-        // Khoá theo THAM CHIẾU HeadingRecord, không theo Index. Từ §52 hai tính năng gặp nhau:
+        // Khoá theo THAM CHIẾU HeadingRecord, không theo Index. Từ §51 hai tính năng gặp nhau:
         // --split-merged sinh nhiều mục dùng chung một Index (chủ đích, để đáp án trong keys/ không
-        // hỏng vì dịch chỉ số) còn DeterministicHierarchy nay mặc định BẬT. Khoá theo Index thì
+        // hỏng vì dịch chỉ số) còn DeterministicHierarchy nay mặc định BẬT (§51). Khoá theo Index thì
         // ToDictionary ném ArgumentException "same key" — crash tiềm ẩn, có test riêng ghim lại.
         // Khoá theo tham chiếu cũng ĐÚNG NGHĨA hơn: hai lát cắt có text khác nhau nên phải có
         // đường dẫn đánh số khác nhau, gộp chúng vào một khoá là mất thông tin.
@@ -115,7 +115,7 @@ public static class StructuralHierarchyResolver
     private static Dictionary<HeadingRecord, int> SignatureTiers(
         IReadOnlyList<HeadingRecord> ordered, SlimDocument document, bool respectStyleTrust)
     {
-        // Khoá theo THAM CHIẾU, không theo Index — xem chú thích ở Apply. Dictionary<int,…> không
+        // Khoá theo THAM CHIẾU, không theo Index — xem chú thích ở Apply và handoff §55.3. Dictionary<int,…> không
         // ném khi trùng khoá, nó GHI ĐÈ: hai lát cắt cùng Index nhưng khác chữ ký ("Chương I" và
         // "Điều 1" trong cùng một đoạn gộp) sẽ nhận chung một tầng, sai mà không có dấu hiệu nào.
         var result = new Dictionary<HeadingRecord, int>(ReferenceEqualityComparer.Instance);
