@@ -56,7 +56,7 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
 > (`bench/04`, precision 92,3% → **100%**). Đây không phải luật cấu trúc còn thiếu — không tín hiệu
 > nào tách `MỤC LỤC` khỏi `BỘ KHOA HỌC VÀ CÔNG NGHỆ` — mà là việc của tầng ngữ nghĩa.
 
-## 1. Luật nhận được dòng bìa / khối chữ ký — ~~*chặn hai thứ khác*~~ **PHẦN LỚN ĐÃ XONG (§12)**
+## 1. ~~Luật nhận được dòng bìa / khối chữ ký~~ — **ĐÓNG (§56.2): việc của tầng ngữ nghĩa, không phải luật cấu trúc**
 
 > **Trạng thái.** Đã chữa trên đường `--style-trust`: `09-style-ap-sai` precision **57,1% → 100%**
 > (hết cả ba dương tính giả), bench 9 tài liệu F1 **92,5% → 95,6%**, tuyệt đối 5/9 → 6/9. Trên khoá
@@ -344,7 +344,16 @@ Còn lại và chưa thử: hạ cấp SAU khi mô hình quyết, bằng luật 
 Hoặc `--no-standalone-lines` (§33): P 83,5 → 92,8 nhưng R 96,4 → 93,6, làm rơi `Tiểu kết chương 2/3`.
 Đổi 2,8 điểm recall lấy 9,3 điểm precision là **lựa chọn về sản phẩm**, thuộc về người dùng.
 
-## 9. Đưa cấu hình đã đo thành mặc định — *đang có hai bộ số khác nhau*
+## 9. Đưa cấu hình đã đo thành mặc định — **NỬA ĐẦU XONG (§56.4)**
+
+> **Context đã xong.** Web không còn đoán ctx từ tên file, và không còn tự điền ô ctx nên cơ chế
+> đọc `{arch}.context_length` từ GGUF thật sự chạy. Bỏ trống → 32.768; gõ số → số của bạn thắng,
+> và chữ ký cấu hình ghi đúng con số đã dùng (§56.5).
+>
+> **Còn lại:** `chunkTokens` (Web 5.000 với cấu hình đo 28.000) và ô "Bỏ luật từ ngữ" mặc định bật.
+> Cả hai nằm trong chữ ký calibration nên đổi chúng cần đo lại, không phải sửa một dòng.
+
+
 
 Mọi con số tốt trong handoff đo với `--style-trust --chunk-tokens 28000 --ctx 32768 -ngl 99`. Giao
 diện Web mặc định `ctx 8192`, `5000 token/khối`, và người dùng còn tick "Bỏ luật từ ngữ". Hai đường

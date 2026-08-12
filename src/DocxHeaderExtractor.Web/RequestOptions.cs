@@ -12,6 +12,12 @@ public static class RequestOptions
         var o = new PipelineOptions();
 
         o.Extraction.UseLexicalRules = !Flag(form, "structuralOnly");
+
+        // Cắt tiêu đề nằm LỌT GIỮA paragraph — cần cho tài liệu chuyển từ PDF, nơi cả trang bị gộp
+        // vào một <w:p>. Đo trên corpus 95 file: 83 file thuộc dạng này, và 4.590/6.858 mục (67%)
+        // có ranh giới heading nằm giữa đoạn (§45.2). Mặc định TẮT vì nó phá giả định "mỗi đoạn
+        // nhiều nhất một mục" mà mọi đáp án trong keys/ đang dựa vào.
+        o.Extraction.SplitMergedParagraphs = Flag(form, "splitMerged");
         if (Number(form, "threshold") is { } th) o.Extraction.CandidateThreshold = th;
 
         o.DisableLlm = Flag(form, "noLlm");
@@ -89,11 +95,18 @@ public static class RequestOptions
         }
 
         o.Llama.ModelPath = model;
+        // Người dùng gõ ctx thì tôn trọng tuyệt đối; bỏ trống thì KHÔNG đoán nữa — để
+        // LlamaOptions.AutoContextSize đọc {arch}.context_length từ chính GGUF lúc nạp.
+        //
+        // Bản cũ gọi SuggestedContextForModel(model), tức suy context từ TÊN FILE qua một allowlist
+        // ("qwen2.5" → 8192). Model ngoài danh sách mắc kẹt ở 4096 dù khai báo cao hơn nhiều: đo
+        // trên chính model đang dùng, qwen35.context_length = 262144 — nhỏ hơn 64 lần (§56.4).
+        // Đổi tên file cũng đổi context, mà nội dung model thì không đổi.
         if (Number(form, "ctx") is { } ctx and >= 1024)
+        {
             o.Llama.ContextSize = (uint)ctx;
-        else
-            o.Llama.ContextSize = ModelCatalog.List().FirstOrDefault(m => m.Path == model)?.SuggestedCtx
-                ?? DocxHeaderExtractor.Core.Llm.LlamaOptions.SuggestedContextForModel(model);
+            o.Llama.AutoContextSize = false;
+        }
 
         if (Number(form, "chunkCandidates") is { } cc and >= 2 and <= 64)
             o.Chunking.MaxCandidatesPerChunk = (int)cc;

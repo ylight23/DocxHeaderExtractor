@@ -8,53 +8,47 @@ những chỗ suýt kết luận sai. Viết cho người tiếp nhận, nên ph
 
 ## 0. Trạng thái hiện tại — đọc mục này trước
 
-**Cập nhật 2026-08-11.** Số nền là `key-human.key` (105 mục, **có nhãn người** — xem §37), không còn
-là đáp án đồng thuận model.
+**Cập nhật 2026-08-11.**
 
-> **Ba tài liệu có đáp án người kiểm đạt 100%, và đó vẫn là toàn bộ nền tảng thực nghiệm.**
-> §45–§49 chạy trên corpus 95 file `todo10_8` cho nhiều con số, nhưng corpus đó **không có đáp án**.
-> Mọi bảng ở §45.3, §47.2, §48.1 chỉ nói *luật nào kích hoạt*, không nói *gán đúng hay sai*.
-> Đọc §45.4, §46.3 và §48.4 trước khi trích bất kỳ con số nào trong đó.
->
-> Ba việc mới đã cài, đều **mặc định tắt hoặc chỉ chẩn đoán**:
-> `--split-merged` (§45.2, 95 file 3.712 → 6.357 mục), ba bảng chữ cái tiếng Việt cho `NumberingAudit`
-> (§45.1, hai đột biến bị test giết), và `mode` lộ ra thuộc tính `<doc>` (§47.2).
->
-> **2026-08-11, tiếp — bốn việc, đọc phần chi tiết ở §52–§54 trước khi trích số:**
->
-> - **§52** — `dhx toc-keys`: mục lục Word làm đáp án miễn phí mở rộng bench, PHẢI khớp với toàn bộ
->   thân bài chứ không phải với đầu ra của chính pipeline. Tự phát hiện và sửa luôn một bug khi chạy
->   thử: "Danh mục hình ảnh"/"Danh mục bảng biểu" lẫn vào mục lục chương (13/32 mục sai ban đầu).
->   0/95 file corpus `todo10_8` đạt ngưỡng — đã xác minh là đặc điểm corpus (PDF→DOCX + template lặp
->   tiêu đề), không phải lỗi công cụ.
-> - **§53** — `TableOfContentsAnchor.Apply` pin SAI cấp cho heading `numPr`-driven (đọc số trong TEXT
->   mục lục, bỏ qua `NumberLabel`). Đã sửa. **Đo lần 1 mất hiệu lực tham chiếu** (byte-identical —
->   hoá ra vì lý do ở §51, không phải vì bản sửa vô dụng); **đo lại sau §51, một biến sạch: đúng cấp
->   44,8% → 96,6%** trên báo cáo thực tập MBBank thật. Tác dụng phụ: giải thích được 12 lỗi cấp tưởng
->   là bug mới (chỉ thiếu cờ `--style-trust`) và tìm thêm bằng chứng thật thứ hai cho TODO mục 2.
-> - **§54** — `StructuralRecovery` nhận thêm `NumberKind.Labelled`, cứu được `PHỤ LỤC 1`/`PHỤ LỤC 2`
->   (nửa đầu TODO mục 7). Nửa sau (2 mục kết thúc bằng `:` bị trừ điểm kép) **vẫn treo, chưa có
->   hướng cụ thể**.
-> - **§50** — kiểm lại chính mình: số test tôi từng báo cáo (`384`) SAI, build sạch lúc đó là `397`
->   (`dotnet test` gia tăng không chạy 13 test). Bù 17 test cho ba mảng mã (§45–§48) sinh mọi bảng số
->   liệu trong handoff mà chưa từng có test.
-> - **§51** — `StructuralHierarchyResolver`/`TableOfContentsAnchor` tất định nhưng chưa từng chạy
->   trên `--no-llm` (nằm trong `RunModelAsync`). Đã sửa, mặc định bật: bench đúng cấp 86,1%→100%.
->
-> **417 test xanh (build sạch).**
+### Số đo hiện tại — chỉ những gì có ĐÁP ÁN
 
-| Khoá luận thật (1.498 đoạn) | |
-|---|--:|
-| Precision | 79,5% |
-| Recall | 96,2% |
-| F1 | 87,1% |
-| Đúng cấp | **96,0%** |
-| Đúng cha (parent finding, HRDoc) | 96,0% |
-| Bench 10 tài liệu | 100% · 10/10 |
-| Cổng: tự nhận / bắt duyệt | 86 mục ở **95,3%** / 41 mục ở 46,3% |
+| bộ đo | P | R | F1 | đúng cấp | đúng cha | tuyệt đối |
+|---|--:|--:|--:|--:|--:|--:|
+| **bench + mô hình** (7 tài liệu) | **100%** | **100%** | **100%** | **100%** | **100%** | **7/7** |
+| bench `--no-llm` (7 tài liệu) | 92,3% | 100% | 96% | 100% | 100% | 6/7 |
+| khoá luận thật (1.498 đoạn, `key-human.key` 105 mục) | 79,5% | 96,2% | 87,1% | **96,0%** | 96,0% | — |
+| khoá luận `--style-outline` (đáp án người, 68 mục) | 100% | 100% | 100% | 100% | 100% | — |
+| báo cáo TT `--numbering-outline` (đáp án người, 29 mục) | 100% | 100% | 100% | 100% | 100% | — |
 
-Cấu hình đo: `--style-trust --chunk-tokens 28000 --ctx 32768 -ngl 99 --no-reuse-prefix`,
-Qwen3.5-9B-Q4_K_M. **Pipeline tất định** — hai lượt chạy y hệt cho trùng khít từng chữ số (§33.1).
+**452 test xanh** (build sạch — xem §50.1 về cách đếm).
+
+Cấu hình đo khoá luận: `--style-trust --chunk-tokens 28000 --ctx 32768 -ngl 99 --no-reuse-prefix`,
+Qwen3.5-9B-Q4_K_M. Pipeline **tất định** — hai lượt y hệt cho trùng khít từng chữ số (§33.1).
+
+### Ba điều phải biết trước khi trích bất kỳ con số nào khác
+
+1. **Corpus 95 file `todo10_8` KHÔNG có đáp án.** Mọi bảng ở §45.3, §47.2, §48.1 chỉ nói *luật nào
+   kích hoạt*, không nói *gán đúng hay sai*. Đọc §45.4, §46.3, §48.4 trước khi dùng chúng.
+2. **Mọi con số `--no-llm` ghi TRƯỚC §51 đều thiếu bộ suy cấp tất định** — kể cả bảng phân bố cấp
+   ở §45.3. Con số còn hiệu lực nằm ở §51.3 và §55.9.
+3. **`bench --no-llm` không đi qua đường có mô hình.** §55.12 liệt kê năm lỗi mà bench xanh suốt
+   trong khi chúng đang tồn tại. Bench xanh không nói gì về nhánh bench không chạy.
+
+### Việc đã xong và còn hiệu lực
+
+| | |
+|---|---|
+| §51 | bộ suy cấp tất định chạy cả trên `--no-llm` — bench đúng cấp 86,1% → 100%. **Mặc định bật** |
+| §53 | `TableOfContentsAnchor` pin đúng cấp cho heading `numPr` — đúng cấp 44,8% → 96,6% |
+| §56.3 | luật **chuỗi mồ côi** (`2.1` dưới `PHỤ LỤC A`) — bench có mô hình 6/7 → **7/7** |
+| §56.4 | context **tự đọc từ GGUF** thay cho allowlist theo tên: 4.096 → 32.768 |
+| §45.1 | ba bảng chữ cái tiếng Việt cho `NumberingAudit` (`d) → đ)` không còn báo đứt quãng sai) |
+| §45.2 | `--split-merged` cắt tiêu đề lọt giữa paragraph — **mặc định tắt**, xem TODO mục 10 |
+| §55.2 | nhãn + số **không dấu ngắt** (`Chương II QUY ĐỊNH CHUNG`), chốt in-hoa chặn chú thích |
+| §52 | `dhx toc-keys` — mục lục Word làm đáp án miễn phí |
+
+### Kết luận lớn nhất của dự án
+
 
 ### Kết luận lớn nhất của dự án
 
@@ -3050,7 +3044,11 @@ trượt hết. Nới thành `(?<![\p{Lu}\d])` — cho phép chữ thường đ�
 vẫn chặn chữ hoa và chữ số. Thứ chặn tham chiếu chéo là **dấu ngắt bắt buộc sau số**:
 `Điều 3 của Bộ luật này` không có dấu ngắt nên không bao giờ khớp.
 
-### 45.3 Đo được
+### 45.3 Đo được — ⚠️ **BẢNG NÀY ĐÃ LỖI THỜI, giữ lại để đối chiếu lịch sử**
+
+> Đo TRƯỚC §51, tức thiếu bộ suy cấp tất định. **Số MỤC vẫn đúng** (cờ chỉ đổi cấp, không đổi
+> tuyển chọn — đã kiểm ở §51.3), nhưng **phân bố CẤP thì sai**: cấp 9 ghi 221 mục trong khi số
+> đúng là 20. Con số còn hiệu lực ở §51.3 và §55.9.
 
 ```
 95 file, --no-llm            TẮT      BẬT     tăng   file tăng

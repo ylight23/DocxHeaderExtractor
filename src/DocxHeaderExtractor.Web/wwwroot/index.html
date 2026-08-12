@@ -238,13 +238,16 @@
         </div>
         <div>
           <label class="f" for="ctx">Cửa sổ ngữ cảnh (token)</label>
-          <input id="ctx" type="number" min="4096" step="1024" value="8192">
-          <p class="note">Server tự nâng theo model nếu thiếu; đặt tay hầu như không có tác dụng.</p>
+          <input id="ctx" type="number" min="4096" step="1024" placeholder="tự đọc từ mô hình">
+          <p class="note">Bỏ trống: server đọc <code>{arch}.context_length</code> từ chính file GGUF
+            (Qwen3.5-9B khai 262.144, dùng tới trần 32.768). Gõ số thì <b>số của bạn thắng</b> và
+            tự đọc bị tắt — chữ ký cấu hình vẫn ghi đúng con số đã dùng.</p>
         </div>
       </div>
       <div class="checks">
         <label><input type="checkbox" id="structuralOnly" checked> Bỏ luật từ ngữ</label>
         <label><input type="checkbox" id="noTrustStyles"> Không khôi phục theo style</label>
+        <label title="Tài liệu chuyển từ PDF thường gộp cả trang vào một đoạn; 83/95 file corpus thuộc dạng này và 67% mục có ranh giới heading nằm giữa đoạn."><input type="checkbox" id="splitMerged"> Cắt đoạn bị gộp (tài liệu từ PDF)</label>
         <label><input type="checkbox" id="showRaw" checked> Hiện JSON LLM trả về (debug)</label>
       </div>
       <p class="note">"Không khôi phục theo style" là nút để đánh giá riêng chất lượng mô hình:
@@ -508,8 +511,10 @@ fetch('/api/models').then(r => r.json()).then(list => {
   sel.onchange = syncCtx;
 
   function syncCtx() {
-    const opt = sel.selectedOptions[0];
-    $('ctx').value = opt.dataset.ctx;
+    // KHÔNG tự điền ctx nữa. Bản cũ điền suggestedCtx — con số đoán từ TÊN FILE — nên ô luôn có
+    // giá trị và request luôn mang ctx, tức cơ chế tự đọc {arch}.context_length từ GGUF không bao
+    // giờ chạy được. Để trống thì server đọc từ chính mô hình (§56.4).
+    $('ctx').value = '';
     // Không hứa "100%" trống không: con số đó là MỘT lần chạy trên MỘT tài liệu, và batched
     // executor không tái lập từng bit nên chạy lại có thể lệch vài phần trăm.
     const measured = opt.textContent.includes('khuyên dùng');
@@ -540,7 +545,7 @@ $('run').onclick = async () => {
   $('devMeta').textContent = `${$('backend').selectedOptions[0]?.textContent || 'Backend'} · ${activeModelLabel()}`;
   $('workState').textContent = 'Đang xử lý';
   $('workModel').textContent = activeModelLabel();
-  $('workConfig').textContent = `${$('ctx').value} token · ${$('chunkCandidates').value} ứng viên/khối`;
+  $('workConfig').textContent = `${$('ctx').value || 'ngữ cảnh tự đọc'} · ${$('chunkCandidates').value} ứng viên/khối`;
   $('workHint').textContent = 'Đang theo dõi request, JSON trả về và các bước hậu kiểm trong Dev log LLM.';
 
   const fd = new FormData();
@@ -555,6 +560,7 @@ $('run').onclick = async () => {
   fd.append('noLlm', $('noLlm').checked ? '1' : '0');
   fd.append('structuralOnly', $('structuralOnly').checked ? '1' : '0');
   fd.append('noTrustStyles', $('noTrustStyles').checked ? '1' : '0');
+  fd.append('splitMerged', $('splitMerged').checked ? '1' : '0');
   fd.append('twoPass', $('twoPass').checked ? '1' : '0');
   fd.append('showRaw', $('showRaw').checked ? '1' : '0');
   fd.append('writeback', $('writeback').checked ? '1' : '0');
