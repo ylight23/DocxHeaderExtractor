@@ -3050,7 +3050,7 @@ TỔNG                         3712     6357   +2645         82
 ```
 
 Bench 10 (có đáp án): TẮT và BẬT **giống hệt** — P 92,3 · R 100 · F1 96 · cấp 86,1 · cha 91,7.
-Không hồi quy. 382 test xanh.
+Không hồi quy. (Số test ghi lúc đó là 382 — **sai**, xem §50.)
 
 ### 45.4 Ba điều KHÔNG được suy ra từ bảng trên
 
@@ -3228,7 +3228,7 @@ kiến trúc thật, và phải đo lại toàn bộ §45.3 sau khi làm.
 (`adminRatio`, `legalRatio`, `typedRatio`) nay đo trên **lát cắt** qua
 `ParagraphHeadingSplitter.Segments`, còn tín hiệu ĐỊNH DẠNG (style, `numPr`, đậm, cỡ chữ) vẫn đo
 trên đoạn thật vì lát cắt không mang định dạng riêng. Chỉ số đoạn **không đổi**, `Mode` chỉ dùng
-để in nên đây là thay đổi chẩn đoán thuần — bench giữ nguyên P 92,3 · R 100 · cấp 86,1, 384 test xanh.
+để in nên đây là thay đổi chẩn đoán thuần — bench giữ nguyên P 92,3 · R 100 · cấp 86,1. (Số test ghi lúc đó là 384 — **sai**, xem §50.)
 
 Thêm đường vào thứ hai cho `TypedNumbering`: `typedCount >= 8 && typedRatio >= 0.08`, không đòi
 tài liệu có style Heading — đường cũ `styledCount > 0` khiến 55/55 tài liệu không style không bao
@@ -3337,8 +3337,67 @@ Nên "sửa định nghĩa" và "giữ nguyên ngưỡng" là **hai biến đổ
 ### 49.4 Đã trả về trạng thái đã đo
 
 `git checkout` `DocumentModeClassifier.cs` về `8258036`: VnAdmin 46, Legal 14, FormatDriven 12,
-OutlineLevelDriven 10, Typed 7, SemanticOnly 6. 384 test xanh. Trạng thái này vẫn có khuyết tật
+OutlineLevelDriven 10, Typed 7, SemanticOnly 6. (Số test ghi lúc đó là 384 — **sai**, xem §50.)
+Trạng thái này vẫn có khuyết tật
 đã ghi ở §48.2 (VnAdmin quá rộng), nhưng nó là khuyết tật ĐÃ ĐO, còn trạng thái kia là nhánh chết.
 
 **Thứ mở khoá:** ba file giáo trình có nhãn chế độ người kiểm. Có chúng thì hiệu chỉnh lại được
 ngưỡng trên tập tín hiệu mới, và giả thuyết §49 dùng được ngay — nó đã đúng ở phần khó nhất.
+
+## §50. Kiểm lại chính mình: ba mảng mã KHÔNG có test, và một con số test sai
+
+Câu hỏi "đã test hết mã cần test chưa" — trả lời sau khi đối chiếu, không phải sau khi nhớ lại.
+
+### 50.1 Số test tôi báo cáo là sai
+
+`dotnet test` gia tăng cho **384**; `dotnet clean` rồi chạy lại cho **397**. Đếm trong mã nguồn
+test: 311 `[Fact]` + 85 `[InlineData]` ≈ 397. Vậy **397 mới đúng**, và mọi lần tôi ghi "384 test
+xanh" đều chạy trên assembly thiếu 13 test.
+
+**Tôi không truy ra được nguyên nhân chắc chắn** (working tree sạch, không commit nào thêm test
+giữa hai lần chạy). Không đoán — đó đúng là lỗi §46. Nhưng hệ quả thì chắc chắn: *"384 test xanh"
+không phải bằng chứng toàn bộ suite đã chạy.*
+
+**Kỷ luật mới:** con số test dùng để kết luận phải lấy từ **build sạch**, và đối chiếu với số
+`[Fact]`/`[InlineData]` đếm trong mã nguồn. Hai nguồn lệch nhau là dấu hiệu assembly cũ.
+
+### 50.2 Ba mảng mã mới KHÔNG có một test nào
+
+| mã | đã tạo ra | test trước khi kiểm |
+|---|---|--:|
+| `ParagraphHeadingSplitter.Segments()` | mọi con số §48 | **0** |
+| cờ `--split-merged` + `MergedParagraphHeadings` | 3.712 → 6.357 mục (§45.3) | **0** |
+| `mode=` trong `SlimXmlSerializer` | mọi bảng §47.2, §48.1 | **0** |
+
+Đáng chú ý ở dòng thứ ba: chỗ đó **đã từng làm đỏ một test** (`doc.Mode.Mode` ném null với
+`SlimDocument` dựng tay), tôi sửa null-safe rồi **không ghim lại**. Đúng lỗi ấy có thể tái phát
+âm thầm.
+
+Đã viết bù **17 test**, tổng **414**, build sạch. Bốn đột biến đều bị giết:
+bỏ lát đầu tiên của `Segments` → 2 đỏ · `Segments` luôn trả rỗng → 7 đỏ ·
+`--split-merged` mặc định bật → 1 đỏ · `mode=` luôn in `Unknown` → 1 đỏ.
+
+### 50.3 Khuyết tật mục 11 nay là test chạy được, không còn là ghi chú
+
+`DocumentModeTests.So_go_tay_thuan_bi_nhan_nham_thanh_hanh_chinh_KHUYET_TAT_DA_BIET` dựng tài liệu
+thuần số gõ tay (20 đề mục `N.1`/`N.2`, 0 style Heading) và **assert giá trị SAI hiện tại**
+(`VietnameseAdministrative`) kèm ghi rõ giá trị đúng phải là `TypedNumbering`.
+
+Khi ai đó sửa mục 11, test này sẽ đỏ — đó là mục đích. Kèm theo là
+`Ky_hieu_rieng_cua_hanh_chinh_khong_duoc_mat_khi_sua_muc_11`: nếu sửa bằng cách **đảo thứ tự
+nhánh** thay vì tách tín hiệu, test đó đỏ và chỉ ra rằng sai lầm chỉ bị lật sang chiều kia (§49.2).
+
+Viết khuyết tật thành test có giá trị hơn viết vào TODO: TODO không chạy.
+
+### 50.4 Đối chiếu hằng số tài liệu ↔ mã nguồn
+
+`MaxHeadingLength = 200` ✓ · `AdministrativeThreshold = 0.15` ✓ · `TypedNumberMinimum = 8` ✓ ·
+`AdministrativeMarkers` 4 mẫu ✓. Không có chỗ nào tài liệu nói một đằng mã làm một nẻo.
+
+### 50.5 Điều vẫn CHƯA test được, và vì sao
+
+- **Hai đáp án 100% ở `keys/`** — tài liệu `.docx` không nằm trong repo (ràng buộc không để tài
+  liệu người dùng lọt vào git). Chỉ chạy tay được.
+- **`keys/plph1-dqp.outline`** (41 mục) — thiếu file nguồn, chưa chấm lần nào.
+- **Mọi con số trên corpus 95 file** — không có đáp án, nên không thể thành test hồi quy. Chúng là
+  phép đo một lần, không phải bất biến.

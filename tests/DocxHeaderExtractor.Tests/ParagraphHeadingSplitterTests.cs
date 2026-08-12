@@ -127,4 +127,71 @@ public class ParagraphHeadingSplitterTests
         Assert.Single(slices);
         Assert.Equal("Điều 4. Áp dụng Bộ luật dân sự", slices[0].Text);
     }
+
+    // ---- Segments: phân hoạch ĐẦY ĐỦ, dùng cho tầng phân loại ----------------------------
+    // Segments() đã tạo ra mọi con số của §48 nhưng trước đây KHÔNG có một test nào.
+
+    /// <summary>
+    /// Khác <see cref="ParagraphHeadingSplitter.Split"/>: giữ CẢ lát không phải tiêu đề, vì tầng
+    /// phân loại cần tỉ lệ mốc trên toàn tài liệu chứ không chỉ mốc đủ điều kiện làm tiêu đề.
+    /// </summary>
+    [Fact]
+    public void Segments_giu_ca_lat_khong_phai_tieu_de()
+    {
+        var parts = ParagraphHeadingSplitter.Segments(
+            "Điều 4. Áp dụng Bộ luật dân sự1. Bộ luật này là luật chung." +
+            "2. Luật khác có liên quan thì áp dụng.");
+
+        Assert.Equal(3, parts.Count);
+        Assert.Equal("Điều 4. Áp dụng Bộ luật dân sự", parts[0]);
+        Assert.StartsWith("1.", parts[1]);
+        Assert.StartsWith("2.", parts[2]);
+    }
+
+    /// <summary>
+    /// Đoạn KHÔNG bị gộp trả về chính nó, để nơi gọi không phải phân nhánh. Không có test này thì
+    /// đột biến "luôn trả rỗng khi ít mốc" đi lọt, và mọi mẫu số ở DocumentModeClassifier về 0.
+    /// </summary>
+    [Theory]
+    [InlineData("Điều 21. Người chưa thành niên")]
+    [InlineData("Một đoạn văn xuôi bình thường không có ký hiệu nào.")]
+    public void Segments_doan_khong_gop_tra_ve_chinh_no(string text)
+    {
+        var parts = ParagraphHeadingSplitter.Segments(text);
+
+        Assert.Single(parts);
+        Assert.Equal(text, parts[0]);
+    }
+
+    /// <summary>Phần đầu đoạn nằm TRƯỚC mốc thứ nhất không được đánh rơi.</summary>
+    [Fact]
+    public void Segments_khong_danh_roi_phan_truoc_moc_dau_tien()
+    {
+        var parts = ParagraphHeadingSplitter.Segments(
+            "…tiếp nối từ trang trước và kết thúc ở đây. Điều 5. Áp dụng tập quán" +
+            "1. Tập quán là quy tắc xử sự. Điều 6. Áp dụng tương tự pháp luật");
+
+        Assert.Equal(4, parts.Count);
+        Assert.StartsWith("…tiếp nối", parts[0]);
+    }
+
+    /// <summary>Ghép các lát lại phải phủ hết nội dung — phân hoạch, không phải lọc.</summary>
+    [Fact]
+    public void Segments_la_phan_hoach_khong_bo_sot_ky_tu()
+    {
+        const string text = "Mở đầu đoạn. Điều 5. Áp dụng tập quán1. Tập quán là quy tắc." +
+                            "Điều 6. Áp dụng tương tự2. Trường hợp khác.";
+
+        var joined = string.Concat(ParagraphHeadingSplitter.Segments(text))
+            .Replace(" ", "");
+
+        Assert.Equal(text.Replace(" ", ""), joined);
+    }
+
+    [Fact]
+    public void Segments_doan_rong_tra_ve_rong()
+    {
+        Assert.Empty(ParagraphHeadingSplitter.Segments("   "));
+        Assert.Empty(ParagraphHeadingSplitter.Segments(null));
+    }
 }
