@@ -28,7 +28,23 @@ là đáp án đồng thuận model.
 > bug; nhưng bật cờ đó lại tái hiện đúng lớp lỗi "hạ quyền style = chuyển quyền cho chỗ trống" đã ghi
 > ở TODO mục 2 — nay có thêm một tài liệu thật làm bằng chứng, xem addendum ở đó.
 >
-> 392 test xanh, bench không đổi (đối chiếu byte-identical trước/sau bản sửa `TableOfContentsAnchor`).
+> `StructuralRecovery` mở rộng sang `NumberKind.Labelled` — cứu được `PHỤ LỤC 1`/`PHỤ LỤC 2` (nửa
+> đầu TODO mục 7); nửa sau (hai mục kết thúc bằng `:` bị trừ điểm kép vì vừa là bullet) **vẫn treo,
+> chưa có hướng cụ thể**.
+>
+> **§50 — kiểm lại chính mình.** Số test tôi từng báo cáo (`384`) SAI — `dotnet test` gia tăng không
+> chạy 13 test, build sạch mới đúng là `397` lúc đó. Bù 17 test cho ba mảng mã (§45–§48) từng sinh
+> mọi bảng số liệu trong handoff mà không một test nào giữ lại chúng.
+>
+> **§51 — lỗi bất đối xứng LLM/không-LLM, ĐÃ SỬA.** `StructuralHierarchyResolver` và
+> `TableOfContentsAnchor` đều tất định nhưng nằm trong `RunModelAsync`, nên đường `--no-llm` **chưa
+> từng chạy chúng**. Sửa, mặc định bật: bench đúng cấp 86,1% → **100%**, đúng cha 91,7% → **100%**.
+> **Hệ quả phải nhớ:** mọi con số `--no-llm` ghi TRƯỚC §51 — kể cả phép đo "byte-identical trước/sau"
+> dùng để xác nhận bản sửa `TableOfContentsAnchor` ở TODO mục 13 — đứng trên nền `Apply` **chưa từng
+> được gọi**. Kết luận "`Apply` không chạm heading nào" cũ vì vậy **mất hiệu lực tham chiếu**, không
+> phải vì sai lý luận lúc đó mà vì nền đo đã đổi; cần đo lại từ đầu.
+>
+> **417 test xanh (build sạch).** Bench: xem §51 cho `--no-llm`; `--style-trust` không đổi.
 
 | Khoá luận thật (1.498 đoạn) | |
 |---|--:|
@@ -63,14 +79,19 @@ Qwen3.5-9B-Q4_K_M. **Pipeline tất định** — hai lượt chạy y hệt cho
 
 1. **Người duyệt tiếp** (TODO 4) — cổ chai dưới mọi con số. Một câu "thừa này" của người dùng vừa
    bắt được một cổng quyết định chạy ngược suốt từ đầu (§37).
-2. **Recall**: 4 mục bị đánh rơi ở TẦNG ỨNG VIÊN, không phải do mô hình (TODO 7, §36.3).
-3. **Precision 79,5%** — con số kém nhất; bốn luật đã thử và đo là hỏng, đừng thử lại (TODO 8).
-4. **Hai bộ cấu hình khác nhau** giữa CLI đã đo và mặc định Web (TODO 9, §35).
-5. **Đo bằng LLM cần đúng Qwen3.5-9B, máy hiện chỉ có Qwen2.5-7B/Llama-3.2-3B** (TODO mục 2 và 13) —
-   chặn hai việc cùng lúc: (a) xác nhận bản sửa `TableOfContentsAnchor` không hồi quy trên đường đầy
-   đủ, (b) đo nhánh `LevelTrusted`/"hạ quyền chuyển chỗ trống" mà mục 2 đã chờ từ trước — nay có 2
-   tài liệu thật (báo cáo thực tập + fixture `10-cap-style-thoai-hoa`) sẵn sàng để đo cùng lúc, một
-   lượt LLM trả lời được cả hai câu hỏi nếu tách đúng biến.
+2. **Recall**: 2/4 mục đã cứu được (`PHỤ LỤC 1/2`, TODO 7 nửa đầu); 2 mục còn lại (bullet kết thúc
+   bằng `:` bị trừ điểm kép) chưa có hướng — không phải do mô hình (§36.3).
+3. **Đo lại `--no-llm` cho `TableOfContentsAnchor` sau §51** (TODO 13) — KHÔNG cần Qwen3.5-9B, máy
+   hiện có đủ dùng. Con số "byte-identical" cũ mất hiệu lực vì `Apply` giờ mới thật sự chạy trên
+   đường này; đây là việc rẻ nhất, làm được ngay, trước khi xếp hàng chờ LLM.
+4. **Precision 79,5%** — con số kém nhất; bốn luật đã thử và đo là hỏng, đừng thử lại (TODO 8).
+5. **Hai bộ cấu hình khác nhau** giữa CLI đã đo và mặc định Web (TODO 9, §35).
+6. **Đo bằng LLM cần đúng Qwen3.5-9B, máy hiện chỉ có Qwen2.5-7B/Llama-3.2-3B** (TODO mục 2, 7 nửa
+   sau, và 13) — ba câu hỏi, một lượt LLM nếu tách đúng biến: (a) xác nhận bản sửa
+   `TableOfContentsAnchor` không hồi quy trên đường đầy đủ, (b) recall của `StructuralRecovery` sau
+   khi thêm `Labelled` có tăng trên `key-human.key` không, (c) đo nhánh `LevelTrusted`/"hạ quyền
+   chuyển chỗ trống" — nay có 2 tài liệu thật (báo cáo thực tập + fixture `10-cap-style-thoai-hoa`)
+   sẵn sàng để đo cùng lúc.
 
 ### Bốn kỷ luật đã trả giá để học
 
