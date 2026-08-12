@@ -3787,3 +3787,49 @@ qua B.**
 
 Nên trước khi đổi một hàm dùng chung, phải liệt kê MỌI nơi gọi nó và hỏi *"phép đo của tôi có chạy
 qua chỗ đó không"*. Nếu không, phải viết test cho chỗ đó — bench xanh không nói gì về nó.
+
+### 55.9 Áp chính bài học 55.8: liệt kê nơi gọi, đo bán kính, bịt chỗ bench không tới
+
+**Nơi gọi.** `NumberingAudit.Parse*` có **11 nơi gọi** ngoài chính nó. Tám nơi có file test riêng.
+Bốn nơi nằm ngoài đường `--no-llm` nên bench mù hoàn toàn: `StructuralRecovery`,
+`ModelHeadingCriticGate`, `PrecisionAcceptanceGate`, `EvidenceConfidenceCalibrator`.
+
+**Bán kính.** Quét 127.006 lát cắt của corpus, so khớp regex cũ với mới:
+
+```
+khớp LabelledRx CŨ : 11.055
+khớp LabelledRx MỚI: 11.070   (+15, tức 0,01%)
+```
+
+Cả 15 chuỗi mới khớp đều là đề mục thật, không một dương tính giả:
+
+```
+×8  ATTACHMENT 1 TO THE CODE OF CONDUCT FORM
+    Chapter IX REORGANIZATION, DISSOLUTION AND BANKRUPTCY OF ENTERPRISES
+    Chapter IV CYBER SECURITY PROTECTION ACTIVITIES
+    Chapter VII IMPLEMENTATION PROVISIONS
+    Section 2 HOUSES BEING PUBLIC PROPERTY
+    Section 4 HOUSING DEVELOPMENT FOR THE PEOPLE'S ARMED FORCES
+```
+
+Chốt in-hoa biến một thay đổi regex thành thay đổi **phẫu thuật**.
+
+**Chỗ bench không tới.** Thêm test ở chính `StructuralRecovery`: `Chương II QUYỀN VÀ NGHĨA VỤ` phải
+được cứu, `Bảng 2 Thống kê sau điều chỉnh` thì không.
+
+### 55.10 Mutation sống sót lần thứ hai — và lần này test yếu thật
+
+Lượt mutation đầu ở `StructuralRecovery` **sống sót**. Theo đúng §55.5 tôi không kết luận vội mà
+đọc mã: `Find` gom chuỗi theo `label:{Label}` rồi cứu theo **số liền kề**. Test của tôi dùng
+`Bảng 1` → `Bảng 3`, cách hai số, nên luật cứu-anh-em không bao giờ chạy — **test vô hiệu bất kể
+chốt có hay không**.
+
+Sửa thành `Bảng 1` → `Bảng 2`, đột biến bị giết ngay (3 đỏ). Và điều đó **chứng minh rủi ro là
+thật**: không có chốt in-hoa, `Bảng 2 Thống kê sau điều chỉnh` SẼ được cứu thành đề mục trên đường
+có mô hình.
+
+Hai lần mutation sống sót trong cùng một loạt, hai nguyên nhân khác nhau (§55.5 đột biến không
+thật, §55.10 test yếu thật). Nếu lần này cũng kết luận "đột biến không thật" thì đã bỏ qua một lỗ
+hổng có thật và tự tin sai.
+
+**435 test xanh**, bench giữ P 92,3 · cấp 100% · cha 100% · 6/7.

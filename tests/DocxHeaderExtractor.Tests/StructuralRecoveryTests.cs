@@ -223,4 +223,57 @@ public class StructuralRecoveryTests
         var one = Assert.Single(found);
         Assert.Equal(20, one.Paragraph.Index);
     }
+
+    // ──────────── §55.7: nhãn + số KHÔNG dấu ngắt, và chốt in-hoa chặn chú thích ────────────
+
+    /// <summary>
+    /// <c>Chương II QUY ĐỊNH CHUNG</c> — dạng Nghị định 30/2020 bị bản chuyển PDF dán liền, không
+    /// còn dấu chấm. Sau §55.2 nó đọc được thành token <c>Labelled</c>, nên đường cứu này phải
+    /// nhận nó y như <c>PHỤ LỤC 1</c>/<c>PHỤ LỤC 2</c>.
+    /// </summary>
+    [Fact]
+    public void Cuu_chuong_khong_dau_ngat_khi_chuong_truoc_da_duoc_nhan()
+    {
+        var reviewed = new List<SlimParagraph>
+        {
+            P(10, "Chương I QUY ĐỊNH CHUNG"),
+            P(14, "Nội dung chương thứ nhất trình bày phạm vi điều chỉnh của văn bản này."),
+            P(20, "Chương II QUYỀN VÀ NGHĨA VỤ"),
+        };
+        var accepted = new Dictionary<int, HeadingRecord> { [10] = H(10, 1, "Chương I QUY ĐỊNH CHUNG") };
+
+        var found = StructuralRecovery.Find(reviewed, accepted);
+
+        var one = Assert.Single(found);
+        Assert.Equal(20, one.Paragraph.Index);
+        Assert.Equal(1, one.Level);
+    }
+
+    /// <summary>
+    /// <b>Đây là test cho lỗ hổng mà bench KHÔNG đo được (§55.8).</b> Chú thích hình/bảng có đúng
+    /// hình dạng "nhãn + số + chữ": <c>Bảng 3 Thống kê</c>. Nới <c>LabelledRx</c> ở §55.2 đã làm
+    /// chúng parse thành <c>Labelled</c>, mà đường cứu này nhận MỌI token <c>Labelled</c> — nên
+    /// chú thích sẽ thành đề mục. <c>StructuralRecovery.Find</c> nằm trong <c>RunModelAsync</c>
+    /// nên <c>bench --no-llm</c> vẫn xanh 6/7 trong khi lỗi đã mở.
+    /// <para>
+    /// Chốt in-hoa ở §55.7 là thứ chặn nó. Test này đỏ nếu ai gỡ chốt đó ra.
+    /// </para>
+    /// </summary>
+    [Theory]
+    [InlineData("Bảng 1 Thống kê ban đầu", "Bảng 2 Thống kê sau điều chỉnh")]
+    [InlineData("Hình 1 Sơ đồ tổng thể", "Hình 2 Sơ đồ chi tiết của hệ thống")]
+    [InlineData("Table 1 Initial Results", "Table 2 Summary Of Results")]
+    public void Khong_cuu_chu_thich_hinh_bang(string first, string next)
+    {
+        // Số phải LIỀN KỀ, nếu không thì luật cứu-anh-em không chạy và test vô hiệu bất kể chốt.
+        var reviewed = new List<SlimParagraph>
+        {
+            P(10, first),
+            P(14, "Nội dung thân bài trình bày chi tiết các bước thực hiện của quy trình này."),
+            P(20, next),
+        };
+        var accepted = new Dictionary<int, HeadingRecord> { [10] = H(10, 1, first) };
+
+        Assert.Empty(StructuralRecovery.Find(reviewed, accepted));
+    }
 }
