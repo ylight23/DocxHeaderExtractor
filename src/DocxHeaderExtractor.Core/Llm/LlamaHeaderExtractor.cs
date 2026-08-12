@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Diagnostics;
 using System.Text;
 using LLama;
@@ -156,6 +157,18 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
 
         var weights = await LLamaWeights.LoadFromFileAsync(modelParams, ct);
 
+        // Context đọc từ chính GGUF thay vì từ một allowlist tên model. Chỉ NÂNG, không bao giờ
+        // hạ: sàn do người dùng/profile đặt vẫn được tôn trọng.
+        if (options.AutoContextSize && DeclaredContextLength(weights.Metadata) is { } declared)
+        {
+            var target = Math.Min(declared, LlamaOptions.MaxAutoContextSize);
+            if (target > modelParams.ContextSize)
+            {
+                options.ContextSize = target;
+                modelParams.ContextSize = target;
+            }
+        }
+
         bool hasTemplate = weights.Metadata.TryGetValue("tokenizer.chat_template", out var tpl)
                            && !string.IsNullOrWhiteSpace(tpl);
 
@@ -205,6 +218,20 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     /// Jamba, Falcon-H1, RWKV và mọi kiến trúc lai sau này, không chỉ riêng <c>qwen35</c>.
     /// </para>
     /// </summary>
+    /// <summary>
+    /// <c>{arch}.context_length</c> của GGUF, ví dụ <c>qwen35.context_length = 262144</c>. Không
+    /// hardcode tên kiến trúc: đọc <c>general.architecture</c> rồi ghép, nên chạy với model mới mà
+    /// không phải sửa gì.
+    /// </summary>
+    internal static uint? DeclaredContextLength(IReadOnlyDictionary<string, string> metadata)
+    {
+        if (!metadata.TryGetValue("general.architecture", out var arch) || string.IsNullOrWhiteSpace(arch))
+            return null;
+        if (!metadata.TryGetValue($"{arch}.context_length", out var raw)) return null;
+        return uint.TryParse(raw, NumberStyles.Integer, CultureInfo.InvariantCulture, out var value)
+               && value > 0 ? value : null;
+    }
+
     internal static string? RecurrentStateReason(IReadOnlyDictionary<string, string> metadata)
     {
         var marker = metadata.Keys.FirstOrDefault(

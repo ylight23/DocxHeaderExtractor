@@ -119,7 +119,7 @@ public sealed class CommandLineOptions
                 case "--dump-xml": o.Pipeline.DumpXmlPath = Next(a); break;
                 case "--show-raw": o.Pipeline.ShowRawOutput = true; break;
 
-                case "--ctx": llama.ContextSize = uint.Parse(Next(a)); break;
+                case "--ctx": llama.ContextSize = uint.Parse(Next(a)); llama.AutoContextSize = false; break;
                 case "--threads" or "-t": llama.Threads = int.Parse(Next(a)); break;
                 case "--chunk-tokens": o.Pipeline.Chunking.SetExplicitTokenBudget(int.Parse(Next(a))); explicitChunkTokens = true; break;
                 case "--chunk-candidates": o.Pipeline.Chunking.MaxCandidatesPerChunk = int.Parse(Next(a)); break;

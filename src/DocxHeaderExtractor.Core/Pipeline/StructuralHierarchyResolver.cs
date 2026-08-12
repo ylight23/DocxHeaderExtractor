@@ -251,10 +251,38 @@ public static class StructuralHierarchyResolver
         return null;
     }
 
+    /// <summary>
+    /// Neo một mục đánh số vào heading KHÔNG đánh số gần nhất phía trên.
+    /// <para>
+    /// Hai ca, tách rời vì độ an toàn khác nhau:
+    /// </para>
+    /// <para>
+    /// <b>Độ dài 1</b> (<c>1.</c>, <c>2.</c>) — hành vi cũ, giữ nguyên: một heading không đánh số
+    /// ngay trước danh sách <c>1., 2., …</c> là cha tiềm năng, và chỉ dùng khi nó đang nông hơn.
+    /// </para>
+    /// <para>
+    /// <b>Độ dài ≥ 2 nhưng CHUỖI MỒ CÔI</b> — thêm ở §55.13. "Mồ côi" nghĩa là không heading nào
+    /// phía trên có đường dẫn bắt đầu bằng cùng thành phần đầu: <c>2.1</c> mà tài liệu không có
+    /// mục <c>2.</c> nào trước đó. Lúc ấy độ sâu dấu chấm KHÔNG nói được cấp, vì cái cây mà nó
+    /// tham chiếu tới không tồn tại — phải neo theo vị trí.
+    /// </para>
+    /// <para>
+    /// ĐO ĐƯỢC trên <c>bench/07-mau-that</c>, và chính đáp án ghi rằng đây là *"mâu thuẫn có thật
+    /// trong file"*: <c>2.1 Kết quả thử nghiệm</c> nằm dưới <c>PHỤ LỤC A</c> (cấp 1) nên đáp án là
+    /// cấp 2, dù số hiệu <c>2.1</c> gợi ý thuộc Chương 2. Trước đây không luật tất định nào chạm
+    /// tới nó: đường dẫn <c>[2,1]</c> dài 2 nên nhánh này bỏ qua, <c>FindParentLevel</c> không tìm
+    /// thấy <c>[2]</c>, <c>FindSiblingLevel</c> khác cha. Cấp giữ nguyên giá trị mô hình trả về —
+    /// đúng trên đường <c>--no-llm</c> (đoán theo độ sâu = 2) và SAI trên đường có mô hình (= 1).
+    /// </para>
+    /// <para>
+    /// Điều kiện mồ côi là thứ giữ luật này hẹp: <c>1.1.1</c> nằm trong chuỗi <c>1.</c> → <c>1.1</c>
+    /// vẫn đi <c>FindParentLevel</c> như trước, không bị neo lại theo vị trí.
+    /// </para>
+    /// </summary>
     private static int? FindUnnumberedParentLevel(
         int at, IReadOnlyList<HeadingRecord> ordered, IReadOnlyDictionary<HeadingRecord, int[]?> paths, int[] current)
     {
-        if (current.Length != 1) return null;
+        if (current.Length != 1 && !IsOrphanChain(at, ordered, paths, current)) return null;
         for (var i = at - 1; i >= 0; i--)
         {
             // Một heading không đánh số ngay trước một danh sách 1., 2., … là cha tiềm năng.
@@ -263,6 +291,19 @@ public static class StructuralHierarchyResolver
                 return ordered[i].Level + 1;
         }
         return null;
+    }
+
+    /// <summary>
+    /// Không heading nào phía trên có đường dẫn mở đầu bằng cùng thành phần đầu với
+    /// <paramref name="current"/> — tức cái cây mà số hiệu này tham chiếu tới không tồn tại.
+    /// </summary>
+    private static bool IsOrphanChain(
+        int at, IReadOnlyList<HeadingRecord> ordered, IReadOnlyDictionary<HeadingRecord, int[]?> paths, int[] current)
+    {
+        for (var i = at - 1; i >= 0; i--)
+            if (paths[ordered[i]] is { Length: > 0 } previous && previous[0] == current[0])
+                return false;
+        return true;
     }
 
     /// <summary>

@@ -3873,3 +3873,86 @@ Mutation: gỡ chốt in-hoa → 2 đỏ · bỏ hẳn nhánh không-dấu-ngắ
 
 **Không hệ quả nào bị `bench --no-llm` bắt.** Bench xanh 6/7 suốt cả năm lần. Cách duy nhất tìm ra
 chúng là liệt kê nơi gọi rồi hỏi từng nơi *"phép đo của tôi có chạy qua đây không"*.
+
+## §56. Chạy bench CÓ MÔ HÌNH lần đầu sau loạt §55 — và hai lỗi chỉ đường đó mới lộ
+
+§55.12 kết luận: mọi thay đổi đường có mô hình chỉ có unit test, chưa lần nào chạy đầu-cuối. Đã chạy.
+
+### 56.1 Môi trường (§27)
+
+Build `-p:UseVulkan=true`, chạy `-ngl 99`, đọc dòng xác nhận: *"Ngữ cảnh 8192 token, **GPU 99 lớp**"*.
+Phép đo hợp lệ.
+
+> **Bẫy mới ghi vào §27:** chạy `dotnet test` giữa chừng build lại solution KHÔNG kèm
+> `-p:UseVulkan=true`, kéo `LLamaSharp.Backend.Cpu` về và **ghi đè native lib**. Lần chạy sau đó
+> báo *"ĐÃ YÊU CẦU GPU 99 lớp nhưng thư viện native không hỗ trợ offload, đang chạy CPU"*. Luôn
+> đọc lại dòng đó sau mỗi lần `dotnet test`.
+
+### 56.2 Đường có mô hình vá được chỗ đường tất định hỏng, và ngược lại
+
+| | `--no-llm` | có mô hình |
+|---|--:|--:|
+| Precision | 92,3% | **100%** |
+| đúng cấp | **100%** | 97,2% |
+| tuyệt đối | 6/7 | 6/7 |
+
+Ba dương tính giả trang bìa ở `04-bia-muc-luc-chu-thich` — thứ §51.5 hai lần từ chối sửa vì không
+có tín hiệu cấu trúc nào tách `MỤC LỤC` khỏi `BỘ KHOA HỌC VÀ CÔNG NGHỆ` — **mô hình loại sạch**.
+Đó là câu trả lời cho TODO mục 1: nó không phải luật còn thiếu, nó là việc của tầng ngữ nghĩa.
+
+### 56.3 Chuỗi mồ côi: `2.1` dưới `PHỤ LỤC A`
+
+`07-mau-that` i=15 sai cấp chỉ trên đường có mô hình. Đáp án ghi sẵn rằng đây là *"mâu thuẫn có
+thật trong file"*: `2.1 Kết quả thử nghiệm` nằm dưới `PHỤ LỤC A` (cấp 1) nên đáp án là **cấp 2**,
+dù số hiệu gợi ý thuộc Chương 2.
+
+Truy: đường dẫn `[2,1]` dài 2 nên `FindUnnumberedParentLevel` bỏ qua (nó chỉ nhận độ dài 1);
+`FindParentLevel` không tìm thấy `[2]`; `FindSiblingLevel` khác cha. **Không luật tất định nào chạm
+tới nó** — cấp giữ nguyên giá trị mô hình trả về, tình cờ đúng ở `--no-llm` (đoán theo độ sâu) và
+sai ở đường có mô hình.
+
+Kiểm chéo: chạy `--no-global-hierarchy` cho kết quả **y hệt**, nên không phải
+`ReconcileHierarchyAsync` gây ra — loại được nghi phạm đầu tiên trước khi sửa.
+
+Sửa: mở rộng `FindUnnumberedParentLevel` cho đường dẫn dài ≥ 2 **khi và chỉ khi chuỗi MỒ CÔI** —
+không heading nào phía trên có đường dẫn mở đầu bằng cùng thành phần đầu. Lúc đó độ sâu dấu chấm
+không nói được cấp vì cái cây nó tham chiếu tới **không tồn tại**. Điều kiện mồ côi giữ luật hẹp:
+`1.1.1` nằm trong chuỗi `1.` → `1.1` vẫn đi đường cũ.
+
+**Đo được:**
+
+```
+bench có mô hình   TRƯỚC: cấp 97,2 · cha 97,2 · 6/7
+                    SAU: P 100 · R 100 · F1 100 · cấp 100 · cha 100 · 7/7 TUYỆT ĐỐI
+bench --no-llm      không đổi (cấp 100%, 6/7)
+440 test xanh
+```
+
+### 56.4 Context cố định 4096 — người dùng chỉ ra, và số liệu xác nhận
+
+| | |
+|---|--:|
+| `qwen35.context_length` model khai báo | **262.144** |
+| `LlamaOptions.ContextSize` mặc định | **4.096** |
+
+Nhỏ hơn **64 lần**. Tệ hơn con số: `ApplyRecommendedModelProfile` nâng context bằng một **allowlist
+theo tên model** ("Qwen2.5/Llama 3.2 → 8192"), nên model không nằm trong danh sách mắc kẹt ở 4096
+vĩnh viễn — kể cả model mới hơn, mạnh hơn.
+
+Sửa: đọc `{arch}.context_length` từ chính GGUF sau khi nạp weights. Không hardcode tên kiến trúc —
+lấy `general.architecture` rồi ghép, nên chạy được với model chưa từng gặp.
+
+Trần `MaxAutoContextSize = 32768`, **có căn cứ chứ không chọn bừa**: 262.144 token KV-cache của một
+model 9B vượt xa VRAM mọi máy đang dùng, và nạp thất bại thì tệ hơn context nhỏ; 32768 đúng là cấu
+hình đã đo ở §0.
+
+Chỉ NÂNG, không bao giờ hạ. Truyền `--ctx` tường minh thì tự tắt — lựa chọn người dùng thắng, và
+`ConfigurationFor` vẫn ghi đúng con số đã dùng nên phép đo tái lập được.
+
+Kiểm chứng:
+
+```
+không cờ          → Ngữ cảnh 32768 token   (đọc từ GGUF, chạm trần)
+--ctx 8192        → Ngữ cảnh  8192 token   (người dùng thắng)
+Qwen2.5-7B khai 32768 → cùng luật, không cần thêm dòng nào
+```

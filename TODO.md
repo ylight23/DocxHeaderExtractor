@@ -9,7 +9,8 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
   trách nhiệm cho từng cái.
 - **Mọi con số ghi kèm cấu hình đo.** Báo cáo `dhx eval` nay in chữ ký đầy đủ (kể cả `gpuLayers`,
   `seed`); đọc dòng đó trước khi so với bất kỳ bảng nào trong `handoff.md`.
-- **Xác minh MÔI TRƯỜNG trước khi tin con số** (§27). Build kèm `-p:UseVulkan=true`, chạy kèm
+- **Xác minh MÔI TRƯỜNG trước khi tin con số** (§27). **`dotnet test` build lại solution KHÔNG kèm
+  `-p:UseVulkan=true` và ghi đè native lib** (§56.1) — đọc lại dòng `Mô hình sẵn sàng…` sau mỗi lần test. Build kèm `-p:UseVulkan=true`, chạy kèm
   `-ngl 99`, và đọc dòng `Mô hình sẵn sàng…` phải nói **GPU N lớp**. Thiếu một trong hai là chạy CPU
   và phép đo vô hiệu — đã mất hai lượt chạy vì điều này.
 - **Dump dùng để suy luận phải sinh lại bằng ĐÚNG cờ của lượt đang bàn, ngay trước khi đọc** (§33.3,
@@ -50,6 +51,10 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
   nhận log/dấu vết cho thấy đoạn code đang sửa THỰC SỰ chạy, không chỉ tin input/config giống nhau.
 
 ---
+
+> **§56.2 trả lời mục này:** đường CÓ MÔ HÌNH loại sạch cả ba dương tính giả trang bìa
+> (`bench/04`, precision 92,3% → **100%**). Đây không phải luật cấu trúc còn thiếu — không tín hiệu
+> nào tách `MỤC LỤC` khỏi `BỘ KHOA HỌC VÀ CÔNG NGHỆ` — mà là việc của tầng ngữ nghĩa.
 
 ## 1. Luật nhận được dòng bìa / khối chữ ký — ~~*chặn hai thứ khác*~~ **PHẦN LỚN ĐÃ XONG (§12)**
 
