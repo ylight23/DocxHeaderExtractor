@@ -76,3 +76,13 @@ __pycache__/
 *.pyc
 *.thongke.csv
 thongke*.csv
+
+# ── Tài liệu người dùng KHÔNG được vào repo ───────────────────────────────────
+# data/ là nơi ứng dụng ghi trạng thái chạy thật: bản .docx người dùng thả vào và
+# verified-corrections.jsonl (chứa NGUYÊN VĂN text của tài liệu). Ba file từng lọt
+# vào lịch sử và đã push lên GitHub — trong đó có công văn hành chính thật kèm khối
+# định tuyến văn thư. Đã xoá khỏi toàn bộ lịch sử và force-push; chặn ở đây để
+# không tái diễn.
+data/*.docx
+data/*.doc
+data/verified-corrections.jsonl

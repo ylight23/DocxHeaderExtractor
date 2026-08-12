@@ -511,6 +511,7 @@ fetch('/api/models').then(r => r.json()).then(list => {
   sel.onchange = syncCtx;
 
   function syncCtx() {
+    const opt = sel.selectedOptions[0];
     // KHÔNG tự điền ctx nữa. Bản cũ điền suggestedCtx — con số đoán từ TÊN FILE — nên ô luôn có
     // giá trị và request luôn mang ctx, tức cơ chế tự đọc {arch}.context_length từ GGUF không bao
     // giờ chạy được. Để trống thì server đọc từ chính mô hình (§56.4).
@@ -521,8 +522,8 @@ fetch('/api/models').then(r => r.json()).then(list => {
     modelLabel = measured ? 'cấu hình đã đo' : 'không phải cấu hình đã đo';
     modelTone = measured ? 'ok' : 'warn';
     modelNote = measured
-      ? 'Đang dùng cấu hình chất lượng đã đo — mô hình lớn nhất tìm thấy, ngữ cảnh '
-        + opt.dataset.ctx + ', 6 ứng viên mỗi khối. Mốc 100% là một lần đo trên đúng tài liệu '
+      ? 'Đang dùng cấu hình chất lượng đã đo — mô hình lớn nhất tìm thấy, ngữ cảnh đọc thẳng '
+        + 'từ file GGUF, 6 ứng viên mỗi khối. Mốc 100% là một lần đo trên đúng tài liệu '
         + 'benchmark; chạy lại có thể lệch vài phần trăm và tài liệu khác thì chưa nói lên gì.'
       : 'Mô hình này KHÔNG phải cấu hình đã đo. Mô hình nhỏ hơn tụt precision rõ rệt — trên cùng '
         + 'tài liệu benchmark, Llama-3.2-3B đo được 73% còn Qwen2.5-7B 100% (mỗi bên một lần chạy).';
@@ -716,12 +717,14 @@ function render(o, s, review, agent) {
   $('downloadNote').classList.toggle('hidden', !download);
   if (download) $('downloadDocx').onclick = () => { window.location.href = download; };
 
-  $('tree').innerHTML =
-    '<thead><tr><th style="width:64px">Đoạn</th><th>Tiêu đề</th>' +
-    '<th style="width:96px">Nguồn</th><th style="width:78px;text-align:right">Tin cậy</th></tr></thead><tbody>' +
-    // Chưa calibration thì KHÔNG được phát biểu như một phán quyết về precision: con số hiển thị
+  // Chưa calibration thì KHÔNG được phát biểu như một phán quyết về precision: con số hiển thị
   // lúc đó chỉ là bậc theo số kiểm tra đã qua. §37 đo được cái giá của việc nói nhầm — người dùng
   // thấy 111/127 mục "chưa đạt cổng" và không còn phân biệt được đâu là chỗ thật sự cần xem.
+  //
+  // PHẢI khai TRƯỚC câu lệnh dưới. Trước đây nó nằm GIỮA biểu thức nối chuỗi
+  // (`innerHTML = '<thead>…' +` … `const decisionTag`), nên câu lệnh không bao giờ kết thúc và
+  // toàn bộ <script> hỏng cú pháp: "Uncaught SyntaxError: Unexpected token 'const'" — cả giao
+  // diện chết, không riêng bảng này.
   const decisionTag = h => {
     const raw = h.confidenceBasis === 'evidence_not_calibrated';
     if (h.decisionStatus === 'AutoAcceptedCalibrated') return '<span class="tag Style">đã calibration</span>';
@@ -734,6 +737,10 @@ function render(o, s, review, agent) {
                  : '<span class="tag dis">chưa đạt cổng precision</span>';
     return '';
   };
+
+  $('tree').innerHTML =
+    '<thead><tr><th style="width:64px">Đoạn</th><th>Tiêu đề</th>' +
+    '<th style="width:96px">Nguồn</th><th style="width:78px;text-align:right">Tin cậy</th></tr></thead><tbody>' +
   o.headings.map(h => `<tr class="${h.disputed ? 'dis' : ''}">
         <td class="i">${h.index}</td>
         <td style="padding-left:${10 + (h.level - 1) * 22}px">
