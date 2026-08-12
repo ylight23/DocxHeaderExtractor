@@ -4255,3 +4255,32 @@ cần đo trên tài liệu có đáp án.
 Giá trị **200 vẫn chưa hiệu chỉnh** — chưa ai so 150/200/300. Nhưng nay biết chính xác nó đang làm
 gì và sai ở đâu, thay vì chỉ biết "có một con số ở đó". Đó là mức trả lời tốt nhất đạt được khi
 không có đáp án, và đủ để kết luận: **không xoá**.
+
+### 59.9 Thử sửa lỗ hổng 1 — và nó vô tác dụng, đã gỡ
+
+§59.7 viết rằng nới cho điểm chữ thường sẽ biến 70 đoạn `[Note to Procuring Agency: …]` thành ứng
+viên. **Đo lại thì khẳng định đó SAI:**
+
+| | |
+|---|--:|
+| trong 73 đoạn bị trần chặn, khớp `^[a-zđ][.)]\s` | **2** (đúng hai ca oan) |
+| 71 đoạn còn lại | **không khớp** — chúng mở đầu bằng `[` hoặc một TỪ, không phải chữ cái đơn |
+| toàn corpus, đoạn > 200 ký tự | 13.566 |
+| trong đó khớp mẫu | **317** (2,3%) |
+
+Phân bố chữ cái mở đầu của 317 đoạn: `a` 91 · `b` 80 · `c` 61 · `d` 29 · `e` 17 · `đ` 12 — giảm dần
+**đúng thứ tự bảng chữ cái tiếng Việt**, tức chữ ký của một dãy đánh số thật. Mẫu 8 đoạn ngẫu nhiên
+đều là điểm thật (`c) Phải thu khác…`, `d) Giá trị phần vốn góp…`, `a) Buộc tiêu hủy hoặc tái xuất…`).
+
+Nên tôi cài luật miễn trần cho điểm chữ thường. **Kết quả: 4.957 ứng viên — không đổi một cái nào.**
+
+Lý do: miễn trần chỉ cho đoạn ĐI QUA cổng độ dài. Sau đó nó vẫn phải đạt ngưỡng điểm 0,45, mà
+`LetterPrefixRx` cố ý chỉ cộng điểm cho chữ HOA — nên hai đoạn `b)` qua được cổng rồi rớt ngay bước
+sau. Luật mới là **mã chết**.
+
+**Đã gỡ.** Sửa thật sự đòi cộng điểm cho điểm chữ thường, tức đụng vào chính lý do `LetterPrefixRx`
+giới hạn ở `\p{Lu}` — và đó là thay đổi cần đáp án để đo, không phải thay đổi cần thêm một regex.
+
+**Bài học:** "miễn một cổng" không bằng "được nhận". Một tính năng đi qua nhiều cổng nối tiếp thì
+nới đúng một cổng có thể cho hiệu ứng bằng 0, và chỉ phép đo mới nói ra điều đó — mã vẫn build,
+test vẫn xanh, bench vẫn nguyên.
