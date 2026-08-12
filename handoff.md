@@ -4147,8 +4147,44 @@ Mutation: loại cứng theo độ dài → 4 đỏ · chấm theo độ dài c�
 chữ thường làm mọi đoạn văn xuôi mở đầu bằng một chữ cái đơn thành ứng viên. Đã ghim thành test
 khuyết tật; sửa cần đáp án thể loại hành chính.
 
-**`MaxCandidateTextLength = 200` gần như không còn tải trọng.** Mutation "bỏ hẳn trần" SỐNG SÓT kể
-cả với đoạn dài đậm + canh giữa + cỡ chữ lớn — các hình phạt khác (kết câu, ô bảng, gạch đầu dòng)
-đã chặn hết trước nó. Đây là một phần câu trả lời cho yêu cầu bỏ hardcode: hằng số vẫn nằm đó
-nhưng không quyết định gì. Chưa xoá vì "không quyết định gì trên các ca dựng được" khác với
-"không quyết định gì".
+**`MaxCandidateTextLength = 200`** — mutation "bỏ hẳn trần" SỐNG SÓT trên mọi ca tôi dựng được,
+kể cả đoạn dài đậm + canh giữa + cỡ chữ lớn. Xem §59: kết luận rút ra từ đó **đã sai**.
+
+## §59. Tự bác một kết luận của chính mình: trần độ dài CÓ tải trọng
+
+§58.5 viết: *"`MaxCandidateTextLength = 200` gần như không còn tải trọng"* — dựa trên một mutation
+sống sót và 12 file. **Sai.** Đo trên toàn bộ 95 file:
+
+```
+CÓ  trần: 4.957 ứng viên
+BỎ  trần: 5.027 ứng viên      (+70)
+```
+
+Trần chặn **70 đoạn** trên corpus thật. Nó là chốt sống, không phải mã chết.
+
+### 59.1 Vì sao ba phép đo trước đều nói ngược
+
+| phép đo | kết quả | vì sao không đủ |
+|---|---|---|
+| mutation trên test dựng tay | sống sót | các ca tôi dựng đều bị hình phạt KHÁC chặn trước, nên trần không bao giờ được thử |
+| 12 file đầu corpus | 66 = 66, không đổi | toàn `01_phap_quy`, nhóm mà mọi đoạn dài đều CÓ ký hiệu nên được miễn trần |
+| **95 file** | **4.957 → 5.027** | đủ đa dạng để chạm nhóm đoạn dài KHÔNG có ký hiệu |
+
+Mẫu nhỏ và mẫu lệch cho cùng một câu trả lời sai, và câu trả lời đó nghe rất thuyết phục vì có
+tới hai nguồn xác nhận.
+
+### 59.2 Kỷ luật rút ra
+
+Thêm vào §10: **"mutation sống sót" và "thay đổi không ảnh hưởng gì" là hai mệnh đề khác nhau.**
+Mutation chỉ nói *bộ test hiện có* không phân biệt được hai bản. Muốn kết luận về HÀNH VI thì phải
+đo trên dữ liệu thật, ở quy mô đủ lớn — và §46.5 đã cảnh báo đúng dạng lỗi này ở chiều khác.
+
+Ba lần mutation sống sót trước đây (§55.5 đột biến không thật · §55.10 test yếu · §57.6 test không
+tới được mã) đều là chẩn đoán về BỘ TEST. Lần này tôi đã dùng nó để kết luận về MÃ NGUỒN, và đó là
+loại suy diễn nó không đỡ được.
+
+### 59.3 Chưa xong
+
+Chưa cô lập được 70 đoạn đó là gì — mẫu tôi lấy là "mọi ứng viên dài" chứ không phải phần chênh
+lệch giữa hai lượt. Cho tới khi biết chúng là thân bài bị chặn đúng hay đề mục bị chặn oan, con số
+200 vẫn là hằng số chưa có căn cứ, và **không được xoá**.
