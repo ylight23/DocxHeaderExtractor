@@ -3833,3 +3833,43 @@ thật, §55.10 test yếu thật). Nếu lần này cũng kết luận "đột 
 hổng có thật và tự tin sai.
 
 **435 test xanh**, bench giữ P 92,3 · cấp 100% · cha 100% · 6/7.
+
+### 55.11 Quét hết ba cổng còn lại — và một hợp đồng suýt bị bỏ qua
+
+Ba nơi gọi cuối cùng mà bench mù: `ModelHeadingCriticGate`, `PrecisionAcceptanceGate`,
+`EvidenceConfidenceCalibrator`. Cả ba dùng `NumberingAudit.Parse` làm bằng chứng "có đánh số", nên
+§55.2 đổi hành vi cả ba **cùng lúc**.
+
+Hành vi mới ở cả ba là ĐÚNG: `Chương II QUY ĐỊNH CHUNG` là đề mục có đánh số thật, nên bỏ critic
+và xếp bucket `numbered` là đúng; `Bảng 2 Thống kê sau điều chỉnh` bị chốt in-hoa loại nên vẫn qua
+critic và vẫn `unnumbered`. Đã ghim cả hai mặt.
+
+**Hợp đồng suýt bị bỏ qua.** `PrecisionCalibrationProfile.CurrentPipelineSignature` có chú thích
+viết sẵn từ trước: *"old holdout precision must not silently calibrate this pipeline"* khi phân
+phối dự đoán đổi. §55.2 làm **15 mục chuyển từ bucket `model_*_unnumbered` sang `model_*_numbered`**
+— đúng định nghĩa "đổi phân phối dự đoán". Không bump thì một profile holdout cũ vẫn được nạp và
+hiệu chỉnh confidence theo phân phối không còn tồn tại.
+
+Đã bump `2026-08-04-v2` → `2026-08-11-v3`, và **435 test vẫn xanh trước khi bump** — tức không test
+nào canh hợp đồng này. Đã thêm hai test: một ghim chữ ký hiện tại, một ghim rằng profile chữ ký cũ
+bị **từ chối** (`FormatException`) chứ không bị bỏ qua im lặng.
+
+Test thứ nhất không kiểm được "có bump khi cần" một cách tổng quát — không máy nào biết điều đó. Nó
+ghim rằng lần bump NÀY đã xảy ra, để ai hạ chữ ký về v2 phải giải trình.
+
+Mutation: gỡ chốt in-hoa → 2 đỏ · bỏ hẳn nhánh không-dấu-ngắt → 1 đỏ · hạ chữ ký về v2 → 2 đỏ.
+
+**440 test xanh** (build sạch), bench P 92,3 · R 100 · cấp 100% · cha 100% · 6/7.
+
+### 55.12 Tổng kết loạt §55: một thay đổi regex, năm hệ quả ở nơi khác
+
+| hệ quả | phát hiện bằng |
+|---|---|
+| crash trùng khoá `--split-merged` × `DeterministicHierarchy` | test gọi trực tiếp, KHÔNG phải bench |
+| ghi đè im lặng ở `SignatureTiers`/`StyleNestingDepths` | đọc mã sau khi tìm ra crash |
+| chú thích hình/bảng thành token cấu trúc | test trực tiếp `NumberingAudit.Parse` |
+| chú thích được `StructuralRecovery` cứu thành đề mục | test tại chính nơi gọi, sau khi sửa test yếu |
+| bucket calibration đổi ⇒ phải bump chữ ký | đọc chú thích của hợp đồng, không ai nhắc |
+
+**Không hệ quả nào bị `bench --no-llm` bắt.** Bench xanh 6/7 suốt cả năm lần. Cách duy nhất tìm ra
+chúng là liệt kê nơi gọi rồi hỏi từng nơi *"phép đo của tôi có chạy qua đây không"*.

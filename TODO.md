@@ -26,6 +26,9 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
   `--split-merged` → crash trùng khoá; nới `LabelledRx` ghép nó với `StructuralRecovery` → chú
   thích hình/bảng thành đề mục. **Cả hai đều xanh trên `bench --no-llm`** vì bench không đi qua
   đường có mô hình. Bench xanh không nói gì về nhánh bench không chạy.
+- **Đổi phân phối dự đoán thì PHẢI bump `PrecisionCalibrationProfile.CurrentPipelineSignature`**
+  (§55.11). Không test nào canh được điều này — 435 test vẫn xanh khi thiếu bump. Hỏi mỗi lần đổi
+  luật đọc số: có mục nào chuyển giữa bucket `numbered`/`unnumbered` không?
 - **Trước khi đánh số mục mới trong handoff, kiểm trùng** (§55.6): nhánh có thể đã tiến lên trong
   lúc mình làm — đã có hai §52 cùng lúc.
 - **Không suy về ĐẦU VÀO từ ĐẦU RA của chính pipeline đang nghi ngờ** (§46.5). Pipeline trả về

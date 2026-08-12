@@ -15,7 +15,14 @@ public sealed class PrecisionCalibrationProfile
     public const string CurrentFormat = "dhx-precision-calibration/v1";
     // Bumped after critic contradiction handling and CRITIC_ANCHORS changed the prediction
     // distribution; old holdout precision must not silently calibrate this pipeline.
-    public const string CurrentPipelineSignature = "dhx-semantic-precision/2026-08-04-v2";
+    //
+    // v3 (§55.9): NumberingAudit.LabelledRx nay nhận cả dạng KHÔNG dấu ngắt
+    // ("Chương II QUY ĐỊNH CHUNG"). Cả PrecisionAcceptanceGate lẫn ModelHeadingCriticGate dùng
+    // NumberingAudit.Parse làm bằng chứng "có đánh số", nên 15 mục đo được trên corpus chuyển từ
+    // bucket model_*_unnumbered sang model_*_numbered — ĐÚNG là "đổi phân phối dự đoán" mà chú
+    // thích trên nói tới. Không bump thì profile holdout cũ vẫn được nạp và hiệu chỉnh confidence
+    // theo một phân phối không còn tồn tại.
+    public const string CurrentPipelineSignature = "dhx-semantic-precision/2026-08-11-v3";
 
     public string FormatVersion { get; init; } = CurrentFormat;
     public string PipelineSignature { get; init; } = CurrentPipelineSignature;
