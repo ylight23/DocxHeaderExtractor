@@ -3979,3 +3979,70 @@ lấy ctx từ chính trường đó (nên ghi lại là cách duy nhất làm n
 
 *Đáng ghi:* lỗi này là hệ quả cấp hai của một tính năng đúng. Tìm ra nó không phải nhờ test hay
 bench mà nhờ hỏi *"ai đọc trường tôi vừa sửa?"* — cùng câu hỏi đã tìm ra năm hệ quả ở §55.12.
+
+## §57. Tách heading/body cùng dòng — người dùng báo, và luật cũ chỉ bắt được một nửa dãy
+
+### 57.1 Triệu chứng
+
+Giao diện hiển thị NGUYÊN cả dòng làm tiêu đề:
+`a) Trong dự báo: 01 tốp (như ngày 13/01).` — cả phần số liệu nằm trong tên mục.
+
+### 57.2 Nguyên nhân
+
+`InlineHeadingSplitter.TryNumericPayloadBoundary` đòi phần sau dấu ngắt **không có một chữ cái nào**:
+
+```csharp
+if (!payload.Any(char.IsDigit) || payload.Any(char.IsLetter)) continue;
+```
+
+Nên trong CÙNG một dãy, cùng một tài liệu:
+
+| dòng | kết quả |
+|---|---|
+| `b. KQ Mỹ: 0/0 (0/0).` | tách được — payload thuần số |
+| `a) Trong dự báo: 01 tốp (như ngày 13/01).` | **bỏ qua** — payload có `tốp`, `như`, `ngày` |
+| `c. KQ Philippin 0/0 (0/0)` | **bỏ qua** — không có dấu ngắt nào |
+
+Đường còn lại (`TryRunBoundary`) đòi chuyển tiếp đậm → không-đậm, mà bản chuyển PDF không giữ đậm.
+
+### 57.3 Sửa — và vì sao KHÔNG dùng danh sách đơn vị
+
+Cách hiển nhiên là liệt kê `tốp|tàu|chiếc|lượt|giàn|công dân…` làm mẫu payload. **Đó là danh sách
+từ khoá tiếng Việt** — đúng thứ bị cấm từ đầu dự án, và nó đúng trên đúng tài liệu đã xem rồi im
+lặng trên mọi tài liệu dùng đơn vị khác, kể cả tiếng Việt.
+
+Luật thay thế chỉ hỏi *"chỗ này có bắt đầu bằng một con số không"*: token đầu của payload phải là
+**chữ số**, có thể kèm `/ . , % -` (`0/0`, `01`, `4.722`, `13/01`), và phải kết thúc ở ranh giới
+thật. Đọc được ở mọi ngôn ngữ.
+
+Ràng buộc giữ nó hẹp: `3.1. Kết quả thử nghiệm: đánh giá tổng thể` và `Ghi chú: xem phụ lục` không
+bị chẻ, vì sau dấu ngắt là chữ.
+
+### 57.4 Cùng bất đối xứng §51, lần thứ ba
+
+`InlineHeadingSplitter.Apply` cũng nằm trong `RunModelAsync` (dòng 934) nên chưa từng chạy trên
+`--no-llm`, dù ranh giới do OOXML hoặc token dữ liệu chứng minh chứ không do mô hình đoán. Đã đưa
+vào khối tất định §51. Bench `--no-llm` **không đổi** (P 92,3 · cấp 100 · 6/7).
+
+### 57.5 Ca `c.` — khuyết tật đã biết, ghim thành test
+
+`c. KQ Philippin 0/0 (0/0)` không có dấu ngắt nào, trong khi `b. KQ Mỹ:` cùng dãy thì có. **Tác giả
+viết hai kiểu khác nhau trong cùng một mục** — bằng chứng trực tiếp rằng dấu `:` là tín hiệu, không
+phải điểm cắt.
+
+Chưa sửa: luật "cắt tại số đầu tiên, không cần dấu ngắt" sẽ chẻ cả `3.1. Kết quả 2024` và
+`Chương 2 Nội dung`. Cần đáp án người kiểm trên chính thể loại này để đo. Đã ghim thành test
+`Khong_dau_ngat_thi_chua_tach_duoc_KHUYET_TAT_DA_BIET` — sửa xong thì test đỏ.
+
+### 57.6 Mutation sống sót lần thứ ba, và lần này là test KHÔNG TỚI ĐƯỢC LUẬT
+
+Bỏ điều kiện `char.IsDigit(payload[0])` mà không test nào đỏ. Lần 1 tôi đoán "chốt `i == 0` che
+rồi" — sai. Truy tiếp: `TryFindBoundary` chặn ngay ở `NumberingAudit.Parse(text) is null`, mà ba
+chuỗi test tôi viết (`Ghi chú: - xem…`) **không có ký hiệu đánh số đầu dòng**, nên chúng không bao
+giờ tới được luật cần kiểm. Thêm `a)` / `1.` vào đầu là đột biến chết ngay (3 đỏ).
+
+Ba lần mutation sống sót trong dự án, ba nguyên nhân khác nhau:
+§55.5 đột biến không thật · §55.10 test yếu · §57.6 **test không đi qua mã cần kiểm**.
+Nguyên nhân thứ ba nguy hiểm nhất vì test vẫn XANH và trông như đang bảo vệ thứ gì đó.
+
+**464 test xanh.**

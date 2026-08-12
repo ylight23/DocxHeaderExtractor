@@ -85,6 +85,38 @@ public static class InlineHeadingSplitter
         return headingText.Count(char.IsLetter) >= 2 && bodyText.Any(char.IsLetter);
     }
 
+    /// <summary>
+    /// Nội dung bắt đầu bằng một TOKEN DỮ LIỆU: số, có thể kèm <c>/</c> <c>.</c> <c>,</c> <c>%</c>
+    /// (<c>0/0</c>, <c>01</c>, <c>4.722</c>, <c>13/01</c>).
+    /// <para>
+    /// <b>Vì sao đổi từ "payload thuần số".</b> Điều kiện cũ đòi phần sau dấu ngắt KHÔNG có một chữ
+    /// cái nào, nên nó chỉ bắt được <c>b. KQ Mỹ: 0/0 (0/0).</c> và bỏ qua
+    /// <c>a) Trong dự báo: 01 tốp (như ngày 13/01).</c> — cùng một tài liệu, cùng một dãy, cùng một
+    /// hình dạng "nhãn : số liệu", chỉ khác ở chỗ số liệu có kèm đơn vị.
+    /// </para>
+    /// <para>
+    /// <b>Vì sao KHÔNG dùng danh sách đơn vị.</b> Cách hiển nhiên là liệt kê
+    /// <c>tốp|tàu|chiếc|lượt|…</c>, nhưng đó là danh sách từ khoá tiếng Việt: nó đúng trên đúng
+    /// tài liệu đã xem và im lặng trên mọi tài liệu dùng đơn vị khác, kể cả tiếng Việt. Luật ở đây
+    /// chỉ hỏi <i>"chỗ này có bắt đầu bằng một con số không"</i> — đọc được ở mọi ngôn ngữ.
+    /// </para>
+    /// <para>
+    /// Ràng buộc giữ nó hẹp: token đầu phải là SỐ. <c>3.1. Kết quả 2024</c> không bị chẻ vì sau dấu
+    /// ngắt là chữ, còn <c>Ghi chú: xem phụ lục</c> cũng vậy.
+    /// </para>
+    /// </summary>
+    private static bool StartsWithDataToken(string payload)
+    {
+        if (payload.Length == 0 || !char.IsDigit(payload[0])) return false;
+
+        var i = 0;
+        while (i < payload.Length && (char.IsDigit(payload[i]) || payload[i] is '/' or '.' or ',' or '%' or '-')) i++;
+        if (i == 0) return false;
+
+        // Phải kết thúc token ở ranh giới thật, để "13/01" tách được mà "2024abc" thì không.
+        return i >= payload.Length || payload[i] is ' ' or '	' or ')' or '(' or ';' or ':' or '.';
+    }
+
     private static bool TryNumericPayloadBoundary(string text, out int headingEnd, out int bodyStart)
     {
         headingEnd = bodyStart = 0;
@@ -96,7 +128,7 @@ public static class InlineHeadingSplitter
             while (start < text.Length && char.IsWhiteSpace(text[start])) start++;
             if (start >= text.Length) continue;
             var payload = text[start..].Trim();
-            if (!payload.Any(char.IsDigit) || payload.Any(char.IsLetter)) continue;
+            if (!StartsWithDataToken(payload)) continue;
 
             var end = separator;
             while (end > 0 && char.IsWhiteSpace(text[end - 1])) end--;

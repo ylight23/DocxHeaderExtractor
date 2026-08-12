@@ -337,6 +337,12 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // Mọi con số --no-llm trước đây — kể cả loạt 95 file §45–§48 — đều thiếu bước này.
             if (_options.DisableLlm && _options.DeterministicHierarchy)
             {
+                // InlineHeadingSplitter cũng tất định (ranh giới do OOXML hoặc token dữ liệu chứng
+                // minh, không do mô hình đoán) và cũng nằm trong RunModelAsync — cùng bất đối xứng
+                // §51 đã sửa cho hai bộ kia.
+                var inline = InlineHeadingSplitter.Apply(headings, slim);
+                if (inline > 0) Log($"Tách nội dung cùng dòng (không mô hình): {inline} mục.");
+
                 var fixes = StructuralHierarchyResolver.Apply(headings, slim, _options.Extraction.UseStyleTrust);
                 var pinned = TableOfContentsAnchor.Apply(headings, slim);
                 if (fixes > 0) Log($"Hậu xử lý hierarchy (không mô hình): sửa {fixes} cấp.");
