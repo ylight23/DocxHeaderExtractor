@@ -60,4 +60,38 @@ public class AutoContextSizeTests
     {
         Assert.True(new LlamaOptions().AutoContextSize);
     }
+
+    /// <summary>
+    /// <b>Chữ ký cấu hình phải nói đúng con số đã dùng.</b> <c>LoadAsync</c> clone options rồi
+    /// chỉnh trên bản clone, còn <c>PrecisionCalibrationProfile.ConfigurationFor</c> đọc bản GỐC —
+    /// nên nếu không ghi lại, chữ ký ghi <c>ctx=4096</c> cho lượt chạy thật sự dùng 32768.
+    /// <para>
+    /// Test này ghim rằng <see cref="LlamaOptions.Clone"/> KHÔNG chia sẻ trạng thái (nếu nó chia sẻ
+    /// thì việc ghi lại là vô nghĩa và test dưới cũng vô nghĩa), và rằng chữ ký cấu hình đọc chính
+    /// trường <c>ContextSize</c> — tức ghi lại vào bản gốc là cách duy nhất làm nó trung thực.
+    /// </para>
+    /// </summary>
+    [Fact]
+    public void Clone_khong_chia_se_trang_thai_nen_phai_ghi_lai()
+    {
+        var goc = new LlamaOptions { ContextSize = 4096 };
+        var ban = goc.Clone();
+
+        ban.ContextSize = 32768;
+
+        Assert.Equal(4096u, goc.ContextSize);      // clone độc lập -> ghi lại là bắt buộc
+        Assert.Equal(32768u, ban.ContextSize);
+    }
+
+    /// <summary>Chữ ký cấu hình lấy ctx từ chính trường đó, nên ghi lại là đủ để nó trung thực.</summary>
+    [Fact]
+    public void Chu_ky_cau_hinh_doc_ctx_tu_LlamaOptions()
+    {
+        var o = new DocxHeaderExtractor.Core.Pipeline.PipelineOptions();
+        o.Llama.ContextSize = 32768;
+
+        Assert.Contains("ctx=32768",
+            DocxHeaderExtractor.Core.Eval.PrecisionCalibrationProfile.ConfigurationFor(o),
+            StringComparison.Ordinal);
+    }
 }

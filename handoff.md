@@ -3956,3 +3956,28 @@ không cờ          → Ngữ cảnh 32768 token   (đọc từ GGUF, chạm tr
 --ctx 8192        → Ngữ cảnh  8192 token   (người dùng thắng)
 Qwen2.5-7B khai 32768 → cùng luật, không cần thêm dòng nào
 ```
+
+### 56.5 Auto-context suýt làm chữ ký cấu hình nói dối
+
+`LoadAsync` mở đầu bằng `options = options.Clone()` — cố ý, để không sửa trạng thái của lời gọi.
+Nhưng `PrecisionCalibrationProfile.ConfigurationFor(PipelineOptions o)` đọc `o.Llama.ContextSize`
+của **bản gốc**. Nên nếu chỉ chỉnh bản clone, chữ ký sẽ ghi `ctx=4096` cho một lượt chạy thật sự
+dùng 32768.
+
+Đó là phá đúng kỷ luật đứng thứ hai trong `TODO.md`: *"Mọi con số ghi kèm cấu hình đo"* — và phá nó
+theo cách tệ nhất, vì chữ ký vẫn trông hợp lệ. Hai lượt chạy ở hai context khác nhau sẽ sinh CÙNG
+một chữ ký, đúng cái bẫy mà docstring của `ConfigurationFor` đã cảnh báo cho `gpuLayers`.
+
+Sửa: giữ tham chiếu bản gốc trước khi clone, ghi context đã CHỐT trở lại. Kiểm đầu-cuối:
+
+```
+Ngữ cảnh 32768 token, GPU 99 lớp
+ctx=32768                          <- chữ ký nói đúng con số đã dùng
+P 100% · R 100% · F1 100% · cấp 100% · cha 100%
+```
+
+Hai test ghim: `Clone()` KHÔNG chia sẻ trạng thái (nếu chia sẻ thì việc ghi lại vô nghĩa), và chữ ký
+lấy ctx từ chính trường đó (nên ghi lại là cách duy nhất làm nó trung thực). **452 test xanh.**
+
+*Đáng ghi:* lỗi này là hệ quả cấp hai của một tính năng đúng. Tìm ra nó không phải nhờ test hay
+bench mà nhờ hỏi *"ai đọc trường tôi vừa sửa?"* — cùng câu hỏi đã tìm ra năm hệ quả ở §55.12.

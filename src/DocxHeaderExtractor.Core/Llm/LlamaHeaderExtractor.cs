@@ -139,6 +139,11 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     /// </summary>
     public static async Task<LlamaHeaderExtractor> LoadAsync(LlamaOptions options, CancellationToken ct = default)
     {
+        // Giữ tham chiếu bản GỐC để ghi lại context đã CHỐT (xem khối AutoContextSize bên dưới).
+        // Không ghi lại thì PrecisionCalibrationProfile.ConfigurationFor đọc bản gốc và ghi
+        // ctx=4096 cho lượt chạy thật sự dùng 32768 — chữ ký cấu hình nói dối, và kỷ luật "mọi con
+        // số ghi kèm cấu hình đo" mất hiệu lực đúng lúc nó cần nhất.
+        var caller = options;
         options = options.Clone();
         options.ApplyRecommendedModelProfile(new Chunking.ChunkingOptions { TokenBudget = options.ChunkTokenBudget });
         options.Validate();
@@ -166,6 +171,7 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
             {
                 options.ContextSize = target;
                 modelParams.ContextSize = target;
+                caller.ContextSize = target;   // để chữ ký cấu hình nói đúng con số đã dùng
             }
         }
 
