@@ -4216,3 +4216,42 @@ hơn hay xấu hơn. Vòng 1 đã cho thấy hậu quả (`VietnameseLegal` 14 �
 mà không đo dẫn tới đâu.
 
 Lặp thêm không tạo ra dữ liệu. Thứ mở khoá vẫn là ba file giáo trình kèm nhãn chế độ — TODO mục 4.
+
+### 59.6 Kiểm toán ĐẦY ĐỦ 73 đoạn — câu trả lời không phải trắng đen
+
+Sửa probe: lấy **cả `sid` lẫn text từ cùng một lệnh `dhx xml`**, bỏ hẳn bước tự đếm `<w:p>` (cách
+cũ lệch chỉ số ở tài liệu có bảng nên trả về cả những dòng 8–33 ký tự vốn không thể bị trần chạm
+tới). Đọc được **73/73**:
+
+| điểm nếu bỏ trần | số đoạn | bản chất |
+|---|--:|---|
+| 0,60–0,80 | **70** | `[Note to Procuring Agency: …]`, `[insert name of Borrower…]`, `Your Second Stage Proposal should include…` — chỗ điền mẫu và văn xuôi hợp đồng. **Chặn ĐÚNG** |
+| 0,75 | 2 | `b) amounts based on the actual progress achieved by the Contractor…` — **điểm b) thật, dính thân bài. Chặn OAN** |
+| 1,00 | 1 | `Delayed payments: If the Client delays payments beyond fifteen (15) days…` — mang **style Heading built-in**. Chặn OAN |
+
+**70 đúng / 3 oan** — trần 200 làm đúng việc trên 96% số đoạn nó chặn.
+
+### 59.7 Ba ca oan chỉ ra hai lỗ hổng còn lại, và chúng ĐI NGƯỢC NHAU
+
+**Lỗ hổng 1 — điểm chữ thường.** `b) amounts based on…` là điểm `b)` thật. §58.5 đã ghim khuyết tật
+này (`LetterPrefixRx` chỉ khớp `\p{Lu}`), nay có bằng chứng thứ hai trên thể loại khác hẳn — hợp
+đồng World Bank tiếng Anh, không phải văn bản hành chính Việt Nam.
+
+**Lỗ hổng 2 — style Heading vẫn thua trần độ dài.** `Delayed payments: …` có score 1,00 tức mang
+style Heading built-in. Bình thường nó thoát sớm trước khi tới trần, nhưng ở tài liệu này
+`StyleTrustAudit` chấm style là "áp bừa" nên nó **mất quyền thoát sớm**, rồi rơi vào trần và biến
+mất. Một tuyên bố cấu trúc của tác giả bị một ngưỡng độ dài của ta xoá sổ — cùng dạng lỗi §58 nhưng
+ở nhánh khác: §58 chỉ miễn trần cho đoạn có KÝ HIỆU ĐÁNH SỐ, đoạn có STYLE thì không.
+
+**Chưa sửa, và lý do là kỹ thuật chứ không phải lười:** hai lỗ hổng kéo ngược nhau. Nới cho `b)`
+chữ thường làm chính **70 đoạn `[Note to…]` ở bảng trên** thành ứng viên — tức đổi 2 ca oan lấy 70
+ca sai. Nới cho style bị hạ quyền thì mâu thuẫn với chính lý do `StyleTrustAudit` tồn tại. Cả hai
+cần đo trên tài liệu có đáp án.
+
+### 59.8 Kết luận cuối cho `MaxCandidateTextLength = 200`
+
+*Chốt sống, chặn đúng 70/73, và cả ba ca oan đều truy được về hai lỗ hổng đã biết ở nơi khác.*
+
+Giá trị **200 vẫn chưa hiệu chỉnh** — chưa ai so 150/200/300. Nhưng nay biết chính xác nó đang làm
+gì và sai ở đâu, thay vì chỉ biết "có một con số ở đó". Đó là mức trả lời tốt nhất đạt được khi
+không có đáp án, và đủ để kết luận: **không xoá**.
