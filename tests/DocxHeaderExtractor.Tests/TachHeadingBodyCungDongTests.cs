@@ -173,4 +173,38 @@ public class TachHeadingBodyCungDongTests
 
         Assert.Equal("a) Hoạt động của tàu Philippin: Tàu BVBB-4409 ở Scarborough.", d[0].Text);
     }
+
+    /// <summary>
+    /// Ca thật người dùng báo, nguyên văn. Thân bài chứa NHIỀU dấu hai chấm nội bộ
+    /// (<c>QK4: 01, QK5: 05; QK9: 04</c>) — nếu duyệt từ phải sang trái thì nhan đề nuốt trọn phần
+    /// số liệu và chỉ chừa lại <c>04)</c> làm thân, mà giao diện vẫn gắn nhãn "tách nội dung cùng
+    /// dòng" nên trông như đã xử lý xong.
+    /// <para>
+    /// Duyệt ngược vốn ĐÚNG với luật cũ ("payload thuần số"); §57.3 nới thành "payload BẮT ĐẦU
+    /// bằng số" và biến nó thành lỗi. Đây là hồi quy do chính bản sửa trước gây ra, và 474 test
+    /// lúc đó không bắt được.
+    /// </para>
+    /// </summary>
+    [Fact]
+    public void Lay_dau_ngat_DAU_TIEN_khi_than_bai_co_nhieu_dau_hai_cham()
+    {
+        var r = Split("d) Tàu trực của Hải đội dân quân thường trực: 14 tàu làm nhiệm vụ trực " +
+                      "trên biển (QK4: 01, QK5: 05; QK7: 04; QK9: 04)");
+
+        Assert.NotNull(r);
+        Assert.Equal("d) Tàu trực của Hải đội dân quân thường trực", r!.Value.Heading);
+        Assert.StartsWith("14 tàu làm nhiệm vụ", r.Value.Body);
+        Assert.Contains("QK9: 04", r.Value.Body);
+    }
+
+    /// <summary>Cùng hình dạng, số liệu tiếng Anh — luật không được phụ thuộc ngôn ngữ.</summary>
+    [Fact]
+    public void Cung_luat_ap_dung_cho_so_lieu_tieng_Anh()
+    {
+        var r = Split("c) Vessels on duty: 14 ships deployed (MR4: 01, MR5: 05; MR9: 04)");
+
+        Assert.NotNull(r);
+        Assert.Equal("c) Vessels on duty", r!.Value.Heading);
+        Assert.StartsWith("14 ships deployed", r.Value.Body);
+    }
 }

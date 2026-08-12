@@ -197,8 +197,19 @@ public static class InlineHeadingSplitter
     private static bool TryNumericPayloadBoundary(string text, out int headingEnd, out int bodyStart)
     {
         headingEnd = bodyStart = 0;
-        // Duyệt từ phải sang trái: dấu ':' bên trong tên mục vẫn được giữ nếu suffix còn từ ngữ.
-        for (var separator = text.Length - 1; separator > 0; separator--)
+        // Duyệt từ TRÁI sang PHẢI: lấy dấu ngắt ĐẦU TIÊN mở ra số liệu.
+        //
+        // Bản gốc duyệt ngược, và điều đó ĐÚNG với luật cũ ("payload thuần số, không một chữ cái
+        // nào") — dấu ':' nằm giữa tên mục không bao giờ khớp nên duyệt ngược vẫn ra dấu đúng.
+        // §57.3 nới thành "payload BẮT ĐẦU bằng số", và lúc đó duyệt ngược thành lỗi: ca thật
+        // người dùng báo —
+        //
+        //   d) Tàu trực của Hải đội…: 14 tàu làm nhiệm vụ trên biển (QK4: 01, QK5: 05; QK9: 04)
+        //                                                                            ↑ cắt ở đây
+        //
+        // vì "04)" cũng bắt đầu bằng số. Nhan đề nuốt trọn phần số liệu, chỉ chừa lại "04)" làm
+        // thân — mà giao diện vẫn gắn nhãn "tách nội dung cùng dòng" nên trông như đã xử lý xong.
+        for (var separator = 1; separator < text.Length; separator++)
         {
             if (text[separator] is not (':' or ';')) continue;
             var start = separator + 1;
