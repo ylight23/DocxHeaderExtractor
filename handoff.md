@@ -4183,8 +4183,36 @@ Ba lần mutation sống sót trước đây (§55.5 đột biến không thật
 tới được mã) đều là chẩn đoán về BỘ TEST. Lần này tôi đã dùng nó để kết luận về MÃ NGUỒN, và đó là
 loại suy diễn nó không đỡ được.
 
-### 59.3 Chưa xong
+### 59.3 Cô lập được phần chênh lệch — 73 đoạn, tập trung ở hợp đồng World Bank
 
-Chưa cô lập được 70 đoạn đó là gì — mẫu tôi lấy là "mọi ứng viên dài" chứ không phải phần chênh
-lệch giữa hai lượt. Cho tới khi biết chúng là thân bài bị chặn đúng hay đề mục bị chặn oan, con số
-200 vẫn là hằng số chưa có căn cứ, và **không được xoá**.
+Diff hai lượt theo `sid`: **73 đoạn**, phân bố rất lệch — 13 ở `031_WB_Framework_Agreement`,
+10 ở `033_WB_EPC_Turnkey_TwoStage`, 9 ở ba file WB khác. Toàn bộ nằm trong `02_hop_dong_mua_sam`.
+
+Hai đoạn dài kiểm chứng được đều là **văn xuôi thân bài**, bị chặn ĐÚNG:
+
+```
+len=401  A firm will be selected under Quality-based selection method procedures, in accordance…
+len=459  We hereby inform you that you are invited to submit a sealed Second Stage Proposal for…
+```
+
+**Nhưng đây là MẪU, không phải kiểm toán đầy đủ.** Ánh xạ `sid → chỉ số paragraph` của probe chưa
+tin được: vài dòng trả về chỉ 8–33 ký tự, tức không thể bị trần 200 chạm tới — đoạn nằm trong bảng
+làm lệch cách đếm `<w:p>`. Cần một probe đọc đúng `sid` như `DocxSlimExtractor` sinh ra.
+
+### 59.4 Kết luận cho câu hỏi "bỏ hardcode"
+
+`MaxCandidateTextLength = 200` **không phải hằng số tuỳ tiện gây hại**: nó chặn thân bài dài trong
+hợp đồng WB, đúng việc nó sinh ra để làm. Nhưng cũng **chưa chứng minh được 200 là đúng** — chưa
+có phép đo nào so 150/200/300, và không có đáp án để so.
+
+Trạng thái trung thực: *chốt sống, làm đúng việc trên mẫu kiểm được, giá trị chưa hiệu chỉnh.*
+Giữ nguyên. Xoá nó là bỏ một chốt đang chặn 73 đoạn thân bài để đổi lấy sự sạch sẽ của mã.
+
+### 59.5 Vì sao dừng vòng lặp ở đây
+
+Bốn hằng số còn lại — `LegalMarkers`, `TypedNumberMinimum`, `TypedNumberWeakRatio`,
+`MaxCandidateTextLength` — đều bị chặn bởi **cùng một thứ**: không có đáp án để biết bản mới tốt
+hơn hay xấu hơn. Vòng 1 đã cho thấy hậu quả (`VietnameseLegal` 14 → 54/95), vòng 3 cho thấy đoán
+mà không đo dẫn tới đâu.
+
+Lặp thêm không tạo ra dữ liệu. Thứ mở khoá vẫn là ba file giáo trình kèm nhãn chế độ — TODO mục 4.
