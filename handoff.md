@@ -41,10 +41,14 @@ là đáp án đồng thuận model.
 > từng chạy chúng**. Sửa, mặc định bật: bench đúng cấp 86,1% → **100%**, đúng cha 91,7% → **100%**.
 > **Hệ quả phải nhớ:** mọi con số `--no-llm` ghi TRƯỚC §51 — kể cả phép đo "byte-identical trước/sau"
 > dùng để xác nhận bản sửa `TableOfContentsAnchor` ở TODO mục 13 — đứng trên nền `Apply` **chưa từng
-> được gọi**. Kết luận "`Apply` không chạm heading nào" cũ vì vậy **mất hiệu lực tham chiếu**, không
-> phải vì sai lý luận lúc đó mà vì nền đo đã đổi; cần đo lại từ đầu.
+> được gọi**; kết luận "`Apply` không chạm heading nào" cũ **mất hiệu lực tham chiếu**.
 >
-> **417 test xanh (build sạch).** Bench: xem §51 cho `--no-llm`; `--style-trust` không đổi.
+> **Đo lại ngay sau §51, một biến sạch (giữ §51 cố định, chỉ bật/tắt bản sửa `NumberLabel`):** trên
+> báo cáo thực tập MBBank thật, `--no-llm`, đúng cấp **44,8% (16 sai) → 96,6% (1 sai)**. Log giờ in
+> thật `"Mục lục pin lại 11 cấp"` và `"Hậu xử lý hierarchy: sửa 15 cấp"` — cả hai bộ suy cấp tất định
+> đều chạy. TODO mục 13 coi như đã đo xong phần `--no-llm`; chỉ còn treo phần có LLM.
+>
+> **417 test xanh (build sạch).**
 
 | Khoá luận thật (1.498 đoạn) | |
 |---|--:|
@@ -81,17 +85,14 @@ Qwen3.5-9B-Q4_K_M. **Pipeline tất định** — hai lượt chạy y hệt cho
    bắt được một cổng quyết định chạy ngược suốt từ đầu (§37).
 2. **Recall**: 2/4 mục đã cứu được (`PHỤ LỤC 1/2`, TODO 7 nửa đầu); 2 mục còn lại (bullet kết thúc
    bằng `:` bị trừ điểm kép) chưa có hướng — không phải do mô hình (§36.3).
-3. **Đo lại `--no-llm` cho `TableOfContentsAnchor` sau §51** (TODO 13) — KHÔNG cần Qwen3.5-9B, máy
-   hiện có đủ dùng. Con số "byte-identical" cũ mất hiệu lực vì `Apply` giờ mới thật sự chạy trên
-   đường này; đây là việc rẻ nhất, làm được ngay, trước khi xếp hàng chờ LLM.
-4. **Precision 79,5%** — con số kém nhất; bốn luật đã thử và đo là hỏng, đừng thử lại (TODO 8).
-5. **Hai bộ cấu hình khác nhau** giữa CLI đã đo và mặc định Web (TODO 9, §35).
-6. **Đo bằng LLM cần đúng Qwen3.5-9B, máy hiện chỉ có Qwen2.5-7B/Llama-3.2-3B** (TODO mục 2, 7 nửa
-   sau, và 13) — ba câu hỏi, một lượt LLM nếu tách đúng biến: (a) xác nhận bản sửa
-   `TableOfContentsAnchor` không hồi quy trên đường đầy đủ, (b) recall của `StructuralRecovery` sau
-   khi thêm `Labelled` có tăng trên `key-human.key` không, (c) đo nhánh `LevelTrusted`/"hạ quyền
-   chuyển chỗ trống" — nay có 2 tài liệu thật (báo cáo thực tập + fixture `10-cap-style-thoai-hoa`)
-   sẵn sàng để đo cùng lúc.
+3. **Precision 79,5%** — con số kém nhất; bốn luật đã thử và đo là hỏng, đừng thử lại (TODO 8).
+4. **Hai bộ cấu hình khác nhau** giữa CLI đã đo và mặc định Web (TODO 9, §35).
+5. **Đo bằng LLM cần đúng Qwen3.5-9B, máy hiện chỉ có Qwen2.5-7B/Llama-3.2-3B** (TODO mục 2, 7 nửa
+   sau, và 13 phần LLM) — ba câu hỏi, một lượt LLM nếu tách đúng biến: (a) bản sửa
+   `TableOfContentsAnchor` có hồi quy trên đường đầy đủ không (phần `--no-llm` đã đo xong, 44,8% →
+   96,6%, xem trên), (b) recall của `StructuralRecovery` sau khi thêm `Labelled` có tăng trên
+   `key-human.key` không, (c) đo nhánh `LevelTrusted`/"hạ quyền chuyển chỗ trống" — nay có 2 tài liệu
+   thật (báo cáo thực tập + fixture `10-cap-style-thoai-hoa`) sẵn sàng để đo cùng lúc.
 
 ### Bốn kỷ luật đã trả giá để học
 

@@ -412,7 +412,7 @@ giá trị SAI hiện tại; sửa xong thì test đỏ và buộc phải cập 
 
 ---
 
-## 13. `TableOfContentsAnchor.Apply` pin sai cấp cho heading numPr-driven — ĐÃ SỬA, đo `--no-llm` sạch, đo đầy đủ (có LLM) VẪN CÒN TREO
+## 13. `TableOfContentsAnchor.Apply` pin sai cấp cho heading numPr-driven — ĐÃ SỬA, ĐÃ ĐO LẠI SAU §51: đúng cấp 44,8% → 96,6%
 
 **Phát hiện khi xây `dhx toc-keys`** (đối chiếu với `keys/bao-cao-thuc-tap.key` trên chính tài liệu
 nguồn thật): `TableOfContentsAnchor.DepthOf` chỉ đọc SỐ trong TEXT của dòng mục lục. Heading
@@ -427,29 +427,48 @@ lỗi có thật, tái lập 100%.
 
 **ĐÃ SỬA**: `Apply` nay ưu tiên `NumberLabel` trước khi rơi về đọc TEXT. Test hết `Skip`, xanh.
 
-**Đo tác động — hai kết quả khác nhau, đọc kỹ kẻo lẫn:**
+**Đo tác động lần 1 (trước §51) — MẤT HIỆU LỰC THAM CHIẾU, giữ lại để thấy vì sao.** Lượt đo đầu tiên
+báo `dhx eval --no-llm` byte-identical trước/sau trên cả bench lẫn báo cáo thực tập thật, log không
+có dòng "Mục lục pin lại N cấp" — kết luận lúc đó: `Apply` không chạm heading nào trên `--no-llm`.
+Kết luận ấy ĐÚNG với dữ kiện lúc đó, nhưng dữ kiện sai: TODO mục 9b/§51 phát hiện `Apply` **chưa từng
+được gọi trên đường `--no-llm`** trước khi sửa (nằm trong `RunModelAsync`) — nên "byte-identical" chỉ
+phản ánh việc cả hai lượt đều không gọi `Apply`, không phản ánh gì về bản sửa `NumberLabel`.
 
-- **`dhx eval bench --no-llm` (10 tài liệu tổng hợp): 0 khác biệt trước/sau, byte-identical.** Không
-  fixture nào của bench chạm đúng tổ hợp "TOC + numPr không số trong text" nên không đo được gì thêm
-  từ bộ này — chỉ xác nhận không hồi quy.
-- **`dhx eval --no-llm` trên chính báo cáo thực tập MBBank thật (đáp án `bao-cao-thuc-tap.key`): CŨNG
-  byte-identical trước/sau, và log không có dòng "Mục lục pin lại N cấp"** — tức `tocPinned = 0` cả
-  hai lượt. `Apply` KHÔNG chạm tới bất kỳ heading nào trong đường `--no-llm` của tài liệu thật này,
-  nên bản sửa **không đổi được** 12 lỗi "sai cấp: trả về 2, đáp án 3" đang thấy ở đó — chúng có
-  NGUỒN GỐC KHÁC, chưa xác định (không phải `TableOfContentsAnchor`). Đừng nhầm "đã sửa lỗi thật" với
-  "đã sửa lỗi đang thấy trên `--no-llm`" — hai mệnh đề khác nhau, chỉ mệnh đề đầu đã có bằng chứng.
+**Đo lại sau §51 (2026-08-11), một biến sạch — giữ §51 cố định, chỉ bật/tắt bản sửa `NumberLabel`:**
 
-**12 lỗi "sai cấp: trả về 2, đáp án 3" — ĐÃ GIẢI THÍCH, không phải bug mới (2026-08-11).** Nguồn gốc:
-lượt đo `--no-llm` ban đầu **thiếu cờ `--style-trust`**. Bật cờ lên thì đúng 12 lỗi này biến mất —
-cơ chế đối chiếu style-vs-độ-sâu-đánh-số ở §17 đã xử lý đúng. Nhưng bật `--style-trust` lại lộ ra
-**14 lỗi khác** (front-matter/chương cấp 1 và mục cấp 2 bị đẩy +1 đều) — đúng lớp lỗi "hạ quyền
-chuyển cho chỗ trống" đã ghi ở mục 2 phía trên, không phải lỗi mới. Xem addendum ở mục 2 — tài liệu
-này giờ là bằng chứng thật thứ hai cho mục đó, dùng khi bắt tay đo bằng LLM ở đó.
+| Cấu hình | Đúng cấp | Sai cấp |
+|---|--:|--:|
+| §51 (Apply chạy) + `DepthOf` cũ (không NumberLabel) | 44,8% | 16 |
+| §51 (Apply chạy) + `NumberLabel` (bản sửa) | **96,6%** | **1** |
 
-**Còn treo thật sự:** đo bản sửa `TableOfContentsAnchor` trên đường ĐẦY ĐỦ (có LLM) — máy này chỉ có
-Qwen2.5-7B/Llama-3.2-3B cục bộ, không phải Qwen3.5-9B đã dùng để chốt "100%" trong handoff.md. Chạy
-được một so sánh TRƯỚC/SAU sạch (một biến = bản sửa, giữ nguyên model+cờ) nhưng con số tuyệt đối
-**không so được** với "100%" đã chốt — khác model. Muốn con số so được thì cần đúng Qwen3.5-9B.
+Log giờ in `"Mục lục của tài liệu pin lại 11 cấp"` và `"Hậu xử lý hierarchy (không mô hình): sửa 15
+cấp"` — xác nhận cả `TableOfContentsAnchor` lẫn `StructuralHierarchyResolver` đều chạy thật. Đóng góp
+riêng của bản sửa `NumberLabel`, giữ mọi thứ khác cố định: **+51,8 điểm đúng cấp**. Đo bằng cách tạm
+đổi một dòng (`DepthFromNumberLabel(p.NumberLabel) ?? DepthOf(p.Text)` → `DepthOf(p.Text)`), build,
+đo, rồi hoàn nguyên — không để lại trong lịch sử git.
+
+1 lỗi "sai cấp" còn lại (`i=701`, "Chức năng nhiệm vụ của từng vị trí") khớp đúng mục TOC từng bị
+`dhx toc-keys` báo "không tìm thấy" khi xác thực — nhiều khả năng cùng loại lệch nhẹ TOC-vs-thân-bài
+đã thấy ở ca "CHƯƠNG 2" trước đó, chưa điều tra sâu thêm.
+
+Bench `dhx eval bench --no-llm` (10 tài liệu tổng hợp) vẫn không đổi qua cả ba lượt đo trên — không
+có fixture nào chạm đúng tổ hợp "TOC + numPr không số trong text" nên không hồi quy nhưng cũng không
+đo thêm được gì từ bộ đó.
+
+**12 lỗi "sai cấp: trả về 2, đáp án 3" ở lượt đo TRƯỚC §51 — ĐÃ GIẢI THÍCH, không phải bug mới
+(2026-08-11).** Nguồn gốc: lượt đo `--no-llm` ban đầu **thiếu cờ `--style-trust`**. Bật cờ lên thì
+đúng 12 lỗi này biến mất — cơ chế đối chiếu style-vs-độ-sâu-đánh-số ở §17 đã xử lý đúng. Nhưng bật
+`--style-trust` lại lộ ra **14 lỗi khác** (front-matter/chương cấp 1 và mục cấp 2 bị đẩy +1 đều) —
+đúng lớp lỗi "hạ quyền chuyển cho chỗ trống" đã ghi ở mục 2 phía trên, không phải lỗi mới. Xem
+addendum ở mục 2 — tài liệu này giờ là bằng chứng thật thứ hai cho mục đó, dùng khi bắt tay đo bằng
+LLM ở đó. (Đo lại cùng cờ `--style-trust` sau §51 chưa làm — có thể đổi kết quả 14 lỗi kia, xem việc
+còn treo dưới đây.)
+
+**Còn treo thật sự:** đo bản sửa `TableOfContentsAnchor` (và tương tác với mục 2) trên đường ĐẦY ĐỦ
+(có LLM, và/hoặc có `--style-trust` sau §51) — máy này chỉ có Qwen2.5-7B/Llama-3.2-3B cục bộ, không
+phải Qwen3.5-9B đã dùng để chốt "100%" trong handoff.md. Chạy được một so sánh TRƯỚC/SAU sạch (một
+biến = bản sửa, giữ nguyên model+cờ) nhưng con số tuyệt đối **không so được** với "100%" đã chốt —
+khác model. Muốn con số so được thì cần đúng Qwen3.5-9B.
 
 **Cách nghiệm thu.** Chạy `dhx eval` với đúng cấu hình đã chốt trên máy có Qwen3.5-9B, so trước/sau
 bản sửa — một biến, không gộp việc khác.
