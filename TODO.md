@@ -259,8 +259,13 @@ Một tiêu đề bị Enter thật cắt đôi hiện không biểu diễn đư
 một `i`** (§5). Cùng khe hở với việc `InlineHeadingSplitter` không tách nổi block dính hai heading.
 `LineBreakOffsets` (`8b95302`) mới chỉ giải quyết ca Shift+Enter trong cùng paragraph.
 
-Đắt nhất, đổi lược đồ, và **chưa tài liệu thật nào trong bộ đo chứng minh nó đáng**. Làm sau cùng,
-hoặc sau khi gặp một tài liệu hỏng đúng kiểu đó.
+**ĐÃ ĐO (§52.1): 0 trên 0/95 file.** Đoạn chỉ chứa `Chương II` không kèm tiêu đề không xuất hiện lần
+nào — vì 83/95 file là bản chuyển PDF đã gộp hết. Điều kiện mở lại KHÔNG thoả.
+
+Nhưng dạng này KHÔNG vô nghĩa, nó chỉ biểu hiện khác: PDF dán hai dòng thành
+`Chương II QUY ĐỊNH CHUNG`. Đó là §52.2, đã sửa ở `NumberingAudit.LabelledRx`, không cần đổi lược đồ.
+
+Đắt nhất, đổi lược đồ. Làm sau cùng, hoặc sau khi gặp một tài liệu hỏng đúng kiểu đó.
 
 **Bằng chứng hiện có, và nó chưa đủ.** §5 ghi đúng một ca: báo cáo thật có `i=452` chứa cả hai đề
 mục vì file gốc thiếu ngắt đoạn. Một ca trên hai tài liệu thật, và nó là ca NGƯỢC (hai heading trong
@@ -410,7 +415,7 @@ giá trị SAI hiện tại; sửa xong thì test đỏ và buộc phải cập 
 
 | ca | trạng thái |
 |---|---|
-| La Mã thường `i. ii. iii.` | **không phải thêm regex.** `i.` vừa là La Mã 1 vừa là chữ cái thứ 9; `IgnoreCase` sẽ đọc mọi `c.`/`d.`/`i.` trong dãy chữ cái thành cấp 1. Luật đúng phải nhìn **cả dãy** tìm `ii`/`iii`/`iv` — cùng hình dạng với luật ba bảng chữ cái ở §45.1 |
+| La Mã thường `i. ii. iii.` | **ĐÃ ĐO (§52.1): 19 mục trên 12/95 file, chỉ 5 mục chắc chắn** — không đáng, vì rủi ro đọc nhầm dãy chữ cái 601 mục. Và **không phải thêm regex**: `i.` vừa là La Mã 1 vừa là chữ cái thứ 9; `IgnoreCase` sẽ đọc mọi `c.`/`d.`/`i.` trong dãy chữ cái thành cấp 1. Luật đúng phải nhìn **cả dãy** tìm `ii`/`iii`/`iv` — cùng hình dạng với luật ba bảng chữ cái ở §45.1 |
 | numbering restart theo chương | chưa gặp trong tài liệu nào có đáp án |
 | phụ lục đánh số riêng | chưa gặp trong tài liệu nào có đáp án |
 | heading bị Enter cắt đôi | mục 6; Nghị định 30/2020 **bắt buộc** dạng này (`Chương II` một dòng, tiêu đề dòng kế) nên nó phổ biến hơn dự đoán cũ |

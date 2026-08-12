@@ -3642,3 +3642,89 @@ quy, nhưng bench không có fixture nhãn+số trần nên không đo thêm đ�
 **Chỉ nửa đầu của TODO mục 7 được giải quyết.** Hai mục còn lại (`1239`, `1256` — kết thúc bằng `:`
 và là item bullet nên bị trừ điểm hai lần) **chưa đụng tới, chưa có hướng cụ thể**. Và "Cách nghiệm
 thu" gốc của mục 7 đòi đo recall trên `key-human.key` — cần LLM, gộp vào §53.7.
+
+## §52. Rà việc còn lại: hai việc đo ra là KHÔNG đáng làm, và một crash tôi tự tạo ra
+
+### 52.1 Hai việc "làm được ngay" — đo trước khi cài, và cả hai đều dừng
+
+`TODO` mục 6 (heading trải hai paragraph) ghi điều kiện mở lại là "đo được tần suất thật".
+§45.2 phát hiện Nghị định 30/2020 **bắt buộc** dạng này nên tưởng đã đủ căn cứ. Đo:
+
+```
+đoạn CHỈ chứa "Chương II" (không kèm tiêu đề):  0 trên 0/95 file
+```
+
+**0/95.** Vì 83/95 file là bản chuyển PDF đã gộp hết, `Chương II` không bao giờ đứng riêng một
+đoạn. Điều kiện mở lại KHÔNG thoả — mục 6 giữ đóng, giờ có con số thay cho "chưa có bằng chứng".
+
+`TODO` mục 12 (La Mã thường `i. ii. iii.`):
+
+```
+lát cắt bắt đầu bằng La Mã thường: 19 trên 12/95 file
+trong đó KHÔNG THỂ là chữ cái đơn (ii, iii, iv…): 5
+```
+
+19 mục trên 6.357, chỉ 5 mục chắc chắn. Đổi lại là rủi ro đọc nhầm `c.`/`d.`/`i.` trong dãy chữ
+cái vốn có 601 mục. **Không đáng.** Giữ nguyên, cũng đã có con số.
+
+*Ghi nhận cách làm:* đo tần suất TRƯỚC khi cài đã chặn hai lần viết mã vô ích. Cả hai lần trực
+giác đều nói "đáng làm".
+
+### 52.2 Nhãn + số KHÔNG có dấu ngắt — lỗi thật, tìm ra nhờ đo lại
+
+§51 ghi rằng mọi bảng `--no-llm` trước đó đã lỗi thời. Đo lại thì lộ ra:
+**cả 2.645 mục sinh từ đoạn gộp đều nằm cấp 1**, cấp 2..9 giống hệt hai lượt.
+
+Truy tới `082_Bo_luat_Lao_dong_2019_EN`: **26 `Chapter` + 221 `Article`, tất cả cấp 1.** Không tài
+liệu nào có 26 chương và 221 điều mà chỉ một cấp — bất biến này đúng mà không cần đáp án.
+
+Nguyên nhân: `Chapter II EMPLOYMENT AND RECRUITMENT` **không có dấu ngắt sau số La Mã**, mà
+`LabelledRx` bắt buộc `[\.\):\-–]`. Nên `Chapter` không parse → tài liệu chỉ còn MỘT chữ ký →
+`SignatureTiers` đòi ≥2 chữ ký mới suy được lồng nhau → không làm gì.
+
+Đây chính là dạng hai dòng của Nghị định 30 **bị bản chuyển PDF dán liền** — tức mục 6 không hề
+vô nghĩa, nó chỉ biểu hiện ở hình dạng khác hoàn toàn với hình dạng mục 6 mô tả.
+
+Sửa: cho phép **dấu cách** làm phân cách, với chốt chặn phần còn lại phải bắt đầu bằng **chữ HOA**.
+Không có chốt đó thì `Điều 3 của Bộ luật này` và `khoản 2 Điều này` bị nhận thành đề mục. Chốt là
+tín hiệu cấu trúc, không phải danh sách từ.
+
+### 52.3 Crash tiềm ẩn do chính §51 tạo ra
+
+Lát cắt của `--split-merged` **dùng chung một `Index`** (chủ đích, để đáp án trong `keys/` không
+hỏng vì dịch chỉ số). `StructuralHierarchyResolver.Apply` mở đầu bằng
+`ordered.ToDictionary(h => h.Index, …)` — trùng khoá thì **`ArgumentException`**.
+
+Trước §51 hai thứ này không bao giờ gặp nhau: bộ suy cấp chỉ chạy ở đường có mô hình, còn
+`--split-merged` dùng với `--no-llm`. **Lật mặc định ở §51 đã ghép chúng lại.**
+
+Trên corpus nó chưa nổ vì mỗi đoạn gộp chỉ cho ra một lát đủ điều kiện làm tiêu đề (082: 300 mục /
+300 chỉ số phân biệt). Nhưng "chưa nổ trên tập đang đo" không phải "không nổ" — test gọi trực tiếp
+với hai lát cùng chỉ số thì ném ngay.
+
+Sửa: khoá theo **tham chiếu `HeadingRecord`** thay vì theo `Index`, ở cả `paths`, `SignatureTiers`
+và `StyleNestingDepths`. Hai bảng sau dùng indexer nên **không ném mà GHI ĐÈ** — hai lát cùng
+`Index` khác chữ ký (`Chương I` và `Điều 1` cùng đoạn) nhận chung một tầng, sai không dấu hiệu.
+Khoá theo tham chiếu cũng đúng nghĩa hơn: hai lát có text khác nhau thì phải có đường dẫn khác nhau.
+
+### 52.4 Đo được
+
+```
+bench (có đáp án)   P 92,3 · R 100 · F1 96 · cấp 100% · cha 100% · 6/7   (không đổi — guard giữ)
+95 file             6.357 mục (KHÔNG đổi) · cấp>1: 2.029 → 2.045
+082 (26 Ch + 221 Art)   cấp>1: 13 → 21
+9/95 file đổi cấp, 0 file mất mục, 0 crash
+426 test xanh (build sạch)
+```
+
+Mutation: khoá lại theo `Index` → 1 đỏ · bỏ nhánh không-dấu-ngắt → 3 đỏ. Cả hai bị giết.
+
+### 52.5 Một mutation test đầu tiên SỐNG SÓT, và đó là điều đáng ghi
+
+Lượt mutation đầu tôi viết đột biến `h => h` cho `paths` — vẫn là khoá tham chiếu, nên **không phải
+đột biến**. Nó "sống sót" vì tôi đột biến sai, không vì test yếu. Còn đột biến thứ hai thì sống sót
+**thật**: tôi chưa có test nào cho dạng `Chương II QUY ĐỊNH CHUNG`. Đã bù 8 test, trong đó ba test
+tham chiếu chéo là thứ giết đột biến "bỏ lookahead `\p{Lu}`".
+
+Bài học: mutation sống sót có hai nguyên nhân — test yếu, hoặc đột biến không thật. Phải phân biệt
+trước khi kết luận, nếu không thì hoặc bỏ qua lỗ hổng thật, hoặc đi viết test cho một thứ không hỏng.

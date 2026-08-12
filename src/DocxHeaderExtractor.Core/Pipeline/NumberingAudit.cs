@@ -138,11 +138,25 @@ public static class NumberingAudit
     private static readonly Regex TitleWordRx = new(@"\p{L}{2,}", RegexOptions.Compiled);
 
     /// <summary>
-    /// <c>Chương 1. Tổng quan</c>, <c>PHẦN I. Cơ sở</c>. Nhãn 2–12 chữ cái bắt đầu bằng chữ hoa,
-    /// rồi số Ả Rập hoặc La Mã, rồi dấu ngắt, rồi phần tên bắt đầu bằng CHỮ.
+    /// <c>Chương 1. Tổng quan</c>, <c>PHẦN I. Cơ sở</c> — và cả dạng KHÔNG có dấu ngắt:
+    /// <c>Chương II QUY ĐỊNH CHUNG</c>.
+    /// <para>
+    /// Dạng không dấu ngắt là hệ quả trực tiếp của Nghị định 30/2020: từ "Chương" cùng số thứ tự
+    /// nằm một dòng riêng, tiêu đề nằm dòng ngay dưới. Bản chuyển PDF→DOCX dán hai dòng lại thành
+    /// <c>Chương II QUY ĐỊNH CHUNG</c>, không còn dấu chấm ở giữa. Hậu quả đo được trên
+    /// <c>082_Bo_luat_Lao_dong_2019_EN</c>: 26 <c>Chapter</c> + 221 <c>Article</c> mà TẤT CẢ đều
+    /// cấp 1 — vì <c>Chapter</c> không parse được nên tài liệu chỉ còn MỘT chữ ký, mà
+    /// <see cref="StructuralHierarchyResolver"/> đòi từ hai chữ ký trở lên mới suy được quan hệ
+    /// lồng nhau. Không tài liệu nào có 26 chương và 221 điều mà chỉ một cấp.
+    /// </para>
+    /// <para>
+    /// <b>Chốt chặn tham chiếu chéo</b> là phần còn lại phải bắt đầu bằng chữ HOA. Thiếu nó thì
+    /// <c>Điều 3 của Bộ luật này</c> và <c>khoản 2 Điều này</c> — vốn nằm giữa câu — bị nhận thành
+    /// đề mục. Đây là tín hiệu cấu trúc (nhan đề mở đầu bằng chữ hoa), không phải danh sách từ.
+    /// </para>
     /// </summary>
     private static readonly Regex LabelledRx = new(
-        @"^\s*(\p{Lu}[\p{L}]{1,11})\s+(\d{1,3}|[IVXLCDM]{1,7})\s*[\.\):\-–]\s*(\p{L}.*)$",
+        @"^\s*(\p{Lu}[\p{L}]{1,11})\s+(\d{1,3}|[IVXLCDM]{1,7})(?:\s*[\.\):\-–]\s*|\s+(?=\p{Lu}))(\p{L}.*)$",
         RegexOptions.Compiled);
 
     /// <summary>
