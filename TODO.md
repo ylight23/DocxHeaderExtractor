@@ -15,6 +15,12 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
 - **Dump dùng để suy luận phải sinh lại bằng ĐÚNG cờ của lượt đang bàn, ngay trước khi đọc** (§33.3,
   §36.1). Đã sai hai lần liên tiếp: phân tích một artifact cũ rồi kết luận cho lượt chạy khác. File
   trong scratchpad không mang dấu vết cấu hình sinh ra nó.
+- **Số test dùng để kết luận phải lấy từ BUILD SẠCH** (§50.1). `dotnet test` gia tăng từng cho
+  **384** trong khi build sạch cho **397** — 13 test không chạy mà vẫn báo xanh. Đối chiếu với số
+  `[Fact]`/`[InlineData]` đếm trong mã nguồn; hai nguồn lệch nhau là dấu hiệu assembly cũ.
+- **Mã tạo ra số liệu báo cáo thì phải có test** (§50.2). Ba mảng mã của loạt §45–§48 sinh ra mọi
+  bảng trong handoff mà không có một test nào, kể cả một chỗ đã từng ném null và được sửa nhưng
+  không ghim lại.
 - **Không suy về ĐẦU VÀO từ ĐẦU RA của chính pipeline đang nghi ngờ** (§46.5). Pipeline trả về
   rỗng có hai nguyên nhân không phân biệt được từ kết quả: đầu vào rỗng, hoặc pipeline hỏng. Phải
   mở dữ liệu gốc ra đo. Khoảng cách giữa hai cách đọc ở §46 là 50 file và một khuyến nghị lấy lại
@@ -367,6 +373,11 @@ y hệt, `adminCount >= 3` mới là chỗ chặn. Đã trả về `8258036`.
 
 Dự đoán quan trọng nhất của giả thuyết thì **đúng**: giáo trình 11 VnAdmin → **13/15 Typed**. Nguyên
 lý dùng được, chỉ thiếu ngưỡng hiệu chỉnh trên tập tín hiệu mới.
+
+**Nay là test chạy được, không còn là ghi chú.**
+`DocumentModeTests.So_go_tay_thuan_bi_nhan_nham_thanh_hanh_chinh_KHUYET_TAT_DA_BIET` assert đúng
+giá trị SAI hiện tại; sửa xong thì test đỏ và buộc phải cập nhật. Kèm
+`Ky_hieu_rieng_cua_hanh_chinh_khong_duoc_mat_khi_sua_muc_11` bắt lỗi "đảo thứ tự nhánh" (§49.2).
 
 **Cách nghiệm thu.** Xem mục 4 — ba file giáo trình có nhãn chế độ là đủ.
 
