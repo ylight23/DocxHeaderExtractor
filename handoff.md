@@ -5070,3 +5070,29 @@ Kết luận hành động: chưa sửa route cho 14 ca này. Việc đúng ti�
 ở file ít hỏng conversion hơn. Nếu lỗi ranh giới lặp lại trên nhiều nguồn và có tín hiệu ổn định
 (run formatting còn tồn tại, hoặc mẫu payload đo được qua nhiều văn bản), lúc đó mới thiết kế luật
 cắt title/body riêng cho `Điều`.
+
+## §68. Kiểm luật Khoản cho 14 lỗi ranh giới 025: không phủ ca này
+
+Giả thuyết rẻ cần kiểm sau §67: nếu thân bài của `Điều` bắt đầu bằng `1.`/`1)` thì có thể dùng luật
+`KHOAN` đã có trong spec/vn_outline để cắt title/body mà không phụ thuộc từ vựng.
+
+Kết quả trên 14 cặp lỗi của file 025:
+
+| lát cắt | số ca |
+|---|--:|
+| tail sau title bắt đầu bằng `1.`/`1)` | 0/14 |
+| output dài hơn 3× median độ dài `Điều` trong cùng file | 10/14 |
+| dấu câu đầu tiên trong tail là `:` | 10/14 |
+
+Các tail bắt đầu bằng văn xuôi, ví dụ `Nghị định này áp dụng...`, `Trong Nghị định này...`,
+`Cơ quan cung cấp dữ liệu...`, không phải marker khoản số. Vì vậy luật `KHOAN` đúng về nguyên tắc
+nhưng **không cứu file 025**.
+
+Hai tín hiệu còn lại chỉ dùng để chẩn đoán, chưa đủ làm luật cắt:
+
+- Độ dài anh em phát hiện được nhiều heading bị dính body, nhưng không xác định điểm cắt.
+- Dấu `:` thường là cuối câu thân bài mở danh sách, không phải boundary giữa title và body.
+
+Kết luận giữ nguyên: chưa cài lexical/statistical split cho 025. Cần thêm ít nhất một key pháp quy
+khác, tốt nhất từ file DOCX/PDF-convert còn giữ ranh giới format hoặc từ nguồn gốc ít gộp hơn, trước
+khi viết luật title/body cho `Điều` không có khoản số.

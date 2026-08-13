@@ -1154,6 +1154,8 @@ P/R/F1 80,3%, đúng cấp 100%, đúng cha 100%**. 14 thừa/14 thiếu còn l�
 heading thật bị nối thêm thân bài do bản `.doc` chuyển đổi mất dấu hiệu định dạng/run boundary.
 Ghép cặp theo marker cho thấy 14/14 thiếu khớp đúng một thừa cùng `Điều N`; chưa cài lexical split
 cho nhóm này vì một file không đủ bằng chứng để phân biệt luật tổng quát với overfit.
+Kiểm luật `KHOAN` trên 14 cặp này cho kết quả 0/14 có `1.`/`1)` ngay sau title, nên §6.3b đúng
+nhưng không áp được cho file 025; các ca còn lại là `Điều` có thân bài văn xuôi trực tiếp.
 
 Checklist đo corpus: báo cáo theo `Mode + Status` phải có `avg candidates/file` và
 `avg headings/file`. `Candidates` không phải accuracy metric, nhưng là diagnostic metric rất nhạy:
