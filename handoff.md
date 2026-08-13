@@ -4940,6 +4940,17 @@ Kết luận chính: `VietnameseLegal` **không còn chỉ ra ~7 heading/file**.
 candidate là tập đoạn heuristic ban đầu; route pháp quy đọc marker theo lát cắt paragraph gộp nên
 output heading mới là con số có nghĩa cho nhóm này.
 
+Nguyên tắc mới từ ca này: **candidate/output per file là health check rẻ và nhạy cho từng route**.
+Không cần answer key để phát hiện một route đang chết sai cách; chỉ cần so con số với kỳ vọng hình
+dạng của thể loại. Ví dụ `VietnameseLegal` ~7 candidate/file là bất thường, còn 150,2 heading/file
+sau builder riêng mới hợp lý với luật/nghị định. Checklist mỗi lần đo corpus:
+
+1. Tách theo `Mode` + `Status`, không gộp toàn corpus.
+2. Ghi `files`, `candidates`, `headings`, `avg candidates/file`, `avg headings/file`.
+3. So với kỳ vọng tối thiểu của thể loại: pháp quy phải có nhiều `Điều`; tài liệu đấu thầu/giáo
+   trình có thể hàng trăm heading; `ConversionFailure` không được tính như mode trích xuất.
+4. Nếu một mode lệch hình dạng mạnh, kiểm route/builder trước khi gán tay thêm key.
+
 Các file `VietnameseLegal/Normal` thấp nhất sau bản vá vẫn không còn dị dạng 1 heading/file:
 
 | file | headings |
@@ -4959,7 +4970,21 @@ precision/level thật, đặc biệt vì `--split-merged` sinh nhiều heading 
 
 Việc còn lại sau §65:
 
-1. Gán tay 1 file pháp quy đại diện có paragraph gộp nặng (`001` hoặc `025`) để đo precision thật
-   của `LegalStructuredOutline`.
-2. Gán tay 1 file trong 9 file partial TOC để đo precision thật của bản vá OutlineLevelDriven §64.
-3. Gán tay 3 file `TypedNumbering` đại diện — nhóm lớn nhất corpus vẫn chưa có full key.
+Ba route hiện có ba trạng thái khác nhau, và **chưa route nào có precision đầy đủ sau các bản vá**:
+
+| route | recall | precision |
+|---|---:|---:|
+| OutlineLevelDriven | 74,2% trên `partial_toc` | chưa đo |
+| LegalStructured | chưa đo | chưa đo |
+| TypedNumbering | chưa đo | chưa đo |
+
+Thứ tự theo rủi ro:
+
+1. **Gán partial key cho pháp quy** — ưu tiên `025` nếu muốn nhỏ, hoặc một chương của `001` nếu cần
+   nhiều mẫu hơn. Phải đối chiếu nguồn gốc/PDF/thuvienphapluat, không gán từ output pipeline. Đáp
+   án phải có cấp, không chỉ text.
+2. **Gán full/partial key cho một file trong 9 file partial TOC** — chọn file có nhiều mục thu thêm
+   nhất sau §64 để đo precision thật của 214 mục mới cứu.
+3. **Gán 3 file `TypedNumbering` đại diện** (`04_giao_trinh`, `03_tai_chinh_ke_toan`,
+   `07_system_generated`), có cả cấp. Nhóm này lớn nhất corpus nhưng chưa bị sửa route gần đây, nên
+   rủi ro hồi quy thấp hơn pháp quy/outline-level.

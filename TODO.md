@@ -504,6 +504,10 @@ giả. Lỗi thật là `auto:vietnamese-legal` dùng nhầm `AdministrativeOutl
 Việc còn nợ của nhóm này không phải coverage nữa mà là **full answer key** cho 1 file pháp quy gộp
 nặng (`001` hoặc `025`) để đo precision/cấp thật.
 
+Checklist mới cho mọi lượt đo corpus: luôn ghi `avg candidates/file` và `avg headings/file` theo
+`Mode + Status`. Đây là health check rẻ: chưa cần đáp án vẫn phát hiện được route chết sai hình dạng
+(như `VietnameseLegal` 7 candidate/file).
+
 ---
 
 ## 12. Bốn ca của spec vẫn treo, ba trong đó không có dữ liệu

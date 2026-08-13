@@ -86,6 +86,9 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
 - [ ] Các chế độ vẫn thiếu full key/đo precision ngoài phân phối cũ:
       `OutlineLevelDriven` (cần full key 1 file partial TOC), `TypedNumbering` (cần 3 file đại diện),
       `SemanticOnly/ConversionFailure` (không đo như mode trích xuất).
+- [ ] Mỗi lần đo corpus phải ghi health check theo `Mode + Status`: `files`, `candidates`,
+      `headings`, `avg candidates/file`, `avg headings/file`. Nếu một mode lệch mạnh khỏi kỳ vọng
+      thể loại, kiểm route/builder trước khi gán tay thêm key.
 - [ ] 5 thể loại ở spec §14.4 chưa có tài liệu mẫu nào
 
 ---

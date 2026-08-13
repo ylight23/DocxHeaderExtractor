@@ -1148,3 +1148,8 @@ Ràng buộc đã chốt:
 Kết luận: route pháp quy không còn mất trắng outline. Nhưng đây mới là đo coverage/output; chưa có
 full answer key nên chưa phát biểu precision. Cần gán tay ít nhất một file pháp quy gộp nặng
 (`001` hoặc `025`) để đo đúng/sai heading và cấp.
+
+Checklist đo corpus: báo cáo theo `Mode + Status` phải có `avg candidates/file` và
+`avg headings/file`. `Candidates` không phải accuracy metric, nhưng là diagnostic metric rất nhạy:
+nếu số này lệch hẳn khỏi kỳ vọng thể loại thì ưu tiên kiểm route/builder trước khi mở rộng answer
+key.
