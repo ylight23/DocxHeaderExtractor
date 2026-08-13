@@ -16,6 +16,7 @@ public sealed record DocScore(
     IReadOnlyList<int> FalsePositives,
     IReadOnlyList<int> FalseNegatives,
     IReadOnlyList<(int Index, int Got, int Expected)> WrongLevels,
+    bool PartialTruth,
     long ElapsedMs)
 {
     public double Precision => ResultCount == 0 ? 0 : (double)TruePositive / ResultCount;
@@ -87,7 +88,10 @@ public static class Evaluator
         var got = outline.Headings.ToDictionary(h => h.Index, h => h.Level);
 
         var tp = got.Keys.Where(key.Contains).ToList();
-        var fp = got.Keys.Where(i => !key.Contains(i)).OrderBy(i => i).ToList();
+        var fp = key.IsPartial
+            ? new List<int>()
+            : got.Keys.Where(i => !key.Contains(i)).OrderBy(i => i).ToList();
+        var resultCount = key.IsPartial ? tp.Count : got.Count;
         var fn = key.Indexes.Where(i => !got.ContainsKey(i)).OrderBy(i => i).ToList();
 
         // Chỉ chấm cấp trên phần giao, và chỉ với những dòng đáp án có ghi cấp.
@@ -105,7 +109,7 @@ public static class Evaluator
         return new DocScore(
             File: file,
             TruthCount: key.Count,
-            ResultCount: got.Count,
+            ResultCount: resultCount,
             CandidateCount: candidateIndexes.Count,
             TruePositive: tp.Count,
             CandidateHits: key.Indexes.Count(candidateIndexes.Contains),
@@ -115,6 +119,7 @@ public static class Evaluator
             FalsePositives: fp,
             FalseNegatives: fn,
             WrongLevels: wrong,
+            PartialTruth: key.IsPartial,
             ElapsedMs: outline.ElapsedMs);
     }
 

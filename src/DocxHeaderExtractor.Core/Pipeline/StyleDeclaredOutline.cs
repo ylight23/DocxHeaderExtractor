@@ -225,6 +225,43 @@ public static class StyleDeclaredOutline
     }
 
     /// <summary>
+    /// Outline do chính <c>w:outlineLvl</c> khai trên paragraph/style. Khác với
+    /// <see cref="Build"/>: style Heading built-in chỉ là một cách Word UI đặt outline level, còn
+    /// nhiều template thật khai <c>w:outlineLvl</c> qua style riêng hoặc trực tiếp trên paragraph.
+    /// Nhánh <c>auto:outline-level</c> phải đọc tín hiệu này, không được thu hẹp về
+    /// <c>HasBuiltInHeadingStyle</c>.
+    /// </summary>
+    public static List<HeadingRecord> BuildFromOutlineLevel(SlimDocument document)
+    {
+        var frontMatter = (int)(document.Paragraphs.Count * FrontMatterFraction);
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var result = new List<HeadingRecord>();
+
+        foreach (var p in document.Paragraphs.OrderBy(p => p.Index))
+        {
+            if (p.OutlineLevel is not >= 0 or > 8 || string.IsNullOrWhiteSpace(p.Text)) continue;
+            if (p.Corrupt) continue;                                   // X1
+            if (p.InTableOfContents) continue;                         // TOC lặp lại heading thân bài.
+            if (p.StyleId?.StartsWith("TOC", StringComparison.OrdinalIgnoreCase) == true) continue;
+            if (Caption.IsMatch(p.Text)) continue;                     // X2
+            if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
+
+            result.Add(new HeadingRecord
+            {
+                Index = p.Index,
+                Level = Math.Clamp(p.OutlineLevel.Value + 1, 1, 9),
+                Text = p.Text,
+                Source = HeadingSource.Structure,
+                Confidence = 1.0,
+                ConfidenceBasis = "outline_level_declared",
+                DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
+            });
+        }
+
+        return result;
+    }
+
+    /// <summary>
     /// Con không được NÔNG hơn cha. Luật <c>numPr → 2</c> / <c>không số → 1</c> đúng trên khoá luận
     /// nhưng trên báo cáo thực tập tạo ra cây lộn ngược: <c>Quá trình thành lập</c> (có numPr) là cấp
     /// 2, còn <c>Giai đoạn 1994 – 2004</c> ngay dưới nó không đánh số nên thành cấp 1 — đo được 6 ca.

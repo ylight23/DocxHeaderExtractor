@@ -199,7 +199,9 @@ rồi bấm **Kiểm tra mode** trước khi **Phân tích**.
 
 Để mở rộng answer key từ mục lục Word, dùng `dhx toc-keys <thư-mục>`. Mặc định chỉ ghi file đạt
 ngưỡng khớp 80%; thêm `--toc-partial --toc-match-threshold 0.4` để ghi các cặp mục lục khớp chính
-xác dưới dạng `partial_toc` — đây là đáp án từng phần, không phải outline đầy đủ.
+xác dưới dạng `partial_toc` — đây là đáp án từng phần, không phải outline đầy đủ. `dhx eval` nhận
+diện `partial_toc` và chỉ phạt thiếu/sai cấp trên các cặp đã gán, không phạt heading ngoài vùng TOC
+khớp.
 
 ### OpenRouter RPC (không cần GPU)
 

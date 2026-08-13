@@ -46,6 +46,18 @@ public class AnswerKeyTests
         Assert.Equal(2, key.Count);
         Assert.Equal(1, key.LevelOf(7));
         Assert.Equal(2, key.LevelOf(2));
+        Assert.False(key.IsPartial);
+    }
+
+    [Fact]
+    public void Partial_toc_comment_marks_key_as_partial()
+    {
+        var key = AnswerKey.Parse("""
+            # Đáp án SUY TỪ MỤC LỤC (partial_toc) — vidu.docx
+            @body[1]/p[2] 1
+            """);
+
+        Assert.True(key.IsPartial);
     }
 
     [Fact]
@@ -135,6 +147,24 @@ public class EvaluatorTests
         Assert.Equal(2.0 / 3, s.Precision, 6);   // 1 và 2 nằm trong đáp án
         Assert.Equal(2.0 / 3, s.Recall, 6);
         Assert.Equal(0.5, s.LevelAccuracy, 6);   // chấm 2 dòng, đúng 1
+    }
+
+    [Fact]
+    public void Partial_key_khong_phat_false_positive_ngoai_vung_da_gan()
+    {
+        var key = AnswerKey.Parse("""
+            # partial_toc
+            1 1
+            2 2
+            """);
+        var outline = Outline((1, 1), (2, 2), (4, 1));   // 4 có thể đúng, partial key không biết.
+
+        var s = Evaluator.Score("t", outline, [1, 2, 4], key);
+
+        Assert.True(s.PartialTruth);
+        Assert.Empty(s.FalsePositives);
+        Assert.Equal(1.0, s.Recall, 6);
+        Assert.Equal(1.0, s.LevelAccuracy, 6);
     }
 
     [Fact]

@@ -23,12 +23,14 @@ public sealed class AnswerKey
     private readonly Dictionary<string, int?> _stableLevels;
 
     public string? Title { get; }
+    public bool IsPartial { get; }
 
-    private AnswerKey(Dictionary<int, int?> levels, Dictionary<string, int?> stableLevels, string? title)
+    private AnswerKey(Dictionary<int, int?> levels, Dictionary<string, int?> stableLevels, string? title, bool isPartial)
     {
         _levels = levels;
         _stableLevels = stableLevels;
         Title = title;
+        IsPartial = isPartial;
     }
 
     public IReadOnlyCollection<int> Indexes => _levels.Keys;
@@ -58,17 +60,20 @@ public sealed class AnswerKey
                 throw new InvalidOperationException($"Key ghi hai cấp khác nhau cho paragraph {index}.");
             resolved[index] = level;
         }
-        return new AnswerKey(resolved, [], Title);
+        return new AnswerKey(resolved, [], Title, IsPartial);
     }
 
     public static AnswerKey Parse(string text, string? title = null)
     {
         var levels = new Dictionary<int, int?>();
         var stableLevels = new Dictionary<string, int?>(StringComparer.Ordinal);
+        var isPartial = false;
 
         foreach (var rawLine in text.Split('\n'))
         {
             var line = rawLine;
+            if (line.Contains("partial_toc", StringComparison.OrdinalIgnoreCase))
+                isPartial = true;
             var hash = line.IndexOf('#');
             if (hash >= 0) line = line[..hash];
             line = line.Trim();
@@ -103,7 +108,7 @@ public sealed class AnswerKey
             }
         }
 
-        return new AnswerKey(levels, stableLevels, title);
+        return new AnswerKey(levels, stableLevels, title, isPartial);
     }
 
     public static AnswerKey Load(string path) =>

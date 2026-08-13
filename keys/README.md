@@ -43,6 +43,11 @@ luận…) để công cụ này có ích.
 Đo lại với `--toc-match-threshold 0.4 --toc-partial` trên cùng corpus cho **9/95 file** có partial
 key, tổng **743 cặp** exact-match. Cả 9 file đều thuộc `OutlineLevelDriven`, nên kết quả này hữu ích
 để mở rộng đối chứng cho nhóm có TOC/outline Word, nhưng **chưa mở khoá được `TypedNumbering`**.
+Vì Word sinh TOC field từ outline/style chứ không từ số gõ tay thuần, đây là loại trừ cơ chế chứ
+không chỉ là corpus thiếu may mắn.
+
+`dhx eval` đọc header `partial_toc` và chấm theo phạm vi từng phần: không phạt false positive ngoài
+các mục đã khớp TOC, và không đưa partial key vào calibration profile.
 
 ## Tài liệu mật
 

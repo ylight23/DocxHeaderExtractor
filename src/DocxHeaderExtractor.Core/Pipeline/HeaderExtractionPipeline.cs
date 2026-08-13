@@ -501,8 +501,10 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
         var headings = route switch
         {
-            "manual:style" or "auto:outline-level" or "auto:custom-style" =>
+            "manual:style" or "auto:custom-style" =>
                 StyleDeclaredOutline.Build(slim),
+            "auto:outline-level" =>
+                StyleDeclaredOutline.BuildFromOutlineLevel(slim),
             "manual:numbering" or "auto:numbering" =>
                 StyleDeclaredOutline.BuildFromNumbering(slim),
             "manual:administrative" =>

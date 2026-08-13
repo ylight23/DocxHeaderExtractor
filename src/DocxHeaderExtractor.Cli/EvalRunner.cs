@@ -94,7 +94,8 @@ public static class EvalRunner
                         !options.DisableLlm && options.Backend == InferenceBackend.OpenRouter), ct);
                 var outline = run.Outline;
                 scores.Add(Evaluator.Score(name, outline, candidates, key));
-                calibration.Add(outline, key);
+                if (!key.IsPartial)
+                    calibration.Add(outline, key);
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {
@@ -142,6 +143,8 @@ public static class EvalRunner
         // một lượt CPU và một lượt GPU trông giống hệt nhau trên giấy. Cùng họ với bẫy §4.3 (cấu
         // hình đo lệch cấu hình chạy) và §4.4 (log nói dối).
         sb.AppendLine($"Cấu hình: {PrecisionCalibrationProfile.ConfigurationFor(options)}");
+        if (suite.Docs.Any(d => d.PartialTruth))
+            sb.AppendLine("Đáp án partial_toc: không phạt false positive ngoài các cặp đã khớp TOC; P/F1 chỉ đọc trong phạm vi đã gán.");
         sb.AppendLine();
         sb.AppendLine("| Tài liệu | Đáp án | Trả về | Ứng viên | P | R | Cấp | Thừa | Thiếu | Sai cấp |");
         sb.AppendLine("|---|--:|--:|--:|--:|--:|--:|--:|--:|--:|");

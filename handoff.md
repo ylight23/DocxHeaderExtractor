@@ -4555,3 +4555,72 @@ vẫn hữu ích như công cụ chẩn đoán cho các file Word có TOC thật
 rộng answer key cho nhóm `TypedNumbering`.
 
 **492 test xanh** (`dotnet test --no-restore`).
+
+## §63. Partial TOC bench mở ra nhóm OutlineLevelDriven, và phát hiện nhánh này yếu ngoài bench cũ
+
+Sau §62.3, thêm cờ:
+
+```
+dhx toc-keys <dir> --toc-match-threshold 0.8 --toc-partial
+```
+
+Khác với hạ threshold thường, file `.key` ghi header `partial_toc`. `dhx eval` đọc header này và
+chấm như đáp án từng phần: chỉ phạt thiếu/sai cấp trên các cặp TOC đã khớp chính xác, không phạt
+heading ngoài vùng đã gán, và không dùng partial key để build calibration profile.
+
+Kết quả trên `todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam`: 9/15 file có partial key, tổng
+**743 cặp exact-match**. Cả 9 file đều thuộc `OutlineLevelDriven`.
+
+Lượt đo trước khi sửa builder cho `auto:outline-level`:
+
+```
+P 100% · R 6.6% · F1 12.4% · đúng cấp 100% · đúng cha 100%
+```
+
+Nguyên nhân trực tiếp: route `auto:outline-level` gọi nhầm `StyleDeclaredOutline.Build`, tức chỉ chọn
+`HasBuiltInHeadingStyle`, trong khi mode này phải đọc chính `w:outlineLvl`. Đã tách
+`StyleDeclaredOutline.BuildFromOutlineLevel`: chọn paragraph có `OutlineLevel`, cấp = `outlineLvl+1`,
+loại TOC/caption/corrupt.
+
+Đo lại cùng cấu hình (`dhx eval <temp-bench> --no-llm`):
+
+```
+9 tài liệu partial_toc · 743 cặp
+P 100% · R 45.4% · F1 62.4% · đúng cấp 100% · đúng cha 100%
+candidate recall 62.4%
+1/9 file đạt tuyệt đối
+```
+
+Bảng tóm tắt:
+
+| file | key | matched by outline | recall |
+|---|--:|--:|--:|
+| 026 | 68 | 0 | 0% |
+| 027 | 92 | 63 | 68.5% |
+| 031 | 22 | 22 | 100% |
+| 033 | 89 | 45 | 50.6% |
+| 036 | 117 | 38 | 32.5% |
+| 037 | 126 | 53 | 42.1% |
+| 038 | 75 | 39 | 52.0% |
+| 039 | 78 | 38 | 48.7% |
+| 040 | 76 | 39 | 51.3% |
+
+Điểm quan trọng: đây không phải lỗi cấp — phần bắt được đúng cấp/cha 100%. Lỗi là chọn mục. File
+026 cho thấy một lớp khác hẳn: TOC trỏ vào các đề mục nằm trong bảng điều khoản (`tbl=1`) như
+`Scope of Bid`, `Source of Funds`, `Bid Security`; nhiều đoạn không có `outlineLvl` và score chỉ
+0.35 nên không vào outline tất định. Vì vậy F1 96 của bench cũ không ngoại suy được sang nhóm hợp
+đồng World Bank.
+
+Kết luận về hướng TOC → TypedNumbering cũng đóng lại: 9 file có TOC đều là `OutlineLevelDriven`
+không phải tình cờ. Word sinh TOC field từ outline/style; tài liệu có TOC thật gần như tự mang tín
+hiệu outline/style, còn `TypedNumbering` là số gõ tay thuần. Nói ngắn: **TOC ⊥ TypedNumbering là
+loại trừ cơ chế, không phải xui corpus**.
+
+Việc tiếp theo có căn cứ:
+
+1. Với `OutlineLevelDriven`: nghiên cứu lớp heading trong bảng/điều khoản World Bank trước khi tin
+   auto-route cho tài liệu ngoài bench cũ.
+2. Với `TypedNumbering`: gán tay 3 file, mỗi file một nguồn khác nhau (`04_giao_trinh`,
+   `03_tai_chinh_ke_toan`, `07_system_generated`), và phải gán cả cấp.
+
+**497 test xanh** (`dotnet test --no-restore`).
