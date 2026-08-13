@@ -2780,8 +2780,8 @@ trong hai phiên việc kiểm code trước khi viết cứu được một tha
 |---|---|---|
 | §3.6 paragraph hỏng (`is_doubled`) | `CorruptParagraphDetector` | `--skip-corrupt` |
 | §5.5 phân loại bảng ba nhóm | `TableRoleClassifier` | `--skip-data-tables` |
-| §4.3 chế độ `vn-legal` | `DocumentModeClassifier` | (chẩn đoán) |
-| §4.2 chế độ `toc-anchored`, `custom-style` | `DocumentModeClassifier` | (chẩn đoán) |
+| §4.3 chế độ `vn-legal` | `DocumentModeClassifier` | (lúc đó: chẩn đoán; **superseded by §61**) |
+| §4.2 chế độ `toc-anchored`, `custom-style` | `DocumentModeClassifier` | (lúc đó: chẩn đoán; **superseded by §61**) |
 | kiểm chéo hình dạng anh em | `SiblingShapeAudit` | `--audit-sibling-shape` |
 
 `vn-legal` phải kiểm **TRƯỚC** ký hiệu hành chính: `Điều 5.` cũng khớp mẫu `\d+\.` của lớp hành
@@ -2805,8 +2805,9 @@ nằm giữa hai bên ngưỡng, không chỉ hai ca ở hai đầu.
 Toàn bộ phần cài trong mục này **chưa có số đo đầu-cuối** — đúng như yêu cầu "làm hết rồi test sau".
 Mỗi cờ phải đo riêng trên `key-human.key` + bench trước khi bàn chuyện đổi mặc định.
 
-Và điều lớn nhất vẫn đứng nguyên: **chế độ tài liệu mới là chẩn đoán, chưa luật nào đổi hành vi theo
-nó.** Đó là chỗ spec kỳ vọng tạo khác biệt, và cũng là chỗ rủi ro nhất.
+Và điều lớn nhất vẫn đứng nguyên ở thời điểm §40: **chế độ tài liệu mới là chẩn đoán, chưa luật nào
+đổi hành vi theo nó.** Trạng thái này đã lỗi thời sau §61: mode nay được trả ra UI/API và tự route
+deterministic khi chạy `--no-llm`.
 
 ## 41. Người dùng chốt định nghĩa outline — và nó cho 100% tuyệt đối
 
@@ -3287,9 +3288,9 @@ song ngữ (9/10). **Tôi đã đổi một cái sọt quá rộng lấy một c
 đứng TRƯỚC nhánh số gõ tay, nên mọi tài liệu mà mốc chính là `1.1`/`2.3.1` — tức toàn bộ giáo
 trình — luôn ra `VietnameseAdministrative` và không bao giờ tới được `TypedNumbering`.
 
-Đây là lỗi logic chứng minh được bằng chính hai biểu thức, không cần dữ liệu. Nhưng SỬA nó thì
-cần đáp án: phải quyết định tài liệu chỉ có `1.1` thuộc chế độ nào, và không tài liệu nào trong
-`keys/` thuộc nhóm đó. Nên tôi dừng ở chỗ ghi nhận, không đoán.
+Đây là lỗi logic chứng minh được bằng chính hai biểu thức, không cần dữ liệu. Ở thời điểm §48 tôi
+dừng ở chỗ ghi nhận, không đoán. Trạng thái này đã lỗi thời sau §61: `TypedNumbering` nay được kiểm
+trước nhánh hành chính, kèm test giữ chiều `I.`/`a)` không mất nhánh hành chính.
 
 ### 48.4 Không được kết luận gì từ §48.1
 
@@ -3391,6 +3392,10 @@ bỏ lát đầu tiên của `Segments` → 2 đỏ · `Segments` luôn trả r�
 `--split-merged` mặc định bật → 1 đỏ · `mode=` luôn in `Unknown` → 1 đỏ.
 
 ### 50.3 Khuyết tật mục 11 nay là test chạy được, không còn là ghi chú
+
+**Superseded by §61.** Đoạn dưới ghi trạng thái cũ: test cố tình assert giá trị sai để ghim bug.
+Sau §61 test đã đổi thành `So_go_tay_thuan_duoc_nhan_la_typed_numbering` và assert
+`TypedNumbering`.
 
 `DocumentModeTests.So_go_tay_thuan_bi_nhan_nham_thanh_hanh_chinh_KHUYET_TAT_DA_BIET` dựng tài liệu
 thuần số gõ tay (20 đề mục `N.1`/`N.2`, 0 style Heading) và **assert giá trị SAI hiện tại**

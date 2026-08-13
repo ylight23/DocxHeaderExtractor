@@ -436,9 +436,10 @@ TypedNumber               ^\s*\d+(\.\d+)+
 
 Khớp cùng chuỗi `1.1`, và nhánh hành chính đứng **trước** trong `Decide`.
 
-**Đã thử sửa hai lần, cả hai hỏng (§49).** Bỏ mẫu dùng chung → tỉ lệ cao nhất trên cả 95 tài liệu
-còn **0,129 < ngưỡng 0,15**, chế độ thành **nhánh chết**. Tách vai trò phân biệt/độ mạnh → phân bố
-y hệt, `adminCount >= 3` mới là chỗ chặn. Đã trả về `8258036`.
+**Lịch sử trước khi sửa (§49).** Bỏ mẫu dùng chung → tỉ lệ cao nhất trên cả 95 tài liệu còn
+**0,129 < ngưỡng 0,15**, chế độ thành **nhánh chết**. Tách vai trò phân biệt/độ mạnh → phân bố y
+hệt, `adminCount >= 3` mới là chỗ chặn. Hướng sửa cuối cùng không xoá mẫu dùng chung, mà cho
+`TypedNumbering` thắng trước khi xét nhánh hành chính.
 
 Dự đoán quan trọng nhất của giả thuyết thì **đúng**: giáo trình 11 VnAdmin → **13/15 Typed**. Nguyên
 lý dùng được, chỉ thiếu ngưỡng hiệu chỉnh trên tập tín hiệu mới.
