@@ -5337,3 +5337,29 @@ Ví dụ:
 Kết luận mới: với RFC text-layout, bài toán route không chỉ là filter TOC/footer. Regex số thuần
 đúng cho section heading cũng bắt nhiều **numbered prose/reference/table entries**. Bản vá an toàn
 nhất vẫn là filter theo vùng/artefact trước, nhưng exact sẽ chưa lên nếu chưa có tín hiệu title/body.
+
+## §75. Typed RFC: tách mục tiêu exact-title và outline điều hướng
+
+Từ §71–§74, exact-title cho RFC 092 là 0% dù 61/64 heading nguồn có output cùng stableId/marker bắt
+đầu bằng title nguồn. Sau vá level §72, 61/61 ca starts-with có cấp đúng.
+
+Đọc đúng hơn:
+
+| mục tiêu | metric hiện tại |
+|---|---:|
+| writeback/span chính xác | exact P/R/F1 0% |
+| outline điều hướng | 61/64 heading nguồn usable theo starts-with + same stableId/marker + đúng level |
+
+Ba mục chưa usable:
+
+- `1. Introduction`
+- `A. Collected ABNF`
+- `B. Changes from RFC 7234`
+
+Với tài liệu text-layout một paragraph ≈ một trang, ranh giới title/body không có tín hiệu độc lập
+trong file sau chuyển đổi. Vì vậy:
+
+- Nếu mục tiêu là cây điều hướng/mục lục nhấp được: route typed đã có nền tốt (marker/title-prefix
+  + level), việc tiếp theo là lọc nhiễu để giảm returned 300.
+- Nếu mục tiêu là writeback DOCX với span title/body chính xác: RFC text-layout nên coi là
+  review/nguồn kém, không auto-accept exact title.

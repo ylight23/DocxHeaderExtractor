@@ -920,6 +920,25 @@ Lý do gốc rễ, đo được từ `styles.xml`:
 
 Khi cả style, numbering, số gõ tay và định dạng đều vắng mặt, ranh giới heading **không tồn tại trong file**. Không model nào — 9B, 235B, hay bất kỳ — tạo lại được từ hư không. Thiết kế đúng trong tình huống đó là abstain và chuyển người duyệt, không phải đoán.
 
+Ca RFC 9111 đã kiểm chứng giới hạn này trên tài liệu PDF/text-layout kiểu **một paragraph ≈ một
+trang**. Marker section còn thấy được, nhưng ranh giới title/body bên trong cùng một section không
+còn tín hiệu độc lập:
+
+| luật thử | kết quả |
+|---|---:|
+| `KHOAN`/payload `1.` trong legal | 0/21 |
+| dấu câu trong legal | 0/21 |
+| dấu câu trong RFC, cắt blind tại dấu câu đầu tiên sau marker | 0/61 |
+| độ dài `> 3× median` trong legal | 16/21 nhưng bắn nhầm 4 heading đúng |
+| marker-last trong RFC | bị bác nếu chỉ nhìn marker: registry/reference cuối tài liệu lặp marker |
+
+Vì vậy phải tách hai mục tiêu:
+
+- **outline điều hướng**: có thể dùng được nếu marker/title-prefix và level đúng, dù title còn dính
+  body; RFC 9111 đạt 61/64 starts-with cùng stableId/marker và level đúng 61/61 sau builder typed.
+- **writeback/span chính xác**: không được auto-accept trên text-layout mất ranh giới; cần nguồn tốt
+  hơn hoặc review.
+
 **Tập chế độ chưa chắc đã đầy đủ.** Bản đầu của spec này có 5 chế độ; ba tài liệu hành chính tiếp theo phá vỡ ngay một trong số đó và buộc phải thêm ba chế độ mới. Không có cơ sở nào để tin rằng 8 chế độ hiện tại là đủ. Mỗi thể loại tài liệu mới đều có khả năng lộ ra một chế độ chưa biết.
 
 **Mức kiểm chứng rất khác nhau giữa các chế độ:**
@@ -928,7 +947,7 @@ Khi cả style, numbering, số gõ tay và định dạng đều vắng mặt, 
 |---|---|---|
 | `toc-anchored` | A | có (TOC, 28 mục) |
 | `numpr-driven` | A (bỏ TOC) | có |
-| `typed-numbering` | B | **không** — chỉ kiểm chứng nội tại |
+| `typed-numbering` | B, RFC 9111 | có cho RFC 9111; exact title 0%, điều hướng 61/64 |
 | `vn-administrative` | C, D, E | **không** |
 | `format-driven` | C | **thất bại có chứng cứ** (thiếu mục) |
 | `outlinelvl-driven` | — | **chưa bao giờ** |
