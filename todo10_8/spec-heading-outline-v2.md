@@ -1129,10 +1129,12 @@ Ràng buộc đã chốt:
 
 - Chấp nhận marker có dấu ngắt (`Điều 5.`, `Article 7:`, `Chapter II -`).
 - Chấp nhận marker không dấu ngắt do PDF-convert (`Chương II QUY ĐỊNH CHUNG`) chỉ khi phần sau
-  bắt đầu bằng chữ hoa; không bắt tham chiếu giữa câu như `Điều 3 của Bộ luật này`.
+  bắt đầu bằng chữ hoa; với cấp cao `Phần/Chương/Mục` phải là từ tiêu đề IN HOA để không bắt tham
+  chiếu chéo như `Mục 3 Chương II Luật Giao dịch điện tử`.
 - Chuẩn hoá Unicode Form C trước regex để bắt nhãn dấu tổ hợp.
 - Khi bật `--split-merged`, một paragraph có thể sinh nhiều heading cùng `Index`; validator/key
-  phải phân biệt bằng `(Index, Text)`, không chỉ `Index`.
+  phải phân biệt bằng `(Index, Text)`, không chỉ `Index`. Với answer key loại này, text heading nằm
+  ở comment `# ...` là một phần của danh tính chấm điểm, không chỉ là ghi chú.
 - `1.`/`2.` sau tiêu đề `Điều` là khoản/payload, không phải heading pháp quy.
 - Không cho `StructuralHierarchyResolver` generic ghi đè cấp của route này. `Điều 4/5/...` nhìn
   giống list số thường, nhưng cấp của `Điều` đã được hệ pháp quy khai báo là level 4; suy từ chữ ký
@@ -1145,9 +1147,11 @@ Ràng buộc đã chốt:
 | VietnameseLegal / Normal | 23 | 3.455 | 150,2 |
 | SemanticOnly / ConversionFailure | 6 | 6 | 1,0 |
 
-Kết luận: route pháp quy không còn mất trắng outline. Nhưng đây mới là đo coverage/output; chưa có
-full answer key nên chưa phát biểu precision. Cần gán tay ít nhất một file pháp quy gộp nặng
-(`001` hoặc `025`) để đo đúng/sai heading và cấp.
+Kết luận cập nhật: route pháp quy không còn mất trắng outline và đã có full key đầu tiên cho
+`025_ND_47-2020_Chia_se_du_lieu_so` từ nguồn pháp quy ngoài pipeline. Đo với
+`--no-llm --split-merged` sau khi chặn tham chiếu chéo `Chương/Mục`: **71 đáp án, 71 trả về,
+P/R/F1 80,3%, đúng cấp 100%, đúng cha 100%**. 14 thừa/14 thiếu còn lại là cùng một lỗi ranh giới:
+heading thật bị nối thêm thân bài do bản `.doc` chuyển đổi mất dấu hiệu định dạng/run boundary.
 
 Checklist đo corpus: báo cáo theo `Mode + Status` phải có `avg candidates/file` và
 `avg headings/file`. `Candidates` không phải accuracy metric, nhưng là diagnostic metric rất nhạy:

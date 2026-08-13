@@ -168,6 +168,34 @@ public class EvaluatorTests
     }
 
     [Fact]
+    public void Key_trung_index_duoc_cham_bang_text_comment()
+    {
+        var key = AnswerKey.Parse("""
+            3 2 # Chương I QUY ĐỊNH CHUNG
+            3 4 # Điều 1. Phạm vi điều chỉnh
+            """);
+        var outline = new DocumentOutline
+        {
+            File = "legal.docx",
+            ParagraphCount = 10,
+            CandidateCount = 2,
+            Headings =
+            [
+                new HeadingRecord { Index = 3, Level = 2, Text = "Chương I QUY ĐỊNH CHUNG" },
+                new HeadingRecord { Index = 3, Level = 4, Text = "Điều 1. Phạm vi điều chỉnh" },
+                new HeadingRecord { Index = 3, Level = 4, Text = "Điều thừa" },
+            ],
+        };
+
+        var s = Evaluator.Score("legal", outline, [3], key);
+
+        Assert.Equal(2, key.Count);
+        Assert.Equal(2.0 / 3, s.Precision, 6);
+        Assert.Equal(1.0, s.Recall, 6);
+        Assert.Equal([3], s.FalsePositives);
+    }
+
+    [Fact]
     public void Candidate_recall_shows_what_the_ooxml_layer_dropped()
     {
         var key = AnswerKey.Parse("1 1\n2 1\n3 1\n4 1");

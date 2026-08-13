@@ -3,6 +3,8 @@ using System.Text;
 
 namespace DocxHeaderExtractor.Core.Eval;
 
+public sealed record AnswerKeyEntry(int? Index, string? StableId, int? Level, string? Text);
+
 /// <summary>
 /// Đáp án cho một tài liệu: chỉ số đoạn hoặc stable ID → cấp tiêu đề. Cấp có thể bỏ trống (null) khi
 /// chỉ muốn chấm việc chọn đúng đoạn mà không chấm cấp.
@@ -21,14 +23,22 @@ public sealed class AnswerKey
 {
     private readonly Dictionary<int, int?> _levels;
     private readonly Dictionary<string, int?> _stableLevels;
+    private readonly IReadOnlyList<AnswerKeyEntry> _entries;
 
     public string? Title { get; }
     public bool IsPartial { get; }
+    public IReadOnlyList<AnswerKeyEntry> Entries => _entries;
 
-    private AnswerKey(Dictionary<int, int?> levels, Dictionary<string, int?> stableLevels, string? title, bool isPartial)
+    private AnswerKey(
+        Dictionary<int, int?> levels,
+        Dictionary<string, int?> stableLevels,
+        IReadOnlyList<AnswerKeyEntry> entries,
+        string? title,
+        bool isPartial)
     {
         _levels = levels;
         _stableLevels = stableLevels;
+        _entries = entries;
         Title = title;
         IsPartial = isPartial;
     }
@@ -36,7 +46,10 @@ public sealed class AnswerKey
     public IReadOnlyCollection<int> Indexes => _levels.Keys;
     public IReadOnlyCollection<string> StableIds => _stableLevels.Keys;
     public bool HasStableIds => _stableLevels.Count > 0;
-    public int Count => _levels.Count + _stableLevels.Count;
+    public int Count => _entries.Count;
+    public bool HasDuplicateSourceKeys =>
+        _entries.Where(e => e.Index is not null).GroupBy(e => e.Index!.Value).Any(g => g.Count() > 1) ||
+        _entries.Where(e => e.StableId is not null).GroupBy(e => e.StableId!, StringComparer.Ordinal).Any(g => g.Count() > 1);
     public bool Contains(int index) => _levels.ContainsKey(index);
     public int? LevelOf(int index) => _levels.TryGetValue(index, out var l) ? l : null;
     public int? StableLevelOf(string stableId) => _stableLevels.TryGetValue(stableId, out var l) ? l : null;
@@ -50,31 +63,39 @@ public sealed class AnswerKey
         if (_stableLevels.Count == 0) return this;
 
         var resolved = new Dictionary<int, int?>(_levels);
-        foreach (var (stableId, level) in _stableLevels)
+        var entries = new List<AnswerKeyEntry>(_entries.Where(e => e.Index is not null));
+        foreach (var entry in _entries.Where(e => e.StableId is not null))
         {
+            var stableId = entry.StableId!;
+            var level = entry.Level;
             if (!stableIdToIndex.TryGetValue(stableId, out var index))
                 throw new InvalidOperationException(
                     $"Stable ID trong key không có trong tài liệu hiện tại: {stableId}. " +
                     "Không dùng key này cho bản DOCX khác.");
-            if (resolved.TryGetValue(index, out var existing) && existing != level)
+            if (resolved.TryGetValue(index, out var existing) && existing != level &&
+                string.IsNullOrWhiteSpace(entry.Text))
                 throw new InvalidOperationException($"Key ghi hai cấp khác nhau cho paragraph {index}.");
             resolved[index] = level;
+            entries.Add(entry with { Index = index, StableId = null });
         }
-        return new AnswerKey(resolved, [], Title, IsPartial);
+        return new AnswerKey(resolved, [], entries, Title, IsPartial);
     }
 
     public static AnswerKey Parse(string text, string? title = null)
     {
         var levels = new Dictionary<int, int?>();
         var stableLevels = new Dictionary<string, int?>(StringComparer.Ordinal);
+        var entries = new List<AnswerKeyEntry>();
         var isPartial = false;
 
         foreach (var rawLine in text.Split('\n'))
         {
             var line = rawLine;
-            if (line.Contains("partial_toc", StringComparison.OrdinalIgnoreCase))
+            if (line.Contains("partial_toc", StringComparison.OrdinalIgnoreCase) ||
+                line.Contains("partial_human", StringComparison.OrdinalIgnoreCase))
                 isPartial = true;
             var hash = line.IndexOf('#');
+            var comment = hash >= 0 ? line[(hash + 1)..].Trim() : null;
             if (hash >= 0) line = line[..hash];
             line = line.Trim();
             if (line.Length == 0) continue;
@@ -98,17 +119,19 @@ public sealed class AnswerKey
                     if (string.IsNullOrWhiteSpace(stableId))
                         throw new FormatException($"Stable ID rỗng trong: \"{item}\"");
                     stableLevels[stableId] = level;
+                    entries.Add(new AnswerKeyEntry(null, stableId, level, comment));
                 }
                 else
                 {
                     if (!int.TryParse(parts[0], NumberStyles.Integer, CultureInfo.InvariantCulture, out var index))
                         throw new FormatException($"Không đọc được chỉ số đoạn từ: \"{item}\"");
                     levels[index] = level;
+                    entries.Add(new AnswerKeyEntry(index, null, level, comment));
                 }
             }
         }
 
-        return new AnswerKey(levels, stableLevels, title, isPartial);
+        return new AnswerKey(levels, stableLevels, entries, title, isPartial);
     }
 
     public static AnswerKey Load(string path) =>

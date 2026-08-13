@@ -4988,3 +4988,53 @@ Thứ tự theo rủi ro:
 3. **Gán 3 file `TypedNumbering` đại diện** (`04_giao_trinh`, `03_tai_chinh_ke_toan`,
    `07_system_generated`), có cả cấp. Nhóm này lớn nhất corpus nhưng chưa bị sửa route gần đây, nên
    rủi ro hồi quy thấp hơn pháp quy/outline-level.
+
+## §66. Full key pháp quy đầu tiên: route đúng cấp, còn vướng ranh giới title/body
+
+Đã thêm `keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key`: 71 heading pháp quy đối chiếu từ
+nguồn HTML VCCI, không lấy từ output pipeline. Đây là full key đầu tiên cho `LegalStructured` trên
+một file `.doc` chuyển đổi bị gộp nặng.
+
+Điểm kỹ thuật mới: file 025 trong corpus chỉ còn vài paragraph, nên toàn bộ 71 heading thật resolve
+về cùng `stableId/index`. `AnswerKey`/`Evaluator` nay hỗ trợ key nhiều heading cùng nguồn bằng cách
+coi comment text (`# ...`) là một phần danh tính: match theo `(resolved index, normalized text)`.
+Nếu key duplicate-source không có text comment thì evaluator từ chối chấm để tránh precision đẹp giả.
+
+Đo bằng:
+
+```
+dhx eval .verify-build/legal-eval-025 --no-llm --split-merged
+```
+
+Kết quả sau bản vá chặn tham chiếu chéo cấp cao:
+
+| file | truth | returned | P | R | F1 | level | parent | FP | FN |
+|---|--:|--:|--:|--:|--:|--:|--:|--:|--:|
+| 025_ND_47-2020_Chia_se_du_lieu_so | 71 | 71 | 80,3% | 80,3% | 80,3% | 100% | 100% | 14 | 14 |
+
+So với lần đo đầu (P 75%, R 80,3%, F1 77,6%), 5 false positive tham chiếu chéo đã bị loại:
+
+- `Chương II Luật Giao dịch điện tử...`
+- `Mục 3 Chương II...`
+- `Mục 2 Chương III...`
+- `Mục 3 Chương III...`
+- `Mục 5 Chương III...`
+
+Luật chốt: marker không dấu ngắt của `Phần/Chương/Mục` chỉ được nhận nếu phần title sau marker bắt
+đầu bằng từ IN HOA. `Chương II QUẢN LÝ...` là heading; `Mục 3 Chương II Luật...` là tham chiếu.
+
+14 FP và 14 FN còn lại không phải sai cấp hay sai cây; chúng là lỗi cùng cặp: pipeline tìm đúng
+marker `Điều`, nhưng text heading bị nối thêm thân bài vì bản `.doc` chuyển đổi đã làm mất ranh giới
+format/run. Ví dụ nhóm thiếu gồm `Điều 2`, `Điều 3`, `Điều 4`, `Điều 7`, `Điều 19`, `Điều 28`,
+`Điều 33`, `Điều 37`, `Điều 39`, `Điều 42`, `Điều 46`, `Điều 47`, `Điều 49`, `Điều 56`; output có
+các phiên bản cùng `Điều` nhưng dính thêm câu thân bài nên không khớp text nguồn.
+
+Không nên vá vội bằng heuristic lexical kiểu "cắt trước câu dài" cho mọi văn bản pháp quy: đây là
+lỗi nguồn/conversion boundary, và full key đầu tiên chỉ mới trên một file. Việc hợp lý tiếp theo:
+
+1. Thêm một full/partial legal key cho file pháp quy ít hỏng chuyển đổi hơn để tách lỗi route khỏi
+   lỗi nguồn.
+2. Nếu nhiều file cùng mắc 14-ca kiểu này, mới thiết kế luật cắt title/body riêng cho `Điều` dựa trên
+   dấu hiệu an toàn hơn (run formatting nếu còn, hoặc mẫu payload đã đo).
+3. Tiếp tục nợ cũ: full key cho một file `OutlineLevelDriven` partial TOC và 3 file
+   `TypedNumbering` đại diện.

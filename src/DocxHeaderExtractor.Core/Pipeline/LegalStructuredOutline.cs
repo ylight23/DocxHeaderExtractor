@@ -110,7 +110,22 @@ public static class LegalStructuredOutline
         // Chặn tham chiếu chéo giữa câu: "Điều 3 của Bộ luật này".
         var pos = marker.Index + marker.Length;
         while (pos < text.Length && char.IsWhiteSpace(text[pos])) pos++;
-        return pos < text.Length && char.IsUpper(text[pos]);
+        if (pos >= text.Length || !char.IsUpper(text[pos])) return false;
+
+        var label = marker.Groups["label"].Value.Trim().ToLowerInvariant();
+        if (label is "phần" or "part" or "chương" or "chapter" or "mục" or "section")
+            return StartsWithAllCapsWord(text, pos);
+
+        return true;
+    }
+
+    private static bool StartsWithAllCapsWord(string text, int start)
+    {
+        var end = start;
+        while (end < text.Length && char.IsLetter(text[end])) end++;
+        if (end <= start) return false;
+        var word = text[start..end];
+        return word.Any(char.IsLetter) && word.All(c => !char.IsLetter(c) || char.IsUpper(c));
     }
 
     private static int LevelOf(string label)

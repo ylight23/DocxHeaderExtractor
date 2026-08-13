@@ -85,6 +85,9 @@ public static class Evaluator
         IReadOnlyCollection<int> candidateIndexes,
         AnswerKey key)
     {
+        if (key.HasDuplicateSourceKeys)
+            return ScoreWithTextIdentity(file, outline, candidateIndexes, key);
+
         var got = outline.Headings.ToDictionary(h => h.Index, h => h.Level);
 
         var tp = got.Keys.Where(key.Contains).ToList();
@@ -122,6 +125,81 @@ public static class Evaluator
             PartialTruth: key.IsPartial,
             ElapsedMs: outline.ElapsedMs);
     }
+
+    private static DocScore ScoreWithTextIdentity(
+        string file,
+        DocumentOutline outline,
+        IReadOnlyCollection<int> candidateIndexes,
+        AnswerKey key)
+    {
+        var truth = key.Entries.Select((e, order) => new KeyItem(
+            order,
+            e.Index ?? throw new InvalidOperationException("Key duplicate-source phải được resolve stable ID trước khi chấm."),
+            e.Level,
+            Normalize(e.Text))).ToList();
+
+        if (truth.Any(t => string.IsNullOrWhiteSpace(t.Text)))
+            throw new InvalidOperationException(
+                "Key có nhiều heading cùng paragraph phải ghi text ở comment để evaluator phân biệt.");
+
+        var got = outline.Headings.Select((h, order) => new GotItem(
+            order,
+            h.Index,
+            h.Level,
+            Normalize(h.Text))).ToList();
+
+        var used = new HashSet<int>();
+        var matches = new List<(KeyItem Key, GotItem Got)>();
+        foreach (var k in truth)
+        {
+            var at = got.FindIndex(g => !used.Contains(g.Order) && g.Index == k.Index && g.Text == k.Text);
+            if (at < 0) continue;
+            used.Add(got[at].Order);
+            matches.Add((k, got[at]));
+        }
+
+        var tp = matches.Count;
+        var fp = key.IsPartial
+            ? new List<int>()
+            : got.Where(g => !used.Contains(g.Order)).Select(g => g.Index).Order().ToList();
+        var fn = truth.Where(k => !matches.Any(m => m.Key.Order == k.Order)).Select(k => k.Index).Order().ToList();
+        var resultCount = key.IsPartial ? tp : got.Count;
+
+        var judged = matches.Where(m => m.Key.Level is not null).OrderBy(m => m.Got.Order).ToList();
+        var wrong = judged.Where(m => m.Key.Level != m.Got.Level)
+            .Select(m => (Index: m.Got.Index, Got: m.Got.Level, Expected: m.Key.Level!.Value))
+            .OrderBy(x => x.Index)
+            .ToList();
+
+        var truthLevels = judged.ToDictionary(m => m.Got.Order, m => m.Key.Level!.Value);
+        var gotLevels = judged.ToDictionary(m => m.Got.Order, m => m.Got.Level);
+        var ordered = judged.Select(m => m.Got.Order).ToList();
+        var truthParent = Parents(ordered, i => truthLevels[i]);
+        var gotParent = Parents(ordered, i => gotLevels[i]);
+        var parentCorrect = ordered.Count(i => truthParent[i] == gotParent[i]);
+
+        return new DocScore(
+            File: file,
+            TruthCount: key.Count,
+            ResultCount: resultCount,
+            CandidateCount: candidateIndexes.Count,
+            TruePositive: tp,
+            CandidateHits: truth.Count(k => candidateIndexes.Contains(k.Index)),
+            LevelJudged: judged.Count,
+            LevelCorrect: judged.Count - wrong.Count,
+            ParentCorrect: parentCorrect,
+            FalsePositives: fp,
+            FalseNegatives: fn,
+            WrongLevels: wrong,
+            PartialTruth: key.IsPartial,
+            ElapsedMs: outline.ElapsedMs);
+    }
+
+    private sealed record KeyItem(int Order, int Index, int? Level, string Text);
+    private sealed record GotItem(int Order, int Index, int Level, string Text);
+
+    private static string Normalize(string? text) =>
+        string.Join(' ', (text ?? "").Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
 
     /// <summary>
     /// Cha của mỗi mục = mục GẦN NHẤT ĐỨNG TRƯỚC có cấp NHỎ HƠN; <c>null</c> nếu không có (mục ở

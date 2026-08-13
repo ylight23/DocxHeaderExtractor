@@ -80,12 +80,15 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
       cần 3 chế độ trong 1 file, tầng 1 hiện gán 1 chế độ cho toàn file
   - [ ] Hướng thử: phân đoạn theo `<w:sectPr>` hoặc mốc `PHỤ LỤC`,
         chạy tầng 1 trên từng vùng
-- [ ] `vn-legal` đã có route tất định riêng (`LegalStructuredOutline`) và đã chạy trên corpus 95:
-      23 file `VietnameseLegal/Normal` sinh 3.455 heading khi bật `--split-merged`. Việc còn thiếu
-      là **full answer key** cho 1 file pháp quy gộp nặng (`001` hoặc `025`) để đo precision/cấp.
+- [x] `vn-legal` đã có route tất định riêng (`LegalStructuredOutline`) và đã chạy trên corpus 95:
+      23 file `VietnameseLegal/Normal` sinh 3.455 heading khi bật `--split-merged`. Đã thêm full key
+      cho `025_ND_47-2020_Chia_se_du_lieu_so` từ nguồn pháp quy VCCI: P/R/F1 80,3%, đúng cấp/cha
+      100%. Còn nợ lỗi ranh giới title/body trong đoạn `.doc` chuyển đổi bị gộp: 14 thừa/14 thiếu.
 - [ ] Các chế độ vẫn thiếu full key/đo precision ngoài phân phối cũ:
       `OutlineLevelDriven` (cần full key 1 file partial TOC), `TypedNumbering` (cần 3 file đại diện),
-      `SemanticOnly/ConversionFailure` (không đo như mode trích xuất).
+      `SemanticOnly/ConversionFailure` (không đo như mode trích xuất). `LegalStructured` đã có
+      precision đầu tiên nhưng vẫn cần thêm 1 file pháp quy ít lỗi chuyển đổi để tách lỗi route khỏi
+      lỗi nguồn.
 - [ ] Mỗi lần đo corpus phải ghi health check theo `Mode + Status`: `files`, `candidates`,
       `headings`, `avg candidates/file`, `avg headings/file`. Nếu một mode lệch mạnh khỏi kỳ vọng
       thể loại, kiểm route/builder trước khi gán tay thêm key.

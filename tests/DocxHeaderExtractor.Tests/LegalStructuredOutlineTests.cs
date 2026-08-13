@@ -53,6 +53,19 @@ public sealed class LegalStructuredOutlineTests
     }
 
     [Fact]
+    public void Tham_chieu_cheo_chuong_muc_khong_thanh_heading_nhung_tieu_de_in_hoa_van_duoc_giu()
+    {
+        var r = Build(
+            "Chương II QUẢN LÝ KẾT NỐI VÀ CHIA SẺ DỮ LIỆU",
+            "Điều 4. Việc áp dụng Mục 3 Chương II Luật Giao dịch điện tử và quy định của pháp luật có liên quan.");
+
+        Assert.Equal(2, r.Count);
+        Assert.Equal("Chương II QUẢN LÝ KẾT NỐI VÀ CHIA SẺ DỮ LIỆU", r[0].Text);
+        Assert.StartsWith("Điều 4. Việc áp dụng", r[1].Text);
+        Assert.Equal([2, 4], r.Select(h => h.Level));
+    }
+
+    [Fact]
     public void Nhan_duoc_nhan_tieng_Viet_dau_to_hop_tu_pdf_convert()
     {
         var decomposed = "Điều 4. Áp dụng Bộ luật dân sự1. Nội dung.";

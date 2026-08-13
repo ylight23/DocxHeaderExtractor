@@ -52,6 +52,21 @@ các mục đã khớp TOC, và không đưa partial key vào calibration profil
 đọc recall, đúng cấp và danh sách thiếu trên các cặp TOC đã xác thực. Muốn đo precision thật vẫn cần
 ít nhất một `.key` đầy đủ do người kiểm.
 
+## `legal-human/` — đáp án pháp quy từ nguồn ngoài pipeline
+
+`025_ND_47-2020_Chia_se_du_lieu_so.key` là full key đầu tiên cho route `LegalStructured`: 71 heading
+đối chiếu từ bản HTML pháp quy ở VCCI, không lấy từ output pipeline. File DOC/DOCX corpus bị gộp gần
+toàn bộ nội dung vào cùng một paragraph, nên nhiều heading thật cùng resolve về một `stableId/index`.
+
+Với loại key này, mỗi dòng phải ghi text heading ở comment (`# ...`). Evaluator dùng cặp
+`(stable-id/index đã resolve, text comment đã chuẩn hoá)` để phân biệt nhiều heading cùng paragraph;
+nếu thiếu comment text thì key duplicate-source bị từ chối. Đây là hợp đồng mới cho các tài liệu
+`--split-merged` nặng.
+
+Đo hiện tại trên file 025 với `--no-llm --split-merged`: **P/R/F1 80,3% · đúng cấp 100% · đúng cha
+100%**. 5 false positive tham chiếu chéo `Chương/Mục` đã được chặn; 14 thừa/14 thiếu còn lại là lỗi
+ranh giới title/body khi bản `.doc` chuyển đổi mất thông tin định dạng trong đoạn gộp.
+
 ## Tài liệu mật
 
 Một tài liệu thử nghiệm đóng dấu MẬT đã được **khử hoàn toàn**: không có bản sao trong repo,
