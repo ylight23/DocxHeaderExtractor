@@ -80,7 +80,7 @@ public class NhanKhongDauNgatQuaCacCongTests
     [Fact]
     public void Chu_ky_pipeline_da_bump_sau_khi_doi_phan_phoi()
     {
-        Assert.Equal("dhx-semantic-precision/2026-08-11-v3",
+        Assert.Equal("dhx-semantic-precision/2026-08-13-v4",
             PrecisionCalibrationProfile.CurrentPipelineSignature);
     }
 

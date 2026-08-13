@@ -64,7 +64,8 @@ public sealed record DocumentModeReport(
 }
 
 /// <summary>
-/// Cây quyết định §4.2 của spec, cài dưới dạng CHẨN ĐOÁN: đo và báo cáo, KHÔNG đổi hành vi.
+/// Cây quyết định §4.2 của spec, đo mode tài liệu để pipeline có thể chọn đường deterministic
+/// phù hợp khi đủ bằng chứng.
 /// <para>
 /// Lý do làm chẩn đoán trước. Corpus 95 tài liệu kèm theo spec có <b>83/95 file là PDF được trích
 /// text rồi bọc vào vỏ DOCX</b> — 0 style Heading, 0 <c>numPr</c>, 0 <c>outlineLvl</c>. Còn pipeline
@@ -191,15 +192,15 @@ public static class DocumentModeClassifier
         format = formatDiffers;
         if (outlineRatio > 0) return DocumentMode.OutlineLevelDriven;
         if (tocEntries >= TocAnchorMinimum) return DocumentMode.TocAnchored;
-        // Kiểm TRƯỚC ký hiệu hành chính: "Điều 5." cũng khớp mẫu "\d+\." của lớp hành chính.
-        if (legalRatio >= LegalThreshold) return DocumentMode.VietnameseLegal;
-        if (adminRatio >= AdministrativeThreshold) return DocumentMode.VietnameseAdministrative;
-        // Hai đường vào TypedNumbering. Đường cũ đòi có style Heading, nên tài liệu KHÔNG dùng
-        // style không bao giờ tới được — đo trên corpus: 55/55 tài liệu không phân loại được đều
-        // có tử số 0. Đường thứ hai chỉ hỏi bằng chứng tuyệt đối, không hỏi tài liệu có style.
+        // Hai đường vào TypedNumbering phải đứng TRƯỚC nhánh hành chính: "1.1" khớp cả
+        // AdministrativeMarkers[0] lẫn TypedNumber, nhưng nếu có nhiều mục dạng này mà không có
+        // chữ ký riêng như "I."/"a)" thì đó là số gõ tay nhiều cấp, không phải văn bản hành chính.
         if (styledCount > 0 && typedRatio >= TypedNumberThreshold) return DocumentMode.TypedNumbering;
         if (typedCount >= TypedNumberMinimum && typedRatio >= TypedNumberWeakRatio)
             return DocumentMode.TypedNumbering;
+        // Kiểm TRƯỚC ký hiệu hành chính: "Điều 5." cũng khớp mẫu "\d+\." của lớp hành chính.
+        if (legalRatio >= LegalThreshold) return DocumentMode.VietnameseLegal;
+        if (adminRatio >= AdministrativeThreshold) return DocumentMode.VietnameseAdministrative;
         if (styledCount > 0 && numberingRatio >= NumberingThreshold) return DocumentMode.NumberingDriven;
         if (styledCount > 0) return DocumentMode.CustomStyle;
         if (customStyle) return DocumentMode.CustomStyle;

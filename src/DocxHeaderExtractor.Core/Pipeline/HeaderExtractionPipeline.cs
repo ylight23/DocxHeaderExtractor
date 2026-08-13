@@ -122,6 +122,12 @@ public sealed class PipelineOptions
     public bool AdministrativeDeclaredOutline { get; set; }
 
     /// <summary>
+    /// Tự đo chế độ tài liệu và chọn bộ dựng tất định tương ứng khi chưa có override thủ công.
+    /// Manual flags vẫn thắng để người dùng benchmark từng đường riêng.
+    /// </summary>
+    public bool AutoDetectDocumentMode { get; set; } = true;
+
+    /// <summary>
     /// Hậu kiểm bằng ký hiệu đánh số của chính tài liệu: cùng dạng đánh số phải cùng cấp, và
     /// dãy anh em phải liên tục từ 1. Không tốn giây suy luận nào và bắt được cả lỗi trượt cấp
     /// của mô hình lẫn tiêu đề bị tầng lọc đánh rơi — xem <see cref="NumberingAudit"/>.
@@ -295,6 +301,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // 2. OpenXML → cấu trúc tinh gọn.
             var extractor = new DocxSlimExtractor(_options.Extraction);
             var slim = extractor.Extract(conversion.Path);
+            var modeReport = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
+            Log(modeReport.Describe());
 
             // 2b. R1 của spec filter OOXML — chạy TRƯỚC khi lập tập ứng viên, vì cả điểm của nó là
             //     rút đoạn ra khỏi luồng LLM. Mặc định tắt; xem OoxmlStyleAutoAssign.
@@ -333,9 +341,11 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 Log($"Đã ghi XML tinh gọn: {dump}");
             }
 
-            List<HeadingRecord> headings = _options.DisableLlm
-                ? HeuristicOnly(candidates)
-                : await RunModelAsync(slim, candidates, quarantined, ct);
+            var declared = TryBuildDeclaredOutline(slim, modeReport);
+            List<HeadingRecord> headings = declared.Headings ??
+                (_options.DisableLlm
+                    ? HeuristicOnly(candidates)
+                    : await RunModelAsync(slim, candidates, quarantined, ct));
 
             // StructuralHierarchyResolver và TableOfContentsAnchor đều TẤT ĐỊNH và không cần mô
             // hình, nhưng cả hai nằm trong RunModelAsync nên đường --no-llm chưa bao giờ chạy
@@ -433,6 +443,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 Headings = headings,
                 ElapsedMs = sw.ElapsedMilliseconds,
                 Model = _options.DisableLlm ? null : _model?.ModelName ?? ConfiguredModelName(),
+                DocumentMode = modeReport,
+                DeterministicRoute = declared.Route,
                 Provenance = _options.DisableLlm
                     ? null
                     : new OutlineRunProvenance(
@@ -461,6 +473,62 @@ public sealed class HeaderExtractionPipeline : IDisposable
         _ => string.IsNullOrWhiteSpace(_options.Llama.ModelPath)
             ? null
             : Path.GetFileName(_options.Llama.ModelPath),
+    };
+
+    private (List<HeadingRecord>? Headings, string? Route) TryBuildDeclaredOutline(
+        SlimDocument slim,
+        DocumentModeReport modeReport)
+    {
+        var manual = _options.AdministrativeDeclaredOutline ||
+                     _options.NumberingDeclaredOutline ||
+                     _options.StyleDeclaredOutline;
+
+        if (!manual && (!_options.AutoDetectDocumentMode || !_options.DisableLlm))
+            return (null, null);
+
+        var route = manual
+            ? _options.AdministrativeDeclaredOutline ? "manual:administrative"
+              : _options.NumberingDeclaredOutline ? "manual:numbering"
+              : "manual:style"
+            : AutoRoute(modeReport.Mode);
+
+        if (route is null) return (null, null);
+
+        var headings = route switch
+        {
+            "manual:style" or "auto:outline-level" or "auto:custom-style" =>
+                StyleDeclaredOutline.Build(slim),
+            "manual:numbering" or "auto:numbering" =>
+                StyleDeclaredOutline.BuildFromNumbering(slim),
+            "manual:administrative" =>
+                AdministrativeOutline.Build(slim),
+            "auto:vietnamese-administrative" or "auto:typed-numbering" or "auto:vietnamese-legal" =>
+                AdministrativeOutline.Build(slim, _options.Extraction.SplitMergedParagraphs),
+            _ => null,
+        };
+
+        if (headings is null) return (null, null);
+        if (headings.Count == 0)
+        {
+            Log($"Auto/declared outline {route}: không dựng được mục nào, quay về pipeline thường.");
+            return (null, null);
+        }
+
+        Log(route.StartsWith("manual:", StringComparison.Ordinal)
+            ? $"Outline tất định ({route}): {headings.Count} mục, không gọi mô hình."
+            : $"Auto mode {modeReport.Mode}: dùng {route}, dựng {headings.Count} mục tất định.");
+        return (headings, route);
+    }
+
+    private static string? AutoRoute(DocumentMode mode) => mode switch
+    {
+        DocumentMode.OutlineLevelDriven => "auto:outline-level",
+        DocumentMode.NumberingDriven => "auto:numbering",
+        DocumentMode.CustomStyle => "auto:custom-style",
+        DocumentMode.VietnameseAdministrative => "auto:vietnamese-administrative",
+        DocumentMode.VietnameseLegal => "auto:vietnamese-legal",
+        DocumentMode.TypedNumbering => "auto:typed-numbering",
+        _ => null,
     };
 
     /// <summary>
@@ -563,31 +631,6 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     $"Kết nối LM Studio local: {_options.LmStudio.Model} tại {_options.LmStudio.Endpoint.Authority}…",
                 _ => $"Đang nạp mô hình: {Path.GetFileName(_options.Llama.ModelPath)} …",
             });
-        if (_options.AdministrativeDeclaredOutline)
-        {
-            var admin = AdministrativeOutline.Build(slim);
-            if (admin.Count > 0)
-            {
-                Log($"Outline hành chính tất định: {admin.Count} mục theo ký hiệu đánh số.");
-                return admin;
-            }
-            Log("Outline hành chính: tài liệu không có đủ hai chữ ký đánh số, bỏ qua.");
-        }
-
-        if (_options.NumberingDeclaredOutline)
-        {
-            var declared = StyleDeclaredOutline.BuildFromNumbering(slim);
-            Log($"Outline theo danh sách đa cấp: {declared.Count} đề mục, không gọi mô hình.");
-            return declared;
-        }
-
-        if (_options.StyleDeclaredOutline)
-        {
-            var declared = StyleDeclaredOutline.Build(slim);
-            Log($"Outline theo style tác giả khai: {declared.Count} đề mục, không gọi mô hình.");
-            return declared;
-        }
-
         var llm = await GetModelAsync(ct);
         Log($"Mô hình sẵn sàng. Ngữ cảnh {llm.ContextSize} token, {llm.RuntimeDescription}.");
         AdoptBackendContextBudget(llm);

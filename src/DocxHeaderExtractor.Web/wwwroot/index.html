@@ -67,6 +67,9 @@
     font-size: 14px; cursor: pointer;
   }
   button:disabled { opacity: .5; cursor: default; }
+  button.secondary { background: var(--bg); color: var(--ink); border: 1px solid var(--line); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .actions button { margin-top: 16px; }
 
   .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 10px; }
   .tile { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 11px 13px; }
@@ -166,6 +169,12 @@
   .review-tools input[type=file] { max-width: 280px; font-size: 12.5px; }
   .review-level { width: 92px; min-width: 92px; }
   .sid { font: 11px/1.25 ui-monospace, Consolas, monospace; color: var(--muted); word-break: break-all; }
+  .modebox { border-top: 1px solid var(--line); margin-top: 10px; padding-top: 10px; }
+  .modehead { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+  .modehead strong { font-size: 18px; }
+  .modegrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-top: 10px; }
+  .modegrid span { display: block; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
+  .modegrid b { display: block; font-variant-numeric: tabular-nums; }
 </style>
 </head>
 <body>
@@ -223,6 +232,7 @@
     <fieldset class="opts" style="border:1px solid var(--line);border-radius:8px;padding:10px 12px">
       <legend style="padding:0 6px;font-size:13px">Bộ dựng tất định — không cần mô hình</legend>
       <div class="checks">
+        <label title="Pipeline tự đo mode tài liệu rồi chọn đường tất định phù hợp khi không có override thủ công."><input type="checkbox" id="autoMode" checked> Tự nhận dạng loại tài liệu</label>
         <label title="Cấp lấy từ style Heading + độ sâu số gõ tay. Đo được 100% trên khoá luận có đáp án người kiểm."><input type="checkbox" id="styleOutline"> Theo style Word</label>
         <label title="Cấp lấy từ (numId, ilvl) của danh sách đa cấp. Đo được 100% trên báo cáo thực tập có đáp án người kiểm."><input type="checkbox" id="numberingOutline"> Theo numbering của Word</label>
         <label title="Hệ ký hiệu hành chính I. / 1. / 1.1. / a). Cấp neo theo cha gần nhất, thân bài tách tại dấu ngắt đầu tiên mở ra số liệu."><input type="checkbox" id="adminOutline"> Theo ký hiệu hành chính (I./1./a)</label>
@@ -272,8 +282,16 @@
     </details>
     
 
-    <button id="run" disabled>Phân tích</button>
+    <div class="actions">
+      <button id="inspectMode" class="secondary" disabled>Kiểm tra mode</button>
+      <button id="run" disabled>Phân tích</button>
+    </div>
   </div>
+
+    <div class="panel hidden" id="modePanel">
+      <h2>Nhận dạng deterministic</h2>
+      <div id="modeBox"></div>
+    </div>
 
     <div class="panel" id="workCard">
       <h2>Backend làm việc</h2>
@@ -372,6 +390,7 @@ function setFile(f) {
   $('workFile').textContent = f.name;
   $('workState').textContent = 'Sẵn sàng phân tích';
   $('workHint').textContent = 'Pipeline sẽ đọc OpenXML, lọc ứng viên rồi gọi LLM cho phần chưa chắc chắn.';
+  $('inspectMode').disabled = false;
   $('run').disabled = false;
 }
 
@@ -382,6 +401,7 @@ fetch('/api/defaults').then(r => r.json()).then(d => {
   $('chunkCandidates').value = d.chunkCandidates;
   $('threshold').value = d.threshold;
   $('structuralOnly').checked = d.structuralOnly;
+  $('autoMode').checked = d.autoDetectMode !== false;
   $('workConfig').textContent = `${d.lmStudioContextSize || d.chunkTokens} token · ${d.chunkCandidates} ứng viên/khối`;
 
   // Ô GPU chỉ có nghĩa khi bản dựng có backend GPU; bản CPU thì khoá lại thay vì để người
@@ -434,6 +454,13 @@ async function loadLmStudioModels(d) {
 
 $('backend').onchange = syncBackend;
 $('noLlm').onchange = syncBackend;
+['styleOutline', 'numberingOutline', 'adminOutline'].forEach(id => {
+  $(id).onchange = () => {
+    if ($(id).checked) ['styleOutline', 'numberingOutline', 'adminOutline']
+      .filter(other => other !== id)
+      .forEach(other => $(other).checked = false);
+  };
+});
 
 function syncBackend() {
   const noLlm = $('noLlm').checked;
@@ -548,6 +575,29 @@ fetch('/api/models').then(r => r.json()).then(list => {
   }
 });
 
+$('inspectMode').onclick = async () => {
+  if (!picked) return;
+  $('inspectMode').disabled = true;
+  $('modePanel').classList.remove('hidden');
+  $('modeBox').innerHTML = '<p class="note">Đang đọc cấu trúc tài liệu…</p>';
+
+  const fd = new FormData();
+  fd.append('file', picked);
+  fd.append('splitMerged', $('splitMerged').checked ? '1' : '0');
+  fd.append('structuralOnly', $('structuralOnly').checked ? '1' : '0');
+
+  try {
+    const res = await fetch('/api/inspect', { method: 'POST', body: fd });
+    const payload = await res.json();
+    if (!res.ok) throw new Error(payload.message || payload.detail || 'Không kiểm tra được mode.');
+    renderMode(payload.report, payload.suggestedRoute);
+  } catch (e) {
+    $('modeBox').innerHTML = `<div class="err">${esc(e.message)}</div>`;
+  } finally {
+    $('inspectMode').disabled = false;
+  }
+};
+
 // ---------- chạy ----------
 $('run').onclick = async () => {
   if (!picked) return;
@@ -579,6 +629,7 @@ $('run').onclick = async () => {
   fd.append('structuralOnly', $('structuralOnly').checked ? '1' : '0');
   fd.append('noTrustStyles', $('noTrustStyles').checked ? '1' : '0');
   fd.append('splitMerged', $('splitMerged').checked ? '1' : '0');
+  fd.append('autoMode', $('autoMode').checked ? '1' : '0');
   fd.append('styleOutline', $('styleOutline').checked ? '1' : '0');
   fd.append('numberingOutline', $('numberingOutline').checked ? '1' : '0');
   fd.append('adminOutline', $('adminOutline').checked ? '1' : '0');
@@ -688,6 +739,11 @@ function showError(msg) {
 
 // ---------- hiển thị kết quả ----------
 function render(o, s, review, agent) {
+  if (o.documentMode) {
+    $('modePanel').classList.remove('hidden');
+    renderMode(o.documentMode, o.deterministicRoute);
+  }
+
   const secs = (o.elapsedMs / 1000).toFixed(1);
   const t = [
     [o.paragraphCount, 'đoạn trong file'],
@@ -784,6 +840,55 @@ function render(o, s, review, agent) {
   reviewBundle = review;
   renderReview();
   $('reviewPanel').classList.remove('hidden');
+}
+
+function renderMode(report, route) {
+  if (!report) return;
+  const mode = report.mode || report.Mode || 'Unknown';
+  $('modeBox').innerHTML = `
+    <div class="modebox">
+      <div class="modehead">
+        <strong>${esc(modeLabel(mode))}</strong>
+        <span class="tag ${route ? 'Style' : 'dis'}">${route ? esc(routeLabel(route)) : 'chỉ báo cáo'}</span>
+      </div>
+      <p class="note" style="margin-top:6px">${esc(report.description || '')}</p>
+      <div class="modegrid">
+        <div><span>Paragraph</span><b>${report.paragraphs ?? 0}</b></div>
+        <div><span>Style Heading</span><b>${report.styledHeadings ?? 0}</b></div>
+        <div><span>outlineLvl</span><b>${pct(report.outlineLevelRatio || 0)}</b></div>
+        <div><span>Hành chính</span><b>${pct(report.vietnameseAdminRatio || 0)}</b></div>
+        <div><span>Pháp luật</span><b>${pct(report.legalMarkerRatio || 0)}</b></div>
+        <div><span>Số gõ tay</span><b>${pct(report.typedNumberRatio || 0)}</b></div>
+        <div><span>numPr</span><b>${pct(report.numberingRatio || 0)}</b></div>
+        <div><span>Định dạng lệch</span><b>${report.formatDiffers ? 'có' : 'không'}</b></div>
+      </div>
+    </div>`;
+}
+
+function modeLabel(mode) {
+  return ({
+    OutlineLevelDriven: 'Outline level của Word',
+    TocAnchored: 'Tài liệu neo theo mục lục',
+    VietnameseAdministrative: 'Văn bản hành chính Việt Nam',
+    VietnameseLegal: 'Văn bản quy phạm pháp luật',
+    TypedNumbering: 'Số gõ tay nhiều cấp',
+    NumberingDriven: 'Danh sách đa cấp của Word',
+    CustomStyle: 'Style tự đặt',
+    FormatDriven: 'Dựa vào định dạng',
+    SemanticOnly: 'Chỉ còn ngữ nghĩa',
+    Unknown: 'Chưa nhận dạng',
+  })[mode] || mode;
+}
+
+function routeLabel(route) {
+  return ({
+    'auto:outline-level': 'auto · style/outlineLvl',
+    'auto:numbering': 'auto · numbering',
+    'auto:custom-style': 'auto · custom style',
+    'auto:vietnamese-administrative': 'auto · hành chính',
+    'auto:vietnamese-legal': 'auto · pháp luật',
+    'auto:typed-numbering': 'auto · số gõ tay',
+  })[route] || route;
 }
 
 function evidenceCount(e) {

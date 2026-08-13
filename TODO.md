@@ -421,7 +421,7 @@ khoản đánh số, nên mốc kết thúc tiêu đề nằm xa hơn `MaxHeadin
 
 ---
 
-## 11. `VietnameseAdministrative` là sọt quá rộng — *48% corpus, và đã biết chính xác vì sao*
+## 11. `VietnameseAdministrative` là sọt quá rộng — ĐÃ SỬA PHẦN `TypedNumbering`
 
 **Đo được (§48.2).** Sau khi cắt đoạn trước tầng phân loại, nhánh dự phòng tụt 65% → 19% và **cả 14
 `VietnameseLegal` rơi trọn vào `01_phap_quy`**. Nhưng `VietnameseAdministrative` phình 19 → **46/95
@@ -443,12 +443,14 @@ y hệt, `adminCount >= 3` mới là chỗ chặn. Đã trả về `8258036`.
 Dự đoán quan trọng nhất của giả thuyết thì **đúng**: giáo trình 11 VnAdmin → **13/15 Typed**. Nguyên
 lý dùng được, chỉ thiếu ngưỡng hiệu chỉnh trên tập tín hiệu mới.
 
-**Nay là test chạy được, không còn là ghi chú.**
-`DocumentModeTests.So_go_tay_thuan_bi_nhan_nham_thanh_hanh_chinh_KHUYET_TAT_DA_BIET` assert đúng
-giá trị SAI hiện tại; sửa xong thì test đỏ và buộc phải cập nhật. Kèm
-`Ky_hieu_rieng_cua_hanh_chinh_khong_duoc_mat_khi_sua_muc_11` bắt lỗi "đảo thứ tự nhánh" (§49.2).
+**Đã sửa (2026-08-13).** `TypedNumbering` được kiểm trước nhánh hành chính, nên tài liệu thuần
+`1.1`/`1.2` không còn bị nuốt vào `VietnameseAdministrative`. Test cũ đã đổi thành
+`DocumentModeTests.So_go_tay_thuan_duoc_nhan_la_typed_numbering`, và test
+`Ky_hieu_rieng_cua_hanh_chinh_khong_duoc_mat_khi_sua_muc_11` vẫn giữ chiều ngược lại: `I.`/`a)`
+không bị mất nhánh hành chính.
 
-**Cách nghiệm thu.** Xem mục 4 — ba file giáo trình có nhãn chế độ là đủ.
+Phần còn cần dữ liệu: phân biệt các biến thể giáo trình/hành chính trong corpus lớn nếu muốn hiệu
+chỉnh tiếp ngưỡng mode, nhưng bug đã biết “số gõ tay thuần bị nhận nhầm” không còn treo.
 
 ---
 

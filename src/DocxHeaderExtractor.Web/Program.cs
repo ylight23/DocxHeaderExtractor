@@ -9,6 +9,7 @@ using DocxHeaderExtractor.Core.Learning;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
 using DocxHeaderExtractor.Web;
+using DocumentFormat.OpenXml.Packaging;
 using Microsoft.AspNetCore.Http.Features;
 
 // Content root phải là thư mục chứa dll, không phải thư mục làm việc: dhx-ui.cmd chạy từ gốc
@@ -54,6 +55,7 @@ var json = new JsonSerializerOptions
     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
     Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
 };
+json.Converters.Add(new JsonStringEnumConverter());
 
 // Danh sách mô hình .gguf tìm thấy, kèm cửa sổ ngữ cảnh nên dùng cho từng họ mô hình.
 app.MapGet("/api/models", () => Results.Json(ModelCatalog.List(), json));
@@ -75,6 +77,67 @@ app.MapGet("/api/lmstudio/models", async (LmStudioModelDiscovery discovery, Canc
 
 // Mặc định lấy thẳng từ Core, để giao diện luôn khớp với lệnh CLI tương ứng.
 app.MapGet("/api/defaults", () => Results.Json(Defaults.Current(), json));
+
+// Kiểm tra nhanh mode tài liệu bằng deterministic rules, không gọi mô hình.
+app.MapPost("/api/inspect", async (HttpRequest req, CancellationToken ct) =>
+{
+    if (!req.HasFormContentType)
+        return Results.BadRequest(new { message = "Cần multipart/form-data." });
+
+    IFormCollection form;
+    try
+    {
+        form = await req.ReadFormAsync(ct);
+    }
+    catch (BadHttpRequestException ex)
+    {
+        return Results.Problem(
+            statusCode: StatusCodes.Status413PayloadTooLarge,
+            title: $"File quá lớn (trần {MaxUploadBytes / (1024 * 1024)} MB)",
+            detail: ex.Message);
+    }
+
+    var upload = form.Files["file"];
+    if (upload is null || upload.Length == 0)
+        return Results.BadRequest(new { message = "Chưa chọn file." });
+
+    var work = Path.Combine(Path.GetTempPath(), "dhx-ui-inspect", Guid.NewGuid().ToString("N"));
+    Directory.CreateDirectory(work);
+    var inputPath = Path.Combine(work, SafeName(upload.FileName));
+
+    try
+    {
+        await using (var fs = File.Create(inputPath))
+            await upload.CopyToAsync(fs, ct);
+
+        var extraction = new ExtractionOptions
+        {
+            SplitMergedParagraphs = form["splitMerged"].ToString() is "1" or "true" or "on",
+            UseLexicalRules = form["structuralOnly"].ToString() is not ("1" or "true" or "on"),
+        };
+        var conversion = LegacyDocConverter.EnsureDocx(inputPath);
+        SlimDocument slim;
+        try { slim = new DocxSlimExtractor(extraction).Extract(conversion.Path); }
+        finally { LegacyDocConverter.Cleanup(conversion); }
+
+        var report = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
+        return Results.Json(new
+        {
+            file = Path.GetFileName(inputPath),
+            report = ModePayload(report),
+            suggestedRoute = SuggestedRoute(report.Mode),
+            canRunDeterministic = SuggestedRoute(report.Mode) is not null,
+        }, json);
+    }
+    catch (Exception ex) when (ex is IOException or InvalidDataException or OpenXmlPackageException)
+    {
+        return Results.BadRequest(new { message = ex.Message });
+    }
+    finally
+    {
+        try { Directory.Delete(work, recursive: true); } catch (IOException) { }
+    }
+});
 
 // Nhận lại review bundle người dùng đã sửa và chỉ cho phép sinh nhãn vàng khi mọi paragraph
 // đã được xác nhận. Không lưu tài liệu hay dữ liệu review trên server.
@@ -356,6 +419,31 @@ static string SafeName(string name)
     foreach (var c in Path.GetInvalidFileNameChars()) bare = bare.Replace(c, '_');
     return string.IsNullOrWhiteSpace(bare) ? "upload.docx" : bare;
 }
+
+static string? SuggestedRoute(DocumentMode mode) => mode switch
+{
+    DocumentMode.OutlineLevelDriven => "auto:outline-level",
+    DocumentMode.NumberingDriven => "auto:numbering",
+    DocumentMode.CustomStyle => "auto:custom-style",
+    DocumentMode.VietnameseAdministrative => "auto:vietnamese-administrative",
+    DocumentMode.VietnameseLegal => "auto:vietnamese-legal",
+    DocumentMode.TypedNumbering => "auto:typed-numbering",
+    _ => null,
+};
+
+static object ModePayload(DocumentModeReport report) => new
+{
+    mode = report.Mode.ToString(),
+    paragraphs = report.Paragraphs,
+    styledHeadings = report.StyledHeadings,
+    outlineLevelRatio = report.OutlineLevelRatio,
+    vietnameseAdminRatio = report.VietnameseAdminRatio,
+    legalMarkerRatio = report.LegalMarkerRatio,
+    typedNumberRatio = report.TypedNumberRatio,
+    numberingRatio = report.NumberingRatio,
+    formatDiffers = report.FormatDiffers,
+    description = report.Describe(),
+};
 
 // Lớp sinh ra từ top-level statements là internal partial — phải khớp accessibility.
 internal partial class Program

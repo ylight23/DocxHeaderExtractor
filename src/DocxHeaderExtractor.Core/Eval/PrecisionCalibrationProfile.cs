@@ -22,7 +22,7 @@ public sealed class PrecisionCalibrationProfile
     // bucket model_*_unnumbered sang model_*_numbered — ĐÚNG là "đổi phân phối dự đoán" mà chú
     // thích trên nói tới. Không bump thì profile holdout cũ vẫn được nạp và hiệu chỉnh confidence
     // theo một phân phối không còn tồn tại.
-    public const string CurrentPipelineSignature = "dhx-semantic-precision/2026-08-11-v3";
+    public const string CurrentPipelineSignature = "dhx-semantic-precision/2026-08-13-v4";
 
     public string FormatVersion { get; init; } = CurrentFormat;
     public string PipelineSignature { get; init; } = CurrentPipelineSignature;
@@ -80,6 +80,10 @@ public sealed class PrecisionCalibrationProfile
         $"trustStyles={o.TrustStyles}",
         $"skipStyled={o.SkipStyledCandidates}",
         $"styleAutoAssign={o.StyleAutoAssign}",
+        $"autoDetectDocumentMode={o.AutoDetectDocumentMode}",
+        $"styleDeclared={o.StyleDeclaredOutline}",
+        $"numberingDeclared={o.NumberingDeclaredOutline}",
+        $"administrativeDeclared={o.AdministrativeDeclaredOutline}",
         $"reviewAll={o.ReviewAllParagraphs}",
         $"globalHierarchy={o.GlobalHierarchy}",
         $"normalizeLevels={o.NormalizeLevels}",

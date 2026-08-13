@@ -183,6 +183,18 @@ dhx extract .\tai-lieu\ -f csv -o outline.csv
 dhx info models\Llama-3.2-3B-Instruct-Q4_K_M.gguf
 ```
 
+### Tự nhận dạng loại tài liệu deterministic
+
+Pipeline đo `DocumentMode` từ chính OpenXML/text của tài liệu và trả lại trong output JSON dưới
+`documentMode`. Khi chạy `--no-llm`, nếu không chọn override thủ công, pipeline tự dùng route
+deterministic phù hợp cho các mode đã có builder (`outlineLvl`, `numbering`, `custom-style`,
+`vn-administrative`, `vn-legal`, `typed-numbering`). Khi chạy có model, mode vẫn được báo để kiểm
+tra nhưng không bỏ qua LLM/critic.
+
+Web UI có nút **Kiểm tra mode** để gọi `/api/inspect`: endpoint này chỉ đọc cấu trúc tài liệu và
+trả mode + evidence, không gọi mô hình. Dùng `.\dhx-ui.cmd`, mở `http://localhost:5099`, chọn file
+rồi bấm **Kiểm tra mode** trước khi **Phân tích**.
+
 ### OpenRouter RPC (không cần GPU)
 
 Đặt API key trong biến môi trường của tiến trình/server, không ghi vào source, `appsettings.json`

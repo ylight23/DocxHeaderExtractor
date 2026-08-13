@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Core.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.Core.Models;
 
@@ -168,6 +169,16 @@ public sealed class DocumentOutline
 
     [JsonPropertyName("model")]
     public string? Model { get; set; }
+
+    /// <summary>Mode tài liệu đo từ chính OpenXML/text, dùng để giải thích đường deterministic đã chọn.</summary>
+    [JsonPropertyName("documentMode")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public DocumentModeReport? DocumentMode { get; init; }
+
+    /// <summary>Đường dựng outline tất định đã dùng, nếu mode đủ rõ để không cần LLM.</summary>
+    [JsonPropertyName("deterministicRoute")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? DeterministicRoute { get; init; }
 
     /// <summary>Bản ghi các lượt hỏi mô hình đã chạy thật; null khi chạy <c>--no-llm</c>.</summary>
     [JsonPropertyName("provenance")]

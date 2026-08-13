@@ -56,6 +56,17 @@ public sealed class MeasurementConfigSignatureTests
             PrecisionCalibrationProfile.ConfigurationFor(b));
     }
 
+    [Fact]
+    public void Auto_detect_document_mode_lam_doi_chu_ky_cau_hinh()
+    {
+        var a = new PipelineOptions();
+        var b = new PipelineOptions { AutoDetectDocumentMode = false };
+
+        Assert.NotEqual(
+            PrecisionCalibrationProfile.ConfigurationFor(a),
+            PrecisionCalibrationProfile.ConfigurationFor(b));
+    }
+
     /// <summary>Cùng cấu hình thì phải cùng chữ ký — nếu không, mọi profile đều tự vô hiệu.</summary>
     [Fact]
     public void Cung_cau_hinh_thi_cung_chu_ky()

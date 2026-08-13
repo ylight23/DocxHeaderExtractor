@@ -106,28 +106,12 @@ public class DocumentModeTests
     }
 
     /// <summary>
-    /// <b>KHUYẾT TẬT ĐÃ BIẾT — test này ghim hành vi SAI để nó không âm thầm đổi.</b>
-    /// <para>
-    /// Tài liệu thuần số gõ tay (20 đề mục <c>N.1</c>/<c>N.2</c>, KHÔNG style Heading) LẼ RA phải
-    /// ra <see cref="DocumentMode.TypedNumbering"/>. Thực tế ra
-    /// <see cref="DocumentMode.VietnameseAdministrative"/> vì <c>AdministrativeMarkers[0]</c>
-    /// (<c>^\s*\d{1,2}\.\d{1,2}\.?\s</c>) và <c>TypedNumber</c> (<c>^\s*\d+(\.\d+)+</c>)
-    /// khớp CÙNG chuỗi <c>1.1</c>, mà nhánh hành chính đứng trước trong <c>Decide</c>.
-    /// Đo được trên corpus: giáo trình 11/15 bị nuốt như vậy (handoff §48.2, TODO mục 11).
-    /// </para>
-    /// <para>
-    /// <b>Vì sao chưa sửa.</b> §49 đã thử hai lần: bỏ mẫu dùng chung làm tỉ lệ cao nhất trên cả 95
-    /// tài liệu còn 0,129 &lt; ngưỡng 0,15, biến cả chế độ hành chính thành nhánh chết. Ngưỡng đó
-    /// hiệu chỉnh cho bộ BỐN mẫu; sửa đúng cần hiệu chỉnh lại trên tập tín hiệu mới, mà việc đó
-    /// cần đáp án người kiểm — TODO mục 4 xếp ba file giáo trình là thứ rẻ nhất mở khoá.
-    /// </para>
-    /// <para>
-    /// Khi sửa xong, test này SẼ ĐỎ. Đó là mục đích: đổi assert sang
-    /// <see cref="DocumentMode.TypedNumbering"/> và xoá khối chú thích này.
-    /// </para>
+    /// Tài liệu thuần số gõ tay nhiều cấp (<c>N.1</c>/<c>N.2</c>, KHÔNG style Heading) phải vào
+    /// <see cref="DocumentMode.TypedNumbering"/> trước khi nhánh hành chính kịp nuốt cùng chuỗi
+    /// <c>1.1</c>. Đây là TODO mục 11 trong handoff.
     /// </summary>
     [Fact]
-    public void So_go_tay_thuan_bi_nhan_nham_thanh_hanh_chinh_KHUYET_TAT_DA_BIET()
+    public void So_go_tay_thuan_duoc_nhan_la_typed_numbering()
     {
         var ps = new List<SlimParagraph>();
         for (var i = 1; i <= 10; i++)
@@ -139,8 +123,7 @@ public class DocumentModeTests
 
         var mode = Measure([.. ps]);
 
-        // Giá trị ĐÚNG phải là TypedNumbering. Giữ nguyên assert sai để khuyết tật không tàng hình.
-        Assert.Equal(DocumentMode.VietnameseAdministrative, mode.Mode);
+        Assert.Equal(DocumentMode.TypedNumbering, mode.Mode);
         Assert.Equal(0, mode.StyledHeadings);
     }
 

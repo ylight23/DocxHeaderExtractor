@@ -42,9 +42,9 @@ public static class AdministrativeOutline
     /// khác nhau — một chữ ký duy nhất không suy ra được quan hệ lồng nhau nào, và đoán bừa ở đó
     /// là đúng thứ file này sinh ra để tránh.
     /// </summary>
-    public static List<HeadingRecord> Build(SlimDocument document)
+    public static List<HeadingRecord> Build(SlimDocument document, bool splitMergedParagraphs = true)
     {
-        var units = Units(document);
+        var units = Units(document, splitMergedParagraphs);
         if (units.Count == 0) return [];
 
         // Thứ hạng = thứ tự XUẤT HIỆN LẦN ĐẦU của chữ ký. "I." gặp trước "1." nên nông hơn.
@@ -89,13 +89,16 @@ public static class AdministrativeOutline
     /// Đơn vị đo là LÁT CẮT, không phải đoạn — bản chuyển PDF gộp cả trang vào một <c>w:p</c> nên
     /// 94% mốc nằm giữa đoạn (§47.1). Đoạn không bị gộp trả về chính nó.
     /// </summary>
-    private static List<Unit> Units(SlimDocument document)
+    private static List<Unit> Units(SlimDocument document, bool splitMergedParagraphs)
     {
         List<Unit> units = [];
         foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
         {
             if (p.Corrupt || p.TableDepth > 0 || string.IsNullOrWhiteSpace(p.Text)) continue;
-            foreach (var seg in ParagraphHeadingSplitter.Segments(p.Text))
+            var segments = splitMergedParagraphs
+                ? ParagraphHeadingSplitter.Segments(p.Text)
+                : [p.Text];
+            foreach (var seg in segments)
                 if (NumberingAudit.Parse(seg) is { } token)
                     units.Add(new Unit(p, seg, token));
         }

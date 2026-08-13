@@ -1,6 +1,7 @@
 using DocxHeaderExtractor.Core.Chunking;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Web;
 
@@ -19,7 +20,8 @@ public sealed record Defaults(
     string OpenRouterModel,
     string LmStudioEndpoint,
     string LmStudioModel,
-    int LmStudioContextSize)
+    int LmStudioContextSize,
+    bool AutoDetectMode)
 {
     public static Defaults Current()
     {
@@ -44,7 +46,8 @@ public sealed record Defaults(
             OpenRouterModel: Environment.GetEnvironmentVariable("OPENROUTER_MODEL") ?? "qwen/qwen-2.5-7b-instruct",
             LmStudioEndpoint: lmStudio.Endpoint.GetLeftPart(UriPartial.Authority),
             LmStudioModel: lmStudio.Model,
-            LmStudioContextSize: lmStudio.ContextSize);
+            LmStudioContextSize: lmStudio.ContextSize,
+            AutoDetectMode: new PipelineOptions().AutoDetectDocumentMode);
     }
 
     private static int GpuLayersFromEnvironment(int defaultValue) =>

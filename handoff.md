@@ -4371,3 +4371,96 @@ quả sai. Test này bắt ngay được `correctedFile` (thuộc luồng khác,
 mutation "quên nối dây một ô" → đỏ.
 
 **486 test xanh**, bench không đổi.
+
+## §61. DocumentMode chuyển từ chẩn đoán sang route kiểm chứng được
+
+Người dùng yêu cầu kiểm tra spec và hoàn tất phần "mã nguồn tự nhận dạng văn bản đang thuộc loại
+nào thông qua luật deterministic". Rà lại thấy `DocumentModeClassifier` đã tồn tại và
+`DocxSlimExtractor` đã đo mode, nhưng pipeline/web gần như chỉ dùng nó để ghi XML/log: `vn-legal`,
+`custom-style`, `typed-numbering` vẫn là thông tin chẩn đoán, chưa thành bề mặt test hay route chạy.
+
+### 61.1 Bug đã sửa: `TypedNumbering` bị `VietnameseAdministrative` nuốt
+
+Chuỗi `1.1` khớp đồng thời:
+
+```
+AdministrativeMarkers[0]  ^\s*\d{1,2}\.\d{1,2}\.?\s
+TypedNumber               ^\s*\d+(\.\d+)+
+```
+
+Trước đây nhánh hành chính đứng trước nên tài liệu thuần số gõ tay nhiều cấp rơi vào
+`VietnameseAdministrative`. Đổi thứ tự: `TypedNumbering` được kiểm trước `VietnameseAdministrative`,
+nhưng `VietnameseLegal` vẫn đứng trước admin để bảo vệ `Chương/Điều`, và test
+`Ky_hieu_rieng_cua_hanh_chinh_khong_duoc_mat_khi_sua_muc_11` giữ chiều `I.`/`a)` không mất.
+
+Test cũ `So_go_tay_thuan_bi_nhan_nham_thanh_hanh_chinh_KHUYET_TAT_DA_BIET` đã đổi thành
+`So_go_tay_thuan_duoc_nhan_la_typed_numbering`.
+
+### 61.2 Pipeline auto route, nhưng chỉ bypass khi `--no-llm`
+
+Thêm `PipelineOptions.AutoDetectDocumentMode = true`, `DocumentOutline.documentMode` và
+`DocumentOutline.deterministicRoute`.
+
+Luồng chạy:
+
+- luôn đo và log `DocumentModeReport`;
+- manual flags `--style-outline`, `--numbering-outline`, `--admin-outline` vẫn thắng;
+- khi `DisableLlm=true` và không có manual override, auto route mới dựng outline tất định;
+- khi có model, mode chỉ được báo để kiểm chứng, không bỏ qua LLM/critic.
+
+Lý do của điều kiện cuối: test critic đang đo đúng đường LLM. Nếu auto route chạy trước model, nó
+cướp mất toàn bộ luồng critic/human review và thay đổi ý nghĩa các test/measurement cũ. `no-llm`
+mới là nơi người dùng kỳ vọng deterministic tự quyết.
+
+Route auto hiện có:
+
+| mode | route |
+|---|---|
+| `OutlineLevelDriven` | `auto:outline-level` |
+| `NumberingDriven` | `auto:numbering` |
+| `CustomStyle` | `auto:custom-style` |
+| `VietnameseAdministrative` | `auto:vietnamese-administrative` |
+| `VietnameseLegal` | `auto:vietnamese-legal` |
+| `TypedNumbering` | `auto:typed-numbering` |
+
+`VietnameseLegal` dùng lại `AdministrativeOutline.Build`: builder này đã parse được nhãn
+`Chương/Điều` qua `NumberingAudit.Parse` và đã có test cho đoạn PDF gộp. Chưa tách `LegalOutline`
+riêng vì chưa cần để đóng yêu cầu này.
+
+### 61.3 Bảo toàn lời hứa của `--split-merged`
+
+Auto legal/admin ban đầu làm đỏ `SplitMergedParagraphsTests`: không bật `splitMerged` mà vẫn cứu
+heading nằm giữa paragraph. Đó là hồi quy vì cờ này cố ý mặc định tắt để giữ giả định "mỗi paragraph
+tối đa một mục". Sửa bằng cách cho `AdministrativeOutline.Build(document, splitMergedParagraphs)`
+nhận cờ:
+
+- manual `--admin-outline` vẫn dùng hành vi đầy đủ như cũ;
+- auto route chỉ dùng lát giữa paragraph khi `Extraction.SplitMergedParagraphs=true`.
+
+### 61.4 Web UI và endpoint kiểm mode
+
+Thêm `/api/inspect`: nhận upload multipart, chạy convert + `DocxSlimExtractor` + `DocumentModeClassifier`,
+trả `mode`, tỉ lệ evidence và `suggestedRoute`, không gọi mô hình.
+
+Web UI có:
+
+- checkbox **Tự nhận dạng loại tài liệu**;
+- nút **Kiểm tra mode**;
+- panel **Nhận dạng deterministic** hiển thị mode, route và evidence;
+- kết quả `/api/extract` cũng render lại `documentMode`/`deterministicRoute`.
+
+Ba manual builder trong UI được ép chọn một trong ba, vì chúng thay hẳn đường chạy chứ không phải
+tùy chọn cộng dồn.
+
+### 61.5 Calibration
+
+Vì auto route và manual declared flags đổi phân phối dự đoán, thêm chúng vào
+`PrecisionCalibrationProfile.ConfigurationFor` và bump signature:
+
+```
+dhx-semantic-precision/2026-08-13-v4
+```
+
+Không bump thì profile holdout cũ có thể được áp lên một pipeline đã chạy khác đường.
+
+**489 test xanh** (`dotnet test --no-restore`).
