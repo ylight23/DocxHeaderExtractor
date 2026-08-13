@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -9,6 +10,10 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// </summary>
 public static class TypedNumberingOutline
 {
+    private static readonly Regex RfcPageFooterRx = new(
+        @"\b[A-Z][A-Za-z]+(?:,\s+et al\.)?\s+Standards Track Page\s+\d+\b",
+        RegexOptions.Compiled);
+
     public static List<HeadingRecord> Build(SlimDocument document, bool splitMergedParagraphs = true)
     {
         List<HeadingRecord> result = [];
@@ -16,9 +21,10 @@ public static class TypedNumberingOutline
         foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
         {
             if (p.Corrupt || p.TableDepth > 0 || string.IsNullOrWhiteSpace(p.Text)) continue;
+            var text = StripPageArtifacts(p.Text);
             var segments = splitMergedParagraphs
-                ? ParagraphHeadingSplitter.Segments(p.Text)
-                : [p.Text];
+                ? ParagraphHeadingSplitter.Segments(text)
+                : [text];
 
             foreach (var seg in segments)
             {
@@ -44,4 +50,7 @@ public static class TypedNumberingOutline
 
         return result;
     }
+
+    internal static string StripPageArtifacts(string text) =>
+        RfcPageFooterRx.Replace(text, "").Trim();
 }

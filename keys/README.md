@@ -83,16 +83,17 @@ lấy từ RFC Editor XML (`numbered=true`), bỏ front matter, TOC, acknowledge
 DOCX corpus là bản PDF/text-layout theo trang nên mỗi heading xuất hiện trong TOC và body; stable ID
 trong key chọn occurrence cuối, tức phần body.
 
-Đo hiện tại với `--no-llm --split-merged`:
+Đo hiện tại với `--no-llm --split-merged` sau filter footer RFC:
 
 | file | truth | returned | exact P/R/F1 | marker diagnostic |
 |---|--:|--:|---:|---|
-| `092_RFC9111_HTTP_Caching` | 64 | 300 | 0% | 62/64 marker xuất hiện; 61/64 output cùng stableId bắt đầu bằng title nguồn |
+| `092_RFC9111_HTTP_Caching` | 64 | 293 | 1,0% / 4,7% / 1,7% | 61/64 navigation usable, level đúng 61/61 |
 
 Kết luận: route `TypedNumbering` trên RFC không mất marker chính, nhưng exact title hỏng vì nuốt
-body/page footer và bắt nhầm TOC/reference/list items. Sau khi tách builder typed riêng, cấp trong
-61 heading starts-with đã lên **61/61**; exact P/R/F1 vẫn 0% vì chưa xử lý lọc nhiễu và ranh giới
-title/body. Đây là bench đầu tiên cho nhóm Typed/RFC, không dùng để làm đẹp số mà để phơi lỗi route.
+body và bắt nhầm TOC/reference/list items. Sau khi tách builder typed riêng, cấp trong 61 heading
+starts-with đã lên **61/61**; filter footer xuất bản lặp chỉ cứu 3 exact title và giữ nguyên 61/64
+usable cho điều hướng. Đây là bench đầu tiên cho nhóm Typed/RFC, không dùng để làm đẹp số mà để phơi
+lỗi route.
 
 ## Tài liệu mật
 

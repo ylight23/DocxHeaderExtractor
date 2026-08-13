@@ -936,6 +936,8 @@ Vì vậy phải tách hai mục tiêu:
 
 - **outline điều hướng**: có thể dùng được nếu marker/title-prefix và level đúng, dù title còn dính
   body; RFC 9111 đạt 61/64 starts-with cùng stableId/marker và level đúng 61/61 sau builder typed.
+  Filter footer xuất bản RFC (`Author[, et al.] Standards Track Page N`) giữ nguyên 61/64 usable và
+  chỉ tăng exact title 0→3/64.
 - **writeback/span chính xác**: không được auto-accept trên text-layout mất ranh giới; cần nguồn tốt
   hơn hoặc review.
 

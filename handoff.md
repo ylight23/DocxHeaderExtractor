@@ -5363,3 +5363,33 @@ trong file sau chuyển đổi. Vì vậy:
   + level), việc tiếp theo là lọc nhiễu để giảm returned 300.
 - Nếu mục tiêu là writeback DOCX với span title/body chính xác: RFC text-layout nên coi là
   review/nguồn kém, không auto-accept exact title.
+
+## §76. Typed RFC filter 1: bỏ footer xuất bản lặp
+
+Đã cài filter hẹp trong `TypedNumberingOutline`: xoá artifact RFC dạng
+`Author[, et al.] Standards Track Page N` trước khi `ParagraphHeadingSplitter.Segments`.
+
+Đây là filter an toàn vì chuỗi này là footer xuất bản, không phải heading hay body. Không đụng TOC,
+registry/reference/list item, và không cố cắt title/body.
+
+Đo RFC 092:
+
+| metric | trước filter | sau filter |
+|---|--:|--:|
+| returned | 300 | 293 |
+| exact TP | 0/64 | 3/64 |
+| exact P/R/F1 | 0% | 1,0% / 4,7% / 1,7% |
+| navigation usable | 61/64 | 61/64 |
+| missing usable | `1. Introduction`, `A. Collected ABNF`, `B. Changes from RFC 7234` | giữ nguyên |
+
+Ba exact mới:
+
+- `4.2. Freshness`
+- `5.2.1.1. max-age`
+- `5.2.2.8. proxy-revalidate`
+
+Kết luận: filter footer đúng hướng nhưng chỉ là dọn artifact nhỏ. Nút chính vẫn là title/body
+boundary và nhiễu TOC/reference/registry/list. Vì navigation usable không giảm, filter này an toàn
+cho mục tiêu điều hướng.
+
+Test: `dotnet test --no-restore` → 513/513 pass.

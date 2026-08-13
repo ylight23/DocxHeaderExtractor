@@ -30,6 +30,26 @@ public sealed class TypedNumberingOutlineTests
         Assert.Equal([2, 3, 1], r.Select(h => h.Level));
     }
 
+    [Fact]
+    public void Bo_footer_RFC_lap_lai_khoi_tieu_de()
+    {
+        var r = Build("4.2. Freshness Fielding, et al. Standards Track Page 11");
+
+        Assert.Single(r);
+        Assert.Equal("4.2. Freshness", r[0].Text);
+        Assert.Equal(2, r[0].Level);
+    }
+
+    [Fact]
+    public void Khong_bo_noi_dung_thuong_khong_phai_footer()
+    {
+        var text = "4.2. Freshness Fielding explains cache behavior";
+        var r = Build(text);
+
+        Assert.Single(r);
+        Assert.Equal(text, r[0].Text);
+    }
+
     private static List<HeadingRecord> Build(params string[] texts)
     {
         List<SlimParagraph> ps = [];
