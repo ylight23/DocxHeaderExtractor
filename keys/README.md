@@ -83,11 +83,15 @@ lấy từ RFC Editor XML (`numbered=true`), bỏ front matter, TOC, acknowledge
 DOCX corpus là bản PDF/text-layout theo trang nên mỗi heading xuất hiện trong TOC và body; stable ID
 trong key chọn occurrence cuối, tức phần body.
 
+`056_OpenStax_Business_Law_I_Essentials.key` là key Typed thứ hai, thuộc `04_giao_trinh`: 14 chapter
++ 32 numbered section từ OpenStax web 2019. Key này cố ý đo occurrence body cuối, không đo TOC.
+
 Đo hiện tại với `--no-llm --split-merged` sau filter footer RFC:
 
 | file | truth | returned | exact P/R/F1 | marker diagnostic |
 |---|--:|--:|---:|---|
 | `092_RFC9111_HTTP_Caching` | 64 | 293 | 1,0% / 4,7% / 1,7% | 61/64 navigation usable, level đúng 61/61 |
+| `056_OpenStax_Business_Law_I_Essentials` | 46 | 190 | 0% / 0% / 0% | body navigation usable 4/46, level đúng 3/4; truth lọt candidate 34/46 |
 
 Kết luận: route `TypedNumbering` trên RFC không mất marker chính, nhưng exact title hỏng vì nuốt
 body và bắt nhầm TOC/reference/list items. Sau khi tách builder typed riêng, cấp trong 61 heading
@@ -99,6 +103,11 @@ lỗi route.
 `07_system_generated` cho thấy cả ba nhóm đều là text-layout nặng, không chỉ RFC. Vì vậy key Typed
 tiếp theo vẫn cần nguồn ngoài pipeline, nhưng metric chính phải tách rõ: `exact-title` đo khả năng
 writeback/span; `navigation-usable` đo cây điều hướng khi title còn dính body nhưng marker/level đúng.
+
+Key 056 cho thấy giáo trình text-layout có một lỗi khác RFC: body heading thường bị nối mất khoảng
+trắng giữa title và thân bài (`TitleThe...`), trong khi TOC có delimiter sạch. Vì vậy route hiện tại
+dễ bắt TOC/page-header hơn body occurrence. Không vá bằng marker-last; cần rule theo vùng/occurrence
+an toàn hơn.
 
 ## Tài liệu mật
 

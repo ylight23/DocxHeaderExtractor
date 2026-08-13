@@ -5420,3 +5420,39 @@ Hệ quả cho thứ tự việc:
    điều hướng.
 3. Không đầu tư sâu vào lexical title/body split cho text-layout nếu không có tín hiệu mới ngoài
    text tuyến tính.
+
+## §78. Typed giáo trình 056: RFC không đại diện cho lỗi body occurrence
+
+Đã thêm `keys/typed-human/056_OpenStax_Business_Law_I_Essentials.key`, nguồn title độc lập từ
+OpenStax web 2019. Key gồm 46 mục điều hướng: 14 chapter + 32 numbered section, stableId chọn
+occurrence body cuối trong DOCX, không chọn TOC.
+
+Đo `056` với `--no-llm --split-merged`:
+
+| metric | số |
+|---|--:|
+| truth | 46 |
+| returned | 190 |
+| exact P/R/F1 | 0% |
+| body navigation usable | 4/46 |
+| level đúng trong body navigation hit | 3/4 |
+| truth paragraph là HeadingCandidate | 34/46 |
+
+Đọc kết quả:
+
+- Khác RFC 092: RFC có 61/64 body navigation usable; OpenStax 056 chỉ 4/46.
+- Không phải chỉ do candidate filter: 34/46 truth body đã là `HeadingCandidate`, nhưng builder vẫn
+  không trả đúng occurrence body.
+- Mẫu lỗi chính: ở body, PDF text-layout nối title với thân bài không có khoảng trắng
+  (`1.1 Basic American Legal PrinciplesThe...`), còn TOC có delimiter sạch
+  (`1.1 Basic American Legal Principles 3`). Splitter/builder vì vậy bắt TOC/page-header dễ hơn body.
+- Không dùng marker-last: §73 đã bác bằng RFC registry/reference lặp marker ở cuối tài liệu.
+
+Kết luận: nhóm Typed có ít nhất hai dạng lỗi:
+
+1. RFC-like: body marker rõ, navigation tốt, exact title hỏng vì dính body.
+2. OpenStax-like: body marker/title bị nối delimiter, route ưu tiên TOC/page-header, navigation body
+   thấp dù paragraph đã là candidate.
+
+Việc kế tiếp đáng làm: chẩn đoán một file `03_tai_chinh_ke_toan` để xem nó gần RFC-like hay
+OpenStax-like. Sau đó mới thiết kế luật vùng/occurrence cho Typed; chưa vá bằng heuristic rộng.
