@@ -197,6 +197,10 @@ Web UI có nút **Kiểm tra mode** để gọi `/api/inspect`: endpoint này ch
 trả mode + evidence, không gọi mô hình. Dùng `.\dhx-ui.cmd`, mở `http://localhost:5099`, chọn file
 rồi bấm **Kiểm tra mode** trước khi **Phân tích**.
 
+Để mở rộng answer key từ mục lục Word, dùng `dhx toc-keys <thư-mục>`. Mặc định chỉ ghi file đạt
+ngưỡng khớp 80%; thêm `--toc-partial --toc-match-threshold 0.4` để ghi các cặp mục lục khớp chính
+xác dưới dạng `partial_toc` — đây là đáp án từng phần, không phải outline đầy đủ.
+
 ### OpenRouter RPC (không cần GPU)
 
 Đặt API key trong biến môi trường của tiến trình/server, không ghi vào source, `appsettings.json`

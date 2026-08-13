@@ -478,14 +478,16 @@ static int RunTocKeys(CommandLineOptions o)
                 Console.Error.WriteLine($"    mơ hồ (>1 đoạn thân bài trùng text): {t}");
         }
 
-        if (!r.Accepted) continue;
+        var shouldWrite = r.Accepted || (o.TocPartial && r.MatchedCount > 0);
+        if (!shouldWrite) continue;
         var keyPath = Path.Combine(outDir, Path.GetFileNameWithoutExtension(r.FileName) + ".key");
-        File.WriteAllText(keyPath, r.ToAnswerKeyText(), new UTF8Encoding(false));
+        File.WriteAllText(keyPath, r.ToAnswerKeyText(partial: !r.Accepted), new UTF8Encoding(false));
         accepted++;
     }
 
     Console.Error.WriteLine();
-    Console.Error.WriteLine($"{accepted}/{results.Count} file đủ ngưỡng {o.TocMatchThreshold:P0} — đã ghi .key vào {outDir}");
+    var writeLabel = o.TocPartial ? "file đã ghi .key (gồm partial_toc nếu dưới ngưỡng)" : $"file đủ ngưỡng {o.TocMatchThreshold:P0}";
+    Console.Error.WriteLine($"{accepted}/{results.Count} {writeLabel} — đã ghi .key vào {outDir}");
     var insufficient = results.Count(r => r.Status == TocKeyStatus.InsufficientTocEntries);
     var below = results.Count(r => r.Status == TocKeyStatus.BelowMatchThreshold);
     Console.Error.WriteLine($"  thiếu mục lục: {insufficient}   dưới ngưỡng: {below}");

@@ -34,6 +34,9 @@ public sealed class CommandLineOptions
     /// <summary>Lệnh `toc-keys`: tỉ lệ khớp tối thiểu giữa mục lục và thân bài để nhận file.</summary>
     public double TocMatchThreshold { get; private set; } = Core.Eval.TocAnswerKeyGenerator.DefaultMatchThreshold;
 
+    /// <summary>Lệnh `toc-keys`: ghi cả key từng phần cho file dưới ngưỡng, đánh dấu partial_toc.</summary>
+    public bool TocPartial { get; private set; }
+
     /// <summary>Lệnh `toc-keys`: in từng mục lục không khớp/mơ hồ để chẩn đoán.</summary>
     public bool Verbose { get; private set; }
 
@@ -161,6 +164,7 @@ public sealed class CommandLineOptions
                 case "--toc-match-threshold":
                     o.TocMatchThreshold = double.Parse(Next(a), System.Globalization.CultureInfo.InvariantCulture);
                     break;
+                case "--toc-partial": o.TocPartial = true; break;
                 case "-v" or "--verbose": o.Verbose = true; break;
 
                 case "--write-docx": o.WritebackPath = Next(a); break;
@@ -251,6 +255,8 @@ public sealed class CommandLineOptions
               -o, --out <thư-mục>   Nơi ghi .key (mặc định ./keys/toc-derived)
               --toc-match-threshold p  Tỉ lệ khớp tối thiểu để nhận file (mặc định 0.80)
                                     Dưới ngưỡng: in báo cáo, KHÔNG ghi .key.
+              --toc-partial         Ghi cả file dưới ngưỡng khi có mục khớp chính xác; header
+                                    đánh dấu partial_toc và KHÔNG coi là outline đầy đủ.
 
         Mô hình / hiệu năng CPU:
               --ctx <n>             Cửa sổ ngữ cảnh (mặc định 4096)

@@ -255,6 +255,33 @@ public sealed class TocAnswerKeyGeneratorTests : IDisposable
         Assert.Equal(5, parsed.StableIds.Count);
     }
 
+    [Fact]
+    public void ToAnswerKeyText_partial_danh_dau_partial_toc_va_van_parse_duoc()
+    {
+        var path = Write(
+            Plain("MỤC LỤC"),
+            TocEntry("Chương 1. Mở đầu\t1"),
+            TocEntry("1.1. Lý do chọn đề tài\t2"),
+            TocEntry("1.2. Mục tiêu nghiên cứu\t3"),
+            TocEntry("Chương 2. Nội dung\t5"),
+            TocEntry("2.1. Phương pháp thực hiện\t8"),
+            Plain("Chương 1. Mở đầu"),
+            Plain("1.1. Lý do chọn đề tài"),
+            Plain("1.2. Mục tiêu nghiên cứu"),
+            Plain("Chương 2. Nội dung"),
+            Plain("2.1. Phương pháp thực hiện"));
+
+        var doc = new DocxSlimExtractor(new ExtractionOptions()).Extract(path);
+        var result = TocAnswerKeyGenerator.Generate(doc) with { FileName = "partial.docx" };
+        var text = result.ToAnswerKeyText(partial: true);
+
+        Assert.Contains("partial_toc", text);
+        Assert.Contains("KHÔNG phải outline đầy đủ", text);
+        var parsed = DocxHeaderExtractor.Core.Eval.AnswerKey.Parse(text);
+        Assert.True(parsed.HasStableIds);
+        Assert.Equal(5, parsed.StableIds.Count);
+    }
+
     /// <summary>
     /// ĐO ĐƯỢC trên tài liệu thật (báo cáo thực tập MBBank): mục lục của heading numPr-driven
     /// (numbering do Word vẽ, không gõ tay) không có ký tự số nào trong TEXT — "Giới thiệu chung về

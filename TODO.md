@@ -457,8 +457,10 @@ tín hiệu dùng chung xuất hiện trong văn bản pháp quy, giáo trình, 
 `VietnameseLegal`/legal-structured như kỳ vọng.
 
 Phần còn cần dữ liệu: 40 file `TypedNumbering` vẫn chưa có answer key đại diện. Quét TOC field trên
-95 file cho 0/95 file đủ ngưỡng 80% (86 thiếu mục lục, 9 dưới ngưỡng), nên hướng mở rộng đáp án tự
-động bằng TOC chưa mở được corpus này nếu giữ chuẩn hiện tại.
+95 file cho 0/95 file đủ ngưỡng 80% (86 thiếu mục lục, 9 dưới ngưỡng). Hạ ngưỡng xuống 40% và bật
+`--toc-partial` lấy được **743 cặp exact-match** từ 9 file, nhưng cả 9 đều là `OutlineLevelDriven`
+trong nhóm hợp đồng mua sắm. Kết luận: partial TOC có ích cho bench phụ, còn `TypedNumbering` vẫn
+cần gán tay ít nhất 3 file trước khi báo độ chính xác.
 
 ---
 

@@ -143,11 +143,14 @@ public static class TocAnswerKeyGenerator
             ambiguousBody, ratio, matches, unmatchedToc, ambiguousToc);
     }
 
-    public static string ToAnswerKeyText(this TocKeyResult result)
+    public static string ToAnswerKeyText(this TocKeyResult result, bool partial = false)
     {
         var sb = new StringBuilder();
-        sb.Append("# Đáp án SUY TỪ MỤC LỤC (toc_derived) — ").AppendLine(result.FileName);
+        var source = partial ? "partial_toc" : "toc_derived";
+        sb.Append("# Đáp án SUY TỪ MỤC LỤC (").Append(source).Append(") — ").AppendLine(result.FileName);
         sb.AppendLine("# KHÔNG phải người kiểm — mục lục có thể lỗi thời, xem keys/README.md.");
+        if (partial)
+            sb.AppendLine("# PARTIAL: chỉ các mục TOC khớp chính xác/một-nghĩa với thân bài; KHÔNG phải outline đầy đủ.");
         sb.Append("# Khớp ").Append(result.MatchedCount).Append('/').Append(result.TocEntryCount)
           .Append(" mục (").Append((result.MatchRatio * 100).ToString("0.0")).AppendLine("%).");
         sb.AppendLine("# @<stable-id> <cấp>   — suy từ mục lục, chưa xác nhận");

@@ -28,6 +28,10 @@ do Word tự sinh với TOÀN BỘ đoạn thân bài (không lọc qua ứng vi
 đổi bằng `--toc-match-threshold`) mới được ghi `.key`, dùng `@stableId` để không lệch khi đổi tuỳ
 chọn trích xuất.
 
+Nếu cần tận dụng phần khớp được của một mục lục lỗi thời/không đầy đủ, dùng thêm `--toc-partial`.
+Các file này được đánh dấu `partial_toc` trong header và chỉ chứa những mục TOC khớp chính xác,
+một-nghĩa với thân bài; không được đọc như outline đầy đủ.
+
 **Không phải đáp án người kiểm.** Mục lục có thể lỗi thời (tác giả sửa tiêu đề mà không refresh) —
 luôn đọc dòng `# Khớp n/N mục` ở đầu mỗi file trước khi dùng làm nền so sánh. Chạy trên corpus
 `todo10_8/heading_corpus_95_word` (95 file) cho **0/95** đạt ngưỡng: phần lớn (86/95) là bản
@@ -35,6 +39,10 @@ PDF→DOCX không giữ mục lục Word thật, và 9 file `.docx` gốc còn l
 tiêu đề lặp lại nhiều nơi (`"mơ hồ"` — nhiều đoạn thân bài cùng chuẩn hoá về một chuỗi) nên bị loại
 theo đúng thiết kế thay vì đoán đại. Cần tài liệu dạng văn xuôi có mục lục Word thật (báo cáo, khoá
 luận…) để công cụ này có ích.
+
+Đo lại với `--toc-match-threshold 0.4 --toc-partial` trên cùng corpus cho **9/95 file** có partial
+key, tổng **743 cặp** exact-match. Cả 9 file đều thuộc `OutlineLevelDriven`, nên kết quả này hữu ích
+để mở rộng đối chứng cho nhóm có TOC/outline Word, nhưng **chưa mở khoá được `TypedNumbering`**.
 
 ## Tài liệu mật
 
