@@ -4644,6 +4644,41 @@ hơn là coi `OutlineLevelDriven` là chế độ **đa nguồn**: nguồn chín
 và gán cấp theo cha `outlineLvl` gần nhất. Nhưng cần thêm phân tích cụm trước khi cài, vì nguồn phụ
 không chỉ nằm trong bảng.
 
+Lát cắt score của 406 mục thiếu:
+
+```
+MISS_SCORE_ALL
+<0.25       195
+0.25-0.44    74
+0.45-0.64    14
+0.65-0.74    82
+>=0.75       41
+
+MISS_SCORE_IN_TABLE
+<0.25        94
+0.25-0.44    74
+>=0.75        2
+
+MISS_SCORE_OUTSIDE_TABLE
+<0.25       101
+0.45-0.64    14
+0.65-0.74    82
+>=0.75       39
+```
+
+Vậy nguồn phụ đơn giản "`HeadingCandidate` không có `outlineLvl`, score ≥0,65" dự kiến chỉ thu thêm
+123 mục. Trần recall sẽ từ 45,4% lên khoảng `(337+123)/743 = 61,9%`, chưa chạm nhóm thấp điểm. Hai
+bài toán còn lại khác nhau:
+
+- trong bảng: 168 mục `Normal`, score 0,20–0,35, dạng tên điều khoản/cell heading như
+  `Scope of Supply`, `Terms of Payment`;
+- ngoài bảng: 101 mục `Normal`, score 0, thường là form/section heading không có dấu hiệu định dạng
+  hiện tại như `Employer’s Requirements`, `Proposal Forms`, `Advance Payment Security`.
+
+Nếu cài nguồn phụ score ≥0,65, tiêu chí bác bỏ đã rõ: precision không được rơi dưới 90%, đúng cấp
+không dưới 95%. Nếu không đạt, ngưỡng/luật suy cấp theo neo sai. Nhưng kể cả đạt, vẫn chỉ là nửa
+đường; phần score thấp là bài toán bộ chấm điểm/nhận dạng cụm, không phải ghép nguồn.
+
 Kết luận về hướng TOC → TypedNumbering cũng đóng lại: 9 file có TOC đều là `OutlineLevelDriven`
 không phải tình cờ. Word sinh TOC field từ outline/style; tài liệu có TOC thật gần như tự mang tín
 hiệu outline/style, còn `TypedNumbering` là số gõ tay thuần. Nói ngắn: **TOC ⊥ TypedNumbering là
