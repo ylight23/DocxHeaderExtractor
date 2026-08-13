@@ -90,9 +90,9 @@ trong key chọn occurrence cuối, tức phần body.
 | `092_RFC9111_HTTP_Caching` | 64 | 300 | 0% | 62/64 marker xuất hiện; 61/64 output cùng stableId bắt đầu bằng title nguồn |
 
 Kết luận: route `TypedNumbering` trên RFC không mất marker chính, nhưng exact title hỏng vì nuốt
-body/page footer và bắt nhầm TOC/reference/list items. Cấp cũng chưa ổn: trong 61 heading bắt đầu
-đúng title nguồn, chỉ 42 heading có level đúng. Đây là bench đầu tiên cho nhóm Typed/RFC, không dùng
-để làm đẹp số mà để phơi lỗi route.
+body/page footer và bắt nhầm TOC/reference/list items. Sau khi tách builder typed riêng, cấp trong
+61 heading starts-with đã lên **61/61**; exact P/R/F1 vẫn 0% vì chưa xử lý lọc nhiễu và ranh giới
+title/body. Đây là bench đầu tiên cho nhóm Typed/RFC, không dùng để làm đẹp số mà để phơi lỗi route.
 
 ## Tài liệu mật
 

@@ -520,8 +520,10 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 StyleDeclaredOutline.BuildFromNumbering(slim),
             "manual:administrative" =>
                 AdministrativeOutline.Build(slim),
-            "auto:vietnamese-administrative" or "auto:typed-numbering" =>
+            "auto:vietnamese-administrative" =>
                 AdministrativeOutline.Build(slim, _options.Extraction.SplitMergedParagraphs),
+            "auto:typed-numbering" =>
+                TypedNumberingOutline.Build(slim, _options.Extraction.SplitMergedParagraphs),
             "auto:vietnamese-legal" =>
                 LegalStructuredOutline.Build(slim, _options.Extraction.SplitMergedParagraphs),
             _ => null,

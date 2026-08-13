@@ -398,6 +398,12 @@ Không dùng `repeat_count` đơn lẻ để loại, vì nhãn lặp hợp lệ 
          ∪ block khớp từ khóa cấu trúc (5.3)
 ```
 
+Cập nhật đo trên RFC 9111: `auto:typed-numbering` không được dùng chung builder hành chính. Builder
+hành chính suy cấp theo thứ tự chữ ký xuất hiện, còn typed-numbering phải lấy cấp trực tiếp từ độ
+sâu marker (`1.` = H1, `1.1.` = H2, `1.1.1.` = H3). Sau khi tách builder riêng, 61 heading RFC
+cùng stableId và bắt đầu bằng title nguồn tăng đúng cấp từ 42/61 lên 61/61; exact P/R/F1 vẫn 0% vì
+chưa xử lý TOC/page artifact/title-body boundary.
+
 **Chế độ `numpr-driven`:**
 ```
 ứng viên = block có numPr, ilvl ≥ 1, numId ∈ tập numId-heading

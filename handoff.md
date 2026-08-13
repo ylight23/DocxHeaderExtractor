@@ -5212,3 +5212,29 @@ Việc tiếp theo nên đo trước khi sửa:
   nhiêu?
 - Với starts-with đúng title, xem sai level do công thức đếm dấu chấm hay do marker trong thân bài.
 - Sau RFC, vẫn cần hai key đại diện khác: một tài chính và một giáo trình.
+
+## §72. TypedNumbering vá 1: cấp lấy từ marker depth
+
+Nguyên nhân sai cấp §71: `auto:typed-numbering` dùng chung `AdministrativeOutline`, mà builder hành
+chính suy cấp theo thứ tự chữ ký xuất hiện. Luật đó đúng cho `I./1./a)`, nhưng sai cho số gõ tay
+kiểu RFC/học thuật: `1.`/`1.1.`/`1.1.1.` đã tự khai báo cấp bằng độ sâu marker.
+
+Đã tách `TypedNumberingOutline`:
+
+- vẫn dùng cùng `ParagraphHeadingSplitter.Segments` và `NumberingAudit.Parse`, nên tập heading giữ
+nguyên cho vòng đo này;
+- level = `NumberToken.Depth`;
+- `ConfidenceBasis = typed_number_depth`.
+
+Kiểm chứng trên RFC 092:
+
+| metric | trước | sau |
+|---|--:|--:|
+| returned | 300 | 300 |
+| exact P/R/F1 | 0% | 0% |
+| starts-with cùng stableId | 61/64 | 61/64 |
+| level đúng trong nhóm starts-with | 42/61 | 61/61 |
+
+Đây là bản vá sạch đúng một biến: sửa cấp, chưa đụng precision/filter/title-boundary.
+
+Test: `dotnet test --no-restore` → 511/511 pass.
