@@ -29,8 +29,36 @@ public sealed class LlamaOptions
     /// <summary>
     /// Context ban đầu trước khi áp model profile. Model đã biết như Qwen2.5/Llama 3.2 được nâng
     /// lên 8192; model 4K không nhận diện sẽ được co ngân sách chunk cho vừa.
+    /// <para>
+    /// Con số này chỉ là SÀN. Khi <see cref="AutoContextSize"/> bật (mặc định), context thật được
+    /// đọc từ chính GGUF sau khi nạp weights — xem <see cref="MaxAutoContextSize"/>.
+    /// </para>
     /// </summary>
     public uint ContextSize { get; set; } = 4096;
+
+    /// <summary>
+    /// Đọc <c>{arch}.context_length</c> từ metadata GGUF và nâng context lên theo model, thay vì
+    /// giữ một con số cứng.
+    /// <para>
+    /// Vì sao cần: mặc định cũ là 4096 cố định, còn danh sách nâng cấp trong
+    /// <c>ApplyRecommendedModelProfile</c> là ALLOWLIST theo tên model — model không có trong danh
+    /// sách thì mắc kẹt ở 4096 dù nó hỗ trợ nhiều hơn hẳn. Đo trên chính model đang dùng:
+    /// <c>qwen35.context_length = 262144</c>, tức mặc định cũ nhỏ hơn <b>64 lần</b> khả năng thật.
+    /// </para>
+    /// <para>
+    /// Truyền <c>--ctx</c> tường minh thì cờ này tự tắt: lựa chọn của người dùng luôn thắng, và
+    /// <c>ConfigurationFor</c> vẫn ghi đúng con số đã dùng để phép đo tái lập được.
+    /// </para>
+    /// </summary>
+    public bool AutoContextSize { get; set; } = true;
+
+    /// <summary>
+    /// Trần cho <see cref="AutoContextSize"/>. KHÔNG lấy thẳng con số GGUF khai báo: 262.144 token
+    /// KV-cache của một model 9B vượt xa VRAM của mọi máy đang dùng, và nạp thất bại thì tệ hơn
+    /// context nhỏ. 32768 là cấu hình ĐÃ ĐO của dự án (handoff §0), nên nó là trần có căn cứ chứ
+    /// không phải số chọn bừa.
+    /// </summary>
+    public const uint MaxAutoContextSize = 32768;
 
     /// <summary>Số token tối đa cho mỗi document-view chunk (phần còn lại dành cho prompt + đầu ra).</summary>
     public int ChunkTokenBudget { get; set; } = 2200;

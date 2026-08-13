@@ -266,4 +266,75 @@ public class NumberingAuditTests
         Assert.NotNull(t);
         Assert.Equal(NumberKind.Letter, t!.Value.Kind);
     }
+
+    // ---- Nhãn + số KHÔNG có dấu ngắt (Nghị định 30/2020 bị bản chuyển PDF dán liền) -----------
+
+    /// <summary>
+    /// Nghị định 30/2020: từ "Chương" cùng số thứ tự nằm một dòng riêng, tiêu đề dòng ngay dưới.
+    /// Bản chuyển PDF→DOCX dán hai dòng thành <c>Chương II QUY ĐỊNH CHUNG</c> — không còn dấu chấm.
+    /// Đo được hậu quả trên <c>082_Bo_luat_Lao_dong_2019_EN</c>: 26 <c>Chapter</c> + 221
+    /// <c>Article</c> mà TẤT CẢ cấp 1, vì <c>Chapter</c> không parse được nên chỉ còn MỘT chữ ký.
+    /// </summary>
+    [Theory]
+    [InlineData("Chương II QUY ĐỊNH CHUNG", "chương", 2)]
+    [InlineData("Chapter II EMPLOYMENT AND RECRUITMENT", "chapter", 2)]
+    [InlineData("PHẦN I NHỮNG VẤN ĐỀ CHUNG", "phần", 1)]
+    public void Nhan_khong_dau_ngat_van_doc_duoc(string text, string label, int value)
+    {
+        var t = NumberingAudit.Parse(text);
+
+        Assert.NotNull(t);
+        Assert.Equal(NumberKind.Labelled, t!.Value.Kind);
+        Assert.Equal(label, t.Value.Label);
+        Assert.Equal(value, t.Value.Value);
+    }
+
+    /// <summary>
+    /// Chốt chặn duy nhất của nhánh không-dấu-ngắt là phần còn lại phải bắt đầu bằng chữ HOA.
+    /// Thiếu nó thì tham chiếu chéo giữa câu bị nhận thành đề mục và hậu kiểm đi báo thiếu những
+    /// mục không tồn tại. Đây là test giết đột biến "bỏ lookahead \p{Lu}".
+    /// </summary>
+    [Theory]
+    [InlineData("Điều 3 của Bộ luật này quy định")]
+    [InlineData("khoản 2 Điều này thì áp dụng")]
+    [InlineData("Chương 5 gồm các nội dung sau")]
+    public void Tham_chieu_cheo_khong_thanh_nhan(string text)
+    {
+        Assert.NotEqual(NumberKind.Labelled, NumberingAudit.Parse(text)?.Kind);
+    }
+
+    /// <summary>Dạng có dấu ngắt phải giữ nguyên hành vi — nới không được làm hỏng đường cũ.</summary>
+    [Theory]
+    [InlineData("Chương 1. Tổng quan", "chương", 1)]
+    [InlineData("Article 5. Rights of employees", "article", 5)]
+    public void Nhan_co_dau_ngat_khong_doi(string text, string label, int value)
+    {
+        var t = NumberingAudit.Parse(text);
+
+        Assert.NotNull(t);
+        Assert.Equal(NumberKind.Labelled, t!.Value.Kind);
+        Assert.Equal(label, t.Value.Label);
+        Assert.Equal(value, t.Value.Value);
+    }
+
+    /// <summary>
+    /// <b>Rủi ro do nới nhánh không-dấu-ngắt.</b> Chú thích hình/bảng có đúng hình dạng
+    /// "nhãn + số + chữ hoa": <c>Bảng 3 Thống kê</c>, <c>Hình 2 Sơ đồ</c>. Trước khi nới, dấu ngắt
+    /// bắt buộc đã loại chúng; sau khi nới thì không còn gì loại.
+    /// <para>
+    /// Quan trọng vì <see cref="StructuralRecovery"/> (§54) cứu mọi đoạn có token
+    /// <see cref="NumberKind.Labelled"/> — chú thích lọt vào đó là dương tính giả trên đường có
+    /// mô hình, nơi <c>bench --no-llm</c> KHÔNG đo tới.
+    /// </para>
+    /// </summary>
+    [Theory]
+    [InlineData("Bảng 3 Thống kê số liệu khảo sát")]
+    [InlineData("Hình 2 Sơ đồ tổng thể hệ thống")]
+    [InlineData("Biểu 4 Kết quả đối chiếu")]
+    [InlineData("Table 5 Summary Of Results")]
+    [InlineData("Figure 1 System Architecture")]
+    public void Chu_thich_hinh_bang_khong_thanh_nhan_cau_truc(string text)
+    {
+        Assert.NotEqual(NumberKind.Labelled, NumberingAudit.Parse(text)?.Kind);
+    }
 }

@@ -115,6 +115,13 @@ public sealed class PipelineOptions
     public bool NumberingDeclaredOutline { get; set; }
 
     /// <summary>
+    /// Dựng outline tất định cho văn bản hành chính Việt Nam (<c>I.</c>/<c>1.</c>/<c>a)</c>), khi
+    /// tài liệu không có style, không <c>numPr</c>, không mục lục. Xem
+    /// <see cref="AdministrativeOutline"/>.
+    /// </summary>
+    public bool AdministrativeDeclaredOutline { get; set; }
+
+    /// <summary>
     /// Hậu kiểm bằng ký hiệu đánh số của chính tài liệu: cùng dạng đánh số phải cùng cấp, và
     /// dãy anh em phải liên tục từ 1. Không tốn giây suy luận nào và bắt được cả lỗi trượt cấp
     /// của mô hình lẫn tiêu đề bị tầng lọc đánh rơi — xem <see cref="NumberingAudit"/>.
@@ -337,6 +344,12 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // Mọi con số --no-llm trước đây — kể cả loạt 95 file §45–§48 — đều thiếu bước này.
             if (_options.DisableLlm && _options.DeterministicHierarchy)
             {
+                // InlineHeadingSplitter cũng tất định (ranh giới do OOXML hoặc token dữ liệu chứng
+                // minh, không do mô hình đoán) và cũng nằm trong RunModelAsync — cùng bất đối xứng
+                // §51 đã sửa cho hai bộ kia.
+                var inline = InlineHeadingSplitter.Apply(headings, slim);
+                if (inline > 0) Log($"Tách nội dung cùng dòng (không mô hình): {inline} mục.");
+
                 var fixes = StructuralHierarchyResolver.Apply(headings, slim, _options.Extraction.UseStyleTrust);
                 var pinned = TableOfContentsAnchor.Apply(headings, slim);
                 if (fixes > 0) Log($"Hậu xử lý hierarchy (không mô hình): sửa {fixes} cấp.");
@@ -550,6 +563,17 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     $"Kết nối LM Studio local: {_options.LmStudio.Model} tại {_options.LmStudio.Endpoint.Authority}…",
                 _ => $"Đang nạp mô hình: {Path.GetFileName(_options.Llama.ModelPath)} …",
             });
+        if (_options.AdministrativeDeclaredOutline)
+        {
+            var admin = AdministrativeOutline.Build(slim);
+            if (admin.Count > 0)
+            {
+                Log($"Outline hành chính tất định: {admin.Count} mục theo ký hiệu đánh số.");
+                return admin;
+            }
+            Log("Outline hành chính: tài liệu không có đủ hai chữ ký đánh số, bỏ qua.");
+        }
+
         if (_options.NumberingDeclaredOutline)
         {
             var declared = StyleDeclaredOutline.BuildFromNumbering(slim);

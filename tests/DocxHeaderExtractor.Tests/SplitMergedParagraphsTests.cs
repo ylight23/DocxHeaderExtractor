@@ -117,4 +117,37 @@ public class SplitMergedParagraphsTests : IDisposable
 
         Assert.Equal(tat.Headings.Count, bat.Headings.Count);
     }
+
+    /// <summary>
+    /// <b>Crash tiềm ẩn.</b> Các lát cắt dùng chung một <c>Index</c> (đó là chủ đích, để đáp án
+    /// trong <c>keys/</c> không hỏng), nhưng <c>StructuralHierarchyResolver.Apply</c> mở đầu bằng
+    /// <c>ordered.ToDictionary(h =&gt; h.Index, …)</c> — trùng khoá thì <see cref="ArgumentException"/>.
+    /// Từ §51 cờ suy cấp tất định MẶC ĐỊNH BẬT, nên hai tính năng này nay luôn gặp nhau.
+    /// <para>
+    /// Trên corpus 95 file điều đó chưa nổ vì mỗi đoạn gộp chỉ cho ra một lát đủ điều kiện làm
+    /// tiêu đề (082: 300 mục / 300 chỉ số phân biệt). Nhưng "chưa nổ trên tập đang đo" không phải
+    /// "không nổ" — test này gọi trực tiếp với hai lát cùng chỉ số.
+    /// </para>
+    /// </summary>
+    [Fact]
+    public void Hai_lat_cung_chi_so_khong_lam_sup_bo_suy_cap()
+    {
+        List<SlimParagraph> ps =
+        [
+            new() { Index = 0, Text = "Chương I QUY ĐỊNH CHUNG Điều 1. Phạm vi Điều 2. Đối tượng", FontSizePt = 13 },
+            new() { Index = 1, Text = "Thân bài dài trình bày chi tiết các bước thực hiện của quy trình.", FontSizePt = 13 },
+        ];
+        var doc = new SlimDocument { FileName = "t.docx", SourcePath = "t.docx", Paragraphs = ps }.Build();
+
+        List<HeadingRecord> headings =
+        [
+            new() { Index = 0, Level = 1, Text = "Điều 1. Phạm vi", Source = HeadingSource.Heuristic, Confidence = .5 },
+            new() { Index = 0, Level = 1, Text = "Điều 2. Đối tượng", Source = HeadingSource.Heuristic, Confidence = .5 },
+        ];
+
+        var ex = Record.Exception(() => StructuralHierarchyResolver.Apply(headings, doc));
+
+        Assert.Null(ex);
+        Assert.Equal(2, headings.Count);
+    }
 }

@@ -8,53 +8,47 @@ những chỗ suýt kết luận sai. Viết cho người tiếp nhận, nên ph
 
 ## 0. Trạng thái hiện tại — đọc mục này trước
 
-**Cập nhật 2026-08-11.** Số nền là `key-human.key` (105 mục, **có nhãn người** — xem §37), không còn
-là đáp án đồng thuận model.
+**Cập nhật 2026-08-11.**
 
-> **Ba tài liệu có đáp án người kiểm đạt 100%, và đó vẫn là toàn bộ nền tảng thực nghiệm.**
-> §45–§49 chạy trên corpus 95 file `todo10_8` cho nhiều con số, nhưng corpus đó **không có đáp án**.
-> Mọi bảng ở §45.3, §47.2, §48.1 chỉ nói *luật nào kích hoạt*, không nói *gán đúng hay sai*.
-> Đọc §45.4, §46.3 và §48.4 trước khi trích bất kỳ con số nào trong đó.
->
-> Ba việc mới đã cài, đều **mặc định tắt hoặc chỉ chẩn đoán**:
-> `--split-merged` (§45.2, 95 file 3.712 → 6.357 mục), ba bảng chữ cái tiếng Việt cho `NumberingAudit`
-> (§45.1, hai đột biến bị test giết), và `mode` lộ ra thuộc tính `<doc>` (§47.2).
->
-> **2026-08-11, tiếp — bốn việc, đọc phần chi tiết ở §52–§54 trước khi trích số:**
->
-> - **§52** — `dhx toc-keys`: mục lục Word làm đáp án miễn phí mở rộng bench, PHẢI khớp với toàn bộ
->   thân bài chứ không phải với đầu ra của chính pipeline. Tự phát hiện và sửa luôn một bug khi chạy
->   thử: "Danh mục hình ảnh"/"Danh mục bảng biểu" lẫn vào mục lục chương (13/32 mục sai ban đầu).
->   0/95 file corpus `todo10_8` đạt ngưỡng — đã xác minh là đặc điểm corpus (PDF→DOCX + template lặp
->   tiêu đề), không phải lỗi công cụ.
-> - **§53** — `TableOfContentsAnchor.Apply` pin SAI cấp cho heading `numPr`-driven (đọc số trong TEXT
->   mục lục, bỏ qua `NumberLabel`). Đã sửa. **Đo lần 1 mất hiệu lực tham chiếu** (byte-identical —
->   hoá ra vì lý do ở §51, không phải vì bản sửa vô dụng); **đo lại sau §51, một biến sạch: đúng cấp
->   44,8% → 96,6%** trên báo cáo thực tập MBBank thật. Tác dụng phụ: giải thích được 12 lỗi cấp tưởng
->   là bug mới (chỉ thiếu cờ `--style-trust`) và tìm thêm bằng chứng thật thứ hai cho TODO mục 2.
-> - **§54** — `StructuralRecovery` nhận thêm `NumberKind.Labelled`, cứu được `PHỤ LỤC 1`/`PHỤ LỤC 2`
->   (nửa đầu TODO mục 7). Nửa sau (2 mục kết thúc bằng `:` bị trừ điểm kép) **vẫn treo, chưa có
->   hướng cụ thể**.
-> - **§50** — kiểm lại chính mình: số test tôi từng báo cáo (`384`) SAI, build sạch lúc đó là `397`
->   (`dotnet test` gia tăng không chạy 13 test). Bù 17 test cho ba mảng mã (§45–§48) sinh mọi bảng số
->   liệu trong handoff mà chưa từng có test.
-> - **§51** — `StructuralHierarchyResolver`/`TableOfContentsAnchor` tất định nhưng chưa từng chạy
->   trên `--no-llm` (nằm trong `RunModelAsync`). Đã sửa, mặc định bật: bench đúng cấp 86,1%→100%.
->
-> **417 test xanh (build sạch).**
+### Số đo hiện tại — chỉ những gì có ĐÁP ÁN
 
-| Khoá luận thật (1.498 đoạn) | |
-|---|--:|
-| Precision | 79,5% |
-| Recall | 96,2% |
-| F1 | 87,1% |
-| Đúng cấp | **96,0%** |
-| Đúng cha (parent finding, HRDoc) | 96,0% |
-| Bench 10 tài liệu | 100% · 10/10 |
-| Cổng: tự nhận / bắt duyệt | 86 mục ở **95,3%** / 41 mục ở 46,3% |
+| bộ đo | P | R | F1 | đúng cấp | đúng cha | tuyệt đối |
+|---|--:|--:|--:|--:|--:|--:|
+| **bench + mô hình** (7 tài liệu) | **100%** | **100%** | **100%** | **100%** | **100%** | **7/7** |
+| bench `--no-llm` (7 tài liệu) | 92,3% | 100% | 96% | 100% | 100% | 6/7 |
+| khoá luận thật (1.498 đoạn, `key-human.key` 105 mục) | 79,5% | 96,2% | 87,1% | **96,0%** | 96,0% | — |
+| khoá luận `--style-outline` (đáp án người, 68 mục) | 100% | 100% | 100% | 100% | 100% | — |
+| báo cáo TT `--numbering-outline` (đáp án người, 29 mục) | 100% | 100% | 100% | 100% | 100% | — |
 
-Cấu hình đo: `--style-trust --chunk-tokens 28000 --ctx 32768 -ngl 99 --no-reuse-prefix`,
-Qwen3.5-9B-Q4_K_M. **Pipeline tất định** — hai lượt chạy y hệt cho trùng khít từng chữ số (§33.1).
+**452 test xanh** (build sạch — xem §50.1 về cách đếm).
+
+Cấu hình đo khoá luận: `--style-trust --chunk-tokens 28000 --ctx 32768 -ngl 99 --no-reuse-prefix`,
+Qwen3.5-9B-Q4_K_M. Pipeline **tất định** — hai lượt y hệt cho trùng khít từng chữ số (§33.1).
+
+### Ba điều phải biết trước khi trích bất kỳ con số nào khác
+
+1. **Corpus 95 file `todo10_8` KHÔNG có đáp án.** Mọi bảng ở §45.3, §47.2, §48.1 chỉ nói *luật nào
+   kích hoạt*, không nói *gán đúng hay sai*. Đọc §45.4, §46.3, §48.4 trước khi dùng chúng.
+2. **Mọi con số `--no-llm` ghi TRƯỚC §51 đều thiếu bộ suy cấp tất định** — kể cả bảng phân bố cấp
+   ở §45.3. Con số còn hiệu lực nằm ở §51.3 và §55.9.
+3. **`bench --no-llm` không đi qua đường có mô hình.** §55.12 liệt kê năm lỗi mà bench xanh suốt
+   trong khi chúng đang tồn tại. Bench xanh không nói gì về nhánh bench không chạy.
+
+### Việc đã xong và còn hiệu lực
+
+| | |
+|---|---|
+| §51 | bộ suy cấp tất định chạy cả trên `--no-llm` — bench đúng cấp 86,1% → 100%. **Mặc định bật** |
+| §53 | `TableOfContentsAnchor` pin đúng cấp cho heading `numPr` — đúng cấp 44,8% → 96,6% |
+| §56.3 | luật **chuỗi mồ côi** (`2.1` dưới `PHỤ LỤC A`) — bench có mô hình 6/7 → **7/7** |
+| §56.4 | context **tự đọc từ GGUF** thay cho allowlist theo tên: 4.096 → 32.768 |
+| §45.1 | ba bảng chữ cái tiếng Việt cho `NumberingAudit` (`d) → đ)` không còn báo đứt quãng sai) |
+| §45.2 | `--split-merged` cắt tiêu đề lọt giữa paragraph — **mặc định tắt**, xem TODO mục 10 |
+| §55.2 | nhãn + số **không dấu ngắt** (`Chương II QUY ĐỊNH CHUNG`), chốt in-hoa chặn chú thích |
+| §52 | `dhx toc-keys` — mục lục Word làm đáp án miễn phí |
+
+### Kết luận lớn nhất của dự án
+
 
 ### Kết luận lớn nhất của dự án
 
@@ -3050,7 +3044,11 @@ trượt hết. Nới thành `(?<![\p{Lu}\d])` — cho phép chữ thường đ�
 vẫn chặn chữ hoa và chữ số. Thứ chặn tham chiếu chéo là **dấu ngắt bắt buộc sau số**:
 `Điều 3 của Bộ luật này` không có dấu ngắt nên không bao giờ khớp.
 
-### 45.3 Đo được
+### 45.3 Đo được — ⚠️ **BẢNG NÀY ĐÃ LỖI THỜI, giữ lại để đối chiếu lịch sử**
+
+> Đo TRƯỚC §51, tức thiếu bộ suy cấp tất định. **Số MỤC vẫn đúng** (cờ chỉ đổi cấp, không đổi
+> tuyển chọn — đã kiểm ở §51.3), nhưng **phân bố CẤP thì sai**: cấp 9 ghi 221 mục trong khi số
+> đúng là 20. Con số còn hiệu lực ở §51.3 và §55.9.
 
 ```
 95 file, --no-llm            TẮT      BẬT     tăng   file tăng
@@ -3642,3 +3640,734 @@ quy, nhưng bench không có fixture nhãn+số trần nên không đo thêm đ�
 **Chỉ nửa đầu của TODO mục 7 được giải quyết.** Hai mục còn lại (`1239`, `1256` — kết thúc bằng `:`
 và là item bullet nên bị trừ điểm hai lần) **chưa đụng tới, chưa có hướng cụ thể**. Và "Cách nghiệm
 thu" gốc của mục 7 đòi đo recall trên `key-human.key` — cần LLM, gộp vào §53.7.
+
+## §55. Rà việc còn lại: hai việc đo ra là KHÔNG đáng làm, và một crash tôi tự tạo ra
+
+### 55.1 Hai việc "làm được ngay" — đo trước khi cài, và cả hai đều dừng
+
+`TODO` mục 6 (heading trải hai paragraph) ghi điều kiện mở lại là "đo được tần suất thật".
+§45.2 phát hiện Nghị định 30/2020 **bắt buộc** dạng này nên tưởng đã đủ căn cứ. Đo:
+
+```
+đoạn CHỈ chứa "Chương II" (không kèm tiêu đề):  0 trên 0/95 file
+```
+
+**0/95.** Vì 83/95 file là bản chuyển PDF đã gộp hết, `Chương II` không bao giờ đứng riêng một
+đoạn. Điều kiện mở lại KHÔNG thoả — mục 6 giữ đóng, giờ có con số thay cho "chưa có bằng chứng".
+
+`TODO` mục 12 (La Mã thường `i. ii. iii.`):
+
+```
+lát cắt bắt đầu bằng La Mã thường: 19 trên 12/95 file
+trong đó KHÔNG THỂ là chữ cái đơn (ii, iii, iv…): 5
+```
+
+19 mục trên 6.357, chỉ 5 mục chắc chắn. Đổi lại là rủi ro đọc nhầm `c.`/`d.`/`i.` trong dãy chữ
+cái vốn có 601 mục. **Không đáng.** Giữ nguyên, cũng đã có con số.
+
+*Ghi nhận cách làm:* đo tần suất TRƯỚC khi cài đã chặn hai lần viết mã vô ích. Cả hai lần trực
+giác đều nói "đáng làm".
+
+### 55.2 Nhãn + số KHÔNG có dấu ngắt — lỗi thật, tìm ra nhờ đo lại
+
+§51 ghi rằng mọi bảng `--no-llm` trước đó đã lỗi thời. Đo lại thì lộ ra:
+**cả 2.645 mục sinh từ đoạn gộp đều nằm cấp 1**, cấp 2..9 giống hệt hai lượt.
+
+Truy tới `082_Bo_luat_Lao_dong_2019_EN`: **26 `Chapter` + 221 `Article`, tất cả cấp 1.** Không tài
+liệu nào có 26 chương và 221 điều mà chỉ một cấp — bất biến này đúng mà không cần đáp án.
+
+Nguyên nhân: `Chapter II EMPLOYMENT AND RECRUITMENT` **không có dấu ngắt sau số La Mã**, mà
+`LabelledRx` bắt buộc `[\.\):\-–]`. Nên `Chapter` không parse → tài liệu chỉ còn MỘT chữ ký →
+`SignatureTiers` đòi ≥2 chữ ký mới suy được lồng nhau → không làm gì.
+
+Đây chính là dạng hai dòng của Nghị định 30 **bị bản chuyển PDF dán liền** — tức mục 6 không hề
+vô nghĩa, nó chỉ biểu hiện ở hình dạng khác hoàn toàn với hình dạng mục 6 mô tả.
+
+Sửa: cho phép **dấu cách** làm phân cách, với chốt chặn phần còn lại phải bắt đầu bằng **chữ HOA**.
+Không có chốt đó thì `Điều 3 của Bộ luật này` và `khoản 2 Điều này` bị nhận thành đề mục. Chốt là
+tín hiệu cấu trúc, không phải danh sách từ.
+
+### 55.3 Crash tiềm ẩn do chính §51 tạo ra
+
+Lát cắt của `--split-merged` **dùng chung một `Index`** (chủ đích, để đáp án trong `keys/` không
+hỏng vì dịch chỉ số). `StructuralHierarchyResolver.Apply` mở đầu bằng
+`ordered.ToDictionary(h => h.Index, …)` — trùng khoá thì **`ArgumentException`**.
+
+Trước §51 hai thứ này không bao giờ gặp nhau: bộ suy cấp chỉ chạy ở đường có mô hình, còn
+`--split-merged` dùng với `--no-llm`. **Lật mặc định ở §51 đã ghép chúng lại.**
+
+Trên corpus nó chưa nổ vì mỗi đoạn gộp chỉ cho ra một lát đủ điều kiện làm tiêu đề (082: 300 mục /
+300 chỉ số phân biệt). Nhưng "chưa nổ trên tập đang đo" không phải "không nổ" — test gọi trực tiếp
+với hai lát cùng chỉ số thì ném ngay.
+
+Sửa: khoá theo **tham chiếu `HeadingRecord`** thay vì theo `Index`, ở cả `paths`, `SignatureTiers`
+và `StyleNestingDepths`. Hai bảng sau dùng indexer nên **không ném mà GHI ĐÈ** — hai lát cùng
+`Index` khác chữ ký (`Chương I` và `Điều 1` cùng đoạn) nhận chung một tầng, sai không dấu hiệu.
+Khoá theo tham chiếu cũng đúng nghĩa hơn: hai lát có text khác nhau thì phải có đường dẫn khác nhau.
+
+### 55.4 Đo được
+
+```
+bench (có đáp án)   P 92,3 · R 100 · F1 96 · cấp 100% · cha 100% · 6/7   (không đổi — guard giữ)
+95 file             6.357 mục (KHÔNG đổi) · cấp>1: 2.029 → 2.045
+082 (26 Ch + 221 Art)   cấp>1: 13 → 21
+9/95 file đổi cấp, 0 file mất mục, 0 crash
+426 test xanh (build sạch)
+```
+
+Mutation: khoá lại theo `Index` → 1 đỏ · bỏ nhánh không-dấu-ngắt → 3 đỏ. Cả hai bị giết.
+
+### 55.5 Một mutation test đầu tiên SỐNG SÓT, và đó là điều đáng ghi
+
+Lượt mutation đầu tôi viết đột biến `h => h` cho `paths` — vẫn là khoá tham chiếu, nên **không phải
+đột biến**. Nó "sống sót" vì tôi đột biến sai, không vì test yếu. Còn đột biến thứ hai thì sống sót
+**thật**: tôi chưa có test nào cho dạng `Chương II QUY ĐỊNH CHUNG`. Đã bù 8 test, trong đó ba test
+tham chiếu chéo là thứ giết đột biến "bỏ lookahead `\p{Lu}`".
+
+Bài học: mutation sống sót có hai nguyên nhân — test yếu, hoặc đột biến không thật. Phải phân biệt
+trước khi kết luận, nếu không thì hoặc bỏ qua lỗ hổng thật, hoặc đi viết test cho một thứ không hỏng.
+
+### 55.6 Va chạm số hiệu mục: hai §52
+
+Phiên khác đã đẩy §52–§54 (`dhx toc-keys`, sửa `TableOfContentsAnchor`, `StructuralRecovery` nhận
+`Labelled`) trước khi tôi commit. Tôi thêm một §52 nữa, và **cả hai đều có tiểu mục 52.1–52.4**,
+nên mọi tham chiếu thành nhập nhằng. Đã đánh số lại phần của tôi thành **§55** và sửa các chỗ trỏ
+tới trong `TODO.md` và chú thích mã.
+
+Kỷ luật: trước khi đánh số mục mới trong handoff, đọc `grep -oE "^## §[0-9]+" handoff.md | sort |
+uniq -c` — nhánh có thể đã tiến lên trong lúc mình làm.
+
+### 55.7 Nới `LabelledRx` suýt phá đúng thứ chú thích gốc đã cảnh báo
+
+Chú thích ở đầu `NumberingAudit` viết sẵn từ trước: *"đòi dấu ngắt tường minh và đòi phần còn lại
+bắt đầu bằng CHỮ — nếu không, `Bảng 1.2 Đối chiếu…` sẽ tách thành nhãn `Bảng` + số 1 và hậu kiểm
+đi báo thiếu những mục không tồn tại."*
+
+Nới nhánh không-dấu-ngắt đã phá đúng bảo đảm đó. Đo được sau khi nới:
+
+```
+Bảng 3 Thống kê số liệu       → Labelled   ✗
+Hình 2 Sơ đồ tổng thể         → Labelled   ✗
+Table 5 Summary Of Results    → Labelled   ✗
+Figure 1 System Architecture  → Labelled   ✗
+```
+
+**Nguy hiểm hơn vẻ ngoài:** §54 vừa cho `StructuralRecovery` cứu MỌI đoạn có token `Labelled`, mà
+`StructuralRecovery.Find` nằm trong `RunModelAsync` — tức `bench --no-llm`, phép đo tôi dùng suốt
+loạt này, **không chạy tới đó**. Bench vẫn xanh 6/7 trong khi một lớp dương tính giả mới đã mở ra
+trên đường người dùng thật sự đi.
+
+Sửa bằng chốt CẤU TRÚC, không phải danh sách từ: nhánh không-dấu-ngắt đòi phần còn lại **không có
+chữ thường nào**. Nghị định 30/2020 quy định tiêu đề phần và chương trình bày bằng *chữ in hoa,
+đậm*, nên đây là căn cứ chứ không phải mẹo. Nó chặn cả hai nhóm cùng lúc:
+
+| | |
+|---|---|
+| `Chương II QUY ĐỊNH CHUNG` · `Chapter II EMPLOYMENT AND RECRUITMENT` | nhận ✓ |
+| `Bảng 3 Thống kê số liệu` · `Table 5 Summary Of Results` | loại ✓ |
+| `Điều 3 của Bộ luật này` · `khoản 2 Điều này` | loại ✓ |
+
+Giá phải trả: `Chương II Quy định chung` (không in hoa) bị bỏ qua. Đó là hướng sai ĐÚNG với hợp
+đồng của file — hậu kiểm sai theo hướng HẸP.
+
+Đo lại sau khi thêm chốt: 95 file **6.357 mục, cấp>1 = 2.045 — y hệt**, tức chốt không tốn gì trên
+corpus trong khi đóng lại một lớp dương tính giả không đo được bằng bench. Bench giữ cấp 100% ·
+cha 100% · 6/7. Mutation "bỏ chốt không-chữ-thường" → 5 đỏ. **431 test xanh.**
+
+### 55.8 Bài học lớn nhất của mục này
+
+Ba lỗi liên tiếp đều cùng một dạng: **thay đổi ở A làm hỏng B, mà phép đo thường dùng không chạy
+qua B.**
+
+- §55.3: lật mặc định `DeterministicHierarchy` (§51) ghép nó với `--split-merged` → crash trùng khoá.
+- §55.7: nới `LabelledRx` ghép nó với `StructuralRecovery` (§54) → chú thích thành đề mục.
+- Cả hai đều **xanh trên `bench --no-llm`**, vì bench không đi qua đường có mô hình.
+
+Nên trước khi đổi một hàm dùng chung, phải liệt kê MỌI nơi gọi nó và hỏi *"phép đo của tôi có chạy
+qua chỗ đó không"*. Nếu không, phải viết test cho chỗ đó — bench xanh không nói gì về nó.
+
+### 55.9 Áp chính bài học 55.8: liệt kê nơi gọi, đo bán kính, bịt chỗ bench không tới
+
+**Nơi gọi.** `NumberingAudit.Parse*` có **11 nơi gọi** ngoài chính nó. Tám nơi có file test riêng.
+Bốn nơi nằm ngoài đường `--no-llm` nên bench mù hoàn toàn: `StructuralRecovery`,
+`ModelHeadingCriticGate`, `PrecisionAcceptanceGate`, `EvidenceConfidenceCalibrator`.
+
+**Bán kính.** Quét 127.006 lát cắt của corpus, so khớp regex cũ với mới:
+
+```
+khớp LabelledRx CŨ : 11.055
+khớp LabelledRx MỚI: 11.070   (+15, tức 0,01%)
+```
+
+Cả 15 chuỗi mới khớp đều là đề mục thật, không một dương tính giả:
+
+```
+×8  ATTACHMENT 1 TO THE CODE OF CONDUCT FORM
+    Chapter IX REORGANIZATION, DISSOLUTION AND BANKRUPTCY OF ENTERPRISES
+    Chapter IV CYBER SECURITY PROTECTION ACTIVITIES
+    Chapter VII IMPLEMENTATION PROVISIONS
+    Section 2 HOUSES BEING PUBLIC PROPERTY
+    Section 4 HOUSING DEVELOPMENT FOR THE PEOPLE'S ARMED FORCES
+```
+
+Chốt in-hoa biến một thay đổi regex thành thay đổi **phẫu thuật**.
+
+**Chỗ bench không tới.** Thêm test ở chính `StructuralRecovery`: `Chương II QUYỀN VÀ NGHĨA VỤ` phải
+được cứu, `Bảng 2 Thống kê sau điều chỉnh` thì không.
+
+### 55.10 Mutation sống sót lần thứ hai — và lần này test yếu thật
+
+Lượt mutation đầu ở `StructuralRecovery` **sống sót**. Theo đúng §55.5 tôi không kết luận vội mà
+đọc mã: `Find` gom chuỗi theo `label:{Label}` rồi cứu theo **số liền kề**. Test của tôi dùng
+`Bảng 1` → `Bảng 3`, cách hai số, nên luật cứu-anh-em không bao giờ chạy — **test vô hiệu bất kể
+chốt có hay không**.
+
+Sửa thành `Bảng 1` → `Bảng 2`, đột biến bị giết ngay (3 đỏ). Và điều đó **chứng minh rủi ro là
+thật**: không có chốt in-hoa, `Bảng 2 Thống kê sau điều chỉnh` SẼ được cứu thành đề mục trên đường
+có mô hình.
+
+Hai lần mutation sống sót trong cùng một loạt, hai nguyên nhân khác nhau (§55.5 đột biến không
+thật, §55.10 test yếu thật). Nếu lần này cũng kết luận "đột biến không thật" thì đã bỏ qua một lỗ
+hổng có thật và tự tin sai.
+
+**435 test xanh**, bench giữ P 92,3 · cấp 100% · cha 100% · 6/7.
+
+### 55.11 Quét hết ba cổng còn lại — và một hợp đồng suýt bị bỏ qua
+
+Ba nơi gọi cuối cùng mà bench mù: `ModelHeadingCriticGate`, `PrecisionAcceptanceGate`,
+`EvidenceConfidenceCalibrator`. Cả ba dùng `NumberingAudit.Parse` làm bằng chứng "có đánh số", nên
+§55.2 đổi hành vi cả ba **cùng lúc**.
+
+Hành vi mới ở cả ba là ĐÚNG: `Chương II QUY ĐỊNH CHUNG` là đề mục có đánh số thật, nên bỏ critic
+và xếp bucket `numbered` là đúng; `Bảng 2 Thống kê sau điều chỉnh` bị chốt in-hoa loại nên vẫn qua
+critic và vẫn `unnumbered`. Đã ghim cả hai mặt.
+
+**Hợp đồng suýt bị bỏ qua.** `PrecisionCalibrationProfile.CurrentPipelineSignature` có chú thích
+viết sẵn từ trước: *"old holdout precision must not silently calibrate this pipeline"* khi phân
+phối dự đoán đổi. §55.2 làm **15 mục chuyển từ bucket `model_*_unnumbered` sang `model_*_numbered`**
+— đúng định nghĩa "đổi phân phối dự đoán". Không bump thì một profile holdout cũ vẫn được nạp và
+hiệu chỉnh confidence theo phân phối không còn tồn tại.
+
+Đã bump `2026-08-04-v2` → `2026-08-11-v3`, và **435 test vẫn xanh trước khi bump** — tức không test
+nào canh hợp đồng này. Đã thêm hai test: một ghim chữ ký hiện tại, một ghim rằng profile chữ ký cũ
+bị **từ chối** (`FormatException`) chứ không bị bỏ qua im lặng.
+
+Test thứ nhất không kiểm được "có bump khi cần" một cách tổng quát — không máy nào biết điều đó. Nó
+ghim rằng lần bump NÀY đã xảy ra, để ai hạ chữ ký về v2 phải giải trình.
+
+Mutation: gỡ chốt in-hoa → 2 đỏ · bỏ hẳn nhánh không-dấu-ngắt → 1 đỏ · hạ chữ ký về v2 → 2 đỏ.
+
+**440 test xanh** (build sạch), bench P 92,3 · R 100 · cấp 100% · cha 100% · 6/7.
+
+### 55.12 Tổng kết loạt §55: một thay đổi regex, năm hệ quả ở nơi khác
+
+| hệ quả | phát hiện bằng |
+|---|---|
+| crash trùng khoá `--split-merged` × `DeterministicHierarchy` | test gọi trực tiếp, KHÔNG phải bench |
+| ghi đè im lặng ở `SignatureTiers`/`StyleNestingDepths` | đọc mã sau khi tìm ra crash |
+| chú thích hình/bảng thành token cấu trúc | test trực tiếp `NumberingAudit.Parse` |
+| chú thích được `StructuralRecovery` cứu thành đề mục | test tại chính nơi gọi, sau khi sửa test yếu |
+| bucket calibration đổi ⇒ phải bump chữ ký | đọc chú thích của hợp đồng, không ai nhắc |
+
+**Không hệ quả nào bị `bench --no-llm` bắt.** Bench xanh 6/7 suốt cả năm lần. Cách duy nhất tìm ra
+chúng là liệt kê nơi gọi rồi hỏi từng nơi *"phép đo của tôi có chạy qua đây không"*.
+
+## §56. Chạy bench CÓ MÔ HÌNH lần đầu sau loạt §55 — và hai lỗi chỉ đường đó mới lộ
+
+§55.12 kết luận: mọi thay đổi đường có mô hình chỉ có unit test, chưa lần nào chạy đầu-cuối. Đã chạy.
+
+### 56.1 Môi trường (§27)
+
+Build `-p:UseVulkan=true`, chạy `-ngl 99`, đọc dòng xác nhận: *"Ngữ cảnh 8192 token, **GPU 99 lớp**"*.
+Phép đo hợp lệ.
+
+> **Bẫy mới ghi vào §27:** chạy `dotnet test` giữa chừng build lại solution KHÔNG kèm
+> `-p:UseVulkan=true`, kéo `LLamaSharp.Backend.Cpu` về và **ghi đè native lib**. Lần chạy sau đó
+> báo *"ĐÃ YÊU CẦU GPU 99 lớp nhưng thư viện native không hỗ trợ offload, đang chạy CPU"*. Luôn
+> đọc lại dòng đó sau mỗi lần `dotnet test`.
+
+### 56.2 Đường có mô hình vá được chỗ đường tất định hỏng, và ngược lại
+
+| | `--no-llm` | có mô hình |
+|---|--:|--:|
+| Precision | 92,3% | **100%** |
+| đúng cấp | **100%** | 97,2% |
+| tuyệt đối | 6/7 | 6/7 |
+
+Ba dương tính giả trang bìa ở `04-bia-muc-luc-chu-thich` — thứ §51.5 hai lần từ chối sửa vì không
+có tín hiệu cấu trúc nào tách `MỤC LỤC` khỏi `BỘ KHOA HỌC VÀ CÔNG NGHỆ` — **mô hình loại sạch**.
+Đó là câu trả lời cho TODO mục 1: nó không phải luật còn thiếu, nó là việc của tầng ngữ nghĩa.
+
+### 56.3 Chuỗi mồ côi: `2.1` dưới `PHỤ LỤC A`
+
+`07-mau-that` i=15 sai cấp chỉ trên đường có mô hình. Đáp án ghi sẵn rằng đây là *"mâu thuẫn có
+thật trong file"*: `2.1 Kết quả thử nghiệm` nằm dưới `PHỤ LỤC A` (cấp 1) nên đáp án là **cấp 2**,
+dù số hiệu gợi ý thuộc Chương 2.
+
+Truy: đường dẫn `[2,1]` dài 2 nên `FindUnnumberedParentLevel` bỏ qua (nó chỉ nhận độ dài 1);
+`FindParentLevel` không tìm thấy `[2]`; `FindSiblingLevel` khác cha. **Không luật tất định nào chạm
+tới nó** — cấp giữ nguyên giá trị mô hình trả về, tình cờ đúng ở `--no-llm` (đoán theo độ sâu) và
+sai ở đường có mô hình.
+
+Kiểm chéo: chạy `--no-global-hierarchy` cho kết quả **y hệt**, nên không phải
+`ReconcileHierarchyAsync` gây ra — loại được nghi phạm đầu tiên trước khi sửa.
+
+Sửa: mở rộng `FindUnnumberedParentLevel` cho đường dẫn dài ≥ 2 **khi và chỉ khi chuỗi MỒ CÔI** —
+không heading nào phía trên có đường dẫn mở đầu bằng cùng thành phần đầu. Lúc đó độ sâu dấu chấm
+không nói được cấp vì cái cây nó tham chiếu tới **không tồn tại**. Điều kiện mồ côi giữ luật hẹp:
+`1.1.1` nằm trong chuỗi `1.` → `1.1` vẫn đi đường cũ.
+
+**Đo được:**
+
+```
+bench có mô hình   TRƯỚC: cấp 97,2 · cha 97,2 · 6/7
+                    SAU: P 100 · R 100 · F1 100 · cấp 100 · cha 100 · 7/7 TUYỆT ĐỐI
+bench --no-llm      không đổi (cấp 100%, 6/7)
+440 test xanh
+```
+
+### 56.4 Context cố định 4096 — người dùng chỉ ra, và số liệu xác nhận
+
+| | |
+|---|--:|
+| `qwen35.context_length` model khai báo | **262.144** |
+| `LlamaOptions.ContextSize` mặc định | **4.096** |
+
+Nhỏ hơn **64 lần**. Tệ hơn con số: `ApplyRecommendedModelProfile` nâng context bằng một **allowlist
+theo tên model** ("Qwen2.5/Llama 3.2 → 8192"), nên model không nằm trong danh sách mắc kẹt ở 4096
+vĩnh viễn — kể cả model mới hơn, mạnh hơn.
+
+Sửa: đọc `{arch}.context_length` từ chính GGUF sau khi nạp weights. Không hardcode tên kiến trúc —
+lấy `general.architecture` rồi ghép, nên chạy được với model chưa từng gặp.
+
+Trần `MaxAutoContextSize = 32768`, **có căn cứ chứ không chọn bừa**: 262.144 token KV-cache của một
+model 9B vượt xa VRAM mọi máy đang dùng, và nạp thất bại thì tệ hơn context nhỏ; 32768 đúng là cấu
+hình đã đo ở §0.
+
+Chỉ NÂNG, không bao giờ hạ. Truyền `--ctx` tường minh thì tự tắt — lựa chọn người dùng thắng, và
+`ConfigurationFor` vẫn ghi đúng con số đã dùng nên phép đo tái lập được.
+
+Kiểm chứng:
+
+```
+không cờ          → Ngữ cảnh 32768 token   (đọc từ GGUF, chạm trần)
+--ctx 8192        → Ngữ cảnh  8192 token   (người dùng thắng)
+Qwen2.5-7B khai 32768 → cùng luật, không cần thêm dòng nào
+```
+
+### 56.5 Auto-context suýt làm chữ ký cấu hình nói dối
+
+`LoadAsync` mở đầu bằng `options = options.Clone()` — cố ý, để không sửa trạng thái của lời gọi.
+Nhưng `PrecisionCalibrationProfile.ConfigurationFor(PipelineOptions o)` đọc `o.Llama.ContextSize`
+của **bản gốc**. Nên nếu chỉ chỉnh bản clone, chữ ký sẽ ghi `ctx=4096` cho một lượt chạy thật sự
+dùng 32768.
+
+Đó là phá đúng kỷ luật đứng thứ hai trong `TODO.md`: *"Mọi con số ghi kèm cấu hình đo"* — và phá nó
+theo cách tệ nhất, vì chữ ký vẫn trông hợp lệ. Hai lượt chạy ở hai context khác nhau sẽ sinh CÙNG
+một chữ ký, đúng cái bẫy mà docstring của `ConfigurationFor` đã cảnh báo cho `gpuLayers`.
+
+Sửa: giữ tham chiếu bản gốc trước khi clone, ghi context đã CHỐT trở lại. Kiểm đầu-cuối:
+
+```
+Ngữ cảnh 32768 token, GPU 99 lớp
+ctx=32768                          <- chữ ký nói đúng con số đã dùng
+P 100% · R 100% · F1 100% · cấp 100% · cha 100%
+```
+
+Hai test ghim: `Clone()` KHÔNG chia sẻ trạng thái (nếu chia sẻ thì việc ghi lại vô nghĩa), và chữ ký
+lấy ctx từ chính trường đó (nên ghi lại là cách duy nhất làm nó trung thực). **452 test xanh.**
+
+*Đáng ghi:* lỗi này là hệ quả cấp hai của một tính năng đúng. Tìm ra nó không phải nhờ test hay
+bench mà nhờ hỏi *"ai đọc trường tôi vừa sửa?"* — cùng câu hỏi đã tìm ra năm hệ quả ở §55.12.
+
+## §57. Tách heading/body cùng dòng — người dùng báo, và luật cũ chỉ bắt được một nửa dãy
+
+### 57.1 Triệu chứng
+
+Giao diện hiển thị NGUYÊN cả dòng làm tiêu đề:
+`a) Trong dự báo: 01 tốp (như ngày 13/01).` — cả phần số liệu nằm trong tên mục.
+
+### 57.2 Nguyên nhân
+
+`InlineHeadingSplitter.TryNumericPayloadBoundary` đòi phần sau dấu ngắt **không có một chữ cái nào**:
+
+```csharp
+if (!payload.Any(char.IsDigit) || payload.Any(char.IsLetter)) continue;
+```
+
+Nên trong CÙNG một dãy, cùng một tài liệu:
+
+| dòng | kết quả |
+|---|---|
+| `b. KQ Mỹ: 0/0 (0/0).` | tách được — payload thuần số |
+| `a) Trong dự báo: 01 tốp (như ngày 13/01).` | **bỏ qua** — payload có `tốp`, `như`, `ngày` |
+| `c. KQ Philippin 0/0 (0/0)` | **bỏ qua** — không có dấu ngắt nào |
+
+Đường còn lại (`TryRunBoundary`) đòi chuyển tiếp đậm → không-đậm, mà bản chuyển PDF không giữ đậm.
+
+### 57.3 Sửa — và vì sao KHÔNG dùng danh sách đơn vị
+
+Cách hiển nhiên là liệt kê `tốp|tàu|chiếc|lượt|giàn|công dân…` làm mẫu payload. **Đó là danh sách
+từ khoá tiếng Việt** — đúng thứ bị cấm từ đầu dự án, và nó đúng trên đúng tài liệu đã xem rồi im
+lặng trên mọi tài liệu dùng đơn vị khác, kể cả tiếng Việt.
+
+Luật thay thế chỉ hỏi *"chỗ này có bắt đầu bằng một con số không"*: token đầu của payload phải là
+**chữ số**, có thể kèm `/ . , % -` (`0/0`, `01`, `4.722`, `13/01`), và phải kết thúc ở ranh giới
+thật. Đọc được ở mọi ngôn ngữ.
+
+Ràng buộc giữ nó hẹp: `3.1. Kết quả thử nghiệm: đánh giá tổng thể` và `Ghi chú: xem phụ lục` không
+bị chẻ, vì sau dấu ngắt là chữ.
+
+### 57.4 Cùng bất đối xứng §51, lần thứ ba
+
+`InlineHeadingSplitter.Apply` cũng nằm trong `RunModelAsync` (dòng 934) nên chưa từng chạy trên
+`--no-llm`, dù ranh giới do OOXML hoặc token dữ liệu chứng minh chứ không do mô hình đoán. Đã đưa
+vào khối tất định §51. Bench `--no-llm` **không đổi** (P 92,3 · cấp 100 · 6/7).
+
+### 57.5 Ca `c.` — khuyết tật đã biết, ghim thành test
+
+`c. KQ Philippin 0/0 (0/0)` không có dấu ngắt nào, trong khi `b. KQ Mỹ:` cùng dãy thì có. **Tác giả
+viết hai kiểu khác nhau trong cùng một mục** — bằng chứng trực tiếp rằng dấu `:` là tín hiệu, không
+phải điểm cắt.
+
+Chưa sửa: luật "cắt tại số đầu tiên, không cần dấu ngắt" sẽ chẻ cả `3.1. Kết quả 2024` và
+`Chương 2 Nội dung`. Cần đáp án người kiểm trên chính thể loại này để đo. Đã ghim thành test
+`Khong_dau_ngat_thi_chua_tach_duoc_KHUYET_TAT_DA_BIET` — sửa xong thì test đỏ.
+
+### 57.6 Mutation sống sót lần thứ ba, và lần này là test KHÔNG TỚI ĐƯỢC LUẬT
+
+Bỏ điều kiện `char.IsDigit(payload[0])` mà không test nào đỏ. Lần 1 tôi đoán "chốt `i == 0` che
+rồi" — sai. Truy tiếp: `TryFindBoundary` chặn ngay ở `NumberingAudit.Parse(text) is null`, mà ba
+chuỗi test tôi viết (`Ghi chú: - xem…`) **không có ký hiệu đánh số đầu dòng**, nên chúng không bao
+giờ tới được luật cần kiểm. Thêm `a)` / `1.` vào đầu là đột biến chết ngay (3 đỏ).
+
+Ba lần mutation sống sót trong dự án, ba nguyên nhân khác nhau:
+§55.5 đột biến không thật · §55.10 test yếu · §57.6 **test không đi qua mã cần kiểm**.
+Nguyên nhân thứ ba nguy hiểm nhất vì test vẫn XANH và trông như đang bảo vệ thứ gì đó.
+
+**464 test xanh.**
+
+### 57.7 Sửa lần một quá hẹp — kiểm tra chéo ANH EM mới là tín hiệu đúng
+
+Người dùng báo tiếp, nguyên văn một dãy khác cùng tài liệu:
+
+```
+a) Hoạt động của tàu Trung Quốc.                      ← KHÔNG dấu ngắt, dừng đúng chỗ
+b) Hoạt động của tàu Philippin: Tàu BVBB-4409 ở ĐĐN bãi cạn Scarborough 52hl.
+c) Hoạt động của tàu Malaysia: Tàu TTP-114 ở Kỳ Vân; CSB-8305 ở Nam Luconia.
+d) Hoạt động của tàu Mỹ: Biên đội tàu Sân bay CVN-72 (…) ở ĐĐB Cỏ Rong 90hl.
+```
+
+Luật §57.3 đòi phần sau dấu ngắt **bắt đầu bằng số**, mà ở đây là `Tàu`, `Hải tuần`, `Biên đội` —
+toàn chữ. Nên nó không cứu được nhóm này.
+
+**Tín hiệu đúng nằm ở `a)`.** Cùng ký hiệu, cùng cha, không dùng dấu ngắt và dừng lại đúng chỗ —
+đó là **chính tài liệu nói cho ta biết ranh giới của b) c) d) nằm ở đâu**. Anh em cùng dãy phải
+cùng hình dạng. Không cần một từ khoá nào: luật chỉ đọc ký hiệu đánh số và sự CÓ MẶT của dấu ngắt.
+
+**Vì sao không cắt tại `:` cho mọi mục.** `3.1. Kết quả thử nghiệm: đánh giá tổng thể` là nhan đề
+trọn vẹn, cắt nó là lỗi nặng hơn hẳn lỗi đang sửa. Điều kiện anh em phân biệt được hai ca vì nó
+đòi tài liệu **tự đưa ra** một mục cùng dãy không dùng dấu ngắt, chứ không suy từ nội dung.
+
+Đo: bench `--no-llm` **không đổi** (P 92,3 · cấp 100 · 6/7). Mutation "bỏ điều kiện anh em" → 1 đỏ.
+**468 test xanh.**
+
+Mutation "bỏ `items.Count < 2`" thì SỐNG — và lần này là **đột biến không thật** (§55.5), không
+phải test yếu: nhóm một mục hoặc có dấu ngắt (⇒ không anh em nào thiếu dấu ngắt ⇒ bỏ qua), hoặc
+không có (⇒ chẳng có gì để cắt). Điều kiện đó dư thừa về logic; giữ lại để nói rõ ý định, không
+viết test giả cho nó.
+
+### 57.8 Ba lần sửa cùng một chỗ, ba tín hiệu khác nhau
+
+| ca | tín hiệu cắt được nó |
+|---|---|
+| `b. KQ Mỹ: 0/0 (0/0).` | payload thuần số (luật gốc) |
+| `a) Trong dự báo: 01 tốp (như ngày 13/01).` | payload **bắt đầu** bằng số (§57.3) |
+| `b) Hoạt động của tàu Philippin: Tàu BVBB-4409…` | **anh em không có dấu ngắt** (§57.7) |
+| `c. KQ Philippin 0/0 (0/0)` | *chưa có* — không dấu ngắt, anh em thì có |
+
+Không tín hiệu nào là "dấu hai chấm". Ba lần đều phải tìm thứ khác chứng minh ranh giới, và lần
+thứ tư vẫn treo. Đó là lý do spec gốc viết *"không cắt chỉ vì gặp dấu hai chấm"*.
+
+## §58. Mục V và mục 5 biến mất — trần độ dài loại đoạn TRƯỚC khi nhìn ký hiệu
+
+### 58.1 Triệu chứng người dùng báo
+
+Outline nhảy `IV → VI` và `4 → 6`. Hậu kiểm báo đúng *"nhảy từ 4 sang 6 — thiếu mục 5"*: hệ thống
+BIẾT thiếu mà không cứu được.
+
+### 58.2 Nguyên nhân
+
+`HeadingHeuristics` loại thẳng mọi đoạn dài quá `MaxCandidateTextLength` = 200 **trước khi xét ký
+hiệu đánh số**. Trong văn bản hành chính Việt Nam phần lớn mục viết kiểu `N. Tiêu đề: nội dung…` —
+heading và body chung một paragraph — nên trần độ dài loại đúng nhóm cần xử lý nhất.
+`V. KHÔNG GIAN MẠNG: Thông tin liên quan…` dài 236 ký tự; `5. Tàu cá ngư dân ta…` dài 166.
+
+Ký hiệu đánh số là bằng chứng do NGƯỜI SOẠN gõ ra. Một ngưỡng độ dài do ta chọn không được đè lên nó.
+
+### 58.3 Sửa — và hai lần đoán sai trước khi đo
+
+Lần 1: miễn trần cho đoạn có ký hiệu, kèm phạt −0,15. **Tự huỷ chính bản sửa**: `1.2. …` tụt từ
+0,55 xuống 0,40, dưới ngưỡng 0,45.
+
+Lần 2: giảm phạt còn −0,05 và bỏ phạt "kết câu". Nhóm số qua, **nhóm La Mã rớt**.
+
+Chỉ khi in ĐIỂM THẬT ra mới thấy nguyên nhân:
+
+```
+0,35  V. KHÔNG GIAN MẠNG: <dài>      0,50  V. KHÔNG GIAN MẠNG
+0,50  1.2. Phạm vi áp dụng: <dài>    0,65  1.2. Phạm vi áp dụng
+```
+
+Bản dài mất đúng **+0,10 thưởng "ngắn ≤ 80 ký tự"**. Nhưng với heading-dính-body thì *phần nhan đề*
+mới là thứ ngắn — `V. KHÔNG GIAN MẠNG` chỉ 18 ký tự. **Chấm theo 236 ký tự của cả đoạn là chấm nhầm
+đối tượng.**
+
+Sửa: độ dài dùng để chấm điểm là độ dài PHẦN NHAN ĐỀ (tới dấu ngắt đầu tiên). Kết quả hai bản
+**cùng điểm** — và đó là đúng: nhan đề y hệt nhau, khác biệt nằm ở chỗ có thân đi kèm hay không,
+việc của `InlineHeadingSplitter` chứ không phải của bộ chấm điểm.
+
+Bỏ luôn hình phạt độ dài: nó không phải tín hiệu, chỉ là hệ quả của việc dính body.
+
+### 58.4 Đo được
+
+```
+V. KHÔNG GIAN MẠNG: <dài>   0,35 → 0,50   (ngưỡng 0,45)
+1.2. Phạm vi áp dụng: <dài> 0,50 → 0,65
+văn xuôi dài                0,00 → 0,00   (không đổi)
+bench --no-llm              P 92,3 · cấp 100 · 6/7 — không đổi
+474 test xanh
+```
+
+Mutation: loại cứng theo độ dài → 4 đỏ · chấm theo độ dài cả đoạn → 2 đỏ.
+
+### 58.5 Hai điều chưa xong, nói rõ
+
+**Điểm `a)` chữ thường** vẫn bị loại: `LetterPrefixRx` chỉ khớp `\p{Lu}` — chủ ý có sẵn, vì nới sang
+chữ thường làm mọi đoạn văn xuôi mở đầu bằng một chữ cái đơn thành ứng viên. Đã ghim thành test
+khuyết tật; sửa cần đáp án thể loại hành chính.
+
+**`MaxCandidateTextLength = 200`** — mutation "bỏ hẳn trần" SỐNG SÓT trên mọi ca tôi dựng được,
+kể cả đoạn dài đậm + canh giữa + cỡ chữ lớn. Xem §59: kết luận rút ra từ đó **đã sai**.
+
+## §59. Tự bác một kết luận của chính mình: trần độ dài CÓ tải trọng
+
+§58.5 viết: *"`MaxCandidateTextLength = 200` gần như không còn tải trọng"* — dựa trên một mutation
+sống sót và 12 file. **Sai.** Đo trên toàn bộ 95 file:
+
+```
+CÓ  trần: 4.957 ứng viên
+BỎ  trần: 5.027 ứng viên      (+70)
+```
+
+Trần chặn **70 đoạn** trên corpus thật. Nó là chốt sống, không phải mã chết.
+
+### 59.1 Vì sao ba phép đo trước đều nói ngược
+
+| phép đo | kết quả | vì sao không đủ |
+|---|---|---|
+| mutation trên test dựng tay | sống sót | các ca tôi dựng đều bị hình phạt KHÁC chặn trước, nên trần không bao giờ được thử |
+| 12 file đầu corpus | 66 = 66, không đổi | toàn `01_phap_quy`, nhóm mà mọi đoạn dài đều CÓ ký hiệu nên được miễn trần |
+| **95 file** | **4.957 → 5.027** | đủ đa dạng để chạm nhóm đoạn dài KHÔNG có ký hiệu |
+
+Mẫu nhỏ và mẫu lệch cho cùng một câu trả lời sai, và câu trả lời đó nghe rất thuyết phục vì có
+tới hai nguồn xác nhận.
+
+### 59.2 Kỷ luật rút ra
+
+Thêm vào §10: **"mutation sống sót" và "thay đổi không ảnh hưởng gì" là hai mệnh đề khác nhau.**
+Mutation chỉ nói *bộ test hiện có* không phân biệt được hai bản. Muốn kết luận về HÀNH VI thì phải
+đo trên dữ liệu thật, ở quy mô đủ lớn — và §46.5 đã cảnh báo đúng dạng lỗi này ở chiều khác.
+
+Ba lần mutation sống sót trước đây (§55.5 đột biến không thật · §55.10 test yếu · §57.6 test không
+tới được mã) đều là chẩn đoán về BỘ TEST. Lần này tôi đã dùng nó để kết luận về MÃ NGUỒN, và đó là
+loại suy diễn nó không đỡ được.
+
+### 59.3 Cô lập được phần chênh lệch — 73 đoạn, tập trung ở hợp đồng World Bank
+
+Diff hai lượt theo `sid`: **73 đoạn**, phân bố rất lệch — 13 ở `031_WB_Framework_Agreement`,
+10 ở `033_WB_EPC_Turnkey_TwoStage`, 9 ở ba file WB khác. Toàn bộ nằm trong `02_hop_dong_mua_sam`.
+
+Hai đoạn dài kiểm chứng được đều là **văn xuôi thân bài**, bị chặn ĐÚNG:
+
+```
+len=401  A firm will be selected under Quality-based selection method procedures, in accordance…
+len=459  We hereby inform you that you are invited to submit a sealed Second Stage Proposal for…
+```
+
+**Nhưng đây là MẪU, không phải kiểm toán đầy đủ.** Ánh xạ `sid → chỉ số paragraph` của probe chưa
+tin được: vài dòng trả về chỉ 8–33 ký tự, tức không thể bị trần 200 chạm tới — đoạn nằm trong bảng
+làm lệch cách đếm `<w:p>`. Cần một probe đọc đúng `sid` như `DocxSlimExtractor` sinh ra.
+
+### 59.4 Kết luận cho câu hỏi "bỏ hardcode"
+
+`MaxCandidateTextLength = 200` **không phải hằng số tuỳ tiện gây hại**: nó chặn thân bài dài trong
+hợp đồng WB, đúng việc nó sinh ra để làm. Nhưng cũng **chưa chứng minh được 200 là đúng** — chưa
+có phép đo nào so 150/200/300, và không có đáp án để so.
+
+Trạng thái trung thực: *chốt sống, làm đúng việc trên mẫu kiểm được, giá trị chưa hiệu chỉnh.*
+Giữ nguyên. Xoá nó là bỏ một chốt đang chặn 73 đoạn thân bài để đổi lấy sự sạch sẽ của mã.
+
+### 59.5 Vì sao dừng vòng lặp ở đây
+
+Bốn hằng số còn lại — `LegalMarkers`, `TypedNumberMinimum`, `TypedNumberWeakRatio`,
+`MaxCandidateTextLength` — đều bị chặn bởi **cùng một thứ**: không có đáp án để biết bản mới tốt
+hơn hay xấu hơn. Vòng 1 đã cho thấy hậu quả (`VietnameseLegal` 14 → 54/95), vòng 3 cho thấy đoán
+mà không đo dẫn tới đâu.
+
+Lặp thêm không tạo ra dữ liệu. Thứ mở khoá vẫn là ba file giáo trình kèm nhãn chế độ — TODO mục 4.
+
+### 59.6 Kiểm toán ĐẦY ĐỦ 73 đoạn — câu trả lời không phải trắng đen
+
+Sửa probe: lấy **cả `sid` lẫn text từ cùng một lệnh `dhx xml`**, bỏ hẳn bước tự đếm `<w:p>` (cách
+cũ lệch chỉ số ở tài liệu có bảng nên trả về cả những dòng 8–33 ký tự vốn không thể bị trần chạm
+tới). Đọc được **73/73**:
+
+| điểm nếu bỏ trần | số đoạn | bản chất |
+|---|--:|---|
+| 0,60–0,80 | **70** | `[Note to Procuring Agency: …]`, `[insert name of Borrower…]`, `Your Second Stage Proposal should include…` — chỗ điền mẫu và văn xuôi hợp đồng. **Chặn ĐÚNG** |
+| 0,75 | 2 | `b) amounts based on the actual progress achieved by the Contractor…` — **điểm b) thật, dính thân bài. Chặn OAN** |
+| 1,00 | 1 | `Delayed payments: If the Client delays payments beyond fifteen (15) days…` — mang **style Heading built-in**. Chặn OAN |
+
+**70 đúng / 3 oan** — trần 200 làm đúng việc trên 96% số đoạn nó chặn.
+
+### 59.7 Ba ca oan chỉ ra hai lỗ hổng còn lại, và chúng ĐI NGƯỢC NHAU
+
+**Lỗ hổng 1 — điểm chữ thường.** `b) amounts based on…` là điểm `b)` thật. §58.5 đã ghim khuyết tật
+này (`LetterPrefixRx` chỉ khớp `\p{Lu}`), nay có bằng chứng thứ hai trên thể loại khác hẳn — hợp
+đồng World Bank tiếng Anh, không phải văn bản hành chính Việt Nam.
+
+**Lỗ hổng 2 — style Heading vẫn thua trần độ dài.** `Delayed payments: …` có score 1,00 tức mang
+style Heading built-in. Bình thường nó thoát sớm trước khi tới trần, nhưng ở tài liệu này
+`StyleTrustAudit` chấm style là "áp bừa" nên nó **mất quyền thoát sớm**, rồi rơi vào trần và biến
+mất. Một tuyên bố cấu trúc của tác giả bị một ngưỡng độ dài của ta xoá sổ — cùng dạng lỗi §58 nhưng
+ở nhánh khác: §58 chỉ miễn trần cho đoạn có KÝ HIỆU ĐÁNH SỐ, đoạn có STYLE thì không.
+
+**Chưa sửa, và lý do là kỹ thuật chứ không phải lười:** hai lỗ hổng kéo ngược nhau. Nới cho `b)`
+chữ thường làm chính **70 đoạn `[Note to…]` ở bảng trên** thành ứng viên — tức đổi 2 ca oan lấy 70
+ca sai. Nới cho style bị hạ quyền thì mâu thuẫn với chính lý do `StyleTrustAudit` tồn tại. Cả hai
+cần đo trên tài liệu có đáp án.
+
+### 59.8 Kết luận cuối cho `MaxCandidateTextLength = 200`
+
+*Chốt sống, chặn đúng 70/73, và cả ba ca oan đều truy được về hai lỗ hổng đã biết ở nơi khác.*
+
+Giá trị **200 vẫn chưa hiệu chỉnh** — chưa ai so 150/200/300. Nhưng nay biết chính xác nó đang làm
+gì và sai ở đâu, thay vì chỉ biết "có một con số ở đó". Đó là mức trả lời tốt nhất đạt được khi
+không có đáp án, và đủ để kết luận: **không xoá**.
+
+### 59.9 Thử sửa lỗ hổng 1 — và nó vô tác dụng, đã gỡ
+
+§59.7 viết rằng nới cho điểm chữ thường sẽ biến 70 đoạn `[Note to Procuring Agency: …]` thành ứng
+viên. **Đo lại thì khẳng định đó SAI:**
+
+| | |
+|---|--:|
+| trong 73 đoạn bị trần chặn, khớp `^[a-zđ][.)]\s` | **2** (đúng hai ca oan) |
+| 71 đoạn còn lại | **không khớp** — chúng mở đầu bằng `[` hoặc một TỪ, không phải chữ cái đơn |
+| toàn corpus, đoạn > 200 ký tự | 13.566 |
+| trong đó khớp mẫu | **317** (2,3%) |
+
+Phân bố chữ cái mở đầu của 317 đoạn: `a` 91 · `b` 80 · `c` 61 · `d` 29 · `e` 17 · `đ` 12 — giảm dần
+**đúng thứ tự bảng chữ cái tiếng Việt**, tức chữ ký của một dãy đánh số thật. Mẫu 8 đoạn ngẫu nhiên
+đều là điểm thật (`c) Phải thu khác…`, `d) Giá trị phần vốn góp…`, `a) Buộc tiêu hủy hoặc tái xuất…`).
+
+Nên tôi cài luật miễn trần cho điểm chữ thường. **Kết quả: 4.957 ứng viên — không đổi một cái nào.**
+
+Lý do: miễn trần chỉ cho đoạn ĐI QUA cổng độ dài. Sau đó nó vẫn phải đạt ngưỡng điểm 0,45, mà
+`LetterPrefixRx` cố ý chỉ cộng điểm cho chữ HOA — nên hai đoạn `b)` qua được cổng rồi rớt ngay bước
+sau. Luật mới là **mã chết**.
+
+**Đã gỡ.** Sửa thật sự đòi cộng điểm cho điểm chữ thường, tức đụng vào chính lý do `LetterPrefixRx`
+giới hạn ở `\p{Lu}` — và đó là thay đổi cần đáp án để đo, không phải thay đổi cần thêm một regex.
+
+**Bài học:** "miễn một cổng" không bằng "được nhận". Một tính năng đi qua nhiều cổng nối tiếp thì
+nới đúng một cổng có thể cho hiệu ứng bằng 0, và chỉ phép đo mới nói ra điều đó — mã vẫn build,
+test vẫn xanh, bench vẫn nguyên.
+
+## §60. Quay lại luật tất định: bộ dựng `vn-administrative`
+
+### 60.1 Người dùng chỉ ra đúng chỗ sai
+
+*"Sao không bám theo luật deterministic? Cứ sửa là sai."*
+
+Đúng, và chứng minh được. Ba chế độ đạt **100% trên đáp án người kiểm** đều là bộ dựng ĐỌC MỘT DỮ
+KIỆN CẤU TRÚC cho cả tài liệu: `--style-outline`, `--numbering-outline`,
+`StructuralHierarchyResolver`. Còn §57–§59 đi hướng ngược: vá bộ chấm điểm bằng miễn trừ, hình
+phạt, hướng duyệt — nhiều luật cục bộ tương tác quanh ngưỡng 0,45.
+
+Kết quả đo được của hướng đó, ba lần liên tiếp:
+
+| | |
+|---|---|
+| §57.3 | nới payload → tự tạo hồi quy duyệt-ngược, **474 test không bắt được**, phải chờ người dùng báo |
+| §58.5 | kết luận "trần độ dài vô tác dụng" — **sai**, nó chặn 70 đoạn |
+| §59.9 | cài luật miễn trần cho điểm chữ thường — **vô tác dụng**, mã chết, đã gỡ |
+
+Và §0 của dự án đã ghi kết luận này từ trước: *"mọi tiến bộ đo được đều đến từ việc đọc dữ kiện cấu
+trúc có sẵn"* — đúng cấp đi 26,5% → 96,0% qua sáu luật tất định, không qua tinh chỉnh trọng số.
+Tôi đã vi phạm chính kết luận đó trong ba mục liền.
+
+### 60.2 `AdministrativeOutline` — bộ dựng tất định thứ ba
+
+Cùng khuôn với hai bộ đã đạt 100%. Cờ `--admin-outline`, **mặc định tắt**.
+
+**Cấp**: thứ tự lồng nhau lấy từ THỨ TỰ XUẤT HIỆN LẦN ĐẦU của từng chữ ký trong chính tài liệu,
+rồi neo theo cha gần nhất bằng ngăn xếp. Không gán cứng theo loại ký hiệu — tài liệu dùng `A.` thay
+`I.`, hay `1)` thay `1.`, chạy y hệt mà không sửa gì.
+
+**Thân bài**: tách tại dấu ngắt ĐẦU TIÊN mở ra số liệu. Không có thì cả lát là nhan đề.
+
+**Không một ngưỡng nào**: không điểm số, không trần độ dài, không tỉ lệ. Một đoạn hoặc mang ký hiệu
+hoặc không — đó là dữ kiện.
+
+**Trả rỗng khi chỉ có một chữ ký**: không suy ra được quan hệ lồng nhau nào thì không đoán. Đây là
+khác biệt cốt lõi với bộ chấm điểm — thà không trả gì còn hơn trả một cây bịa ra.
+
+### 60.3 Đo được
+
+```
+I. VÙNG TRỜI          → 1        d) Tàu trực của Hải đội…: 14 tàu (QK4: 01, QK9: 04)
+  1. HKDD             → 2          nhan đề: "d) Tàu trực của Hải đội dân quân thường trực"
+    a) Trong dự báo   → 3          thân   : "14 tàu … QK9: 04"   ← dấu ':' nội bộ nằm trọn trong thân
+II. VÙNG BIỂN         → 1
+  1. Vùng biển phía Bắc → 2
+```
+
+485 test xanh, bench `--no-llm` không đổi (cờ mặc định tắt).
+
+Mutation: cắt tại dấu ngắt CUỐI → 1 đỏ · gán cứng cấp theo hạng ký hiệu → 1 đỏ.
+
+Đột biến thứ hai **sống sót lượt đầu**: mọi test tôi viết đều có cây lồng nhau ĐỀU, nên hạng ký
+hiệu trùng với độ sâu và hai cách cho cùng kết quả. Chúng chỉ khác ở ca **bỏ qua một cấp** —
+`a)` đứng ngay dưới `II.` không qua `1.`, cấp đúng là 2 chứ không phải 3. Thêm test đó thì đột biến
+chết ngay. Đây đúng là lỗi "nhảy cấp 2 → 4" mà bản Python từng mắc.
+
+### 60.4 Hai khuyết tật đã ghim thành test
+
+**Đoạn gộp toàn CHỮ HOA bị cắt nhầm.** `I. VÙNG TRỜI 1. HKDD…` → hai từ cuối của nhan đề cộng số
+của mục sau tạo dạng "nhãn + số" giả (`TRỜI 1.`), nên lát cắt thành `I. VÙNG` + `TRỜI 1. HKDD…`.
+Phân biệt "nhãn thật" với "từ cuối của nhan đề in hoa" đòi biết nhan đề kết thúc ở đâu — chính là
+bài toán đang giải.
+
+**Điểm chữ thường dài vẫn bị `HeadingHeuristics` loại** (§59.9) — nhưng bộ dựng mới KHÔNG đi qua
+`HeadingHeuristics`, nên khuyết tật đó không áp cho `--admin-outline`.
+
+### 60.5 Nối vào giao diện, và một bẫy đã sập
+
+`.\dhx` báo *"Tham số không hợp lệ: --admin-outline"* dù mã đã build. Nguyên nhân: `dhx.cmd` ưu
+tiên bản GPU đã publish ở `out-vulkan\`, mà bản đó từ **08/08** trong khi build mới là **13/08** —
+cũ 5 ngày. Đã publish lại, và bổ sung bốn cờ mới vào `dhx help` (chúng chưa từng có mặt ở đó).
+
+> **Kỷ luật:** đổi CLI xong phải `dotnet publish -o out-vulkan`, không chỉ `dotnet build`. Wrapper
+> `.\dhx` KHÔNG dùng thư mục Release.
+
+Ba bộ dựng tất định nay có mặt trong Web UI dưới một khối riêng ở lớp ngoài — chúng không phải tuỳ
+chọn tinh chỉnh mà **thay hẳn đường chấm điểm**, nên không giấu vào "tuỳ chọn nâng cao".
+
+Thêm `Moi_o_dieu_khien_deu_duoc_gui_di`: mọi ô nhập trong HTML phải được JS gửi đi. Thiếu một chiều
+thì giao diện **im lặng bỏ qua lựa chọn của người dùng** — không lỗi, không cảnh báo, chỉ là kết
+quả sai. Test này bắt ngay được `correctedFile` (thuộc luồng khác, đã loại trừ có ghi lý do), và
+mutation "quên nối dây một ô" → đỏ.
+
+**486 test xanh**, bench không đổi.

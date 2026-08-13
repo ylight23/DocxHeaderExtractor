@@ -111,15 +111,12 @@ public sealed class CommandLineOptions
                 case "--raw-levels": o.Pipeline.NormalizeLevels = false; break;
                 case "--normalize-levels": o.Pipeline.NormalizeLevels = true; break;
                 case "--two-pass": o.Pipeline.TwoPass = true; break;
-                case "--rolling-outline": o.Pipeline.RollingOutline = true; break;
-                case "--style-outline": o.Pipeline.StyleDeclaredOutline = true; break;
-                case "--numbering-outline": o.Pipeline.NumberingDeclaredOutline = true; break;
                 case "--no-global-hierarchy": o.Pipeline.GlobalHierarchy = false; break;
                 case "--model-levels": o.Pipeline.LevelFromOutline = false; break;
                 case "--dump-xml": o.Pipeline.DumpXmlPath = Next(a); break;
                 case "--show-raw": o.Pipeline.ShowRawOutput = true; break;
 
-                case "--ctx": llama.ContextSize = uint.Parse(Next(a)); break;
+                case "--ctx": llama.ContextSize = uint.Parse(Next(a)); llama.AutoContextSize = false; break;
                 case "--threads" or "-t": llama.Threads = int.Parse(Next(a)); break;
                 case "--chunk-tokens": o.Pipeline.Chunking.SetExplicitTokenBudget(int.Parse(Next(a))); explicitChunkTokens = true; break;
                 case "--chunk-candidates": o.Pipeline.Chunking.MaxCandidatesPerChunk = int.Parse(Next(a)); break;
@@ -280,11 +277,6 @@ public sealed class CommandLineOptions
               --page-headers        Đọc thêm w:hdr/w:ftr
               --no-context          Không kèm đoạn văn ngữ cảnh
               --structural-only     Chỉ dùng tín hiệu cấu trúc OOXML, tắt luật theo từ ngữ
-              --style-trust         Chấm độ tin cậy của style Word ở mức TÀI LIỆU; tài liệu áp
-                                    style bừa thì style mất quyền phủ quyết (không mất bằng chứng)
-              --style-auto-assign   Gán thẳng heading cho đoạn mang style Heading built-in và
-                                    rút chúng khỏi luồng LLM (luật R1 của spec filter OOXML).
-                                    Cờ để ĐO, mặc định tắt — xem OoxmlStyleAutoAssign.
                                     (không phụ thuộc ngôn ngữ tài liệu)
               --no-trust-styles     Không tự động giữ heading theo style khi mô hình bỏ sót
               --skip-styled         Không hỏi mô hình về đoạn đã có style/outlineLvl. Nhanh hơn

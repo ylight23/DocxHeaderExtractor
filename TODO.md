@@ -9,7 +9,8 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
   trách nhiệm cho từng cái.
 - **Mọi con số ghi kèm cấu hình đo.** Báo cáo `dhx eval` nay in chữ ký đầy đủ (kể cả `gpuLayers`,
   `seed`); đọc dòng đó trước khi so với bất kỳ bảng nào trong `handoff.md`.
-- **Xác minh MÔI TRƯỜNG trước khi tin con số** (§27). Build kèm `-p:UseVulkan=true`, chạy kèm
+- **Xác minh MÔI TRƯỜNG trước khi tin con số** (§27). **`dotnet test` build lại solution KHÔNG kèm
+  `-p:UseVulkan=true` và ghi đè native lib** (§56.1) — đọc lại dòng `Mô hình sẵn sàng…` sau mỗi lần test. Build kèm `-p:UseVulkan=true`, chạy kèm
   `-ngl 99`, và đọc dòng `Mô hình sẵn sàng…` phải nói **GPU N lớp**. Thiếu một trong hai là chạy CPU
   và phép đo vô hiệu — đã mất hai lượt chạy vì điều này.
 - **Dump dùng để suy luận phải sinh lại bằng ĐÚNG cờ của lượt đang bàn, ngay trước khi đọc** (§33.3,
@@ -21,6 +22,19 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
 - **Mã tạo ra số liệu báo cáo thì phải có test** (§50.2). Ba mảng mã của loạt §45–§48 sinh ra mọi
   bảng trong handoff mà không có một test nào, kể cả một chỗ đã từng ném null và được sửa nhưng
   không ghim lại.
+- **Đổi một hàm DÙNG CHUNG thì phải liệt kê mọi nơi gọi nó, và hỏi phép đo có chạy qua đó không**
+  (§55.8). Ba lỗi liên tiếp cùng một dạng: lật mặc định `DeterministicHierarchy` ghép nó với
+  `--split-merged` → crash trùng khoá; nới `LabelledRx` ghép nó với `StructuralRecovery` → chú
+  thích hình/bảng thành đề mục. **Cả hai đều xanh trên `bench --no-llm`** vì bench không đi qua
+  đường có mô hình. Bench xanh không nói gì về nhánh bench không chạy.
+- **Đổi phân phối dự đoán thì PHẢI bump `PrecisionCalibrationProfile.CurrentPipelineSignature`**
+  (§55.11). Không test nào canh được điều này — 435 test vẫn xanh khi thiếu bump. Hỏi mỗi lần đổi
+  luật đọc số: có mục nào chuyển giữa bucket `numbered`/`unnumbered` không?
+- **Trước khi đánh số mục mới trong handoff, kiểm trùng** (§55.6): nhánh có thể đã tiến lên trong
+  lúc mình làm — đã có hai §52 cùng lúc.
+- **"Mutation sống sót" KHÔNG có nghĩa "thay đổi không ảnh hưởng gì"** (§59.2). Mutation chỉ nói
+  bộ test hiện có không phân biệt được hai bản. Kết luận về HÀNH VI phải đo trên dữ liệu thật, đủ
+  quy mô: trần độ dài "vô tác dụng" theo mutation và theo 12 file, nhưng chặn 70 đoạn trên 95 file.
 - **Không suy về ĐẦU VÀO từ ĐẦU RA của chính pipeline đang nghi ngờ** (§46.5). Pipeline trả về
   rỗng có hai nguyên nhân không phân biệt được từ kết quả: đầu vào rỗng, hoặc pipeline hỏng. Phải
   mở dữ liệu gốc ra đo. Khoảng cách giữa hai cách đọc ở §46 là 50 file và một khuyến nghị lấy lại
@@ -41,7 +55,11 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
 
 ---
 
-## 1. Luật nhận được dòng bìa / khối chữ ký — ~~*chặn hai thứ khác*~~ **PHẦN LỚN ĐÃ XONG (§12)**
+> **§56.2 trả lời mục này:** đường CÓ MÔ HÌNH loại sạch cả ba dương tính giả trang bìa
+> (`bench/04`, precision 92,3% → **100%**). Đây không phải luật cấu trúc còn thiếu — không tín hiệu
+> nào tách `MỤC LỤC` khỏi `BỘ KHOA HỌC VÀ CÔNG NGHỆ` — mà là việc của tầng ngữ nghĩa.
+
+## 1. ~~Luật nhận được dòng bìa / khối chữ ký~~ — **ĐÓNG (§56.2): việc của tầng ngữ nghĩa, không phải luật cấu trúc**
 
 > **Trạng thái.** Đã chữa trên đường `--style-trust`: `09-style-ap-sai` precision **57,1% → 100%**
 > (hết cả ba dương tính giả), bench 9 tài liệu F1 **92,5% → 95,6%**, tuyệt đối 5/9 → 6/9. Trên khoá
@@ -259,8 +277,13 @@ Một tiêu đề bị Enter thật cắt đôi hiện không biểu diễn đư
 một `i`** (§5). Cùng khe hở với việc `InlineHeadingSplitter` không tách nổi block dính hai heading.
 `LineBreakOffsets` (`8b95302`) mới chỉ giải quyết ca Shift+Enter trong cùng paragraph.
 
-Đắt nhất, đổi lược đồ, và **chưa tài liệu thật nào trong bộ đo chứng minh nó đáng**. Làm sau cùng,
-hoặc sau khi gặp một tài liệu hỏng đúng kiểu đó.
+**ĐÃ ĐO (§55.1): 0 trên 0/95 file.** Đoạn chỉ chứa `Chương II` không kèm tiêu đề không xuất hiện lần
+nào — vì 83/95 file là bản chuyển PDF đã gộp hết. Điều kiện mở lại KHÔNG thoả.
+
+Nhưng dạng này KHÔNG vô nghĩa, nó chỉ biểu hiện khác: PDF dán hai dòng thành
+`Chương II QUY ĐỊNH CHUNG`. Đó là §55.2, đã sửa ở `NumberingAudit.LabelledRx`, không cần đổi lược đồ.
+
+Đắt nhất, đổi lược đồ. Làm sau cùng, hoặc sau khi gặp một tài liệu hỏng đúng kiểu đó.
 
 **Bằng chứng hiện có, và nó chưa đủ.** §5 ghi đúng một ca: báo cáo thật có `i=452` chứa cả hai đề
 mục vì file gốc thiếu ngắt đoạn. Một ca trên hai tài liệu thật, và nó là ca NGƯỢC (hai heading trong
@@ -324,7 +347,16 @@ Còn lại và chưa thử: hạ cấp SAU khi mô hình quyết, bằng luật 
 Hoặc `--no-standalone-lines` (§33): P 83,5 → 92,8 nhưng R 96,4 → 93,6, làm rơi `Tiểu kết chương 2/3`.
 Đổi 2,8 điểm recall lấy 9,3 điểm precision là **lựa chọn về sản phẩm**, thuộc về người dùng.
 
-## 9. Đưa cấu hình đã đo thành mặc định — *đang có hai bộ số khác nhau*
+## 9. Đưa cấu hình đã đo thành mặc định — **NỬA ĐẦU XONG (§56.4)**
+
+> **Context đã xong.** Web không còn đoán ctx từ tên file, và không còn tự điền ô ctx nên cơ chế
+> đọc `{arch}.context_length` từ GGUF thật sự chạy. Bỏ trống → 32.768; gõ số → số của bạn thắng,
+> và chữ ký cấu hình ghi đúng con số đã dùng (§56.5).
+>
+> **Còn lại:** `chunkTokens` (Web 5.000 với cấu hình đo 28.000) và ô "Bỏ luật từ ngữ" mặc định bật.
+> Cả hai nằm trong chữ ký calibration nên đổi chúng cần đo lại, không phải sửa một dòng.
+
+
 
 Mọi con số tốt trong handoff đo với `--style-trust --chunk-tokens 28000 --ctx 32768 -ngl 99`. Giao
 diện Web mặc định `ctx 8192`, `5000 token/khối`, và người dùng còn tick "Bỏ luật từ ngữ". Hai đường
@@ -351,6 +383,20 @@ cho hai kết quả khác nhau — §36 cho thấy UI trả về `1296`/`1315` m
 >
 > **Hệ quả phải nhớ:** mọi con số `--no-llm` ghi TRƯỚC §51 đều thiếu bước này, kể cả bảng phân bố
 > cấp ở §45.3.
+
+---
+
+## 9c. ~~Bộ dựng `vn-administrative`~~ — **XONG (§60)**
+
+> `AdministrativeOutline` + cờ `--admin-outline`, **mặc định tắt**. Bộ dựng tất định thứ ba, cùng
+> khuôn với hai bộ đã đạt 100%: cấp neo theo cha gần nhất (thứ tự lồng nhau đọc từ chính tài liệu,
+> không gán cứng theo loại ký hiệu), thân bài tách tại dấu ngắt đầu tiên mở ra số liệu,
+> **không một ngưỡng nào**. Trả rỗng khi chỉ có một chữ ký thay vì đoán.
+>
+> Đã phơi trong Web UI cùng hai bộ kia, kèm test ghim rằng mọi ô điều khiển đều được JS gửi đi
+> (mutation "quên nối dây một ô" → đỏ).
+>
+> **Chưa chấm được** vì chưa có đáp án cho tài liệu hành chính — xem mục 4.
 
 ---
 
@@ -410,7 +456,7 @@ giá trị SAI hiện tại; sửa xong thì test đỏ và buộc phải cập 
 
 | ca | trạng thái |
 |---|---|
-| La Mã thường `i. ii. iii.` | **không phải thêm regex.** `i.` vừa là La Mã 1 vừa là chữ cái thứ 9; `IgnoreCase` sẽ đọc mọi `c.`/`d.`/`i.` trong dãy chữ cái thành cấp 1. Luật đúng phải nhìn **cả dãy** tìm `ii`/`iii`/`iv` — cùng hình dạng với luật ba bảng chữ cái ở §45.1 |
+| La Mã thường `i. ii. iii.` | **ĐÃ ĐO (§55.1): 19 mục trên 12/95 file, chỉ 5 mục chắc chắn** — không đáng, vì rủi ro đọc nhầm dãy chữ cái 601 mục. Và **không phải thêm regex**: `i.` vừa là La Mã 1 vừa là chữ cái thứ 9; `IgnoreCase` sẽ đọc mọi `c.`/`d.`/`i.` trong dãy chữ cái thành cấp 1. Luật đúng phải nhìn **cả dãy** tìm `ii`/`iii`/`iv` — cùng hình dạng với luật ba bảng chữ cái ở §45.1 |
 | numbering restart theo chương | chưa gặp trong tài liệu nào có đáp án |
 | phụ lục đánh số riêng | chưa gặp trong tài liệu nào có đáp án |
 | heading bị Enter cắt đôi | mục 6; Nghị định 30/2020 **bắt buộc** dạng này (`Chương II` một dòng, tiêu đề dòng kế) nên nó phổ biến hơn dự đoán cũ |

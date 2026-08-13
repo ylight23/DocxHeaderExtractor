@@ -138,11 +138,37 @@ public static class NumberingAudit
     private static readonly Regex TitleWordRx = new(@"\p{L}{2,}", RegexOptions.Compiled);
 
     /// <summary>
-    /// <c>Chương 1. Tổng quan</c>, <c>PHẦN I. Cơ sở</c>. Nhãn 2–12 chữ cái bắt đầu bằng chữ hoa,
-    /// rồi số Ả Rập hoặc La Mã, rồi dấu ngắt, rồi phần tên bắt đầu bằng CHỮ.
+    /// <c>Chương 1. Tổng quan</c>, <c>PHẦN I. Cơ sở</c> — và cả dạng KHÔNG có dấu ngắt:
+    /// <c>Chương II QUY ĐỊNH CHUNG</c>.
+    /// <para>
+    /// Dạng không dấu ngắt là hệ quả trực tiếp của Nghị định 30/2020: từ "Chương" cùng số thứ tự
+    /// nằm một dòng riêng, tiêu đề nằm dòng ngay dưới. Bản chuyển PDF→DOCX dán hai dòng lại thành
+    /// <c>Chương II QUY ĐỊNH CHUNG</c>, không còn dấu chấm ở giữa. Hậu quả đo được trên
+    /// <c>082_Bo_luat_Lao_dong_2019_EN</c>: 26 <c>Chapter</c> + 221 <c>Article</c> mà TẤT CẢ đều
+    /// cấp 1 — vì <c>Chapter</c> không parse được nên tài liệu chỉ còn MỘT chữ ký, mà
+    /// <see cref="StructuralHierarchyResolver"/> đòi từ hai chữ ký trở lên mới suy được quan hệ
+    /// lồng nhau. Không tài liệu nào có 26 chương và 221 điều mà chỉ một cấp.
+    /// </para>
+    /// <para>
+    /// <b>Chốt chặn của nhánh không-dấu-ngắt: phần còn lại phải KHÔNG có chữ thường nào.</b>
+    /// Nghị định 30/2020 quy định tiêu đề phần và chương trình bày bằng <i>chữ in hoa, đậm</i>, nên
+    /// đây là tín hiệu cấu trúc có căn cứ, không phải danh sách từ khoá.
+    /// </para>
+    /// <para>
+    /// Chốt này chặn hai nhóm cùng lúc, cả hai đều đã có test:
+    /// <list type="bullet">
+    /// <item>Tham chiếu chéo giữa câu — <c>Điều 3 của Bộ luật này</c>, <c>khoản 2 Điều này</c>.</item>
+    /// <item>Chú thích hình/bảng — <c>Bảng 3 Thống kê số liệu</c>, <c>Table 5 Summary Of Results</c>.
+    /// Nhóm này nguy hiểm hơn: <see cref="StructuralRecovery"/> cứu MỌI đoạn có token
+    /// <see cref="NumberKind.Labelled"/>, mà <c>bench --no-llm</c> không chạy tới đó nên phép đo
+    /// thường dùng KHÔNG bắt được. Đúng cái bẫy mà chú thích ở đầu file đã cảnh báo.</item>
+    /// </list>
+    /// Đổi lại: <c>Chương II Quy định chung</c> (không in hoa) sẽ bị bỏ qua. Đó là hướng sai ĐÚNG
+    /// với hợp đồng của file này — hậu kiểm sai theo hướng HẸP.
+    /// </para>
     /// </summary>
     private static readonly Regex LabelledRx = new(
-        @"^\s*(\p{Lu}[\p{L}]{1,11})\s+(\d{1,3}|[IVXLCDM]{1,7})\s*[\.\):\-–]\s*(\p{L}.*)$",
+        @"^\s*(\p{Lu}[\p{L}]{1,11})\s+(\d{1,3}|[IVXLCDM]{1,7})(?:\s*[\.\):\-–]\s*|\s+(?=[^\p{Ll}]*$))(\p{L}.*)$",
         RegexOptions.Compiled);
 
     /// <summary>

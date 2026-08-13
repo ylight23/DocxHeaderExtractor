@@ -17,7 +17,14 @@ public static class StructuralHierarchyResolver
         bool respectStyleTrust = false)
     {
         var ordered = headings.OrderBy(h => h.Index).ToList();
-        var paths = ordered.ToDictionary(h => h.Index, h => PathOf(h, document));
+        // Khoá theo THAM CHIẾU HeadingRecord, không theo Index. Từ §51 hai tính năng gặp nhau:
+        // --split-merged sinh nhiều mục dùng chung một Index (chủ đích, để đáp án trong keys/ không
+        // hỏng vì dịch chỉ số) còn DeterministicHierarchy nay mặc định BẬT (§51). Khoá theo Index thì
+        // ToDictionary ném ArgumentException "same key" — crash tiềm ẩn, có test riêng ghim lại.
+        // Khoá theo tham chiếu cũng ĐÚNG NGHĨA hơn: hai lát cắt có text khác nhau nên phải có
+        // đường dẫn đánh số khác nhau, gộp chúng vào một khoá là mất thông tin.
+        var paths = new Dictionary<HeadingRecord, int[]?>(ReferenceEqualityComparer.Instance);
+        foreach (var h in ordered) paths[h] = PathOf(h, document);
         var tiers = SignatureTiers(ordered, document, respectStyleTrust);
         var nesting = StyleNestingDepths(ordered, document, respectStyleTrust);
         var changed = 0;
@@ -25,12 +32,12 @@ public static class StructuralHierarchyResolver
         for (var i = 0; i < ordered.Count; i++)
         {
             var current = ordered[i];
-            var path = paths[current.Index];
+            var path = paths[current];
 
             // Style không khai đúng CẤP nhưng khai đúng THỨ TỰ LỒNG NHAU (xem StyleNestingDepths).
             // Đứng trước nhánh độ sâu đánh số vì nó mạnh hơn hẳn trên chính tập mục nó phủ: đo
             // riêng lớp style-only trên khoá luận, đúng cấp 41,2% → 100% (§26).
-            if (nesting.TryGetValue(current.Index, out var depth))
+            if (nesting.TryGetValue(current, out var depth))
             {
                 if (depth != current.Level) { current.Level = depth; changed++; }
                 continue;
@@ -52,7 +59,7 @@ public static class StructuralHierarchyResolver
 
                 // Đường dẫn chỉ đọc được số Ả Rập có dấu chấm, nên "PHẦN I." hay "A)" rơi ra ngoài
                 // và cấp của chúng phải trông chờ vào mô hình. Tầng chữ ký lấp đúng chỗ đó.
-                if (tiers.TryGetValue(current.Index, out var tier) && tier != current.Level)
+                if (tiers.TryGetValue(current, out var tier) && tier != current.Level)
                 {
                     current.Level = Math.Clamp(tier, 1, 9);
                     changed++;
@@ -105,12 +112,15 @@ public static class StructuralHierarchyResolver
     /// suy ra được quan hệ lồng nhau nào.
     /// </para>
     /// </summary>
-    private static Dictionary<int, int> SignatureTiers(
+    private static Dictionary<HeadingRecord, int> SignatureTiers(
         IReadOnlyList<HeadingRecord> ordered, SlimDocument document, bool respectStyleTrust)
     {
-        var result = new Dictionary<int, int>();
+        // Khoá theo THAM CHIẾU, không theo Index — xem chú thích ở Apply và handoff §55.3. Dictionary<int,…> không
+        // ném khi trùng khoá, nó GHI ĐÈ: hai lát cắt cùng Index nhưng khác chữ ký ("Chương I" và
+        // "Điều 1" trong cùng một đoạn gộp) sẽ nhận chung một tầng, sai mà không có dấu hiệu nào.
+        var result = new Dictionary<HeadingRecord, int>(ReferenceEqualityComparer.Instance);
         var rank = new Dictionary<string, int>(StringComparer.Ordinal);
-        var tokens = new Dictionary<int, NumberToken>();
+        var tokens = new Dictionary<HeadingRecord, NumberToken>(ReferenceEqualityComparer.Instance);
 
         foreach (var heading in ordered)
         {
@@ -125,12 +135,12 @@ public static class StructuralHierarchyResolver
 
             if (NumberingAudit.ParseParagraph(paragraph, heading.Text) is not { } token) continue;
 
-            tokens[heading.Index] = token;
+            tokens[heading] = token;
             if (!rank.ContainsKey(token.Signature)) rank[token.Signature] = rank.Count + 1;
         }
 
         if (rank.Count < 2) return result;
-        foreach (var (index, token) in tokens) result[index] = rank[token.Signature];
+        foreach (var (record, token) in tokens) result[record] = rank[token.Signature];
         return result;
     }
 
@@ -155,10 +165,10 @@ public static class StructuralHierarchyResolver
     /// TỆ HƠN cách cũ — 44,4% → 33,3%. Điều kiện không phải để cho chắc, nó là điều kiện tồn tại.
     /// </para>
     /// </summary>
-    private static Dictionary<int, int> StyleNestingDepths(
+    private static Dictionary<HeadingRecord, int> StyleNestingDepths(
         IReadOnlyList<HeadingRecord> ordered, SlimDocument document, bool respectStyleTrust)
     {
-        var result = new Dictionary<int, int>();
+        var result = new Dictionary<HeadingRecord, int>(ReferenceEqualityComparer.Instance);
         if (!respectStyleTrust) return result;
         // LevelTrusted đúng ⇒ Declared() đã chặn từ trước và cấp lấy thẳng từ style; không tới đây.
         if (document.StyleTrust is not { LevelTrusted: false, NestingTrusted: true }) return result;
@@ -172,7 +182,7 @@ public static class StructuralHierarchyResolver
             // Mục không đánh style thì không đụng tới ngăn xếp: cấp của chúng đến từ độ sâu đánh số,
             // và trộn hai thang vào một ngăn xếp là lấy cái sai của thang này đè lên cái đúng của thang kia.
             while (ancestors.Count > 0 && ancestors[^1] >= styleLevel) ancestors.RemoveAt(ancestors.Count - 1);
-            result[heading.Index] = Math.Clamp(ancestors.Count + 1, 1, 9);
+            result[heading] = Math.Clamp(ancestors.Count + 1, 1, 9);
             ancestors.Add(styleLevel);
         }
         return result;
@@ -215,11 +225,11 @@ public static class StructuralHierarchyResolver
     }
 
     private static int? FindSiblingLevel(
-        int at, IReadOnlyList<HeadingRecord> ordered, IReadOnlyDictionary<int, int[]?> paths, int[] current)
+        int at, IReadOnlyList<HeadingRecord> ordered, IReadOnlyDictionary<HeadingRecord, int[]?> paths, int[] current)
     {
         for (var i = at - 1; i >= 0; i--)
         {
-            var previous = paths[ordered[i].Index];
+            var previous = paths[ordered[i]];
             if (previous is null || previous.Length != current.Length || !SameParent(previous, current)) continue;
             if (previous[^1] + 1 == current[^1]) return ordered[i].Level;
             // Số giảm/reset là một danh sách khác; đừng nối nhầm qua phần mới.
@@ -229,30 +239,71 @@ public static class StructuralHierarchyResolver
     }
 
     private static int? FindParentLevel(
-        int at, IReadOnlyList<HeadingRecord> ordered, IReadOnlyDictionary<int, int[]?> paths, int[] current)
+        int at, IReadOnlyList<HeadingRecord> ordered, IReadOnlyDictionary<HeadingRecord, int[]?> paths, int[] current)
     {
         if (current.Length < 2) return null;
         for (var i = at - 1; i >= 0; i--)
         {
-            var previous = paths[ordered[i].Index];
+            var previous = paths[ordered[i]];
             if (previous is null || previous.Length != current.Length - 1) continue;
             if (previous.SequenceEqual(current[..^1])) return ordered[i].Level + 1;
         }
         return null;
     }
 
+    /// <summary>
+    /// Neo một mục đánh số vào heading KHÔNG đánh số gần nhất phía trên.
+    /// <para>
+    /// Hai ca, tách rời vì độ an toàn khác nhau:
+    /// </para>
+    /// <para>
+    /// <b>Độ dài 1</b> (<c>1.</c>, <c>2.</c>) — hành vi cũ, giữ nguyên: một heading không đánh số
+    /// ngay trước danh sách <c>1., 2., …</c> là cha tiềm năng, và chỉ dùng khi nó đang nông hơn.
+    /// </para>
+    /// <para>
+    /// <b>Độ dài ≥ 2 nhưng CHUỖI MỒ CÔI</b> — thêm ở §55.13. "Mồ côi" nghĩa là không heading nào
+    /// phía trên có đường dẫn bắt đầu bằng cùng thành phần đầu: <c>2.1</c> mà tài liệu không có
+    /// mục <c>2.</c> nào trước đó. Lúc ấy độ sâu dấu chấm KHÔNG nói được cấp, vì cái cây mà nó
+    /// tham chiếu tới không tồn tại — phải neo theo vị trí.
+    /// </para>
+    /// <para>
+    /// ĐO ĐƯỢC trên <c>bench/07-mau-that</c>, và chính đáp án ghi rằng đây là *"mâu thuẫn có thật
+    /// trong file"*: <c>2.1 Kết quả thử nghiệm</c> nằm dưới <c>PHỤ LỤC A</c> (cấp 1) nên đáp án là
+    /// cấp 2, dù số hiệu <c>2.1</c> gợi ý thuộc Chương 2. Trước đây không luật tất định nào chạm
+    /// tới nó: đường dẫn <c>[2,1]</c> dài 2 nên nhánh này bỏ qua, <c>FindParentLevel</c> không tìm
+    /// thấy <c>[2]</c>, <c>FindSiblingLevel</c> khác cha. Cấp giữ nguyên giá trị mô hình trả về —
+    /// đúng trên đường <c>--no-llm</c> (đoán theo độ sâu = 2) và SAI trên đường có mô hình (= 1).
+    /// </para>
+    /// <para>
+    /// Điều kiện mồ côi là thứ giữ luật này hẹp: <c>1.1.1</c> nằm trong chuỗi <c>1.</c> → <c>1.1</c>
+    /// vẫn đi <c>FindParentLevel</c> như trước, không bị neo lại theo vị trí.
+    /// </para>
+    /// </summary>
     private static int? FindUnnumberedParentLevel(
-        int at, IReadOnlyList<HeadingRecord> ordered, IReadOnlyDictionary<int, int[]?> paths, int[] current)
+        int at, IReadOnlyList<HeadingRecord> ordered, IReadOnlyDictionary<HeadingRecord, int[]?> paths, int[] current)
     {
-        if (current.Length != 1) return null;
+        if (current.Length != 1 && !IsOrphanChain(at, ordered, paths, current)) return null;
         for (var i = at - 1; i >= 0; i--)
         {
             // Một heading không đánh số ngay trước một danh sách 1., 2., … là cha tiềm năng.
             // Chỉ dùng khi model đã gán nó nông hơn mục hiện tại, tránh nâng cấp tùy tiện.
-            if (paths[ordered[i].Index] is null && ordered[i].Level < current.Length + 1)
+            if (paths[ordered[i]] is null && ordered[i].Level < current.Length + 1)
                 return ordered[i].Level + 1;
         }
         return null;
+    }
+
+    /// <summary>
+    /// Không heading nào phía trên có đường dẫn mở đầu bằng cùng thành phần đầu với
+    /// <paramref name="current"/> — tức cái cây mà số hiệu này tham chiếu tới không tồn tại.
+    /// </summary>
+    private static bool IsOrphanChain(
+        int at, IReadOnlyList<HeadingRecord> ordered, IReadOnlyDictionary<HeadingRecord, int[]?> paths, int[] current)
+    {
+        for (var i = at - 1; i >= 0; i--)
+            if (paths[ordered[i]] is { Length: > 0 } previous && previous[0] == current[0])
+                return false;
+        return true;
     }
 
     /// <summary>

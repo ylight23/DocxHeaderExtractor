@@ -12,6 +12,18 @@ public static class RequestOptions
         var o = new PipelineOptions();
 
         o.Extraction.UseLexicalRules = !Flag(form, "structuralOnly");
+
+        // Cắt tiêu đề nằm LỌT GIỮA paragraph — cần cho tài liệu chuyển từ PDF, nơi cả trang bị gộp
+        // vào một <w:p>. Đo trên corpus 95 file: 83 file thuộc dạng này, và 4.590/6.858 mục (67%)
+        // có ranh giới heading nằm giữa đoạn (§45.2). Mặc định TẮT vì nó phá giả định "mỗi đoạn
+        // nhiều nhất một mục" mà mọi đáp án trong keys/ đang dựa vào.
+        o.Extraction.SplitMergedParagraphs = Flag(form, "splitMerged");
+
+        // Ba bộ dựng TẤT ĐỊNH — đọc một dữ kiện cấu trúc cho cả tài liệu, không điểm số, không
+        // ngưỡng. Chúng thay thế hẳn đường chấm điểm chứ không bổ sung vào nó, nên loại trừ nhau.
+        o.StyleDeclaredOutline = Flag(form, "styleOutline");
+        o.NumberingDeclaredOutline = Flag(form, "numberingOutline");
+        o.AdministrativeDeclaredOutline = Flag(form, "adminOutline");
         if (Number(form, "threshold") is { } th) o.Extraction.CandidateThreshold = th;
 
         o.DisableLlm = Flag(form, "noLlm");
@@ -88,12 +100,11 @@ public static class RequestOptions
             return o;
         }
 
-        o.Llama.ModelPath = model;
-        if (Number(form, "ctx") is { } ctx and >= 1024)
-            o.Llama.ContextSize = (uint)ctx;
-        else
-            o.Llama.ContextSize = ModelCatalog.List().FirstOrDefault(m => m.Path == model)?.SuggestedCtx
-                ?? DocxHeaderExtractor.Core.Llm.LlamaOptions.SuggestedContextForModel(model);
+            o.Llama.ModelPath = model;
+            if (Number(form, "ctx") is { } ctx and >= 1024)
+                o.Llama.ContextSize = (uint)ctx;
+            else
+                o.Llama.ContextSize = ModelCatalog.List().FirstOrDefault(m => m.Path == model)?.SuggestedCtx ?? 4096u;
 
         if (Number(form, "chunkCandidates") is { } cc and >= 2 and <= 64)
             o.Chunking.MaxCandidatesPerChunk = (int)cc;
