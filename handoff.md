@@ -4284,3 +4284,71 @@ giới hạn ở `\p{Lu}` — và đó là thay đổi cần đáp án để đo
 **Bài học:** "miễn một cổng" không bằng "được nhận". Một tính năng đi qua nhiều cổng nối tiếp thì
 nới đúng một cổng có thể cho hiệu ứng bằng 0, và chỉ phép đo mới nói ra điều đó — mã vẫn build,
 test vẫn xanh, bench vẫn nguyên.
+
+## §60. Quay lại luật tất định: bộ dựng `vn-administrative`
+
+### 60.1 Người dùng chỉ ra đúng chỗ sai
+
+*"Sao không bám theo luật deterministic? Cứ sửa là sai."*
+
+Đúng, và chứng minh được. Ba chế độ đạt **100% trên đáp án người kiểm** đều là bộ dựng ĐỌC MỘT DỮ
+KIỆN CẤU TRÚC cho cả tài liệu: `--style-outline`, `--numbering-outline`,
+`StructuralHierarchyResolver`. Còn §57–§59 đi hướng ngược: vá bộ chấm điểm bằng miễn trừ, hình
+phạt, hướng duyệt — nhiều luật cục bộ tương tác quanh ngưỡng 0,45.
+
+Kết quả đo được của hướng đó, ba lần liên tiếp:
+
+| | |
+|---|---|
+| §57.3 | nới payload → tự tạo hồi quy duyệt-ngược, **474 test không bắt được**, phải chờ người dùng báo |
+| §58.5 | kết luận "trần độ dài vô tác dụng" — **sai**, nó chặn 70 đoạn |
+| §59.9 | cài luật miễn trần cho điểm chữ thường — **vô tác dụng**, mã chết, đã gỡ |
+
+Và §0 của dự án đã ghi kết luận này từ trước: *"mọi tiến bộ đo được đều đến từ việc đọc dữ kiện cấu
+trúc có sẵn"* — đúng cấp đi 26,5% → 96,0% qua sáu luật tất định, không qua tinh chỉnh trọng số.
+Tôi đã vi phạm chính kết luận đó trong ba mục liền.
+
+### 60.2 `AdministrativeOutline` — bộ dựng tất định thứ ba
+
+Cùng khuôn với hai bộ đã đạt 100%. Cờ `--admin-outline`, **mặc định tắt**.
+
+**Cấp**: thứ tự lồng nhau lấy từ THỨ TỰ XUẤT HIỆN LẦN ĐẦU của từng chữ ký trong chính tài liệu,
+rồi neo theo cha gần nhất bằng ngăn xếp. Không gán cứng theo loại ký hiệu — tài liệu dùng `A.` thay
+`I.`, hay `1)` thay `1.`, chạy y hệt mà không sửa gì.
+
+**Thân bài**: tách tại dấu ngắt ĐẦU TIÊN mở ra số liệu. Không có thì cả lát là nhan đề.
+
+**Không một ngưỡng nào**: không điểm số, không trần độ dài, không tỉ lệ. Một đoạn hoặc mang ký hiệu
+hoặc không — đó là dữ kiện.
+
+**Trả rỗng khi chỉ có một chữ ký**: không suy ra được quan hệ lồng nhau nào thì không đoán. Đây là
+khác biệt cốt lõi với bộ chấm điểm — thà không trả gì còn hơn trả một cây bịa ra.
+
+### 60.3 Đo được
+
+```
+I. VÙNG TRỜI          → 1        d) Tàu trực của Hải đội…: 14 tàu (QK4: 01, QK9: 04)
+  1. HKDD             → 2          nhan đề: "d) Tàu trực của Hải đội dân quân thường trực"
+    a) Trong dự báo   → 3          thân   : "14 tàu … QK9: 04"   ← dấu ':' nội bộ nằm trọn trong thân
+II. VÙNG BIỂN         → 1
+  1. Vùng biển phía Bắc → 2
+```
+
+485 test xanh, bench `--no-llm` không đổi (cờ mặc định tắt).
+
+Mutation: cắt tại dấu ngắt CUỐI → 1 đỏ · gán cứng cấp theo hạng ký hiệu → 1 đỏ.
+
+Đột biến thứ hai **sống sót lượt đầu**: mọi test tôi viết đều có cây lồng nhau ĐỀU, nên hạng ký
+hiệu trùng với độ sâu và hai cách cho cùng kết quả. Chúng chỉ khác ở ca **bỏ qua một cấp** —
+`a)` đứng ngay dưới `II.` không qua `1.`, cấp đúng là 2 chứ không phải 3. Thêm test đó thì đột biến
+chết ngay. Đây đúng là lỗi "nhảy cấp 2 → 4" mà bản Python từng mắc.
+
+### 60.4 Hai khuyết tật đã ghim thành test
+
+**Đoạn gộp toàn CHỮ HOA bị cắt nhầm.** `I. VÙNG TRỜI 1. HKDD…` → hai từ cuối của nhan đề cộng số
+của mục sau tạo dạng "nhãn + số" giả (`TRỜI 1.`), nên lát cắt thành `I. VÙNG` + `TRỜI 1. HKDD…`.
+Phân biệt "nhãn thật" với "từ cuối của nhan đề in hoa" đòi biết nhan đề kết thúc ở đâu — chính là
+bài toán đang giải.
+
+**Điểm chữ thường dài vẫn bị `HeadingHeuristics` loại** (§59.9) — nhưng bộ dựng mới KHÔNG đi qua
+`HeadingHeuristics`, nên khuyết tật đó không áp cho `--admin-outline`.
