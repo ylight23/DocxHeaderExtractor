@@ -22,10 +22,10 @@ public enum DocumentMode
     /// <summary>Mục lục do Word sinh, khớp được phần lớn về thân bài.</summary>
     TocAnchored,
 
-    /// <summary>Hệ đánh số hành chính Việt Nam gõ tay: <c>I.</c> <c>1.</c> <c>1.1.</c> <c>a)</c>.</summary>
+    /// <summary>Hệ đánh số hành chính Việt Nam gõ tay có tín hiệu phân biệt: <c>I.</c>, <c>1.1.</c>, <c>a)</c>.</summary>
     VietnameseAdministrative,
 
-    /// <summary>Văn bản quy phạm pháp luật: <c>Phần / Chương / Mục / Điều</c> — spec §4.3.</summary>
+    /// <summary>Văn bản pháp quy có cấu trúc điều khoản: <c>Phần/Chương/Mục/Điều</c> hoặc <c>Part/Chapter/Section/Article</c>.</summary>
     VietnameseLegal,
 
     /// <summary>Số gõ tay nhiều cấp trong text (<c>1.2.3</c>), nhất quán với style.</summary>
@@ -44,6 +44,12 @@ public enum DocumentMode
     SemanticOnly,
 }
 
+public enum DocumentStatus
+{
+    Normal,
+    ConversionFailure,
+}
+
 /// <summary>Chỉ số đo được để phân loại, giữ lại nguyên vẹn để báo cáo và tranh luận sau.</summary>
 public sealed record DocumentModeReport(
     DocumentMode Mode,
@@ -54,10 +60,12 @@ public sealed record DocumentModeReport(
     double TypedNumberRatio,
     double NumberingRatio,
     bool FormatDiffers,
-    double LegalMarkerRatio = 0)
+    double LegalMarkerRatio = 0,
+    DocumentStatus Status = DocumentStatus.Normal)
 {
     public string Describe() =>
-        $"Chế độ tài liệu: {Mode} " +
+        $"Chế độ tài liệu: {Mode}" +
+        (Status == DocumentStatus.Normal ? "" : $" ({Status})") + " " +
         $"(outlineLvl {OutlineLevelRatio:P0}, ký hiệu hành chính {VietnameseAdminRatio:P0}, " +
         $"số gõ tay {TypedNumberRatio:P0}, numPr {NumberingRatio:P0}, " +
         $"style Heading {StyledHeadings} đoạn, định dạng {(FormatDiffers ? "có lệch" : "không lệch")} thân bài)";
@@ -76,7 +84,7 @@ public sealed record DocumentModeReport(
 public static class DocumentModeClassifier
 {
     /// <summary>
-    /// Bốn lớp ký hiệu hành chính Việt Nam (spec §4.4), kiểm từ cấp SÂU đến cấp NÔNG — nếu không,
+    /// Ba lớp ký hiệu hành chính Việt Nam có sức phân biệt (spec §4.4), kiểm từ cấp SÂU đến cấp NÔNG — nếu không,
     /// <c>3.1.</c> bị luật <c>^\d+\.</c> bắt trước và gán nhầm cấp.
     /// <para>
     /// Ở đây chỉ dùng để NHẬN DẠNG chế độ, không dùng để gán cấp. Việc gán cấp đã có luật riêng và
@@ -89,13 +97,12 @@ public static class DocumentModeClassifier
     [
         new(@"^\s*\d{1,2}\.\d{1,2}\.?\s", RegexOptions.Compiled),   // 3.1.
         new(@"^\s*[a-zđ][\.\)]\s", RegexOptions.Compiled),          // a)  b.
-        new(@"^\s*\d{1,2}\.\s*\D", RegexOptions.Compiled),          // 1.  2.
         new(@"^\s*[IVXLC]+\.\s*\S", RegexOptions.Compiled),         // I.  II.
     ];
 
     /// <summary>
-    /// Hệ <c>Phần / Chương / Mục / Điều</c> của văn bản quy phạm pháp luật — spec §4.3, nhánh
-    /// <c>vn-legal</c>. Khác hẳn <c>I./1./a)</c> nên phải tách riêng, và <c>Điều</c> là đơn vị chính
+    /// Hệ <c>Phần / Chương / Mục / Điều</c> và <c>Part / Chapter / Section / Article</c> của văn
+    /// bản pháp quy — spec §4.3, nhánh <c>legal-structured</c>. Khác hẳn <c>I./1./a)</c> nên phải tách riêng, và <c>Điều</c> là đơn vị chính
     /// chứ KHÔNG phải cấp 1.
     /// <para>
     /// Đo trên corpus 95 tài liệu: 3 tài liệu bản Python gán <c>vn-legal</c> có trung vị tỉ lệ ký
@@ -109,6 +116,10 @@ public static class DocumentModeClassifier
         new(@"^\s*Chương\s+[IVXLC\d]", RegexOptions.Compiled | RegexOptions.IgnoreCase),
         new(@"^\s*Mục\s+\d", RegexOptions.Compiled | RegexOptions.IgnoreCase),
         new(@"^\s*Điều\s+\d", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new(@"^\s*Part\s+[IVXLC\d]", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new(@"^\s*Chapter\s+[IVXLC\d]", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new(@"^\s*Section\s+\d", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new(@"^\s*Article\s+\d", RegexOptions.Compiled | RegexOptions.IgnoreCase),
     ];
 
     /// <summary>Ngưỡng cho <see cref="DocumentMode.VietnameseLegal"/>.</summary>
@@ -180,10 +191,25 @@ public static class DocumentModeClassifier
         var mode = Decide(styled.Count, typedCount, outlineRatio, legalRatio, adminRatio, typedRatio,
             numberingRatio, tocEntries, FormatDiffersFromBody(body), HasCustomHeadingStyle(body),
             out var formatDiffers);
+        var status = IsLikelyConversionFailure(body.Count, legalRatio, adminRatio, typedCount, formatDiffers)
+            ? DocumentStatus.ConversionFailure
+            : DocumentStatus.Normal;
 
         return new DocumentModeReport(mode, body.Count, styled.Count,
-            outlineRatio, adminRatio, typedRatio, numberingRatio, formatDiffers, legalRatio);
+            outlineRatio, adminRatio, typedRatio, numberingRatio, formatDiffers, legalRatio, status);
     }
+
+    private static bool IsLikelyConversionFailure(
+        int paragraphCount,
+        double legalRatio,
+        double adminRatio,
+        int typedCount,
+        bool formatDiffers) =>
+        paragraphCount is > 0 and <= 5 &&
+        legalRatio == 0 &&
+        adminRatio == 0 &&
+        typedCount < TypedNumberMinimum &&
+        !formatDiffers;
 
     private static DocumentMode Decide(
         int styledCount, int typedCount, double outlineRatio, double legalRatio, double adminRatio, double typedRatio,

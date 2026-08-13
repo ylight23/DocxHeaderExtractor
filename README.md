@@ -186,7 +186,9 @@ dhx info models\Llama-3.2-3B-Instruct-Q4_K_M.gguf
 ### Tự nhận dạng loại tài liệu deterministic
 
 Pipeline đo `DocumentMode` từ chính OpenXML/text của tài liệu và trả lại trong output JSON dưới
-`documentMode`. Khi chạy `--no-llm`, nếu không chọn override thủ công, pipeline tự dùng route
+`documentMode`. Trường `documentMode.status` tách lỗi nguồn/chuyển đổi như `ConversionFailure`
+ra khỏi mode bình thường, để không đọc nhầm file hỏng là tài liệu `SemanticOnly`. Khi chạy
+`--no-llm`, nếu không chọn override thủ công, pipeline tự dùng route
 deterministic phù hợp cho các mode đã có builder (`outlineLvl`, `numbering`, `custom-style`,
 `vn-administrative`, `vn-legal`, `typed-numbering`). Khi chạy có model, mode vẫn được báo để kiểm
 tra nhưng không bỏ qua LLM/critic.

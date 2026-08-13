@@ -450,8 +450,15 @@ lý dùng được, chỉ thiếu ngưỡng hiệu chỉnh trên tập tín hi�
 `Ky_hieu_rieng_cua_hanh_chinh_khong_duoc_mat_khi_sua_muc_11` vẫn giữ chiều ngược lại: `I.`/`a)`
 không bị mất nhánh hành chính.
 
-Phần còn cần dữ liệu: phân biệt các biến thể giáo trình/hành chính trong corpus lớn nếu muốn hiệu
-chỉnh tiếp ngưỡng mode, nhưng bug đã biết “số gõ tay thuần bị nhận nhầm” không còn treo.
+**Đã sửa tiếp (2026-08-13).** `1.` đơn cấp cũng bị loại khỏi tử số chọn mode hành chính. Nó là
+tín hiệu dùng chung xuất hiện trong văn bản pháp quy, giáo trình, tài chính và tiếng Anh; chỉ dùng
+được như tín hiệu phụ sau khi đã biết chế độ, không dùng để chọn chế độ. Sau thay đổi này corpus
+95 file không còn file nào rơi vào `VietnameseAdministrative`; nhóm song ngữ chuyển về
+`VietnameseLegal`/legal-structured như kỳ vọng.
+
+Phần còn cần dữ liệu: 40 file `TypedNumbering` vẫn chưa có answer key đại diện. Quét TOC field trên
+95 file cho 0/95 file đủ ngưỡng 80% (86 thiếu mục lục, 9 dưới ngưỡng), nên hướng mở rộng đáp án tự
+động bằng TOC chưa mở được corpus này nếu giữ chuẩn hiện tại.
 
 ---
 

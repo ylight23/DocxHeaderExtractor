@@ -121,12 +121,13 @@ app.MapPost("/api/inspect", async (HttpRequest req, CancellationToken ct) =>
         finally { LegacyDocConverter.Cleanup(conversion); }
 
         var report = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
+        var suggestedRoute = report.Status == DocumentStatus.Normal ? SuggestedRoute(report.Mode) : null;
         return Results.Json(new
         {
             file = Path.GetFileName(inputPath),
             report = ModePayload(report),
-            suggestedRoute = SuggestedRoute(report.Mode),
-            canRunDeterministic = SuggestedRoute(report.Mode) is not null,
+            suggestedRoute,
+            canRunDeterministic = suggestedRoute is not null,
         }, json);
     }
     catch (Exception ex) when (ex is IOException or InvalidDataException or OpenXmlPackageException)
@@ -434,6 +435,7 @@ static string? SuggestedRoute(DocumentMode mode) => mode switch
 static object ModePayload(DocumentModeReport report) => new
 {
     mode = report.Mode.ToString(),
+    status = report.Status.ToString(),
     paragraphs = report.Paragraphs,
     styledHeadings = report.StyledHeadings,
     outlineLevelRatio = report.OutlineLevelRatio,

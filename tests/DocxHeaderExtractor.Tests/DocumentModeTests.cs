@@ -50,9 +50,45 @@ public class DocumentModeTests
     [Fact]
     public void Khong_tin_hieu_va_khong_lech_dinh_dang_thi_semantic_only()
     {
+        var mode = Measure(P(Body), P(Body), P(Body), P(Body), P(Body), P(Body));
+
+        Assert.Equal(DocumentMode.SemanticOnly, mode.Mode);
+        Assert.Equal(DocumentStatus.Normal, mode.Status);
+    }
+
+    [Fact]
+    public void File_qua_it_doan_va_khong_co_moc_la_conversion_failure_khong_phai_semantic_thuan()
+    {
         var mode = Measure(P(Body), P(Body), P(Body));
 
         Assert.Equal(DocumentMode.SemanticOnly, mode.Mode);
+        Assert.Equal(DocumentStatus.ConversionFailure, mode.Status);
+    }
+
+    [Fact]
+    public void So_don_cap_khong_duoc_tu_chon_che_do_hanh_chinh()
+    {
+        var mode = Measure(
+            P("1. Scope of application"), P("2. Definitions"), P("3. Rights and obligations"),
+            P("4. Implementation"), P("5. Transitional provisions"), P("6. Effectiveness"),
+            P(Body), P(Body));
+
+        Assert.NotEqual(DocumentMode.VietnameseAdministrative, mode.Mode);
+        Assert.Equal(0, mode.VietnameseAdminRatio);
+    }
+
+    [Fact]
+    public void Article_tieng_Anh_la_cung_he_legal_structured()
+    {
+        var mode = Measure(
+            P("Chapter I GENERAL PROVISIONS"),
+            P("Article 1. Scope of regulation"),
+            P("Article 2. Regulated entities"),
+            P("Article 3. Interpretation of terms"),
+            P(Body), P(Body));
+
+        Assert.Equal(DocumentMode.VietnameseLegal, mode.Mode);
+        Assert.True(mode.LegalMarkerRatio >= DocumentModeClassifier.LegalThreshold);
     }
 
     /// <summary>

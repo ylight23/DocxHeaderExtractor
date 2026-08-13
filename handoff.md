@@ -4469,3 +4469,89 @@ dhx-semantic-precision/2026-08-13-v4
 Không bump thì profile holdout cũ có thể được áp lên một pipeline đã chạy khác đường.
 
 **489 test xanh** (`dotnet test --no-restore`).
+
+## §62. Bỏ `1.` đơn cấp khỏi tín hiệu chọn mode hành chính
+
+Sau §61, đo lại 95 file trong `todo10_8/heading_corpus_95_word` cho thấy `06_dich_song_ngu` vẫn
+rơi `VietnameseAdministrative` 8/10. Chẩn đoán theo marker cho thấy đây là cùng họ lỗi với `1.1`,
+nhưng ở tín hiệu khác: `1.` đơn cấp (`dec1`) xuất hiện ở mọi chế độ và không có sức phân biệt.
+
+Ví dụ:
+
+| file | mode cũ | admin | roman | alpha | dec1 | dec2 | Article raw |
+|---|---|--:|--:|--:|--:|--:|--:|
+| 081 | VnAdmin | 887 | 0 | 31 | 856 | 0 | 370 |
+| 084 | VnAdmin | 497 | 0 | 0 | 497 | 0 | 259 |
+| 085 | VnAdmin | 781 | 0 | 8 | 773 | 0 | 580 |
+| 090 | VnAdmin | 409 | 3 | 16 | 393 | 0 | 502 |
+
+Với 084, toàn bộ adminRatio đến từ `dec1`. Đây không phải "hành chính"; đó là số khoản trong văn
+bản luật tiếng Anh. Sửa đúng theo nguyên tắc: bỏ `^\d+\.\s*\D` khỏi `AdministrativeMarkers`.
+`dec1` chỉ còn là tín hiệu phụ cho các builder/hierarchy sau khi đã biết mode, không dùng để chọn
+mode.
+
+Đồng thời thêm nhãn legal tiếng Anh (`Part`, `Chapter`, `Section`, `Article`) vào legal markers.
+Tên enum vẫn là `VietnameseLegal` để không phá API hiện tại, nhưng phạm vi thực tế là
+legal-structured/article-clause.
+
+### 62.1 Tách ConversionFailure khỏi SemanticOnly
+
+Sáu file pháp quy rơi `SemanticOnly` đều chỉ còn 3 paragraph, không có mốc legal/admin, không lệch
+định dạng. Đây là lỗi chất lượng nguồn/chuyển đổi, không phải "tài liệu có nội dung nhưng cần LLM".
+Thêm `DocumentStatus.ConversionFailure` vào `DocumentModeReport`:
+
+```
+if paragraphs <= 5 && legalRatio == 0 && adminRatio == 0 && typedCount < 8 && !formatDiffers
+    status = ConversionFailure
+```
+
+Status không phải mode. Pipeline không auto-route khi status khác `Normal`; UI/API/CLI hiển thị
+status để báo cáo không gom nhầm nhóm này vào `SemanticOnly` thường.
+
+### 62.2 Phân bố 95 file sau sửa
+
+```
+Normal, TypedNumbering         40
+Normal, VietnameseLegal        23
+Normal, FormatDriven           16
+Normal, OutlineLevelDriven     10
+ConversionFailure, SemanticOnly 6
+```
+
+Theo thư mục:
+
+```
+01_phap_quy:        Legal 15, Typed 2, Format 2, ConversionFailure 6
+02_hop_dong:        OutlineLevel 9, Typed 6
+03_tai_chinh:       Typed 13, Format 2
+04_giao_trinh:      Typed 13, Format 2
+05_bien_ban_hop:    Format 10
+06_dich_song_ngu:   Legal 8, Typed 1, OutlineLevel 1
+07_system_generated: Typed 5
+```
+
+Điểm chính: corpus 95 không còn file nào vào `VietnameseAdministrative`. Nếu cần mode hành chính
+thật, phải có tài liệu với tín hiệu riêng như `I.`/`a)` hoặc `1.1` theo hình dạng hành chính, không
+chỉ `1.`.
+
+### 62.3 TOC field không mở khóa answer key cho corpus này
+
+Chạy:
+
+```
+dhx toc-keys todo10_8/heading_corpus_95_word -o %TEMP%/dhx-toc-keys-...
+```
+
+Kết quả:
+
+```
+0/95 file đủ ngưỡng 80%
+86 thiếu mục lục
+9 dưới ngưỡng (match 46–69%, đều là nhóm hợp đồng/procurement)
+```
+
+Vậy hướng "lấy TOC field làm đáp án ứng viên" chưa mở được corpus 95 nếu giữ ngưỡng hiện tại. Nó
+vẫn hữu ích như công cụ chẩn đoán cho các file Word có TOC thật, nhưng không thay thế được việc mở
+rộng answer key cho nhóm `TypedNumbering`.
+
+**492 test xanh** (`dotnet test --no-restore`).

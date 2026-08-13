@@ -260,7 +260,7 @@ static async Task<int> RunDumpXmlAsync(CommandLineOptions o, CancellationToken c
 
             if (o.Pipeline.Extraction.ReportModeOnly)
             {
-                Console.WriteLine($"{Path.GetFileName(file)}	{slim.Mode?.Mode}	{slim.Mode?.Describe()}");
+                Console.WriteLine($"{Path.GetFileName(file)}	{slim.Mode?.Mode}	{slim.Mode?.Status}	{slim.Mode?.Describe()}");
                 continue;
             }
 

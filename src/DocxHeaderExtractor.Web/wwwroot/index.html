@@ -845,10 +845,12 @@ function render(o, s, review, agent) {
 function renderMode(report, route) {
   if (!report) return;
   const mode = report.mode || report.Mode || 'Unknown';
+  const status = report.status || report.Status || 'Normal';
   $('modeBox').innerHTML = `
     <div class="modebox">
       <div class="modehead">
         <strong>${esc(modeLabel(mode))}</strong>
+        <span class="tag ${status === 'Normal' ? 'Style' : 'dis'}">${esc(statusLabel(status))}</span>
         <span class="tag ${route ? 'Style' : 'dis'}">${route ? esc(routeLabel(route)) : 'chỉ báo cáo'}</span>
       </div>
       <p class="note" style="margin-top:6px">${esc(report.description || '')}</p>
@@ -863,6 +865,13 @@ function renderMode(report, route) {
         <div><span>Định dạng lệch</span><b>${report.formatDiffers ? 'có' : 'không'}</b></div>
       </div>
     </div>`;
+}
+
+function statusLabel(status) {
+  return ({
+    Normal: 'nguồn đọc được',
+    ConversionFailure: 'nghi hỏng convert',
+  })[status] || status;
 }
 
 function modeLabel(mode) {

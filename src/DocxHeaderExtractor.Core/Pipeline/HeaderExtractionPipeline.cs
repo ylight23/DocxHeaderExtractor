@@ -485,6 +485,11 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
         if (!manual && (!_options.AutoDetectDocumentMode || !_options.DisableLlm))
             return (null, null);
+        if (!manual && modeReport.Status != DocumentStatus.Normal)
+        {
+            Log($"Auto mode bỏ qua: trạng thái tài liệu {modeReport.Status}, cần kiểm tra nguồn/convert trước.");
+            return (null, null);
+        }
 
         var route = manual
             ? _options.AdministrativeDeclaredOutline ? "manual:administrative"
