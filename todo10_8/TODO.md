@@ -83,7 +83,8 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
 - [x] `vn-legal` đã có route tất định riêng (`LegalStructuredOutline`) và đã chạy trên corpus 95:
       23 file `VietnameseLegal/Normal` sinh 3.455 heading khi bật `--split-merged`. Đã thêm full key
       cho `025_ND_47-2020_Chia_se_du_lieu_so` từ nguồn pháp quy VCCI: P/R/F1 80,3%, đúng cấp/cha
-      100%. Còn nợ lỗi ranh giới title/body trong đoạn `.doc` chuyển đổi bị gộp: 14 thừa/14 thiếu.
+      100%. Ghép cặp xác nhận 14 thừa/14 thiếu là 14 lỗi ranh giới title/body cùng `Điều N`; chưa
+      vá lexical vì DOCX mất run boundary và một file chưa đủ bằng chứng tổng quát.
 - [ ] Các chế độ vẫn thiếu full key/đo precision ngoài phân phối cũ:
       `OutlineLevelDriven` (cần full key 1 file partial TOC), `TypedNumbering` (cần 3 file đại diện),
       `SemanticOnly/ConversionFailure` (không đo như mode trích xuất). `LegalStructured` đã có

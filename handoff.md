@@ -5038,3 +5038,35 @@ lỗi nguồn/conversion boundary, và full key đầu tiên chỉ mới trên m
    dấu hiệu an toàn hơn (run formatting nếu còn, hoặc mẫu payload đã đo).
 3. Tiếp tục nợ cũ: full key cho một file `OutlineLevelDriven` partial TOC và 3 file
    `TypedNumbering` đại diện.
+
+## §67. Ghép cặp lỗi 025: 14/14 là lỗi ranh giới, không phải lỗi cây
+
+Sau §66, ghép từng false negative với false positive theo marker pháp quy cho file 025. Kết quả
+sạch: **14/14 thiếu ghép được đúng một thừa cùng `Điều N`**.
+
+Mẫu chung:
+
+- key nguồn: `Điều N. <title>`
+- output pipeline: `Điều N. <title> <câu thân bài đầu tiên>`
+
+Ví dụ:
+
+- key: `Điều 2. Đối tượng áp dụng`
+- output: `Điều 2. Đối tượng áp dụng Nghị định này áp dụng đối với...`
+
+Các marker bị ảnh hưởng: `Điều 2`, `3`, `4`, `7`, `19`, `28`, `33`, `37`, `39`, `42`, `46`, `47`,
+`49`, `56`.
+
+Đây xác nhận chẩn đoán: 14 thừa/14 thiếu là **14 ranh giới title/body sai**, không phải 28 lỗi độc
+lập. Cây và cấp vẫn đúng 100%.
+
+Kiểm tra XML slim của file 025 cho thấy paragraph gộp chính chỉ còn `s="Normal" sz="7.5"`; không có
+bold/run span hữu ích để cắt ranh giới. Nghĩa là với bản `.doc` đã chuyển đổi này, lỗi nằm ở
+conversion boundary bị mất. Không nên vá bằng danh sách opener lexical kiểu `Nghị định này`,
+`Trong Nghị định này`, `Cơ quan...` chỉ từ một file — luật đó sẽ rất dễ overfit và có thể cắt nhầm
+title pháp quy hợp lệ.
+
+Kết luận hành động: chưa sửa route cho 14 ca này. Việc đúng tiếp theo là lấy thêm một key pháp quy
+ở file ít hỏng conversion hơn. Nếu lỗi ranh giới lặp lại trên nhiều nguồn và có tín hiệu ổn định
+(run formatting còn tồn tại, hoặc mẫu payload đo được qua nhiều văn bản), lúc đó mới thiết kế luật
+cắt title/body riêng cho `Điều`.

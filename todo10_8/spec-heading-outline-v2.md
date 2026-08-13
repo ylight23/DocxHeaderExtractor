@@ -1152,6 +1152,8 @@ Kết luận cập nhật: route pháp quy không còn mất trắng outline và
 `--no-llm --split-merged` sau khi chặn tham chiếu chéo `Chương/Mục`: **71 đáp án, 71 trả về,
 P/R/F1 80,3%, đúng cấp 100%, đúng cha 100%**. 14 thừa/14 thiếu còn lại là cùng một lỗi ranh giới:
 heading thật bị nối thêm thân bài do bản `.doc` chuyển đổi mất dấu hiệu định dạng/run boundary.
+Ghép cặp theo marker cho thấy 14/14 thiếu khớp đúng một thừa cùng `Điều N`; chưa cài lexical split
+cho nhóm này vì một file không đủ bằng chứng để phân biệt luật tổng quát với overfit.
 
 Checklist đo corpus: báo cáo theo `Mode + Status` phải có `avg candidates/file` và
 `avg headings/file`. `Candidates` không phải accuracy metric, nhưng là diagnostic metric rất nhạy:
