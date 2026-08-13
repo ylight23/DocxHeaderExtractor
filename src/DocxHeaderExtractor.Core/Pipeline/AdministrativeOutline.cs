@@ -64,6 +64,7 @@ public static class AdministrativeOutline
             stack.Add((r, level));
 
             var (heading, body) = SplitHeadingBody(u.Text);
+            var bodyStart = body is null ? -1 : u.Text.Length - body.Length;
             result.Add(new HeadingRecord
             {
                 Index = u.Paragraph.Index,
@@ -77,6 +78,8 @@ public static class AdministrativeOutline
                 Confidence = 1.0,
                 InlineBody = body,
                 OriginalText = body is null ? null : u.Text,
+                HeadingSpan = body is null ? null : new TextOffsetSpan(0, heading.Length),
+                InlineBodySpan = body is null ? null : new TextOffsetSpan(bodyStart, u.Text.Length),
             });
         }
 

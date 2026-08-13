@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Chunking;
 using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Llm;
@@ -226,6 +227,14 @@ public sealed class PipelineOptions
 
 public sealed class HeaderExtractionPipeline : IDisposable
 {
+    private static readonly Regex DenseTocDotLeaderEntryRx = new(@"\.{5,}\s*\d{1,4}\b", RegexOptions.Compiled);
+    private static readonly Regex HighLevelSectionOrPartStartRx = new(
+        @"^\s*(?:section|part)\s+(?:\d+|[ivxlcdm]+)\b",
+        RegexOptions.IgnoreCase | RegexOptions.Compiled);
+    private static readonly Regex SectionPageHeaderSliceRx = new(
+        @"^\s*(section\s+(?:\d+|[ivxlcdm]+)\b.{3,}?)\s+\d{1,4}\s*$",
+        RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
     private readonly PipelineOptions _options;
     private IHeaderClassifier? _model;
 
@@ -567,24 +576,35 @@ public sealed class HeaderExtractionPipeline : IDisposable
     /// Các mục nằm lọt giữa paragraph. Đoạn nào đã cho ra heading rồi thì bỏ qua: nó là đoạn
     /// heading lành lặn, chẻ tiếp chỉ tạo mục trùng.
     /// </summary>
-    private static List<HeadingRecord> MergedParagraphHeadings(
+    internal static List<HeadingRecord> MergedParagraphHeadings(
         SlimDocument slim,
         List<HeadingRecord> existing)
     {
         var taken = existing.Select(h => h.Index).ToHashSet();
+        var seenSectionPageHeaders = new HashSet<string>(StringComparer.Ordinal);
         List<HeadingRecord> added = [];
 
         foreach (var p in slim.Paragraphs)
         {
             if (taken.Contains(p.Index)) continue;
+            if (p.InTableOfContents ||
+                LooksLikeDenseMergedTableOfContents(p.Text))
+                continue;
+
             foreach (var slice in ParagraphHeadingSplitter.Split(p.Text))
             {
+                if (LooksLikeMergedTableOfContentsSlice(slice.Text)) continue;
+                if (LooksLikeRepeatedSectionPageHeaderSlice(slice.Text, seenSectionPageHeaders)) continue;
+
                 added.Add(new HeadingRecord
                 {
                     Index = p.Index,
                     StableId = p.StableId,
                     Level = 1,
                     Text = slice.Text,
+                    OriginalText = p.Text,
+                    HeadingSpan = new TextOffsetSpan(slice.Start, slice.Start + slice.Length),
+                    BoundarySource = "MergedParagraphMarker",
                     StyleId = p.StyleId,
                     Source = HeadingSource.Heuristic,
                     // Chưa có holdout nào cho đường này nên confidence chỉ là chỗ giữ vị trí,
@@ -595,6 +615,39 @@ public sealed class HeaderExtractionPipeline : IDisposable
         }
 
         return added;
+    }
+
+    private static bool LooksLikeDenseMergedTableOfContents(string text) =>
+        !HighLevelSectionOrPartStartRx.IsMatch(text) &&
+        text.Contains("Table of Contents", StringComparison.OrdinalIgnoreCase) &&
+        DenseTocDotLeaderEntryRx.Matches(text).Count >= 4;
+
+    private static bool LooksLikeMergedTableOfContentsSlice(string text) =>
+        !HighLevelSectionOrPartStartRx.IsMatch(text) &&
+        DenseTocDotLeaderEntryRx.IsMatch(text);
+
+    private static bool LooksLikeRepeatedSectionPageHeaderSlice(string text, HashSet<string> seen)
+    {
+        if (text.Length > 85) return false;
+        var match = SectionPageHeaderSliceRx.Match(text);
+        if (!match.Success) return false;
+
+        var key = NormalizeSectionPageHeaderKey(match.Groups[1].Value);
+        return !seen.Add(key);
+    }
+
+    private static string NormalizeSectionPageHeaderKey(string text)
+    {
+        var normalized = text
+            .Replace('\u2010', '-')
+            .Replace('\u2011', '-')
+            .Replace('\u2012', '-')
+            .Replace('\u2013', '-')
+            .Replace('\u2014', '-')
+            .Replace('\u2212', '-')
+            .ToLowerInvariant();
+        normalized = Regex.Replace(normalized, @"[^a-z0-9]+", " ");
+        return string.Join(' ', normalized.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
     }
 
     private static List<HeadingRecord> HeuristicOnly(IReadOnlyList<SlimParagraph> candidates) =>

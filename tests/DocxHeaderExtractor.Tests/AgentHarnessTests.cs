@@ -202,6 +202,32 @@ public sealed class AgentHarnessTests : IDisposable
     }
 
     [Fact]
+    public async Task Grounding_validator_accepts_cleaned_text_layout_heading_from_source_span()
+    {
+        var heading = new HeadingRecord
+        {
+            Index = 1,
+            Level = 2,
+            Text = "2.1 Negotiation",
+            OriginalText = "2.1 • Negotiation 15 prone to zero-sum thinking.",
+            HeadingSpan = new TextOffsetSpan(0, "2.1 • Negotiation 15 ".Length),
+            InlineBody = "prone to zero-sum thinking.",
+            InlineBodySpan = new TextOffsetSpan(
+                "2.1 • Negotiation 15 ".Length,
+                "2.1 • Negotiation 15 prone to zero-sum thinking.".Length),
+            Confidence = 0.9,
+            DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
+        };
+        using var tool = new FakeTool(Outline(heading));
+        var harness = Harness(tool, repairAttempts: 0);
+
+        var result = await harness.RunAsync(new DocumentAgentRequest(_input));
+
+        Assert.Equal(AgentRunOutcome.Completed, result.Outcome);
+        Assert.Equal("2.1 Negotiation", Assert.Single(result.Outline.Headings).Text);
+    }
+
+    [Fact]
     public async Task Grounding_validator_cho_phep_nhieu_heading_cung_index_neu_text_khac_nhau()
     {
         using var tool = new FakeTool(Outline(

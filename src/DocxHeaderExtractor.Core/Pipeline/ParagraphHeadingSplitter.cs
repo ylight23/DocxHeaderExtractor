@@ -51,7 +51,7 @@ public static class ParagraphHeadingSplitter
     /// không có dấu ngắt nên không bao giờ khớp, dù đứng ở đâu.
     /// </para>
     private static readonly Regex MarkerRx = new(
-        @"(?<![\p{Lu}\d])(?:(?<label>\p{Lu}[\p{L}]{1,11})\s+(?<num>\d{1,3}|[IVXLCDM]{1,7})|(?<bare>\d{1,3}(?:\.\d{1,3}){0,3}))\s*[\.\):\-–]\s*",
+        @"(?<![\p{Lu}\d])(?:(?<label>\p{Lu}[\p{L}]{1,11})\s+(?<num>\d{1,3}|[IVXLCDM]{1,7})|(?<bare>\d{1,3}(?:\.\d{1,3}){0,3}))\s*[\.\):\-–:]\s*",
         RegexOptions.Compiled);
 
     /// <summary>Nhan đề dài hơn ngần này gần như chắc chắn đã nuốt luôn thân bài.</summary>

@@ -144,10 +144,10 @@ public static class EvalRunner
         // hình đo lệch cấu hình chạy) và §4.4 (log nói dối).
         sb.AppendLine($"Cấu hình: {PrecisionCalibrationProfile.ConfigurationFor(options)}");
         if (suite.Docs.Any(d => d.PartialTruth))
-            sb.AppendLine("Đáp án partial_toc: không phạt false positive ngoài các cặp đã khớp TOC; P/F1 chỉ đọc trong phạm vi đã gán.");
+            sb.AppendLine("Đáp án partial: không phạt false positive ngoài phạm vi đã gán; P/F1 chỉ đọc trong phạm vi đã gán.");
         sb.AppendLine();
-        sb.AppendLine("| Tài liệu | Đáp án | Trả về | Ứng viên | P | R | Cấp | Thừa | Thiếu | Sai cấp |");
-        sb.AppendLine("|---|--:|--:|--:|--:|--:|--:|--:|--:|--:|");
+        sb.AppendLine("| Tài liệu | Đáp án | Trả về | Ứng viên | P | R | Nav | Nav cấp | Cấp | Thừa | Thiếu | Sai cấp |");
+        sb.AppendLine("|---|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|");
 
         foreach (var d in suite.Docs)
         {
@@ -157,6 +157,8 @@ public static class EvalRunner
               .Append(" | ").Append(d.CandidateCount)
               .Append(" | ").Append(Pct(d.Precision))
               .Append(" | ").Append(Pct(d.Recall))
+              .Append(" | ").Append(d.NavigationJudged == 0 ? "—" : Pct(d.NavigationRecall))
+              .Append(" | ").Append(d.NavigationLevelJudged == 0 ? "—" : Pct(d.NavigationLevelAccuracy))
               .Append(" | ").Append(d.LevelJudged == 0 ? "—" : Pct(d.LevelAccuracy))
               .Append(" | ").Append(d.FalsePositives.Count)
               .Append(" | ").Append(d.FalseNegatives.Count)
@@ -168,6 +170,10 @@ public static class EvalRunner
         sb.AppendLine($"Gộp toàn bộ đoạn:  P {Pct(suite.MicroPrecision)}  ·  R {Pct(suite.MicroRecall)}  ·  " +
                       $"F1 {Pct(suite.MicroF1)}  ·  đúng cấp {Pct(suite.MicroLevelAccuracy)}  ·  " +
                       $"đúng cha {Pct(suite.MicroParentAccuracy)}");
+        if (suite.Docs.Any(d => d.NavigationJudged > 0))
+            sb.AppendLine($"Mục lục điều hướng: Nav {Pct(suite.MicroNavigationRecall)}  ·  " +
+                          $"Nav+cấp {Pct(suite.MicroNavigationLevelAccuracy)} " +
+                          "(cùng paragraph/index, output bắt đầu bằng title trong comment key sau chuẩn hoá tìm kiếm)");
         sb.AppendLine($"Trung bình theo tài liệu: F1 {Pct(suite.MacroF1)}");
         var coverageName = !options.DisableLlm && options.ReviewAllParagraphs
             ? "Tiêu đề được model review"

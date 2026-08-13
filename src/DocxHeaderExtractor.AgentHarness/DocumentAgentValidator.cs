@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
@@ -37,6 +38,10 @@ public interface IDocumentAgentValidator
 /// </summary>
 public sealed class OutlineGroundingValidator : IDocumentAgentValidator
 {
+    private static readonly Regex TextLayoutSectionPageRx = new(
+        @"^\s*(?<marker>\d{1,3}(?:\.\d{1,3}){1,4})\s*\u2022\s*(?<title>[^\d\u2022]{2,120}?)\s+\d{1,4}\s*$",
+        RegexOptions.Compiled);
+
     public string Name => "outline_grounding";
 
     public ValueTask<AgentValidationResult> ValidateAsync(
@@ -93,7 +98,7 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
 
         if (heading.HeadingSpan is not { } headingSpan ||
             !ValidRange(headingSpan, heading.OriginalText.Length) ||
-            heading.OriginalText[headingSpan.Start..headingSpan.End] != heading.Text)
+            !HeadingTextIsGrounded(heading.OriginalText[headingSpan.Start..headingSpan.End], heading.Text))
         {
             issues.Add(new("heading_span_not_grounded", $"Heading span của index {heading.Index} không khớp nguồn.", heading.Index));
         }
@@ -113,6 +118,15 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
 
     private static bool ValidRange(TextOffsetSpan span, int length) =>
         span.Start >= 0 && span.End >= span.Start && span.End <= length;
+
+    private static bool HeadingTextIsGrounded(string source, string heading)
+    {
+        if (source == heading) return true;
+        if (TextLayoutSectionPageRx.Match(source) is not { Success: true } match) return false;
+
+        var normalized = $"{match.Groups["marker"].Value.TrimEnd('.')} {match.Groups["title"].Value.Trim()}";
+        return normalized == heading;
+    }
 }
 
 public sealed class AgentOutputValidationException(

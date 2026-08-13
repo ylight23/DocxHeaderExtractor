@@ -103,6 +103,70 @@ public sealed class TypedNumberingOutlineTests
         Assert.StartsWith("1.1", r[0].Text, StringComparison.Ordinal);
     }
 
+    [Fact]
+    public void Split_inline_body_ghi_span_khop_nguon()
+    {
+        var r = Build("1. Budget Anchor: 123 million reported");
+
+        var h = Assert.Single(r);
+        Assert.Equal("1. Budget Anchor", h.Text);
+        Assert.Equal("123 million reported", h.InlineBody);
+        Assert.Equal("1. Budget Anchor: 123 million reported", h.OriginalText);
+        Assert.Equal(new TextOffsetSpan(0, "1. Budget Anchor".Length), h.HeadingSpan);
+        Assert.Equal(new TextOffsetSpan("1. Budget Anchor: ".Length, h.OriginalText!.Length), h.InlineBodySpan);
+    }
+
+    [Fact]
+    public void Bo_caption_label_table_figure_box_note_nhung_giu_section()
+    {
+        var r = Build(
+            "Table 12: Net Commitments by Region In millions of U.S. dollars",
+            "Figure 8: Borrowings In billions of U.S. dollars",
+            "Box 3: Types of Guarantees Provided by IBRD",
+            "Note C - Investments and Note H - Transactions",
+            "SECTION V: OTHER DEVELOPMENT ACTIVITIES");
+
+        var only = Assert.Single(r);
+        Assert.StartsWith("SECTION V", only.Text, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Bo_so_thap_phan_kem_don_vi_nhung_giu_heading_decimal_that()
+    {
+        var r = Build(
+            "1.5 GHz is a good starting point for the local model.",
+            "1.5 Model Validation The validation step compares held-out data.");
+
+        var only = Assert.Single(r);
+        Assert.StartsWith("1.5 Model Validation", only.Text, StringComparison.Ordinal);
+        Assert.Equal(2, only.Level);
+    }
+
+    [Fact]
+    public void Bo_duong_dan_so_co_thanh_phan_0_vi_thuong_la_so_lieu_hoac_code()
+    {
+        var r = Build(
+            "0.85. This means the error shrinks quickly.",
+            "1.0 samples = 2 samples = 31 samples = 73",
+            "1.1 Valid Heading Body text.");
+
+        var only = Assert.Single(r);
+        Assert.StartsWith("1.1 Valid Heading", only.Text, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Cat_title_sach_text_layout_co_bullet_va_so_trang_nhung_giu_span_nguon()
+    {
+        var r = Build("2.1 • Negotiation 15 prone to zero-sum thinking.");
+
+        var only = Assert.Single(r);
+        Assert.Equal("2.1 Negotiation", only.Text);
+        Assert.Equal("prone to zero-sum thinking.", only.InlineBody);
+        Assert.Equal("2.1 • Negotiation 15 prone to zero-sum thinking.", only.OriginalText);
+        Assert.Equal(new TextOffsetSpan(0, "2.1 • Negotiation 15 ".Length), only.HeadingSpan);
+        Assert.Equal(new TextOffsetSpan("2.1 • Negotiation 15 ".Length, only.OriginalText!.Length), only.InlineBodySpan);
+    }
+
     private static List<HeadingRecord> Build(params string[] texts)
     {
         List<SlimParagraph> ps = [];

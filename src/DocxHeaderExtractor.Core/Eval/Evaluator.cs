@@ -10,6 +10,10 @@ public sealed record DocScore(
     int CandidateCount,
     int TruePositive,
     int CandidateHits,
+    int NavigationJudged,
+    int NavigationTitleHits,
+    int NavigationLevelJudged,
+    int NavigationLevelHits,
     int LevelJudged,
     int LevelCorrect,
     int ParentCorrect,
@@ -32,6 +36,16 @@ public sealed record DocScore(
     /// tầng OpenXML đánh rơi thì mô hình không có cơ hội nào cứu lại.
     /// </summary>
     public double CandidateRecall => TruthCount == 0 ? 0 : (double)CandidateHits / TruthCount;
+
+    /// <summary>
+    /// Recall cho mục lục điều hướng/search: đáp án có text comment được tính đúng khi output cùng
+    /// paragraph/index bắt đầu bằng title đó. Metric này tách khỏi exact span vì PDF text-layout
+    /// thường dính title + body trong cùng paragraph.
+    /// </summary>
+    public double NavigationRecall => NavigationJudged == 0 ? 0 : (double)NavigationTitleHits / NavigationJudged;
+
+    public double NavigationLevelAccuracy =>
+        NavigationLevelJudged == 0 ? 0 : (double)NavigationLevelHits / NavigationLevelJudged;
 
     public double LevelAccuracy => LevelJudged == 0 ? 0 : (double)LevelCorrect / LevelJudged;
 
@@ -65,6 +79,8 @@ public sealed record SuiteScore(IReadOnlyList<DocScore> Docs)
         ? 0
         : 2 * MicroPrecision * MicroRecall / (MicroPrecision + MicroRecall);
     public double MicroCandidateRecall => Div(Docs.Sum(d => d.CandidateHits), Docs.Sum(d => d.TruthCount));
+    public double MicroNavigationRecall => Div(Docs.Sum(d => d.NavigationTitleHits), Docs.Sum(d => d.NavigationJudged));
+    public double MicroNavigationLevelAccuracy => Div(Docs.Sum(d => d.NavigationLevelHits), Docs.Sum(d => d.NavigationLevelJudged));
     public double MicroLevelAccuracy => Div(Docs.Sum(d => d.LevelCorrect), Docs.Sum(d => d.LevelJudged));
     public double MicroParentAccuracy => Div(Docs.Sum(d => d.ParentCorrect), Docs.Sum(d => d.LevelJudged));
 
@@ -88,13 +104,17 @@ public static class Evaluator
         if (key.HasDuplicateSourceKeys)
             return ScoreWithTextIdentity(file, outline, candidateIndexes, key);
 
-        var got = outline.Headings.ToDictionary(h => h.Index, h => h.Level);
+        var got = outline.Headings
+            .GroupBy(h => h.Index)
+            .ToDictionary(g => g.Key, g => g.First().Level);
+        var gotIndexes = outline.Headings.Select(h => h.Index).ToList();
+        var navigation = NavigationScore(outline, key.Entries);
 
         var tp = got.Keys.Where(key.Contains).ToList();
         var fp = key.IsPartial
             ? new List<int>()
-            : got.Keys.Where(i => !key.Contains(i)).OrderBy(i => i).ToList();
-        var resultCount = key.IsPartial ? tp.Count : got.Count;
+            : gotIndexes.Where(i => !key.Contains(i)).OrderBy(i => i).ToList();
+        var resultCount = key.IsPartial ? tp.Count : gotIndexes.Count;
         var fn = key.Indexes.Where(i => !got.ContainsKey(i)).OrderBy(i => i).ToList();
 
         // Chỉ chấm cấp trên phần giao, và chỉ với những dòng đáp án có ghi cấp.
@@ -116,6 +136,10 @@ public static class Evaluator
             CandidateCount: candidateIndexes.Count,
             TruePositive: tp.Count,
             CandidateHits: key.Indexes.Count(candidateIndexes.Contains),
+            NavigationJudged: navigation.Judged,
+            NavigationTitleHits: navigation.TitleHits,
+            NavigationLevelJudged: navigation.LevelJudged,
+            NavigationLevelHits: navigation.LevelHits,
             LevelJudged: judged.Count,
             LevelCorrect: judged.Count - wrong.Count,
             ParentCorrect: parentCorrect,
@@ -147,6 +171,7 @@ public static class Evaluator
             h.Index,
             h.Level,
             Normalize(h.Text))).ToList();
+        var navigation = NavigationScore(outline, key.Entries);
 
         var used = new HashSet<int>();
         var matches = new List<(KeyItem Key, GotItem Got)>();
@@ -185,6 +210,10 @@ public static class Evaluator
             CandidateCount: candidateIndexes.Count,
             TruePositive: tp,
             CandidateHits: truth.Count(k => candidateIndexes.Contains(k.Index)),
+            NavigationJudged: navigation.Judged,
+            NavigationTitleHits: navigation.TitleHits,
+            NavigationLevelJudged: navigation.LevelJudged,
+            NavigationLevelHits: navigation.LevelHits,
             LevelJudged: judged.Count,
             LevelCorrect: judged.Count - wrong.Count,
             ParentCorrect: parentCorrect,
@@ -197,9 +226,77 @@ public static class Evaluator
 
     private sealed record KeyItem(int Order, int Index, int? Level, string Text);
     private sealed record GotItem(int Order, int Index, int Level, string Text);
+    private readonly record struct NavigationCounts(int Judged, int TitleHits, int LevelJudged, int LevelHits);
 
     private static string Normalize(string? text) =>
         string.Join(' ', (text ?? "").Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
+
+    private static string NormalizeForNavigation(string? text)
+    {
+        var normalized = Normalize(text)
+            .Replace('\u2010', '-')
+            .Replace('\u2011', '-')
+            .Replace('\u2012', '-')
+            .Replace('\u2013', '-')
+            .Replace('\u2014', '-')
+            .Replace('\u2212', '-')
+            .ToLowerInvariant();
+
+        normalized = System.Text.RegularExpressions.Regex.Replace(
+            normalized,
+            @"\b(section\s+(?:[ivxlcdm]+|\d+))\s*[\.\-:]\s*",
+            "$1 ");
+        normalized = System.Text.RegularExpressions.Regex.Replace(
+            normalized,
+            @"\b(part\s+\d+)\s*[\-:]\s*",
+            "$1 ");
+        normalized = System.Text.RegularExpressions.Regex.Replace(
+            normalized,
+            @"[^a-z0-9]+",
+            " ");
+        return Normalize(normalized);
+    }
+
+    private static NavigationCounts NavigationScore(
+        DocumentOutline outline,
+        IReadOnlyList<AnswerKeyEntry> entries)
+    {
+        var truth = entries.Select((e, order) => new KeyItem(
+                order,
+                e.Index ?? -1,
+                e.Level,
+                NormalizeForNavigation(e.Text)))
+            .Where(k => k.Index >= 0 && !string.IsNullOrWhiteSpace(k.Text))
+            .ToList();
+        if (truth.Count == 0) return default;
+
+        var got = outline.Headings.Select((h, order) => new GotItem(
+            order,
+            h.Index,
+            h.Level,
+            NormalizeForNavigation(h.Text))).ToList();
+
+        var used = new HashSet<int>();
+        var titleHits = 0;
+        var levelJudged = truth.Count(t => t.Level is not null);
+        var levelHits = 0;
+
+        foreach (var t in truth)
+        {
+            var matchAt = got.FindIndex(g =>
+                !used.Contains(g.Order) &&
+                g.Index == t.Index &&
+                g.Text.StartsWith(t.Text, StringComparison.Ordinal));
+            if (matchAt < 0) continue;
+
+            var match = got[matchAt];
+            used.Add(match.Order);
+            titleHits++;
+            if (t.Level == match.Level) levelHits++;
+        }
+
+        return new NavigationCounts(truth.Count, titleHits, levelJudged, levelHits);
+    }
 
     /// <summary>
     /// Cha của mỗi mục = mục GẦN NHẤT ĐỨNG TRƯỚC có cấp NHỎ HƠN; <c>null</c> nếu không có (mục ở

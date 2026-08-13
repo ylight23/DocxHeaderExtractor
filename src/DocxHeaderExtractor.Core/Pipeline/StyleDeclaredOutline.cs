@@ -77,6 +77,12 @@ public static class StyleDeclaredOutline
         @"|PHỤ\s*LỤC|TÓM\s*TẮT|ABSTRACT|CHƯƠNG\s|PHẦN\s)",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
+    private static readonly Regex TableLetterHeading = new(@"^\s*[A-Z]\.\s+\p{L}", RegexOptions.Compiled);
+
+    private static readonly Regex TableSectionReference = new(
+        @"^\s*(?:[•\u2022]\s*)?Section\s+[IVXLCDM]+\s*[-–]\s+\p{L}",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
     /// <summary>
     /// Outline theo DANH SÁCH ĐA CẤP của Word — chế độ <c>numpr-driven</c> của spec §4.3.
     /// <para>
@@ -238,6 +244,7 @@ public static class StyleDeclaredOutline
         var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var seenIndexes = new HashSet<int>();
         var customStylesUnderOutlineAnchor = OutlineAnchorCustomStyles.Find(document.Paragraphs);
+        var tableStylesUnderOutlineAnchor = OutlineAnchorCustomStyles.FindTableStyles(document.Paragraphs);
         var result = new List<HeadingRecord>();
         int? currentAnchorLevel = null;
 
@@ -248,6 +255,28 @@ public static class StyleDeclaredOutline
             if (p.InTableOfContents) continue;                         // TOC lặp lại heading thân bài.
             if (p.StyleId?.StartsWith("TOC", StringComparison.OrdinalIgnoreCase) == true) continue;
             if (Caption.IsMatch(p.Text)) continue;                     // X2
+
+            if ((OutlineAnchorCustomStyles.IsAnchoredTableCustomStyle(p, tableStylesUnderOutlineAnchor) ||
+                 IsAnchoredTableHeadingShape(p)) &&
+                seenIndexes.Add(p.Index))
+            {
+                result.Add(new HeadingRecord
+                {
+                    Index = p.Index,
+                    StableId = p.StableId,
+                    Level = currentAnchorLevel is { } tableAnchorLevel
+                        ? Math.Clamp(tableAnchorLevel + 2, 1, 9)
+                        : 1,
+                    Text = p.Text,
+                    StyleId = p.StyleId,
+                    Source = HeadingSource.Structure,
+                    Confidence = 0.95,
+                    ConfidenceBasis = "outline_anchor_table_custom_style",
+                    DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
+                });
+                continue;
+            }
+
             if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
 
             if (p.OutlineLevel is >= 0 and <= 8)
@@ -272,8 +301,9 @@ public static class StyleDeclaredOutline
             // §63: tài liệu form-based có cụm heading liên tiếp không mở ngay ra prose dài.
             // OutlineLvl vẫn là nguồn neo; chỉ ghép thêm HeadingCandidate style tự đặt đã sống
             // sót dưới anchor đó, với cấp = anchor gần nhất + 1.
-            if (!p.IsCandidate) continue;
-            if (!OutlineAnchorCustomStyles.IsAnchoredCustomStyle(p, customStylesUnderOutlineAnchor)) continue;
+            var anchoredCustomStyle = OutlineAnchorCustomStyles.IsAnchoredCustomStyle(p, customStylesUnderOutlineAnchor);
+            if (!p.IsCandidate && !anchoredCustomStyle) continue;
+            if (!anchoredCustomStyle && !IsAnchoredNumberedCandidateShape(p)) continue;
             if (currentAnchorLevel is not { } anchorLevel) continue;
             if (!seenIndexes.Add(p.Index)) continue;
 
@@ -292,6 +322,34 @@ public static class StyleDeclaredOutline
         }
 
         return result;
+    }
+
+    private static bool IsAnchoredNumberedCandidateShape(SlimParagraph p)
+    {
+        if (!p.IsCandidate || p.TableDepth > 0 || p.OutlineLevel is not null || p.NumberingId is null)
+            return false;
+
+        var text = p.Text.Trim();
+        if (text.Length is < 4 or > 90) return false;
+        if (text.EndsWith('.') || text.EndsWith(';') || text.EndsWith(','))
+            return false;
+        return NumberingAudit.ParseParagraph(p, p.Text) is not null;
+    }
+
+    private static bool IsAnchoredTableHeadingShape(SlimParagraph p)
+    {
+        if (p.TableDepth <= 0 || p.OutlineLevel is not null || p.HasBuiltInHeadingStyle)
+            return false;
+
+        var text = p.Text.Trim();
+        if (text.Length is < 4 or > 90) return false;
+        if (text.EndsWith('.') || text.EndsWith(';') || text.EndsWith(','))
+            return false;
+
+        return (p.Bold && string.Equals(p.Alignment, "center", StringComparison.OrdinalIgnoreCase) &&
+                TableLetterHeading.IsMatch(text)) ||
+               (p.Bold && NumberingAudit.Parse(text) is { Kind: NumberKind.Arabic }) ||
+               TableSectionReference.IsMatch(text);
     }
 
     /// <summary>

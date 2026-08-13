@@ -196,6 +196,104 @@ public class EvaluatorTests
     }
 
     [Fact]
+    public void Output_trung_index_khong_lam_evaluator_no_khi_key_khong_trung()
+    {
+        var key = AnswerKey.Parse("3 1");
+        var outline = new DocumentOutline
+        {
+            File = "typed.docx",
+            ParagraphCount = 10,
+            CandidateCount = 3,
+            Headings =
+            [
+                new HeadingRecord { Index = 3, Level = 1, Text = "1. Heading" },
+                new HeadingRecord { Index = 3, Level = 2, Text = "1.1 Duplicate slice" },
+                new HeadingRecord { Index = 4, Level = 1, Text = "Extra A" },
+                new HeadingRecord { Index = 4, Level = 2, Text = "Extra B" },
+            ],
+        };
+
+        var s = Evaluator.Score("typed", outline, [3, 4], key);
+
+        Assert.Equal(1, s.TruePositive);
+        Assert.Equal(4, s.ResultCount);
+        Assert.Equal([4, 4], s.FalsePositives);
+        Assert.Empty(s.FalseNegatives);
+    }
+
+    [Fact]
+    public void Navigation_metric_accepts_title_prefix_when_body_stays_inline()
+    {
+        var key = AnswerKey.Parse("""
+            3 1 # SECTION I: OVERVIEW
+            3 1 # SECTION II: DETAILS
+            """);
+        var outline = new DocumentOutline
+        {
+            File = "typed.docx",
+            ParagraphCount = 10,
+            CandidateCount = 2,
+            Headings =
+            [
+                new HeadingRecord { Index = 3, Level = 1, Text = "SECTION I: OVERVIEW This section has inline body." },
+                new HeadingRecord { Index = 3, Level = 1, Text = "SECTION II: DETAILS More body text follows." },
+            ],
+        };
+
+        var s = Evaluator.Score("typed", outline, [3], key);
+
+        Assert.Equal(1.0, s.NavigationRecall, 6);
+        Assert.Equal(1.0, s.NavigationLevelAccuracy, 6);
+    }
+
+    [Fact]
+    public void Navigation_metric_normalizes_case_dash_and_section_separator()
+    {
+        var key = AnswerKey.Parse("3 1 # Section III - Evaluation and Qualification Criteria");
+        var outline = new DocumentOutline
+        {
+            File = "world-bank.docx",
+            ParagraphCount = 10,
+            CandidateCount = 1,
+            Headings =
+            [
+                new HeadingRecord
+                {
+                    Index = 3,
+                    Level = 1,
+                    Text = "SECTION III. EVALUATION AND QUALIFICATION CRITERIA Contents A. Technical Part",
+                },
+            ],
+        };
+
+        var s = Evaluator.Score("world-bank", outline, [3], key);
+
+        Assert.Equal(1.0, s.NavigationRecall, 6);
+        Assert.Equal(1.0, s.NavigationLevelAccuracy, 6);
+    }
+
+    [Fact]
+    public void Navigation_level_accuracy_requires_the_matched_heading_level()
+    {
+        var key = AnswerKey.Parse("7 2 # ARTICLE 1");
+        var outline = new DocumentOutline
+        {
+            File = "typed.docx",
+            ParagraphCount = 10,
+            CandidateCount = 1,
+            Headings =
+            [
+                new HeadingRecord { Index = 7, Level = 4, Text = "ARTICLE 1 Scope" },
+            ],
+        };
+
+        var s = Evaluator.Score("typed", outline, [7], key);
+
+        Assert.Equal(1.0, s.NavigationRecall, 6);
+        Assert.Equal(0.0, s.NavigationLevelAccuracy, 6);
+    }
+
+    [Fact]
     public void Candidate_recall_shows_what_the_ooxml_layer_dropped()
     {
         var key = AnswerKey.Parse("1 1\n2 1\n3 1\n4 1");

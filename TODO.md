@@ -463,6 +463,28 @@ trong nhóm hợp đồng mua sắm. Kết luận: partial TOC có ích cho benc
 cần gán tay ít nhất 3 file trước khi báo độ chính xác. Đây là loại trừ cơ chế: tài liệu có TOC Word
 thật thường đã có outline/style để Word sinh TOC, còn `TypedNumbering` là nhóm số gõ tay thuần.
 
+Addendum 2026-08-13 (§79): đã đo 15 file tài chính `03_tai_chinh_ke_toan` với
+`dhx extract --no-llm --split-merged -f json -q`. Nhóm này **không RFC-like**: candidate gốc thấp
+(1-22), returned chủ yếu mục yếu, 13/15 file sâu nhất chỉ level 1, nhiễu `Table/Figure/Box/Note`,
+footer/header và numeric row rõ. Việc Typed kế tiếp nên là tạo key độc lập cho `054` (giàu
+`SECTION I..XXI`, tốt để thiết kế vùng) hoặc `041` (financial statement ngắn hơn), rồi đo tách
+`exact-title`, `body/navigation usable`, và false-positive class. Trước khi có key, chỉ thêm
+diagnostic/flag confidence thấp; chưa auto-demote rộng trong `TypedNumberingOutline`.
+
+Addendum tiếp 2026-08-13 (§80): đã tạo key `054` section-level partial_human từ PDF text layer.
+Đo source hiện tại: exact same-index 0/21, nhưng navigation-prefix same-index + đúng level **21/21**;
+FP ngoài index truth **448** gồm `Table/Figure/Box/Note` 73, footer/header 7, numeric-row 158, other
+210. Đã vá hai lỗi làm validator repair sai: span thiếu trong route typed/admin, và
+`InlineHeadingSplitter` generic rewrite slice `typed_number_depth` gây duplicate rồi cách ly mất
+`SECTION V`. Việc kế tiếp của Typed tài chính không còn là tạo key `054`, mà là một trong hai hướng
+riêng: (1) chính thức hóa metric navigation-prefix trong eval/report; hoặc (2) giảm FP theo class,
+mỗi lần chỉ một class/rule và phải đo lại `054` + các key typed hiện có (`056`, `092`).
+
+Addendum tiếp (§81): đã làm class/rule đầu tiên, filter hẹp `Table/Figure/Box/Note` trong
+`TypedNumberingOutline`. `054` returned 528→440, FP ngoài truth 448→379, caption FP 73→4, navigation
+21/21 giữ nguyên. `056` exact vẫn 14/46, `092` exact vẫn 3/64. Việc giảm FP kế tiếp nếu tiếp tục
+hướng này: xử lý `numeric-row` 158 FP, nhưng phải thiết kế/đo như một biến riêng.
+
 Đo sâu hơn trên 743 cặp: `outlineLvl` là ranh giới tuyệt đối (337/337 có `outlineLvl` đều bắt đúng,
 406/406 không có `outlineLvl` đều mất). Bảng là một phần lỗi (170/406 thiếu nằm trong bảng) nhưng
 không đủ giải thích toàn bộ: 236/406 thiếu nằm ngoài bảng. Vì vậy chưa sửa bằng cách chỉ thêm
@@ -585,6 +607,222 @@ khác model. Muốn con số so được thì cần đúng Qwen3.5-9B.
 
 **Cách nghiệm thu.** Chạy `dhx eval` với đúng cấu hình đã chốt trên máy có Qwen3.5-9B, so trước/sau
 bản sửa — một biến, không gộp việc khác.
+
+**Addendum 2026-08-14 (§96): audit metadata Section và thêm span cho slice đoạn gộp.**
+
+- Đã dump/audit 6 file holdout full vào `.verify-build/wb-holdout-section-audit/`, gồm JSON outline, XML slim và `key-metadata.csv`.
+- Metadata OOXML của high-level `Section` không đủ phân biệt: gần như toàn `Normal`, font nhỏ, nhiều dòng `outlineLvl=1`, và 5/6 file có `Section` lặp ít nhất 2 lần trong cùng paragraph (`page/header/TOC-ish prefix + body title`).
+- `026` trong Eval14 xác nhận conflict quy ước: partial key hiện chấm nhiều mục/bảng trong vùng Section ở level 1, nên luật `PART -> Section` rộng không thể quay lại.
+- Đã thêm metadata nguồn cho `MergedParagraphHeadings`: `OriginalText`, `HeadingSpan`, `BoundarySource="MergedParagraphMarker"`; helper đổi sang `internal` để test.
+- Test mới `SplitMergedParagraphsTests.Lat_cat_giu_span_nguon_trong_doan_gop`; `dotnet test --no-restore` = `533/533`.
+- Eval không đổi: Eval14 `Nav 99.1%`, `Nav+cấp 99.1%`; holdout full `Nav 89.6%`, `Nav+cấp 15.6%`.
+
+Tiếp theo nếu muốn sửa World Bank: dùng `HeadingSpan/BoundarySource` để tách TOC/page-header/body slice trước; không dùng lại luật cấp chỉ nhìn text `Section ...`.
+
+---
+
+## 14. Đóng câu hỏi "95 file deterministic chưa?" — CHƯA, mới có metric Nav chính thức và 14/95 key
+
+**Trạng thái sau handoff §82.** Đã thêm metric evaluator/report cho nghĩa người dùng vừa chốt:
+"mục lục tìm kiếm / outline như mục lục sách".
+
+- `Nav`: cùng paragraph/index và output bắt đầu bằng title trong comment key.
+- `Nav cấp`: `Nav` đúng và level đúng.
+- Test xanh: `dotnet test --no-restore` = 522/522.
+- `054_IBRD_Information_Statement_FY25`: `Nav 100%`, `Nav cấp 100%` trên 21 section/appendix key; exact vẫn 0/21 vì output giữ title + body trong cùng paragraph.
+
+**Không được nói 95/95 đã xong.** Corpus có 95 tài liệu, nhưng key trùng basename corpus hiện chỉ 14/95:
+
+`010`, `025`, `026`, `027`, `031`, `033`, `036`, `037`, `038`, `039`, `040`, `054`, `056`, `092`.
+
+**Việc cần làm tiếp để chốt thật:**
+
+1. Sinh/duyệt key navigation cho 81 file còn thiếu, ưu tiên nguồn deterministic độc lập: PDF outline/bookmarks, TOC, hoặc text-layer heading rules có audit.
+2. Chạy eval toàn bộ 95 bằng cùng cấu hình deterministic.
+3. Báo bảng riêng cho `Nav`, `Nav cấp`, exact, FP. Với PDF/text-layout, kết luận outline/search dựa vào `Nav`, không dùng exact span làm thước đo chính.
+
+**Kết quả thử mở rộng tự động (handoff §83):**
+
+- Word TOC trên `heading_corpus_95_word`: 9/95 ghi được key, đều `partial_toc` dưới ngưỡng; 86/95 thiếu mục lục Word.
+- PDF bookmark: 33/83 PDF có bookmark, nhưng 0 file match sang paragraph DOCX đạt 80%; tốt nhất khoảng 57.5%.
+- Eval 14 key hiện có chỉ chấm được 5/14; 9 key `toc-derived` fail do duplicate key collapse về cùng paragraph/index.
+- 5 file chấm được có micro `Nav 91.7%`, `Nav+cấp 91.7%`; riêng `010`, `025`, `054` đạt `Nav 100%`.
+
+**Việc sát nhất nên làm tiếp:**
+
+1. Sửa `AnswerKey`/`Evaluator` để key duplicate stableId/index có text comment không collapse/fail, rồi chấm lại 9 key `toc-derived`.
+2. Sinh partial-review candidate từ PDF bookmark cho 32 file có hit > 0, nhưng đánh dấu chưa gold.
+3. Sau đó mới quyết định cụm nào cần human key thật; không còn nguồn deterministic tự động nào đủ để đóng 95/95 ngay.
+
+**Audit core trực tiếp trên 95 DOCX (handoff §84):**
+
+- Core có `deterministicRoute` cho 73/95: `auto:typed-numbering` 40, `auto:vietnamese-legal` 23, `auto:outline-level` 10.
+- 22/95 không có route.
+- 48/95 trả số heading nhiều hơn số paragraph; 49/95 trả hơn 200 heading.
+- 95/95 đều còn `RequiresReview`.
+
+Kết luận giữ nguyên: chưa bao quát deterministic đủ để auto-trích mục lục tìm kiếm 100% cho cả 95 file.
+
+**Typed filter an toàn đã thêm (handoff §85):**
+
+- Bỏ Arabic path có component `0` (`0.85`, `1.0 samples...`) và decimal + đơn vị đo (`1.5 GHz...`).
+- Full test xanh 524/524.
+- Tổng heading trên audit 95 giảm 36.671 → 34.280, nhưng `heading > paragraph` vẫn 48/95 và 95/95 vẫn `RequiresReview`.
+- `054` giữ `Nav 100%`; `056` giữ `Nav 60.9%`; `092` giữ `Nav 95.3%`.
+- Đã thử filter mạnh "remainder phải giống title" nhưng gỡ vì làm `092` Nav tụt 95.3% → 68.8%.
+
+Kết luận vẫn không đổi: chưa thể auto-100% cho 95 file; bước tiếp nên là sửa duplicate key evaluator hoặc xử lý over-extraction theo từng subtype typed, không dùng filter lowercase chung.
+
+**Evaluator duplicate-output fix đã làm (handoff §86):**
+
+- `Evaluator.Score` không còn `ToDictionary(h => h.Index)` trên output headings; duplicate output index không làm crash nữa.
+- Test mới: `Output_trung_index_khong_lam_evaluator_no_khi_key_khong_trung`.
+- Full test xanh 525/525.
+- Eval 14 key trùng corpus giờ chấm đủ 14/14.
+- Micro `Nav` trên 14 key hiện có: 78.2%; `Nav+cấp`: 78.2%; perfect 1/14.
+
+Việc tiếp theo: dùng 14-key baseline này để ưu tiên sửa recall/navigation cho procurement partial keys (`026`, `036`, `037`) hoặc typed book/RFC (`056`, `092`) thay vì chỉ nhìn audit heading count.
+
+**Phân rã mới sau handoff §87:**
+
+- 14-key baseline: `Nav 78.2%` và `Nav+cấp 78.2%`; cấp không còn sai trên các mục đã chọn đúng.
+- 21.8% nav-miss tập trung, không dàn đều: 182/217 miss nằm trong 4 file procurement/World Bank `026`, `037`, `036`, `027`.
+- Theo route: `auto:vietnamese-legal` đạt 121/121 nav; `auto:typed-numbering` đạt 84.0%; `auto:outline-level` đạt 74.0% và là nguồn miss chính.
+- 48/95 file có `heading > paragraph` chủ yếu là text-layout paragraph rất dài: 46/48 có median paragraph length >= 1000 chars; không nên coi toàn bộ là over-split do ngưỡng.
+- OpenStax `056`: 18/46 nav-miss đều vẫn có output đúng index; lỗi là title text bị dính bullet/số trang/body (`2.1 • Negotiation 15 ...`), không phải candidate biến mất.
+- Đã sửa cleaner hẹp cho `N.N • Title <page> body...` sau khi truy nguyên: lần tụt `056` `60.9% -> 37.0%` là do validator bác text sạch không còn equality với span nguồn rồi harness repair cách ly index, không phải do dedupe. Fix mới giữ `HeadingSpan` trỏ tới source bẩn và validator chấp nhận transform deterministic; `056` lên `Nav 93.5%`, `092` giữ `95.3%`, `054` giữ `100%`.
+
+**Ưu tiên tiếp theo:**
+
+1. Truy vết procurement outline-level bắt đầu từ `026_WB_RFB_Goods_One_Envelope_2017`, vì riêng file này tạo 54 nav-miss.
+2. Thiết kế luật heading trong bảng/content dưới anchor cho nhóm World Bank, dựa trên 168 mục bảng score thấp đã đo trước đó.
+3. Tiếp tục sinh/duyệt key cho 81 file chưa có gold nếu muốn kết luận thật cho 95/95.
+
+**Addendum 2026-08-13 (§88): đã đóng `026` bằng luật table heading hẹp cho outline-level.**
+
+- Nguyên nhân `026`: 54/54 nav-miss nằm trong bảng; phần lớn là custom style của World Bank (`Sec1-ClausesAfter10pt1`, `Sec8Clauses`, `SectionVHeader`, `SectionVIHeader`, `SectionHeading`) không có `w:outlineLvl`.
+- Đã thêm `OutlineAnchorCustomStyles.FindTableStyles` và nhánh `outline_anchor_table_custom_style` trong `StyleDeclaredOutline.BuildFromOutlineLevel`.
+- Luật giữ hẹp: chỉ table paragraph, không built-in Heading, không `Normal/ListParagraph/BodyText*` theo style-repeat; fallback shape chỉ cho `A. ...` bold-center hoặc `Section IX - ...` ngắn trong bảng.
+- Ca `Scope of Bid` đứng trước `out` anchor thật đầu tiên trong bảng; đã cho table heading hợp lệ dùng level tạm `1` khi chưa có `currentAnchorLevel`, sau đó TOC pin vẫn chỉnh cấp cuối.
+- Test xanh: `dotnet test --no-restore` = 528/528.
+- Eval14 mới: micro `Nav 93.4%`, `Nav+cấp 93.4%`, perfect 2/14. Riêng `026_WB_RFB_Goods_One_Envelope_2017`: `68/68`, `Nav 100%`, `Nav+cấp 100%`, exact P/R 100%, không FP trong phạm vi partial key.
+- Audit toàn bộ `heading_corpus_95_word`: 95/95 extract no-LLM không crash; deterministic route 73/95 (`typed-numbering` 40, `vietnamese-legal` 23, `outline-level` 10), 22/95 chưa có route.
+
+Việc tiếp theo nên làm: ưu tiên các miss còn lại trong World Bank `027`, `036`, `037`, `033`, rồi mới quay lại precision/FP typed (`056`, `092`, lecture/RFC over-extraction). Vẫn **chưa được nói 95/95 100%** vì mới có key cho 14/95 file.
+
+**Addendum 2026-08-13 (§89): đã kéo World Bank outline-level lên gần trần partial key.**
+
+- Đóng `027`: nhận table style `Head22`, bullet `• Section IX - ...`, và sparse custom style ngoài bảng như `HeaderEvaCriteria`.
+- Đóng `033`: nhận sparse custom style `Sec7Heading`, `SectionIXHeader`, và numbered heading candidate ngắn dưới anchor (`Evaluation of Technical Part...`).
+- Sửa splitter generic: không cắt `outline_anchor_table_custom_style` và `outline_level_declared`, vì dấu `:`/`;` trong các route này là một phần title do Word/TOC khai, không phải ranh giới body.
+- Đóng `038/040`: nhận table heading `Normal` nhưng bold + numbered short (`7. Confidentiality`).
+- Test xanh: `dotnet test --no-restore` = 530/530.
+- Eval14 mới: micro `Nav 98.8%`, `Nav+cấp 98.8%`, đúng cấp/cha 100%, perfect 7/14.
+- Các World Bank partial key đã 100%: `026`, `027`, `031`, `033`, `038`, `039`, `040`.
+- Còn lại trong World Bank: `036` thiếu 4 và `037` thiếu 2, đều là các dòng định nghĩa SEA/ES dài trong bảng `Normal`, không bold heading style. Chưa vá bằng keyword `means/is defined as` vì đó là luật nội dung/semantic dễ kéo prose definition vào outline.
+- Audit 95 sau sửa: 95/95 extract no-LLM OK; route distribution không đổi (`typed-numbering` 40, `vietnamese-legal` 23, `outline-level` 10, no-route 22).
+
+Việc tiếp theo hợp lý: hoặc xử lý thận trọng lớp SEA definition rows bằng tín hiệu OOXML mạnh hơn nếu tìm được, hoặc chuyển sang typed over-extraction (`056`, `092`, lecture/RFC). Chưa thể nói 95/95 100% vì vẫn chỉ có 14/95 key.
+
+**Addendum 2026-08-13 (§90): thay whitelist tên style bằng phát hiện tự động.**
+
+- Đã bỏ positive hardcode kiểu `Head22`, `SEC3h1`, `HeaderEvaCriteria`, `Sec...Clauses`, `SectionIXHeader` khỏi detector.
+- `OutlineAnchorCustomStyles` giờ phát hiện custom heading style bằng phân bố/style-format trong chính tài liệu:
+  đoạn dưới outline anchor, text ngắn, style không thuộc nhóm body/list/caption/footer/note, và có tín hiệu format như bold/center/font lớn/numbering.
+- So sánh với bản whitelist trên các World Bank outline-level cho thấy bản auto ban đầu quá rộng; đã siết bằng negative generic-style filter và loại title ngắn kết thúc bằng `:`.
+- Test xanh: `dotnet test --no-restore` = 530/530.
+- Eval14 giữ nguyên: `Nav 98.8%`, `Nav+cấp 98.8%`, đúng cấp/cha 100%, perfect 7/14.
+- Audit 95 sau auto-style: 95/95 OK, route distribution không đổi; tổng heading `35,264 -> 35,250` so với bản whitelist §89, tức không phình output.
+- File-level delta chỉ còn trong outline-level World Bank: `026 +5`, `027 +1`, `039 +1`, `036 -1`, `033 -3`, `031 -7`, `040 -10`; các key đã có không giảm Nav.
+
+Tiếp theo đúng ưu tiên: tạo/duyệt key cho `FormatDriven` 16 file và nhóm 22 no-route, vì hai vùng đó hiện chưa có điểm đo gold; không quay lại 036/037 SEA definition rows trừ khi tìm được tín hiệu OOXML không-semantic.
+
+**Addendum 2026-08-14 (§91): bắt đầu key cho FormatDriven/no-route bằng nguồn độc lập.**
+
+- `toc-keys` trên 22 file chưa có route/gold: cả 22 đều thiếu Word TOC; nguồn này không giúp thêm key.
+- PDF bookmark chỉ có ở 6/22: `063`, `066`, `072`, `076`, `077`, `078`.
+- Đã sinh key ứng viên từ PDF bookmark vào `.verify-build/pdf-bookmark-keys`: `063` khớp 42/103 bookmark (61 ambiguous do TOC/page/header/body lặp), còn `066`, `072`, `076`, `077`, `078` khớp đủ bookmark.
+- Đo 6 key candidate với `--no-llm --split-merged`: micro `Nav 17.9%`, `Nav+cấp 2.8%`. Đây chưa phải gold, nhưng là tín hiệu độc lập cho thấy `FormatDriven` PDF-converted còn lỗi chính là heading nằm giữa paragraph dài và title bị cắt/chuẩn hoá khác bookmark.
+- Mở rộng `ParagraphHeadingSplitter` nhận separator `:` sau marker label+Roman (`SESSION I:`), có test `Paragraph_splitter_accepts_colon_after_labelled_roman_marker`.
+- Regressions: `dotnet test --no-restore` xanh 531/531; eval14 chính giữ `Nav 98.8%`, `Nav+cấp 98.8%`; audit 95 mặc định 95/95 OK, mode distribution không đổi (`typed` 40, `legal` 23, `outline` 10, `FormatDriven` 16, `SemanticOnly/insufficient` 6).
+
+Kết luận mới: trong 22 file còn trống, chỉ 6 file có nguồn deterministic độc lập đủ để tạo key candidate; 16 file còn lại không có Word TOC/PDF bookmark nên muốn kết luận 95/95 vẫn cần human/review key hoặc nguồn layout/text-layer khác được kiểm riêng.
+
+**Addendum 2026-08-14 (§92): kiểm offset cấp và World Bank holdout.**
+
+- 6 key PDF bookmark: text bookmark xuất hiện trong DOCX `167/167` (100%), nhưng chủ yếu ambiguous: unique chỉ `28/167`, ambiguous `139/167`. Key dùng được để đo navigation/cắt title, chưa đủ chắc để làm gold occurrence đầy đủ.
+- Offset cấp trên 6 bookmark key: `063` có 16 Nav-hit đều lệch `got-key = -1`; `072` có 2 hit offset `0`; `077` có 1 hit offset `0`; ba file còn lại không có Nav-hit. Cộng offset tốt nhất chỉ cứu `Nav+cấp` từ `2.8%` lên tối đa bằng `Nav 17.9%`, không biến nhóm này thành đạt.
+- Sinh holdout World Bank từ PDF text-layer `Table of Contents/Summary` cho 6 file chưa có key (`028`, `029`, `030`, `032`, `034`, `035`) vào `.verify-build/wb-holdout-pdf-toc`. Đây là `partial_pdf_toc_holdout`, chỉ chấm `PART/Section`, không phải full outline.
+- Holdout match DOCX `45/45` mục high-level. Eval với `--no-llm --split-merged`: micro `Nav 57.8%`, `Nav+cấp 2.2%`, exact recall 80% nhưng precision 0.6% do output text-layout over-extract rất lớn.
+- Offset holdout: gần như mọi Nav-hit section lệch `got-key = -1` (`25/26` Nav-hit). Nếu chỉ sửa quy ước cấp thì `Nav+cấp` có thể lên gần `Nav`, nhưng `Nav 57.8%` vẫn thấp hơn nhiều so với Eval14 `98.8%`.
+
+Kết luận mới: Eval14 `98.8%` **không được dùng như đại diện World Bank tổng quát**. Nó đúng trên 9 partial key đã tối ưu, nhưng holdout high-level mới cho thấy overfit/khác mẫu rõ. Việc tiếp theo đáng làm nhất: dùng holdout này để sửa chọn mục/cắt title cho `028/029/030/032/034/035`, bắt đầu từ các miss high-level trước khi mở rộng claim.
+
+**Addendum 2026-08-14 (§93): Nav phải chuẩn hoá như tìm kiếm, không so chuỗi raw.**
+
+- Root cause của phần lớn holdout miss: key PDF dùng `Section III - ...`, body DOCX/output dùng `SECTION III. ...` hoặc en dash; đây là cùng nhãn điều hướng theo nghĩa search/TOC, nhưng metric cũ chỉ normalize whitespace.
+- Đã thêm `Evaluator.NormalizeForNavigation`: lower-case, chuẩn hoá dash Unicode, và coi `Section N -/. /:` + `Part N -/:` như cùng marker. Exact TP/FN không đổi; chỉ `Nav`/`Nav+cấp` dùng chuẩn hoá này.
+- Test mới: `Navigation_metric_normalizes_case_dash_and_section_separator`.
+- Test xanh: `dotnet test --no-restore` = 532/532.
+- Holdout World Bank cũ: `Nav 57.8% -> 93.3%`; `Nav+cấp` vẫn `2.2%` vì key đang gán `Section=2` trong khi nhiều file partial không có `PART` trong key.
+- Sinh thêm artifact kiểm tra `.verify-build/wb-holdout-pdf-toc-levels-fixed`: nếu key không có `PART`, đặt `Section=1`. Kết quả `Nav 93.3%`, `Nav+cấp 71.1%`. Đây là diagnostic key, không phải gold mới.
+- Eval14 với metric canonical: `Nav 98.8% -> 99.1%`, `Nav+cấp 99.1%`; tăng chủ yếu do OpenStax/TOC punctuation, không thay exact.
+
+Kết luận mới: holdout không còn chứng minh lỗi chọn mục lớn như số 57.8% ban đầu; nó chứng minh hai việc khác: (1) metric Nav raw quá khắt với search/TOC, và (2) cấp của FormatDriven/WorldBank text-layout vẫn chưa có luật phân cấp đáng tin nếu không có TOC/anchor thật. Việc tiếp theo nên là sinh holdout key từ PDF TOC đầy đủ hơn, giữ cả `PART`, rồi mới sửa cấp extractor.
+
+**Addendum 2026-08-14 (§94): sinh World Bank holdout full có giữ `PART`.**
+
+- Tạo artifact `.verify-build/wb-holdout-pdf-toc-full`: 6 file `028/029/030/032/034/035`, tổng `77` mục high-level (`PART` + `Section`), thay vì `45` mục Section-only ở holdout cũ.
+- Key full dùng paragraph body thật bắt đầu bằng `PART/Section`; không dùng lại paragraph Summary đầu tài liệu trừ các ca PDF-converted không có occurrence tách rời rõ.
+- Eval full với `--no-llm --split-merged`: micro `Nav 89.6%`, `Nav+cấp 15.6%`, exact recall `87.0%`, exact precision `1.1%`, candidate recall `89.6%`.
+- Theo file: `028 Nav 100%`, `029 92.3%`, `030 66.7%`, `032 84.6%`, `034 100%`, `035 92.3%`.
+- Lỗi cấp là thật của extractor: hầu hết Section high-level dưới PART đang ra level `1`, trong khi key full gán level `2`. Đây không còn là lỗi key Section-only nữa.
+- `030` vẫn là ca xấu: DOCX conversion dính page header/TOC vào Section đầu, nên occurrence của `PART I`, `Section 1`, `PART II/III` cần review tay hoặc nguồn layout tốt hơn trước khi dùng làm gold.
+
+Kết luận mới: holdout full làm rõ hơn claim Eval14 `99.1%`: chọn mục World Bank high-level khá tốt trên 5/6 file, nhưng cấp phân cấp `PART -> Section` chưa giải xong trên text-layout; không được quote `Nav+cấp` cao cho World Bank tổng quát cho tới khi có luật cấp và review riêng `030`.
+
+**Addendum 2026-08-14 (§95): thử luật `PART -> Section` sau split và bác bằng Eval14.**
+
+- Đã thử một luật rất trực diện: khi chuỗi heading đã chọn có `PART ...` level 1, các `Section ...` phía sau được hạ thành level 2. Luật còn chạy sau `MergedParagraphHeadings`, vì holdout full sinh nhiều Section từ paragraph PDF-converted bị gộp.
+- Hiệu quả trên holdout full đúng như nghi ngờ: `Nav` giữ `89.6%`, nhưng `Nav+cấp` tăng từ `15.6%` lên `89.6%`; ví dụ `028` đạt `100%/100%`.
+- Nhưng Eval14 chính bị phá nặng: `Nav` vẫn `99.1%`, còn `Nav+cấp` tụt `99.1% -> 53.8%`, đúng cấp micro tụt xuống `48.8%`; riêng `026` rơi từ `100%` xuống `16.2%` Nav+cấp.
+- Đã gỡ luật khỏi production và gỡ hai test thử nghiệm. Xác nhận lại: `dotnet test --no-restore` = `532/532`; Eval14 phục hồi `Nav 99.1%`, `Nav+cấp 99.1%`, đúng cấp/cha `100%`.
+- Holdout full sau khi gỡ quay về `Nav 89.6%`, `Nav+cấp 15.6%`. Đây là trạng thái đúng để giữ benchmark trung thực: code chính sạch regression, holdout vẫn treo đúng lỗi cấp cần giải.
+
+Kết luận mới: cùng pattern hiển thị `Section ...` đang mang hai quy ước gold khác nhau. Holdout full high-level muốn `Section` là con của `PART`; Eval14 partial World Bank đang ghim nhiều mục/nhãn trong vùng Section ở level 1. Không thêm lại luật `PART -> Section` rộng cho tới khi có tín hiệu phân biệt high-level section boundary với page header/body section label, hoặc review/chuẩn hoá lại key World Bank theo cùng một quy ước.
+
+**Addendum 2026-08-14 (§97): lọc TOC dense trong merged split mà không mất anchor 032.**
+
+- `MergedParagraphHeadings` giờ bỏ paragraph document-level `Table of Contents` có nhiều dot-leader entry, để giảm FP do `--split-merged` chẻ mục lục dày đặc thành heading.
+- Guard quan trọng: không dùng lại `TypedNumberingOutline.LooksLikeDenseTypedTableOfContents` cho route merged. Nó từng làm mất World Bank `032` index 33 vì body paragraph thật bắt đầu `Section I ... TABLE OF CONTENT ...` nhưng vẫn là anchor cần điều hướng.
+- Thêm ngoại lệ anchor: paragraph bắt đầu bằng `Section ...` hoặc `Part ...` được giữ lại dù có cụm `TABLE OF CONTENT` bên trong.
+- Test xanh: `dotnet test --no-restore` = 535/535.
+- Eval14 giữ nguyên: `Nav 99.1%`, `Nav+cấp 99.1%`, đúng cấp/cha 100%.
+- World Bank holdout full giữ nguyên: `Nav 89.6%`, `Nav+cấp 15.6%`; result count giảm ở các file TOC-heavy như `028`/`034`, tức giảm thừa an toàn nhưng chưa sửa cấp.
+
+Tiếp theo: tiếp tục dùng `OriginalText` + `HeadingSpan` để phân biệt slice TOC/page-header/body trong paragraph PDF-converted. Không quay lại luật `PART -> Section` rộng; mọi filter/cleaner TOC mới phải đo lại Eval14 và `.verify-build/wb-holdout-pdf-toc-full`, đặc biệt kiểm `032` index 33.
+
+**Addendum 2026-08-14 (§98): dot-leader slice filter an toàn sau khi bác bản rộng.**
+
+- Audit holdout full: `MergedParagraphMarker` còn 151 slice, 104 slice có dot leader.
+- Thử bỏ mọi dot-leader slice làm holdout tụt `Nav 89.6% -> 88.3%`; root cause là `032` index 302 cần qualifier `(GCC)` trong slice `SECTION VIII ... (GCC) Table of Clauses ...`.
+- Bản giữ: chỉ bỏ dot-leader slice khi slice không bắt đầu bằng high-level `Section ...` hoặc `Part ...`.
+- Test xanh: `dotnet test --no-restore` = 536/536.
+- Eval14 giữ nguyên `Nav 99.1%`, `Nav+cấp 99.1%`; World Bank holdout full giữ `Nav 89.6%`, `Nav+cấp 15.6%`.
+- Result count holdout giảm không mất Nav: `028 1096->1080`, `029 860->858`, `030 862->860`, `032 1360->1347`, `034 1195->1182`, `035 874->873`.
+
+Tiếp theo: nếu giảm FP nữa, audit non-dot merged slices/page-header lặp; không được xóa high-level dot-leader slice chứa qualifier như `(GCC)`, `(PCC)`, `(ITP)`.
+
+**Addendum 2026-08-14 (§99): page-header section lặp, giữ lần đầu.**
+
+- Audit non-dot cho thấy page-header ngắn `Section ... <page>` lặp nhiều trang.
+- Bỏ toàn bộ page-header ngắn bị bác bằng mô phỏng: mất 17 Nav-hit.
+- Bản giữ: chuẩn hoá title section bỏ số trang, giữ lần đầu trong tài liệu, bỏ các lần lặp sau.
+- Test xanh: `dotnet test --no-restore` = 537/537.
+- Eval14 giữ `Nav 99.1%`, `Nav+cấp 99.1%`; World Bank holdout full giữ `Nav 89.6%`, `Nav+cấp 15.6%`.
+- Result count holdout giảm thêm: `028 1080->1074`, `029 858->857`, `030 860->859`, `032 1347->1346`, `034 1182->1180`, `035 873->872`.
+
+Tiếp theo: audit phần thừa còn lại là numbered prose/list trong body; chưa sửa cấp World Bank, và không dùng filter text ngắn rộng nếu chưa mô phỏng Nav-loss.
 
 ---
 

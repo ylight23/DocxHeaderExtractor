@@ -26,9 +26,22 @@ public static class TypedNumberingOutline
         @"(?:^|\s)\d{1,3}(?:\.\d{1,3}){0,3}\s+\p{Lu}[\p{L}\p{N}\s,&.'’/\(\)\-–:]{0,100}?\s+\d{1,4}(?=\s|$)",
         RegexOptions.Compiled);
 
+    private static readonly Regex NumericUnitRemainderRx = new(
+        @"^\s*\d{1,2}(?:\.\d{1,2}){0,4}\s+(?:GHz|MHz|kHz|Hz|GB|MB|KB|TB|bps|kbps|Mbps|Gbps|ms|sec|secs|min|mins|hr|hrs|km|cm|mm|kg|mg|lb|lbs|oz|USD|EUR|VND)\b",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+    private static readonly Regex ArabicPathRx = new(
+        @"^\s*(\d{1,2}(?:\.\d{1,2}){0,4})(?!\d)",
+        RegexOptions.Compiled);
+
+    private static readonly Regex TextLayoutSectionPageRx = new(
+        @"^\s*(?<marker>\d{1,3}(?:\.\d{1,3}){1,4})\s*\u2022\s*(?<title>[^\d\u2022]{2,120}?)\s+\d{1,4}\s+(?<body>.{12,})$",
+        RegexOptions.Compiled);
+
     public static List<HeadingRecord> Build(SlimDocument document, bool splitMergedParagraphs = true)
     {
         List<HeadingRecord> result = [];
+        var seen = new HashSet<(int Index, string Text)>();
 
         foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
         {
@@ -43,21 +56,27 @@ public static class TypedNumberingOutline
             {
                 if (LooksLikeTextLayoutPageHeader(seg)) continue;
                 if (NumberingAudit.Parse(seg) is not { } token) continue;
+                if (LooksLikeCaptionLabel(token)) continue;
+                if (HasZeroArabicPathComponent(token, seg)) continue;
+                if (LooksLikeNumericMeasurement(token, seg)) continue;
 
-                var (heading, body) = AdministrativeOutline.SplitHeadingBody(seg);
+                var split = SplitTypedHeadingBody(token, seg);
+                if (!seen.Add((p.Index, split.Heading))) continue;
                 result.Add(new HeadingRecord
                 {
                     Index = p.Index,
                     StableId = p.StableId,
                     Level = Math.Clamp(token.Depth, 1, 9),
-                    Text = heading,
+                    Text = split.Heading,
                     StyleId = p.StyleId,
                     Source = HeadingSource.Structure,
                     Confidence = 1.0,
                     ConfidenceBasis = "typed_number_depth",
                     DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
-                    InlineBody = body,
-                    OriginalText = body is null ? null : seg,
+                    InlineBody = split.Body,
+                    OriginalText = split.Body is null ? null : seg,
+                    HeadingSpan = split.Body is null ? null : split.HeadingSpan,
+                    InlineBodySpan = split.Body is null ? null : split.BodySpan,
                 });
             }
         }
@@ -65,11 +84,59 @@ public static class TypedNumberingOutline
         return result;
     }
 
+    internal readonly record struct TypedHeadingBodySplit(
+        string Heading,
+        string? Body,
+        TextOffsetSpan? HeadingSpan,
+        TextOffsetSpan? BodySpan);
+
+    internal static TypedHeadingBodySplit SplitTypedHeadingBody(NumberToken token, string text)
+    {
+        if (token is { Kind: NumberKind.Arabic, Depth: >= 2 } &&
+            TextLayoutSectionPageRx.Match(text) is { Success: true } match)
+        {
+            var marker = match.Groups["marker"].Value.TrimEnd('.');
+            var title = match.Groups["title"].Value.Trim();
+            var body = match.Groups["body"].Value;
+            return new TypedHeadingBodySplit(
+                $"{marker} {title}",
+                body,
+                new TextOffsetSpan(0, match.Groups["body"].Index),
+                new TextOffsetSpan(match.Groups["body"].Index, text.Length));
+        }
+
+        var (heading, splitBody) = AdministrativeOutline.SplitHeadingBody(text);
+        var bodyStart = splitBody is null ? -1 : text.Length - splitBody.Length;
+        return new TypedHeadingBodySplit(
+            heading,
+            splitBody,
+            splitBody is null ? null : new TextOffsetSpan(0, heading.Length),
+            splitBody is null ? null : new TextOffsetSpan(bodyStart, text.Length));
+    }
+
     internal static string StripPageArtifacts(string text) =>
         RfcPageFooterRx.Replace(text, "").Trim();
 
     internal static bool LooksLikeTextLayoutPageHeader(string text) =>
         TextLayoutPageHeaderRx.IsMatch(text);
+
+    internal static bool LooksLikeCaptionLabel(NumberToken token) =>
+        token.Kind == NumberKind.Labelled &&
+        token.Label is "table" or "figure" or "box" or "note";
+
+    internal static bool LooksLikeNumericMeasurement(NumberToken token, string text) =>
+        token.Kind == NumberKind.Arabic &&
+        token.Depth >= 2 &&
+        NumericUnitRemainderRx.IsMatch(text);
+
+    internal static bool HasZeroArabicPathComponent(NumberToken token, string text)
+    {
+        if (token.Kind != NumberKind.Arabic) return false;
+        if (ArabicPathRx.Match(text) is not { Success: true } match) return false;
+        return match.Groups[1].Value
+            .Split('.', StringSplitOptions.RemoveEmptyEntries)
+            .Any(part => int.TryParse(part, out var value) && value == 0);
+    }
 
     internal static bool LooksLikeDenseTypedTableOfContents(string text, IReadOnlyList<string> segments)
     {

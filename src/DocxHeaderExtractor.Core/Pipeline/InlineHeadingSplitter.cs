@@ -23,6 +23,16 @@ public static class InlineHeadingSplitter
             // trùng text rồi bị agent validator cách ly. Đây là nguồn đã khai ranh giới; không
             // phải ứng viên cần đoán ranh giới.
             if (heading.ConfidenceBasis == "legal_marker_declared") continue;
+            // TypedNumberingOutline cũng đã làm việc trên từng lát cắt marker trong paragraph
+            // text-layout. Chạy splitter generic theo TOÀN paragraph sẽ biến nhiều slice cùng Index
+            // thành cùng một prefix, tạo duplicate rồi bị validator cách ly.
+            if (heading.ConfidenceBasis == "typed_number_depth") continue;
+            // Table headings được cứu dưới outline anchor thường là nhãn điều khoản đầy đủ trong ô
+            // bảng; dấu ':' hoặc ';' thuộc chính title, không phải ranh giới title/body.
+            if (heading.ConfidenceBasis == "outline_anchor_table_custom_style") continue;
+            // Nếu tác giả đã khai outlineLvl thì paragraph là nhãn mục lục của Word. Giữ nguyên
+            // text để TableOfContentsAnchor có thể pin đúng cấp theo chính TOC của tài liệu.
+            if (heading.ConfidenceBasis == "outline_level_declared") continue;
 
             var paragraph = document.ByIndex(heading.Index);
             if (paragraph is null) continue;

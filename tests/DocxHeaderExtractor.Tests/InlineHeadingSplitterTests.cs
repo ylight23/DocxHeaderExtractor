@@ -91,4 +91,81 @@ public sealed class InlineHeadingSplitterTests
 
         Assert.False(InlineHeadingSplitter.TryFindBoundary(p, out _, out _));
     }
+
+    [Fact]
+    public void Does_not_rewrite_typed_slices_from_same_paragraph()
+    {
+        const string text = "SECTION V: body before list: 1. Loan guarantees: details 2. Payment guarantees: details";
+        var p = new SlimParagraph { Index = 1, Text = text };
+        var first = new HeadingRecord
+        {
+            Index = 1,
+            Level = 1,
+            Text = "SECTION V: body before list",
+            ConfidenceBasis = "typed_number_depth",
+        };
+        var second = new HeadingRecord
+        {
+            Index = 1,
+            Level = 1,
+            Text = "1. Loan guarantees",
+            ConfidenceBasis = "typed_number_depth",
+        };
+        var doc = new SlimDocument { FileName = "x.docx", SourcePath = "x.docx", Paragraphs = [p] }.Build();
+
+        Assert.Equal(0, InlineHeadingSplitter.Apply([first, second], doc));
+        Assert.Equal("SECTION V: body before list", first.Text);
+        Assert.Equal("1. Loan guarantees", second.Text);
+    }
+
+    [Fact]
+    public void Does_not_split_outline_anchor_table_heading_with_semicolon_in_title()
+    {
+        const string text = "33. Loss of or Damage to Property; Accident or Injury to Workers; Indemnification";
+        var p = new SlimParagraph { Index = 1, Text = text };
+        var h = new HeadingRecord
+        {
+            Index = 1,
+            Level = 1,
+            Text = text,
+            ConfidenceBasis = "outline_anchor_table_custom_style",
+        };
+        var doc = new SlimDocument { FileName = "x.docx", SourcePath = "x.docx", Paragraphs = [p] }.Build();
+
+        Assert.Equal(0, InlineHeadingSplitter.Apply([h], doc));
+        Assert.Equal(text, h.Text);
+        Assert.Null(h.InlineBody);
+    }
+
+    [Fact]
+    public void Does_not_split_outline_level_declared_heading_with_colon_in_title()
+    {
+        const string text = "J. Second Stage: Evaluation of Technical Part";
+        var p = new SlimParagraph { Index = 1, Text = text };
+        var h = new HeadingRecord
+        {
+            Index = 1,
+            Level = 1,
+            Text = text,
+            ConfidenceBasis = "outline_level_declared",
+        };
+        var doc = new SlimDocument { FileName = "x.docx", SourcePath = "x.docx", Paragraphs = [p] }.Build();
+
+        Assert.Equal(0, InlineHeadingSplitter.Apply([h], doc));
+        Assert.Equal(text, h.Text);
+        Assert.Null(h.InlineBody);
+    }
+
+    [Fact]
+    public void Paragraph_splitter_accepts_colon_after_labelled_roman_marker()
+    {
+        const string text =
+            "Opening notes SESSION I: Welcome and meeting objectives SESSION II: Update on the cycle";
+
+        var slices = ParagraphHeadingSplitter.Split(text);
+
+        Assert.Equal(2, slices.Count);
+        Assert.Equal("SESSION I: Welcome and meeting objectives", slices[0].Text);
+        Assert.Equal("SESSION II: Update on the cycle", slices[1].Text);
+    }
 }

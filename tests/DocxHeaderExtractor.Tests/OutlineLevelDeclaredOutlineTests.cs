@@ -53,6 +53,46 @@ public sealed class OutlineLevelDeclaredOutlineTests
         Assert.Equal("outline_anchor_custom_style", headings[1].ConfidenceBasis);
     }
 
+    [Fact]
+    public void BuildFromOutlineLevel_ghep_custom_table_style_duoi_anchor_nhung_bo_style_noi_dung()
+    {
+        var doc = new SlimDocument
+        {
+            FileName = "outline-table-form.docx",
+            SourcePath = "outline-table-form.docx",
+            Paragraphs =
+            [
+                P(0, "Section I. Instructions to Bidders", outline: 0),
+                P(1, "Scope of Bid", style: "Sec1-ClausesAfter10pt1", role: ParagraphRole.Normal, tableDepth: 1, bold: true),
+                P(2, "Source of Funds", style: "Sec1-ClausesAfter10pt1", role: ParagraphRole.Normal, tableDepth: 1, bold: true),
+                P(3, "Eligible Bidders", style: "Sec1-ClausesAfter10pt1", role: ParagraphRole.Normal, tableDepth: 1, bold: true),
+                P(4, "1. List of Goods and Delivery Schedule", style: "SectionVIHeader", role: ParagraphRole.Normal, tableDepth: 1, bold: true, alignment: "center"),
+                P(5, "2. List of Related Services and Completion Schedule", style: "SectionVIHeader", role: ParagraphRole.Normal, tableDepth: 1, bold: true, alignment: "center"),
+                P(6, "A. General", style: "Normal", role: ParagraphRole.Normal, tableDepth: 1, bold: true, alignment: "center"),
+                P(7, "B. Contents of Request for Bids Document", style: "BodyText2", role: ParagraphRole.Normal, tableDepth: 1, bold: true, alignment: "center"),
+                P(8, "Section IX - Special Conditions of Contract (SCC)", style: "Normal", role: ParagraphRole.Normal, tableDepth: 1),
+                P(9, "Format and Signing of Bid", style: "Head22", role: ParagraphRole.Normal, tableDepth: 1, bold: true),
+                P(10, "• Section IX - Special Conditions of Contract (SCC)", style: "Normal", role: ParagraphRole.Normal, tableDepth: 1),
+                P(11, "Evaluation (ITB 35.2(f))", style: "HeaderEvaCriteria", role: ParagraphRole.HeadingCandidate, bold: true),
+                P(12, "Qualification", style: "HeaderEvaCriteria", role: ParagraphRole.HeadingCandidate, bold: true),
+                P(13, "Supplementary Information", style: "Sec7Heading", role: ParagraphRole.Normal, alignment: "center"),
+                P(14, "Beneficial Ownership Disclosure Form", style: "SectionIXHeader", role: ParagraphRole.Normal, alignment: "center"),
+                P(15, "Evaluation of Technical Part (ITP 43)", style: "Normal", role: ParagraphRole.HeadingCandidate, numberingId: 28, numberingLevel: 7, numberLabel: "1."),
+                P(16, "7. Confidentiality", style: "Normal", role: ParagraphRole.Normal, tableDepth: 1, bold: true),
+                P(17, "A table prose line", style: "Normal", role: ParagraphRole.Normal, tableDepth: 1),
+                P(18, "Another table prose line", style: "Sub-ClauseText", role: ParagraphRole.Normal, tableDepth: 1),
+                P(19, "Yet another table prose line", style: "Sub-ClauseText", role: ParagraphRole.Normal, tableDepth: 1),
+                P(20, "Final table prose line", style: "Sub-ClauseText", role: ParagraphRole.Normal, tableDepth: 1),
+            ],
+        }.Build();
+
+        var headings = StyleDeclaredOutline.BuildFromOutlineLevel(doc);
+
+        Assert.Equal([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], headings.Select(h => h.Index));
+        Assert.Equal([1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], headings.Select(h => h.Level));
+        Assert.Equal("outline_anchor_table_custom_style", headings[1].ConfidenceBasis);
+    }
+
     private static SlimParagraph P(int index, string text, int? outline = null, bool toc = false) => new()
     {
         Index = index,
@@ -67,7 +107,13 @@ public sealed class OutlineLevelDeclaredOutlineTests
         string text,
         string style,
         ParagraphRole role,
-        int? outline = null) => new()
+        int? outline = null,
+        int tableDepth = 0,
+        bool bold = false,
+        string? alignment = null,
+        int? numberingId = null,
+        int? numberingLevel = null,
+        string? numberLabel = null) => new()
     {
         Index = index,
         StableId = $"p[{index}]",
@@ -75,6 +121,12 @@ public sealed class OutlineLevelDeclaredOutlineTests
         StyleId = style,
         OutlineLevel = outline,
         Role = role,
+        TableDepth = tableDepth,
+        Bold = bold,
+        Alignment = alignment,
+        NumberingId = numberingId,
+        NumberingLevel = numberingLevel,
+        NumberLabel = numberLabel,
         FontSizePt = 12,
     };
 }

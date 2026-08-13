@@ -99,6 +99,139 @@ public class SplitMergedParagraphsTests : IDisposable
         Assert.Single(tuDoanGop.Select(h => h.Index).Distinct());
     }
 
+    [Fact]
+    public void Lat_cat_giu_span_nguon_trong_doan_gop()
+    {
+        var text = "Mở đầu.Điều 4. Áp dụng Bộ luật dân sự1. Thân bài.Điều 5. Áp dụng tập quán";
+        var document = new SlimDocument
+        {
+            FileName = "x.docx",
+            SourcePath = "x.docx",
+            Paragraphs =
+            [
+                new SlimParagraph { Index = 7, StableId = "body[1]/p[8]", Text = text },
+            ],
+        }.Build();
+
+        var added = HeaderExtractionPipeline.MergedParagraphHeadings(document, []);
+
+        var dieu4 = Assert.Single(added, h => h.Text == "Điều 4. Áp dụng Bộ luật dân sự");
+        Assert.Equal(7, dieu4.Index);
+        Assert.Equal("body[1]/p[8]", dieu4.StableId);
+        Assert.Equal(text, dieu4.OriginalText);
+        Assert.Equal(new TextOffsetSpan(text.IndexOf("Điều 4.", StringComparison.Ordinal),
+            text.IndexOf("1. Thân bài.", StringComparison.Ordinal)), dieu4.HeadingSpan);
+        Assert.Equal("MergedParagraphMarker", dieu4.BoundarySource);
+    }
+
+    [Fact]
+    public void Khong_che_lai_table_of_contents_day_dac_thanh_heading()
+    {
+        var toc = "2 Standard Procurement Document Table of Contents " +
+                  "Section I - Instructions to Bidders .................................................................................6 " +
+                  "Section II - Bid Data Sheet (BDS) ...............................................................................31 " +
+                  "Section III - Evaluation and Qualification Criteria ......................................................43 " +
+                  "Section IV - Bidding Forms ........................................................................................61 " +
+                  "Section V - Eligible Countries ...................................................................................124 " +
+                  "Section VI - Fraud and Corruption ............................................................................125 " +
+                  "Section VII - Works Requirements ..........................................................................129 " +
+                  "Section VIII - General Conditions ....................................................................140 " +
+                  "Section IX - Particular Conditions of Contract ..........................................................273 " +
+                  "Section X - Contract Forms .......................................................................................285";
+        var document = new SlimDocument
+        {
+            FileName = "x.docx",
+            SourcePath = "x.docx",
+            Paragraphs =
+            [
+                new SlimParagraph { Index = 28, StableId = "body[1]/p[29]", Text = toc },
+            ],
+        }.Build();
+
+        var added = HeaderExtractionPipeline.MergedParagraphHeadings(document, []);
+
+        Assert.Empty(added);
+    }
+
+    [Fact]
+    public void Van_giu_section_body_du_co_table_of_contents_cua_chinh_section()
+    {
+        var section = "Section I - Instructions to Bidders 4 SECTION I - INSTRUCTIONS TO BIDDERS TABLE OF CONTENT " +
+                      "A. General ........................................................................................................ 6 " +
+                      "B. Contents of Bidding Document .................................................................... 12 " +
+                      "C. Preparation of Bids ......................................................................................... 18 " +
+                      "D. Submission and Opening of Bids .................................................................... 25";
+        var document = new SlimDocument
+        {
+            FileName = "x.docx",
+            SourcePath = "x.docx",
+            Paragraphs =
+            [
+                new SlimParagraph { Index = 33, StableId = "body[1]/p[34]", Text = section },
+            ],
+        }.Build();
+
+        var added = HeaderExtractionPipeline.MergedParagraphHeadings(document, []);
+
+        Assert.Contains(added, h => h.Text.StartsWith("Section I - Instructions to Bidders", StringComparison.Ordinal));
+        Assert.DoesNotContain(added, h => h.Text.Contains("................................................................"));
+    }
+
+    [Fact]
+    public void Van_giu_section_toc_slice_neu_no_la_anchor_high_level()
+    {
+        var section = "Section VIII - General Conditions of Contract 139 " +
+                      "SECTION VIII - GENERAL CONDITIONS OF CONTRACT (GCC) Table of Clauses " +
+                      "Provisions 1.1 Definitions........................................................................140 " +
+                      "Employer 2.1 Right of Access to the Site ........................................................144";
+        var document = new SlimDocument
+        {
+            FileName = "x.docx",
+            SourcePath = "x.docx",
+            Paragraphs =
+            [
+                new SlimParagraph { Index = 302, StableId = "body[1]/p[303]", Text = section },
+            ],
+        }.Build();
+
+        var added = HeaderExtractionPipeline.MergedParagraphHeadings(document, []);
+
+        Assert.Contains(added, h => h.Text.StartsWith(
+            "SECTION VIII - GENERAL CONDITIONS OF CONTRACT (GCC)", StringComparison.Ordinal));
+        Assert.DoesNotContain(added, h => h.Text.StartsWith("Provisions 1.1", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void Chi_giu_page_header_section_lan_dau_trong_doan_gop()
+    {
+        var document = new SlimDocument
+        {
+            FileName = "x.docx",
+            SourcePath = "x.docx",
+            Paragraphs =
+            [
+                new SlimParagraph
+                {
+                    Index = 10,
+                    StableId = "body[1]/p[11]",
+                    Text = "Section VIII - General Conditions of Contract 140 Contract 1. General",
+                },
+                new SlimParagraph
+                {
+                    Index = 12,
+                    StableId = "body[1]/p[13]",
+                    Text = "Section VIII - General Conditions of Contract 141 Contractor 4.1 Contractor's General Obligations",
+                },
+            ],
+        }.Build();
+
+        var added = HeaderExtractionPipeline.MergedParagraphHeadings(document, []);
+
+        Assert.Contains(added, h => h.Text == "Section VIII - General Conditions of Contract 140");
+        Assert.DoesNotContain(added, h => h.Text == "Section VIII - General Conditions of Contract 141");
+        Assert.Contains(added, h => h.Text == "Contractor 4.1 Contractor's General Obligations");
+    }
+
     /// <summary>
     /// Đoạn heading lành lặn KHÔNG được chẻ nhỏ khi bật cờ. Không có test này thì cờ có thể băm
     /// vụn tài liệu Word gốc mà bench 10 vẫn xanh vì bench không có đoạn gộp.
