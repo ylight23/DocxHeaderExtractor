@@ -76,6 +76,24 @@ nếu thiếu comment text thì key duplicate-source bị từ chối. Đây là
 output giữ đúng marker/title đầu nhưng nuốt thêm câu thân bài đầu tiên; luật `KHOAN` không phủ hai
 file này vì tail sau title bắt đầu bằng văn xuôi, không phải `1.`/`1)`.
 
+## `typed-human/` — đáp án số gõ tay từ nguồn ngoài pipeline
+
+`092_RFC9111_HTTP_Caching.key` là full key đầu tiên cho `TypedNumbering`: 64 section heading thật
+lấy từ RFC Editor XML (`numbered=true`), bỏ front matter, TOC, acknowledgements, index và authors.
+DOCX corpus là bản PDF/text-layout theo trang nên mỗi heading xuất hiện trong TOC và body; stable ID
+trong key chọn occurrence cuối, tức phần body.
+
+Đo hiện tại với `--no-llm --split-merged`:
+
+| file | truth | returned | exact P/R/F1 | marker diagnostic |
+|---|--:|--:|---:|---|
+| `092_RFC9111_HTTP_Caching` | 64 | 300 | 0% | 62/64 marker xuất hiện; 61/64 output cùng stableId bắt đầu bằng title nguồn |
+
+Kết luận: route `TypedNumbering` trên RFC không mất marker chính, nhưng exact title hỏng vì nuốt
+body/page footer và bắt nhầm TOC/reference/list items. Cấp cũng chưa ổn: trong 61 heading bắt đầu
+đúng title nguồn, chỉ 42 heading có level đúng. Đây là bench đầu tiên cho nhóm Typed/RFC, không dùng
+để làm đẹp số mà để phơi lỗi route.
+
 ## Tài liệu mật
 
 Một tài liệu thử nghiệm đóng dấu MẬT đã được **khử hoàn toàn**: không có bản sao trong repo,

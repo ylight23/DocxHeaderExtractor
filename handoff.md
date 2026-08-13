@@ -5164,3 +5164,51 @@ Lý do đối xứng anh em chưa đủ làm luật: nó phát hiện được �
 Kết luận: với dữ liệu hiện có, route pháp quy đã đạt trần an toàn cho phần cấu trúc
 (P/R/F1 82,6%, cấp/cha 100%). Phần ranh giới `Điều` không có khoản số vẫn là ca cần abstain/review
 hoặc cần thêm tín hiệu ngoài text tuyến tính. Không cài bản vá ở đây.
+
+## §71. Full key TypedNumbering đầu tiên: RFC 9111 phơi lỗi route
+
+Đã thêm `keys/typed-human/092_RFC9111_HTTP_Caching.key`: 64 heading numbered thật lấy từ RFC Editor
+XML (`https://www.rfc-editor.org/rfc/rfc9111.xml`). Chỉ lấy `<section numbered="true">`, bỏ front
+matter, TOC, acknowledgements, index và authors. Cấp lấy từ `pn=section-...`:
+
+- `1.` -> level 1
+- `1.2.` -> level 2
+- `1.2.1.` -> level 3
+- `A.`/`B.` appendix -> level 1
+
+DOCX corpus là bản PDF/text-layout theo trang; mỗi section heading xuất hiện hai lần: trong TOC và
+trong body. Khi map stable ID, chọn occurrence cuối để lấy body. Đây là đáp án độc lập, không lấy từ
+output pipeline.
+
+Eval exact hiện tại:
+
+| file | truth | returned | P | R | F1 | level |
+|---|--:|--:|--:|--:|--:|--:|
+| 092_RFC9111_HTTP_Caching | 64 | 300 | 0% | 0% | 0% | — |
+
+Con số 0% không có nghĩa route không thấy section. Diagnostic theo marker:
+
+| lát cắt | số |
+|---|--:|
+| marker section nguồn xuất hiện trong output ở bất kỳ level nào | 62/64 |
+| output cùng stableId bắt đầu bằng đúng title nguồn | 61/64 |
+| level đúng trong 61 ca starts-with | 42/61 |
+| output nằm ở vùng TOC sớm (`p < 9`) | 48/300 |
+| output chứa page footer/header kiểu `Standards Track Page` | 26/300 |
+| output bắt đầu bằng marker số | 260/300 |
+
+Kết luận:
+
+1. `TypedNumbering` trên RFC không mất marker chính; nó **mất exact title** vì nuốt body/page footer
+   và do DOCX text-layout gộp cả trang vào một paragraph.
+2. Precision rất thấp vì route bắt cả TOC, references, danh sách numbered trong thân bài và page
+   artifacts.
+3. Khác `LegalStructured`, Typed còn sai cấp đáng kể: 42/61 starts-with đúng level.
+4. Đây là bench đầu tiên cho nhóm Typed/RFC và nó chỉ ra một route-risk lớn hơn thiếu answer key.
+
+Việc tiếp theo nên đo trước khi sửa:
+
+- Tách output RFC theo vùng TOC/body bằng page order: nếu bỏ `p < 9` thì precision cải thiện bao
+  nhiêu?
+- Với starts-with đúng title, xem sai level do công thức đếm dấu chấm hay do marker trong thân bài.
+- Sau RFC, vẫn cần hai key đại diện khác: một tài chính và một giáo trình.
