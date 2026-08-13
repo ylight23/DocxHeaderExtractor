@@ -58,6 +58,30 @@ public sealed class AutoDocumentModePipelineTests : IDisposable
         Assert.NotNull(outline.DocumentMode);
     }
 
+    [Fact]
+    public async Task Auto_typed_numbering_giu_cap_theo_do_sau_marker_khi_no_llm()
+    {
+        var paragraphs = new List<string>();
+        for (var chapter = 1; chapter <= 5; chapter++)
+        {
+            paragraphs.Add($"{chapter} Chapter {chapter}");
+            paragraphs.Add($"{chapter}.1 \u2022 First typed section {chapter} Body text that belongs to the converted page.");
+            paragraphs.Add($"{chapter}.2 \u2022 Second typed section {chapter} Body text that belongs to the converted page.");
+        }
+        paragraphs.Add(Body);
+
+        var path = Docx([.. paragraphs]);
+
+        var options = new PipelineOptions { DisableLlm = true };
+        options.Extraction.SplitMergedParagraphs = true;
+        using var pipeline = new HeaderExtractionPipeline(options);
+        var outline = await pipeline.RunAsync(path);
+
+        Assert.Equal("auto:typed-numbering", outline.DeterministicRoute);
+        Assert.Contains(outline.Headings, h => h.Text.StartsWith("1.1", StringComparison.Ordinal) && h.Level == 2);
+        Assert.Contains(outline.Headings, h => h.Text.StartsWith("5.2", StringComparison.Ordinal) && h.Level == 2);
+    }
+
     private string Docx(params string[] paragraphs)
     {
         var path = Path.Combine(Path.GetTempPath(), $"dhx-auto-mode-{Guid.NewGuid():N}.docx");

@@ -368,6 +368,16 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     // Điều 5... như list thường và ghi đè cấp pháp quy đã biết chắc.
                     Log("Hậu xử lý hierarchy: giữ cấp pháp quy khai báo, bỏ qua suy cấp generic.");
                 }
+                else if (declared.Route == "auto:typed-numbering")
+                {
+                    // TypedNumberingOutline đã đọc cấp trực tiếp từ độ sâu marker (1 → level 1,
+                    // 1.1 → level 2). StructuralHierarchyResolver là luật generic theo ngữ cảnh
+                    // anh-em/cha-con; trên PDF text-layout có page header dạng "2.1 • ..." nó đã
+                    // đo được là đẩy 2.1 xuống level 3 trong OpenStax 056. Cùng nguyên tắc với
+                    // LegalStructuredOutline: khi route chuyên biệt có nguồn cấp quyết định, không
+                    // cho resolver generic ghi đè.
+                    Log("Hậu xử lý hierarchy: giữ cấp typed-numbering theo độ sâu marker, bỏ qua suy cấp generic.");
+                }
                 else
                 {
                     var fixes = StructuralHierarchyResolver.Apply(headings, slim, _options.Extraction.UseStyleTrust);

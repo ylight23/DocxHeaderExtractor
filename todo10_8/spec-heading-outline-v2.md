@@ -949,10 +949,12 @@ là bản PDF/text-layout theo trang. Vì vậy khi đánh giá Typed phải bá
 `exact-title` thấp trên RFC rằng route mất heading, nếu marker/title-prefix và level vẫn đúng.
 
 Key OpenStax 056 cho thấy Typed text-layout không đồng nhất. RFC 092 là dạng **body marker rõ**:
-navigation body 61/64 nhưng exact title hỏng. OpenStax 056 là dạng **body delimiter mất**:
-`TitleThe body...` khiến builder bắt TOC/page-header tốt hơn body; body navigation chỉ 4/46 dù
-34/46 truth paragraph đã là `HeadingCandidate`. Vì vậy mọi luật Typed mới phải nói rõ nó xử lý
-subtype nào; không được dùng marker-last/occurrence-last đại trà vì RFC registry/reference đã bác.
+navigation body 61/64 nhưng exact title hỏng. OpenStax 056 là dạng **occurrence nhập nhằng**:
+route nhìn thấy đủ 46/46 title ở đâu đó, nhưng sau khi bỏ TOC/page-header typed mới chọn đúng
+occurrence thân bài 14/46; cấp của 14 hit đúng 14/14 sau khi chặn generic hierarchy ghi đè cấp
+typed. Giả thuyết `TitleThe body...` là lỗi whitespace tầng XML chưa được xác nhận — phép đo raw
+`<w:t>` bị nhiễu bởi `w:br`. Vì vậy mọi luật Typed mới phải nói rõ nó xử lý subtype nào; không
+được dùng marker-last/occurrence-last đại trà vì RFC registry/reference đã bác.
 
 **Tập chế độ chưa chắc đã đầy đủ.** Bản đầu của spec này có 5 chế độ; ba tài liệu hành chính tiếp theo phá vỡ ngay một trong số đó và buộc phải thêm ba chế độ mới. Không có cơ sở nào để tin rằng 8 chế độ hiện tại là đủ. Mỗi thể loại tài liệu mới đều có khả năng lộ ra một chế độ chưa biết.
 
@@ -962,7 +964,7 @@ subtype nào; không được dùng marker-last/occurrence-last đại trà vì 
 |---|---|---|
 | `toc-anchored` | A | có (TOC, 28 mục) |
 | `numpr-driven` | A (bỏ TOC) | có |
-| `typed-numbering` | B, RFC 9111, OpenStax 056 | có cho RFC 9111; exact title 1,7% sau filter footer, điều hướng 61/64. Có thêm key OpenStax 056: exact 0%, body navigation 4/46, truth candidate 34/46. 31/31 file Typed corpus là text-layout nặng |
+| `typed-numbering` | B, RFC 9111, OpenStax 056 | có cho RFC 9111; exact title 1,7% sau filter footer, điều hướng 61/64. Có thêm key OpenStax 056: exact 0%, returned 133 sau filter TOC/page-header typed, body occurrence 14/46, level 14/14, truth candidate 82,6%. 31/31 file Typed corpus là text-layout nặng |
 | `vn-administrative` | C, D, E | **không** |
 | `format-driven` | C | **thất bại có chứng cứ** (thiếu mục) |
 | `outlinelvl-driven` | — | **chưa bao giờ** |

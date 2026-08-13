@@ -50,6 +50,59 @@ public sealed class TypedNumberingOutlineTests
         Assert.Equal(text, r[0].Text);
     }
 
+    [Fact]
+    public void Bo_muc_luc_go_tay_khoi_outline_than_bai()
+    {
+        var doc = new SlimDocument
+        {
+            FileName = "typed.docx",
+            SourcePath = "typed.docx",
+            Paragraphs =
+            [
+                new SlimParagraph
+                {
+                    Index = 0,
+                    StableId = "p[0]",
+                    Text = "1.1 Basic American Legal Principles 3 1.2 Sources and Types of Law 5",
+                    InTableOfContents = true,
+                },
+                new SlimParagraph
+                {
+                    Index = 1,
+                    StableId = "p[1]",
+                    Text = "1.1 Basic American Legal Principles The American legal system has its roots.",
+                },
+            ],
+        }.Build();
+
+        var r = TypedNumberingOutline.Build(doc);
+
+        Assert.Single(r);
+        Assert.Equal("p[1]", r[0].StableId);
+    }
+
+    [Fact]
+    public void Bo_muc_luc_go_tay_bi_gop_thanh_mot_doan_dai()
+    {
+        var r = Build(
+            "1 Chapter One 3 1.1 First Section 3 1.2 Second Section 5 2 Chapter Two 9 2.1 Third Section 10 2.2 Fourth Section 12",
+            "1.1 First Section Body text");
+
+        Assert.Single(r);
+        Assert.Equal("p[1]", r[0].StableId);
+    }
+
+    [Fact]
+    public void Bo_page_header_text_layout_khoi_outline_than_bai()
+    {
+        var r = Build(
+            "4 1 • American Law, Legal Reasoning, and the Legal System Figure 1.2 body text",
+            "1.1 Basic American Legal Principles Body text");
+
+        Assert.Single(r);
+        Assert.StartsWith("1.1", r[0].Text, StringComparison.Ordinal);
+    }
+
     private static List<HeadingRecord> Build(params string[] texts)
     {
         List<SlimParagraph> ps = [];

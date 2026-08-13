@@ -86,12 +86,13 @@ trong key chọn occurrence cuối, tức phần body.
 `056_OpenStax_Business_Law_I_Essentials.key` là key Typed thứ hai, thuộc `04_giao_trinh`: 14 chapter
 + 32 numbered section từ OpenStax web 2019. Key này cố ý đo occurrence body cuối, không đo TOC.
 
-Đo hiện tại với `--no-llm --split-merged` sau filter footer RFC:
+Đo hiện tại với `--no-llm --split-merged` sau filter footer RFC và filter TOC/page-header hẹp
+cho typed text-layout:
 
 | file | truth | returned | exact P/R/F1 | marker diagnostic |
 |---|--:|--:|---:|---|
 | `092_RFC9111_HTTP_Caching` | 64 | 293 | 1,0% / 4,7% / 1,7% | 61/64 navigation usable, level đúng 61/61 |
-| `056_OpenStax_Business_Law_I_Essentials` | 46 | 190 | 0% / 0% / 0% | body navigation usable 4/46, level đúng 3/4; truth lọt candidate 34/46 |
+| `056_OpenStax_Business_Law_I_Essentials` | 46 | 133 | 0% / 0% / 0% | body occurrence usable 14/46, level đúng 14/14; truth lọt candidate 82,6% |
 
 Kết luận: route `TypedNumbering` trên RFC không mất marker chính, nhưng exact title hỏng vì nuốt
 body và bắt nhầm TOC/reference/list items. Sau khi tách builder typed riêng, cấp trong 61 heading
@@ -104,10 +105,12 @@ lỗi route.
 tiếp theo vẫn cần nguồn ngoài pipeline, nhưng metric chính phải tách rõ: `exact-title` đo khả năng
 writeback/span; `navigation-usable` đo cây điều hướng khi title còn dính body nhưng marker/level đúng.
 
-Key 056 cho thấy giáo trình text-layout có một lỗi khác RFC: body heading thường bị nối mất khoảng
-trắng giữa title và thân bài (`TitleThe...`), trong khi TOC có delimiter sạch. Vì vậy route hiện tại
-dễ bắt TOC/page-header hơn body occurrence. Không vá bằng marker-last; cần rule theo vùng/occurrence
-an toàn hơn.
+Key 056 cho thấy giáo trình text-layout có một lỗi khác RFC: route nhìn thấy đủ title ở đâu đó
+(46/46 any occurrence) nhưng chọn đúng occurrence thân bài mới đạt 14/46. Giả thuyết mất khoảng
+trắng kiểu `TitleThe...` đã được kiểm tra nhưng chưa đủ kết luận là lỗi tầng XML: phép đo raw
+`<w:t>` ban đầu bị nhiễu vì chưa tính `w:br`. Lỗi đã xác nhận và đã vá là generic hierarchy không
+được ghi đè cấp typed; phần còn lại là bài toán vùng/occurrence của PDF text-layout. Không vá bằng
+marker-last; cần rule occurrence an toàn hơn.
 
 ## Tài liệu mật
 

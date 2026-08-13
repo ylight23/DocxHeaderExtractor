@@ -5427,32 +5427,40 @@ Hệ quả cho thứ tự việc:
 OpenStax web 2019. Key gồm 46 mục điều hướng: 14 chapter + 32 numbered section, stableId chọn
 occurrence body cuối trong DOCX, không chọn TOC.
 
-Đo `056` với `--no-llm --split-merged`:
+Đo `056` với `--no-llm --split-merged` sau khi remap stableId key theo slim XML và thêm filter
+typed hẹp cho TOC/page-header text-layout:
 
 | metric | số |
 |---|--:|
 | truth | 46 |
-| returned | 190 |
+| returned | 133 |
 | exact P/R/F1 | 0% |
-| body navigation usable | 4/46 |
-| level đúng trong body navigation hit | 3/4 |
-| truth paragraph là HeadingCandidate | 34/46 |
+| body occurrence usable | 14/46 |
+| level đúng trong body occurrence hit | 14/14 |
+| truth lọt candidate | 82,6% |
+| any occurrence chứa title | 46/46 trước filter; 25/46 sau filter hẹp |
 
 Đọc kết quả:
 
-- Khác RFC 092: RFC có 61/64 body navigation usable; OpenStax 056 chỉ 4/46.
-- Không phải chỉ do candidate filter: 34/46 truth body đã là `HeadingCandidate`, nhưng builder vẫn
-  không trả đúng occurrence body.
-- Mẫu lỗi chính: ở body, PDF text-layout nối title với thân bài không có khoảng trắng
-  (`1.1 Basic American Legal PrinciplesThe...`), còn TOC có delimiter sạch
-  (`1.1 Basic American Legal Principles 3`). Splitter/builder vì vậy bắt TOC/page-header dễ hơn body.
+- Khác RFC 092: RFC có 61/64 body navigation usable; OpenStax 056 sau filter chỉ có 14/46
+  occurrence thân bài đúng. Tức RFC hỏng chủ yếu ở title/body span; OpenStax hỏng ở occurrence/vùng.
+- Không phải chỉ do candidate filter: 82,6% truth đã lọt candidate, nhưng builder vẫn không trả đúng
+  occurrence body ở phần lớn mục.
+- Giả thuyết ban đầu `TitleThe...` là lỗi whitespace tầng XML chưa được xác nhận. Đo raw thấy nhiều
+  lower→Upper ở ranh giới `<w:t>`, nhưng phép đo đó thiếu xử lý `w:br`; C# hiện đã thêm khoảng trắng
+  cho `Break`. Vì vậy chưa được ghi là lỗi tầng 0.
+- Lỗi đã xác nhận và đã vá: no-LLM post-process chạy `StructuralHierarchyResolver` generic sau
+  `TypedNumberingOutline`, làm 2.1/2.2 bị đẩy xuống level 3. Route `auto:typed-numbering` nay bỏ qua
+  resolver generic; cấp typed giữ trực tiếp theo độ sâu marker.
+- Filter đã thêm: bỏ `InTableOfContents`, bỏ paragraph typed TOC gộp dày đặc, và bỏ page-header
+  text-layout kiểu `4 1 • Chapter...`. Returned giảm 190→133 nhưng exact vẫn 0 vì title dính body.
 - Không dùng marker-last: §73 đã bác bằng RFC registry/reference lặp marker ở cuối tài liệu.
 
 Kết luận: nhóm Typed có ít nhất hai dạng lỗi:
 
 1. RFC-like: body marker rõ, navigation tốt, exact title hỏng vì dính body.
-2. OpenStax-like: body marker/title bị nối delimiter, route ưu tiên TOC/page-header, navigation body
-   thấp dù paragraph đã là candidate.
+2. OpenStax-like: title có nhiều occurrence, route dễ chọn TOC/page-header/body-repeat; occurrence
+   thân bài đúng còn thấp dù paragraph đã là candidate.
 
 Việc kế tiếp đáng làm: chẩn đoán một file `03_tai_chinh_ke_toan` để xem nó gần RFC-like hay
 OpenStax-like. Sau đó mới thiết kế luật vùng/occurrence cho Typed; chưa vá bằng heuristic rộng.

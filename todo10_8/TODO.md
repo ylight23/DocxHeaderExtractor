@@ -92,8 +92,9 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
       cuối tài liệu lặp marker; dấu câu blind exact 0/61; filter footer nhỏ đưa returned 300→293 và
       exact 0→3/64; đo trực tiếp `word/document.xml` cho 31 file Typed trong `03/04/07` cho thấy
       cả ba nhóm đều text-layout nặng, nên phải báo thêm metric `navigation-usable`; đã thêm key
-      giáo trình `056` từ OpenStax: 46 truth, returned 190, exact 0%, body navigation 4/46, truth
-      candidate 34/46 — lỗi chính là body title bị nối mất delimiter nên builder bắt TOC/page-header;
+      giáo trình `056` từ OpenStax: 46 truth, returned 133 sau filter TOC/page-header typed, exact
+      0%, body occurrence usable 14/46, level đúng 14/14, truth candidate 82,6% — lỗi cấp typed do
+      generic hierarchy ghi đè đã vá; phần còn lại là chọn occurrence/vùng trong text-layout;
       còn cần 1 tài chính),
       `SemanticOnly/ConversionFailure` (không đo như mode trích xuất).
 - [ ] Mỗi lần đo corpus phải ghi health check theo `Mode + Status`: `files`, `candidates`,
