@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -235,25 +236,57 @@ public static class StyleDeclaredOutline
     {
         var frontMatter = (int)(document.Paragraphs.Count * FrontMatterFraction);
         var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var seenIndexes = new HashSet<int>();
+        var customStylesUnderOutlineAnchor = OutlineAnchorCustomStyles.Find(document.Paragraphs);
         var result = new List<HeadingRecord>();
+        int? currentAnchorLevel = null;
 
         foreach (var p in document.Paragraphs.OrderBy(p => p.Index))
         {
-            if (p.OutlineLevel is not >= 0 or > 8 || string.IsNullOrWhiteSpace(p.Text)) continue;
+            if (string.IsNullOrWhiteSpace(p.Text)) continue;
             if (p.Corrupt) continue;                                   // X1
             if (p.InTableOfContents) continue;                         // TOC lặp lại heading thân bài.
             if (p.StyleId?.StartsWith("TOC", StringComparison.OrdinalIgnoreCase) == true) continue;
             if (Caption.IsMatch(p.Text)) continue;                     // X2
             if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
 
+            if (p.OutlineLevel is >= 0 and <= 8)
+            {
+                currentAnchorLevel = p.OutlineLevel.Value;
+                result.Add(new HeadingRecord
+                {
+                    Index = p.Index,
+                    StableId = p.StableId,
+                    Level = Math.Clamp(p.OutlineLevel.Value + 1, 1, 9),
+                    Text = p.Text,
+                    StyleId = p.StyleId,
+                    Source = HeadingSource.Structure,
+                    Confidence = 1.0,
+                    ConfidenceBasis = "outline_level_declared",
+                    DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
+                });
+                seenIndexes.Add(p.Index);
+                continue;
+            }
+
+            // §63: tài liệu form-based có cụm heading liên tiếp không mở ngay ra prose dài.
+            // OutlineLvl vẫn là nguồn neo; chỉ ghép thêm HeadingCandidate style tự đặt đã sống
+            // sót dưới anchor đó, với cấp = anchor gần nhất + 1.
+            if (!p.IsCandidate) continue;
+            if (!OutlineAnchorCustomStyles.IsAnchoredCustomStyle(p, customStylesUnderOutlineAnchor)) continue;
+            if (currentAnchorLevel is not { } anchorLevel) continue;
+            if (!seenIndexes.Add(p.Index)) continue;
+
             result.Add(new HeadingRecord
             {
                 Index = p.Index,
-                Level = Math.Clamp(p.OutlineLevel.Value + 1, 1, 9),
+                StableId = p.StableId,
+                Level = Math.Clamp(anchorLevel + 2, 1, 9),
                 Text = p.Text,
+                StyleId = p.StyleId,
                 Source = HeadingSource.Structure,
-                Confidence = 1.0,
-                ConfidenceBasis = "outline_level_declared",
+                Confidence = 0.95,
+                ConfidenceBasis = "outline_anchor_custom_style",
                 DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
             });
         }

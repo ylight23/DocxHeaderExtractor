@@ -4771,3 +4771,80 @@ Việc tiếp theo có căn cứ:
    `03_tai_chinh_ke_toan`, `07_system_generated`), và phải gán cả cấp.
 
 **497 test xanh** (`dotnet test --no-restore`).
+
+## §64. Vá hẹp OutlineLevelDriven: cứu custom-style candidate dưới outline anchor
+
+Kiểm chứng thêm trước khi sửa: trong 101 mục ngoài bảng, score <0,25, không có `outlineLvl`,
+**101/101 từng là `HeadingCandidate` trước `DemoteRunsWithoutOwnProse`**, và **95/101** bị chính
+rule này demote. Score trước demote không thấp:
+
+```
+LOW_OUTSIDE_MISS 101
+LOW_DEMOTED_BY_RUN 95 94.1%
+LOW_WAS_CANDIDATE_PRE 101 100.0%
+
+LOW_PRE_SCORE_BUCKETS
+0.45-0.64 14
+0.65-0.74 80
+>=0.75     7
+```
+
+Vậy nguyên nhân đúng là giả định prose-based: "heading phải mở ngay ra thân bài riêng". Trên
+form-based template, cụm heading liên tiếp là cấu trúc thật nên không được demote.
+
+Đã cài bản hẹp, không dùng rule B1–B3 thô:
+
+1. `OutlineAnchorCustomStyles.Find`: nhận style tự đặt ngoài bảng, không built-in Heading, lặp
+   `>=3`, text trung bình `<90`, và chỉ sau khi đã có anchor `w:outlineLvl` phía trước.
+2. `DocxSlimExtractor.DemoteRunsWithoutOwnProse`: miễn trừ các paragraph dùng style đó, để candidate
+   đã được tầng heuristic nhận ra không bị xoá trước khi route deterministic đọc.
+3. `StyleDeclaredOutline.BuildFromOutlineLevel`: ngoài nguồn chính `outlineLvl`, ghép thêm những
+   `HeadingCandidate` custom-style đã sống sót dưới anchor, cấp = cấp anchor gần nhất + 1,
+   `ConfidenceBasis = outline_anchor_custom_style`.
+
+Một vế cố ý **không** cài trong demote exemption: "mọi paragraph có `OutlineLevel` đều miễn trừ".
+Test `TrailingBlockTests` bắt được nó làm sống lại nhãn chữ ký mang style Heading không đáng tin,
+vì `outlineLvl` có thể được kế thừa từ style. `outlineLvl` vẫn là nguồn chính ở builder; chỉ không
+dùng nó như lá chắn chung cho luật demote.
+
+Đo lại partial TOC bench với đúng cấu hình:
+
+```
+dhx toc-keys <temp-02_hop_dong_mua_sam> --toc-match-threshold 0.8 --toc-partial
+dhx eval <temp-bench> --no-llm
+```
+
+Kết quả trên 9 file, 743 cặp:
+
+```
+P 100% · R 74.2% · F1 85.2% · đúng cấp 100% · đúng cha 100%
+```
+
+Nhắc lại caveat: vì đây là `partial_toc`, P/F1 chỉ nói trong vùng đã khớp TOC; precision thật của
+toàn tài liệu vẫn chưa đo được. Số đáng tin ở đây là recall trên 743 cặp và đúng cấp/cha của các cặp
+đã xác thực.
+
+Theo file:
+
+| file | key | hit | recall |
+|---|--:|--:|--:|
+| 026 | 68 | 14 | 20.6% |
+| 027 | 92 | 66 | 71.7% |
+| 031 | 22 | 22 | 100% |
+| 033 | 89 | 80 | 89.9% |
+| 036 | 117 | 68 | 58.1% |
+| 037 | 126 | 77 | 61.1% |
+| 038 | 75 | 74 | 98.7% |
+| 039 | 78 | 75 | 96.2% |
+| 040 | 76 | 75 | 98.7% |
+
+Kết luận: patch đúng hướng và nâng recall mạnh hơn trần 61,9% của nguồn score ≥0,65 vì nó cứu cả
+nhóm candidate bị demote xuống score 0. Nhưng file 026 vẫn là outlier lớn; nhóm còn lại chủ yếu là
+heading trong bảng/điều khoản hoặc cấu trúc hợp đồng mà partial TOC chưa đủ để phân biệt precision.
+
+Việc còn lại sau §64:
+
+1. Gán tay 1 file trong 9 file partial TOC — ưu tiên 026 hoặc 036 — để đo precision thật của bản vá.
+2. Gán tay 3 file `TypedNumbering` đại diện (`04_giao_trinh`, `03_tai_chinh_ke_toan`,
+   `07_system_generated`), có cả cấp.
+3. Sau khi có full key, mới quyết định có cài tiếp nguồn phụ trong bảng/điều khoản hay không.

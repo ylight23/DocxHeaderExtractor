@@ -47,7 +47,10 @@ Vì Word sinh TOC field từ outline/style chứ không từ số gõ tay thuầ
 không chỉ là corpus thiếu may mắn.
 
 `dhx eval` đọc header `partial_toc` và chấm theo phạm vi từng phần: không phạt false positive ngoài
-các mục đã khớp TOC, và không đưa partial key vào calibration profile.
+các mục đã khớp TOC, và không đưa partial key vào calibration profile. Vì vậy với partial key,
+**precision/F1 chỉ là số trong vùng đã gán**, không phải precision thật của toàn tài liệu; chỉ nên
+đọc recall, đúng cấp và danh sách thiếu trên các cặp TOC đã xác thực. Muốn đo precision thật vẫn cần
+ít nhất một `.key` đầy đủ do người kiểm.
 
 ## Tài liệu mật
 

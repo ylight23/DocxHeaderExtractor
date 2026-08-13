@@ -576,10 +576,11 @@ public sealed class DocxSlimExtractor
     /// không mang thông tin gì.
     /// </para>
     /// </summary>
-    private static void DemoteRunsWithoutOwnProse(List<SlimParagraph> ps, int structuralMarkers)
+    internal static void DemoteRunsWithoutOwnProse(List<SlimParagraph> ps, int structuralMarkers)
     {
         if (structuralMarkers < MinStructuralMarkersForEmphasisRule) return;
 
+        var customStylesUnderOutlineAnchor = OutlineAnchorCustomStyles.Find(ps);
         var run = new List<SlimParagraph>();
         void Flush()
         {
@@ -597,7 +598,11 @@ public sealed class DocxSlimExtractor
             if (p.IsCandidate)
             {
                 // Tuyên bố cấu trúc tường minh thì không bị dãy cuốn theo (§1).
-                if (p.HasBuiltInHeadingStyle || p.NumberingId is not null || p.NumberingStyleLevel is not null)
+                // §63: tài liệu form-based (World Bank procurement templates) có cụm heading liên
+                // tiếp không mở ngay ra prose dài. Các heading phụ trong cụm thường dùng style tự
+                // đặt lặp lại dưới một anchor outlineLvl; nếu không miễn trừ, luật prose-based này
+                // xoá sạch chúng trước khi route đa nguồn có cơ hội dùng.
+                if (IsOwnProseRunExempt(p, customStylesUnderOutlineAnchor))
                 {
                     Flush();
                     continue;
@@ -615,6 +620,14 @@ public sealed class DocxSlimExtractor
         }
         Flush();
     }
+
+    private static bool IsOwnProseRunExempt(
+        SlimParagraph p,
+        HashSet<string> customStylesUnderOutlineAnchor) =>
+        p.HasBuiltInHeadingStyle ||
+        p.NumberingId is not null ||
+        p.NumberingStyleLevel is not null ||
+        OutlineAnchorCustomStyles.IsAnchoredCustomStyle(p, customStylesUnderOutlineAnchor);
 
     /// <summary>
     /// Hậu xử lý dựa trên ngữ cảnh: một dòng in đậm đứng ngay trước đoạn thân bài dài

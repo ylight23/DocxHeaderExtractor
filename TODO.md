@@ -479,8 +479,15 @@ dưới anchor `outlineLvl` phía trước. Đây là lỗi giả định "headi
 form/section heading liên tiếp.
 
 Code tương ứng là `DemoteRunsWithoutOwnProse`: luật prose-based này demote mọi ứng viên trong dãy
-không có prose, trừ built-in Heading/numbering. Rule style tự đặt thô (lặp >=3, avgLen<90, có anchor)
-cover 97/101 nhưng chọn 606 đoạn, nên chưa được cài; cần guard cụm custom-style/form-based chặt hơn.
+không có prose, trừ built-in Heading/numbering. Đã đo giao với nhóm 101 ngoài bảng score thấp:
+101/101 từng là candidate trước demote, và 95/101 bị chính rule này cắt. Đã cài bản hẹp:
+custom-style lặp >=3, avgLen<90, ngoài bảng, nằm dưới anchor `outlineLvl` được miễn trừ demote;
+`auto:outline-level` ghép lại các candidate đã sống sót này với cấp = anchor gần nhất + 1.
+
+Đo lại partial TOC 9 file: recall **45,4% → 74,2%**, đúng cấp/cha vẫn **100%** trên 743 cặp đã
+xác thực. Đây chưa phải precision thật vì `partial_toc` không phạt heading ngoài vùng TOC khớp; cần
+gán tay ít nhất 1 file trong nhóm này để đo precision đầy đủ. File 026 vẫn yếu (0% → 20,6%), nên
+nhóm heading trong bảng/điều khoản vẫn là bài toán riêng.
 
 ---
 
