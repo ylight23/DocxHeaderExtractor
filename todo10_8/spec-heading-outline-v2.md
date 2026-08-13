@@ -1158,6 +1158,10 @@ Kiểm luật `KHOAN` cho kết quả 0/21 có `1.`/`1)` ngay sau title, nên §
 cho hai file này; các ca còn lại là `Điều` có thân bài văn xuôi trực tiếp. Chưa cài lexical split vì
 chưa đủ bằng chứng để phân biệt luật tổng quát với overfit.
 
+Hai luật không từ vựng khác cũng đã bị giới hạn bởi phép đo: cắt tại dấu câu đầu tiên sau marker cho
+0/21 exact vì dấu câu nằm ở cuối câu thân bài; `len(output) > 3× median title Điều` bắt 16/21 lỗi
+nhưng bắn nhầm 4 heading đúng có tiêu đề hợp pháp rất dài. Vì vậy không dùng chúng làm auto-split.
+
 Checklist đo corpus: báo cáo theo `Mode + Status` phải có `avg candidates/file` và
 `avg headings/file`. `Candidates` không phải accuracy metric, nhưng là diagnostic metric rất nhạy:
 nếu số này lệch hẳn khỏi kỳ vọng thể loại thì ưu tiên kiểm route/builder trước khi mở rộng answer

@@ -5137,3 +5137,30 @@ Kết luận được nâng cấp:
 3. `KHOAN` không phải lời giải cho hai file này: 0/21 cặp lỗi có tail `1.`/`1)`.
 4. Chưa đủ an toàn để cài lexical opener; cần hoặc tín hiệu format còn tồn tại ở file khác, hoặc một
    luật ranh giới không từ vựng được xác nhận trên nhiều key hơn.
+
+## §70. Đo hai luật ranh giới không từ vựng: chưa đủ để vá
+
+Sau §69, đo tiếp hai ứng viên không phụ thuộc từ vựng trên toàn bộ 21 cặp lỗi của hai full legal
+keys (`010` + `025`):
+
+1. Cắt ở dấu câu đầu tiên sau marker `Điều N.`
+2. Gắn cờ output quá dài: `len(output) > 3 × median(len(title Điều))` trong cùng file
+
+Kết quả:
+
+| luật | phủ đúng 21 lỗi | bắn nhầm heading đang đúng |
+|---|--:|--:|
+| cắt tại dấu câu đầu tiên sau marker | 0/21 | chưa xét vì recall = 0 |
+| output > 3× median title Điều | 16/21 | 4 heading đúng ở file 010 |
+
+Lý do dấu câu thất bại: dấu câu đầu tiên thường là cuối câu thân bài, không phải ranh giới
+title/body. Ví dụ `Điều 1. Phạm vi điều chỉnh Luật này quy định ... không gian mạng.`; cắt tại dấu
+chấm đầu tiên sau marker vẫn giữ cả câu thân bài.
+
+Lý do đối xứng anh em chưa đủ làm luật: nó phát hiện được đa số ca dính body nhưng không cho biết
+điểm cắt, và trên file 010 có tiêu đề Điều hợp pháp rất dài bị flag nhầm, ví dụ `Điều 16`, `Điều
+17`, `Điều 18`, `Điều 24`.
+
+Kết luận: với dữ liệu hiện có, route pháp quy đã đạt trần an toàn cho phần cấu trúc
+(P/R/F1 82,6%, cấp/cha 100%). Phần ranh giới `Điều` không có khoản số vẫn là ca cần abstain/review
+hoặc cần thêm tín hiệu ngoài text tuyến tính. Không cài bản vá ở đây.

@@ -83,7 +83,8 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
 - [x] `vn-legal` đã có route tất định riêng (`LegalStructuredOutline`) và đã chạy trên corpus 95:
       23 file `VietnameseLegal/Normal` sinh 3.455 heading khi bật `--split-merged`. Đã có 2 full key
       nguồn ngoài pipeline (`010`, `025`): 121 heading, P/R/F1 gộp 82,6%, đúng cấp/cha 100%.
-      Lỗi còn lại là 21 cặp ranh giới title/body cùng `Điều N`; `KHOAN` phủ 0/21 nên chưa vá lexical.
+      Lỗi còn lại là 21 cặp ranh giới title/body cùng `Điều N`; `KHOAN` phủ 0/21, dấu câu đầu tiên
+      phủ 0/21, độ dài >3× phủ 16/21 nhưng bắn nhầm 4 heading đúng, nên chưa vá auto-split.
 - [ ] Các chế độ vẫn thiếu full key/đo precision ngoài phân phối cũ:
       `OutlineLevelDriven` (cần full key 1 file partial TOC), `TypedNumbering` (cần 3 file đại diện),
       `SemanticOnly/ConversionFailure` (không đo như mode trích xuất). `LegalStructured` đã có
