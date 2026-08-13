@@ -88,7 +88,8 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
 - [ ] Các chế độ vẫn thiếu full key/đo precision ngoài phân phối cũ:
       `OutlineLevelDriven` (cần full key 1 file partial TOC), `TypedNumbering` (đã có 1 full key RFC
       `092`: exact P/R/F1 0%, nhưng marker diagnostic 62/64 và starts-with 61/64; đã sửa cấp
-      starts-with 42/61 → 61/61; còn cần lọc nhiễu + 1 tài chính + 1 giáo trình),
+      starts-with 42/61 → 61/61; filter marker-last bị bác ở dạng marker-only vì registry/reference
+      cuối tài liệu lặp marker; còn cần lọc nhiễu + 1 tài chính + 1 giáo trình),
       `SemanticOnly/ConversionFailure` (không đo như mode trích xuất).
 - [ ] Mỗi lần đo corpus phải ghi health check theo `Mode + Status`: `files`, `candidates`,
       `headings`, `avg candidates/file`, `avg headings/file`. Nếu một mode lệch mạnh khỏi kỳ vọng

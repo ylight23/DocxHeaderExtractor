@@ -5238,3 +5238,62 @@ Kiểm chứng trên RFC 092:
 Đây là bản vá sạch đúng một biến: sửa cấp, chưa đụng precision/filter/title-boundary.
 
 Test: `dotnet test --no-restore` → 511/511 pass.
+
+## §73. TypedNumbering RFC: đo lọc nhiễu trước khi vá
+
+Sau §72, đo phân loại 300 output của RFC 092 trước khi cài filter:
+
+| lát cắt | số output bị gắn cờ |
+|---|--:|
+| duplicate marker, nếu giữ occurrence cuối theo marker | 85 |
+| page artifact/header/footer (`RFC 9111 HTTP Caching...`, `Standards Track Page`, `Page N`) | 26 |
+| marker không phân cấp/không parse được | 99 |
+| marker parse được nhưng không nằm trong 64 marker nguồn | 54 |
+| union bốn lát cắt | 245 |
+| còn lại sau union | 55 |
+
+Trong 55 output còn lại:
+
+- exact với key: 0
+- starts-with đúng title nguồn cùng stableId/marker: 32
+- còn lại: 23
+
+Kết luận quan trọng: luật "cùng marker xuất hiện nhiều lần → giữ occurrence cuối" **không đủ an
+toàn nếu chỉ nhìn marker**. Nó đúng khi sinh key bằng **full title occurrence**, vì TOC nằm trước
+body. Nhưng ở RFC 092 có bảng registry/reference ở cuối tài liệu chứa lại các marker như `5.2.2.3`,
+`5.5`, `3.1`; nếu giữ occurrence cuối theo marker, có thể giữ nhầm bảng/reference thay vì heading
+body thật.
+
+Ví dụ nhóm còn lại sau các filter thô:
+
+- `5.2.2.3 no-cache`, `5.2.2.9 s-maxage` trong registry table
+- `5.5 Table 1`, `5.4 Warning obsoleted`, `5.3 Pragma deprecated`
+- `1. Normative References ...`
+- `3.1 W Warning header field`
+- các câu thân bài bắt đầu bằng số như `2. A cache MUST NOT generate...`
+
+Điều này tách TypedNumbering thành ba bài toán rõ hơn:
+
+1. **TOC duplicate**: chỉ xử lý được an toàn nếu so bằng full heading text hoặc có vùng body/TOC,
+   không chỉ marker.
+2. **Page artifact**: có tín hiệu lặp/header-footer, nhưng phải lọc ở tầng paragraph/segment trước
+   khi split để khỏi để lại mảnh đuôi.
+3. **Registry/reference/list item**: cần phân biệt numbered section heading với numbered prose/list.
+   Marker đúng hình thức chưa đủ, vì RFC dùng số section trong bảng và tham chiếu nội dung.
+
+Đo title/body theo dấu câu trên 61 starts-with:
+
+| câu hỏi | số |
+|---|--:|
+| tail sau title có câu đầu kết thúc bằng `. ! ?` | 36/61 |
+| tail không có câu kết thúc rõ trước khi bị cắt bởi page/segment | 25/61 |
+
+Vậy luật dấu câu có ích hơn legal nhưng vẫn không đủ phủ: nhiều body bắt đầu bằng bullet/list, dấu
+ngoặc, hoặc bị page boundary cắt trước dấu chấm. Không dùng làm auto-split độc lập.
+
+Kết luận hành động: chưa cài filter RFC trong vòng này. Bản vá tiếp theo phải bắt đầu bằng một
+filter an toàn hơn, ví dụ:
+
+- loại vùng TOC bằng full-title duplicate/TOC boundary, không bằng marker-only;
+- loại page header/footer trước khi `ParagraphHeadingSplitter.Segments`;
+- chỉ sau đó mới đo lại 64 key RFC để xem precision còn rơi ở registry/reference/list bao nhiêu.

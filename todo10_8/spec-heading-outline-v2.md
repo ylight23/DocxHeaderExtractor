@@ -404,6 +404,11 @@ sâu marker (`1.` = H1, `1.1.` = H2, `1.1.1.` = H3). Sau khi tách builder riên
 cùng stableId và bắt đầu bằng title nguồn tăng đúng cấp từ 42/61 lên 61/61; exact P/R/F1 vẫn 0% vì
 chưa xử lý TOC/page artifact/title-body boundary.
 
+Filter RFC phải thận trọng: "giữ occurrence cuối theo marker" không an toàn nếu chỉ nhìn marker, vì
+registry/reference ở cuối tài liệu có thể lặp marker section sau body thật. Muốn bỏ TOC phải dựa vào
+full heading text hoặc boundary vùng TOC/body. Luật dấu câu cũng chưa đủ: tail sau title có câu đầu
+kết thúc bằng dấu câu chỉ 36/61 starts-with.
+
 **Chế độ `numpr-driven`:**
 ```
 ứng viên = block có numPr, ilvl ≥ 1, numId ∈ tập numId-heading
