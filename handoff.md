@@ -4720,6 +4720,43 @@ heading liền nhau/form heading trong template (`Proposal Forms`, `Employer’s
 "precedes body/prose" không thấy. Tín hiệu ứng viên hợp lý cho nhóm này là: style tự đặt lặp lại +
 ngắn + đậm/căn giữa + nằm dưới anchor `outlineLvl` gần nhất, không phải hạ threshold chung.
 
+Đối chiếu code: nguyên nhân trực tiếp là `DocxSlimExtractor.DemoteRunsWithoutOwnProse`. Luật này học
+từ tài liệu prose-based: trong một dãy ứng viên liên tiếp không có đoạn văn xuôi xen giữa, chỉ giữ
+ứng viên cuối vì chỉ nó "mở ra" prose. Nó miễn trừ built-in Heading/numbering, nhưng **không miễn
+trừ custom-style dưới anchor `outlineLvl`**. Trên form-based docs, dãy `Proposal Forms → Appendix to
+Proposal → Table C...` chính là cấu trúc thật, nên giả định prose-based biến thành bộ cắt heading.
+
+Đã thử trước khi vá luật style tự đặt thô:
+
+```
+B1. style không built-in, lặp >= 3, avgLen < 90
+B2. paragraph dùng style đó, có anchor outlineLvl phía trước
+```
+
+Kết quả trên 9 file:
+
+```
+PRED 606 đoạn
+cover 97/101 low outside miss
+overlap partial_toc 226/606
+```
+
+Không được đọc `380` đoạn còn lại là false positive thật vì `partial_toc` không phải outline đầy đủ
+nữa; nhiều ví dụ như `Section II - Bid Data Sheet`, `PART 2 – Supply Requirements`,
+`Framework Agreement` có thể là heading thật nhưng không nằm trong phần TOC khớp được. Tuy nhiên
+scope 606 quá rộng để cài thẳng khi chưa có answer key đầy đủ. Các guard đơn giản cũng vẫn rộng:
+
+```
+base+p.bold+p.center              405 đoạn, cover 79/101
+base+p.bold+p.center+score<0.25   152 đoạn, cover 79/101
+base+p.bold+p.center+precedesTable 176 đoạn, cover 46/101
+```
+
+Kết luận hành động: ghi spec §5.4 rằng "đứng trước prose dài" chỉ hợp lệ cho prose-based docs. Với
+form-based/contract template, cần đổi `DemoteRunsWithoutOwnProse` thành luật có nhận biết cụm
+custom-style dưới anchor, hoặc tách `OutlineLevelDriven` thành route đa nguồn có guard chặt hơn.
+Chưa cài B1–B3 thô.
+
 Kết luận về hướng TOC → TypedNumbering cũng đóng lại: 9 file có TOC đều là `OutlineLevelDriven`
 không phải tình cờ. Word sinh TOC field từ outline/style; tài liệu có TOC thật gần như tự mang tín
 hiệu outline/style, còn `TypedNumbering` là số gõ tay thuần. Nói ngắn: **TOC ⊥ TypedNumbering là

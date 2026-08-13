@@ -478,6 +478,10 @@ template World Bank (`SPDForm2`, `SPDForms1`, `SPD3EmployersRequirement`), ngắ
 dưới anchor `outlineLvl` phía trước. Đây là lỗi giả định "heading mở ngay ra prose dài" trên cụm
 form/section heading liên tiếp.
 
+Code tương ứng là `DemoteRunsWithoutOwnProse`: luật prose-based này demote mọi ứng viên trong dãy
+không có prose, trừ built-in Heading/numbering. Rule style tự đặt thô (lặp >=3, avgLen<90, có anchor)
+cover 97/101 nhưng chọn 606 đoạn, nên chưa được cài; cần guard cụm custom-style/form-based chặt hơn.
+
 ---
 
 ## 12. Bốn ca của spec vẫn treo, ba trong đó không có dữ liệu
