@@ -201,6 +201,21 @@ public sealed class AgentHarnessTests : IDisposable
         Assert.Contains(error.Issues, issue => issue.Code == "heading_span_not_grounded");
     }
 
+    [Fact]
+    public async Task Grounding_validator_cho_phep_nhieu_heading_cung_index_neu_text_khac_nhau()
+    {
+        using var tool = new FakeTool(Outline(
+            new HeadingRecord { Index = 1, Level = 2, Text = "Chương I QUY ĐỊNH CHUNG", Confidence = 1.0, DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence },
+            new HeadingRecord { Index = 1, Level = 4, Text = "Điều 1. Phạm vi điều chỉnh", Confidence = 1.0, DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence }));
+        var harness = Harness(tool);
+
+        var result = await harness.RunAsync(new DocumentAgentRequest(_input));
+
+        Assert.Equal(AgentRunOutcome.Completed, result.Outcome);
+        Assert.Equal(0, result.RepairAttempts);
+        Assert.Equal(2, result.Outline.Headings.Count);
+    }
+
     // ─── Vòng sửa có giới hạn ────────────────────────────────────────────────────────────────
 
     [Fact]

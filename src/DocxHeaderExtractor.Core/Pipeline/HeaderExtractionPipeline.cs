@@ -360,10 +360,21 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 var inline = InlineHeadingSplitter.Apply(headings, slim);
                 if (inline > 0) Log($"Tách nội dung cùng dòng (không mô hình): {inline} mục.");
 
-                var fixes = StructuralHierarchyResolver.Apply(headings, slim, _options.Extraction.UseStyleTrust);
-                var pinned = TableOfContentsAnchor.Apply(headings, slim);
-                if (fixes > 0) Log($"Hậu xử lý hierarchy (không mô hình): sửa {fixes} cấp.");
-                if (pinned > 0) Log($"Mục lục của tài liệu pin lại {pinned} cấp.");
+                if (declared.Route == "auto:vietnamese-legal")
+                {
+                    // LegalStructuredOutline đọc hệ cấp khai báo của pháp quy
+                    // (Phần/Chương/Mục/Điều). StructuralHierarchyResolver là luật generic theo
+                    // chữ ký số; nếu chạy lên cùng các heading tách chung Index, nó coi Điều 4,
+                    // Điều 5... như list thường và ghi đè cấp pháp quy đã biết chắc.
+                    Log("Hậu xử lý hierarchy: giữ cấp pháp quy khai báo, bỏ qua suy cấp generic.");
+                }
+                else
+                {
+                    var fixes = StructuralHierarchyResolver.Apply(headings, slim, _options.Extraction.UseStyleTrust);
+                    var pinned = TableOfContentsAnchor.Apply(headings, slim);
+                    if (fixes > 0) Log($"Hậu xử lý hierarchy (không mô hình): sửa {fixes} cấp.");
+                    if (pinned > 0) Log($"Mục lục của tài liệu pin lại {pinned} cấp.");
+                }
             }
 
             // Chạy trên TOÀN BỘ đoạn chứ không phải tập ứng viên: đoạn bị gộp khi chuyển từ PDF
@@ -509,8 +520,10 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 StyleDeclaredOutline.BuildFromNumbering(slim),
             "manual:administrative" =>
                 AdministrativeOutline.Build(slim),
-            "auto:vietnamese-administrative" or "auto:typed-numbering" or "auto:vietnamese-legal" =>
+            "auto:vietnamese-administrative" or "auto:typed-numbering" =>
                 AdministrativeOutline.Build(slim, _options.Extraction.SplitMergedParagraphs),
+            "auto:vietnamese-legal" =>
+                LegalStructuredOutline.Build(slim, _options.Extraction.SplitMergedParagraphs),
             _ => null,
         };
 

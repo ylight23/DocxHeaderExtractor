@@ -1103,3 +1103,48 @@ Vẫn còn ba khoảng trống, và cần nói rõ:
 1. **Chỉ 14.1 và 14.2 có căn cứ pháp lý.** 14.3 dựa trên khảo sát mẫu, 14.4 là giả thuyết thuần túy.
 2. **Chưa có tài liệu mẫu nào thuộc 5 thể loại ở 14.4** để kiểm chứng. Bảng 14.5 là điểm khởi đầu để thử, không phải luật đã xác nhận.
 3. **Tài liệu ghép nhiều chế độ vẫn chưa xử lý được.** Một bộ hồ sơ gồm tờ trình (hành chính) + phụ lục trích nghị định (pháp quy) + phụ lục bảng biểu (tài chính) cần **ba chế độ trong một file**, trong khi tầng 1 hiện gán *một* chế độ cho toàn file. Đây là lỗ hổng kiến trúc lớn nhất còn lại — cần chuyển tầng 1 từ "phân loại file" sang "phân loại từng vùng", phân đoạn theo `<w:sectPr>` hoặc theo mốc `PHỤ LỤC`.
+
+### 14.7 Cập nhật đo trên corpus 95: pháp quy cần builder riêng
+
+Sau khi bỏ `dec1` khỏi `adminMarks`, nhóm song ngữ/pháp quy về `VietnameseLegal` đúng hướng,
+nhưng phép đo candidate lộ ra một bẫy khác: `VietnameseLegal` chỉ có khoảng 7 candidate/file trong
+corpus 95. Với văn bản pháp quy thật, candidate thấp **không được đọc là output thấp** vì nhiều
+marker `Điều`/`Article` nằm trong paragraph gộp và không đi qua tập `HeadingCandidate` heuristic.
+
+Lỗi production đã đo được: `auto:vietnamese-legal` dùng chung `AdministrativeOutline.Build`.
+Builder hành chính đòi ít nhất hai chữ ký phân cấp để tránh bắt nhầm; văn bản pháp quy chỉ có một
+chữ ký lặp (`Điều` hoặc `Article`) vẫn là cấu trúc hợp lệ. Vì vậy không được tái dùng builder hành
+chính cho route pháp quy.
+
+Builder pháp quy tất định phải đọc hệ nhãn riêng:
+
+```
+Phần|Part       -> level 1
+Chương|Chapter  -> level 2
+Mục|Section     -> level 3
+Điều|Article    -> level 4
+```
+
+Ràng buộc đã chốt:
+
+- Chấp nhận marker có dấu ngắt (`Điều 5.`, `Article 7:`, `Chapter II -`).
+- Chấp nhận marker không dấu ngắt do PDF-convert (`Chương II QUY ĐỊNH CHUNG`) chỉ khi phần sau
+  bắt đầu bằng chữ hoa; không bắt tham chiếu giữa câu như `Điều 3 của Bộ luật này`.
+- Chuẩn hoá Unicode Form C trước regex để bắt nhãn dấu tổ hợp.
+- Khi bật `--split-merged`, một paragraph có thể sinh nhiều heading cùng `Index`; validator/key
+  phải phân biệt bằng `(Index, Text)`, không chỉ `Index`.
+- `1.`/`2.` sau tiêu đề `Điều` là khoản/payload, không phải heading pháp quy.
+- Không cho `StructuralHierarchyResolver` generic ghi đè cấp của route này. `Điều 4/5/...` nhìn
+  giống list số thường, nhưng cấp của `Điều` đã được hệ pháp quy khai báo là level 4; suy từ chữ ký
+  số sẽ làm sai cấp.
+
+Đo lại toàn corpus 95 với `--no-llm --split-merged`:
+
+| mode/status | files | headings | avg heading/file |
+|---|--:|--:|--:|
+| VietnameseLegal / Normal | 23 | 3.455 | 150,2 |
+| SemanticOnly / ConversionFailure | 6 | 6 | 1,0 |
+
+Kết luận: route pháp quy không còn mất trắng outline. Nhưng đây mới là đo coverage/output; chưa có
+full answer key nên chưa phát biểu precision. Cần gán tay ít nhất một file pháp quy gộp nặng
+(`001` hoặc `025`) để đo đúng/sai heading và cấp.

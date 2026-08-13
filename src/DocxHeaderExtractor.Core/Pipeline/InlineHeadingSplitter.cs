@@ -17,6 +17,13 @@ public static class InlineHeadingSplitter
 
         foreach (var heading in ordered)
         {
+            // LegalStructuredOutline đã tách marker pháp quy ngay từ paragraph gộp và đã gắn span
+            // nguồn cho từng lát cắt. Chạy splitter generic lần nữa trên cùng Index sẽ lấy prefix
+            // của TOÀN paragraph cho MỌI "Điều" trong đoạn đó, biến nhiều heading khác nhau thành
+            // trùng text rồi bị agent validator cách ly. Đây là nguồn đã khai ranh giới; không
+            // phải ứng viên cần đoán ranh giới.
+            if (heading.ConfidenceBasis == "legal_marker_declared") continue;
+
             var paragraph = document.ByIndex(heading.Index);
             if (paragraph is null) continue;
             if (!TryFindBoundary(paragraph, out var headingEnd, out var bodyStart, out var source)

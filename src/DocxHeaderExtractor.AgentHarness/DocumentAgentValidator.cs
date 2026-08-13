@@ -55,12 +55,12 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
         if (outline.CandidateCount < 0)
             issues.Add(new("invalid_candidate_count", "Số ứng viên không hợp lệ."));
 
-        var seen = new HashSet<int>();
+        var seen = new HashSet<(int Index, string Text)>();
         var previous = -1;
         foreach (var heading in outline.Headings)
         {
-            if (!seen.Add(heading.Index))
-                issues.Add(new("duplicate_source_index", $"Index {heading.Index} xuất hiện nhiều lần.", heading.Index));
+            if (!seen.Add((heading.Index, heading.Text.Trim())))
+                issues.Add(new("duplicate_source_heading", $"Heading index {heading.Index} + text xuất hiện nhiều lần.", heading.Index));
             if (heading.Index < 0 || heading.Index >= outline.ParagraphCount)
                 issues.Add(new("source_index_out_of_range", $"Index {heading.Index} không thuộc tài liệu nguồn.", heading.Index));
             if (heading.Index < previous)

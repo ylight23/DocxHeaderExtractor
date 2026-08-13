@@ -80,9 +80,12 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
       cần 3 chế độ trong 1 file, tầng 1 hiện gán 1 chế độ cho toàn file
   - [ ] Hướng thử: phân đoạn theo `<w:sectPr>` hoặc mốc `PHỤ LỤC`,
         chạy tầng 1 trên từng vùng
-- [ ] 4/9 chế độ chưa từng chạy trên dữ liệu thật:
-      `outlinelvl-driven`, `custom-style`, `semantic-only`, `vn-legal`
-- [ ] Chế độ `vn-legal` viết **hoàn toàn bằng suy đoán** — cần file mẫu để thử
+- [ ] `vn-legal` đã có route tất định riêng (`LegalStructuredOutline`) và đã chạy trên corpus 95:
+      23 file `VietnameseLegal/Normal` sinh 3.455 heading khi bật `--split-merged`. Việc còn thiếu
+      là **full answer key** cho 1 file pháp quy gộp nặng (`001` hoặc `025`) để đo precision/cấp.
+- [ ] Các chế độ vẫn thiếu full key/đo precision ngoài phân phối cũ:
+      `OutlineLevelDriven` (cần full key 1 file partial TOC), `TypedNumbering` (cần 3 file đại diện),
+      `SemanticOnly/ConversionFailure` (không đo như mode trích xuất).
 - [ ] 5 thể loại ở spec §14.4 chưa có tài liệu mẫu nào
 
 ---

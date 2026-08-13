@@ -33,6 +33,9 @@ public sealed class AutoDocumentModePipelineTests : IDisposable
         Assert.Equal(DocumentMode.VietnameseLegal, outline.DocumentMode?.Mode);
         Assert.Equal("auto:vietnamese-legal", outline.DeterministicRoute);
         Assert.Contains(outline.Headings, h => h.Text.StartsWith("Điều 1.", StringComparison.Ordinal));
+        Assert.Contains(outline.Headings, h => h.Text.StartsWith("Chương I", StringComparison.Ordinal) && h.Level == 2);
+        Assert.Contains(outline.Headings, h => h.Text.StartsWith("Điều 1.", StringComparison.Ordinal) && h.Level == 4);
+        Assert.Contains(outline.Headings, h => h.Text.StartsWith("Điều 2.", StringComparison.Ordinal) && h.Level == 4);
         Assert.All(outline.Headings, h => Assert.Equal(HeadingSource.Structure, h.Source));
     }
 

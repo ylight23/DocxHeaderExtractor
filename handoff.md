@@ -4881,3 +4881,85 @@ Việc còn lại sau §64:
 2. Gán tay 3 file `TypedNumbering` đại diện (`04_giao_trinh`, `03_tai_chinh_ke_toan`,
    `07_system_generated`), có cả cấp.
 3. Sau khi có full key, mới quyết định có cài tiếp nguồn phụ trong bảng/điều khoản hay không.
+
+## §65. VietnameseLegal: candidate thấp là triệu chứng giả, route cũ mới là lỗi thật
+
+Lý do kiểm: bảng demote §64 cho `VietnameseLegal` chỉ có 157 candidates / 23 files (~7/file). Với
+văn bản pháp quy, con số này nhìn rất đáng ngờ vì một luật/nghị định thường có hàng chục `Điều`.
+
+Đo trước khi sửa cho thấy đây không phải do `DemoteRunsWithoutOwnProse` (net = 0), mà do builder
+route sai:
+
+- `DocumentMode = VietnameseLegal`, `Status = Normal`, nhưng `DeterministicRoute` rỗng ở nhiều file
+  pháp quy.
+- Nguyên nhân: `auto:vietnamese-legal` dùng chung `AdministrativeOutline.Build`, mà builder hành
+  chính đòi tối thiểu hai chữ ký cấu trúc. File chỉ có `Điều`/`Article` là legal-structured thật
+  nhưng không đạt điều kiện hành chính nên route trả rỗng và rơi về fallback.
+- `001_Bo_luat_Dan_su_91-2015-QH13.docx` là ca rõ nhất: core legal builder dựng được 782 mục,
+  trong khi route cũ/harness trả rất thấp sau repair.
+
+Đã cài builder riêng `LegalStructuredOutline`:
+
+1. Nhận `Phần/Chương/Mục/Điều` và `Part/Chapter/Section/Article`.
+2. Không yêu cầu hai signature: chỉ `Article 1/2/3` vẫn đủ là văn bản pháp quy.
+3. Cấp cố định theo hệ pháp quy: `Phần/Part=1`, `Chương/Chapter=2`, `Mục/Section=3`,
+   `Điều/Article=4`.
+4. Chuẩn hoá Unicode Form C để bắt nhãn PDF-convert kiểu dấu tổ hợp (`Điều`).
+5. Tách paragraph gộp thành nhiều heading khi bật `--split-merged`, nhưng không nhận `1.`/`2.`
+   khoản/payload làm heading pháp quy.
+
+Hai lỗi contract lộ ra khi đưa builder vào harness:
+
+- `OutlineGroundingValidator` trước đây coi trùng `Index` là lỗi. Từ §51 trở đi, nhiều heading cùng
+  paragraph là hợp đồng hợp lệ; validator nay khoá trùng theo `(Index, Text)`.
+- `InlineHeadingSplitter` generic chạy lại trên heading pháp quy đã tách, lấy prefix của toàn
+  paragraph cho mọi mục cùng `Index`, tạo duplicate giả rồi bị cách ly. Nay bỏ qua
+  `ConfidenceBasis = legal_marker_declared`.
+- `StructuralHierarchyResolver` generic cũng không được ghi đè route này: nó đọc `Điều 4/5/...`
+  như list số thường và từng kéo nhiều `Điều` về cấp 1/2. Pipeline nay giữ cấp khai báo của
+  `LegalStructuredOutline`; `Chương=2`, `Điều=4` là kết quả của hệ pháp quy, không phải thứ để suy
+  từ chữ ký số.
+
+Đo lại toàn corpus 95 bằng:
+
+```
+dhx extract <file> --no-llm --split-merged --format json --quiet
+```
+
+Tổng theo mode/status sau bản vá:
+
+| mode/status | files | headings | avg heading/file | candidates |
+|---|--:|--:|--:|--:|
+| FormatDriven / Normal | 16 | 1.798 | 112,4 | 85 |
+| OutlineLevelDriven / Normal | 10 | 3.119 | 311,9 | 3.766 |
+| SemanticOnly / ConversionFailure | 6 | 6 | 1,0 | 6 |
+| TypedNumbering / Normal | 40 | 22.101 | 552,5 | 835 |
+| VietnameseLegal / Normal | 23 | 3.455 | 150,2 | 156 |
+
+Kết luận chính: `VietnameseLegal` **không còn chỉ ra ~7 heading/file**. Candidate vẫn thấp vì
+candidate là tập đoạn heuristic ban đầu; route pháp quy đọc marker theo lát cắt paragraph gộp nên
+output heading mới là con số có nghĩa cho nhóm này.
+
+Các file `VietnameseLegal/Normal` thấp nhất sau bản vá vẫn không còn dị dạng 1 heading/file:
+
+| file | headings |
+|---|--:|
+| 089_ND_195-2013_Luat_Xuat_ban_EN | 31 |
+| 087_ND_53-2022_An_ninh_mang_EN | 39 |
+| 010_Luat_An_ninh_mang_24-2018-QH14 | 50 |
+| 083_Luat_An_ninh_mang_2018_EN | 51 |
+| 021_TT_78-2021_Hoa_don_dien_tu | 52 |
+| 009_Luat_Giao_dich_dien_tu_20-2023-QH15 | 67 |
+| 025_ND_47-2020_Chia_se_du_lieu_so | 76 |
+| 012_Luat_Ke_toan_hop_nhat_2026 | 90 |
+
+Vẫn chưa được gọi là đo đúng/sai cuối cùng: nhóm này chưa có full answer key, nên con số trên chỉ
+xác nhận route không còn mất trắng heading pháp quy. Cần gán tay ít nhất một file pháp quy để đo
+precision/level thật, đặc biệt vì `--split-merged` sinh nhiều heading dùng chung `Index`.
+
+Việc còn lại sau §65:
+
+1. Gán tay 1 file pháp quy đại diện có paragraph gộp nặng (`001` hoặc `025`) để đo precision thật
+   của `LegalStructuredOutline`.
+2. Gán tay 1 file trong 9 file partial TOC để đo precision thật của bản vá OutlineLevelDriven §64.
+3. Gán tay 3 file `TypedNumbering` đại diện — nhóm lớn nhất corpus vẫn chưa có full key.

@@ -495,6 +495,15 @@ nhóm heading trong bảng/điều khoản vẫn là bài toán riêng.
 nhóm đó trong corpus 95. Nguyên tắc mới: miễn trừ phải hẹp nhất giải thích được dữ liệu; không mở
 rộng kiểu "mọi outlineLvl" nếu test chưa ép.
 
+VietnameseLegal đã kiểm lại sau nghi vấn `157 candidates / 23 files`: candidate thấp là triệu chứng
+giả. Lỗi thật là `auto:vietnamese-legal` dùng nhầm `AdministrativeOutline.Build`, nên file chỉ có
+`Điều`/`Article` không đủ hai signature hành chính và route rơi về fallback. Đã cài
+`LegalStructuredOutline` riêng, validator cho phép nhiều heading cùng `Index` nếu khác `Text`, và
+`InlineHeadingSplitter` không cắt lại `legal_marker_declared`. Đo lại corpus 95 với
+`--no-llm --split-merged`: `VietnameseLegal/Normal` = **23 files, 3.455 headings, 150,2/file**.
+Việc còn nợ của nhóm này không phải coverage nữa mà là **full answer key** cho 1 file pháp quy gộp
+nặng (`001` hoặc `025`) để đo precision/cấp thật.
+
 ---
 
 ## 12. Bốn ca của spec vẫn treo, ba trong đó không có dữ liệu
@@ -583,3 +592,5 @@ bản sửa — một biến, không gộp việc khác.
   **mặc định tắt, không bật lên**.
 - **`SkipStyledCandidates`** — precision 100% → 94,1%, §6.3. Mặc định tắt.
 - **Bốn ý tưởng bị số liệu bác** — §9.6.
+- **`VietnameseLegal` dùng builder hành chính** — đã thay bằng `LegalStructuredOutline`; không mở
+  lại hướng thêm `EnglishLegal` riêng nếu chưa có bằng chứng cấu trúc khác ngôn ngữ.
