@@ -98,4 +98,36 @@ public class WebUiScriptSyntaxTests
         }
         return "";
     }
+
+    /// <summary>
+    /// Mọi ô nhập/checkbox trong HTML phải được JS GỬI ĐI, và mọi trường JS gửi phải có ô tương
+    /// ứng. Thiếu một chiều thì giao diện im lặng bỏ qua lựa chọn của người dùng — không lỗi,
+    /// không cảnh báo, chỉ là kết quả sai.
+    /// </summary>
+    [Fact]
+    public void Moi_o_dieu_khien_deu_duoc_gui_di()
+    {
+        var html = File.ReadAllText(IndexHtmlPath());
+
+        var oNhap = Regex.Matches(html, @"<input[^>]*\sid=""([a-zA-Z]+)""")
+            .Select(m => m.Groups[1].Value)
+            .Where(id => !BoQua.Contains(id))
+            .ToHashSet(StringComparer.Ordinal);
+
+        var daGui = Regex.Matches(html, @"fd\.append\('([a-zA-Z]+)'")
+            .Select(m => m.Groups[1].Value)
+            .ToHashSet(StringComparer.Ordinal);
+
+        var thieu = oNhap.Except(daGui).OrderBy(x => x, StringComparer.Ordinal).ToList();
+        Assert.True(thieu.Count == 0,
+            "Ô có trong HTML nhưng JS không gửi: " + string.Join(", ", thieu));
+    }
+
+    /// <summary>Ô không phải tuỳ chọn pipeline — file, hiển thị, hoặc do server điền.</summary>
+    private static readonly HashSet<string> BoQua = new(StringComparer.Ordinal)
+    {
+        "file", "model", "backend", "lmStudioModel", "openrouterModel",
+        // Ô upload của luồng ĐỐI CHIẾU bản đã sửa, gửi bằng FormData riêng chứ không qua fd.
+        "correctedFile",
+    };
 }

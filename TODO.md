@@ -386,6 +386,20 @@ cho hai kết quả khác nhau — §36 cho thấy UI trả về `1296`/`1315` m
 
 ---
 
+## 9c. ~~Bộ dựng `vn-administrative`~~ — **XONG (§60)**
+
+> `AdministrativeOutline` + cờ `--admin-outline`, **mặc định tắt**. Bộ dựng tất định thứ ba, cùng
+> khuôn với hai bộ đã đạt 100%: cấp neo theo cha gần nhất (thứ tự lồng nhau đọc từ chính tài liệu,
+> không gán cứng theo loại ký hiệu), thân bài tách tại dấu ngắt đầu tiên mở ra số liệu,
+> **không một ngưỡng nào**. Trả rỗng khi chỉ có một chữ ký thay vì đoán.
+>
+> Đã phơi trong Web UI cùng hai bộ kia, kèm test ghim rằng mọi ô điều khiển đều được JS gửi đi
+> (mutation "quên nối dây một ô" → đỏ).
+>
+> **Chưa chấm được** vì chưa có đáp án cho tài liệu hành chính — xem mục 4.
+
+---
+
 ## 10. `--split-merged` — *mở khoá 83/95 tài liệu, nhưng chưa có đáp án để bật mặc định*
 
 **Đã có (§45.2).** `ParagraphHeadingSplitter` cắt tiêu đề nằm lọt giữa paragraph. Cần vì 83/95 file

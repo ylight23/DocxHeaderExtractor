@@ -18,6 +18,12 @@ public static class RequestOptions
         // có ranh giới heading nằm giữa đoạn (§45.2). Mặc định TẮT vì nó phá giả định "mỗi đoạn
         // nhiều nhất một mục" mà mọi đáp án trong keys/ đang dựa vào.
         o.Extraction.SplitMergedParagraphs = Flag(form, "splitMerged");
+
+        // Ba bộ dựng TẤT ĐỊNH — đọc một dữ kiện cấu trúc cho cả tài liệu, không điểm số, không
+        // ngưỡng. Chúng thay thế hẳn đường chấm điểm chứ không bổ sung vào nó, nên loại trừ nhau.
+        o.StyleDeclaredOutline = Flag(form, "styleOutline");
+        o.NumberingDeclaredOutline = Flag(form, "numberingOutline");
+        o.AdministrativeDeclaredOutline = Flag(form, "adminOutline");
         if (Number(form, "threshold") is { } th) o.Extraction.CandidateThreshold = th;
 
         o.DisableLlm = Flag(form, "noLlm");

@@ -281,6 +281,16 @@ public sealed class CommandLineOptions
               --page-headers        Đọc thêm w:hdr/w:ftr
               --no-context          Không kèm đoạn văn ngữ cảnh
               --structural-only     Chỉ dùng tín hiệu cấu trúc OOXML, tắt luật theo từ ngữ
+
+            Bộ dựng outline TẤT ĐỊNH (không cần mô hình, không ngưỡng nào):
+              --style-outline       Cấp lấy từ style Heading + độ sâu số gõ tay. 100% trên khoá luận
+              --numbering-outline   Cấp lấy từ (numId, ilvl) của Word. 100% trên báo cáo thực tập
+              --admin-outline       Hệ ký hiệu hành chính I./1./1.1./a). Cấp neo theo cha gần nhất,
+                                    thân bài tách tại dấu ngắt đầu tiên mở ra số liệu
+              --split-merged        Cắt tiêu đề nằm LỌT GIỮA paragraph — cần cho tài liệu chuyển
+                                    từ PDF, nơi cả trang bị gộp vào một đoạn
+              --no-deterministic-hierarchy
+                                    Tắt bộ suy cấp tất định trên đường --no-llm (mặc định BẬT)
               --style-trust         Chấm độ tin cậy của style Word ở mức TÀI LIỆU; tài liệu áp
                                     style bừa thì style mất quyền phủ quyết (không mất bằng chứng)
               --style-auto-assign   Gán thẳng heading cho đoạn mang style Heading built-in và

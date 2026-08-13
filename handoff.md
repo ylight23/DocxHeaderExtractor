@@ -4352,3 +4352,22 @@ bài toán đang giải.
 
 **Điểm chữ thường dài vẫn bị `HeadingHeuristics` loại** (§59.9) — nhưng bộ dựng mới KHÔNG đi qua
 `HeadingHeuristics`, nên khuyết tật đó không áp cho `--admin-outline`.
+
+### 60.5 Nối vào giao diện, và một bẫy đã sập
+
+`.\dhx` báo *"Tham số không hợp lệ: --admin-outline"* dù mã đã build. Nguyên nhân: `dhx.cmd` ưu
+tiên bản GPU đã publish ở `out-vulkan\`, mà bản đó từ **08/08** trong khi build mới là **13/08** —
+cũ 5 ngày. Đã publish lại, và bổ sung bốn cờ mới vào `dhx help` (chúng chưa từng có mặt ở đó).
+
+> **Kỷ luật:** đổi CLI xong phải `dotnet publish -o out-vulkan`, không chỉ `dotnet build`. Wrapper
+> `.\dhx` KHÔNG dùng thư mục Release.
+
+Ba bộ dựng tất định nay có mặt trong Web UI dưới một khối riêng ở lớp ngoài — chúng không phải tuỳ
+chọn tinh chỉnh mà **thay hẳn đường chấm điểm**, nên không giấu vào "tuỳ chọn nâng cao".
+
+Thêm `Moi_o_dieu_khien_deu_duoc_gui_di`: mọi ô nhập trong HTML phải được JS gửi đi. Thiếu một chiều
+thì giao diện **im lặng bỏ qua lựa chọn của người dùng** — không lỗi, không cảnh báo, chỉ là kết
+quả sai. Test này bắt ngay được `correctedFile` (thuộc luồng khác, đã loại trừ có ghi lý do), và
+mutation "quên nối dây một ô" → đỏ.
+
+**486 test xanh**, bench không đổi.

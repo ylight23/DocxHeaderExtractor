@@ -215,6 +215,23 @@
     </div>
 
     <!--
+      Ba bộ dựng TẤT ĐỊNH. Chúng KHÔNG phải tuỳ chọn tinh chỉnh — mỗi cái thay hẳn đường chấm điểm
+      bằng cách đọc một dữ kiện cấu trúc cho cả tài liệu, không qua ngưỡng nào. Hai cái đầu đo được
+      100% (P/R/cấp/cha) trên tài liệu có đáp án người kiểm; cái thứ ba dành cho văn bản hành chính
+      không style, không numPr, không mục lục. Để ở lớp ngoài vì chúng đổi HẲN cách chạy.
+    -->
+    <fieldset class="opts" style="border:1px solid var(--line);border-radius:8px;padding:10px 12px">
+      <legend style="padding:0 6px;font-size:13px">Bộ dựng tất định — không cần mô hình</legend>
+      <div class="checks">
+        <label title="Cấp lấy từ style Heading + độ sâu số gõ tay. Đo được 100% trên khoá luận có đáp án người kiểm."><input type="checkbox" id="styleOutline"> Theo style Word</label>
+        <label title="Cấp lấy từ (numId, ilvl) của danh sách đa cấp. Đo được 100% trên báo cáo thực tập có đáp án người kiểm."><input type="checkbox" id="numberingOutline"> Theo numbering của Word</label>
+        <label title="Hệ ký hiệu hành chính I. / 1. / 1.1. / a). Cấp neo theo cha gần nhất, thân bài tách tại dấu ngắt đầu tiên mở ra số liệu."><input type="checkbox" id="adminOutline"> Theo ký hiệu hành chính (I./1./a)</label>
+      </div>
+      <p class="note">Mỗi ô thay HẲN đường chấm điểm, không phải tinh chỉnh nó. Chọn đúng một ô;
+        tài liệu không hợp với bộ dựng đã chọn thì nó trả rỗng và pipeline chạy đường thường.</p>
+    </fieldset>
+
+    <!--
       Năm nút dưới đây đang ở giá trị đã đo. Chúng bị gập lại không phải cho gọn: `threshold` và
       `structuralOnly` nằm trong chữ ký cấu hình của calibration profile, nên chỉnh chúng làm lệch
       chữ ký → cổng precision không dùng được profile → mọi heading rơi về "cần duyệt" → writeback
@@ -562,6 +579,9 @@ $('run').onclick = async () => {
   fd.append('structuralOnly', $('structuralOnly').checked ? '1' : '0');
   fd.append('noTrustStyles', $('noTrustStyles').checked ? '1' : '0');
   fd.append('splitMerged', $('splitMerged').checked ? '1' : '0');
+  fd.append('styleOutline', $('styleOutline').checked ? '1' : '0');
+  fd.append('numberingOutline', $('numberingOutline').checked ? '1' : '0');
+  fd.append('adminOutline', $('adminOutline').checked ? '1' : '0');
   fd.append('twoPass', $('twoPass').checked ? '1' : '0');
   fd.append('showRaw', $('showRaw').checked ? '1' : '0');
   fd.append('writeback', $('writeback').checked ? '1' : '0');
