@@ -5096,3 +5096,44 @@ Hai tín hiệu còn lại chỉ dùng để chẩn đoán, chưa đủ làm lu�
 Kết luận giữ nguyên: chưa cài lexical/statistical split cho 025. Cần thêm ít nhất một key pháp quy
 khác, tốt nhất từ file DOCX/PDF-convert còn giữ ranh giới format hoặc từ nguồn gốc ít gộp hơn, trước
 khi viết luật title/body cho `Điều` không có khoản số.
+
+## §69. Key pháp quy thứ hai: 010 xác nhận lỗi ranh giới lặp lại, `KHOAN` vẫn không phủ
+
+Đã thêm `keys/legal-human/010_Luat_An_ninh_mang_24-2018-QH14.key`: 50 heading nguồn, gồm 7
+`Chương` + 43 `Điều`.
+
+Nguồn:
+
+- PDF chính thức Chính phủ: `https://datafiles.chinhphu.vn/cpp/files/vbpq/2022/07/24-2018-qh14..pdf`
+- HTML LuatVietnam dùng để lấy title sạch khi text PDF bị ngắt dòng/chen khoảng trắng:
+  `https://luatvietnam.vn/an-ninh-quoc-gia/luat-an-ninh-mang-2018-so-24-2018-qh14-164904-d1.html`
+
+Map key:
+
+- `Chương`: map bằng full title trong paragraph DOCX để tránh tham chiếu chéo.
+- `Điều`: map bằng marker `Điều N.` vào paragraph DOCX; text comment vẫn là title nguồn để chấm
+  độc lập với output pipeline.
+
+Đo riêng file 010:
+
+| truth | returned | P | R | F1 | level | parent | FP | FN |
+|--:|--:|--:|--:|--:|--:|--:|--:|--:|
+| 50 | 50 | 86,0% | 86,0% | 86,0% | 100% | 100% | 7 | 7 |
+
+Sau khi sửa một lỗi key do title `Chương II` bị wrap thiếu dòng, 7/7 lỗi còn lại đều là cùng mẫu
+§67: output = `Điều N. <title> <câu thân bài đầu tiên>`. Kiểm `KHOAN`: **0/7** tail bắt đầu bằng
+`1.`/`1)`.
+
+Đo gộp hai full legal keys 010 + 025:
+
+| files | truth | returned | P | R | F1 | level | parent |
+|--:|--:|--:|--:|--:|--:|--:|--:|
+| 2 | 121 | 121 | 82,6% | 82,6% | 82,6% | 100% | 100% |
+
+Kết luận được nâng cấp:
+
+1. `LegalStructured` dựng đúng cấp/cây trên hai nguồn độc lập.
+2. Lỗi precision/recall còn lại là ranh giới title/body của `Điều` không có khoản số ngay sau title.
+3. `KHOAN` không phải lời giải cho hai file này: 0/21 cặp lỗi có tail `1.`/`1)`.
+4. Chưa đủ an toàn để cài lexical opener; cần hoặc tín hiệu format còn tồn tại ở file khác, hoặc một
+   luật ranh giới không từ vựng được xác nhận trên nhiều key hơn.

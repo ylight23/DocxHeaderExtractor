@@ -55,17 +55,26 @@ các mục đã khớp TOC, và không đưa partial key vào calibration profil
 ## `legal-human/` — đáp án pháp quy từ nguồn ngoài pipeline
 
 `025_ND_47-2020_Chia_se_du_lieu_so.key` là full key đầu tiên cho route `LegalStructured`: 71 heading
-đối chiếu từ bản HTML pháp quy ở VCCI, không lấy từ output pipeline. File DOC/DOCX corpus bị gộp gần
-toàn bộ nội dung vào cùng một paragraph, nên nhiều heading thật cùng resolve về một `stableId/index`.
+đối chiếu từ bản HTML pháp quy ở VCCI, không lấy từ output pipeline. `010_Luat_An_ninh_mang_24-2018-QH14.key`
+là key thứ hai: 50 heading từ PDF Chính phủ, dùng HTML LuatVietnam để lấy title sạch khi PDF text bị
+ngắt dòng. Cả hai đều là nguồn ngoài pipeline.
 
 Với loại key này, mỗi dòng phải ghi text heading ở comment (`# ...`). Evaluator dùng cặp
 `(stable-id/index đã resolve, text comment đã chuẩn hoá)` để phân biệt nhiều heading cùng paragraph;
 nếu thiếu comment text thì key duplicate-source bị từ chối. Đây là hợp đồng mới cho các tài liệu
 `--split-merged` nặng.
 
-Đo hiện tại trên file 025 với `--no-llm --split-merged`: **P/R/F1 80,3% · đúng cấp 100% · đúng cha
-100%**. 5 false positive tham chiếu chéo `Chương/Mục` đã được chặn; 14 thừa/14 thiếu còn lại là lỗi
-ranh giới title/body khi bản `.doc` chuyển đổi mất thông tin định dạng trong đoạn gộp.
+Đo hiện tại với `--no-llm --split-merged`:
+
+| file | truth | P/R/F1 | cấp/cha | lỗi còn lại |
+|---|--:|---:|---:|---|
+| `010_Luat_An_ninh_mang_24-2018-QH14` | 50 | 86,0% | 100% | 7 cặp ranh giới title/body |
+| `025_ND_47-2020_Chia_se_du_lieu_so` | 71 | 80,3% | 100% | 14 cặp ranh giới title/body |
+| gộp | 121 | 82,6% | 100% | 21 cặp ranh giới title/body |
+
+5 false positive tham chiếu chéo `Chương/Mục` ở file 025 đã được chặn. Các lỗi còn lại đều là
+output giữ đúng marker/title đầu nhưng nuốt thêm câu thân bài đầu tiên; luật `KHOAN` không phủ hai
+file này vì tail sau title bắt đầu bằng văn xuôi, không phải `1.`/`1)`.
 
 ## Tài liệu mật
 

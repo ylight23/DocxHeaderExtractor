@@ -1147,15 +1147,16 @@ Ràng buộc đã chốt:
 | VietnameseLegal / Normal | 23 | 3.455 | 150,2 |
 | SemanticOnly / ConversionFailure | 6 | 6 | 1,0 |
 
-Kết luận cập nhật: route pháp quy không còn mất trắng outline và đã có full key đầu tiên cho
-`025_ND_47-2020_Chia_se_du_lieu_so` từ nguồn pháp quy ngoài pipeline. Đo với
-`--no-llm --split-merged` sau khi chặn tham chiếu chéo `Chương/Mục`: **71 đáp án, 71 trả về,
-P/R/F1 80,3%, đúng cấp 100%, đúng cha 100%**. 14 thừa/14 thiếu còn lại là cùng một lỗi ranh giới:
-heading thật bị nối thêm thân bài do bản `.doc` chuyển đổi mất dấu hiệu định dạng/run boundary.
-Ghép cặp theo marker cho thấy 14/14 thiếu khớp đúng một thừa cùng `Điều N`; chưa cài lexical split
-cho nhóm này vì một file không đủ bằng chứng để phân biệt luật tổng quát với overfit.
-Kiểm luật `KHOAN` trên 14 cặp này cho kết quả 0/14 có `1.`/`1)` ngay sau title, nên §6.3b đúng
-nhưng không áp được cho file 025; các ca còn lại là `Điều` có thân bài văn xuôi trực tiếp.
+Kết luận cập nhật: route pháp quy không còn mất trắng outline và đã có 2 full key nguồn ngoài
+pipeline: `010_Luat_An_ninh_mang_24-2018-QH14` và `025_ND_47-2020_Chia_se_du_lieu_so`. Đo gộp với
+`--no-llm --split-merged` sau khi chặn tham chiếu chéo `Chương/Mục`: **121 đáp án, 121 trả về,
+P/R/F1 82,6%, đúng cấp 100%, đúng cha 100%**.
+
+Lỗi còn lại là cùng một dạng ranh giới: heading thật bị nối thêm câu thân bài đầu tiên. Ghép cặp theo
+marker cho thấy `025` có 14/14 và `010` có 7/7 thiếu khớp đúng một thừa cùng `Điều N`.
+Kiểm luật `KHOAN` cho kết quả 0/21 có `1.`/`1)` ngay sau title, nên §6.3b đúng nhưng không áp được
+cho hai file này; các ca còn lại là `Điều` có thân bài văn xuôi trực tiếp. Chưa cài lexical split vì
+chưa đủ bằng chứng để phân biệt luật tổng quát với overfit.
 
 Checklist đo corpus: báo cáo theo `Mode + Status` phải có `avg candidates/file` và
 `avg headings/file`. `Candidates` không phải accuracy metric, nhưng là diagnostic metric rất nhạy:
