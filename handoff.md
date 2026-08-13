@@ -5297,3 +5297,43 @@ filter an toàn hơn, ví dụ:
 - loại vùng TOC bằng full-title duplicate/TOC boundary, không bằng marker-only;
 - loại page header/footer trước khi `ParagraphHeadingSplitter.Segments`;
 - chỉ sau đó mới đo lại 64 key RFC để xem precision còn rơi ở registry/reference/list bao nhiêu.
+
+## §74. Typed RFC: dấu câu không tìm được ranh giới title/body
+
+Đo lại đề xuất "cắt tại dấu câu đầu tiên" theo tiêu chí thật, không chỉ hỏi tail có dấu câu hay
+không. Với 61 output cùng stableId bắt đầu bằng đúng title nguồn:
+
+| câu hỏi | số |
+|---|--:|
+| tail có câu đầu kết thúc bằng `. ! ?` | 36/61 |
+| cắt blind tại dấu câu đầu tiên sau marker ra đúng title | 0/61 |
+| trong 36 ca có câu kết thúc, cắt blind ra đúng title | 0/36 |
+
+Lý do: dấu câu đầu tiên nằm ở **cuối câu body đầu tiên**, không phải ở boundary title/body. Ví dụ:
+
+- key: `1.2. Syntax Notation`
+- output: `1.2. Syntax Notation This specification uses ... [RFC7405]. ...`
+- cắt tại dấu chấm đầu tiên sau marker cho ra `1.2. Syntax Notation This specification uses ...`,
+  vẫn dính nguyên câu body.
+
+Vì vậy tín hiệu dấu câu ở RFC không giống một split boundary; nó chỉ nói "body có câu", không nói
+title kết thúc ở đâu. Không cài abstain/split bằng dấu câu.
+
+Tách nhóm 54 output có marker parse được nhưng không thuộc 64 marker nguồn:
+
+| nhóm heuristic | số |
+|---|--:|
+| reference/cross-reference (`of [HTTP]`, `[RFC...]`) | 20 |
+| registry/table rõ | 3 |
+| other: chủ yếu TOC fragment, numbered prose/list, cache directive pseudo-heading | 31 |
+
+Ví dụ:
+
+- TOC fragment: `2.4. Serving Stale`, `2.3. Calculating`, `2.1. Request`
+- numbered prose/list: `2.3. A cache MUST write through requests...`
+- reference: `6.1 of [HTTP]...`, `3.7.3 of [HTTP]...`
+- registry/table: `2.1.7 P Pragma header field`
+
+Kết luận mới: với RFC text-layout, bài toán route không chỉ là filter TOC/footer. Regex số thuần
+đúng cho section heading cũng bắt nhiều **numbered prose/reference/table entries**. Bản vá an toàn
+nhất vẫn là filter theo vùng/artefact trước, nhưng exact sẽ chưa lên nếu chưa có tín hiệu title/body.

@@ -407,7 +407,8 @@ chưa xử lý TOC/page artifact/title-body boundary.
 Filter RFC phải thận trọng: "giữ occurrence cuối theo marker" không an toàn nếu chỉ nhìn marker, vì
 registry/reference ở cuối tài liệu có thể lặp marker section sau body thật. Muốn bỏ TOC phải dựa vào
 full heading text hoặc boundary vùng TOC/body. Luật dấu câu cũng chưa đủ: tail sau title có câu đầu
-kết thúc bằng dấu câu chỉ 36/61 starts-with.
+kết thúc bằng dấu câu chỉ 36/61 starts-with, và cắt blind tại dấu câu đầu tiên sau marker cho exact
+0/61 vì dấu câu nằm ở cuối câu body đầu tiên, không phải ở ranh giới title/body.
 
 **Chế độ `numpr-driven`:**
 ```
