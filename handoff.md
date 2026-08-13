@@ -4611,6 +4611,39 @@ Bảng tóm tắt:
 0.35 nên không vào outline tất định. Vì vậy F1 96 của bench cũ không ngoại suy được sang nhóm hợp
 đồng World Bank.
 
+Đo thêm trên chính 743 cặp để kiểm tra giả thuyết "thiếu chủ yếu vì bảng":
+
+```
+TOTAL 743 · hit 337 · miss 406
+
+BY_OUTLINE
+outlineLvl     337 · hit 337 · 100.0%
+no_outlineLvl  406 · hit   0 ·   0.0%
+
+BY_TABLE
+in_table       442 · hit 272 · 61.5%
+outside_table  301 · hit  65 · 21.6%
+
+MISS_BY_TABLE_OUTLINE_ROLE
+table=True; out=False; role=Normal            168
+table=True; out=False; role=HeadingCandidate    2
+table=False; out=False; role=HeadingCandidate 135
+table=False; out=False; role=Normal           101
+```
+
+Kết luận sửa lại: bảng là một nguồn mất thật (170/406 mục thiếu), nhưng **không phải nguyên nhân
+duy nhất**. 236/406 mục thiếu nằm ngoài bảng. Tín hiệu tách sạch nhất là `OutlineLevel`: có
+`outlineLvl` thì bắt đúng 100%; không có `outlineLvl` thì mất 100%. Vì vậy sửa hẹp kiểu "thêm
+heading trong bảng content/layout" chỉ nâng trần tối đa từ 45,4% lên khoảng 68%, chưa đủ giải thích
+toàn bộ lỗi.
+
+Không hạ threshold 0,35: trong 406 mục thiếu có 123 mục đang là `HeadingCandidate` score ≥0,65 nhưng
+vẫn bị auto-route bỏ vì không có `outlineLvl`; hạ threshold không đụng vào nguyên nhân. Hướng đúng
+hơn là coi `OutlineLevelDriven` là chế độ **đa nguồn**: nguồn chính là `w:outlineLvl`, nguồn phụ phải
+được kiểm theo cụm/dãy của tài liệu (bảng điều khoản, form heading, các dòng section ngoài bảng)
+và gán cấp theo cha `outlineLvl` gần nhất. Nhưng cần thêm phân tích cụm trước khi cài, vì nguồn phụ
+không chỉ nằm trong bảng.
+
 Kết luận về hướng TOC → TypedNumbering cũng đóng lại: 9 file có TOC đều là `OutlineLevelDriven`
 không phải tình cờ. Word sinh TOC field từ outline/style; tài liệu có TOC thật gần như tự mang tín
 hiệu outline/style, còn `TypedNumbering` là số gõ tay thuần. Nói ngắn: **TOC ⊥ TypedNumbering là
@@ -4619,7 +4652,8 @@ loại trừ cơ chế, không phải xui corpus**.
 Việc tiếp theo có căn cứ:
 
 1. Với `OutlineLevelDriven`: nghiên cứu lớp heading trong bảng/điều khoản World Bank trước khi tin
-   auto-route cho tài liệu ngoài bench cũ.
+   auto-route cho tài liệu ngoài bench cũ; đồng thời thống kê các heading ngoài bảng nhưng không có
+   `outlineLvl`, vì chúng còn nhiều hơn nhóm trong bảng.
 2. Với `TypedNumbering`: gán tay 3 file, mỗi file một nguồn khác nhau (`04_giao_trinh`,
    `03_tai_chinh_ke_toan`, `07_system_generated`), và phải gán cả cấp.
 
