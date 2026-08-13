@@ -489,6 +489,12 @@ xác thực. Đây chưa phải precision thật vì `partial_toc` không phạt
 gán tay ít nhất 1 file trong nhóm này để đo precision đầy đủ. File 026 vẫn yếu (0% → 20,6%), nên
 nhóm heading trong bảng/điều khoản vẫn là bài toán riêng.
 
+Đếm thêm toàn corpus bằng worktree tạm tắt riêng rule này: net demote còn lại chỉ xuất hiện trong
+`OutlineLevelDriven`/`02_hop_dong_mua_sam` (**328 candidate**, 8,0% của tập no-demote). Các nhóm
+`TypedNumbering` và `VietnameseLegal` đều **0**, nên chưa có dấu hiệu rule này đang che lỗi ở hai
+nhóm đó trong corpus 95. Nguyên tắc mới: miễn trừ phải hẹp nhất giải thích được dữ liệu; không mở
+rộng kiểu "mọi outlineLvl" nếu test chưa ép.
+
 ---
 
 ## 12. Bốn ca của spec vẫn treo, ba trong đó không có dữ liệu

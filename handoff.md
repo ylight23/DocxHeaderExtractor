@@ -4842,6 +4842,39 @@ Kết luận: patch đúng hướng và nâng recall mạnh hơn trần 61,9% c�
 nhóm candidate bị demote xuống score 0. Nhưng file 026 vẫn là outlier lớn; nhóm còn lại chủ yếu là
 heading trong bảng/điều khoản hoặc cấu trúc hợp đồng mà partial TOC chưa đủ để phân biệt precision.
 
+Một điều chỉnh nhận thức sau khi nhìn recall 74,2%: lát cắt 101 mục ngoài bảng score thấp chỉ thấy
+phần lỗi đã nghĩ để đo. Bản vá thực tế thu thêm khoảng 214 mục trong vùng partial TOC, nghĩa là
+`DemoteRunsWithoutOwnProse` cắt nhầm rộng hơn triệu chứng ban đầu. Nguyên tắc rút ra: khi thêm
+miễn trừ cho một luật loại bỏ cứng, dùng phạm vi hẹp nhất còn giải thích được dữ liệu. Ở đây là
+"custom-style dưới outline anchor", không phải "mọi paragraph có outlineLvl".
+
+Đếm thêm trên toàn corpus 95 file bằng cách so HEAD với worktree tạm tắt riêng
+`DemoteRunsWithoutOwnProse`:
+
+| mode | file | candidate hiện tại | candidate nếu tắt demote | net bị demote | tỉ lệ trên no-demote |
+|---|--:|--:|--:|--:|--:|
+| OutlineLevelDriven | 10 | 3.766 | 4.094 | 328 | 8,0% |
+| TypedNumbering | 40 | 1.862 | 1.862 | 0 | 0% |
+| VietnameseLegal | 23 | 157 | 157 | 0 | 0% |
+| FormatDriven | 16 | 85 | 85 | 0 | 0% |
+| SemanticOnly | 6 | 6 | 6 | 0 | 0% |
+
+Theo thư mục, toàn bộ 328 candidate bị cắt net nằm trong `02_hop_dong_mua_sam`; không có dấu hiệu
+rule này đang âm thầm cắt `TypedNumbering` hoặc `VietnameseLegal` trong corpus 95 sau bản vá §64.
+Top file bị ảnh hưởng:
+
+| file | net demote |
+|---|--:|
+| 037_WB_Plant_TwoStage_2025 | 51 |
+| 036_WB_Plant_SingleStage_2025 | 46 |
+| 033_WB_EPC_Turnkey_TwoStage_2025 | 42 |
+| 027_WB_RFB_NonConsulting_2021 | 39 |
+| 039_WB_EPC_Turnkey_SingleStage_2025 | 36 |
+| 038_WB_Works_DB_SingleStage_NoSEASH_2025 | 31 |
+| 040_WB_Works_DB_SingleStage_2023 | 31 |
+| 031_WB_Framework_Agreement_Consulting_2025 | 28 |
+| 026_WB_RFB_Goods_One_Envelope_2017 | 24 |
+
 Việc còn lại sau §64:
 
 1. Gán tay 1 file trong 9 file partial TOC — ưu tiên 026 hoặc 036 — để đo precision thật của bản vá.
