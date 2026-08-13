@@ -90,7 +90,9 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
       `092`: exact P/R/F1 0%, nhưng marker diagnostic 62/64 và starts-with 61/64; đã sửa cấp
       starts-with 42/61 → 61/61; filter marker-last bị bác ở dạng marker-only vì registry/reference
       cuối tài liệu lặp marker; dấu câu blind exact 0/61; filter footer nhỏ đưa returned 300→293 và
-      exact 0→3/64; còn cần lọc nhiễu + 1 tài chính + 1 giáo trình),
+      exact 0→3/64; đo trực tiếp `word/document.xml` cho 31 file Typed trong `03/04/07` cho thấy
+      cả ba nhóm đều text-layout nặng, nên phải báo thêm metric `navigation-usable`; còn cần 1 tài
+      chính + 1 giáo trình để kiểm xem RFC có đại diện về marker/level không),
       `SemanticOnly/ConversionFailure` (không đo như mode trích xuất).
 - [ ] Mỗi lần đo corpus phải ghi health check theo `Mode + Status`: `files`, `candidates`,
       `headings`, `avg candidates/file`, `avg headings/file`. Nếu một mode lệch mạnh khỏi kỳ vọng

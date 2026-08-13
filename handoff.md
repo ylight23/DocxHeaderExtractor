@@ -5393,3 +5393,30 @@ boundary và nhiễu TOC/reference/registry/list. Vì navigation usable không g
 cho mục tiêu điều hướng.
 
 Test: `dotnet test --no-restore` → 513/513 pass.
+
+## §77. TypedNumbering corpus: RFC không phải ngoại lệ text-layout
+
+Đo trực tiếp từ `word/document.xml` cho 31 file `TypedNumbering` trong ba nhóm
+`03_tai_chinh_ke_toan`, `04_giao_trinh`, `07_system_generated` (không dùng `dhx xml` vì serializer
+rút gọn text quanh 160 ký tự):
+
+| group | files | avg của avg paragraph chars | median của median paragraph chars | max số paragraph >1000 ký tự/file |
+|---|--:|--:|--:|--:|
+| `03_tai_chinh_ke_toan` | 13 | 2.459,7 | 2.447 | 166 |
+| `04_giao_trinh` | 13 | 1.896,0 | 1.913 | 468 |
+| `07_system_generated` | 5 | 2.232,1 | 2.472 | 182 |
+
+Kết luận: RFC không phải ngoại lệ. Toàn bộ nhóm TypedNumbering đang đo chủ yếu là bản
+PDF/text-layout, một paragraph chứa nhiều nội dung trang. Vì vậy không được đọc exact-title thấp của
+RFC như lỗi riêng của RFC, nhưng cũng không được gọi cả route Typed là "không dùng được": mục tiêu
+điều hướng vẫn có thể đúng nhờ marker + level, còn writeback/span chính xác thì cần nguồn tốt hơn
+hoặc review.
+
+Hệ quả cho thứ tự việc:
+
+1. Tạo thêm key giáo trình từ nguồn web/HTML độc lập để xem typed trong `04_giao_trinh` có cùng
+   hình dạng với RFC không.
+2. Khi đo Typed, báo song song hai metric: exact-title cho writeback và navigation-usable cho cây
+   điều hướng.
+3. Không đầu tư sâu vào lexical title/body split cho text-layout nếu không có tín hiệu mới ngoài
+   text tuyến tính.

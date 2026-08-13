@@ -941,6 +941,13 @@ Vì vậy phải tách hai mục tiêu:
 - **writeback/span chính xác**: không được auto-accept trên text-layout mất ranh giới; cần nguồn tốt
   hơn hoặc review.
 
+Đo trực tiếp `word/document.xml` trên 31 file `TypedNumbering` trong corpus 95 cho thấy RFC không
+phải ngoại lệ: `03_tai_chinh_ke_toan` có avg paragraph length trung bình 2.459,7 ký tự/file,
+`04_giao_trinh` 1.896,0, `07_system_generated` 2.232,1. Nghĩa là nhóm Typed hiện tại phần lớn cũng
+là bản PDF/text-layout theo trang. Vì vậy khi đánh giá Typed phải báo song song hai metric:
+`exact-title` cho writeback/span và `navigation-usable` cho cây điều hướng. Không được suy từ
+`exact-title` thấp trên RFC rằng route mất heading, nếu marker/title-prefix và level vẫn đúng.
+
 **Tập chế độ chưa chắc đã đầy đủ.** Bản đầu của spec này có 5 chế độ; ba tài liệu hành chính tiếp theo phá vỡ ngay một trong số đó và buộc phải thêm ba chế độ mới. Không có cơ sở nào để tin rằng 8 chế độ hiện tại là đủ. Mỗi thể loại tài liệu mới đều có khả năng lộ ra một chế độ chưa biết.
 
 **Mức kiểm chứng rất khác nhau giữa các chế độ:**
@@ -949,7 +956,7 @@ Vì vậy phải tách hai mục tiêu:
 |---|---|---|
 | `toc-anchored` | A | có (TOC, 28 mục) |
 | `numpr-driven` | A (bỏ TOC) | có |
-| `typed-numbering` | B, RFC 9111 | có cho RFC 9111; exact title 0%, điều hướng 61/64 |
+| `typed-numbering` | B, RFC 9111 | có cho RFC 9111; exact title 1,7% sau filter footer, điều hướng 61/64; 31/31 file Typed corpus là text-layout nặng |
 | `vn-administrative` | C, D, E | **không** |
 | `format-driven` | C | **thất bại có chứng cứ** (thiếu mục) |
 | `outlinelvl-driven` | — | **chưa bao giờ** |

@@ -95,6 +95,11 @@ starts-with đã lên **61/61**; filter footer xuất bản lặp chỉ cứu 3 
 usable cho điều hướng. Đây là bench đầu tiên cho nhóm Typed/RFC, không dùng để làm đẹp số mà để phơi
 lỗi route.
 
+Đo paragraph length trực tiếp trên 31 file Typed trong `03_tai_chinh_ke_toan`, `04_giao_trinh`,
+`07_system_generated` cho thấy cả ba nhóm đều là text-layout nặng, không chỉ RFC. Vì vậy key Typed
+tiếp theo vẫn cần nguồn ngoài pipeline, nhưng metric chính phải tách rõ: `exact-title` đo khả năng
+writeback/span; `navigation-usable` đo cây điều hướng khi title còn dính body nhưng marker/level đúng.
+
 ## Tài liệu mật
 
 Một tài liệu thử nghiệm đóng dấu MẬT đã được **khử hoàn toàn**: không có bản sao trong repo,
