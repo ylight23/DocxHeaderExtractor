@@ -4679,6 +4679,47 @@ Nếu cài nguồn phụ score ≥0,65, tiêu chí bác bỏ đã rõ: precision
 không dưới 95%. Nếu không đạt, ngưỡng/luật suy cấp theo neo sai. Nhưng kể cả đạt, vẫn chỉ là nửa
 đường; phần score thấp là bài toán bộ chấm điểm/nhận dạng cụm, không phải ghép nguồn.
 
+Lát cắt riêng 101 mục **ngoài bảng, score < 0,25**:
+
+```
+LOW_OUTSIDE_MISS 101
+isUpperText          0/101
+allCapsAttr          2/101
+inSdt                0/101
+precedesTable       50/101
+bold                89/101
+center              90/101
+hasNumbering         0/101
+nextLen>=120         0/101
+nextLen>=200         0/101
+hasPrevOutlineAnchor 101/101
+
+LEN_BUCKET
+<=30   61
+31-60  34
+61-90   4
+91-140  2
+```
+
+Style tập trung vào template World Bank, không phải style built-in:
+
+```
+SPDForm2                 35
+SPDForms1                14
+SPD3EmployersRequirement 12
+Section4Heading2          9
+SectionIXHeader           6
+SECVIIH1                  6
+...
+```
+
+Kết luận: giả thuyết "ALL CAPS" sai; giả thuyết "content control/textbox" sai. Giả thuyết "không
+đứng trước đoạn dài" đúng tuyệt đối trên lát cắt này: 0/101 có next block dài ≥120. Đây là cụm
+heading liền nhau/form heading trong template (`Proposal Forms`, `Employer’s Requirements`,
+`Advance Payment Security`) — heading rõ nhưng không mở ngay ra văn xuôi dài, nên các luật dựa vào
+"precedes body/prose" không thấy. Tín hiệu ứng viên hợp lý cho nhóm này là: style tự đặt lặp lại +
+ngắn + đậm/căn giữa + nằm dưới anchor `outlineLvl` gần nhất, không phải hạ threshold chung.
+
 Kết luận về hướng TOC → TypedNumbering cũng đóng lại: 9 file có TOC đều là `OutlineLevelDriven`
 không phải tình cờ. Word sinh TOC field từ outline/style; tài liệu có TOC thật gần như tự mang tín
 hiệu outline/style, còn `TypedNumbering` là số gõ tay thuần. Nói ngắn: **TOC ⊥ TypedNumbering là
