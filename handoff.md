@@ -6750,3 +6750,91 @@ truth candidate 82.6%
 Audit stableId/title cho thấy 46/46 truth đều có output cùng occurrence thân bài và đúng cấp; 8 mục
 không phải `HeadingCandidate` vẫn được tầng merged/structure cứu. Phần còn lại của OpenStax không
 còn là coverage/candidate drop mà là over-extraction và exact span/writeback.
+
+## 2026-08-14 audit - PDF-first bằng PdfPig thay vì PDF→DOCX text-layout
+
+Kiểm chứng đề xuất đọc PDF gốc trực tiếp bằng PdfPig trước khi đầu tư adapter. Kết quả quan trọng:
+package chính thức trên NuGet/GitHub là `PdfPig`, namespace C# vẫn là `UglyToad.PdfPig`. Package
+nhìn giống tên namespace `UglyToad.PdfPig 1.7.0-custom-5` là bản prerelease/custom, không dùng cho
+production. Audit tạm đã chạy lại bằng `PdfPig 0.1.15` chính thức và cho cùng kết quả.
+
+Nguồn chính thức:
+
+- `https://github.com/UglyToad/PdfPig`
+- `https://www.nuget.org/packages/PdfPig/`
+
+### Coverage PDF gốc
+
+Trong corpus hiện tại:
+
+```text
+DOCX: 95
+PDF: 83
+DOCX có PDF cùng stem: 83/95
+```
+
+12 file không có PDF cùng stem trong `heading_corpus_100`: `025`, các WB `.docx` gốc như
+`026/027/031/033/036/037/038/039/040`, và `082/084`. Nghĩa là PDF-first dùng được cho phần lớn
+corpus, nhưng không thay thế hoàn toàn DOCX path.
+
+### File 030 World Bank: PDF giữ tín hiệu đã mất trong DOCX
+
+Audit PdfPig trên PDF gốc `030_WB_RFP_Consulting_Services_2019.pdf`:
+
+```text
+pages = 201
+lines = 6273
+
+font size distribution:
+12.0   5497   body thường
+10.0    371   page header/footer
+16.0     42   body heading high-level
+14.0     28   subheading/table heading
+18.0     14   cover/title
+```
+
+Tín hiệu rõ:
+
+- body heading thật: `fs=16`, bold, ví dụ `PART I`, `Section 1...`, `Section 2...`.
+- body thường: đa số `fs=12`.
+- page header: `fs=10`, y≈749.
+- TOC dot-leader: `PART` indent x≈72, `Section` indent x≈91, đủ để suy cấp trực tiếp.
+
+Ví dụ PDF body thật mà DOCX text-layout đã làm nhập nhằng:
+
+```text
+p11 fs=16 bold  PART I
+p11 fs=16 bold  Section 1. Request for Proposal Letter
+p15 fs=16 bold  Section 2. Instructions to Consultants and Data Sheet
+p51 fs=16 bold  Section 3. Technical Proposal – Standard Forms
+p68 fs=16 bold  Section 4. Financial Proposal - Standard Forms
+p79 fs=16 bold  Section 5. Eligible Countries
+p81 fs=16 bold  Section 6. Fraud and Corruption
+p83 fs=16 bold  Section 7. Terms of Reference
+p85 fs=16 bold  PART II
+p85 fs=16 bold  Section 8. Conditions of Contract and Contract Forms
+```
+
+Đọc đúng: với PDF gốc, vấn đề `030` không còn là "body occurrence thiếu title" — đó là lỗi do
+khâu PDF→DOCX làm phẳng layout. PDF còn đủ font/x/y để dựng outline trực tiếp.
+
+### Không được tổng quát quá nhanh
+
+Audit nhanh vài file khác:
+
+- `017_ND_123-2020_Hoa_don_chung_tu.pdf`: PdfPig report toàn bộ line `fs=16`. Với file này, font
+  size không phân biệt được heading/body; phải dùng marker pháp quy/TOC text.
+- `056_OpenStax_Business_Law_I_Essentials.pdf`: có phân bố size rõ (`9.0` body, `13.0/15.6` heading-ish),
+  đáng audit tiếp cho exact span typed.
+- `092_RFC9111_HTTP_Caching.pdf`: PdfPig report `fs=1.0` cho toàn bộ line; font size không dùng được
+  trực tiếp, nhưng x/y/page vẫn có thể giúp page header/body và ordering.
+
+Kết luận kiến trúc:
+
+- Thêm một đầu vào mới `PDF -> PdfPig lines/blocks -> SlimParagraph-like` là hướng đúng cho nhóm
+  PDF text-layout có tín hiệu font/layout rõ, đặc biệt World Bank `028/029/030/032/034/035`.
+- Adapter chỉ nên sinh block với `text`, `fontSize`, `fontName/bold`, `indentX`, `pageY`, `pageNo`,
+  không tự dựng cây. Pipeline hiện tại xử lý mode/marker/validator.
+- Không xoá DOCX path: 12/95 không có PDF cùng stem, và một số PDF không có font-size hữu ích.
+- Khi implement production: dùng package `PdfPig` chính thức, pin version chính xác, dùng
+  `BoundingBox` thay `GlyphRectangle` vì API hiện cảnh báo obsolete.

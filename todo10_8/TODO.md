@@ -22,6 +22,16 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
 
 ## P1 — Hoàn thiện tầng luật (không cần LLM)
 
+- [ ] Thêm đầu vào PDF-first bằng `PdfPig` chính thức (`PdfPig` package, pin version; namespace
+      `UglyToad.PdfPig`) cho nhóm PDF text-layout:
+  - [ ] Adapter `PDF -> lines/blocks -> SlimParagraph-like` với `text`, `fontSize`, `fontName/bold`,
+        `indentX`, `pageY`, `pageNo`; không tự dựng cây trong adapter.
+  - [ ] Dùng `BoundingBox` thay `GlyphRectangle`.
+  - [ ] Prototype trên `030_WB_RFP_Consulting_Services_2019.pdf`: body heading `fs=16 bold`, body
+        thường `fs=12`, page header `fs=10`, TOC indent `PART x≈72` / `Section x≈91`.
+  - [ ] Đo tiếp `028/029/032/034/035` trước khi claim cho toàn World Bank PDF.
+  - [ ] Giữ DOCX path: chỉ 83/95 DOCX có PDF cùng stem; `017` font-size không phân biệt
+        heading/body và `092` PdfPig report `fs=1.0` toàn dòng.
 - [ ] Cài luật phân loại bảng theo spec §5.5 (`layout` / `content` / `data`)
   - [ ] Đo `numeric_ratio`, `avg_cell_len`, `has_header`, số cột, số dòng
   - [ ] Xử lý merged cell (`gridSpan`, `vMerge`) — làm sai phép đếm cột
