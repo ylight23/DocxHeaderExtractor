@@ -168,6 +168,7 @@ public static class PrecisionAcceptanceGate
 
     private static bool IsDeterministicDeclaredBasis(string basis) =>
         basis is "legal_marker_declared" or "typed_number_depth" or "numbering_declared" or
-            "style_declared" or "outline_level_declared" or "part_section_declared" ||
+            "style_declared" or "outline_level_declared" or "part_section_declared" or
+            "pdf_textbook_layout" ||
         basis.StartsWith("outline_anchor_", StringComparison.Ordinal);
 }

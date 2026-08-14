@@ -27,6 +27,10 @@ public static class InlineHeadingSplitter
             // text-layout. Chạy splitter generic theo TOÀN paragraph sẽ biến nhiều slice cùng Index
             // thành cùng một prefix, tạo duplicate rồi bị validator cách ly.
             if (heading.ConfidenceBasis == "typed_number_depth") continue;
+            // PDF textbook fallback đã dùng tín hiệu font/line từ PDF để lấy đúng ranh giới title.
+            // Chạy splitter DOCX generic lên text-layout sau đó sẽ cắt lại trên paragraph gộp và
+            // phá chính ranh giới mà PDF vừa cứu.
+            if (heading.ConfidenceBasis == "pdf_textbook_layout") continue;
             if (heading.ConfidenceBasis == "part_section_declared") continue;
             // Table headings được cứu dưới outline anchor thường là nhãn điều khoản đầy đủ trong ô
             // bảng; dấu ':' hoặc ';' thuộc chính title, không phải ranh giới title/body.

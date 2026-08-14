@@ -129,6 +129,13 @@ public sealed class PipelineOptions
     public bool AutoDetectDocumentMode { get; set; } = true;
 
     /// <summary>
+    /// Dùng PDF cùng stem như nguồn layout PHỤ cho nhóm typed textbook khi DOCX không có tín hiệu
+    /// khai báo mạnh. PDF không thắng outlineLvl/style; nó chỉ cứu tài liệu PDF→DOCX text-layout
+    /// mất ranh giới title/body. Xem handoff 2026-08-14, prototype OpenStax 056.
+    /// </summary>
+    public bool PdfTextbookFallback { get; set; } = true;
+
+    /// <summary>
     /// Hậu kiểm bằng ký hiệu đánh số của chính tài liệu: cùng dạng đánh số phải cùng cấp, và
     /// dãy anh em phải liên tục từ 1. Không tốn giây suy luận nào và bắt được cả lỗi trượt cấp
     /// của mô hình lẫn tiêu đề bị tầng lọc đánh rơi — xem <see cref="NumberingAudit"/>.
@@ -351,7 +358,17 @@ public sealed class HeaderExtractionPipeline : IDisposable
             }
 
             var declared = TryBuildDeclaredOutline(slim, modeReport);
-            List<HeadingRecord> headings = declared.Headings ??
+            var pdfFallback = _options.PdfTextbookFallback
+                ? PdfTextbookOutline.TryBuild(inputPath, slim, modeReport)
+                : PdfTextbookOutlineResult.NotApplicable("disabled");
+            if (pdfFallback.Headings.Count > 0)
+                Log($"PDF textbook fallback: dùng {pdfFallback.Headings.Count} heading từ layout PDF ({pdfFallback.Reason}).");
+            else if (pdfFallback.Reason is not "disabled" and not "no-pdf")
+                Log($"PDF textbook fallback: bỏ qua ({pdfFallback.Reason}).");
+
+            List<HeadingRecord> headings = pdfFallback.Headings.Count > 0
+                ? [.. pdfFallback.Headings]
+                : declared.Headings ??
                 (_options.DisableLlm
                     ? HeuristicOnly(candidates)
                     : await RunModelAsync(slim, candidates, quarantined, ct));

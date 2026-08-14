@@ -6958,3 +6958,57 @@ Kết luận kiến trúc:
 - Không xoá DOCX path: 12/95 không có PDF cùng stem, và một số PDF không có font-size hữu ích.
 - Khi implement production: dùng package `PdfPig` chính thức, pin version chính xác, dùng
   `BoundingBox` thay `GlyphRectangle` vì API hiện cảnh báo obsolete.
+
+### 2026-08-14 follow-up - đã cài PDF fallback P1 cho typed textbook
+
+Đã cài production path hẹp `PdfTextbookOutline` trong Core, dùng package NuGet chính thức `PdfPig`
+và pin version trong `DocxHeaderExtractor.Core.csproj`.
+
+Nguyên tắc kiến trúc đã chốt bằng số liệu:
+
+- PDF là **fallback**, không phải nguồn ưu tiên toàn cục.
+- Chỉ bật khi:
+  - document mode là `TypedNumbering`;
+  - tìm được PDF cùng stem, gồm cả layout eval copy qua `.verify-build` bằng cách dò
+    `todo10_8/heading_corpus_100`;
+  - PDF có font separation đủ mạnh;
+  - DOCX không có tín hiệu khai báo mạnh (`outlineLvl`, built-in Heading style, numbering style level).
+- Khi PDF fallback dùng, nó vẫn align ngược về `SlimParagraph` DOCX và set `HeadingSpan` để validator/writeback
+  còn neo nguồn OOXML.
+- Không chạy `InlineHeadingSplitter` lại trên basis `pdf_textbook_layout`; PDF đã là nguồn xác nhận ranh giới.
+- `NumberingAudit` với `pdf_textbook_layout` parse từ title đã được PDF xác nhận, không đọc lại paragraph nguyên
+  trang để tránh nhầm page number/header (`16 2 • ...`) thành marker thật.
+
+Kết quả kiểm chứng:
+
+```text
+056_OpenStax_Business_Law_I_Essentials
+truth=46 returned=46
+P/R/F1/Nav/Nav+cấp/level/parent = 100%
+```
+
+WB regression check bằng 9 key `toc-derived`:
+
+```text
+026/027/031/033/036/037/038/039/040
+P=100%, R/Nav=99.2%, F1=99.6%, level=100%, parent=100%
+```
+
+Exit code eval WB vẫn khác 0 vì 036 thiếu 4 và 037 thiếu 2 trong key partial cũ; không phải hồi quy PDF.
+Quan trọng là PDF fallback không override nhóm WB route tốt.
+
+`030_WB_RFP_Consulting_Services_2019` vẫn là việc riêng: file này không thuộc route WB tốt, không có OOXML signal
+(`outlineLvl=0`, `numPr=0`, `pStyle=none`) và hiện eval key TOC-as-text 12 mục cho Nav 58.3% / exact 0%. P1 typed
+PDF fallback cố ý không đụng nó; muốn sửa 030 cần route `Part/Section`/TOC-as-text hoặc PDF domain rule riêng cho WB.
+
+Test đã thêm:
+
+- `PdfTextbookOutlineTests.OpenStax056UsesPdfLayoutWhenDocxTextLayoutLostBoundaries`
+- `PdfTextbookOutlineTests.NumberingAuditParsesPdfLayoutHeadingTextNotTheWholeParagraph`
+
+Full suite sau thay đổi:
+
+```text
+dotnet test DocxHeaderExtractor.sln --no-restore --verbosity quiet
+545 passed
+```

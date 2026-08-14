@@ -22,13 +22,24 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
 
 ## P1 — Hoàn thiện tầng luật (không cần LLM)
 
-- [ ] Thêm đầu vào PDF-first bằng `PdfPig` chính thức (`PdfPig` package, pin version; namespace
-      `UglyToad.PdfPig`) cho nhóm PDF text-layout:
+- [x] Thêm fallback PDF hẹp bằng `PdfPig` chính thức (`PdfPig` package pinned; namespace
+      `UglyToad.PdfPig`) cho typed textbook/OpenStax-like PDF text-layout:
+  - [x] Cổng vào hẹp: chỉ chạy khi mode là `TypedNumbering`, có PDF cùng stem/corpus, PDF
+        `font-strong`, và DOCX không có tín hiệu khai báo mạnh (`outlineLvl`, built-in Heading style,
+        numbering style level). PDF là fallback, không thay thế DOCX path.
+  - [x] Implement `PdfTextbookOutline`: PDF lines -> font baseline tương đối -> chapter/section
+        marker -> align ngược về `SlimParagraph` DOCX để vẫn có span/validator/writeback anchor.
+  - [x] OpenStax `056`: eval `46/46`, P/R/F1/Nav/Nav+cấp/cấp đều `100%`.
+  - [x] Kiểm hồi quy WB TOC-derived 9 file: P `100%`, R/Nav `99.2%`, cấp/cha `100%`; PDF fallback
+        không override route DOCX tốt.
+  - [ ] Mở rộng sau P1: 1 key giáo trình thứ hai (`057`) hoặc 1 key tài chính để kiểm overfit
+        ngoài OpenStax trước khi áp rộng cho 28 file typed font-strong.
+- [ ] Nghiên cứu PDF adapter rộng hơn sau P1:
   - [ ] Ưu tiên prototype trên nhóm `font-strong` đã đo: 43/83 PDF có phân tách font/layout rõ
         (`02_hop_dong_mua_sam` 6/6, `04_giao_trinh` 15/15, `03_tai_chinh_ke_toan` 13/15,
         `06_dich_song_ngu` 5/8, `01_phap_quy` 4/24).
-  - [ ] Làm trước nhánh typed textbook/OpenStax: audit tạm trên `056` cho thấy PDF layout prototype
-        đạt `truth=46 returned=46 matched=46 fp=0` sau canonical matching.
+  - [x] Làm trước nhánh typed textbook/OpenStax: adapter production trên `056` đạt
+        `truth=46 returned=46 matched=46 fp=0`.
     - [ ] Không match raw text PDF; cần normalize/canonical vì text layer có thể chèn khoảng trắng
           trong token (`Business` -> `Bu s i n ess`, `10.1` -> `1 0.1`).
     - [ ] Không hardcode `fs≈15.6`: prototype relative trên `056` vẫn `46/46`, còn giáo trình `057`
@@ -38,8 +49,8 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
     - [ ] Chưa dùng World Bank làm proof tổng quát cho adapter: cross-check 6 PDF font-strong chỉ
           đạt Nav `100/60/100/76.9/100/100` và precision-like thấp do bắt thêm `Part C/Fraud`,
           section/subsection/body labels; WB cần luật domain riêng nếu đi PDF path.
-    - [ ] Ghép nguồn: PDF thắng về ranh giới title/body và chọn body occurrence khi typography rõ;
-          DOCX thắng về writeback/span OOXML. Khi mâu thuẫn, giữ source/confidence thay vì ghi đè.
+    - [x] Ghép nguồn P1: DOCX route thắng khi có tín hiệu khai báo; PDF chỉ fallback cho typed
+          text-layout không có structure. Khi PDF dùng, vẫn align về DOCX span.
   - [ ] Adapter `PDF -> lines/blocks -> SlimParagraph-like` với `text`, `fontSize`, `fontName/bold`,
         `indentX`, `pageY`, `pageNo`; không tự dựng cây trong adapter.
   - [ ] Dùng `BoundingBox` thay `GlyphRectangle`.
@@ -119,10 +130,9 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
       cuối tài liệu lặp marker; dấu câu blind exact 0/61; filter footer nhỏ đưa returned 300→293 và
       exact 0→3/64; đo trực tiếp `word/document.xml` cho 31 file Typed trong `03/04/07` cho thấy
       cả ba nhóm đều text-layout nặng, nên phải báo thêm metric `navigation-usable`; đã thêm key
-      giáo trình `056` từ OpenStax: 46 truth, trên HEAD hiện tại returned 419, exact P/R/F1
-      9,5%/87,0%/17,2%, navigation usable 46/46, level đúng 46/46, truth candidate 82,6%;
-      câu hỏi cũ "24 candidate rơi ở đâu" không còn đúng trên HEAD, phần còn lại là giảm FP và
-      exact span/writeback;
+      giáo trình `056` từ OpenStax: sau PDF typed fallback, 46 truth, returned 46, P/R/F1/Nav/Nav+cấp
+      đều 100%, level đúng 46/46; câu hỏi cũ "24 candidate rơi ở đâu" đã được thay bằng route PDF
+      fallback cho text-layout OpenStax-like;
       còn cần 1 tài chính),
       `SemanticOnly/ConversionFailure` (không đo như mode trích xuất).
 - [ ] Mỗi lần đo corpus phải ghi health check theo `Mode + Status`: `files`, `candidates`,

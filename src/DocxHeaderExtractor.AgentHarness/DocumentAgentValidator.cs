@@ -122,10 +122,18 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
     private static bool HeadingTextIsGrounded(string source, string heading)
     {
         if (source == heading) return true;
+        if (NormalizeTextLayoutTitle(source) == NormalizeTextLayoutTitle(heading)) return true;
         if (TextLayoutSectionPageRx.Match(source) is not { Success: true } match) return false;
 
         var normalized = $"{match.Groups["marker"].Value.TrimEnd('.')} {match.Groups["title"].Value.Trim()}";
-        return normalized == heading;
+        return NormalizeTextLayoutTitle(normalized) == NormalizeTextLayoutTitle(heading);
+    }
+
+    private static string NormalizeTextLayoutTitle(string text)
+    {
+        var normalized = Regex.Replace(text.Replace('•', ' '), @"\s+", " ").Trim();
+        normalized = Regex.Replace(normalized, @"^(\d+(?:\.\d+)?\s+\D.+?)\s+\d{1,4}$", "$1");
+        return normalized;
     }
 }
 

@@ -191,7 +191,7 @@ public static class NumberingAudit
         options ??= new ExtractionOptions();
         var ordered = headings.OrderBy(h => h.Index).ToList();
         var tokens = ordered
-            .Select(h => (Heading: h, Token: ParseParagraph(document?.ByIndex(h.Index), h.Text, options)))
+            .Select(h => (Heading: h, Token: ParseHeadingNumber(h, document?.ByIndex(h.Index), options)))
             .Where(x => x.Token is not null)
             .Select(x => new AuditItem(x.Heading, x.Token!.Value,
                 ScopeKey(ordered, ordered.IndexOf(x.Heading), document)))
@@ -367,7 +367,7 @@ public static class NumberingAudit
         var current = ordered[at];
         // La Mã ở đầu chương là chuỗi section-level; giữ chung một scope để phát hiện
         // I → III, nhưng không suy ra parent từ cấp model có thể đang lệch.
-        if (ParseParagraph(document?.ByIndex(current.Index), current.Text)?.Kind == NumberKind.Roman)
+        if (ParseHeadingNumber(current, document?.ByIndex(current.Index))?.Kind == NumberKind.Roman)
             return "roman-root";
         for (var i = at - 1; i >= 0; i--)
         {
@@ -432,6 +432,18 @@ public static class NumberingAudit
     /// </summary>
     public static NumberToken? ParseParagraph(SlimParagraph? paragraph, string fallbackText) =>
         Parse(TextWithNumberLabel(paragraph, fallbackText));
+
+    private static NumberToken? ParseHeadingNumber(
+        HeadingRecord heading,
+        SlimParagraph? paragraph,
+        ExtractionOptions? options = null)
+    {
+        if (heading.ConfidenceBasis == "pdf_textbook_layout")
+            return Parse(heading.Text);
+        return options is null
+            ? ParseParagraph(paragraph, heading.Text)
+            : ParseParagraph(paragraph, heading.Text, options);
+    }
 
     /// <summary>
     /// Như <see cref="ParseParagraph"/>, nhưng đọc thêm được dạng <c>NHÃN + SỐ + HẾT</c>
