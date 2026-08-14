@@ -600,7 +600,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 {
                     Index = p.Index,
                     StableId = p.StableId,
-                    Level = 1,
+                    Level = PartSectionOutline.LevelForHeading(slice.Text) ?? 1,
                     Text = slice.Text,
                     OriginalText = p.Text,
                     HeadingSpan = new TextOffsetSpan(slice.Start, slice.Start + slice.Length),

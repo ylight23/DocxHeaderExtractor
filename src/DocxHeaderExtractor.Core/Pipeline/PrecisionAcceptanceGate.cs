@@ -77,6 +77,13 @@ public static class PrecisionAcceptanceGate
                 continue;
             }
 
+            if (IsDeterministicDeclaredBasis(heading.ConfidenceBasis))
+            {
+                heading.DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence;
+                heading.Confidence = Math.Max(heading.Confidence, 0.95);
+                continue;
+            }
+
             if (profile is not null && !profileCompatible)
             {
                 heading.Confidence = EvidenceScore(heading);
@@ -158,4 +165,9 @@ public static class PrecisionAcceptanceGate
 
     /// <summary>Ứng viên thuần heuristic vẫn giữ trần cũ: hình thức không thay được cấu trúc.</summary>
     private const double HeuristicCeiling = 0.75;
+
+    private static bool IsDeterministicDeclaredBasis(string basis) =>
+        basis is "legal_marker_declared" or "typed_number_depth" or "numbering_declared" or
+            "style_declared" or "outline_level_declared" or "part_section_declared" ||
+        basis.StartsWith("outline_anchor_", StringComparison.Ordinal);
 }

@@ -6652,3 +6652,31 @@ Result count holdout sau §99:
 ```
 
 Đọc đúng: đây là giảm FP page-header lặp, không sửa selection/cấp. Cấp World Bank vẫn treo ở `Nav+cấp 15.6%`. Nếu đi tiếp, audit phần thừa còn lại chủ yếu là numbered prose/list trong body và các slice section/title có qualifier; không dùng filter text ngắn rộng nếu chưa mô phỏng Nav-loss.
+## 2026-08-14 - Section level lift without changing selection (sec100)
+
+Tried a dedicated `auto:part-section` route for World Bank procurement-style `PART` / `Section` documents, but rejected it for production: it reduced holdout Nav because occurrence selection from raw regex chose front-matter/page-header locations instead of the body occurrence. The route hook was removed.
+
+Kept the safe part: `MergedParagraphHeadings` now assigns level from `PartSectionOutline.LevelForHeading(slice.Text)`:
+
+- `PART ...` => level 1
+- `Section ...` => level 2
+- everything else keeps the old fallback level 1
+
+This preserves the old selection surface and only improves levels for already-emitted merged high-level slices.
+
+Verification:
+
+```text
+dotnet test --no-restore
+Passed: 540/540
+
+Eval14:
+Nav      99.1%
+Nav+cap 99.1%
+
+World Bank holdout full:
+Nav      89.6%
+Nav+cap 45.5%   (was 15.6%)
+```
+
+Important negative result: do not re-enable `auto:part-section` until occurrence selection has a reliable body-anchor signal. The helper file remains because it is now used only as a level classifier for merged slices, which did not regress Eval14.

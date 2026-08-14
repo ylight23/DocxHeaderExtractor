@@ -27,6 +27,7 @@ public static class InlineHeadingSplitter
             // text-layout. Chạy splitter generic theo TOÀN paragraph sẽ biến nhiều slice cùng Index
             // thành cùng một prefix, tạo duplicate rồi bị validator cách ly.
             if (heading.ConfidenceBasis == "typed_number_depth") continue;
+            if (heading.ConfidenceBasis == "part_section_declared") continue;
             // Table headings được cứu dưới outline anchor thường là nhãn điều khoản đầy đủ trong ô
             // bảng; dấu ':' hoặc ';' thuộc chính title, không phải ranh giới title/body.
             if (heading.ConfidenceBasis == "outline_anchor_table_custom_style") continue;

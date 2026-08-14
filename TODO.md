@@ -836,3 +836,11 @@ Tiếp theo: audit phần thừa còn lại là numbered prose/list trong body; 
 - **Bốn ý tưởng bị số liệu bác** — §9.6.
 - **`VietnameseLegal` dùng builder hành chính** — đã thay bằng `LegalStructuredOutline`; không mở
   lại hướng thêm `EnglishLegal` riêng nếu chưa có bằng chứng cấu trúc khác ngôn ngữ.
+**Addendum 2026-08-14 (sec100): gan cap PART/Section cho merged slice, khong bat route moi.**
+
+- Thu route `auto:part-section` da bi thu va bac: raw regex occurrence selection chon nham front matter/page header, lam World Bank holdout Nav tut. Khong enable route nay.
+- Giu phan an toan: `MergedParagraphHeadings` gan cap bang `PartSectionOutline.LevelForHeading`: `PART=1`, `Section=2`, con lai fallback level 1.
+- Test xanh: `dotnet test --no-restore` = `540/540`.
+- Eval14 giu nguyen `Nav 99.1%`, `Nav+cap 99.1%`.
+- World Bank holdout full giu selection `Nav 89.6%`, va `Nav+cap` tang `15.6% -> 45.5%`.
+- Tiep theo van la FP numbered prose/list trong body va occurrence body-anchor cho high-level section; khong quay lai route rieng neu chua co tin hieu body occurrence.
