@@ -92,7 +92,7 @@ cho typed text-layout:
 | file | truth | returned | exact P/R/F1 | marker diagnostic |
 |---|--:|--:|---:|---|
 | `092_RFC9111_HTTP_Caching` | 64 | 293 | 1,0% / 4,7% / 1,7% | 61/64 navigation usable, level đúng 61/61 |
-| `056_OpenStax_Business_Law_I_Essentials` | 46 | 133 | 0% / 0% / 0% | body occurrence usable 14/46, level đúng 14/14; truth lọt candidate 82,6% |
+| `056_OpenStax_Business_Law_I_Essentials` | 46 | 419 | 9,5% / 87,0% / 17,2% | navigation usable 46/46, level đúng 46/46; truth lọt candidate 82,6% |
 
 Kết luận: route `TypedNumbering` trên RFC không mất marker chính, nhưng exact title hỏng vì nuốt
 body và bắt nhầm TOC/reference/list items. Sau khi tách builder typed riêng, cấp trong 61 heading
@@ -105,12 +105,12 @@ lỗi route.
 tiếp theo vẫn cần nguồn ngoài pipeline, nhưng metric chính phải tách rõ: `exact-title` đo khả năng
 writeback/span; `navigation-usable` đo cây điều hướng khi title còn dính body nhưng marker/level đúng.
 
-Key 056 cho thấy giáo trình text-layout có một lỗi khác RFC: route nhìn thấy đủ title ở đâu đó
-(46/46 any occurrence) nhưng chọn đúng occurrence thân bài mới đạt 14/46. Giả thuyết mất khoảng
-trắng kiểu `TitleThe...` đã được kiểm tra nhưng chưa đủ kết luận là lỗi tầng XML: phép đo raw
-`<w:t>` ban đầu bị nhiễu vì chưa tính `w:br`. Lỗi đã xác nhận và đã vá là generic hierarchy không
-được ghi đè cấp typed; phần còn lại là bài toán vùng/occurrence của PDF text-layout. Không vá bằng
-marker-last; cần rule occurrence an toàn hơn.
+Key 056 từng cho thấy giáo trình text-layout có một lỗi khác RFC: route nhìn thấy đủ title ở đâu đó
+nhưng chọn đúng occurrence thân bài thấp. Sau các thay đổi merged/part-section ngày 2026-08-14,
+navigation của 056 trên HEAD đã đạt 46/46 và cấp 46/46; exact vẫn thấp vì nhiều title còn dính body
+hoặc có thêm text inline. Giả thuyết mất khoảng trắng kiểu `TitleThe...` đã được kiểm tra nhưng
+chưa đủ kết luận là lỗi tầng XML: phép đo raw `<w:t>` ban đầu bị nhiễu vì chưa tính `w:br`. Metric
+chính cho typed text-layout vì vậy vẫn là `navigation-usable`; exact chỉ dùng cho span/writeback.
 
 ## Tài liệu mật
 

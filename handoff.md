@@ -5423,6 +5423,10 @@ Hệ quả cho thứ tự việc:
 
 ## §78. Typed giáo trình 056: RFC không đại diện cho lỗi body occurrence
 
+> Superseded 2026-08-14: xem mục audit cuối file. Trên HEAD hiện tại OpenStax 056 đã đạt
+> `Nav 46/46` và `Nav+cấp 46/46`; các số 14/46 dưới đây là trạng thái chẩn đoán trước các commit
+> merged/part-section sau đó.
+
 Đã thêm `keys/typed-human/056_OpenStax_Business_Law_I_Essentials.key`, nguồn title độc lập từ
 OpenStax web 2019. Key gồm 46 mục điều hướng: 14 chapter + 32 numbered section, stableId chọn
 occurrence body cuối trong DOCX, không chọn TOC.
@@ -6690,3 +6694,59 @@ Important negative result: do not re-enable `auto:part-section` until occurrence
   - Eval14 `--no-llm --split-merged`: Nav 99.1%, Nav+level 99.1%, level accuracy 100%.
   - WB holdout full `--no-llm --split-merged`: Nav 89.6%, Nav+level 89.6%, level accuracy 100%, parent 100%.
 - Remaining WB holdout misses are selection/coverage misses, not level misses. Main cluster is still 030 with 10 missing headings.
+
+## 2026-08-14 audit - 030 World Bank selection miss + OpenStax candidate question
+
+Audit lại sau khi cấp World Bank đã đóng:
+
+### 030_WB_RFP_Consulting_Services_2019
+
+Workspace hiện không còn artifact `.verify-build/wb-holdout-pdf-toc-full`, nên đã tái tạo key tạm
+cho riêng `030` từ Summary/TOC high-level: `PART I`, Section 1–7, `PART II`, Section 8, `PART III`,
+Section 9. Key tạm dùng body occurrence theo mô tả §94.
+
+Kết quả tái tạo khớp hình dạng cũ:
+
+```text
+truth 12
+returned 859
+Nav 66.7%
+Nav+cấp 66.7%
+level accuracy 100%
+candidate 75%
+```
+
+Nav-miss cụ thể:
+
+- `PART I – SELECTION PROCEDURES AND REQUIREMENTS`: đúng title chỉ có ở Summary index 14; body
+  occurrence index 22 là `Section 2. ... 11 PART I` + `Section 1...`, không có title PART đầy đủ.
+- `PART II – CONDITIONS OF CONTRACT AND CONTRACT FORMS`: đúng title chỉ có ở Summary index 16; body
+  occurrence index 167 là `Section 8... 85 PART II Section 8...`, không có title PART đầy đủ.
+- `PART III – NOTIFICATION...`: đúng title chỉ có ở Summary index 16; body occurrence index 369 là
+  `Section 9... 191 PART III Section 9...`, không có title PART đầy đủ.
+- `Section 2. Instructions to Consultants and Data Sheet`: body occurrence index 30 bị rút còn
+  `Section 2. Instructions to Consultants (ITC) 15`; title đầy đủ chỉ có ở Summary/TOC/list-of-docs.
+
+Đọc đúng: đây không phải lỗi cấp và chưa thấy filter mới cắt nhầm. Đây là giới hạn source/occurrence
+của file 030: body occurrence không chứa đủ title mà key muốn. Không nên vá bằng cách synthesize từ
+Summary/TOC vào body nếu chưa đổi rõ hợp đồng key; nếu muốn sửa Nav cho 030, cần quyết định lại key
+gold dùng Summary occurrence hay yêu cầu body occurrence đầy đủ. Hiện tại 030 vẫn nên được ghi là
+holdout đáng nghi hơn là gold chắc.
+
+### 056_OpenStax_Business_Law_I_Essentials
+
+Câu hỏi cũ "38/46 truth là candidate nhưng chỉ 14 vào outline, 24 rơi ở đâu?" không còn đúng trên
+HEAD sau các commit merged/part-section ngày 2026-08-14. Đo lại:
+
+```text
+truth 46
+returned 419
+exact P/R/F1 9.5% / 87.0% / 17.2%
+Nav 100%
+Nav+cấp 100%
+truth candidate 82.6%
+```
+
+Audit stableId/title cho thấy 46/46 truth đều có output cùng occurrence thân bài và đúng cấp; 8 mục
+không phải `HeadingCandidate` vẫn được tầng merged/structure cứu. Phần còn lại của OpenStax không
+còn là coverage/candidate drop mà là over-extraction và exact span/writeback.
