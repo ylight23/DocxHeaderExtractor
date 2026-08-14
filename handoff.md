@@ -6829,6 +6829,47 @@ Audit nhanh vài file khác:
 - `092_RFC9111_HTTP_Caching.pdf`: PdfPig report `fs=1.0` cho toàn bộ line; font size không dùng được
   trực tiếp, nhưng x/y/page vẫn có thể giúp page header/body và ordering.
 
+### 2026-08-14 follow-up - quét tín hiệu PDF trên 83 file
+
+Sau phản ví dụ `017`/`092`, đã quét toàn bộ 83 PDF bằng audit tool tạm trong `.verify-build/pdfpig-audit`
+(không track artifact). Phân loại thô theo line-level `FontSize` và `GlyphRectangle.Height`:
+
+```text
+83 PDF
+43 font+glyph-separated
+28 glyph-separated
+ 6 flat
+ 6 empty
+```
+
+Theo thư mục:
+
+```text
+folder                    files  flat  font-strong  glyph-only  empty
+01_phap_quy                  24     3            4          11      6
+02_hop_dong_mua_sam           6     0            6           0      0
+03_tai_chinh_ke_toan         15     0           13           2      0
+04_giao_trinh                15     0           15           0      0
+05_bien_ban_hop              10     3            0           7      0
+06_dich_song_ngu              8     0            5           3      0
+07_system_generated           5     0            0           5      0
+```
+
+Quan trọng: chỉ `font-strong` là tín hiệu đủ sạch để ưu tiên adapter ngay. `glyph-only` chưa được claim là
+heading/body signal, vì `017` chứng minh glyph height có thể dao động do glyph/diacritic/font embedding dù toàn
+bộ line có cùng `fs=16`. `092` cũng thuộc `glyph-only`: `FontSize=1.0` toàn bộ, nhưng glyph height trải rộng
+(`glyph_distinct_sig=21`, `glyph_range_sig=5.7`) và text extraction bị vỡ (`cache` -> `c a che`, số section mất
+dấu chấm), nên RFC cần audit riêng chứ không được tính là “mở khóa”.
+
+Kết luận cập nhật:
+
+- PDF/PdfPig là nguồn tín hiệu bổ sung rất có giá trị, không phải đường thay thế DOCX.
+- Adapter nên ưu tiên nhóm `font-strong`: toàn bộ World Bank PDF `028/029/030/032/034/035`, 15/15 giáo trình,
+  13/15 tài chính, 5/8 song ngữ, và một phần nhỏ pháp quy.
+- Nhóm `glyph-only` chỉ nên dùng `BoundingBox.Height` như tín hiệu phụ sau khi có key kiểm chứng; không dùng để
+  tự động claim heading/body.
+- 6 PDF `empty` là scan/image hoặc text extraction thất bại với PdfPig; cần OCR/nguồn khác nếu muốn khai thác PDF.
+
 Kết luận kiến trúc:
 
 - Thêm một đầu vào mới `PDF -> PdfPig lines/blocks -> SlimParagraph-like` là hướng đúng cho nhóm

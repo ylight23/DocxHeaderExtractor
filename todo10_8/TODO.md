@@ -24,14 +24,18 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
 
 - [ ] Thêm đầu vào PDF-first bằng `PdfPig` chính thức (`PdfPig` package, pin version; namespace
       `UglyToad.PdfPig`) cho nhóm PDF text-layout:
+  - [ ] Ưu tiên prototype trên nhóm `font-strong` đã đo: 43/83 PDF có phân tách font/layout rõ
+        (`02_hop_dong_mua_sam` 6/6, `04_giao_trinh` 15/15, `03_tai_chinh_ke_toan` 13/15,
+        `06_dich_song_ngu` 5/8, `01_phap_quy` 4/24).
   - [ ] Adapter `PDF -> lines/blocks -> SlimParagraph-like` với `text`, `fontSize`, `fontName/bold`,
         `indentX`, `pageY`, `pageNo`; không tự dựng cây trong adapter.
   - [ ] Dùng `BoundingBox` thay `GlyphRectangle`.
   - [ ] Prototype trên `030_WB_RFP_Consulting_Services_2019.pdf`: body heading `fs=16 bold`, body
         thường `fs=12`, page header `fs=10`, TOC indent `PART x≈72` / `Section x≈91`.
-  - [ ] Đo tiếp `028/029/032/034/035` trước khi claim cho toàn World Bank PDF.
-  - [ ] Giữ DOCX path: chỉ 83/95 DOCX có PDF cùng stem; `017` font-size không phân biệt
-        heading/body và `092` PdfPig report `fs=1.0` toàn dòng.
+  - [ ] Với `glyph-only` 28/83 PDF, chưa claim tự động: `017` cho thấy glyph height có thể nhiễu
+        do glyph/diacritic/font embedding; `092` có `FontSize=1.0` toàn dòng và text extraction vỡ.
+  - [ ] Giữ DOCX path: chỉ 83/95 DOCX có PDF cùng stem; 6 PDF `empty` cần OCR/nguồn khác nếu muốn
+        khai thác PDF.
 - [ ] Cài luật phân loại bảng theo spec §5.5 (`layout` / `content` / `data`)
   - [ ] Đo `numeric_ratio`, `avg_cell_len`, `has_header`, số cột, số dòng
   - [ ] Xử lý merged cell (`gridSpan`, `vMerge`) — làm sai phép đếm cột
