@@ -42,6 +42,7 @@ public static class TypedNumberingOutline
     {
         List<HeadingRecord> result = [];
         var seen = new HashSet<(int Index, string Text)>();
+        var usePartSectionLevels = PartSectionOutline.HasStrongSignal(document);
 
         foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
         {
@@ -66,7 +67,9 @@ public static class TypedNumberingOutline
                 {
                     Index = p.Index,
                     StableId = p.StableId,
-                    Level = Math.Clamp(token.Depth, 1, 9),
+                    Level = usePartSectionLevels
+                        ? PartSectionOutline.LevelForHeading(split.Heading) ?? Math.Clamp(token.Depth, 1, 9)
+                        : Math.Clamp(token.Depth, 1, 9),
                     Text = split.Heading,
                     StyleId = p.StyleId,
                     Source = HeadingSource.Structure,

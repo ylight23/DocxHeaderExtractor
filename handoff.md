@@ -6680,3 +6680,13 @@ Nav+cap 45.5%   (was 15.6%)
 ```
 
 Important negative result: do not re-enable `auto:part-section` until occurrence selection has a reliable body-anchor signal. The helper file remains because it is now used only as a level classifier for merged slices, which did not regress Eval14.
+
+## 2026-08-14 update - World Bank section levels
+
+- Fixed the remaining constant-level miss on WB `PART/Section` documents: typed route now uses `PART=1, Section=2` only when the document has strong `PART + Section` signal.
+- Added support for the mojibake dash sequence seen in DOCX text (`\u00E2\u20AC\u201C`) and kept `Section 4.e ...` out of this rule.
+- Verified:
+  - `dotnet test --no-restore`: 543/543 passed.
+  - Eval14 `--no-llm --split-merged`: Nav 99.1%, Nav+level 99.1%, level accuracy 100%.
+  - WB holdout full `--no-llm --split-merged`: Nav 89.6%, Nav+level 89.6%, level accuracy 100%, parent 100%.
+- Remaining WB holdout misses are selection/coverage misses, not level misses. Main cluster is still 030 with 10 missing headings.

@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 public static class PartSectionOutline
 {
     private static readonly Regex MarkerRx = new(
-        @"(?<![\p{L}\d])(?<label>PART|Section)\s+(?<num>\d{1,3}|[IVXLCDM]{1,7})(?<sep>\s*[\.\-\u2013:])?\s*",
+        @"(?<![\p{L}\d])(?<label>PART|Section)\s+(?<num>\d{1,3}|[IVXLCDM]{1,7})(?<sep>\s*(?:[\.\-\u2013:]|\u00E2\u20AC\u201C))?\s*",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     private static readonly Regex DotLeaderRx = new(@"\.{5,}\s*\d{1,4}\b", RegexOptions.Compiled);
@@ -107,12 +107,17 @@ public static class PartSectionOutline
         if (!marker.Groups["sep"].Success) return false;
         var after = marker.Index + marker.Length;
         while (after < text.Length && char.IsWhiteSpace(text[after])) after++;
-        return after < text.Length && char.IsLetter(text[after]);
+        if (after >= text.Length || !char.IsLetter(text[after])) return false;
+
+        var sep = marker.Groups["sep"].Value.Trim();
+        var hadWhitespaceAfterSeparator = marker.Index + marker.Length > marker.Groups["sep"].Index + marker.Groups["sep"].Length;
+        return sep != "." || hadWhitespaceAfterSeparator || char.IsUpper(text[after]);
     }
 
     private static string CleanHeading(string text)
     {
-        var heading = text.Replace('\u2010', '-')
+        var heading = text.Replace("\u00E2\u20AC\u201C", "-")
+            .Replace('\u2010', '-')
             .Replace('\u2011', '-')
             .Replace('\u2012', '-')
             .Replace('\u2013', '-')
@@ -196,7 +201,8 @@ public static class PartSectionOutline
 
     private static string NormalizeKey(string text)
     {
-        var normalized = text.Replace('\u2010', '-')
+        var normalized = text.Replace("\u00E2\u20AC\u201C", "-")
+            .Replace('\u2010', '-')
             .Replace('\u2011', '-')
             .Replace('\u2012', '-')
             .Replace('\u2013', '-')

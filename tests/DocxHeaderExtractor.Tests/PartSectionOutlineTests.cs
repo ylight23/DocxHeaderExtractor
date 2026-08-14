@@ -54,6 +54,19 @@ public sealed class PartSectionOutlineTests
     }
 
     [Fact]
+    public void Nhan_section_heading_dung_cap_du_dash_bi_mojibake()
+    {
+        Assert.Equal(2, PartSectionOutline.LevelForHeading("Section II \u00E2\u20AC\u201C Bid Data Sheet (BDS) 31"));
+        Assert.Equal(2, PartSectionOutline.LevelForHeading("Section VII - Works' Requirements Contents"));
+    }
+
+    [Fact]
+    public void Khong_coi_section_clause_cham_chu_thuong_la_heading()
+    {
+        Assert.Null(PartSectionOutline.LevelForHeading("Section 4.e of the Trust Legal Provisions and are provided without warranty."));
+    }
+
+    [Fact]
     public void Cat_page_header_section_khong_de_than_bai_thanh_key_rieng()
     {
         var doc = new SlimDocument

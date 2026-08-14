@@ -131,6 +131,28 @@ public sealed class TypedNumberingOutlineTests
     }
 
     [Fact]
+    public void Section_declared_dung_cap_semantic_thay_vi_do_sau_marker()
+    {
+        var doc = new SlimDocument
+        {
+            FileName = "wb.docx",
+            SourcePath = "wb.docx",
+            Paragraphs =
+            [
+                P(0, "PART 1 - Bidding Procedures"),
+                P(1, "Section I - Instructions to Bidders"),
+                P(2, "Section II \u00E2\u20AC\u201C Bid Data Sheet (BDS) 31"),
+                P(3, "Section III - Evaluation and Qualification Criteria"),
+                P(4, "Section IV - Bidding Forms"),
+                P(5, "SECTION V: OTHER DEVELOPMENT ACTIVITIES"),
+            ],
+        }.Build();
+
+        var only = Assert.Single(TypedNumberingOutline.Build(doc), h => h.Text.StartsWith("SECTION V", StringComparison.Ordinal));
+        Assert.Equal(2, only.Level);
+    }
+
+    [Fact]
     public void Bo_so_thap_phan_kem_don_vi_nhung_giu_heading_decimal_that()
     {
         var r = Build(
@@ -171,8 +193,16 @@ public sealed class TypedNumberingOutlineTests
     {
         List<SlimParagraph> ps = [];
         for (var i = 0; i < texts.Length; i++)
-            ps.Add(new SlimParagraph { Index = i, StableId = $"p[{i}]", Text = texts[i], FontSizePt = 13 });
+            ps.Add(P(i, texts[i]));
         var doc = new SlimDocument { FileName = "typed.docx", SourcePath = "typed.docx", Paragraphs = ps }.Build();
         return TypedNumberingOutline.Build(doc);
     }
+
+    private static SlimParagraph P(int index, string text) => new()
+    {
+        Index = index,
+        StableId = $"p[{index}]",
+        Text = text,
+        FontSizePt = 13,
+    };
 }

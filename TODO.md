@@ -844,3 +844,7 @@ Tiếp theo: audit phần thừa còn lại là numbered prose/list trong body; 
 - Eval14 giu nguyen `Nav 99.1%`, `Nav+cap 99.1%`.
 - World Bank holdout full giu selection `Nav 89.6%`, va `Nav+cap` tang `15.6% -> 45.5%`.
 - Tiep theo van la FP numbered prose/list trong body va occurrence body-anchor cho high-level section; khong quay lai route rieng neu chua co tin hieu body occurrence.
+
+## 2026-08-14 next
+
+- World Bank constant section levels are now closed on measured sets: Eval14 Nav+level 99.1%, WB holdout full level accuracy 100%. Continue with selection/coverage, starting from 030 holdout's 10 missing headings.
