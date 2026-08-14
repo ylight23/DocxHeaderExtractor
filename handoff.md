@@ -6870,6 +6870,38 @@ Kết luận cập nhật:
   tự động claim heading/body.
 - 6 PDF `empty` là scan/image hoặc text extraction thất bại với PdfPig; cần OCR/nguồn khác nếu muốn khai thác PDF.
 
+### 2026-08-14 follow-up - prototype hẹp trên OpenStax 056
+
+Kiểm tra đề xuất hẹp: đừng viết adapter cho toàn corpus ngay, mà đo trước trên `056_OpenStax_Business_Law_I_Essentials`
+vì file này thuộc giáo trình, có PDF font/layout rõ, và đã có key typed-human độc lập.
+
+Kết quả quan trọng: exact text match trực tiếp từ PDF line về key là 0/46 vì text layer OpenStax chèn khoảng trắng
+vào chữ/số (`Business` -> `Bu s i n ess`, `10.1` -> `1 0.1`). Sau canonical navigation-normalize và marker compact,
+tín hiệu layout lại rất sạch:
+
+```text
+Rule prototype:
+- level 2: dòng `fs≈15.6` bắt đầu bằng marker `N.N`, chấp nhận marker bị chèn khoảng trắng (`1 0.1`)
+- level 1: dòng số chương `fs≈15.6` + dòng title kế tiếp `fs≈15.6` trên cùng trang
+
+056 key: truth=46
+PDF prototype: returned=46, matched=46, false_positive=0
+navigation/prototype precision-like: 100% / 100%
+```
+
+So với baseline DOCX route đã ghi trước đó (`056` Nav 93.5%, exact-title thấp và output over-extraction), PDF signal
+không chỉ làm giàu phụ trợ mà còn giải đúng lớp lỗi OpenStax: chọn body occurrence bằng typography thay vì chọn
+TOC/page-header/body text-layout nhập nhằng.
+
+Kết luận cập nhật cho phạm vi adapter:
+
+- Prototype production nên bắt đầu ở `04_giao_trinh`, đặc biệt OpenStax-like typed textbook.
+- Không dùng exact string raw từ PDF; phải dùng canonical title matching/marker compact vì PDF text layer có thể chèn
+  khoảng trắng trong token.
+- Level rule cho typed textbook PDF rất rõ: chapter = số chương + title line; section = độ sâu marker typed (`N.N`,
+  `N.N.N` nếu có).
+- Đây là bằng chứng mạnh hơn bảng histogram 43/83: một file có key thật đã đạt 46/46 bằng PDF layout.
+
 Kết luận kiến trúc:
 
 - Thêm một đầu vào mới `PDF -> PdfPig lines/blocks -> SlimParagraph-like` là hướng đúng cho nhóm

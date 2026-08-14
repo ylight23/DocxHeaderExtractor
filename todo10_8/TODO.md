@@ -27,6 +27,12 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
   - [ ] Ưu tiên prototype trên nhóm `font-strong` đã đo: 43/83 PDF có phân tách font/layout rõ
         (`02_hop_dong_mua_sam` 6/6, `04_giao_trinh` 15/15, `03_tai_chinh_ke_toan` 13/15,
         `06_dich_song_ngu` 5/8, `01_phap_quy` 4/24).
+  - [ ] Làm trước nhánh typed textbook/OpenStax: audit tạm trên `056` cho thấy PDF layout prototype
+        đạt `truth=46 returned=46 matched=46 fp=0` sau canonical matching.
+    - [ ] Không match raw text PDF; cần normalize/canonical vì text layer có thể chèn khoảng trắng
+          trong token (`Business` -> `Bu s i n ess`, `10.1` -> `1 0.1`).
+    - [ ] Luật đầu tiên: section = dòng `fs≈15.6` bắt đầu marker typed compact `N.N`;
+          chapter = dòng số chương `fs≈15.6` + dòng title kế tiếp `fs≈15.6` cùng trang.
   - [ ] Adapter `PDF -> lines/blocks -> SlimParagraph-like` với `text`, `fontSize`, `fontName/bold`,
         `indentX`, `pageY`, `pageNo`; không tự dựng cây trong adapter.
   - [ ] Dùng `BoundingBox` thay `GlyphRectangle`.
