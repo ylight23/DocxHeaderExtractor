@@ -31,8 +31,15 @@ Sắp theo thứ tự làm. Việc sau phụ thuộc kết quả việc trước
         đạt `truth=46 returned=46 matched=46 fp=0` sau canonical matching.
     - [ ] Không match raw text PDF; cần normalize/canonical vì text layer có thể chèn khoảng trắng
           trong token (`Business` -> `Bu s i n ess`, `10.1` -> `1 0.1`).
-    - [ ] Luật đầu tiên: section = dòng `fs≈15.6` bắt đầu marker typed compact `N.N`;
-          chapter = dòng số chương `fs≈15.6` + dòng title kế tiếp `fs≈15.6` cùng trang.
+    - [ ] Không hardcode `fs≈15.6`: prototype relative trên `056` vẫn `46/46`, còn giáo trình `057`
+          có baseline `fs=10.9` và heading/page-top `fs=14.3`.
+    - [ ] Luật đầu tiên: section = dòng marker typed compact `N.N` có font lớn hơn body dominant;
+          chapter = dòng số chương + dòng title kế tiếp cùng trang, cùng nhóm font lớn hơn body.
+    - [ ] Chưa dùng World Bank làm proof tổng quát cho adapter: cross-check 6 PDF font-strong chỉ
+          đạt Nav `100/60/100/76.9/100/100` và precision-like thấp do bắt thêm `Part C/Fraud`,
+          section/subsection/body labels; WB cần luật domain riêng nếu đi PDF path.
+    - [ ] Ghép nguồn: PDF thắng về ranh giới title/body và chọn body occurrence khi typography rõ;
+          DOCX thắng về writeback/span OOXML. Khi mâu thuẫn, giữ source/confidence thay vì ghi đè.
   - [ ] Adapter `PDF -> lines/blocks -> SlimParagraph-like` với `text`, `fontSize`, `fontName/bold`,
         `indentX`, `pageY`, `pageNo`; không tự dựng cây trong adapter.
   - [ ] Dùng `BoundingBox` thay `GlyphRectangle`.

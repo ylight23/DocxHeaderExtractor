@@ -6902,6 +6902,53 @@ Kết luận cập nhật cho phạm vi adapter:
   `N.N.N` nếu có).
 - Đây là bằng chứng mạnh hơn bảng histogram 43/83: một file có key thật đã đạt 46/46 bằng PDF layout.
 
+### 2026-08-14 follow-up - kiểm rủi ro overfit và World Bank cross-check
+
+Sau prototype `056`, đã kiểm hai rủi ro trước khi viết adapter thật:
+
+1. **Không hardcode `fs≈15.6`.** Chạy lại prototype `056` bằng luật tương đối: lấy font body dominant làm baseline
+   (`056`: body `fs=9.0`), rồi chọn dòng marker/title có font lớn hơn baseline rõ rệt. Kết quả vẫn giữ:
+
+   ```text
+   056 PDF relative prototype: truth=46, returned=46, matched=46, fp=0
+   ```
+
+2. **Giáo trình thứ hai không dùng cùng cỡ chữ.** Audit `057_Quantitative_Methods_in_Finance_Lecture_Notes.pdf`
+   cho thấy baseline khác hẳn:
+
+   ```text
+   body dominant: fs=10.9
+   heading/page-top sequence: fs=14.3
+   ```
+
+   File này không có dot-leader TOC/key rẻ để chấm ngay, nhưng nó bác rõ việc dùng ngưỡng tuyệt đối `15.6`.
+   Adapter phải dùng threshold tương đối theo từng tài liệu.
+
+Kiểm chéo 6 PDF World Bank font-strong (`028/029/030/032/034/035`) bằng truth tái tạo từ PDF TOC high-level
+`PART/Section` và prediction là body line `PART/Section` có font lớn hơn baseline (`bodyFs=12` ở cả 6 file):
+
+```text
+file                                  truth returned matched fp  Nav   P-like
+028_WB_RFB_Works_Without_Prequal_2017     9       15       9  6 100.0   60.0
+029_WB_RFP_Works_DesignBuild_2021        10        8       6  1  60.0   75.0
+030_WB_RFP_Consulting_Services_2019       9       13       9  2 100.0   69.2
+032_WB_Plant_TwoStage_2020               13       11      10  0  76.9   90.9
+034_WB_Plant_Without_Prequal_2016        11       14      11  2 100.0   78.6
+035_WB_EPC_Turnkey_SingleStage_2021      10       16      10  4 100.0   62.5
+```
+
+Đọc đúng kết quả: PDF layout rất hữu ích cho WB nhưng **rule font thô không tổng quát ngoài giáo trình**. Nó bắt thêm
+`Part C/Fraud and Corruption`, các section/subsection/body labels, và vẫn miss một số section ở `029/032`. Vì vậy
+không dùng WB làm bằng chứng “adapter tổng quát 100%”; WB cần luật domain riêng nếu đi theo PDF, còn adapter P1 vẫn
+nên bắt đầu từ typed textbook/giáo trình.
+
+Quyết định ghép nguồn nên chốt như sau:
+
+- PDF thắng về ranh giới title/body và chọn body occurrence khi PDF có typography rõ.
+- DOCX thắng về writeback/span OOXML vì PDF không map trực tiếp về `<w:p>/<w:r>`.
+- Khi hai nguồn mâu thuẫn, report cả hai confidence/source thay vì ghi đè im lặng; exact span/writeback vẫn phải dựa
+  trên DOCX mapping hoặc một bước alignment riêng.
+
 Kết luận kiến trúc:
 
 - Thêm một đầu vào mới `PDF -> PdfPig lines/blocks -> SlimParagraph-like` là hướng đúng cho nhóm
