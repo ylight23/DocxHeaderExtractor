@@ -59,141 +59,9 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
 > (`bench/04`, precision 92,3% → **100%**). Đây không phải luật cấu trúc còn thiếu — không tín hiệu
 > nào tách `MỤC LỤC` khỏi `BỘ KHOA HỌC VÀ CÔNG NGHỆ` — mà là việc của tầng ngữ nghĩa.
 
-## 1. ~~Luật nhận được dòng bìa / khối chữ ký~~ — **ĐÓNG (§56.2): việc của tầng ngữ nghĩa, không phải luật cấu trúc**
+---
 
-> **Trạng thái.** Đã chữa trên đường `--style-trust`: `09-style-ap-sai` precision **57,1% → 100%**
-> (hết cả ba dương tính giả), bench 9 tài liệu F1 **92,5% → 95,6%**, tuyệt đối 5/9 → 6/9. Trên khoá
-> luận thật là **hoà** (đáp án đồng thuận: F1 95,1% → 95,0%); đáp án Opus đơn lẻ nói giảm 1,1 điểm
-> nhưng ba trong bốn mục mất nằm đúng vùng hai người gán nhãn bất đồng — xem §12.3.
->
-> Nguyên nhân hoá ra **không phải** thiếu luật hình dạng như mục này phỏng đoán, mà là hai lỗi trong
-> luật đã có: hạ quyền style tự tắt luật thay thế, và "mở ra văn xuôi" bị tính bắc cầu (§12.1, §12.2).
->
-> **Còn lại:** đường mặc định (không `--style-trust`) vẫn 57,1% vì ba đoạn đó mang style Heading và
-> luật miễn trừ đoạn có tuyên bố cấu trúc. Chữa nốt nghĩa là đổi mặc định của `--style-trust`, và
-> §10.4 cảnh báo đúng loại quyết định này — cần đo trên nhiều tài liệu thật hơn, không phải một dòng cờ.
-
-<details><summary>Ghi chép gốc của mục này</summary>
-
-**Vì sao đứng đầu.** Đây là chế độ hỏng mà **không tầng nào trong pipeline bác được**, đã đo hai
-lần theo hai đường độc lập:
-
-- §10.3 — trên `09-style-ap-sai`, cả nhánh có lẫn không có luật R1 đều thừa đúng `4, 12, 13`; mô
-  hình được hỏi mà vẫn không cắt.
-- §11.2 — `StyleTrust` nhận đúng rằng style tài liệu đó không đáng tin (*"quyền chọn HẠ"*) nhưng
-  kết quả không đổi một chữ số, vì hạ quyền style là chuyển quyền cho **một chỗ trống**.
-
-Ba dương tính giả là `Hà Nội, tháng 8 năm 2026`, `Người lập biểu`, `Nguyễn Văn A`. Không luật hình
-dạng nào hiện có nói được gì về chúng: không trong bảng, không gạch đầu dòng, không kết thúc bằng
-dấu câu, không phải chú thích đối tượng.
-
-**Ràng buộc thiết kế.** Không được dùng từ khoá tiếng Việt — §9 đã bỏ `KeywordPrefixRx` lấy
-`LabelledNumberPrefixRx` vì lý do đó, và §3.2 đo được prompt chứa bảng phân loại hành chính làm
-critic loại nhầm 3 heading thật. Hướng theo hình dạng: dòng bìa thường là **cụm danh từ không có
-động từ, đứng thành CỤM nhiều dòng liên tiếp cùng căn lề, không có đoạn thân bài xen giữa** — cùng
-họ với `DemoteCoverPageBlock` đã có, nhưng nhóm này nằm ở CUỐI tài liệu chứ không ở trang bìa.
-
-**Nghiệm thu:** `09-style-ap-sai` precision 57,1% → cao hơn, và bench 9 tài liệu không hồi quy. Đo
-được bằng `--no-llm --structural-only`, vài giây, không cần lượt LLM nào.
-
-</details>
-
-## 2. ~~Đo nhánh `LevelTrusted`~~ — **ĐÃ ĐO, kết quả ÂM; bị chặn bởi mục 3 (§13)**
-
-> **Trạng thái.** Đã dựng fixture `10-cap-style-thoai-hoa` và đo: nhánh này **không cải thiện gì**
-> (đúng cấp 44,4% ở cả hai nhánh cờ). Nhưng cơ chế CHẠY ĐÚNG — log cho thấy mô hình được hỏi cả 9
-> mục, `src=Model` — nó chỉ trả lời y hệt cấp mà style đã ghim. Hai giả thuyết "lỗi ở thứ mình gửi"
-> đều bị bác bằng số (giấu metadata cấp: 0 tác dụng; bỏ chữ số khỏi tên style: 44,4% → 33,3%), cả
-> hai đã hoàn nguyên.
->
-> **Chỗ tắc thật:** bộ suy cấp tất định `SignatureTiers` không chạy vì `Declared()` thấy style đã
-> khai cấp, và `--style-trust` không với tới chốt đó. Nhưng nới chốt cũng chưa đủ — `NumberingAudit`
-> không đọc được `Chương 1.` nên không có token để suy tầng. **Mục 2 bị chặn bởi mục 3.** Thứ tự
-> đúng: làm mục 3 trước, rồi mới nới `Declared` để tôn trọng `LevelTrusted`.
->
-> **Thêm một tài liệu thật tái hiện đúng lớp lỗi này (2026-08-11), khi điều tra TODO mục 13.** Báo
-> cáo thực tập MBBank (`keys/bao-cao-thuc-tap.key`) dùng `Heading2` cho CẢ cấp 2 lẫn cấp 3 (numbering
-> phân biệt, style thì không). Đo `--no-llm --style-trust`: log tự in `"12/18 lệch so với độ sâu
-> đánh số (67%) ⇒ quyền chọn HẠ, quyền gán cấp HẠ"` — đúng cơ chế phát hiện. Nhưng đúng cấp **giảm**
-> so với không bật cờ (58,6% → 46,2%): tiêu đề Chương/front-matter (cấp 1, không đánh số) và mục cấp
-> 2 bị đẩy lên +1 đều — khớp nguyên văn "chỗ tắc thật" ở trên (`--no-llm` không qua `ResolveLevel`
-> nên "hạ quyền" không có nơi tiếp nhận). Không đo được qua LLM (máy này không có đúng Qwen3.5-9B),
-> nhưng đây là tài liệu THẬT thứ hai (ngoài fixture tổng hợp `10-cap-style-thoai-hoa`) xác nhận đúng
-> lớp lỗi — dùng khi bắt tay đo mục 2 bằng LLM.
-
-<details><summary>Ghi chép gốc của mục này</summary>
-
-Đã cài (`ResolveLevel` + khâu chọn đoạn để hỏi cấp) nhưng **CHƯA ĐO** — xem §11.3. Đây là nhánh
-nhắm thẳng vào lỗi lớn nhất còn lại: đúng cấp **40,7%** trên một báo cáo gán `Heading2` cho gần như
-mọi thứ, và **~28%** trên một khoá luận dùng `Heading1→Heading3→Heading4`.
-
-Cần hai thứ:
-
-- **Fixture cấp style thoái hoá** trong `BenchDocumentFactory`: một tài liệu ≥8 đoạn mang style mà
-  mọi mục đều cùng một cấp, đáp án thì có cây thật nhiều cấp.
-- **Một lượt LLM.** `--no-llm` đi qua `HeuristicOnly` chứ không qua `ResolveLevel`, nên không đo
-  được nhánh này. Trên WX 5100 là ~2 h/lượt (xem §8.2); hai lượt mỗi nhánh.
-
-</details>
-
-## 3. ~~`NumberingAudit` không đọc được "Chương 1."~~ — **XONG (§14)**
-
-> **Trạng thái.** Đã thêm `NumberKind.Labelled` với NHÃN nằm trong chữ ký (`Labelled(chương):1`), và
-> nới `Declared` để tôn trọng `LevelTrusted`. Hai thay đổi đo riêng:
-> - token `Labelled` một mình (không cờ): bench đúng cấp 88,5% → **90,4%**, 7/10 → **8/10**;
-> - + nới `Declared` (có `--style-trust`): `10-cap-style-thoai-hoa` **44,4% → 100%**, bench đúng cấp
->   88,5% → **100%**, và lần đầu bench đạt **tuyệt đối toàn phần: P/R/F1 100% · đúng cấp 100% · 10/10**.
->
-> Việc này cũng gỡ nốt chỗ tắc của mục 2 (§13.4). 305/305 test xanh; ba lần test suýt xanh giả đều
-> bị kiểm đột biến bắt — xem §14.4.
->
-> **Còn lại:** cải thiện nằm sau cờ `--style-trust`. Đổi mặc định là quyết định riêng, chung số phận
-> với phần còn lại của mục 1.
-
-<details><summary>Ghi chép gốc của mục này</summary>
-
-Dạng "nhãn + số" không sinh ra `NumberToken` vì `Parse` chỉ có mẫu Ả Rập / La Mã / chữ cái. Đây là
-lý do gốc của bug 87,2% ở §5, hiện đang được *vá bằng chốt* chứ chưa được *sửa*.
-
-**Vì sao phải làm riêng một phiên.** Khảo sát: **13 điểm gọi trên 9 file**
-(`CorrectionMemory`, `EvidenceConfidenceCalibrator`, `HeaderExtractionPipeline`,
-`InlineHeadingSplitter`, `ModelHeadingCriticGate`, `OutlineStructureResolver`,
-`PrecisionAcceptanceGate`, `StructuralHierarchyResolver`, `StructuralRecovery`). Thêm một
-`NumberToken` kind mới đổi cả `Signature` → `SignatureTiers` → suy cấp, tức đổi output của tất cả
-cùng lúc. Không được gộp với bất kỳ thay đổi nào khác.
-
-</details>
-
-## 3b. ~~Cấp theo chuỗi đánh số khi style bất nhất theo phần~~ — **XONG một phần (§17)**
-
-> **Trạng thái.** Đã thêm vế thứ ba cho `StyleTrust`: đối chiếu cấp style với ĐỘ SÂU của chuỗi đánh
-> số gõ tay. Khoá luận thật **đúng cấp 26,5% → 37,2%**; P/R/F1 không đổi; bench 10 tài liệu giữ
-> 10/10 · cấp 100%. 309/309 test xanh, đã kiểm đột biến.
->
-> **Còn lại:** 37,2% vẫn thấp vì luật chỉ chạm được đoạn CÓ chuỗi đánh số. `MỞ ĐẦU`, `KẾT LUẬN`,
-> `Tiểu kết chương 1` không có số để bám nên cấp vẫn theo style. Hướng tiếp: suy cấp cho mục không
-> đánh số theo vị trí giữa hai mục có đánh số (kẹp giữa), chưa đo.
-
-<details><summary>Ghi chép gốc của mục này</summary>
-
-Trên khoá luận thật, đúng cấp **26,5%** và chuỗi mục 2 + mục 3 **không chạm tới nó**: `StyleTrust`
-chấm tài liệu này là "5 cấp riêng biệt ⇒ quyền gán cấp GIỮ", và chấm ĐÚNG theo định nghĩa hiện có.
-
-Vấn đề nằm ở mức PHẦN chứ không mức tài liệu: cùng `Heading3` mang cấp 2 ở 9 mục và cấp 3 ở 8 mục,
-tuỳ chương tác giả có dùng Heading2 hay không. Mọi thống kê gộp toàn tài liệu đều mù với nó, nên
-**thêm ngưỡng cho `StyleTrust` không phải hướng đi**.
-
-**Hướng:** chuỗi đánh số gõ tay (`1.1.`, `2.2.3.2.`) nhất quán suốt tài liệu trong khi style thì
-không. Khi ĐỘ SÂU của nó mâu thuẫn có hệ thống với cấp style, ưu tiên nó. Đây là tín hiệu mức đoạn
-nên nhìn được thứ thống kê mức tài liệu bỏ sót.
-
-**Nghiệm thu:** khoá luận thật đúng cấp 26,5% → cao hơn; bench 10 tài liệu giữ đúng cấp 100% với
-`--style-trust`. Cần lượt LLM (~6 phút/lượt trên RTX 3060).
-
-**Rủi ro đã biết:** §5 ghi thiếu chốt "cấu trúc đã khai thì không suy lại" từng kéo đúng cấp
-100% → 87,2%. Nới nguồn quyết định cấp là đụng đúng chỗ đó.
-
-</details>
+## Việc ĐANG SỐNG
 
 ## 4. Đáp án có người xác nhận — **ĐÃ BẮT ĐẦU (§37), vẫn là thắt cổ chai**
 
@@ -227,49 +95,7 @@ Còn lại:
 - **Đáp án thật cho bench 10 tài liệu vẫn do agent gán.** Bench đang 10/10 tuyệt đối; nếu nó cũng
   chứa sai lệch kiểu 5 biên bản thì mọi "bench giữ 10/10" trong handoff đều đứng trên nền chưa kiểm.
 
-## 5. ~~Dùng `SlimSourceSegment` để mở khoá writeback~~ — **XONG, phạm vi hẹp (§15)**
-
-> **Trạng thái.** Đã nối. Tách được khi ranh giới rơi đúng đầu một run VÀ mọi run là con trực tiếp
-> của `w:p`; mọi ca khác giữ nguyên `inline_body_not_splittable`. `Verify` nay có bản đồ chỉ số —
-> ràng buộc mà mô tả gốc bỏ sót. Round-trip test + ca fail-closed, ba đột biến đều bị bắt (§15.4).
-> 307/307 test xanh.
->
-> **Còn lại:** ca ranh giới nằm giữa run (phải cắt đôi text trong run) và ca run lồng trong
-> `w:hyperlink`. Cả hai vẫn từ chối, có chủ đích.
-
-<details><summary>Ghi chép gốc của mục này</summary>
-
-`OutlineWriteback` từ chối bằng `inline_body_not_splittable` mỗi khi heading chỉ chiếm một phần
-paragraph. Ánh xạ offset → (run, offset thô) nay đã có (`8b95302`) nhưng **chưa có caller nào dùng**.
-Nối nó vào là ghi ngược được phần `InlineHeadingSplitter` đã tách ra.
-
-**Nghiệm thu:** test round-trip mở/ghi/đọc lại, không cần bench.
-
-### Khảo sát trước khi làm — LỚN HƠN mô tả trên
-
-Mô tả "nối nó vào là ghi ngược được" bỏ sót ba ràng buộc, cả ba đều nằm trong chính hợp đồng của
-`OutlineWriteback`:
-
-1. **Tách đoạn làm DỊCH CHỈ SỐ.** Bất biến 3 của `OutlineWriteback` là đọc lại bản đích rồi đối
-   chiếu `heading.Index` → đoạn. Chèn một `w:p` mới làm mọi chỉ số phía sau lệch +1, nên khâu xác
-   minh sẽ đổ ngay ở mục kế tiếp. Cần một BẢN ĐỒ chỉ số (gốc → sau tách) dùng chung cho cả xác minh
-   lẫn caller.
-2. **`StableId` cũng dịch.** Nó là địa chỉ theo vị trí (`body[1]/p[N]`), nên vế `stable_id_mismatch`
-   phải được tính lại chứ không so thẳng được.
-3. **Run có thể nằm trong `w:hyperlink`.** `SourceSegments.RunIndex` đếm theo
-   `paragraph.Descendants<Run>()`, tức tính cả run lồng trong hyperlink. Tách ở một run như vậy đòi
-   tách cả hyperlink bao ngoài — phải fail-closed khi run ranh giới không phải con trực tiếp của
-   `w:p`.
-
-**Phạm vi hẹp nên làm trước:** chỉ tách khi ranh giới rơi ĐÚNG đầu một run VÀ run đó là con trực
-tiếp của `w:p`; mọi ca khác giữ nguyên `inline_body_not_splittable`. Như vậy không phải cắt đôi text
-trong run — phần fiddly nhất — mà vẫn mở được ca phổ biến.
-
-**Chưa làm.** Đây là thành phần DUY NHẤT ghi ra tài liệu người dùng, và bất biến 2 của nó là "không
-chạm vào một ký tự nội dung nào". Tách đoạn không đổi ký tự nào nhưng đổi CẤU TRÚC, nên bất biến đó
-phải được phát biểu lại cho chính xác trước khi có dòng code đầu tiên.
-
-</details>
+---
 
 ## 6. Ứng viên đa block — heading trải qua nhiều paragraph
 
@@ -293,6 +119,8 @@ một block) chứ không phải ca mục này mô tả (một heading trải qu
 Tức chi phí thì chắc chắn (đổi lược đồ, đổi mọi điểm đọc `i`), còn lợi ích vẫn là 1 mục trên hơn 240
 heading của hai tài liệu thật. **Giữ nguyên vị trí cuối hàng.** Điều kiện mở lại: gặp một tài liệu
 mà dạng này chiếm từ vài mục trở lên, hoặc mục 4 cho đủ tài liệu thật để đo được tần suất thật.
+
+---
 
 ## 7. Bốn đề mục bị đánh rơi ở TẦNG ỨNG VIÊN — *recall, và đã biết chỗ* — **NỬA ĐẦU ĐÃ CÀI (2026-08-11), CHƯA ĐO BẰNG LLM**
 
@@ -329,6 +157,8 @@ riêng**. Hai mục sau là dạng `NHÃN + SỐ + HẾT`; cờ `--bare-labels` 
 dẫn số Ả Rập nhiều cấp). Recall trên `key-human.key` phải tăng, P không được giảm quá 1 điểm, bench
 giữ 10/10. Đo riêng, không gộp với bất kỳ thay đổi nào khác.
 
+---
+
 ## 8. Precision 79,5% — *con số kém nhất hiện nay*
 
 Trên `key-human.key`: P 79,5 · R 96,2 · F1 87,1 · đúng cấp 96,0 · đúng cha 96,0.
@@ -346,6 +176,8 @@ sách" không tách được (`1920 x 1080 pixels`, `Nguồn: Tik Tok`, `Nguyễ
 Còn lại và chưa thử: hạ cấp SAU khi mô hình quyết, bằng luật nhắm lớp nhiễu có hình dạng đo được.
 Hoặc `--no-standalone-lines` (§33): P 83,5 → 92,8 nhưng R 96,4 → 93,6, làm rơi `Tiểu kết chương 2/3`.
 Đổi 2,8 điểm recall lấy 9,3 điểm precision là **lựa chọn về sản phẩm**, thuộc về người dùng.
+
+---
 
 ## 9. Đưa cấu hình đã đo thành mặc định — **NỬA ĐẦU XONG (§56.4)**
 
@@ -370,34 +202,6 @@ cho hai kết quả khác nhau — §36 cho thấy UI trả về `1296`/`1315` m
 
 ---
 
-## 9b. ~~Bộ suy cấp tất định không chạy trên `--no-llm`~~ — **XONG (§51)**
-
-> `StructuralHierarchyResolver` và `TableOfContentsAnchor` đều tất định nhưng nằm trong
-> `RunModelAsync`, nên đường `--no-llm` chưa bao giờ chạy chúng. Sửa: bench đúng cấp
-> **86,1% → 100%**, đúng cha **91,7% → 100%**, tuyệt đối 5/7 → 6/7, precision không đổi.
-> 95 file: số mục không đổi (6.357), cấp 9 sập 221 → 20.
->
-> **Mặc định BẬT** — ngoại lệ có lý do: bộ suy cấp đã có bằng chứng đáp án người kiểm (§31) và
-> đường có mô hình chạy nó vô điều kiện; bật cho `--no-llm` là sửa bất đối xứng chứ không thêm
-> suy đoán. Tắt bằng `--no-deterministic-hierarchy`.
->
-> **Hệ quả phải nhớ:** mọi con số `--no-llm` ghi TRƯỚC §51 đều thiếu bước này, kể cả bảng phân bố
-> cấp ở §45.3.
-
----
-
-## 9c. ~~Bộ dựng `vn-administrative`~~ — **XONG (§60)**
-
-> `AdministrativeOutline` + cờ `--admin-outline`, **mặc định tắt**. Bộ dựng tất định thứ ba, cùng
-> khuôn với hai bộ đã đạt 100%: cấp neo theo cha gần nhất (thứ tự lồng nhau đọc từ chính tài liệu,
-> không gán cứng theo loại ký hiệu), thân bài tách tại dấu ngắt đầu tiên mở ra số liệu,
-> **không một ngưỡng nào**. Trả rỗng khi chỉ có một chữ ký thay vì đoán.
->
-> Đã phơi trong Web UI cùng hai bộ kia, kèm test ghim rằng mọi ô điều khiển đều được JS gửi đi
-> (mutation "quên nối dây một ô" → đỏ).
->
-> **Chưa chấm được** vì chưa có đáp án cho tài liệu hành chính — xem mục 4.
-
 ---
 
 ## 10. `--split-merged` — *mở khoá 83/95 tài liệu, nhưng chưa có đáp án để bật mặc định*
@@ -418,6 +222,8 @@ khoản đánh số, nên mốc kết thúc tiêu đề nằm xa hơn `MaxHeadin
 Đánh đổi cố ý — mất recall để giữ precision. Nới nó cần đáp án để đo.
 
 **Cách nghiệm thu.** Một tài liệu PDF→DOCX có đáp án người kiểm. Chưa có thì không bật mặc định.
+
+---
 
 ---
 
@@ -532,6 +338,8 @@ Checklist mới cho mọi lượt đo corpus: luôn ghi `avg candidates/file` v�
 
 ---
 
+---
+
 ## 12. Bốn ca của spec vẫn treo, ba trong đó không có dữ liệu
 
 | ca | trạng thái |
@@ -544,80 +352,6 @@ Checklist mới cho mọi lượt đo corpus: luôn ghi `avg candidates/file` v�
 **Cách nghiệm thu.** §10.4: cài luật cho ca chưa có dữ liệu là thêm mã không kiểm chứng được.
 
 ---
-
-## 13. `TableOfContentsAnchor.Apply` pin sai cấp cho heading numPr-driven — ĐÃ SỬA, ĐÃ ĐO LẠI SAU §51: đúng cấp 44,8% → 96,6%
-
-*(Chi tiết đầy đủ, kể cả công cụ `dhx toc-keys` phát hiện ra nó: `handoff.md` §52–§53.)*
-
-**Phát hiện khi xây `dhx toc-keys`** (đối chiếu với `keys/bao-cao-thuc-tap.key` trên chính tài liệu
-nguồn thật): `TableOfContentsAnchor.DepthOf` chỉ đọc SỐ trong TEXT của dòng mục lục. Heading
-`numPr`-driven (numbering do Word vẽ, không gõ tay) không để số nào trong TEXT dòng mục lục — chỉ
-còn ở `NumberLabel` đã resolve riêng từ `numbering.xml`. Kết quả cũ: `DepthOf` mặc định các mục này
-về cấp 1.
-
-**Test cô lập `TableOfContentsAnchorNumberLabelTests.cs` đo trực tiếp `TableOfContentsAnchor.Apply`,
-không đoán:** heading được gán ĐÚNG cấp 2 từ nguồn khác (numPr) trước đó, sau khi `Apply` chạy (bản
-cũ) bị ghi đè thành cấp 1 sai — đúng cơ chế "mục lục phải nói lời cuối" mà code đã tự ghi chú. Cơ chế
-lỗi có thật, tái lập 100%.
-
-**ĐÃ SỬA**: `Apply` nay ưu tiên `NumberLabel` trước khi rơi về đọc TEXT. Test hết `Skip`, xanh.
-
-**Đo tác động lần 1 (trước §51) — MẤT HIỆU LỰC THAM CHIẾU, giữ lại để thấy vì sao.** Lượt đo đầu tiên
-báo `dhx eval --no-llm` byte-identical trước/sau trên cả bench lẫn báo cáo thực tập thật, log không
-có dòng "Mục lục pin lại N cấp" — kết luận lúc đó: `Apply` không chạm heading nào trên `--no-llm`.
-Kết luận ấy ĐÚNG với dữ kiện lúc đó, nhưng dữ kiện sai: TODO mục 9b/§51 phát hiện `Apply` **chưa từng
-được gọi trên đường `--no-llm`** trước khi sửa (nằm trong `RunModelAsync`) — nên "byte-identical" chỉ
-phản ánh việc cả hai lượt đều không gọi `Apply`, không phản ánh gì về bản sửa `NumberLabel`.
-
-**Đo lại sau §51 (2026-08-11), một biến sạch — giữ §51 cố định, chỉ bật/tắt bản sửa `NumberLabel`:**
-
-| Cấu hình | Đúng cấp | Sai cấp |
-|---|--:|--:|
-| §51 (Apply chạy) + `DepthOf` cũ (không NumberLabel) | 44,8% | 16 |
-| §51 (Apply chạy) + `NumberLabel` (bản sửa) | **96,6%** | **1** |
-
-Log giờ in `"Mục lục của tài liệu pin lại 11 cấp"` và `"Hậu xử lý hierarchy (không mô hình): sửa 15
-cấp"` — xác nhận cả `TableOfContentsAnchor` lẫn `StructuralHierarchyResolver` đều chạy thật. Đóng góp
-riêng của bản sửa `NumberLabel`, giữ mọi thứ khác cố định: **+51,8 điểm đúng cấp**. Đo bằng cách tạm
-đổi một dòng (`DepthFromNumberLabel(p.NumberLabel) ?? DepthOf(p.Text)` → `DepthOf(p.Text)`), build,
-đo, rồi hoàn nguyên — không để lại trong lịch sử git.
-
-1 lỗi "sai cấp" còn lại (`i=701`, "Chức năng nhiệm vụ của từng vị trí") khớp đúng mục TOC từng bị
-`dhx toc-keys` báo "không tìm thấy" khi xác thực — nhiều khả năng cùng loại lệch nhẹ TOC-vs-thân-bài
-đã thấy ở ca "CHƯƠNG 2" trước đó, chưa điều tra sâu thêm.
-
-Bench `dhx eval bench --no-llm` (10 tài liệu tổng hợp) vẫn không đổi qua cả ba lượt đo trên — không
-có fixture nào chạm đúng tổ hợp "TOC + numPr không số trong text" nên không hồi quy nhưng cũng không
-đo thêm được gì từ bộ đó.
-
-**12 lỗi "sai cấp: trả về 2, đáp án 3" ở lượt đo TRƯỚC §51 — ĐÃ GIẢI THÍCH, không phải bug mới
-(2026-08-11).** Nguồn gốc: lượt đo `--no-llm` ban đầu **thiếu cờ `--style-trust`**. Bật cờ lên thì
-đúng 12 lỗi này biến mất — cơ chế đối chiếu style-vs-độ-sâu-đánh-số ở §17 đã xử lý đúng. Nhưng bật
-`--style-trust` lại lộ ra **14 lỗi khác** (front-matter/chương cấp 1 và mục cấp 2 bị đẩy +1 đều) —
-đúng lớp lỗi "hạ quyền chuyển cho chỗ trống" đã ghi ở mục 2 phía trên, không phải lỗi mới. Xem
-addendum ở mục 2 — tài liệu này giờ là bằng chứng thật thứ hai cho mục đó, dùng khi bắt tay đo bằng
-LLM ở đó. (Đo lại cùng cờ `--style-trust` sau §51 chưa làm — có thể đổi kết quả 14 lỗi kia, xem việc
-còn treo dưới đây.)
-
-**Còn treo thật sự:** đo bản sửa `TableOfContentsAnchor` (và tương tác với mục 2) trên đường ĐẦY ĐỦ
-(có LLM, và/hoặc có `--style-trust` sau §51) — máy này chỉ có Qwen2.5-7B/Llama-3.2-3B cục bộ, không
-phải Qwen3.5-9B đã dùng để chốt "100%" trong handoff.md. Chạy được một so sánh TRƯỚC/SAU sạch (một
-biến = bản sửa, giữ nguyên model+cờ) nhưng con số tuyệt đối **không so được** với "100%" đã chốt —
-khác model. Muốn con số so được thì cần đúng Qwen3.5-9B.
-
-**Cách nghiệm thu.** Chạy `dhx eval` với đúng cấu hình đã chốt trên máy có Qwen3.5-9B, so trước/sau
-bản sửa — một biến, không gộp việc khác.
-
-**Addendum 2026-08-14 (§96): audit metadata Section và thêm span cho slice đoạn gộp.**
-
-- Đã dump/audit 6 file holdout full vào `.verify-build/wb-holdout-section-audit/`, gồm JSON outline, XML slim và `key-metadata.csv`.
-- Metadata OOXML của high-level `Section` không đủ phân biệt: gần như toàn `Normal`, font nhỏ, nhiều dòng `outlineLvl=1`, và 5/6 file có `Section` lặp ít nhất 2 lần trong cùng paragraph (`page/header/TOC-ish prefix + body title`).
-- `026` trong Eval14 xác nhận conflict quy ước: partial key hiện chấm nhiều mục/bảng trong vùng Section ở level 1, nên luật `PART -> Section` rộng không thể quay lại.
-- Đã thêm metadata nguồn cho `MergedParagraphHeadings`: `OriginalText`, `HeadingSpan`, `BoundarySource="MergedParagraphMarker"`; helper đổi sang `internal` để test.
-- Test mới `SplitMergedParagraphsTests.Lat_cat_giu_span_nguon_trong_doan_gop`; `dotnet test --no-restore` = `533/533`.
-- Eval không đổi: Eval14 `Nav 99.1%`, `Nav+cấp 99.1%`; holdout full `Nav 89.6%`, `Nav+cấp 15.6%`.
-
-Tiếp theo nếu muốn sửa World Bank: dùng `HeadingSpan/BoundarySource` để tách TOC/page-header/body slice trước; không dùng lại luật cấp chỉ nhìn text `Section ...`.
 
 ---
 
@@ -826,7 +560,18 @@ Tiếp theo: audit phần thừa còn lại là numbered prose/list trong body; 
 
 ---
 
-## Đã đóng, giữ lại để không mở lại
+---
+
+## Đã đóng — một dòng mỗi mục, giữ để không mở lại
+
+- 1. Luật nhận được dòng bìa / khối chữ ký — **ĐÓNG (§56.2): việc của tầng ngữ nghĩa, không phải luật cấu trúc**
+- 2. Đo nhánh `LevelTrusted` — **ĐÃ ĐO, kết quả ÂM; bị chặn bởi mục 3 (§13)**
+- 3. `NumberingAudit` không đọc được "Chương 1." — **XONG (§14)**
+- 3b. Cấp theo chuỗi đánh số khi style bất nhất theo phần — **XONG một phần (§17)**
+- 5. Dùng `SlimSourceSegment` để mở khoá writeback — **XONG, phạm vi hẹp (§15)**
+- 9b. Bộ suy cấp tất định không chạy trên `--no-llm` — **XONG (§51)**
+- 9c. Bộ dựng `vn-administrative` — **XONG (§60)**
+- 13. `TableOfContentsAnchor.Apply` pin sai cấp cho heading numPr-driven — ĐÃ SỬA, ĐÃ ĐO LẠI SAU §51: đúng cấp 44,8% → 96,6%
 
 - **Luật R1 `auto_assign` theo style OOXML** — đã đo đầy đủ, §10. Trên bench F1 tăng 90,9% → 92,0%
   nhưng lợi ích **không đến từ nó**; trên fixture style bị áp sai nó tự nhận 3 mục sai ở confidence

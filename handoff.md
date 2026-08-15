@@ -8,7 +8,7 @@ những chỗ suýt kết luận sai. Viết cho người tiếp nhận, nên ph
 
 ## 0. Trạng thái hiện tại — đọc mục này trước
 
-**Cập nhật 2026-08-11.**
+**Cập nhật 2026-08-14.** Xác minh lại toàn bộ bằng build sạch, không chép số cũ.
 
 ### Số đo hiện tại — chỉ những gì có ĐÁP ÁN
 
@@ -20,7 +20,12 @@ những chỗ suýt kết luận sai. Viết cho người tiếp nhận, nên ph
 | khoá luận `--style-outline` (đáp án người, 68 mục) | 100% | 100% | 100% | 100% | 100% | — |
 | báo cáo TT `--numbering-outline` (đáp án người, 29 mục) | 100% | 100% | 100% | 100% | 100% | — |
 
-**452 test xanh** (build sạch — xem §50.1 về cách đếm).
+**547 test xanh** (build sạch — xem §50.1 về cách đếm).
+
+> **Cảnh báo bắt buộc đọc (§100).** Auto-mode định tuyến theo chế độ tài liệu **mặc định TẮT** vì
+> bật nó làm bench tụt **R 100% → 69,4%, tuyệt đối 6/7 → 2/7**. `DocumentModeClassifier` là bộ
+> CHẨN ĐOÁN, không phải bộ định tuyến — chính docstring của nó ghi vậy, và §48–§49 đã đo được nó
+> quá rộng. Ai nối nó vào đường quyết định phải kèm phép đo bench trước.
 
 Cấu hình đo khoá luận: `--style-trust --chunk-tokens 28000 --ctx 32768 -ngl 99 --no-reuse-prefix`,
 Qwen3.5-9B-Q4_K_M. Pipeline **tất định** — hai lượt y hệt cho trùng khít từng chữ số (§33.1).
@@ -38,6 +43,8 @@ Qwen3.5-9B-Q4_K_M. Pipeline **tất định** — hai lượt y hệt cho trùng
 
 | | |
 |---|---|
+| §100 | **auto-mode mặc định TẮT** — bật nó làm bench 6/7 → 2/7. Cờ `--auto-mode` để đối chứng |
+| §60 | `AdministrativeOutline` — bộ dựng tất định thứ ba (`I.`/`1.`/`a)`), cờ `--admin-outline` |
 | §51 | bộ suy cấp tất định chạy cả trên `--no-llm` — bench đúng cấp 86,1% → 100%. **Mặc định bật** |
 | §53 | `TableOfContentsAnchor` pin đúng cấp cho heading `numPr` — đúng cấp 44,8% → 96,6% |
 | §56.3 | luật **chuỗi mồ côi** (`2.1` dưới `PHỤ LỤC A`) — bench có mô hình 6/7 → **7/7** |
