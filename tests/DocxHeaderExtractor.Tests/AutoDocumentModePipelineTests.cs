@@ -25,7 +25,9 @@ public sealed class AutoDocumentModePipelineTests : IDisposable
             "Điều 1. Phạm vi điều chỉnh1. Luật này quy định về quản lý.Điều 2. Đối tượng áp dụng",
             Body);
 
-        var options = new PipelineOptions { DisableLlm = true };
+        // Bật TƯỜNG MINH: từ §61 auto-mode mặc định TẮT vì bật nó làm bench tụt
+        // R 100% → 69,4% và tuyệt đối 6/7 → 2/7. Test này kiểm chính auto-mode nên nó phải tự bật.
+        var options = new PipelineOptions { DisableLlm = true, AutoDetectDocumentMode = true };
         options.Extraction.SplitMergedParagraphs = true;
         using var pipeline = new HeaderExtractionPipeline(options);
         var outline = await pipeline.RunAsync(path);
@@ -72,7 +74,9 @@ public sealed class AutoDocumentModePipelineTests : IDisposable
 
         var path = Docx([.. paragraphs]);
 
-        var options = new PipelineOptions { DisableLlm = true };
+        // Bật TƯỜNG MINH: từ §61 auto-mode mặc định TẮT vì bật nó làm bench tụt
+        // R 100% → 69,4% và tuyệt đối 6/7 → 2/7. Test này kiểm chính auto-mode nên nó phải tự bật.
+        var options = new PipelineOptions { DisableLlm = true, AutoDetectDocumentMode = true };
         options.Extraction.SplitMergedParagraphs = true;
         using var pipeline = new HeaderExtractionPipeline(options);
         var outline = await pipeline.RunAsync(path);

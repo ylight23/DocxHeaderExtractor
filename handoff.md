@@ -7012,3 +7012,73 @@ Full suite sau thay đổi:
 dotnet test DocxHeaderExtractor.sln --no-restore --verbosity quiet
 545 passed
 ```
+
+## §100. Auto-mode làm bench tụt 6/7 → 2/7 — lật mặc định về TẮT
+
+### 100.1 Phát hiện khi kiểm trạng thái, không phải khi sửa
+
+Kiểm `dhx eval bench --no-llm` sau 134 commit của phiên khác:
+
+| | tôi đo ở §60 | sau 134 commit |
+|---|--:|--:|
+| Precision | 92,3% | 89,3% |
+| **Recall** | **100%** | **69,4%** |
+| F1 | 96% | 78,1% |
+| đúng cấp | 100% | 92% |
+| **tuyệt đối** | **6/7** | **2/7** |
+
+Ứng viên vẫn **100% lọt** — tiêu đề CÓ vào tập ứng viên rồi bị loại ở tầng sau.
+
+### 100.2 Nguyên nhân: bộ phân loại chẩn đoán bị nối vào ĐỊNH TUYẾN
+
+```
+02-dinh-dang-thu-cong: Chế độ VietnameseLegal → auto:vietnamese-legal → dựng 2 mục (đáp án 7)
+06-style-ban-dia:      Chế độ VietnameseLegal → auto:vietnamese-legal → dựng 2 mục (đáp án 5)
+07-mau-that:           Chế độ OutlineLevelDriven → auto:outline-level → dựng 4 mục (đáp án 6)
+```
+
+`02-dinh-dang-thu-cong` có `PHẦN I` nên `legalRatio ≥ 0,05` kích hoạt, rơi vào bộ dựng pháp quy và
+mất 5/7 mục.
+
+Đây đúng thứ đã ghi rõ từ trước và bị bỏ qua:
+
+- docstring của `DocumentModeClassifier`: *"cài dưới dạng CHẨN ĐOÁN: đo và báo cáo, KHÔNG đổi hành vi"*
+- §48.2: `VietnameseAdministrative` phình 19 → 46/95, nuốt cả giáo trình lẫn biên bản họp
+- §49: hai lần thử sửa bộ phân loại đều biến một chế độ thành nhánh chết, đã hoàn tác
+
+### 100.3 Đo một biến, và không có cách nào tắt
+
+`AutoDetectDocumentMode = true` mặc định, chỉ áp cho đường `--no-llm`, và **không có cờ CLI nào để
+tắt**. Đã thêm `--no-auto-mode` / `--auto-mode` rồi đo:
+
+```
+mặc định (BẬT)  P 89,3 · R 69,4 · F1 78,1 · cấp 92  · 2/7
+--no-auto-mode  P 92,3 · R 100  · F1 96   · cấp 100 · 6/7
+```
+
+Kém hơn ở **mọi** chỉ số. Đã lật mặc định về TẮT.
+
+### 100.4 Vì sao lật, dù nó có thể giúp nhóm PDF
+
+Auto-mode nhiều khả năng giúp corpus 95 file — nhưng corpus đó **không có đáp án**, nên lợi ích ở
+đó không đo được. Một tính năng **kém hơn ở nơi đo được** và **không đo được ở nơi còn lại** thì
+không được bật mặc định. Đó là §10.4, và nó đã giữ đúng cho mọi cờ khác của dự án.
+
+Bật lại bằng `--auto-mode` khi cần đối chứng.
+
+### 100.5 Ba test đỏ, và cách xử lý
+
+Ba test của phiên khác dựa vào mặc định BẬT. Chúng kiểm chính auto-mode nên cách đúng là **bật
+tường minh trong test**, không phải giữ mặc định vì test. Đã sửa kèm ghi lý do tại chỗ — cùng cách
+§37 xử lý hai test từng ghim hành vi sai.
+
+Thêm `AutoModeMacDinhTatTests` ghim lựa chọn mặc định: ai lật lại phải kèm phép đo mới trên bench,
+không phải chỉ đổi giá trị. Mutation lật mặc định → 2 đỏ.
+
+### 100.6 Ba bộ dựng thủ công bị mất khỏi CLI
+
+`--admin-outline`, `--style-outline`, `--numbering-outline` biến mất khỏi `CommandLineOptions.cs`
+trong 134 commit đó, dù các thuộc tính Core vẫn còn. Đã nối lại. Đó cũng là lý do `.\dhx` báo
+*"Tham số không hợp lệ: --admin-outline"* — không phải bản publish cũ như tôi đoán lúc đầu.
+
+**547 test xanh**, bench về **6/7**.
