@@ -126,7 +126,28 @@ public sealed class PipelineOptions
     /// Tự đo chế độ tài liệu và chọn bộ dựng tất định tương ứng khi chưa có override thủ công.
     /// Manual flags vẫn thắng để người dùng benchmark từng đường riêng.
     /// </summary>
-    public bool AutoDetectDocumentMode { get; set; } = true;
+    /// <summary>
+    /// Tự chọn bộ dựng tất định theo chế độ tài liệu đo được.
+    /// <para>
+    /// <b>MẶC ĐỊNH TẮT.</b> Đo trên bench — bộ DUY NHẤT có đáp án người kiểm — bật nó kém hơn ở
+    /// MỌI chỉ số: P 92,3% → 89,3% · R <b>100% → 69,4%</b> · F1 96% → 78,1% · đúng cấp 100% → 92%
+    /// · tuyệt đối <b>6/7 → 2/7</b>.
+    /// </para>
+    /// <para>
+    /// Nguyên nhân: <see cref="OpenXmlLayer.DocumentModeClassifier"/> quá rộng — handoff §48.2 đo
+    /// được <c>VietnameseAdministrative</c> phình 19 → 46/95 và nuốt cả giáo trình lẫn biên bản
+    /// họp, §49 thử sửa hai lần đều biến một chế độ thành nhánh chết. Chính docstring của lớp đó
+    /// ghi <i>"cài dưới dạng CHẨN ĐOÁN: đo và báo cáo, KHÔNG đổi hành vi"</i>. Nối nó vào định
+    /// tuyến làm <c>02-dinh-dang-thu-cong</c> (có <c>PHẦN I</c> nên <c>legalRatio ≥ 0,05</c>) rơi
+    /// vào bộ dựng pháp quy và mất 5/7 mục.
+    /// </para>
+    /// <para>
+    /// Nó có thể giúp nhóm PDF trong corpus 95 file — nhưng corpus đó KHÔNG có đáp án, nên lợi ích
+    /// ở đó không đo được. Một tính năng kém hơn ở nơi đo được và không đo được ở nơi còn lại thì
+    /// không được bật mặc định (§10.4). Bật bằng <c>--auto-mode</c>.
+    /// </para>
+    /// </summary>
+    public bool AutoDetectDocumentMode { get; set; }
 
     /// <summary>
     /// Dùng PDF cùng stem như nguồn layout PHỤ cho nhóm typed textbook khi DOCX không có tín hiệu

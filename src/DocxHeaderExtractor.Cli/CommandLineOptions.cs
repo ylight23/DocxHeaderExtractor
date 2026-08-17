@@ -149,6 +149,11 @@ public sealed class CommandLineOptions
                 case "--skip-content-controls": extraction.SkipContentControls = true; break;
                 case "--bare-labels": extraction.AllowBareLabelledNumbers = true; break;
                 case "--split-merged": extraction.SplitMergedParagraphs = true; break;
+                case "--no-auto-mode": o.Pipeline.AutoDetectDocumentMode = false; break;
+                case "--auto-mode": o.Pipeline.AutoDetectDocumentMode = true; break;
+                case "--admin-outline": o.Pipeline.AdministrativeDeclaredOutline = true; break;
+                case "--style-outline": o.Pipeline.StyleDeclaredOutline = true; break;
+                case "--numbering-outline": o.Pipeline.NumberingDeclaredOutline = true; break;
                 case "--deterministic-hierarchy": o.Pipeline.DeterministicHierarchy = true; break;
                 case "--no-deterministic-hierarchy": o.Pipeline.DeterministicHierarchy = false; break;
                 case "--mode-only": extraction.ReportModeOnly = true; break;
