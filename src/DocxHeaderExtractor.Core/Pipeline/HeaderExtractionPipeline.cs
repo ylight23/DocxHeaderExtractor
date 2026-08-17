@@ -129,25 +129,26 @@ public sealed class PipelineOptions
     /// <summary>
     /// Tự chọn bộ dựng tất định theo chế độ tài liệu đo được.
     /// <para>
-    /// <b>MẶC ĐỊNH TẮT.</b> Đo trên bench — bộ DUY NHẤT có đáp án người kiểm — bật nó kém hơn ở
-    /// MỌI chỉ số: P 92,3% → 89,3% · R <b>100% → 69,4%</b> · F1 96% → 78,1% · đúng cấp 100% → 92%
-    /// · tuyệt đối <b>6/7 → 2/7</b>.
+    /// <b>MẶC ĐỊNH BẬT — nhưng chỉ áp cho tài liệu có ĐOẠN GỘP</b> (xem <c>CoDoanGop</c>). Chốt đó
+    /// là thứ làm cho nó an toàn; không có chốt thì bật hay tắt đều sai, và §100 đã chọn sai một
+    /// lần vì chỉ nhìn bench.
     /// </para>
     /// <para>
-    /// Nguyên nhân: <see cref="OpenXmlLayer.DocumentModeClassifier"/> quá rộng — handoff §48.2 đo
-    /// được <c>VietnameseAdministrative</c> phình 19 → 46/95 và nuốt cả giáo trình lẫn biên bản
-    /// họp, §49 thử sửa hai lần đều biến một chế độ thành nhánh chết. Chính docstring của lớp đó
-    /// ghi <i>"cài dưới dạng CHẨN ĐOÁN: đo và báo cáo, KHÔNG đổi hành vi"</i>. Nối nó vào định
-    /// tuyến làm <c>02-dinh-dang-thu-cong</c> (có <c>PHẦN I</c> nên <c>legalRatio ≥ 0,05</c>) rơi
-    /// vào bộ dựng pháp quy và mất 5/7 mục.
+    /// Đo trên <b>cả ba</b> bộ có đáp án, auto-mode kèm chốt tốt hơn hoặc bằng ở mọi bộ:
     /// </para>
+    /// <list type="table">
+    /// <item><term>bench (7 tài liệu Word gốc)</term><description>F1 96% → <b>98,6%</b> · P 92,3% → <b>100%</b> · tuyệt đối 6/7 giữ nguyên</description></item>
+    /// <item><term>5 đáp án người kiểm (PDF→DOCX)</term><description>đúng cấp <b>6,5% → 100%</b> · đúng cha 60,9% → 100%</description></item>
+    /// <item><term>14 đáp án (gồm toc-derived WB)</term><description>tuyệt đối <b>0/14 → 8/14</b> · Nav 61,7% → 80,6%</description></item>
+    /// </list>
     /// <para>
-    /// Nó có thể giúp nhóm PDF trong corpus 95 file — nhưng corpus đó KHÔNG có đáp án, nên lợi ích
-    /// ở đó không đo được. Một tính năng kém hơn ở nơi đo được và không đo được ở nơi còn lại thì
-    /// không được bật mặc định (§10.4). Bật bằng <c>--auto-mode</c>.
+    /// Không có chốt thì bench tụt 6/7 → 2/7. Tắt hẳn thì nhóm PDF mất đúng cấp (6,5%) và WB mất
+    /// toàn bộ (0/14). Ba bộ nói ngược nhau vì tiêu đề sống ở chỗ khác nhau — chốt đoạn gộp đọc
+    /// đúng khác biệt đó.
     /// </para>
+    /// <para>Tắt bằng <c>--no-auto-mode</c> để đối chứng.</para>
     /// </summary>
-    public bool AutoDetectDocumentMode { get; set; }
+    public bool AutoDetectDocumentMode { get; set; } = true;
 
     /// <summary>
     /// Dùng PDF cùng stem như nguồn layout PHỤ cho nhóm typed textbook khi DOCX không có tín hiệu
@@ -628,11 +629,43 @@ public sealed class HeaderExtractionPipeline : IDisposable
             return (null, null);
         }
 
+        // Route TỰ ĐỘNG chỉ dành cho tài liệu mà tầng ứng viên KHÔNG nhìn thấy cấu trúc.
+        //
+        // Ba bộ có đáp án nói ngược nhau về auto-mode, và mâu thuẫn đó có hệ thống:
+        //   bench (7 tài liệu Word gốc)      auto BẬT 2/7   · auto TẮT 6/7
+        //   5 đáp án người (PDF→DOCX)        auto BẬT cấp 100% · auto TẮT cấp 6,5%
+        //   14 đáp án gồm toc-derived WB     auto BẬT 8/14  · auto TẮT 0/14
+        //
+        // Khác biệt nằm ở CHỖ TIÊU ĐỀ SỐNG. Ở tài liệu Word gốc, mỗi tiêu đề là một paragraph
+        // riêng nên tầng ứng viên thấy hết — route chỉ có thể làm tệ đi (02 có 7 ứng viên, route
+        // pháp quy dựng 2 mục vì tài liệu vô tình có "PHẦN I"/"PHẦN II"). Ở bản chuyển PDF, cả
+        // trang bị gộp vào một <w:p> nên tầng ứng viên gần như không thấy gì, còn route đọc lát
+        // cắt nên dựng được cả cây — §47.1 đo được 1.596 mốc ở đầu đoạn so với 24.220 mốc bên trong.
+        //
+        // Nên chốt là: có đoạn GỘP hay không. Đây là dữ kiện của tài liệu, không phải ngưỡng ta
+        // chọn — cùng phép cắt mà ParagraphHeadingSplitter.Segments dùng.
+        if (!manual && !CoDoanGop(slim))
+        {
+            Log($"Auto mode {route}: tài liệu không có đoạn gộp nên tầng ứng viên đã thấy cấu trúc " +
+                "— không định tuyến, dùng pipeline thường.");
+            return (null, null);
+        }
+
         Log(route.StartsWith("manual:", StringComparison.Ordinal)
             ? $"Outline tất định ({route}): {headings.Count} mục, không gọi mô hình."
             : $"Auto mode {modeReport.Mode}: dùng {route}, dựng {headings.Count} mục tất định.");
         return (headings, route);
     }
+
+    /// <summary>
+    /// Tài liệu có ít nhất một đoạn bị GỘP — tức một <c>w:p</c> chứa từ hai mốc đánh số trở lên.
+    /// Đó là dấu hiệu bản chuyển PDF→DOCX, nơi tầng ứng viên không nhìn thấy cấu trúc vì mốc nằm
+    /// giữa đoạn chứ không ở đầu.
+    /// </summary>
+    private static bool CoDoanGop(SlimDocument slim) =>
+        slim.Paragraphs.Any(p =>
+            !string.IsNullOrWhiteSpace(p.Text) &&
+            ParagraphHeadingSplitter.Segments(p.Text).Count > 1);
 
     private static string? AutoRoute(DocumentMode mode) => mode switch
     {

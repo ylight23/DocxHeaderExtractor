@@ -60,8 +60,8 @@ public sealed class MeasurementConfigSignatureTests
     public void Auto_detect_document_mode_lam_doi_chu_ky_cau_hinh()
     {
         var a = new PipelineOptions();
-        // a dùng mặc định (TẮT từ §61), nên b phải BẬT để hai chữ ký khác nhau.
-        var b = new PipelineOptions { AutoDetectDocumentMode = true };
+        // a dùng mặc định (BẬT, có chốt đoạn gộp — §101), nên b phải TẮT để hai chữ ký khác nhau.
+        var b = new PipelineOptions { AutoDetectDocumentMode = false };
 
         Assert.NotEqual(
             PrecisionCalibrationProfile.ConfigurationFor(a),

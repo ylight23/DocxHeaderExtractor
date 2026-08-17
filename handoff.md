@@ -7443,3 +7443,62 @@ cả trực giác nghe hợp lý.
 riêng từng ví dụ (không tổng quát hoá) VÀ retrieval tốt hơn 24-ký-tự-thô (ví dụ: thêm tín hiệu domain
 riêng biệt như ngôn ngữ + độ dài trung bình cụm, không chỉ prefix match) — đây là HAI biến, phải tách
 đo riêng nếu làm, không gộp một lượt.
+
+## §101. §100 sai vì chỉ nhìn MỘT bộ đáp án — chốt đoạn gộp giải quyết cả ba
+
+### 101.1 Lập luận §100 của tôi bị bác bằng dữ liệu
+
+§100 tắt auto-mode với lý do *"corpus 95 file KHÔNG có đáp án nên lợi ích ở đó không đo được"*.
+**Sai** — có **14 đáp án** trong `keys/` (2 `legal-human`, 3 `typed-human`, 7 `toc-derived`), và
+auto-mode tốt hơn rõ rệt trên chúng.
+
+Dựng bộ eval rồi đo, ba bộ **nói ngược nhau**:
+
+| bộ có đáp án | auto TẮT | auto BẬT (không chốt) |
+|---|---|---|
+| bench — 7 tài liệu Word gốc | **6/7** · R 100% | 2/7 · R 69,4% |
+| 5 đáp án NGƯỜI KIỂM — PDF→DOCX | 0/5 · đúng cấp **6,5%** | 1/5 · đúng cấp **100%** |
+| 14 đáp án gồm toc-derived WB | 0/14 · Nav 61,7% | **8/14** · Nav 80,6% |
+
+Đây **không phải** "đo được vs không đo được" như §100 viết. Cả ba đều có đáp án, và chúng cần
+điều trái ngược.
+
+### 101.2 Một lần thử sai trước khi tìm ra chốt đúng
+
+Thử chốt "route không được cho ít mục hơn số ứng viên": bench 2/7 → **5/7** và R về 100%, nhưng
+eval14 **8/14 → 2/14**. Lý do: route WB **cố ý** dựng ít mục hơn ứng viên — chú thích trong mã ghi
+rõ *"chỉ 12 mục điều hướng, không suy đoán thêm"*. Chốt của tôi chống lại chính thiết kế đó. Bỏ.
+
+### 101.3 Chốt đúng: có ĐOẠN GỘP hay không
+
+Khác biệt giữa ba bộ nằm ở **chỗ tiêu đề sống**:
+
+- Tài liệu Word gốc: mỗi tiêu đề một paragraph riêng ⇒ tầng ứng viên thấy hết ⇒ định tuyến chỉ có
+  thể làm tệ đi. `bench/02` có 7 ứng viên, route pháp quy dựng 2 mục vì tài liệu vô tình có
+  `PHẦN I`/`PHẦN II`.
+- Bản chuyển PDF: cả trang trong một `w:p` ⇒ tầng ứng viên gần như không thấy gì (§47.1: 1.596 mốc
+  ở đầu đoạn so với **24.220** mốc bên trong) ⇒ route đọc lát cắt nên dựng được cả cây.
+
+Nên chốt là: **định tuyến tự động chỉ áp cho tài liệu có ít nhất một đoạn gộp.** Đây là dữ kiện của
+tài liệu, không phải ngưỡng ta chọn — dùng đúng phép cắt của `ParagraphHeadingSplitter.Segments`.
+
+### 101.4 Đo được — tốt hơn hoặc bằng ở CẢ BA bộ
+
+| bộ | trước (§100, auto TẮT) | sau (auto BẬT + chốt) |
+|---|---|---|
+| bench | P 92,3 · R 100 · **F1 96** · 6/7 | P **100** · R 97,2 · **F1 98,6** · 6/7 |
+| 5 đáp án người | đúng cấp **6,5%** · cha 60,9% · 0/5 | đúng cấp **100%** · cha **100%** · 1/5 |
+| 14 đáp án | Nav 61,7% · **0/14** | Nav 80,6% · **8/14** |
+
+Mặc định lật lại **BẬT**. Lần này có phép đo cả ba bộ — đúng thứ §100 thiếu.
+
+### 101.5 Bài học
+
+§100 kết luận từ **một** bộ đáp án và tuyên bố phần còn lại "không đo được" mà **không kiểm xem có
+đáp án nào khác không**. Có — nằm ngay trong `keys/`. Hai mệnh đề khác nhau: *"tôi chưa đo"* và
+*"không đo được"*, và tôi đã dùng cái thứ hai khi chỉ có quyền nói cái thứ nhất.
+
+Kỷ luật thêm vào §10: **trước khi nói "không đo được", liệt kê mọi bộ đáp án đang có.**
+`ls keys/*/` là một lệnh.
+
+**553 test xanh.**

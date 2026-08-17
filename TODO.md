@@ -35,6 +35,9 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
 - **"Mutation sống sót" KHÔNG có nghĩa "thay đổi không ảnh hưởng gì"** (§59.2). Mutation chỉ nói
   bộ test hiện có không phân biệt được hai bản. Kết luận về HÀNH VI phải đo trên dữ liệu thật, đủ
   quy mô: trần độ dài "vô tác dụng" theo mutation và theo 12 file, nhưng chặn 70 đoạn trên 95 file.
+- **Trước khi nói "không đo được", liệt kê MỌI bộ đáp án đang có** (§101.5). §100 kết luận từ một
+  bộ (bench) rồi tuyên bố phần còn lại không đo được — trong khi `keys/` có 14 đáp án nữa và chúng
+  nói ngược lại. `ls keys/*/` là một lệnh. *"Tôi chưa đo"* khác *"không đo được"*.
 - **Không suy về ĐẦU VÀO từ ĐẦU RA của chính pipeline đang nghi ngờ** (§46.5). Pipeline trả về
   rỗng có hai nguyên nhân không phân biệt được từ kết quả: đầu vào rỗng, hoặc pipeline hỏng. Phải
   mở dữ liệu gốc ra đo. Khoảng cách giữa hai cách đọc ở §46 là 50 file và một khuyến nghị lấy lại
