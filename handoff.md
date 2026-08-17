@@ -7502,3 +7502,60 @@ Kỷ luật thêm vào §10: **trước khi nói "không đo được", liệt k
 `ls keys/*/` là một lệnh.
 
 **553 test xanh.**
+
+## §102. Recall 18,3% trên nhóm PDF không phải lỗi PHÁT HIỆN — là lỗi QUY CHỈ SỐ
+
+### 102.1 Chia nhỏ con số 18,3%
+
+| tài liệu (đáp án người kiểm) | đáp án | trả về | ứng viên | Nav |
+|---|--:|--:|--:|--:|
+| `010_Luat_An_ninh_mang` | 50 | **2** | 2 | 0% |
+| `025_ND_47-2020` | 71 | **1** | 1 | 0% |
+| `054_IBRD_Information_Statement` | 21 | 0 | 22 | **90,5%** |
+| `056_OpenStax_Business_Law` | 46 | **46** | 60 | **100%** |
+| `092_RFC9111_HTTP_Caching` | 64 | **1** | 1 | 0% |
+
+Hai dạng hỏng khác nhau, và trước đây bị con số gộp 18,3% che cả hai.
+
+### 102.2 Dạng một: bộ dựng trả về 0 mục dù chế độ nhận đúng
+
+`010`, `025` → `VietnameseLegal`, route được chọn, `LegalStructuredOutline.Build` trả **0 mục**.
+`092` → `TypedNumbering`, cũng **0 mục**. Cả ba rơi về pipeline thường và chỉ còn 1–2 ứng viên.
+
+Nguyên nhân là một **mâu thuẫn nội tại** tôi tạo ra ở §101: chốt định tuyến **đòi tài liệu CÓ đoạn
+gộp** mới route, rồi truyền `SplitMergedParagraphs` (mặc định **TẮT**) xuống bộ dựng — nên bộ dựng
+**không được phép đọc chính những đoạn gộp đã làm nó được gọi**. Nó đọc paragraph nguyên khối, không
+thấy mốc nào ở đầu, trả về rỗng.
+
+### 102.3 Dạng hai: nội dung đúng, chỉ số sai
+
+`054` có 22 ứng viên, **Nav 90,5%** nhưng exact **0%**. Tức tìm đúng tiêu đề, sai chỉ số đoạn.
+
+### 102.4 Đo với `--split-merged` — Nav lên ~99% trên CẢ HAI bộ PDF
+
+| bộ | split TẮT | split BẬT |
+|---|---|---|
+| bench (7 Word gốc) | F1 98,6 · Nav 80,6 · 6/7 | **y hệt** — không có đoạn gộp nên an toàn |
+| 14 đáp án | F1 87,9 · Nav 80,6 · 8/14 | F1 79,9 · **Nav 99,1** · 7/14 |
+| 5 đáp án người | F1 30,5 · Nav 25,8 · 1/5 | F1 40,3 · **Nav 98,8** · 0/5 |
+
+**Nội dung outline gần như hoàn chỉnh** (Nav 98,8% và 99,1%). Thứ tụt là chỉ số exact — đúng đánh
+đổi đã thiết kế ở §45.2: lát cắt **dùng chung `Index`** để đáp án trong `keys/` không hỏng vì dịch
+chỉ số. Hệ quả là năm tiêu đề trong một đoạn gộp đều mang cùng một `Index`, nên phép so exact theo
+chỉ số không thể khớp quá một mục.
+
+### 102.5 Đây là quyết định SẢN PHẨM, không phải quyết định mã
+
+Hai chỉ số đo hai thứ khác nhau, và cả hai đều hợp lệ:
+
+- **Nav** — outline điều hướng: nhảy tới đề mục. Đó là mục đích sản phẩm, và nó đã **~99%**.
+- **exact theo chỉ số đoạn** — cần cho writeback `w:outlineLvl` và correction memory, vì chúng phải
+  biết ĐÚNG paragraph nào.
+
+`--split-merged` mặc định TẮT vì nó phá giả định "mỗi đoạn nhiều nhất một mục" mà writeback và
+`keys/` dựa vào (TODO mục 10). Bật mặc định là chọn Nav và bỏ writeback trên nhóm PDF.
+
+**Không tự quyết.** Muốn cả hai thì phải cho mỗi lát cắt một danh tính riêng, ổn định — đó là thay
+đổi lược đồ (TODO mục 6), và nó cần biết trước outline dùng để ĐIỀU HƯỚNG hay để GHI LẠI.
+
+**553 test xanh**, không đổi mã nguồn ở mục này.
