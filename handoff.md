@@ -7012,3 +7012,284 @@ Full suite sau thay đổi:
 dotnet test DocxHeaderExtractor.sln --no-restore --verbosity quiet
 545 passed
 ```
+
+### 2026-08-14 follow-up - route `auto:part-section-text-toc` cho 030 (DOCX mất XML signal)
+
+Đã cài production path hẹp cho đúng nhóm §trên bỏ ngỏ: `030` không thuộc route WB tốt, không có
+`outlineLvl`/`numPr`/`pStyle`, nhưng còn giữ "TABLE OF CONTENT" phẳng dạng text với khung PART/Section
+rõ. Route mới `PartSectionOutline.BuildFromTextToc` (đã có sẵn từ lượt trước, chưa nối dây) nay được
+gọi trong `HeaderExtractionPipeline.TryBuildDeclaredOutline`: khi mode tự động là `TypedNumbering` VÀ
+`PartSectionOutline.HasTextTocSignal` thấy đủ khung (≥1 mục `PART`, ≥5 mục `Section` trong cùng một
+khối TOC text), route thắng `auto:typed-numbering` — tránh đúng lỗi TypedNumberingOutline tự nhận mọi
+câu văn xuôi bắt đầu bằng "1." là heading trên nhóm tài liệu này.
+
+Ba lỗi phát hiện khi nối dây, sửa cả ba trước khi đo:
+
+1. **`InlineHeadingSplitter` cắt cụt lại title đã lấy từ TOC.** Route lấy TITLE ĐẦY ĐỦ từ TOC nhưng
+   neo Index về đoạn BODY (thường bị cắt cụt, ví dụ `PART III`). Splitter generic so `heading.Text`
+   với nguyên văn đoạn body sẽ luôn thấy lệch và cắt lại theo body cụt — y hệt lý do
+   `pdf_textbook_layout`/`typed_number_depth` đã được miễn trừ trước đó. Thêm miễn trừ
+   `ConfidenceBasis == "part_section_toc_text"`.
+2. **`LooksLikeHeadingText` loại nhầm entry TOC hợp lệ nhưng ngắn.** Tiêu đề `PART I`/`PART II` trong
+   TOC của tài liệu này không có phụ đề (đúng như tài liệu viết, không phải lỗi cắt) nên dài <8 ký tự
+   — bị luật hình dạng (nhắm vào ứng viên thân bài) loại thẳng. Thêm `LooksLikeTocEntryTitle` lỏng
+   hơn dành riêng cho nhánh TOC (đã được `TocPartSectionEntryRx` tự xác nhận hình dạng PART/Section).
+3. **Sub-TOC nội bộ của một Section bị đọc nhầm thành entry cấp PART/Section.** Section 2 có TOC nội
+   bộ riêng (`A./1./2...`) cũng chứa cụm "TABLE OF CONTENT" + nhiều dot-leader; running header đứng
+   trước dot-leader ĐẦU TIÊN của nó khớp giả một entry `Section 2.` sai vị trí. Thêm gate: một
+   paragraph chỉ được coi là khối TOC thật khi cho ra ≥2 entry PART/Section trong CHÍNH nó — TOC thật
+   luôn ra nhiều entry cùng lúc, một entry lẻ là dấu hiệu nhiễu từ sub-TOC.
+
+Kết quả đo trên `030` (cấu hình `--no-llm`, không `--split-merged` — đúng cấu hình đã ghi con số nền
+58,3%/0% ở trên):
+
+```text
+truoc (auto:typed-numbering, chua noi day route moi):
+  P 0%     R 0%     Nav 58.3%   exact 0/12
+
+sau (auto:part-section-text-toc):
+  P 66.7%  R 66.7%  Nav 75%     F1 66.7%   dung cap 100%   dung cha 100%
+  thua/thieu deu la 4 muc: 22, 102, 167, 369
+```
+
+**Giới hạn đã biết, không sửa thêm.** 4 mục lệch đều là cặp PART (level 1): `PART I/II/III` trong
+THÂN BÀI của chính tài liệu này chỉ là nhãn trần (`PART I`, không kèm phụ đề) — phụ đề đầy đủ
+(`SELECTION PROCEDURES AND REQUIREMENTS`...) chỉ xuất hiện ở một đoạn "SUMMARY" tách biệt hoàn toàn,
+không phải tại vị trí neo. Text-identity strict (P/R) đòi khớp NGUYÊN VĂN nên phạt cả chênh dấu gạch
+ngang Unicode (`–` TOC vs `-` sau `CleanHeading`) lẫn thiếu phụ đề; `NavigationRecall` (thiết kế riêng
+cho đúng lớp lỗi PDF text-layout dính title/body) đã đúng là con số nên đọc — 75%. Không suy phụ đề
+từ đoạn Summary khác: đó là hardcode cho đúng một tài liệu, ngược nguyên tắc "route tất định, không
+suy đoán" của cả `PartSectionOutline`.
+
+Regression WB 9 file `toc-derived` (`026/027/031/033/036/037/038/039/040`, `--split-merged` — đúng
+cấu hình đã ghi con số nền): **byte-identical** — P 100% · R/Nav 99,2% · F1 99,6% · cấp/cha 100%,
+7/9 tuyệt đối. Route mới chỉ áp dụng khi mode `TypedNumbering`; 9 file này đều `OutlineLevelDriven`
+nên không đường nào chạm tới nhánh mới.
+
+**Audit phạm vi thật trên cả 95 file** (`todo10_8/heading_corpus_95_word`, `--no-llm --split-merged`,
+đối chiếu route từng file qua field `deterministicRoute` trong JSON) — câu hỏi đúng phải hỏi trước khi
+gọi đây là "sửa cho một họ tài liệu": route mới `auto:part-section-text-toc` có bắt được file nào khác
+ngoài `030` không, đặc biệt trong nhóm 22 file chưa có route (§89)?
+
+```text
+Phân phối route 95 file SAU thay đổi: typed-numbering 39 · vietnamese-legal 23 · outline-level 10 ·
+part-section-text-toc 1 · no-route 22.
+Phân phối route 95 file TRƯỚC thay đổi (§89): typed-numbering 40 · vietnamese-legal 23 ·
+outline-level 10 · no-route 22.
+```
+
+Trả lời thẳng: **route mới bắt đúng 1/95 file — chỉ `030`, không hơn.** Nó không chạm vào nhóm 22
+no-route (nhóm đó giữ nguyên 22, không giảm); toàn bộ khác biệt là `030` chuyển từ nhóm
+`typed-numbering` (40→39) sang route riêng của nó. Tức trước khi sửa, `030` **không** nằm trong nhóm
+"chưa có route" — nó đã có route `auto:typed-numbering` nhưng route đó âm thầm sinh 151-171 heading rác
+(mọi câu văn xuôi đánh số "1." bị nhận nhầm — xem đoạn trước). Đây là bug-fix cho MỘT file bị route sai
+cách, không phải luật mới mở khoá thêm file trong nhóm no-route.
+
+Vì sao đúng 1 file: điều kiện `HasTextTocSignal` (≥1 `PART`, ≥5 `Section` trong CÙNG một khối TOC
+text) khá đặc trưng cho đúng template World Bank RFP nhiều Part/Section — 14 file WB khác trong
+`02_hop_dong_mua_sam` đều đã có route tốt hơn từ trước (`outline-level` 10 file nhờ `outlineLvl` hoặc
+custom-style table anchor, `typed-numbering` 5 file còn lại vì `TypedNumberingOutline.Build` của
+chúng KHÔNG rỗng/rác). Không có file nào trong nhóm tài chính (`041-055`), giáo trình (`056-070`),
+biên bản họp (`071-080`) hay RFC (`091-095`) khớp hình dạng PART/Section này — đúng như kỳ vọng, vì
+đó không phải template WB.
+
+**Kết luận đặt tên đúng phạm vi:** đây là luật cho một tài liệu cụ thể bị route sai (`030`), không
+phải giải pháp cho nhóm no-route nói chung. Message commit nên ghi rõ "1/95 file", không ghi kiểu
+"mở khoá nhóm DOCX mất XML signal" nghe như diện rộng.
+
+Test đã thêm:
+
+- `PartSectionOutlineTests.Dung_toc_text_lam_nguon_title_va_body_lam_neo_khi_mat_xml_signal` — khoá
+  cả ba sửa: entry TOC ngắn không phụ đề vẫn ra, sub-TOC nội bộ không lọt.
+- `AutoDocumentModePipelineTests.Toc_text_day_thang_route_typed_numbering_khi_mat_xml_signal` —
+  khoá route đổi từ `auto:typed-numbering` sang `auto:part-section-text-toc` và title không bị
+  `InlineHeadingSplitter` cắt cụt.
+
+Full suite sau thay đổi (build sạch, `dotnet clean` trước):
+
+```text
+dotnet test DocxHeaderExtractor.sln --verbosity quiet
+547 passed
+```
+
+### 2026-08-14 follow-up - `PdfBoldLabelOutline`: fallback bold-run-in-label cho nhóm biên bản họp
+
+**Bối cảnh.** Audit route 95 file cho thấy `030` là fix cho ĐÚNG 1 file, không chạm nhóm 22 no-route.
+Trước khi viết thêm luật per-file, kiểm nguyên nhân gốc của nhóm 22: `073_FORTIS_GC_Minutes_Mar_2026`
+(đại diện `05_bien_ban_hop`) có PDF gốc in đậm rõ nhãn mở đầu mỗi mục (`Opening:`, `Present:`, `Report
+on...`), nhưng DOCX chuyển đổi **rớt 100% định dạng ký tự** — không "b"/"br" nào còn, kể cả thân bài
+thật. Kiểm chéo 10 file cùng nhóm: MỌI file đều mất bold hoàn toàn ở DOCX. Đây là lỗi tầng CONVERTER,
+không phải thiếu luật — nhưng PDF gốc vẫn giữ tín hiệu, và pipeline đã có sẵn kiến trúc PDF-fallback
+(`PdfTextbookOutline`) để tận dụng đúng kiểu tín hiệu này mà không cần sửa converter.
+
+**Đã cài `PdfBoldLabelOutline`** (fallback thứ hai, `--pdf-bold-fallback`, **mặc định TẮT** — chưa đủ
+bằng chứng đo để bật như `PdfTextbookFallback`): đọc PDF cùng stem bằng PdfPig (`FontDetails.IsBold`/
+`IsItalic` — API có sẵn, không cần string-sniff font name), tách dòng theo bucket-Y (dùng chung
+`PdfLineExtraction` mới tách ra từ `PdfTextbookOutline`, không đổi hành vi cũ — test `aligned=46/52`
+trên 056 giữ nguyên byte-identical sau tách), gom nhãn mở đầu in đậm ("**Label:** body..." hoặc heading
+trần kiểu style Heading không cần dấu câu), rồi khớp lại DOCX bằng canon-substring (bỏ khoảng trắng,
+không khớp token-theo-token) để không phụ thuộc quy tắc chèn space đúng ở cả hai phía PDF/DOCX.
+
+**Sáu lỗi phát hiện khi đo qua ĐÚNG pipeline thật (không phải chỉ đọc PDF bằng mắt), sửa cả sáu:**
+
+1. Viết tắt một-chữ-cái (`F.O.R.T.I.S.`) bị đọc nhầm thành hết câu → nuốt cả khối tiêu đề tài liệu.
+2. Viết tắt danh xưng hai-ba-chữ-cái (`Ms.`, `Mr.`, `Dr.`...) — cùng lỗi, khác hình dạng; thêm
+   `TitleAbbreviations` đóng (hình thái học, không phải từ khoá nội dung — không vi phạm §9).
+3. **Bug thật, không phải góc PDF khó:** nhánh "đang tích luỹ" tìm dấu ngắt câu trong CẢ dòng không
+   in đậm, nuốt luôn câu văn xuôi đầu tiên của thân bài vào heading.
+4. Model cũ đòi heading TRẦN (không dấu câu) phải kết ở lằn ranh khoảng-cách-dòng lớn; sửa: bold-run
+   dừng (chuyển non-bold) TỰ NÓ là ranh giới hợp lệ, không cần dấu câu — đúng hình dạng heading style
+   Word thật ("Global progress with ICP 2021 cycle" không có dấu chấm).
+5. Báo cáo tài chính dashboard (051, ngoài phạm vi 10 file mục tiêu) lộ 3 dạng nhiễu: số chú thích
+   cuối trang dính chữ, gạch chân phân cách, mảnh cột bảng chồng lấn bucket-theo-Y nhầm — chặn bằng
+   `LooksLikeLabel` đòi bắt đầu bằng chữ cái + (có dấu ngắt câu HOẶC nhiều từ).
+6. **Lỗi im lặng nguy hiểm nhất:** `NormalizeSpace(match.Text)` làm `heading.Text` LỆCH
+   `OriginalText[Start..End]` khi nguồn có khoảng trắng bất thường → `OutlineGroundingValidator` của
+   `DocumentAgentHarness` cách ly heading đó ở lượt sau — không log lỗi rõ ràng, chỉ đơn giản MẤT.
+   Phát hiện được nhờ dùng đúng `eval`/CLI pipeline thật để đo (không chỉ gọi `TryBuild` cô lập), khớp
+   đúng bài học "đường đo sạch và đường người dùng đi là hai thứ khác nhau" (TODO.md dòng 48-49).
+
+**Đo được (đọc PDF trực tiếp bằng mắt để làm key, không lấy từ output pipeline — cùng hợp đồng
+`legal-human/`/`typed-human/`, key mới ở `keys/format-driven-human/`):**
+
+```text
+073_FORTIS_GC_Minutes_Mar_2026 (7 heading, 2 trang): P/R/F1/Nav/Nav+cấp/cấp = 100% — 7/7, 0 thừa, 0 thiếu
+074_FORTIS_GC_Minutes_Nov27_2024 (4 heading, 1 trang): P/R/F1/Nav/Nav+cấp/cấp = 100% — 4/4, 0 thừa, 0 thiếu
+Gộp 2 file: P 100% · R 100% · F1 100% · đúng cấp 100% · đúng cha 100%
+```
+
+**Phạm vi thật đo được trên cả 10 file `05_bien_ban_hop` (`--pdf-bold-fallback`, chưa key đầy đủ cho
+tất cả):**
+
+- `072, 073, 074, 075, 080`: fallback fires, alignment 100% (`aligned=N/N`). `073`/`074` đã chấm key
+  đầy đủ = 100%. `072`/`075` chưa có key (đọc nhanh output thấy hợp lý nhưng CHƯA đo bằng đáp án độc
+  lập — không được nói "đã chốt"). `080` (7 trang, phức tạp hơn nhóm FORTIS) fallback bắt đúng 4
+  heading cấp cao ("Welcome address...", "Global progress...", "Regional progress reports", "Next
+  meeting...") nhưng **bỏ sót sub-section bold+nghiêng** (Africa/Asia and Pacific/Western Asia — bị
+  loại nhầm bởi filter chặn callout quyết định cũng bold+nghiêng) và **còn nhiễu từ khối tiêu đề trang
+  bìa + bảng Annex 2** (fragment như "Finland (Co-Chair", "International Monetary Fund" từ cột bảng bị
+  bucket-theo-Y gộp nhầm — bảng này không có `<w:tbl>` trong DOCX nên không lọc được bằng `TableDepth`).
+- `071, 076, 077, 078, 079` (nhóm "ICP_IACG"/"ICP_TAG", khác nhóm "FORTIS_GC" trong cùng thư mục):
+  fallback **không kích hoạt** (`too-few-bold-labels:0` hoặc `1`) — mẫu heading của nhóm này không
+  phải bold-run-in-label, chưa điều tra hình dạng thật.
+- `051` (báo cáo tài chính, NGOÀI phạm vi 10 file mục tiêu): fallback fires nhưng còn 1 nhiễu residual
+  (chú thích dính chữ đọc như câu hoàn chỉnh) — không đáng sửa thêm vì tài liệu này không đại diện cho
+  nhóm biên bản họp, nó thuộc nhóm dashboard/bảng cần luật riêng như đã kết luận trước đó.
+
+**Kết luận trung thực về phạm vi:** ĐÚNG 2/10 file `05_bien_ban_hop` đã CHỐT (đáp án người đọc PDF +
+100%); 3 file khác (`072/075/080`) có tín hiệu tốt nhưng chưa chốt bằng đáp án độc lập; 5 file
+(`071/076-079`) chưa có hướng giải. Route mới **mặc định TẮT** (`PipelineOptions.PdfBoldLabelFallback
+= false`, bật bằng `--pdf-bold-fallback`) — chưa đủ bằng chứng đo để làm như `PdfTextbookFallback`.
+
+**Regression:** WB 9-file (`--split-merged --pdf-bold-fallback`) và `030` (`--pdf-bold-fallback`) đều
+byte-identical với trước — mode gate (`FormatDriven` only) đúng như thiết kế, không chạm route khác.
+
+**Refactor đi kèm (không đổi hành vi):** tách `PdfLineExtraction` (bucket-theo-Y + `FontDetails.IsBold`/
+`IsItalic`) dùng chung cho `PdfTextbookOutline` và `PdfBoldLabelOutline`; `PdfTextbookOutline.FindSiblingPdf`
+đổi `internal` để dùng chung. Test cũ `OpenStax056...` giữ nguyên `aligned=46/52` sau tách — đã đo lại,
+byte-identical.
+
+Test đã thêm:
+
+- `PdfBoldLabelOutlineTests.Fortis073DungBoldRunInLabelKhiDocxMatHetDinhDang` — khoá cả 7 heading +
+  bất biến span-grounded-nguyên-văn (chính lỗi #6 ở trên).
+- `PdfBoldLabelOutlineTests.Khong_kich_hoat_khi_mode_khong_phai_FormatDriven`.
+
+Full suite sau thay đổi (build sạch):
+
+```text
+dotnet test DocxHeaderExtractor.sln --verbosity quiet
+549 passed
+```
+
+**Việc còn treo, đúng thứ tự ưu tiên nếu làm tiếp:**
+
+1. Chấm key cho `072`/`075` (đã có tín hiệu tốt, rẻ để chốt).
+2. Sửa filter nghiêng cho `080`: cần tách "cả khối in nghiêng" (callout quyết định) khỏi "riêng heading
+   bold+nghiêng nhưng KHÔNG phải khối trích dẫn thụt lề" — có thể dùng tín hiệu thụt lề/indent thay vì
+   chỉ nghiêng.
+3. Điều tra hình dạng heading thật của nhóm `071/076-079` (ICP_IACG/ICP_TAG) — chưa biết vì sao
+   `too-few-bold-labels`.
+4. Chỉ sau khi có ≥5-6/10 file chấm key đầy đủ mới cân nhắc đổi mặc định `PdfBoldLabelFallback`.
+
+### 2026-08-14 follow-up - ICL đo trên 3 domain cho bài toán ranh giới title/body: 85,7% / 95% / 85,7%
+
+**Câu hỏi.** Spec §6.1/§6.3 thiết kế LLM cho tầng phân loại heading/không-heading, nhưng còn một bài
+toán con chưa đo bao giờ: khi heading dính liền body trong CÙNG một block (không dấu ngắt dòng, PDF→
+DOCX làm mất mọi tín hiệu định dạng), **LLM có cắt đúng ranh giới bằng few-shot in-context không**,
+hay đây là việc chỉ giải được bằng luật deterministic viết tay từng domain (`TitleAbbreviations`,
+gate ≥2 entry, `PdfBoldLabelOutline`...)? Ba route deterministic đã cài trong hai lượt trước (`030`,
+`PdfBoldLabelOutline`) đều tốn nhiều lỗi thật/file để chốt đúng 1-2 file — đúng quỹ đạo "deterministic
+càng phức tạp lên" cần dừng lại hỏi.
+
+**Cấu hình đo (áp dụng cho MỌI con số trong mục này).** Model `Llama-3.2-3B-Instruct-Q4_K_M.gguf`
+(local, `models/`), llama.cpp qua LLamaSharp `StatelessExecutor`, `temperature=0`, `TopK=1` (greedy),
+`seed=1234`, `ContextSize=4096`, CPU-only (`GpuLayerCount=0`). Input = đoạn text glued title+body
+THẬT lấy từ output pipeline (không phải input tự bịa). Chấm khớp CHÍNH XÁC nguyên văn (không chuẩn
+hoá). Harness scratch, không commit, không wire vào pipeline: `.verify-build/llm-boundary-test*/`.
+
+**Domain 1 — pháp quy Việt Nam (`Điều N.`), 21 ca từ 2 key `legal-human/010`+`025`:**
+
+```text
+Zero-shot:                              6/21  (28,6%)
+2 shot GIỐNG NHAU (cả hai có dấu ':'):  18/21 (85,7%)
+2 shot ĐA DẠNG (1 ngắn ko dấu, 1 dài
+  có dấu ':') — kiểm giả thuyết "shot
+  đa dạng nâng trần":                   10/21 (47,6%)  ← TỆ HƠN, giả thuyết BỊ BÁC
+```
+
+Giả thuyết bị bác cho ĐÚNG CẶP đã thử (n=1 cặp thay thế, không phải bác "đa dạng" nói chung). Lỗi
+chủ đạo ở cặp đa dạng: 8/21 ca cắt trần về `Điều N.` (mất hết tiêu đề) — nghi ngờ có căn cứ: shot
+ngắn "dạy" luôn một shortcut không định dạy ("ngắn thường đúng"). Bài học thao tác: **chọn ví dụ
+few-shot phải đo, không suy từ trực giác** — kể cả trực giác nghe hợp lý ("đa dạng hơn thì tốt hơn").
+
+Chẩn đoán vị trí (case 1 và case 21 cùng lỗi "không cắt", nghi ngờ lỗi harness/context chứ không phải
+nội dung khó): đảo ngược toàn bộ thứ tự 21 ca, chạy lại. Cùng nội dung fail y hệt ở vị trí MỚI (case
+21 gốc → vị trí 1 mới vẫn fail kiểu "không cắt"; case 1 gốc → vị trí 21 mới vẫn fail kiểu đó) → xác
+nhận **không phải artefact vị trí**, 85,7% là số thật.
+
+**Domain 2 — RFC 9111 (`N.N.`), 20 ca từ key `typed-human/092` (58 ca boundary-mismatch tìm được,
+lấy mẫu trải đều 20 ca):**
+
+```text
+Áp NGUYÊN shot legal (tiếng Việt, "Điều N.") sang RFC:  11/20 (55,0%)
+Shot RIÊNG cho RFC (tiếng Anh, "N.N."):                 19/20 (95,0%)
+```
+
+Bằng chứng đắt giá về việc shot KHÔNG chuyển domain: ca `1.1. Requirements Notation` (tiếng Anh) với
+shot legal trả về `Điều 1. Ghi chú về từ ngữ` — **model bắt chước hình dạng ví dụ (tiếng Việt, "Điều
+N.") thay vì đọc dữ liệu thật (tiếng Anh)**. Không phải suy giảm nhẹ; là bằng chứng few-shot có thể
+áp đảo nội dung đầu vào khi lệch domain đủ xa.
+
+**Domain 3 — biên bản họp (KHÔNG marker nào, nhãn trần bold — đúng hình dạng nhóm `05_bien_ban_hop`/
+22 file no-route), 14 ca: 7 từ `073` + 4 từ `074` (key `format-driven-human/`, đã chốt 100%) + 3 từ
+`080` (đọc trực tiếp PDF gốc, chưa có `.key` chính thức):**
+
+```text
+Shot riêng (1 ca có dấu ':', 1 ca KHÔNG dấu câu nào ở ranh giới): 12/14 (85,7%)
+```
+
+Đây là con số quan trọng nhất trong ba domain — **không có bất kỳ marker số/ký hiệu nào** để "cắt
+sau marker" như legal/RFC, chỉ còn phán đoán ngữ nghĩa thuần "câu này là nhãn hay đã sang thân bài".
+3/3 ca khó nhất (ranh giới không một dấu câu nào, ví dụ `Welcome address, opening remarks and
+adoption of the agenda` nối thẳng vào `The Chair, Mr. Markus Sovala...`) đều đúng. 2 miss đều CÙNG
+MỘT dạng: nhãn `Present:` bị nuốt trọn cả danh sách tên đi kèm — few-shot chỉ có ví dụ "nhãn: câu
+văn", chưa có ví dụ "nhãn: danh sách", nên đây là lỗ hổng coverage cụ thể, không phải trần năng lực.
+
+**Kết luận kiến trúc.** Ba domain rất khác nhau (tiếng Việt/tiếng Anh, có marker/không marker, độ dài
+tiêu đề khác nhau) đều đạt 85–95% với đúng 2 ví dụ few-shot ĐÚNG DOMAIN. Đây là bằng chứng cho một
+**kỹ thuật tổng quát** (in-context boundary-cutting với shot khớp domain), không phải trùng hợp một
+mẫu — quan trọng nhất là domain 3 chứng minh kỹ thuật **không cần marker/tín hiệu cấu trúc nào**,
+tức có đường vào đúng nhóm 22 file no-route mà deterministic đang bế tắc hoàn toàn.
+
+Hệ quả bắt buộc: **không được map cứng domain → shot set**. `TypedNumbering` gộp cả giáo trình lẫn
+tài chính lẫn RFC — ba hình dạng khác hẳn nhau dùng chung một mode — ca "Điều 1. Ghi chú" vừa đo
+chứng minh hậu quả nếu map cứng theo mode. Hướng đúng: retrieval theo hình dạng candidate, không
+theo mode tài liệu. Thiết kế đầy đủ: [`docs/llm-boundary-few-shot-retrieval.md`](docs/llm-boundary-few-shot-retrieval.md).
+
+**Việc còn treo:**
+
+1. Ví dụ few-shot legal tốt hơn (đã bác một cặp, chưa thử cặp thứ hai) — có thể 85,7% chưa phải trần.
+2. Thêm ví dụ "nhãn: danh sách" cho domain 3 — vá đúng lỗ hổng 2 miss vừa tìm.
+3. Chưa đo trên model mạnh hơn (Qwen3.5-4B/9B) — 3B đã đạt 85–95% nên đây nhiều khả năng là SÀN.
+4. Baseline-vs-retrieval theo đúng thiết kế trong `docs/llm-boundary-few-shot-retrieval.md`.

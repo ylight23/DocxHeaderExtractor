@@ -136,6 +136,14 @@ public sealed class PipelineOptions
     public bool PdfTextbookFallback { get; set; } = true;
 
     /// <summary>
+    /// Dùng PDF cùng stem làm nguồn BOLD-RUN-ĐẦU-DÒNG cho nhóm biên bản/minutes ngắn khi DOCX rớt
+    /// toàn bộ định dạng ký tự (không "b"/"br" nào còn, kể cả thân bài thật). Mặc định TẮT — chưa đo
+    /// qua toàn corpus, khác <see cref="PdfTextbookFallback"/> đã có bằng chứng đo trước khi bật mặc
+    /// định. Xem <see cref="PdfBoldLabelOutline"/>.
+    /// </summary>
+    public bool PdfBoldLabelFallback { get; set; }
+
+    /// <summary>
     /// Hậu kiểm bằng ký hiệu đánh số của chính tài liệu: cùng dạng đánh số phải cùng cấp, và
     /// dãy anh em phải liên tục từ 1. Không tốn giây suy luận nào và bắt được cả lỗi trượt cấp
     /// của mô hình lẫn tiêu đề bị tầng lọc đánh rơi — xem <see cref="NumberingAudit"/>.
@@ -366,9 +374,19 @@ public sealed class HeaderExtractionPipeline : IDisposable
             else if (pdfFallback.Reason is not "disabled" and not "no-pdf")
                 Log($"PDF textbook fallback: bỏ qua ({pdfFallback.Reason}).");
 
+            var pdfBoldFallback = pdfFallback.Headings.Count == 0 && _options.PdfBoldLabelFallback
+                ? PdfBoldLabelOutline.TryBuild(inputPath, slim, modeReport)
+                : PdfTextbookOutlineResult.NotApplicable("disabled");
+            if (pdfBoldFallback.Headings.Count > 0)
+                Log($"PDF bold-label fallback: dùng {pdfBoldFallback.Headings.Count} heading từ layout PDF ({pdfBoldFallback.Reason}).");
+            else if (pdfBoldFallback.Reason is not "disabled" and not "no-pdf")
+                Log($"PDF bold-label fallback: bỏ qua ({pdfBoldFallback.Reason}).");
+
             List<HeadingRecord> headings = pdfFallback.Headings.Count > 0
                 ? [.. pdfFallback.Headings]
-                : declared.Headings ??
+                : pdfBoldFallback.Headings.Count > 0
+                    ? [.. pdfBoldFallback.Headings]
+                    : declared.Headings ??
                 (_options.DisableLlm
                     ? HeuristicOnly(candidates)
                     : await RunModelAsync(slim, candidates, quarantined, ct));
@@ -404,6 +422,12 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     // cho resolver generic ghi đè.
                     Log("Hậu xử lý hierarchy: giữ cấp typed-numbering theo độ sâu marker, bỏ qua suy cấp generic.");
                 }
+                else if (declared.Route == "auto:part-section-text-toc")
+                {
+                    // BuildFromTextToc đã gán cấp trực tiếp từ nhãn PART (1) / Section (2) đọc được
+                    // trong TOC text, cùng lý do miễn trừ resolver generic như hai route trên.
+                    Log("Hậu xử lý hierarchy: giữ cấp PART/Section theo TOC text, bỏ qua suy cấp generic.");
+                }
                 else
                 {
                     var fixes = StructuralHierarchyResolver.Apply(headings, slim, _options.Extraction.UseStyleTrust);
@@ -415,7 +439,9 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
             // Chạy trên TOÀN BỘ đoạn chứ không phải tập ứng viên: đoạn bị gộp khi chuyển từ PDF
             // có score 0 và role Normal, nên nó không bao giờ lọt vào ứng viên để mà cứu.
-            if (_options.Extraction.SplitMergedParagraphs)
+            // Route text-toc là điều hướng CÓ CHỦ Ý hẹp (§ PartSectionOutline.BuildFromTextToc) —
+            // quét lại toàn tài liệu ở đây sẽ kéo lại đúng loại nhiễu mà route này được chọn để né.
+            if (_options.Extraction.SplitMergedParagraphs && declared.Route != "auto:part-section-text-toc")
             {
                 var added = MergedParagraphHeadings(slim, headings);
                 if (added.Count > 0)
@@ -544,6 +570,13 @@ public sealed class HeaderExtractionPipeline : IDisposable
               : "manual:style"
             : AutoRoute(modeReport.Mode);
 
+        // PDF→DOCX text-layout mất hết OOXML signal (outlineLvl/pStyle/numPr) rơi vào
+        // TypedNumbering vì số gõ tay trong thân bài, nhưng TypedNumberingOutline tự nhiên coi cả
+        // câu văn xuôi bắt đầu bằng "1." là heading trên nhóm này. Khi TOC text còn giữ đủ khung
+        // PART/Section, ưu tiên route hẹp hơn — chỉ 12 mục điều hướng, không suy đoán thêm.
+        if (!manual && route == "auto:typed-numbering" && PartSectionOutline.HasTextTocSignal(slim))
+            route = "auto:part-section-text-toc";
+
         if (route is null) return (null, null);
 
         var headings = route switch
@@ -560,6 +593,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 AdministrativeOutline.Build(slim, _options.Extraction.SplitMergedParagraphs),
             "auto:typed-numbering" =>
                 TypedNumberingOutline.Build(slim, _options.Extraction.SplitMergedParagraphs),
+            "auto:part-section-text-toc" =>
+                PartSectionOutline.BuildFromTextToc(slim),
             "auto:vietnamese-legal" =>
                 LegalStructuredOutline.Build(slim, _options.Extraction.SplitMergedParagraphs),
             _ => null,

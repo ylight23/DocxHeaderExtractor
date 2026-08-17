@@ -91,6 +91,42 @@ public sealed class PartSectionOutlineTests
         Assert.DoesNotContain(headings, h => h.Index == 2);
     }
 
+    [Fact]
+    public void Dung_toc_text_lam_nguon_title_va_body_lam_neo_khi_mat_xml_signal()
+    {
+        var doc = new SlimDocument
+        {
+            FileName = "wb-030-like.docx",
+            SourcePath = "wb-030-like.docx",
+            Paragraphs =
+            [
+                P(0, "TABLE OF CONTENT PART I .......... 5 Section 1. Alpha .......... 5 " +
+                     "Section 2. Beta .......... 6 Section 3. Gamma .......... 7 " +
+                     "Section 4. Delta .......... 8 Section 5. Epsilon .......... 9"),
+                // Sub-TOC nội bộ của Section 2: cùng có "TABLE OF CONTENT" + nhiều dot-leader,
+                // nhưng running header phía trước dot-leader đầu tiên khớp giả một entry "Section
+                // 2." — phải bị lọc vì cả đoạn chỉ cho ra ĐÚNG MỘT entry PART/Section.
+                P(1, "Section 2. Beta 999 TABLE OF CONTENT A. One .......... 1 B. Two .......... 2 " +
+                     "C. Three .......... 3 D. Four .......... 4 E. Five .......... 5 F. Six .......... 6"),
+                P(2, "Header 5 PART I Section 1. Alpha"),
+                P(3, "Header 6 Section 2. Beta"),
+                P(4, "Header 7 Section 3. Gamma"),
+                P(5, "Header 8 Section 4. Delta"),
+                P(6, "Header 9 Section 5. Epsilon"),
+            ],
+        }.Build();
+
+        Assert.True(PartSectionOutline.HasTextTocSignal(doc));
+
+        var headings = PartSectionOutline.BuildFromTextToc(doc);
+
+        Assert.Equal([2, 2, 3, 4, 5, 6], headings.Select(h => h.Index));
+        Assert.Contains(headings, h => h.Index == 2 && h.Level == 1 && h.Text == "PART I");
+        Assert.Contains(headings, h => h.Index == 2 && h.Level == 2 && h.Text == "Section 1. Alpha");
+        Assert.DoesNotContain(headings, h => h.Text.StartsWith("Section 2. Beta 999", StringComparison.Ordinal));
+        Assert.All(headings, h => Assert.Equal("part_section_toc_text", h.ConfidenceBasis));
+    }
+
     private static SlimParagraph P(int index, string text) => new()
     {
         Index = index,

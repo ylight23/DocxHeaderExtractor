@@ -112,6 +112,25 @@ hoặc có thêm text inline. Giả thuyết mất khoảng trắng kiểu `Titl
 chưa đủ kết luận là lỗi tầng XML: phép đo raw `<w:t>` ban đầu bị nhiễu vì chưa tính `w:br`. Metric
 chính cho typed text-layout vì vậy vẫn là `navigation-usable`; exact chỉ dùng cho span/writeback.
 
+## `format-driven-human/` — đáp án nhóm `FormatDriven` (mất hết bold ở DOCX) từ nguồn ngoài pipeline
+
+`073_FORTIS_GC_Minutes_Mar_2026.key` và `074_FORTIS_GC_Minutes_Nov27_2024.key`: biên bản họp World
+Bank ngắn (1-2 trang), đáp án đọc trực tiếp từ PDF gốc (`todo10_8/heading_corpus_100/05_bien_ban_hop`),
+không lấy từ output pipeline. Cùng hợp đồng `legal-human/`/`typed-human/`: text comment bắt buộc, dùng
+duplicate stable ID khi nhiều heading rơi vào cùng một paragraph DOCX bị gộp.
+
+Đo với `PdfBoldLabelOutline` (`--pdf-bold-fallback`, route mặc định TẮT — xem `handoff.md`
+2026-08-14 "PdfBoldLabelOutline"):
+
+| file | truth | P/R/F1/Nav/Nav+cấp/cấp |
+|---|--:|---:|
+| `073_FORTIS_GC_Minutes_Mar_2026` | 7 | 100% |
+| `074_FORTIS_GC_Minutes_Nov27_2024` | 4 | 100% |
+
+Chỉ 2/10 file trong `05_bien_ban_hop` đã chốt bằng key đầy đủ. `072`/`075`/`080` có tín hiệu tốt
+(alignment 100%) nhưng chưa có đáp án độc lập; `071/076-079` (nhóm "ICP" khác nhóm "FORTIS" trong cùng
+thư mục) chưa kích hoạt được route này, hình dạng heading thật của nhóm đó chưa điều tra.
+
 ## Tài liệu mật
 
 Một tài liệu thử nghiệm đóng dấu MẬT đã được **khử hoàn toàn**: không có bản sao trong repo,

@@ -15,6 +15,9 @@ public static class PartSectionOutline
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     private static readonly Regex DotLeaderRx = new(@"\.{5,}\s*\d{1,4}\b", RegexOptions.Compiled);
+    private static readonly Regex TocPartSectionEntryRx = new(
+        @"(?<title>(?:PART\s+[IVXLCDM]+|Section\s+\d+\.\s+).*?)\.{5,}\s*(?<page>\d{1,4})",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase);
     private static readonly Regex PageNumberRunRx = new(@"[\s\u00A0]+\d{1,4}[\s\u00A0]+", RegexOptions.Compiled);
     private static readonly Regex PageTailRx = new(
         @"[\s\u00A0]+\d{1,4}[\s\u00A0]+(?![-\u2013:.]).*$",
@@ -89,6 +92,49 @@ public static class PartSectionOutline
         return headings.Count(h => h.Level == 1) >= 1 && headings.Count(h => h.Level == 2) >= 5;
     }
 
+    public static bool HasTextTocSignal(SlimDocument document) =>
+        TextTocEntries(document).Count(e => e.Level == 1) >= 1 &&
+        TextTocEntries(document).Count(e => e.Level == 2) >= 5;
+
+    /// <summary>
+    /// PDF→DOCX text-layout thường không còn OOXML TOC field/style, nhưng vẫn giữ "TABLE OF CONTENT"
+    /// như text phẳng. Với World Bank Part/Section frame, TOC text là nguồn title đầy đủ còn body là
+    /// nguồn anchor theo paragraph/page. Đây là route điều hướng cho file mất XML signal, không phải
+    /// phục hồi span title/body hoàn chỉnh.
+    /// </summary>
+    public static List<HeadingRecord> BuildFromTextToc(SlimDocument document)
+    {
+        var entries = TextTocEntries(document);
+        if (entries.Count(e => e.Level == 1) < 1 || entries.Count(e => e.Level == 2) < 5)
+            return [];
+
+        var headings = new List<HeadingRecord>();
+        var cursor = entries[0].TocParagraphIndex + 1;
+        foreach (var entry in entries)
+        {
+            var paragraph = FindBodyOccurrence(document, entry, cursor);
+            if (paragraph is null) continue;
+
+            headings.Add(new HeadingRecord
+            {
+                Index = paragraph.Index,
+                StableId = paragraph.StableId,
+                Level = entry.Level,
+                Text = entry.Title,
+                StyleId = paragraph.StyleId,
+                Source = HeadingSource.Structure,
+                Confidence = 0.95,
+                ConfidenceBasis = "part_section_toc_text",
+                BoundarySource = $"text_toc_page_{entry.Page}",
+                DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
+            });
+
+            cursor = paragraph.Index;
+        }
+
+        return headings.OrderBy(h => h.Index).ThenBy(h => h.Level).ToList();
+    }
+
     public static int? LevelForHeading(string text)
     {
         var trimmed = text.Trim();
@@ -101,6 +147,85 @@ public static class PartSectionOutline
     private static bool LooksLikeDenseContentsParagraph(string text) =>
         text.Contains("Table of Contents", StringComparison.OrdinalIgnoreCase) &&
         DotLeaderRx.Matches(text).Count >= 2;
+
+    private static List<TocEntry> TextTocEntries(SlimDocument document)
+    {
+        var entries = new List<TocEntry>();
+        foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
+        {
+            if (string.IsNullOrWhiteSpace(p.Text) ||
+                !p.Text.Contains("TABLE OF CONTENT", StringComparison.OrdinalIgnoreCase) ||
+                DotLeaderRx.Matches(p.Text).Count < 5)
+                continue;
+
+            var matches = TocPartSectionEntryRx.Matches(p.Text);
+            // Section riêng cũng có sub-TOC nội bộ (A./1./2...) mang cùng cụm "TABLE OF CONTENT" +
+            // nhiều dot-leader; running header dạng "Section 2. ... 15 Section 2. ... TABLE OF
+            // CONTENT A. ..." đứng trước dot-leader ĐẦU TIÊN của NÓ có thể khớp giả một entry
+            // PART/Section. TOC khung toàn tài liệu luôn cho ra NHIỀU entry trong CÙNG một
+            // paragraph; một entry lẻ là dấu hiệu nhiễu từ sub-TOC, không phải khung PART/Section.
+            if (matches.Count < 2) continue;
+
+            foreach (Match match in matches)
+            {
+                var title = CleanHeading(match.Groups["title"].Value);
+                if (!LooksLikeTocEntryTitle(title)) continue;
+                if (!int.TryParse(match.Groups["page"].Value, out var page)) continue;
+                entries.Add(new TocEntry(title, LevelForHeading(title) ?? 1, page, p.Index));
+            }
+        }
+
+        return entries
+            .GroupBy(e => NormalizeKey(e.Title))
+            .Select(g => g.First())
+            .OrderBy(e => e.TocParagraphIndex)
+            .ThenBy(e => e.Page)
+            .ThenBy(e => e.Level)
+            .ToList();
+    }
+
+    /// <summary>
+    /// <see cref="LooksLikeHeadingText"/> đòi độ dài ≥8 và ≥2 "từ" — đúng cho ứng viên đọc từ THÂN
+    /// BÀI (cần tự phân biệt heading với câu văn xuôi ngắn), nhưng loại nhầm entry TOC hợp lệ mà
+    /// tiêu đề gốc chỉ là nhãn trần (<c>PART I</c>, <c>PART II</c> — không có phụ đề trong tài
+    /// liệu). Ở đây <see cref="TocPartSectionEntryRx"/> đã tự xác nhận hình dạng PART/Section, nên
+    /// chỉ cần chặn chuỗi rỗng/quá dài do <see cref="CleanHeading"/> cắt hỏng.
+    /// </summary>
+    private static bool LooksLikeTocEntryTitle(string text) => text.Length is >= 4 and <= 140;
+
+    private static SlimParagraph? FindBodyOccurrence(SlimDocument document, TocEntry entry, int minIndex)
+    {
+        var marker = MarkerRx.Match(entry.Title);
+        if (!marker.Success) return null;
+        var markerText = MarkerText(marker);
+        var titleKey = NormalizeKey(entry.Title);
+
+        SlimParagraph? fallback = null;
+        foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
+        {
+            if (p.Index < minIndex || string.IsNullOrWhiteSpace(p.Text) || LooksLikeDenseContentsParagraph(p.Text))
+                continue;
+            var text = NormalizeDashes(p.Text);
+            if (!ContainsPageCue(text, entry.Page)) continue;
+
+            if (entry.Level == 2 && NormalizeKey(text).Contains(titleKey, StringComparison.Ordinal))
+                return p;
+
+            if (entry.Level == 1 &&
+                text.Contains(markerText, StringComparison.OrdinalIgnoreCase))
+                return p;
+
+            fallback ??= null;
+        }
+
+        return fallback;
+    }
+
+    private static bool ContainsPageCue(string text, int page) =>
+        Regex.IsMatch(text, $@"(?:^|\s){page}(?:\s|$)");
+
+    private static string MarkerText(Match marker) =>
+        Regex.Replace($"{marker.Groups["label"].Value} {marker.Groups["num"].Value}", @"\s+", " ").Trim();
 
     private static bool IsRealMarker(string text, Match marker)
     {
@@ -201,17 +326,21 @@ public static class PartSectionOutline
 
     private static string NormalizeKey(string text)
     {
-        var normalized = text.Replace("\u00E2\u20AC\u201C", "-")
-            .Replace('\u2010', '-')
-            .Replace('\u2011', '-')
-            .Replace('\u2012', '-')
-            .Replace('\u2013', '-')
-            .Replace('\u2014', '-')
+        var normalized = NormalizeDashes(text)
             .ToLowerInvariant();
         normalized = Regex.Replace(normalized, @"\([^)]*\)", " ");
         normalized = Regex.Replace(normalized, @"[^a-z0-9]+", " ");
         return string.Join(' ', normalized.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
     }
 
+    private static string NormalizeDashes(string text) =>
+        text.Replace("\u00E2\u20AC\u201C", "-")
+            .Replace('\u2010', '-')
+            .Replace('\u2011', '-')
+            .Replace('\u2012', '-')
+            .Replace('\u2013', '-')
+            .Replace('\u2014', '-');
+
     private sealed record Candidate(HeadingRecord Heading, int Score);
+    private sealed record TocEntry(string Title, int Level, int Page, int TocParagraphIndex);
 }

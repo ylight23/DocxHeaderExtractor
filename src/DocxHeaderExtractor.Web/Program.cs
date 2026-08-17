@@ -121,7 +121,11 @@ app.MapPost("/api/inspect", async (HttpRequest req, CancellationToken ct) =>
         finally { LegacyDocConverter.Cleanup(conversion); }
 
         var report = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
-        var suggestedRoute = report.Status == DocumentStatus.Normal ? SuggestedRoute(report.Mode) : null;
+        var suggestedRoute = report.Status != DocumentStatus.Normal
+            ? null
+            : report.Mode == DocumentMode.TypedNumbering && PartSectionOutline.HasTextTocSignal(slim)
+                ? "auto:part-section-text-toc"
+                : SuggestedRoute(report.Mode);
         return Results.Json(new
         {
             file = Path.GetFileName(inputPath),

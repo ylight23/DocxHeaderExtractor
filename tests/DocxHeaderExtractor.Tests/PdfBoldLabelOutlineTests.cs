@@ -1,0 +1,59 @@
+using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.Core.Pipeline;
+
+namespace DocxHeaderExtractor.Tests;
+
+public class PdfBoldLabelOutlineTests
+{
+    [Fact]
+    public void Fortis073DungBoldRunInLabelKhiDocxMatHetDinhDang()
+    {
+        var docx = Path.Combine(
+            "todo10_8", "heading_corpus_95_word", "05_bien_ban_hop",
+            "073_FORTIS_GC_Minutes_Mar_2026.docx");
+        var pdf = Path.Combine(
+            "todo10_8", "heading_corpus_100", "05_bien_ban_hop",
+            "073_FORTIS_GC_Minutes_Mar_2026.pdf");
+        if (!File.Exists(docx) || !File.Exists(pdf)) return;
+
+        var slim = new DocxSlimExtractor(new ExtractionOptions()).Extract(docx);
+        var mode = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
+
+        var result = PdfBoldLabelOutline.TryBuild(docx, slim, mode);
+
+        Assert.Equal(7, result.Headings.Count);
+        Assert.All(result.Headings, h => Assert.Equal("pdf_bold_label", h.ConfidenceBasis));
+        Assert.All(result.Headings, h => Assert.Equal(1, h.Level));
+        Assert.Contains(result.Headings, h => h.Text == "Opening:");
+        Assert.Contains(result.Headings, h => h.Text == "Present:");
+        Assert.Contains(result.Headings, h =>
+            h.Text == "Report on Currently Available Resources in the F.O.R.T.I.S. Ukraine FIF.");
+        Assert.Contains(result.Headings, h =>
+            h.Text == "Funding Request for Eighth Additional Financing to Public Expenditures for " +
+                      "Administrative Capacity Endurance (PEACE) in Ukraine Investment Project Financing.");
+        Assert.Contains(result.Headings, h => h.Text == "Next Bi-Annual Meeting of the GC.");
+        // Span phải khớp CHÍNH XÁC nguyên văn — đây là bất biến OutlineGroundingValidator của harness
+        // đòi hỏi; lệch dù chỉ khoảng trắng cũng bị cách ly âm thầm ở lượt sau (đã đo được lỗi này).
+        Assert.All(result.Headings, h =>
+            Assert.Equal(h.Text, h.OriginalText![h.HeadingSpan!.Start..h.HeadingSpan.End]));
+    }
+
+    [Fact]
+    public void Khong_kich_hoat_khi_mode_khong_phai_FormatDriven()
+    {
+        var slim = new SlimDocument
+        {
+            FileName = "x.docx",
+            SourcePath = "x.docx",
+            Paragraphs = [],
+        };
+        var mode = new DocumentModeReport(
+            DocumentMode.TypedNumbering, 0, 0, 0, 0, 0, 0, false);
+
+        var result = PdfBoldLabelOutline.TryBuild("x.docx", slim, mode);
+
+        Assert.Empty(result.Headings);
+        Assert.StartsWith("mode=", result.Reason);
+    }
+}

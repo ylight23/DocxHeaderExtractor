@@ -82,6 +82,7 @@ public sealed class CommandLineOptions
                 case "--critique-all": o.Pipeline.HighPrecisionMode = true; break;
                 case "-f" or "--format": o.Format = ParseFormat(Next(a)); break;
                 case "--no-llm": o.Pipeline.DisableLlm = true; break;
+                case "--pdf-bold-fallback": o.Pipeline.PdfBoldLabelFallback = true; break;
                 case "--openrouter":
                     o.Pipeline.Backend = InferenceBackend.OpenRouter;
                     break;

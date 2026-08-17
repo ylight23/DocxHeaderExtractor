@@ -31,7 +31,14 @@ public static class InlineHeadingSplitter
             // Chạy splitter DOCX generic lên text-layout sau đó sẽ cắt lại trên paragraph gộp và
             // phá chính ranh giới mà PDF vừa cứu.
             if (heading.ConfidenceBasis == "pdf_textbook_layout") continue;
+            // Cùng lý do "part_section_toc_text": title lấy từ bold-run PDF, đoạn body DOCX đã mất
+            // hết định dạng nên splitter generic sẽ không thấy ranh giới nào tương ứng và phá title.
+            if (heading.ConfidenceBasis == "pdf_bold_label") continue;
             if (heading.ConfidenceBasis == "part_section_declared") continue;
+            // BuildFromTextToc lấy TITLE ĐẦY ĐỦ từ TOC text, còn Index/StableId chỉ neo về đoạn
+            // body xuất hiện marker (thường bị PDF cắt cụt, ví dụ "PART III"). Splitter generic so
+            // heading.Text với NGUYÊN paragraph body sẽ luôn thấy lệch và cắt lại theo body cụt đó.
+            if (heading.ConfidenceBasis == "part_section_toc_text") continue;
             // Table headings được cứu dưới outline anchor thường là nhãn điều khoản đầy đủ trong ô
             // bảng; dấu ':' hoặc ';' thuộc chính title, không phải ranh giới title/body.
             if (heading.ConfidenceBasis == "outline_anchor_table_custom_style") continue;

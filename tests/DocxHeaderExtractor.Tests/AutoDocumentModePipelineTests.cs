@@ -82,6 +82,50 @@ public sealed class AutoDocumentModePipelineTests : IDisposable
         Assert.Contains(outline.Headings, h => h.Text.StartsWith("5.2", StringComparison.Ordinal) && h.Level == 2);
     }
 
+    [Fact]
+    public async Task Toc_text_day_thang_route_typed_numbering_khi_mat_xml_signal()
+    {
+        // Cùng khung số gõ tay như test TypedNumbering ở trên (đẩy DocumentMode về TypedNumbering),
+        // nhưng thêm một khối "TABLE OF CONTENT" PART/Section dày ở đầu — mô phỏng PDF→DOCX mất hết
+        // outlineLvl/pStyle/numPr (§ PartSectionOutline.BuildFromTextToc). Route phải đổi từ
+        // auto:typed-numbering sang auto:part-section-text-toc, và title lấy từ TOC (không bị
+        // InlineHeadingSplitter cắt cụt theo đoạn body chỉ còn "PART I" trơ trọi).
+        var paragraphs = new List<string>
+        {
+            "TABLE OF CONTENT PART I – GENERAL PROVISIONS .......... 1 " +
+            "Section 1. Alpha .......... 1 Section 2. Beta .......... 2 " +
+            "Section 3. Gamma .......... 3 Section 4. Delta .......... 4 " +
+            "Section 5. Epsilon .......... 5",
+            "Running header 1 PART I – GENERAL PROVISIONS",
+            "Section 1. Alpha 1",
+            "Section 2. Beta 2",
+            "Section 3. Gamma 3",
+            "Section 4. Delta 4",
+            "Section 5. Epsilon 5",
+        };
+        for (var chapter = 1; chapter <= 5; chapter++)
+        {
+            paragraphs.Add($"{chapter} Chapter {chapter}");
+            paragraphs.Add($"{chapter}.1 • First typed section {chapter} Body text that belongs to the converted page.");
+            paragraphs.Add($"{chapter}.2 • Second typed section {chapter} Body text that belongs to the converted page.");
+        }
+        paragraphs.Add(Body);
+
+        var path = Docx([.. paragraphs]);
+
+        var options = new PipelineOptions { DisableLlm = true };
+        options.Extraction.SplitMergedParagraphs = true;
+        using var pipeline = new HeaderExtractionPipeline(options);
+        var outline = await pipeline.RunAsync(path);
+
+        Assert.Equal(DocumentMode.TypedNumbering, outline.DocumentMode?.Mode);
+        Assert.Equal("auto:part-section-text-toc", outline.DeterministicRoute);
+        Assert.Contains(outline.Headings, h =>
+            h.Level == 1 && h.Text == "PART I - GENERAL PROVISIONS");
+        Assert.Contains(outline.Headings, h =>
+            h.Level == 2 && h.Text == "Section 1. Alpha");
+    }
+
     private string Docx(params string[] paragraphs)
     {
         var path = Path.Combine(Path.GetTempPath(), $"dhx-auto-mode-{Guid.NewGuid():N}.docx");

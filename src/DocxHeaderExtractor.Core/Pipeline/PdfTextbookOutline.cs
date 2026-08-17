@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using UglyToad.PdfPig;
-using UglyToad.PdfPig.Content;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -49,7 +48,7 @@ public static class PdfTextbookOutline
         try
         {
             using var doc = PdfDocument.Open(pdf);
-            lines = ExtractLines(doc);
+            lines = PdfLineExtraction.ExtractLines(doc);
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException)
         {
@@ -76,7 +75,7 @@ public static class PdfTextbookOutline
             p.HasBuiltInHeadingStyle ||
             p.NumberingStyleLevel is not null);
 
-    private static string? FindSiblingPdf(string inputPath)
+    internal static string? FindSiblingPdf(string inputPath)
     {
         var direct = Path.ChangeExtension(inputPath, ".pdf");
         if (File.Exists(direct)) return direct;
@@ -318,69 +317,6 @@ public static class PdfTextbookOutline
         return list;
     }
 
-    private static List<PdfLine> ExtractLines(PdfDocument doc)
-    {
-        var lines = new List<PdfLine>();
-        foreach (var page in doc.GetPages())
-        {
-            var letters = page.Letters
-                .Where(l => !string.IsNullOrWhiteSpace(l.Value))
-                .OrderByDescending(MidY)
-                .ThenBy(l => l.BoundingBox.Left)
-                .ToList();
-
-            var buckets = new List<List<Letter>>();
-            List<Letter>? current = null;
-            double currentY = 0;
-            foreach (var letter in letters)
-            {
-                var y = MidY(letter);
-                var tolerance = Math.Max(1.5, Math.Max(letter.FontSize, letter.BoundingBox.Height) * 0.30);
-                if (current is null || Math.Abs(currentY - y) > tolerance)
-                {
-                    current = [];
-                    buckets.Add(current);
-                    currentY = y;
-                }
-                else
-                {
-                    currentY = ((currentY * current.Count) + y) / (current.Count + 1);
-                }
-                current.Add(letter);
-            }
-
-            foreach (var bucket in buckets)
-            {
-                var ordered = bucket.OrderBy(l => l.BoundingBox.Left).ToList();
-                var pieces = new List<string>();
-                Letter? previous = null;
-                foreach (var letter in ordered)
-                {
-                    if (previous is not null)
-                    {
-                        var gap = letter.BoundingBox.Left - previous.BoundingBox.Right;
-                        if (gap > Math.Max(1.2, Math.Max(previous.FontSize, previous.BoundingBox.Height) * 0.18))
-                            pieces.Add(" ");
-                    }
-                    pieces.Add(letter.Value);
-                    previous = letter;
-                }
-
-                var text = NormalizeSpace(string.Concat(pieces));
-                if (text.Length == 0) continue;
-                lines.Add(new PdfLine(
-                    page.Number,
-                    ordered.Average(MidY),
-                    ordered.Average(l => l.FontSize),
-                    text));
-            }
-        }
-        return lines;
-    }
-
-    private static double MidY(Letter l) => (l.BoundingBox.Bottom + l.BoundingBox.Top) / 2.0;
-
-    private sealed record PdfLine(int Page, double Y, double FontSize, string Text);
     private sealed record PdfHeadingCandidate(int Level, string Text, int Page, double Y, string Reason);
     private sealed record TokenSpan(string Text, int Start, int End);
     private sealed record DocxParagraphTokens(SlimParagraph Paragraph, IReadOnlyList<TokenSpan> Tokens);
