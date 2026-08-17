@@ -7378,5 +7378,18 @@ Sau §100 (phiên song song), `AutoDetectDocumentMode` mặc định TẮT. Rout
 **không còn tự kích hoạt**, phải thêm `--auto-mode` tường minh. `PdfBoldLabelOutline` KHÔNG bị ảnh
 hưởng (gate riêng bằng `_options.PdfBoldLabelFallback`, không qua `AutoDetectDocumentMode`).
 
-Đã merge, build lại, và cần đo lại `030`/WB 9-file/audit 95 file với `--auto-mode` để xác nhận không
-hồi quy khi hai thay đổi đứng cạnh nhau — xem kết quả đo ngay sau merge trong lượt này.
+**Đã merge, build sạch, đo lại — không hồi quy:**
+
+- Test: 3 test của phiên kia đã tự bật `AutoDetectDocumentMode = true` (merge tự động khớp), test
+  `Toc_text_day_thang_route_typed_numbering_khi_mat_xml_signal` của tôi cũng phải sửa tương tự (chưa
+  có khi commit, tự fail khi build sau merge — sửa ngay, cùng lý do §100.5). Build sạch: **551/551**.
+- `030` với `--auto-mode`: Nav 75%, exact P/R 66,7% — y hệt số trước merge.
+- WB 9-file với `--auto-mode --split-merged`: P 100% · R 99,2% · F1 99,6% — y hệt số trước merge.
+- `bench --no-llm` (không `--auto-mode`, đúng mặc định mới): `02-dinh-dang-thu-cong`/`06-style-ban-dia`/
+  `07-mau-that` đều P/R 100% — khớp đúng những gì §100 báo đã sửa. Số tổng đọc được là **6/8 tuyệt
+  đối** (không phải 6/7) vì `bench` hiện có thêm `04-bia-muc-luc-chu-thich` (P 57,1%) và
+  `09-dien-mat-di` (P 66,7%) — hai fixture có từ `1f3f292` (2026-08-07), **trước cả hai phiên**, không
+  liên quan auto-mode. §100 rất có thể đã đo trên một tập con 7 fixture; không phải hồi quy từ merge.
+
+Kết luận: hai phiên không giẫm chân nhau về HÀNH VI, chỉ giẫm chân về CỜ GATE dùng chung
+(`AutoDetectDocumentMode`) — đã hoà đúng, mỗi route giữ nguyên kết quả đã đo riêng của nó.

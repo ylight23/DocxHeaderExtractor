@@ -117,7 +117,10 @@ public sealed class AutoDocumentModePipelineTests : IDisposable
 
         var path = Docx([.. paragraphs]);
 
-        var options = new PipelineOptions { DisableLlm = true };
+        // Bật TƯỜNG MINH: từ §100 auto-mode mặc định TẮT vì bật nó làm bench tụt
+        // R 100% → 69,4% và tuyệt đối 6/7 → 2/7. Test này kiểm chính route auto:part-section-text-toc
+        // (đi qua TryBuildDeclaredOutline, gate bởi cờ này) nên nó phải tự bật.
+        var options = new PipelineOptions { DisableLlm = true, AutoDetectDocumentMode = true };
         options.Extraction.SplitMergedParagraphs = true;
         using var pipeline = new HeaderExtractionPipeline(options);
         var outline = await pipeline.RunAsync(path);
