@@ -7393,3 +7393,53 @@ hưởng (gate riêng bằng `_options.PdfBoldLabelFallback`, không qua `AutoDe
 
 Kết luận: hai phiên không giẫm chân nhau về HÀNH VI, chỉ giẫm chân về CỜ GATE dùng chung
 (`AutoDetectDocumentMode`) — đã hoà đúng, mỗi route giữ nguyên kết quả đã đo riêng của nó.
+
+### 2026-08-15 follow-up - thí nghiệm retrieval theo §4 (`docs/llm-boundary-few-shot-retrieval.md`): KHÔNG thắng bảng cứng
+
+**Cấu hình đo giống hệt ba lượt trước** (Llama-3.2-3B-Instruct-Q4_K_M, greedy, CPU, seed=1234,
+ContextSize=4096). Harness scratch: `.verify-build/llm-boundary-retrieval/`.
+
+**Cơ chế:** pool 6 ví dụ (đúng 6 shot đã dùng làm bảng cứng, 2/domain). Retrieval không đọc
+`NumberingAudit`/`DocumentMode` — dùng shape-signature thô trên 24 ký tự đầu (chữ ASCII→`A`, chữ có
+dấu tiếng Việt→`V`, số→`9`, giữ nguyên dấu câu/khoảng trắng), khớp theo tỉ lệ trùng vị trí, lấy top-2.
+Wrapper (system prompt) dựng ĐỘNG theo ngôn ngữ của shot được chọn — không hardcode theo domain.
+
+**Kết quả trên 55 ca đã có bảng cứng — điều kiện 1 của §4 (`≥ baseline`) KHÔNG đạt:**
+
+```text
+              baseline (bảng cứng)   retrieval (động)
+legal  21 ca  18/21 (85,7%)          17/21 (81,0%)   -4,7 điểm
+rfc    20 ca  19/20 (95,0%)          19/20 (95,0%)    bằng
+minutes14 ca  12/14 (85,7%)           8/14 (57,1%)   -28,6 điểm  <- tụt nặng
+Gộp 55 ca                            44/55 (80,0%)
+```
+
+**Kết quả trên 5 ca domain CHƯA từng có shot** (marker `D<ngày>.<phiên> -` của `071_ICP_IACG_Minutes_
+Oct_2025`, đọc trực tiếp PDF gốc) — **điều kiện 2 của §4 (`≥70%`) ĐẠT**: 4/5 (80,0%).
+
+**Nhưng có MỘT CONFOUND thật, không được bỏ qua khi đọc số trên:** wrapper (system prompt) dựng động
+dùng khung TỔNG QUÁT ("a HEADING/LABEL"), không giữ được phần chú thích riêng từng ví dụ mà ba wrapper
+gốc CÓ (ví dụ minutes gốc ghi rõ *"Example 1 (ends with a colon)"* / *"Example 2 (no punctuation at
+the boundary at all)"* — chính chú thích đó có thể là tín hiệu thật, không chỉ trang trí). Bằng chứng
+cụ thể: domain `minutes` là domain DUY NHẤT có hai dạng ranh giới khác hẳn nhau trong cùng shot pool
+(có dấu `:` và không dấu câu nào) — và nó cũng là domain tụt NẶNG NHẤT (-28,6 điểm), dù retrieval vẫn
+**chọn ĐÚNG cặp shot (4,5) ở phần lớn ca** (kiểm bằng log `retrieved=`). Tức ít nhất một phần độ tụt
+đến từ WRAPPER yếu hơn, không phải từ retrieval CHỌN SAI ví dụ. `rfc` (domain đồng nhất, không cần chú
+thích phân biệt) giữ nguyên 95,0% — khớp đúng giả thuyết này.
+
+Retrieval selection cũng có lỗi thật riêng, không chỉ do wrapper: ca `Điều 33...` (domain `legal`)
+lấy nhầm 1 shot legal + 1 shot minutes (`retrieved=(1,4)`) — shape-signature 24 ký tự thô đôi khi
+trộn domain khi độ dài/mật độ dấu câu tình cờ giống nhau.
+
+**Kết luận theo đúng điều kiện đã chốt TRƯỚC khi đo (§4):** retrieval phải đạt CẢ HAI điều kiện mới
+có lý do xây; điều kiện 1 KHÔNG đạt (thua bảng cứng ở 2/3 domain, một domain tụt rất nặng) dù điều
+kiện 2 đạt. **Giữ bảng cứng, không xây retrieval production.** Đây là kết luận sạch theo đúng luật đã
+tự đặt ra — không phải vì retrieval "không thể" thắng (confound wrapper + lỗi shape-signature đều là
+lỗ hổng CÓ THỂ vá của bản thử nghiệm này, không phải giới hạn nguyên lý), mà vì bản đã đo không thắng,
+và không có lý do tự tin bản vá sẽ thắng mà không đo lại — đúng nguyên tắc không suy từ trực giác kể
+cả trực giác nghe hợp lý.
+
+**Việc còn treo nếu muốn thử lại (không phải ưu tiên ngay):** đo lại với wrapper giữ đúng chú thích
+riêng từng ví dụ (không tổng quát hoá) VÀ retrieval tốt hơn 24-ký-tự-thô (ví dụ: thêm tín hiệu domain
+riêng biệt như ngôn ngữ + độ dài trung bình cụm, không chỉ prefix match) — đây là HAI biến, phải tách
+đo riêng nếu làm, không gộp một lượt.

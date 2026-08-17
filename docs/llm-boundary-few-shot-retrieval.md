@@ -67,6 +67,31 @@ Retrieval chỉ đáng xây nếu vượt qua CẢ HAI:
 Nếu (1) đạt mà (2) không đạt: giữ bảng cứng, thêm domain mới vào bảng bằng tay (rẻ hơn debug
 retrieval không tổng quát). Nếu cả hai đạt: retrieval có lý do tồn tại.
 
+**ĐÃ ĐO (2026-08-15) — điều kiện 1 KHÔNG đạt, giữ bảng cứng.** Chi tiết đầy đủ + confound cần đọc
+trước khi tin số: `handoff.md` mục "thí nghiệm retrieval theo §4 ... KHÔNG thắng bảng cứng".
+
+```text
+                baseline   retrieval
+legal  (21 ca)  85,7%      81,0%   (-4,7)
+rfc    (20 ca)  95,0%      95,0%   (bằng)
+minutes(14 ca)  85,7%      57,1%   (-28,6)   <- điều kiện 1 thua rõ
+unseen  (5 ca)     —       80,0%   (>= 70%, điều kiện 2 đạt)
+```
+
+Không xây retrieval production. Hai lỗ hổng cụ thể của BẢN THỬ NGHIỆM này (không phải kết luận
+nguyên lý — chưa đo lại nên không được nói "retrieval không thể thắng"):
+
+1. Wrapper (system prompt) dựng động dùng khung tổng quát, mất phần chú thích riêng từng ví dụ mà ba
+   wrapper gốc có (`"Example 1 (ends with a colon)"`...). `minutes` — domain duy nhất có hai dạng
+   ranh giới khác hẳn trong cùng pool — tụt nặng nhất, dù retrieval vẫn chọn đúng cặp shot ở phần lớn
+   ca; `rfc` (domain đồng nhất) không tụt. Khớp đúng giả thuyết "chú thích mất đi mới là nguyên nhân",
+   không phải "chọn sai ví dụ".
+2. Shape-signature 24-ký-tự-thô đôi khi trộn domain (một ca `legal` lấy nhầm 1 shot legal + 1 shot
+   minutes vì độ dài/mật độ dấu câu tình cờ giống nhau).
+
+Nếu muốn thử lại: sửa CẢ HAI lỗ hổng là HAI biến, phải tách đo riêng, không gộp một lượt (đúng §0).
+Không phải việc ưu tiên ngay — mục 8 (danh sách nợ kỹ thuật CÓ ĐIỀU KIỆN) do đó CHƯA mở khoá.
+
 ## 5. Correction pool — nguồn, định dạng, cơ chế xác nhận
 
 **Định dạng.** Mở rộng theo khuôn `VerifiedCorrection` đã có, thêm biến thể ranh giới:
