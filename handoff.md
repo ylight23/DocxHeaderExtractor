@@ -7817,3 +7817,58 @@ tiến bộ.** Đây đúng là lỗi §103–§105 lặp lại ở tầng khác
 Không luật deterministic nào bám được vì **không có cấu trúc để bám**. Theo đúng vế sau
 của yêu cầu, đây là ca "khó" thuộc về LLM — và tầng deterministic phải **im lặng** ở đây
 chứ không được đoán bừa, vì trả rỗng thì LLM tiếp quản, còn trả rác thì LLM bị đầu độc.
+
+## §107 — Đầu trang chảy vào thân bài: luật mới `RunningHeaderAudit`
+
+### Cái đo được trước khi viết một dòng mã
+
+Che mọi chuỗi chữ số thành `#` rồi gom đoạn dài (>50 ký tự) theo 32 ký tự GỐC đầu đoạn, đo
+trên 82/89 file corpus có ≥10 đoạn dài:
+
+| | |
+|---|---|
+| trung vị tỉ lệ lặp | **5,8%** |
+| số file ≥ 30% | **26** |
+| số file trong khoảng 20–30% | **0** |
+
+Khe trống 20–30% là lý do ngưỡng đặt ở 0,30 — không phải số chọn cho vừa một file. Cụm bắt
+được đúng là đầu trang: `Trust Fund Financial Information Summary for`, `Management's
+Discussion and Analysis Section #`, `CÔNG BÁO/Số # + #/Ngày #-#-#`, `RFC # HTTP Caching June #`.
+
+### Hai lỗi của chính tôi trong vòng này, cả hai đều do ĐO mới lộ
+
+1. **Gom cụm sai chiều.** Bản đầu lấy 32 ký tự của chuỗi ĐÃ CHE thay vì che 32 ký tự GỐC.
+   Cửa sổ chạy quá đầu trang vào thân bài nên cụm vỡ vụn: 11,6% thay vì 49,9%, luật không
+   kích hoạt và bốn bộ đáp án không nhích một số nào. **Không nhích số** là dấu hiệu luật
+   chết, không phải dấu hiệu luật an toàn.
+2. **Tiền tố chung nuốt mốc thật.** Khi mọi trang mở bằng `Section 1.`, `Section 2.`… thì
+   phần dùng chung kéo qua cả mốc và bóc theo nó xoá đúng cái cần giữ. Sửa bằng cách lùi
+   lại khi đuôi tiền tố khớp *chữ + số + dấu ngắt đóng* — phân biệt `Điều #.` (mốc) với
+   `Ngày #-#-#` (ngày trong đầu trang) bằng DẤU NGẮT, không bằng từ khoá.
+
+### Đo bốn bộ (đơn biến)
+
+| bộ | trước | sau |
+|---|---|---|
+| bench (7) | F1 98,6% Nav 80,6% 6/7 | **y hệt** |
+| toc (9) | F1 99,6% Nav 99,2% 7/9 | **y hệt** |
+| fd (2) | F1 100% 2/2 | **y hệt** |
+| ev-human (5) | F1 30,5% Nav 25,8% | F1 **29,8%** Nav **28,2%** |
+
+Nguồn thay đổi duy nhất: `092_RFC9111` trả 1 mục Nav 0% → **8 mục Nav 9,4%**. Bốn file còn
+lại của bộ đứng yên. F1 tụt 0,7 vì 092 lộ thêm ứng viên bị tính là thừa theo chỉ số tuyệt đối;
+Nav lên 2,4 vì 6/64 mục thật giờ tới được.
+
+### Quyết định còn treo — của người dùng, không phải của tôi
+
+**Hai thước đo bất đồng.** F1 tuyệt đối nói hồi quy, Nav nói tiến bộ. Đây cùng dạng với quyết
+định `--split-merged` treo ở §102.5. Giữ luật này là đặt cược rằng Nav là thước đo đích. Bỏ
+đầu trang là ĐÚNG về bản chất — đó là văn bản không phải nội dung — nên tôi giữ, nhưng ghi rõ
+để đảo lại chỉ bằng một lần revert nếu F1 tuyệt đối mới là thước đo cai trị.
+
+### Việc luật này KHÔNG giải quyết
+
+`019_TT_200-2014`: 14 mục (13 là rác số trang) → **306 mục là SỐ THỨ TỰ TRONG VĂN XUÔI** kế
+toán (`3.13. Khi mua nguyên vật liệu…`). Bóc đầu trang chỉ dời lớp rác, không diệt nó. Gốc
+vẫn là chỗ đã ghi từ trước: **chưa phân biệt được "mốc cấu trúc" với "số thứ tự trong văn
+xuôi"**. Đó là lỗ hổng route tiếp theo.

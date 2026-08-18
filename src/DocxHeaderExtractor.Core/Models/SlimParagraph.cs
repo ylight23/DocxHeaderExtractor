@@ -50,7 +50,7 @@ public sealed class SlimParagraph
     public string StableId { get; init; } = "";
 
     /// <summary>Văn bản đã chuẩn hoá khoảng trắng (chưa cắt ngắn).</summary>
-    public required string Text { get; init; }
+    public required string Text { get; set; }
 
     /// <summary>Ranh giới run OOXML để phát hiện heading lẫn nội dung trong cùng paragraph.</summary>
     public IReadOnlyList<SlimTextSpan> TextSpans { get; init; } = [];

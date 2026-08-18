@@ -91,6 +91,10 @@ public sealed class DocxSlimExtractor
                 AddIfNotEmpty(footers, Normalize(GetText(fp.Footer)));
         }
 
+        // Đầu trang chảy vào thân bài (bản chuyển PDF). Phải bóc TRƯỚC khi đo chế độ và trước
+        // khi tầng ứng viên đọc mốc, nếu không số trang sẽ được đọc thành mốc đánh số — §106.
+        RunningHeaderAudit.Strip(paragraphs);
+
         return new SlimDocument
         {
             FileName = Path.GetFileName(path),
