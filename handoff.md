@@ -7559,3 +7559,71 @@ Hai chỉ số đo hai thứ khác nhau, và cả hai đều hợp lệ:
 đổi lược đồ (TODO mục 6), và nó cần biết trước outline dùng để ĐIỀU HƯỚNG hay để GHI LẠI.
 
 **553 test xanh**, không đổi mã nguồn ở mục này.
+
+## §103. Hai nhóm "không route" đều CỨU ĐƯỢC — lỗi ở định tuyến, không ở tài liệu
+
+Người dùng yêu cầu kiểm nhóm B và C, xoá nếu không thành công. Cả hai **thành công**, nên giữ cả
+hai và sửa đúng chỗ hỏng.
+
+### 103.1 Nhóm C — `FormatDriven` là sọt dự phòng KHÔNG CÓ ROUTE
+
+Ba tài liệu nhiều cấu trúc nhất trong nhóm không-route:
+
+| file | mốc cấu trúc | ký tự | `--admin-outline` |
+|---|--:|--:|--:|
+| `063_Advanced_Linear_Algebra` | 797 | 1.028.266 | 2.251 |
+| `019_TT_200-2014_Che_do_ke_toan_DN` | 542 | 1.102.570 | 1.659 |
+| `020_TT_133-2016_Che_do_ke_toan_SME` | 302 | 833.856 | 1.390 |
+
+Bộ dựng chạy tốt khi gọi tay. Cả ba bị xếp `FormatDriven`, và bảng `AutoRoute` để nó rơi vào
+`_ => null`. Tức **1.641 mốc trên 2,9 triệu ký tự bị bỏ hoàn toàn** vì rơi vào nhánh dự phòng.
+
+Thêm `DocumentMode.FormatDriven => "auto:vietnamese-administrative"`. Chọn bộ dựng hành chính vì nó
+đọc ký hiệu gõ tay tổng quát và tự suy thứ tự lồng nhau từ chính tài liệu — không đòi style, `numPr`
+hay mục lục, tức không đòi đúng những thứ nhóm này thiếu.
+
+**Kết quả: 0 → 1.390–2.251 mục.**
+
+### 103.2 Nhóm B — thành công, nhưng cờ mặc định TẮT
+
+10 biên bản họp, 0 mốc đánh số. Bộ dựng theo mốc chỉ ra 1–32 mục, và mở output ra xem thì kém: khối
+bìa lẫn vào, tiêu đề bị cắt đôi, toàn cấp 1, 100% gắn cần-xem-lại.
+
+Nhưng `--pdf-bold-fallback` — route dựng riêng cho nhóm này — đo trên **2 đáp án người kiểm**:
+
+| | Nav | tuyệt đối |
+|---|--:|--:|
+| mặc định | **0%** | 0/2 |
+| `--pdf-bold-fallback` | **100%** | **2/2** |
+
+Cờ đó tắt với lý do *"chưa đo qua toàn corpus"*. Nay đã đo — bật mặc định.
+
+### 103.3 Đo cả bốn bộ trước khi lật, theo đúng §101
+
+| bộ | trước | sau |
+|---|---|---|
+| bench (7 Word gốc) | F1 98,6 · Nav 80,6 · 6/7 | **y hệt** |
+| 5 đáp án người (PDF pháp quy) | F1 30,5 · Nav 25,8 · 1/5 | **y hệt** |
+| 9 đáp án mục lục (WB) | Nav 99,2 · 7/9 | **y hệt** |
+| **2 đáp án biên bản** | Nav **0%** · 0/2 | Nav **100%** · **2/2** |
+
+Không hồi quy vì `PdfBoldLabelOutline.TryBuild` tự loại: cần PDF cùng stem VÀ chỉ chạy khi DOCX đã
+mất sạch định dạng ký tự. Nhóm khác trả `no-pdf` rồi bỏ qua.
+
+### 103.4 Điều CHƯA chắc, nói rõ
+
+8/10 file nhóm B **không có đáp án**. Hai file đo được đạt 100%, còn lại chỉ biết "ra 4–29 mục".
+Không suy từ 2 sang 10.
+
+Nhóm C **không có đáp án nào**. Biết chắc "0 → 1.641 mốc được đọc", **không** biết chúng đúng.
+`--admin-outline` trên `063` ra 2.251 mục cho 797 mốc — chênh lệch đó chưa truy.
+
+### 103.5 Vì sao KHÔNG xoá dù người dùng cho phép
+
+Điều kiện là *"không có heading để trích"*. Cả hai nhóm đều có — B có 4–29 mục/file với 2 file đạt
+100%, C có 1.641 mốc. Thứ chúng thiếu là **định tuyến**, và xoá tài liệu để che lỗ hổng định tuyến
+là làm sạch phép đo bằng cách vứt ca khó.
+
+Chỉ nhóm A (6 file, 242–304 ký tự, chỉ có chữ ký số) mới thoả điều kiện, và đã xoá ở lượt trước.
+
+**553 test xanh.**

@@ -159,11 +159,23 @@ public sealed class PipelineOptions
 
     /// <summary>
     /// Dùng PDF cùng stem làm nguồn BOLD-RUN-ĐẦU-DÒNG cho nhóm biên bản/minutes ngắn khi DOCX rớt
-    /// toàn bộ định dạng ký tự (không "b"/"br" nào còn, kể cả thân bài thật). Mặc định TẮT — chưa đo
-    /// qua toàn corpus, khác <see cref="PdfTextbookFallback"/> đã có bằng chứng đo trước khi bật mặc
-    /// định. Xem <see cref="PdfBoldLabelOutline"/>.
+    /// toàn bộ định dạng ký tự (không "b"/"br" nào còn, kể cả thân bài thật). Xem
+    /// <see cref="PdfBoldLabelOutline"/>.
+    /// <para>
+    /// <b>MẶC ĐỊNH BẬT từ §103.</b> Trước đây tắt vì "chưa đo qua toàn corpus" — nay đã đo, trên
+    /// cả bốn bộ có đáp án:
+    /// </para>
+    /// <list type="table">
+    /// <item><term>2 đáp án người kiểm nhóm biên bản</term><description>Nav <b>0% → 100%</b> · tuyệt đối <b>0/2 → 2/2</b></description></item>
+    /// <item><term>bench · 5 đáp án người · 9 đáp án mục lục</term><description>KHÔNG ĐỔI một chữ số</description></item>
+    /// </list>
+    /// <para>
+    /// Không hồi quy ở đâu vì <see cref="PdfBoldLabelOutline.TryBuild"/> tự loại: cần một PDF cùng
+    /// stem, và chỉ chạy khi DOCX đã mất sạch định dạng ký tự. Tài liệu không thoả trả về
+    /// <c>no-pdf</c> hoặc bỏ qua, nên nó bất động ở mọi nhóm khác.
+    /// </para>
     /// </summary>
-    public bool PdfBoldLabelFallback { get; set; }
+    public bool PdfBoldLabelFallback { get; set; } = true;
 
     /// <summary>
     /// Hậu kiểm bằng ký hiệu đánh số của chính tài liệu: cùng dạng đánh số phải cùng cấp, và
@@ -675,6 +687,17 @@ public sealed class HeaderExtractionPipeline : IDisposable
         DocumentMode.VietnameseAdministrative => "auto:vietnamese-administrative",
         DocumentMode.VietnameseLegal => "auto:vietnamese-legal",
         DocumentMode.TypedNumbering => "auto:typed-numbering",
+
+        // FormatDriven là nhánh DỰ PHÒNG của bộ phân loại, không phải một chẩn đoán — nhưng tài
+        // liệu rơi vào đó vẫn có thể đầy cấu trúc. Đo được: 063_Advanced_Linear_Algebra 797 mốc,
+        // 019_TT_200-2014 542 mốc, 020_TT_133-2016 302 mốc — tổng 1.641 mốc trên 2,9 triệu ký tự
+        // mà KHÔNG route nào chạy, nên chúng bị bỏ hoàn toàn.
+        //
+        // Dùng bộ dựng hành chính vì nó đọc ký hiệu gõ tay tổng quát (I./1./1.1./a)) và tự suy
+        // thứ tự lồng nhau từ chính tài liệu — không đòi style, numPr hay mục lục, tức không đòi
+        // đúng những thứ nhóm này thiếu.
+        DocumentMode.FormatDriven => "auto:vietnamese-administrative",
+
         _ => null,
     };
 
