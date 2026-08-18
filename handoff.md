@@ -7696,3 +7696,71 @@ phạm nó ngay trong lượt báo cáo kết quả.
 
 Kỷ luật thêm: **con số dùng để chứng minh một thay đổi phải đo bằng ĐÚNG cấu hình mặc định sau thay
 đổi đó**, không phải bằng cấu hình tay tiện nhất.
+
+## §105. Vòng 2: route `FormatDriven` đổi ĐÚNG MỘT file — §103 và §104 đều sai
+
+### 105.1 Đo một biến, bỏ route rồi so
+
+| file | KHÔNG route | CÓ route |
+|---|--:|--:|
+| `063_Advanced_Linear_Algebra` | 25 | **25** |
+| `019_TT_200-2014_Che_do_ke_toan_DN` | 14 | **14** |
+| `020_TT_133-2016_Che_do_ke_toan_SME` | **12** | **48** |
+
+Route đổi **một** file trên ba. Hai file kia y hệt — mục của chúng đến từ **đường thường**, vốn đã
+chạy trước khi tôi thêm route.
+
+### 105.2 Ba lần báo sai liên tiếp về cùng một thay đổi
+
+| | tôi viết | thật |
+|---|---|---|
+| §103 | "0 → 1.390–2.251 mục" | sai cả hai đầu: không phải 0 trước, không phải 1.390–2.251 sau |
+| §104 | "2/3 file cải thiện thật" | sai: chỉ 1/3 |
+| §105 | **1/3 file, 12 → 48** | đo một biến, bỏ route rồi so |
+
+Lỗi §103: lấy số từ lệnh chạy tay với cờ khác. Lỗi §104: sửa cấu hình nhưng vẫn **không so với
+trạng thái KHÔNG có thay đổi** — chỉ đo "sau", không đo "trước". Đó mới là phép so một biến, và
+phải mất hai lượt tôi mới làm đúng.
+
+### 105.3 Vì sao route không chạy trên 2/3 file
+
+Log `019`:
+
+```
+951 đoạn → 14 ứng viên
+Auto/declared outline auto:vietnamese-administrative: KHÔNG DỰNG ĐƯỢC MỤC NÀO, quay về pipeline thường
+PDF bold-label fallback: bỏ qua (low-docx-alignment:167/341)
+```
+
+`AdministrativeOutline.Build` trả **0 mục** vì nó nhận `SplitMergedParagraphs` (mặc định TẮT) nên
+đọc paragraph nguyên khối, không thấy mốc nào ở đầu. **Đúng mâu thuẫn §102.2 đã ghi mà chưa sửa**:
+chốt định tuyến ĐÒI có đoạn gộp mới route, rồi cấm bộ dựng đọc chính những đoạn gộp đó.
+
+Nhưng §104 đã đo được: cho phép cắt thì `063` ra **2.224 mục rác** (câu văn xuôi đánh số). Nên hai
+lối đều hỏng:
+
+- không cắt → route trả 0
+- có cắt → route trả hàng nghìn dương tính giả
+
+Vấn đề thật không nằm ở cờ mà ở **`AdministrativeOutline` không phân biệt được "mốc cấu trúc" với
+"số liệt kê trong văn xuôi"**. Nó nhận mọi lát cắt có ký hiệu.
+
+### 105.4 Và 14 mục của `019` là rác
+
+Hậu kiểm tự tố cáo:
+
+```
+⚠ dãy bắt đầu từ 44 tại đoạn 267 ("44 CÔNG BÁO/Số 281 + 282/Ngày 28-02-2015…")
+⚠ nhảy từ 44 sang 46 · 46 sang 48 · 48 sang 50 · 50 sang 68
+```
+
+Đó là **số trang trong tiêu đề trang công báo**, không phải đề mục. Đường thường đang nhận chúng.
+
+### 105.5 Giữ route hay bỏ
+
+**Giữ.** Nó cải thiện thật một file (12 → 48) và **không hồi quy** trên cả bốn bộ có đáp án:
+bench F1 98,6 · 5 đáp án người F1 30,5 · 9 đáp án mục lục Nav 99,2 · 2 đáp án biên bản Nav 100%.
+
+Nhưng con số phải ghi đúng là **1/3 file**, không phải "0 → 1.641 mốc".
+
+**553 test xanh.**
