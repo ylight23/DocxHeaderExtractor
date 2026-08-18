@@ -7764,3 +7764,56 @@ bench F1 98,6 · 5 đáp án người F1 30,5 · 9 đáp án mục lục Nav 99,
 Nhưng con số phải ghi đúng là **1/3 file**, không phải "0 → 1.641 mốc".
 
 **553 test xanh.**
+
+## §106 — Thác đổ giữa các bộ dựng: ĐÃ THỬ, ĐÃ ĐO, ĐÃ BỎ
+
+Yêu cầu: "outline k nằm heading này thì phải nhận dạng ở luật case khác, nếu khó thì
+LLM phải tự nhận ra". Vòng này hiện thực đúng vế đầu và **đo thấy nó sai**.
+
+### Cái đã dựng
+`TryBuildDeclaredOutline` tách ra `BuildByRoute(route, slim)`; khi một route auto trả 0
+mục thì lần lượt thử `ThuTuDuPhong(route)` — xếp từ đòi nhiều bằng chứng nhất
+(`outline-level`, `numbering`, `custom-style`) xuống rộng nhất (`vietnamese-administrative`).
+
+### Cái đo được (đơn biến: chỉ thêm/bớt thác đổ)
+
+| bộ đáp án | trước | sau thác đổ |
+|---|---|---|
+| bench (7) | F1 98,6% Nav 80,6% 6/7 | **y hệt** |
+| toc (9) | F1 99,6% Nav 99,2% 7/9 | **y hệt** |
+| fd (2) | F1 100% 2/2 | **y hệt** |
+| ev-human (5) | F1 30,5% | **29,2% — HỒI QUY** |
+
+Nguồn hồi quy: `010_Luat_An_ninh_mang` trả về 2 → **15, cả 15 đều thừa**.
+
+### Vì sao nó sai — không phải lỗi hiện thực
+
+Đầu ra `019_TT_200-2014` sau thác đổ: 14 → 224 mục, và **cả 224 đều là rác**:
+
+```
+"4 CÔNG BÁO/Số 279 + 280/Ngày 28-02-2015 Điều 6. Kiểm toán B"
+ ▲ số trang   ▲ đầu trang lặp             ▲ đề mục thật kẹt bên trong
+```
+
+`typed-numbering` đọc **số trang** (4, 6, 8, 10…) làm mốc đánh số. Thác đổ tìm ra *thứ
+gì đó* thay vì không gì, nhưng thứ đó là nhiễu. **Đếm được nhiều mục hơn không phải
+tiến bộ.** Đây đúng là lỗi §103–§105 lặp lại ở tầng khác, lần này bắt được TRƯỚC commit.
+
+Đã trả về bản xanh: 553 test, cả bốn bộ về nguyên mốc.
+
+### Ba giả thuyết sửa gốc — đo và BÁC hết, đừng thử lại
+
+1. **Bóc đầu trang lặp trước khi dựng.** Đếm n-gram 40 ký tự: nhiễu áp đảo là dấu cách,
+   không tách được cụm đầu trang bằng tần suất thuần.
+2. **Mục lục dạng chữ có chấm dẫn.** 67% đoạn của `019` chứa dãy ≥40 dấu chấm — nhưng
+   bóc ra thì đó là **dòng kẻ biểu mẫu kế toán** (`Cộng`, `d) Tài sản khác`) và **ma trận
+   toán** ở `063` (`λ1 0 λ2 =`), không phải mục lục. `019/020` không có mục lục chữ.
+3. **Cổng chất lượng theo chuỗi con dùng chung.** Rác `019` chia sẻ 27,2%, đáp án đúng
+   `056` chia sẻ 7,1% — biên chồng lấn, không đủ tách để làm cổng.
+
+### Kết luận định tuyến
+
+`019`, `020`, `063` phần lớn là **biểu mẫu và ma trận**, không phải văn bản có bố cục.
+Không luật deterministic nào bám được vì **không có cấu trúc để bám**. Theo đúng vế sau
+của yêu cầu, đây là ca "khó" thuộc về LLM — và tầng deterministic phải **im lặng** ở đây
+chứ không được đoán bừa, vì trả rỗng thì LLM tiếp quản, còn trả rác thì LLM bị đầu độc.
