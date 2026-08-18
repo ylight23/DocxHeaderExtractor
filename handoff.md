@@ -7627,3 +7627,72 @@ là làm sạch phép đo bằng cách vứt ca khó.
 Chỉ nhóm A (6 file, 242–304 ký tự, chỉ có chữ ký số) mới thoả điều kiện, và đã xoá ở lượt trước.
 
 **553 test xanh.**
+
+## §104. Tự bác §103: con số "0 → 1.390–2.251 mục" là RÁC, không phải thắng lợi
+
+Vòng 1 của /loop định tuyến. Nghi ngờ ban đầu — *"route FormatDriven thổi phồng dương tính giả"* —
+**sai ở chỗ đổ lỗi**, nhưng vấn đề thì có thật và nằm ở chỗ khác.
+
+### 104.1 Con số §103 đo bằng cấu hình KHÁC với mặc định
+
+| file | mặc định | `--split-merged` |
+|---|--:|--:|
+| `063_Advanced_Linear_Algebra` | **25** | 2.251 |
+| `019_TT_200-2014` | **14** | 1.659 |
+| `020_TT_133-2016` | **48** | 1.390 |
+
+§103 báo "0 → 1.390–2.251 mục". Đó là số của `--admin-outline --split-merged`, **không phải** của
+route vừa thêm. Route mặc định cho 14–48 mục.
+
+### 104.2 `--split-merged` phá tài liệu có VĂN XUÔI ĐÁNH SỐ
+
+Mở output `063` với cờ đó:
+
+```
+1) First comes R. This has little to no interest in connection with real-life…
+2) Then comes R2 . This is the entry point to advanced mathematics, because…
+3) Then comes R3 . Here there are no tricks of type R2 ≃ C, so we are…
+```
+
+Đây là **câu văn xuôi đánh số trong thân bài**, không phải đề mục. Cờ cắt đoạn biến mọi `1)` `2)`
+`3)` giữa bài thành heading — 2.224 mục cho một cuốn sách có 12 chương.
+
+Đây là ràng buộc thứ HAI của `--split-merged`, độc lập với vấn đề quy chỉ số ở §102: nó chỉ đúng
+khi mốc giữa đoạn là **cấu trúc**, và sai hẳn khi tài liệu dùng số để liệt kê trong văn xuôi
+(giáo trình, thông tư). Đó là lý do đo được để giữ nó mặc định TẮT, mạnh hơn lý do cũ.
+
+### 104.3 Route mặc định cho khung ĐÚNG nhưng chưa đủ
+
+`063` ở mặc định ra khung sạch:
+
+```
+Part I Linear algebra
+CHAPTER 1 Linear maps 1a. Spaces, vectors As you can see, we live in R3…   ← dính thân bài
+Part II Advanced results
+CHAPTER 5 Jordan form 5a. Linear equations Welcome to advanced linear…
+```
+
+Cấu trúc `Part`/`CHAPTER` nhận đúng. Hai lỗi còn lại: nhan đề **dính thân bài**, và dòng đầu là
+tên file PDF.
+
+`019` tệ hơn: log báo "tìm được 14 tiêu đề" mà outline chỉ ra **1 dòng** — 13 mục bị loại ở tầng
+sau. Chưa truy.
+
+### 104.4 Trạng thái thật của nhóm C
+
+| file | trước | sau | đánh giá |
+|---|--:|--:|---|
+| `020_TT_133-2016` | 0 | **48** | khung thật |
+| `063_Advanced_Linear_Algebra` | 0 | **25** | khung thật, nhan đề dính thân |
+| `019_TT_200-2014` | 0 | **1** | gần như không đổi |
+
+**2/3 file cải thiện thật, 1/3 chưa.** Không phải "0 → 1.641 mốc được đọc" như §103 viết.
+
+### 104.5 Bài học
+
+§103 lấy con số từ một lệnh chạy tay với cờ khác rồi gán cho thay đổi vừa làm. Hai cấu hình khác
+nhau, một con số — đúng lỗi mà kỷ luật §4.1 ("một biến mỗi vòng đo") sinh ra để chặn, và tôi vi
+phạm nó ngay trong lượt báo cáo kết quả.
+
+Kỷ luật thêm: **con số dùng để chứng minh một thay đổi phải đo bằng ĐÚNG cấu hình mặc định sau thay
+đổi đó**, không phải bằng cấu hình tay tiện nhất.
