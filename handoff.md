@@ -7872,3 +7872,56 @@ Nav lên 2,4 vì 6/64 mục thật giờ tới được.
 toán (`3.13. Khi mua nguyên vật liệu…`). Bóc đầu trang chỉ dời lớp rác, không diệt nó. Gốc
 vẫn là chỗ đã ghi từ trước: **chưa phân biệt được "mốc cấu trúc" với "số thứ tự trong văn
 xuôi"**. Đó là lỗ hổng route tiếp theo.
+
+## §108 — `RunningHeaderAudit` bóc sót hai phần ba; sửa xong mới thật sự sạch
+
+§107 tưởng đã xong. Kiểm lại đầu ra `019` thì **234/306 mục vẫn còn nguyên đầu trang** — luật
+chạy, báo bóc 237 đoạn, nhưng vẫn sót. Hai lỗi độc lập, cả hai chỉ lộ khi ĐỌC đầu ra chứ
+không lộ qua bốn bộ đáp án (các file dính đầu trang đều không có đáp án).
+
+### Lỗi 1 — chỉ bóc MỘT cụm
+
+Một tài liệu mang nhiều biến thể đầu trang cùng lúc: `CÔNG BÁO/…` và `2 CÔNG BÁO/…` (có số
+trang dẫn đầu) là hai cụm. Bản cũ lấy `OrderByDescending(...).First()` nên bỏ sót nguyên
+nhóm thứ hai. Sửa: lặp tối đa `MaximumPasses = 3` lượt, dừng khi một lượt không bóc được gì.
+
+### Lỗi 2 — cửa sổ gom cụm TRƯỢT theo độ dài số
+
+Cửa sổ 32 ký tự đo trên văn bản GỐC: khi số trang đổi từ một sang hai chữ số, `"10 CÔNG
+BÁO/Số 301 + 302/Ngày 28"` và `"0 CÔNG BÁO/Số 291 + 292/Ngày 28-"` che ra hai khoá khác nhau
+và tách cụm. Sửa: gom THÔ trên bản đã che, cửa sổ rút còn 12, rồi để `MinimumCommonPrefix`
+làm cổng thật — cụm gom nhầm có tiền tố chung ngắn nên bị loại ở đó.
+
+Đây là lý do §107 dùng cửa sổ 32 ký tự gốc ngay từ đầu (bản che-rồi-cắt-32 chạy quá đầu trang
+vào thân bài). Hai đầu đều hỏng vì cùng một nguyên nhân: **một cửa sổ cố định không thể vừa
+đủ dài để chắc chắn vừa đủ ngắn để không trượt.** Lời giải là tách hai vai — gom thô, lọc
+bằng tiền tố chung tự co giãn.
+
+### Đo
+
+| | |
+|---|---|
+| `019` dấu vết `CÔNG BÁO` còn lại | 234 → 17 (đa lượt) → **0** (gom thô) |
+| `019` số mục | 306 → 175 → **165** |
+| bench / ev-human / toc / fd | **cả bốn y hệt §107** |
+| test | 561 xanh |
+
+### Đột biến
+
+| đột biến | kết quả |
+|---|---|
+| `MaximumPasses = 1` | **đỏ** |
+| `MinimumShare = 0.99` | **đỏ** |
+| `MinimumCommonPrefix = 1` | sống sót → đã thêm test → **đỏ** |
+
+`MinimumCommonPrefix` sống sót là chỗ đáng ghi: nó là cổng DUY NHẤT chặn cụm gom nhầm sau khi
+cửa sổ rút xuống 12, tức là mắt xích quan trọng nhất lại đang không có lưới. Test mới dựng
+20 đoạn cùng mở bằng "Trong trường hợp " rồi rẽ ngay — gom nhầm cùng cụm, nhưng tiền tố chung
+ngắn nên không được đụng tới.
+
+### Vẫn chưa xong
+
+`019` còn 165 mục là **số thứ tự trong văn xuôi** kế toán. Bóc đầu trang đã làm hết phần của
+nó; phần còn lại là lỗ hổng đã ghi ở §107 — phân biệt mốc cấu trúc với số thứ tự trong văn
+xuôi. Dấu vết đo được cho vòng sau: dãy mốc của nhóm rác **nghịch thế 32–57%** (`3.13` → `3.20`
+→ `3.9` → `1.3`), còn đề mục thật tăng dần theo tài liệu.

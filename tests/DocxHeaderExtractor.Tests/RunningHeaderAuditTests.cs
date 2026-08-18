@@ -93,6 +93,41 @@ public class RunningHeaderAuditTests
         Assert.All(ps, p => Assert.True(p.Text.Length > RunningHeaderAudit.MinimumBodyLength / 2));
     }
 
+    /// <summary>
+    /// <b>Một tài liệu mang NHIỀU biến thể đầu trang cùng lúc.</b> Nguyên văn từ
+    /// <c>019_TT_200-2014</c>: đoạn mở bằng <c>"CÔNG BÁO/…"</c> và đoạn mở bằng <c>"2 CÔNG BÁO/…"</c>
+    /// rơi vào hai cụm khác nhau vì số trang dẫn đầu. Bản chỉ bóc cụm LỚN NHẤT bỏ sót nguyên nhóm
+    /// thứ hai — đo được: 306 mục với 234 mục còn nguyên đầu trang.
+    /// <para>Đây là test giết đột biến <c>MaximumPasses = 1</c>.</para>
+    /// </summary>
+    [Fact]
+    public void Boc_duoc_nhieu_bien_the_dau_trang_trong_cung_tai_lieu()
+    {
+        var ps = Docs(CongBao(14).Concat(
+            Enumerable.Range(0, 12).Select(i =>
+                $"{i} CÔNG BÁO/Số {291 + i} + {292 + i}/Ngày 28-02-2015 Điều {i + 40}. " + Than(i + 50))));
+
+        RunningHeaderAudit.Strip(ps);
+
+        Assert.DoesNotContain(ps, p => p.Text.Contains("CÔNG BÁO", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    /// Cửa sổ gom cụm cố tình THÔ (12 ký tự) để chịu được số trang đổi độ dài, nên nó gom nhầm là
+    /// chuyện bình thường — cổng thật là TIỀN TỐ CHUNG. Đoạn cùng mở bằng một cụm từ nối quen thuộc
+    /// rồi rẽ ngay sang nội dung khác hẳn KHÔNG phải đầu trang và không được đụng tới.
+    /// <para>Đây là test giết đột biến <c>MinimumCommonPrefix = 1</c>.</para>
+    /// </summary>
+    [Fact]
+    public void Cum_gom_nham_bi_tien_to_chung_loai_ra()
+    {
+        var ps = Docs(Enumerable.Range(0, 20).Select(i => "Trong trường hợp " + Than(i)));
+        var truoc = ps.Select(p => p.Text).ToList();
+
+        Assert.Equal(0, RunningHeaderAudit.Strip(ps));
+        Assert.Equal(truoc, ps.Select(p => p.Text).ToList());
+    }
+
     /// <summary>Mẫu quá nhỏ thì "lặp" không có nghĩa thống kê.</summary>
     [Fact]
     public void Mau_qua_nho_khong_ket_luan()

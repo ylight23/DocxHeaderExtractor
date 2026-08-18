@@ -47,8 +47,14 @@ internal static class RunningHeaderAudit
     /// <summary>Số đoạn tối thiểu cùng một tiền tố.</summary>
     internal const int MinimumMembers = 5;
 
-    /// <summary>Cửa sổ gom cụm, tính trên văn bản đã che chữ số.</summary>
-    internal const int ClusterWindow = 32;
+    /// <summary>
+    /// Cửa sổ gom cụm THÔ, tính trên văn bản ĐÃ CHE. Cố tình ngắn: cửa sổ đo trên văn bản gốc sẽ
+    /// TRƯỢT khi số trang đổi từ một sang hai chữ số — đo được, <c>"10 CÔNG BÁO/…"</c> rơi khác cụm
+    /// với <c>"0 CÔNG BÁO/…"</c> và cả nhóm bị bỏ sót. Gom thô rồi để
+    /// <see cref="MinimumCommonPrefix"/> làm cổng thật; cụm gom nhầm có tiền tố chung ngắn nên bị
+    /// loại ở đó.
+    /// </summary>
+    internal const int ClusterWindow = 12;
 
     /// <summary>Tỉ lệ đoạn dài cùng tiền tố. Nằm giữa khe trống 20–30% đo được trên corpus.</summary>
     internal const double MinimumShare = 0.30;
@@ -59,8 +65,29 @@ internal static class RunningHeaderAudit
     /// </summary>
     internal const int MinimumCommonPrefix = 20;
 
-    /// <summary>Bóc đầu trang lặp khỏi đầu đoạn. Trả về số đoạn đã bóc.</summary>
+    /// <summary>
+    /// Số lượt bóc tối đa. Một tài liệu có thể mang NHIỀU biến thể đầu trang cùng lúc — đo trên
+    /// <c>019_TT_200-2014</c>: đoạn mở bằng <c>"CÔNG BÁO/…"</c> và đoạn mở bằng <c>"2 CÔNG BÁO/…"</c>
+    /// (có số trang dẫn đầu) rơi vào hai cụm khác nhau, và bản chỉ bóc cụm lớn nhất bỏ sót nguyên
+    /// nhóm thứ hai. Chặn trên để không lặp vô hạn nếu một lượt bóc lại sinh ra cụm mới.
+    /// </summary>
+    internal const int MaximumPasses = 3;
+
+    /// <summary>Bóc đầu trang lặp khỏi đầu đoạn. Trả về tổng số đoạn đã bóc qua mọi lượt.</summary>
     internal static int Strip(List<SlimParagraph> paragraphs)
+    {
+        var total = 0;
+        for (var pass = 0; pass < MaximumPasses; pass++)
+        {
+            var n = StripOnce(paragraphs);
+            if (n == 0) break;
+            total += n;
+        }
+
+        return total;
+    }
+
+    private static int StripOnce(List<SlimParagraph> paragraphs)
     {
         var body = paragraphs.Where(p => (p.Text?.Length ?? 0) > MinimumBodyLength).ToList();
         if (body.Count < MinimumSample) return 0;
@@ -68,7 +95,7 @@ internal static class RunningHeaderAudit
         var masked = body.ToDictionary(p => p, p => Mask(p.Text));
 
         var cluster = masked
-            .GroupBy(kv => Mask(kv.Key.Text[..Math.Min(ClusterWindow, kv.Key.Text.Length)]))
+            .GroupBy(kv => kv.Value[..Math.Min(ClusterWindow, kv.Value.Length)])
             .OrderByDescending(g => g.Count())
             .First()
             .ToList();
