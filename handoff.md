@@ -8931,3 +8931,47 @@ dự đoán — chúng không đọc span), 608 test xanh, đột biến "bỏ l
 `SlimParagraph.Text` từ §116 trở thành **có thể sửa** (trước đó là `init`). Mọi thứ đo theo offset
 vào `Text` — hiện là `TextSpans` — phải được dời cùng lúc. Đây là ràng buộc mà kiểu dữ liệu không
 ép được, nên nó chỉ sống bằng test `Boc_xong_khong_span_nao_vuot_qua_chuoi`.
+
+## §128 — Lọc trang mục lục: cài, đo, Nav tụt, gỡ. Và CHỐT quy tắc trọng tài
+
+### Vấn đề
+
+`092_RFC9111` trả **289 mục trên đáp án 64**. Đọc đầu ra thì thấy chúng là mảnh vụn của TRANG MỤC
+LỤC bị băm: `"2.3. Calculating"` (cụt), `"Requests 4. Constructing Responses from"` (mốc nằm giữa).
+Chính đáp án của file cũng ghi: *"mỗi heading xuất hiện trong TOC và body, stable ID chọn
+occurrence cuối (body)"*.
+
+### Hai lần cài, lần đầu không chạm được vào chỗ cần
+
+1. Chốt theo **mật độ mốc** đặt trong `ParagraphHeadingSplitter.Split` — bốn bộ **không nhích một
+   số nào**. Truy ra: `TypedNumberingOutline` dùng `Segments`, **không** dùng `Split`. Lại đúng dấu
+   hiệu §116: không nhích số nghĩa là luật chết, không phải luật an toàn.
+2. Thay bằng luật **độ dài segment trung vị < 50** — chính ngưỡng phiên kia đã đo ở §114 (trang mục
+   lục có segment trung vị 12–36 ký tự) — và đặt đúng vào `TypedNumberingOutline`.
+
+### Đo
+
+| bộ | trước | sau |
+|---|---|---|
+| bench / toc / fd | — | y hệt |
+| ev-human | F1 42,1% **Nav 98,0%** | F1 **53,4%** **Nav 93,7%** |
+
+`092`: 289 → 139 mục, Nav 95,3% → **78,1%**. Mức tụt là THẬT, không phải mất bản trùng: có section
+mà bản ở body không được nhận, chỉ bản trong mục lục bắt được, nên bỏ mục lục là mất luôn chúng.
+
+### Chốt quy tắc trọng tài — người dùng đã quyết
+
+Đây là lần thứ BA một quyết định treo vào cùng câu hỏi (§116 giữ luật F1 −0,7/Nav +2,4; §126 loại
+luật F1 +9,3/Nav −14,7; §128 luật F1 +11,3/Nav −4,3). Đã hỏi và người dùng chốt:
+
+> **Nav thắng. Ưu tiên phủ đúng mục lục, chấp nhận trả thừa.**
+
+Hệ quả phải chấp nhận và ghi rõ:
+
+- `092` giữ Nav 95,3% với **289 mục trên đáp án 64** (precision 1,9%).
+- **Mọi luật lọc nhiễu làm tụt Nav đều bị loại**, kể cả khi F1 tăng mạnh. §126 và §128 đúng khi bị
+  gỡ.
+- Việc còn lại phải nhắm vào **recall/độ phủ**, không nhắm vào precision. Muốn precision thì phải
+  tìm luật KHÔNG đánh đổi Nav — ví dụ cắt nhan đề khỏi thân bài (§125) thay vì xoá mục.
+
+Từ đây không hỏi lại câu này nữa; luật trọng tài là §128.
