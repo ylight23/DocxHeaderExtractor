@@ -7987,3 +7987,59 @@ nhắc bật mặc định.
 
 **555→570 test xanh, build sạch, không đổi hành vi mặc định của pipeline** (cờ tắt nên mọi route hiện
 có — WB 9-file, bench, 073/074/080, 072/075, legal/typed-human — chạy y hệt trước khi có commit này).
+
+## §110. Việc 5/5: khảo sát nhóm báo cáo tài chính (`03_tai_chinh_ke_toan`) — BỐN kiểu lỗi khác nhau, chưa xây luật
+
+**Việc 5/5 hôm nay.** 15 file, toàn bộ báo cáo tài chính World Bank (IBRD/IDA). Chỉ `054` đã có đáp
+án chính thức (`keys/typed-human/`). Trước khi viết luật, đọc trực tiếp output `--no-llm` của cả 15
+file (không đoán từ ghi chú cũ "table/dashboard artifacts, footnote leaks") — kết quả: đây KHÔNG phải
+một vấn đề, mà là BỐN vấn đề khác nhau, cần bốn hướng sửa khác nhau, không phải "một luật báo cáo tài
+chính":
+
+**Nhóm A — báo cáo tài chính đã kiểm toán (`041-045`, 5 file, TypedNumbering, 5-6 ứng viên/file):**
+Đọc trực tiếp `041`/`042`: 100% "tiêu đề" là dòng đầu/chân trang lặp lại (`"IBRD FINANCIAL STATEMENTS:
+June 30, 2025 75"`, `"Independent Auditor's Report 78 IBRD FINANCIAL STATEMENTS..."`) — không phải đề
+mục thật. Đề mục THẬT (Balance Sheet, Income Statement, Notes to Financial Statements...) không lọt
+vào tập ứng viên nào cả — đây là lỗ hổng ở TẦNG PHÁT HIỆN ứng viên, không phải lỗi cắt ranh giới.
+
+**Nhóm A' — báo cáo tài chính giữa kỳ (`046-050`, 5 file, TypedNumbering, chỉ 2 ứng viên/file):** Còn
+thưa hơn Nhóm A — 2 ứng viên trên một tài liệu dài trăm trang là gần như KHÔNG phát hiện được gì. Cùng
+họ lỗ hổng tầng phát hiện với Nhóm A nhưng nặng hơn (báo cáo giữa kỳ ngắn, ít trang, ít định dạng lặp
+lại để luật heuristic bám vào).
+
+**Nhóm B — Trust Fund FIS (`051-052`, 2 file, FormatDriven, 31-35 mục "cứu theo đánh số"):** Số cao vì
+đi qua đường StructuralHierarchyResolver cứu theo chuỗi số, KHÔNG phải phát hiện chính. Đọc trực tiếp
+`051`: có lẫn cả đề mục thật (`"Introduction"`, `"Abbreviations and Acronyms"`, `"Portfolio at a Glance
+- IBRD/IDA/IFC Trust Funds"`) VÀ dòng bảng dashboard đọc nhầm thành đề mục (`"YoY change % 69% 48% 53%
+10"`) — đúng "table/dashboard artifacts" đã ghi chú trước đây, nhưng CHƯA đo được tỉ lệ thật/rác trong
+31-35 mục đó (không đủ thời gian hôm nay để đọc hết 31 mục và phân loại từng cái).
+
+**Nhóm C — MD&A/Information Statement (`053/055`, TypedNumbering — `054` đã có đáp án riêng, không
+tính vào nhóm mở):**
+- `053`: 15 mục cứu theo đánh số, `ConfidenceBasis=typed_number_depth`. Đọc trực tiếp: marker
+  `"SECTION I: OVERVIEW"`, `"SECTION II: EXECUTIVE SUMMARY"`... là THẬT, nhưng **heading text trả về
+  là NGUYÊN CẢ ĐOẠN** (không cắt ranh giới) — CÙNG HỌ BUG với nhóm C của §108 (`063/019/020`), khác
+  nguồn (ở đây là `TypedNumberingOutline`/route `typed_number_depth`, không phải `AdministrativeOutline`).
+  Đáng chú ý: `TypedNumbering` là MỘT trong ba domain `LlmBoundaryCutter` (§109) đã có bảng đo — nhưng
+  `LlmBoundaryCutter` KHÔNG chạm được tới đây, vì `TypedNumberingOutline` tạo ra `declared.Headings`
+  khác rỗng nên short-circuit TRƯỚC `RunModelAsync` (đúng cấu trúc đã ghi ở §109), và kể cả khi chạm
+  được, prompt RFC đã đo (`"N.N. Title"`) khác hình dạng `"SECTION N: TITLE"` chữ hoa có dấu `:` —
+  chưa chắc khớp mà không đo riêng.
+- `055`: chỉ 1 ứng viên trên 243 đoạn — gần như không phát hiện được gì. Đọc trực tiếp cấu trúc DOCX:
+  tài liệu này thực chất là "1 trang báo cáo review + một bảng liệt kê dự án lặp lại hàng chục lần"
+  (mỗi trang PDF lặp lại đúng dòng tiêu đề cột `"IDA Net IDA Gross IDA IDA Commitments Disbursements
+  Approval Cumulative..."` — bảng dữ liệu dự án, không phải văn bản có cấu trúc đề mục). File này có
+  thể KHÔNG đại diện cho "báo cáo tài chính" như một lớp — cần cân nhắc loại khỏi phạm vi luật chung,
+  không ép nó vào cùng một khuôn với 14 file kia.
+
+**Không xây luật hôm nay.** Bốn nhóm cần bốn hướng khác nhau (phát hiện ứng viên cho A/A', lọc
+bảng/dashboard cho B, tái dùng+mở rộng cơ chế cắt ranh giới kiểu §108/§109 cho C, và một quyết định
+phạm vi riêng cho `055`) — gộp thành "một luật báo cáo tài chính" ngay bây giờ đúng là kiểu xây trước
+khi đo đã trả giá ba lần trong dự án (xem [[measure-before-build-discipline]]). Việc 5/5 hôm nay dừng
+đúng ở khảo sát có bằng chứng — con số ứng viên/found của cả 15 file và cách đọc trực tiếp 4 file đại
+diện đã ghi ở trên, đủ để phiên sau bắt đầu đúng chỗ mà không phải đo lại từ đầu.
+
+**Chưa có `.key` nào được xây cho nhóm này** (khác việc 1/5 và 3/5) — 14/15 file không có đáp án, và
+khảo sát hôm nay ở mức "đọc trực tiếp xác nhận loại lỗi", chưa đủ để chấm P/R. Việc tiếp theo cho nhóm
+này: chọn 1 file đại diện mỗi nhóm A/A'/B (không cần cả 15), đọc PDF đầy đủ, xây `.key`, RỒI mới thiết
+kế luật theo đúng thứ tự đã dùng cho `05_bien_ban_hop` hôm nay.

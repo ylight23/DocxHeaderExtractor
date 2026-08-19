@@ -641,3 +641,27 @@ quy + 20 RFC + 14 biên bản) qua `LlmBoundaryCutter.TryCutAsync` (không phả
 tay của ba harness cũ), so trực tiếp với 85,7%/95,0%/85,7% đã ghi. Nếu giữ hoặc gần bằng: có căn cứ
 bật mặc định. Nếu tụt rõ: cần tìm biến khác biệt thật giữa harness và production (đã loại ContextSize;
 còn lại: MaxTokens 80 vs 120, và khả năng nhỏ là khác biệt bản build LLamaSharp/native lib).
+
+## 2026-08-19: nhóm báo cáo tài chính (`03_tai_chinh_ke_toan`) — BỐN lỗi khác nhau, chưa có đáp án, chưa xây luật (xem handoff §110)
+
+Khảo sát cả 15 file `03_tai_chinh_ke_toan` (chỉ `054` có đáp án chính thức) lộ ra BỐN nhóm lỗi khác
+hẳn nhau, không phải một vấn đề chung:
+
+1. **`041-045`** (báo cáo kiểm toán đầy đủ năm, 5-6 ứng viên/file): 100% ứng viên là dòng đầu/chân
+   trang lặp lại, không phải đề mục thật — đề mục thật KHÔNG lọt vào tập ứng viên. Lỗ hổng ở TẦNG
+   PHÁT HIỆN, không phải cắt ranh giới.
+2. **`046-050`** (báo cáo giữa kỳ, chỉ 2 ứng viên/file): cùng họ lỗ hổng phát hiện với (1), nặng hơn.
+3. **`051-052`** (Trust Fund FIS, 31-35 mục cứu theo đánh số): lẫn đề mục thật + dòng bảng dashboard
+   đọc nhầm thành đề mục (`"YoY change % 69% 48% 53% 10"`) — chưa đo tỉ lệ thật/rác trong 31-35 mục.
+4. **`053`** (MD&A, 15 mục cứu theo đánh số): marker `"SECTION N: TITLE"` thật nhưng KHÔNG cắt ranh
+   giới (nguyên cả đoạn làm heading text) — cùng họ bug với nhóm C 063/019/020 (xem mục 2026-08-19
+   phía trên), nguồn khác (`TypedNumberingOutline`/`typed_number_depth`). `LlmBoundaryCutter` (đã nối
+   hôm nay) KHÔNG chạm được vì `declared.Headings` của route này short-circuit trước `RunModelAsync`,
+   và prompt RFC đã đo khác hình dạng `"SECTION N:"` — chưa chắc khớp mà không đo riêng.
+5. **`055`** (External Review): chỉ 1 ứng viên/243 đoạn — tài liệu thực chất là 1 trang review + bảng
+   dự án lặp lại hàng chục lần, có thể KHÔNG đại diện cho lớp "báo cáo tài chính" — cân nhắc loại khỏi
+   phạm vi thay vì ép vào cùng một khuôn.
+
+**Chưa xây luật** — bốn nhóm cần bốn hướng khác nhau, gộp lại thành "một luật báo cáo tài chính" ngay
+là xây trước khi đo. Việc tiếp theo: chọn 1 file đại diện mỗi nhóm (1)/(2)/(3), đọc PDF đầy đủ, xây
+`.key`, RỒI mới thiết kế luật — đúng thứ tự đã dùng cho `05_bien_ban_hop`.
