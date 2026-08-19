@@ -667,3 +667,29 @@ hẳn nhau, không phải một vấn đề chung:
 **Chưa xây luật** — bốn nhóm cần bốn hướng khác nhau, gộp lại thành "một luật báo cáo tài chính" ngay
 là xây trước khi đo. Việc tiếp theo: chọn 1 file đại diện mỗi nhóm (1)/(2)/(3), đọc PDF đầy đủ, xây
 `.key`, RỒI mới thiết kế luật — đúng thứ tự đã dùng cho `05_bien_ban_hop`.
+
+## 2026-08-19: khảo sát TOÀN CORPUS (89 file, `--no-llm`) — ba lỗi hệ thống MỚI, ưu tiên theo bằng chứng (xem handoff §112)
+
+Chạy `dhx extract --no-llm` trên cả 89 file `heading_corpus_95_word`, phân loại theo (mode, ứng viên,
+tìm được, route). Ba phát hiện mới, CHƯA từng đo diện rộng trước đây:
+
+1. **`07_system_generated` (RFC) hỏng 5/5 (100%)** — `candidates=1, found=1` cho cả 5 file. Domain
+   `TypedNumbering`/RFC ĐÃ ĐO `LlmBoundaryCutter` 100% (20/20, §111) — ứng viên rõ nhất để thử nối
+   thật, nhưng `candidates=1` nghĩa là nghi cùng họ "lỗ hổng phát hiện" (không chỉ lỗ hổng cắt ranh
+   giới) — cần xác nhận trước khi kỳ vọng LlmBoundaryCutter một mình giải quyết được.
+2. **`VietnameseLegal` gần như không hoạt động trên 13/29 file `01_phap_quy`+`06_dich_song_ngu`** —
+   luật/nghị định 60-300 đoạn chỉ trích được 1-2 mục. Domain này CŨNG đã đo `LlmBoundaryCutter` 100%
+   (21/21, §111). Hai loại lỗ hổng khác nhau trong cùng nhóm (xem danh sách đầy đủ ở handoff §112):
+   - lỗ hổng PHÁT HIỆN (candidates≈found, cả hai nhỏ): `008/009/010/012/021` — cùng họ với `019/020/025`
+     đã đóng ở §108 (PDF→DOCX gộp nhiều "Điều N." vào vài đoạn khổng lồ).
+   - lỗ hổng LỌC/CẮT RANH GIỚI (candidates nhiều, found rơi về 1): `003(7→1) 013(8→1) 015(22→1)
+     081(9→1) 083(6→1) 086(10→2) 090(6→1)` — chưa xác định cơ chế lọc cụ thể.
+3. **`04_giao_trinh` (7/15 file): found VƯỢT candidates tới 10 lần** — hướng NGƯỢC (nghi thừa, không
+   thiếu). Nghi StructuralHierarchyResolver "cứu theo đánh số" bắt nhầm số hiệu Theorem/Equation/
+   Exercise trong giáo trình toán/CS làm heading. Chưa xác nhận bằng đọc trực tiếp — chỉ tín hiệu số.
+
+**Chưa xây gì** — cần đọc trực tiếp xác nhận từng phát hiện trước khi thiết kế luật, đúng thứ tự đã
+dùng hôm nay cho các nhóm khác. Thứ tự ưu tiên đề xuất: (1) RFC trước — nhóm nhỏ nhất, domain đã có
+bảng cứng sẵn; (2) VietnameseLegal — nhóm lớn nhất, tác động cao nhất nếu sửa được, nhưng cần tách
+hai loại lỗ hổng trước; (3) `04_giao_trinh` — đọc `062`/`070` (tỉ lệ cao nhất) để xác nhận giả thuyết
+trước khi kết luận.

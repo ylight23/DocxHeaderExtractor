@@ -8080,3 +8080,111 @@ diễn từ kết quả một backend sang backend khác chưa đo — đúng b�
 tiếp theo, nếu muốn bật thật: (a) quyết định backend mặc định cho triển khai này có phải SGLang/Qwen
 không, (b) nếu có, bật `LlmBoundaryCutFallback` khi backend=Sglang có căn cứ vững; Local vẫn cần đo
 đủ 55 ca trước khi bật.
+
+## §112. Khảo sát toàn bộ corpus (89 file) — phân loại file trích xuất được / không, ba lỗi hệ thống mới lộ ra
+
+**Yêu cầu người dùng:** "tiếp tục công việc phân loại file cho rule determination phân biệt trích
+xuất được outline heading" — phạm vi TOÀN CORPUS (89 file `heading_corpus_95_word`), không chỉ nhóm
+đã khảo sát hôm nay (`03_tai_chinh_ke_toan`, §110).
+
+**Phương pháp:** chạy `dhx extract --no-llm` trên cả 89 file, đọc log capture 6 trường mỗi file:
+mode, số đoạn, số ứng viên (tầng OpenXML/heuristic), số mục "tìm được" cuối cùng, tên route
+declared/auto, có lỗi hay không. Script + bảng thô lưu ở `.verify-build/corpus-survey/` (gitignore,
+không commit — tái tạo được bằng script, số liệu quan trọng chép lại dưới đây). **Đây là baseline
+KHÔNG LLM** — số liệu phản ánh đúng tầng luật tất định, không phải kết quả cuối khi bật model.
+
+### Bảng tổng theo nhóm
+
+| Nhóm | Số file | Found trung bình | Severe (found≤2, >30 đoạn) |
+|---|--:|--:|--:|
+| `01_phap_quy` | 19 | 9,1 | **8** |
+| `02_hop_dong_mua_sam` | 15 | 283,2 | 0 |
+| `03_tai_chinh_ke_toan` | 15 | 9,3 | 6 (đã ghi ở §110) |
+| `04_giao_trinh` | 15 | 44,1 | 0 — nhưng có lỗi KHÁC, xem dưới |
+| `05_bien_ban_hop` | 10 | 14,9 | 0 (đã xử lý hôm nay) |
+| `06_dich_song_ngu` | 10 | 7,2 | **5** |
+| `07_system_generated` | 5 | 1,0 | **5 (100%)** |
+
+`02_hop_dong_mua_sam` khớp đúng bộ "WB 9-file" vẫn dùng làm regression baseline xuyên suốt dự án —
+khoẻ mạnh, không phải khảo sát mới. `05_bien_ban_hop` đã đóng hôm nay (§106/§107).
+
+### Phát hiện 1 — `VietnameseLegal` gần như KHÔNG hoạt động trên 13/29 file `01_phap_quy` + `06_dich_song_ngu`
+
+```
+01_phap_quy/003_Luat_Doanh_nghiep_59-2020-QH14          candidates=7   found=1
+01_phap_quy/008_Luat_Kinh_doanh_BDS_29-2023-QH15        candidates=1   found=1
+01_phap_quy/009_Luat_Giao_dich_dien_tu_20-2023-QH15     candidates=1   found=1
+01_phap_quy/010_Luat_An_ninh_mang_24-2018-QH14          candidates=2   found=2
+01_phap_quy/012_Luat_Ke_toan_hop_nhat_2026              candidates=1   found=1
+01_phap_quy/013_Luat_Quan_ly_thue_38-2019-QH14          candidates=8   found=1
+01_phap_quy/015_Luat_Cac_to_chuc_tin_dung_32-2024-QH15  candidates=22  found=1
+01_phap_quy/021_TT_78-2021_Hoa_don_dien_tu              candidates=1   found=1
+06_dich_song_ngu/081_Luat_Doanh_nghiep_2020_EN          candidates=9   found=1
+06_dich_song_ngu/083_Luat_An_ninh_mang_2018_EN          candidates=6   found=1
+06_dich_song_ngu/086_Luat_Dau_tu_2020_EN_alt            candidates=10  found=2
+06_dich_song_ngu/087_ND_53-2022_An_ninh_mang_EN         candidates=3   found=2
+06_dich_song_ngu/090_ND_155-2018_Sua_doi_Bo_Y_te_EN     candidates=6   found=1
+```
+
+Một luật/nghị định đầy đủ (233-305 đoạn) mà chỉ trích được 1-2 mục gần như chắc chắn là sai — luật VN
+thật có hàng chục đến hàng trăm "Điều N.". **Hai kiểu lỗi khác nhau trong cùng nhóm, không phải một:**
+
+- **Lỗ hổng phát hiện** (candidates ≈ found, cả hai đều rất nhỏ): `008/009/010/012/021` — tầng
+  OpenXML/heuristic không thấy gì để đề xuất ngay từ đầu. CÙNG HỌ với `019/020/025` đã đóng ở §108:
+  PDF→DOCX gộp nhiều "Điều N." vào vài đoạn khổng lồ, không phải một Điều một đoạn.
+- **Lỗ hổng lọc/cắt ranh giới** (candidates nhiều, found rơi về 1): `003(7→1)`, `013(8→1)`,
+  `015(22→1)`, `081(9→1)`, `083(6→1)`, `086(10→2)`, `090(6→1)` — ứng viên có được phát hiện, nhưng gần
+  hết bị lọc/cách ly ở tầng sau. Chưa xác định chính xác cơ chế lọc nào (grounding validator, semantic
+  critic, hay PrecisionAcceptanceGate) — cần đọc riêng, không suy đoán.
+
+**Liên hệ trực tiếp tới §109/§111 hôm nay:** `LlmBoundaryCutter` đã đo **100% chính xác** trên đúng
+domain `VietnameseLegal` (marker `Điều N. Title`, 21/21 ca qua gateway Qwen3.8-27B). Đây là bằng
+chứng mạnh cho hướng sửa nhóm "lỗ hổng lọc" — NHƯNG chưa chắc giúp nhóm "lỗ hổng phát hiện" vì
+`LlmBoundaryCutter` chỉ chạy SAU KHI có candidate; nếu OpenXML/heuristic không đề xuất được ứng viên
+nào từ đầu (008/009/010/012/021 kiểu này), tầng cắt ranh giới bằng LLM không có gì để cắt.
+
+### Phát hiện 2 — `07_system_generated` (RFC) hỏng 5/5 (100%) khi không có LLM
+
+```
+091-095: candidates=1, found=1 — cả năm file RFC (72-390 đoạn)
+```
+
+Đúng domain `TypedNumbering`/RFC mà `LlmBoundaryCutter` đã đo **100% chính xác** (20/20 qua Qwen3.8-27B,
+§111). Nhóm này là ứng viên rõ ràng nhất để thử nối LLM boundary-cut thật — candidates=1 nghĩa là gần
+như chắc chắn cùng họ "lỗ hổng phát hiện" như nhóm VietnameseLegal ở trên (không phải chỉ lỗ hổng cắt
+ranh giới) — cần xác nhận trước khi kỳ vọng LlmBoundaryCutter một mình giải quyết được.
+
+### Phát hiện 3 — `04_giao_trinh` (giáo trình tiếng Anh): found VƯỢT XA candidates, nghi ngờ "cứu theo đánh số" bắt nhầm
+
+```
+059_Lectures_on_Statistics_in_Theory        candidates=15  found=55   (3.7x)
+062_Lectures_on_Probability_Theory          candidates=11  found=112  (10.2x)
+064_Machine_Learning_with_Neural_Networks   candidates=32  found=74   (2.3x)
+065_Numerical_Linear_Algebra_Lecture_Notes  candidates=2   found=22   (11.0x)
+066_Linear_Neural_Networks_Lecture_Notes    candidates=2   found=5    (2.5x)
+067_Algorithms_for_Massive_Data_Lecture_Notes candidates=24 found=65  (2.7x)
+070_Lectures_on_Optimization_Yale           candidates=4   found=42   (10.5x)
+```
+
+**Lỗi NGƯỢC HƯỚNG với hai phát hiện trên** — không phải thiếu, mà nghi THỪA: found vượt candidates ban
+đầu tới 10 lần. Giáo trình toán/CS đầy "Theorem N.M", "Equation N.M", "Exercise N.M" — số hiệu không
+phải heading nhưng có HÌNH DẠNG giống chuỗi đánh số thật. Nghi cơ chế "cứu theo đánh số"
+(StructuralHierarchyResolver rescue-by-numbering, đã nhắc trong log các file khác hôm nay là "cứu theo
+đánh số") bắt nhầm các số hiệu này làm heading. **Chưa xác nhận bằng cách đọc trực tiếp** — chỉ là tín
+hiệu số liệu, cần đọc ít nhất 1-2 file (`062`, `070` — tỉ lệ cao nhất) trước khi kết luận.
+
+### Không xây gì hôm nay — đây là khảo sát, đúng kỷ luật đo-trước-khi-xây
+
+Ba phát hiện trên đều MỚI (chưa từng đo diện rộng trước đây trong dự án) và đều cần xác nhận sâu hơn
+(đọc trực tiếp PDF, phân biệt lỗ hổng phát hiện vs lỗ hổng lọc) trước khi thiết kế luật — cùng quy
+trình đã dùng cho `05_bien_ban_hop`/Nhóm C/nhóm báo cáo tài chính hôm nay. Thứ tự ưu tiên đề xuất cho
+phiên sau, xếp theo bằng chứng đã có (không phải cảm tính):
+
+1. **RFC (`07_system_generated`, 5/5 hỏng, domain đã đo LlmBoundaryCutter 100%)** — nhóm nhỏ nhất,
+   domain đã có bảng cứng đo sẵn, độ phức tạp thấp nhất để xác nhận nhanh liệu vấn đề là lỗ hổng phát
+   hiện hay lỗ hổng cắt ranh giới.
+2. **`VietnameseLegal` (13 file, domain cũng đã đo LlmBoundaryCutter 100%)** — nhóm lớn nhất trong ba
+   phát hiện, tác động cao nếu sửa được, nhưng cần tách rõ hai loại lỗ hổng trước khi thiết kế luật
+   chung (khác nhau, cần luật khác nhau).
+3. **`04_giao_trinh` (7 file nghi thừa)** — hướng khác hẳn (precision, không phải recall) — đọc `062`
+   và `070` trước để xác nhận giả thuyết "cứu theo đánh số bắt nhầm số hiệu Theorem/Equation".
