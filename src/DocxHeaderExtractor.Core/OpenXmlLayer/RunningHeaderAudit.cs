@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
 
@@ -112,7 +112,10 @@ internal static class RunningHeaderAudit
             var cut = MapBack(paragraph.Text, common);
             // Không bao giờ bóc hết đoạn: còn lại phải đủ dài để còn là nội dung.
             if (cut <= 0 || paragraph.Text.Length - cut <= MinimumBodyLength / 2) continue;
-            paragraph.Text = paragraph.Text[cut..].TrimStart(' ', '\t', '.', '-', '–');
+
+            var moi = paragraph.Text[cut..].TrimStart(' ', '	', '.', '-', '–');
+            DoiSpan(paragraph, paragraph.Text.Length - moi.Length, moi.Length);
+            paragraph.Text = moi;
             stripped++;
         }
 
@@ -138,6 +141,31 @@ internal static class RunningHeaderAudit
 
         var m = MocODuoi.Match(masked[..common]);
         return m.Success ? common - m.Length : common;
+    }
+
+    /// <summary>
+    /// Dời và cắt <see cref="SlimParagraph.TextSpans"/> theo số ký tự đã bóc khỏi đầu đoạn.
+    /// <para>
+    /// <b>Đây là lỗi ĐÃ XẢY RA, do chính bộ kiểm này gây ra.</b> Bản đầu sửa <c>Text</c> mà để
+    /// nguyên offset span, nên span trỏ RA NGOÀI chuỗi — đo được trên <c>092_RFC9111</c>. Bốn nơi
+    /// đọc span theo offset: <c>NeutralDocumentViewSerializer</c> (chính là thứ mô hình NHÌN THẤY),
+    /// <c>SlimXmlSerializer</c>, <c>EvidenceConfidenceCalibrator</c> và
+    /// <c>InlineHeadingSplitter</c>. Offset lệch thì vùng in đậm báo cho mô hình là sai, và lỗi đó
+    /// nằm trên đường SẢN XUẤT chứ không riêng nhánh <c>--no-llm</c>.
+    /// </para>
+    /// </summary>
+    private static void DoiSpan(SlimParagraph paragraph, int boDi, int doDaiMoi)
+    {
+        if (paragraph.TextSpans.Count == 0) return;
+
+        paragraph.TextSpans = paragraph.TextSpans
+            .Select(s => s with
+            {
+                Start = Math.Clamp(s.Start - boDi, 0, doDaiMoi),
+                End = Math.Clamp(s.End - boDi, 0, doDaiMoi),
+            })
+            .Where(s => s.End > s.Start)
+            .ToList();
     }
 
     /// <summary>Mọi chuỗi chữ số thành một <c>#</c> — số trang và số hiệu là phần DUY NHẤT đổi.</summary>

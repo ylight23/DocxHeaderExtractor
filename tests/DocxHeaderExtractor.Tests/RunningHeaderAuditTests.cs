@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Core.Models;
+﻿using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.Tests;
@@ -126,6 +126,31 @@ public class RunningHeaderAuditTests
 
         Assert.Equal(0, RunningHeaderAudit.Strip(ps));
         Assert.Equal(truoc, ps.Select(p => p.Text).ToList());
+    }
+
+    /// <summary>
+    /// <b>Bất biến offset — lỗi ĐÃ XẢY RA do chính bộ kiểm này.</b> Bóc chữ khỏi <c>Text</c> mà
+    /// không dời <see cref="SlimParagraph.TextSpans"/> thì span trỏ RA NGOÀI chuỗi; đo được trên
+    /// <c>092_RFC9111</c>. Bốn nơi đọc span theo offset, trong đó có
+    /// <c>NeutralDocumentViewSerializer</c> — thứ mô hình nhìn thấy — nên lỗi nằm trên đường sản
+    /// xuất, không riêng nhánh <c>--no-llm</c>.
+    /// <para>Đây là test giết đột biến "bỏ lời gọi DoiSpan".</para>
+    /// </summary>
+    [Fact]
+    public void Boc_xong_khong_span_nao_vuot_qua_chuoi()
+    {
+        var ps = Docs(CongBao(20));
+        foreach (var p in ps)
+            p.TextSpans = [new SlimTextSpan(0, p.Text.Length, Bold: true, false, false, 13)];
+
+        RunningHeaderAudit.Strip(ps);
+
+        Assert.All(ps, p => Assert.All(p.TextSpans, s =>
+        {
+            Assert.True(s.Start >= 0, $"Start {s.Start} âm");
+            Assert.True(s.End <= p.Text.Length, $"End {s.End} vượt quá độ dài {p.Text.Length}");
+        }));
+        Assert.Contains(ps, p => p.TextSpans.Count > 0);
     }
 
     /// <summary>Mẫu quá nhỏ thì "lặp" không có nghĩa thống kê.</summary>

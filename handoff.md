@@ -8893,3 +8893,41 @@ nhan đề và thân **không có dấu kết câu nào**. Chừng nào chưa c�
 vào dấu câu thì xoá là lựa chọn duy nhất còn lại, và nó đắt hơn cái nó mua.
 
 Đó là việc tiếp theo: ranh giới nhan đề/thân **không dựa vào dấu câu**.
+
+## §127 — Offset span lệch sau khi bóc đầu trang: lỗi do chính tôi gây ở §116, trên ĐƯỜNG SẢN XUẤT
+
+### Tìm ra thế nào
+
+Đang đi tìm ranh giới nhan đề/thân KHÔNG dựa vào dấu câu (việc §126 để lại). Giả thuyết: dùng định
+dạng — nhan đề thường in đậm, và run đậm sống sót qua chuyển PDF (`PdfBoldLabelOutline` đã dùng).
+
+Đo trên `092_RFC9111`: **`spans=1, bold=0`** trên mọi đoạn dài — bản chuyển PDF của RFC là chữ
+trơn, không còn định dạng nào. **Giả thuyết chết.**
+
+Nhưng cùng phép đo đó lộ ra thứ khác: **`spanNgoaiText=1`** — span trỏ ra ngoài chuỗi.
+
+### Lỗi
+
+`RunningHeaderAudit` (§116) cắt ngắn `SlimParagraph.Text` mà **không dời offset của
+`TextSpans`**. Bốn nơi đọc span theo offset:
+
+| nơi đọc | hậu quả khi offset lệch |
+|---|---|
+| `NeutralDocumentViewSerializer` | **vùng in đậm báo cho MÔ HÌNH là sai** |
+| `SlimXmlSerializer` | dải bold trong XML chẩn đoán sai |
+| `EvidenceConfidenceCalibrator` | chấm điểm bằng chứng sai |
+| `InlineHeadingSplitter` | ranh giới nhan đề/thân sai |
+
+Nơi thứ nhất nằm trên **đường sản xuất có LLM**, không riêng nhánh `--no-llm`. Đây đúng loại lỗi
+mà bốn bộ đáp án mù hoàn toàn: chúng đều chạy `--no-llm`.
+
+### Sửa
+
+Dời và cắt span theo số ký tự đã bóc, bỏ span rỗng sau khi cắt. Bốn bộ đáp án **y hệt** (đúng như
+dự đoán — chúng không đọc span), 608 test xanh, đột biến "bỏ lời gọi `DoiSpan`" → **đỏ**.
+
+### Ghi lại vì nó tổng quát hơn một lần sửa
+
+`SlimParagraph.Text` từ §116 trở thành **có thể sửa** (trước đó là `init`). Mọi thứ đo theo offset
+vào `Text` — hiện là `TextSpans` — phải được dời cùng lúc. Đây là ràng buộc mà kiểu dữ liệu không
+ép được, nên nó chỉ sống bằng test `Boc_xong_khong_span_nao_vuot_qua_chuoi`.
