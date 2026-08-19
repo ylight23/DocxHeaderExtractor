@@ -1,0 +1,161 @@
+# Cấu trúc: 084_Luat_Chung_khoan_2019_EN.docx
+
+  - Chapter I GENERAL PROVISIONS  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 1. Scope of regulation This Law provides for securities and securities market activities; rights and obligations of institutions and individuals in the field of securities; organization of the securities market; and state management of securities and securities market.  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 2. Subjects of application  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 3. Application of the Securities Law and relevant laws Securities and securities market activities, rights and obligations of institutions and individuals in the field of securities, organization of the securities market, and state management of securities and securities market must comply with this Law and other relevant laws.  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 4. Interpretation of terms In this Law, the terms below are construed as follows:  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 5. Principles of securities and securities market activities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 6. Securities market development policies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 7. Measures to ensure security and safety of the securities market  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 8. State management of securities and securities market  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 9. The State Securities Commission  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 10. Securities-related socio-professional organizations  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 11. Professional securities investors  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 12. Prohibited acts in securities and securities market activities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+  - Chapter II OFFERING OF SECURITIES  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - Section 1 PUBLIC OFFERING OF SECURITIES  <!-- lvl=3 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 13. Securities par value  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 14. Forms of public offering of securities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 15. Conditions for public offering of securities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 16. Registration of public offering of securities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 17. Conditions for issuance underwriting of securities to the public  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 18. Dossiers of registration of public offering of securities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 19. Prospectus  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 20. Financial statements  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 21. Accredited audit firms and certified public accountants  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 22. Modification and supplementation of dossiers of registration of public offering of securities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 23. Responsibilities of institutions and individuals related to dossiers of registration of public offering of securities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 24. Use of information before public offering of securities During the examination of dossiers of registration of public offering of securities by the State Securities Commission, issuing institutions, issuance underwriting institutions and related institutions and individuals may only use information in prospectuses previously sent to the State Securities Commission in an honest and accurate manner for market survey, clearly stating that information about date of issuance and securities selling prices are tentative.  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 25. Grant of certificate of registration of public offering of securities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 26. Distribution of securities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 27. Suspension of public offering of securities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 28. Cancellation of public offering of securities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 29. Obligations of issuing institutions  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - Section 2 PRIVATE PLACEMENT OF SECURITIES  <!-- lvl=3 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 30. Private placement of securities of issuing institutions other than public companies Private placement of securities of issuing institutions other than public companies must comply with the Law on Enterprises and other relevant laws.  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 31. Private placement of securities of public companies, securities companies and securities investment fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+  - Chapter III PUBLIC COMPANIES  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - Section 1 GENERAL PROVISIONS ON PUBLIC COMPANIES  <!-- lvl=3 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 32. Public companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 33. Public company registration dossiers  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 34. Rights and obligations of public companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 35. Public bid  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 36. Redemption by public companies of their own stocks  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 37. Reports on stock redemption, information disclosure and performance of stock redemption  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 38. Cancellation of status of public companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 39. Dossiers of cancellation of public company status A public company falling into the case specified in Clause 2, Article 38 of this Law shall submit a dossier of cancellation of public company status to the State Securities Commission. Such dossier must comprise:  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - Section 2 CORPORATE GOVERNANCE APPLICABLE TO PUBLIC COMPANIES  <!-- lvl=3 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 40. Principles of corporate governance applicable to public companies Corporate governance of a public company must comply with this Law, Law on Enterprises, other relevant laws and the following principles:  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 41. Contents of corporate governance applicable to public companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+  - Chapter IV SECURITIES TRADING MARKET  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 42. Organization of a securities trading market  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 43. Organization and operation of the Vietnam Stock Exchange and its subsidiary companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 44. Organizational and managerial apparatus of the Vietnam Stock Exchange  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 45. Charter of the Vietnam Stock Exchange  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 46. Rights and obligations of the Vietnam Stock Exchange  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 47. Members of the Vietnam Stock Exchange  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 48. Securities listing and trading registration  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 49. Suspension, termination and resumption of trading activities of the Vietnam Stock Exchange and its subsidiary companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 50. Securities trading  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 51. Participation of foreign investors and foreign-invested economic institutions in Vietnam’s securities market  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+  - Chapter V SECURITIES REGISTRATION, DEPOSITORY, CLEARING AND PAYMENT  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 52. Establishment and operation of the Vietnam Securities Depository and Clearing Corporation  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 53. Organizational and managerial structure of the Vietnam Securities Depository and Clearing Corporation  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 54. Charter of the Vietnam Securities Depository and Clearing Corporation  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 55. Rights and obligations of the Vietnam Securities Depository and Clearing Corporation  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 56. Members of the Vietnam Securities Depository and Clearing Corporation  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 57. Conditions for registration of securities depository activities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 58. Dossiers for registration of securities depository activities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 59. Time limits for grant of certificates of registration of securities depository activities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 60. Suspension of securities depository activities and revocation of certificates of registration of securities depository activities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 61. Securities registration  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 62. Securities depository  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 63. Clearing and payment for securities transactions  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 64. Establishment and transfer of ownership rights and other rights over securities  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 65. Protection of customers’ assets  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 66. Payment support funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 67. Clearing funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 68. Suspension, termination or resumption of securities registration, depository, clearing and payment activities of the Vietnam Securities Depository and Clearing Corporation  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 69. Payment banks  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VI SECURITIES COMPANIES, SECURITIES INVESTMENT FUND MANAGEMENT COMPANIES  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - Section 1 ESTABLISHMENT AND SECURITIES BUSINESS LICENSES  <!-- lvl=3 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 70. Competence to grant, re-grant, modify and revoke establishment and securities business licenses The State Securities Commission is competent to grant, re-grant, modify and revoke establishment and securities business licenses for securities companies, securities investment fund management companies, and Vietnam- based branches of foreign securities companies or fund management companies.  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 71. Enterprise registration, business registration  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 72. Business operations of securities companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 73. Business operations of securities investment fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 74. Conditions for grant of establishment and securities business licenses for securities companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 75. Conditions for grant of establishment and securities business licenses for securities investment fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 76. Conditions for grant of establishment and securities business licenses for Vietnam-based branches of foreign securities companies or fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 77. Foreign investors’ holding rate in securities companies or securities investment fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 78. Representative offices of foreign securities companies or fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 79. Dossiers and procedures for grant, re-grant, modification and revocation of establishment and securities business licenses and operation registration certificates  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 80. Charter of securities companies or securities investment fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 81. Contents of establishment and securities business licenses  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 82. Names of securities companies and securities investment fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 83. Disclosure of operation information Securities companies, securities investment fund management companies, and Vietnam-based branches and representative offices of foreign securities companies or fund management companies shall disclose operation information in the information disclosure media of the State Securities Commission and on 1 online or printed newspaper for 3 consecutive issues at least 30 days before the expected date of official commencement of operation. Such information includes:  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 84. Date of official commencement of operation  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - Section 2 OPERATION OF SECURITIES COMPANIES AND SECURITIES INVESTMENT FUND MANAGEMENT COMPANIES  <!-- lvl=3 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 85. Maintenance of conditions for grant of establishment and securities business licenses  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 86. Operation of securities companies, securities investment fund management companies and Vietnam-based branches and representative offices of foreign securities companies or fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 87. Activities requiring approval of the State Securities Commission  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 88. Management of assets of customers  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 89. Obligations of securities companies and Vietnam-based branches or foreign securities companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 90. Obligations of securities investment fund management companies and Vietnam-based branches of foreign fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 91. Restrictions on securities companies, securities investment fund management companies and Vietnam-based branches of foreign securities companies and fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 92. Financial safety  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - Section 3 REORGANIZATION, SUSPENSION, AND REVOCATION OF ESTABLISHMENT AND SECURITIES BUSINESS LICENSES  <!-- lvl=3 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 93. Reorganization of securities companies and securities investment fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 94. Suspension from operation of securities companies, securities investment fund management companies, or Vietnam-based branches of foreign securities companies or fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 95. Revocation of establishment and securities business licenses of securities companies, securities investment fund management companies, or Vietnam-based branches of foreign securities companies or fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 96. Dissolution or bankruptcy of securities companies, securities investment fund management companies, and Vietnam-based branches of foreign securities companies and fund management companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - Section 4 SECURITIES PRACTICE  <!-- lvl=3 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 97. Securities practice certificates  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 98. Responsibilities of securities practitioners  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VII SECURITIES INVESTMENT FUNDS, SECURITIES INVESTMENT COMPANIES AND SUPERVISORY BANKS  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - Section 1 GENERAL PROVISIONS ON SECURITIES INVESTMENT FUNDS  <!-- lvl=3 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 99. Types of securities investment funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 100. Formation and organization of operation of securities investment funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 101. Rights and obligations of investors participating in securities investment funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 102. Investors’ general meetings of securities investment funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 103. Charters of securities investment funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 104. Dissolution of securities investment funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 105. Consolidation and merger of securities investment funds A securities investment fund may be consolidated or merged with another fund of the same type under the decision of the investors’ general meeting of the securities investment fund. The number of members of a member fund formed after the consolidation or merger must not exceed  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 106. Determination of net asset value of securities investment funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 107. Reports on securities investment funds Securities investment fund management companies shall periodically or extraordinarily report to the State Securities Commission on investment portfolios, investment activities and financial status of securities investment funds.  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - Section 2 PUBLIC FUNDS AND MEMBER FUNDS  <!-- lvl=3 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 108. Mobilization of capital for formation of public funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 109. Boards of Trustees of public funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 110. Restrictions on public funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 111. Open-end funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 112. Closed-end funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 113. Formation of member funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - Section 3 SECURITIES INVESTMENT COMPANIES  <!-- lvl=3 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 114. Securities investment companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 115. Establishment and operation of securities investment companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - Section 4 SUPERVISORY BANKS  <!-- lvl=3 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 116. Supervisory banks  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 117. Restrictions on supervisory banks  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VIII INFORMATION DISCLOSURE  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 118. Subjects obliged to disclose information  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 119. Principles of information disclosure  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 120. Disclosure of information by public companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 121. Disclosure of information by institutions issuing corporate bonds to the public  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 122. Disclosure of information by institutions listing corporate bonds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 123. Disclosure of information by securities companies, securities investment fund management companies, and Vietnam-based branches of foreign securities companies or fund management companies A securities company, securities investment fund management company, or Vietnam-based branch of a foreign securities company or fund management company shall disclose periodical information about: a/ Annual financial statements audited, and biannual financial statements examined, by accredited audit firms and quarterly financial statements; b/ Reports on prudential ratios as of June 30 examined or as of December 31 audited by accredited audit firms; c/ Annual reports; d/ Reports on company governance; dd/ Resolutions of annual Shareholders’ General Meetings, for securities companies and securities investment fund management companies being joint-stock companies; e/ Other information as required by law.  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 124. Disclosure of information about public funds  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 125. Disclosure of information about public securities investment companies  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 126. Disclosure of information by the Vietnam Stock Exchange and its subsidiary companies and Vietnam Securities Depository and Clearing Corporation  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 127. Disclosure of information by majority shareholders and groups of affiliated persons owning at least 5% of voting stocks of a public company; investors and groups of affiliated persons owning at least 5% of fund certificates of a closed-end fund; and groups of affiliated foreign investors owning at least 5% of voting stocks of an issuing organization or at least 5% of fund certificates of a closed-end fund  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 128. Disclosure of information by insiders and their affiliated persons  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+  - Chapter IX INSPECTION, HANDLING OF VIOLATIONS, SETTLEMENT OF DISPUTES AND PAYMENT OF DAMAGES  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 129. Securities inspectorate  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 130. Tasks and powers of the State Securities Commission regarding inspection, examination, and handling of violations of the law on securities and securities market  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 131. Coordination among agencies, organizations and individuals in inspecting, examining, and handling violations of the law on securities and securities market  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 132. Handling of violations  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 133. Settlement of disputes and payment of damages  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+  - Chapter X IMPLEMENTATION PROVISIONS  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 134. Effect  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 135. Transitional provisions  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+
+> 157 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

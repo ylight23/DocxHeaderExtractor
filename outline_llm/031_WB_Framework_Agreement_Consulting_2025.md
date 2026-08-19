@@ -1,0 +1,223 @@
+# Cấu trúc: 031_WB_Framework_Agreement_Consulting_2025.docx
+
+- Section 1. Request for Proposal Letter  <!-- lvl=1 i=146 sid=body[1]/p[145] src=Structure CẦN-XEM-LẠI -->
+  - Section 1 – Request for Proposals Letter  <!-- lvl=2 i=175 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+  - Section 2 - Instructions to Consultants and Data Sheet  <!-- lvl=2 i=176 sid=body[1]/p[175] src=Structure CẦN-XEM-LẠI -->
+  - Section 3 - Technical Proposal - Standard Forms  <!-- lvl=2 i=177 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+  - Section 4 – Eligible Countries  <!-- lvl=2 i=178 sid=body[1]/p[177] src=Structure CẦN-XEM-LẠI -->
+  - Section 5 – Fraud and Corruption  <!-- lvl=2 i=179 sid=body[1]/p[178] src=Structure CẦN-XEM-LẠI -->
+  - Section 6 - Terms of Reference  <!-- lvl=2 i=180 sid=body[1]/p[179] src=Structure CẦN-XEM-LẠI -->
+- Section 2. Instructions to Consultants and Data Sheet  <!-- lvl=1 i=201 sid=body[1]/p[200] src=Structure CẦN-XEM-LẠI -->
+- A. General Provisions  <!-- lvl=1 i=249 sid=body[1]/p[248] src=Structure CẦN-XEM-LẠI -->
+  - Definitions  <!-- lvl=2 i=250 sid=body[1]/tbl[1]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Introduction  <!-- lvl=2 i=289 sid=body[1]/tbl[1]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Conflict of Interest  <!-- lvl=2 i=294 sid=body[1]/tbl[1]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Unfair Competitive Advantage  <!-- lvl=2 i=305 sid=body[1]/tbl[1]/tr[7]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Fraud and Corruption  <!-- lvl=2 i=307 sid=body[1]/tbl[1]/tr[8]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Eligibility  <!-- lvl=2 i=310 sid=body[1]/tbl[1]/tr[9]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+- B. Preparation of Proposals  <!-- lvl=1 i=328 sid=body[1]/tbl[1]/tr[15]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - General Considerations  <!-- lvl=2 i=329 sid=body[1]/tbl[1]/tr[16]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Cost of Preparation of Proposal  <!-- lvl=2 i=331 sid=body[1]/tbl[1]/tr[17]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Language  <!-- lvl=2 i=333 sid=body[1]/tbl[1]/tr[18]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Documents Comprising the Proposal  <!-- lvl=2 i=335 sid=body[1]/tbl[1]/tr[19]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Only One Proposal  <!-- lvl=2 i=339 sid=body[1]/tbl[1]/tr[20]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Proposal Validity  <!-- lvl=2 i=341 sid=body[1]/tbl[1]/tr[21]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Clarification and Amendment of RFP  <!-- lvl=2 i=354 sid=body[1]/tbl[1]/tr[25]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Preparation of Proposals Specific Considerations  <!-- lvl=2 i=359 sid=body[1]/tbl[1]/tr[26]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Technical Proposal Format and Content  <!-- lvl=2 i=363 sid=body[1]/tbl[1]/tr[27]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Financial Proposal  <!-- lvl=2 i=365 sid=body[1]/tbl[1]/tr[28]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+- C. Submission, Opening and Evaluation  <!-- lvl=1 i=369 sid=body[1]/tbl[1]/tr[30]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Submission, Sealing, and Marking of Proposals  <!-- lvl=2 i=370 sid=body[1]/tbl[1]/tr[31]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Confidentiality  <!-- lvl=2 i=379 sid=body[1]/tbl[1]/tr[32]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Opening of Technical Proposals  <!-- lvl=2 i=383 sid=body[1]/tbl[1]/tr[33]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Proposals Evaluation  <!-- lvl=2 i=386 sid=body[1]/tbl[1]/tr[34]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Evaluation of Technical Proposals  <!-- lvl=2 i=388 sid=body[1]/tbl[1]/tr[35]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+- D. Negotiations and conclusion of a Framework Agreement  <!-- lvl=1 i=390 sid=body[1]/tbl[1]/tr[36]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Negotiations  <!-- lvl=2 i=391 sid=body[1]/tbl[1]/tr[37]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Conclusion of Negotiations  <!-- lvl=2 i=402 sid=body[1]/tbl[1]/tr[41]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Standstill Period  <!-- lvl=2 i=405 sid=body[1]/tbl[1]/tr[42]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Notification of Intention to Conclude a Framework Agreement  <!-- lvl=2 i=407 sid=body[1]/tbl[1]/tr[43]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Framework Agreement Criteria  <!-- lvl=2 i=416 sid=body[1]/tbl[1]/tr[44]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - No Obligation to Procure  <!-- lvl=2 i=419 sid=body[1]/tbl[1]/tr[45]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Non-exclusivity  <!-- lvl=2 i=422 sid=body[1]/tbl[1]/tr[46]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Notification to conclude a Framework Agreement  <!-- lvl=2 i=424 sid=body[1]/tbl[1]/tr[47]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Debriefing by the Procuring Agency  <!-- lvl=2 i=426 sid=body[1]/tbl[1]/tr[48]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Signing the Framework Agreement  <!-- lvl=2 i=431 sid=body[1]/tbl[1]/tr[49]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Publication of the Conclusion of Framework Agreement Notice  <!-- lvl=2 i=434 sid=body[1]/tbl[1]/tr[50]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Procurement Related Complaint  <!-- lvl=2 i=444 sid=body[1]/tbl[1]/tr[51]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - Method and criteria for award of Call-off Contract  <!-- lvl=2 i=446 sid=body[1]/tbl[1]/tr[52]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+                - Section 2. Instructions to Consultants  <!-- lvl=9 i=450 sid=body[1]/p[250] src=Structure CẦN-XEM-LẠI -->
+- E. Data Sheet  <!-- lvl=1 i=451 sid=body[1]/p[251] src=Structure CẦN-XEM-LẠI -->
+  - A. General  <!-- lvl=2 i=457 sid=body[1]/tbl[2]/tr[1]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - B. Preparation of Proposals  <!-- lvl=2 i=522 sid=body[1]/tbl[2]/tr[15]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - C. Submission, Opening and Evaluation  <!-- lvl=2 i=568 sid=body[1]/tbl[2]/tr[24]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - 17.7 and 17.9  <!-- lvl=2 i=576 sid=body[1]/tbl[2]/tr[27]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - D. Negotiations and conclusion of a Framework Agreement  <!-- lvl=2 i=633 sid=body[1]/tbl[2]/tr[31]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+- Section 3. Technical Proposal – Standard Forms  <!-- lvl=1 i=654 sid=body[1]/p[256] src=Structure CẦN-XEM-LẠI -->
+          - Checklist of Required Forms  <!-- lvl=6 i=656 sid=body[1]/p[258] src=Structure CẦN-XEM-LẠI -->
+          - Form TECH-1  <!-- lvl=6 i=733 sid=body[1]/p[290] src=Structure CẦN-XEM-LẠI -->
+            - KEY EXPERTS  <!-- lvl=7 i=1114 sid=body[1]/tbl[6]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+            - {e.g., Mr. Abbbb}  <!-- lvl=7 i=1130 sid=body[1]/tbl[6]/tr[4]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+            - maintain a safe working environment including by:  <!-- lvl=7 i=1446 sid=body[1]/p[482] src=Structure CẦN-XEM-LẠI -->
+            - wearing required personal protective equipment; and  <!-- lvl=7 i=1448 sid=body[1]/p[484] src=Structure CẦN-XEM-LẠI -->
+            - report violations of this Code of Conduct; and  <!-- lvl=7 i=1457 sid=body[1]/p[493] src=Structure CẦN-XEM-LẠI -->
+            - Examples of sexual harassment in a work context  <!-- lvl=7 i=1490 sid=body[1]/p[526] src=Structure CẦN-XEM-LẠI -->
+- Section 4. Eligible Countries  <!-- lvl=1 i=1591 sid=body[1]/p[586] src=Structure CẦN-XEM-LẠI -->
+- Section 5. Fraud and Corruption  <!-- lvl=1 i=1601 sid=body[1]/p[596] src=Structure CẦN-XEM-LẠI -->
+  - Purpose  <!-- lvl=2 i=1605 sid=body[1]/p[600] src=Structure CẦN-XEM-LẠI -->
+  - Requirements  <!-- lvl=2 i=1607 sid=body[1]/p[602] src=Structure CẦN-XEM-LẠI -->
+  - To this end, the Bank:  <!-- lvl=2 i=1609 sid=body[1]/p[604] src=Structure CẦN-XEM-LẠI -->
+  - “obstructive practice” is:  <!-- lvl=2 i=1615 sid=body[1]/p[610] src=Structure CẦN-XEM-LẠI -->
+- Section 6. Terms of Reference  <!-- lvl=1 i=1624 sid=body[1]/p[619] src=Structure CẦN-XEM-LẠI -->
+  - Objective(s) of the Framework Agreement_____________________  <!-- lvl=2 i=1633 sid=body[1]/p[628] src=Structure CẦN-XEM-LẠI -->
+  - Client’s Input and Counterpart Personnel (indicative only, if known)  <!-- lvl=2 i=1656 sid=body[1]/p[651] src=Structure CẦN-XEM-LẠI -->
+- PART II – FRAMEWORK AGREEMENT  <!-- lvl=1 i=1672 sid=body[1]/p[667] src=Structure CẦN-XEM-LẠI -->
+  - Notification of Intention to Conclude a Framework Agreement(s)  <!-- lvl=2 i=1676 sid=body[1]/p[671] src=Structure CẦN-XEM-LẠI -->
+  - request a debriefing in relation to the evaluation of your proposal, and/or  <!-- lvl=2 i=1696 sid=body[1]/p[691] src=Structure CẦN-XEM-LẠI -->
+  - Notification to Conclude a Framework Agreement (s)  <!-- lvl=2 i=1782 sid=body[1]/p[707] src=Structure CẦN-XEM-LẠI -->
+  - Framework Agreement  <!-- lvl=2 i=1811 sid=body[1]/p[724] src=Structure CẦN-XEM-LẠI -->
+  - Framework Agreement Provisions (FAP)  <!-- lvl=2 i=1863 sid=body[1]/p[776] src=Structure CẦN-XEM-LẠI -->
+  - Definitions  <!-- lvl=2 i=1868 sid=body[1]/tbl[19]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - “Bank” means the World Bank, meaning the International Bank for Reconstruction and Development (IBRD) and/or the International Development Association (IDA), whether acting on its own account or in its capacity as administrator of trust funds provided by other donors.  <!-- lvl=3 i=1871 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - “Borrower” means the Government, Government agency or other entity that signs the financing agreement with the Bank  <!-- lvl=3 i=1872 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[3] src=Structure CẦN-XEM-LẠI -->
+    - “Borrower’s Country” is the country specified in the FAP 2.3.  <!-- lvl=3 i=1873 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - “Business Day” is any day that is an official working day of the Client. It excludes the Client’s official public holidays.  <!-- lvl=3 i=1874 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[5] src=Structure CẦN-XEM-LẠI -->
+    - “Call-off Contract” is a contract awarded under a Framework Agreement, pursuant to a Secondary Procurement, for the provision of Services.  <!-- lvl=3 i=1875 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[6] src=Structure CẦN-XEM-LẠI -->
+    - “Client” is the Borrower’s agency(ies) that is/are permitted to procure Services from a Consultant/s under a Call-off Contract awarded pursuant to the Framework Agreement/s. Where appropriate, for the purpose of interpretation of the Framework Agreement, the term Client includes Lead Client, or Responsible Agency.  <!-- lvl=3 i=1876 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[7] src=Structure CẦN-XEM-LẠI -->
+    - “Closed Framework Agreement” is where no new firm(s) may conclude Framework Agreement(s) during the Term of the Framework Agreement.  <!-- lvl=3 i=1877 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[8] src=Structure CẦN-XEM-LẠI -->
+    - “Commencement Date” is the date this Framework Agreement is signed by both parties, being the commencement of the Term.  <!-- lvl=3 i=1878 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[9] src=Structure CẦN-XEM-LẠI -->
+    - “Consultant” means a legally established professional consulting firm or an entity who has concluded a Framework Agreement to provide Services, from time to time, and as and when required, under a Call-off Contract.  <!-- lvl=3 i=1879 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[10] src=Structure CẦN-XEM-LẠI -->
+    - “Contract Price” is the price payable to the Consultant as stipulated in each Call-off Contract, subject to such additions and adjustments thereto or deductions therefrom, as may be made pursuant to the Contract.  <!-- lvl=3 i=1880 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[11] src=Structure CẦN-XEM-LẠI -->
+    - “Day” means calendar day.  <!-- lvl=3 i=1881 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[12] src=Structure CẦN-XEM-LẠI -->
+    - “In Writing” means communicated or recorded in written form. It includes, for example: mail, e-mail, fax or communication through an electronic procurement system (provided that the electronic system is accessible, secure, ensures integrity and confidentiality, and has sufficient audit trail features).  <!-- lvl=3 i=1882 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[13] src=Structure CẦN-XEM-LẠI -->
+    - “Lead Client”, when named in the Framework Agreement, means a party to the Framework Agreement, as a Client in its own right under the framework agreement and as the agency responsible for the management and administration of the Framework Agreement for use by the other participating Clients as stipulated in the FAP 2.2. All communications, including notices, in relation to the Framework Agreement, are to be addressed to the Lead Client. All communications, including notices, in relation to a Call-off Contract, are to be addressed to the Client named in the Call-off Contract.  <!-- lvl=3 i=1883 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[14] src=Structure CẦN-XEM-LẠI -->
+    - “Multi-User Framework Agreement” means a Framework Agreement where there is more than one Client permitted to procure pursuant to a Call-off Contract, as stipulated in FAP 2.2;  <!-- lvl=3 i=1884 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[15] src=Structure CẦN-XEM-LẠI -->
+    - “Responsible Agency”, when named in the Framework Agreement, is a party to the Framework Agreement, but only in its capacity as the agency responsible for managing and administering the Framework Agreement for use by the participating Clients. All communications, including notices, in relation to the Framework Agreement, are to be addressed to the Responsible Agency.  <!-- lvl=3 i=1885 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[16] src=Structure CẦN-XEM-LẠI -->
+    - “Secondary Procurement” is the method used to select a Consultant and award a Call-off Contract under this Framework Agreement.  <!-- lvl=3 i=1886 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[17] src=Structure CẦN-XEM-LẠI -->
+    - “Services” means the consulting services to be provided by the Consultant pursuant to a Call-Off Contract awarded pursuant to the Framework Agreement.  <!-- lvl=3 i=1887 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[18] src=Structure CẦN-XEM-LẠI -->
+    - “Single-User Framework Agreement” means a Framework Agreement where there is only one Client, as stipulated in FAP 2.2.  <!-- lvl=3 i=1888 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[19] src=Structure CẦN-XEM-LẠI -->
+    - “Sub-consultants” means an entity to whom/which the Consultant subcontracts any part of the Services while remaining solely liable for the execution of the Framework Agreement and Call-off Contract.  <!-- lvl=3 i=1889 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[20] src=Structure CẦN-XEM-LẠI -->
+    - “Term” means the duration of this Framework Agreement as described in the FAP2.5 starting on the Commencement Date. Where applicable, it includes any extension(s) to the initial Term, if permitted in the FAP 2.6.  <!-- lvl=3 i=1890 sid=body[1]/tbl[19]/tr[2]/tc[2]/p[21] src=Structure CẦN-XEM-LẠI -->
+      - Framework Agreement Specific Information  <!-- lvl=4 i=1891 sid=body[1]/tbl[19]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - The Borrower’s Country is: [insert the name of the country]  <!-- lvl=4 i=1894 sid=body[1]/tbl[19]/tr[3]/tc[2]/p[3] src=Structure CẦN-XEM-LẠI -->
+      - Client’s Representatives  <!-- lvl=4 i=1900 sid=body[1]/tbl[19]/tr[3]/tc[2]/p[9] src=Structure CẦN-XEM-LẠI -->
+      - Consultant’s Representatives  <!-- lvl=4 i=1930 sid=body[1]/tbl[19]/tr[3]/tc[2]/p[39] src=Structure CẦN-XEM-LẠI -->
+      - Appointing authority  <!-- lvl=4 i=1938 sid=body[1]/tbl[19]/tr[3]/tc[2]/p[47] src=Structure CẦN-XEM-LẠI -->
+      - Framework Agreement Documents  <!-- lvl=4 i=1940 sid=body[1]/tbl[19]/tr[4]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Consultant’s Obligations  <!-- lvl=4 i=1946 sid=body[1]/tbl[19]/tr[5]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Standard of Performance  <!-- lvl=3 i=1950 sid=body[1]/tbl[19]/tr[5]/tc[2]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - Applicable Law  <!-- lvl=3 i=1954 sid=body[1]/tbl[19]/tr[5]/tc[2]/p[8] src=Structure CẦN-XEM-LẠI -->
+    - Conflict of Interest  <!-- lvl=3 i=1959 sid=body[1]/tbl[19]/tr[5]/tc[2]/p[13] src=Structure CẦN-XEM-LẠI -->
+    - consistent with Schedule 1: Terms of Reference as may be specifically described in the TOR-Call-off;  <!-- lvl=3 i=1967 sid=body[1]/tbl[19]/tr[5]/tc[2]/p[21] src=Structure CẦN-XEM-LẠI -->
+    - at the Contract Price stipulated in the Call-off Contract; and  <!-- lvl=3 i=1968 sid=body[1]/tbl[19]/tr[5]/tc[2]/p[22] src=Structure CẦN-XEM-LẠI -->
+    - at such times and to such locations as stipulated in the Call-off Contract.  <!-- lvl=3 i=1969 sid=body[1]/tbl[19]/tr[5]/tc[2]/p[23] src=Structure CẦN-XEM-LẠI -->
+      - Forced Labor  <!-- lvl=4 i=1971 sid=body[1]/tbl[19]/tr[5]/tc[2]/p[25] src=Structure CẦN-XEM-LẠI -->
+      - Child Labor  <!-- lvl=4 i=1975 sid=body[1]/tbl[19]/tr[5]/tc[2]/p[29] src=Structure CẦN-XEM-LẠI -->
+      - Health and safety obligations  <!-- lvl=4 i=1984 sid=body[1]/tbl[19]/tr[5]/tc[2]/p[38] src=Structure CẦN-XEM-LẠI -->
+      - Non-Discrimination and Equal Opportunity  <!-- lvl=4 i=1986 sid=body[1]/tbl[19]/tr[5]/tc[2]/p[40] src=Structure CẦN-XEM-LẠI -->
+      - Description of Key Experts  <!-- lvl=4 i=1989 sid=body[1]/tbl[19]/tr[6]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - the Consultant shall, at the Client’s written request, provide a replacement.  <!-- lvl=3 i=2001 sid=body[1]/tbl[19]/tr[6]/tc[2]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Obligations of the Client  <!-- lvl=4 i=2005 sid=body[1]/tbl[19]/tr[7]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Access to sites  <!-- lvl=4 i=2014 sid=body[1]/tbl[19]/tr[8]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Continued Qualifications and Eligibility  <!-- lvl=4 i=2016 sid=body[1]/tbl[19]/tr[9]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Role of Lead Client or Responsible Agency  <!-- lvl=4 i=2019 sid=body[1]/tbl[19]/tr[10]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Contract Price  <!-- lvl=4 i=2023 sid=body[1]/tbl[19]/tr[11]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Adjustments for Changes in Laws  <!-- lvl=4 i=2025 sid=body[1]/tbl[19]/tr[12]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Liability of the Consultant  <!-- lvl=4 i=2027 sid=body[1]/tbl[19]/tr[13]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - (ii) be construed as providing the Consultant with any limitation or exclusion from liability which is prohibited by the applicable law in the Client’s country.”]  <!-- lvl=3 i=2038 sid=body[1]/tbl[19]/tr[13]/tc[2]/p[11] src=Structure CẦN-XEM-LẠI -->
+      - Force Majeure  <!-- lvl=4 i=2039 sid=body[1]/tbl[19]/tr[14]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Language  <!-- lvl=4 i=2051 sid=body[1]/tbl[19]/tr[15]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Fraud and Corruption  <!-- lvl=4 i=2054 sid=body[1]/tbl[19]/tr[16]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Records, inspections and audit  <!-- lvl=4 i=2057 sid=body[1]/tbl[19]/tr[17]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Confidential Information  <!-- lvl=4 i=2060 sid=body[1]/tbl[19]/tr[18]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Proprietary Rights of the Client in Reports and Records  <!-- lvl=4 i=2062 sid=body[1]/tbl[19]/tr[19]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Equipment, Vehicles and Materials  <!-- lvl=4 i=2065 sid=body[1]/tbl[19]/tr[20]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Change to the Framework Agreement  <!-- lvl=4 i=2067 sid=body[1]/tbl[19]/tr[21]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Assignment  <!-- lvl=4 i=2069 sid=body[1]/tbl[19]/tr[22]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Termination of the Framework Agreement  <!-- lvl=4 i=2071 sid=body[1]/tbl[19]/tr[23]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - in the judgement of the Client, the Consultant has engaged in Fraud and Corruption, or  <!-- lvl=3 i=2074 sid=body[1]/tbl[19]/tr[23]/tc[2]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or  <!-- lvl=3 i=2075 sid=body[1]/tbl[19]/tr[23]/tc[2]/p[3] src=Structure CẦN-XEM-LẠI -->
+    - the Consultant purports to assign, or otherwise transfer or dispose of this Framework Agreement and/or Call-off Contract, in whole, or in part, without the prior written consent of the Client, or  <!-- lvl=3 i=2076 sid=body[1]/tbl[19]/tr[23]/tc[2]/p[4] src=Structure CẦN-XEM-LẠI -->
+    - the Consultant becomes bankrupt or otherwise insolvent, or  <!-- lvl=3 i=2077 sid=body[1]/tbl[19]/tr[23]/tc[2]/p[5] src=Structure CẦN-XEM-LẠI -->
+    - the Consultant consistently does not submit proposals for call-off contracts, when requested by Clients, or consistently fails to submit a technically qualified proposal;  <!-- lvl=3 i=2078 sid=body[1]/tbl[19]/tr[23]/tc[2]/p[6] src=Structure CẦN-XEM-LẠI -->
+    - the Consultant fails to perform any other obligation under the Framework Agreement and/or any Call-off Contract.  <!-- lvl=3 i=2079 sid=body[1]/tbl[19]/tr[23]/tc[2]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - Dispute resolution in relation to the Framework Agreement  <!-- lvl=4 i=2082 sid=body[1]/tbl[19]/tr[24]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Appendix to the Framework Agreement  <!-- lvl=4 i=2087 sid=body[1]/p[780] src=Structure CẦN-XEM-LẠI -->
+      - Fraud and Corruption  <!-- lvl=4 i=2088 sid=body[1]/p[781] src=Structure CẦN-XEM-LẠI -->
+      - Purpose  <!-- lvl=4 i=2090 sid=body[1]/p[783] src=Structure CẦN-XEM-LẠI -->
+      - Requirements  <!-- lvl=4 i=2092 sid=body[1]/p[785] src=Structure CẦN-XEM-LẠI -->
+      - To this end, the Bank:  <!-- lvl=4 i=2094 sid=body[1]/p[787] src=Structure CẦN-XEM-LẠI -->
+      - “obstructive practice” is:  <!-- lvl=4 i=2100 sid=body[1]/p[793] src=Structure CẦN-XEM-LẠI -->
+      - Framework Agreement – Schedules  <!-- lvl=4 i=2109 sid=body[1]/p[802] src=Structure CẦN-XEM-LẠI -->
+      - SCHEDULE 1: Terms of Reference  <!-- lvl=4 i=2111 sid=body[1]/p[804] src=Structure CẦN-XEM-LẠI -->
+      - Schedule 2 - Key Experts  <!-- lvl=4 i=2118 sid=body[1]/p[811] src=Structure CẦN-XEM-LẠI -->
+      - SCHEDULE 3: Secondary Procurement  <!-- lvl=4 i=2123 sid=body[1]/p[816] src=Structure CẦN-XEM-LẠI -->
+      - Secondary Procurement method(s)  <!-- lvl=4 i=2126 sid=body[1]/p[819] src=Structure CẦN-XEM-LẠI -->
+      - Competitive proposals (mini-competition)  <!-- lvl=4 i=2129 sid=body[1]/p[822] src=Structure CẦN-XEM-LẠI -->
+      - Call-off contract  <!-- lvl=4 i=2142 sid=body[1]/p[835] src=Structure CẦN-XEM-LẠI -->
+      - Communicating the award of Call-off Contract  <!-- lvl=4 i=2144 sid=body[1]/p[837] src=Structure CẦN-XEM-LẠI -->
+      - the name and address of the successful Consultant  <!-- lvl=4 i=2147 sid=body[1]/p[840] src=Structure CẦN-XEM-LẠI -->
+      - description of the Services  <!-- lvl=4 i=2148 sid=body[1]/p[841] src=Structure CẦN-XEM-LẠI -->
+      - the contract price  <!-- lvl=4 i=2149 sid=body[1]/p[842] src=Structure CẦN-XEM-LẠI -->
+      - a statement of the reason(s) the recipient Consultant was unsuccessful.]  <!-- lvl=4 i=2150 sid=body[1]/p[843] src=Structure CẦN-XEM-LẠI -->
+      - Complaint about award of Call-off Contract  <!-- lvl=4 i=2151 sid=body[1]/p[844] src=Structure CẦN-XEM-LẠI -->
+      - the Client will address the complaint within a reasonable time  <!-- lvl=4 i=2154 sid=body[1]/p[847] src=Structure CẦN-XEM-LẠI -->
+      - Request for Proposal: Call-off (RFP: Call-off)  <!-- lvl=4 i=2208 sid=body[1]/p[865] src=Structure CẦN-XEM-LẠI -->
+      - Price  <!-- lvl=4 i=2210 sid=body[1]/p[867] src=Structure CẦN-XEM-LẠI -->
+      - Key Experts  <!-- lvl=4 i=2222 sid=body[1]/p[879] src=Structure CẦN-XEM-LẠI -->
+      - Clarifications  <!-- lvl=4 i=2224 sid=body[1]/p[881] src=Structure CẦN-XEM-LẠI -->
+      - Preparation and Submission of Proposals  <!-- lvl=4 i=2226 sid=body[1]/p[883] src=Structure CẦN-XEM-LẠI -->
+      - Opening of Proposals  <!-- lvl=4 i=2232 sid=body[1]/p[889] src=Structure CẦN-XEM-LẠI -->
+      - Evaluation of Technical and Financial Proposal  <!-- lvl=4 i=2234 sid=body[1]/p[891] src=Structure CẦN-XEM-LẠI -->
+      - Negotiations and award  <!-- lvl=4 i=2248 sid=body[1]/p[905] src=Structure CẦN-XEM-LẠI -->
+      - Contract  <!-- lvl=4 i=2264 sid=body[1]/p[921] src=Structure CẦN-XEM-LẠI -->
+      - Commencement Date  <!-- lvl=4 i=2266 sid=body[1]/p[923] src=Structure CẦN-XEM-LẠI -->
+      - Description of Approach, Methodology, and Work Plan for Performing the Assignment  <!-- lvl=4 i=2368 sid=body[1]/p[991] src=Structure CẦN-XEM-LẠI -->
+      - Work Schedule and planning for deliverables  <!-- lvl=4 i=2369 sid=body[1]/p[992] src=Structure CẦN-XEM-LẠI -->
+      - Team Composition, Assignment, and Key Experts’ inputs  <!-- lvl=4 i=2370 sid=body[1]/p[993] src=Structure CẦN-XEM-LẠI -->
+      - Financial proposal forms  <!-- lvl=4 i=2372 sid=body[1]/p[995] src=Structure CẦN-XEM-LẠI -->
+      - KEY EXPERTS  <!-- lvl=4 i=2570 sid=body[1]/tbl[30]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - NON-KEY EXPERTS  <!-- lvl=4 i=2744 sid=body[1]/tbl[30]/tr[13]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+              - Item  <!-- lvl=8 i=2966 sid=body[1]/tbl[34]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+                - {insert type of tax. e.g., VAT or sales tax}  <!-- lvl=9 i=2990 sid=body[1]/tbl[34]/tr[10]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+                - {e.g., income tax on non-resident experts}  <!-- lvl=9 i=2994 sid=body[1]/tbl[34]/tr[11]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+                - {insert type of tax}  <!-- lvl=9 i=2998 sid=body[1]/tbl[34]/tr[12]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+                - Key Experts  <!-- lvl=9 i=3020 sid=body[1]/tbl[35]/tr[2]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+                - Non-Key Experts  <!-- lvl=9 i=3063 sid=body[1]/tbl[35]/tr[8]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+                - Appendix A. Financial Negotiations - Breakdown of Remuneration Rates  <!-- lvl=9 i=3113 sid=body[1]/p[1070] src=Structure CẦN-XEM-LẠI -->
+                - Review of Remuneration Rates  <!-- lvl=9 i=3116 sid=body[1]/p[1073] src=Structure CẦN-XEM-LẠI -->
+                - Rate details are discussed below:  <!-- lvl=9 i=3119 sid=body[1]/p[1076] src=Structure CẦN-XEM-LẠI -->
+                - 1. Expressed as percentage of 1  <!-- lvl=9 i=3281 sid=body[1]/p[1121] src=Structure CẦN-XEM-LẠI -->
+                - 2. Expressed as percentage of 4  <!-- lvl=9 i=3282 sid=body[1]/p[1122] src=Structure CẦN-XEM-LẠI -->
+                - [Insert complete legal name of the Client]  <!-- lvl=9 i=3380 sid=body[1]/tbl[39]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+                - [Insert complete legal name of the Consultant]  <!-- lvl=9 i=3383 sid=body[1]/tbl[39]/tr[2]/tc[3]/p[1] src=Structure CẦN-XEM-LẠI -->
+                - Contract Price  <!-- lvl=9 i=3387 sid=body[1]/p[1139] src=Structure CẦN-XEM-LẠI -->
+                - Contract Documents  <!-- lvl=9 i=3397 sid=body[1]/p[1149] src=Structure CẦN-XEM-LẠI -->
+                - Contract Price and Schedule of Payments  <!-- lvl=9 i=3424 sid=body[1]/p[1176] src=Structure CẦN-XEM-LẠI -->
+    - [Insert one of the following two options for bullet point (a)]  <!-- lvl=3 i=3425 sid=body[1]/p[1177] src=Structure CẦN-XEM-LẠI -->
+    - [Option 1- Lump-Sum Contracts]  <!-- lvl=3 i=3426 sid=body[1]/p[1178] src=Structure CẦN-XEM-LẠI -->
+    - Contract Price [Modify as appropriate]  <!-- lvl=3 i=3427 sid=body[1]/p[1179] src=Structure CẦN-XEM-LẠI -->
+    - The amount of such taxes is ____________________ [insert the amount as finalized at the Contract’s negotiations on the basis of the estimates provided by the Consultant]  <!-- lvl=3 i=3430 sid=body[1]/p[1182] src=Structure CẦN-XEM-LẠI -->
+    - Schedule of Payments [Modify as appropriate]  <!-- lvl=3 i=3431 sid=body[1]/p[1183] src=Structure CẦN-XEM-LẠI -->
+    - [Option 2- Time-Based Contracts]  <!-- lvl=3 i=3436 sid=body[1]/p[1188] src=Structure CẦN-XEM-LẠI -->
+    - Ceiling Amount [Modify as appropriate]  <!-- lvl=3 i=3437 sid=body[1]/p[1189] src=Structure CẦN-XEM-LẠI -->
+    - The amount of such taxes is ____________________ [insert the amount as finalized at the Contract’s negotiations on the basis of the estimates provided by the Consultant]  <!-- lvl=3 i=3440 sid=body[1]/p[1192] src=Structure CẦN-XEM-LẠI -->
+    - (ii) such other expenses as approved in advance by the Client.  <!-- lvl=3 i=3446 sid=body[1]/p[1198] src=Structure CẦN-XEM-LẠI -->
+    - Delayed payments: If the Client delays payments beyond fifteen (15) days after the period specified in (a) above, interest shall be paid to the Consultant on the delayed amount at the annual rate of [insert rate]  <!-- lvl=3 i=3447 sid=body[1]/p[1199] src=Structure CẦN-XEM-LẠI -->
+    - The agreed contract prices shall not be adjusted for foreign and/or local inflation during the execution of the contract  <!-- lvl=3 i=3448 sid=body[1]/p[1200] src=Structure CẦN-XEM-LẠI -->
+    - All payments under this Contract shall be made to the accounts of the Consultant.  <!-- lvl=3 i=3449 sid=body[1]/p[1201] src=Structure CẦN-XEM-LẠI -->
+      - Authority of Member in Charge  <!-- lvl=4 i=3454 sid=body[1]/p[1206] src=Structure CẦN-XEM-LẠI -->
+      - Reporting Obligations  <!-- lvl=4 i=3456 sid=body[1]/p[1208] src=Structure CẦN-XEM-LẠI -->
+      - Insurance  <!-- lvl=4 i=3458 sid=body[1]/p[1210] src=Structure CẦN-XEM-LẠI -->
+      - Modifications or Variations  <!-- lvl=4 i=3470 sid=body[1]/p[1222] src=Structure CẦN-XEM-LẠI -->
+      - Dispute resolution in relation to Call-off Contracts  <!-- lvl=4 i=3473 sid=body[1]/p[1225] src=Structure CẦN-XEM-LẠI -->
+      - Expiration of Contract: [Insert time period e.g. six months]  <!-- lvl=4 i=3484 sid=body[1]/p[1236] src=Structure CẦN-XEM-LẠI -->
+      - [Insert if different than address provided in the Framework Agreement]  <!-- lvl=4 i=3486 sid=body[1]/p[1238] src=Structure CẦN-XEM-LẠI -->
+    - Address for notices to the Client:  <!-- lvl=3 i=3488 sid=body[1]/p[1240] src=Structure CẦN-XEM-LẠI -->
+      - SCHEDULE 4: Advance Payment Security  <!-- lvl=4 i=3504 sid=body[1]/p[1256] src=Structure CẦN-XEM-LẠI -->
+      - Demand Guarantee  <!-- lvl=4 i=3505 sid=body[1]/p[1257] src=Structure CẦN-XEM-LẠI -->
+      - SCHEDULE 5: Code of Conduct for Experts  <!-- lvl=4 i=3530 sid=body[1]/p[1282] src=Structure CẦN-XEM-LẠI -->
+      - SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants  <!-- lvl=4 i=3534 sid=body[1]/p[1286] src=Structure CẦN-XEM-LẠI -->
+      - SCHEDULE 7: List of Clients (if applicable)  <!-- lvl=4 i=3548 sid=body[1]/p[1293] src=Structure CẦN-XEM-LẠI -->
+
+> 219 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

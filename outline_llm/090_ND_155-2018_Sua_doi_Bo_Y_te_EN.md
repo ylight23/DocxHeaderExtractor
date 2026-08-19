@@ -1,0 +1,100 @@
+# Cấu trúc: 090_ND_155-2018_Sua_doi_Bo_Y_te_EN.docx
+
+  - Chapter I FOOD SAFETY  <!-- lvl=2 i=2 sid=body[1]/p[3] src=Structure CẦN-XEM-LẠI -->
+      - Article 1. Annulment of some documents and regulations on food safety The documents and regulations below are annulled:  <!-- lvl=4 i=2 sid=body[1]/p[3] src=Structure CẦN-XEM-LẠI -->
+      - Article 2. Amendments to some articles of the Government’s Decree No. 67/2016/ND-CP dated July 01, 2016 on requirements for food manufacturing and trading under specialized management of the Ministry of Health  <!-- lvl=4 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+  - Chapter II FOOD SAFETY REQUIREMENTS FOR FOOD MANUFACTURERS AND SELLERS UNDER MANAGEMENT OF THE MINISTRY OF HEALTH AND THE FOOD AND BEVERAGE ESTABLISHMENTS  <!-- lvl=2 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+      - Article 4. Food manufacturers and sellers under management of the Ministry of Health  <!-- lvl=4 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+      - Article 5. Food and beverage establishments  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+  - Chapter III APPLICATION DOCUMENTS AND PROCEDURES FOR AND AUTHORITY TO ISSUE FOOD SAFETY CERTIFICATES FOR THE FOOD MANUFACTURING FACILITIES UNDER MANAGEMENT OF THE MINISTRY OF HEALTH AND THE FOOD AND BEVERAGE ESTABLISHMENTS  <!-- lvl=2 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - Article 6. Application documents and procedures for and authority to issue the Certificates  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - Article 3. Amendments to some Articles of the Government’s Decree No. 15/2018/ND-CP dated February 02, 2018 providing guidelines on implementation of some articles of the Law on Food Safety.  <!-- lvl=4 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+      - Article 93.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 98.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 100.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 104.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 107.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 110.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 115.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 120.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 123.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 124.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 130.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 131.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 134.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 140.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 5. Amendments to some articles of the Government’s Decree No. 54/2017/ND-CP dated May 08, 2017 providing guidelines for some articles on implementation of the Law on Pharmacy  <!-- lvl=4 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+      - Article 8. Institutions offering refresher training courses in pharmacy  <!-- lvl=4 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+      - Article 51. Procedures for issuance of the Certificate of Eligibility for Pharmacy Business to traders of controlled drugs  <!-- lvl=4 i=30 sid=body[1]/p[31] src=Structure CẦN-XEM-LẠI -->
+      - Article 72. c. The original of the sample of package insert undergoing consular legalization.” c. Clause 5d, Article 76 is amended as follows:  <!-- lvl=4 i=40 sid=body[1]/p[41] src=Structure CẦN-XEM-LẠI -->
+      - Article 87. Composition of the application for licensing import of herbal ingredients in the cases other than those specified in Articles 82 through 86 hereof” b. Clause 1d and 1dd, Article 87 are amended as follows: “d. The foreign provider of herbal ingredients is not required to implement the regulations in clause 15, Article 91 hereof, if it has a certified true copy of the Pharmacy Business License issued and consularly legalized by a competent authority of its home country. dd. Certified true copy of the manufacturer's certificate of GMP issued by the competent authority of their home country."  <!-- lvl=4 i=46 sid=body[1]/p[47] src=Structure CẦN-XEM-LẠI -->
+      - Article 105. Methods of provision of drug information Information shall be provided for medical and pharmaceutical practitioners by using the following methods:  <!-- lvl=4 i=56 sid=body[1]/p[57] src=Structure CẦN-XEM-LẠI -->
+      - Article 107. Cases in which the Certification of Drug Information is required”  <!-- lvl=4 i=56 sid=body[1]/p[57] src=Structure CẦN-XEM-LẠI -->
+      - Article 111. Documents included in the application for issuance of the Certification of Drug Information” b. Clause 2, clause 5 and clause 6, Article 111 are amended as follows: “  <!-- lvl=4 i=56 sid=body[1]/p[57] src=Structure CẦN-XEM-LẠI -->
+      - Article 116. Power to issue the Certification of Drug Information  <!-- lvl=4 i=58 sid=body[1]/p[59] src=Structure CẦN-XEM-LẠI -->
+      - Article 120. Issuance of the Certification of Drug Advertisement Contents”  <!-- lvl=4 i=58 sid=body[1]/p[59] src=Structure CẦN-XEM-LẠI -->
+      - Article 124. Documents included in the application for the Certification of Drug Advertisement Contents" b. Clause 2, clause 5 and clause 6, Article 124 are amended as follows: “  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - Article 127. Procedures for issuance of the Certification of Drug Advertisement Contents  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - Article 128. Power to issue the Certification of Drug Advertisement Contents The Ministry of Health has the power to issue the Certification of Drug Advertisement Contents.”  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - Article 55.  <!-- lvl=4 i=70 sid=body[1]/p[71] src=Structure CẦN-XEM-LẠI -->
+  - Chapter III DONATION, REMOVAL OR TRANSPLANTATION OF HUMAN TISSUES AND ORGANS AND DONATION AND RECOVERY OF CADAVERS  <!-- lvl=2 i=72 sid=body[1]/p[73] src=Structure CẦN-XEM-LẠI -->
+      - Article 6. Annulment of some Articles of the Government’s Decree No. 118/2016/ND-CP dated July 22, 2016 on amendments to some Articles of the Government’s Decree No. 56/2008/ND-CP dated April 29, 2008 on organization and operation of the tissue banks and the National Coordinating Center for Human Organ Transplantation  <!-- lvl=4 i=72 sid=body[1]/p[73] src=Structure CẦN-XEM-LẠI -->
+      - Article 7. Amendments to some Articles of the Government's Decree No. 118/2016/ND-CP dated July 22, 2016 on amendments to some Articles of the Government's Decree No. 56/2008/ND-CP dated April 29, 2008 on organization and operation of the tissue banks and the National Coordinating Center for Human Organ Transplantation  <!-- lvl=4 i=72 sid=body[1]/p[73] src=Structure CẦN-XEM-LẠI -->
+      - Article 4. Application and procedures for issuance of the Operating License to tissue banks  <!-- lvl=4 i=74 sid=body[1]/p[75] src=Structure CẦN-XEM-LẠI -->
+  - Chapter IV INSECTICIDAL AND GERMICIDAL CHEMICALS AND PREPARATIONS FOR HOUSEHOLD AND MEDICAL USE  <!-- lvl=2 i=76 sid=body[1]/p[77] src=Structure CẦN-XEM-LẠI -->
+      - Article 12. Declaration of eligibility to conduct testing  <!-- lvl=4 i=80 sid=body[1]/p[81] src=Structure CẦN-XEM-LẠI -->
+      - Article 16. Declaration of eligibility to conduct experiment activities  <!-- lvl=4 i=82 sid=body[1]/p[83] src=Structure CẦN-XEM-LẠI -->
+      - Article 7. Application documents for modification of practice certificates  <!-- lvl=4 i=88 sid=body[1]/p[89] src=Structure CẦN-XEM-LẠI -->
+      - Article 22. Forms of organization of health facilities The health facilities must be established in accordance with the law and must conform to one of the following forms of organization:  <!-- lvl=4 i=88 sid=body[1]/p[89] src=Structure CẦN-XEM-LẠI -->
+      - Article 23. Requirements for issuance of the operating licenses to the hospitals  <!-- lvl=4 i=98 sid=body[1]/p[99] src=Structure CẦN-XEM-LẠI -->
+      - Article 24. Requirements for issuance of operating licenses to infirmaries affiliated to People’s Police Force Aside from the requirements specified in Article 23a hereof, the infirmaries affiliated to People’s Police Force must also satisfy the following requirements:  <!-- lvl=4 i=102 sid=body[1]/p[103] src=Structure CẦN-XEM-LẠI -->
+      - Article 25. Requirements for issuance of the operating license to polyclinics Aside from the requirements specified in Article 23a hereof, the polyclinics must also satisfy the following requirements:  <!-- lvl=4 i=102 sid=body[1]/p[103] src=Structure CẦN-XEM-LẠI -->
+      - Article 26. Requirements for issuance of operating licenses to specialized clinics Aside from the requirements specified in Article 23a hereof and except those applied to the chief physicians, the specialized clinics must also satisfy the following requirements:  <!-- lvl=4 i=104 sid=body[1]/p[105] src=Structure CẦN-XEM-LẠI -->
+      - Article 30. Requirements for issuance of operating licenses to maternity wards  <!-- lvl=4 i=104 sid=body[1]/p[105] src=Structure CẦN-XEM-LẠI -->
+      - Article 33. Requirements for issuance of operating licenses for healthcare service providers  <!-- lvl=4 i=106 sid=body[1]/p[107] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VI COSMETIC PRODUCTS  <!-- lvl=2 i=112 sid=body[1]/p[113] src=Structure CẦN-XEM-LẠI -->
+      - Article 12. Annulment of some documents and regulations on cosmetic products  <!-- lvl=4 i=112 sid=body[1]/p[113] src=Structure CẦN-XEM-LẠI -->
+      - Article 3. b. Clause 3c and 3e,  <!-- lvl=4 i=112 sid=body[1]/p[113] src=Structure CẦN-XEM-LẠI -->
+      - Article 4. c. Clause 1d,  <!-- lvl=4 i=112 sid=body[1]/p[113] src=Structure CẦN-XEM-LẠI -->
+      - Article 7.  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 4. b. Clause 1b, 1d and 1g of  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 34. c. Clause 1,  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 13. Amendments to clause 3a, Article 4 of the Government's Decree No. 93/2016/ND-CP dated July 01, 2016 on requirements for the manufacture of cosmetic products “a. Raw materials, auxiliary materials and semi-finished products which are used to manufacture cosmetic products must satisfy the quality standards adopted by the manufacturer.”  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VII PREVENTION AND CONTROL OF COMMUNICABLE DISEASES  <!-- lvl=2 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 14. Annulment to some Articles on prevention and control of communicable diseases  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 2. b. Clause 1d,  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 4. c. Clause 1a, 1c, 1d, 1dd and 1e of  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 5.s d. Clause 2b and 2c,  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 5. dd. Clause 3b and 3d,  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 5. e. Clause 4b, 4c, 4dd, 4e and 4g,  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 5. g. Clause 2c,  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 6. h. Clause 4b,  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 6. Clause 1dd,  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 8. m. Clause 1d, 1e, 1h,  <!-- lvl=4 i=116 sid=body[1]/p[117] src=Structure CẦN-XEM-LẠI -->
+      - Article 11. n. Clause 4b,  <!-- lvl=4 i=116 sid=body[1]/p[117] src=Structure CẦN-XEM-LẠI -->
+      - Article 11.  <!-- lvl=4 i=116 sid=body[1]/p[117] src=Structure CẦN-XEM-LẠI -->
+      - Article 8. b. Clause 1b, 1c, 1d, 1dd and 1e,  <!-- lvl=4 i=116 sid=body[1]/p[117] src=Structure CẦN-XEM-LẠI -->
+      - Article 9. c. Clause 2b and 2d,  <!-- lvl=4 i=116 sid=body[1]/p[117] src=Structure CẦN-XEM-LẠI -->
+      - Article 9. d. Clause 1b,  <!-- lvl=4 i=116 sid=body[1]/p[117] src=Structure CẦN-XEM-LẠI -->
+      - Article 10.  <!-- lvl=4 i=116 sid=body[1]/p[117] src=Structure CẦN-XEM-LẠI -->
+      - Article 15. Amendments to some Articles on prevention and control of communicable diseases  <!-- lvl=4 i=116 sid=body[1]/p[117] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VIII PREVENTION AND CONTROL OF HIV/AIDS  <!-- lvl=2 i=122 sid=body[1]/p[123] src=Structure CẦN-XEM-LẠI -->
+      - Article 16. Annulment of some Articles on prevention and control of HIV/AIDS  <!-- lvl=4 i=122 sid=body[1]/p[123] src=Structure CẦN-XEM-LẠI -->
+      - Article 3. b. Clause 1b,  <!-- lvl=4 i=124 sid=body[1]/p[125] src=Structure CẦN-XEM-LẠI -->
+      - Article 5. c. Clause 2b,  <!-- lvl=4 i=124 sid=body[1]/p[125] src=Structure CẦN-XEM-LẠI -->
+      - Article 5.  <!-- lvl=4 i=124 sid=body[1]/p[125] src=Structure CẦN-XEM-LẠI -->
+      - Article 12. b. Subpoints 6 and 7, Clause 2a,  <!-- lvl=4 i=124 sid=body[1]/p[125] src=Structure CẦN-XEM-LẠI -->
+      - Article 12. c. The sentence "The quantity of full-time employees must reach 75% or above of the total quantity of employees within the establishment" specified in Clause 3h,  <!-- lvl=4 i=124 sid=body[1]/p[125] src=Structure CẦN-XEM-LẠI -->
+      - Article 12. d. Clause 1b,  <!-- lvl=4 i=124 sid=body[1]/p[125] src=Structure CẦN-XEM-LẠI -->
+      - Article 13.  <!-- lvl=4 i=124 sid=body[1]/p[125] src=Structure CẦN-XEM-LẠI -->
+      - Article 17. Amendments to some Articles of the Government's Decree No. 75/2016/ND-CP dated July 01, 2016 on conditions for HIV testing  <!-- lvl=4 i=124 sid=body[1]/p[125] src=Structure CẦN-XEM-LẠI -->
+  - Chapter IX REPRODUCTIVE HEALTH  <!-- lvl=2 i=126 sid=body[1]/p[127] src=Structure CẦN-XEM-LẠI -->
+      - Article 18. Annulment of some Articles on reproductive health  <!-- lvl=4 i=126 sid=body[1]/p[127] src=Structure CẦN-XEM-LẠI -->
+      - Article 19. Amendments to some Articles on reproductive health  <!-- lvl=4 i=128 sid=body[1]/p[129] src=Structure CẦN-XEM-LẠI -->
+      - Article 8. Requirements for health facilities to be licensed to conduct medical intervention for sex reassignment A health facility will be licensed to conduct medical intervention for sex reassignment if it satisfies the following requirements:  <!-- lvl=4 i=128 sid=body[1]/p[129] src=Structure CẦN-XEM-LẠI -->
+  - Chapter X IMPLEMENTATION  <!-- lvl=2 i=130 sid=body[1]/p[131] src=Structure CẦN-XEM-LẠI -->
+      - Article 20. Entry into force This Decree shall take effect from the date of signing.  <!-- lvl=4 i=130 sid=body[1]/p[131] src=Structure CẦN-XEM-LẠI -->
+      - Article 21. Transitional provisions  <!-- lvl=4 i=130 sid=body[1]/p[131] src=Structure CẦN-XEM-LẠI -->
+      - Article 22. Implementation responsibilities The Ministers and Heads of ministerial agencies, Heads of governmental agencies, Chairpersons of the People’s Committees of provinces and central-affiliated cities shall implement this Decree./. PP. THE GOVERNMENT PRIME MINISTER Nguyen Xuan Phuc ------------------------------------------------------------------------------------------------------ This translation is made by LawSoft and for reference purposes only. Its copyright is owned by LawSoft and protected under Clause 2, Article 14 of the Law on Intellectual Property.Your comments are always welcomed  <!-- lvl=4 i=134 sid=body[1]/p[135] src=Structure CẦN-XEM-LẠI -->
+
+> 96 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

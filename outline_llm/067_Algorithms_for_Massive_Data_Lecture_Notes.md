@@ -1,0 +1,69 @@
+# Cấu trúc: 067_Algorithms_for_Massive_Data_Lecture_Notes.docx
+
+  - 1.1 Full-text indexing - classical solutions  <!-- lvl=2 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+  - 1.1.1 Inverted indexes and suffix trie  <!-- lvl=2 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+  - 1.1.2 Suffix tree  <!-- lvl=2 i=13 sid=body[1]/p[14] src=Structure CẦN-XEM-LẠI -->
+- 6 a b $ a  <!-- lvl=1 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+  - 1.1.3 Suffix array  <!-- lvl=2 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+  - 1.2.1 Worst-case entropy  <!-- lvl=2 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+  - 1.2.2 Prefix-free codes  <!-- lvl=2 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+  - 1.2.3 Zero-order empirical entropy  <!-- lvl=2 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+  - 1.2.4 High-order empirical entropy  <!-- lvl=2 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+  - 1.3 Zero-order compressed bitvectors  <!-- lvl=2 i=27 sid=body[1]/p[28] src=Structure CẦN-XEM-LẠI -->
+  - 1.3.1 Random access in n bits  <!-- lvl=2 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+  - 1.3.2 Encoding a bitvector in nH0 + o(n) bits  <!-- lvl=2 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+  - 1.3.3 Random access and rank in nH0 + o(n) bits  <!-- lvl=2 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+  - 1.4 Sets of integers - the Elias-Fano data structure  <!-- lvl=2 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+  - 1.5 The compressed suffix array (CSA  <!-- lvl=2 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+  - 1.5.1 Compressing F and ψ and counting patterns  <!-- lvl=2 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+  - 1.5.2 Locating patterns and extracting substrings  <!-- lvl=2 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+  - 1.6 The FM-index  <!-- lvl=2 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+  - 1.6.2 The Burrows-Wheeler Transform: BWT  <!-- lvl=2 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+  - 1.6.3 FM-index = WT(BWT  <!-- lvl=2 i=71 sid=body[1]/p[72] src=Structure CẦN-XEM-LẠI -->
+  - 2.1 Random variables  <!-- lvl=2 i=81 sid=body[1]/p[82] src=Structure CẦN-XEM-LẠI -->
+  - 2.1.3 Expected value and variance  <!-- lvl=2 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+  - 2.1.4 Bernoullian R.V.s  <!-- lvl=2 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+  - 2.2 Concentration inequalities  <!-- lvl=2 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+  - 2.2.3 Chernoff-Hoeffding’s inequalities  <!-- lvl=2 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+  - 2.2.4 Combining bounds: the mean and median tricks  <!-- lvl=2 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+  - 2.3 Hashing  <!-- lvl=2 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+  - 2.3.1 k-wise independent hashing  <!-- lvl=2 i=103 sid=body[1]/p[104] src=Structure CẦN-XEM-LẠI -->
+  - 2.3.3 Perfect hashing  <!-- lvl=2 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+  - 2.3.5 Hash tables  <!-- lvl=2 i=109 sid=body[1]/p[110] src=Structure CẦN-XEM-LẠI -->
+  - 3.1 Bloom filters  <!-- lvl=2 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+  - 3.1.1 The data structure  <!-- lvl=2 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+  - 3.1.2 Analysis  <!-- lvl=2 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+  - 3.2 Counting Bloom filters  <!-- lvl=2 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+  - 3.3 Quotient filters  <!-- lvl=2 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+  - 3.3.2 Reducing the space  <!-- lvl=2 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+  - 3.3.3 Analysis  <!-- lvl=2 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+  - 4.1 Introduction to sketching  <!-- lvl=2 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+  - 4.2 Identity - Rabin’s hash function (polynomial hashing  <!-- lvl=2 i=139 sid=body[1]/p[140] src=Structure CẦN-XEM-LẠI -->
+  - 4.3 Metrics  <!-- lvl=2 i=141 sid=body[1]/p[142] src=Structure CẦN-XEM-LẠI -->
+  - 4.4 Hamming distance  <!-- lvl=2 i=143 sid=body[1]/p[144] src=Structure CẦN-XEM-LẠI -->
+  - 4.5 Jaccard similarity - MinHash  <!-- lvl=2 i=145 sid=body[1]/p[146] src=Structure CẦN-XEM-LẠI -->
+  - 4.5.1 Min-wise independent permutations  <!-- lvl=2 i=147 sid=body[1]/p[148] src=Structure CẦN-XEM-LẠI -->
+  - 4.5.2 Reducing the variance  <!-- lvl=2 i=149 sid=body[1]/p[150] src=Structure CẦN-XEM-LẠI -->
+  - 4.6 Locality-sensitive hashing (LSH  <!-- lvl=2 i=151 sid=body[1]/p[152] src=Structure CẦN-XEM-LẠI -->
+  - 4.6.2 LSH for Jaccard distance  <!-- lvl=2 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+  - 4.6.3 Nearest neighbour search  <!-- lvl=2 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+  - 4.7 Introduction to streaming algorithms  <!-- lvl=2 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+  - 4.8.1 Karp-Rabin’s algorithm  <!-- lvl=2 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+  - 4.8.3 Extension to approximate pattern matching  <!-- lvl=2 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+  - 4.9 Counting ones in a window: Datar-Gionis-Indyk-Motwani’s  <!-- lvl=2 i=181 sid=body[1]/p[182] src=Structure CẦN-XEM-LẠI -->
+  - 4.9.1 Updates  <!-- lvl=2 i=183 sid=body[1]/p[184] src=Structure CẦN-XEM-LẠI -->
+  - 4.9.3 Approximation ratio  <!-- lvl=2 i=185 sid=body[1]/p[186] src=Structure CẦN-XEM-LẠI -->
+  - 4.9.4 Generalization: sum of integers  <!-- lvl=2 i=187 sid=body[1]/p[188] src=Structure CẦN-XEM-LẠI -->
+  - 4.10.1 Sampling  <!-- lvl=2 i=189 sid=body[1]/p[190] src=Structure CẦN-XEM-LẠI -->
+  - 4.10.2 Count-Min sketch  <!-- lvl=2 i=191 sid=body[1]/p[192] src=Structure CẦN-XEM-LẠI -->
+  - 4.10.3 Misra-Gries sketch  <!-- lvl=2 i=193 sid=body[1]/p[194] src=Structure CẦN-XEM-LẠI -->
+  - 4.11 Estimating F0 (counting distinct elements  <!-- lvl=2 i=195 sid=body[1]/p[196] src=Structure CẦN-XEM-LẠI -->
+  - 4.11.2 Flajolet-Martin’s algorithm  <!-- lvl=2 i=197 sid=body[1]/p[198] src=Structure CẦN-XEM-LẠI -->
+  - 4.11.3 Bottom-k algorithm  <!-- lvl=2 i=203 sid=body[1]/p[204] src=Structure CẦN-XEM-LẠI -->
+  - 4.11.4 The LogLog family of count-distinct algorithms  <!-- lvl=2 i=209 sid=body[1]/p[210] src=Structure CẦN-XEM-LẠI -->
+  - 4.12.1 Morris’ algorithm  <!-- lvl=2 i=211 sid=body[1]/p[212] src=Structure CẦN-XEM-LẠI -->
+  - 4.13 Estimating F2  <!-- lvl=2 i=215 sid=body[1]/p[216] src=Structure CẦN-XEM-LẠI -->
+  - 4.13.2 Dimensionality reduction  <!-- lvl=2 i=219 sid=body[1]/p[220] src=Structure CẦN-XEM-LẠI -->
+  - 4.13.3 Sketches for relational algebra (SQL  <!-- lvl=2 i=223 sid=body[1]/p[224] src=Structure CẦN-XEM-LẠI -->
+
+> 65 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

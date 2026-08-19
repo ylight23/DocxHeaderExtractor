@@ -1,0 +1,247 @@
+# Cấu trúc: 085_Luat_Nha_o_2023_EN.docx
+
+  - Chapter I GENERAL PROVISIONS  <!-- lvl=2 i=2 sid=body[1]/p[3] src=Structure CẦN-XEM-LẠI -->
+      - Article 1. Scope of regulation  <!-- lvl=4 i=2 sid=body[1]/p[3] src=Structure CẦN-XEM-LẠI -->
+      - Article 2. Interpretation of terms In this Law, the terms and expressions below are construed as follows:  <!-- lvl=4 i=2 sid=body[1]/p[3] src=Structure CẦN-XEM-LẠI -->
+      - Article 3. Prohibited acts ie tn Lu atV  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - Article 4. Housing development, management and use policies  <!-- lvl=4 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+      - Article 5. General requirements on housing development, management and use  <!-- lvl=4 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+  - Chapter II HOUSE OWNERSHIP  <!-- lvl=2 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+    - Section 1 GENERAL PROVISIONS ON HOUSE OWNERSHIP  <!-- lvl=3 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 6. The right to have a residence and the right to own houses  <!-- lvl=4 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 7. Protection of house ownership  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 8. Subjects and conditions for owning houses in Vietnam  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 9. Recognition of house ownership  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 10. Rights of house owners and house users  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+      - Article 11. Obligations of house owners and house users ie tn  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 12. Time of determination of house ownership Lu  <!-- lvl=4 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+    - Section 2 HOUSES BEING PUBLIC PROPERTY  <!-- lvl=3 i=22 sid=body[1]/p[23] src=Structure CẦN-XEM-LẠI -->
+      - Article 13. Houses being public property  <!-- lvl=4 i=22 sid=body[1]/p[23] src=Structure CẦN-XEM-LẠI -->
+      - Article 14. Representatives of owners of houses being public property  <!-- lvl=4 i=22 sid=body[1]/p[23] src=Structure CẦN-XEM-LẠI -->
+      - Article 15. Responsibilities of ownership representatives of houses being public property  <!-- lvl=4 i=24 sid=body[1]/p[25] src=Structure CẦN-XEM-LẠI -->
+      - Article 16. Areas where foreign organizations and individuals are eligible to own Vietnam-based houses  <!-- lvl=4 i=26 sid=body[1]/p[27] src=Structure CẦN-XEM-LẠI -->
+      - Article 17. Foreign organizations and individuals eligible to own Vietnam- based houses and forms of Vietnam-based house ownership .v n  <!-- lvl=4 i=26 sid=body[1]/p[27] src=Structure CẦN-XEM-LẠI -->
+      - Article 18. Conditions for foreign organizations and individuals to own 13  <!-- lvl=4 i=26 sid=body[1]/p[27] src=Structure CẦN-XEM-LẠI -->
+      - Article 19. Number of Vietnam-based houses that foreign organizations and individuals are entitled to own  <!-- lvl=4 i=28 sid=body[1]/p[29] src=Structure CẦN-XEM-LẠI -->
+      - Article 20. Rights of house owners being foreign organizations and individuals  <!-- lvl=4 i=28 sid=body[1]/p[29] src=Structure CẦN-XEM-LẠI -->
+      - Article 21. Obligations of house owners being foreign organizations and individuals  <!-- lvl=4 i=30 sid=body[1]/p[31] src=Structure CẦN-XEM-LẠI -->
+      - Article 22. Cases in which foreign organizations and individuals are not granted certificates for houses  <!-- lvl=4 i=32 sid=body[1]/p[33] src=Structure CẦN-XEM-LẠI -->
+    - Section 1 NATIONAL HOUSING DEVELOPMENT STRATEGIES  <!-- lvl=3 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+      - Article 23. Grounds for formulation of national housing development strategies  <!-- lvl=4 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+      - Article 24. Contents of the National Housing Development Strategy .v n contents: e tn am The national housing development strategy must have the following main i Lu atV  <!-- lvl=4 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+      - Article 25. The national housing development strategy’s period and approval authority 17  <!-- lvl=4 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+    - Section 2 PROVINCIAL-LEVEL HOUSING DEVELOPMENT PROGRAMS AND PLANS .v n ie tn am  <!-- lvl=3 i=36 sid=body[1]/p[37] src=Structure CẦN-XEM-LẠI -->
+      - Article 26. Grounds for formulation and period of provincial-level housing development programs and plans Lu atV  <!-- lvl=4 i=36 sid=body[1]/p[37] src=Structure CẦN-XEM-LẠI -->
+      - Article 27. Contents of provincial-level housing development programs and plans  <!-- lvl=4 i=38 sid=body[1]/p[39] src=Structure CẦN-XEM-LẠI -->
+      - Article 28. Adjustments to provincial-level housing development programs and plans  <!-- lvl=4 i=40 sid=body[1]/p[41] src=Structure CẦN-XEM-LẠI -->
+      - Article 29. Development and approval of provincial-level housing development programs and plans  <!-- lvl=4 i=42 sid=body[1]/p[43] src=Structure CẦN-XEM-LẠI -->
+  - Chapter IV HOUSING DEVELOPMENT  <!-- lvl=2 i=42 sid=body[1]/p[43] src=Structure CẦN-XEM-LẠI -->
+    - Section 1 GENERAL PROVISIONS  <!-- lvl=3 i=42 sid=body[1]/p[43] src=Structure CẦN-XEM-LẠI -->
+      - Article 30. Forms of housing development  <!-- lvl=4 i=42 sid=body[1]/p[43] src=Structure CẦN-XEM-LẠI -->
+      - Article 31. Types of houses developed under housing investment projects and housing area standards  <!-- lvl=4 i=44 sid=body[1]/p[45] src=Structure CẦN-XEM-LẠI -->
+      - Article 32. Land areas for housing development  <!-- lvl=4 i=44 sid=body[1]/p[45] src=Structure CẦN-XEM-LẠI -->
+      - Article 33. Requirements on housing investment projects  <!-- lvl=4 i=46 sid=body[1]/p[47] src=Structure CẦN-XEM-LẠI -->
+      - Article 34. Phases of housing investment projects  <!-- lvl=4 i=48 sid=body[1]/p[49] src=Structure CẦN-XEM-LẠI -->
+      - Article 35. Housing investment project owners and conditions for being housing investment project owners  <!-- lvl=4 i=48 sid=body[1]/p[49] src=Structure CẦN-XEM-LẠI -->
+      - Article 36. Owners of commercial housing investment projects  <!-- lvl=4 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+      - Article 37. Implementation of commercial housing investment projects  <!-- lvl=4 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+      - Article 38. Rights of owners of commercial housing investment projects  <!-- lvl=4 i=52 sid=body[1]/p[53] src=Structure CẦN-XEM-LẠI -->
+      - Article 39. Obligations of owners of commercial housing investment projects  <!-- lvl=4 i=54 sid=body[1]/p[55] src=Structure CẦN-XEM-LẠI -->
+    - Section 3 DEVELOPMENT OF OFFICIAL-DUTY HOUSES  <!-- lvl=3 i=56 sid=body[1]/p[57] src=Structure CẦN-XEM-LẠI -->
+      - Article 40. Land areas for construction of official-duty houses  <!-- lvl=4 i=56 sid=body[1]/p[57] src=Structure CẦN-XEM-LẠI -->
+      - Article 41. Forms and plans for official-duty housing development  <!-- lvl=4 i=56 sid=body[1]/p[57] src=Structure CẦN-XEM-LẠI -->
+      - Article 42. Decisions on investment policies, decisions on investment, and decisions on owners of official-duty housing investment projects  <!-- lvl=4 i=58 sid=body[1]/p[59] src=Structure CẦN-XEM-LẠI -->
+      - Article 43. Purchase or rent of commercial houses for use as official-duty houses  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - Article 44. Types and area standards of official-duty houses  <!-- lvl=4 i=62 sid=body[1]/p[63] src=Structure CẦN-XEM-LẠI -->
+      - Article 45. Persons eligible and conditions for rent of official-duty houses  <!-- lvl=4 i=62 sid=body[1]/p[63] src=Structure CẦN-XEM-LẠI -->
+      - Article 46. Principles of determination of official-duty house rental rates 32  <!-- lvl=4 i=64 sid=body[1]/p[65] src=Structure CẦN-XEM-LẠI -->
+      - Article 47. Rights and obligations of official-duty house lessees  <!-- lvl=4 i=66 sid=body[1]/p[67] src=Structure CẦN-XEM-LẠI -->
+    - Section 4 DEVELOPMENT OF HOUSES FOR RESETTLEMENT  <!-- lvl=3 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+      - Article 48. Arrangement of resettlement houses  <!-- lvl=4 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+      - Article 49. Principles of development of houses for resettlement  <!-- lvl=4 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+      - Article 50. Land areas for implementation of projects on construction of houses for resettlement  <!-- lvl=4 i=70 sid=body[1]/p[71] src=Structure CẦN-XEM-LẠI -->
+      - Article 51. Owners of projects on construction of houses for resettlement  <!-- lvl=4 i=70 sid=body[1]/p[71] src=Structure CẦN-XEM-LẠI -->
+      - Article 52. Ordering or purchase of commercial houses and arrangement of social houses for resettlement  <!-- lvl=4 i=72 sid=body[1]/p[73] src=Structure CẦN-XEM-LẠI -->
+      - Article 53. Requirements for houses for resettlement  <!-- lvl=4 i=74 sid=body[1]/p[75] src=Structure CẦN-XEM-LẠI -->
+    - Section 5 DEVELOPMENT OF HOUSES OF INDIVIDUALS  <!-- lvl=3 i=74 sid=body[1]/p[75] src=Structure CẦN-XEM-LẠI -->
+      - Article 54. Requirements for development of houses of individuals  <!-- lvl=4 i=74 sid=body[1]/p[75] src=Structure CẦN-XEM-LẠI -->
+      - Article 55. Methods of development of houses of individuals  <!-- lvl=4 i=76 sid=body[1]/p[77] src=Structure CẦN-XEM-LẠI -->
+      - Article 56. Responsibilities of individuals for housing development  <!-- lvl=4 i=76 sid=body[1]/p[77] src=Structure CẦN-XEM-LẠI -->
+      - Article 57. Development of multi-story houses with multiple apartments by individuals for sale, lease-purchase, or lease  <!-- lvl=4 i=78 sid=body[1]/p[79] src=Structure CẦN-XEM-LẠI -->
+  - Chapter V RENOVATION OR RECONSTRUCTION OF CONDOMINIUMS  <!-- lvl=2 i=80 sid=body[1]/p[81] src=Structure CẦN-XEM-LẠI -->
+    - Section 1 GENERAL PROVISIONS  <!-- lvl=3 i=80 sid=body[1]/p[81] src=Structure CẦN-XEM-LẠI -->
+      - Article 58. Useful life of condominiums  <!-- lvl=4 i=80 sid=body[1]/p[81] src=Structure CẦN-XEM-LẠI -->
+      - Article 59. Condominiums subject to demolition  <!-- lvl=4 i=80 sid=body[1]/p[81] src=Structure CẦN-XEM-LẠI -->
+      - Article 60. Principles of renovation or reconstruction of condominiums  <!-- lvl=4 i=82 sid=body[1]/p[83] src=Structure CẦN-XEM-LẠI -->
+      - Article 61. Inspection and evaluation of the quality of condominiums  <!-- lvl=4 i=86 sid=body[1]/p[87] src=Structure CẦN-XEM-LẠI -->
+      - Article 62. Forms of renovation or reconstruction of condominiums  <!-- lvl=4 i=88 sid=body[1]/p[89] src=Structure CẦN-XEM-LẠI -->
+      - Article 63. Preferential mechanisms for implementation of condominium renovation or reconstruction projects  <!-- lvl=4 i=88 sid=body[1]/p[89] src=Structure CẦN-XEM-LẠI -->
+    - Section 2 .v n ie tn CONDOMINIUM RENOVATION OR RECONSTRUCTION MASTER PLANSam Lu atV AND DETAILED PLANS  <!-- lvl=3 i=90 sid=body[1]/p[91] src=Structure CẦN-XEM-LẠI -->
+      - Article 64. Requirements for condominium renovation or reconstruction master plans  <!-- lvl=4 i=90 sid=body[1]/p[91] src=Structure CẦN-XEM-LẠI -->
+      - Article 65. Requirements for condominium renovation or reconstruction plans  <!-- lvl=4 i=92 sid=body[1]/p[93] src=Structure CẦN-XEM-LẠI -->
+      - Article 66. Details of condominium renovation or reconstruction plans A condominium renovation or reconstruction plan shall contain the following main details:  <!-- lvl=4 i=92 sid=body[1]/p[93] src=Structure CẦN-XEM-LẠI -->
+    - Section 3 DECISION ON INVESTMENT POLICIES AND APPROVAL OF INVESTMENT POLICIES, OWNERS OF CONDOMINIUM RENOVATION AND RECONSTRUCTION PROJECTS  <!-- lvl=3 i=94 sid=body[1]/p[95] src=Structure CẦN-XEM-LẠI -->
+      - Article 67. Decision on and approval of investment policies  <!-- lvl=4 i=94 sid=body[1]/p[95] src=Structure CẦN-XEM-LẠI -->
+      - Article 68. Owners of condominium renovation or reconstruction projects  <!-- lvl=4 i=94 sid=body[1]/p[95] src=Structure CẦN-XEM-LẠI -->
+      - Article 69. Dossiers, process and procedures for approval of owners of condominium renovation or reconstruction projects  <!-- lvl=4 i=96 sid=body[1]/p[97] src=Structure CẦN-XEM-LẠI -->
+    - Section 4 COMPENSATION AND RESETTLEMENT PLANS  <!-- lvl=3 i=100 sid=body[1]/p[101] src=Structure CẦN-XEM-LẠI -->
+      - Article 70. Principles for making compensation and resettlement plans  <!-- lvl=4 i=100 sid=body[1]/p[101] src=Structure CẦN-XEM-LẠI -->
+      - Article 71. Details and authority to approve compensation and resettlement plans  <!-- lvl=4 i=104 sid=body[1]/p[105] src=Structure CẦN-XEM-LẠI -->
+      - Article 72. Arrangement of houses for resettlement and temporary residences  <!-- lvl=4 i=106 sid=body[1]/p[107] src=Structure CẦN-XEM-LẠI -->
+    - Section 5 RELOCATION, COERCIVE RELOCATION AND DEMOLITION OF CONDOMINIUMS  <!-- lvl=3 i=108 sid=body[1]/p[109] src=Structure CẦN-XEM-LẠI -->
+      - Article 73. Relocation of condominium owners and users .v n am  <!-- lvl=4 i=108 sid=body[1]/p[109] src=Structure CẦN-XEM-LẠI -->
+      - Article 74. Coercive relocation of condominium owners and users  <!-- lvl=4 i=110 sid=body[1]/p[111] src=Structure CẦN-XEM-LẠI -->
+      - Article 75. Demolition of condominiums  <!-- lvl=4 i=112 sid=body[1]/p[113] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VI POLICIES ON SOCIAL HOUSES  <!-- lvl=2 i=112 sid=body[1]/p[113] src=Structure CẦN-XEM-LẠI -->
+    - Section 1 GENERAL PROVISIONS 56  <!-- lvl=3 i=112 sid=body[1]/p[113] src=Structure CẦN-XEM-LẠI -->
+      - Article 76. Beneficiaries entitled to social housing support policies  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 77. Forms of implementation of social housing support policies  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 78. Conditions for enjoying social housing support policies  <!-- lvl=4 i=116 sid=body[1]/p[117] src=Structure CẦN-XEM-LẠI -->
+      - Article 79. Principles of implementation of social housing support policies  <!-- lvl=4 i=120 sid=body[1]/p[121] src=Structure CẦN-XEM-LẠI -->
+    - Section 2 DEVELOPMENT OF SOCIAL HOUSES FOR SALE, LEASE-PURCHASE, OR LEASE  <!-- lvl=3 i=120 sid=body[1]/p[121] src=Structure CẦN-XEM-LẠI -->
+      - Article 80. Forms of development of social houses  <!-- lvl=4 i=120 sid=body[1]/p[121] src=Structure CẦN-XEM-LẠI -->
+      - Article 81. Types of project and requirements on social housing investment projects  <!-- lvl=4 i=122 sid=body[1]/p[123] src=Structure CẦN-XEM-LẠI -->
+      - Article 83 Lu atV of this Law and meet the requirements prescribed in Article 33 of this Law. Social houses shall be handed over in accordance with Clauses 3 and 4, Article 37 of this Law.  <!-- lvl=4 i=122 sid=body[1]/p[123] src=Structure CẦN-XEM-LẠI -->
+      - Article 82. Types and area standards of social houses  <!-- lvl=4 i=122 sid=body[1]/p[123] src=Structure CẦN-XEM-LẠI -->
+      - Article 83. Land for development of social houses  <!-- lvl=4 i=124 sid=body[1]/p[125] src=Structure CẦN-XEM-LẠI -->
+      - Article 84. Owners of social housing investment projects  <!-- lvl=4 i=126 sid=body[1]/p[127] src=Structure CẦN-XEM-LẠI -->
+      - Article 85. Incentives for owners of social housing investment projects for sale, lease-purchase, or lease  <!-- lvl=4 i=128 sid=body[1]/p[129] src=Structure CẦN-XEM-LẠI -->
+      - Article 86. Determination of rental rates and rent-purchase prices of social houses invested with public investments or trade union’s financial resources  <!-- lvl=4 i=130 sid=body[1]/p[131] src=Structure CẦN-XEM-LẠI -->
+      - Article 87. Determination of selling prices, rent-purchase prices, and rental rates of social houses invested not with public investments or trade union’s financial resources  <!-- lvl=4 i=132 sid=body[1]/p[133] src=Structure CẦN-XEM-LẠI -->
+      - Article 88. Principles of sale, lease-purchase and lease of social houses 66  <!-- lvl=4 i=132 sid=body[1]/p[133] src=Structure CẦN-XEM-LẠI -->
+      - Article 89. Sale, lease-purchase, lease of social houses  <!-- lvl=4 i=136 sid=body[1]/p[137] src=Structure CẦN-XEM-LẠI -->
+      - Article 90. Operation management of social houses  <!-- lvl=4 i=140 sid=body[1]/p[141] src=Structure CẦN-XEM-LẠI -->
+    - Section 3 DEVELOPMENT OF WORKER ACCOMMODATIONS IN INDUSTRIAL PARKS  <!-- lvl=3 i=140 sid=body[1]/p[141] src=Structure CẦN-XEM-LẠI -->
+      - Article 91. Beneficiaries of accommodation support policies for workers in industrial parks  <!-- lvl=4 i=140 sid=body[1]/p[141] src=Structure CẦN-XEM-LẠI -->
+      - Article 92. Forms of development of worker accommodations in industrial parks  <!-- lvl=4 i=142 sid=body[1]/p[143] src=Structure CẦN-XEM-LẠI -->
+      - Article 93. Conditions for workers in industrial parks to rent accommodations  <!-- lvl=4 i=142 sid=body[1]/p[143] src=Structure CẦN-XEM-LẠI -->
+      - Article 94. Planning and allocation of land for development of worker accommodations in industrial parks  <!-- lvl=4 i=142 sid=body[1]/p[143] src=Structure CẦN-XEM-LẠI -->
+      - Article 95. Types and requirements for investment projects in construction of worker accommodations in industrial parks  <!-- lvl=4 i=144 sid=body[1]/p[145] src=Structure CẦN-XEM-LẠI -->
+      - Article 96. Types, design and construction standards of worker accommodations in industrial parks  <!-- lvl=4 i=144 sid=body[1]/p[145] src=Structure CẦN-XEM-LẠI -->
+      - Article 97. Owners of investment projects in construction of worker accommodations in industrial parks  <!-- lvl=4 i=144 sid=body[1]/p[145] src=Structure CẦN-XEM-LẠI -->
+      - Article 98. Incentives for owners of investment projects in construction of worker accommodations in industrial parks and enterprises, cooperatives, and unions of cooperatives renting accommodations in industrial parks to sublet them to their workers  <!-- lvl=4 i=146 sid=body[1]/p[147] src=Structure CẦN-XEM-LẠI -->
+      - Article 99. Rent rates of worker accommodations in industrial parks ie tn The rent rates for worker accommodations in industrial parks shall be agreed Lu atV upon by the lessors and the lessees according to the price frames prescribed by the provincial-level People's Committees.  <!-- lvl=4 i=146 sid=body[1]/p[147] src=Structure CẦN-XEM-LẠI -->
+      - Article 100. Principles for lease and operation management of worker accommodations in industrial parks  <!-- lvl=4 i=146 sid=body[1]/p[147] src=Structure CẦN-XEM-LẠI -->
+    - Section 4 HOUSING DEVELOPMENT FOR THE PEOPLE’S ARMED FORCES  <!-- lvl=3 i=148 sid=body[1]/p[149] src=Structure CẦN-XEM-LẠI -->
+      - Article 101. Beneficiaries of housing support policies for the people's armed forces  <!-- lvl=4 i=148 sid=body[1]/p[149] src=Structure CẦN-XEM-LẠI -->
+      - Article 102. Housing development for the people’s armed forces The Ministry of National Defense and the Ministry of Public Security are responsible for determining housing demand for the beneficiaries prescribed in Clause 7, Article 76 of this Law under their management and sending the results to the provincial-level People's Committees for them to incorporate into the provincial-level housing development plans.  <!-- lvl=4 i=148 sid=body[1]/p[149] src=Structure CẦN-XEM-LẠI -->
+      - Article 103. Forms of housing development for the people’s armed forces .v n ie tn am  <!-- lvl=4 i=148 sid=body[1]/p[149] src=Structure CẦN-XEM-LẠI -->
+      - Article 104. Land for housing development for the people’s armed forces The allocation of land for housing development for the people’s armed forces in the local social housing development land areas in accordance with Article 83 of this Law shall be decided by the provincial-level People's Committees, which shall ensure the connectivity to the technical and social infrastructure systems of the areas where the projects are located and the satisfaction of the living and working needs of beneficiaries in the people's armed forces.  <!-- lvl=4 i=148 sid=body[1]/p[149] src=Structure CẦN-XEM-LẠI -->
+      - Article 105. Types of project and requirements for investment projects in construction of houses for the people's armed forces; types and area standards of houses for the people's armed forces  <!-- lvl=4 i=148 sid=body[1]/p[149] src=Structure CẦN-XEM-LẠI -->
+      - Article 106. Owners of investment projects in construction of houses for the people's armed forces  <!-- lvl=4 i=150 sid=body[1]/p[151] src=Structure CẦN-XEM-LẠI -->
+      - Article 107. Incentives for owners of investment projects in construction of houses for the people's armed forces  <!-- lvl=4 i=150 sid=body[1]/p[151] src=Structure CẦN-XEM-LẠI -->
+      - Article 108. Determination of the selling prices, lease-purchase prices, and rent rates of houses for the people's armed forces  <!-- lvl=4 i=150 sid=body[1]/p[151] src=Structure CẦN-XEM-LẠI -->
+      - Article 109. Principles of sale, lease-purchase and lease of houses for the people's armed forces and operation management of houses for the people's armed forces 75  <!-- lvl=4 i=150 sid=body[1]/p[151] src=Structure CẦN-XEM-LẠI -->
+    - Section 5 HOUSING SUPPORT POLICIES FOR HOUSEHOLDS AND INDIVIDUALS THAT CONSTRUCT, RENOVATE OR REPAIR THEIR HOUSES ON THEIR OWN  <!-- lvl=3 i=152 sid=body[1]/p[153] src=Structure CẦN-XEM-LẠI -->
+      - Article 110. Housing support policies for households and individuals that construct, renovate or repair their houses on their own  <!-- lvl=4 i=152 sid=body[1]/p[153] src=Structure CẦN-XEM-LẠI -->
+      - Article 111. Forms of implementation of housing support policies for households and individuals that construct, renovate or repair their houses on their 76  <!-- lvl=4 i=152 sid=body[1]/p[153] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VII FINANCE FOR HOUSING DEVELOPMENT  <!-- lvl=2 i=154 sid=body[1]/p[155] src=Structure CẦN-XEM-LẠI -->
+      - Article 112. Funding sources for housing development  <!-- lvl=4 i=154 sid=body[1]/p[155] src=Structure CẦN-XEM-LẠI -->
+      - Article 113. The State’s funding sources for housing development  <!-- lvl=4 i=154 sid=body[1]/p[155] src=Structure CẦN-XEM-LẠI -->
+      - Article 114. Forms of fund raising for housing development  <!-- lvl=4 i=154 sid=body[1]/p[155] src=Structure CẦN-XEM-LẠI -->
+      - Article 115. Funds for development for each type of house  <!-- lvl=4 i=156 sid=body[1]/p[157] src=Structure CẦN-XEM-LẠI -->
+      - Article 116. Principles of fund raising and use of funds for housing development  <!-- lvl=4 i=158 sid=body[1]/p[159] src=Structure CẦN-XEM-LẠI -->
+      - Article 117. Preferential loans from the Vietnam Bank for Social Policies for development of social houses .v n  <!-- lvl=4 i=160 sid=body[1]/p[161] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VIII MANAGEMENT AND USE OF HOUSES  <!-- lvl=2 i=160 sid=body[1]/p[161] src=Structure CẦN-XEM-LẠI -->
+    - Section 1 GENERAL PROVISIONS  <!-- lvl=3 i=160 sid=body[1]/p[161] src=Structure CẦN-XEM-LẠI -->
+      - Article 118. Details of management and use of houses 80  <!-- lvl=4 i=160 sid=body[1]/p[161] src=Structure CẦN-XEM-LẠI -->
+      - Article 119. Making of house dossiers  <!-- lvl=4 i=162 sid=body[1]/p[163] src=Structure CẦN-XEM-LẠI -->
+      - Article 120. Preservation, handover and management of house dossiers  <!-- lvl=4 i=162 sid=body[1]/p[163] src=Structure CẦN-XEM-LẠI -->
+      - Article 121. Management and use of individual houses under housing investment projects  <!-- lvl=4 i=164 sid=body[1]/p[165] src=Structure CẦN-XEM-LẠI -->
+      - Article 122. Management and use of houses of artistic, architectural, cultural or historical value ie tn am  <!-- lvl=4 i=166 sid=body[1]/p[167] src=Structure CẦN-XEM-LẠI -->
+      - Article 123. Management and use of residential villas  <!-- lvl=4 i=168 sid=body[1]/p[169] src=Structure CẦN-XEM-LẠI -->
+      - Article 124. Conversion of houses  <!-- lvl=4 i=168 sid=body[1]/p[169] src=Structure CẦN-XEM-LẠI -->
+    - Section 2 MANAGEMENT AND USE OF HOUSES BEING PUBLIC PROPERTY  <!-- lvl=3 i=170 sid=body[1]/p[171] src=Structure CẦN-XEM-LẠI -->
+      - Article 125. Management and use of houses being public property .v n ie tn am  <!-- lvl=4 i=170 sid=body[1]/p[171] src=Structure CẦN-XEM-LẠI -->
+      - Article 126. Beneficiaries eligible and conditions for rent, rent-purchase and purchase of houses being public property  <!-- lvl=4 i=172 sid=body[1]/p[173] src=Structure CẦN-XEM-LẠI -->
+      - Article 127. Cases of recovery and coercive recovery of houses being public property  <!-- lvl=4 i=176 sid=body[1]/p[177] src=Structure CẦN-XEM-LẠI -->
+    - Section 3 HOUSE INSURANCE, WARRANTY, MAINTENANCE AND RENOVATION  <!-- lvl=3 i=178 sid=body[1]/p[179] src=Structure CẦN-XEM-LẠI -->
+      - Article 128. House insurance  <!-- lvl=4 i=178 sid=body[1]/p[179] src=Structure CẦN-XEM-LẠI -->
+      - Article 129. House warranty ie tn am atV  <!-- lvl=4 i=178 sid=body[1]/p[179] src=Structure CẦN-XEM-LẠI -->
+      - Article 130. House maintenance  <!-- lvl=4 i=178 sid=body[1]/p[179] src=Structure CẦN-XEM-LẠI -->
+      - Article 131. House renovation  <!-- lvl=4 i=180 sid=body[1]/p[181] src=Structure CẦN-XEM-LẠI -->
+      - Article 132. Maintenance and renovation of leased houses  <!-- lvl=4 i=180 sid=body[1]/p[181] src=Structure CẦN-XEM-LẠI -->
+      - Article 133. Maintenance and renovation of houses being public property  <!-- lvl=4 i=182 sid=body[1]/p[183] src=Structure CẦN-XEM-LẠI -->
+      - Article 134. Maintenance and renovation of houses under common ownership  <!-- lvl=4 i=182 sid=body[1]/p[183] src=Structure CẦN-XEM-LẠI -->
+      - Article 135. Rights and obligations of house owners in the house maintenance and renovation  <!-- lvl=4 i=184 sid=body[1]/p[185] src=Structure CẦN-XEM-LẠI -->
+    - Section 4 DEMOLITION OF HOUSES  <!-- lvl=3 i=184 sid=body[1]/p[185] src=Structure CẦN-XEM-LẠI -->
+      - Article 136. Houses which shall be demolished  <!-- lvl=4 i=184 sid=body[1]/p[185] src=Structure CẦN-XEM-LẠI -->
+      - Article 137. Responsibility for house demolition  <!-- lvl=4 i=186 sid=body[1]/p[187] src=Structure CẦN-XEM-LẠI -->
+      - Article 138. Requirements on house demolition  <!-- lvl=4 i=186 sid=body[1]/p[187] src=Structure CẦN-XEM-LẠI -->
+      - Article 139. Coercive house demolition  <!-- lvl=4 i=186 sid=body[1]/p[187] src=Structure CẦN-XEM-LẠI -->
+      - Article 140. Residences for house owners when their houses are demolished  <!-- lvl=4 i=188 sid=body[1]/p[189] src=Structure CẦN-XEM-LẠI -->
+      - Article 141. Demolition of leased houses  <!-- lvl=4 i=188 sid=body[1]/p[189] src=Structure CẦN-XEM-LẠI -->
+  - Chapter IX MANAGEMENT AND USE OF CONDOMINIUMS  <!-- lvl=2 i=188 sid=body[1]/p[189] src=Structure CẦN-XEM-LẠI -->
+    - Section 1 GENERAL PROVISIONS  <!-- lvl=3 i=188 sid=body[1]/p[189] src=Structure CẦN-XEM-LẠI -->
+      - Article 142. Sections under private ownership and sections under common ownership in condominiums 94  <!-- lvl=4 i=188 sid=body[1]/p[189] src=Structure CẦN-XEM-LẠI -->
+      - Article 143. Methods of calculating usable areas of apartments and other areas in condominiums; grading of condominiums  <!-- lvl=4 i=190 sid=body[1]/p[191] src=Structure CẦN-XEM-LẠI -->
+      - Article 144. Parking lots of condominiums  <!-- lvl=4 i=192 sid=body[1]/p[193] src=Structure CẦN-XEM-LẠI -->
+    - Section 2 CONDOMINIUM MEETINGS AND CONDOMINIUM MANAGEMENT BOARDS  <!-- lvl=3 i=194 sid=body[1]/p[195] src=Structure CẦN-XEM-LẠI -->
+      - Article 145. Condominium meeting  <!-- lvl=4 i=194 sid=body[1]/p[195] src=Structure CẦN-XEM-LẠI -->
+      - Article 146. Condominium management board  <!-- lvl=4 i=196 sid=body[1]/p[197] src=Structure CẦN-XEM-LẠI -->
+      - Article 147. Rights of the management board of a condominium  <!-- lvl=4 i=198 sid=body[1]/p[199] src=Structure CẦN-XEM-LẠI -->
+      - Article 148. Responsibilities of the management board of a condominium  <!-- lvl=4 i=198 sid=body[1]/p[199] src=Structure CẦN-XEM-LẠI -->
+    - Section 3 CONDOMINIUM OPERATION MANAGEMENT  <!-- lvl=3 i=202 sid=body[1]/p[203] src=Structure CẦN-XEM-LẠI -->
+      - Article 149. Condominium operation management units  <!-- lvl=4 i=202 sid=body[1]/p[203] src=Structure CẦN-XEM-LẠI -->
+      - Article 150. Conditions for condominium operation management units  <!-- lvl=4 i=202 sid=body[1]/p[203] src=Structure CẦN-XEM-LẠI -->
+      - Article 151. Condominium operation management service prices  <!-- lvl=4 i=204 sid=body[1]/p[205] src=Structure CẦN-XEM-LẠI -->
+    - Section 4 MANAGEMENT AND USE OF FUNDS FOR MAINTENANCE OF MULTI-OWNER CONDOMINIUMS .v n ie tn am Lu atV  <!-- lvl=3 i=206 sid=body[1]/p[207] src=Structure CẦN-XEM-LẠI -->
+      - Article 152. Funds for maintenance of multi-owner condominiums  <!-- lvl=4 i=206 sid=body[1]/p[207] src=Structure CẦN-XEM-LẠI -->
+      - Article 153. Management and handover of funds for maintenance of multi- owner condominiums  <!-- lvl=4 i=208 sid=body[1]/p[209] src=Structure CẦN-XEM-LẠI -->
+      - Article 154. Coercive handover of funds for maintenance of multi-owner condominiums  <!-- lvl=4 i=210 sid=body[1]/p[211] src=Structure CẦN-XEM-LẠI -->
+      - Article 155. Use of funds for maintenance of multi-owner condominiums  <!-- lvl=4 i=212 sid=body[1]/p[213] src=Structure CẦN-XEM-LẠI -->
+    - Section 5 MANAGEMENT AND USE OF TECHNICAL INFRASTRUCTURE FACILITIES IN AREAS WHERE CONDOMINIUMS ARE LOCATED  <!-- lvl=3 i=214 sid=body[1]/p[215] src=Structure CẦN-XEM-LẠI -->
+      - Article 156. Technical infrastructure facilities in areas where condominiums .v n are located that must be handed over and the time of handover ie tn am  <!-- lvl=4 i=214 sid=body[1]/p[215] src=Structure CẦN-XEM-LẠI -->
+      - Article 157. Handover, reception and management of technical infrastructure facilities in areas where condominiums are located  <!-- lvl=4 i=214 sid=body[1]/p[215] src=Structure CẦN-XEM-LẠI -->
+      - Article 158. Management and utilization of technical infrastructure facilities 107  <!-- lvl=4 i=214 sid=body[1]/p[215] src=Structure CẦN-XEM-LẠI -->
+  - Chapter X HOUSING TRANSACTIONS .v n ie tn Section 1 am Lu atV GENERAL PROVISIONS  <!-- lvl=2 i=216 sid=body[1]/p[217] src=Structure CẦN-XEM-LẠI -->
+      - Article 159. Housing transactions Housing transactions include purchase and sale, lease-purchase, lease, donation, exchange, inheritance, mortgage, contribution as capital, lending, permission for stay at, and authorized management of houses.  <!-- lvl=4 i=216 sid=body[1]/p[217] src=Structure CẦN-XEM-LẠI -->
+      - Article 160. Conditions for houses to be transacted  <!-- lvl=4 i=216 sid=body[1]/p[217] src=Structure CẦN-XEM-LẠI -->
+      - Article 161. Conditions on parties to housing transactions  <!-- lvl=4 i=218 sid=body[1]/p[219] src=Structure CẦN-XEM-LẠI -->
+      - Article 162. Order and procedures for conducting housing transactions  <!-- lvl=4 i=220 sid=body[1]/p[221] src=Structure CẦN-XEM-LẠI -->
+      - Article 163. House contract A house contract shall be agreed upon by parties and established in writing and must include the following details:  <!-- lvl=4 i=220 sid=body[1]/p[221] src=Structure CẦN-XEM-LẠI -->
+      - Article 164. Notarization or certification of house contracts and effective Lu atV  <!-- lvl=4 i=222 sid=body[1]/p[223] src=Structure CẦN-XEM-LẠI -->
+    - Section 2 PURCHASE AND SALE OF HOUSES  <!-- lvl=3 i=224 sid=body[1]/p[225] src=Structure CẦN-XEM-LẠI -->
+      - Article 165. House sale and purchase transactions  <!-- lvl=4 i=224 sid=body[1]/p[225] src=Structure CẦN-XEM-LẠI -->
+      - Article 166. Sale and purchase of houses with definite-term house ownership Sale and purchase of a house with definite-term house ownership as prescribed in Clause 1, Article 165 of this Law shall be prescribed as follows:  <!-- lvl=4 i=224 sid=body[1]/p[225] src=Structure CẦN-XEM-LẠI -->
+      - Article 167. House purchase and sale with deferred payment or installment payment  <!-- lvl=4 i=226 sid=body[1]/p[227] src=Structure CẦN-XEM-LẠI -->
+      - Article 168. Purchase and sale of houses currently on lease  <!-- lvl=4 i=226 sid=body[1]/p[227] src=Structure CẦN-XEM-LẠI -->
+      - Article 169. Prior purchase of houses 113  <!-- lvl=4 i=226 sid=body[1]/p[227] src=Structure CẦN-XEM-LẠI -->
+    - Section 3 HOUSE RENT  <!-- lvl=3 i=228 sid=body[1]/p[229] src=Structure CẦN-XEM-LẠI -->
+      - Article 170. Lease term, rent rates, house sublease  <!-- lvl=4 i=228 sid=body[1]/p[229] src=Structure CẦN-XEM-LẠI -->
+      - Article 171. Cases of termination of house rent contracts  <!-- lvl=4 i=228 sid=body[1]/p[229] src=Structure CẦN-XEM-LẠI -->
+      - Article 172. Unilateral termination of performance of house rent contracts  <!-- lvl=4 i=230 sid=body[1]/p[231] src=Structure CẦN-XEM-LẠI -->
+      - Article 173. The right to continue renting houses 115  <!-- lvl=4 i=230 sid=body[1]/p[231] src=Structure CẦN-XEM-LẠI -->
+    - Section 4 HOUSE RENT-PURCHASE .v n  <!-- lvl=3 i=232 sid=body[1]/p[233] src=Structure CẦN-XEM-LẠI -->
+      - Article 174. House rent-purchase ie tn am Lu atV  <!-- lvl=4 i=232 sid=body[1]/p[233] src=Structure CẦN-XEM-LẠI -->
+      - Article 175. Rights and obligations of lessee-purchasers of houses under lease-purchase  <!-- lvl=4 i=232 sid=body[1]/p[233] src=Structure CẦN-XEM-LẠI -->
+      - Article 176. Cases of termination of rent-purchase contracts and recovery of houses on rent-purchase ie tn am atV  <!-- lvl=4 i=234 sid=body[1]/p[235] src=Structure CẦN-XEM-LẠI -->
+    - Section 5 DONATION, EXCHANGE, CONTRIBUTION AS CAPITAL, LENDING OF, AND PERMISSION FOR STAY AT, HOUSES  <!-- lvl=3 i=236 sid=body[1]/p[237] src=Structure CẦN-XEM-LẠI -->
+      - Article 177. House donation  <!-- lvl=4 i=236 sid=body[1]/p[237] src=Structure CẦN-XEM-LẠI -->
+      - Article 178. House exchange ie tn am Lu atV  <!-- lvl=4 i=236 sid=body[1]/p[237] src=Structure CẦN-XEM-LẠI -->
+      - Article 179. Contribution of houses as capital  <!-- lvl=4 i=236 sid=body[1]/p[237] src=Structure CẦN-XEM-LẠI -->
+      - Article 180. Lending of houses, permission for stay at houses atV  <!-- lvl=4 i=238 sid=body[1]/p[239] src=Structure CẦN-XEM-LẠI -->
+      - Article 181. House mortgagor and mortgagee  <!-- lvl=4 i=240 sid=body[1]/p[241] src=Structure CẦN-XEM-LẠI -->
+      - Article 182. Mortgage of houses currently on lease  <!-- lvl=4 i=240 sid=body[1]/p[241] src=Structure CẦN-XEM-LẠI -->
+      - Article 183. Mortgage of housing investment projects and mortgage of off-  <!-- lvl=4 i=240 sid=body[1]/p[241] src=Structure CẦN-XEM-LẠI -->
+      - Article 184. Conditions for mortgage of housing investment projects and mortgage of off-plan houses  <!-- lvl=4 i=242 sid=body[1]/p[243] src=Structure CẦN-XEM-LẠI -->
+      - Article 185. Handling of mortgaged houses or housing investment projects  <!-- lvl=4 i=242 sid=body[1]/p[243] src=Structure CẦN-XEM-LẠI -->
+    - Section 7 HOUSE MANAGEMENT AUTHORIZATION  <!-- lvl=3 i=244 sid=body[1]/p[245] src=Structure CẦN-XEM-LẠI -->
+      - Article 186. Details and scope of house management authorization  <!-- lvl=4 i=244 sid=body[1]/p[245] src=Structure CẦN-XEM-LẠI -->
+      - Article 187. Authorized management of houses under common ownership atV  <!-- lvl=4 i=244 sid=body[1]/p[245] src=Structure CẦN-XEM-LẠI -->
+      - Article 188. Termination of house management authorization contracts House management authorization contracts shall be terminated in accordance with civil law regulations or at the request of competent authorities resolving disputes or handling housing-related law violations.  <!-- lvl=4 i=244 sid=body[1]/p[245] src=Structure CẦN-XEM-LẠI -->
+  - Chapter XI SATE-LEVEL GOVERNANCE OF HOUSING  <!-- lvl=2 i=244 sid=body[1]/p[245] src=Structure CẦN-XEM-LẠI -->
+      - Article 189. Tasks of State-level governance of housing  <!-- lvl=4 i=244 sid=body[1]/p[245] src=Structure CẦN-XEM-LẠI -->
+      - Article 190. State authorities in charge of housing  <!-- lvl=4 i=246 sid=body[1]/p[247] src=Structure CẦN-XEM-LẠI -->
+      - Article 191. The Ministry of Construction shall  <!-- lvl=4 i=246 sid=body[1]/p[247] src=Structure CẦN-XEM-LẠI -->
+      - Article 192. Housing inspection  <!-- lvl=4 i=250 sid=body[1]/p[251] src=Structure CẦN-XEM-LẠI -->
+      - Article 193. Training and retraining in housing development and management knowledge and expertise ie tn am Lu atV  <!-- lvl=4 i=250 sid=body[1]/p[251] src=Structure CẦN-XEM-LẠI -->
+  - Chapter XII SETTLEMENT OF HOUSING-RELATED DISPUTES AND HANDLING OF HOUSING-RELATED LAW VIOLATIONS  <!-- lvl=2 i=250 sid=body[1]/p[251] src=Structure CẦN-XEM-LẠI -->
+      - Article 194. Settlement of housing-related disputes  <!-- lvl=4 i=250 sid=body[1]/p[251] src=Structure CẦN-XEM-LẠI -->
+      - Article 195. Handling of housing-related law violations Organizations and individuals that commit violations of law regulations on housing shall, depending on the nature and seriousness of their violations, be .v n disciplined, administratively sanctioned or examined for penal liability, or compensate ie tn for any possible damages in accordance with law. am Lu atV  <!-- lvl=4 i=252 sid=body[1]/p[253] src=Structure CẦN-XEM-LẠI -->
+  - Chapter XIII IMPLEMENTATION PROVISIONS  <!-- lvl=2 i=252 sid=body[1]/p[253] src=Structure CẦN-XEM-LẠI -->
+      - Article 196. Amendment and supplementation of a number of articles of relevant laws  <!-- lvl=4 i=252 sid=body[1]/p[253] src=Structure CẦN-XEM-LẠI -->
+      - Article 197. Effect  <!-- lvl=4 i=254 sid=body[1]/p[255] src=Structure CẦN-XEM-LẠI -->
+      - Article 198. Transitional provisions  <!-- lvl=4 i=254 sid=body[1]/p[255] src=Structure CẦN-XEM-LẠI -->
+
+> 243 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

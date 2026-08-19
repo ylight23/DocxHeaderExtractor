@@ -1,0 +1,399 @@
+# Cấu trúc: 038_WB_Works_DB_SingleStage_NoSEASH_2025.docx
+
+- Revisions  <!-- lvl=1 i=43 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+- Preface  <!-- lvl=1 i=57 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+  - The address (es) referred to above is (are): [insert detailed address (es)]  <!-- lvl=2 i=137 sid=body[1]/p[136] src=Structure CẦN-XEM-LẠI -->
+- Section I - Instructions to Proposers  <!-- lvl=1 i=264 sid=body[1]/p[263] src=Structure CẦN-XEM-LẠI -->
+  - A. General  <!-- lvl=2 i=265 sid=body[1]/p[264] src=Structure CẦN-XEM-LẠI -->
+    - Scope of Proposal  <!-- lvl=3 i=266 sid=body[1]/tbl[1]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Source of Funds  <!-- lvl=3 i=282 sid=body[1]/tbl[1]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Fraud and Corruption  <!-- lvl=3 i=285 sid=body[1]/tbl[1]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Eligible Proposers  <!-- lvl=3 i=288 sid=body[1]/tbl[1]/tr[4]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Eligible Materials, Equipment, and Services  <!-- lvl=3 i=307 sid=body[1]/tbl[1]/tr[5]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - B. Contents of RFP Document  <!-- lvl=2 i=309 sid=body[1]/p[265] src=Structure CẦN-XEM-LẠI -->
+    - Sections of RFP Document  <!-- lvl=3 i=310 sid=body[1]/tbl[2]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Section I - Instructions to Proposers (ITP)  <!-- lvl=4 i=313 sid=body[1]/tbl[2]/tr[1]/tc[2]/p[3] src=Structure CẦN-XEM-LẠI -->
+      - Section II - Proposal Data Sheet (PDS)  <!-- lvl=4 i=314 sid=body[1]/tbl[2]/tr[1]/tc[2]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Section III - Evaluation and Qualification Criteria  <!-- lvl=4 i=315 sid=body[1]/tbl[2]/tr[1]/tc[2]/p[5] src=Structure CẦN-XEM-LẠI -->
+      - Section IV - Proposal Forms  <!-- lvl=4 i=316 sid=body[1]/tbl[2]/tr[1]/tc[2]/p[6] src=Structure CẦN-XEM-LẠI -->
+      - Section V - Eligible Countries  <!-- lvl=4 i=317 sid=body[1]/tbl[2]/tr[1]/tc[2]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - Section VI - Fraud and Corruption  <!-- lvl=4 i=318 sid=body[1]/tbl[2]/tr[1]/tc[2]/p[8] src=Structure CẦN-XEM-LẠI -->
+      - Section VII - Employer’s Requirements  <!-- lvl=4 i=320 sid=body[1]/tbl[2]/tr[1]/tc[2]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Section VIII - General Conditions  <!-- lvl=4 i=322 sid=body[1]/tbl[2]/tr[1]/tc[2]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Section IX - Particular Conditions  <!-- lvl=4 i=323 sid=body[1]/tbl[2]/tr[1]/tc[2]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Section X - Contract Forms  <!-- lvl=4 i=324 sid=body[1]/tbl[2]/tr[1]/tc[2]/p[14] src=Structure CẦN-XEM-LẠI -->
+    - Clarification of RFP Document, Site Visit, Pre-Proposal Meeting  <!-- lvl=3 i=328 sid=body[1]/tbl[2]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Amendment of RFP Document  <!-- lvl=3 i=335 sid=body[1]/tbl[2]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Cost of Proposals  <!-- lvl=3 i=339 sid=body[1]/tbl[2]/tr[4]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Contacting the Employer  <!-- lvl=3 i=341 sid=body[1]/tbl[2]/tr[5]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Language of Proposals  <!-- lvl=3 i=344 sid=body[1]/tbl[2]/tr[6]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - C. Preparation of Proposals  <!-- lvl=2 i=346 sid=body[1]/p[266] src=Structure CẦN-XEM-LẠI -->
+    - Documents Comprising the Proposal  <!-- lvl=3 i=347 sid=body[1]/tbl[3]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Letter of Proposal, and Schedules  <!-- lvl=3 i=369 sid=body[1]/tbl[3]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Alternative Technical Proposals  <!-- lvl=3 i=371 sid=body[1]/tbl[3]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Proposal Prices  <!-- lvl=3 i=375 sid=body[1]/tbl[3]/tr[4]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Proposal Currencies  <!-- lvl=3 i=384 sid=body[1]/tbl[3]/tr[5]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Documents Establishing the Qualification of the Proposer  <!-- lvl=3 i=387 sid=body[1]/tbl[3]/tr[6]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Documents Establishing Conformity of the Works  <!-- lvl=3 i=391 sid=body[1]/tbl[3]/tr[7]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Securing the Proposal  <!-- lvl=3 i=398 sid=body[1]/tbl[3]/tr[8]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - sign the Contract in accordance with ITP 53; or  <!-- lvl=4 i=413 sid=body[1]/tbl[3]/tr[8]/tc[2]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - furnish a Performance Security and if required in the PDS, the Environmental and Social (ES) Performance Security, in accordance with ITP 54.  <!-- lvl=4 i=414 sid=body[1]/tbl[3]/tr[8]/tc[2]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - furnish a performance security and if required in the PDS, the Environmental and Social(ES) Performance Security, in accordance with ITP 54,  <!-- lvl=4 i=420 sid=body[1]/tbl[3]/tr[8]/tc[2]/p[22] src=Structure CẦN-XEM-LẠI -->
+    - Period of Validity of Proposals  <!-- lvl=3 i=422 sid=body[1]/tbl[3]/tr[9]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Format and Signing of Proposal  <!-- lvl=3 i=426 sid=body[1]/tbl[3]/tr[10]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - D. Submission of Proposals  <!-- lvl=2 i=431 sid=body[1]/p[267] src=Structure CẦN-XEM-LẠI -->
+    - Submission, Sealing and Marking of Proposals  <!-- lvl=3 i=432 sid=body[1]/tbl[4]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Deadline for Submission of Proposals  <!-- lvl=3 i=442 sid=body[1]/tbl[4]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Late Proposals  <!-- lvl=3 i=445 sid=body[1]/tbl[4]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Withdrawal, Substitution, and Modification of Proposals  <!-- lvl=3 i=447 sid=body[1]/tbl[4]/tr[4]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - E. Opening of Technical Parts of Proposals  <!-- lvl=2 i=451 sid=body[1]/p[268] src=Structure CẦN-XEM-LẠI -->
+    - Opening of Technical Part by Employer  <!-- lvl=3 i=452 sid=body[1]/tbl[5]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - F. Evaluation of Proposals – General Provisions  <!-- lvl=2 i=460 sid=body[1]/p[269] src=Structure CẦN-XEM-LẠI -->
+    - Confidentiality  <!-- lvl=3 i=461 sid=body[1]/tbl[6]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Clarification of Proposals  <!-- lvl=3 i=466 sid=body[1]/tbl[6]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Deviations, Reservations, and Omissions  <!-- lvl=3 i=469 sid=body[1]/tbl[6]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - G. Evaluation of Technical Parts of Proposals  <!-- lvl=2 i=474 sid=body[1]/p[270] src=Structure CẦN-XEM-LẠI -->
+    - Determination of Responsiveness of Technical Parts  <!-- lvl=3 i=475 sid=body[1]/tbl[7]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - affect in any substantial way the scope, quality, or performance of the Works specified in the Contract; or  <!-- lvl=4 i=479 sid=body[1]/tbl[7]/tr[1]/tc[2]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - limit in any substantial way, inconsistent with the RFP Document, the Employer’s rights or the Proposer’s obligations under the proposed Contract; or  <!-- lvl=4 i=480 sid=body[1]/tbl[7]/tr[1]/tc[2]/p[5] src=Structure CẦN-XEM-LẠI -->
+    - Evaluation of Technical Proposals  <!-- lvl=3 i=484 sid=body[1]/tbl[7]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Evaluation of Proposer’s Qualification  <!-- lvl=3 i=487 sid=body[1]/tbl[7]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Notification of evaluation of Technical Parts  <!-- lvl=3 i=491 sid=body[1]/tbl[7]/tr[4]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - H. Opening of Financial Parts  <!-- lvl=2 i=500 sid=body[1]/p[271] src=Structure CẦN-XEM-LẠI -->
+    - Public Opening of Financial Parts when BAFO or negotiations do not apply  <!-- lvl=3 i=501 sid=body[1]/tbl[8]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Opening of Financial Parts when BAFO or negotiations apply  <!-- lvl=3 i=507 sid=body[1]/tbl[8]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - I. Evaluation of Financial Part  <!-- lvl=2 i=515 sid=body[1]/p[272] src=Structure CẦN-XEM-LẠI -->
+    - Nonmaterial Nonconformities  <!-- lvl=3 i=516 sid=body[1]/tbl[9]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Arithmetic Correction  <!-- lvl=3 i=518 sid=body[1]/tbl[9]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Conversion to Single Currency  <!-- lvl=3 i=526 sid=body[1]/tbl[9]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Margin of Preference  <!-- lvl=3 i=528 sid=body[1]/tbl[9]/tr[4]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Evaluation Process Financial Parts  <!-- lvl=3 i=530 sid=body[1]/tbl[9]/tr[5]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Abnormally Low Proposals  <!-- lvl=3 i=540 sid=body[1]/tbl[9]/tr[6]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Unbalanced or Front Loaded Proposals  <!-- lvl=3 i=544 sid=body[1]/tbl[9]/tr[7]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - J. Evaluation of Combined Technical and Financial Part  <!-- lvl=2 i=550 sid=body[1]/p[273] src=Structure CẦN-XEM-LẠI -->
+    - Evaluation of Combined Technical and Financial Proposals  <!-- lvl=3 i=551 sid=body[1]/tbl[10]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Best and Final Offer (BAFO)  <!-- lvl=3 i=553 sid=body[1]/tbl[10]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Most Advantageous Proposal (MAP)  <!-- lvl=3 i=556 sid=body[1]/tbl[10]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Negotiations  <!-- lvl=3 i=560 sid=body[1]/tbl[10]/tr[4]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Employer’s Right to Accept Any Proposal, and to Reject Any or All Proposals  <!-- lvl=3 i=565 sid=body[1]/tbl[10]/tr[5]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Standstill Period  <!-- lvl=3 i=567 sid=body[1]/tbl[10]/tr[6]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Notification of Intention to Award  <!-- lvl=3 i=569 sid=body[1]/tbl[10]/tr[7]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - K. Award of Contract  <!-- lvl=2 i=578 sid=body[1]/p[274] src=Structure CẦN-XEM-LẠI -->
+    - Award Criteria  <!-- lvl=3 i=579 sid=body[1]/tbl[11]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Notification of Award  <!-- lvl=3 i=581 sid=body[1]/tbl[11]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Debriefing by the Employer  <!-- lvl=3 i=592 sid=body[1]/tbl[11]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Signing of Contract  <!-- lvl=3 i=597 sid=body[1]/tbl[11]/tr[4]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Performance Security  <!-- lvl=3 i=600 sid=body[1]/tbl[11]/tr[5]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Procurement Related Complaint  <!-- lvl=3 i=603 sid=body[1]/tbl[11]/tr[6]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - A. General  <!-- lvl=4 i=613 sid=body[1]/tbl[12]/tr[1]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - ITP 4.5  <!-- lvl=4 i=633 sid=body[1]/tbl[12]/tr[7]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - B. RFP Document  <!-- lvl=4 i=635 sid=body[1]/tbl[12]/tr[8]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - C. Preparation of Proposals  <!-- lvl=4 i=658 sid=body[1]/tbl[12]/tr[12]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - D. Submission of Proposals  <!-- lvl=4 i=718 sid=body[1]/tbl[12]/tr[25]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - E. Opening of Technical Parts of Proposals  <!-- lvl=4 i=739 sid=body[1]/tbl[12]/tr[29]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - G. Evaluation of Technical Parts of Proposals  <!-- lvl=4 i=755 sid=body[1]/tbl[12]/tr[32]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - weight in percentage (insert weight in %)  <!-- lvl=4 i=768 sid=body[1]/tbl[12]/tr[34]/tc[3]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - to what extent the Proposed Works exceed the Employer’s Requirements  <!-- lvl=4 i=770 sid=body[1]/tbl[12]/tr[35]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Design Proposal  <!-- lvl=4 i=773 sid=body[1]/tbl[12]/tr[36]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Method Statements for construction activities  <!-- lvl=4 i=776 sid=body[1]/tbl[12]/tr[37]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Code of Conduct  <!-- lvl=4 i=779 sid=body[1]/tbl[12]/tr[38]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Work Program  <!-- lvl=4 i=782 sid=body[1]/tbl[12]/tr[39]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Site organization, team composition, qualifications and experience of Contractor’s Personnel  <!-- lvl=4 i=785 sid=body[1]/tbl[12]/tr[40]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Risk assessment and proposed management plan  <!-- lvl=4 i=788 sid=body[1]/tbl[12]/tr[41]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Quality of Sustanable Procurement Proposal [see Section III, IV and VII in this regard]  <!-- lvl=4 i=791 sid=body[1]/tbl[12]/tr[42]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - key equipment strategy and  <!-- lvl=4 i=794 sid=body[1]/tbl[12]/tr[43]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - [9. Include any other factors as appropriate]  <!-- lvl=4 i=797 sid=body[1]/tbl[12]/tr[44]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - [The above are proposed headings. Expand as appropriate to enable evaluation. Modify and/or add any other factors as appropriate]  <!-- lvl=4 i=800 sid=body[1]/tbl[12]/tr[45]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - H. Opening of Financial Parts  <!-- lvl=4 i=805 sid=body[1]/tbl[12]/tr[47]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - I. Evaluation of Financial Part  <!-- lvl=4 i=808 sid=body[1]/tbl[12]/tr[49]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - J. Evaluation of Combined Technical and Financial Part  <!-- lvl=4 i=829 sid=body[1]/tbl[12]/tr[53]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - K. Award of Contract  <!-- lvl=4 i=839 sid=body[1]/tbl[12]/tr[57]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - Section III. Evaluation and Qualification Criteria  <!-- lvl=4 i=859 sid=body[1]/p[285] src=Structure CẦN-XEM-LẠI -->
+      - Technical Part  <!-- lvl=4 i=873 sid=body[1]/p[299] src=Structure CẦN-XEM-LẠI -->
+      - Qualification  <!-- lvl=4 i=875 sid=body[1]/p[301] src=Structure CẦN-XEM-LẠI -->
+      - Evaluation of Technical Part (ITP 31)  <!-- lvl=4 i=914 sid=body[1]/p[322] src=Structure CẦN-XEM-LẠI -->
+      - Financial Part  <!-- lvl=4 i=964 sid=body[1]/p[354] src=Structure CẦN-XEM-LẠI -->
+      - Evaluation of Financial Part (ITP 40.1(f) )  <!-- lvl=4 i=972 sid=body[1]/p[362] src=Structure CẦN-XEM-LẠI -->
+      - Time Schedule  <!-- lvl=4 i=974 sid=body[1]/p[364] src=Structure CẦN-XEM-LẠI -->
+      - Life Cycle Costs  <!-- lvl=4 i=978 sid=body[1]/p[368] src=Structure CẦN-XEM-LẠI -->
+      - Sustainable Procurement  <!-- lvl=4 i=986 sid=body[1]/p[376] src=Structure CẦN-XEM-LẠI -->
+      - Specific additional criteria  <!-- lvl=4 i=988 sid=body[1]/p[378] src=Structure CẦN-XEM-LẠI -->
+        - Combined Evaluation  <!-- lvl=5 i=994 sid=body[1]/p[384] src=Structure CẦN-XEM-LẠI -->
+        - Multiple Contracts (ITP 40.3)  <!-- lvl=5 i=1006 sid=body[1]/p[396] src=Structure CẦN-XEM-LẠI -->
+        - Proposal Forms  <!-- lvl=5 i=1067 sid=body[1]/p[457] src=Structure CẦN-XEM-LẠI -->
+        - Letter of Proposal - Technical Part  <!-- lvl=5 i=1068 sid=body[1]/p[458] src=Structure CẦN-XEM-LẠI -->
+        - Letter of Proposal - Financial Part  <!-- lvl=5 i=1129 sid=body[1]/p[507] src=Structure CẦN-XEM-LẠI -->
+        - Appendix to Proposal  <!-- lvl=5 i=1193 sid=body[1]/p[547] src=Structure CẦN-XEM-LẠI -->
+        - Schedule of Cost Indexation  <!-- lvl=5 i=1194 sid=body[1]/p[548] src=Structure CẦN-XEM-LẠI -->
+        - Table of Adjustment Data  <!-- lvl=5 i=1214 sid=body[1]/p[568] src=Structure CẦN-XEM-LẠI -->
+        - Table A. Local Currency  <!-- lvl=5 i=1216 sid=body[1]/p[570] src=Structure CẦN-XEM-LẠI -->
+        - Table B. Foreign Currency (FC)  <!-- lvl=5 i=1243 sid=body[1]/p[575] src=Structure CẦN-XEM-LẠI -->
+        - Table C. Summary of Payment Currencies  <!-- lvl=5 i=1276 sid=body[1]/p[579] src=Structure CẦN-XEM-LẠI -->
+        - Schedule of Priced Activities and Sub-activities  <!-- lvl=5 i=1359 sid=body[1]/p[589] src=Structure CẦN-XEM-LẠI -->
+        - Sample Schedule of Priced Activities Table  <!-- lvl=5 i=1367 sid=body[1]/p[597] src=Structure CẦN-XEM-LẠI -->
+        - Sample Schedule of Priced Sub-activities Table  <!-- lvl=5 i=1435 sid=body[1]/p[602] src=Structure CẦN-XEM-LẠI -->
+        - Daywork Schedule  <!-- lvl=5 i=1504 sid=body[1]/p[608] src=Structure CẦN-XEM-LẠI -->
+        - Schedule of Daywork Rates: 1. Labor  <!-- lvl=5 i=1548 sid=body[1]/p[652] src=Structure CẦN-XEM-LẠI -->
+        - Schedule of Daywork Rates: 2. Materials  <!-- lvl=5 i=1678 sid=body[1]/p[655] src=Structure CẦN-XEM-LẠI -->
+        - Schedule of Daywork Rates: 3. Contractor’s Equipment  <!-- lvl=5 i=1801 sid=body[1]/p[658] src=Structure CẦN-XEM-LẠI -->
+        - Daywork Summary  <!-- lvl=5 i=1900 sid=body[1]/p[661] src=Structure CẦN-XEM-LẠI -->
+        - Specified Provisional Sums  <!-- lvl=5 i=1922 sid=body[1]/p[665] src=Structure CẦN-XEM-LẠI -->
+        - Grand Summary  <!-- lvl=5 i=1973 sid=body[1]/p[667] src=Structure CẦN-XEM-LẠI -->
+        - Schedule of Payments  <!-- lvl=5 i=2015 sid=body[1]/p[670] src=Structure CẦN-XEM-LẠI -->
+        - Schedule of Performance Guarantees and Performance Damages  <!-- lvl=5 i=2031 sid=body[1]/p[686] src=Structure CẦN-XEM-LẠI -->
+        - Technical Proposal Forms  <!-- lvl=5 i=2034 sid=body[1]/p[689] src=Structure CẦN-XEM-LẠI -->
+        - Design Proposal  <!-- lvl=5 i=2036 sid=body[1]/p[691] src=Structure CẦN-XEM-LẠI -->
+        - Construction Management Strategy  <!-- lvl=5 i=2037 sid=body[1]/p[692] src=Structure CẦN-XEM-LẠI -->
+        - Method Statements for construction activities  <!-- lvl=5 i=2038 sid=body[1]/p[693] src=Structure CẦN-XEM-LẠI -->
+        - Sustainable Procurement Proposal  <!-- lvl=5 i=2039 sid=body[1]/p[694] src=Structure CẦN-XEM-LẠI -->
+        - Code of Conduct for Contractor’s Personnel (ES)  <!-- lvl=5 i=2040 sid=body[1]/p[695] src=Structure CẦN-XEM-LẠI -->
+        - Work Program  <!-- lvl=5 i=2041 sid=body[1]/p[696] src=Structure CẦN-XEM-LẠI -->
+        - Contractor’s Personnel Organization Chart  <!-- lvl=5 i=2042 sid=body[1]/p[697] src=Structure CẦN-XEM-LẠI -->
+        - Risk Assessment and Proposed Management Plan  <!-- lvl=5 i=2043 sid=body[1]/p[698] src=Structure CẦN-XEM-LẠI -->
+        - Contractor’s Equipment  <!-- lvl=5 i=2044 sid=body[1]/p[699] src=Structure CẦN-XEM-LẠI -->
+        - Subcontractors  <!-- lvl=5 i=2045 sid=body[1]/p[700] src=Structure CẦN-XEM-LẠI -->
+        - Others  <!-- lvl=5 i=2046 sid=body[1]/p[701] src=Structure CẦN-XEM-LẠI -->
+        - Design Proposal  <!-- lvl=5 i=2049 sid=body[1]/p[704] src=Structure CẦN-XEM-LẠI -->
+        - Construction Management Strategy  <!-- lvl=5 i=2070 sid=body[1]/p[725] src=Structure CẦN-XEM-LẠI -->
+        - Method Statement for key construction activities  <!-- lvl=5 i=2093 sid=body[1]/p[748] src=Structure CẦN-XEM-LẠI -->
+        - Sustainable Procurement Proposal  <!-- lvl=5 i=2106 sid=body[1]/p[761] src=Structure CẦN-XEM-LẠI -->
+        - Code of Conduct for Contractor’s Personnel (ES) Form  <!-- lvl=5 i=2109 sid=body[1]/p[764] src=Structure CẦN-XEM-LẠI -->
+        - maintain a safe working environment including by:  <!-- lvl=5 i=2134 sid=body[1]/p[775] src=Structure CẦN-XEM-LẠI -->
+        - report violations of this Code of Conduct; and  <!-- lvl=5 i=2146 sid=body[1]/p[787] src=Structure CẦN-XEM-LẠI -->
+        - Examples of sexual harassment in a work context  <!-- lvl=5 i=2178 sid=body[1]/p[819] src=Structure CẦN-XEM-LẠI -->
+        - Work Program  <!-- lvl=5 i=2184 sid=body[1]/p[825] src=Structure CẦN-XEM-LẠI -->
+        - Contract Personnel Organization Chart  <!-- lvl=5 i=2195 sid=body[1]/p[836] src=Structure CẦN-XEM-LẠI -->
+        - Risk assessment and Proposed Management Plan  <!-- lvl=5 i=2197 sid=body[1]/p[838] src=Structure CẦN-XEM-LẠI -->
+        - Contractor’s Equipment  <!-- lvl=5 i=2204 sid=body[1]/p[845] src=Structure CẦN-XEM-LẠI -->
+        - Personnel  <!-- lvl=5 i=2208 sid=body[1]/p[849] src=Structure CẦN-XEM-LẠI -->
+- Form PER -1  <!-- lvl=1 i=2209 sid=body[1]/p[850] src=Structure CẦN-XEM-LẠI -->
+  - Key Personnel qualifications and resource schedule  <!-- lvl=2 i=2210 sid=body[1]/p[851] src=Structure CẦN-XEM-LẠI -->
+  - [Environmental Impact Assessment Specialist]  <!-- lvl=2 i=2234 sid=body[1]/tbl[31]/tr[6]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+  - [Health and Safety Specialist]  <!-- lvl=2 i=2242 sid=body[1]/tbl[31]/tr[8]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+- Form PER-2:  <!-- lvl=1 i=2284 sid=body[1]/p[858] src=Structure CẦN-XEM-LẠI -->
+  - Resume and Declaration  <!-- lvl=2 i=2285 sid=body[1]/p[859] src=Structure CẦN-XEM-LẠI -->
+  - Contractor’s Representative and Key Personnel  <!-- lvl=2 i=2286 sid=body[1]/p[860] src=Structure CẦN-XEM-LẠI -->
+  - Subcontractors  <!-- lvl=2 i=2373 sid=body[1]/p[880] src=Structure CẦN-XEM-LẠI -->
+  - Proposed Subcontractors  <!-- lvl=2 i=2374 sid=body[1]/p[881] src=Structure CẦN-XEM-LẠI -->
+  - Qualification Forms  <!-- lvl=2 i=2394 sid=body[1]/p[889] src=Structure CẦN-XEM-LẠI -->
+  - Proposer Information Sheet  <!-- lvl=2 i=2396 sid=body[1]/p[891] src=Structure CẦN-XEM-LẠI -->
+  - Party to JV Information Sheet  <!-- lvl=2 i=2422 sid=body[1]/p[897] src=Structure CẦN-XEM-LẠI -->
+  - Historical Contract Non-Performance, Pending Litigation and Litigation History  <!-- lvl=2 i=2448 sid=body[1]/p[905] src=Structure CẦN-XEM-LẠI -->
+  - Environmental and Social Performance Declaration  <!-- lvl=2 i=2506 sid=body[1]/p[916] src=Structure CẦN-XEM-LẠI -->
+  - Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment Performance Declaration  <!-- lvl=2 i=2555 sid=body[1]/p[926] src=Structure CẦN-XEM-LẠI -->
+  - Current Contract Commitments / Works in Progress  <!-- lvl=2 i=2583 sid=body[1]/p[933] src=Structure CẦN-XEM-LẠI -->
+  - Financial Resources  <!-- lvl=2 i=2630 sid=body[1]/p[939] src=Structure CẦN-XEM-LẠI -->
+  - Others  <!-- lvl=2 i=2647 sid=body[1]/p[942] src=Structure CẦN-XEM-LẠI -->
+  - Form of Proposal Security – Demand Guarantee  <!-- lvl=2 i=2650 sid=body[1]/p[945] src=Structure CẦN-XEM-LẠI -->
+  - Form of Proposal-Securing Declaration  <!-- lvl=2 i=2666 sid=body[1]/p[961] src=Structure CẦN-XEM-LẠI -->
+  - Section V - Eligible Countries  <!-- lvl=2 i=2686 sid=body[1]/p[981] src=Structure CẦN-XEM-LẠI -->
+  - Section VI - Fraud and Corruption  <!-- lvl=2 i=2697 sid=body[1]/p[992] src=Structure CẦN-XEM-LẠI -->
+  - Purpose  <!-- lvl=2 i=2700 sid=body[1]/p[995] src=Structure CẦN-XEM-LẠI -->
+  - Requirements  <!-- lvl=2 i=2702 sid=body[1]/p[997] src=Structure CẦN-XEM-LẠI -->
+  - To this end, the Bank:  <!-- lvl=2 i=2704 sid=body[1]/p[999] src=Structure CẦN-XEM-LẠI -->
+  - “obstructive practice” is:  <!-- lvl=2 i=2710 sid=body[1]/p[1005] src=Structure CẦN-XEM-LẠI -->
+  - PART 2 –Employer’s Requirements  <!-- lvl=2 i=2719 sid=body[1]/p[1014] src=Structure CẦN-XEM-LẠI -->
+  - Section VII. Employer’s Requirements  <!-- lvl=2 i=2721 sid=body[1]/p[1016] src=Structure CẦN-XEM-LẠI -->
+- Table of Content  <!-- lvl=1 i=2723 sid=body[1]/p[1018] src=Structure CẦN-XEM-LẠI -->
+  - Employer’s Requirements  <!-- lvl=2 i=2737 sid=body[1]/p[1032] src=Structure CẦN-XEM-LẠI -->
+  - Notes on preparing the Employer’s Requirements  <!-- lvl=2 i=2739 sid=body[1]/p[1034] src=Structure CẦN-XEM-LẠI -->
+    - Environmental and Social (ES) requirements  <!-- lvl=3 i=2867 sid=body[1]/p[1062] src=Structure CẦN-XEM-LẠI -->
+    - Environmental and Social (ES) requirements  <!-- lvl=3 i=2943 sid=body[1]/p[1102] src=Structure CẦN-XEM-LẠI -->
+    - Scope of the Works  <!-- lvl=3 i=2983 sid=body[1]/p[1142] src=Structure CẦN-XEM-LẠI -->
+    - Site Information  <!-- lvl=3 i=2987 sid=body[1]/p[1146] src=Structure CẦN-XEM-LẠI -->
+    - Topographic survey  <!-- lvl=3 i=2990 sid=body[1]/p[1149] src=Structure CẦN-XEM-LẠI -->
+    - Environmental and social baseline data  <!-- lvl=3 i=2991 sid=body[1]/p[1150] src=Structure CẦN-XEM-LẠI -->
+    - Ground investigation data  <!-- lvl=3 i=2992 sid=body[1]/p[1151] src=Structure CẦN-XEM-LẠI -->
+    - Ground condition information  <!-- lvl=3 i=2993 sid=body[1]/p[1152] src=Structure CẦN-XEM-LẠI -->
+    - Utility records  <!-- lvl=3 i=2994 sid=body[1]/p[1153] src=Structure CẦN-XEM-LẠI -->
+    - Land ownership information  <!-- lvl=3 i=2995 sid=body[1]/p[1154] src=Structure CẦN-XEM-LẠI -->
+    - Details of known accommodation works requirements  <!-- lvl=3 i=2996 sid=body[1]/p[1155] src=Structure CẦN-XEM-LẠI -->
+    - Statuary planning and zoning constraints  <!-- lvl=3 i=2998 sid=body[1]/p[1157] src=Structure CẦN-XEM-LẠI -->
+    - Orders consents permits, licenses and compliance requirements  <!-- lvl=3 i=2999 sid=body[1]/p[1158] src=Structure CẦN-XEM-LẠI -->
+    - As built records of existing infrastructure  <!-- lvl=3 i=3000 sid=body[1]/p[1159] src=Structure CẦN-XEM-LẠI -->
+    - Details of any risks or hazards  <!-- lvl=3 i=3001 sid=body[1]/p[1160] src=Structure CẦN-XEM-LẠI -->
+    - Any other physical constraints  <!-- lvl=3 i=3002 sid=body[1]/p[1161] src=Structure CẦN-XEM-LẠI -->
+    - Contractor’s Representative and Key Personnel  <!-- lvl=3 i=3005 sid=body[1]/p[1164] src=Structure CẦN-XEM-LẠI -->
+    - [Environmental Impact Assessment Specialist]  <!-- lvl=3 i=3026 sid=body[1]/tbl[47]/tr[6]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - [Health and Safety Specialist]  <!-- lvl=3 i=3034 sid=body[1]/tbl[47]/tr[8]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Specifications  <!-- lvl=3 i=3077 sid=body[1]/p[1168] src=Structure CẦN-XEM-LẠI -->
+    - Drawings  <!-- lvl=3 i=3082 sid=body[1]/p[1173] src=Structure CẦN-XEM-LẠI -->
+    - Supplementary Information  <!-- lvl=3 i=3091 sid=body[1]/p[1182] src=Structure CẦN-XEM-LẠI -->
+    - PART 3 – Conditions of Contract and Contract Forms  <!-- lvl=3 i=3095 sid=body[1]/p[1186] src=Structure CẦN-XEM-LẠI -->
+    - Section VIII - General Conditions (GC)  <!-- lvl=3 i=3101 sid=body[1]/p[1192] src=Structure CẦN-XEM-LẠI -->
+- FIDIC code: ISBN13: 978-2-88432-082-5  <!-- lvl=1 i=3113 sid=body[1]/tbl[48]/tr[1]/tc[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+  - Section IX - Particular Conditions (PC)  <!-- lvl=2 i=3117 sid=body[1]/tbl[49]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.1.4  <!-- lvl=3 i=3431 sid=body[1]/tbl[53]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Base Date  <!-- lvl=3 i=3432 sid=body[1]/tbl[53]/tr[1]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.1.49  <!-- lvl=3 i=3434 sid=body[1]/tbl[53]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.1.59  <!-- lvl=3 i=3438 sid=body[1]/tbl[53]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Particular Conditions  <!-- lvl=3 i=3439 sid=body[1]/tbl[53]/tr[3]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.1.74  <!-- lvl=3 i=3442 sid=body[1]/tbl[53]/tr[4]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Site  <!-- lvl=3 i=3443 sid=body[1]/tbl[53]/tr[4]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.1.83  <!-- lvl=3 i=3446 sid=body[1]/tbl[53]/tr[5]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Tender  <!-- lvl=3 i=3447 sid=body[1]/tbl[53]/tr[5]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.1.92  <!-- lvl=3 i=3452 sid=body[1]/tbl[53]/tr[8]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Borrower  <!-- lvl=3 i=3453 sid=body[1]/tbl[53]/tr[8]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.1.93  <!-- lvl=3 i=3455 sid=body[1]/tbl[53]/tr[9]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - ES  <!-- lvl=3 i=3456 sid=body[1]/tbl[53]/tr[9]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.1.94  <!-- lvl=3 i=3458 sid=body[1]/tbl[53]/tr[10]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sexual Exploitation and Abuse (SEA), and Sexual Harassment (SH)  <!-- lvl=3 i=3459 sid=body[1]/tbl[53]/tr[10]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.1.95  <!-- lvl=3 i=3464 sid=body[1]/tbl[53]/tr[11]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Milestone  <!-- lvl=3 i=3465 sid=body[1]/tbl[53]/tr[11]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.1.96  <!-- lvl=3 i=3467 sid=body[1]/tbl[53]/tr[12]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.2  <!-- lvl=3 i=3470 sid=body[1]/tbl[53]/tr[13]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Interpretation  <!-- lvl=3 i=3471 sid=body[1]/tbl[53]/tr[13]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.5  <!-- lvl=3 i=3481 sid=body[1]/tbl[53]/tr[14]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.6  <!-- lvl=3 i=3488 sid=body[1]/tbl[53]/tr[15]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Contract Agreement  <!-- lvl=3 i=3489 sid=body[1]/tbl[53]/tr[15]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.12  <!-- lvl=3 i=3492 sid=body[1]/tbl[53]/tr[16]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 1.17  <!-- lvl=3 i=3498 sid=body[1]/tbl[53]/tr[17]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 2.4  <!-- lvl=3 i=3502 sid=body[1]/tbl[53]/tr[18]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 2.6  <!-- lvl=3 i=3508 sid=body[1]/tbl[53]/tr[19]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Employer-Supplied Materials and Employer’s Equipment  <!-- lvl=3 i=3509 sid=body[1]/tbl[53]/tr[19]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 3.1  <!-- lvl=3 i=3522 sid=body[1]/tbl[53]/tr[20]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - The Engineer  <!-- lvl=3 i=3523 sid=body[1]/tbl[53]/tr[20]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 3.2  <!-- lvl=3 i=3526 sid=body[1]/tbl[53]/tr[21]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 3.3  <!-- lvl=3 i=3534 sid=body[1]/tbl[53]/tr[22]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 3.4  <!-- lvl=3 i=3538 sid=body[1]/tbl[53]/tr[23]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 3.6  <!-- lvl=3 i=3542 sid=body[1]/tbl[53]/tr[24]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.1  <!-- lvl=3 i=3546 sid=body[1]/tbl[53]/tr[25]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.2  <!-- lvl=3 i=3561 sid=body[1]/tbl[53]/tr[26]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.2.1  <!-- lvl=3 i=3574 sid=body[1]/tbl[53]/tr[27]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Contractor’s  <!-- lvl=3 i=3575 sid=body[1]/tbl[53]/tr[27]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - obligations  <!-- lvl=3 i=3576 sid=body[1]/tbl[53]/tr[27]/tc[1]/p[3] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.2.2  <!-- lvl=3 i=3580 sid=body[1]/tbl[53]/tr[28]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.2.3  <!-- lvl=3 i=3583 sid=body[1]/tbl[53]/tr[29]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.3  <!-- lvl=3 i=3586 sid=body[1]/tbl[53]/tr[30]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.4 Subcontractors  <!-- lvl=3 i=3589 sid=body[1]/tbl[53]/tr[31]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.5.1  <!-- lvl=3 i=3598 sid=body[1]/tbl[54]/tr[1]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Objection to nomination  <!-- lvl=3 i=3599 sid=body[1]/tbl[54]/tr[1]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.6  <!-- lvl=3 i=3605 sid=body[1]/tbl[54]/tr[2]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.8  <!-- lvl=3 i=3609 sid=body[1]/tbl[54]/tr[3]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.15  <!-- lvl=3 i=3631 sid=body[1]/tbl[54]/tr[4]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Access Route  <!-- lvl=3 i=3632 sid=body[1]/tbl[54]/tr[4]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.18  <!-- lvl=3 i=3636 sid=body[1]/tbl[54]/tr[5]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.18 Protection of the Environment is replaced with:  <!-- lvl=3 i=3638 sid=body[1]/tbl[54]/tr[5]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.20  <!-- lvl=3 i=3644 sid=body[1]/tbl[54]/tr[6]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.21  <!-- lvl=3 i=3653 sid=body[1]/tbl[54]/tr[7]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - The Sub-Clause is replaced with the following:  <!-- lvl=3 i=3655 sid=body[1]/tbl[54]/tr[7]/tc[2]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.23  <!-- lvl=3 i=3663 sid=body[1]/tbl[54]/tr[8]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.24  <!-- lvl=3 i=3670 sid=body[1]/tbl[54]/tr[9]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - 4.24.1 Forced Labour  <!-- lvl=4 i=3673 sid=body[1]/tbl[54]/tr[9]/tc[2]/p[2] src=Structure CẦN-XEM-LẠI -->
+      - 4.24.2 Child labour  <!-- lvl=4 i=3675 sid=body[1]/tbl[54]/tr[9]/tc[2]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - 4.24.3 Serious Safety Issues  <!-- lvl=4 i=3677 sid=body[1]/tbl[54]/tr[9]/tc[2]/p[6] src=Structure CẦN-XEM-LẠI -->
+      - 4.24.4 Obtaining natural resource materials in relation to supplier  <!-- lvl=4 i=3679 sid=body[1]/tbl[54]/tr[9]/tc[2]/p[8] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.25  <!-- lvl=3 i=3682 sid=body[1]/tbl[54]/tr[10]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Code of Conduct  <!-- lvl=3 i=3683 sid=body[1]/tbl[54]/tr[10]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 4.26  <!-- lvl=3 i=3690 sid=body[1]/tbl[54]/tr[11]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Milestones  <!-- lvl=3 i=3691 sid=body[1]/tbl[54]/tr[11]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 5.4  <!-- lvl=3 i=3708 sid=body[1]/tbl[54]/tr[12]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Technical Standards and Regulations  <!-- lvl=3 i=3709 sid=body[1]/tbl[54]/tr[12]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.1  <!-- lvl=3 i=3714 sid=body[1]/tbl[54]/tr[13]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.2  <!-- lvl=3 i=3719 sid=body[1]/tbl[54]/tr[14]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.5  <!-- lvl=3 i=3727 sid=body[1]/tbl[54]/tr[15]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Working Hours  <!-- lvl=3 i=3728 sid=body[1]/tbl[54]/tr[15]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.6  <!-- lvl=3 i=3731 sid=body[1]/tbl[54]/tr[16]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Facilities for Staff and Labour  <!-- lvl=3 i=3732 sid=body[1]/tbl[54]/tr[16]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.7  <!-- lvl=3 i=3735 sid=body[1]/tbl[54]/tr[17]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.9  <!-- lvl=3 i=3739 sid=body[1]/tbl[54]/tr[18]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.12  <!-- lvl=3 i=3753 sid=body[1]/tbl[54]/tr[19]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.13  <!-- lvl=3 i=3758 sid=body[1]/tbl[54]/tr[21]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Foreign Personnel  <!-- lvl=3 i=3759 sid=body[1]/tbl[54]/tr[21]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.14  <!-- lvl=3 i=3762 sid=body[1]/tbl[54]/tr[22]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.15  <!-- lvl=3 i=3765 sid=body[1]/tbl[54]/tr[23]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.16  <!-- lvl=3 i=3768 sid=body[1]/tbl[54]/tr[24]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.17  <!-- lvl=3 i=3771 sid=body[1]/tbl[54]/tr[25]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.18  <!-- lvl=3 i=3774 sid=body[1]/tbl[54]/tr[26]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.19  <!-- lvl=3 i=3777 sid=body[1]/tbl[54]/tr[27]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.20  <!-- lvl=3 i=3780 sid=body[1]/tbl[54]/tr[28]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.21  <!-- lvl=3 i=3783 sid=body[1]/tbl[54]/tr[29]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.22  <!-- lvl=3 i=3787 sid=body[1]/tbl[54]/tr[30]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.23  <!-- lvl=3 i=3798 sid=body[1]/tbl[54]/tr[31]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.24  <!-- lvl=3 i=3801 sid=body[1]/tbl[54]/tr[32]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.25  <!-- lvl=3 i=3804 sid=body[1]/tbl[54]/tr[33]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.26  <!-- lvl=3 i=3808 sid=body[1]/tbl[54]/tr[34]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 6.27  <!-- lvl=3 i=3814 sid=body[1]/tbl[54]/tr[35]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Training of Contractor’s Personnel  <!-- lvl=3 i=3815 sid=body[1]/tbl[54]/tr[35]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 7.3 Inspection  <!-- lvl=3 i=3819 sid=body[1]/tbl[54]/tr[36]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 7.7  <!-- lvl=3 i=3823 sid=body[1]/tbl[54]/tr[37]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Ownership of Plant and Materials  <!-- lvl=3 i=3824 sid=body[1]/tbl[54]/tr[37]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 8.1  <!-- lvl=3 i=3827 sid=body[1]/tbl[54]/tr[38]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 11.7  <!-- lvl=3 i=3838 sid=body[1]/tbl[54]/tr[39]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 13.3.1  <!-- lvl=3 i=3842 sid=body[1]/tbl[54]/tr[40]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 13.4  <!-- lvl=3 i=3845 sid=body[1]/tbl[54]/tr[41]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Provisional Sums  <!-- lvl=3 i=3846 sid=body[1]/tbl[54]/tr[41]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 13.6  <!-- lvl=3 i=3849 sid=body[1]/tbl[54]/tr[42]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 14.1  <!-- lvl=3 i=3853 sid=body[1]/tbl[54]/tr[43]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 14.1  <!-- lvl=3 i=3861 sid=body[1]/tbl[54]/tr[44]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 14.2.1  <!-- lvl=3 i=3877 sid=body[1]/tbl[54]/tr[45]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 14.3  <!-- lvl=3 i=3881 sid=body[1]/tbl[54]/tr[46]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 14.4  <!-- lvl=3 i=3884 sid=body[1]/tbl[54]/tr[47]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Schedule of Payments  <!-- lvl=3 i=3885 sid=body[1]/tbl[54]/tr[47]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 14.6.2  <!-- lvl=3 i=3889 sid=body[1]/tbl[54]/tr[48]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 14.7  <!-- lvl=3 i=3901 sid=body[1]/tbl[54]/tr[49]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 14.9  <!-- lvl=3 i=3907 sid=body[1]/tbl[54]/tr[50]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 14.15  <!-- lvl=3 i=3912 sid=body[1]/tbl[54]/tr[51]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 15.1  <!-- lvl=3 i=3915 sid=body[1]/tbl[54]/tr[52]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 15.2.1  <!-- lvl=3 i=3922 sid=body[1]/tbl[54]/tr[53]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 15.8  <!-- lvl=3 i=3925 sid=body[1]/tbl[54]/tr[54]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 16.1  <!-- lvl=3 i=3930 sid=body[1]/tbl[54]/tr[55]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 16.2.1  <!-- lvl=3 i=3934 sid=body[1]/tbl[54]/tr[56]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 16.2.2  <!-- lvl=3 i=3940 sid=body[1]/tbl[54]/tr[57]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Termination  <!-- lvl=3 i=3941 sid=body[1]/tbl[54]/tr[57]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 16.3  <!-- lvl=3 i=3944 sid=body[1]/tbl[54]/tr[58]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 17.1 Responsibility for Care of the Works  <!-- lvl=3 i=3950 sid=body[1]/tbl[54]/tr[59]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 17.7  <!-- lvl=3 i=3955 sid=body[1]/tbl[54]/tr[60]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 18.1  <!-- lvl=3 i=3960 sid=body[1]/tbl[54]/tr[61]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Exceptional Events  <!-- lvl=3 i=3961 sid=body[1]/tbl[54]/tr[61]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 18.4  <!-- lvl=3 i=3964 sid=body[1]/tbl[54]/tr[62]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 18.5  <!-- lvl=3 i=3968 sid=body[1]/tbl[54]/tr[63]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Optional Termination  <!-- lvl=3 i=3969 sid=body[1]/tbl[54]/tr[63]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 19.1  <!-- lvl=3 i=3971 sid=body[1]/tbl[54]/tr[64]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - General Requirements  <!-- lvl=3 i=3972 sid=body[1]/tbl[54]/tr[64]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 19.2  <!-- lvl=3 i=3976 sid=body[1]/tbl[54]/tr[65]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 19.2.5  <!-- lvl=3 i=3980 sid=body[1]/tbl[54]/tr[66]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Injury to employees  <!-- lvl=3 i=3981 sid=body[1]/tbl[54]/tr[66]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 20.1  <!-- lvl=3 i=3984 sid=body[1]/tbl[54]/tr[67]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Claims  <!-- lvl=3 i=3985 sid=body[1]/tbl[54]/tr[67]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 20.2  <!-- lvl=3 i=3987 sid=body[1]/tbl[54]/tr[68]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 21.1  <!-- lvl=3 i=3991 sid=body[1]/tbl[54]/tr[69]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Constitution of the DAAB  <!-- lvl=3 i=3992 sid=body[1]/tbl[54]/tr[69]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 21.2  <!-- lvl=3 i=3995 sid=body[1]/tbl[54]/tr[70]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Failure to Appoint DAAB Member (s)  <!-- lvl=3 i=3996 sid=body[1]/tbl[54]/tr[70]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+    - Sub-Clause 21.6  <!-- lvl=3 i=3998 sid=body[1]/tbl[54]/tr[71]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+    - Arbitration  <!-- lvl=3 i=3999 sid=body[1]/tbl[54]/tr[71]/tc[1]/p[2] src=Structure CẦN-XEM-LẠI -->
+      - 7. Confidentiality  <!-- lvl=4 i=4019 sid=body[1]/tbl[54]/tr[76]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - 9. Fees and Expenses  <!-- lvl=4 i=4023 sid=body[1]/tbl[54]/tr[77]/tc[1]/p[1] src=Structure CẦN-XEM-LẠI -->
+      - status of all permits and agreements:  <!-- lvl=4 i=4058 sid=body[1]/p[1250] src=Structure CẦN-XEM-LẠI -->
+      - health and safety supervision:  <!-- lvl=4 i=4065 sid=body[1]/p[1257] src=Structure CẦN-XEM-LẠI -->
+      - worker accommodations:  <!-- lvl=4 i=4068 sid=body[1]/p[1260] src=Structure CẦN-XEM-LẠI -->
+      - training:  <!-- lvl=4 i=4074 sid=body[1]/p[1266] src=Structure CẦN-XEM-LẠI -->
+      - environmental and social supervision:  <!-- lvl=4 i=4079 sid=body[1]/p[1271] src=Structure CẦN-XEM-LẠI -->
+      - l. Traffic, road safety and vehicles/equipment:  <!-- lvl=4 i=4086 sid=body[1]/p[1278] src=Structure CẦN-XEM-LẠI -->
+      - Environmental mitigations and issues (what has been done):  <!-- lvl=4 i=4090 sid=body[1]/p[1282] src=Structure CẦN-XEM-LẠI -->
+      - compliance:  <!-- lvl=4 i=4099 sid=body[1]/p[1291] src=Structure CẦN-XEM-LẠI -->
+      - Section X - Contract Forms  <!-- lvl=4 i=4145 sid=body[1]/p[1314] src=Structure CẦN-XEM-LẠI -->
+- Table of Forms  <!-- lvl=1 i=4147 sid=body[1]/p[1316] src=Structure CẦN-XEM-LẠI -->
+- Notification of Intention to Award  <!-- lvl=1 i=4160 sid=body[1]/p[1329] src=Structure CẦN-XEM-LẠI -->
+  - This Notification of Intention to Award (Notification) notifies you of our decision to award the above contract. The transmission of this Notification begins the Standstill Period. During the Standstill Period you may:  <!-- lvl=2 i=4180 sid=body[1]/p[1349] src=Structure CẦN-XEM-LẠI -->
+  - request a debriefing in relation to the evaluation of your Proposal, and/or  <!-- lvl=2 i=4181 sid=body[1]/p[1350] src=Structure CẦN-XEM-LẠI -->
+  - submit a Procurement-related Complaint in relation to the decision to award the contract.  <!-- lvl=2 i=4182 sid=body[1]/p[1351] src=Structure CẦN-XEM-LẠI -->
+  - The successful Proposer  <!-- lvl=2 i=4183 sid=body[1]/p[1352] src=Structure CẦN-XEM-LẠI -->
+  - Other Proposers [INSTRUCTIONS: insert names of all Proposers that submitted a Proposal, Proposal prices as read out and evaluated, technical and combined scores.]  <!-- lvl=2 i=4192 sid=body[1]/p[1353] src=Structure CẦN-XEM-LẠI -->
+  - Reason/s why your Proposal was unsuccessful [Delete if the combined score already reveals the reason]  <!-- lvl=2 i=4224 sid=body[1]/p[1354] src=Structure CẦN-XEM-LẠI -->
+  - How to request a debriefing  <!-- lvl=2 i=4226 sid=body[1]/p[1355] src=Structure CẦN-XEM-LẠI -->
+  - How to make a complaint  <!-- lvl=2 i=4238 sid=body[1]/p[1356] src=Structure CẦN-XEM-LẠI -->
+  - Standstill Period  <!-- lvl=2 i=4254 sid=body[1]/p[1357] src=Structure CẦN-XEM-LẠI -->
+  - If you have any questions regarding this Notification, please do not hesitate to contact us.  <!-- lvl=2 i=4258 sid=body[1]/p[1358] src=Structure CẦN-XEM-LẠI -->
+  - On behalf of the Employer:  <!-- lvl=2 i=4259 sid=body[1]/p[1359] src=Structure CẦN-XEM-LẠI -->
+  - Beneficial Ownership Disclosure Form  <!-- lvl=2 i=4265 sid=body[1]/p[1365] src=Structure CẦN-XEM-LẠI -->
+- Letter of Acceptance  <!-- lvl=1 i=4336 sid=body[1]/p[1410] src=Structure CẦN-XEM-LẠI -->
+  - Contract Agreement  <!-- lvl=2 i=4350 sid=body[1]/p[1424] src=Structure CẦN-XEM-LẠI -->
+- Performance Security – Option 1: Demand Guarantee  <!-- lvl=1 i=4373 sid=body[1]/p[1447] src=Structure CẦN-XEM-LẠI -->
+- Performance Security – Option 2: Performance Bond  <!-- lvl=1 i=4390 sid=body[1]/p[1464] src=Structure CẦN-XEM-LẠI -->
+- Environmental and Social (ES ) Performance Security  <!-- lvl=1 i=4414 sid=body[1]/p[1488] src=Structure CẦN-XEM-LẠI -->
+- Advance Payment Security  <!-- lvl=1 i=4432 sid=body[1]/p[1506] src=Structure CẦN-XEM-LẠI -->
+- Retention Money Security  <!-- lvl=1 i=4452 sid=body[1]/p[1526] src=Structure CẦN-XEM-LẠI -->
+
+> 395 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

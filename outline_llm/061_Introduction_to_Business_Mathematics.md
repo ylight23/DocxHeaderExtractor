@@ -1,0 +1,43 @@
+# Cấu trúc: 061_Introduction_to_Business_Mathematics.docx
+
+  - 1.1 Basic concepts  <!-- lvl=2 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+  - 1.2. DIMENSION AND BASIS OF RN  <!-- lvl=2 i=24 sid=body[1]/p[25] src=Structure CẦN-XEM-LẠI -->
+  - 1.3. EUCLIDIAN SCALAR PRODUCT  <!-- lvl=2 i=28 sid=body[1]/p[29] src=Structure CẦN-XEM-LẠI -->
+  - 2.1 Matrices as linear mappings  <!-- lvl=2 i=32 sid=body[1]/p[33] src=Structure CẦN-XEM-LẠI -->
+  - 2.2. BASIC CONCEPTS  <!-- lvl=2 i=36 sid=body[1]/p[37] src=Structure CẦN-XEM-LẠI -->
+  - 2.3. MATRIX MULTIPLICATION  <!-- lvl=2 i=40 sid=body[1]/p[41] src=Structure CẦN-XEM-LẠI -->
+  - 3.1 Basic concepts  <!-- lvl=2 i=44 sid=body[1]/p[45] src=Structure CẦN-XEM-LẠI -->
+  - 3.2 Gaußian elimination  <!-- lvl=2 i=46 sid=body[1]/p[47] src=Structure CẦN-XEM-LẠI -->
+  - 3.3. RANK OF A MATRIX  <!-- lvl=2 i=48 sid=body[1]/p[49] src=Structure CẦN-XEM-LẠI -->
+  - 3.4 Criteria for solving systems of linear algebraic equations  <!-- lvl=2 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+  - 3.5. INVERSE OF A REGULAR (N × N)-MATRIX  <!-- lvl=2 i=52 sid=body[1]/p[53] src=Structure CẦN-XEM-LẠI -->
+  - 3.6. OUTLOOK  <!-- lvl=2 i=56 sid=body[1]/p[57] src=Structure CẦN-XEM-LẠI -->
+  - 4.1 General considerations  <!-- lvl=2 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+  - 4.2. INPUT–OUTPUT MATRIX AND RESOURCE CONSUMPTION MATRIX  <!-- lvl=2 i=64 sid=body[1]/p[65] src=Structure CẦN-XEM-LẠI -->
+  - 4.2.2 Resource consumption matrix  <!-- lvl=2 i=66 sid=body[1]/p[67] src=Structure CẦN-XEM-LẠI -->
+  - 4.3.1 Flows of goods: endogenous INPUT to total OUTPUT  <!-- lvl=2 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+  - 4.3.2 Flows of goods: exogenous INPUT to total OUTPUT  <!-- lvl=2 i=70 sid=body[1]/p[71] src=Structure CẦN-XEM-LẠI -->
+  - 4.4. OUTLOOK  <!-- lvl=2 i=72 sid=body[1]/p[73] src=Structure CẦN-XEM-LẠI -->
+  - 5.1 Exposition of a quantitative problem  <!-- lvl=2 i=76 sid=body[1]/p[77] src=Structure CẦN-XEM-LẠI -->
+  - 5.2 Graphical method for solving problems with two indepen  <!-- lvl=2 i=80 sid=body[1]/p[81] src=Structure CẦN-XEM-LẠI -->
+  - 5.3. DANTZIG’S SIMPLEX ALGORITHM  <!-- lvl=2 i=84 sid=body[1]/p[85] src=Structure CẦN-XEM-LẠI -->
+  - 6.1 Arithmetical and geometrical sequences and series  <!-- lvl=2 i=88 sid=body[1]/p[89] src=Structure CẦN-XEM-LẠI -->
+  - 6.1.2 Geometrical sequence and series  <!-- lvl=2 i=90 sid=body[1]/p[91] src=Structure CẦN-XEM-LẠI -->
+  - 6.2. INTEREST AND COMPOUND INTEREST  <!-- lvl=2 i=92 sid=body[1]/p[93] src=Structure CẦN-XEM-LẠI -->
+  - 6.3. REDEMPTION PAYMENTS IN CONSTANT ANNUITIES  <!-- lvl=2 i=96 sid=body[1]/p[97] src=Structure CẦN-XEM-LẠI -->
+  - 6.4. PENSION CALCULATIONS  <!-- lvl=2 i=104 sid=body[1]/p[105] src=Structure CẦN-XEM-LẠI -->
+  - 6.5 Linear and declining-balance depreciation methods  <!-- lvl=2 i=106 sid=body[1]/p[107] src=Structure CẦN-XEM-LẠI -->
+  - 6.6. SUMMARISING FORMULA  <!-- lvl=2 i=108 sid=body[1]/p[109] src=Structure CẦN-XEM-LẠI -->
+  - 7.1 Real-valued functions of one real variable  <!-- lvl=2 i=112 sid=body[1]/p[113] src=Structure CẦN-XEM-LẠI -->
+  - 7.1.1 Polynomials of degree n  <!-- lvl=2 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+  - 7.1.2 Rational functions  <!-- lvl=2 i=116 sid=body[1]/p[117] src=Structure CẦN-XEM-LẠI -->
+  - 7.1.5 Logarithmic functions  <!-- lvl=2 i=118 sid=body[1]/p[119] src=Structure CẦN-XEM-LẠI -->
+  - 7.2. DERIVATION OF DIFFERENTIABLE REAL-VALUED FUNCTIONS  <!-- lvl=2 i=120 sid=body[1]/p[121] src=Structure CẦN-XEM-LẠI -->
+  - 7.3. COMMON FUNCTIONS IN ECONOMIC THEORY  <!-- lvl=2 i=124 sid=body[1]/p[125] src=Structure CẦN-XEM-LẠI -->
+  - 7.4 Curve sketching  <!-- lvl=2 i=126 sid=body[1]/p[127] src=Structure CẦN-XEM-LẠI -->
+  - 7.5. ANALYTIC INVESTIGATIONS OF ECONOMIC FUNCTIONS  <!-- lvl=2 i=128 sid=body[1]/p[129] src=Structure CẦN-XEM-LẠI -->
+  - 7.5.3 Extremal values of rational economic functions  <!-- lvl=2 i=138 sid=body[1]/p[139] src=Structure CẦN-XEM-LẠI -->
+  - 7.6. ELASTICITIES  <!-- lvl=2 i=140 sid=body[1]/p[141] src=Structure CẦN-XEM-LẠI -->
+  - 8.3. APPLICATIONS IN ECONOMIC THEORY  <!-- lvl=2 i=156 sid=body[1]/p[157] src=Structure CẦN-XEM-LẠI -->
+
+> 39 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

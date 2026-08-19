@@ -1,0 +1,78 @@
+# Cấu trúc: 064_Machine_Learning_with_Neural_Networks.docx
+
+- 1 Introduction  <!-- lvl=1 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+  - 1.1 Neural networks  <!-- lvl=2 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+  - 1.2 McCulloch-Pitts neurons  <!-- lvl=2 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+  - 1.3 Activation functions  <!-- lvl=2 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+  - 1.4 Asynchronous updates  <!-- lvl=2 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+  - 1.6 Further reading  <!-- lvl=2 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+  - 2.1 Pattern recognition  <!-- lvl=2 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+  - 2.3 The cross-talk term  <!-- lvl=2 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+  - 2.4 One-step error probability  <!-- lvl=2 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+  - 2.5 Energy function  <!-- lvl=2 i=71 sid=body[1]/p[72] src=Structure CẦN-XEM-LẠI -->
+  - 2.6 Summary  <!-- lvl=2 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+  - 3.1 Stochastic dynamics  <!-- lvl=2 i=81 sid=body[1]/p[82] src=Structure CẦN-XEM-LẠI -->
+  - 3.2 Order parameters  <!-- lvl=2 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+  - 3.4 Critical storage capacity  <!-- lvl=2 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+  - 3.6 Correlated and non-random patterns  <!-- lvl=2 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+  - 3.7 Summary  <!-- lvl=2 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+- 4 The Boltzmann distribution  <!-- lvl=1 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+  - 4.1 Convergence of the stochastic dynamics  <!-- lvl=2 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+  - 4.2 Monte-Carlo simulation  <!-- lvl=2 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+  - 4.3 Simulated annealing  <!-- lvl=2 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+  - 4.4 Boltzmann machines  <!-- lvl=2 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+  - 4.5 Restricted Boltzmann machines  <!-- lvl=2 i=141 sid=body[1]/p[142] src=Structure CẦN-XEM-LẠI -->
+  - 4.6 Summary  <!-- lvl=2 i=153 sid=body[1]/p[154] src=Structure CẦN-XEM-LẠI -->
+- 5 Perceptrons  <!-- lvl=1 i=162 sid=body[1]/p[163] src=Structure CẦN-XEM-LẠI -->
+  - 5.2 Iterative learning algorithm  <!-- lvl=2 i=172 sid=body[1]/p[173] src=Structure CẦN-XEM-LẠI -->
+  - 5.3 Gradient descent for linear units  <!-- lvl=2 i=174 sid=body[1]/p[175] src=Structure CẦN-XEM-LẠI -->
+  - 5.5 Multi-layer perceptrons  <!-- lvl=2 i=186 sid=body[1]/p[187] src=Structure CẦN-XEM-LẠI -->
+  - 5.6 Summary  <!-- lvl=2 i=194 sid=body[1]/p[195] src=Structure CẦN-XEM-LẠI -->
+  - 5.7 Further reading  <!-- lvl=2 i=196 sid=body[1]/p[197] src=Structure CẦN-XEM-LẠI -->
+- 6 Stochastic gradient descent  <!-- lvl=1 i=198 sid=body[1]/p[199] src=Structure CẦN-XEM-LẠI -->
+  - 6.1 Chain rule and error backpropagation  <!-- lvl=2 i=198 sid=body[1]/p[199] src=Structure CẦN-XEM-LẠI -->
+  - 6.2 Stochastic gradient-descent algorithm  <!-- lvl=2 i=204 sid=body[1]/p[205] src=Structure CẦN-XEM-LẠI -->
+  - 6.3 Preprocessing the input data  <!-- lvl=2 i=210 sid=body[1]/p[211] src=Structure CẦN-XEM-LẠI -->
+  - 6.5 Adaptation of the learning rate  <!-- lvl=2 i=224 sid=body[1]/p[225] src=Structure CẦN-XEM-LẠI -->
+  - 6.6 Summary  <!-- lvl=2 i=228 sid=body[1]/p[229] src=Structure CẦN-XEM-LẠI -->
+- 7 Deep learning  <!-- lvl=1 i=232 sid=body[1]/p[233] src=Structure CẦN-XEM-LẠI -->
+  - 7.1 How many hidden layers  <!-- lvl=2 i=232 sid=body[1]/p[233] src=Structure CẦN-XEM-LẠI -->
+  - 7.2 Vanishing and exploding gradients  <!-- lvl=2 i=242 sid=body[1]/p[243] src=Structure CẦN-XEM-LẠI -->
+  - 7.4 Residual networks  <!-- lvl=2 i=260 sid=body[1]/p[261] src=Structure CẦN-XEM-LẠI -->
+  - 7.5 Outputs and energy functions  <!-- lvl=2 i=264 sid=body[1]/p[265] src=Structure CẦN-XEM-LẠI -->
+  - 7.6 Regularisation  <!-- lvl=2 i=270 sid=body[1]/p[271] src=Structure CẦN-XEM-LẠI -->
+  - 7.6.2 Pruning  <!-- lvl=2 i=272 sid=body[1]/p[273] src=Structure CẦN-XEM-LẠI -->
+  - 7.6.3 Drop out  <!-- lvl=2 i=280 sid=body[1]/p[281] src=Structure CẦN-XEM-LẠI -->
+  - 7.6.5 Batch normalisation  <!-- lvl=2 i=282 sid=body[1]/p[283] src=Structure CẦN-XEM-LẠI -->
+  - 7.7 Summary  <!-- lvl=2 i=284 sid=body[1]/p[285] src=Structure CẦN-XEM-LẠI -->
+- 8 Convolutional networks  <!-- lvl=1 i=288 sid=body[1]/p[289] src=Structure CẦN-XEM-LẠI -->
+  - 8.1 Convolution layers  <!-- lvl=2 i=290 sid=body[1]/p[291] src=Structure CẦN-XEM-LẠI -->
+  - 8.2 Pooling layers  <!-- lvl=2 i=294 sid=body[1]/p[295] src=Structure CẦN-XEM-LẠI -->
+  - 8.3 Learning to read handwritten digits  <!-- lvl=2 i=296 sid=body[1]/p[297] src=Structure CẦN-XEM-LẠI -->
+  - 8.4 Coping with deformations of the input distribution  <!-- lvl=2 i=302 sid=body[1]/p[303] src=Structure CẦN-XEM-LẠI -->
+  - 8.5 Deep learning for object recognition  <!-- lvl=2 i=304 sid=body[1]/p[305] src=Structure CẦN-XEM-LẠI -->
+  - 8.6 Summary  <!-- lvl=2 i=310 sid=body[1]/p[311] src=Structure CẦN-XEM-LẠI -->
+  - 8.7 Further reading  <!-- lvl=2 i=314 sid=body[1]/p[315] src=Structure CẦN-XEM-LẠI -->
+- 9 Supervised recurrent networks  <!-- lvl=1 i=316 sid=body[1]/p[317] src=Structure CẦN-XEM-LẠI -->
+  - 9.1 Recurrent backpropagation  <!-- lvl=2 i=320 sid=body[1]/p[321] src=Structure CẦN-XEM-LẠI -->
+  - 9.2 Backpropagation through time  <!-- lvl=2 i=326 sid=body[1]/p[327] src=Structure CẦN-XEM-LẠI -->
+  - 9.3 Vanishing gradients  <!-- lvl=2 i=336 sid=body[1]/p[337] src=Structure CẦN-XEM-LẠI -->
+  - 9.4 Recurrent networks for machine translation  <!-- lvl=2 i=340 sid=body[1]/p[341] src=Structure CẦN-XEM-LẠI -->
+  - 9.5 Reservoir computing  <!-- lvl=2 i=346 sid=body[1]/p[347] src=Structure CẦN-XEM-LẠI -->
+  - 9.6 Summary  <!-- lvl=2 i=352 sid=body[1]/p[353] src=Structure CẦN-XEM-LẠI -->
+- 10 Unsupervised learning  <!-- lvl=1 i=358 sid=body[1]/p[359] src=Structure CẦN-XEM-LẠI -->
+  - 10.1 Oja’s rule  <!-- lvl=2 i=358 sid=body[1]/p[359] src=Structure CẦN-XEM-LẠI -->
+  - 10.2 Competitive learning  <!-- lvl=2 i=366 sid=body[1]/p[367] src=Structure CẦN-XEM-LẠI -->
+  - 10.3 Self-organising maps  <!-- lvl=2 i=370 sid=body[1]/p[371] src=Structure CẦN-XEM-LẠI -->
+  - 10.4 K -means clustering  <!-- lvl=2 i=384 sid=body[1]/p[385] src=Structure CẦN-XEM-LẠI -->
+  - 10.5 Radial basis functions  <!-- lvl=2 i=388 sid=body[1]/p[389] src=Structure CẦN-XEM-LẠI -->
+  - 10.6 Autoencoders  <!-- lvl=2 i=396 sid=body[1]/p[397] src=Structure CẦN-XEM-LẠI -->
+  - 10.7 Summary  <!-- lvl=2 i=402 sid=body[1]/p[403] src=Structure CẦN-XEM-LẠI -->
+  - 10.8 Further reading  <!-- lvl=2 i=404 sid=body[1]/p[405] src=Structure CẦN-XEM-LẠI -->
+- 11 Reinforcement learning  <!-- lvl=1 i=408 sid=body[1]/p[409] src=Structure CẦN-XEM-LẠI -->
+  - 11.1 Associative reward-penalty algorithm  <!-- lvl=2 i=414 sid=body[1]/p[415] src=Structure CẦN-XEM-LẠI -->
+  - 11.2 Temporal difference learning  <!-- lvl=2 i=420 sid=body[1]/p[421] src=Structure CẦN-XEM-LẠI -->
+  - 11.3 Q -learning  <!-- lvl=2 i=428 sid=body[1]/p[429] src=Structure CẦN-XEM-LẠI -->
+  - 11.4 Summary  <!-- lvl=2 i=442 sid=body[1]/p[443] src=Structure CẦN-XEM-LẠI -->
+
+> 74 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

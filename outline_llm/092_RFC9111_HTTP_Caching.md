@@ -1,0 +1,292 @@
+# Cấu trúc: 092_RFC9111_HTTP_Caching.docx
+
+- Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Revised BSD License. Fielding, et al. Standards Track Page 1  <!-- lvl=1 i=2 sid=body[1]/p[3] src=Heuristic -->
+  - 3.2. Handling a Received Validation Request  <!-- lvl=2 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+  - 3.1. Sending a Validation  <!-- lvl=2 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+  - 2.4. Serving Stale  <!-- lvl=2 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+  - 2.3. Calculating  <!-- lvl=2 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+  - 2.2. Calculating Heuristic  <!-- lvl=2 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+  - 2.1. Calculating Freshness  <!-- lvl=2 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+- 1. Calculating Cache Keys with the Vary Header  <!-- lvl=1 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+- Requests 4. Constructing Responses from  <!-- lvl=1 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+- 5. Storing Responses to Authenticated  <!-- lvl=1 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+- 1. Requirements  <!-- lvl=1 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+- 3. Storing Incomplete  <!-- lvl=1 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+- 2. Updating Stored Header  <!-- lvl=1 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+- 1. Storing Header and Trailer  <!-- lvl=1 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+- Operation 3. Storing Responses in  <!-- lvl=1 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+- Seconds 2. Overview of Cache  <!-- lvl=1 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+  - 2.2. Delta  <!-- lvl=2 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+  - 2.1. Imported  <!-- lvl=2 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+- 2. Syntax  <!-- lvl=1 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+- 4. Combining Partial  <!-- lvl=1 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.2. must-revalidate  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.3. must-understand  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.4. no-cache  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.5. no-store  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.6. no-transform  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+    - 5.2.3. Extension  <!-- lvl=3 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.8. proxy-revalidate  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.9. public  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.10. s-maxage  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.1. max-age  <!-- lvl=3 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+- 4. Pragma  <!-- lvl=1 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.7. private  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+    - 5.2.2. Response  <!-- lvl=3 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+  - 2.4. Cache Directive  <!-- lvl=2 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.6. no-transform  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.7. only-if-cached  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+  - 3.4. Freshening Stored Responses upon  <!-- lvl=2 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+    - 4.3.3. Handling a Validation  <!-- lvl=3 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+  - 3.5. Freshening Responses with  <!-- lvl=2 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+- Responses 5. Field  <!-- lvl=1 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+- 2. Cache-  <!-- lvl=1 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+- 4. Invalidating Stored  <!-- lvl=1 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+    - 2.1.1. max-age  <!-- lvl=3 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.2. max-stale  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.3. min-fresh  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.4. no-cache  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.5. no-store  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+  - 2.1. Request  <!-- lvl=2 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
+- 2. Cache Directive  <!-- lvl=1 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+- Addresses 1.  <!-- lvl=1 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+- 1. Normative  <!-- lvl=1 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+- 3. Warn Code  <!-- lvl=1 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+  - 8.1. Field Name  <!-- lvl=2 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+- 2. Informative References Appendix A.  <!-- lvl=1 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+- 3. Caching of Sensitive  <!-- lvl=1 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+- 2. Timing  <!-- lvl=1 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+  - 7.1. Cache  <!-- lvl=2 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+- Caches 7. Security Considerations  <!-- lvl=1 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+- Warning 6.  <!-- lvl=1 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+- Information 8. IANA Considerations  <!-- lvl=1 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+- 6.4> token = <token, see [HTTP],  <!-- lvl=1 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+- 6.3> field-name = <field-name, see [HTTP],  <!-- lvl=1 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+- 9). [HTTP] defines the following rules: HTTP-date = <HTTP-date, see [HTTP],  <!-- lvl=1 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+- 1: DIGIT (decimal  <!-- lvl=1 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+- 6.7> OWS = <OWS, see [HTTP],  <!-- lvl=1 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+  - 6.1 of [HTTP], that allows for compact definition of comma-separated lists using a "#" operator (similar to how the "*" operator indicates repetition).  <!-- lvl=2 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+  - 1.2. Syntax Notation This specification uses the Augmented Backus-Naur Form (ABNF) notation of [RFC5234], extended with the notation for case-sensitivity in strings defined in [RFC7405].  <!-- lvl=2 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+  - 1.1. Requirements Notation The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.  <!-- lvl=2 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+  - 2.4). This document obsoletes RFC 7234, with the changes being summarized in Appendix B.  <!-- lvl=2 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+- 3) or if the origin is unavailable (  <!-- lvl=1 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+    - 1.2.1. Imported Rules The following core rule is included by reference, as defined in [RFC5234], Appendix B.  <!-- lvl=3 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+    - 1.2.2. Delta Seconds The delta-seconds rule specifies a non-negative integer, representing time in seconds. delta-seconds = 1*DIGIT A recipient parsing a delta-seconds value and converting it to binary form ought to use an arithmetic type of at least 31 bits of non-negative integer range.  <!-- lvl=3 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+- 2. Overview of Cache Operation Proper cache operation preserves the semantics of HTTP transfers while reducing the transmission of information already held in the cache.  <!-- lvl=1 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+- 1. Caches might incorporate additional material into the cache key.  <!-- lvl=1 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+- 3); ◦ a max-age response directive (see  <!-- lvl=1 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+  - 2.3. In this context, a cache has "understood" a request method or a response status code if it recognizes it and implements all specified caching-related behavior.  <!-- lvl=2 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+  - 2.2). Note that a cache extension can override any of the requirements listed; see  <!-- lvl=2 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+  - 2.3); or ◦ a status code that is defined as heuristically cacheable (see  <!-- lvl=2 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.10); ◦ a cache extension that allows it to be cached (see  <!-- lvl=3 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.1); ◦ if the cache is shared: an s-maxage response directive (see  <!-- lvl=3 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.7); ◦ an Expires header field (see  <!-- lvl=3 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.7); • if the cache is shared: the Authorization header field is not present in the request (see  <!-- lvl=3 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+- 5); and • the response contains at least one of the following: ◦ a public response directive (see  <!-- lvl=1 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+- 3. Storing Responses in Caches A cache MUST NOT store a response to a request unless: • the request method is understood by the cache; • the response status code is final (see Section 15 of [HTTP]); • if the response status code is 206 or 304, or the must-understand cache directive (see  <!-- lvl=1 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.3) is present: the cache understands the response status code; • the no-store cache directive is not present in the response (see  <!-- lvl=3 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.9); ◦ a private response directive, if the cache is not shared (see  <!-- lvl=3 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+  - 3.1 of [HTTP]).  <!-- lvl=2 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+  - 6.2 of [HTTP]) or a response directive is present that explicitly allows shared caching (see  <!-- lvl=2 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.5); • if the cache is shared: the private response directive is either not present or allows a shared cache to store a modified response; see  <!-- lvl=3 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+  - 4.3.4, and  <!-- lvl=2 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+  - 7.2 of [HTTP]).  <!-- lvl=2 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+  - 7.3 of [HTTP]), and Proxy-Authorization (  <!-- lvl=2 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+  - 7.1 of [HTTP]), Proxy- Authentication-Info (  <!-- lvl=2 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+    - 4.3.5. When doing so, the cache MUST add each header field in the provided response to the stored response, replacing field values that are already present, with the following exceptions: • Header fields excepted from storage in  <!-- lvl=3 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.4) and private (  <!-- lvl=3 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.7) cache directives can have arguments that prevent storage of header fields by all caches and shared caches, respectively. • Header fields that are specific to the proxy that a cache uses when forwarding a request MUST NOT be stored, unless the cache incorporates the identity of the proxy into the cache key.  <!-- lvl=3 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+  - 3.1. Storing Header and Trailer Fields Caches MUST include all received response header fields -- including unrecognized ones -- when storing a response; this assures that new HTTP header fields can be successfully deployed.  <!-- lvl=2 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+  - 3.2. Updating Stored Header Fields Caches are required to update a stored response's header fields from another (typically newer) response in several situations; for example, see  <!-- lvl=2 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+  - 6.1 of [HTTP] for some examples. • The no-cache (  <!-- lvl=2 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+  - 6.1 of [HTTP] to be removed before forwarding the message.  <!-- lvl=2 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+  - 3.3. Storing Incomplete Responses If the request method is GET, the response status code is 200 (OK), and the entire response header section has been received, a cache MAY store a response that is not complete (  <!-- lvl=2 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+- 4. A cache MUST NOT use an incomplete response to answer requests unless the response has been made complete, or the request is partial and specifies a range wholly within the incomplete response.  <!-- lvl=1 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+  - 3.4. Combining Partial Content A response might transfer only a partial representation if the connection closed prematurely or if the request used one or more Range specifiers (  <!-- lvl=2 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+    - 3.7.3 of [HTTP].  <!-- lvl=3 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+  - 2.4), or ◦ successfully validated (see  <!-- lvl=2 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+- 4. A cache can use a response that is stored or storable to satisfy multiple requests, provided that it is allowed to reuse that response for the requests in question.  <!-- lvl=1 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+  - 2.1 of [HTTP]) to the origin server; i.e., a cache is not allowed to generate a reply to such a request before having forwarded the request and having received a corresponding response.  <!-- lvl=2 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+  - 2.3. A cache MUST write through requests with methods that are unsafe (  <!-- lvl=2 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+- 1), replacing any present in the response with a value equal to the stored response's current_age; see  <!-- lvl=1 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+  - 2.3. When a stored response is used to satisfy a request without validation, a cache MUST generate an Age header field (  <!-- lvl=2 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+- 3). Note that a cache extension can override any of the requirements listed; see  <!-- lvl=1 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+- 2), or ◦ allowed to be served stale (see  <!-- lvl=1 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.4), unless it is successfully validated (  <!-- lvl=3 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+- 1), and • the stored response does not contain the no-cache directive (  <!-- lvl=1 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+- 4. Constructing Responses from Caches When presented with a request, a cache MUST NOT reuse a stored response unless: • the presented target URI (  <!-- lvl=1 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.9), and s-maxage (  <!-- lvl=3 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.2), public (  <!-- lvl=3 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+  - 2.2) that allows it to be stored by a shared cache, and the cache conforms to the requirements of that directive for that response.  <!-- lvl=2 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+  - 6.2 of [HTTP]) to satisfy any subsequent request unless the response contains a Cache- Control field with a response directive (  <!-- lvl=2 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+  - 3.5. Storing Responses to Authenticated Requests A shared cache MUST NOT use a cached response to a request with an Authorization header field (  <!-- lvl=2 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+- 3), and • the stored response is one of the following: ◦ fresh (see  <!-- lvl=1 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+  - 4.2. Freshness  <!-- lvl=2 i=22 sid=body[1]/p[23] src=Structure CẦN-XEM-LẠI -->
+  - 2.3) stored response with a valid Vary field value.  <!-- lvl=2 i=22 sid=body[1]/p[23] src=Structure CẦN-XEM-LẠI -->
+  - 6.7 of [HTTP]) MUST revalidate stored responses upon every use.  <!-- lvl=2 i=22 sid=body[1]/p[23] src=Structure CẦN-XEM-LẠI -->
+  - 5.5 of [HTTP]), the cache MUST NOT use that stored response without revalidation unless all the presented request header fields nominated by that Vary field value match those fields in the original request (i.e., the request that caused the cached response to be stored).  <!-- lvl=2 i=22 sid=body[1]/p[23] src=Structure CẦN-XEM-LẠI -->
+  - 4.1. Calculating Cache Keys with the Vary Header Field When a cache receives a request that can be satisfied by a stored response and that stored response contains a Vary header field (  <!-- lvl=2 i=22 sid=body[1]/p[23] src=Structure CẦN-XEM-LẠI -->
+- Section 4.  <!-- lvl=1 i=22 sid=body[1]/p[23] src=Structure CẦN-XEM-LẠI -->
+  - 2.1) to suggest limits on the freshness calculations for the corresponding response.  <!-- lvl=2 i=24 sid=body[1]/p[25] src=Structure CẦN-XEM-LẠI -->
+  - 2.3. Clients can send the max-age or min-fresh request directives (  <!-- lvl=2 i=24 sid=body[1]/p[25] src=Structure CẦN-XEM-LẠI -->
+- 2.1; current_age is defined in  <!-- lvl=1 i=24 sid=body[1]/p[25] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.1). Generally, origin servers will assign future explicit expiration times to responses in the belief that the representation is not likely to change in a semantically significant way before the expiration time is reached.  <!-- lvl=3 i=24 sid=body[1]/p[25] src=Structure CẦN-XEM-LẠI -->
+  - 2.4). Since origin servers do not always provide explicit expiration times, caches are also allowed to use a heuristic to determine an expiration time under certain circumstances (see  <!-- lvl=2 i=24 sid=body[1]/p[25] src=Structure CẦN-XEM-LẠI -->
+- 3) or the max-age response directive (  <!-- lvl=1 i=24 sid=body[1]/p[25] src=Structure CẦN-XEM-LẠI -->
+  - 2.2). The calculation to determine if a response is fresh is: response_is_fresh = (freshness_lifetime > current_age) freshness_lifetime is defined in  <!-- lvl=2 i=24 sid=body[1]/p[25] src=Structure CẦN-XEM-LẠI -->
+    - 4.2.1. Calculating Freshness Lifetime A cache can calculate the freshness lifetime (denoted as freshness_lifetime) of a response by evaluating the following rules and using the first match: • If the cache is shared and the s-maxage response directive (  <!-- lvl=3 i=26 sid=body[1]/p[27] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.10) is present, use its value, or • If the max-age response directive (  <!-- lvl=3 i=26 sid=body[1]/p[27] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.1) is present, use its value, or • If the Expires response header field (  <!-- lvl=3 i=26 sid=body[1]/p[27] src=Structure CẦN-XEM-LẠI -->
+- 3) is present, use its value minus the value of the Date response header field (using the time the message was received if it is not present, as per  <!-- lvl=1 i=26 sid=body[1]/p[27] src=Structure CẦN-XEM-LẠI -->
+  - 6.1 of [HTTP]), or • Otherwise, no explicit expiration time is present in the response.  <!-- lvl=2 i=26 sid=body[1]/p[27] src=Structure CẦN-XEM-LẠI -->
+  - 2.2. Note that this calculation is intended to reduce clock skew by using the clock information provided by the origin server whenever possible.  <!-- lvl=2 i=26 sid=body[1]/p[27] src=Structure CẦN-XEM-LẠI -->
+    - 4.2.2. Calculating Heuristic Freshness Since origin servers do not always provide explicit expiration times, a cache MAY assign a heuristic expiration time when an explicit time is not specified, employing algorithms that use other field values (such as the Last-Modified time) to estimate a plausible expiration time.  <!-- lvl=3 i=26 sid=body[1]/p[27] src=Structure CẦN-XEM-LẠI -->
+- 2. the "corrected_age_value", if all of the caches along the response path implement HTTP/  <!-- lvl=1 i=28 sid=body[1]/p[29] src=Structure CẦN-XEM-LẠI -->
+  - 1.1 or greater.  <!-- lvl=2 i=28 sid=body[1]/p[29] src=Structure CẦN-XEM-LẠI -->
+- 1. the "apparent_age": response_time minus date_value, if the implementation's clock is reasonably well synchronized to the origin server's clock.  <!-- lvl=1 i=28 sid=body[1]/p[29] src=Structure CẦN-XEM-LẠI -->
+  - 6.1 of [HTTP] for the definition of the Date header field and for requirements regarding responses without it. "now" The term "now" means the current value of this implementation's clock (  <!-- lvl=2 i=28 sid=body[1]/p[29] src=Structure CẦN-XEM-LẠI -->
+- 1), in a form appropriate for arithmetic operation; or 0, if not available. "date_value" The term "date_value" denotes the value of the Date header field, in a form appropriate for arithmetic operations.  <!-- lvl=1 i=28 sid=body[1]/p[29] src=Structure CẦN-XEM-LẠI -->
+    - 4.2.3. Calculating Age The Age header field is used to convey an estimated age of the response message when obtained from a cache.  <!-- lvl=3 i=28 sid=body[1]/p[29] src=Structure CẦN-XEM-LẠI -->
+  - 6.7 of [HTTP]). "request_time" The value of the clock at the time of the request that resulted in the stored response. "response_time" The value of the clock at the time the response was received.  <!-- lvl=2 i=28 sid=body[1]/p[29] src=Structure CẦN-XEM-LẠI -->
+  - 8.2 of [HTTP]), caches are encouraged to use a heuristic expiration value that is no more than some fraction of the interval since that time.  <!-- lvl=2 i=28 sid=body[1]/p[29] src=Structure CẦN-XEM-LẠI -->
+- 2. A cache MUST NOT generate a stale response if it is prohibited by an explicit in-protocol directive (e.g., by a no-cache response directive, a must-revalidate response directive, or an applicable s- maxage or proxy-revalidate response directive; see  <!-- lvl=1 i=30 sid=body[1]/p[31] src=Structure CẦN-XEM-LẠI -->
+    - 4.3.1. Sending a Validation Request When generating a conditional request for validation, a cache either starts with a request it is attempting to satisfy or -- if it is initiating the request independently -- synthesizes a request using a stored response by copying the method, target URI, and request header fields identified by the Vary header field (  <!-- lvl=3 i=30 sid=body[1]/p[31] src=Structure CẦN-XEM-LẠI -->
+  - 4.3. Validation When a cache has one or more stored responses for a requested URI, but cannot serve any of them (e.g., because they are not fresh, or one cannot be chosen; see  <!-- lvl=2 i=30 sid=body[1]/p[31] src=Structure CẦN-XEM-LẠI -->
+- 1), it can use the conditional request mechanism (Section 13 of [HTTP]) in the forwarded request to give the next inbound server an opportunity to choose a valid stored response to use, updating the stored metadata in the process, or to replace the stored response(s) with a new response.  <!-- lvl=1 i=30 sid=body[1]/p[31] src=Structure CẦN-XEM-LẠI -->
+  - 2.2). A cache MUST NOT generate a stale response unless it is disconnected or doing so is explicitly permitted by the client or origin server (e.g., by the max-stale request directive in  <!-- lvl=2 i=30 sid=body[1]/p[31] src=Structure CẦN-XEM-LẠI -->
+    - 4.2.4. Serving Stale Responses A "stale" response is one that either has explicit expiry information or is allowed to have heuristic expiry calculated, but is not fresh according to the calculations in  <!-- lvl=3 i=30 sid=body[1]/p[31] src=Structure CẦN-XEM-LẠI -->
+- 2.1, extension directives such as those defined in [RFC5861], or configuration in accordance with an out-of-band contract).  <!-- lvl=1 i=30 sid=body[1]/p[31] src=Structure CẦN-XEM-LẠI -->
+- 1). The precondition header fields are then compared by recipients to determine whether any stored response is equivalent to a current representation of the resource.  <!-- lvl=1 i=32 sid=body[1]/p[33] src=Structure CẦN-XEM-LẠI -->
+  - 8.2 of [HTTP]), which can be used in an If-Modified-Since header field for response validation, or in an If-Unmodified-Since or If-Range header field for representation selection (i.e., the client is referring specifically to a previously obtained representation with that timestamp).  <!-- lvl=2 i=32 sid=body[1]/p[33] src=Structure CẦN-XEM-LẠI -->
+  - 8.3 of [HTTP]).  <!-- lvl=2 i=32 sid=body[1]/p[33] src=Structure CẦN-XEM-LẠI -->
+    - 4.3.2. Handling a Received Validation Request Each client in the request chain may have its own cache, so it is common for a cache at an intermediary to receive conditional requests from other (outbound) caches.  <!-- lvl=3 i=32 sid=body[1]/p[33] src=Structure CẦN-XEM-LẠI -->
+  - 3.4. • A full response (i.e., one containing content) indicates that none of the stored responses nominated in the conditional request are suitable.  <!-- lvl=2 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+  - 1.5 of [HTTP]) with respect to the cache's chosen response.  <!-- lvl=2 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+    - 4.3.3. Handling a Validation Response Cache handling of a response to a conditional request depends upon its status code: • A 304 (Not Modified) response status code indicates that the stored response can be updated and reused; see  <!-- lvl=3 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+  - 2.2 of [HTTP] for a complete specification of precondition precedence.  <!-- lvl=2 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+  - 1.2 of [HTTP]) indicates that the client wants to validate one or more of its own stored responses in comparison to the stored response chosen by the cache (as per  <!-- lvl=2 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+  - 1.3 of [HTTP]) indicates that the client wants to validate one or more of its own stored responses by modification date.  <!-- lvl=2 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+  - 2.4), or retry the validation request.  <!-- lvl=2 i=36 sid=body[1]/p[37] src=Structure CẦN-XEM-LẠI -->
+    - 4.3.4. Freshening Stored Responses upon Validation When a cache receives a 304 (Not Modified) response, it needs to identify stored responses that are suitable for updating with the new information provided, and then do so.  <!-- lvl=3 i=36 sid=body[1]/p[37] src=Structure CẦN-XEM-LẠI -->
+  - 8.1 of [HTTP]), then each of those strong validators identifies a selected representation for update.  <!-- lvl=2 i=36 sid=body[1]/p[37] src=Structure CẦN-XEM-LẠI -->
+    - 4.3.5. Freshening Responses with HEAD A response to the HEAD method is identical to what an equivalent request made with a GET would have been, without sending the content.  <!-- lvl=3 i=36 sid=body[1]/p[37] src=Structure CẦN-XEM-LẠI -->
+  - 5.1. Age The "Age" response header field conveys the sender's estimate of the time since the response was generated or successfully validated at the origin server.  <!-- lvl=2 i=38 sid=body[1]/p[39] src=Structure CẦN-XEM-LẠI -->
+  - 3.1 of [HTTP]) of the URI to be invalidated differs from that of the target URI (  <!-- lvl=2 i=38 sid=body[1]/p[39] src=Structure CẦN-XEM-LẠI -->
+  - 2.1 of [HTTP]) such as PUT, POST, or DELETE have the potential for changing state on the origin server, intervening caches are required to invalidate stored responses to keep their contents up to date.  <!-- lvl=2 i=38 sid=body[1]/p[39] src=Structure CẦN-XEM-LẠI -->
+  - 4.4. Invalidating Stored Responses Because unsafe request methods (  <!-- lvl=2 i=38 sid=body[1]/p[39] src=Structure CẦN-XEM-LẠI -->
+- 5. Field Definitions This section defines the syntax and semantics of HTTP fields related to caching.  <!-- lvl=1 i=38 sid=body[1]/p[39] src=Structure CẦN-XEM-LẠI -->
+  - 2.2). Although it is defined as a singleton header field, a cache encountering a message with a list-based Age field value SHOULD use the first member of the field value, discarding subsequent ones.  <!-- lvl=2 i=40 sid=body[1]/p[41] src=Structure CẦN-XEM-LẠI -->
+  - 5.2. Cache-Control The "Cache-Control" header field is used to list directives for caches along the request/response chain.  <!-- lvl=2 i=40 sid=body[1]/p[41] src=Structure CẦN-XEM-LẠI -->
+  - 2.3 for information about how Cache-Control directives defined elsewhere are handled.  <!-- lvl=2 i=40 sid=body[1]/p[41] src=Structure CẦN-XEM-LẠI -->
+    - 5.2.1. Request Directives This section defines cache request directives.  <!-- lvl=3 i=40 sid=body[1]/p[41] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.1. max-age  <!-- lvl=4 i=40 sid=body[1]/p[41] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.4. no-cache The no-cache request directive indicates that the client prefers a stored response not be used to satisfy the request without successful validation on the origin server.  <!-- lvl=4 i=42 sid=body[1]/p[43] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.5. no-store The no-store request directive indicates that a cache MUST NOT store any part of either this request or any response to it.  <!-- lvl=4 i=42 sid=body[1]/p[43] src=Structure CẦN-XEM-LẠI -->
+  - 2.2) The min-fresh request directive indicates that the client prefers a response whose freshness lifetime is no less than its current age plus the specified time in seconds.  <!-- lvl=2 i=42 sid=body[1]/p[43] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.3. min-fresh Argument syntax: delta-seconds (see  <!-- lvl=4 i=42 sid=body[1]/p[43] src=Structure CẦN-XEM-LẠI -->
+  - 2.2) The max-stale request directive indicates that the client will accept a response that has exceeded its freshness lifetime.  <!-- lvl=2 i=42 sid=body[1]/p[43] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.2. max-stale Argument syntax: delta-seconds (see  <!-- lvl=4 i=42 sid=body[1]/p[43] src=Structure CẦN-XEM-LẠI -->
+  - 2.2) The max-age request directive indicates that the client prefers a response whose age is less than or equal to the specified number of seconds.  <!-- lvl=2 i=42 sid=body[1]/p[43] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.6. no-transform The no-transform request directive indicates that the client is asking for intermediaries to avoid transforming the content, as defined in  <!-- lvl=4 i=44 sid=body[1]/p[45] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.7. only-if-cached The only-if-cached request directive indicates that the client only wishes to obtain a stored response.  <!-- lvl=4 i=44 sid=body[1]/p[45] src=Structure CẦN-XEM-LẠI -->
+    - 5.2.2. Response Directives This section defines cache response directives.  <!-- lvl=3 i=44 sid=body[1]/p[45] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.1. max-age Argument syntax: delta-seconds (see  <!-- lvl=4 i=44 sid=body[1]/p[45] src=Structure CẦN-XEM-LẠI -->
+  - 2.2) The max-age response directive indicates that the response is to be considered stale after its age is greater than the specified number of seconds.  <!-- lvl=2 i=44 sid=body[1]/p[45] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.2. must-revalidate The must-revalidate response directive indicates that once the response has become stale, a cache MUST NOT reuse that response to satisfy another request until it has been successfully validated by the origin, as defined by  <!-- lvl=4 i=44 sid=body[1]/p[45] src=Structure CẦN-XEM-LẠI -->
+- 3. The must-revalidate directive is necessary to support reliable operation for certain protocol features.  <!-- lvl=1 i=44 sid=body[1]/p[45] src=Structure CẦN-XEM-LẠI -->
+  - 6.2 of [HTTP]), subject to the above requirement on revalidation (  <!-- lvl=2 i=46 sid=body[1]/p[47] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.3. must-understand The must-understand response directive limits caching of the response to a cache that understands and conforms to the requirements for that response's status code.  <!-- lvl=4 i=46 sid=body[1]/p[47] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.4. no-cache Argument syntax: #field-name The no-cache response directive, in its unqualified form (without an argument), indicates that the response MUST NOT be used to satisfy any other request without forwarding it for validation and receiving a successful response; see  <!-- lvl=4 i=46 sid=body[1]/p[47] src=Structure CẦN-XEM-LẠI -->
+- 3. This allows an origin server to prevent a cache from using the response to satisfy a request without contacting it, even by caches that have been configured to send stale responses.  <!-- lvl=1 i=46 sid=body[1]/p[47] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.5. no-store The no-store response directive indicates that a cache MUST NOT store any part of either the immediate request or the response and MUST NOT use the response to satisfy any other request.  <!-- lvl=4 i=46 sid=body[1]/p[47] src=Structure CẦN-XEM-LẠI -->
+- Section 3.  <!-- lvl=1 i=48 sid=body[1]/p[49] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.8. proxy-revalidate  <!-- lvl=4 i=48 sid=body[1]/p[49] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.7. private Argument syntax: #field-name The unqualified private response directive indicates that a shared cache MUST NOT store the response (i.e., the response is intended for a single user).  <!-- lvl=4 i=48 sid=body[1]/p[49] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.6. no-transform The no-transform response directive indicates that an intermediary (regardless of whether it implements a cache) MUST NOT transform the content, as defined in  <!-- lvl=4 i=48 sid=body[1]/p[49] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.8) for a shared cache.  <!-- lvl=3 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+- 3. This is analogous to must-revalidate (  <!-- lvl=1 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.2), except that proxy-revalidate does not apply to private caches.  <!-- lvl=3 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.9), allowing the response to be cached while requiring only a shared cache to revalidate when stale.  <!-- lvl=3 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.9. public The public response directive indicates that a cache MAY store the response even if it would otherwise be prohibited, subject to the constraints defined in  <!-- lvl=4 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+- Section 3.  <!-- lvl=1 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+- 5). Note that it is unnecessary to add the public directive to a response that is already cacheable according to  <!-- lvl=1 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.10. s-maxage Argument syntax: delta-seconds (see  <!-- lvl=4 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+  - 2.2) The s-maxage response directive indicates that, for a shared cache, the maximum age specified by this directive overrides the maximum age specified by either the max-age directive or the Expires header field.  <!-- lvl=2 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+- 3. This directive also permits a shared cache to reuse a response to a request containing an Authorization header field, subject to the above requirements on maximum age and revalidation (  <!-- lvl=1 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+- 5). This directive uses the token form of the argument syntax: e.g., 's-maxage=10' not 's-maxage="10"'.  <!-- lvl=1 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+    - 5.2.3. Extension Directives The Cache-Control header field can be extended through the use of one or more extension cache directives.  <!-- lvl=3 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+    - 5.2.4. Cache Directive Registry The "Hypertext Transfer Protocol (HTTP) Cache Directive Registry" defines the namespace for the cache directives.  <!-- lvl=3 i=52 sid=body[1]/p[53] src=Structure CẦN-XEM-LẠI -->
+  - 5.3. Expires The "Expires" response header field gives the date/time after which the response is considered stale.  <!-- lvl=2 i=52 sid=body[1]/p[53] src=Structure CẦN-XEM-LẠI -->
+  - 1.1). However, support for Cache-Control is now widespread.  <!-- lvl=2 i=54 sid=body[1]/p[55] src=Structure CẦN-XEM-LẠI -->
+  - 5.5. Warning The "Warning" header field was used to carry additional information about the status or transformation of a message that might not be reflected in the status code.  <!-- lvl=2 i=54 sid=body[1]/p[55] src=Structure CẦN-XEM-LẠI -->
+  - 5.4. Pragma The "Pragma" request header field was defined for HTTP/  <!-- lvl=2 i=54 sid=body[1]/p[55] src=Structure CẦN-XEM-LẠI -->
+  - 6.7 of [HTTP]. See also  <!-- lvl=2 i=54 sid=body[1]/p[55] src=Structure CẦN-XEM-LẠI -->
+  - 6.7 of [HTTP]) MUST NOT generate an Expires header field unless its value represents a fixed time in the past (always expired) or its value has been associated with the resource by a system with a clock.  <!-- lvl=2 i=54 sid=body[1]/p[55] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.10), a shared cache recipient MUST ignore the Expires header field.  <!-- lvl=3 i=54 sid=body[1]/p[55] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.1), a recipient MUST ignore the Expires header field.  <!-- lvl=3 i=54 sid=body[1]/p[55] src=Structure CẦN-XEM-LẠI -->
+- 32-bit integers for time values), and many caches will evict a response far sooner than that.  <!-- lvl=1 i=54 sid=body[1]/p[55] src=Structure CẦN-XEM-LẠI -->
+- 6. Relationship to Applications and Other Caches Applications using HTTP often specify additional forms of caching.  <!-- lvl=1 i=56 sid=body[1]/p[57] src=Structure CẦN-XEM-LẠI -->
+- 7. Security Considerations This section is meant to inform developers, information providers, and users of known security concerns specific to HTTP caching.  <!-- lvl=1 i=56 sid=body[1]/p[57] src=Structure CẦN-XEM-LẠI -->
+- 1.1" (Section 11 of [HTTP/  <!-- lvl=1 i=56 sid=body[1]/p[57] src=Structure CẦN-XEM-LẠI -->
+- 1.1]) and "HTTP Semantics" (Section 17 of [HTTP]).  <!-- lvl=1 i=56 sid=body[1]/p[57] src=Structure CẦN-XEM-LẠI -->
+  - 8.1. Field Name Registration IANA has updated the "Hypertext Transfer Protocol (HTTP) Field Name Registry" at <https:// www.iana.org/assignments/http-fields>, as described in  <!-- lvl=2 i=58 sid=body[1]/p[59] src=Structure CẦN-XEM-LẠI -->
+  - 7.3. Caching of Sensitive Information Implementation and deployment flaws (often led to by the misunderstanding of cache operation) might lead to the caching of sensitive information (e.g., authentication credentials) that is thought to be private, exposing it to unauthorized parties.  <!-- lvl=2 i=58 sid=body[1]/p[59] src=Structure CẦN-XEM-LẠI -->
+- 8. IANA Considerations The change controller for the following registrations is: "IETF (iesg@ietf.org) - Internet Engineering Task Force".  <!-- lvl=1 i=58 sid=body[1]/p[59] src=Structure CẦN-XEM-LẠI -->
+- 1.1] for the relevant requirements regarding HTTP/  <!-- lvl=1 i=58 sid=body[1]/p[59] src=Structure CẦN-XEM-LẠI -->
+  - 7.1. Cache Poisoning Storing malicious content in a cache can extend the reach of an attacker to affect multiple users.  <!-- lvl=2 i=58 sid=body[1]/p[59] src=Structure CẦN-XEM-LẠI -->
+  - 7.2. Timing Attacks Because one of the primary uses of a cache is to optimize performance, its use can "leak" information about which resources have been previously requested.  <!-- lvl=2 i=58 sid=body[1]/p[59] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.4 no-store  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.10 Table 2  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.9 s-maxage  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.8 public  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.7 proxy-revalidate  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.7 private  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.6 only-if-cached  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.5 no-transform  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.3 no-cache  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+  - 5.5 Table 1  <!-- lvl=2 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.1.3 must-revalidate  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.1 max-stale  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+  - 2.4 and the cache directive names summarized in the table below.  <!-- lvl=2 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+  - 8.2. Cache Directive Registration IANA has updated the "Hypertext Transfer Protocol (HTTP) Cache Directive Registry" at <https:// www.iana.org/assignments/http-cache-directives> with the registration procedure per  <!-- lvl=2 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+  - 5.4 Warning obsoleted  <!-- lvl=2 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+  - 5.3 Pragma deprecated  <!-- lvl=2 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+  - 5.2 Expires permanent  <!-- lvl=2 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+  - 5.1 Cache-Control permanent  <!-- lvl=2 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - 5.2.2.2 must-understand  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+- 1.1", RFC 2616,  <!-- lvl=1 i=62 sid=body[1]/p[63] src=Structure CẦN-XEM-LẠI -->
+- 1.1", STD 99, RFC 9112,  <!-- lvl=1 i=62 sid=body[1]/p[63] src=Structure CẦN-XEM-LẠI -->
+- 1. Normative References [HTTP] Fielding, R., Ed., Nottingham, M., Ed., and J.  <!-- lvl=1 i=62 sid=body[1]/p[63] src=Structure CẦN-XEM-LẠI -->
+  - 9.2. Informative References [COOKIE] Barth, A., "HTTP State Management Mechanism", RFC 6265,  <!-- lvl=2 i=62 sid=body[1]/p[63] src=Structure CẦN-XEM-LẠI -->
+  - 8.3. Warn Code Registry IANA has added the following note to the "Hypertext Transfer Protocol (HTTP) Warn Codes" registry at <https://www.iana.org/assignments/http-warn-codes> stating that "Warning" has been obsoleted: The Warning header field (and the warn codes that it uses) has been obsoleted for HTTP per [RFC9111].  <!-- lvl=2 i=62 sid=body[1]/p[63] src=Structure CẦN-XEM-LẠI -->
+- 1.1] Fielding, R., Ed., Nottingham, M., Ed., and J.  <!-- lvl=1 i=62 sid=body[1]/p[63] src=Structure CẦN-XEM-LẠI -->
+- 4) Cache invalidation of the URIs in the Location and Content-Location header fields is disallowed when the origin is different; previously, it was the host. (  <!-- lvl=1 i=64 sid=body[1]/p[65] src=Structure CẦN-XEM-LẠI -->
+  - 2.1) Cache invalidation of the URIs in the Location and Content-Location header fields is no longer required but is still allowed. (  <!-- lvl=2 i=64 sid=body[1]/p[65] src=Structure CẦN-XEM-LẠI -->
+- 6.2> Appendix B.  <!-- lvl=1 i=64 sid=body[1]/p[65] src=Structure CẦN-XEM-LẠI -->
+- 4) Handling invalid and multiple Age header field values has been clarified. (  <!-- lvl=1 i=64 sid=body[1]/p[65] src=Structure CẦN-XEM-LẠI -->
+- 6.3> cache-directive = token [ "=" ( token / quoted-string ) ] delta-seconds = 1*DIGIT field-name = <field-name, see [HTTP],  <!-- lvl=1 i=64 sid=body[1]/p[65] src=Structure CẦN-XEM-LẠI -->
+- 6.7> OWS = <OWS, see [HTTP],  <!-- lvl=1 i=64 sid=body[1]/p[65] src=Structure CẦN-XEM-LẠI -->
+  - 6.1 of [HTTP].  <!-- lvl=2 i=64 sid=body[1]/p[65] src=Structure CẦN-XEM-LẠI -->
+  - 1.1): Caching", RFC 7234,  <!-- lvl=2 i=64 sid=body[1]/p[65] src=Structure CẦN-XEM-LẠI -->
+- 6.4> token = <token, see [HTTP],  <!-- lvl=1 i=64 sid=body[1]/p[65] src=Structure CẦN-XEM-LẠI -->
+- 2) The public and private cache directives were clarified, so that they do not make responses reusable under any condition. (  <!-- lvl=1 i=66 sid=body[1]/p[67] src=Structure CẦN-XEM-LẠI -->
+  - 2.2) The must-understand cache directive was introduced; caches are no longer required to understand the semantics of new response status codes unless it is present. (  <!-- lvl=2 i=66 sid=body[1]/p[67] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.3) The Warning response header was obsoleted.  <!-- lvl=3 i=66 sid=body[1]/p[67] src=Structure CẦN-XEM-LẠI -->
+- 5) Acknowledgements See Appendix "Acknowledgements" of [HTTP], which applies to this document as well.  <!-- lvl=1 i=66 sid=body[1]/p[67] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.5 no-transform (cache directive)  <!-- lvl=3 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.7 private cache Section 1  <!-- lvl=3 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+    - 2.1.7 P Pragma header field  <!-- lvl=3 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.6 O only-if-cached (cache directive)  <!-- lvl=3 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.4 no-store (cache directive)  <!-- lvl=3 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+  - 2.2 H Header Fields Age  <!-- lvl=2 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.2 must-understand (cache directive)  <!-- lvl=3 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+    - 2.1.3 must-revalidate (cache directive)  <!-- lvl=3 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.1 max-stale (cache directive)  <!-- lvl=3 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+  - 2.2 M max-age (cache directive)  <!-- lvl=2 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.3 N no-cache (cache directive)  <!-- lvl=3 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.8 public (cache directive)  <!-- lvl=3 i=70 sid=body[1]/p[71] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.9 S s-maxage (cache directive)  <!-- lvl=3 i=70 sid=body[1]/p[71] src=Structure CẦN-XEM-LẠI -->
+    - 2.2.10 shared cache Section 1 stale  <!-- lvl=3 i=70 sid=body[1]/p[71] src=Structure CẦN-XEM-LẠI -->
+  - 3.1 W Warning header field  <!-- lvl=2 i=70 sid=body[1]/p[71] src=Structure CẦN-XEM-LẠI -->
+
+> 287 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

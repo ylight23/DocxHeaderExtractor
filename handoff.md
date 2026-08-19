@@ -9182,3 +9182,45 @@ Cả bảy tài liệu đúng trọn vẹn. `04-bia-muc-luc-chu-thich` từ 3/4 
 Bốn bộ `--no-llm` **y hệt** — nhánh không mô hình không đi qua nhánh này.
 
 610 test xanh.
+
+## §133 — Trọng tài "gần bằng chứng hơn" giữa bản tách và bản không tách: BÁC
+
+### Vì sao thử
+
+Quét toàn corpus qua pipeline mới phát hiện `066_Linear_Neural_Networks` chỉ ra **5 mục** trên một
+tài liệu có **62 mốc có nhãn**. Truy lịch sử: §121 (tự tách) đưa nó lên 183, rồi chốt nhị phân của
+§122 ("quá tay → bỏ tách") kéo về lại 5. Chốt đó chỉ có hai lựa chọn và không hỏi bản nào ĐÚNG hơn.
+
+Luật thử: chọn bản có số mục gần số mốc có nhãn hơn, đo trên thang log để "gấp ba" và "bằng một
+phần ba" bị phạt như nhau.
+
+### Đo
+
+| tài liệu | mốc | bản tách | bản không tách | chọn |
+|---|--:|--:|--:|---|
+| `066_Linear` | 62 | 183 | 5 | tách |
+| `019_TT_200` | 399 | 3.563 | 165 | **không tách** ✓ |
+| `020_TT_133` | 607 | 1.390 | 48 | tách |
+
+Bốn bộ đáp án **y hệt** — không file nào của chúng bị ảnh hưởng.
+
+### Vì sao bác — đọc đầu ra, không nhìn con số
+
+```
+020_TT_133 (1.390 mục):  "19 - Hợp đồng bảo hiểm 3 CM số"   ← mảnh bảng chuẩn mực
+066_Linear   (183 mục):  "0), the curves W1 (·), W2 (·)"    ← công thức toán
+                          "1) ϕ(W1 , W2 , . . . , Wn ) = ℓ(…)"
+```
+
+**Cả hai bản "thắng" đều là rác.** 183 không tốt hơn 5; nó chỉ nhiều hơn. Khoảng cách tới số mốc
+là thước đo SỐ LƯỢNG, không phải chất lượng, và trong hai lựa chọn cùng sai nó luôn chọn bên đông
+hơn.
+
+Đã gỡ. Chốt nhị phân §122 giữ nguyên.
+
+### Đính chính cho chính tôi
+
+Tôi mở vòng này bằng câu "phát hiện hồi quy do §122 gây ra" — **không đúng**. §122 không làm hỏng
+`066`; nó chuyển `066` từ một kiểu sai (183 mục công thức toán) sang kiểu sai khác (5 mục, sót).
+Tài liệu này chưa bao giờ được trích đúng, và gọi đó là "hồi quy" đã làm tôi đi sửa nhầm chỗ suốt
+một vòng.

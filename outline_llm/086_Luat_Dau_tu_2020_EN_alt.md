@@ -1,0 +1,100 @@
+# Cấu trúc: 086_Luat_Dau_tu_2020_EN_alt.docx
+
+  - Chapter I GENERAL PROVISIONS  <!-- lvl=2 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+      - Article 1. Scope of regulation m .v n This Law prescribes business investment activities in Vietnam and offshore tna business investment activities from Vietnam. tV ie  <!-- lvl=4 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+      - Article 2. Subjects of application Lua This Law applies to investors and agencies, organizations and individuals involved in business investment activities.  <!-- lvl=4 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+      - Article 3. Interpretation of terms In this Law, the terms below are construed as follows:  <!-- lvl=4 i=4 sid=body[1]/p[5] src=Structure CẦN-XEM-LẠI -->
+      - Article 4. Application of the Law on Investment and relevant laws  <!-- lvl=4 i=8 sid=body[1]/p[9] src=Structure CẦN-XEM-LẠI -->
+      - Article 5. Business investment policies  <!-- lvl=4 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 6. Sectors and trades banned from business investment  <!-- lvl=4 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 7. Sectors and trades subject to conditional business investment  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 8. Amendment and supplementation of sectors and trades banned from business investment, the List of sectors and trades subject to conditional business investment, and business investment conditions m .v n  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+      - Article 9. Sectors, trades and market access conditions applicable to foreign investors  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+  - Chapter II INVESTMENT GUARANTEES  <!-- lvl=2 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 10. Guarantee of property ownership  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 11. Guarantee of business investment activities  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
+      - Article 12. Guarantee of foreign investors’ right to transfer assets abroad Lua After fulfilling their financial obligations toward the Vietnamese State in accordance with law, foreign investors may transfer abroad:  <!-- lvl=4 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+      - Article 13. Guarantee of business investment in case of change of law  <!-- lvl=4 i=20 sid=body[1]/p[21] src=Structure CẦN-XEM-LẠI -->
+      - Article 14. Settlement of disputes in business investment activities m .v n  <!-- lvl=4 i=22 sid=body[1]/p[23] src=Structure CẦN-XEM-LẠI -->
+  - Chapter III INVESTMENT INCENTIVES AND SUPPORTS  <!-- lvl=2 i=24 sid=body[1]/p[25] src=Structure CẦN-XEM-LẠI -->
+      - Article 15. Forms of, and subjects eligible for, investment incentives  <!-- lvl=4 i=24 sid=body[1]/p[25] src=Structure CẦN-XEM-LẠI -->
+      - Article 16. Sectors and trades eligible for investment incentives and geographical areas eligible for investment incentives  <!-- lvl=4 i=28 sid=body[1]/p[29] src=Structure CẦN-XEM-LẠI -->
+      - Article 17. Procedures for application of investment incentives tna Based on the subjects specified in Clause 2, Article 15 of this Law, the tV ie written approval of investment policy (if any), investment registration certificates Lua (if any) and other relevant laws, investors shall themselves determine investment incentives and carry out procedures for enjoying investment incentives at tax offices, finance agencies, customs agencies or other competent agencies, depending on each type of investment incentive.  <!-- lvl=4 i=30 sid=body[1]/p[31] src=Structure CẦN-XEM-LẠI -->
+      - Article 18. Forms of investment support  <!-- lvl=4 i=30 sid=body[1]/p[31] src=Structure CẦN-XEM-LẠI -->
+      - Article 19. Support for development of infrastructure systems of industrial parks, export processing zones, hi-tech parks and economic zones  <!-- lvl=4 i=32 sid=body[1]/p[33] src=Structure CẦN-XEM-LẠI -->
+      - Article 20. Special investment incentives and supports  <!-- lvl=4 i=32 sid=body[1]/p[33] src=Structure CẦN-XEM-LẠI -->
+  - Chapter IV INVESTMENT ACTIVITIES IN VIETNAM  <!-- lvl=2 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+    - Section 1 FORMS OF INVESTMENT  <!-- lvl=3 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+      - Article 21. Forms of investment  <!-- lvl=4 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+      - Article 22. Investment to establish economic organizations  <!-- lvl=4 i=36 sid=body[1]/p[37] src=Structure CẦN-XEM-LẠI -->
+      - Article 23. Implementation of investment activities by foreign-invested economic organizations  <!-- lvl=4 i=36 sid=body[1]/p[37] src=Structure CẦN-XEM-LẠI -->
+      - Article 24. Investment in the form of contribution of capital, or purchase of shares or capital contributions m .v n  <!-- lvl=4 i=38 sid=body[1]/p[39] src=Structure CẦN-XEM-LẠI -->
+      - Article 25. Forms of contribution of capital, and purchase of shares and capital contributions  <!-- lvl=4 i=38 sid=body[1]/p[39] src=Structure CẦN-XEM-LẠI -->
+      - Article 26. Procedures for investment in the form of capital contribution or purchase of shares or capital contributions  <!-- lvl=4 i=40 sid=body[1]/p[41] src=Structure CẦN-XEM-LẠI -->
+      - Article 27. Investment in the form of BCC  <!-- lvl=4 i=42 sid=body[1]/p[43] src=Structure CẦN-XEM-LẠI -->
+      - Article 28. Contents of a BCC  <!-- lvl=4 i=42 sid=body[1]/p[43] src=Structure CẦN-XEM-LẠI -->
+    - Section 2 APPROVAL OF INVESTMENT POLICY AND INVESTOR SELECTION  <!-- lvl=3 i=44 sid=body[1]/p[45] src=Structure CẦN-XEM-LẠI -->
+      - Article 29. Selection of investors for implementation of investment projects  <!-- lvl=4 i=44 sid=body[1]/p[45] src=Structure CẦN-XEM-LẠI -->
+      - Article 30. The National Assembly’s competence to approve investment policy The National Assembly shall approve investment policy for:  <!-- lvl=4 i=46 sid=body[1]/p[47] src=Structure CẦN-XEM-LẠI -->
+      - Article 31. The Prime Minister’s competence to approve investment policy Except the projects specified in Article 30 of this Law, the Prime Minister shall approve investment policy for:  <!-- lvl=4 i=46 sid=body[1]/p[47] src=Structure CẦN-XEM-LẠI -->
+      - Article 32. Provincial-level People’s Committees’ competence to approve investment policy  <!-- lvl=4 i=48 sid=body[1]/p[49] src=Structure CẦN-XEM-LẠI -->
+      - Article 33. Dossiers and contents of appraisal of requests for approval of investment policy project proposed by an investor must comprise: m .v n  <!-- lvl=4 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+      - Article 34. Order and procedures for approval of investment policy by the National Assembly  <!-- lvl=4 i=54 sid=body[1]/p[55] src=Structure CẦN-XEM-LẠI -->
+      - Article 35. Order and procedures for approval of investment policy by the Prime Minister  Vietnam Law & Legal Forum 28  <!-- lvl=4 i=56 sid=body[1]/p[57] src=Structure CẦN-XEM-LẠI -->
+      - Article 36. Order and procedures for approval of investment policy by provincial-level People’s Committees  <!-- lvl=4 i=58 sid=body[1]/p[59] src=Structure CẦN-XEM-LẠI -->
+    - Section 3 PROCEDURES FOR GRANT, MODIFICATION AND REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES  <!-- lvl=3 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - Article 37. Cases of carrying out procedures for grant of investment registration certificates m .v n  <!-- lvl=4 i=60 sid=body[1]/p[61] src=Structure CẦN-XEM-LẠI -->
+      - Article 38. Procedures for grant of investment registration certificates  <!-- lvl=4 i=62 sid=body[1]/p[63] src=Structure CẦN-XEM-LẠI -->
+      - Article 39. Competence to grant, modify and revoke investment registration certificates  <!-- lvl=4 i=62 sid=body[1]/p[63] src=Structure CẦN-XEM-LẠI -->
+      - Article 40. Contents of an investment registration certificate  <!-- lvl=4 i=64 sid=body[1]/p[65] src=Structure CẦN-XEM-LẠI -->
+      - Article 41. Adjustment of investment projects  <!-- lvl=4 i=66 sid=body[1]/p[67] src=Structure CẦN-XEM-LẠI -->
+    - Section 4 ORGANIZATION OF IMPLEMENTATION OF INVESTMENT PROJECTS  <!-- lvl=3 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+      - Article 42. Principles of implementation of investment projects  Vietnam Law & Legal Forum 34  <!-- lvl=4 i=68 sid=body[1]/p[69] src=Structure CẦN-XEM-LẠI -->
+      - Article 43. Security for implementation of investment projects  <!-- lvl=4 i=70 sid=body[1]/p[71] src=Structure CẦN-XEM-LẠI -->
+      - Article 44. Operation duration of investment projects  <!-- lvl=4 i=72 sid=body[1]/p[73] src=Structure CẦN-XEM-LẠI -->
+      - Article 45. Determination and assessment of investment capital value; inspection of machinery, equipment and technological lines  <!-- lvl=4 i=72 sid=body[1]/p[73] src=Structure CẦN-XEM-LẠI -->
+      - Article 46. Transfer of investment projects  <!-- lvl=4 i=74 sid=body[1]/p[75] src=Structure CẦN-XEM-LẠI -->
+      - Article 47. Cessation of investment projects  Vietnam Law & Legal Forum 37  <!-- lvl=4 i=74 sid=body[1]/p[75] src=Structure CẦN-XEM-LẠI -->
+      - Article 48. Termination of investment projects  <!-- lvl=4 i=76 sid=body[1]/p[77] src=Structure CẦN-XEM-LẠI -->
+      - Article 49. Establishment of executive offices of foreign investors under BCCs  Vietnam Law & Legal Forum 39  <!-- lvl=4 i=78 sid=body[1]/p[79] src=Structure CẦN-XEM-LẠI -->
+      - Article 50. Termination of operation of executive offices of foreign investors under BCCs  <!-- lvl=4 i=80 sid=body[1]/p[81] src=Structure CẦN-XEM-LẠI -->
+    - Section 1 GENERAL PROVISIONS  <!-- lvl=3 i=82 sid=body[1]/p[83] src=Structure CẦN-XEM-LẠI -->
+      - Article 51. Principles of offshore investment activities  <!-- lvl=4 i=82 sid=body[1]/p[83] src=Structure CẦN-XEM-LẠI -->
+      - Article 52. Forms of offshore investment  <!-- lvl=4 i=82 sid=body[1]/p[83] src=Structure CẦN-XEM-LẠI -->
+      - Article 53. Sectors and trades banned from offshore investment  <!-- lvl=4 i=84 sid=body[1]/p[85] src=Structure CẦN-XEM-LẠI -->
+      - Article 54. Sectors and trades subject to conditional offshore investment  <!-- lvl=4 i=84 sid=body[1]/p[85] src=Structure CẦN-XEM-LẠI -->
+      - Article 55. Offshore investment capital sources  Vietnam Law & Legal Forum 42  <!-- lvl=4 i=84 sid=body[1]/p[85] src=Structure CẦN-XEM-LẠI -->
+    - Section 2 PROCEDURES FOR APPROVAL OF OFFSHORE INVESTMENT POLICY AND DECISION ON OFFSHORE INVESTMENT  <!-- lvl=3 i=86 sid=body[1]/p[87] src=Structure CẦN-XEM-LẠI -->
+      - Article 56. Competence to approve offshore investment policy m .v n  <!-- lvl=4 i=86 sid=body[1]/p[87] src=Structure CẦN-XEM-LẠI -->
+      - Article 57. Dossiers, order and procedures for approval of offshore investment policy by the National Assembly  <!-- lvl=4 i=86 sid=body[1]/p[87] src=Structure CẦN-XEM-LẠI -->
+      - Article 58. Dossier, order and procedures for approval of offshore investment policy by the Prime Minister  <!-- lvl=4 i=92 sid=body[1]/p[93] src=Structure CẦN-XEM-LẠI -->
+      - Article 59. Decision on offshore investment  <!-- lvl=4 i=92 sid=body[1]/p[93] src=Structure CẦN-XEM-LẠI -->
+    - Section 3 PROCEDURES FOR GRANT, MODIFICATION AND INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION CERTIFICATES  <!-- lvl=3 i=92 sid=body[1]/p[93] src=Structure CẦN-XEM-LẠI -->
+      - Article 60. Conditions for grant of offshore investment registration certificates  Vietnam Law & Legal Forum 46  <!-- lvl=4 i=92 sid=body[1]/p[93] src=Structure CẦN-XEM-LẠI -->
+      - Article 61. Procedures for grant of offshore investment registration tV ie tna  <!-- lvl=4 i=94 sid=body[1]/p[95] src=Structure CẦN-XEM-LẠI -->
+      - Article 62. Contents of offshore investment registration certificate  <!-- lvl=4 i=96 sid=body[1]/p[97] src=Structure CẦN-XEM-LẠI -->
+      - Article 63. Modification of offshore investment registration certificates  <!-- lvl=4 i=96 sid=body[1]/p[97] src=Structure CẦN-XEM-LẠI -->
+      - Article 64. Invalidation of offshore investment registration certificates  <!-- lvl=4 i=100 sid=body[1]/p[101] src=Structure CẦN-XEM-LẠI -->
+    - Section 4 IMPLEMENTATION OF OVERSEAS INVESTMENT ACTIVITIES  <!-- lvl=3 i=100 sid=body[1]/p[101] src=Structure CẦN-XEM-LẠI -->
+      - Article 65. Opening of offshore investment capital accounts  <!-- lvl=4 i=100 sid=body[1]/p[101] src=Structure CẦN-XEM-LẠI -->
+      - Article 66. Outbound transfer of investment capital  <!-- lvl=4 i=102 sid=body[1]/p[103] src=Structure CẦN-XEM-LẠI -->
+      - Article 67. Use of profits overseas  <!-- lvl=4 i=102 sid=body[1]/p[103] src=Structure CẦN-XEM-LẠI -->
+      - Article 68. Inbound transfer of profits  Vietnam Law & Legal Forum 51  <!-- lvl=4 i=102 sid=body[1]/p[103] src=Structure CẦN-XEM-LẠI -->
+      - Article 69. Responsibility for state management of investment  <!-- lvl=4 i=104 sid=body[1]/p[105] src=Structure CẦN-XEM-LẠI -->
+      - Article 70. Investment monitoring and evaluation  <!-- lvl=4 i=110 sid=body[1]/p[111] src=Structure CẦN-XEM-LẠI -->
+      - Article 71. National investment information systems Lua  <!-- lvl=4 i=112 sid=body[1]/p[113] src=Structure CẦN-XEM-LẠI -->
+      - Article 72. Reporting on investment activities in Vietnam  <!-- lvl=4 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+      - Article 73. Reporting on overseas investment activities  <!-- lvl=4 i=116 sid=body[1]/p[117] src=Structure CẦN-XEM-LẠI -->
+      - Article 74. Investment promotion activities  <!-- lvl=4 i=118 sid=body[1]/p[119] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VII IMPLEMENTATION PROVISIONS  <!-- lvl=2 i=120 sid=body[1]/p[121] src=Structure CẦN-XEM-LẠI -->
+      - Article 75. To amend and supplement a number of articles of the laws related to business investment  <!-- lvl=4 i=120 sid=body[1]/p[121] src=Structure CẦN-XEM-LẠI -->
+      - Article 171.  <!-- lvl=4 i=122 sid=body[1]/p[123] src=Structure CẦN-XEM-LẠI -->
+      - Article 50. Competence to permit the transfer of the whole or part of real estate projects  <!-- lvl=4 i=122 sid=body[1]/p[123] src=Structure CẦN-XEM-LẠI -->
+      - Article 51: “Procedures for transferring the whole or part of real estate projects specified in Clause 2, Article 50 of this Law are carried out as follows:”.  <!-- lvl=4 i=122 sid=body[1]/p[123] src=Structure CẦN-XEM-LẠI -->
+      - Article 13: “5a. For the investment projects specified in Clause 2, Article 20 of the Law Lua on Investment, the Prime Minister shall decide on application of preferential tax rates reduced by no more than 50% of the preferential tax rates specified in Clause 1 of this Article; the duration for application of preferential tax rates must not exceed  <!-- lvl=4 i=124 sid=body[1]/p[125] src=Structure CẦN-XEM-LẠI -->
+      - Article 14: “1a. For the investment projects specified in Clause 2, Article 20 of the Law on Investment, the Prime Minister shall decide on application of tax exemption for no more than 6 years and the 50% reduction of payable tax amounts for no more than 13 subsequent years.”;  <!-- lvl=4 i=124 sid=body[1]/p[125] src=Structure CẦN-XEM-LẠI -->
+      - Article 55.  Vietnam Law & Legal Forum 62  <!-- lvl=4 i=124 sid=body[1]/p[125] src=Structure CẦN-XEM-LẠI -->
+      - Article 76. Implementation provisions  <!-- lvl=4 i=126 sid=body[1]/p[127] src=Structure CẦN-XEM-LẠI -->
+      - Article 77. Transitional provisions  <!-- lvl=4 i=126 sid=body[1]/p[127] src=Structure CẦN-XEM-LẠI -->
+
+> 96 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

@@ -1,0 +1,50 @@
+# Cấu trúc: 056_OpenStax_Business_Law_I_Essentials.docx
+
+- 1 American Law, Legal Reasoning, and the Legal System  <!-- lvl=1 i=26 sid=body[1]/p[27] src=Structure CẦN-XEM-LẠI -->
+  - 1.1 Basic American Legal Principles  <!-- lvl=2 i=26 sid=body[1]/p[27] src=Structure CẦN-XEM-LẠI -->
+  - 1.2 Sources and Types of Law  <!-- lvl=2 i=30 sid=body[1]/p[31] src=Structure CẦN-XEM-LẠI -->
+  - 1.3 Important Business Laws and Regulations  <!-- lvl=2 i=34 sid=body[1]/p[35] src=Structure CẦN-XEM-LẠI -->
+- 2 Disputes and Dispute Settlement  <!-- lvl=1 i=46 sid=body[1]/p[47] src=Structure CẦN-XEM-LẠI -->
+  - 2.1 Negotiation  <!-- lvl=2 i=50 sid=body[1]/p[51] src=Structure CẦN-XEM-LẠI -->
+  - 2.2 Mediation  <!-- lvl=2 i=54 sid=body[1]/p[55] src=Structure CẦN-XEM-LẠI -->
+  - 2.3 Arbitration  <!-- lvl=2 i=58 sid=body[1]/p[59] src=Structure CẦN-XEM-LẠI -->
+- 3 Business Ethics and Social Responsibility  <!-- lvl=1 i=74 sid=body[1]/p[75] src=Structure CẦN-XEM-LẠI -->
+  - 3.1 Business Ethics  <!-- lvl=2 i=78 sid=body[1]/p[79] src=Structure CẦN-XEM-LẠI -->
+  - 3.2 Social Responsibility  <!-- lvl=2 i=82 sid=body[1]/p[83] src=Structure CẦN-XEM-LẠI -->
+- 4 Business and the United States Constitution  <!-- lvl=1 i=94 sid=body[1]/p[95] src=Structure CẦN-XEM-LẠI -->
+  - 4.1 Commerce Clause  <!-- lvl=2 i=98 sid=body[1]/p[99] src=Structure CẦN-XEM-LẠI -->
+  - 4.2 Constitutional Protections  <!-- lvl=2 i=102 sid=body[1]/p[103] src=Structure CẦN-XEM-LẠI -->
+- 5 Criminal Liability  <!-- lvl=1 i=114 sid=body[1]/p[115] src=Structure CẦN-XEM-LẠI -->
+  - 5.1 Common Business Crimes  <!-- lvl=2 i=118 sid=body[1]/p[119] src=Structure CẦN-XEM-LẠI -->
+  - 5.2 Civil vs. Criminal Liability  <!-- lvl=2 i=122 sid=body[1]/p[123] src=Structure CẦN-XEM-LẠI -->
+- 6 The Tort System  <!-- lvl=1 i=134 sid=body[1]/p[135] src=Structure CẦN-XEM-LẠI -->
+  - 6.1 Intentional Torts and Negligence  <!-- lvl=2 i=138 sid=body[1]/p[139] src=Structure CẦN-XEM-LẠI -->
+  - 6.2 Product and Strict Liability  <!-- lvl=2 i=142 sid=body[1]/p[143] src=Structure CẦN-XEM-LẠI -->
+- 7 Contract Law  <!-- lvl=1 i=158 sid=body[1]/p[159] src=Structure CẦN-XEM-LẠI -->
+  - 7.1 Agreement, Consideration, and Promissory Estoppel  <!-- lvl=2 i=158 sid=body[1]/p[159] src=Structure CẦN-XEM-LẠI -->
+  - 7.2 Capacity and Legality  <!-- lvl=2 i=162 sid=body[1]/p[163] src=Structure CẦN-XEM-LẠI -->
+  - 7.3 Breach of Contract and Remedies  <!-- lvl=2 i=166 sid=body[1]/p[167] src=Structure CẦN-XEM-LẠI -->
+- 8 Sales Contracts  <!-- lvl=1 i=174 sid=body[1]/p[175] src=Structure CẦN-XEM-LẠI -->
+  - 8.1 The Nature and Origins of Sales Contracts  <!-- lvl=2 i=178 sid=body[1]/p[179] src=Structure CẦN-XEM-LẠI -->
+  - 8.2 Warranties and Sales Contracts  <!-- lvl=2 i=186 sid=body[1]/p[187] src=Structure CẦN-XEM-LẠI -->
+- 9 Employment and Labor Law  <!-- lvl=1 i=194 sid=body[1]/p[195] src=Structure CẦN-XEM-LẠI -->
+  - 9.1 Employment, Worker Protection, and Immigration Law  <!-- lvl=2 i=198 sid=body[1]/p[199] src=Structure CẦN-XEM-LẠI -->
+  - 9.2 Labor Law  <!-- lvl=2 i=202 sid=body[1]/p[203] src=Structure CẦN-XEM-LẠI -->
+  - 9.3 Equal Opportunity in Employment  <!-- lvl=2 i=210 sid=body[1]/p[211] src=Structure CẦN-XEM-LẠI -->
+- 10 Government Regulation  <!-- lvl=1 i=222 sid=body[1]/p[223] src=Structure CẦN-XEM-LẠI -->
+  - 10.1 Administrative Law  <!-- lvl=2 i=226 sid=body[1]/p[227] src=Structure CẦN-XEM-LẠI -->
+  - 10.2 Regulatory Agencies  <!-- lvl=2 i=230 sid=body[1]/p[231] src=Structure CẦN-XEM-LẠI -->
+- 11 Antitrust Law  <!-- lvl=1 i=238 sid=body[1]/p[239] src=Structure CẦN-XEM-LẠI -->
+  - 11.1 History of Antitrust Law  <!-- lvl=2 i=242 sid=body[1]/p[243] src=Structure CẦN-XEM-LẠI -->
+  - 11.2 Antitrust Laws  <!-- lvl=2 i=246 sid=body[1]/p[247] src=Structure CẦN-XEM-LẠI -->
+- 12 Unfair Trade Practices and the Federal Trade Commission  <!-- lvl=1 i=258 sid=body[1]/p[259] src=Structure CẦN-XEM-LẠI -->
+  - 12.1 Unfair Trade Practices  <!-- lvl=2 i=262 sid=body[1]/p[263] src=Structure CẦN-XEM-LẠI -->
+  - 12.2 The Federal Trade Commission  <!-- lvl=2 i=266 sid=body[1]/p[267] src=Structure CẦN-XEM-LẠI -->
+- 13 International Law  <!-- lvl=1 i=270 sid=body[1]/p[271] src=Structure CẦN-XEM-LẠI -->
+  - 13.1 Introduction to International Law  <!-- lvl=2 i=274 sid=body[1]/p[275] src=Structure CẦN-XEM-LẠI -->
+  - 13.2 Sources and Practice of International Law  <!-- lvl=2 i=278 sid=body[1]/p[279] src=Structure CẦN-XEM-LẠI -->
+- 14 Securities Regulation  <!-- lvl=1 i=290 sid=body[1]/p[291] src=Structure CẦN-XEM-LẠI -->
+  - 14.1 Liability Under the Securities Act  <!-- lvl=2 i=294 sid=body[1]/p[295] src=Structure CẦN-XEM-LẠI -->
+  - 14.2 The Framework of Securities Regulation  <!-- lvl=2 i=298 sid=body[1]/p[299] src=Structure CẦN-XEM-LẠI -->
+
+> 46 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

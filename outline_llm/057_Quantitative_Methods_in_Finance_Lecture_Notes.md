@@ -1,0 +1,87 @@
+# Cấu trúc: 057_Quantitative_Methods_in_Finance_Lecture_Notes.docx
+
+- 1 Introduction  <!-- lvl=1 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+- 2 Projects and evaluation  <!-- lvl=1 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+- 3 Quantitative methods, resources for R or python  <!-- lvl=1 i=43 sid=body[1]/p[44] src=Structure CẦN-XEM-LẠI -->
+- 4 Git and GitHub for collaborations  <!-- lvl=1 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+- 5 Installing python tools  <!-- lvl=1 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+- 6 Installing R tools  <!-- lvl=1 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+- 7 Python: variables, functions. An introduction  <!-- lvl=1 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+- 8 Python for non-programmers: numpy exercise part  <!-- lvl=1 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+- 9 Python for non-programmers: numpy exercise part  <!-- lvl=1 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+- 10 An introduction to Monte Carlo approaches  <!-- lvl=1 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+- 11 Python for non-programmers: exercise with pandas - part  <!-- lvl=1 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+- 12 Python, import and pandas: Import csv data as DataFrame  <!-- lvl=1 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+- 13 Empirical data: loading files, using API, scraping websites  <!-- lvl=1 i=149 sid=body[1]/p[150] src=Structure CẦN-XEM-LẠI -->
+- 14 Data Assurance Quality  <!-- lvl=1 i=159 sid=body[1]/p[160] src=Structure CẦN-XEM-LẠI -->
+- 15 Python: when to use parametric econometrics and not other  <!-- lvl=1 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+- 0 22 2 2 22  <!-- lvl=1 i=173 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+  - 1.74 2.49 3.12 3.17 WAGE  <!-- lvl=2 i=177 sid=body[1]/p[178] src=Structure CẦN-XEM-LẠI -->
+- 16 Python: computing the tide’s heights at a given time  <!-- lvl=1 i=201 sid=body[1]/p[202] src=Structure CẦN-XEM-LẠI -->
+- 17 Python: Entertaining application - Perudo game  <!-- lvl=1 i=205 sid=body[1]/p[206] src=Structure CẦN-XEM-LẠI -->
+- 18 Python : Pobability, population, samples and absolutely  <!-- lvl=1 i=209 sid=body[1]/p[210] src=Structure CẦN-XEM-LẠI -->
+- 19 Python: Sample statistics, Law of Large Numbers and  <!-- lvl=1 i=241 sid=body[1]/p[242] src=Structure CẦN-XEM-LẠI -->
+- 20 Modeling and generating random vectors  <!-- lvl=1 i=251 sid=body[1]/p[252] src=Structure CẦN-XEM-LẠI -->
+- 21 Probability distributions from option prices or surveys  <!-- lvl=1 i=255 sid=body[1]/p[256] src=Structure CẦN-XEM-LẠI -->
+- 22 Python: Weight and height distributions  <!-- lvl=1 i=265 sid=body[1]/p[266] src=Structure CẦN-XEM-LẠI -->
+- 23 Linear regression on weight and height  <!-- lvl=1 i=281 sid=body[1]/p[282] src=Structure CẦN-XEM-LẠI -->
+- 24 Stationarity, Unit Roots  <!-- lvl=1 i=305 sid=body[1]/p[306] src=Structure CẦN-XEM-LẠI -->
+- 25 AR(p) model for French Population Growth  <!-- lvl=1 i=335 sid=body[1]/p[336] src=Structure CẦN-XEM-LẠI -->
+- 26 R: Treatment of seasonality in our time series  <!-- lvl=1 i=341 sid=body[1]/p[342] src=Structure CẦN-XEM-LẠI -->
+- 28 Modeling and Analysis of French Population Data Using  <!-- lvl=1 i=357 sid=body[1]/p[358] src=Structure CẦN-XEM-LẠI -->
+- 29 Inflation persistence exercise  <!-- lvl=1 i=367 sid=body[1]/p[368] src=Structure CẦN-XEM-LẠI -->
+- 30 Financial returns distributions and forecast  <!-- lvl=1 i=379 sid=body[1]/p[380] src=Structure CẦN-XEM-LẠI -->
+- 31 Spurious Regression, Cointegration, and Robust Inference  <!-- lvl=1 i=405 sid=body[1]/p[406] src=Structure CẦN-XEM-LẠI -->
+- 32 VAR and Structural VAR  <!-- lvl=1 i=429 sid=body[1]/p[430] src=Structure CẦN-XEM-LẠI -->
+- 33 python: pandas exercises wrap-up, main takeaways  <!-- lvl=1 i=463 sid=body[1]/p[464] src=Structure CẦN-XEM-LẠI -->
+- 34 An Inflation Panel for Empirical Macroeconomics  <!-- lvl=1 i=465 sid=body[1]/p[466] src=Structure CẦN-XEM-LẠI -->
+- 35 Inflation and Economic Growth  <!-- lvl=1 i=471 sid=body[1]/p[472] src=Structure CẦN-XEM-LẠI -->
+- 36 Inflation, Expectations, and Uncertainty  <!-- lvl=1 i=481 sid=body[1]/p[482] src=Structure CẦN-XEM-LẠI -->
+- 37 Interpolation of time series  <!-- lvl=1 i=495 sid=body[1]/p[496] src=Structure CẦN-XEM-LẠI -->
+- 38 First steps with R - functions, loops, imports and exports  <!-- lvl=1 i=501 sid=body[1]/p[502] src=Structure CẦN-XEM-LẠI -->
+- 39 R: Multivariate regressions and tests (wages  <!-- lvl=1 i=505 sid=body[1]/p[506] src=Structure CẦN-XEM-LẠI -->
+- 40 Addressing Endogeneity: The Role of Instrumental Variables  <!-- lvl=1 i=545 sid=body[1]/p[546] src=Structure CẦN-XEM-LẠI -->
+- 41 Python and R: Kernel Density Estimation, a non parametric  <!-- lvl=1 i=561 sid=body[1]/p[562] src=Structure CẦN-XEM-LẠI -->
+- 42 R and python: multivariate regressions of wages  <!-- lvl=1 i=583 sid=body[1]/p[584] src=Structure CẦN-XEM-LẠI -->
+- 43 Mutivariate regression on wage: concluding comments  <!-- lvl=1 i=589 sid=body[1]/p[590] src=Structure CẦN-XEM-LẠI -->
+- 44 Bootstrapping methods  <!-- lvl=1 i=595 sid=body[1]/p[596] src=Structure CẦN-XEM-LẠI -->
+- 45 Python: Median versus mean and outlier detection  <!-- lvl=1 i=605 sid=body[1]/p[606] src=Structure CẦN-XEM-LẠI -->
+- 46 Python: Monte Carlo method and econometric tests  <!-- lvl=1 i=617 sid=body[1]/p[618] src=Structure CẦN-XEM-LẠI -->
+- 47 Granger causality test: academic paper replication  <!-- lvl=1 i=623 sid=body[1]/p[624] src=Structure CẦN-XEM-LẠI -->
+- 48 Recap on econometric models  <!-- lvl=1 i=627 sid=body[1]/p[628] src=Structure CẦN-XEM-LẠI -->
+- 49 Python: Data and model of French hospitals deaths with  <!-- lvl=1 i=631 sid=body[1]/p[632] src=Structure CẦN-XEM-LẠI -->
+- 50 python: Nonlinear time series model: an introduction  <!-- lvl=1 i=639 sid=body[1]/p[640] src=Structure CẦN-XEM-LẠI -->
+- 51 Python: Event studies  <!-- lvl=1 i=651 sid=body[1]/p[652] src=Structure CẦN-XEM-LẠI -->
+- 52 Python: Manipulating financial data and some investment  <!-- lvl=1 i=657 sid=body[1]/p[658] src=Structure CẦN-XEM-LẠI -->
+- 53 Python: CAPM  <!-- lvl=1 i=669 sid=body[1]/p[670] src=Structure CẦN-XEM-LẠI -->
+- 54 Arbitrage Pricing Theory (APT  <!-- lvl=1 i=701 sid=body[1]/p[702] src=Structure CẦN-XEM-LẠI -->
+- 55 python and R: Some portfolio performance measures  <!-- lvl=1 i=709 sid=body[1]/p[710] src=Structure CẦN-XEM-LẠI -->
+- 56 Pairs trading and statistical arbitrage  <!-- lvl=1 i=721 sid=body[1]/p[722] src=Structure CẦN-XEM-LẠI -->
+- 57 Python: introduction to power laws  <!-- lvl=1 i=727 sid=body[1]/p[728] src=Structure CẦN-XEM-LẠI -->
+- 58 Parametric distributions with heavy tail  <!-- lvl=1 i=741 sid=body[1]/p[742] src=Structure CẦN-XEM-LẠI -->
+- 59 Python: assets risk measures, VaR and ES  <!-- lvl=1 i=753 sid=body[1]/p[754] src=Structure CẦN-XEM-LẠI -->
+- 60 Focusing on the tail: Extreme Value Theory, an introduction  <!-- lvl=1 i=767 sid=body[1]/p[768] src=Structure CẦN-XEM-LẠI -->
+- 61 R: EVT paper replications  <!-- lvl=1 i=783 sid=body[1]/p[784] src=Structure CẦN-XEM-LẠI -->
+- 62 Python: insurance, introduction  <!-- lvl=1 i=785 sid=body[1]/p[786] src=Structure CẦN-XEM-LẠI -->
+- 63 Introduction to Bayesian statistics  <!-- lvl=1 i=787 sid=body[1]/p[788] src=Structure CẦN-XEM-LẠI -->
+- 64 Python: Insurance claims, prior and posterior, Meyers (1996  <!-- lvl=1 i=799 sid=body[1]/p[800] src=Structure CẦN-XEM-LẠI -->
+- 65 Arrow (1963) replication  <!-- lvl=1 i=805 sid=body[1]/p[806] src=Structure CẦN-XEM-LẠI -->
+- 66 The Dismal Theorem  <!-- lvl=1 i=813 sid=body[1]/p[814] src=Structure CẦN-XEM-LẠI -->
+- 67 Python: insurance, Kousky and Cooke (2012) replication  <!-- lvl=1 i=821 sid=body[1]/p[822] src=Structure CẦN-XEM-LẠI -->
+- 68 Quantile regression: an introduction  <!-- lvl=1 i=833 sid=body[1]/p[834] src=Structure CẦN-XEM-LẠI -->
+- 69 Adrian et al. (2019) replication  <!-- lvl=1 i=859 sid=body[1]/p[860] src=Structure CẦN-XEM-LẠI -->
+- 70 Consensus, combination of forecasts and opinion pooling  <!-- lvl=1 i=867 sid=body[1]/p[868] src=Structure CẦN-XEM-LẠI -->
+- 71 R: Panel Data - Basics  <!-- lvl=1 i=883 sid=body[1]/p[884] src=Structure CẦN-XEM-LẠI -->
+- 72 R: Panel Data - Strikes  <!-- lvl=1 i=887 sid=body[1]/p[888] src=Structure CẦN-XEM-LẠI -->
+- 75 Networks study  <!-- lvl=1 i=903 sid=body[1]/p[904] src=Structure CẦN-XEM-LẠI -->
+- 76 R: Before and after regressing financial time series - some  <!-- lvl=1 i=929 sid=body[1]/p[930] src=Structure CẦN-XEM-LẠI -->
+- 77 Univariate ARMA-GARCH model  <!-- lvl=1 i=941 sid=body[1]/p[942] src=Structure CẦN-XEM-LẠI -->
+- 78 Binary choice models  <!-- lvl=1 i=951 sid=body[1]/p[952] src=Structure CẦN-XEM-LẠI -->
+- 79 R: difference-in-differences  <!-- lvl=1 i=959 sid=body[1]/p[960] src=Structure CẦN-XEM-LẠI -->
+- 80 R: difference-in-differences, replication of Bleakley (2010  <!-- lvl=1 i=977 sid=body[1]/p[978] src=Structure CẦN-XEM-LẠI -->
+- 82 Demand and supply estimations  <!-- lvl=1 i=1005 sid=body[1]/p[1006] src=Structure CẦN-XEM-LẠI -->
+- 83 python and R: copula application to risk measures  <!-- lvl=1 i=1031 sid=body[1]/p[1032] src=Structure CẦN-XEM-LẠI -->
+- 84 Python and R: risk measures, correlation, clusters, an  <!-- lvl=1 i=1043 sid=body[1]/p[1044] src=Structure CẦN-XEM-LẠI -->
+- 85 Measure of tail risk  <!-- lvl=1 i=1055 sid=body[1]/p[1056] src=Structure CẦN-XEM-LẠI -->
+
+> 83 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

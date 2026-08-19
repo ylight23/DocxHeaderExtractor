@@ -1,0 +1,46 @@
+# Cấu trúc: 055_IDA_External_Review_FY25.docx
+
+  - 39.9 billion was committed, and $  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+  - 33.1 billion was disbursed, by IDA for IDA Projects during the one- year period ended June 30, 2025; and that for loans, guarantees, and grants that had commitments or disbursements during the year ended June 30, 2025, $  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+  - 39.9 billion was committed, and $  <!-- lvl=2 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+  - 33.1 billion was disbursed, by IDA for IDA Projects during the one-year period ended June 30, 2025; and that for loans, guarantees, and grants, that had commitments or disbursements during the year ended June 30, 2025, $  <!-- lvl=2 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+  - 39.9 billion was committed and USD$  <!-- lvl=2 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+  - 33.1 billion was disbursed by IDA for IDA Projects during the one-year period ended June 30, 2025 (as listed in the Schedule).  <!-- lvl=2 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+  - 65.68 (HER) PROJECT Emergency Food Security 3 P178280 2022  <!-- lvl=2 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+  - 25.50 Project 3  <!-- lvl=2 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+- RERED II) Project 5  <!-- lvl=1 i=11 sid=body[1]/p[12] src=Heuristic -->
+- IPFF II) Power System Reliability 40 P159807 and Efficiency 2017  <!-- lvl=1 i=13 sid=body[1]/p[14] src=Heuristic -->
+- Phase 2 - Bhutan Project Bhutan: COVID-19 Emergency Response and 105 P173787 2020  <!-- lvl=1 i=25 sid=body[1]/p[26] src=Heuristic -->
+- Project CM- Rural Electricity 184 P163881 Access Project for 2019  <!-- lvl=1 i=37 sid=body[1]/p[38] src=Heuristic -->
+- Net CI-Infrastructure for Urban Development and 288 P151324 2017 Cote d'  <!-- lvl=1 i=55 sid=body[1]/p[56] src=Heuristic -->
+- PROJECT CI: Cote d'Ivoire E- 293 P160418 2018 Cote d'  <!-- lvl=1 i=57 sid=body[1]/p[58] src=Heuristic -->
+- Phase 2) Project Africa Eastern and Kariba Dam Rehabilitation 345 P146515 2015  <!-- lvl=1 i=65 sid=body[1]/p[66] src=Heuristic -->
+- Phase 3) Africa FSRP Eastern and AFR RI-Regional Rusumo 341 P075941 2014  <!-- lvl=1 i=65 sid=body[1]/p[66] src=Heuristic -->
+- LLRP II) Ethiopia Program for Results (Hybrid) for 410 P175167 2023  <!-- lvl=1 i=77 sid=body[1]/p[78] src=Heuristic -->
+- Phase 4: KI: Connectivity Project 49  <!-- lvl=1 i=99 sid=body[1]/p[100] src=Heuristic -->
+- Facilitation 2.0 Kosovo Financial Sector 563 P507881 2025  <!-- lvl=1 i=101 sid=body[1]/p[102] src=Heuristic -->
+- RRPM II) Republic Lao People's Lao Health and Nutrition 622 P178957 2024  <!-- lvl=1 i=111 sid=body[1]/p[112] src=Heuristic -->
+- Phase I: Malawi Digital 2017  <!-- lvl=1 i=121 sid=body[1]/p[122] src=Heuristic -->
+- Project MV: Digital Maldives for Adaptation, 706 P177040 2022  <!-- lvl=1 i=125 sid=body[1]/p[126] src=Heuristic -->
+- Nigeria 2.0 Sustainable Procurement, Environmental and Social 880 P169405 2020  <!-- lvl=1 i=155 sid=body[1]/p[156] src=Heuristic -->
+- Phase 1) Electricity Distribution Improvement and 1258 P504630 Strengthening through 2025  <!-- lvl=1 i=217 sid=body[1]/p[218] src=Heuristic -->
+  - 4.71 Africa Senegal River Basin Western and 1306 P131323 Climate Change Resilience 2014  <!-- lvl=2 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+  - 78.21 Statistics in West Africa Africa Western and M300 Patient Capital 1303 P510382 2025  <!-- lvl=2 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+  - 33.07 and Demographic Dividend Africa Plus Project Western and Harmonizing and Improving 1302 P169265 2020  <!-- lvl=2 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+- Africa 1) West Africa Food System Western and 1300 P178132 Resilience Program (FSRP) 2023  <!-- lvl=1 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+  - 68.49 Projects 1 (HISWACA - SOP  <!-- lvl=2 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+  - 89.18 project Africa Sahel Regional Western and Engagement for Learning 1298 P180260 2025  <!-- lvl=2 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+  - 1.23 Development Project Africa 112  <!-- lvl=2 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+  - 2.69 Integration and Inclusion Africa (WURI) Program Strengthening the Capacity Western and of Regional Financial 1316 P161368 2018  <!-- lvl=2 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+  - 4.79 Institutions in the CEMAC Africa Region 113  <!-- lvl=2 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+  - 1.88 Electricity Access Project Africa Regional Disease Western and Surveillance Systems 1314 P161163 2018  <!-- lvl=2 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+  - 1.48 Enhancement (REDISSE) Africa Phase II Western and Regional Off-Grid 1313 P160708 2019  <!-- lvl=2 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+  - 11.53 Support Project Africa Regional Disease Western and 1311 P154807 Surveillance Systems 2016  <!-- lvl=2 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+  - 57.70 Demographic Dividend Africa Project Western and Sahel Irrigation Initiative 1310 P154482 2018  <!-- lvl=2 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+  - 10.89 Project Africa Western and Regional Sahel Pastoralism 1308 P147674 2015  <!-- lvl=2 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+- SOP 2) WEST AFRICA FOOD Western and 1339 P180244 SYSTEM RESILIENCE 2024  <!-- lvl=1 i=233 sid=body[1]/p[234] src=Heuristic -->
+- Phase 1: 1355 P507033 Zambia - Tanzania 2025  <!-- lvl=1 i=235 sid=body[1]/p[236] src=Heuristic -->
+  - 25.35 Transformation Program Girls' Education and Women's Empowerment 1373 P181391 2024  <!-- lvl=2 i=239 sid=body[1]/p[240] src=Structure CẦN-XEM-LẠI -->
+  - 20.47 and Livelihoods for Human Capital Project Zambia Health Emergency Preparedness, Response 1374 P505188 and Resilience Project 2024  <!-- lvl=2 i=239 sid=body[1]/p[240] src=Structure CẦN-XEM-LẠI -->
+
+> 24 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

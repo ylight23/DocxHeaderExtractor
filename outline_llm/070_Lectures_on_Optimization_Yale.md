@@ -1,0 +1,46 @@
+# Cấu trúc: 070_Lectures_on_Optimization_Yale.docx
+
+- 1 Introduction and basics of convex functions  <!-- lvl=1 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+  - 1.1 Overview of the course  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+  - 1.2 Preliminaries on convexity and smoothness  <!-- lvl=2 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+- 2 Gradient flow  <!-- lvl=1 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+- 3 Gradient descent: smooth case  <!-- lvl=1 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+- 4 Lower bounds for smooth optimization  <!-- lvl=1 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+  - 4.1 Reductions between the convex and strongly convex settings  <!-- lvl=2 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+  - 4.2 Lower bounds  <!-- lvl=2 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+- 5 Acceleration  <!-- lvl=1 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+  - 5.1 Quadratic case: the conjugate gradient method  <!-- lvl=2 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+  - 5.2 General case: continuous time  <!-- lvl=2 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+  - 5.3 General case: discrete time  <!-- lvl=2 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+- 6 Non-smooth convex optimization  <!-- lvl=1 i=79 sid=body[1]/p[80] src=Structure CẦN-XEM-LẠI -->
+  - 6.1 Convex analysis  <!-- lvl=2 i=81 sid=body[1]/p[82] src=Structure CẦN-XEM-LẠI -->
+  - 6.2 Projected subgradient methods  <!-- lvl=2 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+  - 6.3 Cutting plane methods  <!-- lvl=2 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+  - 6.4 Lower bounds  <!-- lvl=2 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+- 7 Frank–Wolfe  <!-- lvl=1 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+- 8 Proximal methods  <!-- lvl=1 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+  - 8.1 Algorithms and examples  <!-- lvl=2 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+  - 8.2 Convergence analysis  <!-- lvl=2 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+- 9 Fenchel duality  <!-- lvl=1 i=135 sid=body[1]/p[136] src=Structure CẦN-XEM-LẠI -->
+  - 9.1 (Optional) Connection with classical mechanics  <!-- lvl=2 i=135 sid=body[1]/p[136] src=Structure CẦN-XEM-LẠI -->
+  - 9.2 Duality correspondences  <!-- lvl=2 i=145 sid=body[1]/p[146] src=Structure CẦN-XEM-LẠI -->
+- 10 Mirror methods  <!-- lvl=1 i=153 sid=body[1]/p[154] src=Structure CẦN-XEM-LẠI -->
+  - 10.1 Bregman divergences and relative convexity/smoothness  <!-- lvl=2 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+  - 10.2 Algorithms and convergence analysis  <!-- lvl=2 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+  - 10.3 Online algorithms and multiplicative weights  <!-- lvl=2 i=171 sid=body[1]/p[172] src=Structure CẦN-XEM-LẠI -->
+- 11 Alternating minimization  <!-- lvl=1 i=181 sid=body[1]/p[182] src=Structure CẦN-XEM-LẠI -->
+  - 11.1 Alternating projections  <!-- lvl=2 i=183 sid=body[1]/p[184] src=Structure CẦN-XEM-LẠI -->
+  - 11.2 Convergence analysis for alternating minimization  <!-- lvl=2 i=187 sid=body[1]/p[188] src=Structure CẦN-XEM-LẠI -->
+  - 11.3 Case study: entropic optimal transport  <!-- lvl=2 i=195 sid=body[1]/p[196] src=Structure CẦN-XEM-LẠI -->
+- 12 Stochastic optimization  <!-- lvl=1 i=209 sid=body[1]/p[210] src=Structure CẦN-XEM-LẠI -->
+  - 12.1 Stochastic mirror proximal gradient descent  <!-- lvl=2 i=209 sid=body[1]/p[210] src=Structure CẦN-XEM-LẠI -->
+  - 12.2 Implications for statistical generalization  <!-- lvl=2 i=215 sid=body[1]/p[216] src=Structure CẦN-XEM-LẠI -->
+  - 12.3 Central limit theorem for Polyak–Ruppert averaging  <!-- lvl=2 i=221 sid=body[1]/p[222] src=Structure CẦN-XEM-LẠI -->
+  - 12.4 Variance reduction  <!-- lvl=2 i=241 sid=body[1]/p[242] src=Structure CẦN-XEM-LẠI -->
+- 13 Interior point methods  <!-- lvl=1 i=255 sid=body[1]/p[256] src=Structure CẦN-XEM-LẠI -->
+  - 13.1 Self-concordant analysis of Newton’s method  <!-- lvl=2 i=255 sid=body[1]/p[256] src=Structure CẦN-XEM-LẠI -->
+  - 13.2 Following the central path  <!-- lvl=2 i=267 sid=body[1]/p[268] src=Structure CẦN-XEM-LẠI -->
+  - 13.3 Barrier calculus and applications  <!-- lvl=2 i=269 sid=body[1]/p[270] src=Structure CẦN-XEM-LẠI -->
+  - 13.4 Convergence analysis  <!-- lvl=2 i=275 sid=body[1]/p[276] src=Structure CẦN-XEM-LẠI -->
+
+> 42 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

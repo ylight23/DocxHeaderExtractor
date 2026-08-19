@@ -1,0 +1,55 @@
+# Cấu trúc: 083_Luat_An_ninh_mang_2018_EN.docx
+
+- Nos 775-776 (14/7/2018)  Vietnam Law & Legal Forum 1  <!-- lvl=1 i=3 sid=body[1]/p[4] src=Heuristic -->
+      - Article 2. Interpretation of terms In this Law, the terms below are construed as follows:  <!-- lvl=4 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+  - Chapter I GENERAL PROVISIONS  <!-- lvl=2 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+      - Article 1. Scope of regulation .v n This Law prescribes activities of protecting national security and ie tn am ensuring social order and safety in cyberspace; and responsibilities of related agencies, organizations and individuals. Lu atV  <!-- lvl=4 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+      - Article 3. The State’s policies on cyber security affairs. Lu atV  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Article 4. Principles of cyber security protection  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Article 5. Cyber security protection measures  <!-- lvl=4 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Article 6. Protection of the national cyberspace The State shall apply measures for protecting the national cyberspace, preventing and handling acts in cyberspace which infringe upon national security, social order and safety, or lawful rights and interests of agencies, organizations and individuals.  <!-- lvl=4 i=13 sid=body[1]/p[14] src=Structure CẦN-XEM-LẠI -->
+      - Article 7. International cooperation in cyber security  <!-- lvl=4 i=13 sid=body[1]/p[14] src=Structure CẦN-XEM-LẠI -->
+      - Article 8. Prohibited acts in cyber security  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Article 9. Handling of violations of the law on cyber security Any violators of this Law shall, depending on the nature and severity of their violations, be disciplined, administratively handled or examined for penal liability; if causing damage, they shall pay compensation in accordance with law.  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+  - Chapter II PROTECTION OF CYBER SECURITY OF INFORMATION SYSTEMS OF NATIONAL SECURITY IMPORTANCE  <!-- lvl=2 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Article 10. Information systems of national security importance  Vietnam Law & Legal Forum 8  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Article 11. Cyber security appraisal of information systems of national security importance  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Article 12. Assessment of cyber security conditions of information systems of national security importance  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Article 13. Cyber security inspection of information systems of national security importance  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Article 14. Cyber security supervision of information systems of Lu national security importance  <!-- lvl=4 i=27 sid=body[1]/p[28] src=Structure CẦN-XEM-LẠI -->
+      - Article 15. Response to and remediation of cyber security incidents for information systems of national security importance  <!-- lvl=4 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+  - Chapter II PREVENTION AND HANDLING OF ACTS OF INFRINGING UPON CYBER SECURITY  <!-- lvl=2 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+      - Article 16. Prevention and handling of information in cyberspace with propaganda contents opposing the State of the Socialist Republic of Vietnam; instigating riots or disrupting security or public order; humiliating or slandering; or infringing upon economic management order .v n am  <!-- lvl=4 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+      - Article 17. Prevention and combat of cyber espionage; protection of information classified as state secrets, work secrets, business secrets, personal secrets, family secrets and privacy in cyberspace  <!-- lvl=4 i=33 sid=body[1]/p[34] src=Structure CẦN-XEM-LẠI -->
+      - Article 18. Prevention and combat of acts of using cyberspace, information technology or electronic devices in violation of the law on national security and social order and safety  Vietnam Law & Legal Forum 18  <!-- lvl=4 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+      - Article 19. Prevention and combat of cyber-attacks  <!-- lvl=4 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+      - Article 20. Prevention and combat of cyber terrorism  <!-- lvl=4 i=43 sid=body[1]/p[44] src=Structure CẦN-XEM-LẠI -->
+      - Article 21. Prevention and handling of dangerous cyber security circumstances  <!-- lvl=4 i=43 sid=body[1]/p[44] src=Structure CẦN-XEM-LẠI -->
+      - Article 22. Fighting to protect cyber security  <!-- lvl=4 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+      - Article 24. Cyber security inspection of agencies’ and organizations’ information systems outside the list of information systems of national security importance  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Article 23. Implementation of cyber security protection activities by state agencies and political organizations at central and local levels  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+  - Chapter IV CYBER SECUYRITY PROTECTION ACTIVITIES  <!-- lvl=2 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Article 25. Protection of cyber security for national network infrastructure facilities and international gateways  <!-- lvl=4 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Article 26. Assurance of information security in cyberspace  <!-- lvl=4 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+      - Article 27. Cyber security research and development  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Article 28. Improvement of cyber security self-reliance  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Article 29. Protection of children in cyberspace  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+  - Chapter V ASSURANCE OF CYBER SECURITY PROTECTION ACTIVITIES  <!-- lvl=2 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Article 30. Cyber security protection forces  Vietnam Law & Legal Forum 28  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Article 31. Assurance of human resources for cyber security protection  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Article 32. Recruitment, training and development of cyber security protection forces  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Article 33. Education and training in cyber security knowledge and operations  Vietnam Law & Legal Forum 29  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Article 36. Responsibilities of the Ministry of Public Security The Ministry of Public Security shall take responsibility before the Government for performing the state management of cyber security and  Vietnam Law & Legal Forum 30  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VI RESPONSIBILITIES OF AGENCIES, ORGANIZATIONS AND INDIVIDUALS  <!-- lvl=2 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Article 34. Dissemination of cyber security knowledge  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Article 35. Funds for cyber security protection  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Article 37. Responsibilities of the Ministry of National Defense The Ministry of National Defense shall take responsibility before the Government for performing the state management of cyber security within the scope of its management and has the following tasks and powers:  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Article 38. Responsibilities of the Ministry of Information and Communications  <!-- lvl=4 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+      - Article 39. Responsibilities of the Government Cipher Committee  <!-- lvl=4 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+      - Article 40. Responsibilities of ministries, sectors and provincial- level People’s Committees Within the ambit of their tasks and powers, ministries, sectors and provincial-level People’s Committees shall conduct cyber security inspection of information and information systems under their management; and coordinate with the Ministry of Public Security in performing the state management of cyber security in their ministries, sectors and localities.  Vietnam Law & Legal Forum 32  <!-- lvl=4 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+      - Article 41. Responsibilities of enterprises providing services in cyberspace  <!-- lvl=4 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+      - Article 42. Responsibilities of agencies, organizations and individuals using cyberspace  <!-- lvl=4 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VII IMPLEMENTATION PROVISIONS  <!-- lvl=2 i=69 sid=body[1]/p[70] src=Structure CẦN-XEM-LẠI -->
+      - Article 43. Effect  <!-- lvl=4 i=69 sid=body[1]/p[70] src=Structure CẦN-XEM-LẠI -->
+
+> 50 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.
