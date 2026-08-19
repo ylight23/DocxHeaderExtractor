@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Core.Models;
+﻿using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -133,6 +133,43 @@ public static class AdministrativeOutline
 
             return (text[..end], text[start..]);
         }
+
+        return CatKhiQuaDai(text);
+    }
+
+    /// <summary>
+    /// Lối cắt dự phòng cho đơn vị QUÁ DÀI. Luật chính chỉ cắt ở <c>:</c>/<c>;</c> theo sau là số
+    /// liệu — đúng cho văn bản hành chính, nhưng mù với bản chuyển PDF của báo cáo tài chính:
+    /// <c>041_IBRD</c> có nhan đề dài <b>4.571 ký tự</b> vì cả đoạn gộp trở thành một mục, và
+    /// 25% số mục toàn corpus dài quá <see cref="ParagraphHeadingSplitter.MaxHeadingLength"/>.
+    /// <para>
+    /// Ranh giới dùng ở đây là KẾT CÂU: dấu chấm câu rồi khoảng trắng rồi chữ hoa. Nhan đề không
+    /// có dấu kết câu bên trong; thân bài thì có.
+    /// </para>
+    /// <para>
+    /// <b>Chỉ chạy khi đã vượt ngưỡng.</b> Mục có độ dài bình thường không bị đụng tới, nên luật
+    /// này không thể làm hồi quy nhóm tài liệu vốn đang đúng.
+    /// </para>
+    /// </summary>
+    private static (string Heading, string? Body) CatKhiQuaDai(string text)
+    {
+        if (text.Length <= ParagraphHeadingSplitter.MaxHeadingLength) return (text, null);
+
+        for (var i = 1; i < text.Length - 2; i++)
+        {
+            if (text[i] is not ('.' or '?' or '!')) continue;
+            if (!char.IsWhiteSpace(text[i + 1])) continue;
+
+            var start = i + 1;
+            while (start < text.Length && char.IsWhiteSpace(text[start])) start++;
+            if (start >= text.Length || !char.IsUpper(text[start])) continue;
+
+            var heading = text[..(i + 1)].TrimEnd();
+            if (heading.Count(char.IsLetter) < 2) continue;
+
+            return (heading, text[start..]);
+        }
+
         return (text, null);
     }
 }

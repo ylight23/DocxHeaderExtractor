@@ -8807,3 +8807,48 @@ Không phải đầu trang. Với `041_IBRD`, đề mục dài 4.571 ký tự v�
 `TypedNumberingOutline` sinh mục mà không cắt nhan đề khỏi thân bài. `ParagraphHeadingSplitter`
 đã có `MaxHeadingLength = 200` và `SplitHeadingBody`, nhưng đường `typed_number_depth` không gọi
 tới. Đó mới là chỗ phải sửa.
+
+## §125 — Cắt nhan đề khỏi thân bài khi đơn vị quá dài: 24,7% → 16,3%
+
+### Nguyên nhân, xác định ở §124
+
+`AdministrativeOutline.SplitHeadingBody` chỉ cắt ở `:` hoặc `;` **theo sau là chữ số** — đúng cho
+văn bản hành chính có số liệu (`QK4: 01`), nhưng mù với mọi thứ khác. `041_IBRD` có
+`Section I: Overview …` — dấu hai chấm theo sau là CHỮ, nên không cắt và cả **4.571 ký tự** thành
+nhan đề.
+
+`TypedNumberingOutline` vẫn gọi đúng hàm này; lỗi nằm trong chính hàm, không phải ở nơi gọi. Ghi
+lại vì §124 đoán sai chỗ.
+
+### Luật thêm
+
+Lối cắt dự phòng ở **kết câu** — dấu chấm câu, khoảng trắng, chữ hoa. Nhan đề không chứa dấu kết
+câu bên trong; thân bài thì có.
+
+**Chỉ chạy khi đơn vị đã vượt `MaxHeadingLength = 200`.** Đó là chốt làm luật này không thể gây hồi
+quy: mọi mục đang đúng đều ngắn hơn ngưỡng nên không bị đụng tới.
+
+### Đo
+
+| | trước | sau |
+|---|---|---|
+| mục dài >200 ký tự | 2.995/12.111 = **24,7%** | 1.973/12.110 = **16,3%** |
+| số file cải thiện | — | **31** |
+| tổng số mục | 12.111 | 12.110 |
+| bench / ev-human / toc / fd | — | **cả bốn y hệt** |
+
+`062_Lectures` 112 mục dài → **11**; `091_RFC9110` 432 → **174**; `019_TT_200` 164 → **106**;
+`092_RFC9111` 83 → **29**.
+
+So với §124 (bóc đầu trang mọi vị trí): cùng nhắm một chỉ số, một cái đổi 1 file và không nhích số
+nên bị gỡ, một cái đổi 31 file và hạ 8,4 điểm nên được giữ. Cùng một phép đo phân xử cả hai.
+
+### Test
+
+607 xanh. Đột biến: bỏ chốt độ dài → **đỏ**; bỏ điều kiện chữ hoa sau dấu chấm → **đỏ**.
+Có test ghim §57.3 (luật số liệu vẫn thắng trước) và ghim `No. 5` không bị coi là kết câu.
+
+### Còn lại 16,3%
+
+Chưa xong. Phần còn lại là đơn vị dài mà **không có dấu kết câu nào** bên trong — bảng biểu, công
+thức toán, danh mục. Cần ranh giới khác, không phải câu.

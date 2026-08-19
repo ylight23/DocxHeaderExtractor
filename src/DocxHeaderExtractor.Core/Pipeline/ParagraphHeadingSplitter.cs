@@ -55,7 +55,7 @@ public static class ParagraphHeadingSplitter
         RegexOptions.Compiled);
 
     /// <summary>Nhan đề dài hơn ngần này gần như chắc chắn đã nuốt luôn thân bài.</summary>
-    private const int MaxHeadingLength = 200;
+    internal const int MaxHeadingLength = 200;
 
     /// <summary>Phải còn chữ sau ký hiệu số thì mới là nhan đề, không phải mẩu số liệu.</summary>
     private static readonly Regex TitleWordRx = new(@"\p{L}{2,}", RegexOptions.Compiled);
