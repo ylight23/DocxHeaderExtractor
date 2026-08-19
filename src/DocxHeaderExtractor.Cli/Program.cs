@@ -123,6 +123,13 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
             if (!o.Quiet)
             {
                 Console.Error.WriteLine($"  {AgentRunNarrator.Describe(agentRun)}");
+
+                // Lượt dựng lại là chi phí GẤP ĐÔI và trước đây hoàn toàn câm: narrator chỉ nói
+                // "đã phải dựng lại 1 lượt" mà không nói vì sao. Ở §132 một mục do mô hình bù bị
+                // nuốt mất vì danh sách sai thứ tự, và phải cắm mốc in chỉ số thủ công mới truy ra.
+                foreach (var e in agentRun.Trace.Where(x => x.Kind == AgentRunEventKind.Repairing))
+                    Console.Error.WriteLine($"  ⟲ {e.Message}");
+
                 Console.Error.WriteLine($"  agent={agentRun.Outcome} · run={agentRun.RunId:N}");
             }
             outputs.Add(OutlineFormatter.Format(outline, o.Format));

@@ -570,6 +570,17 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // Lưới cuối: TrustStyles, StructuralRecovery và OutlineStructureResolver đều có thể
             // kéo lại một đoạn theo luật cấu trúc. Đoạn đang bị cách ly thì không được quay lại
             // bằng bất kỳ đường nào.
+            // Cùng một đề mục dựng hai lần ở CÙNG chỉ số đoạn là vi phạm hợp đồng của
+            // OutlineGroundingValidator ("Heading index N + text xuất hiện nhiều lần"). Trước đây
+            // pipeline để lọt, validator bác, và harness phải DỰNG LẠI cả tài liệu — chi phí gấp
+            // đôi. Đo được: 024_ND_15-2020 và 090_ND_155-2018 đều dựng lại vì đúng lỗi này; ở
+            // 063_Advanced_Linear_Algebra lượt dựng lại đẩy 11 khối context thành 17 khối.
+            var trung = new HashSet<(int, string)>();
+            var truocKhu = headings.Count;
+            headings = headings.Where(h => trung.Add((h.Index, (h.Text ?? string.Empty).Trim()))).ToList();
+            if (headings.Count < truocKhu)
+                Log($"Khử {truocKhu - headings.Count} mục trùng nguyên văn ở cùng đoạn.");
+
             if (quarantined.Count > 0) headings.RemoveAll(h => quarantined.Contains(h.Index));
 
             // Nhập heading R1 vào TRƯỚC hậu kiểm để chúng vẫn làm anh em cho các mục còn lại —

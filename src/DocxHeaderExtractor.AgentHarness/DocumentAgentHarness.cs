@@ -173,9 +173,16 @@ public sealed class DocumentAgentHarness
                     quarantine.Length == 0)
                     throw new AgentOutputValidationException(runId, issues, trace.ToArray());
 
+                // Nói RÕ vì sao bác. Bản cũ chỉ báo "cách ly N đoạn": mỗi lần validator bác là
+                // một lượt dựng lại — chi phí GẤP ĐÔI — mà không ai chẩn đoán được nguyên nhân.
+                // Đo được cái giá: ở §132 một mục do mô hình bù bị nuốt mất vì danh sách sai thứ
+                // tự, và phải cắm mốc in chỉ số thủ công mới truy ra; ở 063_Advanced_Linear_Algebra
+                // lượt dựng lại đẩy 11 khối context thành 17 khối, tiêu 2.983 giây.
+                var lyDo = string.Join("; ", issues.Take(3).Select(x => x.Message));
                 await EmitAsync("repair", AgentRunEventKind.Repairing,
                     $"Cách ly {quarantine.Length} đoạn vi phạm rồi dựng lại " +
-                    $"(lượt {attempt}/{_options.MaxRepairAttempts}).");
+                    $"(lượt {attempt}/{_options.MaxRepairAttempts}). Lý do: {lyDo}" +
+                    (issues.Count > 3 ? $" (+{issues.Count - 3} lỗi nữa)" : string.Empty));
                 feedback = new AgentRepairFeedback(issues, quarantine);
             }
 
