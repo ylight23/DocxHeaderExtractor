@@ -8975,3 +8975,52 @@ Hệ quả phải chấp nhận và ghi rõ:
   tìm luật KHÔNG đánh đổi Nav — ví dụ cắt nhan đề khỏi thân bài (§125) thay vì xoá mục.
 
 Từ đây không hỏi lại câu này nữa; luật trọng tài là §128.
+
+## §129 — Khử trùng lặp nhan đề: cài, đo, `toc` hồi quy, gỡ
+
+### Vì sao thử
+
+Đích người dùng nêu rõ: đầu ra phải **bằng mục lục chính** của văn bản. `092_RFC9111` trả 289 mục
+cho mục lục 64 mục là không đạt, dù Nav 95,3%. Theo §128 (Nav thắng), cách duy nhất là tăng
+precision **mà không đánh đổi Nav** — khử bản trùng đúng là phép như vậy về lý thuyết: giữ một bản
+thì Nav không đổi.
+
+### Đo trước khi cài
+
+| | |
+|---|---|
+| toàn corpus | 1.008/12.110 = **8,3%** là bản trùng, trên 28 file |
+| `024_ND_15-2020` | **520/1.043** — đúng một nửa |
+| `092_RFC9111` | chỉ **13** |
+
+`092` trùng ít vì bản trong mục lục bị cắt CỤT (`"2.3. Calculating"`) nên không khớp chính xác với
+bản đầy đủ ở thân bài. **Khử trùng lặp không cứu được `092`** — biết trước khi cài.
+
+### Đo sau khi cài
+
+| bộ | trước | sau |
+|---|---|---|
+| bench / fd | — | y hệt |
+| ev-human | F1 42,1% Nav **98,0%** | F1 45,6% Nav **96,4%** |
+| **toc** | F1 99,6% Nav **99,2%** **7/9** | F1 98,1% Nav **96,4%** **6/9** |
+
+### Vì sao gỡ
+
+Đúng cái bẫy §34.3 đã ghi từ lâu: **cấu trúc song song lặp đề mục CÓ CHỦ Ý**. Chuẩn hoá bằng cách
+bỏ mốc làm `1. Về ngôn ngữ` và `2. Về ngôn ngữ` thành một, nên hai đề mục thật bị gộp thành một.
+`toc` mất 2,8 điểm Nav và một tài liệu tuyệt đối.
+
+Ghi lại vì tôi đã ĐỌC §34.3 trước khi cài và vẫn cài — lý do là §34.3 nói về luật "lặp nhiều lần"
+còn đây là "trùng nhan đề sau khi bỏ mốc", tưởng khác. Hoá ra cùng một cái bẫy, chỉ đổi cách chuẩn
+hoá. Bài học hẹp hơn: **mọi phép chuẩn hoá làm mất mốc đều làm mất khả năng phân biệt anh em cùng
+tên.**
+
+### Đường đi đúng cho `092`, theo thứ tự bắt buộc
+
+Bỏ trang mục lục là ĐÚNG, nhưng §128 đo được nó làm Nav tụt 95,3% → 78,1% vì **bản ở thân bài của
+nhiều section không được nhận**. Nên thứ tự bắt buộc là:
+
+1. Nhận cho đủ bản ở THÂN BÀI trước (việc recall).
+2. Rồi mới bỏ trang mục lục (việc precision).
+
+Làm ngược thứ tự thì bước 2 luôn tụt Nav, và §128 sẽ luôn loại nó.
