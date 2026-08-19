@@ -8188,3 +8188,55 @@ phiên sau, xếp theo bằng chứng đã có (không phải cảm tính):
    chung (khác nhau, cần luật khác nhau).
 3. **`04_giao_trinh` (7 file nghi thừa)** — hướng khác hẳn (precision, không phải recall) — đọc `062`
    và `070` trước để xác nhận giả thuyết "cứu theo đánh số bắt nhầm số hiệu Theorem/Equation".
+
+## §113. "Rule đã xây" — `SplitMergedParagraphs`/`ParagraphHeadingSplitter` — đo trên TOÀN CORPUS: KHÔNG dùng được nguyên trạng
+
+**Yêu cầu người dùng:** "tiếp tục xây luật, gom nhóm file để kiểm tra file nào thì phải rơi vào luật
+ta đã xây dựng". Trước khi viết luật mới, tìm ra `ParagraphHeadingSplitter` (đã có sẵn trong code,
+đúng cơ chế cần cho Phát hiện 1/2 ở §112 — tách marker "nhãn + số" NẰM GIỮA đoạn gộp, không đòi ở vị
+trí 0) và cờ `ExtractionOptions.SplitMergedParagraphs` (`--split-merged`, **mặc định TẮT**) điều
+khiển nó. Đọc trực tiếp `092_RFC9111`/`010`/`008` xác nhận đúng NGUYÊN NHÂN chung của cả ba phát hiện
+ở §112: PDF chèn page-header lặp lại ("RFC 9111 HTTP Caching June 2022", "CÔNG BÁO/Số...") vào ĐẦU mỗi
+đoạn, đẩy marker thật ra giữa đoạn — đúng vấn đề `ParagraphHeadingSplitter` sinh ra để giải.
+
+**"Gom nhóm file để kiểm tra"** — thay vì đoán, chạy `dhx extract --no-llm --split-merged` trên TOÀN
+BỘ 89 file, so trực tiếp với baseline `--no-llm` (không cờ) đã có ở §112:
+
+```
+Tổng: 89 file
+Không đổi (delta=0):                              12
+Nổ quá mức (found > 50% số đoạn — nghi rác):       54
+Thay đổi vừa phải (còn lại, cần xem riêng từng file): 23
+```
+
+**54/89 file (61%) nổ vào vùng rác** — bao gồm CHÍNH XÁC toàn bộ nhóm severe đã liệt ở §112 (mọi file
+`VietnameseLegal` lỗ hổng phát hiện/lọc, cả 5 file `07_system_generated`, cả 6 file `03_tai_chinh_ke_toan`
+nhóm A/A'). Vài số cụ thể để thấy quy mô nổ:
+
+```
+063_Advanced_Linear_Algebra           25 → 2.251   (khớp đúng "2.224 mục rác" §105 đã đo trên 1 file)
+091_RFC9110_HTTP_Semantics             1 → 1.396
+032_WB_Plant_TwoStage_2020           263 → 1.346   (WB 9-file — nhóm VỐN KHOẺ trước đó!)
+024_ND_15-2020_Xu_phat_BC_VT_CNTT     30 → 1.043
+020_TT_133-2016_Che_do_ke_toan_SME    48 → 1.390
+001_Bo_luat_Dan_su_91-2015-QH13       25 → 781
+```
+
+**Không chỉ 063 — cả `02_hop_dong_mua_sam` (bộ hợp đồng WB, VỐN đã khoẻ, dùng làm baseline hồi quy
+xuyên suốt dự án) cũng nổ khi bật cờ này** (026: 263→317, 028: 283→1074, 032: 263→1346...). §105 chỉ đo
+được rủi ro này trên MỘT file (`063`); hôm nay xác nhận nó là rủi ro TOÀN CORPUS, không phải ca lẻ.
+
+**Kết luận: `SplitMergedParagraphs=true` KHÔNG dùng được nguyên trạng làm luật chung, dù đúng cơ chế
+cần thiết.** `ParagraphHeadingSplitter.MarkerRx` (nhãn hoa + số, hoặc số thuần nhiều cấp) quá lỏng —
+khớp cả cross-reference ("Section 5", "Điều 3 của Luật này"), số phương trình/định lý trong giáo trình,
+điều khoản phụ trong hợp đồng — không phân biệt được với heading thật chỉ bằng hình dạng vị trí. Cờ
+này BẮT ĐÚNG các marker thật (giải thích vì sao `01_phap_quy`/`06_dich_song_ngu`/`07_system_generated`
+đều tăng found), nhưng bắt lẫn quá nhiều rác để dùng trực tiếp làm heading đã xác nhận.
+
+**Hướng đi tiếp theo (CHƯA đo, chỉ là giả thuyết có cơ sở):** `SplitMergedParagraphs` hiện dùng để
+DỰNG HEADING TRỰC TIẾP (declared route tự nhận, không qua model xác minh) — đó là lý do rác lọt thẳng
+ra ngoài. Nếu thay vì "dựng tất định" nó chỉ dùng để MỞ RỘNG TẬP ỨNG VIÊN đưa cho tầng model xác minh
+(critic/classifier có LLM, giống cách `07_system_generated`/`VietnameseLegal` sẽ chạm được
+`LlmBoundaryCutter` đã đo 100% ở §111), tầng ngữ nghĩa có thể lọc bớt cross-reference/số phương trình
+mà luật tất định không phân biệt được. **Chưa test** — cần đo trên vài file đại diện (không phải cả
+89, tốn nhiều lượt suy luận) trước khi tin giả thuyết này, đúng kỷ luật đo-trước-khi-xây.

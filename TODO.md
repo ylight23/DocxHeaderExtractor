@@ -693,3 +693,18 @@ dùng hôm nay cho các nhóm khác. Thứ tự ưu tiên đề xuất: (1) RFC 
 bảng cứng sẵn; (2) VietnameseLegal — nhóm lớn nhất, tác động cao nhất nếu sửa được, nhưng cần tách
 hai loại lỗ hổng trước; (3) `04_giao_trinh` — đọc `062`/`070` (tỉ lệ cao nhất) để xác nhận giả thuyết
 trước khi kết luận.
+
+## 2026-08-19: ĐÃ LOẠI `SplitMergedParagraphs=true` làm luật chung — nổ rác trên 54/89 file (xem handoff §113)
+
+Đo trên TOÀN CORPUS (không phải 1 file như §105): bật `--split-merged` làm `found` tăng implausible
+(>50% số đoạn tài liệu) trên **54/89 file (61%)**, bao gồm cả nhóm `02_hop_dong_mua_sam` VỐN khoẻ
+(dùng làm baseline hồi quy xuyên suốt dự án — ví dụ `032`: 263→1.346). `ParagraphHeadingSplitter`
+đúng cơ chế cần cho Phát hiện 1/2 (§112) nhưng regex marker quá lỏng, khớp cả cross-reference/số
+phương trình/điều khoản phụ — không phân biệt được heading thật chỉ bằng hình dạng. **Không dùng cờ
+này làm luật chung.**
+
+**Giả thuyết CHƯA đo, hướng đi tiếp theo:** dùng `ParagraphHeadingSplitter` để MỞ RỘNG TẬP ỨNG VIÊN
+đưa cho tầng model xác minh (không dựng heading trực tiếp như hiện tại), để tầng ngữ nghĩa lọc bớt
+rác mà luật tất định không phân biệt được — đặc biệt hợp với `07_system_generated`/`VietnameseLegal`,
+đúng domain `LlmBoundaryCutter` đã đo 100% (§111). Cần test trên vài file đại diện (không phải cả 89
+— tốn nhiều lượt suy luận LLM) trước khi tin, đúng kỷ luật đo-trước-khi-xây.
