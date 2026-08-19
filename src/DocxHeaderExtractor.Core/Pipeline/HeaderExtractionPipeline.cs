@@ -672,7 +672,11 @@ public sealed class HeaderExtractionPipeline : IDisposable
                      _options.NumberingDeclaredOutline ||
                      _options.StyleDeclaredOutline;
 
-        if (!manual && (!_options.AutoDetectDocumentMode || !_options.DisableLlm))
+        // Luật deterministic chạy CẢ KHI LLM bật. Bản cũ đòi thêm `!DisableLlm`, nghĩa là toàn bộ
+        // tầng luật chỉ sống trên nhánh --no-llm và đường sản xuất không hề dùng tới nó. Đo được
+        // cái giá trên 010_Luat_An_ninh_mang: --no-llm ra 50/50 khớp trọn đáp án, còn bật mô hình
+        // ra 39 mục — bật mô hình làm kết quả TỆ HƠN vì nó bỏ qua luật.
+        if (!manual && !_options.AutoDetectDocumentMode)
             return (null, null);
         if (!manual && modeReport.Status != DocumentStatus.Normal)
         {

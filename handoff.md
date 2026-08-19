@@ -9067,3 +9067,59 @@ CÓ ranh giới câu.
 
 610 test xanh. Đột biến: bỏ chốt mẫu tối thiểu → **đỏ**; bỏ chốt `nguong <= 0` → **đỏ**. Có test
 ghim "cùng một đoạn, ngưỡng nhỏ thì cắt, ngưỡng lớn thì không" để giết đột biến quay lại hằng số.
+
+## §131 — Luật deterministic chạy CẢ KHI LLM bật (chạy Qwen3.5-9B local)
+
+### Phát hiện lớn nhất của phiên
+
+Người dùng yêu cầu chạy bằng Qwen 9B. Chạy `010_Luat_An_ninh_mang`:
+
+| đường | kết quả | thời gian |
+|---|---|---|
+| có mô hình (bản cũ) | **39 mục** | 165,8s |
+| `--no-llm` | **50/50 khớp trọn đáp án** | 1,3s |
+
+**Bật mô hình làm kết quả TỆ HƠN.** Nguyên nhân là một dòng:
+
+```csharp
+if (!manual && (!AutoDetectDocumentMode || !DisableLlm)) return (null, null);
+```
+
+Toàn bộ tầng luật deterministic — `RunningHeaderAudit` (§116–§117), `MergedParagraphAutoSplit`
+(§121–§122), ngưỡng cắt động (§130) — **chỉ sống trên nhánh `--no-llm`**. Đường sản xuất chưa bao
+giờ dùng tới. Phiên song song đã ghi cảnh báo này trong TODO; hôm nay nó thành số đo.
+
+### Sửa
+
+Bỏ điều kiện `!DisableLlm`. Sau khi mở cổng, `010` cho **50 mục trong 0,4s** — đúng hơn và nhanh
+hơn 400 lần.
+
+### Đo
+
+| bộ | `--no-llm` | có Qwen3.5-9B |
+|---|---|---|
+| bench (7) | F1 98,6% Nav 80,6% 6/7 | **F1 98,6% Nav 80,6% 6/7** |
+| ev-human / toc / fd | y hệt | — |
+
+Hai đường giờ cho CÙNG kết quả trên bench, đúng như thiết kế: luật quyết trước, mô hình chỉ chạy
+khi luật không dựng được gì.
+
+### Đánh đổi đã biết, không giấu
+
+`bench/04-bia-muc-luc-chu-thich`: cổng đóng → **4 mục** (mô hình, 101s); cổng mở → **3 mục**
+(luật, 0,2s). Bench trên đường mô hình đi từ 7/7 xuống **6/7** — bằng đúng mức nhánh `--no-llm`
+vốn có.
+
+### Hai lần thử lấy lại mục đó, cả hai GỠ
+
+1. **Gọi mô hình vô điều kiện rồi hợp nhất** — `bench` không chạy xong nổi trong 10 phút.
+2. **Gọi mô hình chỉ khi luật còn sót** (`luat.Count < candidates.Count`, cùng tín hiệu §121):
+   điều kiện bắn ĐÚNG — `04` gọi mô hình, `010` không gọi và giữ 0,4s. Nhưng log báo *"bù thêm 1
+   mục"* mà đầu ra vẫn **3** — mục thêm bị lọc ở tầng sau. Giá 89,9s, lợi ích 0.
+
+### Việc còn mở, đã khoanh vùng
+
+Mục do mô hình bù bị **rơi ở tầng sau khi đã được thêm vào danh sách**. Chưa truy được rơi ở đâu
+(grounding validator? audit? precision gate?). Đây là điều kiện tiên quyết cho MỌI phương án
+"luật làm nền, LLM bù phần còn lại" — chừng nào mục bù còn bị rơi thì mọi kiến trúc hợp nhất đều
+vô nghĩa. Đó là việc kế tiếp.
