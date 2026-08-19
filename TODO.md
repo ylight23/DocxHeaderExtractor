@@ -708,3 +708,27 @@ này làm luật chung.**
 rác mà luật tất định không phân biệt được — đặc biệt hợp với `07_system_generated`/`VietnameseLegal`,
 đúng domain `LlmBoundaryCutter` đã đo 100% (§111). Cần test trên vài file đại diện (không phải cả 89
 — tốn nhiều lượt suy luận LLM) trước khi tin, đúng kỷ luật đo-trước-khi-xây.
+
+## 2026-08-19: đã test giả thuyết trên — kết quả LẪN, hai việc phải làm trước khi xây (xem handoff §114)
+
+Test bằng Qwen3.8-27B, prompt HEADING/NOISE đơn giản (không few-shot), trên segment gộp của `092`
+(RFC) và `010` (VietnameseLegal): `010` sạch (6/36 HEADING, bắt đúng 5/6 "Điều N." thật, 2 lỗi: 1 âm
+tính giả bỏ sót `Điều 1.`, 1 dương tính giả nhận nhầm mục con đánh số); `092` rất nhiễu (53/116) —
+nhưng lộ ra là confound của bài test, không phải LLM kém: 5 đoạn gộp đầu tiên của `092` chính là
+TRANG MỤC LỤC (nhiều mốc liên tiếp gần như không thân bài xen giữa) — khác hẳn hình dạng "heading dán
+liền thân bài" mà cả `ParagraphHeadingSplitter` lẫn `LlmBoundaryCutter` được thiết kế cho.
+
+**Phát hiện kiến trúc quan trọng hơn giả thuyết ban đầu:** route declared tự động
+(`auto:vietnamese-legal`/`auto:typed-numbering`...) CHỈ chạy khi `--no-llm`
+(`TryBuildDeclaredOutline` dòng 630: `if (!manual && (!AutoDetectDocumentMode || !DisableLlm)) return
+(null, null);`). Khi LLM bật (đường sản xuất thật), pipeline rơi thẳng vào `RunModelAsync`, và lỗ
+hổng thật nằm ở tầng `slim.Candidates` (OpenXML/heuristic) — tầng đó KHÔNG dùng
+`ParagraphHeadingSplitter`, chỉ xét nguyên đoạn. Toàn bộ số liệu §112/§113 (đo `--no-llm`) phản ánh
+một nhánh code không chạy khi LLM bật.
+
+**Hai việc phải làm trước khi xây production (chưa làm hôm nay):**
+1. Luật nhận diện "đây là trang mục lục gộp" (nhiều mốc liên tiếp, gần như không thân bài) để KHÔNG
+   trộn chung với đoạn thân bài thật khi đưa cho LLM phân loại — khác xử lý, không cùng một lượt.
+2. Cơ chế ID candidate DƯỚI MỨC PARAGRAPH cho tầng `RunModelAsync`/`NeutralDocumentViewSerializer`
+   (nhiều segment cùng chung một paragraph Index cần phân biệt được với model) — việc kỹ thuật đáng
+   kể, tương đương quy mô đã làm cho `LlmBoundaryCutter` (§109).

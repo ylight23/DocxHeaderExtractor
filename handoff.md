@@ -8240,3 +8240,62 @@ ra ngoài. Nếu thay vì "dựng tất định" nó chỉ dùng để MỞ RỘ
 `LlmBoundaryCutter` đã đo 100% ở §111), tầng ngữ nghĩa có thể lọc bớt cross-reference/số phương trình
 mà luật tất định không phân biệt được. **Chưa test** — cần đo trên vài file đại diện (không phải cả
 89, tốn nhiều lượt suy luận) trước khi tin giả thuyết này, đúng kỷ luật đo-trước-khi-xây.
+
+## §114. Test giả thuyết §113: LLM phân biệt heading thật/rác trong candidate gộp — kết quả LẪN, một confound rõ
+
+**Trước khi test: một phát hiện kiến trúc quan trọng hơn cả giả thuyết ban đầu.** Đọc lại
+`TryBuildDeclaredOutline` (dòng 630): route declared tự động (`auto:vietnamese-legal`,
+`auto:typed-numbering`...) **CHỈ chạy khi `DisableLlm=true`** (`if (!manual && (!AutoDetectDocumentMode
+|| !DisableLlm)) return (null, null);`). Nghĩa là mọi con số ở §112/§113 (đo bằng `--no-llm`) phản ánh
+một nhánh code KHÔNG chạy khi bật LLM thật — khi LLM bật, pipeline rơi thẳng vào `RunModelAsync`, và
+tầng ứng viên gốc (`slim.Candidates`, OpenXML/heuristic) — KHÔNG PHẢI declared route — mới là nơi
+quyết định có thấy được marker hay không. Tầng đó không dùng `ParagraphHeadingSplitter`, chỉ xét đặc
+điểm NGUYÊN ĐOẠN — nên với LLM bật, các file merged-paragraph vẫn gần như không có ứng viên nào để mô
+hình xét, bất kể declared route. **Đây là lỗ hổng thật cần vá, lớn hơn phạm vi "chỉ route declared".**
+
+**Test giả thuyết (thu hẹp, đúng như đã hứa):** không xây lại kiến trúc ngay — trước tiên hỏi câu hỏi
+gốc: LLM có phân biệt được heading thật với rác hình dạng-giống-heading trong các segment
+`ParagraphHeadingSplitter.Segments` sinh ra không? Viết script cô lập (`smoke.csproj` cùng thư mục
+`§109/§111`), tải `092_RFC9111_HTTP_Caching` và `010_Luat_An_ninh_mang` qua `DocxSlimExtractor` thật
+(không giả lập), lấy segment của 5 đoạn gộp ĐẦU TIÊN mỗi file, hỏi Qwen3.8-27B (gateway đã đo ở §111,
+prompt HEADING/NOISE đơn giản, KHÔNG few-shot) từng segment một.
+
+```
+092_RFC9111_HTTP_Caching: 53/116 đánh dấu HEADING — RẤT NHIỄU, nhiều lỗi rõ ràng
+010_Luat_An_ninh_mang:     6/36 đánh dấu HEADING — sạch hơn nhiều, còn 2 lỗi
+```
+
+**010 — tín hiệu tích cực có điều kiện.** Bắt đúng 5 mục "Điều N." thật (`Điều 2/3/4/5/7`), loại đúng
+tất cả rác: mục định nghĩa đánh số (`"1. An ninh mạng là..."`), mảnh page-header CÔNG BÁO. Nhưng **2
+lỗi thật**: bỏ sót `"Điều 1. Phạm vi điều chỉnh..."` (âm tính giả) và nhận nhầm `"5. Tăng cường hợp
+tác quốc tế..."` (một mục con trong danh sách của Điều 3) thành heading (dương tính giả). Không hoàn
+hảo — prompt ở đây KHÔNG có few-shot như `LlmBoundaryCutter` đã tuned, nên số này là CẬN DƯỚI, không
+phải trần.
+
+**092 — confound rõ ràng, không phải thất bại ngẫu nhiên.** Đọc lại các segment bị gắn HEADING sai
+(`"Introduction 1."`, `"Seconds 2. Overview of Cache"`, `"2.1. Imported"`) lộ ra nguyên nhân: 5 đoạn
+gộp ĐẦU TIÊN của `092` chính là **trang MỤC LỤC** của RFC (một đoạn text-layout gộp cả chục dòng mục
+lục liên tiếp không có thân bài xen giữa — xem `dhx xml` đoạn i=6/i=8 đã đọc ở §113: `"...4.3.3.
+Handling a Validation Response 4.3.4. Freshening Stored Responses upon Validation 4.3.5. ..."`).
+`ParagraphHeadingSplitter` cắt xuyên qua nhiều mục lục liền kề không có ranh giới thân bài tự nhiên,
+sinh mảnh vô nghĩa (`"Seconds 2. Overview of Cache Operation 3. Storing Responses in Caches 3."`) —
+**hình dạng khác hẳn** "một heading dán liền một câu thân bài" mà cả `ParagraphHeadingSplitter` lẫn
+`LlmBoundaryCutter` được thiết kế cho. Lỗi lấy mẫu của chính bài test này (`.Take(5)` theo thứ tự tài
+liệu, vô tình rơi đúng vào trang mục lục của `092`), không phải bằng chứng "LLM không phân biệt được".
+
+**Kết luận trung thực — LẪN, có điều kiện, chưa đủ để xây production:**
+
+1. Trên đoạn gộp THÂN BÀI THẬT (010): giả thuyết có cơ sở — LLM phân biệt được phần lớn, dù chưa
+   hoàn hảo với prompt chưa tuned.
+2. Trên đoạn gộp là TRANG MỤC LỤC (092, một phần): giả thuyết KHÔNG được kiểm chứng đúng cách — cần
+   luật riêng nhận diện "đây là mục lục gộp" (nhiều mốc liên tiếp, gần như không thân bài xen giữa)
+   TRƯỚC khi đưa cho LLM, không trộn chung với đoạn thân bài thật.
+3. **Kiến trúc thật cần sửa lớn hơn dự kiến ban đầu** (mục đầu tiên ở trên): route declared chỉ chạy
+   `--no-llm`; khi LLM bật, lỗ hổng nằm ở tầng `slim.Candidates` (OpenXML/heuristic), không phải
+   declared route. Nối `ParagraphHeadingSplitter` vào `RunModelAsync` cần một cơ chế ID mới cho
+   candidate DƯỚI mức paragraph (nhiều segment cùng Index) — việc kỹ thuật đáng kể, CHƯA làm hôm nay.
+
+**Không xây production hôm nay** — đúng kỷ luật đo-trước-khi-xây: giả thuyết mới được xác nhận MỘT
+PHẦN, có ít nhất hai việc phải làm trước khi viết code thật (tách trang mục lục ra khỏi thân bài; xây
+cơ chế ID candidate dưới-paragraph). Ghi rõ cả hai vào `TODO.md` làm việc tiếp theo, không gộp vào một
+lượt xây vội.
