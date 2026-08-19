@@ -9224,3 +9224,59 @@ Tôi mở vòng này bằng câu "phát hiện hồi quy do §122 gây ra" — *
 `066`; nó chuyển `066` từ một kiểu sai (183 mục công thức toán) sang kiểu sai khác (5 mục, sót).
 Tài liệu này chưa bao giờ được trích đúng, và gọi đó là "hồi quy" đã làm tôi đi sửa nhầm chỗ suốt
 một vòng.
+
+## §134 — Trần chi phí cho lượt mô hình bù; §135 — `063` không chạy nổi bằng Qwen 9B cục bộ
+
+### §134 — Bằng chứng khai báo: có thẩm quyền, KHÔNG đảm bảo đầy đủ
+
+Người dùng chỉ ra trọng tài theo số lượng ứng viên là sai, phải dựa vào outline THẬT có trong
+docx. Đo cả 89 file:
+
+| bằng chứng khai báo trong OOXML | số file |
+|---|--:|
+| `w:outlineLvl` | 10 |
+| dấu hiệu TOC | 11 |
+| style Heading | 9 |
+| `w:numPr` | 9 |
+| **không khai gì cả** | **72** |
+
+Mọi file đang tranh cãi (`019`, `020`, `030`, `063`, `066`) và cả file đang trích đúng (`010`,
+`056`) đều thuộc nhóm 72. **Với đa số corpus, không có outline trong file để làm trọng tài.**
+
+Đã thử đúng luật đó — *file tự khai thì lấy đúng cái nó khai, không hỏi mô hình* — và **bench tụt
+7/7 → 6/7**: `bench/04-bia-muc-luc-chu-thich` khai `outlineLvl` ở **3** chỗ trong khi đáp án là
+**4**. Bằng chứng khai báo có thẩm quyền nhưng không đảm bảo đầy đủ. Đã gỡ luật đó.
+
+Thay bằng tách hai chuyện vốn bị lẫn: thẩm quyền là của tài liệu, **chi phí là chuyện riêng**.
+
+| file | ứng viên | trước | sau |
+|---|--:|---|---|
+| `bench/04` | 7 | 4/4, 101s | **4/4, 101s** |
+| `030_WB_RFP` | 151 | timeout, mất file | **12 mục, 2,1s** |
+| `082_Bo_luat_Lao_dong` | 333 | timeout, mất file | **12 mục, 0,6s** |
+
+`TranUngVienBu = 32` — ngân sách chi phí, ghi rõ trong mã là KHÔNG phải phán xét chất lượng.
+
+### §135 — `063_Advanced_Linear_Algebra`: đường mô hình không khả thi trên máy này
+
+Đây là ca duy nhất của corpus mà **không route deterministic nào bắn**, nên mô hình chạy toàn
+phần. Đo:
+
+| | |
+|---|---|
+| đoạn | 803 |
+| khối context | 11 |
+| thời gian mỗi khối | **~175 s** (dù chỉ 3–5 ứng viên/khối) |
+| đã chạy | **2.983 s cho 17 khối** rồi vẫn chạm trần 50 phút |
+
+Hai điều đo được, cả hai đáng ghi:
+
+1. **Chi phí là của KHỐI CONTEXT, không phải của số ứng viên.** Khối 5 ứng viên và khối 3 ứng viên
+   tốn như nhau. Log giải thích: *"Tắt tái dùng prefill: mô hình qwen35 có lớp trạng thái hồi quy"*
+   — không tận dụng được cache giữa các khối.
+2. **17 khối trên tài liệu 11 khối** nghĩa là pipeline chạy hơn một lượt — validator bác rồi dựng
+   lại, nhân đôi chi phí. Cùng cơ chế đã gây ra sự cố "mục bù biến mất" ở §132.
+
+Giao `063` bằng kết quả luật (25 mục, ~1 s). Không phải là bỏ cuộc: 88/89 file xong trong **95
+giây** tổng cộng, còn file này cần **hơn 50 phút** — chênh hơn 2.000 lần, và chênh lệch đó chính
+là ranh giới giữa "luật phủ được" và "phải hỏi mô hình".
