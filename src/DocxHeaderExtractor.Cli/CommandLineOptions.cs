@@ -84,6 +84,7 @@ public sealed class CommandLineOptions
                 case "--no-llm": o.Pipeline.DisableLlm = true; break;
                 case "--pdf-bold-fallback": o.Pipeline.PdfBoldLabelFallback = true; break;
                 case "--session-code-fallback": o.Pipeline.SessionCodeFallback = true; break;
+                case "--llm-boundary-cut-fallback": o.Pipeline.LlmBoundaryCutFallback = true; break;
                 case "--openrouter":
                     o.Pipeline.Backend = InferenceBackend.OpenRouter;
                     break;

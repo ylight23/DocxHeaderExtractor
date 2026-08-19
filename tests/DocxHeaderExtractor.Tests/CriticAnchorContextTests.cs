@@ -105,6 +105,10 @@ public sealed class CriticAnchorContextTests : IDisposable
             CancellationToken ct = default) =>
             Task.FromResult(Headings([.. headings.Select(h => h.Index)]));
 
+        public Task<string> BoundaryCutAsync(
+            string systemPrompt, string userMessage, CancellationToken ct = default) =>
+            Task.FromResult("");
+
         private static ChunkResult Headings(IReadOnlyList<int> indexes) =>
             new([.. indexes.Select(i => new ModelHeading
             {

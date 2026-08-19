@@ -27,4 +27,14 @@ public interface IHeaderClassifier : IDisposable
         IReadOnlyList<HierarchyItem> context,
         IReadOnlyList<HierarchyItem> headings,
         CancellationToken ct = default);
+
+    /// <summary>
+    /// Cắt ranh giới title/body cho MỘT đoạn văn bản đã biết là heading dính liền thân bài (câu hỏi
+    /// "có phải heading không" đã được tầng khác trả lời — nhiệm vụ ở đây hẹp hơn nhiều so với
+    /// <see cref="ClassifyAsync"/>: không JSON schema, không multi-index, chỉ system+user rồi trả
+    /// nguyên văn completion (đã trim). Người gọi (<c>LlmBoundaryCutter</c>) tự kiểm câu trả lời có
+    /// phải PREFIX hợp lệ của input hay không trước khi dùng làm ranh giới — backend không tự bảo
+    /// đảm điều đó.
+    /// </summary>
+    Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default);
 }

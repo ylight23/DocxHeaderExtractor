@@ -627,3 +627,17 @@ ranh giới tiêu đề. Route hiện tại thiếu cơ chế cắt ranh giới 
 `Điều N.` cho 019/020 (thông tư kế toán), `CHAPTER N`/`Na.` cho 063 (giáo trình tiếng Anh). Chưa xây
 — đo trước theo kỷ luật đo-trước-khi-xây: cần biết bao nhiêu file khác trong `01_phap_quy`/
 `04_giao_trinh` có cùng triệu chứng "đoạn gộp không cắt ranh giới" trước khi thiết kế luật chung.
+
+## 2026-08-19: `LlmBoundaryCutter` đã nối vào pipeline nhưng CỜ VẪN TẮT — cần đo lại 55 ca gốc qua đường sản xuất (xem handoff §109)
+
+`LlmBoundaryCutter` (bảng cứng domain→2-shot đã đo 85,7%/95,0%/85,7% trong harness) đã nối thật vào
+`HeaderExtractionPipeline` (`PipelineOptions.LlmBoundaryCutFallback`, `--llm-boundary-cut-fallback`),
+qua `IHeaderClassifier.BoundaryCutAsync` trên cả 4 backend. Smoke test qua đường sản xuất thật (không
+phải scratch harness) trên 9 ca mới (không trùng 55 ca đã đo) chỉ ra 6/9 — đã cô lập biến ContextSize
+(loại trừ, kết quả giống hệt khi ép về đúng cấu hình harness) nên đây là biến động lấy mẫu trên mẫu
+quá nhỏ, không phải bug wiring. Nhưng **chưa có con số đầu-đối-đầu thật qua đúng đường sản xuất trên
+mẫu đủ lớn** — việc còn thiếu trước khi cân nhắc bật cờ mặc định: chạy lại TOÀN BỘ 55 ca gốc (21 pháp
+quy + 20 RFC + 14 biên bản) qua `LlmBoundaryCutter.TryCutAsync` (không phải `StatelessExecutor` dựng
+tay của ba harness cũ), so trực tiếp với 85,7%/95,0%/85,7% đã ghi. Nếu giữ hoặc gần bằng: có căn cứ
+bật mặc định. Nếu tụt rõ: cần tìm biến khác biệt thật giữa harness và production (đã loại ContextSize;
+còn lại: MaxTokens 80 vs 120, và khả năng nhỏ là khác biệt bản build LLamaSharp/native lib).

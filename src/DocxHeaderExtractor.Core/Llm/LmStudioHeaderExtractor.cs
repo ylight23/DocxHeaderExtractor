@@ -346,6 +346,44 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
         };
     }
 
+    /// <summary>Nhiệm vụ hẹp — xem <see cref="IHeaderClassifier.BoundaryCutAsync"/>.</summary>
+    public async Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
+    {
+        var body = new
+        {
+            model = _options.Model,
+            temperature = 0,
+            top_k = 1,
+            top_p = 0.9,
+            repeat_penalty = 1.0,
+            seed = LlamaOptions.SharedSamplerSeed,
+            reasoning_effort = "none",
+            max_tokens = 120,
+            stream = false,
+            messages = new[]
+            {
+                new { role = "system", content = systemPrompt },
+                new { role = "user", content = userMessage },
+            },
+        };
+
+        using var request = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
+        {
+            Content = JsonContent.Create(body, options: RequestJson),
+        };
+        if (!string.IsNullOrWhiteSpace(_options.ApiKey))
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
+
+        using var response = await _http.SendAsync(request, ct);
+        var responseText = await response.Content.ReadAsStringAsync(ct);
+        if (!response.IsSuccessStatusCode)
+            throw new HttpRequestException(
+                $"LM Studio trả {(int)response.StatusCode} {response.ReasonPhrase}: {responseText}",
+                null,
+                response.StatusCode);
+        return ExtractContent(responseText).Trim();
+    }
+
     private static string ExtractContent(string response)
     {
         using var doc = JsonDocument.Parse(response);

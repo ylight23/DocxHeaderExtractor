@@ -188,6 +188,20 @@ public sealed class PipelineOptions
     public bool SessionCodeFallback { get; set; }
 
     /// <summary>
+    /// Tầng cắt ranh giới title/body bằng LLM few-shot cố định theo domain — chỉ chạy cho ứng viên
+    /// mà <see cref="InlineHeadingSplitter"/> KHÔNG tìm được ranh giới tất định (không phải mọi
+    /// heading dính body, chỉ phần còn lại sau khi luật rẻ hơn đã thử). Xem
+    /// <see cref="LlmBoundaryCutter"/> — bảng cứng đã đo 85,7%/95,0%/85,7% trên ba domain và thắng
+    /// retrieval động khi so đầu đối đầu (<c>docs/llm-boundary-few-shot-retrieval.md</c> §3/§4).
+    /// <para>
+    /// Mặc định TẮT — kết quả đã đo là trên HARNESS RIÊNG (55 ca cô lập, không qua pipeline thật),
+    /// chưa đo end-to-end qua route sản xuất này. Chỉ chạy khi mô hình đang bật (<c>--no-llm</c>
+    /// tắt luôn tầng này, vì đây là tầng gọi model).
+    /// </para>
+    /// </summary>
+    public bool LlmBoundaryCutFallback { get; set; }
+
+    /// <summary>
     /// Hậu kiểm bằng ký hiệu đánh số của chính tài liệu: cùng dạng đánh số phải cùng cấp, và
     /// dãy anh em phải liên tục từ 1. Không tốn giây suy luận nào và bắt được cả lỗi trượt cấp
     /// của mô hình lẫn tiêu đề bị tầng lọc đánh rơi — xem <see cref="NumberingAudit"/>.
@@ -445,7 +459,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     : declared.Headings ??
                 (_options.DisableLlm
                     ? HeuristicOnly(candidates)
-                    : await RunModelAsync(slim, candidates, quarantined, ct));
+                    : await RunModelAsync(slim, candidates, quarantined, modeReport.Mode, ct));
 
             // StructuralHierarchyResolver và TableOfContentsAnchor đều TẤT ĐỊNH và không cần mô
             // hình, nhưng cả hai nằm trong RunModelAsync nên đường --no-llm chưa bao giờ chạy
@@ -838,6 +852,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
         SlimDocument slim,
         IReadOnlyList<SlimParagraph> candidates,
         IReadOnlySet<int> quarantined,
+        DocumentMode mode,
         CancellationToken ct)
     {
         var review = _options.ReviewAllParagraphs
@@ -1258,6 +1273,38 @@ public sealed class HeaderExtractionPipeline : IDisposable
         var inlineSplits = InlineHeadingSplitter.Apply(accepted.Values, slim);
         if (inlineSplits > 0)
             Log($"Tách {inlineSplits} heading có nội dung cùng dòng theo ranh giới kiểm chứng được.");
+
+        // Tầng cắt ranh giới bằng LLM few-shot cố định theo domain (xem LlmBoundaryCutter) — chỉ
+        // cho ứng viên mà splitter tất định ở trên KHÔNG cắt được (BoundarySource còn rỗng): route
+        // riêng (pdf-bold-label, session-code...) không bao giờ tới được đây vì chúng short-circuit
+        // trước RunModelAsync, nên rỗng ở đây nghĩa đúng là "chưa có luật rẻ hơn nào cắt được".
+        if (_options.LlmBoundaryCutFallback && LlmBoundaryCutter.IsSupported(mode))
+        {
+            var uncut = accepted.Values.Where(h => string.IsNullOrEmpty(h.BoundarySource)).ToList();
+            var llmCuts = 0;
+            foreach (var heading in uncut)
+            {
+                ct.ThrowIfCancellationRequested();
+                var paragraph = slim.ByIndex(heading.Index);
+                if (paragraph is null) continue;
+
+                var cut = await LlmBoundaryCutter.TryCutAsync(llm, mode, paragraph.Text, ct);
+                if (cut is not { } end || end <= 0 || end >= paragraph.Text.Length) continue;
+
+                heading.OriginalText = paragraph.Text;
+                heading.Text = paragraph.Text[..end];
+                heading.HeadingSpan = new TextOffsetSpan(0, end);
+                heading.InlineBody = paragraph.Text[end..].TrimStart();
+                heading.InlineBodySpan = new TextOffsetSpan(end, paragraph.Text.Length);
+                heading.BoundarySource = "llm-boundary-cut";
+                paragraph.VerifiedHeadingEnd = end;
+                paragraph.VerifiedBodyStart = end;
+                paragraph.VerifiedBoundarySource = "llm-boundary-cut";
+                llmCuts++;
+            }
+            if (llmCuts > 0)
+                Log($"Cắt ranh giới bằng LLM (bảng cứng theo domain {mode}): {llmCuts} mục.");
+        }
 
         // Cross-verification: Structure chỉ đề xuất ứng viên; hỏi model lại trong một batch tập
         // trung trước khi cho phép evidence score đạt mức verified.

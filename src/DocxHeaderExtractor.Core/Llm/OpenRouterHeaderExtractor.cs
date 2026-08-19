@@ -210,6 +210,45 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             rejectedRoles);
     }
 
+    /// <summary>Nhiệm vụ hẹp — xem <see cref="IHeaderClassifier.BoundaryCutAsync"/>.</summary>
+    public async Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
+    {
+        var body = new
+        {
+            model = _options.Model,
+            temperature = 0,
+            max_tokens = 120,
+            messages = new[]
+            {
+                new { role = "system", content = systemPrompt },
+                new { role = "user", content = userMessage },
+            },
+            provider = new
+            {
+                zdr = true,
+                data_collection = "deny",
+                require_parameters = true,
+                allow_fallbacks = true,
+            },
+        };
+
+        using var request = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
+        {
+            Content = JsonContent.Create(body),
+        };
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
+        request.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor");
+
+        using var response = await _http.SendAsync(request, ct);
+        var responseText = await response.Content.ReadAsStringAsync(ct);
+        if (!response.IsSuccessStatusCode)
+            throw new HttpRequestException(
+                $"OpenRouter trả {(int)response.StatusCode} {response.ReasonPhrase}: {SafeError(responseText)}",
+                null,
+                response.StatusCode);
+        return ExtractContent(responseText).Trim();
+    }
+
     private static string ExtractContent(string response)
     {
         using var doc = JsonDocument.Parse(response);

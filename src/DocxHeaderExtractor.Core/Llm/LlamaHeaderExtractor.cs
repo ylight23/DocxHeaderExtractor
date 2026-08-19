@@ -441,6 +441,29 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
         return new ChunkResult(parsed, raw, 0, sw.ElapsedMilliseconds, new HashSet<int>());
     }
 
+    /// <summary>
+    /// Nhiệm vụ hẹp — xem <see cref="IHeaderClassifier.BoundaryCutAsync"/>. Stateless, không
+    /// grammar, không prefix cache (system prompt đổi theo domain nên không có phần chung ổn định
+    /// giữa các lượt gọi). Cùng cấu hình sampler greedy với <see cref="ClassifyRolesAsync"/>
+    /// (Temperature=0, TopK=1, Seed cố định) để tái lập được số đã đo trong harness thử nghiệm.
+    /// </summary>
+    public async Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
+    {
+        var prompt = BuildPrompt(systemPrompt, userMessage);
+        using var pipeline = new DefaultSamplingPipeline { Temperature = 0f, TopK = 1, Seed = _options.Seed };
+        var inferenceParams = new InferenceParams
+        {
+            MaxTokens = 120,
+            AntiPrompts = ["<|eot_id|>", "\n\n"],
+            SamplingPipeline = pipeline,
+        };
+
+        var sb = new StringBuilder();
+        await foreach (var token in _executor.InferAsync(prompt, inferenceParams, ct))
+            sb.Append(token);
+        return sb.ToString().Trim();
+    }
+
     private string BuildPrompt(string system, string user)
     {
         if (!_hasBuiltInTemplate) return HeaderPrompt.BuildLlama3Prompt(system, user);

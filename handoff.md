@@ -7910,3 +7910,80 @@ nội dung điều/chương) làm "heading". Đây là CÙNG HỌ vấn đề m�
 `SessionCodeOutline` (mã phiên D-code) đã giải cho hai nhóm khác trong `05_bien_ban_hop` — nhưng nhóm
 C cần một luật cắt khác (marker `Điều N.` cho 019/020, marker `CHAPTER N`/`Na.` cho 063), CHƯA xây,
 ghi vào `TODO.md` làm việc riêng, không gộp vào hôm nay.
+
+## §109. Việc 4/5: nối bảng cứng domain→2-shot vào pipeline sản xuất (`LlmBoundaryCutter`)
+
+**Việc 4/5 hôm nay.** §4 của `docs/llm-boundary-few-shot-retrieval.md` đã chốt bảng cứng thắng
+retrieval (85,7%/95,0%/85,7% trên ba domain: pháp quy VN, RFC, biên bản họp không marker) nhưng số đó
+sống trong bốn scratch harness rời (`.verify-build/llm-boundary-test*`), không có đường nào trong sản
+phẩm thật gọi tới. Việc hôm nay: biến nó thành một tầng chạy được trong pipeline, không phải "đã đo
+xong rồi để đó".
+
+**Kiến trúc:**
+
+- `IHeaderClassifier.BoundaryCutAsync(system, user)` — thành viên MỚI trên interface dùng chung cho
+  cả 4 backend (Local GGUF, LM Studio, OpenRouter, SGLang). Nhiệm vụ hẹp hơn hẳn `ClassifyAsync`:
+  không JSON schema, không multi-index, chỉ system+user rồi trả nguyên văn completion. `LlamaHeaderExtractor`
+  tái dùng `_executor`/`BuildPrompt` sẵn có; ba backend HTTP còn lại tái dùng đúng cấu hình sampler
+  (`temperature=0, seed cố định`) và `ExtractContent` đã có, chỉ bỏ `response_format`/grammar.
+- `LlmBoundaryCutter` (mới, `Pipeline/`) — bảng `DocumentMode → (system prompt, user prefix, label
+  word)` chép **NGUYÊN VĂN** ba prompt đã đo (không diễn giải lại) + `TryCutAsync` gọi model rồi bắt
+  buộc **grounding**: chỉ nhận kết quả khi model trả về đúng một PREFIX của input — cùng nguyên tắc
+  `OutlineGroundingValidator` đã dùng ở AgentHarness, chặn tại nguồn thay vì để heading lệch
+  `OriginalText[Start..End]` rồi bị cách ly âm thầm về sau (đúng lớp lỗi `NormalizeSpace` đã xảy ra
+  hai lần trong dự án).
+- Domain map xác nhận qua log thật, không đoán: pháp quy VN → `DocumentMode.VietnameseLegal`, RFC →
+  `DocumentMode.TypedNumbering`, biên bản không marker → `DocumentMode.FormatDriven`. Domain khác
+  → `IsSupported` trả `false`, không suy diễn số cho domain chưa đo.
+- Nối vào `HeaderExtractionPipeline.RunModelAsync`, ngay sau `InlineHeadingSplitter.Apply` — chỉ
+  chạy cho heading còn `BoundarySource` rỗng SAU KHI splitter tất định đã thử (route riêng như
+  `pdf-bold-label`/`session-code-attribution` không bao giờ tới được nhánh này vì chúng short-circuit
+  TRƯỚC `RunModelAsync`, nên rỗng ở đây nghĩa đúng là "chưa có luật rẻ hơn nào cắt được", không phải
+  bug). Cờ mới `PipelineOptions.LlmBoundaryCutFallback` (`--llm-boundary-cut-fallback`) — **mặc định
+  TẮT**, lý do ở mục đo dưới đây.
+
+**15 test mới** (`LlmBoundaryCutterTests`, dùng fake `IHeaderClassifier` kịch bản sẵn, không cần
+GGUF): domain nào có bảng/không có bảng, cắt đúng khi model trả prefix hợp lệ, bóc tiền tố nhãn khi
+model lặp lại từ khoá, bóc dấu ngoặc kép bao quanh, **từ chối khi model trả về câu không phải prefix
+của input** (grounding), từ chối khi domain chưa có bảng (không tốn một lượt gọi), từ chối khi backend
+ném lỗi thay vì làm hỏng cả lượt trích xuất. **570 test xanh** (555 + 15).
+
+**Smoke test qua đường sản xuất thật (không phải scratch harness) — đo trung thực, không chỉ báo
+"đã nối xong":** nạp `Llama-3.2-3B-Instruct-Q4_K_M.gguf` qua CHÍNH `LlamaHeaderExtractor.LoadAsync`
+(không phải `StatelessExecutor` dựng tay như ba harness cũ), gọi `LlmBoundaryCutter.TryCutAsync` trực
+tiếp cho 3 ca mỗi domain (9 ca, KHÔNG trùng với 55 ca đã đo trong harness — chọn ngẫu hứng vài ca
+"khó" và "dễ" từ danh sách gốc, không phải lấy lại nguyên các ca đã biết chắc đúng):
+
+```
+[VietnameseLegal] MISS  "Điều 1. ..."   → model trả NGUYÊN CẢ đoạn, không cắt gì
+[VietnameseLegal] MISS  "Điều 36. ..."  → model cắt quá sớm, chỉ còn "Điều 36."
+[VietnameseLegal] OK    "Điều 56. Hiệu lực thi hành"
+[TypedNumbering]  MISS  "1.1. Requirements Notation" → model trả "1.1. Requirements" (thiếu 1 từ)
+[TypedNumbering]  OK    "5.2.1.4. no-cache"
+[TypedNumbering]  OK    "7.1. Cache Poisoning"
+[FormatDriven]    OK    "Opening:"
+[FormatDriven]    OK    "Welcome address, opening remarks and adoption of the agenda"
+[FormatDriven]    OK    "Report on Currently Available Resources in the F.O.R.T.I.S. Ukraine FIF."
+
+=== 6/9 khớp CHÍNH XÁC ===
+```
+
+**6/9 (66,7%), thấp hơn 85,7%/95,0%/85,7% đã đo trong harness — ghi thật, không làm tròn lên.** Trước
+khi kết luận, cô lập biến: `LlamaHeaderExtractor.LoadAsync` mặc định `AutoContextSize=true` nên bump
+context từ 4.096 (đúng cấu hình harness) lên tự động — nghi vấn đầu tiên là ContextSize khác làm lệch
+kết quả. Chạy lại đúng 9 ca với `AutoContextSize=false` (context về gần 4.096 nhất có thể) — **kết quả
+giống hệt tới từng ký tự, kể cả ba ca MISS**. Kết luận: **không phải bug cấu hình/wiring** — cắt greedy
+(temperature=0, seed cố định) không phụ thuộc kích thước context được cấp, đúng lý thuyết attention.
+6/9 là biến động lấy mẫu THẬT trên 9 ca KHÔNG trùng 55 ca đã đo, mẫu quá nhỏ để tự nó là một phép đo
+đáng tin — không mâu thuẫn với 85-95% trên tập lớn hơn, nhưng cũng KHÔNG tự nó xác nhận lại con số đó.
+
+**Vì sao giữ cờ TẮT mặc định dù wiring đã xác nhận đúng cơ chế:** smoke test chứng minh plumbing hoạt
+động chính xác (grounding không từ chối nhầm ca đúng, không nhận nhầm ca sai — cả ba MISS đều là model
+chọn nhãn khác chứ không phải bug chấp nhận text không phải prefix), nhưng KHÔNG tái xác nhận được số
+85-95% qua đúng đường sản xuất trên một mẫu đủ lớn. Bật mặc định lúc này là xây trước khi đo đủ, đúng
+bẫy dự án đã trả giá nhiều lần. Việc tiếp theo (chưa làm hôm nay): chạy lại TOÀN BỘ 55 ca gốc qua
+`LlmBoundaryCutter` (không phải scratch harness) để có con số so sánh đầu-đối-đầu thật, trước khi cân
+nhắc bật mặc định.
+
+**555→570 test xanh, build sạch, không đổi hành vi mặc định của pipeline** (cờ tắt nên mọi route hiện
+có — WB 9-file, bench, 073/074/080, 072/075, legal/typed-human — chạy y hệt trước khi có commit này).
