@@ -681,11 +681,30 @@ public sealed class HeaderExtractionPipeline : IDisposable
     /// ra, vì triệu chứng ("bù rồi nhưng không thấy") trỏ nhầm sang tầng lọc phía sau.
     /// </para>
     /// </summary>
+    /// <summary>
+    /// Luật phải phủ dưới ngần này tỉ lệ ứng viên thì mới coi là CÒN SÓT và gọi mô hình.
+    /// <para>
+    /// Bản đầu dùng <c>luat.Count &lt; candidates.Count</c> — quá lỏng, và đo được cái giá ngay:
+    /// <c>027_WB_RFB_NonConsulting</c> có luật dựng 239 mục trên 251 ứng viên (95%) vẫn bị coi là
+    /// còn sót, gọi mô hình trên 251 ứng viên và <b>chạm trần 600s, không ra file nào</b>. Cùng
+    /// cảnh với <c>028</c>.
+    /// </para>
+    /// <para>Khe trống đo được nằm giữa 43% và 64%:</para>
+    /// <code>
+    ///   bench/04-bia-muc-luc      3/7   = 43%   → gọi (và cho 4/4)
+    ///   028_WB_RFB_Works        177/276 = 64%   → không
+    ///   056_OpenStax             46/60  = 77%   → không (đang đúng 46/46)
+    ///   027_WB_RFB_Non          239/251 = 95%   → không
+    /// </code>
+    /// </summary>
+    private const double TyLeConSot = 0.5;
+
     private async Task<List<HeadingRecord>> BoSungKhiLuatConSot(
         List<HeadingRecord> luat, SlimDocument slim, List<SlimParagraph> candidates,
         IReadOnlySet<int> quarantined, DocumentModeReport modeReport, CancellationToken ct)
     {
-        if (_options.DisableLlm || luat.Count >= candidates.Count) return luat;
+        if (_options.DisableLlm || candidates.Count == 0) return luat;
+        if (luat.Count >= candidates.Count * TyLeConSot) return luat;
         var moHinh = await RunModelAsync(slim, candidates, quarantined, modeReport.Mode, ct);
         var daCo = luat.Select(h => h.Index).ToHashSet();
         var them = moHinh.Where(h => !daCo.Contains(h.Index)).ToList();

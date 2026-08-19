@@ -1,0 +1,71 @@
+# Cấu trúc: 009_Luat_Giao_dich_dien_tu_20-2023-QH15.docx
+
+  - Chương I NHỮNG QUY ĐỊNH CHUNG  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 1. Phạm vi điều chỉnh  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 2. Đối tượng áp dụng Luật này áp dụng đối với cơ quan, tổ chức, cá nhân trực tiếp tham gia giao dịch điện tử hoặc có liên quan đến giao dịch điện tử.  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 3. Giải thích từ ngữ Trong Luật này, các từ ngữ dưới đây được hiểu như sau:  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 4. Chính sách phát triển giao dịch điện tử  <!-- lvl=4 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+      - Điều 5. Bảo đảm an toàn thông tin mạng và an ninh mạng trong giao dịch điện tử  <!-- lvl=4 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+      - Điều 6. Các hành vi bị nghiêm cấm trong giao dịch điện tử  <!-- lvl=4 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+  - Chương II THÔNG ĐIỆP DỮ LIỆU  <!-- lvl=2 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1 GIÁ TRỊ PHÁP LÝ CỦA THÔNG ĐIỆP DỮ LIỆU  <!-- lvl=3 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 7. Hình thức thể hiện của thông điệp dữ liệu  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 8. Giá trị pháp lý của thông điệp dữ liệu Thông tin trong thông điệp dữ liệu không bị phủ nhận giá trị pháp lý chỉ vì thông tin đó được thể hiện dưới dạng thông điệp dữ liệu.  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 9. Thông điệp dữ liệu có giá trị như văn bản  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 10. Thông điệp dữ liệu có giá trị như bản gốc Thông điệp dữ liệu được sử dụng và có giá trị như bản gốc khi đáp ứng đủ các yêu cầu sau đây:  <!-- lvl=4 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Điều 11. Thông điệp dữ liệu có giá trị dùng làm chứng cứ  <!-- lvl=4 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Điều 12. Chuyển đổi hình thức giữa văn bản giấy và thông điệp dữ liệu  <!-- lvl=4 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Điều 13. Hình thức lưu trữ thông điệp dữ liệu  <!-- lvl=4 i=13 sid=body[1]/p[14] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2 GỬI, NHẬN THÔNG ĐIỆP DỮ LIỆU  <!-- lvl=3 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Điều 14. Người khởi tạo thông điệp dữ liệu  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Điều 15. Thời điểm, địa điểm gửi thông điệp dữ liệu Trường hợp các bên tham gia giao dịch không có thỏa thuận khác thì thời điểm, địa điểm gửi thông điệp dữ liệu được quy định như sau:  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Điều 16. Nhận thông điệp dữ liệu  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Điều 17. Thời điểm, địa điểm nhận thông điệp dữ liệu Trường hợp các bên tham gia giao dịch không có thỏa thuận khác thì thời điểm, địa điểm nhận thông điệp dữ liệu được quy định như sau:  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Điều 18. Gửi, nhận tự động thông điệp dữ liệu Trường hợp người khởi tạo hoặc người nhận chỉ định một hoặc nhiều hệ thống thông tin tự động gửi hoặc nhận thông điệp dữ liệu thì việc gửi, nhận thông điệp dữ liệu thực hiện theo quy định tại các điều 14, 15, 16 và 17 của Luật này.  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3 CHỨNG THƯ ĐIỆN TỬ  <!-- lvl=3 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 19. Giá trị pháp lý của chứng thư điện tử  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 20. Chuyển giao chứng thư điện tử  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 21. Yêu cầu đối với lưu trữ, xử lý chứng thư điện tử  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+  - Chương III CHỮ KÝ ĐIỆN TỬ VÀ DỊCH VỤ TIN CẬY  <!-- lvl=2 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1 CHỮ KÝ ĐIỆN TỬ  <!-- lvl=3 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Điều 22. Chữ ký điện tử  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Điều 23. Giá trị pháp lý của chữ ký điện tử  <!-- lvl=4 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+      - Điều 24. Dịch vụ chứng thực chữ ký số chuyên dùng công vụ  <!-- lvl=4 i=27 sid=body[1]/p[28] src=Structure CẦN-XEM-LẠI -->
+      - Điều 25. Sử dụng chữ ký điện tử chuyên dùng, chữ ký điện tử chuyên dùng bảo đảm an toàn  <!-- lvl=4 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+      - Điều 26. Công nhận tổ chức cung cấp dịch vụ chứng thực chữ ký điện tử nước ngoài; công nhận chữ ký điện tử, chứng thư chữ ký điện tử nước ngoài  <!-- lvl=4 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+      - Điều 27. Chữ ký điện tử nước ngoài, chứng thư chữ ký điện tử nước ngoài được chấp nhận trong giao dịch quốc tế  <!-- lvl=4 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2 DỊCH VỤ TIN CẬY  <!-- lvl=3 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+      - Điều 28. Dịch vụ tin cậy  <!-- lvl=4 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+      - Điều 29. Điều kiện kinh doanh dịch vụ tin cậy  <!-- lvl=4 i=33 sid=body[1]/p[34] src=Structure CẦN-XEM-LẠI -->
+      - Điều 30. Trách nhiệm của tổ chức cung cấp dịch vụ tin cậy  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 31. Dịch vụ cấp dấu thời gian  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 32. Dịch vụ chứng thực thông điệp dữ liệu Dịch vụ chứng thực thông điệp dữ liệu bao gồm:  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 33. Dịch vụ chứng thực chữ ký số công cộng  <!-- lvl=4 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+  - Chương IV GIAO KẾT VÀ THỰC HIỆN HỢP ĐỒNG ĐIỆN TỬ  <!-- lvl=2 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+      - Điều 34. Hợp đồng điện tử  <!-- lvl=4 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+      - Điều 35. Giao kết hợp đồng điện tử  <!-- lvl=4 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+      - Điều 36. Nguyên tắc giao kết và thực hiện hợp đồng điện tử  <!-- lvl=4 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+      - Điều 37. Việc nhận, gửi, thời điểm, địa điểm nhận, gửi thông điệp dữ liệu trong giao kết và thực hiện hợp đồng điện tử Việc nhận, gửi, thời điểm, địa điểm nhận, gửi thông điệp dữ liệu trong giao kết và thực hiện hợp đồng điện tử được thực hiện theo quy định tại các điều 15, 16, 17 và 18 của Luật này.  <!-- lvl=4 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+      - Điều 38. Giá trị pháp lý của thông báo trong giao kết và thực hiện hợp đồng điện tử Trong giao kết và thực hiện hợp đồng điện tử, thông báo dưới dạng thông điệp dữ liệu có giá trị pháp lý như thông báo bằng văn bản giấy.  <!-- lvl=4 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+  - Chương V GIAO DỊCH ĐIỆN TỬ CỦA CƠ QUAN NHÀ NƯỚC  <!-- lvl=2 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+      - Điều 39. Các loại hình giao dịch điện tử của cơ quan nhà nước  <!-- lvl=4 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+      - Điều 40. Quản lý dữ liệu, cơ sở dữ liệu dùng chung  <!-- lvl=4 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+      - Điều 41. Tạo lập, thu thập dữ liệu  <!-- lvl=4 i=43 sid=body[1]/p[44] src=Structure CẦN-XEM-LẠI -->
+      - Điều 42. Kết nối, chia sẻ dữ liệu  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 43. Dữ liệu mở của cơ quan nhà nước  <!-- lvl=4 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+      - Điều 44. Hoạt động của cơ quan nhà nước trên môi trường điện tử  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+  - Chương VI HỆ THỐNG THÔNG TIN PHỤC VỤ GIAO DỊCH ĐIỆN TỬ  <!-- lvl=2 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Điều 45. Hệ thống thông tin phục vụ giao dịch điện tử  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Điều 46. Tài khoản giao dịch điện tử  <!-- lvl=4 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Điều 47. Trách nhiệm của chủ quản hệ thống thông tin phục vụ giao dịch điện tử  <!-- lvl=4 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Điều 48. Báo cáo, tổng hợp, chia sẻ dữ liệu phục vụ quản lý nhà nước về giao dịch điện tử  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+  - Chương VII QUẢN LÝ NHÀ NƯỚC VỀ GIAO DỊCH ĐIỆN TỬ  <!-- lvl=2 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Điều 49. Nội dung quản lý nhà nước về giao dịch điện tử  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Điều 50. Trách nhiệm quản lý nhà nước về giao dịch điện tử  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+  - Chương VIII ĐIỀU KHOẢN THI HÀNH  <!-- lvl=2 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 51. Sửa đổi, bổ sung, thay thế, bãi bỏ một số điều của các luật có liên quan  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+- Phần VI - Phí thuộc lĩnh vực thông tin và truyền thông trong Danh mục Phí, lệ phí ban hành kèm theo Luật Phí và lệ phí số 97/2015/QH13 đã được sửa đổi, bổ sung một số điều theo Luật số 09/2017/QH14, Luật số 23/2018/QH14, Luật số 72/2020/QH14 và Luật số 16/2023/QH15 như sau: Phí dịch vụ duy trì hệ thống kiểm 7 Bộ Tài chính tra trạng thái chứng thư chữ ký số  <!-- lvl=1 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 52. Hiệu lực thi hành  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 53. Quy định chuyển tiếp  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+
+> 67 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

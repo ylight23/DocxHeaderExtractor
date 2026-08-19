@@ -1,0 +1,785 @@
+# Cấu trúc: 001_Bo_luat_Dan_su_91-2015-QH13.docx
+
+  - Chương I NHỮNG QUY ĐỊNH CHUNG  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 1. Phạm vi điều chỉnh Bộ luật này quy định địa vị pháp lý, chuẩn mực pháp lý về cách ứng xử của cá nhân, pháp nhân; quyền, nghĩa vụ về nhân thân và tài sản của cá nhân, pháp nhân trong các quan hệ được hình thành trên cơ sở bình đẳng, tự do ý chí, độc lập về tài sản và tự chịu trách nhiệm (sau đây gọi chung là quan hệ dân sự).  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 2. Công nhận, tôn trọng, bảo vệ và bảo đảm quyền dân sự  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 3. Các nguyên tắc cơ bản của pháp luật dân sự  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 4. Áp dụng Bộ luật dân sự  <!-- lvl=4 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+      - Điều 5. Áp dụng tập quán  <!-- lvl=4 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+      - Điều 6. Áp dụng tương tự pháp luật  <!-- lvl=4 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+      - Điều 7. Chính sách của Nhà nước đối với quan hệ dân sự  <!-- lvl=4 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+  - Chương II XÁC LẬP, THỰC HIỆN VÀ BẢO VỆ QUYỀN DÂN SỰ  <!-- lvl=2 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+      - Điều 8. Căn cứ xác lập quyền dân sự Quyền dân sự được xác lập từ các căn cứ sau đây:  <!-- lvl=4 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+      - Điều 9. Thực hiện quyền dân sự  <!-- lvl=4 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+      - Điều 10. Giới hạn việc thực hiện quyền dân sự  <!-- lvl=4 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+      - Điều 11. Các phương thức bảo vệ quyền dân sự Khi quyền dân sự của cá nhân, pháp nhân bị xâm phạm thì chủ thể đó có quyền tự bảo vệ theo quy định của Bộ luật này, luật khác có liên quan hoặc yêu cầu cơ quan, tổ chức có thẩm quyền:  <!-- lvl=4 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+      - Điều 12. Tự bảo vệ quyền dân sự Việc tự bảo vệ quyền dân sự phải phù hợp với tính chất, mức độ xâm phạm đến quyền dân sự đó và không được trái với các nguyên tắc cơ bản của pháp luật dân sự quy định tại Điều 3 của Bộ luật này.  <!-- lvl=4 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+      - Điều 13. Bồi thường thiệt hại Cá nhân, pháp nhân có quyền dân sự bị xâm phạm được bồi thường toàn bộ thiệt hại, trừ trường hợp các bên có thỏa thuận khác hoặc luật có quy định khác.  <!-- lvl=4 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+      - Điều 14. Bảo vệ quyền dân sự thông qua cơ quan có thẩm quyền  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 15. Hủy quyết định cá biệt trái pháp luật của cơ quan, tổ chức, người có thẩm quyền Khi giải quyết yêu cầu bảo vệ quyền dân sự, Tòa án hoặc cơ quan có thẩm quyền khác có quyền hủy quyết định cá biệt trái pháp luật của cơ quan, tổ chức, người có thẩm quyền. Trường hợp quyết định cá biệt bị hủy thì quyền dân sự bị xâm phạm được khôi phục và có thể được bảo vệ bằng các phương thức quy định tại Điều 11 của Bộ luật này.  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+  - Chương III CÁ NHÂN  <!-- lvl=2 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. NĂNG LỰC PHÁP LUẬT DÂN SỰ, NĂNG LỰC HÀNH VI DÂN SỰ CỦA CÁ NHÂN  <!-- lvl=3 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 16. Năng lực pháp luật dân sự của cá nhân  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 17. Nội dung năng lực pháp luật dân sự của cá nhân  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 18. Không hạn chế năng lực pháp luật dân sự của cá nhân Năng lực pháp luật dân sự của cá nhân không bị hạn chế, trừ trường hợp Bộ luật này, luật khác có liên quan quy định khác.  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 19. Năng lực hành vi dân sự của cá nhân Năng lực hành vi dân sự của cá nhân là khả năng của cá nhân bằng hành vi của mình xác lập, thực hiện quyền, nghĩa vụ dân sự.  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 20. Người thành niên  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 21. Người chưa thành niên  <!-- lvl=4 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Điều 22. Mất năng lực hành vi dân sự  <!-- lvl=4 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Điều 23. Người có khó khăn trong nhận thức, làm chủ hành vi  <!-- lvl=4 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Điều 24. Hạn chế năng lực hành vi dân sự  <!-- lvl=4 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. QUYỀN NHÂN THÂN  <!-- lvl=3 i=13 sid=body[1]/p[14] src=Structure CẦN-XEM-LẠI -->
+      - Điều 25. Quyền nhân thân  <!-- lvl=4 i=13 sid=body[1]/p[14] src=Structure CẦN-XEM-LẠI -->
+      - Điều 26. Quyền có họ, tên  <!-- lvl=4 i=13 sid=body[1]/p[14] src=Structure CẦN-XEM-LẠI -->
+      - Điều 27. Quyền thay đổi họ  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Điều 28. Quyền thay đổi tên  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Điều 29. Quyền xác định, xác định lại dân tộc  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Điều 30. Quyền được khai sinh, khai tử  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Điều 31. Quyền đối với quốc tịch  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Điều 32. Quyền của cá nhân đối với hình ảnh  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Điều 33. Quyền sống, quyền được bảo đảm an toàn về tính mạng, sức khỏe, thân thể  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Điều 34. Quyền được bảo vệ danh dự, nhân phẩm, uy tín  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 35. Quyền hiến, nhận mô, bộ phận cơ thể người và hiến, lấy xác  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 36. Quyền xác định lại giới tính  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 37. Chuyển đổi giới tính Việc chuyển đổi giới tính được thực hiện theo quy định của luật. Cá nhân đã chuyển đổi giới tính có quyền, nghĩa vụ đăng ký thay đổi hộ tịch theo quy định của pháp luật về hộ tịch; có quyền  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 38. Quyền về đời sống riêng tư, bí mật cá nhân, bí mật gia đình  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Điều 39. Quyền nhân thân trong hôn nhân và gia đình  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3. NƠI CƯ TRÚ  <!-- lvl=3 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Điều 40. Nơi cư trú của cá nhân  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Điều 41. Nơi cư trú của người chưa thành niên  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Điều 42. Nơi cư trú của người được giám hộ  <!-- lvl=4 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+      - Điều 43. Nơi cư trú của vợ, chồng  <!-- lvl=4 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+      - Điều 44. Nơi cư trú của quân nhân  <!-- lvl=4 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+      - Điều 45. Nơi cư trú của người làm nghề lưu động Nơi cư trú của người làm nghề lưu động trên tàu, thuyền, phương tiện hành nghề lưu động khác là nơi đăng ký tàu, thuyền, phương tiện đó, trừ trường hợp họ có nơi cư trú theo quy định tại khoản 1 Ðiều 40 của Bộ luật này.  <!-- lvl=4 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+    - Mục 4. GIÁM HỘ  <!-- lvl=3 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+      - Điều 46. Giám hộ  <!-- lvl=4 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+      - Điều 47. Người được giám hộ  <!-- lvl=4 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+      - Điều 48. Người giám hộ  <!-- lvl=4 i=27 sid=body[1]/p[28] src=Structure CẦN-XEM-LẠI -->
+      - Điều 49. Điều kiện của cá nhân làm người giám hộ Cá nhân có đủ các điều kiện sau đây có thể làm người giám hộ:  <!-- lvl=4 i=27 sid=body[1]/p[28] src=Structure CẦN-XEM-LẠI -->
+      - Điều 50. Điều kiện của pháp nhân làm người giám hộ Pháp nhân có đủ các điều kiện sau đây có thể làm người giám hộ:  <!-- lvl=4 i=27 sid=body[1]/p[28] src=Structure CẦN-XEM-LẠI -->
+      - Điều 51. Giám sát việc giám hộ  <!-- lvl=4 i=27 sid=body[1]/p[28] src=Structure CẦN-XEM-LẠI -->
+      - Điều 52. Người giám hộ đương nhiên của người chưa thành niên Người giám hộ đương nhiên của người chưa thành niên quy định tại điểm a và điểm b khoản 1 Điều 47 của Bộ luật này được xác định theo thứ tự sau đây:  <!-- lvl=4 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+      - Điều 53. Người giám hộ đương nhiên của người mất năng lực hành vi dân sự Trường hợp không có người giám hộ theo quy định tại khoản 2 Điều 48 của Bộ luật này thì người giám hộ đương nhiên của người mất năng lực hành vi dân sự được xác định như sau:  <!-- lvl=4 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+      - Điều 54. Cử, chỉ định người giám hộ  <!-- lvl=4 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+      - Điều 55. Nghĩa vụ của người giám hộ đối với người được giám hộ chưa đủ mười lăm tuổi  <!-- lvl=4 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+      - Điều 56. Nghĩa vụ của người giám hộ đối với người được giám hộ từ đủ mười lăm tuổi đến chưa đủ mười tám tuổi  <!-- lvl=4 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+      - Điều 57. Nghĩa vụ của người giám hộ đối với người được giám hộ mất năng lực hành vi dân sự, người có khó khăn trong nhận thức, làm chủ hành vi  <!-- lvl=4 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+      - Điều 58. Quyền của người giám hộ  <!-- lvl=4 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+      - Điều 59. Quản lý tài sản của người được giám hộ  <!-- lvl=4 i=33 sid=body[1]/p[34] src=Structure CẦN-XEM-LẠI -->
+      - Điều 60. Thay đổi người giám hộ  <!-- lvl=4 i=33 sid=body[1]/p[34] src=Structure CẦN-XEM-LẠI -->
+      - Điều 61. Chuyển giao giám hộ  <!-- lvl=4 i=33 sid=body[1]/p[34] src=Structure CẦN-XEM-LẠI -->
+      - Điều 62. Chấm dứt việc giám hộ  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 63. Hậu quả chấm dứt việc giám hộ  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+    - Mục 5. THÔNG BÁO TÌM KIẾM NGƯỜI VẮNG MẶT TẠI NƠI CƯ TRÚ, TUYÊN BỐ MẤT TÍCH, TUYÊN BỐ CHẾT  <!-- lvl=3 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 64. Yêu cầu thông báo tìm kiếm người vắng mặt tại nơi cư trú và quản lý tài sản của người đó Khi một người biệt tích 06 tháng liền trở lên thì những người có quyền, lợi ích liên quan có quyền yêu cầu Tòa án thông báo tìm kiếm người vắng mặt tại nơi cư trú theo quy định của pháp  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 65. Quản lý tài sản của người vắng mặt tại nơi cư trú  <!-- lvl=4 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+      - Điều 66. Nghĩa vụ của người quản lý tài sản của người vắng mặt tại nơi cư trú  <!-- lvl=4 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+      - Điều 67. Quyền của người quản lý tài sản của người vắng mặt tại nơi cư trú  <!-- lvl=4 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+      - Điều 68. Tuyên bố mất tích  <!-- lvl=4 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+      - Điều 69. Quản lý tài sản của người bị tuyên bố mất tích Người đang quản lý tài sản của người vắng mặt tại nơi cư trú quy định tại Điều 65 của Bộ luật này tiếp tục quản lý tài sản của người đó khi người đó bị Tòa án tuyên bố mất tích và có các quyền, nghĩa vụ quy định tại Điều 66 và Điều 67 của Bộ luật này. Trường hợp Tòa án giải quyết cho vợ hoặc chồng của người bị tuyên bố mất tích ly hôn thì tài sản của người mất tích được giao cho con thành niên hoặc cha, mẹ của người mất tích quản lý; nếu không có những người này thì giao cho người thân thích của người mất tích quản lý; nếu không có người thân thích thì Tòa án chỉ định người khác quản lý tài sản.  <!-- lvl=4 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+      - Điều 70. Huỷ bỏ quyết định tuyên bố mất tích  <!-- lvl=4 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+      - Điều 71. Tuyên bố chết  <!-- lvl=4 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+      - Điều 72. Quan hệ nhân thân và quan hệ tài sản của người bị Tòa án tuyên bố là đã chết  <!-- lvl=4 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+      - Điều 73. Huỷ bỏ quyết định tuyên bố chết  <!-- lvl=4 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+  - Chương IV PHÁP NHÂN  <!-- lvl=2 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+      - Điều 74. Pháp nhân  <!-- lvl=4 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+      - Điều 75. Pháp nhân thương mại  <!-- lvl=4 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+      - Điều 76. Pháp nhân phi thương mại  <!-- lvl=4 i=43 sid=body[1]/p[44] src=Structure CẦN-XEM-LẠI -->
+      - Điều 77. Điều lệ của pháp nhân  <!-- lvl=4 i=43 sid=body[1]/p[44] src=Structure CẦN-XEM-LẠI -->
+      - Điều 78. Tên gọi của pháp nhân  <!-- lvl=4 i=43 sid=body[1]/p[44] src=Structure CẦN-XEM-LẠI -->
+      - Điều 79. Trụ sở của pháp nhân  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 80. Quốc tịch của pháp nhân Pháp nhân được thành lập theo pháp luật Việt Nam là pháp nhân Việt Nam.  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 81. Tài sản của pháp nhân Tài sản của pháp nhân bao gồm vốn góp của chủ sở hữu, sáng lập viên, thành viên của pháp nhân và tài sản khác mà pháp nhân được xác lập quyền sở hữu theo quy định của Bộ luật này, luật khác có liên quan.  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 82. Thành lập, đăng ký pháp nhân  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 83. Cơ cấu tổ chức của pháp nhân  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 84. Chi nhánh, văn phòng đại diện của pháp nhân  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 85. Đại diện của pháp nhân  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 86. Năng lực pháp luật dân sự của pháp nhân  <!-- lvl=4 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+      - Điều 87. Trách nhiệm dân sự của pháp nhân  <!-- lvl=4 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+      - Điều 88. Hợp nhất pháp nhân  <!-- lvl=4 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+      - Điều 89. Sáp nhập pháp nhân  <!-- lvl=4 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+      - Điều 90. Chia pháp nhân  <!-- lvl=4 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+      - Điều 91. Tách pháp nhân  <!-- lvl=4 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+      - Điều 92. Chuyển đổi hình thức của pháp nhân  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Điều 93. Giải thể pháp nhân  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Điều 94. Thanh toán tài sản của pháp nhân bị giải thể  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Điều 95. Phá sản pháp nhân Việc phá sản pháp nhân được thực hiện theo quy định của pháp luật về phá sản.  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Điều 96. Chấm dứt tồn tại pháp nhân  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+  - Chương V NHÀ NƯỚC CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM, CƠ QUAN NHÀ NƯỚC Ở TRUNG ƯƠNG, Ở ĐỊA PHƯƠNG TRONG QUAN HỆ DÂN SỰ  <!-- lvl=2 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Điều 97. Nhà nước Cộng hòa xã hội chủ nghĩa Việt Nam, cơ quan nhà nước ở trung ương, ở địa phương trong quan hệ dân sự Nhà nước Cộng hòa xã hội chủ nghĩa Việt Nam, cơ quan nhà nước ở trung ương, ở địa phương khi tham gia quan hệ dân sự thì bình đẳng với các chủ thể khác và chịu trách nhiệm dân sự theo quy định tại Điều 99 và Điều 100 của Bộ luật này.  <!-- lvl=4 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Điều 98. Đại diện tham gia quan hệ dân sự Việc đại diện cho Nhà nước Cộng hòa xã hội chủ nghĩa Việt Nam, cơ quan nhà nước ở trung ương, ở địa phương tham gia quan hệ dân sự được thực hiện theo quy định của pháp luật về chức năng, nhiệm vụ, quyền hạn và tổ chức bộ máy của cơ quan nhà nước. Việc đại diện thông qua cá nhân, pháp nhân khác chỉ được thực hiện trong các trường hợp và theo trình tự, thủ tục do pháp luật quy định.  <!-- lvl=4 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Điều 99. Trách nhiệm về nghĩa vụ dân sự  <!-- lvl=4 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Điều 100. Trách nhiệm về nghĩa vụ dân sự của Nhà nước Cộng hòa xã hội chủ nghĩa Việt Nam, cơ quan nhà nước ở trung ương, ở địa phương trong quan hệ dân sự với một bên là nhà nước, pháp nhân, cá nhân nước ngoài  <!-- lvl=4 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+  - Chương VI HỘ GIA ĐÌNH, TỔ HỢP TÁC VÀ TỔ CHỨC KHÁC KHÔNG CÓ TƯ CÁCH PHÁP NHÂN TRONG QUAN HỆ DÂN SỰ  <!-- lvl=2 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+      - Điều 101. Chủ thể trong quan hệ dân sự có sự tham gia của hộ gia đình, tổ hợp tác, tổ chức khác không có tư cách pháp nhân  <!-- lvl=4 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+      - Điều 102. Tài sản chung của các thành viên hộ gia đình, tổ hợp tác, tổ chức khác không có tư cách pháp nhân  <!-- lvl=4 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+      - Điều 103. Trách nhiệm dân sự của thành viên hộ gia đình, tổ hợp tác, tổ chức khác không có tư cách pháp nhân  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Điều 104. Hậu quả pháp lý đối với giao dịch dân sự do thành viên không có quyền đại diện hoặc vượt quá phạm vi đại diện xác lập, thực hiện  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+  - Chương VII TÀI SẢN  <!-- lvl=2 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Điều 105. Tài sản  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Điều 106. Đăng ký tài sản  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Điều 107. Bất động sản và động sản  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Điều 108. Tài sản hiện có và tài sản hình thành trong tương lai  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 109. Hoa lợi, lợi tức  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 110. Vật chính và vật phụ  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 111. Vật chia được và vật không chia được  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 112. Vật tiêu hao và vật không tiêu hao  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 113. Vật cùng loại và vật đặc định  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 114. Vật đồng bộ Vật đồng bộ là vật gồm các phần hoặc các bộ phận ăn khớp, liên hệ với nhau hợp thành chỉnh thể mà nếu thiếu một trong các phần, các bộ phận hoặc có phần hoặc bộ phận không đúng quy cách, chủng loại thì không sử dụng được hoặc giá trị sử dụng của vật đó bị giảm sút. Khi thực hiện nghĩa vụ chuyển giao vật đồng bộ thì phải chuyển giao toàn bộ các phần hoặc các bộ phận hợp thành, trừ trường hợp có thoả thuận khác.  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 115. Quyền tài sản Quyền tài sản là quyền trị giá được bằng tiền, bao gồm quyền tài sản đối với đối tượng quyền sở hữu trí tuệ, quyền sử dụng đất và các quyền tài sản khác.  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+  - Chương VIII GIAO DỊCH DÂN SỰ  <!-- lvl=2 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 116. Giao dịch dân sự Giao dịch dân sự là hợp đồng hoặc hành vi pháp lý đơn phương làm phát sinh, thay đổi hoặc chấm dứt quyền, nghĩa vụ dân sự.  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 117. Điều kiện có hiệu lực của giao dịch dân sự  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 118. Mục đích của giao dịch dân sự Mục đích của giao dịch dân sự là lợi ích mà chủ thể mong muốn đạt được khi xác lập giao dịch đó.  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 119. Hình thức giao dịch dân sự  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 120. Giao dịch dân sự có điều kiện  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 121. Giải thích giao dịch dân sự  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Điều 122. Giao dịch dân sự vô hiệu Giao dịch dân sự không có một trong các điều kiện được quy định tại Điều 117 của Bộ luật này thì vô hiệu, trừ trường hợp Bộ luật này có quy định khác.  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Điều 123. Giao dịch dân sự vô hiệu do vi phạm điều cấm của luật, trái đạo đức xã hội Giao dịch dân sự có mục đích, nội dung vi phạm điều cấm của luật, trái đạo đức xã hội thì vô hiệu. Điều cấm của luật là những quy định của luật không cho phép chủ thể thực hiện những hành vi nhất định. Đạo đức xã hội là những chuẩn mực ứng xử chung trong đời sống xã hội, được cộng đồng thừa nhận và tôn trọng.  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Điều 124. Giao dịch dân sự vô hiệu do giả tạo  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Điều 125. Giao dịch dân sự vô hiệu do người chưa thành niên, người mất năng lực hành vi dân sự, người có khó khăn trong nhận thức, làm chủ hành vi, người bị hạn chế năng lực hành vi dân sự xác lập, thực hiện  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Điều 126. Giao dịch dân sự vô hiệu do bị nhầm lẫn  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Điều 127. Giao dịch dân sự vô hiệu do bị lừa dối, đe dọa, cưỡng ép Khi một bên tham gia giao dịch dân sự do bị lừa dối hoặc bị đe dọa, cưỡng ép thì có quyền yêu cầu Tòa án tuyên bố giao dịch dân sự đó là vô hiệu. Lừa dối trong giao dịch dân sự là hành vi cố ý của một bên hoặc của người thứ ba nhằm làm cho bên kia hiểu sai lệch về chủ thể, tính chất của đối tượng hoặc nội dung của giao dịch dân sự nên đã xác lập giao dịch đó. Đe dọa, cưỡng ép trong giao dịch dân sự là hành vi cố ý của một bên hoặc người thứ ba làm cho bên kia buộc phải thực hiện giao dịch dân sự nhằm tránh thiệt hại về tính mạng, sức khoẻ, danh dự, uy tín, nhân phẩm, tài sản của mình hoặc của người thân thích của mình.  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Điều 128. Giao dịch dân sự vô hiệu do người xác lập không nhận thức và làm chủ được hành vi của mình Người có năng lực hành vi dân sự nhưng đã xác lập giao dịch vào đúng thời điểm không nhận thức và làm chủ được hành vi của mình thì có quyền yêu cầu Tòa án tuyên bố giao dịch dân sự đó là vô hiệu.  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Điều 129. Giao dịch dân sự vô hiệu do không tuân thủ quy định về hình thức Giao dịch dân sự vi phạm quy định điều kiện có hiệu lực về hình thức thì vô hiệu, trừ trường hợp sau đây:  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Điều 130. Giao dịch dân sự vô hiệu từng phần  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Điều 131. Hậu quả pháp lý của giao dịch dân sự vô hiệu  <!-- lvl=4 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+      - Điều 132. Thời hiệu yêu cầu Tòa án tuyên bố giao dịch dân sự vô hiệu  <!-- lvl=4 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+      - Điều 133. Bảo vệ quyền lợi của người thứ ba ngay tình khi giao dịch dân sự vô hiệu  <!-- lvl=4 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+  - Chương IX ĐẠI DIỆN  <!-- lvl=2 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+      - Điều 134. Đại diện  <!-- lvl=4 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+      - Điều 135. Căn cứ xác lập quyền đại diện Quyền đại diện được xác lập theo ủy quyền giữa người được đại diện và người đại diện (sau đây gọi là đại diện theo ủy quyền); theo quyết định của cơ quan nhà nước có thẩm quyền, theo điều lệ của pháp nhân hoặc theo quy định của pháp luật (sau đây gọi chung là đại diện theo pháp luật).  <!-- lvl=4 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+      - Điều 136. Đại diện theo pháp luật của cá nhân  <!-- lvl=4 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+      - Điều 137. Đại diện theo pháp luật của pháp nhân  <!-- lvl=4 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+      - Điều 138. Đại diện theo ủy quyền  <!-- lvl=4 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+      - Điều 139. Hậu quả pháp lý của hành vi đại diện  <!-- lvl=4 i=69 sid=body[1]/p[70] src=Structure CẦN-XEM-LẠI -->
+      - Điều 140. Thời hạn đại diện  <!-- lvl=4 i=69 sid=body[1]/p[70] src=Structure CẦN-XEM-LẠI -->
+      - Điều 141. Phạm vi đại diện  <!-- lvl=4 i=71 sid=body[1]/p[72] src=Structure CẦN-XEM-LẠI -->
+      - Điều 142. Hậu quả của giao dịch dân sự do người không có quyền đại diện xác lập, thực hiện  <!-- lvl=4 i=71 sid=body[1]/p[72] src=Structure CẦN-XEM-LẠI -->
+      - Điều 143. Hậu quả của giao dịch dân sự do người đại diện xác lập, thực hiện vượt quá phạm vi đại diện  <!-- lvl=4 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+  - Chương X THỜI HẠN VÀ THỜI HIỆU  <!-- lvl=2 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. THỜI HẠN  <!-- lvl=3 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+      - Điều 144. Thời hạn  <!-- lvl=4 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+      - Điều 145. Áp dụng cách tính thời hạn  <!-- lvl=4 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+      - Điều 146. Quy định về thời hạn, thời điểm tính thời hạn  <!-- lvl=4 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+      - Điều 147. Thời điểm bắt đầu thời hạn  <!-- lvl=4 i=75 sid=body[1]/p[76] src=Structure CẦN-XEM-LẠI -->
+      - Điều 148. Kết thúc thời hạn  <!-- lvl=4 i=75 sid=body[1]/p[76] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. THỜI HIỆU  <!-- lvl=3 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+      - Điều 149. Thời hiệu  <!-- lvl=4 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+      - Điều 150. Các loại thời hiệu  <!-- lvl=4 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+      - Điều 151. Cách tính thời hiệu Thời hiệu được tính từ thời điểm bắt đầu ngày đầu tiên của thời hiệu và chấm dứt tại thời điểm kết thúc ngày cuối cùng của thời hiệu.  <!-- lvl=4 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+      - Điều 152. Hiệu lực của thời hiệu hưởng quyền dân sự, miễn trừ nghĩa vụ dân sự Trường hợp pháp luật quy định cho các chủ thể được hưởng quyền dân sự hoặc được miễn trừ nghĩa vụ dân sự theo thời hiệu thì chỉ sau khi thời hiệu đó kết thúc, việc hưởng quyền dân sự hoặc miễn trừ nghĩa vụ dân sự mới có hiệu lực.  <!-- lvl=4 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+      - Điều 153. Tính liên tục của thời hiệu hưởng quyền dân sự, miễn trừ nghĩa vụ dân sự  <!-- lvl=4 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+      - Điều 154. Bắt đầu thời hiệu khởi kiện vụ án dân sự, thời hiệu yêu cầu giải quyết việc dân sự  <!-- lvl=4 i=79 sid=body[1]/p[80] src=Structure CẦN-XEM-LẠI -->
+      - Điều 155. Không áp dụng thời hiệu khởi kiện Thời hiệu khởi kiện không áp dụng trong trường hợp sau đây:  <!-- lvl=4 i=79 sid=body[1]/p[80] src=Structure CẦN-XEM-LẠI -->
+      - Điều 156. Thời gian không tính vào thời hiệu khởi kiện vụ án dân sự, thời hiệu yêu cầu giải quyết việc dân sự Thời gian không tính vào thời hiệu khởi kiện vụ án dân sự, thời hiệu yêu cầu giải quyết việc dân sự là khoảng thời gian xảy ra một trong các sự kiện sau đây:  <!-- lvl=4 i=79 sid=body[1]/p[80] src=Structure CẦN-XEM-LẠI -->
+      - Điều 157. Bắt đầu lại thời hiệu khởi kiện vụ án dân sự  <!-- lvl=4 i=81 sid=body[1]/p[82] src=Structure CẦN-XEM-LẠI -->
+  - Chương XI QUY ĐỊNH CHUNG  <!-- lvl=2 i=81 sid=body[1]/p[82] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. NGUYÊN TẮC XÁC LẬP, THỰC HIỆN QUYỀN SỞ HỮU, QUYỀN KHÁC ĐỐI VỚI TÀI SẢN  <!-- lvl=3 i=81 sid=body[1]/p[82] src=Structure CẦN-XEM-LẠI -->
+      - Điều 158. Quyền sở hữu Quyền sở hữu bao gồm quyền chiếm hữu, quyền sử dụng và quyền định đoạt tài sản của chủ sở hữu theo quy định của luật.  <!-- lvl=4 i=81 sid=body[1]/p[82] src=Structure CẦN-XEM-LẠI -->
+      - Điều 159. Quyền khác đối với tài sản  <!-- lvl=4 i=81 sid=body[1]/p[82] src=Structure CẦN-XEM-LẠI -->
+      - Điều 160. Nguyên tắc xác lập, thực hiện quyền sở hữu, quyền khác đối với tài sản  <!-- lvl=4 i=81 sid=body[1]/p[82] src=Structure CẦN-XEM-LẠI -->
+      - Điều 161. Thời điểm xác lập quyền sở hữu, quyền khác đối với tài sản  <!-- lvl=4 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+      - Điều 162. Chịu rủi ro về tài sản  <!-- lvl=4 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. BẢO VỆ QUYỀN SỞ HỮU, QUYỀN KHÁC ĐỐI VỚI TÀI SẢN  <!-- lvl=3 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+      - Điều 163. Bảo vệ quyền sở hữu, quyền khác đối với tài sản  <!-- lvl=4 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+      - Điều 164. Biện pháp bảo vệ quyền sở hữu, quyền khác đối với tài sản  <!-- lvl=4 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+      - Điều 165. Chiếm hữu có căn cứ pháp luật  <!-- lvl=4 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+      - Điều 166. Quyền đòi lại tài sản  <!-- lvl=4 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+      - Điều 167. Quyền đòi lại động sản không phải đăng ký quyền sở hữu từ người chiếm hữu ngay tình Chủ sở hữu có quyền đòi lại động sản không phải đăng ký quyền sở hữu từ người chiếm hữu ngay tình trong trường hợp người chiếm hữu ngay tình có được động sản này thông qua hợp đồng không có đền bù với người không có quyền định đoạt tài sản; trường hợp hợp đồng này là hợp đồng có đền bù thì chủ sở hữu có quyền đòi lại động sản nếu động sản đó bị lấy cắp, bị mất hoặc trường hợp khác bị chiếm hữu ngoài ý chí của chủ sở hữu.  <!-- lvl=4 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+      - Điều 168. Quyền đòi lại động sản phải đăng ký quyền sở hữu hoặc bất động sản từ người chiếm hữu ngay tình Chủ sở hữu được đòi lại động sản phải đăng ký quyền sở hữu hoặc bất động sản từ người chiếm hữu ngay tình, trừ trường hợp quy định tại khoản 2 Điều 133 của Bộ luật này.  <!-- lvl=4 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+      - Điều 169. Quyền yêu cầu chấm dứt hành vi cản trở trái pháp luật đối với việc thực hiện quyền sở hữu, quyền khác đối với tài sản Khi thực hiện quyền sở hữu, quyền khác đối với tài sản, chủ thể có quyền yêu cầu người có hành vi cản trở trái pháp luật phải chấm dứt hành vi đó hoặc có quyền yêu cầu Tòa án, cơ quan nhà nước có thẩm quyền khác buộc người đó chấm dứt hành vi vi phạm.  <!-- lvl=4 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+      - Điều 170. Quyền yêu cầu bồi thường thiệt hại Chủ sở hữu, chủ thể có quyền khác đối với tài sản có quyền yêu cầu người có hành vi xâm phạm quyền sở hữu, quyền khác đối với tài sản bồi thường thiệt hại.  <!-- lvl=4 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3. GIỚI HẠN QUYỀN SỞ HỮU, QUYỀN KHÁC ĐỐI VỚI TÀI SẢN  <!-- lvl=3 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+      - Điều 171. Quyền và nghĩa vụ của chủ sở hữu, chủ thể có quyền khác đối với tài sản trong trường hợp xảy ra tình thế cấp thiết  <!-- lvl=4 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+      - Điều 172. Nghĩa vụ bảo vệ môi trường Khi thực hiện quyền sở hữu, quyền khác đối với tài sản thì chủ thể phải tuân theo quy định của pháp luật về bảo vệ môi trường; nếu làm ô nhiễm môi trường thì phải chấm dứt hành vi gây ô nhiễm, thực hiện các biện pháp để khắc phục hậu quả và bồi thường thiệt hại.  <!-- lvl=4 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+      - Điều 173. Nghĩa vụ tôn trọng, bảo đảm trật tự, an toàn xã hội Khi thực hiện quyền sở hữu, quyền khác đối với tài sản thì chủ thể phải tôn trọng, bảo đảm trật tự, an toàn xã hội, không được lạm dụng quyền để gây mất trật tự, an toàn xã hội, làm thiệt hại đến lợi ích quốc gia, dân tộc, lợi ích công cộng, quyền, lợi ích hợp pháp của người khác.  <!-- lvl=4 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+      - Điều 174. Nghĩa vụ tôn trọng quy tắc xây dựng Khi xây dựng công trình, chủ sở hữu, chủ thể có quyền khác đối với tài sản phải tuân theo pháp luật về xây dựng, bảo đảm an toàn, không được xây vượt quá độ cao, khoảng cách mà pháp luật về xây dựng quy định và không được xâm phạm đến quyền, lợi ích hợp pháp của chủ sở hữu, người có quyền khác đối với tài sản là bất động sản liền kề và xung quanh.  <!-- lvl=4 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+      - Điều 175. Ranh giới giữa các bất động sản  <!-- lvl=4 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+      - Điều 176. Mốc giới ngăn cách các bất động sản  <!-- lvl=4 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+      - Điều 177. Bảo đảm an toàn trong trường hợp cây cối, công trình có nguy cơ gây thiệt hại  <!-- lvl=4 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+      - Điều 178. Trổ cửa nhìn sang bất động sản liền kề  <!-- lvl=4 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+  - Chương XII CHIẾM HỮU  <!-- lvl=2 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 179. Khái niệm chiếm hữu  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 180. Chiếm hữu ngay tình Chiếm hữu ngay tình là việc chiếm hữu mà người chiếm hữu có căn cứ để tin rằng mình có quyền đối với tài sản đang chiếm hữu.  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 181. Chiếm hữu không ngay tình Chiếm hữu không ngay tình là việc chiếm hữu mà người chiếm hữu biết hoặc phải biết rằng mình không có quyền đối với tài sản đang chiếm hữu.  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 182. Chiếm hữu liên tục  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 183. Chiếm hữu công khai  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 184. Suy đoán về tình trạng và quyền của người chiếm hữu  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 185. Bảo vệ việc chiếm hữu  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+  - Chương XIII QUYỀN SỞ HỮU  <!-- lvl=2 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. NỘI DUNG QUYỀN SỞ HỮU Tiểu  <!-- lvl=3 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+    - mục 1. QUYỀN CHIẾM HỮU  <!-- lvl=3 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+      - Điều 186. Quyền chiếm hữu của chủ sở hữu Chủ sở hữu được thực hiện mọi hành vi theo ý chí của mình để nắm giữ, chi phối tài sản của mình nhưng không được trái pháp luật, đạo đức xã hội.  <!-- lvl=4 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+      - Điều 187. Quyền chiếm hữu của người được chủ sở hữu uỷ quyền quản lý tài sản  <!-- lvl=4 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+      - Điều 188. Quyền chiếm hữu của người được giao tài sản thông qua giao dịch dân sự  <!-- lvl=4 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+    - mục 2. QUYỀN SỬ DỤNG  <!-- lvl=3 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+      - Điều 189. Quyền sử dụng Quyền sử dụng là quyền khai thác công dụng, hưởng hoa lợi, lợi tức từ tài sản. Quyền sử dụng có thể được chuyển giao cho người khác theo thỏa thuận hoặc theo quy định của pháp luật.  <!-- lvl=4 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+      - Điều 190. Quyền sử dụng của chủ sở hữu Chủ sở hữu được sử dụng tài sản theo ý chí của mình nhưng không được gây thiệt hại hoặc làm ảnh hưởng đến lợi ích quốc gia, dân tộc, lợi ích công cộng, quyền và lợi ích hợp pháp của người khác.  <!-- lvl=4 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+      - Điều 191. Quyền sử dụng của người không phải là chủ sở hữu Người không phải là chủ sở hữu được sử dụng tài sản theo thỏa thuận với chủ sở hữu hoặc theo quy định của pháp luật.  <!-- lvl=4 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+    - mục 3. QUYỀN ĐỊNH ĐOẠT  <!-- lvl=3 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+      - Điều 192. Quyền định đoạt Quyền định đoạt là quyền chuyển giao quyền sở hữu tài sản, từ bỏ quyền sở hữu, tiêu dùng hoặc tiêu hủy tài sản.  <!-- lvl=4 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+      - Điều 193. Điều kiện thực hiện quyền định đoạt Việc định đoạt tài sản phải do người có năng lực hành vi dân sự thực hiện không trái quy định của pháp luật. Trường hợp pháp luật có quy định trình tự, thủ tục định đoạt tài sản thì phải tuân theo trình tự, thủ tục đó.  <!-- lvl=4 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+      - Điều 194. Quyền định đoạt của chủ sở hữu Chủ sở hữu có quyền bán, trao đổi, tặng cho, cho vay, để thừa kế, từ bỏ quyền sở hữu, tiêu dùng, tiêu hủy hoặc thực hiện các hình thức định đoạt khác phù hợp với quy định của pháp luật đối với tài sản.  <!-- lvl=4 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+      - Điều 195. Quyền định đoạt của người không phải là chủ sở hữu Người không phải là chủ sở hữu tài sản chỉ có quyền định đoạt tài sản theo uỷ quyền của chủ sở hữu hoặc theo quy định của luật.  <!-- lvl=4 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+      - Điều 196. Hạn chế quyền định đoạt  <!-- lvl=4 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. HÌNH THỨC SỞ HỮU Tiểu  <!-- lvl=3 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+    - mục 1. SỞ HỮU TOÀN DÂN  <!-- lvl=3 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+      - Điều 197. Tài sản thuộc sở hữu toàn dân Đất đai, tài nguyên nước, tài nguyên khoáng sản, nguồn lợi ở vùng biển, vùng trời, tài nguyên thiên nhiên khác và các tài sản do Nhà nước đầu tư, quản lý là tài sản công thuộc sở hữu toàn dân do Nhà nước đại diện chủ sở hữu và thống nhất quản lý.  <!-- lvl=4 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+      - Điều 198. Thực hiện quyền của chủ sở hữu đối với tài sản thuộc sở hữu toàn dân  <!-- lvl=4 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+      - Điều 199. Chiếm hữu, sử dụng, định đoạt tài sản thuộc sở hữu toàn dân Việc chiếm hữu, sử dụng, định đoạt tài sản thuộc sở hữu toàn dân được thực hiện trong phạm vi và theo trình tự do pháp luật quy định.  <!-- lvl=4 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+      - Điều 200. Thực hiện quyền sở hữu toàn dân đối với tài sản được đầu tư vào doanh nghiệp  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Điều 201. Thực hiện quyền sở hữu toàn dân đối với tài sản được giao cho cơ quan nhà nước, đơn vị vũ trang nhân dân  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Điều 202. Thực hiện quyền sở hữu toàn dân đối với tài sản được giao cho tổ chức chính trị, tổ chức chính trị - xã hội, tổ chức chính trị xã hội - nghề nghiệp, tổ chức xã hội, tổ chức xã hội - nghề nghiệp  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Điều 203. Quyền của cá nhân, pháp nhân đối với việc sử dụng, khai thác tài sản thuộc sở hữu toàn dân Cá nhân, pháp nhân được sử dụng đất, khai thác nguồn lợi thuỷ sản, tài nguyên thiên nhiên và các tài sản khác thuộc sở hữu toàn dân đúng mục đích, có hiệu quả, thực hiện đầy đủ nghĩa vụ đối với Nhà nước theo quy định của pháp luật.  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Điều 204. Tài sản thuộc sở hữu toàn dân chưa được giao cho cá nhân, pháp nhân quản lý Đối với tài sản thuộc sở hữu toàn dân mà chưa được giao cho cá nhân, pháp nhân quản lý thì Chính phủ tổ chức thực hiện việc bảo vệ, điều tra, khảo sát và lập quy hoạch đưa vào khai thác. Tiểu  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+    - mục 2. SỞ HỮU RIÊNG  <!-- lvl=3 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Điều 205. Sở hữu riêng và tài sản thuộc sở hữu riêng  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Điều 206. Chiếm hữu, sử dụng, định đoạt tài sản thuộc sở hữu riêng  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+    - mục 3. SỞ HỮU CHUNG  <!-- lvl=3 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 207. Sở hữu chung và các loại sở hữu chung  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 208. Xác lập quyền sở hữu chung Quyền sở hữu chung được xác lập theo thoả thuận, theo quy định của pháp luật hoặc theo tập quán.  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 209. Sở hữu chung theo  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+- phần 1. Sở hữu chung theo phần là sở hữu chung mà trong đó phần quyền sở hữu của mỗi chủ sở hữu được xác định đối với tài sản chung.  <!-- lvl=1 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 210. Sở hữu chung hợp nhất  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 211. Sở hữu chung của cộng đồng  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 212. Sở hữu chung của các thành viên gia đình  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 213. Sở hữu chung của vợ chồng  <!-- lvl=4 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+      - Điều 214. Sở hữu chung trong nhà chung cư  <!-- lvl=4 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+      - Điều 215. Sở hữu chung hỗn hợp  <!-- lvl=4 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+      - Điều 216. Quản lý tài sản chung Các chủ sở hữu chung cùng quản lý tài sản chung theo nguyên tắc nhất trí, trừ trường hợp có thoả thuận khác hoặc pháp luật có quy định khác.  <!-- lvl=4 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+      - Điều 217. Sử dụng tài sản chung  <!-- lvl=4 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+      - Điều 218. Định đoạt tài sản chung  <!-- lvl=4 i=103 sid=body[1]/p[104] src=Structure CẦN-XEM-LẠI -->
+      - Điều 219. Chia tài sản thuộc sở hữu chung  <!-- lvl=4 i=103 sid=body[1]/p[104] src=Structure CẦN-XEM-LẠI -->
+      - Điều 220. Chấm dứt sở hữu chung Sở hữu chung chấm dứt trong trường hợp sau đây:  <!-- lvl=4 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3. XÁC LẬP, CHẤM DỨT QUYỀN SỞ HỮU Tiểu  <!-- lvl=3 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+    - mục 1. XÁC LẬP QUYỀN SỞ HỮU  <!-- lvl=3 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+      - Điều 221. Căn cứ xác lập quyền sở hữu Quyền sở hữu được xác lập đối với tài sản trong trường hợp sau đây:  <!-- lvl=4 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+      - Điều 222. Xác lập quyền sở hữu đối với tài sản có được từ lao động, hoạt động sản xuất, kinh doanh hợp pháp, hoạt động sáng tạo ra đối tượng quyền sở hữu trí tuệ Người lao động, người tiến hành hoạt động sản xuất, kinh doanh hợp pháp có quyền sở hữu đối với tài sản có được từ lao động, hoạt động sản xuất, kinh doanh hợp pháp, kể từ thời điểm có được tài sản đó. Người tiến hành hoạt động sáng tạo có quyền sở hữu đối với tài sản có được từ hoạt động sáng tạo theo quy định của Luật sở hữu trí tuệ.  <!-- lvl=4 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+      - Điều 223. Xác lập quyền sở hữu theo hợp đồng Người được giao tài sản thông qua hợp đồng mua bán, tặng cho, trao đổi, cho vay hoặc hợp đồng chuyển quyền sở hữu khác theo quy định của pháp luật thì có quyền sở hữu tài sản đó.  <!-- lvl=4 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+      - Điều 224. Xác lập quyền sở hữu đối với hoa lợi, lợi tức  <!-- lvl=4 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+      - Điều 225. Xác lập quyền sở hữu trong trường hợp sáp nhập  <!-- lvl=4 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 226. Xác lập quyền sở hữu trong trường hợp trộn lẫn  <!-- lvl=4 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 227. Xác lập quyền sở hữu trong trường hợp chế biến  <!-- lvl=4 i=109 sid=body[1]/p[110] src=Structure CẦN-XEM-LẠI -->
+      - Điều 228. Xác lập quyền sở hữu đối với tài sản vô chủ, tài sản không xác định được chủ sở hữu  <!-- lvl=4 i=109 sid=body[1]/p[110] src=Structure CẦN-XEM-LẠI -->
+      - Điều 229. Xác lập quyền sở hữu đối với tài sản bị chôn, giấu, bị vùi lấp, chìm đắm được tìm thấy  <!-- lvl=4 i=109 sid=body[1]/p[110] src=Structure CẦN-XEM-LẠI -->
+      - Điều 230. Xác lập quyền sở hữu đối với tài sản do người khác đánh rơi, bỏ quên  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Điều 231. Xác lập quyền sở hữu đối với gia súc bị thất lạc  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Điều 232. Xác lập quyền sở hữu đối với gia cầm bị thất lạc  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Điều 233. Xác lập quyền sở hữu đối với vật nuôi dưới nước Khi vật nuôi dưới nước của một người di chuyển tự nhiên vào ruộng, ao, hồ của người khác thì thuộc sở hữu của người có ruộng, ao, hồ đó. Trường hợp vật nuôi dưới nước có dấu hiệu riêng biệt để có thể xác định vật nuôi không thuộc sở hữu của mình thì người có ruộng, ao, hồ đó phải thông báo công khai để chủ sở hữu biết mà nhận lại. Sau 01 tháng, kể từ ngày thông báo công khai mà không có người đến nhận thì quyền sở hữu vật nuôi dưới nước đó thuộc về người có ruộng, ao, hồ.  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+      - Điều 234. Xác lập quyền sở hữu do được thừa kế Người thừa kế được xác lập quyền sở hữu đối với tài sản thừa kế theo quy định tại Phần thứ tư của Bộ luật này.  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+      - Điều 235. Xác lập quyền sở hữu theo bản án, quyết định của Tòa án, cơ quan nhà nước có thẩm quyền khác Quyền sở hữu có thể được xác lập căn cứ vào bản án, quyết định có hiệu lực pháp luật của Tòa án, cơ quan nhà nước có thẩm quyền khác.  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+      - Điều 236. Xác lập quyền sở hữu theo thời hiệu do chiếm hữu, được lợi về tài sản không có căn cứ pháp luật Người chiếm hữu, người được lợi về tài sản không có căn cứ pháp luật nhưng ngay tình, liên tục, công khai trong thời hạn 10 năm đối với động sản, 30 năm đối với bất động sản thì trở thành chủ sở hữu tài sản đó, kể từ thời điểm bắt đầu chiếm hữu, trừ trường hợp Bộ luật này, luật khác có liên quan quy định khác. Tiểu  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+    - mục 2. CHẤM DỨT QUYỀN SỞ HỮU  <!-- lvl=3 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+      - Điều 237. Căn cứ chấm dứt quyền sở hữu Quyền sở hữu chấm dứt trong trường hợp sau đây:  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+      - Điều 238. Chủ sở hữu chuyển giao quyền sở hữu của mình cho người khác  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+      - Điều 239. Từ bỏ quyền sở hữu Chủ sở hữu có thể tự chấm dứt quyền sở hữu đối với tài sản của mình bằng cách tuyên bố công khai hoặc thực hiện hành vi chứng tỏ việc mình từ bỏ quyền chiếm hữu, sử dụng và định đoạt tài sản đó. Đối với tài sản mà việc từ bỏ tài sản đó có thể gây hại đến trật tự, an toàn xã hội, ô nhiễm môi trường thì việc từ bỏ quyền sở hữu phải tuân theo quy định của pháp luật.  <!-- lvl=4 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+      - Điều 240. Tài sản đã được xác lập quyền sở hữu cho người khác Tài sản không xác định được chủ sở hữu; tài sản bị chôn, giấu, bị vùi lấp, chìm đắm được tìm thấy; tài sản bị đánh rơi, bị bỏ quên; gia súc, gia cầm bị thất lạc; vật nuôi dưới nước di chuyển tự nhiên đã được xác lập quyền sở hữu cho người khác theo quy định tại các điều từ Điều 228 đến Điều 233 của Bộ luật này thì quyền sở hữu của những người có tài sản đó chấm dứt. Khi quyền sở hữu của người chiếm hữu, người được lợi về tài sản đã được xác lập theo quy định tại Điều 236 của Bộ luật này hoặc quy định khác của luật có liên quan thì chấm dứt quyền sở hữu của người có tài sản bị chiếm hữu.  <!-- lvl=4 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+      - Điều 241. Xử lý tài sản để thực hiện nghĩa vụ của chủ sở hữu  <!-- lvl=4 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+      - Điều 242. Tài sản được tiêu dùng hoặc bị tiêu huỷ Khi tài sản được tiêu dùng hoặc bị tiêu huỷ thì quyền sở hữu đối với tài sản đó chấm dứt.  <!-- lvl=4 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+      - Điều 243. Tài sản bị trưng mua Trường hợp Nhà nước trưng mua tài sản theo quy định của luật thì quyền sở hữu đối với tài sản của chủ sở hữu đó chấm dứt kể từ thời điểm quyết định của cơ quan nhà nước có thẩm quyền có hiệu lực pháp luật.  <!-- lvl=4 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+      - Điều 244. Tài sản bị tịch thu Khi tài sản của chủ sở hữu do phạm tội, vi phạm hành chính mà bị tịch thu, sung quỹ nhà nước thì quyền sở hữu đối với tài sản đó chấm dứt kể từ thời điểm bản án, quyết định của Tòa án, cơ quan nhà nước có thẩm quyền khác có hiệu lực pháp luật.  <!-- lvl=4 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+  - Chương XIV QUYỀN KHÁC ĐỐI VỚI TÀI SẢN  <!-- lvl=2 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. QUYỀN ĐỐI VỚI BẤT ĐỘNG SẢN LIỀN KỀ  <!-- lvl=3 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 245. Quyền đối với bất động sản liền kề Quyền đối với bất động sản liền kề là quyền được thực hiện trên một bất động sản (gọi là bất động sản chịu hưởng quyền) nhằm phục vụ cho việc khai thác một bất động sản khác thuộc quyền sở hữu của người khác (gọi là bất động sản hưởng quyền).  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 246. Căn cứ xác lập quyền đối với bất động sản liền kề Quyền đối với bất động sản liền kề được xác lập do địa thế tự nhiên, theo quy định của luật, theo thoả thuận hoặc theo di chúc.  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 247. Hiệu lực của quyền đối với bất động sản liền kề Quyền đối với bất động sản liền kề có hiệu lực đối với mọi cá nhân, pháp nhân và được chuyển giao khi bất động sản được chuyển giao, trừ trường hợp luật liên quan có quy định khác.  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 248. Nguyên tắc thực hiện quyền đối với bất động sản liền kề Việc thực hiện quyền đối với bất động sản liền kề theo thỏa thuận của các bên. Trường hợp các bên không có thỏa thuận thì thực hiện theo các nguyên tắc sau đây:  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 249. Thay đổi việc thực hiện quyền đối với bất động sản liền kề Trường hợp có sự thay đổi về sử dụng, khai thác bất động sản chịu hưởng quyền dẫn đến thay đổi việc thực hiện quyền đối với bất động sản hưởng quyền thì chủ sở hữu bất động sản chịu hưởng quyền phải thông báo trước cho chủ sở hữu bất động sản hưởng quyền trong một thời hạn hợp lý. Chủ sở hữu bất động sản chịu hưởng quyền phải tạo điều kiện thuận lợi cho chủ sở hữu bất động sản hưởng quyền phù hợp với thay đổi này.  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 250. Nghĩa vụ của chủ sở hữu trong việc thoát nước mưa Chủ sở hữu nhà, công trình xây dựng khác phải lắp đặt đường dẫn nước sao cho nước mưa từ mái nhà, công trình xây dựng của mình không được chảy xuống bất động sản của chủ sở hữu bất động sản liền kề.  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 251. Nghĩa vụ của chủ sở hữu trong việc thoát nước thải Chủ sở hữu nhà, công trình xây dựng khác phải làm cống ngầm hoặc rãnh thoát nước để đưa nước thải ra nơi quy định, sao cho nước thải không chảy tràn sang bất động sản của chủ sở hữu bất động sản liền kề, ra đường công cộng hoặc nơi sinh hoạt công cộng.  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 252. Quyền về cấp, thoát nước qua bất động sản liền kề  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 253. Quyền về tưới nước, tiêu nước trong canh tác Người có quyền sử dụng đất canh tác khi có nhu cầu về tưới nước, tiêu nước, có quyền yêu cầu những người sử dụng đất xung quanh để cho mình một lối dẫn nước thích hợp, thuận tiện cho việc tưới, tiêu; người được yêu cầu có nghĩa vụ đáp ứng yêu cầu đó; nếu người sử dụng lối dẫn nước gây thiệt hại cho người sử dụng đất xung quanh thì phải bồi thường.  <!-- lvl=4 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+      - Điều 254. Quyền về lối đi qua  <!-- lvl=4 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+      - Điều 255. Mắc đường dây tải điện, thông tin liên lạc qua bất động sản khác Chủ sở hữu bất động sản có quyền mắc đường dây tải điện, thông tin liên lạc qua bất động sản của các chủ sở hữu khác một cách hợp lý, nhưng phải bảo đảm an toàn và thuận tiện cho các chủ sở hữu đó; nếu gây thiệt hại thì phải bồi thường.  <!-- lvl=4 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+      - Điều 256. Chấm dứt quyền đối với bất động sản liền kề Quyền đối với bất động sản liền kề chấm dứt trong trường hợp sau đây:  <!-- lvl=4 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. QUYỀN HƯỞNG DỤNG  <!-- lvl=3 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+      - Điều 257. Quyền hưởng dụng Quyền hưởng dụng là quyền của chủ thể được khai thác công dụng và hưởng hoa lợi, lợi tức đối với tài sản thuộc quyền sở hữu của chủ thể khác trong một thời hạn nhất định.  <!-- lvl=4 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+      - Điều 258. Căn cứ xác lập quyền hưởng dụng Quyền hưởng dụng được xác lập theo quy định của luật, theo thoả thuận hoặc theo di chúc.  <!-- lvl=4 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+      - Điều 259. Hiệu lực của quyền hưởng dụng Quyền hưởng dụng được xác lập từ thời điểm nhận chuyển giao tài sản, trừ trường hợp có thỏa thuận khác hoặc luật liên quan có quy định khác. Quyền hưởng dụng đã được xác lập có hiệu lực đối với mọi cá nhân, pháp nhân, trừ trường hợp luật liên quan có quy định khác.  <!-- lvl=4 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+      - Điều 260. Thời hạn của quyền hưởng dụng  <!-- lvl=4 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+      - Điều 261. Quyền của người hưởng dụng  <!-- lvl=4 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+      - Điều 262. Nghĩa vụ của người hưởng dụng  <!-- lvl=4 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+      - Điều 263. Quyền và nghĩa vụ của chủ sở hữu tài sản  <!-- lvl=4 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+      - Điều 264. Quyền hưởng hoa lợi, lợi tức  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 265. Chấm dứt quyền hưởng dụng Quyền hưởng dụng chấm dứt trong trường hợp sau đây:  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 266. Hoàn trả tài sản khi chấm dứt quyền hưởng dụng Tài sản là đối tượng của quyền hưởng dụng phải được hoàn trả cho chủ sở hữu khi chấm dứt quyền hưởng dụng, trừ trường hợp có thỏa thuận khác hoặc luật có quy định khác.  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3. QUYỀN BỀ MẶT  <!-- lvl=3 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 267. Quyền bề mặt Quyền bề mặt là quyền của một chủ thể đối với mặt đất, mặt nước, khoảng không gian trên mặt đất, mặt nước và lòng đất mà quyền sử dụng đất đó thuộc về chủ thể khác.  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 268. Căn cứ xác lập quyền bề mặt Quyền bề mặt được xác lập theo quy định của luật, theo thỏa thuận hoặc theo di chúc.  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 269. Hiệu lực của quyền bề mặt Quyền bề mặt có hiệu lực từ thời điểm chủ thể có quyền sử dụng đất chuyển giao mặt đất, mặt nước, khoảng không gian trên mặt đất, mặt nước và lòng đất cho chủ thể có quyền bề mặt, trừ trường hợp có thỏa thuận khác hoặc luật liên quan có quy định khác. Quyền bề mặt có hiệu lực đối với mọi cá nhân, pháp nhân, trừ trường hợp luật liên quan có quy định khác.  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 270. Thời hạn của quyền bề mặt  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 271. Nội dung của quyền bề mặt  <!-- lvl=4 i=125 sid=body[1]/p[126] src=Structure CẦN-XEM-LẠI -->
+      - Điều 272. Chấm dứt quyền bề mặt Quyền bề mặt chấm dứt trong trường hợp sau đây:  <!-- lvl=4 i=125 sid=body[1]/p[126] src=Structure CẦN-XEM-LẠI -->
+      - Điều 273. Xử lý tài sản khi quyền bề mặt chấm dứt  <!-- lvl=4 i=125 sid=body[1]/p[126] src=Structure CẦN-XEM-LẠI -->
+  - Chương XV. QUY ĐỊNH CHUNG  <!-- lvl=2 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. CĂN CỨ PHÁT SINH VÀ ĐỐI TƯỢNG CỦA NGHĨA VỤ  <!-- lvl=3 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+      - Điều 274. Nghĩa vụ Nghĩa vụ là việc mà theo đó, một hoặc nhiều chủ thể (sau đây gọi chung là bên có nghĩa vụ) phải chuyển giao vật, chuyển giao quyền, trả tiền hoặc giấy tờ có giá, thực hiện công việc hoặc không được thực hiện công việc nhất định vì lợi ích của một hoặc nhiều chủ thể khác (sau đây gọi chung là bên có quyền).  <!-- lvl=4 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+      - Điều 275. Căn cứ phát sinh nghĩa vụ Nghĩa vụ phát sinh từ căn cứ sau đây:  <!-- lvl=4 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+      - Điều 276. Đối tượng của nghĩa vụ  <!-- lvl=4 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. THỰC HIỆN NGHĨA VỤ  <!-- lvl=3 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+      - Điều 277. Địa điểm thực hiện nghĩa vụ  <!-- lvl=4 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+      - Điều 278. Thời hạn thực hiện nghĩa vụ  <!-- lvl=4 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+      - Điều 279. Thực hiện nghĩa vụ giao vật  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Điều 280. Thực hiện nghĩa vụ trả tiền  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Điều 281. Nghĩa vụ phải thực hiện hoặc không được thực hiện một công việc  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Điều 282. Thực hiện nghĩa vụ theo định kỳ Nghĩa vụ được thực hiện theo định kỳ theo thoả thuận, theo quy định của pháp luật hoặc quyết định của cơ quan có thẩm quyền. Việc chậm thực hiện nghĩa vụ theo từng kỳ cũng bị coi là chậm thực hiện nghĩa vụ.  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Điều 283. Thực hiện nghĩa vụ thông qua người thứ ba  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Điều 284. Thực hiện nghĩa vụ có điều kiện  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Điều 285. Thực hiện nghĩa vụ có đối tượng tùy ý lựa chọn  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Điều 286. Thực hiện nghĩa vụ thay thế được Nghĩa vụ thay thế được là nghĩa vụ mà bên có nghĩa vụ không thực hiện được nghĩa vụ ban đầu thì có thể thực hiện một nghĩa vụ khác đã được bên có quyền chấp nhận để thay thế nghĩa vụ đó.  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Điều 287. Thực hiện nghĩa vụ riêng rẽ Khi nhiều người cùng thực hiện một nghĩa vụ, nhưng mỗi người có một phần nghĩa vụ nhất định và riêng rẽ thì mỗi người chỉ phải thực hiện phần nghĩa vụ của mình.  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Điều 288. Thực hiện nghĩa vụ liên đới  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Điều 289. Thực hiện nghĩa vụ đối với nhiều người có quyền liên đới  <!-- lvl=4 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+      - Điều 290. Thực hiện nghĩa vụ phân chia được theo  <!-- lvl=4 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+- phần 1. Nghĩa vụ phân chia được theo phần là nghĩa vụ mà đối tượng của nghĩa vụ có thể chia thành nhiều phần để thực hiện.  <!-- lvl=1 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+      - Điều 291. Thực hiện nghĩa vụ không phân chia được theo  <!-- lvl=4 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+- phần 1. Nghĩa vụ không phân chia được theo phần là nghĩa vụ mà đối tượng của nghĩa vụ phải được thực hiện cùng một lúc.  <!-- lvl=1 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3. BẢO ĐẢM THỰC HIỆN NGHĨA VỤ Tiểu  <!-- lvl=3 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+    - mục 1. QUY ĐỊNH CHUNG  <!-- lvl=3 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+      - Điều 292. Biện pháp bảo đảm thực hiện nghĩa vụ Các biện pháp bảo đảm thực hiện nghĩa vụ bao gồm:  <!-- lvl=4 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+      - Điều 293. Phạm vi nghĩa vụ được bảo đảm  <!-- lvl=4 i=135 sid=body[1]/p[136] src=Structure CẦN-XEM-LẠI -->
+      - Điều 294. Bảo đảm thực hiện nghĩa vụ trong tương lai  <!-- lvl=4 i=135 sid=body[1]/p[136] src=Structure CẦN-XEM-LẠI -->
+      - Điều 295. Tài sản bảo đảm  <!-- lvl=4 i=135 sid=body[1]/p[136] src=Structure CẦN-XEM-LẠI -->
+      - Điều 296. Một tài sản dùng để bảo đảm thực hiện nhiều nghĩa vụ  <!-- lvl=4 i=135 sid=body[1]/p[136] src=Structure CẦN-XEM-LẠI -->
+      - Điều 297. Hiệu lực đối kháng với người thứ ba  <!-- lvl=4 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+      - Điều 298. Đăng ký biện pháp bảo đảm  <!-- lvl=4 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+      - Điều 299. Các trường hợp xử lý tài sản bảo đảm  <!-- lvl=4 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+      - Điều 300. Thông báo về việc xử lý tài sản bảo đảm  <!-- lvl=4 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+      - Điều 301. Giao tài sản bảo đảm để xử lý Người đang giữ tài sản bảo đảm có nghĩa vụ giao tài sản bảo đảm cho bên nhận bảo đảm để xử lý khi thuộc một trong các trường hợp quy định tại Điều 299 của Bộ luật này. Trường hợp người đang giữ tài sản không giao tài sản thì bên nhận bảo đảm có quyền yêu cầu Tòa án giải quyết, trừ trường hợp luật liên quan có quy định khác.  <!-- lvl=4 i=139 sid=body[1]/p[140] src=Structure CẦN-XEM-LẠI -->
+      - Điều 302. Quyền nhận lại tài sản bảo đảm Trước thời điểm xử lý tài sản bảo đảm mà bên bảo đảm thực hiện đầy đủ nghĩa vụ của mình đối với bên nhận bảo đảm và thanh toán chi phí phát sinh do việc chậm thực hiện nghĩa vụ thì có quyền nhận lại tài sản đó, trừ trường hợp luật có quy định khác.  <!-- lvl=4 i=139 sid=body[1]/p[140] src=Structure CẦN-XEM-LẠI -->
+      - Điều 303. Phương thức xử lý tài sản cầm cố, thế chấp  <!-- lvl=4 i=139 sid=body[1]/p[140] src=Structure CẦN-XEM-LẠI -->
+      - Điều 304. Bán tài sản cầm cố, thế chấp  <!-- lvl=4 i=139 sid=body[1]/p[140] src=Structure CẦN-XEM-LẠI -->
+      - Điều 305. Nhận chính tài sản bảo đảm để thay thế cho việc thực hiện nghĩa vụ của bên bảo đảm  <!-- lvl=4 i=141 sid=body[1]/p[142] src=Structure CẦN-XEM-LẠI -->
+      - Điều 306. Định giá tài sản bảo đảm  <!-- lvl=4 i=141 sid=body[1]/p[142] src=Structure CẦN-XEM-LẠI -->
+      - Điều 307. Thanh toán số tiền có được từ việc xử lý tài sản cầm cố, thế chấp  <!-- lvl=4 i=141 sid=body[1]/p[142] src=Structure CẦN-XEM-LẠI -->
+      - Điều 308. Thứ tự ưu tiên thanh toán giữa các bên cùng nhận tài sản bảo đảm  <!-- lvl=4 i=143 sid=body[1]/p[144] src=Structure CẦN-XEM-LẠI -->
+    - mục 2. CẦM CỐ TÀI SẢN  <!-- lvl=3 i=143 sid=body[1]/p[144] src=Structure CẦN-XEM-LẠI -->
+      - Điều 309. Cầm cố tài sản Cầm cố tài sản là việc một bên (sau đây gọi là bên cầm cố) giao tài sản thuộc quyền sở hữu của mình cho bên kia (sau đây gọi là bên nhận cầm cố) để bảo đảm thực hiện nghĩa vụ.  <!-- lvl=4 i=143 sid=body[1]/p[144] src=Structure CẦN-XEM-LẠI -->
+      - Điều 310. Hiệu lực của cầm cố tài sản  <!-- lvl=4 i=143 sid=body[1]/p[144] src=Structure CẦN-XEM-LẠI -->
+      - Điều 311. Nghĩa vụ của bên cầm cố  <!-- lvl=4 i=143 sid=body[1]/p[144] src=Structure CẦN-XEM-LẠI -->
+      - Điều 312. Quyền của bên cầm cố  <!-- lvl=4 i=145 sid=body[1]/p[146] src=Structure CẦN-XEM-LẠI -->
+      - Điều 313. Nghĩa vụ của bên nhận cầm cố  <!-- lvl=4 i=145 sid=body[1]/p[146] src=Structure CẦN-XEM-LẠI -->
+      - Điều 314. Quyền của bên nhận cầm cố  <!-- lvl=4 i=145 sid=body[1]/p[146] src=Structure CẦN-XEM-LẠI -->
+      - Điều 315. Chấm dứt cầm cố tài sản  <!-- lvl=4 i=145 sid=body[1]/p[146] src=Structure CẦN-XEM-LẠI -->
+      - Điều 316. Trả lại tài sản cầm cố Khi việc cầm cố tài sản chấm dứt theo quy định tại khoản 1 và khoản 2 Điều 315 của Bộ luật này hoặc theo thỏa thuận của các bên thì tài sản cầm cố, giấy tờ liên quan đến tài sản cầm cố được trả lại cho bên cầm cố. Hoa lợi, lợi tức thu được từ tài sản cầm cố cũng được trả lại cho bên cầm cố, trừ trường hợp có thoả thuận khác. Tiểu  <!-- lvl=4 i=147 sid=body[1]/p[148] src=Structure CẦN-XEM-LẠI -->
+    - mục 3. THẾ CHẤP TÀI SẢN  <!-- lvl=3 i=147 sid=body[1]/p[148] src=Structure CẦN-XEM-LẠI -->
+      - Điều 317. Thế chấp tài sản  <!-- lvl=4 i=147 sid=body[1]/p[148] src=Structure CẦN-XEM-LẠI -->
+      - Điều 318. Tài sản thế chấp  <!-- lvl=4 i=147 sid=body[1]/p[148] src=Structure CẦN-XEM-LẠI -->
+      - Điều 319. Hiệu lực của thế chấp tài sản  <!-- lvl=4 i=149 sid=body[1]/p[150] src=Structure CẦN-XEM-LẠI -->
+      - Điều 320. Nghĩa vụ của bên thế chấp  <!-- lvl=4 i=149 sid=body[1]/p[150] src=Structure CẦN-XEM-LẠI -->
+      - Điều 321. Quyền của bên thế chấp  <!-- lvl=4 i=149 sid=body[1]/p[150] src=Structure CẦN-XEM-LẠI -->
+      - Điều 322. Nghĩa vụ của bên nhận thế chấp  <!-- lvl=4 i=151 sid=body[1]/p[152] src=Structure CẦN-XEM-LẠI -->
+      - Điều 323. Quyền của bên nhận thế chấp  <!-- lvl=4 i=151 sid=body[1]/p[152] src=Structure CẦN-XEM-LẠI -->
+      - Điều 324. Quyền và nghĩa vụ của người thứ ba giữ tài sản thế chấp  <!-- lvl=4 i=151 sid=body[1]/p[152] src=Structure CẦN-XEM-LẠI -->
+      - Điều 325. Thế chấp quyền sử dụng đất mà không thế chấp tài sản gắn liền với đất  <!-- lvl=4 i=153 sid=body[1]/p[154] src=Structure CẦN-XEM-LẠI -->
+      - Điều 326. Thế chấp tài sản gắn liền với đất mà không thế chấp quyền sử dụng đất  <!-- lvl=4 i=153 sid=body[1]/p[154] src=Structure CẦN-XEM-LẠI -->
+      - Điều 327. Chấm dứt thế chấp tài sản Thế chấp tài sản chấm dứt trong trường hợp sau đây:  <!-- lvl=4 i=153 sid=body[1]/p[154] src=Structure CẦN-XEM-LẠI -->
+    - mục 4. ĐẶT CỌC, KÝ CƯỢC, KÝ QUỸ  <!-- lvl=3 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+      - Điều 328. Đặt cọc  <!-- lvl=4 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+      - Điều 329. Ký cược  <!-- lvl=4 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+      - Điều 330. Ký quỹ  <!-- lvl=4 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+    - mục 5. BẢO LƯU QUYỀN SỞ HỮU  <!-- lvl=3 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+      - Điều 331. Bảo lưu quyền sở hữu  <!-- lvl=4 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+      - Điều 332. Quyền đòi lại tài sản Trường hợp bên mua không hoàn thành nghĩa vụ thanh toán cho bên bán theo thỏa thuận thì bên bán có quyền đòi lại tài sản. Bên bán hoàn trả cho bên mua số tiền bên mua đã thanh toán sau khi trừ giá trị hao mòn tài sản do sử dụng. Trường hợp bên mua làm mất, hư hỏng tài sản thì bên bán có quyền yêu cầu bồi thường thiệt hại.  <!-- lvl=4 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+      - Điều 333. Quyền và nghĩa vụ của bên mua tài sản  <!-- lvl=4 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+      - Điều 334. Chấm dứt bảo lưu quyền sở hữu Bảo lưu quyền sở hữu chấm dứt trong trường hợp sau đây:  <!-- lvl=4 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+    - mục 6. BẢO LÃNH  <!-- lvl=3 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+      - Điều 335. Bảo lãnh  <!-- lvl=4 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+      - Điều 336. Phạm vi bảo lãnh  <!-- lvl=4 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+      - Điều 337. Thù lao Bên bảo lãnh được hưởng thù lao nếu bên bảo lãnh và bên được bảo lãnh có thoả thuận.  <!-- lvl=4 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+      - Điều 338. Nhiều người cùng bảo lãnh Khi nhiều người cùng bảo lãnh một nghĩa vụ thì phải liên đới thực hiện việc bảo lãnh, trừ trường hợp có thoả thuận hoặc pháp luật có quy định bảo lãnh theo các phần độc lập; bên có quyền có thể yêu cầu bất cứ ai trong số những người bảo lãnh liên đới phải thực hiện toàn bộ nghĩa vụ. Khi một người trong số những người bảo lãnh liên đới đã thực hiện toàn bộ nghĩa vụ thay cho bên được bảo lãnh thì có quyền yêu cầu những người bảo lãnh còn lại phải thực hiện phần nghĩa vụ của họ đối với mình.  <!-- lvl=4 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+      - Điều 339. Quan hệ giữa bên bảo lãnh và bên nhận bảo lãnh  <!-- lvl=4 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+      - Điều 340. Quyền yêu cầu của bên bảo lãnh Bên bảo lãnh có quyền yêu cầu bên được bảo lãnh thực hiện nghĩa vụ đối với mình trong phạm vi nghĩa vụ bảo lãnh đã thực hiện, trừ trường hợp có thoả thuận khác.  <!-- lvl=4 i=159 sid=body[1]/p[160] src=Structure CẦN-XEM-LẠI -->
+      - Điều 341. Miễn việc thực hiện nghĩa vụ bảo lãnh  <!-- lvl=4 i=159 sid=body[1]/p[160] src=Structure CẦN-XEM-LẠI -->
+      - Điều 342. Trách nhiệm dân sự của bên bảo lãnh  <!-- lvl=4 i=159 sid=body[1]/p[160] src=Structure CẦN-XEM-LẠI -->
+      - Điều 343. Chấm dứt bảo lãnh Bảo lãnh chấm dứt trong trường hợp sau đây:  <!-- lvl=4 i=159 sid=body[1]/p[160] src=Structure CẦN-XEM-LẠI -->
+    - mục 7. TÍN CHẤP  <!-- lvl=3 i=159 sid=body[1]/p[160] src=Structure CẦN-XEM-LẠI -->
+      - Điều 344. Bảo đảm bằng tín chấp của tổ chức chính trị - xã hội Tổ chức chính trị - xã hội ở cơ sở có thể bảo đảm bằng tín chấp cho cá nhân, hộ gia đình nghèo vay một khoản tiền tại tổ chức tín dụng để sản xuất, kinh doanh, tiêu dùng theo quy định của pháp luật.  <!-- lvl=4 i=159 sid=body[1]/p[160] src=Structure CẦN-XEM-LẠI -->
+      - Điều 345. Hình thức, nội dung tín chấp  <!-- lvl=4 i=159 sid=body[1]/p[160] src=Structure CẦN-XEM-LẠI -->
+    - mục 8. CẦM GIỮ TÀI SẢN  <!-- lvl=3 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Điều 346. Cầm giữ tài sản Cầm giữ tài sản là việc bên có quyền (sau đây gọi là bên cầm giữ) đang nắm giữ hợp pháp tài sản là đối tượng của hợp đồng song vụ được chiếm giữ tài sản trong trường hợp bên có nghĩa vụ không thực hiện hoặc thực hiện không đúng nghĩa vụ.  <!-- lvl=4 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Điều 347. Xác lập cầm giữ tài sản  <!-- lvl=4 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Điều 348. Quyền của bên cầm giữ  <!-- lvl=4 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Điều 349. Nghĩa vụ của bên cầm giữ  <!-- lvl=4 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Điều 350. Chấm dứt cầm giữ Cầm giữ tài sản chấm dứt trong trường hợp sau đây:  <!-- lvl=4 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+    - Mục 4. TRÁCH NHIỆM DÂN SỰ  <!-- lvl=3 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Điều 351. Trách nhiệm dân sự do vi phạm nghĩa vụ  <!-- lvl=4 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Điều 352. Trách nhiệm tiếp tục thực hiện nghĩa vụ Khi bên có nghĩa vụ thực hiện không đúng nghĩa vụ của mình thì bên có quyền được yêu cầu bên có nghĩa vụ tiếp tục thực hiện nghĩa vụ.  <!-- lvl=4 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Điều 353. Chậm thực hiện nghĩa vụ  <!-- lvl=4 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Điều 354. Hoãn thực hiện nghĩa vụ  <!-- lvl=4 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Điều 355. Chậm tiếp nhận việc thực hiện nghĩa vụ  <!-- lvl=4 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Điều 356. Trách nhiệm do không thực hiện nghĩa vụ giao vật  <!-- lvl=4 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Điều 357. Trách nhiệm do chậm thực hiện nghĩa vụ trả tiền  <!-- lvl=4 i=165 sid=body[1]/p[166] src=Structure CẦN-XEM-LẠI -->
+      - Điều 358. Trách nhiệm do không thực hiện hoặc không được thực hiện một công việc  <!-- lvl=4 i=165 sid=body[1]/p[166] src=Structure CẦN-XEM-LẠI -->
+      - Điều 359. Trách nhiệm do chậm tiếp nhận việc thực hiện nghĩa vụ Bên có quyền chậm tiếp nhận việc thực hiện nghĩa vụ làm phát sinh thiệt hại cho bên có nghĩa vụ thì phải bồi thường thiệt hại cho bên đó và phải chịu mọi rủi ro, chi phí phát sinh kể từ thời điểm chậm tiếp nhận, trừ trường hợp luật có quy định khác.  <!-- lvl=4 i=165 sid=body[1]/p[166] src=Structure CẦN-XEM-LẠI -->
+      - Điều 360. Trách nhiệm bồi thường thiệt hại do vi phạm nghĩa vụ Trường hợp có thiệt hại do vi phạm nghĩa vụ gây ra thì bên có nghĩa vụ phải bồi thường toàn bộ thiệt hại, trừ trường hợp có thỏa thuận khác hoặc luật có quy định khác.  <!-- lvl=4 i=165 sid=body[1]/p[166] src=Structure CẦN-XEM-LẠI -->
+      - Điều 361. Thiệt hại do vi phạm nghĩa vụ  <!-- lvl=4 i=165 sid=body[1]/p[166] src=Structure CẦN-XEM-LẠI -->
+      - Điều 362. Nghĩa vụ ngăn chặn, hạn chế thiệt hại Bên có quyền phải áp dụng các biện pháp cần thiết, hợp lý để thiệt hại không xảy ra hoặc hạn chế thiệt hại cho mình.  <!-- lvl=4 i=165 sid=body[1]/p[166] src=Structure CẦN-XEM-LẠI -->
+      - Điều 363. Bồi thường thiệt hại trong trường hợp bên bị vi phạm có lỗi Trường hợp vi phạm nghĩa vụ và có thiệt hại là do một phần lỗi của bên bị vi phạm thì bên vi phạm chỉ phải bồi thường thiệt hại tương ứng với mức độ lỗi của mình.  <!-- lvl=4 i=167 sid=body[1]/p[168] src=Structure CẦN-XEM-LẠI -->
+      - Điều 364. Lỗi trong trách nhiệm dân sự Lỗi trong trách nhiệm dân sự bao gồm lỗi cố ý, lỗi vô ý. Lỗi cố ý là trường hợp một người nhận thức rõ hành vi của mình sẽ gây thiệt hại cho người khác mà vẫn thực hiện và mong muốn hoặc tuy không mong muốn nhưng để mặc cho thiệt hại xảy ra. Lỗi vô ý là trường hợp một người không thấy trước hành vi của mình có khả năng gây thiệt hại, mặc dù phải biết hoặc có thể biết trước thiệt hại sẽ xảy ra hoặc thấy trước hành vi của mình có khả năng gây thiệt hại, nhưng cho rằng thiệt hại sẽ không xảy ra hoặc có thể ngăn chặn được.  <!-- lvl=4 i=167 sid=body[1]/p[168] src=Structure CẦN-XEM-LẠI -->
+    - Mục 5. CHUYỂN GIAO QUYỀN YÊU CẦU VÀ CHUYỂN GIAO NGHĨA VỤ  <!-- lvl=3 i=167 sid=body[1]/p[168] src=Structure CẦN-XEM-LẠI -->
+      - Điều 365. Chuyển giao quyền yêu cầu  <!-- lvl=4 i=167 sid=body[1]/p[168] src=Structure CẦN-XEM-LẠI -->
+      - Điều 366. Nghĩa vụ cung cấp thông tin và chuyển giao giấy tờ  <!-- lvl=4 i=167 sid=body[1]/p[168] src=Structure CẦN-XEM-LẠI -->
+      - Điều 367. Không chịu trách nhiệm sau khi chuyển giao quyền yêu cầu Người chuyển giao quyền yêu cầu không phải chịu trách nhiệm về khả năng thực hiện nghĩa vụ của bên có nghĩa vụ sau khi chuyển giao quyền yêu cầu, trừ trường hợp có thỏa thuận khác.  <!-- lvl=4 i=167 sid=body[1]/p[168] src=Structure CẦN-XEM-LẠI -->
+      - Điều 368. Chuyển giao quyền yêu cầu có biện pháp bảo đảm thực hiện nghĩa vụ Trường hợp quyền yêu cầu thực hiện nghĩa vụ có biện pháp bảo đảm thì việc chuyển giao quyền yêu cầu bao gồm cả biện pháp bảo đảm đó.  <!-- lvl=4 i=167 sid=body[1]/p[168] src=Structure CẦN-XEM-LẠI -->
+      - Điều 369. Quyền từ chối của bên có nghĩa vụ  <!-- lvl=4 i=167 sid=body[1]/p[168] src=Structure CẦN-XEM-LẠI -->
+      - Điều 370. Chuyển giao nghĩa vụ  <!-- lvl=4 i=169 sid=body[1]/p[170] src=Structure CẦN-XEM-LẠI -->
+      - Điều 371. Chuyển giao nghĩa vụ có biện pháp bảo đảm Trường hợp nghĩa vụ có biện pháp bảo đảm được chuyển giao thì biện pháp bảo đảm đó chấm dứt, trừ trường hợp có thỏa thuận khác.  <!-- lvl=4 i=169 sid=body[1]/p[170] src=Structure CẦN-XEM-LẠI -->
+    - Mục 6. CHẤM DỨT NGHĨA VỤ  <!-- lvl=3 i=169 sid=body[1]/p[170] src=Structure CẦN-XEM-LẠI -->
+      - Điều 372. Căn cứ chấm dứt nghĩa vụ Nghĩa vụ chấm dứt trong trường hợp sau đây:  <!-- lvl=4 i=169 sid=body[1]/p[170] src=Structure CẦN-XEM-LẠI -->
+      - Điều 373. Hoàn thành nghĩa vụ Nghĩa vụ được hoàn thành khi bên có nghĩa vụ đã thực hiện toàn bộ nghĩa vụ hoặc thực hiện một phần nghĩa vụ nhưng phần còn lại được bên có quyền cho miễn thực hiện.  <!-- lvl=4 i=169 sid=body[1]/p[170] src=Structure CẦN-XEM-LẠI -->
+      - Điều 374. Hoàn thành nghĩa vụ trong trường hợp bên có quyền chậm tiếp nhận đối tượng của nghĩa vụ  <!-- lvl=4 i=169 sid=body[1]/p[170] src=Structure CẦN-XEM-LẠI -->
+      - Điều 375. Chấm dứt nghĩa vụ theo thoả thuận Các bên có thể thoả thuận chấm dứt nghĩa vụ bất cứ lúc nào, nhưng không được gây thiệt hại đến lợi ích quốc gia, dân tộc, lợi ích công cộng, quyền và lợi ích hợp pháp của người khác.  <!-- lvl=4 i=171 sid=body[1]/p[172] src=Structure CẦN-XEM-LẠI -->
+      - Điều 376. Chấm dứt nghĩa vụ do được miễn thực hiện nghĩa vụ  <!-- lvl=4 i=171 sid=body[1]/p[172] src=Structure CẦN-XEM-LẠI -->
+      - Điều 377. Chấm dứt nghĩa vụ do được thay thế bằng nghĩa vụ khác  <!-- lvl=4 i=171 sid=body[1]/p[172] src=Structure CẦN-XEM-LẠI -->
+      - Điều 378. Chấm dứt nghĩa vụ do bù trừ nghĩa vụ  <!-- lvl=4 i=171 sid=body[1]/p[172] src=Structure CẦN-XEM-LẠI -->
+      - Điều 379. Những trường hợp không được bù trừ nghĩa vụ Nghĩa vụ không được bù trừ trong trường hợp sau đây:  <!-- lvl=4 i=171 sid=body[1]/p[172] src=Structure CẦN-XEM-LẠI -->
+      - Điều 380. Chấm dứt nghĩa vụ do hoà nhập bên có nghĩa vụ và bên có quyền Khi bên có nghĩa vụ trở thành bên có quyền đối với chính nghĩa vụ đó thì nghĩa vụ chấm dứt.  <!-- lvl=4 i=171 sid=body[1]/p[172] src=Structure CẦN-XEM-LẠI -->
+      - Điều 381. Chấm dứt nghĩa vụ do hết thời hiệu miễn trừ nghĩa vụ Khi thời hiệu miễn trừ nghĩa vụ đã hết thì nghĩa vụ chấm dứt.  <!-- lvl=4 i=171 sid=body[1]/p[172] src=Structure CẦN-XEM-LẠI -->
+      - Điều 382. Chấm dứt nghĩa vụ khi bên có quyền là cá nhân chết hoặc pháp nhân chấm dứt tồn tại Khi các bên có thoả thuận hoặc pháp luật có quy định về việc nghĩa vụ được thực hiện chỉ dành cho cá nhân hoặc pháp nhân là bên có quyền mà cá nhân chết hoặc pháp nhân chấm dứt tồn tại thì nghĩa vụ cũng chấm dứt.  <!-- lvl=4 i=173 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+      - Điều 383. Chấm dứt nghĩa vụ khi vật đặc định không còn Nghĩa vụ giao vật chấm dứt trong trường hợp vật phải giao là vật đặc định không còn. Các bên có thể thoả thuận thay thế vật khác hoặc bồi thường thiệt hại.  <!-- lvl=4 i=173 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+      - Điều 384. Chấm dứt nghĩa vụ trong trường hợp phá sản Trường hợp phá sản thì nghĩa vụ chấm dứt theo quy định của Luật phá sản.  <!-- lvl=4 i=173 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+    - Mục 7. HỢP ĐỒNG Tiểu  <!-- lvl=3 i=173 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+    - mục 1. GIAO KẾT HỢP ĐỒNG  <!-- lvl=3 i=173 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+      - Điều 385. Khái niệm hợp đồng Hợp đồng là sự thoả thuận giữa các bên về việc xác lập, thay đổi hoặc chấm dứt quyền, nghĩa vụ dân sự.  <!-- lvl=4 i=173 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+      - Điều 386. Đề nghị giao kết hợp đồng  <!-- lvl=4 i=173 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+      - Điều 387. Thông tin trong giao kết hợp đồng  <!-- lvl=4 i=173 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+      - Điều 388. Thời điểm đề nghị giao kết hợp đồng có hiệu lực  <!-- lvl=4 i=173 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+      - Điều 389. Thay đổi, rút lại đề nghị giao kết hợp đồng  <!-- lvl=4 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+      - Điều 390. Huỷ bỏ đề nghị giao kết hợp đồng Bên đề nghị giao kết hợp đồng có thể huỷ bỏ đề nghị nếu đã nêu rõ quyền này trong đề nghị và bên được đề nghị nhận được thông báo về việc hủy bỏ đề nghị trước khi người này gửi thông báo chấp nhận đề nghị giao kết hợp đồng.  <!-- lvl=4 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+      - Điều 391. Chấm dứt đề nghị giao kết hợp đồng Đề nghị giao kết hợp đồng chấm dứt trong trường hợp sau đây:  <!-- lvl=4 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+      - Điều 392. Sửa đổi đề nghị do bên được đề nghị đề xuất Khi bên được đề nghị đã chấp nhận giao kết hợp đồng nhưng có nêu điều kiện hoặc sửa đổi đề nghị thì coi như người này đã đưa ra đề nghị mới.  <!-- lvl=4 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+      - Điều 393. Chấp nhận đề nghị giao kết hợp đồng  <!-- lvl=4 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+      - Điều 394. Thời hạn trả lời chấp nhận giao kết hợp đồng  <!-- lvl=4 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+      - Điều 395. Trường hợp bên đề nghị giao kết hợp đồng chết, mất năng lực hành vi dân sự hoặc có khó khăn trong nhận thức, làm chủ hành vi Trường hợp bên đề nghị chết, mất năng lực hành vi dân sự hoặc có khó khăn trong nhận thức, làm chủ hành vi sau khi bên được đề nghị trả lời chấp nhận giao kết hợp đồng thì đề nghị giao kết hợp đồng vẫn có giá trị, trừ trường hợp nội dung giao kết gắn liền với nhân thân bên đề nghị.  <!-- lvl=4 i=177 sid=body[1]/p[178] src=Structure CẦN-XEM-LẠI -->
+      - Điều 396. Trường hợp bên được đề nghị giao kết hợp đồng chết, mất năng lực hành vi dân sự hoặc có khó khăn trong nhận thức, làm chủ hành vi Trường hợp bên được đề nghị đã chấp nhận giao kết hợp đồng nhưng sau đó chết, mất năng lực hành vi dân sự hoặc có khó khăn trong nhận thức, làm chủ hành vi thì việc trả lời chấp nhận giao kết hợp đồng vẫn có giá trị, trừ trường hợp nội dung giao kết gắn liền với nhân thân bên được đề nghị.  <!-- lvl=4 i=177 sid=body[1]/p[178] src=Structure CẦN-XEM-LẠI -->
+      - Điều 397. Rút lại thông báo chấp nhận giao kết hợp đồng Bên được đề nghị giao kết hợp đồng có thể rút lại thông báo chấp nhận giao kết hợp đồng, nếu thông báo về việc rút lại này đến trước hoặc cùng với thời điểm bên đề nghị nhận được trả lời chấp nhận giao kết hợp đồng.  <!-- lvl=4 i=177 sid=body[1]/p[178] src=Structure CẦN-XEM-LẠI -->
+      - Điều 398. Nội dung của hợp đồng  <!-- lvl=4 i=177 sid=body[1]/p[178] src=Structure CẦN-XEM-LẠI -->
+      - Điều 399. Địa điểm giao kết hợp đồng  <!-- lvl=4 i=177 sid=body[1]/p[178] src=Structure CẦN-XEM-LẠI -->
+      - Điều 400. Thời điểm giao kết hợp đồng  <!-- lvl=4 i=179 sid=body[1]/p[180] src=Structure CẦN-XEM-LẠI -->
+      - Điều 401. Hiệu lực của hợp đồng  <!-- lvl=4 i=179 sid=body[1]/p[180] src=Structure CẦN-XEM-LẠI -->
+      - Điều 402. Các loại hợp đồng chủ yếu Hợp đồng gồm các loại chủ yếu sau đây:  <!-- lvl=4 i=179 sid=body[1]/p[180] src=Structure CẦN-XEM-LẠI -->
+      - Điều 403. Phụ lục hợp đồng  <!-- lvl=4 i=179 sid=body[1]/p[180] src=Structure CẦN-XEM-LẠI -->
+      - Điều 404. Giải thích hợp đồng  <!-- lvl=4 i=181 sid=body[1]/p[182] src=Structure CẦN-XEM-LẠI -->
+      - Điều 405. Hợp đồng theo mẫu  <!-- lvl=4 i=181 sid=body[1]/p[182] src=Structure CẦN-XEM-LẠI -->
+      - Điều 406. Điều kiện giao dịch chung trong giao kết hợp đồng  <!-- lvl=4 i=181 sid=body[1]/p[182] src=Structure CẦN-XEM-LẠI -->
+      - Điều 407. Hợp đồng vô hiệu  <!-- lvl=4 i=181 sid=body[1]/p[182] src=Structure CẦN-XEM-LẠI -->
+      - Điều 408. Hợp đồng vô hiệu do có đối tượng không thể thực hiện được  <!-- lvl=4 i=183 sid=body[1]/p[184] src=Structure CẦN-XEM-LẠI -->
+    - mục 2. THỰC HIỆN HỢP ĐỒNG  <!-- lvl=3 i=183 sid=body[1]/p[184] src=Structure CẦN-XEM-LẠI -->
+      - Điều 409. Thực hiện hợp đồng đơn vụ Đối với hợp đồng đơn vụ, bên có nghĩa vụ phải thực hiện nghĩa vụ đúng như đã thoả thuận, chỉ được thực hiện trước hoặc sau thời hạn nếu được bên có quyền đồng ý.  <!-- lvl=4 i=183 sid=body[1]/p[184] src=Structure CẦN-XEM-LẠI -->
+      - Điều 410. Thực hiện hợp đồng song vụ  <!-- lvl=4 i=183 sid=body[1]/p[184] src=Structure CẦN-XEM-LẠI -->
+      - Điều 411. Quyền hoãn thực hiện nghĩa vụ trong hợp đồng song vụ  <!-- lvl=4 i=183 sid=body[1]/p[184] src=Structure CẦN-XEM-LẠI -->
+      - Điều 412. Cầm giữ tài sản trong hợp đồng song vụ  <!-- lvl=4 i=183 sid=body[1]/p[184] src=Structure CẦN-XEM-LẠI -->
+      - Điều 413. Nghĩa vụ không thực hiện được do lỗi của một bên Trong hợp đồng song vụ, khi một bên không thực hiện được nghĩa vụ của mình do lỗi của bên kia thì có quyền yêu cầu bên kia vẫn phải thực hiện nghĩa vụ đối với mình hoặc huỷ bỏ hợp đồng và yêu cầu bồi thường thiệt hại.  <!-- lvl=4 i=185 sid=body[1]/p[186] src=Structure CẦN-XEM-LẠI -->
+      - Điều 414. Không thực hiện được nghĩa vụ nhưng không do lỗi của các bên Trong hợp đồng song vụ, nếu một bên không thực hiện được nghĩa vụ mà các bên đều không có lỗi thì bên không thực hiện được nghĩa vụ không có quyền yêu cầu bên kia thực hiện nghĩa vụ đối với mình. Trường hợp một bên đã thực hiện được một phần nghĩa vụ thì có quyền yêu cầu bên kia thực hiện phần nghĩa vụ tương ứng đối với mình.  <!-- lvl=4 i=185 sid=body[1]/p[186] src=Structure CẦN-XEM-LẠI -->
+      - Điều 415. Thực hiện hợp đồng vì lợi ích của người thứ ba Khi thực hiện hợp đồng vì lợi ích của người thứ ba thì người thứ ba có quyền trực tiếp yêu cầu bên có nghĩa vụ phải thực hiện nghĩa vụ đối với mình; nếu các bên trong hợp đồng có tranh chấp về việc thực hiện hợp đồng thì người thứ ba không có quyền yêu cầu thực hiện nghĩa vụ cho đến khi tranh chấp được giải quyết. Bên có quyền cũng có thể yêu cầu bên có nghĩa vụ thực hiện hợp đồng vì lợi ích của người thứ ba.  <!-- lvl=4 i=185 sid=body[1]/p[186] src=Structure CẦN-XEM-LẠI -->
+      - Điều 416. Quyền từ chối của người thứ ba  <!-- lvl=4 i=185 sid=body[1]/p[186] src=Structure CẦN-XEM-LẠI -->
+      - Điều 417. Không được sửa đổi hoặc huỷ bỏ hợp đồng vì lợi ích của người thứ ba Khi người thứ ba đã đồng ý hưởng lợi ích thì dù hợp đồng chưa được thực hiện, các bên giao kết hợp đồng cũng không được sửa đổi hoặc huỷ bỏ hợp đồng, trừ trường hợp được người thứ ba đồng ý.  <!-- lvl=4 i=185 sid=body[1]/p[186] src=Structure CẦN-XEM-LẠI -->
+      - Điều 418. Thoả thuận phạt vi phạm  <!-- lvl=4 i=185 sid=body[1]/p[186] src=Structure CẦN-XEM-LẠI -->
+      - Điều 419. Thiệt hại được bồi thường do vi phạm hợp đồng  <!-- lvl=4 i=187 sid=body[1]/p[188] src=Structure CẦN-XEM-LẠI -->
+      - Điều 420. Thực hiện hợp đồng khi hoàn cảnh thay đổi cơ bản  <!-- lvl=4 i=187 sid=body[1]/p[188] src=Structure CẦN-XEM-LẠI -->
+    - mục 3. SỬA ĐỔI, CHẤM DỨT HỢP ĐỒNG  <!-- lvl=3 i=187 sid=body[1]/p[188] src=Structure CẦN-XEM-LẠI -->
+      - Điều 421. Sửa đổi hợp đồng  <!-- lvl=4 i=187 sid=body[1]/p[188] src=Structure CẦN-XEM-LẠI -->
+      - Điều 422. Chấm dứt hợp đồng Hợp đồng chấm dứt trong trường hợp sau đây:  <!-- lvl=4 i=189 sid=body[1]/p[190] src=Structure CẦN-XEM-LẠI -->
+      - Điều 423. Huỷ bỏ hợp đồng  <!-- lvl=4 i=189 sid=body[1]/p[190] src=Structure CẦN-XEM-LẠI -->
+      - Điều 424. Huỷ bỏ hợp đồng do chậm thực hiện nghĩa vụ  <!-- lvl=4 i=189 sid=body[1]/p[190] src=Structure CẦN-XEM-LẠI -->
+      - Điều 425. Huỷ bỏ hợp đồng do không có khả năng thực hiện Trường hợp bên có nghĩa vụ không thể thực hiện được một phần hoặc toàn bộ nghĩa vụ của mình làm cho mục đích của bên có quyền không thể đạt được thì bên có quyền có thể huỷ bỏ hợp đồng và yêu cầu bồi thường thiệt hại.  <!-- lvl=4 i=189 sid=body[1]/p[190] src=Structure CẦN-XEM-LẠI -->
+      - Điều 426. Huỷ bỏ hợp đồng trong trường hợp tài sản bị mất, bị hư hỏng  <!-- lvl=4 i=189 sid=body[1]/p[190] src=Structure CẦN-XEM-LẠI -->
+      - Điều 427. Hậu quả của việc huỷ bỏ hợp đồng  <!-- lvl=4 i=191 sid=body[1]/p[192] src=Structure CẦN-XEM-LẠI -->
+      - Điều 428. Đơn phương chấm dứt thực hiện hợp đồng  <!-- lvl=4 i=191 sid=body[1]/p[192] src=Structure CẦN-XEM-LẠI -->
+      - Điều 429. Thời hiệu khởi kiện về hợp đồng  <!-- lvl=4 i=191 sid=body[1]/p[192] src=Structure CẦN-XEM-LẠI -->
+  - Chương XVI MỘT SỐ HỢP ĐỒNG THÔNG DỤNG  <!-- lvl=2 i=193 sid=body[1]/p[194] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. HỢP ĐỒNG MUA BÁN TÀI SẢN  <!-- lvl=3 i=193 sid=body[1]/p[194] src=Structure CẦN-XEM-LẠI -->
+      - Điều 430. Hợp đồng mua bán tài sản Hợp đồng mua bán tài sản là sự thỏa thuận giữa các bên, theo đó bên bán chuyển quyền sở hữu tài sản cho bên mua và bên mua trả tiền cho bên bán. Hợp đồng mua bán nhà ở, mua bán nhà để sử dụng vào mục đích khác được thực hiện theo quy định của Bộ luật này, Luật nhà ở và luật khác có liên quan.  <!-- lvl=4 i=193 sid=body[1]/p[194] src=Structure CẦN-XEM-LẠI -->
+      - Điều 431. Đối tượng của hợp đồng mua bán  <!-- lvl=4 i=193 sid=body[1]/p[194] src=Structure CẦN-XEM-LẠI -->
+      - Điều 432. Chất lượng của tài sản mua bán  <!-- lvl=4 i=193 sid=body[1]/p[194] src=Structure CẦN-XEM-LẠI -->
+      - Điều 433. Giá và phương thức thanh toán  <!-- lvl=4 i=193 sid=body[1]/p[194] src=Structure CẦN-XEM-LẠI -->
+      - Điều 434. Thời hạn thực hiện hợp đồng mua bán  <!-- lvl=4 i=193 sid=body[1]/p[194] src=Structure CẦN-XEM-LẠI -->
+      - Điều 435. Địa điểm giao tài sản Địa điểm giao tài sản do các bên thoả thuận; nếu không có thoả thuận thì áp dụng quy định tại khoản 2 Điều 277 của Bộ luật này.  <!-- lvl=4 i=195 sid=body[1]/p[196] src=Structure CẦN-XEM-LẠI -->
+      - Điều 436. Phương thức giao tài sản  <!-- lvl=4 i=195 sid=body[1]/p[196] src=Structure CẦN-XEM-LẠI -->
+      - Điều 437. Trách nhiệm do giao tài sản không đúng số lượng  <!-- lvl=4 i=195 sid=body[1]/p[196] src=Structure CẦN-XEM-LẠI -->
+      - Điều 438. Trách nhiệm do giao vật không đồng bộ  <!-- lvl=4 i=195 sid=body[1]/p[196] src=Structure CẦN-XEM-LẠI -->
+      - Điều 439. Trách nhiệm giao tài sản không đúng chủng loại Trường hợp tài sản được giao không đúng chủng loại thì bên mua có một trong các quyền sau đây:  <!-- lvl=4 i=197 sid=body[1]/p[198] src=Structure CẦN-XEM-LẠI -->
+      - Điều 440. Nghĩa vụ trả tiền  <!-- lvl=4 i=197 sid=body[1]/p[198] src=Structure CẦN-XEM-LẠI -->
+      - Điều 441. Thời điểm chịu rủi ro  <!-- lvl=4 i=197 sid=body[1]/p[198] src=Structure CẦN-XEM-LẠI -->
+      - Điều 442. Chi phí vận chuyển và chi phí liên quan đến việc chuyển quyền sở hữu  <!-- lvl=4 i=197 sid=body[1]/p[198] src=Structure CẦN-XEM-LẠI -->
+      - Điều 443. Nghĩa vụ cung cấp thông tin và hướng dẫn cách sử dụng Bên bán có nghĩa vụ cung cấp cho bên mua thông tin cần thiết về tài sản mua bán và hướng dẫn cách sử dụng tài sản đó; nếu bên bán không thực hiện nghĩa vụ này thì bên mua có quyền yêu cầu bên bán phải thực hiện trong một thời hạn hợp lý; nếu bên bán vẫn không thực hiện làm cho bên mua không đạt được mục đích giao kết hợp đồng thì bên mua có quyền hủy bỏ hợp đồng và yêu cầu bồi thường thiệt hại.  <!-- lvl=4 i=199 sid=body[1]/p[200] src=Structure CẦN-XEM-LẠI -->
+      - Điều 444. Bảo đảm quyền sở hữu của bên mua đối với tài sản mua bán  <!-- lvl=4 i=199 sid=body[1]/p[200] src=Structure CẦN-XEM-LẠI -->
+      - Điều 445. Bảo đảm chất lượng vật mua bán  <!-- lvl=4 i=199 sid=body[1]/p[200] src=Structure CẦN-XEM-LẠI -->
+      - Điều 446. Nghĩa vụ bảo hành Bên bán có nghĩa vụ bảo hành đối với vật mua bán trong một thời hạn, gọi là thời hạn bảo hành, nếu việc bảo hành do các bên thoả thuận hoặc pháp luật có quy định. Thời hạn bảo hành được tính kể từ thời điểm bên mua có nghĩa vụ phải nhận vật.  <!-- lvl=4 i=199 sid=body[1]/p[200] src=Structure CẦN-XEM-LẠI -->
+      - Điều 447. Quyền yêu cầu bảo hành Trong thời hạn bảo hành, nếu bên mua phát hiện được khuyết tật của vật mua bán thì có quyền yêu cầu bên bán sửa chữa không phải trả tiền, giảm giá, đổi vật có khuyết tật lấy vật khác hoặc trả lại vật và lấy lại tiền.  <!-- lvl=4 i=199 sid=body[1]/p[200] src=Structure CẦN-XEM-LẠI -->
+      - Điều 448. Sửa chữa vật trong thời hạn bảo hành  <!-- lvl=4 i=199 sid=body[1]/p[200] src=Structure CẦN-XEM-LẠI -->
+      - Điều 449. Bồi thường thiệt hại trong thời hạn bảo hành  <!-- lvl=4 i=201 sid=body[1]/p[202] src=Structure CẦN-XEM-LẠI -->
+      - Điều 450. Mua bán quyền tài sản  <!-- lvl=4 i=201 sid=body[1]/p[202] src=Structure CẦN-XEM-LẠI -->
+      - Điều 451. Bán đấu giá tài sản Tài sản có thể được đem bán đấu giá theo ý chí của chủ sở hữu hoặc theo quy định của pháp luật. Tài sản thuộc sở hữu chung đem bán đấu giá phải có sự đồng ý của tất cả các chủ sở hữu chung, trừ trường hợp có thoả thuận khác hoặc pháp luật có quy định khác. Việc bán đấu giá tài sản phải đảm bảo nguyên tắc khách quan, công khai, minh bạch, bảo đảm quyền, lợi ích hợp pháp của các bên tham gia và được thực hiện theo quy định của pháp luật về bán đấu giá tài sản.  <!-- lvl=4 i=201 sid=body[1]/p[202] src=Structure CẦN-XEM-LẠI -->
+      - Điều 452. Mua sau khi sử dụng thử  <!-- lvl=4 i=201 sid=body[1]/p[202] src=Structure CẦN-XEM-LẠI -->
+      - Điều 453. Mua trả chậm, trả dần  <!-- lvl=4 i=203 sid=body[1]/p[204] src=Structure CẦN-XEM-LẠI -->
+      - Điều 454. Chuộc lại tài sản đã bán  <!-- lvl=4 i=203 sid=body[1]/p[204] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. HỢP ĐỒNG TRAO ĐỔI TÀI SẢN  <!-- lvl=3 i=203 sid=body[1]/p[204] src=Structure CẦN-XEM-LẠI -->
+      - Điều 455. Hợp đồng trao đổi tài sản  <!-- lvl=4 i=203 sid=body[1]/p[204] src=Structure CẦN-XEM-LẠI -->
+      - Điều 456. Thanh toán giá trị chênh lệch Trường hợp tài sản trao đổi chênh lệch về giá trị thì các bên phải thanh toán cho nhau phần chênh lệch đó, trừ trường hợp có thoả thuận khác hoặc pháp luật có quy định khác.  <!-- lvl=4 i=203 sid=body[1]/p[204] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3. HỢP ĐỒNG TẶNG CHO TÀI SẢN  <!-- lvl=3 i=203 sid=body[1]/p[204] src=Structure CẦN-XEM-LẠI -->
+      - Điều 457. Hợp đồng tặng cho tài sản  <!-- lvl=4 i=203 sid=body[1]/p[204] src=Structure CẦN-XEM-LẠI -->
+      - Điều 458. Tặng cho động sản  <!-- lvl=4 i=205 sid=body[1]/p[206] src=Structure CẦN-XEM-LẠI -->
+      - Điều 459. Tặng cho bất động sản  <!-- lvl=4 i=205 sid=body[1]/p[206] src=Structure CẦN-XEM-LẠI -->
+      - Điều 460. Trách nhiệm do cố ý tặng cho tài sản không thuộc sở hữu của mình Trường hợp bên tặng cho cố ý tặng cho tài sản không thuộc sở hữu của mình mà bên được tặng cho không biết hoặc không thể biết về việc đó thì bên tặng cho phải thanh toán chi phí để làm tăng giá trị của tài sản cho bên được tặng cho khi chủ sở hữu lấy lại tài sản.  <!-- lvl=4 i=205 sid=body[1]/p[206] src=Structure CẦN-XEM-LẠI -->
+      - Điều 461. Thông báo khuyết tật của tài sản tặng cho Bên tặng cho có nghĩa vụ thông báo cho bên được tặng cho khuyết tật của tài sản tặng cho. Trường hợp bên tặng cho biết tài sản có khuyết tật mà không thông báo thì phải chịu trách nhiệm bồi thường thiệt hại xảy ra cho người được tặng cho; nếu bên tặng cho không biết về khuyết tật của tài sản tặng cho thì không phải chịu trách nhiệm bồi thường thiệt hại.  <!-- lvl=4 i=205 sid=body[1]/p[206] src=Structure CẦN-XEM-LẠI -->
+      - Điều 462. Tặng cho tài sản có điều kiện  <!-- lvl=4 i=205 sid=body[1]/p[206] src=Structure CẦN-XEM-LẠI -->
+    - Mục 4. HỢP ĐỒNG VAY TÀI SẢN  <!-- lvl=3 i=205 sid=body[1]/p[206] src=Structure CẦN-XEM-LẠI -->
+      - Điều 463. Hợp đồng vay tài sản Hợp đồng vay tài sản là sự thỏa thuận giữa các bên, theo đó bên cho vay giao tài sản cho bên vay; khi đến hạn trả, bên vay phải hoàn trả cho bên cho vay tài sản cùng loại theo đúng số lượng, chất lượng và chỉ phải trả lãi nếu có thoả thuận hoặc pháp luật có quy định.  <!-- lvl=4 i=205 sid=body[1]/p[206] src=Structure CẦN-XEM-LẠI -->
+      - Điều 464. Quyền sở hữu đối với tài sản vay  <!-- lvl=4 i=205 sid=body[1]/p[206] src=Structure CẦN-XEM-LẠI -->
+      - Điều 465. Nghĩa vụ của bên cho vay  <!-- lvl=4 i=207 sid=body[1]/p[208] src=Structure CẦN-XEM-LẠI -->
+      - Điều 466. Nghĩa vụ trả nợ của bên vay  <!-- lvl=4 i=207 sid=body[1]/p[208] src=Structure CẦN-XEM-LẠI -->
+      - Điều 467. Sử dụng tài sản vay Các bên có thể thoả thuận về việc tài sản vay phải được sử dụng đúng mục đích vay. Bên cho vay có quyền kiểm tra việc sử dụng tài sản và có quyền đòi lại tài sản vay trước thời hạn nếu đã nhắc nhở mà bên vay vẫn sử dụng tài sản trái mục đích.  <!-- lvl=4 i=207 sid=body[1]/p[208] src=Structure CẦN-XEM-LẠI -->
+      - Điều 468. Lãi suất  <!-- lvl=4 i=207 sid=body[1]/p[208] src=Structure CẦN-XEM-LẠI -->
+      - Điều 469. Thực hiện hợp đồng vay không kỳ hạn  <!-- lvl=4 i=209 sid=body[1]/p[210] src=Structure CẦN-XEM-LẠI -->
+      - Điều 470. Thực hiện hợp đồng vay có kỳ hạn  <!-- lvl=4 i=209 sid=body[1]/p[210] src=Structure CẦN-XEM-LẠI -->
+      - Điều 471. Họ, hụi, biêu, phường  <!-- lvl=4 i=209 sid=body[1]/p[210] src=Structure CẦN-XEM-LẠI -->
+    - Mục 5. HỢP ĐỒNG THUÊ TÀI SẢN Tiểu  <!-- lvl=3 i=209 sid=body[1]/p[210] src=Structure CẦN-XEM-LẠI -->
+    - mục 1. QUY ĐỊNH CHUNG VỀ HỢP ĐỒNG THUÊ TÀI SẢN  <!-- lvl=3 i=209 sid=body[1]/p[210] src=Structure CẦN-XEM-LẠI -->
+      - Điều 472. Hợp đồng thuê tài sản Hợp đồng thuê tài sản là sự thỏa thuận giữa các bên, theo đó bên cho thuê giao tài sản cho bên thuê để sử dụng trong một thời hạn, bên thuê phải trả tiền thuê. Hợp đồng thuê nhà ở, hợp đồng thuê nhà để sử dụng vào mục đích khác được thực hiện theo quy định của Bộ luật này, Luật nhà ở và quy định khác của pháp luật có liên quan.  <!-- lvl=4 i=209 sid=body[1]/p[210] src=Structure CẦN-XEM-LẠI -->
+      - Điều 473. Giá thuê  <!-- lvl=4 i=209 sid=body[1]/p[210] src=Structure CẦN-XEM-LẠI -->
+      - Điều 474. Thời hạn thuê  <!-- lvl=4 i=211 sid=body[1]/p[212] src=Structure CẦN-XEM-LẠI -->
+      - Điều 475. Cho thuê lại Bên thuê có quyền cho thuê lại tài sản mà mình đã thuê, nếu được bên cho thuê đồng ý.  <!-- lvl=4 i=211 sid=body[1]/p[212] src=Structure CẦN-XEM-LẠI -->
+      - Điều 476. Giao tài sản thuê  <!-- lvl=4 i=211 sid=body[1]/p[212] src=Structure CẦN-XEM-LẠI -->
+      - Điều 477. Nghĩa vụ bảo đảm giá trị sử dụng của tài sản thuê  <!-- lvl=4 i=211 sid=body[1]/p[212] src=Structure CẦN-XEM-LẠI -->
+      - Điều 478. Nghĩa vụ bảo đảm quyền sử dụng tài sản cho bên thuê  <!-- lvl=4 i=211 sid=body[1]/p[212] src=Structure CẦN-XEM-LẠI -->
+      - Điều 479. Nghĩa vụ bảo quản tài sản thuê  <!-- lvl=4 i=211 sid=body[1]/p[212] src=Structure CẦN-XEM-LẠI -->
+      - Điều 480. Nghĩa vụ sử dụng tài sản thuê đúng công dụng, mục đích  <!-- lvl=4 i=213 sid=body[1]/p[214] src=Structure CẦN-XEM-LẠI -->
+      - Điều 481. Trả tiền thuê  <!-- lvl=4 i=213 sid=body[1]/p[214] src=Structure CẦN-XEM-LẠI -->
+      - Điều 482. Trả lại tài sản thuê  <!-- lvl=4 i=213 sid=body[1]/p[214] src=Structure CẦN-XEM-LẠI -->
+    - mục 2. HỢP ĐỒNG THUÊ KHOÁN TÀI SẢN  <!-- lvl=3 i=213 sid=body[1]/p[214] src=Structure CẦN-XEM-LẠI -->
+      - Điều 483. Hợp đồng thuê khoán tài sản Hợp đồng thuê khoán tài sản là sự thỏa thuận giữa các bên, theo đó bên cho thuê khoán giao tài sản cho bên thuê khoán để khai thác công dụng, hưởng hoa lợi, lợi tức thu được từ tài sản thuê khoán và bên thuê khoán có nghĩa vụ trả tiền thuê.  <!-- lvl=4 i=213 sid=body[1]/p[214] src=Structure CẦN-XEM-LẠI -->
+      - Điều 484. Đối tượng của hợp đồng thuê khoán Đối tượng của hợp đồng thuê khoán có thể là đất đai, rừng, mặt nước chưa khai thác, gia súc, cơ sở sản xuất, kinh doanh, tư liệu sản xuất khác cùng trang thiết bị cần thiết để khai thác công dụng, hưởng hoa lợi, lợi tức, trừ trường hợp pháp luật có quy định khác.  <!-- lvl=4 i=213 sid=body[1]/p[214] src=Structure CẦN-XEM-LẠI -->
+      - Điều 485. Thời hạn thuê khoán  <!-- lvl=4 i=213 sid=body[1]/p[214] src=Structure CẦN-XEM-LẠI -->
+      - Điều 486. Giá thuê khoán Giá thuê khoán do các bên thoả thuận; nếu thuê khoán thông qua đấu thầu thì giá thuê khoán là giá được xác định theo kết quả đấu thầu.  <!-- lvl=4 i=215 sid=body[1]/p[216] src=Structure CẦN-XEM-LẠI -->
+      - Điều 487. Giao tài sản thuê khoán Khi giao tài sản thuê khoán, các bên phải lập biên bản đánh giá tình trạng của tài sản thuê khoán và xác định giá trị tài sản thuê khoán. Trường hợp các bên không xác định được giá trị thì mời người thứ ba xác định giá trị và phải lập thành văn bản.  <!-- lvl=4 i=215 sid=body[1]/p[216] src=Structure CẦN-XEM-LẠI -->
+      - Điều 488. Trả tiền thuê khoán và phương thức trả  <!-- lvl=4 i=215 sid=body[1]/p[216] src=Structure CẦN-XEM-LẠI -->
+      - Điều 489. Khai thác tài sản thuê khoán Bên thuê khoán phải khai thác tài sản thuê khoán đúng mục đích đã thoả thuận và báo cho bên thuê khoán theo định kỳ về tình trạng tài sản và tình hình khai thác tài sản; nếu bên cho thuê khoán có yêu cầu hoặc cần báo đột xuất thì bên thuê khoán phải báo kịp thời. Khi bên thuê khoán khai thác công dụng tài sản thuê khoán không đúng mục đích thì bên cho thuê khoán có quyền đơn phương chấm dứt thực hiện hợp đồng và yêu cầu bồi thường thiệt hại.  <!-- lvl=4 i=215 sid=body[1]/p[216] src=Structure CẦN-XEM-LẠI -->
+      - Điều 490. Bảo quản, bảo dưỡng, định đoạt tài sản thuê khoán  <!-- lvl=4 i=215 sid=body[1]/p[216] src=Structure CẦN-XEM-LẠI -->
+      - Điều 491. Hưởng hoa lợi, chịu thiệt hại về gia súc thuê khoán Trong thời hạn thuê khoán gia súc, bên thuê khoán được hưởng một nửa số gia súc sinh ra và phải chịu một nửa thiệt hại về gia súc thuê khoán do sự kiện bất khả kháng, trừ trường hợp có thoả thuận khác.  <!-- lvl=4 i=217 sid=body[1]/p[218] src=Structure CẦN-XEM-LẠI -->
+      - Điều 492. Đơn phương chấm dứt thực hiện hợp đồng thuê khoán  <!-- lvl=4 i=217 sid=body[1]/p[218] src=Structure CẦN-XEM-LẠI -->
+      - Điều 493. Trả lại tài sản thuê khoán Khi chấm dứt hợp đồng thuê khoán, bên thuê khoán phải trả lại tài sản thuê khoán ở tình trạng phù hợp với mức độ khấu hao đã thoả thuận; nếu làm mất giá trị hoặc giảm sút giá trị của tài sản thuê khoán thì phải bồi thường thiệt hại.  <!-- lvl=4 i=217 sid=body[1]/p[218] src=Structure CẦN-XEM-LẠI -->
+    - Mục 6. HỢP ĐỒNG MƯỢN TÀI SẢN  <!-- lvl=3 i=217 sid=body[1]/p[218] src=Structure CẦN-XEM-LẠI -->
+      - Điều 494. Hợp đồng mượn tài sản Hợp đồng mượn tài sản là sự thỏa thuận giữa các bên, theo đó bên cho mượn giao tài sản cho bên mượn để sử dụng trong một thời hạn mà không phải trả tiền, bên mượn phải trả lại tài sản đó khi hết thời hạn mượn hoặc mục đích mượn đã đạt được.  <!-- lvl=4 i=217 sid=body[1]/p[218] src=Structure CẦN-XEM-LẠI -->
+      - Điều 495. Đối tượng của hợp đồng mượn tài sản Tất cả những tài sản không tiêu hao đều có thể là đối tượng của hợp đồng mượn tài sản.  <!-- lvl=4 i=217 sid=body[1]/p[218] src=Structure CẦN-XEM-LẠI -->
+      - Điều 496. Nghĩa vụ của bên mượn tài sản  <!-- lvl=4 i=217 sid=body[1]/p[218] src=Structure CẦN-XEM-LẠI -->
+      - Điều 497. Quyền của bên mượn tài sản  <!-- lvl=4 i=219 sid=body[1]/p[220] src=Structure CẦN-XEM-LẠI -->
+      - Điều 498. Nghĩa vụ của bên cho mượn tài sản  <!-- lvl=4 i=219 sid=body[1]/p[220] src=Structure CẦN-XEM-LẠI -->
+      - Điều 499. Quyền của bên cho mượn tài sản  <!-- lvl=4 i=219 sid=body[1]/p[220] src=Structure CẦN-XEM-LẠI -->
+    - Mục 7. HỢP ĐỒNG VỀ QUYỀN SỬ DỤNG ĐẤT  <!-- lvl=3 i=219 sid=body[1]/p[220] src=Structure CẦN-XEM-LẠI -->
+      - Điều 500. Hợp đồng về quyền sử dụng đất Hợp đồng về quyền sử dụng đất là sự thỏa thuận giữa các bên, theo đó người sử dụng đất chuyển đổi, chuyển nhượng, cho thuê, cho thuê lại, tặng cho, thế chấp, góp vốn quyền sử dụng đất hoặc thực hiện quyền khác theo quy định của Luật đất đai cho bên kia; bên kia thực hiện quyền, nghĩa vụ theo hợp đồng với người sử dụng đất.  <!-- lvl=4 i=219 sid=body[1]/p[220] src=Structure CẦN-XEM-LẠI -->
+      - Điều 501. Nội dung của hợp đồng về quyền sử dụng đất  <!-- lvl=4 i=219 sid=body[1]/p[220] src=Structure CẦN-XEM-LẠI -->
+      - Điều 502. Hình thức, thủ tục thực hiện hợp đồng về quyền sử dụng đất  <!-- lvl=4 i=219 sid=body[1]/p[220] src=Structure CẦN-XEM-LẠI -->
+      - Điều 503. Hiệu lực của việc chuyển quyền sử dụng đất  <!-- lvl=4 i=219 sid=body[1]/p[220] src=Structure CẦN-XEM-LẠI -->
+    - Mục 8. HỢP ĐỒNG HỢP TÁC  <!-- lvl=3 i=221 sid=body[1]/p[222] src=Structure CẦN-XEM-LẠI -->
+      - Điều 504. Hợp đồng hợp tác  <!-- lvl=4 i=221 sid=body[1]/p[222] src=Structure CẦN-XEM-LẠI -->
+      - Điều 505. Nội dung của hợp đồng hợp tác Hợp đồng hợp tác có nội dung chủ yếu sau đây:  <!-- lvl=4 i=221 sid=body[1]/p[222] src=Structure CẦN-XEM-LẠI -->
+      - Điều 506. Tài sản chung của các thành viên hợp tác  <!-- lvl=4 i=221 sid=body[1]/p[222] src=Structure CẦN-XEM-LẠI -->
+      - Điều 507. Quyền, nghĩa vụ của thành viên hợp tác  <!-- lvl=4 i=221 sid=body[1]/p[222] src=Structure CẦN-XEM-LẠI -->
+      - Điều 508. Xác lập, thực hiện giao dịch dân sự  <!-- lvl=4 i=223 sid=body[1]/p[224] src=Structure CẦN-XEM-LẠI -->
+      - Điều 509. Trách nhiệm dân sự của thành viên hợp tác Các thành viên hợp tác chịu trách nhiệm dân sự chung bằng tài sản chung; nếu tài sản chung không đủ để thực hiện nghĩa vụ chung thì thành viên hợp tác phải chịu trách nhiệm bằng tài sản riêng theo phần tương ứng với phần đóng góp của mình, trừ trường hợp hợp đồng hợp tác hoặc luật có quy định khác.  <!-- lvl=4 i=223 sid=body[1]/p[224] src=Structure CẦN-XEM-LẠI -->
+      - Điều 510. Rút khỏi hợp đồng hợp tác  <!-- lvl=4 i=223 sid=body[1]/p[224] src=Structure CẦN-XEM-LẠI -->
+      - Điều 511. Gia nhập hợp đồng hợp tác Trường hợp hợp đồng hợp tác không quy định khác thì một cá nhân, pháp nhân trở thành thành viên mới của hợp đồng nếu được sự đồng ý của hơn một nửa tổng số thành viên hợp tác.  <!-- lvl=4 i=223 sid=body[1]/p[224] src=Structure CẦN-XEM-LẠI -->
+      - Điều 512. Chấm dứt hợp đồng hợp tác  <!-- lvl=4 i=223 sid=body[1]/p[224] src=Structure CẦN-XEM-LẠI -->
+    - Mục 9. HỢP ĐỒNG DỊCH VỤ  <!-- lvl=3 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+      - Điều 513. Hợp đồng dịch vụ Hợp đồng dịch vụ là sự thỏa thuận giữa các bên, theo đó bên cung ứng dịch vụ thực hiện công việc cho bên sử dụng dịch vụ, bên sử dụng dịch vụ phải trả tiền dịch vụ cho bên cung ứng dịch vụ.  <!-- lvl=4 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+      - Điều 514. Đối tượng của hợp đồng dịch vụ Đối tượng của hợp đồng dịch vụ là công việc có thể thực hiện được, không vi phạm điều cấm của luật, không trái đạo đức xã hội.  <!-- lvl=4 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+      - Điều 515. Nghĩa vụ của bên sử dụng dịch vụ  <!-- lvl=4 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+      - Điều 516. Quyền của bên sử dụng dịch vụ  <!-- lvl=4 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+      - Điều 517. Nghĩa vụ của bên cung ứng dịch vụ  <!-- lvl=4 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+      - Điều 518. Quyền của bên cung ứng dịch vụ  <!-- lvl=4 i=225 sid=body[1]/p[226] src=Structure CẦN-XEM-LẠI -->
+      - Điều 519. Trả tiền dịch vụ  <!-- lvl=4 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+      - Điều 520. Đơn phương chấm dứt thực hiện hợp đồng dịch vụ  <!-- lvl=4 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+      - Điều 521. Tiếp tục hợp đồng dịch vụ Sau khi kết thúc thời hạn thực hiện công việc theo hợp đồng dịch vụ mà công việc chưa hoàn thành và bên cung ứng dịch vụ vẫn tiếp tục thực hiện công việc, bên sử dụng dịch vụ biết nhưng không phản đối thì hợp đồng dịch vụ đương nhiên được tiếp tục thực hiện theo nội dung đã thoả thuận cho đến khi công việc được hoàn thành.  <!-- lvl=4 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+    - Mục 10. HỢP ĐỒNG VẬN CHUYỂN Tiểu  <!-- lvl=3 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+    - mục 1. HỢP ĐỒNG VẬN CHUYỂN HÀNH KHÁCH  <!-- lvl=3 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+      - Điều 522. Hợp đồng vận chuyển hành khách Hợp đồng vận chuyển hành khách là sự thỏa thuận giữa các bên, theo đó bên vận chuyển chuyên chở hành khách, hành lý đến địa điểm đã định theo thoả thuận, hành khách phải thanh toán cước phí vận chuyển.  <!-- lvl=4 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+      - Điều 523. Hình thức hợp đồng vận chuyển hành khách  <!-- lvl=4 i=227 sid=body[1]/p[228] src=Structure CẦN-XEM-LẠI -->
+      - Điều 524. Nghĩa vụ của bên vận chuyển  <!-- lvl=4 i=229 sid=body[1]/p[230] src=Structure CẦN-XEM-LẠI -->
+      - Điều 525. Quyền của bên vận chuyển  <!-- lvl=4 i=229 sid=body[1]/p[230] src=Structure CẦN-XEM-LẠI -->
+      - Điều 526. Nghĩa vụ của hành khách  <!-- lvl=4 i=229 sid=body[1]/p[230] src=Structure CẦN-XEM-LẠI -->
+      - Điều 527. Quyền của hành khách  <!-- lvl=4 i=229 sid=body[1]/p[230] src=Structure CẦN-XEM-LẠI -->
+      - Điều 528. Trách nhiệm bồi thường thiệt hại  <!-- lvl=4 i=231 sid=body[1]/p[232] src=Structure CẦN-XEM-LẠI -->
+      - Điều 529. Đơn phương chấm dứt thực hiện hợp đồng vận chuyển hành khách  <!-- lvl=4 i=231 sid=body[1]/p[232] src=Structure CẦN-XEM-LẠI -->
+    - mục 2. HỢP ĐỒNG VẬN CHUYỂN TÀI SẢN  <!-- lvl=3 i=231 sid=body[1]/p[232] src=Structure CẦN-XEM-LẠI -->
+      - Điều 530. Hợp đồng vận chuyển tài sản Hợp đồng vận chuyển tài sản là sự thoả thuận giữa các bên, theo đó bên vận chuyển có nghĩa vụ chuyển tài sản đến địa điểm đã định theo thoả thuận và giao tài sản đó cho người có quyền nhận, bên thuê vận chuyển có nghĩa vụ trả cước phí vận chuyển.  <!-- lvl=4 i=231 sid=body[1]/p[232] src=Structure CẦN-XEM-LẠI -->
+      - Điều 531. Hình thức hợp đồng vận chuyển tài sản  <!-- lvl=4 i=231 sid=body[1]/p[232] src=Structure CẦN-XEM-LẠI -->
+      - Điều 532. Giao tài sản cho bên vận chuyển  <!-- lvl=4 i=231 sid=body[1]/p[232] src=Structure CẦN-XEM-LẠI -->
+      - Điều 533. Cước phí vận chuyển  <!-- lvl=4 i=231 sid=body[1]/p[232] src=Structure CẦN-XEM-LẠI -->
+      - Điều 534. Nghĩa vụ của bên vận chuyển  <!-- lvl=4 i=233 sid=body[1]/p[234] src=Structure CẦN-XEM-LẠI -->
+      - Điều 535. Quyền của bên vận chuyển  <!-- lvl=4 i=233 sid=body[1]/p[234] src=Structure CẦN-XEM-LẠI -->
+      - Điều 536. Nghĩa vụ của bên thuê vận chuyển  <!-- lvl=4 i=233 sid=body[1]/p[234] src=Structure CẦN-XEM-LẠI -->
+      - Điều 537. Quyền của bên thuê vận chuyển  <!-- lvl=4 i=233 sid=body[1]/p[234] src=Structure CẦN-XEM-LẠI -->
+      - Điều 538. Giao tài sản cho bên nhận tài sản  <!-- lvl=4 i=233 sid=body[1]/p[234] src=Structure CẦN-XEM-LẠI -->
+      - Điều 539. Nghĩa vụ của bên nhận tài sản  <!-- lvl=4 i=235 sid=body[1]/p[236] src=Structure CẦN-XEM-LẠI -->
+      - Điều 540. Quyền của bên nhận tài sản  <!-- lvl=4 i=235 sid=body[1]/p[236] src=Structure CẦN-XEM-LẠI -->
+      - Điều 541. Trách nhiệm bồi thường thiệt hại  <!-- lvl=4 i=235 sid=body[1]/p[236] src=Structure CẦN-XEM-LẠI -->
+    - Mục 11. HỢP ĐỒNG GIA CÔNG  <!-- lvl=3 i=235 sid=body[1]/p[236] src=Structure CẦN-XEM-LẠI -->
+      - Điều 542. Hợp đồng gia công Hợp đồng gia công là sự thỏa thuận giữa các bên, theo đó bên nhận gia công thực hiện công việc để tạo ra sản phẩm theo yêu cầu của bên đặt gia công, bên đặt gia công nhận sản phẩm và trả tiền công.  <!-- lvl=4 i=235 sid=body[1]/p[236] src=Structure CẦN-XEM-LẠI -->
+      - Điều 543. Đối tượng của hợp đồng gia công Đối tượng của hợp đồng gia công là vật được xác định trước theo mẫu, theo tiêu chuẩn mà các bên thoả thuận hoặc pháp luật có quy định.  <!-- lvl=4 i=235 sid=body[1]/p[236] src=Structure CẦN-XEM-LẠI -->
+      - Điều 544. Nghĩa vụ của bên đặt gia công  <!-- lvl=4 i=235 sid=body[1]/p[236] src=Structure CẦN-XEM-LẠI -->
+      - Điều 545. Quyền của bên đặt gia công  <!-- lvl=4 i=237 sid=body[1]/p[238] src=Structure CẦN-XEM-LẠI -->
+      - Điều 546. Nghĩa vụ của bên nhận gia công  <!-- lvl=4 i=237 sid=body[1]/p[238] src=Structure CẦN-XEM-LẠI -->
+      - Điều 547. Quyền của bên nhận gia công  <!-- lvl=4 i=237 sid=body[1]/p[238] src=Structure CẦN-XEM-LẠI -->
+      - Điều 548. Trách nhiệm chịu rủi ro Cho đến khi giao sản phẩm cho bên đặt gia công, bên nào là chủ sở hữu của nguyên vật liệu thì phải chịu rủi ro đối với nguyên vật liệu hoặc sản phẩm được tạo ra từ nguyên vật liệu đó, trừ trường hợp có thoả thuận khác. Khi bên đặt gia công chậm nhận sản phẩm thì phải chịu rủi ro trong thời gian chậm nhận, kể cả trong trường hợp sản phẩm được tạo ra từ nguyên vật liệu của bên nhận gia công, trừ trường hợp có thoả thuận khác. Khi bên nhận gia công chậm giao sản phẩm mà có rủi ro đối với sản phẩm gia công thì phải bồi thường thiệt hại xảy ra cho bên đặt gia công.  <!-- lvl=4 i=237 sid=body[1]/p[238] src=Structure CẦN-XEM-LẠI -->
+      - Điều 549. Giao, nhận sản phẩm gia công Bên nhận gia công phải giao sản phẩm và bên đặt gia công phải nhận sản phẩm theo đúng thời hạn và tại địa điểm đã thoả thuận.  <!-- lvl=4 i=239 sid=body[1]/p[240] src=Structure CẦN-XEM-LẠI -->
+      - Điều 550. Chậm giao, chậm nhận sản phẩm gia công  <!-- lvl=4 i=239 sid=body[1]/p[240] src=Structure CẦN-XEM-LẠI -->
+      - Điều 551. Đơn phương chấm dứt thực hiện hợp đồng gia công  <!-- lvl=4 i=239 sid=body[1]/p[240] src=Structure CẦN-XEM-LẠI -->
+      - Điều 552. Trả tiền công  <!-- lvl=4 i=239 sid=body[1]/p[240] src=Structure CẦN-XEM-LẠI -->
+      - Điều 553. Thanh lý nguyên vật liệu Khi hợp đồng gia công chấm dứt, bên nhận gia công phải hoàn trả nguyên vật liệu còn lại cho bên đặt gia công, trừ trường hợp có thoả thuận khác.  <!-- lvl=4 i=239 sid=body[1]/p[240] src=Structure CẦN-XEM-LẠI -->
+    - Mục 12. HỢP ĐỒNG GỬI GIỮ TÀI SẢN  <!-- lvl=3 i=239 sid=body[1]/p[240] src=Structure CẦN-XEM-LẠI -->
+      - Điều 554. Hợp đồng gửi giữ tài sản Hợp đồng gửi giữ tài sản là sự thỏa thuận giữa các bên, theo đó bên giữ nhận tài sản của bên gửi để bảo quản và trả lại chính tài sản đó cho bên gửi khi hết thời hạn hợp đồng, bên gửi phải trả tiền công cho bên giữ, trừ trường hợp gửi giữ không phải trả tiền công.  <!-- lvl=4 i=239 sid=body[1]/p[240] src=Structure CẦN-XEM-LẠI -->
+      - Điều 555. Nghĩa vụ của bên gửi tài sản  <!-- lvl=4 i=239 sid=body[1]/p[240] src=Structure CẦN-XEM-LẠI -->
+      - Điều 556. Quyền của bên gửi tài sản  <!-- lvl=4 i=241 sid=body[1]/p[242] src=Structure CẦN-XEM-LẠI -->
+      - Điều 557. Nghĩa vụ của bên giữ tài sản  <!-- lvl=4 i=241 sid=body[1]/p[242] src=Structure CẦN-XEM-LẠI -->
+      - Điều 558. Quyền của bên giữ tài sản  <!-- lvl=4 i=241 sid=body[1]/p[242] src=Structure CẦN-XEM-LẠI -->
+      - Điều 559. Trả lại tài sản gửi giữ  <!-- lvl=4 i=241 sid=body[1]/p[242] src=Structure CẦN-XEM-LẠI -->
+      - Điều 560. Chậm giao, chậm nhận tài sản gửi giữ  <!-- lvl=4 i=241 sid=body[1]/p[242] src=Structure CẦN-XEM-LẠI -->
+      - Điều 561. Trả tiền công  <!-- lvl=4 i=243 sid=body[1]/p[244] src=Structure CẦN-XEM-LẠI -->
+    - Mục 13. HỢP ĐỒNG ỦY QUYỀN  <!-- lvl=3 i=243 sid=body[1]/p[244] src=Structure CẦN-XEM-LẠI -->
+      - Điều 562. Hợp đồng uỷ quyền Hợp đồng uỷ quyền là sự thỏa thuận giữa các bên, theo đó bên được uỷ quyền có nghĩa vụ thực hiện công việc nhân danh bên uỷ quyền, bên uỷ quyền chỉ phải trả thù lao nếu có thoả thuận hoặc pháp luật có quy định.  <!-- lvl=4 i=243 sid=body[1]/p[244] src=Structure CẦN-XEM-LẠI -->
+      - Điều 563. Thời hạn ủy quyền Thời hạn ủy quyền do các bên thoả thuận hoặc do pháp luật quy định; nếu không có thoả thuận và pháp luật không có quy định thì hợp đồng ủy quyền có hiệu lực 01 năm, kể từ ngày xác lập việc ủy quyền.  <!-- lvl=4 i=243 sid=body[1]/p[244] src=Structure CẦN-XEM-LẠI -->
+      - Điều 564. Ủy quyền lại  <!-- lvl=4 i=243 sid=body[1]/p[244] src=Structure CẦN-XEM-LẠI -->
+      - Điều 565. Nghĩa vụ của bên được uỷ quyền  <!-- lvl=4 i=243 sid=body[1]/p[244] src=Structure CẦN-XEM-LẠI -->
+      - Điều 566. Quyền của bên được uỷ quyền  <!-- lvl=4 i=245 sid=body[1]/p[246] src=Structure CẦN-XEM-LẠI -->
+      - Điều 567. Nghĩa vụ của bên uỷ quyền  <!-- lvl=4 i=245 sid=body[1]/p[246] src=Structure CẦN-XEM-LẠI -->
+      - Điều 568. Quyền của bên uỷ quyền  <!-- lvl=4 i=245 sid=body[1]/p[246] src=Structure CẦN-XEM-LẠI -->
+      - Điều 569. Đơn phương chấm dứt thực hiện hợp đồng uỷ quyền  <!-- lvl=4 i=245 sid=body[1]/p[246] src=Structure CẦN-XEM-LẠI -->
+  - Chương XVII HỨA THƯỞNG, THI CÓ GIẢI  <!-- lvl=2 i=245 sid=body[1]/p[246] src=Structure CẦN-XEM-LẠI -->
+      - Điều 570. Hứa thưởng  <!-- lvl=4 i=245 sid=body[1]/p[246] src=Structure CẦN-XEM-LẠI -->
+      - Điều 571. Rút lại tuyên bố hứa thưởng Khi chưa đến hạn bắt đầu thực hiện công việc thì người hứa thưởng có quyền rút lại tuyên bố hứa thưởng của mình. Việc rút lại tuyên bố hứa thưởng phải được thực hiện theo cách thức và trên phương tiện mà việc hứa thưởng đã được công bố.  <!-- lvl=4 i=247 sid=body[1]/p[248] src=Structure CẦN-XEM-LẠI -->
+      - Điều 572. Trả thưởng  <!-- lvl=4 i=247 sid=body[1]/p[248] src=Structure CẦN-XEM-LẠI -->
+      - Điều 573. Thi có giải  <!-- lvl=4 i=247 sid=body[1]/p[248] src=Structure CẦN-XEM-LẠI -->
+  - Chương XVIII THỰC HIỆN CÔNG VIỆC KHÔNG CÓ UỶ QUYỀN  <!-- lvl=2 i=247 sid=body[1]/p[248] src=Structure CẦN-XEM-LẠI -->
+      - Điều 574. Thực hiện công việc không có ủy quyền Thực hiện công việc không có ủy quyền là việc một người không có nghĩa vụ thực hiện công việc nhưng đã tự nguyện thực hiện công việc đó vì lợi ích của người có công việc được thực hiện khi người này không biết hoặc biết mà không phản đối.  <!-- lvl=4 i=247 sid=body[1]/p[248] src=Structure CẦN-XEM-LẠI -->
+      - Điều 575. Nghĩa vụ thực hiện công việc không có ủy quyền  <!-- lvl=4 i=247 sid=body[1]/p[248] src=Structure CẦN-XEM-LẠI -->
+      - Điều 576. Nghĩa vụ thanh toán của người có công việc được thực hiện  <!-- lvl=4 i=249 sid=body[1]/p[250] src=Structure CẦN-XEM-LẠI -->
+      - Điều 577. Nghĩa vụ bồi thường thiệt hại  <!-- lvl=4 i=249 sid=body[1]/p[250] src=Structure CẦN-XEM-LẠI -->
+      - Điều 578. Chấm dứt thực hiện công việc không có ủy quyền Việc thực hiện công việc không có ủy quyền chấm dứt trong trường hợp sau đây:  <!-- lvl=4 i=249 sid=body[1]/p[250] src=Structure CẦN-XEM-LẠI -->
+  - Chương XIX NGHĨA VỤ HOÀN TRẢ DO CHIẾM HỮU, SỬ DỤNG TÀI SẢN, ĐƯỢC LỢI VỀ TÀI SẢN KHÔNG CÓ CĂN CỨ PHÁP LUẬT  <!-- lvl=2 i=249 sid=body[1]/p[250] src=Structure CẦN-XEM-LẠI -->
+      - Điều 579. Nghĩa vụ hoàn trả  <!-- lvl=4 i=249 sid=body[1]/p[250] src=Structure CẦN-XEM-LẠI -->
+      - Điều 580. Tài sản hoàn trả  <!-- lvl=4 i=251 sid=body[1]/p[252] src=Structure CẦN-XEM-LẠI -->
+      - Điều 581. Nghĩa vụ hoàn trả hoa lợi, lợi tức  <!-- lvl=4 i=251 sid=body[1]/p[252] src=Structure CẦN-XEM-LẠI -->
+      - Điều 582. Quyền yêu cầu người thứ ba hoàn trả Trường hợp người chiếm hữu, người sử dụng tài sản mà không có căn cứ pháp luật đã giao tài sản cho người thứ ba thì khi bị chủ sở hữu, chủ thể có quyền khác đối với tài sản yêu cầu hoàn trả, người thứ ba có nghĩa vụ hoàn trả tài sản đó, trừ trường hợp Bộ luật này có quy định khác; nếu tài sản đó đã được trả bằng tiền hoặc có đền bù thì người thứ ba có quyền yêu cầu người đã giao tài sản cho mình bồi thường thiệt hại.  <!-- lvl=4 i=251 sid=body[1]/p[252] src=Structure CẦN-XEM-LẠI -->
+      - Điều 583. Nghĩa vụ thanh toán Chủ sở hữu, chủ thể có quyền khác đối với tài sản, người bị thiệt hại được hoàn trả tài sản thì phải thanh toán chi phí cần thiết mà người chiếm hữu, người sử dụng tài sản, người được lợi về tài sản mà không có căn cứ pháp luật nhưng ngay tình đã bỏ ra để bảo quản, làm tăng giá trị của tài sản.  <!-- lvl=4 i=251 sid=body[1]/p[252] src=Structure CẦN-XEM-LẠI -->
+  - Chương XX TRÁCH NHIỆM BỒI THƯỜNG THIỆT HẠI NGOÀI HỢP ĐỒNG  <!-- lvl=2 i=251 sid=body[1]/p[252] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. QUY ĐỊNH CHUNG  <!-- lvl=3 i=251 sid=body[1]/p[252] src=Structure CẦN-XEM-LẠI -->
+      - Điều 584. Căn cứ phát sinh trách nhiệm bồi thường thiệt hại  <!-- lvl=4 i=251 sid=body[1]/p[252] src=Structure CẦN-XEM-LẠI -->
+      - Điều 585. Nguyên tắc bồi thường thiệt hại  <!-- lvl=4 i=253 sid=body[1]/p[254] src=Structure CẦN-XEM-LẠI -->
+      - Điều 586. Năng lực chịu trách nhiệm bồi thường thiệt hại của cá nhân  <!-- lvl=4 i=253 sid=body[1]/p[254] src=Structure CẦN-XEM-LẠI -->
+      - Điều 587. Bồi thường thiệt hại do nhiều người cùng gây ra Trường hợp nhiều người cùng gây thiệt hại thì những người đó phải liên đới bồi thường cho người bị thiệt hại. Trách nhiệm bồi thường của từng người cùng gây thiệt hại được xác định tương ứng với mức độ lỗi của mỗi người; nếu không xác định được mức độ lỗi thì họ phải bồi thường thiệt hại theo phần bằng nhau.  <!-- lvl=4 i=253 sid=body[1]/p[254] src=Structure CẦN-XEM-LẠI -->
+      - Điều 588. Thời hiệu khởi kiện yêu cầu bồi thường thiệt hại Thời hiệu khởi kiện yêu cầu bồi thường thiệt hại là 03 năm, kể từ ngày người có quyền yêu cầu biết hoặc phải biết quyền, lợi ích hợp pháp của mình bị xâm phạm.  <!-- lvl=4 i=255 sid=body[1]/p[256] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. XÁC ĐỊNH THIỆT HẠI  <!-- lvl=3 i=255 sid=body[1]/p[256] src=Structure CẦN-XEM-LẠI -->
+      - Điều 589. Thiệt hại do tài sản bị xâm phạm Thiệt hại do tài sản bị xâm phạm bao gồm:  <!-- lvl=4 i=255 sid=body[1]/p[256] src=Structure CẦN-XEM-LẠI -->
+      - Điều 590. Thiệt hại do sức khoẻ bị xâm phạm  <!-- lvl=4 i=255 sid=body[1]/p[256] src=Structure CẦN-XEM-LẠI -->
+      - Điều 591. Thiệt hại do tính mạng bị xâm phạm  <!-- lvl=4 i=255 sid=body[1]/p[256] src=Structure CẦN-XEM-LẠI -->
+      - Điều 592. Thiệt hại do danh dự, nhân phẩm, uy tín bị xâm phạm  <!-- lvl=4 i=257 sid=body[1]/p[258] src=Structure CẦN-XEM-LẠI -->
+      - Điều 593. Thời hạn hưởng bồi thường thiệt hại do tính mạng, sức khoẻ bị xâm phạm  <!-- lvl=4 i=257 sid=body[1]/p[258] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3. BỒI THƯỜNG THIỆT HẠI TRONG MỘT SỐ TRƯỜNG HỢP CỤ THỂ  <!-- lvl=3 i=257 sid=body[1]/p[258] src=Structure CẦN-XEM-LẠI -->
+      - Điều 594. Bồi thường thiệt hại trong trường hợp vượt quá giới hạn phòng vệ chính đáng Người gây thiệt hại trong trường hợp phòng vệ chính đáng không phải bồi thường cho người bị thiệt hại. Người gây thiệt hại do vượt quá giới hạn phòng vệ chính đáng phải bồi thường cho người bị thiệt hại.  <!-- lvl=4 i=257 sid=body[1]/p[258] src=Structure CẦN-XEM-LẠI -->
+      - Điều 595. Bồi thường thiệt hại trong trường hợp vượt quá yêu cầu của tình thế cấp thiết  <!-- lvl=4 i=257 sid=body[1]/p[258] src=Structure CẦN-XEM-LẠI -->
+      - Điều 596. Bồi thường thiệt hại do người dùng chất kích thích gây ra  <!-- lvl=4 i=259 sid=body[1]/p[260] src=Structure CẦN-XEM-LẠI -->
+      - Điều 597. Bồi thường thiệt hại do người của pháp nhân gây ra Pháp nhân phải bồi thường thiệt hại do người của mình gây ra trong khi thực hiện nhiệm vụ được pháp nhân giao; nếu pháp nhân đã bồi thường thiệt hại thì có quyền yêu cầu người có lỗi trong việc gây thiệt hại phải hoàn trả một khoản tiền theo quy định của pháp luật.  <!-- lvl=4 i=259 sid=body[1]/p[260] src=Structure CẦN-XEM-LẠI -->
+      - Điều 598. Bồi thường thiệt hại do người thi hành công vụ gây ra Nhà nước có trách nhiệm bồi thường thiệt hại do hành vi trái pháp luật của người thi hành công vụ gây ra theo quy định của Luật trách nhiệm bồi thường của Nhà nước.  <!-- lvl=4 i=259 sid=body[1]/p[260] src=Structure CẦN-XEM-LẠI -->
+      - Điều 599. Bồi thường thiệt hại do người dưới mười lăm tuổi, người mất năng lực hành vi dân sự gây ra trong thời gian trường học, bệnh viện, pháp nhân khác trực tiếp quản lý  <!-- lvl=4 i=259 sid=body[1]/p[260] src=Structure CẦN-XEM-LẠI -->
+      - Điều 600. Bồi thường thiệt hại do người làm công, người học nghề gây ra Cá nhân, pháp nhân phải bồi thường thiệt hại do người làm công, người học nghề gây ra trong khi thực hiện công việc được giao và có quyền yêu cầu người làm công, người học nghề có lỗi trong việc gây thiệt hại phải hoàn trả một khoản tiền theo quy định của pháp luật.  <!-- lvl=4 i=259 sid=body[1]/p[260] src=Structure CẦN-XEM-LẠI -->
+      - Điều 601. Bồi thường thiệt hại do nguồn nguy hiểm cao độ gây ra  <!-- lvl=4 i=259 sid=body[1]/p[260] src=Structure CẦN-XEM-LẠI -->
+      - Điều 602. Bồi thường thiệt hại do làm ô nhiễm môi trường Chủ thể làm ô nhiễm môi trường mà gây thiệt hại thì phải bồi thường theo quy định của pháp luật, kể cả trường hợp chủ thể đó không có lỗi.  <!-- lvl=4 i=261 sid=body[1]/p[262] src=Structure CẦN-XEM-LẠI -->
+      - Điều 603. Bồi thường thiệt hại do súc vật gây ra  <!-- lvl=4 i=261 sid=body[1]/p[262] src=Structure CẦN-XEM-LẠI -->
+      - Điều 604. Bồi thường thiệt hại do cây cối gây ra Chủ sở hữu, người chiếm hữu, người được giao quản lý phải bồi thường thiệt hại do cây cối gây ra.  <!-- lvl=4 i=261 sid=body[1]/p[262] src=Structure CẦN-XEM-LẠI -->
+      - Điều 605. Bồi thường thiệt hại do nhà cửa, công trình xây dựng khác gây ra Chủ sở hữu, người chiếm hữu, người được giao quản lý, sử dụng nhà cửa, công trình xây dựng khác phải bồi thường thiệt hại do nhà cửa, công trình xây dựng khác đó gây thiệt hại cho người khác. Khi người thi công có lỗi trong việc để nhà cửa, công trình xây dựng khác gây thiệt hại thì phải liên đới bồi thường.  <!-- lvl=4 i=261 sid=body[1]/p[262] src=Structure CẦN-XEM-LẠI -->
+      - Điều 606. Bồi thường thiệt hại do xâm phạm thi thể  <!-- lvl=4 i=261 sid=body[1]/p[262] src=Structure CẦN-XEM-LẠI -->
+      - Điều 607. Bồi thường thiệt hại do xâm phạm mồ mả  <!-- lvl=4 i=263 sid=body[1]/p[264] src=Structure CẦN-XEM-LẠI -->
+      - Điều 608. Bồi thường thiệt hại do vi phạm quyền lợi của người tiêu dùng Cá nhân, pháp nhân sản xuất, kinh doanh hàng hóa, dịch vụ không bảo đảm chất lượng hàng hoá, dịch vụ mà gây thiệt hại cho người tiêu dùng thì phải bồi thường. PHẦN THỨ TƯ THỪA KẾ  <!-- lvl=4 i=263 sid=body[1]/p[264] src=Structure CẦN-XEM-LẠI -->
+  - Chương XXI QUY ĐỊNH CHUNG  <!-- lvl=2 i=263 sid=body[1]/p[264] src=Structure CẦN-XEM-LẠI -->
+      - Điều 609. Quyền thừa kế Cá nhân có quyền lập di chúc để định đoạt tài sản của mình; để lại tài sản của mình cho người thừa kế theo pháp luật; hưởng di sản theo di chúc hoặc theo pháp luật. Người thừa kế không là cá nhân có quyền hưởng di sản theo di chúc.  <!-- lvl=4 i=263 sid=body[1]/p[264] src=Structure CẦN-XEM-LẠI -->
+      - Điều 610. Quyền bình đẳng về thừa kế của cá nhân Mọi cá nhân đều bình đẳng về quyền để lại tài sản của mình cho người khác và quyền hưởng di sản theo di chúc hoặc theo pháp luật.  <!-- lvl=4 i=263 sid=body[1]/p[264] src=Structure CẦN-XEM-LẠI -->
+      - Điều 611. Thời điểm, địa điểm mở thừa kế  <!-- lvl=4 i=263 sid=body[1]/p[264] src=Structure CẦN-XEM-LẠI -->
+      - Điều 612. Di sản Di sản bao gồm tài sản riêng của người chết, phần tài sản của người chết trong tài sản chung với người khác.  <!-- lvl=4 i=263 sid=body[1]/p[264] src=Structure CẦN-XEM-LẠI -->
+      - Điều 613. Người thừa kế Người thừa kế là cá nhân phải là người còn sống vào thời điểm mở thừa kế hoặc sinh ra và còn sống sau thời điểm mở thừa kế nhưng đã thành thai trước khi người để lại di sản chết. Trường hợp người thừa kế theo di chúc không là cá nhân thì phải tồn tại vào thời điểm mở thừa kế.  <!-- lvl=4 i=265 sid=body[1]/p[266] src=Structure CẦN-XEM-LẠI -->
+      - Điều 614. Thời điểm phát sinh quyền và nghĩa vụ của người thừa kế Kể từ thời điểm mở thừa kế, những người thừa kế có các quyền, nghĩa vụ tài sản do người chết để lại.  <!-- lvl=4 i=265 sid=body[1]/p[266] src=Structure CẦN-XEM-LẠI -->
+      - Điều 615. Thực hiện nghĩa vụ tài sản do người chết để lại  <!-- lvl=4 i=265 sid=body[1]/p[266] src=Structure CẦN-XEM-LẠI -->
+      - Điều 616. Người quản lý di sản  <!-- lvl=4 i=265 sid=body[1]/p[266] src=Structure CẦN-XEM-LẠI -->
+      - Điều 617. Nghĩa vụ của người quản lý di sản  <!-- lvl=4 i=265 sid=body[1]/p[266] src=Structure CẦN-XEM-LẠI -->
+      - Điều 618. Quyền của người quản lý di sản  <!-- lvl=4 i=267 sid=body[1]/p[268] src=Structure CẦN-XEM-LẠI -->
+      - Điều 619. Việc thừa kế của những người có quyền thừa kế di sản của nhau mà chết cùng thời điểm Trường hợp những người có quyền thừa kế di sản của nhau đều chết cùng thời điểm hoặc được coi là chết cùng thời điểm do không thể xác định được người nào chết trước (sau đây gọi chung là chết cùng thời điểm) thì họ không được thừa kế di sản của nhau và di sản của mỗi người do người thừa kế của người đó hưởng, trừ trường hợp thừa kế thế vị theo quy định tại Điều 652 của Bộ luật này.  <!-- lvl=4 i=267 sid=body[1]/p[268] src=Structure CẦN-XEM-LẠI -->
+      - Điều 620. Từ chối nhận di sản  <!-- lvl=4 i=267 sid=body[1]/p[268] src=Structure CẦN-XEM-LẠI -->
+      - Điều 621. Người không được quyền hưởng di sản  <!-- lvl=4 i=267 sid=body[1]/p[268] src=Structure CẦN-XEM-LẠI -->
+      - Điều 622. Tài sản không có người nhận thừa kế Trường hợp không có người thừa kế theo di chúc, theo pháp luật hoặc có nhưng không được quyền hưởng di sản, từ chối nhận di sản thì tài sản còn lại sau khi đã thực hiện nghĩa vụ về tài sản mà không có người nhận thừa kế thuộc về Nhà nước.  <!-- lvl=4 i=269 sid=body[1]/p[270] src=Structure CẦN-XEM-LẠI -->
+      - Điều 623. Thời hiệu thừa kế  <!-- lvl=4 i=269 sid=body[1]/p[270] src=Structure CẦN-XEM-LẠI -->
+  - Chương XXII THỪA KẾ THEO DI CHÚC  <!-- lvl=2 i=269 sid=body[1]/p[270] src=Structure CẦN-XEM-LẠI -->
+      - Điều 624. Di chúc Di chúc là sự thể hiện ý chí của cá nhân nhằm chuyển tài sản của mình cho người khác sau khi chết.  <!-- lvl=4 i=269 sid=body[1]/p[270] src=Structure CẦN-XEM-LẠI -->
+      - Điều 625. Người lập di chúc  <!-- lvl=4 i=269 sid=body[1]/p[270] src=Structure CẦN-XEM-LẠI -->
+      - Điều 626. Quyền của người lập di chúc  <!-- lvl=4 i=269 sid=body[1]/p[270] src=Structure CẦN-XEM-LẠI -->
+      - Điều 627. Hình thức của di chúc Di chúc phải được lập thành văn bản; nếu không thể lập được di chúc bằng văn bản thì có thể di chúc miệng.  <!-- lvl=4 i=271 sid=body[1]/p[272] src=Structure CẦN-XEM-LẠI -->
+      - Điều 628. Di chúc bằng văn bản Di chúc bằng văn bản bao gồm:  <!-- lvl=4 i=271 sid=body[1]/p[272] src=Structure CẦN-XEM-LẠI -->
+      - Điều 629. Di chúc miệng  <!-- lvl=4 i=271 sid=body[1]/p[272] src=Structure CẦN-XEM-LẠI -->
+      - Điều 630. Di chúc hợp pháp  <!-- lvl=4 i=271 sid=body[1]/p[272] src=Structure CẦN-XEM-LẠI -->
+      - Điều 631. Nội dung của di chúc  <!-- lvl=4 i=273 sid=body[1]/p[274] src=Structure CẦN-XEM-LẠI -->
+      - Điều 632. Người làm chứng cho việc lập di chúc Mọi người đều có thể làm chứng cho việc lập di chúc, trừ những người sau đây:  <!-- lvl=4 i=273 sid=body[1]/p[274] src=Structure CẦN-XEM-LẠI -->
+      - Điều 633. Di chúc bằng văn bản không có người làm chứng Người lập di chúc phải tự viết và ký vào bản di chúc. Việc lập di chúc bằng văn bản không có người làm chứng phải tuân theo quy định tại Điều 631 của Bộ luật này.  <!-- lvl=4 i=273 sid=body[1]/p[274] src=Structure CẦN-XEM-LẠI -->
+      - Điều 634. Di chúc bằng văn bản có người làm chứng Trường hợp người lập di chúc không tự mình viết bản di chúc thì có thể tự mình đánh máy hoặc nhờ người khác viết hoặc đánh máy bản di chúc, nhưng phải có ít nhất là hai người làm chứng. Người lập di chúc phải ký hoặc điểm chỉ vào bản di chúc trước mặt những người làm chứng; những người làm chứng xác nhận chữ ký, điểm chỉ của người lập di chúc và ký vào bản di chúc. Việc lập di chúc bằng văn bản có người làm chứng phải tuân theo quy định tại Điều 631 và Điều 632 của Bộ luật này.  <!-- lvl=4 i=273 sid=body[1]/p[274] src=Structure CẦN-XEM-LẠI -->
+      - Điều 635. Di chúc có công chứng hoặc chứng thực Người lập di chúc có thể yêu cầu công chứng hoặc chứng thực bản di chúc.  <!-- lvl=4 i=273 sid=body[1]/p[274] src=Structure CẦN-XEM-LẠI -->
+      - Điều 636. Thủ tục lập di chúc tại tổ chức hành nghề công chứng hoặc Uỷ ban nhân dân cấp xã Việc lập di chúc tại tổ chức hành nghề công chứng hoặc Uỷ ban nhân dân cấp xã phải tuân theo thủ tục sau đây:  <!-- lvl=4 i=273 sid=body[1]/p[274] src=Structure CẦN-XEM-LẠI -->
+      - Điều 637. Người không được công chứng, chứng thực di chúc Công chứng viên, người có thẩm quyền của Uỷ ban nhân dân cấp xã không được công chứng, chứng thực đối với di chúc nếu thuộc một trong các trường hợp sau đây:  <!-- lvl=4 i=275 sid=body[1]/p[276] src=Structure CẦN-XEM-LẠI -->
+      - Điều 638. Di chúc bằng văn bản có giá trị như di chúc được công chứng hoặc chứng thực  <!-- lvl=4 i=275 sid=body[1]/p[276] src=Structure CẦN-XEM-LẠI -->
+      - Điều 639. Di chúc do công chứng viên lập tại chỗ ở  <!-- lvl=4 i=275 sid=body[1]/p[276] src=Structure CẦN-XEM-LẠI -->
+      - Điều 640. Sửa đổi, bổ sung, thay thế, huỷ bỏ di chúc  <!-- lvl=4 i=275 sid=body[1]/p[276] src=Structure CẦN-XEM-LẠI -->
+      - Điều 641. Gửi giữ di chúc  <!-- lvl=4 i=277 sid=body[1]/p[278] src=Structure CẦN-XEM-LẠI -->
+      - Điều 642. Di chúc bị thất lạc, hư hại  <!-- lvl=4 i=277 sid=body[1]/p[278] src=Structure CẦN-XEM-LẠI -->
+      - Điều 643. Hiệu lực của di chúc  <!-- lvl=4 i=277 sid=body[1]/p[278] src=Structure CẦN-XEM-LẠI -->
+      - Điều 644. Người thừa kế không phụ thuộc vào nội dung của di chúc  <!-- lvl=4 i=279 sid=body[1]/p[280] src=Structure CẦN-XEM-LẠI -->
+      - Điều 645. Di sản dùng vào việc thờ cúng  <!-- lvl=4 i=279 sid=body[1]/p[280] src=Structure CẦN-XEM-LẠI -->
+      - Điều 646. Di tặng  <!-- lvl=4 i=279 sid=body[1]/p[280] src=Structure CẦN-XEM-LẠI -->
+      - Điều 647. Công bố di chúc  <!-- lvl=4 i=279 sid=body[1]/p[280] src=Structure CẦN-XEM-LẠI -->
+      - Điều 648. Giải thích nội dung di chúc Trường hợp nội dung di chúc không rõ ràng dẫn đến nhiều cách hiểu khác nhau thì những người thừa kế theo di chúc phải cùng nhau giải thích nội dung di chúc dựa trên ý nguyện đích thực trước đây của người chết, có xem xét đến mối quan hệ của người chết với người thừa kế theo di chúc. Khi những người này không nhất trí về cách hiểu nội dung di chúc thì có quyền yêu cầu Tòa án giải quyết. Trường hợp có một phần nội dung di chúc không giải thích được nhưng không ảnh hưởng đến các phần còn lại của di chúc thì chỉ phần không giải thích được không có hiệu lực.  <!-- lvl=4 i=281 sid=body[1]/p[282] src=Structure CẦN-XEM-LẠI -->
+  - Chương XXIII THỪA KẾ THEO PHÁP LUẬT  <!-- lvl=2 i=281 sid=body[1]/p[282] src=Structure CẦN-XEM-LẠI -->
+      - Điều 649. Thừa kế theo pháp luật Thừa kế theo pháp luật là thừa kế theo hàng thừa kế, điều kiện và trình tự thừa kế do pháp luật quy định.  <!-- lvl=4 i=281 sid=body[1]/p[282] src=Structure CẦN-XEM-LẠI -->
+      - Điều 650. Những trường hợp thừa kế theo pháp luật  <!-- lvl=4 i=281 sid=body[1]/p[282] src=Structure CẦN-XEM-LẠI -->
+      - Điều 651. Người thừa kế theo pháp luật  <!-- lvl=4 i=281 sid=body[1]/p[282] src=Structure CẦN-XEM-LẠI -->
+      - Điều 652. Thừa kế thế vị Trường hợp con của người để lại di sản chết trước hoặc cùng một thời điểm với người để lại di sản thì cháu được hưởng phần di sản mà cha hoặc mẹ của cháu được hưởng nếu còn sống; nếu cháu cũng chết trước hoặc cùng một thời điểm với người để lại di sản thì chắt được hưởng phần di sản mà cha hoặc mẹ của chắt được hưởng nếu còn sống.  <!-- lvl=4 i=283 sid=body[1]/p[284] src=Structure CẦN-XEM-LẠI -->
+      - Điều 653. Quan hệ thừa kế giữa con nuôi và cha nuôi, mẹ nuôi và cha đẻ, mẹ đẻ Con nuôi và cha nuôi, mẹ nuôi được thừa kế di sản của nhau và còn được thừa kế di sản theo quy định tại Điều 651 và Điều 652 của Bộ luật này.  <!-- lvl=4 i=283 sid=body[1]/p[284] src=Structure CẦN-XEM-LẠI -->
+      - Điều 654. Quan hệ thừa kế giữa con riêng và bố dượng, mẹ kế Con riêng và bố dượng, mẹ kế nếu có quan hệ chăm sóc, nuôi dưỡng nhau như cha con, mẹ con thì được thừa kế di sản của nhau và còn được thừa kế di sản theo quy định tại Điều 652 và Điều 653 của Bộ luật này.  <!-- lvl=4 i=283 sid=body[1]/p[284] src=Structure CẦN-XEM-LẠI -->
+      - Điều 655. Việc thừa kế trong trường hợp vợ, chồng đã chia tài sản chung; vợ, chồng đang xin ly hôn hoặc đã kết hôn với người khác  <!-- lvl=4 i=283 sid=body[1]/p[284] src=Structure CẦN-XEM-LẠI -->
+  - Chương XXIV THANH TOÁN VÀ PHÂN CHIA DI SẢN  <!-- lvl=2 i=283 sid=body[1]/p[284] src=Structure CẦN-XEM-LẠI -->
+      - Điều 656. Họp mặt những người thừa kế  <!-- lvl=4 i=283 sid=body[1]/p[284] src=Structure CẦN-XEM-LẠI -->
+      - Điều 657. Người phân chia di sản  <!-- lvl=4 i=285 sid=body[1]/p[286] src=Structure CẦN-XEM-LẠI -->
+      - Điều 658. Thứ tự ưu tiên thanh toán Các nghĩa vụ tài sản và các khoản chi phí liên quan đến thừa kế được thanh toán theo thứ tự sau đây:  <!-- lvl=4 i=285 sid=body[1]/p[286] src=Structure CẦN-XEM-LẠI -->
+      - Điều 659. Phân chia di sản theo di chúc  <!-- lvl=4 i=285 sid=body[1]/p[286] src=Structure CẦN-XEM-LẠI -->
+      - Điều 660. Phân chia di sản theo pháp luật  <!-- lvl=4 i=285 sid=body[1]/p[286] src=Structure CẦN-XEM-LẠI -->
+      - Điều 661. Hạn chế phân chia di sản Trường hợp theo ý chí của người lập di chúc hoặc theo thoả thuận của tất cả những người thừa kế, di sản chỉ được phân chia sau một thời hạn nhất định thì chỉ khi đã hết thời hạn đó di sản mới được đem chia. Trường hợp yêu cầu chia di sản thừa kế mà việc chia di sản ảnh hưởng nghiêm trọng đến đời sống của bên vợ hoặc chồng còn sống và gia đình thì bên còn sống có quyền yêu cầu Tòa án xác định phần di sản mà những người thừa kế được hưởng nhưng chưa cho chia di sản trong một thời hạn nhất định. Thời hạn này không quá 03 năm, kể từ thời điểm mở thừa kế. Hết thời hạn 03 năm mà bên còn sống chứng minh được việc chia di sản vẫn ảnh hưởng nghiêm trọng đến đời sống của gia đình họ thì có quyền yêu cầu Tòa án gia hạn một lần nhưng không quá 03 năm.  <!-- lvl=4 i=287 sid=body[1]/p[288] src=Structure CẦN-XEM-LẠI -->
+      - Điều 662. Phân chia di sản trong trường hợp có người thừa kế mới hoặc có người thừa kế bị bác bỏ quyền thừa kế  <!-- lvl=4 i=287 sid=body[1]/p[288] src=Structure CẦN-XEM-LẠI -->
+  - Chương XXV QUY ĐỊNH CHUNG  <!-- lvl=2 i=287 sid=body[1]/p[288] src=Structure CẦN-XEM-LẠI -->
+      - Điều 663. Phạm vi áp dụng  <!-- lvl=4 i=287 sid=body[1]/p[288] src=Structure CẦN-XEM-LẠI -->
+      - Điều 664. Xác định pháp luật áp dụng đối với quan hệ dân sự có yếu tố nước ngoài  <!-- lvl=4 i=289 sid=body[1]/p[290] src=Structure CẦN-XEM-LẠI -->
+      - Điều 665. Áp dụng điều ước quốc tế đối với quan hệ dân sự có yếu tố nước ngoài  <!-- lvl=4 i=289 sid=body[1]/p[290] src=Structure CẦN-XEM-LẠI -->
+      - Điều 666. Áp dụng tập quán quốc tế Các bên được lựa chọn tập quán quốc tế trong trường hợp quy định tại khoản 2 Điều 664 của Bộ luật này. Nếu hậu quả của việc áp dụng tập quán quốc tế đó trái với các nguyên tắc cơ bản của pháp luật Việt Nam thì pháp luật Việt Nam được áp dụng.  <!-- lvl=4 i=289 sid=body[1]/p[290] src=Structure CẦN-XEM-LẠI -->
+      - Điều 667. Áp dụng pháp luật nước ngoài Trường hợp pháp luật nước ngoài được áp dụng nhưng có cách hiểu khác nhau thì việc áp dụng phải theo sự giải thích của cơ quan có thẩm quyền tại nước đó.  <!-- lvl=4 i=289 sid=body[1]/p[290] src=Structure CẦN-XEM-LẠI -->
+      - Điều 668. Phạm vi pháp luật được dẫn chiếu đến  <!-- lvl=4 i=289 sid=body[1]/p[290] src=Structure CẦN-XEM-LẠI -->
+      - Điều 669. Áp dụng pháp luật của nước có nhiều hệ thống pháp luật  <!-- lvl=4 i=289 sid=body[1]/p[290] src=Structure CẦN-XEM-LẠI -->
+      - Điều 670. Trường hợp không áp dụng pháp luật nước ngoài  <!-- lvl=4 i=291 sid=body[1]/p[292] src=Structure CẦN-XEM-LẠI -->
+      - Điều 671. Thời hiệu Thời hiệu đối với quan hệ dân sự có yếu tố nước ngoài được xác định theo pháp luật áp dụng đối với quan hệ dân sự đó.  <!-- lvl=4 i=291 sid=body[1]/p[292] src=Structure CẦN-XEM-LẠI -->
+  - Chương XXVI PHÁP LUẬT ÁP DỤNG ĐỐI VỚI CÁ NHÂN, PHÁP NHÂN  <!-- lvl=2 i=291 sid=body[1]/p[292] src=Structure CẦN-XEM-LẠI -->
+      - Điều 672. Căn cứ xác định pháp luật áp dụng đối với người không quốc tịch, người có nhiều quốc tịch  <!-- lvl=4 i=291 sid=body[1]/p[292] src=Structure CẦN-XEM-LẠI -->
+      - Điều 673. Năng lực pháp luật dân sự của cá nhân  <!-- lvl=4 i=291 sid=body[1]/p[292] src=Structure CẦN-XEM-LẠI -->
+      - Điều 674. Năng lực hành vi dân sự của cá nhân  <!-- lvl=4 i=291 sid=body[1]/p[292] src=Structure CẦN-XEM-LẠI -->
+      - Điều 675. Xác định cá nhân mất tích hoặc chết  <!-- lvl=4 i=293 sid=body[1]/p[294] src=Structure CẦN-XEM-LẠI -->
+      - Điều 676. Pháp nhân  <!-- lvl=4 i=293 sid=body[1]/p[294] src=Structure CẦN-XEM-LẠI -->
+  - Chương XXVII PHÁP LUẬT ÁP DỤNG ĐỐI VỚI QUAN HỆ TÀI SẢN, QUAN HỆ NHÂN THÂN  <!-- lvl=2 i=293 sid=body[1]/p[294] src=Structure CẦN-XEM-LẠI -->
+      - Điều 677. Phân loại tài sản Việc phân loại tài sản là động sản, bất động sản được xác định theo pháp luật của nước nơi có tài sản.  <!-- lvl=4 i=293 sid=body[1]/p[294] src=Structure CẦN-XEM-LẠI -->
+      - Điều 678. Quyền sở hữu và quyền khác đối với tài sản  <!-- lvl=4 i=293 sid=body[1]/p[294] src=Structure CẦN-XEM-LẠI -->
+      - Điều 679. Quyền sở hữu trí tuệ Quyền sở hữu trí tuệ được xác định theo pháp luật của nước nơi đối tượng quyền sở hữu trí tuệ được yêu cầu bảo hộ.  <!-- lvl=4 i=293 sid=body[1]/p[294] src=Structure CẦN-XEM-LẠI -->
+      - Điều 680. Thừa kế  <!-- lvl=4 i=293 sid=body[1]/p[294] src=Structure CẦN-XEM-LẠI -->
+      - Điều 681. Di chúc  <!-- lvl=4 i=295 sid=body[1]/p[296] src=Structure CẦN-XEM-LẠI -->
+      - Điều 682. Giám hộ Giám hộ được xác định theo pháp luật của nước nơi người được giám hộ cư trú.  <!-- lvl=4 i=295 sid=body[1]/p[296] src=Structure CẦN-XEM-LẠI -->
+      - Điều 683. Hợp đồng  <!-- lvl=4 i=295 sid=body[1]/p[296] src=Structure CẦN-XEM-LẠI -->
+      - Điều 684. Hành vi pháp lý đơn phương Pháp luật áp dụng đối với hành vi pháp lý đơn phương là pháp luật của nước nơi cá nhân xác lập hành vi đó cư trú hoặc nơi pháp nhân xác lập hành vi đó được thành lập.  <!-- lvl=4 i=297 sid=body[1]/p[298] src=Structure CẦN-XEM-LẠI -->
+      - Điều 685. Nghĩa vụ hoàn trả do chiếm hữu, sử dụng, được lợi về tài sản không có căn cứ pháp luật Nghĩa vụ hoàn trả do chiếm hữu, sử dụng, được lợi về tài sản không có căn cứ pháp luật được xác định theo pháp luật của nước nơi thực hiện việc chiếm hữu, sử dụng tài sản hoặc nơi phát sinh lợi ích được hưởng mà không có căn cứ pháp luật.  <!-- lvl=4 i=297 sid=body[1]/p[298] src=Structure CẦN-XEM-LẠI -->
+      - Điều 686. Thực hiện công việc không có ủy quyền Các bên được thỏa thuận lựa chọn pháp luật áp dụng cho việc thực hiện công việc không có ủy quyền. Trường hợp không có thỏa thuận thì pháp luật áp dụng là pháp luật của nước nơi thực hiện công việc không có ủy quyền.  <!-- lvl=4 i=297 sid=body[1]/p[298] src=Structure CẦN-XEM-LẠI -->
+      - Điều 687. Bồi thường thiệt hại ngoài hợp đồng  <!-- lvl=4 i=297 sid=body[1]/p[298] src=Structure CẦN-XEM-LẠI -->
+      - Điều 688. Điều khoản chuyển tiếp  <!-- lvl=4 i=297 sid=body[1]/p[298] src=Structure CẦN-XEM-LẠI -->
+      - Điều 689. Hiệu lực thi hành Bộ luật này có hiệu lực thi hành từ ngày 01 tháng 01 năm 2017. Bộ luật dân sự số 33/2005/QH11 hết hiệu lực kể từ ngày Bộ luật này có hiệu lực. Bộ luật này đã được Quốc hội nước Cộng hòa xã hội chủ nghĩa Việt Nam khóa XIII, kỳ họp thứ 10 thông qua ngày 24 tháng 11 năm 2015. CHỦ TỊCH QUỐC HỘI Nguyễn Sinh Hùng  <!-- lvl=4 i=299 sid=body[1]/p[300] src=Structure CẦN-XEM-LẠI -->
+
+> 781 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

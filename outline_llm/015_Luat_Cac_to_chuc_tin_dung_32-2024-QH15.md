@@ -1,0 +1,254 @@
+# Cấu trúc: 015_Luat_Cac_to_chuc_tin_dung_32-2024-QH15.docx
+
+  - Chương I NHỮNG QUY ĐỊNH CHUNG  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 1. Phạm vi điều chỉnh Luật này quy định về việc thành lập, tổ chức, hoạt động, can thiệp sớm, kiểm soát đặc biệt, tổ chức lại, giải thể, phá sản tổ chức tín dụng; việc thành lập, tổ chức, hoạt động, can thiệp sớm, giải thể, chấm dứt hoạt động của chi nhánh ngân hàng nước ngoài; việc thành lập, hoạt động của văn phòng đại diện tại Việt Nam của tổ chức tín dụng nước ngoài, tổ chức nước ngoài khác có hoạt động ngân hàng; việc xử lý nợ xấu, tài sản bảo đảm của khoản nợ xấu của tổ chức tín dụng, chi nhánh ngân hàng nước ngoài, tổ chức mà Nhà nước sở hữu 100% vốn điều lệ có chức năng mua, bán, xử lý nợ.  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 2. Đối tượng áp dụng  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 3. Áp dụng tập quán thương mại Tổ chức, cá nhân tham gia hoạt động ngân hàng được quyền thỏa thuận áp dụng tập quán thương mại sau đây:  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 4. Giải thích từ ngữ Trong Luật này, các từ ngữ dưới đây được hiểu như sau:  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 5. Sử dụng từ ngữ liên quan đến hoạt động ngân hàng Tổ chức không phải là tổ chức tín dụng, chi nhánh ngân hàng nước ngoài không được phép sử dụng cụm từ “tổ chức tín dụng”, “ngân hàng”, “công ty tài chính”, “công ty cho thuê tài chính”, “tổ chức tài chính vi mô”, “quỹ tín dụng nhân dân” hoặc cụm từ, từ ngữ khác trong tên của tổ chức, chức danh hoặc trong phần phụ thêm của tên, chức danh hoặc trong giấy tờ giao dịch hoặc quảng cáo của mình nếu việc sử dụng cụm từ, từ ngữ đó có thể gây nhầm lẫn cho khách hàng về việc tổ chức đó là một tổ chức tín dụng, chi nhánh ngân hàng nước ngoài.  <!-- lvl=4 i=13 sid=body[1]/p[14] src=Structure CẦN-XEM-LẠI -->
+      - Điều 6. Hình thức pháp lý của tổ chức tín dụng  <!-- lvl=4 i=13 sid=body[1]/p[14] src=Structure CẦN-XEM-LẠI -->
+      - Điều 7. Quyền tự chủ trong hoạt động kinh doanh  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Điều 8. Quyền hoạt động ngân hàng Tổ chức có đủ điều kiện theo quy định của Luật này và quy định khác của pháp luật có liên quan được Ngân hàng Nhà nước cấp Giấy phép thì được thực hiện một hoặc một số hoạt động ngân hàng theo quy định của Luật này.  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Điều 9. Hợp tác và cạnh tranh trong hoạt động ngân hàng Tổ chức tín dụng, chi nhánh ngân hàng nước ngoài được hợp tác và cạnh tranh trong hoạt động ngân hàng và hoạt động kinh doanh khác theo quy định của Luật này và quy định khác của pháp luật có liên quan.  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Điều 10. Trách nhiệm của tổ chức tín dụng, chi nhánh ngân hàng nước ngoài trong việc bảo vệ quyền lợi của khách hàng  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Điều 11. Người đại diện theo pháp luật của tổ chức tín dụng  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Điều 12. Cung cấp thông tin  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Điều 13. Bảo mật thông tin  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Điều 14. An toàn dữ liệu và bảo đảm hoạt động liên tục Tổ chức tín dụng, chi nhánh ngân hàng nước ngoài phải bảo đảm an toàn hệ thống thông tin, bảo mật dữ liệu và hoạt động liên tục theo quy định của Thống đốc Ngân hàng Nhà nước và quy định khác của pháp luật có liên quan.  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Điều 15. Hành vi bị nghiêm cấm  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+  - Chương II NGÂN HÀNG CHÍNH SÁCH  <!-- lvl=2 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Điều 16. Thành lập, hoạt động và quản lý nhà nước đối với ngân hàng chính sách  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Điều 17. Chủ sở hữu và đại diện chủ sở hữu nhà nước của ngân hàng chính sách  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Điều 18. Vốn điều lệ của ngân hàng chính sách Vốn điều lệ của ngân hàng chính sách do ngân sách nhà nước cấp và được bổ sung từ ngân sách nhà nước, các nguồn tài chính hợp pháp khác.  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Điều 19. Cơ cấu tổ chức quản lý của ngân hàng chính sách  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Điều 20. Hội đồng quản trị của ngân hàng chính sách  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 21. Ban kiểm soát của ngân hàng chính sách  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 22. Tổng giám đốc của ngân hàng chính sách  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 23. Bảo đảm hoạt động của ngân hàng chính sách  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 24. Kiểm soát nội bộ, kiểm toán nội bộ, báo cáo của ngân hàng chính sách  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 25. Xử lý nợ xấu, tài sản bảo đảm của khoản nợ xấu của ngân hàng chính sách Ngân hàng chính sách được áp dụng quy định của Luật này để xử lý nợ xấu, tài sản bảo đảm của khoản nợ xấu của ngân hàng chính sách.  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 26. Cơ chế tài chính, tiền lương, tổ chức lại, giải thể, kiểm tra, thanh tra, giám sát ngân hàng chính sách Cơ chế tài chính, tiền lương, tổ chức lại, giải thể, kiểm tra, thanh tra, giám sát ngân hàng chính sách và các nội dung khác có liên quan đến ngân hàng chính sách thực hiện theo quy định tại Chương này và quy định của Chính phủ.  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+  - Chương III GIẤY PHÉP  <!-- lvl=2 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Điều 27. Thẩm quyền cấp, sửa đổi, bổ sung và thu hồi Giấy phép  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Điều 28. Vốn pháp định  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Điều 29. Điều kiện cấp Giấy phép  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Điều 30. Hồ sơ, thủ tục cấp Giấy phép Thống đốc Ngân hàng Nhà nước quy định hồ sơ, thủ tục cấp Giấy phép lần đầu, cấp đổi Giấy phép.  <!-- lvl=4 i=27 sid=body[1]/p[28] src=Structure CẦN-XEM-LẠI -->
+      - Điều 31. Thời hạn cấp Giấy phép  <!-- lvl=4 i=27 sid=body[1]/p[28] src=Structure CẦN-XEM-LẠI -->
+      - Điều 32. Lệ phí cấp Giấy phép Tổ chức tín dụng, chi nhánh ngân hàng nước ngoài, văn phòng đại diện nước ngoài được cấp Giấy phép lần đầu, cấp đổi Giấy phép phải nộp lệ phí cấp Giấy phép theo quy định của pháp luật về phí và lệ phí.  <!-- lvl=4 i=27 sid=body[1]/p[28] src=Structure CẦN-XEM-LẠI -->
+      - Điều 33. Công bố thông tin về khai trương hoạt động Tổ chức tín dụng, chi nhánh ngân hàng nước ngoài, văn phòng đại diện nước ngoài phải công bố trên 01 phương tiện truyền thông của Ngân hàng Nhà nước và trên 01 tờ báo in trong 03 số liên tiếp hoặc trên 01 báo điện tử của Việt Nam ít nhất 30 ngày trước ngày dự kiến khai trương hoạt động các thông tin sau đây:  <!-- lvl=4 i=27 sid=body[1]/p[28] src=Structure CẦN-XEM-LẠI -->
+      - Điều 34. Điều kiện khai trương hoạt động  <!-- lvl=4 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+      - Điều 35. Sử dụng Giấy phép  <!-- lvl=4 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+      - Điều 36. Thu hồi Giấy phép  <!-- lvl=4 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+      - Điều 37. Những thay đổi phải được Ngân hàng Nhà nước chấp thuận  <!-- lvl=4 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+  - Chương IV TỔ CHỨC, QUẢN TRỊ, ĐIỀU HÀNH CỦA TỔ CHỨC TÍN DỤNG, CHI NHÁNH NGÂN HÀNG NƯỚC NGOÀI  <!-- lvl=2 i=33 sid=body[1]/p[34] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. QUY ĐINH ̣ CHUNG Điề u  <!-- lvl=3 i=33 sid=body[1]/p[34] src=Structure CẦN-XEM-LẠI -->
+      - Điều 39. Điều lệ của tổ chức tín dụng  <!-- lvl=4 i=33 sid=body[1]/p[34] src=Structure CẦN-XEM-LẠI -->
+      - Điều 40. Cơ cấu tổ chức quản lý của tổ chức tín dụng  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 41. Tiêu chuẩn, điều kiện đối với người quản lý, người điều hành và một số chức danh khác của tổ chức tín dụng  <!-- lvl=4 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+      - Điều 42. Những trường hợp không được đảm nhiệm chức vụ  <!-- lvl=4 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+      - Điều 43. Những trường hợp không cùng đảm nhiệm chức vụ  <!-- lvl=4 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+      - Điều 44. Chấp thuận danh sách dự kiến những người được bầu, bổ nhiệm làm thành viên Hội đồng quản trị, thành viên Hội đồng thành viên, thành viên Ban kiểm soát, Tổng giám đốc (Giám đốc) của tổ chức tín dụng  <!-- lvl=4 i=43 sid=body[1]/p[44] src=Structure CẦN-XEM-LẠI -->
+      - Điều 45. Những trường hợp đương nhiên mất tư cách  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 46. Miễn nhiệm, bãi nhiệm  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 47. Đình chỉ, tạm đình chỉ việc thực hiện quyền, nghĩa vụ của thành viên Hội đồng quản trị, Hội đồng thành viên, Ban kiểm soát và người điều hành tổ chức tín dụng  <!-- lvl=4 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+      - Điều 48. Quyền, nghĩa vụ của người quản lý, người điều hành tổ chức tín dụng  <!-- lvl=4 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+      - Điều 49. Cung cấp, công bố công khai thông tin  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. QUY ĐỊNH CHUNG ĐỐI VỚI TỔ CHỨC TÍN DỤNG LÀ CÔNG TY CỔ PHẦN, CÔNG TY TRÁCH NHIỆM HỮU HẠN  <!-- lvl=3 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Điều 50. Hội đồng quản trị, Hội đồng thành viên và cơ cấu Hội đồng quản trị, Hội đồng thành viên  <!-- lvl=4 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Điều 51. Ban kiểm soát  <!-- lvl=4 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+      - Điều 52. Nhiệm vụ, quyền hạn của Ban kiểm soát  <!-- lvl=4 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+      - Điều 53. Quyền, nghĩa vụ của Trưởng ban kiểm soát  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Điều 54. Quyền, nghĩa vụ của thành viên Ban kiểm soát  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 55. Tổng giám đốc (Giám đốc)  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 56. Quyền, nghĩa vụ của Tổng giám đốc (Giám đốc)  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 57. Hệ thống kiểm soát nội bộ  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 58. Kiểm toán nội bộ  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Điều 59. Kiểm toán độc lập  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3. TỔ CHỨC TÍN DỤNG LÀ CÔNG TY CỔ PHẦN  <!-- lvl=3 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Điều 60. Các loại cổ phần, cổ đông  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Điều 61. Quyền của cổ đông phổ thông  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Điều 62. Nghĩa vụ của cổ đông phổ thông  <!-- lvl=4 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+      - Điều 63. Tỷ lệ sở hữu cổ  <!-- lvl=4 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+- phần 1. Một cổ đông là cá nhân không được sở hữu cổ phần vượt quá 05% vốn điều lệ của một tổ chức tín dụng.  <!-- lvl=1 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+      - Điều 64. Chào bán và chuyển nhượng cổ  <!-- lvl=4 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+- phần 1. Cổ đông là cá nhân, cổ đông là tổ chức có người đại diện phần vốn góp tại tổ chức tín dụng là thành viên Hội đồng quản trị, thành viên Ban kiểm soát, Tổng giám đốc (Giám đốc) của tổ chức tín dụng không được chuyển nhượng cổ phần của mình trong thời gian đảm nhiệm chức vụ. Người đại diện phần vốn góp quy định tại khoản này không bao gồm người đại diện phần vốn góp của Nhà nước tại tổ chức tín dụng.  <!-- lvl=1 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+      - Điều 65. Mua lại cổ phần của cổ đông Tổ chức tín dụng chỉ được mua lại cổ phần của cổ đông nếu sau khi thanh toán hết số tiền tương ứng với số cổ phần được mua lại mà vẫn bảo đảm các tỷ lệ an toàn trong hoạt động ngân hàng và giá trị thực của vốn điều lệ không giảm thấp hơn mức vốn pháp định của tổ chức tín dụng.  <!-- lvl=4 i=69 sid=body[1]/p[70] src=Structure CẦN-XEM-LẠI -->
+      - Điều 66. Cổ phiếu Trường hợp cổ phiếu được phát hành dưới hình thức chứng chỉ, tổ chức tín dụng phải phát hành cổ phiếu cho các cổ đông trong thời hạn 30 ngày kể từ ngày khai trương hoạt động đối với tổ chức tín dụng thành lập mới hoặc trong thời hạn 30 ngày kể từ ngày cổ đông thanh toán đủ số tiền cam kết mua cổ phần đối với tổ chức tín dụng tăng vốn điều lệ.  <!-- lvl=4 i=69 sid=body[1]/p[70] src=Structure CẦN-XEM-LẠI -->
+      - Điều 67. Đại hội đồng cổ đông  <!-- lvl=4 i=69 sid=body[1]/p[70] src=Structure CẦN-XEM-LẠI -->
+      - Điều 68. Báo cáo nghị quyết, quyết định của Đại hội đồng cổ đông Trong thời hạn 15 ngày kể từ ngày kết thúc cuộc họp Đại hội đồng cổ đông hoặc từ ngày kết thúc kiểm phiếu đối với trường hợp lấy ý kiến bằng văn bản, tổ chức tín dụng phải gửi đến Ngân hàng Nhà nước tất cả nghị quyết, quyết định được Đại hội đồng cổ đông thông qua.  <!-- lvl=4 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+      - Điều 69. Hội đồng quản trị của tổ chức tín dụng là công ty cổ  <!-- lvl=4 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+- phần 1. Hội đồng quản trị của tổ chức tín dụng là công ty cổ phần phải có tối thiểu 05 thành viên và không quá 11 thành viên. Số lượng thành viên của từng nhiệm kỳ do Đại hội đồng cổ đông quyết định. Hội đồng quản trị phải có tối thiểu 02 thành viên độc lập, hai phần ba tổng số thành viên phải là thành viên độc lập và thành viên không phải là người điều hành tổ chức tín dụng.  <!-- lvl=1 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+      - Điều 70. Nhiệm vụ, quyền hạn của Hội đồng quản trị của tổ chức tín dụng là công ty cổ  <!-- lvl=4 i=75 sid=body[1]/p[76] src=Structure CẦN-XEM-LẠI -->
+- phần 1. Triển khai việc thành lập, khai trương hoạt động của tổ chức tín dụng sau cuộc họp Đại hội đồng cổ đông đầu tiên.  <!-- lvl=1 i=75 sid=body[1]/p[76] src=Structure CẦN-XEM-LẠI -->
+      - Điều 71. Quyền, nghĩa vụ của Chủ tịch Hội đồng quản trị của tổ chức tín dụng là công ty cổ  <!-- lvl=4 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+- phần 1. Lập chương trình, kế hoạch hoạt động của Hội đồng quản trị; chịu trách nhiệm về việc thực hiện quyền, nghĩa vụ của mình.  <!-- lvl=1 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+      - Điều 72. Quyền, nghĩa vụ của thành viên Hội đồng quản trị của tổ chức tín dụng là công ty cổ phần  <!-- lvl=4 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+    - Mục 4. TỔ CHỨC TÍN DỤNG LÀ CÔNG TY TRÁCH NHIỆM HỮU HẠN MỘT THÀNH VIÊN  <!-- lvl=3 i=79 sid=body[1]/p[80] src=Structure CẦN-XEM-LẠI -->
+      - Điều 73. Quyền, nghĩa vụ của chủ sở hữu của tổ chức tín dụng là công ty trách nhiệm hữu hạn một thành viên  <!-- lvl=4 i=79 sid=body[1]/p[80] src=Structure CẦN-XEM-LẠI -->
+      - Điều 74. Nhiệm vụ, quyền hạn của Hội đồng thành viên của tổ chức tín dụng là công ty trách nhiệm hữu hạn một thành viên  <!-- lvl=4 i=81 sid=body[1]/p[82] src=Structure CẦN-XEM-LẠI -->
+      - Điều 75. Quyền, nghĩa vụ của Chủ tịch Hội đồng thành viên của tổ chức tín dụng là công ty trách nhiệm hữu hạn một thành viên  <!-- lvl=4 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+      - Điều 76. Quyền, nghĩa vụ của thành viên Hội đồng thành viên của tổ chức tín dụng là công ty trách nhiệm hữu hạn một thành viên  <!-- lvl=4 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+    - Mục 5. TỔ CHỨC TÍN DỤNG LÀ CÔNG TY TRÁCH NHIỆM HỮU HẠN HAI THÀNH VIÊN TRỞ LÊN  <!-- lvl=3 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+      - Điều 77. Quyền, nghĩa vụ của thành viên góp vốn  <!-- lvl=4 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+      - Điều 78. Chuyển nhượng phần vốn góp  <!-- lvl=4 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+      - Điều 79. Hội đồng thành viên của tổ chức tín dụng là công ty trách nhiệm hữu hạn hai thành viên trở lên  <!-- lvl=4 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+    - Mục 6. TỔ CHỨC TÍN DỤNG LÀ HỢP TÁC XÃ  <!-- lvl=3 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+      - Điều 80. Tính chất và mục tiêu hoạt động Tổ chức tín dụng là hợp tác xã là loại hình tổ chức tín dụng được tổ chức theo mô hình hợp tác xã hoạt động trong lĩnh vực ngân hàng nhằm mục tiêu chủ yếu là tương trợ giữa các thành viên thực hiện có hiệu quả các hoạt động sản xuất, kinh doanh dịch vụ và cải thiện đời sống. Tổ chức tín dụng là hợp tác xã gồm ngân hàng hợp tác xã, quỹ tín dụng nhân dân.  <!-- lvl=4 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+      - Điều 81. Thành viên của tổ chức tín dụng là hợp tác xã  <!-- lvl=4 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+      - Điều 82. Cơ cấu tổ chức quản lý của tổ chức tín dụng là hợp tác xã  <!-- lvl=4 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+      - Điều 83. Vốn điều lệ  <!-- lvl=4 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+      - Điều 84. Quyền của thành viên  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 85. Nghĩa vụ của thành viên  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 86. Đại hội thành viên  <!-- lvl=4 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+      - Điều 87. Hội đồng quản trị của tổ chức tín dụng là hợp tác xã  <!-- lvl=4 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+      - Điều 88. Nhiệm vụ, quyền hạn của Hội đồng quản trị của tổ chức tín dụng là hợp tác xã  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Điều 89. Quyền, nghĩa vụ của Chủ tịch Hội đồng quản trị của tổ chức tín dụng là hợp tác xã  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Điều 90. Quyền, nghĩa vụ của thành viên Hội đồng quản trị của tổ chức tín dụng là hợp tác xã  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 91. Ban kiểm soát của tổ chức tín dụng là hợp tác xã  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 92. Nhiệm vụ, quyền hạn của Ban kiểm soát của tổ chức tín dụng là hợp tác xã  <!-- lvl=4 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+      - Điều 93. Quyền, nghĩa vụ của Trưởng ban kiểm soát của tổ chức tín dụng là hợp tác xã  <!-- lvl=4 i=103 sid=body[1]/p[104] src=Structure CẦN-XEM-LẠI -->
+      - Điều 94. Quyền, nghĩa vụ của thành viên Ban kiểm soát của tổ chức tín dụng là hợp tác xã  <!-- lvl=4 i=103 sid=body[1]/p[104] src=Structure CẦN-XEM-LẠI -->
+      - Điều 95. Tổng giám đốc (Giám đốc) của tổ chức tín dụng là hợp tác xã  <!-- lvl=4 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+      - Điều 96. Quyền, nghĩa vụ của Tổng giám đốc (Giám đốc) của tổ chức tín dụng là hợp tác xã  <!-- lvl=4 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+    - Mục 7. CHI NHÁNH NGÂN HÀNG NƯỚC NGOÀI  <!-- lvl=3 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 97. Cơ cấu tổ chức quản lý của chi nhánh ngân hàng nước ngoài  <!-- lvl=4 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 98. Tổng giám đốc (Giám đốc) chi nhánh ngân hàng nước ngoài  <!-- lvl=4 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+  - Chương V HOẠT ĐỘNG CỦA TỔ CHỨC TÍN DỤNG, CHI NHÁNH NGÂN HÀNG NƯỚC NGOÀI  <!-- lvl=2 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. QUY ĐỊNH CHUNG VỀ HOẠT ĐỘNG CỦA TỔ CHỨC TÍN DỤNG  <!-- lvl=3 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 99. Nội dung hoạt động được phép của tổ chức tín dụng  <!-- lvl=4 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 100. Lãi suất, phí trong hoạt động kinh doanh của tổ chức tín dụng  <!-- lvl=4 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 101. Quy định nội bộ  <!-- lvl=4 i=109 sid=body[1]/p[110] src=Structure CẦN-XEM-LẠI -->
+      - Điều 102. Xét duyệt cấp tín dụng, kiểm tra sử dụng vốn vay, tài sản cho thuê tài chính  <!-- lvl=4 i=109 sid=body[1]/p[110] src=Structure CẦN-XEM-LẠI -->
+      - Điều 103. Chấm dứt cấp tín dụng, xử lý nợ, miễn, giảm lãi  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Điều 104. Lưu trữ hồ sơ tín dụng  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Điều 105. Giao dịch điện tử trong hoạt động của tổ chức tín dụng Hoạt động của tổ chức tín dụng được thực hiện bằng phương tiện điện tử theo quy định của Thống đốc Ngân hàng Nhà nước, quy định của pháp luật về giao dịch điện tử.  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Điều 106. Cơ chế thử nghiệm có kiểm soát trong lĩnh vực ngân hàng  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. HOẠT ĐỘNG CỦA NGÂN HÀNG THƯƠNG MẠI  <!-- lvl=3 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+      - Điều 107. Hoạt động ngân hàng của ngân hàng thương mại  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+      - Điều 108. Vay, gửi tiền, mua, bán giấy tờ có giá của ngân hàng thương mại  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+      - Điều 109. Mở tài khoản của ngân hàng thương mại  <!-- lvl=4 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+      - Điều 110. Tổ chức và tham gia hệ thống thanh toán của ngân hàng thương mại  <!-- lvl=4 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+      - Điều 111. Góp vốn, mua cổ phần của ngân hàng thương mại  <!-- lvl=4 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+      - Điều 112. Kinh doanh ngoại hối, cung ứng dịch vụ ngoại hối và sản phẩm phái sinh của ngân hàng thương mại  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 113. Nghiệp vụ ủy thác và đại lý, giao đại lý của ngân hàng thương mại  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 114. Các hoạt động kinh doanh khác của ngân hàng thương mại  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3. HOẠT ĐỘNG CỦA CÔNG TY TÀI CHÍNH TỔNG HỢP  <!-- lvl=3 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+      - Điều 115. Hoạt động ngân hàng của công ty tài chính tổng hợp  <!-- lvl=4 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+      - Điều 116. Vay, gửi tiền, mua, bán giấy tờ có giá của công ty tài chính tổng hợp  <!-- lvl=4 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+      - Điều 117. Mở tài khoản của công ty tài chính tổng hợp  <!-- lvl=4 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+      - Điều 118. Góp vốn, mua cổ phần của công ty tài chính tổng hợp  <!-- lvl=4 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+      - Điều 119. Các hoạt động kinh doanh khác của công ty tài chính tổng hợp  <!-- lvl=4 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+    - Mục 4. HOẠT ĐỘNG CỦA CÔNG TY TÀI CHÍNH CHUYÊN NGÀNH  <!-- lvl=3 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 120. Hoạt động ngân hàng của công ty tài chính chuyên ngành  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 121. Vay, gửi tiền, mua, bán giấy tờ có giá của công ty tài chính chuyên ngành Việc vay, cho vay, gửi tiền, nhận tiền gửi, mua, bán giấy tờ có giá của công ty tài chính chuyên ngành thực hiện theo quy định tại Điều 116 của Luật này.  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 122. Mở tài khoản của công ty tài chính chuyên ngành  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 123. Góp vốn, mua cổ phần của công ty tài chính chuyên ngành  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 124. Các hoạt động kinh doanh khác của công ty tài chính chuyên ngành  <!-- lvl=4 i=125 sid=body[1]/p[126] src=Structure CẦN-XEM-LẠI -->
+    - Mục 5. HOẠT ĐỘNG CỦA TỔ CHỨC TÍN DỤNG LÀ HỢP TÁC XÃ  <!-- lvl=3 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+      - Điều 125. Hoạt động của ngân hàng hợp tác xã  <!-- lvl=4 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+      - Điều 126. Hoạt động của quỹ tín dụng nhân dân  <!-- lvl=4 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+    - Mục 6. HOẠT ĐỘNG CỦA TỔ CHỨC TÀI CHÍNH VI MÔ  <!-- lvl=3 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Điều 127. Hoạt động ngân hàng của tổ chức tài chính vi mô  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Điều 128. Mở tài khoản của tổ chức tài chính vi mô  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Điều 129. Vay, gửi tiền của tổ chức tài chính vi mô  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Điều 130. Hoạt động kinh doanh khác của tổ chức tài chính vi mô  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+    - Mục 7. HOẠT ĐỘNG CỦA CHI NHÁNH NGÂN HÀNG NƯỚC NGOÀI  <!-- lvl=3 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Điều 131. Hoạt động của chi nhánh ngân hàng nước ngoài  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+  - Chương VI VĂN PHÒNG ĐẠI DIỆN NƯỚC NGOÀI  <!-- lvl=2 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Điều 132. Thành lập văn phòng đại diện nước ngoài Tổ chức tín dụng nước ngoài, tổ chức nước ngoài khác có hoạt động ngân hàng được phép thành lập văn phòng đại diện tại tỉnh, thành phố trực thuộc trung ương trên lãnh thổ Việt Nam. Tại mỗi tỉnh, thành phố trực thuộc trung ương, tổ chức tín dụng nước ngoài, tổ chức nước ngoài khác có hoạt động ngân hàng chỉ được phép thành lập một văn phòng đại diện.  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Điều 133. Hoạt động của văn phòng đại diện nước ngoài Văn phòng đại diện nước ngoài được thực hiện các hoạt động sau đây theo nội dung ghi trong Giấy phép:  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+  - Chương VII CÁC HẠN CHẾ ĐỂ BẢO ĐẢM AN TOÀN TRONG HOẠT ĐỘNG CỦA TỔ CHỨC TÍN DỤNG, CHI NHÁNH NGÂN HÀNG NƯỚC NGOÀI  <!-- lvl=2 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Điều 134. Những trường hợp không được cấp tín dụng  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Điều 135. Hạn chế cấp tín dụng  <!-- lvl=4 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+      - Điều 136. Giới hạn cấp tín dụng  <!-- lvl=4 i=135 sid=body[1]/p[136] src=Structure CẦN-XEM-LẠI -->
+      - Điều 137. Giới hạn góp vốn, mua cổ  <!-- lvl=4 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+- phần 1. Mức góp vốn, mua cổ phần của một ngân hàng thương mại và công ty con, công ty liên kết của ngân hàng thương mại đó vào một doanh nghiệp hoạt động trong lĩnh vực quy định tại khoản 4 Điều 111 của Luật này không được vượt quá 11% vốn điều lệ của doanh nghiệp nhận vốn góp.  <!-- lvl=1 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+      - Điều 138. Tỷ lệ bảo đảm an toàn  <!-- lvl=4 i=139 sid=body[1]/p[140] src=Structure CẦN-XEM-LẠI -->
+      - Điều 139. Kinh doanh bất động sản Tổ chức tín dụng không được kinh doanh bất động sản, trừ các trường hợp sau đây:  <!-- lvl=4 i=139 sid=body[1]/p[140] src=Structure CẦN-XEM-LẠI -->
+      - Điều 140. Yêu cầu bảo đảm an toàn giao dịch điện tử trong hoạt động ngân hàng Tổ chức tín dụng, chi nhánh ngân hàng nước ngoài phải bảo đảm an toàn và bảo mật giao dịch điện tử trong hoạt động ngân hàng theo quy định của Thống đốc Ngân hàng Nhà nước và quy định của pháp luật về giao dịch điện tử.  <!-- lvl=4 i=139 sid=body[1]/p[140] src=Structure CẦN-XEM-LẠI -->
+      - Điều 141. Quyền, nghĩa vụ của công ty kiểm soát  <!-- lvl=4 i=141 sid=body[1]/p[142] src=Structure CẦN-XEM-LẠI -->
+      - Điều 142. Góp vốn, mua cổ phần giữa các công ty con, công ty liên kết, công ty kiểm soát  <!-- lvl=4 i=141 sid=body[1]/p[142] src=Structure CẦN-XEM-LẠI -->
+      - Điều 143. Xây dựng phương án khắc phục dự kiến trong trường hợp được can thiệp sớm  <!-- lvl=4 i=141 sid=body[1]/p[142] src=Structure CẦN-XEM-LẠI -->
+  - Chương VIII TÀI CHÍNH, HẠCH TOÁN, BÁO CÁO  <!-- lvl=2 i=143 sid=body[1]/p[144] src=Structure CẦN-XEM-LẠI -->
+      - Điều 144. Vốn và sử dụng vốn của tổ chức tín dụng, chi nhánh ngân hàng nước ngoài  <!-- lvl=4 i=143 sid=body[1]/p[144] src=Structure CẦN-XEM-LẠI -->
+      - Điều 145. Doanh thu và nguyên tắc ghi nhận doanh thu  <!-- lvl=4 i=143 sid=body[1]/p[144] src=Structure CẦN-XEM-LẠI -->
+      - Điều 146. Chi phí và nguyên tắc ghi nhận chi phí  <!-- lvl=4 i=145 sid=body[1]/p[146] src=Structure CẦN-XEM-LẠI -->
+      - Điều 147. Dự phòng rủi ro  <!-- lvl=4 i=147 sid=body[1]/p[148] src=Structure CẦN-XEM-LẠI -->
+      - Điều 148. Phân phối lợi nhuận và các quỹ  <!-- lvl=4 i=147 sid=body[1]/p[148] src=Structure CẦN-XEM-LẠI -->
+      - Điều 149. Năm tài chính  <!-- lvl=4 i=149 sid=body[1]/p[150] src=Structure CẦN-XEM-LẠI -->
+      - Điều 150. Hạch toán, kế toán Tổ chức tín dụng, chi nhánh ngân hàng nước ngoài phải thực hiện hạch toán, kế toán theo quy định của pháp luật về kế toán; chịu trách nhiệm trước pháp luật về tính chính xác, trung thực của các khoản thu, chi và thực hiện các quy định về chế độ hóa đơn, chứng từ kế toán.  <!-- lvl=4 i=149 sid=body[1]/p[150] src=Structure CẦN-XEM-LẠI -->
+      - Điều 151. Chế độ tài chính  <!-- lvl=4 i=149 sid=body[1]/p[150] src=Structure CẦN-XEM-LẠI -->
+      - Điều 152. Báo cáo  <!-- lvl=4 i=149 sid=body[1]/p[150] src=Structure CẦN-XEM-LẠI -->
+      - Điều 153. Báo cáo của công ty kiểm soát  <!-- lvl=4 i=151 sid=body[1]/p[152] src=Structure CẦN-XEM-LẠI -->
+      - Điều 154. Công khai báo cáo tài chính Trong thời hạn 120 ngày kể từ ngày kết thúc năm tài chính, tổ chức tín dụng, chi nhánh ngân hàng nước ngoài phải công khai các báo cáo tài chính theo quy định của pháp luật, trừ trường hợp tổ chức tín dụng đang được kiểm soát đặc biệt.  <!-- lvl=4 i=151 sid=body[1]/p[152] src=Structure CẦN-XEM-LẠI -->
+      - Điều 155. Chuyển lợi nhuận, chuyển tài sản ra nước ngoài  <!-- lvl=4 i=151 sid=body[1]/p[152] src=Structure CẦN-XEM-LẠI -->
+  - Chương IX CAN THIỆP SỚM TỔ CHỨC TÍN DỤNG, CHI NHÁNH NGÂN HÀNG NƯỚC NGOÀI  <!-- lvl=2 i=153 sid=body[1]/p[154] src=Structure CẦN-XEM-LẠI -->
+      - Điều 156. Thực hiện can thiệp sớm tổ chức tín dụng, chi nhánh ngân hàng nước ngoài  <!-- lvl=4 i=153 sid=body[1]/p[154] src=Structure CẦN-XEM-LẠI -->
+      - Điều 157. Các yêu cầu, biện pháp hạn chế đối với tổ chức tín dụng, chi nhánh ngân hàng nước ngoài được can thiệp sớm  <!-- lvl=4 i=153 sid=body[1]/p[154] src=Structure CẦN-XEM-LẠI -->
+      - Điều 158. Xây dựng, cập nhật, thông qua phương án khắc phục  <!-- lvl=4 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+      - Điều 159. Biện pháp hỗ trợ tổ chức tín dụng được can thiệp sớm  <!-- lvl=4 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+      - Điều 160. Thực hiện phương án khắc phục  <!-- lvl=4 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+      - Điều 161. Chấm dứt can thiệp sớm  <!-- lvl=4 i=159 sid=body[1]/p[160] src=Structure CẦN-XEM-LẠI -->
+  - Chương X KIỂM SOÁT ĐẶC BIỆT TỔ CHỨC TÍN DỤNG  <!-- lvl=2 i=159 sid=body[1]/p[160] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. QUY ĐỊNH CHUNG  <!-- lvl=3 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Điều 162. Áp dụng kiểm soát đặc biệt tổ chức tín dụng  <!-- lvl=4 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Điều 163. Nhiệm vụ, quyền hạn của Ngân hàng Nhà nước, Thống đốc Ngân hàng Nhà nước đối với tổ chức tín dụng được kiểm soát đặc biệt  <!-- lvl=4 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Điều 164. Nhiệm vụ, quyền hạn của Ban kiểm soát đặc biệt  <!-- lvl=4 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Điều 165. Trách nhiệm của tổ chức tín dụng được kiểm soát đặc biệt  <!-- lvl=4 i=165 sid=body[1]/p[166] src=Structure CẦN-XEM-LẠI -->
+      - Điều 166. Quản trị, điều hành và hoạt động của tổ chức tín dụng được kiểm soát đặc biệt  <!-- lvl=4 i=165 sid=body[1]/p[166] src=Structure CẦN-XEM-LẠI -->
+      - Điều 167. Đánh giá thực trạng tổ chức tín dụng được kiểm soát đặc biệt  <!-- lvl=4 i=167 sid=body[1]/p[168] src=Structure CẦN-XEM-LẠI -->
+      - Điều 168. Chấm dứt kiểm soát đặc biệt Ngân hàng Nhà nước xem xét, quyết định chấm dứt kiểm soát đặc biệt đối với tổ chức tín dụng được kiểm soát đặc biệt thuộc một trong các trường hợp sau đây:  <!-- lvl=4 i=167 sid=body[1]/p[168] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. PHƯƠNG ÁN PHỤC HỒI TỔ CHỨC TÍN DỤNG ĐƯỢC KIỂM SOÁT ĐẶC BIỆT  <!-- lvl=3 i=169 sid=body[1]/p[170] src=Structure CẦN-XEM-LẠI -->
+      - Điều 169. Xây dựng và phê duyệt phương án phục hồi  <!-- lvl=4 i=169 sid=body[1]/p[170] src=Structure CẦN-XEM-LẠI -->
+      - Điều 170. Nội dung phương án phục hồi  <!-- lvl=4 i=169 sid=body[1]/p[170] src=Structure CẦN-XEM-LẠI -->
+      - Điều 171. Biện pháp hỗ trợ thực hiện phương án phục hồi  <!-- lvl=4 i=171 sid=body[1]/p[172] src=Structure CẦN-XEM-LẠI -->
+      - Điều 172. Tổ chức thực hiện phương án phục hồi  <!-- lvl=4 i=173 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+      - Điều 173. Điều kiện đối với tổ chức tín dụng hỗ trợ Tổ chức tín dụng hỗ trợ phải đáp ứng đầy đủ các điều kiện sau đây:  <!-- lvl=4 i=173 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+      - Điều 174. Quyền, nghĩa vụ của tổ chức tín dụng hỗ trợ  <!-- lvl=4 i=173 sid=body[1]/p[174] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3. PHƯƠNG ÁN SÁP NHẬP, HỢP NHẤT, CHUYỂN NHƯỢNG TOÀN BỘ CỔ PHẦN,  <!-- lvl=3 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+- PHẦN VỐN GÓP CỦA TỔ CHỨC TÍN DỤNG ĐƯỢC KIỂM SOÁT ĐẶC BIỆT  <!-- lvl=1 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+      - Điều 175. Sáp nhập, hợp nhất, chuyển nhượng toàn bộ cổ phần, phần vốn góp của tổ chức tín dụng được kiểm soát đặc biệt Việc sáp nhập, hợp nhất, chuyển nhượng toàn bộ cổ phần, phần vốn góp của tổ chức tín dụng được kiểm soát đặc biệt được thực hiện khi đáp ứng đầy đủ các điều kiện sau đây:  <!-- lvl=4 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+      - Điều 176. Xây dựng và phê duyệt phương án sáp nhập, hợp nhất, chuyển nhượng toàn bộ cổ phần, phần vốn góp  <!-- lvl=4 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+      - Điều 177. Nội dung phương án sáp nhập, hợp nhất, chuyển nhượng toàn bộ cổ phần, phần vốn góp  <!-- lvl=4 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+      - Điều 178. Tổ chức thực hiện phương án sáp nhập, hợp nhất, chuyển nhượng toàn bộ cổ phần, phần vốn góp  <!-- lvl=4 i=177 sid=body[1]/p[178] src=Structure CẦN-XEM-LẠI -->
+    - Mục 4. PHƯƠNG ÁN CHUYỂN GIAO BẮT BUỘC NGÂN HÀNG THƯƠNG MẠI ĐƯỢC KIỂM SOÁT ĐẶC BIỆT  <!-- lvl=3 i=179 sid=body[1]/p[180] src=Structure CẦN-XEM-LẠI -->
+      - Điều 179. Xây dựng, phê duyệt phương án chuyển giao bắt buộc ngân hàng thương mại được kiểm soát đặc biệt trong trường hợp có văn bản đề nghị của bên nhận chuyển giao bắt buộc  <!-- lvl=4 i=179 sid=body[1]/p[180] src=Structure CẦN-XEM-LẠI -->
+      - Điều 180. Xây dựng, phê duyệt phương án chuyển giao bắt buộc ngân hàng thương mại được kiểm soát đặc biệt trong trường hợp chỉ định bên nhận chuyển giao bắt buộc  <!-- lvl=4 i=179 sid=body[1]/p[180] src=Structure CẦN-XEM-LẠI -->
+      - Điều 181. Nội dung phương án chuyển giao bắt buộc Phương án chuyển giao bắt buộc bao gồm các nội dung chủ yếu sau đây:  <!-- lvl=4 i=181 sid=body[1]/p[182] src=Structure CẦN-XEM-LẠI -->
+      - Điều 182. Biện pháp hỗ trợ đối với ngân hàng thương mại được chuyển giao bắt buộc  <!-- lvl=4 i=181 sid=body[1]/p[182] src=Structure CẦN-XEM-LẠI -->
+      - Điều 183. Tổ chức thực hiện phương án chuyển giao bắt buộc  <!-- lvl=4 i=183 sid=body[1]/p[184] src=Structure CẦN-XEM-LẠI -->
+      - Điều 184. Bên nhận chuyển giao bắt buộc  <!-- lvl=4 i=185 sid=body[1]/p[186] src=Structure CẦN-XEM-LẠI -->
+      - Điều 185. Quyền, nghĩa vụ của bên nhận chuyển giao bắt buộc  <!-- lvl=4 i=185 sid=body[1]/p[186] src=Structure CẦN-XEM-LẠI -->
+      - Điều 186. Xử lý cổ phần, phần vốn góp vượt giới hạn  <!-- lvl=4 i=189 sid=body[1]/p[190] src=Structure CẦN-XEM-LẠI -->
+    - Mục 5. GIẢI THỂ, PHÁ SẢN TỔ CHỨC TÍN DỤNG ĐƯỢC KIỂM SOÁT ĐẶC BIỆT  <!-- lvl=3 i=189 sid=body[1]/p[190] src=Structure CẦN-XEM-LẠI -->
+      - Điều 187. Giải thể tổ chức tín dụng được kiểm soát đặc biệt  <!-- lvl=4 i=189 sid=body[1]/p[190] src=Structure CẦN-XEM-LẠI -->
+      - Điều 188. Phá sản tổ chức tín dụng được kiểm soát đặc biệt  <!-- lvl=4 i=191 sid=body[1]/p[192] src=Structure CẦN-XEM-LẠI -->
+      - Điều 189. Nội dung phương án phá sản Phương án phá sản bao gồm các nội dung chủ yếu sau đây:  <!-- lvl=4 i=191 sid=body[1]/p[192] src=Structure CẦN-XEM-LẠI -->
+      - Điều 190. Tổ chức thực hiện phương án phá sản  <!-- lvl=4 i=191 sid=body[1]/p[192] src=Structure CẦN-XEM-LẠI -->
+  - Chương XI XỬ LÝ TRƯỜNG HỢP TỔ CHỨC TÍN DỤNG BỊ RÚT TIỀN HÀNG LOẠT; VAY, CHO VAY ĐẶC BIỆT  <!-- lvl=2 i=193 sid=body[1]/p[194] src=Structure CẦN-XEM-LẠI -->
+      - Điều 191. Xử lý trường hợp tổ chức tín dụng bị rút tiền hàng loạt  <!-- lvl=4 i=193 sid=body[1]/p[194] src=Structure CẦN-XEM-LẠI -->
+      - Điều 192. Các trường hợp được vay đặc biệt  <!-- lvl=4 i=193 sid=body[1]/p[194] src=Structure CẦN-XEM-LẠI -->
+      - Điều 193. Thẩm quyền quyết định cho vay, lãi suất và tài sản bảo đảm của khoản vay đặc biệt  <!-- lvl=4 i=195 sid=body[1]/p[196] src=Structure CẦN-XEM-LẠI -->
+      - Điều 194. Nguyên tắc xử lý khoản vay đặc biệt  <!-- lvl=4 i=195 sid=body[1]/p[196] src=Structure CẦN-XEM-LẠI -->
+  - Chương XII XỬ LÝ NỢ XẤU, TÀI SẢN BẢO ĐẢM  <!-- lvl=2 i=195 sid=body[1]/p[196] src=Structure CẦN-XEM-LẠI -->
+      - Điều 195. Nợ xấu Nợ xấu đươ ̣c áp du ̣ng các quy đinh ̣ ta ̣i Chương này bao gồm:  <!-- lvl=4 i=195 sid=body[1]/p[196] src=Structure CẦN-XEM-LẠI -->
+      - Điều 196. Bán nợ xấu và tài sản bảo đảm của khoản nợ xấu Tổ chức tín dụng, chi nhánh ngân hàng nước ngoài, tổ chức mua bán, xử lý nợ bán nợ xấu, tài sản bảo đảm của khoản nợ xấu công khai, minh bạch, theo quy định của pháp luật. Giá bán khoản nợ xấu, tài sản bảo đảm của khoản nợ xấu có thể cao hơn hoặc thấp hơn dư nợ gốc của khoản nợ xấu.  <!-- lvl=4 i=195 sid=body[1]/p[196] src=Structure CẦN-XEM-LẠI -->
+      - Điều 197. Mua, bán nợ xấu của tổ chức mua bán, xử lý nợ  <!-- lvl=4 i=197 sid=body[1]/p[198] src=Structure CẦN-XEM-LẠI -->
+      - Điều 198. Mua, bán khoản nợ xấu có tài sản bảo đảm là quyền sử dụng đất, tài sản gắn liền với đất, tài sản gắn liền với đất hình thành trong tương lai  <!-- lvl=4 i=197 sid=body[1]/p[198] src=Structure CẦN-XEM-LẠI -->
+      - Điều 199. Thứ tự ưu tiên thanh toán khi xử lý tài sản bảo đảm của khoản nợ xấu  <!-- lvl=4 i=197 sid=body[1]/p[198] src=Structure CẦN-XEM-LẠI -->
+      - Điều 200. Chuyển nhượng tài sản bảo đảm  <!-- lvl=4 i=199 sid=body[1]/p[200] src=Structure CẦN-XEM-LẠI -->
+  - Chương XIII TỔ CHỨC LẠI, GIẢI THỂ, PHÁ SẢN, THANH LÝ, PHONG TỎA VỐN, TÀI SẢN  <!-- lvl=2 i=199 sid=body[1]/p[200] src=Structure CẦN-XEM-LẠI -->
+      - Điều 201. Tổ chức lại tổ chức tín dụng  <!-- lvl=4 i=199 sid=body[1]/p[200] src=Structure CẦN-XEM-LẠI -->
+      - Điều 202. Trường hợp giải thể, chấm dứt hoạt động tổ chức tín dụng, chi nhánh ngân hàng nước ngoài  <!-- lvl=4 i=199 sid=body[1]/p[200] src=Structure CẦN-XEM-LẠI -->
+      - Điều 203. Phá sản tổ chức tín dụng  <!-- lvl=4 i=201 sid=body[1]/p[202] src=Structure CẦN-XEM-LẠI -->
+      - Điều 204. Thanh lý tài sản của tổ chức tín dụng, chi nhánh ngân hàng nước ngoài trong trường hợp giải thể, chấm dứt hoạt động  <!-- lvl=4 i=201 sid=body[1]/p[202] src=Structure CẦN-XEM-LẠI -->
+      - Điều 205. Phong tỏa vốn, tài sản của chi nhánh ngân hàng nước ngoài  <!-- lvl=4 i=201 sid=body[1]/p[202] src=Structure CẦN-XEM-LẠI -->
+  - Chương XIV QUẢN LÝ NHÀ NƯỚC  <!-- lvl=2 i=201 sid=body[1]/p[202] src=Structure CẦN-XEM-LẠI -->
+      - Điều 206. Trách nhiệm của cơ quan quản lý nhà nước  <!-- lvl=4 i=201 sid=body[1]/p[202] src=Structure CẦN-XEM-LẠI -->
+      - Điều 207. Thẩm quyền kiểm tra, thanh tra, giám sát  <!-- lvl=4 i=203 sid=body[1]/p[204] src=Structure CẦN-XEM-LẠI -->
+      - Điều 208. Quyền, nghĩa vụ của đối tượng thanh tra, giám sát  <!-- lvl=4 i=203 sid=body[1]/p[204] src=Structure CẦN-XEM-LẠI -->
+  - Chương XV ĐIỀU KHOẢN THI HÀNH  <!-- lvl=2 i=203 sid=body[1]/p[204] src=Structure CẦN-XEM-LẠI -->
+      - Điều 209. Hiệu lực thi hành  <!-- lvl=4 i=203 sid=body[1]/p[204] src=Structure CẦN-XEM-LẠI -->
+      - Điều 210. Quy định chuyển tiếp  <!-- lvl=4 i=205 sid=body[1]/p[206] src=Structure CẦN-XEM-LẠI -->
+
+> 250 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

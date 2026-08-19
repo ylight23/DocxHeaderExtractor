@@ -1,0 +1,108 @@
+# Cấu trúc: 008_Luat_Kinh_doanh_BDS_29-2023-QH15.docx
+
+  - Chương I NHỮNG QUY ĐỊNH CHUNG  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 1. Phạm vi điều chỉnh  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 2. Đối tượng áp dụng  <!-- lvl=4 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+      - Điều 3. Giải thích từ ngữ Trong Luật này, các từ ngữ dưới đây được hiểu như sau:  <!-- lvl=4 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+      - Điều 4. Nguyên tắc kinh doanh bất động sản  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 5. Các loại bất động sản, dự án bất động sản đưa vào kinh doanh  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 6. Công khai thông tin về bất động sản, dự án bất động sản đưa vào kinh doanh  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 7. Chính sách của Nhà nước đối với đầu tư kinh doanh bất động sản  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Điều 8. Các hành vi bị nghiêm cấm trong kinh doanh bất động sản  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Điều 9. Điều kiện đối với tổ chức, cá nhân khi kinh doanh bất động sản  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Điều 10. Hình thức, phạm vi kinh doanh nhà ở, công trình xây dựng và quyền sử dụng đất đã có hạ tầng kỹ thuật trong dự án bất động sản, chuyển nhượng dự án bất động sản của tổ chức, cá nhân trong nước, người Việt Nam định cư ở nước ngoài, tổ chức kinh tế có vốn đầu tư nước ngoài  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Điều 11. Yêu cầu đối với dự án bất động sản  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+  - Chương II KINH DOANH NHÀ Ở, CÔNG TRÌNH XÂY DỰNG CÓ SẴN  <!-- lvl=2 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Điều 12. Nhà ở, công trình xây dựng có sẵn được đưa vào kinh doanh  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Điều 13. Nguyên tắc kinh doanh nhà ở, công trình xây dựng có sẵn  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Điều 14. Điều kiện của nhà ở, công trình xây dựng có sẵn đưa vào kinh doanh  <!-- lvl=4 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+      - Điều 15. Đối tượng được mua, thuê, thuê mua nhà ở, công trình xây dựng có sẵn của doanh nghiệp kinh doanh bất động sản  <!-- lvl=4 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+      - Điều 16. Thực hiện giao dịch kinh doanh nhà ở, công trình xây dựng có sẵn  <!-- lvl=4 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+      - Điều 17. Trách nhiệm của chủ đầu tư dự án bất động sản  <!-- lvl=4 i=33 sid=body[1]/p[34] src=Structure CẦN-XEM-LẠI -->
+      - Điều 18. Quyền của bên bán, cho thuê, cho thuê mua nhà ở, công trình xây dựng có sẵn  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 19. Nghĩa vụ của bên bán, cho thuê, cho thuê mua nhà ở, công trình xây dựng có sẵn  <!-- lvl=4 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+      - Điều 20. Quyền của bên mua, thuê, thuê mua nhà ở, công trình xây dựng có sẵn  <!-- lvl=4 i=43 sid=body[1]/p[44] src=Structure CẦN-XEM-LẠI -->
+      - Điều 21. Nghĩa vụ của bên mua, thuê, thuê mua nhà ở, công trình xây dựng có sẵn  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+  - Chương III KINH DOANH NHÀ Ở, CÔNG TRÌNH XÂY DỰNG HÌNH THÀNH TRONG TƯƠNG LAI  <!-- lvl=2 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Điều 22. Nhà ở, công trình xây dựng hình thành trong tương lai đưa vào kinh doanh  <!-- lvl=4 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Điều 23. Nguyên tắc kinh doanh nhà ở, công trình xây dựng hình thành trong tương lai  <!-- lvl=4 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Điều 24. Điều kiện của nhà ở, công trình xây dựng hình thành trong tương lai được đưa vào kinh doanh  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Điều 25. Thanh toán trong mua bán, thuê mua nhà ở, công trình xây dựng hình thành trong tương lai  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 26. Bảo lãnh trong bán, cho thuê mua nhà ở hình thành trong tương lai  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 27. Bàn giao nhà ở, công trình xây dựng hình thành trong tương lai  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+  - Chương IV KINH DOANH QUYỀN SỬ DỤNG ĐẤT ĐÃ CÓ HẠ TẦNG KỸ THUẬT TRONG DỰ ÁN BẤT ĐỘNG SẢN  <!-- lvl=2 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1 QUY ĐỊNH CHUNG  <!-- lvl=3 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Điều 28. Hình thức kinh doanh quyền sử dụng đất đã có hạ tầng kỹ thuật trong dự án bất động sản  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Điều 29. Yêu cầu trong kinh doanh quyền sử dụng đất đã có hạ tầng kỹ thuật trong dự án bất động sản  <!-- lvl=4 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+      - Điều 30. Nghĩa vụ của các bên trong chuyển nhượng, cho thuê, cho thuê lại quyền sử dụng đất đã có hạ tầng kỹ thuật trong dự án bất động sản  <!-- lvl=4 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2 CHUYỂN NHƯỢNG QUYỀN SỬ DỤNG ĐẤT ĐÃ CÓ HẠ TẦNG KỸ THUẬT TRONG DỰ ÁN BẤT ĐỘNG SẢN CHO CÁ NHÂN TỰ XÂY DỰNG NHÀ Ở  <!-- lvl=3 i=71 sid=body[1]/p[72] src=Structure CẦN-XEM-LẠI -->
+      - Điều 31. Điều kiện đối với đất đã có hạ tầng kỹ thuật trong dự án bất động sản được chuyển nhượng quyền sử dụng đất cho cá nhân tự xây dựng nhà ở  <!-- lvl=4 i=71 sid=body[1]/p[72] src=Structure CẦN-XEM-LẠI -->
+      - Điều 32. Yêu cầu đối với bên chuyển nhượng quyền sử dụng đất đã có hạ tầng kỹ thuật trong dự án bất động sản cho cá nhân tự xây dựng nhà ở  <!-- lvl=4 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+      - Điều 33. Quyền, nghĩa vụ của bên chuyển nhượng quyền sử dụng đất đã có hạ tầng kỹ thuật trong dự án bất động sản cho cá nhân tự xây dựng nhà ở  <!-- lvl=4 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+      - Điều 34. Quyền, nghĩa vụ của bên nhận chuyển nhượng quyền sử dụng đất đã có hạ tầng kỹ thuật trong dự án bất động sản cho cá nhân tự xây dựng nhà ở  <!-- lvl=4 i=75 sid=body[1]/p[76] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3 CHUYỂN NHƯỢNG, CHO THUÊ, CHO THUÊ LẠI QUYỀN SỬ DỤNG ĐẤT ĐÃ CÓ HẠ TẦNG KỸ THUẬT TRONG DỰ ÁN BẤT ĐỘNG SẢN CHO TỔ CHỨC  <!-- lvl=3 i=75 sid=body[1]/p[76] src=Structure CẦN-XEM-LẠI -->
+      - Điều 35. Điều kiện đối với đất đã có hạ tầng kỹ thuật trong dự án bất động sản được chuyển nhượng, cho thuê, cho thuê lại quyền sử dụng đất cho tổ chức Đất đã có hạ tầng kỹ thuật trong dự án bất động sản được chuyển nhượng, cho thuê, cho thuê lại quyền sử dụng đất cho tổ chức phải đáp ứng các điều kiện quy định tại các khoản 1, 2, 3, 4, 5 và 8 Điều 31 của Luật này.  <!-- lvl=4 i=75 sid=body[1]/p[76] src=Structure CẦN-XEM-LẠI -->
+      - Điều 36. Yêu cầu đối với bên chuyển nhượng, cho thuê, cho thuê lại quyền sử dụng đất đã có hạ tầng kỹ thuật trong dự án bất động sản cho tổ chức Bên chuyển nhượng, cho thuê, cho thuê lại quyền sử dụng đất đã có hạ tầng kỹ thuật trong dự án bất động sản phải đáp ứng các yêu cầu quy định tại Điều 32 của Luật này.  <!-- lvl=4 i=75 sid=body[1]/p[76] src=Structure CẦN-XEM-LẠI -->
+      - Điều 37. Quyền, nghĩa vụ của bên chuyển nhượng, cho thuê, cho thuê lại quyền sử dụng đất đã có hạ tầng kỹ thuật trong dự án bất động sản cho tổ chức  <!-- lvl=4 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+      - Điều 38. Quyền, nghĩa vụ của bên nhận chuyển nhượng, thuê, thuê lại quyền sử dụng đất đã có hạ tầng kỹ thuật trong dự án bất động sản cho tổ chức  <!-- lvl=4 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+  - Chương V CHUYỂN NHƯỢNG DỰ ÁN BẤT ĐỘNG SẢN  <!-- lvl=2 i=79 sid=body[1]/p[80] src=Structure CẦN-XEM-LẠI -->
+      - Điều 39. Nguyên tắc chuyển nhượng toàn bộ hoặc một phần dự án bất động sản  <!-- lvl=4 i=79 sid=body[1]/p[80] src=Structure CẦN-XEM-LẠI -->
+      - Điều 40. Điều kiện chuyển nhượng toàn bộ hoặc một phần dự án bất động sản  <!-- lvl=4 i=79 sid=body[1]/p[80] src=Structure CẦN-XEM-LẠI -->
+      - Điều 41. Thẩm quyền cho phép chuyển nhượng toàn bộ hoặc một phần dự án bất động sản  <!-- lvl=4 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+      - Điều 42. Thủ tục chuyển nhượng toàn bộ hoặc một phần dự án bất động sản  <!-- lvl=4 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+      - Điều 43. Quyền, nghĩa vụ của các bên trong chuyển nhượng toàn bộ hoặc một phần dự án bất động sản  <!-- lvl=4 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+  - Chương VI HỢP ĐỒNG KINH DOANH BẤT ĐỘNG SẢN  <!-- lvl=2 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1 CÁC LOẠI HỢP ĐỒNG KINH DOANH BẤT ĐỘNG SẢN, SỬ DỤNG HỢP ĐỒNG KINH DOANH BẤT ĐỘNG SẢN  <!-- lvl=3 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+      - Điều 44. Hợp đồng trong kinh doanh bất động sản  <!-- lvl=4 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+      - Điều 45. Sử dụng hợp đồng trong kinh doanh bất động sản  <!-- lvl=4 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+      - Điều 46. Nội dung chính của hợp đồng trong kinh doanh bất động sản  <!-- lvl=4 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+      - Điều 47. Giá giao dịch trong kinh doanh bất động sản  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Điều 48. Thanh toán trong kinh doanh bất động sản  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2 CHUYỂN NHƯỢNG HỢP ĐỒNG KINH DOANH BẤT ĐỘNG SẢN  <!-- lvl=3 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 49. Chuyển nhượng hợp đồng mua bán, thuê mua nhà ở, công trình xây dựng  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 50. Điều kiện chuyển nhượng hợp đồng kinh doanh bất động sản  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 51. Quyền, nghĩa vụ của các bên thực hiện chuyển nhượng hợp đồng kinh doanh bất động sản  <!-- lvl=4 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+      - Điều 52. Trình tự, thủ tục, hồ sơ chuyển nhượng hợp đồng kinh doanh bất động sản Chính phủ quy định chi tiết về trình tự, thủ tục, hồ sơ chuyển nhượng hợp đồng kinh doanh bất động sản.  <!-- lvl=4 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+  - Chương VII KINH DOANH DỊCH VỤ BẤT ĐỘNG SẢN VÀ ĐÀO TẠO, BỒI DƯỠNG, CẤP CHỨNG CHỈ HÀNH NGHỀ TRONG KINH DOANH DỊCH VỤ BẤT ĐỘNG SẢN  <!-- lvl=2 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1 SÀN GIAO DỊCH BẤT ĐỘNG SẢN  <!-- lvl=3 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+      - Điều 53. Nguyên tắc tổ chức và hoạt động của sàn giao dịch bất động sản  <!-- lvl=4 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+      - Điều 54. Thành lập và đăng ký hoạt động sàn giao dịch bất động sản  <!-- lvl=4 i=103 sid=body[1]/p[104] src=Structure CẦN-XEM-LẠI -->
+      - Điều 55. Điều kiện hoạt động của sàn giao dịch bất động sản  <!-- lvl=4 i=103 sid=body[1]/p[104] src=Structure CẦN-XEM-LẠI -->
+      - Điều 56. Nội dung hoạt động của sàn giao dịch bất động sản  <!-- lvl=4 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+      - Điều 57. Quyền của sàn giao dịch bất động sản  <!-- lvl=4 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 58. Nghĩa vụ của sàn giao dịch bất động sản  <!-- lvl=4 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 59. Quyền, nghĩa vụ của tổ chức, cá nhân tham gia giao dịch bất động sản tại sàn giao dịch bất động sản  <!-- lvl=4 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 60. Quản lý hoạt động của sàn giao dịch bất động sản  <!-- lvl=4 i=109 sid=body[1]/p[110] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2 MÔI GIỚI BẤT ĐỘNG SẢN  <!-- lvl=3 i=109 sid=body[1]/p[110] src=Structure CẦN-XEM-LẠI -->
+      - Điều 61. Điều kiện của tổ chức, cá nhân kinh doanh dịch vụ môi giới bất động sản  <!-- lvl=4 i=109 sid=body[1]/p[110] src=Structure CẦN-XEM-LẠI -->
+      - Điều 62. Nội dung môi giới bất động sản  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Điều 63. Thù lao, hoa hồng môi giới bất động sản  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Điều 64. Quyền của doanh nghiệp kinh doanh dịch vụ môi giới bất động sản, cá nhân hành nghề môi giới bất động sản  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Điều 65. Nghĩa vụ của doanh nghiệp kinh doanh dịch vụ môi giới bất động sản, cá nhân hành nghề môi giới bất động sản  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3 TƯ VẤN, QUẢN LÝ BẤT ĐỘNG SẢN  <!-- lvl=3 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+      - Điều 66. Nguyên tắc, phạm vi kinh doanh dịch vụ tư vấn, dịch vụ quản lý bất động sản  <!-- lvl=4 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+      - Điều 67. Điều kiện của tổ chức, cá nhân kinh doanh dịch vụ tư vấn, dịch vụ quản lý bất động sản  <!-- lvl=4 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+      - Điều 68. Quyền, nghĩa vụ của các bên trong kinh doanh dịch vụ tư vấn, dịch vụ quản lý bất động sản, các bên liên quan đến dịch vụ quản lý bất động sản  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+    - Mục 4 ĐÀO TẠO, BỒI DƯỠNG KIẾN THỨC HÀNH NGHỀ MÔI GIỚI BẤT ĐỘNG SẢN, ĐIỀU HÀNH SÀN GIAO DỊCH BẤT ĐỘNG SẢN; CẤP CHỨNG CHỈ HÀNH NGHỀ MÔI GIỚI BẤT ĐỘNG SẢN  <!-- lvl=3 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 69. Yêu cầu đối với cơ sở đào tạo, bồi dưỡng kiến thức hành nghề môi giới bất động sản, điều hành sàn giao dịch bất động sản  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 70. Thi sát hạch và cấp chứng chỉ hành nghề môi giới bất động sản  <!-- lvl=4 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+  - Chương VIII XÂY DỰNG VÀ QUẢN LÝ HỆ THỐNG THÔNG TIN, CƠ SỞ DỮ LIỆU VỀ NHÀ Ở VÀ THỊ TRƯỜNG BẤT ĐỘNG SẢN  <!-- lvl=2 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+      - Điều 71. Hệ thống thông tin về nhà ở và thị trường bất động sản  <!-- lvl=4 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+      - Điều 72. Hạ tầng kỹ thuật công nghệ thông tin và hệ thống phần mềm phục vụ quản lý, vận hành, khai thác hệ thống thông tin về nhà ở và thị trường bất động sản  <!-- lvl=4 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+      - Điều 73. Cơ sở dữ liệu về nhà ở và thị trường bất động sản  <!-- lvl=4 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+      - Điều 74. Xây dựng, quản lý, vận hành hệ thống thông tin về nhà ở và thị trường bất động sản  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 75. Khai thác hệ thống thông tin về nhà ở và thị trường bất động sản  <!-- lvl=4 i=125 sid=body[1]/p[126] src=Structure CẦN-XEM-LẠI -->
+      - Điều 76. Kinh phí xây dựng, quản lý, vận hành và khai thác hệ thống thông tin về nhà ở và thị trường bất động sản  <!-- lvl=4 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+  - Chương IX QUẢN LÝ NHÀ NƯỚC VỀ KINH DOANH BẤT ĐỘNG SẢN  <!-- lvl=2 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1 ĐIỀU TIẾT THỊ TRƯỜNG BẤT ĐỘNG SẢN  <!-- lvl=3 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Điều 77. Nguyên tắc điều tiết thị trường bất động sản  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Điều 78. Các biện pháp thực hiện điều tiết thị trường bất động sản  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Điều 79. Thẩm quyền thực hiện điều tiết thị trường bất động sản  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2 NỘI DUNG, TRÁCH NHIỆM QUẢN LÝ NHÀ NƯỚC VỀ KINH DOANH BẤT ĐỘNG SẢN  <!-- lvl=3 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Điều 80. Nội dung quản lý nhà nước về kinh doanh bất động sản  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Điều 81. Trách nhiệm quản lý nhà nước về kinh doanh bất động sản  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+  - Chương X ĐIỀU KHOẢN THI HÀNH  <!-- lvl=2 i=135 sid=body[1]/p[136] src=Structure CẦN-XEM-LẠI -->
+      - Điều 82. Hiệu lực thi hành  <!-- lvl=4 i=135 sid=body[1]/p[136] src=Structure CẦN-XEM-LẠI -->
+      - Điều 83. Quy định chuyển tiếp  <!-- lvl=4 i=135 sid=body[1]/p[136] src=Structure CẦN-XEM-LẠI -->
+
+> 104 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

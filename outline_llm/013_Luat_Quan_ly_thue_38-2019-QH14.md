@@ -1,0 +1,182 @@
+# Cấu trúc: 013_Luat_Quan_ly_thue_38-2019-QH14.docx
+
+  - Chương I NHỮNG QUY ĐỊNH CHUNG  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 1. Phạm vi điều chỉnh Luật này quy định việc quản lý các loại thuế, các khoản thu khác thuộc ngân sách nhà nước.  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 2. Đối tượng áp dụng  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 3. Giải thích từ ngữ Trong Luật này, các từ ngữ dưới đây được hiểu như sau:  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 4. Nội dung quản lý thuế  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 5. Nguyên tắc quản lý thuế  <!-- lvl=4 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Điều 6. Các hành vi bị nghiêm cấm trong quản lý thuế  <!-- lvl=4 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Điều 7. Đồng tiền khai thuế, nộp thuế  <!-- lvl=4 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Điều 8. Giao dịch điện tử trong lĩnh vực thuế  <!-- lvl=4 i=13 sid=body[1]/p[14] src=Structure CẦN-XEM-LẠI -->
+      - Điều 9. Quản lý rủi ro trong quản lý thuế  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Điều 10. Xây dựng lực lượng quản lý thuế  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Điều 11. Hiện đại hóa công tác quản lý thuế  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Điều 12. Hợp tác quốc tế về thuế của cơ quan quản lý thuế  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Điều 13. Kế toán, thống kê về thuế  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+  - Chương II NHIỆM VỤ, QUYỀN HẠN VÀ TRÁCH NHIỆM CỦA CƠ QUAN, TỔ CHỨC, CÁ NHÂN TRONG QUẢN LÝ THUẾ  <!-- lvl=2 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Điều 14. Nhiệm vụ, quyền hạn của Chính phủ  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Điều 15. Nhiệm vụ, quyền hạn, trách nhiệm của Bộ, cơ quan ngang Bộ, cơ quan thuộc Chính phủ  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 16. Quyền của người nộp thuế  <!-- lvl=4 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+      - Điều 17. Trách nhiệm của người nộp thuế  <!-- lvl=4 i=27 sid=body[1]/p[28] src=Structure CẦN-XEM-LẠI -->
+      - Điều 18. Nhiệm vụ của cơ quan quản lý thuế  <!-- lvl=4 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+      - Điều 19. Quyền hạn của cơ quan quản lý thuế  <!-- lvl=4 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+      - Điều 20. Nhiệm vụ, quyền hạn của Hội đồng nhân dân, Ủy ban nhân dân các cấp  <!-- lvl=4 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+      - Điều 21. Nhiệm vụ, quyền hạn của Kiểm toán nhà nước  <!-- lvl=4 i=33 sid=body[1]/p[34] src=Structure CẦN-XEM-LẠI -->
+      - Điều 22. Nhiệm vụ, quyền hạn của Thanh tra nhà nước  <!-- lvl=4 i=33 sid=body[1]/p[34] src=Structure CẦN-XEM-LẠI -->
+      - Điều 23. Nhiệm vụ, quyền hạn của cơ quan điều tra, Viện kiểm sát, Tòa án Cơ quan điều tra, Viện kiểm sát, Tòa án, trong phạm vi nhiệm vụ, quyền hạn của mình, có trách nhiệm tiếp nhận, xử lý, giải quyết tin báo, tố giác tội phạm và kiến nghị khởi tố, khởi tố, điều tra, truy tố, xét xử kịp thời, nghiêm minh tội phạm trong lĩnh vực thuế theo quy định của pháp luật và thông báo kết quả xử lý cho cơ quan quản lý thuế.  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 24. Nhiệm vụ, quyền hạn của Mặt trận Tổ quốc Việt Nam  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 25. Nhiệm vụ, quyền hạn của tổ chức chính trị xã hội - nghề nghiệp, tổ chức xã hội, tổ chức xã hội - nghề nghiệp  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 26. Nhiệm vụ, quyền hạn của cơ quan thông tin, báo chí  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 27. Nhiệm vụ, quyền hạn của ngân hàng thương mại  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 28. Hội đồng tư vấn thuế xã, phường, thị trấn  <!-- lvl=4 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+      - Điều 29. Nhiệm vụ, quyền hạn của tổ chức, cá nhân khác  <!-- lvl=4 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+  - Chương III ĐĂNG KÝ THUẾ  <!-- lvl=2 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+      - Điều 30. Đối tượng đăng ký thuế và cấp mã số thuế  <!-- lvl=4 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+      - Điều 31. Hồ sơ đăng ký thuế lần đầu  <!-- lvl=4 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+      - Điều 32. Địa điểm nộp hồ sơ đăng ký thuế lần đầu  <!-- lvl=4 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+      - Điều 33. Thời hạn đăng ký thuế lần đầu  <!-- lvl=4 i=43 sid=body[1]/p[44] src=Structure CẦN-XEM-LẠI -->
+      - Điều 34. Cấp giấy chứng nhận đăng ký thuế  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 35. Sử dụng mã số thuế  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 36. Thông báo thay đổi thông tin đăng ký thuế  <!-- lvl=4 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+      - Điều 37. Thông báo khi tạm ngừng hoạt động, kinh doanh  <!-- lvl=4 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+      - Điều 38. Đăng ký thuế trong trường hợp tổ chức lại doanh nghiệp  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Điều 39. Chấm dứt hiệu lực mã số thuế  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Điều 40. Khôi phục mã số thuế  <!-- lvl=4 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Điều 41. Trách nhiệm của Bộ trưởng Bộ Tài chính, cơ quan thuế trong việc đăng ký thuế  <!-- lvl=4 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+  - Chương IV KHAI THUẾ, TÍNH THUẾ  <!-- lvl=2 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+      - Điều 42. Nguyên tắc khai thuế, tính thuế  <!-- lvl=4 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+      - Điều 43. Hồ sơ khai thuế  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Điều 44. Thời hạn nộp hồ sơ khai thuế  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 45. Địa điểm nộp hồ sơ khai thuế  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 46. Gia hạn nộp hồ sơ khai thuế  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Điều 47. Khai bổ sung hồ sơ khai thuế  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Điều 48. Trách nhiệm của cơ quan quản lý thuế trong việc tiếp nhận hồ sơ khai thuế  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+  - Chương V ẤN ĐỊNH THUẾ  <!-- lvl=2 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Điều 49. Nguyên tắc ấn định thuế  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Điều 50. Ấn định thuế đối với người nộp thuế trong trường hợp vi phạm pháp luật về thuế  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Điều 51. Xác định mức thuế đối với hộ kinh doanh, cá nhân kinh doanh nộp thuế theo phương pháp khoán thuế  <!-- lvl=4 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+      - Điều 52. Ấn định thuế đối với hàng hóa xuất khẩu, nhập khẩu  <!-- lvl=4 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+      - Điều 53. Trách nhiệm của cơ quan quản lý thuế trong việc ấn định thuế  <!-- lvl=4 i=69 sid=body[1]/p[70] src=Structure CẦN-XEM-LẠI -->
+      - Điều 54. Trách nhiệm của người nộp thuế trong việc nộp số tiền thuế ấn định Người nộp thuế phải nộp số tiền thuế ấn định theo quyết định xử lý về thuế của cơ quan quản lý thuế; trường hợp không đồng ý với số tiền thuế do cơ quan quản lý thuế  <!-- lvl=4 i=69 sid=body[1]/p[70] src=Structure CẦN-XEM-LẠI -->
+  - Chương VI NỘP THUẾ  <!-- lvl=2 i=71 sid=body[1]/p[72] src=Structure CẦN-XEM-LẠI -->
+      - Điều 55. Thời hạn nộp thuế  <!-- lvl=4 i=71 sid=body[1]/p[72] src=Structure CẦN-XEM-LẠI -->
+      - Điều 56. Địa điểm và hình thức nộp thuế  <!-- lvl=4 i=71 sid=body[1]/p[72] src=Structure CẦN-XEM-LẠI -->
+      - Điều 57. Thứ tự thanh toán tiền thuế, tiền chậm nộp, tiền phạt  <!-- lvl=4 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+      - Điều 58. Xác định ngày đã nộp thuế  <!-- lvl=4 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+      - Điều 59. Xử lý đối với việc chậm nộp tiền thuế  <!-- lvl=4 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+      - Điều 60. Xử lý số tiền thuế, tiền chậm nộp, tiền phạt nộp thừa  <!-- lvl=4 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+      - Điều 61. Nộp thuế trong thời gian giải quyết khiếu nại, khởi kiện  <!-- lvl=4 i=79 sid=body[1]/p[80] src=Structure CẦN-XEM-LẠI -->
+      - Điều 62. Gia hạn nộp thuế  <!-- lvl=4 i=79 sid=body[1]/p[80] src=Structure CẦN-XEM-LẠI -->
+      - Điều 63. Gia hạn nộp thuế trong trường hợp đặc biệt Chính phủ quyết định việc gia hạn nộp thuế cho các đối tượng, ngành, nghề kinh doanh gặp khó khăn đặc biệt trong từng thời kỳ nhất định. Việc gia hạn nộp thuế không dẫn đến điều chỉnh dự toán thu ngân sách nhà nước đã được Quốc hội quyết định.  <!-- lvl=4 i=81 sid=body[1]/p[82] src=Structure CẦN-XEM-LẠI -->
+      - Điều 64. Hồ sơ gia hạn nộp thuế  <!-- lvl=4 i=81 sid=body[1]/p[82] src=Structure CẦN-XEM-LẠI -->
+      - Điều 65. Tiếp nhận và xử lý hồ sơ gia hạn nộp thuế  <!-- lvl=4 i=81 sid=body[1]/p[82] src=Structure CẦN-XEM-LẠI -->
+  - Chương VII TRÁCH NHIỆM HOÀN THÀNH NGHĨA VỤ NỘP THUẾ  <!-- lvl=2 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+      - Điều 66. Hoàn thành nghĩa vụ nộp thuế trong trường hợp xuất cảnh  <!-- lvl=4 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+      - Điều 67. Hoàn thành nghĩa vụ nộp thuế trong trường hợp giải thể, phá sản, chấm dứt hoạt động  <!-- lvl=4 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+      - Điều 68. Hoàn thành nghĩa vụ nộp thuế trong trường hợp tổ chức lại doanh nghiệp  <!-- lvl=4 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+      - Điều 69. Hoàn thành nghĩa vụ nộp thuế trong trường hợp người nộp thuế là người đã chết, người bị Tòa án tuyên bố là đã chết, mất tích hoặc mất năng lực hành vi dân sự  <!-- lvl=4 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+  - Chương VIII THỦ TỤC HOÀN THUẾ  <!-- lvl=2 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+      - Điều 70. Các trường hợp hoàn thuế  <!-- lvl=4 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+      - Điều 71. Hồ sơ hoàn thuế  <!-- lvl=4 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+      - Điều 72. Tiếp nhận và phản hồi thông tin hồ sơ hoàn thuế  <!-- lvl=4 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+      - Điều 73. Phân loại hồ sơ hoàn thuế  <!-- lvl=4 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+      - Điều 74. Địa điểm kiểm tra hồ sơ hoàn thuế  <!-- lvl=4 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+      - Điều 75. Thời hạn giải quyết hồ sơ hoàn thuế  <!-- lvl=4 i=89 sid=body[1]/p[90] src=Structure CẦN-XEM-LẠI -->
+      - Điều 76. Thẩm quyền quyết định hoàn thuế  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 77. Thanh tra, kiểm tra sau hoàn thuế  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+  - Chương IX KHÔNG THU THUẾ, MIỄN THUẾ, GIẢM THUẾ; KHOANH TIỀN THUẾ NỢ; XÓA NỢ TIỀN THUẾ, TIỀN CHẬM NỘP, TIỀN PHẠT  <!-- lvl=2 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. KHÔNG THU THUẾ, MIỄN THUẾ, GIẢM THUẾ  <!-- lvl=3 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 78. Không thu thuế đối với hàng hóa xuất khẩu, nhập khẩu  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 79. Miễn thuế, giảm thuế  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 80. Hồ sơ miễn thuế, giảm thuế  <!-- lvl=4 i=91 sid=body[1]/p[92] src=Structure CẦN-XEM-LẠI -->
+      - Điều 81. Nộp và tiếp nhận hồ sơ miễn thuế, giảm thuế  <!-- lvl=4 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+      - Điều 82. Thời hạn giải quyết hồ sơ miễn thuế, giảm thuế đối với trường hợp cơ quan quản lý thuế quyết định số tiền thuế được miễn, giảm  <!-- lvl=4 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. KHOANH TIỀN THUẾ NỢ  <!-- lvl=3 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+      - Điều 83. Các trường hợp được khoanh tiền thuế nợ  <!-- lvl=4 i=95 sid=body[1]/p[96] src=Structure CẦN-XEM-LẠI -->
+      - Điều 84. Thủ tục, hồ sơ, thời gian, thẩm quyền khoanh nợ  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3. XÓA NỢ TIỀN THUẾ, TIỀN CHẬM NỘP, TIỀN PHẠT  <!-- lvl=3 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Điều 85. Trường hợp được xóa nợ tiền thuế, tiền chậm nộp, tiền phạt  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Điều 86. Hồ sơ xóa nợ tiền thuế, tiền chậm nộp, tiền phạt  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 87. Thẩm quyền xóa nợ tiền thuế, tiền chậm nộp, tiền phạt  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Điều 88. Trách nhiệm giải quyết hồ sơ xóa nợ tiền thuế, tiền chậm nộp, tiền phạt  <!-- lvl=4 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+  - Chương X ÁP DỤNG HÓA ĐƠN, CHỨNG TỪ ĐIỆN TỬ  <!-- lvl=2 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+      - Điều 89. Hóa đơn điện tử  <!-- lvl=4 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+      - Điều 90. Nguyên tắc lập, quản lý, sử dụng hóa đơn điện tử  <!-- lvl=4 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+      - Điều 91. Áp dụng hóa đơn điện tử khi bán hàng hóa, cung cấp dịch vụ  <!-- lvl=4 i=103 sid=body[1]/p[104] src=Structure CẦN-XEM-LẠI -->
+      - Điều 92. Dịch vụ về hóa đơn điện tử  <!-- lvl=4 i=103 sid=body[1]/p[104] src=Structure CẦN-XEM-LẠI -->
+      - Điều 93. Cơ sở dữ liệu về hóa đơn điện tử  <!-- lvl=4 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+      - Điều 94. Chứng từ điện tử  <!-- lvl=4 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+  - Chương XI THÔNG TIN NGƯỜI NỘP THUẾ  <!-- lvl=2 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 95. Hệ thống thông tin người nộp thuế  <!-- lvl=4 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 96. Xây dựng, thu thập, xử lý và quản lý hệ thống thông tin người nộp thuế  <!-- lvl=4 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 97. Trách nhiệm của người nộp thuế trong việc cung cấp thông tin  <!-- lvl=4 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 98. Trách nhiệm của tổ chức, cá nhân có liên quan trong việc cung cấp thông tin người nộp thuế  <!-- lvl=4 i=107 sid=body[1]/p[108] src=Structure CẦN-XEM-LẠI -->
+      - Điều 99. Bảo mật thông tin người nộp thuế  <!-- lvl=4 i=109 sid=body[1]/p[110] src=Structure CẦN-XEM-LẠI -->
+      - Điều 100. Công khai thông tin người nộp thuế  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+  - Chương XII TỔ CHỨC KINH DOANH DỊCH VỤ LÀM THỦ TỤC VỀ THUẾ, LÀM THỦ TỤC HẢI QUAN  <!-- lvl=2 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Điều 101. Tổ chức kinh doanh dịch vụ làm thủ tục về thuế  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Điều 102. Điều kiện cấp giấy xác nhận đủ điều kiện kinh doanh dịch vụ làm thủ tục về thuế  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Điều 103. Cấp giấy xác nhận đủ điều kiện kinh doanh dịch vụ làm thủ tục về thuế  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Điều 104. Cung cấp dịch vụ làm thủ tục về thuế  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+      - Điều 105. Chứng chỉ hành nghề dịch vụ làm thủ tục về thuế  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+      - Điều 106. Tổ chức kinh doanh dịch vụ làm thủ tục hải quan Tổ chức kinh doanh dịch vụ làm thủ tục hải quan (sau đây gọi là đại lý làm thủ tục hải quan) thực hiện theo quy định của pháp luật về hải quan.  <!-- lvl=4 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+  - Chương XIII KIỂM TRA THUẾ, THANH TRA THUẾ  <!-- lvl=2 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. QUY ĐỊNH CHUNG VỀ KIỂM TRA THUẾ, THANH TRA THUẾ  <!-- lvl=3 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+      - Điều 107. Nguyên tắc kiểm tra thuế, thanh tra thuế  <!-- lvl=4 i=115 sid=body[1]/p[116] src=Structure CẦN-XEM-LẠI -->
+      - Điều 108. Xử lý kết quả kiểm tra thuế, thanh tra thuế  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. KIỂM TRA THUẾ  <!-- lvl=3 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 109. Kiểm tra thuế tại trụ sở của cơ quan quản lý thuế  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Điều 110. Kiểm tra thuế tại trụ sở của người nộp thuế  <!-- lvl=4 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+      - Điều 111. Quyền và nghĩa vụ của người nộp thuế trong kiểm tra thuế tại trụ sở của người nộp thuế  <!-- lvl=4 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+      - Điều 112. Nhiệm vụ, quyền hạn của thủ trưởng cơ quan quản lý thuế ra quyết định kiểm tra thuế và công chức quản lý thuế trong việc kiểm tra thuế  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+    - Mục 3. THANH TRA THUẾ  <!-- lvl=3 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 113. Các trường hợp thanh tra thuế  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Điều 114. Quyết định thanh tra thuế  <!-- lvl=4 i=125 sid=body[1]/p[126] src=Structure CẦN-XEM-LẠI -->
+      - Điều 115. Thời hạn thanh tra thuế  <!-- lvl=4 i=125 sid=body[1]/p[126] src=Structure CẦN-XEM-LẠI -->
+      - Điều 116. Nhiệm vụ, quyền hạn của người ra quyết định thanh tra thuế  <!-- lvl=4 i=125 sid=body[1]/p[126] src=Structure CẦN-XEM-LẠI -->
+      - Điều 117. Nhiệm vụ, quyền hạn của trưởng đoàn thanh tra thuế, thành viên đoàn thanh tra thuế  <!-- lvl=4 i=127 sid=body[1]/p[128] src=Structure CẦN-XEM-LẠI -->
+      - Điều 118. Quyền và nghĩa vụ của đối tượng thanh tra thuế  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Điều 119. Kết luận thanh tra thuế  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Điều 120. Thanh tra lại trong hoạt động thanh tra thuế  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+    - Mục 4. BIỆN PHÁP ÁP DỤNG TRONG THANH TRA THUẾ ĐỐI VỚI TRƯỜNG HỢP CÓ DẤU HIỆU TRỐN THUẾ  <!-- lvl=3 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+      - Điều 121. Thu thập thông tin liên quan đến hành vi trốn thuế  <!-- lvl=4 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+      - Điều 122. Tạm giữ tài liệu, tang vật liên quan đến hành vi trốn thuế  <!-- lvl=4 i=135 sid=body[1]/p[136] src=Structure CẦN-XEM-LẠI -->
+      - Điều 123. Khám nơi cất giấu tài liệu, tang vật liên quan đến hành vi trốn thuế  <!-- lvl=4 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+  - Chương XIV CƯỠNG CHẾ THI HÀNH QUYẾT ĐỊNH HÀNH CHÍNH VỀ QUẢN LÝ THUẾ  <!-- lvl=2 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+      - Điều 124. Trường hợp bị cưỡng chế thi hành quyết định hành chính về quản lý thuế  <!-- lvl=4 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+      - Điều 125. Biện pháp cưỡng chế thi hành quyết định hành chính về quản lý thuế  <!-- lvl=4 i=139 sid=body[1]/p[140] src=Structure CẦN-XEM-LẠI -->
+      - Điều 126. Thẩm quyền quyết định cưỡng chế thi hành quyết định hành chính về quản lý thuế  <!-- lvl=4 i=141 sid=body[1]/p[142] src=Structure CẦN-XEM-LẠI -->
+      - Điều 127. Quyết định cưỡng chế thi hành quyết định hành chính về quản lý thuế  <!-- lvl=4 i=141 sid=body[1]/p[142] src=Structure CẦN-XEM-LẠI -->
+      - Điều 128. Trách nhiệm tổ chức thi hành quyết định cưỡng chế thi hành quyết định hành chính về quản lý thuế  <!-- lvl=4 i=143 sid=body[1]/p[144] src=Structure CẦN-XEM-LẠI -->
+      - Điều 129. Cưỡng chế bằng biện pháp trích tiền từ tài khoản, phong tỏa tài khoản của đối tượng bị cưỡng chế thi hành quyết định hành chính về quản lý thuế  <!-- lvl=4 i=143 sid=body[1]/p[144] src=Structure CẦN-XEM-LẠI -->
+      - Điều 130. Cưỡng chế bằng biện pháp khấu trừ một phần tiền lương hoặc thu nhập  <!-- lvl=4 i=145 sid=body[1]/p[146] src=Structure CẦN-XEM-LẠI -->
+      - Điều 131. Cưỡng chế bằng biện pháp dừng làm thủ tục hải quan đối với hàng hóa xuất khẩu, nhập khẩu  <!-- lvl=4 i=145 sid=body[1]/p[146] src=Structure CẦN-XEM-LẠI -->
+      - Điều 132. Cưỡng chế bằng biện pháp ngừng sử dụng hóa đơn  <!-- lvl=4 i=147 sid=body[1]/p[148] src=Structure CẦN-XEM-LẠI -->
+      - Điều 133. Cưỡng chế bằng biện pháp kê biên tài sản, bán đấu giá tài sản kê biên  <!-- lvl=4 i=147 sid=body[1]/p[148] src=Structure CẦN-XEM-LẠI -->
+      - Điều 134. Cưỡng chế bằng biện pháp thu tiền, tài sản khác của đối tượng bị cưỡng chế do cơ quan, tổ chức, cá nhân khác đang giữ  <!-- lvl=4 i=147 sid=body[1]/p[148] src=Structure CẦN-XEM-LẠI -->
+      - Điều 135. Cưỡng chế bằng biện pháp thu hồi giấy chứng nhận đăng ký doanh nghiệp, giấy chứng nhận đăng ký kinh doanh, giấy chứng nhận đăng ký hợp tác xã, giấy chứng nhận đăng ký đầu tư, giấy phép thành lập và hoạt động, giấy phép hành nghề  <!-- lvl=4 i=149 sid=body[1]/p[150] src=Structure CẦN-XEM-LẠI -->
+  - Chương XV XỬ PHẠT VI PHẠM HÀNH CHÍNH VỀ QUẢN LÝ THUẾ  <!-- lvl=2 i=151 sid=body[1]/p[152] src=Structure CẦN-XEM-LẠI -->
+    - Mục 1. QUY ĐỊNH CHUNG  <!-- lvl=3 i=151 sid=body[1]/p[152] src=Structure CẦN-XEM-LẠI -->
+      - Điều 136. Nguyên tắc xử phạt vi phạm hành chính về quản lý thuế  <!-- lvl=4 i=151 sid=body[1]/p[152] src=Structure CẦN-XEM-LẠI -->
+      - Điều 137. Thời hiệu xử phạt vi phạm hành chính về quản lý thuế  <!-- lvl=4 i=151 sid=body[1]/p[152] src=Structure CẦN-XEM-LẠI -->
+      - Điều 138. Hình thức xử phạt, mức phạt tiền và biện pháp khắc phục hậu quả  <!-- lvl=4 i=153 sid=body[1]/p[154] src=Structure CẦN-XEM-LẠI -->
+      - Điều 139. Thẩm quyền xử phạt vi phạm hành chính về quản lý thuế  <!-- lvl=4 i=153 sid=body[1]/p[154] src=Structure CẦN-XEM-LẠI -->
+      - Điều 140. Miễn tiền phạt vi phạm hành chính về quản lý thuế  <!-- lvl=4 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+    - Mục 2. HÀNH VI VI PHẠM HÀNH CHÍNH VỀ QUẢN LÝ THUẾ  <!-- lvl=3 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+      - Điều 141. Hành vi vi phạm thủ tục thuế  <!-- lvl=4 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+      - Điều 142. Hành vi khai sai dẫn đến thiếu số tiền thuế phải nộp hoặc tăng số tiền thuế được miễn, giảm, hoàn, không thu  <!-- lvl=4 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+      - Điều 143. Hành vi trốn thuế  <!-- lvl=4 i=159 sid=body[1]/p[160] src=Structure CẦN-XEM-LẠI -->
+      - Điều 144. Xử lý hành vi vi phạm của ngân hàng thương mại, người bảo lãnh nộp tiền thuế trong lĩnh vực quản lý thuế  <!-- lvl=4 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Điều 145. Xử lý hành vi vi phạm của tổ chức, cá nhân có liên quan trong lĩnh vực quản lý thuế  <!-- lvl=4 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Điều 146. Xử phạt vi phạm hành chính về phí, lệ phí, hóa đơn trong lĩnh vực quản lý thuế Việc xử phạt vi phạm hành chính về phí, lệ phí, hóa đơn trong lĩnh vực quản lý thuế thực hiện theo quy định của Chính phủ.  <!-- lvl=4 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+  - Chương XVI KHIẾU NẠI, TỐ CÁO, KHỞI KIỆN  <!-- lvl=2 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Điều 147. Khiếu nại, tố cáo  <!-- lvl=4 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Điều 148. Khởi kiện Việc khởi kiện quyết định hành chính, hành vi hành chính của cơ quan quản lý thuế, công chức quản lý thuế được thực hiện theo quy định của pháp luật về tố tụng hành chính.  <!-- lvl=4 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Điều 149. Trách nhiệm và quyền hạn của cơ quan quản lý thuế trong việc giải quyết khiếu nại về thuế  <!-- lvl=4 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+  - Chương XVII ĐIỀU KHOẢN THI HÀNH  <!-- lvl=2 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Điều 150. Bổ sung một điều vào Luật Kế toán số 88/2015/QH13 Bổ sung Điều 70a vào sau Điều 70 trong Chương IV như sau: “Điều 70a. Cung cấp dịch vụ kế toán của tổ chức kinh doanh dịch vụ làm thủ tục về thuế Tổ chức kinh doanh dịch vụ làm thủ tục về thuế được cung cấp dịch vụ kế toán cho doanh nghiệp siêu nhỏ khi có ít nhất một người có chứng chỉ kế toán viên.”.  <!-- lvl=4 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Điều 151. Hiệu lực thi hành  <!-- lvl=4 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Điều 152. Quy định chuyển tiếp  <!-- lvl=4 i=165 sid=body[1]/p[166] src=Structure CẦN-XEM-LẠI -->
+
+> 178 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

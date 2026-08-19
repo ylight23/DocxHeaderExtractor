@@ -1,0 +1,126 @@
+# Cấu trúc: 005_Luat_Dau_thau_22-2023-QH15_EN.docx
+
+  - Chapter I GENERAL PROVISIONS  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 1. Scope of regulation m .v n tV ie tna This Law prescribes the state management of bidding activities; authority and Lua responsibility of agencies, organizations and individuals in bidding activities; selection of contractors to implement bidding packages, and selection of investors to implement business investment projects.  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 2. Subjects of application This Law applies to agencies, organizations and individuals engaged or involved in bidding activities, including:  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Article 3. Application of Bidding Law, relevant laws, treaties, agreements Lua on official development assistance and concessional loans of foreign donors  <!-- lvl=4 i=5 sid=body[1]/p[6] src=Structure CẦN-XEM-LẠI -->
+      - Article 4. Interpretation of terms In this Law, the terms below shall be construed as follows:  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+- Lua 11. National bidding means bidding with the participation of domestic contractors or investors only.  <!-- lvl=1 i=11 sid=body[1]/p[12] src=Heuristic -->
+      - Article 5. Eligibility of contractors and investors 7  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Article 6. Assurance of competition in bidding  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Article 7. Bidding information  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Article 8. Provision and publishing of bidding information  <!-- lvl=4 i=23 sid=body[1]/p[24] src=Structure CẦN-XEM-LẠI -->
+      - Article 9. Handling and archiving dossiers during the selection of contractors and investors  <!-- lvl=4 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+      - Article 10. Preferences in selection of contractors or investors tV ie tna  <!-- lvl=4 i=27 sid=body[1]/p[28] src=Structure CẦN-XEM-LẠI -->
+      - Article 11. International bidding  <!-- lvl=4 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+      - Article 12. Languages used in bidding m .v n tna  <!-- lvl=4 i=33 sid=body[1]/p[34] src=Structure CẦN-XEM-LẠI -->
+      - Article 13. Currencies of bids  <!-- lvl=4 i=33 sid=body[1]/p[34] src=Structure CẦN-XEM-LẠI -->
+      - Article 14. Bid security  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Article 15. Expenses for contractor and investor selection  <!-- lvl=4 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+      - Article 16. Prohibited acts in bidding activities  <!-- lvl=4 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+      - Article 16 Lua dd) Organizations and individuals other than the selected contractors commit the prohibited acts specified in Article 16 of this Law, leading to distortion in the contractor selection results.  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Article 17. Bid cancellation  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Article 18. Cessation of bidding, non-recognition of the results of selection of contractors and investors  <!-- lvl=4 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Article 19. Expert and appraisal teams  <!-- lvl=4 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+  - Chapter II FORMS AND METHODS OF SELECTION OF CONTRACTORS, m .v n INVESTORS tV ie tna Lua  <!-- lvl=2 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+    - Section 1. FORMS OF CONTRACTOR SELECTION  <!-- lvl=3 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+      - Article 20. Forms of contractor selection  <!-- lvl=4 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+      - Article 21. Open bidding  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Article 22. Restricted bidding Restricted bidding is a form of contractor selection in which only a number of contractors meeting the requirements of a bidding package are invited to participate in the bidding, applied in the following cases: m .v n  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Article 23. Contractor appointment  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Article 24. Competitive offer Competitive offer applies to bidding packages with a value of not exceeding VND 5 billion and being: m .v n  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Article 25. Direct procurement  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Article 28. Price negotiation  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Article 26. Self-execution  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Article 27. Community participation in execution Communities or qualified workers’ teams in localities where there are bidding packages may be assigned to execute the whole or part of such bidding packages under national target programs and public investment programs in which the State and the people jointly participate, with a bidding package price of not exceeding VND 05 billion.  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Article 29. Selection of contractors in special cases  <!-- lvl=4 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+    - Section 2. CONTRACTOR OR INVESTOR SELECTION METHODS  <!-- lvl=3 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+      - Article 30. Single-stage single-envelope method  <!-- lvl=4 i=67 sid=body[1]/p[68] src=Structure CẦN-XEM-LẠI -->
+      - Article 31. Single-stage two-envelope method  <!-- lvl=4 i=69 sid=body[1]/p[70] src=Structure CẦN-XEM-LẠI -->
+      - Article 32. Two-stage single-envelope method  <!-- lvl=4 i=69 sid=body[1]/p[70] src=Structure CẦN-XEM-LẠI -->
+      - Article 33. Two-stage two-envelope method  <!-- lvl=4 i=71 sid=body[1]/p[72] src=Structure CẦN-XEM-LẠI -->
+    - Section 3. FORMS AND METHODS OF INVESTOR SELECTION  <!-- lvl=3 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+      - Article 34. Forms of investor selection  <!-- lvl=4 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+      - Article 35. Methods of investor selection  <!-- lvl=4 i=73 sid=body[1]/p[74] src=Structure CẦN-XEM-LẠI -->
+  - Chapter III CONTRACTOR SELECTION PLANS  <!-- lvl=2 i=75 sid=body[1]/p[76] src=Structure CẦN-XEM-LẠI -->
+      - Article 36. Master plan for contractor selection for a project  <!-- lvl=4 i=75 sid=body[1]/p[76] src=Structure CẦN-XEM-LẠI -->
+      - Article 37. Principles of making of contractor selection plans tV ie tna  <!-- lvl=4 i=77 sid=body[1]/p[78] src=Structure CẦN-XEM-LẠI -->
+      - Article 39. Contents of an contractor selection plan  <!-- lvl=4 i=79 sid=body[1]/p[80] src=Structure CẦN-XEM-LẠI -->
+      - Article 38. Making of contractor selection plans  <!-- lvl=4 i=79 sid=body[1]/p[80] src=Structure CẦN-XEM-LẠI -->
+      - Article 40. Approval of a contractor selection plan for a project  <!-- lvl=4 i=83 sid=body[1]/p[84] src=Structure CẦN-XEM-LẠI -->
+      - Article 41. Approval of a contractor selection plan for a procurement cost estimate  <!-- lvl=4 i=85 sid=body[1]/p[86] src=Structure CẦN-XEM-LẠI -->
+      - Article 42. Pre-bidding  <!-- lvl=4 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+  - Chapter IV PROCESS AND PROCEDURES FOR CONTRACTOR AND INVESTOR SELECTION  <!-- lvl=2 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+    - Section 1. PROCESS AND PROCEDURES FOR CONTRACTOR SELECTION  <!-- lvl=3 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+      - Article 43. Process and procedures for contractor selection  <!-- lvl=4 i=87 sid=body[1]/p[88] src=Structure CẦN-XEM-LẠI -->
+      - Article 44. Contents of bidding dossiers for contractor selection  <!-- lvl=4 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+      - Article 45. Time of contractor selection  <!-- lvl=4 i=93 sid=body[1]/p[94] src=Structure CẦN-XEM-LẠI -->
+    - Section 2. ORDER AND PROCEDURES FOR SELECTION OF INVESTORS  <!-- lvl=3 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Article 46. Order and procedures for selection of investors  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Article 47. Announcement of business investment projects  <!-- lvl=4 i=97 sid=body[1]/p[98] src=Structure CẦN-XEM-LẠI -->
+      - Article 48. Contents of a bidding dossier for investor selection  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Article 49. Time for investor selection organization  <!-- lvl=4 i=99 sid=body[1]/p[100] src=Structure CẦN-XEM-LẠI -->
+      - Article 50. Online selection of contractors or investors  <!-- lvl=4 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+    - Section 3. ONLINE BIDDING  <!-- lvl=3 i=101 sid=body[1]/p[102] src=Structure CẦN-XEM-LẠI -->
+      - Article 51. Requirements on the national bidding network  <!-- lvl=4 i=103 sid=body[1]/p[104] src=Structure CẦN-XEM-LẠI -->
+      - Article 52. Responsibilities of the organization operating the national bidding network  <!-- lvl=4 i=103 sid=body[1]/p[104] src=Structure CẦN-XEM-LẠI -->
+  - Chapter V CENTRALIZED PROCUREMENT; PROCUREMENT OF MEDICINES, CHEMICALS, MEDICAL EQUIPMENT AND TESTING SUPPLIES; PROVISION OF PUBLIC PRODUCTS AND SERVICES  <!-- lvl=2 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+      - Article 53. Centralized procurement  <!-- lvl=4 i=105 sid=body[1]/p[106] src=Structure CẦN-XEM-LẠI -->
+      - Article 54. Framework agreements  <!-- lvl=4 i=109 sid=body[1]/p[110] src=Structure CẦN-XEM-LẠI -->
+      - Article 55. Selection of contractors to provide medicines, medicals, testing supplies and medical equipment m .v n  <!-- lvl=4 i=109 sid=body[1]/p[110] src=Structure CẦN-XEM-LẠI -->
+      - Article 56. Preferences in procurement of medicines  <!-- lvl=4 i=111 sid=body[1]/p[112] src=Structure CẦN-XEM-LẠI -->
+      - Article 57. Selection of contractors providing public products and services  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VI METHODS OF EVALUATION OF BID DOSSIERS AND CONSIDERATION AND APPROVAL OF BID WINNERS  <!-- lvl=2 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+    - Section 1. METHODS OF EVALUATION OF BID DOSSIERS AND CONSIDERATION AND APPROVAL OF BID WINNERS IN CONTRACTOR SELECTION  <!-- lvl=3 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+      - Article 58. Methods of evaluation of bid dossiers for bidding packages to provide non-consultancy services, procure goods, or for construction and installation, or mixed bidding packages  <!-- lvl=4 i=113 sid=body[1]/p[114] src=Structure CẦN-XEM-LẠI -->
+      - Article 59. Methods of evaluation of bid dossiers for bidding packages to provide consultancy services  <!-- lvl=4 i=117 sid=body[1]/p[118] src=Structure CẦN-XEM-LẠI -->
+      - Article 60. Consideration and approval of bid winners for provision of consultancy services  <!-- lvl=4 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+      - Article 61. Consideration and approval of bid winners for bidding packages to provide non-consultancy services, procure goods or for construction and installation, or mixed bidding packages  <!-- lvl=4 i=119 sid=body[1]/p[120] src=Structure CẦN-XEM-LẠI -->
+      - Article 62. Methods of evaluation of bid dossiers tV ie  <!-- lvl=4 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+    - Section 2. METHODS OF EVALUATION OF BID DOSSIERS; CONSIDERATION AND APPROVAL OF BID WINNERS IN INVESTOR SELECTION m .v n tna  <!-- lvl=3 i=121 sid=body[1]/p[122] src=Structure CẦN-XEM-LẠI -->
+      - Article 63. Consideration and approval of bid winners  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VII CONTRACTS  <!-- lvl=2 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+    - Section 1. CONTRACTS WITH CONTRACTORS  <!-- lvl=3 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Article 64. Types of contract  <!-- lvl=4 i=123 sid=body[1]/p[124] src=Structure CẦN-XEM-LẠI -->
+      - Article 65. Dossiers of contracts with contractors  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Article 66. Conditions for contract signing  <!-- lvl=4 i=129 sid=body[1]/p[130] src=Structure CẦN-XEM-LẠI -->
+      - Article 67. Signing contracts with selected contractors Signing contracts between project owners and selected contractors shall be as follows:  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Article 68. Contract performance security  <!-- lvl=4 i=131 sid=body[1]/p[132] src=Structure CẦN-XEM-LẠI -->
+      - Article 69. Principles of contract performance  <!-- lvl=4 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+      - Article 70. Modification of contracts  <!-- lvl=4 i=133 sid=body[1]/p[134] src=Structure CẦN-XEM-LẠI -->
+    - Section 2. BUSINESS INVESTMENT PROJECT CONTRACTS WITH INVESTORS  <!-- lvl=3 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+      - Article 71. Signing and principles of performance of business investment project contracts  <!-- lvl=4 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+      - Article 72. Dossiers of business investment project contract A dossier of business investment project contract comprises the following documents:  <!-- lvl=4 i=137 sid=body[1]/p[138] src=Structure CẦN-XEM-LẠI -->
+      - Article 74. Terms of business investment project contracts  <!-- lvl=4 i=139 sid=body[1]/p[140] src=Structure CẦN-XEM-LẠI -->
+      - Article 73. Contents of business investment project contracts  <!-- lvl=4 i=139 sid=body[1]/p[140] src=Structure CẦN-XEM-LẠI -->
+      - Article 75. Business investment project contract performance security  <!-- lvl=4 i=141 sid=body[1]/p[142] src=Structure CẦN-XEM-LẠI -->
+      - Article 76. Modification of business investment project contracts  <!-- lvl=4 i=141 sid=body[1]/p[142] src=Structure CẦN-XEM-LẠI -->
+  - Chapter VIII RESPONSIBILITIES OF PARTIES IN BIDDING ACTIVITIES  <!-- lvl=2 i=143 sid=body[1]/p[144] src=Structure CẦN-XEM-LẠI -->
+      - Article 77. Responsibilities of a competent person  <!-- lvl=4 i=143 sid=body[1]/p[144] src=Structure CẦN-XEM-LẠI -->
+      - Article 78. Responsibilities of a project owner  <!-- lvl=4 i=145 sid=body[1]/p[146] src=Structure CẦN-XEM-LẠI -->
+- Lua 5. To decide on the response to eventualities arising in bidding.  <!-- lvl=1 i=147 sid=body[1]/p[148] src=Heuristic -->
+      - Article 79. Responsibilities of a bid solicitor  <!-- lvl=4 i=149 sid=body[1]/p[150] src=Structure CẦN-XEM-LẠI -->
+      - Article 80. Responsibilities of an expert team  <!-- lvl=4 i=151 sid=body[1]/p[152] src=Structure CẦN-XEM-LẠI -->
+      - Article 81. Responsibilities of an appraisal team  <!-- lvl=4 i=153 sid=body[1]/p[154] src=Structure CẦN-XEM-LẠI -->
+      - Article 82. Responsibilities of a contractor or an investor  <!-- lvl=4 i=153 sid=body[1]/p[154] src=Structure CẦN-XEM-LẠI -->
+  - Chapter IX STATE MANAGEMENT OF BIDDING ACTIVITIES  <!-- lvl=2 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+    - Section 1. STATE MANAGEMENT OF BIDDING  <!-- lvl=3 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+      - Article 83. Contents of state management of bidding  <!-- lvl=4 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+      - Article 84. Responsibilities of state management of bidding  <!-- lvl=4 i=155 sid=body[1]/p[156] src=Structure CẦN-XEM-LẠI -->
+      - Article 86. Inspection, examination and supervision of bidding  <!-- lvl=4 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+      - Article 85. Responsibilities of ministries, ministerial-level agencies and People’s Committees at all levels  <!-- lvl=4 i=157 sid=body[1]/p[158] src=Structure CẦN-XEM-LẠI -->
+      - Article 87. Handling of violations  <!-- lvl=4 i=159 sid=body[1]/p[160] src=Structure CẦN-XEM-LẠI -->
+    - Section 2. RESPONSE TO ARISING EVENTUALITIES AND SETTLEMENT OF APPEALS IN BIDDING  <!-- lvl=3 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Article 88. Response to arising eventualities in bidding  <!-- lvl=4 i=161 sid=body[1]/p[162] src=Structure CẦN-XEM-LẠI -->
+      - Article 90. Conditions for consideration and settlement of appeals  <!-- lvl=4 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Article 89. Settlement of appeals in bidding m .v n  <!-- lvl=4 i=163 sid=body[1]/p[164] src=Structure CẦN-XEM-LẠI -->
+      - Article 91. Procedures for settlement of appeals in contractor selection  <!-- lvl=4 i=165 sid=body[1]/p[166] src=Structure CẦN-XEM-LẠI -->
+      - Article 92. Procedures for settlement of appeals in investor selection Lua  <!-- lvl=4 i=169 sid=body[1]/p[170] src=Structure CẦN-XEM-LẠI -->
+      - Article m .v n is counted from the date on which the administrative division of the person in charge tV ie tna of appeal settlement receives the written appeal or the date on which the written appeal is submitted on the national bidding network. Lua  <!-- lvl=4 i=171 sid=body[1]/p[172] src=Structure CẦN-XEM-LẠI -->
+      - Article 93. Composition, responsibilities and operation of appeal settlement consultancy councils  <!-- lvl=4 i=171 sid=body[1]/p[172] src=Structure CẦN-XEM-LẠI -->
+      - Article 94. Rights to initiate lawsuits and to request courts to apply interim emergency measures  <!-- lvl=4 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+  - Chapter X IMPLEMENTATION PROVISIONS  <!-- lvl=2 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+      - Article 95. Effect 87  <!-- lvl=4 i=175 sid=body[1]/p[176] src=Structure CẦN-XEM-LẠI -->
+      - Article 96. Transitional provisions  <!-- lvl=4 i=177 sid=body[1]/p[178] src=Structure CẦN-XEM-LẠI -->
+
+> 120 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

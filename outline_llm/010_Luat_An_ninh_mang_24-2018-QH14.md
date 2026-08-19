@@ -1,0 +1,54 @@
+# Cấu trúc: 010_Luat_An_ninh_mang_24-2018-QH14.docx
+
+  - Chương I NHỮNG QUY ĐỊNH CHUNG  <!-- lvl=2 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 1. Phạm vi điều chỉnh Luật này quy định về hoạt động bảo vệ an ninh quốc gia và bảo đảm trật tự, an toàn xã hội trên không gian mạng; trách nhiệm của cơ quan, tổ chức, cá nhân có liên quan.  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 2. Giải thích từ ngữ Trong Luật này, các từ ngữ dưới đây được hiểu như sau:  <!-- lvl=4 i=3 sid=body[1]/p[4] src=Structure CẦN-XEM-LẠI -->
+      - Điều 3. Chính sách của Nhà nước về an ninh mạng  <!-- lvl=4 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+      - Điều 4. Nguyên tắc bảo vệ an ninh mạng  <!-- lvl=4 i=7 sid=body[1]/p[8] src=Structure CẦN-XEM-LẠI -->
+      - Điều 5. Biện pháp bảo vệ an ninh mạng  <!-- lvl=4 i=9 sid=body[1]/p[10] src=Structure CẦN-XEM-LẠI -->
+      - Điều 6. Bảo vệ không gian mạng quốc gia Nhà nước áp dụng các biện pháp để bảo vệ không gian mạng quốc gia; phòng ngừa, xử lý hành vi xâm phạm an ninh quốc gia, trật tự, an toàn xã hội, quyền và lợi ích hợp pháp của cơ quan, tổ chức, cá nhân trên không gian mạng.  <!-- lvl=4 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Điều 7. Hợp tác quốc tế về an ninh mạng  <!-- lvl=4 i=11 sid=body[1]/p[12] src=Structure CẦN-XEM-LẠI -->
+      - Điều 8. Các hành vi bị nghiêm cấm về an ninh mạng  <!-- lvl=4 i=13 sid=body[1]/p[14] src=Structure CẦN-XEM-LẠI -->
+      - Điều 9. Xử lý vi phạm pháp luật về an ninh mạng Người nào có hành vi vi phạm quy định của Luật này thì tùy theo tính chất, mức độ vi phạm mà bị xử lý kỷ luật, xử lý vi phạm hành chính hoặc bị truy cứu trách nhiệm hình sự, nếu gây thiệt hại thì phải bồi thường theo quy định của pháp luật.  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+  - Chương II BẢO VỆ AN NINH MẠNG ĐỐI VỚI HỆ THỐNG THÔNG TIN QUAN TRỌNG VỀ AN NINH QUỐC GIA  <!-- lvl=2 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Điều 10. Hệ thống thông tin quan trọng về an ninh quốc gia  <!-- lvl=4 i=15 sid=body[1]/p[16] src=Structure CẦN-XEM-LẠI -->
+      - Điều 11. Thẩm định an ninh mạng đối với hệ thống thông tin quan trọng về an ninh quốc gia  <!-- lvl=4 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
+      - Điều 12. Đánh giá điều kiện an ninh mạng đối với hệ thống thông tin quan trọng về an ninh quốc gia  <!-- lvl=4 i=19 sid=body[1]/p[20] src=Structure CẦN-XEM-LẠI -->
+      - Điều 13. Kiểm tra an ninh mạng đối với hệ thống thông tin quan trọng về an ninh quốc gia  <!-- lvl=4 i=21 sid=body[1]/p[22] src=Structure CẦN-XEM-LẠI -->
+      - Điều 14. Giám sát an ninh mạng đối với hệ thống thông tin quan trọng về an ninh quốc gia  <!-- lvl=4 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+      - Điều 15. Ứng phó, khắc phục sự cố an ninh mạng đối với hệ thống thông tin quan trọng về an ninh quốc gia  <!-- lvl=4 i=25 sid=body[1]/p[26] src=Structure CẦN-XEM-LẠI -->
+  - Chương III PHÒNG NGỪA, XỬ LÝ HÀNH VI XÂM PHẠM AN NINH MẠNG  <!-- lvl=2 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+      - Điều 16. Phòng ngừa, xử lý thông tin trên không gian mạng có nội dung tuyên truyền chống Nhà nước Cộng hòa xã hội chủ nghĩa Việt Nam; kích động gây bạo loạn, phá rối an ninh, gây rối trật tự công cộng; làm nhục, vu khống; xâm phạm trật tự quản lý kinh tế  <!-- lvl=4 i=29 sid=body[1]/p[30] src=Structure CẦN-XEM-LẠI -->
+      - Điều 17. Phòng, chống gián điệp mạng; bảo vệ thông tin thuộc bí mật nhà nước, bí mật công tác, bí mật kinh doanh, bí mật cá nhân, bí mật gia đình và đời sống riêng tư trên không gian mạng  <!-- lvl=4 i=31 sid=body[1]/p[32] src=Structure CẦN-XEM-LẠI -->
+      - Điều 18. Phòng, chống hành vi sử dụng không gian mạng, công nghệ thông tin, phương tiện điện tử để vi phạm pháp luật về an ninh quốc gia, trật tự, an toàn xã hội  <!-- lvl=4 i=35 sid=body[1]/p[36] src=Structure CẦN-XEM-LẠI -->
+      - Điều 19. Phòng, chống tấn công mạng  <!-- lvl=4 i=37 sid=body[1]/p[38] src=Structure CẦN-XEM-LẠI -->
+      - Điều 20. Phòng, chống khủng bố mạng  <!-- lvl=4 i=39 sid=body[1]/p[40] src=Structure CẦN-XEM-LẠI -->
+      - Điều 21. Phòng ngừa, xử lý tình huống nguy hiểm về an ninh mạng  <!-- lvl=4 i=41 sid=body[1]/p[42] src=Structure CẦN-XEM-LẠI -->
+      - Điều 22. Đấu tranh bảo vệ an ninh mạng  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+  - Chương IV HOẠT ĐỘNG BẢO VỆ AN NINH MẠNG  <!-- lvl=2 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 23. Triển khai hoạt động bảo vệ an ninh mạng trong cơ quan nhà nước, tổ chức chính trị ở trung ương và địa phương  <!-- lvl=4 i=45 sid=body[1]/p[46] src=Structure CẦN-XEM-LẠI -->
+      - Điều 24. Kiểm tra an ninh mạng đối với hệ thống thông tin của cơ quan, tổ chức không thuộc Danh mục hệ thống thông tin quan trọng về an ninh quốc gia  <!-- lvl=4 i=47 sid=body[1]/p[48] src=Structure CẦN-XEM-LẠI -->
+      - Điều 25. Bảo vệ an ninh mạng đối với cơ sở hạ tầng không gian mạng quốc gia, cổng kết nối mạng quốc tế  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Điều 26. Bảo đảm an ninh thông tin trên không gian mạng  <!-- lvl=4 i=49 sid=body[1]/p[50] src=Structure CẦN-XEM-LẠI -->
+      - Điều 27. Nghiên cứu, phát triển an ninh mạng  <!-- lvl=4 i=51 sid=body[1]/p[52] src=Structure CẦN-XEM-LẠI -->
+      - Điều 28. Nâng cao năng lực tự chủ về an ninh mạng  <!-- lvl=4 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+      - Điều 29. Bảo vệ trẻ em trên không gian mạng  <!-- lvl=4 i=53 sid=body[1]/p[54] src=Structure CẦN-XEM-LẠI -->
+  - Chương V BẢO ĐẢM HOẠT ĐỘNG BẢO VỆ AN NINH MẠNG  <!-- lvl=2 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Điều 30. Lực lượng bảo vệ an ninh mạng  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Điều 31. Bảo đảm nguồn nhân lực bảo vệ an ninh mạng  <!-- lvl=4 i=55 sid=body[1]/p[56] src=Structure CẦN-XEM-LẠI -->
+      - Điều 32. Tuyển chọn, đào tạo, phát triển lực lượng bảo vệ an ninh mạng  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 33. Giáo dục, bồi dưỡng kiến thức, nghiệp vụ an ninh mạng  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 34. Phổ biến kiến thức về an ninh mạng  <!-- lvl=4 i=57 sid=body[1]/p[58] src=Structure CẦN-XEM-LẠI -->
+      - Điều 35. Kinh phí bảo vệ an ninh mạng  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+  - Chương VI TRÁCH NHIỆM CỦA CƠ QUAN, TỔ CHỨC, CÁ NHÂN  <!-- lvl=2 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 36. Trách nhiệm của Bộ Công an Bộ Công an chịu trách nhiệm trước Chính phủ thực hiện quản lý nhà nước về an ninh mạng và có nhiệm vụ, quyền hạn sau đây, trừ nội dung thuộc trách nhiệm của Bộ Quốc phòng và Ban Cơ yếu Chính phủ:  <!-- lvl=4 i=59 sid=body[1]/p[60] src=Structure CẦN-XEM-LẠI -->
+      - Điều 37. Trách nhiệm của Bộ Quốc phòng Bộ Quốc phòng chịu trách nhiệm trước Chính phủ thực hiện quản lý nhà nước về an ninh mạng trong phạm vi quản lý và có nhiệm vụ, quyền hạn sau đây:  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Điều 38. Trách nhiệm của Bộ Thông tin và Truyền thông  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Điều 39. Trách nhiệm của Ban Cơ yếu Chính phủ  <!-- lvl=4 i=61 sid=body[1]/p[62] src=Structure CẦN-XEM-LẠI -->
+      - Điều 40. Trách nhiệm của Bộ, ngành, Ủy ban nhân dân cấp tỉnh Trong phạm vi nhiệm vụ, quyền hạn của mình, Bộ, ngành, Ủy ban nhân dân cấp tỉnh có trách nhiệm thực hiện công tác bảo vệ an ninh mạng đối với thông tin, hệ thống thông tin thuộc phạm vi quản lý; phối hợp với Bộ Công an thực hiện quản lý nhà nước về an ninh mạng của Bộ, ngành, địa phương.  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Điều 41. Trách nhiệm của doanh nghiệp cung cấp dịch vụ trên không gian mạng  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+      - Điều 42. Trách nhiệm của cơ quan, tổ chức, cá nhân sử dụng không gian mạng  <!-- lvl=4 i=63 sid=body[1]/p[64] src=Structure CẦN-XEM-LẠI -->
+  - Chương VII ĐIỀU KHOẢN THI HÀNH  <!-- lvl=2 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+      - Điều 43. Hiệu lực thi hành  <!-- lvl=4 i=65 sid=body[1]/p[66] src=Structure CẦN-XEM-LẠI -->
+
+> 50 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.
