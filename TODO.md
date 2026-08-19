@@ -596,3 +596,22 @@ Tiếp theo: audit phần thừa còn lại là numbered prose/list trong body; 
 ## 2026-08-14 next
 
 - World Bank constant section levels are now closed on measured sets: Eval14 Nav+level 99.1%, WB holdout full level accuracy 100%. Continue with selection/coverage, starting from 030 holdout's 10 missing headings.
+
+## 2026-08-19: `PdfBoldLabelOutline` — bug thật lộ ra khi đo `072` (xem handoff §107)
+
+Đo `072_ICP_TAG_Minutes_Mar_2025` (đáp án 27 mục) ra **P 0% R 0%** dù pipeline trả 29 mục ở gần đúng
+những đoạn kỳ vọng — không phải "route chưa bắt tới" như `080`, mà là bug thật, lần đầu lộ ra vì đây
+là file `05_bien_ban_hop` đầu tiên có khối tiêu đề đa dòng in đậm (4 dòng PDF: tên chương trình / tên
+nhóm / ngày / địa điểm). Ba vấn đề cụ thể:
+
+1. Khối tiêu đề đa dòng bị tách thành 4-5 heading giả (mỗi dòng PDF một heading), thay vì được nhận
+   ra là MỘT khối tiêu đề tài liệu cần bỏ qua.
+2. `"Session I:"`/`"Session II:"` bị cắt cụt ngay tại dấu `:` đầu tiên, mất phần tiêu đề theo sau —
+   khác hẳn mẫu `"Item N: Title."` của 073/074/075 vốn không bị cắt cụt tại `:`.
+3. Nhiều trang bị bỏ sót heading cấp-2 hoàn toàn (không chỉ bold+nghiêng như hạn chế đã biết của
+   `080`) — nghi vấn ngưỡng `≥60% alignment` bị kéo xuống dưới ngưỡng bởi chính đống heading giả ở
+   mục (1)/(2) làm loãng tỉ lệ khớp toàn tài liệu.
+
+**Chưa sửa** — cần đo trước: bao nhiêu file khác trong `05_bien_ban_hop`/`format-driven` có khối tiêu
+đề đa dòng đậm tương tự trước khi viết luật sửa (kỷ luật "đo trước khi xây"). `.key` đáp án đã có ở
+`keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key`, dùng ngay để đo khi sửa.

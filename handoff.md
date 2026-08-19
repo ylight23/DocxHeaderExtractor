@@ -7815,3 +7815,60 @@ Test mới: `SessionCodeOutlineTests.Nhan_ma_phien_va_cat_ranh_gioi_bang_cum_ngu
 **Còn treo:** chưa có đáp án người kiểm cho `071/076-079` (mới đọc 5 ca từ `071` bằng mắt để thiết kế
 luật, chưa chấm bằng `.key` chính thức) — chưa được nói "đã chốt". Việc 3/5 hôm nay sẽ bù việc này
 cho `072/075/080`; `071/076-079` có thể theo sau cùng chuẩn.
+
+## §107. Việc 3/5: đáp án người kiểm cho `072/075/080` — và một bug thật do chính việc đo lộ ra
+
+**Trước khi đo: binary `dhx.cmd` cũ (`out-vulkan/dhx.exe`) không khớp source hiện tại.** Lần chạy
+`eval` đầu tiên cho ra 0% ở CẢ 5 file kể cả `073/074` (vốn đã biết là 100%) — dấu hiệu rõ đây là lỗi
+đo chứ không phải lỗi hệ thống thật, vì một route đã xác nhận đúng trước đó không thể tự nhiên hỏng.
+Kiểm bảng cột output thấy thiếu hẳn 2 cột `Nav`/`Nav cấp` mà `EvalRunner.cs` nguồn hiện tại chắc chắn
+có → `dhx.cmd` đang ưu tiên `out-vulkan\dhx.exe` (build cũ, xem thứ tự dò trong chính file `.cmd`)
+thay vì Release mới. `dotnet build -c Release` rồi gọi thẳng
+`src/DocxHeaderExtractor.Cli/bin/Release/net9.0/dhx.exe` mới ra số thật. **Bài học lặp lại cho phiên
+sau:** một lượt đo cho ra 0% đồng loạt trên cả file đã biết đúng là tín hiệu "đang đo sai công cụ",
+không phải "mọi thứ đều hỏng" — kiểm cấu hình/binary trước khi tin con số.
+
+**080** (đã đọc PDF từ phiên trước, đo lại bằng binary đúng): P 16% · R 33,3% · Nav 33,3% · đúng cấp
+100%. Đúng như đã biết: `PdfBoldLabelOutline` loại bold+nghiêng để tránh khối quyết định dạng
+blockquote, nhưng loại nhầm luôn 6 heading khu vực hợp lệ (cũng bold+nghiêng) dưới "Regional progress
+reports", và cắt cụt "Annex 1:"/"Annex 2:" sớm hơn tiêu đề đầy đủ trên trang.
+
+**075** (biên bản FORTIS GC, đọc mới 4 trang PDF): P 58,3% · R 77,8% · Nav 77,8% · đúng cấp 100%.
+Khá hơn 080 nhiều — 5/6 mục `Item N:` khớp đúng 100% (trang 2 "Item 2/3" và trang 3 "Item 4/5/6" đều
+khớp cả). Lệch tập trung ở 2 chỗ: (1) trang 1 — khối tiêu đề "MEETING MINUTES / Governing Committee
+(GC)..." sinh thêm heading giả bên cạnh "Opening:"/"Present:"/"Item 1:"; (2) trang 4 (phụ lục
+"Attachment:Agreed Agenda") — đáp án gộp cả trang vào MỘT heading theo đúng tiền lệ 080, nhưng
+`PdfBoldLabelOutline` tách trang này thành nhiều heading con (khớp tiêu đề nội bộ "AGENDA for FIRST
+MEETING" riêng) → vừa thừa vừa thiếu tại đúng đoạn đó. Đây là lựa chọn đáp án có thể tranh luận (ghi
+rõ trong comment `.key`), không phải điểm số sai.
+
+**072** (biên bản ICP TAG, đọc mới 15 trang PDF, 27 heading) — **P 0% R 0%, dù đáp án 27 mục và
+pipeline trả 29 mục ở gần đúng những đoạn kỳ vọng.** Đây không phải "route chưa bắt được" như 080 mà
+là một bug thật, khác loại, lộ ra lần đầu vì đây là file `05_bien_ban_hop` ĐẦU TIÊN có khối tiêu đề
+đa dòng in đậm (page 1: "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM" / "TECHNICAL ADVISORY
+GROUP" / "MARCH 7-8, 2025" / "New York - Hybrid" — 4 dòng PDF riêng, tất cả đậm):
+
+1. **Khối tiêu đề bị tách thành 4-5 heading giả**, mỗi dòng PDF một heading riêng — bộ máy gộp-đoạn-
+   đậm không nhận ra đây là MỘT khối tiêu đề tài liệu, không phải chuỗi nhãn kế tiếp nhau.
+2. **"Session I:"/"Session II:" bị cắt cụt ngay tại dấu `:`**, mất phần tiêu đề theo sau ("Welcome
+   and meeting objectives", "Update on the ICP 2021 Cycle") — khác hẳn cách `PdfBoldLabelOutline` xử
+   lý đúng mẫu "Item N: Title." của 073/074/075 (dấu `:` ở đó KHÔNG cắt cụt). Nghi vấn: dòng PDF
+   "Session I: Welcome and meeting objectives" được coi là một nhãn ngắn rồi dừng sớm tại dấu `:` đầu
+   tiên, khác dòng "Item 1: Document Approval." vốn có toàn bộ câu nằm trong cùng một chuỗi bold ngắn
+   không có khoảng trắng lớn giữa mã và tiêu đề.
+3. **Cả một số trang bị bỏ sót hoàn toàn** (trang 3/4/6/9/10 — "2. Regional updates" và 6 khu vực,
+   "2. Forthcoming Research Topics", "2. A Survey Based Approach...", "4. Treatment of Negative
+   Expenditures...") — cùng họ với hạn chế bold+nghiêng của 080, nhưng ở đây rộng hơn: nhiều mục cấp-2
+   thường (không nghiêng) cũng biến mất, gợi ý ngưỡng "≥60% alignment" của bộ lọc có thể bị kéo xuống
+   dưới ngưỡng bởi chính đống heading giả ở mục (1)/(2) làm loãng tỉ lệ khớp toàn tài liệu.
+
+**Không sửa `PdfBoldLabelOutline` trong việc 3/5 này** — phạm vi việc 3/5 là lấy đáp án đo thật, không
+phải vá route; đây là phát hiện MỚI cần đo kỹ hơn (bao nhiêu file khác trong `05_bien_ban_hop` có khối
+tiêu đề đa dòng đậm tương tự?) trước khi viết code sửa, đúng kỷ luật "đo trước khi xây". Ghi vào
+`TODO.md` làm việc riêng, không gộp vào việc 3/5.
+
+**Tổng kết việc 3/5:** cả 3 file (`072/075/080`) đã có `.key` người kiểm đầy đủ trong
+`keys/format-driven-human/`, đã đo bằng binary đúng, số liệu trung thực kèm cấu hình
+(`--no-llm`, `.verify-build/format-driven-eval/`). Không có file nào đạt "đã chốt" — cả 3 đều còn
+khoảng trống đã ghi rõ nguyên nhân. **555 test xanh** (không đổi so với §106, việc 3/5 không thêm
+code sản xuất).
