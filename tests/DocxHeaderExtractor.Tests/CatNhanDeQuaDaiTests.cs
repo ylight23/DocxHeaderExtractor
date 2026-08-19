@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Core.Pipeline;
+﻿using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -21,10 +21,41 @@ public class CatNhanDeQuaDaiTests
         var text = Dai("Section I: Overview.",
             "The Bank offers borrowers loans with long maturities and flexible terms.");
 
-        var (heading, body) = AdministrativeOutline.SplitHeadingBody(text);
+        var (heading, body) = AdministrativeOutline.SplitHeadingBody(text, nguongNhanDe: 60);
 
         Assert.Equal("Section I: Overview.", heading);
         Assert.NotNull(body);
+    }
+
+    /// <summary>
+    /// <b>Ngưỡng do TÀI LIỆU khai, không phải hằng số.</b> Cùng một đoạn văn bản: tài liệu có nhan
+    /// đề ngắn thì nó bị cắt, tài liệu có nhan đề dài thì không. Đây là test giết đột biến "quay
+    /// lại một ngưỡng ký tự cố định".
+    /// </summary>
+    [Fact]
+    public void Nguong_den_tu_tai_lieu_khong_phai_hang_so()
+    {
+        var text = Dai("Section I: Overview.",
+            "The Bank offers borrowers loans with long maturities and flexible terms.");
+
+        Assert.NotNull(AdministrativeOutline.SplitHeadingBody(text, 60).Body);
+        Assert.Null(AdministrativeOutline.SplitHeadingBody(text, 10_000).Body);
+        Assert.Null(AdministrativeOutline.SplitHeadingBody(text, 0).Body);
+    }
+
+    /// <summary>
+    /// Ngưỡng đo từ chính tài liệu: trung vị độ dài đơn vị nhân một tỉ lệ. Mẫu quá nhỏ thì trả 0,
+    /// và nơi gọi sẽ KHÔNG cắt gì — thà giữ nguyên còn hơn cắt theo con số bịa.
+    /// </summary>
+    [Fact]
+    public void Do_nguong_tu_chinh_tai_lieu()
+    {
+        var donVi = Enumerable.Repeat("Điều 1. Một nhan đề ngắn", 20).ToList();
+
+        var nguong = AdministrativeOutline.NguongNhanDe(donVi);
+
+        Assert.Equal((int)(donVi[0].Length * AdministrativeOutline.NguongTheoTrungVi), nguong);
+        Assert.Equal(0, AdministrativeOutline.NguongNhanDe(donVi.Take(3)));
     }
 
     /// <summary>
@@ -37,7 +68,7 @@ public class CatNhanDeQuaDaiTests
     {
         const string text = "Điều 4. Áp dụng Bộ luật dân sự. Quy định chung.";
 
-        var (heading, body) = AdministrativeOutline.SplitHeadingBody(text);
+        var (heading, body) = AdministrativeOutline.SplitHeadingBody(text, nguongNhanDe: 200);
 
         Assert.Equal(text, heading);
         Assert.Null(body);
@@ -53,7 +84,7 @@ public class CatNhanDeQuaDaiTests
         var text = Dai("Báo cáo quân khu: 01, QK5: 05; QK9: 04",
             "Số liệu chi tiết theo từng đơn vị trực thuộc trong kỳ báo cáo.");
 
-        var (heading, _) = AdministrativeOutline.SplitHeadingBody(text);
+        var (heading, _) = AdministrativeOutline.SplitHeadingBody(text, nguongNhanDe: 60);
 
         Assert.Equal("Báo cáo quân khu", heading);
     }
@@ -68,7 +99,7 @@ public class CatNhanDeQuaDaiTests
         var text = Dai("Circular No. 5 of the ministry",
             "quy định chi tiết việc áp dụng cho từng nhóm đối tượng cụ thể trong kỳ.");
 
-        var (heading, _) = AdministrativeOutline.SplitHeadingBody(text);
+        var (heading, _) = AdministrativeOutline.SplitHeadingBody(text, nguongNhanDe: 60);
 
         Assert.StartsWith("Circular No. 5", heading, StringComparison.Ordinal);
     }
@@ -79,7 +110,7 @@ public class CatNhanDeQuaDaiTests
     {
         var text = Dai(". A", "Phần thân bài dài phía sau dùng để vượt ngưỡng độ dài của luật.");
 
-        var (heading, _) = AdministrativeOutline.SplitHeadingBody(text);
+        var (heading, _) = AdministrativeOutline.SplitHeadingBody(text, nguongNhanDe: 60);
 
         Assert.True(heading.Count(char.IsLetter) >= 2);
     }

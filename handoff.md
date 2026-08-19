@@ -9024,3 +9024,46 @@ nhiều section không được nhận**. Nên thứ tự bắt buộc là:
 2. Rồi mới bỏ trang mục lục (việc precision).
 
 Làm ngược thứ tự thì bước 2 luôn tụt Nav, và §128 sẽ luôn loại nó.
+
+## §130 — Bỏ ngưỡng cắt cố định: thang đo do CHÍNH tài liệu khai ra
+
+Yêu cầu người dùng: không hardcode về cắt dòng.
+
+### Thay gì
+
+`CatKhiQuaDai` (§125) dùng `ParagraphHeadingSplitter.MaxHeadingLength = 200` — một con số ký tự
+cố định cho mọi tài liệu. Thay bằng `AdministrativeOutline.NguongNhanDe(donVi)`: **trung vị độ dài
+các đơn vị của chính tài liệu**, nhân `NguongTheoTrungVi = 2.0`. Mẫu dưới 8 đơn vị thì trả 0 và
+nơi gọi KHÔNG cắt gì — thà giữ nguyên còn hơn cắt theo con số bịa.
+
+Cơ sở: đo phân bố độ dài mục trong từng tài liệu cho thấy nhan đề SẠCH dồn quanh trung vị, phần
+dính thân bài nằm hẳn ở đuôi.
+
+| tài liệu | p25 | p50 | p75 | p90 | max |
+|---|--:|--:|--:|--:|--:|
+| `010_Luat_An_ninh` | 43 | **58** | 102 | 231 | 349 |
+| `025_ND_47` | 44 | **57** | 85 | 170 | 398 |
+| `056_OpenStax` (đúng 46/46) | 20 | **29** | 38 | 46 | **58** |
+| `036_WB_Plant` | 20 | **29** | 43 | 66 | 369 |
+
+`056` dài nhất chỉ 58 trong khi trung vị 29 — không đơn vị nào của nó vượt ngưỡng, nên luật không
+thể chạm vào file đang đúng trọn.
+
+### Đo — và một cái bẫy đo lường
+
+| thước | hardcode 200 (§125) | ngưỡng động |
+|---|---|---|
+| mục dài **> 200 ký tự** | **16,3%** | 21,5% |
+| mục dài **gấp đôi trung vị tài liệu** | 22,2% | **19,4%** |
+
+Hai thước cho hai kết luận ngược nhau. Thước thứ nhất **thiên vị theo cấu tạo**: luật hardcode 200
+tối ưu chính cái mốc 200 mà nó bị chấm. Thước đúng cho một luật tương đối là thước tương đối, và
+theo đó ngưỡng động thắng.
+
+Bốn bộ đáp án **y hệt** — đúng như mong đợi: quét tỉ lệ `K ∈ {1,0; 1,25; 1,5; 2,0}` cho kết quả
+GIỐNG NHAU trên `010`/`025`/`056`/`036`, vì với `"Điều 2. Đối tượng áp dụng Nghị định này…"` thì
+**không có ranh giới câu nào để cắt**, ngưỡng bao nhiêu cũng vậy. Ngưỡng chỉ quyết định ở tài liệu
+CÓ ranh giới câu.
+
+610 test xanh. Đột biến: bỏ chốt mẫu tối thiểu → **đỏ**; bỏ chốt `nguong <= 0` → **đỏ**. Có test
+ghim "cùng một đoạn, ngưỡng nhỏ thì cắt, ngưỡng lớn thì không" để giết đột biến quay lại hằng số.

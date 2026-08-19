@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Core.Models;
+﻿using DocxHeaderExtractor.Core.Models;
 using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -44,6 +44,15 @@ public static class TypedNumberingOutline
         var seen = new HashSet<(int Index, string Text)>();
         var usePartSectionLevels = PartSectionOutline.HasStrongSignal(document);
 
+        // Ngưỡng "nhan đề đã dính thân bài" do CHÍNH tài liệu khai ra — trung vị độ dài các đơn vị
+        // sau khi cắt, nhân một tỉ lệ. Không có hằng số ký tự nào ở đây.
+        var nguong = AdministrativeOutline.NguongNhanDe(
+            document.Paragraphs
+                .Where(x => !x.Corrupt && x.TableDepth == 0 && !x.InTableOfContents)
+                .SelectMany(x => splitMergedParagraphs
+                    ? ParagraphHeadingSplitter.Segments(StripPageArtifacts(x.Text ?? string.Empty))
+                    : [StripPageArtifacts(x.Text ?? string.Empty)]));
+
         foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
         {
             if (p.Corrupt || p.TableDepth > 0 || p.InTableOfContents || string.IsNullOrWhiteSpace(p.Text)) continue;
@@ -61,7 +70,7 @@ public static class TypedNumberingOutline
                 if (HasZeroArabicPathComponent(token, seg)) continue;
                 if (LooksLikeNumericMeasurement(token, seg)) continue;
 
-                var split = SplitTypedHeadingBody(token, seg);
+                var split = SplitTypedHeadingBody(token, seg, nguong);
                 if (!seen.Add((p.Index, split.Heading))) continue;
                 result.Add(new HeadingRecord
                 {
@@ -93,7 +102,7 @@ public static class TypedNumberingOutline
         TextOffsetSpan? HeadingSpan,
         TextOffsetSpan? BodySpan);
 
-    internal static TypedHeadingBodySplit SplitTypedHeadingBody(NumberToken token, string text)
+    internal static TypedHeadingBodySplit SplitTypedHeadingBody(NumberToken token, string text, int nguongNhanDe = 0)
     {
         if (token is { Kind: NumberKind.Arabic, Depth: >= 2 } &&
             TextLayoutSectionPageRx.Match(text) is { Success: true } match)
@@ -108,7 +117,7 @@ public static class TypedNumberingOutline
                 new TextOffsetSpan(match.Groups["body"].Index, text.Length));
         }
 
-        var (heading, splitBody) = AdministrativeOutline.SplitHeadingBody(text);
+        var (heading, splitBody) = AdministrativeOutline.SplitHeadingBody(text, nguongNhanDe);
         var bodyStart = splitBody is null ? -1 : text.Length - splitBody.Length;
         return new TypedHeadingBodySplit(
             heading,

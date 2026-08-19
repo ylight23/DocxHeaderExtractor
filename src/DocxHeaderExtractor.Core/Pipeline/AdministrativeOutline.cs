@@ -56,6 +56,9 @@ public static class AdministrativeOutline
         List<HeadingRecord> result = [];
         List<(int Rank, int Level)> stack = [];
 
+        // Ngưỡng nhan đề do CHÍNH tài liệu khai ra, không phải hằng số ký tự.
+        var nguong = NguongNhanDe(units.Select(x => x.Text));
+
         foreach (var u in units)
         {
             var r = rank[u.Token.Signature];
@@ -63,7 +66,7 @@ public static class AdministrativeOutline
             var level = Math.Clamp(stack.Count > 0 ? stack[^1].Level + 1 : 1, 1, 9);
             stack.Add((r, level));
 
-            var (heading, body) = SplitHeadingBody(u.Text);
+            var (heading, body) = SplitHeadingBody(u.Text, nguong);
             var bodyStart = body is null ? -1 : u.Text.Length - body.Length;
             result.Add(new HeadingRecord
             {
@@ -109,6 +112,35 @@ public static class AdministrativeOutline
     }
 
     /// <summary>
+    /// Bội số của TRUNG VỊ độ dài đơn vị, dùng làm ngưỡng "nhan đề này đã dính thân bài".
+    /// <para>
+    /// Đây là tỉ lệ, không phải số ký tự: thang đo do chính tài liệu cung cấp. Đo phân bố độ dài
+    /// mục trên corpus cho thấy nhan đề SẠCH dồn quanh trung vị còn phần dính thân bài nằm hẳn ở
+    /// đuôi — <c>010_Luat_An_ninh</c> trung vị 58 nhưng p90 = 231; <c>025_ND_47</c> trung vị 57,
+    /// p90 = 170; trong khi <c>056_OpenStax</c> (đúng 46/46) trung vị 29 và DÀI NHẤT chỉ 58, nên
+    /// không đơn vị nào của nó vượt ngưỡng.
+    /// </para>
+    /// </summary>
+    internal const double NguongTheoTrungVi = 2.0;
+
+    /// <summary>Số đơn vị tối thiểu để trung vị có nghĩa.</summary>
+    internal const int MauToiThieu = 8;
+
+    /// <summary>
+    /// Ngưỡng độ dài nhan đề đo từ CHÍNH tài liệu: trung vị độ dài các đơn vị nhân
+    /// <see cref="NguongTheoTrungVi"/>. Mẫu quá nhỏ thì trả 0 — nơi gọi sẽ không cắt gì.
+    /// </summary>
+    internal static int NguongNhanDe(IEnumerable<string> donVi)
+    {
+        var lens = donVi.Where(x => !string.IsNullOrWhiteSpace(x))
+            .Select(x => x.Length).OrderBy(x => x).ToList();
+
+        if (lens.Count < MauToiThieu) return 0;
+
+        return (int)(lens[lens.Count / 2] * NguongTheoTrungVi);
+    }
+
+    /// <summary>
     /// Tách nhan đề khỏi thân bài bằng RANH GIỚI CẤU TRÚC, không bằng điểm số: dấu ngắt ĐẦU TIÊN
     /// mà sau nó là số liệu. Không có thì cả lát là nhan đề.
     /// <para>
@@ -117,7 +149,7 @@ public static class AdministrativeOutline
     /// đã xảy ra ở §57.3.
     /// </para>
     /// </summary>
-    internal static (string Heading, string? Body) SplitHeadingBody(string text)
+    internal static (string Heading, string? Body) SplitHeadingBody(string text, int nguongNhanDe = 0)
     {
         for (var i = 1; i < text.Length; i++)
         {
@@ -134,7 +166,7 @@ public static class AdministrativeOutline
             return (text[..end], text[start..]);
         }
 
-        return CatKhiQuaDai(text);
+        return CatKhiQuaDai(text, nguongNhanDe);
     }
 
     /// <summary>
@@ -151,9 +183,12 @@ public static class AdministrativeOutline
     /// này không thể làm hồi quy nhóm tài liệu vốn đang đúng.
     /// </para>
     /// </summary>
-    private static (string Heading, string? Body) CatKhiQuaDai(string text)
+    private static (string Heading, string? Body) CatKhiQuaDai(string text, int nguongNhanDe)
     {
-        if (text.Length <= ParagraphHeadingSplitter.MaxHeadingLength) return (text, null);
+        // Ngưỡng KHÔNG cố định: nó do chính tài liệu khai ra qua NguongNhanDe. Bằng 0 nghĩa là
+        // nơi gọi không đo được (mẫu quá nhỏ), và khi đó không cắt gì — thà giữ nguyên còn hơn
+        // cắt theo một con số bịa.
+        if (nguongNhanDe <= 0 || text.Length <= nguongNhanDe) return (text, null);
 
         for (var i = 1; i < text.Length - 2; i++)
         {
