@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.AgentHarness;
+﻿using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Tests;
@@ -354,6 +354,47 @@ public sealed class AgentHarnessTests : IDisposable
             e.Stage == "action.fake_write" && e.Kind == AgentRunEventKind.Skipped);
     }
 
+    /// <summary>
+    /// <b>Mặt còn lại của cổng (§109 tầng 2).</b> Mục do đường HEURISTIC dựng mà thiếu bằng chứng
+    /// KHÔNG được chặn writeback: heuristic đoán, nhưng nó không ảo giác, và cổng này là cổng chống
+    /// ảo giác. Bản cũ đếm mọi nguồn nên chặn toàn-bộ-hoặc-không-gì theo tài liệu — đo trên corpus,
+    /// 063 chặn 25/25, 030 chặn 12/12, 020 chặn 48/48, cả ba đều chạy <c>--no-llm</c> tức không có
+    /// mô hình nào tham gia.
+    /// <para>
+    /// Mục vẫn GIỮ <see cref="HeadingDecisionStatus.RequiresReview"/> để người đọc thấy nó chưa đủ
+    /// bằng chứng; chỉ khác là nó không còn khoá cửa. Đây là test giết đột biến "đếm lại mọi nguồn".
+    /// </para>
+    /// </summary>
+    [Fact]
+    public async Task Muc_heuristic_thieu_bang_chung_khong_chan_writeback()
+    {
+        using var tool = new FakeTool(Outline(
+            Heading(1, review: true, source: HeadingSource.Heuristic)));
+        using var action = new FakeActionTool();
+        var harness = Harness(tool, actionTool: action);
+
+        var result = await harness.RunAsync(Request(target: _input + ".out.docx"));
+
+        Assert.Equal(AgentRunOutcome.Completed, result.Outcome);
+        Assert.Equal(1, action.Calls);
+        Assert.NotNull(result.Writeback);
+    }
+
+    /// <summary>Mục do MÔ HÌNH dựng mà thiếu bằng chứng thì vẫn phải chặn — đó là lý do cổng tồn tại.</summary>
+    [Fact]
+    public async Task Muc_mo_hinh_thieu_bang_chung_van_chan_writeback()
+    {
+        using var tool = new FakeTool(Outline(
+            Heading(1, review: true, source: HeadingSource.Model)));
+        using var action = new FakeActionTool();
+        var harness = Harness(tool, actionTool: action);
+
+        var result = await harness.RunAsync(Request(target: _input + ".out.docx"));
+
+        Assert.Equal(AgentRunOutcome.NeedsHumanReview, result.Outcome);
+        Assert.Equal(0, action.Calls);
+    }
+
     [Fact]
     public async Task Writeback_runs_only_after_validator_and_gate_both_pass()
     {
@@ -503,12 +544,19 @@ public sealed class AgentHarnessTests : IDisposable
             },
             []);
 
-    private static HeadingRecord Heading(int index, bool review = false) => new()
+    /// <summary>
+    /// <paramref name="review"/> dựng đúng ca mà cổng nhắm tới: mục DO MÔ HÌNH dựng mà thiếu bằng
+    /// chứng, tức nghi ảo giác. Từ §109 tầng 2, cổng chỉ đếm mục nguồn <see cref="HeadingSource.Model"/>;
+    /// mục deterministic hay heuristic thiếu bằng chứng vẫn hạ tự tin nhưng không chặn writeback.
+    /// </summary>
+    private static HeadingRecord Heading(
+        int index, bool review = false, HeadingSource? source = null) => new()
     {
         Index = index,
         Level = 1,
         Text = "Mục Alpha",
         Confidence = 0.9,
+        Source = source ?? (review ? HeadingSource.Model : HeadingSource.Style),
         DecisionStatus = review
             ? HeadingDecisionStatus.RequiresReview
             : HeadingDecisionStatus.AutoAcceptedEvidence,

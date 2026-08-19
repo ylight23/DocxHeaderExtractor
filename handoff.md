@@ -7982,3 +7982,50 @@ Ba lựa chọn, cần người chọn:
    vài mục.
 3. **Tách theo nguồn** — `Model` thiếu bằng chứng thì chặn (ảo giác), `Heuristic` thiếu bằng
    chứng thì hạ tự tin nhưng không chặn writeback. Đúng ý người dùng nhất, rủi ro cao nhất.
+
+## §110 — Cổng harness tách theo NGUỒN (người dùng chọn, rủi ro đã nêu trước)
+
+Tiếp §109 tầng 2. Ba lựa chọn đã trình bày kèm rủi ro; người dùng chọn **tách theo nguồn**.
+
+### Luật mới
+
+`DocumentAgentHarness` chỉ đếm mục **do mô hình dựng** khi quyết `NeedsHumanReview`:
+
+```csharp
+var reviewCount = outline.Headings.Count(h =>
+    h.Source == HeadingSource.Model &&
+    (h.DecisionStatus == HeadingDecisionStatus.RequiresReview || h.Disputed));
+```
+
+Mục deterministic và heuristic **giữ nguyên** `DecisionStatus` và tự tin thấp — người đọc vẫn
+thấy "chưa đủ bằng chứng" — nhưng không còn khoá writeback. Cổng này là cổng chống ẢO GIÁC;
+heuristic đoán sai thì đó là lỗi luật, phải sửa ở luật, không phải khoá cửa cả tài liệu.
+
+### Đo
+
+| tài liệu | trước | sau |
+|---|---|---|
+| `063_Advanced` | `NeedsHumanReview` | **`Completed`** |
+| `030_WB_RFP` | `NeedsHumanReview` | **`Completed`** |
+| `020_TT_133` | `NeedsHumanReview` | **`Completed`** |
+| `019_TT_200` | `NeedsHumanReview` | **`Completed`** |
+| `056_OpenStax` | `NeedsHumanReview` | **`Completed`** |
+
+Bốn bộ đáp án **y hệt** — `eval` không đi qua cổng harness, nên đây là thay đổi thuần về
+quyền tác động ra ngoài, không phải về chất lượng trích xuất.
+
+### Test
+
+570 xanh. Hai test ghim hai mặt: mục heuristic thiếu bằng chứng **không** chặn writeback; mục
+mô hình thiếu bằng chứng **vẫn** chặn. Đột biến "đếm lại mọi nguồn" → **đỏ**.
+
+Ba test cũ đỏ khi đổi luật vì fixture không đặt `Source` nên rơi vào mặc định `Style`. Đã sửa
+fixture về đúng ca cổng nhắm tới (`Model`) chứ không nới assertion — hợp đồng "mục cần duyệt
+chặn writeback" vẫn được ghim nguyên.
+
+### Rủi ro đang mở, đã nêu trước khi chọn
+
+`019_TT_200` giờ ghi thẳng ra ngoài **165 mục là số thứ tự trong văn xuôi kế toán**. Cổng
+không còn chắn cái đó nữa, nên nó thành nợ của TẦNG LUẬT: phân biệt mốc cấu trúc với số thứ
+tự trong văn xuôi giờ là việc bắt buộc, không còn là việc nên làm. Dấu vết đo được ở §108:
+nhóm rác có dãy mốc **nghịch thế 32–57%**, đề mục thật tăng dần theo tài liệu.
