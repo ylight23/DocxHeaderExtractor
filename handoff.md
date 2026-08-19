@@ -7872,3 +7872,41 @@ tiêu đề đa dòng đậm tương tự?) trước khi viết code sửa, đú
 (`--no-llm`, `.verify-build/format-driven-eval/`). Không có file nào đạt "đã chốt" — cả 3 đều còn
 khoảng trống đã ghi rõ nguyên nhân. **555 test xanh** (không đổi so với §106, việc 3/5 không thêm
 code sản xuất).
+
+## §108. Việc 1/5: nhóm C (`063/019/020`) — đọc trực tiếp output, không cần `.key` để thấy là rác
+
+**Việc 1/5 hôm nay:** xác nhận bằng đáp án người kiểm xem "1.641 mốc" (đã bác ở §104-105) của
+`AdministrativeOutline` trên `063_Advanced_Linear_Algebra`, `019_TT_200-2014_Che_do_ke_toan_DN`,
+`020_TT_133-2016_Che_do_ke_toan_SME` là đúng hay rác. §105.4 mới spot-check được MỘT bất thường
+trên `019` (dãy số nhảy 44→46→48→50→68, nghi số trang công báo bị đọc thành mốc). Hôm nay đọc
+**toàn bộ output** `dhx extract --no-llm -f txt` của cả ba file trực tiếp, không suy đoán:
+
+- **`019`** (15 "mục"): **KHÔNG có mục nào là heading thật.** Mọi mục đều bắt đầu bằng dòng số
+  trang công báo dán liền vào một đoạn văn bản kế toán ngẫu nhiên phía sau, ví dụ mục #1 bắt đầu
+  `"44 CÔNG BÁO/Số 281 + 282/Ngày 28-02-2015 Đồng thời chuyển giá trị hao mòn, ghi: ..."`. §105.4 chỉ
+  bắt được BẤT THƯỜNG Ở DÃY SỐ; hôm nay xác nhận vấn đề rộng hơn nhiều — **100% mục là rác cùng một
+  khuôn**, không phải một vài ca lệch trong dãy đúng.
+- **`020`** (49 "mục", mẫu 30 mục đầu đã đọc): không phải header trang như 019, nhưng **"heading
+  text" trả về là NGUYÊN CẢ ĐOẠN VĂN BẢN dài hàng nghìn ký tự**, không phải một tiêu đề ngắn được cắt
+  ranh giới — ví dụ một "mục" là toàn bộ nội dung Điều 22 (nguyên tắc kế toán hàng tồn kho) dán liền
+  từ đầu đến cuối, không tách "Điều 22. Nguyên tắc kế toán hàng tồn kho" ra khỏi thân điều.
+- **`063`** (25 "mục", English textbook — không phải văn bản hành chính Việt Nam, lọt vào route qua
+  đường khác, không phải `AdministrativeOutline` xét theo tên biến nhưng cùng triệu chứng): CÙNG lỗi
+  như 020 — mỗi "mục" là **nguyên một CHƯƠNG SÁCH** dán liền (ví dụ mục Chapter 3 chứa toàn bộ nội
+  dung "Spectral theorems" dài ~2000 từ), không phải tiêu đề `"CHAPTER 3 Spectral theorems"` được cắt
+  gọn.
+
+**Không cần dựng `.key` đầy đủ để trả lời câu hỏi của việc 1/5.** Câu hỏi là "mốc có đúng hay rác" —
+và câu trả lời đã rõ ràng đến mức đọc trực tiếp là đủ bằng chứng, không cần đo P/R theo từng mục:
+không file nào trong ba file này có dù chỉ MỘT "mục" trông giống tiêu đề thật. Xây `.key` đầy đủ cho
+ba tài liệu này (một giáo trình dài + hai thông tư kế toán hàng chục trang) tốn công không tương xứng
+khi phát hiện chính đã là "toàn bộ route hỏng ở tầng cắt ranh giới", không phải "lệch vài điểm phần
+trăm precision/recall".
+
+**Kết luận việc 1/5:** giữ quyết định §105.5 (giữ route vì không hồi quy trên bộ đã có đáp án), nhưng
+bổ sung phát hiện MỚI và quan trọng hơn: route hiện tại **không có cơ chế cắt ranh giới tiêu đề/thân
+bài** cho nhóm văn bản dài-đoạn-gộp này — nó trả cả cụm ký tự đầu đoạn (dù đó là số trang hay toàn bộ
+nội dung điều/chương) làm "heading". Đây là CÙNG HỌ vấn đề mà `PdfBoldLabelOutline` (bold-run) và
+`SessionCodeOutline` (mã phiên D-code) đã giải cho hai nhóm khác trong `05_bien_ban_hop` — nhưng nhóm
+C cần một luật cắt khác (marker `Điều N.` cho 019/020, marker `CHAPTER N`/`Na.` cho 063), CHƯA xây,
+ghi vào `TODO.md` làm việc riêng, không gộp vào hôm nay.

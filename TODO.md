@@ -615,3 +615,15 @@ nhóm / ngày / địa điểm). Ba vấn đề cụ thể:
 **Chưa sửa** — cần đo trước: bao nhiêu file khác trong `05_bien_ban_hop`/`format-driven` có khối tiêu
 đề đa dòng đậm tương tự trước khi viết luật sửa (kỷ luật "đo trước khi xây"). `.key` đáp án đã có ở
 `keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key`, dùng ngay để đo khi sửa.
+
+## 2026-08-19: nhóm C (`063/019/020`) — route hiện tại KHÔNG cắt ranh giới tiêu đề/thân bài (xem handoff §108)
+
+Đọc trực tiếp output `dhx extract --no-llm` của `063_Advanced_Linear_Algebra`,
+`019_TT_200-2014_Che_do_ke_toan_DN`, `020_TT_133-2016_Che_do_ke_toan_SME` (không cần `.key` — vấn đề
+rõ ràng ngay khi đọc): **không file nào có dù một "mục" trông giống tiêu đề thật.** `019` trả header
+trang công báo dán liền thân bài; `020`/`063` trả NGUYÊN CẢ đoạn/chương làm "heading text", không cắt
+ranh giới tiêu đề. Route hiện tại thiếu cơ chế cắt ranh giới cho nhóm này — cùng họ vấn đề
+`PdfBoldLabelOutline`/`SessionCodeOutline` đã giải cho `05_bien_ban_hop`, nhưng cần marker khác:
+`Điều N.` cho 019/020 (thông tư kế toán), `CHAPTER N`/`Na.` cho 063 (giáo trình tiếng Anh). Chưa xây
+— đo trước theo kỷ luật đo-trước-khi-xây: cần biết bao nhiêu file khác trong `01_phap_quy`/
+`04_giao_trinh` có cùng triệu chứng "đoạn gộp không cắt ranh giới" trước khi thiết kế luật chung.
