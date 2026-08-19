@@ -8630,3 +8630,74 @@ dạng chữ của mốc.
 
 Cần kiểm trước khi cài: `HeadingRecord` có mang được offset đó không, hay phải truyền từ
 `ParagraphHeadingSplitter` / `MergedParagraphHeadings` lên.
+
+## §121 — `MergedParagraphAutoSplit`: bật tách đoạn gộp theo TỪNG tài liệu
+
+Kết quả lớn nhất của phiên. Xuất phát từ việc đo ĐỘ PHỦ thay vì tiếp tục đoán về `019`.
+
+### Lỗ hổng thật, tìm ra bằng cách phân loại cả 89 file
+
+| nhóm | số file |
+|---|---|
+| A — Word tự khai báo (`outline_level_declared`, `outline_anchor_*`) | 10 |
+| B — suy từ dạng chữ | 55 |
+| **C — dưới 8 mục, nhiều file ra ĐÚNG 1** | **24** |
+
+Nhóm C toàn luật Việt Nam: `003_Luat_Doanh_nghiep` 1 mục/220 mốc, `015_Luat_Cac_to_chuc_tin_dung`
+1/228, `055_IDA` 1/1.136. Hai file trong nhóm CÓ đáp án — `010` trả 2/50, `025` trả 1/71 — tức
+chính nhóm này dìm `ev-human` xuống 29,8%.
+
+### Nguyên nhân
+
+`010_Luat_An_ninh_mang`: **34 đoạn, 27 đoạn chứa `Điều N.`**, tầng ứng viên chấm NGUYÊN đoạn nên
+chỉ ra **2 ứng viên**. Cấu trúc nằm đó, bị chôn trong đoạn gộp của bản chuyển PDF.
+
+### Vì sao không bật `--split-merged` đại trà
+
+§113 đã bác (nổ rác 54/89). Đo lại trên bộ đáp án: bật đại trà cho `ev-human` Nav 28,2% → **98,8%**
+nhưng "tuyệt đối" tụt **1/5 → 0/5**, vì `056_OpenStax` vốn không gộp cũng bị tách và mất quy chiếu
+chỉ số.
+
+### Dấu hiệu — hai giả thuyết, một bác một dùng
+
+**BÁC: độ dài đoạn.** `056` (không được tách) **2.208** ký tự/đoạn; `010` (cần tách) **1.865** —
+file cần tách lại NGẮN hơn. Trung vị corpus 2.049.
+
+**DÙNG: tài liệu tự tố cáo bỏ sót.** So số ỨNG VIÊN với số MỐC CÓ NHÃN trong văn bản:
+
+```
+  010_Luat_An_ninh    2 ứng viên /  73 mốc =  3%   → tách
+  025_ND_47           1 ứng viên /  81 mốc =  1%   → tách
+  054_IBRD           22 ứng viên / 137 mốc = 16%   → không
+  056_OpenStax       60 ứng viên / 158 mốc = 38%   → không
+  036_WB_Plant      370 mục      / 488 mốc = 76%   → không
+```
+
+Ngưỡng 10% nằm giữa khe trống 3%–16%. Regex mốc là DẠNG (từ + số + dấu ngắt), chạy y hệt trên
+`Section 3.` tiếng Anh.
+
+### Một lỗi của tôi, bắt được nhờ chính phép đo
+
+Bản đầu gán `_options.Extraction.SplitMergedParagraphs = true` — tức sửa **options DÙNG CHUNG**,
+nên một tài liệu bật là mọi tài liệu sau đó trong cùng lượt `eval` bị bật theo. Kết quả trùng khít
+với bật đại trà (0/5), và chính sự trùng khít đó tố cáo lỗi. Sửa: biến cục bộ `tachDoanGop` truyền
+xuống `TryBuildDeclaredOutline`.
+
+### Đo cuối
+
+| bộ | trước | sau |
+|---|---|---|
+| bench (7) | F1 98,6% Nav 80,6% 6/7 | **y hệt** |
+| toc (9) | F1 99,6% Nav 99,2% 7/9 | **y hệt** |
+| fd (2) | 100% 2/2 | **y hệt** |
+| **ev-human (5)** | F1 29,8% Nav 28,2% 1/5 | F1 **42,1%** Nav **98,0%** **1/5** |
+
+`025` từ 1 mục lên **71/71** (Nav 100%). `056` giữ trọn 100% tuyệt đối. Không bộ nào hồi quy.
+
+596 test xanh. Đột biến: `MinimumCandidateShare=0.99` **đỏ**, `MinimumMarkers=1` **đỏ**, bỏ
+`Distinct()` khi đếm mốc **đỏ**.
+
+### Còn mở
+
+`092_RFC9111` trả **289** mục trên đáp án 64 (P 1%, Nav 95,3%) — tách quá tay. Nav đúng nhưng
+precision sập; đó là việc tiếp theo, không phải hồi quy so với nền (trước đó nó trả 8, Nav 9,4%).

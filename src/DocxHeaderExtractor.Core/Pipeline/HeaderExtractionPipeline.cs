@@ -440,7 +440,19 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 Log($"Đã ghi XML tinh gọn: {dump}");
             }
 
-            var declared = TryBuildDeclaredOutline(slim, modeReport);
+            // Tầng ứng viên chấm NGUYÊN đoạn, nên bản chuyển PDF gộp cả trang vào một w:p làm nó
+            // mù với cấu trúc nằm trong thân đoạn. Bật tách theo TỪNG TÀI LIỆU khi tài liệu tự tố
+            // cáo là đã bỏ sót — xem MergedParagraphAutoSplit. Bật đại trà đã bị §113 bác.
+            var tachDoanGop = _options.Extraction.SplitMergedParagraphs;
+            if (!tachDoanGop &&
+                MergedParagraphAutoSplit.ShouldSplit(slim, candidates.Count, out var soMoc))
+            {
+                tachDoanGop = true;
+                Log($"Đoạn gộp: {candidates.Count} ứng viên trên {soMoc} mốc có nhãn " +
+                    $"({(double)candidates.Count / soMoc:P0}) — bật tách đoạn gộp cho tài liệu này.");
+            }
+
+            var declared = TryBuildDeclaredOutline(slim, modeReport, tachDoanGop);
             var pdfFallback = _options.PdfTextbookFallback
                 ? PdfTextbookOutline.TryBuild(inputPath, slim, modeReport)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
@@ -528,7 +540,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // có score 0 và role Normal, nên nó không bao giờ lọt vào ứng viên để mà cứu.
             // Route text-toc là điều hướng CÓ CHỦ Ý hẹp (§ PartSectionOutline.BuildFromTextToc) —
             // quét lại toàn tài liệu ở đây sẽ kéo lại đúng loại nhiễu mà route này được chọn để né.
-            if (_options.Extraction.SplitMergedParagraphs && declared.Route != "auto:part-section-text-toc")
+            if (tachDoanGop && declared.Route != "auto:part-section-text-toc")
             {
                 var added = MergedParagraphHeadings(slim, headings);
                 if (added.Count > 0)
@@ -638,7 +650,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
     private (List<HeadingRecord>? Headings, string? Route) TryBuildDeclaredOutline(
         SlimDocument slim,
-        DocumentModeReport modeReport)
+        DocumentModeReport modeReport,
+        bool tachDoanGop)
     {
         var manual = _options.AdministrativeDeclaredOutline ||
                      _options.NumberingDeclaredOutline ||
@@ -678,13 +691,13 @@ public sealed class HeaderExtractionPipeline : IDisposable
             "manual:administrative" =>
                 AdministrativeOutline.Build(slim),
             "auto:vietnamese-administrative" =>
-                AdministrativeOutline.Build(slim, _options.Extraction.SplitMergedParagraphs),
+                AdministrativeOutline.Build(slim, tachDoanGop),
             "auto:typed-numbering" =>
-                TypedNumberingOutline.Build(slim, _options.Extraction.SplitMergedParagraphs),
+                TypedNumberingOutline.Build(slim, tachDoanGop),
             "auto:part-section-text-toc" =>
                 PartSectionOutline.BuildFromTextToc(slim),
             "auto:vietnamese-legal" =>
-                LegalStructuredOutline.Build(slim, _options.Extraction.SplitMergedParagraphs),
+                LegalStructuredOutline.Build(slim, tachDoanGop),
             _ => null,
         };
 
