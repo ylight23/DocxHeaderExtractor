@@ -732,3 +732,51 @@ một nhánh code không chạy khi LLM bật.
 2. Cơ chế ID candidate DƯỚI MỨC PARAGRAPH cho tầng `RunModelAsync`/`NeutralDocumentViewSerializer`
    (nhiều segment cùng chung một paragraph Index cần phân biệt được với model) — việc kỹ thuật đáng
    kể, tương đương quy mô đã làm cho `LlmBoundaryCutter` (§109).
+
+## 2026-08-19 (phiên song song): bóc đầu trang + cổng chặn — xem handoff §115–§120
+
+**Lưu ý đánh số:** phiên này viết §106–§111, trùng số với phiên kia. Khi hợp nhất đã dời xuống
+**§115–§120**; thông điệp commit vẫn ghi số cũ, bảng tra nằm ở đầu §115 trong `handoff.md`.
+
+### ĐÃ XONG, và nằm NGOÀI nhánh `--no-llm`
+
+Ba thay đổi dưới đây chạy trên **mọi** đường, kể cả khi LLM bật — khác với số liệu §112/§113 vốn
+chỉ phản ánh nhánh declared:
+
+1. **`RunningHeaderAudit`** (§116/§117) — bóc dòng đầu trang bị dán vào thân bài ở bản chuyển PDF.
+   Nằm trong `DocxSlimExtractor.Extract`, trước cả tầng ứng viên. Che chữ số → gom cụm thô 12 ký
+   tự → tiền tố chung tự co giãn làm cổng. Đa lượt (tối đa 3) vì một tài liệu mang nhiều biến thể
+   đầu trang. `019` sạch hoàn toàn dấu `CÔNG BÁO` (234 → 0). `ev-human` Nav 25,8 → 28,2 (F1 30,5 →
+   29,8, do `092_RFC9111` lộ thêm ứng viên); ba bộ còn lại y hệt.
+2. **Đăng ký bộ dựng deterministic vào `PrecisionAcceptanceGate`** (§118) — `PartSectionOutline` và
+   `PdfBoldLabelOutline` tự đặt `AutoAcceptedEvidence` rồi bị chính cổng ghi đè xuống
+   `RequiresReview`. Đã thêm **lưới phản chiếu**: mọi hằng `Basis` trong Core phải được cổng đăng
+   ký, quên thì test đỏ.
+3. **Cổng harness tách theo NGUỒN** (§119, người dùng quyết) — chỉ mục do `HeadingSource.Model`
+   dựng mà thiếu bằng chứng mới chặn writeback. Năm tài liệu `NeedsHumanReview` → `Completed`.
+
+### CÒN MỞ — nợ do (3) tạo ra
+
+Cổng không còn chắn mục heuristic đoán sai, nên **phân biệt mốc cấu trúc với số thứ tự trong văn
+xuôi** chuyển từ "nên làm" thành **bắt buộc**. Ba giả thuyết đã đo và BÁC, đừng thử lại (§120):
+
+| giả thuyết | vì sao bác |
+|---|---|
+| nghịch thế trong dãy mốc | nghị định thật đạt 60%, cao hơn nhóm rác 38–55% — đánh số lại theo chương là bình thường |
+| tỉ lệ bước liền bậc +1 | `001_Bo_luat_Dan_su` ra 0%, thấp hơn nhóm rác → dụng cụ đo hỏng, không tin cả hai số |
+| mốc có nhãn = cấu trúc, số trần = văn xuôi | **đã cài, `toc` hồi quy F1 99,6 → 92,5**; `036` mất 47 mục, `037` mất 55 mục, precision vẫn 100% nên chúng là đề mục THẬT. Số trần là **cấp sâu hơn** dưới mốc có nhãn, không phải rác |
+
+**Giả thuyết còn lại (H4), chưa kết luận:** khác biệt nằm ở **vị trí** chứ không ở hình dạng mốc —
+mốc của `036` mở đầu đoạn riêng, mốc `3.13.` của `019` nằm giữa đoạn gộp dài trung bình 2.043 ký
+tự. Đã thử dùng `BoundarySource == "MergedParagraphMarker"` làm tín hiệu: **đo ra 0% trên toàn bộ
+16 file kiểm**, tức trường đó không được điền trên đường này → cần tín hiệu offset khác.
+
+**Cảnh báo về dụng cụ đo:** bản kết xuất JSON toàn corpus cho `036` **370 mục**, trong khi `eval`
+cùng file báo **117**. Hai đường dùng cấu hình khác nhau; đừng so số giữa hai nguồn này.
+
+### Sự cố quy trình đã sửa
+
+`handoff.md` nằm trong xung đột merge chưa giải quyết suốt **sáu commit**; `git add -A` đã commit
+thẳng dấu `<<<<<<<`/`=======`/`>>>>>>>` vào lịch sử mà không ai nhận ra. Đã giải quyết ở `9d67aba`,
+giữ trọn vẹn cả hai phần công việc. **Bài học:** `git add -A` khi `.git/MERGE_HEAD` còn tồn tại sẽ
+âm thầm "giải quyết" xung đột bằng cách đóng gói nguyên dấu xung đột.
