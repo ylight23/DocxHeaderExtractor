@@ -34,6 +34,10 @@ public static class InlineHeadingSplitter
             // Cùng lý do "part_section_toc_text": title lấy từ bold-run PDF, đoạn body DOCX đã mất
             // hết định dạng nên splitter generic sẽ không thấy ranh giới nào tương ứng và phá title.
             if (heading.ConfidenceBasis == "pdf_bold_label") continue;
+            // SessionCodeOutline đã tự cắt ranh giới bằng cụm "Name, Organization, verb" ngay trong
+            // text DOCX (không qua PDF) — cùng lý do trên, splitter generic không có tín hiệu nào để
+            // lặp lại đúng ranh giới đó.
+            if (heading.ConfidenceBasis == "session_code_marker") continue;
             if (heading.ConfidenceBasis == "part_section_declared") continue;
             // BuildFromTextToc lấy TITLE ĐẦY ĐỦ từ TOC text, còn Index/StableId chỉ neo về đoạn
             // body xuất hiện marker (thường bị PDF cắt cụt, ví dụ "PART III"). Splitter generic so

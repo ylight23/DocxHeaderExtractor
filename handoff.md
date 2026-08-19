@@ -7764,3 +7764,54 @@ bench F1 98,6 · 5 đáp án người F1 30,5 · 9 đáp án mục lục Nav 99,
 Nhưng con số phải ghi đúng là **1/3 file**, không phải "0 → 1.641 mốc".
 
 **553 test xanh.**
+
+## §106. `SessionCodeOutline` — mã phiên "D1.00 - Title" cho nhóm ICP (071/076-079)
+
+**Việc 2/5 trong danh sách hôm nay** (5 file `05_bien_ban_hop` chưa có route: `071/076-079`, khác
+nhóm "FORTIS_GC" mà `PdfBoldLabelOutline` đã đóng). Đọc trực tiếp PDF `071_ICP_IACG_Minutes_Oct_2025`
+lộ marker `D<ngày>.<phiên> - Title` (`D1.00 -`, `D2.03 -`...) — và marker này **còn nguyên là TEXT
+trong DOCX** dù mọi định dạng ký tự đã mất (kiểm bằng grep trực tiếp, không suy đoán). Nghĩa là route
+này KHÔNG cần PDF/bold như `PdfBoldLabelOutline` — rẻ hơn hẳn.
+
+**Cài `SessionCodeOutline`:** regex marker `D\d{1,2}\.\d{2}\s*-` (không cần PDF), cắt ranh giới
+title/body bằng hình dạng "PresenterName, Organization, [động từ thường]" (câu mở đầu chuẩn của thể
+loại biên bản này, ví dụ "Marko Rissanen, World Bank, presented..."). Route mới **mặc định TẮT**
+(`PipelineOptions.SessionCodeFallback`, bật bằng `--session-code-fallback`) — chưa có đáp án người
+kiểm chính thức.
+
+**Hai lỗi thật khi đo qua ứng dụng thật (không phải chỉ đọc PDF bằng mắt), sửa cả hai:**
+
+1. Regex tên ban đầu cho phép 1-4 từ Hoa trước dấu phẩy → khớp nhầm cụm nhiều-từ-Hoa NẰM TRONG
+   chính title (`"PPP Mapping Giovanni Tonutti,"` bị đọc thành một "tên" gồm 4 từ, cắt title ngay
+   sau "Reference"). Sửa: đúng 2 từ + hạt nối họ tuỳ chọn (`de/van/von/der/bin/al`) + đồng trình bày
+   tuỳ chọn (`"and Tên Họ"`).
+2. **Bug thật, không phải góc khó:** thiếu `\s+` bắt buộc giữa từ Hoa thứ nhất và thứ hai khi nhóm
+   hạt-nối-họ không khớp — làm regex KHÔNG khớp được bất kỳ tên 2-từ đơn giản nào (`"Marko
+   Rissanen,"` fail hoàn toàn). Phát hiện bằng cách tách regex ra kiểm độc lập (throwaway console
+   app), không đoán từ log pipeline.
+
+**Đo được trên 4 dạng câu mở đầu thật lấy từ `071`:** 3/4 cắt đúng hoàn toàn (`"Global updates"`,
+`"Item Mapping"` — kể cả ca đồng trình bày `"X and Y,"`, `"Reference PPP Mapping"`). 1/4 còn lệch:
+tên 4 phần có hạt nối ở vị trí không chuẩn (`"Grégoire Mboya de Loubassou"` — hạt nối "de" nằm ở từ
+thứ 3, không phải thứ 2 như mẫu hỗ trợ) — biết giới hạn, không vá thêm (đúng "hẹp nhưng đúng phần
+lớn", không đuổi 100% bằng regex cho bài toán vốn là lý do thử LLM hôm nay).
+
+**Xung đột với `PdfBoldLabelOutline`:** cờ đó nay mặc định BẬT (phiên song song, §103) và tự kích
+hoạt trên các file này (bắt được khối tiêu đề + nhãn trần "Welcome and meeting objectives" + `DAY N:`
+trong agenda) — nhưng **bỏ sót toàn bộ mục D-code** vì chúng không bold. Ban đầu gate
+`SessionCodeOutline` sau `pdfBoldFallback.Count==0` nên không bao giờ chạy khi bold-label đã bắt
+được vài mục. Sửa: HỢP hai nguồn (`MergeBySourceIdentity`, khử trùng theo `(Index, Text)`) thay vì
+chọn một — hai nguồn bắt hai loại tín hiệu bổ sung nhau trên CÙNG tài liệu.
+
+**Đo được trên cả 5 file mục tiêu:** `071`→28, `076`→12, `077`→16, `078`→15, `079`→19 mục (trước:
+`too-few-bold-labels:0-1`, route không kích hoạt). **Không hồi quy:** WB 9-file (P 100% · R 99,2%
+· F1 99,6%, y hệt), `073`/`074` (100%/100%, y hệt).
+
+Test mới: `SessionCodeOutlineTests.Nhan_ma_phien_va_cat_ranh_gioi_bang_cum_nguoi_trinh_bay`,
+`.Khong_kich_hoat_duoi_nguong_toi_thieu_hoac_sai_mode`.
+
+**555 test xanh.**
+
+**Còn treo:** chưa có đáp án người kiểm cho `071/076-079` (mới đọc 5 ca từ `071` bằng mắt để thiết kế
+luật, chưa chấm bằng `.key` chính thức) — chưa được nói "đã chốt". Việc 3/5 hôm nay sẽ bù việc này
+cho `072/075/080`; `071/076-079` có thể theo sau cùng chuẩn.

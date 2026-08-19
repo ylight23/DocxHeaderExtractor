@@ -343,7 +343,7 @@ app.MapPost("/api/extract", async (
             var request = new DocumentAgentRequest(
                 inputPath,
                 AllowExternalDataTransfer:
-                    !options.DisableLlm && options.Backend == InferenceBackend.OpenRouter)
+                    !options.DisableLlm && options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang)
             {
                 WritebackTargetPath = writebackTarget,
             };

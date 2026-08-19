@@ -91,7 +91,7 @@ public static class EvalRunner
                 var run = await harness.RunAsync(new DocumentAgentRequest(
                     docx,
                     AllowExternalDataTransfer:
-                        !options.DisableLlm && options.Backend == InferenceBackend.OpenRouter), ct);
+                        !options.DisableLlm && options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang), ct);
                 var outline = run.Outline;
                 scores.Add(Evaluator.Score(name, outline, candidates, key));
                 if (!key.IsPartial)

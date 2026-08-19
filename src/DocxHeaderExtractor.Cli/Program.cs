@@ -497,7 +497,7 @@ static int RunTocKeys(CommandLineOptions o)
 
 static DocumentAgentRequest AgentRequest(string file, CommandLineOptions o) =>
     new(file, AllowExternalDataTransfer:
-        !o.Pipeline.DisableLlm && o.Pipeline.Backend == InferenceBackend.OpenRouter)
+        !o.Pipeline.DisableLlm && o.Pipeline.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang)
     {
         WritebackTargetPath = o.WritebackPath,
         AllowWritebackOverwrite = o.WritebackOverwrite,
