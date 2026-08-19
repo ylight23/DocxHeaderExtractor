@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using UglyToad.PdfPig;
@@ -19,6 +19,13 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// </summary>
 public static class PdfBoldLabelOutline
 {
+    /// <summary>
+    /// Chữ ký bằng chứng của bộ dựng này. Khai báo thành hằng số để
+    /// <see cref="PrecisionAcceptanceGate"/> tham chiếu được — bản cũ dùng chuỗi rời hai nơi và
+    /// cổng KHÔNG đăng ký nó, nên mọi mục của bộ dựng bị hạ khỏi tự nhận (§109).
+    /// </summary>
+    public const string Basis = "pdf_bold_label";
+
     private const double FullBoldThreshold = 0.90;
     private const int MinLeadingBoldChars = 3;
     private const int MaxHeadingChars = 180;
@@ -299,7 +306,7 @@ public static class PdfBoldLabelOutline
                 Source = HeadingSource.Structure,
                 Confidence = 0.9,
                 DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
-                ConfidenceBasis = "pdf_bold_label",
+                ConfidenceBasis = Basis,
             });
             // Không lùi lại paragraph trước — nhưng VẪN cho phép nhiều heading cùng paragraph này
             // (>= chứ không phải >), đúng thực tế nhóm tài liệu này (một trang PDF thường gộp thành

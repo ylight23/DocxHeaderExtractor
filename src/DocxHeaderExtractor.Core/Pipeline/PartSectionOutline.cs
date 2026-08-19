@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -10,6 +10,13 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// </summary>
 public static class PartSectionOutline
 {
+    /// <summary>
+    /// Chữ ký bằng chứng của bộ dựng này. Khai báo thành hằng số để
+    /// <see cref="PrecisionAcceptanceGate"/> tham chiếu được — bản cũ dùng chuỗi rời hai nơi và
+    /// cổng KHÔNG đăng ký nó, nên mọi mục của bộ dựng bị hạ khỏi tự nhận (§109).
+    /// </summary>
+    public const string Basis = "part_section_toc_text";
+
     private static readonly Regex MarkerRx = new(
         @"(?<![\p{L}\d])(?<label>PART|Section)\s+(?<num>\d{1,3}|[IVXLCDM]{1,7})(?<sep>\s*(?:[\.\-\u2013:]|\u00E2\u20AC\u201C))?\s*",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
@@ -124,7 +131,7 @@ public static class PartSectionOutline
                 StyleId = paragraph.StyleId,
                 Source = HeadingSource.Structure,
                 Confidence = 0.95,
-                ConfidenceBasis = "part_section_toc_text",
+                ConfidenceBasis = Basis,
                 BoundarySource = $"text_toc_page_{entry.Page}",
                 DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
             });

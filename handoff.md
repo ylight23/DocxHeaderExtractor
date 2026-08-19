@@ -7925,3 +7925,60 @@ ngắn nên không được đụng tới.
 nó; phần còn lại là lỗ hổng đã ghi ở §107 — phân biệt mốc cấu trúc với số thứ tự trong văn
 xuôi. Dấu vết đo được cho vòng sau: dãy mốc của nhóm rác **nghịch thế 32–57%** (`3.13` → `3.20`
 → `3.9` → `1.3`), còn đề mục thật tăng dần theo tài liệu.
+
+## §109 — Cổng chống ảo giác đang chặn nhầm luật deterministic
+
+Câu hỏi từ người dùng: cổng chặn có bị làm cứng tay quá không, vì nó chặn cả tự tin của
+harness agent, trong khi lẽ ra chỉ chặn khi LLM ảo giác. **Có. Đo được hai tầng.**
+
+### Tầng 1 — danh sách trắng trôi (ĐÃ SỬA)
+
+`PrecisionAcceptanceGate.IsDeterministicDeclaredBasis` là một danh sách trắng **chuỗi cứng**,
+bảy chữ ký. Hai bộ dựng deterministic thêm sau không được đăng ký:
+
+| bộ dựng | chữ ký | tự đặt lúc dựng | cổng ghi đè thành |
+|---|---|---|---|
+| `PartSectionOutline` | `part_section_toc_text` | `AutoAcceptedEvidence` | `RequiresReview` |
+| `PdfBoldLabelOutline` | `pdf_bold_label` | `AutoAcceptedEvidence` | `RequiresReview` |
+
+Cả hai **tự đặt** tự nhận lúc dựng rồi bị chính cổng hạ xuống — mã tự mâu thuẫn với chính nó
+và không test nào nói gì. Không có mô hình nào tham gia, nên đây là cổng chống ảo giác chặn
+nhầm đường suy luận cấu trúc.
+
+**Sửa:** đưa chữ ký thành hằng `public const string Basis` trên từng bộ dựng, cổng tham chiếu
+hằng thay vì chuỗi rời, và thêm **lưới phản chiếu**: mọi hằng `Basis` trong assembly Core phải
+được cổng đăng ký, nếu không test đỏ. Bỏ một đăng ký → **đỏ** (đã kiểm đột biến).
+
+Bốn bộ đáp án **y hệt** — hai chữ ký này không nổ trên corpus dưới `--no-llm` (quét 89 file,
+5.757 heading: 0 lượt). Tức đây là lỗi **tiềm ẩn**, sửa để nó không nổ về sau chứ không phải
+để lấy điểm hôm nay.
+
+### Tầng 2 — chặn theo TÀI LIỆU chứ không theo mục (CHƯA SỬA, cần người quyết)
+
+Quét 89 file: **366/5.757 mục bị chặn (6,4%)**, nhưng phân bố không đều chút nào:
+
+| tài liệu | bị chặn |
+|---|---|
+| `019_TT_200` | **0/165** |
+| `063_Advanced` | **25/25** |
+| `030_WB_RFP` | **12/12** |
+| `020_TT_133` | **48/48** |
+
+Toàn bộ hoặc không gì. Lý do: một tài liệu đi trọn MỘT nhánh route, nên hoặc cả tài liệu rơi
+vào chữ ký đã đăng ký, hoặc cả tài liệu rơi vào `evidence_not_calibrated`. Cộng thêm luật của
+harness — `reviewCount > 0` là cả run thành `NeedsHumanReview` — thì **một mục thiếu bằng chứng
+chặn đứng toàn bộ writeback**.
+
+**Vì sao tôi không tự sửa tầng này.** Nguyên tắc người dùng nêu ("chỉ chặn khi LLM ảo giác")
+đúng về tinh thần, nhưng hiện thực thẳng nó — *không phải Model thì tự nhận* — sẽ **tự động
+nhận 165 mục rác của `019`**, vốn là số thứ tự trong văn xuôi kế toán do đường heuristic sinh
+ra khi chạy `--no-llm`. Đường heuristic không ảo giác, nhưng nó đoán, và đoán sai nhiều.
+
+Ba lựa chọn, cần người chọn:
+
+1. **Giữ nguyên** — an toàn, nhưng harness gần như luôn `NeedsHumanReview`.
+2. **Chặn theo tỉ lệ** — chỉ `NeedsHumanReview` khi tỉ lệ mục thiếu bằng chứng vượt ngưỡng,
+   thay vì `> 0`. Giữ được fail-closed cho tài liệu thật sự mù, mở đường cho tài liệu chỉ vướng
+   vài mục.
+3. **Tách theo nguồn** — `Model` thiếu bằng chứng thì chặn (ảo giác), `Heuristic` thiếu bằng
+   chứng thì hạ tự tin nhưng không chặn writeback. Đúng ý người dùng nhất, rủi ro cao nhất.

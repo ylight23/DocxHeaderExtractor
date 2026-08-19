@@ -166,9 +166,25 @@ public static class PrecisionAcceptanceGate
     /// <summary>Ứng viên thuần heuristic vẫn giữ trần cũ: hình thức không thay được cấu trúc.</summary>
     private const double HeuristicCeiling = 0.75;
 
-    private static bool IsDeterministicDeclaredBasis(string basis) =>
+    /// <summary>
+    /// Chữ ký của các bộ dựng DETERMINISTIC — mục của chúng có bằng chứng cấu trúc, không phải
+    /// phỏng đoán ngữ nghĩa, nên đi thẳng qua cổng.
+    /// <para>
+    /// <b>Đây từng là danh sách trôi.</b> <see cref="PartSectionOutline"/> và
+    /// <see cref="PdfBoldLabelOutline"/> thêm sau và không được đăng ký; cả hai TỰ đặt
+    /// <see cref="HeadingDecisionStatus.AutoAcceptedEvidence"/> lúc dựng rồi bị chính cổng này ghi
+    /// đè xuống <see cref="HeadingDecisionStatus.RequiresReview"/>. Hệ quả đo được: tài liệu bị chặn
+    /// TOÀN BỘ hay không gì — <c>063</c> 25/25, <c>030</c> 12/12, <c>020</c> 48/48 — vì một tài liệu
+    /// đi trọn một nhánh. Không có mô hình nào tham gia (<c>--no-llm</c>), nên đây là cổng chống ảo
+    /// giác chặn nhầm đường suy luận cấu trúc. Một test phản chiếu mọi hằng
+    /// <c>Basis</c> trong assembly để danh sách không trôi lại được.
+    /// </para>
+    /// </summary>
+    internal static bool IsDeterministicDeclaredBasis(string basis) =>
         basis is "legal_marker_declared" or "typed_number_depth" or "numbering_declared" or
             "style_declared" or "outline_level_declared" or "part_section_declared" or
             "pdf_textbook_layout" ||
+        basis == PartSectionOutline.Basis ||
+        basis == PdfBoldLabelOutline.Basis ||
         basis.StartsWith("outline_anchor_", StringComparison.Ordinal);
 }
