@@ -8852,3 +8852,44 @@ Có test ghim §57.3 (luật số liệu vẫn thắng trước) và ghim `No. 5
 
 Chưa xong. Phần còn lại là đơn vị dài mà **không có dấu kết câu nào** bên trong — bảng biểu, công
 thức toán, danh mục. Cần ranh giới khác, không phải câu.
+
+## §126 — Khoản văn xuôi dài mở đầu bằng số trần: cài, đo, ĐÁNH ĐỔI SAI, đã gỡ
+
+### Giả thuyết và vì sao nó đáng thử
+
+16,3% mục còn dài sau §125 phần lớn KHÔNG phải đề mục bị dài mà là **văn xuôi bị nhận nhầm**:
+`024_ND_15-2020` ra **1.043 mục** cho một nghị định, trong đó có `"1. Nghị định này quy định hành
+vi vi phạm hành chính, hình thức xử phạt…"` dài **867 ký tự**; `091_RFC9110` ra **1.395 mục**.
+
+Luật thử: **điều kiện kép** — mở đầu bằng SỐ TRẦN *và* dài quá `MaxHeadingLength`. Điều kiện kép
+là để tránh đúng cái bẫy §120, nơi luật "số trần là văn xuôi" một mình làm `toc` tụt 99,6% → 92,5%
+vì số trần trong outline chuẩn là CẤP SÂU HƠN (`Section II.` → `1.` → `2.`) và những mục đó NGẮN.
+
+Đo trước khi cài xác nhận điều kiện kép an toàn: `010`, `025`, `056`, `036`, `037`, `026`, `027`,
+`038`, `040` gỡ **0 mục**. Toàn corpus gỡ 435/12.110 = 3,6% trên 16 file.
+
+### Đo sau khi cài
+
+| bộ | trước | sau |
+|---|---|---|
+| bench / toc / fd | — | y hệt |
+| ev-human | F1 42,1% **Nav 98,0%** | F1 **51,4%** **Nav 83,3%** |
+
+### Vì sao gỡ
+
+Toàn bộ mức tụt Nav đến từ `092_RFC9111`: 289 → 161 mục, **Nav 95,3% → 37,5%**. Những mục dài mở
+đầu bằng số trần ở RFC **là section THẬT** (`1. Purpose` + thân bài dính liền, không có ranh giới
+câu nào giữa nhan đề và thân). Xoá chúng là xoá cấu trúc.
+
+Đổi 14,7 điểm Nav lấy 9,3 điểm F1 là đánh đổi **ngược** với nguyên tắc đã dùng ở §116, nơi tôi giữ
+một luật làm F1 tụt 0,7 để Nav lên 2,4 vì Nav là thước đo đích ("đúng theo mục lục"). Giữ luật này
+sẽ là áp hai chuẩn khác nhau cho cùng một câu hỏi.
+
+### Điều học được, khác với "giả thuyết sai"
+
+Giả thuyết KHÔNG sai — 435 mục đó đúng là không phải nhan đề. Sai ở **hành động**: xoá thay vì
+cắt. Với `092`, việc đúng là tách `"1. Purpose"` khỏi thân bài, nhưng §125 không cắt được vì giữa
+nhan đề và thân **không có dấu kết câu nào**. Chừng nào chưa có ranh giới nhan đề/thân không dựa
+vào dấu câu thì xoá là lựa chọn duy nhất còn lại, và nó đắt hơn cái nó mua.
+
+Đó là việc tiếp theo: ranh giới nhan đề/thân **không dựa vào dấu câu**.
