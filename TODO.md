@@ -596,3 +596,139 @@ Tiếp theo: audit phần thừa còn lại là numbered prose/list trong body; 
 ## 2026-08-14 next
 
 - World Bank constant section levels are now closed on measured sets: Eval14 Nav+level 99.1%, WB holdout full level accuracy 100%. Continue with selection/coverage, starting from 030 holdout's 10 missing headings.
+
+## 2026-08-19: `PdfBoldLabelOutline` — bug thật lộ ra khi đo `072` (xem handoff §107)
+
+Đo `072_ICP_TAG_Minutes_Mar_2025` (đáp án 27 mục) ra **P 0% R 0%** dù pipeline trả 29 mục ở gần đúng
+những đoạn kỳ vọng — không phải "route chưa bắt tới" như `080`, mà là bug thật, lần đầu lộ ra vì đây
+là file `05_bien_ban_hop` đầu tiên có khối tiêu đề đa dòng in đậm (4 dòng PDF: tên chương trình / tên
+nhóm / ngày / địa điểm). Ba vấn đề cụ thể:
+
+1. Khối tiêu đề đa dòng bị tách thành 4-5 heading giả (mỗi dòng PDF một heading), thay vì được nhận
+   ra là MỘT khối tiêu đề tài liệu cần bỏ qua.
+2. `"Session I:"`/`"Session II:"` bị cắt cụt ngay tại dấu `:` đầu tiên, mất phần tiêu đề theo sau —
+   khác hẳn mẫu `"Item N: Title."` của 073/074/075 vốn không bị cắt cụt tại `:`.
+3. Nhiều trang bị bỏ sót heading cấp-2 hoàn toàn (không chỉ bold+nghiêng như hạn chế đã biết của
+   `080`) — nghi vấn ngưỡng `≥60% alignment` bị kéo xuống dưới ngưỡng bởi chính đống heading giả ở
+   mục (1)/(2) làm loãng tỉ lệ khớp toàn tài liệu.
+
+**Chưa sửa** — cần đo trước: bao nhiêu file khác trong `05_bien_ban_hop`/`format-driven` có khối tiêu
+đề đa dòng đậm tương tự trước khi viết luật sửa (kỷ luật "đo trước khi xây"). `.key` đáp án đã có ở
+`keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key`, dùng ngay để đo khi sửa.
+
+## 2026-08-19: nhóm C (`063/019/020`) — route hiện tại KHÔNG cắt ranh giới tiêu đề/thân bài (xem handoff §108)
+
+Đọc trực tiếp output `dhx extract --no-llm` của `063_Advanced_Linear_Algebra`,
+`019_TT_200-2014_Che_do_ke_toan_DN`, `020_TT_133-2016_Che_do_ke_toan_SME` (không cần `.key` — vấn đề
+rõ ràng ngay khi đọc): **không file nào có dù một "mục" trông giống tiêu đề thật.** `019` trả header
+trang công báo dán liền thân bài; `020`/`063` trả NGUYÊN CẢ đoạn/chương làm "heading text", không cắt
+ranh giới tiêu đề. Route hiện tại thiếu cơ chế cắt ranh giới cho nhóm này — cùng họ vấn đề
+`PdfBoldLabelOutline`/`SessionCodeOutline` đã giải cho `05_bien_ban_hop`, nhưng cần marker khác:
+`Điều N.` cho 019/020 (thông tư kế toán), `CHAPTER N`/`Na.` cho 063 (giáo trình tiếng Anh). Chưa xây
+— đo trước theo kỷ luật đo-trước-khi-xây: cần biết bao nhiêu file khác trong `01_phap_quy`/
+`04_giao_trinh` có cùng triệu chứng "đoạn gộp không cắt ranh giới" trước khi thiết kế luật chung.
+
+## 2026-08-19: `LlmBoundaryCutter` — đã đo đủ 55 ca cho backend SGLang/Qwen3.8-27B (55/55), CHƯA đo đủ cho Local (xem handoff §109/§111)
+
+**ĐÃ XONG cho backend SGLang:** chạy lại TOÀN BỘ 55 ca gốc (21 pháp quy + 20 RFC + 14 biên bản) qua
+`LlmBoundaryCutter.TryCutAsync` thật (không phải scratch harness), backend `SglangHeaderExtractor` trỏ
+gateway Qwen3.8-27B (`http://192.168.68.20/v1`, xem [[sglang-qwen-gateway]]) — **55/55 (100%)**, prompt
+giữ nguyên không tinh chỉnh lại cho Qwen. Xem handoff §111.
+
+**CÒN THIẾU:** backend Local (Llama-3.2-3B, mặc định của `PipelineOptions.Backend`) mới có mẫu 9 ca
+nhỏ (6/9, xem §109) — chưa chạy đủ 55 ca cho backend này. Không được suy diễn "55/55 trên Qwen" sang
+"chắc cũng tốt trên Local" — hai backend khác model hoàn toàn, đúng bẫy dự án đã trả giá nhiều lần.
+
+**Trước khi bật `LlmBoundaryCutFallback` mặc định:** (a) nếu triển khai này sẽ chạy backend=Sglang
+mặc định (gateway Qwen3.8-27B), có căn cứ vững để bật — số đã đo sạch. (b) nếu backend=Local (mặc
+định hiện tại của `PipelineOptions.Backend`) vẫn là đường chính, cần chạy đủ 55 ca cho Local trước —
+chưa làm.
+
+## 2026-08-19: nhóm báo cáo tài chính (`03_tai_chinh_ke_toan`) — BỐN lỗi khác nhau, chưa có đáp án, chưa xây luật (xem handoff §110)
+
+Khảo sát cả 15 file `03_tai_chinh_ke_toan` (chỉ `054` có đáp án chính thức) lộ ra BỐN nhóm lỗi khác
+hẳn nhau, không phải một vấn đề chung:
+
+1. **`041-045`** (báo cáo kiểm toán đầy đủ năm, 5-6 ứng viên/file): 100% ứng viên là dòng đầu/chân
+   trang lặp lại, không phải đề mục thật — đề mục thật KHÔNG lọt vào tập ứng viên. Lỗ hổng ở TẦNG
+   PHÁT HIỆN, không phải cắt ranh giới.
+2. **`046-050`** (báo cáo giữa kỳ, chỉ 2 ứng viên/file): cùng họ lỗ hổng phát hiện với (1), nặng hơn.
+3. **`051-052`** (Trust Fund FIS, 31-35 mục cứu theo đánh số): lẫn đề mục thật + dòng bảng dashboard
+   đọc nhầm thành đề mục (`"YoY change % 69% 48% 53% 10"`) — chưa đo tỉ lệ thật/rác trong 31-35 mục.
+4. **`053`** (MD&A, 15 mục cứu theo đánh số): marker `"SECTION N: TITLE"` thật nhưng KHÔNG cắt ranh
+   giới (nguyên cả đoạn làm heading text) — cùng họ bug với nhóm C 063/019/020 (xem mục 2026-08-19
+   phía trên), nguồn khác (`TypedNumberingOutline`/`typed_number_depth`). `LlmBoundaryCutter` (đã nối
+   hôm nay) KHÔNG chạm được vì `declared.Headings` của route này short-circuit trước `RunModelAsync`,
+   và prompt RFC đã đo khác hình dạng `"SECTION N:"` — chưa chắc khớp mà không đo riêng.
+5. **`055`** (External Review): chỉ 1 ứng viên/243 đoạn — tài liệu thực chất là 1 trang review + bảng
+   dự án lặp lại hàng chục lần, có thể KHÔNG đại diện cho lớp "báo cáo tài chính" — cân nhắc loại khỏi
+   phạm vi thay vì ép vào cùng một khuôn.
+
+**Chưa xây luật** — bốn nhóm cần bốn hướng khác nhau, gộp lại thành "một luật báo cáo tài chính" ngay
+là xây trước khi đo. Việc tiếp theo: chọn 1 file đại diện mỗi nhóm (1)/(2)/(3), đọc PDF đầy đủ, xây
+`.key`, RỒI mới thiết kế luật — đúng thứ tự đã dùng cho `05_bien_ban_hop`.
+
+## 2026-08-19: khảo sát TOÀN CORPUS (89 file, `--no-llm`) — ba lỗi hệ thống MỚI, ưu tiên theo bằng chứng (xem handoff §112)
+
+Chạy `dhx extract --no-llm` trên cả 89 file `heading_corpus_95_word`, phân loại theo (mode, ứng viên,
+tìm được, route). Ba phát hiện mới, CHƯA từng đo diện rộng trước đây:
+
+1. **`07_system_generated` (RFC) hỏng 5/5 (100%)** — `candidates=1, found=1` cho cả 5 file. Domain
+   `TypedNumbering`/RFC ĐÃ ĐO `LlmBoundaryCutter` 100% (20/20, §111) — ứng viên rõ nhất để thử nối
+   thật, nhưng `candidates=1` nghĩa là nghi cùng họ "lỗ hổng phát hiện" (không chỉ lỗ hổng cắt ranh
+   giới) — cần xác nhận trước khi kỳ vọng LlmBoundaryCutter một mình giải quyết được.
+2. **`VietnameseLegal` gần như không hoạt động trên 13/29 file `01_phap_quy`+`06_dich_song_ngu`** —
+   luật/nghị định 60-300 đoạn chỉ trích được 1-2 mục. Domain này CŨNG đã đo `LlmBoundaryCutter` 100%
+   (21/21, §111). Hai loại lỗ hổng khác nhau trong cùng nhóm (xem danh sách đầy đủ ở handoff §112):
+   - lỗ hổng PHÁT HIỆN (candidates≈found, cả hai nhỏ): `008/009/010/012/021` — cùng họ với `019/020/025`
+     đã đóng ở §108 (PDF→DOCX gộp nhiều "Điều N." vào vài đoạn khổng lồ).
+   - lỗ hổng LỌC/CẮT RANH GIỚI (candidates nhiều, found rơi về 1): `003(7→1) 013(8→1) 015(22→1)
+     081(9→1) 083(6→1) 086(10→2) 090(6→1)` — chưa xác định cơ chế lọc cụ thể.
+3. **`04_giao_trinh` (7/15 file): found VƯỢT candidates tới 10 lần** — hướng NGƯỢC (nghi thừa, không
+   thiếu). Nghi StructuralHierarchyResolver "cứu theo đánh số" bắt nhầm số hiệu Theorem/Equation/
+   Exercise trong giáo trình toán/CS làm heading. Chưa xác nhận bằng đọc trực tiếp — chỉ tín hiệu số.
+
+**Chưa xây gì** — cần đọc trực tiếp xác nhận từng phát hiện trước khi thiết kế luật, đúng thứ tự đã
+dùng hôm nay cho các nhóm khác. Thứ tự ưu tiên đề xuất: (1) RFC trước — nhóm nhỏ nhất, domain đã có
+bảng cứng sẵn; (2) VietnameseLegal — nhóm lớn nhất, tác động cao nhất nếu sửa được, nhưng cần tách
+hai loại lỗ hổng trước; (3) `04_giao_trinh` — đọc `062`/`070` (tỉ lệ cao nhất) để xác nhận giả thuyết
+trước khi kết luận.
+
+## 2026-08-19: ĐÃ LOẠI `SplitMergedParagraphs=true` làm luật chung — nổ rác trên 54/89 file (xem handoff §113)
+
+Đo trên TOÀN CORPUS (không phải 1 file như §105): bật `--split-merged` làm `found` tăng implausible
+(>50% số đoạn tài liệu) trên **54/89 file (61%)**, bao gồm cả nhóm `02_hop_dong_mua_sam` VỐN khoẻ
+(dùng làm baseline hồi quy xuyên suốt dự án — ví dụ `032`: 263→1.346). `ParagraphHeadingSplitter`
+đúng cơ chế cần cho Phát hiện 1/2 (§112) nhưng regex marker quá lỏng, khớp cả cross-reference/số
+phương trình/điều khoản phụ — không phân biệt được heading thật chỉ bằng hình dạng. **Không dùng cờ
+này làm luật chung.**
+
+**Giả thuyết CHƯA đo, hướng đi tiếp theo:** dùng `ParagraphHeadingSplitter` để MỞ RỘNG TẬP ỨNG VIÊN
+đưa cho tầng model xác minh (không dựng heading trực tiếp như hiện tại), để tầng ngữ nghĩa lọc bớt
+rác mà luật tất định không phân biệt được — đặc biệt hợp với `07_system_generated`/`VietnameseLegal`,
+đúng domain `LlmBoundaryCutter` đã đo 100% (§111). Cần test trên vài file đại diện (không phải cả 89
+— tốn nhiều lượt suy luận LLM) trước khi tin, đúng kỷ luật đo-trước-khi-xây.
+
+## 2026-08-19: đã test giả thuyết trên — kết quả LẪN, hai việc phải làm trước khi xây (xem handoff §114)
+
+Test bằng Qwen3.8-27B, prompt HEADING/NOISE đơn giản (không few-shot), trên segment gộp của `092`
+(RFC) và `010` (VietnameseLegal): `010` sạch (6/36 HEADING, bắt đúng 5/6 "Điều N." thật, 2 lỗi: 1 âm
+tính giả bỏ sót `Điều 1.`, 1 dương tính giả nhận nhầm mục con đánh số); `092` rất nhiễu (53/116) —
+nhưng lộ ra là confound của bài test, không phải LLM kém: 5 đoạn gộp đầu tiên của `092` chính là
+TRANG MỤC LỤC (nhiều mốc liên tiếp gần như không thân bài xen giữa) — khác hẳn hình dạng "heading dán
+liền thân bài" mà cả `ParagraphHeadingSplitter` lẫn `LlmBoundaryCutter` được thiết kế cho.
+
+**Phát hiện kiến trúc quan trọng hơn giả thuyết ban đầu:** route declared tự động
+(`auto:vietnamese-legal`/`auto:typed-numbering`...) CHỈ chạy khi `--no-llm`
+(`TryBuildDeclaredOutline` dòng 630: `if (!manual && (!AutoDetectDocumentMode || !DisableLlm)) return
+(null, null);`). Khi LLM bật (đường sản xuất thật), pipeline rơi thẳng vào `RunModelAsync`, và lỗ
+hổng thật nằm ở tầng `slim.Candidates` (OpenXML/heuristic) — tầng đó KHÔNG dùng
+`ParagraphHeadingSplitter`, chỉ xét nguyên đoạn. Toàn bộ số liệu §112/§113 (đo `--no-llm`) phản ánh
+một nhánh code không chạy khi LLM bật.
+
+**Hai việc phải làm trước khi xây production (chưa làm hôm nay):**
+1. Luật nhận diện "đây là trang mục lục gộp" (nhiều mốc liên tiếp, gần như không thân bài) để KHÔNG
+   trộn chung với đoạn thân bài thật khi đưa cho LLM phân loại — khác xử lý, không cùng một lượt.
+2. Cơ chế ID candidate DƯỚI MỨC PARAGRAPH cho tầng `RunModelAsync`/`NeutralDocumentViewSerializer`
+   (nhiều segment cùng chung một paragraph Index cần phân biệt được với model) — việc kỹ thuật đáng
+   kể, tương đương quy mô đã làm cho `LlmBoundaryCutter` (§109).

@@ -83,6 +83,9 @@ public sealed class CommandLineOptions
                 case "-f" or "--format": o.Format = ParseFormat(Next(a)); break;
                 case "--no-llm": o.Pipeline.DisableLlm = true; break;
                 case "--pdf-bold-fallback": o.Pipeline.PdfBoldLabelFallback = true; break;
+                case "--session-code-fallback": o.Pipeline.SessionCodeFallback = true; break;
+                case "--llm-boundary-cut-fallback": o.Pipeline.LlmBoundaryCutFallback = true; break;
+                case "--merged-paragraph-llm-fallback": o.Pipeline.MergedParagraphLlmFallback = true; break;
                 case "--openrouter":
                     o.Pipeline.Backend = InferenceBackend.OpenRouter;
                     break;
@@ -104,6 +107,25 @@ public sealed class CommandLineOptions
                 case "--lmstudio-context":
                     o.Pipeline.Backend = InferenceBackend.LmStudio;
                     o.Pipeline.LmStudio.ContextSize = int.Parse(Next(a));
+                    break;
+                case "--sglang":
+                    o.Pipeline.Backend = InferenceBackend.Sglang;
+                    break;
+                case "--sglang-model":
+                    o.Pipeline.Backend = InferenceBackend.Sglang;
+                    o.Pipeline.Sglang.Model = Next(a);
+                    break;
+                case "--sglang-endpoint":
+                    o.Pipeline.Backend = InferenceBackend.Sglang;
+                    o.Pipeline.Sglang.Endpoint = new Uri(Next(a), UriKind.Absolute);
+                    break;
+                case "--sglang-api-key":
+                    o.Pipeline.Backend = InferenceBackend.Sglang;
+                    o.Pipeline.Sglang.ApiKey = Next(a);
+                    break;
+                case "--sglang-context":
+                    o.Pipeline.Backend = InferenceBackend.Sglang;
+                    o.Pipeline.Sglang.ContextSize = int.Parse(Next(a));
                     break;
                 case "--candidates-only": o.Pipeline.ReviewAllParagraphs = false; break;
                 case "--review-all": o.Pipeline.ReviewAllParagraphs = true; break;
@@ -187,7 +209,7 @@ public sealed class CommandLineOptions
         // Áp profile RPC SAU vòng lặp, không áp ngay trong nhánh cờ backend: `--chunk-tokens 3000
         // --openrouter` từng bị chính nhánh backend ghi đè mất giá trị người dùng vừa gõ, chỉ vì
         // thứ tự hai cờ. Ở đây override tường minh luôn thắng, bất kể viết trước hay sau.
-        if (o.Pipeline.Backend is InferenceBackend.OpenRouter or InferenceBackend.LmStudio)
+        if (o.Pipeline.Backend is InferenceBackend.OpenRouter or InferenceBackend.LmStudio or InferenceBackend.Sglang)
         {
             var chunkTokens = o.Pipeline.Chunking.TokenBudget;
             o.Pipeline.Chunking.UseRemoteProfile();
@@ -237,6 +259,12 @@ public sealed class CommandLineOptions
               --lmstudio-model m    Model identifier trả bởi GET /v1/models
               --lmstudio-endpoint u Chat endpoint (mặc định http://127.0.0.1:1234/v1/chat/completions)
               --lmstudio-context n  Context đã nạp trong LM Studio (mặc định 16384)
+              --sglang              Gọi gateway SGLang/vLLM OpenAI-compatible; đọc SGLANG_ENDPOINT,
+                                    SGLANG_MODEL, SGLANG_API_KEY từ biến môi trường
+              --sglang-model m      Model identifier trên gateway (ví dụ Qwen3.8-27B)
+              --sglang-endpoint u   Chat endpoint (mặc định http://127.0.0.1:30000/v1/chat/completions)
+              --sglang-api-key k    Bearer token cho gateway
+              --sglang-context n    Context gateway khai (mặc định 8192, CHƯA đo — chỉnh theo model)
               --candidates-only      Chỉ gửi ứng viên heuristic cho model (mặc định production)
               --review-all           Gửi mọi paragraph cho model (audit/thu nhãn; rất chậm)
               --dump-chunks <thư mục> (lệnh xml) Ghi từng khối sẽ gửi cho mô hình + system prompt

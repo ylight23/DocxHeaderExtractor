@@ -193,6 +193,10 @@ public sealed class CriticTitleContradictionTests : IDisposable
                 })],
                 "{}", 0, 1, new HashSet<int>()));
 
+        public Task<string> BoundaryCutAsync(
+            string systemPrompt, string userMessage, CancellationToken ct = default) =>
+            Task.FromResult("");
+
         public void Dispose() { }
     }
 }

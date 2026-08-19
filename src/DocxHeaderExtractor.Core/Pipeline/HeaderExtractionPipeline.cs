@@ -15,6 +15,7 @@ public enum InferenceBackend
     Local,
     OpenRouter,
     LmStudio,
+    Sglang,
 }
 
 public sealed class PipelineOptions
@@ -30,6 +31,7 @@ public sealed class PipelineOptions
     public LlamaOptions Llama { get; set; } = new();
     public OpenRouterOptions OpenRouter { get; set; } = OpenRouterOptions.FromEnvironment();
     public LmStudioOptions LmStudio { get; set; } = LmStudioOptions.FromEnvironment();
+    public SglangOptions Sglang { get; set; } = SglangOptions.FromEnvironment();
     public InferenceBackend Backend { get; set; }
 
     /// <summary>Bỏ qua LLM, chỉ dùng luật (nhanh, để đối chiếu).</summary>
@@ -178,6 +180,45 @@ public sealed class PipelineOptions
     public bool PdfBoldLabelFallback { get; set; } = true;
 
     /// <summary>
+    /// Fallback thứ ba cho <c>FormatDriven</c>, KHÔNG cần PDF: mã phiên kiểu "D1.00 - Title" (World
+    /// Bank ICP IACG minutes, nhóm 071/076-079 — <see cref="PdfBoldLabelOutline"/> không kích hoạt
+    /// vì DOCX không còn bold nào để đọc, nhưng mã phiên vẫn còn nguyên là TEXT). Xem
+    /// <see cref="SessionCodeOutline"/>. Mặc định TẮT — mới cài, chưa đo qua toàn corpus.
+    /// </summary>
+    public bool SessionCodeFallback { get; set; }
+
+    /// <summary>
+    /// Tầng cắt ranh giới title/body bằng LLM few-shot cố định theo domain — chỉ chạy cho ứng viên
+    /// mà <see cref="InlineHeadingSplitter"/> KHÔNG tìm được ranh giới tất định (không phải mọi
+    /// heading dính body, chỉ phần còn lại sau khi luật rẻ hơn đã thử). Xem
+    /// <see cref="LlmBoundaryCutter"/> — bảng cứng đã đo 85,7%/95,0%/85,7% trên ba domain và thắng
+    /// retrieval động khi so đầu đối đầu (<c>docs/llm-boundary-few-shot-retrieval.md</c> §3/§4).
+    /// <para>
+    /// Mặc định TẮT — kết quả đã đo là trên HARNESS RIÊNG (55 ca cô lập, không qua pipeline thật),
+    /// chưa đo end-to-end qua route sản xuất này. Chỉ chạy khi mô hình đang bật (<c>--no-llm</c>
+    /// tắt luôn tầng này, vì đây là tầng gọi model).
+    /// </para>
+    /// </summary>
+    public bool LlmBoundaryCutFallback { get; set; }
+
+    /// <summary>
+    /// Fallback cho tài liệu PDF→DOCX gộp nhiều marker vào một đoạn (tầng ứng viên OpenXML/heuristic
+    /// không thấy vì marker nằm giữa đoạn) — đo trên toàn corpus ở handoff.md §112: 13/29 file
+    /// `01_phap_quy`+`06_dich_song_ngu`, cả 5/5 file `07_system_generated`. Dùng
+    /// <see cref="ParagraphHeadingSplitter"/> lấy segment, lọc trang mục lục, hỏi LLM phân loại từng
+    /// segment rồi cắt ranh giới bằng <see cref="LlmBoundaryCutter"/> — xem
+    /// <see cref="MergedParagraphLlmOutline"/>.
+    /// <para>
+    /// Mặc định TẮT — mới cài, đo trên 2 file (§114: 010 sạch tương đối, 092 confound bởi trang mục
+    /// lục), chưa đo qua toàn corpus hay hồi quy trên bộ eval hiện có. KHÔNG dùng
+    /// <c>ExtractionOptions.SplitMergedParagraphs</c> làm nền — cờ đó đã đo nổ rác 61% corpus ở §113;
+    /// lớp này thay bước "tin trực tiếp" bằng bước "hỏi model xác nhận", nhưng bản thân bước hỏi đó
+    /// cũng chưa đo đủ để bật mặc định.
+    /// </para>
+    /// </summary>
+    public bool MergedParagraphLlmFallback { get; set; }
+
+    /// <summary>
     /// Hậu kiểm bằng ký hiệu đánh số của chính tài liệu: cùng dạng đánh số phải cùng cấp, và
     /// dãy anh em phải liên tục từ 1. Không tốn giây suy luận nào và bắt được cả lỗi trượt cấp
     /// của mô hình lẫn tiêu đề bị tầng lọc đánh rơi — xem <see cref="NumberingAudit"/>.
@@ -295,7 +336,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
     private readonly List<OutlinePass> _passes = [];
 
     private bool BackendSendsDataExternally =>
-        !_options.DisableLlm && _options.Backend == InferenceBackend.OpenRouter;
+        !_options.DisableLlm && _options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang;
 
     private void RecordPass(string name, int chunks, int requestedParagraphs) =>
         _passes.Add(new OutlinePass(name, chunks, requestedParagraphs, BackendSendsDataExternally));
@@ -416,14 +457,26 @@ public sealed class HeaderExtractionPipeline : IDisposable
             else if (pdfBoldFallback.Reason is not "disabled" and not "no-pdf")
                 Log($"PDF bold-label fallback: bỏ qua ({pdfBoldFallback.Reason}).");
 
+            // Không gate theo pdfBoldFallback.Count==0: hai nguồn bắt hai loại tín hiệu KHÁC nhau
+            // trên cùng tài liệu (bold-label bắt được khối tiêu đề/nhãn trần, session-code bắt được
+            // các mục "D<n>.<nn> -" mà bold-label bỏ sót vì không phải bold) — hợp lại thay vì chọn
+            // một, rồi khử trùng theo (Index, Text).
+            var sessionCodeFallback = pdfFallback.Headings.Count == 0 && _options.SessionCodeFallback
+                ? SessionCodeOutline.Build(slim, modeReport)
+                : [];
+            if (sessionCodeFallback.Count > 0)
+                Log($"Session-code fallback: dùng {sessionCodeFallback.Count} heading từ mã phiên \"D<n>.<nn> -\".");
+
+            var boldAndSessionCode = MergeBySourceIdentity(pdfBoldFallback.Headings, sessionCodeFallback);
+
             List<HeadingRecord> headings = pdfFallback.Headings.Count > 0
                 ? [.. pdfFallback.Headings]
-                : pdfBoldFallback.Headings.Count > 0
-                    ? [.. pdfBoldFallback.Headings]
+                : boldAndSessionCode.Count > 0
+                    ? boldAndSessionCode
                     : declared.Headings ??
                 (_options.DisableLlm
                     ? HeuristicOnly(candidates)
-                    : await RunModelAsync(slim, candidates, quarantined, ct));
+                    : await RunModelAsync(slim, candidates, quarantined, modeReport.Mode, ct));
 
             // StructuralHierarchyResolver và TableOfContentsAnchor đều TẤT ĐỊNH và không cần mô
             // hình, nhưng cả hai nằm trong RunModelAsync nên đường --no-llm chưa bao giờ chạy
@@ -577,6 +630,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
     {
         InferenceBackend.OpenRouter => _options.OpenRouter.Model,
         InferenceBackend.LmStudio => _options.LmStudio.Model,
+        InferenceBackend.Sglang => _options.Sglang.Model,
         _ => string.IsNullOrWhiteSpace(_options.Llama.ModelPath)
             ? null
             : Path.GetFileName(_options.Llama.ModelPath),
@@ -779,6 +833,24 @@ public sealed class HeaderExtractionPipeline : IDisposable
         return string.Join(' ', normalized.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
     }
 
+    /// <summary>
+    /// Hợp hai nguồn fallback tất định bắt hai loại tín hiệu KHÁC NHAU trên cùng tài liệu (bold-run
+    /// và mã phiên "D&lt;n&gt;.&lt;nn&gt; -"), khử trùng theo (Index, Text) rồi sắp lại theo thứ tự tài liệu.
+    /// </summary>
+    private static List<HeadingRecord> MergeBySourceIdentity(
+        IReadOnlyList<HeadingRecord> a, IReadOnlyList<HeadingRecord> b)
+    {
+        if (a.Count == 0) return [.. b];
+        if (b.Count == 0) return [.. a];
+        var seen = new HashSet<(int Index, string Text)>();
+        var result = new List<HeadingRecord>();
+        foreach (var h in a.Concat(b))
+            if (seen.Add((h.Index, h.Text)))
+                result.Add(h);
+        result.Sort((x, y) => x.Index.CompareTo(y.Index));
+        return result;
+    }
+
     private static List<HeadingRecord> HeuristicOnly(IReadOnlyList<SlimParagraph> candidates) =>
     [
         .. candidates.Select(p => new HeadingRecord
@@ -797,6 +869,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
         SlimDocument slim,
         IReadOnlyList<SlimParagraph> candidates,
         IReadOnlySet<int> quarantined,
+        DocumentMode mode,
         CancellationToken ct)
     {
         var review = _options.ReviewAllParagraphs
@@ -843,6 +916,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     $"Kết nối OpenRouter: {_options.OpenRouter.Model} (ZDR, cấm thu thập dữ liệu)…",
                 InferenceBackend.LmStudio =>
                     $"Kết nối LM Studio local: {_options.LmStudio.Model} tại {_options.LmStudio.Endpoint.Authority}…",
+                InferenceBackend.Sglang =>
+                    $"Kết nối SGLang/vLLM: {_options.Sglang.Model} tại {_options.Sglang.Endpoint.Authority}…",
                 _ => $"Đang nạp mô hình: {Path.GetFileName(_options.Llama.ModelPath)} …",
             });
         var llm = await GetModelAsync(ct);
@@ -855,6 +930,22 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 : llm.SharedPrefixTokens > 0
                     ? $"Tái dùng prefill: {llm.SharedPrefixTokens} token phần chung nạp một lần cho mọi khối."
                     : "Không cắt được prompt thành phần chung — quay về nạp lại từng khối.");
+
+        // Tài liệu gộp nhiều marker vào một đoạn (§112) gần như không có ứng viên nào cho vòng lặp
+        // per-candidate bên dưới thấy — candidates<5 trên tài liệu đủ dài là dấu hiệu đó, không phải
+        // ngưỡng tuỳ ý. Chạy fallback riêng TRƯỚC, và nếu nó tìm được gì thì trả thẳng — vòng lặp
+        // thường không có gì thêm để đóng góp trên đúng nhóm tài liệu này.
+        if (_options.MergedParagraphLlmFallback && candidates.Count < 5 && slim.Paragraphs.Count > 20
+            && LlmBoundaryCutter.IsSupported(mode))
+        {
+            var mergedHeadings = await MergedParagraphLlmOutline.BuildAsync(slim, mode, llm, ct);
+            if (mergedHeadings.Count > 0)
+            {
+                Log($"Fallback đoạn gộp qua LLM (domain {mode}): {mergedHeadings.Count} mục " +
+                    $"từ {candidates.Count} ứng viên gốc.");
+                return mergedHeadings;
+            }
+        }
 
         Func<IReadOnlyList<(int Index, int Level)>, IReadOnlyList<int>, string>? rollingOutline = _options.RollingOutline
             ? (skeleton, asked) => BuildRollingOutline(
@@ -1216,6 +1307,38 @@ public sealed class HeaderExtractionPipeline : IDisposable
         if (inlineSplits > 0)
             Log($"Tách {inlineSplits} heading có nội dung cùng dòng theo ranh giới kiểm chứng được.");
 
+        // Tầng cắt ranh giới bằng LLM few-shot cố định theo domain (xem LlmBoundaryCutter) — chỉ
+        // cho ứng viên mà splitter tất định ở trên KHÔNG cắt được (BoundarySource còn rỗng): route
+        // riêng (pdf-bold-label, session-code...) không bao giờ tới được đây vì chúng short-circuit
+        // trước RunModelAsync, nên rỗng ở đây nghĩa đúng là "chưa có luật rẻ hơn nào cắt được".
+        if (_options.LlmBoundaryCutFallback && LlmBoundaryCutter.IsSupported(mode))
+        {
+            var uncut = accepted.Values.Where(h => string.IsNullOrEmpty(h.BoundarySource)).ToList();
+            var llmCuts = 0;
+            foreach (var heading in uncut)
+            {
+                ct.ThrowIfCancellationRequested();
+                var paragraph = slim.ByIndex(heading.Index);
+                if (paragraph is null) continue;
+
+                var cut = await LlmBoundaryCutter.TryCutAsync(llm, mode, paragraph.Text, ct);
+                if (cut is not { } end || end <= 0 || end >= paragraph.Text.Length) continue;
+
+                heading.OriginalText = paragraph.Text;
+                heading.Text = paragraph.Text[..end];
+                heading.HeadingSpan = new TextOffsetSpan(0, end);
+                heading.InlineBody = paragraph.Text[end..].TrimStart();
+                heading.InlineBodySpan = new TextOffsetSpan(end, paragraph.Text.Length);
+                heading.BoundarySource = "llm-boundary-cut";
+                paragraph.VerifiedHeadingEnd = end;
+                paragraph.VerifiedBodyStart = end;
+                paragraph.VerifiedBoundarySource = "llm-boundary-cut";
+                llmCuts++;
+            }
+            if (llmCuts > 0)
+                Log($"Cắt ranh giới bằng LLM (bảng cứng theo domain {mode}): {llmCuts} mục.");
+        }
+
         // Cross-verification: Structure chỉ đề xuất ứng viên; hỏi model lại trong một batch tập
         // trung trước khi cho phép evidence score đạt mức verified.
         var structureIndexes = accepted.Values.Where(h => h.Source == HeadingSource.Structure)
@@ -1395,8 +1518,14 @@ public sealed class HeaderExtractionPipeline : IDisposable
         // Dev log phải giữ nguyên thứ tự khối, nếu không thì dump request của khối 7 chen vào giữa
         // khối 1. Mỗi khối ghi vào bộ đệm riêng, xả ra đúng lúc tới lượt nó.
         var buffers = new List<string>[chunks.Count];
-        var directDebug = _options.LmStudio.DebugLog;
-        if (degree > 1 && directDebug is not null) _options.LmStudio.DebugLog = BufferDebug;
+        var directDebug = _options.Backend == InferenceBackend.Sglang
+            ? _options.Sglang.DebugLog
+            : _options.LmStudio.DebugLog;
+        if (degree > 1 && directDebug is not null)
+        {
+            if (_options.Backend == InferenceBackend.Sglang) _options.Sglang.DebugLog = BufferDebug;
+            else _options.LmStudio.DebugLog = BufferDebug;
+        }
 
         var pending = new Task<ChunkResult>[chunks.Count];
         try
@@ -1466,7 +1595,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
         }
         finally
         {
-            _options.LmStudio.DebugLog = directDebug;
+            if (_options.Backend == InferenceBackend.Sglang) _options.Sglang.DebugLog = directDebug;
+            else _options.LmStudio.DebugLog = directDebug;
         }
 
         return new PassResult(votes, explicitNonHeadings, rejectedRoles, unreliable);
@@ -1485,7 +1615,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     documentView += "\n" + outline;
             }
             if (!useCritic && _correctionMemory is not null &&
-                _options.Backend is InferenceBackend.Local or InferenceBackend.LmStudio)
+                _options.Backend is InferenceBackend.Local or InferenceBackend.LmStudio or InferenceBackend.Sglang)
             {
                 var examples = _correctionMemory.FindExamples(documentView);
                 if (examples.Count > 0)
@@ -1554,12 +1684,16 @@ public sealed class HeaderExtractionPipeline : IDisposable
     private void AdoptBackendContextBudget(IHeaderClassifier llm)
     {
         if (_options.Chunking.TokenBudgetExplicit) return;
-        if (_options.Backend is not (InferenceBackend.LmStudio or InferenceBackend.OpenRouter)) return;
+        if (_options.Backend is not (InferenceBackend.LmStudio or InferenceBackend.OpenRouter or InferenceBackend.Sglang))
+            return;
         if (llm.ContextSize <= 0) return;
 
-        var maxOutput = _options.Backend == InferenceBackend.LmStudio
-            ? _options.LmStudio.MaxOutputTokens
-            : _options.OpenRouter.MaxOutputTokens;
+        var maxOutput = _options.Backend switch
+        {
+            InferenceBackend.LmStudio => _options.LmStudio.MaxOutputTokens,
+            InferenceBackend.Sglang => _options.Sglang.MaxOutputTokens,
+            _ => _options.OpenRouter.MaxOutputTokens,
+        };
         var derived = ChunkingOptions.DeriveTokenBudget(
             llm.ContextSize, maxOutput, LlamaOptions.FixedPromptTokens);
         if (derived <= _options.Chunking.TokenBudget) return;
@@ -1707,6 +1841,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
     private int ChunkParallelism => _options.Backend switch
     {
         InferenceBackend.LmStudio => _options.LmStudio.MaxParallelRequests,
+        InferenceBackend.Sglang => _options.Sglang.MaxParallelRequests,
         _ => 1,
     };
 
@@ -1788,6 +1923,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
         {
             InferenceBackend.OpenRouter => OpenRouterHeaderExtractor.CreateOwned(_options.OpenRouter),
             InferenceBackend.LmStudio => LmStudioHeaderExtractor.CreateOwned(_options.LmStudio),
+            InferenceBackend.Sglang => SglangHeaderExtractor.CreateOwned(_options.Sglang),
             _ => await LlamaHeaderExtractor.LoadAsync(_options.Llama, ct),
         };
         return _model;

@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Encodings.Web;
@@ -7,114 +6,110 @@ using System.Text.Json;
 
 namespace DocxHeaderExtractor.Core.Llm;
 
-public sealed class LmStudioOptions
+public sealed class SglangOptions
 {
-    public Uri Endpoint { get; set; } = new("http://127.0.0.1:1234/v1/chat/completions");
+    public Uri Endpoint { get; set; } = new("http://127.0.0.1:30000/v1/chat/completions");
     public string ApiKey { get; set; } = "";
     public string Model { get; set; } = "";
-    public int ContextSize { get; set; } = 16_384;
+
+    /// <summary>
+    /// Chưa đo context thật của model/gateway này (Qwen3.8-27B qua vLLM). Đặt bảo thủ; server tự
+    /// khai context lớn hơn thì <c>AdoptBackendContextBudget</c> chỉ NÂNG chunk budget, không hạ.
+    /// </summary>
+    public int ContextSize { get; set; } = 8192;
+
     public int MaxOutputTokens { get; set; } = 768;
     public int MissingIdRetries { get; set; } = 2;
 
     /// <summary>
-    /// Số khối gửi song song. Mỗi khối là một request /v1/chat/completions độc lập, không có state
-    /// phía server, nên nội dung TỪNG request không đổi khi tăng số này.
-    /// <para>
-    /// MẶC ĐỊNH 1 dù đường đi song song đã có sẵn. Đo trên máy này: LM Studio xử lý chồng lấn thật
-    /// (khối 3 xong ở 260 s trong khi khối 1 mất 325 s — xếp hàng FIFO thì không thể vậy), và
-    /// continuous batching có thể làm lệch số học của chính lượt suy luận đó. Chưa có lần đối chiếu
-    /// tuần tự-vs-song song nào chạy trọn vẹn để khẳng định kết quả trùng khít, nên bật sẵn là đánh
-    /// cược vào điều chưa đo. Ngoài ra độ trễ mỗi request phình theo số slot (354 s → 569 s) trong
-    /// khi HttpClient chỉ chờ 10 phút.
-    /// </para>
-    /// Đặt LMSTUDIO_PARALLEL=N sau khi đã tự đối chiếu output trên đúng model của mình.
+    /// Chưa đối chiếu song song-vs-tuần tự trên đúng gateway này (khác máy LM Studio đã đo ở
+    /// <see cref="LmStudioOptions.MaxParallelRequests"/>). Mặc định 1; đặt SGLANG_PARALLEL sau khi
+    /// tự đối chiếu output.
     /// </summary>
     public int MaxParallelRequests { get; set; } = 1;
 
-    /// <summary>Hook debug cục bộ để hiển thị request trước khi gửi tới LM Studio.</summary>
+    /// <summary>Hook debug cục bộ để hiển thị request trước khi gửi.</summary>
     public Action<string>? DebugLog { get; set; }
 
     public void Validate(bool requireModel = true)
     {
         if (requireModel && string.IsNullOrWhiteSpace(Model))
-            throw new InvalidOperationException(
-                "Chưa chọn model LM Studio. Hãy nạp model trong LM Studio hoặc đặt LMSTUDIO_MODEL.");
-        if ((!Endpoint.Scheme.Equals(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase) &&
-             !Endpoint.Scheme.Equals(Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase)) ||
-            !IsLoopback(Endpoint))
-            throw new InvalidOperationException(
-                "LMSTUDIO_ENDPOINT phải là địa chỉ loopback http(s)://127.0.0.1, localhost hoặc [::1].");
+            throw new InvalidOperationException("Chưa cấu hình SGLANG_MODEL.");
+        if (Endpoint.Scheme != Uri.UriSchemeHttp && Endpoint.Scheme != Uri.UriSchemeHttps)
+            throw new InvalidOperationException("SGLANG_ENDPOINT phải là http hoặc https.");
         if (!Endpoint.AbsolutePath.EndsWith("/v1/chat/completions", StringComparison.OrdinalIgnoreCase))
-            throw new InvalidOperationException("LMSTUDIO_ENDPOINT phải kết thúc bằng /v1/chat/completions.");
-        if (ContextSize is < 4096 or > 1_048_576)
-            throw new InvalidOperationException("LM Studio ContextSize phải nằm trong khoảng 4096..1048576.");
+            throw new InvalidOperationException("SGLANG_ENDPOINT phải kết thúc bằng /v1/chat/completions.");
+        if (ContextSize is < 1024 or > 1_048_576)
+            throw new InvalidOperationException("SGLANG_CONTEXT_SIZE phải nằm trong khoảng 1024..1048576.");
         if (MissingIdRetries is < 0 or > 5)
-            throw new InvalidOperationException("LM Studio MissingIdRetries phải nằm trong khoảng 0..5.");
+            throw new InvalidOperationException("SGLang MissingIdRetries phải nằm trong khoảng 0..5.");
         if (MaxParallelRequests is < 1 or > 16)
-            throw new InvalidOperationException("LMSTUDIO_PARALLEL phải nằm trong khoảng 1..16.");
+            throw new InvalidOperationException("SGLANG_PARALLEL phải nằm trong khoảng 1..16.");
     }
 
-    public Uri ModelsEndpoint => new(Endpoint, "/v1/models");
-
-    public static LmStudioOptions FromEnvironment()
+    public static SglangOptions FromEnvironment()
     {
-        var endpointText = Environment.GetEnvironmentVariable("LMSTUDIO_ENDPOINT")
-            ?? "http://127.0.0.1:1234/v1/chat/completions";
+        var endpointText = Environment.GetEnvironmentVariable("SGLANG_ENDPOINT")
+            ?? "http://127.0.0.1:30000/v1/chat/completions";
         if (!Uri.TryCreate(endpointText, UriKind.Absolute, out var endpoint))
-            throw new InvalidOperationException("LMSTUDIO_ENDPOINT không phải URI hợp lệ.");
+            throw new InvalidOperationException("SGLANG_ENDPOINT không phải URI hợp lệ.");
 
-        return new LmStudioOptions
+        return new SglangOptions
         {
             Endpoint = endpoint,
-            ApiKey = Environment.GetEnvironmentVariable("LMSTUDIO_API_KEY") ?? "",
-            Model = Environment.GetEnvironmentVariable("LMSTUDIO_MODEL") ?? "",
-            ContextSize = int.TryParse(Environment.GetEnvironmentVariable("LMSTUDIO_CONTEXT_SIZE"), out var context)
+            ApiKey = Environment.GetEnvironmentVariable("SGLANG_API_KEY") ?? "",
+            Model = Environment.GetEnvironmentVariable("SGLANG_MODEL") ?? "",
+            ContextSize = int.TryParse(Environment.GetEnvironmentVariable("SGLANG_CONTEXT_SIZE"), out var context)
                 ? context
-                : 16_384,
-            MaxParallelRequests = int.TryParse(Environment.GetEnvironmentVariable("LMSTUDIO_PARALLEL"), out var parallel)
+                : 8192,
+            MaxParallelRequests = int.TryParse(Environment.GetEnvironmentVariable("SGLANG_PARALLEL"), out var parallel)
                 ? Math.Clamp(parallel, 1, 16)
                 : 1,
         };
     }
-
-    public static bool IsLoopback(Uri endpoint) =>
-        endpoint.IsLoopback ||
-        endpoint.Host.Equals("localhost", StringComparison.OrdinalIgnoreCase) ||
-        IPAddress.TryParse(endpoint.Host, out var address) && IPAddress.IsLoopback(address);
 }
 
 /// <summary>
-/// Backend OpenAI-compatible của LM Studio. Mỗi request độc lập, dùng structured output schema
-/// và vẫn hậu kiểm đủ ID cục bộ. Endpoint bị khóa vào loopback để form trình duyệt không trở
-/// thành SSRF proxy tới máy khác.
+/// Backend OpenAI-compatible cho gateway SGLang/vLLM tự host (đo tay 2026-08-19: endpoint
+/// <c>/v1/chat/completions</c>, model trả về qua <c>vllm/&lt;tên&gt;</c> hoặc thẳng tên, đều
+/// resolve được). Hai điểm khác LM Studio, cả hai đều đã đo trên đúng gateway này:
+/// <list type="bullet">
+/// <item>Model Qwen3 mặc định bật "thinking" — reasoning ăn hết ngân sách <c>max_tokens</c> và cắt
+/// cụt content (đo: max_tokens=100 → content dừng giữa chừng "…HUY ĐỘNG VỐN QU"). Tắt bằng
+/// <c>chat_template_kwargs.enable_thinking=false</c> thì content ra đủ ngay, nhanh hơn hẳn.</item>
+/// <item>Endpoint không khoá loopback: đây là gateway LAN cố ý, không phải app desktop cùng máy.
+/// Giá trị Endpoint luôn đọc từ biến môi trường phía server, không nhận từ form trình duyệt, nên
+/// không mở thêm đường SSRF nào so với hai backend RPC còn lại.</item>
+/// </list>
+/// response_format json_schema strict đã đo hoạt động đúng trên gateway này (id/level đúng schema).
 /// </summary>
-public sealed class LmStudioHeaderExtractor : IHeaderClassifier
+public sealed class SglangHeaderExtractor : IHeaderClassifier
 {
     private readonly HttpClient _http;
-    private readonly LmStudioOptions _options;
+    private readonly SglangOptions _options;
     private readonly bool _ownsHttp;
 
-    // Giữ nguyên tiếng Việt có dấu thay vì \uXXXX — dùng cho cả body gửi đi lẫn dòng log debug.
+    // Giữ nguyên tiếng Việt có dấu thay vì \uXXXX trong body gửi đi lẫn dòng log debug.
     private static readonly JsonSerializerOptions RequestJson = new()
     {
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
     };
 
-    public LmStudioHeaderExtractor(HttpClient http, LmStudioOptions options)
+    public SglangHeaderExtractor(HttpClient http, SglangOptions options)
     {
         _http = http;
         _options = Validate(options);
     }
 
-    private LmStudioHeaderExtractor(HttpClient http, LmStudioOptions options, bool ownsHttp)
+    private SglangHeaderExtractor(HttpClient http, SglangOptions options, bool ownsHttp)
         : this(http, options) => _ownsHttp = ownsHttp;
 
-    public static LmStudioHeaderExtractor CreateOwned(LmStudioOptions options) =>
+    public static SglangHeaderExtractor CreateOwned(SglangOptions options) =>
         new(new HttpClient { Timeout = TimeSpan.FromMinutes(10) }, options, ownsHttp: true);
 
     public string ModelName => _options.Model;
     public int ContextSize => _options.ContextSize;
-    public string RuntimeDescription => $"LM Studio local RPC · {_options.Endpoint.Authority}";
+    public string RuntimeDescription => $"SGLang/vLLM gateway RPC · {_options.Endpoint.Authority}";
     public int SharedPrefixTokens => 0;
 
     public Task<ChunkResult> ClassifyAsync(
@@ -172,23 +167,11 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
             {
                 model = _options.Model,
                 temperature = 0,
-                // Bộ sampler khai báo tường minh, không phó mặc mặc định của LM Studio. Hai lý do:
-                // (1) mặc định là cấu hình của một phần mềm bên ngoài, đổi theo phiên bản hoặc theo
-                // preset người dùng chọn trong GUI — kết quả vì thế không tái lập được; (2) nó phải
-                // trùng bộ sampler mà backend GGUF local đang dùng (TopK=1, TopP=0.9,
-                // RepeatPenalty=1.0, Seed=1234 trong LlamaHeaderExtractor), nếu không thì mọi so
-                // sánh local-vs-LM Studio đang so hai thứ khác nhau chứ không phải hai backend.
-                top_k = 1,
-                top_p = 0.9,
-                repeat_penalty = 1.0,
-                seed = LlamaOptions.SharedSamplerSeed,
-                // Heading classification is a structured extraction task. LM Studio's
-                // reasoning models can spend the whole small output budget on hidden
-                // reasoning and leave message.content empty; disable that channel so
-                // the JSON response has deterministic budget for the schema.
-                reasoning_effort = "none",
                 max_tokens = Math.Min(_options.MaxOutputTokens, remaining.Count * (roles ? 64 : 32) + 128),
                 stream = false,
+                // Đo được 2026-08-19: không tắt thì Qwen3 dồn hết max_tokens vào reasoning ẩn và
+                // content rỗng/cắt cụt. Xem docstring của lớp này.
+                chat_template_kwargs = new { enable_thinking = false },
                 messages = new[]
                 {
                     new { role = "system", content = system },
@@ -197,13 +180,10 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
                 response_format = BuildResponseFormat(remaining, roles),
             };
 
-            _options.DebugLog?.Invoke($"→ LM Studio request: {JsonSerializer.Serialize(body, RequestJson)}");
+            _options.DebugLog?.Invoke($"→ SGLang request: {JsonSerializer.Serialize(body, RequestJson)}");
 
             using var request = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
             {
-                // Cùng bộ option với dòng log ở trên: encoder mặc định escape mọi ký tự ngoài ASCII
-                // thành \uXXXX, nên prompt tiếng Việt trong dev log đọc thành rác (trông như lỗi
-                // font). Trên dây thì cả hai cách đều là JSON hợp lệ, chỉ khác kích thước body.
                 Content = JsonContent.Create(body, options: RequestJson),
             };
             if (!string.IsNullOrWhiteSpace(_options.ApiKey))
@@ -217,7 +197,7 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
 
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(
-                    $"LM Studio trả {(int)response.StatusCode} {response.ReasonPhrase}: {Safe(responseText, 500)}",
+                    $"SGLang gateway trả {(int)response.StatusCode} {response.ReasonPhrase}: {Safe(responseText, 500)}",
                     null,
                     response.StatusCode);
 
@@ -252,7 +232,7 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
 
         if (remaining.Count > 0)
             throw new FormatException(
-                $"LM Studio trả {seen.Count}/{allowed.Count} quyết định hợp lệ; " +
+                $"SGLang gateway trả {seen.Count}/{allowed.Count} quyết định hợp lệ; " +
                 $"ID còn thiếu=[{string.Join(',', remaining)}] sau {_options.MissingIdRetries + 1} lượt; " +
                 $"output={Safe(string.Join(" | ", rawOutputs), 800)}");
 
@@ -353,13 +333,9 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
         {
             model = _options.Model,
             temperature = 0,
-            top_k = 1,
-            top_p = 0.9,
-            repeat_penalty = 1.0,
-            seed = LlamaOptions.SharedSamplerSeed,
-            reasoning_effort = "none",
             max_tokens = 120,
             stream = false,
+            chat_template_kwargs = new { enable_thinking = false },
             messages = new[]
             {
                 new { role = "system", content = systemPrompt },
@@ -378,7 +354,7 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
         var responseText = await response.Content.ReadAsStringAsync(ct);
         if (!response.IsSuccessStatusCode)
             throw new HttpRequestException(
-                $"LM Studio trả {(int)response.StatusCode} {response.ReasonPhrase}: {responseText}",
+                $"SGLang gateway trả {(int)response.StatusCode} {response.ReasonPhrase}: {Safe(responseText, 500)}",
                 null,
                 response.StatusCode);
         return ExtractContent(responseText).Trim();
@@ -397,17 +373,21 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
             var finishReason = choices[0].TryGetProperty("finish_reason", out var finish)
                 ? finish.GetString()
                 : null;
-            var reasoningChars = message.TryGetProperty("reasoning_content", out var reasoning) &&
-                                 reasoning.ValueKind == JsonValueKind.String
-                ? reasoning.GetString()?.Length ?? 0
-                : 0;
+            // Gateway này để reasoning ẩn dưới "reasoning" (đo 2026-08-19); giữ thêm
+            // "reasoning_content" vì đó là tên field OpenAI-compatible phổ biến hơn ở nơi khác.
+            var reasoningChars = ReasoningLength(message, "reasoning") + ReasoningLength(message, "reasoning_content");
             throw new FormatException(
-                $"LM Studio trả content rỗng (finish_reason={finishReason ?? "unknown"}, " +
-                $"reasoningChars={reasoningChars}). Model có thể đã dùng hết max_tokens cho reasoning; " +
-                "hãy dùng model Instruct không reasoning hoặc giảm reasoning trong LM Studio.");
+                $"SGLang gateway trả content rỗng (finish_reason={finishReason ?? "unknown"}, " +
+                $"reasoningChars={reasoningChars}). chat_template_kwargs.enable_thinking=false đã bật " +
+                "sẵn; nếu vẫn rỗng thì model/gateway không tôn trọng cờ này — cần tăng max_tokens.");
         }
-        throw new FormatException("LM Studio response không có choices[0].message.content.");
+        throw new FormatException("SGLang gateway response không có choices[0].message.content.");
     }
+
+    private static int ReasoningLength(JsonElement message, string propertyName) =>
+        message.TryGetProperty(propertyName, out var reasoning) && reasoning.ValueKind == JsonValueKind.String
+            ? reasoning.GetString()?.Length ?? 0
+            : 0;
 
     private static string Safe(string text, int max)
     {
@@ -416,7 +396,7 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
         return oneLine.Length <= max ? oneLine : oneLine[..max] + "…";
     }
 
-    private static LmStudioOptions Validate(LmStudioOptions options)
+    private static SglangOptions Validate(SglangOptions options)
     {
         options.Validate();
         return options;

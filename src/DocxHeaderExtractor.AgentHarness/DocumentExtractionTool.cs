@@ -64,9 +64,12 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 
     private static AgentToolDescriptor Describe(PipelineOptions options)
     {
-        // LM Studio bị khóa vào loopback nên vẫn là local processing. Chỉ OpenRouter chuyển
-        // nội dung ra dịch vụ bên ngoài và cần consent theo từng run.
-        var remote = !options.DisableLlm && options.Backend == InferenceBackend.OpenRouter;
+        // LM Studio bị khóa vào loopback nên vẫn là local processing. OpenRouter (Internet) và
+        // SGLang/vLLM (gateway LAN, không loopback) đều chuyển nội dung ra khỏi tiến trình này và
+        // cần consent theo từng run — phải khớp BackendSendsDataExternally trong HeaderExtractionPipeline,
+        // nếu không RunProvenanceValidator sẽ chặn với provenance_contradicts_descriptor.
+        var remote = !options.DisableLlm &&
+            options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang;
         // Pipeline ghi document view ra đĩa khi DumpXmlPath được đặt — đường ghi này không đi qua
         // IDocumentActionTool nên WritebackTargetGuardrail không thấy. Khai ra cả cờ lẫn đường dẫn
         // để ToolSideEffectPathGuardrail soi được, thay vì để harness hứa "chỉ đọc".
