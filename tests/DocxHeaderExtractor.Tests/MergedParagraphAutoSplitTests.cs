@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Core.Models;
+﻿using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
@@ -73,6 +73,29 @@ public class MergedParagraphAutoSplitTests
 
         Assert.False(MergedParagraphAutoSplit.ShouldSplit(doc, candidateCount: 0, out var moc));
         Assert.True(moc < MergedParagraphAutoSplit.MinimumMarkers);
+    }
+
+    /// <summary>
+    /// <b>Hậu kiểm cho chính quyết định tách.</b> Đo được cái giá khi thiếu nó: <c>019_TT_200</c>
+    /// nổ 165 → <b>3.563</b> mục trên 399 mốc, <c>020_TT_133</c> → <b>1.390</b> trên 607, vì bộ
+    /// tách nhặt cả số trần giữa văn xuôi kế toán.
+    /// </summary>
+    [Theory]
+    [InlineData(3563, 399, true)]   // 019_TT_200 — quá tay
+    [InlineData(1390, 607, true)]   // 020_TT_133 — quá tay
+    [InlineData(289, 155, false)]   // 092_RFC9111 — 1,9×, Nav 95,3%, phải GIỮ
+    [InlineData(50, 73, false)]     // 010_Luat_An_ninh — khớp trọn đáp án
+    [InlineData(71, 81, false)]     // 025_ND_47 — khớp trọn đáp án
+    public void Hau_kiem_bat_dung_ca_tach_qua_tay(int soMuc, int soMoc, bool quaTay)
+    {
+        Assert.Equal(quaTay, MergedParagraphAutoSplit.QuaTay(soMuc, soMoc));
+    }
+
+    /// <summary>Không có mốc nào thì không có bằng chứng để nói quá tay — không được chặn bừa.</summary>
+    [Fact]
+    public void Khong_co_moc_thi_khong_ket_luan_qua_tay()
+    {
+        Assert.False(MergedParagraphAutoSplit.QuaTay(100, 0));
     }
 
     /// <summary>Mốc TRÙNG trong cùng đoạn chỉ tính một lần, nếu không đầu trang lặp sẽ thổi mẫu số.</summary>

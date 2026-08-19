@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -53,6 +53,25 @@ public static class MergedParagraphAutoSplit
     private static readonly Regex Marker = new(
         @"(?<!\w)[^\W\d_][^\W\d_]{1,14}\s+\d{1,3}\s*[.)]",
         RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+    /// <summary>
+    /// Trần số mục dựng được trên mỗi mốc có nhãn. Bằng chứng cho phép tách là mốc có nhãn, nên
+    /// kết quả tách phải bị chặn bằng ĐÚNG bằng chứng đó. Không có trần này thì
+    /// <c>019_TT_200</c> nổ 165 → <b>3.563</b> mục trên 399 mốc và <c>020_TT_133</c> → <b>1.390</b>
+    /// trên 607, vì bộ tách nhặt cả số trần giữa văn xuôi kế toán (<c>3.13.</c>, <c>a)</c>).
+    /// <para>
+    /// Đặt ở 2 chứ không phải 1: một mốc có nhãn thường kèm vài mục con hợp lệ, và
+    /// <c>092_RFC9111</c> ở 1,9× vẫn là kết quả đúng (Nav 95,3%).
+    /// </para>
+    /// </summary>
+    public const int MaximumHeadingsPerMarker = 2;
+
+    /// <summary>
+    /// Kết quả tách có quá tay không? Bằng chứng cho phép tách là mốc có nhãn, nên kết quả phải bị
+    /// chặn bằng ĐÚNG bằng chứng đó — xem <see cref="MaximumHeadingsPerMarker"/>.
+    /// </summary>
+    public static bool QuaTay(int soMuc, int soMoc) =>
+        soMoc > 0 && soMuc > soMoc * MaximumHeadingsPerMarker;
 
     /// <summary>Số mốc có nhãn PHÂN BIỆT nằm trong thân các đoạn.</summary>
     public static int CountMarkers(SlimDocument document) =>

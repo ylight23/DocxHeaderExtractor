@@ -444,8 +444,9 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // mù với cấu trúc nằm trong thân đoạn. Bật tách theo TỪNG TÀI LIỆU khi tài liệu tự tố
             // cáo là đã bỏ sót — xem MergedParagraphAutoSplit. Bật đại trà đã bị §113 bác.
             var tachDoanGop = _options.Extraction.SplitMergedParagraphs;
+            var soMoc = 0;
             if (!tachDoanGop &&
-                MergedParagraphAutoSplit.ShouldSplit(slim, candidates.Count, out var soMoc))
+                MergedParagraphAutoSplit.ShouldSplit(slim, candidates.Count, out soMoc))
             {
                 tachDoanGop = true;
                 Log($"Đoạn gộp: {candidates.Count} ứng viên trên {soMoc} mốc có nhãn " +
@@ -453,6 +454,20 @@ public sealed class HeaderExtractionPipeline : IDisposable
             }
 
             var declared = TryBuildDeclaredOutline(slim, modeReport, tachDoanGop);
+
+            // Hậu kiểm cho quyết định vừa rồi: bằng chứng cho phép tách là MỐC CÓ NHÃN, nên số mục
+            // dựng được không được vượt quá bội số của chính bằng chứng đó. Đo được cái giá khi
+            // thiếu chốt này: 019_TT_200 nổ 165 → 3.563 mục trên 399 mốc, 020_TT_133 → 1.390 trên
+            // 607 — bộ tách nhặt cả số trần giữa văn xuôi kế toán.
+            if (tachDoanGop && !_options.Extraction.SplitMergedParagraphs &&
+                declared.Headings is { Count: > 0 } thu &&
+                MergedParagraphAutoSplit.QuaTay(thu.Count, soMoc))
+            {
+                Log($"Tách đoạn gộp dựng {thu.Count} mục trên {soMoc} mốc có nhãn " +
+                    $"(>{MergedParagraphAutoSplit.MaximumHeadingsPerMarker}×) — quá tay, bỏ tách.");
+                tachDoanGop = false;
+                declared = TryBuildDeclaredOutline(slim, modeReport, false);
+            }
             var pdfFallback = _options.PdfTextbookFallback
                 ? PdfTextbookOutline.TryBuild(inputPath, slim, modeReport)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");

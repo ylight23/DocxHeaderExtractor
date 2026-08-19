@@ -8701,3 +8701,57 @@ xuống `TryBuildDeclaredOutline`.
 
 `092_RFC9111` trả **289** mục trên đáp án 64 (P 1%, Nav 95,3%) — tách quá tay. Nav đúng nhưng
 precision sập; đó là việc tiếp theo, không phải hồi quy so với nền (trước đó nó trả 8, Nav 9,4%).
+
+## §122 — Chốt hậu kiểm cho tách đoạn gộp; độ phủ corpus 24 file hỏng → 2
+
+### Độ phủ sau §121 — đo lại cả 89 file
+
+| | trước | sau |
+|---|---|---|
+| file dưới 8 mục | **24** | **2** |
+| tổng mục toàn corpus | 5.757 | 25.128 |
+
+`015_Luat_Cac_to_chuc_tin_dung` 1 → **250**, `003_Luat_Doanh_nghiep` 1 → **237**,
+`081_Luat_Doanh_nghiep_2020_EN` 1 → **229**, `013_Luat_Quan_ly_thue` 1 → **178**. Hai file còn
+sót đều là biên bản họp FORTIS có **0 mốc có nhãn** — luật này không áp dụng cho chúng.
+
+### Nhưng gấp 4,4 lần là dấu hiệu phải kiểm, không phải để mừng
+
+Đo tỉ lệ mục/mốc: `019_TT_200` nổ **165 → 3.563** mục trên 399 mốc (9,2×), `020_TT_133` →
+**1.390** trên 607 (2,3×). Cổng bắn ĐÚNG — `019` chỉ có 14 ứng viên trên 399 mốc (4%) nên đúng là
+bị gộp — nhưng cái bộ tách sinh ra thì sai: nó nhặt cả số trần giữa văn xuôi kế toán
+(`3.13.`, `a)`).
+
+Nhóm biên bản ICP/FORTIS cũng có tỉ lệ cao (10–25×) nhưng đó là bình thường: đề mục của chúng
+không mang số, và bộ `fd` vẫn 100%.
+
+### Chốt: bằng chứng nào cho phép tách thì bằng chứng đó chặn kết quả
+
+Bằng chứng mở cổng là **mốc có nhãn**, nên số mục dựng được không được vượt
+`MaximumHeadingsPerMarker = 2` lần chính nó. Vượt thì bỏ tách, dựng lại không tách.
+
+Đặt ở 2 chứ không phải 1 vì một mốc có nhãn thường kèm vài mục con hợp lệ, và `092_RFC9111` ở
+**1,9×** vẫn là kết quả đúng (Nav 95,3%) — hạ về 1 sẽ giết nó.
+
+| file | trước chốt | sau chốt |
+|---|---|---|
+| `019_TT_200` | 3.563 | **165** |
+| `020_TT_133` | 1.390 | **48** |
+| `092_RFC9111` | 289 | 289 (giữ) |
+| `010_Luat_An_ninh` | 50 | 50 (giữ) |
+| `025_ND_47` | 71 | 71 (giữ) |
+
+### Đo bốn bộ
+
+| bộ | §121 | §122 |
+|---|---|---|
+| bench (7) | F1 98,6% Nav 80,6% 6/7 | **y hệt** |
+| ev-human (5) | F1 42,1% Nav 98,0% 1/5 | **y hệt** |
+| toc (9) | F1 99,6% Nav 99,2% 7/9 | **y hệt** |
+| fd (2) | 100% 2/2 | **y hệt** |
+
+Chốt này không lấy thêm điểm trên bộ có đáp án — nó dọn 4.700 mục rác trên các file KHÔNG có đáp
+án, tức đúng loại cải thiện mà bốn bộ mù hoàn toàn. Đó cũng là lý do phải đọc đầu ra chứ không
+chỉ nhìn bảng số.
+
+602 test xanh. Đột biến `MaximumHeadingsPerMarker = 99` → **đỏ**.
