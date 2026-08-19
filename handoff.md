@@ -9280,3 +9280,50 @@ Hai điều đo được, cả hai đáng ghi:
 Giao `063` bằng kết quả luật (25 mục, ~1 s). Không phải là bỏ cuộc: 88/89 file xong trong **95
 giây** tổng cộng, còn file này cần **hơn 50 phút** — chênh hơn 2.000 lần, và chênh lệch đó chính
 là ranh giới giữa "luật phủ được" và "phải hỏi mô hình".
+
+## §136 — Khử mục trùng nguyên văn: hết hẳn lượt dựng lại
+## §137 — Lọc tham chiếu chéo giữa câu: cài, đo, Nav tụt, gỡ
+
+### §136 — bắt hệ thống NÓI RA lý do rẻ hơn truy từng triệu chứng
+
+Mỗi lần `OutlineGroundingValidator` bác kết quả, harness cách ly đoạn rồi **dựng lại cả tài liệu**
+— chi phí gấp đôi — mà chỉ báo *"cách ly N đoạn"*, không nói vì sao. Cơ chế câm này đã:
+
+- nuốt mất mục do mô hình bù ở §132 (phải cắm mốc in chỉ số thủ công mới truy ra);
+- đẩy `063_Advanced_Linear_Algebra` từ 11 khối context thành **17 khối, 2.983 giây**.
+
+Sửa hiển thị: harness ghi kèm lý do, CLI in sự kiện `Repairing`. Nguyên nhân hiện ra ngay:
+
+```
+⟲ Cách ly 2 đoạn vi phạm rồi dựng lại (lượt 1/1).
+  Lý do: Heading index 13 + text xuất hiện nhiều lần.
+```
+
+Cùng một đề mục dựng hai lần ở cùng chỉ số đoạn. Khử trùng cặp `(chỉ số, chữ)` ngay chỗ hợp nguồn.
+
+| | trước | sau |
+|---|---|---|
+| file phải dựng lại | 2/89 | **0/89** |
+| `024_ND_15-2020` | 1.043 mục | **1.050** |
+| `090_ND_155-2018` | 135 mục | **155** |
+
+Số mục **tăng**: lượt dựng lại trước đây cách ly nhầm cả đề mục thật, nên lỗi này vừa tốn gấp đôi
+thời gian vừa làm mất kết quả. Bốn bộ đáp án y hệt.
+
+### §137 — tham chiếu chéo giữa câu: giả thuyết đúng, kết luận sai
+
+Đọc đầu ra `092_RFC9111` thấy `"2.2) that allows it to be stored by a shared cache…"` — nguyên văn
+là `"…specified in Section 2.2) that allows…"`, tức tham chiếu chéo bị cắt thành đề mục. Dấu hiệu:
+sau mốc là CHỮ THƯỜNG.
+
+Đo trước khi cài: 220/12.115 = **1,8%**, chỉ 4 file, trong bộ có đáp án chỉ `092` (48 mục). Tôi lập
+luận chúng là mảnh giữa câu nên **không thể khớp** mục nào của đáp án, do đó gỡ chúng là Nav-trung
+tính.
+
+**Lập luận đó sai, và phép đo bác nó:** `ev-human` F1 42,1% → 44,6% nhưng **Nav 98,0% → 91,3%**.
+Những mục ấy CÓ khớp điều hướng — nghĩa là trong 48 mục của `092` có cả đề mục thật mà phần chữ
+sau mốc bắt đầu bằng chữ thường.
+
+Đã gỡ theo §128. Ghi lại vì đây là lần thứ ba trong phiên tôi suy ra "gỡ cái này không mất Nav" từ
+hình dạng dữ liệu rồi bị số đo bác (§126, §129, §137). Kết luận hẹp: **không suy đoán được mục nào
+khớp Nav; chỉ có chạy `eval` mới biết.**

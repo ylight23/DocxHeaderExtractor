@@ -9,6 +9,39 @@
   - Chapter III APPLICATION DOCUMENTS AND PROCEDURES FOR AND AUTHORITY TO ISSUE FOOD SAFETY CERTIFICATES FOR THE FOOD MANUFACTURING FACILITIES UNDER MANAGEMENT OF THE MINISTRY OF HEALTH AND THE FOOD AND BEVERAGE ESTABLISHMENTS  <!-- lvl=2 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
       - Article 6. Application documents and procedures for and authority to issue the Certificates  <!-- lvl=4 i=6 sid=body[1]/p[7] src=Structure CẦN-XEM-LẠI -->
       - Article 3. Amendments to some Articles of the Government’s Decree No. 15/2018/ND-CP dated February 02, 2018 providing guidelines on implementation of some articles of the Law on Food Safety.  <!-- lvl=4 i=10 sid=body[1]/p[11] src=Structure CẦN-XEM-LẠI -->
+  - Chapter II PHARMACEUTICAL PRODUCTS  <!-- lvl=2 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 4. Annulment of the following regulations of the Government’s Decree No. 54/2017/ND-CP dated May 08, 2017 providing guidelines on some articles on methods for implementing the Law on Pharmacy  <!-- lvl=4 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 3.  <!-- lvl=4 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 4.  <!-- lvl=4 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 14.  <!-- lvl=4 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 19.  <!-- lvl=4 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 21.  <!-- lvl=4 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 27.  <!-- lvl=4 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 28.  <!-- lvl=4 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 32.  <!-- lvl=4 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 38.  <!-- lvl=4 i=12 sid=body[1]/p[13] src=Structure CẦN-XEM-LẠI -->
+      - Article 43.  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 44.  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 52.  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 53.  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 58.  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 60.  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 62.  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 65.  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 69.  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 66.  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 68.  <!-- lvl=4 i=14 sid=body[1]/p[15] src=Structure CẦN-XEM-LẠI -->
+      - Article 71.  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+      - Article 73.  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+      - Article 74.  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+      - Article 75.  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+      - Article 76.  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+      - Article 78.  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+      - Article 82.  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+      - Article 84.  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+      - Article 85.  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+      - Article 86.  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
+      - Article 91.  <!-- lvl=4 i=16 sid=body[1]/p[17] src=Structure CẦN-XEM-LẠI -->
       - Article 93.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
       - Article 98.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
       - Article 100.  <!-- lvl=4 i=18 sid=body[1]/p[19] src=Structure CẦN-XEM-LẠI -->
@@ -42,8 +75,34 @@
       - Article 7. Amendments to some Articles of the Government's Decree No. 118/2016/ND-CP dated July 22, 2016 on amendments to some Articles of the Government's Decree No. 56/2008/ND-CP dated April 29, 2008 on organization and operation of the tissue banks and the National Coordinating Center for Human Organ Transplantation  <!-- lvl=4 i=72 sid=body[1]/p[73] src=Structure CẦN-XEM-LẠI -->
       - Article 4. Application and procedures for issuance of the Operating License to tissue banks  <!-- lvl=4 i=74 sid=body[1]/p[75] src=Structure CẦN-XEM-LẠI -->
   - Chapter IV INSECTICIDAL AND GERMICIDAL CHEMICALS AND PREPARATIONS FOR HOUSEHOLD AND MEDICAL USE  <!-- lvl=2 i=76 sid=body[1]/p[77] src=Structure CẦN-XEM-LẠI -->
+      - Article 8. Annulments of the following articles of the Government’s Decree No. 91/2016/ND-CP dated July 01, 2016 on management of insecticidal and germicidal chemicals for household and medical use  <!-- lvl=4 i=78 sid=body[1]/p[79] src=Structure CẦN-XEM-LẠI -->
+      - Article 4.  <!-- lvl=4 i=78 sid=body[1]/p[79] src=Structure CẦN-XEM-LẠI -->
+      - Article 5.  <!-- lvl=4 i=78 sid=body[1]/p[79] src=Structure CẦN-XEM-LẠI -->
+      - Article 7.  <!-- lvl=4 i=78 sid=body[1]/p[79] src=Structure CẦN-XEM-LẠI -->
+      - Article 10.  <!-- lvl=4 i=78 sid=body[1]/p[79] src=Structure CẦN-XEM-LẠI -->
+      - Article 14.  <!-- lvl=4 i=78 sid=body[1]/p[79] src=Structure CẦN-XEM-LẠI -->
+      - Article 15.  <!-- lvl=4 i=78 sid=body[1]/p[79] src=Structure CẦN-XEM-LẠI -->
+      - Article 40.  <!-- lvl=4 i=78 sid=body[1]/p[79] src=Structure CẦN-XEM-LẠI -->
+      - Article 41.  <!-- lvl=4 i=78 sid=body[1]/p[79] src=Structure CẦN-XEM-LẠI -->
+      - Article 9. Amendments to some Articles of the government’s Decree No. 91/2016/ND-CP dated July 01, 2016 on management of insecticidal and germicidal chemicals and preparations for household and medical use  <!-- lvl=4 i=78 sid=body[1]/p[79] src=Structure CẦN-XEM-LẠI -->
       - Article 12. Declaration of eligibility to conduct testing  <!-- lvl=4 i=80 sid=body[1]/p[81] src=Structure CẦN-XEM-LẠI -->
       - Article 16. Declaration of eligibility to conduct experiment activities  <!-- lvl=4 i=82 sid=body[1]/p[83] src=Structure CẦN-XEM-LẠI -->
+  - Chapter V MEDICAL EXAMINATION AND TREATMENT  <!-- lvl=2 i=84 sid=body[1]/p[85] src=Structure CẦN-XEM-LẠI -->
+      - Article 10. Annulment of the following regulations of the Government's Decree No. 109/2016/ND-CP dated July 01, 2016 on issuance of practice certificates to healthcare practitioners and operating licenses to the health facilities  <!-- lvl=4 i=84 sid=body[1]/p[85] src=Structure CẦN-XEM-LẠI -->
+      - Article 7.  <!-- lvl=4 i=84 sid=body[1]/p[85] src=Structure CẦN-XEM-LẠI -->
+      - Article 22.  <!-- lvl=4 i=84 sid=body[1]/p[85] src=Structure CẦN-XEM-LẠI -->
+      - Article 23.  <!-- lvl=4 i=84 sid=body[1]/p[85] src=Structure CẦN-XEM-LẠI -->
+      - Article 24.  <!-- lvl=4 i=84 sid=body[1]/p[85] src=Structure CẦN-XEM-LẠI -->
+      - Article 25.  <!-- lvl=4 i=84 sid=body[1]/p[85] src=Structure CẦN-XEM-LẠI -->
+      - Article 25.  <!-- lvl=4 i=86 sid=body[1]/p[87] src=Structure CẦN-XEM-LẠI -->
+      - Article 26.  <!-- lvl=4 i=86 sid=body[1]/p[87] src=Structure CẦN-XEM-LẠI -->
+      - Article 27.  <!-- lvl=4 i=86 sid=body[1]/p[87] src=Structure CẦN-XEM-LẠI -->
+      - Article 28.  <!-- lvl=4 i=86 sid=body[1]/p[87] src=Structure CẦN-XEM-LẠI -->
+      - Article 29.  <!-- lvl=4 i=86 sid=body[1]/p[87] src=Structure CẦN-XEM-LẠI -->
+      - Article 30.  <!-- lvl=4 i=86 sid=body[1]/p[87] src=Structure CẦN-XEM-LẠI -->
+      - Article 31.  <!-- lvl=4 i=86 sid=body[1]/p[87] src=Structure CẦN-XEM-LẠI -->
+      - Article 32.  <!-- lvl=4 i=86 sid=body[1]/p[87] src=Structure CẦN-XEM-LẠI -->
+      - Article 11. Amendments to some Articles of the Government’s Decree No. 109/2016/ND-CP dated July 01, 2016 on issuance of healthcare certificates to healthcare practitioners and operating licenses to health facilities  <!-- lvl=4 i=86 sid=body[1]/p[87] src=Structure CẦN-XEM-LẠI -->
       - Article 7. Application documents for modification of practice certificates  <!-- lvl=4 i=88 sid=body[1]/p[89] src=Structure CẦN-XEM-LẠI -->
       - Article 22. Forms of organization of health facilities The health facilities must be established in accordance with the law and must conform to one of the following forms of organization:  <!-- lvl=4 i=88 sid=body[1]/p[89] src=Structure CẦN-XEM-LẠI -->
       - Article 23. Requirements for issuance of the operating licenses to the hospitals  <!-- lvl=4 i=98 sid=body[1]/p[99] src=Structure CẦN-XEM-LẠI -->
@@ -97,4 +156,4 @@
       - Article 21. Transitional provisions  <!-- lvl=4 i=130 sid=body[1]/p[131] src=Structure CẦN-XEM-LẠI -->
       - Article 22. Implementation responsibilities The Ministers and Heads of ministerial agencies, Heads of governmental agencies, Chairpersons of the People’s Committees of provinces and central-affiliated cities shall implement this Decree./. PP. THE GOVERNMENT PRIME MINISTER Nguyen Xuan Phuc ------------------------------------------------------------------------------------------------------ This translation is made by LawSoft and for reference purposes only. Its copyright is owned by LawSoft and protected under Clause 2, Article 14 of the Law on Intellectual Property.Your comments are always welcomed  <!-- lvl=4 i=134 sid=body[1]/p[135] src=Structure CẦN-XEM-LẠI -->
 
-> 96 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.
+> 155 đoạn đáng ngờ (đánh dấu CẦN-XEM-LẠI) — cần trọng tài xác nhận.

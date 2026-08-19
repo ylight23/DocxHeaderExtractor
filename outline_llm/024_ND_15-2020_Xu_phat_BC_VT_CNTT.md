@@ -5,6 +5,13 @@
 - Điều 2. Đối tượng bị xử phạt  <!-- lvl=1 i=5 sid=body[1]/p[6] src=Heuristic -->
 - Điều 3. Hình thức xử phạt vi phạm hành chính và biện pháp khắc phục hậu quả  <!-- lvl=1 i=5 sid=body[1]/p[6] src=Heuristic -->
 - Điều 4. Quy định về mức phạt tiền và thẩm quyền phạt tiền đối với cá nhân, tổ chức  <!-- lvl=1 i=9 sid=body[1]/p[10] src=Heuristic -->
+- Điều 5. Vi phạm các quy định về Giấy phép bưu chính  <!-- lvl=1 i=13 sid=body[1]/p[14] src=Heuristic -->
+- CP 2. Phạt tiền từ  <!-- lvl=1 i=13 sid=body[1]/p[14] src=Heuristic -->
+- CP 3. Phạt tiền từ  <!-- lvl=1 i=13 sid=body[1]/p[14] src=Heuristic -->
+- Điều 6. Vi phạm các quy định về thông báo hoạt động bưu chính  <!-- lvl=1 i=13 sid=body[1]/p[14] src=Heuristic -->
+- CP 4. Phạt tiền từ  <!-- lvl=1 i=15 sid=body[1]/p[16] src=Heuristic -->
+- Điều 7. Vi phạm các quy định về hợp đồng cung ứng và sử dụng dịch vụ bưu chính  <!-- lvl=1 i=15 sid=body[1]/p[16] src=Heuristic -->
+- Điều 8. Vi phạm các quy định về cung ứng, sử dụng dịch vụ và báo cáo bưu chính  <!-- lvl=1 i=15 sid=body[1]/p[16] src=Heuristic -->
 - 8. Phạt tiền từ  <!-- lvl=1 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
 - c) Thực hiện không đúng quy định về phát bưu gửi; d) Báo cáo chậm đến 15 ngày hoặc báo cáo không đầy đủ theo quy định hoặc không đúng theo yêu cầu của cơ quan nhà nước có thẩm quyền về bưu chính.  <!-- lvl=1 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
 - 4. Phạt tiền từ  <!-- lvl=1 i=17 sid=body[1]/p[18] src=Structure CẦN-XEM-LẠI -->
