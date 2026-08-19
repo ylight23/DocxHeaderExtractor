@@ -8043,3 +8043,40 @@ diện đã ghi ở trên, đủ để phiên sau bắt đầu đúng chỗ mà 
 khảo sát hôm nay ở mức "đọc trực tiếp xác nhận loại lỗi", chưa đủ để chấm P/R. Việc tiếp theo cho nhóm
 này: chọn 1 file đại diện mỗi nhóm A/A'/B (không cần cả 15), đọc PDF đầy đủ, xây `.key`, RỒI mới thiết
 kế luật theo đúng thứ tự đã dùng cho `05_bien_ban_hop` hôm nay.
+
+## §111. Đo lại 55 ca gốc qua `LlmBoundaryCutter` — bằng gateway Qwen3.8-27B mới kết nối, không phải Llama local
+
+**Bù việc còn treo ở §109/TODO.md** ("chưa có con số đầu-đối-đầu thật qua đúng đường sản xuất trên
+mẫu đủ lớn"). Người dùng chỉ định dùng hạ tầng mới: gateway SGLang/vLLM tự host
+`http://192.168.68.20/v1` phục vụ `Qwen3.8-27B` (xem [[sglang-qwen-gateway]]) — xác nhận còn sống
+bằng `curl /v1/models` trước khi dùng, không tin mù theo trí nhớ (model đúng `Qwen3.8-27B`, không
+phải "qwen3.6" người dùng gõ — lệch chính tả, không phải hạ tầng khác).
+
+**Chạy đúng cả 55 ca gốc** (21 pháp quy + 20 RFC + 14 biên bản, y hệt tập đã dùng đo bảng cứng ở
+`docs/llm-boundary-few-shot-retrieval.md` §3) qua `LlmBoundaryCutter.TryCutAsync` thật — không phải
+scratch harness — với `IHeaderClassifier` là `SglangHeaderExtractor.CreateOwned` trỏ gateway trên,
+PROMPT GIỮ NGUYÊN (ba prompt vẫn tuned cho Llama-3.2-3B, không sửa gì cho Qwen):
+
+```
+legal   (Qwen3.8-27B) = 21/21 (100.0%)   -- harness gốc (Llama-3.2-3B): 18/21 (85.7%)
+rfc     (Qwen3.8-27B) = 20/20 (100.0%)   -- harness gốc (Llama-3.2-3B): 19/20 (95.0%)
+minutes (Qwen3.8-27B) = 14/14 (100.0%)   -- harness gốc (Llama-3.2-3B): 12/14 (85.7%)
+```
+
+**55/55 — sạch, không có ca nào bị grounding từ chối oan hay chấp nhận sai.** Không rò rỉ đáp án vào
+few-shot: 6 ví dụ cố định trong ba prompt vốn CỐ Ý không lấy từ 55 ca test (đã ghi trong comment gốc
+của harness khi thiết kế). Kết quả xác nhận hai điều:
+
+1. **Wiring SGLang đúng end-to-end** — `SglangHeaderExtractor.BoundaryCutAsync` (nối ở §109, mới chỉ
+   test bằng fake trước đó) hoạt động đúng qua gateway thật lần đầu tiên: `enable_thinking=false` vẫn
+   cần và vẫn đúng (không có ca nào bị cắt cụt vì reasoning ăn hết ngân sách).
+2. **Qwen3.8-27B vượt xa sàn đã đo của Llama-3.2-3B trên ĐÚNG cùng prompt, không tinh chỉnh lại** —
+   đúng giả thuyết đã nêu ở §7 tài liệu thiết kế ("85-95% nhiều khả năng là sàn, không phải trần").
+
+**Chưa đủ để đổi mặc định `LlmBoundaryCutFallback` cho MỌI backend.** Số 55/55 này riêng cho backend
+SGLang trỏ đúng gateway này — chưa có con số đầu-đối-đầu 55 ca cho backend Local (Llama-3.2-3B) qua
+đúng đường sản xuất (chỉ có mẫu 9 ca nhỏ ở §109: 6/9). Bật cờ mặc định cho MỌI backend bây giờ là suy
+diễn từ kết quả một backend sang backend khác chưa đo — đúng bẫy dự án đã trả giá nhiều lần. Việc
+tiếp theo, nếu muốn bật thật: (a) quyết định backend mặc định cho triển khai này có phải SGLang/Qwen
+không, (b) nếu có, bật `LlmBoundaryCutFallback` khi backend=Sglang có căn cứ vững; Local vẫn cần đo
+đủ 55 ca trước khi bật.

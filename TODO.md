@@ -628,19 +628,21 @@ ranh giới tiêu đề. Route hiện tại thiếu cơ chế cắt ranh giới 
 — đo trước theo kỷ luật đo-trước-khi-xây: cần biết bao nhiêu file khác trong `01_phap_quy`/
 `04_giao_trinh` có cùng triệu chứng "đoạn gộp không cắt ranh giới" trước khi thiết kế luật chung.
 
-## 2026-08-19: `LlmBoundaryCutter` đã nối vào pipeline nhưng CỜ VẪN TẮT — cần đo lại 55 ca gốc qua đường sản xuất (xem handoff §109)
+## 2026-08-19: `LlmBoundaryCutter` — đã đo đủ 55 ca cho backend SGLang/Qwen3.8-27B (55/55), CHƯA đo đủ cho Local (xem handoff §109/§111)
 
-`LlmBoundaryCutter` (bảng cứng domain→2-shot đã đo 85,7%/95,0%/85,7% trong harness) đã nối thật vào
-`HeaderExtractionPipeline` (`PipelineOptions.LlmBoundaryCutFallback`, `--llm-boundary-cut-fallback`),
-qua `IHeaderClassifier.BoundaryCutAsync` trên cả 4 backend. Smoke test qua đường sản xuất thật (không
-phải scratch harness) trên 9 ca mới (không trùng 55 ca đã đo) chỉ ra 6/9 — đã cô lập biến ContextSize
-(loại trừ, kết quả giống hệt khi ép về đúng cấu hình harness) nên đây là biến động lấy mẫu trên mẫu
-quá nhỏ, không phải bug wiring. Nhưng **chưa có con số đầu-đối-đầu thật qua đúng đường sản xuất trên
-mẫu đủ lớn** — việc còn thiếu trước khi cân nhắc bật cờ mặc định: chạy lại TOÀN BỘ 55 ca gốc (21 pháp
-quy + 20 RFC + 14 biên bản) qua `LlmBoundaryCutter.TryCutAsync` (không phải `StatelessExecutor` dựng
-tay của ba harness cũ), so trực tiếp với 85,7%/95,0%/85,7% đã ghi. Nếu giữ hoặc gần bằng: có căn cứ
-bật mặc định. Nếu tụt rõ: cần tìm biến khác biệt thật giữa harness và production (đã loại ContextSize;
-còn lại: MaxTokens 80 vs 120, và khả năng nhỏ là khác biệt bản build LLamaSharp/native lib).
+**ĐÃ XONG cho backend SGLang:** chạy lại TOÀN BỘ 55 ca gốc (21 pháp quy + 20 RFC + 14 biên bản) qua
+`LlmBoundaryCutter.TryCutAsync` thật (không phải scratch harness), backend `SglangHeaderExtractor` trỏ
+gateway Qwen3.8-27B (`http://192.168.68.20/v1`, xem [[sglang-qwen-gateway]]) — **55/55 (100%)**, prompt
+giữ nguyên không tinh chỉnh lại cho Qwen. Xem handoff §111.
+
+**CÒN THIẾU:** backend Local (Llama-3.2-3B, mặc định của `PipelineOptions.Backend`) mới có mẫu 9 ca
+nhỏ (6/9, xem §109) — chưa chạy đủ 55 ca cho backend này. Không được suy diễn "55/55 trên Qwen" sang
+"chắc cũng tốt trên Local" — hai backend khác model hoàn toàn, đúng bẫy dự án đã trả giá nhiều lần.
+
+**Trước khi bật `LlmBoundaryCutFallback` mặc định:** (a) nếu triển khai này sẽ chạy backend=Sglang
+mặc định (gateway Qwen3.8-27B), có căn cứ vững để bật — số đã đo sạch. (b) nếu backend=Local (mặc
+định hiện tại của `PipelineOptions.Backend`) vẫn là đường chính, cần chạy đủ 55 ca cho Local trước —
+chưa làm.
 
 ## 2026-08-19: nhóm báo cáo tài chính (`03_tai_chinh_ke_toan`) — BỐN lỗi khác nhau, chưa có đáp án, chưa xây luật (xem handoff §110)
 
