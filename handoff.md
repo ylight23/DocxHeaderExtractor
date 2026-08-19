@@ -8029,3 +8029,52 @@ chặn writeback" vẫn được ghim nguyên.
 không còn chắn cái đó nữa, nên nó thành nợ của TẦNG LUẬT: phân biệt mốc cấu trúc với số thứ
 tự trong văn xuôi giờ là việc bắt buộc, không còn là việc nên làm. Dấu vết đo được ở §108:
 nhóm rác có dãy mốc **nghịch thế 32–57%**, đề mục thật tăng dần theo tài liệu.
+
+## §111 — Mốc cấu trúc vs số thứ tự văn xuôi: ba giả thuyết bị bác, một giả thuyết còn lại
+
+### Đính chính một điều tôi đã viết sai ở §108/§110
+
+`019_TT_200-2014` **không phải 165 mục rác**. Đọc thẳng đầu ra thì nó là **hỗn hợp**: 12 mục
+`Điều 6.`, `Điều 9.`, `Điều 12.` là đề mục THẬT; 150 mục `3.13.`, `3.20.`, `a)` mới là văn
+xuôi. Và `001_Bo_luat_Dan_su` chỉ ra 25 mục với `Điều 4, 14, 34, 42` — nhảy cóc, tức nó bị
+**sót nặng** chứ không phải mẫu tốt như tôi từng gán nhãn khi đo.
+
+### H1 — nghịch thế trong dãy mốc. BÁC.
+
+Đo 22 file có họ mốc ≥6 phần tử: trung vị 24%, nhóm rác 38–55%, nhưng `024_ND_15-2020` và
+`017_ND_123-2020` — nghị định thật — đạt **60%**, cao hơn cả nhóm rác. Nguyên nhân: văn bản
+pháp quy Việt Nam **đánh số lại theo điều/chương**, nên nghịch thế là hành vi BÌNH THƯỜNG của
+đúng nhóm tài liệu trọng tâm.
+
+### H2 — tỉ lệ bước liền bậc +1. BÁC, và dụng cụ đo hỏng.
+
+`001_Bo_luat_Dan_su` ra **0%**, thấp hơn nhóm rác (14–16%). Một bộ luật có cấu trúc chuẩn
+không thể thua tài liệu rác ở chỉ số "liền bậc" — đó là dấu hiệu **regex của tôi đang đo chính
+nó** chứ không đo tài liệu. Không tin H1 và H2 quá lời: cả hai đo bằng cùng dụng cụ đó.
+
+### H3 — mốc có NHÃN là cấu trúc, số TRẦN là văn xuôi. ĐÃ CÀI, ĐO, HỒI QUY, GỠ.
+
+Luật có điều kiện: tài liệu có ≥5 mốc mang từ nhãn (`Điều 6.`, `Section 3.`) thì số trần bên
+trong nó là văn xuôi. Điều kiện được thiết kế để `092_RFC9111` (0 mốc có nhãn) không bị đụng.
+
+| bộ | trước | sau |
+|---|---|---|
+| bench, ev-human, fd | — | y hệt |
+| **toc (9)** | F1 99,6% Nav 99,2% 7/9 | **F1 92,5% Nav 86% 6/9** |
+
+`036_WB_Plant` mất **47** mục, `037_WB_Plant` mất **55** mục, precision vẫn 100% — tức mọi mục
+bị gỡ đều là **đề mục THẬT**.
+
+**Tiền đề sai ở đâu.** Trong outline chuẩn, số trần là **cấp sâu hơn nằm dưới** mốc có nhãn:
+`Section II.` → `1.` → `2.`. Đó là phân cấp hợp lệ, không phải văn xuôi. Sự có mặt của mốc có
+nhãn KHÔNG hàm ý số trần là rác — nó thường hàm ý ngược lại.
+
+### H4 — giả thuyết còn lại, chưa thử
+
+Khác biệt thật giữa hai nhóm không nằm ở HÌNH DẠNG mốc mà ở **VỊ TRÍ**: mốc của `036` mở đầu
+đoạn riêng của nó; mốc `3.13.` của `019` nằm GIỮA một đoạn gộp khổng lồ (dài trung bình 2.043
+ký tự), do bộ cắt tách ra. Tín hiệu cần là **offset của mốc trong đoạn nguồn**, không phải
+dạng chữ của mốc.
+
+Cần kiểm trước khi cài: `HeadingRecord` có mang được offset đó không, hay phải truyền từ
+`ParagraphHeadingSplitter` / `MergedParagraphHeadings` lên.
