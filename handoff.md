@@ -8755,3 +8755,55 @@ Chốt này không lấy thêm điểm trên bộ có đáp án — nó dọn 4.
 chỉ nhìn bảng số.
 
 602 test xanh. Đột biến `MaximumHeadingsPerMarker = 99` → **đỏ**.
+
+## §123 — Độ phủ đã trọn; "xoá file không có outline" KHÔNG có đối tượng
+
+Yêu cầu: file nào không có outline, không thuộc luật nào thì xoá. **Đo xong thì không có file nào
+như vậy** — nên không xoá gì.
+
+| | đầu phiên | nay |
+|---|---|---|
+| file không ra mục nào | — | **0/89** |
+| file dưới 4 mục | — | **0/89** |
+| file dưới 8 mục | 24 | 0 |
+| tổng mục | 5.757 | 12.111 |
+
+Hai file duy nhất từng nằm dưới ngưỡng là biên bản họp FORTIS: `073` có **7 đoạn** và ra **7 mục**
+(`Opening:`, `Present:`, `Operating Context.`, `Funding Request…`, `Next Steps.`), `074` ra 4 mục
+tương tự. Chúng NGẮN chứ không thiếu outline, và do luật format-driven xử lý đúng. Xoá chúng là
+xoá dữ liệu tốt.
+
+## §124 — Bóc đầu trang ở MỌI vị trí: cài, đo, KHÔNG có tác dụng, đã gỡ
+
+### Vì sao thử
+
+25% số mục toàn corpus (**2.995/12.110**) dài quá 200 ký tự — thân bài dính vào đề mục. 27 file ở
+mức trên 50%, cả nhóm báo cáo tài chính IBRD/IDA là **100%**. Và đo được ở `045_IBRD`:
+`Management's Discussion and Analysis` xuất hiện **103 lần mà chỉ 68 lần ở đầu đoạn** — 35 lần nằm
+giữa đoạn gộp, sống sót qua `RunningHeaderAudit` vốn chỉ bóc tiền tố.
+
+Giả thuyết: đã xác định một chuỗi là văn bản in ấn thì nó là in ấn ở mọi vị trí.
+
+### Hai lỗi trong lúc cài, cả hai do test bắt
+
+1. **Đếm hai lượt.** Trả về "số lượt bóc" khiến một đoạn bị đếm hai lần. Đổi sang **số đoạn bị đổi**.
+2. **Lấy mẫu sau khi đã sửa.** Dựng regex từ `cluster[0].Key.Text` — nhưng vòng bóc tiền tố đã sửa
+   chính Text đó, nên regex được dựng từ **thân bài** và xoá nhầm nội dung. Phải chụp mẫu TRƯỚC.
+
+### Đo, và kết luận
+
+| | trước | sau |
+|---|---|---|
+| mục dài >200 ký tự | 2.995/12.111 = **24,7%** | 2.995/12.110 = **24,7%** |
+| số file đổi kết quả | — | **1** (`030_WB_RFP` 12 → 11 mục) |
+| bốn bộ đáp án | — | y hệt |
+
+Đổi đúng một file, mất một mục, chỉ số đích không nhúc nhích. **Không lợi ích, có mất mát** → gỡ.
+Đây đúng bài học §116: *không nhích số là dấu hiệu luật chết, không phải dấu hiệu luật an toàn.*
+
+### Nguyên nhân thật của 25% mục dài — cho vòng sau
+
+Không phải đầu trang. Với `041_IBRD`, đề mục dài 4.571 ký tự vì **cả đoạn gộp trở thành một mục**:
+`TypedNumberingOutline` sinh mục mà không cắt nhan đề khỏi thân bài. `ParagraphHeadingSplitter`
+đã có `MaxHeadingLength = 200` và `SplitHeadingBody`, nhưng đường `typed_number_depth` không gọi
+tới. Đó mới là chỗ phải sửa.
