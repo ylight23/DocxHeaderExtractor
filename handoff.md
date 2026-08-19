@@ -9123,3 +9123,62 @@ Mục do mô hình bù bị **rơi ở tầng sau khi đã được thêm vào d
 (grounding validator? audit? precision gate?). Đây là điều kiện tiên quyết cho MỌI phương án
 "luật làm nền, LLM bù phần còn lại" — chừng nào mục bù còn bị rơi thì mọi kiến trúc hợp nhất đều
 vô nghĩa. Đó là việc kế tiếp.
+
+## §132 — Luật dựng KHUNG, LLM phân định phần còn lại, ghép vào đúng vị trí
+
+Kiến trúc người dùng yêu cầu: *"luật đã xác định đấy là heading thì phần nhiễu còn lại đem hỏi
+LLM có phải heading không rồi ghép vào outline khung chính"*. §131 mới làm được nửa đầu.
+
+### Chỗ chặn — và nó KHÔNG nằm ở nơi triệu chứng chỉ tới
+
+Hai vòng trước, mục do mô hình bù bị mất: log báo *"bù thêm 1 mục"* nhưng đầu ra vẫn 3. Tôi ghi ở
+§131 rằng nó "rơi ở tầng sau" và nghi grounding validator / audit / precision gate.
+
+**Sai chỗ.** Cắm mốc in chỉ số dọc pipeline mới thấy:
+
+```
+[TRACE] bù 1 mục ở đoạn 3
+[TRACE] truoc quarantine: 4 [7,10,13,3]      ← thứ tự SAI
+… "Đã phải dựng lại 1 lượt sau khi validator bác kết quả đầu tiên"
+[TRACE] truoc quarantine: 3 [7,10,13]        ← lượt dựng lại, mục bù đã bị cách ly
+```
+
+Lỗi nằm ở **chính chỗ ghép**: `return [.. luat, .. them]` nối mục bù vào CUỐI danh sách, cho thứ
+tự `[7,10,13,3]`. Validator bác nguyên kết quả vì sai thứ tự đoạn, harness cách ly đoạn 3 rồi dựng
+lại — nên mục bù biến mất trong khi log vẫn báo đã bù.
+
+Bài học: triệu chứng "đã thêm nhưng không thấy" trỏ tự nhiên sang tầng LỌC, còn nguyên nhân nằm ở
+tầng GHÉP. Không có dấu vết chỉ số thì còn đoán tiếp.
+
+### Sửa
+
+Sắp lại theo chỉ số đoạn sau khi ghép. Một dòng.
+
+### Điều kiện gọi mô hình
+
+Dùng lại tín hiệu của §121 — so cái luật dựng được với cái tầng ứng viên nhìn thấy:
+
+| tài liệu | luật dựng | ứng viên | gọi mô hình? |
+|---|--:|--:|---|
+| `bench/04` | 3 | 7 | **có** → 4/4 |
+| `010_Luat_An_ninh` | 50 | 2 | **không** → giữ 0,4s |
+
+Nhờ điều kiện này không lặp lại sự cố "gọi vô điều kiện, `bench` không chạy xong trong 10 phút".
+
+### Đo — bench với Qwen3.5-9B local
+
+| | §131 | §132 |
+|---|---|---|
+| P | 100% | **100%** |
+| R | 97,2% | **100%** |
+| F1 | 98,6% | **100%** |
+| đúng cấp / đúng cha | 100% | **100%** |
+| Nav | 80,6% | **83,3%** |
+| tuyệt đối | 6/7 | **7/7** |
+
+Cả bảy tài liệu đúng trọn vẹn. `04-bia-muc-luc-chu-thich` từ 3/4 lên **4/4** với nguồn ghi rõ:
+*"3 cứu theo đánh số, 1 do model xác nhận"*.
+
+Bốn bộ `--no-llm` **y hệt** — nhánh không mô hình không đi qua nhánh này.
+
+610 test xanh.

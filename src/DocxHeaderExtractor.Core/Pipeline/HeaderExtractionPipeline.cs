@@ -500,10 +500,11 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 ? [.. pdfFallback.Headings]
                 : boldAndSessionCode.Count > 0
                     ? boldAndSessionCode
-                    : declared.Headings ??
-                (_options.DisableLlm
-                    ? HeuristicOnly(candidates)
-                    : await RunModelAsync(slim, candidates, quarantined, modeReport.Mode, ct));
+                    : declared.Headings is { Count: > 0 } luat
+                        ? await BoSungKhiLuatConSot(luat, slim, candidates, quarantined, modeReport, ct)
+                        : _options.DisableLlm
+                            ? HeuristicOnly(candidates)
+                            : await RunModelAsync(slim, candidates, quarantined, modeReport.Mode, ct);
 
             // StructuralHierarchyResolver và TableOfContentsAnchor đều TẤT ĐỊNH và không cần mô
             // hình, nhưng cả hai nằm trong RunModelAsync nên đường --no-llm chưa bao giờ chạy
@@ -662,6 +663,44 @@ public sealed class HeaderExtractionPipeline : IDisposable
             ? null
             : Path.GetFileName(_options.Llama.ModelPath),
     };
+
+    /// <summary>
+    /// Luật deterministic dựng KHUNG; phần còn lại đưa mô hình phân định rồi ghép vào khung đó.
+    /// <para>
+    /// <b>Vì sao có điều kiện.</b> Gọi mô hình vô điều kiện đã đo: <c>bench</c> không chạy xong nổi
+    /// trong 10 phút. Tín hiệu dùng ở đây là tín hiệu của <see cref="MergedParagraphAutoSplit"/> —
+    /// so cái luật dựng được với cái tầng ứng viên nhìn thấy. <c>bench/04</c> có 7 ứng viên mà luật
+    /// chỉ dựng 3 nên gọi mô hình; <c>010_Luat_An_ninh_mang</c> có 2 ứng viên mà luật dựng 50 nên
+    /// KHÔNG gọi, giữ nguyên 0,4s.
+    /// </para>
+    /// <para>
+    /// <b>Ghép theo ĐOẠN, và phải SẮP LẠI.</b> Chỉ nhận mục của mô hình ở paragraph mà luật chưa có
+    /// mục nào — cùng một đoạn thì luật thắng vì nó có bằng chứng cấu trúc. Bản đầu nối mục bù vào
+    /// cuối danh sách, cho thứ tự <c>[7,10,13,3]</c>, và validator bác NGUYÊN kết quả; harness cách
+    /// ly đoạn 3 rồi dựng lại nên mục bù biến mất trong khi log vẫn báo đã bù. Mất hai vòng mới truy
+    /// ra, vì triệu chứng ("bù rồi nhưng không thấy") trỏ nhầm sang tầng lọc phía sau.
+    /// </para>
+    /// </summary>
+    private async Task<List<HeadingRecord>> BoSungKhiLuatConSot(
+        List<HeadingRecord> luat, SlimDocument slim, List<SlimParagraph> candidates,
+        IReadOnlySet<int> quarantined, DocumentModeReport modeReport, CancellationToken ct)
+    {
+        if (_options.DisableLlm || luat.Count >= candidates.Count) return luat;
+        var moHinh = await RunModelAsync(slim, candidates, quarantined, modeReport.Mode, ct);
+        var daCo = luat.Select(h => h.Index).ToHashSet();
+        var them = moHinh.Where(h => !daCo.Contains(h.Index)).ToList();
+        if (them.Count == 0) return luat;
+        Log($"Mô hình bù {them.Count} mục ở đoạn luật không phủ.");
+
+        // Phải SẮP LẠI theo chỉ số đoạn. Nối vào cuối cho thứ tự [7,10,13,3] và validator bác
+        // nguyên kết quả — harness cách ly đoạn 3 rồi dựng lại, nên mục bù biến mất mà log vẫn
+        // báo đã bù. Đo được trên bench/04-bia-muc-luc-chu-thich.
+        var hop = new List<HeadingRecord>(luat.Count + them.Count);
+        hop.AddRange(luat);
+        hop.AddRange(them);
+        hop.Sort((a, b) => a.Index.CompareTo(b.Index));
+        return hop;
+    }
 
     private (List<HeadingRecord>? Headings, string? Route) TryBuildDeclaredOutline(
         SlimDocument slim,
