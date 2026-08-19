@@ -699,12 +699,34 @@ public sealed class HeaderExtractionPipeline : IDisposable
     /// </summary>
     private const double TyLeConSot = 0.5;
 
+    /// <summary>
+    /// Trần số ứng viên gửi mô hình phân định. Đây là ngân sách CHI PHÍ, không phải phán xét chất
+    /// lượng: giá một lượt bù tỉ lệ với số ứng viên phải phán.
+    /// <para>
+    /// Đo được: <c>bench/04</c> 7 ứng viên → ~100s, và bù đúng 1 mục để thành 4/4.
+    /// <c>030_WB_RFP</c> 151 ứng viên và <c>082_Bo_luat_Lao_dong</c> 333 ứng viên → cả hai chạm
+    /// trần thời gian, không ra file nào. Đắt tới mức thành HỎNG, nên phải chặn.
+    /// </para>
+    /// </summary>
+    private const int TranUngVienBu = 32;
+
     private async Task<List<HeadingRecord>> BoSungKhiLuatConSot(
         List<HeadingRecord> luat, SlimDocument slim, List<SlimParagraph> candidates,
         IReadOnlySet<int> quarantined, DocumentModeReport modeReport, CancellationToken ct)
     {
         if (_options.DisableLlm || candidates.Count == 0) return luat;
         if (luat.Count >= candidates.Count * TyLeConSot) return luat;
+
+        // Trần CHI PHÍ, không phải trần chất lượng. Mô hình phải phán từng ứng viên, nên giá tỉ lệ
+        // với số ứng viên: bench/04 có 7 ứng viên mất ~100s và đáng, còn 082_Bo_luat_Lao_dong có
+        // 333 ứng viên thì CHẠM TRẦN THỜI GIAN và không ra file nào — tức đắt tới mức thành hỏng.
+        // 030_WB_RFP có 151 ứng viên, cùng cảnh.
+        if (candidates.Count > TranUngVienBu)
+        {
+            Log($"Luật dựng {luat.Count} mục trên {candidates.Count} ứng viên — quá nhiều để hỏi " +
+                $"mô hình (trần {TranUngVienBu}), giữ kết quả của luật.");
+            return luat;
+        }
         var moHinh = await RunModelAsync(slim, candidates, quarantined, modeReport.Mode, ct);
         var daCo = luat.Select(h => h.Index).ToHashSet();
         var them = moHinh.Where(h => !daCo.Contains(h.Index)).ToList();
