@@ -9405,3 +9405,45 @@ có, KHÔNG có luật nào (deterministic lẫn LLM zero-shot) đạt được 
 Nav trên `092` — nên nếu thêm sàn precision vào luật trọng tài, `092` sẽ trở thành file "không đạt
 yêu cầu bàn giao" theo MỌI cách đã thử tới nay, không phải vì thiếu cố gắng mà vì đầu vào (RFC bị
 tách quá tay ở tầng segment) chưa được sửa tận gốc.
+
+## §140. Test giả thuyết "gốc lỗi nằm ở quyết định bật tách" cho `092` — BÁC, Nav sập chứ không giữ
+
+**Giả thuyết người dùng đề xuất sau §139:** 227/288 mục là rác, phần lớn sinh ra từ tách quá tay
+(§121). Nếu tắt tách đoạn gộp CHỈ cho `092` mà Nav vẫn giữ được trong khi số mục giảm mạnh, thì gốc
+lỗi nằm ở QUYẾT ĐỊNH bật tách, không phải ở tầng nào phía sau. Yêu cầu: đo bằng một lệnh, không xây.
+
+**Thực hiện.** `MergedParagraphAutoSplit.ShouldSplit` là quyết định TỰ ĐỘNG theo từng tài liệu
+(không phải cờ thủ công `SplitMergedParagraphs`, vốn mặc định đã tắt và không đụng tới đường tự
+động) — không có cách tắt riêng cho một file mà không đổi hành vi toàn corpus. Thêm cờ CHẨN ĐOÁN nhỏ
+`ExtractionOptions.DisableMergedParagraphAutoSplit` (CLI `--no-auto-split-merged`, mặc định tắt,
+không đổi hành vi mặc định) — chỉ ép quyết định tự động không kích hoạt, không thay gì khác trong
+pipeline. Build sạch, 606 test xanh (không hồi quy).
+
+Chạy `dhx eval` với `--no-auto-split-merged` trên đúng cấu hình sản xuất (Sglang/Qwen3.8-27B) đã
+dùng ở §139:
+
+```
+Trước (có auto-split, §128/§139): Trả về 288, P 1%, Nav 95,3%
+Sau  (KHÔNG auto-split):          Trả về 8,   P 0%, Nav 9,4%
+```
+
+**Khớp đúng con số lịch sử ở §116** ("092 trả 1 mục Nav 0% → 8 mục Nav 9,4%", đo trước khi
+`MergedParagraphAutoSplit` tồn tại) — dù nhiều luật khác đã đổi từ đó tới nay (§122–§137), con số vẫn
+y hệt. Đây là bằng chứng CHÉO độc lập, không phải trùng hợp: hai lượt đo cách nhau nhiều commit, hai
+cấu hình khác nhau, ra cùng một số.
+
+**Kết luận: giả thuyết BỊ BÁC.** Nav KHÔNG giữ được khi tắt tách — nó sập từ 95,3% xuống 9,4%, tệ hơn
+nhiều so với có tách (dù có tách mang theo 227 mục rác). Quyết định BẬT tách là ĐÚNG và CẦN THIẾT cho
+`092` — không phải gốc lỗi. Gốc lỗi thật (đã đúng như nghi ngờ ban đầu ở §121/§128, giờ có bằng chứng
+loại trừ hai hướng khác) nằm ở CHÍNH CƠ CHẾ TÁCH: `ParagraphHeadingSplitter`/`MergedParagraphAutoSplit`
+cắt đúng vị trí marker nhưng không phân biệt được ranh giới đoạn thật (heading + thân bài liền mạch)
+với mảnh vụn của trang mục lục/tham chiếu chéo bị băm ngang qua nhiều mốc liên tiếp.
+
+**Ba hướng đã bị loại cho `092`, không thử lại:**
+1. Luật lọc deterministic phía sau (§126, §128, §129, §137) — cả bốn lần đều làm Nav tụt.
+2. LLM lọc heading-vs-rác phía sau (§139) — Nav sập 95,3% → 35,9%.
+3. Tắt tách đoạn gộp (§140, mục này) — Nav sập 95,3% → 9,4%, tệ hơn cả (2).
+
+Cả ba đều là "sửa ở tầng khác" cho một lỗi nằm Ở CHÍNH bước tách. Việc còn lại, chưa thử: sửa
+`ParagraphHeadingSplitter`/`MergedParagraphAutoSplit` để cắt SẠCH hơn ngay từ đầu — không phải thêm
+tầng lọc sau bước tách sai.

@@ -428,7 +428,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // cáo là đã bỏ sót — xem MergedParagraphAutoSplit. Bật đại trà đã bị §113 bác.
             var tachDoanGop = _options.Extraction.SplitMergedParagraphs;
             var soMoc = 0;
-            if (!tachDoanGop &&
+            if (!tachDoanGop && !_options.Extraction.DisableMergedParagraphAutoSplit &&
                 MergedParagraphAutoSplit.ShouldSplit(slim, candidates.Count, out soMoc))
             {
                 tachDoanGop = true;

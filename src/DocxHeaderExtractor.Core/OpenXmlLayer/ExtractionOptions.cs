@@ -77,6 +77,14 @@ public sealed class ExtractionOptions
     public bool SplitMergedParagraphs { get; set; }
 
     /// <summary>
+    /// Cờ CHẨN ĐOÁN: ép <see cref="Pipeline.MergedParagraphAutoSplit"/> KHÔNG tự bật tách theo từng
+    /// tài liệu, dù tài liệu tự tố cáo bỏ sót (candidates/mốc &lt; 10%). Dùng để đo "nếu tài liệu
+    /// này không được tách thì Nav còn bao nhiêu" — trả lời câu hỏi gốc lỗi nằm ở QUYẾT ĐỊNH tách
+    /// hay ở tầng nào khác, không phải để chạy sản xuất. MẶC ĐỊNH TẮT (không đổi hành vi mặc định).
+    /// </summary>
+    public bool DisableMergedParagraphAutoSplit { get; set; }
+
+    /// <summary>
     /// Loại đoạn HỎNG (ký tự bị nhân đôi) khỏi tập ứng viên — spec §5.1 luật X1.
     /// <para>MẶC ĐỊNH TẮT: chưa gặp ca nào trên corpus đang đo, nên bật mặc định là đổi hành vi mà
     /// không có số đỡ. Cờ tồn tại để đo khi gặp tài liệu có đoạn hỏng.</para>

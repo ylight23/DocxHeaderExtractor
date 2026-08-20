@@ -862,3 +862,17 @@ không còn đủ thông tin để phân biệt, kể cả cho model 27B. Muốn
 segment trước, không phải thêm tầng lọc phía sau. **Không xây gì** — đúng yêu cầu đo trước khi đề
 xuất. Hệ quả cho câu hỏi sửa §128 (thêm sàn precision): với bằng chứng hiện có, `092` sẽ "không đạt
 bàn giao" theo MỌI cách đã thử, kể cả LLM zero-shot.
+
+## 2026-08-20: đã test "gốc lỗi ở quyết định tách" cho 092 — BÁC, Nav sập 95,3% → 9,4% (xem handoff §140)
+
+Thêm cờ chẩn đoán `--no-auto-split-merged` (mặc định tắt, không đổi hành vi mặc định) để đo "nếu
+092 KHÔNG được tách thì Nav còn bao nhiêu". Kết quả: Nav sập 95,3% → 9,4% (8 mục), tệ hơn cả hướng
+LLM lọc đã bác ở §139 (35,9%). Khớp đúng con số lịch sử §116 dù đo qua nhiều commit khác nhau.
+
+**Ba hướng đã bị loại cho `092`, không thử lại:** (1) luật lọc deterministic phía sau — Nav tụt cả
+bốn lần (§126/§128/§129/§137); (2) LLM lọc phía sau — Nav sập 35,9% (§139); (3) tắt tách đoạn gộp —
+Nav sập 9,4% (§140, mục này). Quyết định BẬT tách là ĐÚNG và CẦN THIẾT — không phải gốc lỗi.
+
+**Việc còn lại, chưa thử:** sửa CHÍNH cơ chế tách (`ParagraphHeadingSplitter`/`MergedParagraphAutoSplit`)
+để cắt sạch hơn ngay từ đầu — không phải thêm tầng lọc sau bước tách sai. Chưa có thiết kế cụ thể,
+cần đo trước khi đề xuất.
