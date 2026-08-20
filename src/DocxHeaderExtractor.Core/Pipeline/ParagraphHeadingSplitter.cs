@@ -93,33 +93,6 @@ public static class ParagraphHeadingSplitter
         return parts.Count > 0 ? parts : [text];
     }
 
-    /// <summary>Cùng phép cắt với <see cref="Segments"/>, nhưng giữ lại vị trí bắt đầu trong đoạn gốc — cần cho nơi gọi phải dựng <c>HeadingSpan</c> grounding được.</summary>
-    public readonly record struct OffsetSegment(int Start, string Text);
-
-    /// <summary>Biến thể có toạ độ của <see cref="Segments"/> — xem docstring ở đó cho lý do tồn tại.</summary>
-    public static IReadOnlyList<OffsetSegment> SegmentsWithOffsets(string? text)
-    {
-        if (string.IsNullOrWhiteSpace(text)) return [];
-
-        var marks = MarkerRx.Matches(text);
-        if (marks.Count < 2) return [new OffsetSegment(0, text)];
-
-        List<OffsetSegment> parts = [];
-        var starts = marks.Select(m => m.Index).ToList();
-        if (starts[0] > 0) starts.Insert(0, 0);
-        for (var i = 0; i < starts.Count; i++)
-        {
-            var end = i + 1 < starts.Count ? starts[i + 1] : text.Length;
-            var raw = text[starts[i]..end];
-            var trimmedStart = starts[i];
-            var seg = raw.TrimStart();
-            trimmedStart += raw.Length - seg.Length;
-            seg = seg.TrimEnd();
-            if (seg.Length > 0) parts.Add(new OffsetSegment(trimmedStart, seg));
-        }
-        return parts.Count > 0 ? parts : [new OffsetSegment(0, text)];
-    }
-
     /// <summary>
     /// Trả về các tiêu đề tìm được bên trong <paramref name="text"/>. Rỗng nghĩa là đoạn này
     /// không chứa mốc nào — nơi gọi giữ nguyên hành vi cũ, coi cả đoạn là một đơn vị.

@@ -9327,3 +9327,34 @@ sau mốc bắt đầu bằng chữ thường.
 Đã gỡ theo §128. Ghi lại vì đây là lần thứ ba trong phiên tôi suy ra "gỡ cái này không mất Nav" từ
 hình dạng dữ liệu rồi bị số đo bác (§126, §129, §137). Kết luận hẹp: **không suy đoán được mục nào
 khớp Nav; chỉ có chạy `eval` mới biết.**
+
+## §138. Gỡ `MergedParagraphLlmOutline` — trùng lặp với §121/§131/§132 của phiên song song
+
+**Bối cảnh.** Phiên này (tôi) đọc yêu cầu ở §114 ("hai việc phải làm trước khi xây production") và
+tự xây `MergedParagraphLlmOutline` — một lớp riêng dùng `ParagraphHeadingSplitter.Segments` + hai
+lượt gọi LLM (phân loại rồi cắt ranh giới bằng `LlmBoundaryCutter`) — trong khi KHÔNG biết một phiên
+song song đang xây cùng lúc kiến trúc tổng quát hơn nhiều cho ĐÚNG vấn đề này (§121 tự bật tách đoạn
+gộp theo từng tài liệu, §131 sửa lỗi luật deterministic chỉ chạy `--no-llm`, §132 luật dựng khung +
+model bù phần còn lại, ghép đúng vị trí). Phát hiện ra khi `git status` cho thấy `HEAD` đã nhảy tới
+`eaf5ece` (23 mục §115–§137) mà tôi không hề biết — file `MergedParagraphLlmOutline.cs` tôi đang sửa
+hoá ra ĐÃ NẰM trong lịch sử commit, vì phiên kia vô tình gom cả file chưa commit của tôi vào một lượt
+`git add -A` (đúng rủi ro phiên song song đã ghi ở [[docxheaderextractor-context]] — lần này không
+phải xung đột nội dung mà là commit hộ file người khác chưa xong).
+
+**Không giữ cả hai.** §131/§132 đã đo qua bốn bộ đáp án nhiều vòng (bench đạt F1 100% 7/7 với
+Qwen3.5-9B thật), tích hợp thẳng vào luồng `RunModelAsync`/candidate hiện có; `MergedParagraphLlmOutline`
+của tôi là một nhánh riêng, cờ mặc định tắt, chỉ đo tay trên 2 file (§114), CHƯA từng chạy qua bốn
+bộ đáp án. Giữ cả hai là để lại mã trùng chức năng gây nhầm lẫn "cái nào là giải pháp thật" — người
+dùng xác nhận gỡ.
+
+**Đã gỡ:** `MergedParagraphLlmOutline.cs`, `MergedParagraphLlmOutlineTests.cs` (4 test),
+`PipelineOptions.MergedParagraphLlmFallback` + đoạn gọi trong `RunModelAsync`, cờ CLI
+`--merged-paragraph-llm-fallback`, và `ParagraphHeadingSplitter.SegmentsWithOffsets`/`OffsetSegment`
+(chỉ được dùng bởi lớp vừa gỡ — xác nhận bằng `grep` trước khi xoá, không suy đoán). Build sạch,
+**606 test xanh** (610 − 4, đúng số test đã gỡ, không hồi quy gì khác).
+
+**Bài học lưu lại, không phải chỉ trích:** trước khi xây một cơ chế mới cho một vấn đề đã ghi trong
+`handoff.md`/`TODO.md`, kiểm `git log`/`git fetch` xem có phiên khác đang/đã làm chưa — đặc biệt khi
+làm việc kéo dài nhiều giờ mà không `git pull`/`fetch` định kỳ. Bản thân tôi đã `git fetch` nhiều lần
+trong phiên nhưng luôn ngay TRƯỚC một commit của chính mình; khoảng trống giữa các lần fetch là đúng
+lúc phiên kia đẩy 20+ commit lên.

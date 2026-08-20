@@ -202,23 +202,6 @@ public sealed class PipelineOptions
     public bool LlmBoundaryCutFallback { get; set; }
 
     /// <summary>
-    /// Fallback cho tài liệu PDF→DOCX gộp nhiều marker vào một đoạn (tầng ứng viên OpenXML/heuristic
-    /// không thấy vì marker nằm giữa đoạn) — đo trên toàn corpus ở handoff.md §112: 13/29 file
-    /// `01_phap_quy`+`06_dich_song_ngu`, cả 5/5 file `07_system_generated`. Dùng
-    /// <see cref="ParagraphHeadingSplitter"/> lấy segment, lọc trang mục lục, hỏi LLM phân loại từng
-    /// segment rồi cắt ranh giới bằng <see cref="LlmBoundaryCutter"/> — xem
-    /// <see cref="MergedParagraphLlmOutline"/>.
-    /// <para>
-    /// Mặc định TẮT — mới cài, đo trên 2 file (§114: 010 sạch tương đối, 092 confound bởi trang mục
-    /// lục), chưa đo qua toàn corpus hay hồi quy trên bộ eval hiện có. KHÔNG dùng
-    /// <c>ExtractionOptions.SplitMergedParagraphs</c> làm nền — cờ đó đã đo nổ rác 61% corpus ở §113;
-    /// lớp này thay bước "tin trực tiếp" bằng bước "hỏi model xác nhận", nhưng bản thân bước hỏi đó
-    /// cũng chưa đo đủ để bật mặc định.
-    /// </para>
-    /// </summary>
-    public bool MergedParagraphLlmFallback { get; set; }
-
-    /// <summary>
     /// Hậu kiểm bằng ký hiệu đánh số của chính tài liệu: cùng dạng đánh số phải cùng cấp, và
     /// dãy anh em phải liên tục từ 1. Không tốn giây suy luận nào và bắt được cả lỗi trượt cấp
     /// của mô hình lẫn tiêu đề bị tầng lọc đánh rơi — xem <see cref="NumberingAudit"/>.
@@ -1053,22 +1036,6 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 : llm.SharedPrefixTokens > 0
                     ? $"Tái dùng prefill: {llm.SharedPrefixTokens} token phần chung nạp một lần cho mọi khối."
                     : "Không cắt được prompt thành phần chung — quay về nạp lại từng khối.");
-
-        // Tài liệu gộp nhiều marker vào một đoạn (§112) gần như không có ứng viên nào cho vòng lặp
-        // per-candidate bên dưới thấy — candidates<5 trên tài liệu đủ dài là dấu hiệu đó, không phải
-        // ngưỡng tuỳ ý. Chạy fallback riêng TRƯỚC, và nếu nó tìm được gì thì trả thẳng — vòng lặp
-        // thường không có gì thêm để đóng góp trên đúng nhóm tài liệu này.
-        if (_options.MergedParagraphLlmFallback && candidates.Count < 5 && slim.Paragraphs.Count > 20
-            && LlmBoundaryCutter.IsSupported(mode))
-        {
-            var mergedHeadings = await MergedParagraphLlmOutline.BuildAsync(slim, mode, llm, ct);
-            if (mergedHeadings.Count > 0)
-            {
-                Log($"Fallback đoạn gộp qua LLM (domain {mode}): {mergedHeadings.Count} mục " +
-                    $"từ {candidates.Count} ứng viên gốc.");
-                return mergedHeadings;
-            }
-        }
 
         Func<IReadOnlyList<(int Index, int Level)>, IReadOnlyList<int>, string>? rollingOutline = _options.RollingOutline
             ? (skeleton, asked) => BuildRollingOutline(
