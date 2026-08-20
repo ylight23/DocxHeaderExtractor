@@ -57,7 +57,8 @@ public static class EvidenceConfidenceCalibrator
             if (heading.Source == HeadingSource.Structure)
             {
                 heading.Confidence = ConfidenceForChecks(passed);
-                heading.Disputed = !verified;
+                heading.Disputed = !verified &&
+                    !PrecisionAcceptanceGate.IsDeterministicDeclaredBasis(heading.ConfidenceBasis ?? "");
             }
         }
         return structure.Count;

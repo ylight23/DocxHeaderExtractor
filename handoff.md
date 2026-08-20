@@ -9487,3 +9487,1731 @@ quan nghịch rõ giữa n_seg và avg_seg_len), **nhưng bác cụ thể việc
 
 **Chưa đề xuất xây gì** — đúng yêu cầu. Dữ liệu thô (34 dòng đầy đủ Index/length/n_seg/avg/min/max)
 đã có trong log chạy, không chép lại toàn bộ ở đây để tránh phình tài liệu.
+
+## §142. Cơ chế "mục lục làm từ điển" (đề xuất từ phiên Claude.ai khác, đã sửa 2 lỗi) — Nav 98,4% khi kiểm bằng evaluator thật
+
+**Bối cảnh:** một phiên Claude.ai khác (môi trường Code Interpreter, không phải repo này) đề xuất một
+cơ chế khác hẳn 4 hướng đã bác ở §139–§141: thay vì lọc/phân loại từng mảnh ứng viên sau khi tách,
+nó (a) phân loại cả ĐOẠN là "mục lục" hay "thân bài" theo mật độ mốc/đoạn (regex mốc chặt hơn, loại
+trừ tham chiếu chéo bằng lookback), (b) dựng TỪ ĐIỂN tiêu đề CHỈ từ các đoạn mục lục, (c) quét đoạn
+thân bài tìm cùng mốc, tra tiêu đề sạch từ từ điển thay vì tự trích/tự làm sạch tiêu đề tại chỗ xuất
+hiện trong thân bài — mục lục (thường bị coi là rác cần lọc) trở thành NGUỒN SỰ THẬT cho tiêu đề, còn
+chỗ xuất hiện trong thân bài chỉ cung cấp VỊ TRÍ (Index đoạn). Tác giả tự phát hiện và sửa 2 lỗi khi mở
+rộng ra cả 5 file RFC (XREF thiếu ranh giới từ, chưa cắt cụm "Standards Track Page N" ở chân trang) và
+tự đề nghị bước kiểm chứng đúng: chạy qua evaluator thật với key `092`.
+
+**Đo (script C# scratch, port trung thành từ Python bản đã sửa, dùng `DocxSlimExtractor` thật + replicate
+đúng `Evaluator.NavigationScore`/`NormalizeForNavigation`, không qua LLM):**
+
+```
+Đoạn TOC (mật độ ≥13): 4, 6, 8
+Từ điển TOC: 67 mục. Khớp được ở thân bài: 67. toc-only: 0
+
+Nav THẬT (so với key 092, 64 mục đáp án):
+  Khớp: 63/64 = 98,4%
+  Số mục trả về: 67 (đáp án 64)
+  Mất 1 mục: idx=8 "1. Introduction"
+```
+
+**Một lỗi tự mắc phải khi port, đã sửa trước khi tin kết quả:** từ điển tiêu đề ban đầu lưu tiêu đề
+KHÔNG kèm số mục ("Requirements Notation"), trong khi văn bản đáp án trong key LUÔN giữ số mục
+("1.1. Requirements Notation") vì đây là đánh số gõ tay nằm ngay trong text đoạn — không phải numPr
+Word. `NormalizeForNavigation` đòi output PHẢI BẮT ĐẦU BẰNG text đáp án đã chuẩn hoá, nên thiếu số mục
+ở đầu khiến khớp 0/64 dù nội dung tiêu đề đúng. Sửa: dựng tiêu đề đầy đủ `"{số mục}. {tiêu đề}"` (và
+`"{chữ cái}. {tiêu đề}"` cho Appendix) trước khi so khớp — sau sửa mới ra 98,4%.
+
+**So với nền sản xuất hiện tại của `092`:** Nav 95,3% (61/64) nhưng trả về 288 mục (P≈1%). Cơ chế này
+Nav 98,4% (63/64) mà chỉ trả về 67 mục — high hơn Nav, và số mục trả về gần khớp đáp án (64) thay vì
+gấp 4,5 lần. Đây là kết quả tốt hơn HẲN cả 4 hướng đã bác ở §139–§141 cộng lại, trên chính số đo mà
+§128 dùng để trọng tài.
+
+**1 mục còn thiếu — `idx=8 "1. Introduction"` — nguyên nhân cụ thể, không phải ngẫu nhiên:** đoạn thứ
+8 trong tài liệu chứa ĐUÔI của phần mục lục VÀ ĐẦU của thân bài "1. Introduction" gộp chung một đoạn
+(ranh giới mục lục/thân bài không sạch ở đúng điểm nối). Ngưỡng mật độ ≥13 xếp cả đoạn 8 vào "mục lục"
+nên bị loại khỏi vòng quét thân bài, mất luôn mốc "1." duy nhất lẽ ra khớp tại đó. Đây là ca biên cụ
+thể, không phải lỗ hổng ngẫu nhiên trong cơ chế.
+
+**Giới hạn của phép đo này — phải nói rõ trước khi bàn tiếp:**
+1. Chỉ kiểm được `Nav`, KHÔNG chạy qua `Evaluator.Score` thật (P/R/F1 đầy đủ theo cấp, theo cha) — vì
+   cơ chế hiện chỉ tồn tại dưới dạng script scratch, chưa có `HeadingRecord`/`DocumentOutline` thật để
+   đưa qua evaluator sản xuất.
+2. Chỉ `092` có đáp án thật trong 5 file RFC. Bốn file còn lại (091, 093–095) chỉ được phiên kia kiểm
+   tra độ SẠCH nội bộ (mật độ tách cụm rõ, tiêu đề trích ra "trông hợp lý" 99,8%), KHÔNG có đáp án để
+   đối chiếu Nav thật — kết quả tốt trên `092` không tự động suy ra tốt trên 4 file kia.
+3. Ngưỡng mật độ `≥13` và độ dài tiêu đề `2–80 ký tự` là hằng số tay, chưa đo độ nhạy (bao nhiêu sai
+   nếu đổi ngưỡng ±2, ±20 ký tự).
+
+**Chưa đề xuất xây/tích hợp vào pipeline thật** — đúng yêu cầu đo trước. Đây là bằng chứng số đủ mạnh
+để đáng bàn bước tiếp theo, nhưng quyết định port cơ chế này vào `ParagraphHeadingSplitter`/nhánh RFC
+là quyết định xây, cần người dùng đồng ý trước.
+
+## §143. Độ nhạy ngưỡng mật độ + scale sang 4 file RFC còn lại — cả hai đều CỦNG CỐ §142
+
+**Phần 1 — độ nhạy `densThr` trên `092` (có đáp án thật, đo qua evaluator thật):** quét `densThr` từ 6
+đến 30. Nav = 98,4% (63/64) **ĐỨNG YÊN** suốt từ 6 đến 15 — dải phẳng rộng 10 giá trị nguyên liền
+nhau, không phải một điểm trúng số. Chỉ khi vượt 17 mới tụt (81,2%, mất 1 đoạn TOC), tụt tiếp ở 25
+(46,9%, mất 2 đoạn TOC). Ngưỡng 13 đang dùng nằm giữa dải an toàn, cách mép gần nhất (17) 4 đơn vị.
+
+```
+densThr | TOC_đoạn | dict | Nav
+  6–15  |    3     |  67  | 98,4%   <- dải phẳng
+  17,20 |    2     |  52  | 81,2%
+  25,30 |    1     |  30  | 46,9%
+```
+
+**Phần 2 — độ nhạy độ dài tiêu đề (minLen/maxLen), `densThr=13` cố định:** gần như không đổi trên toàn
+khoảng minLen 0–5 / maxLen 60–200. Chỉ minLen≥3 mất đúng 1 mục (66/67 dict, Nav 96,9% thay vì 98,4%) —
+một tiêu đề ngắn ≤3 ký tự bị lọc nhầm. Không có vùng giòn.
+
+**Phần 3 — scale sang `091/093/094/095` (densThr=13, KHÔNG có đáp án thật → chỉ đối chiếu nội bộ):**
+
+| File | Đoạn có text | Đoạn TOC | Dict | Khớp thân bài | toc-only | Mật độ TOC thấp nhất | Mật độ non-TOC cao nhất | Khoảng trống |
+|---|--:|--:|--:|--:|--:|--:|--:|--:|
+| 091_RFC9110 | 196 | 9 | 235 | 235 | 0 | 18 | 10 | 8 |
+| 093_RFC9112 | 48 | 2 | 50 | 50 | 0 | 22 | 11 | 11 |
+| 094_RFC9113 | 80 | 4 | 97 | 97 | 0 | 14 | 9 | 5 |
+| 095_RFC9114 | 72 | 3 | 72 | 72 | 0 | 18 | 5 | 13 |
+
+Cả 4 file đều có khoảng trống DƯƠNG giữa cụm mật độ-TOC-thấp-nhất và cụm mật độ-non-TOC-cao-nhất —
+ngưỡng 13 nằm an toàn trong mọi khoảng trống (không file nào ép ngưỡng phải chọn giá trị khác). `toc-
+only=0` ở cả 4 file — mọi mục trong từ điển TOC đều tìm được ít nhất một vị trí thân bài khớp mốc. 5
+tiêu đề đầu mỗi file nhìn hợp lý bằng mắt (vd 091: "1: Introduction", "1.1: Purpose", "1.2: History and
+Evolution"...).
+
+**Giới hạn của Phần 3 — phải nói rõ:** `toc-only=0` là tín hiệu YẾU HƠN Nav thật — nó chỉ chứng minh
+mỗi số mục trong TOC tìm được MỘT vị trí thân bài nào đó (dòng đầu tiên theo thứ tự đoạn), không chứng
+minh vị trí đó là vị trí NGỮ NGHĨA đúng (đúng đoạn có đáp án mong đợi) như Nav thật đã kiểm được cho
+`092`. Không có đáp án cho 4 file này nên không đo được Nav thật — kết quả tốt trên `092` không tự
+động suy ra Nav tốt trên 4 file kia, dù tín hiệu nội bộ (khoảng trống dương, toc-only=0, tiêu đề sạch)
+đều ủng hộ cùng chiều.
+
+**Kết luận của cả §142+§143:** cơ chế "mục lục làm từ điển" không giòn theo ngưỡng, và đặc điểm tách
+bimodal không phải chỉ có ở `092`. Đây là bằng chứng đo được mạnh nhất từ đầu phiên đến giờ cho một
+hướng sửa. Vẫn CHƯA đề xuất xây — quyết định port vào pipeline thật là quyết định của người dùng.
+
+## §144. Auto-repair gate/score calibration — DỪNG nhánh gate ở trạng thái untrusted
+
+**Bối cảnh:** đã thêm `dhx repair` và `repair-calibrate` để tạo failure case, candidate report,
+validation report, calibration CSV/JSON. Vòng đo gate đã đi qua v3→v8:
+
+- v3: score/gate mới chạy được nhưng chưa hiệu chuẩn.
+- v4: thêm gate route-specific cho `pdf-bold-label` và `part-section-text-toc` sau khi chính
+  calibration chỉ mặt 072/080/030.
+- v6/v7: thêm split tune/holdout và route/mode distribution.
+- v8: thêm baseline route tree và replay toàn tập.
+
+**Kết luận quan trọng:** split tune/holdout hiện KHÔNG kiểm chứng được tính tổng quát. Hai tập gần như
+rời nhau theo route:
+
+```
+tune    : outline-level 8, vietnamese-legal 6, pdf-bold-label 2, part-section 1
+holdout : rfc-toc-dictionary 3, pdf-bold-label 3, pdf-textbook 2, outline-level 1
+```
+
+Vì phân bố route lệch mạnh, các số `corr`, pass-rate, Nav pass/fail giữa tune/holdout KHÔNG diễn giải
+được như bằng chứng tổng quát. `LOO` cũ cũng KHÔNG phải leave-one-out thật: luật gate là handwritten,
+không được suy lại từ N-1 file, nên bỏ từng file ra không thay đổi luật. Report đã đổi tên thành
+fixed-rule replay với status `not_applicable_rules_are_hand_written`.
+
+**Trạng thái chốt:** `untrusted_until_recalibrated`.
+
+- Gate chỉ dùng để gắn cờ nghi ngờ / `needs_analysis`, KHÔNG dùng để quyết định merge.
+- Score không dùng để chọn route; chưa có bằng chứng nó mang tín hiệu ổn định (`corr(score, Nav)` và
+  `corr(score, F1)` yếu/không ổn định qua các vòng).
+- Chọn route nên đi bằng cây điều kiện dựa trên tín hiệu tài liệu: mode chỉ là tầng đầu; phải xét tín
+  hiệu phụ như PDF font-strong, TOC dictionary, part-section TOC, pdf-bold-label.
+- Không tune score thêm trong nhánh này. Điều kiện dừng đã chạm: sau 6 vòng, nếu chưa có per-file
+  ranking đo được và score không vượt baseline route-tree thì bỏ score khỏi quyền chọn candidate.
+
+**Việc mở khóa tiếp theo:** cần thêm key cho các nhóm route thiếu/chưa cân bằng (đặc biệt FormatDriven
+và no-route/needs-analysis). Không vòng đo nào trên 26 key hiện có thay thế được corpus cân bằng hơn.
+
+## §145. Repair corpus audit trên `heading_corpus_95_word` — bản đồ key thiếu/gate fail, không phải proof gate
+
+**Lệnh chạy:**
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- repair-audit todo10_8\heading_corpus_95_word --no-llm -o .verify-build\repair-corpus-audit\heading-corpus-95
+```
+
+**Kết quả tổng quát:** 89 tài liệu; gate fail 60; `needs_analysis` 81; thiếu key 69. Output:
+
+- `.verify-build/repair-corpus-audit/heading-corpus-95.json`
+- `.verify-build/repair-corpus-audit/heading-corpus-95.csv`
+
+**Route distribution:**
+
+| Route | Số file |
+|---|--:|
+| auto:typed-numbering | 23 |
+| auto:vietnamese-legal | 23 |
+| auto:pdf-bold-label | 12 |
+| auto:pdf-textbook-layout | 11 |
+| auto:outline-level | 10 |
+| auto:rfc-toc-dictionary | 6 |
+| auto:vietnamese-administrative | 2 |
+| auto:book-toc-dictionary | 1 |
+| auto:part-section-text-toc | 1 |
+
+**Key thiếu theo nhóm:** pháp quy 17; tài chính/kế toán 14; giáo trình 14; dịch song ngữ 10; hợp đồng
+mua sắm 5; biên bản họp 5; system-generated/RFC 4.
+
+**Nhóm “gate pass nhưng thiếu key” đáng ưu tiên vì trông ổn nhưng chưa có đáp án thật:** `063`,
+`082`, `062`, `091`, `093`, `094`, `095`, 10 file `pdf-textbook-layout` giáo trình, 2 file WBG trust
+fund (`051`, `052`). Đây không phải bằng chứng đúng; chỉ là hàng đợi tạo key tốt vì gate không báo lỗi.
+
+**Nhóm “has key nhưng gate fail” cần đọc lại vì gate đang rất nghiêm:** `026`, `031`, `030`, `072`,
+`073`, `075`, `080`, `054`, `010`, `025`. Một số file trong nhóm này có key và Nav tốt ở các phép đo
+trước, nên gate fail không được hiểu là output sai; đúng trạng thái §144: gate chỉ gắn cờ nghi ngờ.
+
+**Kết luận:** audit không cho thấy hệ thống “cố định file qua gate”. Nó cho thấy phần chưa đo là rất
+lớn: 69/89 thiếu key. Việc tiếp theo nên là tạo/duyệt key cho route thiếu và route gate-pass-no-key,
+không tune gate/score thêm trên 26 key cũ.
+
+## §146. Key-first sau khi dừng gate — thêm `repair-key-package`
+
+**Quyết định:** dừng nhánh gate/score ở trạng thái `untrusted_until_recalibrated`. Không dùng gate để
+chứng minh tài liệu đúng và không tune thêm trên 26 key cũ. Việc tiếp theo là giảm vùng mù 69/89 file
+thiếu key, ưu tiên nhóm gate pass nhưng chưa có đáp án thật.
+
+**Code mới:** thêm lệnh CLI:
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- repair-key-package <file|thư-mục> --no-llm -o .verify-build\partial-key-packages --key-limit 30
+```
+
+Lệnh này chạy pipeline hiện tại, ghi ba artifact mỗi file:
+
+- `<stem>.current-outline.json`: output hiện tại để audit.
+- `<stem>.partial-review.csv`: bảng duyệt có route, diagnostic, source/confidence và cột `keep/delete/fix`.
+- `<stem>.partial.key`: draft key đánh dấu `partial_human`; CHƯA được coi là đáp án thật cho tới khi
+  người duyệt xoá/sửa false positive và xác nhận cấp/text.
+
+**Đã gắn vào agent harness:** thêm `PartialKeyPackageActionTool` với descriptor
+`create_partial_key_package`. Request agent có các trường `KeyPackageOutputDirectory`,
+`KeyPackageLimit`, `KeyPackageStart`; khi trường output có giá trị, registry chọn action này sau khi
+extraction + validator chạy xong. Có guardrail mới `key_package_target` để kiểm thư mục đích và tham
+số slice. Đây là action tạo review artifact, KHÔNG tự merge key và KHÔNG biến draft thành đáp án thật.
+
+**Package đã tạo cho ba nhóm nguy hiểm nhất:**
+
+| File | Nhóm | Slice | Thư mục |
+|---|---|--:|---|
+| `063_Advanced_Linear_Algebra.docx` | book TOC / từng bị nghi over-extract | 30/96 | `.verify-build/partial-key-packages/063_Advanced_Linear_Algebra` |
+| `051_WBG_Trust_Fund_FIS_June_2024.docx` | tài chính bảng biểu, gate pass thiếu key | 30/31 | `.verify-build/partial-key-packages/051_WBG_Trust_Fund_FIS_June_2024` |
+| `057_Quantitative_Methods_in_Finance_Lecture_Notes.docx` | pdf-textbook-layout, route thiếu key | 30/83 | `.verify-build/partial-key-packages/057_Quantitative_Methods_in_Finance_Lecture_Notes` |
+
+**Quan sát nhanh từ package:**
+
+- `051` có nhiều dòng bảng/metric lọt vào heading (`YoY change`, `TOTAL...`) — đúng là ca gate-pass
+  nguy hiểm và cần key để chặn over-extraction tài chính.
+- `057` route `auto:pdf-textbook-layout` sạch hơn ở 30 mục đầu, nhưng vẫn cần key thật để biết cấp và
+  span chương/mục có đúng không.
+- `063` hiện pipeline trả 96 heading, không còn 863 như audit cũ; cần dùng package này để xác nhận
+  đó là cải thiện thật hay chỉ khác cấu hình/route.
+
+**Nợ kỹ thuật route hiếm:** `auto:book-toc-dictionary` có 1 file, `auto:part-section-text-toc` có 1
+file, `auto:vietnamese-administrative` có 2 file. Không gỡ vì chúng đang phục vụ ca thật, nhưng không
+nên thêm route thứ mười trước khi các route 1-2 file có key và audit rõ hơn.
+
+## §147. Sửa key-package: đo line recovery và lấy mẫu rải đều
+
+**Lý do sửa:** package ban đầu lấy 30 heading đầu. Với file dài, slice đầu dễ nhất và không đại diện;
+với `063`, còn phải phân biệt 96 heading của C# là “lọc tốt hơn” hay “bỏ sót vì C# chỉ nhìn 402
+paragraph, không khôi phục 16k dòng như script Python”.
+
+**Code mới:**
+
+- `TextLayoutLineProbe`: đếm `textParagraphs`, `hardLines` từ `w:br`, `recoveredLines` bằng heuristic
+  ranh giới dính liền `(?<=[a-z\)\]\.:;,%\d])(?=[A-Z])`, và `longParagraphs`.
+- `repair-key-package` mặc định lấy mẫu rải đều (`distributed_even`) thay vì 30 mục đầu.
+- Thêm `--key-contiguous` để tái lập hành vi slice liên tiếp khi cần.
+- `.partial.key` và `.partial-review.csv` đều ghi `sample_strategy` và `line_probe`.
+
+**Chạy lại ba package ưu tiên:**
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- repair-key-package `
+  todo10_8\heading_corpus_95_word\04_giao_trinh\063_Advanced_Linear_Algebra.docx `
+  todo10_8\heading_corpus_95_word\03_tai_chinh_ke_toan\051_WBG_Trust_Fund_FIS_June_2024.docx `
+  todo10_8\heading_corpus_95_word\04_giao_trinh\057_Quantitative_Methods_in_Finance_Lecture_Notes.docx `
+  --no-llm -o .verify-build\partial-key-packages --key-limit 30
+```
+
+**Số line probe:**
+
+| File | Headings sampled | Paragraphs | Hard lines | Recovered lines | Long paragraphs |
+|---|--:|--:|--:|--:|--:|
+| `051` | 30/31 | 28 | 681 | 687 | 20 |
+| `057` | 30/83 | 551 | 20836 | 21810 | 522 |
+| `063` | 30/96 | 402 | 15154 | 16060 | 390 |
+
+**Kết luận cho `063`:** C# không chỉ nhìn 402 paragraph. `recoveredLines=16060`, gần khớp phép đo
+Python `16058`. Vì vậy 96 heading KHÔNG nên được giải thích là do mất ranh giới dòng hàng loạt; khác
+biệt 863→96 nhiều khả năng đến từ route/lọc theo TOC dictionary và lọc nhiễu, nhưng vẫn cần key rải
+đều để xác nhận precision/coverage thật.
+
+**Mẫu `063` mới phủ tài liệu:** từ `Part I Linear algebra` qua các chương giữa tới `CHAPTER 16 Random
+matrices`, không còn chỉ chương 1. `057` cũng phủ tới mục 85 thay vì 30 bài đầu.
+
+## §148. Duyệt 3 partial key và đo gate-pass trên route thiếu key
+
+**Key mới:** thêm `keys/partial-human/`:
+
+- `051_WBG_Trust_Fund_FIS_June_2024.key`
+- `057_Quantitative_Methods_in_Finance_Lecture_Notes.key`
+- `063_Advanced_Linear_Algebra.key`
+
+`063` và `057` giữ 30 mục mẫu rải đều. `051` được duyệt kỹ hơn vì sample 30/31 gần như toàn bộ output:
+22 mục được giữ, 8 dòng bảng/metric bị đánh negative. Để tránh precision đẹp giả, `AnswerKey`/`Evaluator`
+đã hỗ trợ negative review line bằng cú pháp `!@stableId level # text`; partial key vẫn có thể phạt
+false positive trong vùng đã duyệt.
+
+**Sửa calibration:** `repair-calibrate` giờ dùng `BuildKeyIndex` như `repair-audit`, ưu tiên key trong
+`keys/` hơn artifact `.verify-build`, nên các key reviewed không cần chép cạnh file DOCX.
+
+**Lệnh đo lại:**
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- repair-calibrate `
+  todo10_8\heading_corpus_95_word --no-llm `
+  -o .verify-build\repair-gate-calibration-after-3keys
+```
+
+**Kết quả 3 file mới:**
+
+| File | Route | Gate | Truth | Result | Precision | Recall | Nav | FP | FN | Wrong level |
+|---|---|---|--:|--:|--:|--:|--:|--:|--:|--:|
+| `051` | `auto:pdf-bold-label` | pass | 22 | 30 | 73,3% | 100% | 100% | 8 | 0 | 0 |
+| `057` | `auto:pdf-textbook-layout` | pass | 30 | 30 | 100% | 100% | 100% | 0 | 0 | 0 |
+| `063` | `auto:book-toc-dictionary` | pass | 30 | 30 | 100% | 100% | 100% | 0 | 0 | 3 |
+
+**Kết luận:** gate-pass trên `057` và `063` được củng cố trên sample rải đều. Nhưng `051` là bằng chứng
+rõ rằng gate-pass không đủ để chặn over-extraction ở `pdf-bold-label`: navigation/recall vẫn 100% vì
+các heading thật có mặt, nhưng precision slice chỉ 73,3% do 8 dòng metric/bảng lọt vào output. Vì vậy
+trạng thái §144 vẫn giữ: gate chỉ gắn cờ/nghi ngờ, không được dùng làm quyết định merge hay “đã đúng”.
+
+## §149. Chốt `063` theo TOC người dùng và sửa lọc PDF cho `051`
+
+**`063_Advanced_Linear_Algebra`:** output 96 mục trước đó KHÔNG đúng hoàn toàn. Nó thiếu các mốc TOC
+bị nhiễu header/footer trong đoạn mục lục, cụ thể có `4e. Exercises`, `9e. Exercises`, `CHAPTER 15 Spin
+matrices`, `16e. Exercises`, `Bibliography`, `Index`; vì thiếu `CHAPTER 15`, các mục `15a`-`15e` còn bị
+treo sai cha dưới chương 14.
+
+**Sửa code:** `BookTocDictionaryOutline` không còn parse TOC bằng regex một phát trên dạng
+`marker title page`, vì layout PDF-converted có thể chèn số trang/`CONTENTS` giữa entry. Parser mới tìm
+mọi entry start (`Part`, `Chapter`, `\d+[a-z].`, `Bibliography`, `Index`), cắt title tới entry kế tiếp,
+rồi bỏ chuỗi đuôi `digits/CONTENTS`. Backmatter được map thành key `BACK:*` và anchor ở đầu dòng thân
+bài.
+
+**Kết quả `063` sau sửa:**
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- extract `
+  todo10_8\heading_corpus_95_word\04_giao_trinh\063_Advanced_Linear_Algebra.docx `
+  --no-llm -f csv -o .verify-build\063-after-booktoc-fix2.csv
+```
+
+- Route: `auto:book-toc-dictionary`
+- TOC cluster: 6 đoạn
+- Dictionary: 102
+- Body anchors: 102
+- Anchor ratio: 100%
+- Evaluator với key từ TOC người dùng: Precision 100%, Recall 100%, F1 100%, wrong level 0
+
+Key `keys/partial-human/063_Advanced_Linear_Algebra.key` đã được nâng thành key đầy đủ theo TOC người
+dùng trong chat: Part I-IV, Chapter 1-16, các mục `1a`-`16e`, `Bibliography`, `Index`.
+
+**`051_WBG_Trust_Fund_FIS_June_2024`:** DOCX convert bị sai format/gộp layout, nên nguồn chuẩn phải là
+PDF sibling `heading_corpus_100/.../051_WBG_Trust_Fund_FIS_June_2024.pdf`. PDF không có bookmark outline,
+nhưng text PDF giữ thứ tự visual tốt hơn DOCX. Route đúng vẫn là `auto:pdf-bold-label`, nhưng cần lọc
+artifact bảng/chart.
+
+**Sửa code:** `PdfBoldLabelOutline` lọc các artifact tổng quát như dòng `YoY`, `TOTAL`, `Top N`, nhãn
+`Key Metrics/Metrices`, dòng tỷ lệ số cao, và chỉ bỏ prefix duplicate nếu prefix trông bị cắt cụt
+(ví dụ ngoặc mở chưa đóng hoặc kết thúc bằng `:`). Không bỏ mọi prefix ngắn, vì `Cash and Investments`
+là heading thật riêng trước `Cash and Investments in DP Balance Accounts`.
+
+**Kết quả `051` sau sửa:**
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- extract `
+  todo10_8\heading_corpus_95_word\03_tai_chinh_ke_toan\051_WBG_Trust_Fund_FIS_June_2024.docx `
+  --no-llm -f csv -o .verify-build\051-after-pdf-filter2.csv
+```
+
+- Route: `auto:pdf-bold-label`
+- PDF aligned: 22/32 candidate
+- Output: 22 heading
+- Evaluator với key đã duyệt: Precision 100%, Recall 100%, F1 100%, wrong level 0
+
+**Đo lại 3 key vừa thêm:**
+
+| File | Route | Gate | Truth | Result | Precision | Recall | F1 | FP | FN | Wrong level |
+|---|---|---|--:|--:|--:|--:|--:|--:|--:|--:|
+| `051` | `auto:pdf-bold-label` | pass | 22 | 22 | 100% | 100% | 100% | 0 | 0 | 0 |
+| `057` | `auto:pdf-textbook-layout` | pass | 30 | 30 | 100% | 100% | 100% | 0 | 0 | 0 |
+| `063` | `auto:book-toc-dictionary` | pass | 102 | 102 | 100% | 100% | 100% | 0 | 0 | 0 |
+
+**Regression:** `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `628/628`.
+
+## §150. Cảnh báo overfit sau khi chốt `051`/`063`
+
+**Điểm cần đọc đúng:** 100% F1 của `051` và `063` sau §149 không phải bằng chứng tổng quát. Cả hai đều
+được sửa sau khi đã nhìn thấy file hiện tại sai ở đâu, nên số 100% chỉ chứng minh patch khớp được ca
+đang soi, không chứng minh patch khớp route rộng hơn.
+
+**Khác biệt giữa hai ca:**
+
+- `063`: sửa dựa trên từ điển TOC lấy từ chính tài liệu. Đây là cơ chế tổng quát hơn vì không liệt kê
+  title hay token riêng của file; parser chỉ học cách mục TOC bị nhiễu `digits/CONTENTS` khi PDF convert.
+- `051`: filter PDF bold-label hiện vẫn có dấu hiệu lexical/file-shaped (`YoY`, `TOTAL`, `Top N`,
+  `Key Metrics/Metrices`). Dù `051` đã đạt 22/22 sau khi đối chiếu PDF, rule này chưa được coi là
+  tổng quát cho tài liệu tài chính.
+
+**Kiểm chứng rẻ trên `052` song sinh của `051`:**
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- extract `
+  todo10_8\heading_corpus_95_word\03_tai_chinh_ke_toan\052_WBG_Trust_Fund_FIS_December_2025.docx `
+  --no-llm -f csv -o .verify-build\052-after-pdf-filter.csv
+```
+
+Kết quả hiện tại:
+
+- PDF bold-label phát hiện 40 candidate nhưng chỉ align được 22 về DOCX.
+- Ngưỡng alignment 60% làm route bị bỏ qua: `low-docx-alignment:22/40`.
+- Output cuối chỉ còn 1 heading (`052_WBG_Trust_Fund_FIS_December_2025.pdf`) và phải coi là fail.
+
+**Kết luận cho `051` route:** chưa được merge/tuyên bố là route tài chính tổng quát. Cần một trong hai
+hướng trước khi tin:
+
+1. Tạo route tài chính/PDF report riêng với rule hình thái/tần suất thay vì danh sách từ khóa
+   (`numeric-density`, `table-row-shape`, `chart-caption-shape`, repeated page header/footer,
+   visual section title).
+2. Hoặc gán key/duyệt `052` rồi sửa trên cặp `051/052` cùng lúc; tuyệt đối không đọc 052 như holdout
+   nếu lại sửa xong rồi chấm lại ngay trên chính nó.
+
+**Quét nhóm giáo trình 056-070:** `auto:book-toc-dictionary` chỉ kích hoạt trên `063`. Các file giáo
+trình còn lại chủ yếu đi `auto:pdf-textbook-layout`, một số rơi về typed/route khác. Vì vậy `063` không
+chứng minh được `pdf-textbook-layout`; nó chỉ củng cố riêng hướng "book TOC dictionary" cho tài liệu có
+TOC đủ đặc.
+
+## §151. Tách route tài chính PDF-report cho `051/052`
+
+**Lý do:** `PdfBoldLabelOutline` là route minutes/bold-label ngắn; dùng nó cho báo cáo tài chính nhiều
+bảng khiến phải thêm keyword kiểu `YoY`, `TOTAL`, `Top N`, `Key Metrices`, tức overfit theo `051`.
+Người dùng cung cấp đối chiếu trực tiếp từ hai PDF `051/052`: tài liệu có ba tầng visual đều đặn:
+group label nhỏ gần đầu trang → page/section title lớn đậm → table/chart subtitles nhỏ hơn. Quyết định
+route mới: lấy group label + page/section title, không lấy table/chart subtitles.
+
+**Code mới:** thêm `PdfFinancialReportOutline`:
+
+- Chỉ kích hoạt khi sibling PDF có header lặp `Trust Fund Financial Information Summary`.
+- Dùng PDF làm nguồn layout vì DOCX convert gộp cả trang vào paragraph.
+- Candidate title lấy từ hai nguồn deterministic:
+  - `PdfLineExtraction`: dòng title bold/font lớn gần đầu hoặc title block giữa trang.
+  - `page.Text` fallback: dùng khi line-bucket của PdfPig bị vỡ thành dòng khổng lồ nhưng text page vẫn
+    giữ thứ tự, ví dụ `052` trang 3/4 và trang 13.
+- Group label chỉ được nhận nếu là dòng ngắn, gần đầu trang, font 12-14.8, không phải câu văn. Chuẩn hóa
+  `Contribution/Contributions` thành cùng group để không tạo group giả mới.
+- Không dedupe theo text: `052` có hai page-title giống hệt `Portfolio at a Glance - IBRD/IDA/IFC Trust
+  Funds` và hai `Cost Recovery`; route giữ theo occurrence trang.
+
+**Pipeline:** route mới chạy trước `PdfBoldLabelOutline`; route id `auto:pdf-financial-report`, basis
+`pdf_financial_report` được đăng ký trong precision gate. Khi route này thắng, hierarchy generic bị bỏ
+qua vì cấp đã đọc từ vai trò visual PDF.
+
+**Đo trên cặp song sinh:**
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- extract `
+  todo10_8\heading_corpus_95_word\03_tai_chinh_ke_toan\051_WBG_Trust_Fund_FIS_June_2024.docx `
+  --no-llm -f csv -o .verify-build\051-financial-route8.csv
+
+dotnet run --project src\DocxHeaderExtractor.Cli -- extract `
+  todo10_8\heading_corpus_95_word\03_tai_chinh_ke_toan\052_WBG_Trust_Fund_FIS_December_2025.docx `
+  --no-llm -f csv -o .verify-build\052-financial-route8.csv
+```
+
+| File | Route | Candidates | Aligned/output | Nhận xét |
+|---|---|--:|--:|---|
+| `051` | `auto:pdf-financial-report` | 30 | 28 | sạch tầng bảng, còn thiếu wrapper `Key Trust Fund Activity` và item con `Cost Recovery` nếu đọc strict theo paste |
+| `052` | `auto:pdf-financial-report` | 32 | 30 | bắt được duplicate `Portfolio...`, `Cost Recovery`, và `Disbursements and FIF Transfers`; sạch tầng bảng |
+
+**Trạng thái:** đây là cải thiện tổng quát hơn `pdf-bold-label` vì chạy được cả `051/052` và không dựa
+vào keyword artifact của `051`. Tuy nhiên chưa được chốt là full key 100%: còn quyết định semantic
+“group label có tính là heading wrapper không” và “cont'd/duplicate page title có gộp hay giữ occurrence
+trang” cần được ghi thành cấu hình/key trước khi đưa vào calibration như truth.
+
+**Regression:** `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `629/629`.
+
+## §152. PDF financial route chuyển từ ngưỡng tuyệt đối sang baseline tương đối
+
+**Phản biện đúng:** rule dạng `line.FontSize is >= 12.0 and <= 14.8` / `16.0..19.0` vẫn là hard-code
+theo `051/052`. Đúng hướng là đọc trực tiếp PDF và học baseline theo chính tài liệu: body font, font
+name, color, vị trí, repeat/header, rồi mới phân cụm heading.
+
+**Code mới:**
+
+- `PdfLineExtraction.PdfLine` thêm metadata visual:
+  - `Left`, `Right`
+  - `FontName`
+  - `FillColorKey`
+- `PdfFinancialReportOutline` thêm `FinancialLayoutProfile.Learn(lines)`:
+  - body font-size = cụm font-size phổ biến trên các dòng dài, ít số, không nằm header/footer
+  - body font name/color = mode trong cụm body
+  - title/group dùng `fontLift = line.FontSize - bodyFontSize`, khác font/color chỉ là tín hiệu phụ
+- `IsFinancialTitleLine` không còn dùng khoảng tuyệt đối; title cần font-lift rõ so với body và đủ bold.
+- `IsTopGroupLabel` không còn dùng khoảng font tuyệt đối; group là dòng ngắn gần đầu trang, quanh body
+  font, khác body bằng màu hoặc font-lift nhẹ, và không phải câu văn.
+- Chặn bullet/table artifacts bằng hình thái:
+  - heading phải bắt đầu bằng chữ sau khi clean
+  - không nhận title chứa `$` hoặc `%`
+  - cho phép continuation line của title hai dòng nếu cùng page, sát Y, cùng font/bold, ví dụ `Top 3...`
+    dòng 1 + dòng năm/datetime dòng 2.
+
+**Đo lại:**
+
+| File | Route | Candidates | Aligned/output | Ghi chú |
+|---|---|--:|--:|---|
+| `051` | `auto:pdf-financial-report` | 31 | 28 | sạch `YoY/Key Metrices/TOTAL`, title `Top 3... June 30, 2024...` không bị cắt |
+| `052` | `auto:pdf-financial-report` | 33 | 29 | sạch bullet/table labels, giữ duplicate page title thật, bắt `Disbursements and FIF Transfers` |
+
+**Còn chưa chốt:** route vẫn chọn tầng page-outline, không lấy tầng bảng/biểu. Nếu key muốn group wrapper
+đầy đủ (`Key Trust Fund Activity`, `Contribution and Receivables`, `Investments`, `Cost Recovery`) hoặc
+muốn gộp `(cont'd)` thành mục logic duy nhất thì cần cấu hình/key riêng, không nên suy ra từ tín hiệu
+PDF đơn thuần.
+
+**Regression:** `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `629/629`.
+## §153. Docling sidecar -> .NET deterministic route, không gọi Python trong production
+
+Đã thêm route `auto:docling-layout` theo đúng hướng "Docling xử lý thành công ở sandbox thì port phần ổn định vào .NET":
+
+- `DoclingLayoutOutline` đọc JSON sidecar đã có (`--docling-json`, `<stem>.docling.json`, hoặc `.verify-build/docling/<stem>.json`).
+- Không spawn Python/Docling trong pipeline production.
+- Chỉ lấy block có label heading/title (`title`, `section_header`, `heading`, `header`), loại label nhiễu (`text`, `table`, `caption`, `figure`, `formula`, `page_header/footer`).
+- Heading phải align ngược về `SlimParagraph` bằng canonical substring và ghi `HeadingSpan`; nếu không grounded được thì bỏ.
+- Accept route khi có >=3 block heading và align >=60%.
+- Route được đăng ký qua `PrecisionAcceptanceGate` với basis `docling_layout_sidecar`, tránh bị hạ xuống `evidence_not_calibrated`.
+- CLI:
+  - `--docling-json <json>` dùng sidecar tường minh.
+  - `--no-docling-sidecar` tắt tự dò sidecar.
+
+Ý nghĩa thiết kế: Docling là layout probe/nguồn evidence ngoài luồng. Khi một dạng tài liệu pass ổn qua sidecar này, bước tiếp theo vẫn là rút luật tổng quát hơn vào strategy .NET hẹp (PDF font/color/table zones, TOC dictionary, v.v.), không biến Docling thành dependency bắt buộc.
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh 632/632. Test mới kiểm:
+
+- JSON Docling giả lập chỉ nhận heading labels, bỏ table/text labels.
+- Mỗi heading route `auto:docling-layout` phải khớp span nguyên văn trong DOCX.
+- Pipeline có thể chọn route deterministic này bằng `--docling-json`/`PipelineOptions.DoclingJsonPath`.
+
+## §154. Chuẩn PDF financial outline cho WBG 051/052
+
+Người dùng chốt semantic mới cho hai PDF WBG Trust Fund FIS:
+
+- Page-title như `Top 3 trust funds activated...` là heading thật.
+- Nhãn nhóm visual là heading cấp 1: `Key Trust Fund Activity`, `Contribution and Receivables`, `Investments`, `Cost Recovery`.
+- Các page-title bên trong nhóm là cấp 2.
+- Duplicate page-title có ý nghĩa layout được giữ: `Portfolio at a Glance - IBRD/IDA/IFC Trust Funds` ở 052 có 2 trang; `Cost Recovery` ở 052 có 2 child page.
+- `cont'd` page-title vẫn giữ ở outline đầy đủ; bước gộp unique là một view khác, không phải output mặc định.
+
+Code cập nhật:
+
+- `PdfFinancialReportOutline` cho phép pending PDF group không align được vào text DOCX đã normalize được emit như PDF-grounded virtual heading, neo vào child paragraph kế tiếp.
+- Duplicate cùng text trong cùng paragraph được giữ khi có `HeadingSpan` khác nhau và basis `pdf_financial_report`.
+- `OutlineGroundingValidator` cho phép duplicate same index/text nếu span khác nhau; đồng thời không bắt source index tăng đều cho `pdf_financial_report`, vì PDF layout order có thể khác DOCX converted text order.
+- Test khóa mới: `PdfFinancialReportOutlineTests`.
+
+Kết quả hiện tại:
+
+- 051: 30 heading = 26 page-title + 4 group labels, có `Key Trust Fund Activity`, có `Cost Recovery` group + child.
+- 052: 32 heading theo chính danh sách người dùng đưa: 28 page-title + 4 group labels. Ghi chú: câu người dùng nói "27 tiêu đề mục + 4 nhãn nhóm" lệch 1 so với danh sách, vì danh sách có 8 heading đầu + 9 + 6 + 3 + 2 = 28 page-title.
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh 634/634.
+
+## §155. Giảm hard-code PDF heading: baseline style theo tổng ký tự
+
+Áp ghi chú người dùng về PDF heading signal:
+
+- Baseline body style không còn suy từ “dòng dài” hay font lift tuyệt đối. `FinancialLayoutProfile` gom cụm visual `(fontSize bucket, fontName, color)` và chọn baseline là cụm chiếm nhiều KÝ TỰ nhất.
+- Candidate style = mọi cụm khác baseline và có đủ mẫu cấu trúc. Đây là luật tương đối theo chính tài liệu, không gán cứng 16pt/14pt.
+- Title/group style được tách bằng thống kê line có hình dạng title/group trong chính cụm đó; `IsFinancialTitleLine` và `IsTopGroupLabel` ưu tiên membership style thay vì so `fontLift >= ...`.
+- Route activation không còn hard-code chuỗi `Trust Fund Financial Information Summary`. Điều kiện kích hoạt hiện là: PDF đủ nhiều trang, có top page-frame lặp lại sau khi normalize số, và style profile có cụm heading/group. Đây là tín hiệu layout, không phải tên file/tên báo cáo.
+- `PdfFinancialReportOutlineTests` vẫn xanh cho 051/052 sau refactor.
+
+Vẫn còn nợ kỹ thuật:
+
+- Một số hằng cấu trúc còn tồn tại: vùng header/footer theo Y, merge khoảng cách dòng, ngưỡng cụm tối thiểu. Đây là hằng bố cục, không phải tên file/heading.
+- Docling nên chạy ở chế độ đối chứng sidecar: chỗ Docling và .NET cùng nhận → ưu tiên cao; chỗ lệch → đưa vào package review. Không thay pipeline vì không map trực tiếp stableId `<w:p>` và chưa đo trên pháp quy Việt Nam.
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh 634/634.
+
+## §156. PDF style-cluster trở thành lõi chung, WBG không còn fallback chuỗi hard-code
+
+Tiếp tục §155 theo yêu cầu "áp dụng toàn văn bản PDF":
+
+- Tách `PdfStyleClusterProfile` thành lớp dùng chung trong `DocxHeaderExtractor.Core/Pipeline`.
+- Profile học baseline body bằng cụm visual `(fontSize bucket, fontName, color)` có nhiều ký tự nhất.
+- Candidate/title/group style là thống kê tương đối theo chính tài liệu, không theo ngưỡng font tuyệt đối.
+- `PdfFinancialReportOutline` chuyển sang dùng `PdfStyleClusterProfile`; xoá `FinancialLayoutProfile` private để không còn hai cách học PDF baseline.
+- Gỡ fallback `TryExtractPageTextTitle` chứa chuỗi `Trust Fund Financial Information Summary` và các boundary từ khóa kiểu `YoY/Key Metric/...`.
+- Gỡ danh sách lọc artifact kiểu `YoY`, `TOTAL`, `Top N`, `Key Metrices` khỏi `PdfBoldLabelOutline`; thay bằng tín hiệu chung hơn: numeric ratio, nhãn toàn chữ hoa ngắn, cụm chart label ngắn có số.
+
+Ý nghĩa: 051/052 vẫn ra đúng bằng tín hiệu PDF visual-line thật, không phải nhờ tên báo cáo hay keyword lấy từ file. Route tài chính hiện chỉ còn phần semantic hẹp "page title + group label" cho báo cáo dạng page-summary; lõi học style đã dùng lại được cho route PDF khác.
+
+Chưa bật một route generic ăn mọi PDF một cách mù quáng. Muốn làm bước đó cần strategy riêng kiểu `PdfStyleClusterOutline` với activation/gate rất chặt, vì PDF giáo trình, báo cáo tài chính, minutes và textbook có định nghĩa outline khác nhau dù cùng có font/color signal.
+
+Validation:
+
+- `dotnet test tests\DocxHeaderExtractor.Tests\DocxHeaderExtractor.Tests.csproj --no-restore --filter "PdfFinancialReportOutlineTests|PdfStyleClusterProfileTests|PdfBoldLabelOutlineTests|DoclingLayoutOutlineTests"` xanh `10/10`.
+- `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `635/635`.
+
+## §157. LLM analyst cấp PDF style-cluster: ngữ nghĩa đúng chỗ, không hỏi từng heading
+
+Áp nhận xét người dùng: code đo được cụm visual, nhưng không hiểu khác biệt ngữ nghĩa giữa cụm danh từ
+topic (`AVAILABILITY OF INFORMATION`, `Cash and Investments`) và câu thân bài (`Recipients should...`).
+Không nên để LLM nhìn toàn file hay tự sửa pipeline; chỗ hợp lý là hỏi LLM ở CẤP CỤM.
+
+Code mới:
+
+- `PdfSemanticClusterAnalyst` nhận `PdfStyleClusterProfile` + `PdfLine`.
+- Deterministic code chọn candidate clusters và lấy mẫu rải đều tối đa 10 dòng/cụm.
+- Prompt luôn gửi thêm `body_examples` từ baseline body style để LLM có đối chứng "câu thân bài".
+- LLM chỉ trả JSON role theo whitelist:
+  - `heading_topic`
+  - `body_sentence`
+  - `table_or_chart_label`
+  - `uncertain`
+- Parser chỉ nhận cluster id hợp lệ, clamp confidence 0..1, bỏ JSON hỏng hoặc id lạ.
+- `HeadingStyles` chỉ gồm cluster `heading_topic` với confidence >= 0.65.
+
+Quan trọng: analyst này là ADVISORY-ONLY. Nó chưa bật route production mới và không được dùng để merge
+tự động. Route nào dùng nó sau này vẫn phải có grounding/alignment/gate riêng. Đây là cách cắm LLM vào
+đúng chỗ nó mạnh: "cụm này là chủ đề hay câu/bảng?", không phải 342 lượt hỏi cho 342 dòng.
+
+Test mới `PdfSemanticClusterAnalystTests` khóa:
+
+- Cụm `AVAILABILITY OF INFORMATION`/`CASH AND INVESTMENTS` được nâng khi LLM trả `heading_topic`.
+- Cụm chart/table không được nâng.
+- Cluster id lạ bị bỏ.
+- Prompt có cả heading examples lẫn body baseline examples.
+- JSON hỏng trả rỗng, không ném lỗi.
+
+Validation:
+
+- `dotnet test tests\DocxHeaderExtractor.Tests\DocxHeaderExtractor.Tests.csproj --no-restore --filter "PdfFinancialReportOutlineTests|PdfStyleClusterProfileTests|PdfSemanticClusterAnalystTests|PdfBoldLabelOutlineTests|DoclingLayoutOutlineTests"` xanh `12/12`.
+- `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `637/637`.
+
+## §158. Lệnh thử nghiệm `pdf-clusters`: đo cụm PDF trước khi bật route mới
+
+Tiếp tục §157: cần sandbox để chạy trên PDF thật, xem cụm visual + examples trước khi dùng analyst cho
+route production. Đã thêm lệnh CLI:
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- pdf-clusters <file.pdf|file.docx> --no-llm -o .verify-build\pdf-clusters.json
+```
+
+Nếu không có `--no-llm` và backend/model đã cấu hình, lệnh gọi `PdfSemanticClusterAnalyst` đúng một
+lượt/file để thêm `decisions`. Không có model thì dùng `--no-llm` để chỉ dump cluster samples.
+
+Code mới:
+
+- `PdfClusterProbe` đọc PDF trực tiếp hoặc sibling PDF của DOCX.
+- Report JSON gồm:
+  - `bodyStyle`
+  - `clusters[]` với style/stats/examples
+  - `decisions[]` nếu có LLM analyst
+- `CommandLineOptions` nhận command `pdf-clusters`.
+- `Program.RunPdfClustersAsync` có expander riêng cho `.pdf` + Word-like files.
+
+Chạy thử:
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- pdf-clusters `
+  todo10_8\heading_corpus_100\03_tai_chinh_ke_toan\051_WBG_Trust_Fund_FIS_June_2024.pdf `
+  --no-llm -o .verify-build\pdf-clusters-051.json
+```
+
+Kết quả: `status=ok`, `pages=26`, `lines=395`, `clusters=8`, `decisions=0`.
+
+Quan sát nhanh từ 051:
+
+- `c4`/`c5` chứa page-title/group label rõ (`Abbreviations and Acronyms`, `Cost Recovery`, `Key Trust Fund Activity`, ...).
+- `c1`/`c2` là footnote/header text.
+- `c3` là table-noise bị PDF text extraction làm vỡ.
+- `c6`/`c8` là vùng mơ hồ giữa chart label và group label, đúng loại cần analyst/review phân xử trước khi auto-merge.
+
+Ý nghĩa: bước này chưa thay output `extract`. Nó chỉ tạo bằng chứng để chạy thí nghiệm trên 053/055 và
+nhóm PDF khác: nếu analyst phân cụm ổn định thì mới viết route hẹp dùng `HeadingStyles` + alignment +
+gate. Không dùng LLM để đọc toàn file hay tự chọn từng heading.
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `637/637`.
+
+## §161. Production hoá hai route PDF đã có bằng chứng: `pdf-financial-report` và `pdf-toc-dictionary`
+
+Theo yêu cầu chốt route PDF vào pipeline thật, đã làm ba việc:
+
+1. `PdfFinancialReportOutline` được khóa bằng full pipeline + full key người dùng cho `051/052`.
+   `HeaderExtractionPipeline` không cho `MergedParagraphHeadings` quét lại sau route này, vì route đã
+   lấy heading từ layout/page-frame PDF; quét lại thân bài chỉ kéo nhãn bảng vào.
+2. Thêm `PdfTocDictionaryOutline`: PDF TOC là từ điển title sạch, body/DOCX chỉ dùng để neo stable
+   span. Route chỉ accept khi TOC PDF có đủ entry và relaxed page-anchor coverage >= 85%; không hardcode
+   tên file/count. Các luật relaxed như `X to/of/về Y -> Y` và `A - B -> A` chỉ dùng trong trang TOC
+   khai báo, không global.
+3. Đăng ký `pdf_toc_dictionary` vào `PrecisionAcceptanceGate.IsDeterministicDeclaredBasis`, nếu không
+   gate hạ toàn bộ heading route này về `RequiresReview` dù route deterministic đã có bằng chứng.
+
+Kết quả đo:
+
+| File | Route | Truth | Result | P/R/F1 | Nav | Nav+cấp |
+|---|---|--:|--:|---:|---:|---:|
+| `051_WBG_Trust_Fund_FIS_June_2024.docx` | `auto:pdf-financial-report` | 30 | 30 | 100% | 100% | 100% |
+| `052_WBG_Trust_Fund_FIS_December_2025.docx` | `auto:pdf-financial-report` | 32 | 32 | 100% | 100% | 100% |
+| `053_IDA_Information_Statement_FY25.docx` | `auto:pdf-toc-dictionary` | chưa có full key | 21 | n/a | route/probe: 21 TOC items | maxDepth=1 |
+| `054_IBRD_Information_Statement_FY25.docx` | `auto:pdf-toc-dictionary` | key cũ partial SECTION-level | 24 | không dùng để chấm route mới | route/probe: 24 TOC items | maxDepth=1 |
+
+Lưu ý về `054`: key hiện có trong `keys/typed-human/054...` là `partial_human` cũ theo dòng
+`SECTION I/II/...`, không phải key TOC page-level đã chốt cho nhóm Information Statement. Vì thế nó
+không được dùng để phủ quyết `pdf-toc-dictionary`; cần nâng/gán lại key nếu muốn chấm exact P/R/F1 cho
+policy mới.
+
+Smoke toàn bộ `todo10_8/heading_corpus_100` bằng `pdf-clusters`:
+
+- 83 PDF input.
+- 77 `ok`.
+- 6 `no-lines`: nhóm scan/no text-layer (`002`, `011`, `014`, `016`, `022`, `023`) — cần OCR hoặc nguồn text khác.
+- Folder tài chính: 15/15 PDF đọc được.
+
+Trạng thái production:
+
+- Bật production cho route có bằng chứng nội tại: `auto:pdf-financial-report` và
+  `auto:pdf-toc-dictionary`.
+- Chưa bật generic cluster route cho mọi PDF. Cluster/probe vẫn production ở vai trò diagnostic; nếu
+  không có TOC/page-frame rõ thì cần line/block filters + LLM analyst/grounding như đã thiết kế.
+- Repair gate score vẫn `untrusted_until_recalibrated`, chỉ dùng để gắn cờ nghi ngờ, không dùng làm
+  judge merge.
+
+Validation: `dotnet test tests\DocxHeaderExtractor.Tests\DocxHeaderExtractor.Tests.csproj --no-restore`
+xanh `663/663`.
+
+## §160. Chốt full key người dùng cho WBG Trust Fund FIS `051/052`
+
+Người dùng đã cung cấp key chuẩn cho hai file Trust Fund FIS và yêu cầu coi đó là đáp án thật:
+
+- `051_WBG_Trust_Fund_FIS_June_2024`: 26 page-title + 4 nhãn nhóm visual = 30 dòng key.
+- `052_WBG_Trust_Fund_FIS_December_2025`: giữ đúng mọi dòng người dùng liệt kê, gồm duplicate
+  `Portfolio at a Glance - IBRD/IDA/IFC Trust Funds`, duplicate `Cost Recovery`, các trang `(cont'd)`
+  và 4 nhãn nhóm visual. File key hiện có 32 dòng vì danh sách người dùng đưa có 28 page-title + 4
+  nhãn nhóm; con số "27 tiêu đề mục" trong mô tả được đọc là ghi chú đếm/gộp, không dùng để bỏ dòng
+  đã liệt kê.
+
+Cập nhật key:
+
+- `keys/partial-human/051_WBG_Trust_Fund_FIS_June_2024.key` không còn là `partial_human`; đã thay bằng
+  `full_human_from_user`.
+- Thêm `keys/partial-human/052_WBG_Trust_Fund_FIS_December_2025.key`.
+- Cấp được ghi theo cấu trúc người dùng đưa: mục đầu tài liệu level 1; nhãn nhóm level 1; mục nằm dưới
+  nhãn nhóm level 2. Duplicate cùng paragraph phân biệt bằng text comment.
+
+Đo ngay trên route hiện tại bằng `repair-calibrate` cho nhóm `03_tai_chinh_ke_toan`:
+
+| file | truth | result | precision | recall | F1 | Nav | Nav+cấp | FP | FN | wrong level |
+|---|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
+| `051` | 30 | 33 | 63,6% | 70,0% | 66,7% | 86,7% | 83,3% | 12 | 9 | 1 |
+| `052` | 32 | 38 | 47,4% | 56,2% | 51,4% | 75,0% | 71,9% | 20 | 14 | 1 |
+
+Kết luận: 051/052 key đã chốt, nhưng `auto:pdf-financial-report` hiện **chưa đúng** theo key chuẩn.
+Các note cũ kiểu "051 cần re-review" đã lỗi thời; việc tiếp theo là sửa route theo full key này và
+giữ nguyên nguyên tắc không dùng keyword artifact/hard-code theo file.
+
+## §167. Áp TOC dictionary canonical sang 054/055 và tổng quát relaxed title variants
+
+Tiếp §166: kiểm hai file tài chính cùng nhóm trước khi bàn production route.
+
+### Relaxed anchor không còn là patch riêng `Index to`
+
+`PdfTocDictionaryProbe` relaxed matching được tổng quát hóa, vẫn chỉ dùng trên đúng page TOC khai báo:
+
+- Leading navigation phrase: `X to/of/about/về Y` có thể anchor bằng `Y`.
+- Qualifier suffix: `A — B`, `A - B`, `A: B` có thể anchor bằng `A` nếu prefix đủ dài và có ít nhất
+  hai từ.
+
+Điều này bắt được hai biến thể thật:
+
+- `Index to Financial Statements and Internal Control Reports` → page body có
+  `FINANCIAL STATEMENTS AND INTERNAL CONTROL REPORTS`.
+- `Affiliated Organizations—IFC, IDA and MIGA` → page body có
+  `SECTION XV: AFFILIATED ORGANIZATIONS—IDA, IFC AND MIGA` (khác thứ tự acronym sau dash).
+
+### Kết quả 054/055
+
+Lệnh:
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- pdf-clusters `
+  todo10_8\heading_corpus_100\03_tai_chinh_ke_toan\054_IBRD_Information_Statement_FY25.pdf `
+  --no-llm -q -o .verify-build\pdf-clusters-054-toc-probe-relaxed2.json
+```
+
+`054_IBRD_Information_Statement_FY25.pdf`:
+
+| Chỉ số | Giá trị |
+|---|--:|
+| `tocPage` | 170 |
+| `entries` | 24 |
+| `exactPageAnchors` | 22 |
+| `relaxedPageAnchors` | 24 |
+| `atOrAfterPageAnchors` | 24 |
+
+Hai mục cần relaxed:
+
+- `Affiliated Organizations — IFC IDA and MIGA` page 79.
+- `Index to Financial Statements and Internal Control Reports` page 90.
+
+`055_IDA_External_Review_FY25.pdf`:
+
+```text
+tocDictionary=null
+```
+
+Không có `TABLE OF CONTENTS`/dot-leader TOC page theo dạng 053/054. Đây là report/review dạng khác,
+không được giải bằng TOC dictionary route này.
+
+Kiểm thêm 051/052:
+
+```text
+051 tocDictionary=null
+052 tocDictionary=null
+```
+
+Hai file Trust Fund FIS thuộc subtype page-frame/Contents-summary, không phải back-cover dot-leader TOC.
+
+### Kết luận route nhóm tài chính
+
+Nhóm tài chính không phải một route duy nhất:
+
+| Subtype | File | Route đúng |
+|---|---|---|
+| Information Statement có back-cover TOC | `053`, `054` | TOC dictionary + canonical page anchors |
+| Trust Fund Financial Information Summary | `051`, `052` | page-title frame / Contents summary, `maxDepth=1` |
+| External Review / accountant report | `055` | không có TOC dictionary; cần route riêng hoặc abstain/probe |
+
+Với `053/054`, outline điều hướng cấp tài liệu coi như đóng ở diagnostic level:
+
+- `053`: 21/21 relaxed anchors.
+- `054`: 24/24 relaxed anchors.
+
+LLM block-grounder vẫn có giá trị cho outline sâu/tra cứu nội dung, nhưng không phải nguồn quyết định
+Nav cấp tài liệu cho hai file này.
+
+Validation:
+
+- Hẹp: `PdfTocDictionaryProbeTests|PdfTextUtilitiesTests|PdfSemanticBlockGrouperTests|PdfBlockGrounderTests|PdfBlockAnalystTests`
+  xanh `21/21`.
+- Full: `dotnet test tests\DocxHeaderExtractor.Tests\DocxHeaderExtractor.Tests.csproj --no-restore`
+  xanh `659/659`.
+
+## §168. 055 cluster-depth check + guardrail relaxed TOC + 051 key review note
+
+Tiếp §167 theo ba câu hỏi còn mở.
+
+### 1. Guardrail cho relaxed TOC variants
+
+Đã ghi rõ trong code: relaxed variants chỉ an toàn khi kiểm trên **page mà TOC khai báo**. Nếu bỏ ràng
+buộc này, luật `A — B -> A` sẽ nguy hiểm vì có thể gộp hai mục thật khác nhau như
+`Cash and Investments — Investment Income` với `Cash and Investments`.
+
+`PdfTocDictionaryProbe` report thêm `styleClusters[].examples` để đọc được toàn bộ style clusters, không
+chỉ candidate clusters.
+
+### 2. 055: cụm 18pt không phải outline rải đều
+
+Chạy:
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- pdf-clusters `
+  todo10_8\heading_corpus_100\03_tai_chinh_ke_toan\055_IDA_External_Review_FY25.pdf `
+  --no-llm -q -o .verify-build\pdf-clusters-055-styleclusters-examples.json
+```
+
+Kết quả style clusters đáng chú ý:
+
+| Style | Lines | Pages | Examples |
+|---|--:|--:|---|
+| `18 aptos,bold 0.56,0.12,0.31` | 2 | 1 | `Management’s Assertion Regarding Commitments and` / `Disbursements for IDA Projects` |
+| `16 calibri-bold 0.56,0.12,0.31` | 1 | 1 | `Independent Accountant’s Review Report` |
+| `14 calibri-bold 0.56,0.12,0.31` | 1 | 1 | `IDA Projects Commitment and Disbursement Schedule` |
+| `10 aptos,bold 1.00,1.00,1.00` | 1170 | 117 | table headers/column labels |
+
+Kết luận:
+
+- Cụm 18pt có thật nhưng chỉ `2 lines / 1 page`, không phải 10–20 heading cấp 1 rải đều toàn 120
+  trang.
+- Cụm `aptos,bold` 10pt đúng là bảng: 1170 dòng/117 trang, không được dùng làm heading route.
+- Vì vậy `055` không đóng bằng cluster-based `maxDepth=1` đơn giản. Trạng thái đúng: no-TOC,
+  no-stable-title-cluster; cần route riêng hẹp hoặc abstain/probe.
+
+### 3. 051/052 key đã được người dùng chốt
+
+Note cũ "051 key 22 vs 21 cần re-review" đã được supersede. Người dùng đã cung cấp key chuẩn cho
+`051` và `052` từ PDF/page-frame:
+
+- `051`: 30 dòng = 26 page-title + 4 nhãn nhóm visual.
+- `052`: giữ đúng mọi dòng được liệt kê, gồm duplicate/`(cont'd)` và 4 nhãn nhóm visual; file key hiện
+  có 32 dòng vì danh sách có 28 page-title + 4 nhãn nhóm.
+
+`keys/partial-human/051_WBG_Trust_Fund_FIS_June_2024.key` đã được thay bằng `full_human_from_user`, và
+`keys/partial-human/052_WBG_Trust_Fund_FIS_December_2025.key` đã được thêm mới. Các dòng duplicate
+cùng paragraph phân biệt bằng comment text. Kết luận mới: key đã chốt, route `auto:pdf-financial-report`
+cần sửa theo key này; không còn đọc 051 là key cần re-review.
+
+Validation:
+
+- Hẹp: `PdfTocDictionaryProbeTests|PdfTextUtilitiesTests|PdfSemanticBlockGrouperTests|PdfBlockGrounderTests|PdfBlockAnalystTests`
+  xanh `21/21`.
+- Full: `dotnet test tests\DocxHeaderExtractor.Tests\DocxHeaderExtractor.Tests.csproj --no-restore`
+  xanh `659/659`.
+
+## §160. Block-level LLM analyst trên `candidateBlocks` + grounding/alignment probe
+
+Theo yêu cầu: LLM không đọc file thô và không quyết outline cuối. Pipeline probe hiện chạy:
+
+1. PDF deterministic reader/filter: `PdfLineExtraction` → `PdfLineBlockFilter` → `PdfSemanticBlockGrouper`.
+2. `candidateBlocks`: chỉ các block style ứng viên, text shape còn hợp lệ.
+3. `PdfBlockAnalyst`: hỏi LLM theo block id, trả role whitelist:
+   `heading_topic | body_sentence | table_or_chart_label | decorative_noise | uncertain`.
+4. `PdfBlockGrounder`: ground lại quyết định model về block thật, style thật, cluster decision thật;
+   loại nếu cluster-level analyst đã chấm style đó là `table_or_chart_label` confidence cao.
+
+Model dùng trong phép đo:
+
+- User gọi "qwen3.6"; máy local không có model này.
+- Gateway khả dụng trả `/v1/models`: `vllm/Qwen3.8-27B`; phép đo dùng model này.
+
+Lệnh kiểm đại diện:
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- pdf-clusters `
+  todo10_8\heading_corpus_100\03_tai_chinh_ke_toan\053_IDA_Information_Statement_FY25.pdf `
+  --sglang --sglang-endpoint http://192.168.68.20/v1/chat/completions `
+  --sglang-model vllm/Qwen3.8-27B -q `
+  -o .verify-build\pdf-clusters-053-qwen-grounded.json
+```
+
+Kết quả trên `053`:
+
+| Chỉ số | Giá trị |
+|---|--:|
+| clusters | 8 |
+| cluster decisions | 8 |
+| candidate blocks | 120 |
+| block decisions | 120 |
+| grounded headings | 45 |
+| rejected block headings | 75 |
+
+Phân bố block role:
+
+| role | count |
+|---|--:|
+| `heading_topic` | 45 |
+| `table_or_chart_label` | 70 |
+| `body_sentence` | 4 |
+| `decorative_noise` | 1 |
+
+Grounding evidence:
+
+- `45/45` heading candidates được giữ đều có `block-role+cluster-heading`.
+- `75` block còn lại bị loại vì `analyst-role-not-heading`.
+- Raw LLM response được ghi vào `blockAnalystRaw` nhưng cắt 2000 ký tự mỗi batch để debug, không làm nguồn chân lý.
+
+Thay đổi code:
+
+- Thêm `PdfBlockAnalyst.cs`: batch 12 block/lượt để tránh Qwen response bị cụt; parse JSON nghiêm,
+  chỉ nhận id có trong candidate set.
+- Thêm `PdfBlockGrounder.cs`: grounding/alignment bước đầu, chặn model override cluster table evidence.
+- `PdfClusterProbeReport` thêm:
+  - `blockDecisions`
+  - `groundedHeadings`
+  - `rejectedBlockHeadings`
+  - `blockAnalystRaw`
+- Thêm test `PdfBlockAnalystTests`, `PdfBlockGrounderTests`.
+
+Giới hạn còn mở:
+
+- Đây vẫn là diagnostic/probe, CHƯA bật thành production route.
+- `053` vẫn lộ lỗi tầng PDF text normalization: ví dụ `I ntrod u ction`, `Su m mary...`.
+  Grounding kiến trúc đúng, nhưng output heading chưa sạch để gọi là outline production.
+- `visualLevel` hiện là cấp style trực quan, không phải cấp ngữ nghĩa cuối. Cấp outline thật cần route
+  alignment tiếp theo: TOC/source alignment nếu có, hoặc rule route-specific đã được validate.
+
+Validation: `dotnet test tests\DocxHeaderExtractor.Tests\DocxHeaderExtractor.Tests.csproj --no-restore`
+xanh `643/643`.
+
+## §163. Hoàn thiện block-level probe: compact Qwen output + PDF heading text normalization
+
+Sau §160, hai vấn đề còn chặn:
+
+1. Qwen trả `reason` dài làm một số batch block analyst bị thiếu decision (`108/120` trên `053`).
+2. PDF extraction giữ đủ ký tự nhưng text heading bị vỡ khoảng trắng trong từ: `I ntrod u ction`,
+   `Replen ish ment`, `Fi nan cial`, `an d Portfol io Performan ce`, `IDA ’ S`, `Scale - up`.
+
+Code mới/sửa:
+
+- `PdfBlockAnalyst` đổi prompt sang JSON compact:
+  - vẫn bắt buộc một object cho mỗi input block id.
+  - chỉ cần `id`, `role`, `confidence`; `reason` optional.
+  - parser cũ vẫn nhận `reason` nếu model trả.
+- `PdfTextUtilities.HeadingReadable`
+  - sửa fragment từ PDF theo hình thái, không theo filename/heading list.
+  - nối các run mảnh từ như `Fi nan cial`, `Replen ish ment`, `Resu lts`.
+  - xử lý `an d` → `and`.
+  - polish hyphen/apostrophe: `IDA ’ S` → `IDA’s`, `Scale - up` → `Scale-up`, `SUW - SML` → `SUW-SML`.
+  - không collapse phrase thường như `SECTION I: OVERVIEW`, `Cash and Investments`, `Basis of Reporting`.
+- `PdfSemanticBlockGrouper` dùng `HeadingReadable` cho `PdfSemanticBlock.Text`, nên analyst/grounder
+  nhận text đã sạch hơn; line raw/coverage vẫn giữ nguyên.
+- Test mới `PdfTextUtilitiesTests`.
+
+Chạy lại với Qwen gateway khả dụng `vllm/Qwen3.8-27B`:
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- pdf-clusters `
+  todo10_8\heading_corpus_100\03_tai_chinh_ke_toan\053_IDA_Information_Statement_FY25.pdf `
+  --sglang --sglang-endpoint http://192.168.68.20/v1/chat/completions `
+  --sglang-model vllm/Qwen3.8-27B -q `
+  -o .verify-build\pdf-clusters-053-qwen-compact.json
+```
+
+Kết quả:
+
+| Chỉ số | Giá trị |
+|---|--:|
+| clusters | 8 |
+| candidateBlocks | 120 |
+| blockDecisions | 120 |
+| groundedHeadings | 45 |
+| rejectedBlockHeadings | 75 |
+
+Role từ block analyst:
+
+| role | count |
+|---|--:|
+| `heading_topic` | 45 |
+| `table_or_chart_label` | 69 |
+| `body_sentence` | 4 |
+| `decorative_noise` | 2 |
+
+Sample grounded heading sau normalization:
+
+- `Introduction`
+- `IDA Replenishment`
+- `Twentieth Replenishment of Resources (IDA 20)`
+- `Financial Business Model`
+- `Summary of Financial Results`
+- `SECTION III: IDA’s FINANCIAL RESOURCES`
+- `Concessional Scale-up Window – Shorter Maturity Loans (SUW-SML)`
+- `Non-Concessional Financing`
+
+Kết luận:
+
+- Block-level analyst + grounding đã chạy đủ decision và text candidate sạch hơn rõ trên `053`.
+- Vẫn giữ trạng thái probe/diagnostic, CHƯA bật generic production route cho mọi PDF. Lý do còn lại
+  không phải Qwen parse hay text normalization, mà là cần alignment/route policy: ví dụ table/figure
+  captions có thể là outline ở một số tài liệu nhưng không phải ở tài liệu khác. Cần key hoặc route
+  definition trước khi tự động merge outline.
+
+Validation:
+
+- Hẹp: `PdfTextUtilitiesTests|PdfSemanticBlockGrouperTests|PdfBlockGrounderTests|PdfBlockAnalystTests`
+  xanh `16/16`.
+- Full: `dotnet test tests\DocxHeaderExtractor.Tests\DocxHeaderExtractor.Tests.csproj --no-restore`
+  xanh `654/654`.
+
+## §164. Sửa lại theo nguyên tắc source-preserving: không rewrite text nguồn PDF
+
+Sau phản biện đúng: `HeadingReadable` không được overwrite text gốc, vì sẽ mất khả năng map/span về
+nguồn PDF bẩn. Ca đại diện:
+
+| Field | Giá trị |
+|---|---|
+| `text` | `Introduction` |
+| `sourceText` | `I ntrod u ction` |
+| `canonicalText` | `introduction` |
+
+Thay đổi:
+
+- `PdfSemanticBlock.Text` quay lại giữ bản nguồn sau `Readable` cơ bản, chưa sửa fragment từ.
+- `PdfSemanticBlock.DisplayText` là bản hiển thị/LLM (`HeadingReadable`).
+- `PdfSemanticBlock.CanonicalText` là bản so khớp (`CanonicalForMatch`), xóa non-word và lowercase.
+- `PdfBlockAnalyst` prompt gửi cả:
+  - `source_text`
+  - `display_text`
+  - `canonical_text`
+- `PdfClusterProbe` report đổi:
+  - `blocks[].text` / `candidateBlocks[].text`: display text.
+  - `blocks[].sourceText` / `candidateBlocks[].sourceText`: text nguồn PDF.
+  - `blocks[].canonicalText` / `candidateBlocks[].canonicalText`: key so khớp.
+- `PdfGroundedBlockHeading`/DTO cũng giữ cả `text`, `sourceText`, `canonicalText`.
+
+Chạy kiểm nhanh `053` không LLM:
+
+```text
+id            : b82
+page          : 4
+text          : Introduction
+sourceText    : I ntrod u ction
+canonicalText : introduction
+```
+
+Chạy lại Qwen gateway `vllm/Qwen3.8-27B`:
+
+```text
+candidateBlocks=120
+blockDecisions=120
+groundedHeadings=47
+rejectedBlockHeadings=73
+```
+
+Sample grounded sau đổi:
+
+| text | sourceText | canonicalText |
+|---|---|---|
+| `Introduction` | `I ntrod u ction` | `introduction` |
+| `IDA Replenishment` | `I DA Replen ish ment` | `idareplenishment` |
+| `Financial Business Model` | `Fi nan cial Busi ness Model` | `financialbusinessmodel` |
+
+Nguyên tắc chốt:
+
+1. Nếu có nguồn đối chứng nội tại như TOC/bookmark: lấy title sạch từ đó, thân bài chỉ cung cấp vị trí.
+2. Nếu phải so text bẩn: so bằng `CanonicalForMatch`, không sửa nguồn.
+3. Nếu mất ranh giới dòng: dùng relining hình thái trước khi block grouping.
+4. Nếu text hỏng thật/lặp đôi: loại + gắn cờ, không đưa vào LLM.
+5. Nếu số liệu mâu thuẫn: render/nhìn PDF thay vì đoán thêm.
+
+Ý nghĩa cho `053`: file có TOC nên hướng production đúng tiếp theo là mở rộng TOC dictionary/alignment
+trên PDF bằng `canonicalText`, không phải để LLM “sửa” heading text. Các route TOC hiện có
+(`BookTocDictionaryOutline`, `RfcTocDictionaryOutline`) đã đi đúng triết lý này ở DOCX/text-layout;
+PDF route mới nếu xây phải kế thừa cùng nguyên tắc.
+
+Validation:
+
+- Hẹp: `PdfTextUtilitiesTests|PdfSemanticBlockGrouperTests|PdfBlockGrounderTests|PdfBlockAnalystTests`
+  xanh `17/17`.
+- Full: `dotnet test tests\DocxHeaderExtractor.Tests\DocxHeaderExtractor.Tests.csproj --no-restore`
+  xanh `655/655`.
+
+## §165. 053: TOC dictionary canonical thắng generic block-grounder cho outline cấp mục lớn
+
+Theo đề xuất kiểm rẻ trước khi tune grounder:
+
+1. Trích TOC từ chính PDF `053`.
+2. So `groundedHeadings` với TOC.
+3. Soi 10 `table_or_chart_label` dài.
+4. Nếu TOC khớp cao thì ưu tiên toc-dictionary + canonical matching.
+
+Kết quả:
+
+- `053` không có TOC ở đầu như `051/052`; TOC nằm ở page 132/back-cover.
+- TOC này là TOC toàn tài liệu dạng dot-leader/loose page-number:
+  `Availability of Information ... 1`, `Summary Information ... 2`, ..., `Index to Financial Statements... 70`.
+
+Code mới:
+
+- `PdfTocDictionaryProbe`
+  - đọc TOC dot-leader hoặc loose entries trên page có `TABLE OF CONTENTS`.
+  - giữ title từ TOC làm nguồn sạch.
+  - dùng `CanonicalForMatch` để anchor title vào body pages.
+  - ưu tiên exact page anchor theo page number trong TOC; không lấy occurrence đầu tiên toàn file.
+  - diagnostic-only, chưa sinh production headings.
+- `PdfClusterProbeReport` thêm `tocDictionary`.
+- Test mới `PdfTocDictionaryProbeTests`.
+
+Chạy:
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- pdf-clusters `
+  todo10_8\heading_corpus_100\03_tai_chinh_ke_toan\053_IDA_Information_Statement_FY25.pdf `
+  --no-llm -q -o .verify-build\pdf-clusters-053-toc-probe.json
+```
+
+Kết quả C# probe:
+
+| Chỉ số | Giá trị |
+|---|--:|
+| `tocPage` | 132 |
+| `entries` | 21 |
+| `exactPageAnchors` | 20 |
+| `atOrAfterPageAnchors` | 20 |
+
+Mục thiếu duy nhất:
+
+- `Index to Financial Statements and Internal Control Reports` page 70.
+
+So `groundedHeadings` với TOC:
+
+- TOC matched by grounded trong cap Qwen hiện tại: `6/21`.
+- Grounded matched to TOC: `8/47`.
+- Nhưng Qwen block analyst chỉ cap `120` candidate blocks và mới phủ tới khoảng page 20, trong khi 15
+  TOC entries còn lại bắt đầu page 28. Do đó con số `6/21` không phải bằng chứng grounder fail; nó nói
+  block analyst sample cap không phù hợp để chấm coverage toàn file.
+
+Soi 10 `table_or_chart_label` dài:
+
+- Chủ yếu là table headers/rows có số: `In millions of U S dollars...`, `Interest Revenue... $...`,
+  `As of June 30 2025 2024...`.
+- Có một case mơ hồ `Lending Highlights (Sections IV & V) Loans Grants and Guarantees`: có thể là group
+  label trong table, không phải section heading TOC. Đây là route policy, không phải lỗi fatal của LLM.
+
+Kết luận cho `053`:
+
+- Không nên tune generic LLM grounder để “ra outline” cho file này.
+- Nên dùng TOC dictionary canonical cho outline cấp mục lớn: TOC cung cấp title sạch, page/body anchor
+  cung cấp vị trí. Đây cùng triết lý với `RfcTocDictionaryOutline` và `BookTocDictionaryOutline`.
+- Block-level LLM/grounder chỉ có ích nếu route policy muốn lấy subheading sâu hơn TOC; nó không nên
+  thay thế TOC dictionary khi TOC đã có `20/21` exact anchors.
+
+Validation:
+
+- Hẹp: `PdfTocDictionaryProbeTests|PdfTextUtilitiesTests|PdfSemanticBlockGrouperTests|PdfBlockGrounderTests|PdfBlockAnalystTests`
+  xanh `19/19`.
+- Full: `dotnet test tests\DocxHeaderExtractor.Tests\DocxHeaderExtractor.Tests.csproj --no-restore`
+  xanh `657/657`.
+
+## §166. 053: so cùng phạm vi page, kiểm mục thứ 21, chốt `maxDepth` nhóm tài chính
+
+Làm tiếp ba kiểm rẻ từ §165.
+
+### 1. So cùng vùng page ≤20
+
+Vì Qwen block analyst đang cap `120` candidate blocks và chỉ phủ tới khoảng page 20, không được so với
+TOC toàn file 132 trang. Giới hạn hai bên cùng phạm vi:
+
+| Chỉ số | Giá trị |
+|---|--:|
+| TOC entries có anchor page ≤20 | 6 |
+| grounded headings page ≤20 | 47 |
+| TOC matched by grounded trong scope | 6/6 |
+| grounded matched to TOC trong scope | 8/47 |
+
+Diễn giải:
+
+- Grounder/LLM không mất các mục TOC trong vùng đã nhìn thấy.
+- Nhưng nó lấy sâu hơn TOC rất nhiều: subheading, box/table/figure captions, financial measure labels.
+- Do đó `groundedHeadings=47` không phải outline cấp tài liệu nếu định nghĩa outline theo TOC author.
+
+### 2. Mục thiếu thứ 21
+
+Mục TOC thiếu exact anchor:
+
+- `Index to Financial Statements and Internal Control Reports` → page 70.
+
+Kiểm page 70 bằng PDF text:
+
+```text
+INTERNATIONAL DEVELOPMENT ASSOCIATION
+FINANCIAL STATEMENTS AND INTERNAL CONTROL
+REPORTS
+JUNE 30, 2025
+Management’s Financial Reporting Assurance ... 71
+...
+```
+
+Kết luận: không phải không có trang thân bài. Đây là title variant: TOC ghi `Index to X`, page 70 hiển
+thị `X` và là sub-TOC của financial statements. Đã thêm diagnostic hẹp:
+
+- exact anchor giữ nguyên: title đầy đủ phải xuất hiện.
+- relaxed anchor chỉ cho mẫu `Index to X` khớp bằng `X` trên đúng page.
+
+Kết quả C# probe mới:
+
+| Chỉ số | Giá trị |
+|---|--:|
+| `tocPage` | 132 |
+| `entries` | 21 |
+| `exactPageAnchors` | 20 |
+| `relaxedPageAnchors` | 21 |
+| `atOrAfterPageAnchors` | 21 |
+
+### 3. `maxDepth` cho nhóm tài chính
+
+Policy chốt cho 051/052/053 để key nhất quán:
+
+- `maxDepth=1`: outline cấp tài liệu chỉ nhận những mục do tài liệu tự tuyên bố trong TOC / page-title
+  frame chính.
+- Table/figure captions, table section labels, metrics row labels, box captions không tự động là outline
+  cấp tài liệu dù LLM gọi `heading_topic`.
+- Muốn lấy sâu hơn phải là mode khác rõ ràng (`maxDepth=2` hoặc route-specific), và key phải ghi cùng
+  định nghĩa đó cho cả nhóm.
+
+Với `053`, TOC page 132 tự trả lời:
+
+- Có `Financial Results`, không có `Lending Highlights`, `Table 6`, `Adjusted Net Income`.
+- Vì vậy generic block-grounder không được dùng để thay TOC dictionary cho outline cấp tài liệu.
+
+Code/test mới:
+
+- `PdfTocDictionaryProbe` thêm `relaxedPageAnchors` và `RelaxedAnchorPage`.
+- Test thêm ca `Index to X` khớp relaxed trên page có heading `X`.
+
+Validation:
+
+- Hẹp: `PdfTocDictionaryProbeTests|PdfTextUtilitiesTests|PdfSemanticBlockGrouperTests|PdfBlockGrounderTests|PdfBlockAnalystTests`
+  xanh `20/20`.
+- Full: `dotnet test tests\DocxHeaderExtractor.Tests\DocxHeaderExtractor.Tests.csproj --no-restore`
+  xanh `658/658`.
+
+## §161. Deterministic line/block filters trước LLM analyst
+
+Theo quyết định sau §160: không viết luật giả-ngữ-nghĩa; trước khi hỏi LLM chỉ loại nhiễu layout rẻ:
+repeat/header-footer/table-like/page number. LLM analyst chỉ còn xử lý phần `topic phrase vs body
+sentence`.
+
+Code mới:
+
+- `PdfLineBlockFilter`
+  - `Repeated`: text normalize số rồi lặp trên nhiều trang.
+  - `HeaderFooterZone`: vị trí Y thuộc top/bottom 8% theo range Y của file.
+  - `TableLike`: dòng nhiều số/ký hiệu tiền/%, hoặc label rất ngắn có số.
+  - `PageNumber`: số trang đơn.
+  - `ExcludeFromSemanticSamples`: chỉ loại khỏi LLM samples nếu page number, table-like, hoặc repeated
+    trong header/footer zone.
+- `PdfClusterProbeReport` thêm:
+  - `lineFilter` tổng toàn file.
+  - `clusters[].lineFilter` theo từng visual cluster.
+- `PdfSemanticClusterAnalyst.BuildSamples` nhận `excludedLines`; prompt analyst không còn lấy sample
+  từ page number/table-like/repeated header-footer rõ ràng.
+- Test mới `PdfLineBlockFilterTests`.
+
+Chạy lại 051/053/055:
+
+| File | Lines | Semantic candidate | Repeated | Header/footer | Table-like | Page # |
+|---|--:|--:|--:|--:|--:|--:|
+| `051` | 395 | 239 | 60 | 175 | 96 | 57 |
+| `053` | 9564 | 4179 | 0 | 1138 | 5385 | 113 |
+| `055` | 6279 | 4256 | 1250 | 549 | 1997 | 87 |
+
+Đọc nhanh:
+
+- `053`: table-like giảm mạnh từ analyst pool (5385 dòng), nhưng các cluster `times-bold` vẫn còn
+  semantic lines trộn heading + body/table-ish titles. Cần analyst hoặc gate line-level tiếp.
+- `055`: `aptos,bold` màu trắng chủ yếu là bảng; `calibri-light` còn trộn heading report với câu
+  thân bài. Filter deterministic chưa và không nên giải quyết ngữ nghĩa đó.
+- `051`: filter có thể loại bớt group label top-page nếu lặp/header-zone; vì vậy hiện chỉ dùng làm
+  sample-prior/probe, KHÔNG dùng để xoá heading production.
+
+Chạy lại corpus PDF:
+
+| Nhóm | Docs OK | Semantic ratio | Table-like ratio | Repeat ratio |
+|---|--:|--:|--:|--:|
+| `01_phap_quy` | 18 | 0.706 | 0.294 | 0.011 |
+| `02_hop_dong_mua_sam` | 6 | 0.879 | 0.112 | 0.009 |
+| `03_tai_chinh_ke_toan` | 15 | 0.555 | 0.430 | 0.038 |
+| `04_giao_trinh` | 15 | 0.618 | 0.381 | 0.001 |
+| `05_bien_ban_hop` | 10 | 0.672 | 0.328 | 0.000 |
+| `06_dich_song_ngu` | 8 | 0.796 | 0.204 | 0.005 |
+| `07_system_generated` | 5 | 0.453 | 0.526 | 0.030 |
+
+Toàn bộ 77 PDF đọc được:
+
+- Lines: 394310
+- Semantic candidate lines: 260856
+- Table-like lines: 131137
+- Repeated lines: 5508
+
+Kết luận:
+
+- Filter deterministic giảm tải analyst đáng kể (~33% dòng bị loại khỏi sample pool), đặc biệt ở tài
+  chính và RFC/system-generated.
+- Chưa đủ để bật generic route: nó là tầng triage/sample-prior. Muốn sinh outline phải có bước tiếp:
+  block grouping + LLM analyst cho các semantic candidate lines + grounding/alignment + key/gate.
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `638/638`.
+
+## §162. Semantic block grouping cho PDF probe
+
+Tiếp tục §161: sau khi lọc deterministic line/block, cần gom dòng còn lại thành block trước khi hỏi
+LLM analyst hoặc alignment. Đã thêm:
+
+- `PdfSemanticBlockGrouper`
+  - input: `PdfLineBlockAnnotation`.
+  - chỉ dùng dòng không bị `ExcludeFromSemanticSamples`.
+  - gộp dòng cùng page, Y sát nhau (<=22), left gần nhau, cùng visual family, max 4 dòng/block.
+  - không gộp sau dòng kết thúc bằng `.`/`;` hoặc dòng quá dài.
+- `PdfClusterProbeReport` thêm:
+  - `blockSummary`.
+  - `blocks` (80 block đầu, để debug).
+  - `candidateBlocks` (tối đa 120 block đáng hỏi analyst): primary style thuộc candidate style,
+    block không quá dài, không rõ là footnote marker dài, không logo-fragment kiểu chữ rời.
+- Test mới `PdfSemanticBlockGrouperTests`.
+
+Chạy lại 051/053/055:
+
+| File | Total blocks | Single | Multi | Candidate blocks shown |
+|---|--:|--:|--:|--:|
+| `051` | 152 | 103 | 49 | 47 |
+| `053` | 1960 | 1006 | 954 | 120 cap |
+| `055` | 1510 | 1272 | 1032 | 4 |
+
+Đọc nhanh:
+
+- `051`: candidate pool bắt đúng nhiều page-title (`Abbreviations and Acronyms`, `Portfolio...`,
+  `Trust Fund FY24 Key Highlights`, `Top 3...`). Vẫn còn vài footnote/body fragment; analyst/review
+  phải xử lý, chưa phải route.
+- `053`: bắt được các block heading quan trọng (`AVAILABILITY OF INFORMATION`, `SUMMARY INFORMATION`,
+  `SECTION I: OVERVIEW`, ...), nhưng còn logo fragment và bold body-ish blocks. Đây là ca cần LLM
+  analyst block-level.
+- `055`: lọc table header lặp rất mạnh; candidateBlocks còn 4 block, gồm `INDEPENDENT ACCOUNTANT'S
+  REPORT` và vài định nghĩa cuối tài liệu. Tốt hơn hẳn cluster-only.
+
+Chạy lại corpus PDF:
+
+| Nhóm | Docs OK | Avg blocks | Avg candidateBlocks shown | Multi-block ratio |
+|---|--:|--:|--:|--:|
+| `01_phap_quy` | 18 | 2054.9 | 106.4 | 0.462 |
+| `02_hop_dong_mua_sam` | 6 | 3803.7 | 120.0 | 0.433 |
+| `03_tai_chinh_ke_toan` | 15 | 1472.7 | 103.5 | 0.439 |
+| `04_giao_trinh` | 15 | 2923.2 | 120.0 | 0.320 |
+| `05_bien_ban_hop` | 10 | 137.7 | 21.2 | 0.623 |
+| `06_dich_song_ngu` | 8 | 1709.9 | 95.9 | 0.310 |
+| `07_system_generated` | 5 | 1071.0 | 98.8 | 0.591 |
+
+Tổng 77 PDF đọc được:
+
+- `blocks=146160`
+- `candidateBlocksShown=7462` (cap 120/file nên đây là sample pool, không phải full count)
+- `multiLineBlocks=59000`
+
+Kết luận:
+
+- Block grouping đã đủ tốt để làm đơn vị cho analyst/alignment probe.
+- Chưa bật route production vì nhiều file dài chạm cap 120, và candidateBlocks vẫn là prior. Bước kế
+  tiếp mới là LLM analyst block-level trên `candidateBlocks`, trả `heading_topic/body_sentence/table`
+  theo block id; sau đó mới grounding/alignment về DOCX/PDF page.
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `640/640`.
+
+## §160. Coverage tầng đọc PDF: `pdf-clusters` không mất ký tự; lỗi route generic nằm ở role trộn
+
+Sau phản biện: số dòng thấp có thể là do tầng đọc PDF mất dữ liệu/gom dòng sai. Đã bổ sung
+`textCoverage` vào `PdfClusterProbeReport`:
+
+- `pageTextChars`: ký tự non-whitespace từ `page.Text`.
+- `letterChars`: ký tự non-whitespace từ `page.Letters`.
+- `lineTextChars`: ký tự non-whitespace sau `PdfLineExtraction`.
+- `lineToLetterRatio`.
+- `lineToPageTextRatio`.
+- `linesPerPage`.
+
+Chạy lại 051/053/055:
+
+| File | Pages | Lines | Lines/page | pageTextChars | letterChars | lineTextChars | line/letter |
+|---|--:|--:|--:|--:|--:|--:|--:|
+| `051_WBG_Trust_Fund_FIS_June_2024.pdf` | 26 | 395 | 15.2 | 24728 | 24728 | 24728 | 1.000 |
+| `053_IDA_Information_Statement_FY25.pdf` | 132 | 9564 | 72.5 | 341271 | 341271 | 341271 | 1.000 |
+| `055_IDA_External_Review_FY25.pdf` | 120 | 6279 | 52.3 | 156501 | 156501 | 156501 | 1.000 |
+
+`pdftotext` không có trong PATH trên máy này, nên chưa so bằng tool ngoài. Nhưng trong PdfPig, hai
+đường độc lập `page.Text` và `Letters` khớp 100% với line extraction trên ba file đại diện.
+
+Chạy lại toàn bộ PDF corpus:
+
+| Chỉ số | Giá trị |
+|---|--:|
+| PDF input | 83 |
+| `ok` | 77 |
+| `no-lines` | 6 |
+| OK files có `lineToLetterRatio < 0.98` | 0 |
+| Min/avg/max `lineToLetterRatio` trên OK files | 1.000 / 1.000 / 1.000 |
+
+Kết luận:
+
+- Số dòng thấp ở 051 không phải mất ký tự; 051 là report summary dạng page/slide, nhiều trang ít text.
+- 053/055 không bị thấp dòng; lần đọc đúng là 9564/6279 lines.
+- Lý do chưa bật generic route không nằm ở tầng đọc PDF. Nó nằm ở role trộn trong cùng visual cluster:
+  cùng style có thể chứa heading thật, bảng, và câu thân bài.
+- Sáu file `no-lines` (`002`, `011`, `014`, `016`, `022`, `023`) được chốt là PDF scan/no text-layer,
+  không phải lỗi DOCX conversion. Muốn xử lý nhóm này cần OCR hoặc nguồn text khác; không mở lại như
+  lỗi extractor.
+
+Thứ tự gate tiếp theo nếu xây route:
+
+1. deterministic line/block filters trước: table-zone, repeated header/footer, y-position, page role.
+2. LLM analyst cho phần còn lại: topic phrase vs body sentence. Không viết luật giả-ngữ-nghĩa bằng
+   danh sách từ; phần này đúng chỗ LLM đã có bằng chứng giúp được ở `LlmBoundaryCutter`.
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `637/637`.
+
+## §169. Nâng key `054` lên chuẩn TOC page-level; gộp trang tiếp nối cho `051/052` (`MergeContinuationPages`)
+
+Tiếp mạch §161/§167/§168 — phiên này (một cửa sổ Claude Code khác song song với phiên đang viết §160-
+§168) làm hai việc cụ thể, được người dùng yêu cầu trực tiếp.
+
+### 1. Key `054` — chuyển từ SECTION-level cũ sang TOC page-level mới
+
+`keys/typed-human/054_IBRD_Information_Statement_FY25.key` cũ là `partial_human`, 21 mục "SECTION
+I..XXI" trích PyMuPDF — không cùng độ hạt với policy `maxDepth=1`/TOC page-level đã chốt cho
+051/052/053 (§166/§167). Lấy 24 mục từ chính `PdfTocDictionaryProbe` (`dhx pdf-clusters ... --no-llm`,
+`tocPage=170, entries=24`), rồi XÁC NHẬN LẠI từng mục bằng cách khớp canonical-text trực tiếp vào đúng
+đoạn DOCX (không suy diễn từ số trang PDF) — dùng con trỏ tăng dần (`cursor`) qua các đoạn để tránh
+khớp nhầm vào các đoạn glossary/disclaimer xa phía sau chứa trùng cụm từ ngẫu nhiên (gặp đúng ca này
+khi tự động dò: "Affiliated Organizations" khớp nhầm vào đoạn cuối tài liệu — một trang disclaimer lặp
+lại — trước khi thêm ràng buộc tăng dần theo thứ tự tài liệu).
+
+**Lỗi tự mắc phải khi build key, đã sửa trước khi tin kết quả:** viết `@body[1]/p[N]` với N = Index đo
+trực tiếp từ `SlimParagraph.Index` (đã 0-based) — nhưng N trong cú pháp `@body[1]/p[N]` là vị trí
+1-based, resolve thành `Index = N-1`, nên toàn bộ 24 mục lệch 1, chấm ra 0/24. Sửa bằng cách dùng thẳng
+chỉ số đoạn zero-based (không có tiền tố `@body[1]/p[N]`) — đúng format key SECTION-level cũ của chính
+054 vốn đã dùng, và đúng lý do cũ ghi trong comment của nó (tránh lệch 1, và tránh @body[1]/p[N] trùng
+bị gộp khi hai mục chung một đoạn — 054 có 2 cặp mục chung đoạn ở 167 và 169).
+
+Kết quả `dhx eval` sau khi sửa: 11/24 khớp qua route hiện tại (`auto:typed-numbering`, P=100% — không
+sai mục nào, chỉ thiếu 13), xác nhận toàn bộ 24 mục trong key đúng vị trí (không mục nào là false
+positive). Điều này lộ ra một khoảng trống thật: **route sản xuất cho 054 hiện đi qua
+`auto:typed-numbering` (19-22 mục cứu theo đánh số SECTION), CHƯA chọn `auto:pdf-toc-dictionary`** dù
+probe riêng của route đó đã tìm đúng cả 24/24 (§167). Đây không phải lỗi của key mới — là khoảng trống
+route-selection trong `HeaderExtractionPipeline` cho 054, ngoài phạm vi việc được giao lần này (chỉ
+nâng key), cần đo/xử lý riêng.
+
+### 2. `MergeContinuationPages` — gộp tiêu đề trải nhiều trang cho `051/052`
+
+Phát hiện qua đối chiếu ảnh chụp TOC thật: `051/052` đang đếm MỖI TRANG là một mục outline riêng, kể cả
+khi đó là cùng một tiêu đề trải nhiều trang (marker `"(cont'd)"`, hoặc lặp nguyên văn không nhãn như
+`Portfolio at a Glance` ở 052 tr.5-6, `Cost Recovery` cấp 2 ở 052 tr.27-28). Ảnh chụp cũng xác nhận
+ngược lại: `Cost Recovery` cấp 1 (nhãn nhóm) + cấp 2 (tiêu đề mục) trùng CHỮ nhưng khác cụm style — đây
+là hai node cha/con thật, không được gộp.
+
+**Hai luật, thêm vào `PdfFinancialReportOutline` (trước `AlignToDocx`, trên danh sách candidate PDF,
+KHÔNG đụng logic dò heading/nhãn nhóm sẵn có):**
+
+- **Luật A — có marker tiếp nối:** marker tự phát hiện (hậu tố ngắn trong ngoặc ở cuối tiêu đề, xuất
+  hiện sau ≥2 tiền tố khác nhau trong tài liệu — không hardcode chữ `"cont'd"`) → gộp thẳng vào node
+  đang mở gần nhất cùng cấp, KHÔNG so tên. Tác giả tài liệu đã tuyên bố đây là trang tiếp; không cần
+  suy lại bằng cách so văn bản.
+- **Luật B — không marker:** gộp khi văn bản trùng khít, hoặc một bên là tiền tố của bên kia (tiêu đề
+  bị cắt/viết tắt ở trang tiếp), cùng cấp, trang liền kề.
+- Nhãn nhóm (`Reason` bắt đầu `pdf-financial-group`) không bao giờ là nguồn/đích gộp — dedup nhãn nhóm
+  đã có sẵn từ bước dựng ứng viên, không lặp lại ở đây.
+- **Không cài luật C** (phân biệt "header lặp nhiều lần rải rác" khỏi "tiêu đề trải vài trang" bằng
+  thống kê tần suất/ngắt quãng) — kiểm trực tiếp thấy nhãn nhóm kiểu "Key Trust Fund Activity" đã được
+  dedup ở TẦNG DÒ ỨNG VIÊN từ trước (không lặp lại trong danh sách candidate đưa vào bước gộp), nên
+  chưa có bằng chứng cần thêm tầng luật thứ ba cho 051/052. Không xây khi chưa đo thấy cần.
+
+**Kết quả đo (không LLM, `dhx extract --no-llm`):**
+
+| File | Trước gộp | Sau gộp | Mục gộp |
+|---|--:|--:|---|
+| `051` | 30 | 25 | New Admin Agreements+cont'd, Cash Contributions+cont'd, Contributions Receivable+cont'd, Cash and Investments+cont'd+cont'd (luật A cả 4) |
+| `052` | 32 | 25 | 4 ca luật A giống 051, + Portfolio at a Glance tr.5-6 (luật B), + Cost Recovery cấp 2 tr.27-28 (luật B) |
+
+**Key `051/052` (`keys/partial-human/`) sửa xuống 25 dòng mỗi file** — chính sách "một tiêu đề trải
+nhiều trang = một node", áp dụng nhất quán cho cả marker và không-marker. Đo lại bằng `dhx eval`:
+051 và 052 đều **100% P/R/F1/Nav/Nav+cấp**, 25/25 khớp tuyệt đối.
+
+**Test** `PdfFinancialReportOutlineTests` cập nhật: hai test khóa số cũ (30/32, và tên test mô tả hành
+vi cũ "KeepsRepeated...") đổi thành khóa 25/25 và hành vi gộp; thêm assertion khóa luật A (không còn
+dòng `"(cont'd)"` nào lọt ra ngoài) trực tiếp trong test đã có. `053/054` không đi qua
+`PdfFinancialReportOutline` (route khác hẳn — xem §165/§167), và kiểm tay không thấy case `"(cont'd)"`
+nào trong output hiện tại của cả hai, nên luật gộp này không cần/không áp dụng ở đó.
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `663/663` (không đổi số so với
+trước — sửa test cùng lúc với sửa hành vi, không thêm/bớt test net).
+
+## §170. Tổng quát hoá `CorrectionMemory` cho nhiều loại quyết định — KHÔNG xây pool mới
+
+Người dùng hỏi: mỗi lần gặp ca mới lại phải vá luật cứng (Y > 680, luật gộp A/B vừa xong...), có cách
+nào tự động hoá không? Đề xuất "correction-memory pool" (JSON store + retrieval theo đặc trưng cấu
+trúc, không embedding) được nêu ra. Trước khi viết bất kỳ dòng nào, kiểm tra
+`src/DocxHeaderExtractor.Core/Learning/CorrectionMemory.cs` (grep theo tên lớp) — **đã tồn tại đúng cơ
+chế này**, do phiên trước/song song xây, đã nối vào `HeaderExtractionPipeline` thật:
+
+- `VerifiedCorrection` (JSONL, `data/verified-corrections.jsonl`, git tracked, 2 dòng) — lưu cấp
+  predicted vs corrected khi người duyệt sửa tay.
+- `FindExamples`/`InjectExamples`: retrieval CODE THUẦN (khớp chữ ký `NumberingAudit` + Jaccard từ vựng
+  ≥0.78, không gọi model), chèn few-shot vào prompt trước khi gọi LLM.
+- `ApplyExact`: áp lại đúng correction cho đúng file+stableId+text (không tổng quát hoá).
+- Nối trong `HeaderExtractionPipeline`: `ApplyExact` chạy sau normalize; `FindExamples`/`InjectExamples`
+  chạy trước mỗi lượt gọi LLM (backend Local/LmStudio/Sglang), qua `PipelineOptions.CorrectionMemoryPath`.
+
+Suýt lặp lại đúng sai lầm đã ghi ở §138 (`MergedParagraphLlmOutline` trùng với công của phiên song
+song) — khác là lần này bắt được TRƯỚC khi viết code, không phải sau.
+
+**Trạng thái thật, không như mô tả "pool rỗng":**
+- Hạ tầng đã có và ĐÃ CHẠY ĐƯỢC — không phải chưa xây.
+- Nhưng thưa thật: `data/verified-corrections.jsonl` (bản chia sẻ, git tracked) chỉ 2 dòng; bản local
+  máy này (`%LOCALAPPDATA%/DocxHeaderExtractor/verified-corrections.jsonl`, không tracked) có 6 dòng.
+- Lỗ hổng thật: `src/DocxHeaderExtractor.Cli` KHÔNG có flag nào nối `PipelineOptions.CorrectionMemoryPath`
+  — cơ chế tồn tại ở tầng thư viện nhưng không gọi được từ dòng lệnh, hợp lý giải thích vì sao thưa.
+- Phạm vi hẹp hơn phần bàn luận: chỉ một loại quyết định ("cấp heading predicted vs corrected"), không
+  tổng quát cho các loại quyết định khác (gộp trang, heading-vs-rác).
+
+**Việc đã làm — mở rộng, không viết lớp song song:**
+
+Thêm `DecisionCorrection` (record mới, tách biệt hoàn toàn khỏi `VerifiedCorrection` — không đổi
+schema/luồng cũ đang chạy thật) + 4 method mới trên CHÍNH `CorrectionMemory`:
+
+- `AppendDecisionAsync(decisionType, context, input, verdict, reviewedBy)`: ghi JSONL append-only vào
+  file riêng cạnh file correction cũ (`<tên-file-gốc>.decisions.jsonl` — LẤY THEO STEM, không phải tên
+  cố định `decisions.jsonl`, để hai `CorrectionMemory` trỏ hai file gốc khác nhau trong cùng thư mục
+  không đụng độ — bắt được lỗi này qua chính test tự viết trước khi commit, xem dưới). Trùng nội dung +
+  verdict → cùng Id, không ghi thêm dòng (dedup).
+- `FindDecisionExamples(decisionType, context, limit)`: k láng giềng gần nhất, CODE THUẦN — bắt buộc
+  cùng `decisionType`, xếp theo số cặp khoá/giá trị Context trùng khớp (không phải nhị phân match/no-
+  match — ca overlap thấp hơn vẫn trả về nhưng xếp sau), rồi theo mới nhất.
+- `RevokeDecisionAsync(id, revokedBy)`: vô hiệu hoá SAI SỐ bằng cách ghi thêm một EVENT MỚI
+  (`status="revoked"`) cho cùng Id — không sửa/xoá dòng cũ, giữ đúng triết lý append-only đã có, và giữ
+  truy vết được (đúng yêu cầu "gỡ entry sai thế nào" đã nêu).
+- `ActiveDecisions`: dòng mới nhất theo Id thắng khi load lại (hỗ trợ revoke-qua-append).
+
+**Lỗi tự bắt được qua test, sửa trước khi coi là xong:** thiết kế lần đầu đặt tên file quyết định cố
+định là `decisions.jsonl` trong cùng thư mục — hai `CorrectionMemory` trỏ hai file gốc khác nhau (ví dụ
+hai test case, hoặc hai `--correction-memory` khác nhau cùng thư mục) sẽ ghi đè lẫn nhau. Phát hiện qua
+`Dispose()` của test dọn nhầm file dùng chung. Sửa: tên file quyết định lấy theo stem của file gốc.
+
+**Cố ý CHƯA làm — đúng phạm vi được giao:**
+- Chưa nối `FindDecisionExamples` vào bất kỳ điểm quyết định thật nào (vd `MergeContinuationPages`) —
+  luật A/B hiện tại đo được 100% trên 051/052 bằng code thuần, chưa có bằng chứng cần LLM ở đây.
+- Chưa thêm flag CLI cho `CorrectionMemoryPath` (lỗ hổng đã nêu ở trên) — người dùng chọn "tổng quát
+  hoá API" thay vì "nối CLI" ở bước này; vẫn còn treo.
+- Chưa seed nhiều ví dụ — chỉ thêm 2 ca THẬT, có nguồn gốc rõ (không bịa để test đẹp) vào
+  `data/verified-corrections.decisions.jsonl`: (1) `continuation-merge`, "Portfolio at a Glance" 052
+  tr.5-6, verdict `merge`, `reviewedBy=user` (đúng là quyết định người dùng đưa ra khi bàn luật B); (2)
+  `heading-role`, "Cost Recovery" cấp 1 vs cấp 2, verdict `keep-separate-parent-child`, `reviewedBy=user`
+  (đúng ca ảnh chụp TOC người dùng đối chiếu). Không seed các ca luật A (New Admin Agreements/Cash
+  Contributions/... + cont'd) vì đó là quyết định CODE tất định (khớp marker), không phải phán đoán cần
+  ví dụ few-shot.
+
+Test mới: `CorrectionMemoryTests` +3 case (`AppendDecision_persists...`,
+`FindDecisionExamples_ranks_by_context_overlap...`, `RevokeDecision_appends_event...`).
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `666/666`.
+
+## §159. Chạy `pdf-clusters` trên `heading_corpus_100`: probe production được, generic route chưa
+
+Theo yêu cầu kiểm toàn bộ PDF trong `C:\DocxHeaderExtractor\todo10_8\heading_corpus_100`.
+
+Sửa nhỏ CLI trước khi đo:
+
+- `pdf-clusters <directory>` giờ quét recursive chỉ `*.pdf`.
+- Vẫn cho phép chỉ định trực tiếp `.docx/.doc` để tìm sibling PDF, nhưng directory mode không lẫn Word files.
+- Khôi phục `ExpandCalibrationInputs` về Word-like files sau khi phát hiện một patch trước đó trúng nhầm hàm.
+
+Lệnh chạy:
+
+```powershell
+dotnet run --project src\DocxHeaderExtractor.Cli -- pdf-clusters `
+  todo10_8\heading_corpus_100 --no-llm -q `
+  -o .verify-build\pdf-clusters-corpus100-pdfonly.json
+```
+
+Kết quả PDF-only:
+
+| Chỉ số | Giá trị |
+|---|--:|
+| PDF input | 83 |
+| `ok` | 77 |
+| `no-lines` | 6 |
+| cluster trung bình | 5.23 |
+| cluster min/max | 0 / 8 |
+
+`no-lines` đều là PDF pháp quy scan/no text-layer:
+
+- `002_Bo_luat_Lao_dong_45-2019-QH14.pdf`
+- `011_Luat_An_toan_thong_tin_mang_86-2015-QH13.pdf`
+- `014_Luat_Chung_khoan_54-2019-QH14.pdf`
+- `016_ND_13-2023_Bao_ve_du_lieu_ca_nhan.pdf`
+- `022_ND_01-2021_Dang_ky_doanh_nghiep.pdf`
+- `023_ND_23-2015_Chung_thuc.pdf`
+
+Theo nhóm:
+
+| Nhóm | PDF | OK | Avg clusters | Min | Max |
+|---|--:|--:|--:|--:|--:|
+| `01_phap_quy` | 24 | 18 | 2.5 | 0 | 8 |
+| `02_hop_dong_mua_sam` | 6 | 6 | 8.0 | 8 | 8 |
+| `03_tai_chinh_ke_toan` | 15 | 15 | 7.7 | 3 | 8 |
+| `04_giao_trinh` | 15 | 15 | 8.0 | 8 | 8 |
+| `05_bien_ban_hop` | 10 | 10 | 2.0 | 1 | 4 |
+| `06_dich_song_ngu` | 8 | 8 | 5.5 | 2 | 8 |
+| `07_system_generated` | 5 | 5 | 5.2 | 5 | 6 |
+
+Soi đại diện `053/055`:
+
+- `053_IDA_Information_Statement_FY25.pdf`: `ok`, 132 pages, 9564 lines, 8 clusters. Nhưng cluster
+  `times-bold` trộn role: vừa có heading (`Information Statement`, `SECTION I: OVERVIEW`) vừa có
+  dòng bảng/tài chính (`Total Cumulative Net Commitments...`, `Provision for losses...`). Không thể
+  auto nâng cả cluster thành heading.
+- `055_IDA_External_Review_FY25.pdf`: `ok`, 120 pages, 6279 lines, 3 clusters. Cluster `calibri-light`
+  trộn `INDEPENDENT ACCOUNTANT'S REPORT` với câu thân bài dài; cluster `aptos,bold` màu trắng chủ yếu
+  là table labels. Nếu bật generic cluster-route sẽ over-extract.
+
+Kết luận production:
+
+- ĐƯA ĐƯỢC `pdf-clusters`/`PdfClusterProbe` vào production như diagnostic/probe/audit tool.
+- CHƯA ĐƯA generic `PdfStyleClusterOutline` vào production để tự sinh outline mọi PDF.
+- Lý do không phải thiếu code, mà là bằng chứng corpus cho thấy cluster-level chưa đủ: nhiều cluster
+  trộn heading + table/body trong cùng style. Bước tiếp đúng là thêm tầng line/block-level gate bên
+  trong cluster (sentence-vs-topic, table-zone/repeat/y-position), rồi mới cho analyst/review quyết
+  vùng mơ hồ.
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `637/637`.
+
+## §171. `RepairDiagnosticGate` — cổng chẩn đoán trước khi đưa duyệt (tỷ lệ cần xem lại > 3x trung vị corpus)
+
+Theo yêu cầu: mỗi ca lạ lại vá luật cứng; kế hoạch sửa lại đề xuất một cổng chẩn đoán chạy TRƯỚC khi
+đưa file vào hàng chờ người/agent duyệt — nếu tỷ lệ mục "cần xem lại" (`RequiresReview`/`Disputed`) của
+một file cao bất thường so với cả corpus, đó là dấu hiệu heading thật bị cắt vụn ở TẦNG ĐỌC/TÁCH phía
+dưới, không phải một tài liệu khó thật sự — đưa loại này vào review sẽ nhiễm correction-memory pool
+bằng entry vô nghĩa (đúng bằng chứng đã có ở `092`: FN=38/61 khi để LLM tự quyết trên candidate đã vỡ,
+§139).
+
+Kiểm trước khi viết: `Repair/` đã có `RepairCandidateRunner` + `RepairValidationGate` (so điểm ứng
+viên, kiểm invariant per-file) — ĐÃ NỐI vào `RepairCorpusAudit.RunAsync` từ trước (không phải "chưa cài"
+như một bản kế hoạch cũ mô tả). Nhưng CHƯA có khái niệm "tỷ lệ cần xem lại của MỘT file so với TRUNG VỊ
+CẢ CORPUS" — đây là gap thật, không trùng cái đã có.
+
+**Code mới — `RepairDiagnosticGate.cs`:**
+
+- `ReviewRate(headings)`: tỷ lệ `RequiresReview`/`Disputed` trên tổng heading của một file. Cùng định
+  nghĩa với cách các gate khác đang đếm (`RepairCandidateRunner`/`RepairValidationGate`), tách thành
+  hàm dùng chung thay vì lặp lại lần thứ ba.
+- `Evaluate(rows)`: tính trung vị `ReviewRate` toàn corpus, gắn cờ file có tỷ lệ vượt **3x trung vị**
+  (`OutlierMultiplier`) VÀ vượt sàn tuyệt đối **5%** (`MinimumReviewRateFloor` — chặn báo động giả khi
+  trung vị corpus gần 0, lúc đó gần như mọi tỷ lệ khác 0 đều "vượt 3x" dù chỉ 1 mục mơ hồ thật). Code
+  thuần, không gọi model.
+- Nối vào `RepairCorpusAuditRow`/`RepairCorpusAuditReport`: thêm `ReviewRate`, `SuspectedUpstreamError`,
+  `DiagnosticGateReason` per-row; `CorpusMedianReviewRate` + `SuspectedUpstreamErrors` ở mức report.
+  Thêm cột CSV tương ứng (thêm ở cuối, không đổi vị trí cột cũ).
+
+**Đo trên corpus thật (`heading_corpus_95_word`, 89 file, `--no-llm`):**
+
+```
+CorpusMedianReviewRate: 0%
+SuspectedUpstreamErrors: 8 file
+```
+
+| File | reviewRate | headings | Ghi chú |
+|---|--:|--:|---|
+| `076/077/078/079_ICP_*_Minutes_*` (4 file) | 100% | 2–5 | rất ít heading, TOÀN BỘ không chắc — nhóm mới lộ ra, chưa ai gắn cờ trước đây |
+| `066_Linear_Neural_Networks_Lecture_Notes` | 100% | 5 | cùng dạng: quá ít heading, toàn bộ không chắc |
+| `071_ICP_IACG_Minutes_Oct_2025` | 100% | 3 | cùng nhóm biên bản ICP |
+| `055_IDA_External_Review_FY25` | 42,9% | 42 | KHỚP với kết luận đã có trong phiên này (không TOC, không cụm style ổn định, cần route riêng — xem §167/§168) — cổng mới xác nhận độc lập bằng con số khác |
+| `021_TT_78-2021_Hoa_don_dien_tu` | 19,2% | 52 | pháp quy, đáng xem thêm |
+
+File có tỷ lệ khác 0 nhưng KHÔNG bị gắn cờ (đúng như kỳ vọng — không phải cứ có review nào cũng bị coi
+là lỗi tầng dưới): `017_ND_123-2020` (9,5%, 147 heading), `024_ND_15-2020` (4,0%, 1050 heading).
+
+**Điểm đáng chú ý:** cổng này KHÔNG được xây dựa trên biết trước 055 có vấn đề — nó tự tính từ tỷ lệ
+review thô toàn corpus và TÌNH CỜ khớp với kết luận đã đo độc lập ở §167/§168 bằng một con đường hoàn
+toàn khác (không TOC dictionary, không cluster probe). Đây là bằng chứng chéo tốt cho thấy tín hiệu
+"tỷ lệ cần xem lại bất thường" thật sự tương quan với "route/tầng đọc có vấn đề", không phải nhiễu.
+
+**Test mới:** `RepairDiagnosticGateTests` (5 case: `ReviewRate` đúng định nghĩa, không gắn cờ dưới sàn
+tuyệt đối dù vượt 3x trung vị ~0, gắn cờ đúng ca xa trung vị + trên sàn, trung vị báo cáo nhất quán mọi
+dòng, rỗng không lỗi).
+
+**Cố ý CHƯA làm:** chưa nối vào `PartialKeyPackage`/CLI `repair-key-package` để THỰC SỰ chặn việc sinh
+gói duyệt cho file bị gắn cờ — mới dừng ở tính toán + báo cáo qua `repair-audit`. Việc nối tiếp cần đọc
+kỹ luồng CLI hiện có trước (ngoài phạm vi lần này, tránh đụng thêm file `Repair/` đang có khả năng được
+phiên khác cùng sửa).
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `671/671`.

@@ -9,6 +9,7 @@ using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Output;
 using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.Core.Repair;
 
 Console.OutputEncoding = Encoding.UTF8;
 
@@ -54,6 +55,11 @@ try
         "review" => await RunReviewAsync(options, cts.Token),
         "review-key" => RunReviewKey(options),
         "toc-keys" => RunTocKeys(options),
+        "repair" => await RunRepairAsync(options, cts.Token),
+        "repair-calibrate" => await RunRepairCalibrateAsync(options, cts.Token),
+        "repair-audit" => await RunRepairAuditAsync(options, cts.Token),
+        "repair-key-package" => await RunRepairKeyPackageAsync(options, cts.Token),
+        "pdf-clusters" => await RunPdfClustersAsync(options, cts.Token),
         _ => await RunExtractAsync(options, cts.Token),
     };
 }
@@ -502,6 +508,373 @@ static int RunTocKeys(CommandLineOptions o)
     return 0;
 }
 
+static async Task<int> RunRepairAsync(CommandLineOptions o, CancellationToken ct)
+{
+    var files = ExpandInputs(o.Inputs);
+    if (files.Count == 0)
+    {
+        Console.Error.WriteLine("Không tìm thấy tài liệu để repair.");
+        return 2;
+    }
+
+    var outDir = Path.GetFullPath(o.OutputPath ?? Path.Combine(".verify-build", "auto-repair"));
+    Directory.CreateDirectory(outDir);
+
+    var workflow = new AutoRepairWorkflow(o.Pipeline);
+    var failed = 0;
+    foreach (var file in files)
+    {
+        if (!o.Quiet) Console.Error.WriteLine($"» Repair probe: {Path.GetFileName(file)}");
+        try
+        {
+            var result = await workflow.RunAsync(
+                file,
+                new AutoRepairOptions(outDir, AlwaysWriteCase: true),
+                ct);
+            if (!o.Quiet)
+            {
+                Console.Error.WriteLine($"  status={result.Status} needsAnalysis={result.NeedsAnalysis}");
+                Console.Error.WriteLine($"  case={result.CaseDirectory}");
+                foreach (var written in result.WrittenFiles)
+                    Console.Error.WriteLine($"  wrote {written}");
+            }
+        }
+        catch (Exception ex) when (ex is not OperationCanceledException)
+        {
+            Console.Error.WriteLine($"  lỗi repair {Path.GetFileName(file)}: {ex.Message}");
+            failed++;
+        }
+    }
+
+    return failed == 0 ? 0 : 1;
+}
+
+static async Task<int> RunRepairCalibrateAsync(CommandLineOptions o, CancellationToken ct)
+{
+    var allFiles = ExpandCalibrationInputs(o.Inputs)
+        .Distinct(StringComparer.OrdinalIgnoreCase)
+        .OrderBy(f => f, StringComparer.OrdinalIgnoreCase)
+        .ToList();
+    var keyIndex = BuildKeyIndex(allFiles);
+    var files = allFiles
+        .Where(f => File.Exists(Path.ChangeExtension(f, ".key")) ||
+                    keyIndex.ContainsKey(Path.GetFileNameWithoutExtension(f)))
+        .ToList();
+    if (files.Count == 0)
+    {
+        Console.Error.WriteLine("Không tìm thấy cặp .docx + .key để repair-calibrate.");
+        return 2;
+    }
+
+    var outputPrefix = Path.GetFullPath(o.OutputPath ?? Path.Combine(".verify-build", "repair-gate-calibration"));
+    var parent = Path.GetDirectoryName(outputPrefix);
+    if (!string.IsNullOrEmpty(parent)) Directory.CreateDirectory(parent);
+
+    var previousLog = o.Pipeline.Log;
+    if (!o.Verbose) o.Pipeline.Log = null;
+    RepairGateCalibrationReport report;
+    try
+    {
+        report = await RepairGateCalibration.RunAsync(files, o.Pipeline, keyIndex, ct);
+    }
+    finally
+    {
+        o.Pipeline.Log = previousLog;
+    }
+    var jsonPath = outputPrefix.EndsWith(".json", StringComparison.OrdinalIgnoreCase)
+        ? outputPrefix
+        : outputPrefix + ".json";
+    var csvPath = Path.ChangeExtension(jsonPath, ".csv");
+    await File.WriteAllTextAsync(jsonPath, RepairGateCalibration.ToJson(report), new UTF8Encoding(false), ct);
+    await File.WriteAllTextAsync(csvPath, RepairGateCalibration.ToCsv(report), new UTF8Encoding(false), ct);
+
+    Console.Error.WriteLine($"Đã chấm gate repair trên {report.Documents} tài liệu.");
+    Console.Error.WriteLine($"  status           = {report.CalibrationStatus}");
+    Console.Error.WriteLine($"  corr(score, Nav) = {report.ScoreNavigationPearson:0.###}");
+    Console.Error.WriteLine($"  corr(score, F1)  = {report.ScoreF1Pearson:0.###}");
+    Console.Error.WriteLine($"  gate pass rate   = {report.GatePassRate:P1}");
+    Console.Error.WriteLine($"  Nav pass/fail    = {report.GatePassedAverageNavigation:P1} / {report.GateFailedAverageNavigation:P1}");
+    Console.Error.WriteLine($"  ranking metric   = {report.PerFileRankingStatus}");
+    Console.Error.WriteLine($"  stop condition   = {report.ScoreStopCondition}");
+    Console.Error.WriteLine($"  gate branch      = {report.GateBranchStatus}");
+    if (report.Split is { } split)
+    {
+        PrintSubset(split.Tune);
+        PrintSubset(split.Holdout);
+    }
+    if (report.FixedRuleReplay is { } replay)
+    {
+        Console.Error.WriteLine(
+            $"  replay  status={replay.Status} docs={replay.Documents} avgNav={replay.AverageNavigation:P1} " +
+            $"Nav pass/fail={replay.GatePassedAverageNavigation:P1}/{replay.GateFailedAverageNavigation:P1} " +
+            $"lowPasses={replay.LowNavigationGatePasses}");
+        Console.Error.WriteLine($"  replay  reason={replay.Reason}");
+        foreach (var finding in replay.Findings)
+            Console.Error.WriteLine($"  replay  finding={finding}");
+    }
+    foreach (var finding in report.Findings)
+        Console.Error.WriteLine($"  finding          = {finding}");
+    Console.Error.WriteLine($"  wrote {jsonPath}");
+    Console.Error.WriteLine($"  wrote {csvPath}");
+
+    return 0;
+
+    static void PrintSubset(RepairGateCalibrationSubset subset)
+    {
+        Console.Error.WriteLine(
+            $"  {subset.Name,-7} docs={subset.Documents} corrNav={subset.ScoreNavigationPearson:0.###} " +
+            $"pass={subset.GatePassRate:P1} Nav pass/fail={subset.GatePassedAverageNavigation:P1}/{subset.GateFailedAverageNavigation:P1}");
+        Console.Error.WriteLine($"  {subset.Name,-7} routes={string.Join("; ", subset.RouteDistribution.Select(kv => $"{kv.Key}:{kv.Value}"))}");
+        Console.Error.WriteLine($"  {subset.Name,-7} modes={string.Join("; ", subset.ModeDistribution.Select(kv => $"{kv.Key}:{kv.Value}"))}");
+        foreach (var finding in subset.Findings)
+            Console.Error.WriteLine($"  {subset.Name,-7} finding={finding}");
+    }
+}
+
+static async Task<int> RunRepairAuditAsync(CommandLineOptions o, CancellationToken ct)
+{
+    var files = ExpandCalibrationInputs(o.Inputs)
+        .Distinct(StringComparer.OrdinalIgnoreCase)
+        .OrderBy(f => f, StringComparer.OrdinalIgnoreCase)
+        .ToList();
+    if (files.Count == 0)
+    {
+        Console.Error.WriteLine("Không tìm thấy tài liệu để repair-audit.");
+        return 2;
+    }
+
+    var outputPrefix = Path.GetFullPath(o.OutputPath ?? Path.Combine(".verify-build", "repair-corpus-audit", "audit"));
+    var parent = Path.GetDirectoryName(outputPrefix);
+    if (!string.IsNullOrEmpty(parent)) Directory.CreateDirectory(parent);
+
+    var previousLog = o.Pipeline.Log;
+    if (!o.Verbose) o.Pipeline.Log = null;
+    RepairCorpusAuditReport report;
+    try
+    {
+        report = await RepairCorpusAudit.RunAsync(files, BuildKeyIndex(files), o.Pipeline, ct);
+    }
+    finally
+    {
+        o.Pipeline.Log = previousLog;
+    }
+
+    var jsonPath = outputPrefix.EndsWith(".json", StringComparison.OrdinalIgnoreCase)
+        ? outputPrefix
+        : outputPrefix + ".json";
+    var csvPath = Path.ChangeExtension(jsonPath, ".csv");
+    await File.WriteAllTextAsync(jsonPath, RepairCorpusAudit.ToJson(report), new UTF8Encoding(false), ct);
+    await File.WriteAllTextAsync(csvPath, RepairCorpusAudit.ToCsv(report), new UTF8Encoding(false), ct);
+
+    Console.Error.WriteLine($"Đã audit repair corpus trên {report.Documents} tài liệu.");
+    Console.Error.WriteLine($"  gate failed    = {report.GateFailed}");
+    Console.Error.WriteLine($"  needs_analysis = {report.NeedsAnalysis}");
+    Console.Error.WriteLine($"  missing key    = {report.MissingKey}");
+    Console.Error.WriteLine($"  rare routes    = {string.Join("; ", report.RareRoutes)}");
+    Console.Error.WriteLine("  routes:");
+    foreach (var kv in report.RouteDistribution.OrderByDescending(kv => kv.Value))
+        Console.Error.WriteLine($"    {kv.Key}: {kv.Value}");
+    Console.Error.WriteLine("  diagnostics:");
+    foreach (var kv in report.DiagnosticDistribution.OrderByDescending(kv => kv.Value).Take(10))
+        Console.Error.WriteLine($"    {kv.Key}: {kv.Value}");
+    Console.Error.WriteLine($"  wrote {jsonPath}");
+    Console.Error.WriteLine($"  wrote {csvPath}");
+
+    return 0;
+}
+
+static async Task<int> RunRepairKeyPackageAsync(CommandLineOptions o, CancellationToken ct)
+{
+    var files = ExpandCalibrationInputs(o.Inputs)
+        .Distinct(StringComparer.OrdinalIgnoreCase)
+        .OrderBy(f => f, StringComparer.OrdinalIgnoreCase)
+        .ToList();
+    if (files.Count == 0)
+    {
+        Console.Error.WriteLine("Không tìm thấy tài liệu để tạo repair-key-package.");
+        return 2;
+    }
+
+    var outDir = Path.GetFullPath(o.OutputPath ?? Path.Combine(".verify-build", "partial-key-packages"));
+    Directory.CreateDirectory(outDir);
+
+    var previousLog = o.Pipeline.Log;
+    if (!o.Verbose) o.Pipeline.Log = null;
+    var packager = new PartialKeyPackage(o.Pipeline);
+    var failed = 0;
+    try
+    {
+        foreach (var file in files)
+        {
+            if (!o.Quiet) Console.Error.WriteLine($"» Key package: {Path.GetFileName(file)}");
+            try
+            {
+                var result = await packager.RunAsync(
+                    file,
+                    new PartialKeyPackageOptions(
+                        outDir,
+                        o.KeyPackageLimit,
+                        o.KeyPackageStart,
+                        DistributedSample: !o.KeyPackageContiguous),
+                    ct);
+                Console.Error.WriteLine(
+                    $"  selected {result.SelectedHeadings}/{result.TotalHeadings} headings ({result.SampleStrategy}) -> {result.Directory}");
+                Console.Error.WriteLine(
+                    $"  lines   paragraphs={result.LineProbe.TextParagraphs} hard={result.LineProbe.HardLines} " +
+                    $"recovered={result.LineProbe.RecoveredLines} long={result.LineProbe.LongParagraphs}");
+                Console.Error.WriteLine($"  key     {result.DraftKeyPath}");
+                Console.Error.WriteLine($"  review  {result.ReviewCsvPath}");
+                Console.Error.WriteLine($"  outline {result.OutlineJsonPath}");
+            }
+            catch (Exception ex) when (ex is not OperationCanceledException)
+            {
+                Console.Error.WriteLine($"  lỗi key package {Path.GetFileName(file)}: {ex.Message}");
+                failed++;
+            }
+        }
+    }
+    finally
+    {
+        o.Pipeline.Log = previousLog;
+    }
+
+    return failed == 0 ? 0 : 1;
+}
+
+static async Task<int> RunPdfClustersAsync(CommandLineOptions o, CancellationToken ct)
+{
+    var files = ExpandPdfClusterInputs(o.Inputs);
+    if (files.Count == 0)
+    {
+        Console.Error.WriteLine("Không tìm thấy PDF/DOCX để chạy pdf-clusters.");
+        return 2;
+    }
+
+    var outputPath = o.OutputPath is null ? null : Path.GetFullPath(o.OutputPath);
+    if (outputPath is not null)
+    {
+        var parent = Path.GetDirectoryName(outputPath);
+        if (!string.IsNullOrWhiteSpace(parent)) Directory.CreateDirectory(parent);
+    }
+
+    IHeaderClassifier? analyst = null;
+    if (!o.Pipeline.DisableLlm)
+        analyst = await CreateClassifierAsync(o, ct);
+
+    var reports = new List<PdfClusterProbeReport>();
+    using (analyst)
+    {
+        foreach (var file in files)
+        {
+            if (!o.Quiet) Console.Error.WriteLine($"» PDF clusters: {Path.GetFileName(file)}");
+            var report = await PdfClusterProbe.RunAsync(file, analyst, ct);
+            reports.Add(report);
+            if (!o.Quiet)
+                Console.Error.WriteLine(
+                    $"  status={report.Status} clusters={report.Clusters.Count} decisions={report.Decisions.Count} pdf={report.Pdf}");
+        }
+    }
+
+    var payload = reports.Count == 1 ? (object)reports[0] : reports;
+    var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    });
+
+    if (outputPath is null) Console.WriteLine(json);
+    else
+    {
+        await File.WriteAllTextAsync(outputPath, json, new UTF8Encoding(false), ct);
+        if (!o.Quiet) Console.Error.WriteLine($"Đã ghi: {outputPath}");
+    }
+
+    return 0;
+}
+
+static async Task<IHeaderClassifier> CreateClassifierAsync(CommandLineOptions o, CancellationToken ct)
+{
+    switch (o.Pipeline.Backend)
+    {
+        case InferenceBackend.OpenRouter:
+            return OpenRouterHeaderExtractor.CreateOwned(o.Pipeline.OpenRouter);
+        case InferenceBackend.LmStudio:
+            return LmStudioHeaderExtractor.CreateOwned(o.Pipeline.LmStudio);
+        case InferenceBackend.Sglang:
+            return SglangHeaderExtractor.CreateOwned(o.Pipeline.Sglang);
+        default:
+            if (string.IsNullOrWhiteSpace(o.Pipeline.Llama.ModelPath))
+            {
+                var found = ModelLocator.Locate();
+                if (found is null)
+                    throw new InvalidOperationException(
+                        "Chưa có mô hình cho pdf-clusters analyst. Dùng --no-llm để chỉ dump cluster samples, hoặc chỉ định --model/--lmstudio/--openrouter.");
+                o.Pipeline.Llama.ModelPath = found;
+            }
+            o.Pipeline.PrepareLocalModelProfile();
+            return await LlamaHeaderExtractor.LoadAsync(o.Pipeline.Llama, ct);
+    }
+}
+
+static IReadOnlyDictionary<string, IReadOnlyList<string>> BuildKeyIndex(IReadOnlyList<string> files)
+{
+    var keys = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
+    void AddKey(string path)
+    {
+        if (!File.Exists(path)) return;
+        var stem = Path.GetFileNameWithoutExtension(path);
+        if (!keys.TryGetValue(stem, out var list))
+            keys[stem] = list = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        list.Add(Path.GetFullPath(path));
+    }
+
+    foreach (var file in files)
+        AddKey(Path.ChangeExtension(file, ".key"));
+
+    foreach (var root in new[] { "keys", ".verify-build", "bench" })
+    {
+        if (!Directory.Exists(root)) continue;
+        foreach (var key in Directory.EnumerateFiles(root, "*.key", SearchOption.AllDirectories))
+            AddKey(key);
+    }
+
+    return keys.ToDictionary(
+        kv => kv.Key,
+        kv => (IReadOnlyList<string>)kv.Value.OrderBy(x => x, StringComparer.OrdinalIgnoreCase).ToList(),
+        StringComparer.OrdinalIgnoreCase);
+}
+
+static List<string> ExpandCalibrationInputs(IEnumerable<string> inputs)
+{
+    var files = new List<string>();
+    foreach (var input in inputs)
+    {
+        if (File.Exists(input)) { files.Add(Path.GetFullPath(input)); continue; }
+        if (Directory.Exists(input))
+        {
+            files.AddRange(Directory.EnumerateFiles(input, "*.docx", SearchOption.AllDirectories)
+                .Concat(Directory.EnumerateFiles(input, "*.docm", SearchOption.AllDirectories))
+                .Concat(Directory.EnumerateFiles(input, "*.doc", SearchOption.AllDirectories))
+                .Concat(Directory.EnumerateFiles(input, "*.rtf", SearchOption.AllDirectories))
+                .Concat(Directory.EnumerateFiles(input, "*.odt", SearchOption.AllDirectories)));
+            continue;
+        }
+
+        var dir = Path.GetDirectoryName(input);
+        var pattern = Path.GetFileName(input);
+        dir = string.IsNullOrEmpty(dir) ? Directory.GetCurrentDirectory() : dir;
+        if (Directory.Exists(dir) && (pattern.Contains('*') || pattern.Contains('?')))
+            files.AddRange(Directory.EnumerateFiles(dir, pattern, SearchOption.TopDirectoryOnly).Where(IsSupported));
+        else
+            Console.Error.WriteLine($"Bỏ qua (không tồn tại): {input}");
+    }
+
+    return files;
+
+    static bool IsSupported(string f) =>
+        Path.GetExtension(f).ToLowerInvariant() is ".docx" or ".docm" or ".doc" or ".rtf" or ".odt";
+}
+
 static DocumentAgentRequest AgentRequest(string file, CommandLineOptions o) =>
     new(file, AllowExternalDataTransfer:
         !o.Pipeline.DisableLlm && o.Pipeline.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang)
@@ -583,6 +956,34 @@ static List<string> ExpandInputs(IEnumerable<string> inputs)
 
     static bool IsSupported(string f) =>
         Path.GetExtension(f).ToLowerInvariant() is ".docx" or ".docm" or ".doc" or ".rtf" or ".odt";
+}
+
+static List<string> ExpandPdfClusterInputs(IEnumerable<string> inputs)
+{
+    var files = new List<string>();
+    foreach (var input in inputs)
+    {
+        if (File.Exists(input)) { files.Add(Path.GetFullPath(input)); continue; }
+
+        if (Directory.Exists(input))
+        {
+            files.AddRange(Directory.EnumerateFiles(input, "*.pdf", SearchOption.AllDirectories));
+            continue;
+        }
+
+        var dir = Path.GetDirectoryName(input);
+        var pattern = Path.GetFileName(input);
+        dir = string.IsNullOrEmpty(dir) ? Directory.GetCurrentDirectory() : dir;
+
+        if (Directory.Exists(dir) && (pattern.Contains('*') || pattern.Contains('?')))
+            files.AddRange(Directory.EnumerateFiles(dir, pattern).Where(IsSupported));
+        else
+            Console.Error.WriteLine($"Bỏ qua (không tồn tại): {input}");
+    }
+    return files.Distinct().OrderBy(f => f).ToList();
+
+    static bool IsSupported(string f) =>
+        Path.GetExtension(f).ToLowerInvariant() is ".pdf" or ".docx" or ".docm" or ".doc" or ".rtf" or ".odt";
 }
 
 /// <summary>Tìm mô hình .gguf theo thứ tự: DHX_MODEL → appsettings.json → thư mục models.</summary>

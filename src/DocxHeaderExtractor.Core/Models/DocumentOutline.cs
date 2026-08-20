@@ -180,6 +180,14 @@ public sealed class DocumentOutline
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? DeterministicRoute { get; init; }
 
+    /// <summary>
+    /// Audit tự động của tầng code-first: đo tín hiệu tài liệu, chạy candidate deterministic trong
+    /// sandbox và ghi lý do pass/fail. LLM chỉ nên phân tích report này, không tự chọn output.
+    /// </summary>
+    [JsonPropertyName("diagnostics")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public DocumentDiagnosticReport? Diagnostics { get; init; }
+
     /// <summary>Bản ghi các lượt hỏi mô hình đã chạy thật; null khi chạy <c>--no-llm</c>.</summary>
     [JsonPropertyName("provenance")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
@@ -197,3 +205,37 @@ public sealed class DocumentOutline
         HeadingDecisionStatus.AutoAcceptedEvidence or HeadingDecisionStatus.AutoAcceptedCalibrated or
         HeadingDecisionStatus.HumanVerified);
 }
+
+public sealed record DocumentDiagnosticReport(
+    [property: JsonPropertyName("status")] string Status,
+    [property: JsonPropertyName("reason")] string Reason,
+    [property: JsonPropertyName("style")] StyleSignalDiagnostic Style,
+    [property: JsonPropertyName("layout")] LayoutSignalDiagnostic Layout,
+    [property: JsonPropertyName("candidates")] IReadOnlyList<OutlineCandidateDiagnostic> Candidates);
+
+public sealed record StyleSignalDiagnostic(
+    [property: JsonPropertyName("styledCount")] int StyledCount,
+    [property: JsonPropertyName("suspectRatio")] double SuspectRatio,
+    [property: JsonPropertyName("density")] double Density,
+    [property: JsonPropertyName("distinctLevels")] int DistinctLevels,
+    [property: JsonPropertyName("numberedDisagreeRatio")] double NumberedDisagreeRatio,
+    [property: JsonPropertyName("selectionTrusted")] bool SelectionTrusted,
+    [property: JsonPropertyName("levelTrusted")] bool LevelTrusted,
+    [property: JsonPropertyName("mixed")] bool Mixed);
+
+public sealed record LayoutSignalDiagnostic(
+    [property: JsonPropertyName("mergedParagraphs")] int MergedParagraphs,
+    [property: JsonPropertyName("mergedMarkers")] int MergedMarkers,
+    [property: JsonPropertyName("tableOfContentsParagraphs")] int TableOfContentsParagraphs,
+    [property: JsonPropertyName("typedNumberSegments")] int TypedNumberSegments);
+
+public sealed record OutlineCandidateDiagnostic(
+    [property: JsonPropertyName("route")] string Route,
+    [property: JsonPropertyName("accepted")] bool Accepted,
+    [property: JsonPropertyName("reason")] string Reason,
+    [property: JsonPropertyName("headingCount")] int HeadingCount,
+    [property: JsonPropertyName("duplicateRate")] double DuplicateRate,
+    [property: JsonPropertyName("titlePollutionRate")] double TitlePollutionRate,
+    [property: JsonPropertyName("levelJumpRate")] double LevelJumpRate,
+    [property: JsonPropertyName("bodyAnchorRatio")] double? BodyAnchorRatio = null,
+    [property: JsonPropertyName("tocCoverage")] double? TocCoverage = null);

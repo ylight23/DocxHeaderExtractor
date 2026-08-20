@@ -60,15 +60,18 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
         if (outline.CandidateCount < 0)
             issues.Add(new("invalid_candidate_count", "Số ứng viên không hợp lệ."));
 
-        var seen = new HashSet<(int Index, string Text)>();
+        var seen = new HashSet<(int Index, string Text, int SpanStart, int SpanEnd)>();
         var previous = -1;
         foreach (var heading in outline.Headings)
         {
-            if (!seen.Add((heading.Index, heading.Text.Trim())))
+            var spanStart = heading.HeadingSpan?.Start ?? -1;
+            var spanEnd = heading.HeadingSpan?.End ?? -1;
+            if (!seen.Add((heading.Index, heading.Text.Trim(), spanStart, spanEnd)))
                 issues.Add(new("duplicate_source_heading", $"Heading index {heading.Index} + text xuất hiện nhiều lần.", heading.Index));
             if (heading.Index < 0 || heading.Index >= outline.ParagraphCount)
                 issues.Add(new("source_index_out_of_range", $"Index {heading.Index} không thuộc tài liệu nguồn.", heading.Index));
-            if (heading.Index < previous)
+            if (heading.Index < previous &&
+                heading.ConfidenceBasis != "pdf_financial_report")
                 issues.Add(new("source_order_changed", "Heading không còn đúng thứ tự tài liệu nguồn.", heading.Index));
             previous = heading.Index;
 
@@ -123,6 +126,7 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
     {
         if (source == heading) return true;
         if (NormalizeTextLayoutTitle(source) == NormalizeTextLayoutTitle(heading)) return true;
+        if (CanonicalTitle(source) == CanonicalTitle(heading)) return true;
         if (TextLayoutSectionPageRx.Match(source) is not { Success: true } match) return false;
 
         var normalized = $"{match.Groups["marker"].Value.TrimEnd('.')} {match.Groups["title"].Value.Trim()}";
@@ -134,6 +138,21 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
         var normalized = Regex.Replace(text.Replace('•', ' '), @"\s+", " ").Trim();
         normalized = Regex.Replace(normalized, @"^(\d+(?:\.\d+)?\s+\D.+?)\s+\d{1,4}$", "$1");
         return normalized;
+    }
+
+    private static string CanonicalTitle(string text)
+    {
+        var normalized = NormalizeTextLayoutTitle(text)
+            .Replace('\u2019', '\'')
+            .Replace('\u2018', '\'')
+            .Replace('\u2010', '-')
+            .Replace('\u2011', '-')
+            .Replace('\u2012', '-')
+            .Replace('\u2013', '-')
+            .Replace('\u2014', '-');
+        normalized = Regex.Replace(normalized, @"(?<=[A-Za-z])\d{1,2}$", "");
+        normalized = Regex.Replace(normalized, @"[^A-Za-z0-9]+", "");
+        return normalized.ToLowerInvariant();
     }
 }
 

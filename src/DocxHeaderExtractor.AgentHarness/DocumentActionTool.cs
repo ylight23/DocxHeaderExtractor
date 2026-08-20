@@ -1,5 +1,7 @@
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.Core.Repair;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
@@ -10,6 +12,8 @@ namespace DocxHeaderExtractor.AgentHarness;
 public interface IDocumentActionTool : IDisposable
 {
     AgentToolDescriptor Descriptor { get; }
+
+    bool CanExecute(DocumentAgentRequest request);
 
     Task<AgentWritebackReport> ExecuteAsync(
         DocumentAgentRequest request,
@@ -33,6 +37,8 @@ public sealed class OutlineWritebackTool(ExtractionOptions extraction) : IDocume
         AgentToolRisk.High,
         SendsDataExternally: false,
         MutatesExternalState: true);
+
+    public bool CanExecute(DocumentAgentRequest request) => request.WantsWriteback;
 
     public Task<AgentWritebackReport> ExecuteAsync(
         DocumentAgentRequest request,
@@ -67,6 +73,53 @@ public sealed class OutlineWritebackTool(ExtractionOptions extraction) : IDocume
         {
             LegacyDocConverter.Cleanup(conversion);
         }
+    }
+
+    public void Dispose() { }
+}
+
+/// <summary>
+/// Ghi partial key package để người duyệt tạo đáp án cho các file gate-pass nhưng thiếu key.
+/// Tool này không tạo nhãn vàng tự động: file .key luôn có marker partial_human và cần duyệt.
+/// </summary>
+public sealed class PartialKeyPackageActionTool(PipelineOptions options) : IDocumentActionTool
+{
+    private readonly PartialKeyPackage _packager = new(options);
+
+    public AgentToolDescriptor Descriptor { get; } = new(
+        "create_partial_key_package",
+        "Ghi current outline, CSV review và partial_human .key draft cho người duyệt.",
+        AgentToolRisk.Medium,
+        SendsDataExternally: false,
+        MutatesExternalState: true);
+
+    public bool CanExecute(DocumentAgentRequest request) => request.WantsKeyPackage;
+
+    public async Task<AgentWritebackReport> ExecuteAsync(
+        DocumentAgentRequest request,
+        DocumentOutline outline,
+        CancellationToken ct = default)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(outline);
+
+        var outputDirectory = request.KeyPackageOutputDirectory
+            ?? throw new InvalidOperationException("Run không có thư mục key package.");
+
+        var result = await _packager.RunAsync(
+            request.InputPath,
+            outline,
+            new PartialKeyPackageOptions(
+                outputDirectory,
+                request.KeyPackageLimit,
+                request.KeyPackageStart,
+                request.KeyPackageDistributedSample),
+            ct);
+
+        return new AgentWritebackReport(
+            result.Directory,
+            result.SelectedHeadings,
+            Math.Max(0, result.TotalHeadings - result.SelectedHeadings));
     }
 
     public void Dispose() { }

@@ -3,7 +3,7 @@ name: heading-extraction
 description: Phân tích cây heading DOCX theo source-grounded, precision-first workflow.
 version: 1.3.0
 requires:
-  guardrails: [input_document, external_data_transfer, writeback_target, tool_side_effect_paths]
+  guardrails: [input_document, external_data_transfer, writeback_target, key_package_target, tool_side_effect_paths]
   validators: [outline_grounding, run_provenance]
   humanReviewBeforeWriteback: true
   maxRepairAttempts: 1

@@ -1,0 +1,113 @@
+using System.Text.RegularExpressions;
+
+namespace DocxHeaderExtractor.Core.Pipeline;
+
+internal sealed record PdfLineBlockAnnotation(
+    PdfLine Line,
+    bool Repeated,
+    bool HeaderFooterZone,
+    bool TableLike,
+    bool PageNumber,
+    string Reason)
+{
+    public bool ExcludeFromSemanticSamples =>
+        PageNumber ||
+        TableLike ||
+        (Repeated && (HeaderFooterZone || PdfTextUtilities.Readable(Line.Text).Length <= 60));
+}
+
+internal sealed record PdfLineFilterSummary(
+    int TotalLines,
+    int SemanticCandidateLines,
+    int RepeatedLines,
+    int HeaderFooterZoneLines,
+    int TableLikeLines,
+    int PageNumberLines);
+
+internal static class PdfLineBlockFilter
+{
+    private static readonly Regex NonAlphaNumRx = new(@"[^a-z0-9]+", RegexOptions.Compiled);
+
+    public static IReadOnlyList<PdfLineBlockAnnotation> Analyze(IReadOnlyList<PdfLine> lines)
+    {
+        if (lines.Count == 0) return [];
+
+        var pages = lines.Select(l => l.Page).Distinct().Count();
+        var repeatedKeys = lines
+            .Select(l => (Line: l, Key: RepeatKey(l.Text)))
+            .Where(x => x.Key.Length >= 6)
+            .GroupBy(x => x.Key)
+            .Where(g => g.Select(x => x.Line.Page).Distinct().Count() >= Math.Min(Math.Max(3, pages / 3), Math.Max(3, pages - 1)))
+            .Select(g => g.Key)
+            .ToHashSet();
+
+        var minY = lines.Min(l => l.Y);
+        var maxY = lines.Max(l => l.Y);
+        var span = Math.Max(1, maxY - minY);
+
+        return lines.Select(line =>
+        {
+            var repeated = repeatedKeys.Contains(RepeatKey(line.Text));
+            var headerFooter = IsHeaderFooterZone(line, minY, span);
+            var pageNumber = IsPageNumber(line.Text);
+            var tableLike = LooksLikeTableLine(line.Text);
+            var reasons = new List<string>();
+            if (pageNumber) reasons.Add("page-number");
+            if (repeated) reasons.Add("repeated");
+            if (headerFooter) reasons.Add("header-footer-zone");
+            if (tableLike) reasons.Add("table-like");
+            return new PdfLineBlockAnnotation(
+                line,
+                repeated,
+                headerFooter,
+                tableLike,
+                pageNumber,
+                reasons.Count == 0 ? "semantic-candidate" : string.Join(",", reasons));
+        }).ToList();
+    }
+
+    public static PdfLineFilterSummary Summarize(IEnumerable<PdfLineBlockAnnotation> annotations)
+    {
+        var list = annotations.ToList();
+        return new PdfLineFilterSummary(
+            list.Count,
+            list.Count(a => !a.ExcludeFromSemanticSamples),
+            list.Count(a => a.Repeated),
+            list.Count(a => a.HeaderFooterZone),
+            list.Count(a => a.TableLike),
+            list.Count(a => a.PageNumber));
+    }
+
+    private static string RepeatKey(string text)
+    {
+        var readable = PdfTextUtilities.Readable(text).ToLowerInvariant();
+        readable = Regex.Replace(readable, @"\b\d{1,4}\b", "#");
+        return NonAlphaNumRx.Replace(readable, "");
+    }
+
+    private static bool IsHeaderFooterZone(PdfLine line, double minY, double span)
+    {
+        var relative = (line.Y - minY) / span;
+        return relative <= 0.08 || relative >= 0.92;
+    }
+
+    private static bool IsPageNumber(string text) =>
+        Regex.IsMatch(text.Trim(), @"^(?:page\s*)?\d{1,4}$", RegexOptions.IgnoreCase);
+
+    private static bool LooksLikeTableLine(string text)
+    {
+        var t = PdfTextUtilities.Readable(text);
+        if (t.Length == 0) return true;
+
+        var alnum = t.Count(char.IsLetterOrDigit);
+        if (alnum == 0) return true;
+        var numeric = t.Count(char.IsDigit) + t.Count(c => c is '$' or '%' or ',' or '(' or ')');
+        if (numeric / (double)alnum >= 0.35) return true;
+
+        var words = Regex.Matches(t, @"\p{L}+").Count;
+        if (t.Length <= 32 && words <= 4 && Regex.IsMatch(t, @"\b\d+\b") && !Regex.IsMatch(t, @"[.!?]\s*$"))
+            return true;
+
+        return false;
+    }
+}

@@ -112,6 +112,37 @@ hoặc có thêm text inline. Giả thuyết mất khoảng trắng kiểu `Titl
 chưa đủ kết luận là lỗi tầng XML: phép đo raw `<w:t>` ban đầu bị nhiễu vì chưa tính `w:br`. Metric
 chính cho typed text-layout vì vậy vẫn là `navigation-usable`; exact chỉ dùng cho span/writeback.
 
+## `partial-human/` — key duyệt từng lát cho route còn thiếu dữ liệu
+
+Các file trong thư mục này thường là `partial_human`: chỉ chấm vùng đã duyệt, không tự nhận là outline
+đầy đủ. Chúng được sinh bằng `repair-key-package`, rồi người/agent duyệt lại. Mỗi key giữ `line_probe`
+và `sample_strategy` để biết lát duyệt có đại diện không.
+
+Ngoại lệ hiện tại:
+
+- `063_Advanced_Linear_Algebra.key` đã được nâng thành full key theo TOC người dùng cung cấp trong
+  chat: 102 mục, gồm Part I-IV, Chapter 1-16, các mục `1a`-`16e`, `Bibliography`, `Index`.
+- `051_WBG_Trust_Fund_FIS_June_2024.key` và `052_WBG_Trust_Fund_FIS_December_2025.key` là full key
+  do người dùng chốt trực tiếp từ PDF Trust Fund FIS. Chúng giữ từng page-title được liệt kê và 4
+  nhãn nhóm visual; các trang `(cont'd)`/duplicate vẫn là dòng riêng trong key này.
+
+`054_IBRD_Information_Statement_FY25.key` trong `typed-human/` là partial key cũ theo SECTION-level,
+không phải key TOC page-level cho route `auto:pdf-toc-dictionary`; không dùng nó để phủ quyết route
+TOC dictionary mới nếu chưa nâng key theo policy maxDepth=1.
+
+Dòng bắt đầu bằng `!` là **negative review**: output có đúng stable ID và text comment đó sẽ bị tính là
+false positive ngay cả khi key là partial. Ví dụ:
+
+```text
+@body[1]/p[12] 1   # Portfolio at a Glance - IBRD/IDA/IFC Trust Funds
+!@body[1]/p[12] 1  # YoY change % 69% 48% 53% 10
+```
+
+Lý do cần negative review: partial key thông thường không phạt false positive ngoài vùng truth, dễ làm
+precision đẹp giả ở tài liệu tài chính/bảng biểu. Sau khi `051/052` được nâng thành full key, các dòng
+metric/bảng thừa của route tài chính được phạt bằng cơ chế full-key bình thường, không cần negative
+review riêng cho hai file này.
+
 ## `format-driven-human/` — đáp án nhóm `FormatDriven` (mất hết bold ở DOCX) từ nguồn ngoài pipeline
 
 `073_FORTIS_GC_Minutes_Mar_2026.key` và `074_FORTIS_GC_Minutes_Nov27_2024.key`: biên bản họp World

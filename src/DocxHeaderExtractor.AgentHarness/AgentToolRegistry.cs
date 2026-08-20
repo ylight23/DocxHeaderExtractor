@@ -26,7 +26,7 @@ public interface IAgentToolRegistry
 public sealed class AgentToolRegistry : IAgentToolRegistry
 {
     private readonly IReadOnlyList<IDocumentExtractionTool> _extraction;
-    private readonly IDocumentActionTool? _action;
+    private readonly IReadOnlyList<IDocumentActionTool> _actions;
 
     public AgentToolRegistry(IDocumentExtractionTool extraction, IDocumentActionTool? action = null)
         : this([extraction], action) { }
@@ -34,16 +34,22 @@ public sealed class AgentToolRegistry : IAgentToolRegistry
     public AgentToolRegistry(
         IEnumerable<IDocumentExtractionTool> extraction,
         IDocumentActionTool? action = null)
+        : this(extraction, action is null ? [] : [action]) { }
+
+    public AgentToolRegistry(
+        IEnumerable<IDocumentExtractionTool> extraction,
+        IEnumerable<IDocumentActionTool> actions)
     {
         ArgumentNullException.ThrowIfNull(extraction);
+        ArgumentNullException.ThrowIfNull(actions);
         _extraction = extraction.ToArray();
         if (_extraction.Count == 0)
             throw new ArgumentException("Cần ít nhất một tool phân tích.", nameof(extraction));
-        _action = action;
+        _actions = actions.ToArray();
     }
 
     public IReadOnlyList<AgentToolDescriptor> Descriptors =>
-        [.. _extraction.Select(t => t.Descriptor), .. _action is null ? Array.Empty<AgentToolDescriptor>() : [_action.Descriptor]];
+        [.. _extraction.Select(t => t.Descriptor), .. _actions.Select(t => t.Descriptor)];
 
     public AgentToolSelection Select(DocumentAgentRequest request)
     {
@@ -57,7 +63,9 @@ public sealed class AgentToolRegistry : IAgentToolRegistry
             .ToList();
 
         var extraction = permitted.FirstOrDefault() ?? _extraction[0];
-        var action = request.WantsWriteback ? _action : null;
+        var action = request.WantsAction
+            ? _actions.FirstOrDefault(a => a.CanExecute(request))
+            : null;
 
         return new AgentToolSelection(extraction, action, Explain(request, extraction, permitted.Count));
     }
@@ -72,10 +80,15 @@ public sealed class AgentToolRegistry : IAgentToolRegistry
                 ? "chỉ một tool phân tích được đăng ký"
                 : $"{permittedCount}/{_extraction.Count} tool hợp lệ, lấy mức rủi ro thấp nhất";
 
-        var action = request.WantsWriteback
-            ? _action is null
-                ? "; run yêu cầu ghi nhưng không có tool ghi nào được đăng ký"
-                : $" + {_action.Descriptor.Name}"
+        var wantsAction = request.WantsWriteback
+            ? "ghi outline"
+            : request.WantsKeyPackage
+                ? "tạo key package"
+                : null;
+        var action = wantsAction is not null
+            ? _actions.FirstOrDefault(a => a.CanExecute(request)) is { } chosenAction
+                ? $" + {chosenAction.Descriptor.Name}"
+                : $"; run yêu cầu {wantsAction} nhưng không có tool action phù hợp"
             : "; không hành động ghi";
 
         return $"{chosen.Descriptor.Name} " +

@@ -95,8 +95,8 @@ public sealed class WritebackTargetGuardrail : IDocumentAgentGuardrail
 
         if (!request.WantsWriteback)
         {
-            return ValueTask.FromResult(context.ActionTool is null
-                ? AgentGuardrailDecision.Pass("read_only", "Run chỉ đọc, không có hành động ghi.")
+            return ValueTask.FromResult(context.ActionTool is null || request.WantsKeyPackage
+                ? AgentGuardrailDecision.Pass("no_writeback", "Run không yêu cầu ghi outline vào tài liệu.")
                 : AgentGuardrailDecision.Block(
                     "writeback_target_missing",
                     "Đã nạp tool ghi nhưng run không chỉ định đích; không suy đoán đường dẫn hộ caller."));
@@ -131,6 +131,62 @@ public sealed class WritebackTargetGuardrail : IDocumentAgentGuardrail
 
         return ValueTask.FromResult(AgentGuardrailDecision.Pass(
             "writeback_target_valid", $"Đích ghi hợp lệ: {Path.GetFileName(target)}"));
+    }
+}
+
+/// <summary>
+/// Kiểm tra thư mục tạo partial key package. Package được phép tạo thư mục con cho từng tài liệu,
+/// nhưng thư mục cha phải rõ ràng và không được trỏ vào chính file nguồn.
+/// </summary>
+public sealed class KeyPackageTargetGuardrail : IDocumentAgentGuardrail
+{
+    public string Name => "key_package_target";
+
+    public ValueTask<AgentGuardrailDecision> EvaluateAsync(
+        DocumentAgentGuardrailContext context,
+        CancellationToken ct = default)
+    {
+        ct.ThrowIfCancellationRequested();
+        var request = context.Request;
+        if (!request.WantsKeyPackage)
+            return ValueTask.FromResult(AgentGuardrailDecision.Pass(
+                "no_key_package", "Run không yêu cầu tạo key package."));
+
+        if (context.ActionTool is null)
+            return ValueTask.FromResult(AgentGuardrailDecision.Block(
+                "key_package_tool_not_configured",
+                "Run yêu cầu tạo key package nhưng harness không được nạp tool phù hợp."));
+
+        if (request.KeyPackageLimit <= 0)
+            return ValueTask.FromResult(AgentGuardrailDecision.Block(
+                "key_package_limit_invalid", "KeyPackageLimit phải lớn hơn 0."));
+        if (request.KeyPackageStart < 0)
+            return ValueTask.FromResult(AgentGuardrailDecision.Block(
+                "key_package_start_invalid", "KeyPackageStart không được âm."));
+
+        var target = Path.GetFullPath(request.KeyPackageOutputDirectory!);
+        var source = File.Exists(request.InputPath)
+            ? Path.GetFullPath(request.InputPath)
+            : null;
+        if (source is not null && string.Equals(target, source, StringComparison.OrdinalIgnoreCase))
+            return ValueTask.FromResult(AgentGuardrailDecision.Block(
+                "key_package_overwrites_source",
+                "Thư mục key package trùng tài liệu nguồn; agent không được sửa file gốc."));
+
+        if (File.Exists(target))
+            return ValueTask.FromResult(AgentGuardrailDecision.Block(
+                "key_package_target_is_file",
+                $"Đích key package đang là file, cần thư mục: {Path.GetFileName(target)}"));
+
+        var parent = Path.GetDirectoryName(target);
+        if (!string.IsNullOrEmpty(parent) && !Directory.Exists(parent))
+            return ValueTask.FromResult(AgentGuardrailDecision.Block(
+                "key_package_parent_missing",
+                $"Thư mục cha của key package không tồn tại: {parent}"));
+
+        return ValueTask.FromResult(AgentGuardrailDecision.Pass(
+            "key_package_target_valid",
+            $"Thư mục key package hợp lệ: {target}"));
     }
 }
 

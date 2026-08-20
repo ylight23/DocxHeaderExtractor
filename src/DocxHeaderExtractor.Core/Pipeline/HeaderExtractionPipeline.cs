@@ -180,6 +180,19 @@ public sealed class PipelineOptions
     public bool PdfBoldLabelFallback { get; set; } = true;
 
     /// <summary>
+    /// Đọc JSON sidecar do Docling đã convert thành công rồi align ngược về DOCX như một candidate
+    /// deterministic. Route này KHÔNG gọi Python/Docling ở production; Docling chỉ là probe ngoài
+    /// luồng, còn quyết định nhận heading vẫn phải qua luật .NET + grounding span.
+    /// </summary>
+    public bool DoclingSidecarFallback { get; set; } = true;
+
+    /// <summary>
+    /// JSON Docling chỉ định tường minh cho một lượt chạy. Null thì tự dò file cùng stem:
+    /// <c>name.docling.json</c>, <c>name.json</c>, hoặc <c>.verify-build/docling/name.json</c>.
+    /// </summary>
+    public string? DoclingJsonPath { get; set; }
+
+    /// <summary>
     /// Fallback thứ ba cho <c>FormatDriven</c>, KHÔNG cần PDF: mã phiên kiểu "D1.00 - Title" (World
     /// Bank ICP IACG minutes, nhóm 071/076-079 — <see cref="PdfBoldLabelOutline"/> không kích hoạt
     /// vì DOCX không còn bold nào để đọc, nhưng mã phiên vẫn còn nguyên là TEXT). Xem
@@ -384,7 +397,14 @@ public sealed class HeaderExtractionPipeline : IDisposable
             var extractor = new DocxSlimExtractor(_options.Extraction);
             var slim = extractor.Extract(conversion.Path);
             var modeReport = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
+            var diagnostics = DocumentDiagnosticRunner.Analyze(slim, modeReport);
             Log(modeReport.Describe());
+            if (diagnostics.Status != "normal")
+            {
+                var acceptedCandidates = diagnostics.Candidates.Count(c => c.Accepted);
+                Log($"Diagnostic: {diagnostics.Reason}; {acceptedCandidates}/{diagnostics.Candidates.Count} candidate qua gate. " +
+                    "LLM chỉ nên phân tích report này, không chốt output bằng cảm giác.");
+            }
 
             // 2b. R1 của spec filter OOXML — chạy TRƯỚC khi lập tập ứng viên, vì cả điểm của nó là
             //     rút đoạn ra khỏi luồng LLM. Mặc định tắt; xem OoxmlStyleAutoAssign.
@@ -451,7 +471,13 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 tachDoanGop = false;
                 declared = TryBuildDeclaredOutline(slim, modeReport, false);
             }
-            var pdfFallback = _options.PdfTextbookFallback
+            var pdfTocFallback = PdfTocDictionaryOutline.TryBuild(inputPath, slim, modeReport);
+            if (pdfTocFallback.Headings.Count > 0)
+                Log($"PDF TOC dictionary: dùng {pdfTocFallback.Headings.Count} heading từ mục lục PDF ({pdfTocFallback.Reason}).");
+            else if (pdfTocFallback.Reason is not "no-pdf" and not "no-strong-pdf-toc")
+                Log($"PDF TOC dictionary: bỏ qua ({pdfTocFallback.Reason}).");
+
+            var pdfFallback = pdfTocFallback.Headings.Count == 0 && _options.PdfTextbookFallback
                 ? PdfTextbookOutline.TryBuild(inputPath, slim, modeReport)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
             if (pdfFallback.Headings.Count > 0)
@@ -459,7 +485,20 @@ public sealed class HeaderExtractionPipeline : IDisposable
             else if (pdfFallback.Reason is not "disabled" and not "no-pdf")
                 Log($"PDF textbook fallback: bỏ qua ({pdfFallback.Reason}).");
 
-            var pdfBoldFallback = pdfFallback.Headings.Count == 0 && _options.PdfBoldLabelFallback
+            var pdfFinancialFallback = pdfTocFallback.Headings.Count == 0 &&
+                                       pdfFallback.Headings.Count == 0 &&
+                                       _options.PdfBoldLabelFallback
+                ? PdfFinancialReportOutline.TryBuild(inputPath, slim, modeReport)
+                : PdfTextbookOutlineResult.NotApplicable("disabled");
+            if (pdfFinancialFallback.Headings.Count > 0)
+                Log($"PDF financial-report fallback: dùng {pdfFinancialFallback.Headings.Count} heading từ layout PDF ({pdfFinancialFallback.Reason}).");
+            else if (pdfFinancialFallback.Reason is not "disabled" and not "no-pdf" and not "not-financial-report-layout")
+                Log($"PDF financial-report fallback: bỏ qua ({pdfFinancialFallback.Reason}).");
+
+            var pdfBoldFallback = pdfTocFallback.Headings.Count == 0 &&
+                                  pdfFallback.Headings.Count == 0 &&
+                                  pdfFinancialFallback.Headings.Count == 0 &&
+                                  _options.PdfBoldLabelFallback
                 ? PdfBoldLabelOutline.TryBuild(inputPath, slim, modeReport)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
             if (pdfBoldFallback.Headings.Count > 0)
@@ -467,11 +506,25 @@ public sealed class HeaderExtractionPipeline : IDisposable
             else if (pdfBoldFallback.Reason is not "disabled" and not "no-pdf")
                 Log($"PDF bold-label fallback: bỏ qua ({pdfBoldFallback.Reason}).");
 
+            var doclingFallback = pdfTocFallback.Headings.Count == 0 &&
+                                  pdfFallback.Headings.Count == 0 &&
+                                  pdfFinancialFallback.Headings.Count == 0 &&
+                                  pdfBoldFallback.Headings.Count == 0 &&
+                                  _options.DoclingSidecarFallback
+                ? DoclingLayoutOutline.TryBuild(inputPath, slim, modeReport, _options.DoclingJsonPath)
+                : PdfTextbookOutlineResult.NotApplicable("disabled");
+            if (doclingFallback.Headings.Count > 0)
+                Log($"Docling sidecar fallback: dùng {doclingFallback.Headings.Count} heading từ JSON đã align ({doclingFallback.Reason}).");
+            else if (doclingFallback.Reason is not "disabled" and not "no-docling-json")
+                Log($"Docling sidecar fallback: bỏ qua ({doclingFallback.Reason}).");
+
             // Không gate theo pdfBoldFallback.Count==0: hai nguồn bắt hai loại tín hiệu KHÁC nhau
             // trên cùng tài liệu (bold-label bắt được khối tiêu đề/nhãn trần, session-code bắt được
             // các mục "D<n>.<nn> -" mà bold-label bỏ sót vì không phải bold) — hợp lại thay vì chọn
             // một, rồi khử trùng theo (Index, Text).
-            var sessionCodeFallback = pdfFallback.Headings.Count == 0 && _options.SessionCodeFallback
+            var sessionCodeFallback = pdfTocFallback.Headings.Count == 0 &&
+                                      pdfFallback.Headings.Count == 0 &&
+                                      _options.SessionCodeFallback
                 ? SessionCodeOutline.Build(slim, modeReport)
                 : [];
             if (sessionCodeFallback.Count > 0)
@@ -479,15 +532,29 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
             var boldAndSessionCode = MergeBySourceIdentity(pdfBoldFallback.Headings, sessionCodeFallback);
 
-            List<HeadingRecord> headings = pdfFallback.Headings.Count > 0
-                ? [.. pdfFallback.Headings]
+            List<HeadingRecord> headings = pdfTocFallback.Headings.Count > 0
+                ? [.. pdfTocFallback.Headings]
+                : pdfFallback.Headings.Count > 0
+                    ? [.. pdfFallback.Headings]
+                : pdfFinancialFallback.Headings.Count > 0
+                    ? [.. pdfFinancialFallback.Headings]
                 : boldAndSessionCode.Count > 0
                     ? boldAndSessionCode
+                : doclingFallback.Headings.Count > 0
+                    ? [.. doclingFallback.Headings]
                     : declared.Headings is { Count: > 0 } luat
                         ? await BoSungKhiLuatConSot(luat, slim, candidates, quarantined, modeReport, ct)
                         : _options.DisableLlm
                             ? HeuristicOnly(candidates)
                             : await RunModelAsync(slim, candidates, quarantined, modeReport.Mode, ct);
+            var deterministicRoute = SelectedDeterministicRoute(
+                declared.Route,
+                pdfTocFallback.Headings.Count,
+                pdfFallback.Headings.Count,
+                pdfFinancialFallback.Headings.Count,
+                pdfBoldFallback.Headings.Count,
+                doclingFallback.Headings.Count,
+                sessionCodeFallback.Count);
 
             // StructuralHierarchyResolver và TableOfContentsAnchor đều TẤT ĐỊNH và không cần mô
             // hình, nhưng cả hai nằm trong RunModelAsync nên đường --no-llm chưa bao giờ chạy
@@ -499,8 +566,16 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 // InlineHeadingSplitter cũng tất định (ranh giới do OOXML hoặc token dữ liệu chứng
                 // minh, không do mô hình đoán) và cũng nằm trong RunModelAsync — cùng bất đối xứng
                 // §51 đã sửa cho hai bộ kia.
-                var inline = InlineHeadingSplitter.Apply(headings, slim);
-                if (inline > 0) Log($"Tách nội dung cùng dòng (không mô hình): {inline} mục.");
+                if (declared.Route is "auto:rfc-toc-dictionary" or "auto:book-toc-dictionary" ||
+                    deterministicRoute == "auto:pdf-toc-dictionary")
+                {
+                    Log("Tách nội dung cùng dòng: bỏ qua vì tiêu đề đã lấy sạch từ từ điển mục lục.");
+                }
+                else
+                {
+                    var inline = InlineHeadingSplitter.Apply(headings, slim);
+                    if (inline > 0) Log($"Tách nội dung cùng dòng (không mô hình): {inline} mục.");
+                }
 
                 if (declared.Route == "auto:vietnamese-legal")
                 {
@@ -526,6 +601,31 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     // trong TOC text, cùng lý do miễn trừ resolver generic như hai route trên.
                     Log("Hậu xử lý hierarchy: giữ cấp PART/Section theo TOC text, bỏ qua suy cấp generic.");
                 }
+                else if (declared.Route == "auto:rfc-toc-dictionary")
+                {
+                    // RfcTocDictionaryOutline đã lấy cấp trực tiếp từ số mục trong TOC text
+                    // ("5.2.2.10" => cấp 4). Resolver generic không có thêm bằng chứng tốt hơn.
+                    Log("Hậu xử lý hierarchy: giữ cấp RFC theo từ điển mục lục, bỏ qua suy cấp generic.");
+                }
+                else if (declared.Route == "auto:book-toc-dictionary")
+                {
+                    // BookTocDictionaryOutline đã lấy cấp trực tiếp từ vai trò TOC
+                    // (Part/Chapter/section), còn body chỉ là neo vị trí.
+                    Log("Hậu xử lý hierarchy: giữ cấp textbook theo từ điển mục lục, bỏ qua suy cấp generic.");
+                }
+                else if (deterministicRoute == "auto:pdf-toc-dictionary")
+                {
+                    // PdfTocDictionaryOutline lấy title/cấp từ TOC PDF và chỉ dùng thân bài để
+                    // neo vị trí; resolver generic không có bằng chứng tốt hơn TOC của tác giả.
+                    Log("Hậu xử lý hierarchy: giữ cấp PDF TOC dictionary, bỏ qua suy cấp generic.");
+                }
+                else if (deterministicRoute == "auto:pdf-financial-report")
+                {
+                    // PdfFinancialReportOutline đọc cấp trực tiếp từ vai trò visual:
+                    // nhãn nhóm (1) và tiêu đề mục/trang bên dưới (2). Resolver generic chỉ thấy
+                    // chuỗi title trong paragraph gộp, không thấy ngữ cảnh visual PDF.
+                    Log("Hậu xử lý hierarchy: giữ cấp financial-report theo layout PDF, bỏ qua suy cấp generic.");
+                }
                 else
                 {
                     var fixes = StructuralHierarchyResolver.Apply(headings, slim, _options.Extraction.UseStyleTrust);
@@ -537,9 +637,10 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
             // Chạy trên TOÀN BỘ đoạn chứ không phải tập ứng viên: đoạn bị gộp khi chuyển từ PDF
             // có score 0 và role Normal, nên nó không bao giờ lọt vào ứng viên để mà cứu.
-            // Route text-toc là điều hướng CÓ CHỦ Ý hẹp (§ PartSectionOutline.BuildFromTextToc) —
-            // quét lại toàn tài liệu ở đây sẽ kéo lại đúng loại nhiễu mà route này được chọn để né.
-            if (tachDoanGop && declared.Route != "auto:part-section-text-toc")
+            // Route text-toc/RFC-dictionary là điều hướng CÓ CHỦ Ý hẹp — quét lại toàn tài liệu
+            // ở đây sẽ kéo lại đúng loại nhiễu mà các route này được chọn để né.
+            if (tachDoanGop && declared.Route is not ("auto:part-section-text-toc" or "auto:rfc-toc-dictionary" or "auto:book-toc-dictionary" or "auto:pdf-financial-report") &&
+                deterministicRoute != "auto:pdf-toc-dictionary")
             {
                 var added = MergedParagraphHeadings(slim, headings);
                 if (added.Count > 0)
@@ -558,9 +659,22 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // pipeline để lọt, validator bác, và harness phải DỰNG LẠI cả tài liệu — chi phí gấp
             // đôi. Đo được: 024_ND_15-2020 và 090_ND_155-2018 đều dựng lại vì đúng lỗi này; ở
             // 063_Advanced_Linear_Algebra lượt dựng lại đẩy 11 khối context thành 17 khối.
-            var trung = new HashSet<(int, string)>();
+            var trung = new HashSet<(int, string, int, int)>();
             var truocKhu = headings.Count;
-            headings = headings.Where(h => trung.Add((h.Index, (h.Text ?? string.Empty).Trim()))).ToList();
+            headings = headings.Where(h =>
+            {
+                var text = (h.Text ?? string.Empty).Trim();
+                var spanStart = 0;
+                var spanEnd = 0;
+                if (h.ConfidenceBasis == PdfFinancialReportOutline.Basis &&
+                    h.HeadingSpan is { } span)
+                {
+                    spanStart = span.Start;
+                    spanEnd = span.End;
+                }
+
+                return trung.Add((h.Index, text, spanStart, spanEnd));
+            }).ToList();
             if (headings.Count < truocKhu)
                 Log($"Khử {truocKhu - headings.Count} mục trùng nguyên văn ở cùng đoạn.");
 
@@ -626,7 +740,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 ElapsedMs = sw.ElapsedMilliseconds,
                 Model = _options.DisableLlm ? null : _model?.ModelName ?? ConfiguredModelName(),
                 DocumentMode = modeReport,
-                DeterministicRoute = declared.Route,
+                DeterministicRoute = deterministicRoute,
+                Diagnostics = diagnostics,
                 Provenance = _options.DisableLlm
                     ? null
                     : new OutlineRunProvenance(
@@ -765,9 +880,53 @@ public sealed class HeaderExtractionPipeline : IDisposable
             : AutoRoute(modeReport.Mode);
 
         // PDF→DOCX text-layout mất hết OOXML signal (outlineLvl/pStyle/numPr) rơi vào
-        // TypedNumbering vì số gõ tay trong thân bài, nhưng TypedNumberingOutline tự nhiên coi cả
-        // câu văn xuôi bắt đầu bằng "1." là heading trên nhóm này. Khi TOC text còn giữ đủ khung
-        // PART/Section, ưu tiên route hẹp hơn — chỉ 12 mục điều hướng, không suy đoán thêm.
+        // TypedNumbering/FormatDriven vì số gõ tay trong thân bài, nhưng route generic tự nhiên coi
+        // cả câu văn xuôi bắt đầu bằng "1." là heading. Khi TOC text còn giữ đủ khung, ưu tiên
+        // route hẹp hơn: RFC dùng số mục; textbook dùng Part/Chapter/1a; WB dùng PART/Section.
+        BookTocDictionaryResult? bookTocDictionary = null;
+        if (!manual && route is ("auto:typed-numbering" or "auto:vietnamese-administrative"))
+        {
+            bookTocDictionary = BookTocDictionaryOutline.Analyze(slim);
+            if (bookTocDictionary.Diagnostics.TocParagraphs > 0 ||
+                bookTocDictionary.Diagnostics.DictionaryEntries > 0)
+            {
+                Log(bookTocDictionary.Accepted
+                    ? $"Auto probe book/TOC: nhận route dictionary " +
+                      $"TOC={bookTocDictionary.Diagnostics.TocParagraphs}, " +
+                      $"dict={bookTocDictionary.Diagnostics.DictionaryEntries}, " +
+                      $"body={bookTocDictionary.Diagnostics.BodyAnchors}, " +
+                      $"anchor={bookTocDictionary.Diagnostics.BodyAnchorRatio:P1}."
+                    : $"Auto probe book/TOC: bỏ qua ({bookTocDictionary.Diagnostics.Reason}); " +
+                      $"dict={bookTocDictionary.Diagnostics.DictionaryEntries}, " +
+                      $"body={bookTocDictionary.Diagnostics.BodyAnchors}, " +
+                      $"anchor={bookTocDictionary.Diagnostics.BodyAnchorRatio:P1}.");
+            }
+        }
+
+        if (!manual && route is ("auto:typed-numbering" or "auto:vietnamese-administrative") &&
+            bookTocDictionary?.Accepted == true)
+            route = "auto:book-toc-dictionary";
+
+        RfcTocDictionaryResult? rfcTocDictionary = null;
+        if (!manual && route == "auto:typed-numbering")
+        {
+            rfcTocDictionary = RfcTocDictionaryOutline.Analyze(slim);
+            Log(rfcTocDictionary.Accepted
+                ? $"Auto probe RFC/TOC: nhận route dictionary " +
+                  $"TOC={rfcTocDictionary.Diagnostics.TocParagraphs}, " +
+                  $"dict={rfcTocDictionary.Diagnostics.DictionaryEntries}, " +
+                  $"body={rfcTocDictionary.Diagnostics.BodyAnchors}, " +
+                  $"anchor={rfcTocDictionary.Diagnostics.BodyAnchorRatio:P1}, " +
+                  $"density {rfcTocDictionary.Diagnostics.MinTocDensity}>{rfcTocDictionary.Diagnostics.MaxNonTocDensity}."
+                : $"Auto probe RFC/TOC: bỏ qua ({rfcTocDictionary.Diagnostics.Reason}); " +
+                  $"dict={rfcTocDictionary.Diagnostics.DictionaryEntries}, " +
+                  $"body={rfcTocDictionary.Diagnostics.BodyAnchors}, " +
+                  $"anchor={rfcTocDictionary.Diagnostics.BodyAnchorRatio:P1}.");
+        }
+
+        if (!manual && route == "auto:typed-numbering" && rfcTocDictionary?.Accepted == true)
+            route = "auto:rfc-toc-dictionary";
+
         if (!manual && route == "auto:typed-numbering" && PartSectionOutline.HasTextTocSignal(slim))
             route = "auto:part-section-text-toc";
 
@@ -787,6 +946,10 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 AdministrativeOutline.Build(slim, tachDoanGop),
             "auto:typed-numbering" =>
                 TypedNumberingOutline.Build(slim, tachDoanGop),
+            "auto:rfc-toc-dictionary" =>
+                rfcTocDictionary?.Headings.ToList() ?? RfcTocDictionaryOutline.Build(slim),
+            "auto:book-toc-dictionary" =>
+                bookTocDictionary?.Headings.ToList() ?? BookTocDictionaryOutline.Build(slim).ToList(),
             "auto:part-section-text-toc" =>
                 PartSectionOutline.BuildFromTextToc(slim),
             "auto:vietnamese-legal" =>
@@ -860,6 +1023,25 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
         _ => null,
     };
+
+    private static string? SelectedDeterministicRoute(
+        string? declaredRoute,
+        int pdfTocCount,
+        int pdfTextbookCount,
+        int pdfFinancialCount,
+        int pdfBoldCount,
+        int doclingCount,
+        int sessionCodeCount)
+    {
+        if (pdfTocCount > 0) return "auto:pdf-toc-dictionary";
+        if (pdfTextbookCount > 0) return "auto:pdf-textbook-layout";
+        if (pdfFinancialCount > 0) return "auto:pdf-financial-report";
+        if (pdfBoldCount > 0 && sessionCodeCount > 0) return "auto:pdf-bold-label+session-code";
+        if (pdfBoldCount > 0) return "auto:pdf-bold-label";
+        if (doclingCount > 0) return "auto:docling-layout";
+        if (sessionCodeCount > 0) return "auto:session-code";
+        return declaredRoute;
+    }
 
     /// <summary>
     /// Các mục nằm lọt giữa paragraph. Đoạn nào đã cho ra heading rồi thì bỏ qua: nó là đoạn

@@ -438,7 +438,8 @@ public static class NumberingAudit
         SlimParagraph? paragraph,
         ExtractionOptions? options = null)
     {
-        if (heading.ConfidenceBasis == "pdf_textbook_layout")
+        if (heading.ConfidenceBasis == "pdf_textbook_layout" ||
+            heading.ConfidenceBasis == BookTocDictionaryOutline.Basis)
             return Parse(heading.Text);
         return options is null
             ? ParseParagraph(paragraph, heading.Text)

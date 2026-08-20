@@ -212,10 +212,12 @@ public sealed class DocumentAgentHarness
 
             // 6. Hành động ghi — chỉ sau khi output đã qua validator VÀ qua gate.
             AgentWritebackReport? writeback = null;
-            if (actionTool is not null && request.WantsWriteback)
+            if (actionTool is not null && request.WantsAction)
             {
                 var actionStage = $"action.{actionTool.Descriptor.Name}";
-                if (outcome == AgentRunOutcome.NeedsHumanReview && _skill.Requires.HumanReviewBeforeWriteback)
+                if (request.WantsWriteback &&
+                    outcome == AgentRunOutcome.NeedsHumanReview &&
+                    _skill.Requires.HumanReviewBeforeWriteback)
                 {
                     TakeStep(actionStage);
                     await EmitAsync(actionStage, AgentRunEventKind.Skipped,
@@ -225,10 +227,14 @@ public sealed class DocumentAgentHarness
                 else
                 {
                     TakeStep(actionStage);
-                    await EmitAsync(actionStage, AgentRunEventKind.Started, "Ghi outline vào bản sao.");
+                    await EmitAsync(actionStage, AgentRunEventKind.Started,
+                        request.WantsKeyPackage ? "Ghi partial key package." : "Ghi outline vào bản sao.");
                     writeback = await actionTool.ExecuteAsync(request, outline, ct);
                     await EmitAsync(actionStage, AgentRunEventKind.Completed,
-                        $"Đã ghi {writeback.Applied} heading, bỏ qua {writeback.Skipped} mục: " +
+                        request.WantsKeyPackage
+                            ? $"Đã ghi package {writeback.Applied} heading, còn {writeback.Skipped} mục ngoài slice: " +
+                              Path.GetFileName(writeback.OutputPath)
+                            : $"Đã ghi {writeback.Applied} heading, bỏ qua {writeback.Skipped} mục: " +
                         Path.GetFileName(writeback.OutputPath));
                 }
             }
@@ -310,6 +316,7 @@ public sealed class DocumentAgentHarness
         yield return new InputDocumentGuardrail();
         yield return new ExternalDataTransferGuardrail();
         yield return new WritebackTargetGuardrail();
+        yield return new KeyPackageTargetGuardrail();
         yield return new ToolSideEffectPathGuardrail();
     }
 
@@ -348,6 +355,13 @@ public sealed class DocumentAgentHarnessFactory
         AgentHarnessOptions? options = null,
         IDocumentActionTool? actionTool = null) =>
         new(tool, sink: sink, options: options, actionTool: actionTool, skill: _skill.Value);
+
+    public DocumentAgentHarness Create(
+        IDocumentExtractionTool tool,
+        IEnumerable<IDocumentActionTool> actionTools,
+        IAgentRunSink? sink = null,
+        AgentHarnessOptions? options = null) =>
+        new(new AgentToolRegistry([tool], actionTools), sink: sink, options: options, skill: _skill.Value);
 
     public DocumentAgentHarness Create(
         IAgentToolRegistry registry,

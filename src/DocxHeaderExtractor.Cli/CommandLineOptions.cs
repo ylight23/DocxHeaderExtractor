@@ -40,6 +40,15 @@ public sealed class CommandLineOptions
     /// <summary>Lệnh `toc-keys`: in từng mục lục không khớp/mơ hồ để chẩn đoán.</summary>
     public bool Verbose { get; private set; }
 
+    /// <summary>Lệnh `repair-key-package`: số heading tối đa đưa vào partial key draft.</summary>
+    public int KeyPackageLimit { get; private set; } = 30;
+
+    /// <summary>Lệnh `repair-key-package`: bỏ qua N heading đầu khi tạo partial review slice.</summary>
+    public int KeyPackageStart { get; private set; }
+
+    /// <summary>Lệnh `repair-key-package`: giữ kiểu slice liên tiếp thay vì mẫu rải đều.</summary>
+    public bool KeyPackageContiguous { get; private set; }
+
     public static CommandLineOptions Parse(string[] args)
     {
         var o = new CommandLineOptions();
@@ -50,7 +59,7 @@ public sealed class CommandLineOptions
 
         int i = 0;
         if (!args[0].StartsWith('-') &&
-            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys")
+            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters")
         {
             o.Command = args[0];
             i = 1;
@@ -83,6 +92,8 @@ public sealed class CommandLineOptions
                 case "-f" or "--format": o.Format = ParseFormat(Next(a)); break;
                 case "--no-llm": o.Pipeline.DisableLlm = true; break;
                 case "--pdf-bold-fallback": o.Pipeline.PdfBoldLabelFallback = true; break;
+                case "--no-docling-sidecar": o.Pipeline.DoclingSidecarFallback = false; break;
+                case "--docling-json": o.Pipeline.DoclingJsonPath = Next(a); break;
                 case "--session-code-fallback": o.Pipeline.SessionCodeFallback = true; break;
                 case "--llm-boundary-cut-fallback": o.Pipeline.LlmBoundaryCutFallback = true; break;
                 case "--openrouter":
@@ -194,6 +205,9 @@ public sealed class CommandLineOptions
                     break;
                 case "--toc-partial": o.TocPartial = true; break;
                 case "-v" or "--verbose": o.Verbose = true; break;
+                case "--key-limit": o.KeyPackageLimit = int.Parse(Next(a)); break;
+                case "--key-start": o.KeyPackageStart = int.Parse(Next(a)); break;
+                case "--key-contiguous": o.KeyPackageContiguous = true; break;
 
                 case "--write-docx": o.WritebackPath = Next(a); break;
                 case "--write-overwrite": o.WritebackOverwrite = true; break;
@@ -244,12 +258,24 @@ public sealed class CommandLineOptions
           dhx review  <file.docx>             # chạy dự đoán, xuất .review.json để người duyệt sửa
           dhx review-key <file.review.json>   # sinh .key + .training.jsonl từ review đã duyệt
           dhx toc-keys <thư-mục|file.docx>    # suy đáp án ỨNG VIÊN từ mục lục Word, mở rộng bench
+          dhx pdf-clusters <file.pdf|file.docx> # dump cụm style PDF + mẫu; thêm model để hỏi analyst
                                               # KHÔNG thay đáp án người kiểm — xem keys/README.md
+          dhx repair <file.docx|thư-mục>      # code-first probe: ghi failure-case/probe/prompt/plan
+                                              # để LLM phân tích và agent vá trong sandbox
+          dhx repair-calibrate <thư-mục>       # đo score/gate repair so với .key thật, xuất CSV/JSON
+          dhx repair-audit <thư-mục>           # quét corpus: gate fail, needs_analysis, key thiếu
+          dhx repair-key-package <file|thư-mục> # tạo partial .key draft + CSV review cho file thiếu key
 
         Tuỳ chọn chính:
           -m, --model <path.gguf>   Mô hình GGUF (mặc định: biến DHX_MODEL, appsettings.json
                                     hoặc file .gguf duy nhất trong thư mục ./models)
           -o, --out <path>          Ghi kết quả ra file (mặc định in ra màn hình)
+                                    Với repair: thư mục ghi auto-repair artifacts
+                                    Với repair-calibrate: tiền tố file output, mặc định
+                                    .verify-build/repair-gate-calibration
+                                    Với repair-audit: tiền tố file output, mặc định
+                                    .verify-build/repair-corpus-audit/audit
+                                    Với repair-key-package: thư mục ghi package review
               --training-out <path> Với review-key: nơi ghi JSONL nhãn vàng (mặc định cạnh .key)
           -f, --format <fmt>        json | md | txt | xml | csv   (mặc định json)
               --no-llm              Chỉ dùng luật OpenXML, bỏ qua mô hình
@@ -275,6 +301,12 @@ public sealed class CommandLineOptions
               --calibration-min-samples n   Mẫu tối thiểu mỗi evidence bucket (mặc định 52)
               --no-high-precision   Không critic mọi heading; chỉ phản biện mục model-only yếu
               --calibration-out <json> Với lệnh eval: ghi profile precision từ bộ holdout
+              --docling-json <json> Đọc JSON Docling đã convert sẵn, rồi align heading về DOCX
+                                    bằng luật .NET. Không gọi Python/Docling trong runtime.
+              --no-docling-sidecar  Không tự dò sidecar Docling cùng stem/.verify-build/docling.
+              --key-limit <n>       Với repair-key-package, số heading trong mẫu review (mặc định 30)
+              --key-start <n>       Với repair-key-package, bỏ qua N heading đầu trước khi lấy mẫu
+              --key-contiguous      Với repair-key-package, lấy lát liên tiếp thay vì mẫu rải đều
           -q, --quiet               Không in tiến trình
 
         Ghi outline ngược vào tài liệu (chỉ lệnh extract, mỗi lần một file):

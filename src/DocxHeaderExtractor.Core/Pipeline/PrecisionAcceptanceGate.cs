@@ -184,7 +184,12 @@ public static class PrecisionAcceptanceGate
         basis is "legal_marker_declared" or "typed_number_depth" or "numbering_declared" or
             "style_declared" or "outline_level_declared" or "part_section_declared" or
             "pdf_textbook_layout" ||
+        basis == BookTocDictionaryOutline.Basis ||
+        basis == RfcTocDictionaryOutline.Basis ||
+        basis == PdfTocDictionaryOutline.Basis ||
         basis == PartSectionOutline.Basis ||
+        basis == PdfFinancialReportOutline.Basis ||
         basis == PdfBoldLabelOutline.Basis ||
+        basis == DoclingLayoutOutline.Basis ||
         basis.StartsWith("outline_anchor_", StringComparison.Ordinal);
 }

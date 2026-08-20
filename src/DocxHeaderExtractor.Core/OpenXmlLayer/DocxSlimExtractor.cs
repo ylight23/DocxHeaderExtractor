@@ -22,7 +22,8 @@ public sealed class DocxSlimExtractor
 
     public SlimDocument Extract(string path)
     {
-        using var doc = WordprocessingDocument.Open(path, false);
+        using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
+        using var doc = WordprocessingDocument.Open(stream, false);
         var main = doc.MainDocumentPart
                    ?? throw new InvalidOperationException($"File không có MainDocumentPart: {path}");
 

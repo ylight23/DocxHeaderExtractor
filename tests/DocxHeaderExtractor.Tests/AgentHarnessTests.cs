@@ -43,8 +43,8 @@ public sealed class AgentHarnessTests : IDisposable
 
         Assert.Equal(AgentRunOutcome.Completed, result.Outcome);
         Assert.Equal(1, tool.Calls);
-        // skill contract + chọn tool + 4 guardrail + tool + 2 validator + gate
-        Assert.Equal(10, result.Steps);
+        // skill contract + chọn tool + 5 guardrail + tool + 2 validator + gate
+        Assert.Equal(11, result.Steps);
         Assert.Equal(0, result.RepairAttempts);
         Assert.Null(result.Writeback);
         Assert.Equal(result.Trace, observed);
@@ -618,6 +618,8 @@ public sealed class AgentHarnessTests : IDisposable
         public AgentToolDescriptor Descriptor { get; } = new(
             "fake_write", "Synthetic writeback", AgentToolRisk.High,
             SendsDataExternally: false, MutatesExternalState: true);
+
+        public bool CanExecute(DocumentAgentRequest request) => request.WantsWriteback;
 
         public Task<AgentWritebackReport> ExecuteAsync(
             DocumentAgentRequest request,

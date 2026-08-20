@@ -70,6 +70,19 @@ public sealed record DocumentAgentRequest(
     public bool ApplyHeadingStyles { get; init; }
 
     public bool WantsWriteback => !string.IsNullOrWhiteSpace(WritebackTargetPath);
+
+    /// <summary>Thư mục ghi partial key package; null nghĩa là không tạo package review.</summary>
+    public string? KeyPackageOutputDirectory { get; init; }
+
+    public int KeyPackageLimit { get; init; } = 30;
+
+    public int KeyPackageStart { get; init; }
+
+    public bool KeyPackageDistributedSample { get; init; } = true;
+
+    public bool WantsKeyPackage => !string.IsNullOrWhiteSpace(KeyPackageOutputDirectory);
+
+    public bool WantsAction => WantsWriteback || WantsKeyPackage;
 }
 
 /// <summary>Một lượt gọi tool. <paramref name="Feedback"/> chỉ khác null ở lượt sửa.</summary>

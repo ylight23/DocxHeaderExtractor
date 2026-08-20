@@ -333,7 +333,7 @@ public sealed class SglangHeaderExtractor : IHeaderClassifier
         {
             model = _options.Model,
             temperature = 0,
-            max_tokens = 120,
+            max_tokens = _options.MaxOutputTokens,
             stream = false,
             chat_template_kwargs = new { enable_thinking = false },
             messages = new[]

@@ -887,3 +887,51 @@ giảm dần tương ứng 538→82), 17/34 đoạn nằm ở vùng mơ hồ (7�
 **Không bác trực giác gốc** (tương quan nghịch n_seg/avg_seg_len vẫn rõ) **nhưng bác việc "tách được
 bằng thống kê mật độ đơn giản"** — cần một ngưỡng cắt tay, rơi đúng vùng liên tục không có điểm gãy
 tự nhiên. Chưa đề xuất xây gì.
+
+## 2026-08-20: cơ chế "mục lục làm từ điển" (đề xuất phiên Claude.ai khác) — Nav 98,4% khi kiểm bằng evaluator thật (xem handoff §142)
+
+Port trung thành từ Python (đã sửa 2 lỗi tự phát hiện: XREF thiếu ranh giới từ, chưa cắt "Standards
+Track Page N" ở chân trang) sang C#, chạy qua `DocxSlimExtractor` thật + replicate đúng
+`Evaluator.NavigationScore` cho `092`. Kết quả: Nav 63/64 = 98,4% (nền sản xuất hiện tại: 95,3% nhưng
+trả 288 mục, P≈1%) — cơ chế mới chỉ trả 67 mục, gần khớp đáp án (64). Tốt hơn hẳn cả 4 hướng đã bác ở
+§139–§141. 1 mục thiếu (`idx=8 "1. Introduction"`) do ranh giới mục lục/thân bài không sạch — đoạn 8
+gộp cả đuôi mục lục và đầu thân bài.
+
+## 2026-08-20: nâng key 054 lên TOC page-level + gộp trang tiếp nối cho 051/052 (xem handoff §169)
+
+Key `054` cũ (21 mục "SECTION I..XXI") thay bằng 24 mục TOC page-level, xác nhận từng mục bằng canonical-
+match trực tiếp vào đoạn DOCX (không suy từ số trang). Lộ ra: route sản xuất cho 054 hiện đi qua
+`auto:typed-numbering` chứ CHƯA chọn `auto:pdf-toc-dictionary` dù probe đã tìm đúng 24/24 — khoảng trống
+route-selection, ngoài phạm vi việc nâng key lần này.
+
+Thêm `PdfFinancialReportOutline.MergeContinuationPages` (luật A: marker tiếp nối tự phát hiện, không so
+tên; luật B: không marker thì so văn bản trùng/tiền tố, cùng cấp, trang liền kề) — một tiêu đề trải
+nhiều trang giờ là MỘT node thay vì một dòng mỗi trang. `051`: 30→25, `052`: 32→25. Key `051/052` sửa
+theo, đo lại 100% P/R/F1/Nav cả hai. Test suite `663/663` xanh.
+
+## 2026-08-20: tổng quát hoá CorrectionMemory cho nhiều loại quyết định — không xây pool mới (xem handoff §170)
+
+Định xây "correction-memory pool" mới cho vấn đề "mỗi ca lạ lại phải vá luật cứng" — kiểm trước thì phát
+hiện `Learning/CorrectionMemory.cs` ĐÃ CÓ đúng cơ chế này (JSONL + retrieval code thuần không embedding),
+đã nối vào `HeaderExtractionPipeline` thật, chỉ thưa dữ liệu (2 dòng chia sẻ) và thiếu flag CLI. Tránh
+lặp sai lầm §138. Mở rộng bằng `DecisionCorrection` + `AppendDecisionAsync`/`FindDecisionExamples`/
+`RevokeDecisionAsync` ngay trên lớp cũ (không viết lớp song song), hỗ trợ nhiều loại quyết định (không
+chỉ "cấp heading"). Seed 2 ca thật từ việc gộp trang 051/052 hôm nay. Test suite `666/666` xanh. Còn
+treo: chưa nối vào điểm quyết định thật nào, chưa thêm flag CLI.
+
+## 2026-08-20: RepairDiagnosticGate — cổng chẩn đoán trước khi đưa duyệt (xem handoff §171)
+
+Tỷ lệ mục "cần xem lại" của MỘT file vượt 3x trung vị corpus (và vượt sàn tuyệt đối 5%) → nghi lỗi tầng
+đọc/tách phía dưới, không đưa review (tránh nhiễm correction-memory pool bằng entry vô nghĩa, đúng ca
+092 FN=38/61). Kiểm trước: `RepairCandidateRunner`/`RepairValidationGate` đã có sẵn và đã nối vào
+`RepairCorpusAudit` — không trùng việc. Đo trên corpus thật (89 file): trung vị 0%, 8 file bị gắn cờ,
+gồm 5 file biên bản họp ICP + bài giảng chỉ 2-5 heading toàn bộ không chắc (nhóm mới lộ ra), và `055`
+(42,9%) — khớp độc lập với kết luận đã có ở §167/§168 bằng con đường hoàn toàn khác. Test suite
+`671/671` xanh. Còn treo: chưa nối vào `repair-key-package` để thực sự chặn sinh gói duyệt.
+
+**Giới hạn:** chỉ đo Nav (chưa qua `Evaluator.Score` đầy đủ P/R/F1/cấp — cơ chế mới là script scratch,
+chưa có `HeadingRecord` thật). Chỉ `092` có đáp án; 4 file RFC còn lại chưa kiểm chứng được bằng đáp
+án thật. Ngưỡng mật độ ≥13 và độ dài tiêu đề 2–80 ký tự là hằng số tay, chưa đo độ nhạy.
+
+**Chưa đề xuất xây/tích hợp vào pipeline** — đúng yêu cầu đo trước. Cần người dùng quyết định bước
+tiếp theo.

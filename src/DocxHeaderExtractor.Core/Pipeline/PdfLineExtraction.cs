@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// </summary>
 internal sealed record PdfLine(
     int Page, double Y, double FontSize, string Text, double BoldRatio, string LeadingBoldPrefix,
-    double ItalicRatio);
+    double ItalicRatio, double Left, double Right, string FontName, string FillColorKey);
 
 internal static class PdfLineExtraction
 {
@@ -52,6 +52,8 @@ internal static class PdfLineExtraction
                 var pieces = new List<string>();
                 var boldFlags = new List<bool>();
                 var italicFlags = new List<bool>();
+                var fontNames = new List<string>();
+                var fillColors = new List<string>();
                 Letter? previous = null;
                 foreach (var letter in ordered)
                 {
@@ -63,13 +65,19 @@ internal static class PdfLineExtraction
                             pieces.Add(" ");
                             boldFlags.Add(boldFlags.Count > 0 && boldFlags[^1]);
                             italicFlags.Add(italicFlags.Count > 0 && italicFlags[^1]);
+                            fontNames.Add(fontNames.Count > 0 ? fontNames[^1] : "");
+                            fillColors.Add(fillColors.Count > 0 ? fillColors[^1] : "");
                         }
                     }
                     pieces.Add(letter.Value);
+                    var fontName = NormalizeFontName(letter.FontName ?? letter.FontDetails?.Name ?? "");
+                    var fillColor = ColorKey(letter.FillColor ?? letter.Color);
                     foreach (var _ in letter.Value)
                     {
                         boldFlags.Add(letter.FontDetails?.IsBold ?? false);
                         italicFlags.Add(letter.FontDetails?.IsItalic ?? false);
+                        fontNames.Add(fontName);
+                        fillColors.Add(fillColor);
                     }
                     previous = letter;
                 }
@@ -93,13 +101,47 @@ internal static class PdfLineExtraction
                     text,
                     boldRatio,
                     leadingBoldPrefix,
-                    italicRatio));
+                    italicRatio,
+                    ordered.Min(l => l.BoundingBox.Left),
+                    ordered.Max(l => l.BoundingBox.Right),
+                    Dominant(fontNames),
+                    Dominant(fillColors)));
             }
         }
         return lines;
     }
 
     private static double MidY(Letter l) => (l.BoundingBox.Bottom + l.BoundingBox.Top) / 2.0;
+
+    private static string NormalizeFontName(string fontName)
+    {
+        var name = fontName;
+        var plus = name.IndexOf('+');
+        if (plus >= 0 && plus + 1 < name.Length) name = name[(plus + 1)..];
+        return name.Trim().ToLowerInvariant();
+    }
+
+    private static string ColorKey(UglyToad.PdfPig.Graphics.Colors.IColor? color)
+    {
+        if (color is null) return "";
+        try
+        {
+            var (r, g, b) = color.ToRGBValues();
+            return $"{Math.Round(r, 2):0.00},{Math.Round(g, 2):0.00},{Math.Round(b, 2):0.00}";
+        }
+        catch
+        {
+            return color.ColorSpace.ToString();
+        }
+    }
+
+    private static string Dominant(IReadOnlyList<string> values) =>
+        values
+            .Where(v => !string.IsNullOrWhiteSpace(v))
+            .GroupBy(v => v)
+            .OrderByDescending(g => g.Count())
+            .Select(g => g.Key)
+            .FirstOrDefault() ?? "";
 
     private static string NormalizeSpace(string text)
     {

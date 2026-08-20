@@ -3,7 +3,7 @@ using System.Text;
 
 namespace DocxHeaderExtractor.Core.Eval;
 
-public sealed record AnswerKeyEntry(int? Index, string? StableId, int? Level, string? Text);
+public sealed record AnswerKeyEntry(int? Index, string? StableId, int? Level, string? Text, bool Excluded = false);
 
 /// <summary>
 /// Đáp án cho một tài liệu: chỉ số đoạn hoặc stable ID → cấp tiêu đề. Cấp có thể bỏ trống (null) khi
@@ -46,7 +46,9 @@ public sealed class AnswerKey
     public IReadOnlyCollection<int> Indexes => _levels.Keys;
     public IReadOnlyCollection<string> StableIds => _stableLevels.Keys;
     public bool HasStableIds => _stableLevels.Count > 0;
-    public int Count => _entries.Count;
+    public int Count => _entries.Count(e => !e.Excluded);
+    public IReadOnlyList<AnswerKeyEntry> PositiveEntries => _entries.Where(e => !e.Excluded).ToList();
+    public IReadOnlyList<AnswerKeyEntry> NegativeEntries => _entries.Where(e => e.Excluded).ToList();
     public bool HasDuplicateSourceKeys =>
         _entries.Where(e => e.Index is not null).GroupBy(e => e.Index!.Value).Any(g => g.Count() > 1) ||
         _entries.Where(e => e.StableId is not null).GroupBy(e => e.StableId!, StringComparer.Ordinal).Any(g => g.Count() > 1);
@@ -72,10 +74,12 @@ public sealed class AnswerKey
                 throw new InvalidOperationException(
                     $"Stable ID trong key không có trong tài liệu hiện tại: {stableId}. " +
                     "Không dùng key này cho bản DOCX khác.");
-            if (resolved.TryGetValue(index, out var existing) && existing != level &&
+            if (!entry.Excluded &&
+                resolved.TryGetValue(index, out var existing) && existing != level &&
                 string.IsNullOrWhiteSpace(entry.Text))
                 throw new InvalidOperationException($"Key ghi hai cấp khác nhau cho paragraph {index}.");
-            resolved[index] = level;
+            if (!entry.Excluded)
+                resolved[index] = level;
             entries.Add(entry with { Index = index, StableId = null });
         }
         return new AnswerKey(resolved, [], entries, Title, IsPartial);
@@ -113,20 +117,25 @@ public sealed class AnswerKey
                     level = lvl;
                 }
 
-                if (parts[0].StartsWith('@'))
+                var excluded = parts[0].StartsWith('!');
+                var keyText = excluded ? parts[0][1..] : parts[0];
+
+                if (keyText.StartsWith('@'))
                 {
-                    var stableId = parts[0][1..];
+                    var stableId = keyText[1..];
                     if (string.IsNullOrWhiteSpace(stableId))
                         throw new FormatException($"Stable ID rỗng trong: \"{item}\"");
-                    stableLevels[stableId] = level;
-                    entries.Add(new AnswerKeyEntry(null, stableId, level, comment));
+                    if (!excluded)
+                        stableLevels[stableId] = level;
+                    entries.Add(new AnswerKeyEntry(null, stableId, level, comment, excluded));
                 }
                 else
                 {
-                    if (!int.TryParse(parts[0], NumberStyles.Integer, CultureInfo.InvariantCulture, out var index))
+                    if (!int.TryParse(keyText, NumberStyles.Integer, CultureInfo.InvariantCulture, out var index))
                         throw new FormatException($"Không đọc được chỉ số đoạn từ: \"{item}\"");
-                    levels[index] = level;
-                    entries.Add(new AnswerKeyEntry(index, null, level, comment));
+                    if (!excluded)
+                        levels[index] = level;
+                    entries.Add(new AnswerKeyEntry(index, null, level, comment, excluded));
                 }
             }
         }

@@ -108,13 +108,18 @@ public static class Evaluator
             .GroupBy(h => h.Index)
             .ToDictionary(g => g.Key, g => g.First().Level);
         var gotIndexes = outline.Headings.Select(h => h.Index).ToList();
-        var navigation = NavigationScore(outline, key.Entries);
+        var navigation = NavigationScore(outline, key.PositiveEntries);
 
         var tp = got.Keys.Where(key.Contains).ToList();
+        var reviewedFp = key.NegativeEntries
+            .Where(e => e.Index is not null && gotIndexes.Contains(e.Index.Value))
+            .Select(e => e.Index!.Value)
+            .OrderBy(i => i)
+            .ToList();
         var fp = key.IsPartial
-            ? new List<int>()
+            ? reviewedFp
             : gotIndexes.Where(i => !key.Contains(i)).OrderBy(i => i).ToList();
-        var resultCount = key.IsPartial ? tp.Count : gotIndexes.Count;
+        var resultCount = key.IsPartial ? tp.Count + fp.Count : gotIndexes.Count;
         var fn = key.Indexes.Where(i => !got.ContainsKey(i)).OrderBy(i => i).ToList();
 
         // Chỉ chấm cấp trên phần giao, và chỉ với những dòng đáp án có ghi cấp.
@@ -156,22 +161,30 @@ public static class Evaluator
         IReadOnlyCollection<int> candidateIndexes,
         AnswerKey key)
     {
-        var truth = key.Entries.Select((e, order) => new KeyItem(
+        var truth = key.PositiveEntries.Select((e, order) => new KeyItem(
             order,
             e.Index ?? throw new InvalidOperationException("Key duplicate-source phải được resolve stable ID trước khi chấm."),
+            e.Level,
+            Normalize(e.Text))).ToList();
+        var negatives = key.NegativeEntries.Select((e, order) => new KeyItem(
+            order,
+            e.Index ?? throw new InvalidOperationException("Key negative duplicate-source phải được resolve stable ID trước khi chấm."),
             e.Level,
             Normalize(e.Text))).ToList();
 
         if (truth.Any(t => string.IsNullOrWhiteSpace(t.Text)))
             throw new InvalidOperationException(
                 "Key có nhiều heading cùng paragraph phải ghi text ở comment để evaluator phân biệt.");
+        if (negatives.Any(t => string.IsNullOrWhiteSpace(t.Text)))
+            throw new InvalidOperationException(
+                "Key negative phải ghi text ở comment để evaluator phân biệt false positive.");
 
         var got = outline.Headings.Select((h, order) => new GotItem(
             order,
             h.Index,
             h.Level,
             Normalize(h.Text))).ToList();
-        var navigation = NavigationScore(outline, key.Entries);
+        var navigation = NavigationScore(outline, key.PositiveEntries);
 
         var used = new HashSet<int>();
         var matches = new List<(KeyItem Key, GotItem Got)>();
@@ -184,11 +197,17 @@ public static class Evaluator
         }
 
         var tp = matches.Count;
+        var negativeMatches = negatives
+            .Select(k => got.FirstOrDefault(g => g.Index == k.Index && g.Text == k.Text))
+            .Where(g => g is not null)
+            .Select(g => g!.Index)
+            .Order()
+            .ToList();
         var fp = key.IsPartial
-            ? new List<int>()
+            ? negativeMatches
             : got.Where(g => !used.Contains(g.Order)).Select(g => g.Index).Order().ToList();
         var fn = truth.Where(k => !matches.Any(m => m.Key.Order == k.Order)).Select(k => k.Index).Order().ToList();
-        var resultCount = key.IsPartial ? tp : got.Count;
+        var resultCount = key.IsPartial ? tp + fp.Count : got.Count;
 
         var judged = matches.Where(m => m.Key.Level is not null).OrderBy(m => m.Got.Order).ToList();
         var wrong = judged.Where(m => m.Key.Level != m.Got.Level)

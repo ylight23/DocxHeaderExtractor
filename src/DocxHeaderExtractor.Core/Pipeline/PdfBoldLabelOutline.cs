@@ -30,6 +30,18 @@ public static class PdfBoldLabelOutline
     private const int MinLeadingBoldChars = 3;
     private const int MaxHeadingChars = 180;
     private static readonly Regex LetterRunRx = new(@"\p{L}{2,}", RegexOptions.Compiled);
+    private static readonly Regex ParticipantAnnexPrefixRx = new(
+        @"^Annex\s+\d+\s*:\s*$",
+        RegexOptions.IgnoreCase | RegexOptions.Compiled);
+    private static readonly Regex ParticipantAnnexHeadingRx = new(
+        @"^Annex\s+\d+\s*:\s*List\s+of\s+Participants\b",
+        RegexOptions.IgnoreCase | RegexOptions.Compiled);
+    private static readonly Regex ParticipantAnnexTailRx = new(
+        @"^\s*List\s+of\s+Participants\b",
+        RegexOptions.IgnoreCase | RegexOptions.Compiled);
+    private static readonly Regex StructuralColonPrefixRx = new(
+        @"^(?<prefix>(?:Session|Annex|Item)\s+[IVXLC\d]+[:.]?)\s*(?<title>.*)$",
+        RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
     public static PdfTextbookOutlineResult TryBuild(
         string originalInputPath,
@@ -65,11 +77,13 @@ public static class PdfBoldLabelOutline
             return PdfTextbookOutlineResult.NotApplicable($"too-few-bold-labels:{candidates.Count}");
 
         var aligned = AlignToDocx(candidates, slim);
-        if (aligned.Count < Math.Max(2, (int)Math.Ceiling(candidates.Count * 0.60)))
-            return PdfTextbookOutlineResult.NotApplicable($"low-docx-alignment:{aligned.Count}/{candidates.Count}");
+        if (aligned.Headings.Count < Math.Max(2, (int)Math.Ceiling(aligned.ConsideredCandidates * 0.60)))
+            return PdfTextbookOutlineResult.NotApplicable(
+                $"low-docx-alignment:{aligned.Headings.Count}/{aligned.ConsideredCandidates}");
 
         return new PdfTextbookOutlineResult(
-            aligned, $"pdf={Path.GetFileName(pdf)}, aligned={aligned.Count}/{candidates.Count}");
+            aligned.Headings,
+            $"pdf={Path.GetFileName(pdf)}, aligned={aligned.Headings.Count}/{aligned.ConsideredCandidates}");
     }
 
     private static bool HasStrongDocxStructure(SlimDocument slim) =>
@@ -143,7 +157,8 @@ public static class PdfBoldLabelOutline
                         headings.Add(new PdfHeadingCandidate(text, line.Page, line.Y));
                     // Phần bold còn lại sau điểm cắt (nếu có) là phần tràn của CÙNG câu, không phải
                     // heading mới — dòng kế tiếp có thể chỉ là phần đuôi bold đó lộ ra.
-                    if (text.Length < line.LeadingBoldPrefix.Length) suppressNextLine = true;
+                    if (text.Length < line.LeadingBoldPrefix.Length && !text.EndsWith(':'))
+                        suppressNextLine = true;
                     continue;
                 }
 
@@ -155,7 +170,8 @@ public static class PdfBoldLabelOutline
                         var text = line.Text[..(cut + 1)];
                         if (LooksLikeLabel(text))
                             headings.Add(new PdfHeadingCandidate(text, line.Page, line.Y));
-                        if (cut + 1 < line.Text.Length) suppressNextLine = true;
+                        if (cut + 1 < line.Text.Length && !text.EndsWith(':'))
+                            suppressNextLine = true;
                     }
                     else
                     {
@@ -180,7 +196,8 @@ public static class PdfBoldLabelOutline
                     accumulating = null;
                     // Cùng lý do trên: nếu dòng vừa cắt còn bold sau điểm cắt, dòng kế tiếp có thể là
                     // phần tràn, không phải mục mới.
-                    if (cut + 1 < line.Text.Length) suppressNextLine = true;
+                    if (cut + 1 < line.Text.Length && !line.Text[..(cut + 1)].EndsWith(':'))
+                        suppressNextLine = true;
                 }
                 else
                 {
@@ -263,7 +280,7 @@ public static class PdfBoldLabelOutline
         // pháp thật, không phải điểm cắt PDF ngẫu nhiên.
         (EndsWithSentenceTerminator(text) || text.Contains(' '));
 
-    private static List<HeadingRecord> AlignToDocx(IReadOnlyList<PdfHeadingCandidate> candidates, SlimDocument slim)
+    private static AlignmentResult AlignToDocx(IReadOnlyList<PdfHeadingCandidate> candidates, SlimDocument slim)
     {
         // Khớp trên chuỗi CANON (chỉ chữ/số, bỏ mọi khoảng trắng) thay vì khớp token-theo-token:
         // PDF và DOCX ở nhóm tài liệu này đều có thể lỡ khoảng trắng giữa hai từ ("of the" ->
@@ -277,11 +294,15 @@ public static class PdfBoldLabelOutline
         var result = new List<HeadingRecord>();
         var seen = new HashSet<(int Index, string Text)>();
         var cursor = 0;
+        int? participantAnnexStart = null;
+        var consideredCandidates = 0;
 
         foreach (var candidate in candidates)
         {
             var (needleCanon, _) = BuildCanon(candidate.Text);
             if (needleCanon.Length == 0) continue;
+            if (participantAnnexStart is not null) continue;
+            consideredCandidates++;
 
             var match = FindCanonSubstring(docx, needleCanon, cursor);
             if (match is null) continue;
@@ -291,6 +312,13 @@ public static class PdfBoldLabelOutline
             // lệch hai bên khi nguồn có khoảng trắng bất thường, khiến validator cách ly heading đó
             // ở lượt sau — mất âm thầm, log không báo lỗi rõ ràng.
             var text = match.Value.Text;
+            var end = TryExtendParticipantAnnex(match.Value.Paragraph.Text, match.Value.Start, match.Value.End)
+                ?? TryExtendStructuralColonHeading(match.Value.Paragraph.Text, match.Value.Start, match.Value.End)
+                ?? match.Value.End;
+            if (end != match.Value.End)
+                text = match.Value.Paragraph.Text[match.Value.Start..end];
+            if (LooksLikeQuotedInlineFragment(match.Value.Paragraph.Text, match.Value.Start, end, text))
+                continue;
             if (!seen.Add((match.Value.Paragraph.Index, text))) continue;
 
             result.Add(new HeadingRecord
@@ -300,7 +328,7 @@ public static class PdfBoldLabelOutline
                 Level = 1,
                 Text = text,
                 OriginalText = match.Value.Paragraph.Text,
-                HeadingSpan = new TextOffsetSpan(match.Value.Start, match.Value.End),
+                HeadingSpan = new TextOffsetSpan(match.Value.Start, end),
                 BoundarySource = "pdf-bold-label",
                 StyleId = match.Value.Paragraph.StyleId,
                 Source = HeadingSource.Structure,
@@ -308,13 +336,162 @@ public static class PdfBoldLabelOutline
                 DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
                 ConfidenceBasis = Basis,
             });
+            if (ParticipantAnnexHeadingRx.IsMatch(text))
+                participantAnnexStart = match.Value.Paragraph.Index;
             // Không lùi lại paragraph trước — nhưng VẪN cho phép nhiều heading cùng paragraph này
             // (>= chứ không phải >), đúng thực tế nhóm tài liệu này (một trang PDF thường gộp thành
             // một paragraph DOCX chứa nhiều heading).
             cursor = match.Value.Paragraph.Index;
         }
 
-        return result;
+        return new AlignmentResult(FilterTableArtifacts(result), consideredCandidates);
+    }
+
+    private static List<HeadingRecord> FilterTableArtifacts(IReadOnlyList<HeadingRecord> headings)
+    {
+        var artifactTexts = headings
+            .Where(h => LooksLikeTableOrChartArtifact(h.Text))
+            .Select(h => (h.Index, Text: h.Text))
+            .ToHashSet();
+
+        var prefixDuplicates = headings
+            .GroupBy(h => h.Index)
+            .SelectMany(g => g.SelectMany(shorter => g.Where(longer =>
+                    !ReferenceEquals(shorter, longer) &&
+                    LooksLikeTruncatedPrefix(shorter.Text) &&
+                    longer.Text.Length > shorter.Text.Length &&
+                    longer.Text.StartsWith(shorter.Text, StringComparison.OrdinalIgnoreCase))
+                .Select(_ => (shorter.Index, Text: shorter.Text))))
+            .ToHashSet();
+
+        return headings
+            .Where(h => !artifactTexts.Contains((h.Index, h.Text)) &&
+                        !prefixDuplicates.Contains((h.Index, h.Text)))
+            .ToList();
+    }
+
+    private static bool LooksLikeTruncatedPrefix(string text)
+    {
+        var t = text.Trim();
+        return t.Count(c => c == '(') > t.Count(c => c == ')') ||
+               t.EndsWith(":", StringComparison.Ordinal);
+    }
+
+    private static bool LooksLikeTableOrChartArtifact(string text)
+    {
+        var t = text.Trim();
+        if (t.EndsWith("Composition:", StringComparison.OrdinalIgnoreCase)) return true;
+
+        var alnum = t.Count(char.IsLetterOrDigit);
+        if (alnum == 0) return true;
+        var numeric = t.Count(char.IsDigit) + t.Count(c => c is '$' or '%' or ',');
+        if (numeric / (double)alnum >= 0.35) return true;
+
+        var letters = t.Where(char.IsLetter).ToList();
+        if (letters.Count == 0) return true;
+        var words = Regex.Matches(t, @"\p{L}+").Count;
+        var upperRatio = letters.Count(char.IsUpper) / (double)letters.Count;
+        if (t.Length <= 32 && words <= 4 && upperRatio >= 0.75) return true;
+
+        return t.Length <= 32 &&
+               words <= 4 &&
+               Regex.IsMatch(t, @"\b\d+\b") &&
+               !Regex.IsMatch(t, @"[.!?]\s*$");
+    }
+
+    private static bool LooksLikeQuotedInlineFragment(string paragraphText, int start, int end, string text)
+    {
+        if (EndsWithSentenceTerminator(text)) return false;
+
+        var beforeStart = Math.Max(0, start - 80);
+        var before = paragraphText[beforeStart..start];
+        var afterEnd = Math.Min(paragraphText.Length, end + 24);
+        var after = paragraphText[end..afterEnd];
+        return ContainsOpenQuote(before) && ContainsCloseQuote(after);
+    }
+
+    private static bool ContainsOpenQuote(string text) =>
+        text.Contains('"') || text.Contains('“') || text.Contains('‘') || text.Contains('\'');
+
+    private static bool ContainsCloseQuote(string text) =>
+        text.Contains('"') || text.Contains('”') || text.Contains('’') || text.Contains('\'');
+
+    private static int? TryExtendParticipantAnnex(string paragraphText, int start, int end)
+    {
+        var text = paragraphText[start..end];
+        if (!ParticipantAnnexPrefixRx.IsMatch(text)) return null;
+
+        var tail = paragraphText[end..];
+        var match = ParticipantAnnexTailRx.Match(tail);
+        return match.Success ? end + match.Index + match.Length : null;
+    }
+
+    private static int? TryExtendStructuralColonHeading(string paragraphText, int start, int end)
+    {
+        var text = paragraphText[start..end];
+        var match = StructuralColonPrefixRx.Match(text);
+        if (!match.Success) return null;
+
+        var title = match.Groups["title"].Value.Trim();
+        if (title.Length >= 3 && EndsWithSentenceTerminator(title)) return null;
+
+        var titleStartInSlice = match.Groups["title"].Success && match.Groups["title"].Length > 0
+            ? match.Groups["title"].Index
+            : match.Groups["prefix"].Index + match.Groups["prefix"].Length;
+        var titleStart = start + titleStartInSlice;
+        while (titleStart < paragraphText.Length && char.IsWhiteSpace(paragraphText[titleStart]))
+            titleStart++;
+        if (titleStart >= paragraphText.Length) return null;
+
+        var extendedEnd = FindGluedLineEnd(paragraphText, titleStart);
+        extendedEnd = ExtendMeetingAgenda(paragraphText, extendedEnd);
+        extendedEnd = TrimScheduleTime(paragraphText, start, extendedEnd);
+        return extendedEnd > end ? extendedEnd : null;
+    }
+
+    private static int ExtendMeetingAgenda(string text, int end)
+    {
+        var tail = text[end..];
+        var match = Regex.Match(tail, @"^\s+Agenda\b", RegexOptions.IgnoreCase);
+        return match.Success ? end + match.Index + match.Length : end;
+    }
+
+    private static int TrimScheduleTime(string text, int start, int end)
+    {
+        var slice = text[start..end];
+        var match = Regex.Match(slice, @"\s+\d{1,2}:\d{2}\b");
+        return match.Success ? start + match.Index : end;
+    }
+
+    private static int FindGluedLineEnd(string text, int titleStart)
+    {
+        var limit = Math.Min(text.Length, titleStart + MaxHeadingChars);
+        for (var i = titleStart + 1; i < limit; i++)
+        {
+            if (IsGluedLineBoundary(text, i))
+                return TrimEnd(text, titleStart, i);
+            if (text[i - 1] == '.' && i + 1 < text.Length &&
+                char.IsWhiteSpace(text[i]) && char.IsUpper(text[i + 1]))
+                return TrimEnd(text, titleStart, i);
+        }
+
+        return TrimEnd(text, titleStart, limit);
+    }
+
+    private static bool IsGluedLineBoundary(string text, int i)
+    {
+        if (!char.IsUpper(text[i])) return false;
+        var previous = i - 1;
+        while (previous >= 0 && char.IsWhiteSpace(text[previous])) previous--;
+        if (previous < 0) return false;
+        var prev = text[previous];
+        return char.IsLower(prev) || char.IsDigit(prev) || prev is ')' or ']' or '.' or ':' or ';' or ',' or '%';
+    }
+
+    private static int TrimEnd(string text, int start, int end)
+    {
+        while (end > start && char.IsWhiteSpace(text[end - 1])) end--;
+        return end;
     }
 
     private static MatchResult? FindCanonSubstring(
@@ -352,5 +529,6 @@ public static class PdfBoldLabelOutline
 
     private sealed record PdfHeadingCandidate(string Text, int Page, double Y);
     private sealed record DocxParagraphCanon(SlimParagraph Paragraph, (string Canon, int[] OriginalIndex) Canon);
+    private sealed record AlignmentResult(List<HeadingRecord> Headings, int ConsideredCandidates);
     private readonly record struct MatchResult(SlimParagraph Paragraph, string Text, int Start, int End);
 }
