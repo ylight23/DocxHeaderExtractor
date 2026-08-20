@@ -9358,3 +9358,50 @@ dùng xác nhận gỡ.
 làm việc kéo dài nhiều giờ mà không `git pull`/`fetch` định kỳ. Bản thân tôi đã `git fetch` nhiều lần
 trong phiên nhưng luôn ngay TRƯỚC một commit của chính mình; khoảng trống giữa các lần fetch là đúng
 lúc phiên kia đẩy 20+ commit lên.
+
+## §139. Đo khả năng LLM phân loại heading-thật/rác cho `092` trên đúng 288 ứng viên sản xuất — KẾT QUẢ ÂM, dứt khoát
+
+**Việc người dùng giao:** đo riêng khả năng phân loại (không đề xuất xây gì) trước khi quyết định có
+theo hướng "luật lo recall, LLM lo precision" cho `092` hay không.
+
+**Phương pháp — đo trên đúng dữ liệu thật, không phải segment thô:** chạy `dhx eval`/`dhx extract`
+bằng cấu hình sản xuất thật (backend Sglang, Qwen3.8-27B) trên `092_RFC9111_HTTP_Caching`, lấy đúng
+**288 heading đầu ra hiện tại** của pipeline (không phải `ParagraphHeadingSplitter.Segments` thô như
+thí nghiệm đã gỡ ở §114/§138). Dựng ground truth bằng cách chép lại NGUYÊN VẸN phép so khớp Nav của
+chính `Evaluator.NavigationScore` (cùng `NormalizeForNavigation`, cùng luật "cùng Index, output bắt
+đầu bằng title đáp án") — không tự chế phép so khớp riêng. Xác nhận: **61/64 mục đáp án khớp Nav**
+trong số 288 (khớp đúng con số Nav 95,3% đã biết) → 227 mục còn lại là rác theo đúng chuẩn Nav.
+
+Sau đó gọi LLM (Qwen3.8-27B, prompt zero-shot "HEADING hay NOISE", không tinh chỉnh) phân loại **cả
+288 mục**, so với nhãn thật vừa dựng.
+
+### Kết quả
+
+```
+TP (heading thật, LLM nói HEADING)  = 23
+FN (heading thật, LLM nói NOISE)    = 38   ← MẤT 38/61 heading thật nếu lọc theo LLM
+FP (rác, LLM nói HEADING)           = 57   ← rác còn sót sau khi lọc
+TN (rác, LLM nói NOISE)             = 170  ← rác bị loại đúng
+
+MÔ PHỎNG nếu CHỈ giữ mục LLM nói HEADING:
+  Precision: 1% → 28,8%   (tăng thật, ~29 lần)
+  Nav:      95,3% → 35,9%  (SẬP, mất gần 60 điểm)
+```
+
+**Kết luận dứt khoát: hướng "LLM lọc precision cho 092" — ít nhất với prompt zero-shot chưa tinh
+chỉnh — KHÔNG dùng được.** Đúng luật trọng tài §128 (Nav thắng, bất kể mức tăng ở thước khác): nếu
+đây là một luật deterministic, nó sẽ bị loại ngay lập tức, và không có lý do gì để miễn cho nó chỉ vì
+cơ chế lọc là LLM thay vì regex. `92,8%` precision-tăng không cứu được `59,4` điểm Nav-mất.
+
+**Vì sao FN cao (38/61) đáng chú ý hơn cả con số Nav sập:** nhiều heading thật trong 288 ứng viên bị
+**cắt vụn bởi chính lỗi tách quá tay** đã ghi ở §121 ("092 tách quá tay") — ví dụ `"2.1. Imported"`
+(cụt, thiếu "Rules") trông không khác gì rác về HÌNH DẠNG bề mặt, dù đúng là mảnh của heading thật.
+LLM không phân biệt được không phải vì yếu, mà vì **đầu vào tự nó đã mất thông tin cần để phân biệt**
+— cùng một hiện tượng "mảnh mục lục bị băm" đã chẩn đoán ở §128, giờ đo được nó áp cả lên phần thân
+bài đã tách.
+
+**Không đề xuất xây gì** — đúng yêu cầu của việc này. Hệ quả cho câu hỏi về §128: với bằng chứng hiện
+có, KHÔNG có luật nào (deterministic lẫn LLM zero-shot) đạt được precision khá hơn mà không đánh đổi
+Nav trên `092` — nên nếu thêm sàn precision vào luật trọng tài, `092` sẽ trở thành file "không đạt
+yêu cầu bàn giao" theo MỌI cách đã thử tới nay, không phải vì thiếu cố gắng mà vì đầu vào (RFC bị
+tách quá tay ở tầng segment) chưa được sửa tận gốc.

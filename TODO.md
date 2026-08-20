@@ -844,3 +844,21 @@ Trang tra cứu: `outline_muc_luc.html`.
 4. **19,4% mục còn dài gấp đôi trung vị tài liệu** — phần lớn là đơn vị KHÔNG có dấu kết câu bên
    trong (bảng biểu, công thức). Cần ranh giới nhan đề/thân không dựa vào dấu câu; đã bác hướng
    dùng định dạng (§127: `092` có `spans=1, bold=0`, bản chuyển PDF mất sạch định dạng).
+
+## 2026-08-20: ĐÃ ĐO — "LLM lọc precision cho 092" KHÔNG dùng được (xem handoff §139)
+
+Đo trên đúng 288 heading đầu ra hiện tại của pipeline sản xuất (không phải segment thô), ground
+truth dựng bằng đúng phép so khớp Nav của `Evaluator` (61/64 đáp án khớp trong 288, khớp đúng Nav
+95,3% đã biết). Gọi Qwen3.8-27B phân loại HEADING/NOISE zero-shot cho cả 288 mục:
+
+```
+TP=23  FN=38 (mất heading thật)  FP=57 (rác sót lại)  TN=170
+Mô phỏng lọc theo LLM: Precision 1% → 28,8%, nhưng Nav 95,3% → 35,9% (SẬP)
+```
+
+**Kết luận: không dùng được — đúng luật §128 (Nav thắng), không có ngoại lệ cho cơ chế LLM.** FN cao
+vì nhiều heading thật trong 288 ứng viên đã bị CẮT VỤN bởi lỗi tách quá tay (§121) — hình dạng bề mặt
+không còn đủ thông tin để phân biệt, kể cả cho model 27B. Muốn cải thiện phải sửa tận gốc lỗi tách
+segment trước, không phải thêm tầng lọc phía sau. **Không xây gì** — đúng yêu cầu đo trước khi đề
+xuất. Hệ quả cho câu hỏi sửa §128 (thêm sàn precision): với bằng chứng hiện có, `092` sẽ "không đạt
+bàn giao" theo MỌI cách đã thử, kể cả LLM zero-shot.
