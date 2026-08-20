@@ -780,3 +780,67 @@ cùng file báo **117**. Hai đường dùng cấu hình khác nhau; đừng so 
 thẳng dấu `<<<<<<<`/`=======`/`>>>>>>>` vào lịch sử mà không ai nhận ra. Đã giải quyết ở `9d67aba`,
 giữ trọn vẹn cả hai phần công việc. **Bài học:** `git add -A` khi `.git/MERGE_HEAD` còn tồn tại sẽ
 âm thầm "giải quyết" xung đột bằng cách đóng gói nguyên dấu xung đột.
+
+## 2026-08-20: kiến trúc "luật dựng khung, LLM bù phần còn lại" đã chạy (handoff §115–§137)
+
+### TRẠNG THÁI HIỆN TẠI — số đo, không phải ước lượng
+
+| bộ đáp án | F1 | Nav | khớp trọn |
+|---|--:|--:|--:|
+| bench (7) — `--no-llm` | 98,6% | 80,6% | 6/7 |
+| **bench (7) — Qwen3.5-9B cục bộ** | **100%** | **83,3%** | **7/7** |
+| ev-human (5) | 42,1% | 98,0% | 1/5 |
+| toc (9) | 99,6% | 99,2% | 7/9 |
+| fd (2) | 100% | 100% | 2/2 |
+
+| độ phủ corpus | |
+|---|---|
+| file ra được outline | **89/89** (đầu phiên: 24 file dưới 8 mục) |
+| tổng đề mục | **12.108** |
+| chạy trọn corpus có mô hình | **105,6 s** cho 88 file |
+| file phải dựng lại vì validator | **0/89** (trước: 2) |
+
+Kết xuất nằm ở `outline_llm/` (có mô hình) và `outline_out/` (chỉ luật), cả hai gitignore.
+Trang tra cứu: `outline_muc_luc.html`.
+
+### VIỆC ĐÃ XONG, đáng nhớ nhất
+
+1. **§131 — luật deterministic chạy cả khi LLM bật.** Một dòng điều kiện khiến toàn bộ tầng luật
+   chỉ sống trên nhánh `--no-llm`; đường sản xuất chưa bao giờ dùng tới. `010_Luat_An_ninh_mang`:
+   **39 mục/165,8 s → 50/50 khớp trọn đáp án trong 0,4 s.**
+2. **§132 — luật dựng khung, mô hình bù đoạn luật không phủ, ghép theo đúng thứ tự.** Lỗi ghép (nối
+   vào cuối, thứ tự `[7,10,13,3]`) làm validator bác cả kết quả. Sửa xong bench đạt **F1 100%, 7/7**.
+3. **§121–§122 — tự bật tách đoạn gộp theo từng tài liệu** + chốt hậu kiểm. Đưa 24 file hỏng về 0.
+4. **§136 — khử mục trùng nguyên văn**, hết hẳn lượt dựng lại. Số mục TĂNG vì trước đây lượt dựng
+   lại cách ly nhầm đề mục thật.
+5. **§130 — bỏ hardcode ngưỡng cắt**, thay bằng trung vị độ dài của chính tài liệu.
+
+### LUẬT LÀM VIỆC rút ra từ phiên này — đọc trước khi sửa tiếp
+
+- **§128 là luật trọng tài: Nav thắng.** Người dùng đã quyết. Mọi luật lọc nhiễu làm tụt Nav đều bị
+  loại, kể cả khi F1 tăng mạnh. Muốn precision thì phải tìm luật KHÔNG đánh đổi Nav.
+- **Không suy đoán được mục nào khớp Nav.** Ba lần trong phiên tôi suy từ hình dạng dữ liệu rằng
+  "gỡ cái này là Nav-trung tính" và cả ba lần bị `eval` bác (§126, §129, §137). Chỉ chạy `eval`
+  mới biết.
+- **Không nhích số = luật chết, không phải luật an toàn** (§116, §128). Hai lần luật được cài vào
+  nhánh không ai gọi tới và bốn bộ đáp án im lặng.
+- **Bốn bộ đáp án mù với phần lớn corpus.** 14/89 file có đáp án; cải thiện trên 75 file còn lại
+  không hiện lên bảng số. Phải ĐỌC đầu ra (§122, §133).
+- **Thước đo có thể thiên vị theo cấu tạo.** Luật hardcode 200 tối ưu chính mốc 200 đang chấm nó;
+  đổi sang thước tương đối thì kết luận đảo ngược (§130).
+
+### CÒN MỞ
+
+1. **`063_Advanced_Linear_Algebra`** — ca DUY NHẤT không route deterministic nào bắn. Mô hình phải
+   chạy toàn phần: 803 đoạn, 11 khối context, **~175 s/khối** dù chỉ 3–5 ứng viên/khối, tổng vượt
+   50 phút. Chi phí là của KHỐI CONTEXT chứ không phải số ứng viên, nên `TranUngVienBu = 32` (§134)
+   **không chặn được ca này** — nó chặn nhầm biến số. Đang giao bằng kết quả luật (25 mục).
+2. **Bằng chứng khai báo chỉ có ở 17/89 file** và CÓ THỂ THIẾU: `bench/04` khai `outlineLvl` 3 chỗ
+   trong khi đáp án là 4. Nên "file tự khai thì lấy đúng cái nó khai" đã đo và làm bench tụt 7/7 →
+   6/7; đã gỡ.
+3. **`092_RFC9111` trả 289 mục cho đáp án 64** (precision 1,9%, Nav 95,3%). Thứ tự bắt buộc ghi ở
+   §129: nhận cho đủ bản ở THÂN BÀI trước, rồi mới bỏ trang mục lục. Làm ngược thì bước sau luôn
+   tụt Nav.
+4. **19,4% mục còn dài gấp đôi trung vị tài liệu** — phần lớn là đơn vị KHÔNG có dấu kết câu bên
+   trong (bảng biểu, công thức). Cần ranh giới nhan đề/thân không dựa vào dấu câu; đã bác hướng
+   dùng định dạng (§127: `092` có `spans=1, bold=0`, bản chuyển PDF mất sạch định dạng).
