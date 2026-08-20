@@ -876,3 +876,14 @@ Nav sập 9,4% (§140, mục này). Quyết định BẬT tách là ĐÚNG và C
 **Việc còn lại, chưa thử:** sửa CHÍNH cơ chế tách (`ParagraphHeadingSplitter`/`MergedParagraphAutoSplit`)
 để cắt sạch hơn ngay từ đầu — không phải thêm tầng lọc sau bước tách sai. Chưa có thiết kế cụ thể,
 cần đo trước khi đề xuất.
+
+## 2026-08-20: histogram mật độ mốc/đoạn cho 092 — KHÔNG có hai cụm rõ rệt (xem handoff §141)
+
+Đo (rẻ, không LLM) số segment + độ dài trung bình mỗi segment cho 34 đoạn có ≥2 segment của `092`.
+Kết quả: dot-leader vắng mặt HOÀN TOÀN (0/34) — tín hiệu này không dùng được cho file này. Không có
+khoảng trống rõ giữa "đoạn mục lục" và "đoạn thân bài" — là một dải liên tục (n_seg 4→53+, avg_seg_len
+giảm dần tương ứng 538→82), 17/34 đoạn nằm ở vùng mơ hồ (7–15 segment/đoạn).
+
+**Không bác trực giác gốc** (tương quan nghịch n_seg/avg_seg_len vẫn rõ) **nhưng bác việc "tách được
+bằng thống kê mật độ đơn giản"** — cần một ngưỡng cắt tay, rơi đúng vùng liên tục không có điểm gãy
+tự nhiên. Chưa đề xuất xây gì.

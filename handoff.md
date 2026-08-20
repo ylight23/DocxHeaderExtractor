@@ -9447,3 +9447,43 @@ với mảnh vụn của trang mục lục/tham chiếu chéo bị băm ngang qu
 Cả ba đều là "sửa ở tầng khác" cho một lỗi nằm Ở CHÍNH bước tách. Việc còn lại, chưa thử: sửa
 `ParagraphHeadingSplitter`/`MergedParagraphAutoSplit` để cắt SẠCH hơn ngay từ đầu — không phải thêm
 tầng lọc sau bước tách sai.
+
+## §141. Histogram mật độ mốc/đoạn cho `092` — KHÔNG có hai cụm rõ rệt, dot-leader vắng mặt hoàn toàn
+
+**Giả thuyết người dùng đề xuất:** đoạn mục lục có mốc dày đặc + khoảng cách ngắn + dot-leader; đoạn
+thân bài thì ngược lại. Nếu histogram lộ hai cụm rõ, tách được bằng thống kê mật độ, không cần từ
+vựng. Yêu cầu: đo trước, không đề xuất xây.
+
+**Đo (không cần LLM, rẻ):** với mỗi đoạn của `092` có ≥2 segment (dùng đúng
+`ParagraphHeadingSplitter.Segments` — cơ chế THẬT đang tạo ra 288 mục, không phải regex đếm mốc khác
+của `MergedParagraphAutoSplit`), tính số segment, độ dài trung bình/nhỏ nhất/lớn nhất mỗi segment, và
+có khớp mẫu dot-leader (`\.{3,}\s*\d+`) hay không.
+
+```
+34 đoạn có ≥2 segment / 72 đoạn, tổng 609 segment.
+
+Histogram theo n_seg:        avg_seg_len trung bình:    co dot-leader:
+  4–6   : 2 đoạn                537,8                    0/2
+  7–10  : 6 đoạn                303,0                    0/6
+  11–15 : 11 đoạn               192,2                    0/11
+  16+   : 15 đoạn                82,2                    0/15
+```
+
+**Hai phát hiện, cả hai đều làm hẹp giả thuyết, không xác nhận nguyên trạng:**
+
+1. **Dot-leader vắng mặt HOÀN TOÀN trên cả 34 đoạn (0/34).** Tín hiệu này KHÔNG dùng được cho `092` —
+   trang mục lục của RFC này liệt kê tiêu đề nối tiếp nhau, không có số trang/dấu chấm dẫn dòng trong
+   bản chuyển PDF→text. Không phải mọi tài liệu có mục lục đều giữ dạng dot-leader qua chuyển đổi.
+2. **Không có khoảng trống rõ giữa hai cụm — là một DẢI LIÊN TỤC.** `n_seg` tăng dần từ 4 lên 53+,
+   `avg_seg_len` giảm dần tương ứng (537,8 → 303,0 → 192,2 → 82,2), không có bậc nhảy. Nhóm giữa
+   (7–15 segment/đoạn, 17 trong 34 đoạn — nửa số đoạn có marker) nằm ở VÙNG MƠ HỒ: không rõ ràng
+   "chắc chắn mục lục" hay "chắc chắn thân bài" chỉ bằng hai con số này.
+
+**Không bác hoàn toàn trực giác gốc** (mật độ cao tương quan với rác — dữ liệu vẫn cho thấy tương
+quan nghịch rõ giữa n_seg và avg_seg_len), **nhưng bác cụ thể việc "tách được bằng thống kê mật độ
+đơn giản, không cần thêm gì"** — cần một ngưỡng cắt, và ngưỡng đó rơi đúng vào vùng liên tục không có
+điểm gãy tự nhiên, tức lại là một hằng số phải chọn tay thay vì "tài liệu tự khai ra" như tinh thần
+§130 đã đặt ra cho các luật khác trong dự án.
+
+**Chưa đề xuất xây gì** — đúng yêu cầu. Dữ liệu thô (34 dòng đầy đủ Index/length/n_seg/avg/min/max)
+đã có trong log chạy, không chép lại toàn bộ ở đây để tránh phình tài liệu.
