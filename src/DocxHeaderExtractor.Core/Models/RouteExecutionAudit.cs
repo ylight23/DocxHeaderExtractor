@@ -15,7 +15,12 @@ public sealed record RouteExecutionAudit(
     [property: JsonPropertyName("blockDecisions")] IReadOnlyList<RouteBlockDecisionAudit> BlockDecisions,
     [property: JsonPropertyName("groundedBlockIds")] IReadOnlyList<string> GroundedBlockIds,
     [property: JsonPropertyName("groundingRejections")] IReadOnlyList<RouteBlockRejectionAudit> GroundingRejections,
-    [property: JsonPropertyName("alignedBlockIds")] IReadOnlyList<string> AlignedBlockIds);
+    [property: JsonPropertyName("alignedBlockIds")] IReadOnlyList<string> AlignedBlockIds)
+{
+    /// <summary>Raw analyst completions, populated only by explicit diagnostic routes.</summary>
+    [JsonPropertyName("rawAnalystResponses")]
+    public IReadOnlyList<string> RawAnalystResponses { get; init; } = [];
+}
 
 public sealed record RouteBlockAudit(
     [property: JsonPropertyName("id")] string Id,

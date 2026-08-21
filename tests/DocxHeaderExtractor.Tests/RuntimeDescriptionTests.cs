@@ -14,6 +14,20 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class RuntimeDescriptionTests
 {
     [Fact]
+    public void GPU_backend_prefers_the_backend_shipped_with_the_executable()
+    {
+        Assert.Equal(
+            LlamaHeaderExtractor.NativeBackendPreference.Cuda,
+            LlamaHeaderExtractor.SelectNativeBackend(99, hasCudaBackend: true, hasVulkanBackend: true));
+        Assert.Equal(
+            LlamaHeaderExtractor.NativeBackendPreference.Vulkan,
+            LlamaHeaderExtractor.SelectNativeBackend(20, hasCudaBackend: false, hasVulkanBackend: true));
+        Assert.Equal(
+            LlamaHeaderExtractor.NativeBackendPreference.Default,
+            LlamaHeaderExtractor.SelectNativeBackend(0, hasCudaBackend: true, hasVulkanBackend: true));
+    }
+
+    [Fact]
     public void Xin_GPU_ma_native_khong_offload_duoc_thi_log_phai_noi_dang_chay_CPU()
     {
         var text = LlamaHeaderExtractor.Describe(

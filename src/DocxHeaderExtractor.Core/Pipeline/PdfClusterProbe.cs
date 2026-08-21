@@ -199,9 +199,7 @@ public static class PdfClusterProbe
         var blocks = PdfSemanticBlockGrouper.Build(annotations);
         var samples = PdfSemanticClusterAnalyst.BuildSamples(profile, lines, excluded);
         var decisions = Array.Empty<PdfClusterDecisionDto>();
-        var candidateBlocks = blocks
-            .Where(b => profile.CandidateStyles.Contains(b.PrimaryStyle) &&
-                        LooksLikeAnalystCandidateBlock(b))
+        var candidateBlocks = PdfLayoutEvidenceOutline.BuildBroadCandidates(blocks, profile)
             .Take(120)
             .ToArray();
         var blockDecisions = Array.Empty<PdfBlockDecisionDto>();
@@ -387,29 +385,6 @@ public static class PdfClusterProbe
             block.DisplayText,
             block.Text,
             block.CanonicalText);
-
-    private static bool LooksLikeAnalystCandidateBlock(PdfSemanticBlock block)
-    {
-        var text = block.DisplayText.Trim();
-        if (text.Length is < 3 or > 180) return false;
-        if (!text.Any(char.IsLetter)) return false;
-        if (block.LineCount > 3 && text.Length > 120) return false;
-        if (text.Count(c => c is '.' or ';') >= 2) return false;
-        if (text.Length >= 80 && text.EndsWith('.')) return false;
-        if (text.Length >= 40 && Regex.IsMatch(text, @"^(?:\d{1,3}|\*)\s+\S")) return false;
-        if (LooksLikeSpacedLogoFragment(text)) return false;
-        var words = text.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries).Length;
-        if (words >= 24) return false;
-        return true;
-    }
-
-    private static bool LooksLikeSpacedLogoFragment(string text)
-    {
-        var tokens = text.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
-        if (tokens.Length < 4) return false;
-        var singleLetters = tokens.Count(t => t.Length == 1 && char.IsLetter(t[0]));
-        return singleLetters / (double)tokens.Length >= 0.70;
-    }
 
     private static PdfClusterDecisionDto ToDto(PdfSemanticClusterDecision decision) =>
         new(decision.Id, RoleName(decision.Role), decision.Confidence, decision.Reason);

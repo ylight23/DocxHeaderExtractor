@@ -73,6 +73,18 @@ public sealed class CommandLineOptions
     /// <summary>Lệnh `verify-corrupt`: DPI render trang PDF trước khi đưa vào VLM.</summary>
     public int VlmDpi { get; private set; } = 110;
 
+    /// <summary>Audit-only: let the PDF analyst see blocks outside learned candidate styles.</summary>
+    public bool PdfStageWideCandidates { get; private set; }
+
+    /// <summary>Audit-only: add long reconstructed PDF blocks that standard grouping split.</summary>
+    public bool PdfStageSupplementCandidates { get; private set; }
+
+    /// <summary>Audit-only cap for PDF semantic analyst blocks.</summary>
+    public int PdfStageAnalystBlocks { get; private set; } = 40;
+
+    /// <summary>Audit-only: screen every retrieved PDF candidate in batches.</summary>
+    public bool PdfStageAllCandidates { get; private set; }
+
     public static CommandLineOptions Parse(string[] args)
     {
         var o = new CommandLineOptions();
@@ -131,6 +143,10 @@ public sealed class CommandLineOptions
                 case "--pdf-bold-fallback": o.Pipeline.PdfBoldLabelFallback = true; break;
                 case "--pdf-layout-evidence": o.Pipeline.PdfLayoutEvidenceFallback = true; break;
                 case "--pdf-layout-analyst": o.Pipeline.PdfLayoutAnalystFallback = true; break;
+                case "--pdf-stage-wide": o.PdfStageWideCandidates = true; break;
+                case "--pdf-stage-supplement": o.PdfStageSupplementCandidates = true; break;
+                case "--pdf-stage-all": o.PdfStageAllCandidates = true; break;
+                case "--pdf-stage-blocks": o.PdfStageAnalystBlocks = int.Parse(Next(a)); break;
                 case "--no-docling-sidecar": o.Pipeline.DoclingSidecarFallback = false; break;
                 case "--docling-json":
                     o.Pipeline.DoclingJsonPath = Next(a);
@@ -362,6 +378,10 @@ public sealed class CommandLineOptions
                                     bằng luật .NET. Không gọi Python/Docling trong runtime.
               --pdf-layout-evidence Bật route layout PDF chung deterministic (sandbox).
               --pdf-layout-analyst  Hỏi LLM cho tối đa 40 PDF candidate blocks sau filter, rồi grounding.
+              --pdf-stage-wide      Chỉ pdf-stage-eval: mở candidate PDF cho LLM ngoài learned style (audit-only).
+              --pdf-stage-supplement Chỉ pdf-stage-eval: thêm block PDF gộp dài từ raw lines (audit-only).
+              --pdf-stage-all       Chỉ pdf-stage-eval: LLM screen toàn bộ PDF candidate theo batch (audit-only; chậm).
+              --pdf-stage-blocks n  Chỉ pdf-stage-eval: trần block PDF đưa vào analyst (mặc định 40).
               --no-docling-sidecar  Tắt adapter Docling explicit (mặc định vốn tắt).
               --key-limit <n>       Với repair-key-package, số heading trong mẫu review (mặc định 30)
               --key-start <n>       Với repair-key-package, bỏ qua N heading đầu trước khi lấy mẫu

@@ -1,5 +1,7 @@
 using System.Globalization;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using LLama;
 using LLama.Common;
@@ -19,6 +21,7 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     private readonly StatelessExecutor _executor;
     private readonly LlamaOptions _options;
     private readonly bool _hasBuiltInTemplate;
+    private readonly bool _usesQwen35Template;
     private PrefixCachedRunner? _prefixRunner;
 
     /// <summary>Số token dành sẵn cho system prompt (kèm ví dụ one-shot) và phần đệm template.</summary>
@@ -89,17 +92,34 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     public int CountTokens(string text) =>
         string.IsNullOrEmpty(text) ? 0 : _weights.Tokenize(text, false, false, Encoding.UTF8).Length;
 
-    private LlamaHeaderExtractor(LLamaWeights weights, ModelParams modelParams, LlamaOptions options, bool hasTemplate)
+    private LlamaHeaderExtractor(
+        LLamaWeights weights,
+        ModelParams modelParams,
+        LlamaOptions options,
+        bool hasTemplate,
+        bool usesQwen35Template)
     {
         _weights = weights;
         _modelParams = modelParams;
         _options = options;
         _hasBuiltInTemplate = hasTemplate;
+        _usesQwen35Template = usesQwen35Template;
         _executor = new StatelessExecutor(weights, modelParams) { ApplyTemplate = false };
         ModelName = Path.GetFileName(options.ModelPath);
     }
 
     private static int _logConfigured;
+
+    internal enum NativeBackendPreference { Default, Cuda, Vulkan }
+
+    internal static NativeBackendPreference SelectNativeBackend(
+        int gpuLayerCount,
+        bool hasCudaBackend,
+        bool hasVulkanBackend) =>
+        gpuLayerCount <= 0 ? NativeBackendPreference.Default
+        : hasCudaBackend ? NativeBackendPreference.Cuda
+        : hasVulkanBackend ? NativeBackendPreference.Vulkan
+        : NativeBackendPreference.Default;
 
     /// <summary>
     /// Chặn log của llama.cpp. Phải gọi TRƯỚC lần chạm native đầu tiên.
@@ -111,22 +131,69 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     /// phần khác đã nạp native lib trước.
     /// </para>
     /// </summary>
-    public static void ConfigureNativeLogging(bool verbose)
+    public static void ConfigureNativeLogging(bool verbose, int gpuLayerCount = 0)
     {
-        if (verbose) return;
         if (Interlocked.Exchange(ref _logConfigured, 1) == 1) return;
 
         try
         {
+            var nativeRoot = Path.Combine(AppContext.BaseDirectory, "runtimes", "win-x64", "native");
+            var preferred = SelectNativeBackend(
+                gpuLayerCount,
+                File.Exists(Path.Combine(nativeRoot, "cuda12", "llama.dll")),
+                File.Exists(Path.Combine(nativeRoot, "vulkan", "llama.dll")));
+
+            // LLamaSharp defaults both CUDA and Vulkan preferences to true. If a stale or partial
+            // Vulkan folder is present beside a CUDA build, it tries Vulkan first and silently falls
+            // back to CPU. Choose exactly the backend shipped with this executable.
+            if (preferred == NativeBackendPreference.Cuda)
+            {
+                var cudaDir = Path.Combine(nativeRoot, "cuda12");
+                PreloadCudaDependencies(nativeRoot, cudaDir);
+                NativeLibraryConfig.All.WithLibrary(
+                    Path.Combine(cudaDir, "llama.dll"),
+                    Path.Combine(cudaDir, "mtmd.dll"));
+            }
+            else if (preferred == NativeBackendPreference.Vulkan)
+            {
+                NativeLibraryConfig.All.WithCuda(false);
+                NativeLibraryConfig.All.WithVulkan(true);
+            }
+
             NativeLibraryConfig.All.WithLogCallback((level, message) =>
             {
-                if (level >= LLamaLogLevel.Warning && level != LLamaLogLevel.Continue)
+                if (verbose || (level >= LLamaLogLevel.Warning && level != LLamaLogLevel.Continue))
                     Console.Error.Write(message);
             });
         }
         catch (InvalidOperationException)
         {
             // Native lib đã nạp — không đổi được cấu hình nữa, nhưng cũng không phải lỗi chí mạng.
+        }
+    }
+
+    private static void PreloadCudaDependencies(string nativeRoot, string cudaDir)
+    {
+        var cpuDir = Path.Combine(nativeRoot,
+            Avx512F.IsSupported ? "avx512" : Avx2.IsSupported ? "avx2" : Avx.IsSupported ? "avx" : "noavx");
+        var dependencies = new[]
+        {
+            // The CUDA package places these beside the executable, while ggml-cuda lives
+            // under runtimes/. Load them explicitly so Windows resolves its imports reliably.
+            Path.Combine(AppContext.BaseDirectory, "cudart64_12.dll"),
+            Path.Combine(AppContext.BaseDirectory, "cublasLt64_12.dll"),
+            Path.Combine(AppContext.BaseDirectory, "cublas64_12.dll"),
+            Path.Combine(cudaDir, "ggml-base.dll"),
+            Path.Combine(cpuDir, "ggml-cpu.dll"),
+            Path.Combine(cudaDir, "ggml-cuda.dll"),
+            Path.Combine(cudaDir, "ggml.dll"),
+        };
+
+        foreach (var dependency in dependencies)
+        {
+            if (!File.Exists(dependency))
+                throw new FileNotFoundException("Thiếu native dependency cho CUDA backend.", dependency);
+            NativeLibrary.Load(dependency);
         }
     }
 
@@ -148,7 +215,7 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
         options.ApplyRecommendedModelProfile(new Chunking.ChunkingOptions { TokenBudget = options.ChunkTokenBudget });
         options.Validate();
 
-        ConfigureNativeLogging(options.VerboseNativeLog);
+        ConfigureNativeLogging(options.VerboseNativeLog, options.GpuLayerCount);
 
         var modelParams = new ModelParams(options.ModelPath)
         {
@@ -177,8 +244,10 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
 
         bool hasTemplate = weights.Metadata.TryGetValue("tokenizer.chat_template", out var tpl)
                            && !string.IsNullOrWhiteSpace(tpl);
+        var usesQwen35Template = weights.Metadata.TryGetValue("general.architecture", out var architecture)
+                                  && string.Equals(architecture, "qwen35", StringComparison.OrdinalIgnoreCase);
 
-        var extractor = new LlamaHeaderExtractor(weights, modelParams, options, hasTemplate);
+        var extractor = new LlamaHeaderExtractor(weights, modelParams, options, hasTemplate, usesQwen35Template);
 
         if (options.ReusePromptPrefix)
         {
@@ -449,11 +518,13 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     /// </summary>
     public async Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
     {
-        var prompt = BuildPrompt(systemPrompt, userMessage);
+        var prompt = BuildBoundaryPrompt(systemPrompt, userMessage);
         using var pipeline = new DefaultSamplingPipeline { Temperature = 0f, TopK = 1, Seed = _options.Seed };
         var inferenceParams = new InferenceParams
         {
-            MaxTokens = 120,
+            // Besides the short title/body cut, this narrow interface powers the PDF
+            // semantic analysts. A 12-block strict JSON response needs more than 120 tokens.
+            MaxTokens = 512,
             AntiPrompts = ["<|eot_id|>", "\n\n"],
             SamplingPipeline = pipeline,
         };
@@ -480,6 +551,18 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
             // GGUF có template nhưng llama.cpp không render được → quay về template Llama 3 dựng tay.
             return HeaderPrompt.BuildLlama3Prompt(system, user);
         }
+    }
+
+    private string BuildBoundaryPrompt(string system, string user)
+    {
+        if (!_usesQwen35Template) return BuildPrompt(system, user);
+
+        // LLamaSharp 0.27 cannot pass chat-template kwargs. Qwen3.5's documented non-thinking
+        // form is an assistant turn with an already-closed empty thought, which preserves tokens
+        // for the strict JSON returned by PDF analysts.
+        return $"<|im_start|>system\n{system}<|im_end|>\n" +
+               $"<|im_start|>user\n{user}<|im_end|>\n" +
+               "<|im_start|>assistant\n<think>\n\n</think>\n\n";
     }
 
     public void Dispose()

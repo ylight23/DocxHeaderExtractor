@@ -410,7 +410,9 @@ app.MapPost("/api/extract", async (
 });
 
 // Cấu hình log của llama.cpp một lần cho cả tiến trình, trước khi có request nào chạm native lib.
-DocxHeaderExtractor.Core.Llm.LlamaHeaderExtractor.ConfigureNativeLogging(verbose: false);
+// Native backend selection is process-wide, while GPU layer count remains per model load. Prefer
+// the backend bundled with this web executable so a later request can legitimately offload layers.
+DocxHeaderExtractor.Core.Llm.LlamaHeaderExtractor.ConfigureNativeLogging(verbose: false, gpuLayerCount: int.MaxValue);
 
 Console.OutputEncoding = Encoding.UTF8;
 Console.WriteLine($"dhx-ui đang chạy: {string.Join(", ", app.Urls.DefaultIfEmpty("http://localhost:5099"))}");

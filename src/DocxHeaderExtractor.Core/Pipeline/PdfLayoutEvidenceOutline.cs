@@ -6,6 +6,18 @@ using UglyToad.PdfPig;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
+/// <summary>Key-guided diagnostic only; never participates in PDF candidate selection.</summary>
+public sealed record PdfCandidateRetrievalTrace(
+    string ExpectedText,
+    bool FoundInRawWindow,
+    IReadOnlyList<string> RawFilterReasons,
+    bool FoundInStandardBlock,
+    bool FoundInBroadCandidate,
+    bool FoundInWideCandidate,
+    bool FoundInSupplementCandidate,
+    string FirstLossStage,
+    string? RawWindowText);
+
 /// <summary>
 /// Language-neutral PDF navigation-outline extractor. It learns the body baseline and visual
 /// outliers from the current PDF, removes repeated/table-like lines, groups nearby lines into
@@ -19,6 +31,38 @@ public static class PdfLayoutEvidenceOutline
     public static readonly string Basis = "pdf_layout_evidence";
     public static readonly string AnalystBasis = "pdf_layout_block_grounded";
     private const int MaximumAnalystBlocks = 40;
+
+    /// <summary>
+    /// Traces a known title through the PDF retrieval pipeline. This is deliberately key-guided
+    /// observability, not a key-guided extraction rule: callers use it to discover general losses.
+    /// </summary>
+    public static IReadOnlyList<PdfCandidateRetrievalTrace> TraceCandidateRetrieval(
+        string originalInputPath,
+        IEnumerable<string> expectedTitles)
+    {
+        var expected = expectedTitles.Where(t => !string.IsNullOrWhiteSpace(t)).Distinct(StringComparer.Ordinal).ToArray();
+        if (expected.Length == 0) return [];
+        var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
+        if (pdf is null) return expected.Select(t => new PdfCandidateRetrievalTrace(
+            t, false, [], false, false, false, false, "no-sibling-pdf", null)).ToArray();
+
+        try
+        {
+            using var document = PdfDocument.Open(pdf);
+            var annotations = PdfLineBlockFilter.Analyze(PdfLineExtraction.ExtractLines(document));
+            var standard = PdfSemanticBlockGrouper.Build(annotations);
+            var profile = PdfStyleClusterProfile.Learn(annotations.Where(a => !a.ExcludeFromSemanticSamples).Select(a => a.Line).ToArray());
+            var broad = BuildBroadCandidates(standard, profile);
+            var wide = BuildWideAuditCandidates(standard);
+            var supplement = BuildSupplementCandidates(annotations, broad);
+            return expected.Select(title => TraceTitle(title, annotations, standard, broad, wide, supplement)).ToArray();
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException)
+        {
+            return expected.Select(t => new PdfCandidateRetrievalTrace(
+                t, false, [], false, false, false, false, "pdf-read-failed", null)).ToArray();
+        }
+    }
 
     public static PdfTextbookOutlineResult TryBuild(string originalInputPath, SlimDocument slim)
     {
@@ -85,12 +129,167 @@ public static class PdfLayoutEvidenceOutline
     }
 
     /// <summary>
+    /// Audit-only PDF-first lane. It deliberately starts from the broader candidate generator used
+    /// by <c>pdf-clusters</c>, rather than the sparse-style production experiment above. DOCX is
+    /// only used after PDF selection to map an accepted PDF block to a stable writeback span.
+    /// This method is intentionally not called by <see cref="HeaderExtractionPipeline"/>.
+    /// </summary>
+    public static async Task<PdfTextbookOutlineResult> TryBuildBroadAuditWithAnalystAsync(
+        string originalInputPath,
+        SlimDocument slim,
+        IHeaderClassifier analyst,
+        int maximumAnalystBlocks = MaximumAnalystBlocks,
+        bool includeAllVisualStyles = false,
+        bool includeSupplementCandidates = false,
+        CancellationToken ct = default)
+    {
+        if (maximumAnalystBlocks < 0)
+            return PdfTextbookOutlineResult.NotApplicable("invalid-analyst-block-budget");
+
+        var context = TryBuildBroadAuditContext(
+            originalInputPath, includeAllVisualStyles, includeSupplementCandidates, out var reason);
+        if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
+
+        var priorityIds = context.PriorityCandidateIds.Count > 0 ? context.PriorityCandidateIds : null;
+        var effectiveBudget = maximumAnalystBlocks == 0 ? context.Candidates.Count : maximumAnalystBlocks;
+        var selection = SelectAnalystCandidates(
+            context.Candidates, effectiveBudget, priorityIds, context.SupplementCandidateRanks);
+        var selected = selection.Selected;
+        var excluded = context.Annotations.Where(a => a.ExcludeFromSemanticSamples).Select(a => a.Line).ToHashSet();
+        var samples = PdfSemanticClusterAnalyst.BuildSamples(context.Profile, context.Lines, excluded);
+        var clusters = await PdfSemanticClusterAnalyst.AnalyzeAsync(analyst, context.Profile, context.Lines, ct);
+        var blockAnalysis = await PdfBlockAnalyst.AnalyzeAsync(analyst, selected, ct);
+        var grounded = PdfBlockGrounder.Ground(selected, blockAnalysis.Decisions, context.Profile, samples, clusters.Decisions);
+        var acceptedIds = grounded.Headings.Select(h => h.Id).ToHashSet(StringComparer.Ordinal);
+        var accepted = selected.Where(b => acceptedIds.Contains(b.Id)).ToArray();
+        var alignment = AlignToDocx(accepted, slim, context.Profile, AnalystBasis);
+
+        var lane = includeAllVisualStyles ? "wide" : "broad";
+        if (includeSupplementCandidates) lane += "+supplement";
+        var summary = $"audit-only {lane} PDF lane; pdf={Path.GetFileName(context.Pdf)}, candidateBlocks={selected.Count}/{selection.Available}, " +
+                      $"pages={selection.SelectedPages}/{selection.AvailablePages}, grounded={accepted.Length}, aligned={alignment.Headings.Count}/{accepted.Length}";
+        var audit = new RouteExecutionAudit(
+            summary,
+            selection.Available,
+            selected.Count,
+            selection.AvailablePages,
+            selection.SelectedPages,
+            context.Candidates.Select(ToAudit).ToArray(),
+            selected.Select(ToAudit).ToArray(),
+            context.Candidates.Where(b => !selected.Any(choice => choice.Id == b.Id)).Select(ToAudit).ToArray(),
+            blockAnalysis.Decisions.Select(d => new RouteBlockDecisionAudit(d.Id, d.Role.ToString(), d.Confidence)).ToArray(),
+            accepted.Select(b => b.Id).ToArray(),
+            grounded.Rejected.Select(r => new RouteBlockRejectionAudit(r.Id, r.Role, r.Confidence, r.Reason)).ToArray(),
+            alignment.AlignedBlockIds.ToArray())
+        {
+            RawAnalystResponses = blockAnalysis.RawResponses,
+        };
+
+        // Audit must preserve partial output and every loss even when the production acceptance
+        // thresholds would abstain. Otherwise the stage that lost a key title is unobservable.
+        var auditReason = accepted.Length < 3
+            ? $"audit-only:analyst-grounded-too-few:{accepted.Length}/{selected.Count}"
+            : alignment.Headings.Count < Math.Max(3, (int)Math.Ceiling(accepted.Length * 0.65))
+                ? $"audit-only:analyst-low-docx-alignment:{alignment.Headings.Count}/{accepted.Length}"
+                : summary;
+        return new PdfTextbookOutlineResult(alignment.Headings, auditReason, audit);
+    }
+
+    /// <summary>
+    /// Shared PDF-first broad candidate generator. It keeps PDF line filtering and title-shape
+    /// safeguards, but does not require a sparse visual style: semantic selection belongs to the
+    /// analyst and grounding stages that follow.
+    /// </summary>
+    internal static IReadOnlyList<PdfSemanticBlock> BuildBroadCandidates(
+        IReadOnlyList<PdfSemanticBlock> blocks,
+        PdfStyleClusterProfile profile) =>
+        blocks.Where(b => profile.CandidateStyles.Contains(b.PrimaryStyle) && LooksLikeBroadCandidateBlock(b))
+            .OrderBy(b => b.Page)
+            .ThenByDescending(b => b.TopY)
+            .ThenBy(b => b.Id, StringComparer.Ordinal)
+            .ToArray();
+
+    /// <summary>
+    /// Wide audit candidate generation deliberately removes learned style as a precondition. It is
+    /// for measuring whether an LLM can supply semantics for blocks that layout clustering missed;
+    /// it must not be used by production routing without independent precision evidence.
+    /// </summary>
+    internal static IReadOnlyList<PdfSemanticBlock> BuildWideAuditCandidates(IReadOnlyList<PdfSemanticBlock> blocks) =>
+        blocks.Where(LooksLikeWideAuditBlock)
+            .OrderBy(b => b.Page)
+            .ThenByDescending(b => b.TopY)
+            .ThenBy(b => b.Id, StringComparer.Ordinal)
+            .ToArray();
+
+    /// <summary>
+    /// Builds a second, longer grouping over the same filtered PDF lines. It is a retrieval repair:
+    /// no DOCX text is introduced and the LLM can only classify a recovered PDF block.
+    /// </summary>
+    internal static IReadOnlyList<PdfSemanticBlock> BuildSupplementCandidates(
+        IReadOnlyList<PdfLineBlockAnnotation> annotations,
+        IReadOnlyList<PdfSemanticBlock> existing)
+    {
+        var existingCanonical = existing.Select(b => b.CanonicalText).ToHashSet(StringComparer.Ordinal);
+        var atomic = annotations
+            .Where(a => !a.ExcludeFromSemanticSamples)
+            .Select((a, index) => new PdfSemanticBlock(
+                $"s-line-{index + 1}", [a.Line], PdfStyleClusterProfile.StyleOf(a.Line), a.Line.Page,
+                a.Line.Y, a.Line.Y, a.Line.Left, a.Line.Right, PdfTextUtilities.Readable(a.Line.Text)))
+            .Where(LooksLikeSupplementBlock);
+        var loose = PdfSemanticBlockGrouper.Build(annotations, maxLinesPerBlock: 12, allowSemicolonContinuation: true)
+            .Where(LooksLikeSupplementBlock)
+            .Where(b => !existingCanonical.Contains(b.CanonicalText))
+            .Select((b, index) => b with { Id = $"s-block-{index + 1}" });
+        var fragments = BuildAdjacentFragmentWindows(annotations).Where(LooksLikeSupplementBlock);
+        var seen = new HashSet<string>(existingCanonical, StringComparer.Ordinal);
+        return atomic.Concat(loose).Concat(fragments)
+            .Where(b => seen.Add(b.CanonicalText))
+            .ToArray();
+    }
+
+    private static IEnumerable<PdfSemanticBlock> BuildAdjacentFragmentWindows(
+        IReadOnlyList<PdfLineBlockAnnotation> annotations)
+    {
+        var id = 1;
+        foreach (var page in annotations.Where(a => !a.ExcludeFromSemanticSamples)
+                     .OrderBy(a => a.Line.Page).ThenByDescending(a => a.Line.Y).ThenBy(a => a.Line.Left)
+                     .GroupBy(a => a.Line.Page))
+        {
+            var lines = page.ToArray();
+            for (var start = 0; start < lines.Length; start++)
+            {
+                var window = new List<PdfLine> { lines[start].Line };
+                for (var offset = 1; offset < 4 && start + offset < lines.Length; offset++)
+                {
+                    var next = lines[start + offset].Line;
+                    if (window[^1].Y - next.Y is <= 0 or > 34) break;
+                    window.Add(next);
+                    yield return CreateFragmentBlock($"s-window-{id++}", window);
+                }
+            }
+        }
+    }
+
+    private static PdfSemanticBlock CreateFragmentBlock(string id, IReadOnlyList<PdfLine> lines)
+    {
+        var primary = lines.GroupBy(line => PdfStyleClusterProfile.StyleOf(line))
+            .OrderByDescending(g => g.Sum(line => PdfTextUtilities.Readable(line.Text).Length))
+            .Select(g => g.Key).First();
+        return new PdfSemanticBlock(
+            id, lines, primary, lines[0].Page, lines.Max(line => line.Y), lines.Min(line => line.Y),
+            lines.Min(line => line.Left), lines.Max(line => line.Right),
+            PdfTextUtilities.Readable(string.Join(" ", lines.Select(line => line.Text))));
+    }
+
+    /// <summary>
     /// Bounded analyst work must cover the document before spending a second slot on an earlier
     /// page. Taking the first N blocks systematically hid late chapters in long PDFs.
     /// </summary>
     internal static PdfAnalystCandidateSelection SelectAnalystCandidates(
         IReadOnlyList<PdfSemanticBlock> candidates,
-        int maximum)
+        int maximum,
+        IReadOnlySet<string>? priorityIds = null,
+        IReadOnlyDictionary<string, int>? supplementalRanks = null)
     {
         var ordered = candidates
             .OrderBy(b => b.Page)
@@ -106,6 +305,50 @@ public static class PdfLayoutEvidenceOutline
         if (ordered.Length <= maximum)
             return new PdfAnalystCandidateSelection(ordered, ordered.Length, byPage.Length, byPage.Length);
 
+        var selected = priorityIds is { Count: > 0 }
+            ? SelectAcrossPages(ordered.Where(b => priorityIds.Contains(b.Id)).ToArray(), maximum)
+            : [];
+        if (selected.Count < maximum)
+        {
+            var selectedIds = selected.Select(b => b.Id).ToHashSet(StringComparer.Ordinal);
+            if (supplementalRanks is { Count: > 0 })
+            {
+                foreach (var rank in supplementalRanks.Values.Distinct().OrderDescending())
+                {
+                    if (selected.Count == maximum) break;
+                    var tier = ordered.Where(b =>
+                        !selectedIds.Contains(b.Id) &&
+                        supplementalRanks.TryGetValue(b.Id, out var candidateRank) &&
+                        candidateRank == rank).ToArray();
+                    var picked = SelectAcrossPages(tier, maximum - selected.Count);
+                    selected.AddRange(picked);
+                    selectedIds.UnionWith(picked.Select(b => b.Id));
+                }
+            }
+
+            if (selected.Count < maximum)
+                selected.AddRange(SelectAcrossPages(
+                    ordered.Where(b => !selectedIds.Contains(b.Id)).ToArray(), maximum - selected.Count));
+        }
+
+        return new PdfAnalystCandidateSelection(
+            selected.OrderBy(b => b.Page).ThenByDescending(b => b.TopY).ThenBy(b => b.Id, StringComparer.Ordinal).ToArray(),
+            ordered.Length,
+            byPage.Length,
+            selected.Select(b => b.Page).Distinct().Count());
+    }
+
+    private static List<PdfSemanticBlock> SelectAcrossPages(
+        IReadOnlyList<PdfSemanticBlock> ordered,
+        int maximum)
+    {
+        if (maximum <= 0 || ordered.Count == 0) return [];
+        if (ordered.Count <= maximum) return ordered.ToList();
+
+        var byPage = ordered
+            .GroupBy(b => b.Page)
+            .Select(g => g.ToArray())
+            .ToArray();
         var selected = new List<PdfSemanticBlock>(maximum);
         for (var slot = 0; selected.Count < maximum; slot++)
         {
@@ -120,12 +363,7 @@ public static class PdfLayoutEvidenceOutline
 
             if (!added) break;
         }
-
-        return new PdfAnalystCandidateSelection(
-            selected,
-            ordered.Length,
-            byPage.Length,
-            selected.Select(b => b.Page).Distinct().Count());
+        return selected;
     }
 
     private static LayoutContext? TryBuildContext(string originalInputPath, SlimDocument slim, out string reason)
@@ -159,7 +397,89 @@ public static class PdfLayoutEvidenceOutline
         var pages = Math.Max(1, lines.Select(l => l.Page).Distinct().Count());
         if (candidates.Count < 3) { reason = $"too-few-layout-blocks:{candidates.Count}"; return null; }
         if (candidates.Count > pages * 2) { reason = $"layout-candidates-too-dense:{candidates.Count}/{pages}"; return null; }
-        return new LayoutContext(pdf, lines, annotations, profile, headingStyles, candidates);
+        return new LayoutContext(
+            pdf, lines, annotations, profile, headingStyles, candidates,
+            new HashSet<string>(StringComparer.Ordinal), new Dictionary<string, int>(StringComparer.Ordinal));
+    }
+
+    private static LayoutContext? TryBuildBroadAuditContext(
+        string originalInputPath,
+        bool includeAllVisualStyles,
+        bool includeSupplementCandidates,
+        out string reason)
+    {
+        reason = "";
+        var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
+        if (pdf is null) { reason = "no-pdf"; return null; }
+
+        IReadOnlyList<PdfLine> lines;
+        try
+        {
+            using var document = PdfDocument.Open(pdf);
+            lines = PdfLineExtraction.ExtractLines(document);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException)
+        {
+            reason = "pdf-read-failed";
+            return null;
+        }
+
+        var annotations = PdfLineBlockFilter.Analyze(lines);
+        var semanticLines = annotations.Where(a => !a.ExcludeFromSemanticSamples).Select(a => a.Line).ToList();
+        if (semanticLines.Count < 3) { reason = "too-few-semantic-lines"; return null; }
+        var profile = PdfStyleClusterProfile.Learn(semanticLines);
+        var blocks = PdfSemanticBlockGrouper.Build(annotations);
+        var broadCandidates = BuildBroadCandidates(blocks, profile);
+        var primaryCandidates = includeAllVisualStyles
+            ? BuildWideAuditCandidates(blocks)
+            : broadCandidates;
+        var supplemental = includeSupplementCandidates
+            ? BuildSupplementCandidates(annotations, primaryCandidates)
+            : Array.Empty<PdfSemanticBlock>();
+        var candidates = includeSupplementCandidates
+            ? MergeCandidateSets(primaryCandidates, supplemental)
+            : primaryCandidates;
+        if (candidates.Count == 0) { reason = "no-broad-layout-blocks"; return null; }
+        // Broad candidates are measured seeds. Supplemental blocks are intentionally a second
+        // retrieval tier: selecting all of them with equal page priority would crowd seeds out.
+        var priorityIds = includeAllVisualStyles || includeSupplementCandidates
+            ? broadCandidates.Select(b => b.Id).ToHashSet(StringComparer.Ordinal)
+            : new HashSet<string>(StringComparer.Ordinal);
+        var supplementRanks = supplemental
+            .Where(block => candidates.Any(candidate => candidate.Id == block.Id))
+            .ToDictionary(block => block.Id, ScoreSupplementForAnalyst, StringComparer.Ordinal);
+        return new LayoutContext(
+            pdf, lines, annotations, profile, profile.CandidateStyles, candidates, priorityIds, supplementRanks);
+    }
+
+    /// <summary>
+    /// Orders lossless retrieval candidates for bounded analyst attention. This is intentionally
+    /// only a ranking signal: a low-scoring block remains available as a later fallback.
+    /// </summary>
+    internal static int ScoreSupplementForAnalyst(PdfSemanticBlock block)
+    {
+        var text = block.DisplayText.Trim();
+        var score = 0;
+        if (NumberingAudit.Parse(text) is not null) score += 100;
+        if (block.LineCount is >= 2 and <= 4) score += 12;
+        if (text.Length is >= 4 and <= 180) score += 8;
+
+        var letters = text.Where(char.IsLetter).ToArray();
+        if (letters.Length >= 4 && letters.Count(char.IsUpper) / (double)letters.Length >= 0.55)
+            score += 40;
+        if (!text.EndsWith('.') && !text.EndsWith(';')) score += 4;
+        return score;
+    }
+
+    private static IReadOnlyList<PdfSemanticBlock> MergeCandidateSets(
+        IReadOnlyList<PdfSemanticBlock> primary,
+        IReadOnlyList<PdfSemanticBlock> supplemental)
+    {
+        var seen = new HashSet<string>(StringComparer.Ordinal);
+        return primary.Concat(supplemental)
+            .Where(b => seen.Add(b.CanonicalText))
+            .OrderBy(b => b.Page).ThenByDescending(b => b.TopY).ThenBy(b => b.Id, StringComparer.Ordinal)
+            .ToArray();
     }
 
     private static HashSet<PdfStyleKey> SelectNavigationStyles(PdfStyleClusterProfile profile)
@@ -192,6 +512,105 @@ public static class PdfLayoutEvidenceOutline
         if (text.Length >= 70 && Regex.IsMatch(text, @"[.!?]\s*$")) return false;
         if (text.Count(c => c is '.' or ';') >= 2) return false;
         return true;
+    }
+
+    private static bool LooksLikeBroadCandidateBlock(PdfSemanticBlock block)
+    {
+        var text = block.DisplayText.Trim();
+        if (text.Length is < 3 or > 180 || !text.Any(char.IsLetter)) return false;
+        if (block.LineCount > 3 && text.Length > 120) return false;
+        if (text.Count(c => c is '.' or ';') >= 2) return false;
+        if (text.Length >= 80 && text.EndsWith('.')) return false;
+        if (text.Length >= 40 && Regex.IsMatch(text, @"^(?:\d{1,3}|\*)\s+\S")) return false;
+        if (LooksLikeSpacedLogoFragment(text)) return false;
+        return text.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries).Length < 24;
+    }
+
+    private static bool LooksLikeWideAuditBlock(PdfSemanticBlock block)
+    {
+        var text = block.DisplayText.Trim();
+        if (text.Length is < 3 or > 320 || !text.Any(char.IsLetter)) return false;
+        if (block.LineCount > 8) return false;
+        if (LooksLikeSpacedLogoFragment(text)) return false;
+        return text.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries).Length < 56;
+    }
+
+    private static bool LooksLikeSupplementBlock(PdfSemanticBlock block)
+    {
+        var text = block.DisplayText.Trim();
+        if (text.Length is < 3 or > 900 || !text.Any(char.IsLetter) || block.LineCount > 12) return false;
+        if (LooksLikeSpacedLogoFragment(text)) return false;
+        var words = text.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
+        if (words.Length > 140) return false;
+        if (NumberingAudit.Parse(text) is not null) return true;
+        if (Regex.IsMatch(text, @"^\s*(?:chapter|chương|section|article|điều)\b", RegexOptions.IgnoreCase)) return true;
+        var letters = text.Where(char.IsLetter).ToArray();
+        return letters.Length >= 4 && letters.Count(char.IsUpper) / (double)letters.Length >= 0.55;
+    }
+
+    private static PdfCandidateRetrievalTrace TraceTitle(
+        string expected,
+        IReadOnlyList<PdfLineBlockAnnotation> annotations,
+        IReadOnlyList<PdfSemanticBlock> standard,
+        IReadOnlyList<PdfSemanticBlock> broad,
+        IReadOnlyList<PdfSemanticBlock> wide,
+        IReadOnlyList<PdfSemanticBlock> supplement)
+    {
+        var target = PdfTextUtilities.CanonicalForMatch(expected);
+        var rawWindow = FindRawWindow(annotations, target);
+        var foundRaw = rawWindow.Count > 0;
+        var relevantLines = rawWindow
+            .Where(a =>
+            {
+                var line = PdfTextUtilities.CanonicalForMatch(a.Line.Text);
+                return line.Length >= 4 && (target.Contains(line, StringComparison.Ordinal) || line.Contains(target, StringComparison.Ordinal));
+            })
+            .ToArray();
+        if (relevantLines.Length == 0) relevantLines = rawWindow.ToArray();
+        var reasons = relevantLines.Select(a => a.Reason).Where(r => r != "semantic-candidate").Distinct().ToArray();
+        bool Contains(IReadOnlyList<PdfSemanticBlock> blocks) => blocks.Any(b => b.CanonicalText.Contains(target, StringComparison.Ordinal));
+        var inStandard = Contains(standard);
+        var inBroad = Contains(broad);
+        var inWide = Contains(wide);
+        var inSupplement = Contains(supplement);
+        var firstLoss = !foundRaw ? "absent-from-raw-windows"
+            : reasons.Length > 0 ? "line-filtered:" + string.Join(",", reasons)
+            : !inStandard ? "semantic-block-grouping"
+            : !inBroad ? "broad-style-or-shape-gate"
+            : "candidate-available";
+        var rawText = foundRaw ? string.Join(" ", relevantLines.Select(a => PdfTextUtilities.Readable(a.Line.Text))) : null;
+        if (rawText is { Length: > 360 }) rawText = rawText[..360];
+        return new PdfCandidateRetrievalTrace(
+            expected, foundRaw, reasons, inStandard, inBroad, inWide, inSupplement, firstLoss, rawText);
+    }
+
+    private static IReadOnlyList<PdfLineBlockAnnotation> FindRawWindow(
+        IReadOnlyList<PdfLineBlockAnnotation> annotations,
+        string target)
+    {
+        if (target.Length == 0) return [];
+        var ordered = annotations.OrderBy(a => a.Line.Page).ThenByDescending(a => a.Line.Y).ThenBy(a => a.Line.Left).ToArray();
+        for (var start = 0; start < ordered.Length; start++)
+        {
+            var window = new List<PdfLineBlockAnnotation>(12);
+            for (var offset = 0; offset < 12 && start + offset < ordered.Length; offset++)
+            {
+                var current = ordered[start + offset];
+                if (current.Line.Page != ordered[start].Line.Page) break;
+                window.Add(current);
+                var text = PdfTextUtilities.CanonicalForMatch(string.Join(" ", window.Select(a => a.Line.Text)));
+                if (text.Contains(target, StringComparison.Ordinal)) return window;
+            }
+        }
+
+        return [];
+    }
+
+    private static bool LooksLikeSpacedLogoFragment(string text)
+    {
+        var tokens = text.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
+        if (tokens.Length < 4) return false;
+        return tokens.Count(t => t.Length == 1 && char.IsLetter(t[0])) / (double)tokens.Length >= 0.70;
     }
 
     private static PdfLayoutAlignmentResult AlignToDocx(
@@ -316,7 +735,9 @@ public static class PdfLayoutEvidenceOutline
         IReadOnlyList<PdfLineBlockAnnotation> Annotations,
         PdfStyleClusterProfile Profile,
         IReadOnlySet<PdfStyleKey> HeadingStyles,
-        IReadOnlyList<PdfSemanticBlock> Candidates);
+        IReadOnlyList<PdfSemanticBlock> Candidates,
+        IReadOnlySet<string> PriorityCandidateIds,
+        IReadOnlyDictionary<string, int> SupplementCandidateRanks);
 
     private static RouteBlockAudit ToAudit(PdfSemanticBlock block) =>
         new(block.Id, block.Page, block.DisplayText);

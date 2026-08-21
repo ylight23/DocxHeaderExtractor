@@ -994,7 +994,10 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             continue;
         }
 
-        var result = await PdfLayoutEvidenceOutline.TryBuildWithAnalystAsync(file, slim, analyst, ct);
+        var analystBudget = o.PdfStageAllCandidates ? 0 : o.PdfStageAnalystBlocks;
+        var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
+            file, slim, analyst, analystBudget, o.PdfStageWideCandidates,
+            o.PdfStageSupplementCandidates, ct);
         var audit = result.Audit;
         if (audit is null)
         {
@@ -1025,6 +1028,10 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
         var score = Evaluator.Score(file, finalOutline, [], key);
         var exact = Hits(result.Headings.Select(h => h.Text));
         var levelHits = truth.Count(e => result.Headings.Any(h => Canon(h.Text) == Canon(e.Text) && h.Level == e.Level));
+        var missingCandidateTitles = truth
+            .Where(e => !allCandidates.Any(b => Canon(b.Text) == Canon(e.Text)))
+            .Select(e => e.Text!)
+            .ToArray();
         rows.Add(new
         {
             file = Path.GetFileName(file), status = "measured", key = key.Count,
@@ -1036,7 +1043,15 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             titleExact = new { hits = exact, total = key.Count },
             levelAccuracy = new { hits = levelHits, total = key.Count },
             final = new { result = result.Headings.Count, precision = score.Precision, recall = score.Recall, f1 = score.F1, nav = score.NavigationRecall, navLevel = score.NavigationLevelAccuracy },
-            missingCandidateTitles = truth.Where(e => !allCandidates.Any(b => Canon(b.Text) == Canon(e.Text))).Select(e => e.Text).ToArray(),
+            rawAnalystResponses = o.Pipeline.ShowRawOutput ? audit.RawAnalystResponses : null,
+            candidateKeyTitles = o.Pipeline.ShowRawOutput
+                ? truth.Where(e => allCandidates.Any(b => Canon(b.Text) == Canon(e.Text))).Select(e => e.Text).ToArray()
+                : null,
+            analystVisibleKeyTitles = o.Pipeline.ShowRawOutput
+                ? truth.Where(e => selected.Any(b => Canon(b.Text) == Canon(e.Text))).Select(e => e.Text).ToArray()
+                : null,
+            missingCandidateTitles,
+            retrievalTrace = PdfLayoutEvidenceOutline.TraceCandidateRetrieval(file, missingCandidateTitles),
         });
     }
 
