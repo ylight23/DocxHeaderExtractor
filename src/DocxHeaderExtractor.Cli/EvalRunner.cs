@@ -56,7 +56,10 @@ public static class EvalRunner
         using var tool = new PipelineDocumentExtractionTool(options);
         var harness = new DocumentAgentHarness(tool);
         var scores = new List<DocScore>();
-        var calibration = new PrecisionCalibrationBuilder(PrecisionCalibrationProfile.ConfigurationFor(options));
+        var calibration = new PrecisionCalibrationBuilder(
+            PrecisionCalibrationProfile.ConfigurationFor(options),
+            options.TargetPrecision,
+            options.MinimumCalibrationSamples);
         var processingFailures = 0;
 
         foreach (var (docx, keyPath) in pairs)
@@ -134,6 +137,7 @@ public static class EvalRunner
             {
                 InferenceBackend.OpenRouter => options.OpenRouter.Model,
                 InferenceBackend.LmStudio => $"LM Studio/{options.LmStudio.Model}",
+                InferenceBackend.Sglang => $"SGLang/{options.Sglang.Model}",
                 _ => Path.GetFileNameWithoutExtension(options.Llama.ModelPath),
             };
 

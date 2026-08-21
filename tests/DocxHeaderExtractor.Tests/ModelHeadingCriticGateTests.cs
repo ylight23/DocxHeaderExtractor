@@ -66,4 +66,27 @@ public sealed class ModelHeadingCriticGateTests
 
         Assert.False(ModelHeadingCriticGate.NeedsCritique(heading, paragraph));
     }
+
+    [Fact]
+    public void Weak_evidence_threshold_is_configurable()
+    {
+        var paragraph = new SlimParagraph
+        {
+            Index = 7,
+            Text = "Kết quả thực hiện",
+            Score = 0.68,
+            Role = ParagraphRole.HeadingCandidate,
+        };
+        var heading = new HeadingRecord
+        {
+            Index = 7,
+            Text = paragraph.Text,
+            Level = 1,
+            Source = HeadingSource.Model,
+            Confidence = 0.68,
+        };
+
+        Assert.True(ModelHeadingCriticGate.NeedsCritique(heading, paragraph, weakEvidenceThreshold: 0.70));
+        Assert.False(ModelHeadingCriticGate.NeedsCritique(heading, paragraph, weakEvidenceThreshold: 0.60));
+    }
 }

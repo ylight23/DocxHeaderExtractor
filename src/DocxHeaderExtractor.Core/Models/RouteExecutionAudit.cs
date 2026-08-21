@@ -1,0 +1,34 @@
+using System.Text.Json.Serialization;
+
+namespace DocxHeaderExtractor.Core.Models;
+
+/// <summary>Auditable losses for a bounded route, especially PDF candidate/LLM/grounding pipelines.</summary>
+public sealed record RouteExecutionAudit(
+    [property: JsonPropertyName("summary")] string Summary,
+    [property: JsonPropertyName("candidatesAvailable")] int CandidatesAvailable,
+    [property: JsonPropertyName("candidatesSelected")] int CandidatesSelected,
+    [property: JsonPropertyName("candidatePagesAvailable")] int CandidatePagesAvailable,
+    [property: JsonPropertyName("candidatePagesSelected")] int CandidatePagesSelected,
+    [property: JsonPropertyName("candidateBlocks")] IReadOnlyList<RouteBlockAudit> CandidateBlocks,
+    [property: JsonPropertyName("selectedCandidateBlocks")] IReadOnlyList<RouteBlockAudit> SelectedCandidateBlocks,
+    [property: JsonPropertyName("budgetExcluded")] IReadOnlyList<RouteBlockAudit> BudgetExcluded,
+    [property: JsonPropertyName("blockDecisions")] IReadOnlyList<RouteBlockDecisionAudit> BlockDecisions,
+    [property: JsonPropertyName("groundedBlockIds")] IReadOnlyList<string> GroundedBlockIds,
+    [property: JsonPropertyName("groundingRejections")] IReadOnlyList<RouteBlockRejectionAudit> GroundingRejections,
+    [property: JsonPropertyName("alignedBlockIds")] IReadOnlyList<string> AlignedBlockIds);
+
+public sealed record RouteBlockAudit(
+    [property: JsonPropertyName("id")] string Id,
+    [property: JsonPropertyName("page")] int Page,
+    [property: JsonPropertyName("text")] string Text);
+
+public sealed record RouteBlockDecisionAudit(
+    [property: JsonPropertyName("id")] string Id,
+    [property: JsonPropertyName("role")] string Role,
+    [property: JsonPropertyName("confidence")] double Confidence);
+
+public sealed record RouteBlockRejectionAudit(
+    [property: JsonPropertyName("id")] string Id,
+    [property: JsonPropertyName("role")] string Role,
+    [property: JsonPropertyName("confidence")] double Confidence,
+    [property: JsonPropertyName("reason")] string Reason);

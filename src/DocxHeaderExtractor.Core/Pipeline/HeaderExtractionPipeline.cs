@@ -160,6 +160,20 @@ public sealed class PipelineOptions
     public bool PdfTextbookFallback { get; set; } = true;
 
     /// <summary>
+    /// Route PDF chung, không phụ thuộc ngôn ngữ hay thể loại: đo baseline layout, lọc header/footer
+    /// và bảng, gom block theo style rồi grounding về DOCX. Chỉ nhận outline thưa; tín hiệu quá dày
+    /// bị coi là content/table index và nhường cho tầng analyst hoặc route có evidence mạnh hơn.
+    /// </summary>
+    public bool PdfLayoutEvidenceFallback { get; set; }
+
+    /// <summary>
+    /// Slow lane for PDF layout candidates. The model sees at most 40 blocks that survived the
+    /// deterministic line/table/repeat filters; <see cref="PdfBlockGrounder"/> must ground every
+    /// accepted role back to extracted source text. Disabled by default until measured on keys.
+    /// </summary>
+    public bool PdfLayoutAnalystFallback { get; set; }
+
+    /// <summary>
     /// Dùng PDF cùng stem làm nguồn BOLD-RUN-ĐẦU-DÒNG cho nhóm biên bản/minutes ngắn khi DOCX rớt
     /// toàn bộ định dạng ký tự (không "b"/"br" nào còn, kể cả thân bài thật). Xem
     /// <see cref="PdfBoldLabelOutline"/>.
@@ -180,15 +194,14 @@ public sealed class PipelineOptions
     public bool PdfBoldLabelFallback { get; set; } = true;
 
     /// <summary>
-    /// Đọc JSON sidecar do Docling đã convert thành công rồi align ngược về DOCX như một candidate
-    /// deterministic. Route này KHÔNG gọi Python/Docling ở production; Docling chỉ là probe ngoài
-    /// luồng, còn quyết định nhận heading vẫn phải qua luật .NET + grounding span.
+    /// Đọc JSON sidecar Docling do người gọi chỉ định rồi align ngược về DOCX. Tắt mặc định: corpus
+    /// không có sidecar thật để hiệu chuẩn, nên đây là adapter sandbox/explicit-input chứ không phải
+    /// một PDF route production. DOCX vẫn là nguồn anchor/writeback.
     /// </summary>
-    public bool DoclingSidecarFallback { get; set; } = true;
+    public bool DoclingSidecarFallback { get; set; }
 
     /// <summary>
-    /// JSON Docling chỉ định tường minh cho một lượt chạy. Null thì tự dò file cùng stem:
-    /// <c>name.docling.json</c>, <c>name.json</c>, hoặc <c>.verify-build/docling/name.json</c>.
+    /// JSON Docling chỉ định tường minh cho một lượt chạy.
     /// </summary>
     public string? DoclingJsonPath { get; set; }
 
@@ -248,7 +261,7 @@ public sealed class PipelineOptions
 
     /// <summary>
     /// Chạy bộ suy cấp TẤT ĐỊNH (<see cref="StructuralHierarchyResolver"/> +
-    /// <see cref="TableOfContentsAnchor"/>) trên đường <c>--no-llm</c>.
+    /// <see cref="TableOfContentsAnchor"/>) cho kết quả deterministic, dù LLM đang bật hay tắt.
     /// <para>
     /// Hai bộ này không cần mô hình nhưng nằm trong <c>RunModelAsync</c>, nên đường không mô hình
     /// chưa bao giờ chạy chúng. Đo được trên <c>bench/02-dinh-dang-thu-cong</c>: đúng cấp 28,6%
@@ -258,8 +271,10 @@ public sealed class PipelineOptions
     /// <b>MẶC ĐỊNH BẬT</b>, khác với các cờ mới khác của dự án. Lý do: §10.4 cấm lật mặc định CHỈ
     /// vì bench, nhưng đây không phải mã chưa kiểm chứng. <see cref="StructuralHierarchyResolver"/>
     /// đã có bằng chứng đáp án NGƯỜI KIỂM (§31: đúng cấp 81,1% → 91,5% trên khoá luận thật) và
-    /// đường có mô hình chạy nó VÔ ĐIỀU KIỆN. Đường <c>--no-llm</c> bỏ nó là tai nạn vị trí mã,
-    /// không phải lựa chọn thiết kế — nên bật là sửa bất đối xứng, không phải thêm suy đoán.
+    /// đường có mô hình chạy nó VÔ ĐIỀU KIỆN trong <c>RunModelAsync</c>. Nhưng route deterministic
+    /// short-circuit trước <c>RunModelAsync</c>, nên nếu bỏ bước này khi LLM bật thì chỉ riêng việc
+    /// dùng Qwen để bù/xác minh đã làm mất pin cấp của route tất định. Đo được trên nhóm WB: bật
+    /// Qwen 27B từng làm Nav+cấp sập do bỏ bước này; chạy lại bước tất định đưa cấp về 100%.
     /// </para>
     /// <para>Tắt bằng <c>--no-deterministic-hierarchy</c> để đối chứng. Xem handoff §51.</para>
     /// </summary>
@@ -288,6 +303,19 @@ public sealed class PipelineOptions
 
     /// <summary>Số dự đoán holdout tối thiểu trong đúng evidence bucket.</summary>
     public int MinimumCalibrationSamples { get; set; } = 52;
+
+    /// <summary>
+    /// Ngưỡng điểm heuristic dưới đó model-only heading phải đi qua critic. Đây là policy có thể
+    /// hiệu chuẩn, không phải chân lý cố định; đưa vào configuration signature của calibration.
+    /// </summary>
+    public double ModelCriticWeakEvidenceThreshold { get; set; } = 0.70;
+
+    /// <summary>
+    /// Fallback confidence theo số evidence checks đã qua khi chưa có holdout bucket đo được.
+    /// Index 0..5 tương ứng 0/5..5/5. Khi có calibration profile, Wilson lower bound của bucket
+    /// thắng bảng này.
+    /// </summary>
+    public double[] EvidenceConfidenceTiers { get; set; } = [0.50, 0.60, 0.70, 0.80, 0.85, 0.95];
 
     /// <summary>Profile sinh từ `dhx eval ... --calibration-out`; null = evidence chưa calibration.</summary>
     public string? CalibrationProfilePath { get; set; } =
@@ -471,13 +499,66 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 tachDoanGop = false;
                 declared = TryBuildDeclaredOutline(slim, modeReport, false);
             }
-            var pdfTocFallback = PdfTocDictionaryOutline.TryBuild(inputPath, slim, modeReport);
+            // DOCX and PDF are two evidence sources for one common outline policy. The converted
+            // DOCX wins only when native structure actually survived; otherwise PDF is the primary
+            // source and DOCX remains the stable writeback/grounding target.
+            var hasNativeDocxEvidence = DocumentStructureEvidence.HasNativeSemanticStructure(slim);
+            var hasInternalOutlineEvidence = DocumentStructureEvidence.HasAuthoritativeInternalOutline(declared.Headings);
+            var hasExplicitLayoutSidecar = !string.IsNullOrWhiteSpace(_options.DoclingJsonPath);
+            var preferPdfEvidence = hasExplicitLayoutSidecar || (!hasNativeDocxEvidence && !hasInternalOutlineEvidence);
+            Log(hasExplicitLayoutSidecar
+                ? "Nguồn evidence: dùng sidecar layout do người gọi chỉ định; DOCX chỉ giữ neo/writeback."
+                : preferPdfEvidence
+                    ? "Nguồn evidence: DOCX không có cấu trúc native đủ mạnh, ưu tiên PDF/sidecar để nhận dạng; DOCX chỉ giữ neo/writeback."
+                : hasInternalOutlineEvidence
+                    ? "Nguồn evidence: giữ mục lục/nội dung nội tại của tài liệu; PDF layout không được đè outline điều hướng do tác giả khai báo."
+                    : "Nguồn evidence: giữ cấu trúc native DOCX; PDF chỉ là fallback khi outline DOCX không dựng được.");
+
+            var pdfBookmarkFallback = preferPdfEvidence
+                ? PdfBookmarkOutline.TryBuild(inputPath, slim)
+                : PdfBookmarkOutlineResult.NotApplicable("higher-priority-document-evidence");
+            if (pdfBookmarkFallback.Headings.Count > 0)
+                Log($"PDF bookmarks: dùng {pdfBookmarkFallback.Headings.Count} heading đã neo ({pdfBookmarkFallback.Reason}).");
+            else if (pdfBookmarkFallback.Reason is not "no-pdf" and not "no-pdf-bookmarks")
+                Log($"PDF bookmarks: bỏ qua ({pdfBookmarkFallback.Reason}).");
+
+            var pdfTocFallback = preferPdfEvidence && pdfBookmarkFallback.Headings.Count == 0
+                ? PdfTocDictionaryOutline.TryBuild(inputPath, slim, modeReport)
+                : PdfTocDictionaryOutlineResult.NotApplicable("higher-priority-document-evidence");
             if (pdfTocFallback.Headings.Count > 0)
                 Log($"PDF TOC dictionary: dùng {pdfTocFallback.Headings.Count} heading từ mục lục PDF ({pdfTocFallback.Reason}).");
             else if (pdfTocFallback.Reason is not "no-pdf" and not "no-strong-pdf-toc")
                 Log($"PDF TOC dictionary: bỏ qua ({pdfTocFallback.Reason}).");
 
-            var pdfFallback = pdfTocFallback.Headings.Count == 0 && _options.PdfTextbookFallback
+            var pdfTaggedFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0
+                ? PdfTaggedEvidenceOutline.TryBuild(inputPath, slim)
+                : PdfTaggedEvidenceOutlineResult.NotApplicable("higher-priority-document-evidence");
+            if (pdfTaggedFallback.Headings.Count > 0)
+                Log($"PDF tagged structure: dùng {pdfTaggedFallback.Headings.Count} heading đã neo ({pdfTaggedFallback.Reason}).");
+            else if (pdfTaggedFallback.Reason is not "no-pdf" and not "higher-priority-document-evidence")
+                Log($"PDF tagged structure: bỏ qua ({pdfTaggedFallback.Reason}).");
+
+            var pdfLayoutFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 && _options.PdfLayoutEvidenceFallback
+                ? PdfLayoutEvidenceOutline.TryBuild(inputPath, slim)
+                : PdfTextbookOutlineResult.NotApplicable("disabled");
+            if (pdfLayoutFallback.Headings.Count > 0)
+                Log($"PDF layout evidence: dùng {pdfLayoutFallback.Headings.Count} heading từ baseline/cụm/block ({pdfLayoutFallback.Reason}).");
+            else if (pdfLayoutFallback.Reason is not "disabled" and not "no-pdf")
+                Log($"PDF layout evidence: bỏ qua ({pdfLayoutFallback.Reason}).");
+
+            var pdfLayoutAnalystFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 &&
+                                           pdfLayoutFallback.Headings.Count == 0 &&
+                                           _options.PdfLayoutAnalystFallback && !_options.DisableLlm
+                ? await PdfLayoutEvidenceOutline.TryBuildWithAnalystAsync(
+                    inputPath, slim, await GetModelAsync(ct), ct)
+                : PdfTextbookOutlineResult.NotApplicable("disabled");
+            if (pdfLayoutAnalystFallback.Headings.Count > 0)
+                Log($"PDF layout analyst: dùng {pdfLayoutAnalystFallback.Headings.Count} heading đã grounding block ({pdfLayoutAnalystFallback.Reason}).");
+            else if (pdfLayoutAnalystFallback.Reason is not "disabled" and not "no-pdf")
+                Log($"PDF layout analyst: bỏ qua ({pdfLayoutAnalystFallback.Reason}).");
+
+            var pdfFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 && pdfLayoutFallback.Headings.Count == 0 &&
+                              pdfLayoutAnalystFallback.Headings.Count == 0 && _options.PdfTextbookFallback
                 ? PdfTextbookOutline.TryBuild(inputPath, slim, modeReport)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
             if (pdfFallback.Headings.Count > 0)
@@ -485,7 +566,9 @@ public sealed class HeaderExtractionPipeline : IDisposable
             else if (pdfFallback.Reason is not "disabled" and not "no-pdf")
                 Log($"PDF textbook fallback: bỏ qua ({pdfFallback.Reason}).");
 
-            var pdfFinancialFallback = pdfTocFallback.Headings.Count == 0 &&
+            var pdfFinancialFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 &&
+                                       pdfLayoutFallback.Headings.Count == 0 &&
+                                       pdfLayoutAnalystFallback.Headings.Count == 0 &&
                                        pdfFallback.Headings.Count == 0 &&
                                        _options.PdfBoldLabelFallback
                 ? PdfFinancialReportOutline.TryBuild(inputPath, slim, modeReport)
@@ -495,7 +578,9 @@ public sealed class HeaderExtractionPipeline : IDisposable
             else if (pdfFinancialFallback.Reason is not "disabled" and not "no-pdf" and not "not-financial-report-layout")
                 Log($"PDF financial-report fallback: bỏ qua ({pdfFinancialFallback.Reason}).");
 
-            var pdfBoldFallback = pdfTocFallback.Headings.Count == 0 &&
+            var pdfBoldFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 &&
+                                  pdfLayoutFallback.Headings.Count == 0 &&
+                                  pdfLayoutAnalystFallback.Headings.Count == 0 &&
                                   pdfFallback.Headings.Count == 0 &&
                                   pdfFinancialFallback.Headings.Count == 0 &&
                                   _options.PdfBoldLabelFallback
@@ -506,11 +591,13 @@ public sealed class HeaderExtractionPipeline : IDisposable
             else if (pdfBoldFallback.Reason is not "disabled" and not "no-pdf")
                 Log($"PDF bold-label fallback: bỏ qua ({pdfBoldFallback.Reason}).");
 
-            var doclingFallback = pdfTocFallback.Headings.Count == 0 &&
+            var doclingFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 &&
+                                  pdfLayoutFallback.Headings.Count == 0 &&
+                                  pdfLayoutAnalystFallback.Headings.Count == 0 &&
                                   pdfFallback.Headings.Count == 0 &&
                                   pdfFinancialFallback.Headings.Count == 0 &&
                                   pdfBoldFallback.Headings.Count == 0 &&
-                                  _options.DoclingSidecarFallback
+                                  (_options.DoclingSidecarFallback || hasExplicitLayoutSidecar)
                 ? DoclingLayoutOutline.TryBuild(inputPath, slim, modeReport, _options.DoclingJsonPath)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
             if (doclingFallback.Headings.Count > 0)
@@ -522,7 +609,9 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // trên cùng tài liệu (bold-label bắt được khối tiêu đề/nhãn trần, session-code bắt được
             // các mục "D<n>.<nn> -" mà bold-label bỏ sót vì không phải bold) — hợp lại thay vì chọn
             // một, rồi khử trùng theo (Index, Text).
-            var sessionCodeFallback = pdfTocFallback.Headings.Count == 0 &&
+            var sessionCodeFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 &&
+                                      pdfLayoutFallback.Headings.Count == 0 &&
+                                      pdfLayoutAnalystFallback.Headings.Count == 0 &&
                                       pdfFallback.Headings.Count == 0 &&
                                       _options.SessionCodeFallback
                 ? SessionCodeOutline.Build(slim, modeReport)
@@ -532,8 +621,20 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
             var boldAndSessionCode = MergeBySourceIdentity(pdfBoldFallback.Headings, sessionCodeFallback);
 
-            List<HeadingRecord> headings = pdfTocFallback.Headings.Count > 0
+            List<HeadingRecord> headings = pdfBookmarkFallback.Headings.Count > 0
+                ? [.. pdfBookmarkFallback.Headings]
+                : pdfTocFallback.Headings.Count > 0
                 ? [.. pdfTocFallback.Headings]
+                : pdfTaggedFallback.Headings.Count > 0
+                ? [.. pdfTaggedFallback.Headings]
+                // A labelled legal hierarchy is explicit document structure. Visual PDF routes
+                // are fallbacks and must not replace it with clipped bold fragments.
+                : declared.Route == "auto:vietnamese-legal" && declared.Headings is { Count: > 0 } legal
+                ? legal
+                : pdfLayoutFallback.Headings.Count > 0
+                    ? [.. pdfLayoutFallback.Headings]
+                : pdfLayoutAnalystFallback.Headings.Count > 0
+                    ? [.. pdfLayoutAnalystFallback.Headings]
                 : pdfFallback.Headings.Count > 0
                     ? [.. pdfFallback.Headings]
                 : pdfFinancialFallback.Headings.Count > 0
@@ -547,27 +648,48 @@ public sealed class HeaderExtractionPipeline : IDisposable
                         : _options.DisableLlm
                             ? HeuristicOnly(candidates)
                             : await RunModelAsync(slim, candidates, quarantined, modeReport.Mode, ct);
+            if (declared.Route == "auto:vietnamese-legal" &&
+                headings.All(h => h.ConfidenceBasis == "legal_marker_declared"))
+            {
+                var groundedTitles = PdfLegalTitleGrounder.Apply(inputPath, headings);
+                if (groundedTitles > 0)
+                    Log($"PDF legal title grounding: cắt sạch {groundedTitles} title theo dòng PDF.");
+            }
             var deterministicRoute = SelectedDeterministicRoute(
                 declared.Route,
+                pdfBookmarkFallback.Headings.Count,
                 pdfTocFallback.Headings.Count,
+                pdfTaggedFallback.Headings.Count,
+                pdfLayoutFallback.Headings.Count,
+                pdfLayoutAnalystFallback.Headings.Count,
                 pdfFallback.Headings.Count,
                 pdfFinancialFallback.Headings.Count,
                 pdfBoldFallback.Headings.Count,
                 doclingFallback.Headings.Count,
                 sessionCodeFallback.Count);
+            var routeAudit = pdfLayoutFallback.Headings.Count > 0
+                ? pdfLayoutFallback.Audit
+                    : pdfLayoutAnalystFallback.Headings.Count > 0
+                        ? pdfLayoutAnalystFallback.Audit
+                        : pdfFallback.Headings.Count > 0
+                            ? pdfFallback.Audit
+                            : pdfFinancialFallback.Headings.Count > 0
+                                ? pdfFinancialFallback.Audit
+                                : doclingFallback.Headings.Count > 0
+                                    ? doclingFallback.Audit
+                                    : null;
 
             // StructuralHierarchyResolver và TableOfContentsAnchor đều TẤT ĐỊNH và không cần mô
-            // hình, nhưng cả hai nằm trong RunModelAsync nên đường --no-llm chưa bao giờ chạy
-            // chúng. Bất đối xứng này đo được trên bench/02-dinh-dang-thu-cong: đúng cấp 28,6%,
-            // 5/7 mục nông hơn đáp án đúng một cấp, trong khi gọi thẳng resolver cho đúng cả 7.
-            // Mọi con số --no-llm trước đây — kể cả loạt 95 file §45–§48 — đều thiếu bước này.
-            if (_options.DisableLlm && _options.DeterministicHierarchy)
+            // hình. Nếu kết quả hiện tại đến từ route deterministic declared/PDF fallback thì vẫn
+            // phải chạy chúng cả khi LLM bật; nếu không, bật Qwen chỉ để bù/xác minh lại vô tình
+            // bỏ mất bước pin cấp mà đường --no-llm có chạy (đã làm nhóm WB sai cấp hàng loạt).
+            if (_options.DeterministicHierarchy && (_options.DisableLlm || deterministicRoute is not null))
             {
                 // InlineHeadingSplitter cũng tất định (ranh giới do OOXML hoặc token dữ liệu chứng
                 // minh, không do mô hình đoán) và cũng nằm trong RunModelAsync — cùng bất đối xứng
                 // §51 đã sửa cho hai bộ kia.
-                if (declared.Route is "auto:rfc-toc-dictionary" or "auto:book-toc-dictionary" ||
-                    deterministicRoute == "auto:pdf-toc-dictionary")
+                if (declared.Route is "auto:rfc-toc-dictionary" or "auto:book-toc-dictionary" or "auto:financial-statement-toc" ||
+                    deterministicRoute is "auto:pdf-toc-dictionary" or "auto:pdf-tagged-structure")
                 {
                     Log("Tách nội dung cùng dòng: bỏ qua vì tiêu đề đã lấy sạch từ từ điển mục lục.");
                 }
@@ -601,6 +723,12 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     // trong TOC text, cùng lý do miễn trừ resolver generic như hai route trên.
                     Log("Hậu xử lý hierarchy: giữ cấp PART/Section theo TOC text, bỏ qua suy cấp generic.");
                 }
+                else if (declared.Route == "auto:financial-statement-toc")
+                {
+                    // FinancialStatementsTocOutline lấy cấp từ Contents của chính báo cáo:
+                    // Section/Appendix là cấp 1, mục con có page là cấp 2. Body chỉ là anchor.
+                    Log("Hậu xử lý hierarchy: giữ cấp financial-statement theo Contents text, bỏ qua suy cấp generic.");
+                }
                 else if (declared.Route == "auto:rfc-toc-dictionary")
                 {
                     // RfcTocDictionaryOutline đã lấy cấp trực tiếp từ số mục trong TOC text
@@ -613,7 +741,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     // (Part/Chapter/section), còn body chỉ là neo vị trí.
                     Log("Hậu xử lý hierarchy: giữ cấp textbook theo từ điển mục lục, bỏ qua suy cấp generic.");
                 }
-                else if (deterministicRoute == "auto:pdf-toc-dictionary")
+                else if (deterministicRoute is "auto:pdf-toc-dictionary" or "auto:pdf-tagged-structure")
                 {
                     // PdfTocDictionaryOutline lấy title/cấp từ TOC PDF và chỉ dùng thân bài để
                     // neo vị trí; resolver generic không có bằng chứng tốt hơn TOC của tác giả.
@@ -630,7 +758,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 {
                     var fixes = StructuralHierarchyResolver.Apply(headings, slim, _options.Extraction.UseStyleTrust);
                     var pinned = TableOfContentsAnchor.Apply(headings, slim);
-                    if (fixes > 0) Log($"Hậu xử lý hierarchy (không mô hình): sửa {fixes} cấp.");
+                    if (fixes > 0) Log($"Hậu xử lý hierarchy tất định: sửa {fixes} cấp.");
                     if (pinned > 0) Log($"Mục lục của tài liệu pin lại {pinned} cấp.");
                 }
             }
@@ -639,8 +767,9 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // có score 0 và role Normal, nên nó không bao giờ lọt vào ứng viên để mà cứu.
             // Route text-toc/RFC-dictionary là điều hướng CÓ CHỦ Ý hẹp — quét lại toàn tài liệu
             // ở đây sẽ kéo lại đúng loại nhiễu mà các route này được chọn để né.
-            if (tachDoanGop && declared.Route is not ("auto:part-section-text-toc" or "auto:rfc-toc-dictionary" or "auto:book-toc-dictionary" or "auto:pdf-financial-report") &&
-                deterministicRoute != "auto:pdf-toc-dictionary")
+            if (tachDoanGop && declared.Route is not ("auto:part-section-text-toc" or "auto:financial-statement-toc" or "auto:rfc-toc-dictionary" or "auto:book-toc-dictionary" or "auto:pdf-financial-report") &&
+                deterministicRoute is not ("auto:pdf-toc-dictionary" or "auto:pdf-tagged-structure") &&
+                !TypedNumberingOutline.LooksLikeQuantitativeTypedLayout(slim))
             {
                 var added = MergedParagraphHeadings(slim, headings);
                 if (added.Count > 0)
@@ -664,14 +793,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
             headings = headings.Where(h =>
             {
                 var text = (h.Text ?? string.Empty).Trim();
-                var spanStart = 0;
-                var spanEnd = 0;
-                if (h.ConfidenceBasis == PdfFinancialReportOutline.Basis &&
-                    h.HeadingSpan is { } span)
-                {
-                    spanStart = span.Start;
-                    spanEnd = span.End;
-                }
+                var spanStart = h.HeadingSpan?.Start ?? 0;
+                var spanEnd = h.HeadingSpan?.End ?? 0;
 
                 return trung.Add((h.Index, text, spanStart, spanEnd));
             }).ToList();
@@ -688,6 +811,11 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 headings.AddRange(autoAssigned.Where(h => !present.Contains(h.Index)));
                 headings.Sort((a, b) => a.Index.CompareTo(b.Index));
             }
+
+            var artifactFilter = HeadingArtifactFilter.Apply(headings, slim);
+            if (artifactFilter.Removed > 0)
+                Log($"Artifact heading filter: loại {artifactFilter.Removed} mục " +
+                    $"({string.Join(", ", artifactFilter.Reasons.Select(kv => $"{kv.Key}={kv.Value}"))}).");
 
             if (_options.NormalizeLevels) NormalizeLevels(headings);
 
@@ -711,23 +839,28 @@ public sealed class HeaderExtractionPipeline : IDisposable
                         $"{headings.Count(h => h.Disputed)} tiêu đề được đánh dấu xem lại.");
             }
 
-            var calibrated = EvidenceConfidenceCalibrator.Apply(headings, slim, auditConflicts);
+            var calibrated = EvidenceConfidenceCalibrator.Apply(
+                headings, slim, auditConflicts, _options.EvidenceConfidenceTiers);
             if (calibrated > 0)
                 Log($"Tự đánh giá evidence: {calibrated} heading Structure; " +
                     $"{headings.Count(h => h.Source == HeadingSource.Structure && h.Confidence >= 0.95)} đạt đủ 5 kiểm tra.");
 
             PrecisionAcceptanceGate.Apply(headings, _calibrationProfile,
                 _options.TargetPrecision, _options.MinimumCalibrationSamples,
-                _model?.ModelName, PrecisionCalibrationProfile.ConfigurationFor(_options));
+                _model?.ModelName, PrecisionCalibrationProfile.ConfigurationFor(_options),
+                _options.EvidenceConfidenceTiers);
+            var decisionAudit = BuildDecisionAudit(headings);
             var auto = headings.Count(h => h.DecisionStatus is not HeadingDecisionStatus.RequiresReview);
             var review = headings.Count(h => h.DecisionStatus == HeadingDecisionStatus.RequiresReview);
+            var effectiveTargetPrecision = _calibrationProfile?.TargetPrecision ?? _options.TargetPrecision;
             // Chưa có holdout thì KHÔNG phát biểu như một phán quyết về precision: con số lúc đó chỉ
             // là bậc theo số kiểm tra bằng chứng đã qua. §37 đo được cái giá của việc nói nhầm.
             Log(_calibrationProfile is null
                 ? $"Xếp theo bằng chứng (chưa calibration bằng holdout): {auto} bằng chứng đủ, " +
-                  $"{review} bằng chứng yếu — nên xem."
-                : $"Cổng precision {_options.TargetPrecision:P0}: {auto} tự nhận, {review} cần duyệt " +
-                  $"(profile {_calibrationProfile.Documents} tài liệu holdout).");
+                  $"{review} bằng chứng yếu — nên xem. {DecisionAuditSummary(decisionAudit)}"
+                : $"Cổng precision {effectiveTargetPrecision:P0}: {auto} tự nhận, {review} cần duyệt " +
+                  $"(profile {_calibrationProfile.Documents} tài liệu holdout). " +
+                  DecisionAuditSummary(decisionAudit));
 
             sw.Stop();
 
@@ -741,7 +874,9 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 Model = _options.DisableLlm ? null : _model?.ModelName ?? ConfiguredModelName(),
                 DocumentMode = modeReport,
                 DeterministicRoute = deterministicRoute,
+                RouteAudit = routeAudit,
                 Diagnostics = diagnostics,
+                DecisionAudit = decisionAudit,
                 Provenance = _options.DisableLlm
                     ? null
                     : new OutlineRunProvenance(
@@ -773,24 +908,71 @@ public sealed class HeaderExtractionPipeline : IDisposable
             : Path.GetFileName(_options.Llama.ModelPath),
     };
 
+    private static PrecisionDecisionAudit BuildDecisionAudit(IReadOnlyList<HeadingRecord> headings)
+    {
+        var calibrated = 0;
+        var deterministic = 0;
+        var uncalibratedEvidence = 0;
+        var human = 0;
+        var review = 0;
+
+        foreach (var h in headings)
+        {
+            switch (h.DecisionStatus)
+            {
+                case HeadingDecisionStatus.AutoAcceptedCalibrated:
+                    calibrated++;
+                    break;
+                case HeadingDecisionStatus.HumanVerified:
+                    human++;
+                    break;
+                case HeadingDecisionStatus.AutoAcceptedEvidence:
+                    if (IsDeterministicDecision(h)) deterministic++;
+                    else uncalibratedEvidence++;
+                    break;
+                default:
+                    review++;
+                    break;
+            }
+        }
+
+        var byBasis = headings
+            .GroupBy(h => string.IsNullOrWhiteSpace(h.ConfidenceBasis) ? "(empty)" : h.ConfidenceBasis)
+            .OrderBy(g => g.Key, StringComparer.Ordinal)
+            .ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal);
+
+        return new PrecisionDecisionAudit(
+            AutoAcceptedTotal: calibrated + deterministic + uncalibratedEvidence + human,
+            AutoAcceptedCalibrated: calibrated,
+            AutoAcceptedDeterministic: deterministic,
+            AutoAcceptedUncalibratedEvidence: uncalibratedEvidence,
+            HumanVerified: human,
+            RequiresReview: review,
+            ByConfidenceBasis: byBasis);
+    }
+
+    private static bool IsDeterministicDecision(HeadingRecord heading) =>
+        heading.ConfidenceBasis == OoxmlStyleAutoAssign.Basis ||
+        PrecisionAcceptanceGate.IsDeterministicDeclaredBasis(heading.ConfidenceBasis ?? "");
+
+    private static bool HasDeclaredDeterministicLevel(HeadingRecord heading) =>
+        IsDeterministicDecision(heading);
+
+    private static void RestorePinnedLevels(IEnumerable<HeadingRecord> headings, IReadOnlyDictionary<int, int> pinnedLevels)
+    {
+        if (pinnedLevels.Count == 0) return;
+        foreach (var heading in headings)
+            if (pinnedLevels.TryGetValue(heading.Index, out var level))
+                heading.Level = level;
+    }
+
+    private static string DecisionAuditSummary(PrecisionDecisionAudit audit) =>
+        $"audit: calibrated={audit.AutoAcceptedCalibrated}, deterministic={audit.AutoAcceptedDeterministic}, " +
+        $"evidence_unmeasured={audit.AutoAcceptedUncalibratedEvidence}, human={audit.HumanVerified}, " +
+        $"review={audit.RequiresReview}.";
+
     /// <summary>
     /// Luật deterministic dựng KHUNG; phần còn lại đưa mô hình phân định rồi ghép vào khung đó.
-    /// <para>
-    /// <b>Vì sao có điều kiện.</b> Gọi mô hình vô điều kiện đã đo: <c>bench</c> không chạy xong nổi
-    /// trong 10 phút. Tín hiệu dùng ở đây là tín hiệu của <see cref="MergedParagraphAutoSplit"/> —
-    /// so cái luật dựng được với cái tầng ứng viên nhìn thấy. <c>bench/04</c> có 7 ứng viên mà luật
-    /// chỉ dựng 3 nên gọi mô hình; <c>010_Luat_An_ninh_mang</c> có 2 ứng viên mà luật dựng 50 nên
-    /// KHÔNG gọi, giữ nguyên 0,4s.
-    /// </para>
-    /// <para>
-    /// <b>Ghép theo ĐOẠN, và phải SẮP LẠI.</b> Chỉ nhận mục của mô hình ở paragraph mà luật chưa có
-    /// mục nào — cùng một đoạn thì luật thắng vì nó có bằng chứng cấu trúc. Bản đầu nối mục bù vào
-    /// cuối danh sách, cho thứ tự <c>[7,10,13,3]</c>, và validator bác NGUYÊN kết quả; harness cách
-    /// ly đoạn 3 rồi dựng lại nên mục bù biến mất trong khi log vẫn báo đã bù. Mất hai vòng mới truy
-    /// ra, vì triệu chứng ("bù rồi nhưng không thấy") trỏ nhầm sang tầng lọc phía sau.
-    /// </para>
-    /// </summary>
-    /// <summary>
     /// Luật phải phủ dưới ngần này tỉ lệ ứng viên thì mới coi là CÒN SÓT và gọi mô hình.
     /// <para>
     /// Bản đầu dùng <c>luat.Count &lt; candidates.Count</c> — quá lỏng, và đo được cái giá ngay:
@@ -805,6 +987,9 @@ public sealed class HeaderExtractionPipeline : IDisposable
     ///   056_OpenStax             46/60  = 77%   → không (đang đúng 46/46)
     ///   027_WB_RFB_Non          239/251 = 95%   → không
     /// </code>
+    /// <b>Ghép theo ĐOẠN, và phải SẮP LẠI.</b> Chỉ nhận mục của mô hình ở paragraph mà luật chưa có
+    /// mục nào — cùng một đoạn thì luật thắng vì nó có bằng chứng cấu trúc. Bản đầu nối mục bù vào
+    /// cuối danh sách, cho thứ tự <c>[7,10,13,3]</c>, và validator bác nguyên kết quả.
     /// </summary>
     private const double TyLeConSot = 0.5;
 
@@ -930,6 +1115,25 @@ public sealed class HeaderExtractionPipeline : IDisposable
         if (!manual && route == "auto:typed-numbering" && PartSectionOutline.HasTextTocSignal(slim))
             route = "auto:part-section-text-toc";
 
+        if (!manual && route == "auto:typed-numbering" && FinancialStatementsTocOutline.HasTextTocSignal(slim))
+            route = "auto:financial-statement-toc";
+
+        if (!manual &&
+            modeReport.Mode == DocumentMode.FormatDriven &&
+            route == "auto:vietnamese-administrative" &&
+            modeReport.VietnameseAdminRatio <= 0)
+        {
+            Log("Auto mode FormatDriven: không có tín hiệu hành chính Việt Nam nên không dùng fallback administrative.");
+            return (null, null);
+        }
+
+        if (!manual && route == "auto:typed-numbering" && tachDoanGop &&
+            TypedNumberingOutline.LooksLikeQuantitativeTypedLayout(slim))
+        {
+            Log("Auto mode typed-numbering: bỏ qua vì marker số gõ tay chủ yếu là số lượng/bảng, không phải outline.");
+            return (null, null);
+        }
+
         if (route is null) return (null, null);
 
         var headings = route switch
@@ -952,6 +1156,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 bookTocDictionary?.Headings.ToList() ?? BookTocDictionaryOutline.Build(slim).ToList(),
             "auto:part-section-text-toc" =>
                 PartSectionOutline.BuildFromTextToc(slim),
+            "auto:financial-statement-toc" =>
+                FinancialStatementsTocOutline.Build(slim),
             "auto:vietnamese-legal" =>
                 LegalStructuredOutline.Build(slim, tachDoanGop),
             _ => null,
@@ -1026,14 +1232,23 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
     private static string? SelectedDeterministicRoute(
         string? declaredRoute,
+        int pdfBookmarkCount,
         int pdfTocCount,
+        int pdfTaggedCount,
+        int pdfLayoutCount,
+        int pdfLayoutAnalystCount,
         int pdfTextbookCount,
         int pdfFinancialCount,
         int pdfBoldCount,
         int doclingCount,
         int sessionCodeCount)
     {
+        if (pdfBookmarkCount > 0) return "auto:pdf-bookmarks";
         if (pdfTocCount > 0) return "auto:pdf-toc-dictionary";
+        if (pdfTaggedCount > 0) return "auto:pdf-tagged-structure";
+        if (declaredRoute == "auto:vietnamese-legal") return declaredRoute;
+        if (pdfLayoutCount > 0) return "auto:pdf-layout-evidence";
+        if (pdfLayoutAnalystCount > 0) return "auto:pdf-layout-block-grounded";
         if (pdfTextbookCount > 0) return "auto:pdf-textbook-layout";
         if (pdfFinancialCount > 0) return "auto:pdf-financial-report";
         if (pdfBoldCount > 0 && sessionCodeCount > 0) return "auto:pdf-bold-label+session-code";
@@ -1272,8 +1487,10 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 StyleId = p.StyleId,
                 Source = HeadingSource.Model,
                 ModelConfirmed = true,
-                Confidence = ModelConfidenceCalibrator.FromPasses(
-                    p.Role == ParagraphRole.StyledHeading, passB is not null, inPassA, inPassB),
+                // Confidence cuối do EvidenceConfidenceCalibrator/PrecisionAcceptanceGate quyết.
+                // Không gán tier 0.75/0.80/0.85 theo số lượt LLM nữa: đó là thang cũ làm UI giống
+                // như model đã tự có xác suất, trong khi thực tế chỉ là phiếu semantic chưa grounded.
+                Confidence = 1.0,
                 // Giữ lại vì MỘT lượt nhận, lượt kia loại ⇒ mô hình không ổn định ở đây.
                 Disputed = passB is not null && inPassA != inPassB,
             };
@@ -1311,7 +1528,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 ModelConfirmed = false,
                 // Không tự nhận: mô hình nói đây là tiêu đề của cả văn bản, mà tiêu đề văn bản
                 // không đương nhiên thuộc cây mục lục. Để người duyệt quyết định.
-                Confidence = 0.5,
+                Confidence = 1.0,
                 Disputed = true,
             };
         }
@@ -1376,7 +1593,9 @@ public sealed class HeaderExtractionPipeline : IDisposable
         // normal. Đây là kiểm tra ngữ nghĩa tổng quát; không hardcode văn bản hay từ khóa cụ thể.
         var semanticRejectedIndexes = new HashSet<int>();
         var weakModelIndexes = accepted.Values
-            .Where(h => slim.ByIndex(h.Index) is { } p && ModelHeadingCriticGate.NeedsCritique(h, p))
+            .Where(h => slim.ByIndex(h.Index) is { } p &&
+                        ModelHeadingCriticGate.NeedsCritique(
+                            h, p, _options.ModelCriticWeakEvidenceThreshold))
             .Select(h => h.Index)
             .ToHashSet();
         // Chỉ phản biện khi CÓ DẤU HIỆU, không phản biện theo lịch. Hai nguồn dấu hiệu:
@@ -1463,7 +1682,6 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 if (titleClaims.Contains(index))
                 {
                     heading.CriticConfirmed = false;
-                    heading.Confidence = Math.Min(heading.Confidence, 0.5);
                     heading.Disputed = true;
                     disputedTitles++;
                 }
@@ -1476,7 +1694,6 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     // toàn style chuẩn — critic loại 3 mục và đó đúng là 3 mục bị thiếu.
                     // Không tự nhận, nhưng cũng không xoá: đẩy sang cần duyệt.
                     heading.CriticConfirmed = false;
-                    heading.Confidence = Math.Min(heading.Confidence, 0.5);
                     heading.Disputed = true;
                     protectedStyles++;
                 }
@@ -1489,7 +1706,6 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 else if (critic.Votes.ContainsKey(index))
                 {
                     heading.CriticConfirmed = true;
-                    heading.Confidence = ModelConfidenceCalibrator.CriticConfirmed;
                     confirmed++;
                 }
                 else if (builtInStyle)
@@ -1499,7 +1715,6 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     // xoá vì thiếu câu trả lời là xoá vì thiếu bằng chứng, ngược hẳn với xoá vì có
                     // bằng chứng phản bác.
                     heading.CriticConfirmed = false;
-                    heading.Confidence = Math.Min(heading.Confidence, 0.5);
                     heading.Disputed = true;
                     protectedStyles++;
                 }
@@ -1567,7 +1782,6 @@ public sealed class HeaderExtractionPipeline : IDisposable
         {
             var heading = accepted[index];
             heading.CriticConfirmed = false;
-            heading.Confidence = Math.Min(heading.Confidence, 0.5);
             heading.Disputed = true;
         }
         if (reintroduced.Count > 0)
@@ -1627,11 +1841,17 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     heading.ModelConfirmed = verification.Votes.ContainsKey(index);
         }
 
+        var pinnedLevels = accepted.Values
+            .Where(HasDeclaredDeterministicLevel)
+            .ToDictionary(h => h.Index, h => h.Level);
+
         if (_options.GlobalHierarchy && accepted.Count > 0)
             await ReconcileHierarchyAsync(llm, accepted, slim, ct);
+        RestorePinnedLevels(accepted.Values, pinnedLevels);
 
         var result = accepted.Values.OrderBy(h => h.Index).ToList();
         var structuralFixes = StructuralHierarchyResolver.Apply(result, slim, _options.Extraction.UseStyleTrust);
+        RestorePinnedLevels(result, pinnedLevels);
 
         // Mục lục của chính tài liệu pin cấp SAU bộ suy cấp, không phải trước. Đặt trước thì
         // StructuralHierarchyResolver chạy sau và ghi đè lại — đo được: pin 8 cấp mà đúng cấp không
@@ -1680,6 +1900,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                                || slim.StyleTrust is null || slim.StyleTrust.LevelTrusted;
         var askable = ordered
             .Where(h => slim.ByIndex(h.Index) is { } p &&
+                        !HasDeclaredDeterministicLevel(h) &&
                         p.NumberingStyleLevel is null &&
                         !(p.HasBuiltInHeadingStyle && _options.LevelFromOutline && styleMayPinLevel))
             .ToList();

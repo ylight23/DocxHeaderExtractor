@@ -71,7 +71,8 @@ public class NhanKhongDauNgatQuaCacCongTests
     /// <b>Ghim hợp đồng bump chữ ký.</b> Chú thích của
     /// <see cref="PrecisionCalibrationProfile.CurrentPipelineSignature"/> viết rõ: đổi phân phối dự
     /// đoán thì profile holdout cũ KHÔNG được âm thầm hiệu chỉnh pipeline này. §55.2 đã đổi phân
-    /// phối (15 mục chuyển bucket, đo trên corpus), nên chữ ký phải là v3.
+    /// phối. Lần này các ngưỡng gate/confidence chuyển thành cấu hình có thể hiệu chuẩn, nên profile
+    /// cũ không còn mô tả cùng runtime policy.
     /// <para>
     /// Test này không kiểm được "có bump khi cần" một cách tổng quát — không máy nào biết điều đó.
     /// Nó ghim rằng lần bump NÀY đã xảy ra, để ai hạ chữ ký về v2 phải giải trình.
@@ -80,7 +81,7 @@ public class NhanKhongDauNgatQuaCacCongTests
     [Fact]
     public void Chu_ky_pipeline_da_bump_sau_khi_doi_phan_phoi()
     {
-        Assert.Equal("dhx-semantic-precision/2026-08-13-v4",
+        Assert.Equal("dhx-semantic-precision/2026-08-21-v5-configured-gates",
             PrecisionCalibrationProfile.CurrentPipelineSignature);
     }
 

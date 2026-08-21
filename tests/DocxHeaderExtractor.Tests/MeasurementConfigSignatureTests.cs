@@ -68,6 +68,28 @@ public sealed class MeasurementConfigSignatureTests
             PrecisionCalibrationProfile.ConfigurationFor(b));
     }
 
+    [Fact]
+    public void Critic_threshold_lam_doi_chu_ky_cau_hinh()
+    {
+        var a = new PipelineOptions();
+        var b = new PipelineOptions { ModelCriticWeakEvidenceThreshold = 0.42 };
+
+        Assert.NotEqual(
+            PrecisionCalibrationProfile.ConfigurationFor(a),
+            PrecisionCalibrationProfile.ConfigurationFor(b));
+    }
+
+    [Fact]
+    public void Evidence_tiers_lam_doi_chu_ky_cau_hinh()
+    {
+        var a = new PipelineOptions();
+        var b = new PipelineOptions { EvidenceConfidenceTiers = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6] };
+
+        Assert.NotEqual(
+            PrecisionCalibrationProfile.ConfigurationFor(a),
+            PrecisionCalibrationProfile.ConfigurationFor(b));
+    }
+
     /// <summary>Cùng cấu hình thì phải cùng chữ ký — nếu không, mọi profile đều tự vô hiệu.</summary>
     [Fact]
     public void Cung_cau_hinh_thi_cung_chu_ky()

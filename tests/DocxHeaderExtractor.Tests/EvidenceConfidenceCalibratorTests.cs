@@ -89,6 +89,16 @@ public sealed class EvidenceConfidenceCalibratorTests
         Assert.Equal(expected, EvidenceConfidenceCalibrator.ConfidenceForChecks(passed));
     }
 
+    [Fact]
+    public void Evidence_tiers_can_come_from_calibration_profile()
+    {
+        var tiers = new[] { 0.11, 0.22, 0.33, 0.44, 0.55, 0.66 };
+
+        Assert.Equal(0.11, EvidenceConfidenceCalibrator.ConfidenceForChecks(-1, tiers));
+        Assert.Equal(0.44, EvidenceConfidenceCalibrator.ConfidenceForChecks(3, tiers));
+        Assert.Equal(0.66, EvidenceConfidenceCalibrator.ConfidenceForChecks(99, tiers));
+    }
+
     private static SlimDocument Document()
     {
         var ps = new[]

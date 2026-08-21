@@ -50,4 +50,29 @@ public class CorruptParagraphTests
     {
         Assert.False(CorruptParagraphDetector.IsDoubled("Nhanh chóng nghiêm ngặt nghiên cứu ngành nghề"));
     }
+
+    /// <summary>
+    /// Dot-leader, gạch dưới điền form và dấu chấm lửng là chuỗi ký tự lặp HỢP LỆ, không phải hai luồng
+    /// run của ca gốc. Đo trên corpus trước khi sửa: 601/601 đoạn bị gắn cờ (100%) đều thuộc dạng này —
+    /// heuristic cũ ghép cặp cả dấu câu nên dương giả có hệ thống (handoff §174).
+    /// </summary>
+    [Theory]
+    [InlineData("8.6 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . 128")]
+    [InlineData("Country: _____________________________________________________")]
+    [InlineData("Tên người bán:………………………………………………………………………………………………")]
+    [InlineData("Total Equity (Table 2) . . . . . . . . . . . . . . . . . . 45,123 44,001")]
+    public void Chuoi_ky_tu_lap_hop_le_khong_bi_ket_luan_hong(string text)
+    {
+        Assert.False(CorruptParagraphDetector.IsDoubled(text));
+    }
+
+    /// <summary>
+    /// Ca gốc vẫn phải bắt được KỂ CẢ khi nằm lẫn trong dot-leader — nếu chỉ loại dấu câu mà làm hỏng
+    /// khả năng phát hiện gốc thì bản sửa vô nghĩa.
+    /// </summary>
+    [Fact]
+    public void Ky_tu_nhan_doi_van_bat_duoc_khi_lan_voi_dot_leader()
+    {
+        Assert.True(CorruptParagraphDetector.IsDoubled("HHììnnhh  11..11  SSơơ  đđồồ . . . . . . . . . . 4422"));
+    }
 }

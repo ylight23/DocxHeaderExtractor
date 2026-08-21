@@ -897,17 +897,16 @@ trả 288 mục, P≈1%) — cơ chế mới chỉ trả 67 mục, gần khớp 
 §139–§141. 1 mục thiếu (`idx=8 "1. Introduction"`) do ranh giới mục lục/thân bài không sạch — đoạn 8
 gộp cả đuôi mục lục và đầu thân bài.
 
-## 2026-08-20: nâng key 054 lên TOC page-level + gộp trang tiếp nối cho 051/052 (xem handoff §169)
+## 2026-08-20: nâng key 054 lên TOC page-level + thử gộp trang tiếp nối cho 051/052 (đã bị thay thế)
 
 Key `054` cũ (21 mục "SECTION I..XXI") thay bằng 24 mục TOC page-level, xác nhận từng mục bằng canonical-
 match trực tiếp vào đoạn DOCX (không suy từ số trang). Lộ ra: route sản xuất cho 054 hiện đi qua
 `auto:typed-numbering` chứ CHƯA chọn `auto:pdf-toc-dictionary` dù probe đã tìm đúng 24/24 — khoảng trống
 route-selection, ngoài phạm vi việc nâng key lần này.
 
-Thêm `PdfFinancialReportOutline.MergeContinuationPages` (luật A: marker tiếp nối tự phát hiện, không so
-tên; luật B: không marker thì so văn bản trùng/tiền tố, cùng cấp, trang liền kề) — một tiêu đề trải
-nhiều trang giờ là MỘT node thay vì một dòng mỗi trang. `051`: 30→25, `052`: 32→25. Key `051/052` sửa
-theo, đo lại 100% P/R/F1/Nav cả hai. Test suite `663/663` xanh.
+Đã từng thêm `PdfFinancialReportOutline.MergeContinuationPages` và gộp `051`: 30→25, `052`: 32→25.
+Quyết định này bị thay thế bởi key người dùng chốt sau đó: page-title/duplicate và `(cont'd)` là dòng
+outline riêng. Xem trạng thái hiện hành ở §176 trong `handoff.md`; không dùng 25 làm target evaluator.
 
 ## 2026-08-20: tổng quát hoá CorrectionMemory cho nhiều loại quyết định — không xây pool mới (xem handoff §170)
 
@@ -988,3 +987,98 @@ lời văn trôi chảy đang che phán đoán không cơ sở.
 
 Ràng buộc phần cứng đã tính: crop vùng ~150px, DPI 100–120, một ảnh mỗi lượt. Lý do có số đo:
 `063` chạy THUẦN VĂN BẢN đã tốn ~175 s/khối và vượt 50 phút (§135).
+
+## 2026-08-21: thí nghiệm VLM đầu tiên — rasterizer đúng, verdict+evidence đều sai (xem handoff §172)
+
+Xây `Vision/PdfRegionRasterizer.cs` (PDFtoImage/PDFium, render trực tiếp vùng crop, không render cả
+trang) — mảnh duy nhất §143 xác định là thiếu. Kiểm bằng mắt: crop đúng chính xác ca cha–con "Cost
+Recovery" thật trên `052` trang 27. Đính chính §143: model thật trên máy là `Qwen2.5-VL-7B-Instruct`
+(không phải Qwen3.5/Qwen3-VL); API LLamaSharp 0.27 dùng `Mtmd*` (không phải `Clip`/`Llava`) nhưng cấp
+cao hơn khảo sát mô tả (`InteractiveExecutor` có sẵn).
+
+Chạy thí nghiệm (1 ảnh, 1 câu hỏi, CPU, 38s suy luận): model trả `verdict=same_level` — SAI (đây là ca
+cha–con thật) — VÀ evidence khẳng định "không có đường kẻ ngang nào" — SAI, mâu thuẫn trực tiếp với
+ảnh đã kiểm bằng mắt (có đường kẻ rõ). Cả verdict lẫn evidence đều sai, không phải chỉ evidence như
+mức nhẹ §143 dự đoán. n=1, chưa kết luận cho cả vai trò 2. Nghi vấn chưa loại trừ: model 7B Q4 yếu về
+chi tiết thị giác tinh, prompt zero-shot (đúng mẫu đã thấy ở LLM văn bản: 28,6%→85,7% khi có few-shot),
+hoặc DPI 150 chưa đủ. Chưa xây thêm gì. Test suite `674/674` xanh.
+
+## 2026-08-21: RepairDiagnosticGate nối vào repair-key-package — chặn thật, không chỉ báo cáo (xem handoff §173)
+
+Vòng 1 chạy pipeline 1 lần/file thu review rate cả đợt, tính trung vị, vòng 2 bỏ qua file bị gắn cờ
+(trừ khi có `--force-review-package`). Kiểm bằng chạy CLI thật (không phải chỉ đọc code): với 2 file
+(076 + 017), 076 KHÔNG bị chặn — trung vị của 2 file bị chính outlier kéo lên (`median(9,5%,100%)≈
+54,75%`, tỷ lệ chỉ 1,83x). Với 5 file đa dạng hơn, 076 bị chặn đúng như kỳ vọng (100% > 3x trung vị
+4%). **Giới hạn thật cần nhớ:** cổng chỉ đáng tin khi gọi trên đợt đủ lớn/đa dạng — gọi trên 1-2 file
+gần như không bảo vệ được gì, vì trung vị mất ý nghĩa khi mẫu nhỏ chứa chính outlier. Chưa xây: nạp
+trung vị tham chiếu cố định từ một lần `repair-audit` trước đó cho các lượt gọi nhỏ. Test suite
+`674/674` xanh (không thêm test — dự án chưa có tiền lệ test `Program.cs`, kiểm bằng chạy CLI thật).
+
+## 2026-08-21: cổng chẩn đoán VLM cho is_doubled — 3 lỗi thật bắt được qua chạy live (xem handoff §174)
+
+Xây `Vision/VlmImageQuestion.cs` (wrapper suy luận VLM dùng lại được) + `Repair/
+CorruptParagraphVisualVerifier.cs` (định vị trang PDF qua đoạn lành gần nhất, render cả trang, hỏi VLM
+so với text đã trích) + CLI `dhx verify-corrupt`. Ba lỗi CHỈ lộ ra khi chạy live trên file thật, không
+lỗi nào bị unit test bắt: (1) quên thêm "verify-corrupt" vào whitelist lệnh riêng trong
+`CommandLineOptions.Parse` — lệnh lặng lẽ rơi về "extract" mặc định, không exception, không cảnh báo;
+(2) needle định vị trang dùng cả đoạn (1000+ ký tự) không khớp được trang nào — chốt tiền tố 80 ký tự
+bằng đo thật (40 khớp nhầm trang, 120 không khớp); (3) không reset KV cache giữa các câu hỏi độc lập
+→ lỗi native ở lượt gọi thứ 2 trở đi, chỉ lộ khi hỏi ≥2 câu liên tiếp trên cùng instance.
+
+Quét corpus: 20 file có is_doubled=true, phần lớn là run ký tự lặp (gạch dưới điền form, dot-leader),
+KHÔNG phải ca gốc "ký tự chữ lặp". Chạy thật trên `053` (4 đoạn gắn cờ): 3/4 nghi lỗi parser (không
+phải lỗi nguồn) — cùng rơi vào bảng số liệu dày đặc, giả thuyết `is_doubled` có vấn đề hệ thống với
+bảng số (CHƯA xác nhận). Phát hiện thêm: 2/4 lượt cuối model echo lại placeholder `"..."` trong prompt
+thay vì sinh evidence thật — verdict của đoạn còn lại (ConfirmedSourceCorruption) vì vậy không có bằng
+chứng kiểm được, chưa nên tin. Test suite `685/685` xanh. Chưa làm: sửa prompt, quét 19 file còn lại,
+quyết định hành động tự động khi xác nhận parser bug.
+
+## 2026-08-21: gốc rễ is_doubled — 601/601 dương giả do đếm cả dấu câu, sửa còn 0 (xem handoff §175)
+
+Cổng VLM §174 chỉ đúng chỗ hỏng: không phải file hỏng mà chính heuristic hỏng. Đo phân loại cặp ký tự
+khớp trong 4 đoạn `053`: **98% là dấu chấm dot-leader**, chữ cái 0%, chữ số 1-2% — nên đề xuất "loại
+chữ số" là sai hướng (thử thì tỷ lệ còn tăng 64,6%→76,3%). Quét toàn corpus: **601/601 đoạn bị gắn cờ
+(100%) là dương giả** do chuỗi ký tự lặp hợp lệ (dot-leader, gạch dưới điền form, dấu chấm lửng),
+**0 đoạn** giống ca gốc `HHììnnhh`. Nặng nhất nhóm hợp đồng WB (036: 114 đoạn, 037: 108).
+
+Sửa một dòng trong `CorruptParagraphDetector.IsDoubled`: chỉ đếm cặp CHỮ CÁI/CHỮ SỐ, loại dấu câu khỏi
+cả tử số lẫn mẫu số. **601 → 0**. Benchmark không đổi (051/052 100%, 054 45,8%) dù 601 đoạn nay được
+đưa lại vào tập ứng viên. Test khoá ca gốc + 4 dạng dương giả thật + ca gốc lẫn dot-leader.
+
+Hai lỗi nữa trong cổng VLM, lộ ra khi chạy `064`: (1) `ParseVerdict` dùng `Contains` nên
+`"abnormal_in_source"` khớp nhầm `normal_in_source` → đọc NGƯỢC verdict, lỗi im lặng; sửa thành đọc
+theo giá trị trường, giá trị lạ ⇒ Inconclusive. (2) Validator bác nhầm evidence THẬT vì JSON bị cắt cụt
+(tiếng Việt tốn token, maxTokens=300 quá ít); sửa regex chấp nhận thiếu ngoặc đóng + nâng lên 600.
+(3) Model hallucinate "nhìn thấy" đúng chuỗi `HHììnnhh` từ ví dụ trong prompt — bỏ mọi chuỗi mẫu cụ thể
+khỏi prompt. Bài học chung cho mọi vai trò VLM: thứ gì đưa vào prompt đều có thể quay lại làm "bằng
+chứng". Test suite `702/702` xanh.
+
+## 2026-08-21: tách đúng trách nhiệm `is_doubled` và artifact heading filter (xem handoff §176)
+
+Người dùng chọn hướng giữ `is_doubled` đúng nghĩa và thêm filter riêng. Đã thêm
+`HeadingArtifactFilter` để loại `toc-blob`, `form-fill-heading`, `pure-filler` sau khi route dựng
+heading, không dùng nó để giả làm lỗi nguồn. `CorruptParagraphDetector` tiếp tục chỉ bắt ký tự chữ/số
+nhân đôi thật.
+
+Đã phục hồi key chuẩn 051/052 theo yêu cầu user: giữ từng page-title và 4 nhãn nhóm; `(cont'd)`/
+duplicate là dòng riêng (`051` 30, `052` 32). Bỏ gộp continuation khỏi output thật của
+`PdfFinancialReportOutline`.
+
+Đo nhanh: `036` loại 5 artifact, `037` loại 5, `028` loại 12 TOC blob; `064` giữ 74 heading, không xoá
+2 heading thật được cứu. 051/052 vẫn P/R/F1/Nav/Nav+cấp 100%. Full suite xanh `709/709`.
+
+## 2026-08-21: PDF-first broad candidate lane - audit trước, chưa production
+
+- [x] Thêm lệnh audit `dhx pdf-stage-eval`: đo từng tầng `candidate`, analyst role, PDF grounding,
+  DOCX alignment, title, level và final outcome bằng source key độc lập.
+- [x] Chạy `010_Luat_An_ninh_mang_24-2018-QH14` với Qwen `Qwen3.8-27B`: generic strict route chỉ tạo
+  `4/50` key candidates và kết thúc `route-not-applicable` (`analyst-grounded-too-few:0/4`). Không có
+  metric giả cho các tầng không chạy.
+- [ ] Đưa broad PDF lane đang có trong `pdf-clusters` vào chế độ audit-only: toàn bộ PDF lines ->
+  semantic blocks -> broad candidates -> Qwen analyst -> PDF grounding -> canonical DOCX writeback.
+  Tuyệt đối chưa thay route production hay fallback sang DOCX trước khi có đo key.
+- [ ] Chạy stage audit trên `010`, `051`, `052`, `053`, `054`, `056`, `076`, `078` và minutes; lưu
+  `RouteExecutionAudit` để biết chính xác candidate nào bị mất ở tầng nào.
+- [ ] Chỉ mở guarded production khi broad lane đạt các key đại diện về candidate recall, title,
+  anchor và hierarchy. `010` đang được đường `auto:vietnamese-legal` DOCX xử lý 50/50, nhưng đó không
+  chứng minh kiến trúc PDF-first tổng quát.

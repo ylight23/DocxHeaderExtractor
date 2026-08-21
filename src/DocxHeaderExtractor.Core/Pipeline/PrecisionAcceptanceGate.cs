@@ -44,10 +44,11 @@ public static class PrecisionAcceptanceGate
         double targetPrecision,
         int minimumSamples,
         string? currentModel = null,
-        string? configurationSignature = null)
+        string? configurationSignature = null,
+        IReadOnlyList<double>? evidenceConfidenceTiers = null)
     {
-        targetPrecision = Math.Clamp(targetPrecision, 0.50, 0.999);
-        minimumSamples = Math.Max(1, minimumSamples);
+        targetPrecision = Math.Clamp(profile?.TargetPrecision ?? targetPrecision, 0.50, 0.999);
+        minimumSamples = Math.Max(1, profile?.MinimumSamples ?? minimumSamples);
         var profileCompatible = profile is null ||
             ((currentModel is null && profile.Model is null) ||
              string.Equals(currentModel, profile.Model, StringComparison.OrdinalIgnoreCase)) &&
@@ -86,7 +87,7 @@ public static class PrecisionAcceptanceGate
 
             if (profile is not null && !profileCompatible)
             {
-                heading.Confidence = EvidenceScore(heading);
+                heading.Confidence = EvidenceScore(heading, evidenceConfidenceTiers);
                 heading.ConfidenceBasis = "calibration_profile_mismatch";
                 heading.DecisionStatus = HeadingDecisionStatus.RequiresReview;
                 continue;
@@ -107,7 +108,7 @@ public static class PrecisionAcceptanceGate
                 continue;
             }
 
-            var evidenceScore = EvidenceScore(heading);
+            var evidenceScore = EvidenceScore(heading, evidenceConfidenceTiers);
             if (profile is not null)
             {
                 heading.Confidence = evidenceScore;
@@ -142,7 +143,7 @@ public static class PrecisionAcceptanceGate
     /// vì thế là dấu hiệu ĐẾN TỪ VÙNG ĐÁNG NGỜ, không phải dấu hiệu đúng. Nó bị bỏ khỏi thang điểm.
     /// </para>
     /// </summary>
-    private static double EvidenceScore(HeadingRecord heading)
+    private static double EvidenceScore(HeadingRecord heading, IReadOnlyList<double>? evidenceConfidenceTiers)
     {
         // Structure đã được bộ 5 evidence checks chấm riêng bằng ConfidenceForChecks.
         if (heading.Source == HeadingSource.Structure) return heading.Confidence;
@@ -156,7 +157,7 @@ public static class PrecisionAcceptanceGate
             e.NumberingValid, e.SiblingSequenceValid, e.FormattingConsistent, e.ModelConfirmed, e.TreeValid,
         }.Count(x => x);
 
-        var score = EvidenceConfidenceCalibrator.ConfidenceForChecks(passed);
+        var score = EvidenceConfidenceCalibrator.ConfidenceForChecks(passed, evidenceConfidenceTiers);
         return heading.Source == HeadingSource.Heuristic ? Math.Min(score, HeuristicCeiling) : score;
     }
 
@@ -185,9 +186,12 @@ public static class PrecisionAcceptanceGate
             "style_declared" or "outline_level_declared" or "part_section_declared" or
             "pdf_textbook_layout" ||
         basis == BookTocDictionaryOutline.Basis ||
+        basis == PdfBookmarkOutline.Basis ||
+        basis == PdfTaggedEvidenceOutline.Basis ||
         basis == RfcTocDictionaryOutline.Basis ||
         basis == PdfTocDictionaryOutline.Basis ||
         basis == PartSectionOutline.Basis ||
+        basis == FinancialStatementsTocOutline.Basis ||
         basis == PdfFinancialReportOutline.Basis ||
         basis == PdfBoldLabelOutline.Basis ||
         basis == DoclingLayoutOutline.Basis ||

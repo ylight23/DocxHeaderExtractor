@@ -62,6 +62,24 @@ public sealed class PrecisionAcceptanceGateTests
     }
 
     [Fact]
+    public void Profile_target_precision_and_minimum_samples_override_call_defaults()
+    {
+        var heading = H("Phạm vi nghiên cứu", critic: true);
+        var signature = HeadingAcceptanceSignature.For(heading);
+        var profile = new PrecisionCalibrationProfile
+        {
+            TargetPrecision = 0.90,
+            MinimumSamples = 5,
+            Buckets = [new(signature, 10, 10, 1.0, 0.91)],
+        };
+
+        PrecisionAcceptanceGate.Apply([heading], profile, targetPrecision: 0.93, minimumSamples: 30);
+
+        Assert.Equal(HeadingDecisionStatus.AutoAcceptedCalibrated, heading.DecisionStatus);
+        Assert.Equal("holdout_wilson_lower95", heading.ConfidenceBasis);
+    }
+
+    [Fact]
     public void Disputed_heading_never_auto_accepts_even_with_perfect_bucket()
     {
         var heading = H("Phạm vi nghiên cứu", critic: true);

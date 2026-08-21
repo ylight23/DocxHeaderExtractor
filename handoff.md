@@ -10941,7 +10941,7 @@ Thứ tự gate tiếp theo nếu xây route:
 
 Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `637/637`.
 
-## §169. Nâng key `054` lên chuẩn TOC page-level; gộp trang tiếp nối cho `051/052` (`MergeContinuationPages`)
+## §169. Nâng key `054` lên chuẩn TOC page-level; thử gộp trang tiếp nối cho `051/052` (đã bị thay thế)
 
 Tiếp mạch §161/§167/§168 — phiên này (một cửa sổ Claude Code khác song song với phiên đang viết §160-
 §168) làm hai việc cụ thể, được người dùng yêu cầu trực tiếp.
@@ -10972,7 +10972,7 @@ probe riêng của route đó đã tìm đúng cả 24/24 (§167). Đây không 
 route-selection trong `HeaderExtractionPipeline` cho 054, ngoài phạm vi việc được giao lần này (chỉ
 nâng key), cần đo/xử lý riêng.
 
-### 2. `MergeContinuationPages` — gộp tiêu đề trải nhiều trang cho `051/052`
+### 2. `MergeContinuationPages` — thử gộp tiêu đề trải nhiều trang cho `051/052` (lịch sử, không còn hiệu lực)
 
 Phát hiện qua đối chiếu ảnh chụp TOC thật: `051/052` đang đếm MỖI TRANG là một mục outline riêng, kể cả
 khi đó là cùng một tiêu đề trải nhiều trang (marker `"(cont'd)"`, hoặc lặp nguyên văn không nhãn như
@@ -11003,9 +11003,9 @@ KHÔNG đụng logic dò heading/nhãn nhóm sẵn có):**
 | `051` | 30 | 25 | New Admin Agreements+cont'd, Cash Contributions+cont'd, Contributions Receivable+cont'd, Cash and Investments+cont'd+cont'd (luật A cả 4) |
 | `052` | 32 | 25 | 4 ca luật A giống 051, + Portfolio at a Glance tr.5-6 (luật B), + Cost Recovery cấp 2 tr.27-28 (luật B) |
 
-**Key `051/052` (`keys/partial-human/`) sửa xuống 25 dòng mỗi file** — chính sách "một tiêu đề trải
-nhiều trang = một node", áp dụng nhất quán cho cả marker và không-marker. Đo lại bằng `dhx eval`:
-051 và 052 đều **100% P/R/F1/Nav/Nav+cấp**, 25/25 khớp tuyệt đối.
+Đo 25/25 trong mục này là lịch sử của policy gộp cũ. Key hiện hành do người dùng xác nhận giữ mọi
+page-title/duplicate và bốn group label: `051=30`, `052=32`. `MergeContinuationPages` không tham gia
+output chuẩn; xem §176 để biết policy hiện hành.
 
 **Test** `PdfFinancialReportOutlineTests` cập nhật: hai test khóa số cũ (30/32, và tên test mô tả hành
 vi cũ "KeepsRepeated...") đổi thành khóa 25/25 và hành vi gộp; thêm assertion khóa luật A (không còn
@@ -11350,3 +11350,466 @@ Không xây gì trước khi có kết quả này:
 
 Việc phải làm trước tiên: bộ kết xuất PDF → ảnh crop theo bounding box. Không có nó thì không thí
 nghiệm được gì.
+
+## §172. Thí nghiệm đầu tiên: rasterizer chạy đúng, VLM sai cả verdict lẫn evidence trên ca cha–con thật
+
+Theo yêu cầu người dùng "thêm VLM vào các bước xử lí" — làm đúng thứ tự §143 đã đặt: xây mảnh còn
+thiếu (rasterizer), rồi chạy MỘT thí nghiệm, KHÔNG xây thêm gì trước khi có kết quả.
+
+### Đính chính hai điểm trong khảo sát §143 trước khi tin
+
+1. **Model thị giác thật sự có trên máy là `Qwen2.5-VL-7B-Instruct-Q4_K_M.gguf`** (+ `mmproj-model-
+   f16.gguf`), nằm trong cache LM Studio (`~/.lmstudio/models/lmstudio-community/Qwen2.5-VL-7B-
+   Instruct-GGUF/`) — KHÔNG PHẢI `mmproj-Qwen3.5-9B-F16.gguf`/`Qwen3-VL-8B-Instruct` như §143 ghi.
+   Không tìm thấy file nào tên Qwen3.5/Qwen3-VL trên máy. Có thể là nhầm tên hoặc model chưa tải.
+2. **API LLamaSharp 0.27 không lộ `ClipModel`/`SafeLlavaModelHandle`** như §143 ghi — kiểm bằng
+   reflection trực tiếp trên `LLamaSharp.dll` ra 0 type khớp `Clip`/`Llava`. API thật dùng namespace
+   `Mtmd*` (`MtmdWeights`, `SafeMtmdEmbed`, `SafeMtmdInputChunks`...) — tên khác nhưng hướng đúng: đa
+   phương thức thật sự có, và ở mức CAO HƠN khảo sát mô tả — `InteractiveExecutor` có sẵn constructor
+   `(context, MtmdWeights, logger)`, không cần tự viết vòng lặp decode ảnh thủ công.
+
+### Rasterizer — `Vision/PdfRegionRasterizer.cs`, mới, đã kiểm bằng crop thật
+
+`PdfRegionRasterizer.RenderCropPng(pdfPath, page, left, bottomPdfY, right, topPdfY, dpi)` — dùng gói
+`PDFtoImage` 5.4.0 (PDFium qua SkiaSharp), render TRỰC TIẾP đúng vùng `Bounds` yêu cầu, không render
+cả trang rồi cắt. Toạ độ vào là hệ PDF-native (gốc dưới-trái, cùng hệ `PdfLine.Y` các route khác đang
+dùng) — lật trục Y sang hệ ảnh bên trong hàm, nơi gọi không cần đổi hệ toạ độ.
+
+**Lỗi tự bắt được khi kiểm bằng PDF thật:** `Conversion` overload nhận `string` đọc nội dung PDF dạng
+BASE64, không phải đường dẫn file — gọi bằng đường dẫn ra `FormatException`. Sửa bằng overload nhận
+`byte[]` (đọc file trước).
+
+**Kiểm bằng mắt:** crop trang 27 của `052_WBG_Trust_Fund_FIS_December_2025.pdf`, đúng vùng chứa ca
+cha–con "Cost Recovery" đã bàn nhiều lần trong phiên này (ảnh chụp màn hình người dùng gửi trước đó).
+Ảnh xuất ra khớp chính xác: "Cost Recovery" nhỏ/sans-serif phía trên một đường kẻ ngang, "**Cost
+Recovery**" to/đậm/serif phía dưới. Rasterizer đúng.
+
+### Thí nghiệm — một ảnh, một câu hỏi cha–con, CPU
+
+Nạp `Qwen2.5-VL-7B-Instruct` (CPU, `GpuLayerCount=0`) + mmproj qua `MtmdWeights.LoadFromFile`, dùng
+`InteractiveExecutor` với ảnh crop ở trên. Tổng thời gian: nạp mtmd 7,5 s + encode/decode ảnh + suy
+luận 38 s — nhanh hơn nhiều so với lo ngại ban đầu (so với 175 s/khối văn bản thuần của `063`, §135).
+
+Câu hỏi: *"Hai dòng chữ này ngang cấp hay dòng trên là nhãn nhóm cấp cha của dòng dưới?"*, yêu cầu trả
+lời JSON `{verdict, evidence}`.
+
+**Kết quả:**
+
+```json
+{"verdict": "same_level", "evidence": "Hai dòng chữ \"Cost Recovery\" trong hình đều nằm ở cùng một
+cấp độ và không có bất kỳ đường kẻ ngang nào phân tách chúng ra khỏi nhau."}
+```
+
+**SAI cả hai, không phải một:**
+
+- **Verdict sai**: đây là ca cha–con thật (đã xác nhận bằng ảnh chụp màn hình người dùng đưa trước
+  đó trong phiên này), model trả lời "ngang cấp".
+- **Evidence sai VÀ mâu thuẫn trực tiếp với chính ảnh đưa vào**: model khẳng định "không có đường kẻ
+  ngang nào" — nhưng ảnh crop đã kiểm bằng mắt ở bước trên CÓ đường kẻ ngang rõ, ngăn đúng hai dòng.
+  Đây không phải "evidence không kiểm chứng được" (mức độ nhẹ §143 dự đoán) mà là **evidence kiểm
+  chứng được và SAI** — đúng loại lỗi §143 tự cảnh báo trước: "model có thể mô tả một đường kẻ không
+  tồn tại mà câu vẫn trôi chảy."
+
+### Đọc kết quả — đây là kết quả đáng biết, đúng tinh thần "đo trước khi xây", KHÔNG phải build failed
+
+- n=1, không kết luận được cho toàn bộ vai trò 2 ("phân xử cha–con") từ một ca. Nhưng đây đúng là ca
+  §143 tự chọn làm phép thử đầu tiên, và nó KHÔNG qua.
+- Nghi vấn cụ thể, chưa loại trừ: (a) model 7B lượng tử hoá Q4 có thể yếu về chi tiết thị giác tinh
+  (đường kẻ mảnh, khác hẳn nhận diện vật thể/cảnh); (b) prompt một lượt, không few-shot — đúng loại
+  ca §111/§139 đã đo là zero-shot kém xa few-shot (28,6% → 85,7%) cho LLM văn bản, có thể cũng đúng
+  cho VLM; (c) độ phân giải DPI 150 hiện dùng có thể chưa đủ cho chi tiết đường kẻ mảnh — CHƯA đo.
+- Genuinely không phải lỗi rasterizer/hạ tầng — ảnh vào model được xác nhận đúng bằng mắt trước khi
+  gửi.
+
+**Chưa đề xuất xây gì thêm** (không xây tầng grounder, không mở rộng ba vai trò, không tích hợp vào
+pipeline). Việc đáng làm tiếp theo, nếu muốn theo đuổi vai trò 2: đo lại với few-shot (2 ví dụ) hoặc
+DPI cao hơn trước khi kết luận vai trò 2 bất khả thi — hoặc chuyển sang đo vai trò 1 ("chẩn đoán file
+hỏng") trước, vì §143 xếp nó dễ hơn hẳn về mặt thị giác và có thể là phép thử ít rủi ro hơn để xác
+nhận kiến trúc verdict/evidence/explanation hoạt động được trước khi quay lại vai trò khó hơn.
+
+### §172b. Đã thử: gateway SGLang/`Qwen3.8-27B` KHÔNG nhận ảnh — xác nhận dứt khoát, không phải lỗi mạng
+
+Người dùng hỏi có nên test model lớn hơn (27B) qua gateway SGLang LAN để xem quy mô có sửa được điểm
+yếu thị giác tinh vừa đo không. `192.168.68.20` lúc đầu không ping được (mất gói 100%, không phải lỗi
+riêng port) — kiểm lại vài phút sau thì gateway đã sống, `GET /v1/models` trả về đúng
+`vllm/Qwen3.8-27B`.
+
+Gửi thẳng một request `chat/completions` có `image_url` (base64 PNG, đúng ảnh crop "Cost Recovery" đã
+dùng ở §172) tới model đó. Server trả về **400 rõ ràng, không mơ hồ**:
+
+```
+"message": "At most 0 image(s) may be provided in one prompt."
+```
+
+**Kết luận chắc chắn:** deployment vLLM phục vụ `Qwen3.8-27B` ở gateway này KHÔNG bật đường ảnh —
+không phải lỗi định dạng request, không phải model tự động bỏ qua ảnh trong im lặng (trường hợp đó
+mới nguy hiểm, vì sẽ cho kết quả trả lời dựa hoàn toàn vào text mà tưởng là đã "thấy" ảnh — đã chủ
+động kiểm để tránh đúng bẫy này trước khi tin bất kỳ câu trả lời nào). Không so sánh được "27B có khá
+hơn 7B về thị giác" qua gateway hiện tại — cần deploy một biến thể `-VL` lên gateway (thay đổi hạ tầng
+phía người dùng) hoặc có model VL lớn hơn chạy cục bộ, hiện chưa có cái nào.
+
+## §173. Nối `RepairDiagnosticGate` vào `repair-key-package` — thực sự CHẶN sinh gói duyệt cho file bị gắn cờ
+
+Quay lại việc cố ý bỏ ngỏ ở §171: cổng chẩn đoán mới dừng ở tính toán + báo cáo qua `repair-audit`,
+chưa chặn được luồng thật sinh gói duyệt người/agent xem. Làm nốt.
+
+### Thiết kế
+
+`repair-key-package` nhận danh sách file (một hoặc nhiều, kể cả thư mục). Cổng cần TRUNG VỊ CẢ ĐỢT
+nên phải tách hai vòng:
+
+1. **Vòng 1** — chạy `HeaderExtractionPipeline` đúng MỘT LẦN mỗi file (không chạy lần hai bên trong
+   `PartialKeyPackage` — dùng overload `RunAsync(inputPath, outline, options, ct)` đã có sẵn để tái
+   dùng outline), thu `ReviewRate` từng file.
+2. Tính `RepairDiagnosticGate.Evaluate` trên CẢ ĐỢT vừa chạy.
+3. **Vòng 2** — với từng file: nếu bị gắn cờ và KHÔNG có `--force-review-package`, in lý do + BỎ QUA
+   (không gọi `PartialKeyPackage.RunAsync`); ngược lại sinh gói bình thường.
+
+Thêm overload `RepairDiagnosticGate.Evaluate(IReadOnlyList<(string File, double ReviewRate)>)` — dùng
+chung logic trung vị với overload cũ (`IReadOnlyList<RepairCorpusAuditRow>`), tránh phải dựng đủ
+`RepairCorpusAuditRow` (vốn có nhiều trường không liên quan) chỉ để gọi cổng. Overload cũ nay delegate
+sang overload mới.
+
+Thêm cờ CLI `--force-review-package` (mặc định TẮT) — người dùng đã tự xem và vẫn muốn duyệt file bị
+gắn cờ thì dùng cờ này, tránh cổng trở thành ngõ cụt không vượt qua được.
+
+### Phát hiện thật khi kiểm bằng chạy thật, không chỉ đọc code
+
+Chạy `repair-key-package` trên 2 file (076, một trong bốn file biên bản ICP đã gắn cờ ở §171, +
+017) — **076 KHÔNG bị chặn**, dù review rate của nó là 100%. Lý do: trung vị của HAI file, một trong
+đó CHÍNH LÀ outlier, kéo trung vị lên theo — `median(9.5%, 100%) ≈ 54.75%`, tỷ lệ 100%/54,75% ≈ 1,83,
+không vượt 3x. Đây là giới hạn TOÁN HỌC thật của "so với trung vị", không phải lỗi cài đặt: mẫu quá
+nhỏ (đặc biệt khi outlier nằm ngay trong mẫu) làm trung vị mất ý nghĩa tham chiếu.
+
+Chạy lại với 5 file (076 + 4 file khác đa dạng nhóm: `017`, `024`, `091`, `093`) — **076 bị chặn đúng**:
+
+```
+» Key package: 076_ICP_IACG08_Minutes_2023.docx
+  BỎ QUA — tỷ lệ cần xem lại 100.0% > 3x trung vị corpus (4.0%) — nghi lỗi tầng đọc/tách, không đưa review trực tiếp
+  (dùng --force-review-package nếu đã tự xem và vẫn muốn sinh gói duyệt cho file này)
+...
+Bỏ qua 1/5 file do cổng chẩn đoán (tỷ lệ cần xem lại bất thường — xem lý do ở trên).
+```
+
+`--force-review-package` xác nhận override đúng: chạy lại đúng 5 file đó kèm cờ, `076` được sinh gói
+bình thường.
+
+**Giới hạn thật, cần biết trước khi dùng:** cổng này chỉ đáng tin khi `repair-key-package` được gọi
+trên một đợt ĐỦ LỚN/ĐA DẠNG (vài file trở lên, không phải toàn file cùng một dạng khó). Gọi trên 1-2
+file — nhất là khi file khó nằm trong chính mẫu nhỏ đó — cổng gần như không có tác dụng bảo vệ, vì
+trung vị bị chính outlier kéo theo. Chưa xây: không có cách nạp một trung vị THAM CHIẾU cố định (vd từ
+một lần `repair-audit` toàn corpus trước đó) cho các lượt gọi nhỏ — đây là hướng cải thiện thật nếu đo
+sau này cho thấy `repair-key-package` hay được gọi trên lô nhỏ.
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `674/674` (không đổi số — chỉ sửa
+hành vi CLI, không thêm/bớt test; dự án chưa có tiền lệ test trực tiếp handler `Program.cs`, kiểm bằng
+chạy CLI thật thay vì viết test mới, theo đúng quy ước hiện có).
+
+## §174. Xây mục 1 (cổng chẩn đoán VLM cho `is_doubled`) — ba lỗi thật bắt được qua chạy live, không phải chỉ đọc code
+
+Theo lựa chọn "xây ngay" cho mục 1 trong kế hoạch VLM ba vị trí. Trước khi viết: xác minh `is_doubled`/
+`CorruptParagraphDetector`/`ConversionFailure` là cơ chế THẬT đã có (không phải minh hoạ) — đúng, có
+lịch sử hiệu chỉnh ngưỡng thật (§3.6). Nhưng "ca HHììnnhh đã cứu" và "051 111 vs 31 mục Python/C#" từ
+đoạn dán không tìm thấy trong handoff/TODO — trừ đúng dòng comment gốc trong
+`CorruptParagraphDetector.cs` xác nhận ca `HHììnnhh 11.1` là thật (đã render tay kiểm chứng ở một phiên
+trước spec §3.6). Xây dựa trên lý lẽ thiết kế, không dựa trên "đã có ca chứng minh" chưa xác minh được.
+
+### Code mới
+
+- `Vision/VlmImageQuestion.cs`: bọc suy luận đa phương thức LLamaSharp (API thật dùng `Mtmd*`, không
+  phải `Clip`/`Llava` như §143 khảo sát nhầm) thành một hàm `AskAsync(ảnh, câu hỏi) → text`. Dùng lại
+  cho mọi vai trò VLM sau này, không riêng cho corrupt-paragraph.
+- `Repair/CorruptParagraphVisualVerifier.cs`: nhận một `SlimParagraph` đã bị `Corrupt=true`, tìm PDF
+  anh em (`PdfTextbookOutline.FindSiblingPdf` có sẵn), định vị trang qua đoạn LÀNH gần nhất (chính đoạn
+  hỏng không khớp canonical được — đó là lý do nó hỏng), render CẢ TRANG (không crop hẹp — không có
+  toạ độ tin cậy cho văn bản đã vỡ), hỏi VLM so ảnh với text đã trích.
+- CLI mới: `dhx verify-corrupt <file> --vlm-model --vlm-mmproj [--vlm-gpu-layers --vlm-context --vlm-dpi]`.
+  Giới hạn CỐ Ý: chỉ xử lý tài liệu có PDF anh em — DOCX thuần không có PDF thì bỏ qua (cần soffice để
+  chuyển đổi, một phụ thuộc runtime mới ngoài .NET mà dự án đang tránh, §153 — chưa thêm).
+
+### Ba lỗi thật, cả ba chỉ lộ ra khi chạy live trên file thật — không lỗi nào bị test đơn vị bắt được
+
+Quét corpus tìm ca `is_doubled` thật (không dùng "HHììnnhh" hư cấu): **20 file có ít nhất 1 đoạn bị gắn
+cờ**. Phát hiện phụ quan trọng: phần lớn mẫu KHÔNG giống ca gốc (ký tự chữ lặp) mà là RUN KÝ TỰ LẶP LẠI
+thuần — gạch dưới điền form (`Country: ____...`), dot-leader mục lục
+(`……………………………………………`) — heuristic ghép cặp ký tự tất nhiên khớp ≥55% trên các run này, đúng dạng
+false-positive hoàn toàn khác cơ chế gốc nhắm tới.
+
+1. **Whitelist lệnh CLI riêng biệt.** Thêm case vào switch dispatch (`Program.cs`) KHÔNG đủ — có một
+   whitelist tên lệnh RIÊNG trong `CommandLineOptions.Parse` (`args[0] is "extract" or "xml" or ...`),
+   quên thêm `"verify-corrupt"` vào đó khiến lệnh bị coi là input file, `Command` lặng lẽ giữ `"extract"`
+   mặc định — KHÔNG throw, KHÔNG cảnh báo, chạy trích xuất bình thường và im lặng bỏ qua toàn bộ 4 đoạn
+   nghi vấn. Chỉ phát hiện được vì output không có bất kỳ dòng log nào của `verify-corrupt` — nếu chỉ
+   nhìn exit code 0 thì tưởng đã chạy đúng. Đã thêm test khoá riêng lớp lỗi này
+   (`Verify_corrupt_duoc_nhan_dung_lenh_khong_roi_vao_input`).
+2. **Needle định vị trang quá dài, quá cứng.** Bản đầu dùng CẢ đoạn lành gần nhất (1000+ ký tự) làm
+   needle khớp canonical vào `page.Text` — 0/4 khớp được trang nào trên `053` thật. Hai tầng đọc
+   (OpenXML cho DOCX, PdfPig cho PDF) đủ khác khoảng trắng/ngắt dòng để một chuỗi liên tục dài lệch giữa
+   chừng. Đo độ dài tiền tố: 40 ký tự khớp NHẦM trang (tài liệu có header lặp nhiều trang); 120 ký tự
+   lại không khớp được; 80 ký tự khớp đúng cả 4/4 ca — chốt hằng số này bằng số đo, không đoán.
+3. **KV cache không reset giữa các câu hỏi độc lập.** Tạo `InteractiveExecutor` mới mỗi lượt gọi
+   KHÔNG xoá được trạng thái KV cache của `LLamaContext` dùng chung (tái dùng cho rẻ, không nạp lại
+   model mỗi câu hỏi) — lượt gọi thứ 2 trở đi lỗi native `llama_decode: failed to decode, ret = -1`
+   (`M-RoPE đòi X < Y` — vị trí token mới chồng lên KV cache cũ). Chỉ lộ ra khi chạy ĐÚNG 4 câu hỏi liên
+   tiếp trên cùng instance — một câu hỏi đơn lẻ (như thí nghiệm §172) không bao giờ thấy lỗi này. Sửa:
+   `_context.NativeHandle.MemoryClear(true)` đầu mỗi `AskAsync`.
+
+### Kết quả chạy thật, sau khi sửa cả ba lỗi trên (`053_IDA_Information_Statement_FY25`, 4 đoạn bị gắn cờ)
+
+| đoạn | verdict | trang render | evidence |
+|---|---|--:|---|
+| 175 | SuspectedParserBug | 85 | "văn bản trên trang hiển thị rõ ràng, không có từ lặp/không nhất quán" (tiếng Trung) |
+| 177 | SuspectedParserBug | 85 | "The text on the image is clear and there are no duplicate characters" |
+| 179 | SuspectedParserBug | 88 | `["..."]` — **model echo lại đúng placeholder JSON trong prompt, không sinh nội dung thật** |
+| 181 | ConfirmedSourceCorruption | 88 | `["..."]` — **cùng lỗi, evidence rỗng** |
+
+Tổng: 1 xác nhận lỗi nguồn thật, 3 nghi lỗi parser.
+
+**Phát hiện thứ tư, chưa sửa — chất lượng prompt, không phải bug code:** 2/4 lượt gọi cuối, model KHÔNG
+sinh evidence thật mà lười echo lại chuỗi `"..."` — đúng ký tự placeholder trong ví dụ JSON của prompt
+(`"evidence": ["..."]`). Verdict `ConfirmedSourceCorruption` của đoạn 181 vì vậy **KHÔNG có evidence
+kiểm chứng được** — đúng loại lỗi §143 tự cảnh báo trước ("lời văn trôi chảy che phán đoán không cơ
+sở"), chỉ khác lần này evidence trống hẳn nên PHÁT HIỆN ĐƯỢC dễ, không phải hallucination tinh vi. Chưa
+sửa prompt (đổi placeholder từ `"..."` sang dạng khó echo hơn, hoặc grounder từ chối câu trả lời có
+evidence rỗng) — để lại cho lượt sau, ghi rõ ở đây để không ai tưởng nhầm đoạn 181 là ca đã xác nhận
+chắc chắn.
+
+**Đọc kết quả đúng đắn:** 3/4 "SuspectedParserBug" cùng rơi vào MỘT loại nội dung — bảng "STATEMENT OF
+VOTING POWER AND SUBSCRIPTIONS AND CONTRIBUTIONS", dữ liệu số dày đặc. Giả thuyết hợp lý (CHƯA xác
+nhận): `is_doubled` có vấn đề hệ thống với bảng số dày đặc (nhiều cặp ký tự số/dấu chấm/dấu phần trăm
+lặp lại tự nhiên đạt ngưỡng ≥55%), không chỉ lỗi lẻ tẻ — khớp với phát hiện ở trên rằng phần lớn 20 file
+có is_doubled=true trong corpus là run ký tự lặp (gạch dưới, dot-leader), không phải ca gốc.
+
+### Chi phí đo được
+
+Mỗi câu hỏi ~2 phút CPU (encode ảnh cả trang ~40-85s + decode 3 batch ~40s/batch) — chậm hơn nhiều so
+với thí nghiệm crop hẹp ở §172 (~38s tổng) vì ở đây RENDER CẢ TRANG (DPI 110, trang A4/Letter) thay vì
+crop nhỏ, đúng đánh đổi đã ghi nhận trước khi xây (định vị được trang nhưng không định vị được vùng).
+
+### Test mới
+
+- `CorruptParagraphVisualVerifierTests`: `FindNearestCleanNeighborText` (ưu tiên gần nhất, bỏ qua đoạn
+  hỏng khác, trả null khi không có gì lành), `ParseVerdict` (2 câu trả lời hợp đồng + fallback
+  Inconclusive), `LocatePage` (ca thật trên `052`, ca thật KHÔNG khớp trang nào trên `053` với needle
+  cả đoạn — khoá đúng hành vi tiền tố 80 ký tự đã đo).
+- `TocCommandLineOptionsTests`: khoá đúng lớp lỗi whitelist lệnh (mục 1 ở trên) + `--force-review-package`.
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `685/685`.
+
+**Chưa làm:** sửa chất lượng prompt (placeholder echo); chưa áp dụng cho 19 file còn lại có is_doubled
+gắn cờ để kiểm giả thuyết "bảng số dày đặc" trên diện rộng; chưa quyết định hành động tự động khi
+`SuspectedParserBug` được xác nhận (hạ ngưỡng `is_doubled`? loại trừ theo mẫu ký tự lặp trước khi vào
+heuristic? — cần đo thêm, không tự quyết ở đây).
+
+## §175. Cổng VLM chỉ đúng chỗ hỏng — gốc rễ là `is_doubled` đếm cả dấu câu; 601/601 dương giả, sửa còn 0
+
+Tiếp §174 theo đúng thứ tự đã chốt: **sửa dụng cụ đo trước, rồi mới chạy thêm file**.
+
+### 1. Giả thuyết "chữ số gây dương giả" — BÁC bằng số, thay bằng nguyên nhân thật
+
+Kiểm rẻ, không cần VLM: phân loại từng cặp ký tự khớp trong 4 đoạn của `053` theo loại ký tự.
+
+```
+idx=175  rate 64,6%  matched 1089/1686 -> chữ số 16 (1%) · chữ cái 4 (0%) · DẤU CÂU 1069 (98%)
+idx=177  rate 64,4%  matched 1076/1671 -> chữ số 20 (2%) · chữ cái 3 (0%) · DẤU CÂU 1053 (98%)
+idx=179  rate 60,1%  matched  934/1555 -> chữ số 14 (1%) · chữ cái 3 (0%) · DẤU CÂU  917 (98%)
+idx=181  rate 64,6%  matched 1053/1629 -> chữ số 18 (2%) · chữ cái 3 (0%) · DẤU CÂU 1032 (98%)
+```
+
+Đếm tần số ký tự "dấu câu" đó: **100% là dấu chấm `.`** (1069/1069 ở idx=175) — dot-leader nối nhãn với
+số trong bảng tài chính (`Total Equity (Table 2) . . . . . . . . 45,123`).
+
+Đề xuất "loại chữ số khỏi phép đếm" KHÔNG sửa được gì — thử thì tỷ lệ còn TĂNG (64,6% → 76,3%), vì loại
+chữ số làm mẫu số nhỏ đi trong khi dấu chấm vẫn còn nguyên. Đo trước khi sửa nên không mất công sửa sai
+hướng.
+
+### 2. Quét toàn corpus: **601/601 (100%) dương giả**, không một ca nào giống ca gốc
+
+| Phân loại đoạn bị `is_doubled` gắn cờ | Số đoạn | Tỷ lệ |
+|---|--:|--:|
+| ≥80% cặp khớp là KÝ TỰ LẶP THUẦN (dot-leader, gạch dưới, `……`) | **601** | **100,0%** |
+| ≥80% cặp khớp là CHỮ CÁI (giống ca gốc `HHììnnhh`) | 0 | 0,0% |
+| hỗn hợp | 0 | 0,0% |
+
+Nặng nhất là nhóm hợp đồng mua sắm WB — biểu mẫu đầy gạch dưới điền tay: `036` 114 đoạn, `037` 108,
+`033`/`039` 62, `040` 52, `038` 49, `027` 37, `031` 26, `026` 22... Nhóm này chưa từng được soi vì
+`is_doubled` chỉ âm thầm loại đoạn khỏi tập ứng viên, không báo gì.
+
+### 3. Sửa gốc: `CorruptParagraphDetector.IsDoubled` chỉ đếm cặp CHỮ CÁI/CHỮ SỐ
+
+Một dòng: `text.Where(ch => !char.IsWhiteSpace(ch))` → `text.Where(char.IsLetterOrDigit)`. Dấu câu bị
+loại khỏi **cả tử số lẫn mẫu số** — dot-leader/gạch dưới/dấu chấm lửng là chuỗi ký tự lặp HỢP LỆ, không
+liên quan gì tới hiện tượng hai luồng run của ca gốc.
+
+**Kết quả sau sửa: 601 → 0 đoạn bị gắn cờ trên toàn corpus.** Test khoá ca gốc vẫn xanh, thêm test khoá
+4 dạng dương giả thật + một test đảm bảo ca gốc VẪN bắt được kể cả khi lẫn dot-leader (nếu bản sửa làm
+hỏng khả năng phát hiện gốc thì nó vô nghĩa).
+
+Đo lại benchmark có key thật để chắc không hồi quy — 601 đoạn này trước đây bị loại khỏi tập ứng viên,
+giờ được đưa vào lại: `051` 100%, `052` 100%, `054` 45,8% — **không đổi con số nào**.
+
+### 4. Hai lỗi NỮA trong chính cổng VLM, lộ ra khi chạy lại `064` với prompt đã sửa
+
+Chạy `064` (giáo trình, mục lục dot-leader — nhóm khác hẳn `053`) sau khi sửa prompt:
+
+- **`ParseVerdict` đọc NGƯỢC verdict do khớp chuỗi con.** Model trả `"abnormal_in_source"` (giá trị
+  NGOÀI hợp đồng) — chuỗi đó CHỨA `normal_in_source`, nên `Contains` khớp nhánh "bình thường" trong khi
+  model muốn nói "bất thường". Lỗi im lặng, không exception. Sửa: đọc theo GIÁ TRỊ TRƯỜNG bằng regex
+  `"verdict"\s*:\s*"(?<value>[^"]*)"`, giá trị lạ ⇒ `Inconclusive`, **không đoán ý model**.
+- **Validator BÁC NHẦM evidence thật vì JSON bị cắt cụt.** Câu trả lời tiếng Việt tốn token hơn nhiều,
+  `maxTokens=300` cắt giữa chừng nên thiếu `"]}`  đóng — regex đòi dấu `]` nên trượt, evidence thật
+  ("trang đầu của một cuốn sách, có dòng 'Acknowledgements'...") bị coi là rỗng. Sửa: regex chấp nhận
+  `\]|$`, thêm nhánh lấy phần đuôi sau dấu nháy mở cuối cùng, và nâng `maxTokens` 300 → 600.
+
+**Lỗi thứ ba, cùng lớp với placeholder `"..."`:** model khẳng định nhìn thấy **đúng chuỗi `HHììnnhh`**
+trên một trang sách máy học tiếng Anh — chuỗi đó chỉ có trong VÍ DỤ của prompt tôi viết. Bất cứ chuỗi
+mẫu cụ thể nào đưa vào prompt đều có thể quay lại trong câu trả lời dưới dạng "bằng chứng". Sửa: prompt
+không còn chứa chuỗi mẫu nào của hiện tượng cần tìm, chỉ mô tả bằng lời ("mỗi chữ cái bị lặp lại hai
+lần liên tiếp") và yêu cầu evidence phải trích chữ ĐỌC ĐƯỢC TRÊN ẢNH.
+
+### Đánh giá cổng VLM sau tất cả
+
+**VLM đã làm đúng việc nó sinh ra để làm.** Cả 6/6 lượt có evidence thật đều cho verdict
+`SuspectedParserBug` — khớp chính xác với thứ sau đó chứng minh được bằng phép đo thuần code, độc lập
+hoàn toàn. Cổng chẩn đoán không tìm ra "file hỏng" nào; nó chỉ ra rằng **chính heuristic là thứ hỏng** —
+đúng vai trò §143 đặt ra cho nó ("file hỏng thật vs lỗi tầng đọc").
+
+Nhưng đừng đọc quá lời: đây là ca DỄ nhất trong ba vai trò (nhìn chữ có lặp hay không), và 3/9 lượt gọi
+vẫn cho output không dùng được (2 echo placeholder, 1 hallucinate chuỗi từ prompt). Không có validator
+thì 3 lượt đó đã vào kết quả như phán quyết thật.
+
+Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `702/702`. Quét lại corpus: 0 đoạn
+bị gắn cờ. Benchmark `051`/`052`/`054` không đổi.
+
+**Chưa làm:** chưa chạy lại `verify-corrupt` end-to-end sau bản sửa cuối (không còn ca nào để chạy —
+đã hết dương giả, đó là kết quả mong muốn); nếu sau này gặp ca `is_doubled` thật thì cổng đã sẵn sàng.
+Ba lỗi prompt/parse ở trên là bài học chung cho MỌI vai trò VLM sau này, không riêng vai trò 1.
+
+### §175b. ĐÍNH CHÍNH: "không hồi quy" là kết luận SAI vì chỉ đo 3 file có key
+
+Ở §175 tôi viết "benchmark không đổi ⇒ bản sửa không gây hồi quy". **Sai phạm vi**: 051/052/054 là ba
+file DUY NHẤT có key người kiểm trong nhóm bị ảnh hưởng, và cả ba tình cờ không có đoạn nào trong 601.
+Đo đúng câu hỏi ("601 đoạn được đưa lại có thành heading không") cho kết quả khác hẳn.
+
+**Đo: dựng lại luật CŨ để biết đoạn nào từng bị loại, chạy pipeline hiện tại, đối chiếu index.**
+
+```
+Tổng đoạn TỪNG bị gắn cờ (luật cũ):  601
+Trong đó NAY xuất hiện trong outline:  69
+```
+
+Soi cả 69 (không chỉ mẫu), phân loại bằng mắt:
+
+| Loại | Số | Ví dụ |
+|---|--:|---|
+| **Heading THẬT được cứu** | **~3** | `064` "1 Introduction", "1.1 Neural networks"; `030` "Section 2. Instructions to Consultants and Data Sheet" |
+| Blob trang mục lục | ~50 | "2 Standard Procurement Document Table of Contents Section I - Instructions to Bidders ...." |
+| Dòng điền form | ~8 | "The Project Manager is: ______", "Background _______" |
+| Chuỗi dot-leader thuần làm heading | 2 | `036`/`037` idx=912/1049 **cấp 4**: "…………………………………" |
+| Text tiếng Việt dính chữ | ~6 | "HỢPĐỒNGGIAOKHOÁN", "CÙNGKÝKẾTHỢPĐỒNGGIAOKHOÁNNHƯSAU:" |
+
+Tỷ trọng trên tổng output từng file: `036` 3/373 (0,8% — không đáng kể), `028` 11/188 (**5,9%** — đáng
+kể), `064` +2 heading thật/74.
+
+**Kết luận trung thực: `is_doubled` đang làm HAI việc, và chỉ một việc là việc nó khai.**
+
+- Việc nó KHAI (bắt đoạn nhân đôi ký tự kiểu `HHììnnhh`): **0 ca thật trong corpus** — hoàn toàn vô dụng.
+- Việc nó LÀM THẬT (chặn blob mục lục / dòng điền form / dot-leader lọt vào ứng viên): **có tác dụng
+  thật, và không cơ chế nào khác đang gánh**.
+
+Sửa "đúng" phần khai báo thì lộ ra phần còn lại không ai gánh. Đây đúng họ lỗi "chạy đúng ý định, sai
+phạm vi" — nhưng lần này chiều ngược: cơ chế sai lại đang che một lỗ hổng thật.
+
+**Cân nhắc, CHƯA quyết (cần người dùng chọn):**
+
+1. **Giữ bản sửa + thêm bộ lọc riêng, đặt tên đúng việc** (vd `RepeatedPunctuationRunFilter` cho
+   dot-leader/gạch dưới, tận dụng `InTableOfContents` sẵn có cho blob mục lục). Sạch về khái niệm,
+   nhưng là thêm code và cần đo lại.
+2. **Hoàn nguyên `is_doubled`**: giữ được trạng thái cũ nhưng để nguyên một cơ chế nói dối về việc nó
+   làm — và vẫn âm thầm loại 601 đoạn không ai nhìn thấy.
+3. **Giữ bản sửa, chấp nhận 66 mục rác**: rẻ nhất, nhưng `028` mất ~5,9% precision và có heading là
+   chuỗi dấu chấm thuần ở cấp 4 — khó biện minh.
+
+Nghiêng về (1), nhưng đây là quyết định xây, không tự quyết. Số liệu để chọn đã đủ ở trên.
+
+### §176. Đã chọn hướng (1): giữ `is_doubled` đúng nghĩa + thêm filter artifact riêng
+
+Người dùng chọn: **giữ bản sửa + thêm bộ lọc riêng đặt tên đúng việc**. Đã cài `HeadingArtifactFilter`
+thay vì hoàn nguyên `CorruptParagraphDetector`.
+
+Phân tách trách nhiệm sau sửa:
+
+- `CorruptParagraphDetector.IsDoubled`: chỉ bắt lỗi nguồn thật kiểu hai luồng ký tự nhân đôi
+  (`HHììnnhh`). Không còn đếm dấu câu/dot-leader/gạch dưới.
+- `HeadingArtifactFilter`: lọc các heading artifact hợp lệ về mặt text nhưng sai vai trò outline:
+  `toc-blob`, `form-fill-heading`, `pure-filler`.
+
+Luật filter không dùng danh sách tên file/từ khoá riêng như "Project Manager"; nó dựa trên hình dạng:
+long dot-leader/ellipsis, underscore fill-run, `Table of Contents` blob, nhiều page-run trong cùng
+slice. Các route có nguồn đối chứng nội tại được miễn: `pdf_toc_dictionary`, `pdf_financial_report`,
+`rfc_toc_dictionary`, `book_toc_dictionary`, `part_section_toc_text`, và human correction.
+
+Một hồi quy quan trọng bị bắt trong lúc làm: key `051/052` trong repo đang là bản **gộp trang tiếp
+nối** cũ (25/25), trái với key chuẩn người dùng đã chốt lại (30/32, giữ `(cont'd)`/duplicate là dòng
+riêng). Đã phục hồi key và bỏ `MergeContinuationPages` khỏi output thật của `PdfFinancialReportOutline`.
+Dedup/grouped view nếu cần phải là metric/view khác, không phải outline chuẩn.
+
+Đo nhanh sau filter:
+
+| File | Route | Trước filter | Sau filter | Lý do loại |
+|---|---|--:|--:|---|
+| `036_WB_Plant_SingleStage_2025` | `auto:outline-level` | 373 | 368 | `form-fill-heading=4`, `pure-filler=1` |
+| `037_WB_Plant_TwoStage_2025` | `auto:outline-level` | 390 | 385 | `form-fill-heading=4`, `pure-filler=1` |
+| `028_WB_RFB_Works_Without_Prequal_2017` | `auto:typed-numbering` | 188 | 176 | `toc-blob=12` |
+| `064_Machine_Learning_with_Neural_Networks` | `auto:pdf-textbook-layout` | 74 | 74 | 0 — giữ 2 heading thật được cứu |
+| `051_WBG_Trust_Fund_FIS_June_2024` | `auto:pdf-financial-report` | 30 | 30 | 0 |
+| `052_WBG_Trust_Fund_FIS_December_2025` | `auto:pdf-financial-report` | 32 | 32 | 0 |
+| `054_IBRD_Information_Statement_FY25` | `auto:pdf-toc-dictionary` | 24 | 24 | 0 |
+
+Calibration riêng 051/052 sau khi phục hồi key:
+
+| File | Truth | Result | P/R/F1 | Nav | Nav+cấp |
+|---|--:|--:|---:|---:|---:|
+| `051_WBG_Trust_Fund_FIS_June_2024` | 30 | 30 | 100% | 100% | 100% |
+| `052_WBG_Trust_Fund_FIS_December_2025` | 32 | 32 | 100% | 100% | 100% |
+
+Validation:
+
+- Hẹp `PdfFinancialReportOutlineTests|PdfTocDictionaryOutlineTests|HeadingArtifactFilterTests|CorruptParagraphTests|CorruptParagraphVisualVerifierTests`: xanh `43/43`.
+- Full suite: `dotnet test tests\DocxHeaderExtractor.Tests\DocxHeaderExtractor.Tests.csproj --no-restore`
+  xanh `709/709`.
+
+Gate score vẫn giữ trạng thái cũ: `untrusted_until_recalibrated`; filter artifact không làm gate thành
+judge merge.
+
+## 2026-08-21: PDF-first broad candidate lane - trạng thái thật sau stage audit
+
+Yêu cầu kiến trúc hiện tại của user là: **PDF quyết định candidate/title/level; DOCX chỉ canonical-map
+về paragraph/span để writeback**. Không được thay bằng việc đọc DOCX ngay từ đầu khi bản DOCX đã mất
+tín hiệu trình bày.
+
+Điều đã có:
+
+- `pdf-clusters` đã chứng minh broad diagnostic lane trên `010`: `1,842` PDF lines -> `80` semantic
+  blocks -> `69` broad candidate blocks -> `60` Qwen/grounded headings -> `40/50` key title exact;
+  hierarchy visual vẫn chưa đúng. Đây là phép đo diagnostic, **không phải route production**.
+- Đã thêm `dhx pdf-stage-eval` để audit từng tầng của `PdfLayoutEvidenceOutline` bằng source key:
+  candidate recall, analyst coverage/role, PDF grounding, DOCX alignment, title exactness, level và
+  final result. `RouteExecutionAudit` nay lưu `CandidateBlocks` và `SelectedCandidateBlocks`.
+- Live run Qwen `Qwen3.8-27B` cho `010` qua strict generic route trả
+  `route-not-applicable`, `analyst-grounded-too-few:0/4`: strict route chỉ nhìn thấy `4/50` candidate.
+  Đây là bằng chứng rằng generic strict route hiện tại **không đáp ứng** PDF-first broad-candidate
+  policy; không được báo cáo như một kết quả F1.
+- `auto:vietnamese-legal` vẫn cho `010` 50/50 theo key, nhưng dựa vào marker/DOCX. Nó chỉ là fallback
+  đã được đo cho legal, không phải bằng chứng rằng broad PDF-first đã production-ready.
+
+Quy tắc tiếp theo:
+
+1. Di chuyển generator broad candidates từ diagnostic vào `PdfLayoutEvidenceOutline` trước ở
+   **audit-only**, không bypass gate và không thay routing production.
+2. Đo có tầng trên key đại diện `010`, `051`, `052`, `053`, `054`, `056`, `076`, `078` và minutes.
+3. Chỉ guarded-enable khi candidate recall, role precision, grounding, title, anchor và level đều có
+   số độc lập. Không hứa `50/50` hay khái quát hóa cho mọi PDF trước phép đo đó.
+
+Validation ở thời điểm ghi mục này: `dotnet build --no-restore --nologo` thành công; `dotnet test
+--no-restore --nologo` xanh `751/751`.

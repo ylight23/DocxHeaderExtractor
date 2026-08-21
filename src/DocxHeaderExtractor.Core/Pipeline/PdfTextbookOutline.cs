@@ -6,7 +6,10 @@ using UglyToad.PdfPig;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
-public sealed record PdfTextbookOutlineResult(IReadOnlyList<HeadingRecord> Headings, string Reason)
+public sealed record PdfTextbookOutlineResult(
+    IReadOnlyList<HeadingRecord> Headings,
+    string Reason,
+    RouteExecutionAudit? Audit = null)
 {
     public static PdfTextbookOutlineResult NotApplicable(string reason) => new([], reason);
 }
@@ -34,10 +37,7 @@ public static class PdfTextbookOutline
         SlimDocument slim,
         DocumentModeReport mode)
     {
-        if (mode.Mode != DocumentMode.TypedNumbering)
-            return PdfTextbookOutlineResult.NotApplicable($"mode={mode.Mode}");
-
-        if (HasStrongDocxStructure(slim))
+        if (DocumentStructureEvidence.HasNativeSemanticStructure(slim))
             return PdfTextbookOutlineResult.NotApplicable("docx-structure-present");
 
         var pdf = FindSiblingPdf(originalInputPath);
@@ -69,13 +69,7 @@ public static class PdfTextbookOutline
         return new PdfTextbookOutlineResult(aligned, $"pdf={Path.GetFileName(pdf)}, bodyFs={bodyFont.ToString("F1", CultureInfo.InvariantCulture)}, aligned={aligned.Count}/{pdfHeadings.Count}");
     }
 
-    private static bool HasStrongDocxStructure(SlimDocument slim) =>
-        slim.Paragraphs.Any(p =>
-            p.OutlineLevel is not null ||
-            p.HasBuiltInHeadingStyle ||
-            p.NumberingStyleLevel is not null);
-
-    internal static string? FindSiblingPdf(string inputPath)
+    public static string? FindSiblingPdf(string inputPath)
     {
         var direct = Path.ChangeExtension(inputPath, ".pdf");
         if (File.Exists(direct)) return direct;

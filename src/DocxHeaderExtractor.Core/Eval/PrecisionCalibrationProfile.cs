@@ -22,12 +22,14 @@ public sealed class PrecisionCalibrationProfile
     // bucket model_*_unnumbered sang model_*_numbered — ĐÚNG là "đổi phân phối dự đoán" mà chú
     // thích trên nói tới. Không bump thì profile holdout cũ vẫn được nạp và hiệu chỉnh confidence
     // theo một phân phối không còn tồn tại.
-    public const string CurrentPipelineSignature = "dhx-semantic-precision/2026-08-13-v4";
+    public const string CurrentPipelineSignature = "dhx-semantic-precision/2026-08-21-v5-configured-gates";
 
     public string FormatVersion { get; init; } = CurrentFormat;
     public string PipelineSignature { get; init; } = CurrentPipelineSignature;
     public string ConfigurationSignature { get; init; } = "";
     public string? Model { get; init; }
+    public double? TargetPrecision { get; init; }
+    public int? MinimumSamples { get; init; }
     public DateTimeOffset CreatedUtc { get; init; } = DateTimeOffset.UtcNow;
     public int Documents { get; init; }
     public IReadOnlyList<PrecisionCalibrationBucket> Buckets { get; init; } = [];
@@ -102,6 +104,8 @@ public sealed class PrecisionCalibrationProfile
         $"seed={o.Llama.Seed}",
         $"gpuLayers={o.Llama.GpuLayerCount}",
         $"threshold={o.Extraction.CandidateThreshold.ToString("R", CultureInfo.InvariantCulture)}",
+        $"criticWeakThreshold={o.ModelCriticWeakEvidenceThreshold.ToString("R", CultureInfo.InvariantCulture)}",
+        $"evidenceTiers={string.Join(";", o.EvidenceConfidenceTiers.Select(x => x.ToString("R", CultureInfo.InvariantCulture)))}",
         $"standaloneLines={o.Extraction.PromoteStandaloneLines}",
         $"skipContentControls={o.Extraction.SkipContentControls}",
         $"bareLabels={o.Extraction.AllowBareLabelledNumbers}",
@@ -128,10 +132,19 @@ public sealed class PrecisionCalibrationBuilder
     private readonly Dictionary<string, (int Samples, int Correct)> _counts = new(StringComparer.Ordinal);
     private int _documents;
     private readonly string _configurationSignature;
+    private readonly double? _targetPrecision;
+    private readonly int? _minimumSamples;
     private string? _model;
 
-    public PrecisionCalibrationBuilder(string configurationSignature = "") =>
+    public PrecisionCalibrationBuilder(
+        string configurationSignature = "",
+        double? targetPrecision = null,
+        int? minimumSamples = null)
+    {
         _configurationSignature = configurationSignature;
+        _targetPrecision = targetPrecision;
+        _minimumSamples = minimumSamples;
+    }
 
     public void Add(DocumentOutline outline, AnswerKey key)
     {
@@ -155,6 +168,8 @@ public sealed class PrecisionCalibrationBuilder
         Documents = _documents,
         Model = _model,
         ConfigurationSignature = _configurationSignature,
+        TargetPrecision = _targetPrecision,
+        MinimumSamples = _minimumSamples,
         Buckets = _counts.OrderBy(x => x.Key, StringComparer.Ordinal)
             .Select(x => new PrecisionCalibrationBucket(
                 x.Key,

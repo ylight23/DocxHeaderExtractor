@@ -46,7 +46,16 @@ public static class RepairDiagnosticGate
     /// <see cref="OutlierMultiplier"/> lần trung vị (và vượt <see cref="MinimumReviewRateFloor"/> theo
     /// giá trị tuyệt đối). Code thuần — không gọi model, không suy luận ngữ nghĩa.
     /// </summary>
-    public static IReadOnlyList<RepairDiagnosticGateResult> Evaluate(IReadOnlyList<RepairCorpusAuditRow> rows)
+    public static IReadOnlyList<RepairDiagnosticGateResult> Evaluate(IReadOnlyList<RepairCorpusAuditRow> rows) =>
+        Evaluate(rows.Select(r => (r.File, r.ReviewRate)).ToList());
+
+    /// <summary>
+    /// Cùng luật như overload trên, nhưng chỉ cần (tên file, tỷ lệ cần xem lại) — dùng khi caller chưa
+    /// có/không cần dựng đủ <see cref="RepairCorpusAuditRow"/> (vd <c>repair-key-package</c> chạy trên
+    /// một đợt file, chỉ cần <see cref="ReviewRate"/> từng file để so trung vị đợt đó, không cần chạy
+    /// lại toàn bộ candidate/validation gate).
+    /// </summary>
+    public static IReadOnlyList<RepairDiagnosticGateResult> Evaluate(IReadOnlyList<(string File, double ReviewRate)> rows)
     {
         var median = Median(rows.Select(r => r.ReviewRate).ToList());
         var effectiveMedian = Math.Max(median, MinimumReviewRateFloor);

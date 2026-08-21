@@ -23,7 +23,7 @@ public sealed class PdfFinancialReportOutlineTests
 
         var result = PdfFinancialReportOutline.TryBuild(docx, slim, mode);
 
-        Assert.Equal(25, result.Headings.Count);
+        Assert.Equal(30, result.Headings.Count);
         Assert.Contains(result.Headings, h => h.Level == 1 && h.Text == "Key Trust Fund Activity");
         Assert.Contains(result.Headings, h => h.Level == 2 && h.Text == "Trust Fund Asset Summary");
         Assert.Contains(result.Headings, h => h.Level == 1 && h.Text == "Contribution and Receivables");
@@ -33,13 +33,11 @@ public sealed class PdfFinancialReportOutlineTests
         Assert.Contains(result.Headings, h => h.Level == 2 && h.Text == "Cost Recovery");
         Assert.All(result.Headings, h => Assert.Equal(PdfFinancialReportOutline.Basis, h.ConfidenceBasis));
 
-        // Luật A: mọi trang mang marker tiếp nối tự phát hiện — "(cont'd)"/"(Cont'd)" — bị gộp vào
-        // node mở gần nhất cùng cấp; không còn dòng "(cont'd)" nào lọt ra ngoài.
-        Assert.DoesNotContain(result.Headings, h => h.Text.Contains("cont'd", StringComparison.OrdinalIgnoreCase));
+        // Key người dùng là page-level outline: continuation/duplicate vẫn là heading nguồn riêng.
+        Assert.Contains(result.Headings, h => h.Text.Contains("cont'd", StringComparison.OrdinalIgnoreCase));
         Assert.Contains(result.Headings, h => h.Text == "New Administration Agreements");
-        Assert.Contains(result.Headings, h => h.Text == "Cash Contributions");
-        Assert.Contains(result.Headings, h => h.Text == "Contributions Receivable");
-        Assert.Equal(1, result.Headings.Count(h => h.Text == "Cash and Investments"));
+        Assert.Contains(result.Headings, h => h.Text.Contains("New Administration Agreements (Cont", StringComparison.OrdinalIgnoreCase));
+        Assert.Equal(3, result.Headings.Count(h => h.Text.StartsWith("Cash and Investments", StringComparison.OrdinalIgnoreCase)));
     }
 
     [Fact]
@@ -65,7 +63,7 @@ public sealed class PdfFinancialReportOutlineTests
     }
 
     [Fact]
-    public void WbgTrustFund052MergesRepeatedPortfolioAndCostRecoveryPages()
+    public void WbgTrustFund052KeepsRepeatedPageHeadings()
     {
         var docx = Path.Combine(
             "todo10_8", "heading_corpus_95_word", "03_tai_chinh_ke_toan",
@@ -80,15 +78,13 @@ public sealed class PdfFinancialReportOutlineTests
 
         var result = PdfFinancialReportOutline.TryBuild(docx, slim, mode);
 
-        // "Portfolio at a Glance - IBRD/IDA/IFC Trust Funds" và "Cost Recovery" (cấp 2) đều trải hai
-        // trang liền kề, nguyên văn, không nhãn "(cont'd)" — luật B gộp thành một node mỗi mục.
-        Assert.Equal(25, result.Headings.Count);
-        Assert.Equal(1, result.Headings.Count(h => h.Text == "Portfolio at a Glance - IBRD/IDA/IFC Trust Funds"));
+        Assert.Equal(32, result.Headings.Count);
+        Assert.Equal(2, result.Headings.Count(h => h.Text == "Portfolio at a Glance - IBRD/IDA/IFC Trust Funds"));
         Assert.Contains(result.Headings, h => h.Level == 1 && h.Text == "Key Trust Fund Activity");
         Assert.Contains(result.Headings, h => h.Level == 2 && h.Text == "Composition of Active Umbrella Programs");
-        Assert.Equal(2, result.Headings.Count(h => h.Text == "Cost Recovery"));
+        Assert.Equal(3, result.Headings.Count(h => h.Text == "Cost Recovery"));
         Assert.Equal(1, result.Headings.Count(h => h.Level == 1 && h.Text == "Cost Recovery"));
-        Assert.Equal(1, result.Headings.Count(h => h.Level == 2 && h.Text == "Cost Recovery"));
+        Assert.Equal(2, result.Headings.Count(h => h.Level == 2 && h.Text == "Cost Recovery"));
         Assert.All(result.Headings, h => Assert.Equal(PdfFinancialReportOutline.Basis, h.ConfidenceBasis));
     }
 

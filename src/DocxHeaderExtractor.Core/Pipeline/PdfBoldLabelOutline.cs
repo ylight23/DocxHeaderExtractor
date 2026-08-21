@@ -48,10 +48,7 @@ public static class PdfBoldLabelOutline
         SlimDocument slim,
         DocumentModeReport mode)
     {
-        if (mode.Mode != DocumentMode.FormatDriven)
-            return PdfTextbookOutlineResult.NotApplicable($"mode={mode.Mode}");
-
-        if (HasStrongDocxStructure(slim))
+        if (DocumentStructureEvidence.HasNativeSemanticStructure(slim))
             return PdfTextbookOutlineResult.NotApplicable("docx-structure-present");
 
         var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
@@ -85,12 +82,6 @@ public static class PdfBoldLabelOutline
             aligned.Headings,
             $"pdf={Path.GetFileName(pdf)}, aligned={aligned.Headings.Count}/{aligned.ConsideredCandidates}");
     }
-
-    private static bool HasStrongDocxStructure(SlimDocument slim) =>
-        slim.Paragraphs.Any(p =>
-            p.OutlineLevel is not null ||
-            p.HasBuiltInHeadingStyle ||
-            p.NumberingStyleLevel is not null);
 
     /// <summary>
     /// Cùng ý nghĩa với <c>PdfTextbookOutline.IsFontStrong</c>: cần đủ dòng bold RÕ RÀNG PHÂN BIỆT

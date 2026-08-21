@@ -16,6 +16,10 @@ public sealed record Stats(
     int ByHeuristic,
     int ByHumanCorrection,
     int AutoAccepted,
+    int AutoAcceptedCalibrated,
+    int AutoAcceptedDeterministic,
+    int AutoAcceptedUncalibratedEvidence,
+    int HumanVerified,
     int RequiresReview,
     double AvgConfidence,
     int MaxLevel)
@@ -32,6 +36,12 @@ public sealed record Stats(
             ByHeuristic: h.Count(x => x.Source == HeadingSource.Heuristic),
             ByHumanCorrection: h.Count(x => x.Source == HeadingSource.HumanCorrection),
             AutoAccepted: h.Count(x => x.DecisionStatus is not HeadingDecisionStatus.RequiresReview),
+            AutoAcceptedCalibrated: o.DecisionAudit?.AutoAcceptedCalibrated ??
+                h.Count(x => x.DecisionStatus == HeadingDecisionStatus.AutoAcceptedCalibrated),
+            AutoAcceptedDeterministic: o.DecisionAudit?.AutoAcceptedDeterministic ?? 0,
+            AutoAcceptedUncalibratedEvidence: o.DecisionAudit?.AutoAcceptedUncalibratedEvidence ?? 0,
+            HumanVerified: o.DecisionAudit?.HumanVerified ??
+                h.Count(x => x.DecisionStatus == HeadingDecisionStatus.HumanVerified),
             RequiresReview: h.Count(x => x.DecisionStatus == HeadingDecisionStatus.RequiresReview),
             AvgConfidence: h.Count == 0 ? 0 : h.Average(x => x.Confidence),
             MaxLevel: h.Count == 0 ? 0 : h.Max(x => x.Level));

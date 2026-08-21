@@ -40,7 +40,7 @@ public class PdfBoldLabelOutlineTests
     }
 
     [Fact]
-    public void Khong_kich_hoat_khi_mode_khong_phai_FormatDriven()
+    public void Khong_dung_mode_docx_de_chan_pdf_layout_evidence()
     {
         var slim = new SlimDocument
         {
@@ -54,7 +54,7 @@ public class PdfBoldLabelOutlineTests
         var result = PdfBoldLabelOutline.TryBuild("x.docx", slim, mode);
 
         Assert.Empty(result.Headings);
-        Assert.StartsWith("mode=", result.Reason);
+        Assert.Equal("no-pdf", result.Reason);
     }
 
     [Fact]

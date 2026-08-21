@@ -10,6 +10,7 @@ using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Output;
 using DocxHeaderExtractor.Core.Pipeline;
 using DocxHeaderExtractor.Core.Repair;
+using DocxHeaderExtractor.Core.Vision;
 
 Console.OutputEncoding = Encoding.UTF8;
 
@@ -60,6 +61,10 @@ try
         "repair-audit" => await RunRepairAuditAsync(options, cts.Token),
         "repair-key-package" => await RunRepairKeyPackageAsync(options, cts.Token),
         "pdf-clusters" => await RunPdfClustersAsync(options, cts.Token),
+        "pdf-stage-eval" => await RunPdfStageEvalAsync(options, cts.Token),
+        "pdf-tags" => await RunPdfTagsAsync(options, cts.Token),
+        "pdf-bookmarks" => RunPdfBookmarks(options),
+        "verify-corrupt" => await RunVerifyCorruptAsync(options, cts.Token),
         _ => await RunExtractAsync(options, cts.Token),
     };
 }
@@ -702,15 +707,60 @@ static async Task<int> RunRepairKeyPackageAsync(CommandLineOptions o, Cancellati
     if (!o.Verbose) o.Pipeline.Log = null;
     var packager = new PartialKeyPackage(o.Pipeline);
     var failed = 0;
+    var skipped = 0;
     try
     {
+        // Vòng 1: chạy pipeline một lần mỗi file (giữ outline để dùng lại — không chạy pipeline lần
+        // hai bên trong PartialKeyPackage) và đo tỷ lệ "cần xem lại". Cổng chẩn đoán cần trung vị của
+        // CẢ ĐỢT nên phải có đủ outline trước khi xét từng file (handoff §171/§173).
+        var runs = new List<(string File, DocumentOutline? Outline, Exception? Error)>();
         foreach (var file in files)
         {
+            try
+            {
+                using var pipeline = new HeaderExtractionPipeline(o.Pipeline);
+                var outline = await pipeline.RunAsync(file, ct);
+                runs.Add((file, outline, null));
+            }
+            catch (Exception ex) when (ex is not OperationCanceledException)
+            {
+                runs.Add((file, null, ex));
+            }
+        }
+
+        var gateInput = runs
+            .Where(r => r.Outline is not null)
+            .Select(r => (r.File, ReviewRate: RepairDiagnosticGate.ReviewRate(r.Outline!.Headings)))
+            .ToList();
+        var gate = RepairDiagnosticGate.Evaluate(gateInput)
+            .ToDictionary(g => g.File, StringComparer.OrdinalIgnoreCase);
+
+        foreach (var (file, outline, error) in runs)
+        {
             if (!o.Quiet) Console.Error.WriteLine($"» Key package: {Path.GetFileName(file)}");
+
+            if (error is not null)
+            {
+                Console.Error.WriteLine($"  lỗi trích xuất {Path.GetFileName(file)}: {error.Message}");
+                failed++;
+                continue;
+            }
+
+            if (!o.ForceReviewPackage &&
+                gate.TryGetValue(file, out var diagnostic) && diagnostic.SuspectedUpstreamError)
+            {
+                Console.Error.WriteLine($"  BỎ QUA — {diagnostic.Reason}");
+                Console.Error.WriteLine(
+                    "  (dùng --force-review-package nếu đã tự xem và vẫn muốn sinh gói duyệt cho file này)");
+                skipped++;
+                continue;
+            }
+
             try
             {
                 var result = await packager.RunAsync(
                     file,
+                    outline!,
                     new PartialKeyPackageOptions(
                         outDir,
                         o.KeyPackageLimit,
@@ -732,6 +782,10 @@ static async Task<int> RunRepairKeyPackageAsync(CommandLineOptions o, Cancellati
                 failed++;
             }
         }
+
+        if (skipped > 0)
+            Console.Error.WriteLine(
+                $"Bỏ qua {skipped}/{files.Count} file do cổng chẩn đoán (tỷ lệ cần xem lại bất thường — xem lý do ở trên).");
     }
     finally
     {
@@ -739,6 +793,257 @@ static async Task<int> RunRepairKeyPackageAsync(CommandLineOptions o, Cancellati
     }
 
     return failed == 0 ? 0 : 1;
+}
+
+static async Task<int> RunVerifyCorruptAsync(CommandLineOptions o, CancellationToken ct)
+{
+    var files = ExpandInputs(o.Inputs);
+    if (files.Count == 0)
+    {
+        Console.Error.WriteLine("Không tìm thấy file để chạy verify-corrupt.");
+        return 2;
+    }
+    // Quét TRƯỚC, đòi model SAU: không có đoạn nào bị gắn cờ thì chẳng cần VLM, và người dùng không
+    // phải chỉ định model chỉ để nghe "không có gì để kiểm".
+    var pending = new List<(string File, SlimDocument Document, List<SlimParagraph> Corrupt)>();
+    foreach (var file in files)
+    {
+        var conversion = LegacyDocConverter.EnsureDocx(file);
+        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(conversion.Path);
+        var corrupt = slim.Paragraphs.Where(p => p.Corrupt).ToList();
+        if (corrupt.Count > 0) pending.Add((file, slim, corrupt));
+    }
+
+    var totalCorrupt = pending.Sum(p => p.Corrupt.Count);
+    if (totalCorrupt == 0)
+    {
+        Console.Error.WriteLine("Không có đoạn nào bị is_doubled gắn cờ trong các file đã cho.");
+        return 0;
+    }
+
+    if (string.IsNullOrWhiteSpace(o.VlmModelPath) || string.IsNullOrWhiteSpace(o.VlmMmprojPath))
+    {
+        Console.Error.WriteLine(
+            $"Có {totalCorrupt} đoạn cần kiểm nhưng thiếu --vlm-model và --vlm-mmproj (hoặc biến " +
+            "DHX_VLM_MODEL/DHX_VLM_MMPROJ) — cổng chẩn đoán này không dùng model text-only đã cấu " +
+            "hình cho các lệnh khác.");
+        return 2;
+    }
+
+    Console.Error.WriteLine($"Có {totalCorrupt} đoạn bị is_doubled gắn cờ trên {pending.Count} file. Đang nạp VLM...");
+
+    using var vlm = await VlmImageQuestion.LoadAsync(
+        o.VlmModelPath, o.VlmMmprojPath, o.VlmContextSize, o.VlmGpuLayerCount, ct);
+    Console.Error.WriteLine("Đã nạp VLM.");
+
+    var confirmed = 0;
+    var suspectedBug = 0;
+    var inconclusive = 0;
+    foreach (var (file, document, corruptParagraphs) in pending)
+    {
+        Console.Error.WriteLine($"» {Path.GetFileName(file)} ({corruptParagraphs.Count} đoạn nghi vấn)");
+        foreach (var paragraph in corruptParagraphs)
+        {
+            var check = await CorruptParagraphVisualVerifier.VerifyAsync(
+                file, document, paragraph, vlm, o.VlmDpi, ct);
+            switch (check.Verdict)
+            {
+                case CorruptParagraphVisualVerdict.ConfirmedSourceCorruption: confirmed++; break;
+                case CorruptParagraphVisualVerdict.SuspectedParserBug: suspectedBug++; break;
+                default: inconclusive++; break;
+            }
+            Console.Error.WriteLine(
+                $"  đoạn {check.ParagraphIndex} [{check.Verdict}] trang={check.RenderedPage?.ToString() ?? "?"} " +
+                $"text=\"{TruncateForLog(check.ExtractedText, 60)}\"");
+            if (!o.Quiet) Console.Error.WriteLine($"    {TruncateForLog(check.Reason, 200)}");
+        }
+    }
+
+    Console.Error.WriteLine(
+        $"Tổng: {confirmed} xác nhận lỗi nguồn thật, {suspectedBug} nghi lỗi parser, {inconclusive} không kết luận được.");
+    if (suspectedBug > 0)
+        Console.Error.WriteLine(
+            $"CẢNH BÁO: {suspectedBug} đoạn có thể là is_doubled báo động giả (lỗi tầng đọc) — nên xem lại code, không phải file.");
+
+    return 0;
+}
+
+static string TruncateForLog(string text, int max) => text.Length <= max ? text : text[..max] + "…";
+
+static Task<int> RunPdfTagsAsync(CommandLineOptions o, CancellationToken ct)
+{
+    var inputs = ExpandPdfClusterInputs(o.Inputs);
+    if (inputs.Count == 0)
+    {
+        Console.Error.WriteLine("Không tìm thấy PDF/DOCX để chạy pdf-tags.");
+        return Task.FromResult(2);
+    }
+
+    var reports = new List<PdfTaggedHeadingProbeReport>();
+    foreach (var input in inputs)
+    {
+        ct.ThrowIfCancellationRequested();
+        SlimDocument? slim = null;
+        var pdf = input;
+        if (!string.Equals(Path.GetExtension(input), ".pdf", StringComparison.OrdinalIgnoreCase))
+        {
+            var conversion = LegacyDocConverter.EnsureDocx(input);
+            slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(conversion.Path);
+            pdf = PdfTextbookOutline.FindSiblingPdf(input) ?? "";
+        }
+        if (string.IsNullOrWhiteSpace(pdf) || !File.Exists(pdf))
+        {
+            reports.Add(new PdfTaggedHeadingProbeReport(input, 0, 0, 0, 0, "no-sibling-pdf", TaggedStructureTrace.Empty, []));
+            continue;
+        }
+        var report = PdfTaggedHeadingProbe.Analyze(pdf, slim);
+        reports.Add(report);
+        if (!o.Quiet)
+            Console.Error.WriteLine($"{Path.GetFileName(input)}: H={report.HeadingElements}, aligned={report.DocxAligned}, status={report.Status}");
+    }
+
+    var payload = reports.Count == 1 ? (object)reports[0] : reports;
+    var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true });
+    if (string.IsNullOrWhiteSpace(o.OutputPath))
+        Console.WriteLine(json);
+    else
+    {
+        var path = Path.GetFullPath(o.OutputPath);
+        var parent = Path.GetDirectoryName(path);
+        if (!string.IsNullOrWhiteSpace(parent)) Directory.CreateDirectory(parent);
+        File.WriteAllText(path, json, new UTF8Encoding(false));
+        Console.Error.WriteLine($"Đã ghi: {path}");
+    }
+    return Task.FromResult(0);
+}
+
+static int RunPdfBookmarks(CommandLineOptions o)
+{
+    var inputs = ExpandPdfClusterInputs(o.Inputs);
+    if (inputs.Count == 0)
+    {
+        Console.Error.WriteLine("Không tìm thấy PDF/DOCX để chạy pdf-bookmarks.");
+        return 2;
+    }
+
+    var reports = new List<PdfBookmarkProbeReport>();
+    foreach (var input in inputs)
+    {
+        var pdf = string.Equals(Path.GetExtension(input), ".pdf", StringComparison.OrdinalIgnoreCase)
+            ? input
+            : PdfTextbookOutline.FindSiblingPdf(input) ?? "";
+        var report = string.IsNullOrWhiteSpace(pdf) || !File.Exists(pdf)
+            ? new PdfBookmarkProbeReport(input, 0, "no-sibling-pdf", [])
+            : PdfBookmarkProbe.Analyze(pdf);
+        reports.Add(report);
+        if (!o.Quiet)
+            Console.Error.WriteLine($"{Path.GetFileName(input)}: bookmarks={report.Candidates.Count}, status={report.Status}");
+    }
+
+    var payload = reports.Count == 1 ? (object)reports[0] : reports;
+    var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true });
+    if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(json);
+    else
+    {
+        var path = Path.GetFullPath(o.OutputPath);
+        var parent = Path.GetDirectoryName(path);
+        if (!string.IsNullOrWhiteSpace(parent)) Directory.CreateDirectory(parent);
+        File.WriteAllText(path, json, new UTF8Encoding(false));
+        Console.Error.WriteLine($"Đã ghi: {path}");
+    }
+    return 0;
+}
+
+static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationToken ct)
+{
+    if (o.Pipeline.DisableLlm)
+    {
+        Console.Error.WriteLine("pdf-stage-eval cần LLM analyst; bỏ --no-llm và chỉ định --sglang/--model.");
+        return 2;
+    }
+
+    var files = ExpandCalibrationInputs(o.Inputs);
+    var keyIndex = BuildKeyIndex(files);
+    if (files.Count == 0) { Console.Error.WriteLine("Không tìm thấy DOCX để chấm PDF stages."); return 2; }
+
+    using var analyst = await CreateClassifierAsync(o, ct);
+    var rows = new List<object>();
+    foreach (var file in files)
+    {
+        var stem = Path.GetFileNameWithoutExtension(file);
+        var sourceKeys = keyIndex.TryGetValue(stem, out var paths)
+            ? paths.Where(path => path.StartsWith(Path.GetFullPath("keys") + Path.DirectorySeparatorChar,
+                StringComparison.OrdinalIgnoreCase)).ToArray()
+            : Array.Empty<string>();
+        if (sourceKeys.Length != 1)
+        {
+            rows.Add(new { file = Path.GetFileName(file), status = sourceKeys.Length == 0 ? "no-source-key" : "ambiguous-source-key" });
+            continue;
+        }
+
+        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var rawKey = AnswerKey.Load(sourceKeys[0]);
+        var stableMap = slim.Paragraphs
+            .Where(p => !string.IsNullOrWhiteSpace(p.StableId))
+            .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
+        var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
+        var truth = key.PositiveEntries.Where(e => !string.IsNullOrWhiteSpace(e.Text)).ToArray();
+        if (truth.Length != key.Count)
+        {
+            rows.Add(new { file = Path.GetFileName(file), status = "key-title-not-measured", key = key.Count, titledKey = truth.Length });
+            continue;
+        }
+
+        var result = await PdfLayoutEvidenceOutline.TryBuildWithAnalystAsync(file, slim, analyst, ct);
+        var audit = result.Audit;
+        if (audit is null)
+        {
+            rows.Add(new { file = Path.GetFileName(file), status = "route-not-applicable", key = key.Count, reason = result.Reason });
+            continue;
+        }
+
+        string Canon(string? value) => string.Concat((value ?? "").Where(char.IsLetterOrDigit).Select(char.ToLowerInvariant));
+        var expected = truth.Select(e => Canon(e.Text)).ToArray();
+        int Hits(IEnumerable<string> texts) => expected.Count(e => texts.Select(Canon).Any(t => t == e));
+        var allCandidates = audit.CandidateBlocks;
+        var selected = audit.SelectedCandidateBlocks;
+        var headingIds = audit.BlockDecisions
+            .Where(d => string.Equals(d.Role, "HeadingTopic", StringComparison.OrdinalIgnoreCase))
+            .Select(d => d.Id).ToHashSet(StringComparer.Ordinal);
+        var roleHeading = selected.Where(b => headingIds.Contains(b.Id)).ToArray();
+        var grounded = selected.Where(b => audit.GroundedBlockIds.Contains(b.Id, StringComparer.Ordinal)).ToArray();
+        var aligned = selected.Where(b => audit.AlignedBlockIds.Contains(b.Id, StringComparer.Ordinal)).ToArray();
+        var finalOutline = new DocumentOutline
+        {
+            File = file,
+            ParagraphCount = slim.Paragraphs.Count,
+            CandidateCount = audit.CandidatesSelected,
+            Headings = result.Headings,
+            DeterministicRoute = "auto:pdf-layout-block-grounded",
+            RouteAudit = audit,
+        };
+        var score = Evaluator.Score(file, finalOutline, [], key);
+        var exact = Hits(result.Headings.Select(h => h.Text));
+        var levelHits = truth.Count(e => result.Headings.Any(h => Canon(h.Text) == Canon(e.Text) && h.Level == e.Level));
+        rows.Add(new
+        {
+            file = Path.GetFileName(file), status = "measured", key = key.Count,
+            candidateRecall = new { hits = Hits(allCandidates.Select(b => b.Text)), total = key.Count, candidates = allCandidates.Count },
+            analystCoverage = new { hits = Hits(selected.Select(b => b.Text)), total = key.Count, selected = selected.Count, available = audit.CandidatesAvailable },
+            vlmRole = new { hits = Hits(roleHeading.Select(b => b.Text)), selected = roleHeading.Length, precision = roleHeading.Length == 0 ? (double?)null : Hits(roleHeading.Select(b => b.Text)) / (double)roleHeading.Length },
+            pdfGrounding = new { hits = Hits(grounded.Select(b => b.Text)), total = key.Count, grounded = grounded.Length },
+            docxAlignment = new { hits = Hits(aligned.Select(b => b.Text)), total = key.Count, aligned = aligned.Length },
+            titleExact = new { hits = exact, total = key.Count },
+            levelAccuracy = new { hits = levelHits, total = key.Count },
+            final = new { result = result.Headings.Count, precision = score.Precision, recall = score.Recall, f1 = score.F1, nav = score.NavigationRecall, navLevel = score.NavigationLevelAccuracy },
+            missingCandidateTitles = truth.Where(e => !allCandidates.Any(b => Canon(b.Text) == Canon(e.Text))).Select(e => e.Text).ToArray(),
+        });
+    }
+
+    var json = JsonSerializer.Serialize(rows, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else await File.WriteAllTextAsync(Path.GetFullPath(o.OutputPath), json, new UTF8Encoding(false), ct);
+    return 0;
 }
 
 static async Task<int> RunPdfClustersAsync(CommandLineOptions o, CancellationToken ct)
@@ -761,17 +1066,34 @@ static async Task<int> RunPdfClustersAsync(CommandLineOptions o, CancellationTok
     if (!o.Pipeline.DisableLlm)
         analyst = await CreateClassifierAsync(o, ct);
 
+    VlmImageQuestion? visualAnalyst = null;
+    if (!string.IsNullOrWhiteSpace(o.VlmModelPath) || !string.IsNullOrWhiteSpace(o.VlmMmprojPath))
+    {
+        if (string.IsNullOrWhiteSpace(o.VlmModelPath) || string.IsNullOrWhiteSpace(o.VlmMmprojPath))
+        {
+            Console.Error.WriteLine("Muốn dùng VLM cho pdf-clusters thì cần đủ --vlm-model và --vlm-mmproj.");
+            return 2;
+        }
+
+        if (!o.Quiet) Console.Error.WriteLine("Đang nạp VLM visual analyst cho candidate blocks...");
+        visualAnalyst = await VlmImageQuestion.LoadAsync(
+            o.VlmModelPath, o.VlmMmprojPath, o.VlmContextSize, o.VlmGpuLayerCount, ct);
+        if (!o.Quiet) Console.Error.WriteLine("Đã nạp VLM visual analyst.");
+    }
+
     var reports = new List<PdfClusterProbeReport>();
     using (analyst)
+    using (visualAnalyst)
     {
         foreach (var file in files)
         {
             if (!o.Quiet) Console.Error.WriteLine($"» PDF clusters: {Path.GetFileName(file)}");
-            var report = await PdfClusterProbe.RunAsync(file, analyst, ct);
+            var report = await PdfClusterProbe.RunAsync(file, analyst, visualAnalyst, o.VlmDpi, ct);
             reports.Add(report);
             if (!o.Quiet)
                 Console.Error.WriteLine(
-                    $"  status={report.Status} clusters={report.Clusters.Count} decisions={report.Decisions.Count} pdf={report.Pdf}");
+                    $"  status={report.Status} clusters={report.Clusters.Count} decisions={report.Decisions.Count} " +
+                    $"visual={report.VisualBlockDecisions.Count} pdf={report.Pdf}");
         }
     }
 

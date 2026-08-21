@@ -11,7 +11,8 @@ public static class EvidenceConfidenceCalibrator
     public static int Apply(
         IList<HeadingRecord> headings,
         SlimDocument document,
-        IReadOnlySet<int>? auditConflicts = null)
+        IReadOnlySet<int>? auditConflicts = null,
+        IReadOnlyList<double>? confidenceTiers = null)
     {
         var ordered = headings.OrderBy(x => x.Index).ToList();
         var structure = ordered.Where(x => x.Source == HeadingSource.Structure).ToList();
@@ -56,7 +57,7 @@ public static class EvidenceConfidenceCalibrator
                 heading.Source == HeadingSource.Structure ? "requires_review" : "supporting_checks");
             if (heading.Source == HeadingSource.Structure)
             {
-                heading.Confidence = ConfidenceForChecks(passed);
+                heading.Confidence = ConfidenceForChecks(passed, confidenceTiers);
                 heading.Disputed = !verified &&
                     !PrecisionAcceptanceGate.IsDeterministicDeclaredBasis(heading.ConfidenceBasis ?? "");
             }
@@ -65,18 +66,17 @@ public static class EvidenceConfidenceCalibrator
     }
 
     /// <summary>
-    /// Tier evidence dễ hiểu trên UI: 3/5 = 80%, 4/5 = 85%, 5/5 = 95%. Hai kiểm tra trở
-    /// xuống vẫn giữ thấp vì chưa đủ nguồn độc lập để coi là heading đáng tin.
+    /// Tier evidence dễ hiểu trên UI khi chưa có holdout bucket đo được. Mặc định giữ thang cũ
+    /// 3/5 = 80%, 4/5 = 85%, 5/5 = 95%, nhưng profile/CLI có thể thay bằng bucket precision đo từ
+    /// eval thật.
     /// </summary>
-    public static double ConfidenceForChecks(int passed) => Math.Clamp(passed, 0, 5) switch
+    public static double ConfidenceForChecks(int passed, IReadOnlyList<double>? tiers = null)
     {
-        5 => 0.95,
-        4 => 0.85,
-        3 => 0.80,
-        2 => 0.70,
-        1 => 0.60,
-        _ => 0.50,
-    };
+        var safe = tiers is { Count: >= 6 } ? tiers : DefaultConfidenceTiers;
+        return Math.Clamp(safe[Math.Clamp(passed, 0, 5)], 0, 1);
+    }
+
+    public static readonly double[] DefaultConfidenceTiers = [0.50, 0.60, 0.70, 0.80, 0.85, 0.95];
 
     private static int? ParentIndex(IReadOnlyList<HeadingRecord> ordered, int at)
     {

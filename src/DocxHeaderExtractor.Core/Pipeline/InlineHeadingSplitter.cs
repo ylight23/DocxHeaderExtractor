@@ -27,6 +27,9 @@ public static class InlineHeadingSplitter
             // text-layout. Chạy splitter generic theo TOÀN paragraph sẽ biến nhiều slice cùng Index
             // thành cùng một prefix, tạo duplicate rồi bị validator cách ly.
             if (heading.ConfidenceBasis == "typed_number_depth") continue;
+            // The tagged-PDF route already grounded the visual title to a DOCX span.
+            // Recutting from OOXML cannot provide stronger boundary evidence.
+            if (heading.ConfidenceBasis == PdfTaggedEvidenceOutline.Basis) continue;
             // PDF textbook fallback đã dùng tín hiệu font/line từ PDF để lấy đúng ranh giới title.
             // Chạy splitter DOCX generic lên text-layout sau đó sẽ cắt lại trên paragraph gộp và
             // phá chính ranh giới mà PDF vừa cứu.

@@ -25,10 +25,7 @@ public static class PdfFinancialReportOutline
         SlimDocument slim,
         DocumentModeReport mode)
     {
-        if (mode.Mode != DocumentMode.FormatDriven)
-            return PdfTextbookOutlineResult.NotApplicable($"mode={mode.Mode}");
-
-        if (HasStrongDocxStructure(slim))
+        if (DocumentStructureEvidence.HasNativeSemanticStructure(slim))
             return PdfTextbookOutlineResult.NotApplicable("docx-structure-present");
 
         var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
@@ -61,7 +58,6 @@ public static class PdfFinancialReportOutline
             return PdfTextbookOutlineResult.NotApplicable(
                 $"too-few-financial-headings:{candidates.Count}, frame={frameCandidates.Count}, {frameDiagnostic}");
 
-        candidates = MergeContinuationPages(candidates);
         var aligned = AlignToDocx(candidates, slim);
         RecoverTrustFundFrameTitles(aligned, slim);
         if (aligned.Count < Math.Max(10, (int)Math.Ceiling(candidates.Count * 0.55)))
@@ -71,12 +67,6 @@ public static class PdfFinancialReportOutline
             aligned,
             $"pdf={Path.GetFileName(pdf)}, aligned={aligned.Count}/{candidates.Count}");
     }
-
-    private static bool HasStrongDocxStructure(SlimDocument slim) =>
-        slim.Paragraphs.Any(p =>
-            p.OutlineLevel is not null ||
-            p.HasBuiltInHeadingStyle ||
-            p.NumberingStyleLevel is not null);
 
     private static bool LooksLikeStructuredPdfReport(IReadOnlyList<PdfLine> lines, PdfStyleClusterProfile profile)
     {
@@ -153,83 +143,6 @@ public static class PdfFinancialReportOutline
             .OrderBy(h => h.Page)
             .ThenByDescending(h => h.Y)
             .ToList();
-    }
-
-    /// <summary>
-    /// Gộp một tiêu đề mục trải nhiều trang thành một node. Hai luật, ưu tiên luật A:
-    /// A. Trang mang MARKER tiếp nối (hậu tố ngắn trong ngoặc, tự phát hiện — xuất hiện sau ≥2 tiêu đề
-    ///    gốc khác nhau trong tài liệu, không hardcode chữ "cont'd") → gộp vào node đang mở gần nhất
-    ///    cùng cấp/cùng loại (title, không phải nhãn nhóm), KHÔNG so văn bản. Tác giả đã tuyên bố đây là
-    ///    phần tiếp; không cần suy lại bằng cách so tên.
-    /// B. Không marker → chỉ gộp khi văn bản khớp nhau (trùng khít, hoặc một bên là tiền tố của bên kia
-    ///    — ca tiêu đề bị cắt/viết tắt ở trang tiếp), cùng cấp/loại, trang liền kề.
-    /// Nhãn nhóm (Reason bắt đầu "pdf-financial-group") không bao giờ là nguồn hay đích của gộp — nó là
-    /// header lặp lại theo trang, không phải một tiêu đề trải nhiều trang; việc dedup nhãn nhóm đã có sẵn
-    /// ở bước dựng ứng viên (DetectFinancialHeadings/DetectDocxPageFrameHeadings), không lặp lại ở đây.
-    /// </summary>
-    private static List<FinancialHeadingCandidate> MergeContinuationPages(
-        IReadOnlyList<FinancialHeadingCandidate> candidates)
-    {
-        var marker = DetectContinuationMarker(candidates);
-        var result = new List<FinancialHeadingCandidate>();
-        var open = new Dictionary<int, FinancialHeadingCandidate>();
-
-        foreach (var candidate in candidates)
-        {
-            var isGroup = candidate.Reason.StartsWith("pdf-financial-group", StringComparison.Ordinal);
-            if (isGroup)
-            {
-                result.Add(candidate);
-                continue;
-            }
-
-            if (open.TryGetValue(candidate.Level, out var openNode) &&
-                candidate.Page - openNode.Page is >= 0 and <= 1)
-            {
-                var hasMarker = marker is not null && marker.IsMatch(candidate.Text);
-                if (hasMarker || IsSameStem(openNode.Text, candidate.Text))
-                {
-                    open[candidate.Level] = candidate with { Text = openNode.Text };
-                    continue;
-                }
-            }
-
-            result.Add(candidate);
-            open[candidate.Level] = candidate;
-        }
-
-        return result;
-    }
-
-    /// <summary>
-    /// Marker tiếp nối tự phát hiện: hậu tố ngắn trong ngoặc ở cuối tiêu đề, xuất hiện sau ≥2 tiền tố
-    /// (tiêu đề gốc) khác nhau — đủ để coi là quy ước lặp lại của tài liệu, không phải trùng hợp một lần.
-    /// </summary>
-    private static Regex? DetectContinuationMarker(IReadOnlyList<FinancialHeadingCandidate> candidates)
-    {
-        var stemsByTail = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
-        foreach (var c in candidates)
-        {
-            var m = Regex.Match(c.Text, @"^(.{2,120}?)\s*(\(.{1,24}\))$");
-            if (!m.Success) continue;
-            var tail = m.Groups[2].Value;
-            var stem = CanonGroup(m.Groups[1].Value);
-            if (!stemsByTail.TryGetValue(tail, out var stems))
-                stemsByTail[tail] = stems = new HashSet<string>(StringComparer.Ordinal);
-            stems.Add(stem);
-        }
-
-        var tails = stemsByTail.Where(kv => kv.Value.Count >= 2).Select(kv => kv.Key).ToList();
-        if (tails.Count == 0) return null;
-        var pattern = string.Join("|", tails.Select(Regex.Escape));
-        return new Regex($@"(?:{pattern})$");
-    }
-
-    private static bool IsSameStem(string openText, string text)
-    {
-        if (string.Equals(openText, text, StringComparison.OrdinalIgnoreCase)) return true;
-        return text.StartsWith(openText, StringComparison.OrdinalIgnoreCase) ||
-               openText.StartsWith(text, StringComparison.OrdinalIgnoreCase);
     }
 
     private static bool IsTopGroupLabel(PdfLine line, PdfStyleClusterProfile profile) =>

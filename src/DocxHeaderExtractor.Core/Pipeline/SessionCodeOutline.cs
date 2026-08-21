@@ -37,8 +37,7 @@ public static class SessionCodeOutline
 
     public static List<HeadingRecord> Build(SlimDocument document, DocumentModeReport mode)
     {
-        if (mode.Mode != DocumentMode.FormatDriven) return [];
-        if (HasStrongDocxStructure(document)) return [];
+        if (DocumentStructureEvidence.HasNativeSemanticStructure(document)) return [];
 
         var seen = new HashSet<string>(StringComparer.Ordinal);
         var result = new List<HeadingRecord>();

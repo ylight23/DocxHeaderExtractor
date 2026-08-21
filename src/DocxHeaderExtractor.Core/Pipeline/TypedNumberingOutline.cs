@@ -30,6 +30,14 @@ public static class TypedNumberingOutline
         @"^\s*\d{1,2}(?:\.\d{1,2}){0,4}\s+(?:GHz|MHz|kHz|Hz|GB|MB|KB|TB|bps|kbps|Mbps|Gbps|ms|sec|secs|min|mins|hr|hrs|km|cm|mm|kg|mg|lb|lbs|oz|USD|EUR|VND)\b",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
+    private static readonly Regex QuantitativeAmountRemainderRx = new(
+        @"^\s*\d{1,3}(?:\.\d{1,3}){1,4}\s+(?:\$|USD|US\$|EUR|VND|million|billion|trillion|thousand|percent|percentage|per\s+cent|basis\s+points?|bps)\b",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+    private static readonly Regex NumericTokenRx = new(
+        @"(?<![\p{L}\d])[A-Z]?\d[\d.,]*(?![\p{L}\d])",
+        RegexOptions.Compiled);
+
     private static readonly Regex ArabicPathRx = new(
         @"^\s*(\d{1,2}(?:\.\d{1,2}){0,4})(?!\d)",
         RegexOptions.Compiled);
@@ -69,6 +77,8 @@ public static class TypedNumberingOutline
                 if (LooksLikeCaptionLabel(token)) continue;
                 if (HasZeroArabicPathComponent(token, seg)) continue;
                 if (LooksLikeNumericMeasurement(token, seg)) continue;
+                if (LooksLikeQuantitativeAmount(token, seg)) continue;
+                if (LooksLikeQuantitativeTableRow(token, seg)) continue;
 
                 var split = SplitTypedHeadingBody(token, seg, nguong);
                 if (!seen.Add((p.Index, split.Heading))) continue;
@@ -141,6 +151,24 @@ public static class TypedNumberingOutline
         token.Depth >= 2 &&
         NumericUnitRemainderRx.IsMatch(text);
 
+    internal static bool LooksLikeQuantitativeAmount(NumberToken token, string text) =>
+        token.Kind == NumberKind.Arabic &&
+        token.Depth >= 2 &&
+        QuantitativeAmountRemainderRx.IsMatch(text);
+
+    internal static bool LooksLikeQuantitativeTableRow(NumberToken token, string text)
+    {
+        if (token.Kind != NumberKind.Arabic || token.Depth < 2) return false;
+        var first = text[..Math.Min(text.Length, 180)];
+        var numericTokens = NumericTokenRx.Matches(first).Count;
+        if (numericTokens >= 4) return true;
+
+        var alnum = first.Count(char.IsLetterOrDigit);
+        if (alnum == 0) return false;
+        var digits = first.Count(char.IsDigit);
+        return numericTokens >= 3 && digits / (double)alnum >= 0.18;
+    }
+
     internal static bool HasZeroArabicPathComponent(NumberToken token, string text)
     {
         if (token.Kind != NumberKind.Arabic) return false;
@@ -161,5 +189,27 @@ public static class TypedNumberingOutline
             return text.Length <= 140 && TocEntryLikeSegmentRx.IsMatch(text);
         });
         return tocLike >= 4 && tocLike >= segments.Count * 0.6;
+    }
+
+    internal static bool LooksLikeQuantitativeTypedLayout(SlimDocument document)
+    {
+        var typed = 0;
+        var quantitative = 0;
+        foreach (var p in document.Paragraphs)
+        {
+            if (p.Corrupt || p.TableDepth > 0 || p.InTableOfContents || string.IsNullOrWhiteSpace(p.Text)) continue;
+            foreach (var seg in ParagraphHeadingSplitter.Segments(StripPageArtifacts(p.Text)))
+            {
+                if (NumberingAudit.Parse(seg) is not { Kind: NumberKind.Arabic, Depth: >= 2 } token) continue;
+                typed++;
+                if (LooksLikeNumericMeasurement(token, seg) ||
+                    LooksLikeQuantitativeAmount(token, seg) ||
+                    LooksLikeQuantitativeTableRow(token, seg) ||
+                    HasZeroArabicPathComponent(token, seg))
+                    quantitative++;
+            }
+        }
+
+        return typed >= 30 && quantitative >= typed * 0.45;
     }
 }

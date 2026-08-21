@@ -10,9 +10,12 @@ public static class ModelHeadingCriticGate
 {
     public const double WeakEvidenceThreshold = 0.70;
 
-    public static bool NeedsCritique(HeadingRecord heading, SlimParagraph paragraph) =>
+    public static bool NeedsCritique(
+        HeadingRecord heading,
+        SlimParagraph paragraph,
+        double weakEvidenceThreshold = WeakEvidenceThreshold) =>
         heading.Source == HeadingSource.Model &&
-        paragraph.Score < WeakEvidenceThreshold &&
+        paragraph.Score < Math.Clamp(weakEvidenceThreshold, 0, 1) &&
         !paragraph.HasBuiltInHeadingStyle &&
         paragraph.OutlineLevel is null &&
         paragraph.NumberingId is null &&

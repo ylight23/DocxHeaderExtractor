@@ -6,6 +6,34 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class InlineHeadingSplitterTests
 {
     [Fact]
+    public void DoesNotRecutTaggedPdfGroundedTitle()
+    {
+        const string text = "1. Schedule: the meeting will begin at 09:00.";
+        var paragraph = new SlimParagraph
+        {
+            Index = 1,
+            Text = text,
+            TextSpans =
+            [
+                new SlimTextSpan(0, 12, true, false, false, 13),
+                new SlimTextSpan(12, text.Length, false, false, false, 13),
+            ],
+        };
+        var heading = new HeadingRecord
+        {
+            Index = 1,
+            Level = 1,
+            Text = "Schedule",
+            OriginalText = text,
+            ConfidenceBasis = PdfTaggedEvidenceOutline.Basis,
+        };
+        var document = new SlimDocument { FileName = "x.docx", SourcePath = "x.docx", Paragraphs = [paragraph] }.Build();
+
+        Assert.Equal(0, InlineHeadingSplitter.Apply([heading], document));
+        Assert.Equal("Schedule", heading.Text);
+    }
+
+    [Fact]
     public void Splits_at_bold_to_normal_run_boundary_with_separator()
     {
         const string text = "2.3.1. Thành công: Tỉ lệ thành công: 20%";

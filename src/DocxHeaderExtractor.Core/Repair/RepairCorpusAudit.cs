@@ -41,11 +41,28 @@ public sealed record RepairCorpusAuditRow(
     int ParagraphCount,
     int CandidateCount,
     int HeadingCount,
+    int AutoAcceptedCalibrated,
+    int AutoAcceptedDeterministic,
+    int AutoAcceptedUncalibratedEvidence,
+    int HumanVerified,
     int DisputedCount,
     double ReviewRate,
     bool SuspectedUpstreamError,
     string? DiagnosticGateReason,
-    string? Error);
+    string? Error,
+    bool TaggedPdfEvidenceAccepted = false,
+    int TaggedPdfEvidenceHeadings = 0,
+    string? TaggedPdfEvidenceReason = null,
+    int PdfBookmarkEntries = 0,
+    int PdfTocEntries = 0,
+    int PdfTocDocxAnchors = 0,
+    int DocxTocParagraphs = 0,
+    int DocxOutlineLevelParagraphs = 0,
+    int DocxBuiltInHeadingParagraphs = 0,
+    int DocxNumberedParagraphs = 0,
+    int TextNumberMarkerParagraphs = 0,
+    int LegalMarkerParagraphs = 0,
+    string? StructureSourceAuditError = null);
 
 public static class RepairCorpusAudit
 {
@@ -69,6 +86,7 @@ public static class RepairCorpusAudit
             {
                 using var pipeline = new HeaderExtractionPipeline(options);
                 var outline = await pipeline.RunAsync(file, ct);
+                var structureSources = ProbeStructureSources(file, outline.DocumentMode);
                 var candidateReport = RepairCandidateRunner.Analyze(outline);
                 var validation = RepairValidationGate.Validate(outline, candidateReport);
                 var baseline = BaselineRouteTree(outline, candidateReport);
@@ -101,11 +119,28 @@ public static class RepairCorpusAudit
                     outline.ParagraphCount,
                     outline.CandidateCount,
                     outline.Headings.Count,
+                    outline.DecisionAudit?.AutoAcceptedCalibrated ?? 0,
+                    outline.DecisionAudit?.AutoAcceptedDeterministic ?? 0,
+                    outline.DecisionAudit?.AutoAcceptedUncalibratedEvidence ?? 0,
+                    outline.DecisionAudit?.HumanVerified ?? 0,
                     outline.DisputedCount,
                     reviewRate,
                     false, // điền lại ở bước gộp corpus bên dưới, cần trung vị toàn corpus trước
                     null,
-                    null));
+                    null,
+                    structureSources.TaggedAccepted,
+                    structureSources.TaggedHeadings,
+                    structureSources.TaggedReason,
+                    structureSources.BookmarkEntries,
+                    structureSources.PdfTocEntries,
+                    structureSources.PdfTocDocxAnchors,
+                    structureSources.DocxTocParagraphs,
+                    structureSources.DocxOutlineLevelParagraphs,
+                    structureSources.DocxBuiltInHeadingParagraphs,
+                    structureSources.DocxNumberedParagraphs,
+                    structureSources.TextNumberMarkerParagraphs,
+                    structureSources.LegalMarkerParagraphs,
+                    structureSources.Error));
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {
@@ -130,9 +165,26 @@ public static class RepairCorpusAudit
                     0,
                     0,
                     0,
+                    0,
+                    0,
+                    0,
+                    0,
                     false,
                     null,
-                    ex.Message));
+                    ex.Message,
+                    false,
+                    0,
+                    "pipeline-error",
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    null));
             }
         }
 
@@ -183,7 +235,7 @@ public static class RepairCorpusAudit
     public static string ToCsv(RepairCorpusAuditReport report)
     {
         var sb = new StringBuilder();
-        sb.AppendLine("file,group,hasKey,keyCount,mode,currentRoute,bestRoute,baselineRoute,baselineMatchedCurrent,gatePassed,failedGates,needsAnalysis,diagnosticStatus,diagnosticReason,paragraphs,candidates,headings,disputed,reviewRate,suspectedUpstreamError,diagnosticGateReason,error,path");
+        sb.AppendLine("file,group,hasKey,keyCount,mode,currentRoute,bestRoute,baselineRoute,baselineMatchedCurrent,gatePassed,failedGates,needsAnalysis,diagnosticStatus,diagnosticReason,paragraphs,candidates,headings,autoAcceptedCalibrated,autoAcceptedDeterministic,autoAcceptedUncalibratedEvidence,humanVerified,disputed,reviewRate,suspectedUpstreamError,diagnosticGateReason,taggedPdfEvidenceAccepted,taggedPdfEvidenceHeadings,taggedPdfEvidenceReason,pdfBookmarkEntries,pdfTocEntries,pdfTocDocxAnchors,docxTocParagraphs,docxOutlineLevelParagraphs,docxBuiltInHeadingParagraphs,docxNumberedParagraphs,textNumberMarkerParagraphs,legalMarkerParagraphs,structureSourceAuditError,error,path");
         foreach (var r in report.Rows)
         {
             sb.Append(Escape(r.File)).Append(',')
@@ -203,16 +255,86 @@ public static class RepairCorpusAudit
               .Append(r.ParagraphCount).Append(',')
               .Append(r.CandidateCount).Append(',')
               .Append(r.HeadingCount).Append(',')
+              .Append(r.AutoAcceptedCalibrated).Append(',')
+              .Append(r.AutoAcceptedDeterministic).Append(',')
+              .Append(r.AutoAcceptedUncalibratedEvidence).Append(',')
+              .Append(r.HumanVerified).Append(',')
               .Append(r.DisputedCount).Append(',')
               .Append(r.ReviewRate.ToString("F4")).Append(',')
               .Append(r.SuspectedUpstreamError).Append(',')
               .Append(Escape(r.DiagnosticGateReason)).Append(',')
+              .Append(r.TaggedPdfEvidenceAccepted).Append(',')
+              .Append(r.TaggedPdfEvidenceHeadings).Append(',')
+              .Append(Escape(r.TaggedPdfEvidenceReason)).Append(',')
+              .Append(r.PdfBookmarkEntries).Append(',')
+              .Append(r.PdfTocEntries).Append(',')
+              .Append(r.PdfTocDocxAnchors).Append(',')
+              .Append(r.DocxTocParagraphs).Append(',')
+              .Append(r.DocxOutlineLevelParagraphs).Append(',')
+              .Append(r.DocxBuiltInHeadingParagraphs).Append(',')
+              .Append(r.DocxNumberedParagraphs).Append(',')
+              .Append(r.TextNumberMarkerParagraphs).Append(',')
+              .Append(r.LegalMarkerParagraphs).Append(',')
+              .Append(Escape(r.StructureSourceAuditError)).Append(',')
               .Append(Escape(r.Error)).Append(',')
               .Append(Escape(r.SourcePath))
               .AppendLine();
         }
         return sb.ToString();
     }
+
+    private static StructureSourceAudit ProbeStructureSources(string file, DocumentModeReport? mode)
+    {
+        var extension = Path.GetExtension(file);
+        if (!extension.Equals(".docx", StringComparison.OrdinalIgnoreCase) &&
+            !extension.Equals(".docm", StringComparison.OrdinalIgnoreCase))
+            return new StructureSourceAudit(false, 0, "unsupported-docx-source", 0, 0, 0, 0, 0, 0, 0, 0, 0, null);
+
+        try
+        {
+            var slim = new DocxSlimExtractor().Extract(file);
+            var tagged = PdfTaggedEvidenceOutline.TryBuild(file, slim);
+            var toc = mode is null
+                ? PdfTocDictionaryOutlineResult.NotApplicable("no-document-mode")
+                : PdfTocDictionaryOutline.TryBuild(file, slim, mode);
+            var pdf = PdfTextbookOutline.FindSiblingPdf(file);
+            var bookmarks = pdf is null ? 0 : PdfBookmarkProbe.Analyze(pdf).Candidates.Count;
+            return new StructureSourceAudit(
+                tagged.Accepted,
+                tagged.Headings.Count,
+                tagged.Reason,
+                bookmarks,
+                toc.Probe.Entries,
+                toc.Probe.RelaxedPageAnchors,
+                slim.Paragraphs.Count(p => p.InTableOfContents),
+                slim.Paragraphs.Count(p => p.OutlineLevel is not null),
+                slim.Paragraphs.Count(p => p.HasBuiltInHeadingStyle),
+                slim.Paragraphs.Count(p => p.NumberingId is not null || p.NumberingStyleLevel is not null),
+                slim.Paragraphs.Count(p => NumberingAudit.Parse(p.Text) is not null),
+                slim.Paragraphs.Count(p => DocumentModeClassifier.IsLegalMarker(p.Text)),
+                null);
+        }
+        catch (Exception ex)
+        {
+            return new StructureSourceAudit(false, 0, $"probe-error:{ex.GetType().Name}", 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                $"probe-error:{ex.GetType().Name}");
+        }
+    }
+
+    private sealed record StructureSourceAudit(
+        bool TaggedAccepted,
+        int TaggedHeadings,
+        string TaggedReason,
+        int BookmarkEntries,
+        int PdfTocEntries,
+        int PdfTocDocxAnchors,
+        int DocxTocParagraphs,
+        int DocxOutlineLevelParagraphs,
+        int DocxBuiltInHeadingParagraphs,
+        int DocxNumberedParagraphs,
+        int TextNumberMarkerParagraphs,
+        int LegalMarkerParagraphs,
+        string? Error);
 
     private static string? BaselineRouteTree(DocumentOutline outline, RepairCandidateReport candidates)
     {

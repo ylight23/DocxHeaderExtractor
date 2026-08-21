@@ -165,6 +165,42 @@ public sealed class TypedNumberingOutlineTests
     }
 
     [Fact]
+    public void Bo_so_tien_va_ty_le_thap_phan_nhung_giu_heading_decimal_that()
+    {
+        var r = Build(
+            "39.9 billion was committed, and $33.1 billion was disbursed by IDA.",
+            "75.5 percent of respondents answered the survey.",
+            "1.5 Model Validation The validation step compares held-out data.");
+
+        var only = Assert.Single(r);
+        Assert.StartsWith("1.5 Model Validation", only.Text, StringComparison.Ordinal);
+        Assert.Equal(2, only.Level);
+    }
+
+    [Fact]
+    public void Bo_dong_bang_day_ma_so_nhung_giu_heading_decimal_that()
+    {
+        var r = Build(
+            "65.68 (HER) PROJECT Emergency Food Security 3 P178280 2022",
+            "4.71 Africa Senegal River Basin Western and 1306 P131323 Climate Change Resilience 2014",
+            "1.5 Model Validation The validation step compares held-out data.");
+
+        var only = Assert.Single(r);
+        Assert.StartsWith("1.5 Model Validation", only.Text, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Nhan_dien_layout_typed_chu_yeu_la_so_lieu_bang()
+    {
+        var rows = Enumerable.Range(0, 40)
+            .Select(i => P(i, $"{i + 1}.23 Project Alpha {100 + i} P{170000 + i} 2025"))
+            .ToList();
+        var doc = new SlimDocument { FileName = "finance.docx", SourcePath = "finance.docx", Paragraphs = rows }.Build();
+
+        Assert.True(TypedNumberingOutline.LooksLikeQuantitativeTypedLayout(doc));
+    }
+
+    [Fact]
     public void Bo_duong_dan_so_co_thanh_phan_0_vi_thuong_la_so_lieu_hoac_code()
     {
         var r = Build(

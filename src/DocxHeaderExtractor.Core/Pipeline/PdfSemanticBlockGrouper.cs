@@ -26,7 +26,8 @@ internal static class PdfSemanticBlockGrouper
 {
     public static IReadOnlyList<PdfSemanticBlock> Build(
         IReadOnlyList<PdfLineBlockAnnotation> annotations,
-        int maxLinesPerBlock = 4)
+        int maxLinesPerBlock = 4,
+        bool allowSemicolonContinuation = false)
     {
         var candidates = annotations
             .Where(a => !a.ExcludeFromSemanticSamples)
@@ -41,7 +42,7 @@ internal static class PdfSemanticBlockGrouper
         {
             var current = blocks.LastOrDefault();
             if (current is not null &&
-                CanMerge(current, line, maxLinesPerBlock))
+                CanMerge(current, line, maxLinesPerBlock, allowSemicolonContinuation))
             {
                 current.Add(line);
             }
@@ -79,7 +80,11 @@ internal static class PdfSemanticBlockGrouper
             blocks.Count(b => b.LineCount > 1),
             blocks.Count == 0 ? 0 : blocks.Max(b => b.LineCount));
 
-    private static bool CanMerge(IReadOnlyList<PdfLine> current, PdfLine next, int maxLinesPerBlock)
+    private static bool CanMerge(
+        IReadOnlyList<PdfLine> current,
+        PdfLine next,
+        int maxLinesPerBlock,
+        bool allowSemicolonContinuation)
     {
         if (current.Count >= maxLinesPerBlock) return false;
         var previous = current[^1];
@@ -90,7 +95,7 @@ internal static class PdfSemanticBlockGrouper
         if (!SameVisualFamily(previous, next)) return false;
 
         var previousText = PdfTextUtilities.Readable(previous.Text);
-        if (previousText.EndsWith('.') || previousText.EndsWith(';')) return false;
+        if (previousText.EndsWith('.') || (!allowSemicolonContinuation && previousText.EndsWith(';'))) return false;
         if (previousText.Length > 130) return false;
         return true;
     }

@@ -5,7 +5,7 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class PdfBlockGrounderTests
 {
     [Fact]
-    public void GrounderRejectsHeadingRoleWhenClusterSaysTable()
+    public void GrounderKeepsDirectHeadingRoleWhenClusterSaysTableButMarksConflict()
     {
         var heading = Block("b1", "AVAILABILITY OF INFORMATION", 16);
         var table = Block("b2", "Net Commitments Disbursements", 12);
@@ -34,8 +34,8 @@ public sealed class PdfBlockGrounderTests
         var result = PdfBlockGrounder.Ground([heading, table], blockDecisions, profile, samples, clusterDecisions);
 
         Assert.Contains(result.Headings, h => h.Id == "b1" && h.Evidence == "block-role+cluster-heading");
-        Assert.DoesNotContain(result.Headings, h => h.Id == "b2");
-        Assert.Contains(result.Rejected, r => r.Id == "b2" && r.Reason == "cluster-says-table-or-chart");
+        Assert.Contains(result.Headings, h => h.Id == "b2" && h.Evidence == "block-role+cluster-table-conflict");
+        Assert.DoesNotContain(result.Rejected, r => r.Id == "b2");
     }
 
     private static PdfSemanticBlock Block(string id, string text, double fontSize)

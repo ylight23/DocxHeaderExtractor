@@ -87,14 +87,18 @@ internal static class PdfBlockGrounder
                 if (clusterDecision.Role == PdfSemanticClusterRole.TableOrChartLabel &&
                     clusterDecision.Confidence >= 0.75)
                 {
-                    rejected.Add(Reject(decision, "cluster-says-table-or-chart"));
-                    continue;
+                    // A style cluster is aggregate evidence; it must not erase a direct semantic
+                    // decision about this specific block. Keep the block as conflicted evidence so
+                    // the route remains review-only until calibration proves this combination safe.
+                    evidence = "block-role+cluster-table-conflict";
                 }
-
-                evidence = clusterDecision.Role == PdfSemanticClusterRole.HeadingTopic &&
-                           clusterDecision.Confidence >= 0.60
-                    ? "block-role+cluster-heading"
-                    : $"block-role+cluster-{RoleName(clusterDecision.Role)}";
+                else
+                {
+                    evidence = clusterDecision.Role == PdfSemanticClusterRole.HeadingTopic &&
+                               clusterDecision.Confidence >= 0.60
+                        ? "block-role+cluster-heading"
+                        : $"block-role+cluster-{RoleName(clusterDecision.Role)}";
+                }
             }
 
             headings.Add(new PdfGroundedBlockHeading(

@@ -181,6 +181,14 @@ public sealed class DocumentOutline
     public string? DeterministicRoute { get; init; }
 
     /// <summary>
+    /// Route-specific evidence summary. This is deliberately separate from document diagnostics so
+    /// a bounded PDF/LLM route can disclose its candidate coverage and grounding losses.
+    /// </summary>
+    [JsonPropertyName("routeAudit")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public RouteExecutionAudit? RouteAudit { get; init; }
+
+    /// <summary>
     /// Audit tự động của tầng code-first: đo tín hiệu tài liệu, chạy candidate deterministic trong
     /// sandbox và ghi lý do pass/fail. LLM chỉ nên phân tích report này, không tự chọn output.
     /// </summary>
@@ -204,7 +212,24 @@ public sealed class DocumentOutline
     public int AutoAcceptedCount => Headings.Count(h => h.DecisionStatus is
         HeadingDecisionStatus.AutoAcceptedEvidence or HeadingDecisionStatus.AutoAcceptedCalibrated or
         HeadingDecisionStatus.HumanVerified);
+
+    /// <summary>
+    /// Tách lý do auto-accept để không đọc nhầm route deterministic declared thành bucket precision
+    /// đã được holdout chứng minh.
+    /// </summary>
+    [JsonPropertyName("decisionAudit")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public PrecisionDecisionAudit? DecisionAudit { get; init; }
 }
+
+public sealed record PrecisionDecisionAudit(
+    [property: JsonPropertyName("autoAcceptedTotal")] int AutoAcceptedTotal,
+    [property: JsonPropertyName("autoAcceptedCalibrated")] int AutoAcceptedCalibrated,
+    [property: JsonPropertyName("autoAcceptedDeterministic")] int AutoAcceptedDeterministic,
+    [property: JsonPropertyName("autoAcceptedUncalibratedEvidence")] int AutoAcceptedUncalibratedEvidence,
+    [property: JsonPropertyName("humanVerified")] int HumanVerified,
+    [property: JsonPropertyName("requiresReview")] int RequiresReview,
+    [property: JsonPropertyName("byConfidenceBasis")] IReadOnlyDictionary<string, int> ByConfidenceBasis);
 
 public sealed record DocumentDiagnosticReport(
     [property: JsonPropertyName("status")] string Status,

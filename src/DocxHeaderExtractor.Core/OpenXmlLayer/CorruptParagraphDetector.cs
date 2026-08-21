@@ -24,11 +24,22 @@ public static class CorruptParagraphDetector
     /// <summary>
     /// Văn bản có bị nhân đôi từng ký tự không. Bỏ khoảng trắng trước khi ghép cặp vì luồng thứ hai
     /// không nhất thiết mang theo dấu cách.
+    /// <para>
+    /// CHỈ đếm cặp CHỮ CÁI và CHỮ SỐ. Dấu câu bị loại khỏi cả tử số lẫn mẫu số vì dot-leader
+    /// (<c>Summary . . . . . . 42</c>), gạch dưới điền form (<c>Country: ______</c>) và dấu chấm lửng
+    /// (<c>………………</c>) là chuỗi ký tự lặp HỢP LỆ — ghép cặp trong đó tất nhiên khớp, không liên quan
+    /// gì tới hiện tượng hai luồng run của ca gốc.
+    /// </para>
+    /// <para>
+    /// Đo trên toàn corpus trước khi sửa: <b>601/601 đoạn bị gắn cờ (100%) là dương giả kiểu này</b>,
+    /// KHÔNG đoạn nào có cặp chữ cái chiếm đa số như ca gốc. Nặng nhất là nhóm hợp đồng mua sắm WB
+    /// (036: 114 đoạn, 037: 108 đoạn) — toàn biểu mẫu gạch dưới. Xem handoff §174.
+    /// </para>
     /// </summary>
     public static bool IsDoubled(string? text)
     {
         if (string.IsNullOrWhiteSpace(text)) return false;
-        var c = text.Where(ch => !char.IsWhiteSpace(ch)).ToArray();
+        var c = text.Where(char.IsLetterOrDigit).ToArray();
         if (c.Length < MinimumLength) return false;
 
         var pairs = c.Length / 2;

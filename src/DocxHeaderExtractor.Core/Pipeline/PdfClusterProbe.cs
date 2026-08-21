@@ -1,6 +1,9 @@
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.Core.Vision;
 using UglyToad.PdfPig;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -12,6 +15,7 @@ public sealed record PdfClusterProbeReport(
     [property: JsonPropertyName("reason")] string Reason,
     [property: JsonPropertyName("pages")] int Pages,
     [property: JsonPropertyName("lines")] int Lines,
+    [property: JsonPropertyName("docxSignals")] DocxDeterministicSignalDto? DocxSignals,
     [property: JsonPropertyName("textCoverage")] PdfTextCoverageDto? TextCoverage,
     [property: JsonPropertyName("tocDictionary")] PdfTocDictionaryDto? TocDictionary,
     [property: JsonPropertyName("lineFilter")] PdfLineFilterSummaryDto? LineFilter,
@@ -23,8 +27,10 @@ public sealed record PdfClusterProbeReport(
     [property: JsonPropertyName("clusters")] IReadOnlyList<PdfClusterSampleDto> Clusters,
     [property: JsonPropertyName("decisions")] IReadOnlyList<PdfClusterDecisionDto> Decisions,
     [property: JsonPropertyName("blockDecisions")] IReadOnlyList<PdfBlockDecisionDto> BlockDecisions,
+    [property: JsonPropertyName("visualBlockDecisions")] IReadOnlyList<PdfVisualBlockDecisionDto> VisualBlockDecisions,
     [property: JsonPropertyName("groundedHeadings")] IReadOnlyList<PdfGroundedBlockHeadingDto> GroundedHeadings,
     [property: JsonPropertyName("rejectedBlockHeadings")] IReadOnlyList<PdfRejectedBlockHeadingDto> RejectedBlockHeadings,
+    [property: JsonPropertyName("visualAnalystRaw")] IReadOnlyList<string> VisualAnalystRaw,
     [property: JsonPropertyName("blockAnalystRaw")] IReadOnlyList<string> BlockAnalystRaw);
 
 public sealed record PdfTextCoverageDto(
@@ -34,6 +40,17 @@ public sealed record PdfTextCoverageDto(
     [property: JsonPropertyName("lineToLetterRatio")] double LineToLetterRatio,
     [property: JsonPropertyName("lineToPageTextRatio")] double LineToPageTextRatio,
     [property: JsonPropertyName("linesPerPage")] double LinesPerPage);
+
+public sealed record DocxDeterministicSignalDto(
+    [property: JsonPropertyName("paragraphs")] int Paragraphs,
+    [property: JsonPropertyName("candidates")] int Candidates,
+    [property: JsonPropertyName("styledHeadings")] int StyledHeadings,
+    [property: JsonPropertyName("outlineLevelParagraphs")] int OutlineLevelParagraphs,
+    [property: JsonPropertyName("numberedParagraphs")] int NumberedParagraphs,
+    [property: JsonPropertyName("tableParagraphs")] int TableParagraphs,
+    [property: JsonPropertyName("corruptParagraphs")] int CorruptParagraphs,
+    [property: JsonPropertyName("mode")] string Mode,
+    [property: JsonPropertyName("status")] string Status);
 
 public sealed record PdfTocDictionaryDto(
     [property: JsonPropertyName("tocPage")] int TocPage,
@@ -115,6 +132,12 @@ public sealed record PdfBlockDecisionDto(
     [property: JsonPropertyName("confidence")] double Confidence,
     [property: JsonPropertyName("reason")] string Reason);
 
+public sealed record PdfVisualBlockDecisionDto(
+    [property: JsonPropertyName("id")] string Id,
+    [property: JsonPropertyName("role")] string Role,
+    [property: JsonPropertyName("confidence")] double Confidence,
+    [property: JsonPropertyName("evidence")] string Evidence);
+
 public sealed record PdfGroundedBlockHeadingDto(
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("page")] int Page,
@@ -141,11 +164,14 @@ public static class PdfClusterProbe
     public static async Task<PdfClusterProbeReport> RunAsync(
         string inputPath,
         IHeaderClassifier? analyst = null,
+        VlmImageQuestion? visualAnalyst = null,
+        int visualDpi = 120,
         CancellationToken ct = default)
     {
+        var docxSignals = TryReadDocxSignals(inputPath);
         var pdf = ResolvePdf(inputPath);
         if (pdf is null)
-            return Empty(inputPath, "no-pdf", "Không tìm thấy PDF cùng stem hoặc input không phải PDF.");
+            return Empty(inputPath, "no-pdf", "Không tìm thấy PDF cùng stem hoặc input không phải PDF.", null, docxSignals);
 
         IReadOnlyList<PdfLine> lines;
         PdfTextCoverageDto coverage;
@@ -157,11 +183,11 @@ public static class PdfClusterProbe
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException)
         {
-            return Empty(inputPath, "pdf-read-failed", ex.Message, pdf);
+            return Empty(inputPath, "pdf-read-failed", ex.Message, pdf, docxSignals);
         }
 
         if (lines.Count == 0)
-            return Empty(inputPath, "no-lines", "PDF không có dòng text đọc được.", pdf);
+            return Empty(inputPath, "no-lines", "PDF không có dòng text đọc được.", pdf, docxSignals);
 
         var profile = PdfStyleClusterProfile.Learn(lines);
         var tocDictionary = PdfTocDictionaryProbe.Analyze(lines);
@@ -179,8 +205,10 @@ public static class PdfClusterProbe
             .Take(120)
             .ToArray();
         var blockDecisions = Array.Empty<PdfBlockDecisionDto>();
+        var visualBlockDecisions = Array.Empty<PdfVisualBlockDecisionDto>();
         var groundedHeadings = Array.Empty<PdfGroundedBlockHeadingDto>();
         var rejectedBlockHeadings = Array.Empty<PdfRejectedBlockHeadingDto>();
+        var visualAnalystRaw = Array.Empty<string>();
         var blockAnalystRaw = Array.Empty<string>();
         if (analyst is not null && samples.Count > 0)
         {
@@ -198,6 +226,17 @@ public static class PdfClusterProbe
             rejectedBlockHeadings = grounding.Rejected.Select(ToDto).ToArray();
             blockAnalystRaw = blockAnalysis.RawResponses.Select(SafeRaw).ToArray();
         }
+        if (visualAnalyst is not null && candidateBlocks.Length > 0)
+        {
+            var visual = await PdfVisualBlockAnalyst.AnalyzeAsync(
+                visualAnalyst,
+                pdf,
+                candidateBlocks,
+                visualDpi,
+                ct);
+            visualBlockDecisions = visual.Decisions.Select(ToDto).ToArray();
+            visualAnalystRaw = visual.RawResponses.Select(SafeRaw).ToArray();
+        }
 
         return new PdfClusterProbeReport(
             inputPath,
@@ -206,6 +245,7 @@ public static class PdfClusterProbe
             analyst is null ? "deterministic-cluster-samples" : "deterministic-clusters-with-llm-analyst",
             lines.Select(l => l.Page).Distinct().Count(),
             lines.Count,
+            docxSignals,
             coverage,
             ToDto(tocDictionary),
             ToDto(PdfLineBlockFilter.Summarize(annotations)),
@@ -217,8 +257,10 @@ public static class PdfClusterProbe
             samples.Select(s => ToDto(s, annotations)).ToArray(),
             decisions,
             blockDecisions,
+            visualBlockDecisions,
             groundedHeadings,
             rejectedBlockHeadings,
+            visualAnalystRaw,
             blockAnalystRaw);
     }
 
@@ -231,8 +273,41 @@ public static class PdfClusterProbe
         return PdfTextbookOutline.FindSiblingPdf(inputPath);
     }
 
-    private static PdfClusterProbeReport Empty(string input, string status, string reason, string? pdf = null) =>
-        new(input, pdf, status, reason, 0, 0, null, null, null, null, [], [], null, [], [], [], [], [], [], []);
+    private static PdfClusterProbeReport Empty(
+        string input,
+        string status,
+        string reason,
+        string? pdf = null,
+        DocxDeterministicSignalDto? docxSignals = null) =>
+        new(input, pdf, status, reason, 0, 0, docxSignals, null, null, null, null, [], [], null, [], [], [], [], [], [], [], [], []);
+
+    private static DocxDeterministicSignalDto? TryReadDocxSignals(string inputPath)
+    {
+        if (!Path.GetExtension(inputPath).Equals(".docx", StringComparison.OrdinalIgnoreCase) ||
+            !File.Exists(inputPath))
+            return null;
+
+        try
+        {
+            var slim = new DocxSlimExtractor().Extract(inputPath);
+            var paragraphs = slim.Paragraphs.Where(p => p.Role != ParagraphRole.Empty).ToList();
+            var mode = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
+            return new DocxDeterministicSignalDto(
+                paragraphs.Count,
+                slim.Candidates.Count(),
+                paragraphs.Count(p => p.HasBuiltInHeadingStyle || p.Role == ParagraphRole.StyledHeading),
+                paragraphs.Count(p => p.OutlineLevel is not null),
+                paragraphs.Count(p => p.NumberingId is not null || p.NumberingLevel is not null),
+                paragraphs.Count(p => p.TableDepth > 0),
+                paragraphs.Count(p => p.Corrupt),
+                mode.Mode.ToString(),
+                mode.Status.ToString());
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException)
+        {
+            return new DocxDeterministicSignalDto(0, 0, 0, 0, 0, 0, 0, "unknown", $"docx-read-failed:{ex.Message}");
+        }
+    }
 
     private static PdfTextCoverageDto MeasureCoverage(PdfDocument doc, IReadOnlyList<PdfLine> lines)
     {
@@ -341,6 +416,9 @@ public static class PdfClusterProbe
 
     private static PdfBlockDecisionDto ToDto(PdfBlockDecision decision) =>
         new(decision.Id, RoleName(decision.Role), decision.Confidence, decision.Reason);
+
+    private static PdfVisualBlockDecisionDto ToDto(PdfVisualBlockDecision decision) =>
+        new(decision.Id, RoleName(decision.Role), Math.Round(decision.Confidence, 3), decision.Evidence);
 
     private static PdfGroundedBlockHeadingDto ToDto(PdfGroundedBlockHeading heading) =>
         new(
