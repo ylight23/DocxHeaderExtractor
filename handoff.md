@@ -11273,3 +11273,80 @@ khác trắng tay" — ví dụ "route khác dựng ít hơn một nửa số bo
 PDF về bản chất là chuỗi lệnh "vẽ ký tự X tại toạ độ (a,b)". Tagged PDF là lớp phụ thêm cho trình
 đọc màn hình. Nên với 64/83 file không có cấu trúc dùng được, ta đang nhìn mực trên giấy rồi suy
 ngược — và đó là lý do các route theo cụm style/đánh số tồn tại, không phải vì thiếu cố gắng.
+
+## §143 — VLM vào pipeline: khảo sát khả thi, ba vai trò, và hợp đồng đầu ra
+
+Yêu cầu người dùng: nghiên cứu đưa VLM vào giai đoạn trích xuất heading, để mô hình **nhìn + suy
+luận + trả lời tự nhiên** trong một lượt.
+
+### Khả thi kỹ thuật — ba mảnh, hai đã có
+
+| mảnh | trạng thái |
+|---|---|
+| mô hình thị giác | **có sẵn**: `mmproj-Qwen3.5-9B-F16.gguf` (bộ chiếu cho ĐÚNG model đang dùng) và `Qwen3-VL-8B-Instruct-Q4_K_M.gguf` |
+| thư viện | **có**: LLamaSharp 0.27 lộ `ClipModel` / `SafeLlavaModelHandle` / `Multimodal` |
+| kết xuất PDF → ảnh | **CHƯA CÓ** — PdfPig chỉ đọc text/letter, không raster hoá |
+
+Nên chặn duy nhất là bộ kết xuất ảnh. Mã nguồn hiện chưa có một dòng nào về thị giác
+(`grep -i "mmproj|clip|vision|image"` trong `Core/Llm/` ra rỗng).
+
+### Ba vai trò, xếp theo độ khó THỊ GIÁC chứ không theo giá trị
+
+1. **Chẩn đoán file hỏng** — dễ nhất. Câu hỏi *"ảnh này có ký tự lặp đôi không?"*: chỉ cần thấy
+   `HHììnnhh` khác `Hình`. Không cần đọc hiểu, không cần bố cục.
+2. **Phân xử cha–con** — trung bình. *"Hai dòng này ngang cấp hay trên là cha của dưới?"* trên một
+   vùng crop nhỏ. Cần thấy cỡ chữ, màu, đường kẻ, quan hệ trên–dưới.
+3. **Trích outline từ trang scan** — khó nhất. Cần OCR chính xác + bố cục + tiếng Việt có dấu.
+
+**Rủi ro thật không nằm ở suy luận mà ở OCR tiếng Việt.** Dấu phụ (`ấ ệ ỡ`) đọc sai một ký tự là
+hỏng canonical matching — đúng cơ chế mà nhiều route đang dựa vào. Vai trò 1 và 2 KHÔNG cần đọc
+chữ chính xác, chỉ cần nhìn hình dạng; vai trò 3 thì đọc sai là hỏng. Nếu làm vai trò 3, phải so
+với Tesseract trước: OCR chuyên dụng thường chính xác hơn VLM về ký tự dù kém về bố cục.
+
+### Hợp đồng đầu ra — tách phán quyết khỏi lời văn
+
+Lời văn tự nhiên là con dao hai lưỡi: nó **giải thích được** (thứ mà một con số tự tin không làm
+được), nhưng **văn xuôi nghe thuyết phục không phải bằng chứng**. Model có thể mô tả một đường kẻ
+không tồn tại mà câu vẫn trôi chảy — đúng kiểu lỗi đã xảy ra nhiều lần trong dự án này.
+
+```json
+{ "verdict": "parent_child",
+  "confidence": 0.9,
+  "evidence": ["horizontal_rule_between", "font_size_16_vs_11"],
+  "explanation": "..." }
+```
+
+- `verdict` → pipeline dùng.
+- `evidence` → **grounder kiểm chứng lại bằng dữ liệu PDF đã có**: có đường kẻ thật không? cỡ chữ
+  có đúng 16 và 11 không? Cả hai kiểm được, không cần tin model.
+- `explanation` → chỉ cho người đọc, **không được ảnh hưởng quyết định**.
+
+Đây đúng nguyên tắc đã áp cho mọi tầng khác: model không quyết cuối, phải qua bằng chứng cấu trúc.
+Khác biệt duy nhất là bằng chứng giờ gồm cả thị giác.
+
+### Ràng buộc phần cứng (RTX 3060 12GB)
+
+Qwen3.5-9B ~5,3GB + mmproj ~0,9GB, còn ~4GB cho KV cache. Ảnh tốn token gấp nhiều lần văn bản, nên:
+
+- **crop vùng nhỏ**, đừng render cả trang — vai trò 2 chỉ cần dải đầu trang cao ~150px;
+- **hạ DPI xuống 100–120**, không cần 300;
+- **một ảnh mỗi lượt**, không batch.
+
+Số đo hôm nay cho thấy vì sao ba ràng buộc này bắt buộc: `063_Advanced_Linear_Algebra` chạy THUẦN
+VĂN BẢN đã tốn **~175 s/khối context** và vượt 50 phút (§135). Thêm ảnh mà không crop thì không có
+cửa.
+
+### Thí nghiệm đầu tiên — một ảnh, một câu hỏi
+
+Không xây gì trước khi có kết quả này:
+
+1. crop vùng nhãn nhóm + tiêu đề mục của một ca cha–con đang sai;
+2. hỏi *"Hai dòng này ngang cấp hay dòng trên là cấp cha của dòng dưới?"*;
+3. chấm **cả `verdict` lẫn `evidence`**, không chấm lời văn.
+
+- verdict đúng **và** evidence kiểm chứng được → kiến trúc dùng được, mở rộng có căn cứ.
+- verdict đúng nhưng evidence sai → lời văn tự nhiên đang che phán đoán không cơ sở. Đây là kết
+  quả **đáng biết trước khi xây**, không phải thất bại.
+
+Việc phải làm trước tiên: bộ kết xuất PDF → ảnh crop theo bounding box. Không có nó thì không thí
+nghiệm được gì.
