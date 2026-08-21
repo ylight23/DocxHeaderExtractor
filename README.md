@@ -1,4 +1,4 @@
-# DocxHeaderExtractor
+﻿# DocxHeaderExtractor
 
 Kiến trúc runtime dùng một [agent harness có policy skill, guardrail, vòng sửa giới hạn, trace và
 human-review gate chặn hành động ghi](docs/agent-harness.md).
@@ -370,6 +370,33 @@ hay từ luật khi chạy `--no-llm` (`Heuristic`).
 | `--structural-only` | Tắt toàn bộ luật theo từ ngữ, xem bên dưới |
 | `--compact` (lệnh `xml`) | In XML compact phục vụ debug; đây không còn là prompt production |
 | `--review-all` | Gửi mọi paragraph không rỗng; chỉ dùng audit/thu nhãn vì rất chậm |
+
+## PDF có gì tương đương `w:outlineLvl`?
+
+Có ba lớp, và câu trả lời quan trọng là **phần lớn file không có lớp nào dùng được**.
+
+| lớp | tương đương OOXML | đo trên 83 PDF của corpus |
+|---|---|---|
+| Tagged PDF (`/StructTreeRoot` → `/H1`, `/H2`) | `w:pStyle` + `w:outlineLvl` | 27 file có, **chỉ 5 file có ≥10 thẻ `/H*`** |
+| Bookmark outline (`/Outlines`) | cây mục lục điều hướng | 33 file có, **14 file ≥10 bookmark** |
+| Structure destinations | neo thẻ vào vị trí trang | đi kèm tagged |
+
+**19/83 file có đường đọc thẳng; 64 file còn lại không có gì.**
+
+Hai điều đáng nhớ khi kiểm:
+
+- `Tagged = true` **không đủ**. `017_ND_123` có 11.917 thẻ mà **0** heading (toàn `/NonStruct`,
+  `/TD`); `055_IDA` có 28.440 thẻ, **1** heading. Phải đếm `/H*`, không phải hỏi có tagged không.
+- Cây thẻ chỉ chứa số `/MCID`, **không chứa chữ**. Muốn lấy text phải ghép hai nguồn: cây thẻ cho
+  `(trang, mcid, cấp)`, còn `pdfplumber`/PdfPig cho ký tự kèm `mcid`.
+
+Vì sao ít file có: PDF được thiết kế để **in**, không phải để soạn. Nội dung là chuỗi lệnh
+"vẽ ký tự X tại toạ độ (a,b)" — không có khái niệm "đoạn văn" hay "tiêu đề". Tagged PDF là lớp phụ
+thêm vào cho trình đọc màn hình, và mặc định của phần lớn công cụ xuất là **tắt**; PDF sinh từ
+LaTeX hay máy in ảo thì gần như không bao giờ có.
+
+Nên với đa số tài liệu, ta ở đúng tình huống **nhìn mực trên giấy rồi suy ngược ra cấu trúc** —
+đó là lý do các route theo cụm cỡ chữ, đánh số và bố cục tồn tại.
 
 ## Ranh giới tín hiệu cấu trúc và luật từ ngữ
 

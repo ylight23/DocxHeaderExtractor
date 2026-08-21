@@ -11215,3 +11215,61 @@ kỹ luồng CLI hiện có trước (ngoài phạm vi lần này, tránh đụn
 phiên khác cùng sửa).
 
 Validation: `dotnet test DocxHeaderExtractor.sln --no-restore` xanh `671/671`.
+
+## §142 — PDF có gì tương đương OOXML: quét 83 file, và hai lần đặt route bookmark đều hỏng
+
+### Bối cảnh: phiên song song đã đi trước
+
+`git pull` fast-forward đưa HEAD lên `3fbd3f6` với 5 commit của phiên song song (§138–§141).
+**`ev-human` F1 42,1% → 84,8% là công của phiên đó, không phải của phiên này** — route
+TOC-dictionary của họ đưa `092_RFC9111` từ 289 mục (P 1,9%) xuống **67 mục / đáp án 64, P 89,6%,
+Nav 96,9%**. Ghi rõ để không ai đọc nhầm biểu đồ.
+
+### Đo: PDF có ba lớp cấu trúc, quét đủ 83 file
+
+| tín hiệu | số PDF |
+|---|--:|
+| có `/StructTreeRoot` (tagged) | 27 |
+| … trong đó có ≥10 thẻ `/H*` **dùng được** | **5** |
+| có bookmark outline (`/Outlines`) | 33 |
+| … bookmark ≥10 và không tagged dùng được | **14** |
+| không có gì | 28 |
+
+**19/83 file có đường cấu trúc đọc thẳng.** `Tagged=True` KHÔNG đủ: `017` có 11.917 thẻ mà 0
+heading (toàn `/NonStruct`, `/TD`); `055` có 28.440 thẻ, 1 heading. Phải đếm `/H*`.
+
+Đối chiếu bookmark của `092` với đáp án — khớp gần tuyệt đối:
+
+```
+bookmark: 1. Introduction · 1.1. Requirements Notation · 1.2.1. Imported Rules
+đáp án  : 1. Introduction · 1.1. Requirements Notation · 1.2.1. Imported Rules
+```
+
+76 bookmark trừ ~12 mục front/back matter (`Abstract`, `Table of Contents`, `Index`,
+`Authors' Addresses`) mà đáp án ghi rõ loại bỏ → đúng **64**.
+
+### Đã cài `PdfBookmarkOutline`, đặt hai chỗ, cả hai hỏng — ĐÃ GỠ
+
+| vị trí đặt | kết quả |
+|---|---|
+| ưu tiên cao (sau TOC-dictionary) | `ev-human` F1 84,8% → **64,4%**, tuyệt đối 1/5 → **0/5** |
+| lựa chọn cuối (khi mọi route trắng tay) | bốn bộ y hệt, nhưng **bắn 0/89 file** |
+
+Chỗ thứ nhất hỏng vì bookmark gộp cả front matter và có ĐỘ MỊN KHÁC — nó đè lên route đang đúng
+(`056_OpenStax` vốn 46/46). Chỗ thứ hai vô hại nhưng **không tài liệu nào kết thúc với 0 mục**, nên
+nó là mã chết — đúng định nghĩa §116, và tôi đã tự kiểm thay vì để "bốn bộ y hệt" ru ngủ.
+
+Đã gỡ cả hai. Tri thức giữ ở đây; muốn dùng lại thì phải có ĐIỀU KIỆN KÍCH HOẠT tốt hơn "route
+khác trắng tay" — ví dụ "route khác dựng ít hơn một nửa số bookmark", chưa đo.
+
+### Vì sao PDF khác DOCX về bản chất (ghi để khỏi kỳ vọng sai)
+
+| | DOCX | PDF |
+|---|---|---|
+| thiết kế cho | soạn thảo | in ấn |
+| nội dung là | cây phần tử | lệnh vẽ |
+| cấu trúc | bắt buộc có | **tuỳ chọn** |
+
+PDF về bản chất là chuỗi lệnh "vẽ ký tự X tại toạ độ (a,b)". Tagged PDF là lớp phụ thêm cho trình
+đọc màn hình. Nên với 64/83 file không có cấu trúc dùng được, ta đang nhìn mực trên giấy rồi suy
+ngược — và đó là lý do các route theo cụm style/đánh số tồn tại, không phải vì thiếu cố gắng.
