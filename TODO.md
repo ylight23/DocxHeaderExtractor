@@ -935,3 +935,56 @@ chưa có `HeadingRecord` thật). Chỉ `092` có đáp án; 4 file RFC còn l�
 
 **Chưa đề xuất xây/tích hợp vào pipeline** — đúng yêu cầu đo trước. Cần người dùng quyết định bước
 tiếp theo.
+
+## 2026-08-20 (chiều): cấu trúc PDF + khảo sát VLM — xem handoff §142–§143
+
+### ĐÍNH CHÍNH quan trọng về công trạng
+
+`ev-human` F1 42,1% → **84,8%** là công của **phiên song song** (§138–§141, route TOC-dictionary),
+không phải phiên này. `git pull` fast-forward mang nó về. `092_RFC9111` từ 289 mục (P 1,9%) xuống
+**67 mục / đáp án 64, P 89,6% · Nav 96,9%**.
+
+### ĐÃ ĐO: PDF có gì tương đương `w:outlineLvl`
+
+| tín hiệu | số PDF / 83 |
+|---|--:|
+| `/StructTreeRoot` (tagged) | 27 |
+| … có ≥10 thẻ `/H*` **dùng được** | **5** |
+| bookmark `/Outlines` | 33 |
+| … ≥10 bookmark, không tagged dùng được | **14** |
+| không có gì | **28** |
+
+**19/83 file có đường đọc thẳng.** Hai bẫy đã đo: `Tagged=true` không đủ (`017` có 11.917 thẻ mà
+0 heading); cây thẻ chỉ chứa `/MCID` chứ **không chứa chữ**, phải ghép với ký tự theo `(trang, mcid)`.
+
+### ĐÃ THỬ VÀ GỠ: `PdfBookmarkOutline`
+
+| vị trí đặt | kết quả |
+|---|---|
+| ưu tiên cao | `ev-human` F1 84,8% → **64,4%**, tuyệt đối 1/5 → **0/5** — bookmark gộp front matter, độ mịn khác, đè lên route đang đúng (`056` vốn 46/46) |
+| lựa chọn cuối | bốn bộ y hệt nhưng **bắn 0/89 file** → mã chết theo §116 |
+
+Muốn dùng lại phải có điều kiện kích hoạt tốt hơn "route khác trắng tay" — ví dụ *"route khác dựng
+ít hơn một nửa số bookmark"*, **chưa đo**.
+
+### VLM — khả thi, còn thiếu đúng một mảnh
+
+| mảnh | trạng thái |
+|---|---|
+| mô hình | **có sẵn** `mmproj-Qwen3.5-9B-F16.gguf` (bộ chiếu cho đúng model đang dùng) |
+| thư viện | **có** LLamaSharp 0.27 lộ `ClipModel` / `Multimodal` |
+| **PDF → ảnh crop** | **CHƯA CÓ** — PdfPig không raster hoá. Đây là việc phải làm TRƯỚC |
+
+Ba vai trò xếp theo độ khó thị giác: (1) chẩn đoán file hỏng — dễ; (2) phân xử cha–con — trung
+bình; (3) trích outline từ scan — khó, và rủi ro thật là **OCR tiếng Việt có dấu**, không phải suy
+luận.
+
+Hợp đồng đầu ra bắt buộc tách ba: `verdict` cho pipeline · `evidence` cho grounder **kiểm chứng
+lại bằng dữ liệu PDF** · `explanation` chỉ cho người đọc, không ảnh hưởng quyết định.
+
+**Thí nghiệm đầu tiên, không xây gì trước khi có kết quả:** một ảnh crop, một câu hỏi cha–con,
+chấm cả `verdict` lẫn `evidence`. Verdict đúng mà evidence sai cũng là kết quả đáng biết — nó nói
+lời văn trôi chảy đang che phán đoán không cơ sở.
+
+Ràng buộc phần cứng đã tính: crop vùng ~150px, DPI 100–120, một ảnh mỗi lượt. Lý do có số đo:
+`063` chạy THUẦN VĂN BẢN đã tốn ~175 s/khối và vượt 50 phút (§135).
