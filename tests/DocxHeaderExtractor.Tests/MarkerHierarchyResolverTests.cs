@@ -39,7 +39,7 @@ public sealed class MarkerHierarchyResolverTests
         Assert.Equal("unresolved", markerless.Validation.ParentResolution);
     }
 
-    private static ProposalValidationResult Proposal(string text, ProposedRole role, string? parent) 
+    private static ProposalValidationResult Proposal(string text, ProposedRole role, string? parent)
     {
         var source = SourceFactsBuilder.FromParagraph(new SlimParagraph { Index = text.GetHashCode(), StableId = text, Text = text });
         var proposal = new ModelProposal
