@@ -32,7 +32,9 @@ internal static class PdfBlockGrounder
         IReadOnlyList<PdfBlockDecision> blockDecisions,
         PdfStyleClusterProfile profile,
         IReadOnlyList<PdfSemanticClusterSample> clusterSamples,
-        IReadOnlyList<PdfSemanticClusterDecision> clusterDecisions)
+        IReadOnlyList<PdfSemanticClusterDecision> clusterDecisions,
+        bool allowAnyStyle = false,
+        IReadOnlyList<PdfLineBlockAnnotation>? annotations = null)
     {
         var byId = candidateBlocks.ToDictionary(b => b.Id, StringComparer.Ordinal);
         var clusterRoleByStyle = clusterSamples
@@ -63,13 +65,26 @@ internal static class PdfBlockGrounder
                 continue;
             }
 
-            if (decision.Confidence < 0.65)
+            // Model score is telemetry only for visual proposals. Evidence/source/span validation
+            // is the acceptance contract; old text-only analyst decisions retain their legacy gate.
+            if (decision.Confidence < 0.65 && !decision.Reason.StartsWith("visual-confirmation:", StringComparison.Ordinal))
             {
                 rejected.Add(Reject(decision, "low-block-confidence"));
                 continue;
             }
 
-            if (!profile.CandidateStyles.Contains(block.PrimaryStyle))
+            if (!HasGroundedHeadingEvidence(
+                    block,
+                    decision.EvidenceTags,
+                    decision.Reason.StartsWith("visual-confirmation:", StringComparison.Ordinal),
+                    profile,
+                    annotations))
+            {
+                rejected.Add(Reject(decision, "ungrounded-visual-evidence-tags"));
+                continue;
+            }
+
+            if (!allowAnyStyle && !profile.CandidateStyles.Contains(block.PrimaryStyle))
             {
                 rejected.Add(Reject(decision, "not-visual-candidate-style"));
                 continue;
@@ -81,7 +96,9 @@ internal static class PdfBlockGrounder
                 continue;
             }
 
-            var evidence = "block-role";
+            var evidence = decision.Reason.StartsWith("visual-confirmation:", StringComparison.Ordinal)
+                ? decision.Reason
+                : "block-role";
             if (clusterRoleByStyle.TryGetValue(block.PrimaryStyle, out var clusterDecision))
             {
                 if (clusterDecision.Role == PdfSemanticClusterRole.TableOrChartLabel &&
@@ -105,7 +122,7 @@ internal static class PdfBlockGrounder
                 block.Id,
                 block.Page,
                 visualLevels.TryGetValue(block.PrimaryStyle, out var level) ? level : 1,
-                block.DisplayText,
+                HeadingText(block, decision.HeadingSpan),
                 block.Text,
                 block.CanonicalText,
                 decision.Confidence,
@@ -145,12 +162,47 @@ internal static class PdfBlockGrounder
         return true;
     }
 
+    private static string HeadingText(PdfSemanticBlock block, DocxHeaderExtractor.Core.Models.SourceTextSpan? span)
+    {
+        if (span is null) return block.DisplayText;
+        return span.IsValidFor(block.Text)
+            ? PdfTextUtilities.HeadingReadable(block.Text[span.Start..span.End])
+            : block.DisplayText;
+    }
+
+    private static bool HasGroundedHeadingEvidence(
+        PdfSemanticBlock block,
+        IReadOnlyList<string>? tags,
+        bool visualConfirmation,
+        PdfStyleClusterProfile profile,
+        IReadOnlyList<PdfLineBlockAnnotation>? annotations)
+    {
+        // A visual heading must cite an observable tag that PDF text/layout data can corroborate.
+        // Old text-only decisions have no tags and remain usable for the audit lane only.
+        if (tags is null || tags.Count == 0) return !visualConfirmation;
+        var compactLabel = block.LineCount <= 2 && LooksGroundableText(block.Text) &&
+                           !PdfTextUtilities.HeadingReadable(block.Text).EndsWith('.');
+        var distinctStyle = profile.CandidateStyles.Contains(block.PrimaryStyle);
+        var lineAnnotations = annotations is null
+            ? []
+            : annotations.Where(a => block.Lines.Contains(a.Line)).ToArray();
+        var tableOrFurniture = lineAnnotations.Length > 0 &&
+                               lineAnnotations.All(a => a.TableLike || a.PageNumber || (a.Repeated && a.HeaderFooterZone));
+        if (tableOrFurniture) return false;
+        return tags.Any(tag =>
+            (tag == "standalone_label" && compactLabel) ||
+            (tag == "distinct_heading_style" && distinctStyle) ||
+            (tag == "section_boundary" && compactLabel && distinctStyle) ||
+            (tag == "opens_content" && compactLabel));
+    }
+
     private static PdfRejectedBlockHeading Reject(PdfBlockDecision decision, string reason) =>
         new(decision.Id, RoleName(decision.Role), decision.Confidence, reason);
 
     private static string RoleName(PdfBlockRole role) => role switch
     {
         PdfBlockRole.HeadingTopic => "heading_topic",
+        PdfBlockRole.DocumentTitle => "document_title",
         PdfBlockRole.BodySentence => "body_sentence",
         PdfBlockRole.TableOrChartLabel => "table_or_chart_label",
         PdfBlockRole.DecorativeNoise => "decorative_noise",

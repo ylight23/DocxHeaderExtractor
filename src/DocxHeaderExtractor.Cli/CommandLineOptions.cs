@@ -80,10 +80,28 @@ public sealed class CommandLineOptions
     public bool PdfStageSupplementCandidates { get; private set; }
 
     /// <summary>Audit-only cap for PDF semantic analyst blocks.</summary>
-    public int PdfStageAnalystBlocks { get; private set; } = 40;
+    // pdf-stage-eval is a quality measurement command: a hidden top-N cap would make recall
+    // meaningless. Use --pdf-stage-blocks explicitly for a latency/cost smoke run.
+    public int PdfStageAnalystBlocks { get; private set; }
+    /// <summary>Maximum independent image crops allowed by the configured remote VLM gateway.</summary>
+    public int VlmMaxImagesPerRequest { get; private set; } = 1;
+    /// <summary>Bounded remote VLM request parallelism for single-crop gateways.</summary>
+    public int VlmMaxConcurrentRequests { get; private set; } = 4;
 
     /// <summary>Audit-only: screen every retrieved PDF candidate in batches.</summary>
     public bool PdfStageAllCandidates { get; private set; }
+
+    /// <summary>Audit-only: keep every PDF line in coarse blocks; risk flags do not remove it.</summary>
+    public bool PdfStageLosslessBlocks { get; private set; }
+
+    /// <summary>Audit-only: screen every source PDF line as an atomic, groundable span.</summary>
+    public bool PdfStageAtomicLines { get; private set; }
+
+    /// <summary>Audit-only: require VLM visual confirmation for text heading/uncertain PDF candidates.</summary>
+    public bool PdfStageVisualReview { get; private set; }
+
+    /// <summary>Audit-only: measure PDF retrieval loss without invoking the analyst.</summary>
+    public bool PdfStageRetrievalOnly { get; private set; }
 
     public static CommandLineOptions Parse(string[] args)
     {
@@ -147,6 +165,12 @@ public sealed class CommandLineOptions
                 case "--pdf-stage-supplement": o.PdfStageSupplementCandidates = true; break;
                 case "--pdf-stage-all": o.PdfStageAllCandidates = true; break;
                 case "--pdf-stage-blocks": o.PdfStageAnalystBlocks = int.Parse(Next(a)); break;
+                case "--vlm-max-images": o.VlmMaxImagesPerRequest = Math.Max(1, int.Parse(Next(a))); break;
+                case "--vlm-concurrency": o.VlmMaxConcurrentRequests = Math.Clamp(int.Parse(Next(a)), 1, 16); break;
+                case "--pdf-stage-lossless": o.PdfStageLosslessBlocks = true; break;
+                case "--pdf-stage-atomic": o.PdfStageAtomicLines = true; break;
+                case "--pdf-stage-vlm": o.PdfStageVisualReview = true; break;
+                case "--pdf-stage-retrieval-only": o.PdfStageRetrievalOnly = true; break;
                 case "--no-docling-sidecar": o.Pipeline.DoclingSidecarFallback = false; break;
                 case "--docling-json":
                     o.Pipeline.DoclingJsonPath = Next(a);
@@ -189,6 +213,17 @@ public sealed class CommandLineOptions
                     break;
                 case "--sglang-api-key":
                     o.Pipeline.Backend = InferenceBackend.Sglang;
+                    o.Pipeline.Sglang.ApiKey = Next(a);
+                    break;
+                case "--nvidia":
+                    ConfigureNvidia(o);
+                    break;
+                case "--nvidia-model":
+                    ConfigureNvidia(o);
+                    o.Pipeline.Sglang.Model = Next(a);
+                    break;
+                case "--nvidia-api-key":
+                    ConfigureNvidia(o);
                     o.Pipeline.Sglang.ApiKey = Next(a);
                     break;
                 case "--sglang-context":
@@ -297,6 +332,14 @@ public sealed class CommandLineOptions
         return o;
     }
 
+    private static void ConfigureNvidia(CommandLineOptions options)
+    {
+        options.Pipeline.Backend = InferenceBackend.Sglang;
+        options.Pipeline.Sglang.Endpoint = new Uri("https://integrate.api.nvidia.com/v1/chat/completions");
+        options.Pipeline.Sglang.Model = "meta/llama-3.2-90b-vision-instruct";
+        options.Pipeline.Sglang.ApiKey = Environment.GetEnvironmentVariable("NVIDIA_API_KEY") ?? "";
+    }
+
     private static OutlineFormat ParseFormat(string s) => s.ToLowerInvariant() switch
     {
         "json" => OutlineFormat.Json,
@@ -360,6 +403,9 @@ public sealed class CommandLineOptions
               --sglang-model m      Model identifier trên gateway (ví dụ Qwen3.8-27B)
               --sglang-endpoint u   Chat endpoint (mặc định http://127.0.0.1:30000/v1/chat/completions)
               --sglang-api-key k    Bearer token cho gateway
+              --nvidia              Dùng NVIDIA OpenAI-compatible endpoint với Llama 3.2 90B Vision.
+              --nvidia-model <id>   Đổi model NVIDIA; mặc định meta/llama-3.2-90b-vision-instruct.
+              --nvidia-api-key <k>  Ghi đè NVIDIA_API_KEY cho lượt chạy này.
               --sglang-context n    Context gateway khai (mặc định 8192, CHƯA đo — chỉnh theo model)
               --candidates-only      Chỉ gửi ứng viên heuristic cho model (mặc định production)
               --review-all           Gửi mọi paragraph cho model (audit/thu nhãn; rất chậm)
@@ -381,7 +427,13 @@ public sealed class CommandLineOptions
               --pdf-stage-wide      Chỉ pdf-stage-eval: mở candidate PDF cho LLM ngoài learned style (audit-only).
               --pdf-stage-supplement Chỉ pdf-stage-eval: thêm block PDF gộp dài từ raw lines (audit-only).
               --pdf-stage-all       Chỉ pdf-stage-eval: LLM screen toàn bộ PDF candidate theo batch (audit-only; chậm).
-              --pdf-stage-blocks n  Chỉ pdf-stage-eval: trần block PDF đưa vào analyst (mặc định 40).
+              --pdf-stage-blocks n  Chỉ pdf-stage-eval: trần block PDF đưa vào analyst cho smoke/latency (mặc định: toàn bộ candidate).
+              --vlm-max-images n    Số ảnh độc lập/gọi VLM gateway cho phép (mặc định 1; NVIDIA hosted hiện là 1).
+              --vlm-concurrency n   Tối đa request crop VLM song song khi gateway chỉ nhận 1 ảnh (mặc định 4).
+              --pdf-stage-lossless  Chỉ pdf-stage-eval: block PDF coarse lossless, không loại table/header/repeat.
+              --pdf-stage-atomic    Chỉ pdf-stage-eval: Qwen chọn atomic PDF line/span, không tạo window candidate.
+              --pdf-stage-vlm       Chỉ pdf-stage-eval: VLM xác nhận candidate heading/uncertain theo crop có dòng lân cận.
+              --pdf-stage-retrieval-only Chỉ pdf-stage-eval: đo mất candidate PDF, không gọi LLM.
               --no-docling-sidecar  Tắt adapter Docling explicit (mặc định vốn tắt).
               --key-limit <n>       Với repair-key-package, số heading trong mẫu review (mặc định 30)
               --key-start <n>       Với repair-key-package, bỏ qua N heading đầu trước khi lấy mẫu

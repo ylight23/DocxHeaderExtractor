@@ -101,7 +101,7 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
 
         if (heading.HeadingSpan is not { } headingSpan ||
             !ValidRange(headingSpan, heading.OriginalText.Length) ||
-            !HeadingTextIsGrounded(heading.OriginalText[headingSpan.Start..headingSpan.End], heading.Text))
+            !HeadingTextIsGrounded(heading.OriginalText[headingSpan.Start..headingSpan.End], heading))
         {
             issues.Add(new("heading_span_not_grounded", $"Heading span của index {heading.Index} không khớp nguồn.", heading.Index));
         }
@@ -122,15 +122,32 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
     private static bool ValidRange(TextOffsetSpan span, int length) =>
         span.Start >= 0 && span.End >= span.Start && span.End <= length;
 
-    private static bool HeadingTextIsGrounded(string source, string heading)
+    private static bool HeadingTextIsGrounded(string source, HeadingRecord heading)
     {
-        if (source == heading) return true;
-        if (NormalizeTextLayoutTitle(source) == NormalizeTextLayoutTitle(heading)) return true;
-        if (CanonicalTitle(source) == CanonicalTitle(heading)) return true;
+        var title = heading.Text;
+        if (source == title) return true;
+        if (NormalizeTextLayoutTitle(source) == NormalizeTextLayoutTitle(title)) return true;
+        if (CanonicalTitle(source) == CanonicalTitle(title)) return true;
+        if (heading.ConfidenceBasis == "book_toc_dictionary" &&
+            BookDictionaryTitleIsAnchored(source, title)) return true;
         if (TextLayoutSectionPageRx.Match(source) is not { Success: true } match) return false;
 
         var normalized = $"{match.Groups["marker"].Value.TrimEnd('.')} {match.Groups["title"].Value.Trim()}";
-        return NormalizeTextLayoutTitle(normalized) == NormalizeTextLayoutTitle(heading);
+        return NormalizeTextLayoutTitle(normalized) == NormalizeTextLayoutTitle(title);
+    }
+
+    private static bool BookDictionaryTitleIsAnchored(string source, string title)
+    {
+        // A PDF-to-DOCX converter can split "Chapter 1." and "Linear maps" into adjacent
+        // paragraphs. The book TOC route has already grounded the marker and the title in order;
+        // writeback targets the title span while output retains the clean dictionary label.
+        var withoutMarker = Regex.Replace(
+            title,
+            @"^(?:Part\s+[IVXLC]+|Chapter\s+\d{1,2})\.\s*",
+            "",
+            RegexOptions.IgnoreCase);
+        return !string.Equals(withoutMarker, title, StringComparison.Ordinal) &&
+               CanonicalTitle(source) == CanonicalTitle(withoutMarker);
     }
 
     private static string NormalizeTextLayoutTitle(string text)

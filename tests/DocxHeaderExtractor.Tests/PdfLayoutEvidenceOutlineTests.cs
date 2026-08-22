@@ -5,6 +5,19 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class PdfLayoutEvidenceOutlineTests
 {
     [Fact]
+    public void Retrieval_trace_keeps_retained_risk_candidate_out_of_loss_bucket()
+    {
+        // This is a unit-level guard for the audit contract: risk flags must not be reported as a
+        // retrieval loss once a later candidate lane retains the same title.
+        var trace = new PdfCandidateRetrievalTrace(
+            "Introduction", true, ["header-footer-zone"], true, false, true, true,
+            "candidate-available", "Introduction 1");
+
+        Assert.Equal("candidate-available", trace.FirstLossStage);
+        Assert.True(trace.FoundInSupplementCandidate);
+    }
+
+    [Fact]
     public void AnalystBudgetCoversEveryPageBeforeTakingSecondBlock()
     {
         var blocks = Enumerable.Range(1, 28)
@@ -104,6 +117,42 @@ public sealed class PdfLayoutEvidenceOutlineTests
     }
 
     [Fact]
+    public void AnalystBudgetSamplesAcrossTheDocumentWhenThereAreMorePagesThanSlots()
+    {
+        var blocks = Enumerable.Range(1, 100)
+            .Select(page => Block($"p{page}", page, 700))
+            .ToArray();
+
+        var selection = PdfLayoutEvidenceOutline.SelectAnalystCandidates(blocks, 10);
+
+        Assert.Equal(10, selection.Selected.Count);
+        Assert.Equal(1, selection.Selected.First().Page);
+        Assert.Equal(100, selection.Selected.Last().Page);
+        Assert.Contains(selection.Selected, block => block.Page is > 40 and < 60);
+    }
+
+    [Fact]
+    public void RankedBudgetUsesScoresWithinEachPageBeforeTakingAnotherSlot()
+    {
+        var blocks = new[]
+        {
+            Block("p1-low", 1, 700), Block("p1-high", 1, 650),
+            Block("p2-low", 2, 700), Block("p2-high", 2, 650),
+            Block("p3-low", 3, 700), Block("p3-high", 3, 650),
+        };
+        var ranks = new Dictionary<string, int>
+        {
+            ["p1-low"] = 1, ["p1-high"] = 10,
+            ["p2-low"] = 1, ["p2-high"] = 10,
+            ["p3-low"] = 1, ["p3-high"] = 10,
+        };
+
+        var selection = PdfLayoutEvidenceOutline.SelectAnalystCandidates(blocks, 3, null, ranks);
+
+        Assert.Equal(new[] { "p1-high", "p2-high", "p3-high" }, selection.Selected.Select(block => block.Id));
+    }
+
+    [Fact]
     public void SupplementRankFavorsStructuralMarkersOverPlainFragments()
     {
         var marked = Block("marked", 1, 700, "2.1 Scope of work");
@@ -112,6 +161,61 @@ public sealed class PdfLayoutEvidenceOutlineTests
         Assert.True(
             PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(marked) >
             PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(plain));
+    }
+
+    [Fact]
+    public void SupplementRankDoesNotTreatLongNumberedProseAsAStructuralMarker()
+    {
+        var heading = Block("heading", 1, 700, "2. Scope of work");
+        var prose = Block("prose", 1, 680,
+            "2 This is a deliberately long numbered provision containing several clauses, obligations, and explanatory prose that is not a navigation label.");
+
+        Assert.True(
+            PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(heading) >
+            PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(prose));
+    }
+
+    [Fact]
+    public void SupplementRankDoesNotTreatShorterFootnoteProseAsAStructuralMarker()
+    {
+        var heading = Block("heading", 1, 700, "2. Scope of work");
+        var footnote = Block("footnote", 1, 680,
+            "2 This report describes the financial position, activities, and operational results for the fiscal year.");
+
+        Assert.True(
+            PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(heading) >
+            PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(footnote));
+    }
+
+    [Fact]
+    public void SupplementRankPrefersCompactTopicOverUnnumberedBodySentence()
+    {
+        var heading = Block("heading", 1, 700, "Trust Fund Asset Summary");
+        var body = Block("body", 1, 680,
+            "This section presents the financial position and operational activity of the trust funds during the fiscal year.");
+
+        Assert.True(
+            PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(heading) >
+            PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(body));
+    }
+
+    [Fact]
+    public void CandidateRankCombinesMarkerStyleAndRiskWithoutDroppingTheCandidate()
+    {
+        var body = new PdfStyleKey(10, "Body", "black");
+        var headingStyle = new PdfStyleKey(14, "Heading", "blue");
+        var profile = new PdfStyleClusterProfile(
+            body, [], new HashSet<PdfStyleKey> { headingStyle }, new HashSet<PdfStyleKey>(), new HashSet<PdfStyleKey>());
+        var marker = Block("marker", 1, 700, "2. Scope", headingStyle);
+        var risky = Block("risky", 1, 680, "Scope", body);
+        var annotation = new PdfLineBlockAnnotation(risky.Lines[0], false, false, true, false, "table-like");
+
+        var markerScore = PdfLayoutEvidenceOutline.ScoreCandidateForAnalyst(marker, profile);
+        var riskyScore = PdfLayoutEvidenceOutline.ScoreCandidateForAnalyst(
+            risky, profile, new Dictionary<PdfLine, PdfLineBlockAnnotation> { [risky.Lines[0]] = annotation });
+
+        Assert.True(markerScore > riskyScore);
+        Assert.Equal("risky", risky.Id);
     }
 
 
@@ -126,6 +230,19 @@ public sealed class PdfLayoutEvidenceOutlineTests
         var candidate = Assert.Single(candidates);
         Assert.Equal("s-line-1", candidate.Id);
         Assert.Equal("Chapter I General provisions", candidate.Text);
+    }
+
+    [Fact]
+    public void AtomicCatalogKeepsRiskLineAsGroundableUnit()
+    {
+        var line = new PdfLine(2, 700, 12, "DAY 1: TUESDAY", 0.8, "", 0, 72, 300, "serif", "black");
+        var risk = new PdfLineBlockAnnotation(line, false, true, true, false, "header-footer-zone,table-like");
+
+        var block = Assert.Single(PdfLayoutEvidenceOutline.BuildAtomicLineBlocks([risk]));
+
+        Assert.Equal("l1", block.Id);
+        Assert.Equal("DAY 1: TUESDAY", block.Text);
+        Assert.Same(line, Assert.Single(block.Lines));
     }
 
     [Fact]

@@ -27,10 +27,11 @@ internal static class PdfSemanticBlockGrouper
     public static IReadOnlyList<PdfSemanticBlock> Build(
         IReadOnlyList<PdfLineBlockAnnotation> annotations,
         int maxLinesPerBlock = 4,
-        bool allowSemicolonContinuation = false)
+        bool allowSemicolonContinuation = false,
+        bool includeRiskLines = false)
     {
         var candidates = annotations
-            .Where(a => !a.ExcludeFromSemanticSamples)
+            .Where(a => includeRiskLines || !a.ExcludeFromSemanticSamples)
             .Select(a => a.Line)
             .OrderBy(l => l.Page)
             .ThenByDescending(l => l.Y)

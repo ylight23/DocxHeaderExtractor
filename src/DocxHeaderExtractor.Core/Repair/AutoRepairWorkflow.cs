@@ -74,6 +74,24 @@ public sealed record RepairLearningRecord(
     string RuntimeSelfFixStrategy);
 
 /// <summary>
+/// Observable replacement for free-form agent "thinking". Each phase names its input evidence,
+/// permitted output, and owner so a later model can be audited without exposing or relying on a
+/// private chain-of-thought.
+/// </summary>
+public sealed record DocumentAnalysisPlan(
+    string FormatVersion,
+    string CaseId,
+    IReadOnlyList<DocumentAnalysisPhase> Phases);
+
+public sealed record DocumentAnalysisPhase(
+    string Id,
+    string Owner,
+    string Status,
+    string Goal,
+    IReadOnlyList<string> EvidenceFiles,
+    IReadOnlyList<string> AllowedOutputs);
+
+/// <summary>
 /// Code-first repair workflow: run the normal extractor, persist deterministic diagnostics, prepare
 /// an LLM analyst prompt, and write a learning record. It does not mutate production code.
 /// </summary>
@@ -126,6 +144,7 @@ public sealed class AutoRepairWorkflow
         var failureCase = BuildFailureCase(caseId, inputPath, outline, slim, needsAnalysis);
         var candidateReport = RepairCandidateRunner.Analyze(outline);
         var validationReport = RepairValidationGate.Validate(outline, candidateReport);
+        var analysisPlan = BuildAnalysisPlan(failureCase);
         var learning = BuildLearningRecord(failureCase);
 
         var written = new List<string>();
@@ -133,11 +152,12 @@ public sealed class AutoRepairWorkflow
         await WriteJsonAsync(Path.Combine(caseDir, "probe-report.json"), outline.Diagnostics, ct, written);
         await WriteJsonAsync(Path.Combine(caseDir, "candidate-report.json"), candidateReport, ct, written);
         await WriteJsonAsync(Path.Combine(caseDir, "validation-report.json"), validationReport, ct, written);
+        await WriteJsonAsync(Path.Combine(caseDir, "analysis-plan.json"), analysisPlan, ct, written);
         if (options.IncludeOutlineJson)
             await WriteTextAsync(Path.Combine(caseDir, "current-outline.json"),
                 OutlineFormatter.Format(outline, OutlineFormat.Json), ct, written);
         await WriteTextAsync(Path.Combine(caseDir, "llm-analysis-prompt.md"),
-            BuildLlmAnalystPrompt(failureCase), ct, written);
+            BuildLlmAnalystPrompt(failureCase, analysisPlan), ct, written);
         await WriteTextAsync(Path.Combine(caseDir, "runtime-self-fix-plan.md"),
             BuildRuntimeSelfFixPlan(failureCase.RuntimePolicy), ct, written);
 
@@ -243,6 +263,52 @@ public sealed class AutoRepairWorkflow
             "Sidecar patch branch -> build shadow artifact -> validation gate -> supervised blue/green swap.");
     }
 
+    private static DocumentAnalysisPlan BuildAnalysisPlan(DocumentFailureCase failureCase)
+    {
+        var diagnostics = failureCase.Diagnostics;
+        var hasDeclaredCandidate = diagnostics?.Candidates.Any(candidate =>
+            candidate.Accepted && candidate.Route is "auto:style-declared" or "auto:outline-level" or "auto:numbering" or
+                "auto:book-toc-dictionary" or "auto:rfc-toc-dictionary") == true;
+        var merged = diagnostics?.Layout.MergedParagraphs > 0;
+        var needsSemanticReview = failureCase.Status == "needs_analysis" || !hasDeclaredCandidate;
+
+        return new DocumentAnalysisPlan(
+            "dhx-analysis-plan/v1",
+            failureCase.CaseId,
+            [
+                new DocumentAnalysisPhase(
+                    "probe-structure", "deterministic", hasDeclaredCandidate ? "passed" : "insufficient",
+                    "Inspect declared structure before visual or semantic inference.",
+                    ["failure-case.json", "probe-report.json"],
+                    ["declared-route", "requires-fallback"]),
+                new DocumentAnalysisPhase(
+                    "probe-layout", "deterministic", merged ? "recovery-required" : "passed",
+                    "Detect merged paragraphs, lost line boundaries, and text-layout corruption.",
+                    ["failure-case.json", "probe-report.json"],
+                    ["layout-recovery-needed", "layout-intact"]),
+                new DocumentAnalysisPhase(
+                    "generate-candidates", "deterministic", "required",
+                    "Produce source-groundable candidates from every applicable route; do not accept them yet.",
+                    ["probe-report.json", "candidate-report.json"],
+                    ["candidate-catalog", "route-metrics"]),
+                new DocumentAnalysisPhase(
+                    "semantic-or-visual-review", "llm-or-vlm", needsSemanticReview ? "required" : "not-required",
+                    "Classify only supplied ambiguous candidates. Return a verdict and cited source IDs, never a new heading.",
+                    ["analysis-plan.json", "candidate-report.json", "current-outline.json"],
+                    ["candidate-role", "evidence-ids", "uncertain"]),
+                new DocumentAnalysisPhase(
+                    "ground-and-align", "deterministic", "required",
+                    "Map accepted candidates to immutable PDF/DOCX source spans and reject unsupported text.",
+                    ["candidate-report.json", "current-outline.json"],
+                    ["grounded-span", "alignment-rejection"]),
+                new DocumentAnalysisPhase(
+                    "validate-and-promote", "deterministic", "required",
+                    "Check precision gates, regression tests, and audit invariants before any production promotion.",
+                    ["validation-report.json", "runtime-self-fix-plan.md"],
+                    ["accept", "requires-review", "sandbox-patch"]),
+            ]);
+    }
+
     private static RuntimeSelfFixPolicy DefaultRuntimePolicy() => new(
         AllowInProcessAssemblyMutation: false,
         Strategy: "sidecar_patch_branch_shadow_build_blue_green_swap",
@@ -274,22 +340,19 @@ public sealed class AutoRepairWorkflow
             "keep previous version for rollback"
         ]);
 
-    private static string BuildLlmAnalystPrompt(DocumentFailureCase failureCase)
+    private static string BuildLlmAnalystPrompt(DocumentFailureCase failureCase, DocumentAnalysisPlan analysisPlan)
     {
         var sb = new StringBuilder();
         sb.AppendLine("# LLM Analyst Task");
         sb.AppendLine();
         sb.AppendLine("You are an analyst, not the final judge. Use only the evidence in this folder.");
+        sb.AppendLine("Do not provide a chain-of-thought. Return concise verdicts, evidence IDs, and the next permitted action.");
         sb.AppendLine("Do not choose a heading because it looks right. Explain the route/rule by deterministic signals.");
         sb.AppendLine();
         sb.AppendLine("## Required Output");
-        sb.AppendLine("- Document layout diagnosis");
-        sb.AppendLine("- Current output defect: missed heading, false heading, wrong boundary, wrong level, or no defect");
-        sb.AppendLine("- Route-specific metrics from `candidate-report.json`; do not treat `Score` / `BestScore` as truth unless calibration says trusted");
-        sb.AppendLine("- Failed validation gates from `validation-report.json`");
-        sb.AppendLine("- Proposed generic rule or rejection filter");
-        sb.AppendLine("- Files likely to change");
-        sb.AppendLine("- Tests/invariants required");
+        sb.AppendLine("Return one JSON object with: `diagnosis`, `defect`, `evidenceIds`, `recommendedPhase`, `proposedRule`, and `validation`.");
+        sb.AppendLine("`evidenceIds` must cite an existing paragraph, block, route, or gate from the supplied artifacts.");
+        sb.AppendLine("`recommendedPhase` must be one phase ID from `analysis-plan.json`.");
         sb.AppendLine();
         sb.AppendLine("## Case Summary");
         sb.AppendLine($"- caseId: `{failureCase.CaseId}`");
@@ -301,7 +364,8 @@ public sealed class AutoRepairWorkflow
         sb.AppendLine($"- requiresReview: {failureCase.RequiresReviewCount}");
         sb.AppendLine($"- disputed: {failureCase.DisputedCount}");
         sb.AppendLine();
-        sb.AppendLine("Read `failure-case.json`, `probe-report.json`, `candidate-report.json`, `validation-report.json`, and `current-outline.json` before proposing code.");
+        sb.AppendLine($"- analysis plan phases: {string.Join(", ", analysisPlan.Phases.Select(phase => phase.Id + "=" + phase.Status))}");
+        sb.AppendLine("Read `analysis-plan.json`, `failure-case.json`, `probe-report.json`, `candidate-report.json`, `validation-report.json`, and `current-outline.json` before proposing code.");
         return sb.ToString();
     }
 

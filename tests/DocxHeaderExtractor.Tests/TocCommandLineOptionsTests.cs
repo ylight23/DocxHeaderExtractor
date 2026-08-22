@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Cli;
+using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -45,5 +46,65 @@ public sealed class TocCommandLineOptionsTests
 
         Assert.Equal("repair-key-package", o.Command);
         Assert.True(o.ForceReviewPackage);
+    }
+
+    [Fact]
+    public void Pdf_stage_retrieval_only_khong_goi_analyst_duoc_nhan_dung()
+    {
+        var o = CommandLineOptions.Parse(["pdf-stage-eval", "file.docx", "--pdf-stage-retrieval-only", "--no-llm"]);
+
+        Assert.Equal("pdf-stage-eval", o.Command);
+        Assert.True(o.PdfStageRetrievalOnly);
+        Assert.True(o.Pipeline.DisableLlm);
+    }
+
+    [Fact]
+    public void Pdf_stage_lossless_duoc_nhan_dung()
+    {
+        var o = CommandLineOptions.Parse(["pdf-stage-eval", "file.docx", "--pdf-stage-lossless"]);
+
+        Assert.True(o.PdfStageLosslessBlocks);
+    }
+
+    [Fact]
+    public void Pdf_stage_atomic_duoc_nhan_dung()
+    {
+        var o = CommandLineOptions.Parse(["pdf-stage-eval", "file.docx", "--pdf-stage-atomic"]);
+
+        Assert.True(o.PdfStageAtomicLines);
+    }
+
+    [Fact]
+    public void Pdf_stage_vlm_duoc_nhan_dung()
+    {
+        var o = CommandLineOptions.Parse(["pdf-stage-eval", "file.docx", "--pdf-stage-vlm"]);
+
+        Assert.True(o.PdfStageVisualReview);
+    }
+
+    [Fact]
+    public void Vlm_max_images_duoc_nhan_dung()
+    {
+        var o = CommandLineOptions.Parse(["pdf-stage-eval", "file.docx", "--vlm-max-images", "4"]);
+
+        Assert.Equal(4, o.VlmMaxImagesPerRequest);
+    }
+
+    [Fact]
+    public void Vlm_concurrency_duoc_nhan_dung()
+    {
+        var o = CommandLineOptions.Parse(["pdf-stage-eval", "file.docx", "--vlm-concurrency", "6"]);
+
+        Assert.Equal(6, o.VlmMaxConcurrentRequests);
+    }
+
+    [Fact]
+    public void Nvidia_uses_vision_capable_openai_compatible_endpoint()
+    {
+        var o = CommandLineOptions.Parse(["extract", "file.docx", "--nvidia"]);
+
+        Assert.Equal(InferenceBackend.Sglang, o.Pipeline.Backend);
+        Assert.Equal("meta/llama-3.2-90b-vision-instruct", o.Pipeline.Sglang.Model);
+        Assert.Equal("https://integrate.api.nvidia.com/v1/chat/completions", o.Pipeline.Sglang.Endpoint.ToString());
     }
 }

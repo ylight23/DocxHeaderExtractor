@@ -11813,3 +11813,203 @@ Quy tắc tiếp theo:
 
 Validation ở thời điểm ghi mục này: `dotnet build --no-restore --nologo` thành công; `dotnet test
 --no-restore --nologo` xanh `751/751`.
+
+## 2026-08-22: broad retrieval loss funnel - tầng nào thực sự làm mất key
+
+Đã thêm `pdf-stage-eval --pdf-stage-retrieval-only`. Đây là audit không gọi Qwen: lấy mỗi key title
+và trace qua `raw PDF window -> standard semantic block -> broad candidate -> wide candidate ->
+supplement candidate`. Nó chỉ là observability theo key, không được dùng key để chọn heading runtime.
+
+Kết quả broad + supplement hiện tại:
+
+| File | Key raw PDF | Broad | Wide | Supplement | Nhận định |
+|---|---:|---:|---:|---:|---|
+| `010` | 48/50 | 40/50 | 40/50 | 48/50 | 2 title không có trong raw PDF |
+| `051` | 27/30 | 19/30 | 23/30 | 1/30 | risk filter và style đều làm rơi |
+| `052` | 26/32 | 20/32 | 25/32 | 1/32 | cùng hình dạng 051 |
+| `054` | 24/24 | 20/24 | 24/24 | 19/24 | learned style là nút chính |
+| `056` | 46/46 | 18/46 | 25/46 | 24/46 | `table-like` đang nuốt TOC/title có page number |
+| `076` | 24/24 | 16/24 | 21/24 | 12/24 | style/risk filter bỏ regional/day/annex labels |
+| `078` | 27/27 | 18/27 | 23/27 | 12/27 | cùng hình dạng 076 |
+
+Kết luận có số liệu:
+
+1. Qwen chưa phải nút đầu tiên. Nhiều heading thật bị mất trước analyst: `table-like`, `repeated`,
+   `header-footer-zone`, sau đó là learned-style broad gate.
+2. `wide` cứu recall ở mọi key nhưng chưa được production vì nó làm candidate pool lớn hơn; nó là
+   evidence rằng style chỉ nên xếp hạng candidate, không được phủ quyết candidate.
+3. `header-footer-zone`/`table-like`/`repeated` là **risk evidence**, không phải proof heading sai.
+   Risk-retention lane kế tiếp chỉ đưa chúng vào analyst queue/grounder; không auto-accept và không
+   gỡ filter toàn cục.
+4. `010` có 2 key title không tồn tại trong raw PDF text: phải giữ `absent-from-raw-windows` và dùng
+   nguồn cấu trúc khác hoặc RequiresReview, không bịa luật PDF để che mất dữ liệu nguồn.
+
+Đã sửa `firstLossStage` trong trace: khi block vẫn có ở broad hoặc supplement, audit ghi
+`candidate-available`; không còn kết luận nhầm rằng một cờ header/table đã làm mất block dù analyst
+vẫn thấy nó.
+
+### `010` Qwen stage - phân rã sau retrieval
+
+Lần chạy Qwen `Qwen3.8-27B`, broad + supplement, cap 40:
+
+| Stage | Key hits | Ghi chú |
+|---|---:|---|
+| Candidate union | 48/50 | 2 title absent from raw PDF |
+| Analyst-visible | 26/50 | pool `1,538`, cap `40` là nút chính |
+| Qwen `HeadingTopic` | 26/26 visible keys | 36 heading trong 40 block, precision 72.2% theo key |
+| PDF ground / DOCX align | 26/26 canonical title+anchor | không mất thêm key visible |
+| Level | 0/50 | visual level hiện chưa phù hợp legal hierarchy |
+
+`Evaluator` exact F1/Nav trả 0 dù canonical title+anchor có 26 hit, vì key duplicate-source chấm text
+identity/formatting nghiêm hơn canonical match. Stage report nay giữ riêng `titleExact`, `anchorExact`,
+`levelAccuracy` và `final` để không diễn giải F1 exact là recall candidate hay năng lực Qwen.
+
+Không sửa prompt ở đây: model đã giữ toàn bộ key mà nó được nhìn thấy. Việc đúng tiếp theo là thay
+hard priority `broad-style` bằng ranking evidence thống nhất (marker, title shape, style, risk) và vẫn
+round-robin theo trang; không được để style primary chiếm toàn bộ 40 slot khiến supplement marker không
+bao giờ tới analyst.
+
+### Bác bỏ ranking text-only đầu tiên
+
+Đã thử score chung `marker + title-shape + learned-style bonus - risk` với cùng `010`, cùng cap 40.
+Kết quả analyst-visible key tụt **26/50 -> 6/50**. Marker/title-shape đã ưu tiên fragment bảng có số
+thay vì heading pháp quy; Qwen không phải nguyên nhân. Bản selector đó đã được gỡ ngay, không còn trong
+worktree.
+
+Hệ quả: ranking chung vẫn là hướng cần làm nhưng không thể dựa chỉ vào text. Candidate cần giữ
+provenance line/block (`table-like`, repeated/header zone, block grouping/source lane) để model/grounder
+hoặc evidence cấu trúc quyết role. Không biến `Điều`, `Day`, hay mọi marker thành ưu tiên phổ quát.
+
+### Lossless coarse-block experiment (`010`)
+
+Đã thêm audit-only `--pdf-stage-lossless`: `PdfSemanticBlockGrouper` giữ line có risk thay vì loại.
+Qwen screen toàn bộ catalog.
+
+| Thiết kế | Blocks/candidates | Title+anchor canonical | Qwen selected | Precision key |
+|---|---:|---:|---:|---:|
+| broad + atomic/window supplement | 1,538 | 48/50 retrieval, cap chỉ thấy 26 | 36/40 | 72.2% visible |
+| lossless coarse blocks | 84 | 30/50 | 68/84 | 44.1% |
+
+Kết luận: đúng là cần catalog lossless, nhưng một **coarse block không thể đồng thời là unit ngữ cảnh
+và unit output**. Grouping 84 block nuốt các `Chương/Điều` vào body hoặc label lân cận; atomic/window
+supplement lại tạo 1,538 tổ hợp.
+
+Thiết kế tiếp phải là catalog hai cấp:
+
+1. atomic line/span giữ source text, page, geometry, style và risk, không bị xóa;
+2. coarse group chỉ cung cấp context/batching cho model;
+3. model trả `lineId` hoặc contiguous span ID, grounder xác minh đúng span đó;
+4. output chỉ được dựng từ accepted line/span, không từ toàn group.
+
+Điều này áp được cả PDF (line/span) và DOCX (paragraph/run span). Không production-enable
+`--pdf-stage-lossless` trước khi catalog hai cấp được đo lại trên key.
+
+### Atomic-line lane: source-preserving implementation, not yet a production result
+
+`--pdf-stage-atomic` now builds one `PdfSemanticBlock` per readable PDF line (`l1`, `l2`, ...), keeps
+risk lines, and makes these line IDs the analyst/grounding output unit. Coarse grouping remains useful
+only as future context; it no longer determines the emitted title span.
+
+For the Qwen narrow-role call, the SGLang client now requires `response_format: json_object`; direct
+measurement against `Qwen3.8-27B` gave 12 strict decisions in 5.3 seconds, with zero reasoning text.
+The prompt also no longer sends `canonical_text` (a deterministic matching artifact) and only includes
+`display_text` when it differs from source text. This removes duplicate long PDF content from the model
+payload without changing source spans.
+
+The first full `010` atomic run did **not** finish inside 420 seconds: seven Qwen batches are sequential
+and the PDF source lines are long. No output metric was accepted. The next implementation task is a
+bounded, observable batch scheduler plus context compression that preserves the candidate line/span;
+do not make `--pdf-stage-atomic` a production route before it is measured on the keys.
+
+Independently, retrieval confirms an immutable source limit: `010` has 48/50 key titles in raw PDF
+windows. The two absent titles must stay explicitly marked `absent-from-raw-windows`; a PDF-only lane
+cannot honestly produce 50/50 for this input.
+
+### VLM visual confirmation: implemented as an audit gate
+
+`pdf-stage-eval --pdf-stage-vlm` now layers VLM after the text analyst, not before it. Text Qwen sees
+the selected lossless PDF spans first. Only spans classified `heading_topic` or `uncertain` are sent to
+the VLM. Their crop contains the target plus up to two adjacent spans above and below on the same page.
+The prompt permits output only for the pre-existing target `lineId`; adjacent spans are context and
+cannot become model-invented candidates.
+
+The VLM contract is `{ id, role, confidence, evidence }`. Usable visual evidence is retained in
+`RouteExecutionAudit.visualBlockDecisions`; accepted visual evidence is also passed to the grounder.
+With `--pdf-stage-vlm`, a text candidate with no visual decision or a VLM `uncertain` verdict becomes
+`visual-not-reviewed` and cannot be accepted. Thus visual analysis is a confirmation gate, never a
+fallback that silently creates headings.
+
+The current machine does not provide `DHX_VLM_MODEL` or `DHX_VLM_MMPROJ`, so no image-inference metric
+has been claimed. This remains an explicit audit-only lane until measured on independent keys.
+
+Cross-page context is now real image context, not just extra text: the candidate and up to two spans
+before/after are ordered across page boundaries, rendered per page, then composed into one vertical PNG
+with separate page panels. The existing local VLM interface accepts that single montage image.
+
+The supplied SGLang endpoint currently lists only `vllm/Qwen3.8-27B`. A direct OpenAI-compatible
+`image_url` request returned HTTP 400, so this deployment is not usable as a VLM. A Qwen-VL endpoint
+or Qwen-VL GGUF plus matching `mmproj` is required before the new visual lane can be measured.
+
+`SglangVlmImageQuestion` is now wired to `pdf-stage-eval --pdf-stage-vlm --sglang`: it sends the
+multi-page PNG montage as a base64 OpenAI `image_url`, with the configured SGLang model/API key and
+JSON-only response contract. This is not a speculative fallback: the gateway's explicit vision error
+surfaces to the run. The current error, `At most 0 image(s) may be provided`, indicates the server is
+being served with vision disabled (for Qwen 3.6, ensure it is not launched with `--language-model-only`).
+
+### NVIDIA Muse visual smoke: transport works; coverage remains the gate
+
+`--nvidia` configures the existing OpenAI-compatible client for NVIDIA's `meta/muse-glimmer-30b`.
+It was measured with real image input on `010_Luat_An_ninh_mang_24-2018-QH14`: a three-block visual
+smoke completed and the VLM classified two key headings correctly (`2/3` visual-role precision).
+The request path, image montage, strict JSON parsing, and visual evidence are therefore live.
+
+When `--pdf-stage-vlm` is enabled, the VLM now reviews **every already budgeted broad candidate**;
+the text LLM can rank candidates but cannot suppress a crop. This fixed the first smoke where text
+roles prevented any image call. The three-block run grounded/aligned `1/50` exact key title and had
+zero final F1 only because the budget covered `3/519` candidates and level inference is still absent.
+It is evidence of working visual transport, not a production-quality full-document result.
+
+Do not enable the generic PDF+VLM route in production yet. Next: bounded page-balanced selection,
+then measure candidate recall, VLM role precision, grounding, title, anchor, level, and final F1 on
+`010`, `051`, `052`, `056`, `076`, and `078` before promotion.
+
+### Ranking audit: do not tune the generic score against `010`
+
+The bounded catalog now exposes a key-free `TraceBroadCandidateSelection` diagnostic through
+`pdf-stage-eval --pdf-stage-retrieval-only --show-raw`. It records selected block text, page and
+document-local score without calling a model. Candidate ranking combines structural marker, compact
+title shape, visual difference from the learned body style, and retained PDF risk flags; selection
+is ranked within each page and then round-robin across pages.
+
+On `010`, the broad catalog contains `40/50` key titles, but a 40-block budget exposes `0/50` to the
+analyst. The trace shows why: raw PDF extraction removes Vietnamese word spacing, so long numbered
+body provisions such as `2 Bảovệ...` look like compact numbered labels and outrank the true title.
+This is evidence that another per-file threshold or keyword rule would be a non-general patch. Keep
+the ranker as audit-only retrieval ordering, not a production acceptance rule; solve this only with
+a measured visual/batched-review candidate lane or a structural source such as DOCX legal numbering.
+
+### 2026-08-22: 051 full-pool visual measurement and authority boundary
+
+The source/proposal boundary is now explicit: `SourceFacts -> ModelProposal -> ValidatedHeading`.
+`EvaluationAnchorResolver` is deliberately a separate evaluation-only layer for regenerated DOCX;
+it rebounded all `30/30` reviewed titles in 051 and is never usable as a production source anchor.
+Markerless accepted proposals now remain `parentResolution: unresolved`; marker facts retain authority
+over level/parent and a later structural resolver may address only the unresolved set.
+
+The audit records separate `semanticBlockDecisions` and visual decisions. Visual review receives only
+semantic positive proposals, not the 395-source-block pool. The full 051 run was:
+
+| Stage | Result |
+|---|---:|
+| candidate retrieval | 25/30 |
+| semantic role | 23/56, precision 41.1% |
+| visual role | 16/28, precision 57.1% |
+| PDF grounding / DOCX alignment | 12/30 |
+| title / anchor / level | 11/30 / 9/30 / 2/30 |
+| final F1 | 43.5% |
+
+This is not a production result. VLM improves precision, but the current visual confirmation gate
+reduces recall. `selectedPoolLosses` now names the real five retrieval losses. Before modifying a
+candidate gate, reconcile the trace/catalog divergence for the long “Top 3 trust funds...” heading,
+then measure the same contract on 052, 056, 076 and 078. Do not claim hierarchy failure from the
+old converted-DOCX anchors; those are now handled by the isolated evaluation resolver.

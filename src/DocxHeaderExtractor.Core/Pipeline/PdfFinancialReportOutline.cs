@@ -51,8 +51,25 @@ public static class PdfFinancialReportOutline
             return PdfTextbookOutlineResult.NotApplicable("not-structured-pdf-report-layout");
 
         var candidates = DetectFinancialHeadings(lines, profile);
-        var frameCandidates = DetectDocxPageFrameHeadings(slim, candidates, out var frameDiagnostic);
-        if (frameCandidates.Count >= 10 && frameCandidates.Count >= candidates.Count * 0.75)
+        var pdfPageExtent = candidates.Select(candidate => candidate.Page).DefaultIfEmpty(1).Max();
+        var usablePageFrame = slim.Paragraphs.Count(paragraph =>
+                paragraph.Role != ParagraphRole.Empty && !string.IsNullOrWhiteSpace(paragraph.Text))
+            <= pdfPageExtent * 12;
+        string frameDiagnostic;
+        List<FinancialHeadingCandidate> frameCandidates;
+        if (usablePageFrame)
+        {
+            frameCandidates = DetectDocxPageFrameHeadings(slim, candidates, out frameDiagnostic);
+        }
+        else
+        {
+            frameCandidates = [];
+            frameDiagnostic = "page-frame-disabled-dense-docx-reflow";
+        }
+        // PDF is the authority for candidate/title/level. Page-frame recovery is valid only for
+        // coarse PDF-to-DOCX targets (roughly one text frame per page), never for a reflowed
+        // DOCX with one paragraph per source line/table cell.
+        if (candidates.Count < 10 && frameCandidates.Count >= 10)
             candidates = frameCandidates;
         if (candidates.Count < 10)
             return PdfTextbookOutlineResult.NotApplicable(

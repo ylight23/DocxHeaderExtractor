@@ -1,11 +1,13 @@
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
 internal enum PdfBlockRole
 {
     HeadingTopic,
+    DocumentTitle,
     BodySentence,
     TableOrChartLabel,
     DecorativeNoise,
@@ -16,7 +18,9 @@ internal sealed record PdfBlockDecision(
     string Id,
     PdfBlockRole Role,
     double Confidence,
-    string Reason);
+    string Reason,
+    IReadOnlyList<string>? EvidenceTags = null,
+    SourceTextSpan? HeadingSpan = null);
 
 internal sealed record PdfBlockAnalysis(
     IReadOnlyList<PdfSemanticBlock> Blocks,
@@ -36,18 +40,21 @@ internal sealed record PdfBlockAnalysis(
 /// </summary>
 internal static class PdfBlockAnalyst
 {
+    private const int MaximumConcurrentSemanticRequests = 4;
     private const string SystemPrompt =
         "You classify candidate PDF text blocks for document outline extraction.\n" +
-        "Deterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\n" +
+        "The input can be a lossless PDF-line audit, so it may include page numbers, repeated headers/footers, table labels, and body text.\n" +
+        "Classify each supplied block from its text and local context; do not assume it was pre-filtered.\n" +
         "For each block, choose exactly one role:\n" +
         "- heading_topic: a section/page/topic heading, usually a noun phrase or short label that opens content.\n" +
+        "- document_title: the title of the document/cover, not a navigational section heading.\n" +
         "- body_sentence: prose sentence/paragraph, usually with a finite verb or full claim.\n" +
         "- table_or_chart_label: table/chart/metric/axis/column/row label, even if short or bold.\n" +
         "- decorative_noise: logo fragments, spaced-out letters, broken cover art, isolated glyphs.\n" +
         "- uncertain: mixed or insufficient evidence.\n" +
         "Do not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as 'AVAILABILITY OF INFORMATION'.\n" +
         "Return one compact strict JSON object for every input id. Omit explanations unless needed.\n" +
-        "Format: {\"blocks\":[{\"id\":\"b1\",\"role\":\"heading_topic|body_sentence|table_or_chart_label|decorative_noise|uncertain\",\"confidence\":0.0}]}";
+        "Format: {\"blocks\":[{\"id\":\"b1\",\"role\":\"heading_topic|document_title|body_sentence|table_or_chart_label|decorative_noise|uncertain\",\"confidence\":0.0}]}";
 
     public static async Task<PdfBlockAnalysis> AnalyzeAsync(
         IHeaderClassifier classifier,
@@ -58,15 +65,24 @@ internal static class PdfBlockAnalyst
 
         if (blocks.Count > 12)
         {
-            var decisions = new List<PdfBlockDecision>();
-            var rawResponses = new List<string>();
-            foreach (var batch in blocks.Chunk(12))
+            using var throttle = new SemaphoreSlim(MaximumConcurrentSemanticRequests);
+            var tasks = blocks.Chunk(12).Select(async batch =>
             {
-                var partial = await AnalyzeAsync(classifier, batch, ct);
-                decisions.AddRange(partial.Decisions);
-                rawResponses.AddRange(partial.RawResponses);
-            }
-            return new PdfBlockAnalysis(blocks, decisions, rawResponses);
+                await throttle.WaitAsync(ct);
+                try
+                {
+                    return await AnalyzeAsync(classifier, batch, ct);
+                }
+                finally
+                {
+                    throttle.Release();
+                }
+            }).ToArray();
+            var partials = await Task.WhenAll(tasks);
+            return new PdfBlockAnalysis(
+                blocks,
+                partials.SelectMany(partial => partial.Decisions).ToArray(),
+                partials.SelectMany(partial => partial.RawResponses).ToArray());
         }
 
         string raw;
@@ -100,8 +116,11 @@ internal static class PdfBlockAnalyst
                 color = b.PrimaryStyle.FillColorKey,
             },
             source_text = b.Text,
-            display_text = b.DisplayText,
-            canonical_text = b.CanonicalText,
+            // Canonical text is for deterministic matching after classification, not semantic
+            // judgment. Avoid tripling long PDF lines in every analyst request.
+            display_text = string.Equals(b.DisplayText, b.Text, StringComparison.Ordinal)
+                ? null
+                : b.DisplayText,
         });
         return JsonSerializer.Serialize(new { blocks = payload });
     }
@@ -147,6 +166,7 @@ internal static class PdfBlockAnalyst
         role.Trim().ToLowerInvariant() switch
         {
             "heading_topic" or "heading" or "topic" => PdfBlockRole.HeadingTopic,
+            "document_title" or "cover_title" => PdfBlockRole.DocumentTitle,
             "body_sentence" or "body" or "prose" => PdfBlockRole.BodySentence,
             "table_or_chart_label" or "table_label" or "chart_label" or "table" or "chart" =>
                 PdfBlockRole.TableOrChartLabel,

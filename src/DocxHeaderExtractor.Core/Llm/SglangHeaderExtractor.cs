@@ -335,6 +335,9 @@ public sealed class SglangHeaderExtractor : IHeaderClassifier
             temperature = 0,
             max_tokens = _options.MaxOutputTokens,
             stream = false,
+            // BoundaryCutAsync has a JSON-only contract. This also prevents Qwen from spending
+            // its response budget on prose before it emits the block decisions.
+            response_format = new { type = "json_object" },
             chat_template_kwargs = new { enable_thinking = false },
             messages = new[]
             {

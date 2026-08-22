@@ -32,7 +32,7 @@ public static class BookTocDictionaryOutline
         @"(?<![A-Za-z0-9])(?<entry>Preface|Bibliography|Index|Part\s+(?<roman>[IVXLC]+)\.?|Chapter\s+(?<chapter>\d{1,2})\.?|(?<section>\d{1,2}[a-z])\.)",
         RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex StandaloneBodyStartRx = new(
-        @"^(?:Part\s+[IVXLC]+\s+\S|CHAPTER\s+\d{1,2}\s+\S)",
+        @"^(?:Part\s+[IVXLC]+|CHAPTER\s+\d{1,2})\.?$",
         RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
     public static IReadOnlyList<HeadingRecord> Build(SlimDocument document) => Analyze(document).Headings;
@@ -95,12 +95,16 @@ public static class BookTocDictionaryOutline
         for (var i = 0; i < paragraphs.Count; i++)
         {
             var text = paragraphs[i].Text;
-            if (!text.Contains("Contents", StringComparison.OrdinalIgnoreCase) ||
-                !text.Contains("Chapter", StringComparison.OrdinalIgnoreCase))
+            if (!text.Equals("Contents", StringComparison.OrdinalIgnoreCase) &&
+                !text.Contains("Table of Contents", StringComparison.OrdinalIgnoreCase))
                 continue;
 
             var parts = new List<SlimParagraph>();
-            for (var j = i; j < paragraphs.Count && parts.Count < 12; j++)
+            // PDF-to-DOCX converters frequently split a visual TOC table into one paragraph per
+            // cell.  The TOC label, title, and page number are then separate paragraphs, so use
+            // a bounded contiguous window instead of requiring "Contents" and "Chapter" to be
+            // in the same paragraph.
+            for (var j = i; j < paragraphs.Count && parts.Count < 320; j++)
             {
                 var p = paragraphs[j];
                 if (p.Index > paragraphs[i].Index &&
@@ -233,7 +237,7 @@ public static class BookTocDictionaryOutline
                 Index = match.Value.Paragraph.Index,
                 StableId = match.Value.Paragraph.StableId,
                 Level = entry.Level,
-                Text = CleanTitle(match.Value.Text),
+                Text = match.Value.UseDictionaryTitle ? entry.Title : CleanTitle(match.Value.Text),
                 OriginalText = match.Value.Paragraph.Text,
                 HeadingSpan = new TextOffsetSpan(match.Value.Start, match.Value.End),
                 BoundarySource = "BookTocDictionary",
@@ -254,6 +258,9 @@ public static class BookTocDictionaryOutline
         BookTocEntry entry,
         int minIndex)
     {
+        var split = FindSplitMarkerTitleAnchor(paragraphs, entry, minIndex);
+        if (split is not null) return split;
+
         var needle = Tokenize(string.Join(' ', entry.AnchorParts));
         if (needle.Count == 0) return null;
 
@@ -277,7 +284,7 @@ public static class BookTocDictionaryOutline
                 var end = tokens[i + needle.Count - 1].End;
                 if (LooksLikeTocOccurrence(paragraph.Text, end)) continue;
 
-                var match = new MatchResult(paragraph, paragraph.Text[start..end], start, end);
+                var match = new MatchResult(paragraph, paragraph.Text[start..end], start, end, false);
                 first ??= match;
                 if (LooksLikeParagraphStart(paragraph.Text, start) ||
                     entry.Level > 1 && start < 80)
@@ -286,6 +293,56 @@ public static class BookTocDictionaryOutline
         }
 
         return first;
+    }
+
+    private static MatchResult? FindSplitMarkerTitleAnchor(
+        IReadOnlyList<SlimParagraph> paragraphs,
+        BookTocEntry entry,
+        int minIndex)
+    {
+        if (!entry.Key.StartsWith("PART:", StringComparison.Ordinal) &&
+            !entry.Key.StartsWith("CH:", StringComparison.Ordinal))
+            return null;
+
+        var markerParts = entry.Key.StartsWith("PART:", StringComparison.Ordinal)
+            ? entry.AnchorParts.Take(1).ToArray()
+            : entry.AnchorParts.Take(2).ToArray();
+        var titleParts = entry.Key.StartsWith("PART:", StringComparison.Ordinal)
+            ? entry.AnchorParts.Skip(1).ToArray()
+            : entry.AnchorParts.Skip(2).ToArray();
+        var marker = Tokenize(string.Join(' ', markerParts));
+        var title = Tokenize(string.Join(' ', titleParts));
+        if (marker.Count == 0 || title.Count == 0) return null;
+
+        for (var i = 0; i < paragraphs.Count; i++)
+        {
+            var markerParagraph = paragraphs[i];
+            if (markerParagraph.Index < minIndex) continue;
+            var markerTokens = Tokenize(markerParagraph.Text);
+            if (!TokenSequenceEquals(markerTokens, marker, 0) || markerTokens.Count != marker.Count)
+                continue;
+
+            // A converter can place a page number or blank cell between the marker and title.
+            for (var j = i + 1; j < paragraphs.Count && j <= i + 6; j++)
+            {
+                var titleParagraph = paragraphs[j];
+                var titleTokens = Tokenize(titleParagraph.Text);
+                for (var start = 0; start <= titleTokens.Count - title.Count; start++)
+                {
+                    if (!TokenSequenceEquals(titleTokens, title, start)) continue;
+                    var end = titleTokens[start + title.Count - 1].End;
+                    if (LooksLikeTocOccurrence(titleParagraph.Text, end)) continue;
+                    return new MatchResult(
+                        titleParagraph,
+                        titleParagraph.Text[titleTokens[start].Start..end],
+                        titleTokens[start].Start,
+                        end,
+                        true);
+                }
+            }
+        }
+
+        return null;
     }
 
     private static bool TokenSequenceEquals(IReadOnlyList<TokenSpan> haystack, IReadOnlyList<TokenSpan> needle, int start)
@@ -334,5 +391,10 @@ public static class BookTocDictionaryOutline
     private sealed record BookTocEntry(string Key, int Level, string Title, IReadOnlyList<string> AnchorParts);
     private sealed record TocCluster(int StartIndex, int EndIndex, int ParagraphCount, string Text);
     private sealed record TokenSpan(string Text, int Start, int End);
-    private readonly record struct MatchResult(SlimParagraph Paragraph, string Text, int Start, int End);
+    private readonly record struct MatchResult(
+        SlimParagraph Paragraph,
+        string Text,
+        int Start,
+        int End,
+        bool UseDictionaryTitle);
 }

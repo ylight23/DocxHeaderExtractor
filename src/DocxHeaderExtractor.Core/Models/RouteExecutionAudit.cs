@@ -20,7 +20,25 @@ public sealed record RouteExecutionAudit(
     /// <summary>Raw analyst completions, populated only by explicit diagnostic routes.</summary>
     [JsonPropertyName("rawAnalystResponses")]
     public IReadOnlyList<string> RawAnalystResponses { get; init; } = [];
+
+    /// <summary>Visual confirmations for the explicitly requested PDF audit lane.</summary>
+    [JsonPropertyName("visualBlockDecisions")]
+    public IReadOnlyList<RouteVisualBlockDecisionAudit> VisualBlockDecisions { get; init; } = [];
+
+    /// <summary>Text-only semantic triage before visual adjudication.</summary>
+    [JsonPropertyName("semanticBlockDecisions")]
+    public IReadOnlyList<RouteBlockDecisionAudit> SemanticBlockDecisions { get; init; } = [];
 }
+
+public sealed record RouteVisualBlockDecisionAudit(
+    [property: JsonPropertyName("id")] string Id,
+    [property: JsonPropertyName("role")] string Role,
+    [property: JsonPropertyName("confidence")] double Confidence,
+    [property: JsonPropertyName("evidence")] string Evidence,
+    [property: JsonPropertyName("visualEvidenceTags")] IReadOnlyList<string>? VisualEvidenceTags = null,
+    [property: JsonPropertyName("sourceGrounded")] bool? SourceGrounded = null,
+    [property: JsonPropertyName("spanValid")] bool? SpanValid = null,
+    [property: JsonPropertyName("evidenceValid")] bool? EvidenceValid = null);
 
 public sealed record RouteBlockAudit(
     [property: JsonPropertyName("id")] string Id,

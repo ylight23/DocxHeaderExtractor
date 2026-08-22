@@ -30,7 +30,7 @@ internal static class PdfVisualRelationAnalyst
     private const double PaddingY = 22;
 
     public static async Task<PdfVisualRelationDecision> AnalyzeAsync(
-        VlmImageQuestion vlm,
+        IVisualQuestion vlm,
         string pdfPath,
         PdfSemanticBlock upperBlock,
         PdfSemanticBlock lowerBlock,

@@ -956,7 +956,7 @@ static int RunPdfBookmarks(CommandLineOptions o)
 
 static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationToken ct)
 {
-    if (o.Pipeline.DisableLlm)
+    if (o.Pipeline.DisableLlm && !o.PdfStageRetrievalOnly)
     {
         Console.Error.WriteLine("pdf-stage-eval cần LLM analyst; bỏ --no-llm và chỉ định --sglang/--model.");
         return 2;
@@ -966,7 +966,30 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
     var keyIndex = BuildKeyIndex(files);
     if (files.Count == 0) { Console.Error.WriteLine("Không tìm thấy DOCX để chấm PDF stages."); return 2; }
 
-    using var analyst = await CreateClassifierAsync(o, ct);
+    using var analyst = o.PdfStageRetrievalOnly ? null : await CreateClassifierAsync(o, ct);
+    IVisualQuestion? visualAnalyst = null;
+    if (o.PdfStageVisualReview)
+    {
+        if (o.Pipeline.Backend == InferenceBackend.Sglang)
+        {
+            if (!o.Quiet) Console.Error.WriteLine("Dùng SGLang Qwen VLM cho visual confirmation...");
+            visualAnalyst = SglangVlmImageQuestion.CreateOwned(
+                o.Pipeline.Sglang.Endpoint, o.Pipeline.Sglang.Model, o.Pipeline.Sglang.ApiKey,
+                o.VlmMaxImagesPerRequest);
+        }
+        else if (string.IsNullOrWhiteSpace(o.VlmModelPath) || string.IsNullOrWhiteSpace(o.VlmMmprojPath))
+        {
+            Console.Error.WriteLine("pdf-stage-eval --pdf-stage-vlm cần --sglang với Qwen-VL, hoặc đủ --vlm-model và --vlm-mmproj.");
+            return 2;
+        }
+        else
+        {
+            if (!o.Quiet) Console.Error.WriteLine("Đang nạp VLM visual confirmation analyst...");
+            visualAnalyst = await VlmImageQuestion.LoadAsync(
+                o.VlmModelPath, o.VlmMmprojPath, o.VlmContextSize, o.VlmGpuLayerCount, ct);
+        }
+    }
+    using var ownedVisualAnalyst = visualAnalyst;
     var rows = new List<object>();
     foreach (var file in files)
     {
@@ -987,6 +1010,10 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             .Where(p => !string.IsNullOrWhiteSpace(p.StableId))
             .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
         var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
+        // A converted DOCX can preserve reviewed title text while replacing every paragraph
+        // anchor. Rebinding is for score interpretation only and is never fed into writeback.
+        var evaluationAnchor = EvaluationAnchorResolver.Resolve(key, slim.Paragraphs);
+        var evaluationKey = evaluationAnchor.Key;
         var truth = key.PositiveEntries.Where(e => !string.IsNullOrWhiteSpace(e.Text)).ToArray();
         if (truth.Length != key.Count)
         {
@@ -994,10 +1021,82 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             continue;
         }
 
+        if (o.PdfStageRetrievalOnly)
+        {
+            var trace = PdfLayoutEvidenceOutline.TraceCandidateRetrieval(file, truth.Select(e => e.Text!));
+            var selectionTrace = PdfLayoutEvidenceOutline.TraceBroadCandidateSelection(
+                file,
+                o.PdfStageAllCandidates ? 0 : o.PdfStageAnalystBlocks,
+                o.PdfStageWideCandidates,
+                o.PdfStageSupplementCandidates,
+                o.PdfStageLosslessBlocks,
+                o.PdfStageAtomicLines,
+                out var selectionReason);
+            int TraceHits(Func<PdfCandidateRetrievalTrace, bool> predicate) => trace.Count(predicate);
+            string Canonical(string? value) => string.Concat((value ?? "").Where(char.IsLetterOrDigit).Select(char.ToLowerInvariant));
+            bool SelectedPoolMatches(string? candidate, string? expectedTitle)
+            {
+                var actual = Canonical(candidate);
+                var expectedTitleCanonical = Canonical(expectedTitle);
+                return actual == expectedTitleCanonical ||
+                       actual.StartsWith(expectedTitleCanonical, StringComparison.Ordinal) &&
+                       actual[expectedTitleCanonical.Length..].All(char.IsDigit);
+            }
+            var actualCandidateLosses = selectionTrace is null
+                ? Array.Empty<string>()
+                : truth.Where(entry => !selectionTrace.Selected.Any(block => SelectedPoolMatches(block.Text, entry.Text)))
+                    .Select(entry => entry.Text!)
+                    .ToArray();
+            var actualLossTrace = PdfLayoutEvidenceOutline.TraceCandidateRetrieval(file, actualCandidateLosses);
+            rows.Add(new
+            {
+                file = Path.GetFileName(file),
+                status = "retrieval-measured",
+                key = key.Count,
+                rawWindow = new { hits = TraceHits(t => t.FoundInRawWindow), total = key.Count },
+                standardBlock = new { hits = TraceHits(t => t.FoundInStandardBlock), total = key.Count },
+                broadCandidate = new { hits = TraceHits(t => t.FoundInBroadCandidate), total = key.Count },
+                wideCandidate = new { hits = TraceHits(t => t.FoundInWideCandidate), total = key.Count },
+                supplementCandidate = new { hits = TraceHits(t => t.FoundInSupplementCandidate), total = key.Count },
+                firstLossStages = trace.GroupBy(t => t.FirstLossStage)
+                    .OrderByDescending(group => group.Count())
+                    .Select(group => new { stage = group.Key, count = group.Count() }).ToArray(),
+                missing = trace.Where(t => !t.FoundInBroadCandidate && !t.FoundInSupplementCandidate)
+                    .Select(t => new { title = t.ExpectedText, t.FirstLossStage, t.RawFilterReasons, t.RawWindowText }).ToArray(),
+                selectedPoolLosses = actualLossTrace.Select(t => new
+                {
+                    title = t.ExpectedText,
+                    t.FirstLossStage,
+                    t.RawFilterReasons,
+                    t.RawWindowText,
+                }).ToArray(),
+                selection = selectionTrace is null
+                    ? (object)new { status = "unavailable", reason = selectionReason }
+                    : new
+                    {
+                        status = "measured",
+                        selectionTrace.Available,
+                        selectionTrace.AvailablePages,
+                        selectionTrace.SelectedPages,
+                        selected = o.Pipeline.ShowRawOutput
+                            ? selectionTrace.Selected.Select(block => new
+                            {
+                                block.Id,
+                                block.Page,
+                                block.Text,
+                                score = selectionTrace.Scores.TryGetValue(block.Id, out var score) ? score : 0,
+                            }).ToArray()
+                            : null,
+                    },
+            });
+            continue;
+        }
+
         var analystBudget = o.PdfStageAllCandidates ? 0 : o.PdfStageAnalystBlocks;
         var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
-            file, slim, analyst, analystBudget, o.PdfStageWideCandidates,
-            o.PdfStageSupplementCandidates, ct);
+            file, slim, analyst!, analystBudget, o.PdfStageWideCandidates,
+            o.PdfStageSupplementCandidates, o.PdfStageLosslessBlocks, o.PdfStageAtomicLines,
+            visualAnalyst, o.VlmDpi, o.VlmMaxConcurrentRequests, ct);
         var audit = result.Audit;
         if (audit is null)
         {
@@ -1006,13 +1105,28 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
         }
 
         string Canon(string? value) => string.Concat((value ?? "").Where(char.IsLetterOrDigit).Select(char.ToLowerInvariant));
+        // PDF navigation lines often append their printed page number. Preserve strict matching
+        // for final emitted titles, but treat only a numeric suffix as a candidate-stage match.
+        bool CandidateMatches(string? candidate, string? expectedTitle)
+        {
+            var actual = Canon(candidate);
+            var expectedTitleCanonical = Canon(expectedTitle);
+            return actual == expectedTitleCanonical ||
+                   actual.StartsWith(expectedTitleCanonical, StringComparison.Ordinal) &&
+                   actual[expectedTitleCanonical.Length..].All(char.IsDigit);
+        }
         var expected = truth.Select(e => Canon(e.Text)).ToArray();
-        int Hits(IEnumerable<string> texts) => expected.Count(e => texts.Select(Canon).Any(t => t == e));
+        int CandidateHits(IEnumerable<string> texts) => truth.Count(e => texts.Any(t => CandidateMatches(t, e.Text)));
+        int ExactTitleHits(IEnumerable<string> texts) => expected.Count(e => texts.Select(Canon).Any(t => t == e));
         var allCandidates = audit.CandidateBlocks;
         var selected = audit.SelectedCandidateBlocks;
+        var semanticHeadingIds = audit.SemanticBlockDecisions
+            .Where(d => string.Equals(d.Role, "HeadingTopic", StringComparison.OrdinalIgnoreCase))
+            .Select(d => d.Id).ToHashSet(StringComparer.Ordinal);
         var headingIds = audit.BlockDecisions
             .Where(d => string.Equals(d.Role, "HeadingTopic", StringComparison.OrdinalIgnoreCase))
             .Select(d => d.Id).ToHashSet(StringComparer.Ordinal);
+        var semanticHeadings = selected.Where(b => semanticHeadingIds.Contains(b.Id)).ToArray();
         var roleHeading = selected.Where(b => headingIds.Contains(b.Id)).ToArray();
         var grounded = selected.Where(b => audit.GroundedBlockIds.Contains(b.Id, StringComparer.Ordinal)).ToArray();
         var aligned = selected.Where(b => audit.AlignedBlockIds.Contains(b.Id, StringComparer.Ordinal)).ToArray();
@@ -1025,33 +1139,68 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             DeterministicRoute = "auto:pdf-layout-block-grounded",
             RouteAudit = audit,
         };
-        var score = Evaluator.Score(file, finalOutline, [], key);
-        var exact = Hits(result.Headings.Select(h => h.Text));
-        var levelHits = truth.Count(e => result.Headings.Any(h => Canon(h.Text) == Canon(e.Text) && h.Level == e.Level));
+        var score = evaluationAnchor.Complete
+            ? Evaluator.Score(file, finalOutline, [], evaluationKey)
+            : Evaluator.Score(file, finalOutline, [], key);
+        var exact = ExactTitleHits(result.Headings.Select(h => h.Text));
+        var evaluationTruth = evaluationKey.PositiveEntries.Where(e => !string.IsNullOrWhiteSpace(e.Text)).ToArray();
+        var anchorHits = evaluationTruth.Count(e => result.Headings.Any(h =>
+            Canon(h.Text) == Canon(e.Text) && h.Index == e.Index));
+        var levelHits = evaluationTruth.Count(e => result.Headings.Any(h =>
+            Canon(h.Text) == Canon(e.Text) && h.Index == e.Index && h.Level == e.Level));
         var missingCandidateTitles = truth
-            .Where(e => !allCandidates.Any(b => Canon(b.Text) == Canon(e.Text)))
+            .Where(e => !allCandidates.Any(b => CandidateMatches(b.Text, e.Text)))
             .Select(e => e.Text!)
             .ToArray();
+        var candidateLossTrace = PdfLayoutEvidenceOutline.TraceCandidateRetrieval(file, missingCandidateTitles);
         rows.Add(new
         {
             file = Path.GetFileName(file), status = "measured", key = key.Count,
-            candidateRecall = new { hits = Hits(allCandidates.Select(b => b.Text)), total = key.Count, candidates = allCandidates.Count },
-            analystCoverage = new { hits = Hits(selected.Select(b => b.Text)), total = key.Count, selected = selected.Count, available = audit.CandidatesAvailable },
-            vlmRole = new { hits = Hits(roleHeading.Select(b => b.Text)), selected = roleHeading.Length, precision = roleHeading.Length == 0 ? (double?)null : Hits(roleHeading.Select(b => b.Text)) / (double)roleHeading.Length },
-            pdfGrounding = new { hits = Hits(grounded.Select(b => b.Text)), total = key.Count, grounded = grounded.Length },
-            docxAlignment = new { hits = Hits(aligned.Select(b => b.Text)), total = key.Count, aligned = aligned.Length },
+            evaluationAnchor = new
+            {
+                complete = evaluationAnchor.Complete,
+                resolved = evaluationAnchor.Entries.Count(entry => entry.Status == "resolved"),
+                unresolved = evaluationAnchor.Entries.Count(entry => entry.Status == "unresolved"),
+                entries = o.Pipeline.ShowRawOutput ? evaluationAnchor.Entries : null,
+            },
+            candidateRecall = new { hits = CandidateHits(allCandidates.Select(b => b.Text)), total = key.Count, candidates = allCandidates.Count },
+            analystCoverage = new { hits = CandidateHits(selected.Select(b => b.Text)), total = key.Count, selected = selected.Count, available = audit.CandidatesAvailable },
+            semanticRole = new { hits = CandidateHits(semanticHeadings.Select(b => b.Text)), selected = semanticHeadings.Length, precision = semanticHeadings.Length == 0 ? (double?)null : CandidateHits(semanticHeadings.Select(b => b.Text)) / (double)semanticHeadings.Length },
+            visualRole = new { hits = CandidateHits(roleHeading.Select(b => b.Text)), selected = roleHeading.Length, precision = roleHeading.Length == 0 ? (double?)null : CandidateHits(roleHeading.Select(b => b.Text)) / (double)roleHeading.Length },
+            pdfGrounding = new { hits = CandidateHits(grounded.Select(b => b.Text)), total = key.Count, grounded = grounded.Length },
+            docxAlignment = new { hits = CandidateHits(aligned.Select(b => b.Text)), total = key.Count, aligned = aligned.Length },
             titleExact = new { hits = exact, total = key.Count },
+            anchorExact = new { hits = anchorHits, total = key.Count },
             levelAccuracy = new { hits = levelHits, total = key.Count },
             final = new { result = result.Headings.Count, precision = score.Precision, recall = score.Recall, f1 = score.F1, nav = score.NavigationRecall, navLevel = score.NavigationLevelAccuracy },
             rawAnalystResponses = o.Pipeline.ShowRawOutput ? audit.RawAnalystResponses : null,
+            blockAudit = o.Pipeline.ShowRawOutput
+                ? selected.Select(block => new
+                {
+                    block.Id,
+                    block.Page,
+                    block.Text,
+                    textDecision = audit.BlockDecisions.FirstOrDefault(decision => decision.Id == block.Id),
+                    visualDecision = audit.VisualBlockDecisions.FirstOrDefault(decision => decision.Id == block.Id),
+                    grounded = audit.GroundedBlockIds.Contains(block.Id, StringComparer.Ordinal),
+                    rejection = audit.GroundingRejections.FirstOrDefault(rejection => rejection.Id == block.Id),
+                }).ToArray()
+                : null,
             candidateKeyTitles = o.Pipeline.ShowRawOutput
-                ? truth.Where(e => allCandidates.Any(b => Canon(b.Text) == Canon(e.Text))).Select(e => e.Text).ToArray()
+                ? truth.Where(e => allCandidates.Any(b => CandidateMatches(b.Text, e.Text))).Select(e => e.Text).ToArray()
                 : null,
             analystVisibleKeyTitles = o.Pipeline.ShowRawOutput
-                ? truth.Where(e => selected.Any(b => Canon(b.Text) == Canon(e.Text))).Select(e => e.Text).ToArray()
+                ? truth.Where(e => selected.Any(b => CandidateMatches(b.Text, e.Text))).Select(e => e.Text).ToArray()
                 : null,
             missingCandidateTitles,
-            retrievalTrace = PdfLayoutEvidenceOutline.TraceCandidateRetrieval(file, missingCandidateTitles),
+            candidateLosses = candidateLossTrace.Select(trace => new
+            {
+                title = trace.ExpectedText,
+                trace.FirstLossStage,
+                trace.RawFilterReasons,
+                trace.RawWindowText,
+            }).ToArray(),
+            retrievalTrace = candidateLossTrace,
         });
     }
 

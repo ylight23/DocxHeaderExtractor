@@ -146,6 +146,23 @@ public sealed class AnswerKey
     public static AnswerKey Load(string path) =>
         Parse(File.ReadAllText(path), Path.GetFileNameWithoutExtension(path));
 
+    /// <summary>
+    /// Builds an evaluation-only key after a source document has been regenerated and its old
+    /// paragraph anchors no longer apply. Production writeback must never use this method.
+    /// </summary>
+    public static AnswerKey FromResolvedEntries(
+        IEnumerable<AnswerKeyEntry> entries,
+        string? title = null,
+        bool isPartial = false)
+    {
+        var materialized = entries.ToArray();
+        var levels = materialized
+            .Where(entry => !entry.Excluded && entry.Index is not null)
+            .GroupBy(entry => entry.Index!.Value)
+            .ToDictionary(group => group.Key, group => group.Last().Level);
+        return new AnswerKey(levels, [], materialized, title, isPartial);
+    }
+
     public static string Write(IEnumerable<(int Index, int Level, string Text)> headings, string title)
     {
         var sb = new StringBuilder();

@@ -28,6 +28,7 @@ public sealed class AutoRepairWorkflowTests
         Assert.Contains(result.WrittenFiles, f => Path.GetFileName(f) == "probe-report.json");
         Assert.Contains(result.WrittenFiles, f => Path.GetFileName(f) == "candidate-report.json");
         Assert.Contains(result.WrittenFiles, f => Path.GetFileName(f) == "validation-report.json");
+        Assert.Contains(result.WrittenFiles, f => Path.GetFileName(f) == "analysis-plan.json");
         Assert.Contains(result.WrittenFiles, f => Path.GetFileName(f) == "llm-analysis-prompt.md");
         Assert.Contains(result.WrittenFiles, f => Path.GetFileName(f) == "runtime-self-fix-plan.md");
         Assert.Contains(result.WrittenFiles, f => Path.GetFileName(f) == "repair-learning-log.jsonl");
@@ -35,6 +36,13 @@ public sealed class AutoRepairWorkflowTests
         var prompt = await File.ReadAllTextAsync(Path.Combine(result.CaseDirectory, "llm-analysis-prompt.md"));
         Assert.Contains("You are an analyst, not the final judge", prompt);
         Assert.Contains("deterministic signals", prompt);
+        Assert.Contains("Do not provide a chain-of-thought", prompt);
+        Assert.Contains("analysis-plan.json", prompt);
+
+        var analysisPlan = await File.ReadAllTextAsync(Path.Combine(result.CaseDirectory, "analysis-plan.json"));
+        Assert.Contains("probe-structure", analysisPlan);
+        Assert.Contains("semantic-or-visual-review", analysisPlan);
+        Assert.Contains("validate-and-promote", analysisPlan);
 
         var policy = await File.ReadAllTextAsync(Path.Combine(result.CaseDirectory, "runtime-self-fix-plan.md"));
         Assert.Contains("Allow in-process assembly mutation: `False`", policy);
