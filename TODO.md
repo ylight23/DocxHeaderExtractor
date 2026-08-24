@@ -1559,11 +1559,59 @@ source text, or fill an unresolved relation.
   Report: `.verify-build/m9.4-canary-076/076-shadow-compare.json` (gitignored, local only), built from
   `.verify-build/m9.4-canary-076/076-hierarchy-facts.json`.
 
-  **Next per the agreed priority: 010 (legal/marker-heavy), then 054 (financial, longest, run last).**
-  092 stays compatibility-only until an occurrence-aware hierarchy gold is reviewed for it (see the
-  merged-paragraph identity problem noted when 092 was first considered as canary - `@body[1]/p[11]`
-  holds three distinct numbered headings in this corpus, so `stableId -> headingId` is not a valid gold
-  key there without a paragraph-relative span added to the identity).
+  **Canary 010 (2026-08-24): PASS on the mechanical gate; one real upstream bug found, explained, not
+  fixed here.** Same protocol - one live `dhx pdf-hierarchy-facts` call (OpenRouter, `qwen/qwen3.5-9b`,
+  unchanged flags/budget), `dhx pdf-shadow-compare` replaying offline. `keys/hierarchy/` has no gold
+  for 010 either (`keys/legal-human/010...key` has the same merged-paragraph identity problem as 092 -
+  `@body[1]/p[4]` alone holds "Chương I", "Điều 1", and "Điều 2" - so it was not auto-converted);
+  flagged before running. Hierarchy migration: `not_measured`, same as planned for 092.
+
+  Stop-rule: 54/54 matched by fact id, 0 `MissingInNew`/`ExtraInNew`/`AnchorMismatch` - bridge holds on
+  a document 4x the size of 076. Proceed.
+
+  **TextMismatch (most of 54): confirmed via spot checks as the same `canonical_source_improvement`
+  as 076.** E.g. `b3`: legacy text `"Độclập-Tựdo-Hạnhphúc"` (PDF-observed, words run together, no
+  spaces) vs M9 text `"Độc lập - Tự do - Hạnh phúc"` (clean canonical DOCX, exact 27-char span). Not a
+  regression.
+
+  **OrderMismatch flagged 52/54 - but the root cause is exactly 2 facts, not 52.** Sorting the legacy
+  lane's own `(sourceId, paragraphIndex)` pairs shows a near-perfectly monotonic sequence (b3@7,
+  b6@13, b9@14, b10@15, b12@16, b43@43, ... b514@489) with exactly one break: **b4 and b5 both ground
+  to paragraph 417** (`"1.Tuân thủ quy định của pháp luật về an ninh mạng."`, a numbered sub-clause
+  near the end of the document) instead of somewhere near paragraph 8-12, where their fact ids place
+  them chronologically and where the document's title page actually is. Their legacy text (`"LUẬT"`,
+  `"AN NINH MẠNG"`) is a coincidental substring match inside that unrelated clause's own text - the
+  document's real title. Because `OrderMismatch` is computed as pairwise inversions, these 2
+  badly-grounded facts each invert against nearly every fact that lies between their true and actual
+  position, which is almost the whole document - inflating the reported count to 52 without there
+  being 52 independent ordering defects.
+
+  This is upstream canonical-grounding debt shared by both lanes (M9's grounding is built from the
+  same `result.Headings` legacy already consumed via `PdfCanonicalGrounding.FromGroundedHeadings`, so
+  both lanes agree on the same wrong paragraph - hence `AnchorMismatch: 0`, not a migration-introduced
+  disagreement). Per M9.4's scope, not fixed in this pass - recorded as upstream debt, not reopened as
+  M8 remediation this round. `PdfShadowLaneComparison.OrderMismatch`'s pairwise-inversion metric is
+  itself worth revisiting later (e.g. reporting a minimal "elements to remove for monotonicity" count
+  instead of every inverted pair) since it visibly overstates blast radius here - flagged, not changed
+  mid-canary to avoid tuning the comparator around one run's numbers.
+
+  **Hierarchy resolved nothing at the fact level either** (`markerPath=0`, `levelResolved=0`,
+  `parentResolved=0` for all 55 facts) despite this being the "marker-heavy" document in the plan.
+  Plausible same root cause as the text damage: `markerFamily` shows some `loose_labelled` hits, but
+  `MarkerPath` (the strict parser) never fires - consistent with "Điều 1 Phạmviđiềuchỉnh" (no space
+  after the number, words run together) not matching whatever separator the strict marker parser
+  expects. Not confirmed further this pass; recorded as upstream debt alongside the b4/b5 grounding
+  bug, both pointing at the same PDF-extraction damage as a plausible shared cause.
+
+  **Writeback: legacy wrote 0 (same `RequiresReview` gate as 076), M9 also wrote 0** - all 54 facts hit
+  `level_unresolved`, consistent with the fact-level finding above; there was nothing for the new
+  writeback to contribute on this document either.
+
+  Report: `.verify-build/m9.4-canary-010/010-shadow-compare.json` (gitignored, local only).
+
+  **Next per the agreed priority: 092 (compatibility-only, no gold), then 054 (financial, longest,
+  run last).** 092's own merged-paragraph gold-identity problem stays open until a reviewed
+  occurrence-aware hierarchy gold exists for it - not attempted this round for either 010 or 092.
 - [ ] M9.5 cutover, only after M9.4 passes: route `HeaderExtractionPipeline` through FinalStructure
   and remove the legacy path in the same change. No feature flag - the dual lane exists once to
   prove the migration, then goes away.
