@@ -5,6 +5,7 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 
 internal enum PdfBlockRole
 {
+    DocumentTitle,
     HeadingTopic,
     BodySentence,
     TableOrChartLabel,

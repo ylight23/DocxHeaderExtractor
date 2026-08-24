@@ -84,6 +84,12 @@ public sealed class CommandLineOptions
     public int PdfStageVisualRegions { get; private set; }
     public string? PdfStageVisualProducer { get; private set; }
     public bool PdfStageVisualScheduler { get; private set; }
+    public bool PdfStageRetrievalOnly { get; private set; }
+    public bool PdfStageLosslessBlocks { get; private set; }
+    public bool PdfStageAtomicLines { get; private set; }
+    public bool PdfStageVisualReview { get; private set; }
+    public int VlmMaxImagesPerRequest { get; private set; } = 1;
+    public int VlmMaxConcurrentRequests { get; private set; } = 1;
 
     /// <summary>Audit-only: screen every retrieved PDF candidate in batches.</summary>
     public bool PdfStageAllCandidates { get; private set; }
@@ -173,6 +179,12 @@ public sealed class CommandLineOptions
                 case "--pdf-stage-visual-regions": o.PdfStageVisualRegions = Math.Max(0, int.Parse(Next(a))); break;
                 case "--pdf-stage-visual-producer": o.PdfStageVisualProducer = Next(a); break;
                 case "--pdf-stage-visual-scheduler": o.PdfStageVisualScheduler = true; break;
+                case "--pdf-stage-retrieval-only": o.PdfStageRetrievalOnly = true; break;
+                case "--pdf-stage-lossless": o.PdfStageLosslessBlocks = true; break;
+                case "--pdf-stage-atomic": o.PdfStageAtomicLines = true; break;
+                case "--pdf-stage-vlm": o.PdfStageVisualReview = true; break;
+                case "--vlm-max-images": o.VlmMaxImagesPerRequest = Math.Max(1, int.Parse(Next(a))); break;
+                case "--vlm-concurrency": o.VlmMaxConcurrentRequests = Math.Max(1, int.Parse(Next(a))); break;
                 case "--pdf-stage-key-root": o.PdfStageKeyRoot = Next(a); break;
                 case "--pdf-visual-probe-index": o.PdfVisualProbeIndex = Math.Max(0, int.Parse(Next(a))); break;
                 case "--pdf-visual-probe-text": o.PdfVisualProbeText = Next(a); break;
