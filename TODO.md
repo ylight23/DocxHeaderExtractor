@@ -1609,9 +1609,46 @@ source text, or fill an unresolved relation.
 
   Report: `.verify-build/m9.4-canary-010/010-shadow-compare.json` (gitignored, local only).
 
-  **Next per the agreed priority: 092 (compatibility-only, no gold), then 054 (financial, longest,
-  run last).** 092's own merged-paragraph gold-identity problem stays open until a reviewed
-  occurrence-aware hierarchy gold exists for it - not attempted this round for either 010 or 092.
+  **Canary 092 (2026-08-24): PASS, compatibility-only as planned.** Same protocol, OpenRouter
+  `qwen/qwen3.5-9b`. No `--hierarchy-gold` passed - `keys/hierarchy/` still has no reviewed gold for
+  092, and per the earlier decision it was not fabricated from `keys/typed-human/092...key` (same
+  merged-paragraph identity problem as 010's key). `hierarchyMigration: {"status": "not_measured",
+  "reason": "reviewed_hierarchy_gold_unavailable"}`.
+
+  Stop-rule: 27/27 matched by fact id, 0 `MissingInNew`/`ExtraInNew`/`AnchorMismatch`. Proceed.
+
+  **TextMismatch (20/27): spot-checked (`b73`) as the same `canonical_source_improvement` pattern.**
+  `b73`'s canonical paragraph is itself a merged TOC line (`"2.Overview of Cache Operation
+  3.Storing Responses in Caches 3.1.Storing Header and Trailer Fields ..."`, several section titles
+  concatenated into one DOCX paragraph by the PDF→DOCX conversion); M9 slices exactly
+  `"2.Overview of Cache Operation"` out of it (`span(0,29)`), while legacy's PDF-observed text reads
+  `"2 Overview of Cache Operation"` - the familiar spacing/punctuation drift from PDF rendering, not a
+  content difference. Not a regression.
+
+  **OrderMismatch (26/27): different failure shape from 010, but the same verdict - shared upstream
+  grounding, not a migration regression.** 010's break was 2 outlier facts; 092's is structural: most
+  section-title facts (`sourceOrder` 9-21, e.g. `b73` through `b444`) all ground into a tight
+  paragraph cluster (61-97) - the document's own merged Table of Contents block - rather than their
+  real body occurrence, while a handful (`b29`, `b40`, `b44`, and the tail past `sourceOrder` 21) do
+  land on the real body/back-matter position (verified: `b40` -> `"7.3. Caching of Sensitive
+  Information"` correctly grounds to paragraph 1093, deep in the body). `AnchorMismatch: 0` again:
+  both lanes agree on every one of these groundings, right or wrong - this is the same
+  `parity != correctness` shape as 010's b4/b5, at a larger scale, and the same verdict applies: shared
+  upstream debt (TOC-vs-body reconciliation for this RFC-style document), not fixed in this pass, not
+  reopened as M8/TOC-dictionary remediation here.
+
+  **Writeback:** legacy wrote 0 (same gate), M9 wrote 2, 24 skipped `level_unresolved`, 0 anchor
+  failures, 0 unexpected text changes - fail-closed behavior held.
+
+  Report: `.verify-build/m9.4-canary-092/092-shadow-compare.json` (gitignored, local only).
+
+  **Emerging cross-corpus pattern worth carrying into the final summary:** across 010 and 092,
+  `AnchorMismatch` has been 0 in every case where a shared grounding defect exists - the metric proves
+  lane *parity*, not occurrence *correctness*, and the final M9.4 report must say so explicitly rather
+  than let a clean `AnchorMismatch` column be read as "groundings are correct."
+
+  **Next: 054 (financial, longest - ~170 pages, run last).** After that, cross-corpus summary and the
+  M9.5 gate decision.
 - [ ] M9.5 cutover, only after M9.4 passes: route `HeaderExtractionPipeline` through FinalStructure
   and remove the legacy path in the same change. No feature flag - the dual lane exists once to
   prove the migration, then goes away.
