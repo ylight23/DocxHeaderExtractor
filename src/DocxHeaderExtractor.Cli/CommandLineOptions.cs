@@ -241,7 +241,7 @@ public sealed class CommandLineOptions
                     o.Pipeline.Backend = InferenceBackend.Sglang;
                     o.Pipeline.Sglang.ContextSize = int.Parse(Next(a));
                     break;
-                case "--nvidia-nim":
+                case "--nvidia-nim" or "--nvidia":
                     o.UseNvidiaNim = true;
                     o.Pipeline.Backend = InferenceBackend.Sglang;
                     o.Pipeline.Sglang.Endpoint = new Uri("https://integrate.api.nvidia.com/v1/chat/completions");
