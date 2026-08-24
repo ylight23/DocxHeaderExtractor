@@ -79,6 +79,7 @@ try
         "pdf-semantic-recovery-eval" => await RunPdfSemanticRecoveryEvalAsync(options, cts.Token),
         "pdf-semantic-recovery-result-eval" => RunPdfSemanticRecoveryResultEval(options),
         "pdf-hierarchy-facts-eval" => RunPdfHierarchyFactsEval(options),
+        "pdf-shadow-compare" => RunPdfShadowCompare(options),
         "pdf-tags" => await RunPdfTagsAsync(options, cts.Token),
         "pdf-bookmarks" => RunPdfBookmarks(options),
         "verify-corrupt" => await RunVerifyCorruptAsync(options, cts.Token),
@@ -1652,6 +1653,9 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
 
     var rows = new List<PdfHierarchyFactsRow>();
     var skipped = new List<object>();
+    // M9.4: the legacy lane's own product is snapshotted from this SAME live call, never a second
+    // one, so a shadow comparison between the two lanes cannot be explained by model stochasticity.
+    var legacyProductByFile = new Dictionary<string, IReadOnlyList<HeadingRecord>>(StringComparer.Ordinal);
     foreach (var file in files)
     {
         if (!o.Quiet) Console.Error.WriteLine($"» PDF hierarchy facts: {Path.GetFileName(file)}");
@@ -1670,6 +1674,8 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
         var row = PdfHierarchyFactsArtifact.BuildRow(Path.GetFileName(file), FileSha256(file), audit.HierarchyFacts,
             audit.ValidatedStructures, PdfCanonicalGrounding.FromGroundedHeadings(result.Headings));
         rows.Add(row);
+        legacyProductByFile[Path.GetFileName(file)] =
+            PdfValidatedOutputPolicy.ProjectDocumentOutline(result.Headings, audit.ValidatedStructures);
         if (!o.Quiet)
             Console.Error.WriteLine(
                 $"  validated={row.Counters.ValidatedHeadings} markerPath={row.Counters.MarkerPathFacts} " +
@@ -1699,6 +1705,7 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
         envelope.UsesGold,
         envelope.Generation,
         envelope.Rows,
+        legacyProductHeadings = legacyProductByFile,
         skipped,
     }, new JsonSerializerOptions
     {
@@ -2096,6 +2103,123 @@ static int RunPdfHierarchyFactsEval(CommandLineOptions o)
     var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions
     {
         WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else
+    {
+        var output = Path.GetFullPath(o.OutputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        File.WriteAllText(output, json, new UTF8Encoding(false));
+    }
+    return 0;
+}
+
+// M9.4. Replays the legacy and M9 lanes over ONE frozen `pdf-hierarchy-facts` artifact (which must
+// carry `legacyProductHeadings`, added alongside `rows` for exactly this purpose) and reports the
+// shadow diff. No model runs here - both lanes fork from facts a single earlier live call produced,
+// so a difference cannot be explained by provider stochasticity.
+static int RunPdfShadowCompare(CommandLineOptions o)
+{
+    if (o.Inputs.Count is < 1 or > 2 || !File.Exists(o.Inputs[0]))
+    {
+        Console.Error.WriteLine(
+            "pdf-shadow-compare cần frozen artifact JSON (từ pdf-hierarchy-facts, có legacyProductHeadings) " +
+            "làm input đầu, và tuỳ chọn DOCX nguồn làm input thứ hai để so writeback. " +
+            "Dùng --hierarchy-gold cho phần hierarchy migration.");
+        return 2;
+    }
+
+    using var envelope = JsonDocument.Parse(File.ReadAllText(o.Inputs[0]));
+    var root = envelope.RootElement;
+    if (!root.TryGetProperty("rows", out var rowsEl) || rowsEl.ValueKind != JsonValueKind.Array || rowsEl.GetArrayLength() == 0)
+    {
+        Console.Error.WriteLine("Artifact không có rows.");
+        return 2;
+    }
+    // Case-insensitive: PdfValidatedStructure (and a few sibling types) carry no [JsonPropertyName]
+    // and were written under a camelCase naming policy, so a case-sensitive read would silently
+    // leave SourceId/DomainRole/etc. at their default instead of throwing - worse than a clear error.
+    var readOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+    var rows = JsonSerializer.Deserialize<List<PdfHierarchyFactsRow>>(rowsEl.GetRawText(), readOptions)!;
+    var legacyByFile = root.TryGetProperty("legacyProductHeadings", out var legacyEl) && legacyEl.ValueKind == JsonValueKind.Object
+        ? JsonSerializer.Deserialize<Dictionary<string, List<HeadingRecord>>>(legacyEl.GetRawText(), readOptions)
+        : null;
+
+    PdfHierarchyGold? gold = null;
+    if (!string.IsNullOrWhiteSpace(o.PdfHierarchyGoldPath))
+    {
+        if (!File.Exists(o.PdfHierarchyGoldPath)) { Console.Error.WriteLine("Không tìm thấy hierarchy gold."); return 2; }
+        gold = PdfHierarchyGold.Load(File.ReadAllText(o.PdfHierarchyGoldPath));
+    }
+
+    var sourceDocx = o.Inputs.Count == 2 ? o.Inputs[1] : null;
+    if (sourceDocx is not null && !File.Exists(sourceDocx))
+    {
+        Console.Error.WriteLine($"Không tìm thấy DOCX nguồn: {sourceDocx}");
+        return 2;
+    }
+
+    var reports = new List<object>();
+    foreach (var row in rows)
+    {
+        if (legacyByFile is null || !legacyByFile.TryGetValue(row.File, out var legacyList))
+        {
+            reports.Add(new
+            {
+                document = row.File,
+                status = "benchmark_unavailable",
+                reason = "legacyProductHeadings missing for this file in the artifact",
+            });
+            continue;
+        }
+
+        var facts = row.Items.Select(item => item.ToFactAudit()).ToArray();
+        var finalStructure = PdfFinalStructureProjection.Project(
+            row.SourceDocumentSha256, row.ValidatedStructures, facts, row.CanonicalGroundings);
+        var decisions = PdfOutputDecisionPolicy.Decide(finalStructure);
+        var compatibility = PdfShadowLaneComparison.CompareCompatibility(legacyList, finalStructure, decisions);
+        object hierarchyMigration = gold is null
+            ? new { status = "not_measured", reason = "reviewed_hierarchy_gold_unavailable" }
+            : PdfShadowLaneComparison.CompareHierarchy(finalStructure, gold);
+
+        object? writeback = null;
+        if (sourceDocx is not null)
+        {
+            var legacyOutline = new DocumentOutline
+            {
+                File = row.File, ParagraphCount = legacyList.Count, CandidateCount = legacyList.Count, Headings = legacyList,
+            };
+            var productOutput = PdfProductOutputSerializer.Serialize(finalStructure, decisions);
+            var tempDir = Path.Combine(Path.GetTempPath(), $"dhx-shadow-{Guid.NewGuid():N}");
+            Directory.CreateDirectory(tempDir);
+            try
+            {
+                writeback = PdfShadowWritebackComparison.Compare(
+                    sourceDocx, Path.Combine(tempDir, "legacy.docx"), Path.Combine(tempDir, "new.docx"),
+                    legacyOutline, productOutput, new ExtractionOptions());
+            }
+            catch (Exception ex)
+            {
+                writeback = new { status = "error", message = ex.Message };
+            }
+        }
+
+        reports.Add(new
+        {
+            document = row.File,
+            hasUnexplainedCompatibilityDiff = compatibility.HasUnexplainedDiff,
+            compatibility,
+            hierarchyMigration,
+            writeback,
+        });
+    }
+
+    var payload = new { artifact = Path.GetFileName(o.Inputs[0]), sourceDocx = sourceDocx is null ? null : Path.GetFileName(sourceDocx), reports };
+    var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
     });
     if (o.OutputPath is null) Console.WriteLine(json);

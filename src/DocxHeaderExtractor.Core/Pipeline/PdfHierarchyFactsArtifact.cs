@@ -2,6 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -142,6 +143,28 @@ public sealed record PdfHierarchyFactItem(
     [property: JsonPropertyName("parentResolution")] string ParentResolution,
     [property: JsonPropertyName("evidence")] IReadOnlyList<string> Evidence)
 {
+    /// <summary>
+    /// Reverses <see cref="From"/> so a frozen row can be replayed through
+    /// <see cref="PdfFinalStructureProjection"/> without re-running extraction. Lossy in exactly one
+    /// field: <see cref="PdfHierarchyFactAudit.MarkerIsPath"/> is not carried by the artifact and is
+    /// defaulted to <c>false</c> here - the projection never reads it, so the replay is faithful for
+    /// every field M9.1/M9.2 actually consume.
+    /// </summary>
+    public PdfHierarchyFactAudit ToFactAudit() => new(
+        SourceFactId, SourceOrder, Page, StructuralScope, DocumentRegime, MarkerFamily, MarkerDepth,
+        MarkerIsPath: false, MarkerPath, PreviousValidatedId, MarkerPrefixParentCandidate, ResolvedLevel,
+        ParentResolution, Evidence)
+    {
+        FactId = FactId,
+        SourceBlockText = SourceBlockText,
+        SourceBlockTextSha256 = SourceBlockTextSha256,
+        HeadingSpan = new TextOffsetSpan(HeadingSpan.Start, HeadingSpan.End),
+        HeadingText = HeadingText,
+        MarkerComponents = MarkerComponents,
+        LineIds = LineIds,
+        Geometry = Geometry,
+    };
+
     public static PdfHierarchyFactItem From(PdfHierarchyFactAudit fact) => new(
         fact.FactId,
         fact.Id,

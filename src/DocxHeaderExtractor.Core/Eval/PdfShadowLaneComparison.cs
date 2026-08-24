@@ -125,10 +125,16 @@ public static class PdfShadowLaneComparison
     /// <see cref="DocxSourceAnchor.StableId"/>, which is the identity <see cref="PdfHierarchyGold"/>
     /// already keys on (<c>SourceAnchor</c>); a fact the frozen route never grounded to a paragraph
     /// cannot be graded here and is simply not counted.
+    /// <para>
+    /// Gold files write <c>SourceAnchor</c> with a leading <c>@</c> - a human-authoring convention
+    /// carried over from <c>.key</c> files (<see cref="AnswerKey"/> strips it the same way) - while
+    /// <see cref="DocxSourceAnchor.StableId"/> as <see cref="OpenXmlLayer.ParagraphWalker"/> actually
+    /// produces it never has one. Comparing the two without normalizing would match nothing.
+    /// </para>
     /// </summary>
     public static PdfShadowHierarchyMigrationReport CompareHierarchy(PdfFinalStructure finalStructure, PdfHierarchyGold gold)
     {
-        var goldByAnchor = gold.Headings.ToDictionary(h => h.SourceAnchor, StringComparer.Ordinal);
+        var goldByAnchor = gold.Headings.ToDictionary(h => NormalizeAnchor(h.SourceAnchor), StringComparer.Ordinal);
         var goldById = gold.Headings.ToDictionary(h => h.HeadingId, StringComparer.Ordinal);
         var idToStableId = finalStructure.Headings
             .Where(h => h.SourceAnchor is not null)
@@ -164,7 +170,7 @@ public static class PdfShadowLaneComparison
                 resolvedParents++;
                 predictedEdges.Add((parentStableId, stableId));
                 var expectedParentAnchor = goldItem.GoldParentId is null ? null
-                    : goldById.TryGetValue(goldItem.GoldParentId, out var parentGold) ? parentGold.SourceAnchor : null;
+                    : goldById.TryGetValue(goldItem.GoldParentId, out var parentGold) ? NormalizeAnchor(parentGold.SourceAnchor) : null;
                 if (expectedParentAnchor is not null &&
                     string.Equals(parentStableId, expectedParentAnchor, StringComparison.Ordinal))
                     parentCorrect++;
@@ -173,7 +179,7 @@ public static class PdfShadowLaneComparison
 
         var goldEdges = gold.Headings
             .Where(h => h.GoldParentId is not null && goldById.ContainsKey(h.GoldParentId))
-            .Select(h => (Parent: goldById[h.GoldParentId!].SourceAnchor, Child: h.SourceAnchor))
+            .Select(h => (Parent: NormalizeAnchor(goldById[h.GoldParentId!].SourceAnchor), Child: NormalizeAnchor(h.SourceAnchor)))
             .ToHashSet();
         var truePositives = predictedEdges.Count(goldEdges.Contains);
         double? precision = predictedEdges.Count == 0 ? null : (double)truePositives / predictedEdges.Count;
@@ -191,6 +197,8 @@ public static class PdfShadowLaneComparison
     }
 
     private static double? Ratio(int numerator, int denominator) => denominator == 0 ? null : (double)numerator / denominator;
+
+    private static string NormalizeAnchor(string anchor) => anchor.StartsWith('@') ? anchor[1..] : anchor;
 }
 
 public sealed record PdfShadowCompatibilityReport(

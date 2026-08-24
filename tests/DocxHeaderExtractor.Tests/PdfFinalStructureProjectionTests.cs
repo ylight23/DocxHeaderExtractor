@@ -194,6 +194,62 @@ public sealed class PdfFinalStructureProjectionTests
         Assert.Equal(live.Headings.Select(h => h.ParentId), offline.Headings.Select(h => h.ParentId));
     }
 
+    /// <summary>
+    /// M9.4 needs a TRUE offline replay - facts reconstructed from the row's own items, not the
+    /// original in-memory array a live run would still have. <see cref="PdfHierarchyFactItem.ToFactAudit"/>
+    /// is the bridge; this locks that it reproduces the identical structure the live facts would.
+    /// </summary>
+    [Fact]
+    public void ProjectsIdenticallyFromFactsReconstructedOffTheRowItemsAlone()
+    {
+        var facts = new[] { Fact("b1", 0, "1 Introduction", 1), Fact("b2", 1, "1 1 Scope", 2) };
+        var structures = new[] { Structure("b1"), Structure("b2", parentId: "b1", resolution: "marker-resolved") };
+        var groundings = new[]
+        {
+            new PdfCanonicalGrounding("b1", 10, "@body[1]/p[10]", new DocxTextSpan(0, 14), "1. Introduction"),
+            new PdfCanonicalGrounding("b2", 11, "@body[1]/p[11]", new DocxTextSpan(0, 9), "1.1 Scope"),
+        };
+        var live = PdfFinalStructureProjection.Project("sha", structures, facts, groundings);
+
+        var row = PdfHierarchyFactsArtifact.BuildRow("doc.pdf", "sha", facts, structures, groundings);
+        var replayed = System.Text.Json.JsonSerializer.Deserialize<PdfHierarchyFactsRow>(
+            System.Text.Json.JsonSerializer.Serialize(row))!;
+        var reconstructedFacts = replayed.Items.Select(item => item.ToFactAudit()).ToArray();
+        var offline = PdfFinalStructureProjection.Project(
+            replayed.SourceDocumentSha256, replayed.ValidatedStructures, reconstructedFacts, replayed.CanonicalGroundings);
+
+        Assert.Equal(live.FinalStructureFingerprint, offline.FinalStructureFingerprint);
+        Assert.Equal(live.Headings.Select(h => h.Level), offline.Headings.Select(h => h.Level));
+        Assert.Equal(live.Headings.Select(h => h.ParentId), offline.Headings.Select(h => h.ParentId));
+    }
+
+    /// <summary>
+    /// The CLI writes the frozen artifact under a camelCase naming policy
+    /// (<c>pdf-hierarchy-facts</c> in Program.cs). <see cref="PdfValidatedStructure"/> has to declare
+    /// its own <c>[JsonPropertyName]</c>s to survive that round-trip: without them a case-sensitive
+    /// reader (M9.4's shadow comparator, notably) silently leaves <c>SourceId</c> null instead of
+    /// throwing, which then throws much later and further away, inside <c>Project</c> itself.
+    /// </summary>
+    [Fact]
+    public void ValidatedStructureRoundTripsUnderTheCamelCaseNamingPolicyTheCliWrites()
+    {
+        var structure = Structure("b1", parentId: "b2", resolution: "marker-resolved") with
+        {
+            DomainRole = PdfDomainRole.TableTitle,
+            StructuralScope = "appendix_table",
+        };
+        var camelCase = new System.Text.Json.JsonSerializerOptions
+        {
+            PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase,
+        };
+
+        var json = System.Text.Json.JsonSerializer.Serialize(structure, camelCase);
+        var replayed = System.Text.Json.JsonSerializer.Deserialize<PdfValidatedStructure>(json, camelCase);
+
+        Assert.Equal(structure, replayed);
+        Assert.NotNull(replayed!.SourceId);
+    }
+
     /// <summary>Grounding is read from the route's own reconciliation, never recomputed here.</summary>
     [Fact]
     public void GroundingIsMaterializedFromTheRoutesReconciliation()

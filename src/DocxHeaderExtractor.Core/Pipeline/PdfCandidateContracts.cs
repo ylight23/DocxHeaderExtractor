@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -75,14 +76,24 @@ internal sealed record PdfValidatedHeading(
     string StructuralScope,
     string ValidationBasis);
 
+/// <summary>
+/// Embedded verbatim in the frozen <c>pdf_hierarchy_facts</c> artifact
+/// (<see cref="PdfHierarchyFactsRow.ValidatedStructures"/>), which the CLI writes under a camelCase
+/// naming policy - explicit property names here so an offline reader (M9.4's shadow comparator among
+/// them) round-trips this type correctly instead of a case-sensitive reader silently leaving
+/// <see cref="SourceId"/>/<see cref="DomainRole"/>/etc. at their default.
+/// </summary>
 public sealed record PdfValidatedStructure(
-    string SourceId,
-    int Level,
-    string? ParentId,
-    string ParentResolution,
-    string Decision)
+    [property: JsonPropertyName("sourceId")] string SourceId,
+    [property: JsonPropertyName("level")] int Level,
+    [property: JsonPropertyName("parentId")] string? ParentId,
+    [property: JsonPropertyName("parentResolution")] string ParentResolution,
+    [property: JsonPropertyName("decision")] string Decision)
 {
+    [JsonPropertyName("domainRole")]
     public PdfDomainRole DomainRole { get; init; } = PdfDomainRole.Unknown;
+
+    [JsonPropertyName("structuralScope")]
     public string StructuralScope { get; init; } = "document_body";
 }
 

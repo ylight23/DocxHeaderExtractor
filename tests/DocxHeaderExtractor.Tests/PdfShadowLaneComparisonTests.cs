@@ -106,6 +106,12 @@ public sealed class PdfShadowLaneComparisonTests
         Assert.Equal(["b1", "b2"], report.OrderMismatch.OrderBy(x => x));
     }
 
+    /// <summary>
+    /// Real StableIds (as <c>ParagraphWalker</c> produces them) carry no <c>@</c>; real gold files
+    /// (the <c>.key</c>-file authoring convention <see cref="AnswerKey"/> also strips) always do.
+    /// This test deliberately mismatches the two prefixes to lock the normalization - a canary run
+    /// against 076 found <c>GoldMatched</c> silently stuck at 0 before this was added.
+    /// </summary>
     [Fact]
     public void HierarchyIsGradedAgainstGoldNeverAgainstTheLegacyLane()
     {
@@ -113,8 +119,8 @@ public sealed class PdfShadowLaneComparisonTests
         var structures = new[] { Structure("b1"), Structure("b2", parentId: "b1", resolution: "marker-resolved") };
         var groundings = new[]
         {
-            new PdfCanonicalGrounding("b1", 10, "@body[1]/p[10]", new DocxTextSpan(0, 14), "1. Introduction"),
-            new PdfCanonicalGrounding("b2", 11, "@body[1]/p[11]", new DocxTextSpan(0, 9), "1.1 Scope"),
+            new PdfCanonicalGrounding("b1", 10, "body[1]/p[10]", new DocxTextSpan(0, 14), "1. Introduction"),
+            new PdfCanonicalGrounding("b2", 11, "body[1]/p[11]", new DocxTextSpan(0, 9), "1.1 Scope"),
         };
         var structure = PdfFinalStructureProjection.Project("sha", structures, facts, groundings);
 

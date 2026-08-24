@@ -7,7 +7,7 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// structures; this policy decides what a document-outline product is allowed to emit. It never
 /// creates, edits, or accepts a heading.
 /// </summary>
-internal static class PdfValidatedOutputPolicy
+public static class PdfValidatedOutputPolicy
 {
     public static IReadOnlyList<HeadingRecord> ProjectDocumentOutline(
         IReadOnlyList<HeadingRecord> headings,
