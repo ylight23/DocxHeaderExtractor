@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -50,6 +50,7 @@ public static class PdfFinalStructureProjection
                 fact.HeadingText,
                 structure.DomainRole.ToString(),
                 structure.StructuralScope,
+                structure.Decision,
                 level,
                 parentId,
                 Status(level, parentId),
@@ -151,6 +152,7 @@ public sealed record PdfFinalHeading(
     [property: JsonPropertyName("text")] string Text,
     [property: JsonPropertyName("role")] string Role,
     [property: JsonPropertyName("scope")] string Scope,
+    [property: JsonPropertyName("validationDecision")] string ValidationDecision,
     [property: JsonPropertyName("level")] int? Level,
     [property: JsonPropertyName("parentId")] string? ParentId,
     [property: JsonPropertyName("hierarchyStatus")] string HierarchyStatus,
