@@ -1435,6 +1435,17 @@ source text, or fill an unresolved relation.
   missing field. A field the serializer needs and the projection does not carry is a contract gap in
   M9.1, fixed there explicitly - as `ValidationDecision` and the canonical grounding were.
   Writeback must act on the canonical occurrence, never on a title search.
+
+  **Serializer half done (`PdfProductOutputSerializer`).** Consumes exactly `PdfFinalStructure` +
+  `IReadOnlyList<PdfOutputDecision>`, nothing else. Emits one `PdfProductHeading` per `Emit=true`
+  decision, in `FinalStructure` source order: canonical id, `DocxSourceAnchor` fields (paragraph
+  index, stable id, span), grounded text, role, level/parentId carried verbatim (null stays null),
+  and `RequiresReview`/`Reasons` passed through from the decision unchanged. It re-checks
+  `SourceAnchor is not null` itself rather than trusting the decision's `Emit` blindly, since a
+  record without a canonical occurrence can never be written back. 7 new tests lock these invariants
+  (`PdfProductOutputSerializerTests`); full suite unaffected (936 passing, unrelated to this change).
+  Writeback - acting on the anchor to mutate the DOCX - is still open, so the checkbox above stays
+  unchecked until that half lands too.
 - [ ] M9.4 shadow end-to-end comparison, both lanes over the same frozen upstream result so a
   difference cannot be provider variability. Report the diff occurrence-aware and split by kind:
   - legacy-compatible: occurrence, source text, ordering, emit and review semantics;
