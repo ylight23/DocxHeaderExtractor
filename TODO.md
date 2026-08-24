@@ -1399,6 +1399,64 @@ duplicate là dòng riêng (`051` 30, `052` 32). Bỏ gộp continuation khỏi 
     signal over all source blocks reported `4.7%`.
   - First-loss attribution is invalid until the evaluated occurrence is bridged occurrence-safely.
     `4.3` was attributed to a table-of-contents occurrence before the bridge was reviewed.
+## M9 — productization
+
+Discovery is closed. M9 packages what the system already knows, honestly, and does not pretend the
+hierarchy is complete. Nothing in M9 may create a heading, revive a rejected candidate, rewrite
+source text, or fill an unresolved relation.
+
+- [x] M9.1a FinalStructure projection (`PdfFinalStructureProjection`): materializes validated facts
+  into a product-consumable shape. No model, no candidate, no hierarchy resolution. An absent parent
+  or level is a result, not a gap: a preceding heading is never adopted as a parent, and a parent
+  that does not resolve inside the emitted set is dropped rather than left dangling. A level is
+  emitted only where the strict dotted path and the observed marker components agree; where the
+  source lost its separators they disagree, and the conflict is reported as
+  `marker_representation_conflict` instead of a confident wrong level.
+- [x] M9.1b canonical grounding correction: identity was anchored to the PDF block that observed a
+  heading, which is the wrong authority for a DOCX product. A heading is now identified by its
+  `DocxSourceAnchor` (paragraph index, stable id, paragraph-relative span) and its text is a slice of
+  that paragraph, so the product shows what the document says even where PDF extraction damaged the
+  rendered line. The observed block, span, text and line ids remain as `PdfEvidenceAnchor`
+  provenance, and parents are referenced by canonical identity. `DocxTextSpan` and `PdfTextSpan` are
+  distinct types, so the two coordinate systems - both previously called `HeadingSpan` - can no
+  longer be passed for one another.
+
+  Grounding is materialized from the reconciliation the route already performed; nothing is matched
+  by title in M9. An unreconciled fact stays `grounding_unresolved` and is not emitted, while
+  remaining in the structure for review.
+- [x] M9.2 output decision policy (`PdfOutputDecisionPolicy`): the outline inclusion rules now run
+  over the materialized structure and return one decision per heading instead of a filtered list, so
+  an excluded fact stays visible to an audit. This is a change of input, not of policy: a
+  differential lock runs it and the legacy `PdfValidatedOutputPolicy` over the same validated input
+  and asserts they emit the same canonical occurrences. Emission and review are independent - an
+  unresolved hierarchy is a reason code and never suppresses a heading the validator accepted.
+- [ ] M9.3 serializer / writeback over the new lane. Consumes FinalStructure plus OutputDecisions
+  only; it may not read `HeadingRecord`, `ValidatedStructures`, or the legacy policy to fill a
+  missing field. A field the serializer needs and the projection does not carry is a contract gap in
+  M9.1, fixed there explicitly - as `ValidationDecision` and the canonical grounding were.
+  Writeback must act on the canonical occurrence, never on a title search.
+- [ ] M9.4 shadow end-to-end comparison, both lanes over the same frozen upstream result so a
+  difference cannot be provider variability. Report the diff occurrence-aware and split by kind:
+  - legacy-compatible: occurrence, source text, ordering, emit and review semantics;
+  - intentional authority migration: level, parent, hierarchy status.
+
+  Level and parent mismatches are expected. The legacy PDF route derives its product level from
+  style clusters and `PdfMarkerHierarchyResolver`, while the DOCX authority route uses
+  `ValidatedStructure.Level` - two parallel hierarchy authorities that M9 converges into one. The
+  legacy lane is a regression reference, not gold: migration deltas are graded against hierarchy
+  gold, never against old output.
+- [ ] M9.5 cutover, only after M9.4 passes: route `HeaderExtractionPipeline` through FinalStructure
+  and remove the legacy path in the same change. No feature flag - the dual lane exists once to
+  prove the migration, then goes away.
+
+## Decision gate
+
+- [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates
+  recorded above. Reopen only when (1) a release requirement needs higher hierarchy quality, or
+  (2) the M9.4 end-to-end benchmark shows they block product output enough to be worth the fix.
+  If remediation happens it is upstream structural-quality work (TOC/scope, then TableLike
+  consistency) and is not M8.2 - the parent resolver still has no evidence against it.
+
 - [ ] Optional benchmark/escalation: retain `NvidiaNimVisualQuestion`, but call NVIDIA 90B only for a
   deliberately requested frozen A/B comparison or a documented Qwen unresolved case. Do not claim
   Qwen is better than NVIDIA without that comparison.
