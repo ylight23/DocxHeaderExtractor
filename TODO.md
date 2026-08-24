@@ -1478,6 +1478,45 @@ source text, or fill an unresolved relation.
   `ValidatedStructure.Level` - two parallel hierarchy authorities that M9 converges into one. The
   legacy lane is a regression reference, not gold: migration deltas are graded against hierarchy
   gold, never against old output.
+
+  **Engine built and tested; corpus run not done - gate stays open.**
+
+  `PdfShadowLaneComparison` (`DocxHeaderExtractor.Core.Eval`) does the compatibility and hierarchy
+  halves. It joins the two lanes on the shared source fact id (legacy `HeadingRecord.SourceId`, M9
+  `PdfFinalHeading.PdfEvidence.BlockId`) - never on the DOCX anchor either lane resolved to, so a
+  disagreement about WHICH occurrence a fact grounds to surfaces as `AnchorMismatch` instead of
+  silently joining two different paragraphs. Diff classes: `MissingInNew`, `ExtraInNew`,
+  `AnchorMismatch`, `TextMismatch`, `OrderMismatch` (pairwise inversion between legacy paragraph
+  order and the frozen fact order), `ReviewMismatch`; any non-empty class is a regression by the gate
+  unless reviewed as intentional (`HasUnexplainedDiff`). `CompareHierarchy` grades M9's level/parent
+  against `PdfHierarchyGold` only (matched by `SourceAnchor`, the same identity the gold format
+  already keys on) and reuses `PdfHierarchyEdgeEvaluation` from the M8.1b evaluator for edge P/R/F1 -
+  the legacy lane never enters this half. 8 tests (`PdfShadowLaneComparisonTests`).
+
+  `PdfShadowWritebackComparison` (`DocxHeaderExtractor.Core.Pipeline`) runs both `OutlineWriteback` and
+  `PdfProductWriteback` against fresh copies of the same source and compares which ORIGINAL paragraphs
+  each touched (`LegacyModifiedParagraphs`/`NewModifiedParagraphs`/`SameSemanticMutations`), plus
+  `NewAnchorFailures` and `NewLevelUnresolvedSkips` from the new lane's skip reasons. It does not
+  redo either writeback's own text-corruption check: both `Apply` calls already throw and roll back
+  the target on any mismatch, so `UnexpectedTextChanges` is a fail-closed sentinel (0 unless one of
+  the two calls throws), not an independently computed cross-lane text diff - documented on the record
+  itself so the number isn't read as a stronger guarantee than it is. 3 tests
+  (`PdfShadowWritebackComparisonTests`).
+
+  **Corpus (010/054/076/092): `benchmark_unavailable` for all four.** No frozen `pdf_hierarchy_facts`
+  (schemaVersion 4) artifact exists on disk for any of them under the current code - grepping the
+  whole tree for `pdf_hierarchy_facts` finds none. `keys/hierarchy/076_ICP_IACG08_Minutes_2023.hierarchy.json`
+  exists and loads through `PdfHierarchyGold` as expected, but there is no frozen fact/structure row to
+  grade against it yet. Generating one needs `dhx pdf-hierarchy-facts`, which requires an LLM analyst
+  (`--sglang`/`--model`) - per instruction the provider was not invoked to fill this gap. Status
+  written to `.verify-build/m9.4-shadow-comparison-status.json` (gitignored, local only).
+
+  **What unblocks the real run:** one live `dhx pdf-hierarchy-facts` pass per corpus document (needs a
+  running model backend - GGUF models are present under `models/` but no server was started for this
+  pass), snapshotting the frozen artifact plus the legacy lane's own `HeadingRecord[]` from that SAME
+  run (the legacy `Level` depends on live style-cluster/layout evidence the frozen artifact does not
+  carry, so it has to be captured at generation time, not re-derived offline). Until that exists, M9.5
+  cannot cite corpus evidence and stays gated on this.
 - [ ] M9.5 cutover, only after M9.4 passes: route `HeaderExtractionPipeline` through FinalStructure
   and remove the legacy path in the same change. No feature flag - the dual lane exists once to
   prove the migration, then goes away.
