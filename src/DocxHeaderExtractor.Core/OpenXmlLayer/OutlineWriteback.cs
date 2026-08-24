@@ -118,8 +118,10 @@ public static class OutlineWriteback
                         walked.Element.PrependChild(pPr);
                     }
 
-                    pPr.OutlineLevel = new OutlineLevel { Val = heading.Level - 1 };
-                    if (headingStyles.TryGetValue(heading.Level, out var styleId))
+                    // Skip() above already rejected a null Level ("level_unresolved") before this point.
+                    var level = heading.Level!.Value;
+                    pPr.OutlineLevel = new OutlineLevel { Val = level - 1 };
+                    if (headingStyles.TryGetValue(level, out var styleId))
                         pPr.ParagraphStyleId = new ParagraphStyleId { Val = styleId };
 
                     applied.Add(heading);
@@ -157,6 +159,7 @@ public static class OutlineWriteback
         if (heading.InlineBody is not null && heading.InlineBodySpan is null)
             return "inline_body_not_splittable";
 
+        if (heading.Level is null) return "level_unresolved";
         if (heading.Level is < 1 or > 9) return "invalid_level";
         return null;
     }

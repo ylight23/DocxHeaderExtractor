@@ -43,7 +43,7 @@ public sealed record DocumentFailureCase(
 
 public sealed record HeadingSnapshot(
     int Index,
-    int Level,
+    int? Level,
     string Text,
     string Source,
     string DecisionStatus,

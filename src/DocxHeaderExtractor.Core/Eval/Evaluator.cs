@@ -19,7 +19,7 @@ public sealed record DocScore(
     int ParentCorrect,
     IReadOnlyList<int> FalsePositives,
     IReadOnlyList<int> FalseNegatives,
-    IReadOnlyList<(int Index, int Got, int Expected)> WrongLevels,
+    IReadOnlyList<(int Index, int? Got, int Expected)> WrongLevels,
     bool PartialTruth,
     long ElapsedMs)
 {
@@ -130,7 +130,7 @@ public static class Evaluator
                           .ToList();
 
         var ordered = judged.OrderBy(i => i).ToList();
-        var truthParent = Parents(ordered, i => key.LevelOf(i)!.Value);
+        var truthParent = Parents(ordered, key.LevelOf);
         var gotParent = Parents(ordered, i => got[i]);
         var parentCorrect = ordered.Count(i => truthParent[i] == gotParent[i]);
 
@@ -244,7 +244,7 @@ public static class Evaluator
     }
 
     private sealed record KeyItem(int Order, int Index, int? Level, string Text);
-    private sealed record GotItem(int Order, int Index, int Level, string Text);
+    private sealed record GotItem(int Order, int Index, int? Level, string Text);
     private readonly record struct NavigationCounts(int Judged, int TitleHits, int LevelJudged, int LevelHits);
 
     private static string Normalize(string? text) =>
@@ -322,16 +322,19 @@ public static class Evaluator
     /// tầng ngoài cùng). Đây là định nghĩa cây ngầm định của một dãy tiêu đề đánh cấp — cùng cách
     /// <see cref="Pipeline.StructuralHierarchyResolver"/> hiểu quan hệ cha–con.
     /// </summary>
-    private static Dictionary<int, int?> Parents(IReadOnlyList<int> ordered, Func<int, int> levelOf)
+    private static Dictionary<int, int?> Parents(IReadOnlyList<int> ordered, Func<int, int?> levelOf)
     {
         var result = new Dictionary<int, int?>(ordered.Count);
-        var stack = new List<int>();
+        // An item whose level is unresolved cannot be placed in the level stack - it gets no parent,
+        // and it is skipped rather than pushed so later items are never (mis)parented under it.
+        var stack = new List<(int Index, int Level)>();
         foreach (var index in ordered)
         {
             var level = levelOf(index);
-            while (stack.Count > 0 && levelOf(stack[^1]) >= level) stack.RemoveAt(stack.Count - 1);
-            result[index] = stack.Count > 0 ? stack[^1] : null;
-            stack.Add(index);
+            if (level is null) { result[index] = null; continue; }
+            while (stack.Count > 0 && stack[^1].Level >= level) stack.RemoveAt(stack.Count - 1);
+            result[index] = stack.Count > 0 ? stack[^1].Index : null;
+            stack.Add((index, level.Value));
         }
         return result;
     }

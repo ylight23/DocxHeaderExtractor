@@ -143,7 +143,7 @@ public static class PdfVisualTextRecovery
                 mapped.Level = level;
                 occupied.Add((mapped.Index, mapped.HeadingSpan!.Start));
                 headings.Add(mapped);
-                structures.Add(new PdfValidatedStructure(region.SourceId, mapped.Level, null,
+                structures.Add(new PdfValidatedStructure(region.SourceId, level, null,
                     "visual-canonical-map-unresolved-parent", "requires_review")
                 {
                     DomainRole = domainRole,

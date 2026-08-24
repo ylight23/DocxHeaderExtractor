@@ -219,7 +219,7 @@ public static class StructuralHierarchyResolver
             var previous = document.ByIndex(ordered[i].Index);
             // Cùng danh sách ⇒ anh em, không phải cha. Bỏ qua để đi tiếp lên trên.
             if (previous?.NumberingId == listId) continue;
-            return Math.Clamp(ordered[i].Level + 1, 1, 9);
+            return ordered[i].Level is { } level ? Math.Clamp(level + 1, 1, 9) : null;
         }
         return null;
     }

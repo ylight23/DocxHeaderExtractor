@@ -822,8 +822,8 @@ function render(o, s, review, agent) {
     '<th style="width:96px">Nguồn</th><th style="width:78px;text-align:right">Tin cậy</th></tr></thead><tbody>' +
   o.headings.map(h => `<tr class="${h.disputed ? 'dis' : ''}">
         <td class="i">${h.index}</td>
-        <td style="padding-left:${10 + (h.level - 1) * 22}px">
-          <span class="lvl">H${h.level}</span>${esc(h.text)}${
+        <td style="padding-left:${10 + ((h.level ?? 1) - 1) * 22}px">
+          <span class="lvl">${h.level == null ? 'H?' : 'H' + h.level}</span>${esc(h.text)}${
             h.inlineBody ? '<span class="tag dis">tách nội dung cùng dòng</span>' : ''}${
             h.evidence ? `<span class="tag ${h.evidence.status === 'verified_by_multiple_checks' ? 'Style' : 'dis'}">${evidenceCount(h.evidence)}/5 kiểm tra</span>` : ''}${
             decisionTag(h)}${
@@ -1053,7 +1053,7 @@ $('evalBtn').onclick = () => {
   for (const i of fn) rows.push([i, '(không có trong kết quả)', 'thiếu']);
   for (const i of levelled) {
     if (truth.get(i) !== got.get(i))
-      rows.push([i, textOf(i), `cấp ${got.get(i)} ≠ đáp án ${truth.get(i)}`]);
+      rows.push([i, textOf(i), `cấp ${got.get(i) ?? 'chưa xác định'} ≠ đáp án ${truth.get(i)}`]);
   }
 
   $('evalDetail').innerHTML = rows.length

@@ -62,9 +62,14 @@ public sealed class HeadingRecord
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? SourceId { get; init; }
 
-    /// <summary>Cấp tiêu đề 1..9.</summary>
+    /// <summary>
+    /// Cấp tiêu đề 1..9, hoặc null khi route tạo ra heading này không đủ bằng chứng để khẳng định
+    /// cấp (M9 hierarchy authority: <c>PdfFinalHeading.Level</c> abstain thay vì đoán). `required`
+    /// buộc caller phải khai báo rõ trạng thái, kể cả khi trạng thái đó là "chưa biết" — null không
+    /// phải giá trị bị bỏ quên.
+    /// </summary>
     [JsonPropertyName("level")]
-    public required int Level { get; set; }
+    public required int? Level { get; set; }
 
     /// <summary>Văn bản LẤY TỪ OpenXML (không lấy từ LLM để tránh bịa).</summary>
     [JsonPropertyName("text")]

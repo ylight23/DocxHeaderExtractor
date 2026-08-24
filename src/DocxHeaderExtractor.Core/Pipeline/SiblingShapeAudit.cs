@@ -55,7 +55,7 @@ public static class SiblingShapeAudit
     /// </summary>
     private static List<List<HeadingRecord>> GroupByParent(IReadOnlyList<HeadingRecord> ordered)
     {
-        var groups = new Dictionary<(int Parent, int Level), List<HeadingRecord>>();
+        var groups = new Dictionary<(int Parent, int? Level), List<HeadingRecord>>();
         var stack = new List<HeadingRecord>();
 
         foreach (var heading in ordered)

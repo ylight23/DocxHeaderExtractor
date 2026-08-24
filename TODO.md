@@ -1710,6 +1710,94 @@ source text, or fill an unresolved relation.
   and remove the legacy path in the same change. No feature flag - the dual lane exists once to
   prove the migration, then goes away.
 
+  **Opened 2026-08-24, split into three steps so a regression can be localised to the right one:
+  M9.5a product contract migration, M9.5b production route cutover, M9.5c remove the legacy path.**
+
+  **Intentional Migration Contract - frozen before any cutover code, so a post-cutover reader never
+  mistakes an intended M9 behavior for a regression:**
+  1. *Text authority.* Legacy can surface PDF-observed text damaged by extraction (missing
+     inter-word spaces, dropped punctuation); M9 always shows the canonical DOCX paragraph slice.
+     Confirmed empirically across all three non-vacuous M9.4 canaries (076, 010, 092) - every spot-checked
+     `TextMismatch` was this, never the reverse.
+  2. *Hierarchy authority.* Legacy derives level from style clusters and falls back rather than
+     abstain; M9's level is `int?` and abstains (`null`) rather than guess when the evidence
+     conflicts or is absent. A resolved M9 level is evidence-backed; an unresolved one is an honest
+     "not yet known," not a defect.
+  3. *Writeback gating.* Legacy's `OutlineWriteback` blocks on `HeadingDecisionStatus.RequiresReview`,
+     and `PdfValidatedOutputPolicy` sets that status unconditionally - so legacy writeback for the
+     pdf-first-authority route always writes 0 by construction (confirmed by all three M9.4 writeback
+     measurements: 076, 010, 092). M9's writeback gates on `Emit=true` + a resolved `Level` instead.
+     A jump from "legacy wrote 0" to "M9 wrote N" is this contract taking effect, not a new capability
+     smuggled in.
+
+  **Nuance on M9 writeback targets (076/092): fail-closed and canonical, not asserted "hierarchy
+  correct."** 076's gold matched only 6/20 headings with 0 resolved among them, yet M9 writeback still
+  wrote 2 headings - those 2 are outside the gold-matched subset, which is not a contradiction, but the
+  claim has to stay narrow: **M9 writeback targets are proven canonical and fail-closed; the hierarchy
+  correctness of what gets written is not proven by gold.** Do not describe them as "correct hierarchy
+  improvements." Same caveat applies to 092.
+
+  ---
+
+  **M9.5a - product contract migration (done, this commit). Type widening only; production routing
+  unchanged.** `HeadingRecord.Level` changed from `required int` to `required int?`
+  (`Models/DocumentOutline.cs`) - `required` still forces every caller to state the field, `?` lets
+  that statement honestly be "unresolved." No fallback, no sentinel (`0`/`-1`), no dropping the
+  heading when `Level` is null - exactly the four rejected options and why they were rejected: a fake
+  level fabricates hierarchy, a legacy-value fallback reopens dual authority, dropping the heading
+  turns `Emit=true` into a false `emit=false`, and a sentinel is an undocumented magic value someone
+  will eventually misread as a real level.
+
+  Ripple fixed across every consumer the compiler found (28 initial errors, all in `src/`, none in
+  production wiring logic itself): `OutlineFormatter` (json/markdown/text/xml/csv all format `null`
+  without crashing - locked by `UnresolvedLevelFormatsWithoutCrashingInEveryShape`), `ReviewBundle`/
+  `CorrectionMemory` (`PredictedLevel` now `int?`, distinct from the existing `0 = non-heading`
+  convention), `Evaluator` (`Parents()` treats an unresolved level as "cannot be placed in the tree,"
+  giving it no parent and never letting it parent anyone - not a heuristic level), `OutlineWriteback`
+  (`Skip()` now returns `"level_unresolved"` for a null level instead of falling through to a crash in
+  `OutlineLevel = heading.Level - 1` - locked by `Heading_with_unresolved_level_is_skipped_not_defaulted`),
+  `StructuralRecovery`/`StructuralHierarchyResolver`/`PdfMarkerHierarchyResolver`/`SiblingShapeAudit`/
+  `PdfTaggedEvidenceOutline`/`PdfVisualTextRecovery` (internal hierarchy-inference helpers, all
+  currently fed only by routes that always set a real level - defensive null-handling added, no
+  behavior change), `McpHeadingResult.Level` and `Stats.MaxLevel` (Web/MCP contracts widened /
+  null-coalesced), and `wwwroot/index.html` (tree view shows "H?" and skips the indent-math crash for
+  a null level; gold-eval diff shows "chưa xác định" instead of the literal string "null").
+
+  `OutlineGroundingValidator` (`AgentHarness/DocumentAgentValidator.cs:78`) needed **no change**:
+  `heading.Level is < 1 or > 9` is a C# relational pattern, and relational patterns never match `null`
+  - so a null level was already treated as valid before this migration touched anything, satisfying
+  "validator accepts null as unresolved" for free.
+
+  Verified invariants 1-10 from the plan:
+  1-2 (existing/new values serialize and stay null respectively) - `UnresolvedLevelFormatsWithoutCrashingInEveryShape`.
+  3-4 (no default-to-0/1, heading never disappears because of null) - by construction, no `??` default
+  was added anywhere a *real* production value could reach; every `??` fallback added is in a
+  display/grouping-only path (`OutlineFormatter`'s indentation math, `NavigationCollapseReport`'s
+  sibling-grouping key) that never writes back into `HeadingRecord.Level` itself.
+  5 (validator accepts null) - confirmed above, no code change needed.
+  6 (writeback never emits `outlineLvl` for null) - `Heading_with_unresolved_level_is_skipped_not_defaulted`.
+  7 (Web/MCP/CLI don't crash) - `WebUiScriptSyntaxTests` still green; full solution + Web + Mcp all
+  compile with the widened type.
+  8 (non-pdf-first routes keep current output) - confirmed by full suite: **964 passing, same 15
+  pre-existing fixture-dependent failures as every prior M9 commit, zero new failures.**
+  9 (no production routing change) - `RunPdfFirstAuthorityPipelineAsync` and every other route
+  untouched in this commit; only the type each already passed through got wider.
+  10 (full suite, no new failures) - confirmed above.
+
+  M9.4's frozen artifacts/replay tests need no re-run for this step - it is type-widening only, and
+  `PdfProductHeading.Level` was already `int?` since M9.1, so nothing in the M9 lane itself changed
+  shape.
+
+  Next: **M9.5b**, wire `RunPdfFirstAuthorityPipelineAsync` to build its `HeadingRecord[]` from
+  `PdfFinalStructureProjection` → `PdfOutputDecisionPolicy` → `PdfProductOutputSerializer` instead of
+  `PdfValidatedOutputPolicy`, and swap this route's writeback tool to `PdfProductWriteback`. Per
+  investigation before this commit: `PdfFirstValidatedFallback` defaults `false` and neither Web nor
+  MCP ever sets it, so M9.5b's live blast radius is zero until something opts in - the whole
+  `DocumentAgentHarness`/CLI-formatter/Web-frontend/MCP stack is built directly on
+  `DocumentOutline`/`HeadingRecord` with no abstraction layer over it, which is exactly why M9.5a kept
+  that contract's shape (widened, not replaced) rather than swapping the route's return type to
+  `PdfProductOutput` directly.
+
 ## Decision gate
 
 - [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates

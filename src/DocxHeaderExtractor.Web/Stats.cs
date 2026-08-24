@@ -44,6 +44,6 @@ public sealed record Stats(
                 h.Count(x => x.DecisionStatus == HeadingDecisionStatus.HumanVerified),
             RequiresReview: h.Count(x => x.DecisionStatus == HeadingDecisionStatus.RequiresReview),
             AvgConfidence: h.Count == 0 ? 0 : h.Average(x => x.Confidence),
-            MaxLevel: h.Count == 0 ? 0 : h.Max(x => x.Level));
+            MaxLevel: h.Count == 0 ? 0 : h.Max(x => x.Level) ?? 0);
     }
 }

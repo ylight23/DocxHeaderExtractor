@@ -1096,7 +1096,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
     private static bool HasDeclaredDeterministicLevel(HeadingRecord heading) =>
         IsDeterministicDecision(heading);
 
-    private static void RestorePinnedLevels(IEnumerable<HeadingRecord> headings, IReadOnlyDictionary<int, int> pinnedLevels)
+    private static void RestorePinnedLevels(IEnumerable<HeadingRecord> headings, IReadOnlyDictionary<int, int?> pinnedLevels)
     {
         if (pinnedLevels.Count == 0) return;
         foreach (var heading in headings)
@@ -2535,7 +2535,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
         var stack = new List<int>();   // các cấp gốc đang mở
         foreach (var h in headings.OrderBy(x => x.Index))
         {
-            var raw = h.Level;
+            // Không có cấp gốc để chuẩn hoá thì bỏ qua, giữ nguyên trạng thái "chưa xác định".
+            if (h.Level is not { } raw) continue;
 
             while (stack.Count > 0 && stack[^1] >= raw) stack.RemoveAt(stack.Count - 1);
             stack.Add(raw);

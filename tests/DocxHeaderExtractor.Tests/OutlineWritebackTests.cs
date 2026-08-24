@@ -87,6 +87,28 @@ public sealed class OutlineWritebackTests : IDisposable
         Assert.Null(new DocxSlimExtractor().Extract(Target).ByIndex(fake.Index)!.OutlineLevel);
     }
 
+    /// <summary>
+    /// M9.5a: HeadingRecord.Level is nullable so a route can abstain instead of guessing. The legacy
+    /// writeback still needs a real level to set w:outlineLvl, so a null one is rejected explicitly
+    /// (not silently coerced) with the same "level_unresolved" reason PdfProductWriteback already uses.
+    /// </summary>
+    [Fact]
+    public void Heading_with_unresolved_level_is_skipped_not_defaulted()
+    {
+        var slim = new DocxSlimExtractor().Extract(Source);
+        var fake = slim.Paragraphs.First(p =>
+            p.Role == ParagraphRole.HeadingCandidate && p.OutlineLevel is null);
+        var unresolved = Accepted(fake, level: 2);
+        unresolved.Level = null;
+
+        var result = OutlineWriteback.Apply(Source, Target, Outline(slim, unresolved),
+            new ExtractionOptions());
+
+        Assert.Equal(0, result.Applied);
+        Assert.Equal("level_unresolved", Assert.Single(result.Skipped).Reason);
+        Assert.Null(new DocxSlimExtractor().Extract(Target).ByIndex(fake.Index)!.OutlineLevel);
+    }
+
     [Fact]
     public void Paragraph_holding_both_a_heading_and_body_text_is_left_alone()
     {
