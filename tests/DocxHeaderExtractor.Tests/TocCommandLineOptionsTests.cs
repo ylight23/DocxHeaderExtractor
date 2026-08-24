@@ -159,10 +159,19 @@ public sealed class TocCommandLineOptionsTests
     [Fact]
     public void Nvidia_uses_vision_capable_openai_compatible_endpoint()
     {
-        var o = CommandLineOptions.Parse(["extract", "file.docx", "--nvidia"]);
+        var previous = Environment.GetEnvironmentVariable("NVIDIA_API_KEY");
+        try
+        {
+            Environment.SetEnvironmentVariable("NVIDIA_API_KEY", "test-token");
+            var o = CommandLineOptions.Parse(["extract", "file.docx", "--nvidia"]);
 
-        Assert.Equal(InferenceBackend.Sglang, o.Pipeline.Backend);
-        Assert.Equal("meta/llama-3.2-90b-vision-instruct", o.Pipeline.Sglang.Model);
-        Assert.Equal("https://integrate.api.nvidia.com/v1/chat/completions", o.Pipeline.Sglang.Endpoint.ToString());
+            Assert.Equal(InferenceBackend.Sglang, o.Pipeline.Backend);
+            Assert.Equal("meta/llama-3.2-90b-vision-instruct", o.Pipeline.Sglang.Model);
+            Assert.Equal("https://integrate.api.nvidia.com/v1/chat/completions", o.Pipeline.Sglang.Endpoint.ToString());
+        }
+        finally
+        {
+            Environment.SetEnvironmentVariable("NVIDIA_API_KEY", previous);
+        }
     }
 }

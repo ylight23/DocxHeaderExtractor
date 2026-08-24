@@ -11883,3 +11883,10 @@ This is audit only and has no acceptance authority.
 Probe `v-marker-line-8-39` on 010 passed A transcription, B selection, C structured proposal and D canonical
 reconciliation. Artifact: `.verify-build/pdf-m711-repro-dieu11.json`. The previous combined miss is therefore
 run-level hosted availability/nondeterminism, not a deterministic crop/source/validator defect.
+
+M7.10 was rechecked on 2026-08-24 and remains complete. M7.11's remaining repeated combined run was
+not executed on this machine because `NVIDIA_API_KEY` is absent; no availability metric was claimed.
+Use a rotated key in the process environment, run the same 010 scheduled combined slice (`wide +
+supplement`, 43 visual regions, scheduler enabled), and compare per-region `attempts` in the new
+artifact with the M7.10 artifact. The NVIDIA CLI parsing test now supplies and restores a test-only
+environment token; focused visual/NVIDIA tests pass 16/16 without external access.

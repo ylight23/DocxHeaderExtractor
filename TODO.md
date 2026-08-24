@@ -1112,3 +1112,8 @@ duplicate là dòng riêng (`051` 30, `052` 32). Bỏ gộp continuation khỏi 
 
 - [x] M7.11 isolate `v-marker-line-8-39`: A-D pass; per-region attempt outcomes persisted.
 - [ ] Run a repeated combined slice using attempt artifact to measure availability rate before calibration.
+  Checked 2026-08-24: M7.10 is complete, but this hosted run is blocked locally until a rotated
+  `NVIDIA_API_KEY` is configured. Do not reuse a token pasted into a chat transcript. The exact
+  run is `pdf-stage-eval` on 010 with `--pdf-stage-wide --pdf-stage-supplement
+  --pdf-stage-visual-regions 43 --pdf-stage-visual-scheduler --nvidia-nim`; write a new artifact
+  and compare accepted/rejected attempt outcomes before changing calibration.
