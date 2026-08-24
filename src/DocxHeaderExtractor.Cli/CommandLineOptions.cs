@@ -135,7 +135,7 @@ public sealed class CommandLineOptions
 
         int i = 0;
         if (!args[0].StartsWith('-') &&
-            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-hierarchy-facts" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-hierarchy-facts-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt")
+            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-hierarchy-facts" or "pdf-hierarchy-marker-counterfactual" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-hierarchy-facts-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt")
         {
             o.Command = args[0];
             i = 1;
@@ -426,6 +426,7 @@ public sealed class CommandLineOptions
           dhx pdf-stage-eval <file.docx> --pdf-stage-semantic-hierarchy # opt-in semantic parent fallback; M8 inventory leaves it off
           dhx pdf-hierarchy-facts <docs...> -o facts.json          # M8.1a: chỉ facts nguồn, không nhận gold, usesGold=false
           dhx pdf-semantic-recovery-result-eval <artifact.json> --gold <rebased.key> --recovery-baseline-artifact <occurrence.json> # frozen artifact + gold; không gọi model
+          dhx pdf-hierarchy-marker-counterfactual <facts.json> -o cf.json  # M8.1d-3: đo blast radius, không gold, không model
           dhx pdf-hierarchy-facts-eval <artifact.json> --hierarchy-gold <gold.json> # chấm hierarchy facts frozen; không gọi model
           dhx pdf-visual-representation-eval <file.docx> --gold <file.key> # đo coverage Visual SourceFacts; không gọi model
           dhx pdf-visual-result-eval <run.json> --gold <file.key> # chấm lại Visual Inference Artifact; không gọi model

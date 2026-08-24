@@ -64,6 +64,7 @@ try
         "pdf-clusters" => await RunPdfClustersAsync(options, cts.Token),
         "pdf-stage-eval" => await RunPdfStageEvalAsync(options, cts.Token),
         "pdf-hierarchy-facts" => await RunPdfHierarchyFactsAsync(options, cts.Token),
+        "pdf-hierarchy-marker-counterfactual" => RunPdfHierarchyMarkerCounterfactual(options),
         "pdf-visual-probe" => await RunPdfVisualProbeAsync(options, cts.Token),
         "pdf-visual-representation-eval" => await RunPdfVisualRepresentationEvalAsync(options, cts.Token),
         "pdf-visual-result-eval" => await RunPdfVisualResultEvalAsync(options, cts.Token),
@@ -1707,6 +1708,38 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
     if (o.OutputPath is null) Console.WriteLine(json);
     else await File.WriteAllTextAsync(Path.GetFullPath(o.OutputPath), json, new UTF8Encoding(false), ct);
     return rows.Count == 0 ? 1 : 0;
+}
+
+// M8.1d-3 counterfactual audit. Offline and gold-free by construction: it accepts no key option,
+// reads only a frozen facts artifact, and writes no decision back into hierarchy authority.
+static int RunPdfHierarchyMarkerCounterfactual(CommandLineOptions o)
+{
+    if (o.Inputs.Count != 1 || !File.Exists(o.Inputs[0]))
+    {
+        Console.Error.WriteLine("pdf-hierarchy-marker-counterfactual cần đúng một frozen facts artifact JSON.");
+        return 2;
+    }
+
+    var report = PdfMarkerAncestryCounterfactual.Evaluate(File.ReadAllText(o.Inputs[0]));
+    var payload = new
+    {
+        artifact = Path.GetFileName(o.Inputs[0]),
+        usesGold = false,
+        report,
+    };
+    var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else
+    {
+        var output = Path.GetFullPath(o.OutputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        File.WriteAllText(output, json, new UTF8Encoding(false));
+    }
+    return 0;
 }
 
 static string FileSha256(string path) =>
