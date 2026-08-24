@@ -226,6 +226,16 @@ public sealed class DocumentOutline
     public OutlineRunProvenance? Provenance { get; set; }
 
     /// <summary>
+    /// M9 authority for a route materialized through <c>PdfFinalStructureProjection</c> -
+    /// <see cref="HeadingRecord"/> above is a structural COPY of this, not the other way around.
+    /// Carried on the outline so a later writeback step acts on the exact same
+    /// <c>PdfProductOutput</c> the pipeline computed, never a reconstruction through
+    /// <see cref="HeadingRecord"/>. Internal transport only; never part of the JSON contract.
+    /// </summary>
+    [JsonIgnore]
+    public Pipeline.PdfProductOutput? ProductOutput { get; init; }
+
+    /// <summary>
     /// Số đoạn đáng ngờ cần trọng tài xem lại: hai lượt quét bất đồng, hoặc hậu kiểm đánh số
     /// thấy cấp lệch khỏi các mục cùng dạng ký hiệu.
     /// </summary>

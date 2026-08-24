@@ -1798,6 +1798,84 @@ source text, or fill an unresolved relation.
   that contract's shape (widened, not replaced) rather than swapping the route's return type to
   `PdfProductOutput` directly.
 
+  **M9.5b - production route cutover (done, this commit). Pure wiring; no legacy code deleted, no
+  upstream debt touched.** `RunPdfFirstAuthorityPipelineAsync` (`HeaderExtractionPipeline.cs`) no
+  longer calls `PdfValidatedOutputPolicy` at all. Both its branches (`pdf-first-authority-v1` with a
+  sibling PDF, `docx-authority-v1` without one) already return a `RouteExecutionAudit` carrying
+  `ValidatedStructures` and `HierarchyFacts` - confirmed before writing any code, since M9's pipeline
+  needs both and a missing one on either branch would have forced a design change. `PdfProductOutput`
+  is materialized exactly once per request:
+  ```
+  audit.ValidatedStructures + audit.HierarchyFacts + PdfCanonicalGrounding.FromGroundedHeadings(rawHeadings)
+      -> PdfFinalStructureProjection.Project
+      -> PdfOutputDecisionPolicy.Decide
+      -> PdfProductOutputSerializer.Serialize
+      -> PdfProductOutput
+  ```
+  `rawHeadings` is `result.Headings` straight off the route (before any legacy projection ever
+  touched it) - the same source `PdfCanonicalGrounding.FromGroundedHeadings` was already reading in
+  the `pdf-hierarchy-facts` diagnostic command, so both the diagnostic snapshot path and the
+  production path derive groundings identically.
+
+  That one `PdfProductOutput` forks two ways, neither reconstructing the other:
+  - `PdfProductOutlineAdapter.ToHeadingRecords` (new, `internal`, pure structural copy - no
+    re-derivation of `RequiresReview`/`Level`/`Text`) builds the `HeadingRecord[]` for the
+    `DocumentOutline` compatibility shell every existing consumer still reads unchanged. Fields
+    `HeadingRecord` has no M9 authority for (`OriginalText`, `InlineBody`/`InlineBodySpan`, `StyleId`,
+    `Evidence`, `ModelConfirmed`/`CriticConfirmed`, `Disputed`, `CalibrationSamples`) are left at their
+    honest default rather than filled from anywhere else - not "0 confidence", an explicit
+    `ConfidenceBasis = "pdf-final-structure-validated"` label so a reader knows why. 6 tests
+    (`PdfProductOutlineAdapterTests`).
+  - `DocumentOutline.ProductOutput` (new, `[JsonIgnore]`, never part of the JSON contract) carries the
+    same `PdfProductOutput` instance forward so a later writeback step acts on it directly.
+    `PdfProductWritebackTool` (new, `AgentHarness/DocumentActionTool.cs`, mirrors
+    `OutlineWritebackTool`'s shape) reads `outline.ProductOutput` and calls `PdfProductWriteback.Apply`
+    - never `HeadingRecord`, never a reconstruction. Throws `InvalidOperationException` if
+    `ProductOutput` is null (a route other than pdf-first-authority produced this outline) rather than
+    silently doing nothing. 2 tests (`PdfProductWritebackToolTests`), including that a null
+    `ProductOutput` fails closed instead of writing.
+
+  CLI wiring (`Program.cs`): the action-tool choice for `--write-docx` is now conditional on
+  `o.Pipeline.PdfFirstValidatedFallback` - `PdfProductWritebackTool` for `--pdf-first`,
+  `OutlineWritebackTool` unchanged for every other route (Web's own tool selection untouched, since
+  Web never sets that flag).
+
+  A missing `audit` (route found nothing to validate) produces `PdfProductOutput("sha", [])` directly
+  - an honest empty result, not a fallback into the legacy projection. No `try`/`catch` was added
+  around the M9 calls: a real projection failure propagates and fails the request, per the explicit
+  "no catch → legacy fallback" condition - dual authority was exactly what M9 exists to remove.
+
+  **A pre-existing policy interacts with this, worth stating precisely so it is not later misread as
+  an M9.5b defect.** `DocumentAgentHarness` blocks any write action while a model-sourced heading still
+  has `DecisionStatus == RequiresReview` (`AgentSkillRequirements.HumanReviewBeforeWriteback`, default
+  `true` - a deliberate SKILL.md-level safety gate, unrelated to M9). `PdfProductOutlineAdapter` sets
+  `Source = Model` and `DecisionStatus` from the real `RequiresReview` value, which
+  `PdfOutputDecisionPolicy` sets to `true` for every heading it emits today. So through the CLI's
+  `--write-docx` harness path specifically, this gate still blocks the action-tool call before
+  `PdfProductWriteback` is ever invoked - which is consistent with, not different from, every M9.4
+  canary's writeback measurement (legacy wrote 0 on this same route for the same structural reason,
+  via `OutlineWriteback.Skip`'s own `RequiresReview` check). `PdfProductWritebackTool` is exercised
+  directly by its own tests (bypassing this specific harness gate the same way the legacy
+  `OutlineWritebackToolTests` already does, by using `AutoAcceptedCalibrated` in the test fixture) to
+  prove the writeback mechanism itself is correct; whether/when that harness-level policy should treat
+  M9's `RequiresReview` differently from legacy's is a separate, unopened question - not touched here.
+
+  Verified invariants from the plan: `RunPdfFirstAuthorityPipelineAsync` has zero
+  `PdfValidatedOutputPolicy` call sites left (`grep` confirms); `Headings` is a projection of
+  `PdfProductOutput`, never legacy `HeadingRecord[]`; `Level = null` passes through unchanged;
+  `Text`/anchor fields come from `DocxSourceAnchor` via the product heading; ungrounded facts are
+  never emitted (M9.2's own invariant, unchanged); `Level == null` still serializes to the API/CLI
+  while `PdfProductWriteback` skips it `level_unresolved`; no `catch`-to-legacy-fallback exists; with
+  `--pdf-first` off, Web/MCP/CLI behavior is unchanged (confirmed: 972 passing, same 15 pre-existing
+  failures, zero new); `pdf-hierarchy-facts` still calls `PdfValidatedOutputPolicy` for its
+  `legacyProductHeadings` snapshot, untouched.
+
+  Next: **M9.5c**. After this commit, `PdfValidatedOutputPolicy` has zero production callers left -
+  `grep` confirms its only remaining reference is the `pdf-hierarchy-facts` diagnostic command's
+  `legacyProductHeadings` snapshot for M9.4. Decide whether it stays as an evaluation-only helper for
+  that command and `PdfShadowLaneComparison`, or whether M9.4's frozen artifacts should be re-captured
+  so it can be deleted outright.
+
 ## Decision gate
 
 - [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates

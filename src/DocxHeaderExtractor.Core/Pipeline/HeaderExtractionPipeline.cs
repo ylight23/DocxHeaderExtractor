@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Security.Cryptography;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Chunking;
@@ -456,7 +457,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // boundary. Do not let it fall through the historical DOCX/PDF fallback chain: that
             // would make an apparently PDF-first result depend on an unrelated legacy selector.
             if (_options.PdfFirstValidatedFallback)
-                return await RunPdfFirstAuthorityPipelineAsync(inputPath, slim, modeReport, diagnostics, sw, ct);
+                return await RunPdfFirstAuthorityPipelineAsync(inputPath, conversion.Path, slim, modeReport, diagnostics, sw, ct);
 
             // 2b. R1 của spec filter OOXML — chạy TRƯỚC khi lập tập ứng viên, vì cả điểm của nó là
             //     rút đoạn ra khỏi luồng LLM. Mặc định tắt; xem OoxmlStyleAutoAssign.
@@ -943,6 +944,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
     /// </summary>
     private async Task<DocumentOutline> RunPdfFirstAuthorityPipelineAsync(
         string inputPath,
+        string docxPath,
         SlimDocument slim,
         DocumentModeReport modeReport,
         DocumentDiagnosticReport diagnostics,
@@ -968,7 +970,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
         var analyst = await GetModelAsync(ct);
         var siblingPdf = PdfTextbookOutline.FindSiblingPdf(inputPath);
-        IReadOnlyList<HeadingRecord> headings;
+        IReadOnlyList<HeadingRecord> rawHeadings;
         RouteExecutionAudit? audit;
         string reason;
         string route;
@@ -985,7 +987,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 maximumVisualRegions: _options.PdfFirstVisualRegions,
                 visualAnalyst: visual,
                 ct: ct);
-            headings = PdfValidatedOutputPolicy.ProjectDocumentOutline(result.Headings, result.Audit?.ValidatedStructures);
+            rawHeadings = result.Headings;
             audit = result.Audit;
             reason = result.Reason;
             route = "pdf-first-authority-v1";
@@ -993,11 +995,23 @@ public sealed class HeaderExtractionPipeline : IDisposable
         else
         {
             var result = await DocxAuthorityPipeline.RunAsync(slim, modeReport, analyst, ct);
-            headings = PdfValidatedOutputPolicy.ProjectDocumentOutline(result.Headings, result.Audit?.ValidatedStructures);
+            rawHeadings = result.Headings;
             audit = result.Audit;
             reason = "docx-source-authority";
             route = "docx-authority-v1";
         }
+
+        // M9 authority, materialized exactly once and forked in two directions: the DocumentOutline
+        // compatibility shell every existing consumer (CLI formatter, Web, MCP, AgentHarness
+        // validators) already reads, and PdfProductWriteback, which acts on this SAME ProductOutput
+        // directly - never a reconstruction through HeadingRecord. A missing audit means the route
+        // found nothing to validate for this document; that is an honest empty result, not something
+        // to fall back to the legacy projection for.
+        var productOutput = audit is null
+            ? new PdfProductOutput(FileSha256(docxPath), [])
+            : BuildProductOutput(docxPath, audit, rawHeadings);
+        var headings = PdfProductOutlineAdapter.ToHeadingRecords(productOutput);
+
         RecordPass("pdf-first-role-span", audit?.CandidatesSelected ?? 0, audit?.CandidatesSelected ?? 0);
         if (audit?.VisualEvidence.Count > 0)
             RecordPass("pdf-first-visual-evidence", audit.VisualEvidence.Count, audit.VisualEvidence.Count);
@@ -1014,6 +1028,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             ParagraphCount = slim.Paragraphs.Count,
             CandidateCount = audit?.CandidatesSelected ?? 0,
             Headings = headings,
+            ProductOutput = productOutput,
             ElapsedMs = sw.ElapsedMilliseconds,
             Model = _model?.ModelName ?? ConfiguredModelName(),
             DocumentMode = modeReport,
@@ -1024,6 +1039,26 @@ public sealed class HeaderExtractionPipeline : IDisposable
             Provenance = new OutlineRunProvenance(_options.Backend.ToString(), BackendSendsDataExternally, [.. _passes]),
         };
     }
+
+    /// <summary>
+    /// Canonical grounding is read from the route's own reconciliation
+    /// (<see cref="PdfCanonicalGrounding.FromGroundedHeadings"/> over the RAW, not legacy-projected,
+    /// headings) - nothing here re-matches by title.
+    /// </summary>
+    private static PdfProductOutput BuildProductOutput(
+        string docxPath, RouteExecutionAudit audit, IReadOnlyList<HeadingRecord> rawHeadings)
+    {
+        var finalStructure = PdfFinalStructureProjection.Project(
+            FileSha256(docxPath),
+            audit.ValidatedStructures,
+            audit.HierarchyFacts,
+            PdfCanonicalGrounding.FromGroundedHeadings(rawHeadings));
+        var decisions = PdfOutputDecisionPolicy.Decide(finalStructure);
+        return PdfProductOutputSerializer.Serialize(finalStructure, decisions);
+    }
+
+    private static string FileSha256(string path) =>
+        Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
 
     private IPdfVisualQuestion? CreatePdfFirstVisualAnalyst()
     {
