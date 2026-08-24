@@ -1109,3 +1109,6 @@ duplicate là dòng riêng (`051` 30, `052` 32). Bỏ gộp continuation khỏi 
 - [ ] Multi-domain scheduler and combined holdouts: legal, procurement, financial, minutes, RFC.
 - [ ] M7.11 full text + visual 010 benchmark after repeatability measurement.
 - [ ] Production calibration blocked: combined 010 is 37/50 title exact.
+
+- [x] M7.11 isolate `v-marker-line-8-39`: A-D pass; per-region attempt outcomes persisted.
+- [ ] Run a repeated combined slice using attempt artifact to measure availability rate before calibration.

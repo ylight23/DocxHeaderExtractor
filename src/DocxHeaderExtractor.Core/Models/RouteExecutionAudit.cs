@@ -88,4 +88,5 @@ public sealed record PdfVisualRecoveryTrace(
     [property: JsonPropertyName("mappedStableId")] string? MappedStableId = null,
     [property: JsonPropertyName("mappedSpanStart")] int? MappedSpanStart = null,
     [property: JsonPropertyName("mappedSpanEnd")] int? MappedSpanEnd = null,
-    [property: JsonPropertyName("validatorReason")] string? ValidatorReason = null);
+    [property: JsonPropertyName("validatorReason")] string? ValidatorReason = null,
+    [property: JsonPropertyName("attempts")] IReadOnlyList<DocxHeaderExtractor.Core.Vision.PdfVisualAttemptOutcome>? Attempts = null);

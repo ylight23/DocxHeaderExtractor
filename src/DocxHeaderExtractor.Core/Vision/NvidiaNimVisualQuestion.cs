@@ -8,7 +8,7 @@ namespace DocxHeaderExtractor.Core.Vision;
 /// Hosted NVIDIA NIM image adapter. It sends only the already-selected rendered crop and the
 /// evidence-only question; source text, role resolution, and output remain local contracts.
 /// </summary>
-public sealed class NvidiaNimVisualQuestion : IPdfVisualQuestion
+public sealed class NvidiaNimVisualQuestion : IPdfVisualQuestion, IPdfVisualAttemptAuditable
 {
     private readonly HttpClient _http;
     private readonly Uri _endpoint;
@@ -16,6 +16,7 @@ public sealed class NvidiaNimVisualQuestion : IPdfVisualQuestion
     private readonly string _model;
     private readonly int _requestTimeoutSeconds;
     private readonly int _transientRetries;
+    public IReadOnlyList<PdfVisualAttemptOutcome> LastAttemptOutcomes { get; private set; } = [];
 
     public NvidiaNimVisualQuestion(
         Uri endpoint,
@@ -35,6 +36,7 @@ public sealed class NvidiaNimVisualQuestion : IPdfVisualQuestion
 
     public async Task<string> AskAsync(byte[] imageBytes, string question, int maxTokens = 300, CancellationToken ct = default)
     {
+        var outcomes = new List<PdfVisualAttemptOutcome>();
         var image = $"data:image/png;base64,{Convert.ToBase64String(imageBytes)}";
         var body = new
         {
@@ -63,6 +65,7 @@ public sealed class NvidiaNimVisualQuestion : IPdfVisualQuestion
                     Content = JsonContent.Create(body),
                 };
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
+                var started = Environment.TickCount64;
                 using var response = await _http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, timeout.Token);
                 var raw = await response.Content.ReadAsStringAsync(timeout.Token);
                 if (!response.IsSuccessStatusCode)
@@ -71,10 +74,15 @@ public sealed class NvidiaNimVisualQuestion : IPdfVisualQuestion
                 using var document = JsonDocument.Parse(raw);
                 var content = document.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString();
                 if (string.IsNullOrWhiteSpace(content)) throw new FormatException("NVIDIA NIM VLM returned empty content.");
+                outcomes.Add(new PdfVisualAttemptOutcome(attempt + 1, "success", (int)response.StatusCode, Environment.TickCount64 - started, null));
+                LastAttemptOutcomes = outcomes;
                 return content;
             }
-            catch (Exception error) when (attempt < _transientRetries && IsTransient(error, ct))
+            catch (Exception error)
             {
+                outcomes.Add(new PdfVisualAttemptOutcome(attempt + 1, "failed", (error as HttpRequestException)?.StatusCode is { } code ? (int)code : null, 0, error.GetType().Name));
+                LastAttemptOutcomes = outcomes;
+                if (attempt >= _transientRetries || !IsTransient(error, ct)) throw;
                 await Task.Delay(TimeSpan.FromMilliseconds(250 * (1 << attempt)), ct);
             }
         }

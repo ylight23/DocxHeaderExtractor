@@ -85,26 +85,26 @@ public static class PdfVisualTextRecovery
                 if (!IsUsableForRecovery(proposal))
                 {
                     audit.Add(new PdfTextLayerRecoveryAudit(region.SourceId, region.Page, "visual-proposal-unusable"));
-                    traces.Add(Trace(region, proposal, "visual-proposal-unusable"));
+                    traces.Add(Trace(region, proposal, "visual-proposal-unusable", attempts: Attempts(visual)));
                     continue;
                 }
                 if (IsRepeatedHeaderArtifact(proposal.ObservedText, repeatedArtifacts))
                 {
                     audit.Add(new PdfTextLayerRecoveryAudit(region.SourceId, region.Page, "visual-running-artifact"));
-                    traces.Add(Trace(region, proposal, "visual-running-artifact", validatorReason: "repeated_header_footer"));
+                    traces.Add(Trace(region, proposal, "visual-running-artifact", validatorReason: "repeated_header_footer", attempts: Attempts(visual)));
                     continue;
                 }
                 if (proposal.ObservedText.Length < 8)
                 {
                     audit.Add(new PdfTextLayerRecoveryAudit(region.SourceId, region.Page, "visual-ocr-text-unavailable"));
-                    traces.Add(Trace(region, proposal, "visual-ocr-text-unavailable"));
+                    traces.Add(Trace(region, proposal, "visual-ocr-text-unavailable", attempts: Attempts(visual)));
                     continue;
                 }
                 var mapped = MapUnique(document, region.SourceId, proposal.ObservedText, occupied);
                 if (mapped is null)
                 {
                     audit.Add(new PdfTextLayerRecoveryAudit(region.SourceId, region.Page, "visual-ocr-map-unresolved"));
-                    traces.Add(Trace(region, proposal, "visual-ocr-map-unresolved"));
+                    traces.Add(Trace(region, proposal, "visual-ocr-map-unresolved", attempts: Attempts(visual)));
                     continue;
                 }
                 mapped = ReconstructMarkerSpan(mapped, documentRegime);
@@ -112,7 +112,7 @@ public static class PdfVisualTextRecovery
                 {
                     audit.Add(new PdfTextLayerRecoveryAudit(region.SourceId, region.Page, "visual-source-validator-rejected"));
                     traces.Add(Trace(region, proposal, "visual-source-validator-rejected", mapped,
-                        ValidatorReason(region, mapped, documentRegime)));
+                        ValidatorReason(region, mapped, documentRegime), Attempts(visual)));
                     continue;
                 }
                 mapped.Level = level;
@@ -125,12 +125,12 @@ public static class PdfVisualTextRecovery
                     StructuralScope = region.StructuralScope,
                 });
                 audit.Add(new PdfTextLayerRecoveryAudit(region.SourceId, region.Page, "visual-ocr-canonical-map"));
-                traces.Add(Trace(region, proposal, "visual-ocr-canonical-map", mapped));
+                traces.Add(Trace(region, proposal, "visual-ocr-canonical-map", mapped, attempts: Attempts(visual)));
             }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or InvalidOperationException or HttpRequestException or TaskCanceledException)
             {
                 audit.Add(new PdfTextLayerRecoveryAudit(region.SourceId, region.Page, "visual-region-unavailable"));
-                traces.Add(new PdfVisualRecoveryTrace(region.SourceId, region.Page, "Uncertain", 0, "", "", "visual-region-unavailable"));
+                traces.Add(new PdfVisualRecoveryTrace(region.SourceId, region.Page, "Uncertain", 0, "", "", "visual-region-unavailable", Attempts: Attempts(visual)));
             }
         }
         if (!string.IsNullOrWhiteSpace(producer))
@@ -465,10 +465,13 @@ public static class PdfVisualTextRecovery
     }
 
     private static PdfVisualRecoveryTrace Trace(PdfVisualSourceFacts region, VisualProposal proposal, string status,
-        HeadingRecord? mapped = null, string? validatorReason = null) => new(
+        HeadingRecord? mapped = null, string? validatorReason = null, IReadOnlyList<PdfVisualAttemptOutcome>? attempts = null) => new(
             region.SourceId, region.Page, proposal.Role.ToString(), proposal.Confidence, proposal.ObservedText,
             proposal.Evidence, status, mapped?.Text, mapped?.StableId, mapped?.HeadingSpan?.Start,
-            mapped?.HeadingSpan?.End, validatorReason);
+            mapped?.HeadingSpan?.End, validatorReason, attempts);
+
+    private static IReadOnlyList<PdfVisualAttemptOutcome>? Attempts(IPdfVisualQuestion visual) =>
+        visual is IPdfVisualAttemptAuditable auditable ? auditable.LastAttemptOutcomes : null;
 
     private static string ValidatorReason(PdfVisualSourceFacts region, HeadingRecord mapped, string documentRegime)
     {

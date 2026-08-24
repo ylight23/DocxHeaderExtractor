@@ -11873,3 +11873,13 @@ M7.10 is not a production promotion: all-producer scheduled budget 43 produced 3
 Next: per-attempt VLM audit for `v-marker-line-8-39`; multi-domain scheduler/combined holdouts for legal, procurement, financial, minutes, RFC; trace remaining 010 misses by first-loss. Production calibration blocked. Latest tests: 831/831 passed (known CA1416 warnings only).
 
 Artifacts: `.verify-build/pdf-marker-line-production-010-v3.json`, `.verify-build/pdf-visual-provenance-010.json`, `.verify-build/pdf-visual-scheduler-010.json`, `.verify-build/pdf-combined-scheduled-010.json`.
+
+## 2026-08-24 M7.11 reproducibility isolate
+
+Added `IPdfVisualAttemptAuditable` and `PdfVisualAttemptOutcome`. NVIDIA calls now retain attempt number,
+HTTP status, elapsed time and error class; `PdfVisualRecoveryTrace` persists those outcomes per region.
+This is audit only and has no acceptance authority.
+
+Probe `v-marker-line-8-39` on 010 passed A transcription, B selection, C structured proposal and D canonical
+reconciliation. Artifact: `.verify-build/pdf-m711-repro-dieu11.json`. The previous combined miss is therefore
+run-level hosted availability/nondeterminism, not a deterministic crop/source/validator defect.
