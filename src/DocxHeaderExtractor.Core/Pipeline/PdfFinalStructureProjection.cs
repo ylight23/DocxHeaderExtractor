@@ -5,52 +5,76 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// <summary>
 /// M9.1 materialization. It projects what the pipeline already validated into the shape a product
 /// can consume, and nothing more: it runs no model, produces no candidate, resolves no hierarchy,
-/// and never invents a relation the evidence does not carry.
+/// performs no matching, and never invents a relation the evidence does not carry.
+/// <para>
+/// Identity is canonical, not observational. For a DOCX product the document is the authority and
+/// the rendered PDF is an observation of it, so a heading is identified by its
+/// <see cref="DocxSourceAnchor"/> and its text is a slice of that paragraph. The PDF block and span
+/// are retained as <see cref="PdfEvidenceAnchor"/> for provenance. A fact whose canonical occurrence
+/// was never reconciled stays `grounding_unresolved` rather than being matched by title here.
+/// </para>
 /// <para>
 /// An absent parent or level is a result, not a gap to fill. M8 measured what happens when a
 /// missing parent is guessed from source order, so this layer keeps `unresolved` verbatim.
 /// </para>
 /// <para>
-/// This is not the output policy. Deciding which validated facts a particular product emits — an
-/// outline, a caption list, a writeback — belongs to <see cref="PdfValidatedOutputPolicy"/> and its
-/// successors. Here every validated heading is materialized, including roles a given product will
-/// later drop, so that the policy layer has something complete to filter.
+/// This is not the output policy. Deciding which validated facts a particular product emits belongs
+/// to <see cref="PdfOutputDecisionPolicy"/>, so every validated heading is materialized here —
+/// including roles a given product will later drop — and the policy layer keeps something complete
+/// to filter.
 /// </para>
 /// </summary>
 public static class PdfFinalStructureProjection
 {
-    public const int SchemaVersion = 1;
+    public const int SchemaVersion = 2;
 
     public static PdfFinalStructure Project(
         string sourceDocumentSha256,
         IReadOnlyList<PdfValidatedStructure> structures,
-        IReadOnlyList<PdfHierarchyFactAudit> facts)
+        IReadOnlyList<PdfHierarchyFactAudit> facts,
+        IReadOnlyList<PdfCanonicalGrounding> groundings)
     {
         var factById = facts
             .GroupBy(fact => fact.Id, StringComparer.Ordinal)
+            .ToDictionary(group => group.Key, group => group.First(), StringComparer.Ordinal);
+        var groundingById = groundings
+            .GroupBy(item => item.SourceFactId, StringComparer.Ordinal)
             .ToDictionary(group => group.Key, group => group.First(), StringComparer.Ordinal);
         var ordered = structures
             .Where(structure => factById.ContainsKey(structure.SourceId))
             .OrderBy(structure => factById[structure.SourceId].SourceOrder)
             .ToArray();
         var emittedIds = ordered.Select(structure => structure.SourceId).ToHashSet(StringComparer.Ordinal);
+        // A parent is referenced by the canonical identity of the parent heading, not by the block
+        // that happened to observe it, so the mapping is resolved before any relation is emitted.
+        var canonicalIdBySourceId = ordered.ToDictionary(
+            structure => structure.SourceId,
+            structure => groundingById.TryGetValue(structure.SourceId, out var item)
+                ? CanonicalId(item)
+                : factById[structure.SourceId].FactId,
+            StringComparer.Ordinal);
 
         var headings = new List<PdfFinalHeading>(ordered.Length);
         foreach (var structure in ordered)
         {
             var fact = factById[structure.SourceId];
             var (level, levelReason) = ResolveLevel(fact);
-            var (parentId, parentReason) = ResolveParent(structure, factById, emittedIds);
+            var (parentSourceId, parentReason) = ResolveParent(structure, factById, emittedIds);
+            var parentId = parentSourceId is null ? null : canonicalIdBySourceId[parentSourceId];
+            groundingById.TryGetValue(structure.SourceId, out var grounding);
+            var (text, groundingStatus) = ResolveText(grounding, fact);
             headings.Add(new PdfFinalHeading(
-                fact.FactId.Length > 0 ? fact.FactId : fact.Id,
-                fact.Id,
-                fact.Page,
-                fact.SourceOrder,
-                new PdfFinalHeadingSpan(fact.HeadingSpan.Start, fact.HeadingSpan.End),
-                fact.HeadingText,
+                canonicalIdBySourceId[structure.SourceId],
+                grounding is null
+                    ? null
+                    : new DocxSourceAnchor(grounding.ParagraphIndex, grounding.StableId, grounding.Span),
+                new PdfEvidenceAnchor(fact.Page, fact.Id, new PdfTextSpan(fact.HeadingSpan.Start, fact.HeadingSpan.End),
+                    fact.HeadingText, fact.LineIds),
+                text,
                 structure.DomainRole.ToString(),
                 structure.StructuralScope,
                 structure.Decision,
+                groundingStatus,
                 level,
                 parentId,
                 Status(level, parentId),
@@ -65,16 +89,33 @@ public static class PdfFinalStructureProjection
                 string.Join('|', structure.SourceId, structure.Level, structure.ParentId ?? "-",
                     structure.ParentResolution, structure.Decision)))),
             PdfHierarchyFactHash.OfText(string.Join('\n', headings.Select(heading =>
-                string.Join('|', heading.Id, heading.Level?.ToString() ?? "-", heading.ParentId ?? "-",
-                    heading.HierarchyStatus)))),
+                string.Join('|', heading.Id, heading.GroundingStatus, heading.Level?.ToString() ?? "-",
+                    heading.ParentId ?? "-", heading.HierarchyStatus)))),
             new PdfFinalStructureCounters(
                 structures.Count,
                 headings.Count,
                 structures.Count - headings.Count,
+                headings.Count(heading => heading.SourceAnchor is null),
                 headings.Count(heading => heading.Level is not null),
                 headings.Count(heading => heading.ParentId is not null),
                 headings.Count(heading => heading.HierarchyStatus == "unresolved")),
             headings);
+    }
+
+    /// <summary>
+    /// A grounded heading's text is a slice of the canonical paragraph, so what the product shows is
+    /// what the document says. Without a canonical occurrence there is no such text: the observed
+    /// PDF line is kept so the fact stays reviewable, but it is marked ungrounded, and a heading
+    /// that cannot be located in the source cannot be written back to it.
+    /// </summary>
+    private static (string Text, string Status) ResolveText(PdfCanonicalGrounding? grounding, PdfHierarchyFactAudit fact)
+    {
+        if (grounding is null) return (fact.HeadingText, "grounding_unresolved");
+        var paragraph = grounding.ParagraphText;
+        var span = grounding.Span;
+        if (span.Start < 0 || span.End <= span.Start || span.End > paragraph.Length)
+            return (fact.HeadingText, "grounding_span_out_of_range");
+        return (paragraph[span.Start..span.End], "grounded");
     }
 
     /// <summary>
@@ -109,8 +150,11 @@ public static class PdfFinalStructureProjection
             return (null, "parent_not_in_emitted_set");
         if (parentFact.SourceOrder >= factById[structure.SourceId].SourceOrder)
             return (null, "parent_does_not_precede_child");
-        return (factById[parent].FactId.Length > 0 ? factById[parent].FactId : parent, null);
+        return (parent, null);
     }
+
+    private static string CanonicalId(PdfCanonicalGrounding grounding) =>
+        $"{grounding.StableId ?? $"p[{grounding.ParagraphIndex}]"}#{grounding.Span.Start}-{grounding.Span.End}";
 
     private static string Status(int? level, string? parentId) => (level, parentId) switch
     {
@@ -139,28 +183,23 @@ public sealed record PdfFinalStructureCounters(
     [property: JsonPropertyName("validatedStructures")] int ValidatedStructures,
     [property: JsonPropertyName("emittedHeadings")] int EmittedHeadings,
     [property: JsonPropertyName("droppedWithoutSourceFact")] int DroppedWithoutSourceFact,
+    [property: JsonPropertyName("groundingUnresolved")] int GroundingUnresolved,
     [property: JsonPropertyName("levelResolved")] int LevelResolved,
     [property: JsonPropertyName("parentResolved")] int ParentResolved,
     [property: JsonPropertyName("fullyUnresolved")] int FullyUnresolved);
 
 public sealed record PdfFinalHeading(
     [property: JsonPropertyName("id")] string Id,
-    [property: JsonPropertyName("sourceFactId")] string SourceFactId,
-    [property: JsonPropertyName("page")] int Page,
-    [property: JsonPropertyName("sourceOrder")] int SourceOrder,
-    [property: JsonPropertyName("headingSpan")] PdfFinalHeadingSpan HeadingSpan,
+    [property: JsonPropertyName("sourceAnchor")] DocxSourceAnchor? SourceAnchor,
+    [property: JsonPropertyName("pdfEvidence")] PdfEvidenceAnchor? PdfEvidence,
     [property: JsonPropertyName("text")] string Text,
     [property: JsonPropertyName("role")] string Role,
     [property: JsonPropertyName("scope")] string Scope,
     [property: JsonPropertyName("validationDecision")] string ValidationDecision,
+    [property: JsonPropertyName("groundingStatus")] string GroundingStatus,
     [property: JsonPropertyName("level")] int? Level,
     [property: JsonPropertyName("parentId")] string? ParentId,
     [property: JsonPropertyName("hierarchyStatus")] string HierarchyStatus,
     [property: JsonPropertyName("levelReason")] string? LevelReason,
     [property: JsonPropertyName("parentReason")] string? ParentReason,
     [property: JsonPropertyName("authority")] string Authority);
-
-/// <summary>End is exclusive, matching the validated span the pipeline enforces.</summary>
-public sealed record PdfFinalHeadingSpan(
-    [property: JsonPropertyName("start")] int Start,
-    [property: JsonPropertyName("end")] int End);

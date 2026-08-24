@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.Pipeline;
+﻿namespace DocxHeaderExtractor.Core.Pipeline;
 
 /// <summary>
 /// M9.2. Decides which validated facts a document-outline product emits, reading only what
@@ -34,6 +34,9 @@ public static class PdfOutputDecisionPolicy
             DocumentDomainPolicy.IsExcludedFromOutline(role)) reasons.Add($"excluded_role:{heading.Role}");
         if (!string.Equals(heading.ValidationDecision, "requires_review", StringComparison.Ordinal))
             reasons.Add($"unexpected_validation_decision:{heading.ValidationDecision}");
+        // A product heading has to be locatable in the canonical source; without that anchor it can
+        // be reviewed as a fact but not shown as an occurrence of the document, and not written back.
+        if (heading.SourceAnchor is null) reasons.Add(heading.GroundingStatus);
 
         var emit = reasons.Count == 0;
         // Review state is independent of emission: the product shows the heading and still marks it

@@ -22,7 +22,7 @@ public static class PdfHierarchyFactHash
 /// </summary>
 public static class PdfHierarchyFactsArtifact
 {
-    public const int SchemaVersion = 3;
+    public const int SchemaVersion = 4;
     public const string ArtifactKind = "pdf_hierarchy_facts";
 
     /// <summary>
@@ -50,7 +50,8 @@ public static class PdfHierarchyFactsArtifact
         string file,
         string sourceDocumentSha256,
         IReadOnlyList<PdfHierarchyFactAudit> facts,
-        IReadOnlyList<PdfValidatedStructure>? validatedStructures = null)
+        IReadOnlyList<PdfValidatedStructure>? validatedStructures = null,
+        IReadOnlyList<PdfCanonicalGrounding>? canonicalGroundings = null)
     {
         var ordered = Canonicalize(facts);
         var counters = new PdfHierarchyFactsCounters(
@@ -70,7 +71,8 @@ public static class PdfHierarchyFactsArtifact
             ordered.Select(PdfHierarchyFactItem.From).ToArray(),
             // Carried so a downstream projection can be replayed from the frozen artifact alone
             // rather than from a live route.
-            validatedStructures ?? []);
+            validatedStructures ?? [],
+            canonicalGroundings ?? []);
     }
 }
 
@@ -106,7 +108,8 @@ public sealed record PdfHierarchyFactsRow(
     [property: JsonPropertyName("occurrenceFingerprint")] string OccurrenceFingerprint,
     [property: JsonPropertyName("counters")] PdfHierarchyFactsCounters Counters,
     [property: JsonPropertyName("items")] IReadOnlyList<PdfHierarchyFactItem> Items,
-    [property: JsonPropertyName("validatedStructures")] IReadOnlyList<PdfValidatedStructure> ValidatedStructures);
+    [property: JsonPropertyName("validatedStructures")] IReadOnlyList<PdfValidatedStructure> ValidatedStructures,
+    [property: JsonPropertyName("canonicalGroundings")] IReadOnlyList<PdfCanonicalGrounding> CanonicalGroundings);
 
 public sealed record PdfHierarchyFactsCounters(
     [property: JsonPropertyName("validatedHeadings")] int ValidatedHeadings,

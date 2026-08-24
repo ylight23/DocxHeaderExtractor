@@ -1668,7 +1668,7 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
         }
 
         var row = PdfHierarchyFactsArtifact.BuildRow(Path.GetFileName(file), FileSha256(file), audit.HierarchyFacts,
-            audit.ValidatedStructures);
+            audit.ValidatedStructures, PdfCanonicalGrounding.FromGroundedHeadings(result.Headings));
         rows.Add(row);
         if (!o.Quiet)
             Console.Error.WriteLine(
