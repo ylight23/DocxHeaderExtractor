@@ -1503,20 +1503,67 @@ source text, or fill an unresolved relation.
   itself so the number isn't read as a stronger guarantee than it is. 3 tests
   (`PdfShadowWritebackComparisonTests`).
 
-  **Corpus (010/054/076/092): `benchmark_unavailable` for all four.** No frozen `pdf_hierarchy_facts`
-  (schemaVersion 4) artifact exists on disk for any of them under the current code - grepping the
-  whole tree for `pdf_hierarchy_facts` finds none. `keys/hierarchy/076_ICP_IACG08_Minutes_2023.hierarchy.json`
-  exists and loads through `PdfHierarchyGold` as expected, but there is no frozen fact/structure row to
-  grade against it yet. Generating one needs `dhx pdf-hierarchy-facts`, which requires an LLM analyst
-  (`--sglang`/`--model`) - per instruction the provider was not invoked to fill this gap. Status
-  written to `.verify-build/m9.4-shadow-comparison-status.json` (gitignored, local only).
+  **Canary 076 (2026-08-24): PASS on the mechanical gate, real findings on substance.** One live
+  `dhx pdf-hierarchy-facts 076_ICP_IACG08_Minutes_2023.docx --openrouter` call (model
+  `qwen/qwen3.5-9b`, since no local model server was running and `--openrouter` was the runtime the
+  user chose to authorize for this pass) produced a frozen artifact carrying both the facts/
+  structures/groundings AND, from the same call, `legacyProductHeadings` (the
+  `PdfValidatedOutputPolicy.ProjectDocumentOutline` snapshot). `dhx pdf-shadow-compare` then replayed
+  both lanes fully offline. Artifact stamped: `sourceDocumentSha256`, `model=qwen/qwen3.5-9b`,
+  `backend=OpenRouter`, `promptSha256`, `routeConfigSha256`, `schemaVersion=4`.
 
-  **What unblocks the real run:** one live `dhx pdf-hierarchy-facts` pass per corpus document (needs a
-  running model backend - GGUF models are present under `models/` but no server was started for this
-  pass), snapshotting the frozen artifact plus the legacy lane's own `HeadingRecord[]` from that SAME
-  run (the legacy `Level` depends on live style-cluster/layout evidence the frozen artifact does not
-  carry, so it has to be captured at generation time, not re-derived offline). Until that exists, M9.5
-  cannot cite corpus evidence and stays gated on this.
+  Stop-rule checklist, all five satisfied - proceed, do not stop:
+  1. artifact v4 present: yes. 2. legacy `HeadingRecord[]` present: yes (12 emitted).
+  3. M9 `FinalStructure` present: yes (12 emitted). 4. sourceFact bridge resolved: yes, 12/12 by fact
+  id, zero `MissingInNew`/`ExtraInNew`/`AnchorMismatch`. 5. comparator ran end-to-end: yes, all three
+  sections populated.
+
+  Two real bugs surfaced only by running this for real (fixed same commit,
+  `8406138`): `PdfValidatedStructure` had no `JsonPropertyName` attributes, so an offline
+  case-sensitive `Deserialize<PdfHierarchyFactsRow>` silently left `SourceId` null instead of
+  erroring - `PdfFinalStructureProjection.Project` then threw a bare `ArgumentNullException` nowhere
+  near the cause. And `CompareHierarchy` compared `DocxSourceAnchor.StableId` (no `@`, as
+  `ParagraphWalker` actually produces it) against `PdfHierarchyGold.SourceAnchor` (always `@`-prefixed,
+  the hand-authored key-file convention) with no normalization - `GoldMatched` was silently stuck at 0
+  on the first real run. Both are exactly the kind of gap only a live run exposes; the engine's own
+  unit tests were self-consistent because their fixtures used the same convention on both sides.
+
+  **Compatibility: 12/12 matched, 11/12 `TextMismatch` - verified intentional, not a regression.**
+  Spot-checked 3 of the 11 (`b1`, `b3`, `b144`) directly in the artifact: legacy's `Text` is the raw
+  PDF-observed rendering with spurious mid-word spaces (`"M I NUTES OF TH E INTE RNATIONAL COM PARISON
+  PROG RAM"`), while legacy's OWN `OriginalText` and M9's `Text` both hold the clean canonical DOCX
+  paragraph (`"MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"`). This is exactly the M9.1b design
+  point working as intended on a real document - PDF extraction damaged the rendered line, and the
+  product now shows what the document says instead. Occurrence, order, emit set and review semantics
+  all matched with zero diffs. Classified as an intentional, reviewed delta, not a compatibility
+  regression.
+
+  **Hierarchy: 6/20 gold headings matched, 0 resolved level or parent among them.** Consistent with
+  the artifact's own counters (`deterministicParentResolved: 0` for the whole document) - this
+  specific meeting-minutes document has no numbered marker structure for `PdfMarkerHierarchyResolver`
+  to find, at the fact level, before either lane even runs. Not a comparator defect: `EdgeMetrics`
+  correctly reports `predictedEdges: 0` against `goldEdges: 10` rather than fabricating a match. Low
+  gold coverage (6/20) means this canary does not yet support a strong hierarchy-quality claim for
+  076; it confirms the grading path works, not that the level/parent resolver is good on this
+  document.
+
+  **Writeback: legacy wrote 0 paragraphs (by its own design), M9 wrote 2/12, skipped 10 honestly.**
+  `OutlineWriteback` gates on `HeadingDecisionStatus.RequiresReview`, and
+  `PdfValidatedOutputPolicy.ProjectDocumentOutline` sets that status on every PDF-first-authority
+  heading unconditionally - so the legacy writeback for this whole route always writes 0, confirming
+  by direct measurement (not just design reasoning) why `PdfProductWriteback` was deliberately built
+  to not replicate that gate. `SameSemanticMutations: 0` follows directly from legacy writing nothing,
+  not from a real placement disagreement. M9: 2 headings had a resolved level and were written,
+  10 skipped `level_unresolved`, 0 anchor failures, 0 unexpected text changes.
+
+  Report: `.verify-build/m9.4-canary-076/076-shadow-compare.json` (gitignored, local only), built from
+  `.verify-build/m9.4-canary-076/076-hierarchy-facts.json`.
+
+  **Next per the agreed priority: 010 (legal/marker-heavy), then 054 (financial, longest, run last).**
+  092 stays compatibility-only until an occurrence-aware hierarchy gold is reviewed for it (see the
+  merged-paragraph identity problem noted when 092 was first considered as canary - `@body[1]/p[11]`
+  holds three distinct numbered headings in this corpus, so `stableId -> headingId` is not a valid gold
+  key there without a paragraph-relative span added to the identity).
 - [ ] M9.5 cutover, only after M9.4 passes: route `HeaderExtractionPipeline` through FinalStructure
   and remove the legacy path in the same change. No feature flag - the dual lane exists once to
   prove the migration, then goes away.
