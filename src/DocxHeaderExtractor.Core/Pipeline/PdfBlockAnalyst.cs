@@ -1,17 +1,24 @@
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Llm;
-using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
 internal enum PdfBlockRole
 {
     HeadingTopic,
-    DocumentTitle,
     BodySentence,
     TableOrChartLabel,
     DecorativeNoise,
     Uncertain,
+}
+
+internal enum PdfSemanticRole
+{
+    DocumentTitle, SectionHeading, TopicHeading, LocalSubheading,
+    LegalChapter, LegalSection, LegalArticle, LegalClause, LegalPoint, AppendixHeading,
+    MeetingSection, AgendaItem, NoteHeading,
+    TableTitle, TableHeader, FigureCaption, RunningHeader, RunningFooter, FormLabel,
+    SignatureLabel, TranslationNotice, BodyText, Unknown,
 }
 
 internal sealed record PdfBlockDecision(
@@ -19,14 +26,16 @@ internal sealed record PdfBlockDecision(
     PdfBlockRole Role,
     double Confidence,
     string Reason,
-    IReadOnlyList<string>? EvidenceTags = null,
-    SourceTextSpan? HeadingSpan = null);
+    DocxHeaderExtractor.Core.Models.TextOffsetSpan? HeadingSpan = null,
+    string? ProposedParentId = null,
+    PdfSemanticRole SemanticRole = PdfSemanticRole.Unknown);
 
 internal sealed record PdfBlockAnalysis(
     IReadOnlyList<PdfSemanticBlock> Blocks,
     IReadOnlyList<PdfBlockDecision> Decisions,
     IReadOnlyList<string> RawResponses)
 {
+    public IReadOnlyList<string> InputContracts { get; init; } = [];
     public IReadOnlySet<string> HeadingBlockIds => Decisions
         .Where(d => d.Role == PdfBlockRole.HeadingTopic && d.Confidence >= 0.65)
         .Select(d => d.Id)
@@ -40,55 +49,66 @@ internal sealed record PdfBlockAnalysis(
 /// </summary>
 internal static class PdfBlockAnalyst
 {
-    private const int MaximumConcurrentSemanticRequests = 4;
     private const string SystemPrompt =
         "You classify candidate PDF text blocks for document outline extraction.\n" +
-        "The input can be a lossless PDF-line audit, so it may include page numbers, repeated headers/footers, table labels, and body text.\n" +
-        "Classify each supplied block from its text and local context; do not assume it was pre-filtered.\n" +
-        "For each block, choose exactly one role:\n" +
-        "- heading_topic: a section/page/topic heading, usually a noun phrase or short label that opens content.\n" +
-        "- document_title: the title of the document/cover, not a navigational section heading.\n" +
-        "- body_sentence: prose sentence/paragraph, usually with a finite verb or full claim.\n" +
-        "- table_or_chart_label: table/chart/metric/axis/column/row label, even if short or bold.\n" +
-        "- decorative_noise: logo fragments, spaced-out letters, broken cover art, isolated glyphs.\n" +
-        "- uncertain: mixed or insufficient evidence.\n" +
+        "Deterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\n" +
+        "For each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_caption, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\n" +
+        "A domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\n" +
         "Do not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as 'AVAILABILITY OF INFORMATION'.\n" +
+        "This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\n" +
         "Return one compact strict JSON object for every input id. Omit explanations unless needed.\n" +
-        "Format: {\"blocks\":[{\"id\":\"b1\",\"role\":\"heading_topic|document_title|body_sentence|table_or_chart_label|decorative_noise|uncertain\",\"confidence\":0.0}]}";
+        "Format: {\"blocks\":[{\"id\":\"b1\",\"role\":\"closed_role\",\"confidence\":0.0}]}";
+
+    private const string PointerSpanSystemPrompt =
+        "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\n" +
+        "The span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\n" +
+        "Never rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\n" +
+        "Format: {\"blocks\":[{\"id\":\"b1\",\"heading_span\":{\"start\":0,\"end\":19}}]}.";
+
+    private const string CriticSystemPrompt =
+        "You audit heading proposals that already have a valid source pointer. Decide whether each proposal should remain a document-outline heading.\n" +
+        "Use source text and local context. Reject table labels, captions, body claims, inline references, and decorative labels.\n" +
+        "Keep only a standalone topic that opens or organizes document content. If evidence conflicts or is insufficient, choose unresolved.\n" +
+        "Return strict JSON only: {\"blocks\":[{\"id\":\"b1\",\"decision\":\"keep|reject|unresolved\"}]}.";
 
     public static async Task<PdfBlockAnalysis> AnalyzeAsync(
         IHeaderClassifier classifier,
         IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlyDictionary<string, PdfCandidateContext>? contexts = null,
         CancellationToken ct = default)
     {
         if (blocks.Count == 0) return new PdfBlockAnalysis(blocks, [], []);
 
         if (blocks.Count > 12)
         {
-            using var throttle = new SemaphoreSlim(MaximumConcurrentSemanticRequests);
-            var tasks = blocks.Chunk(12).Select(async batch =>
+            var batchDecisions = new List<PdfBlockDecision>();
+            var batchRawResponses = new List<string>();
+            foreach (var batch in blocks.Chunk(contexts is null ? 12 : 8))
             {
-                await throttle.WaitAsync(ct);
-                try
-                {
-                    return await AnalyzeAsync(classifier, batch, ct);
-                }
-                finally
-                {
-                    throttle.Release();
-                }
-            }).ToArray();
-            var partials = await Task.WhenAll(tasks);
-            return new PdfBlockAnalysis(
-                blocks,
-                partials.SelectMany(partial => partial.Decisions).ToArray(),
-                partials.SelectMany(partial => partial.RawResponses).ToArray());
+                var batchContexts = contexts is null ? null : batch
+                    .Where(block => contexts.ContainsKey(block.Id))
+                    .ToDictionary(block => block.Id, block => contexts[block.Id], StringComparer.Ordinal);
+                var partial = await AnalyzeAsync(classifier, batch, batchContexts, ct);
+                batchDecisions.AddRange(partial.Decisions);
+                batchRawResponses.AddRange(partial.RawResponses);
+            }
+            return new PdfBlockAnalysis(blocks, batchDecisions, batchRawResponses)
+            {
+                InputContracts = blocks.Chunk(contexts is null ? 12 : 8)
+                    .Select(batch => BuildUserPrompt(batch, contexts is null ? null : batch
+                        .Where(block => contexts.ContainsKey(block.Id))
+                        .ToDictionary(block => block.Id, block => contexts[block.Id], StringComparer.Ordinal)))
+                    .ToArray(),
+            };
         }
 
         string raw;
+        var inputContracts = new List<string>();
         try
         {
-            raw = await classifier.BoundaryCutAsync(SystemPrompt, BuildUserPrompt(blocks), ct);
+            var prompt = BuildUserPrompt(blocks, contexts);
+            inputContracts.Add(prompt);
+            raw = await classifier.BoundaryCutAsync(SystemPrompt, prompt, ct);
         }
         catch (OperationCanceledException)
         {
@@ -99,10 +119,124 @@ internal static class PdfBlockAnalyst
             return new PdfBlockAnalysis(blocks, [], []);
         }
 
-        return new PdfBlockAnalysis(blocks, ParseDecisions(raw, blocks), [raw]);
+        var decisions = ParseDecisions(raw, blocks).ToList();
+        var rawResponses = new List<string> { raw };
+        var missing = blocks.Where(block => decisions.All(decision => decision.Id != block.Id)).ToArray();
+        if (missing.Length > 0)
+        {
+            // Closed JSON occasionally omits an ID. Retry only that bounded set; a missing answer
+            // must become an explicit Uncertain proposal, never an invisible extraction loss.
+            try
+            {
+                var retry = await classifier.BoundaryCutAsync(
+                    SystemPrompt + "\nReturn a decision for every supplied id; no ids may be omitted.",
+                    AddRetryPrompt(missing, contexts, inputContracts), ct);
+                rawResponses.Add(retry);
+                decisions.AddRange(ParseDecisions(retry, missing));
+            }
+            catch (OperationCanceledException)
+            {
+                throw;
+            }
+            catch
+            {
+                // The explicit uncertainty below preserves the failure in the audit trace.
+            }
+        }
+
+        foreach (var block in blocks.Where(block => decisions.All(decision => decision.Id != block.Id)))
+            decisions.Add(new PdfBlockDecision(block.Id, PdfBlockRole.Uncertain, 0, "missing-model-decision"));
+
+        return new PdfBlockAnalysis(blocks, decisions, rawResponses) { InputContracts = inputContracts };
     }
 
-    internal static string BuildUserPrompt(IReadOnlyList<PdfSemanticBlock> blocks)
+    /// <summary>
+    /// Pass 2 of the 9B contract. It runs only after semantic triage and returns offsets into the
+    /// immutable source block, never model-generated title text. A missing or invalid pointer is
+    /// intentionally left null for the validator to mark unresolved.
+    /// </summary>
+    public static async Task<PdfBlockAnalysis> ResolveHeadingSpansAsync(
+        IHeaderClassifier classifier,
+        IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlyList<PdfBlockDecision> roleDecisions,
+        IReadOnlyDictionary<string, PdfCandidateContext> contexts,
+        CancellationToken ct = default)
+    {
+        var byId = roleDecisions.ToDictionary(d => d.Id, StringComparer.Ordinal);
+        var headingBlocks = blocks.Where(block =>
+            byId.TryGetValue(block.Id, out var decision) && decision.Role == PdfBlockRole.HeadingTopic).ToArray();
+        if (headingBlocks.Length == 0) return new PdfBlockAnalysis(blocks, roleDecisions, []);
+
+        var rawResponses = new List<string>();
+        var inputContracts = new List<string>();
+        foreach (var batch in headingBlocks.Chunk(4))
+        {
+            string raw;
+            try
+            {
+                var prompt = BuildPointerSpanPrompt(batch, contexts);
+                inputContracts.Add(prompt);
+                raw = await classifier.BoundaryCutAsync(PointerSpanSystemPrompt, prompt, ct);
+            }
+            catch (OperationCanceledException)
+            {
+                throw;
+            }
+            catch
+            {
+                continue;
+            }
+
+            rawResponses.Add(raw);
+            foreach (var (id, span) in ParsePointerSpans(raw, batch))
+            {
+                if (!byId.TryGetValue(id, out var decision)) continue;
+                byId[id] = decision with { HeadingSpan = span };
+            }
+        }
+
+        return new PdfBlockAnalysis(blocks, blocks.Where(block => byId.ContainsKey(block.Id)).Select(block => byId[block.Id]).ToArray(), rawResponses)
+        { InputContracts = inputContracts };
+    }
+
+    /// <summary>Conflict pass for source-grounded proposals. It can only retain or lower a proposal.</summary>
+    public static async Task<PdfBlockAnalysis> CritiqueHeadingProposalsAsync(
+        IHeaderClassifier classifier,
+        IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlyList<PdfBlockDecision> decisions,
+        IReadOnlyDictionary<string, PdfCandidateContext> contexts,
+        CancellationToken ct = default)
+    {
+        var byId = decisions.ToDictionary(d => d.Id, StringComparer.Ordinal);
+        var eligible = blocks.Where(block => byId.TryGetValue(block.Id, out var decision) &&
+            contexts.TryGetValue(block.Id, out var context) && PdfProposalValidator.IsEligibleHeading(decision, context)).ToArray();
+        var rawResponses = new List<string>();
+        foreach (var batch in eligible.Chunk(6))
+        {
+            try
+            {
+                var raw = await classifier.BoundaryCutAsync(CriticSystemPrompt, BuildCriticPrompt(batch, contexts), ct);
+                rawResponses.Add(raw);
+                foreach (var (id, verdict) in ParseCriticDecisions(raw, batch))
+                {
+                    if (!byId.TryGetValue(id, out var decision)) continue;
+                    byId[id] = verdict switch
+                    {
+                        "reject" => decision with { Role = PdfBlockRole.BodySentence, Reason = "critic-rejected" },
+                        "unresolved" => decision with { Role = PdfBlockRole.Uncertain, Reason = "critic-unresolved" },
+                        _ => decision,
+                    };
+                }
+            }
+            catch (OperationCanceledException) { throw; }
+            catch { }
+        }
+        return new PdfBlockAnalysis(blocks, blocks.Where(block => byId.ContainsKey(block.Id)).Select(block => byId[block.Id]).ToArray(), rawResponses);
+    }
+
+    internal static string BuildUserPrompt(
+        IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlyDictionary<string, PdfCandidateContext>? contexts = null)
     {
         var payload = blocks.Select(b => new
         {
@@ -115,14 +249,71 @@ internal static class PdfBlockAnalyst
                 font = b.PrimaryStyle.FontName,
                 color = b.PrimaryStyle.FillColorKey,
             },
-            source_text = b.Text,
-            // Canonical text is for deterministic matching after classification, not semantic
-            // judgment. Avoid tripling long PDF lines in every analyst request.
-            display_text = string.Equals(b.DisplayText, b.Text, StringComparison.Ordinal)
-                ? null
-                : b.DisplayText,
+            source_text = PromptSourceText(b.Text),
+            source_length = b.Text.Length,
+            context = contexts is not null && contexts.TryGetValue(b.Id, out var context)
+                ? new
+                {
+                    scope = context.Source.StructuralScope,
+                    domain_role_hint = context.Source.DomainRole.ToString(),
+                    document_regime = context.DocumentRegime,
+                    active_heading_stack = context.ActiveHeadingStack,
+                    allowed_parent_ids = context.AllowedParentIds,
+                    observed_facts = context.Source.ObservedEvidence,
+                    previous_blocks = context.PreviousBlocks,
+                    next_blocks = context.NextBlocks,
+                }
+                : null,
         });
         return JsonSerializer.Serialize(new { blocks = payload });
+    }
+
+    internal static string BuildPointerSpanPrompt(
+        IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlyDictionary<string, PdfCandidateContext> contexts)
+    {
+        var payload = blocks.Select(block => new
+        {
+            id = block.Id,
+            source_text = block.Text,
+            source_length = block.Text.Length,
+            context = contexts.TryGetValue(block.Id, out var context)
+                ? new
+                {
+                    scope = context.Source.StructuralScope,
+                    previous_blocks = context.PreviousBlocks,
+                    next_blocks = context.NextBlocks,
+                }
+                : null,
+        });
+        return JsonSerializer.Serialize(new { blocks = payload });
+    }
+
+    private static string BuildCriticPrompt(IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlyDictionary<string, PdfCandidateContext> contexts) => JsonSerializer.Serialize(new
+    {
+        blocks = blocks.Select(block => new
+        {
+            id = block.Id,
+            source_text = block.Text,
+            context = contexts.TryGetValue(block.Id, out var context) ? new
+            {
+                scope = context.Source.StructuralScope,
+                observed_facts = context.Source.ObservedEvidence,
+                previous_blocks = context.PreviousBlocks,
+                next_blocks = context.NextBlocks,
+            } : null,
+        }),
+    });
+
+    private static string PromptSourceText(string text) => text.Length <= 360 ? text : text[..360];
+
+    private static string AddRetryPrompt(IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlyDictionary<string, PdfCandidateContext>? contexts, ICollection<string> contracts)
+    {
+        var prompt = BuildUserPrompt(blocks, contexts);
+        contracts.Add(prompt);
+        return prompt;
     }
 
     internal static IReadOnlyList<PdfBlockDecision> ParseDecisions(
@@ -151,7 +342,12 @@ internal static class PdfBlockAnalyst
                 var reason = item.TryGetProperty("reason", out var reasonProp)
                     ? reasonProp.GetString() ?? ""
                     : "";
-                result.Add(new PdfBlockDecision(id, ParseRole(roleText), confidence, reason));
+                var span = TryParseSpan(item);
+                var parent = item.TryGetProperty("proposed_parent_id", out var parentProp)
+                    ? parentProp.GetString()
+                    : null;
+                var semanticRole = ParseSemanticRole(roleText);
+                result.Add(new PdfBlockDecision(id, ProjectRole(semanticRole), confidence, reason, span, parent, semanticRole));
             }
         }
         catch (JsonException)
@@ -162,17 +358,101 @@ internal static class PdfBlockAnalyst
         return result;
     }
 
-    private static PdfBlockRole ParseRole(string role) =>
+    private static DocxHeaderExtractor.Core.Models.TextOffsetSpan? TryParseSpan(JsonElement item)
+    {
+        if (!item.TryGetProperty("heading_span", out var span) || span.ValueKind != JsonValueKind.Object ||
+            !span.TryGetProperty("start", out var start) || !start.TryGetInt32(out var from) ||
+            !span.TryGetProperty("end", out var end) || !end.TryGetInt32(out var to))
+            return null;
+        return new DocxHeaderExtractor.Core.Models.TextOffsetSpan(from, to);
+    }
+
+    internal static IReadOnlyList<(string Id, DocxHeaderExtractor.Core.Models.TextOffsetSpan? Span)> ParsePointerSpans(
+        string raw,
+        IReadOnlyList<PdfSemanticBlock> blocks)
+    {
+        var allowed = blocks.Select(block => block.Id).ToHashSet(StringComparer.Ordinal);
+        var result = new List<(string Id, DocxHeaderExtractor.Core.Models.TextOffsetSpan? Span)>();
+        try
+        {
+            using var doc = JsonDocument.Parse(ExtractJsonObject(raw));
+            if (!doc.RootElement.TryGetProperty("blocks", out var items) || items.ValueKind != JsonValueKind.Array)
+                return result;
+            foreach (var item in items.EnumerateArray())
+            {
+                var id = item.TryGetProperty("id", out var idProp) ? idProp.GetString() ?? "" : "";
+                if (!allowed.Contains(id)) continue;
+                result.Add((id, TryParseSpan(item)));
+            }
+        }
+        catch (JsonException)
+        {
+            return [];
+        }
+        return result;
+    }
+
+    internal static IReadOnlyList<(string Id, string Verdict)> ParseCriticDecisions(string raw,
+        IReadOnlyList<PdfSemanticBlock> blocks)
+    {
+        var allowed = blocks.Select(block => block.Id).ToHashSet(StringComparer.Ordinal);
+        var result = new List<(string Id, string Verdict)>();
+        try
+        {
+            using var doc = JsonDocument.Parse(ExtractJsonObject(raw));
+            if (!doc.RootElement.TryGetProperty("blocks", out var items) || items.ValueKind != JsonValueKind.Array) return result;
+            foreach (var item in items.EnumerateArray())
+            {
+                var id = item.TryGetProperty("id", out var idProp) ? idProp.GetString() ?? "" : "";
+                var verdict = item.TryGetProperty("decision", out var decision) ? decision.GetString()?.Trim().ToLowerInvariant() : null;
+                if (allowed.Contains(id) && verdict is "keep" or "reject" or "unresolved") result.Add((id, verdict));
+            }
+        }
+        catch (JsonException) { return []; }
+        return result;
+    }
+
+    private static PdfSemanticRole ParseSemanticRole(string role) =>
         role.Trim().ToLowerInvariant() switch
         {
-            "heading_topic" or "heading" or "topic" => PdfBlockRole.HeadingTopic,
-            "document_title" or "cover_title" => PdfBlockRole.DocumentTitle,
-            "body_sentence" or "body" or "prose" => PdfBlockRole.BodySentence,
-            "table_or_chart_label" or "table_label" or "chart_label" or "table" or "chart" =>
-                PdfBlockRole.TableOrChartLabel,
-            "decorative_noise" or "decorative" or "noise" or "logo" => PdfBlockRole.DecorativeNoise,
-            _ => PdfBlockRole.Uncertain,
+            "document_title" => PdfSemanticRole.DocumentTitle,
+            "section_heading" => PdfSemanticRole.SectionHeading,
+            "heading_topic" or "topic_heading" or "heading" or "topic" => PdfSemanticRole.TopicHeading,
+            "local_subheading" or "region_subheading" => PdfSemanticRole.LocalSubheading,
+            "legal_chapter" => PdfSemanticRole.LegalChapter,
+            "legal_section" => PdfSemanticRole.LegalSection,
+            "legal_article" => PdfSemanticRole.LegalArticle,
+            "legal_clause" => PdfSemanticRole.LegalClause,
+            "legal_point" => PdfSemanticRole.LegalPoint,
+            "appendix_heading" => PdfSemanticRole.AppendixHeading,
+            "meeting_section" or "session_heading" => PdfSemanticRole.MeetingSection,
+            "agenda_item" => PdfSemanticRole.AgendaItem,
+            "note_heading" => PdfSemanticRole.NoteHeading,
+            "table_title" => PdfSemanticRole.TableTitle,
+            "table_header" or "table_or_chart_label" or "table_label" or "chart_label" or "table" or "chart" => PdfSemanticRole.TableHeader,
+            "figure_caption" or "box_title" => PdfSemanticRole.FigureCaption,
+            "running_header" => PdfSemanticRole.RunningHeader,
+            "running_footer" => PdfSemanticRole.RunningFooter,
+            "form_label" or "form_field_label" => PdfSemanticRole.FormLabel,
+            "signature_label" => PdfSemanticRole.SignatureLabel,
+            "translation_notice" => PdfSemanticRole.TranslationNotice,
+            "body_sentence" or "body_text" or "body" or "prose" => PdfSemanticRole.BodyText,
+            _ => PdfSemanticRole.Unknown,
         };
+
+    private static PdfBlockRole ProjectRole(PdfSemanticRole role) => role switch
+    {
+        PdfSemanticRole.DocumentTitle or PdfSemanticRole.SectionHeading or PdfSemanticRole.TopicHeading or
+        PdfSemanticRole.LocalSubheading or PdfSemanticRole.LegalChapter or PdfSemanticRole.LegalSection or
+        PdfSemanticRole.LegalArticle or PdfSemanticRole.LegalClause or PdfSemanticRole.LegalPoint or
+        PdfSemanticRole.AppendixHeading or PdfSemanticRole.MeetingSection or PdfSemanticRole.AgendaItem or
+        PdfSemanticRole.NoteHeading => PdfBlockRole.HeadingTopic,
+        PdfSemanticRole.TableTitle or PdfSemanticRole.TableHeader or PdfSemanticRole.FigureCaption => PdfBlockRole.TableOrChartLabel,
+        PdfSemanticRole.RunningHeader or PdfSemanticRole.RunningFooter or PdfSemanticRole.FormLabel or
+        PdfSemanticRole.SignatureLabel or PdfSemanticRole.TranslationNotice => PdfBlockRole.DecorativeNoise,
+        PdfSemanticRole.BodyText => PdfBlockRole.BodySentence,
+        _ => PdfBlockRole.Uncertain,
+    };
 
     private static string ExtractJsonObject(string raw)
     {

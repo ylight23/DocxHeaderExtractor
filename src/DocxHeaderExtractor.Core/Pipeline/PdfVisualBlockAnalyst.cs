@@ -1,8 +1,6 @@
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Vision;
-using SkiaSharp;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -12,8 +10,8 @@ internal sealed record PdfVisualBlockDecision(
     double Confidence,
     string Evidence,
     string Raw,
-    IReadOnlyList<string>? VisualEvidenceTags = null,
-    SourceTextSpan? HeadingSpan = null);
+    int ContextLinesAbove = 0,
+    int ContextLinesBelow = 0);
 
 internal sealed record PdfVisualBlockAnalysis(
     IReadOnlyList<PdfVisualBlockDecision> Decisions,
@@ -26,225 +24,88 @@ internal sealed record PdfVisualBlockAnalysis(
 /// </summary>
 internal static class PdfVisualBlockAnalyst
 {
+    internal const int MaximumVisualBlocks = 40;
     private const double PaddingX = 8;
-    private const double PaddingY = 10;
-    private const int MultiImageBatchSize = 4;
-    // Remote VLM calls dominate audit time. Keep this deliberately bounded so a document gets
-    // faster review without turning a corpus run into an unbounded request burst.
-    private const int DefaultMaximumConcurrentVisualRequests = 4;
+    private const double PaddingY = 5;
 
     public static async Task<PdfVisualBlockAnalysis> AnalyzeAsync(
-        IVisualQuestion vlm,
+        IPdfVisualQuestion vlm,
         string pdfPath,
         IReadOnlyList<PdfSemanticBlock> candidateBlocks,
+        IReadOnlyList<PdfLine> documentLines,
         int dpi = 120,
+        IReadOnlyDictionary<string, PdfCandidateContext>? contexts = null,
         CancellationToken ct = default)
-        => await AnalyzeAsync(vlm, pdfPath, candidateBlocks, candidateBlocks, dpi, maximumBlocks: 40, ct: ct);
-
-    /// <summary>
-    /// Confirms an existing candidate span in visual context. Neighbour blocks are supplied only to
-    /// frame the crop; the VLM can never emit their IDs or create a new candidate.
-    /// </summary>
-    public static async Task<PdfVisualBlockAnalysis> AnalyzeAsync(
-        IVisualQuestion vlm,
-        string pdfPath,
-        IReadOnlyList<PdfSemanticBlock> candidateBlocks,
-        IReadOnlyList<PdfSemanticBlock> pageCatalog,
-        int dpi,
-        int maximumBlocks,
-        int maximumConcurrentRequests = DefaultMaximumConcurrentVisualRequests,
-        CancellationToken ct = default)
-    {
-        var candidates = maximumBlocks == 0 ? candidateBlocks : candidateBlocks.Take(maximumBlocks);
-        if (vlm is IMultiImageVisualQuestion multiImageVlm && multiImageVlm.MaximumImagesPerRequest > 1)
-            return await AnalyzeMultiImageAsync(multiImageVlm, pdfPath, candidates.ToArray(), pageCatalog, dpi, ct);
-
-        using var throttle = new SemaphoreSlim(Math.Clamp(maximumConcurrentRequests, 1, 16));
-        var tasks = candidates.Select(async block =>
-        {
-            await throttle.WaitAsync(ct);
-            try
-            {
-                ct.ThrowIfCancellationRequested();
-                byte[] png;
-                IReadOnlyList<PdfSemanticBlock> context;
-                try
-                {
-                    context = NeighborContext(block, pageCatalog);
-                    png = RenderContextPng(pdfPath, context, dpi);
-                }
-                catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or InvalidOperationException)
-                {
-                    return new PdfVisualBlockDecision(block.Id, PdfBlockRole.Uncertain, 0,
-                        $"render-failed: {ex.Message}", "");
-                }
-
-                var answer = await vlm.AskAsync(png, BuildQuestion(block, context), maxTokens: 420, ct);
-                return ParseDecision(block.Id, answer);
-            }
-            catch (OperationCanceledException)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                return new PdfVisualBlockDecision(block.Id, PdfBlockRole.Uncertain, 0,
-                    $"visual-request-failed: {ex.Message}", "");
-            }
-            finally
-            {
-                throttle.Release();
-            }
-        }).ToArray();
-        var decisions = await Task.WhenAll(tasks);
-
-        return new PdfVisualBlockAnalysis(decisions, decisions.Where(d => !string.IsNullOrWhiteSpace(d.Raw)).Select(d => d.Raw).ToArray());
-    }
-
-    private static async Task<PdfVisualBlockAnalysis> AnalyzeMultiImageAsync(
-        IMultiImageVisualQuestion vlm,
-        string pdfPath,
-        IReadOnlyList<PdfSemanticBlock> candidates,
-        IReadOnlyList<PdfSemanticBlock> pageCatalog,
-        int dpi,
-        CancellationToken ct)
     {
         var decisions = new List<PdfVisualBlockDecision>();
-        var rawResponses = new List<string>();
-        foreach (var batch in candidates.Chunk(MultiImageBatchSize))
+        var raw = new List<string>();
+
+        foreach (var block in candidateBlocks.Take(MaximumVisualBlocks))
         {
             ct.ThrowIfCancellationRequested();
-            var contexts = new List<IReadOnlyList<PdfSemanticBlock>>(batch.Length);
-            var crops = new List<byte[]>(batch.Length);
+            byte[] png;
             try
             {
-                foreach (var block in batch)
+                var neighborhood = SelectNeighborhood(block, documentLines);
+                var page = PdfRegionRasterizer.GetPageBounds(pdfPath, block.Page);
+                png = PdfRegionRasterizer.RenderCropPng(
+                    pdfPath,
+                    block.Page,
+                    0,
+                    Math.Max(0, neighborhood.BottomY - PaddingY),
+                    page.Width,
+                    Math.Min(page.Height, neighborhood.TopY + PaddingY),
+                    dpi);
+                var context = contexts is not null && contexts.TryGetValue(block.Id, out var value) ? value : null;
+                var answer = await vlm.AskAsync(png, BuildQuestion(block, context), maxTokens: 420, ct);
+                raw.Add(answer);
+                decisions.Add(ParseDecision(block.Id, answer) with
                 {
-                    var context = NeighborContext(block, pageCatalog);
-                    contexts.Add(context);
-                    crops.Add(RenderContextPng(pdfPath, context, dpi));
-                }
-
-                var raw = await vlm.AskManyAsync(crops, BuildBatchQuestion(batch, contexts), maxTokens: 900, ct);
-                rawResponses.Add(raw);
-                decisions.AddRange(ParseBatchDecisions(batch, raw));
+                    ContextLinesAbove = neighborhood.Above.Count,
+                    ContextLinesBelow = neighborhood.Below.Count,
+                });
             }
-            catch (OperationCanceledException)
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or InvalidOperationException or HttpRequestException or TaskCanceledException)
             {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                // Preserve transport/parser failures in audit output. A missing VLM decision must
-                // never be indistinguishable from a semantic rejection.
-                rawResponses.Add("[visual-batch-failed] " + ex.Message);
-                decisions.AddRange(batch.Select(block => new PdfVisualBlockDecision(
-                    block.Id, PdfBlockRole.Uncertain, 0, $"visual-batch-failed: {ex.Message}", "")));
+                var failed = new PdfVisualBlockDecision(block.Id, PdfBlockRole.Uncertain, 0,
+                    $"render-failed: {ex.Message}", "");
+                decisions.Add(failed);
+                continue;
             }
         }
 
-        return new PdfVisualBlockAnalysis(decisions, rawResponses);
+        return new PdfVisualBlockAnalysis(decisions, raw);
     }
 
-    internal static string BuildQuestion(PdfSemanticBlock block) => BuildQuestion(block, [block]);
-
-    internal static string BuildQuestion(PdfSemanticBlock block, IReadOnlyList<PdfSemanticBlock> context) =>
+    internal static string BuildQuestion(PdfSemanticBlock block, PdfCandidateContext? context = null) =>
         "Bạn là visual analyst bị giới hạn cho trích xuất outline PDF. Code deterministic đã tạo " +
-        "candidate này từ catalog lossless; ảnh crop chứa candidate và tối đa hai dòng liền trước/sau " +
-        "theo thứ tự đọc, kể cả khi chúng nằm ở trang kề. Các trang khác nhau là panel riêng trong ảnh.\n" +
+        "candidate này sau khi lọc header/footer, số trang và nhiễu bảng rõ ràng; ảnh crop chỉ chứa MỘT block còn mơ hồ.\n" +
         "Nhiệm vụ duy nhất: phân vai block có sẵn. Không tạo block mới, không sửa/OCR lại text, " +
         "không nối block, không tự lập outline và không tự gán cấp/cha-con.\n" +
-        "role CHỈ được là: heading_topic, document_title, body_sentence, table_or_chart_label, decorative_noise, uncertain.\n" +
-        "document_title/cover_title là tên tài liệu ở bìa, KHÔNG phải heading_topic. heading_topic là nhãn/chủ đề mở mục nội dung. table_or_chart_label là nhãn bảng, nhãn cột, metric, " +
+        "role CHỈ được là: heading_topic, body_sentence, table_or_chart_label, decorative_noise, uncertain.\n" +
+        "heading_topic là nhãn/chủ đề mở mục nội dung. table_or_chart_label là nhãn bảng, nhãn cột, metric, " +
         "legend, số liệu hoặc caption biểu đồ dù có in đậm. body_sentence là câu/vế văn xuôi.\n" +
         "Chỉ dùng heading_topic khi crop có bằng chứng nhìn thấy. Nếu crop không đủ, mâu thuẫn, hoặc text parser khác ảnh, trả uncertain.\n" +
-        "visualEvidence là BẮT BUỘC và CHỈ dùng các tag sau: standalone_label, section_boundary, " +
-        "distinct_heading_style, prose_sentence, continues_paragraph, inside_table_grid, numeric_column, chart_caption, " +
-        "repeated_running_header, page_furniture, logo_or_artifact, insufficient_visual_evidence. Chọn tag thực sự nhìn thấy, " +
-        "không đoán. heading_topic cần ít nhất standalone_label, section_boundary hoặc distinct_heading_style. " +
-        "table_or_chart_label cần inside_table_grid, numeric_column hoặc chart_caption.\n" +
-        "evidence là ghi chú ngắn để audit, không phải cơ sở quyết định; confidence chỉ tham khảo và không được dùng để bù visualEvidence. " +
-        "Không trả opens_content hay suy luận ngữ nghĩa: đó là semanticEvidence của text analyst, không phải visual evidence.\n" +
-        "Nếu role là heading_topic hoặc document_title, headingSpan là BẮT BUỘC: offset start/end trên đúng chuỗi candidate parser đưa, " +
-        "0 <= start < end <= candidateLength. Nếu cả candidate là heading thì dùng start=0,end=candidateLength; " +
-        "TUYỆT ĐỐI không dùng span rỗng 0,0 và không trả headingText.\n" +
+        "evidence phải nêu chi tiết NHÌN THẤY trong crop (ví dụ text hiển thị, đường kẻ, khoảng trắng, thụt lề, vùng bảng); " +
+        "không suy diễn từ confidence và không được để trống.\n" +
         "Trả lời đúng một JSON object, không thêm lời dẫn: " +
-        "{\"id\":\"" + block.Id + "\",\"role\":\"heading_topic|document_title|body_sentence|table_or_chart_label|decorative_noise|uncertain\",\"headingSpan\":{\"start\":0,\"end\":candidateLength},\"confidence\":0.0,\"visualEvidence\":[\"...\"],\"evidence\":\"ghi chú ngắn\"}\n" +
+        "{\"id\":\"" + block.Id + "\",\"role\":\"heading_topic|body_sentence|table_or_chart_label|decorative_noise|uncertain\",\"confidence\":0.0,\"evidence\":\"mô tả cụ thể\"}\n" +
         "Text do parser đọc được chỉ để định danh candidate, không phải dữ liệu để bạn sửa hay bổ sung:\n" +
-        "candidateLength=" + block.Text.Length + "; candidate: " + block.Text + "\n" +
-        "neighbor context (không được phân loại các id này):\n" +
-        string.Join("\n", context.Where(x => x.Id != block.Id).Select(x => "- " + x.DisplayText));
+        block.DisplayText +
+        "\nThe rendered crop includes the full page width plus up to three nearby lines above and below the candidate." +
+        (context is null ? "" : $"\nDocument context: regime={context.DocumentRegime}; active_heading_stack=[{string.Join(" | ", context.ActiveHeadingStack)}].");
 
-    internal static string BuildBatchQuestion(
-        IReadOnlyList<PdfSemanticBlock> blocks,
-        IReadOnlyList<IReadOnlyList<PdfSemanticBlock>> contexts) =>
-        "Bạn là visual analyst bị giới hạn cho trích xuất outline PDF. Payload có nhiều ảnh crop ĐỘC LẬP, " +
-        "theo đúng thứ tự các candidate dưới đây; mỗi crop chứa candidate và tối đa hai dòng liền trước/sau.\n" +
-        "Chỉ phân loại các id đã cho. Không tạo block, không nối text, không lập outline, không gán cấp/cha-con.\n" +
-        "role CHỈ được là heading_topic, document_title, body_sentence, table_or_chart_label, decorative_noise, uncertain. " +
-        "heading_topic là nhãn/chủ đề mở mục; table_or_chart_label là nhãn bảng, metric, legend hoặc caption.\n" +
-        "Mỗi block phải có visualEvidence từ vocabulary: standalone_label, section_boundary, distinct_heading_style, " +
-        "prose_sentence, continues_paragraph, inside_table_grid, numeric_column, chart_caption, repeated_running_header, " +
-        "page_furniture, logo_or_artifact, insufficient_visual_evidence. confidence chỉ tham khảo, không được bù tag thiếu.\n" +
-        "heading_topic/document_title bắt buộc headingSpan {start,end} offset trên candidate với 0 <= start < end <= candidateLength; " +
-        "nếu toàn bộ candidate là heading dùng {start:0,end:candidateLength}; các role khác để headingSpan null. " +
-        "Trả lời đúng JSON: {\"blocks\":[{\"id\":\"...\",\"role\":\"...\",\"headingSpan\":{\"start\":0,\"end\":0},\"confidence\":0.0,\"visualEvidence\":[\"...\"],\"evidence\":\"ghi chú ngắn\"}]}.\n" +
-        string.Join("\n\n", blocks.Select((block, index) =>
-            $"crop {index + 1}; id={block.Id}; candidateLength={block.Text.Length}; candidate: {block.Text}\n" +
-            "neighbors (không được phân loại):\n" +
-            string.Join("\n", contexts[index].Where(x => x.Id != block.Id).Select(x => "- " + x.DisplayText))));
-
-    private static IReadOnlyList<PdfSemanticBlock> NeighborContext(
-        PdfSemanticBlock block,
-        IReadOnlyList<PdfSemanticBlock> catalog)
+    internal static PdfVisualNeighborhood SelectNeighborhood(PdfSemanticBlock block, IReadOnlyList<PdfLine> documentLines)
     {
-        var ordered = catalog.OrderBy(x => x.Page).ThenByDescending(x => x.TopY)
-            .ThenBy(x => x.Id, StringComparer.Ordinal).ToArray();
-        var index = Array.FindIndex(ordered, x => x.Id == block.Id);
-        if (index < 0) return [block];
-        return ordered.Skip(Math.Max(0, index - 2)).Take(5).ToArray();
-    }
-
-    private static byte[] RenderContextPng(string pdfPath, IReadOnlyList<PdfSemanticBlock> context, int dpi)
-    {
-        var panels = context.GroupBy(block => block.Page).OrderBy(group => group.Key)
-            .Select(group => PdfRegionRasterizer.RenderCropPng(
-                pdfPath,
-                group.Key,
-                Math.Max(0, group.Min(block => block.Left) - PaddingX),
-                Math.Max(0, group.Min(block => block.BottomY) - PaddingY),
-                group.Max(block => block.Right) + PaddingX,
-                group.Max(block => block.TopY) + PaddingY,
-                dpi))
-            .ToArray();
-        if (panels.Length == 1) return panels[0];
-
-        var decoded = new SKBitmap[panels.Length];
-        for (var i = 0; i < panels.Length; i++)
-            decoded[i] = SKBitmap.Decode(panels[i]) ?? throw new InvalidOperationException("Không giải mã được PDF context panel.");
-        try
-        {
-            const int gap = 16;
-            var width = decoded.Max(image => image.Width);
-            var height = decoded.Sum(image => image.Height) + gap * (decoded.Length - 1);
-            using var surface = SKSurface.Create(new SKImageInfo(width, height))
-                ?? throw new InvalidOperationException("Không tạo được ảnh PDF context montage.");
-            surface.Canvas.Clear(SKColors.White);
-            var top = 0;
-            foreach (var image in decoded)
-            {
-                surface.Canvas.DrawBitmap(image, 0, top, new SKSamplingOptions());
-                top += image.Height + gap;
-            }
-
-            using var snapshot = surface.Snapshot();
-            using var encoded = snapshot.Encode(SKEncodedImageFormat.Png, 100);
-            return encoded.ToArray();
-        }
-        finally
-        {
-            foreach (var image in decoded) image?.Dispose();
-        }
+        var samePage = documentLines.Where(line => line.Page == block.Page).ToArray();
+        var above = samePage.Where(line => line.Y > block.TopY)
+            .OrderBy(line => line.Y - block.TopY).Take(3).ToArray();
+        var below = samePage.Where(line => line.Y < block.BottomY)
+            .OrderBy(line => block.BottomY - line.Y).Take(3).ToArray();
+        var linePadding = Math.Max(12, (block.Lines.Count == 0 ? 12 : block.Lines.Max(line => line.FontSize)) * 1.5);
+        var top = Math.Max(block.TopY, above.Select(line => line.Y).DefaultIfEmpty(block.TopY).Max()) + linePadding;
+        var bottom = Math.Min(block.BottomY, below.Select(line => line.Y).DefaultIfEmpty(block.BottomY).Min()) - linePadding;
+        return new PdfVisualNeighborhood(above, below, top, bottom);
     }
 
     internal static PdfVisualBlockDecision ParseDecision(string expectedId, string raw)
@@ -265,13 +126,10 @@ internal static class PdfVisualBlockAnalyst
             var evidence = root.TryGetProperty("evidence", out var evidenceProp)
                 ? evidenceProp.GetString() ?? ""
                 : "";
-            var role = ParseRole(roleText);
-            var evidenceTags = ParseVisualEvidenceTags(root);
-            var headingSpan = ParseHeadingSpan(root);
-            if (!HasUsableEvidence(evidence) || !HasRoleEvidence(role, evidenceTags))
-                return new PdfVisualBlockDecision(expectedId, PdfBlockRole.Uncertain, 0, "unusable-evidence-tags", raw, evidenceTags, headingSpan);
+            if (!HasUsableEvidence(evidence))
+                return new PdfVisualBlockDecision(expectedId, PdfBlockRole.Uncertain, 0, "unusable-evidence", raw);
 
-            return new PdfVisualBlockDecision(expectedId, role, confidence, evidence, raw, evidenceTags, headingSpan);
+            return new PdfVisualBlockDecision(expectedId, ParseRole(roleText), confidence, evidence, raw);
         }
         catch (JsonException)
         {
@@ -279,34 +137,10 @@ internal static class PdfVisualBlockAnalyst
         }
     }
 
-    internal static IReadOnlyList<PdfVisualBlockDecision> ParseBatchDecisions(
-        IReadOnlyList<PdfSemanticBlock> expectedBlocks,
-        string raw)
-    {
-        try
-        {
-            using var doc = JsonDocument.Parse(ExtractJsonObject(raw));
-            if (!doc.RootElement.TryGetProperty("blocks", out var items) || items.ValueKind != JsonValueKind.Array)
-                throw new JsonException("Missing blocks array.");
-            var byId = items.EnumerateArray()
-                .Where(item => item.TryGetProperty("id", out var id) && !string.IsNullOrWhiteSpace(id.GetString()))
-                .ToDictionary(item => item.GetProperty("id").GetString()!, item => item.GetRawText(), StringComparer.Ordinal);
-            return expectedBlocks.Select(block => byId.TryGetValue(block.Id, out var item)
-                ? ParseDecision(block.Id, item)
-                : new PdfVisualBlockDecision(block.Id, PdfBlockRole.Uncertain, 0, "missing-batch-decision", raw)).ToArray();
-        }
-        catch (JsonException)
-        {
-            return expectedBlocks.Select(block => new PdfVisualBlockDecision(
-                block.Id, PdfBlockRole.Uncertain, 0, "invalid-batch-json", raw)).ToArray();
-        }
-    }
-
     private static PdfBlockRole ParseRole(string role) =>
         role.Trim().ToLowerInvariant() switch
         {
             "heading_topic" or "heading" or "topic" => PdfBlockRole.HeadingTopic,
-            "document_title" or "cover_title" => PdfBlockRole.DocumentTitle,
             "body_sentence" or "body" or "prose" => PdfBlockRole.BodySentence,
             "table_or_chart_label" or "table_label" or "chart_label" or "table" or "chart" =>
                 PdfBlockRole.TableOrChartLabel,
@@ -323,42 +157,6 @@ internal static class PdfVisualBlockAnalyst
         return true;
     }
 
-    private static readonly HashSet<string> AllowedVisualEvidenceTags = new(StringComparer.Ordinal)
-    {
-        "standalone_label", "section_boundary", "distinct_heading_style",
-        "prose_sentence", "continues_paragraph", "inside_table_grid", "numeric_column", "chart_caption",
-        "repeated_running_header", "page_furniture", "logo_or_artifact", "insufficient_visual_evidence",
-    };
-
-    private static IReadOnlyList<string> ParseVisualEvidenceTags(JsonElement root)
-    {
-        if (!root.TryGetProperty("visualEvidence", out var tags) || tags.ValueKind != JsonValueKind.Array) return [];
-        return tags.EnumerateArray()
-            .Where(tag => tag.ValueKind == JsonValueKind.String)
-            .Select(tag => tag.GetString()?.Trim().ToLowerInvariant() ?? "")
-            .Where(AllowedVisualEvidenceTags.Contains)
-            .Distinct(StringComparer.Ordinal)
-            .ToArray();
-    }
-
-    private static SourceTextSpan? ParseHeadingSpan(JsonElement root)
-    {
-        if (!root.TryGetProperty("headingSpan", out var span) || span.ValueKind != JsonValueKind.Object ||
-            !span.TryGetProperty("start", out var start) || !span.TryGetProperty("end", out var end) ||
-            !start.TryGetInt32(out var startOffset) || !end.TryGetInt32(out var endOffset)) return null;
-        return new SourceTextSpan(startOffset, endOffset);
-    }
-
-    private static bool HasRoleEvidence(PdfBlockRole role, IReadOnlyList<string> tags) => role switch
-    {
-        PdfBlockRole.HeadingTopic or PdfBlockRole.DocumentTitle => tags.Any(tag => tag is "standalone_label" or "section_boundary" or "distinct_heading_style"),
-        PdfBlockRole.BodySentence => tags.Any(tag => tag is "prose_sentence" or "continues_paragraph"),
-        PdfBlockRole.TableOrChartLabel => tags.Any(tag => tag is "inside_table_grid" or "numeric_column" or "chart_caption"),
-        PdfBlockRole.DecorativeNoise => tags.Any(tag => tag is "repeated_running_header" or "page_furniture" or "logo_or_artifact"),
-        PdfBlockRole.Uncertain => tags.Contains("insufficient_visual_evidence"),
-        _ => false,
-    };
-
     private static string ExtractJsonObject(string raw)
     {
         var start = raw.IndexOf('{');
@@ -366,3 +164,9 @@ internal static class PdfVisualBlockAnalyst
         return start >= 0 && end > start ? raw[start..(end + 1)] : raw;
     }
 }
+
+internal sealed record PdfVisualNeighborhood(
+    IReadOnlyList<PdfLine> Above,
+    IReadOnlyList<PdfLine> Below,
+    double TopY,
+    double BottomY);

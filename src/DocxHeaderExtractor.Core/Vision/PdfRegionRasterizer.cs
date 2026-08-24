@@ -18,6 +18,14 @@ namespace DocxHeaderExtractor.Core.Vision;
 /// </summary>
 public static class PdfRegionRasterizer
 {
+    public static PdfPageBounds GetPageBounds(string pdfPath, int pageNumber1Based)
+    {
+        if (pageNumber1Based < 1)
+            throw new ArgumentOutOfRangeException(nameof(pageNumber1Based), "Page number is one-based.");
+        var size = Conversion.GetPageSize(File.ReadAllBytes(pdfPath), pageNumber1Based - 1);
+        return new PdfPageBounds(size.Width, size.Height);
+    }
+
     /// <summary>
     /// Render vùng [<paramref name="left"/>, <paramref name="right"/>] × [<paramref name="bottomPdfY"/>,
     /// <paramref name="topPdfY"/>] (điểm PDF, hệ PDF-native) của trang <paramref name="pageNumber1Based"/>
@@ -67,3 +75,5 @@ public static class PdfRegionRasterizer
         return data.ToArray();
     }
 }
+
+public readonly record struct PdfPageBounds(double Width, double Height);

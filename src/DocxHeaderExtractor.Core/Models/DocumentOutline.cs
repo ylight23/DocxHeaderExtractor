@@ -57,6 +57,11 @@ public sealed class HeadingRecord
     [JsonPropertyName("stableId")]
     public string? StableId { get; init; }
 
+    /// <summary>Immutable PDF/DOCX source-fact identity when the authority route produced this heading.</summary>
+    [JsonPropertyName("sourceId")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? SourceId { get; init; }
+
     /// <summary>Cấp tiêu đề 1..9.</summary>
     [JsonPropertyName("level")]
     public required int Level { get; set; }

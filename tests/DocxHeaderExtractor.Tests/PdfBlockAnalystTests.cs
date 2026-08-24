@@ -6,6 +6,18 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class PdfBlockAnalystTests
 {
     [Fact]
+    public void ClosedSemanticRoleIsKeptSeparateFromRoutingProjection()
+    {
+        var block = Block("b1", "Article 4. Scope of regulation");
+
+        var decision = Assert.Single(PdfBlockAnalyst.ParseDecisions(
+            "{\"blocks\":[{\"id\":\"b1\",\"role\":\"legal_article\",\"confidence\":0.9}]}", [block]));
+
+        Assert.Equal(PdfSemanticRole.LegalArticle, decision.SemanticRole);
+        Assert.Equal(PdfBlockRole.HeadingTopic, decision.Role);
+    }
+
+    [Fact]
     public async Task AnalystAcceptsOnlyKnownBlockIdsAndWhitelistedRoles()
     {
         var blocks = new[]
@@ -38,6 +50,64 @@ public sealed class PdfBlockAnalystTests
         var decisions = PdfBlockAnalyst.ParseDecisions("not json", [Block("b1", "Heading")]);
 
         Assert.Empty(decisions);
+    }
+
+    [Fact]
+    public void ParserReadsPointerSpanButNeverLetsItCreateUnknownSourceIds()
+    {
+        var decisions = PdfBlockAnalyst.ParseDecisions("""
+        {"blocks":[
+          {"id":"b1","role":"heading_topic","confidence":0.9,"heading_span":{"start":0,"end":7}},
+          {"id":"b404","role":"heading_topic","confidence":1,"heading_span":{"start":0,"end":7}}
+        ]}
+        """, [Block("b1", "Heading text")]);
+
+        var decision = Assert.Single(decisions);
+        Assert.Equal("b1", decision.Id);
+        Assert.Equal(new DocxHeaderExtractor.Core.Models.TextOffsetSpan(0, 7), decision.HeadingSpan);
+    }
+
+    [Fact]
+    public void PointerSpanParserKeepsOnlyOffsetsForKnownSourceIds()
+    {
+        var spans = PdfBlockAnalyst.ParsePointerSpans("""
+        {"blocks":[
+          {"id":"b1","heading_span":{"start":0,"end":7}},
+          {"id":"b404","heading_span":{"start":0,"end":7}}
+        ]}
+        """, [Block("b1", "Heading body text")]);
+
+        var span = Assert.Single(spans);
+        Assert.Equal("b1", span.Id);
+        Assert.Equal(new DocxHeaderExtractor.Core.Models.TextOffsetSpan(0, 7), span.Span);
+    }
+
+    [Fact]
+    public void CriticParserAcceptsOnlyClosedVerdictsForKnownIds()
+    {
+        var verdicts = PdfBlockAnalyst.ParseCriticDecisions("""
+        {"blocks":[
+          {"id":"b1","decision":"keep"},
+          {"id":"b2","decision":"invent_new_role"},
+          {"id":"b404","decision":"reject"}
+        ]}
+        """, [Block("b1", "Heading"), Block("b2", "Body")]);
+
+        var verdict = Assert.Single(verdicts);
+        Assert.Equal(("b1", "keep"), verdict);
+    }
+
+    [Fact]
+    public async Task AnalystTurnsOmittedIdsIntoExplicitUncertainDecision()
+    {
+        var blocks = new[] { Block("b1", "First heading"), Block("b2", "Second heading") };
+        var classifier = new ScriptedClassifier("""{"blocks":[{"id":"b1","role":"heading_topic","confidence":0.9}]}""");
+
+        var analysis = await PdfBlockAnalyst.AnalyzeAsync(classifier, blocks);
+
+        Assert.Contains(analysis.Decisions, d => d.Id == "b1" && d.Role == PdfBlockRole.HeadingTopic);
+        Assert.Contains(analysis.Decisions, d => d.Id == "b2" && d.Role == PdfBlockRole.Uncertain && d.Reason == "missing-model-decision");
+        Assert.Equal(2, analysis.RawResponses.Count);
     }
 
     private static PdfSemanticBlock Block(string id, string text)

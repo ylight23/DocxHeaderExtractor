@@ -7,6 +7,7 @@ using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Learning;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.Core.Vision;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -172,6 +173,23 @@ public sealed class PipelineOptions
     /// accepted role back to extracted source text. Disabled by default until measured on keys.
     /// </summary>
     public bool PdfLayoutAnalystFallback { get; set; }
+
+    /// <summary>
+    /// Explicit PDF-first execution following the 9B contract: broad source retrieval, model
+    /// proposal, source-pointer validation, and canonical DOCX writeback. This intentionally
+    /// overrides an otherwise stronger DOCX route so it can be evaluated as the source of truth;
+    /// it remains review-only until an independent multi-family holdout calibrates the route.
+    /// </summary>
+    public bool PdfFirstValidatedFallback { get; set; }
+
+    /// <summary>
+    /// Optional bounded smoke budget for the explicit PDF-first route. Zero means no candidate is
+    /// dropped; a positive value is diagnostics only and must not be used for recall claims.
+    /// </summary>
+    public int PdfFirstAnalystBlocks { get; set; }
+
+    /// <summary>Visual SourceFacts sent to the fallback; zero is lossless and screens every region.</summary>
+    public int PdfFirstVisualRegions { get; set; }
 
     /// <summary>
     /// Dùng PDF cùng stem làm nguồn BOLD-RUN-ĐẦU-DÒNG cho nhóm biên bản/minutes ngắn khi DOCX rớt
@@ -434,6 +452,12 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     "LLM chỉ nên phân tích report này, không chốt output bằng cảm giác.");
             }
 
+            // The PDF-first architecture has its own authority, validation and output-policy
+            // boundary. Do not let it fall through the historical DOCX/PDF fallback chain: that
+            // would make an apparently PDF-first result depend on an unrelated legacy selector.
+            if (_options.PdfFirstValidatedFallback)
+                return await RunPdfFirstAuthorityPipelineAsync(inputPath, slim, modeReport, diagnostics, sw, ct);
+
             // 2b. R1 của spec filter OOXML — chạy TRƯỚC khi lập tập ứng viên, vì cả điểm của nó là
             //     rút đoạn ra khỏi luồng LLM. Mặc định tắt; xem OoxmlStyleAutoAssign.
             var autoAssigned = _options.StyleAutoAssign
@@ -514,85 +538,189 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     ? "Nguồn evidence: giữ mục lục/nội dung nội tại của tài liệu; PDF layout không được đè outline điều hướng do tác giả khai báo."
                     : "Nguồn evidence: giữ cấu trúc native DOCX; PDF chỉ là fallback khi outline DOCX không dựng được.");
 
-            // Every adapter is evaluated from the same source evidence. Selection happens below
-            // through one policy registry; no adapter is suppressed merely because another one
-            // emitted a non-empty (possibly weak) outline.
             var pdfBookmarkFallback = preferPdfEvidence
                 ? PdfBookmarkOutline.TryBuild(inputPath, slim)
-                : PdfBookmarkOutlineResult.NotApplicable("document-evidence-preferred");
-            var pdfTocFallback = preferPdfEvidence
+                : PdfBookmarkOutlineResult.NotApplicable("higher-priority-document-evidence");
+            if (pdfBookmarkFallback.Headings.Count > 0)
+                Log($"PDF bookmarks: dùng {pdfBookmarkFallback.Headings.Count} heading đã neo ({pdfBookmarkFallback.Reason}).");
+            else if (pdfBookmarkFallback.Reason is not "no-pdf" and not "no-pdf-bookmarks")
+                Log($"PDF bookmarks: bỏ qua ({pdfBookmarkFallback.Reason}).");
+
+            var pdfTocFallback = preferPdfEvidence && pdfBookmarkFallback.Headings.Count == 0
                 ? PdfTocDictionaryOutline.TryBuild(inputPath, slim, modeReport)
-                : PdfTocDictionaryOutlineResult.NotApplicable("document-evidence-preferred");
-            var pdfTaggedFallback = preferPdfEvidence
+                : PdfTocDictionaryOutlineResult.NotApplicable("higher-priority-document-evidence");
+            if (pdfTocFallback.Headings.Count > 0)
+                Log($"PDF TOC dictionary: dùng {pdfTocFallback.Headings.Count} heading từ mục lục PDF ({pdfTocFallback.Reason}).");
+            else if (pdfTocFallback.Reason is not "no-pdf" and not "no-strong-pdf-toc")
+                Log($"PDF TOC dictionary: bỏ qua ({pdfTocFallback.Reason}).");
+
+            var pdfTaggedFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0
                 ? PdfTaggedEvidenceOutline.TryBuild(inputPath, slim)
-                : PdfTaggedEvidenceOutlineResult.NotApplicable("document-evidence-preferred");
-            var pdfLayoutFallback = preferPdfEvidence && _options.PdfLayoutEvidenceFallback
+                : PdfTaggedEvidenceOutlineResult.NotApplicable("higher-priority-document-evidence");
+            if (pdfTaggedFallback.Headings.Count > 0)
+                Log($"PDF tagged structure: dùng {pdfTaggedFallback.Headings.Count} heading đã neo ({pdfTaggedFallback.Reason}).");
+            else if (pdfTaggedFallback.Reason is not "no-pdf" and not "higher-priority-document-evidence")
+                Log($"PDF tagged structure: bỏ qua ({pdfTaggedFallback.Reason}).");
+
+            // This is an explicit source-policy override, not a last-resort fallback. Calling it
+            // only when DOCX evidence is weak would make textbook/TOC documents silently exercise
+            // the old route instead of the requested PDF-first contract.
+            var pdfFirstValidatedFallback = _options.PdfFirstValidatedFallback && !_options.DisableLlm
+                ? await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
+                    inputPath, slim, await GetModelAsync(ct), maximumAnalystBlocks: _options.PdfFirstAnalystBlocks,
+                    includeAllVisualStyles: true, includeSupplementCandidates: true, ct: ct)
+                : PdfTextbookOutlineResult.NotApplicable("disabled");
+            if (pdfFirstValidatedFallback.Headings.Count > 0)
+                Log($"PDF-first validated: {pdfFirstValidatedFallback.Headings.Count} heading source-grounded, giữ review ({pdfFirstValidatedFallback.Reason}).");
+            else if (pdfFirstValidatedFallback.Reason is not "disabled" and not "no-pdf")
+                Log($"PDF-first validated: bỏ qua ({pdfFirstValidatedFallback.Reason}).");
+
+            var pdfLayoutFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 && pdfFirstValidatedFallback.Headings.Count == 0 && _options.PdfLayoutEvidenceFallback
                 ? PdfLayoutEvidenceOutline.TryBuild(inputPath, slim)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
-            var pdfLayoutAnalystFallback = preferPdfEvidence && _options.PdfLayoutAnalystFallback && !_options.DisableLlm
-                ? await PdfLayoutEvidenceOutline.TryBuildWithAnalystAsync(inputPath, slim, await GetModelAsync(ct), ct)
+            if (pdfLayoutFallback.Headings.Count > 0)
+                Log($"PDF layout evidence: dùng {pdfLayoutFallback.Headings.Count} heading từ baseline/cụm/block ({pdfLayoutFallback.Reason}).");
+            else if (pdfLayoutFallback.Reason is not "disabled" and not "no-pdf")
+                Log($"PDF layout evidence: bỏ qua ({pdfLayoutFallback.Reason}).");
+
+            var pdfLayoutAnalystFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 && pdfFirstValidatedFallback.Headings.Count == 0 &&
+                                           pdfLayoutFallback.Headings.Count == 0 &&
+                                           _options.PdfLayoutAnalystFallback && !_options.DisableLlm
+                ? await PdfLayoutEvidenceOutline.TryBuildWithAnalystAsync(
+                    inputPath, slim, await GetModelAsync(ct), ct)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
-            var pdfFallback = preferPdfEvidence && _options.PdfTextbookFallback
+            if (pdfLayoutAnalystFallback.Headings.Count > 0)
+                Log($"PDF layout analyst: dùng {pdfLayoutAnalystFallback.Headings.Count} heading đã grounding block ({pdfLayoutAnalystFallback.Reason}).");
+            else if (pdfLayoutAnalystFallback.Reason is not "disabled" and not "no-pdf")
+                Log($"PDF layout analyst: bỏ qua ({pdfLayoutAnalystFallback.Reason}).");
+
+            var pdfFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 && pdfFirstValidatedFallback.Headings.Count == 0 && pdfLayoutFallback.Headings.Count == 0 &&
+                              pdfLayoutAnalystFallback.Headings.Count == 0 && _options.PdfTextbookFallback
                 ? PdfTextbookOutline.TryBuild(inputPath, slim, modeReport)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
-            var pdfFinancialFallback = preferPdfEvidence && _options.PdfBoldLabelFallback
+            if (pdfFallback.Headings.Count > 0)
+                Log($"PDF textbook fallback: dùng {pdfFallback.Headings.Count} heading từ layout PDF ({pdfFallback.Reason}).");
+            else if (pdfFallback.Reason is not "disabled" and not "no-pdf")
+                Log($"PDF textbook fallback: bỏ qua ({pdfFallback.Reason}).");
+
+            var pdfFinancialFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 && pdfFirstValidatedFallback.Headings.Count == 0 &&
+                                       pdfLayoutFallback.Headings.Count == 0 &&
+                                       pdfLayoutAnalystFallback.Headings.Count == 0 &&
+                                       pdfFallback.Headings.Count == 0 &&
+                                       _options.PdfBoldLabelFallback
                 ? PdfFinancialReportOutline.TryBuild(inputPath, slim, modeReport)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
-            var pdfBoldFallback = preferPdfEvidence && _options.PdfBoldLabelFallback
+            if (pdfFinancialFallback.Headings.Count > 0)
+                Log($"PDF financial-report fallback: dùng {pdfFinancialFallback.Headings.Count} heading từ layout PDF ({pdfFinancialFallback.Reason}).");
+            else if (pdfFinancialFallback.Reason is not "disabled" and not "no-pdf" and not "not-financial-report-layout")
+                Log($"PDF financial-report fallback: bỏ qua ({pdfFinancialFallback.Reason}).");
+
+            var pdfBoldFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 && pdfFirstValidatedFallback.Headings.Count == 0 &&
+                                  pdfLayoutFallback.Headings.Count == 0 &&
+                                  pdfLayoutAnalystFallback.Headings.Count == 0 &&
+                                  pdfFallback.Headings.Count == 0 &&
+                                  pdfFinancialFallback.Headings.Count == 0 &&
+                                  _options.PdfBoldLabelFallback
                 ? PdfBoldLabelOutline.TryBuild(inputPath, slim, modeReport)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
-            var doclingFallback = preferPdfEvidence && (_options.DoclingSidecarFallback || hasExplicitLayoutSidecar)
+            if (pdfBoldFallback.Headings.Count > 0)
+                Log($"PDF bold-label fallback: dùng {pdfBoldFallback.Headings.Count} heading từ layout PDF ({pdfBoldFallback.Reason}).");
+            else if (pdfBoldFallback.Reason is not "disabled" and not "no-pdf")
+                Log($"PDF bold-label fallback: bỏ qua ({pdfBoldFallback.Reason}).");
+
+            var doclingFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 && pdfFirstValidatedFallback.Headings.Count == 0 &&
+                                  pdfLayoutFallback.Headings.Count == 0 &&
+                                  pdfLayoutAnalystFallback.Headings.Count == 0 &&
+                                  pdfFallback.Headings.Count == 0 &&
+                                  pdfFinancialFallback.Headings.Count == 0 &&
+                                  pdfBoldFallback.Headings.Count == 0 &&
+                                  (_options.DoclingSidecarFallback || hasExplicitLayoutSidecar)
                 ? DoclingLayoutOutline.TryBuild(inputPath, slim, modeReport, _options.DoclingJsonPath)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
-            var sessionCodeFallback = preferPdfEvidence && _options.SessionCodeFallback
+            if (doclingFallback.Headings.Count > 0)
+                Log($"Docling sidecar fallback: dùng {doclingFallback.Headings.Count} heading từ JSON đã align ({doclingFallback.Reason}).");
+            else if (doclingFallback.Reason is not "disabled" and not "no-docling-json")
+                Log($"Docling sidecar fallback: bỏ qua ({doclingFallback.Reason}).");
+
+            // Không gate theo pdfBoldFallback.Count==0: hai nguồn bắt hai loại tín hiệu KHÁC nhau
+            // trên cùng tài liệu (bold-label bắt được khối tiêu đề/nhãn trần, session-code bắt được
+            // các mục "D<n>.<nn> -" mà bold-label bỏ sót vì không phải bold) — hợp lại thay vì chọn
+            // một, rồi khử trùng theo (Index, Text).
+            var sessionCodeFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 && pdfFirstValidatedFallback.Headings.Count == 0 &&
+                                      pdfLayoutFallback.Headings.Count == 0 &&
+                                      pdfLayoutAnalystFallback.Headings.Count == 0 &&
+                                      pdfFallback.Headings.Count == 0 &&
+                                      _options.SessionCodeFallback
                 ? SessionCodeOutline.Build(slim, modeReport)
                 : [];
+            if (sessionCodeFallback.Count > 0)
+                Log($"Session-code fallback: dùng {sessionCodeFallback.Count} heading từ mã phiên \"D<n>.<nn> -\".");
+
             var boldAndSessionCode = MergeBySourceIdentity(pdfBoldFallback.Headings, sessionCodeFallback);
-            var boldAndSessionRoute = pdfBoldFallback.Headings.Count > 0 && sessionCodeFallback.Count > 0
-                ? "auto:pdf-bold-label+session-code"
-                : pdfBoldFallback.Headings.Count > 0
-                    ? "auto:pdf-bold-label"
-                    : "auto:session-code";
 
-            var adapterResults = new List<OutlineEvidenceAdapterResult>
-            {
-                new("auto:pdf-bookmarks", 10, pdfBookmarkFallback.Headings, pdfBookmarkFallback.Reason),
-                new("auto:pdf-toc-dictionary", 20, pdfTocFallback.Headings, pdfTocFallback.Reason),
-                new("auto:pdf-tagged-structure", 30, pdfTaggedFallback.Headings, pdfTaggedFallback.Reason),
-                // Explicit legal labels are author-declared structure and must beat visual recovery.
-                new(declared.Route ?? "auto:declared", declared.Route == "auto:vietnamese-legal" ? 35 : 100,
-                    declared.Route == "auto:vietnamese-legal" ? declared.Headings ?? [] : [], "declared-document-structure"),
-                new("auto:pdf-layout-evidence", 40, pdfLayoutFallback.Headings, pdfLayoutFallback.Reason, pdfLayoutFallback.Audit),
-                new("auto:pdf-layout-block-grounded", 50, pdfLayoutAnalystFallback.Headings, pdfLayoutAnalystFallback.Reason, pdfLayoutAnalystFallback.Audit),
-                new("auto:pdf-textbook-layout", 60, pdfFallback.Headings, pdfFallback.Reason, pdfFallback.Audit),
-                new("auto:pdf-financial-report", 70, pdfFinancialFallback.Headings, pdfFinancialFallback.Reason, pdfFinancialFallback.Audit),
-                new(boldAndSessionRoute, 80, boldAndSessionCode, "bold-label-and-session-code"),
-                new("auto:docling-layout", hasExplicitLayoutSidecar ? 5 : 90, doclingFallback.Headings, doclingFallback.Reason, doclingFallback.Audit),
-            };
-            var selectedAdapter = OutlineEvidenceAdapterRegistry.Select(adapterResults);
-            Log("Adapter registry: " + string.Join(", ", adapterResults
-                .Where(result => result.HasHeadings)
-                .OrderBy(result => result.Priority)
-                .Select(result => $"{result.Route}={result.Headings.Count}")));
-            if (selectedAdapter is not null)
-                Log($"Adapter registry: chọn {selectedAdapter.Route} ({selectedAdapter.Headings.Count} headings; {selectedAdapter.Reason}).");
-
-            List<HeadingRecord> headings = selectedAdapter is not null
-                ? [.. selectedAdapter.Headings]
-                : declared.Headings is { Count: > 0 } luat
-                    ? await BoSungKhiLuatConSot(luat, slim, candidates, quarantined, modeReport, ct)
-                    : _options.DisableLlm
-                        ? HeuristicOnly(candidates)
-                        : await RunModelAsync(slim, candidates, quarantined, modeReport.Mode, ct);
-            if (declared.Route == "auto:vietnamese-legal" &&
+            List<HeadingRecord> headings = pdfBookmarkFallback.Headings.Count > 0
+                ? [.. pdfBookmarkFallback.Headings]
+                : pdfTocFallback.Headings.Count > 0
+                ? [.. pdfTocFallback.Headings]
+                : pdfTaggedFallback.Headings.Count > 0
+                ? [.. pdfTaggedFallback.Headings]
+                : pdfFirstValidatedFallback.Headings.Count > 0
+                    ? [.. pdfFirstValidatedFallback.Headings]
+                // A labelled legal hierarchy is explicit document structure. Visual PDF routes
+                // are fallbacks and must not replace it with clipped bold fragments. The explicit
+                // --pdf-first source-policy override above is deliberately not a fallback.
+                : declared.Route == "auto:vietnamese-legal" && declared.Headings is { Count: > 0 } legal
+                ? legal
+                : pdfLayoutFallback.Headings.Count > 0
+                    ? [.. pdfLayoutFallback.Headings]
+                : pdfLayoutAnalystFallback.Headings.Count > 0
+                    ? [.. pdfLayoutAnalystFallback.Headings]
+                : pdfFallback.Headings.Count > 0
+                    ? [.. pdfFallback.Headings]
+                : pdfFinancialFallback.Headings.Count > 0
+                    ? [.. pdfFinancialFallback.Headings]
+                : boldAndSessionCode.Count > 0
+                    ? boldAndSessionCode
+                : doclingFallback.Headings.Count > 0
+                    ? [.. doclingFallback.Headings]
+                    : declared.Headings is { Count: > 0 } luat
+                        ? await BoSungKhiLuatConSot(luat, slim, candidates, quarantined, modeReport, ct)
+                        : _options.DisableLlm
+                            ? HeuristicOnly(candidates)
+                            : await RunModelAsync(slim, candidates, quarantined, modeReport.Mode, ct);
+            if (pdfFirstValidatedFallback.Headings.Count == 0 && declared.Route == "auto:vietnamese-legal" &&
                 headings.All(h => h.ConfidenceBasis == "legal_marker_declared"))
             {
                 var groundedTitles = PdfLegalTitleGrounder.Apply(inputPath, headings);
                 if (groundedTitles > 0)
                     Log($"PDF legal title grounding: cắt sạch {groundedTitles} title theo dòng PDF.");
             }
-            var deterministicRoute = selectedAdapter?.Route ?? declared.Route;
-            var routeAudit = selectedAdapter?.Audit;
+            var deterministicRoute = SelectedDeterministicRoute(
+                declared.Route,
+                pdfBookmarkFallback.Headings.Count,
+                pdfTocFallback.Headings.Count,
+                pdfTaggedFallback.Headings.Count,
+                pdfFirstValidatedFallback.Headings.Count,
+                pdfLayoutFallback.Headings.Count,
+                pdfLayoutAnalystFallback.Headings.Count,
+                pdfFallback.Headings.Count,
+                pdfFinancialFallback.Headings.Count,
+                pdfBoldFallback.Headings.Count,
+                doclingFallback.Headings.Count,
+                sessionCodeFallback.Count);
+            var routeAudit = pdfFirstValidatedFallback.Headings.Count > 0
+                ? pdfFirstValidatedFallback.Audit
+                : pdfLayoutFallback.Headings.Count > 0
+                ? pdfLayoutFallback.Audit
+                    : pdfLayoutAnalystFallback.Headings.Count > 0
+                        ? pdfLayoutAnalystFallback.Audit
+                        : pdfFallback.Headings.Count > 0
+                            ? pdfFallback.Audit
+                            : pdfFinancialFallback.Headings.Count > 0
+                                ? pdfFinancialFallback.Audit
+                                : doclingFallback.Headings.Count > 0
+                                    ? doclingFallback.Audit
+                                    : null;
 
             // StructuralHierarchyResolver và TableOfContentsAnchor đều TẤT ĐỊNH và không cần mô
             // hình. Nếu kết quả hiện tại đến từ route deterministic declared/PDF fallback thì vẫn
@@ -614,7 +742,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                     if (inline > 0) Log($"Tách nội dung cùng dòng (không mô hình): {inline} mục.");
                 }
 
-                if (declared.Route == "auto:vietnamese-legal")
+                if (deterministicRoute == "auto:vietnamese-legal")
                 {
                     // LegalStructuredOutline đọc hệ cấp khai báo của pháp quy
                     // (Phần/Chương/Mục/Điều). StructuralHierarchyResolver là luật generic theo
@@ -683,7 +811,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // Route text-toc/RFC-dictionary là điều hướng CÓ CHỦ Ý hẹp — quét lại toàn tài liệu
             // ở đây sẽ kéo lại đúng loại nhiễu mà các route này được chọn để né.
             if (tachDoanGop && declared.Route is not ("auto:part-section-text-toc" or "auto:financial-statement-toc" or "auto:rfc-toc-dictionary" or "auto:book-toc-dictionary" or "auto:pdf-financial-report") &&
-                deterministicRoute is not ("auto:pdf-toc-dictionary" or "auto:pdf-tagged-structure") &&
+                deterministicRoute is not ("auto:pdf-toc-dictionary" or "auto:pdf-tagged-structure" or "pdf-first-validated-review") &&
                 !TypedNumberingOutline.LooksLikeQuantitativeTypedLayout(slim))
             {
                 var added = MergedParagraphHeadings(slim, headings);
@@ -765,9 +893,6 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 _model?.ModelName, PrecisionCalibrationProfile.ConfigurationFor(_options),
                 _options.EvidenceConfidenceTiers);
             var decisionAudit = BuildDecisionAudit(headings);
-            var outcome = OutlineOutcomePolicy.Evaluate(
-                headings, deterministicRoute, diagnostics, decisionAudit, _calibrationProfile is not null);
-            Log($"Kết quả workflow chung: {outcome.Disposition} ({outcome.Reason}); route={outcome.EvidenceRoute ?? "(none)"}.");
             var auto = headings.Count(h => h.DecisionStatus is not HeadingDecisionStatus.RequiresReview);
             var review = headings.Count(h => h.DecisionStatus == HeadingDecisionStatus.RequiresReview);
             var effectiveTargetPrecision = _calibrationProfile?.TargetPrecision ?? _options.TargetPrecision;
@@ -795,7 +920,6 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 RouteAudit = routeAudit,
                 Diagnostics = diagnostics,
                 DecisionAudit = decisionAudit,
-                Outcome = outcome,
                 Provenance = _options.DisableLlm
                     ? null
                     : new OutlineRunProvenance(
@@ -817,6 +941,101 @@ public sealed class HeaderExtractionPipeline : IDisposable
     /// khác nhau rồi ném "Không được trộn nhiều model". Lượt hỏi nào thực sự chạy đã có
     /// <see cref="OutlineRunProvenance"/> ghi riêng, nên trường này không cần gánh thêm việc đó.
     /// </summary>
+    private async Task<DocumentOutline> RunPdfFirstAuthorityPipelineAsync(
+        string inputPath,
+        SlimDocument slim,
+        DocumentModeReport modeReport,
+        DocumentDiagnosticReport diagnostics,
+        Stopwatch sw,
+        CancellationToken ct)
+    {
+        if (_options.DisableLlm)
+        {
+            sw.Stop();
+            return new DocumentOutline
+            {
+                File = Path.GetFileName(inputPath),
+                ParagraphCount = slim.Paragraphs.Count,
+                CandidateCount = 0,
+                Headings = [],
+                ElapsedMs = sw.ElapsedMilliseconds,
+                DocumentMode = modeReport,
+                DeterministicRoute = "pdf-first-authority-v1",
+                Diagnostics = diagnostics,
+                DecisionAudit = BuildDecisionAudit([]),
+            };
+        }
+
+        var analyst = await GetModelAsync(ct);
+        var siblingPdf = PdfTextbookOutline.FindSiblingPdf(inputPath);
+        IReadOnlyList<HeadingRecord> headings;
+        RouteExecutionAudit? audit;
+        string reason;
+        string route;
+        if (!string.IsNullOrWhiteSpace(siblingPdf))
+        {
+            using IPdfVisualQuestion? visual = CreatePdfFirstVisualAnalyst();
+            var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
+                inputPath,
+                slim,
+                analyst,
+                maximumAnalystBlocks: _options.PdfFirstAnalystBlocks,
+                includeAllVisualStyles: true,
+                includeSupplementCandidates: true,
+                maximumVisualRegions: _options.PdfFirstVisualRegions,
+                visualAnalyst: visual,
+                ct: ct);
+            headings = PdfValidatedOutputPolicy.ProjectDocumentOutline(result.Headings, result.Audit?.ValidatedStructures);
+            audit = result.Audit;
+            reason = result.Reason;
+            route = "pdf-first-authority-v1";
+        }
+        else
+        {
+            var result = await DocxAuthorityPipeline.RunAsync(slim, modeReport, analyst, ct);
+            headings = PdfValidatedOutputPolicy.ProjectDocumentOutline(result.Headings, result.Audit?.ValidatedStructures);
+            audit = result.Audit;
+            reason = "docx-source-authority";
+            route = "docx-authority-v1";
+        }
+        RecordPass("pdf-first-role-span", audit?.CandidatesSelected ?? 0, audit?.CandidatesSelected ?? 0);
+        if (audit?.VisualEvidence.Count > 0)
+            RecordPass("pdf-first-visual-evidence", audit.VisualEvidence.Count, audit.VisualEvidence.Count);
+        if (audit?.HierarchyProposals.Count > 0)
+            RecordPass("pdf-first-semantic-hierarchy", audit.HierarchyProposals.Count, audit.HierarchyProposals.Count);
+
+        sw.Stop();
+        var decisionAudit = BuildDecisionAudit(headings);
+        Log($"Authority route {route}: validated={headings.Count}, review={headings.Count}, " +
+            $"candidates={audit?.CandidatesSelected ?? 0}/{audit?.CandidatesAvailable ?? 0}; {reason}");
+        return new DocumentOutline
+        {
+            File = Path.GetFileName(inputPath),
+            ParagraphCount = slim.Paragraphs.Count,
+            CandidateCount = audit?.CandidatesSelected ?? 0,
+            Headings = headings,
+            ElapsedMs = sw.ElapsedMilliseconds,
+            Model = _model?.ModelName ?? ConfiguredModelName(),
+            DocumentMode = modeReport,
+            DeterministicRoute = route,
+            RouteAudit = audit,
+            Diagnostics = diagnostics,
+            DecisionAudit = decisionAudit,
+            Provenance = new OutlineRunProvenance(_options.Backend.ToString(), BackendSendsDataExternally, [.. _passes]),
+        };
+    }
+
+    private IPdfVisualQuestion? CreatePdfFirstVisualAnalyst()
+    {
+        // A hosted vision-capable NIM is configured through the same SGLang-compatible options
+        // as the text role pass. Local VLM construction remains an explicit CLI diagnostic path.
+        if (_options.Backend != InferenceBackend.Sglang ||
+            !string.Equals(_options.Sglang.Endpoint.Host, "integrate.api.nvidia.com", StringComparison.OrdinalIgnoreCase) ||
+            string.IsNullOrWhiteSpace(_options.Sglang.ApiKey)) return null;
+        return new NvidiaNimVisualQuestion(_options.Sglang.Endpoint, _options.Sglang.ApiKey, _options.Sglang.Model,
+            _options.Sglang.RequestTimeoutSeconds, _options.Sglang.TransientRequestRetries);
+    }
+
     private string? ConfiguredModelName() => _options.Backend switch
     {
         InferenceBackend.OpenRouter => _options.OpenRouter.Model,
@@ -988,7 +1207,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
         // cả câu văn xuôi bắt đầu bằng "1." là heading. Khi TOC text còn giữ đủ khung, ưu tiên
         // route hẹp hơn: RFC dùng số mục; textbook dùng Part/Chapter/1a; WB dùng PART/Section.
         BookTocDictionaryResult? bookTocDictionary = null;
-        if (!manual)
+        if (!manual && route is ("auto:typed-numbering" or "auto:vietnamese-administrative"))
         {
             bookTocDictionary = BookTocDictionaryOutline.Analyze(slim);
             if (bookTocDictionary.Diagnostics.TocParagraphs > 0 ||
@@ -1007,10 +1226,8 @@ public sealed class HeaderExtractionPipeline : IDisposable
             }
         }
 
-        // A body-anchored TOC is an author-declared title dictionary.  It is stronger than a
-        // document-mode guess derived from converter-generated pStyle/numPr, which can classify
-        // a rich-layout DOCX as OutlineLevelDriven even when it has no w:outlineLvl at all.
-        if (!manual && bookTocDictionary?.Accepted == true)
+        if (!manual && route is ("auto:typed-numbering" or "auto:vietnamese-administrative") &&
+            bookTocDictionary?.Accepted == true)
             route = "auto:book-toc-dictionary";
 
         RfcTocDictionaryResult? rfcTocDictionary = null;
@@ -1150,6 +1367,36 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
         _ => null,
     };
+
+    private static string? SelectedDeterministicRoute(
+        string? declaredRoute,
+        int pdfBookmarkCount,
+        int pdfTocCount,
+        int pdfTaggedCount,
+        int pdfFirstValidatedCount,
+        int pdfLayoutCount,
+        int pdfLayoutAnalystCount,
+        int pdfTextbookCount,
+        int pdfFinancialCount,
+        int pdfBoldCount,
+        int doclingCount,
+        int sessionCodeCount)
+    {
+        if (pdfBookmarkCount > 0) return "auto:pdf-bookmarks";
+        if (pdfTocCount > 0) return "auto:pdf-toc-dictionary";
+        if (pdfTaggedCount > 0) return "auto:pdf-tagged-structure";
+        if (pdfFirstValidatedCount > 0) return "pdf-first-validated-review";
+        if (declaredRoute == "auto:vietnamese-legal") return declaredRoute;
+        if (pdfLayoutCount > 0) return "auto:pdf-layout-evidence";
+        if (pdfLayoutAnalystCount > 0) return "auto:pdf-layout-block-grounded";
+        if (pdfTextbookCount > 0) return "auto:pdf-textbook-layout";
+        if (pdfFinancialCount > 0) return "auto:pdf-financial-report";
+        if (pdfBoldCount > 0 && sessionCodeCount > 0) return "auto:pdf-bold-label+session-code";
+        if (pdfBoldCount > 0) return "auto:pdf-bold-label";
+        if (doclingCount > 0) return "auto:docling-layout";
+        if (sessionCodeCount > 0) return "auto:session-code";
+        return declaredRoute;
+    }
 
     /// <summary>
     /// Các mục nằm lọt giữa paragraph. Đoạn nào đã cho ra heading rồi thì bỏ qua: nó là đoạn

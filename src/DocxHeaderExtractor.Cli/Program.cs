@@ -62,6 +62,12 @@ try
         "repair-key-package" => await RunRepairKeyPackageAsync(options, cts.Token),
         "pdf-clusters" => await RunPdfClustersAsync(options, cts.Token),
         "pdf-stage-eval" => await RunPdfStageEvalAsync(options, cts.Token),
+        "pdf-visual-probe" => await RunPdfVisualProbeAsync(options, cts.Token),
+        "pdf-visual-representation-eval" => await RunPdfVisualRepresentationEvalAsync(options, cts.Token),
+        "pdf-visual-result-eval" => await RunPdfVisualResultEvalAsync(options, cts.Token),
+        "pdf-visual-provenance-eval" => await RunPdfVisualProvenanceEvalAsync(options, cts.Token),
+        "pdf-visual-scheduler-benchmark" => await RunPdfVisualSchedulerBenchmarkAsync(options, cts.Token),
+        "pdf-rank-eval" => RunPdfRankEval(options),
         "pdf-tags" => await RunPdfTagsAsync(options, cts.Token),
         "pdf-bookmarks" => RunPdfBookmarks(options),
         "verify-corrupt" => await RunVerifyCorruptAsync(options, cts.Token),
@@ -954,48 +960,256 @@ static int RunPdfBookmarks(CommandLineOptions o)
     return 0;
 }
 
+static async Task<int> RunPdfVisualProbeAsync(CommandLineOptions o, CancellationToken ct)
+{
+    var files = ExpandCalibrationInputs(o.Inputs);
+    if (files.Count != 1)
+    {
+        Console.Error.WriteLine("pdf-visual-probe cần đúng một file DOCX.");
+        return 2;
+    }
+
+    var docx = files[0];
+    var pdf = PdfTextbookOutline.FindSiblingPdf(docx);
+    if (pdf is null)
+    {
+        Console.Error.WriteLine("Không tìm thấy PDF sibling cho visual probe.");
+        return 2;
+    }
+
+    var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(docx);
+    if (o.PdfVisualPage is { } page)
+    {
+        var bounds = PdfRegionRasterizer.GetPageBounds(pdf, page);
+        var png = PdfRegionRasterizer.RenderCropPng(pdf, page, 0, 0, bounds.Width, bounds.Height, o.VlmDpi);
+        var output = Path.GetFullPath(o.OutputPath ?? $"pdf-visual-page-{page}.png");
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        await File.WriteAllBytesAsync(output, png, ct);
+        Console.Error.WriteLine($"Đã ghi: {output}");
+        return 0;
+    }
+    if (o.PdfVisualLineList)
+    {
+        var lines = PdfVisualTextRecovery.ListLinesForAudit(pdf);
+        var lineJson = JsonSerializer.Serialize(new { file = Path.GetFileName(docx), pdf = Path.GetFileName(pdf), lines }, new JsonSerializerOptions { WriteIndented = true });
+        if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(lineJson);
+        else
+        {
+            var output = Path.GetFullPath(o.OutputPath);
+            Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+            await File.WriteAllTextAsync(output, lineJson, new UTF8Encoding(false), ct);
+            Console.Error.WriteLine($"Đã ghi: {output}");
+        }
+        return 0;
+    }
+    if (o.PdfVisualProbeList)
+    {
+        var regions = PdfVisualTextRecovery.ListRegionsForAudit(pdf);
+        var listJson = JsonSerializer.Serialize(new { file = Path.GetFileName(docx), pdf = Path.GetFileName(pdf), regions }, new JsonSerializerOptions { WriteIndented = true });
+        if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(listJson);
+        else
+        {
+            var output = Path.GetFullPath(o.OutputPath);
+            Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+            await File.WriteAllTextAsync(output, listJson, new UTF8Encoding(false), ct);
+            Console.Error.WriteLine($"Đã ghi: {output}");
+        }
+        return 0;
+    }
+    if (!string.IsNullOrWhiteSpace(o.PdfVisualProbeText))
+    {
+        var sourceOnly = PdfVisualTextRecovery.InspectSourceForAudit(slim, o.PdfVisualProbeText);
+        var sourceJson = JsonSerializer.Serialize(new { file = Path.GetFileName(docx), sourceOnly }, new JsonSerializerOptions { WriteIndented = true });
+        if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(sourceJson);
+        else
+        {
+            var output = Path.GetFullPath(o.OutputPath);
+            Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+            await File.WriteAllTextAsync(output, sourceJson, new UTF8Encoding(false), ct);
+            Console.Error.WriteLine($"Đã ghi: {output}");
+        }
+        return 0;
+    }
+
+    if (string.IsNullOrWhiteSpace(o.VlmModelPath) != string.IsNullOrWhiteSpace(o.VlmMmprojPath))
+        throw new ArgumentException("pdf-visual-probe dùng VLM local cần đủ --vlm-model và --vlm-mmproj.");
+    using IPdfVisualQuestion visual = !string.IsNullOrWhiteSpace(o.VlmModelPath)
+        ? await VlmImageQuestion.LoadAsync(o.VlmModelPath!, o.VlmMmprojPath!, o.VlmContextSize, o.VlmGpuLayerCount, ct)
+        : o.UseNvidiaNim
+            ? new NvidiaNimVisualQuestion(o.Pipeline.Sglang.Endpoint, o.Pipeline.Sglang.ApiKey, o.Pipeline.Sglang.Model,
+                o.Pipeline.Sglang.RequestTimeoutSeconds, o.Pipeline.Sglang.TransientRequestRetries)
+            : throw new ArgumentException("pdf-visual-probe cần --nvidia-nim hoặc --vlm-model/--vlm-mmproj.");
+
+    var result = await PdfVisualTextRecovery.ProbeAsync(pdf, slim, visual, o.PdfVisualProbeIndex, o.VlmDpi, ct);
+    var payload = new { file = Path.GetFileName(docx), pdf = Path.GetFileName(pdf), result };
+    var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true });
+    if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(json);
+    else
+    {
+        var output = Path.GetFullPath(o.OutputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        await File.WriteAllTextAsync(output, json, new UTF8Encoding(false), ct);
+        Console.Error.WriteLine($"Đã ghi: {output}");
+    }
+    return 0;
+}
+
+static async Task<int> RunPdfVisualRepresentationEvalAsync(CommandLineOptions o, CancellationToken ct)
+{
+    var files = ExpandCalibrationInputs(o.Inputs);
+    if (files.Count != 1 || string.IsNullOrWhiteSpace(o.PdfVisualRepresentationGoldPath))
+    {
+        Console.Error.WriteLine("pdf-visual-representation-eval cần đúng một DOCX và --gold <file.key>.");
+        return 2;
+    }
+
+    var docx = files[0];
+    var pdf = PdfTextbookOutline.FindSiblingPdf(docx);
+    if (pdf is null)
+    {
+        Console.Error.WriteLine("Không tìm thấy PDF sibling cho visual representation audit.");
+        return 2;
+    }
+
+    var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(docx);
+    var rawKey = AnswerKey.Load(o.PdfVisualRepresentationGoldPath);
+    var stableMap = slim.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
+        .ToDictionary(p => p.StableId, p => p.Index, StringComparer.Ordinal);
+    var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
+    var report = PdfVisualRepresentationAudit.Evaluate(pdf, slim, key);
+    var payload = new
+    {
+        file = Path.GetFileName(docx),
+        pdf = Path.GetFileName(pdf),
+        gold = Path.GetFileName(o.PdfVisualRepresentationGoldPath),
+        report,
+    };
+    var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true });
+    if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(json);
+    else
+    {
+        var output = Path.GetFullPath(o.OutputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        await File.WriteAllTextAsync(output, json, new UTF8Encoding(false), ct);
+        Console.Error.WriteLine($"Đã ghi: {output}");
+    }
+    return 0;
+}
+
+static async Task<int> RunPdfVisualResultEvalAsync(CommandLineOptions o, CancellationToken ct)
+{
+    if (o.Inputs.Count != 1 || string.IsNullOrWhiteSpace(o.PdfVisualRepresentationGoldPath))
+    {
+        Console.Error.WriteLine("pdf-visual-result-eval cần một run.json và --gold <file.key>.");
+        return 2;
+    }
+    using var json = JsonDocument.Parse(await File.ReadAllTextAsync(o.Inputs[0], ct));
+    var root = json.RootElement.ValueKind == JsonValueKind.Array ? json.RootElement[0] : json.RootElement;
+    if (!root.TryGetProperty("visualInferenceArtifact", out var artifact))
+    {
+        Console.Error.WriteLine("Artifact không có visualInferenceArtifact; run cũ không lưu per-region inference facts nên không thể replay trung thực.");
+        return 2;
+    }
+    var traces = artifact.GetProperty("recoveries").Deserialize<List<PdfVisualRecoveryTrace>>() ?? [];
+    var representation = artifact.TryGetProperty("representation", out var coverage)
+        ? coverage.Deserialize<List<PdfVisualGoldCoverage>>()
+        : null;
+    var key = AnswerKey.Load(o.PdfVisualRepresentationGoldPath);
+    var gold = key.PositiveEntries.Where(entry => !entry.Excluded && !string.IsNullOrWhiteSpace(entry.Text))
+        .Select(entry => entry.Text!).ToArray();
+    var targets = representation is { Count: > 0 } ? representation.Select(item => item.Gold) : gold;
+    var evaluation = PdfVisualInferenceEvaluator.Evaluate(targets, traces, representation);
+    var payload = new { input = Path.GetFileName(o.Inputs[0]), gold = Path.GetFileName(o.PdfVisualRepresentationGoldPath), evaluation };
+    var output = JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true });
+    if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(output);
+    else await File.WriteAllTextAsync(Path.GetFullPath(o.OutputPath), output, new UTF8Encoding(false), ct);
+    return 0;
+}
+
+static async Task<int> RunPdfVisualProvenanceEvalAsync(CommandLineOptions o, CancellationToken ct)
+{
+    if (o.Inputs.Count < 2)
+    {
+        Console.Error.WriteLine("pdf-visual-provenance-eval cần ít nhất hai run.json.");
+        return 2;
+    }
+    var traces = new List<PdfVisualRecoveryTrace>();
+    foreach (var input in o.Inputs)
+    {
+        using var json = JsonDocument.Parse(await File.ReadAllTextAsync(input, ct));
+        var root = json.RootElement.ValueKind == JsonValueKind.Array ? json.RootElement[0] : json.RootElement;
+        if (!root.TryGetProperty("visualInferenceArtifact", out var artifact) || !artifact.TryGetProperty("recoveries", out var recoveries))
+        {
+            Console.Error.WriteLine($"Artifact thiếu recoveries: {input}");
+            return 2;
+        }
+        traces.AddRange(recoveries.Deserialize<List<PdfVisualRecoveryTrace>>() ?? []);
+    }
+    var report = PdfVisualCrossProducerEvaluator.Evaluate(traces);
+    var payload = new { inputs = o.Inputs.Select(Path.GetFileName).ToArray(), report };
+    var output = JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true });
+    if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(output);
+    else await File.WriteAllTextAsync(Path.GetFullPath(o.OutputPath), output, new UTF8Encoding(false), ct);
+    return 0;
+}
+
+static async Task<int> RunPdfVisualSchedulerBenchmarkAsync(CommandLineOptions o, CancellationToken ct)
+{
+    if (o.Inputs.Count != 1 || o.PdfVisualArtifacts.Count == 0)
+    {
+        Console.Error.WriteLine("pdf-visual-scheduler-benchmark cần một DOCX và ít nhất một --visual-artifact run.json.");
+        return 2;
+    }
+    var docx = o.Inputs[0];
+    var pdf = PdfTextbookOutline.FindSiblingPdf(docx);
+    if (pdf is null) { Console.Error.WriteLine("Không tìm thấy PDF sibling cho scheduler benchmark."); return 2; }
+    var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(docx);
+    var traces = new List<PdfVisualRecoveryTrace>();
+    foreach (var input in o.PdfVisualArtifacts)
+    {
+        using var json = JsonDocument.Parse(await File.ReadAllTextAsync(input, ct));
+        var root = json.RootElement.ValueKind == JsonValueKind.Array ? json.RootElement[0] : json.RootElement;
+        if (!root.TryGetProperty("visualInferenceArtifact", out var artifact) || !artifact.TryGetProperty("recoveries", out var recoveries))
+        { Console.Error.WriteLine($"Artifact thiếu recoveries: {input}"); return 2; }
+        traces.AddRange(recoveries.Deserialize<List<PdfVisualRecoveryTrace>>() ?? []);
+    }
+    var regime = PdfDocumentRegime.Infer(slim.Paragraphs.Select(paragraph => paragraph.Text));
+    var report = PdfVisualSchedulerBenchmark.Evaluate(regime, PdfVisualTextRecovery.ListRegionsForAudit(pdf), traces);
+    var payload = new { file = Path.GetFileName(docx), artifacts = o.PdfVisualArtifacts.Select(Path.GetFileName).ToArray(), report };
+    var output = JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true });
+    if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(output);
+    else await File.WriteAllTextAsync(Path.GetFullPath(o.OutputPath), output, new UTF8Encoding(false), ct);
+    return 0;
+}
+
 static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationToken ct)
 {
-    if (o.Pipeline.DisableLlm && !o.PdfStageRetrievalOnly)
+    if (o.Pipeline.DisableLlm)
     {
         Console.Error.WriteLine("pdf-stage-eval cần LLM analyst; bỏ --no-llm và chỉ định --sglang/--model.");
         return 2;
     }
 
     var files = ExpandCalibrationInputs(o.Inputs);
-    var keyIndex = BuildKeyIndex(files);
+    var keyIndex = BuildKeyIndex(files, o.PdfStageKeyRoot);
     if (files.Count == 0) { Console.Error.WriteLine("Không tìm thấy DOCX để chấm PDF stages."); return 2; }
 
-    using var analyst = o.PdfStageRetrievalOnly ? null : await CreateClassifierAsync(o, ct);
-    IVisualQuestion? visualAnalyst = null;
-    if (o.PdfStageVisualReview)
-    {
-        if (o.Pipeline.Backend == InferenceBackend.Sglang)
-        {
-            if (!o.Quiet) Console.Error.WriteLine("Dùng SGLang Qwen VLM cho visual confirmation...");
-            visualAnalyst = SglangVlmImageQuestion.CreateOwned(
-                o.Pipeline.Sglang.Endpoint, o.Pipeline.Sglang.Model, o.Pipeline.Sglang.ApiKey,
-                o.VlmMaxImagesPerRequest);
-        }
-        else if (string.IsNullOrWhiteSpace(o.VlmModelPath) || string.IsNullOrWhiteSpace(o.VlmMmprojPath))
-        {
-            Console.Error.WriteLine("pdf-stage-eval --pdf-stage-vlm cần --sglang với Qwen-VL, hoặc đủ --vlm-model và --vlm-mmproj.");
-            return 2;
-        }
-        else
-        {
-            if (!o.Quiet) Console.Error.WriteLine("Đang nạp VLM visual confirmation analyst...");
-            visualAnalyst = await VlmImageQuestion.LoadAsync(
-                o.VlmModelPath, o.VlmMmprojPath, o.VlmContextSize, o.VlmGpuLayerCount, ct);
-        }
-    }
-    using var ownedVisualAnalyst = visualAnalyst;
+    using var analyst = await CreateClassifierAsync(o, ct);
+    if (string.IsNullOrWhiteSpace(o.VlmModelPath) != string.IsNullOrWhiteSpace(o.VlmMmprojPath))
+        throw new ArgumentException("pdf-stage-eval dùng VLM cần đủ --vlm-model và --vlm-mmproj.");
+    using IPdfVisualQuestion? visualAnalyst = !string.IsNullOrWhiteSpace(o.VlmModelPath)
+            ? await VlmImageQuestion.LoadAsync(o.VlmModelPath!, o.VlmMmprojPath!, o.VlmContextSize, o.VlmGpuLayerCount, ct)
+        : o.UseNvidiaNim
+            ? new NvidiaNimVisualQuestion(o.Pipeline.Sglang.Endpoint, o.Pipeline.Sglang.ApiKey, o.Pipeline.Sglang.Model,
+                o.Pipeline.Sglang.RequestTimeoutSeconds, o.Pipeline.Sglang.TransientRequestRetries)
+            : null;
     var rows = new List<object>();
     foreach (var file in files)
     {
         var stem = Path.GetFileNameWithoutExtension(file);
+        var sourceKeyRoot = Path.GetFullPath(o.PdfStageKeyRoot ?? "keys");
         var sourceKeys = keyIndex.TryGetValue(stem, out var paths)
-            ? paths.Where(path => path.StartsWith(Path.GetFullPath("keys") + Path.DirectorySeparatorChar,
+            ? paths.Where(path => path.StartsWith(sourceKeyRoot + Path.DirectorySeparatorChar,
                 StringComparison.OrdinalIgnoreCase)).ToArray()
             : Array.Empty<string>();
         if (sourceKeys.Length != 1)
@@ -1010,10 +1224,6 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             .Where(p => !string.IsNullOrWhiteSpace(p.StableId))
             .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
         var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
-        // A converted DOCX can preserve reviewed title text while replacing every paragraph
-        // anchor. Rebinding is for score interpretation only and is never fed into writeback.
-        var evaluationAnchor = EvaluationAnchorResolver.Resolve(key, slim.Paragraphs);
-        var evaluationKey = evaluationAnchor.Key;
         var truth = key.PositiveEntries.Where(e => !string.IsNullOrWhiteSpace(e.Text)).ToArray();
         if (truth.Length != key.Count)
         {
@@ -1021,82 +1231,11 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             continue;
         }
 
-        if (o.PdfStageRetrievalOnly)
-        {
-            var trace = PdfLayoutEvidenceOutline.TraceCandidateRetrieval(file, truth.Select(e => e.Text!));
-            var selectionTrace = PdfLayoutEvidenceOutline.TraceBroadCandidateSelection(
-                file,
-                o.PdfStageAllCandidates ? 0 : o.PdfStageAnalystBlocks,
-                o.PdfStageWideCandidates,
-                o.PdfStageSupplementCandidates,
-                o.PdfStageLosslessBlocks,
-                o.PdfStageAtomicLines,
-                out var selectionReason);
-            int TraceHits(Func<PdfCandidateRetrievalTrace, bool> predicate) => trace.Count(predicate);
-            string Canonical(string? value) => string.Concat((value ?? "").Where(char.IsLetterOrDigit).Select(char.ToLowerInvariant));
-            bool SelectedPoolMatches(string? candidate, string? expectedTitle)
-            {
-                var actual = Canonical(candidate);
-                var expectedTitleCanonical = Canonical(expectedTitle);
-                return actual == expectedTitleCanonical ||
-                       actual.StartsWith(expectedTitleCanonical, StringComparison.Ordinal) &&
-                       actual[expectedTitleCanonical.Length..].All(char.IsDigit);
-            }
-            var actualCandidateLosses = selectionTrace is null
-                ? Array.Empty<string>()
-                : truth.Where(entry => !selectionTrace.Selected.Any(block => SelectedPoolMatches(block.Text, entry.Text)))
-                    .Select(entry => entry.Text!)
-                    .ToArray();
-            var actualLossTrace = PdfLayoutEvidenceOutline.TraceCandidateRetrieval(file, actualCandidateLosses);
-            rows.Add(new
-            {
-                file = Path.GetFileName(file),
-                status = "retrieval-measured",
-                key = key.Count,
-                rawWindow = new { hits = TraceHits(t => t.FoundInRawWindow), total = key.Count },
-                standardBlock = new { hits = TraceHits(t => t.FoundInStandardBlock), total = key.Count },
-                broadCandidate = new { hits = TraceHits(t => t.FoundInBroadCandidate), total = key.Count },
-                wideCandidate = new { hits = TraceHits(t => t.FoundInWideCandidate), total = key.Count },
-                supplementCandidate = new { hits = TraceHits(t => t.FoundInSupplementCandidate), total = key.Count },
-                firstLossStages = trace.GroupBy(t => t.FirstLossStage)
-                    .OrderByDescending(group => group.Count())
-                    .Select(group => new { stage = group.Key, count = group.Count() }).ToArray(),
-                missing = trace.Where(t => !t.FoundInBroadCandidate && !t.FoundInSupplementCandidate)
-                    .Select(t => new { title = t.ExpectedText, t.FirstLossStage, t.RawFilterReasons, t.RawWindowText }).ToArray(),
-                selectedPoolLosses = actualLossTrace.Select(t => new
-                {
-                    title = t.ExpectedText,
-                    t.FirstLossStage,
-                    t.RawFilterReasons,
-                    t.RawWindowText,
-                }).ToArray(),
-                selection = selectionTrace is null
-                    ? (object)new { status = "unavailable", reason = selectionReason }
-                    : new
-                    {
-                        status = "measured",
-                        selectionTrace.Available,
-                        selectionTrace.AvailablePages,
-                        selectionTrace.SelectedPages,
-                        selected = o.Pipeline.ShowRawOutput
-                            ? selectionTrace.Selected.Select(block => new
-                            {
-                                block.Id,
-                                block.Page,
-                                block.Text,
-                                score = selectionTrace.Scores.TryGetValue(block.Id, out var score) ? score : 0,
-                            }).ToArray()
-                            : null,
-                    },
-            });
-            continue;
-        }
-
         var analystBudget = o.PdfStageAllCandidates ? 0 : o.PdfStageAnalystBlocks;
         var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
-            file, slim, analyst!, analystBudget, o.PdfStageWideCandidates,
-            o.PdfStageSupplementCandidates, o.PdfStageLosslessBlocks, o.PdfStageAtomicLines,
-            visualAnalyst, o.VlmDpi, o.VlmMaxConcurrentRequests, ct);
+            file, slim, analyst, analystBudget, o.PdfStageWideCandidates,
+            o.PdfStageSupplementCandidates, visualAnalyst, o.VlmDpi, o.PdfStageVisualRegions, o.PdfStageVisualProducer,
+            o.PdfStageVisualScheduler, ct);
         var audit = result.Audit;
         if (audit is null)
         {
@@ -1105,31 +1244,17 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
         }
 
         string Canon(string? value) => string.Concat((value ?? "").Where(char.IsLetterOrDigit).Select(char.ToLowerInvariant));
-        // PDF navigation lines often append their printed page number. Preserve strict matching
-        // for final emitted titles, but treat only a numeric suffix as a candidate-stage match.
-        bool CandidateMatches(string? candidate, string? expectedTitle)
-        {
-            var actual = Canon(candidate);
-            var expectedTitleCanonical = Canon(expectedTitle);
-            return actual == expectedTitleCanonical ||
-                   actual.StartsWith(expectedTitleCanonical, StringComparison.Ordinal) &&
-                   actual[expectedTitleCanonical.Length..].All(char.IsDigit);
-        }
         var expected = truth.Select(e => Canon(e.Text)).ToArray();
-        int CandidateHits(IEnumerable<string> texts) => truth.Count(e => texts.Any(t => CandidateMatches(t, e.Text)));
-        int ExactTitleHits(IEnumerable<string> texts) => expected.Count(e => texts.Select(Canon).Any(t => t == e));
+        int Hits(IEnumerable<string> texts) => expected.Count(e => texts.Select(Canon).Any(t => t == e));
         var allCandidates = audit.CandidateBlocks;
         var selected = audit.SelectedCandidateBlocks;
-        var semanticHeadingIds = audit.SemanticBlockDecisions
-            .Where(d => string.Equals(d.Role, "HeadingTopic", StringComparison.OrdinalIgnoreCase))
-            .Select(d => d.Id).ToHashSet(StringComparer.Ordinal);
         var headingIds = audit.BlockDecisions
             .Where(d => string.Equals(d.Role, "HeadingTopic", StringComparison.OrdinalIgnoreCase))
             .Select(d => d.Id).ToHashSet(StringComparer.Ordinal);
-        var semanticHeadings = selected.Where(b => semanticHeadingIds.Contains(b.Id)).ToArray();
         var roleHeading = selected.Where(b => headingIds.Contains(b.Id)).ToArray();
         var grounded = selected.Where(b => audit.GroundedBlockIds.Contains(b.Id, StringComparer.Ordinal)).ToArray();
         var aligned = selected.Where(b => audit.AlignedBlockIds.Contains(b.Id, StringComparer.Ordinal)).ToArray();
+        var stageTraces = audit.CandidateStageTraces;
         var finalOutline = new DocumentOutline
         {
             File = file,
@@ -1139,74 +1264,203 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             DeterministicRoute = "auto:pdf-layout-block-grounded",
             RouteAudit = audit,
         };
-        var score = evaluationAnchor.Complete
-            ? Evaluator.Score(file, finalOutline, [], evaluationKey)
-            : Evaluator.Score(file, finalOutline, [], key);
-        var exact = ExactTitleHits(result.Headings.Select(h => h.Text));
-        var evaluationTruth = evaluationKey.PositiveEntries.Where(e => !string.IsNullOrWhiteSpace(e.Text)).ToArray();
-        var anchorHits = evaluationTruth.Count(e => result.Headings.Any(h =>
-            Canon(h.Text) == Canon(e.Text) && h.Index == e.Index));
-        var levelHits = evaluationTruth.Count(e => result.Headings.Any(h =>
-            Canon(h.Text) == Canon(e.Text) && h.Index == e.Index && h.Level == e.Level));
+        var score = Evaluator.Score(file, finalOutline, [], key);
+        var exact = Hits(result.Headings.Select(h => h.Text));
+        var modelUnavailable = stageTraces.Count > 0 && audit.BlockDecisions.Count == 0 &&
+            stageTraces.All(trace => trace.SemanticRole is "Unknown" or "Uncertain");
+        var levelHits = truth.Count(e => result.Headings.Any(h => Canon(h.Text) == Canon(e.Text) && h.Level == e.Level));
+        var markerReconstructed = result.Headings
+            .Where(h => h.BoundarySource == "pdf-marker-span-reconstruction")
+            .ToArray();
+        var visualRecovered = result.Headings
+            .Where(h => h.SourceId?.StartsWith("v-", StringComparison.Ordinal) == true)
+            .ToArray();
+        var visualRecoveredKeyTitles = truth
+            .Where(entry => visualRecovered.Any(heading => Canon(heading.Text) == Canon(entry.Text)))
+            .Select(entry => entry.Text!)
+            .ToArray();
         var missingCandidateTitles = truth
-            .Where(e => !allCandidates.Any(b => CandidateMatches(b.Text, e.Text)))
+            .Where(e => !allCandidates.Any(b => Canon(b.Text) == Canon(e.Text)))
             .Select(e => e.Text!)
             .ToArray();
-        var candidateLossTrace = PdfLayoutEvidenceOutline.TraceCandidateRetrieval(file, missingCandidateTitles);
+        // This is deterministic and intentionally separate from hosted inference. Persist it with
+        // the immutable per-region facts so a changed key/metric can be replayed offline.
+        var visualRepresentation = visualAnalyst is null
+            ? null
+            : PdfVisualRepresentationAudit.Evaluate(PdfTextbookOutline.FindSiblingPdf(file)!, slim, key);
         rows.Add(new
         {
-            file = Path.GetFileName(file), status = "measured", key = key.Count,
-            evaluationAnchor = new
+            file = Path.GetFileName(file), status = modelUnavailable ? "model-unavailable" : "measured", key = key.Count,
+            modelUnavailable,
+            rawCandidateRecall = new { hits = Hits(allCandidates.Select(b => b.Text)), total = key.Count, candidates = allCandidates.Count },
+            analystCoverage = new { hits = Hits(selected.Select(b => b.Text)), total = key.Count, selected = selected.Count, available = audit.CandidatesAvailable },
+            vlmRole = new { hits = Hits(roleHeading.Select(b => b.Text)), selected = roleHeading.Length, precision = roleHeading.Length == 0 ? (double?)null : Hits(roleHeading.Select(b => b.Text)) / (double)roleHeading.Length },
+            pdfGrounding = new { hits = Hits(grounded.Select(b => b.Text)), total = key.Count, grounded = grounded.Length },
+            docxAlignment = new { hits = Hits(aligned.Select(b => b.Text)), total = key.Count, aligned = aligned.Length },
+            validation = new
             {
-                complete = evaluationAnchor.Complete,
-                resolved = evaluationAnchor.Entries.Count(entry => entry.Status == "resolved"),
-                unresolved = evaluationAnchor.Entries.Count(entry => entry.Status == "unresolved"),
-                entries = o.Pipeline.ShowRawOutput ? evaluationAnchor.Entries : null,
+                proposed = stageTraces.Count(trace => trace.SemanticRole is not ("unknown" or "Uncertain")),
+                semanticHeading = audit.BlockDecisions.Count(decision =>
+                    string.Equals(decision.Role, "HeadingTopic", StringComparison.OrdinalIgnoreCase)),
+                eligible = stageTraces.Count(trace => trace.ValidationStatus == "eligible"),
+                unresolved = stageTraces.Count(trace => trace.ValidationStatus == "unresolved"),
+                invalidSpan = stageTraces.Count(trace => trace.SpanStatus == "invalid"),
+                scopeConflict = stageTraces.Count(trace => trace.Reason == "scope-conflict"),
             },
-            candidateRecall = new { hits = CandidateHits(allCandidates.Select(b => b.Text)), total = key.Count, candidates = allCandidates.Count },
-            analystCoverage = new { hits = CandidateHits(selected.Select(b => b.Text)), total = key.Count, selected = selected.Count, available = audit.CandidatesAvailable },
-            semanticRole = new { hits = CandidateHits(semanticHeadings.Select(b => b.Text)), selected = semanticHeadings.Length, precision = semanticHeadings.Length == 0 ? (double?)null : CandidateHits(semanticHeadings.Select(b => b.Text)) / (double)semanticHeadings.Length },
-            visualRole = new { hits = CandidateHits(roleHeading.Select(b => b.Text)), selected = roleHeading.Length, precision = roleHeading.Length == 0 ? (double?)null : CandidateHits(roleHeading.Select(b => b.Text)) / (double)roleHeading.Length },
-            pdfGrounding = new { hits = CandidateHits(grounded.Select(b => b.Text)), total = key.Count, grounded = grounded.Length },
-            docxAlignment = new { hits = CandidateHits(aligned.Select(b => b.Text)), total = key.Count, aligned = aligned.Length },
             titleExact = new { hits = exact, total = key.Count },
-            anchorExact = new { hits = anchorHits, total = key.Count },
+            markerSpanReconstruction = new
+            {
+                headings = markerReconstructed.Length,
+                titleExact = Hits(markerReconstructed.Select(h => h.Text)),
+            },
+            visualProposal = new
+            {
+                queried = audit.VisualEvidence.Count,
+                neighborhood = new
+                {
+                    minAbove = audit.VisualEvidence.Count == 0 ? 0 : audit.VisualEvidence.Min(item => item.ContextLinesAbove),
+                    maxAbove = audit.VisualEvidence.Count == 0 ? 0 : audit.VisualEvidence.Max(item => item.ContextLinesAbove),
+                    minBelow = audit.VisualEvidence.Count == 0 ? 0 : audit.VisualEvidence.Min(item => item.ContextLinesBelow),
+                    maxBelow = audit.VisualEvidence.Count == 0 ? 0 : audit.VisualEvidence.Max(item => item.ContextLinesBelow),
+                },
+                roles = audit.VisualEvidence.GroupBy(item => item.Role)
+                    .OrderBy(group => group.Key, StringComparer.Ordinal)
+                    .Select(group => new { role = group.Key, count = group.Count() }).ToArray(),
+                evidence = o.Pipeline.ShowRawOutput ? audit.VisualEvidence : null,
+            },
+            proposalResolution = new
+            {
+                decisions = audit.ProposalResolutions.GroupBy(item => item.Resolution)
+                    .OrderBy(group => group.Key, StringComparer.Ordinal)
+                    .Select(group => new { resolution = group.Key, count = group.Count() }).ToArray(),
+                items = o.Pipeline.ShowRawOutput ? audit.ProposalResolutions : null,
+            },
+            semanticHierarchy = new
+            {
+                proposals = audit.HierarchyProposals.Count,
+                decisions = audit.HierarchyProposals.GroupBy(item => item.Resolution)
+                    .OrderBy(group => group.Key, StringComparer.Ordinal)
+                    .Select(group => new { resolution = group.Key, count = group.Count() }).ToArray(),
+                items = o.Pipeline.ShowRawOutput ? audit.HierarchyProposals : null,
+            },
+            textLayerRecovery = new
+            {
+                items = audit.TextLayerRecoveries.GroupBy(item => item.Status)
+                    .OrderBy(group => group.Key, StringComparer.Ordinal)
+                    .Select(group => new { status = group.Key, count = group.Count() }).ToArray(),
+                validatedHeadings = visualRecovered.Length,
+                recoveredKeyTitles = visualRecoveredKeyTitles,
+                missingKeyRecovered = missingCandidateTitles
+                    .Where(title => visualRecoveredKeyTitles.Any(recovered => Canon(recovered) == Canon(title)))
+                    .ToArray(),
+            },
             levelAccuracy = new { hits = levelHits, total = key.Count },
             final = new { result = result.Headings.Count, precision = score.Precision, recall = score.Recall, f1 = score.F1, nav = score.NavigationRecall, navLevel = score.NavigationLevelAccuracy },
             rawAnalystResponses = o.Pipeline.ShowRawOutput ? audit.RawAnalystResponses : null,
-            blockAudit = o.Pipeline.ShowRawOutput
-                ? selected.Select(block => new
-                {
-                    block.Id,
-                    block.Page,
-                    block.Text,
-                    textDecision = audit.BlockDecisions.FirstOrDefault(decision => decision.Id == block.Id),
-                    visualDecision = audit.VisualBlockDecisions.FirstOrDefault(decision => decision.Id == block.Id),
-                    grounded = audit.GroundedBlockIds.Contains(block.Id, StringComparer.Ordinal),
-                    rejection = audit.GroundingRejections.FirstOrDefault(rejection => rejection.Id == block.Id),
-                }).ToArray()
-                : null,
+            modelInputContracts = o.Pipeline.ShowRawOutput ? audit.ModelInputContracts : null,
             candidateKeyTitles = o.Pipeline.ShowRawOutput
-                ? truth.Where(e => allCandidates.Any(b => CandidateMatches(b.Text, e.Text))).Select(e => e.Text).ToArray()
+                ? truth.Where(e => allCandidates.Any(b => Canon(b.Text) == Canon(e.Text))).Select(e => e.Text).ToArray()
                 : null,
             analystVisibleKeyTitles = o.Pipeline.ShowRawOutput
-                ? truth.Where(e => selected.Any(b => CandidateMatches(b.Text, e.Text))).Select(e => e.Text).ToArray()
+                ? truth.Where(e => selected.Any(b => Canon(b.Text) == Canon(e.Text))).Select(e => e.Text).ToArray()
                 : null,
-            missingCandidateTitles,
-            candidateLosses = candidateLossTrace.Select(trace => new
+            candidateStageTraces = o.Pipeline.ShowRawOutput ? stageTraces : null,
+            visualInferenceArtifact = visualAnalyst is null ? null : new
             {
-                title = trace.ExpectedText,
-                trace.FirstLossStage,
-                trace.RawFilterReasons,
-                trace.RawWindowText,
-            }).ToArray(),
-            retrievalTrace = candidateLossTrace,
+                schemaVersion = 1,
+                recoveries = audit.VisualRecoveries,
+                representation = visualRepresentation!.Entries,
+            },
+            missingCandidateTitles,
+            retrievalTrace = PdfLayoutEvidenceOutline.TraceCandidateRetrieval(file, missingCandidateTitles),
         });
     }
 
     var json = JsonSerializer.Serialize(rows, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
     if (o.OutputPath is null) Console.WriteLine(json);
     else await File.WriteAllTextAsync(Path.GetFullPath(o.OutputPath), json, new UTF8Encoding(false), ct);
+    return 0;
+}
+
+static int RunPdfRankEval(CommandLineOptions o)
+{
+    var files = ExpandCalibrationInputs(o.Inputs);
+    var keyIndex = BuildKeyIndex(files, o.PdfStageKeyRoot);
+    if (files.Count == 0) { Console.Error.WriteLine("Không tìm thấy DOCX để chấm PDF ranking."); return 2; }
+
+    string Canon(string? value) => string.Concat((value ?? "").Where(char.IsLetterOrDigit).Select(char.ToLowerInvariant));
+    bool Matches(string candidate, string expected)
+    {
+        var left = Canon(candidate);
+        var right = Canon(expected);
+        return left == right || (right.Length >= 12 && left.Contains(right, StringComparison.Ordinal));
+    }
+
+    var rows = new List<object>();
+    foreach (var file in files)
+    {
+        var stem = Path.GetFileNameWithoutExtension(file);
+        var sourceKeyRoot = Path.GetFullPath(o.PdfStageKeyRoot ?? "keys");
+        var sourceKeys = keyIndex.TryGetValue(stem, out var paths)
+            ? paths.Where(path => path.StartsWith(sourceKeyRoot + Path.DirectorySeparatorChar,
+                StringComparison.OrdinalIgnoreCase)).ToArray()
+            : Array.Empty<string>();
+        if (sourceKeys.Length != 1)
+        {
+            rows.Add(new { file = Path.GetFileName(file), status = sourceKeys.Length == 0 ? "no-source-key" : "ambiguous-source-key" });
+            continue;
+        }
+
+        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var rawKey = AnswerKey.Load(sourceKeys[0]);
+        var stableMap = slim.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
+            .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
+        var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
+        var truth = key.PositiveEntries.Where(entry => !string.IsNullOrWhiteSpace(entry.Text)).ToArray();
+        if (truth.Length != key.Count)
+        {
+            rows.Add(new { file = Path.GetFileName(file), status = "key-title-not-measured", key = key.Count, titledKey = truth.Length });
+            continue;
+        }
+
+        var ranking = PdfLayoutEvidenceOutline.BuildCandidateRankingAudit(file);
+        if (ranking.Status != "ranked")
+        {
+            rows.Add(new { file = Path.GetFileName(file), status = ranking.Status, candidates = ranking.CandidateCount });
+            continue;
+        }
+
+        var cutoffs = new[] { 25, 50, 100, 200, 400, 800, ranking.CandidateCount }.Distinct().Order().ToArray();
+        var ranked = ranking.Candidates;
+        var recall = cutoffs.Select(cutoff => new
+        {
+            k = cutoff,
+            hits = truth.Count(entry => ranked.Take(cutoff).Any(candidate => Matches(candidate.Text, entry.Text!))),
+            total = truth.Length,
+        }).ToArray();
+        var poolHits = truth.Where(entry => ranked.Any(candidate => Matches(candidate.Text, entry.Text!))).ToArray();
+        var poolMisses = truth.Where(entry => !ranked.Any(candidate => Matches(candidate.Text, entry.Text!)))
+            .Select(entry => entry.Text).ToArray();
+        rows.Add(new
+        {
+            file = Path.GetFileName(file),
+            status = "measured",
+            key = key.Count,
+            parserObservable = new { hits = poolHits.Length, total = truth.Length, missingTitles = poolMisses },
+            candidatePool = new { count = ranking.CandidateCount },
+            recallAt = recall,
+            tierCounts = ranked.GroupBy(candidate => candidate.Tier.ToString()).ToDictionary(group => group.Key, group => group.Count()),
+            candidates = ranked,
+        });
+    }
+
+    var json = JsonSerializer.Serialize(rows, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else File.WriteAllText(Path.GetFullPath(o.OutputPath), json, new UTF8Encoding(false));
     return 0;
 }
 
@@ -1302,7 +1556,7 @@ static async Task<IHeaderClassifier> CreateClassifierAsync(CommandLineOptions o,
     }
 }
 
-static IReadOnlyDictionary<string, IReadOnlyList<string>> BuildKeyIndex(IReadOnlyList<string> files)
+static IReadOnlyDictionary<string, IReadOnlyList<string>> BuildKeyIndex(IReadOnlyList<string> files, string? additionalKeyRoot = null)
 {
     var keys = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
     void AddKey(string path)
@@ -1321,6 +1575,12 @@ static IReadOnlyDictionary<string, IReadOnlyList<string>> BuildKeyIndex(IReadOnl
     {
         if (!Directory.Exists(root)) continue;
         foreach (var key in Directory.EnumerateFiles(root, "*.key", SearchOption.AllDirectories))
+            AddKey(key);
+    }
+
+    if (!string.IsNullOrWhiteSpace(additionalKeyRoot) && Directory.Exists(additionalKeyRoot))
+    {
+        foreach (var key in Directory.EnumerateFiles(additionalKeyRoot, "*.key", SearchOption.AllDirectories))
             AddKey(key);
     }
 

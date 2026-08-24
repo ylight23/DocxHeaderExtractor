@@ -80,28 +80,30 @@ public sealed class CommandLineOptions
     public bool PdfStageSupplementCandidates { get; private set; }
 
     /// <summary>Audit-only cap for PDF semantic analyst blocks.</summary>
-    // pdf-stage-eval is a quality measurement command: a hidden top-N cap would make recall
-    // meaningless. Use --pdf-stage-blocks explicitly for a latency/cost smoke run.
     public int PdfStageAnalystBlocks { get; private set; }
-    /// <summary>Maximum independent image crops allowed by the configured remote VLM gateway.</summary>
-    public int VlmMaxImagesPerRequest { get; private set; } = 1;
-    /// <summary>Bounded remote VLM request parallelism for single-crop gateways.</summary>
-    public int VlmMaxConcurrentRequests { get; private set; } = 4;
+    public int PdfStageVisualRegions { get; private set; }
+    public string? PdfStageVisualProducer { get; private set; }
+    public bool PdfStageVisualScheduler { get; private set; }
 
     /// <summary>Audit-only: screen every retrieved PDF candidate in batches.</summary>
     public bool PdfStageAllCandidates { get; private set; }
 
-    /// <summary>Audit-only: keep every PDF line in coarse blocks; risk flags do not remove it.</summary>
-    public bool PdfStageLosslessBlocks { get; private set; }
+    /// <summary>Explicit key directory for a PDF stage holdout; never used by normal extraction.</summary>
+    public string? PdfStageKeyRoot { get; private set; }
 
-    /// <summary>Audit-only: screen every source PDF line as an atomic, groundable span.</summary>
-    public bool PdfStageAtomicLines { get; private set; }
+    /// <summary>Use hosted NVIDIA NIM for text and visual PDF audit passes.</summary>
+    public bool UseNvidiaNim { get; private set; }
 
-    /// <summary>Audit-only: require VLM visual confirmation for text heading/uncertain PDF candidates.</summary>
-    public bool PdfStageVisualReview { get; private set; }
+    /// <summary>Zero-based visual gap region chosen by the isolated PDF visual diagnostic.</summary>
+    public int PdfVisualProbeIndex { get; private set; }
 
-    /// <summary>Audit-only: measure PDF retrieval loss without invoking the analyst.</summary>
-    public bool PdfStageRetrievalOnly { get; private set; }
+    /// <summary>Observed visual text used for source-only reconciliation diagnostics.</summary>
+    public string? PdfVisualProbeText { get; private set; }
+    public bool PdfVisualProbeList { get; private set; }
+    public int? PdfVisualPage { get; private set; }
+    public bool PdfVisualLineList { get; private set; }
+    public string? PdfVisualRepresentationGoldPath { get; private set; }
+    public List<string> PdfVisualArtifacts { get; } = [];
 
     public static CommandLineOptions Parse(string[] args)
     {
@@ -113,7 +115,7 @@ public sealed class CommandLineOptions
 
         int i = 0;
         if (!args[0].StartsWith('-') &&
-            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-tags" or "pdf-bookmarks" or "verify-corrupt")
+            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-tags" or "pdf-bookmarks" or "verify-corrupt")
         {
             o.Command = args[0];
             i = 1;
@@ -161,16 +163,24 @@ public sealed class CommandLineOptions
                 case "--pdf-bold-fallback": o.Pipeline.PdfBoldLabelFallback = true; break;
                 case "--pdf-layout-evidence": o.Pipeline.PdfLayoutEvidenceFallback = true; break;
                 case "--pdf-layout-analyst": o.Pipeline.PdfLayoutAnalystFallback = true; break;
+                case "--pdf-first": o.Pipeline.PdfFirstValidatedFallback = true; break;
+                case "--pdf-first-blocks": o.Pipeline.PdfFirstAnalystBlocks = int.Parse(Next(a)); break;
+                case "--pdf-first-visual-regions": o.Pipeline.PdfFirstVisualRegions = Math.Max(0, int.Parse(Next(a))); break;
                 case "--pdf-stage-wide": o.PdfStageWideCandidates = true; break;
                 case "--pdf-stage-supplement": o.PdfStageSupplementCandidates = true; break;
                 case "--pdf-stage-all": o.PdfStageAllCandidates = true; break;
                 case "--pdf-stage-blocks": o.PdfStageAnalystBlocks = int.Parse(Next(a)); break;
-                case "--vlm-max-images": o.VlmMaxImagesPerRequest = Math.Max(1, int.Parse(Next(a))); break;
-                case "--vlm-concurrency": o.VlmMaxConcurrentRequests = Math.Clamp(int.Parse(Next(a)), 1, 16); break;
-                case "--pdf-stage-lossless": o.PdfStageLosslessBlocks = true; break;
-                case "--pdf-stage-atomic": o.PdfStageAtomicLines = true; break;
-                case "--pdf-stage-vlm": o.PdfStageVisualReview = true; break;
-                case "--pdf-stage-retrieval-only": o.PdfStageRetrievalOnly = true; break;
+                case "--pdf-stage-visual-regions": o.PdfStageVisualRegions = Math.Max(0, int.Parse(Next(a))); break;
+                case "--pdf-stage-visual-producer": o.PdfStageVisualProducer = Next(a); break;
+                case "--pdf-stage-visual-scheduler": o.PdfStageVisualScheduler = true; break;
+                case "--pdf-stage-key-root": o.PdfStageKeyRoot = Next(a); break;
+                case "--pdf-visual-probe-index": o.PdfVisualProbeIndex = Math.Max(0, int.Parse(Next(a))); break;
+                case "--pdf-visual-probe-text": o.PdfVisualProbeText = Next(a); break;
+                case "--pdf-visual-probe-list": o.PdfVisualProbeList = true; break;
+                case "--pdf-visual-page": o.PdfVisualPage = Math.Max(1, int.Parse(Next(a))); break;
+                case "--pdf-visual-line-list": o.PdfVisualLineList = true; break;
+                case "--gold": o.PdfVisualRepresentationGoldPath = Next(a); break;
+                case "--visual-artifact": o.PdfVisualArtifacts.Add(Next(a)); break;
                 case "--no-docling-sidecar": o.Pipeline.DoclingSidecarFallback = false; break;
                 case "--docling-json":
                     o.Pipeline.DoclingJsonPath = Next(a);
@@ -215,20 +225,29 @@ public sealed class CommandLineOptions
                     o.Pipeline.Backend = InferenceBackend.Sglang;
                     o.Pipeline.Sglang.ApiKey = Next(a);
                     break;
-                case "--nvidia":
-                    ConfigureNvidia(o);
-                    break;
-                case "--nvidia-model":
-                    ConfigureNvidia(o);
-                    o.Pipeline.Sglang.Model = Next(a);
-                    break;
-                case "--nvidia-api-key":
-                    ConfigureNvidia(o);
-                    o.Pipeline.Sglang.ApiKey = Next(a);
-                    break;
                 case "--sglang-context":
                     o.Pipeline.Backend = InferenceBackend.Sglang;
                     o.Pipeline.Sglang.ContextSize = int.Parse(Next(a));
+                    break;
+                case "--nvidia-nim":
+                    o.UseNvidiaNim = true;
+                    o.Pipeline.Backend = InferenceBackend.Sglang;
+                    o.Pipeline.Sglang.Endpoint = new Uri("https://integrate.api.nvidia.com/v1/chat/completions");
+                    o.Pipeline.Sglang.ApiKey = Environment.GetEnvironmentVariable("NVIDIA_API_KEY") ?? "";
+                    o.Pipeline.Sglang.Model = Environment.GetEnvironmentVariable("NVIDIA_MODEL")
+                        ?? "meta/llama-3.2-90b-vision-instruct";
+                    o.Pipeline.Sglang.RequestTimeoutSeconds = int.TryParse(
+                        Environment.GetEnvironmentVariable("NVIDIA_REQUEST_TIMEOUT_SECONDS"), out var nvidiaTimeout)
+                        ? Math.Clamp(nvidiaTimeout, 10, 600) : 90;
+                    o.Pipeline.Sglang.TransientRequestRetries = int.TryParse(
+                        Environment.GetEnvironmentVariable("NVIDIA_TRANSIENT_RETRIES"), out var nvidiaRetries)
+                        ? Math.Clamp(nvidiaRetries, 0, 4) : 2;
+                    o.Pipeline.Sglang.ContextSize = 131072;
+                    o.Pipeline.Sglang.MaxOutputTokens = 384;
+                    o.Pipeline.Sglang.SendChatTemplateKwargs = false;
+                    o.Pipeline.Sglang.RequireJsonObjectResponse = true;
+                    if (string.IsNullOrWhiteSpace(o.Pipeline.Sglang.ApiKey))
+                        throw new InvalidOperationException("Thiếu NVIDIA_API_KEY cho --nvidia-nim.");
                     break;
                 case "--candidates-only": o.Pipeline.ReviewAllParagraphs = false; break;
                 case "--review-all": o.Pipeline.ReviewAllParagraphs = true; break;
@@ -332,14 +351,6 @@ public sealed class CommandLineOptions
         return o;
     }
 
-    private static void ConfigureNvidia(CommandLineOptions options)
-    {
-        options.Pipeline.Backend = InferenceBackend.Sglang;
-        options.Pipeline.Sglang.Endpoint = new Uri("https://integrate.api.nvidia.com/v1/chat/completions");
-        options.Pipeline.Sglang.Model = "meta/llama-3.2-90b-vision-instruct";
-        options.Pipeline.Sglang.ApiKey = Environment.GetEnvironmentVariable("NVIDIA_API_KEY") ?? "";
-    }
-
     private static OutlineFormat ParseFormat(string s) => s.ToLowerInvariant() switch
     {
         "json" => OutlineFormat.Json,
@@ -366,6 +377,11 @@ public sealed class CommandLineOptions
           dhx review-key <file.review.json>   # sinh .key + .training.jsonl từ review đã duyệt
           dhx toc-keys <thư-mục|file.docx>    # suy đáp án ỨNG VIÊN từ mục lục Word, mở rộng bench
           dhx pdf-clusters <file.pdf|file.docx> # dump cụm style PDF + mẫu; thêm model để hỏi text analyst
+          dhx pdf-rank-eval <file.docx> # freeze/rank toàn bộ PDF candidate, đo Recall@K; không gọi LLM
+          dhx pdf-visual-representation-eval <file.docx> --gold <file.key> # đo coverage Visual SourceFacts; không gọi model
+          dhx pdf-visual-result-eval <run.json> --gold <file.key> # chấm lại Visual Inference Artifact; không gọi model
+          dhx pdf-visual-provenance-eval <run1.json> <run2.json> # overlap/dedupe theo canonical DOCX identity; không gọi model
+          dhx pdf-visual-scheduler-benchmark <file.docx> --visual-artifact <run.json> [--visual-artifact <run.json>]
           dhx pdf-tags <file.pdf|file.docx>     # audit /H* -> MCID -> PDF text -> DOCX span; không đổi output
           dhx pdf-bookmarks <file.pdf|file.docx> # audit raw /Outlines -> title/level/page; không đổi output
                                               # hoặc --vlm-model/--vlm-mmproj để hỏi visual analyst
@@ -403,10 +419,9 @@ public sealed class CommandLineOptions
               --sglang-model m      Model identifier trên gateway (ví dụ Qwen3.8-27B)
               --sglang-endpoint u   Chat endpoint (mặc định http://127.0.0.1:30000/v1/chat/completions)
               --sglang-api-key k    Bearer token cho gateway
-              --nvidia              Dùng NVIDIA OpenAI-compatible endpoint với Llama 3.2 90B Vision.
-              --nvidia-model <id>   Đổi model NVIDIA; mặc định meta/llama-3.2-90b-vision-instruct.
-              --nvidia-api-key <k>  Ghi đè NVIDIA_API_KEY cho lượt chạy này.
               --sglang-context n    Context gateway khai (mặc định 8192, CHƯA đo — chỉnh theo model)
+              --nvidia-nim          NVIDIA NIM hosted API; đọc NVIDIA_API_KEY, model mặc định
+                                    meta/llama-3.2-90b-vision-instruct (đổi bằng NVIDIA_MODEL).
               --candidates-only      Chỉ gửi ứng viên heuristic cho model (mặc định production)
               --review-all           Gửi mọi paragraph cho model (audit/thu nhãn; rất chậm)
               --dump-chunks <thư mục> (lệnh xml) Ghi từng khối sẽ gửi cho mô hình + system prompt
@@ -424,16 +439,14 @@ public sealed class CommandLineOptions
                                     bằng luật .NET. Không gọi Python/Docling trong runtime.
               --pdf-layout-evidence Bật route layout PDF chung deterministic (sandbox).
               --pdf-layout-analyst  Hỏi LLM cho tối đa 40 PDF candidate blocks sau filter, rồi grounding.
+              --pdf-first            Chạy pipeline PDF-first mới: retrieval rộng + 9B role/span + validator.
+                                    Output chưa calibration giữ RequiresReview, không tự writeback.
+              --pdf-first-blocks n   Chỉ smoke PDF-first: giới hạn candidate đưa vào model; 0 = toàn bộ.
               --pdf-stage-wide      Chỉ pdf-stage-eval: mở candidate PDF cho LLM ngoài learned style (audit-only).
               --pdf-stage-supplement Chỉ pdf-stage-eval: thêm block PDF gộp dài từ raw lines (audit-only).
               --pdf-stage-all       Chỉ pdf-stage-eval: LLM screen toàn bộ PDF candidate theo batch (audit-only; chậm).
-              --pdf-stage-blocks n  Chỉ pdf-stage-eval: trần block PDF đưa vào analyst cho smoke/latency (mặc định: toàn bộ candidate).
-              --vlm-max-images n    Số ảnh độc lập/gọi VLM gateway cho phép (mặc định 1; NVIDIA hosted hiện là 1).
-              --vlm-concurrency n   Tối đa request crop VLM song song khi gateway chỉ nhận 1 ảnh (mặc định 4).
-              --pdf-stage-lossless  Chỉ pdf-stage-eval: block PDF coarse lossless, không loại table/header/repeat.
-              --pdf-stage-atomic    Chỉ pdf-stage-eval: Qwen chọn atomic PDF line/span, không tạo window candidate.
-              --pdf-stage-vlm       Chỉ pdf-stage-eval: VLM xác nhận candidate heading/uncertain theo crop có dòng lân cận.
-              --pdf-stage-retrieval-only Chỉ pdf-stage-eval: đo mất candidate PDF, không gọi LLM.
+              --pdf-stage-blocks n  Chỉ pdf-stage-eval: smoke cap; mặc định 0 = screen toàn bộ pool.
+              --pdf-stage-key-root d Chỉ pdf-stage-eval: thư mục key holdout tường minh, không dùng key production.
               --no-docling-sidecar  Tắt adapter Docling explicit (mặc định vốn tắt).
               --key-limit <n>       Với repair-key-package, số heading trong mẫu review (mặc định 30)
               --key-start <n>       Với repair-key-package, bỏ qua N heading đầu trước khi lấy mẫu

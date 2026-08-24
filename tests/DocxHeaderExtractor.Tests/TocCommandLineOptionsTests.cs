@@ -6,6 +6,64 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class TocCommandLineOptionsTests
 {
     [Fact]
+    public void PdfStageCanUseAnExplicitHoldoutKeyRoot()
+    {
+        var options = CommandLineOptions.Parse([
+            "pdf-stage-eval", "procurement.docx", "--pdf-stage-key-root", ".verify-build/wb-holdout-pdf-toc-full",
+        ]);
+
+        Assert.Equal("pdf-stage-eval", options.Command);
+        Assert.Equal(".verify-build/wb-holdout-pdf-toc-full", options.PdfStageKeyRoot);
+    }
+
+    [Fact]
+    public void PdfStageDefaultsToScreeningTheEntireCandidatePool()
+    {
+        var options = CommandLineOptions.Parse(["pdf-stage-eval", "document.docx"]);
+
+        Assert.Equal(0, options.PdfStageAnalystBlocks);
+    }
+
+    [Fact]
+    public void PdfVisualProbeParsesItsRegionSelector()
+    {
+        var options = CommandLineOptions.Parse([
+            "pdf-visual-probe", "document.docx", "--pdf-visual-probe-index", "3",
+        ]);
+
+        Assert.Equal("pdf-visual-probe", options.Command);
+        Assert.Equal(3, options.PdfVisualProbeIndex);
+    }
+
+    [Fact]
+    public void PdfVisualProbeCanInspectSourceWithoutCallingAModel()
+    {
+        var options = CommandLineOptions.Parse([
+            "pdf-visual-probe", "document.docx", "--pdf-visual-probe-text", "Chapter IV Security",
+        ]);
+
+        Assert.Equal("Chapter IV Security", options.PdfVisualProbeText);
+    }
+
+    [Fact]
+    public void PdfVisualProbeCanListLosslessVisualSourceFacts()
+    {
+        var options = CommandLineOptions.Parse(["pdf-visual-probe", "document.docx", "--pdf-visual-probe-list"]);
+
+        Assert.True(options.PdfVisualProbeList);
+    }
+
+    [Fact]
+    public void PdfVisualRegionCapsAreExplicitAndDefaultToLossless()
+    {
+        var defaults = CommandLineOptions.Parse(["pdf-stage-eval", "document.docx"]);
+        var capped = CommandLineOptions.Parse(["pdf-stage-eval", "document.docx", "--pdf-stage-visual-regions", "12"]);
+
+        Assert.Equal(0, defaults.PdfStageVisualRegions);
+        Assert.Equal(12, capped.PdfStageVisualRegions);
+    }
+
+    [Fact]
     public void Toc_partial_duoc_bat_bang_co_rieng()
     {
         var o = CommandLineOptions.Parse(["toc-keys", "corpus", "--toc-match-threshold", "0.4", "--toc-partial"]);

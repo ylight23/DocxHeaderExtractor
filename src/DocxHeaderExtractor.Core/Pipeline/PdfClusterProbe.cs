@@ -212,7 +212,7 @@ public static class PdfClusterProbe
         {
             var analysis = await PdfSemanticClusterAnalyst.AnalyzeAsync(analyst, profile, lines, ct);
             decisions = analysis.Decisions.Select(ToDto).ToArray();
-            var blockAnalysis = await PdfBlockAnalyst.AnalyzeAsync(analyst, candidateBlocks, ct);
+            var blockAnalysis = await PdfBlockAnalyst.AnalyzeAsync(analyst, candidateBlocks, ct: ct);
             blockDecisions = blockAnalysis.Decisions.Select(ToDto).ToArray();
             var grounding = PdfBlockGrounder.Ground(
                 candidateBlocks,
@@ -230,8 +230,9 @@ public static class PdfClusterProbe
                 visualAnalyst,
                 pdf,
                 candidateBlocks,
+                lines,
                 visualDpi,
-                ct);
+                ct: ct);
             visualBlockDecisions = visual.Decisions.Select(ToDto).ToArray();
             visualAnalystRaw = visual.RawResponses.Select(SafeRaw).ToArray();
         }

@@ -18,7 +18,7 @@ namespace DocxHeaderExtractor.Core.Vision;
 /// Nạp model tốn vài giây và vài trăm MB-GB RAM; gọi lại nhiều lần nên tái dùng cùng một instance.
 /// </para>
 /// </summary>
-public sealed class VlmImageQuestion : IVisualQuestion
+public sealed class VlmImageQuestion : IPdfVisualQuestion
 {
     private readonly LLamaWeights _weights;
     private readonly MtmdWeights _mtmd;

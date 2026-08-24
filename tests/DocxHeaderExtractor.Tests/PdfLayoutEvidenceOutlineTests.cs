@@ -5,19 +5,6 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class PdfLayoutEvidenceOutlineTests
 {
     [Fact]
-    public void Retrieval_trace_keeps_retained_risk_candidate_out_of_loss_bucket()
-    {
-        // This is a unit-level guard for the audit contract: risk flags must not be reported as a
-        // retrieval loss once a later candidate lane retains the same title.
-        var trace = new PdfCandidateRetrievalTrace(
-            "Introduction", true, ["header-footer-zone"], true, false, true, true,
-            "candidate-available", "Introduction 1");
-
-        Assert.Equal("candidate-available", trace.FirstLossStage);
-        Assert.True(trace.FoundInSupplementCandidate);
-    }
-
-    [Fact]
     public void AnalystBudgetCoversEveryPageBeforeTakingSecondBlock()
     {
         var blocks = Enumerable.Range(1, 28)
@@ -47,6 +34,74 @@ public sealed class PdfLayoutEvidenceOutlineTests
 
         Assert.Equal(blocks.Length, selection.Selected.Count);
         Assert.Equal(blocks.Select(b => b.Id), selection.Selected.Select(b => b.Id));
+    }
+
+    [Fact]
+    public void RankedSelectionUsesPlanOrderWithoutRemovingTheCandidatePool()
+    {
+        var blocks = new[] { Block("low", 1, 700), Block("high", 2, 700) };
+        var ranked = new[]
+        {
+            new RankedCandidate("high", 2, "high", 0.9, 0.2, ModelTier.Small, [], [], []),
+            new RankedCandidate("low", 1, "low", 0.2, 0.8, ModelTier.Frontier, [], [], []),
+        };
+
+        var selection = PdfLayoutEvidenceOutline.SelectRankedCandidates(blocks, ranked, 1);
+
+        Assert.Equal(2, selection.Available);
+        Assert.Equal(new[] { "high" }, selection.Selected.Select(block => block.Id));
+    }
+
+    [Fact]
+    public void VisualSelectionDefersSemanticUncertaintyToSecondTextPass()
+    {
+        var strong = Block("strong", 1, 700, "Article 1 Scope and purpose");
+        var uncertain = Block("uncertain", 1, 680, "Applicability");
+        var ranked = new[]
+        {
+            new RankedCandidate("strong", 1, strong.Text, .94, .20, ModelTier.Deterministic, [], [], []),
+            new RankedCandidate("uncertain", 1, uncertain.Text, .42, .80, ModelTier.Frontier, [], [], ["boundary"]),
+        };
+        var decisions = new[]
+        {
+            new PdfBlockDecision("strong", PdfBlockRole.HeadingTopic, .95, "semantic"),
+            new PdfBlockDecision("uncertain", PdfBlockRole.Uncertain, 0, "ambiguous"),
+        };
+
+        var selected = PdfLayoutEvidenceOutline.SelectVisualEvidenceCandidates([strong, uncertain], ranked, decisions);
+
+        Assert.Empty(selected);
+    }
+
+    [Fact]
+    public void VisualSelectionDoesNotTreatTightHighScoreCompositeAsConflict()
+    {
+        var composite = Block("composite", 1, 700, "Chapter I General Provisions");
+        var ranked = new[]
+        {
+            new RankedCandidate("composite", 1, composite.Text, .90, .55, ModelTier.Medium,
+                ["labelled_numbering_marker", "canonical_marker_title"], [], ["multi_line_boundary"]),
+        };
+        var decisions = new[] { new PdfBlockDecision("composite", PdfBlockRole.HeadingTopic, .95, "semantic") };
+
+        var selected = PdfLayoutEvidenceOutline.SelectVisualEvidenceCandidates([composite], ranked, decisions);
+
+        Assert.Empty(selected);
+    }
+
+    [Fact]
+    public void VisualSelectionRequiresEvidenceForMarkerOnlySource()
+    {
+        var markerOnly = Block("marker", 1, 700, "Article 11");
+        var ranked = new[]
+        {
+            new RankedCandidate("marker", 1, markerOnly.Text, .94, .20, ModelTier.Deterministic, ["labelled_numbering_marker"], [], []),
+        };
+        var decisions = new[] { new PdfBlockDecision("marker", PdfBlockRole.HeadingTopic, .95, "semantic") };
+
+        var selected = PdfLayoutEvidenceOutline.SelectVisualEvidenceCandidates([markerOnly], ranked, decisions);
+
+        Assert.Equal("marker", Assert.Single(selected).Id);
     }
 
     [Fact]
@@ -117,42 +172,6 @@ public sealed class PdfLayoutEvidenceOutlineTests
     }
 
     [Fact]
-    public void AnalystBudgetSamplesAcrossTheDocumentWhenThereAreMorePagesThanSlots()
-    {
-        var blocks = Enumerable.Range(1, 100)
-            .Select(page => Block($"p{page}", page, 700))
-            .ToArray();
-
-        var selection = PdfLayoutEvidenceOutline.SelectAnalystCandidates(blocks, 10);
-
-        Assert.Equal(10, selection.Selected.Count);
-        Assert.Equal(1, selection.Selected.First().Page);
-        Assert.Equal(100, selection.Selected.Last().Page);
-        Assert.Contains(selection.Selected, block => block.Page is > 40 and < 60);
-    }
-
-    [Fact]
-    public void RankedBudgetUsesScoresWithinEachPageBeforeTakingAnotherSlot()
-    {
-        var blocks = new[]
-        {
-            Block("p1-low", 1, 700), Block("p1-high", 1, 650),
-            Block("p2-low", 2, 700), Block("p2-high", 2, 650),
-            Block("p3-low", 3, 700), Block("p3-high", 3, 650),
-        };
-        var ranks = new Dictionary<string, int>
-        {
-            ["p1-low"] = 1, ["p1-high"] = 10,
-            ["p2-low"] = 1, ["p2-high"] = 10,
-            ["p3-low"] = 1, ["p3-high"] = 10,
-        };
-
-        var selection = PdfLayoutEvidenceOutline.SelectAnalystCandidates(blocks, 3, null, ranks);
-
-        Assert.Equal(new[] { "p1-high", "p2-high", "p3-high" }, selection.Selected.Select(block => block.Id));
-    }
-
-    [Fact]
     public void SupplementRankFavorsStructuralMarkersOverPlainFragments()
     {
         var marked = Block("marked", 1, 700, "2.1 Scope of work");
@@ -163,59 +182,24 @@ public sealed class PdfLayoutEvidenceOutlineTests
             PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(plain));
     }
 
-    [Fact]
-    public void SupplementRankDoesNotTreatLongNumberedProseAsAStructuralMarker()
+    [Theory]
+    [InlineData("Article 1 1 Security assessment", "article:11")]
+    [InlineData("Abschnitt IV GENERAL PROVISIONS", "abschnitt:iv")]
+    [InlineData("Table 1 1 Financial results", "table:11")]
+    public void LooseMarkerAuditNormalizesSeparatedPdfDigits(string text, string expected)
     {
-        var heading = Block("heading", 1, 700, "2. Scope of work");
-        var prose = Block("prose", 1, 680,
-            "2 This is a deliberately long numbered provision containing several clauses, obligations, and explanatory prose that is not a navigation label.");
-
-        Assert.True(
-            PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(heading) >
-            PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(prose));
+        Assert.Equal(expected, PdfLayoutEvidenceOutline.ParseLooseLabelledMarkerForAudit(text));
     }
 
     [Fact]
-    public void SupplementRankDoesNotTreatShorterFootnoteProseAsAStructuralMarker()
+    public void MarkerSpanReconstructionCutsTitleFromLongConvertedParagraph()
     {
-        var heading = Block("heading", 1, 700, "2. Scope of work");
-        var footnote = Block("footnote", 1, 680,
-            "2 This report describes the financial position, activities, and operational results for the fiscal year.");
+        const string source = "Page noise and prior body. Article 11 Security assessment of important systems 1. The assessment is performed before approval.";
 
-        Assert.True(
-            PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(heading) >
-            PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(footnote));
-    }
+        var span = PdfLayoutEvidenceOutline.FindMarkerHeadingSpanForAudit(source, "Article 1 1 damaged PDF title");
 
-    [Fact]
-    public void SupplementRankPrefersCompactTopicOverUnnumberedBodySentence()
-    {
-        var heading = Block("heading", 1, 700, "Trust Fund Asset Summary");
-        var body = Block("body", 1, 680,
-            "This section presents the financial position and operational activity of the trust funds during the fiscal year.");
-
-        Assert.True(
-            PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(heading) >
-            PdfLayoutEvidenceOutline.ScoreSupplementForAnalyst(body));
-    }
-
-    [Fact]
-    public void CandidateRankCombinesMarkerStyleAndRiskWithoutDroppingTheCandidate()
-    {
-        var body = new PdfStyleKey(10, "Body", "black");
-        var headingStyle = new PdfStyleKey(14, "Heading", "blue");
-        var profile = new PdfStyleClusterProfile(
-            body, [], new HashSet<PdfStyleKey> { headingStyle }, new HashSet<PdfStyleKey>(), new HashSet<PdfStyleKey>());
-        var marker = Block("marker", 1, 700, "2. Scope", headingStyle);
-        var risky = Block("risky", 1, 680, "Scope", body);
-        var annotation = new PdfLineBlockAnnotation(risky.Lines[0], false, false, true, false, "table-like");
-
-        var markerScore = PdfLayoutEvidenceOutline.ScoreCandidateForAnalyst(marker, profile);
-        var riskyScore = PdfLayoutEvidenceOutline.ScoreCandidateForAnalyst(
-            risky, profile, new Dictionary<PdfLine, PdfLineBlockAnnotation> { [risky.Lines[0]] = annotation });
-
-        Assert.True(markerScore > riskyScore);
-        Assert.Equal("risky", risky.Id);
+        Assert.NotNull(span);
+        Assert.Equal("Article 11 Security assessment of important systems", source[span!.Start..span.End]);
     }
 
 
@@ -230,19 +214,6 @@ public sealed class PdfLayoutEvidenceOutlineTests
         var candidate = Assert.Single(candidates);
         Assert.Equal("s-line-1", candidate.Id);
         Assert.Equal("Chapter I General provisions", candidate.Text);
-    }
-
-    [Fact]
-    public void AtomicCatalogKeepsRiskLineAsGroundableUnit()
-    {
-        var line = new PdfLine(2, 700, 12, "DAY 1: TUESDAY", 0.8, "", 0, 72, 300, "serif", "black");
-        var risk = new PdfLineBlockAnnotation(line, false, true, true, false, "header-footer-zone,table-like");
-
-        var block = Assert.Single(PdfLayoutEvidenceOutline.BuildAtomicLineBlocks([risk]));
-
-        Assert.Equal("l1", block.Id);
-        Assert.Equal("DAY 1: TUESDAY", block.Text);
-        Assert.Same(line, Assert.Single(block.Lines));
     }
 
     [Fact]

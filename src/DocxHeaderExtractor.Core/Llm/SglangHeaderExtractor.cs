@@ -20,6 +20,8 @@ public sealed class SglangOptions
 
     public int MaxOutputTokens { get; set; } = 768;
     public int MissingIdRetries { get; set; } = 2;
+    public int RequestTimeoutSeconds { get; set; } = 90;
+    public int TransientRequestRetries { get; set; } = 2;
 
     /// <summary>
     /// Chưa đối chiếu song song-vs-tuần tự trên đúng gateway này (khác máy LM Studio đã đo ở
@@ -27,6 +29,16 @@ public sealed class SglangOptions
     /// tự đối chiếu output.
     /// </summary>
     public int MaxParallelRequests { get; set; } = 1;
+
+    /// <summary>
+    /// SGLang accepts a Qwen-specific thinking switch. Hosted OpenAI-compatible providers do not
+    /// necessarily recognize that field, so adapters must disable it rather than relying on the
+    /// server to ignore unknown JSON properties.
+    /// </summary>
+    public bool SendChatTemplateKwargs { get; set; } = true;
+
+    /// <summary>Ask compatible hosted APIs to return a JSON object for narrow pointer/role passes.</summary>
+    public bool RequireJsonObjectResponse { get; set; }
 
     /// <summary>Hook debug cục bộ để hiển thị request trước khi gửi.</summary>
     public Action<string>? DebugLog { get; set; }
@@ -43,6 +55,10 @@ public sealed class SglangOptions
             throw new InvalidOperationException("SGLANG_CONTEXT_SIZE phải nằm trong khoảng 1024..1048576.");
         if (MissingIdRetries is < 0 or > 5)
             throw new InvalidOperationException("SGLang MissingIdRetries phải nằm trong khoảng 0..5.");
+        if (RequestTimeoutSeconds is < 10 or > 600)
+            throw new InvalidOperationException("SGLANG_REQUEST_TIMEOUT_SECONDS phải nằm trong khoảng 10..600.");
+        if (TransientRequestRetries is < 0 or > 4)
+            throw new InvalidOperationException("SGLANG_TRANSIENT_RETRIES phải nằm trong khoảng 0..4.");
         if (MaxParallelRequests is < 1 or > 16)
             throw new InvalidOperationException("SGLANG_PARALLEL phải nằm trong khoảng 1..16.");
     }
@@ -65,6 +81,12 @@ public sealed class SglangOptions
             MaxParallelRequests = int.TryParse(Environment.GetEnvironmentVariable("SGLANG_PARALLEL"), out var parallel)
                 ? Math.Clamp(parallel, 1, 16)
                 : 1,
+            RequestTimeoutSeconds = int.TryParse(Environment.GetEnvironmentVariable("SGLANG_REQUEST_TIMEOUT_SECONDS"), out var timeout)
+                ? Math.Clamp(timeout, 10, 600)
+                : 90,
+            TransientRequestRetries = int.TryParse(Environment.GetEnvironmentVariable("SGLANG_TRANSIENT_RETRIES"), out var retries)
+                ? Math.Clamp(retries, 0, 4)
+                : 2,
         };
     }
 }
@@ -163,22 +185,21 @@ public sealed class SglangHeaderExtractor : IHeaderClassifier
                 $"\n\nLƯỢT SỬA {attempt}: chỉ trả quyết định cho các ID còn thiếu [{requiredIds}].") +
                 $"\n\nOUTPUT: items phải có đúng {remaining.Count} phần tử theo thứ tự ID [{requiredIds}].";
 
-            var body = new
+            var body = new Dictionary<string, object?>
             {
-                model = _options.Model,
-                temperature = 0,
-                max_tokens = Math.Min(_options.MaxOutputTokens, remaining.Count * (roles ? 64 : 32) + 128),
-                stream = false,
-                // Đo được 2026-08-19: không tắt thì Qwen3 dồn hết max_tokens vào reasoning ẩn và
-                // content rỗng/cắt cụt. Xem docstring của lớp này.
-                chat_template_kwargs = new { enable_thinking = false },
-                messages = new[]
+                ["model"] = _options.Model,
+                ["temperature"] = 0,
+                ["max_tokens"] = Math.Min(_options.MaxOutputTokens, remaining.Count * (roles ? 64 : 32) + 128),
+                ["stream"] = false,
+                ["messages"] = new[]
                 {
                     new { role = "system", content = system },
                     new { role = "user", content = constrainedUser },
                 },
-                response_format = BuildResponseFormat(remaining, roles),
+                ["response_format"] = BuildResponseFormat(remaining, roles),
             };
+            if (_options.SendChatTemplateKwargs)
+                body["chat_template_kwargs"] = new { enable_thinking = false };
 
             _options.DebugLog?.Invoke($"→ SGLang request: {JsonSerializer.Serialize(body, RequestJson)}");
 
@@ -329,39 +350,63 @@ public sealed class SglangHeaderExtractor : IHeaderClassifier
     /// <summary>Nhiệm vụ hẹp — xem <see cref="IHeaderClassifier.BoundaryCutAsync"/>.</summary>
     public async Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
     {
-        var body = new
+        var body = new Dictionary<string, object?>
         {
-            model = _options.Model,
-            temperature = 0,
-            max_tokens = _options.MaxOutputTokens,
-            stream = false,
-            // BoundaryCutAsync has a JSON-only contract. This also prevents Qwen from spending
-            // its response budget on prose before it emits the block decisions.
-            response_format = new { type = "json_object" },
-            chat_template_kwargs = new { enable_thinking = false },
-            messages = new[]
+            ["model"] = _options.Model,
+            ["temperature"] = 0,
+            ["max_tokens"] = _options.MaxOutputTokens,
+            ["stream"] = false,
+            ["messages"] = new[]
             {
                 new { role = "system", content = systemPrompt },
                 new { role = "user", content = userMessage },
             },
         };
+        if (_options.SendChatTemplateKwargs)
+            body["chat_template_kwargs"] = new { enable_thinking = false };
+        if (_options.RequireJsonObjectResponse)
+            body["response_format"] = new { type = "json_object" };
 
-        using var request = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
+        Exception? lastError = null;
+        for (var attempt = 0; attempt <= _options.TransientRequestRetries; attempt++)
         {
-            Content = JsonContent.Create(body, options: RequestJson),
-        };
-        if (!string.IsNullOrWhiteSpace(_options.ApiKey))
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
+            try
+            {
+                using var timeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
+                timeout.CancelAfter(TimeSpan.FromSeconds(_options.RequestTimeoutSeconds));
+                using var request = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
+                {
+                    Content = JsonContent.Create(body, options: RequestJson),
+                };
+                if (!string.IsNullOrWhiteSpace(_options.ApiKey))
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
 
-        using var response = await _http.SendAsync(request, ct);
-        var responseText = await response.Content.ReadAsStringAsync(ct);
-        if (!response.IsSuccessStatusCode)
-            throw new HttpRequestException(
-                $"SGLang gateway trả {(int)response.StatusCode} {response.ReasonPhrase}: {Safe(responseText, 500)}",
-                null,
-                response.StatusCode);
-        return ExtractContent(responseText).Trim();
+                using var response = await _http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, timeout.Token);
+                var responseText = await response.Content.ReadAsStringAsync(timeout.Token);
+                if (!response.IsSuccessStatusCode)
+                    throw new HttpRequestException(
+                        $"SGLang gateway trả {(int)response.StatusCode} {response.ReasonPhrase}: {Safe(responseText, 500)}",
+                        null, response.StatusCode);
+                return ExtractContent(responseText).Trim();
+            }
+            catch (OperationCanceledException) when (!ct.IsCancellationRequested)
+            {
+                lastError = new TimeoutException($"LLM request timed out after {_options.RequestTimeoutSeconds}s.");
+            }
+            catch (HttpRequestException error) when (IsTransient(error))
+            {
+                lastError = error;
+            }
+
+            if (attempt < _options.TransientRequestRetries)
+                await Task.Delay(TimeSpan.FromMilliseconds(400 * (attempt + 1)), ct);
+        }
+        throw new HttpRequestException($"LLM request failed after {_options.TransientRequestRetries + 1} attempts: {lastError?.Message}", lastError);
     }
+
+    private static bool IsTransient(HttpRequestException error) => error.StatusCode is null or
+        System.Net.HttpStatusCode.RequestTimeout or System.Net.HttpStatusCode.TooManyRequests or
+        System.Net.HttpStatusCode.BadGateway or System.Net.HttpStatusCode.ServiceUnavailable or System.Net.HttpStatusCode.GatewayTimeout;
 
     private static string ExtractContent(string response)
     {

@@ -38,6 +38,22 @@ public sealed class PdfBlockGrounderTests
         Assert.DoesNotContain(result.Rejected, r => r.Id == "b2");
     }
 
+    [Fact]
+    public void PdfFirstGroundingDoesNotReapplySparseStyleRetrievalGate()
+    {
+        var heading = Block("b1", "Chapter 1 Vectors", 12);
+        var profile = new PdfStyleClusterProfile(
+            new PdfStyleKey(10, "body", "0.00,0.00,0.00"), [],
+            new HashSet<PdfStyleKey>(), new HashSet<PdfStyleKey>(), new HashSet<PdfStyleKey>());
+
+        var result = PdfBlockGrounder.Ground(
+            [heading], [new PdfBlockDecision("b1", PdfBlockRole.HeadingTopic, 0.9, "topic")],
+            profile, [], [], requireLearnedCandidateStyle: false);
+
+        Assert.Contains(result.Headings, item => item.Id == "b1");
+        Assert.DoesNotContain(result.Rejected, item => item.Reason == "not-visual-candidate-style");
+    }
+
     private static PdfSemanticBlock Block(string id, string text, double fontSize)
     {
         var line = new PdfLine(
