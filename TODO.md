@@ -1898,6 +1898,69 @@ policy milestone, intentionally outside M9.5c.
 Verification: M9 authority/writeback locks pass 18/18. Full solution test remains at 972 passing
 with the same 15 pre-existing fixture/route failures and zero new failures.
 
+## M9 CLOSED (2026-08-25)
+
+Production authority converged onto exactly one path:
+
+```
+ValidatedStructure
+    -> FinalStructure
+    -> OutputDecision
+    -> ProductOutput
+        +- DocumentOutline compatibility adapter
+        +- PdfProductWriteback
+```
+
+Legacy is reachable only as `Eval/PdfLegacyValidatedOutputPolicy`, called solely by the
+`pdf-hierarchy-facts` diagnostic for M9.4 historical comparison - it has no path back into
+production authority or fallback.
+
+- [x] M9.1  FinalStructure
+- [x] M9.1b canonical DOCX grounding
+- [x] M9.2  OutputDecisionPolicy
+- [x] M9.3  serializer + product writeback
+- [x] M9.4  shadow migration benchmark
+- [x] M9.5a nullable hierarchy contract
+- [x] M9.5b production routing cutover
+- [x] M9.5c legacy production cleanup
+
+**Baseline at close:** M9 locks 18/18 pass. Full suite 972 passing / **15 known pre-existing
+failures** (fixture/route-dependent, unrelated to M9, present before M9 started and unchanged by
+every M9 commit - not "all tests green"). Zero new regressions introduced by M9.
+
+Extraction-quality findings surfaced during M9.4 (054 recall=0, 010 b4/b5 grounding, 092 TOC/scope,
+low hierarchy coverage) and the pre-existing `HumanReviewBeforeWriteback` product-safety question are
+deliberately **not** M9's to fix - recorded as debt, carried into M10.
+
+## M10 - Quality & Accuracy Improvement (opened 2026-08-25, not started)
+
+Different question from M7-M9. M7-M9 asked *does the pipeline have correct authority, audit, replay,
+validation and production wiring* - answered, closed. M10 asks *are headings found, completely and
+correctly*, measured first-loss along the real path:
+
+```
+gold heading -> candidate generation -> filter -> ranking/budget -> LLM/VLM proposal
+   -> validator -> grounding -> scope -> hierarchy -> output
+```
+
+Priority order (evidence-based, from M9.4's canaries - not re-litigated here, see M9.4 write-up
+above for the underlying findings):
+
+1. **054** - heading recall/zero-output failure (the pdf-first-authority route validated 0 headings
+   for this ~170-page financial statement; nothing to compare, nothing written).
+2. **010** - canonical grounding ambiguity (`b4`/`b5` both ground to paragraph 417, a numbered
+   sub-clause unrelated to their true title-page position - shared upstream debt, not migration-
+   introduced, confirmed in the M9.4 write-up).
+3. **092** - TOC/scope/appendix cascade (most section-title facts ground into the document's own
+   merged Table-of-Contents paragraph cluster instead of their real body occurrence).
+4. TableLike short-numbered false positives.
+5. Hierarchy level/parent coverage.
+
+Deliberately NOT starting with hierarchy: M8/M9 already showed most hierarchy loss traces back to an
+upstream cause (grounding, recall, scope) rather than the hierarchy resolver itself - fixing the
+resolver first would very likely just move the same loss downstream. No M10 work has started as of
+this entry; the above is the agreed priority order only.
+
 ## Decision gate
 
 - [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates
