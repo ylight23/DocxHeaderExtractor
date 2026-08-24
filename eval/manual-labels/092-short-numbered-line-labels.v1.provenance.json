@@ -1,0 +1,29 @@
+{
+ "schemaVersion": 1,
+ "labelSchema": "table_like_branch_line_labels.v1",
+ "document": "092_RFC9111_HTTP_Caching.pdf",
+ "sourceDocumentSha256": "2663227a94ec8a81892a02f5697fc15c578571cdee96407adb5c60a60236c76f",
+ "predicateUnderReview": "PdfLineBlockFilter.LooksLikeTableLine, short_numbered branch: readable length <= 32 and word count <= 4 and contains a digit and no terminal sentence punctuation",
+ "population": "every line in the document that fires the branch; not a sample",
+ "populationCount": 125,
+ "documentLineCount": 2192,
+ "labelSource": "manual_pdf_context_review",
+ "usesGold": false,
+ "derivedFrom": "deterministic model-free line annotations from PdfLineExtraction + PdfLineBlockFilter.Analyze",
+ "counts": {
+  "branchLines": 125,
+  "documentLines": 2192,
+  "byRole": {
+   "metadata": 4,
+   "toc_entry": 35,
+   "outline_heading": 37,
+   "body_prose": 15,
+   "table_cell_or_tabular_value": 32,
+   "caption_or_other_structural": 2
+  },
+  "trueTableLike": 32,
+  "falseTableLike": 93,
+  "falseTableLikeBlockingOutline": 37
+ },
+ "note": "Counts describe this corpus only. They are evaluation data and must not become production or unit-test invariants."
+}
