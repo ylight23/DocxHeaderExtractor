@@ -1,4 +1,4 @@
-# Việc cần làm
+﻿# Việc cần làm
 
 Xếp theo (giá trị đã chứng minh) / (rủi ro đo lường). Mỗi mục ghi kèm **cách nghiệm thu**, vì ở dự
 án này phần khó không phải viết code mà là biết một thay đổi có thật sự tốt hơn không.
@@ -1111,9 +1111,294 @@ duplicate là dòng riêng (`051` 30, `052` 32). Bỏ gộp continuation khỏi 
 - [ ] Production calibration blocked: combined 010 is 37/50 title exact.
 
 - [x] M7.11 isolate `v-marker-line-8-39`: A-D pass; per-region attempt outcomes persisted.
-- [ ] Run a repeated combined slice using attempt artifact to measure availability rate before calibration.
-  Checked 2026-08-24: M7.10 is complete, but this hosted run is blocked locally until a rotated
-  `NVIDIA_API_KEY` is configured. Do not reuse a token pasted into a chat transcript. The exact
-  run is `pdf-stage-eval` on 010 with `--pdf-stage-wide --pdf-stage-supplement
-  --pdf-stage-visual-regions 43 --pdf-stage-visual-scheduler --nvidia-nim`; write a new artifact
-  and compare accepted/rejected attempt outcomes before changing calibration.
+- [x] Qwen visual availability is now measured independently on the frozen 43-region run (`43/43`
+  HTTP 200, no retry). NVIDIA is not a prerequisite for calibration or the next holdout.
+
+## 2026-08-24: M7.11 OpenRouter Qwen3.5-9B availability gate
+
+- [x] Add the provider-neutral OpenRouter visual adapter; it accepts the same image/evidence contract
+  as the NVIDIA adapter and records per-attempt outcomes.
+- [x] Run the frozen `010` combined slice (`wide + supplement`, scheduler, 43 visual regions). The
+  raw retrieval lane remained measurable (`48/50` key titles among `1,616` candidates), but hosted
+  inference was not: every one of the 43 budgeted visual requests returned HTTP `402` once; 97 other
+  regions were intentionally budget-excluded. This is `billing`, not a role/OCR/grounding result.
+- [x] Emit structured availability in `pdf-stage-eval`: `state`, `failureClass`, `httpStatus`,
+  `retryable`, and actual visual attempt counts. HTTP `402`, `401`, and `403` are non-retryable.
+- [x] Paid gate run in that order, pinned to `qwen/qwen3.5-9b`: text `200/OK`, both regression
+  crops passed, then the frozen 43-region run completed with `43/43` HTTP 200 and no retry.
+
+## 2026-08-24: Qwen3.5-9B paid gate result
+
+- [x] Text gate: HTTP `200`, pinned `qwen/qwen3.5-9b`, returned `OK`. Qwen uses hidden reasoning by
+  default; `max_tokens=8` was insufficient. Both OpenRouter semantic and visual adapters now request
+  `reasoning.effort=none`, and semantic boundary calls explicitly request `json_object` output.
+- [x] Visual regressions: `Điều 11` (`v-marker-line-8-39`) and `Điều 25`
+  (`v-marker-line-24-20`) passed transcription, role, structured proposal, and canonical mapping.
+- [x] Bounded combined run: `160/1,616` ranked candidates plus the frozen 43 visual regions. All
+  visual attempts succeeded once with HTTP `200`; 41 source spans passed canonical mapping, 2 were
+  rejected by the source validator, and 97 regions were budget-excluded. Title-only result is
+  `38/50` key titles from 41 recovered headings (92.7% precision, 76.0% recall, 83.5% F1).
+- [x] Rebase the 010 evaluation key from its reviewed title comments and regenerated DOCX only;
+  `keys/rebased/010_Luat_An_ninh_mang_24-2018-QH14.v2-regenerated-docx.key` maps `50/50` entries.
+  Its adjacent provenance JSON records `goldVersion=010-v2-regenerated-docx`, previous version,
+  source SHA-256, and `modelOutputUsed=false`; the legacy key remains untouched.
+- [x] Replay the immutable 43-call artifact offline against the rebased key. Title-only is still
+  `38/41` output / `38/50` gold (P/R/F1 `92.7/76.0/83.5`); span anchor is `40/41` / `40/50`
+  (P/R/F1 `97.6/80.0/87.9`). Level, parent, and final structural F1 are explicitly `not-measured`
+  because this visual artifact has role/span facts but no replayable hierarchy proposals.
+- [x] Audit the three non-exact outputs: `6. Hành vi...` has no gold anchor and remains a body-list
+  false-positive candidate; `Điều 17` and `Điều 18` map to the correct rebased anchors but their
+  visible title is truncated, so they are title-exact misses rather than anchor misses.
+- [ ] M7.12 Qwen9B cross-domain holdout: run the same SourceFacts -> role/span proposal -> validator
+  contract on financial, procurement, meeting-minutes, and RFC keys. Report every layer separately;
+  do not promote Qwen from legal-only evidence until these runs exist.
+- [x] M7.13 scheduler/routing: execution isolation is implemented and passed the real RFC `092`
+  acceptance run. `SemanticLaneOptions` now has request/batch/lane deadlines and bounded semantic
+  concurrency; a timed-out batch materializes each affected block as `Uncertain` with
+  `semantic_batch_timeout`. Visual source-fact recovery starts independently, checkpoints every
+  region, and is not classified as provider-unavailable when semantic is partial. `pdf-stage-eval`
+  writes `semanticLane`/`visualLane` counters and flushes its manifest in `finally`. Resume uses
+  `--pdf-stage-checkpoint <run.jsonl> --pdf-stage-resume`; run RFC only after the focused timeout
+  invariant remains green.
+
+  First RFC acceptance run is now **Case A pass**: Qwen `qwen/qwen3.5-9b`, frozen semantic
+  concurrency `2`, `160/160` semantic blocks completed, and `43/43` visual HTTP outcomes were
+  checkpointed in `.verify-build/092-m713.jsonl`; `.verify-build/092-m713-manifest.json` exists.
+  The initial manifest exposed a counter-only defect (`visualLane.completed=162` included 119
+  `visual-budget-excluded` traces); the lane counter now excludes them, so future manifests report
+  the correct `43`. This run proves execution boundedness/artifact durability, not RFC F1 quality.
+  Resume smoke test against the same JSONL added no records (`20` semantic batch + `43` visual
+  region remain), rehydrated the canonical visual maps, and reports `43/43` visual completion.
+- [x] M7.14 first-loss audit is now per-gold and occurrence-aware (`054`, no model). Raw PDF
+  SourceFacts represent `24/24` gold (`3` exact-line, `20` fragmented, `1` table-context).
+  Containment-only pool/top-160 figures are `22/24` and `16/24`, but they are **not yet heading
+  selection metrics**: `16/24` have multiple candidate occurrences. The audit records each
+  occurrence with page, scope, score and signal components, a Recall@K curve, and the rank
+  140–180 window. It separates `ambiguous_short_title` (`Overview`, `Appendix`) from
+  `ambiguous_candidate_occurrence`; only `2` entries are unique selected, and `4` are clear
+  ranking/budget losses. Next is page/order-aware occurrence reconciliation, not rank tuning.
+  Artifact: `.verify-build/054-m714-first-loss.json`.
+- [x] M7.15 initial minutes comparison (`076`, no model): representation `24/24`, pool/top-148
+  `19/24`; losses are `semantic_block_grouping=2`, `candidate_producer=1`, two ambiguous short
+  titles, and one ambiguous occurrence. This is a different failure shape from `054`: minutes
+  still has real pre-ranking coverage loss, so do not add a global financial rank rule. Artifact:
+  `.verify-build/076-m715-first-loss.json`.
+- [x] M7.16 evaluation-only occurrence resolver: `pdf-occurrence-eval` uses the reviewed/rebased
+  key anchor plus PDF-line page evidence to score candidate identity; it is explicitly prohibited
+  from production routing. `054`: CorrectOccurrenceRecall `@100=4/24`, `@160=8/24`, full pool
+  `17/24` versus containment `16/24 @160` / `22/24` full. `076`: `@25=3/24`, `@50=12/24`,
+  `@100=15/24`, full `15/24`. These are page-anchored occurrence metrics, not title containment.
+- [x] M7.17 production occurrence resolver is source-fact-only: `PdfProductionOccurrenceResolver`
+  groups candidates by their first rendered PDF line, then returns `unique`, `preferred`,
+  `ambiguous`, or `rejected` with scope/layout evidence. It cannot receive a key, DOCX anchor,
+  M7.16 result, or emit a heading/change rank. `pdf-occurrence-counterfactual-eval` runs it first,
+  then uses M7.16 only outside runtime to score the decision. On `054`, `17/24` correct
+  occurrences exist in the pool: `9` are unique and `7` are source-fact-preferred; one remains
+  unresolved. On `076`, `15/24` are in the pool: `12` are unique, `0` are preferred, and the
+  `DAY 2-4` family remains explicitly ambiguous. This is the intended outcome: do not invent a
+  minutes-specific selection rule, and do not promote the resolver to heading authority yet.
+  Artifacts: `.verify-build/054-m717-occurrence-counterfactual.json`,
+  `.verify-build/076-m717-occurrence-counterfactual.json`.
+- [x] M7.18 076 construction trace (`pdf-candidate-construction-audit`, no model, no production
+  change) separates the previously conflated loss classes. `Annex 1: Meeting Agenda` and `DAY 1`
+  are `line_filter_gate` / `filtered_before_grouping`: both raw lines carry
+  `header-footer-zone,table-like`, so grouping never sees them. `Eurostat-OECD PPP Program` is
+  `candidate_producer`: its one semantic block is preserved, but the kerning-fragmented text
+  (`E u rostat-O ECD P P P P rogra m`) is rejected by all broad/wide/supplement candidate shapes.
+  Do not repair grouping for the first pair and do not add a meeting-specific producer yet. Next:
+  audit the source annotation/gate evidence for the first pair, and evaluate canonical matching
+  at producer boundaries for the third. Artifact:
+  `.verify-build/076-m718-candidate-construction.json`.
+- [x] M7.19 first-loss repairs by evidence class, not title/domain: candidate grouping now treats
+  a geometric header/footer zone as evidence only until repetition confirms a running artifact;
+  a non-repeated table-like source fact is retained only when it has a structural marker. Matching
+  additionally carries a geometry-derived `MatchText`/canonical form without mutating observed
+  source text. The follow-up M7.20 remeasurement rejected a first atomic kerning-producer
+  experiment: it inflated total ranked candidates `148 -> 180` and displaced existing titles,
+  so it was removed from production. The retained header/table repair recovers `Annex 1` and
+  `DAY 1` with total candidates only `148 -> 149`, correct occurrences `15 -> 17`, and no change
+  through `@100`; both recovered occurrences are in the configured 160 budget (ranks 137/135).
+  `Eurostat-OECD PPP Program` remains an explicit `candidate_producer` miss pending an independently
+  measured style/geometry discontinuity. Artifacts:
+  `.verify-build/076-m720-first-loss-final.json`,
+  `.verify-build/076-m720-occurrence-final.json`, and
+  `.verify-build/076-m720-occurrence-counterfactual-final.json`.
+- [x] M7.21 producer-boundary diagnostic (`076`, no model/ranker): expanded construction trace to
+  retain each line's `MatchText`, font, boldness, X/Y. The remaining `Eurostat-OECD PPP Program`
+  block has no measurable structural boundary: all four lines are Calibri `1pt`, bold ratio `0`,
+  same left margin, and regular vertical spacing. The title/body distinction is semantic only.
+  Therefore no sub-span/atomic producer is promoted; retain `candidate_producer` as an honest miss.
+  Artifact: `.verify-build/076-m721-producer-boundary.json`.
+- [x] M7.23 semantic recovery experiment (`076`, Qwen `qwen/qwen3.5-9b`, audit-only): add a thin
+  source-only selector after deterministic candidate admission. It sees no key/gold, excludes hard
+  scopes, preserves occurrence identity, and materializes only an existing first PDF line as the
+  immutable source pointer; following lines are context, never model-created text. Existing
+  `PdfBlockAnalyst` supplies role then pointer proposal, and the existing canonical/validator path
+  remains the only authority. The first broad trial exposed a transport defect: OpenRouter's fixed
+  `120` output-token limit truncated batched JSON roles into invisible missing decisions. The adapter
+  now budgets output by supplied IDs (bounded by model configuration), with raw audit responses.
+  Final frozen run: `N=15` eligible, `A=1` heading-role proposal, `B=1` canonical-unique,
+  `C=1` validator accepted. Offline-only comparison to the rebased key finds `D=1` correct
+  recovery (`Western Asia`, PDF page 4), `E=0` false positives, improving the measured deterministic
+  occurrence ceiling from `17/24` to `18/24`. `Eurostat-OECD PPP Program` was returned as
+  `body_text` in the frozen multi-case context and remains unresolved; no retry-to-pass or special
+  rule is added. Artifact: `.verify-build/076-m723-semantic-recovery-v6-raw.json`.
+- [x] M7.24 frozen recovery replay evaluation (`076`, no model/selector rerun):
+  `pdf-semantic-recovery-result-eval` consumes only the immutable M7.23 artifact, frozen M7.20
+  occurrence baseline, and rebased key. It rejects artifacts marked `usesGold=true`, never mutates
+  recovery routing, and emits per-item first outcomes plus aggregate recovery metrics. Final
+  artifact: `.verify-build/076-m724-semantic-recovery-result.json`.
+
+  Baseline correct occurrence is `17`; recovery has `eligible=15`, `usable=1`,
+  `canonical-unique=1`, `validated=1`, `gold-correct=1`, `false-positive=0`, yielding net gain
+  `+1` and combined observable occurrence `18/24`. The eligible gold opportunity count is `2`, so
+  gold opportunity recall is `1/2`; `RecoveryCoverage=1/15`, canonical rate `1/1`, and validated
+  precision `1/1` apply only to this single accepted artifact, not as a general Qwen claim.
+  `b35/line0` (`Eurostat-OECD PPP Program`) is explicitly `semantic_false_negative` after a
+  `body_text` model verdict; `b50/line0` (`Western Asia`) is
+  `validated_true_recovery`. Hierarchy remains `not_measured`. Next: M7.25 cross-domain semantic
+  recovery only if this small-sample evaluation justifies it; do not tune/retry Eurostat to pass.
+- [x] M7.25 context/batch stability experiment (`076`, Qwen9B, source-only): freeze the exact
+  same `15` eligible identities for all three profiles (shared SHA-256
+  `41340a9f053904f5081a275524d5e54e3328c19149a183e906eefabd8ac25365`) and alter only context
+  window/sibling source facts and role-batch size: `current_v6` (`2` role requests),
+  `neighborhood_microbatch` (`5`), and `neighborhood_single` (`15`). Each artifact retains raw
+  verdicts plus request/context fingerprints; gold is applied only by the existing offline result
+  evaluator.
+
+  The outcome is unstable and is **not promoted**. `current_v6` and one-item request both return
+  `0` proposals / `0` true recovery, so combined remains `17/24`. Neighborhood micro-batch returns
+  `5` role proposals and `2` validator acceptances: `Western Asia` is one true recovery but
+  `World Bank` is one false positive, so it also reaches only `18/24` with `FP=1`.
+  `Eurostat-OECD PPP Program` changes from `body_text` to `heading_topic` in that profile, but
+  returns no source pointer and is therefore `canonical_unresolved`, not recovered. This is
+  context/batch sensitivity, not a reason to tune its wording or add a rule. Artifacts:
+  `.verify-build/076-m725-*-raw.json`, `076-m725-*-result.json`, and
+  `.verify-build/076-m725-context-batch-summary.json`.
+
+  Decision: do not open M7.26 cross-domain recovery and do not promote semantic recovery to
+  production authority. Retain the source-only recovery branch as audit evidence, keep unresolved
+  cases available for review/optional stronger-model escalation, and move to M8 hierarchy.
+- [x] M8.1a hierarchy facts inventory/materialization: implemented as `PdfHierarchyFactsInventory` over only
+  `PdfValidatedHeading` + immutable source contexts. It records marker family/depth/path, scope,
+  document regime, preceding validated identity, and a same-scope/regime
+  `marker_prefix_parent_candidate` in `RouteExecutionAudit.hierarchyFacts`; it cannot create a
+  heading, alter a hierarchy, or call a model. A resolved level is emitted only for a top-level
+  numeric path or a path whose prefix parent is present in the same scope/regime. Regression locks
+  `1. -> 1.1` marker parent resolution, forbids a TOC-to-body prefix relation, and preserves an
+  unmarked heading as `relationship_unresolved`. `pdf-stage-eval` now materializes these facts and
+  coverage counters in its route artifact. The first real artifact, `.verify-build/076-m81-hierarchy-facts.json`,
+  has 19 validated headings, 14 marker-path facts, 14 deterministic levels, zero safe deterministic
+  parents, and 19 unresolved relationships. It predates the output-schema correction and therefore
+  records `conflicts: 0`; it is retained unchanged as run provenance. New artifacts explicitly emit
+  `conflicts.state: not_measured` rather than implying a conflict detector exists. Semantic hierarchy
+  fallback is opt-in and was disabled for this run (`0` semantic proposals).
+- [x] M8.1b offline hierarchy evaluator: `pdf-hierarchy-facts-eval` consumes only a frozen route
+  artifact plus versioned `--hierarchy-gold` JSON. Identity joins by exact `sourceFactId`, with a
+  stable DOCX `sourceAnchor` retained in gold; it never falls back to title matching. It separates
+  coverage from accuracy-given-resolved and writes per-heading outcomes (`correct`, `incorrect`,
+  `unresolved`, `gold_missing`). Parent edges use the entire gold graph as their recall denominator;
+  with zero predicted edges, precision/F1 are `null` and status is `no_predicted_edges`, rather than
+  false zeroes. The first 076 replay is `.verify-build/076-m81b-hierarchy-evaluation.json`, against
+  `keys/hierarchy/076_ICP_IACG08_Minutes_2023.hierarchy.json`: 19 inventory facts / 24 gold headings.
+  `goldIdentityResolved=10/24` and `goldIdentityUnresolved=14/24` are bridge coverage, explicitly
+  not extraction coverage. It reports all `14` resolved levels, of which only `6` bridge to gold;
+  `resolvedLevelsNotGoldMatched=8` exposes upstream pollution. The conditional level result is
+  `correctResolvedLevels=6`, `LevelAccuracyGivenResolvedGold=6/6`. Parent coverage remains `0/19`,
+  parent accuracy `not_measured`, and edge recall `0/10`. Gold graph sanity passes as a forest:
+  `14 roots + 10 edges = 24 headings`. The package deliberately leaves 14 unconfirmed source-fact
+  mappings null; they count as bridge missing rather than title-matched guesses. No production resolver change.
+- [x] M8.1c cross-domain hierarchy inventory baseline: frozen semantic-only route artifacts (all
+  semantic `160/160`, visual `0`, semantic parent fallback off) are
+  `.verify-build/010-m81c-hierarchy-facts-bg.json`, `054-m81c-hierarchy-facts.json`, and
+  `092-m81c-hierarchy-facts.json`; summary is `.verify-build/m81c-hierarchy-inventory-summary.json`.
+  Shapes differ: legal `010` has 116 validated / 35 marker paths / 0 parents; financial `054` has
+  29 validated / 0 marker paths / 0 parents; RFC `092` has 31 validated / 30 marker paths / 0 parents.
+  This does **not** open M8.2: 25/30 RFC marker paths have `markerDepth != parsed path segment count`
+  (`4.3.2` observed as path `4`), so explicit ancestry is lost in inventory before a resolver could
+  relate it. Legal has 3/35 of the same mismatch; financial has no numeric marker-path evidence.
+  Reviewed gold bridges/evaluator replays are deliberately deferred until marker representation is
+  faithful. No averaging, resolver tuning, or extraction repair is performed here.
+- [x] M8.1d marker representation trace/repair: the seam, not a parser bug. `PdfMarkerFactsParser`
+  recognises `4 3 2` as depth `3` (family `spaced_arabic`) but `PdfMarkerFact` had nowhere to keep
+  the components, so the inventory re-derived a path with the stricter dotted grammar
+  (`NumberingAudit.ParseArabicPath`), which reads only `4`. Traced across layers: with dots every
+  layer agrees; without dots only the strict layer truncates. `NumberingAudit` is unchanged.
+  - d-1 safety fixtures first (`MarkerHierarchySafetyFixtureTests`). A probe over the real parser
+    showed `09:00 - 09:10` is classified strict `arabic` depth 1 (`:` is an `ArabicRx` separator) and
+    `13 00 14 00` / `192 168 1 1` reach `spaced_arabic` depth 4, so family alone is not a safety gate
+    and no lexical rule separates `4 3 2 Handling…` from `13 00 14 00 Lunch`.
+  - d-2 representation only: `PdfMarkerFact.Components` (`ImmutableArray<int>`, invariant
+    `Depth == Components.Length`) plus `markerComponents` in the audit. `MarkerPath`, `ResolvedLevel`,
+    the observed ancestor pool, and `FindMarkerPrefixParent` deliberately still run on the strict
+    path, so the commit adds no ancestry authority (`RecoveredComponentsDoNotCreateAncestryOnTheirOwn`).
+  - d-3 counterfactual (`PdfMarkerAncestryCounterfactual`, `pdf-hierarchy-marker-counterfactual`):
+    offline, gold-free, writes no decision. Promoting components to ancestry would add `+12` parent
+    candidates (092 `+9`, 010 `+3`) and change 12 levels, but on 092 five of nine supported parents
+    are TOC-internal and on 010 all three link a definition clause to a sibling clause. Full-chain
+    support equals immediate-prefix support on both corpora, so it filters nothing.
+  - d-4 production promotion: **REJECTED**. Structural support is not protective while the facts it
+    gates on are contaminated. Artifacts: `.verify-build/{092,010}-m81d3-counterfactual.json`.
+- [x] M8.1e structural-scope first-loss (audit only, no production change): `092` and `054` both have
+  a real table of contents and both classify **0** TOC blocks. Dot-leader evidence survives in
+  neither (`0/31` and `0/14`), so `TocEntryRx` is dead corpus-wide, not RFC-specific; `054` also puts
+  its TOC on page 170/170, falsifying the early-page-window assumption. `076` has no TOC at all — its
+  dense region is an agenda table, a separate table-classification owner. A multi-entry-per-block
+  signal looked clean on 092's validated headings but was **rejected**: over all 544 source blocks it
+  false-positives at `4.7%`, and on 076 it inverts (`AGENDA 9.5%` vs `OTHER 14.2%`).
+- [x] M8.1f missing intermediate heading first-loss: seven gold nodes block `41/54` gold hierarchy
+  edges on 092. Six of seven were represented, produced, ranked (`23-89` of budget `160`) and
+  `selected`; only `5. Field Definitions` is a real representation loss. The occurrence bridge had to
+  be reviewed first — the audit had matched `4.3. Validation` to the TOC block `b27` (p2) rather than
+  the body block `b220` (p15). A diagnostic model rerun was **cancelled**: the kill chain is
+  deterministic and model-independent, so no tokens were spent.
+  - Owner level 1: `PdfProposalValidator` rejects on domain role, not on the analyst verdict.
+  - Owner level 2: `LooksLikeTableLine`'s `short_numbered` branch (`len <= 32 && words <= 4 &&
+    contains a digit && no terminal punctuation`) — text-only, no geometry. A short numbered heading
+    is exactly that shape. Reimplementation agrees with the real flag on `2192/2192` lines.
+  - Children survive because they are `appendix` scope; parents die because they are `appendix_table`.
+- [x] B1 `short_numbered` population audit: all `125/125` lines labelled from PDF page context, no
+  sampling, no answer key. Artifact `.verify-build/092-b1-short-numbered-labels.json`
+  (`usesGold=false`, `labelSource=manual`). True table-like `32/125` (`25.6%`); false `93/125`; real
+  outline headings blocked `37/125`. A leading numeric run separates the classes almost perfectly
+  (`outline_heading 37/37`, `toc_entry 35/35`, `table_cell 0/32`, `body_prose 0/15`), with one false
+  positive (`345 Park Ave`). Labels are versioned as evaluation data at
+  `eval/manual-labels/092-short-numbered-line-labels.v1.json` with a provenance sidecar.
+- [ ] **DEFECT A — TOC miss enables persistent appendix scope.** Owner: TOC classification /
+  `StructuralScopeTracker`. In 092 a TOC line naming the appendices flips `_appendix` at page 4 and
+  the flag is never reset, so `417/544` blocks take `appendix`/`appendix_table` scope while the real
+  appendix starts at page 32. CONFIRMED DEBT; production change none. Promotion gate: require
+  extraction-surviving, cross-domain TOC evidence; evaluate on the full block population; runtime
+  classification stays gold-free; no title- or corpus-specific rules.
+- [ ] **DEFECT B — `short_numbered` false `TableLike`.** Owner: the scope/domain path consumes raw
+  `TableLike` while the grouping path already protects structural markers via `HasStructuralMarker`
+  in the same record. Deterministic chain: `short_numbered` -> `TableLike` -> `table`/`appendix_table`
+  -> `PdfDomainRole.TableTitle` -> outline exclusion -> validator reject; the model verdict cannot
+  rescue these nodes. Candidate invariant: apply the existing `HasStructuralMarker` protection
+  consistently; no new lexical regex. CONFIRMED DEBT; production change none.
+  Promotion gate: **do not promote while DEFECT A is unresolved** — TOC entries carry structural
+  markers and would otherwise gain body/outline authority; and measure cross-domain blast radius on
+  the population the predicate actually classifies.
+  A and B are independent owners with a constrained promotion order, not one root cause; they should
+  not be merged into a single patch, because that destroys regression attribution.
+- [ ] Other bounded defects, recorded and not scheduled: 010 numbered definition prose validated as a
+  heading; `5. Field Definitions` absent from generated source facts; PDF text spacing corruption
+  (`13 :00`, `G loba l`, `Ca ches`) remains upstream debt — note it is space injection, not
+  punctuation stripping, and DEFECT B is independent of it.
+- [ ] M8.2 deterministic hierarchy resolver: **still not justified.** Across M8.1d-f the parent
+  resolver was never shown to be the first loss; the ceiling is set by validated-structure quality
+  upstream. Open only when the required parent nodes exist and structural scope is correct, and a
+  benchmark then still shows the same-scope/regime, explicit-prefix, earlier-unique-ancestor relation
+  failing. Semantic parent proposals remain deferred.
+- [ ] M8.1x STOP RULE: do not reopen M8.1 diagnostics unless (1) A or B is deliberately scheduled for
+  remediation, or (2) a new hierarchy benchmark shows parent-resolver failure after required parent
+  nodes and structural scope are correct.
+- [ ] Evaluation invariants earned in M8.1x, and cheaper to keep than any heuristic they replaced:
+  - A classifier signal must be evaluated on the population that classifier actually operates on.
+    Measuring the multi-entry signal on validated headings reported `0` false positives; the same
+    signal over all source blocks reported `4.7%`.
+  - First-loss attribution is invalid until the evaluated occurrence is bridged occurrence-safely.
+    `4.3` was attributed to a table-of-contents occurrence before the bridge was reviewed.
+- [ ] Optional benchmark/escalation: retain `NvidiaNimVisualQuestion`, but call NVIDIA 90B only for a
+  deliberately requested frozen A/B comparison or a documented Qwen unresolved case. Do not claim
+  Qwen is better than NVIDIA without that comparison.
