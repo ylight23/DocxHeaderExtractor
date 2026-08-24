@@ -27,6 +27,31 @@ public sealed class PdfLineBlockFilterTests
         var topic = annotations.Single(a => a.Line.Text == "AVAILABILITY OF INFORMATION");
         Assert.False(topic.ExcludeFromSemanticSamples);
         Assert.Equal("semantic-candidate", topic.Reason);
+
+        var repeatedHeader = annotations.First(a => a.Line.Text == "Annual Financial Report");
+        var numericTable = annotations.First(a => a.Line.Text == "TOTAL $1,234 56% 2025");
+        Assert.True(repeatedHeader.ExcludeFromCandidateGrouping);
+        Assert.True(numericTable.ExcludeFromSemanticSamples);
+        Assert.True(numericTable.ExcludeFromCandidateGrouping);
+    }
+
+    [Fact]
+    public void RetainsNonRepeatedStructuralMarkerEvenWhenItsTextLooksTableLike()
+    {
+        var annotations = PdfLineBlockFilter.Analyze([
+            Line("DAY 1: TUESDAY", 1, y: 740),
+            Line("An nex 1 : Meeting Agenda", 1, y: 700),
+            Line("ordinary body text", 1, y: 400),
+        ]);
+
+        var day = annotations.Single(annotation => annotation.Line.Text == "DAY 1: TUESDAY");
+        var annex = annotations.Single(annotation => annotation.Line.Text == "An nex 1 : Meeting Agenda");
+
+        Assert.True(day.TableLike);
+        Assert.False(day.Repeated);
+        Assert.False(day.ExcludeFromCandidateGrouping);
+        Assert.True(annex.TableLike);
+        Assert.False(annex.ExcludeFromCandidateGrouping);
     }
 
     private static PdfLine Line(string text, int page, double y) => new(

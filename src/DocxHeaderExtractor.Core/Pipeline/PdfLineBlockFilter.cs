@@ -14,6 +14,24 @@ internal sealed record PdfLineBlockAnnotation(
         PageNumber ||
         TableLike ||
         (Repeated && (HeaderFooterZone || PdfTextUtilities.Readable(Line.Text).Length <= 60));
+
+    // Geometric/table-like evidence remains excluded from style learning above, but is not by
+    // itself proof that the source fact is table body. A non-repeated structural marker may enter
+    // grouping for later scope-aware validation; ordinary table cells remain out of the pool.
+    public bool ExcludeFromCandidateGrouping =>
+        PageNumber ||
+        (Repeated && HeaderFooterZone) ||
+        (TableLike && (Repeated || !HasStructuralMarker(Line.Text)));
+
+    private static bool HasStructuralMarker(string text)
+    {
+        var repaired = PdfTextUtilities.HeadingReadable(text);
+        return PdfMarkerFactsParser.Parse(text) is not null ||
+               PdfMarkerFactsParser.Parse(repaired) is not null ||
+               Regex.IsMatch(repaired, @"^\s*\p{L}{2,24}\s*\d{1,3}\s*[:.)-]", RegexOptions.CultureInvariant) ||
+               Regex.IsMatch(text, @"^\s*\p{Lu}\p{Ll}{1,5}\s+\p{Ll}{1,5}\s+\d{1,3}\s*[:.)-]",
+                   RegexOptions.CultureInvariant);
+    }
 }
 
 internal sealed record PdfLineFilterSummary(

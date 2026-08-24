@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -45,7 +45,14 @@ internal sealed record PdfCandidateContext(
     IReadOnlyList<string> NextBlocks,
     IReadOnlyList<string> AllowedParentIds,
     string DocumentRegime,
-    IReadOnlyList<string> ActiveHeadingStack);
+    IReadOnlyList<string> ActiveHeadingStack)
+{
+    /// <summary>
+    /// Nearby source-only blocks that independently passed a generic structural-looking shape.
+    /// Used only by the bounded semantic-recovery context experiment; never an asserted heading.
+    /// </summary>
+    public IReadOnlyList<string> SiblingStructuralBlocks { get; init; } = [];
+}
 
 /// <summary>Validated stage trace. It is diagnostic data, never a source of extraction facts.</summary>
 public sealed record PdfCandidateStageTrace(
@@ -140,7 +147,8 @@ internal static class PdfCandidateContextBuilder
 {
     public static IReadOnlyDictionary<string, PdfCandidateContext> Build(
         IReadOnlyList<PdfSemanticBlock> blocks,
-        IReadOnlyList<PdfLineBlockAnnotation> annotations)
+        IReadOnlyList<PdfLineBlockAnnotation> annotations,
+        int contextWindow = 2)
     {
         var annotationByLine = annotations.ToDictionary(a => LineKey(a.Line));
         var ordered = blocks.OrderBy(b => b.Page).ThenByDescending(b => b.TopY).ThenBy(b => b.Id, StringComparer.Ordinal).ToArray();
@@ -155,8 +163,9 @@ internal static class PdfCandidateContextBuilder
         {
             var block = ordered[index];
             var facts = scopeTracker.Apply(BuildFacts(block, annotationByLine, tocBlockIds.Contains(block.Id), regime));
-            var previous = ordered.Take(index).TakeLast(2).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
-            var next = ordered.Skip(index + 1).Take(2).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
+            var window = Math.Clamp(contextWindow, 0, 6);
+            var previous = ordered.Take(index).TakeLast(window).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
+            var next = ordered.Skip(index + 1).Take(window).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
             var parents = ordered.Take(index).TakeLast(8).Select(b => b.Id).ToArray();
             result[block.Id] = new PdfCandidateContext(facts, previous, next, parents, regime, stack.TakeLast(4).ToArray());
             if (facts.StructuralScope == "document_body" && PdfMarkerFactsParser.Parse(block.DisplayText) is not null)

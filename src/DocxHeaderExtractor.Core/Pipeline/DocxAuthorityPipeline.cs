@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Core.Llm;
+﻿using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 

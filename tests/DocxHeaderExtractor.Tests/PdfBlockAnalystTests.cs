@@ -110,6 +110,23 @@ public sealed class PdfBlockAnalystTests
         Assert.Equal(2, analysis.RawResponses.Count);
     }
 
+    [Fact]
+    public async Task BatchDeadlineMaterializesEveryAffectedBlockAsUncertain()
+    {
+        var blocks = Enumerable.Range(1, 13).Select(index => Block($"b{index}", $"Heading {index}")).ToArray();
+        var classifier = new HangingClassifier();
+
+        var analysis = await PdfBlockAnalyst.AnalyzeAsync(classifier, blocks, laneOptions: new SemanticLaneOptions(
+            TimeSpan.FromMilliseconds(100), TimeSpan.FromMilliseconds(15), TimeSpan.FromSeconds(1)));
+
+        Assert.Equal(13, analysis.Decisions.Count);
+        Assert.All(analysis.Decisions, decision =>
+        {
+            Assert.Equal(PdfBlockRole.Uncertain, decision.Role);
+            Assert.Equal("semantic_batch_timeout", decision.Reason);
+        });
+    }
+
     private static PdfSemanticBlock Block(string id, string text)
     {
         var line = new PdfLine(
@@ -162,5 +179,19 @@ public sealed class PdfBlockAnalystTests
         public void Dispose()
         {
         }
+    }
+
+    private sealed class HangingClassifier : IHeaderClassifier
+    {
+        public string ModelName => "hanging";
+        public int ContextSize => 4096;
+        public string RuntimeDescription => "hanging";
+        public int SharedPrefixTokens => 0;
+        public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default) =>
+            Task.Delay(Timeout.InfiniteTimeSpan, ct).ContinueWith(_ => "", ct);
+        public void Dispose() { }
     }
 }

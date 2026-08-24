@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
+using System.Security.Cryptography;
 using DocxHeaderExtractor.Cli;
 using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Models;
@@ -65,9 +66,16 @@ try
         "pdf-visual-probe" => await RunPdfVisualProbeAsync(options, cts.Token),
         "pdf-visual-representation-eval" => await RunPdfVisualRepresentationEvalAsync(options, cts.Token),
         "pdf-visual-result-eval" => await RunPdfVisualResultEvalAsync(options, cts.Token),
+        "key-rebase" => await RunKeyRebaseAsync(options, cts.Token),
         "pdf-visual-provenance-eval" => await RunPdfVisualProvenanceEvalAsync(options, cts.Token),
         "pdf-visual-scheduler-benchmark" => await RunPdfVisualSchedulerBenchmarkAsync(options, cts.Token),
         "pdf-rank-eval" => RunPdfRankEval(options),
+        "pdf-first-loss-audit" => RunPdfFirstLossAudit(options),
+        "pdf-occurrence-eval" => RunPdfOccurrenceEval(options),
+        "pdf-occurrence-counterfactual-eval" => RunPdfOccurrenceCounterfactualEval(options),
+        "pdf-candidate-construction-audit" => RunPdfCandidateConstructionAudit(options),
+        "pdf-semantic-recovery-eval" => await RunPdfSemanticRecoveryEvalAsync(options, cts.Token),
+        "pdf-semantic-recovery-result-eval" => RunPdfSemanticRecoveryResultEval(options),
         "pdf-tags" => await RunPdfTagsAsync(options, cts.Token),
         "pdf-bookmarks" => RunPdfBookmarks(options),
         "verify-corrupt" => await RunVerifyCorruptAsync(options, cts.Token),
@@ -1038,6 +1046,8 @@ static async Task<int> RunPdfVisualProbeAsync(CommandLineOptions o, Cancellation
         : o.UseNvidiaNim
             ? new NvidiaNimVisualQuestion(o.Pipeline.Sglang.Endpoint, o.Pipeline.Sglang.ApiKey, o.Pipeline.Sglang.Model,
                 o.Pipeline.Sglang.RequestTimeoutSeconds, o.Pipeline.Sglang.TransientRequestRetries)
+            : o.Pipeline.Backend == InferenceBackend.OpenRouter
+                ? new OpenRouterVisualQuestion(o.Pipeline.OpenRouter.Endpoint, o.Pipeline.OpenRouter.ApiKey, o.Pipeline.OpenRouter.Model)
             : throw new ArgumentException("pdf-visual-probe cần --nvidia-nim hoặc --vlm-model/--vlm-mmproj.");
 
     var result = await PdfVisualTextRecovery.ProbeAsync(pdf, slim, visual, o.PdfVisualProbeIndex, o.VlmDpi, ct);
@@ -1119,10 +1129,100 @@ static async Task<int> RunPdfVisualResultEvalAsync(CommandLineOptions o, Cancell
         .Select(entry => entry.Text!).ToArray();
     var targets = representation is { Count: > 0 } ? representation.Select(item => item.Gold) : gold;
     var evaluation = PdfVisualInferenceEvaluator.Evaluate(targets, traces, representation);
-    var payload = new { input = Path.GetFileName(o.Inputs[0]), gold = Path.GetFileName(o.PdfVisualRepresentationGoldPath), evaluation };
+    var structuralReplay = key.HasStableIds
+        ? PdfVisualStructuralReplayEvaluator.Evaluate(key, traces)
+        : null;
+    var payload = new
+    {
+        input = Path.GetFileName(o.Inputs[0]),
+        gold = Path.GetFileName(o.PdfVisualRepresentationGoldPath),
+        evaluation,
+        structuralReplay
+    };
     var output = JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true });
     if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(output);
     else await File.WriteAllTextAsync(Path.GetFullPath(o.OutputPath), output, new UTF8Encoding(false), ct);
+    return 0;
+}
+
+static async Task<int> RunKeyRebaseAsync(CommandLineOptions o, CancellationToken ct)
+{
+    if (o.Inputs.Count != 1 || string.IsNullOrWhiteSpace(o.PdfVisualRepresentationGoldPath) ||
+        string.IsNullOrWhiteSpace(o.OutputPath) || string.IsNullOrWhiteSpace(o.RebaseProvenancePath))
+    {
+        Console.Error.WriteLine("key-rebase cần <regenerated.docx>, --gold <old.key>, --out <new.key>, và --rebase-provenance <audit.json>.");
+        return 2;
+    }
+
+    var documentPath = Path.GetFullPath(o.Inputs[0]);
+    var sourceKeyPath = Path.GetFullPath(o.PdfVisualRepresentationGoldPath);
+    var rawKey = AnswerKey.Load(sourceKeyPath);
+    var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(documentPath);
+    var resolved = EvaluationAnchorResolver.Resolve(rawKey, slim.Paragraphs);
+    var hash = Convert.ToHexString(SHA256.HashData(await File.ReadAllBytesAsync(documentPath, ct))).ToLowerInvariant();
+    var goldVersion = o.GoldVersion ?? $"{Path.GetFileNameWithoutExtension(sourceKeyPath)}-rebased";
+    var provenance = new
+    {
+        schemaVersion = 1,
+        goldVersion,
+        previousGoldVersion = o.PreviousGoldVersion,
+        sourceDocumentPath = documentPath,
+        sourceDocumentSha256 = hash,
+        sourceKeyPath,
+        rebaseReason = "DOCX regenerated; paragraph stable IDs changed",
+        evaluationOnly = true,
+        modelOutputUsed = false,
+        complete = resolved.Complete,
+        entries = resolved.Entries.Select((resolution, ordinal) => new
+        {
+            ordinal,
+            title = resolution.Title,
+            oldStableId = rawKey.Entries[ordinal].StableId,
+            oldIndex = rawKey.Entries[ordinal].Index,
+            level = rawKey.Entries[ordinal].Level,
+            status = resolution.Status,
+            method = resolution.Method,
+            newStableId = resolution.ResolvedStableId,
+            newIndex = resolution.ResolvedIndex,
+            candidateCount = resolution.CandidateCount
+        }).ToArray()
+    };
+    var provenancePath = Path.GetFullPath(o.RebaseProvenancePath);
+    Directory.CreateDirectory(Path.GetDirectoryName(provenancePath)!);
+    await File.WriteAllTextAsync(provenancePath,
+        JsonSerializer.Serialize(provenance, new JsonSerializerOptions { WriteIndented = true }), new UTF8Encoding(false), ct);
+
+    if (!resolved.Complete)
+    {
+        Console.Error.WriteLine($"Rebase chưa complete; không ghi key mới. Xem audit: {provenancePath}");
+        return 1;
+    }
+
+    var outputPath = Path.GetFullPath(o.OutputPath);
+    Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
+    var lines = new StringBuilder()
+        .Append("# Evaluation-only rebased gold: ").AppendLine(goldVersion)
+        .AppendLine("# Source-derived from reviewed key titles + regenerated DOCX canonical occurrence order; model output was not used.")
+        .Append("# Previous gold: ").AppendLine(o.PreviousGoldVersion ?? Path.GetFileName(sourceKeyPath))
+        .Append("# Source document SHA-256: ").AppendLine(hash);
+    foreach (var item in resolved.Entries.Select((resolution, ordinal) => new { resolution, entry = rawKey.Entries[ordinal] }))
+    {
+        if (item.entry.Excluded || string.IsNullOrWhiteSpace(item.resolution.ResolvedStableId)) continue;
+        lines.Append('@').Append(item.resolution.ResolvedStableId);
+        if (item.entry.Level is not null) lines.Append(' ').Append(item.entry.Level.Value);
+        if (!string.IsNullOrWhiteSpace(item.entry.Text)) lines.Append("   # ").Append(item.entry.Text);
+        lines.AppendLine();
+    }
+    await File.WriteAllTextAsync(outputPath, lines.ToString(), new UTF8Encoding(false), ct);
+    Console.WriteLine(JsonSerializer.Serialize(new
+    {
+        status = "rebased",
+        goldVersion,
+        key = outputPath,
+        provenance = provenancePath,
+        entries = rawKey.Count,
+        resolved = resolved.Entries.Count(entry => entry.Status == "resolved")
+    }));
     return 0;
 }
 
@@ -1197,13 +1297,29 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
     using var analyst = await CreateClassifierAsync(o, ct);
     if (string.IsNullOrWhiteSpace(o.VlmModelPath) != string.IsNullOrWhiteSpace(o.VlmMmprojPath))
         throw new ArgumentException("pdf-stage-eval dùng VLM cần đủ --vlm-model và --vlm-mmproj.");
-    using IPdfVisualQuestion? visualAnalyst = !string.IsNullOrWhiteSpace(o.VlmModelPath)
+    var visualRequested = !string.IsNullOrWhiteSpace(o.VlmModelPath) || o.UseNvidiaNim ||
+        o.PdfStageVisualReview || o.PdfStageVisualRegions > 0 || o.PdfStageVisualScheduler ||
+        !string.IsNullOrWhiteSpace(o.PdfStageVisualProducer);
+    using IPdfVisualQuestion? visualAnalyst = !visualRequested
+        ? null
+        : !string.IsNullOrWhiteSpace(o.VlmModelPath)
             ? await VlmImageQuestion.LoadAsync(o.VlmModelPath!, o.VlmMmprojPath!, o.VlmContextSize, o.VlmGpuLayerCount, ct)
         : o.UseNvidiaNim
             ? new NvidiaNimVisualQuestion(o.Pipeline.Sglang.Endpoint, o.Pipeline.Sglang.ApiKey, o.Pipeline.Sglang.Model,
                 o.Pipeline.Sglang.RequestTimeoutSeconds, o.Pipeline.Sglang.TransientRequestRetries)
+        : o.Pipeline.Backend == InferenceBackend.OpenRouter
+            ? new OpenRouterVisualQuestion(o.Pipeline.OpenRouter.Endpoint, o.Pipeline.OpenRouter.ApiKey, o.Pipeline.OpenRouter.Model)
             : null;
     var rows = new List<object>();
+    var hasPartialTimeout = false;
+    Exception? terminalFault = null;
+    var semanticLaneOptions = new SemanticLaneOptions(
+        TimeSpan.FromSeconds(o.PdfStageSemanticRequestTimeoutSeconds),
+        TimeSpan.FromSeconds(o.PdfStageSemanticBatchTimeoutSeconds),
+        TimeSpan.FromSeconds(o.PdfStageSemanticLaneDeadlineSeconds),
+        o.PdfStageSemanticConcurrency);
+    try
+    {
     foreach (var file in files)
     {
         var stem = Path.GetFileNameWithoutExtension(file);
@@ -1220,6 +1336,8 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
 
         var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
         var rawKey = AnswerKey.Load(sourceKeys[0]);
+        var sourceDocumentSha256 = FileSha256(file);
+        var goldKeySha256 = FileSha256(sourceKeys[0]);
         var stableMap = slim.Paragraphs
             .Where(p => !string.IsNullOrWhiteSpace(p.StableId))
             .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
@@ -1235,13 +1353,16 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
         var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
             file, slim, analyst, analystBudget, o.PdfStageWideCandidates,
             o.PdfStageSupplementCandidates, visualAnalyst, o.VlmDpi, o.PdfStageVisualRegions, o.PdfStageVisualProducer,
-            o.PdfStageVisualScheduler, ct);
+            o.PdfStageVisualScheduler, ct, semanticLaneOptions, o.PdfStageCheckpointPath, o.PdfStageResume,
+            o.PdfStageVisualConcurrency, o.PdfStageSemanticHierarchy);
         var audit = result.Audit;
         if (audit is null)
         {
             rows.Add(new { file = Path.GetFileName(file), status = "route-not-applicable", key = key.Count, reason = result.Reason });
             continue;
         }
+        hasPartialTimeout |= string.Equals(audit.SemanticLane?.Status, "partial_timeout", StringComparison.Ordinal) ||
+                             string.Equals(audit.VisualLane?.Status, "partial_timeout", StringComparison.Ordinal);
 
         string Canon(string? value) => string.Concat((value ?? "").Where(char.IsLetterOrDigit).Select(char.ToLowerInvariant));
         var expected = truth.Select(e => Canon(e.Text)).ToArray();
@@ -1266,8 +1387,41 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
         };
         var score = Evaluator.Score(file, finalOutline, [], key);
         var exact = Hits(result.Headings.Select(h => h.Text));
-        var modelUnavailable = stageTraces.Count > 0 && audit.BlockDecisions.Count == 0 &&
-            stageTraces.All(trace => trace.SemanticRole is "Unknown" or "Uncertain");
+        // A failed hosted batch is materialized as one Uncertain decision per input so candidate
+        // coverage remains auditable. Treat that shape as unavailable only when no raw model reply
+        // exists; an actual all-Uncertain reply is still a measured result.
+        var semanticPartialTimeout = string.Equals(audit.SemanticLane?.Status, "partial_timeout", StringComparison.Ordinal);
+        var semanticUnavailable = !semanticPartialTimeout && audit.BlockDecisions.Count > 0 && audit.RawAnalystResponses.Count == 0 &&
+            audit.BlockDecisions.All(decision => string.Equals(decision.Role, "Uncertain", StringComparison.Ordinal));
+        var visualAttempts = audit.VisualRecoveries.SelectMany(recovery => recovery.Attempts ?? []).ToArray();
+        var visualUnavailable = visualAttempts.Length > 0 && visualAttempts.All(attempt =>
+            string.Equals(attempt.Status, "failed", StringComparison.OrdinalIgnoreCase));
+        var modelUnavailable = semanticUnavailable || visualUnavailable;
+        var visualHttpStatuses = visualAttempts
+            .Where(attempt => attempt.HttpStatus.HasValue)
+            .Select(attempt => attempt.HttpStatus!.Value)
+            .Distinct()
+            .ToArray();
+        var unavailableHttpStatus = visualUnavailable && visualHttpStatuses.Length == 1
+            ? visualHttpStatuses[0]
+            : (int?)null;
+        var unavailableFailureClass = modelUnavailable
+            ? unavailableHttpStatus switch
+            {
+                402 => "billing",
+                401 or 403 => "authentication-or-authorization",
+                429 => "rate-limit",
+                >= 500 => "provider",
+                _ when semanticUnavailable => "semantic-provider-or-contract",
+                _ => "transport-or-provider",
+            }
+            : null;
+        var unavailableRetryable = unavailableHttpStatus switch
+        {
+            402 or 401 or 403 => false,
+            408 or 429 or 502 or 503 or 504 => true,
+            _ => (bool?)null,
+        };
         var levelHits = truth.Count(e => result.Headings.Any(h => Canon(h.Text) == Canon(e.Text) && h.Level == e.Level));
         var markerReconstructed = result.Headings
             .Where(h => h.BoundarySource == "pdf-marker-span-reconstruction")
@@ -1290,8 +1444,41 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             : PdfVisualRepresentationAudit.Evaluate(PdfTextbookOutline.FindSiblingPdf(file)!, slim, key);
         rows.Add(new
         {
-            file = Path.GetFileName(file), status = modelUnavailable ? "model-unavailable" : "measured", key = key.Count,
+            file = Path.GetFileName(file), status = modelUnavailable ? "model-unavailable" : semanticPartialTimeout ? "partial_timeout" : "measured", key = key.Count,
             modelUnavailable,
+            availability = new
+            {
+                state = modelUnavailable ? "unavailable" : "available",
+                failureClass = unavailableFailureClass,
+                httpStatus = unavailableHttpStatus,
+                retryable = modelUnavailable ? unavailableRetryable : null,
+                semanticUnavailable,
+                semanticPartialTimeout,
+                visual = new
+                {
+                    attempts = visualAttempts.Length,
+                    succeeded = visualAttempts.Count(attempt => string.Equals(attempt.Status, "success", StringComparison.OrdinalIgnoreCase)),
+                    failed = visualAttempts.Count(attempt => string.Equals(attempt.Status, "failed", StringComparison.OrdinalIgnoreCase)),
+                },
+            },
+            fingerprints = new
+            {
+                sourceDocumentSha256,
+                goldKeySha256,
+                model = analyst.ModelName,
+                promptProfile = $"pdf-stage:{(o.PdfStageWideCandidates ? "wide" : "broad")}{(o.PdfStageSupplementCandidates ? "+supplement" : "")}:visual-scheduler={o.PdfStageVisualScheduler}",
+                promptSha256 = PdfStagePromptProfile.SemanticPromptSha256,
+                semanticConcurrency = o.PdfStageSemanticConcurrency,
+                semanticRequestTimeoutSeconds = o.PdfStageSemanticRequestTimeoutSeconds,
+                semanticBatchTimeoutSeconds = o.PdfStageSemanticBatchTimeoutSeconds,
+                semanticLaneDeadlineSeconds = o.PdfStageSemanticLaneDeadlineSeconds,
+                visualRegionBudget = o.PdfStageVisualRegions,
+                visualRegionIdsSha256 = HashText(string.Join("\n", audit.VisualRecoveries
+                    .Where(trace => trace.Attempts is { Count: > 0 })
+                    .Select(trace => trace.RegionId).OrderBy(id => id, StringComparer.Ordinal))),
+                resume = o.PdfStageResume,
+            },
+            lanes = new { semantic = audit.SemanticLane, visual = audit.VisualLane },
             rawCandidateRecall = new { hits = Hits(allCandidates.Select(b => b.Text)), total = key.Count, candidates = allCandidates.Count },
             analystCoverage = new { hits = Hits(selected.Select(b => b.Text)), total = key.Count, selected = selected.Count, available = audit.CandidatesAvailable },
             vlmRole = new { hits = Hits(roleHeading.Select(b => b.Text)), selected = roleHeading.Length, precision = roleHeading.Length == 0 ? (double?)null : Hits(roleHeading.Select(b => b.Text)) / (double)roleHeading.Length },
@@ -1355,7 +1542,9 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
                     .ToArray(),
             },
             levelAccuracy = new { hits = levelHits, total = key.Count },
-            final = new { result = result.Headings.Count, precision = score.Precision, recall = score.Recall, f1 = score.F1, nav = score.NavigationRecall, navLevel = score.NavigationLevelAccuracy },
+            final = semanticPartialTimeout
+                ? new { state = "not-measured-partial-run", result = result.Headings.Count, precision = (double?)null, recall = (double?)null, f1 = (double?)null, nav = (double?)null, navLevel = (double?)null }
+                : new { state = "measured", result = result.Headings.Count, precision = (double?)score.Precision, recall = (double?)score.Recall, f1 = (double?)score.F1, nav = (double?)score.NavigationRecall, navLevel = (double?)score.NavigationLevelAccuracy },
             rawAnalystResponses = o.Pipeline.ShowRawOutput ? audit.RawAnalystResponses : null,
             modelInputContracts = o.Pipeline.ShowRawOutput ? audit.ModelInputContracts : null,
             candidateKeyTitles = o.Pipeline.ShowRawOutput
@@ -1375,10 +1564,361 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             retrievalTrace = PdfLayoutEvidenceOutline.TraceCandidateRetrieval(file, missingCandidateTitles),
         });
     }
+    }
+    catch (Exception ex)
+    {
+        terminalFault = ex;
+        throw;
+    }
+    finally
+    {
+        if (o.OutputPath is not null)
+        {
+            var checkpointManifest = JsonSerializer.Serialize(new
+            {
+                runStatus = terminalFault is not null ? "pipeline_fault" : hasPartialTimeout ? "partial_timeout" : "complete",
+                rows,
+            }, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+            await File.WriteAllTextAsync(Path.GetFullPath(o.OutputPath), checkpointManifest, new UTF8Encoding(false), CancellationToken.None);
+        }
+    }
 
-    var json = JsonSerializer.Serialize(rows, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+    var json = JsonSerializer.Serialize(new
+    {
+        runStatus = hasPartialTimeout ? "partial_timeout" : "complete",
+        rows,
+    }, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
     if (o.OutputPath is null) Console.WriteLine(json);
     else await File.WriteAllTextAsync(Path.GetFullPath(o.OutputPath), json, new UTF8Encoding(false), ct);
+    return 0;
+}
+
+static string FileSha256(string path) =>
+    Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
+
+static string HashText(string value) =>
+    Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value))).ToLowerInvariant();
+
+static int RunPdfFirstLossAudit(CommandLineOptions o)
+{
+    var files = ExpandCalibrationInputs(o.Inputs);
+    var keyIndex = BuildKeyIndex(files, o.PdfStageKeyRoot);
+    if (files.Count == 0) { Console.Error.WriteLine("Không tìm thấy DOCX để audit first loss PDF."); return 2; }
+
+    var sourceKeyRoot = Path.GetFullPath(o.PdfStageKeyRoot ?? "keys");
+    var rows = new List<object>();
+    foreach (var file in files)
+    {
+        var stem = Path.GetFileNameWithoutExtension(file);
+        var sourceKeys = keyIndex.TryGetValue(stem, out var paths)
+            ? paths.Where(path => path.StartsWith(sourceKeyRoot + Path.DirectorySeparatorChar,
+                StringComparison.OrdinalIgnoreCase)).ToArray()
+            : Array.Empty<string>();
+        if (sourceKeys.Length != 1)
+        {
+            rows.Add(new { file = Path.GetFileName(file), status = sourceKeys.Length == 0 ? "no-source-key" : "ambiguous-source-key" });
+            continue;
+        }
+
+        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var rawKey = AnswerKey.Load(sourceKeys[0]);
+        var stableMap = slim.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
+            .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
+        var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
+        var report = PdfFirstLossAudit.Evaluate(file, slim, key, o.PdfStageAnalystBlocks);
+        rows.Add(new
+        {
+            file = Path.GetFileName(file),
+            pdf = PdfTextbookOutline.FindSiblingPdf(file) is { } pdf ? Path.GetFileName(pdf) : null,
+            key = Path.GetFileName(sourceKeys[0]),
+            report,
+        });
+    }
+
+    var json = JsonSerializer.Serialize(rows, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else
+    {
+        var output = Path.GetFullPath(o.OutputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        File.WriteAllText(output, json, new UTF8Encoding(false));
+    }
+    return 0;
+}
+
+static int RunPdfOccurrenceEval(CommandLineOptions o)
+{
+    var files = ExpandCalibrationInputs(o.Inputs);
+    var keyIndex = BuildKeyIndex(files, o.PdfStageKeyRoot);
+    if (files.Count == 0) { Console.Error.WriteLine("Không tìm thấy DOCX để evaluation occurrence PDF."); return 2; }
+
+    var sourceKeyRoot = Path.GetFullPath(o.PdfStageKeyRoot ?? "keys");
+    var rows = new List<object>();
+    foreach (var file in files)
+    {
+        var stem = Path.GetFileNameWithoutExtension(file);
+        var sourceKeys = keyIndex.TryGetValue(stem, out var paths)
+            ? paths.Where(path => path.StartsWith(sourceKeyRoot + Path.DirectorySeparatorChar,
+                StringComparison.OrdinalIgnoreCase)).ToArray()
+            : Array.Empty<string>();
+        if (sourceKeys.Length != 1)
+        {
+            rows.Add(new { file = Path.GetFileName(file), status = sourceKeys.Length == 0 ? "no-source-key" : "ambiguous-source-key" });
+            continue;
+        }
+
+        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var rawKey = AnswerKey.Load(sourceKeys[0]);
+        var stableMap = slim.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
+            .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
+        var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
+        var firstLoss = PdfFirstLossAudit.Evaluate(file, slim, key, o.PdfStageAnalystBlocks);
+        var occurrence = PdfGoldOccurrenceEvaluator.Evaluate(slim, key, firstLoss);
+        rows.Add(new
+        {
+            file = Path.GetFileName(file),
+            key = Path.GetFileName(sourceKeys[0]),
+            evaluationOnly = true,
+            firstLoss,
+            occurrence,
+        });
+    }
+
+    var json = JsonSerializer.Serialize(rows, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else
+    {
+        var output = Path.GetFullPath(o.OutputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        File.WriteAllText(output, json, new UTF8Encoding(false));
+    }
+    return 0;
+}
+
+static int RunPdfOccurrenceCounterfactualEval(CommandLineOptions o)
+{
+    var files = ExpandCalibrationInputs(o.Inputs);
+    var keyIndex = BuildKeyIndex(files, o.PdfStageKeyRoot);
+    if (files.Count == 0) { Console.Error.WriteLine("Không tìm thấy DOCX để evaluation occurrence PDF."); return 2; }
+
+    var sourceKeyRoot = Path.GetFullPath(o.PdfStageKeyRoot ?? "keys");
+    var rows = new List<object>();
+    foreach (var file in files)
+    {
+        var stem = Path.GetFileNameWithoutExtension(file);
+        var sourceKeys = keyIndex.TryGetValue(stem, out var paths)
+            ? paths.Where(path => path.StartsWith(sourceKeyRoot + Path.DirectorySeparatorChar,
+                StringComparison.OrdinalIgnoreCase)).ToArray()
+            : Array.Empty<string>();
+        if (sourceKeys.Length != 1)
+        {
+            rows.Add(new { file = Path.GetFileName(file), status = sourceKeys.Length == 0 ? "no-source-key" : "ambiguous-source-key" });
+            continue;
+        }
+
+        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var rawKey = AnswerKey.Load(sourceKeys[0]);
+        var stableMap = slim.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
+            .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
+        var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
+        var firstLoss = PdfFirstLossAudit.Evaluate(file, slim, key, o.PdfStageAnalystBlocks);
+        var goldOccurrence = PdfGoldOccurrenceEvaluator.Evaluate(slim, key, firstLoss);
+        // The resolver receives only the feature-only PDF ranking. Gold data is consumed below
+        // exclusively by the counterfactual evaluator.
+        var productionOccurrence = PdfProductionOccurrenceResolver.Resolve(
+            PdfLayoutEvidenceOutline.BuildCandidateRankingAudit(file).Candidates);
+        var counterfactual = PdfOccurrenceCounterfactualEvaluator.Evaluate(goldOccurrence, productionOccurrence);
+        rows.Add(new
+        {
+            file = Path.GetFileName(file),
+            key = Path.GetFileName(sourceKeys[0]),
+            productionResolverUsesGold = false,
+            productionOccurrence,
+            evaluationOnly = new { goldOccurrence, counterfactual },
+        });
+    }
+
+    var json = JsonSerializer.Serialize(rows, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else
+    {
+        var output = Path.GetFullPath(o.OutputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        File.WriteAllText(output, json, new UTF8Encoding(false));
+    }
+    return 0;
+}
+
+static int RunPdfCandidateConstructionAudit(CommandLineOptions o)
+{
+    var files = ExpandCalibrationInputs(o.Inputs);
+    var keyIndex = BuildKeyIndex(files, o.PdfStageKeyRoot);
+    if (files.Count == 0) { Console.Error.WriteLine("Không tìm thấy DOCX để audit candidate construction PDF."); return 2; }
+
+    var sourceKeyRoot = Path.GetFullPath(o.PdfStageKeyRoot ?? "keys");
+    var rows = new List<object>();
+    foreach (var file in files)
+    {
+        var stem = Path.GetFileNameWithoutExtension(file);
+        var sourceKeys = keyIndex.TryGetValue(stem, out var paths)
+            ? paths.Where(path => path.StartsWith(sourceKeyRoot + Path.DirectorySeparatorChar,
+                StringComparison.OrdinalIgnoreCase)).ToArray()
+            : Array.Empty<string>();
+        if (sourceKeys.Length != 1)
+        {
+            rows.Add(new { file = Path.GetFileName(file), status = sourceKeys.Length == 0 ? "no-source-key" : "ambiguous-source-key" });
+            continue;
+        }
+
+        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var rawKey = AnswerKey.Load(sourceKeys[0]);
+        var stableMap = slim.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
+            .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
+        var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
+        var firstLoss = PdfFirstLossAudit.Evaluate(file, slim, key, o.PdfStageAnalystBlocks);
+        var targets = firstLoss.Entries.Where(entry => entry.FirstLoss is "semantic_block_grouping" or "candidate_producer")
+            .Select(entry => entry.Gold).ToArray();
+        var construction = PdfLayoutEvidenceOutline.TraceCandidateConstruction(file, targets)
+            .ToDictionary(trace => trace.ExpectedText, StringComparer.Ordinal);
+        rows.Add(new
+        {
+            file = Path.GetFileName(file),
+            key = Path.GetFileName(sourceKeys[0]),
+            diagnosticOnly = true,
+            targets = firstLoss.Entries.Where(entry => entry.FirstLoss is "semantic_block_grouping" or "candidate_producer")
+                .Select(entry => new { entry.Ordinal, entry.Gold, entry.FirstLoss, construction = construction.GetValueOrDefault(entry.Gold) })
+                .ToArray(),
+        });
+    }
+
+    var json = JsonSerializer.Serialize(rows, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else
+    {
+        var output = Path.GetFullPath(o.OutputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        File.WriteAllText(output, json, new UTF8Encoding(false));
+    }
+    return 0;
+}
+
+// M7.23: this is deliberately source-only routing. Gold keys are not read here;
+// they can only be applied later by an offline evaluator over this artifact.
+static async Task<int> RunPdfSemanticRecoveryEvalAsync(CommandLineOptions o, CancellationToken ct)
+{
+    var files = ExpandCalibrationInputs(o.Inputs);
+    if (files.Count == 0)
+    {
+        Console.Error.WriteLine("Không tìm thấy DOCX để chạy PDF semantic recovery.");
+        return 2;
+    }
+
+    if (o.Pipeline.DisableLlm)
+    {
+        Console.Error.WriteLine("pdf-semantic-recovery-eval cần semantic model; bỏ --no-llm.");
+        return 2;
+    }
+
+    var rows = new List<object>();
+    using var analyst = await CreateClassifierAsync(o, ct);
+    foreach (var file in files)
+    {
+        if (!o.Quiet)
+            Console.Error.WriteLine($"» PDF semantic recovery: {Path.GetFileName(file)}");
+
+        var recoveryOptions = PdfSemanticRecoveryOptions.Parse(o.PdfSemanticRecoveryProfile);
+        var report = await PdfLayoutEvidenceOutline.RunSemanticRecoveryAuditAsync(file, analyst, recoveryOptions, ct);
+        rows.Add(new
+        {
+            file = Path.GetFileName(file),
+            sourceDocumentSha256 = FileSha256(file),
+            usesGold = false,
+            backend = o.Pipeline.Backend.ToString(),
+            semanticRecoveryProfile = recoveryOptions.Name,
+            report,
+        });
+
+        if (!o.Quiet)
+            Console.Error.WriteLine(
+                $"  status={report.Status} eligible={report.EligibleUnresolvedBlocks} " +
+                $"proposed={report.HeadingRoleProposals} canonicalUnique={report.CanonicalUniqueProposals} " +
+                $"validated={report.ValidatorAccepted}");
+    }
+
+    var json = JsonSerializer.Serialize(rows.Count == 1 ? rows[0] : rows, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else
+    {
+        var output = Path.GetFullPath(o.OutputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        await File.WriteAllTextAsync(output, json, new UTF8Encoding(false), ct);
+        if (!o.Quiet) Console.Error.WriteLine($"Đã ghi: {output}");
+    }
+
+    return 0;
+}
+
+static int RunPdfSemanticRecoveryResultEval(CommandLineOptions o)
+{
+    if (o.Inputs.Count != 1 || !File.Exists(o.Inputs[0]))
+    {
+        Console.Error.WriteLine("pdf-semantic-recovery-result-eval cần đúng một recovery artifact JSON.");
+        return 2;
+    }
+    if (string.IsNullOrWhiteSpace(o.PdfVisualRepresentationGoldPath) || !File.Exists(o.PdfVisualRepresentationGoldPath))
+    {
+        Console.Error.WriteLine("Cần --gold <rebased.key> cho evaluation offline.");
+        return 2;
+    }
+    if (string.IsNullOrWhiteSpace(o.PdfSemanticRecoveryBaselineArtifact) || !File.Exists(o.PdfSemanticRecoveryBaselineArtifact))
+    {
+        Console.Error.WriteLine("Cần --recovery-baseline-artifact <occurrence.json> đã đóng băng.");
+        return 2;
+    }
+
+    var result = PdfSemanticRecoveryArtifactEvaluator.Evaluate(
+        File.ReadAllText(o.Inputs[0]),
+        File.ReadAllText(o.PdfSemanticRecoveryBaselineArtifact),
+        AnswerKey.Load(o.PdfVisualRepresentationGoldPath));
+    var payload = new
+    {
+        artifact = Path.GetFileName(o.Inputs[0]),
+        gold = Path.GetFileName(o.PdfVisualRepresentationGoldPath),
+        baselineArtifact = Path.GetFileName(o.PdfSemanticRecoveryBaselineArtifact),
+        result,
+    };
+    var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else
+    {
+        var output = Path.GetFullPath(o.OutputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        File.WriteAllText(output, json, new UTF8Encoding(false));
+    }
     return 0;
 }
 
@@ -1559,13 +2099,28 @@ static async Task<IHeaderClassifier> CreateClassifierAsync(CommandLineOptions o,
 static IReadOnlyDictionary<string, IReadOnlyList<string>> BuildKeyIndex(IReadOnlyList<string> files, string? additionalKeyRoot = null)
 {
     var keys = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
+    void AddStem(string stem, string fullPath)
+    {
+        if (!keys.TryGetValue(stem, out var list))
+            keys[stem] = list = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        list.Add(fullPath);
+    }
     void AddKey(string path)
     {
         if (!File.Exists(path)) return;
         var stem = Path.GetFileNameWithoutExtension(path);
-        if (!keys.TryGetValue(stem, out var list))
-            keys[stem] = list = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        list.Add(Path.GetFullPath(path));
+        var fullPath = Path.GetFullPath(path);
+        AddStem(stem, fullPath);
+
+        // Rebased evaluation keys keep their source stem plus a versioned suffix. The route audit
+        // still receives the original DOCX stem, so index the alias without duplicating/replacing
+        // either key. Filtering by --pdf-stage-key-root below keeps source authority explicit.
+        const string regeneratedSuffix = "-regenerated-docx";
+        if (!stem.EndsWith(regeneratedSuffix, StringComparison.OrdinalIgnoreCase)) return;
+        var versionStart = stem.LastIndexOf(".v", stem.Length - regeneratedSuffix.Length, StringComparison.OrdinalIgnoreCase);
+        if (versionStart <= 0) return;
+        var version = stem[(versionStart + 2)..^regeneratedSuffix.Length];
+        if (int.TryParse(version, out _)) AddStem(stem[..versionStart], fullPath);
     }
 
     foreach (var file in files)

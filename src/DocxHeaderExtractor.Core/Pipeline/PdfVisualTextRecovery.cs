@@ -48,12 +48,18 @@ public static class PdfVisualTextRecovery
         int maximumRegions,
         string? producer,
         bool schedule,
-        CancellationToken ct)
+        CancellationToken ct,
+        IReadOnlySet<string>? completedRegionIds = null,
+        Func<PdfVisualRecoveryTrace, CancellationToken, Task>? checkpoint = null,
+        IReadOnlyList<PdfVisualRecoveryTrace>? resumedTraces = null,
+        int maxConcurrency = 1)
     {
         var availableRegions = BuildRegions(pdfPath, lines);
         var producerRegions = FilterByProducer(availableRegions, producer);
         var scheduledRegions = schedule ? RankForRecovery(producerRegions) : producerRegions;
-        var regions = maximumRegions <= 0 ? scheduledRegions : scheduledRegions.Take(maximumRegions).ToArray();
+        var regions = (maximumRegions <= 0 ? scheduledRegions : scheduledRegions.Take(maximumRegions))
+            .Where(region => completedRegionIds is null || !completedRegionIds.Contains(region.SourceId))
+            .ToArray();
         var documentRegime = DocumentDomainPolicy.InferRegime(document.Paragraphs.Select(paragraph => paragraph.Text));
         var repeatedArtifacts = RepeatedHeaderArtifactKeys(lines);
         var occupied = existing.Where(heading => heading.HeadingSpan is not null)
@@ -68,16 +74,35 @@ public static class PdfVisualTextRecovery
             audit.AddRange(scheduledRegions.Skip(maximumRegions)
                 .Select(region => new PdfTextLayerRecoveryAudit(region.SourceId, region.Page, "visual-budget-excluded")));
         var evidence = new List<RouteVisualEvidenceAudit>();
-        var traces = new List<PdfVisualRecoveryTrace>();
+        var traces = resumedTraces?.ToList() ?? [];
         var raw = new List<string>();
+        using var visualGate = new SemaphoreSlim(Math.Max(1, maxConcurrency));
+        foreach (var trace in traces.Where(trace => trace.Status == "visual-ocr-canonical-map"))
+        {
+            var restored = MapUnique(document, trace.RegionId, trace.ObservedText, occupied);
+            if (restored is null) continue;
+            occupied.Add((restored.Index, restored.HeadingSpan!.Start));
+            headings.Add(restored);
+            audit.Add(new PdfTextLayerRecoveryAudit(trace.RegionId, trace.Page, "visual-checkpoint-resumed"));
+        }
         foreach (var region in regions)
         {
+            var traceCount = traces.Count;
             ct.ThrowIfCancellationRequested();
             try
             {
                 var png = PdfRegionRasterizer.RenderCropPng(pdfPath, region.Page, region.Left, region.BottomY,
                     region.Right, region.TopY, dpi);
-                var answer = await visual.AskAsync(png, Prompt(region), 220, ct);
+                await visualGate.WaitAsync(ct);
+                string answer;
+                try
+                {
+                    answer = await visual.AskAsync(png, Prompt(region), 220, ct);
+                }
+                finally
+                {
+                    visualGate.Release();
+                }
                 raw.Add(answer);
                 var proposal = Parse(region.SourceId, answer);
                 evidence.Add(new RouteVisualEvidenceAudit(region.SourceId, proposal.Role.ToString(), proposal.Confidence,
@@ -131,6 +156,11 @@ public static class PdfVisualTextRecovery
             {
                 audit.Add(new PdfTextLayerRecoveryAudit(region.SourceId, region.Page, "visual-region-unavailable"));
                 traces.Add(new PdfVisualRecoveryTrace(region.SourceId, region.Page, "Uncertain", 0, "", "", "visual-region-unavailable", Attempts: Attempts(visual)));
+            }
+            finally
+            {
+                if (checkpoint is not null && traces.Count > traceCount)
+                    await checkpoint(traces[^1], ct);
             }
         }
         if (!string.IsNullOrWhiteSpace(producer))

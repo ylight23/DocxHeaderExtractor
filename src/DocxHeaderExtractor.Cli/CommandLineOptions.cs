@@ -88,6 +88,14 @@ public sealed class CommandLineOptions
     public bool PdfStageLosslessBlocks { get; private set; }
     public bool PdfStageAtomicLines { get; private set; }
     public bool PdfStageVisualReview { get; private set; }
+    public bool PdfStageSemanticHierarchy { get; private set; }
+    public int PdfStageSemanticRequestTimeoutSeconds { get; private set; } = 90;
+    public int PdfStageSemanticBatchTimeoutSeconds { get; private set; } = 120;
+    public int PdfStageSemanticLaneDeadlineSeconds { get; private set; } = 300;
+    public int PdfStageSemanticConcurrency { get; private set; } = 1;
+    public int PdfStageVisualConcurrency { get; private set; } = 1;
+    public string? PdfStageCheckpointPath { get; private set; }
+    public bool PdfStageResume { get; private set; }
     public int VlmMaxImagesPerRequest { get; private set; } = 1;
     public int VlmMaxConcurrentRequests { get; private set; } = 1;
 
@@ -109,7 +117,12 @@ public sealed class CommandLineOptions
     public int? PdfVisualPage { get; private set; }
     public bool PdfVisualLineList { get; private set; }
     public string? PdfVisualRepresentationGoldPath { get; private set; }
+    public string? PdfSemanticRecoveryBaselineArtifact { get; private set; }
+    public string PdfSemanticRecoveryProfile { get; private set; } = "current_v6";
     public List<string> PdfVisualArtifacts { get; } = [];
+    public string? RebaseProvenancePath { get; private set; }
+    public string? GoldVersion { get; private set; }
+    public string? PreviousGoldVersion { get; private set; }
 
     public static CommandLineOptions Parse(string[] args)
     {
@@ -121,7 +134,7 @@ public sealed class CommandLineOptions
 
         int i = 0;
         if (!args[0].StartsWith('-') &&
-            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-tags" or "pdf-bookmarks" or "verify-corrupt")
+            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt")
         {
             o.Command = args[0];
             i = 1;
@@ -183,6 +196,14 @@ public sealed class CommandLineOptions
                 case "--pdf-stage-lossless": o.PdfStageLosslessBlocks = true; break;
                 case "--pdf-stage-atomic": o.PdfStageAtomicLines = true; break;
                 case "--pdf-stage-vlm": o.PdfStageVisualReview = true; break;
+                case "--pdf-stage-semantic-hierarchy": o.PdfStageSemanticHierarchy = true; break;
+                case "--pdf-stage-semantic-request-timeout": o.PdfStageSemanticRequestTimeoutSeconds = Math.Clamp(int.Parse(Next(a)), 1, 3600); break;
+                case "--pdf-stage-semantic-batch-timeout": o.PdfStageSemanticBatchTimeoutSeconds = Math.Clamp(int.Parse(Next(a)), 1, 3600); break;
+                case "--pdf-stage-semantic-lane-deadline": o.PdfStageSemanticLaneDeadlineSeconds = Math.Clamp(int.Parse(Next(a)), 1, 14400); break;
+                case "--pdf-stage-semantic-concurrency": o.PdfStageSemanticConcurrency = Math.Max(1, int.Parse(Next(a))); break;
+                case "--pdf-stage-visual-concurrency": o.PdfStageVisualConcurrency = Math.Max(1, int.Parse(Next(a))); break;
+                case "--pdf-stage-checkpoint": o.PdfStageCheckpointPath = Next(a); break;
+                case "--pdf-stage-resume": o.PdfStageResume = true; break;
                 case "--vlm-max-images": o.VlmMaxImagesPerRequest = Math.Max(1, int.Parse(Next(a))); break;
                 case "--vlm-concurrency": o.VlmMaxConcurrentRequests = Math.Max(1, int.Parse(Next(a))); break;
                 case "--pdf-stage-key-root": o.PdfStageKeyRoot = Next(a); break;
@@ -192,6 +213,11 @@ public sealed class CommandLineOptions
                 case "--pdf-visual-page": o.PdfVisualPage = Math.Max(1, int.Parse(Next(a))); break;
                 case "--pdf-visual-line-list": o.PdfVisualLineList = true; break;
                 case "--gold": o.PdfVisualRepresentationGoldPath = Next(a); break;
+                case "--recovery-baseline-artifact": o.PdfSemanticRecoveryBaselineArtifact = Next(a); break;
+                case "--semantic-recovery-profile": o.PdfSemanticRecoveryProfile = Next(a); break;
+                case "--rebase-provenance": o.RebaseProvenancePath = Next(a); break;
+                case "--gold-version": o.GoldVersion = Next(a); break;
+                case "--previous-gold-version": o.PreviousGoldVersion = Next(a); break;
                 case "--visual-artifact": o.PdfVisualArtifacts.Add(Next(a)); break;
                 case "--no-docling-sidecar": o.Pipeline.DoclingSidecarFallback = false; break;
                 case "--docling-json":
@@ -390,8 +416,16 @@ public sealed class CommandLineOptions
           dhx toc-keys <thư-mục|file.docx>    # suy đáp án ỨNG VIÊN từ mục lục Word, mở rộng bench
           dhx pdf-clusters <file.pdf|file.docx> # dump cụm style PDF + mẫu; thêm model để hỏi text analyst
           dhx pdf-rank-eval <file.docx> # freeze/rank toàn bộ PDF candidate, đo Recall@K; không gọi LLM
+          dhx pdf-first-loss-audit <file.docx> --pdf-stage-key-root <keys> # tách representation khỏi retrieval per-gold; không gọi LLM
+          dhx pdf-occurrence-eval <file.docx> --pdf-stage-key-root <keys> # evaluation-only gold-anchor occurrence recall; không gọi LLM
+          dhx pdf-occurrence-counterfactual-eval <file.docx> --pdf-stage-key-root <keys> # chấm resolver source-only bằng gold ngoài runtime; không gọi LLM
+          dhx pdf-candidate-construction-audit <file.docx> --pdf-stage-key-root <keys> # trace grouping/producer cho gold mất candidate; không gọi LLM
+          dhx pdf-semantic-recovery-eval <file.docx> --openrouter --openrouter-model qwen/qwen3.5-9b --semantic-recovery-profile current_v6 # source-only recovery; profiles: current_v6|neighborhood_microbatch|neighborhood_single
+          dhx pdf-stage-eval <file.docx> --pdf-stage-semantic-hierarchy # opt-in semantic parent fallback; M8 inventory leaves it off
+          dhx pdf-semantic-recovery-result-eval <artifact.json> --gold <rebased.key> --recovery-baseline-artifact <occurrence.json> # frozen artifact + gold; không gọi model
           dhx pdf-visual-representation-eval <file.docx> --gold <file.key> # đo coverage Visual SourceFacts; không gọi model
           dhx pdf-visual-result-eval <run.json> --gold <file.key> # chấm lại Visual Inference Artifact; không gọi model
+          dhx key-rebase <regenerated.docx> --gold <old.key> --out <new.key> --rebase-provenance <audit.json> # rebase gold evaluation từ title người duyệt; không đọc model output
           dhx pdf-visual-provenance-eval <run1.json> <run2.json> # overlap/dedupe theo canonical DOCX identity; không gọi model
           dhx pdf-visual-scheduler-benchmark <file.docx> --visual-artifact <run.json> [--visual-artifact <run.json>]
           dhx pdf-tags <file.pdf|file.docx>     # audit /H* -> MCID -> PDF text -> DOCX span; không đổi output
@@ -421,7 +455,7 @@ public sealed class CommandLineOptions
           -f, --format <fmt>        json | md | txt | xml | csv   (mặc định json)
               --no-llm              Chỉ dùng luật OpenXML, bỏ qua mô hình
               --openrouter          Gọi OpenRouter RPC; đọc key từ OPENROUTER_API_KEY
-              --openrouter-model m  Model slug (mặc định qwen/qwen-2.5-7b-instruct)
+              --openrouter-model m  Model slug (mặc định qwen/qwen3.5-9b)
               --lmstudio            Gọi LM Studio OpenAI-compatible trên loopback
               --lmstudio-model m    Model identifier trả bởi GET /v1/models
               --lmstudio-endpoint u Chat endpoint (mặc định http://127.0.0.1:1234/v1/chat/completions)

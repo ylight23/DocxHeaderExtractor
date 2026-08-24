@@ -17,7 +17,8 @@ public sealed class EvaluationAnchorResolverTests
 
         Assert.True(result.Complete);
         Assert.Equal(31, result.Key.PositiveEntries.Single().Index);
-        Assert.Equal("normalized-title+document-order", result.Entries.Single().Method);
+        Assert.Equal("canonical-title+ordered-occurrence", result.Entries.Single().Method);
+        Assert.Equal("body[1]/p[31]", result.Entries.Single().ResolvedStableId);
     }
 
     [Fact]
@@ -31,5 +32,25 @@ public sealed class EvaluationAnchorResolverTests
         Assert.Equal("unresolved", result.Entries.Single().Status);
     }
 
-    private static SlimParagraph Paragraph(int index, string text) => new() { Index = index, Text = text };
+    [Fact]
+    public void Resolves_duplicate_titles_in_reviewed_document_order_not_stale_index_distance()
+    {
+        var key = AnswerKey.Parse("@body[1]/p[7] 2 # Repeated\n@body[1]/p[8] 2 # Repeated", "sample");
+        var result = EvaluationAnchorResolver.Resolve(key,
+        [
+            Paragraph(101, "Repeated"),
+            Paragraph(202, "Repeated"),
+        ]);
+
+        Assert.True(result.Complete);
+        Assert.Equal([101, 202], result.Key.PositiveEntries.Select(entry => entry.Index).ToArray());
+        Assert.All(result.Entries, entry => Assert.Equal("canonical-title+ordered-occurrence", entry.Method));
+    }
+
+    private static SlimParagraph Paragraph(int index, string text) => new()
+    {
+        Index = index,
+        StableId = $"body[1]/p[{index}]",
+        Text = text
+    };
 }

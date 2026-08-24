@@ -7,8 +7,10 @@ namespace DocxHeaderExtractor.Core.Llm;
 
 public sealed class OpenRouterOptions
 {
+    public const string DefaultModel = "qwen/qwen3.5-9b";
+
     public string ApiKey { get; set; } = "";
-    public string Model { get; set; } = "qwen/qwen-2.5-7b-instruct";
+    public string Model { get; set; } = DefaultModel;
     public Uri Endpoint { get; set; } = new("https://openrouter.ai/api/v1/chat/completions");
     public int ContextSize { get; set; } = 32768;
     public int MaxOutputTokens { get; set; } = 768;
@@ -29,7 +31,7 @@ public sealed class OpenRouterOptions
     public static OpenRouterOptions FromEnvironment() => new()
     {
         ApiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY") ?? "",
-        Model = Environment.GetEnvironmentVariable("OPENROUTER_MODEL") ?? "qwen/qwen-2.5-7b-instruct",
+        Model = Environment.GetEnvironmentVariable("OPENROUTER_MODEL") ?? DefaultModel,
     };
 }
 
@@ -122,6 +124,10 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
                 model = _options.Model,
                 temperature = 0,
                 max_tokens = Math.Min(_options.MaxOutputTokens, remaining.Count * (roles ? 64 : 32) + 128),
+                // Qwen3.5 otherwise consumes the compact structured-output budget with hidden
+                // reasoning and can terminate with content=null. We require a bounded JSON
+                // contract whose evidence is grounded locally, not a chain of thought.
+                reasoning = new { effort = "none" },
                 messages = new[]
                 {
                     new { role = "system", content = system },
@@ -217,12 +223,17 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         {
             model = _options.Model,
             temperature = 0,
-            max_tokens = 120,
+            // Role/pointer passes return one JSON item per supplied source id. A fixed 120-token
+            // cap truncates otherwise valid multi-block responses and turns them into invisible
+            // missing decisions. Keep the result bounded by the configured model profile.
+            max_tokens = BoundaryOutputBudget(userMessage),
+            reasoning = new { effort = "none" },
             messages = new[]
             {
                 new { role = "system", content = systemPrompt },
                 new { role = "user", content = userMessage },
             },
+            response_format = new { type = "json_object" },
             provider = new
             {
                 zdr = true,
@@ -257,6 +268,20 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             message.TryGetProperty("content", out var content) && content.ValueKind == JsonValueKind.String)
             return content.GetString() ?? "";
         throw new FormatException("OpenRouter response không có choices[0].message.content.");
+    }
+
+    private int BoundaryOutputBudget(string userMessage)
+    {
+        var identifiers = 0;
+        var offset = 0;
+        const string token = "\"id\"";
+        while ((offset = userMessage.IndexOf(token, offset, StringComparison.Ordinal)) >= 0)
+        {
+            identifiers++;
+            offset += token.Length;
+        }
+
+        return Math.Clamp(96 + identifiers * 64, 256, _options.MaxOutputTokens);
     }
 
     private static string SafeError(string text)

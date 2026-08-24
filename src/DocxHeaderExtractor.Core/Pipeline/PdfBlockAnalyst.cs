@@ -43,6 +43,25 @@ internal sealed record PdfBlockAnalysis(
         .ToHashSet(StringComparer.Ordinal);
 }
 
+/// <summary>Independent execution budget for the semantic lane; visual has its own lifecycle.</summary>
+public sealed record SemanticLaneOptions(
+    TimeSpan RequestTimeout,
+    TimeSpan BatchTimeout,
+    TimeSpan LaneDeadline,
+    int MaxConcurrency = 1,
+    DateTimeOffset? DeadlineUtc = null,
+    int MaxBatchSize = 0)
+{
+    public static readonly SemanticLaneOptions Default = new(
+        TimeSpan.FromSeconds(90), TimeSpan.FromSeconds(120), TimeSpan.FromMinutes(5));
+
+    public TimeSpan RemainingOr(TimeSpan requested)
+    {
+        if (DeadlineUtc is not { } deadline) return requested;
+        return TimeSpan.FromTicks(Math.Max(0, Math.Min(requested.Ticks, (deadline - DateTimeOffset.UtcNow).Ticks)));
+    }
+}
+
 /// <summary>
 /// LLM analyst for PDF semantic blocks. Deterministic code has already read PDF text, filtered
 /// obvious table/repeat/page-number lines, and grouped remaining lines into blocks. The model only
@@ -72,30 +91,76 @@ internal static class PdfBlockAnalyst
         "Keep only a standalone topic that opens or organizes document content. If evidence conflicts or is insufficient, choose unresolved.\n" +
         "Return strict JSON only: {\"blocks\":[{\"id\":\"b1\",\"decision\":\"keep|reject|unresolved\"}]}.";
 
+    internal static string PromptProfileSha256 => Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(
+        System.Text.Encoding.UTF8.GetBytes(SystemPrompt + PointerSpanSystemPrompt + CriticSystemPrompt))).ToLowerInvariant();
+
     public static async Task<PdfBlockAnalysis> AnalyzeAsync(
         IHeaderClassifier classifier,
         IReadOnlyList<PdfSemanticBlock> blocks,
         IReadOnlyDictionary<string, PdfCandidateContext>? contexts = null,
-        CancellationToken ct = default)
+        CancellationToken ct = default,
+        SemanticLaneOptions? laneOptions = null,
+        PdfStageCheckpoint? checkpoint = null)
     {
         if (blocks.Count == 0) return new PdfBlockAnalysis(blocks, [], []);
 
+        if (checkpoint is not null &&
+            blocks.All(block => checkpoint.TryGetSemanticDecision(block.Id, out _)))
+        {
+            return new PdfBlockAnalysis(blocks, blocks.Select(block =>
+            {
+                checkpoint.TryGetSemanticDecision(block.Id, out var saved);
+                return new PdfBlockDecision(block.Id, saved.Role, saved.Confidence, saved.Reason);
+            }).ToArray(), []);
+        }
+
         if (blocks.Count > 12)
         {
-            var batchDecisions = new List<PdfBlockDecision>();
-            var batchRawResponses = new List<string>();
-            foreach (var batch in blocks.Chunk(contexts is null ? 12 : 8))
+            var configuredBatchSize = (laneOptions?.MaxBatchSize ?? 0) > 0
+                ? laneOptions!.MaxBatchSize
+                : contexts is null ? 12 : 8;
+            var batches = blocks.Chunk(Math.Max(1, configuredBatchSize)).ToArray();
+            var partials = new PdfBlockAnalysis[batches.Length];
+            var maximumConcurrency = Math.Max(1, (laneOptions ?? SemanticLaneOptions.Default).MaxConcurrency);
+            await Parallel.ForEachAsync(Enumerable.Range(0, batches.Length), new ParallelOptions
             {
+                MaxDegreeOfParallelism = maximumConcurrency,
+                CancellationToken = ct,
+            }, async (index, _) =>
+            {
+                var batch = batches[index];
                 var batchContexts = contexts is null ? null : batch
                     .Where(block => contexts.ContainsKey(block.Id))
                     .ToDictionary(block => block.Id, block => contexts[block.Id], StringComparer.Ordinal);
-                var partial = await AnalyzeAsync(classifier, batch, batchContexts, ct);
-                batchDecisions.AddRange(partial.Decisions);
-                batchRawResponses.AddRange(partial.RawResponses);
-            }
-            return new PdfBlockAnalysis(blocks, batchDecisions, batchRawResponses)
+                var effectiveOptions = laneOptions ?? SemanticLaneOptions.Default;
+                var batchTimeout = effectiveOptions.RemainingOr(effectiveOptions.BatchTimeout);
+                PdfBlockAnalysis partial;
+                if (batchTimeout <= TimeSpan.Zero)
+                {
+                    partial = new PdfBlockAnalysis(batch, batch.Select(block => new PdfBlockDecision(
+                        block.Id, PdfBlockRole.Uncertain, 0, "semantic_batch_timeout")).ToArray(), []);
+                }
+                else
+                {
+                    using var batchDeadline = CancellationTokenSource.CreateLinkedTokenSource(ct);
+                    batchDeadline.CancelAfter(batchTimeout);
+                    try
+                    {
+                        partial = await AnalyzeAsync(classifier, batch, batchContexts, batchDeadline.Token, laneOptions, checkpoint);
+                    }
+                    catch (OperationCanceledException) when (!ct.IsCancellationRequested)
+                    {
+                        partial = new PdfBlockAnalysis(batch, batch.Select(block => new PdfBlockDecision(
+                            block.Id, PdfBlockRole.Uncertain, 0, "semantic_batch_timeout")).ToArray(), []);
+                    }
+                }
+                if (checkpoint is not null)
+                    await checkpoint.RecordSemanticBatchAsync(partial.Decisions, ct);
+                partials[index] = partial;
+            });
+            return new PdfBlockAnalysis(blocks, partials.SelectMany(partial => partial.Decisions).ToArray(), partials.SelectMany(partial => partial.RawResponses).ToArray())
             {
-                InputContracts = blocks.Chunk(contexts is null ? 12 : 8)
+                InputContracts = batches
                     .Select(batch => BuildUserPrompt(batch, contexts is null ? null : batch
                         .Where(block => contexts.ContainsKey(block.Id))
                         .ToDictionary(block => block.Id, block => contexts[block.Id], StringComparer.Ordinal)))
@@ -109,7 +174,15 @@ internal static class PdfBlockAnalyst
         {
             var prompt = BuildUserPrompt(blocks, contexts);
             inputContracts.Add(prompt);
-            raw = await classifier.BoundaryCutAsync(SystemPrompt, prompt, ct);
+            var options = laneOptions ?? SemanticLaneOptions.Default;
+            var requestTimeout = options.RemainingOr(options.RequestTimeout);
+            if (requestTimeout <= TimeSpan.Zero) throw new OperationCanceledException(ct);
+            var request = await PdfLaneExecution.RunAsync(
+                requestCt => classifier.BoundaryCutAsync(SystemPrompt, prompt, requestCt), requestTimeout, ct);
+            if (request.TimedOut) throw new OperationCanceledException(ct);
+            if (request.Cancelled) throw new OperationCanceledException(ct);
+            if (request.Fault is not null) throw request.Fault;
+            raw = request.Value!;
         }
         catch (OperationCanceledException)
         {
@@ -253,20 +326,28 @@ internal static class PdfBlockAnalyst
             source_text = PromptSourceText(b.Text),
             source_length = b.Text.Length,
             context = contexts is not null && contexts.TryGetValue(b.Id, out var context)
-                ? new
-                {
-                    scope = context.Source.StructuralScope,
-                    domain_role_hint = context.Source.DomainRole.ToString(),
-                    document_regime = context.DocumentRegime,
-                    active_heading_stack = context.ActiveHeadingStack,
-                    allowed_parent_ids = context.AllowedParentIds,
-                    observed_facts = context.Source.ObservedEvidence,
-                    previous_blocks = context.PreviousBlocks,
-                    next_blocks = context.NextBlocks,
-                }
+                ? BuildRoleContext(context)
                 : null,
         });
         return JsonSerializer.Serialize(new { blocks = payload });
+    }
+
+    private static IReadOnlyDictionary<string, object> BuildRoleContext(PdfCandidateContext context)
+    {
+        var result = new Dictionary<string, object>
+        {
+            ["scope"] = context.Source.StructuralScope,
+            ["domain_role_hint"] = context.Source.DomainRole.ToString(),
+            ["document_regime"] = context.DocumentRegime,
+            ["active_heading_stack"] = context.ActiveHeadingStack,
+            ["allowed_parent_ids"] = context.AllowedParentIds,
+            ["observed_facts"] = context.Source.ObservedEvidence,
+            ["previous_blocks"] = context.PreviousBlocks,
+            ["next_blocks"] = context.NextBlocks,
+        };
+        if (context.SiblingStructuralBlocks.Count > 0)
+            result["sibling_structural_blocks"] = context.SiblingStructuralBlocks;
+        return result;
     }
 
     internal static string BuildPointerSpanPrompt(

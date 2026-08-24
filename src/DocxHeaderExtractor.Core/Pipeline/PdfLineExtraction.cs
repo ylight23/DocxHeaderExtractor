@@ -11,7 +11,8 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// </summary>
 internal sealed record PdfLine(
     int Page, double Y, double FontSize, string Text, double BoldRatio, string LeadingBoldPrefix,
-    double ItalicRatio, double Left, double Right, string FontName, string FillColorKey);
+    double ItalicRatio, double Left, double Right, string FontName, string FillColorKey,
+    string? CanonicalMatchText = null, string? MatchText = null);
 
 internal static class PdfLineExtraction
 {
@@ -50,6 +51,7 @@ internal static class PdfLineExtraction
             {
                 var ordered = bucket.OrderBy(l => l.BoundingBox.Left).ToList();
                 var pieces = new List<string>();
+                var matchPieces = new List<string>();
                 var boldFlags = new List<bool>();
                 var italicFlags = new List<bool>();
                 var fontNames = new List<string>();
@@ -68,8 +70,11 @@ internal static class PdfLineExtraction
                             fontNames.Add(fontNames.Count > 0 ? fontNames[^1] : "");
                             fillColors.Add(fillColors.Count > 0 ? fillColors[^1] : "");
                         }
+                        if (IsMatchWordGapForAudit(gap, previous.FontSize, previous.BoundingBox.Height))
+                            matchPieces.Add(" ");
                     }
                     pieces.Add(letter.Value);
+                    matchPieces.Add(letter.Value);
                     var fontName = NormalizeFontName(letter.FontName ?? letter.FontDetails?.Name ?? "");
                     var fillColor = ColorKey(letter.FillColor ?? letter.Color);
                     foreach (var _ in letter.Value)
@@ -84,6 +89,8 @@ internal static class PdfLineExtraction
 
                 var raw = string.Concat(pieces);
                 var text = NormalizeSpace(raw);
+                var matchText = NormalizeSpace(string.Concat(matchPieces));
+                var canonicalMatch = PdfTextUtilities.CanonicalForMatch(matchText);
                 if (text.Length == 0) continue;
 
                 var boldRatio = boldFlags.Count == 0 ? 0.0 : boldFlags.Count(b => b) / (double)boldFlags.Count;
@@ -105,13 +112,18 @@ internal static class PdfLineExtraction
                     ordered.Min(l => l.BoundingBox.Left),
                     ordered.Max(l => l.BoundingBox.Right),
                     Dominant(fontNames),
-                    Dominant(fillColors)));
+                    Dominant(fillColors),
+                    canonicalMatch,
+                    matchText));
             }
         }
         return lines;
     }
 
     private static double MidY(Letter l) => (l.BoundingBox.Bottom + l.BoundingBox.Top) / 2.0;
+
+    internal static bool IsMatchWordGapForAudit(double gap, double fontSize, double glyphHeight) =>
+        gap > Math.Max(1.8, Math.Max(fontSize, glyphHeight) * 0.27);
 
     private static string NormalizeFontName(string fontName)
     {

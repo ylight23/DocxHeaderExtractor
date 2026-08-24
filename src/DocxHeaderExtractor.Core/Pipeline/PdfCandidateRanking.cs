@@ -23,7 +23,9 @@ public sealed record RankedCandidate(
     ModelTier Tier,
     IReadOnlyList<string> PositiveSignals,
     IReadOnlyList<string> NegativeSignals,
-    IReadOnlyList<string> AmbiguitySignals);
+    IReadOnlyList<string> AmbiguitySignals,
+    string Scope = "unknown",
+    string? OccurrenceKey = null);
 
 public sealed record PdfCandidateRankingAudit(
     string Status,
@@ -83,7 +85,8 @@ internal static class PdfCandidateRanker
             (context.Source.StructuralScope == "document_body" ? 0 : 0.25), 0, 1);
         var tier = PdfEscalationPolicy.Decide(likelihood, escalation, labelledMarker, context.Source.StructuralScope);
         return new RankedCandidate(block.Id, block.Page, block.DisplayText, likelihood, escalation, tier,
-            positive, negative, ambiguity);
+            positive, negative, ambiguity, context.Source.StructuralScope,
+            PdfProductionOccurrenceResolver.FamilyKey(block.Lines.FirstOrDefault()?.Text ?? block.DisplayText));
     }
 
     private static bool IsMarkerTitleComposite(PdfSemanticBlock block)

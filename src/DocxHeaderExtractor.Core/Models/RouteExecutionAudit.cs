@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Core.Models;
@@ -50,7 +50,23 @@ public sealed record RouteExecutionAudit(
 
     [JsonPropertyName("rankedCandidates")]
     public IReadOnlyList<RankedCandidate> RankedCandidates { get; init; } = [];
+
+    /// <summary>Independent semantic execution outcome. A timeout is partial work, not provider unavailability.</summary>
+    [JsonPropertyName("semanticLane")]
+    public RouteLaneExecutionAudit? SemanticLane { get; init; }
+
+    /// <summary>Independent visual execution outcome.</summary>
+    [JsonPropertyName("visualLane")]
+    public RouteLaneExecutionAudit? VisualLane { get; init; }
 }
+
+public sealed record RouteLaneExecutionAudit(
+    [property: JsonPropertyName("status")] string Status,
+    [property: JsonPropertyName("scheduled")] int Scheduled,
+    [property: JsonPropertyName("completed")] int Completed,
+    [property: JsonPropertyName("timedOut")] int TimedOut,
+    [property: JsonPropertyName("notStarted")] int NotStarted,
+    [property: JsonPropertyName("failureClass")] string? FailureClass = null);
 
 public sealed record RouteBlockAudit(
     [property: JsonPropertyName("id")] string Id,
@@ -60,7 +76,8 @@ public sealed record RouteBlockAudit(
 public sealed record RouteBlockDecisionAudit(
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("role")] string Role,
-    [property: JsonPropertyName("confidence")] double Confidence);
+    [property: JsonPropertyName("confidence")] double Confidence,
+    [property: JsonPropertyName("reason")] string? Reason = null);
 
 public sealed record RouteBlockRejectionAudit(
     [property: JsonPropertyName("id")] string Id,
