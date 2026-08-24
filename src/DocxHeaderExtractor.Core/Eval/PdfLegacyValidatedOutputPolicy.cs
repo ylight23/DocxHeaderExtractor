@@ -1,13 +1,16 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Pipeline;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.Core.Eval;
 
 /// <summary>
-/// Projection boundary for the authority pipeline. Extraction returns source-grounded validated
-/// structures; this policy decides what a document-outline product is allowed to emit. It never
-/// creates, edits, or accepts a heading.
+/// M9.5c historical projection retained exclusively for M9.4 diagnostic/evaluation artifacts.
+/// It is not an output authority and must not be referenced by the production PDF-first route.
+/// The new production authority is <c>PdfFinalStructure -&gt; PdfOutputDecision -&gt;
+/// PdfProductOutput</c>; this helper exists only to reproduce the previous lane from the same
+/// frozen validated input for comparisons.
 /// </summary>
-public static class PdfValidatedOutputPolicy
+public static class PdfLegacyValidatedOutputPolicy
 {
     public static IReadOnlyList<HeadingRecord> ProjectDocumentOutline(
         IReadOnlyList<HeadingRecord> headings,

@@ -12348,3 +12348,14 @@ Next is M8.1d marker representation/provenance audit, not M8.2. It must locate t
 spaced PDF marker text using source text/geometry and repair only inventory evidence if proven; then
 refreeze/review occurrence bridges for 010 and 092. Financial remains a no-numeric-marker contrast.
 Do not start semantic parent inference, average these metrics, or change a production parent resolver.
+# M9.5c status (2026-08-24)
+
+PDF-first legacy output authority is closed. `PdfLegacyValidatedOutputPolicy` is evaluation-only:
+it is used solely by `pdf-hierarchy-facts` to preserve the M9.4 legacy snapshot. Production
+`--pdf-first` has one authority chain: `ValidatedStructure -> FinalStructure -> OutputDecision ->
+ProductOutput`; its `DocumentOutline` is a compatibility shell and writeback receives the original
+`PdfProductOutput` through `PdfProductWriteback`.
+
+`HumanReviewBeforeWriteback` remains unchanged. The writeback mechanism is migrated, but automatic
+writeback remains blocked for `RequiresReview` results by that separate product-safety policy.
+`OutlineWriteback` remains the normal DOCX/Web route.

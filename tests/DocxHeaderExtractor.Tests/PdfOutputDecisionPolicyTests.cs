@@ -1,6 +1,8 @@
 ﻿using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Pipeline;
 
+using DocxHeaderExtractor.Core.Eval;
+
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
@@ -83,7 +85,7 @@ public sealed class PdfOutputDecisionPolicyTests
         ];
 
         var structures = cases.Select(item => item.Structure).ToArray();
-        var legacy = PdfValidatedOutputPolicy.ProjectDocumentOutline(
+        var legacy = PdfLegacyValidatedOutputPolicy.ProjectDocumentOutline(
             cases.Select((item, index) => new HeadingRecord
             {
                 Index = index,

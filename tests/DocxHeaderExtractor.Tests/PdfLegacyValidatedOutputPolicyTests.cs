@@ -1,9 +1,11 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
-public sealed class PdfValidatedOutputPolicyTests
+/// <summary>Locks the M9.4 evaluation snapshot, not the production PDF-first product.</summary>
+public sealed class PdfLegacyValidatedOutputPolicyTests
 {
     [Fact]
     public void ProjectionUsesPdfSourceIdentityRatherThanDocxStableId()
@@ -27,7 +29,7 @@ public sealed class PdfValidatedOutputPolicyTests
             },
         };
 
-        var result = PdfValidatedOutputPolicy.ProjectDocumentOutline(headings, structures);
+        var result = PdfLegacyValidatedOutputPolicy.ProjectDocumentOutline(headings, structures);
 
         var actual = Assert.Single(result);
         Assert.Equal("Real heading", actual.Text);

@@ -12,7 +12,8 @@
 /// to an audit instead of disappearing from the record.
 /// </para>
 /// <para>
-/// Exclusion rules here are the ones <see cref="PdfValidatedOutputPolicy"/> already applied; this
+/// Exclusion rules here preserve the historical M9.4 comparison semantics without depending on the
+/// evaluation-only legacy projection; this
 /// is a change of input, not of policy. An unresolved hierarchy is deliberately not an exclusion —
 /// a heading can be certain while its parent is unknown, which is exactly what M8 measured.
 /// </para>
