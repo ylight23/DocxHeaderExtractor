@@ -1647,8 +1647,65 @@ source text, or fill an unresolved relation.
   lane *parity*, not occurrence *correctness*, and the final M9.4 report must say so explicitly rather
   than let a clean `AnchorMismatch` column be read as "groundings are correct."
 
-  **Next: 054 (financial, longest - ~170 pages, run last).** After that, cross-corpus summary and the
-  M9.5 gate decision.
+  **Canary 054 (2026-08-24): vacuous pass - 0 facts, nothing to compare.** Same protocol, OpenRouter.
+  The pdf-first-authority route ran (not `skipped`, has a real `sourceDocumentSha256`) but validated
+  **0 headings** for this ~170-page financial statement - `items: []`, `validatedStructures: []`,
+  `legacyProductHeadings: []`. `pdf-shadow-compare` reports `legacyEmitted: 0`, `newEmitted: 0`, every
+  diff class empty, `hasUnexplainedDiff: false` - true, but trivially so. Consistent with the earlier
+  `03_tai_chinh_ke_toan` finding recorded elsewhere in this file (§79-ish: candidate counts low,
+  mostly weak evidence for this document class) - not a new defect, and not something M9.4 has any
+  business fixing. This document contributes no migration evidence either way.
+
+  Report: `.verify-build/m9.4-canary-054/054-shadow-compare.json` (gitignored, local only).
+
+  **Cross-corpus summary, all four canaries done.**
+
+  | doc | facts | bridge | Missing/Extra/Anchor | TextMismatch | OrderMismatch | hierarchy | writeback |
+  |---|---|---|---|---|---|---|---|
+  | 076 | 12 | clean | 0/0/0 | 11/12, reviewed=improvement | 0/12 | gold: 6/20 matched, 0 resolved | legacy 0, M9 2/12 |
+  | 010 | 54 | clean | 0/0/0 | 49/54, reviewed=improvement | 52/54 (root cause: 2 facts) | not_measured (no gold) | legacy 0, M9 0/54 |
+  | 092 | 27 | clean | 0/0/0 | 20/27, reviewed=improvement | 26/27 (root cause: TOC cluster) | not_measured (no gold) | legacy 0, M9 2/27 |
+  | 054 | 0 | vacuous | n/a | n/a | n/a | not_measured | n/a |
+
+  Reading against the ten M9.5 conditions set before this run:
+
+  1. Same frozen upstream input - yes, one live call per document, both lanes forked from it.
+  2. Canonical occurrence parity, no unexplained diff - yes: `AnchorMismatch` is 0 in every non-vacuous
+     run. Caveat carried forward from 010/092: this proves *parity*, not *correctness* - both lanes
+     agreed on a demonstrably wrong paragraph in 010 (b4/b5) and on a TOC-cluster paragraph instead of
+     the real body heading for most of 092. The M9.5 decision has to read "0 AnchorMismatch" as "the
+     migration didn't make grounding worse," not as "grounding is right."
+  3. Text parity, no unexplained diff - yes: every spot-checked `TextMismatch` (076, 010, 092, at least
+     one document each) traced to the same root cause, PDF-observed text with damaged spacing/
+     punctuation on the legacy side vs. clean canonical DOCX text on the M9 side - the exact M9.1b
+     design point. None were unexplained.
+  4. Output ordering parity - yes, with the same caveat as #2: `OrderMismatch` counts are inflated by
+     shared upstream grounding debt (2 root-cause facts in 010, a TOC cluster in 092), not independent
+     per-fact ordering defects. Flagged as a metric-design issue for `PdfShadowLaneComparison`, not
+     fixed mid-canary.
+  5. Emit/review semantics parity - yes, `ReviewMismatch` was 0 throughout every run.
+  6. New writeback touches only canonical-anchored paragraphs - yes, `NewAnchorFailures` was 0 in every
+     non-vacuous run; the one deliberate anchor-mismatch case was exercised in the writeback test
+     suite, not needed live.
+  7. No unexpected document-text mutation - yes, `UnexpectedTextChanges` was 0 throughout (fail-closed
+     sentinel: no `Apply` call threw in any of the four runs).
+  8. Hierarchy graded by gold, never by legacy - yes by construction: only 076 had gold and was graded;
+     010/054/092 correctly reported `not_measured` instead of a fabricated number.
+  9. Replay deterministic - yes, at the mechanism level (`ProjectsIdenticallyFromFactsReconstructedOffTheRowItemsAlone`,
+     `ApplyingTheSameOutputTwiceIsDeterministic`); each live canary itself was run once per document, as
+     the protocol required (one model call, not two).
+  10. Cross-domain, no unexplained regression - yes across four different document classes (meeting
+      minutes, dense legal, RFC/technical, and a financial statement that produced nothing at all).
+      Every real diff found traces to either an intentional, reviewed M9.1b improvement or shared
+      upstream debt that predates the migration and equally affects the legacy lane.
+
+  **All ten conditions read as satisfied by this evidence.** Two things this run does NOT establish,
+  and the M9.5 write-up should not imply otherwise: hierarchy correctness has real gold backing for
+  only one of four documents (076, and even there only 6/20 headings matched with 0 resolved), and the
+  two upstream-debt findings (010's b4/b5 mis-grounding, 092's TOC-cluster grounding) are real product
+  gaps that remain open regardless of what M9.5 decides - migration parity is not the same claim as
+  extraction quality. The M9.5 go/no-go call itself is left to explicit review rather than executed
+  here.
 - [ ] M9.5 cutover, only after M9.4 passes: route `HeaderExtractionPipeline` through FinalStructure
   and remove the legacy path in the same change. No feature flag - the dual lane exists once to
   prove the migration, then goes away.
