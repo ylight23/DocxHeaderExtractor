@@ -63,6 +63,7 @@ try
         "repair-key-package" => await RunRepairKeyPackageAsync(options, cts.Token),
         "pdf-clusters" => await RunPdfClustersAsync(options, cts.Token),
         "pdf-stage-eval" => await RunPdfStageEvalAsync(options, cts.Token),
+        "pdf-hierarchy-facts" => await RunPdfHierarchyFactsAsync(options, cts.Token),
         "pdf-visual-probe" => await RunPdfVisualProbeAsync(options, cts.Token),
         "pdf-visual-representation-eval" => await RunPdfVisualRepresentationEvalAsync(options, cts.Token),
         "pdf-visual-result-eval" => await RunPdfVisualResultEvalAsync(options, cts.Token),
@@ -76,6 +77,7 @@ try
         "pdf-candidate-construction-audit" => RunPdfCandidateConstructionAudit(options),
         "pdf-semantic-recovery-eval" => await RunPdfSemanticRecoveryEvalAsync(options, cts.Token),
         "pdf-semantic-recovery-result-eval" => RunPdfSemanticRecoveryResultEval(options),
+        "pdf-hierarchy-facts-eval" => RunPdfHierarchyFactsEval(options),
         "pdf-tags" => await RunPdfTagsAsync(options, cts.Token),
         "pdf-bookmarks" => RunPdfBookmarks(options),
         "verify-corrupt" => await RunVerifyCorruptAsync(options, cts.Token),
@@ -1530,6 +1532,32 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
                     .Select(group => new { resolution = group.Key, count = group.Count() }).ToArray(),
                 items = o.Pipeline.ShowRawOutput ? audit.HierarchyProposals : null,
             },
+            hierarchyFacts = new
+            {
+                validatedHeadingCoverage = audit.HierarchyFacts.Count,
+                markerPathFacts = audit.HierarchyFacts.Count(item => item.MarkerPath is not null),
+                markerPathDepthMismatch = audit.HierarchyFacts.Count(item =>
+                    item.MarkerIsPath && item.MarkerDepth is not null && item.MarkerPath is { } path &&
+                    path.Split('.').Length != item.MarkerDepth.Value),
+                markerFamilies = audit.HierarchyFacts.GroupBy(item => item.MarkerFamily ?? "none")
+                    .OrderBy(group => group.Key, StringComparer.Ordinal)
+                    .Select(group => new { markerFamily = group.Key, count = group.Count() }).ToArray(),
+                scopes = audit.HierarchyFacts.GroupBy(item => item.StructuralScope)
+                    .OrderBy(group => group.Key, StringComparer.Ordinal)
+                    .Select(group => new { scope = group.Key, count = group.Count() }).ToArray(),
+                regimes = audit.HierarchyFacts.GroupBy(item => item.DocumentRegime)
+                    .OrderBy(group => group.Key, StringComparer.Ordinal)
+                    .Select(group => new { regime = group.Key, count = group.Count() }).ToArray(),
+                deterministicLevelCoverage = audit.HierarchyFacts.Count(item => item.ResolvedLevel is not null),
+                deterministicParentCoverage = audit.HierarchyFacts.Count(item => item.MarkerPrefixParentCandidate is not null),
+                unresolvedRelationships = audit.HierarchyFacts.Count(item => item.ParentResolution == "relationship_unresolved"),
+                conflicts = new
+                {
+                    state = "not_measured",
+                    count = (int?)null,
+                },
+                items = audit.HierarchyFacts,
+            },
             textLayerRecovery = new
             {
                 items = audit.TextLayerRecoveries.GroupBy(item => item.Status)
@@ -1591,6 +1619,94 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
     if (o.OutputPath is null) Console.WriteLine(json);
     else await File.WriteAllTextAsync(Path.GetFullPath(o.OutputPath), json, new UTF8Encoding(false), ct);
     return 0;
+}
+
+// M8.1a evaluation-input producer. It is gold-free by construction: it takes no key option, never
+// builds a key index, and never constructs an AnswerKey. That is what makes usesGold=false a
+// structural property of the command rather than a self-declared field.
+static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, CancellationToken ct)
+{
+    if (o.Pipeline.DisableLlm)
+    {
+        Console.Error.WriteLine("pdf-hierarchy-facts cần LLM analyst; bỏ --no-llm và chỉ định --sglang/--model.");
+        return 2;
+    }
+
+    var files = ExpandCalibrationInputs(o.Inputs);
+    if (files.Count == 0) { Console.Error.WriteLine("Không tìm thấy tài liệu để dựng hierarchy facts."); return 2; }
+
+    using var analyst = await CreateClassifierAsync(o, ct);
+    var semanticLaneOptions = new SemanticLaneOptions(
+        TimeSpan.FromSeconds(o.PdfStageSemanticRequestTimeoutSeconds),
+        TimeSpan.FromSeconds(o.PdfStageSemanticBatchTimeoutSeconds),
+        TimeSpan.FromSeconds(o.PdfStageSemanticLaneDeadlineSeconds),
+        o.PdfStageSemanticConcurrency);
+    var analystBudget = o.PdfStageAllCandidates ? 0 : o.PdfStageAnalystBlocks;
+    var routeConfig = string.Join("|",
+        $"analystBudget={analystBudget}",
+        $"wide={o.PdfStageWideCandidates}",
+        $"supplement={o.PdfStageSupplementCandidates}",
+        $"semanticHierarchy={o.PdfStageSemanticHierarchy}",
+        $"semanticConcurrency={o.PdfStageSemanticConcurrency}");
+
+    var rows = new List<PdfHierarchyFactsRow>();
+    var skipped = new List<object>();
+    foreach (var file in files)
+    {
+        if (!o.Quiet) Console.Error.WriteLine($"» PDF hierarchy facts: {Path.GetFileName(file)}");
+        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        // Visual analyst stays out: M8.1a freezes the deterministic semantic route only.
+        var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
+            file, slim, analyst, analystBudget, o.PdfStageWideCandidates, o.PdfStageSupplementCandidates,
+            null, o.VlmDpi, 0, null, false, ct, semanticLaneOptions, null, false, 1,
+            o.PdfStageSemanticHierarchy);
+        if (result.Audit is not { } audit)
+        {
+            skipped.Add(new { file = Path.GetFileName(file), status = "route-not-applicable", reason = result.Reason });
+            continue;
+        }
+
+        var row = PdfHierarchyFactsArtifact.BuildRow(Path.GetFileName(file), FileSha256(file), audit.HierarchyFacts);
+        rows.Add(row);
+        if (!o.Quiet)
+            Console.Error.WriteLine(
+                $"  validated={row.Counters.ValidatedHeadings} markerPath={row.Counters.MarkerPathFacts} " +
+                $"levelResolved={row.Counters.DeterministicLevelResolved} " +
+                $"parentResolved={row.Counters.DeterministicParentResolved} " +
+                $"fingerprint={row.OccurrenceFingerprint[..12]}");
+    }
+
+    var envelope = new PdfHierarchyFactsArtifactEnvelope(
+        new PdfHierarchyFactsGeneration(
+            Environment.GetEnvironmentVariable("DHX_CODE_REVISION"),
+            o.Pipeline.Backend.ToString(),
+            o.Pipeline.Backend switch
+            {
+                InferenceBackend.OpenRouter => o.Pipeline.OpenRouter.Model,
+                InferenceBackend.Sglang => o.Pipeline.Sglang.Model,
+                InferenceBackend.LmStudio => o.Pipeline.LmStudio.Model,
+                _ => o.Pipeline.Llama.ModelPath,
+            },
+            PdfStagePromptProfile.SemanticPromptSha256,
+            HashText(routeConfig)),
+        rows);
+    var json = JsonSerializer.Serialize(new
+    {
+        envelope.SchemaVersion,
+        envelope.ArtifactKind,
+        envelope.UsesGold,
+        envelope.Generation,
+        envelope.Rows,
+        skipped,
+    }, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else await File.WriteAllTextAsync(Path.GetFullPath(o.OutputPath), json, new UTF8Encoding(false), ct);
+    return rows.Count == 0 ? 1 : 0;
 }
 
 static string FileSha256(string path) =>
@@ -1905,6 +2021,42 @@ static int RunPdfSemanticRecoveryResultEval(CommandLineOptions o)
         artifact = Path.GetFileName(o.Inputs[0]),
         gold = Path.GetFileName(o.PdfVisualRepresentationGoldPath),
         baselineArtifact = Path.GetFileName(o.PdfSemanticRecoveryBaselineArtifact),
+        result,
+    };
+    var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else
+    {
+        var output = Path.GetFullPath(o.OutputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        File.WriteAllText(output, json, new UTF8Encoding(false));
+    }
+    return 0;
+}
+
+static int RunPdfHierarchyFactsEval(CommandLineOptions o)
+{
+    if (o.Inputs.Count != 1 || !File.Exists(o.Inputs[0]))
+    {
+        Console.Error.WriteLine("pdf-hierarchy-facts-eval cần đúng một frozen route artifact JSON.");
+        return 2;
+    }
+    if (string.IsNullOrWhiteSpace(o.PdfHierarchyGoldPath) || !File.Exists(o.PdfHierarchyGoldPath))
+    {
+        Console.Error.WriteLine("Cần --hierarchy-gold <gold.json> với occurrence-stable hierarchy gold.");
+        return 2;
+    }
+
+    var result = PdfHierarchyFactsArtifactEvaluator.Evaluate(
+        File.ReadAllText(o.Inputs[0]), File.ReadAllText(o.PdfHierarchyGoldPath));
+    var payload = new
+    {
+        artifact = Path.GetFileName(o.Inputs[0]),
+        hierarchyGold = Path.GetFileName(o.PdfHierarchyGoldPath),
         result,
     };
     var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions

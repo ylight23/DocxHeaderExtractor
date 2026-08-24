@@ -117,6 +117,7 @@ public sealed class CommandLineOptions
     public int? PdfVisualPage { get; private set; }
     public bool PdfVisualLineList { get; private set; }
     public string? PdfVisualRepresentationGoldPath { get; private set; }
+    public string? PdfHierarchyGoldPath { get; private set; }
     public string? PdfSemanticRecoveryBaselineArtifact { get; private set; }
     public string PdfSemanticRecoveryProfile { get; private set; } = "current_v6";
     public List<string> PdfVisualArtifacts { get; } = [];
@@ -134,7 +135,7 @@ public sealed class CommandLineOptions
 
         int i = 0;
         if (!args[0].StartsWith('-') &&
-            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt")
+            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-hierarchy-facts" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-hierarchy-facts-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt")
         {
             o.Command = args[0];
             i = 1;
@@ -213,6 +214,7 @@ public sealed class CommandLineOptions
                 case "--pdf-visual-page": o.PdfVisualPage = Math.Max(1, int.Parse(Next(a))); break;
                 case "--pdf-visual-line-list": o.PdfVisualLineList = true; break;
                 case "--gold": o.PdfVisualRepresentationGoldPath = Next(a); break;
+                case "--hierarchy-gold": o.PdfHierarchyGoldPath = Next(a); break;
                 case "--recovery-baseline-artifact": o.PdfSemanticRecoveryBaselineArtifact = Next(a); break;
                 case "--semantic-recovery-profile": o.PdfSemanticRecoveryProfile = Next(a); break;
                 case "--rebase-provenance": o.RebaseProvenancePath = Next(a); break;
@@ -422,7 +424,9 @@ public sealed class CommandLineOptions
           dhx pdf-candidate-construction-audit <file.docx> --pdf-stage-key-root <keys> # trace grouping/producer cho gold mất candidate; không gọi LLM
           dhx pdf-semantic-recovery-eval <file.docx> --openrouter --openrouter-model qwen/qwen3.5-9b --semantic-recovery-profile current_v6 # source-only recovery; profiles: current_v6|neighborhood_microbatch|neighborhood_single
           dhx pdf-stage-eval <file.docx> --pdf-stage-semantic-hierarchy # opt-in semantic parent fallback; M8 inventory leaves it off
+          dhx pdf-hierarchy-facts <docs...> -o facts.json          # M8.1a: chỉ facts nguồn, không nhận gold, usesGold=false
           dhx pdf-semantic-recovery-result-eval <artifact.json> --gold <rebased.key> --recovery-baseline-artifact <occurrence.json> # frozen artifact + gold; không gọi model
+          dhx pdf-hierarchy-facts-eval <artifact.json> --hierarchy-gold <gold.json> # chấm hierarchy facts frozen; không gọi model
           dhx pdf-visual-representation-eval <file.docx> --gold <file.key> # đo coverage Visual SourceFacts; không gọi model
           dhx pdf-visual-result-eval <run.json> --gold <file.key> # chấm lại Visual Inference Artifact; không gọi model
           dhx key-rebase <regenerated.docx> --gold <old.key> --out <new.key> --rebase-provenance <audit.json> # rebase gold evaluation từ title người duyệt; không đọc model output

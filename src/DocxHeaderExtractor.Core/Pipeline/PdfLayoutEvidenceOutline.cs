@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 using DocxHeaderExtractor.Core.Llm;
@@ -444,6 +444,7 @@ public static class PdfLayoutEvidenceOutline
         var stageTraces = PdfProposalValidator.Trace(candidateContexts, blockAnalysis.Decisions);
         var validated = PdfProposalValidator.Validate(candidateContexts, blockAnalysis.Decisions);
         var markerStructures = PdfHierarchyResolver.Resolve(validated, candidateContexts);
+        var hierarchyFacts = PdfHierarchyFactsInventory.Inspect(validated, candidateContexts);
         var hierarchyRun = semanticTimedOut || !includeSemanticHierarchyFallback
             ? new PdfLaneExecution.Result<PdfSemanticHierarchyResult>(null, true, false)
             : await PdfLaneExecution.RunAsync(
@@ -511,6 +512,7 @@ public static class PdfLayoutEvidenceOutline
             RankedCandidates = ranked,
             ProposalResolutions = resolvedRoles.Audit,
             HierarchyProposals = semanticHierarchy.Audit,
+            HierarchyFacts = hierarchyFacts,
             TextLayerRecoveries = alignment.TextLayerRecoveries.Concat(visualRecovery.Audit).ToArray(),
             VisualEvidence = visual.Decisions.Select(decision => new RouteVisualEvidenceAudit(
                 decision.Id, decision.Role.ToString(), decision.Confidence, decision.Evidence,

@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Core.Models;
@@ -44,6 +44,10 @@ public sealed record RouteExecutionAudit(
 
     [JsonPropertyName("hierarchyProposals")]
     public IReadOnlyList<PdfHierarchyProposalAudit> HierarchyProposals { get; init; } = [];
+
+    /// <summary>M8.1 source-only evidence inventory for already validated headings.</summary>
+    [JsonPropertyName("hierarchyFacts")]
+    public IReadOnlyList<PdfHierarchyFactAudit> HierarchyFacts { get; init; } = [];
 
     [JsonPropertyName("textLayerRecoveries")]
     public IReadOnlyList<PdfTextLayerRecoveryAudit> TextLayerRecoveries { get; init; } = [];
