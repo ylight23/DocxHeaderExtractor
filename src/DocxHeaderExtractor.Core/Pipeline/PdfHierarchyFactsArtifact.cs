@@ -1,4 +1,4 @@
-using System.Globalization;
+﻿using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -22,7 +22,7 @@ public static class PdfHierarchyFactHash
 /// </summary>
 public static class PdfHierarchyFactsArtifact
 {
-    public const int SchemaVersion = 2;
+    public const int SchemaVersion = 3;
     public const string ArtifactKind = "pdf_hierarchy_facts";
 
     /// <summary>
@@ -49,7 +49,8 @@ public static class PdfHierarchyFactsArtifact
     public static PdfHierarchyFactsRow BuildRow(
         string file,
         string sourceDocumentSha256,
-        IReadOnlyList<PdfHierarchyFactAudit> facts)
+        IReadOnlyList<PdfHierarchyFactAudit> facts,
+        IReadOnlyList<PdfValidatedStructure>? validatedStructures = null)
     {
         var ordered = Canonicalize(facts);
         var counters = new PdfHierarchyFactsCounters(
@@ -66,7 +67,10 @@ public static class PdfHierarchyFactsArtifact
             sourceDocumentSha256,
             OccurrenceFingerprint(ordered),
             counters,
-            ordered.Select(PdfHierarchyFactItem.From).ToArray());
+            ordered.Select(PdfHierarchyFactItem.From).ToArray(),
+            // Carried so a downstream projection can be replayed from the frozen artifact alone
+            // rather than from a live route.
+            validatedStructures ?? []);
     }
 }
 
@@ -101,7 +105,8 @@ public sealed record PdfHierarchyFactsRow(
     [property: JsonPropertyName("sourceDocumentSha256")] string SourceDocumentSha256,
     [property: JsonPropertyName("occurrenceFingerprint")] string OccurrenceFingerprint,
     [property: JsonPropertyName("counters")] PdfHierarchyFactsCounters Counters,
-    [property: JsonPropertyName("items")] IReadOnlyList<PdfHierarchyFactItem> Items);
+    [property: JsonPropertyName("items")] IReadOnlyList<PdfHierarchyFactItem> Items,
+    [property: JsonPropertyName("validatedStructures")] IReadOnlyList<PdfValidatedStructure> ValidatedStructures);
 
 public sealed record PdfHierarchyFactsCounters(
     [property: JsonPropertyName("validatedHeadings")] int ValidatedHeadings,
