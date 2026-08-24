@@ -1430,22 +1430,44 @@ source text, or fill an unresolved relation.
   differential lock runs it and the legacy `PdfValidatedOutputPolicy` over the same validated input
   and asserts they emit the same canonical occurrences. Emission and review are independent - an
   unresolved hierarchy is a reason code and never suppresses a heading the validator accepted.
-- [ ] M9.3 serializer / writeback over the new lane. Consumes FinalStructure plus OutputDecisions
+- [x] M9.3 serializer / writeback over the new lane. Consumes FinalStructure plus OutputDecisions
   only; it may not read `HeadingRecord`, `ValidatedStructures`, or the legacy policy to fill a
   missing field. A field the serializer needs and the projection does not carry is a contract gap in
   M9.1, fixed there explicitly - as `ValidationDecision` and the canonical grounding were.
   Writeback must act on the canonical occurrence, never on a title search.
 
-  **Serializer half done (`PdfProductOutputSerializer`).** Consumes exactly `PdfFinalStructure` +
+  **Serializer half (`PdfProductOutputSerializer`).** Consumes exactly `PdfFinalStructure` +
   `IReadOnlyList<PdfOutputDecision>`, nothing else. Emits one `PdfProductHeading` per `Emit=true`
   decision, in `FinalStructure` source order: canonical id, `DocxSourceAnchor` fields (paragraph
   index, stable id, span), grounded text, role, level/parentId carried verbatim (null stays null),
   and `RequiresReview`/`Reasons` passed through from the decision unchanged. It re-checks
   `SourceAnchor is not null` itself rather than trusting the decision's `Emit` blindly, since a
-  record without a canonical occurrence can never be written back. 7 new tests lock these invariants
-  (`PdfProductOutputSerializerTests`); full suite unaffected (936 passing, unrelated to this change).
-  Writeback - acting on the anchor to mutate the DOCX - is still open, so the checkbox above stays
-  unchecked until that half lands too.
+  record without a canonical occurrence can never be written back. 7 tests lock these invariants
+  (`PdfProductOutputSerializerTests`).
+
+  **Writeback half (`PdfProductWriteback`).** Same shape as the legacy `OutlineWriteback` - copy the
+  source, mutate only `w:outlineLvl`/`w:pStyle` in the copy, read the target back and verify before
+  returning - but reads only `PdfProductOutput`: paragraph index, stable id and span address every
+  paragraph, never a title search, and `PdfEvidenceAnchor` never enters this file at all. A heading
+  with an unresolved `Level` is skipped (`level_unresolved`) rather than assigned one here, and no
+  parent is written - `w:outlineLvl` encodes depth, not a relation, so there is nothing to invent.
+  Before mutating, it re-slices the *current* source paragraph at the anchor's span and rejects a
+  mismatch (`anchor_text_mismatched`) instead of trusting the stored text, because the source may have
+  moved on since `FinalStructure` was materialized. The split mechanics
+  (`OutlineWriteback.TrySplitPoint`/`SplitParagraph`, widened from `private` to `internal` for this)
+  are shared verbatim with the writeback this replaces, so both routes rearrange runs identically at
+  the one place content actually moves; a span that starts after another paragraph position is
+  rejected outright (`leading_text_not_splittable`) since only the trailing-body split is implemented.
+  Deliberately does *not* gate on `RequiresReview` the way the legacy writeback gates on
+  `HeadingDecisionStatus.RequiresReview` - in `PdfOutputDecisionPolicy`, `RequiresReview` always equals
+  `Emit`, so that gate would skip every heading. Review state in M9 marks a row for a human without
+  suppressing it (`PdfOutputDecisionPolicy`'s own doc comment); `PdfProductOutput` is already filtered
+  to `Emit=true` by the serializer, so this layer has nothing further to gate on that input already
+  didn't decide. 13 tests lock these invariants (`PdfProductWritebackTests`), including that applying
+  the same output twice against a fresh copy of the same source is byte-identical.
+
+  Full suite after both halves: 949 passing, same 15 pre-existing fixture-dependent failures as
+  before this work (missing external PDF/DOCX corpus files in this environment, unrelated to M9).
 - [ ] M9.4 shadow end-to-end comparison, both lanes over the same frozen upstream result so a
   difference cannot be provider variability. Report the diff occurrence-aware and split by kind:
   - legacy-compatible: occurrence, source text, ordering, emit and review semantics;

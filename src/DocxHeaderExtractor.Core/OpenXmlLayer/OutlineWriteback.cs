@@ -202,7 +202,8 @@ public static class OutlineWriteback
     }
 
 
-    private sealed record PendingSplit(int Index, Paragraph Element, int RunIndex);
+    /// <summary>Shared with <c>PdfProductWriteback</c> — the split mechanics are data-shape agnostic.</summary>
+    internal sealed record PendingSplit(int Index, Paragraph Element, int RunIndex);
 
     /// <summary>
     /// Ranh giới heading/thân bài có tách được thành hai <c>w:p</c> không, và nếu có thì ở run nào.
@@ -218,7 +219,7 @@ public static class OutlineWriteback
     /// với <c>Elements&lt;Run&gt;()</c>.</item>
     /// </list>
     /// </summary>
-    private static int? TrySplitPoint(SlimParagraph? paragraph, Paragraph element, int bodyStart)
+    internal static int? TrySplitPoint(SlimParagraph? paragraph, Paragraph element, int bodyStart)
     {
         if (paragraph is null || bodyStart <= 0) return null;
 
@@ -243,7 +244,7 @@ public static class OutlineWriteback
     /// tiêu đề.
     /// </para>
     /// </summary>
-    private static void SplitParagraph(PendingSplit split)
+    internal static void SplitParagraph(PendingSplit split)
     {
         var runs = split.Element.Elements<Run>().ToList();
         if (split.RunIndex >= runs.Count) return;
@@ -267,7 +268,7 @@ public static class OutlineWriteback
     }
 
     /// <summary>Chỉ nhận style Heading 1..9 CÓ SẴN trong tài liệu; không tạo style mới.</summary>
-    private static Dictionary<int, string> HeadingStyleIds(MainDocumentPart main)
+    internal static Dictionary<int, string> HeadingStyleIds(MainDocumentPart main)
     {
         var map = new Dictionary<int, string>();
         var styles = main.StyleDefinitionsPart?.Styles;
@@ -295,7 +296,7 @@ public static class OutlineWriteback
         }
     }
 
-    private static void TryDelete(string path)
+    internal static void TryDelete(string path)
     {
         try { if (File.Exists(path)) File.Delete(path); }
         catch (IOException) { /* để lại file lỗi còn hơn nuốt mất ngoại lệ gốc */ }
