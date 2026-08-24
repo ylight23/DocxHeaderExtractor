@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -127,6 +127,7 @@ public sealed record PdfHierarchyFactItem(
     [property: JsonPropertyName("markerFamily")] string? MarkerFamily,
     [property: JsonPropertyName("markerDepth")] int? MarkerDepth,
     [property: JsonPropertyName("markerPath")] string? MarkerPath,
+    [property: JsonPropertyName("markerComponents")] IReadOnlyList<int> MarkerComponents,
     [property: JsonPropertyName("previousValidatedId")] string? PreviousValidatedId,
     [property: JsonPropertyName("markerPrefixParentCandidate")] string? MarkerPrefixParentCandidate,
     [property: JsonPropertyName("resolvedLevel")] int? ResolvedLevel,
@@ -149,6 +150,7 @@ public sealed record PdfHierarchyFactItem(
         fact.MarkerFamily,
         fact.MarkerDepth,
         fact.MarkerPath,
+        fact.MarkerComponents,
         fact.PreviousValidatedId,
         fact.MarkerPrefixParentCandidate,
         fact.ResolvedLevel,

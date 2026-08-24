@@ -1,4 +1,4 @@
-﻿using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -72,6 +72,14 @@ internal static class PdfHierarchyFactsInventory
                 parentResolution,
                 evidence)
             {
+                // M8.1d-2: complete parser components are recorded for observation only. MarkerPath,
+                // ResolvedLevel, the observed ancestor pool, and FindMarkerPrefixParent deliberately
+                // still run on the strict `path` above, so this commit adds no ancestry authority.
+                // Where the two disagree, the source lost its separators and the strict grammar could
+                // not read it; reconciling them is a later, separately gated step.
+                MarkerComponents = marker is { Components.IsDefaultOrEmpty: false } complete
+                    ? complete.Components
+                    : [],
                 FactId = $"p{source.Page}:{source.SourceId}:s{span.Start}-{span.End}",
                 HeadingSpan = span,
                 SourceBlockText = blockText,
@@ -145,6 +153,14 @@ public sealed record PdfHierarchyFactAudit(
 
     /// <summary>Deterministic slice of <see cref="SourceBlockText"/>. Never model-authored.</summary>
     public string HeadingText { get; init; } = "";
+
+    /// <summary>
+    /// Complete numeric components as the marker parser observed them. Observation only: it is not
+    /// the source of <see cref="MarkerPath"/>, <see cref="ResolvedLevel"/>, or any parent relation.
+    /// A disagreement with <see cref="MarkerDepth"/> is impossible; a disagreement with
+    /// <see cref="MarkerPath"/> is expected wherever the source lost its separators.
+    /// </summary>
+    public IReadOnlyList<int> MarkerComponents { get; init; } = [];
 
     /// <summary>Parser line identities, kept only to correlate with line-level M7 artifacts.</summary>
     public IReadOnlyList<string> LineIds { get; init; } = [];

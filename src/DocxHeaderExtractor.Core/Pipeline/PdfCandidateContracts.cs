@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+using System.Collections.Immutable;
+using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -310,7 +311,16 @@ internal static class PdfProposalValidator
 /// Parser-side marker facts are intentionally broader than <see cref="NumberingAudit"/>. They
 /// improve PDF retrieval/context only; final sequence auditing remains strict and independent.
 /// </summary>
-internal readonly record struct PdfMarkerFact(string Signature, int Depth, string Family, bool IsPath);
+internal readonly record struct PdfMarkerFact(string Signature, int Depth, string Family, bool IsPath)
+{
+    /// <summary>
+    /// M8.1d-2 representation only. The parser already knows every component of a numeric path;
+    /// previously it kept only the count, which forced downstream code to re-derive components with
+    /// a stricter grammar that cannot read a dot-stripped source. Carrying them here removes that
+    /// second parse as a source of truth. It grants no hierarchy authority on its own.
+    /// </summary>
+    public ImmutableArray<int> Components { get; init; } = ImmutableArray<int>.Empty;
+}
 
 internal static class PdfMarkerFactsParser
 {
@@ -326,15 +336,25 @@ internal static class PdfMarkerFactsParser
         if (spacedPath.Success)
         {
             var parts = Regex.Matches(spacedPath.Groups[1].Value, @"\d{1,3}")
-                .Select(match => match.Value)
+                .Select(match => int.Parse(match.Value, System.Globalization.CultureInfo.InvariantCulture))
                 .ToArray();
             if (parts.Length > 0)
-                return new PdfMarkerFact($"Arabic:{parts.Length}", parts.Length, "spaced_arabic", true);
+                return new PdfMarkerFact($"Arabic:{parts.Length}", parts.Length, "spaced_arabic", true)
+                {
+                    Components = [.. parts],
+                };
         }
 
         if (NumberingAudit.Parse(text) is { } strict)
             return new PdfMarkerFact(strict.Signature, strict.Depth, strict.Kind.ToString().ToLowerInvariant(),
-                strict.Kind == NumberKind.Arabic);
+                strict.Kind == NumberKind.Arabic)
+            {
+                // Only an arabic path has components. Roman/letter/labelled markers stay empty
+                // rather than being flattened into a one-element path they never had.
+                Components = strict.Kind == NumberKind.Arabic && NumberingAudit.ParseArabicPath(text) is { } strictPath
+                    ? [.. strictPath]
+                    : ImmutableArray<int>.Empty,
+            };
 
         var looseLabel = PdfLayoutEvidenceOutline.ParseLooseLabelledMarkerForAudit(text);
         if (looseLabel is not null)
