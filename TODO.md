@@ -2802,11 +2802,79 @@ this is no longer three documents sharing a symptom.
 what it can actually recover, and small enough that it is a fair question whether it is the best next
 target at all.
 
-- [ ] Open question, and probably the better one: what puts a heading scoring 0.54-0.70 with no
-  negative signal at rank 161-1011? That is the blocker for 11 of 14, it is not scope, it is not the
-  table branch, and it now has a cross-document population. It resembles the 054 debt recorded in
-  M10.1e-A1 - `AVAILABILITY OF INFORMATION` at rank 166, score 0.44, no negative evidence - which was
-  deferred then and has never been measured.
+## M10.7 - how rank is formed for headings that never reach the budget
+
+Prioritised over appendix remediation by measured loss: appendix scope is the direct first loss for
+3 of 14 sampled headings, the ranking boundary for 11.
+
+- [x] M10.7-A rank formation audit over the eleven, passive. The ranker orders by score descending,
+  then escalation descending, then page, then source id - no tier participates in the ordering.
+  Parity holds everywhere: no candidate with a lower score stands above any of the eleven.
+
+  **The eleven split into two mechanisms, and they are not the same owner.**
+
+  **1. Outscored (032, and 054's deferred case).** These headings score 0.38-0.48 and hundreds of
+  candidates score genuinely higher.
+
+  | occurrence | score | rank | higher above | equal above |
+  |---|---|---|---|---|
+  | 032 `22.2.8 Funeral Arrangements` | 0.38 | 772 | 590 | 181 |
+  | 032 `3.4 Amendment` | 0.38 | 662 | 590 | 71 |
+  | 032 `2. Change Order Log` | 0.48 | 458 | 455 | 2 |
+  | 054 `AVAILABILITY OF INFORMATION` | 0.44 | 166 | 165 | 0 |
+
+  No tie-break would save them. The question is why a standalone numbered contract heading scores
+  0.38 with no negative signal - all four carry `unlabelled_numbering`,
+  `no_labelled_structural_marker`, `no_body_opening_evidence` and `scope_conflict`, and nothing else.
+
+  **2. Tie density and a positional tie-break (091, all five).** Every one of them scores **0.54**,
+  and in the whole document only **142** candidates score above 0.54 - the same number for all five.
+  The budget of 160 therefore has room for eighteen more, and which eighteen is decided by
+  `ThenBy(page)`.
+
+  | occurrence | page | rank | higher above | equal above |
+  |---|---|---|---|---|
+  | `3 6 Origin Server` | 20 | **161** | 142 | 18 |
+  | `4 2 1 http URI Scheme` | 25 | 169 | 142 | 26 |
+  | `8 8 3 1 Generation` | 69 | 248 | 142 | 105 |
+  | `12 4 2 Quality Values` | 99 | 287 | 142 | 144 |
+  | `18 7 Range Unit Registration` | 166 | 451 | 142 | 308 |
+
+  Rank rises monotonically with page number while the score stays identical. The tie-break is not
+  arbitrary but systematic: later pages lose every tie. `3 6 Origin Server` misses the budget by one
+  place.
+
+  **Re-representation is not the driver.** Inflation above these occurrences is 8-15 candidates out
+  of hundreds, roughly 2%. The one exception is 032 `6. Personnel` at 539 of 4657, and that occurrence
+  is also the only one of the eleven carrying `table_scope`.
+
+  **The finding that cuts across both, and the sharpest one here.** For `3 6 Origin Server`, the 160
+  candidates above it are: `quoted_replacement` 74, `appendix_table` 58, `document_body` 26,
+  `appendix` 2. **132 of the 160 budget slots are held by candidates the output policy will discard.**
+  The same holds for the other four. Selection happens before output policy is consulted, so a
+  document with a scope leak spends most of its budget on candidates that cannot be emitted.
+
+  Stated carefully: those candidates would occupy the same slots whatever scope they carried, since
+  scope affects rank only through the `table_scope` penalty. So this is not the leaks pushing them
+  up - it is that selection and output exclusion apply different criteria in sequence, and nothing
+  reconciles them.
+
+### M10.7 gate
+
+**No `RankingFix`.** The eleven divide into two mechanisms with different owners, exactly the outcome
+that forbids a single repair.
+
+- [ ] M10.7-B (candidate) scoring competitiveness for standalone numbered headings - why 0.38 with no
+  negative evidence. Owner is the scorer, not the ranker. Population: 032's headings plus 054's
+  deferred `AVAILABILITY` case, which this audit confirms fails the same way rather than by ties.
+- [ ] M10.7-C (candidate) tie density at the budget boundary. Owner is the tie-break, or the budget,
+  or the scorer's resolution - 142 candidates above and five headings sharing one score suggests the
+  score is too coarse to order them, which is not the same defect as being outscored. Note in advance
+  that raising the budget is not the remedy; 054 already settled that.
+- [ ] M10.7-D (candidate, and possibly the most valuable) selection spends budget on candidates the
+  output policy will exclude - 132 of 160 slots on 091. Owner is the ordering of the two stages, not
+  either stage alone. Measure on a corpus before proposing anything: this touches the pipeline's
+  shape, which is exactly where a hasty repair would do the most damage.
   - [x] B1 sample frozen at `.verify-build/m105b1-tablelike-reviewed-exposure-sample.json` by
     SHA-256 ordering of exact source-line identity: 10 `table_scope_penalized` + 10
     `not_table_scope_penalized` occurrences per preselected document, 80 total. Population/sample:
