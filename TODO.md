@@ -3655,9 +3655,55 @@ experiment.
   carries the revision and that extraction and precedence are locked - the input is confirmed present
   and the reader is confirmed correct, which is the claim being made and no more.
 
-- [ ] Endpoint host and resolved timeouts stay a **candidate, not promoted**. They would have to be
-  shown necessary for reproduction, audit or incident diagnosis, and scoped so nothing
-  credential-bearing is written. "More metadata is better" is not a trigger.
+- [x] M12-A4 endpoint host and timeouts, audited **separately** because bundling them as "runtime
+  config" would have hidden that they reach opposite conclusions.
+
+  **First, what `routeConfigSha256` actually covers.** It hashes
+  `analystBudget|wide|supplement|semanticHierarchy|semanticConcurrency`. **The timeouts are not in
+  it** - not their values, not even their identity. So two runs with different thresholds produce the
+  same route-config hash.
+
+  **Endpoint host: NOT JUSTIFIED.** `OpenRouterOptions.Endpoint` defaults to the OpenRouter chat
+  completions URL and is never set from the CLI or the environment - `FromEnvironment` reads only the
+  key and the model, and there is no `--openrouter-endpoint` flag. Under `backend = OpenRouter` the
+  endpoint is therefore fixed by the binary and already determined by `backend` plus `codeRevision`.
+  Recording it would duplicate a fact derivable from the build, which is exactly what the
+  observability gate's third point exists to refuse.
+
+  Scoped honestly: this holds **for OpenRouter**. LmStudio and SGLang do take `--*-endpoint` flags, so
+  the same question would answer differently for them - and that is a separate audit, not a reason to
+  record the field everywhere now.
+
+  **Timeouts: PROMOTED.** All three are CLI-configurable
+  (`--pdf-stage-semantic-request-timeout` 90s, `--pdf-stage-semantic-batch-timeout` 120s,
+  `--pdf-stage-semantic-lane-deadline` 300s, clamped to 1..3600 and 1..14400), and none of them
+  reaches the artifact in any form. So `partial_timeout` - a fact M12-A2 had just promoted - could not
+  be interpreted: two runs identical in source, model, revision, route-config hash and status mean
+  opposite things at a 10-second threshold and a 300-second one, and the artifacts were byte-identical.
+  A slow service and a tight policy call for opposite responses.
+
+  The three values are copied from the `SemanticLaneOptions` the lane was handed, in seconds, in the
+  producer's own terms. **No** `timeoutPolicy`, `isAggressiveTimeout` or `effectiveTimeout` is derived,
+  because the route computes no such fact. Absent thresholds read as null - unknown, never "the
+  defaults". Four further locks, including two artifacts sharing a status and an occurrence
+  fingerprint while remaining distinguishable, and product projection unchanged either way.
+
+  Regression unchanged at the frozen 15; 1047 passing.
+
+### M12-A status
+
+| candidate | outcome |
+|---|---|
+| `semanticLaneStatus` | promoted (A2) |
+| `codeRevision` | promoted (A3), binary is the authority |
+| semantic lane timeouts | promoted (A4) |
+| endpoint host | **not justified** - derivable from backend and revision for OpenRouter |
+
+No further provenance field is proposed. The remaining gap is not metadata: it is that
+`routeConfigSha256` proves identity without preserving anything readable behind it, so a hash can say
+two runs differed without saying how. That is a **candidate for a different milestone** - retained
+route configuration - and needs a real question before it is opened, not the observation that a hash
+is opaque.
 
 ## Decision gate
 

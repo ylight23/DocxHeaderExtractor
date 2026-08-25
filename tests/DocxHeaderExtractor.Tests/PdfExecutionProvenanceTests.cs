@@ -104,6 +104,68 @@ public sealed class PdfExecutionProvenanceTests
         Assert.Equal("partial_timeout", round.SemanticLaneStatus);
     }
 
+    /// <summary>
+    /// M12-A4. `partial_timeout` says the run degraded; it does not say against what. Two runs
+    /// identical in every other recorded field - source, model, revision, route config hash, status -
+    /// mean different things at a 10-second threshold and a 300-second one, and before the thresholds
+    /// were carried the artifacts were indistinguishable.
+    /// </summary>
+    [Fact]
+    public void SameStatusUnderDifferentThresholdsRemainsDistinguishable()
+    {
+        var tight = PdfHierarchyFactsArtifact.BuildRow("d", "sha", [], [], [], "partial_timeout",
+            new SemanticLaneOptions(TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(15), TimeSpan.FromSeconds(30)));
+        var generous = PdfHierarchyFactsArtifact.BuildRow("d", "sha", [], [], [], "partial_timeout",
+            new SemanticLaneOptions(TimeSpan.FromSeconds(90), TimeSpan.FromSeconds(120), TimeSpan.FromSeconds(300)));
+
+        Assert.Equal(tight.SemanticLaneStatus, generous.SemanticLaneStatus);
+        Assert.Equal(tight.OccurrenceFingerprint, generous.OccurrenceFingerprint);
+        Assert.NotEqual(tight.SemanticLaneTimeouts, generous.SemanticLaneTimeouts);
+    }
+
+    /// <summary>The recorded thresholds are the ones the lane was handed, not defaults re-read later.</summary>
+    [Fact]
+    public void RecordedThresholdsAreTheOnesTheLaneWasGiven()
+    {
+        var options = new SemanticLaneOptions(
+            TimeSpan.FromSeconds(45), TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(150));
+
+        var row = PdfHierarchyFactsArtifact.BuildRow("d", "sha", [], [], [], "complete", options);
+
+        Assert.Equal(45, row.SemanticLaneTimeouts!.RequestSeconds);
+        Assert.Equal(60, row.SemanticLaneTimeouts.BatchSeconds);
+        Assert.Equal(150, row.SemanticLaneTimeouts.LaneDeadlineSeconds);
+    }
+
+    /// <summary>Absent thresholds are unknown, never assumed to be the defaults.</summary>
+    [Fact]
+    public void AbsentThresholdsAreUnknownRatherThanDefaults()
+    {
+        var row = PdfHierarchyFactsArtifact.BuildRow("d", "sha", [], [], [], "complete");
+
+        Assert.Null(row.SemanticLaneTimeouts);
+    }
+
+    /// <summary>Carrying thresholds must not move the product either.</summary>
+    [Fact]
+    public void CarryingThresholdsDoesNotChangeTheProductProjection()
+    {
+        var facts = new[] { Fact("b1", 0, "1 Introduction") };
+        var structures = new[] { new PdfValidatedStructure("b1", 1, null, "unresolved", "requires_review") };
+        var groundings = new[]
+        {
+            new PdfCanonicalGrounding("b1", 10, "@body[1]/p[10]", new DocxTextSpan(0, 14), "1. Introduction"),
+        };
+
+        var without = Product(PdfHierarchyFactsArtifact.BuildRow("d", "sha", facts, structures, groundings, "complete"));
+        var with = Product(PdfHierarchyFactsArtifact.BuildRow("d", "sha", facts, structures, groundings, "complete",
+            new SemanticLaneOptions(TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(6), TimeSpan.FromSeconds(7))));
+
+        Assert.Equal(
+            without.Headings.Select(h => (h.Id, h.Text, h.Level, h.ParentId)),
+            with.Headings.Select(h => (h.Id, h.Text, h.Level, h.ParentId)));
+    }
+
     private static PdfProductOutput Product(PdfHierarchyFactsRow row)
     {
         var facts = row.Items.Select(item => item.ToFactAudit()).ToArray();

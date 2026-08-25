@@ -53,7 +53,8 @@ public static class PdfHierarchyFactsArtifact
         IReadOnlyList<PdfHierarchyFactAudit> facts,
         IReadOnlyList<PdfValidatedStructure>? validatedStructures = null,
         IReadOnlyList<PdfCanonicalGrounding>? canonicalGroundings = null,
-        string? semanticLaneStatus = null)
+        string? semanticLaneStatus = null,
+        SemanticLaneOptions? semanticLaneOptions = null)
     {
         var ordered = Canonicalize(facts);
         var counters = new PdfHierarchyFactsCounters(
@@ -80,6 +81,13 @@ public static class PdfHierarchyFactsArtifact
             // validated structures cannot be told apart from one whose semantic lane degraded, and
             // those are different operational events with the same cardinality.
             SemanticLaneStatus = semanticLaneStatus,
+            // The thresholds the lane was actually given. Without them a partial_timeout says the run
+            // degraded but not whether the service was slow or the policy was tight, and those call
+            // for opposite responses.
+            SemanticLaneTimeouts = semanticLaneOptions is null ? null : new PdfSemanticLaneTimeouts(
+                (int)semanticLaneOptions.RequestTimeout.TotalSeconds,
+                (int)semanticLaneOptions.BatchTimeout.TotalSeconds,
+                (int)semanticLaneOptions.LaneDeadline.TotalSeconds),
         };
     }
 }
@@ -130,7 +138,24 @@ public sealed record PdfHierarchyFactsRow(
     /// </summary>
     [JsonPropertyName("semanticLaneStatus")]
     public string? SemanticLaneStatus { get; init; }
+
+    /// <summary>
+    /// The thresholds the semantic lane ran under, copied from the options it was handed. Null on
+    /// artifacts that predate the field - unknown, not "the defaults".
+    /// </summary>
+    [JsonPropertyName("semanticLaneTimeouts")]
+    public PdfSemanticLaneTimeouts? SemanticLaneTimeouts { get; init; }
 }
+
+/// <summary>
+/// The lane's configured thresholds in seconds, in the producer's own terms. Deliberately not a
+/// policy summary: no "aggressive"/"relaxed" classification is derived, because the route computes
+/// no such fact.
+/// </summary>
+public sealed record PdfSemanticLaneTimeouts(
+    [property: JsonPropertyName("requestSeconds")] int RequestSeconds,
+    [property: JsonPropertyName("batchSeconds")] int BatchSeconds,
+    [property: JsonPropertyName("laneDeadlineSeconds")] int LaneDeadlineSeconds);
 
 public sealed record PdfHierarchyFactsCounters(
     [property: JsonPropertyName("validatedHeadings")] int ValidatedHeadings,
