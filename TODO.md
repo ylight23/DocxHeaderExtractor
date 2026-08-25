@@ -3538,11 +3538,47 @@ version and fingerprint reporting.
 The forgotten `--openrouter` is the evidence that this is now worth more than another accuracy
 experiment.
 
-- [ ] M12-A configuration acceptance. A run must be able to state what it was: application version and
-  git revision, route, backend, model, endpoint host, timeouts, product schema version. Secrets
-  reported by presence only, never by value. Artifacts must carry source SHA, backend and model,
-  execution status, partial or timeout status, and the product fingerprint.
-  Audit what already exists before adding anything - the same order that made B1 and B3.2 cheap.
+- [x] M12-A1 configuration acceptance, audited before anything was added.
+
+  | a run should be able to state | present? |
+  |---|---|
+  | backend | yes - artifact `generation.backend` |
+  | model | yes - `generation.model`, resolved per backend |
+  | source document SHA | yes - per row |
+  | prompt identity | yes - `promptSha256` |
+  | route configuration identity | yes - `routeConfigSha256` |
+  | occurrence fingerprint | yes - per row |
+  | artifact kind, schema version, `usesGold` | yes |
+  | secret handling | **safe** - the key is read from `OPENROUTER_API_KEY` and used only in the Authorization header; it is never logged |
+  | application version / git revision | **no** |
+  | endpoint host | **no** |
+  | timeout values | **no** - hashed into `routeConfigSha256`, not legible |
+  | execution status, partial or timeout | **no** |
+
+  **The provenance gap: a run cannot say what code produced it.** `generation.codeRevision` is read
+  from the `DHX_CODE_REVISION` environment variable and nothing sets it, so it came back null on both
+  live canaries. There is no assembly version metadata, no `SourceRevisionId`, and no `--version`
+  command, so nothing else can answer the question either. The artifact is honest - it reports null
+  rather than guessing - but for release acceptance an artifact that cannot identify its own build is
+  weak evidence.
+
+  **The sharper gap, and it lands on a result we just produced.** The artifact records **no execution
+  status and no partial-or-timeout flag**. 054's live run returned zero validated structures, and from
+  the artifact alone it is impossible to tell whether that is because nothing validated or because the
+  semantic lane timed out. The distinction is made correctly *inside* the pipeline - B3.2 traced it,
+  timeouts become `Uncertain` and fail `IsEligibleHeading`, and the lane computes a `partial_timeout`
+  status - but that status stays in the route summary and never reaches the facts artifact. An empty
+  product and a degraded product are indistinguishable to whoever reads the artifact later, which is
+  precisely the person a release runbook is written for.
+
+  Recorded, not fixed. Each is a small deliberate change with an owner, and each should be decided
+  rather than added because it seems prudent:
+  - carry the lane's existing `partial_timeout` status into the artifact envelope. **This is the one
+    worth doing first**: the fact already exists and is already computed; only the boundary drops it,
+    which is the same shape as the writeback fingerprint gap B3.1 promoted.
+  - populate `codeRevision` from build metadata rather than an environment variable nobody sets, or
+    require it for acceptance runs and say so in the runbook.
+  - record the endpoint host and the resolved timeouts in legible form alongside their hash.
 
 ## Decision gate
 
