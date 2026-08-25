@@ -3867,6 +3867,77 @@ resolved; or that every launcher selects the newest build.
 **The next step is a release candidate and a runbook, not M13.** Diagnostic and architecture
 milestones stop here; something remaining that could be improved is not a reason to open another one.
 
+## Release candidate - ACCEPTED
+
+Approved revision `c31f0954cfd1af4ad45b8a490b33b71c6cf93b96`. Run per `docs/release-runbook.md`, one
+OpenRouter execution, no retry, no second inference.
+
+**The runbook's binary check earned its place immediately.** `bin/Release` carried the approved
+revision; `out-vulkan` - which `dhx.cmd` selects first - still carried `7b8ad20`, 403 commits behind.
+The acceptance run was invoked through `dotnet run --project` for exactly that reason.
+
+**Acceptance checks**
+
+| check | value | |
+|---|---|---|
+| `generation.backend` | `OpenRouter` | PASS |
+| `generation.model` | `qwen/qwen3.5-9b` | PASS |
+| `generation.codeRevision` | `c31f095…` | PASS |
+| revision == approved | | PASS |
+
+**Artifact**
+
+| field | value |
+|---|---|
+| `sourceDocumentSha256` | `be530ba0606f…` |
+| `semanticLaneStatus` | `complete` |
+| `semanticLaneTimeouts` | 90 / 120 / 300 seconds |
+| validated / facts / groundings | 29 / 29 / **28** |
+
+**Offline replay, no second inference**
+
+| check | result |
+|---|---|
+| final headings, grounded | 29, **28** |
+| ungrounded | **1** |
+| emit | **28** |
+| product records | 28 |
+| ungrounded but emitted | **0** |
+| product fingerprint matches its row | true |
+| replay-stable fingerprint and product | true |
+| every record carries an anchor | true |
+| level in range or null | true |
+
+**This run exercised the fail-closed path with real data**, which the earlier canary did not: one
+validated fact reached no canonical grounding, and it was refused at output rather than emitted
+without an anchor. 3 of 28 have a resolved level, so a writeback would skip the remaining 25 as
+`level_unresolved` - contract, not fault.
+
+**It also closes a caveat left open in M12-A3.** That milestone recorded that `codeRevision` was not
+re-verified in a live artifact, because verifying it would have cost a model run for something the
+input and the reader already proved. This acceptance run needed to happen anyway, and all three
+promoted provenance fields - `codeRevision`, `semanticLaneStatus`, `semanticLaneTimeouts` - populated
+correctly in a real artifact for the first time.
+
+### Scope of this acceptance
+
+| in scope | |
+|---|---|
+| product authority | PASS |
+| fail-closed behaviour | PASS |
+| post-validation determinism | PASS |
+| OpenRouter integration | PASS |
+| operational provenance | PASS |
+
+| out of scope | |
+|---|---|
+| extraction accuracy target | not established |
+| hierarchy generalisation | deferred |
+| trigger-gated accuracy and scope debts | unchanged |
+
+Non-empty live product-chain coverage remains **one document**. This is an acceptance of safety and
+operability, not of extraction quality.
+
 ## Decision gate
 
 - [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates
