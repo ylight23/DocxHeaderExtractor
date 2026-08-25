@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -68,7 +68,8 @@ internal static class PdfLineBlockFilter
             var repeated = repeatedKeys.Contains(RepeatKey(line.Text));
             var headerFooter = IsHeaderFooterZone(line, minY, span);
             var pageNumber = IsPageNumber(line.Text);
-            var tableLike = LooksLikeTableLine(line.Text);
+            var tableLikeRule = ClassifyTableLine(line.Text);
+            var tableLike = tableLikeRule is not null;
             var reasons = new List<string>();
             if (pageNumber) reasons.Add("page-number");
             if (repeated) reasons.Add("repeated");
@@ -112,20 +113,28 @@ internal static class PdfLineBlockFilter
     private static bool IsPageNumber(string text) =>
         Regex.IsMatch(text.Trim(), @"^(?:page\s*)?\d{1,4}$", RegexOptions.IgnoreCase);
 
-    private static bool LooksLikeTableLine(string text)
+    private static bool LooksLikeTableLine(string text) => ClassifyTableLine(text) is not null;
+
+    /// <summary>
+    /// Names which of the rule's branches fired, or null when none did. Same conditions in the same
+    /// order as the predicate above, which delegates here - the branch name is recorded, never
+    /// recomputed, so an audit of why a line was called table-like cannot answer from a second copy
+    /// of the rule. The names describe the branch, not a verdict about whether it was right.
+    /// </summary>
+    internal static string? ClassifyTableLine(string text)
     {
         var t = PdfTextUtilities.Readable(text);
-        if (t.Length == 0) return true;
+        if (t.Length == 0) return "empty_readable";
 
         var alnum = t.Count(char.IsLetterOrDigit);
-        if (alnum == 0) return true;
+        if (alnum == 0) return "no_alphanumeric";
         var numeric = t.Count(char.IsDigit) + t.Count(c => c is '$' or '%' or ',' or '(' or ')');
-        if (numeric / (double)alnum >= 0.35) return true;
+        if (numeric / (double)alnum >= 0.35) return "numeric_density";
 
         var words = Regex.Matches(t, @"\p{L}+").Count;
         if (t.Length <= 32 && words <= 4 && Regex.IsMatch(t, @"\b\d+\b") && !Regex.IsMatch(t, @"[.!?]\s*$"))
-            return true;
+            return "short_numbered";
 
-        return false;
+        return null;
     }
 }
