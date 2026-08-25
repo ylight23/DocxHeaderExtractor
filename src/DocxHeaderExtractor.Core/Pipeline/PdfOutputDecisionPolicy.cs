@@ -20,7 +20,12 @@
 /// </summary>
 public static class PdfOutputDecisionPolicy
 {
-    private static readonly string[] ExcludedScopes =
+    /// <summary>
+    /// The scopes this policy refuses outright. Exposed so an audit can ask what selection spends its
+    /// budget on without keeping a second copy of the list, which would silently disagree the first
+    /// time one is edited.
+    /// </summary>
+    internal static readonly string[] ExcludedScopes =
         ["embedded_amendment", "quoted_replacement", "appendix_table"];
 
     public static IReadOnlyList<PdfOutputDecision> Decide(PdfFinalStructure structure) =>

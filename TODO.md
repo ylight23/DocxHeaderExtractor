@@ -2871,10 +2871,73 @@ that forbids a single repair.
   or the scorer's resolution - 142 candidates above and five headings sharing one score suggests the
   score is too coarse to order them, which is not the same defect as being outscored. Note in advance
   that raising the budget is not the remedy; 054 already settled that.
-- [ ] M10.7-D (candidate, and possibly the most valuable) selection spends budget on candidates the
-  output policy will exclude - 132 of 160 slots on 091. Owner is the ordering of the two stages, not
-  either stage alone. Measure on a corpus before proposing anything: this touches the pipeline's
-  shape, which is exactly where a hasty repair would do the most damage.
+- [x] M10.7-D1 selection-budget waste, measured. A slot counts as wasted only when the candidate's
+  current scope is already in the output policy's own excluded set - a fact available before the
+  model. A candidate that reaches the model and is then rejected does not count; treating it as waste
+  would let selection chase an outcome that has not happened yet. The excluded set is read from
+  `PdfOutputDecisionPolicy` rather than restated, so the two cannot drift.
+
+  | document | candidates | selected | wasted | share | first eligible below budget |
+  |---|---|---|---|---|---|
+  | 091 RFC 9110 | 2544 | 160 | 132 | **82%** | **476** |
+  | 092 RFC 9111 | 499 | 160 | 62 | 39% | 161 |
+  | 032 procurement | 5311 | 160 | 26 | 16% | 162 |
+  | 054 IBRD | 2043 | 160 | 0 | 0% | 161 |
+  | 076 minutes | 149 | 149 | 0 | 0% | - |
+
+  **Corpus sweep, 77 documents with candidates:** median waste 1%, mean 15%, maximum 89%. It is not a
+  universal condition - 38 of 77 waste nothing at all - but there is a clear high-waste family: 9
+  documents above 50% and 9 more between 25% and 50%, concentrated in the RFCs (091, 093, 094, 095 at
+  72-89%), financial statements (041, 044, 045, 055 at 39-89%), Vietnamese amending decrees (018, 090
+  at 77-82%) and one lecture series (057 at 87%).
+
+### Correction to the M10.6/M10.7 prioritisation
+
+**The claim that appendix scope has a 3-of-14 ceiling was wrong, and the error was mine.** The A/B
+split reported which blocker bites *first*, which was accurate, but it was then read as a bound on
+what appendix remediation could recover. Measuring the scopes directly: **13 of the 14 reviewed
+headings carry `appendix_table`**, and the fourteenth carries `table`. Appendix scope disqualifies
+thirteen of them. It is *sufficient on its own* for three; for the other ten it is necessary but not
+sufficient, because those are also outside the budget.
+
+So ten of the fourteen are **overdetermined**: repairing the appendix lifecycle alone recovers none of
+them, and moving the ranking boundary alone recovers none of them either. That is the same shape this
+project has met at every layer, and it should have been checked before recommending an order of work.
+
+**D2 is refuted before it runs.** The proposed counterfactual - skip candidates already known to be
+output-ineligible and keep taking ranked candidates until 160 eligible slots are filled - cannot
+recover 091's five headings, because those headings are themselves `appendix_table` and would be
+skipped by the same rule. 091's first eligible candidate below the budget is at rank 476, and all
+five sit inside that dead band at ranks 161-451. An eligibility-aware selection would step over them.
+
+- [ ] M10.7-D2 is **not opened** as a heading-recovery remedy; the measurement above shows it cannot
+  be one. Budget waste remains a real and sometimes large inefficiency - 89% on 094 - and if it is
+  ever revisited the justification has to be model cost or throughput, measured as such, not heading
+  recall. Do not re-open it on the strength of the 82% figure alone.
+
+- [ ] M10.7-C tie density is **not opened** either, and for the same reason: 091's five are
+  disqualified by scope regardless of where the tie-break puts them.
+
+### Where this actually leaves the work
+
+The one blocker that is *necessary* for 13 of 14 reviewed headings is the appendix lifecycle, whose
+mechanism the M10.6 precheck already proved identical across three documents and two domains. It is
+not sufficient alone for ten of them, so it cannot be promoted on a recovery argument by itself - but
+it is no longer a 3-of-14 side issue, and the earlier recommendation to prioritise ranking over it was
+based on my misreading rather than on the data.
+
+- [ ] Next decision, and it is the user's: whether to open the appendix lifecycle knowing it is
+  necessary-but-insufficient for most of the population, or to first measure what a *combined*
+  counterfactual would recover - appendix transition withheld **and** the ranking boundary observed
+  together. The second answers whether the overdetermination is two blockers or three, which is the
+  thing neither M10.6 nor M10.7 can settle alone. It would be the first counterfactual in this
+  milestone to move two variables at once, and that has to be a deliberate, stated choice rather than
+  a convenience - measured as a joint bound, never as evidence for either owner separately.
+
+- [ ] M10.7-B scoring competitiveness stays open and unchanged. 032's headings score 0.38-0.48 with
+  hundreds of candidates genuinely above them, and 054's `AVAILABILITY OF INFORMATION` fails the same
+  way. That owner is the scorer, it is untouched by any of the above, and it is the only one of the
+  three candidate mechanisms that this audit has not undercut.
   - [x] B1 sample frozen at `.verify-build/m105b1-tablelike-reviewed-exposure-sample.json` by
     SHA-256 ordering of exact source-line identity: 10 `table_scope_penalized` + 10
     `not_table_scope_penalized` occurrences per preselected document, 80 total. Population/sample:
