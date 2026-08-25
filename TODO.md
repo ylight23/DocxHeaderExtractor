@@ -3938,6 +3938,67 @@ correctly in a real artifact for the first time.
 Non-empty live product-chain coverage remains **one document**. This is an acceptance of safety and
 operability, not of extraction quality.
 
+## Extractor quality benchmark - measurement only
+
+Opened after the RC was accepted, and deliberately **not** an end-to-end product benchmark. The
+question is narrow: does the extractor find and confirm headings, before the frozen output and scope
+debts remove them?
+
+**Progress is tracked on five axes, and the fifth is not "missing data":**
+
+| axis | state |
+|---|---|
+| pipeline architecture and authority | done |
+| fail-closed, determinism, release | done |
+| candidate extraction quality | **benchmark in progress** |
+| semantic validation quality | needs benchmark |
+| end-to-end product and hierarchy quality | **blocked by known frozen debts** |
+
+An end-to-end benchmark today would mostly measure the appendix leak, the quote leak and `TableLike` -
+all proven, all deliberately frozen - rather than the extractor. That is why the scope stops before
+output eligibility.
+
+- [x] A0/A1 candidate recall and selection, model-free, over the reviewed occurrences that already
+  exist. No new gold, no model call.
+
+  | document | reviewed | full candidate | rank <= 160 |
+  |---|---|---|---|
+  | 054 | 23 | 23 | 18 |
+  | 092 | 37 | 35 (see below) | 35 |
+  | 032 | 8 | 8 | 2 |
+  | 091 | 6 | 6 | 1 |
+  | **all** | **74** | **72** | **56** |
+
+  Candidate recall uses the project's occurrence definition - a candidate counts only if it covers
+  **every** semantic-bearing line. 054's two multi-line occurrences pass under that stricter rule, so
+  the figure survives the definition rather than depending on the looser one M11-A0 used.
+
+  **The two 092 misses are a defect in the probe, not in the extractor.** Both failed to join a source
+  line by text key: the label reads `1 2 2 Delta Seconds` while extraction produces
+  `1 2 2 D elta Sec onds`, the same space-insertion damage recorded elsewhere. The candidate exists -
+  it is `b22`, which M10.7-A observed in the ranking at 434. So the honest reading is **74/74 present
+  with 2 unjoinable by text**, and the probe needs occurrence-id joining before this metric is quoted
+  as exact. Text-key joining is not occurrence identity; this project has now met that at five layers,
+  including in its own measurement code.
+
+  **Selection is reported beside recall and never folded into it.** 56 of 72 reach the budget, and the
+  gap is entirely 032 (2 of 8) and 091 (1 of 6) - documents where the candidate demonstrably exists
+  and is not selected. A single "extractor recall" number would have hidden that first loss.
+
+- [ ] A2 validated recall, on the same reviewed occurrences, using the production OpenRouter profile.
+  One run per document, no tuning between runs.
+- [ ] A3 validated precision, by reviewing the validated outputs themselves - far cheaper than building
+  full occurrence gold for a new document.
+- [ ] Decision gate after A3: is the extractor weak, is the validator weak, or is the loss downstream?
+  Only then decide whether to reopen a debt, widen the benchmark, or stop.
+- [ ] Widening, if it happens, screens before it reviews: model-free candidate inventory first, review
+  occurrence gold only for documents that prove usable, then call the model. 4-6 additional documents
+  by domain, not 20-30. M11-A0's lesson applies directly - do not review 100 occurrences and then
+  discover the document was never eligible.
+
+**The end-to-end product figure (C) stays closed** until a product-facing question requires it, and it
+must then be reported with the known debts attached rather than as an extractor score.
+
 ## Decision gate
 
 - [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates
