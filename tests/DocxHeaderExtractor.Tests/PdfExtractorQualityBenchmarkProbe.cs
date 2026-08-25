@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
@@ -19,6 +20,25 @@ namespace DocxHeaderExtractor.Tests;
 /// Rank and selection are reported beside recall and never folded into it. 032 and 091 already show
 /// occurrences whose candidate exists and is not selected; one combined number would hide exactly the
 /// first loss this project spent M10 learning to locate.
+/// </para>
+/// <para>
+/// Occurrence identity, not text identity. 054 has a reviewed <see cref="PdfReviewedOccurrenceBridge"/>
+/// - its line indexes are used directly, no text matching at all. The other populations have no bridge
+/// yet, so their gold lines are joined against the current extraction by
+/// <see cref="PdfTextUtilities.CanonicalForMatch"/> - the same canonical-equality the bridge's own
+/// deterministic proposal step uses - never by a looser, locally reinvented normalisation an earlier
+/// version of this probe used (plain whitespace collapsing), which reported two 092 occurrences
+/// "absent" on a text mismatch alone.
+/// </para>
+/// <para>
+/// Fixing the join did NOT make those two occurrences full: it correctly resolves each to its unique
+/// source line (page match, no ambiguity - `BENCH_A1_DEBUG=1` prints the resolved index and every
+/// candidate whose line indexes fall nearby), and at that line neither `Covers` nor `touching` finds a
+/// candidate. That is a real candidate-construction gap, not a join artifact - and it corrects a
+/// specific earlier claim that a candidate for one of them already existed at a named rank; the named
+/// candidate exists but its actual line indexes are elsewhere, a stale reference from before this
+/// codebase's candidate ids last shifted. Candidate ids are discovery-order assignments and are not
+/// stable evidence across a code change; only re-resolving against the current run is.
 /// </para>
 /// </summary>
 public sealed class PdfExtractorQualityBenchmarkProbe
@@ -57,6 +77,9 @@ public sealed class PdfExtractorQualityBenchmarkProbe
             var rankOf = ranked.Select((item, index) => (item.SourceId, Rank: index + 1))
                 .ToDictionary(x => x.SourceId, x => x.Rank, StringComparer.Ordinal);
 
+            // Canonical equality, not the probe's own text collapsing - the same join
+            // PdfOccurrenceBridgeProposal already uses to place a reviewed bridge in the first place,
+            // so a population without a bridge yet is at least joined the project's one established way.
             var indexByKey = new Dictionary<string, int>(StringComparer.Ordinal);
             for (var index = 0; index < snapshot.Lines.Count; index++)
                 indexByKey.TryAdd(Key(snapshot.Lines[index].Page, snapshot.Lines[index].Text), index);
@@ -65,14 +88,28 @@ public sealed class PdfExtractorQualityBenchmarkProbe
             var rows = new List<string>();
             foreach (var occurrence in occurrences)
             {
-                var required = occurrence.Lines
+                // A reviewed occurrence bridge (054) already names its own line indexes - true
+                // occurrence identity, no text matching needed or wanted. Everything else falls back
+                // to the canonical-text join above.
+                var required = occurrence.ResolvedIndexes ?? occurrence.Lines
                     .Select(line => indexByKey.TryGetValue(Key(line.Page, line.Text), out var index) ? index : -1)
                     .Where(index => index >= 0)
                     .ToArray();
-                if (required.Length == 0)
+                if (required.Count == 0)
                 {
                     absent++;
                     rows.Add($"    no-source-line {Trim(occurrence.Label)}");
+                    if (Environment.GetEnvironmentVariable("BENCH_A1_DEBUG") == "1")
+                    {
+                        var sought = occurrence.Lines.Select(l => Key(l.Page, l.Text));
+                        rows.Add($"      sought: {string.Join(" | ", sought)}");
+                        var page = occurrence.Lines.Count > 0 ? occurrence.Lines[0].Page : -1;
+                        var nearby = snapshot.Lines
+                            .Select((l, i) => (l, i))
+                            .Where(x => x.l.Page == page)
+                            .Select(x => $"[{x.i}]{Key(x.l.Page, x.l.Text)}={Trim(x.l.Text)}");
+                        foreach (var n in nearby) rows.Add($"      have:   {n}");
+                    }
                     continue;
                 }
 
@@ -91,7 +128,26 @@ public sealed class PdfExtractorQualityBenchmarkProbe
                     snapshot.Provenance.TryGetValue(item.SourceId, out var p) &&
                     required.Any(p.LineIndexes.Contains));
                 if (touching) { partial++; rows.Add($"    partial-only   {Trim(occurrence.Label)}"); }
-                else { absent++; rows.Add($"    absent         {Trim(occurrence.Label)}"); }
+                else
+                {
+                    absent++;
+                    rows.Add($"    absent         {Trim(occurrence.Label)}");
+                    if (Environment.GetEnvironmentVariable("BENCH_A1_DEBUG") == "1")
+                    {
+                        foreach (var index in required)
+                            rows.Add($"      resolved index {index}: page={snapshot.Lines[index].Page} text={Trim(snapshot.Lines[index].Text)}");
+                        var duplicates = occurrence.Lines
+                            .SelectMany(line => snapshot.Lines
+                                .Select((l, i) => (l, i))
+                                .Where(x => x.l.Page == line.Page && PdfTextUtilities.CanonicalForMatch(x.l.Text) == PdfTextUtilities.CanonicalForMatch(line.Text)));
+                        foreach (var (l, i) in duplicates)
+                            rows.Add($"      same-key line [{i}]: {Trim(l.Text)}");
+                        var nearbyCandidates = snapshot.Provenance.Values
+                            .Where(p => p.LineIndexes.Any(i => required.Any(r => Math.Abs(i - r) <= 5)))
+                            .Select(p => $"{p.CandidateSourceId} rank={(rankOf.TryGetValue(p.CandidateSourceId, out var r) ? r.ToString() : "unranked")} lines=[{string.Join(",", p.LineIndexes)}] kind={p.RepresentationKind}");
+                        foreach (var nc in nearbyCandidates) rows.Add($"      nearby candidate: {nc}");
+                    }
+                }
             }
 
             totals[0] += occurrences.Count;
@@ -124,25 +180,24 @@ public sealed class PdfExtractorQualityBenchmarkProbe
         yield return ("091", @"07_system_generated\091_RFC9110_HTTP_Semantics.docx", CrossDocument("091"));
     }
 
+    /// <summary>
+    /// True occurrence identity: 054 has a reviewed bridge, so its line indexes are read directly and
+    /// never re-derived by matching text against the current extraction.
+    /// </summary>
     private static List<Occurrence> Bridge054()
     {
         var directory = Path.Combine(RepositoryRoot(), "keys", "occurrence-bridge");
         var path = Directory.Exists(directory) ? Directory.GetFiles(directory, "054_*.json").FirstOrDefault() : null;
         if (path is null) return [];
-        using var document = JsonDocument.Parse(File.ReadAllText(path));
-        var result = new List<Occurrence>();
-        if (!document.RootElement.TryGetProperty("occurrences", out var occurrences)) return result;
-        foreach (var occurrence in occurrences.EnumerateArray())
-        {
-            var page = occurrence.TryGetProperty("page", out var p) ? p.GetInt32() : 0;
-            if (!occurrence.TryGetProperty("lines", out var lineArray)) continue;
-            var lines = lineArray.EnumerateArray()
-                .Select(line => (Page: page, Text: line.TryGetProperty("text", out var t) ? t.GetString() ?? "" : ""))
-                .Where(line => PdfTextUtilities.CanonicalForMatch(line.Text).Length > 0)
-                .ToList();
-            if (lines.Count > 0) result.Add(new Occurrence(lines[0].Text, lines));
-        }
-        return result;
+        var bridge = PdfReviewedOccurrenceBridge.Load(File.ReadAllText(path));
+        return bridge.Occurrences
+            .Where(occurrence => occurrence.ReviewStatus == "reviewed")
+            .Select(occurrence => new Occurrence(
+                occurrence.GoldText,
+                [],
+                occurrence.RequiredLines.Select(line => line.Index).ToArray()))
+            .Where(occurrence => occurrence.ResolvedIndexes!.Count > 0)
+            .ToList();
     }
 
     private static List<Occurrence> LabelFile(string name)
@@ -173,12 +228,23 @@ public sealed class PdfExtractorQualityBenchmarkProbe
         return [];
     }
 
-    private static Occurrence Single(int page, string text) => new(text, [(page, text)]);
+    private static Occurrence Single(int page, string text) => new(text, [(page, text)], null);
 
-    private sealed record Occurrence(string Label, List<(int Page, string Text)> Lines);
+    /// <param name="ResolvedIndexes">
+    /// Line indexes already known from a reviewed occurrence bridge (true occurrence identity). Null
+    /// means no bridge exists yet for this population, so <see cref="Lines"/> is joined against the
+    /// current extraction by canonical text equality instead.
+    /// </param>
+    private sealed record Occurrence(string Label, List<(int Page, string Text)> Lines, IReadOnlyList<int>? ResolvedIndexes);
 
+    /// <summary>
+    /// Canonical text equality - separators and case removed, same as
+    /// <see cref="PdfOccurrenceBridgeProposal"/>'s own deterministic proposal step - never the
+    /// probe's own weaker whitespace-collapsing. A join built any looser here reports a source line
+    /// "absent" when it only looks different, exactly the failure this fix exists to close.
+    /// </summary>
     private static string Key(int page, string text) =>
-        $"{page}|{Regex.Replace(PdfTextUtilities.Readable(text), @"\s+", " ").Trim()}";
+        $"{page}|{PdfTextUtilities.CanonicalForMatch(text)}";
 
     private static string Trim(string value)
     {
