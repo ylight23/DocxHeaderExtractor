@@ -2476,15 +2476,57 @@ scope-lifecycle invariant on the strength of one shape resemblance.
   held back before because of scope contamination, that contamination is now removed, and it is
   still unmeasured against the corrected population.
 
-- [ ] M10.3-B3 discriminator search, **and it starts by asking whether one already exists** rather
-  than by proposing heuristics. Do existing facts - marker parse, layout geometry, block structure,
-  neighbour relationships, scope before the annotation - already separate the 37 outline headings
-  from the 35 contents entries, 32 tabular values, 15 prose lines, 4 metadata lines and 2 captions?
-  One observation already argues they may not: `b45` and its siblings carry the ambiguity signals
-  `unlabelled_numbering` and `no_labelled_structural_marker`, so the marker parser does **not**
-  currently recognise `1`, `1 1`, `1 2 1` as structural markers - the fact that would most obviously
-  discriminate is absent on exactly the population that needs it. If no existing fact separates the
-  population, close B at causal diagnosis rather than inventing a classifier.
+- [x] M10.3-B3 existing-fact separability, measured over the fixed 125 reviewed lines. Only facts
+  the pipeline already produces; no new predicate, no regex, no feature combination.
+
+  **Correction, and it matters.** When B2 closed, this note read: the marker parser does not
+  recognise `1`, `1 1`, `1 2 1` as structural markers, inferred from the `no_labelled_structural_marker`
+  ambiguity signal on `b45`. That was wrong, and it was an inference from a signal name rather than a
+  measurement. `PdfMarkerFactsParser.Parse` succeeds on **37 of 37** outline headings.
+  `no_labelled_structural_marker` means no *labelled* marker such as `Section 5`, which is a
+  different fact. The expectation that B3 would find nothing was built on that mistake.
+
+  | existing fact | outline (37) | non-outline (88) | toc | table (32) | prose | meta | caption |
+  |---|---|---|---|---|---|---|---|
+  | `HasStructuralMarker` | **37** | 44 | 35 | **0** | 6 | 1 | 2 |
+  | strict marker parse | **37** | 44 | 35 | **0** | 6 | 1 | 2 |
+  | generic numbering parse | **37** | 35 | 35 | **0** | 0 | 0 | 0 |
+  | block is a single line | 35 | 10 | 2 | **0** | 6 | 0 | 2 |
+  | loose labelled marker | 0 | 9 | 0 | 0 | 6 | 1 | 2 |
+  | header/footer zone | 1 | 8 | 2 | 5 | 1 | 0 | 0 |
+
+  **A discriminator exists for the distinction that matters.** `HasStructuralMarker` catches every
+  one of the 37 outline headings and **none of the 32 genuine tabular values**. The separation
+  between real headings and real tables inside this branch is clean, not marginal.
+
+  **What it does not separate is contents entries: 35 of 35 collide.** That is not a surprise and not
+  a defect of the fact - a contents line quotes the heading it points at, so it carries the same
+  numbering. Telling those apart is `DetectTocBlockIds`' job, and that returns nothing on 092. The
+  collision therefore belongs to the already-recorded TOC debt rather than to this branch.
+
+  **The sharpest finding is that production already trusts this exact fact one layer up.**
+  `ExcludeFromCandidateGrouping` reads `TableLike && (Repeated || !HasStructuralMarker)`, with a
+  comment stating that geometric table evidence "is not by itself proof that the source fact is table
+  body" and that a non-repeated structural marker may enter grouping "for later scope-aware
+  validation". So the judgement is already made and already encoded; scope derivation simply does not
+  consult it. That reframes any remedy from inventing a discriminator to resolving an inconsistency
+  between two layers that already disagree.
+
+  Measurement limits recorded with the result: 79 of 125 lines join to a candidate block, so the
+  block-level rows (`single line`, ranking signals) are defined on that subset, while the line-level
+  facts are defined on all 125. Unjoined lines read as false for block-level facts, which biases the
+  `single line` row downward for exactly the lines that were excluded from grouping.
+
+- [ ] M10.3-B4 safe-remediation counterfactual, **now justified to open** - the discriminator was
+  found, not invented. Withhold `short_numbered` `TableLike` where the existing `HasStructuralMarker`
+  fact holds, across the whole 125, then measure recovery and collateral together, then replay
+  010/054/076 as cross-domain holdout. Two things must be answered before any repair:
+  - the 35 contents entries this releases. Their fate depends on `DetectTocBlockIds`, a different
+    owner that is currently silent on this document, so B4 must report what happens to them rather
+    than assume the TOC lane will catch them.
+  - whether the remedy belongs in scope derivation or in the annotation. Production already applies
+    the fact at grouping; a repair that applies it a second time in a third place would be
+    duplication rather than consistency.
 
 - [ ] M10.3 debts kept separate, not merged into a scope-lifecycle abstraction:
   - the quote latch leak from page 28 (its own trigger, its own owner).
