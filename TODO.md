@@ -106,6 +106,25 @@ This is not a relaxation. Fail-closed is not a licence for speculative validatio
 must be objectively inconsistent with an authority contract that already exists. A new check that
 merely seems prudent does not qualify.
 
+### A third gate: observability and provenance
+
+Observability hardening does not require historical material loss either. It requires proof that an
+**already-authoritative runtime fact is lost at an evidence boundary**, leaving operationally distinct
+executions indistinguishable after the run. It must show:
+
+1. the fact already exists and is already computed in production - no new classifier or status;
+2. the fact is dropped where the artifact is materialised;
+3. at least two operationally different states become indistinguishable from the artifact without it;
+4. the artifact copies the fact exactly - no recompute, no inference, no renaming of its meaning;
+5. behavioural neutrality: candidates, validation, final structure, decisions, product and writeback
+   are unchanged;
+6. coverage of both the healthy and the degraded case, deterministic serialisation, and an explicit
+   answer for artifacts written before the field existed.
+
+**Observability is not a licence to record everything.** A field is promoted only when it preserves an
+existing authoritative fact needed to interpret, reproduce, audit or operate the artifact. "More
+metadata is better" is not a trigger, and "we might want to see this later" is not point 3.
+
 ## Việc ĐANG SỐNG
 
 ## 4. Đáp án có người xác nhận — **ĐÃ BẮT ĐẦU (§37), vẫn là thắt cổ chai**
@@ -3571,14 +3590,43 @@ experiment.
   product and a degraded product are indistinguishable to whoever reads the artifact later, which is
   precisely the person a release runbook is written for.
 
-  Recorded, not fixed. Each is a small deliberate change with an owner, and each should be decided
-  rather than added because it seems prudent:
-  - carry the lane's existing `partial_timeout` status into the artifact envelope. **This is the one
-    worth doing first**: the fact already exists and is already computed; only the boundary drops it,
-    which is the same shape as the writeback fingerprint gap B3.1 promoted.
-  - populate `codeRevision` from build metadata rather than an environment variable nobody sets, or
-    require it for acceptance runs and say so in the runbook.
-  - record the endpoint host and the resolved timeouts in legible form alongside their hash.
+- [x] M12-A2 execution provenance carried into the artifact. Promoted on the observability gate, not
+  the fail-closed one: nothing is refused, no behaviour changes, and the only claim is that evidence
+  survives the boundary.
+
+  The route already computes `SemanticLane.Status` and the CLI already holds it on the audit; the
+  artifact simply did not write it. It is now copied verbatim onto the row - `complete` or
+  `partial_timeout`, the producer's own vocabulary, with no `isPartial`, `timedOut` or
+  `executionHealth` derived from it.
+
+  **Schema decision, audited rather than reflexive.** No code anywhere validates
+  `PdfHierarchyFactsArtifact.SchemaVersion`, the field is additive and optional, and an artifact
+  written before it existed deserialises to null - which is unambiguous, because a new artifact always
+  carries a status. So the version is **not bumped**, and the row documents that null means unknown
+  provenance rather than a completed run.
+
+  It goes on the **row**, not the envelope, because the envelope's own contract says documents may be
+  produced in separate runs; a single per-artifact status would be wrong the moment two documents with
+  different lane outcomes share a file.
+
+  Six locks: the healthy status is preserved, the degraded status is preserved, **an empty successful
+  run and a partial-timeout run stay distinguishable while carrying identical counters and identical
+  occurrence fingerprints**, a legacy artifact reads as unknown and never as complete, the product
+  projection is unchanged by either status, and serialisation is deterministic across a round trip.
+  Regression unchanged at the frozen 15; 1036 passing.
+
+  **What this does not claim about 054.** Its artifact does not show that run timed out. It shows that
+  if a run does time out, the artifact as it stood could not be told apart from an honest empty one.
+  That was the gap; the 054 result is what made it visible.
+
+- [ ] M12-A3 `codeRevision`, **not** taken in the same patch. It is a real provenance gap with a
+  different owner and a decision behind it: either the binary learns its own revision from build
+  metadata, or the runbook requires the operator to supply it and acceptance refuses a run without it.
+  Those are different deployment contracts and one has to be chosen first.
+
+- [ ] Endpoint host and resolved timeouts stay a **candidate, not promoted**. They would have to be
+  shown necessary for reproduction, audit or incident diagnosis, and scoped so nothing
+  credential-bearing is written. "More metadata is better" is not a trigger.
 
 ## Decision gate
 
