@@ -2069,8 +2069,57 @@ is an outcome of the measurement, not an assumption of it.
   the same reviewed occurrence represented as one clean standard block, scored by the existing
   ranking code. A large rank recovery would make representation the causal owner; a small one would
   mean window-only representation is not what is holding them back.
-- [ ] M10.1e-A3 why a visually prominent standalone heading with no negative evidence scores only
-  0.44. Deferred until A2 and B1 report.
+- [x] M10.1e-A3.1 unnumbered heading ceiling. **PROVEN, cross-domain.** The best score any candidate
+  without a numbering marker can reach is `0.44` - base 0.10 plus standalone 0.18 plus layout
+  prominence 0.16 - and that ceiling holds identically on all four corpora. Whether it excludes
+  depends on how crowded the marker-bearing candidates are: with a cut of 0.54, 054 (financial, 1680
+  unmarked candidates) and 010 (Vietnamese legal, 104) select **zero** of them, while 092 (cut 0.44)
+  and 076 (cut 0.00, pool smaller than the budget) let them through. Two independent domains
+  reproduce the exclusion, so this is a property of the scorer rather than of financial documents.
+
+  No candidate anywhere combines "no marker" with `opens_content`, which is more suspicious than the
+  weight itself: the remaining positive path appears unreachable without a marker. Next is a
+  reachability audit of the existing positive signals, then a collateral rerank - and any remedy must
+  rest on evidence a heading actually has. Absence of a marker is not evidence, so no bonus may be
+  paid for it.
+- [x] M10.1e-A3.1-C0 reachability audit. `opens_content` has **never fired**: 0 of 2043 candidates
+  on 054, 0 of 1065 on 010, 0 of 499 on 092 - 0 of 3607, with or without a marker.
+
+  The predicate asks whether the next block's text is longer than 70 characters and ends in a full
+  stop, but it reads `PdfCandidateContext.NextBlocks`, which is built by `PromptExcerpt` and cut at
+  180 characters for the model prompt. A real body paragraph is longer than that, so the excerpt is
+  cut mid-sentence and never ends in a stop: every excerpt that hit the 180 cap - 352 on 054, 107 on
+  010, 100 on 092 - failed the test, without exception. The few excerpts that do end in a stop are
+  too short to pass the length test.
+
+  So the positive path for an unnumbered heading was designed and is dead code, and
+  `no_body_opening_evidence` is attached to the entire population, where it distinguishes nothing.
+  With the signal alive the ceiling would be 0.10 + 0.18 + 0.16 + 0.12 = 0.56, above the 0.54 cut
+  that excludes unnumbered headings on 054 and 010. That makes the remedy a repair of an existing
+  owner rather than a new signal, and it still rests on evidence the heading has - a body paragraph
+  follows it - not on the absence of a marker.
+
+  **Contract leak, not a missing stage.** `PdfCandidateContextBuilder` serves two needs from one
+  field: `NextBlocks` is the right shape for a prompt and the wrong shape for structural evidence,
+  and the scorer reads it for the latter. Serialization is the last consumer of a fact and must not
+  become the source of truth for deterministic logic - the same rule that keeps a model proposal
+  from becoming a source fact. The same shape explains several findings in this milestone: a
+  geometric zone used as artifact evidence, a grouping shortcut driving ranking, and text similarity
+  used as occurrence identity.
+
+  The repair belongs inside the existing owner: let the scorer read the next block's own text and
+  leave `NextBlocks` alone so the prompt contract does not move. No new stage, no detector service -
+  and `opens_content` must stay a ranking signal that gives a true candidate a chance to reach the
+  model, never a classifier that decides what a heading is.
+
+  Not fixed here: C1 must first measure what reviving the signal costs, since +0.12 would reach every
+  candidate that precedes a paragraph, including paragraphs themselves, and the ambiguity
+  distribution feeding escalation tiers changes with it.
+- [x] M10.1e-A3.2 multi-line penalty. **NOT PROMOTED.** Candidates carrying `multi_line_boundary`
+  reach the selected budget on all four corpora (2.2%, 2.8%, 100%, 1.7%), so the signal is not
+  broadly mis-scoped the way the header/footer one is. `SECTION XIV`/`XIX` remain a representation
+  and scoring interaction - complete at 0.53 against a 0.54 cut - and are recorded as coupled debt
+  rather than a reason to change a global weight.
 
 ## Decision gate
 
