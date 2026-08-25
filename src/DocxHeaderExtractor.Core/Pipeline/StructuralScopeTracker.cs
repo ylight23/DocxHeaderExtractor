@@ -12,7 +12,20 @@ internal sealed class StructuralScopeTracker
     /// </summary>
     private readonly List<StructuralScopeTransition>? _trace;
 
-    public StructuralScopeTracker(List<StructuralScopeTransition>? trace = null) => _trace = trace;
+    /// <summary>
+    /// Evaluation-only. Named blocks whose appendix entry is withheld, so a counterfactual can ask
+    /// what a single reviewed transition caused. Empty in production, and deliberately not a rule:
+    /// the set is a reviewed list of source ids, not a predicate anything could learn.
+    /// </summary>
+    private readonly IReadOnlySet<string> _withheldAppendixEntries;
+
+    public StructuralScopeTracker(
+        List<StructuralScopeTransition>? trace = null,
+        IReadOnlySet<string>? withheldAppendixEntries = null)
+    {
+        _trace = trace;
+        _withheldAppendixEntries = withheldAppendixEntries ?? new HashSet<string>(StringComparer.Ordinal);
+    }
 
     private static readonly Regex AppendixRx = new(@"^\s*(?:appendix|annex|phu\s+luc)\b", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex AmendmentRx = new(@"(?:amended\s+as\s+follows|replaced\s+as\s+follows|amend(?:ed|ment).*?as\s+follows|sua\s+doi.*?nhu\s+sau|duoc\s+sua\s+doi|bo\s+sung.*?nhu\s+sau)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
@@ -29,7 +42,7 @@ internal sealed class StructuralScopeTracker
     public PdfSourceFacts Apply(PdfSourceFacts facts)
     {
         var text = facts.RawText;
-        var appendix = AppendixRx.IsMatch(text);
+        var appendix = AppendixRx.IsMatch(text) && !_withheldAppendixEntries.Contains(facts.SourceId);
         var referencesHeading = ReferencesHeadingRx.IsMatch(text);
         var indexHeading = IndexHeadingRx.IsMatch(text);
         if (appendix)
