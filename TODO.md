@@ -3034,10 +3034,65 @@ it elsewhere. It is still unmeasured. B3 showed the same fact holds for 35 of 35
 092, so crediting it would raise every contents line in the corpus by the same amount, and the four
 headings it would help are on one document.
 
-- [ ] M10.7-B2 counterfactual, when opened: credit the existing fact, then measure recovery **and**
-  what else rises with it - contents entries above all - on the corrected-scope population and across
-  documents. The collateral question is already known to be sharp, so a B2 that reports only recovery
-  would be worthless.
+  **091 traced, not assumed.** B1 originally named the owner "032/091" before 091's scorer had been
+  looked at. Traced since: all five 091 headings produce a strict structural marker
+  (`family=spaced_arabic`, depth 2-4, correct) with `HasStructuralMarker` true, and the scorer credits
+  only `unlabelled_numbering_prefix`. Same mismatch, now on evidence.
+
+- [x] M10.7-B2 equivalence counterfactual. One hypothesis: does the strict structural-marker fact
+  qualify for the existing strong-marker path? The existing fact was admitted to the existing path -
+  no weight tuned, no signal invented, the parser untouched, and 032's known marker-depth damage
+  deliberately left in place so the run stays isolated.
+
+  | | 032 | 091 | 092 | 054 |
+  |---|---|---|---|---|
+  | candidates with strong marker | 426 -> **2268** | 119 -> **794** | 22 -> 157 | 326 -> 363 |
+  | score at rank 160 | 0.55 -> **0.82** | 0.54 -> **0.86** | 0.44 -> 0.44 | 0.54 -> 0.68 |
+  | emittable at budget | 134 -> 151 | 28 -> **27** | 98 -> 97 | 160 -> 160 |
+  | top-160 churn | 133 in / 133 out | 84 / 84 | 3 / 3 | 7 / 7 |
+
+  **Recovery: none on the denominator.** All four 032 headings rise 0.38 -> 0.70 and move up several
+  hundred places - 772 to 378, 662 to 268 - and **not one becomes selected**. On 091 all five rise
+  0.54 -> 0.86 and two are selected (`3 6 Origin Server` 161 -> 65, `4 2 1 http URI Scheme` 169 -> 77),
+  while emittable falls by one.
+
+  **The reason it fails is not the collateral that was feared.** 092 was the stress case because all
+  35 of its reviewed contents entries carry the fact - and its role breakdown does not move at all:
+  outline 35 -> 35, contents 5 -> 5, prose 6 -> 6, tables 0 -> 0. The predicted contents-entry flood
+  did not happen.
+
+  **What fails is selectivity.** `HasStructuralMarker` is true for 2268 of 032's 5311 candidates -
+  43% of the population. Admitting all of them to the strong-marker path does not lift the headings
+  relative to the field; it re-baselines the field, and the budget edge climbs with it, 0.55 to 0.82.
+  The headings gain 0.32 and so does almost everything around them.
+
+  **Negative control passes on the axis that matters.** 054's `AVAILABILITY OF INFORMATION` has no
+  structural marker and its score is unchanged at 0.44. Its rank moves 166 -> 177 because the field
+  around it rose, which is the intervention working as described rather than reaching past its
+  hypothesis.
+
+### M10.7-B gate
+
+| | |
+|---|---|
+| feature-propagation mismatch | **PROVEN** (032 and 091, both traced) |
+| marker-equivalence hypothesis | **REFUTED** |
+| production remediation | **NOT JUSTIFIED** |
+
+The fact is real, it is produced, the scorer does not consume it, and consuming it *as strong marker
+evidence* does not work - not because it admits the wrong things, but because it admits too much of
+the population to change any candidate's standing. A discriminator that holds for 43% of candidates
+cannot order them.
+
+- [ ] Not opened, and named so it is not rediscovered: the mismatch could also be addressed by a
+  weight between +0.10 and +0.42, or by a fact narrower than `HasStructuralMarker`. The first is
+  weight search and is refused. The second would be a new classifier, which M10.3-B already refused
+  on its own evidence. Neither has a trigger.
+
+- [ ] Recorded: 032's strict parser reports `depth=1` for `22. 2. 8` while 091's reports depth 2-4
+  correctly for `3 6`. The difference is the extraction's space insertion interacting with the dotted
+  family. It is a parser-fidelity debt, it was excluded from B2 on purpose, and it would have to be
+  measured before any use of marker depth downstream.
 
 - [ ] Recorded: the marker-depth damage above. If a fact whose depth is wrong is promoted into
   scoring, the damage propagates. Worth measuring before, not after.

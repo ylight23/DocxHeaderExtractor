@@ -30,6 +30,10 @@ public sealed class PdfScorerFactMappingProbe
             // matching on text would silently drop occurrences from the denominator.
             ["b2912", "b2437", "b2919", "b4484"],
             true),
+        // 091 is checked separately rather than assumed to share 032's mechanism: a family
+        // resemblance is not a traced fact, and the name of an owner must not run ahead of evidence.
+        ("091", @"07_system_generated\091_RFC9110_HTTP_Semantics.docx",
+            ["b229", "b294", "b928", "b1367", "b2346"], false),
         ("054", @"03_tai_chinh_ke_toan\054_IBRD_Information_Statement_FY25.docx",
             ["b7"], false),
     ];
