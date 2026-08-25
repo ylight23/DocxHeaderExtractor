@@ -2024,7 +2024,25 @@ is an outcome of the measurement, not an assumption of it.
   so a large enough budget would reach them. The honest statement is that budget 160 does not, and
   raising it far enough would be a poor remedy - and `selected` only means a candidate reaches the
   model lane, not that the model and validator then accept it.
-- [ ] M10.1e-A2 `header_footer_zone` population audit: classify every line the signal marks in 054,
+- [x] M10.1e-A2 `header_footer_zone` population audit. The signal is genuinely mis-scoped and is
+  nonetheless **not** what blocks these headings.
+
+  `IsHeaderFooterZone` is purely geometric - the top or bottom 8% of a page - and asks for no
+  repetition, so a section heading printed at the top of its page is penalised for being there. It
+  marks 1466 of 11481 lines in 054; 93 are page numbers, 23 repeat across pages, 781 are already
+  table-like, and **662 are penalised on position alone**. Those 662 are content: `SUMMARY
+  INFORMATION`, `SECTION I: OVERVIEW`, `Equity and Borrowings`, `Introduction`, body prose.
+
+  Removing the penalty and re-scoring with the existing ranker moves the section headings sharply
+  within the group that was already selected (`SECTION I` 96 -> 25, `II` 98 -> 27, `III` 99 -> 30),
+  costs little (6 candidates enter the top 160, 6 leave), and **recovers nothing**: selected at
+  budget 160 stays 18/23, every one of the five misses stays outside, and `AVAILABILITY` gets worse
+  (166 -> 174) because others rise faster.
+
+  So this is recorded as its own defect, not as an M10.1e remedy. Fixing it would change a signal
+  that touches 1466 lines and would not have recovered a single heading. Any future repair needs a
+  cross-domain population audit of its own; there is no evidence for one from here.
+- [ ] M10.1e-A2 follow-up, deferred: classify every line the signal marks in 054,
   then measure both sides of removing the penalty - which real headings it recovers, and how many
   running headers, footers and page numbers it would let into the selected budget. A signal that
   penalises two headings is not thereby wrong; measure it on the population it classifies, which is
