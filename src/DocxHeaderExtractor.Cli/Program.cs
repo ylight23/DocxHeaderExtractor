@@ -1785,12 +1785,23 @@ static int RunPdfFirstLossAudit(CommandLineOptions o)
         var stableMap = slim.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
             .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
         var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
-        var report = PdfFirstLossAudit.Evaluate(file, slim, key, o.PdfStageAnalystBlocks);
+        // Resolving stable ids into paragraph indexes drops the ids, and the reviewed occurrence
+        // bridge is keyed by them, so they are carried alongside in the key's own order.
+        var goldStableIds = rawKey.PositiveEntries
+            .Where(entry => !string.IsNullOrWhiteSpace(entry.Text))
+            .Select(entry => entry.StableId)
+            .ToArray();
+        var bridgePath = Path.Combine(Path.GetFullPath("keys"), "occurrence-bridge", stem + ".occurrence-bridge.json");
+        var bridge = File.Exists(bridgePath)
+            ? PdfReviewedOccurrenceBridge.Load(File.ReadAllText(bridgePath))
+            : null;
+        var report = PdfFirstLossAudit.Evaluate(file, slim, key, o.PdfStageAnalystBlocks, bridge, goldStableIds);
         rows.Add(new
         {
             file = Path.GetFileName(file),
             pdf = PdfTextbookOutline.FindSiblingPdf(file) is { } pdf ? Path.GetFileName(pdf) : null,
             key = Path.GetFileName(sourceKeys[0]),
+            occurrenceBridge = bridge is null ? null : Path.GetFileName(bridgePath),
             report,
         });
     }

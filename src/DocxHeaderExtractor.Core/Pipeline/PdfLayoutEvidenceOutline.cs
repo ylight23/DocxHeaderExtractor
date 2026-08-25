@@ -333,14 +333,67 @@ public static class PdfLayoutEvidenceOutline
     /// Freezes the broad PDF-first candidate pool and returns a lossless, feature-only processing
     /// plan. This is an audit operation: no LLM is invoked and no candidate is discarded.
     /// </summary>
-    public static PdfCandidateRankingAudit BuildCandidateRankingAudit(string originalInputPath)
+    public static PdfCandidateRankingAudit BuildCandidateRankingAudit(string originalInputPath) =>
+        BuildCandidateRankingSnapshot(originalInputPath).Audit;
+
+    /// <summary>
+    /// The same ranking computation, with a passive record of which source lines each candidate was
+    /// built from.
+    /// <para>
+    /// Evaluation needs that provenance to ask whether a candidate represents a particular heading
+    /// occurrence rather than merely containing its words. Rebuilding the candidate graph on the
+    /// evaluation side to obtain it would create a second construction path that can drift from this
+    /// one, so the provenance is taken from the blocks this invocation already materialized. Nothing
+    /// here participates in ranking or selection; production calls
+    /// <see cref="BuildCandidateRankingAudit"/> and never sees these fields.
+    /// </para>
+    /// </summary>
+    internal static PdfCandidateRankingSnapshot BuildCandidateRankingSnapshot(string originalInputPath)
     {
         var context = TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
             includeSupplementCandidates: true, out var reason);
-        if (context is null) return new PdfCandidateRankingAudit(reason, 0, []);
+        if (context is null)
+            return new PdfCandidateRankingSnapshot(new PdfCandidateRankingAudit(reason, 0, []),
+                new Dictionary<string, PdfCandidateProvenance>(StringComparer.Ordinal));
         var contexts = PdfCandidateContextBuilder.Build(context.Candidates, context.Annotations);
         var ranked = PdfCandidateRanker.Rank(context.Candidates, contexts);
-        return new PdfCandidateRankingAudit("ranked", ranked.Count, ranked);
+        return new PdfCandidateRankingSnapshot(
+            new PdfCandidateRankingAudit("ranked", ranked.Count, ranked),
+            BuildProvenance(context));
+    }
+
+    private static IReadOnlyDictionary<string, PdfCandidateProvenance> BuildProvenance(LayoutContext context)
+    {
+        var indexByLineId = new Dictionary<string, int>(StringComparer.Ordinal);
+        for (var index = 0; index < context.Lines.Count; index++)
+            indexByLineId[PdfCandidateProvenance.LineId(context.Lines[index])] = index;
+
+        var provenance = new Dictionary<string, PdfCandidateProvenance>(StringComparer.Ordinal);
+        foreach (var block in context.Candidates)
+        {
+            var lineIds = block.Lines.Select(PdfCandidateProvenance.LineId).ToArray();
+            var lineIndexes = lineIds
+                .Select(id => indexByLineId.TryGetValue(id, out var index) ? index : -1)
+                .Where(index => index >= 0)
+                .ToArray();
+            // The producer that made the block decides its kind. Reading it back off the id prefix
+            // would turn a naming convention into authority, and rename it and the meaning is gone.
+            var kind = context.SupplementCandidateRanks.ContainsKey(block.Id)
+                ? PdfCandidateRepresentationKind.WindowFragment
+                : PdfCandidateRepresentationKind.StandardBlock;
+            var candidate = new PdfCandidateProvenance(block.Id, lineIndexes, lineIds, kind);
+            if (provenance.TryGetValue(block.Id, out var existing))
+            {
+                // Two blocks under one id with different lines would let evaluation silently read
+                // the provenance of the other representation.
+                if (!existing.LineIndexes.SequenceEqual(candidate.LineIndexes))
+                    throw new InvalidOperationException(
+                        $"ambiguous_candidate_provenance: '{block.Id}' appears with two different source line sets.");
+                continue;
+            }
+            provenance[block.Id] = candidate;
+        }
+        return provenance;
     }
 
     /// <summary>
@@ -1365,3 +1418,37 @@ internal sealed record PdfAnalystCandidateSelection(
     int Available,
     int AvailablePages,
     int SelectedPages);
+
+/// <summary>Diagnostic view over one ranking build. Production consumes only the audit.</summary>
+internal sealed record PdfCandidateRankingSnapshot(
+    PdfCandidateRankingAudit Audit,
+    IReadOnlyDictionary<string, PdfCandidateProvenance> Provenance);
+
+/// <summary>
+/// Which source lines a candidate was built from. Only observed facts: no scoring, no text, and no
+/// judgement about whether the candidate is a heading.
+/// </summary>
+internal sealed record PdfCandidateProvenance(
+    string CandidateSourceId,
+    IReadOnlyList<int> LineIndexes,
+    IReadOnlyList<string> LineIds,
+    PdfCandidateRepresentationKind RepresentationKind)
+{
+    public static string LineId(PdfLine line) => string.Create(
+        System.Globalization.CultureInfo.InvariantCulture,
+        $"{line.Page}|{line.Y:R}|{line.Left:R}|{line.Right:R}|{line.Text}");
+
+    /// <summary>
+    /// A candidate represents an occurrence when it was built from the lines that occurrence is made
+    /// of. It may carry more - a window also holding the body text that follows still represents the
+    /// heading - so this is containment of the required lines, never a text comparison.
+    /// </summary>
+    public bool Covers(IEnumerable<int> requiredLineIndexes) =>
+        requiredLineIndexes.All(LineIndexes.Contains);
+}
+
+internal enum PdfCandidateRepresentationKind
+{
+    StandardBlock,
+    WindowFragment,
+}

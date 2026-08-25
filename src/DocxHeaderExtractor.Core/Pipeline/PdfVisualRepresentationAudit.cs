@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Core.Eval;
+﻿using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Models;
 using UglyToad.PdfPig;
 using System.Text.RegularExpressions;
@@ -137,7 +137,10 @@ public sealed record PdfVisualRegionCoverage(string RegionId, int Page, double L
 /// </summary>
 public static class PdfFirstLossAudit
 {
-    public static PdfFirstLossReport Evaluate(string documentPath, SlimDocument document, AnswerKey key, int selectedBudget = 160)
+    public static PdfFirstLossReport Evaluate(string documentPath, SlimDocument document, AnswerKey key,
+        int selectedBudget = 160,
+        PdfReviewedOccurrenceBridge? occurrenceBridge = null,
+        IReadOnlyList<string?>? goldStableIds = null)
     {
         var positives = key.PositiveEntries
             .Where(entry => !entry.Excluded && !string.IsNullOrWhiteSpace(entry.Text))
@@ -146,7 +149,8 @@ public static class PdfFirstLossAudit
         var titles = positives.Select(entry => entry.Text).Distinct(StringComparer.Ordinal).ToArray();
         var retrieval = PdfLayoutEvidenceOutline.TraceCandidateRetrieval(documentPath, titles)
             .ToDictionary(trace => trace.ExpectedText, StringComparer.Ordinal);
-        var ranking = PdfLayoutEvidenceOutline.BuildCandidateRankingAudit(documentPath);
+        var snapshot = PdfLayoutEvidenceOutline.BuildCandidateRankingSnapshot(documentPath);
+        var ranking = snapshot.Audit;
         var pdf = PdfTextbookOutline.FindSiblingPdf(documentPath);
         // Visual geometry is needed only for text-unobservable gold. Building it for every
         // financial title is expensive and cannot add evidence to a title already in SourceFacts.
@@ -178,14 +182,24 @@ public static class PdfFirstLossAudit
                 : 0;
             var reconciliation = Reconciliation(gold.Text, match, occurrences, exactOccurrenceCount);
             var representation = ClassifyRepresentation(trace, visualCoverage);
-            var firstLoss = FirstLoss(trace, representation, match?.Rank, selectedBudget, reconciliation);
+            var occurrence = ResolveOccurrence(gold, goldStableIds, occurrenceBridge, snapshot, rankedWithRanks,
+                selectedBudget);
+            var firstLoss = occurrence is null
+                ? FirstLoss(trace, representation, match?.Rank, selectedBudget, reconciliation)
+                : occurrence.FirstLoss;
             return new PdfFirstLossEntry(
                 gold.Ordinal, gold.ParagraphIndex, gold.Level, gold.Text, representation,
                 trace.FoundInRawWindow, trace.FoundExactSourceLine, trace.RawFilterReasons, trace.FoundInStandardBlock,
                 trace.FoundInBroadCandidate, trace.FoundInWideCandidate, trace.FoundInSupplementCandidate,
                 match?.Rank, match?.Candidate.SourceId, match?.Candidate.Page, reconciliation, occurrences, firstLoss,
                 visualCoverage?.VisualRepresentable ?? false,
-                visualCoverage?.PixelPresence ?? "no-sibling-pdf-or-not-measured");
+                visualCoverage?.PixelPresence ?? "no-sibling-pdf-or-not-measured")
+            {
+                OccurrenceRank = occurrence?.Rank,
+                CandidateMultiplicity = occurrence?.Multiplicity,
+                RepresentationType = occurrence?.RepresentationType ?? "not_measured",
+                OccurrenceCandidateSourceId = occurrence?.CandidateSourceId,
+            };
         }).ToArray();
 
         var cutoffs = new[] { 25, 50, 100, selectedBudget, 200, 400, 800, ranking.CandidateCount }
@@ -209,6 +223,62 @@ public static class PdfFirstLossAudit
             entries.GroupBy(entry => entry.FirstLoss).ToDictionary(group => group.Key, group => group.Count()),
             curve, window, entries);
     }
+
+
+    /// <summary>
+    /// Ranks a gold heading by the candidates that were built from the source lines the heading
+    /// actually occupies, rather than by any candidate whose text happens to contain its words.
+    /// <para>
+    /// The distinction is not academic: a cross-reference quoting a section title contains the same
+    /// characters as the heading and previously supplied its rank, which made a representation
+    /// problem look like a ranking problem. Coverage is containment of the occurrence's required
+    /// source lines - a window that also holds the body text after the heading still represents it -
+    /// and never a second text comparison.
+    /// </para>
+    /// <para>
+    /// Without a reviewed occurrence there is no answer, and the caller is told so. There is
+    /// deliberately no fall back to text matching, because that is the behaviour being replaced.
+    /// </para>
+    /// </summary>
+    private static OccurrenceResolution? ResolveOccurrence(
+        Gold gold,
+        IReadOnlyList<string?>? goldStableIds,
+        PdfReviewedOccurrenceBridge? bridge,
+        PdfCandidateRankingSnapshot snapshot,
+        IReadOnlyList<Ranked> ranked,
+        int selectedBudget)
+    {
+        if (bridge is null) return null;
+        var stableId = goldStableIds is not null && gold.Ordinal < goldStableIds.Count
+            ? goldStableIds[gold.Ordinal]
+            : null;
+        var reviewed = stableId is null ? null : bridge.Find(stableId);
+        if (reviewed is null)
+            return new OccurrenceResolution(null, null, "not_measured", null, "occurrence_bridge_unresolved");
+
+        var required = reviewed.RequiredLines.Select(line => line.Index).ToArray();
+        var covering = ranked
+            .Where(item => snapshot.Provenance.TryGetValue(item.Candidate.SourceId, out var provenance) &&
+                           provenance.Covers(required))
+            .OrderBy(item => item.Rank)
+            .ToArray();
+        if (covering.Length == 0)
+            return new OccurrenceResolution(null, 0, "none", null, "candidate_representation");
+
+        var best = covering[0];
+        var kinds = covering
+            .Select(item => snapshot.Provenance[item.Candidate.SourceId].RepresentationKind)
+            .ToArray();
+        var representationType = kinds.Contains(PdfCandidateRepresentationKind.StandardBlock)
+            ? "standard_block"
+            : "window_only";
+        var firstLoss = best.Rank <= selectedBudget ? "selected" : "ranking_or_budget";
+        return new OccurrenceResolution(best.Rank, covering.Length, representationType,
+            best.Candidate.SourceId, firstLoss);
+    }
+
+    private sealed record OccurrenceResolution(
+        int? Rank, int? Multiplicity, string RepresentationType, string? CandidateSourceId, string FirstLoss);
 
     private static string ClassifyRepresentation(PdfCandidateRetrievalTrace trace, PdfVisualGoldCoverage? visual)
     {
@@ -289,7 +359,22 @@ public sealed record PdfFirstLossEntry(int Ordinal, int? ParagraphIndex, int? Le
     bool FoundInStandardBlock, bool FoundInBroadCandidate, bool FoundInWideCandidate,
     bool FoundInSupplementCandidate, int? CandidateRank, string? CandidateSourceId, int? CandidatePage,
     string Reconciliation, IReadOnlyList<PdfFirstLossCandidateOccurrence> CandidateOccurrences,
-    string FirstLoss, bool VisualRegionCanCover, string PixelPresence);
+    string FirstLoss, bool VisualRegionCanCover, string PixelPresence)
+{
+    /// <summary>Best rank among candidates built from this occurrence's source lines.</summary>
+    public int? OccurrenceRank { get; init; }
+
+    /// <summary>
+    /// How many candidates represent the same occurrence. One heading can produce several windows;
+    /// counting them as separate occurrences would read candidate duplication as ambiguity.
+    /// </summary>
+    public int? CandidateMultiplicity { get; init; }
+
+    /// <summary>`standard_block`, `window_only`, `none`, or `not_measured` without a reviewed bridge.</summary>
+    public string RepresentationType { get; init; } = "not_measured";
+
+    public string? OccurrenceCandidateSourceId { get; init; }
+}
 
 public sealed record PdfFirstLossRecallAt(int K, int Hits, int Total);
 public sealed record PdfFirstLossCandidateOccurrence(int Rank, string SourceId, int Page, string Scope, string Text,
