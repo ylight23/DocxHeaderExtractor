@@ -333,6 +333,32 @@ public static class PdfLayoutEvidenceOutline
     /// Freezes the broad PDF-first candidate pool and returns a lossless, feature-only processing
     /// plan. This is an audit operation: no LLM is invoked and no candidate is discarded.
     /// </summary>
+    /// <summary>
+    /// Runs the production alignment once and returns it with a passive trace of how each block
+    /// found its paragraph. Nothing here re-implements matching.
+    /// </summary>
+    internal static PdfDocxAlignmentSnapshot BuildDocxAlignmentSnapshot(
+        string originalInputPath, SlimDocument slim,
+        PdfDocxAlignmentPopulation population = PdfDocxAlignmentPopulation.NarrowRoute)
+    {
+        var context = population == PdfDocxAlignmentPopulation.NarrowRoute
+            ? TryBuildContext(originalInputPath, slim, out var reason)
+            : TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
+                includeSupplementCandidates: true, out reason);
+        if (context is null)
+            return new PdfDocxAlignmentSnapshot(reason, 0, [], [], [], slim);
+        var trace = new List<PdfDocxAlignmentTrace>();
+        var haystacks = new List<PdfDocxCanonicalParagraph>();
+        var alignment = AlignToDocx(context.Candidates, slim, context.Profile, Basis, trace, haystacks);
+        // TryBuild rejects the route below this ratio, so an audit that ignored it could describe an
+        // alignment production never uses.
+        var status = alignment.Headings.Count < Math.Max(3, (int)Math.Ceiling(context.Candidates.Count * 0.65))
+            ? $"low-docx-alignment:{alignment.Headings.Count}/{context.Candidates.Count}"
+            : "aligned";
+        return new PdfDocxAlignmentSnapshot(status, context.Candidates.Count, alignment.Headings, trace,
+            haystacks, slim);
+    }
+
     public static PdfCandidateRankingAudit BuildCandidateRankingAudit(string originalInputPath) =>
         BuildCandidateRankingSnapshot(originalInputPath).Audit;
 
@@ -1173,7 +1199,21 @@ public static class PdfLayoutEvidenceOutline
         IReadOnlyList<PdfSemanticBlock> candidates,
         SlimDocument slim,
         PdfStyleClusterProfile profile,
-        string confidenceBasis)
+        string confidenceBasis) =>
+        AlignToDocx(candidates, slim, profile, confidenceBasis, trace: null);
+
+    /// <summary>
+    /// The alignment production runs, with an optional passive record of how each block reached the
+    /// paragraph it was grounded to. The sink observes this run; it never re-runs the matching, so an
+    /// audit cannot end up describing a second implementation that has drifted from this one.
+    /// </summary>
+    private static PdfLayoutAlignmentResult AlignToDocx(
+        IReadOnlyList<PdfSemanticBlock> candidates,
+        SlimDocument slim,
+        PdfStyleClusterProfile profile,
+        string confidenceBasis,
+        List<PdfDocxAlignmentTrace>? trace,
+        List<PdfDocxCanonicalParagraph>? haystacks = null)
     {
         var paragraphs = slim.Paragraphs
             .Where(p => p.Role != ParagraphRole.Empty && !p.InTableOfContents && !string.IsNullOrWhiteSpace(p.Text))
@@ -1181,6 +1221,10 @@ public static class PdfLayoutEvidenceOutline
             .Select(p => new CanonParagraph(p, CanonicalMap(p.Text)))
             .Where(p => p.Map.Text.Length > 0)
             .ToList();
+        // The exact strings the matcher searched. Recorded rather than recomputed, so an audit of how
+        // ambiguous a needle was cannot answer from a canonicalisation that has drifted from this one.
+        haystacks?.AddRange(paragraphs.Select(p =>
+            new PdfDocxCanonicalParagraph(p.Paragraph.Index, p.Map.Text)));
         var styles = candidates.Select(b => b.PrimaryStyle).Distinct()
             .OrderByDescending(s => s.FontSizeBucket)
             .ThenBy(s => s.FontName, StringComparer.Ordinal)
@@ -1201,10 +1245,24 @@ public static class PdfLayoutEvidenceOutline
         {
             var needle = block.CanonicalText;
             if (needle.Length < 4) continue;
-            var match = FindMatch(paragraphs, needle, cursor, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: true) ??
-                        FindMatch(paragraphs, needle, 0, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: true) ??
-                        FindMatch(paragraphs, needle, cursor, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: false) ??
-                        FindMatch(paragraphs, needle, 0, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: false);
+            var branch = PdfDocxMatchBranch.Unmatched;
+            var match = FindMatch(paragraphs, needle, cursor, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: true);
+            if (match is not null) branch = PdfDocxMatchBranch.CursorFresh;
+            if (match is null && FindMatch(paragraphs, needle, 0, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: true) is { } fromZeroFresh)
+            {
+                match = fromZeroFresh;
+                branch = PdfDocxMatchBranch.FromZeroFresh;
+            }
+            if (match is null && FindMatch(paragraphs, needle, cursor, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: false) is { } cursorRelaxed)
+            {
+                match = cursorRelaxed;
+                branch = PdfDocxMatchBranch.CursorRelaxed;
+            }
+            if (match is null && FindMatch(paragraphs, needle, 0, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: false) is { } fromZeroRelaxed)
+            {
+                match = fromZeroRelaxed;
+                branch = PdfDocxMatchBranch.FromZeroRelaxed;
+            }
             var directMatch = match;
             var reconstructed = directMatch is null
                 ? FindMarkerReconstruction(paragraphs, block, cursor, occupiedSpans) ??
@@ -1217,11 +1275,17 @@ public static class PdfLayoutEvidenceOutline
                     ? "no-marker-for-reconstruction"
                     : "marker-reconstruction-unresolved";
                 textLayerRecoveries.Add(new PdfTextLayerRecoveryAudit(block.Id, block.Page, status));
+                trace?.Add(new PdfDocxAlignmentTrace(block.Id, needle, null, null, null,
+                    PdfDocxMatchBranch.Unmatched, false));
                 continue;
             }
             if (reconstructed is not null)
                 textLayerRecoveries.Add(new PdfTextLayerRecoveryAudit(block.Id, block.Page,
                     reconstructed.MarkerOnly ? "marker-only-span-reconstructed" : "marker-span-reconstructed"));
+            if (reconstructed is not null) branch = PdfDocxMatchBranch.MarkerReconstruction;
+            trace?.Add(new PdfDocxAlignmentTrace(block.Id, needle, match.Value.Paragraph.Index,
+                match.Value.Start, match.Value.End - match.Value.Start, branch,
+                !seen.Contains((match.Value.Paragraph.Index, match.Value.Start, block.PrimaryStyle))));
             if (!seen.Add((match.Value.Paragraph.Index, match.Value.Start, block.PrimaryStyle))) continue;
             occupiedSpans.Add((match.Value.Paragraph.Index, match.Value.Start));
 
@@ -1454,4 +1518,52 @@ internal enum PdfCandidateRepresentationKind
 {
     StandardBlock,
     WindowFragment,
+}
+
+/// <summary>One production alignment run plus a passive record of how it reached each paragraph.</summary>
+internal sealed record PdfDocxAlignmentSnapshot(
+    string Status,
+    int CandidateCount,
+    IReadOnlyList<HeadingRecord> Headings,
+    IReadOnlyList<PdfDocxAlignmentTrace> Trace,
+    IReadOnlyList<PdfDocxCanonicalParagraph> Haystacks,
+    SlimDocument Document);
+
+/// <summary>A paragraph exactly as the matcher saw it.</summary>
+internal sealed record PdfDocxCanonicalParagraph(int Index, string CanonicalText);
+
+/// <summary>
+/// What the matcher was given and what it chose. Observed facts only: whether the choice was a good
+/// one is a judgement for evaluation to derive, not a field to assert here.
+/// </summary>
+internal sealed record PdfDocxAlignmentTrace(
+    string SourceBlockId,
+    string Needle,
+    int? ParagraphIndex,
+    int? Start,
+    int? Length,
+    PdfDocxMatchBranch Branch,
+    bool Accepted);
+
+/// <summary>
+/// Which population the matcher was run over. The analyst lanes decide their accepted blocks with a
+/// model, so no offline run can reproduce one; <see cref="RetrievalPopulation"/> exercises the same
+/// matcher over the retrieval superset instead. Rates measured there describe the matcher, not
+/// production - production aligns a subset of it.
+/// </summary>
+internal enum PdfDocxAlignmentPopulation
+{
+    NarrowRoute,
+    RetrievalPopulation,
+}
+
+/// <summary>Which of the matcher's existing attempts produced the match.</summary>
+internal enum PdfDocxMatchBranch
+{
+    Unmatched,
+    CursorFresh,
+    FromZeroFresh,
+    CursorRelaxed,
+    FromZeroRelaxed,
+    MarkerReconstruction,
 }
