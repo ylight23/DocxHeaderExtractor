@@ -2048,7 +2048,24 @@ is an outcome of the measurement, not an assumption of it.
   penalises two headings is not thereby wrong; measure it on the population it classifies, which is
   the lesson the multi-entry signal taught in M8.1e. Cross-domain holdout only if 054 shows material
   harm.
-- [ ] M10.1e-B1 grouping trace for `SECTION XIV`/`SECTION XIX`, plus a diagnostic counterfactual:
+- [x] M10.1e-B1 grouping trace and clean-block counterfactual for `SECTION XIV`/`SECTION XIX`.
+
+  Both headings are printed across two lines. The grouper makes one block per line, so the block
+  holding the first line ranks 128 and 133 - inside the budget - while the only candidate carrying
+  the whole heading is a four-line window at rank 2013/2015, crushed to score 0.01 by
+  `long_marker_body_window`. Rebuilt as one clean block from the reviewed occurrence and scored by
+  the existing ranker, both come out at 0.53 and rank 166: better than the window, **worse than the
+  truncated first line at 0.71/rank 128**, because completeness adds a `multi_line_boundary`
+  ambiguity.
+
+  Grouping fragmentation: PROVEN. Scoring interaction: PROVEN on both. Grouping-only remediation:
+  REJECTED - merging the heading correctly makes it rank worse, so nobody should reach for the
+  grouper on seeing `window_only` alone.
+
+  Coverage is now reported on its own axis (`CandidateCoverage`, `BestPartialCoverageRank`,
+  `SelectedCoverage`) so the evaluator can say what actually reached the model - here, a truncated
+  heading - without renaming where the complete occurrence was blocked.
+- [ ] M10.1e-B1 superseded note:
   the same reviewed occurrence represented as one clean standard block, scored by the existing
   ranking code. A large rank recovery would make representation the causal owner; a small one would
   mean window-only representation is not what is holding them back.
