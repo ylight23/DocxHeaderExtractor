@@ -2198,6 +2198,64 @@ recall. Not to keep looking for a fix.
 M10.1e is closed at `69750cd`. No remaining work is implied by the recorded debts; the re-entry rules
 are in *Promotion invariants* above.
 
+## M10.2 — 010 canonical grounding, audit only
+
+`AlignToDocx` is the model-free step that decides which DOCX paragraph a PDF block is grounded to.
+The M9.4 010 canary (`171c603`) recorded that `b4` and `b5` both grounded to paragraph 417 - an
+unrelated numbered sub-clause - and that both lanes agreed, so it is upstream grounding debt rather
+than a migration regression. M10.2 asks what the matcher actually does, and changes nothing.
+
+- [x] M10.2-0 internal grounding snapshot. `AlignToDocx` gained an optional passive sink recording,
+  per block, the needle it searched for, the paragraph and span it chose, and which of the matcher's
+  four existing attempts produced the match. Production keeps its own signature and delegates to the
+  same core, so there is no second alignment implementation to drift. Parity locks: accepted traces
+  reconcile one-to-one with the aligned headings on paragraph index and span, every candidate
+  considered is accounted for (unmatched blocks are recorded, not dropped), and repeated runs
+  describe the same run. The canonical paragraph texts the matcher searched are recorded too, so an
+  audit of how ambiguous a needle was cannot answer from a canonicalisation that has drifted.
+- [x] M10.2-1 010 measured. **The exact canary outcome was not reproduced, and the audit says so.**
+  The canary ran the model-backed PDF-first lane, whose accepted-block set is decided by a model and
+  is not on disk; the model-free routes align a different population. Two populations were measured:
+  - the narrow production route (`TryBuild`) retrieves only 4 candidates on 010 and aligns all 4.
+  - the retrieval superset - the same matcher over every candidate retrieval produces - aligns 479 of
+    1065. Rates here describe the matcher, not production, which aligns a subset of it.
+
+  **Retrieval-population result (479 accepted matches):**
+
+  | measure | value |
+  |---|---|
+  | branch `CursorFresh` | 468 |
+  | branch `CursorRelaxed` / `FromZeroFresh` / marker reconstruction | 7 / 2 / 2 |
+  | match shape `substring_word_bounded` | 438 |
+  | match shape `whole_paragraph` | 39 |
+  | match shape starting or ending inside a word | 2 |
+  | needle occurs in exactly one paragraph | 438 |
+  | needle occurs in 2-3 / 4-10 / more than 10 paragraphs | 27 / 9 / 5 |
+  | blocks landing before their predecessor | 2/478 |
+
+  Two readings, kept separate:
+  - **Many blocks per paragraph is not the defect.** 70 paragraphs received more than one block, up to
+    9. 010's DOCX merges a whole article into one paragraph while the PDF renders each sub-clause
+    separately, so the spans are disjoint and in order. This is the one-to-many case working.
+  - **The defect shape is an unranked first fit.** 41 of 479 matches had more than one paragraph
+    containing the needle, and the matcher has no tie-break beyond "first paragraph at or after the
+    cursor". `b5`'s needle canonicalises to `anninhmạng`, present in 211 of the document's
+    paragraphs; `b4`'s canonicalises to `luật` (4 characters, the guard rejects only below 4),
+    present in 63. In the retrieval population they land on the title page - p9 and p11 - because the
+    cursor is still low there. The canary's paragraph 417 quotes both words in one clause, so the same
+    first-fit rule reaches it whenever the preceding accepted blocks have pushed the cursor past the
+    title page. Which paragraph a short needle wins is therefore a function of which blocks preceded
+    it, and in the analyst lanes a model decides that.
+
+  Locked as **current production behaviour faithfully observed**, not as desired behaviour. No
+  remedy follows from this milestone.
+
+- [ ] M10.2-A (not scheduled, needs a trigger) whether grounding should require needle uniqueness, or
+  rank candidate paragraphs rather than take the first. Both are behaviour changes and would need the
+  usual gate: measure on the population the rule classifies, and measure collateral. The observed
+  defect is real; the causal owner (needle construction, the cursor rule, or the absence of a rank)
+  is not yet separated, and 010 alone is one document.
+
 ## Decision gate
 
 - [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates
