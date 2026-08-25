@@ -1,3 +1,10 @@
+﻿> **ĐỌC FILE NÀY TRƯỚC: [`docs/handoff-2026-08-25.md`](docs/handoff-2026-08-25.md)**
+>
+> Tài liệu dưới đây là nhật ký của các phiên trước. Mục "0. Trạng thái hiện tại" của nó ghi số liệu
+> từ 2026-08-14 (547 test) và **không còn phản ánh trạng thái repo** — hiện tại là 1048 pass / 15
+> frozen fail, RC `rc-c31f095` đã accepted. Phần "vì sao" bên dưới vẫn còn giá trị; phần "hiện tại"
+> thì không.
+
 # Handoff — chuyển trích xuất heading sang hướng cấu trúc quyết định
 
 Tài liệu này ghi lại một phiên làm việc: đổi kiến trúc quyết định heading, đo lại từng bước, và
