@@ -198,7 +198,7 @@ public sealed class PdfProductWritebackTests : IDisposable
             $"p[{joined.Index}]#0-{HeadingText.Length}", joined.Index, joined.StableId,
             new DocxTextSpan(0, HeadingText.Length), HeadingText, "Heading", 2, null, true, []);
 
-        var result = PdfProductWriteback.Apply(source, Target, Output(heading), new ExtractionOptions());
+        var result = PdfProductWriteback.Apply(source, Target, Output(source, heading), new ExtractionOptions());
 
         Assert.Equal(1, result.Applied);
         Assert.Empty(result.Skipped);
@@ -227,7 +227,7 @@ public sealed class PdfProductWritebackTests : IDisposable
             $"p[{joined.Index}]#0-{HeadingText.Length}", joined.Index, joined.StableId,
             new DocxTextSpan(0, HeadingText.Length), HeadingText, "Heading", 2, null, true, []);
 
-        var result = PdfProductWriteback.Apply(source, Target, Output(heading), new ExtractionOptions());
+        var result = PdfProductWriteback.Apply(source, Target, Output(source, heading), new ExtractionOptions());
 
         Assert.Equal(0, result.Applied);
         Assert.Equal("inline_body_not_splittable", Assert.Single(result.Skipped).Reason);
@@ -246,7 +246,7 @@ public sealed class PdfProductWritebackTests : IDisposable
             $"p[{joined.Index}]#2-4", joined.Index, joined.StableId,
             new DocxTextSpan(2, 4), joined.Text[2..4], "Heading", 2, null, true, []);
 
-        var result = PdfProductWriteback.Apply(source, Target, Output(heading), new ExtractionOptions());
+        var result = PdfProductWriteback.Apply(source, Target, Output(source, heading), new ExtractionOptions());
 
         Assert.Equal(0, result.Applied);
         Assert.Equal("leading_text_not_splittable", Assert.Single(result.Skipped).Reason);
@@ -256,7 +256,16 @@ public sealed class PdfProductWritebackTests : IDisposable
         new($"p[{paragraph.Index}]#0-{paragraph.Text.Length}", paragraph.Index, stableId ?? paragraph.StableId,
             new DocxTextSpan(0, paragraph.Text.Length), paragraph.Text, "Heading", level, null, true, []);
 
-    private static PdfProductOutput Output(params PdfProductHeading[] headings) => new("sha", headings);
+    // The fingerprint is part of the contract now, so these fixtures state the real one. They were
+    // passing a placeholder while nothing read the field.
+    private PdfProductOutput Output(params PdfProductHeading[] headings) => Output(Source, headings);
+
+    private static PdfProductOutput Output(string sourcePath, params PdfProductHeading[] headings) =>
+        new(Fingerprint(sourcePath), headings);
+
+    internal static string Fingerprint(string path) =>
+        Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(path)))
+            .ToLowerInvariant();
 
     public void Dispose()
     {

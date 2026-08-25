@@ -88,6 +88,24 @@ surely something must be fixed - is what produces over-engineering.
   matches is not the same occurrence, and gold that names the wrong one produces confident, wrong
   conclusions.
 
+### Two gates, not one
+
+Accuracy remediation must show observed loss, a causal owner, generalisation and collateral before it
+is promoted. **Fail-closed and safety hardening uses a different gate**, because its purpose is to
+prevent an unsafe state rather than to recover accuracy - it is not required to demonstrate a
+historical material loss. It must instead show:
+
+1. an explicit safety or authority invariant;
+2. a reachable state currently accepted too permissively;
+3. a deterministic, non-heuristic rejection condition;
+4. unchanged behaviour for valid inputs;
+5. no partial mutation on rejected inputs;
+6. regression coverage on both the accept and the reject path.
+
+This is not a relaxation. Fail-closed is not a licence for speculative validation: the rejected state
+must be objectively inconsistent with an authority contract that already exists. A new check that
+merely seems prudent does not qualify.
+
 ## Việc ĐANG SỐNG
 
 ## 4. Đáp án có người xác nhận — **ĐÃ BẮT ĐẦU (§37), vẫn là thắt cổ chai**
@@ -3265,10 +3283,40 @@ redesign.
 - [ ] M11-B2 deterministic replay: the same validated input facts must produce the same final
   structure, output decision, product output and writeback decision. Model stochasticity is not in
   scope - what must be deterministic is the projection from validated facts onward.
-- [ ] M11-B3 fail-closed behaviour under the failures the product must survive: missing canonical
+- [x] M11-B3.1 writeback bound to the revision the output declares. **The first production change
+  since M10 opened**, and it is fail-closed hardening rather than accuracy remediation - no heading is
+  recovered by it.
+
+  Against the six-point gate: the invariant is that a product output may only authorise writeback
+  against the exact source revision it was derived from; the permissive state was reachable, because
+  `PdfProductWriteback.Apply` never compared `PdfProductOutput.SourceDocumentSha256` to the document
+  it was writing into; the rejection is an exact hash comparison, not a heuristic; valid inputs behave
+  as before; a refused writeback is refused before the copy is made, so nothing is written at all; and
+  both paths are covered.
+
+  The check runs after the existing preflight and before `File.Copy`, and refuses the whole operation
+  rather than deferring to the per-heading checks. Those verify that a particular anchor still holds,
+  which is a different claim from "this is the document the anchors came from" - and
+  `FingerprintMismatchIsNotRescuedByAnchorsThatStillMatch` pins exactly that, using two documents
+  built identically so every per-heading check would otherwise pass.
+
+  **Enforcing it exposed four fixtures that were relying on the field being unread.** Three writeback
+  tests built their own source document and then bound the output to the shared one; the shadow
+  comparison and the harness tool test passed the literal `"sha"`. All were rebound to the real
+  fingerprint. That is not incidental cleanup - the guard's first act was to catch test code applying
+  an output to a document it did not describe.
+
+  Regression: 15 failures before and after, the frozen set unchanged; 1024 passing, up 5.
+
+- [ ] M11-B3 remaining fail-closed cases: missing canonical
   grounding, stale source fingerprint, ambiguous occurrence, null level, invalid writeback anchor,
   text mismatch, partial model result, empty validated structures. In every case uncertain must
   resolve to unresolved, review or skip - never to a guess, a legacy fallback or a silent writeback.
+  Each needs the same six-point gate; none is to be added because it seems prudent.
+
+- [ ] Legacy revival stays at a different status and is **not** grouped with the above:
+  behaviour appears correct, test coverage is incomplete, production defect **not proven**. Do not
+  refactor production to make it testable.
 - [ ] M11-B4 representative corpus smoke over the product route, collecting validated counts, final
   headings, emit, requires-review, unresolved grounding, writeback eligible and skipped-with-reason,
   and fatal errors. The target is not an accuracy number; it is crashes, nondeterminism, impossible

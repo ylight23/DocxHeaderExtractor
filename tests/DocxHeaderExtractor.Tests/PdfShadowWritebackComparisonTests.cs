@@ -106,7 +106,10 @@ public sealed class PdfShadowWritebackComparisonTests : IDisposable
         Headings = headings,
     };
 
-    private static PdfProductOutput NewOutput(params PdfProductHeading[] headings) => new("sha", headings);
+    // Bound to the real source fingerprint: the writeback now enforces the revision an output
+    // declares, and a placeholder would be asserting against a document this output never described.
+    private PdfProductOutput NewOutput(params PdfProductHeading[] headings) =>
+        new(PdfProductWritebackTests.Fingerprint(Source), headings);
 
     public void Dispose()
     {

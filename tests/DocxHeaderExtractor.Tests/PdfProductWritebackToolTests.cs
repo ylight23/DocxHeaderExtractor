@@ -31,7 +31,7 @@ public sealed class PdfProductWritebackToolTests : IDisposable
         var candidate = slim.Paragraphs.First(p =>
             p.Role == ParagraphRole.HeadingCandidate && p.OutlineLevel is null);
 
-        var productOutput = new PdfProductOutput("sha",
+        var productOutput = new PdfProductOutput(PdfProductWritebackTests.Fingerprint(_source),
         [
             new PdfProductHeading(
                 $"@{candidate.StableId}#0-{candidate.Text.Length}", candidate.Index, candidate.StableId,
