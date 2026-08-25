@@ -3391,10 +3391,50 @@ redesign.
   at writeback. "This object has a fingerprint, therefore every method should check it" is defensive
   overengineering and is refused.
 
-- [ ] M11-B4 representative corpus smoke over the product route, collecting validated counts, final
-  headings, emit, requires-review, unresolved grounding, writeback eligible and skipped-with-reason,
-  and fatal errors. The target is not an accuracy number; it is crashes, nondeterminism, impossible
-  states, silent fallbacks, ungrounded output and any writeback that does not fail closed.
+- [x] M11-B4.1 broad release smoke, model-free. 95 documents through the pipeline with the model lane
+  disabled, checking operational and contract invariants only - no gold, no accuracy claim.
+
+  | measure | value |
+  |---|---|
+  | documents | 95 |
+  | fatal errors | **0** |
+  | contract violations | **0** |
+  | deterministic routes exercised | 11 |
+  | outline headings produced | 70,318 |
+  | levels outside 1-9, negative indexes | 0 |
+  | requires-review headings | 163 |
+
+  Routes: `auto:vietnamese-legal` 21, `auto:pdf-financial-report` 20, `auto:outline-level` 19,
+  `auto:pdf-bold-label` 9, `auto:pdf-tagged-structure` 6, `auto:typed-numbering` 5,
+  `auto:pdf-textbook-layout` 4, `auto:vietnamese-administrative` 2, `auto:pdf-toc-dictionary` 2, and
+  7 documents with no route (6 of which produce no headings at all).
+
+  **The limitation is larger than the result and must not be buried.** `ProductOutput` came back
+  **null on all 95 documents**. It is attached only on the M9 authority route, and on this corpus the
+  `auto:*` deterministic routes claim every document before that path is reached. So the product-side
+  invariants this probe was written to check - canonical grounding on every emitted record, level
+  range, fingerprint matching its own source - **never executed**. What B4.1 actually establishes is
+  that eleven deterministic routes complete without crashing and produce well-formed outlines at
+  corpus breadth. It establishes nothing about the product chain.
+
+  **And that is itself the release finding.** The contract locked by B1, B2 and B3 - final structure,
+  output decisions, product output, fingerprint-bound writeback - sits on a path that, for these 95
+  documents in this configuration, is never taken without a model. B4.2 is therefore not a
+  nice-to-have canary; it is the only way this project has to smoke the chain it spent M11 hardening.
+
+- [ ] M11-B4.2 live end-to-end canary on 054 and 092, one bounded run each, results labelled as an
+  integration canary and never as cross-document accuracy evidence. It asks only: does the route
+  complete, is a partial or timeout state explicit, do only validated facts reach the product, does
+  unresolved grounding fail closed, does serialization succeed, do the writeback authority checks
+  hold, is there any silent legacy resurrection, and is the artifact sufficient to replay offline.
+  The model is **not** called twice to test determinism - B2 already fixed that boundary, and any
+  replay uses the authority artifact the single run produced.
+
+  Before it runs: confirm a live lane is actually configured, and confirm the cost is intended. A
+  failure caused by a known frozen scope or accuracy debt is **not** a release blocker and must be
+  classified as an expected limitation; silent fallback, an ungrounded emitted record, a partial
+  result treated as complete, a writeback bypassing the fingerprint, or a non-replayable artifact
+  are.
 
 
 
