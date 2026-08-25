@@ -3308,15 +3308,54 @@ redesign.
 
   Regression: 15 failures before and after, the frozen set unchanged; 1024 passing, up 5.
 
-- [ ] M11-B3 remaining fail-closed cases: missing canonical
-  grounding, stale source fingerprint, ambiguous occurrence, null level, invalid writeback anchor,
-  text mismatch, partial model result, empty validated structures. In every case uncertain must
-  resolve to unresolved, review or skip - never to a guess, a legacy fallback or a silent writeback.
-  Each needs the same six-point gate; none is to be added because it seems prudent.
+- [x] M11-B3.2 failure-mode inventory, audit only. Each mode was traced to the authority contract it
+  would violate before asking whether a guard is needed - not the reverse.
 
-- [ ] Legacy revival stays at a different status and is **not** grouped with the above:
-  behaviour appears correct, test coverage is incomplete, production defect **not proven**. Do not
-  refactor production to make it testable.
+  | failure mode | existing authority | current behaviour | locked | status |
+  |---|---|---|---|---|
+  | source SHA mismatch | document fingerprint the output declares | whole writeback refused | yes | **promoted in B3.1** |
+  | null hierarchy level | resolved level or none | writeback skips `level_unresolved`; serializer carries null verbatim | yes | ALREADY_FAIL_CLOSED |
+  | stale stable id | canonical anchor | skipped, never re-matched | yes | ALREADY_FAIL_CLOSED |
+  | text/span mismatch | canonical span and text | rejected before mutation | yes | ALREADY_FAIL_CLOSED |
+  | empty validated set | validator authority | honest empty product output | yes | ALREADY_FAIL_CLOSED |
+  | partial model result | per-fact validation | timeout yields `Uncertain` decisions, which fail `IsEligibleHeading` | yes | ALREADY_FAIL_CLOSED |
+  | legacy revival | product authority | correct in code, unguarded | **no** | COVERAGE_GAP |
+  | ambiguous occurrence | see below | first fit, committed as canonical | no | **NOT_PROVEN** |
+
+  **Partial model result closes cleanly, and the reason is worth stating.** A semantic timeout does not
+  produce missing facts that something later fills in; it produces `PdfBlockRole.Uncertain` decisions
+  carrying `semantic_batch_timeout`, `semantic_lane_timeout` or `semantic_request_timeout`, and
+  `IsEligibleHeading` requires `HeadingTopic`. A timed-out block therefore cannot be validated and
+  cannot reach the product. The lane records itself as `partial_timeout`. Each surviving fact earned
+  its own authority - option A of the two the contract allowed. Withholding the *whole* product on a
+  partial run is option B; it is a design choice, not a violation of any contract that exists, so it
+  is not opened.
+
+  **Ambiguous occurrence does not qualify, and it is the interesting one.** The route commits to a
+  first fit in two places: `FindMatch` takes the first paragraph at or after the cursor (M10.2-A,
+  measured - one needle occurs in 211 paragraphs), and `PdfCanonicalGrounding.FromGroundedHeadings`
+  resolves duplicate source ids with `GroupBy(...).Select(g => g.First())`. Both are silent picks.
+
+  But the six-point gate fails at point 1. The grounding contract says an *unmatched* fact stays
+  ungrounded rather than being guessed; it does not say a match must be unique. Declaring uniqueness
+  as an invariant in order to justify a guard would be inventing the contract the guard needs, which
+  is precisely the speculative validation the gate forbids. Making this a gap requires a **design
+  decision** that grounding must be unique - and that decision belongs with M10.2-A's finding, which
+  proved the matcher weak and could not prove production misgrounds anything.
+
+  **A note on how B3.1 should be read.** The guard turned four fixtures red on its first run. That
+  proves the test suite contained calls violating the authority contract. It does **not** show that
+  production ever wrote into the wrong document, and it should not be cited as if it did.
+
+  **Result: 1 promoted, 5 already protected, 1 coverage gap, 1 not proven.** No further guard is
+  justified, and the seven-guard shape the mode list suggested would have been wrong.
+
+- [ ] Fingerprint enforcement is **not** to be spread further on principle. Each fingerprint is
+  enforced at the boundary where its artifact could be used outside the revision it describes: the
+  occurrence bridge already hard-fails `stale_occurrence_bridge`, and the product output now hard-fails
+  at writeback. "This object has a fingerprint, therefore every method should check it" is defensive
+  overengineering and is refused.
+
 - [ ] M11-B4 representative corpus smoke over the product route, collecting validated counts, final
   headings, emit, requires-review, unresolved grounding, writeback eligible and skipped-with-reason,
   and fatal errors. The target is not an accuracy number; it is crashes, nondeterminism, impossible
