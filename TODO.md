@@ -2517,16 +2517,75 @@ scope-lifecycle invariant on the strength of one shape resemblance.
   facts are defined on all 125. Unjoined lines read as false for block-level facts, which biases the
   `single line` row downward for exactly the lines that were excluded from grouping.
 
-- [ ] M10.3-B4 safe-remediation counterfactual, **now justified to open** - the discriminator was
-  found, not invented. Withhold `short_numbered` `TableLike` where the existing `HasStructuralMarker`
-  fact holds, across the whole 125, then measure recovery and collateral together, then replay
-  010/054/076 as cross-domain holdout. Two things must be answered before any repair:
-  - the 35 contents entries this releases. Their fate depends on `DetectTocBlockIds`, a different
-    owner that is currently silent on this document, so B4 must report what happens to them rather
-    than assume the TOC lane will catch them.
-  - whether the remedy belongs in scope derivation or in the annotation. Production already applies
-    the fact at grouping; a repair that applies it a second time in a third place would be
-    duplication rather than consistency.
+- [x] M10.3-B4 safe-remediation counterfactual. Hypothesis, applied to every line with no gold and
+  no tuning: a line the `short_numbered` branch marks that also carries the existing
+  `HasStructuralMarker` fact is diagnostically not table-like. The intervention sits at the fact
+  boundary and every existing consumer then runs unchanged - grouping, scope, ranking, selection,
+  output - so it asks what happens when two layers that already disagree are made to agree, and does
+  not decide where a repair would live.
+
+  **092, fate by reviewed role (corrected-scope world, 81 of 2192 lines affected):**
+
+  | role | n | selected before/after | emittable before/after |
+  |---|---|---|---|
+  | outline_heading | 37 | 8 -> 35 | **0 -> 27** |
+  | toc_entry | 35 | 5 -> 22 | **5 -> 22** |
+  | table_cell_or_tabular_value | 32 | 0 -> 0 | **0 -> 0** |
+  | body_prose | 15 | 0 -> 6 | 0 -> 6 |
+  | metadata | 4 | 0 -> 0 | 0 -> 0 |
+  | caption | 2 | 2 -> 2 | 0 -> 0 |
+
+  Blocks in scope `table` fall 57 -> 11; emittable rises 86 -> 93. In the shipped world (appendix leak
+  present) the same intervention moves emittable 98 -> 129, with the identical role breakdown.
+
+  **Cross-domain holdout, same intervention unchanged:**
+
+  | document | lines affected | scope `table` | emittable |
+  |---|---|---|---|
+  | 010 | 0 of 1842 | 0 -> 0 | 160 -> 160 |
+  | 054 | 46 of 11481 | 118 -> 84 | 160 -> 160 |
+  | 076 | 3 of 767 | 12 -> 10 | 149 -> 150 |
+
+  No cross-domain harm was found, but that is weaker evidence than it looks: 010 is untouched by the
+  predicate entirely, and 010/054 saturate the budget, so emittable cannot move there regardless.
+  Absence of harm on those two is not evidence of safety.
+
+### M10.3-B — CLOSED, zero production change
+
+**Proven**
+- causal owner: the `short_numbered` branch is the first fact in the loss (B1, B2).
+- an existing discriminator separates outline headings from genuine tables perfectly, and production
+  already applies it one layer up (B3).
+- making the two layers agree recovers 27 of 37 headings and protects every one of the 32 genuine
+  tabular values, in both the shipped and corrected-scope worlds (B4).
+
+**Not justified**
+- promotion. Alongside the 27 recovered headings the same intervention makes **17 further contents
+  entries** and **6 prose lines** emittable. Of the newly emittable reviewed lines, roughly half are
+  not headings. That is exactly the outcome the gate named in advance: recovery real, discriminator
+  real, remediation blocked by a different unresolved owner.
+
+The blocking owner is `DetectTocBlockIds`, silent on this document. **It is deliberately not opened
+to rescue this remedy.** Fixing TableLike because it needs TOC, then fixing TOC because it needs
+something else, is the chained overengineering this project has been avoiding; the TOC debt keeps its
+own independent trigger. If it is ever repaired on its own evidence, B4's measurement can be re-run
+as-is and the gate re-read - the probe takes no gold and needs no change.
+
+- [ ] M10.4-A quote scope lifecycle on 092, **the next milestone**. It is preferred over the TOC debt
+  because it already shows on the output path rather than only in a classification: from page 28 the
+  quote latch takes pages 28-35, leaving 8 reviewed headings selected but not emittable, and
+  swallowing the document's real appendices on page 32 so that even withholding the false appendix
+  entry could not restore them (A2).
+  - A1: trace which trigger sets the quote latch at page 28 and why it never exits. Instrument the
+    existing owner passively; no new resolver.
+  - A2: withhold exactly the reviewed false transition or false persistence, diagnostic only, and
+    measure whether the 8 headings become emittable, whether page 32 regains `appendix`, and whether
+    anything else is overdetermining the loss - counterfactual before rule, as with the appendix.
+
+- [ ] Hierarchy stays last. 092's hierarchy is bounded by what reaches the validator; a better
+  resolver cannot invent a parent fact that upstream filtered out. Reassess the ceiling only after
+  the upstream blockers are either repaired or proven unrepairable, and only if parent facts are then
+  complete while parent/level are still wrong.
 
 - [ ] M10.3 debts kept separate, not merged into a scope-lifecycle abstraction:
   - the quote latch leak from page 28 (its own trigger, its own owner).
