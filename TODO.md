@@ -3228,14 +3228,40 @@ deterministic, grounded, reproducible, fail-closed and safe to write back? None 
 accuracy work, and most of the infrastructure already exists - the goal is acceptance proof, not
 redesign.
 
-- [ ] M11-B1 contract acceptance across the boundaries: source facts -> validated structure ->
-  final structure -> output decision -> product output -> writeback. Lock, as tests:
-  - every `FinalHeading` carries a canonical DOCX anchor, and its text derives from the source span.
-  - `level` and `parent` stay nullable when unresolved; no fabricated fallback, no implicit parent.
-  - `Emit = false` cannot reach the serializer or the writeback.
-  - unresolved grounding fails closed.
-  - a writeback target mismatch skips rather than guesses.
-  - the legacy path cannot silently come back.
+- [x] M11-B1 contract acceptance, audited rather than rebuilt. **Almost every invariant on the list is
+  already locked by existing tests**, which is the right outcome for an acceptance pass - the work was
+  to find out, not to write a second set.
+
+  | invariant | locked by |
+  |---|---|
+  | only `Emit = true` becomes a product record | `OnlyEmitTrueDecisionsAreSerialized` |
+  | no canonical anchor -> never emitted, even when marked emit | `AHeadingWithoutCanonicalGroundingIsNeverEmittedEvenIfMarkedEmit` |
+  | text comes from the grounded source, not the observed PDF text | `TextComesFromTheGroundedHeadingTextNotTheObservedPdfText` |
+  | unresolved hierarchy carried verbatim, never filled | `UnresolvedHierarchyIsCarriedVerbatimNeverFilled`, `UnresolvedHierarchyStaysUnresolved` |
+  | no implicit parent adopted from the preceding heading | `PrecedingHeadingIsNeverAdoptedAsParent` |
+  | parent outside the emitted set is dropped, not repointed | `ParentPointingOutsideTheEmittedSetIsDropped` |
+  | ungrounded fact never emitted | `UngroundedFactIsNeverEmitted` |
+  | scope and role carried without normalisation | `ScopeAndRoleAreCarriedWithoutNormalisation` |
+  | unresolved level skipped at writeback, never guessed | `HeadingWithoutAResolvedLevelIsSkipped` |
+  | stale stable id skipped rather than misapplied | `StaleStableIdIsSkippedRatherThanMisapplied` |
+  | span no longer matching source text rejected | `SpanThatNoLongerMatchesTheSourceTextIsRejected` |
+  | writeback refuses the source path; source never touched | `WritingOntoTheSourcePathIsRefused`, `SourceDocumentIsNeverTouched` |
+  | determinism of serialization and of writeback | `SerializationIsDeterministicOnTheSameFrozenInput`, `ApplyingTheSameOutputTwiceIsDeterministic` |
+
+  **Legacy revival is guarded in code and is not covered by a test.** `HeaderExtractionPipeline`
+  builds an empty `PdfProductOutput` when the audit is null, with the comment that this is "an honest
+  empty result, not something to fall back to the legacy projection for". The behaviour is correct;
+  nothing locks it, so a future edit could reintroduce a fallback silently. Reaching it in a test
+  needs the pipeline, and the pipeline needs a model, so this is a real coverage gap rather than an
+  oversight to fix in passing.
+
+  **One genuine fail-closed gap, reported and not repaired.** `PdfProductOutput` carries
+  `SourceDocumentSha256`, and `PdfProductWriteback.Apply` **never compares it to the document it is
+  writing into**. Per-heading protection is strong - stable id must match and the span text must still
+  read exactly as captured - so applying an output to an unrelated document would skip nearly
+  everything. But "nearly everything" is not the same as refusing, and the document-level fingerprint
+  the output already carries is the obvious check. Adding it is a production behaviour change, which
+  is a decision rather than a tidy-up, and it belongs to M11-B3's fail-closed set.
 - [ ] M11-B2 deterministic replay: the same validated input facts must produce the same final
   structure, output decision, product output and writeback decision. Model stochasticity is not in
   scope - what must be deterministic is the projection from validated facts onward.
