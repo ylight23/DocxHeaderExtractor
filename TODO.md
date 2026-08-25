@@ -2121,6 +2121,56 @@ is an outcome of the measurement, not an assumption of it.
   and scoring interaction - complete at 0.53 against a 0.54 cut - and are recorded as coupled debt
   rather than a reason to change a global weight.
 
+- [x] M10.1e-A3.1-C1 collateral counterfactual. Changing only the evidence source - the next block's
+  own text instead of the prompt excerpt, with the predicate, thresholds and weight untouched -
+  changes **nothing**: `opens_content` still fires 0 times on all four corpora, the cut does not
+  move, no candidate enters or leaves the budget.
+
+  The truncation was real but was not what stopped the signal. No block ends in a full stop: of the
+  blocks longer than 70 characters, 0 of 1013 on 054, 0 of 582 on 010 and 0 of 306 on 092 end in one,
+  because PDF extraction emits sentence-final punctuation as its own line. The predicate assumes the
+  punctuation survives block construction, and on these corpora it does not.
+
+  Repairing the owner is therefore **not sufficient**, and the remaining repair would be a new
+  predicate - a new rule, which has to earn its place through the same population audit, collateral
+  measurement and holdout as any other. With benefit measured at zero there is nothing to weigh
+  against that cost, so nothing is promoted.
+
+## M10.1e — closed, diagnostic only, no production change
+
+Five hypotheses were investigated and none was promoted; no production line changed in this
+milestone. Three things were kept apart throughout, and the distinction is the result:
+
+> an observed defect is not the causal owner of the current loss, and a causal owner is not
+> automatically a safe remediation.
+
+**Proven.** 054's reviewed gold has 23 occurrences and 18 reach the budget with full coverage. Two
+of the five misses reach it truncated, so a partial occurrence is inside the budget while the
+complete one is not. The score ceiling for a candidate without a numbering marker is 0.44 on 4/4
+corpora. `opens_content` is unreachable: 0 of 3607 candidates across three corpora. Two headings are
+fragmented by grouping, and their complete representation scores below their own truncated first
+line. `header_footer_zone` is geometrically mis-scoped and penalises 662 lines of ordinary content
+on 054 alone.
+
+**Rejected or not promoted.** Raising the candidate budget - 6.9x the workload for three headings,
+and two of the five cannot be reached that way at a sensible cost. Repairing `header_footer_zone`
+for these misses - it recovers none of them. Repairing grouping alone - merging a split heading
+correctly makes it rank worse. Changing the `multi_line_boundary` weight globally - multi-line
+candidates reach the budget on 4/4 corpora. Feeding `opens_content` the full block text - zero
+behavioural delta. Any bonus for the absence of a marker - absence is not evidence.
+
+**Remaining debt, none scheduled.** The `opens_content` predicate assumes sentence-final punctuation
+survives block extraction, which is false on every corpus observed. `no_body_opening_evidence` is
+attached to the whole population and distinguishes nothing. The scorer has a structural 0.44 ceiling
+without a marker. Fragmented multi-line headings are a grouping-and-scoring interaction, not either
+alone. And deterministic scoring still reads a string built for the model prompt - a real
+responsibility leak, but demonstrably not the cause of the failure it was suspected of, so it
+belongs to an architectural refactor with its own behaviour-preservation evidence, not to an
+accuracy fix that would then claim credit for recall it did not deliver.
+
+**Reopen only** on new evidence, a new corpus, or a product requirement that forces unnumbered-heading
+recall. Not to keep looking for a fix.
+
 ## Decision gate
 
 - [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates
