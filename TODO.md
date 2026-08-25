@@ -2423,13 +2423,68 @@ scope-lifecycle invariant on the strength of one shape resemblance.
   selected and still not emittable. That is the same shield-then-kill shape as the appendix case,
   arriving by a different route. **None of the 37 reaches output.**
 
-- [ ] M10.3-B2 reviewed withholding counterfactual. Withhold `TableLike` only for the reviewed
-  outline-eligible occurrences, then measure score/rank recovery, selected coverage, emittable output
-  and collateral composition. Note in advance what B1 already shows about collateral: a blanket
-  unmarking of `short_numbered` would also release 35 contents entries, 32 genuine tabular values,
-  15 prose lines, 4 metadata lines and 2 captions. Recovery being real would prove causality; it
-  would not by itself supply a discriminator, and "causality proven, remediation still not justified"
-  remains an allowed outcome.
+- [x] M10.3-B2 reviewed withholding counterfactual. `PdfLineBlockFilter.Analyze` gained an
+  evaluation-only set of line indexes whose table-like mark is withheld, threaded through the audit
+  context. Lines are addressed by index, not by text: all 37 reviewed labels resolved to exactly one
+  line, none ambiguous, none unresolved. No general rule was applied - no `HasStructuralMarker`
+  exemption, no branch removal, no scoring change, no scope change.
+
+  **Causality confirmed. The chain reverses exactly where B1 said it would.**
+
+  | | before | after |
+  |---|---|---|
+  | blocks in scope `table` | 57 | 30 |
+  | blocks carrying `table_scope` | 57 | 30 |
+  | blocks scoring 0.00 | 67 | 42 |
+  | candidate blocks | 499 | 535 |
+  | emittable at budget 160 | 86 | 84 |
+
+  `b45` `1 Introduction`: scope `table` -> `document_body`, score 0.00 -> 0.54, rank 452 -> 46,
+  selected false -> true, emittable false -> true. The same reversal runs for `b53`, `b58`, `b61` and
+  the rest.
+
+  Of the 37 reviewed occurrences: **27 enter selection and become emittable**, 8 remain selected but
+  non-emittable because they sit in `quoted_replacement` from the separate quote leak, and 2 are
+  still not selected.
+
+  Three things this measurement is not allowed to claim:
+  - **It is not a collateral measurement.** The intervention has an oracle - it knows which lines are
+    real headings. B1's population figure remains the honest collateral number: 93 of 125
+    `short_numbered` lines are not outline-eligible.
+  - **The population changed.** Withholding the mark also changes `ExcludeFromCandidateGrouping`, so
+    candidates went 499 -> 535 and some supplement lines left the population entirely. This is not
+    pure displacement within a fixed set.
+  - **Net emittable fell by 2.** 44 left and 42 joined. What left is overwhelmingly body prose
+    fragments and ABNF lines, which is a gain in quality the raw count hides - but five front-matter
+    headings (`HTTP Caching`, `Abstract`, `Status of This Memo`, `Table of Contents`,
+    `Authors' Addresses`) were pushed from ranks 130-135 to 161-170, just outside the budget. Real
+    headings displaced by other real headings at a fixed budget is a budget finding, not a defect of
+    the intervention, and it is recorded rather than acted on.
+
+### M10.3-B — causal owner PROVEN, remediation NOT JUSTIFIED
+
+**Proven**
+- the `short_numbered` branch marks 37 reviewed outline headings on 092.
+- that mark is the first fact in the loss: withholding it for exactly those occurrences reverses
+  scope, penalty, score, rank and selection, and 27 reach output.
+
+**Not proven**
+- that any available fact separates those 37 from the other 88 lines the branch marks.
+
+**Not justified**
+- any production change. `if (HasStructuralMarker) TableLike = false;` remains unwritten: it was
+  held back before because of scope contamination, that contamination is now removed, and it is
+  still unmeasured against the corrected population.
+
+- [ ] M10.3-B3 discriminator search, **and it starts by asking whether one already exists** rather
+  than by proposing heuristics. Do existing facts - marker parse, layout geometry, block structure,
+  neighbour relationships, scope before the annotation - already separate the 37 outline headings
+  from the 35 contents entries, 32 tabular values, 15 prose lines, 4 metadata lines and 2 captions?
+  One observation already argues they may not: `b45` and its siblings carry the ambiguity signals
+  `unlabelled_numbering` and `no_labelled_structural_marker`, so the marker parser does **not**
+  currently recognise `1`, `1 1`, `1 2 1` as structural markers - the fact that would most obviously
+  discriminate is absent on exactly the population that needs it. If no existing fact separates the
+  population, close B at causal diagnosis rather than inventing a classifier.
 
 - [ ] M10.3 debts kept separate, not merged into a scope-lifecycle abstraction:
   - the quote latch leak from page 28 (its own trigger, its own owner).
