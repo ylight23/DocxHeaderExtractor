@@ -3107,6 +3107,81 @@ cannot order them.
     artifact; do not replace a source occurrence, select a prettier line, or infer role from title
     containment. B3 consumes only the completed review artifact plus this frozen actual trace.
 
+## M10 - CLOSED
+
+**Production accuracy remediations promoted: zero.** Regression set unchanged throughout - the same
+frozen 15 failures from `dbd65a6` at every checkpoint.
+
+That is the result, not a shortfall. M10 was asked to find why headings are lost and to change only
+what the evidence justified. What it produced is a list of repairs that looked well-founded and were
+refused on measurement:
+
+| candidate repair | refused because |
+|---|---|
+| `header_footer_zone` penalty removal | counterfactual delta at budget 160 was +0 |
+| raising the candidate budget | reaches candidates the model and validator still reject |
+| grouping repair for window-only representation | representation was not the binding constraint |
+| multi-line weight change | not measured on the population it classifies |
+| `opens_content` source repair | predicate is unreachable; no block ends with a terminal stop |
+| exact-paragraph or short-needle grounding rules | would break 70 paragraphs on 010 that legitimately take several blocks |
+| appendix trigger repair | a *correct* trigger contaminates identically; the missing exit is the defect |
+| quote latch repair | removing the leak recovers no heading |
+| `TableLike` / `short_numbered` repair | causal on 092, does not generalise; blocked by the contents owner |
+| selection reordering around output-ineligible candidates | the headings it would skip are themselves ineligible |
+| tie-break repair | the candidates it would promote are excluded by scope anyway |
+| strong-marker propagation | the fact holds for 43% of candidates and re-baselines the field |
+
+**What did improve**, and it is all evaluation-side: occurrence identity replacing text containment at
+four layers; gold repaired to occurrence-safe entries on 054; a versioned key resolver; a reviewed
+occurrence bridge; passive provenance seams on candidate ranking, DOCX alignment, scope transitions,
+the table-like rule and the marker path, each locked so evaluation cannot drift from production; and
+cross-document generalisation gates that stopped two document-specific findings from becoming corpus
+rules.
+
+**The lesson worth keeping from B2**, because it is the least obvious: a fact being correct does not
+make it usable at every stage. `HasStructuralMarker` separates headings from tables perfectly on the
+reviewed population and is exactly the right gate for candidate grouping - and it is true of 43% of
+candidates, which makes it useless for ordering them. "The fact already exists, propagate it
+downstream" is not a safe default.
+
+### Debts frozen, all trigger-gated
+
+None of these is a backlog item. An observed defect is not scheduled work.
+
+| debt | reopen only when |
+|---|---|
+| appendix latch has no exit (032/091/092) | promoted as source-fact correctness with its own collateral gate, never on recall |
+| quote latch open/close read disjoint character sets | a corpus using curly quotes shows measured loss |
+| `DetectTocBlockIds` silent on 092 | material loss it alone explains |
+| marker depth damaged by extraction spacing | anything downstream proposes to consume marker depth |
+| selection spends budget on output-ineligible candidates | justified as model cost or throughput, measured as cost |
+| no-marker score ceiling of 0.44 | see below |
+
+**054 no-marker ceiling.** The temptation is to open it because it is the last unexplored branch. It
+is already substantially measured: the 0.44 ceiling is proven, exclusion above a 0.44 cut is proven on
+054 and 010, `opens_content` is proven unreachable, and a fuller prompt excerpt showed zero benefit.
+What is missing is not measurement but a hypothesis - no evidence-generation idea exists that is
+specific enough to justify a counterfactual. Trying body-opening v2, then heading-shape evidence, then
+typography evidence would be inventing features to find a patch, which is the failure mode M10 spent
+itself avoiding. Reopen only on: a reviewed corpus showing material loss from unnumbered-heading
+evidence; a product requirement naming an unnumbered-heading recall target; or an existing source or
+layout fact shown to discriminate without a new classifier.
+
+## M11 - validated structure and hierarchy, product acceptance
+
+Not accuracy archaeology. The question changes: for headings that survive upstream *legitimately*,
+is the final product right?
+
+- [ ] M11-A0 eligibility gate first, before any resolver is opened. Establish the population where
+  hierarchy can even be assessed: a reviewed source occurrence that produces a candidate, is selected,
+  is validated, and reaches an emittable `FinalHeading`. Only inside that population does a wrong
+  level or parent constitute a hierarchy first loss.
+- [ ] M11-A1, only if A0 yields a population: measure `ResolvedLevel`, parent, sibling order, scope
+  and role retention, and canonical DOCX grounding against reviewed occurrences.
+- [ ] If A0 yields no clean population, the next milestone is product acceptance and release
+  hardening, not hierarchy. Do not force a hierarchy assessment onto a population that upstream has
+  already damaged - that is how M10 began.
+
 ## Decision gate
 
 - [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates
