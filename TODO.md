@@ -2616,18 +2616,64 @@ page 32 so that withholding the false appendix entry could not restore them (M10
   `quoted_replacement` rather than `appendix`. Their own trigger fires; it simply never reaches the
   branch that would use it.
 
-- [ ] M10.4-A2 counterfactual - **needs a decision before it runs, because two independent mechanisms
-  are present and mixing them would measure neither.**
-  - *Suppress the transition* at `s-line-830` answers "was the page 28 trigger the cause", and leaves
-    the unreachable exit untested - a legitimate quotation later in the document would still never
-    close.
-  - *Terminate the persistence* at a reviewed boundary answers "does the missing exit cause the
-    loss", and leaves the trigger untested - the latch would still be set by a line fragment.
+- [x] M10.4-A2a suppress the reviewed quote-open transition. Reviewed first, as required: the source
+  sentence quotes `"HTTP/1 1"` and `"HTTP Semantics"`; line 1772 ends `..."HTTP/` with one straight
+  quote and line 1774 carries the remaining three. Page 28 holds **eight** straight quotes in total,
+  an even count, so the source quoting is balanced and the odd parity is produced by line
+  segmentation. The transition is confirmed as an artifact.
 
-  Either way, A2 measures: whether the 8 reviewed headings become emittable, whether page 32 regains
-  `appendix`, the candidate and scope distributions, and the composition of anything newly emittable.
-  As with the appendix and TableLike, a defect can be real and still not be the causal owner - if the
-  8 headings stay lost behind another blocker, the quote leak is confirmed and not promoted.
+  **First attempt, and a mistake worth recording.** Withholding block `s-line-830` alone changed
+  almost nothing - `quoted_replacement` 92 -> 91 - because the latch reopened immediately on
+  `s-window-2004`, the *window representation of the same source line*, on the same page. The
+  intervention had been addressed to a block when the reviewed unit is an occurrence. That is the
+  same identity error this project has now hit at four layers, and it is a property of the pipeline
+  worth stating plainly: **a source line reaches scope through more than one candidate
+  representation, and each satisfies the trigger independently.**
+
+  **Corrected intervention: the whole occurrence, still one reviewed transition.**
+
+  | | before | after |
+  |---|---|---|
+  | `quoted_replacement` | 92 | 49 |
+  | `appendix` | 287 | 314 |
+  | `reference_list` | 0 | 16 |
+  | pages 28-35 `appendix` | 8 | 35 |
+  | emittable at budget | 98 | 102 |
+
+  **Result: single bad transition is not a sufficient causal owner - twice over.**
+
+  - *It relatches.* The next opening block is `b479` on page 32, a bibliography line reading
+    `[RFC 7234] ... "Hypertext Transfer` - one straight quote, because the quoted title is again split
+    across two lines. The same segmentation mechanism, in a different place. Pages 32-35 therefore
+    never leave quote scope, and `b485` `Appendix A Collected ABNF` and `b490`
+    `Appendix B Changes from RFC 7234` stay `quoted_replacement`, unchanged, still not emittable.
+  - *Even where scope recovers, the headings do not.* Pages 28-31 largely leave quote scope, and
+    **not one of the 37 reviewed outline headings becomes emittable** - the count stays at zero. The
+    four things that do become emittable are a DOI line, the withheld line itself, and two page-30
+    fragments. The headings are held by the `TableLike` chain behind the quote scope, which M10.3-B4
+    already demonstrated from the other side: intervening on `TableLike` alone recovered 27 of them
+    **while the quote leak was still present**.
+
+### M10.4-A - CLOSED, zero production change
+
+**Proven**
+- the page 28 transition is a segmentation artifact, on reviewed evidence.
+- the quote latch's exit is unreachable on this document: open reads straight quotes, close reads only
+  curly ones, and the document has 208 straight and zero curly (A1).
+- page 32 loses its appendices to branch order - the quote branch is tested before the appendix
+  branch - not to missing evidence (A1).
+
+**Refuted**
+- that the quote leak is the causal owner of 092's heading loss. Removing it recovers no heading.
+  The binding constraint remains `TableLike`, which is where M10.3-B already left it.
+
+**Not measured**
+- whether the unreachable close condition costs anything on a corpus that uses curly quotes.
+
+A2b on the open/close asymmetry is **not opened**. It is a real defect and a strong one, but A2a shows
+the product loss it was suspected of causing belongs elsewhere, and fixing it now would be repairing
+a defect because it is visible rather than because it is costing anything measured. It keeps its own
+trigger, like the TOC debt.
 
 - [ ] Debts kept separate. Quote scope, appendix scope and the TOC detector share a subject and
   nothing else: three different triggers, three different owners, three different failure shapes. No
