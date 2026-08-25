@@ -2388,12 +2388,53 @@ opened: the counterfactual that would have justified choosing between them came 
 quote leak stays a separate finding with a separate trigger and is not generalised into a shared
 scope-lifecycle invariant on the strength of one shape resemblance.
 
-- [ ] M10.3-B `TableLike` - **trigger now met.** A2 supplies the fresh evidence the gate required,
-  and supplies it against the corrected population rather than the old one: with scope corrected,
-  four known-good RFC section headings score 0.00 purely because every line under them is annotated
-  `TableLike`. The old ~74% short-numbered false-positive figure is still not usable and must be
-  re-measured. Open as a first-loss audit of the `TableLike` annotation on the population it
-  classifies, not as a fix.
+- [x] M10.3-B1 `TableLike` first-loss audit, on the corrected-scope population. `LooksLikeTableLine`
+  now delegates to `ClassifyTableLine`, which names which of its own branches fired. Same conditions
+  in the same order; the branch name is recorded, never recomputed, so evaluation reads the rule's
+  decision instead of keeping a copy of it. The names describe the branch, not a verdict.
+
+  **Correction to what was written when B was opened.** The old ~74% figure was called unusable. That
+  was too broad. The rule is line-level and the reviewed labels are line-level, so the *classification*
+  figure survives the scope correction untouched: 93 of 125 `short_numbered` lines should not have
+  been marked, which is where 74% came from. What did not survive is any *downstream* loss rate
+  measured while pages 5-31 were labelled appendix. Only the second kind was re-measured here.
+
+  | branch | lines |
+  |---|---|
+  | `not_table_like` | 1060 |
+  | `no_alphanumeric` | 956 |
+  | `short_numbered` | 125 |
+  | `numeric_density` | 51 |
+
+  72 of 499 candidate blocks have every line marked - 52 dominated by `short_numbered`, 20 by
+  `numeric_density`. Of those, 57 land in scope `table`, all 57 carry the `table_scope` penalty, 47
+  score exactly 0.00, and 15 survive to the budget.
+
+  **Causal first loss: proven, and it repeats.** Joining the 125 reviewed line labels to the
+  corrected-scope population, 35 of the 37 lines a reviewer called outline-eligible join to a
+  candidate block, and the same chain runs for every one of them:
+
+  `short_numbered` -> block all-marked -> scope `table` -> `table_scope` -0.60 -> score 0.00 ->
+  rank 452-497 -> outside budget 160.
+
+  27 of the 35 die exactly that way, selected = false. The remaining 8 are *selected* - at ranks
+  26-36 with score 0.54 - only because the quote latch put them in `quoted_replacement`, which dodges
+  `table` scope and its penalty. But `quoted_replacement` is an excluded output scope, so they are
+  selected and still not emittable. That is the same shield-then-kill shape as the appendix case,
+  arriving by a different route. **None of the 37 reaches output.**
+
+- [ ] M10.3-B2 reviewed withholding counterfactual. Withhold `TableLike` only for the reviewed
+  outline-eligible occurrences, then measure score/rank recovery, selected coverage, emittable output
+  and collateral composition. Note in advance what B1 already shows about collateral: a blanket
+  unmarking of `short_numbered` would also release 35 contents entries, 32 genuine tabular values,
+  15 prose lines, 4 metadata lines and 2 captions. Recovery being real would prove causality; it
+  would not by itself supply a discriminator, and "causality proven, remediation still not justified"
+  remains an allowed outcome.
+
+- [ ] M10.3 debts kept separate, not merged into a scope-lifecycle abstraction:
+  - the quote latch leak from page 28 (its own trigger, its own owner).
+  - `DetectTocBlockIds` returning nothing on 092.
+  Neither is evidence for the other, and neither is opened by B.
 
 ## Decision gate
 
