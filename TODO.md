@@ -2756,10 +2756,57 @@ trigger, like the TOC debt.
   also shown to address a chain that does not repeat. Fixing it would be fitting a repair to one
   document.
 
-- [ ] M10.6 (not opened) appendix-scope output exclusion as a cross-document hypothesis. The trigger
-  is the 14 of 14 above. Before any counterfactual: check whether 032 and 091 acquire their appendix
-  latch the way 092 did - from a contents line with no reset - because if they do not, this is three
-  documents sharing a symptom rather than a cause, and the milestone should not open.
+- [x] M10.6 precheck - appendix mechanism equivalence. Passive state trace only, no counterfactual.
+
+  **The mechanism is identical in all three documents.** Each acquires its appendix latch from a
+  contents-like line arriving with scope `document_body`, and none ever resets it:
+
+  | | 032 procurement | 091 RFC | 092 RFC (reference) |
+  |---|---|---|---|
+  | first transition | `s-block-28` p121 | `b113` p12 | `b43` p4 |
+  | trigger text | `Annex 1 . Request for Change Proposal .....` | `Appendix A Collected ABNF Appendix B ...` | `Appendix A Collected ABNF ... Index` |
+  | incoming scope | `document_body` | `document_body` | `document_body` |
+  | latch persists | 2984 / 2984 | 2372 / 2372 | 443 / 443 |
+  | **reset count** | **0** | **0** | **0** |
+  | pages held | 121-285 | 12-194 | 4-35 |
+  | scopes produced | appendix 2847, appendix_table 132 | appendix 50, appendix_table 269 | appendix 287, appendix_table 59 |
+
+  Two domains, three documents, one shape. 032's trigger even carries dot leaders
+  (`.....................`), which is about as unambiguous a contents line as a document produces.
+  091 adds a second trigger shape worth recording: `b443` on page 35 is body prose reading
+  `Appendix A shows the collected ABNF for senders after the list constructs have been expanded` -
+  a sentence *about* an appendix, firing the same trigger.
+
+  **But the product loss it directly causes is small, and the split matters more than the total.**
+  Of the 14 reviewed headings:
+
+  | | 032 | 091 | total |
+  |---|---|---|---|
+  | A - selected, then excluded by appendix scope | 2 | 1 | **3** |
+  | B - already outside budget before scope applies | 6 | 5 | **11** |
+
+  Saying "14 of 14 carry `appendix_table`" would have been true and misleading. Appendix scope is the
+  direct first loss for three headings. The other eleven would not have been emitted whatever scope
+  they carried.
+
+  **The eleven are the more interesting finding.** They score 0.38-0.70, thirteen of the fourteen
+  carry no `table_scope` penalty at all, and they still rank 161-1011. Whatever keeps them out of the
+  budget is neither the table branch nor the appendix scope, and it has not been identified.
+
+### M10.6 gate
+
+**Mechanism equivalence: CONFIRMED.** A milestone on appendix lifecycle is now open to being opened -
+this is no longer three documents sharing a symptom.
+
+**Material impact: 3 of 14 sampled headings.** Small enough that the milestone should be scoped to
+what it can actually recover, and small enough that it is a fair question whether it is the best next
+target at all.
+
+- [ ] Open question, and probably the better one: what puts a heading scoring 0.54-0.70 with no
+  negative signal at rank 161-1011? That is the blocker for 11 of 14, it is not scope, it is not the
+  table branch, and it now has a cross-document population. It resembles the 054 debt recorded in
+  M10.1e-A1 - `AVAILABILITY OF INFORMATION` at rank 166, score 0.44, no negative evidence - which was
+  deferred then and has never been measured.
   - [x] B1 sample frozen at `.verify-build/m105b1-tablelike-reviewed-exposure-sample.json` by
     SHA-256 ordering of exact source-line identity: 10 `table_scope_penalized` + 10
     `not_table_scope_penalized` occurrences per preselected document, 80 total. Population/sample:
