@@ -3422,19 +3422,64 @@ redesign.
   documents in this configuration, is never taken without a model. B4.2 is therefore not a
   nice-to-have canary; it is the only way this project has to smoke the chain it spent M11 hardening.
 
-- [ ] M11-B4.2 live end-to-end canary on 054 and 092, one bounded run each, results labelled as an
-  integration canary and never as cross-document accuracy evidence. It asks only: does the route
-  complete, is a partial or timeout state explicit, do only validated facts reach the product, does
-  unresolved grounding fail closed, does serialization succeed, do the writeback authority checks
-  hold, is there any silent legacy resurrection, and is the artifact sufficient to replay offline.
-  The model is **not** called twice to test determinism - B2 already fixed that boundary, and any
-  replay uses the authority artifact the single run produced.
+- [x] M11-B4.2 live OpenRouter product canary. Preflight resolved the provider without logging any
+  credential: backend OpenRouter, model `qwen/qwen3.5-9b` (the configured default), key present.
 
-  Before it runs: confirm a live lane is actually configured, and confirm the cost is intended. A
-  failure caused by a known frozen scope or accuracy debt is **not** a release blocker and must be
-  classified as an expected limitation; silent fallback, an ungrounded emitted record, a partial
-  result treated as complete, a writeback bypassing the fingerprint, or a non-replayable artifact
-  are.
+  **A process note first, because it nearly produced a false result.** The first invocation was made
+  without `--openrouter` and the CLI silently defaulted to the Local llama.cpp backend - the artifact
+  recorded `backend: Local`, `Llama-3.2-3B-Instruct-Q4_K_M.gguf`. It was discarded rather than
+  reported; it consumed no OpenRouter call, so the runs below remain one per document.
+
+  | | 054 | 092 |
+  |---|---|---|
+  | validated structures | **0** | **24** |
+  | hierarchy facts | 0 | 24 |
+  | canonical groundings | 0 | 24 |
+  | legacy lane headings | 0 | 24 |
+
+  **The roles inverted.** 054 was chosen as the positive path and returned an honest empty artifact;
+  092, chosen as the adverse case, is the run that actually exercised the chain. 054's empty result is
+  consistent with what M10.1a/b already recorded - the live production canary yields 0 validated on
+  054 while the frozen M8.1c stage-eval at wide+supplement budget 160 yielded 29 - so this is a route
+  and profile outcome, **not a new failure**. Re-running 054 with those flags would be both a second
+  live run and a configuration chosen to obtain a better result; neither is taken.
+
+  **092 replayed offline from its own artifact, with no second inference:**
+
+  | check | result |
+  |---|---|
+  | final headings / grounded | 24 / **24** |
+  | emit / requires review | 24 / 24 |
+  | product records | 24 |
+  | level resolved / parent resolved | 3 / 10 |
+  | product fingerprint matches its row | **true** |
+  | ungrounded but emitted | **0** |
+  | replay-stable fingerprint and product | **true** |
+  | every record carries an anchor | **true** |
+  | level in range or null | **true** |
+
+  21 of the 24 carry a null level, so a writeback would skip them as `level_unresolved`. That is the
+  fail-closed behaviour working, and an expected limitation rather than a blocker.
+
+### M11 release readiness
+
+| | |
+|---|---|
+| product contract acceptance | **PASS** (B1) |
+| fail-closed acceptance | **PASS** (B3, one hardening promoted) |
+| post-validation determinism | **PASS** (B2) |
+| broad deterministic-route smoke | **PASS**, 95 documents, 0 fatal, 0 violations (B4.1) |
+| live product-chain integration | **PASS** on 092 via OpenRouter (B4.2) |
+
+Explicitly **not** established by M11: any accuracy target; hierarchy generalisation, which stays
+deferred; and the frozen trigger-gated debts, which remain exactly as frozen. The live canary is
+integration evidence for one document and is not cross-document accuracy evidence.
+
+One honest gap remains in the evidence: the product chain has now been smoked live on **one**
+document. 054 did not reach it, and B4.1 could not reach it at all because the deterministic routes
+claim every corpus document before the M9 path. A second document reaching a non-empty product would
+strengthen this materially, and is the obvious next thing if release confidence needs raising - but it
+needs a route/profile decision, not another default-flag run.
 
 
 
