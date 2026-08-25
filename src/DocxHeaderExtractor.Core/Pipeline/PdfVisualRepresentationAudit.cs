@@ -199,6 +199,9 @@ public static class PdfFirstLossAudit
                 CandidateMultiplicity = occurrence?.Multiplicity,
                 RepresentationType = occurrence?.RepresentationType ?? "not_measured",
                 OccurrenceCandidateSourceId = occurrence?.CandidateSourceId,
+                CandidateCoverage = occurrence?.CandidateCoverage ?? "not_measured",
+                BestPartialCoverageRank = occurrence?.BestPartialCoverageRank,
+                SelectedCoverage = occurrence?.SelectedCoverage ?? "not_measured",
             };
         }).ToArray();
 
@@ -254,7 +257,8 @@ public static class PdfFirstLossAudit
             : null;
         var reviewed = stableId is null ? null : bridge.Find(stableId);
         if (reviewed is null)
-            return new OccurrenceResolution(null, null, "not_measured", null, "occurrence_bridge_unresolved");
+            return new OccurrenceResolution(null, null, "not_measured", null, "occurrence_bridge_unresolved",
+                "not_measured", null, "not_measured");
 
         var required = reviewed.RequiredLines.Select(line => line.Index).ToArray();
         var covering = ranked
@@ -262,8 +266,21 @@ public static class PdfFirstLossAudit
                            provenance.Covers(required))
             .OrderBy(item => item.Rank)
             .ToArray();
+        // A candidate carrying some but not all of the heading's lines is a real, separate state.
+        // Reporting only full coverage would say the model never saw the heading, when what it saw
+        // was a truncated one - which is a different defect with a different owner.
+        var partial = ranked
+            .Where(item => snapshot.Provenance.TryGetValue(item.Candidate.SourceId, out var provenance) &&
+                           !provenance.Covers(required) &&
+                           required.Any(provenance.LineIndexes.Contains))
+            .OrderBy(item => item.Rank)
+            .ToArray();
+        var bestPartialRank = partial.Length == 0 ? (int?)null : partial[0].Rank;
+
         if (covering.Length == 0)
-            return new OccurrenceResolution(null, 0, "none", null, "candidate_representation");
+            return new OccurrenceResolution(null, 0, "none", null, "candidate_representation",
+                partial.Length == 0 ? "none" : "partial", bestPartialRank,
+                bestPartialRank <= selectedBudget ? "partial" : "none");
 
         var best = covering[0];
         var kinds = covering
@@ -273,12 +290,16 @@ public static class PdfFirstLossAudit
             ? "standard_block"
             : "window_only";
         var firstLoss = best.Rank <= selectedBudget ? "selected" : "ranking_or_budget";
+        var selectedCoverage = best.Rank <= selectedBudget ? "full"
+            : bestPartialRank <= selectedBudget ? "partial"
+            : "none";
         return new OccurrenceResolution(best.Rank, covering.Length, representationType,
-            best.Candidate.SourceId, firstLoss);
+            best.Candidate.SourceId, firstLoss, "full", bestPartialRank, selectedCoverage);
     }
 
     private sealed record OccurrenceResolution(
-        int? Rank, int? Multiplicity, string RepresentationType, string? CandidateSourceId, string FirstLoss);
+        int? Rank, int? Multiplicity, string RepresentationType, string? CandidateSourceId, string FirstLoss,
+        string CandidateCoverage, int? BestPartialCoverageRank, string SelectedCoverage);
 
     private static string ClassifyRepresentation(PdfCandidateRetrievalTrace trace, PdfVisualGoldCoverage? visual)
     {
@@ -374,6 +395,18 @@ public sealed record PdfFirstLossEntry(int Ordinal, int? ParagraphIndex, int? Le
     public string RepresentationType { get; init; } = "not_measured";
 
     public string? OccurrenceCandidateSourceId { get; init; }
+
+    /// <summary>`full`, `partial`, `none`: how completely any candidate represents the occurrence.</summary>
+    public string CandidateCoverage { get; init; } = "not_measured";
+
+    /// <summary>Best rank among candidates carrying part of the heading but not all of it.</summary>
+    public int? BestPartialCoverageRank { get; init; }
+
+    /// <summary>
+    /// What actually reached the model within the budget. `partial` says the heading was seen
+    /// truncated, which is neither a clean pass nor the same failure as never being seen.
+    /// </summary>
+    public string SelectedCoverage { get; init; } = "not_measured";
 }
 
 public sealed record PdfFirstLossRecallAt(int K, int Hits, int Total);

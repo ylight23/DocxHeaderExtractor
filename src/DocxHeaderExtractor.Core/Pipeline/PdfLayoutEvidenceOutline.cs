@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 using DocxHeaderExtractor.Core.Llm;
@@ -354,12 +354,12 @@ public static class PdfLayoutEvidenceOutline
             includeSupplementCandidates: true, out var reason);
         if (context is null)
             return new PdfCandidateRankingSnapshot(new PdfCandidateRankingAudit(reason, 0, []),
-                new Dictionary<string, PdfCandidateProvenance>(StringComparer.Ordinal));
+                new Dictionary<string, PdfCandidateProvenance>(StringComparer.Ordinal), [], [], []);
         var contexts = PdfCandidateContextBuilder.Build(context.Candidates, context.Annotations);
         var ranked = PdfCandidateRanker.Rank(context.Candidates, contexts);
         return new PdfCandidateRankingSnapshot(
             new PdfCandidateRankingAudit("ranked", ranked.Count, ranked),
-            BuildProvenance(context));
+            BuildProvenance(context), context.Candidates, context.Annotations, context.Lines);
     }
 
     private static IReadOnlyDictionary<string, PdfCandidateProvenance> BuildProvenance(LayoutContext context)
@@ -1422,7 +1422,10 @@ internal sealed record PdfAnalystCandidateSelection(
 /// <summary>Diagnostic view over one ranking build. Production consumes only the audit.</summary>
 internal sealed record PdfCandidateRankingSnapshot(
     PdfCandidateRankingAudit Audit,
-    IReadOnlyDictionary<string, PdfCandidateProvenance> Provenance);
+    IReadOnlyDictionary<string, PdfCandidateProvenance> Provenance,
+    IReadOnlyList<PdfSemanticBlock> CandidateBlocks,
+    IReadOnlyList<PdfLineBlockAnnotation> Annotations,
+    IReadOnlyList<PdfLine> Lines);
 
 /// <summary>
 /// Which source lines a candidate was built from. Only observed facts: no scoring, no text, and no
