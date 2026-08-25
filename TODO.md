@@ -2704,11 +2704,62 @@ trigger, like the TOC debt.
   (52 / 32), textbook `063` (678 / 549), and RFC sibling `091` (425 / 50). These are exposures,
   not predicted defects. Review only a small sample of `short_numbered && HasStructuralMarker`
   occurrences and trace the same downstream chain.
-- [ ] M10.5-B small reviewed occurrence audit: for the preselected documents only, label a bounded
-  sample of the exposed population as outline heading / TOC / true table / prose, then trace
-  `short_numbered -> TableLike -> scope -> table_scope penalty -> rank/output`. Revisit a safe
-  TableLike remediation only if the causal loss reproduces cross-document; otherwise close it as a
-  092-specific interaction. Do not open TOC debt from this audit unless its separate trigger is met.
+- [x] M10.5-B reviewed occurrence audit on the preselected documents. The population was frozen and
+  committed before any line was read (`eval/manual-labels/m105b-cross-document-review-sample.v1.json`):
+  ten occurrences per stratum per document, ordered by a SHA-256 of the occurrence identity,
+  stratified by whether the exposed line's best-ranked block actually carries the `table_scope`
+  penalty. Stratified rather than uniform because 091 exposes 425 lines and penalises 110 - a small
+  uniform draw would have under-sampled the stratum the question is about.
+
+  **What the exposed population actually is (80 reviewed occurrences, penalised / clean):**
+
+  | document | outline | toc | table cell | caption | running header | form field | math/index |
+  |---|---|---|---|---|---|---|---|
+  | 032 procurement | 1 / 7 | - | - | - | 7 / 1 | 2 / 2 | - |
+  | 043 financial | 0 / 0 | - | 5 / 3 | 5 / 7 | - | - | - |
+  | 063 textbook | 0 / 0 | 4 / 0 | - | - | 5 / 3 | - | 1 / 7 |
+  | 091 RFC sibling | 0 / 6 | 10 / 2 | - | 0 / 2 | - | - | - |
+
+  In 043 and 063 the branch is largely doing its job: what it penalises is genuine tabular values,
+  captions, running headers, contents lines and mathematics. **Not one real heading appears in either
+  document's sample.**
+
+  **The 092 chain does not reproduce.** Fourteen reviewed outline headings appear, in 032 and 091:
+
+  | measure | of 14 |
+  |---|---|
+  | carrying the `table_scope` penalty | **1** |
+  | scoring 0.00 | 1 |
+  | within budget 160 | 3 |
+  | within budget **and** in an allowed output scope | **0** |
+
+  Thirteen of the fourteen never take the penalty at all. They score 0.38-0.70 and rank as high as
+  53 and 115 - and every one of them still fails to reach output, because they land in
+  `appendix_table`, which is an excluded output scope.
+
+### M10.5 gate - failure class NOT generalised
+
+**Proven**
+- exposure generalises: 67 of 95 documents exercise the interaction (M10.5-A).
+- the 092 causal chain does not: `short_numbered -> table -> table_scope -> rank collapse` reaches
+  1 of 14 reviewed headings outside 092.
+- in the financial and textbook documents the branch harms no reviewed heading at all.
+
+**Redirected, and deliberately not acted on**
+- what actually blocks real headings in 032 and 091 is `appendix_table` output exclusion - 14 of 14.
+  That points at the appendix scope leak, which M10.3-A closed as real but non-causal *on 092*. It
+  may be the more general owner, and that is a new hypothesis with its own population, not a
+  conclusion this audit is entitled to draw. It needs its own milestone and its own measurement.
+
+**Consequence**
+- the `TableLike` remediation stays closed. It was already blocked by the TOC owner on 092; it is now
+  also shown to address a chain that does not repeat. Fixing it would be fitting a repair to one
+  document.
+
+- [ ] M10.6 (not opened) appendix-scope output exclusion as a cross-document hypothesis. The trigger
+  is the 14 of 14 above. Before any counterfactual: check whether 032 and 091 acquire their appendix
+  latch the way 092 did - from a contents line with no reset - because if they do not, this is three
+  documents sharing a symptom rather than a cause, and the milestone should not open.
   - [x] B1 sample frozen at `.verify-build/m105b1-tablelike-reviewed-exposure-sample.json` by
     SHA-256 ordering of exact source-line identity: 10 `table_scope_penalized` + 10
     `not_table_scope_penalized` occurrences per preselected document, 80 total. Population/sample:
