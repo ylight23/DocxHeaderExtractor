@@ -162,7 +162,8 @@ internal static class PdfCandidateContextBuilder
         IReadOnlyList<PdfLineBlockAnnotation> annotations,
         int contextWindow = 2,
         List<StructuralScopeTransition>? scopeTrace = null,
-        IReadOnlySet<string>? withheldAppendixEntries = null)
+        IReadOnlySet<string>? withheldAppendixEntries = null,
+        IReadOnlySet<string>? withheldQuoteEntries = null)
     {
         var annotationByLine = annotations.ToDictionary(a => LineKey(a.Line));
         var ordered = blocks.OrderBy(b => b.Page).ThenByDescending(b => b.TopY).ThenBy(b => b.Id, StringComparer.Ordinal).ToArray();
@@ -171,7 +172,7 @@ internal static class PdfCandidateContextBuilder
         var regime = DocumentDomainPolicy.InferRegime(ordered.Select(block => block.DisplayText), fallbackRegime);
         var result = new Dictionary<string, PdfCandidateContext>(StringComparer.Ordinal);
         var tocBlockIds = PdfStructuralScopeDetector.DetectTocBlockIds(ordered);
-        var scopeTracker = new StructuralScopeTracker(scopeTrace, withheldAppendixEntries);
+        var scopeTracker = new StructuralScopeTracker(scopeTrace, withheldAppendixEntries, withheldQuoteEntries);
         var stack = new List<string>();
         for (var index = 0; index < ordered.Length; index++)
         {

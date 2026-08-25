@@ -19,12 +19,21 @@ internal sealed class StructuralScopeTracker
     /// </summary>
     private readonly IReadOnlySet<string> _withheldAppendixEntries;
 
+    /// <summary>
+    /// Evaluation-only, and separate from the appendix set because the two latches fail differently:
+    /// the appendix latch has no exit, while the quote latch has one that some documents cannot
+    /// reach. Sharing a set would invite treating them as one defect. Empty in production.
+    /// </summary>
+    private readonly IReadOnlySet<string> _withheldQuoteEntries;
+
     public StructuralScopeTracker(
         List<StructuralScopeTransition>? trace = null,
-        IReadOnlySet<string>? withheldAppendixEntries = null)
+        IReadOnlySet<string>? withheldAppendixEntries = null,
+        IReadOnlySet<string>? withheldQuoteEntries = null)
     {
         _trace = trace;
         _withheldAppendixEntries = withheldAppendixEntries ?? new HashSet<string>(StringComparer.Ordinal);
+        _withheldQuoteEntries = withheldQuoteEntries ?? new HashSet<string>(StringComparer.Ordinal);
     }
 
     private static readonly Regex AppendixRx = new(@"^\s*(?:appendix|annex|phu\s+luc)\b", RegexOptions.IgnoreCase | RegexOptions.Compiled);
@@ -61,7 +70,7 @@ internal sealed class StructuralScopeTracker
         var opened = text.Count(character => character == '\u201c') + text.Count(character => character == '"') % 2 > 0;
         var closed = text.Any(character => character is '\u201d' or '\u201f');
         var wasInsideQuote = _insideQuote;
-        if (opened && !closed) _insideQuote = true;
+        if (opened && !closed && !_withheldQuoteEntries.Contains(facts.SourceId)) _insideQuote = true;
         var scope = facts.StructuralScope;
         if (scope == "table" && _appendix) scope = "appendix_table";
         else if (_insideQuote || wasInsideQuote) scope = _amendmentHost is null ? "quoted_replacement" : "embedded_amendment";
