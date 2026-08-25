@@ -3705,6 +3705,66 @@ two runs differed without saying how. That is a **candidate for a different mile
 route configuration - and needs a real question before it is opened, not the observation that a hash
 is opaque.
 
+## M12-A - CLOSED, release provenance sufficient for the current contract
+
+| | |
+|---|---|
+| promoted | `semanticLaneStatus`, `codeRevision`, semantic request / batch / lane-deadline timeouts |
+| rejected | OpenRouter endpoint host - derivable from backend and revision |
+| deferred, trigger-gated | retained readable route configuration |
+
+**No further provenance field is proposed.** This is the point to stop asking what metadata an
+artifact is missing.
+
+The one open observation is that `routeConfigSha256` proves identity without retaining anything
+readable behind it: it can say two runs differed, not how. That is **not** a backlog item. It opens
+only on a real question - an incident response requirement that effective configuration be
+reconstructable from an artifact alone, a release-evidence requirement that every
+result-affecting setting be independently recoverable, or an actual incident that could not be
+explained because only the hash survived.
+
+## M12-B - release execution and deployment contract
+
+The question changes from "what can an artifact say about a run" to "does the operator or deployment
+actually run what we intend to ship".
+
+- [x] M12-B1 release invocation audit, **audit only, no code**. Prompted by a real event rather than a
+  hypothetical: during B4.2 an invocation without `--openrouter` silently ran the Local llama.cpp
+  backend.
+
+  **What enforces the OpenRouter release intent today: nothing.**
+  - `dhx.cmd` is a path resolver. It picks the first binary that exists - `out-vulkan`, then
+    `out-cuda`, then `bin/Release`, then `bin/Debug` - and forwards its arguments unchanged. It pins
+    no backend and no model.
+  - There is no Dockerfile, no compose file, no CI workflow, no service configuration and no
+    deployment script anywhere in the repository.
+  - `scripts/` holds development and evaluation helpers - model download, benchmarking, holdout
+    management, an LM Studio MCP publish - and nothing that selects a provider for a release run.
+
+  So this is case **B**: the release contract, as it stands, rests on whoever types the command.
+
+  **What that does and does not prove.** It proves the CLI default admits Local and that a person can
+  omit the flag; the artifact then reports `backend: Local` truthfully, so nothing is hidden. It does
+  **not** prove that a production deployment could silently use the wrong backend - there is no
+  deployment path to audit, and that absence is the finding rather than a conclusion about one.
+
+  **Remediation is not "change the CLI default".** The enforcement that already exists and already
+  works is the release-acceptance rule used in B4.2: a run is eligible as release evidence only if the
+  artifact reports `backend = OpenRouter`, `model = qwen/qwen3.5-9b`, and a non-null `codeRevision`.
+  Making the provider mandatory in the CLI needs a deployment contract stating that an invocation
+  without an explicit provider is invalid - case **C** - and no such contract exists yet.
+
+  **A side observation worth keeping**, because it vindicates M12-A3: `dhx.cmd` prefers a published
+  GPU build over the freshly compiled one, so it can launch a binary older than the working tree. The
+  artifact reports that binary's own embedded revision, which is exactly what makes a stale launcher
+  visible after the fact. Had `codeRevision` come from the operator or the environment, the artifact
+  would have claimed the revision someone intended to run rather than the one that ran.
+
+- [ ] Nothing else in M12-B is opened yet. Artifact retention, checkpoint retention, failure
+  reporting, output and writeback location, and secret redaction tests are **not** a checklist to work
+  through because the milestone is called release readiness. One question at a time, each opened on
+  its own evidence.
+
 ## Decision gate
 
 - [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates
