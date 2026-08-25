@@ -2250,11 +2250,91 @@ than a migration regression. M10.2 asks what the matcher actually does, and chan
   Locked as **current production behaviour faithfully observed**, not as desired behaviour. No
   remedy follows from this milestone.
 
-- [ ] M10.2-A (not scheduled, needs a trigger) whether grounding should require needle uniqueness, or
-  rank candidate paragraphs rather than take the first. Both are behaviour changes and would need the
-  usual gate: measure on the population the rule classifies, and measure collateral. The observed
-  defect is real; the causal owner (needle construction, the cursor rule, or the absence of a rank)
-  is not yet separated, and 010 alone is one document.
+### M10.2-A — CLOSED / TRIGGER-GATED
+
+Closed at `2c117cf` with zero production change. "The defect is real" was too loose a claim to close
+on, so the evidence is split by what it actually licenses:
+
+**Proven**
+- the matcher grounds by first-fit substring occurrence.
+- occurrence multiplicity can be very high: `anninhmạng` occurs in 211 paragraphs, `luật` in 63.
+- for an ambiguous needle the result depends on cursor position, and so on block order.
+- one DOCX paragraph receiving many PDF blocks can be legitimate grounding (010 merges an article
+  into one paragraph while the PDF renders each clause separately).
+
+**Not proven**
+- that the production analyst lane currently misgrounds `b4`/`b5` to paragraph 417. Not reproduced.
+- that first-fit ambiguity causes material product loss today. The audit measured the retrieval
+  superset; production aligns a model-chosen subset of it, so nothing here can be read backwards
+  into a production failure rate.
+
+This split is what forbids the two tempting fixes. Requiring an exact whole-paragraph match, or
+rejecting short needles outright, would both break the 70 paragraphs that legitimately receive more
+than one block. A weak identity mechanism is not licence for a blunt rule against the valid case.
+
+**Reopen triggers**
+- a persisted analyst-lane artifact reproduces a wrong canonical anchor.
+- reviewed occurrence gold exposes material grounding errors.
+- another corpus reproduces ambiguous first-fit misgrounding.
+
+Until one fires: no `GroundingResolver`, no change to the `IndexOf` search, no ranking or tie-break.
+
+## M10.3 — 092 scope lifecycle, audit only
+
+092's hierarchy is limited by what reaches the validator, so a better resolver cannot help while the
+parent headings are still being filtered upstream. M10.3 asks one question: does an appendix scope
+opened from a contents line stay open over real body, and does that mislabel body headings? It does
+not touch `TableLike`, hierarchy, or any model lane.
+
+- [x] M10.3-A1 scope lifecycle trace, model-free. `StructuralScopeTracker` gained an optional passive
+  sink recording, per block, the scope it arrived with, the scope it left with, and the latch state
+  that decided the difference. `PdfCandidateContextBuilder.Build` passes the sink through. No new
+  resolver, no behaviour change; the tracker's state machine is unchanged and is not copied anywhere.
+
+  **092 measured over 499 candidate blocks, pages 1-35:**
+
+  | measure | value |
+  |---|---|
+  | `document_body` -> `appendix` | 287 |
+  | `table` -> `appendix_table` | 59 |
+  | `document_body` -> `quoted_replacement` | 92 |
+  | `document_body` -> `document_body` | 43 (all on pages 1-4) |
+  | blocks matching the appendix pattern | 3 |
+  | times the appendix latch reset | 0 |
+
+  **Scope-lifecycle defect: proven.** The latch is set on page 4 by block `b43`, whose text is
+  `Appendix A Collected ABNF Appendix B Changes from RFC 7234 Acknowledgements Index` - a contents
+  line, arriving with scope `document_body`. `_appendix` has no reset path anywhere in the tracker,
+  so it stays on for the remaining 443 blocks, pages 4 through 35. The document's real appendices
+  only start on page 32 (`b485`, `b490`). Pages 5-31 are normative RFC body relabelled as appendix.
+
+  This is not a near-miss reading: on page 5 the blocks relabelled `appendix_table` are
+  `1 Introduction`, `1 1 Requirements Notation`, `1 2 Syntax Notation` and `1 2 1 Imported Rules` -
+  precisely the parent-capable section headings 092 is missing. After page 4, no block anywhere in
+  the document retains `document_body`.
+
+  Two further facts, recorded and kept separate from the above:
+  - **The contents block was never recognised as one.** No block in 092 received scope
+    `table_of_contents`; `DetectTocBlockIds` returned nothing. The appendix trigger would have fired
+    regardless, because it tests the text without consulting the incoming scope - so this is a second
+    contributing defect, not the same one.
+  - **The quote latch leaks the same way.** From page 28 onward 92 blocks become
+    `quoted_replacement`, covering pages 28-35 and swallowing the real appendices on page 32.
+    `_insideQuote` is set by an unbalanced quote character and only cleared by a closing one. Same
+    shape - a latch with no independently justified exit - but a different trigger, so it is a
+    separate finding and not evidence for the appendix one.
+
+- [ ] M10.3-A2 reset counterfactual, diagnostic only. Compare actual scope state against a
+  counterfactual that closes the appendix scope at an independently justified body boundary, then
+  replay the existing downstream logic and measure both directions: scope labels changed, candidate
+  count changed, validated headings changed, parent-capable headings recovered - and how many
+  contents lines, table rows and prose blocks are released as false candidates at the same time.
+  "More headings" alone is not a result. This is why `TableLike` is not touched first: the
+  short-numbered false-positive rate was measured on a population where pages 5-31 were labelled
+  appendix, and correcting the scope may change that population entirely.
+
+- [ ] M10.3-B `TableLike`. Opens only if A closes and fresh data still shows material loss. The
+  existing ~74% short-numbered false-positive figure does not carry across a scope correction.
 
 ## Decision gate
 
