@@ -2926,13 +2926,58 @@ not sufficient alone for ten of them, so it cannot be promoted on a recovery arg
 it is no longer a 3-of-14 side issue, and the earlier recommendation to prioritise ranking over it was
 based on my misreading rather than on the data.
 
-- [ ] Next decision, and it is the user's: whether to open the appendix lifecycle knowing it is
-  necessary-but-insufficient for most of the population, or to first measure what a *combined*
-  counterfactual would recover - appendix transition withheld **and** the ranking boundary observed
-  together. The second answers whether the overdetermination is two blockers or three, which is the
-  thing neither M10.6 nor M10.7 can settle alone. It would be the first counterfactual in this
-  milestone to move two variables at once, and that has to be a deliberate, stated choice rather than
-  a convenience - measured as a joint bound, never as evidence for either owner separately.
+### M10.6-A - appendix-only counterfactual: necessary, and nowhere near sufficient
+
+One variable. The reviewed false transitions were withheld and nothing else changed - `TableLike`,
+scorer, comparator, budget, output policy, TOC detector and quote logic all as they are. Ranks were
+allowed to move as a consequence of scope changing, which is the effect, not a second intervention.
+
+The false transitions were reviewed and listed as occurrences, in three shapes: contents listings with
+dot leaders (032 pages 121 and 254), the same listings merged into one block (pages 133 and 265), and
+body prose referring to an appendix (pages 166, 209, 219, 269; 091 page 35). Every genuine annex or
+appendix opening kept its trigger.
+
+**Recovery: zero of fourteen. Emittable is unchanged in both documents - 032 stays at 134, 091 at 28.**
+
+**091 - the loss moves to a scope that was hidden underneath.** Appendix scope collapses as intended:
+`appendix` 50 -> 0, `appendix_table` 269 -> 7. All six headings then land in `quoted_replacement`.
+Three of them are now *selected* - ranks 114, 150, 158, inside the budget - and excluded at output
+anyway. 091 has a quote latch leak of its own, and the appendix scope was masking it. This is the
+third document in which correcting one scope reveals another underneath, and the second time a wrong
+scope turns out to have been shielding the heading from a different death.
+
+**032 - a genuine trigger contaminates exactly like a false one.** The first surviving transition is
+`b2124` on page 135, `Annex 1. Request for Change Proposal` - a real annex opening, correctly
+detected. It latches, never exits, and the General Conditions clauses on pages 157-186 remain
+`appendix_table`. Four headings fall back to `ranking_or_budget`, two stay `appendix_table` behind
+the genuine trigger, and two now carry `table_scope`.
+
+**And one heading is made worse.** `2. Change Order Log` moves from `appendix_table` at rank 458 to
+`table` at rank **4711**: correcting its scope removed the shield that `appendix_table` provided
+against the `table_scope` penalty. The same effect M10.3-A2 found on 092, reproduced on a second
+document and a different domain.
+
+#### What this settles
+
+**The missing exit is the deeper defect, not the false trigger.** M10.3-A framed appendix leakage as a
+contents line firing a trigger it should not have. 032 shows that a *correct* trigger produces the
+same contamination, because the latch has no end. No amount of trigger review fixes that, and a
+remediation aimed at triggers would have left the larger half of the problem untouched.
+
+**Appendix scope is necessary for 13 of 14 and sufficient for none.** The earlier reading that it was
+sufficient for three was drawn from the shipped state; with the appendix scope corrected, those three
+are blocked by `quoted_replacement` or by the budget instead. Every one of the fourteen is
+overdetermined.
+
+- [ ] M10.6 promotion gate: **not met, and not met on a recall argument at all.** A lifecycle repair
+  cannot be justified by heading recovery, because the measured recovery of a correct appendix scope
+  is zero. If it is ever promoted it will be as a correctness repair to a source fact - scope is
+  wrong, systematically, across three documents and two domains - with collateral measured on its own
+  terms. That is a legitimate case but it is a different one, and it needs its own gate.
+
+- [ ] Recorded, not opened: 091 quote latch leak. Same shape as 092's, different document, and it now
+  blocks three headings that reach the budget. It inherits M10.4's finding that the quote latch's exit
+  condition reads a character class the document never uses.
 
 - [ ] M10.7-B scoring competitiveness stays open and unchanged. 032's headings score 0.38-0.48 with
   hundreds of candidates genuinely above them, and 054's `AVAILABILITY OF INFORMATION` fails the same
