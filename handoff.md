@@ -12359,3 +12359,30 @@ ProductOutput`; its `DocumentOutline` is a compatibility shell and writeback rec
 `HumanReviewBeforeWriteback` remains unchanged. The writeback mechanism is migrated, but automatic
 writeback remains blocked for `RequiresReview` results by that separate product-safety policy.
 `OutlineWriteback` remains the normal DOCX/Web route.
+
+### M10.4-A closed; M10.5-A discovery frozen
+
+`ede1423` and `aca93c5` are pushed on `m7-m8-audit-provenance`. M10.4-A is closed with zero
+production change: the quote leak is real but its reviewed suppression recovers no heading, so it
+is not the causal owner of the 092 TableLike loss. Do not open TOC debt: `DetectTocBlockIds` is a
+real separate trigger, but a TableLike remedy has only been causal on 092 and using TOC to rescue
+that one document would be selection-driven debt expansion.
+
+M10.5-A is a gold-free/model-free corpus discovery sweep, implemented by
+`PdfTableLikeCrossDocumentDiscoveryProbe` and frozen at
+`.verify-build/m105a-tablelike-cross-document-discovery.json`. It covers all 95 corpus documents
+without a key/model/counterfactual. It ranks only exposure to existing facts:
+`short_numbered`, `HasStructuralMarker`, affected blocks, downstream `table` scope and
+`table_scope` penalty, and a fixed 160-candidate budget. Results: 67/95 documents expose at least
+one `short_numbered && HasStructuralMarker` line; 66/95 have at least one affected block penalized
+by `table_scope`. Thus the interaction is cross-corpus, but no cross-document heading loss is yet
+proven.
+
+M10.5-B must review a bounded occurrence sample selected *before* any gold outcome was inspected:
+procurement `032_WB_Plant_TwoStage_2020` (227 exposed lines / 61 penalized blocks), financial
+`043_IBRD_Financial_Statements_June_2024` (52 / 32), textbook `063_Advanced_Linear_Algebra`
+(678 / 549), and RFC sibling `091_RFC9110_HTTP_Semantics` (425 / 50). The audit labels only the
+exposed line population as heading / TOC / actual table / prose and traces the existing chain to
+rank/output. It must not alter production, inspect whole-document gold, or open TOC debt. Only a
+reproduced cross-document causal loss allows a TableLike remediation discussion; otherwise close
+the interaction as 092-specific.

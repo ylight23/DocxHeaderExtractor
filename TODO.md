@@ -2689,6 +2689,27 @@ trigger, like the TOC debt.
   - `DetectTocBlockIds` returning nothing on 092.
   Neither is evidence for the other, and neither is opened by B.
 
+## M10.5 - TableLike cross-document boundary
+
+- [x] M10.5-A cross-document discovery, gold-free/model-free. The 95-file sweep is frozen at
+  `.verify-build/m105a-tablelike-cross-document-discovery.json`; it measures only the existing
+  `short_numbered` branch, the existing `HasStructuralMarker` fact, affected candidate blocks,
+  downstream table scope/penalty, and whether the pool exceeds the fixed 160 budget. It does not
+  load keys, inspect heading outcomes, call a model, apply a counterfactual, or change production.
+  Exposure is broad: 67/95 documents have at least one structural-marked short-numbered line and
+  66/95 have at least one affected block carrying `table_scope`. 092 is therefore not the only
+  document exercising the interaction, but it remains the only causal outcome trace.
+  The independent M10.5-B review population is selected before outcome review from the frozen
+  ranking: procurement `032` (227 exposed lines / 61 table-penalised blocks), financial `043`
+  (52 / 32), textbook `063` (678 / 549), and RFC sibling `091` (425 / 50). These are exposures,
+  not predicted defects. Review only a small sample of `short_numbered && HasStructuralMarker`
+  occurrences and trace the same downstream chain.
+- [ ] M10.5-B small reviewed occurrence audit: for the preselected documents only, label a bounded
+  sample of the exposed population as outline heading / TOC / true table / prose, then trace
+  `short_numbered -> TableLike -> scope -> table_scope penalty -> rank/output`. Revisit a safe
+  TableLike remediation only if the causal loss reproduces cross-document; otherwise close it as a
+  092-specific interaction. Do not open TOC debt from this audit unless its separate trigger is met.
+
 ## Decision gate
 
 - [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates
