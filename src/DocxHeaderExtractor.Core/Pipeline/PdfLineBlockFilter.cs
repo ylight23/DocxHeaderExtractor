@@ -23,7 +23,11 @@ internal sealed record PdfLineBlockAnnotation(
         (Repeated && HeaderFooterZone) ||
         (TableLike && (Repeated || !HasStructuralMarker(Line.Text)));
 
-    private static bool HasStructuralMarker(string text)
+    /// <summary>
+    /// The existing production fact that already gates candidate grouping. Visible to evaluation so
+    /// an audit can ask whether it separates a population, without restating it.
+    /// </summary>
+    internal static bool HasStructuralMarker(string text)
     {
         var repaired = PdfTextUtilities.HeadingReadable(text);
         return PdfMarkerFactsParser.Parse(text) is not null ||
