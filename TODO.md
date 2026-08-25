@@ -2324,17 +2324,76 @@ not touch `TableLike`, hierarchy, or any model lane.
     shape - a latch with no independently justified exit - but a different trigger, so it is a
     separate finding and not evidence for the appendix one.
 
-- [ ] M10.3-A2 reset counterfactual, diagnostic only. Compare actual scope state against a
-  counterfactual that closes the appendix scope at an independently justified body boundary, then
-  replay the existing downstream logic and measure both directions: scope labels changed, candidate
-  count changed, validated headings changed, parent-capable headings recovered - and how many
-  contents lines, table rows and prose blocks are released as false candidates at the same time.
-  "More headings" alone is not a result. This is why `TableLike` is not touched first: the
-  short-numbered false-positive rate was measured on a population where pages 5-31 were labelled
-  appendix, and correcting the scope may change that population entirely.
+- [x] M10.3-A2 reset counterfactual, diagnostic only. The tracker gained an evaluation-only set of
+  withheld appendix entries - reviewed source ids, not a predicate, because inventing a TOC-shape
+  classifier or a body-boundary rule here would be a remediation wearing a counterfactual's clothes.
+  Exactly one transition was withheld, `b43`. Everything else, including the real appendix triggers
+  on page 32, was left alone.
 
-- [ ] M10.3-B `TableLike`. Opens only if A closes and fresh data still shows material loss. The
-  existing ~74% short-numbered false-positive figure does not carry across a scope correction.
+  **The scope labels recover completely. The headings do not.**
+
+  | measure | actual | withholding b43 |
+  |---|---|---|
+  | `appendix` / `appendix_table` | 287 / 59 | 0 / 0 |
+  | `document_body` | 43 | 330 |
+  | pages 5-31 `document_body` | 0 | 284 |
+  | blocks scoring `scope_conflict` | 456 | 169 |
+  | excluded by scope, whole population | 151 | 107 |
+  | emittable at budget 160 | 98 | 86 |
+
+  **Causality refuted for the loss it was opened to explain.** Not one of the four body headings
+  becomes emittable:
+
+  | block | scope | rank | score |
+  |---|---|---|---|
+  | `b45` `1 Introduction` | `appendix_table` -> `table` | 32 -> 452 | 0.54 -> 0.00 |
+  | `b53` `1 1 Requirements Notation` | `appendix_table` -> `table` | 33 -> 454 | 0.54 -> 0.00 |
+  | `b58` `1 2 Syntax Notation` | `appendix_table` -> `table` | 34 -> 455 | 0.54 -> 0.00 |
+  | `b61` `1 2 1 Imported Rules` | `appendix_table` -> `table` | 35 -> 456 | 0.54 -> 0.00 |
+
+  The loss is overdetermined, and the false scope was shielding them. `appendix_table` carries no
+  negative ranking signal, so these blocks ranked 32-35 and were then dropped because
+  `appendix_table` is an excluded output scope. Corrected to `table` they lose the shield, take the
+  `table_scope` penalty of -0.60, score 0.00 and fall to rank 452-456 - outside the budget. Whichever
+  scope they carry they are lost, and the binding constraint is the `TableLike` annotation upstream
+  of scope, not the appendix leak.
+
+  Two further observations, recorded:
+  - the net emittable change is -12, and its composition matters more than its sign: 25 body prose
+    sentences left (they were false positives) and 13 entered, mostly page-1 front matter
+    (`Category:`, `Authors:`, `Copyright Notice`) alongside `Abstract` and `Status of This Memo`.
+    There is no benefit here to promote.
+  - the real appendices on page 32 do **not** become `appendix` in the counterfactual either. The
+    quote latch has already taken pages 28-35, so withholding `b43` cannot restore correct appendix
+    labelling. The expectation that the genuine trigger would simply fire normally did not hold, for
+    a reason independent of this intervention.
+
+### M10.3-A - CLOSED, zero production change
+
+**Proven**
+- the appendix latch enters from a contents line and has no reset path; pages 5-31 of 092 are body
+  labelled appendix.
+- withholding that single transition restores every scope label on those pages.
+
+**Refuted**
+- that the appendix leak is what costs 092 its parent-capable headings. It is not. They fail in both
+  worlds, and rank *worse* once the scope is correct.
+
+**Not measured**
+- whether the leak costs anything elsewhere in the corpus. 092 is one document, and the four headings
+  were the reason to look.
+
+No trigger fix, no lifecycle fix, no `DetectTocBlockIds` change. A3-trigger and A3-lifecycle are not
+opened: the counterfactual that would have justified choosing between them came back negative. The
+quote leak stays a separate finding with a separate trigger and is not generalised into a shared
+scope-lifecycle invariant on the strength of one shape resemblance.
+
+- [ ] M10.3-B `TableLike` - **trigger now met.** A2 supplies the fresh evidence the gate required,
+  and supplies it against the corrected population rather than the old one: with scope corrected,
+  four known-good RFC section headings score 0.00 purely because every line under them is annotated
+  `TableLike`. The old ~74% short-numbered false-positive figure is still not usable and must be
+  re-measured. Open as a first-loss audit of the `TableLike` annotation on the population it
+  classifies, not as a fix.
 
 ## Decision gate
 
