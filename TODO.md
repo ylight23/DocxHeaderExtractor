@@ -2979,10 +2979,68 @@ overdetermined.
   blocks three headings that reach the budget. It inherits M10.4's finding that the quote latch's exit
   condition reads a character class the document never uses.
 
-- [ ] M10.7-B scoring competitiveness stays open and unchanged. 032's headings score 0.38-0.48 with
-  hundreds of candidates genuinely above them, and 054's `AVAILABILITY OF INFORMATION` fails the same
-  way. That owner is the scorer, it is untouched by any of the above, and it is the only one of the
-  three candidate mechanisms that this audit has not undercut.
+- [x] M10.7-B1 scorer fact mapping. Facts and signals observed; no score recomputed, no weight
+  touched. Denominator is the four 032 headings whose scope blocker was independently removed in
+  M10.6-A. 054's `AVAILABILITY OF INFORMATION` is a comparison and stays out of that count.
+
+  **The four 032 headings are identical, and the mismatch is exact.**
+
+  | fact | produced? |
+  |---|---|
+  | `PdfMarkerFactsParser` (strict structural) | **yes** - `family=arabic`, `isPath=true`, all four |
+  | `HasStructuralMarker` | **true**, all four |
+  | `ParseLooseLabelledMarkerForAudit` | none |
+  | `NumberingAudit` (generic) | true |
+
+  The scorer credits `unlabelled_numbering_prefix` and `standalone` and nothing else, then adds
+  `unlabelled_numbering` and `no_labelled_structural_marker` as ambiguity. Score 0.38.
+
+  Reading the scorer confirms why: it asks `ParseLooseLabelledMarkerForAudit` (worth +0.42) and
+  `NumberingAudit` (worth +0.10). **It never asks `PdfMarkerFactsParser` or `HasStructuralMarker`**,
+  except indirectly inside `IsMarkerTitleComposite`, which requires two or three lines and so cannot
+  fire for a standalone heading.
+
+  **This is the second place the same fact is produced, used once, and then ignored.** M10.7-B3 found
+  `HasStructuralMarker` gating candidate grouping and not consulted by scope derivation; it is not
+  consulted by scoring either. The pipeline computes a fact that separates real headings from real
+  tables perfectly on the reviewed population, and spends it at exactly one gate.
+
+  **The budget is effectively reserved for labelled markers.** Of 032's selected 160, **159 carry
+  `labelled_numbering_marker`** and one carries `unlabelled_numbering_prefix`. The score at the budget
+  edge is 0.55. A standalone heading whose marker is structural but not labelled reaches 0.38, or 0.54
+  with layout prominence - below the edge either way. It is not competing and losing; it cannot reach
+  the boundary.
+
+  A detail worth recording rather than smoothing over: the strict parser fires with `depth=1` on
+  `22. 2. 8 Funeral Arrangements`, not depth 3, because extraction spaces the marker into `22. 2. 8`.
+  The fact is present but its depth is already damaged by the same space-insertion that produced the
+  `5. Field Definitions` debt. Any use of this fact downstream inherits that.
+
+  **054 is a different mechanism and must not be merged in.** Strict parser: none.
+  `HasStructuralMarker`: false. There is no marker fact to propagate - the heading is genuinely
+  unnumbered, and `standalone` plus `layout_prominence` caps it at 0.44 against a budget edge of 0.54.
+  That is the no-marker ceiling already recorded from M10.1e, and it is an evidence-generation
+  question, not a mapping one.
+
+### M10.7-B gate
+
+**Two owners, confirmed distinct.**
+- 032/091 - a produced fact does not reach the scorer. Owner is feature propagation, not weight.
+- 054 - no fact exists to reach it. Owner is evidence generation.
+
+**Not opened, and the temptation is explicit:** crediting `HasStructuralMarker` in the scorer looks
+like a small, well-founded change - the fact exists, it discriminates, and production already trusts
+it elsewhere. It is still unmeasured. B3 showed the same fact holds for 35 of 35 contents entries on
+092, so crediting it would raise every contents line in the corpus by the same amount, and the four
+headings it would help are on one document.
+
+- [ ] M10.7-B2 counterfactual, when opened: credit the existing fact, then measure recovery **and**
+  what else rises with it - contents entries above all - on the corrected-scope population and across
+  documents. The collateral question is already known to be sharp, so a B2 that reports only recovery
+  would be worthless.
+
+- [ ] Recorded: the marker-depth damage above. If a fact whose depth is wrong is promoted into
+  scoring, the damage propagates. Worth measuring before, not after.
   - [x] B1 sample frozen at `.verify-build/m105b1-tablelike-reviewed-exposure-sample.json` by
     SHA-256 ordering of exact source-line identity: 10 `table_scope_penalized` + 10
     `not_table_scope_penalized` occurrences per preselected document, 80 total. Population/sample:
