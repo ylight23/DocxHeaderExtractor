@@ -2709,6 +2709,16 @@ trigger, like the TOC debt.
   `short_numbered -> TableLike -> scope -> table_scope penalty -> rank/output`. Revisit a safe
   TableLike remediation only if the causal loss reproduces cross-document; otherwise close it as a
   092-specific interaction. Do not open TOC debt from this audit unless its separate trigger is met.
+  - [x] B1 sample frozen at `.verify-build/m105b1-tablelike-reviewed-exposure-sample.json` by
+    SHA-256 ordering of exact source-line identity: 10 `table_scope_penalized` + 10
+    `not_table_scope_penalized` occurrences per preselected document, 80 total. Population/sample:
+    `032` 61/148/20; `043` 24/27/20; `063` 599/54/20; `091` 110/305/20
+    (penalized/non-penalized/sample). Every `reviewRole` is null. The artifact freezes source file
+    SHA-256, exact PDF geometry/text identity, all carrier blocks, and the current primary carrier's
+    scope, penalty, score, rank, selected, and emittable state before role review.
+  - [ ] B2 reviewed role labels: annotate exactly those frozen identities in a separate review
+    artifact; do not replace a source occurrence, select a prettier line, or infer role from title
+    containment. B3 consumes only the completed review artifact plus this frozen actual trace.
 
 ## Decision gate
 

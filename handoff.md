@@ -12386,3 +12386,14 @@ exposed line population as heading / TOC / actual table / prose and traces the e
 rank/output. It must not alter production, inspect whole-document gold, or open TOC debt. Only a
 reproduced cross-document causal loss allows a TableLike remediation discussion; otherwise close
 the interaction as 092-specific.
+
+M10.5-B1 is now frozen at `.verify-build/m105b1-tablelike-reviewed-exposure-sample.json`.
+`PdfTableLikeReviewedExposureSampleProbe` ranks exact source-line IDs by SHA-256 independently in
+each stratum, then takes 10 `table_scope_penalized` and 10 `not_table_scope_penalized` items per
+document: 80 total. All four documents have enough population, so no fallback occurred:
+`032` is 61/148/20, `043` 24/27/20, `063` 599/54/20, and `091` 110/305/20
+(penalized/non-penalized/sample). Every sampled item has `reviewRole: null`; B1 has not inspected
+or inferred a heading role. The frozen row retains source SHA-256, exact PDF source-line identity
+and geometry, every carrier block, and the current primary carrier's actual scope/penalty/score/
+rank/selection/emittable chain. B2 must add a separate role-only review artifact for these exact
+identities; B3 traces only reviewed outline headings through the already-frozen actual behavior.
