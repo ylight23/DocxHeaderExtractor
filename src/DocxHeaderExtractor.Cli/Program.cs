@@ -2425,15 +2425,10 @@ static IReadOnlyDictionary<string, IReadOnlyList<string>> BuildKeyIndex(IReadOnl
         var fullPath = Path.GetFullPath(path);
         AddStem(stem, fullPath);
 
-        // Rebased evaluation keys keep their source stem plus a versioned suffix. The route audit
-        // still receives the original DOCX stem, so index the alias without duplicating/replacing
-        // either key. Filtering by --pdf-stage-key-root below keeps source authority explicit.
-        const string regeneratedSuffix = "-regenerated-docx";
-        if (!stem.EndsWith(regeneratedSuffix, StringComparison.OrdinalIgnoreCase)) return;
-        var versionStart = stem.LastIndexOf(".v", stem.Length - regeneratedSuffix.Length, StringComparison.OrdinalIgnoreCase);
-        if (versionStart <= 0) return;
-        var version = stem[(versionStart + 2)..^regeneratedSuffix.Length];
-        if (int.TryParse(version, out _)) AddStem(stem[..versionStart], fullPath);
+        // The route audit receives the original document stem, so a versioned key is also indexed
+        // under the stem it belongs to. Two generations sharing that stem stay two matches, and the
+        // caller reports an ambiguous key rather than silently measuring a superseded one.
+        if (EvaluationKeyAlias.TryGetSourceStem(stem, out var sourceStem)) AddStem(sourceStem, fullPath);
     }
 
     foreach (var file in files)
