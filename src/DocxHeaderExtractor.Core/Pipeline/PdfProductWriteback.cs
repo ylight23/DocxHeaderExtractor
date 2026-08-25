@@ -1,4 +1,4 @@
-using DocumentFormat.OpenXml.Packaging;
+﻿using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
@@ -47,6 +47,18 @@ public static class PdfProductWriteback
             throw new InvalidOperationException("Đích ghi trùng file nguồn; writeback luôn ghi ra bản sao.");
         if (File.Exists(target) && !options.Overwrite)
             throw new InvalidOperationException($"File đích đã tồn tại: {target}");
+
+        // The output declares the exact revision it was derived from. Applying it to any other
+        // document would be using an artifact outside the authority it states about itself, so the
+        // whole operation is refused here rather than left to the per-heading checks: those verify
+        // that a particular anchor still holds, which is not the same as verifying that this is the
+        // document the anchors were taken from. Checked before the copy, so a refused writeback
+        // leaves nothing behind at all.
+        var actualSourceSha = Sha256(source);
+        if (!string.Equals(actualSourceSha, output.SourceDocumentSha256, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidOperationException(
+                $"Product output thuộc về bản tài liệu khác; writeback bị từ chối. " +
+                $"expected={output.SourceDocumentSha256} actual={actualSourceSha}");
 
         var directory = Path.GetDirectoryName(target);
         if (!string.IsNullOrEmpty(directory)) Directory.CreateDirectory(directory);
@@ -154,6 +166,10 @@ public static class PdfProductWriteback
 
         return new OutlineWritebackResult(target, applied.Count, skipped);
     }
+
+    private static string Sha256(string path) =>
+        Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(path)))
+            .ToLowerInvariant();
 
     private static string? Skip(PdfProductHeading heading, int paragraphCount)
     {
