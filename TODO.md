@@ -4343,16 +4343,53 @@ output eligibility.
   `028` remains a candidate-construction/selection benchmark but contributes no semantic metric. B3
   therefore has exactly three prospective calls (`001`, `041`, `056`), each one frozen-profile
   OpenRouter run with no retry and no tuning; this work item intentionally stops before those calls.
-- [ ] B3 - one bounded OpenRouter run per *semantic-eligible* document only (frozen profile in the
-  manifest above), no retry, no tuning. Not started for any document - gold completes for 041 and 056
-  before any live call, specifically to avoid a reviewer anchoring on an earlier document's model
-  accuracy while reviewing the rest. No longer assumed to be "4 documents -> 4 calls" - only documents
-  clearing the eligibility gate above get a call.
-- [ ] B4/B5 - measure the same decomposition (candidate recall, selection survival, deterministic
-  eligibility, conditional semantic recall, validated precision via Lane C's worksheet) per document,
-  then the decision gate: does semantic quality generalize, or is precision domain-specific, or does
-  everything look fine while end-to-end recall stays low (the strongest case for reopening a frozen
-  debt). Not started.
+- [x] B3 - frozen-profile OpenRouter semantic benchmark. After B2 was committed/pushed at `f514ddc`,
+  exactly one valid `pdf-hierarchy-facts` run was frozen for each semantic-eligible document using
+  `OpenRouter`, `qwen/qwen3.5-9b`, wide+supplement candidates, 160 blocks, default concurrency, and
+  the manifest timeouts. `028` was not called. The valid artifacts have matching source SHA, backend,
+  model, prompt/profile, and build revision `f514ddc`; an earlier `001` preflight built at `80389c1`
+  with zero facts is retained only as invalid provenance and is not evaluated.
+
+  | doc | decision-relevant | validated reviewed | conditional semantic recall |
+  |---|---:|---:|---:|
+  | 001 legal | 162 | 0 | 0/162 (0%) |
+  | 028 procurement | 1 | N/A | N/A - insufficient cohort |
+  | 041 financial | 15 | 15 | 15/15 (100%) |
+  | 056 textbook | 15 | 15 | 15/15 (100%) |
+
+  This proves a semantic-stage loss for 001 only; it does not distinguish analyst proposal, span
+  mapping, or validator owner. No investigation of 001 is opened in this round.
+- [x] B4 - full validated-output precision census, no sampling. The frozen worksheet was reviewed by
+  source fact identity, page, validated span, and full source-block context using only
+  `TRUE_HEADING`, `TOC_ENTRY`, `MULTI_HEADING_COMPOSITE`, `NON_HEADING`, and `UNCERTAIN`.
+
+  | doc | reviewed | TRUE | TOC | composite | non-heading | uncertain | confirmed precision |
+  |---|---:|---:|---:|---:|---:|---:|---:|
+  | 041 financial | 29 | 16 | 12 | 1 | 0 | 0 | 16/29 (55.2%) |
+  | 056 textbook | 46 | 17 | 0 | 18 | 11 | 0 | 17/46 (37.0%) |
+  | 001 legal | 0 | N/A | N/A | N/A | N/A | N/A | N/A |
+
+  These are per-document precision figures, not a pooled product/corpus precision.
+- [x] B4.1/B5 - precision first-owner audit, artifact-only before any remediation. B5.1 replayed B2's
+  exact occurrence -> covering candidate -> rank -> selected@160 -> deterministic-eligibility join for
+  every 041 TRUE output: 15 match the 15 decision-relevant reviewed occurrences; the +1
+  (`s-line-2337`, Section XII) is a real `TRUE_HEADING_OUTSIDE_GOLD_SCOPE`, not a census or selection
+  defect. In 056, `About OpenStax` and `Where Did the Concept Originate?` are likewise real TRUE
+  headings outside the 46-item frozen gold scope.
+
+  B5 traces all 42 false accepts: 041 has 12 TOC/context-fact misses (page 3 persisted as
+  `document_body`) and one composite boundary; 056 has 18 composite-boundary failures and 11 numbered
+  review questions. The 11 questions pass every existing deterministic scope/domain/evidence-origin
+  predicate, so a single checkpoint-instrumented **replication** of 056 was justified after the
+  model-free audit. It was added as opt-in diagnostics at `6a57759` and is not a replay of the B3 run:
+  all 11 received analyst role `HeadingTopic` (0.9-1.0), establishing `ANALYST_WRONG_ROLE` for that
+  failure shape. The replication produced 45 rather than B3's 46 validated outputs; record that as
+  instability and do not run a third call.
+
+  **Decision:** no common semantic-precision owner is proven and no production remediation is opened.
+  041 remains TOC/context-shaped; 056 splits into representation-boundary and analyst-role failures.
+  Do not reopen 001, ranking, candidate construction, old TOC debt, or composite grouping until a
+  separate owner-specific remediation hypothesis and safety population are defined.
 
 **The end-to-end product figure (C) stays closed** until a product-facing question requires it, and it
 must then be reported with the known debts attached rather than as an extractor score.
