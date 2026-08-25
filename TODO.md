@@ -3172,10 +3172,38 @@ layout fact shown to discriminate without a new classifier.
 Not accuracy archaeology. The question changes: for headings that survive upstream *legitimately*,
 is the final product right?
 
-- [ ] M11-A0 eligibility gate first, before any resolver is opened. Establish the population where
-  hierarchy can even be assessed: a reviewed source occurrence that produces a candidate, is selected,
-  is validated, and reaches an emittable `FinalHeading`. Only inside that population does a wrong
-  level or parent constitute a hierarchy first loss.
+- [x] M11-A0 eligibility gate, model-free. Upper bound only: validation is a model lane, so what is
+  counted here is what *could* reach output, and the true eligible population is a subset of it.
+
+  | document | reviewed | has candidate | selected@160 | scope allows emission |
+  |---|---|---|---|---|
+  | 092 | 37 | 35 | 35 | **0** |
+  | 032 | 8 | 8 | 2 | **0** |
+  | 091 | 6 | 6 | 1 | **0** |
+  | **054** | 23 | 23 | 20 | **20** |
+
+  **Three of the four documents yield nothing, and not because their headings are unreachable.** 092
+  gets 35 of 37 all the way to selection and loses every one at scope; 032 and 091 the same. The
+  blocker is `appendix_table` and `quoted_replacement` - the scope leaks frozen as trigger-gated debts
+  at the close of M10. M11's population is therefore limited by defects that were deliberately not
+  repaired, which is a consequence worth stating plainly rather than discovering later.
+
+  **054 is the only viable population: 20 of 23.** It is also the only document in this project with
+  occurrence-safe reviewed gold, so it is the natural place to assess hierarchy - and it is one
+  document, which is exactly the position M10.5 was opened to correct.
+
+- [ ] M11-A1 needs a decision before it can run, and the decision has a cost attached:
+  - assessing level, parent and order requires validated structures, which requires a live model pass.
+    Nothing offline substitutes for it, and building an offline proxy would be the second
+    implementation this project has spent M10 refusing.
+  - the population would be single-document. A hierarchy finding on 054 alone would carry exactly the
+    generalisation risk that M10.5 measured and that closed `TableLike`.
+  - widening it needs new reviewed occurrence gold. Reviewed occurrences exist only for 092, 054, and
+    the 80-line cross-document sample; no other document has any.
+
+  So the honest options are: spend one live pass on 054 and read the result as single-document; or
+  review occurrences on a second document first and accept that cost before the model spend; or defer
+  hierarchy and open product acceptance instead. Not a measurement question - it needs a call.
 - [ ] M11-A1, only if A0 yields a population: measure `ResolvedLevel`, parent, sibling order, scope
   and role retention, and canonical DOCX grounding against reviewed occurrences.
 - [ ] If A0 yields no clean population, the next milestone is product acceptance and release
