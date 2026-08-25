@@ -3483,6 +3483,67 @@ needs a route/profile decision, not another default-flag run.
 
 
 
+## M11 - CLOSED, PASS WITH KNOWN LIMITATIONS
+
+| | |
+|---|---|
+| B1 product contract acceptance | PASS |
+| B2 post-validation determinism | PASS |
+| B3 fail-closed acceptance | PASS, 1 production hardening promoted |
+| B4.1 broad deterministic smoke | PASS - 95 documents, 0 fatal, 0 violations |
+| B4.2 OpenRouter live integration | PASS |
+
+**Both live runs are kept as acceptance evidence, and 054 is not a failed canary.** It exercised the
+empty path: zero validated structures, zero product records, no fallback, no fabricated output - an
+honest empty result is a behaviour worth having tested. 092 exercised the non-empty path end to end,
+24 grounded records, replayed offline identically. Two runs, two different shapes.
+
+**No second document was run to obtain another non-empty canary.** Doing so would have meant either
+re-choosing a route and profile after seeing the outcome, or running documents until one happened to
+take the M9 path. Both turn a release smoke into a search for a good result.
+
+### What may and may not be claimed
+
+Claimable: *the product pipeline is release-ready with respect to the product authority contract,
+fail-closed behaviour, deterministic post-validation processing, and a bounded OpenRouter integration
+smoke.*
+
+Not claimable: a heading accuracy figure; that hierarchy generalises; that all document families use
+the M9 route; that any trigger-gated debt is resolved; that the OpenRouter product path is proven
+cross-document. Non-empty live product-chain coverage is **one document** - integration evidence, not
+accuracy evidence.
+
+The 21 of 24 null levels on 092 are a known limitation with correct behaviour: unresolved is
+preserved as null and the writeback skips, rather than a level being invented to complete the write.
+
+### OpenRouter release requirement
+
+A production or acceptance smoke invocation must explicitly resolve `backend = OpenRouter` and
+`model = qwen/qwen3.5-9b`. **A run is invalid as OpenRouter acceptance evidence if the artifact
+reports another backend**, and a Local run is never reinterpreted as OpenRouter evidence.
+
+This is recorded because a CLI invocation without `--openrouter` silently defaults to the Local
+llama.cpp backend. It is not a product-contract failure - the artifact declares `backend: Local` and
+the model file honestly, so the system does not misreport its provider - but it is an operational
+configuration hazard wherever OpenRouter is the intended deployment. Making the provider mandatory in
+the CLI is **not** done here; it would need a deployment contract that says so.
+
+## M12 - release and operational readiness
+
+Deliberately not another accuracy milestone. No scorer, no hierarchy, no TOC, no marker work. Scope is
+configuration, deployment, provider selection, secrets, logging and redaction, artifact retention,
+checkpoint and replay, timeouts, error reporting, writeback output location, the release runbook, and
+version and fingerprint reporting.
+
+The forgotten `--openrouter` is the evidence that this is now worth more than another accuracy
+experiment.
+
+- [ ] M12-A configuration acceptance. A run must be able to state what it was: application version and
+  git revision, route, backend, model, endpoint host, timeouts, product schema version. Secrets
+  reported by presence only, never by value. Artifacts must carry source SHA, backend and model,
+  execution status, partial or timeout status, and the product fingerprint.
+  Audit what already exists before adding anything - the same order that made B1 and B3.2 cheap.
+
 ## Decision gate
 
 - [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates
