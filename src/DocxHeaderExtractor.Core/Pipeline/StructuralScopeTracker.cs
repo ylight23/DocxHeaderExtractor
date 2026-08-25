@@ -1,10 +1,19 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
 /// <summary>Tracks document-local namespaces from source order before any model proposal.</summary>
 internal sealed class StructuralScopeTracker
 {
+    /// <summary>
+    /// Optional passive record of how each block's scope was decided. The tracker carries latched
+    /// state across blocks, so a scope read in isolation says nothing about why it was assigned; the
+    /// sink exists so an audit can ask that without keeping a second copy of the state machine.
+    /// </summary>
+    private readonly List<StructuralScopeTransition>? _trace;
+
+    public StructuralScopeTracker(List<StructuralScopeTransition>? trace = null) => _trace = trace;
+
     private static readonly Regex AppendixRx = new(@"^\s*(?:appendix|annex|phu\s+luc)\b", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex AmendmentRx = new(@"(?:amended\s+as\s+follows|replaced\s+as\s+follows|amend(?:ed|ment).*?as\s+follows|sua\s+doi.*?nhu\s+sau|duoc\s+sua\s+doi|bo\s+sung.*?nhu\s+sau)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex TargetRx = new(@"\b(?:law|decree|nghi\s+dinh)\s+(?:no\.?\s*)?[A-Z0-9./-]{4,}", RegexOptions.IgnoreCase | RegexOptions.Compiled);
@@ -46,6 +55,16 @@ internal sealed class StructuralScopeTracker
         else if (_referenceList && !referencesHeading && scope == "document_body") scope = "reference_list";
         else if (_indexTerms && !indexHeading && scope == "document_body") scope = "index_terms";
         else if (_appendix && scope == "document_body") scope = "appendix";
+        _trace?.Add(new StructuralScopeTransition(
+            facts.SourceId, facts.StructuralScope, scope,
+            AppendixLatched: _appendix,
+            AppendixTriggeredHere: appendix,
+            ReferenceListLatched: _referenceList,
+            IndexTermsLatched: _indexTerms,
+            InsideQuote: _insideQuote || wasInsideQuote,
+            AmendmentTriggeredHere: amendment,
+            Page: facts.Page,
+            RawText: text));
         var result = facts with
         {
             StructuralScope = scope,
@@ -60,3 +79,21 @@ internal sealed class StructuralScopeTracker
         return result;
     }
 }
+
+/// <summary>
+/// One block as the scope tracker saw it: the scope it arrived with, the scope it left with, and the
+/// latch state that decided the difference. Observed facts only - whether a transition was correct is
+/// a judgement for evaluation to derive.
+/// </summary>
+internal sealed record StructuralScopeTransition(
+    string SourceId,
+    string IncomingScope,
+    string ResultingScope,
+    bool AppendixLatched,
+    bool AppendixTriggeredHere,
+    bool ReferenceListLatched,
+    bool IndexTermsLatched,
+    bool InsideQuote,
+    bool AmendmentTriggeredHere,
+    int Page,
+    string RawText);
