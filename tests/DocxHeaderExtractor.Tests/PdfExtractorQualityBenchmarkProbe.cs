@@ -43,7 +43,7 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class PdfExtractorQualityBenchmarkProbe
 {
-    private const int SelectedBudget = 160;
+    internal const int SelectedBudget = 160;
 
     [Fact]
     public void Report()
@@ -171,23 +171,39 @@ public sealed class PdfExtractorQualityBenchmarkProbe
         File.WriteAllText(output, report.ToString());
     }
 
-    private static IEnumerable<(string Stem, string Relative, List<Occurrence> Occurrences)> Populations(string corpus)
+    internal static IEnumerable<(string Stem, string Relative, List<Occurrence> Occurrences)> Populations(string corpus)
     {
-        yield return ("054", @"03_tai_chinh_ke_toan\054_IBRD_Information_Statement_FY25.docx", Bridge054());
+        yield return ("054", @"03_tai_chinh_ke_toan\054_IBRD_Information_Statement_FY25.docx", Bridge("054"));
         yield return ("092", @"07_system_generated\092_RFC9111_HTTP_Caching.docx",
             LabelFile("092-short-numbered-line-labels.v1.json"));
         yield return ("032", @"02_hop_dong_mua_sam\032_WB_Plant_TwoStage_2020.docx", CrossDocument("032"));
         yield return ("091", @"07_system_generated\091_RFC9110_HTTP_Semantics.docx", CrossDocument("091"));
+        // B2.0 pilot: blind, source-first review, no candidate/rank/scope/model signal used to build it
+        // (PdfDocument001GoldBuilderProbe). 761 occurrences - Bo luat Dan su 2015's own structure, not a
+        // reviewer's sampling choice.
+        yield return ("001", @"01_phap_quy\001_Bo_luat_Dan_su_91-2015-QH13.docx", Bridge("001"));
+        // B2: procurement (WB SPD), scope-aware review (PdfDocument028GoldBuilderProbe). 113
+        // occurrences - excludes Section IV/X form fields, Section VII's numbered prose (reviewed as
+        // NON_HEADING, not a heading shape), and GC clauses 13/14/15/19 (confirmed absent from this
+        // document's own source, not fabricated from outside FIDIC knowledge).
+        yield return ("028", @"02_hop_dong_mua_sam\028_WB_RFB_Works_Without_Prequal_2017.docx", Bridge("028"));
+        // B2: financial statements. The reviewed bridge keeps statement/note headings and the
+        // source-grounded MD&A checklist while excluding table labels, caption indexes and unlisted
+        // note-internal structure. It deliberately does not inherit procurement marker rules.
+        yield return ("041", @"03_tai_chinh_ke_toan\041_IBRD_Financial_Statements_June_2025.docx", Bridge("041"));
+        // B2: textbook. Source TOC checklist reconciled to body occurrences only; Contents and
+        // Chapter Outline repetitions never enter the reviewed population.
+        yield return ("056", @"04_giao_trinh\056_OpenStax_Business_Law_I_Essentials.docx", Bridge("056"));
     }
 
     /// <summary>
-    /// True occurrence identity: 054 has a reviewed bridge, so its line indexes are read directly and
-    /// never re-derived by matching text against the current extraction.
+    /// True occurrence identity: a reviewed bridge's line indexes are read directly and never re-derived
+    /// by matching text against the current extraction.
     /// </summary>
-    private static List<Occurrence> Bridge054()
+    private static List<Occurrence> Bridge(string stem)
     {
         var directory = Path.Combine(RepositoryRoot(), "keys", "occurrence-bridge");
-        var path = Directory.Exists(directory) ? Directory.GetFiles(directory, "054_*.json").FirstOrDefault() : null;
+        var path = Directory.Exists(directory) ? Directory.GetFiles(directory, $"{stem}_*.json").FirstOrDefault() : null;
         if (path is null) return [];
         var bridge = PdfReviewedOccurrenceBridge.Load(File.ReadAllText(path));
         return bridge.Occurrences
@@ -235,7 +251,89 @@ public sealed class PdfExtractorQualityBenchmarkProbe
     /// means no bridge exists yet for this population, so <see cref="Lines"/> is joined against the
     /// current extraction by canonical text equality instead.
     /// </param>
-    private sealed record Occurrence(string Label, List<(int Page, string Text)> Lines, IReadOnlyList<int>? ResolvedIndexes);
+    internal sealed record Occurrence(string Label, List<(int Page, string Text)> Lines, IReadOnlyList<int>? ResolvedIndexes);
+
+    /// <summary>
+    /// Same candidate/rank/selection join as <see cref="Report"/>, exposed for reuse by A2's evaluator
+    /// so the selection boundary it joins against is the one join, not a second reimplementation of it.
+    /// </summary>
+    internal readonly record struct OccurrenceClassification(
+        Occurrence Occurrence,
+        IReadOnlyList<int> RequiredIndexes,
+        IReadOnlyList<string> RequiredLineIds,
+        string Status,
+        bool Selected,
+        string? CoveringCandidateId,
+        int? CoveringRank,
+        string? DeterministicExclusionReason);
+
+    internal static List<OccurrenceClassification> Classify(string docxPath, List<Occurrence> occurrences)
+    {
+        var snapshot = PdfLayoutEvidenceOutline.BuildCandidateRankingSnapshot(docxPath);
+        var contexts = PdfCandidateContextBuilder.Build(snapshot.CandidateBlocks, snapshot.Annotations);
+        var ranked = PdfCandidateRanker.Rank(snapshot.CandidateBlocks, contexts);
+        var rankOf = ranked.Select((item, index) => (item.SourceId, Rank: index + 1))
+            .ToDictionary(x => x.SourceId, x => x.Rank, StringComparer.Ordinal);
+
+        var indexByKey = new Dictionary<string, int>(StringComparer.Ordinal);
+        for (var index = 0; index < snapshot.Lines.Count; index++)
+            indexByKey.TryAdd(Key(snapshot.Lines[index].Page, snapshot.Lines[index].Text), index);
+
+        var results = new List<OccurrenceClassification>();
+        foreach (var occurrence in occurrences)
+        {
+            var required = occurrence.ResolvedIndexes ?? occurrence.Lines
+                .Select(line => indexByKey.TryGetValue(Key(line.Page, line.Text), out var index) ? index : -1)
+                .Where(index => index >= 0)
+                .ToArray();
+            var requiredLineIds = required.Select(i => PdfCandidateProvenance.LineId(snapshot.Lines[i])).ToArray();
+            if (required.Count == 0)
+            {
+                results.Add(new OccurrenceClassification(occurrence, required, requiredLineIds, "absent", false, null, null, null));
+                continue;
+            }
+
+            var covering = ranked
+                .Where(item => snapshot.Provenance.TryGetValue(item.SourceId, out var p) && p.Covers(required))
+                .OrderBy(item => rankOf[item.SourceId])
+                .ToArray();
+            if (covering.Length > 0)
+            {
+                var rank = rankOf[covering[0].SourceId];
+                var exclusion = contexts.TryGetValue(covering[0].SourceId, out var ctx) ? DeterministicExclusionReason(ctx) : null;
+                results.Add(new OccurrenceClassification(
+                    occurrence, required, requiredLineIds, "full", rank <= SelectedBudget, covering[0].SourceId, rank, exclusion));
+                continue;
+            }
+
+            var touching = ranked.Any(item =>
+                snapshot.Provenance.TryGetValue(item.SourceId, out var p) &&
+                required.Any(p.LineIndexes.Contains));
+            results.Add(new OccurrenceClassification(
+                occurrence, required, requiredLineIds, touching ? "partial" : "absent", false, null, null, null));
+        }
+        return results;
+    }
+
+    /// <summary>
+    /// A2b/A2c: three of <c>PdfProposalValidator.IsEligibleHeading</c>'s gates - structural scope,
+    /// domain role, evidence-origin trust - depend only on candidate construction, never on any analyst
+    /// decision. A candidate one of these rejects is still dispatched to the analyst (selection has no
+    /// domain filter), but the analyst's verdict can never change the outcome: <c>IsEligibleHeading</c>
+    /// is an unconditional <c>&amp;&amp;</c> chain. Null means none of the model-free gates reject it -
+    /// whether it validates then genuinely depends on the analyst's actual answer.
+    /// </summary>
+    internal static string? DeterministicExclusionReason(PdfCandidateContext ctx)
+    {
+        var structuralScopeRejected = ctx.Source.StructuralScope is
+            "table" or "running_page_artifact" or "table_of_contents" or "code_or_grammar" or "reference_list" or "index_terms";
+        if (structuralScopeRejected) return $"structuralScope:{ctx.Source.StructuralScope}";
+        if (DocumentDomainPolicy.IsExcludedFromOutline(ctx.Source.DomainRole)) return $"domainRole:{ctx.Source.DomainRole}";
+        var untrustedOrigins = ctx.Source.EvidenceDetails
+            .Where(e => e.Origin is not ("layout_parser" or "marker_parser" or "scope_detector"))
+            .Select(e => e.Origin).Distinct().ToArray();
+        return untrustedOrigins.Length > 0 ? $"untrustedEvidenceOrigins:{string.Join(",", untrustedOrigins)}" : null;
+    }
 
     /// <summary>
     /// Canonical text equality - separators and case removed, same as
@@ -243,7 +341,7 @@ public sealed class PdfExtractorQualityBenchmarkProbe
     /// probe's own weaker whitespace-collapsing. A join built any looser here reports a source line
     /// "absent" when it only looks different, exactly the failure this fix exists to close.
     /// </summary>
-    private static string Key(int page, string text) =>
+    internal static string Key(int page, string text) =>
         $"{page}|{PdfTextUtilities.CanonicalForMatch(text)}";
 
     private static string Trim(string value)
@@ -252,7 +350,7 @@ public sealed class PdfExtractorQualityBenchmarkProbe
         return single.Length <= 62 ? single : single[..62] + "...";
     }
 
-    private static string RepositoryRoot()
+    internal static string RepositoryRoot()
     {
         var directory = new DirectoryInfo(AppContext.BaseDirectory);
         while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")))

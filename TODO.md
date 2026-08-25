@@ -3973,28 +3973,386 @@ output eligibility.
   **every** semantic-bearing line. 054's two multi-line occurrences pass under that stricter rule, so
   the figure survives the definition rather than depending on the looser one M11-A0 used.
 
-  **The two 092 misses are a defect in the probe, not in the extractor.** Both failed to join a source
-  line by text key: the label reads `1 2 2 Delta Seconds` while extraction produces
-  `1 2 2 D elta Sec onds`, the same space-insertion damage recorded elsewhere. The candidate exists -
-  it is `b22`, which M10.7-A observed in the ranking at 434. So the honest reading is **74/74 present
-  with 2 unjoinable by text**, and the probe needs occurrence-id joining before this metric is quoted
-  as exact. Text-key joining is not occurrence identity; this project has now met that at five layers,
-  including in its own measurement code.
+  **Correction: the two 092 misses are genuine candidate-construction gaps, not a probe join defect.**
+  The occurrence-id join (`PdfReviewedOccurrenceBridge` for 054, `PdfTextUtilities.CanonicalForMatch`
+  elsewhere, replacing the probe's earlier weaker whitespace-collapse) was fixed and shipped
+  (`80389c1`), and the honest result held at **72/74, not 74/74**. `BENCH_A1_DEBUG=1` confirms: at the
+  resolved source line, no candidate covers or even touches it. The earlier claim that candidate `b22`
+  already exists nearby (rank 434) was a **stale reference** - `b22` exists, but at a different line
+  index (rank 471) from a prior code revision; candidate ids are discovery-order, not stable identity
+  across a revision, and must never be quoted across one. 72/74 is recorded as the true figure,
+  finding two unowned candidate-construction losses (recorded, no causal owner assigned).
 
   **Selection is reported beside recall and never folded into it.** 56 of 72 reach the budget, and the
   gap is entirely 032 (2 of 8) and 091 (1 of 6) - documents where the candidate demonstrably exists
   and is not selected. A single "extractor recall" number would have hidden that first loss.
 
-- [ ] A2 validated recall, on the same reviewed occurrences, using the production OpenRouter profile.
-  One run per document, no tuning between runs.
-- [ ] A3 validated precision, by reviewing the validated outputs themselves - far cheaper than building
-  full occurrence gold for a new document.
-- [ ] Decision gate after A3: is the extractor weak, is the validator weak, or is the loss downstream?
-  Only then decide whether to reopen a debt, widen the benchmark, or stop.
-- [ ] Widening, if it happens, screens before it reviews: model-free candidate inventory first, review
-  occurrence gold only for documents that prove usable, then call the model. 4-6 additional documents
-  by domain, not 20-30. M11-A0's lesson applies directly - do not review 100 occurrences and then
-  discover the document was never eligible.
+- [x] A2 conditional validation survival, live OpenRouter (`qwen/qwen3.5-9b`), one run each for 054 and
+  092, frozen profile (`--pdf-stage-wide --pdf-stage-supplement --pdf-stage-blocks 160`, matching A1's
+  exact candidate pool and rank<=160 boundary). 054: 18/18 selected@160 validated (100%). 092: 0/35
+  (0%) - investigated below, not left as a raw number.
+- [x] A2b 092 first-loss audit, artifact-only, no new model call. Ruled out: evaluator join failure
+  (0/35, page+text checked, not text alone - an early text-only check produced one false positive,
+  corrected). Found instead: all 35 carry `StructuralScope=appendix_table` -> `DomainRole.TableTitle`
+  -> `DocumentDomainPolicy.IsExcludedFromOutline` = true, a fully deterministic, model-output-
+  independent exclusion applied by `PdfProposalValidator.Validate` *after* the analyst already ran
+  (`PdfLayoutEvidenceOutline.cs` dispatches the full `selected` set with no domain pre-filter, so the
+  analyst was genuinely exposed to all 35 - its answer just could never change the outcome). Same
+  mechanism as the already-closed M10.3-A/M10.6/M10.7-D1 appendix-latch/`TableLike` investigation (same
+  candidate ids: `b45`, `b53`, `b58`, `b61`); M10.3-A already ran the fix-the-latch counterfactual and
+  refuted it as recoverable (corrected scope just fails differently, via `TableLike` rank collapse). Not
+  reopened here. A greenlit checkpoint-instrumented rerun was cancelled once this was proven exhaustive
+  (35/35, not a sample) and the analyst's actual decision was shown to be provably irrelevant to the
+  outcome.
+- [x] A2c model-free deterministic-eligibility census, all four reviewed populations, zero model calls
+  (`PdfDeterministicEligibilityCensusProbe`). Added `DeterministicExclusionReason` as one shared
+  implementation on `PdfExtractorQualityBenchmarkProbe.Classify`, reused by A2b/A2c rather than
+  reimplemented, to avoid the join-drift class of bug this session already hit once.
+
+  **Locked decomposition, current reviewed population (74 occurrences, 4 documents):**
+
+  | stage | count | rate |
+  |---|---|---|
+  | reviewed | 74 | - |
+  | full candidate | 72 | 97.3% |
+  | selected@160 | 56 | 77.8% of candidates |
+  | deterministically answer-irrelevant | 38 | 67.9% of selected |
+  | decision-relevant | 18 | - |
+  | validated (054 only) | 18/18 | 100% of decision-relevant |
+
+  032's both selected occurrences and 091's one carry the identical `domainRole:TableTitle` exclusion
+  as 092 - not a new finding, the same gate, confirmed by census rather than assumed. The
+  semantic-evaluable population under the current reviewed set is, in practice, 054 alone.
+
+  **Reading discipline, stated precisely:** 18/18 is *conditional survival on 054's 18 decision-relevant
+  reviewed true-heading occurrences* - not "semantic validator accuracy". Precision (false positives
+  among validated output) was not measured by A2 itself; see the validated-output precision review
+  below for the actual figures (054 = 92.6%, 092 = 51.6%-58.1%).
+
+  **Standing conclusion, at the evidence actually gathered:**
+  - candidate construction: 72/74 = 97.3%, generally strong on this reviewed population.
+  - selection: material loss (56/72), concentrated in 032/091, unrelated to the finding below.
+  - deterministic scope/domain eligibility policy: **the dominant measured blocker** on this
+    population - 38/56 selected occurrences lost before an analyst decision could matter, all within
+    the already-known, already-frozen appendix/`TableLike` mechanism.
+  - semantic validation quality, recall side: 054 = 18/18 (conditional survival, not accuracy);
+    032/091/092 = not measured; cross-document semantic recall = **not established**.
+  - semantic validation quality, precision side: 054 = 25/27 = 92.6%; 092 = 16/31 = 51.6%-58.1%,
+    dominated by TOC-window artifacts validating in place of the body headings the domain-role gate
+    excludes. See below for detail.
+  - this does not reopen the appendix/`TableLike` debt: M10 already proved these losses overdetermined
+    and single-variable remediation unsafe. Finding the same mechanism again via a live benchmark is
+    confirmation, not new cause for action.
+
+- [ ] No further live calls scheduled for 032/091/092 - A2c already proved their remaining
+  selected-but-untested occurrences carry zero semantic-sample value under the current reviewed
+  population.
+
+- [x] First-loss ledger, all 74 reviewed occurrences, one row each, stamped with the single stage that
+  first cost it (`PdfFirstLossLedgerProbe`, model-free, reuses `Classify`/`DeterministicExclusionReason`
+  rather than a second eligibility implementation). Reconciles exactly against A0-A2c:
+
+  | first loss | count |
+  |---|---|
+  | deterministic scope/domain eligibility | 38 |
+  | survived to validated | 18 |
+  | ranking/budget | 16 |
+  | candidate construction | 2 |
+  | **total** | **74** |
+
+  Bonus finding the ledger surfaces that the earlier per-stage counts did not: of the 16
+  ranking/budget losses, **11 also carry a deterministic-exclusion reason underneath** - fixing
+  ranking alone could recover at most 5 of the 16, the rest are overdetermined the same way M10
+  already found other losses to be. Not a new debt, not reopened; recorded as evidence for future
+  prioritisation only.
+
+- [x] Validated-output precision review, 054 and 092, manual classification against each item's full
+  `sourceBlockText`/page/geometry (page/source-line identity, never text-only - the project's now
+  twice-learned lesson). Categories: `TRUE_HEADING`, `TOC_ENTRY`, `MULTI_HEADING_COMPOSITE`,
+  `NON_HEADING`, `UNCERTAIN`.
+
+  **054 (27 validated): 25 TRUE_HEADING, 2 NON_HEADING.** The 2: `b1945`/`b1947`, headingText
+  "Level 1 :"/"Level 2 :", full block text is a fair-value-hierarchy accounting definition sentence
+  ("Level 1 : Financial assets and liabilities whose values are based on unadjusted quoted prices for
+  identical assets or..."), not a section heading - the `labelled` marker heuristic matched the
+  "Word N :" shape of body prose. **Validated precision = 25/27 = 92.6%.** This is new: A2 already
+  established 054's conditional recall at 18/18 = 100%, and that number was never a precision claim -
+  it still is not, and now has an actual precision figure beside it.
+
+  **092 (31 validated): 16 TRUE_HEADING, 12 MULTI_HEADING_COMPOSITE, 1 TOC_ENTRY, 2 UNCERTAIN, 0
+  NON_HEADING.** The 16 true headings are pages 6-30 with monotonically increasing section numbers
+  (2 -> 3 -> 3.1 -> ... -> 8.2), a coherent document sequence. The 12 composites and 1 TOC entry are
+  all pages 2-3, `sourceBlockText` showing 2-3 concatenated titles per block (e.g. `s-window-74`:
+  "3 1 Storing Hea der and Trailer Fields 3 2 Updating Stored Hea der Fields") - this is the TOC-region
+  window-candidate pattern A2b already flagged as "observed, plausible" and this review promotes it to
+  **confirmed and quantified**: 12/31 (38.7%) of everything 092's live run validated is a TOC-window
+  artifact, not a body heading. The 2 uncertain (`b40`/`b44`, both page 4) are left uncertain rather
+  than forced - their section number/back-matter position doesn't fit the surrounding document order
+  and no page image was available to settle it. **Validated precision = 16/31 = 51.6%, range
+  51.6%-58.1%.**
+
+  **Reading discipline:** 092's already-known recall-side finding (deterministic domain-role gate
+  discards its entire reviewed cohort before an analyst decision matters) and this precision finding
+  are independent losses at different stages, not the same fact twice - the domain-role gate blocks
+  *body* headings from validating; the TOC-window pattern separately causes *front-matter* text to
+  validate *in their place*. Neither explains the other; both point at the same already-frozen
+  mechanism (M10.3-A/M10.6/M10.7) from different sides.
+
+- [x] A3 (redefined from the stub below) - semantic benchmark population screening, corpus-wide,
+  model-free (`PdfA3PopulationScreeningProbe`, all 95 documents, no gold, no model call). Frozen rule,
+  stated before any result was read: usable = selected@160 >= 20 and decisionRelevant >= 15.
+
+  **76 of 95 documents are usable**, spread across every domain family: `01_phap_quy` 18,
+  `02_hop_dong_mua_sam` 6, `03_tai_chinh_ke_toan` 15, `04_giao_trinh` 15, `05_bien_ban_hop` 9,
+  `06_dich_song_ngu` 8, `07_system_generated` 5. The 19 non-usable documents mostly have 0 candidates
+  (PDF conversion or extraction not applicable for that file - not an exception, not a silent zero
+  hidden as success; see the full report for the list) rather than a low ratio.
+
+  **Reading discipline: this is a document-level candidate-pool health metric, not the same
+  denominator as A2c.** A2c measured decision-relevance among a small set of *already-reviewed gold
+  occurrences* per document (e.g. 092: 0/35). This screening measures it across the document's *entire*
+  selected@160 pool. 092 shows 82/160 = 51% decision-relevant here - not a contradiction: the 35
+  reviewed occurrences all happened to land in 092's bad half (front matter/TOC region), while most of
+  the document's other candidates are fine. A document passing this screen is a candidate for *new*
+  occurrence review, not a retroactive excuse for the old reviewed set.
+
+  Financial statements (`03_tai_chinh_ke_toan`) and the WB procurement family
+  (`02_hop_dong_mua_sam`) show the widest range (17%-100%, 36%-100%) - the same
+  appendix/`TableLike`-family mechanism this session traced on 032/054/092 likely explains the low end
+  there too, though that is inference from the pattern, not re-verified per document here.
+
+  **Not yet done, and deliberately separate:** actually selecting 3-5 documents (stratified,
+  deterministic order, not cherry-picked on looks) and reviewing their occurrence gold. Screening
+  answers "worth reviewing"; it does not select or review by itself. Full 95-document table:
+  `.verify-build/a3-screening.txt` (not committed - regenerate via `BENCH_A3_REPORT=<path>`, the probe
+  that produced it is committed).
+
+- [x] B0/B1 - cross-document benchmark round 2: selection rule frozen and applied, before looking at
+  which documents it would produce. Eligible pool = A3's existing `usable` set (76 documents, unchanged
+  threshold). One document per shape - financial statement, procurement, legal/administrative,
+  textbook/technical - tie-broken within each domain folder by **lowest document ID number among the
+  eligible set**, nothing accuracy-related. Result:
+
+  | shape | domain | document |
+  |---|---|---|
+  | legal/administrative | `01_phap_quy` | `001_Bo_luat_Dan_su_91-2015-QH13` |
+  | procurement | `02_hop_dong_mua_sam` | `028_WB_RFB_Works_Without_Prequal_2017` |
+  | financial statement | `03_tai_chinh_ke_toan` | `041_IBRD_Financial_Statements_June_2025` |
+  | textbook/technical | `04_giao_trinh` | `056_OpenStax_Business_Law_I_Essentials` |
+
+  Interpretive call, flagged rather than silently made: the fourth shape was specified as
+  "textbook/RFC/technical" - `04_giao_trinh` (textbook) was picked over `07_system_generated` (RFC,
+  already home to 091/092, both deeply investigated this session already) specifically to get a
+  genuinely uninvestigated domain rather than a third document from a family with established debt.
+  041 is a new financial-statement document, distinct from the already-reviewed 054 - a second data
+  point in that family, not a repeat.
+
+  Frozen manifest committed at `keys/benchmark-round-2/manifest.json`: document SHA256s, selection
+  rule, route profile (identical to A2/A2b - not tuned per document), blind-packet rule, and the B4
+  precision label set. No field in it may change after B2 results are seen.
+
+- [x] Lane A (parallel with B2) - blind, source-first review packet generator
+  (`PdfBlindReviewPacketProbe`), one packet per B1 document, every raw source line (page + lineId +
+  text, the same identity A0-A3 already use) in reading order, nothing else - no candidate id, rank,
+  selected status, scope, or domain role. Sampled from the full source-line population, never the
+  candidate pool, so a candidate-construction miss cannot vanish from the recall denominator the way
+  sampling from candidates would let it. Packets generated for all four documents (8.6k-20k lines each
+  in `.verify-build/benchmark-round-2-packets/`, not committed - regenerate via
+  `BENCH_PACKET_DOCX`/`BENCH_PACKET_REPORT`). **Packet generation only - the actual line-by-line
+  labelling pass (B2 itself) has not started; ~7000-10000 source lines per document is a real effort,
+  not something to rush into unprompted.**
+- [x] Lane C (parallel with B2) - precision-review worksheet, formalized as reusable tooling
+  (`PdfValidatedOutputWorksheetProbe`) rather than the by-hand PowerShell inspection used for 054/092.
+  Dry-run against both existing artifacts reproduces the known findings exactly: 054's `b1945`
+  ("Level 1 :") false positive shows with its full disambiguating context
+  (`sourceBlockText`, not the truncated `headingText` span), and 092's `s-window-74` shows its
+  concatenated multi-heading text. Confirms the machinery works before spending review effort on new
+  documents - nothing new needs inventing for B4.
+- [x] B2.0 pilot - full blind review of document 001 (Bo_luat_Dan_su_91-2015-QH13), chosen only because
+  it is first in the frozen B1 order, not for expected difficulty or accuracy. Purpose was strictly
+  process validation before spending the same effort on the other three - not an early accuracy read,
+  and the numbers below did not change the review rule for 028/041/056.
+
+  **Scale correction: this document has 761 genuine headings (6 Phan + 27 Chuong + 39 Muc + 689 Dieu),
+  not ~20-40.** That estimate assumed a document shaped like the earlier reviewed set (054/092/032/091);
+  a civil code's own TOC-equivalent structure is every article, verified exhaustively (689 unique
+  article numbers, sequence 1-689, zero gaps).
+
+  **Method, entirely from the blind packet, no pipeline signal:** regex-pattern review of raw source
+  text (`Phần thứ N`, `Chương [roman numeral]`, `Mục N.`, `Điều N.`), each rule validated against real
+  edge cases before being trusted at scale, not assumed:
+  - 6 cross-reference false positives found and excluded (`Điều 47 của Bộ luật này...` - a citation that
+    coincidentally starts its own wrapped PDF line, discriminated by "period immediately after the
+    number" - a citation never has one, a real heading always does; checked against all 6 instances).
+  - 1 false positive on a common Vietnamese word ("Mục đích..." = "purpose", not a `Mục N.` section
+    marker) - caught by requiring the digit+period, not just the word.
+
+  **Two objective tooling bugs found and fixed during self-audit** (multiline-span representation, not
+  accuracy-motivated rule changes - explicitly the only kind of change the user allowed after seeing
+  001's numbers): a width-based wrap-continuation heuristic missed a real 2-line Điều title wrap
+  (`Điều 142`) and a real 3-line Mục title wrap (`Mục 5`) because ordinary body-line widths overlap with
+  wrapped-title widths; replaced with an orthographic rule (Phần/Chương/Mục titles are ALL-CAPS and
+  reuse the existing all-caps continuation check; Điều titles are sentence-case, so continuation is
+  detected by the next line starting lowercase - a citation or new clause never does). A second bug in
+  that same fix stopped at a lone-comma line instead of skipping past it, truncating one title
+  mid-word (`Điều 202`, a long entity-type enumeration) - fixed by skipping punctuation-only lines when
+  looking for the next letter-bearing line, matching how the ALL-CAPS rule already tolerates them.
+
+  **Self-audit:** 10 pages sampled by a fixed rule (every 15th page, deterministic, not chosen after
+  seeing results) - 6.7% of the document's 149 pages, independently re-derived from the raw packet and
+  compared against the gold file. Exact match on every sampled page: no missing heading, no duplicate,
+  no wrong span.
+
+  **Gold artifact:** `keys/occurrence-bridge/001_Bo_luat_Dan_su_91-2015-QH13.occurrence-bridge.json`
+  (committed, same schema as 054's bridge - built by `PdfDocument001GoldBuilderProbe`, wired into
+  `PdfExtractorQualityBenchmarkProbe.Populations` via a generalized `Bridge(stem)` helper so no new
+  join logic exists anywhere). Level/parent deliberately not reviewed this round, per instruction - the
+  benchmark question is heading extraction/semantic quality, not hierarchy.
+
+  **Pre-model metrics (no OpenRouter call), from the existing A2c machinery unchanged:**
+
+  | stage | 001 |
+  |---|---|
+  | reviewed | 761 |
+  | full candidate | 761 (100%) |
+  | selected@160 | 165 |
+  | deterministically answer-irrelevant | 3 (`InlineClauseReference` x2, `AmendmentAnnotation` x1 - a
+    different domain-role trigger than 092's `TableTitle`, evidence the mechanism generalizes rather
+    than being one document's quirk) |
+  | decision-relevant | 162 |
+
+  **Protocol verdict: clean.** Proceeding to review 028/041/056 with the same validated rules and
+  tooling (adapted per document's own structural conventions, not per document's numbers).
+
+- [x] B2 - document 028 (WB procurement RFB, 314 pages). Scaling the 001-validated method immediately
+  surfaced three genuinely new complications - handled by manual review/reconciliation, not by writing
+  more general regex (the explicit stop-condition: "if every section needs its own rule, automation has
+  become a second extractor, not a review aid" - not crossed here, but close, and named as the line).
+
+  1. **Numbered prose is not a heading.** Section II's "1. the terms of the Bidding Documents; and / 2.
+     the Employer's decision..." and all of Section VII's ESHS/Code-of-Conduct commitments are sentence
+     enumerations after a lead-in ("may challenge any of the following:", "the policy... commitments
+     to:"), confirmed by reading the lead-in directly. Excluded by index as a reviewed classification -
+     no new production heuristic, no general list-vs-heading classifier.
+  2. **Numbering restarts within one section are real, not duplicates.** Section III has two local
+     scopes (Margin of Preference/Evaluation, then the qualification-criteria table's own category
+     headers restarting at 1). Section VIII has three: the main GC clauses, "APPENDIX A - General
+     Conditions of Dispute Board Agreement" (clauses 1-9), "APPENDIX B - Fraud and Corruption" (clauses
+     1-2, identical boilerplate to Section VI). Recorded as an optional scope tag embedded in
+     `goldStableId` (e.g. `028/GCC/4`, `028/DBA/4`) - review-only annotation, no schema change, no
+     scope-resolver component.
+  3. **GC clauses 13, 14, 15, 19 have no standalone heading anywhere in this document's own source** -
+     verified directly: the TOC jumps 12.4 -> 13.1, 13.8 -> 14.1, 14.15 -> 15.1, and 18.x -> 20 with no
+     "N. [Title]" line in either the TOC or the body. Not inferred from outside FIDIC knowledge of what
+     a standard edition "should" contain - simply absent, so gold contains nothing for them, no
+     fabrication.
+
+  **Method reused unchanged from 001** (`PdfReviewedOccurrenceBridge`, `Bridge(stem)` loader) plus one
+  real bug the pilot caught before it reached gold: a section's own local TOC lines ("1. Scope of
+  Bid........6") structurally match the same "N. Title" body-heading pattern, so once the pilot's
+  boundary bug was fixed to include a section's own TOC in its scan range, every TOC line was being
+  added to gold a second time as a fake body occurrence - fixed by excluding dot-leader-shaped lines
+  from the body scan.
+
+  Section IV (Bidding Forms) and Section X (Contract Forms) confirmed form-field-only (spot-checked,
+  no numbered clause structure at all) and excluded from clause-level gold, per 032's own already-
+  reviewed labels (same WB procurement family: numbered form entries there are `form_field`, not
+  `outline_heading`).
+
+  Self-audit: the three hardest regions (Section VII, Section VIII's three scopes, the GC 12-20
+  neighborhood) traced by hand as the validation set before trusting the method at scale, plus a
+  fixed-interval page sample (45, 90, 135, 180, 225, 270) checked against gold with no discrepancy.
+  One known, accepted gap: a short unlabelled sub-caption ("Code of Conduct (ESHS)") inside a BDS
+  instruction block was noticed but not added - a single borderline case, not a pattern, left as a
+  documented limitation rather than triggering a new rule.
+
+  **Gold: 113 occurrences** (`keys/occurrence-bridge/028_WB_RFB_Works_Without_Prequal_2017.occurrence-bridge.json`).
+  Pre-model census: reviewed=113, full candidate=84 (74.3%), selected@160=1, decision-relevant=1.
+
+  **Reading discipline, held deliberately narrow:** large candidate-dense document + severe rank/budget
+  survival loss is *consistent with* the already-measured M10.7-D1 ranking/budget mechanism - not
+  promoted to "M10.7-D1 is the causal owner of 028's loss," which would need an exact first-loss trace
+  on 028 itself that was not run. Recorded as consistency, not attributed as cause.
+
+  **028 is not a semantic-benchmark candidate - decision-relevant=1 is not a usable denominator** -
+  though it remains a genuinely valuable candidate-construction/selection benchmark document
+  (source->candidate and candidate->selection are both well exercised here; selection->semantic has
+  almost no cohort to measure). A live OpenRouter call for 028 would not answer a semantic-quality
+  question with n=1; not run for that reason, not because its numbers looked unfavorable - no model
+  result has been seen for 028 at any point in B2. See the semantic-eligibility gate below, frozen
+  before 041/056 are reviewed.
+
+- [x] Semantic-benchmark eligibility gate, frozen before 041/056 are reviewed (so it cannot be tuned to
+  their numbers): **decision-relevant >= 15 -> eligible for a B3 live run; below that -> semantic metric
+  recorded as "insufficient cohort," no live call spent on it.** 15 is not an accuracy threshold - it
+  only guards against spending a live call on a near-empty denominator the way 028's n=1 would have
+  been. 001 (162) clears it; 028 (1) does not.
+
+  | doc | reviewed | full candidate | selected@160 | decision-relevant | semantic eligible? |
+  |---|---|---|---|---|---|
+  | 001 | 761 | 761 | 165 | 162 | yes |
+  | 028 | 113 | 84 | 1 | 1 | no - insufficient cohort |
+  | 041 | 62 | 61 | 15 | 15 | yes |
+  | 056 | 46 | 32 | 15 | 15 | yes |
+
+- [x] B2 - document 041 (financial statements), closed model-free. The reviewed bridge has **62**
+  source-grounded occurrences: 14 MD&A section headings, 30 TOC-listed MD&A subtopics reconciled to
+  body source, 4 primary statements, and 14 note headings. It excludes caption indexes, table row
+  labels, narrative references, and unlisted note-internal structure by source/context only; no 028
+  rule or prior semantic behavior was used. Twelve duplicate-text cases were resolved by their raw
+  source neighborhood (for example `Credit Risk`: body heading, not table header/prose; `Net Income`:
+  two separate body occurrences); one truncated TOC label has no exact canonical source span and was
+  deliberately not fabricated.
+
+  Fixed self-audit is locked in `PdfDocument041GoldBuilderProbe`: document SHA, extraction
+  fingerprint, reviewed status, unique occurrence identity, and every `(index, lineId, text)` source
+  binding must match current raw extraction. It caught and corrected a generator-only issue before
+  freeze: punctuation-only `,` was incorrectly accepted as an ALL-CAPS continuation of Note B.
+  The frozen bridge is `keys/occurrence-bridge/041_IBRD_Financial_Statements_June_2025.occurrence-bridge.json`.
+
+  Pre-model census: reviewed=62; full candidate=61 (98.4%); selected@160=15;
+  deterministically answer-irrelevant=0; decision-relevant=15. Thus 041 clears the already-frozen
+  semantic-cohort threshold exactly. This says nothing yet about semantic quality: **no model call has
+  been made.**
+- [x] B2 - document 056 (textbook), closed model-free. A source-only Contents checklist (14
+  chapters + 32 numbered sections) was reconciled to the distinct body occurrence that introduces
+  prose, explicitly excluding Contents, local Chapter Outline repetitions, figures, running headers,
+  assessment/endnote material, and unnumbered subheadings without a complete source checklist. The
+  two duplicate-title cases (`10.2`, `12.2`) were resolved by local source context to their body
+  occurrence; the chapter-outline sibling is not gold. No typed key, candidate/rank/scope signal, or
+  model output participated in this review.
+
+  Frozen bridge: `keys/occurrence-bridge/056_OpenStax_Business_Law_I_Essentials.occurrence-bridge.json`.
+  The fixed integrity audit locks the source document hash, extraction fingerprint, 46 unique stable
+  ids, and every raw `(index, lineId, text)` binding. Pre-model census: reviewed=46;
+  full candidate=32 (69.6%); partial=6; absent=8; selected@160=15;
+  deterministically answer-irrelevant=0; decision-relevant=15. Thus 056 clears the frozen semantic
+  cohort threshold exactly, while its 14 pre-semantic misses remain candidate-construction evidence,
+  not a reason to tune or repair the production route during B2.
+
+- [x] B2 CLOSED - occurrence-safe, source-grounded gold plus model-free census now exists for all
+  four preselected documents. This is not a cross-domain accuracy result: B3 has not run.
+
+  | doc | reviewed | full candidate | selected@160 | decision-relevant | semantic eligible? |
+  |---|---:|---:|---:|---:|---|
+  | 001 | 761 | 761 | 165 | 162 | yes |
+  | 028 | 113 | 84 | 1 | 1 | no - insufficient cohort |
+  | 041 | 62 | 61 | 15 | 15 | yes |
+  | 056 | 46 | 32 | 15 | 15 | yes |
+
+  `028` remains a candidate-construction/selection benchmark but contributes no semantic metric. B3
+  therefore has exactly three prospective calls (`001`, `041`, `056`), each one frozen-profile
+  OpenRouter run with no retry and no tuning; this work item intentionally stops before those calls.
+- [ ] B3 - one bounded OpenRouter run per *semantic-eligible* document only (frozen profile in the
+  manifest above), no retry, no tuning. Not started for any document - gold completes for 041 and 056
+  before any live call, specifically to avoid a reviewer anchoring on an earlier document's model
+  accuracy while reviewing the rest. No longer assumed to be "4 documents -> 4 calls" - only documents
+  clearing the eligibility gate above get a call.
+- [ ] B4/B5 - measure the same decomposition (candidate recall, selection survival, deterministic
+  eligibility, conditional semantic recall, validated precision via Lane C's worksheet) per document,
+  then the decision gate: does semantic quality generalize, or is precision domain-specific, or does
+  everything look fine while end-to-end recall stays low (the strongest case for reopening a frozen
+  debt). Not started.
 
 **The end-to-end product figure (C) stays closed** until a product-facing question requires it, and it
 must then be reported with the known debts attached rather than as an extractor score.

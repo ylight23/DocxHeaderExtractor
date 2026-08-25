@@ -1,0 +1,73 @@
+{
+  "manifestVersion": 2,
+  "purpose": "Frozen B1-B3 manifest for cross-document semantic benchmark round 2. Version 2 preserves the B1 selection and frozen route profile, and adds the denominator-only semantic-cohort gate before any B3 OpenRouter execution. No B4 model result has been read. Any later change after B4 results are read invalidates the run for decision-gate purposes and must be recorded as a new manifest version, not a silent edit.",
+  "documentSelectionRule": {
+    "eligiblePool": "PdfA3PopulationScreeningProbe usable set (selected@160 >= 20 AND decisionRelevant >= 15), 76/95 documents",
+    "oneDocumentPerShape": ["legal/administrative", "procurement", "financial statement", "textbook/technical"],
+    "tieBreak": "lowest document ID number within the shape's domain folder among the eligible set - no accuracy-based selection",
+    "shape4Note": "Specified as 'textbook/RFC/technical'; 04_giao_trinh (textbook) chosen over 07_system_generated (RFC) to test generalization into an uninvestigated domain rather than extend the already-deeply-investigated 091/092 RFC family. Confirmed by user, not swapped."
+  },
+  "documents": [
+    {
+      "shape": "legal/administrative",
+      "domain": "01_phap_quy",
+      "stem": "001",
+      "file": "todo10_8/heading_corpus_95_word/01_phap_quy/001_Bo_luat_Dan_su_91-2015-QH13.docx",
+      "sourceDocumentSha256": "d813e8fca1ef5b56dd0475700162177a426a630314f9444a4d8a86a27c6ef9a5"
+    },
+    {
+      "shape": "procurement",
+      "domain": "02_hop_dong_mua_sam",
+      "stem": "028",
+      "file": "todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/028_WB_RFB_Works_Without_Prequal_2017.docx",
+      "sourceDocumentSha256": "f769b70bfb6a7f0ac7d62aea78ce9914eba629a5a781d73369e84a85fed47634"
+    },
+    {
+      "shape": "financial statement",
+      "domain": "03_tai_chinh_ke_toan",
+      "stem": "041",
+      "file": "todo10_8/heading_corpus_95_word/03_tai_chinh_ke_toan/041_IBRD_Financial_Statements_June_2025.docx",
+      "sourceDocumentSha256": "a28a2845317be67e0edd675e7730f683fedbe8febc94ebd12a4971a3a36a32d1"
+    },
+    {
+      "shape": "textbook/technical",
+      "domain": "04_giao_trinh",
+      "stem": "056",
+      "file": "todo10_8/heading_corpus_95_word/04_giao_trinh/056_OpenStax_Business_Law_I_Essentials.docx",
+      "sourceDocumentSha256": "9d567332514f7ed149f9b1e56830972b5080ffbec692ff26f1d675486dd0b683"
+    }
+  ],
+  "routeProfile": {
+    "note": "Identical to the A2/A2b frozen profile (054/092), applied unchanged - not tuned per document.",
+    "pdfStageWide": true,
+    "pdfStageSupplement": true,
+    "pdfStageBlocks": 160,
+    "backend": "OpenRouter",
+    "model": "qwen/qwen3.5-9b",
+    "semanticLaneTimeouts": {
+      "requestSeconds": 90,
+      "batchSeconds": 120,
+      "laneDeadlineSeconds": 300
+    },
+    "semanticLaneConcurrency": "default (not overridden)",
+    "promptProfileSha256Source": "DocxHeaderExtractor.Core.Pipeline.PdfBlockAnalyst.PromptProfileSha256 - code-derived, recorded automatically in each run's generation.promptSha256 field, not a value this manifest fixes by hand",
+    "commandTemplate": "OPENROUTER_API_KEY=<key> dotnet <cli-dll-or-project> pdf-hierarchy-facts <file> --openrouter --openrouter-model qwen/qwen3.5-9b --pdf-stage-wide --pdf-stage-supplement --pdf-stage-blocks 160 --out <artifact.json>",
+    "executionNote": "NOT executed by this manifest. B3 runs this exactly once per document, no retry, no tuning, only after B2 gold review is complete for that document."
+  },
+  "reviewPacketRule": {
+    "sourcePopulation": "Raw source lines (PdfLine: page + geometry + text), independent of candidate construction/ranking/scope - never sampled from the candidate pool, so a candidate-construction miss cannot silently vanish from the recall denominator.",
+    "occurrenceIdentity": "page + line geometry + text (same PdfCandidateProvenance.LineId format used throughout A0-A3), never a candidate ID and never canonical-text-only.",
+    "hiddenFromReviewer": ["candidate id", "rank", "selected status", "structuralScope", "domainRole", "any model output"],
+    "reviewerLabels": ["HEADING", "NOT_HEADING", "UNCERTAIN"],
+    "headingFields": ["source span", "level (optional)", "parent (optional, only if hierarchy is actually being reviewed)"]
+  },
+  "b4PrecisionLabels": ["TRUE_HEADING", "TOC_ENTRY", "MULTI_HEADING_COMPOSITE", "NON_HEADING", "UNCERTAIN"],
+  "semanticCohortEligibilityRule": {
+    "metric": "reviewed decision-relevant occurrences after model-free candidate, selection, and deterministic-eligibility census",
+    "eligibleWhen": "decisionRelevant >= 15",
+    "ineligibleResult": "semantic metric = insufficient cohort; do not call the model merely to produce a number",
+    "rationale": "This is a denominator-meaningfulness rule, not accuracy tuning. It is frozen before any B3 model result for the round is observed."
+  },
+  "frozenAt": "2026-08-26",
+  "frozenBy": "B0/B1 session plus B2 semantic-cohort gate, before any B3 OpenRouter execution"
+}

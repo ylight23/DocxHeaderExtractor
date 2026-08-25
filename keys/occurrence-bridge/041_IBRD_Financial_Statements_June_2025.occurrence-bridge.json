@@ -1,0 +1,958 @@
+{
+  "document": "041_IBRD_Financial_Statements_June_2025.docx",
+  "docxSha256": "a28a2845317be67e0edd675e7730f683fedbe8febc94ebd12a4971a3a36a32d1",
+  "pdfSha256": "not_recorded_bridge_does_not_enforce_pdf_sha_at_load",
+  "goldKeySha256": "not_recorded_no_answer_key_source",
+  "pdfLineExtractionFingerprint": "02e0168a3e737459eed9b30b203764f1be6eb84cc1492f96f52cdea8e39215d3",
+  "occurrences": [
+    {
+      "goldStableId": "041/section/section-i-overview",
+      "goldText": "Section I: Overview",
+      "page": 6,
+      "lines": [
+        {
+          "index": 155,
+          "lineId": "6|727.5618111305148|75.280390625|240.6861875|Section I: Overview",
+          "text": "Section I: Overview"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/0",
+      "goldText": "Financial Business Model",
+      "page": 6,
+      "lines": [
+        {
+          "index": 207,
+          "lineId": "6|250.45758634943178|73.0322265625|242.19778124999996|Financial Business Model",
+          "text": "Financial Business Model"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/1",
+      "goldText": "Basis of Reporting",
+      "page": 8,
+      "lines": [
+        {
+          "index": 308,
+          "lineId": "8|416.0434289550783|73.025390625|195.56225000000003|Basis of Reporting",
+          "text": "Basis of Reporting"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/section/section-ii-executive-summary",
+      "goldText": "Section II: Executive Summary",
+      "page": 10,
+      "lines": [
+        {
+          "index": 374,
+          "lineId": "10|727.46875046875|75.280390625|336.44070312499997|Section II: Executive Summary",
+          "text": "Section II: Executive Summary"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/2/447",
+      "goldText": "Net Income",
+      "page": 11,
+      "lines": [
+        {
+          "index": 447,
+          "lineId": "11|705.4732252083334|72.890625|136.20135937499998|Net Income",
+          "text": "Net Income"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "ambiguous-source-review",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/section/section-iii-financial-results",
+      "goldText": "Section III: Financial Results",
+      "page": 13,
+      "lines": [
+        {
+          "index": 578,
+          "lineId": "13|727.7814132291668|75.280390625|317.8426249999999|Section III: Financial Results",
+          "text": "Section III: Financial Results"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/2/624",
+      "goldText": "Net Income",
+      "page": 14,
+      "lines": [
+        {
+          "index": 624,
+          "lineId": "14|732.7732752083334|72.890625|136.19735937499996|Net Income",
+          "text": "Net Income"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "ambiguous-source-review",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/3",
+      "goldText": "Income Allocation",
+      "page": 20,
+      "lines": [
+        {
+          "index": 1060,
+          "lineId": "20|550.761113046875|72.95703125|191.6363984375|Income Allocation",
+          "text": "Income Allocation"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/section/section-iv-lending-activities",
+      "goldText": "Section IV: Lending Activities",
+      "page": 24,
+      "lines": [
+        {
+          "index": 1297,
+          "lineId": "24|727.7701827604168|75.280390625|326.82462499999997|Section IV: Lending Activities",
+          "text": "Section IV: Lending Activities"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/4",
+      "goldText": "Lending Categories",
+      "page": 25,
+      "lines": [
+        {
+          "index": 1381,
+          "lineId": "25|569.2591613051468|73.0732421875|202.015375|Lending Categories",
+          "text": "Lending Categories"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/5",
+      "goldText": "Currently Available Lending Products",
+      "page": 26,
+      "lines": [
+        {
+          "index": 1435,
+          "lineId": "26|731.9291702178033|72.65625|321.8273749999999|Currently Available Lending Products",
+          "text": "Currently Available Lending Products"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/6",
+      "goldText": "Loans Outstanding",
+      "page": 29,
+      "lines": [
+        {
+          "index": 1660,
+          "lineId": "29|629.8500390624997|73.0732421875|198.67025|Loans Outstanding",
+          "text": "Loans Outstanding"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/section/section-v-other-development-activities",
+      "goldText": "Section V: Other Development Activities",
+      "page": 30,
+      "lines": [
+        {
+          "index": 1708,
+          "lineId": "30|727.6789346205358|75.280390625|417.85062500000004|Section V: Other Development Activities",
+          "text": "Section V: Other Development Activities"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/7",
+      "goldText": "Grant Making Facilities",
+      "page": 32,
+      "lines": [
+        {
+          "index": 1872,
+          "lineId": "32|412.5207517187499|72.669921875|224.59737499999994|Grant Making Facilities",
+          "text": "Grant Making Facilities"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/8",
+      "goldText": "Externally-Funded Activities",
+      "page": 32,
+      "lines": [
+        {
+          "index": 1878,
+          "lineId": "32|335.65967230902766|73.0185546875|259.597375|Externally-Funded Activities",
+          "text": "Externally-Funded Activities"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/section/section-vi-investment-activities",
+      "goldText": "Section VI: Investment Activities",
+      "page": 36,
+      "lines": [
+        {
+          "index": 2045,
+          "lineId": "36|727.73945359375|75.280390625|351.84462500000006|Section VI: Investment Activities",
+          "text": "Section VI: Investment Activities"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/9",
+      "goldText": "Other Investments",
+      "page": 37,
+      "lines": [
+        {
+          "index": 2113,
+          "lineId": "37|731.9431787109372|72.6083984375|194.245375|Other Investments",
+          "text": "Other Investments"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/section/section-vii-borrowing-activities",
+      "goldText": "Section VII: Borrowing Activities",
+      "page": 38,
+      "lines": [
+        {
+          "index": 2132,
+          "lineId": "38|727.6963871875|75.280390625|351.826625|Section VII: Borrowing Activities",
+          "text": "Section VII: Borrowing Activities"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/10",
+      "goldText": "Short-Term Borrowings",
+      "page": 39,
+      "lines": [
+        {
+          "index": 2194,
+          "lineId": "39|731.8006494140621|72.505859375|228.447375|Short-Term Borrowings",
+          "text": "Short-Term Borrowings"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/11/2229",
+      "goldText": "Medium- and Long-Term Borrowings",
+      "page": 40,
+      "lines": [
+        {
+          "index": 2229,
+          "lineId": "40|731.7377175377155|72.9912109375|316.33937499999996|Medium- and Long-Term Borrowings",
+          "text": "Medium- and Long-Term Borrowings"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "ambiguous-source-review",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/section/section-viii-capital-activities",
+      "goldText": "Section VIII: Capital Activities",
+      "page": 41,
+      "lines": [
+        {
+          "index": 2282,
+          "lineId": "41|727.8910800754311|75.280390625|326.842625|Section VIII: Capital Activities",
+          "text": "Section VIII: Capital Activities"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/12",
+      "goldText": "Usable Equity",
+      "page": 43,
+      "lines": [
+        {
+          "index": 2406,
+          "lineId": "43|731.8631412760415|73.0048828125|164.35854687500003|Usable Equity",
+          "text": "Usable Equity"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/section/section-ix-risk-management",
+      "goldText": "Section IX: Risk Management",
+      "page": 44,
+      "lines": [
+        {
+          "index": 2420,
+          "lineId": "44|727.5991215625|75.280390625|325.48320312499993|Section IX: Risk Management",
+          "text": "Section IX: Risk Management"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/13",
+      "goldText": "Risk Oversight and Coverage",
+      "page": 44,
+      "lines": [
+        {
+          "index": 2447,
+          "lineId": "44|418.2906496484375|73.025390625|266.72758593749995|Risk Oversight and Coverage",
+          "text": "Risk Oversight and Coverage"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/14",
+      "goldText": "Management of IBRD’s Risks",
+      "page": 47,
+      "lines": [
+        {
+          "index": 2618,
+          "lineId": "47|702.1717739470105|72.9912109375|265.029375|Management of IBRD’s Risks",
+          "text": "Management of IBRD’s Risks"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/15",
+      "goldText": "Capital Adequacy",
+      "page": 47,
+      "lines": [
+        {
+          "index": 2638,
+          "lineId": "47|522.8978355208333|72.65625|189.250546875|Capital Adequacy",
+          "text": "Capital Adequacy"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/16/2813",
+      "goldText": "Credit Risk",
+      "page": 49,
+      "lines": [
+        {
+          "index": 2813,
+          "lineId": "49|305.88802734374997|72.65625|145.7714140625|Credit Risk",
+          "text": "Credit Risk"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "ambiguous-source-review",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/17/3366",
+      "goldText": "Market Risk",
+      "page": 57,
+      "lines": [
+        {
+          "index": 3366,
+          "lineId": "57|577.2581445312499|72.9912109375|150.4474140625|Market Risk",
+          "text": "Market Risk"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "ambiguous-source-review",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/18",
+      "goldText": "Operational Risk",
+      "page": 61,
+      "lines": [
+        {
+          "index": 3620,
+          "lineId": "61|576.9963281249998|72.6083984375|183.1234140625|Operational Risk",
+          "text": "Operational Risk"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/section/section-x-contractual-obligations",
+      "goldText": "Section X: Contractual Obligations",
+      "page": 62,
+      "lines": [
+        {
+          "index": 3669,
+          "lineId": "62|727.6577153125|75.280390625|370.81662500000004|Section X: Contractual Obligations",
+          "text": "Section X: Contractual Obligations"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/section/section-xi-pension-other-post-retirement-benefits",
+      "goldText": "Section XI: Pension & Other Post-Retirement Benefits",
+      "page": 63,
+      "lines": [
+        {
+          "index": 3724,
+          "lineId": "63|727.7356704755435|75.280390625|532.852625|Section XI: Pension & Other Post-Retirement Benefits",
+          "text": "Section XI: Pension & Other Post-Retirement Benefits"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/19/3819",
+      "goldText": "Projected Benefit Obligations",
+      "page": 64,
+      "lines": [
+        {
+          "index": 3819,
+          "lineId": "64|564.0356221064811|73.0185546875|267.367375|Projected Benefit Obligations",
+          "text": "Projected Benefit Obligations"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "ambiguous-source-review",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/section/section-xii-critical-accounting-policies-and-the-use",
+      "goldText": "Section XII: Critical Accounting Policies and the Use of Estimates",
+      "page": 65,
+      "lines": [
+        {
+          "index": 3872,
+          "lineId": "65|727.7307027445653|75.280390625|522.0400390624999|Section XII: Critical Accounting Policies and the Use",
+          "text": "Section XII: Critical Accounting Policies and the Use"
+        },
+        {
+          "index": 3873,
+          "lineId": "65|706.1199977556817|75.350703125|180.79062500000003|of Estimates",
+          "text": "of Estimates"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "section",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/20/3983",
+      "goldText": "Pension and Other Post-Retirement Benefits",
+      "page": 66,
+      "lines": [
+        {
+          "index": 3983,
+          "lineId": "66|307.2141115625|73.0185546875|366.93537499999985|Pension and Other Post-Retirement Benefits",
+          "text": "Pension and Other Post-Retirement Benefits"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "ambiguous-source-review",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/section/section-xiii-governance-and-controls",
+      "goldText": "Section XIII: Governance and Controls",
+      "page": 67,
+      "lines": [
+        {
+          "index": 4002,
+          "lineId": "67|727.5866038068182|75.280390625|401.8486249999999|Section XIII: Governance and Controls",
+          "text": "Section XIII: Governance and Controls"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "section",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/21",
+      "goldText": "General Governance",
+      "page": 67,
+      "lines": [
+        {
+          "index": 4020,
+          "lineId": "67|335.05628331801466|72.669921875|208.3895859375|General Governance",
+          "text": "General Governance"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/22/4037",
+      "goldText": "Executive Directors",
+      "page": 67,
+      "lines": [
+        {
+          "index": 4037,
+          "lineId": "67|183.2345685243056|73.0185546875|202.043375|Executive Directors",
+          "text": "Executive Directors"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "ambiguous-source-review",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/23",
+      "goldText": "Audit Committee",
+      "page": 68,
+      "lines": [
+        {
+          "index": 4080,
+          "lineId": "68|462.1898828125001|72|183.4415859375|Audit Committee",
+          "text": "Audit Committee"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/24",
+      "goldText": "Auditor Independence",
+      "page": 69,
+      "lines": [
+        {
+          "index": 4126,
+          "lineId": "69|565.0698373026315|72|219.23958593749998|Auditor Independence",
+          "text": "Auditor Independence"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/25",
+      "goldText": "External Auditors",
+      "page": 69,
+      "lines": [
+        {
+          "index": 4151,
+          "lineId": "69|290.4264816992187|73.0185546875|188.01537500000003|External Auditors",
+          "text": "External Auditors"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/26",
+      "goldText": "Senior Management Changes",
+      "page": 69,
+      "lines": [
+        {
+          "index": 4159,
+          "lineId": "69|195.29144503396742|72.505859375|267.367375|Senior Management Changes",
+          "text": "Senior Management Changes"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/27",
+      "goldText": "Internal Control",
+      "page": 69,
+      "lines": [
+        {
+          "index": 4168,
+          "lineId": "69|112.79495093749999|72.95703125|175.26378125000002|Internal Control",
+          "text": "Internal Control"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/section/section-xiv-reconciliations-of-components-of-allocable-income",
+      "goldText": "Section XIV: Reconciliations of Components of Allocable Income",
+      "page": 71,
+      "lines": [
+        {
+          "index": 4201,
+          "lineId": "71|728.9087946235799|75.1719921875|536.6316992187501|Section XIV: Reconciliations of Components of Allocable Income",
+          "text": "Section XIV: Reconciliations of Components of Allocable Income"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/subtopic/28",
+      "goldText": "Abbreviations and Acronyms",
+      "page": 73,
+      "lines": [
+        {
+          "index": 4341,
+          "lineId": "73|731.8412093098956|72|265.813375|Abbreviations and Acronyms",
+          "text": "Abbreviations and Acronyms"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/statement/balance-sheets/4475",
+      "goldText": "BALANCE SHEETS",
+      "page": 84,
+      "lines": [
+        {
+          "index": 4475,
+          "lineId": "84|732.0859515384617|73.1640625|214.32375|BALANCE SHEETS",
+          "text": "BALANCE SHEETS"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "ambiguous-source-review",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/statement/statements-of-comprehensive-income",
+      "goldText": "STATEMENTS OF COMPREHENSIVE INCOME",
+      "page": 87,
+      "lines": [
+        {
+          "index": 4635,
+          "lineId": "87|714.0870565322585|72.71875|416.38850000000014|STATEMENTS OF COMPREHENSIVE INCOME",
+          "text": "STATEMENTS OF COMPREHENSIVE INCOME"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/statement/statements-of-changes-in-equity",
+      "goldText": "STATEMENTS OF CHANGES IN EQUITY",
+      "page": 88,
+      "lines": [
+        {
+          "index": 4658,
+          "lineId": "88|714.069770092593|72.71875|371.794875|STATEMENTS OF CHANGES IN EQUITY",
+          "text": "STATEMENTS OF CHANGES IN EQUITY"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/statement/statements-of-cash-flows/4720",
+      "goldText": "STATEMENTS OF CASH FLOWS",
+      "page": 89,
+      "lines": [
+        {
+          "index": 4720,
+          "lineId": "89|723.0865525000004|72.71875|313.29974999999996|STATEMENTS OF CASH FLOWS",
+          "text": "STATEMENTS OF CASH FLOWS"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "ambiguous-source-review",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-a-summary-of-significant-accounting-and-related",
+      "goldText": "NOTE A—SUMMARY OF SIGNIFICANT ACCOUNTING AND RELATED POLICIES",
+      "page": 97,
+      "lines": [
+        {
+          "index": 5455,
+          "lineId": "97|504.7861909816579|73.0390625|530.1830859374999|NOTE A—SUMMARY OF SIGNIFICANT ACCOUNTING AND RELATED",
+          "text": "NOTE A—SUMMARY OF SIGNIFICANT ACCOUNTING AND RELATED"
+        },
+        {
+          "index": 5456,
+          "lineId": "97|488.0164797265625|73.0185546875|136.66829687499998|POLICIES",
+          "text": "POLICIES"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-b-capital-stock-maintenance-of-value-and",
+      "goldText": "NOTE B—CAPITAL STOCK MAINTENANCE OF VALUE AND",
+      "page": 108,
+      "lines": [
+        {
+          "index": 6164,
+          "lineId": "108|714.7814793669876|73.0390625|471.8590859375|NOTE B—CAPITAL STOCK MAINTENANCE OF VALUE AND",
+          "text": "NOTE B—CAPITAL STOCK MAINTENANCE OF VALUE AND"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-c-investments",
+      "goldText": "NOTE C—INVESTMENTS",
+      "page": 109,
+      "lines": [
+        {
+          "index": 6225,
+          "lineId": "109|714.7397162224262|73.0390625|237.77629687499999|NOTE C—INVESTMENTS",
+          "text": "NOTE C—INVESTMENTS"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-d-loans-and-other-exposures",
+      "goldText": "NOTE D—LOANS AND OTHER EXPOSURES",
+      "page": 112,
+      "lines": [
+        {
+          "index": 6409,
+          "lineId": "112|564.7676416015621|73.0390625|365.3442968750001|NOTE D—LOANS AND OTHER EXPOSURES",
+          "text": "NOTE D—LOANS AND OTHER EXPOSURES"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-e-borrowings",
+      "goldText": "NOTE E—BORROWINGS",
+      "page": 120,
+      "lines": [
+        {
+          "index": 6961,
+          "lineId": "120|197.93508934570312|73.0390625|236.992296875|NOTE E—BORROWINGS",
+          "text": "NOTE E—BORROWINGS"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-f-derivative-instruments/7071",
+      "goldText": "NOTE F—DERIVATIVE INSTRUMENTS",
+      "page": 122,
+      "lines": [
+        {
+          "index": 7071,
+          "lineId": "122|490.76656105324065|73.0390625|325.66829687499995|NOTE F—DERIVATIVE INSTRUMENTS",
+          "text": "NOTE F—DERIVATIVE INSTRUMENTS"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "ambiguous-source-review",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-g-retained-earnings-and-board-of-governors",
+      "goldText": "NOTE G — RETAINED EARNINGS AND BOARD OF GOVERNORS APPROVED TRANSFERS",
+      "page": 125,
+      "lines": [
+        {
+          "index": 7255,
+          "lineId": "125|513.2875628810975|73.0390625|503.790296875|NOTE G — RETAINED EARNINGS AND BOARD OF GOVERNORS",
+          "text": "NOTE G — RETAINED EARNINGS AND BOARD OF GOVERNORS"
+        },
+        {
+          "index": 7256,
+          "lineId": "125|496.52155641544124|72|239.330296875|APPROVED TRANSFERS",
+          "text": "APPROVED TRANSFERS"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-h-transactions-with-affiliated-organizations",
+      "goldText": "NOTE H—TRANSACTIONS WITH AFFILIATED ORGANIZATIONS",
+      "page": 126,
+      "lines": [
+        {
+          "index": 7309,
+          "lineId": "126|585.9894587847215|73.0390625|495.97829687499984|NOTE H—TRANSACTIONS WITH AFFILIATED ORGANIZATIONS",
+          "text": "NOTE H—TRANSACTIONS WITH AFFILIATED ORGANIZATIONS"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-i-accumulated-other-comprehensive-income",
+      "goldText": "NOTE I—ACCUMULATED OTHER COMPREHENSIVE INCOME",
+      "page": 128,
+      "lines": [
+        {
+          "index": 7409,
+          "lineId": "128|714.7822275152444|73.0390625|480.4246250000001|NOTE I—ACCUMULATED OTHER COMPREHENSIVE INCOME",
+          "text": "NOTE I—ACCUMULATED OTHER COMPREHENSIVE INCOME"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-j-fair-value-disclosures/7475",
+      "goldText": "NOTE J— FAIR VALUE DISCLOSURES",
+      "page": 129,
+      "lines": [
+        {
+          "index": 7475,
+          "lineId": "129|499.0046176382211|73.0390625|328.79029687499997|NOTE J— FAIR VALUE DISCLOSURES",
+          "text": "NOTE J— FAIR VALUE DISCLOSURES"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "ambiguous-source-review",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-k-pension-and-other-postretirement-benefits/7958",
+      "goldText": "NOTE K—PENSION AND OTHER POSTRETIREMENT BENEFITS",
+      "page": 138,
+      "lines": [
+        {
+          "index": 7958,
+          "lineId": "138|463.03926507994197|73.0390625|494.466296875|NOTE K—PENSION AND OTHER POSTRETIREMENT BENEFITS",
+          "text": "NOTE K—PENSION AND OTHER POSTRETIREMENT BENEFITS"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "ambiguous-source-review",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-l-trust-funds-administration-and-other-services",
+      "goldText": "NOTE L—TRUST FUNDS ADMINISTRATION AND OTHER SERVICES",
+      "page": 148,
+      "lines": [
+        {
+          "index": 8480,
+          "lineId": "148|421.1864038926627|73.0390625|522.438296875|NOTE L—TRUST FUNDS ADMINISTRATION AND OTHER SERVICES",
+          "text": "NOTE L—TRUST FUNDS ADMINISTRATION AND OTHER SERVICES"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-m-segment-reporting",
+      "goldText": "NOTE M—SEGMENT REPORTING",
+      "page": 150,
+      "lines": [
+        {
+          "index": 8556,
+          "lineId": "150|691.9581412144886|73.0390625|295.95482812499995|NOTE M—SEGMENT REPORTING",
+          "text": "NOTE M—SEGMENT REPORTING"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    },
+    {
+      "goldStableId": "041/note/note-n-contingencies",
+      "goldText": "NOTE N—CONTINGENCIES",
+      "page": 150,
+      "lines": [
+        {
+          "index": 8591,
+          "lineId": "150|348.3982352713816|73.0390625|254.884296875|NOTE N—CONTINGENCIES",
+          "text": "NOTE N—CONTINGENCIES"
+        }
+      ],
+      "reviewStatus": "reviewed",
+      "reviewMethod": "single-line",
+      "proposalMatchCount": 1
+    }
+  ],
+  "schemaVersion": 1,
+  "artifactKind": "pdf_reviewed_occurrence_bridge",
+  "usesModel": false,
+  "usesPipelineOutput": false
+}
