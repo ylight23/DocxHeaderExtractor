@@ -3760,6 +3760,60 @@ actually run what we intend to ship".
   visible after the fact. Had `codeRevision` come from the operator or the environment, the artifact
   would have claimed the revision someone intended to run rather than the one that ran.
 
+### M12-B1 CLOSED
+
+| | |
+|---|---|
+| deployment / provider enforcement | **none found** |
+| CLI default may select Local | PROVEN |
+| artifact reports the actual backend | PROVEN |
+| release acceptance can reject Local | PROVEN |
+| production wrong-provider incident | **NOT PROVEN** |
+| mandatory-provider CLI contract | does not exist |
+| CLI remediation | **NOT JUSTIFIED** |
+
+- [x] M12-B2 executed binary identity, **audit only**. The question is not "should `dhx.cmd` run the
+  newest build" - no contract says `out-vulkan` must lose to `bin/Release`, or that the working tree
+  is what should execute. The question is whether release evidence needs the revision confirmed
+  *before* the run, or whether the artifact declaring it afterwards is enough.
+
+  **The hazard is live, and measured rather than imagined:**
+
+  | binary | embedded revision | |
+  |---|---|---|
+  | `out-vulkan\dhx.dll` (what `dhx.cmd` selects first) | `7b8ad20` | 2026-07-31, **403 commits behind HEAD** |
+  | `bin/Release/net9.0/dhx.dll` | `bc5ceb9` | this session |
+  | working tree HEAD | `1b977f4` | |
+
+  Typing `dhx` today runs a binary from before M7. The B4.2 canaries did not, because they went
+  through `dotnet run --project`, which is why their artifacts reported `047b169`.
+
+  Also recorded without prescribing anything: `dhx-ui.cmd` republishes before every run, `dhx.cmd`
+  does not. That asymmetry is why one launcher can go stale and the other cannot.
+
+  **Post-run detection works.** A run through `dhx.cmd` today would produce an artifact declaring
+  `7b8ad20`, and the acceptance rule - compare against the intended release revision - would reject it
+  as evidence. Nothing is hidden, and this is precisely the ambiguity M12-A3 was chosen to resolve:
+  the operator's intent and the working tree both say `1b977f4`, and only the binary knows otherwise.
+
+  **What post-run detection cannot do is prevent the spend.** The rejection happens after the
+  OpenRouter calls have been made. Whether that matters is a release-process question, not a technical
+  one, and it decides between two contracts:
+
+  - *post-run acceptance is sufficient* - then pre-run enforcement is **NOT JUSTIFIED**, the launcher
+    is left alone, and **M12 can close with no further production change**.
+  - *the model call may only begin once the approved revision is confirmed* - then post-run detection
+    is too late, and a preflight comparing the selected binary's revision against an expected one has
+    an authority contract behind it.
+
+  **This audit does not choose.** The cost of an OpenRouter call is real, but a cost existing does not
+  create a contract; the release process has to say what it requires.
+
+  If the second contract is ever adopted, the remediation stays small: acceptance already carries three
+  independent facts (`backend`, `model`, `codeRevision != null`), and an expected revision would be a
+  fourth. It does **not** call for a `ReleaseManifest`, `ReleaseProfile` or `DeploymentDescriptor`
+  unless several requirements genuinely need one authority object.
+
 - [ ] Nothing else in M12-B is opened yet. Artifact retention, checkpoint retention, failure
   reporting, output and writeback location, and secret redaction tests are **not** a checklist to work
   through because the milestone is called release readiness. One question at a time, each opened on
