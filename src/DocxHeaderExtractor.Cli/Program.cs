@@ -1666,7 +1666,7 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
         // Visual analyst stays out: M8.1a freezes the deterministic semantic route only.
         var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
             file, slim, analyst, analystBudget, o.PdfStageWideCandidates, o.PdfStageSupplementCandidates,
-            null, o.VlmDpi, 0, null, false, ct, semanticLaneOptions, null, false, 1,
+            null, o.VlmDpi, 0, null, false, ct, semanticLaneOptions, o.PdfStageCheckpointPath, o.PdfStageResume, o.PdfStageVisualConcurrency,
             o.PdfStageSemanticHierarchy);
         if (result.Audit is not { } audit)
         {
