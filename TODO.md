@@ -3280,9 +3280,44 @@ redesign.
   everything. But "nearly everything" is not the same as refusing, and the document-level fingerprint
   the output already carries is the obvious check. Adding it is a production behaviour change, which
   is a decision rather than a tidy-up, and it belongs to M11-B3's fail-closed set.
-- [ ] M11-B2 deterministic replay: the same validated input facts must produce the same final
-  structure, output decision, product output and writeback decision. Model stochasticity is not in
-  scope - what must be deterministic is the projection from validated facts onward.
+- [x] M11-B2 deterministic replay. **Determinism is claimed from the validated authority boundary
+  downward and no further.** The same validated structures, hierarchy facts and canonical groundings
+  always yield the same final structure, decisions and product output. Nothing here claims the same
+  DOCX yields the same model result; the model lane is upstream of this boundary and is not re-run.
+
+  Audited before adding anything, and most stages were already locked individually:
+
+  | stage | existing lock |
+  |---|---|
+  | projection | `SameInputProducesTheSameFingerprints` |
+  | projection from a frozen artifact | `ProjectsIdenticallyFromASerialisedArtifact` |
+  | projection from reconstructed facts | `ProjectsIdenticallyFromFactsReconstructedOffTheRowItemsAlone` |
+  | output decisions | `DecisionsAreDeterministic` |
+  | serialization | `SerializationIsDeterministicOnTheSameFrozenInput` |
+  | writeback | `ApplyingTheSameOutputTwiceIsDeterministic`, `ValidWritebackRemainsDeterministic` |
+
+  **What was missing is the composition.** A stage can be deterministic in isolation and still perturb
+  what follows it, and only running the whole chain and comparing the end product catches that. Four
+  locks added over the three required shapes plus the restart case: an emittable product, unresolved
+  hierarchy, an empty validated set, and the full chain replayed off a frozen artifact through
+  decisions and serialization - which is what a resumed run actually executes, and which projection
+  alone did not cover.
+
+  **A fixture mistake worth recording, because it was mine and not the code's.** The unresolved-
+  hierarchy test first asserted that both level and parent come back null, using a structure that
+  declared `parentId` with resolution `marker-resolved`. The parent was legitimately resolved; only
+  the level was not. **Level and parent are independent facts**, and an assertion that treats
+  "unresolved hierarchy" as one thing is asserting something the contract never said. The fixture now
+  leaves both unresolved so the assertion means what it claims.
+
+  Writeback replay is covered by the existing pair plus B3.1's, and byte-level package identity is
+  deliberately **not** asserted: the DOCX writer's packaging is not contracted to be reproducible at
+  the byte level, and semantic document state is what the product promises. Regression unchanged at
+  the frozen 15; 1028 passing.
+
+  Neither B3.2 debt is touched: ambiguous occurrence stays NOT_PROVEN and first fit is not converted
+  to unique matching here, and legacy revival stays a coverage gap with no pipeline refactor to reach
+  it.
 - [x] M11-B3.1 writeback bound to the revision the output declares. **The first production change
   since M10 opened**, and it is fail-closed hardening rather than accuracy remediation - no heading is
   recovered by it.
