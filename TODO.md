@@ -3814,10 +3814,58 @@ actually run what we intend to ship".
   fourth. It does **not** call for a `ReleaseManifest`, `ReleaseProfile` or `DeploymentDescriptor`
   unless several requirements genuinely need one authority object.
 
-- [ ] Nothing else in M12-B is opened yet. Artifact retention, checkpoint retention, failure
-  reporting, output and writeback location, and secret redaction tests are **not** a checklist to work
-  through because the milestone is called release readiness. One question at a time, each opened on
-  its own evidence.
+### M12-B2 CLOSED - post-run acceptance is the chosen contract
+
+| | |
+|---|---|
+| stale launcher binary | PROVEN |
+| selected binary != working HEAD | PROVEN |
+| embedded revision exposes the truth | PROVEN |
+| post-run release rejection works | PROVEN |
+| data integrity impact | **none proven** |
+| writeback safety impact | **none proven** |
+| current material cost | wasted model calls only |
+| pre-run revision enforcement | **NOT JUSTIFIED** |
+
+**A measurable operational cost is not, by itself, an authority contract.**
+
+**Reopen pre-run revision enforcement if** OpenRouter cost or latency becomes material enough that
+invalid release executions must be prevented before inference; or deployment policy explicitly
+requires that only an approved revision may contact the model provider; or a stale binary can cause
+effects before post-run acceptance can reject them; or release automation needs a pre-execution
+approval gate for compliance or audit. None of these is currently proven.
+
+## M12 - CLOSED, PASS WITH KNOWN OPERATIONAL LIMITATIONS
+
+| area | outcome |
+|---|---|
+| A - `semanticLaneStatus`, `codeRevision`, semantic timeouts | promoted |
+| A - OpenRouter endpoint host | not justified |
+| A - retained readable route configuration | trigger-gated |
+| B1 - provider enforcement | none in deployment; artifact acceptance catches it; CLI change not justified |
+| B2 - binary identity | launcher may select a stale binary; embedded revision exposes it; pre-run enforcement not justified |
+
+**Known operational limitation, recorded rather than fixed:** `dhx.cmd` may execute an older published
+binary in preference to `bin/Release`. This can waste an OpenRouter run before release acceptance
+rejects the artifact. It is not treated as a release blocker.
+
+Not done, deliberately: the `dhx.cmd` selection order is unchanged, the provider is not made
+mandatory, no `expectedRevision` is introduced, and no release manifest type is created.
+
+Artifact retention, checkpoint retention, failure reporting, output and writeback location, and secret
+redaction tests were **not** worked through as a checklist because the milestone is called release
+readiness. Each opens on its own evidence or not at all.
+
+### Release position after M11 and M12
+
+Claimable: the pipeline is release-ready with respect to product authority, fail-closed behaviour,
+deterministic post-validation processing, OpenRouter integration, and operational provenance.
+
+Not claimable: that any accuracy target is met; that hierarchy generalises; that the scope debts are
+resolved; or that every launcher selects the newest build.
+
+**The next step is a release candidate and a runbook, not M13.** Diagnostic and architecture
+milestones stop here; something remaining that could be improved is not a reason to open another one.
 
 ## Decision gate
 
