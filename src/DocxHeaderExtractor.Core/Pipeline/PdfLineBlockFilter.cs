@@ -46,7 +46,16 @@ internal static class PdfLineBlockFilter
 {
     private static readonly Regex NonAlphaNumRx = new(@"[^a-z0-9]+", RegexOptions.Compiled);
 
-    public static IReadOnlyList<PdfLineBlockAnnotation> Analyze(IReadOnlyList<PdfLine> lines)
+    /// <summary>
+    /// Annotates each line. <paramref name="withheldTableLikeLines"/> is evaluation-only: the indexes
+    /// of lines whose table-like mark is withheld, so a counterfactual can remove the mark from a
+    /// reviewed occurrence and change nothing else. Lines are addressed by index into this list, not
+    /// by their text, because two lines can read identically and only one of them is the occurrence
+    /// under study. It is empty in production.
+    /// </summary>
+    public static IReadOnlyList<PdfLineBlockAnnotation> Analyze(
+        IReadOnlyList<PdfLine> lines,
+        IReadOnlySet<int>? withheldTableLikeLines = null)
     {
         if (lines.Count == 0) return [];
 
@@ -63,13 +72,14 @@ internal static class PdfLineBlockFilter
         var maxY = lines.Max(l => l.Y);
         var span = Math.Max(1, maxY - minY);
 
-        return lines.Select(line =>
+        return lines.Select((line, index) =>
         {
             var repeated = repeatedKeys.Contains(RepeatKey(line.Text));
             var headerFooter = IsHeaderFooterZone(line, minY, span);
             var pageNumber = IsPageNumber(line.Text);
             var tableLikeRule = ClassifyTableLine(line.Text);
-            var tableLike = tableLikeRule is not null;
+            var tableLike = tableLikeRule is not null &&
+                            withheldTableLikeLines?.Contains(index) != true;
             var reasons = new List<string>();
             if (pageNumber) reasons.Add("page-number");
             if (repeated) reasons.Add("repeated");

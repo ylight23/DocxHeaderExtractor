@@ -374,10 +374,12 @@ public static class PdfLayoutEvidenceOutline
     /// <see cref="BuildCandidateRankingAudit"/> and never sees these fields.
     /// </para>
     /// </summary>
-    internal static PdfCandidateRankingSnapshot BuildCandidateRankingSnapshot(string originalInputPath)
+    internal static PdfCandidateRankingSnapshot BuildCandidateRankingSnapshot(
+        string originalInputPath,
+        IReadOnlySet<int>? withheldTableLikeLines = null)
     {
         var context = TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
-            includeSupplementCandidates: true, out var reason);
+            includeSupplementCandidates: true, out var reason, withheldTableLikeLines);
         if (context is null)
             return new PdfCandidateRankingSnapshot(new PdfCandidateRankingAudit(reason, 0, []),
                 new Dictionary<string, PdfCandidateProvenance>(StringComparer.Ordinal), [], [], []);
@@ -887,7 +889,8 @@ public static class PdfLayoutEvidenceOutline
         string originalInputPath,
         bool includeAllVisualStyles,
         bool includeSupplementCandidates,
-        out string reason)
+        out string reason,
+        IReadOnlySet<int>? withheldTableLikeLines = null)
     {
         reason = "";
         var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
@@ -905,7 +908,7 @@ public static class PdfLayoutEvidenceOutline
             return null;
         }
 
-        var annotations = PdfLineBlockFilter.Analyze(lines);
+        var annotations = PdfLineBlockFilter.Analyze(lines, withheldTableLikeLines);
         var semanticLines = annotations.Where(a => !a.ExcludeFromSemanticSamples).Select(a => a.Line).ToList();
         if (semanticLines.Count < 3) { reason = "too-few-semantic-lines"; return null; }
         var profile = PdfStyleClusterProfile.Learn(semanticLines);
