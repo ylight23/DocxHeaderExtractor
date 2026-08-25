@@ -2571,16 +2571,67 @@ something else, is the chained overengineering this project has been avoiding; t
 own independent trigger. If it is ever repaired on its own evidence, B4's measurement can be re-run
 as-is and the gate re-read - the probe takes no gold and needs no change.
 
-- [ ] M10.4-A quote scope lifecycle on 092, **the next milestone**. It is preferred over the TOC debt
-  because it already shows on the output path rather than only in a classification: from page 28 the
-  quote latch takes pages 28-35, leaving 8 reviewed headings selected but not emittable, and
-  swallowing the document's real appendices on page 32 so that even withholding the false appendix
-  entry could not restore them (A2).
-  - A1: trace which trigger sets the quote latch at page 28 and why it never exits. Instrument the
-    existing owner passively; no new resolver.
-  - A2: withhold exactly the reviewed false transition or false persistence, diagnostic only, and
-    measure whether the 8 headings become emittable, whether page 32 regains `appendix`, and whether
-    anything else is overdetermining the loss - counterfactual before rule, as with the appendix.
+## M10.4 - 092 quote scope lifecycle, audit only
+
+Chosen over the TOC debt because it already shows on the output path: the quote latch holds pages
+28-35, leaves 8 reviewed headings selected but not emittable, and swallows the real appendices on
+page 32 so that withholding the false appendix entry could not restore them (M10.3-A2).
+
+- [x] M10.4-A1 quote state trace, model-free. The existing tracker gained passive fields recording the
+  open and close conditions it evaluated and the raw quote-character counts behind them. The two
+  conditions do not read the same characters, so booleans alone could not distinguish a block that
+  failed to close from one that could never close. No new quote boundary was defined.
+
+  **1. Trigger.** Six blocks satisfy the open condition; the first is `s-line-830` on page 28:
+
+  `1 1" (Section 11 of [HTTP/1 1]) and "HTTP Semantics" (Section 17 of [HTTP])`
+
+  Three straight quotes, no curly ones. The condition is
+  `leftCurly + (straightQuotes % 2) > 0`, so it fires on the *parity* of straight quotes within one
+  line. The line opens `1 1"`, which is the tail of `"HTTP/1 1"` broken across the line boundary -
+  so on the evidence the odd parity is produced by line segmentation rather than by unbalanced text
+  in the source. That reading needs reviewed confirmation before the transition is called false.
+
+  **2. Persistence.** From that block to the end of the document: 107 blocks, pages 28-35, of which
+  92 resolve to `quoted_replacement`. Not one block after it satisfies the close condition.
+
+  **3. Exit - and this is the part that differs from the appendix latch.** The appendix latch has no
+  exit at all. The quote latch *has* one, and it is unreachable on this document:
+
+  | | count |
+  |---|---|
+  | blocks whose close condition held, anywhere | **0** |
+  | curly closing quotes in the document | **0** |
+  | curly opening quotes in the document | 0 |
+  | straight quote characters in the document | 208 |
+
+  The open condition reads straight quotes; the close condition reads only `U+201D`/`U+201F`. **The
+  two conditions read disjoint character sets**, so in a document that uses straight quotes
+  throughout, the latch can be set and can never be cleared. This is an asymmetry, not a missing
+  reset, and the distinction matters because it changes which interventions are even meaningful.
+
+  **4. Why page 32 loses its appendices.** In the tracker's branch order the quote branch is tested
+  before the appendix branch. `b485` `Appendix A Collected ABNF` and `b490`
+  `Appendix B Changes from RFC 7234` both arrive with the quote latch already set, so they resolve to
+  `quoted_replacement` rather than `appendix`. Their own trigger fires; it simply never reaches the
+  branch that would use it.
+
+- [ ] M10.4-A2 counterfactual - **needs a decision before it runs, because two independent mechanisms
+  are present and mixing them would measure neither.**
+  - *Suppress the transition* at `s-line-830` answers "was the page 28 trigger the cause", and leaves
+    the unreachable exit untested - a legitimate quotation later in the document would still never
+    close.
+  - *Terminate the persistence* at a reviewed boundary answers "does the missing exit cause the
+    loss", and leaves the trigger untested - the latch would still be set by a line fragment.
+
+  Either way, A2 measures: whether the 8 reviewed headings become emittable, whether page 32 regains
+  `appendix`, the candidate and scope distributions, and the composition of anything newly emittable.
+  As with the appendix and TableLike, a defect can be real and still not be the causal owner - if the
+  8 headings stay lost behind another blocker, the quote leak is confirmed and not promoted.
+
+- [ ] Debts kept separate. Quote scope, appendix scope and the TOC detector share a subject and
+  nothing else: three different triggers, three different owners, three different failure shapes. No
+  `ScopeLifecycleManager` follows from the fact that all three are scope-related.
 
 - [ ] Hierarchy stays last. 092's hierarchy is bounded by what reaches the validator; a better
   resolver cannot invent a parent fact that upstream filtered out. Reassess the ceiling only after
