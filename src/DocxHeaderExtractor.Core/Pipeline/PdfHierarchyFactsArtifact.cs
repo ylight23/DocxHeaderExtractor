@@ -52,7 +52,8 @@ public static class PdfHierarchyFactsArtifact
         string sourceDocumentSha256,
         IReadOnlyList<PdfHierarchyFactAudit> facts,
         IReadOnlyList<PdfValidatedStructure>? validatedStructures = null,
-        IReadOnlyList<PdfCanonicalGrounding>? canonicalGroundings = null)
+        IReadOnlyList<PdfCanonicalGrounding>? canonicalGroundings = null,
+        string? semanticLaneStatus = null)
     {
         var ordered = Canonicalize(facts);
         var counters = new PdfHierarchyFactsCounters(
@@ -73,7 +74,13 @@ public static class PdfHierarchyFactsArtifact
             // Carried so a downstream projection can be replayed from the frozen artifact alone
             // rather than from a live route.
             validatedStructures ?? [],
-            canonicalGroundings ?? []);
+            canonicalGroundings ?? [])
+        {
+            // The producing route's own lane status, copied verbatim. Without it an artifact with no
+            // validated structures cannot be told apart from one whose semantic lane degraded, and
+            // those are different operational events with the same cardinality.
+            SemanticLaneStatus = semanticLaneStatus,
+        };
     }
 }
 
@@ -103,6 +110,11 @@ public sealed record PdfHierarchyFactsGeneration(
     [property: JsonPropertyName("promptSha256")] string PromptSha256,
     [property: JsonPropertyName("routeConfigSha256")] string RouteConfigSha256);
 
+/// <summary>
+/// One document's frozen facts. <see cref="SemanticLaneStatus"/> is null on artifacts produced before
+/// it existed, and that is deliberately not read as "the run was complete": absent provenance is
+/// absent, not reassuring.
+/// </summary>
 public sealed record PdfHierarchyFactsRow(
     [property: JsonPropertyName("file")] string File,
     [property: JsonPropertyName("sourceDocumentSha256")] string SourceDocumentSha256,
@@ -110,7 +122,15 @@ public sealed record PdfHierarchyFactsRow(
     [property: JsonPropertyName("counters")] PdfHierarchyFactsCounters Counters,
     [property: JsonPropertyName("items")] IReadOnlyList<PdfHierarchyFactItem> Items,
     [property: JsonPropertyName("validatedStructures")] IReadOnlyList<PdfValidatedStructure> ValidatedStructures,
-    [property: JsonPropertyName("canonicalGroundings")] IReadOnlyList<PdfCanonicalGrounding> CanonicalGroundings);
+    [property: JsonPropertyName("canonicalGroundings")] IReadOnlyList<PdfCanonicalGrounding> CanonicalGroundings)
+{
+    /// <summary>
+    /// The producing route's semantic lane status, copied rather than recomputed. Null means the
+    /// artifact predates this field - unknown provenance, not a completed run.
+    /// </summary>
+    [JsonPropertyName("semanticLaneStatus")]
+    public string? SemanticLaneStatus { get; init; }
+}
 
 public sealed record PdfHierarchyFactsCounters(
     [property: JsonPropertyName("validatedHeadings")] int ValidatedHeadings,
