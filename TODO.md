@@ -3192,23 +3192,63 @@ is the final product right?
   occurrence-safe reviewed gold, so it is the natural place to assess hierarchy - and it is one
   document, which is exactly the position M10.5 was opened to correct.
 
-- [ ] M11-A1 needs a decision before it can run, and the decision has a cost attached:
-  - assessing level, parent and order requires validated structures, which requires a live model pass.
-    Nothing offline substitutes for it, and building an offline proxy would be the second
-    implementation this project has spent M10 refusing.
-  - the population would be single-document. A hierarchy finding on 054 alone would carry exactly the
-    generalisation risk that M10.5 measured and that closed `TableLike`.
-  - widening it needs new reviewed occurrence gold. Reviewed occurrences exist only for 092, 054, and
-    the 80-line cross-document sample; no other document has any.
+### M11-A0 CLOSED - hierarchy evaluation is not generalizable
 
-  So the honest options are: spend one live pass on 054 and read the result as single-document; or
-  review occurrences on a second document first and accept that cost before the model spend; or defer
-  hierarchy and open product acceptance instead. Not a measurement question - it needs a call.
-- [ ] M11-A1, only if A0 yields a population: measure `ResolvedLevel`, parent, sibling order, scope
-  and role retention, and canonical DOCX grounding against reviewed occurrences.
-- [ ] If A0 yields no clean population, the next milestone is product acceptance and release
-  hardening, not hierarchy. Do not force a hierarchy assessment onto a population that upstream has
-  already damaged - that is how M10 began.
+| document | upstream-clean reviewed headings |
+|---|---|
+| 092 | 0 |
+| 032 | 0 |
+| 091 | 0 |
+| 054 | 20 |
+
+Population available: **yes**. Cross-document: **no**. Generalizable: **no**.
+Reason: the upstream scope and output debts deliberately remain frozen.
+
+Not "blocked for lack of data" - the stage is known exactly. Reviewed occurrence, candidate,
+selection all pass; 032, 091 and 092 die at scope and output eligibility, before validation is ever
+reached. Assessing hierarchy on those documents would measure a later stage on a population upstream
+has already deformed, which is how M10 started.
+
+**Neither remaining option is taken.** A live pass on 054 would be a real canary but a
+single-document, single-domain one: whichever way it came out, the conclusion would have to carry the
+"not generalized" label that M10.5 taught us to attach - so the model spend buys a conclusion whose
+status is known in advance. And reviewing a second document's occurrences would risk spending 50-100
+reviews before discovering that none of them clear eligibility either, which is evaluation work
+committed before the population is known to be usable.
+
+- [ ] Hierarchy reopens when **two or more independent reviewed populations** exist that pass
+  occurrence -> candidate -> selected -> validated -> scope/output eligible, and level or parent is
+  still wrong. A whole document is not required; an independent, upstream-clean occurrence population
+  is enough. Do not manufacture that population because a milestone slot is empty.
+
+## M11-B - product acceptance and release hardening
+
+The question stops being why a heading is lost and becomes: is what the system decides to emit
+deterministic, grounded, reproducible, fail-closed and safe to write back? None of it needs new
+accuracy work, and most of the infrastructure already exists - the goal is acceptance proof, not
+redesign.
+
+- [ ] M11-B1 contract acceptance across the boundaries: source facts -> validated structure ->
+  final structure -> output decision -> product output -> writeback. Lock, as tests:
+  - every `FinalHeading` carries a canonical DOCX anchor, and its text derives from the source span.
+  - `level` and `parent` stay nullable when unresolved; no fabricated fallback, no implicit parent.
+  - `Emit = false` cannot reach the serializer or the writeback.
+  - unresolved grounding fails closed.
+  - a writeback target mismatch skips rather than guesses.
+  - the legacy path cannot silently come back.
+- [ ] M11-B2 deterministic replay: the same validated input facts must produce the same final
+  structure, output decision, product output and writeback decision. Model stochasticity is not in
+  scope - what must be deterministic is the projection from validated facts onward.
+- [ ] M11-B3 fail-closed behaviour under the failures the product must survive: missing canonical
+  grounding, stale source fingerprint, ambiguous occurrence, null level, invalid writeback anchor,
+  text mismatch, partial model result, empty validated structures. In every case uncertain must
+  resolve to unresolved, review or skip - never to a guess, a legacy fallback or a silent writeback.
+- [ ] M11-B4 representative corpus smoke over the product route, collecting validated counts, final
+  headings, emit, requires-review, unresolved grounding, writeback eligible and skipped-with-reason,
+  and fatal errors. The target is not an accuracy number; it is crashes, nondeterminism, impossible
+  states, silent fallbacks, ungrounded output and any writeback that does not fail closed.
+
+
 
 ## Decision gate
 
