@@ -1961,6 +1961,82 @@ upstream cause (grounding, recall, scope) rather than the hierarchy resolver its
 resolver first would very likely just move the same loss downstream. No M10 work has started as of
 this entry; the above is the agreed priority order only.
 
+## M10 — quality and accuracy
+
+M10 does not deterministically replace the model lane. It uses deterministic, replayable measurement
+to find which layer actually loses a heading first, so the layer that gets changed is the one at
+fault. The remedy that follows may be deterministic, or it may be prompt/context/model work - that
+is an outcome of the measurement, not an assumption of it.
+
+- [x] M10.1a/b 054 provenance and stage census. The route and profile differ between the frozen M8.1c
+  stage-eval run (wide+supplement, budget 160, 29 validated) and the live M9.4 production canary
+  (0 validated), but both agree where it matters: no gold heading had ever been validated. Note for
+  future premises - the M9.4 canary evidence existed on the pushed branch while the local tree lacked
+  it, so absence in a working tree is not absence in project history.
+- [x] M10.1c/d first-loss classification, then two corrections that changed the answer:
+  - `present_fragmented_pdf_text_fact` does not mean the characters were fragmented; it means the
+    gold text was found in a raw window but not as an exact source line. Zero of the sixteen
+    ambiguous cases had a broken heading line.
+  - The ambiguity was caused by the gold, not the document. The heading reads `SECTION II: EXECUTIVE
+    SUMMARY` while gold stored `Executive Summary`, so containment matched every cross-reference,
+    table-of-contents line and merged window that quoted it.
+- [x] M10.1e-0a 054 gold repaired to occurrence-safe entries (`054-v3-occurrence-reviewed`). The
+  previous generation was rebased by canonical title in document order, which put 13 of 24 entries on
+  body prose or contents lines and dropped the `SECTION N:` label from 10 more. Measured with no
+  production change: ambiguous-occurrence first loss 16 -> 0, headings reaching selection 2 -> 18 of
+  23. The "catastrophic recall" reading of this document was largely an evaluation defect. One node
+  stays unresolved: its literal title exists only in the contents table, and the body node it refers
+  to is rendered across separate paragraphs, so no single stable id describes it.
+- [x] M10.1e-0b evaluator made occurrence-safe:
+  - versioned gold keys resolve by shape (`.v{N}-{label}`) instead of one hard-coded label, and two
+    generations sharing a stem stay two matches so the caller reports an ambiguous key. Until this
+    was fixed the reviewed gold did not resolve at all while the superseded generation did, and was
+    measured silently.
+  - a reviewed PDF occurrence bridge records which source lines each gold heading occupies. Twenty-one
+    of twenty-three matched exactly one line and nothing else; two headings the renderer broke across
+    lines were reviewed by hand. Required coverage is derived as the lines carrying text, so a
+    candidate that omits a punctuation-only line still represents the heading.
+  - first loss ranks a heading by candidates built from those lines, never by text containment.
+    Candidate provenance is taken from a diagnostic snapshot at the ranking build, so evaluation does
+    not rebuild the candidate graph and cannot drift from it.
+
+**054 baseline, occurrence-reviewed gold (23 entries):**
+
+| measure | value |
+|---|---|
+| selected at budget 160 | 18/23 |
+| first loss `ranking_or_budget` | 5/23 |
+| representation `standard_block` | 21/23 |
+| representation `window_only` | 2/23 |
+
+- [x] M10.1e-A1 rank decomposition for the three standard-block misses. Three different mechanisms,
+  so they are not one fix:
+  - `AVAILABILITY OF INFORMATION` - rank 166, score 0.44, no negative evidence at all; the top-160
+    cut sits near 0.54. A separate scoring question, not a penalty question.
+  - `SUMMARY INFORMATION` - rank 1054, score 0.29. Identical positive and ambiguity signals to
+    `AVAILABILITY`; the only difference is a `header_footer_zone` penalty.
+  - `XXI: APPENDIX` - rank 1029, score 0.39, also penalised by `header_footer_zone`. Its second
+    representation is a window scoring 0, so multiplicity is not causal here.
+  - `SECTION XIV`/`SECTION XIX` - represented only as windows at rank 2013/2015; a grouping question,
+    handled separately.
+
+  Correction to an earlier reading: the correct candidates for XIV/XIX are in the ranked population,
+  so a large enough budget would reach them. The honest statement is that budget 160 does not, and
+  raising it far enough would be a poor remedy - and `selected` only means a candidate reaches the
+  model lane, not that the model and validator then accept it.
+- [ ] M10.1e-A2 `header_footer_zone` population audit: classify every line the signal marks in 054,
+  then measure both sides of removing the penalty - which real headings it recovers, and how many
+  running headers, footers and page numbers it would let into the selected budget. A signal that
+  penalises two headings is not thereby wrong; measure it on the population it classifies, which is
+  the lesson the multi-entry signal taught in M8.1e. Cross-domain holdout only if 054 shows material
+  harm.
+- [ ] M10.1e-B1 grouping trace for `SECTION XIV`/`SECTION XIX`, plus a diagnostic counterfactual:
+  the same reviewed occurrence represented as one clean standard block, scored by the existing
+  ranking code. A large rank recovery would make representation the causal owner; a small one would
+  mean window-only representation is not what is holding them back.
+- [ ] M10.1e-A3 why a visually prominent standalone heading with no negative evidence scores only
+  0.44. Deferred until A2 and B1 report.
+
 ## Decision gate
 
 - [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates
