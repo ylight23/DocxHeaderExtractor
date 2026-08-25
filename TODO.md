@@ -64,6 +64,30 @@ Hai kỷ luật áp cho mọi mục, cả hai đều từng bị vi phạm và l
 
 ---
 
+## Promotion invariants
+
+Project-wide decision rules, not a milestone's checklist. They were earned experimentally: M10.1e
+investigated five plausible remedies for a document that looked catastrophically broken, and each
+one failed in a different way. Written down because the pressure they resist - having investigated,
+surely something must be fixed - is what produces over-engineering.
+
+- **A diagnostic milestone may end with zero production changes.** Investigation creates evidence,
+  not an obligation to patch. A milestone that removes four wrong explanations and changes nothing
+  has done its job.
+- **Observed defect is not causal owner, and causal owner is not safe remediation.** All three have
+  to be established separately. A signal can be plainly mis-scoped and still recover nothing; a
+  cause can be proven and its obvious repair still make the result worse.
+- **Do not schedule remediation merely because a defect is observable.** Recorded debt is a located
+  fact, not a backlog item.
+- **Debt re-enters production only on a trigger:** a newly reviewed corpus reproduces material loss,
+  a product requirement makes the failure material, or new evidence establishes a causal and
+  testable remediation. Absent a trigger, it stays recorded and untouched.
+- **A signal is measured on the population it classifies**, never on a subset chosen by a later
+  stage - and both sides are measured, what it recovers and what it lets in.
+- **Attribution is invalid until the evaluated occurrence is bridged occurrence-safely.** Text that
+  matches is not the same occurrence, and gold that names the wrong one produces confident, wrong
+  conclusions.
+
 ## Việc ĐANG SỐNG
 
 ## 4. Đáp án có người xác nhận — **ĐÃ BẮT ĐẦU (§37), vẫn là thắt cổ chai**
@@ -2170,6 +2194,9 @@ accuracy fix that would then claim credit for recall it did not deliver.
 
 **Reopen only** on new evidence, a new corpus, or a product requirement that forces unnumbered-heading
 recall. Not to keep looking for a fix.
+
+M10.1e is closed at `69750cd`. No remaining work is implied by the recorded debts; the re-entry rules
+are in *Promotion invariants* above.
 
 ## Decision gate
 
