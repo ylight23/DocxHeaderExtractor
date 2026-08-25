@@ -77,7 +77,15 @@ internal sealed class StructuralScopeTracker
             InsideQuote: _insideQuote || wasInsideQuote,
             AmendmentTriggeredHere: amendment,
             Page: facts.Page,
-            RawText: text));
+            RawText: text)
+        {
+            QuoteStateBefore = wasInsideQuote,
+            QuoteOpened = opened,
+            QuoteClosed = closed,
+            LeftCurlyQuotes = text.Count(character => character == '\u201c'),
+            RightCurlyQuotes = text.Count(character => character is '\u201d' or '\u201f'),
+            StraightQuotes = text.Count(character => character == '"'),
+        });
         var result = facts with
         {
             StructuralScope = scope,
@@ -109,4 +117,24 @@ internal sealed record StructuralScopeTransition(
     bool InsideQuote,
     bool AmendmentTriggeredHere,
     int Page,
-    string RawText);
+    string RawText)
+{
+    /// <summary>The latch as this block found it, before this block's own quote facts applied.</summary>
+    public bool QuoteStateBefore { get; init; }
+
+    /// <summary>The open and close conditions the tracker actually evaluated for this block.</summary>
+    public bool QuoteOpened { get; init; }
+
+    public bool QuoteClosed { get; init; }
+
+    /// <summary>
+    /// The raw quote-character counts the conditions were computed from. Recorded separately because
+    /// the open and close conditions do not read the same characters, and an audit that saw only the
+    /// booleans could not tell whether a block failed to close or was never able to.
+    /// </summary>
+    public int LeftCurlyQuotes { get; init; }
+
+    public int RightCurlyQuotes { get; init; }
+
+    public int StraightQuotes { get; init; }
+}
