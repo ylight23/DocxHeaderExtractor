@@ -1690,7 +1690,11 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
 
     var envelope = new PdfHierarchyFactsArtifactEnvelope(
         new PdfHierarchyFactsGeneration(
-            Environment.GetEnvironmentVariable("DHX_CODE_REVISION"),
+            // The binary's own build revision is authoritative; DHX_CODE_REVISION only fills a gap
+            // for builds made without repository access, and can never override what is embedded.
+            BuildProvenance.ResolveCodeRevision(
+                System.Reflection.Assembly.GetEntryAssembly() ?? typeof(CommandLineOptions).Assembly,
+                Environment.GetEnvironmentVariable("DHX_CODE_REVISION")),
             o.Pipeline.Backend.ToString(),
             o.Pipeline.Backend switch
             {

@@ -3619,10 +3619,41 @@ experiment.
   if a run does time out, the artifact as it stood could not be told apart from an honest empty one.
   That was the gap; the 054 result is what made it visible.
 
-- [ ] M12-A3 `codeRevision`, **not** taken in the same patch. It is a real provenance gap with a
-  different owner and a decision behind it: either the binary learns its own revision from build
-  metadata, or the runbook requires the operator to supply it and acceptance refuses a run without it.
-  Those are different deployment contracts and one has to be chosen first.
+- [x] M12-A3 `codeRevision` from the binary. Deployment contract chosen first: **the binary is the
+  authority for which code ran.** An operator-supplied value can be wrong, honestly or otherwise, and
+  an artifact trusting it would claim a revision the binary never contained.
+
+  **Audit answered all three questions before any code was written.**
+  - Does the build already embed a revision? **Yes.** The release assembly reports
+    `ProductVersion = 1.0.0+047b16976c141c4139ff08c1a894b5cc6f41f3ae` - the SDK writes
+    `SourceRevisionId` into `AssemblyInformationalVersion` when the build can see the repository, with
+    no package reference or build change needed.
+  - Is it the exact source revision? **Yes** - `047b169` is the commit that build was made from.
+  - Is it non-null in the release build? **Yes here**, and null by construction for a build made
+    without repository access, which is reported as null rather than guessed.
+
+  **The nuance mattered.** The informational version is `{Version}+{SourceRevisionId}`, so only the
+  segment after the `+` is the revision. Writing the whole string would put `1.0.0+` into a field whose
+  contract says "commit"; `1.0.0` with no `+` yields null. No runtime `git rev-parse`: a release
+  machine may have no `.git`, and a source checkout is not the authority for the binary executing.
+
+  Precedence is `embedded ?? environment`, never the reverse, so `DHX_CODE_REVISION` can fill a gap
+  but can never override what the binary carries. No `codeRevisionSource` field was added - "it might
+  be useful to know which one won" does not meet the ambiguity point of the observability gate.
+
+  **Ordinary execution and release acceptance are separated.** A run may carry a null revision and its
+  artifact stays valid with incomplete provenance; it is simply **not eligible as release evidence**.
+  That contract is locked at the acceptance boundary, not enforced as a runtime refusal - turning
+  observability into a fail-closed check would be the wrong gate.
+
+  Seven locks: extraction from the assembly, a product version without a revision segment yielding
+  null, embedded winning over the environment, the environment used only when nothing is embedded,
+  missing staying null, stability across reads, and release acceptance rejecting a null revision.
+
+  **Not verified end to end.** The producing command requires an LLM, and no further live run was
+  spent to watch the field populate in a real artifact. What is verified is that the built assembly
+  carries the revision and that extraction and precedence are locked - the input is confirmed present
+  and the reader is confirmed correct, which is the claim being made and no more.
 
 - [ ] Endpoint host and resolved timeouts stay a **candidate, not promoted**. They would have to be
   shown necessary for reproduction, audit or incident diagnosis, and scoped so nothing
