@@ -5128,6 +5128,55 @@ periods-heuristic mechanism for sub-owner A, and the verbatim-absence fact for s
 PROVEN facts, not hypotheses - but "loosen the periods check for N-level markers" and "why doesn't the
 DOCX contain this text" are each their own, separately gated piece of work.
 
+### Đính chính - the two sub-owners are one root cause, not two
+
+Three follow-up probes were run to act on the sub-owner split above: a marker-aware grounding
+counterfactual for the 10 three-level-marker cases, a downstream check of whether the 4
+representation-noise cases would actually align (not just pass the shape gate), and - because that
+check said no for all 4 - a PDF/DOCX divergence taxonomy for all 23. That last probe found the real
+root cause, and it corrects the framing above: `GROUNDING_VALIDATOR_REJECTION` vs
+`NO_DOCX_SOURCE_ANCHOR` are two **pipeline stages** a single upstream cause happens to hit, not two
+different causal mechanisms.
+
+**`PdfN2S057MarkerAwareGroundingCounterfactualProbe`**: stripping a marker recognized by the project's
+own marker authority (`SourceFactsBuilder.ParseMarkerText`'s decimal branch, reproduced verbatim since
+private - never a new regex) before counting punctuation, 10/10 marker-depth cases now pass
+`LooksGroundableText`. Negative-control scope (candidates the analyst already called `HeadingTopic` at
+confidence >= 0.65 with a three-level-or-deeper marker, across both canonical checkpoints - the only
+offline evidence available): **0** beyond these 10 in either 003 or 057.
+
+**But passing grounding is not sufficient.** Checking the same 4 representation-noise cases that
+already passed the shape gate on required-only text against the DOCX haystack: **0/4 exist verbatim**.
+Passing grounding would only move them to `NO_DOCX_SOURCE_ANCHOR` - the same wall. This forced
+checking all 23, not just the 9 already so classified.
+
+**`PdfN2S057PdfDocxDivergenceTaxonomyProbe`**: splitting each target's own marker (read from its
+`stableId` suffix, e.g. `057/numbered/10.0.1` -> `10.0.1` - exact, not re-derived by a regex that can
+backtrack to the wrong length when a marker like `9.4` has no trailing `.` or `)` in the source text,
+which an earlier version of this probe got wrong and is recorded as a corrected mistake, not silently
+fixed) from the title, then searching DOCX paragraphs and their `NumberingId` metadata:
+
+| divergence owner | count | mechanism |
+|---|---:|---|
+| `DOCX_AUTO_NUMBERED_TITLE_ONLY` | **21/23** | title text matches a DOCX paragraph verbatim, and that paragraph has `NumberingId` set - the number is Word's auto-generated list numbering, never literal paragraph text; the PDF render bakes the visible number into the extracted line, the DOCX source never had it as text at all |
+| `FULL_TEXT_FOUND_VERBATIM` | 1 | `10.0.1` - the manually-typed-number case, already covered by the marker-aware fix above |
+| `NOT_FOUND_EVEN_TITLE_ONLY` | 1 | `23.5` ("Deriving β1...") - unresolved, likely a Unicode/subscript canonicalization mismatch, not investigated further |
+
+This is confirmed against real DOCX metadata (`SlimParagraph.NumberingId`), not inferred from a
+resemblance. It also explains why the marker-aware fix and the `WindowFragment`-required-only
+hypothesis both looked partially right without being sufficient: both were operating on the PDF's
+baked-in marker text, when 21/23 occurrences' actual DOCX anchor never contained that text as a marker
+at all - it is auto-numbering metadata on the paragraph, sitting beside title-only text.
+
+**Corrected causal owner for 057, superseding the two-sub-owner framing:** DOCX-native (Word)
+auto-numbered headings systematically fail both grounding and alignment when a PDF-rendering pipeline
+bakes the visible number into extracted text and requires exact-text matching, because the number
+never existed as literal DOCX text to match against. **The remediation candidate is now narrow and
+specific**: for a candidate whose alignment fails, retry matching using title-only text (marker
+stripped by the same authority the grounding fix above uses) specifically against DOCX paragraphs
+carrying `NumberingId` - not promoted here; needs its own neutrality/collateral gate exactly like
+003's, since it changes what alignment is willing to accept as a match.
+
 ### The `HeadingReadable` debt, recorded separately
 
 It was found while investigating C1 and does not belong to C1's ledger.
