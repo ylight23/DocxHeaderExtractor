@@ -4788,6 +4788,30 @@ N1.2 is the next authority boundary: a human source review must label occurrence
 heading. Commit each document's labels/occurrence bridge immediately after review. Do **not** run the
 model-free candidate census until that document's gold is frozen.
 
+### N1.2 - human-reviewed occurrence gold, committed per document
+
+Gold is committed independently per document as each is reviewed, not held until all four are done -
+the same evidence-retention lesson N0/N1.1 were opened to fix. `PdfN12ReviewedOccurrenceGoldProbe`
+locks each committed gold file against its exact N1.1 packet: same `documentSha256` /
+`parentManifestSha256` / `sourceLineExtractionFingerprint`, one label per packet item in the same
+order, every `headingOccurrences[].sourceLineIds` entry a real packet line id, `goldStableId` unique,
+`REVIEWED_HEADING` items and occurrence line sets in exact mutual agreement, the `summary` block a
+reproducible cache rather than a second authority, and no pipeline-inferred field present.
+
+| document | reviewed | heading occurrences | heading lines | state |
+|---|---:|---:|---:|---|
+| 003 | 5,619 | 230 (10 `CHAPTER`, 2 `SECTION`, 218 `ARTICLE`) | 265 | **committed**, locked |
+| 029 | 7,335 | - | - | not reviewed |
+| 042 | 6,938 | - | - | not reviewed |
+| 057 | 24,980 | - | - | not reviewed |
+
+003's gold treats the document title as `REVIEWED_NON_HEADING` (the frozen question asks for outline
+headings, not the title line) and includes chapter/section/article as the outline kinds; that scope
+choice is recorded in the artifact's own `reviewPolicy`, not asserted here. N1.3 (model-free candidate
+census) stays closed until 029/042/057 are reviewed and frozen the same way - opening it per-document
+early was considered and rejected, to keep one evaluator pass over a stable, fully-reviewed population
+rather than four staggered ones.
+
 ### The `HeadingReadable` debt, recorded separately
 
 It was found while investigating C1 and does not belong to C1's ledger.
