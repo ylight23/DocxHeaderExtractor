@@ -1,0 +1,5 @@
+# These benchmark artifacts are bound by raw SHA-256 in N12/N14. Keep their Git blobs byte-identical
+# in every checkout; their .json extension does not grant Git permission to rewrite line endings.
+/eval/benchmark-n0/silver-labels/*.json -text
+/eval/benchmark-n0/census/003-n1.3-census.v1.json -text
+/eval/benchmark-n0/census/057-n1.3-census.v1.json -text
