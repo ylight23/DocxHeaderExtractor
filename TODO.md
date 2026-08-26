@@ -4712,6 +4712,36 @@ POPULATION**, not as recovered B4 evidence. Until then C2 is trigger-gated debt:
 original packet reappears, a naturally scheduled run preserves an exact review packet, or a product
 incident supplies occurrence-safe composite evidence.
 
+## NEXT.0 - owner evidence availability inventory
+
+Before opening another historical owner investigation, its occurrence-level authority packet must be
+verified present. Aggregate B4/B5 counts are not a substitute for the reviewed source identities,
+model checkpoint, or source-context trace that an owner-specific audit needs.
+
+### Inventory result (closed, model-free, no production change)
+
+The inventory searched all reachable Git history/object paths, the available `.verify-build` tree,
+the registered worktree, and available historical source/download/temp directories. B5's committed
+probes (`6a57759`) are harnesses only: `PdfB51SelectionIdentityReconciliationProbe` requires external
+`BENCH_B51_ARTIFACT` plus `BENCH_B51_REVIEW`; `PdfB52ReviewQuestionDeterministicAuditProbe` likewise
+requires external `BENCH_B52_ARTIFACT` plus `BENCH_B52_REVIEW`. Neither embeds the B3 output,
+worksheet labels, or 056 replication checkpoint.
+
+| owner | required packet | availability | decision |
+|---|---|---|---|
+| C3 - 041 TOC/context | exact 12 reviewed outputs with `sourceFactId`, page/line/block, and context classification | **MISSING** | **BLOCKED** |
+| C4 - 056 analyst wrong-role | exact 11 reviewed occurrence identities joined to analyst role/confidence/source-identity checkpoint decisions | **MISSING** | **BLOCKED** |
+
+The committed B2 occurrence bridges remain available, but are heading-gold bridges; they do not label
+the twelve 041 TOC/context false outputs or the eleven 056 review-question false outputs. Existing
+041/056 outline and legacy artifacts also lack the frozen B3/B4/B5 identity join, so they cannot be
+used to reconstruct either population.
+
+Do not open C3 or C4 from the historical `12` or `11` totals. Reopen only if the original packet
+reappears, a naturally justified future run persists an equivalent occurrence-safe packet, or a
+product incident supplies one. Otherwise choose either a separately frozen **NEW REVIEW POPULATION**
+or product/release work; never rename newly reviewed cases as the old B4/B5 populations.
+
 ### The `HeadingReadable` debt, recorded separately
 
 It was found while investigating C1 and does not belong to C1's ledger.
