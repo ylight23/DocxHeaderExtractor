@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_4_paired_replay_input",
+  "DocumentId": "004",
+  "Inputs": {
+    "CanonicalRun": "eval/benchmark-n3/n3.4/runs/004-n3.4-canonical-run.v1.json",
+    "CanonicalRunRawSha256": "c2d57ce108ec6d4063b41a0a590ed7bc74a6dce152d3868e479b4e9b653a4333",
+    "Checkpoint": "eval/benchmark-n3/n3.4/checkpoints/004-n3.4-canonical.jsonl",
+    "CheckpointRawSha256": "c7cf3b15d85c117df9e6c42a239811b2af115e61cf195bdda3523f5a4fe53a09",
+    "Census": "eval/benchmark-n3/census/004-n3.3-census.v1.json",
+    "Silver": "eval/benchmark-n3/silver-labels/004-n3.2-silver-model-assisted.v1.json"
+  },
+  "baselineLaneStatus": {
+    "Semantic": "complete",
+    "Span": "partial_timeout"
+  },
+  "r1LaneStatus": {
+    "Semantic": "complete",
+    "Span": "partial_timeout"
+  },
+  "baselineStages": {
+    "DecisionRelevant": 55,
+    "RoleSurvival": 55,
+    "SpanResolved": 54,
+    "Validated": 0,
+    "Grounded": 0,
+    "Emitted": 0
+  },
+  "r1Stages": {
+    "DecisionRelevant": 55,
+    "RoleSurvival": 55,
+    "SpanResolved": 54,
+    "Validated": 52,
+    "Grounded": 47,
+    "Emitted": 47
+  },
+  "delta": {
+    "decisionRelevant": 0,
+    "roleSurvival": 0,
+    "spanResolved": 0,
+    "validated": 52,
+    "grounded": 47,
+    "emitted": 47
+  },
+  "providerCalls": 0,
+  "note": "N3.5 owns the promotion decision; this artifact intentionally contains no promotion result."
+}

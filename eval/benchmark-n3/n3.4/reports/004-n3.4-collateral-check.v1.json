@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_4_output_centric_collateral_check",
+  "documentId": "004",
+  "identity": "documentSha256 \u002B page \u002B sourceLineIds/sourceSpan; candidateId is diagnostics-only",
+  "note": "Output-centric direction of the SAME frozen join taxonomy, checked against the full reviewed silver set (93), not just decisionRelevant (55). Surfaces emitted outputs no reviewed occurrence supports at all.",
+  "baseline": {
+    "policy": "baseline_all_or_nothing_span_discard",
+    "totalEmitted": 0,
+    "exactSupported": 0,
+    "partialSupported": 0,
+    "trueCollateral": 0,
+    "trueCollateralItems": []
+  },
+  "r1": {
+    "policy": "r1_partial_span_preservation",
+    "totalEmitted": 83,
+    "exactSupported": 47,
+    "partialSupported": 24,
+    "trueCollateral": 12,
+    "trueCollateralItems": [
+      {
+        "SourceId": "b30",
+        "Page": 2,
+        "sourceBlockText": "8. Business investment means the use of investment capital by investors to",
+        "status": "UNMATCHED_OUTPUT"
+      },
+      {
+        "SourceId": "b45",
+        "Page": 2,
+        "sourceBlockText": "15. Export-processing zone means an industrial park specialized in producing",
+        "status": "UNMATCHED_OUTPUT"
+      },
+      {
+        "SourceId": "b56",
+        "Page": 3,
+        "sourceBlockText": "20. Domestic investor means a Vietnamese national or an economic",
+        "status": "UNMATCHED_OUTPUT"
+      },
+      {
+        "SourceId": "b60",
+        "Page": 3,
+        "sourceBlockText": "22. Foreign-invested economic organization means an economic",
+        "status": "UNMATCHED_OUTPUT"
+      },
+      {
+        "SourceId": "b99",
+        "Page": 4,
+        "sourceBlockText": "4. The State shall recognize and protect investors\u2019 ownership of property,",
+        "status": "UNMATCHED_OUTPUT"
+      },
+      {
+        "SourceId": "b122",
+        "Page": 5,
+        "sourceBlockText": "2. The list of sectors and trades subject to conditional business investment",
+        "status": "UNMATCHED_OUTPUT"
+      },
+      {
+        "SourceId": "b221",
+        "Page": 9,
+        "sourceBlockText": "b) Adjusting operational objectives ofinvestment projects;",
+        "status": "UNMATCHED_OUTPUT"
+      },
+      {
+        "SourceId": "b238",
+        "Page": 9,
+        "sourceBlockText": "d) International arbitration;",
+        "status": "UNMATCHED_OUTPUT"
+      },
+      {
+        "SourceId": "b251",
+        "Page": 10,
+        "sourceBlockText": "d) Quick depreciation or increase in deductible expenses upon calculating",
+        "status": "UNMATCHED_OUTPUT"
+      },
+      {
+        "SourceId": "b388",
+        "Page": 15,
+        "sourceBlockText": "5. New forms of investment and economic organizations in accordance",
+        "status": "UNMATCHED_OUTPUT"
+      },
+      {
+        "SourceId": "b438",
+        "Page": 16,
+        "sourceBlockText": "c) Contributing capital to other economic organizations not prescribed at",
+        "status": "UNMATCHED_OUTPUT"
+      },
+      {
+        "SourceId": "b444",
+        "Page": 17,
+        "sourceBlockText": "d) Purchasing capital contributions of members of other economic",
+        "status": "UNMATCHED_OUTPUT"
+      }
+    ]
+  }
+}

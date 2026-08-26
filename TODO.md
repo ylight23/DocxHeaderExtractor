@@ -5426,16 +5426,39 @@ order; N3.4 does not start until N3.2/N3.3 are frozen, and R1 is not tuned in re
   `043` is 43/42/3/3, and `058` is 47/41/13/13 (silver/full/selected/decision-relevant). Thus only
   004 clears the frozen semantic cohort threshold 15; the other three remain valid N3 evidence for
   candidate/rank/eligibility and product comparison, but conditional semantic-quality is insufficient.
-- [ ] N3.4 - baseline build vs R1 build, measured independently per document, not tuned to each other:
-  semantic role survival, span resolved, validated, grounded, emitted; precision; occurrence recall;
-  exact source-span correctness; `partial_timeout` behavior; `complete`-lane neutrality (R1 must not
-  touch the complete-lane path at all); `not_run`/exception fail-closed behavior preserved. **Gate #7,
-  the one this whole N3 round exists to answer**: does R1 create a new regression on fresh documents
-  never used to design or debug it? R1 is not patched after seeing N3 and re-run against the same
-  holdout - a regression here is a finding, not a bug to fix before re-measuring.
-- [ ] N3.5 - promotion decision. Material recovery with no meaningful collateral -> R1 promotion gate
-  PASS. Any regression on the fresh holdout -> R1 promotion FAIL/BLOCK, decided from this evidence, not
-  deferred or re-tested against a "cleaned up" N3.
+- [x] N3.4 - one canonical live provider call for `004` (the only document clearing the semantic cohort
+  threshold; `030`/`043`/`058` remain `NO LIVE MODEL CALL`, no exceptions made), frozen manifest +
+  evaluator committed and pushed (`3eeba22`) before the call, `BenchmarkRunGuard` enforced profile/lock/
+  no-overwrite. Result: `semanticLaneStatus=complete`, `spanLaneStatus=partial_timeout` (Case A). Baseline
+  and R1 are two offline policy replays over the same checkpoint (0 extra provider calls): baseline
+  discards all span facts on `partial_timeout` (true frozen pre-R1 behavior, so it emits 0 for this
+  document); R1 retains independently-completed span facts, unresolved stays Uncertain.
+
+  | | decisionRelevant | roleSurvival | spanResolved | validated | grounded | emitted |
+  |---|---:|---:|---:|---:|---:|---:|
+  | baseline | 55 | 55 | 54 | 0 | 0 | 0 |
+  | R1 | 55 | 55 | 54 | 52 | 47 | 47 |
+
+  Exact-span recovery 47/55, reported separately from occurrence-level (`PARTIAL_SAME_OCCURRENCE`, 0 at
+  this stage/document - not counted as a false positive per the frozen join taxonomy). But an
+  output-centric collateral check (same identity/join taxonomy, applied to R1's full 83 emitted items
+  against the full 93-occurrence reviewed silver set, not just the 55 decision-relevant subset) found 12
+  of 83 emitted items with **zero** support from any reviewed occurrence - numbered clause/sub-list
+  fragments (`"8. Business investment means..."`, `"d) International arbitration;"`) misclassified as
+  headings. Baseline has 0 by construction, so all 12 are strictly new under R1's partial-span-preservation
+  policy. Gate #7 requires all five conditions to hold; "no new true `UNMATCHED_OUTPUT` collateral" fails
+  on this measured evidence.
+  Artifacts: `eval/benchmark-n3/n3.4/{manifest,preflight}.v1.json`,
+  `runs/004-n3.4-canonical-run.v1.json`, `checkpoints/004-n3.4-canonical.jsonl`,
+  `reports/004-n3.4-{baseline,r1}-replay.v1.json`, `reports/004-n3.4-collateral-check.v1.json`.
+- [x] N3.5 - promotion decision: **BLOCK**. Material fresh recovery exists (47/55 exact-span) but Gate #7
+  fails on measured new collateral false positives (12/83 emitted outputs with zero silver support) - not
+  insufficient evidence, a definitive result from the one canonical live trace. R1 is not modified in
+  N3.5; its evidence is preserved and this remediation attempt is closed. N3 (this population, this live
+  trace, this checkpoint) has been opened and cannot be reused as a fresh holdout for a modified R1-v2 -
+  any further partial_timeout remediation needs a new fresh-holdout population. No system-accuracy claim
+  is made; provenance stays `SILVER_PROXY_ONLY`/`MODEL_ASSISTED_SILVER`.
+  Decision artifact: `eval/benchmark-n3/n3.4/reports/004-n3.4-decision.v1.json`.
 
 ### 057 representation audit - two sub-owners, two different findings, no fix promoted
 

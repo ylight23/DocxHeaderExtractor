@@ -68,6 +68,82 @@ public sealed class PdfN34R1PairedReplayProbe
         });
     }
 
+    // Gate #7 (Section 6) requires "no new true UNMATCHED_OUTPUT collateral". The per-occurrence
+    // replay above is silver-occurrence-centric (recall over the 55 decisionRelevant occurrences) and
+    // cannot surface an emitted output that no reviewed occurrence supports at all. This is the
+    // complementary output-centric direction using the SAME frozen identity/join semantics
+    // (documentSha256 + page + sourceLineIds; EXACT/PARTIAL_SAME_OCCURRENCE/UNMATCHED_OUTPUT) applied
+    // against the full reviewed silver set (93), not just the decisionRelevant subset (55).
+    [Fact]
+    public void WriteCollateralCheck()
+    {
+        var output = Environment.GetEnvironmentVariable("BENCH_N3_N34_REPORT_DIRECTORY");
+        if (string.IsNullOrWhiteSpace(output)) return;
+        var root = PdfExtractorQualityBenchmarkProbe.RepositoryRoot();
+        if (!File.Exists(RunPath(root)) || !File.Exists(CheckpointPath(root)))
+            throw new InvalidOperationException("N3.4 canonical run/checkpoint missing; replay is forbidden before its one live trace.");
+
+        using var run = JsonDocument.Parse(File.ReadAllText(RunPath(root)));
+        using var silver = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "eval", "benchmark-n3", "silver-labels", "004-n3.2-silver-model-assisted.v1.json")));
+        var row = run.RootElement.GetProperty("rows").EnumerateArray().Single();
+        var file = row.GetProperty("file").GetString()!;
+        var spanStatus = row.GetProperty("spanLaneStatus").GetString() ?? "unknown";
+        var items = ReadArtifacts(row.GetProperty("items"));
+        var itemBySourceFact = items.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
+        var emittedIds = ReadEmittedSourceFactIds(run.RootElement, file);
+        var r1Emitted = items.Where(item => emittedIds.Contains(item.SourceId)).ToArray();
+        var baselineEmitted = spanStatus == "partial_timeout" ? [] : r1Emitted;
+
+        var allSilverOccurrences = silver.RootElement.GetProperty("headingOccurrences").EnumerateArray()
+            .Select(value => new Occurrence(value.GetProperty("goldStableId").GetString()!, value.GetProperty("page").GetInt32(),
+                value.GetProperty("sourceLineIds").EnumerateArray().Select(line => line.GetString()!).ToHashSet(StringComparer.Ordinal)))
+            .ToArray();
+
+        object Classify(string policy, IReadOnlyList<Evidence> emitted)
+        {
+            var rows = emitted.Select(item => new
+            {
+                item.SourceId,
+                item.Page,
+                sourceBlockText = row.GetProperty("items").EnumerateArray()
+                    .First(i => i.GetProperty("sourceFactId").GetString() == item.SourceId)
+                    .GetProperty("sourceBlockText").GetString(),
+                status = ClassifyOutput(item, allSilverOccurrences),
+            }).ToArray();
+            return new
+            {
+                policy,
+                totalEmitted = emitted.Count,
+                exactSupported = rows.Count(r => r.status == "EXACT_OCCURRENCE_MATCH"),
+                partialSupported = rows.Count(r => r.status == "PARTIAL_SAME_OCCURRENCE"),
+                trueCollateral = rows.Count(r => r.status == "UNMATCHED_OUTPUT"),
+                trueCollateralItems = rows.Where(r => r.status == "UNMATCHED_OUTPUT").ToArray(),
+            };
+        }
+
+        var baselineCheck = Classify("baseline_all_or_nothing_span_discard", baselineEmitted);
+        var r1Check = Classify("r1_partial_span_preservation", r1Emitted);
+        Directory.CreateDirectory(output);
+        File.WriteAllText(Path.Combine(output, "004-n3.4-collateral-check.v1.json"), JsonSerializer.Serialize(new
+        {
+            schemaVersion = 1,
+            artifactKind = "n3_4_output_centric_collateral_check",
+            documentId = Stem,
+            identity = "documentSha256 + page + sourceLineIds/sourceSpan; candidateId is diagnostics-only",
+            note = "Output-centric direction of the SAME frozen join taxonomy, checked against the full reviewed silver set (93), not just decisionRelevant (55). Surfaces emitted outputs no reviewed occurrence supports at all.",
+            baseline = baselineCheck,
+            r1 = r1Check,
+        }, new JsonSerializerOptions { WriteIndented = true }));
+    }
+
+    private static string ClassifyOutput(Evidence item, IReadOnlyList<Occurrence> occurrences)
+    {
+        var samePage = occurrences.Where(o => o.Page == item.Page).ToArray();
+        if (samePage.Any(o => o.SourceLineIds.All(item.LineIds.Contains))) return "EXACT_OCCURRENCE_MATCH";
+        if (samePage.Any(o => o.SourceLineIds.Overlaps(item.LineIds))) return "PARTIAL_SAME_OCCURRENCE";
+        return "UNMATCHED_OUTPUT";
+    }
+
     private static PairedReplay BuildPairedReplay(string root)
     {
         var runPath = RunPath(root);
