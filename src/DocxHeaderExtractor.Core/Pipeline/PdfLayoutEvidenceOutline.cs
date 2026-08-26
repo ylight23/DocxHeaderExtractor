@@ -365,7 +365,8 @@ public static class PdfLayoutEvidenceOutline
     /// what existing, source-grounded decisions would have emitted without reimplementing matching.
     /// </summary>
     internal static PdfDocxAlignmentSnapshot BuildBroadAlignmentForCandidateIds(
-        string originalInputPath, SlimDocument slim, IReadOnlySet<string> candidateIds)
+        string originalInputPath, SlimDocument slim, IReadOnlySet<string> candidateIds,
+        IReadOnlyDictionary<string, TextOffsetSpan?>? headingSpans = null)
     {
         var context = TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
             includeSupplementCandidates: true, out var reason);
@@ -374,7 +375,7 @@ public static class PdfLayoutEvidenceOutline
         var candidates = context.Candidates.Where(candidate => candidateIds.Contains(candidate.Id)).ToArray();
         var trace = new List<PdfDocxAlignmentTrace>();
         var haystacks = new List<PdfDocxCanonicalParagraph>();
-        var alignment = AlignToDocx(candidates, slim, context.Profile, AnalystBasis, trace, haystacks);
+        var alignment = AlignToDocx(candidates, slim, context.Profile, AnalystBasis, trace, haystacks, headingSpans);
         return new PdfDocxAlignmentSnapshot("aligned", candidates.Length, alignment.Headings, trace, haystacks, slim);
     }
 
@@ -580,7 +581,11 @@ public static class PdfLayoutEvidenceOutline
             requireLearnedCandidateStyle: false);
         var acceptedIds = grounded.Headings.Select(h => h.Id).ToHashSet(StringComparer.Ordinal);
         var accepted = selected.Where(b => acceptedIds.Contains(b.Id)).ToArray();
-        var alignment = AlignToDocx(accepted, slim, context.Profile, AnalystBasis);
+        // B3: the resolved span (already required to reach eligibility) bounds each candidate's actual
+        // heading text within its possibly-wider window, so the auto-numbered title-only fallback in
+        // AlignToDocx never searches with trailing body-context text glued to the title.
+        var headingSpansByBlockId = eligibleDecisions.ToDictionary(d => d.Id, d => d.HeadingSpan, StringComparer.Ordinal);
+        var alignment = AlignToDocx(accepted, slim, context.Profile, AnalystBasis, trace: null, haystacks: null, headingSpansByBlockId);
         var visualRecovery = await visualRecoveryTask;
         var recoveredHeadings = alignment.Headings.Concat(visualRecovery.Headings)
             .GroupBy(heading => (heading.Index, Start: heading.HeadingSpan?.Start ?? -1))
@@ -1292,7 +1297,8 @@ public static class PdfLayoutEvidenceOutline
         PdfStyleClusterProfile profile,
         string confidenceBasis,
         List<PdfDocxAlignmentTrace>? trace,
-        List<PdfDocxCanonicalParagraph>? haystacks = null)
+        List<PdfDocxCanonicalParagraph>? haystacks = null,
+        IReadOnlyDictionary<string, TextOffsetSpan?>? headingSpans = null)
     {
         var paragraphs = slim.Paragraphs
             .Where(p => p.Role != ParagraphRole.Empty && !p.InTableOfContents && !string.IsNullOrWhiteSpace(p.Text))
@@ -1348,6 +1354,10 @@ public static class PdfLayoutEvidenceOutline
                   FindMarkerReconstruction(paragraphs, block, 0, occupiedSpans)
                 : null;
             match ??= reconstructed?.Match;
+            var autoNumberedTitleOnly = match is null
+                ? FindAutoNumberedTitleOnlyMatch(paragraphs, block, headingSpans?.GetValueOrDefault(block.Id))
+                : null;
+            match ??= autoNumberedTitleOnly;
             if (match is null)
             {
                 var status = ParseLooseLabelledMarkerForAudit(block.Text) is null
@@ -1362,6 +1372,11 @@ public static class PdfLayoutEvidenceOutline
                 textLayerRecoveries.Add(new PdfTextLayerRecoveryAudit(block.Id, block.Page,
                     reconstructed.MarkerOnly ? "marker-only-span-reconstructed" : "marker-span-reconstructed"));
             if (reconstructed is not null) branch = PdfDocxMatchBranch.MarkerReconstruction;
+            if (autoNumberedTitleOnly is not null)
+            {
+                branch = PdfDocxMatchBranch.AutoNumberedTitleOnly;
+                textLayerRecoveries.Add(new PdfTextLayerRecoveryAudit(block.Id, block.Page, "auto-numbered-title-only-anchor"));
+            }
             trace?.Add(new PdfDocxAlignmentTrace(block.Id, needle, match.Value.Paragraph.Index,
                 match.Value.Start, match.Value.End - match.Value.Start, branch,
                 !seen.Contains((match.Value.Paragraph.Index, match.Value.Start, block.PrimaryStyle))));
@@ -1470,6 +1485,51 @@ public static class PdfLayoutEvidenceOutline
         return markerOnly && candidates.Count != 1 ? null : candidates[0];
     }
 
+    /// <summary>
+    /// B3: a candidate's PDF marker was recognized by the project's own marker authority
+    /// (<see cref="SourceFactsBuilder.FromPdfBlock"/>) but its full marker+title text never exists
+    /// verbatim in the DOCX, because the number is Word's auto-generated <c>NumberingId</c>, never
+    /// literal paragraph text - the divergence taxonomy proved this for 21/23 of 057's undelivered
+    /// occurrences. The title alone may still anchor, but only when it resolves to <em>exactly one</em>
+    /// <c>NumberingId</c>-bearing paragraph: zero or more than one is left unmatched, unchanged from
+    /// today's behavior. This is never a general strip-leading-number-and-fuzzy-match - it requires the
+    /// production marker parser to have recognized a marker at all, and it never falls back to a
+    /// paragraph without <c>NumberingId</c> or resolves an ambiguous duplicate.
+    /// </summary>
+    internal static MatchResult? FindAutoNumberedTitleOnlyMatch(IReadOnlyList<CanonParagraph> paragraphs, PdfSemanticBlock block, TextOffsetSpan? headingSpan)
+    {
+        // A WindowFragment candidate's Text is the whole window - the heading plus trailing body
+        // context the same candidate carries for the analyst. The resolved span (the span lane's own
+        // output, not a heuristic here) is what actually bounds the heading; without it, marker
+        // stripping runs over the whole window and the "title" ends up including unrelated body
+        // sentences that can never match a single DOCX paragraph.
+        var headingText = headingSpan is { } span && span.Start >= 0 && span.End > span.Start && span.End <= block.Text.Length
+            ? block.Text[span.Start..span.End]
+            : block.Text;
+
+        var marker = SourceFactsBuilder.FromPdfBlock(block with { Text = headingText }).Marker;
+        if (marker is null || string.IsNullOrEmpty(marker.Raw) || marker.Raw.Length >= headingText.Length) return null;
+
+        var titleOnly = headingText[marker.Raw.Length..].TrimStart();
+        if (titleOnly.Length < 4) return null;
+        var titleCanonical = CanonicalMap(titleOnly).Text;
+        if (titleCanonical.Length == 0) return null;
+
+        MatchResult? found = null;
+        foreach (var paragraph in paragraphs)
+        {
+            if (paragraph.Paragraph.NumberingId is null) continue;
+            var at = paragraph.Map.Text.IndexOf(titleCanonical, StringComparison.Ordinal);
+            if (at < 0) continue;
+            if (found is not null) return null; // ambiguous - more than one NumberingId paragraph matches; abstain
+            found = new MatchResult(
+                paragraph.Paragraph,
+                paragraph.Map.SourceIndexes[at],
+                paragraph.Map.SourceIndexes[at + titleCanonical.Length - 1] + 1);
+        }
+        return found;
+    }
+
     internal static string? ParseLooseLabelledMarkerForAudit(string text) =>
         TryParseLooseLabelledMarker(text)?.Canonical;
 
@@ -1518,7 +1578,7 @@ public static class PdfLayoutEvidenceOutline
         return index;
     }
 
-    private static CanonMap CanonicalMap(string text)
+    internal static CanonMap CanonicalMap(string text)
     {
         var canonical = new StringBuilder(text.Length);
         var indexes = new List<int>(text.Length);
@@ -1531,11 +1591,11 @@ public static class PdfLayoutEvidenceOutline
         return new CanonMap(canonical.ToString(), indexes);
     }
 
-    private sealed record CanonMap(string Text, IReadOnlyList<int> SourceIndexes);
-    private sealed record CanonParagraph(SlimParagraph Paragraph, CanonMap Map);
+    internal sealed record CanonMap(string Text, IReadOnlyList<int> SourceIndexes);
+    internal sealed record CanonParagraph(SlimParagraph Paragraph, CanonMap Map);
     private readonly record struct LooseLabelledMarker(string Canonical);
     private sealed record MarkerReconstruction(MatchResult Match, string HeadingText, bool MarkerOnly);
-    private readonly record struct MatchResult(SlimParagraph Paragraph, int Start, int End);
+    internal readonly record struct MatchResult(SlimParagraph Paragraph, int Start, int End);
     private sealed record PdfLayoutAlignmentResult(
         IReadOnlyList<HeadingRecord> Headings,
         IReadOnlySet<string> AlignedBlockIds,
@@ -1645,4 +1705,5 @@ internal enum PdfDocxMatchBranch
     CursorRelaxed,
     FromZeroRelaxed,
     MarkerReconstruction,
+    AutoNumberedTitleOnly,
 }

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2s_remediation_manifest",
+  "id": "R2",
+  "name": "auto-numbered-title-only-alignment",
+  "status": "FROZEN_INEFFECTIVE_AS_SPECIFIED",
+  "codeRevision": "PENDING_COMMIT",
+  "changedFiles": [
+    "src/DocxHeaderExtractor.Core/Pipeline/PdfLayoutEvidenceOutline.cs"
+  ],
+  "eligibilityAsImplemented": [
+    "1. candidate already survived semantic classification + validator (guaranteed by call-site scoping - only grounded/accepted blocks reach this code)",
+    "2. marker recognized by the production marker parser (SourceFactsBuilder.FromPdfBlock, never a new regex)",
+    "3. remaining title text non-empty and >= 4 canonical characters",
+    "4. candidate's own resolved span (from the span lane, not a heuristic) bounds the heading text before marker stripping, so trailing body-window context is excluded",
+    "5. target DOCX paragraph has NumberingId set",
+    "6. title-only canonical text finds exactly one NumberingId-bearing paragraph; zero or more than one aborts",
+    "prohibited: general strip-and-fuzzy-match, fallback to a non-NumberingId paragraph, resolving an ambiguous duplicate - none implemented"
+  ],
+  "collateralEvidence": {
+    "source": "eval/benchmark-n0/n2-s/counterfactual/057-title-only-alignment-collateral.v1.json",
+    "verdict": "NO_COLLISION_IN_PRACTICE for the 21 real targets checked before this implementation existed; COLLISION_RISK_FOUND at the general-rule level, which is exactly why the rule stays bounded to already-HeadingTopic-validated candidates only"
+  },
+  "realTargetValidation": {
+    "source": "eval/benchmark-n0/n2-s/counterfactual/057-b3-real-target-validation.v1.json",
+    "targetCount": 22,
+    "resolvedCount": 0,
+    "verdict": "0/22 - the implementation as specified does not recover any of 057's real undelivered occurrences"
+  },
+  "whyItDoesNotRecoverAnything": [
+    "The production marker parser's decimal regex requires a terminating '.' or ')' immediately after the full numeric value. Real PDF-rendered headings like '9.4 Title' (space, no trailing period before the space) only match the FIRST level ('9.'), leaving a stray digit ('4 Title') glued to what should be the clean title - which then never appears as a substring of the real DOCX paragraph text.",
+    "Even when the marker IS fully recognized, the span lane's own resolved HeadingSpan for a WindowFragment candidate is imprecise by a few characters at either boundary (observed: missing the final letter of a word, or bleeding a few words into the following sentence) - real model output noise, not a defect in this fix's wiring. Exact-substring matching has zero tolerance for that noise."
+  ],
+  "notFixed": "Neither limitation is addressed here. The marker parser is explicitly out of scope for this fix (must be used as-is, per the frozen eligibility spec); loosening exact-substring matching to tolerate span noise would be a form of fuzzy matching, also explicitly excluded. Both are real, separately-gated pieces of follow-up work, not attempted in R2.",
+  "implementationLocks": [
+    "PdfB3AutoNumberedTitleOnlyAlignmentTests (13 tests - eligibility conditions and every named negative control, all synthetic, all pass)",
+    "PdfB3RealTargetValidationProbe.CommittedValidationReproduces (locks the real 0/22 result against the actual 057 checkpoint/document, not a reimplementation)"
+  ],
+  "nextStep": "R2 is safe (no collision risk in the population it can ever touch) but currently ineffective. Promoting it to production changes nothing observable on 057 today. Before any further 057 work, decide whether to invest in the two named upstream limitations (marker-parser recognition depth, span-lane precision for WindowFragment candidates) as their own separately-gated diagnosis, or to leave 057 as a documented, safe-but-inert remediation candidate.",
+  "promotionDecision": "not made by this manifest - reserved for whoever owns the promotion call"
+}

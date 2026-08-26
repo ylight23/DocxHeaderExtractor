@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2s_057_b3_real_target_validation",
+  "usesModel": false,
+  "purpose": "Measures B3\u0027s real production function against 057\u0027s actual 22 targets, using the real marker parser (not the ground-truth stableId-derived marker the diagnostic probes used).",
+  "targetCount": 22,
+  "resolvedCount": 0,
+  "unresolvedCount": 22,
+  "rows": [
+    {
+      "stableId": "057/numbered/10.0.1",
+      "sourceFactId": "s-window-3875",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "10.0. 1 The Role of Sample Size To illustrate 10 how empirical sampling approaches theoretical distributions we consider the",
+      "headingText": "10.0. 1 The Role of Sample Size To ill",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/11.3.1",
+      "sourceFactId": "s-window-4365",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "11.3. 1 Matrix and vector multiplication We create 14 a vector with its index as the matrix column names and we can then perform a",
+      "headingText": "11.3. 1 Matrix and vector mult",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/12.3",
+      "sourceFactId": "s-window-4767",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "12.3 Cleaning the imported data set The data set that has been imported and is stored into the Data Frame named df is not clean.",
+      "headingText": "12.3 Cleaning the i",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/15.8.1",
+      "sourceFactId": "s-window-5585",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "15.8. 1 Calculating Conditional Probabilities The conditional probability of observing W, A, and E given the sex can be represented as:",
+      "headingText": "15.8. 1 Calculating Conditional Probabilities The co",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/22.4",
+      "sourceFactId": "s-window-7988",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "22.4 Chi-Square Goodness-of-Fit Test The chi-square test tests if a sample of data came from a population with a specific distribution.",
+      "headingText": "22.4 Chi-Square Goodness-of-Fit Test The chi-squa",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/23.2",
+      "sourceFactId": "s-window-8422",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "23.2 Classical linear regression assumptions We state the standard assumptions underlying OLS in the cross-sectional case.",
+      "headingText": "23.2 Classical linear regression assumptions We stat",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/24.1.1",
+      "sourceFactId": "s-window-9350",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "24. 1. 1 Concept of Integration of order d If \u2206 is the difference operator defined as \u2206yt = yt \u2212 yt\u2212 1 , \u22062 yt = \u2206(\u2206yt) , etc., we say that ...",
+      "headingText": "24. 1. 1 Concept of Integration of o",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/24.7.1",
+      "sourceFactId": "s-window-9671",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "24.7. 1 Thorough augmented Dickey-Fuller test If no obvious conclusion can be taken from observations of the data set, then we can resort to",
+      "headingText": "24.7. 1 Thorough augmented Dickey-Fu",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/24.8",
+      "sourceFactId": "s-window-9703",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "24.8 Illustration of a spurious regression We can define two time series as in (Granger and Newbold 1974) :",
+      "headingText": "24.8 Illustration of a spurious regr",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/30.13.1",
+      "sourceFactId": "s-window-11773",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "30. 13. 1 Setup: mean and variance equations Let yt denote (demeaned) asset returns. A standard decomposition writes",
+      "headingText": "30. 13. 1 Setup: mean and variance equations",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/31.3.2",
+      "sourceFactId": "s-window-12396",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "31.3.2 Building two cointegrated time series We suggest to build two cointegrated time series with the system of equations:",
+      "headingText": "31.3.2 Building two cointegrated time series",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/41.3",
+      "sourceFactId": "s-window-17510",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "41.3 KDE illustration from a known density Let\u2019s imagine that as in (Gramacki 2018) we have the following true density a mixture of two",
+      "headingText": "41.3 KDE illustration from a known d",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/45.1.4",
+      "sourceFactId": "s-window-19015",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "45. 1.4 Outlier isolation comparison Finally we generate 100 samples of size 100 and compare the different methods:",
+      "headingText": "45. 1.4 Outlier isolation comparison Finally ",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/50.4",
+      "sourceFactId": "s-window-19812",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "50.4 Time-Varying Transition Probabilities Filardo (1994) also assumes that the state of the economy cannot be known with certainty and",
+      "headingText": "50.4 Time-Varying Transition Probabilities Filardo",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/50.5",
+      "sourceFactId": "s-window-19828",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "50.5 Mean and variance switching states Mc Connell and Perez-Quiros (2000) combined mean and variance state switching to model US",
+      "headingText": "50.5 Mean and variance switching states Mc Connell ",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/51.1",
+      "sourceFactId": "s-window-19854",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "51. 1 Event study on fines impact on banks As in the 2016 paper on regulatory sanctions impact in the UK (John Armour and Polo 2017)",
+      "headingText": "51. 1 Event study on fines impact on banks As in",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/54.4.1",
+      "sourceFactId": "s-window-21744",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "54.4. 1 Risk Premia under the APT Once the \u03B2i k have been estimated, we can estimate the risk premia \u03B3k as follows:",
+      "headingText": "54.4. 1 Risk Premia under the APT Once the \u03B2i ",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/72.2",
+      "sourceFactId": "s-window-27542",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "72.2 Within estimator, Fixed effects We obtain the Within estimator with an ordinary least square (OLS) on equation 470",
+      "headingText": "72.2 Within estimator, Fixed effects We o",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/76.10.2",
+      "sourceFactId": "s-window-28860",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "76. 10.2 ARCH model of the residuals - PACF We use a PACF of the squared residual to determine the order m of the ARCH process. Visually",
+      "headingText": "76. 10.2 ARCH model of the residuals - PACF We use a ",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/76.4",
+      "sourceFactId": "s-window-28651",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "76.4 Are both series I (1)? We apply the first difference to the log of both index and we find that both series were I(1) .",
+      "headingText": "76.4 Are both series I ",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/83.7",
+      "sourceFactId": "s-window-31993",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "83.7 Domain of Attraction of Copula A copula C belongs to the domain of attraction of an extreme value copula C\u2217 if for all u",
+      "headingText": "83.7 Domain of Attraction of Copula A co",
+      "matchedParagraphIndex": null
+    },
+    {
+      "stableId": "057/numbered/9.4",
+      "sourceFactId": "s-window-3765",
+      "resolved": false,
+      "reason": "no_unique_numbering_id_title_match",
+      "blockText": "9.4 Approximate the derivative of a function Remember that the derivative f\u2032 (x) of a function f() at x is in fact a rate of change defined ...",
+      "headingText": "9.4 Approximate the derivative of a functio",
+      "matchedParagraphIndex": null
+    }
+  ]
+}

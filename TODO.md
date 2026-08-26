@@ -5188,6 +5188,79 @@ stay bounded to the exact population already proven safe (candidates the analyst
 `HeadingTopic`), never generalized into "resolve any numbered DOCX paragraph by title," which this
 evidence shows would collide.
 
+### R1 - A3 implemented and frozen: partial-span preservation, not promoted
+
+`PreservePartialSpanResolutions` (`PdfLayoutEvidenceOutline.cs`) and
+`PdfStageCheckpoint.ReadCompletedSpanResolutions` implement exactly what the frozen candidate
+specified: on `partial_timeout`, a batch that finished and was durably checkpointed before the deadline
+keeps its resolved span; every block the lane never got to is marked `Uncertain`. `complete` is
+unreachable by construction (the function is only called on `spanRun.TimedOut`), `not_run` and the
+per-batch exception path are untouched. No timeout increase, retry, extra provider call, or role/span
+model change.
+
+Locked directly against the two units the fix touches (`PdfA3PartialSpanPreservationImplementationTests`,
+6 tests): null/empty checkpoint reproduces prior behavior exactly, resolved/unresolved blocks are
+preserved/`Uncertain` correctly, a torn final line (the background lane still writing past the
+deadline) is skipped not faulted, a failed batch contributes no resolutions, and the real committed 003
+checkpoint recovers exactly the 88 blocks Lane A's offline counterfactual already measured - not a
+reimplementation's own count. A latent bug the first version of this fix's own test caught -
+`HeadingSpan` not cleared on the `Uncertain` path via a `with` expression that only touched three of
+four relevant fields - is fixed, not left standing.
+
+`SpanLane` audit counters (`Completed`/`TimedOut`) now reflect what actually resolved on
+`partial_timeout` instead of a hardcoded `0`/`selected.Count` - a misreport correction, not a lane
+semantics change; `spanLaneStatus` itself still reports `partial_timeout` honestly.
+
+Frozen as R1 (`eval/benchmark-n0/remediation/r1-partial-span-preservation.v1.json`): 6/7 acceptance
+criteria PASS, #7 (cross-document regression) `INSUFFICIENT_EXISTING_EVIDENCE`. Held pending R2 and the
+N3 validation protocol - not promoted, not opened against N3 alone.
+
+### R2 - B3 implemented and frozen: auto-numbered title-only alignment, safe but currently ineffective
+
+`FindAutoNumberedTitleOnlyMatch` (`PdfLayoutEvidenceOutline.cs`) implements the exact frozen
+eligibility: candidate already grounded/`HeadingTopic`-validated (guaranteed by call-site scoping),
+marker recognized by `SourceFactsBuilder.FromPdfBlock` (the production parser, never a new regex),
+title text bounded by the candidate's own resolved `HeadingSpan` (not the whole `WindowFragment`
+window - see below for why this matters), remaining title non-trivial, target paragraph has
+`NumberingId`, and title-only canonical text resolves to *exactly one* such paragraph - zero or
+ambiguous matches abstain, unchanged from today's behavior. None of the prohibited shortcuts
+(general strip-and-fuzzy-match, fallback to a non-`NumberingId` paragraph, resolving a duplicate) are
+implemented. `PdfB3AutoNumberedTitleOnlyAlignmentTests` locks all 6 conditions plus every named
+negative control (manual numbering, zero/duplicate `NumberingId` matches, nested multi-level markers,
+marker-parse failure) - 13 tests, synthetic, all pass.
+
+**The first implementation attempt scored 0/22 on 057's real targets** (`PdfB3RealTargetValidationProbe`,
+which validates the real production function against the real checkpoint and document, not a
+reimplementation). Root cause: `block.Text` for a `WindowFragment` candidate is the whole window -
+heading plus trailing body-context sentences the candidate carries for the analyst - so marker-stripping
+the raw text produced a "title" containing unrelated body prose that could never match a single DOCX
+paragraph. Fixed by bounding the search to the candidate's own resolved `HeadingSpan` before marker
+stripping - a real model output already required for eligibility, not an invented heuristic - and
+threading it through `AlignToDocx`'s new optional `headingSpans` parameter from `eligibleDecisions` at
+the real production call site.
+
+**Second real-target validation, after the `HeadingSpan` fix: still 0/22.** Two compounding, upstream
+limitations - real, not implementation bugs:
+
+1. `SourceFactsBuilder`'s shared decimal-marker regex requires a terminating `.` or `)` immediately
+   after the full numeric value. A real PDF-rendered heading like `9.4 Title` (space, no period before
+   it) only matches the first level (`9.`), leaving a stray digit (`4 Title`) glued to what should be
+   the clean title text - which then never appears as a DOCX paragraph substring. Most of 057's real
+   markers have exactly this shape.
+2. Even when the marker is fully recognized, the span lane's own resolved `HeadingSpan` is imprecise by
+   a few characters at the boundary (observed: missing a word's final letter, or bleeding a few words
+   into the next sentence) - real model noise that exact-substring matching has zero tolerance for.
+
+Neither is fixed here: the marker parser is out of scope for this fix by the frozen spec (must be used
+as-is), and loosening exact matching to tolerate span noise would itself be a form of fuzzy matching,
+explicitly excluded.
+
+Frozen as R2 (`eval/benchmark-n0/remediation/r2-auto-numbered-title-only-alignment.v1.json`),
+status `FROZEN_INEFFECTIVE_AS_SPECIFIED`: safe (the collateral check's negative controls and the real
+0-recovery result together mean it changes nothing observable in production today), but not a working
+fix for 057. This is reported plainly rather than left as an implied success - "implemented and locked"
+is not "recovers anything."
+
 ### 057 representation audit - two sub-owners, two different findings, no fix promoted
 
 Per-target: `PdfN2S057RepresentationAuditProbe` rebuilds each of the 23 undelivered occurrences' own
