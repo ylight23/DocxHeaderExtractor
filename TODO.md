@@ -4681,6 +4681,37 @@ supplies a usable positive/negative control, or a product requirement explicitly
 lane-level fail-closed to best-effort partial semantic output. Validator changes and exception-swallow
 remediation remain outside C1's causal evidence.
 
+## C2 - composite-boundary evidence recovery gate
+
+The B4 precision census recorded aggregate composite recurrence across two independent domains: one
+`MULTI_HEADING_COMPOSITE` false accept in 041 financial and eighteen in 056 textbook. That establishes
+an aggregate recurrence signal, **not** a common producer. C2.1 must start from the reviewed source
+occurrences, not recreate a 19-case population from the `1 + 18` total.
+
+### C2.0 - evidence recovery (closed, no model/no production change)
+
+Recovery searched all reachable Git branches/tags and object paths for B4/B5, precision, worksheet,
+reconciliation/owner artifacts and for content such as `MULTI_HEADING_COMPOSITE`, `sourceFactId`, 041,
+and 056. It then searched the available `.verify-build` tree, the only registered Git worktree, and
+available historical source/download directories by the B3/B4/B5 lineage. `6a57759` contains only the
+B5 probes; both require external `BENCH_B5*_ARTIFACT` and review paths and do not embed their inputs.
+No B3 artifact, B4 worksheet, or B4.1/B5 per-case review package was recovered.
+
+| C2 state | result |
+|---|---|
+| cross-domain composite recurrence (aggregate) | **PROVEN** - 041=1, 056=18 |
+| exact historical 19-case occurrence identity | **MISSING** |
+| common first producer | **NOT PROVEN** |
+| safe boundary invariant | **NOT PROVEN** |
+| production remediation | **NOT JUSTIFIED** |
+| C2.1 historical producer census | **BLOCKED** |
+
+Do not regenerate historical labels from current output, aggregate counts, or legacy outline artifacts.
+If a future benchmark is independently justified, freeze and review it as **NEW COMPOSITE REVIEW
+POPULATION**, not as recovered B4 evidence. Until then C2 is trigger-gated debt: reopen only if the
+original packet reappears, a naturally scheduled run preserves an exact review packet, or a product
+incident supplies occurrence-safe composite evidence.
+
 ### The `HeadingReadable` debt, recorded separately
 
 It was found while investigating C1 and does not belong to C1's ledger.
