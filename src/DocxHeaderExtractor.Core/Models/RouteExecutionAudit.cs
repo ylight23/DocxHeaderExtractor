@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Core.Models;
@@ -62,6 +62,15 @@ public sealed record RouteExecutionAudit(
     /// <summary>Independent visual execution outcome.</summary>
     [JsonPropertyName("visualLane")]
     public RouteLaneExecutionAudit? VisualLane { get; init; }
+
+    /// <summary>
+    /// Independent span-resolution outcome. Reported separately from <see cref="SemanticLane"/> on
+    /// purpose: a heading needs a resolved span to pass validation, so this lane can fail while the
+    /// role lane completes - and folding it into the existing field would change what that field has
+    /// always meant.
+    /// </summary>
+    [JsonPropertyName("spanLane")]
+    public RouteLaneExecutionAudit? SpanLane { get; init; }
 }
 
 public sealed record RouteLaneExecutionAudit(

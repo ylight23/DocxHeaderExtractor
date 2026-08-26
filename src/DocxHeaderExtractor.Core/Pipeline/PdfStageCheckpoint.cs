@@ -1,4 +1,4 @@
-using System.Text.Json;
+﻿using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -78,6 +78,35 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
         {
             blocks = decisions.Select(d => new { id = d.Id, role = d.Role.ToString(), d.Confidence, d.Reason }),
         }, ct);
+
+    /// <summary>
+    /// One span-resolution batch as it actually ended. A heading cannot validate without a resolved
+    /// span, and until now a batch that resolved nothing - or threw and was swallowed - left no trace
+    /// at all, so a span-lane failure and a healthy run produced identical artifacts.
+    /// <para>
+    /// Blocks are identified by source authority as well as candidate id: candidate ids are
+    /// discovery-order and shift between revisions, so they can address a block within this run but
+    /// must never be the identity a later comparison relies on.
+    /// </para>
+    /// </summary>
+    public Task RecordSpanBatchAsync(
+        IReadOnlyList<(string Id, int Page, string? LineId, TextOffsetSpan? Span)> resolutions,
+        string? failureClass,
+        CancellationToken ct) =>
+        AppendAsync("span", "batch:" + string.Join(',', resolutions.Select(r => r.Id)),
+            failureClass is null ? "completed" : "failed", new
+            {
+                failureClass,
+                blocks = resolutions.Select(r => new
+                {
+                    id = r.Id,
+                    page = r.Page,
+                    lineId = r.LineId,
+                    resolved = r.Span is not null,
+                    start = r.Span?.Start,
+                    end = r.Span?.End,
+                }),
+            }, ct);
 
     public async Task RecordVisualRegionAsync(PdfVisualRecoveryTrace trace, CancellationToken ct)
     {

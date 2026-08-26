@@ -499,11 +499,26 @@ public static class PdfLayoutEvidenceOutline
             : await PdfVisualBlockAnalyst.AnalyzeAsync(visualAnalyst, context.Pdf, visualCandidates, context.Lines, visualDpi,
                 candidateContexts, ct);
         var resolvedRoles = PdfProposalConflictResolver.Resolve(roleAnalysis.Decisions, visual.Decisions, candidateContexts);
-        var spanAnalysis = semanticTimedOut
-            ? roleAnalysis
-            : (await PdfLaneExecution.RunAsync(
-                laneCt => PdfBlockAnalyst.ResolveHeadingSpansAsync(analyst, selected, resolvedRoles.Decisions, candidateContexts, laneCt),
-                semanticOptions.RemainingOr(semanticOptions.RequestTimeout), ct)) switch
+        // The span lane's own outcome is kept rather than collapsed into the decisions it returns. A
+        // heading cannot validate without a resolved span, so this lane failing looks identical to a
+        // healthy run once the artifact is written - which is exactly what C1.4 measured on 001.
+        PdfBlockAnalysis spanAnalysis;
+        string spanLaneStatus;
+        if (semanticTimedOut)
+        {
+            spanAnalysis = roleAnalysis;
+            // Not "complete": the lane never executed, and saying otherwise would be the misreport
+            // this field exists to prevent.
+            spanLaneStatus = "not_run";
+        }
+        else
+        {
+            var spanRun = await PdfLaneExecution.RunAsync(
+                laneCt => PdfBlockAnalyst.ResolveHeadingSpansAsync(analyst, selected, resolvedRoles.Decisions,
+                    candidateContexts, laneCt, checkpoint),
+                semanticOptions.RemainingOr(semanticOptions.RequestTimeout), ct);
+            spanLaneStatus = spanRun.TimedOut ? "partial_timeout" : "complete";
+            spanAnalysis = spanRun switch
             {
                 { TimedOut: true } => roleAnalysis with
                 {
@@ -517,6 +532,7 @@ public static class PdfLayoutEvidenceOutline
                 { Value: { } Value } => Value,
                 _ => roleAnalysis,
             };
+        }
         var blockAnalysis = roleAnalysis with
         {
             Decisions = spanAnalysis.Decisions,
@@ -604,6 +620,13 @@ public static class PdfLayoutEvidenceOutline
                 Math.Max(0, selected.Count - semanticTimedOutBlocks), semanticTimedOutBlocks,
                 semanticTimedOut ? Math.Max(0, selected.Count - semanticTimedOutBlocks) : 0,
                 semanticLaneStatus == "partial_timeout" ? "timeout" : null),
+            SpanLane = new RouteLaneExecutionAudit(
+                spanLaneStatus,
+                spanLaneStatus == "not_run" ? 0 : selected.Count,
+                spanLaneStatus == "complete" ? spanAnalysis.Decisions.Count(d => d.HeadingSpan is not null) : 0,
+                spanLaneStatus == "partial_timeout" ? selected.Count : 0,
+                spanLaneStatus == "not_run" ? selected.Count : 0,
+                spanLaneStatus == "partial_timeout" ? "timeout" : null),
             VisualLane = new RouteLaneExecutionAudit(
                 visualRecovery.Traces.Any(trace => trace.Status == "visual-region-unavailable") ? "partial_timeout" : "complete",
                 visualRecovery.Traces.Count(trace => !trace.Status.EndsWith("excluded", StringComparison.Ordinal)),

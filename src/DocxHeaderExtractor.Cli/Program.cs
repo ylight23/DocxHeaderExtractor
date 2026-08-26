@@ -1676,7 +1676,7 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
 
         var row = PdfHierarchyFactsArtifact.BuildRow(Path.GetFileName(file), FileSha256(file), audit.HierarchyFacts,
             audit.ValidatedStructures, PdfCanonicalGrounding.FromGroundedHeadings(result.Headings),
-            audit.SemanticLane?.Status, semanticLaneOptions);
+            audit.SemanticLane?.Status, semanticLaneOptions, audit.SpanLane?.Status);
         rows.Add(row);
         legacyProductByFile[Path.GetFileName(file)] =
             PdfLegacyValidatedOutputPolicy.ProjectDocumentOutline(result.Headings, audit.ValidatedStructures);

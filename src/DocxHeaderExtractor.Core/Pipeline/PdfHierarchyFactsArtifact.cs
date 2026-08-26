@@ -54,7 +54,8 @@ public static class PdfHierarchyFactsArtifact
         IReadOnlyList<PdfValidatedStructure>? validatedStructures = null,
         IReadOnlyList<PdfCanonicalGrounding>? canonicalGroundings = null,
         string? semanticLaneStatus = null,
-        SemanticLaneOptions? semanticLaneOptions = null)
+        SemanticLaneOptions? semanticLaneOptions = null,
+        string? spanLaneStatus = null)
     {
         var ordered = Canonicalize(facts);
         var counters = new PdfHierarchyFactsCounters(
@@ -81,6 +82,9 @@ public static class PdfHierarchyFactsArtifact
             // validated structures cannot be told apart from one whose semantic lane degraded, and
             // those are different operational events with the same cardinality.
             SemanticLaneStatus = semanticLaneStatus,
+            // Separate from the semantic lane on purpose: a heading needs a resolved span to
+            // validate, so this lane can fail while the role lane completes.
+            SpanLaneStatus = spanLaneStatus,
             // The thresholds the lane was actually given. Without them a partial_timeout says the run
             // degraded but not whether the service was slow or the policy was tight, and those call
             // for opposite responses.
@@ -138,6 +142,15 @@ public sealed record PdfHierarchyFactsRow(
     /// </summary>
     [JsonPropertyName("semanticLaneStatus")]
     public string? SemanticLaneStatus { get; init; }
+
+    /// <summary>
+    /// The span-resolution lane's own outcome. Null on artifacts that predate the field - unknown,
+    /// never "complete". Reported beside <see cref="SemanticLaneStatus"/> rather than merged into it,
+    /// because that field already means something and a silent widening would break every reader that
+    /// relies on it.
+    /// </summary>
+    [JsonPropertyName("spanLaneStatus")]
+    public string? SpanLaneStatus { get; init; }
 
     /// <summary>
     /// The thresholds the semantic lane ran under, copied from the options it was handed. Null on

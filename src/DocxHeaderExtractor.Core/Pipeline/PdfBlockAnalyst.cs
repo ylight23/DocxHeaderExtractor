@@ -1,5 +1,6 @@
-using System.Text.Json;
+﻿using System.Text.Json;
 using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -234,7 +235,8 @@ internal static class PdfBlockAnalyst
         IReadOnlyList<PdfSemanticBlock> blocks,
         IReadOnlyList<PdfBlockDecision> roleDecisions,
         IReadOnlyDictionary<string, PdfCandidateContext> contexts,
-        CancellationToken ct = default)
+        CancellationToken ct = default,
+        PdfStageCheckpoint? checkpoint = null)
     {
         var byId = roleDecisions.ToDictionary(d => d.Id, StringComparer.Ordinal);
         var headingBlocks = blocks.Where(block =>
@@ -256,8 +258,15 @@ internal static class PdfBlockAnalyst
             {
                 throw;
             }
-            catch
+            catch (Exception ex)
             {
+                // Still swallowed - changing that is a behaviour question, not this one. But the
+                // batch no longer disappears: the exception type is a fact this frame already holds,
+                // and without it a failed span batch is indistinguishable from a healthy one.
+                if (checkpoint is not null)
+                    await checkpoint.RecordSpanBatchAsync(
+                        batch.Select(b => (b.Id, b.Page, LineIdOf(b), (TextOffsetSpan?)null)).ToArray(),
+                        ex.GetType().Name, ct);
                 continue;
             }
 
@@ -267,11 +276,22 @@ internal static class PdfBlockAnalyst
                 if (!byId.TryGetValue(id, out var decision)) continue;
                 byId[id] = decision with { HeadingSpan = span };
             }
+
+            if (checkpoint is not null)
+                await checkpoint.RecordSpanBatchAsync(
+                    batch.Select(b => (b.Id, b.Page,
+                        LineIdOf(b),
+                        byId.TryGetValue(b.Id, out var d) ? d.HeadingSpan : null)).ToArray(),
+                    null, ct);
         }
 
         return new PdfBlockAnalysis(blocks, blocks.Where(block => byId.ContainsKey(block.Id)).Select(block => byId[block.Id]).ToArray(), rawResponses)
         { InputContracts = inputContracts };
     }
+
+    /// <summary>Source-line identity for a block, so a checkpoint row can be matched across runs.</summary>
+    private static string? LineIdOf(PdfSemanticBlock block) =>
+        block.Lines.Count == 0 ? null : PdfCandidateProvenance.LineId(block.Lines[0]);
 
     /// <summary>Conflict pass for source-grounded proposals. It can only retain or lower a proposal.</summary>
     public static async Task<PdfBlockAnalysis> CritiqueHeadingProposalsAsync(

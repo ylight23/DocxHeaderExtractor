@@ -4525,9 +4525,37 @@ at the evidence boundary, leaving a degraded execution indistinguishable from a 
 the observability gate's ambiguity test on its face, and it is **not implemented here** - the finding
 is recorded and the decision is open.
 
-- [ ] Candidate, not opened: carry the span lane's outcome into `semanticLaneStatus` (or beside it),
-  and checkpoint the span lane the way the role lane already is. Both are exact propagation of facts
-  the route already computes. Neither is attempted until it is chosen deliberately.
+### C1.4a/b - span-lane observability, promoted
+
+Two observability hardenings, kept independent, and **no model call**.
+
+**C1.4a - `spanLaneStatus`, a new field beside `semanticLaneStatus`, never merged into it.** That
+field already means something and is already in the runbook; widening it silently would break every
+reader relying on it. The span run's own outcome is captured where it happens and copied verbatim in
+the route's vocabulary - `complete`, `partial_timeout`, or `not_run` when the semantic lane timed out
+first and the span lane never executed. A lane that never ran is not reported as complete, and null on
+an older artifact means unknown.
+
+**C1.4b - the span lane is checkpointed like the role lane**, under the existing
+`--pdf-stage-checkpoint` flag: per batch, each block's resolved span or its absence, identified by
+source authority (page and line id) as well as candidate id, because candidate ids shift between
+revisions and must not be the identity a later comparison rests on.
+
+**A second silent path was found while wiring it.** `ResolveHeadingSpansAsync` catches every
+per-batch exception with a bare `catch { continue; }`, so a failed span batch left its blocks with no
+span and no trace - `missing-pointer-span` at validation, indistinguishable from a healthy run. The
+swallow is **not changed** here, since that is a behaviour question; the batch now records the
+exception type, which is a fact the frame already holds.
+
+Seven locks, including the one that pins the defect: **`semanticLaneStatus` may remain `complete`
+while `spanLaneStatus` is `partial_timeout`**, so nobody later merges the two semantics by accident.
+Behavioural neutrality is locked too - the product projection is identical either way. Regression
+unchanged at the frozen 15; 1075 passing.
+
+- [ ] 001's owner is still unresolved between span-lane timeout and span-resolution failure, and now
+  **one instrumented replication answers both branches at once**: `spanLaneStatus` distinguishes
+  timeout from completion, and the span checkpoint shows missing or invalid spans per block. Not run
+  here - the instrumentation is deliberately proven neutral first.
 - [ ] 001's owner remains **unresolved between span-lane timeout and invalid spans**. Resolving it
   needs the instrumentation above, not another model call - a third run without it would produce the
   same blind artifact.
