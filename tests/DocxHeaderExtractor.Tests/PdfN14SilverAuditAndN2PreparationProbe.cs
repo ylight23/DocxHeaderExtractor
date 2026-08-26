@@ -112,7 +112,7 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
             .ThenBy(c => c.Page)
             .ThenBy(c => c.AuditItemId, StringComparer.Ordinal)
             .ToArray();
-        var n0ManifestSha = Sha256(Path.Combine(root, "keys", "benchmark-n0", "manifest.json"));
+        var n0ManifestSha = N0BenchmarkManifestIdentity.ComputeCanonicalN0ManifestSha256(Path.Combine(root, "keys", "benchmark-n0", "manifest.json"));
 
         var reviewerPacket = new
         {
@@ -241,7 +241,7 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
         {
             schemaVersion = 1,
             artifactKind = "n2_silver_live_run_manifest",
-            parentManifestSha256 = Sha256(n0Manifest),
+            parentManifestSha256 = N0BenchmarkManifestIdentity.ComputeCanonicalN0ManifestSha256(n0Manifest),
             silverBundleSha256 = Sha256(bundle),
             labelAuthority = "MODEL_ASSISTED_SILVER_ONLY",
             accuracyClaim = "N2-S is a silver semantic benchmark, not human-gold accuracy evidence.",
