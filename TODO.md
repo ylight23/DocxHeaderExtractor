@@ -4742,6 +4742,32 @@ reappears, a naturally justified future run persists an equivalent occurrence-sa
 product incident supplies one. Otherwise choose either a separately frozen **NEW REVIEW POPULATION**
 or product/release work; never rename newly reviewed cases as the old B4/B5 populations.
 
+## N0 - new evidence-preserving review population bootstrap
+
+Historical B4/B5 follow-ups are closed because their occurrence-level authority packets are missing.
+N0 is a **new** product-accuracy benchmark, not a reconstruction of the old `19`/`12`/`11` cases.
+Before any new review output, label, or model response was read, its selection, source-review rule,
+retention contract, and taxonomies were frozen in `keys/benchmark-n0/manifest.json`.
+
+`PdfN0ReviewPopulationBootstrapProbe` applies A3's existing model-free usable rule
+`selected@160 >= 20 AND decisionRelevant >= 15`, excludes every document that has already supplied
+reviewed benchmark evidence (`001`, `028`, `032`, `041`, `054`, `056`, `091`, `092`), then chooses the
+lowest remaining document ID in each of the first four corpus strata. The result is:
+
+| stratum | document | selected@160 | decision-relevant |
+|---|---|---:|---:|
+| legal | 003 | 160 | 158 |
+| procurement | 029 | 160 | 113 |
+| financial | 042 | 160 | 52 |
+| textbook | 057 | 160 | 100 |
+
+The manifest pins source SHA-256, blind source-first occurrence identity, the precision taxonomy, and
+the later first-owner taxonomy. Each future phase must commit its review packet, labels, bridge, run
+artifact, both checkpoints, precision packet, evaluator result, and hashes; `.verify-build` is only a
+working location and never the sole authority. N0 ends before review or a model call. N1 may create
+the blind source review packets and model-free candidate/selection/eligibility census under this
+frozen contract.
+
 ### The `HeadingReadable` debt, recorded separately
 
 It was found while investigating C1 and does not belong to C1's ledger.
