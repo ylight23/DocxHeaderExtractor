@@ -4768,6 +4768,26 @@ working location and never the sole authority. N0 ends before review or a model 
 the blind source review packets and model-free candidate/selection/eligibility census under this
 frozen contract.
 
+### N1.1 - blind source packets (closed, no labels/no model)
+
+`PdfN1SourceFirstReviewPacketProbe` materialized and committed the four packet files under
+`eval/benchmark-n0/source-packets/`. Every item contains only `reviewItemId`, page, source `lineId`,
+one-line source span, raw text, and up to two source lines on each side. The packet parent hash binds
+each one to N0's manifest; no candidate/provenance/rank/selection/scope/domain/model/validated fields
+are serialized.
+
+| document | source lines | packet bytes |
+|---|---:|---:|
+| 003 | 5,619 | 13,577,693 |
+| 029 | 7,335 | 12,038,182 |
+| 042 | 6,938 | 10,832,957 |
+| 057 | 24,980 | 38,110,636 |
+
+N1.2 is the next authority boundary: a human source review must label occurrences as
+`REVIEWED_HEADING`, `REVIEWED_NON_HEADING`, or `UNCERTAIN`, preserving every source line in a wrapped
+heading. Commit each document's labels/occurrence bridge immediately after review. Do **not** run the
+model-free candidate census until that document's gold is frozen.
+
 ### The `HeadingReadable` debt, recorded separately
 
 It was found while investigating C1 and does not belong to C1's ledger.
