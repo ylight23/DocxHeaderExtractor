@@ -1301,6 +1301,8 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
     var keyIndex = BuildKeyIndex(files, o.PdfStageKeyRoot);
     if (files.Count == 0) { Console.Error.WriteLine("Không tìm thấy DOCX để chấm PDF stages."); return 2; }
 
+    // Must run before CreateClassifierAsync: a frozen benchmark mismatch must spend zero provider calls.
+    using var benchmarkGuard = BenchmarkRunGuard.Prepare(o);
     using var analyst = await CreateClassifierAsync(o, ct);
     if (string.IsNullOrWhiteSpace(o.VlmModelPath) != string.IsNullOrWhiteSpace(o.VlmMmprojPath))
         throw new ArgumentException("pdf-stage-eval dùng VLM cần đủ --vlm-model và --vlm-mmproj.");
@@ -1623,6 +1625,7 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
     }, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
     if (o.OutputPath is null) Console.WriteLine(json);
     else await File.WriteAllTextAsync(Path.GetFullPath(o.OutputPath), json, new UTF8Encoding(false), ct);
+    benchmarkGuard?.Complete();
     return 0;
 }
 
@@ -1640,6 +1643,8 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
     var files = ExpandCalibrationInputs(o.Inputs);
     if (files.Count == 0) { Console.Error.WriteLine("Không tìm thấy tài liệu để dựng hierarchy facts."); return 2; }
 
+    // Same guard applies to the frozen N2-S profile, before any hosted classifier is created.
+    using var benchmarkGuard = BenchmarkRunGuard.Prepare(o);
     using var analyst = await CreateClassifierAsync(o, ct);
     var semanticLaneOptions = new SemanticLaneOptions(
         TimeSpan.FromSeconds(o.PdfStageSemanticRequestTimeoutSeconds),
@@ -1723,6 +1728,7 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
     });
     if (o.OutputPath is null) Console.WriteLine(json);
     else await File.WriteAllTextAsync(Path.GetFullPath(o.OutputPath), json, new UTF8Encoding(false), ct);
+    benchmarkGuard?.Complete();
     return rows.Count == 0 ? 1 : 0;
 }
 
