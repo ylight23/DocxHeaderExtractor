@@ -4643,18 +4643,28 @@ A regression locks the operational form: a completed first batch retains its poi
 batch throws. The sole all-batch invalidation is the outer `PdfLaneExecution` timeout wrapper, which
 replaces `spanAnalysis` with `roleAnalysis` marked `Uncertain`.
 
-**Gate outcome:** partial preservation is now a legitimate **remediation candidate**, but is not
-promoted. It is an accuracy behavior change. Next is a gold-free/artifact-first cross-document search
-for the complete failure shape `partial_timeout + completed valid pointers + wrapper discard`; only
-then can benefit/collateral controls evaluate a production change. Timeout increase remains deferred.
+**Gate outcome:** partial preservation is a legitimate **remediation candidate**, but remains an
+accuracy behavior change requiring recurrence and collateral evidence. Timeout increase remains deferred.
 
-- [ ] 001's owner is still unresolved between span-lane timeout and span-resolution failure, and now
-  **one instrumented replication answers both branches at once**: `spanLaneStatus` distinguishes
-  timeout from completion, and the span checkpoint shows missing or invalid spans per block. Not run
-  here - the instrumentation is deliberately proven neutral first.
-- [ ] 001's owner remains **unresolved between span-lane timeout and invalid spans**. Resolving it
-  needs the instrumentation above, not another model call - a third run without it would produce the
-  same blind artifact.
+### C1.8 - cross-document partial-timeout recurrence audit (artifact-only)
+
+`PdfC18PartialTimeoutRecurrenceAuditProbe` scans the whole existing `.verify-build` inventory without
+calling a provider or changing production. It requires the full mechanism, not a timeout alone:
+`partial_timeout + completed valid spans + wrapper discard + material downstream loss`. It uses the
+span checkpoint only within its own run; cross-run identity is document SHA / source occurrence, never
+candidate id.
+
+The inventory has exactly one fully evidenced positive: **001**. Its one span checkpoint contains 80
+completed source blocks; C1.6 proves 94 reviewed occurrences have valid completed pointers and C1.7
+proves 54 reviewed occurrences are emitted only in the preserve counterfactual. No second
+`partial_timeout` artifact carries a C1.6-equivalent validation replay plus an output denominator.
+There is also no post-provenance `spanLaneStatus=complete` artifact with comparable checkpoints, so the
+complete-lane no-op control is specified and unit-tested but not yet observed in this artifact cohort.
+
+**C1.8 conclusion:** the mechanism is causal on 001, but **cross-document recurrence is not proven**.
+Do not manufacture a second live call merely to make the count two. Production promotion, timeout
+increase, validator changes, and exception-swallow remediation remain unjustified until an existing or
+purposefully instrumented independent run supplies the complete evidence shape.
 
 ### The `HeadingReadable` debt, recorded separately
 
