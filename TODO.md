@@ -5261,6 +5261,48 @@ status `FROZEN_INEFFECTIVE_AS_SPECIFIED`: safe (the collateral check's negative 
 fix for 057. This is reported plainly rather than left as an implied success - "implemented and locked"
 is not "recovers anything."
 
+### R2 bounded investigation - CF1/CF2/CF3, and an unplanned finding that corrects the earlier diagnosis
+
+Per the frozen scope (offline counterfactuals only, no production change, stop rather than reach for
+fuzzy matching or document-specific tuning): `PdfR2BoundedInvestigationProbe` tests R2's two named
+upstream limitations independently, then combined, against 057's real 22 targets.
+
+| run | mechanism | recovery |
+|---|---|---:|
+| CF1 | looser marker grammar alone (candidate-only regex, never applied to `SourceFactsBuilder`) | 3/22 |
+| CF2 | `HeadingSpan` reconciled to its overlapping constituent source line alone | 0/22 |
+| CF3 | both | 3/22 |
+
+**Negative control on the looser marker grammar**: 15/44 of 057's own `HeadingTopic`-classified
+candidates newly match under it where the strict production regex did not (003: 0/153) - a real,
+material widening of recognition scope this investigation does not evaluate case-by-case, and would
+need to before any promotion.
+
+**Unplanned finding, found while investigating CF1-CF3's low recovery, not anticipated when R2 was
+scoped: the earlier divergence taxonomy's 21/23 figure was contaminated by table-of-contents listing
+lines.** That taxonomy searched an *unfiltered* DOCX paragraph list; TOC lines repeat a heading's title
+with a trailing page number and can carry the same `NumberingId` styling as the real heading paragraph,
+while production alignment (and R2) correctly excludes `InTableOfContents` paragraphs. Re-checking all
+22 targets against both filtered and unfiltered paragraph lists:
+
+| category | count |
+|---|---:|
+| has a real (non-TOC) body paragraph match at all | 13/22 |
+| of those, also carries `NumberingId` | 11/22 |
+| matches *only* a TOC line - no real body anchor found | 9/22 |
+| no match anywhere, filtered or not | 0/22 |
+
+The corrected picture: R2's causal story is not "auto-numbering vs PDF-baked marker" alone as first
+diagnosed - marker-grammar depth, span-lane precision, and TOC-line contamination in the *original
+evidence* are three separate, compounding factors. Combining fixes for the first two (CF3) still only
+resolves 3/22; the 9 TOC-only targets may have no valid body anchor to recover at all, a different,
+not-yet-scoped question this investigation does not open.
+
+**Stop condition reached, per the frozen bound**: recovering the remaining ~19 would need tolerant/fuzzy
+matching, a document-specific dictionary or heuristic, or resolving the TOC-contamination question for
+9 targets - none of which this investigation's scope permits. R2 stays `FROZEN_INEFFECTIVE_AS_SPECIFIED`
+(manifest updated with the full investigation); no R2-v2 was found within the bounded budget.
+
 ### 057 representation audit - two sub-owners, two different findings, no fix promoted
 
 Per-target: `PdfN2S057RepresentationAuditProbe` rebuilds each of the 23 undelivered occurrences' own

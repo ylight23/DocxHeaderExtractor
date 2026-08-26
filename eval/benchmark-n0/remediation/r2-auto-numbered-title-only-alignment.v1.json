@@ -36,6 +36,15 @@
     "PdfB3AutoNumberedTitleOnlyAlignmentTests (13 tests - eligibility conditions and every named negative control, all synthetic, all pass)",
     "PdfB3RealTargetValidationProbe.CommittedValidationReproduces (locks the real 0/22 result against the actual 057 checkpoint/document, not a reimplementation)"
   ],
-  "nextStep": "R2 is safe (no collision risk in the population it can ever touch) but currently ineffective. Promoting it to production changes nothing observable on 057 today. Before any further 057 work, decide whether to invest in the two named upstream limitations (marker-parser recognition depth, span-lane precision for WindowFragment candidates) as their own separately-gated diagnosis, or to leave 057 as a documented, safe-but-inert remediation candidate.",
-  "promotionDecision": "not made by this manifest - reserved for whoever owns the promotion call"
+  "nextStep": "See boundedInvestigation below - the two named limitations turned out not to be the whole picture.",
+  "promotionDecision": "not made by this manifest - reserved for whoever owns the promotion call",
+  "boundedInvestigation": {
+    "source": "eval/benchmark-n0/n2-s/counterfactual/057-r2-bounded-investigation.v1.json",
+    "scope": "Counterfactual only - no production code change. CF1 = looser marker grammar alone (candidate regex, never applied to SourceFactsBuilder). CF2 = HeadingSpan reconciled to its overlapping constituent source line alone, deterministic, no fuzzy matching. CF3 = both.",
+    "recovery": { "cf1_markerGrammarOnly": "3/22", "cf2_lineReconciliationOnly": "0/22", "cf3_both": "3/22" },
+    "negativeControlOnLooseMarkerGrammar": "15/44 of 057's own HeadingTopic-classified candidates newly match under the looser grammar where the strict one did not (003: 0/153) - a real, material change in recognition scope, not evaluated case-by-case for correctness here",
+    "unplannedFindingTocContamination": "Found while investigating CF1-CF3's low recovery, not anticipated when R2 was scoped: the earlier divergence taxonomy (057-pdf-docx-divergence-taxonomy.v1.json) searched an UNFILTERED DOCX paragraph list, which includes table-of-contents listing lines - these repeat a heading's title with a trailing page number and can carry the same NumberingId styling as the real heading. Production alignment (and this fix) correctly excludes InTableOfContents paragraphs. Re-checking all 22 targets: only 13/22 have any real (non-TOC) body paragraph match at all, 11/22 of those also carry NumberingId, and 9/22 targets match ONLY a TOC line - they were never really 'auto-numbered body text' as the original 21/23 figure implied for them specifically.",
+    "verdict": "R2's true, corrected causal picture is not 'auto-numbering vs PDF-baked marker' alone, as originally diagnosed - marker-grammar depth, span-lane precision, and TOC-line contamination in the original evidence are three separate, compounding factors, and this bounded investigation resolves only 3/22 even combining the first two.",
+    "stopConditionReached": "Recovering the remaining ~19 would need either fuzzy/tolerant matching (excluded), a document-specific dictionary or heuristic (excluded), or resolving the TOC-contamination question for 9 targets that may have no valid body anchor at all - a different, not-yet-scoped investigation. Per the frozen stop conditions, this bounded investigation ends here without further tuning."
+  }
 }

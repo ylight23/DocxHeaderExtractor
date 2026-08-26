@@ -1,0 +1,1157 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2s_r2_bounded_investigation",
+  "usesModel": false,
+  "scope": "Counterfactual only - no production code change. R2a: loosened marker grammar (candidate-only regex). R2b: HeadingSpan reconciled to the overlapping constituent source line.",
+  "positiveResults": {
+    "cf1_markerGrammarOnly": {
+      "resolved": 3,
+      "outOf": 22,
+      "rows": [
+        {
+          "stableId": "057/numbered/9.4",
+          "sourceFactId": "s-window-3765",
+          "resolved": true,
+          "reason": "matched",
+          "headingText": "9.4 Approximate the derivative of a functio",
+          "method": "raw_model_span",
+          "markerRaw": "9.4 ",
+          "titleOnly": "Approximate the derivative of a functio",
+          "matchedParagraphIndex": 57
+        },
+        {
+          "stableId": "057/numbered/10.0.1",
+          "sourceFactId": "s-window-3875",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "10.0. 1 The Role of Sample Size To ill",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/11.3.1",
+          "sourceFactId": "s-window-4365",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "11.3. 1 Matrix and vector mult",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/12.3",
+          "sourceFactId": "s-window-4767",
+          "resolved": true,
+          "reason": "matched",
+          "headingText": "12.3 Cleaning the i",
+          "method": "raw_model_span",
+          "markerRaw": "12.3 ",
+          "titleOnly": "Cleaning the i",
+          "matchedParagraphIndex": 76
+        },
+        {
+          "stableId": "057/numbered/15.8.1",
+          "sourceFactId": "s-window-5585",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "15.8. 1 Calculating Conditional Probabilities The co",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/22.4",
+          "sourceFactId": "s-window-7988",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "22.4 Chi-Square Goodness-of-Fit Test The chi-squa",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/23.2",
+          "sourceFactId": "s-window-8422",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "23.2 Classical linear regression assumptions We stat",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/24.1.1",
+          "sourceFactId": "s-window-9350",
+          "resolved": false,
+          "reason": "no_marker_recognized",
+          "headingText": "24. 1. 1 Concept of Integration of o",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/24.7.1",
+          "sourceFactId": "s-window-9671",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "24.7. 1 Thorough augmented Dickey-Fu",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/24.8",
+          "sourceFactId": "s-window-9703",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "24.8 Illustration of a spurious regr",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/30.13.1",
+          "sourceFactId": "s-window-11773",
+          "resolved": false,
+          "reason": "no_marker_recognized",
+          "headingText": "30. 13. 1 Setup: mean and variance equations",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/31.3.2",
+          "sourceFactId": "s-window-12396",
+          "resolved": true,
+          "reason": "matched",
+          "headingText": "31.3.2 Building two cointegrated time series",
+          "method": "raw_model_span",
+          "markerRaw": "31.3.2 ",
+          "titleOnly": "Building two cointegrated time series",
+          "matchedParagraphIndex": 10309
+        },
+        {
+          "stableId": "057/numbered/41.3",
+          "sourceFactId": "s-window-17510",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "41.3 KDE illustration from a known d",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/45.1.4",
+          "sourceFactId": "s-window-19015",
+          "resolved": false,
+          "reason": "no_marker_recognized",
+          "headingText": "45. 1.4 Outlier isolation comparison Finally ",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/50.4",
+          "sourceFactId": "s-window-19812",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "50.4 Time-Varying Transition Probabilities Filardo",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/50.5",
+          "sourceFactId": "s-window-19828",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "50.5 Mean and variance switching states Mc Connell ",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/51.1",
+          "sourceFactId": "s-window-19854",
+          "resolved": false,
+          "reason": "no_marker_recognized",
+          "headingText": "51. 1 Event study on fines impact on banks As in",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/54.4.1",
+          "sourceFactId": "s-window-21744",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "54.4. 1 Risk Premia under the APT Once the \u03B2i ",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/72.2",
+          "sourceFactId": "s-window-27542",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "72.2 Within estimator, Fixed effects We o",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/76.4",
+          "sourceFactId": "s-window-28651",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "76.4 Are both series I ",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/76.10.2",
+          "sourceFactId": "s-window-28860",
+          "resolved": false,
+          "reason": "no_marker_recognized",
+          "headingText": "76. 10.2 ARCH model of the residuals - PACF We use a ",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/83.7",
+          "sourceFactId": "s-window-31993",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "83.7 Domain of Attraction of Copula A co",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        }
+      ]
+    },
+    "cf2_lineReconciliationOnly": {
+      "resolved": 0,
+      "outOf": 22,
+      "rows": [
+        {
+          "stableId": "057/numbered/9.4",
+          "sourceFactId": "s-window-3765",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "9.4 Approximate the derivative of a function",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/10.0.1",
+          "sourceFactId": "s-window-3875",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "10.0. 1 The Role of Sample Size",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/11.3.1",
+          "sourceFactId": "s-window-4365",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "11.3. 1 Matrix and vector multiplication",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/12.3",
+          "sourceFactId": "s-window-4767",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "12.3 Cleaning the imported data set",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/15.8.1",
+          "sourceFactId": "s-window-5585",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "15.8. 1 Calculating Conditional Probabilities",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/22.4",
+          "sourceFactId": "s-window-7988",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "22.4 Chi-Square Goodness-of-Fit Test",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/23.2",
+          "sourceFactId": "s-window-8422",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "23.2 Classical linear regression assumptions",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/24.1.1",
+          "sourceFactId": "s-window-9350",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "24. 1. 1 Concept of Integration of order d",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/24.7.1",
+          "sourceFactId": "s-window-9671",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "24.7. 1 Thorough augmented Dickey-Fuller test",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/24.8",
+          "sourceFactId": "s-window-9703",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "24.8 Illustration of a spurious regression",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/30.13.1",
+          "sourceFactId": "s-window-11773",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "30. 13. 1 Setup: mean and variance equations",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/31.3.2",
+          "sourceFactId": "s-window-12396",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "31.3.2 Building two cointegrated time series",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/41.3",
+          "sourceFactId": "s-window-17510",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "41.3 KDE illustration from a known density",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/45.1.4",
+          "sourceFactId": "s-window-19015",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "45. 1.4 Outlier isolation comparison",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/50.4",
+          "sourceFactId": "s-window-19812",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "50.4 Time-Varying Transition Probabilities",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/50.5",
+          "sourceFactId": "s-window-19828",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "50.5 Mean and variance switching states",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/51.1",
+          "sourceFactId": "s-window-19854",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "51. 1 Event study on fines impact on banks",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/54.4.1",
+          "sourceFactId": "s-window-21744",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "54.4. 1 Risk Premia under the APT",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/72.2",
+          "sourceFactId": "s-window-27542",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "72.2 Within estimator, Fixed effects",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/76.4",
+          "sourceFactId": "s-window-28651",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "76.4 Are both series I (1)?",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/76.10.2",
+          "sourceFactId": "s-window-28860",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "76. 10.2 ARCH model of the residuals - PACF",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/83.7",
+          "sourceFactId": "s-window-31993",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "83.7 Domain of Attraction of Copula",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        }
+      ]
+    },
+    "cf3_both": {
+      "resolved": 3,
+      "outOf": 22,
+      "rows": [
+        {
+          "stableId": "057/numbered/9.4",
+          "sourceFactId": "s-window-3765",
+          "resolved": true,
+          "reason": "matched",
+          "headingText": "9.4 Approximate the derivative of a function",
+          "method": "line_reconciled",
+          "markerRaw": "9.4 ",
+          "titleOnly": "Approximate the derivative of a function",
+          "matchedParagraphIndex": 57
+        },
+        {
+          "stableId": "057/numbered/10.0.1",
+          "sourceFactId": "s-window-3875",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "10.0. 1 The Role of Sample Size",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/11.3.1",
+          "sourceFactId": "s-window-4365",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "11.3. 1 Matrix and vector multiplication",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/12.3",
+          "sourceFactId": "s-window-4767",
+          "resolved": true,
+          "reason": "matched",
+          "headingText": "12.3 Cleaning the imported data set",
+          "method": "line_reconciled",
+          "markerRaw": "12.3 ",
+          "titleOnly": "Cleaning the imported data set",
+          "matchedParagraphIndex": 76
+        },
+        {
+          "stableId": "057/numbered/15.8.1",
+          "sourceFactId": "s-window-5585",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "15.8. 1 Calculating Conditional Probabilities",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/22.4",
+          "sourceFactId": "s-window-7988",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "22.4 Chi-Square Goodness-of-Fit Test",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/23.2",
+          "sourceFactId": "s-window-8422",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "23.2 Classical linear regression assumptions",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/24.1.1",
+          "sourceFactId": "s-window-9350",
+          "resolved": false,
+          "reason": "no_marker_recognized",
+          "headingText": "24. 1. 1 Concept of Integration of order d",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/24.7.1",
+          "sourceFactId": "s-window-9671",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "24.7. 1 Thorough augmented Dickey-Fuller test",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/24.8",
+          "sourceFactId": "s-window-9703",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "24.8 Illustration of a spurious regression",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/30.13.1",
+          "sourceFactId": "s-window-11773",
+          "resolved": false,
+          "reason": "no_marker_recognized",
+          "headingText": "30. 13. 1 Setup: mean and variance equations",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/31.3.2",
+          "sourceFactId": "s-window-12396",
+          "resolved": true,
+          "reason": "matched",
+          "headingText": "31.3.2 Building two cointegrated time series",
+          "method": "line_reconciled",
+          "markerRaw": "31.3.2 ",
+          "titleOnly": "Building two cointegrated time series",
+          "matchedParagraphIndex": 10309
+        },
+        {
+          "stableId": "057/numbered/41.3",
+          "sourceFactId": "s-window-17510",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "41.3 KDE illustration from a known density",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/45.1.4",
+          "sourceFactId": "s-window-19015",
+          "resolved": false,
+          "reason": "no_marker_recognized",
+          "headingText": "45. 1.4 Outlier isolation comparison",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/50.4",
+          "sourceFactId": "s-window-19812",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "50.4 Time-Varying Transition Probabilities",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/50.5",
+          "sourceFactId": "s-window-19828",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "50.5 Mean and variance switching states",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/51.1",
+          "sourceFactId": "s-window-19854",
+          "resolved": false,
+          "reason": "no_marker_recognized",
+          "headingText": "51. 1 Event study on fines impact on banks",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/54.4.1",
+          "sourceFactId": "s-window-21744",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "54.4. 1 Risk Premia under the APT",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/72.2",
+          "sourceFactId": "s-window-27542",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "72.2 Within estimator, Fixed effects",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/76.4",
+          "sourceFactId": "s-window-28651",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "76.4 Are both series I (1)?",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/76.10.2",
+          "sourceFactId": "s-window-28860",
+          "resolved": false,
+          "reason": "no_marker_recognized",
+          "headingText": "76. 10.2 ARCH model of the residuals - PACF",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        },
+        {
+          "stableId": "057/numbered/83.7",
+          "sourceFactId": "s-window-31993",
+          "resolved": false,
+          "reason": "zero_numbering_id_match",
+          "headingText": "83.7 Domain of Attraction of Copula",
+          "method": null,
+          "markerRaw": null,
+          "titleOnly": null,
+          "matchedParagraphIndex": null
+        }
+      ]
+    }
+  },
+  "negativeControl": [
+    {
+      "stem": "003",
+      "headingTopicCandidateCount": 153,
+      "newlyFiringOrChangedCount": 0,
+      "newlyFiring": []
+    },
+    {
+      "stem": "057",
+      "headingTopicCandidateCount": 44,
+      "newlyFiringOrChangedCount": 15,
+      "newlyFiring": [
+        {
+          "id": "s-window-12346",
+          "strictMarker": "31.",
+          "looseMarker": "31.2 ",
+          "text": "31.2 Unit Root test - Dickey-Fuller test We test \u0022manually\u0022 the GDP for a unit root following the test described in section 24.6."
+        },
+        {
+          "id": "s-window-28651",
+          "strictMarker": "76.",
+          "looseMarker": "76.4 ",
+          "text": "76.4 Are both series I (1)? We apply the first difference to the log of both index and we find that both series were I(1) ."
+        },
+        {
+          "id": "s-window-7988",
+          "strictMarker": "22.",
+          "looseMarker": "22.4 ",
+          "text": "22.4 Chi-Square Goodness-of-Fit Test The chi-square test tests if a sample of data came from a population with a specific distribution."
+        },
+        {
+          "id": "s-window-8422",
+          "strictMarker": "23.",
+          "looseMarker": "23.2 ",
+          "text": "23.2 Classical linear regression assumptions We state the standard assumptions underlying OLS in the cross-sectional case."
+        },
+        {
+          "id": "s-window-4767",
+          "strictMarker": "12.",
+          "looseMarker": "12.3 ",
+          "text": "12.3 Cleaning the imported data set The data set that has been imported and is stored into the Data Frame named df is not clean."
+        },
+        {
+          "id": "s-window-8501",
+          "strictMarker": "23.",
+          "looseMarker": "23.5 ",
+          "text": "23.5 Deriving \u03B21 and showing E(\u03B21 ) = \u03B21 Consider the simple linear regression model"
+        },
+        {
+          "id": "s-window-9703",
+          "strictMarker": "24.",
+          "looseMarker": "24.8 ",
+          "text": "24.8 Illustration of a spurious regression We can define two time series as in (Granger and Newbold 1974) :"
+        },
+        {
+          "id": "s-window-17510",
+          "strictMarker": "41.",
+          "looseMarker": "41.3 ",
+          "text": "41.3 KDE illustration from a known density Let\u2019s imagine that as in (Gramacki 2018) we have the following true density a mixture of two"
+        },
+        {
+          "id": "s-window-3713",
+          "strictMarker": "9.",
+          "looseMarker": "9.2 ",
+          "text": "9.2 Compute the area of an ellipse We draw an ellipse:"
+        },
+        {
+          "id": "s-window-3765",
+          "strictMarker": "9.",
+          "looseMarker": "9.4 ",
+          "text": "9.4 Approximate the derivative of a function Remember that the derivative f\u2032 (x) of a function f() at x is in fact a rate of change defined ..."
+        },
+        {
+          "id": "s-window-12396",
+          "strictMarker": "31.3.",
+          "looseMarker": "31.3.2 ",
+          "text": "31.3.2 Building two cointegrated time series We suggest to build two cointegrated time series with the system of equations:"
+        },
+        {
+          "id": "s-window-27542",
+          "strictMarker": "72.",
+          "looseMarker": "72.2 ",
+          "text": "72.2 Within estimator, Fixed effects We obtain the Within estimator with an ordinary least square (OLS) on equation 470"
+        },
+        {
+          "id": "s-window-19812",
+          "strictMarker": "50.",
+          "looseMarker": "50.4 ",
+          "text": "50.4 Time-Varying Transition Probabilities Filardo (1994) also assumes that the state of the economy cannot be known with certainty and"
+        },
+        {
+          "id": "s-window-19828",
+          "strictMarker": "50.",
+          "looseMarker": "50.5 ",
+          "text": "50.5 Mean and variance switching states Mc Connell and Perez-Quiros (2000) combined mean and variance state switching to model US"
+        },
+        {
+          "id": "s-window-31993",
+          "strictMarker": "83.",
+          "looseMarker": "83.7 ",
+          "text": "83.7 Domain of Attraction of Copula A copula C belongs to the domain of attraction of an extreme value copula C\u2217 if for all u"
+        }
+      ]
+    }
+  ],
+  "tocContaminationCheck": {
+    "note": "Corrects the earlier divergence taxonomy, which did not distinguish TOC listing lines from real body paragraphs when it reported 21/23 DOCX_AUTO_NUMBERED_TITLE_ONLY.",
+    "targetsWithRealBodyMatch": 13,
+    "targetsWithRealBodyMatchAndNumberingId": 11,
+    "targetsWithTocOnlyMatch": 9,
+    "targetsWithNoMatchAtAll": 0,
+    "rows": [
+      {
+        "stableId": "057/numbered/10.0.1",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 1654,
+            "toc": false,
+            "numberingId": null
+          }
+        ],
+        "hasRealBodyMatch": true,
+        "hasRealBodyMatchWithNumberingId": false
+      },
+      {
+        "stableId": "057/numbered/11.3.1",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 2185,
+            "toc": false,
+            "numberingId": 3
+          }
+        ],
+        "hasRealBodyMatch": true,
+        "hasRealBodyMatchWithNumberingId": true
+      },
+      {
+        "stableId": "057/numbered/12.3",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 76,
+            "toc": false,
+            "numberingId": 1
+          }
+        ],
+        "hasRealBodyMatch": true,
+        "hasRealBodyMatchWithNumberingId": true
+      },
+      {
+        "stableId": "057/numbered/15.8.1",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 3016,
+            "toc": false,
+            "numberingId": 3
+          }
+        ],
+        "hasRealBodyMatch": true,
+        "hasRealBodyMatchWithNumberingId": true
+      },
+      {
+        "stableId": "057/numbered/22.4",
+        "matchCount": 2,
+        "matches": [
+          {
+            "index": 156,
+            "toc": true,
+            "numberingId": 1
+          },
+          {
+            "index": 6571,
+            "toc": false,
+            "numberingId": null
+          }
+        ],
+        "hasRealBodyMatch": true,
+        "hasRealBodyMatchWithNumberingId": false
+      },
+      {
+        "stableId": "057/numbered/23.2",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 163,
+            "toc": true,
+            "numberingId": 1
+          }
+        ],
+        "hasRealBodyMatch": false,
+        "hasRealBodyMatchWithNumberingId": false
+      },
+      {
+        "stableId": "057/numbered/24.1.1",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 7839,
+            "toc": false,
+            "numberingId": 3
+          }
+        ],
+        "hasRealBodyMatch": true,
+        "hasRealBodyMatchWithNumberingId": true
+      },
+      {
+        "stableId": "057/numbered/24.7.1",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 8197,
+            "toc": false,
+            "numberingId": 3
+          }
+        ],
+        "hasRealBodyMatch": true,
+        "hasRealBodyMatchWithNumberingId": true
+      },
+      {
+        "stableId": "057/numbered/24.8",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 180,
+            "toc": true,
+            "numberingId": 1
+          }
+        ],
+        "hasRealBodyMatch": false,
+        "hasRealBodyMatchWithNumberingId": false
+      },
+      {
+        "stableId": "057/numbered/30.13.1",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 9803,
+            "toc": false,
+            "numberingId": 3
+          }
+        ],
+        "hasRealBodyMatch": true,
+        "hasRealBodyMatchWithNumberingId": true
+      },
+      {
+        "stableId": "057/numbered/31.3.2",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 10309,
+            "toc": false,
+            "numberingId": 3
+          }
+        ],
+        "hasRealBodyMatch": true,
+        "hasRealBodyMatchWithNumberingId": true
+      },
+      {
+        "stableId": "057/numbered/41.3",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 303,
+            "toc": true,
+            "numberingId": 1
+          }
+        ],
+        "hasRealBodyMatch": false,
+        "hasRealBodyMatchWithNumberingId": false
+      },
+      {
+        "stableId": "057/numbered/45.1.4",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 14826,
+            "toc": false,
+            "numberingId": 3
+          }
+        ],
+        "hasRealBodyMatch": true,
+        "hasRealBodyMatchWithNumberingId": true
+      },
+      {
+        "stableId": "057/numbered/50.4",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 343,
+            "toc": true,
+            "numberingId": 1
+          }
+        ],
+        "hasRealBodyMatch": false,
+        "hasRealBodyMatchWithNumberingId": false
+      },
+      {
+        "stableId": "057/numbered/50.5",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 344,
+            "toc": true,
+            "numberingId": 1
+          }
+        ],
+        "hasRealBodyMatch": false,
+        "hasRealBodyMatchWithNumberingId": false
+      },
+      {
+        "stableId": "057/numbered/51.1",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 346,
+            "toc": true,
+            "numberingId": 1
+          }
+        ],
+        "hasRealBodyMatch": false,
+        "hasRealBodyMatchWithNumberingId": false
+      },
+      {
+        "stableId": "057/numbered/54.4.1",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 17220,
+            "toc": false,
+            "numberingId": 3
+          }
+        ],
+        "hasRealBodyMatch": true,
+        "hasRealBodyMatchWithNumberingId": true
+      },
+      {
+        "stableId": "057/numbered/72.2",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 459,
+            "toc": true,
+            "numberingId": 1
+          }
+        ],
+        "hasRealBodyMatch": false,
+        "hasRealBodyMatchWithNumberingId": false
+      },
+      {
+        "stableId": "057/numbered/76.10.2",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 23245,
+            "toc": false,
+            "numberingId": 3
+          }
+        ],
+        "hasRealBodyMatch": true,
+        "hasRealBodyMatchWithNumberingId": true
+      },
+      {
+        "stableId": "057/numbered/76.4",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 491,
+            "toc": true,
+            "numberingId": 1
+          }
+        ],
+        "hasRealBodyMatch": false,
+        "hasRealBodyMatchWithNumberingId": false
+      },
+      {
+        "stableId": "057/numbered/83.7",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 542,
+            "toc": true,
+            "numberingId": 1
+          }
+        ],
+        "hasRealBodyMatch": false,
+        "hasRealBodyMatchWithNumberingId": false
+      },
+      {
+        "stableId": "057/numbered/9.4",
+        "matchCount": 1,
+        "matches": [
+          {
+            "index": 57,
+            "toc": false,
+            "numberingId": 1
+          }
+        ],
+        "hasRealBodyMatch": true,
+        "hasRealBodyMatchWithNumberingId": true
+      }
+    ]
+  }
+}
