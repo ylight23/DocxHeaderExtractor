@@ -4656,15 +4656,30 @@ candidate id.
 
 The inventory has exactly one fully evidenced positive: **001**. Its one span checkpoint contains 80
 completed source blocks; C1.6 proves 94 reviewed occurrences have valid completed pointers and C1.7
-proves 54 reviewed occurrences are emitted only in the preserve counterfactual. No second
+proves that **54 reviewed emitted outputs are lost under the current wrapper and recovered only by the
+offline partial-preserve counterfactual**. No second
 `partial_timeout` artifact carries a C1.6-equivalent validation replay plus an output denominator.
 There is also no post-provenance `spanLaneStatus=complete` artifact with comparable checkpoints, so the
 complete-lane no-op control is specified and unit-tested but not yet observed in this artifact cohort.
 
-**C1.8 conclusion:** the mechanism is causal on 001, but **cross-document recurrence is not proven**.
-Do not manufacture a second live call merely to make the count two. Production promotion, timeout
-increase, validator changes, and exception-swallow remediation remain unjustified until an existing or
-purposefully instrumented independent run supplies the complete evidence shape.
+### C1 - CLOSED
+
+| partial span preservation promotion state | evidence |
+|---|---|
+| causal on 001 | **PROVEN** - `partial_timeout` plus all-or-nothing span discard |
+| material on 001 | **PROVEN** - 94 valid spans discarded; 54 reviewed outputs recover offline |
+| batch independence | **PROVEN** |
+| cross-document recurrence | **NOT PROVEN** |
+| collateral gate | **INSUFFICIENT EVIDENCE** |
+| production promotion | **BLOCKED** |
+| timeout increase | **NOT JUSTIFIED** |
+
+Do not manufacture a second live call merely to make the count two. Partial-result preservation is now
+trigger-gated debt, not mandatory backlog. Reopen only when an independently justified run or incident
+provides the complete mechanism, a product incident shows material loss, a naturally scheduled run
+supplies a usable positive/negative control, or a product requirement explicitly changes from
+lane-level fail-closed to best-effort partial semantic output. Validator changes and exception-swallow
+remediation remain outside C1's causal evidence.
 
 ### The `HeadingReadable` debt, recorded separately
 
