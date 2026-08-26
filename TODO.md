@@ -5134,11 +5134,59 @@ suggested, and closer to 001's shape than the raw number implied.
 | 4. fail-closed semantics | PASS |
 | 5. no extra provider calls | PASS |
 | 6. false-positive collateral | **PASS - 0/9 causally genuine, 9/9 explained as a join artifact** |
-| 7. no new cross-document regression | not checked beyond 001/003 - only two documents have this evidence |
+| 7. no new cross-document regression | **INSUFFICIENT_EXISTING_EVIDENCE** (below) |
 
 Six of seven criteria now pass on this evidence; the seventh was never in scope for a two-document
 audit and is not manufactured here. Promotion is still a decision for whoever owns it - this closes
 the evidentiary gap the false-positive rate opened, it does not itself promote the fix.
+
+### Gate #7 - cross-document regression inventory, INSUFFICIENT_EXISTING_EVIDENCE
+
+`PdfC1CrossDocumentRegressionInventoryProbe` scans every `.json`/`.jsonl` file anywhere in the working
+tree (`eval`, `keys`, `.verify-build` - not committed authority alone, but real evidence to inventory)
+for `pdf_hierarchy_facts` run artifacts and span-lane checkpoints. `spanLaneStatus` was added this
+session (`5036530`); no artifact from before that commit can carry it by construction, and none of the
+older `010`/`054`/`092` checkpoints (`.verify-build/*-m81c*.jsonl`, pre-dating span-lane
+instrumentation) carry a `span` lane at all.
+
+**Only 001 and 003 have ever produced a retained `pdf_hierarchy_facts` run with span-lane evidence
+anywhere in this repository.** No independent third document exists to replay for gate #7. Per the
+frozen rule, this is not treated as a pass by default absence, and no document is manufactured to
+force a verdict:
+
+```
+verdict: INSUFFICIENT_EXISTING_EVIDENCE
+```
+
+The path forward the freeze already named: freeze the remediation implementation and its hash, freeze
+the validation protocol, **then** open N3 (the untouched fresh holdout) - never look at N3's loss first
+and adjust the fix to fit. N3 has not been opened. Whether to spend it on gate #7 specifically, versus
+waiting for a naturally-occurring third `partial_timeout` document, is a decision for whoever owns the
+promotion call, not made here.
+
+### 057 title-only alignment - collateral check finds real collision risk in the general rule
+
+The divergence taxonomy's exact remediation candidate - PDF marker recognized AND title-only text
+matches a DOCX paragraph verbatim AND that paragraph has `NumberingId` set -> permit a constrained
+title-only alignment attempt - was checked for collision risk across all of 057's 19,249 DOCX
+paragraphs (2,727 carrying `NumberingId`) before any implementation, per the same "freeze the protocol
+before promoting" discipline as gate #7.
+
+**The general rule is not collision-free on this document**: 26 pairs of `NumberingId`-bearing
+paragraphs share the exact same canonical title (real structure - section names like "Python", "Linear
+regression", "Descriptive statistics" recur verbatim across different chapters of a textbook, not
+noise), and 32 `NumberingId`-bearing titles also match some non-numbered paragraph's text - though
+nearly all of the latter are single tokens or short symbols ("x", "n", "r", "30", "fsolve") far below
+the `LooksGroundableText` length-3 floor, so they could never actually appear as a real candidate's
+title-only text.
+
+**The 21 actual production targets themselves resolve unambiguously** - each matches exactly one
+`NumberingId`-bearing paragraph, no collision in practice. This is single-document evidence and does
+not generalize without repeating the check elsewhere. **Verdict: `COLLISION_RISK_FOUND`** at the
+general-rule level, `NO_COLLISION_IN_PRACTICE` for the 21 real cases - meaning any implementation must
+stay bounded to the exact population already proven safe (candidates the analyst already validated as
+`HeadingTopic`), never generalized into "resolve any numbered DOCX paragraph by title," which this
+evidence shows would collide.
 
 ### 057 representation audit - two sub-owners, two different findings, no fix promoted
 

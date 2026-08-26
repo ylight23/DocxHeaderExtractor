@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "c1_gate7_cross_document_regression_inventory",
+  "usesModel": false,
+  "purpose": "Gate #7 (no new cross-document regression) for partial-result preservation. Inventories every retained artifact that could carry span-lane evidence, rather than assuming absence means pass.",
+  "spanLaneStatusIntroducedAt": "commit 5036530 (this session) - no artifact before it can carry the field by construction",
+  "jsonlCheckpointsWithASpanLane": 5,
+  "allJsonlCheckpointsFound": [
+    {
+      "path": "eval\\benchmark-n0\\n2-s\\checkpoints\\003-n2-s.jsonl",
+      "lanes": {
+        "semantic": 20,
+        "span": 22
+      }
+    },
+    {
+      "path": "eval\\benchmark-n0\\n2-s\\checkpoints\\057-n2-s.jsonl",
+      "lanes": {
+        "semantic": 20,
+        "span": 11
+      }
+    },
+    {
+      "path": "eval\\benchmark-n0\\n2-s\\invalid-runs\\concurrency-1\\003-n2s-checkpoint.v1.jsonl",
+      "lanes": {
+        "semantic": 20,
+        "span": 18
+      }
+    },
+    {
+      "path": "eval\\benchmark-n0\\n2-s\\invalid-runs\\concurrency-1\\057-n2s-checkpoint.v1.jsonl",
+      "lanes": {
+        "semantic": 20,
+        "span": 13
+      }
+    },
+    {
+      "path": ".verify-build\\001-c15-span.jsonl",
+      "lanes": {
+        "semantic": 20,
+        "span": 20
+      }
+    },
+    {
+      "path": ".verify-build\\010-m81c-bg.jsonl",
+      "lanes": {
+        "semantic": 20
+      }
+    },
+    {
+      "path": ".verify-build\\010-m81c-fresh.jsonl",
+      "lanes": {
+        "semantic": 20
+      }
+    },
+    {
+      "path": ".verify-build\\010-m81c.jsonl",
+      "lanes": {
+        "semantic": 20
+      }
+    },
+    {
+      "path": ".verify-build\\054-m81c.jsonl",
+      "lanes": {
+        "semantic": 20
+      }
+    },
+    {
+      "path": ".verify-build\\092-m713.jsonl",
+      "lanes": {
+        "visual": 43,
+        "semantic": 20
+      }
+    },
+    {
+      "path": ".verify-build\\092-m81c.jsonl",
+      "lanes": {
+        "semantic": 20
+      }
+    }
+  ],
+  "pdfHierarchyFactsRunArtifactsFound": [
+    {
+      "path": "eval\\benchmark-n0\\n2-s\\runs\\003-n2-s-run.v1.json",
+      "file": "003_Luat_Doanh_nghiep_59-2020-QH14.docx",
+      "semanticLaneStatus": "complete",
+      "spanLaneStatus": "partial_timeout",
+      "validatedHeadings": 0
+    },
+    {
+      "path": "eval\\benchmark-n0\\n2-s\\runs\\057-n2-s-run.v1.json",
+      "file": "057_Quantitative_Methods_in_Finance_Lecture_Notes.docx",
+      "semanticLaneStatus": "complete",
+      "spanLaneStatus": "complete",
+      "validatedHeadings": 35
+    },
+    {
+      "path": "eval\\benchmark-n0\\n2-s\\invalid-runs\\concurrency-1\\003-n2s-run.v1.json",
+      "file": "003_Luat_Doanh_nghiep_59-2020-QH14.docx",
+      "semanticLaneStatus": "complete",
+      "spanLaneStatus": "partial_timeout",
+      "validatedHeadings": 0
+    },
+    {
+      "path": "eval\\benchmark-n0\\n2-s\\invalid-runs\\concurrency-1\\057-n2s-run.v1.json",
+      "file": "057_Quantitative_Methods_in_Finance_Lecture_Notes.docx",
+      "semanticLaneStatus": "complete",
+      "spanLaneStatus": "complete",
+      "validatedHeadings": 42
+    },
+    {
+      "path": ".verify-build\\001-c15-instrumented.json",
+      "file": "001_Bo_luat_Dan_su_91-2015-QH13.docx",
+      "semanticLaneStatus": "complete",
+      "spanLaneStatus": "partial_timeout",
+      "validatedHeadings": 0
+    }
+  ],
+  "verdict": "INSUFFICIENT_EXISTING_EVIDENCE",
+  "verdictReason": "Only 001 and 003 have ever produced a retained pdf_hierarchy_facts run with span-lane evidence anywhere in this repository (working tree included). No independent third document exists to replay for cross-document regression evidence. This is not treated as a pass by default absence, nor is a synthetic document manufactured to force a verdict."
+}
