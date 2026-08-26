@@ -125,6 +125,13 @@ public sealed class CommandLineOptions
     public string? GoldVersion { get; private set; }
     public string? PreviousGoldVersion { get; private set; }
 
+    /// <summary>Frozen benchmark manifest checked before any hosted/local provider is constructed.</summary>
+    public string? BenchmarkManifestPath { get; private set; }
+    /// <summary>Optional explicit process-wide lock path for a frozen live benchmark.</summary>
+    public string? BenchmarkRunLockPath { get; private set; }
+    /// <summary>Canonical live output that must not already exist when a new run is started.</summary>
+    public string? BenchmarkCanonicalOutputPath { get; private set; }
+
     public static CommandLineOptions Parse(string[] args)
     {
         var o = new CommandLineOptions();
@@ -205,6 +212,9 @@ public sealed class CommandLineOptions
                 case "--pdf-stage-visual-concurrency": o.PdfStageVisualConcurrency = Math.Max(1, int.Parse(Next(a))); break;
                 case "--pdf-stage-checkpoint": o.PdfStageCheckpointPath = Next(a); break;
                 case "--pdf-stage-resume": o.PdfStageResume = true; break;
+                case "--benchmark-manifest": o.BenchmarkManifestPath = Next(a); break;
+                case "--benchmark-run-lock": o.BenchmarkRunLockPath = Next(a); break;
+                case "--benchmark-canonical-output": o.BenchmarkCanonicalOutputPath = Next(a); break;
                 case "--vlm-max-images": o.VlmMaxImagesPerRequest = Math.Max(1, int.Parse(Next(a))); break;
                 case "--vlm-concurrency": o.VlmMaxConcurrentRequests = Math.Max(1, int.Parse(Next(a))); break;
                 case "--pdf-stage-key-root": o.PdfStageKeyRoot = Next(a); break;
@@ -498,6 +508,9 @@ public sealed class CommandLineOptions
               --pdf-stage-all       Chỉ pdf-stage-eval: LLM screen toàn bộ PDF candidate theo batch (audit-only; chậm).
               --pdf-stage-blocks n  Chỉ pdf-stage-eval: smoke cap; mặc định 0 = screen toàn bộ pool.
               --pdf-stage-key-root d Chỉ pdf-stage-eval: thư mục key holdout tường minh, không dùng key production.
+              --benchmark-manifest p Frozen live benchmark manifest; assert profile trước provider call.
+              --benchmark-run-lock p Lock process riêng cho frozen benchmark (mặc định cạnh manifest).
+              --benchmark-canonical-output p Abort nếu canonical artifact đã tồn tại; bắt buộc cùng manifest.
               --no-docling-sidecar  Tắt adapter Docling explicit (mặc định vốn tắt).
               --key-limit <n>       Với repair-key-package, số heading trong mẫu review (mặc định 30)
               --key-start <n>       Với repair-key-package, bỏ qua N heading đầu trước khi lấy mẫu
