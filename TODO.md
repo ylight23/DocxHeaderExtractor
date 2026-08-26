@@ -5421,8 +5421,11 @@ order; N3.4 does not start until N3.2/N3.3 are frozen, and R1 is not tuned in re
   independently has the same kind of restarting-local-scope structure 028 did (ITC/GCC-Time-Based/
   GCC-Lump-Sum/Fraud-Attachment each renumbering from 1) and was given distinct `goldStableId` scopes for
   the same reason, without being told 028 existed.
-- [ ] N3.3 - model-free census (candidate coverage, selected coverage, decision-relevant) per document,
-  before any model or R1/baseline comparison - same discipline as A2c/B2's census work.
+- [x] N3.3 - model-free census frozen before any baseline/R1 comparison. `004` has 93 silver heading
+  occurrences, 83 full candidates, 55 selected and 55 decision-relevant; `030` is 239/209/9/8,
+  `043` is 43/42/3/3, and `058` is 47/41/13/13 (silver/full/selected/decision-relevant). Thus only
+  004 clears the frozen semantic cohort threshold 15; the other three remain valid N3 evidence for
+  candidate/rank/eligibility and product comparison, but conditional semantic-quality is insufficient.
 - [ ] N3.4 - baseline build vs R1 build, measured independently per document, not tuned to each other:
   semantic role survival, span resolved, validated, grounded, emitted; precision; occurrence recall;
   exact source-span correctness; `partial_timeout` behavior; `complete`-lane neutrality (R1 must not

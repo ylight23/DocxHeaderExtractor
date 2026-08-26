@@ -1,0 +1,419 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_model_assisted_silver_model_free_census",
+  "documentId": "058",
+  "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+  "sourceLineExtractionFingerprint": "46edd2b1da146a1a8949c49d1819cc3ea3cb4ddf51824110a4e997bbc03c9833",
+  "populationManifest": "keys/benchmark-n3/manifest.v2.json",
+  "frozenSilverLabel": "eval/benchmark-n3/silver-labels/058-n3.2-silver-model-assisted.v1.json",
+  "labelAuthority": "MODEL_ASSISTED_SILVER",
+  "accuracyClaim": "SILVER_PROXY_ONLY",
+  "identity": "documentSha256 \u002B page \u002B sourceLineIds/sourceSpan; candidateId is diagnostics-only within this run",
+  "modelCalls": "none",
+  "selectedBudget": 160,
+  "unresolvedOccurrenceCount": 0,
+  "unresolvedOccurrenceStableIds": [],
+  "denominators": {
+    "silverHeadingOccurrences": 47,
+    "fullCandidate": 41,
+    "selectedAt160": 13,
+    "answerIrrelevant": 0,
+    "decisionRelevant": 13
+  },
+  "lossLedger": {
+    "candidateConstructionLoss": 6,
+    "rankBudgetLoss": 28,
+    "deterministicEligibilityLoss": 0,
+    "decisionRelevant": 13
+  },
+  "semanticCohort": {
+    "threshold": 15,
+    "decisionRelevant": 13,
+    "eligible": false
+  },
+  "occurrences": {
+    "candidateConstructionLoss": [
+      {
+        "stableId": "058/heading/003",
+        "status": "partial",
+        "selected": false,
+        "coveringRank": null,
+        "deterministicExclusionReason": null,
+        "bucket": "candidate_construction_loss"
+      },
+      {
+        "stableId": "058/heading/004",
+        "status": "partial",
+        "selected": false,
+        "coveringRank": null,
+        "deterministicExclusionReason": null,
+        "bucket": "candidate_construction_loss"
+      },
+      {
+        "stableId": "058/heading/022",
+        "status": "partial",
+        "selected": false,
+        "coveringRank": null,
+        "deterministicExclusionReason": null,
+        "bucket": "candidate_construction_loss"
+      },
+      {
+        "stableId": "058/heading/027",
+        "status": "partial",
+        "selected": false,
+        "coveringRank": null,
+        "deterministicExclusionReason": null,
+        "bucket": "candidate_construction_loss"
+      },
+      {
+        "stableId": "058/heading/035",
+        "status": "partial",
+        "selected": false,
+        "coveringRank": null,
+        "deterministicExclusionReason": null,
+        "bucket": "candidate_construction_loss"
+      },
+      {
+        "stableId": "058/heading/041",
+        "status": "partial",
+        "selected": false,
+        "coveringRank": null,
+        "deterministicExclusionReason": null,
+        "bucket": "candidate_construction_loss"
+      }
+    ],
+    "rankBudgetLoss": [
+      {
+        "stableId": "058/heading/001",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 909,
+        "deterministicExclusionReason": null,
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/005",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1592,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/008",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1602,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/009",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1603,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/011",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1613,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/012",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1617,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/016",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1627,
+        "deterministicExclusionReason": null,
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/017",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 717,
+        "deterministicExclusionReason": null,
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/018",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 721,
+        "deterministicExclusionReason": null,
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/020",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1647,
+        "deterministicExclusionReason": null,
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/021",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1650,
+        "deterministicExclusionReason": null,
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/023",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1651,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/024",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1653,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/025",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1657,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/028",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1662,
+        "deterministicExclusionReason": null,
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/029",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1663,
+        "deterministicExclusionReason": null,
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/031",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1669,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/033",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1677,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/036",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1690,
+        "deterministicExclusionReason": null,
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/037",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 165,
+        "deterministicExclusionReason": null,
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/038",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 766,
+        "deterministicExclusionReason": null,
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/039",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 167,
+        "deterministicExclusionReason": null,
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/040",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1708,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/042",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1712,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/043",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1721,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/044",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1731,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/045",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 776,
+        "deterministicExclusionReason": null,
+        "bucket": "rank_budget_loss"
+      },
+      {
+        "stableId": "058/heading/046",
+        "status": "full",
+        "selected": false,
+        "coveringRank": 1737,
+        "deterministicExclusionReason": "structuralScope:table",
+        "bucket": "rank_budget_loss"
+      }
+    ],
+    "deterministicEligibilityLoss": [],
+    "decisionRelevant": [
+      {
+        "stableId": "058/heading/002",
+        "status": "full",
+        "selected": true,
+        "coveringRank": 34,
+        "deterministicExclusionReason": null,
+        "bucket": "decision_relevant"
+      },
+      {
+        "stableId": "058/heading/006",
+        "status": "full",
+        "selected": true,
+        "coveringRank": 134,
+        "deterministicExclusionReason": null,
+        "bucket": "decision_relevant"
+      },
+      {
+        "stableId": "058/heading/007",
+        "status": "full",
+        "selected": true,
+        "coveringRank": 135,
+        "deterministicExclusionReason": null,
+        "bucket": "decision_relevant"
+      },
+      {
+        "stableId": "058/heading/010",
+        "status": "full",
+        "selected": true,
+        "coveringRank": 137,
+        "deterministicExclusionReason": null,
+        "bucket": "decision_relevant"
+      },
+      {
+        "stableId": "058/heading/013",
+        "status": "full",
+        "selected": true,
+        "coveringRank": 140,
+        "deterministicExclusionReason": null,
+        "bucket": "decision_relevant"
+      },
+      {
+        "stableId": "058/heading/014",
+        "status": "full",
+        "selected": true,
+        "coveringRank": 141,
+        "deterministicExclusionReason": null,
+        "bucket": "decision_relevant"
+      },
+      {
+        "stableId": "058/heading/015",
+        "status": "full",
+        "selected": true,
+        "coveringRank": 144,
+        "deterministicExclusionReason": null,
+        "bucket": "decision_relevant"
+      },
+      {
+        "stableId": "058/heading/019",
+        "status": "full",
+        "selected": true,
+        "coveringRank": 148,
+        "deterministicExclusionReason": null,
+        "bucket": "decision_relevant"
+      },
+      {
+        "stableId": "058/heading/026",
+        "status": "full",
+        "selected": true,
+        "coveringRank": 151,
+        "deterministicExclusionReason": null,
+        "bucket": "decision_relevant"
+      },
+      {
+        "stableId": "058/heading/030",
+        "status": "full",
+        "selected": true,
+        "coveringRank": 154,
+        "deterministicExclusionReason": null,
+        "bucket": "decision_relevant"
+      },
+      {
+        "stableId": "058/heading/032",
+        "status": "full",
+        "selected": true,
+        "coveringRank": 156,
+        "deterministicExclusionReason": null,
+        "bucket": "decision_relevant"
+      },
+      {
+        "stableId": "058/heading/034",
+        "status": "full",
+        "selected": true,
+        "coveringRank": 45,
+        "deterministicExclusionReason": null,
+        "bucket": "decision_relevant"
+      },
+      {
+        "stableId": "058/heading/047",
+        "status": "full",
+        "selected": true,
+        "coveringRank": 44,
+        "deterministicExclusionReason": null,
+        "bucket": "decision_relevant"
+      }
+    ]
+  }
+}
