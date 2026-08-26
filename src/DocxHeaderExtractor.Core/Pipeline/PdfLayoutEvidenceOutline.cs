@@ -539,15 +539,11 @@ public static class PdfLayoutEvidenceOutline
             spanLaneStatus = spanRun.TimedOut ? "partial_timeout" : "complete";
             spanAnalysis = spanRun switch
             {
-                { TimedOut: true } => roleAnalysis with
-                {
-                    Decisions = roleAnalysis.Decisions.Select(decision => decision with
-                    {
-                        Role = PdfBlockRole.Uncertain,
-                        Confidence = 0,
-                        Reason = "semantic_request_timeout",
-                    }).ToArray(),
-                },
+                // A3: a batch that finished and was durably checkpointed before the deadline is kept -
+                // only blocks the lane never got a resolved span for are marked Uncertain. Without a
+                // checkpoint there is no durable record of what completed, so behavior is unchanged:
+                // every decision is marked Uncertain exactly as before.
+                { TimedOut: true } => PreservePartialSpanResolutions(roleAnalysis, checkpoint),
                 { Value: { } Value } => Value,
                 _ => roleAnalysis,
             };
@@ -642,8 +638,12 @@ public static class PdfLayoutEvidenceOutline
             SpanLane = new RouteLaneExecutionAudit(
                 spanLaneStatus,
                 spanLaneStatus == "not_run" ? 0 : selected.Count,
-                spanLaneStatus == "complete" ? spanAnalysis.Decisions.Count(d => d.HeadingSpan is not null) : 0,
-                spanLaneStatus == "partial_timeout" ? selected.Count : 0,
+                // A3: on partial_timeout, spanAnalysis may now carry independently-completed spans
+                // (PreservePartialSpanResolutions), so Completed/TimedOut reflect what actually
+                // resolved rather than a blanket 0 - the same expression already used for "complete",
+                // now correct for "partial_timeout" too instead of overridden to 0.
+                spanLaneStatus == "not_run" ? 0 : spanAnalysis.Decisions.Count(d => d.HeadingSpan is not null),
+                spanLaneStatus == "not_run" ? 0 : spanAnalysis.Decisions.Count(d => d.HeadingSpan is null),
                 spanLaneStatus == "not_run" ? selected.Count : 0,
                 spanLaneStatus == "partial_timeout" ? "timeout" : null),
             VisualLane = new RouteLaneExecutionAudit(
@@ -664,6 +664,40 @@ public static class PdfLayoutEvidenceOutline
                 ? $"audit-only:analyst-low-docx-alignment:{recoveredHeadings.Length}/{accepted.Length}"
                 : summary;
         return new PdfTextbookOutlineResult(recoveredHeadings, auditReason, audit);
+    }
+
+    /// <summary>
+    /// A3: when the span lane times out, a batch that finished and was durably checkpointed before the
+    /// deadline is kept - a heading cannot validate without a resolved span, and discarding an
+    /// independently completed one along with the batches that never got one is exactly the
+    /// all-or-nothing loss C1.6/C1.7 measured as recoverable on both 001 and 003. Every block without a
+    /// checkpointed resolution is marked <c>Uncertain</c>, unchanged from before. With no checkpoint at
+    /// all there is no durable record of what completed, so <paramref name="checkpoint"/> being null
+    /// reproduces today's exact behavior: every decision marked <c>Uncertain</c>.
+    /// </summary>
+    internal static PdfBlockAnalysis PreservePartialSpanResolutions(PdfBlockAnalysis roleAnalysis, PdfStageCheckpoint? checkpoint)
+    {
+        var resolved = checkpoint?.ReadCompletedSpanResolutions();
+        if (resolved is null || resolved.Count == 0)
+            return roleAnalysis with
+            {
+                Decisions = roleAnalysis.Decisions.Select(decision => decision with
+                {
+                    Role = PdfBlockRole.Uncertain,
+                    Confidence = 0,
+                    Reason = "semantic_request_timeout",
+                    HeadingSpan = null,
+                }).ToArray(),
+            };
+
+        return roleAnalysis with
+        {
+            Decisions = roleAnalysis.Decisions.Select(decision =>
+                resolved.TryGetValue(decision.Id, out var span)
+                    ? decision with { HeadingSpan = span }
+                    : decision with { Role = PdfBlockRole.Uncertain, Confidence = 0, Reason = "semantic_request_timeout", HeadingSpan = null })
+                .ToArray(),
+        };
     }
 
     /// <summary>

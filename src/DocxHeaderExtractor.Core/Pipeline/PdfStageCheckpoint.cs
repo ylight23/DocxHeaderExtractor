@@ -73,6 +73,49 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
     public bool TryGetSemanticDecision(string blockId, out (PdfBlockRole Role, double Confidence, string Reason) decision) =>
         _semanticDecisions.TryGetValue(blockId, out decision);
 
+    /// <summary>
+    /// A3 (partial-result preservation): spans actually resolved and durably recorded so far, re-read
+    /// from this checkpoint's own file rather than tracked live in memory. The span lane's work
+    /// continues in the background past its deadline (<see cref="PdfLaneExecution"/> does not await a
+    /// timed-out task before returning), so nothing in-process ever holds a live, complete picture of
+    /// "what finished" - only the file each completed batch was durably appended to does. Called only
+    /// once a caller has already decided the lane timed out and needs to know what survived; never
+    /// polled during normal execution.
+    /// </summary>
+    public IReadOnlyDictionary<string, TextOffsetSpan> ReadCompletedSpanResolutions()
+    {
+        var resolved = new Dictionary<string, TextOffsetSpan>(StringComparer.Ordinal);
+        if (!File.Exists(_path)) return resolved;
+
+        foreach (var line in File.ReadLines(_path))
+        {
+            try
+            {
+                using var json = JsonDocument.Parse(line);
+                if (!json.RootElement.TryGetProperty("lane", out var lane) || lane.GetString() != "span") continue;
+                if (!json.RootElement.TryGetProperty("payload", out var payload) ||
+                    !payload.TryGetProperty("blocks", out var blocks) || blocks.ValueKind != JsonValueKind.Array) continue;
+
+                foreach (var block in blocks.EnumerateArray())
+                {
+                    var id = block.TryGetProperty("id", out var idProperty) ? idProperty.GetString() : null;
+                    var isResolved = block.TryGetProperty("resolved", out var resolvedProperty) && resolvedProperty.ValueKind == JsonValueKind.True;
+                    if (string.IsNullOrWhiteSpace(id) || !isResolved) continue;
+                    if (!block.TryGetProperty("start", out var startProperty) || !startProperty.TryGetInt32(out var start)) continue;
+                    if (!block.TryGetProperty("end", out var endProperty) || !endProperty.TryGetInt32(out var end)) continue;
+                    resolved[id] = new TextOffsetSpan(start, end);
+                }
+            }
+            catch (JsonException)
+            {
+                // A torn final line - the background lane may still be appending - is skipped, not
+                // faulted. Earlier completed batches on prior lines remain usable.
+            }
+        }
+
+        return resolved;
+    }
+
     public Task RecordSemanticBatchAsync(
         IReadOnlyList<PdfSemanticBlock> blocks,
         IReadOnlyList<PdfBlockDecision> decisions,
