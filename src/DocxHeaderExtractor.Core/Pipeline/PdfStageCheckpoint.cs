@@ -73,10 +73,29 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
     public bool TryGetSemanticDecision(string blockId, out (PdfBlockRole Role, double Confidence, string Reason) decision) =>
         _semanticDecisions.TryGetValue(blockId, out decision);
 
-    public Task RecordSemanticBatchAsync(IReadOnlyList<PdfBlockDecision> decisions, CancellationToken ct) =>
+    public Task RecordSemanticBatchAsync(
+        IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlyList<PdfBlockDecision> decisions,
+        CancellationToken ct) =>
         AppendAsync("semantic", "batch:" + string.Join(',', decisions.Select(d => d.Id)), "completed", new
         {
-            blocks = decisions.Select(d => new { id = d.Id, role = d.Role.ToString(), d.Confidence, d.Reason }),
+            blocks = decisions.Select(d =>
+            {
+                var block = blocks.FirstOrDefault(candidate => string.Equals(candidate.Id, d.Id, StringComparison.Ordinal));
+                var lineIds = block?.Lines.Select(PdfCandidateProvenance.LineId).ToArray() ?? [];
+                return new
+                {
+                    id = d.Id,
+                    page = block?.Page,
+                    // Keep the first source line for old readers. New evaluation joins on every
+                    // exact source line, since a reviewed heading may span more than one line.
+                    lineId = lineIds.FirstOrDefault(),
+                    lineIds,
+                    role = d.Role.ToString(),
+                    d.Confidence,
+                    d.Reason,
+                };
+            }),
         }, ct);
 
     /// <summary>
@@ -90,7 +109,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
     /// </para>
     /// </summary>
     public Task RecordSpanBatchAsync(
-        IReadOnlyList<(string Id, int Page, string? LineId, TextOffsetSpan? Span)> resolutions,
+        IReadOnlyList<(string Id, int Page, string? LineId, IReadOnlyList<string> LineIds, TextOffsetSpan? Span)> resolutions,
         string? failureClass,
         CancellationToken ct) =>
         AppendAsync("span", "batch:" + string.Join(',', resolutions.Select(r => r.Id)),
@@ -102,6 +121,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
                     id = r.Id,
                     page = r.Page,
                     lineId = r.LineId,
+                    lineIds = r.LineIds,
                     resolved = r.Span is not null,
                     start = r.Span?.Start,
                     end = r.Span?.End,

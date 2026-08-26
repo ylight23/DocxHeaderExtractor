@@ -4552,6 +4552,30 @@ while `spanLaneStatus` is `partial_timeout`**, so nobody later merges the two se
 Behavioural neutrality is locked too - the product projection is identical either way. Regression
 unchanged at the frozen 15; 1075 passing.
 
+### C1.5 - frozen one-run protocol (prepared, not yet called)
+
+The next and only approved C1 call is an **instrumented B3 replication of 001**. Its profile is
+unchanged: OpenRouter `qwen/qwen3.5-9b`, wide + supplement, 160 blocks, B3's 90/120/300 second
+timeouts, and default semantic concurrency. The sole runtime addition is `--pdf-stage-checkpoint`.
+No retry, prompt/context change, `HeadingReadable` change, candidate/ranking change, or second run.
+
+Before the call, `PdfC15SpanLanePreflightProbe` freezes the source-identity denominator from the
+reviewed bridge: **761 reviewed, 162 decision-relevant**. Its identity is `goldStableId + page + all
+required PDF line ids`; candidate id/rank are explicitly debug-only. This prevents the prior 160 role
+answers from silently shrinking the 162-occurrence denominator.
+
+The evaluator taxonomy is frozen in production order:
+`ROLE_NO_DECISION`, `ROLE_NON_HEADING`, `SPAN_NOT_RUN`, `SPAN_TIMEOUT`,
+`SPAN_BATCH_EXCEPTION`, `SPAN_UNRESOLVED`, `SPAN_RESOLVED`,
+`SPAN_RESOLVED_BUT_INVALID`, `VALIDATED`.
+
+Static path audit, now regression-locked: a non-cancellation span exception records its **whole
+four-block batch** with `failureClass`, leaves those spans null, and continues later batches;
+`OperationCanceledException` escapes to the lane wrapper (`partial_timeout`); a semantic timeout
+before span starts yields `not_run`. Checkpoint payloads now carry every block's exact source line ids
+for both role and span batches, while retaining the old first `lineId` for old readers. This is
+provenance only; it does not change span behaviour.
+
 - [ ] 001's owner is still unresolved between span-lane timeout and span-resolution failure, and now
   **one instrumented replication answers both branches at once**: `spanLaneStatus` distinguishes
   timeout from completion, and the span checkpoint shows missing or invalid spans per block. Not run

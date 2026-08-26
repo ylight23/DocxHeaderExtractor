@@ -156,7 +156,7 @@ internal static class PdfBlockAnalyst
                     }
                 }
                 if (checkpoint is not null)
-                    await checkpoint.RecordSemanticBatchAsync(partial.Decisions, ct);
+                    await checkpoint.RecordSemanticBatchAsync(batch, partial.Decisions, ct);
                 partials[index] = partial;
             });
             return new PdfBlockAnalysis(blocks, partials.SelectMany(partial => partial.Decisions).ToArray(), partials.SelectMany(partial => partial.RawResponses).ToArray())
@@ -265,7 +265,7 @@ internal static class PdfBlockAnalyst
                 // and without it a failed span batch is indistinguishable from a healthy one.
                 if (checkpoint is not null)
                     await checkpoint.RecordSpanBatchAsync(
-                        batch.Select(b => (b.Id, b.Page, LineIdOf(b), (TextOffsetSpan?)null)).ToArray(),
+                        batch.Select(b => (b.Id, b.Page, LineIdOf(b), LineIdsOf(b), (TextOffsetSpan?)null)).ToArray(),
                         ex.GetType().Name, ct);
                 continue;
             }
@@ -279,8 +279,9 @@ internal static class PdfBlockAnalyst
 
             if (checkpoint is not null)
                 await checkpoint.RecordSpanBatchAsync(
-                    batch.Select(b => (b.Id, b.Page,
+                        batch.Select(b => (b.Id, b.Page,
                         LineIdOf(b),
+                        LineIdsOf(b),
                         byId.TryGetValue(b.Id, out var d) ? d.HeadingSpan : null)).ToArray(),
                     null, ct);
         }
@@ -292,6 +293,9 @@ internal static class PdfBlockAnalyst
     /// <summary>Source-line identity for a block, so a checkpoint row can be matched across runs.</summary>
     private static string? LineIdOf(PdfSemanticBlock block) =>
         block.Lines.Count == 0 ? null : PdfCandidateProvenance.LineId(block.Lines[0]);
+
+    private static IReadOnlyList<string> LineIdsOf(PdfSemanticBlock block) =>
+        block.Lines.Select(PdfCandidateProvenance.LineId).ToArray();
 
     /// <summary>Conflict pass for source-grounded proposals. It can only retain or lower a proposal.</summary>
     public static async Task<PdfBlockAnalysis> CritiqueHeadingProposalsAsync(
