@@ -2,6 +2,8 @@
 # in every checkout; their .json extension does not grant Git permission to rewrite line endings.
 /eval/benchmark-n0/silver-labels/*.json -text
 /eval/benchmark-n0/census/003-n1.3-census.v1.json -text
+/eval/benchmark-n0/census/029-n1.3-census.v1.json -text
+/eval/benchmark-n0/census/042-n1.3-census.v1.json -text
 /eval/benchmark-n0/census/057-n1.3-census.v1.json -text
 # N3.4 binds its one canonical live run and paired offline reports by raw SHA-256.
 # Keep this narrow: ordinary JSON remains normal text unless its contract says byte identity.
