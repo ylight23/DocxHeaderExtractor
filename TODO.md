@@ -5375,11 +5375,28 @@ order; N3.4 does not start until N3.2/N3.3 are frozen, and R1 is not tuned in re
 - a failing N3 blocks promotion, it does not trigger a patch-and-rerun against the same holdout.
 
 - [x] N3.0/N3.1 - population freeze and blind source packets for four fresh documents never used to
-  design or debug R1 or R2: `002` (legal), `026` (procurement), `043` (financial), `058` (textbook).
-  Manifest: `keys/benchmark-n3/manifest.v1.json`. Packets: `eval/benchmark-n3/source-packets/*.v1.json`
-  (`PdfN3FreshHoldoutBootstrapProbe`). Brought onto this branch by cherry-pick from
-  `n3-audit-bootstrap` (`21d8683`), which had diverged before R2's investigation and closure landed
-  here; verified additive-only via an isolated worktree test-suite comparison before merging.
+  design or debug R1 or R2. Brought onto this branch by cherry-pick from `n3-audit-bootstrap`
+  (`21d8683`), which had diverged before R2's investigation and closure landed here; verified
+  additive-only via an isolated worktree test-suite comparison before merging.
+
+  **Correction (v2): v1's selector never enforced the A3 usability predicate.** It picked the lowest
+  remaining non-excluded document id per stratum with no eligibility check, selecting `002` and `026` -
+  both already known, before N3 existed, to have zero extractable candidates
+  (`.verify-build/a3-screening.txt`: 0/0/0/0%). Their v1 packets came back genuinely empty. This is a
+  selection-rule implementation bug, not an N3 finding, and is recorded that way rather than as
+  "N3 extraction failure."
+
+  `PdfN3FreshHoldoutBootstrapV2Probe` adds the missing usability predicate
+  (`PdfA3PopulationScreeningProbe`'s selected@160 >= 20 AND decisionRelevant >= 15) and re-runs the same
+  frozen tie-break over the corrected eligible set - legal `002` -> `004`, procurement `026` -> `030`;
+  `043`/`058` unchanged (already usable). Replacement selection used only pre-existing, pre-N3 A3 facts
+  - no N3 label, R1 output, model output, or accuracy outcome was consulted.
+
+  v1 (`keys/benchmark-n3/manifest.v1.json` plus its two empty packets) is kept in place unmodified, now
+  carrying a `supersededBy` pointer generated from source so its own reproducibility test stays green -
+  not a silent rewrite, same discipline as the 057 taxonomy correction and the `b22` stale-reference
+  correction before it. **Current N3 population: `keys/benchmark-n3/manifest.v2.json` -> `004`
+  (legal), `030` (procurement), `043` (financial), `058` (textbook).**
 - [ ] N3.2 - reference labeling. If human review of all four is not taken on, `MODEL_ASSISTED_SILVER`
   labels are permitted (as N1.2-S already used for 003/057), but provenance must say `SILVER_PROXY_ONLY`
   explicitly, and R1's own output/candidate/rank must never reach the labeler's input - the same
