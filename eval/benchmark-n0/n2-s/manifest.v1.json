@@ -5,14 +5,13 @@
   "silverBundleSha256": "c8131050d73b14d6587788ac670c0decac1d9211ac3f01f3f75b675dbeaad0d3",
   "labelAuthority": "MODEL_ASSISTED_SILVER_ONLY",
   "accuracyClaim": "N2-S is a silver semantic benchmark, not human-gold accuracy evidence.",
-  "profileProvenance": "The N1 cohort was frozen before these runs. This execution profile is reconciled from the two already-persisted, same-hash sequential run artifacts; it was not used to authorize a retry.",
   "execution": {
     "ordering": "strictly_sequential",
     "documentOrder": [
       "003",
       "057"
     ],
-    "prohibition": "057 starts only after 003 ends. The persisted pair proves this order; do not tune, retry, or create a second run to improve either outcome.",
+    "prohibition": "Do not start 057 until 003 has ended and its run artifact/checkpoint are persisted. Do not tune, retry, or change profile between documents.",
     "invalidRunRule": "Only a preflight or infrastructure failure may mark a run invalid; it is recorded, not retried for a better result."
   },
   "frozenProfile": {
@@ -22,7 +21,7 @@
     "wideCandidates": true,
     "supplementCandidates": true,
     "analystBlocks": 160,
-    "semanticConcurrency": 1,
+    "semanticConcurrency": 2,
     "semanticRequestTimeoutSeconds": 90,
     "semanticBatchTimeoutSeconds": 120,
     "semanticLaneDeadlineSeconds": 300,
@@ -61,8 +60,8 @@
       "silverArtifactSha256": "81df05cc978193c15f703579d99efc156e40d6bc7b0c04dd7a2a7c20916bede7",
       "censusArtifact": "003-n1.3-census.v1.json",
       "censusArtifactSha256": "99b7d66e8eef22aae35312be5bfe6930312af3f3daa1a5b3e7a5223b94d768c2",
-      "outputArtifact": "003-n2s-run.v1.json",
-      "checkpoint": "003-n2s-checkpoint.v1.jsonl"
+      "outputArtifact": "runs/003-n2-s-run.v1.json",
+      "checkpoint": "checkpoints/003-n2-s.jsonl"
     },
     {
       "stem": "057",
@@ -72,8 +71,8 @@
       "silverArtifactSha256": "ad4a9d4e2d1abbcd4d86293a9b36f237d68717d7be0123a92b1b7e6b364cce9f",
       "censusArtifact": "057-n1.3-census.v1.json",
       "censusArtifactSha256": "d6eafdde8eeeb2107e4b47ab99102cb864965a5756e1b55c3fdecddb6d27f635",
-      "outputArtifact": "057-n2s-run.v1.json",
-      "checkpoint": "057-n2s-checkpoint.v1.jsonl"
+      "outputArtifact": "runs/057-n2-s-run.v1.json",
+      "checkpoint": "checkpoints/057-n2-s.jsonl"
     }
   ]
 }

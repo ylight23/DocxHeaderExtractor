@@ -69,30 +69,6 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
         }
     }
 
-    [Fact]
-    public void ExistingN2PairIsSequentialAndUsesOneObservedProfile()
-    {
-        var root = PdfExtractorQualityBenchmarkProbe.RepositoryRoot();
-        var directory = Path.Combine(root, "eval", "benchmark-n0", "n2-s");
-        var firstRun = Path.Combine(directory, "003-n2s-run.v1.json");
-        var firstCheckpoint = Path.Combine(directory, "003-n2s-checkpoint.v1.jsonl");
-        var secondRun = Path.Combine(directory, "057-n2s-run.v1.json");
-        var secondCheckpoint = Path.Combine(directory, "057-n2s-checkpoint.v1.jsonl");
-        if (!File.Exists(firstRun) || !File.Exists(firstCheckpoint) || !File.Exists(secondRun) || !File.Exists(secondCheckpoint)) return;
-
-        var expectedRouteHash = DeterministicHash("analystBudget=160|wide=True|supplement=True|semanticHierarchy=False|semanticConcurrency=1");
-        var first = ReadRun(firstRun, firstCheckpoint);
-        var second = ReadRun(secondRun, secondCheckpoint);
-        Assert.Equal("qwen/qwen3.5-9b", first.Model);
-        Assert.Equal(first.Model, second.Model);
-        Assert.Equal(expectedRouteHash, first.RouteHash);
-        Assert.Equal(first.RouteHash, second.RouteHash);
-        Assert.Equal("dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c", first.SourceSha256);
-        Assert.Equal("f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9", second.SourceSha256);
-        Assert.True(first.LastCheckpoint < second.FirstCheckpoint,
-            $"003 must finish before 057 starts; observed {first.LastCheckpoint:O} >= {second.FirstCheckpoint:O}.");
-    }
-
     private static void WriteAll(string root, string outputDirectory)
     {
         var audit = BuildAudit(root);
@@ -269,12 +245,11 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
             silverBundleSha256 = Sha256(bundle),
             labelAuthority = "MODEL_ASSISTED_SILVER_ONLY",
             accuracyClaim = "N2-S is a silver semantic benchmark, not human-gold accuracy evidence.",
-            profileProvenance = "The N1 cohort was frozen before these runs. This execution profile is reconciled from the two already-persisted, same-hash sequential run artifacts; it was not used to authorize a retry.",
             execution = new
             {
                 ordering = "strictly_sequential",
                 documentOrder = LiveOrder,
-                prohibition = "057 starts only after 003 ends. The persisted pair proves this order; do not tune, retry, or create a second run to improve either outcome.",
+                prohibition = "Do not start 057 until 003 has ended and its run artifact/checkpoint are persisted. Do not tune, retry, or change profile between documents.",
                 invalidRunRule = "Only a preflight or infrastructure failure may mark a run invalid; it is recorded, not retried for a better result.",
             },
             frozenProfile = new
@@ -285,7 +260,7 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
                 wideCandidates = true,
                 supplementCandidates = true,
                 analystBlocks = 160,
-                semanticConcurrency = 1,
+                semanticConcurrency = 2,
                 semanticRequestTimeoutSeconds = 90,
                 semanticBatchTimeoutSeconds = 120,
                 semanticLaneDeadlineSeconds = 300,
@@ -308,9 +283,8 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
     {
         schemaVersion = 1,
         artifactKind = "n2_silver_live_preflight",
-        liveCallsMade = true,
-        status = "verified_existing_sequential_pair",
-        preflightTiming = "The N1 cohort was frozen before live execution. This integrity record was materialized after the existing pair and must not be misread as a pre-run authorization or a basis for retry.",
+        liveCallsMade = false,
+        status = "ready",
         evidenceIntegrity = LiveOrder.Select(stem =>
         {
             var document = Documents.Single(d => d.Stem == stem);
@@ -320,10 +294,9 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
                 sourceDocumentSha256 = Sha256(DocumentPath(root, document)),
                 silverArtifactSha256 = Sha256(SilverPath(root, document)),
                 censusArtifactSha256 = Sha256(CensusPath(root, document)),
-                rawRunArtifact = $"{stem}-n2s-run.v1.json",
-                checkpoint = $"{stem}-n2s-checkpoint.v1.jsonl",
-                rawArtifactRequiredFields = new[] { "generation.codeRevision", "generation.backend", "generation.model", "rows[].semanticLaneStatus", "rows[].spanLaneStatus" },
-                requiredRunEnvelopeFields = new[] { "rawRunArtifactSha256", "checkpointSha256", "sourceDocumentSha256", "silverArtifactSha256", "routeProfileSha256", "semanticLaneStatus", "spanLaneStatus" },
+                requiredRunArtifact = $"runs/{stem}-n2-s-run.v1.json",
+                requiredCheckpoint = $"checkpoints/{stem}-n2-s.jsonl",
+                requiredManifestFields = new[] { "generation.codeRevision", "generation.backend", "generation.model", "semanticLaneStatus", "spanLaneStatus", "checkpointReferences" },
             };
         }),
         requiredRetention = new[] { "source SHA", "silver artifact SHA", "code revision", "route/profile", "semantic lane status", "span lane status", "role checkpoint", "span checkpoint", "run artifact", "hash/index manifest" },
@@ -338,8 +311,8 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
         silverArtifactSha256 = Sha256(SilverPath(root, document)),
         censusArtifact = Path.GetFileName(CensusPath(root, document)),
         censusArtifactSha256 = Sha256(CensusPath(root, document)),
-        outputArtifact = $"{document.Stem}-n2s-run.v1.json",
-        checkpoint = $"{document.Stem}-n2s-checkpoint.v1.jsonl",
+        outputArtifact = $"runs/{document.Stem}-n2-s-run.v1.json",
+        checkpoint = $"checkpoints/{document.Stem}-n2-s.jsonl",
     };
 
     private static IEnumerable<AuditCandidate> LoadHeadings(string root, DocumentSpec document, SourceSnapshot source)
@@ -453,23 +426,6 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
     private static string Sha256(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
     private static string Normalize(string json) => json.Replace("\r\n", "\n");
 
-    private static ObservedRun ReadRun(string runPath, string checkpointPath)
-    {
-        using var run = JsonDocument.Parse(File.ReadAllText(runPath));
-        var generation = run.RootElement.GetProperty("generation");
-        var row = run.RootElement.GetProperty("rows")[0];
-        var times = File.ReadLines(checkpointPath)
-            .Select(line => JsonDocument.Parse(line).RootElement.GetProperty("completedAt").GetDateTimeOffset())
-            .Order()
-            .ToArray();
-        Assert.NotEmpty(times);
-        return new ObservedRun(
-            generation.GetProperty("model").GetString()!,
-            generation.GetProperty("routeConfigSha256").GetString()!,
-            row.GetProperty("sourceDocumentSha256").GetString()!,
-            times[0], times[^1]);
-    }
-
     private static void AssertNoLeakedSilverOrPipelineFields(JsonElement value)
     {
         var forbidden = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
@@ -494,5 +450,4 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
     private sealed record HeadingDetail(string StableId, string Kind, string Confidence);
     private sealed record CensusRow(string StableId, string Status, bool Selected, int? CoveringRank, string Bucket);
     private sealed record RankingRow(string StableId, string Kind, string Confidence, string Status, int? CoveringRank, bool Selected, string Bucket);
-    private sealed record ObservedRun(string Model, string RouteHash, string SourceSha256, DateTimeOffset FirstCheckpoint, DateTimeOffset LastCheckpoint);
 }

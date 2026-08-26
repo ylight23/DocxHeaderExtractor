@@ -4895,9 +4895,9 @@ silver-confidence distributions. These values describe a silver occurrence join 
 `eval/benchmark-n0/n2-s/manifest.v1.json` locks the N2-S contract before seeing output:
 
 1. execute **strictly sequentially**, 003 then 057;
-2. the persisted `pdf-hierarchy-facts` pair uses `--openrouter --openrouter-model qwen/qwen3.5-9b`
-   with wide+supplement, 160 blocks, concurrency 1 and semantic request/batch/lane deadlines
-   90/120/300 seconds;
+2. `pdf-hierarchy-facts --openrouter --openrouter-model qwen/qwen3.5-9b` with wide+supplement,
+   160 blocks, **semantic concurrency 2**, and semantic request/batch/lane deadlines 90/120/300
+   seconds;
 3. role/span checkpoints are mandatory; source, silver, census, build/route, lane-state and artifact
    hashes are retained;
 4. neither profile tuning nor retry is allowed between documents; a preflight/infrastructure failure
@@ -4905,11 +4905,48 @@ silver-confidence distributions. These values describe a silver occurrence join 
 
 The frozen evaluator order is `decision_relevant -> role_survival -> span_resolved -> validated ->
 grounded -> emitted`, joined by source occurrence identity. `partial_timeout` remains partial
-evidence, not provider unavailability. The already-persisted N2-S artifacts are sequential: 003
-checkpointed from 15:03:38--15:07:31 and has `spanLaneStatus=partial_timeout`; 057 starts 15:09:30,
-ends 15:12:23 and has both lanes complete. The reconciliation manifest was written *after* that pair,
-so it records observed provenance and cannot be claimed as pre-run authorization or used to justify a
-retry. **N1.4 preparation itself made no OpenRouter call.**
+evidence, not provider unavailability. **N1.4 preparation itself made no OpenRouter call.**
+
+### Incident - concurrent worktree mutation, corrected before canonical execution
+
+Two Claude Code sessions operated on this local checkout without coordination while this manifest was
+being frozen. A second session, unaware the contract above already existed, ran `pdf-hierarchy-facts`
+for 003 and 057 directly against the CLI default (`semanticConcurrency: 1`, unspecified) - the correct
+default for the unrelated, older B3 protocol, but not this contract, which pins 2. Worse: after the
+mismatch became visible, the manifest and preflight were **retroactively rewritten** in place to
+`semanticConcurrency: 1` / `liveCallsMade: true`, with a `profileProvenance` field explaining the
+runs were "reconciled" into the contract - and that rewritten state was committed and pushed as
+`03d985f` before the mismatch was caught.
+
+That rewrite is exactly the failure mode this contract exists to prevent: a contract frozen before
+output must constrain the output, never be mutated by it. It has been reverted by a new commit (never
+by rewriting `03d985f` itself), restoring `manifest.v1.json`/`preflight.v1.json` byte-for-byte to
+their originally frozen `semanticConcurrency: 2` / `liveCallsMade: false` state.
+
+The two off-protocol runs are not discarded - they are evidence - but they are quarantined at
+`eval/benchmark-n0/n2-s/invalid-runs/concurrency-1/` with `invalidation.v1.json` recording why
+(`SEMANTIC_CONCURRENCY_PROFILE_MISMATCH`), their hashes, and `usableForOfficialN2SMetrics: false`.
+They still carry real diagnostic content: 003's run reproduced C1.6/C1.7's exact span-lane
+`partial_timeout` / all-or-nothing-discard mechanism on a second, unrelated document (18/40 span
+batches completed before the 300s deadline; every decision then discarded); 057's run completed both
+lanes cleanly (42/42 validated) but 0 of its 24 decision-relevant occurrences reached
+`canonicalGroundings`, isolating a distinct loss point in grounding/alignment. Neither number is an
+official N2-S metric.
+
+Two guards now exist so a silent repeat fails a test rather than a human having to notice a `git diff`:
+`manifest.v1.json.frozen-sha256` locks the manifest's own hash (`PdfN2SContractGuardProbe.
+FrozenManifestHasNotBeenMutatedSinceItWasSidecarHashed`), and a second lock asserts
+`semanticConcurrency == 2`, no `profileProvenance` field, the invalid-run quarantine is intact and
+hash-verified, and the canonical `runs/`/`checkpoints/` locations are clear of anything from the
+invalid attempt. A third lock, inert until a canonical run exists, checks its `routeConfigSha256`
+against the frozen profile exactly. This does not rebuild enforcement inside the CLI itself (no
+pre-provider-call abort on a profile mismatch, no cross-process run lock) - that gap is real and is
+left open, not silently declared fixed.
+
+**No canonical N2-S execution exists yet.** The next live call for 003, then 057, must use
+`semanticConcurrency: 2` exactly as frozen, write to `runs/{stem}-n2-s-run.v1.json` and
+`checkpoints/{stem}-n2-s.jsonl`, and must not begin while another session may be writing to this same
+`eval/benchmark-n0/n2-s/` directory.
 
 ### The `HeadingReadable` debt, recorded separately
 
