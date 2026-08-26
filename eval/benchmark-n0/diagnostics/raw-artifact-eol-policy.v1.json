@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "raw_artifact_eol_policy",
+  "laneIEvidenceCommit": "f2ef3e5",
+  "hashSemantics": "RAW_ARTIFACT_BYTE_IDENTITY",
+  "gitConfigurationEvidence": {
+    "coreAutocrlf": true,
+    "oldAttributes": "unspecified",
+    "oldCheckoutState": "index LF / worktree CRLF"
+  },
+  "policy": {
+    "attribute": "-text",
+    "rationale": "Raw SHA-256 contracts require the worktree bytes to equal the committed Git blob; no text or EOL conversion is permitted."
+  },
+  "affectedPaths": [
+    "eval/benchmark-n0/silver-labels/*.json",
+    "eval/benchmark-n0/census/003-n1.3-census.v1.json",
+    "eval/benchmark-n0/census/057-n1.3-census.v1.json"
+  ],
+  "rawInputs": {
+    "silverLabels": [
+      "003-n1.2-silver-model-assisted.v1.json",
+      "029-n1.2-silver-model-assisted.v1.json",
+      "042-n1.2-silver-model-assisted.v1.json",
+      "057-n1.2-silver-model-assisted.v1.json"
+    ],
+    "silverBundle": "n1.2-silver-bundle-manifest.v1.json",
+    "census": [
+      "003-n1.3-census.v1.json",
+      "057-n1.3-census.v1.json"
+    ]
+  },
+  "byteIdentityVerification": [
+    {
+      "path": "eval/benchmark-n0/silver-labels/003-n1.2-silver-model-assisted.v1.json",
+      "indexRawSha256": "81df05cc978193c15f703579d99efc156e40d6bc7b0c04dd7a2a7c20916bede7",
+      "freshCheckoutRawSha256": "81df05cc978193c15f703579d99efc156e40d6bc7b0c04dd7a2a7c20916bede7",
+      "expectedArtifactSha256": "81df05cc978193c15f703579d99efc156e40d6bc7b0c04dd7a2a7c20916bede7"
+    },
+    {
+      "path": "eval/benchmark-n0/silver-labels/029-n1.2-silver-model-assisted.v1.json",
+      "indexRawSha256": "245c4c7b9b57d0e5331c740ab0f9df7baf0e2d7fca2408e4000226f9546ef1f9",
+      "freshCheckoutRawSha256": "245c4c7b9b57d0e5331c740ab0f9df7baf0e2d7fca2408e4000226f9546ef1f9",
+      "expectedArtifactSha256": "245c4c7b9b57d0e5331c740ab0f9df7baf0e2d7fca2408e4000226f9546ef1f9"
+    },
+    {
+      "path": "eval/benchmark-n0/silver-labels/042-n1.2-silver-model-assisted.v1.json",
+      "indexRawSha256": "da7b4899d92d710200b49028dee19de93a89ac0e6e8cb33e85b482015a407340",
+      "freshCheckoutRawSha256": "da7b4899d92d710200b49028dee19de93a89ac0e6e8cb33e85b482015a407340",
+      "expectedArtifactSha256": "da7b4899d92d710200b49028dee19de93a89ac0e6e8cb33e85b482015a407340"
+    },
+    {
+      "path": "eval/benchmark-n0/silver-labels/057-n1.2-silver-model-assisted.v1.json",
+      "indexRawSha256": "ad4a9d4e2d1abbcd4d86293a9b36f237d68717d7be0123a92b1b7e6b364cce9f",
+      "freshCheckoutRawSha256": "ad4a9d4e2d1abbcd4d86293a9b36f237d68717d7be0123a92b1b7e6b364cce9f",
+      "expectedArtifactSha256": "ad4a9d4e2d1abbcd4d86293a9b36f237d68717d7be0123a92b1b7e6b364cce9f"
+    },
+    {
+      "path": "eval/benchmark-n0/silver-labels/n1.2-silver-bundle-manifest.v1.json",
+      "indexRawSha256": "c8131050d73b14d6587788ac670c0decac1d9211ac3f01f3f75b675dbeaad0d3",
+      "freshCheckoutRawSha256": "c8131050d73b14d6587788ac670c0decac1d9211ac3f01f3f75b675dbeaad0d3",
+      "expectedArtifactSha256": "c8131050d73b14d6587788ac670c0decac1d9211ac3f01f3f75b675dbeaad0d3"
+    },
+    {
+      "path": "eval/benchmark-n0/census/003-n1.3-census.v1.json",
+      "indexRawSha256": "601cc8dca07e2dfe9e49e873c651626974f5999c4d402abfa2866b924ecf7bfe",
+      "freshCheckoutRawSha256": "601cc8dca07e2dfe9e49e873c651626974f5999c4d402abfa2866b924ecf7bfe",
+      "expectedArtifactSha256": "99b7d66e8eef22aae35312be5bfe6930312af3f3daa1a5b3e7a5223b94d768c2",
+      "expectedArtifactMatchesCommittedBytes": false
+    },
+    {
+      "path": "eval/benchmark-n0/census/057-n1.3-census.v1.json",
+      "indexRawSha256": "aef54aa72ded770d5a4482db1f42c62086af4d018fce191ea09653f396db816c",
+      "freshCheckoutRawSha256": "aef54aa72ded770d5a4482db1f42c62086af4d018fce191ea09653f396db816c",
+      "expectedArtifactSha256": "d6eafdde8eeeb2107e4b47ab99102cb864965a5756e1b55c3fdecddb6d27f635",
+      "expectedArtifactMatchesCommittedBytes": false
+    }
+  ],
+  "artifactContentChanged": false,
+  "artifactRegenerationRequired": false,
+  "canonicalizationApplied": false,
+  "verification": {
+    "freshCheckout": "core.autocrlf=true; protected artifacts report index LF / worktree LF / attr -text",
+    "n12RawBundleLocks": "passed",
+    "n14CommittedArtifactLocks": "blocked by two pre-existing census expected hashes that bind CRLF worktree bytes, not committed blob bytes",
+    "n0CanonicalParentManifest": "passed",
+    "fullSuite": "not run after the blocking census identity mismatch"
+  },
+  "finalStatus": "BLOCKED",
+  "blocker": "N2 preflight's stored censusArtifactSha256 values do not equal the committed raw census blob bytes. Rewriting either the census artifacts or the stored expected hashes is prohibited by this lane's contract.",
+  "excluded": [
+    "N0 logical manifest identity, which remains handled by Lane I canonical CRLF-to-LF hashing",
+    "production heading behavior",
+    "model/provider calls",
+    "all JSON paths outside the evidence-backed raw-SHA artifact set"
+  ]
+}

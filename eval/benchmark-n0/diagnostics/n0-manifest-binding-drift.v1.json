@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n0_manifest_binding_drift_diagnostic",
+  "baseRevision": "e06b4c4dc45b30a606ac3a3b0cfbe3e7d19dcac7",
+  "diagnosticOnly": true,
+  "providerCallsMade": false,
+  "currentManifestSha256": "0c2b3a6f5969f3c1cdbbd350913ae55858cf89d3cc52795911328a596015a07b",
+  "packetParentManifestSha256": "529fecc53341c12e06fd34a873c544acddc6d96388670c4da80c7700030a01a7",
+  "historicalManifestMatch": {
+    "matched": true,
+    "basis": "The current manifest normalized from CRLF to LF hashes to the packet parent hash. The Git blob is unchanged from N0 through the current base.",
+    "historicalCommit": "d64d99cb49e0f78ea0e8312dcf489c6a33607637",
+    "historicalBlob": "649bea6e069854ea2c5cee5600443c09a0365277"
+  },
+  "manifestChangeCommit": null,
+  "manifestHistory": [
+    {
+      "commit": "d64d99cb49e0f78ea0e8312dcf489c6a33607637",
+      "summary": "test(eval): freeze N0 evidence-preserving review population",
+      "blob": "649bea6e069854ea2c5cee5600443c09a0365277"
+    },
+    {
+      "commit": "eaf71b45aad55b3dab081700bd885520026792f5",
+      "summary": "test(eval): persist N1 blind source review packets",
+      "blob": "649bea6e069854ea2c5cee5600443c09a0365277"
+    },
+    {
+      "commit": "e06b4c4dc45b30a606ac3a3b0cfbe3e7d19dcac7",
+      "summary": "current Lane H base",
+      "blob": "649bea6e069854ea2c5cee5600443c09a0365277"
+    }
+  ],
+  "changeClassification": "SERIALIZATION_ONLY_HASH_DRIFT",
+  "lineEndingEvidence": {
+    "gitCoreAutocrlf": true,
+    "currentCrLfCount": 122,
+    "currentLfOnlyCount": 0,
+    "currentRawSha256": "0c2b3a6f5969f3c1cdbbd350913ae55858cf89d3cc52795911328a596015a07b",
+    "lfNormalizedSha256": "529fecc53341c12e06fd34a873c544acddc6d96388670c4da80c7700030a01a7",
+    "packetHashMatchesLfNormalized": true
+  },
+  "packetCreationCommits": [
+    "eaf71b45aad55b3dab081700bd885520026792f5"
+  ],
+  "contractMeaning": {
+    "packetWriter": "PdfN1SourceFirstReviewPacketProbe.WritePackets computes SHA-256 over File.ReadAllBytes(manifestPath) at packet generation.",
+    "probe": "PdfN1SourceFirstReviewPacketProbe.CommittedPacketsBindToN0AndContainNoPipelineFields recomputes SHA-256 over File.ReadAllBytes(current manifest path) and requires byte equality.",
+    "observedMeaning": "The implementation currently treats the binding as raw working-tree bytes, not logical JSON or Git-blob identity.",
+    "provenanceMeaning": "The packet hash identifies the unchanged N0 manifest content in LF form; it does not evidence a semantic manifest mutation."
+  },
+  "probeCurrentBehavior": "Fails on a CRLF checkout because the packet stores the LF-form hash while the probe hashes the CRLF working-tree bytes.",
+  "causalOwner": "SERIALIZATION_ONLY_HASH_DRIFT",
+  "benchmarkArtifactAuthorityCompromised": false,
+  "remediationDecision": "A versioned/canonical manifest-content hash is the likely provenance-preserving direction, but no remediation is implemented in this diagnostic commit.",
+  "laneGResume": "Blocked until a separate remediation changes the writer and verifier to share an explicit canonical manifest hashing contract, then re-establishes the frozen full-suite baseline.",
+  "knownFailBaseline": "Do not change from 15 to 16. The additional failure is a cross-platform provenance-hash defect, not an intentionally frozen product failure."
+}

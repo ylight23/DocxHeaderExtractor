@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
@@ -35,7 +36,7 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
     }
 
     [Fact]
-    public void CommittedArtifactsReproduceAndReviewerPacketIsBlind()
+    public void CommittedArtifactsBindHistoricalExecutionInputsAndCurrentByteAuthority()
     {
         var root = PdfExtractorQualityBenchmarkProbe.RepositoryRoot();
         var outputDirectory = Path.Combine(root, "eval", "benchmark-n0");
@@ -55,9 +56,12 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
             WriteAll(root, temporary);
             foreach (var expectedPath in expectedPaths)
             {
-                var relative = Path.GetRelativePath(outputDirectory, expectedPath);
+                var relative = Path.GetRelativePath(outputDirectory, expectedPath).Replace('\\', '/');
                 var actualPath = Path.Combine(temporary, relative);
-                Assert.Equal(Normalize(File.ReadAllText(expectedPath)), Normalize(File.ReadAllText(actualPath)));
+                if (relative is "n2-s/manifest.v1.json" or "n2-s/preflight.v1.json")
+                    AssertN2ArtifactHashAuthorities(root, expectedPath, actualPath);
+                else
+                    Assert.Equal(Normalize(File.ReadAllText(expectedPath)), Normalize(File.ReadAllText(actualPath)));
             }
 
             using var packet = JsonDocument.Parse(File.ReadAllText(expectedPaths[0]));
@@ -112,7 +116,7 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
             .ThenBy(c => c.Page)
             .ThenBy(c => c.AuditItemId, StringComparer.Ordinal)
             .ToArray();
-        var n0ManifestSha = Sha256(Path.Combine(root, "keys", "benchmark-n0", "manifest.json"));
+        var n0ManifestSha = N0BenchmarkManifestIdentity.ComputeCanonicalN0ManifestSha256(Path.Combine(root, "keys", "benchmark-n0", "manifest.json"));
 
         var reviewerPacket = new
         {
@@ -241,7 +245,7 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
         {
             schemaVersion = 1,
             artifactKind = "n2_silver_live_run_manifest",
-            parentManifestSha256 = Sha256(n0Manifest),
+            parentManifestSha256 = N0BenchmarkManifestIdentity.ComputeCanonicalN0ManifestSha256(n0Manifest),
             silverBundleSha256 = Sha256(bundle),
             labelAuthority = "MODEL_ASSISTED_SILVER_ONLY",
             accuracyClaim = "N2-S is a silver semantic benchmark, not human-gold accuracy evidence.",
@@ -425,6 +429,63 @@ public sealed class PdfN14SilverAuditAndN2PreparationProbe
 
     private static string Sha256(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
     private static string Normalize(string json) => json.Replace("\r\n", "\n");
+
+    // The committed N2 artifacts preserve their historical runtime input hash. New output uses the
+    // byte-preserving checkout policy, so its execution input is the committed Git blob instead.
+    private static void AssertN2ArtifactHashAuthorities(string root, string historicalPath, string currentPath)
+    {
+        var historical = JsonNode.Parse(File.ReadAllText(historicalPath))!.AsObject();
+        var current = JsonNode.Parse(File.ReadAllText(currentPath))!.AsObject();
+        var historicalHashes = CensusHashes(historical).ToDictionary(item => item.Stem, item => item.Hash, StringComparer.Ordinal);
+        var currentHashes = CensusHashes(current).ToDictionary(item => item.Stem, item => item.Hash, StringComparer.Ordinal);
+
+        Assert.Equal(historicalHashes.Keys.OrderBy(value => value), currentHashes.Keys.OrderBy(value => value));
+        foreach (var document in Documents.Where(document => currentHashes.ContainsKey(document.Stem)))
+        {
+            var censusPath = CensusPath(root, document);
+            var committedBlobHash = Sha256(censusPath);
+            var historicalExecutionHash = CrlfReconstructionSha256(censusPath);
+
+            Assert.Equal(historicalExecutionHash, historicalHashes[document.Stem]);
+            Assert.Equal(committedBlobHash, currentHashes[document.Stem]);
+            Assert.NotEqual(historicalHashes[document.Stem], currentHashes[document.Stem]);
+        }
+
+        RemoveCensusHashes(historical);
+        RemoveCensusHashes(current);
+        Assert.True(JsonNode.DeepEquals(historical, current));
+    }
+
+    private static IEnumerable<(string Stem, string Hash)> CensusHashes(JsonObject artifact)
+    {
+        var entries = artifact["documents"]?.AsArray() ?? artifact["evidenceIntegrity"]!.AsArray();
+        return entries.Select(entry =>
+        {
+            var value = entry!.AsObject();
+            return (value["stem"]!.GetValue<string>(), value["censusArtifactSha256"]!.GetValue<string>());
+        });
+    }
+
+    private static void RemoveCensusHashes(JsonObject artifact)
+    {
+        var entries = artifact["documents"]?.AsArray() ?? artifact["evidenceIntegrity"]!.AsArray();
+        foreach (var entry in entries) entry!.AsObject().Remove("censusArtifactSha256");
+    }
+
+    private static string CrlfReconstructionSha256(string path)
+    {
+        var raw = File.ReadAllBytes(path);
+        using var reconstructed = new MemoryStream(raw.Length * 2);
+        foreach (var value in raw)
+        {
+            if (value == (byte)'\r')
+                throw new InvalidDataException("Historical execution reconstruction requires an LF-only committed census artifact.");
+            if (value == (byte)'\n') reconstructed.WriteByte((byte)'\r');
+            reconstructed.WriteByte(value);
+        }
+
+        return Convert.ToHexString(SHA256.HashData(reconstructed.GetBuffer().AsSpan(0, checked((int)reconstructed.Length)))).ToLowerInvariant();
+    }
 
     private static void AssertNoLeakedSilverOrPipelineFields(JsonElement value)
     {
