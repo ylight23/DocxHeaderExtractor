@@ -4783,34 +4783,59 @@ are serialized.
 | 042 | 6,938 | 10,832,957 |
 | 057 | 24,980 | 38,110,636 |
 
-N1.2 is the next authority boundary: a human source review must label occurrences as
-`REVIEWED_HEADING`, `REVIEWED_NON_HEADING`, or `UNCERTAIN`, preserving every source line in a wrapped
-heading. Commit each document's labels/occurrence bridge immediately after review. Do **not** run the
-model-free candidate census until that document's gold is frozen.
+N1.2 is the next authority boundary: occurrences must be labeled `REVIEWED_HEADING`,
+`REVIEWED_NON_HEADING`, or `UNCERTAIN`, preserving every source line in a wrapped heading. Commit each
+document's labels/occurrence bridge immediately after review. Do **not** run the model-free candidate
+census until that document's labels are frozen.
 
-### N1.2 - human-reviewed occurrence gold, committed per document
+### Đính chính - N1.2 was committed as human gold; it was not
 
-Gold is committed independently per document as each is reviewed, not held until all four are done -
-the same evidence-retention lesson N0/N1.1 were opened to fix. `PdfN12ReviewedOccurrenceGoldProbe`
-locks each committed gold file against its exact N1.1 packet: same `documentSha256` /
-`parentManifestSha256` / `sourceLineExtractionFingerprint`, one label per packet item in the same
-order, every `headingOccurrences[].sourceLineIds` entry a real packet line id, `goldStableId` unique,
-`REVIEWED_HEADING` items and occurrence line sets in exact mutual agreement, the `summary` block a
-reproducible cache rather than a second authority, and no pipeline-inferred field present.
+003 was first committed under `n1_human_reviewed_occurrence_gold`, claiming a human reviewer labeled
+it. That claim was false - the labels came from a model (GPT-5.6 Sol) reading the blind N1.1 packet,
+with no human adjudication. The mislabeled file and its phase manifest are removed, not left standing
+beside a correction: `git rm eval/benchmark-n0/reviewed-gold/003-...` and
+`eval/benchmark-n0/phase-manifests/003-...`, replaced below by N1.2-S under honest provenance.
 
-| document | reviewed | heading occurrences | heading lines | state |
+This is the same failure shape as the `b22` candidate-id correction earlier in this project: a
+representation was asserted to carry an authority it did not actually have, and the fix is to
+re-verify provenance on the exact artifact rather than trust its name.
+
+### N1.2-S - model-assisted silver labels, not gold, all four documents committed
+
+Manual human labeling of ~44,900 combined source lines across 003/029/042/057 was judged
+disproportionate to this benchmark's purpose (finding failure owners in the harness, not publishing
+gold annotation). The tradeoff accepted instead: **model-assisted silver labels for full coverage now,
+human audit deferred and scoped to a sample** - documented explicitly wherever these labels are used,
+never silently upgraded to "human-reviewed accuracy."
+
+Every committed file carries `labelingAuthority: { labelSource: "MODEL_ASSISTED_SILVER", labelerModel:
+"GPT-5.6 Sol", humanAdjudicated: false, accuracyClaim: "SILVER_PROXY_ONLY" }`. `PdfN12SilverLabelsProbe`
+locks each file to its exact N1.1 packet (same three hashes N1.1 was bound to), one label per packet
+item in the same order, occurrence stable-id uniqueness, exact mutual agreement between
+`REVIEWED_HEADING` items and occurrence line sets, a `summary` that reproduces from `reviewedItems`
+rather than living as a second authority, the bundle manifest's hashes matching the four committed
+files, and that no `reviewed-gold`/`phase-manifests` directory has silently reappeared.
+
+| document | reviewed | heading occurrences | heading lines | kinds |
 |---|---:|---:|---:|---|
-| 003 | 5,619 | 230 (10 `CHAPTER`, 2 `SECTION`, 218 `ARTICLE`) | 265 | **committed**, locked |
-| 029 | 7,335 | - | - | not reviewed |
-| 042 | 6,938 | - | - | not reviewed |
-| 057 | 24,980 | - | - | not reviewed |
+| 003 | 5,619 | 230 | 265 | 10 `CHAPTER`, 2 `SECTION`, 218 `ARTICLE` - legal grammar, near-deterministic |
+| 029 | 7,335 | 160 | 194 | 3 `PART`, 10 `SECTION`, 12 `SUBSECTION`, 135 `TOC_RECONCILED_BODY_HEADING`; confidence 123 HIGH / 37 MEDIUM |
+| 042 | 6,938 | 159 | 164 | 142 `SEMANTIC_OUTLINE`, 3 `REPORT_HEADING`, 1 `STATEMENT_HEADING`, 13 `FINANCIAL_NOTE`; 159 HIGH |
+| 057 | 24,980 | 777 | 803 | 476 `NUMBERED_OUTLINE`, 301 `NUMBERED_SUBOUTLINE`; confidence 775 HIGH / 2 MEDIUM |
 
-003's gold treats the document title as `REVIEWED_NON_HEADING` (the frozen question asks for outline
-headings, not the title line) and includes chapter/section/article as the outline kinds; that scope
-choice is recorded in the artifact's own `reviewPolicy`, not asserted here. N1.3 (model-free candidate
-census) stays closed until 029/042/057 are reviewed and frozen the same way - opening it per-document
-early was considered and rejected, to keep one evaluator pass over a stable, fully-reviewed population
-rather than four staggered ones.
+`uncertainSourceLineCount` is 0 on all four - the labeler never used the `UNCERTAIN` bucket. That
+removes one planned audit axis (sample all `UNCERTAIN`); the audit below leans on `silverConfidence`
+and stratified random sampling instead. 003's labels rest on legal outline grammar (Chương/Mục/Điều,
+sequential and non-skipping) and are near-deterministic; 029/042/057 rest on free-form semantic/TOC
+reconciliation and carry materially more label risk - each file's own `limitations` says so explicitly
+and must not be dropped when these labels are cited downstream.
+
+**Not yet done, and required before any accuracy claim stronger than "silver proxy":** a human audit
+sample per document (every `MEDIUM`-confidence occurrence, plus a random stratified slice of
+`REVIEWED_HEADING` and `REVIEWED_NON_HEADING`) measured for agreement against the silver labels. Until
+that audit exists, N1.3/N2 outputs on this population may only be reported as **silver / proxy
+accuracy**, never as human-reviewed accuracy - and N1.3 (model-free candidate census) itself is
+model-free and can proceed independent of the audit, since it never depends on label correctness.
 
 ### The `HeadingReadable` debt, recorded separately
 

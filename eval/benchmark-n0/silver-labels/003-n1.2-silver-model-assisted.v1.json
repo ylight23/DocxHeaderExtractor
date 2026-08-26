@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "artifactKind": "n1_human_reviewed_occurrence_gold",
+  "artifactKind": "n1_model_assisted_silver_occurrence_labels",
   "sourcePacket": {
     "artifactKind": "n1_blind_source_review_packet",
     "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
@@ -43826,5 +43826,17 @@
       "label": "REVIEWED_NON_HEADING",
       "headingOccurrenceId": null
     }
+  ],
+  "labelingAuthority": {
+    "labelSource": "MODEL_ASSISTED_SILVER",
+    "labelerModel": "GPT-5.6 Sol",
+    "humanAdjudicated": false,
+    "accuracyClaim": "SILVER_PROXY_ONLY",
+    "prohibitedPipelineEvidenceUsed": false
+  },
+  "provenanceCorrection": "This artifact was previously named as human-reviewed gold. That claim is withdrawn: the labels were produced by GPT-5.6 Sol with deterministic source-structure assistance.",
+  "limitations": [
+    "Not human gold.",
+    "Legal grammar (Chapter/Section/Article) provides unusually strong deterministic source structure."
   ]
 }
