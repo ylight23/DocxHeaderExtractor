@@ -4617,6 +4617,37 @@ does **not** by itself justify a timeout increase: at observed median throughput
 would need roughly 139 seconds, and changing the deadline needs a separate cost and cross-document
 gate. Do not change the validator or exception swallow; neither was causal here.
 
+### C1.7 - partial-result preservation gate (offline, 001 only)
+
+**C1.7A exact counterfactual.** The replay uses only C1.5's persisted role/span facts. It preserves
+the 80 completed span blocks, marks every block without a pointer `Uncertain`, then calls the current
+`PdfProposalValidator`, `PdfBlockGrounder`, and production `AlignToDocx` matcher - no model, no retry,
+no new candidate ids, and no reimplemented alignment. The measured effect is:
+
+| stage | blocks | decision-relevant reviewed occurrences |
+|---|---:|---:|
+| current route | 0 | 0/162 |
+| validated | 79 | **94/162** |
+| grounded | 58 | **56/162** |
+| emitted after alignment | 55 | **54/162** |
+
+The exhaustive 001 reviewed bridge matches 54 of the 55 emitted source blocks; one does not map to a
+reviewed gold occurrence. This is a 001-only offline precision signal, not a production acceptance
+claim. It proves the directly causal gain is preserving completed results, not purchasing more time
+to chase the 68 uncompleted occurrences.
+
+**C1.7B independence proof.** `ResolveHeadingSpansAsync` prompts/parses one four-block batch at a
+time and writes each pointer directly by source id. `PdfProposalValidator.ValidateSpan` tests only that
+pointer and that candidate's `RawText`; there is no final cross-batch normalisation or reconciliation.
+A regression locks the operational form: a completed first batch retains its pointers when a later
+batch throws. The sole all-batch invalidation is the outer `PdfLaneExecution` timeout wrapper, which
+replaces `spanAnalysis` with `roleAnalysis` marked `Uncertain`.
+
+**Gate outcome:** partial preservation is now a legitimate **remediation candidate**, but is not
+promoted. It is an accuracy behavior change. Next is a gold-free/artifact-first cross-document search
+for the complete failure shape `partial_timeout + completed valid pointers + wrapper discard`; only
+then can benefit/collateral controls evaluate a production change. Timeout increase remains deferred.
+
 - [ ] 001's owner is still unresolved between span-lane timeout and span-resolution failure, and now
   **one instrumented replication answers both branches at once**: `spanLaneStatus` distinguishes
   timeout from completion, and the span checkpoint shows missing or invalid spans per block. Not run

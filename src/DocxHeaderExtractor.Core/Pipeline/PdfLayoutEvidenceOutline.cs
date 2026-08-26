@@ -359,6 +359,25 @@ public static class PdfLayoutEvidenceOutline
             haystacks, slim);
     }
 
+    /// <summary>
+    /// Replays the production broad-route alignment for an already-selected source-id set. This is
+    /// audit-only: it neither constructs candidates nor chooses ids, so a counterfactual can ask
+    /// what existing, source-grounded decisions would have emitted without reimplementing matching.
+    /// </summary>
+    internal static PdfDocxAlignmentSnapshot BuildBroadAlignmentForCandidateIds(
+        string originalInputPath, SlimDocument slim, IReadOnlySet<string> candidateIds)
+    {
+        var context = TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
+            includeSupplementCandidates: true, out var reason);
+        if (context is null)
+            return new PdfDocxAlignmentSnapshot(reason, 0, [], [], [], slim);
+        var candidates = context.Candidates.Where(candidate => candidateIds.Contains(candidate.Id)).ToArray();
+        var trace = new List<PdfDocxAlignmentTrace>();
+        var haystacks = new List<PdfDocxCanonicalParagraph>();
+        var alignment = AlignToDocx(candidates, slim, context.Profile, AnalystBasis, trace, haystacks);
+        return new PdfDocxAlignmentSnapshot("aligned", candidates.Length, alignment.Headings, trace, haystacks, slim);
+    }
+
     public static PdfCandidateRankingAudit BuildCandidateRankingAudit(string originalInputPath) =>
         BuildCandidateRankingSnapshot(originalInputPath).Audit;
 
