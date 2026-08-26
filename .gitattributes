@@ -3,3 +3,8 @@
 /eval/benchmark-n0/silver-labels/*.json -text
 /eval/benchmark-n0/census/003-n1.3-census.v1.json -text
 /eval/benchmark-n0/census/057-n1.3-census.v1.json -text
+# N3.4 binds its one canonical live run and paired offline reports by raw SHA-256.
+# Keep this narrow: ordinary JSON remains normal text unless its contract says byte identity.
+/eval/benchmark-n3/n3.4/*.json -text
+/eval/benchmark-n3/n3.4/*.jsonl -text
+/eval/benchmark-n3/n3.4/*.sha256 -text
