@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_fresh_holdout_population",
+  "purpose": "Fresh source-first holdout, independent from N0/N2 diagnosis. It is not selected for a historical failure shape or candidate outcome.",
+  "selectionRule": {
+    "targetStrata": [
+      "01_phap_quy",
+      "02_hop_dong_mua_sam",
+      "03_tai_chinh_ke_toan",
+      "04_giao_trinh"
+    ],
+    "excludedDocumentStems": [
+      "001",
+      "003",
+      "028",
+      "029",
+      "032",
+      "041",
+      "042",
+      "054",
+      "056",
+      "057",
+      "091",
+      "092"
+    ],
+    "tieBreak": "lowest remaining numeric document id within each stratum",
+    "prohibitedInputs": [
+      "candidate counts",
+      "candidate rank",
+      "selected status",
+      "gold/silver label",
+      "model output",
+      "historical failure outcome"
+    ]
+  },
+  "documents": [
+    {
+      "stem": "002",
+      "domain": "01_phap_quy",
+      "file": "todo10_8/heading_corpus_95_word/01_phap_quy/002_Bo_luat_Lao_dong_45-2019-QH14.docx",
+      "sourceDocumentSha256": "527e96865acf73847abc23c6e80208e92242215a94824388d8f575dd226372dd"
+    },
+    {
+      "stem": "026",
+      "domain": "02_hop_dong_mua_sam",
+      "file": "todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/026_WB_RFB_Goods_One_Envelope_2017.docx",
+      "sourceDocumentSha256": "351549da7a8b9256e73ddbc8940419f5624296521820b91745bf6448ef141765"
+    },
+    {
+      "stem": "043",
+      "domain": "03_tai_chinh_ke_toan",
+      "file": "todo10_8/heading_corpus_95_word/03_tai_chinh_ke_toan/043_IBRD_Financial_Statements_June_2024.docx",
+      "sourceDocumentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed"
+    },
+    {
+      "stem": "058",
+      "domain": "04_giao_trinh",
+      "file": "todo10_8/heading_corpus_95_word/04_giao_trinh/058_Machine_Learning_Lecture_Note.docx",
+      "sourceDocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949"
+    }
+  ],
+  "reviewContract": {
+    "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is diagnostics-only and never cross-run identity",
+    "sourceFirst": true,
+    "modelCalls": "prohibited until a later separately frozen phase"
+  }
+}
