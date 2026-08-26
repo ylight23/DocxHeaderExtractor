@@ -4996,6 +4996,82 @@ ranking is not 003's first loss on this evidence; the span-lane timeout is. Neit
 authorizes a production change here: this is silver/proxy evidence (N1.2-S, not human-reviewed), a
 single run each, and no collateral/promotion-gate work has been done.
 
+### Lane A (003) - partial-span-preservation counterfactual reopens the C1 promotion gate
+
+`PdfN2SPartialSpanPreservationCounterfactual003Probe` replays only facts the canonical checkpoint
+already persisted - completed source pointers preserved, every unresolved block `Uncertain` - through
+the same `PdfProposalValidator` -> `PdfBlockGrounder` -> alignment chain C1.7 used for 001. No
+provider call, no retry, no candidate-construction change.
+
+22/40 span batches (88/160 blocks) completed before the lane deadline - more than the earlier
+off-protocol run's 18/40 at concurrency 1, but still not all of them, which is why the canonical run
+still shows `partial_timeout`. Preserving those 88 blocks instead of discarding everything:
+
+| stage | blocks | decision-relevant (of 128) |
+|---|---:|---:|
+| current route (wrapper discard) | 0 | 0 |
+| validated | 87 | 75 |
+| grounded | 83 | 73 |
+| emitted | 82 | **72 (56.3%)** |
+
+This is a second, independent, materially large recovery (56.3% vs 001's 33.3%), reproducing C1.7's
+finding on a document from a different domain (legal vs legal - both are `01_phap_quy`, so this is not
+yet cross-domain, but is cross-document and cross-manifest: different source file, different
+selection, different silver labels, a later code revision).
+
+**Promotion status update, superseding C1's original close:**
+
+| | before N2-S | after 003 canonical + counterfactual |
+|---|---|---|
+| span partial-timeout recurrence | NOT PROVEN cross-document | **PROVEN - 001 and 003, independently** |
+| all-or-nothing discard, material impact | PROVEN on 001 only | **RECURRENT and MATERIAL** |
+| concurrency as a candidate cause | untested | **REFUTED - concurrency 2 collapses identically** |
+| partial-result preservation | remediation candidate, blocked on recurrence | **promotion candidate, cross-document evidence now exists** |
+
+C1's gate is reopened on this evidence. It is **not promoted here** - reopening the gate is not the
+same act as passing it. The still-open collateral requirements from C1.7's close (a third document
+would help but is not required by "cross-document"; a cost/behavior gate for any lane-deadline or
+discard-policy change; confirmation the recovered blocks don't introduce new false positives) remain
+unaddressed. The minimal shape a future fix would take, if promoted: keep `spanLaneStatus:
+partial_timeout` as an honest status, but stop discarding completed, independent span batches when the
+lane times out - no deadline increase, no retry, no model change.
+
+### Lane B (057) - grounding/alignment first-loss trace, exact owner found
+
+`PdfN2SGroundingAlignmentTrace057Probe` reconstructs 057's validated set from its checkpoint (spans
+lane was `complete`, so nothing is being recovered here - this traces an already-successful semantic
+pass) and replays `PdfBlockGrounder.Ground` then the alignment matcher, capturing each candidate's
+actual rejection reason or match branch. The reconstruction reproduces 36 of the canonical run's 35
+validated ids plus one extra (`s-window-450`, not decision-relevant) - recorded, not silenced; every
+target/control below is checked by exact id membership, not by trusting that count.
+
+For the 23 validated decisionRelevant occurrences that never reached `canonicalGroundings`:
+
+| first-loss owner | count | mechanism |
+|---|---:|---|
+| `GROUNDING_VALIDATOR_REJECTION` | 14 | `PdfBlockGrounder`'s `ungroundable-text-shape` check (source text has >=2 periods/semicolons, or is >=80 chars ending in a period - exactly the shape of a TOC dot-leader line) |
+| `NO_DOCX_SOURCE_ANCHOR` | 9 | alignment `Branch: Unmatched` - the candidate's text never matches any DOCX paragraph |
+
+**Exact owner: candidate representation kind, confirmed via `PdfCandidateProvenance.RepresentationKind`
+(not inferred from an id naming convention - `PdfDocxAlignmentTrace` and the grounder's own rejection
+each name a real field).** All 23 decision-relevant targets are `WindowFragment` candidates (the
+`--pdf-stage-supplement` representation). Of the 9 headings that *did* reach `canonicalGroundings`, 7
+are `StandardBlock` and only 2 are `WindowFragment` - so this is a strong, not absolute, risk factor:
+`WindowFragment` candidates carry most of 057's decision-relevant recall (supplement construction is
+what let these numbered-outline headings become candidates at all - see N1.3-S) but overwhelmingly
+fail downstream, split roughly evenly between two different, already-instrumented mechanisms.
+
+**Gate status:** causal owner **PROVEN** for 057's grounding loss - `WindowFragment` representation is
+the dominant risk factor across two distinct deterministic rejections. **Not promoted here.** Neither
+rejection reason has been shown safe to relax (loosening `ungroundable-text-shape` risks readmitting
+real TOC entries; the alignment matcher not finding a DOCX anchor for a synthesized window may be
+correct behavior, not a bug, if the window's text was never contiguous DOCX prose to begin with). The
+two 9-count instances are themselves a candidate distinction for follow-up: whether `NO_DOCX_SOURCE_ANCHOR`
+windows differ systematically from the 2 `WindowFragment` successes is not yet traced.
+
+**Ranking remains on hold**, exactly as flagged: raising 057's `selected@160` budget without addressing
+`WindowFragment` grounding/alignment would very plausibly still emit zero of these 23 occurrences.
+
 ### The `HeadingReadable` debt, recorded separately
 
 It was found while investigating C1 and does not belong to C1's ledger.

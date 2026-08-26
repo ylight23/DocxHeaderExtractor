@@ -1,0 +1,392 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2s_grounding_alignment_trace",
+  "documentId": "057",
+  "usesModel": false,
+  "reproducedValidatedCount": 36,
+  "canonicalRunValidatedCount": 35,
+  "validatedCountMatchesCanonicalRun": false,
+  "validatedOnlyInReconstruction": [
+    "s-window-450"
+  ],
+  "validatedOnlyInCanonicalRun": [],
+  "groundedCount": 19,
+  "emittedCount": 9,
+  "decisionRelevantValidatedTargets": 23,
+  "ownerTally": {
+    "NO_DOCX_SOURCE_ANCHOR": 9,
+    "GROUNDING_VALIDATOR_REJECTION": 14
+  },
+  "targetKindTally": {
+    "WindowFragment": 23
+  },
+  "emittedControlKindTally": {
+    "StandardBlock": 7,
+    "WindowFragment": 2
+  },
+  "targets": [
+    {
+      "StableId": "057/numbered/9.4",
+      "SourceFactId": "s-window-3765",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-3765",
+        "stage": "alignment",
+        "owner": "NO_DOCX_SOURCE_ANCHOR",
+        "alignmentBranch": "Unmatched",
+        "alignmentAccepted": false,
+        "alignmentParagraphIndex": null
+      }
+    },
+    {
+      "StableId": "057/numbered/10.0.1",
+      "SourceFactId": "s-window-3875",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-3875",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/11.3.1",
+      "SourceFactId": "s-window-4365",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-4365",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/12.3",
+      "SourceFactId": "s-window-4767",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-4767",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/15.8.1",
+      "SourceFactId": "s-window-5585",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-5585",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/22.4",
+      "SourceFactId": "s-window-7988",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-7988",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/23.2",
+      "SourceFactId": "s-window-8422",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-8422",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/23.5",
+      "SourceFactId": "s-window-8501",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-8501",
+        "stage": "alignment",
+        "owner": "NO_DOCX_SOURCE_ANCHOR",
+        "alignmentBranch": "Unmatched",
+        "alignmentAccepted": false,
+        "alignmentParagraphIndex": null
+      }
+    },
+    {
+      "StableId": "057/numbered/24.1.1",
+      "SourceFactId": "s-window-9350",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-9350",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/24.7.1",
+      "SourceFactId": "s-window-9671",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-9671",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/24.8",
+      "SourceFactId": "s-window-9703",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-9703",
+        "stage": "alignment",
+        "owner": "NO_DOCX_SOURCE_ANCHOR",
+        "alignmentBranch": "Unmatched",
+        "alignmentAccepted": false,
+        "alignmentParagraphIndex": null
+      }
+    },
+    {
+      "StableId": "057/numbered/30.13.1",
+      "SourceFactId": "s-window-11773",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-11773",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/31.3.2",
+      "SourceFactId": "s-window-12396",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-12396",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/41.3",
+      "SourceFactId": "s-window-17510",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-17510",
+        "stage": "alignment",
+        "owner": "NO_DOCX_SOURCE_ANCHOR",
+        "alignmentBranch": "Unmatched",
+        "alignmentAccepted": false,
+        "alignmentParagraphIndex": null
+      }
+    },
+    {
+      "StableId": "057/numbered/45.1.4",
+      "SourceFactId": "s-window-19015",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-19015",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/50.4",
+      "SourceFactId": "s-window-19812",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-19812",
+        "stage": "alignment",
+        "owner": "NO_DOCX_SOURCE_ANCHOR",
+        "alignmentBranch": "Unmatched",
+        "alignmentAccepted": false,
+        "alignmentParagraphIndex": null
+      }
+    },
+    {
+      "StableId": "057/numbered/50.5",
+      "SourceFactId": "s-window-19828",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-19828",
+        "stage": "alignment",
+        "owner": "NO_DOCX_SOURCE_ANCHOR",
+        "alignmentBranch": "Unmatched",
+        "alignmentAccepted": false,
+        "alignmentParagraphIndex": null
+      }
+    },
+    {
+      "StableId": "057/numbered/51.1",
+      "SourceFactId": "s-window-19854",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-19854",
+        "stage": "alignment",
+        "owner": "NO_DOCX_SOURCE_ANCHOR",
+        "alignmentBranch": "Unmatched",
+        "alignmentAccepted": false,
+        "alignmentParagraphIndex": null
+      }
+    },
+    {
+      "StableId": "057/numbered/54.4.1",
+      "SourceFactId": "s-window-21744",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-21744",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/72.2",
+      "SourceFactId": "s-window-27542",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-27542",
+        "stage": "alignment",
+        "owner": "NO_DOCX_SOURCE_ANCHOR",
+        "alignmentBranch": "Unmatched",
+        "alignmentAccepted": false,
+        "alignmentParagraphIndex": null
+      }
+    },
+    {
+      "StableId": "057/numbered/76.4",
+      "SourceFactId": "s-window-28651",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-28651",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/76.10.2",
+      "SourceFactId": "s-window-28860",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-28860",
+        "stage": "grounding",
+        "owner": "GROUNDING_VALIDATOR_REJECTION",
+        "groundingRejectionReason": "ungroundable-text-shape"
+      }
+    },
+    {
+      "StableId": "057/numbered/83.7",
+      "SourceFactId": "s-window-31993",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-window-31993",
+        "stage": "alignment",
+        "owner": "NO_DOCX_SOURCE_ANCHOR",
+        "alignmentBranch": "Unmatched",
+        "alignmentAccepted": false,
+        "alignmentParagraphIndex": null
+      }
+    }
+  ],
+  "emittedControls": [
+    {
+      "sourceFactId": "b2252",
+      "kind": "StandardBlock",
+      "trace": {
+        "sourceFactId": "b2252",
+        "stage": "emitted",
+        "owner": null,
+        "note": "reached canonicalGroundings"
+      }
+    },
+    {
+      "sourceFactId": "b2254",
+      "kind": "StandardBlock",
+      "trace": {
+        "sourceFactId": "b2254",
+        "stage": "emitted",
+        "owner": null,
+        "note": "reached canonicalGroundings"
+      }
+    },
+    {
+      "sourceFactId": "b2502",
+      "kind": "StandardBlock",
+      "trace": {
+        "sourceFactId": "b2502",
+        "stage": "emitted",
+        "owner": null,
+        "note": "reached canonicalGroundings"
+      }
+    },
+    {
+      "sourceFactId": "b382",
+      "kind": "StandardBlock",
+      "trace": {
+        "sourceFactId": "b382",
+        "stage": "emitted",
+        "owner": null,
+        "note": "reached canonicalGroundings"
+      }
+    },
+    {
+      "sourceFactId": "b412",
+      "kind": "StandardBlock",
+      "trace": {
+        "sourceFactId": "b412",
+        "stage": "emitted",
+        "owner": null,
+        "note": "reached canonicalGroundings"
+      }
+    },
+    {
+      "sourceFactId": "b441",
+      "kind": "StandardBlock",
+      "trace": {
+        "sourceFactId": "b441",
+        "stage": "emitted",
+        "owner": null,
+        "note": "reached canonicalGroundings"
+      }
+    },
+    {
+      "sourceFactId": "b464",
+      "kind": "StandardBlock",
+      "trace": {
+        "sourceFactId": "b464",
+        "stage": "emitted",
+        "owner": null,
+        "note": "reached canonicalGroundings"
+      }
+    },
+    {
+      "sourceFactId": "s-line-10573",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-line-10573",
+        "stage": "emitted",
+        "owner": null,
+        "note": "reached canonicalGroundings"
+      }
+    },
+    {
+      "sourceFactId": "s-line-10588",
+      "kind": "WindowFragment",
+      "trace": {
+        "sourceFactId": "s-line-10588",
+        "stage": "emitted",
+        "owner": null,
+        "note": "reached canonicalGroundings"
+      }
+    }
+  ]
+}
