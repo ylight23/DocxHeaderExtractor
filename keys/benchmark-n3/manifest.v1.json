@@ -1,6 +1,10 @@
 {
   "schemaVersion": 1,
   "artifactKind": "n3_fresh_holdout_population",
+  "supersededBy": {
+    "artifact": "keys/benchmark-n3/manifest.v2.json",
+    "reason": "SELECTION_RULE_IMPLEMENTATION_ERROR - this selector never enforced the A3 usability predicate, so it picked 002 and 026, both already known (before N3 existed) to have zero extractable candidates. v2 keeps 043/058 and replaces only the two ineligible slots (004, 030), using the same frozen tie-break with the missing usability check added. This file is kept unmodified as the original (buggy) selection, not deleted or rewritten."
+  },
   "purpose": "Fresh source-first holdout, independent from N0/N2 diagnosis. It is not selected for a historical failure shape or candidate outcome.",
   "selectionRule": {
     "targetStrata": [
