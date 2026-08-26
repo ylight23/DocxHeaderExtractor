@@ -1,0 +1,834 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_model_assisted_silver_occurrence_labels",
+  "sourcePacket": {
+    "artifactKind": "n3_blind_source_review_packet",
+    "stem": "043",
+    "sourcePacketPath": "eval/benchmark-n3/source-packets/043-blind-source-review.v1.json"
+  },
+  "reviewContract": {
+    "question": "Which source occurrences are document outline headings?",
+    "allowedLabels": [
+      "REVIEWED_HEADING",
+      "REVIEWED_NON_HEADING",
+      "UNCERTAIN"
+    ],
+    "occurrenceRule": "A wrapped heading is one occurrence made of every participating source line; preserve all line ids and its source span.",
+    "prohibitedEvidence": [
+      "candidate id",
+      "candidate score",
+      "rank",
+      "selected status",
+      "pipeline-inferred scope",
+      "domain role",
+      "analyst output",
+      "validated output"
+    ]
+  },
+  "provenance": {
+    "labelSource": "MODEL_ASSISTED_SILVER",
+    "labelerModel": "claude-sonnet-5",
+    "humanAdjudicated": false,
+    "accuracyClaim": "SILVER_PROXY_ONLY"
+  },
+  "summary": {
+    "totalSourceItemsReviewed": 7047,
+    "headingOccurrenceCount": 43,
+    "uncertainOccurrenceCount": 1
+  },
+  "headingOccurrences": [
+    {
+      "goldStableId": "043/heading/001",
+      "label": "REVIEWED_HEADING",
+      "marker": "Section I: Executive Summary",
+      "page": 6,
+      "sourceLineIds": [
+        "6|711.1847556250001|75.135859375|274.368546875|Section I: Executive Summary"
+      ],
+      "sourceSpan": {
+        "startLineId": "6|711.1847556250001|75.135859375|274.368546875|Section I: Executive Summary",
+        "endLineId": "6|711.1847556250001|75.135859375|274.368546875|Section I: Executive Summary"
+      },
+      "sourceTextLines": [
+        "Section I: Executive Summary"
+      ],
+      "sourceText": "Section I: Executive Summary",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/002",
+      "label": "REVIEWED_HEADING",
+      "marker": "Section II: Overview",
+      "page": 10,
+      "sourceLineIds": [
+        "10|711.3455444704862|75.135859375|207.67681249999995|Section II: Overview"
+      ],
+      "sourceSpan": {
+        "startLineId": "10|711.3455444704862|75.135859375|207.67681249999995|Section II: Overview",
+        "endLineId": "10|711.3455444704862|75.135859375|207.67681249999995|Section II: Overview"
+      },
+      "sourceTextLines": [
+        "Section II: Overview"
+      ],
+      "sourceText": "Section II: Overview",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/003",
+      "label": "REVIEWED_HEADING",
+      "marker": "Section III: Financial Results",
+      "page": 13,
+      "sourceLineIds": [
+        "13|711.4666291782409|75.135859375|263.7953749999999|Section III: Financial Results"
+      ],
+      "sourceSpan": {
+        "startLineId": "13|711.4666291782409|75.135859375|263.7953749999999|Section III: Financial Results",
+        "endLineId": "13|711.4666291782409|75.135859375|263.7953749999999|Section III: Financial Results"
+      },
+      "sourceTextLines": [
+        "Section III: Financial Results"
+      ],
+      "sourceText": "Section III: Financial Results",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/004",
+      "label": "REVIEWED_HEADING",
+      "marker": "Section IV: Lending Activities",
+      "page": 23,
+      "sourceLineIds": [
+        "23|711.4578943692131|75.135859375|270.78137499999997|Section IV: Lending Activities"
+      ],
+      "sourceSpan": {
+        "startLineId": "23|711.4578943692131|75.135859375|270.78137499999997|Section IV: Lending Activities",
+        "endLineId": "23|711.4578943692131|75.135859375|270.78137499999997|Section IV: Lending Activities"
+      },
+      "sourceTextLines": [
+        "Section IV: Lending Activities"
+      ],
+      "sourceText": "Section IV: Lending Activities",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/005",
+      "label": "REVIEWED_HEADING",
+      "marker": "Section V: Other Development Activities",
+      "page": 29,
+      "sourceLineIds": [
+        "29|711.3869235937502|75.135859375|341.57937499999986|Section V: Other Development Activities"
+      ],
+      "sourceSpan": {
+        "startLineId": "29|711.3869235937502|75.135859375|341.57937499999986|Section V: Other Development Activities",
+        "endLineId": "29|711.3869235937502|75.135859375|341.57937499999986|Section V: Other Development Activities"
+      },
+      "sourceTextLines": [
+        "Section V: Other Development Activities"
+      ],
+      "sourceText": "Section V: Other Development Activities",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/006",
+      "label": "REVIEWED_HEADING",
+      "marker": "Section VI: Investment Activities",
+      "page": 34,
+      "sourceLineIds": [
+        "34|711.4339939062502|75.135859375|290.24137499999995|Section VI: Investment Activities"
+      ],
+      "sourceSpan": {
+        "startLineId": "34|711.4339939062502|75.135859375|290.24137499999995|Section VI: Investment Activities",
+        "endLineId": "34|711.4339939062502|75.135859375|290.24137499999995|Section VI: Investment Activities"
+      },
+      "sourceTextLines": [
+        "Section VI: Investment Activities"
+      ],
+      "sourceText": "Section VI: Investment Activities",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/007",
+      "label": "REVIEWED_HEADING",
+      "marker": "Section VII: Borrowing Activities",
+      "page": 37,
+      "sourceLineIds": [
+        "37|711.4004978125001|75.135859375|290.22737499999994|Section VII: Borrowing Activities"
+      ],
+      "sourceSpan": {
+        "startLineId": "37|711.4004978125001|75.135859375|290.22737499999994|Section VII: Borrowing Activities",
+        "endLineId": "37|711.4004978125001|75.135859375|290.22737499999994|Section VII: Borrowing Activities"
+      },
+      "sourceTextLines": [
+        "Section VII: Borrowing Activities"
+      ],
+      "sourceText": "Section VII: Borrowing Activities",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/008",
+      "label": "REVIEWED_HEADING",
+      "marker": "Section VIII: Capital Activities",
+      "page": 40,
+      "sourceLineIds": [
+        "40|711.5519256142243|75.135859375|270.795375|Section VIII: Capital Activities"
+      ],
+      "sourceSpan": {
+        "startLineId": "40|711.5519256142243|75.135859375|270.795375|Section VIII: Capital Activities",
+        "endLineId": "40|711.5519256142243|75.135859375|270.795375|Section VIII: Capital Activities"
+      },
+      "sourceTextLines": [
+        "Section VIII: Capital Activities"
+      ],
+      "sourceText": "Section VIII: Capital Activities",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/009",
+      "label": "REVIEWED_HEADING",
+      "marker": "Section IX: Risk Management",
+      "page": 43,
+      "sourceLineIds": [
+        "43|711.3248467708335|75.135859375|269.73804687499995|Section IX: Risk Management"
+      ],
+      "sourceSpan": {
+        "startLineId": "43|711.3248467708335|75.135859375|269.73804687499995|Section IX: Risk Management",
+        "endLineId": "43|711.3248467708335|75.135859375|269.73804687499995|Section IX: Risk Management"
+      },
+      "sourceTextLines": [
+        "Section IX: Risk Management"
+      ],
+      "sourceText": "Section IX: Risk Management",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/010",
+      "label": "REVIEWED_HEADING",
+      "marker": "Section X: Contractual Obligations",
+      "page": 59,
+      "sourceLineIds": [
+        "59|711.3704196875002|75.135859375|304.99737499999986|Section X: Contractual Obligations"
+      ],
+      "sourceSpan": {
+        "startLineId": "59|711.3704196875002|75.135859375|304.99737499999986|Section X: Contractual Obligations",
+        "endLineId": "59|711.3704196875002|75.135859375|304.99737499999986|Section X: Contractual Obligations"
+      },
+      "sourceTextLines": [
+        "Section X: Contractual Obligations"
+      ],
+      "sourceText": "Section X: Contractual Obligations",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/011",
+      "label": "REVIEWED_HEADING",
+      "marker": "Section XI: Pension and Other Post-Retirement Benefits",
+      "page": 60,
+      "sourceLineIds": [
+        "60|711.4060947363283|75.135859375|445.80937499999976|Section XI: Pension and Other Post-Retirement Benefits"
+      ],
+      "sourceSpan": {
+        "startLineId": "60|711.4060947363283|75.135859375|445.80937499999976|Section XI: Pension and Other Post-Retirement Benefits",
+        "endLineId": "60|711.4060947363283|75.135859375|445.80937499999976|Section XI: Pension and Other Post-Retirement Benefits"
+      },
+      "sourceTextLines": [
+        "Section XI: Pension and Other Post-Retirement Benefits"
+      ],
+      "sourceText": "Section XI: Pension and Other Post-Retirement Benefits",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/012",
+      "label": "REVIEWED_HEADING",
+      "marker": "Section XII: Critical Accounting Policies and the Use of Estimates",
+      "page": 62,
+      "sourceLineIds": [
+        "62|711.425586902412|75.135859375|509.6353749999996|Section XII: Critical Accounting Policies and the Use of Estimates"
+      ],
+      "sourceSpan": {
+        "startLineId": "62|711.425586902412|75.135859375|509.6353749999996|Section XII: Critical Accounting Policies and the Use of Estimates",
+        "endLineId": "62|711.425586902412|75.135859375|509.6353749999996|Section XII: Critical Accounting Policies and the Use of Estimates"
+      },
+      "sourceTextLines": [
+        "Section XII: Critical Accounting Policies and the Use of Estimates"
+      ],
+      "sourceText": "Section XII: Critical Accounting Policies and the Use of Estimates",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/013",
+      "label": "REVIEWED_HEADING",
+      "marker": "Section XIII: Governance and Controls",
+      "page": 64,
+      "sourceLineIds": [
+        "64|711.3151107386366|75.135859375|329.13337499999983|Section XIII: Governance and Controls"
+      ],
+      "sourceSpan": {
+        "startLineId": "64|711.3151107386366|75.135859375|329.13337499999983|Section XIII: Governance and Controls",
+        "endLineId": "64|711.3151107386366|75.135859375|329.13337499999983|Section XIII: Governance and Controls"
+      },
+      "sourceTextLines": [
+        "Section XIII: Governance and Controls"
+      ],
+      "sourceText": "Section XIII: Governance and Controls",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/014",
+      "label": "REVIEWED_HEADING",
+      "marker": "Appendix",
+      "page": 68,
+      "sourceLineIds": [
+        "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+        "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+      ],
+      "sourceSpan": {
+        "startLineId": "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+        "endLineId": "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+      },
+      "sourceTextLines": [
+        "Appendix",
+        "Glossary of Terms"
+      ],
+      "sourceText": "Appendix Glossary of Terms",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/015",
+      "label": "REVIEWED_HEADING",
+      "marker": "Abbreviations and Acronyms",
+      "page": 69,
+      "sourceLineIds": [
+        "69|714.725342265625|72|238.12574999999995|Abbreviations and Acronyms"
+      ],
+      "sourceSpan": {
+        "startLineId": "69|714.725342265625|72|238.12574999999995|Abbreviations and Acronyms",
+        "endLineId": "69|714.725342265625|72|238.12574999999995|Abbreviations and Acronyms"
+      },
+      "sourceTextLines": [
+        "Abbreviations and Acronyms"
+      ],
+      "sourceText": "Abbreviations and Acronyms",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/016",
+      "label": "REVIEWED_HEADING",
+      "marker": "Eligible Borrowing Member Countries by Region as of June 30 2024",
+      "page": 70,
+      "sourceLineIds": [
+        "70|720.8177630555562|72.873046875|460.2844475000002|Eligible Borrowing Member Countries by Region as of June 30 2024"
+      ],
+      "sourceSpan": {
+        "startLineId": "70|720.8177630555562|72.873046875|460.2844475000002|Eligible Borrowing Member Countries by Region as of June 30 2024",
+        "endLineId": "70|720.8177630555562|72.873046875|460.2844475000002|Eligible Borrowing Member Countries by Region as of June 30 2024"
+      },
+      "sourceTextLines": [
+        "Eligible Borrowing Member Countries by Region as of June 30 2024"
+      ],
+      "sourceText": "Eligible Borrowing Member Countries by Region as of June 30 2024",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/017",
+      "label": "REVIEWED_HEADING",
+      "marker": "FINANCIAL STATEMENTS AND INTERNAL CONTROL REPORTS",
+      "page": 71,
+      "sourceLineIds": [
+        "71|664.4206945063914|73.1484375|488.3072812499999|FINANCIAL STATEMENTS AND INTERNAL CONTROL REPORTS"
+      ],
+      "sourceSpan": {
+        "startLineId": "71|664.4206945063914|73.1484375|488.3072812499999|FINANCIAL STATEMENTS AND INTERNAL CONTROL REPORTS",
+        "endLineId": "71|664.4206945063914|73.1484375|488.3072812499999|FINANCIAL STATEMENTS AND INTERNAL CONTROL REPORTS"
+      },
+      "sourceTextLines": [
+        "FINANCIAL STATEMENTS AND INTERNAL CONTROL REPORTS"
+      ],
+      "sourceText": "FINANCIAL STATEMENTS AND INTERNAL CONTROL REPORTS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/018",
+      "label": "REVIEWED_HEADING",
+      "marker": "Management's Report on Effectiveness of Internal Control Over Financial",
+      "page": 72,
+      "sourceLineIds": [
+        "72|755.6400555729155|73.0390625|523.9599765624997|Management's Report on Effectiveness of Internal Control Over Financial",
+        "72|738.50054734375|73.1005859375|131.75560937500003|Reporting"
+      ],
+      "sourceSpan": {
+        "startLineId": "72|755.6400555729155|73.0390625|523.9599765624997|Management's Report on Effectiveness of Internal Control Over Financial",
+        "endLineId": "72|738.50054734375|73.1005859375|131.75560937500003|Reporting"
+      },
+      "sourceTextLines": [
+        "Management's Report on Effectiveness of Internal Control Over Financial",
+        "Reporting"
+      ],
+      "sourceText": "Management's Report on Effectiveness of Internal Control Over Financial Reporting",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/019",
+      "label": "REVIEWED_HEADING",
+      "marker": "Independent Auditor's Report on Effectiveness of Internal Control Over",
+      "page": 74,
+      "sourceLineIds": [
+        "74|755.6847831854827|73.3056640625|508.83751562499975|Independent Auditor's Report on Effectiveness of Internal Control Over",
+        "74|738.735817526042|73.1484375|191.661609375|Financial Reporting"
+      ],
+      "sourceSpan": {
+        "startLineId": "74|755.6847831854827|73.3056640625|508.83751562499975|Independent Auditor's Report on Effectiveness of Internal Control Over",
+        "endLineId": "74|738.735817526042|73.1484375|191.661609375|Financial Reporting"
+      },
+      "sourceTextLines": [
+        "Independent Auditor's Report on Effectiveness of Internal Control Over",
+        "Financial Reporting"
+      ],
+      "sourceText": "Independent Auditor's Report on Effectiveness of Internal Control Over Financial Reporting",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/020",
+      "label": "REVIEWED_HEADING",
+      "marker": "Independent Auditor's Report",
+      "page": 76,
+      "sourceLineIds": [
+        "76|755.731990168269|73.3056640625|252.79594531249995|Independent Auditor's Report"
+      ],
+      "sourceSpan": {
+        "startLineId": "76|755.731990168269|73.3056640625|252.79594531249995|Independent Auditor's Report",
+        "endLineId": "76|755.731990168269|73.3056640625|252.79594531249995|Independent Auditor's Report"
+      },
+      "sourceTextLines": [
+        "Independent Auditor's Report"
+      ],
+      "sourceText": "Independent Auditor's Report",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/021",
+      "label": "REVIEWED_HEADING",
+      "marker": "FINANCIAL STATEMENTS",
+      "page": 79,
+      "sourceLineIds": [
+        "79|681.220402401316|73.1484375|239.80129125|FINANCIAL STATEMENTS"
+      ],
+      "sourceSpan": {
+        "startLineId": "79|681.220402401316|73.1484375|239.80129125|FINANCIAL STATEMENTS",
+        "endLineId": "79|681.220402401316|73.1484375|239.80129125|FINANCIAL STATEMENTS"
+      },
+      "sourceTextLines": [
+        "FINANCIAL STATEMENTS"
+      ],
+      "sourceText": "FINANCIAL STATEMENTS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/022",
+      "label": "REVIEWED_HEADING",
+      "marker": "BALANCE SHEETS",
+      "page": 80,
+      "sourceLineIds": [
+        "80|732.8202163461536|73.0185546875|196.53328125|BALANCE SHEETS"
+      ],
+      "sourceSpan": {
+        "startLineId": "80|732.8202163461536|73.0185546875|196.53328125|BALANCE SHEETS",
+        "endLineId": "80|732.8202163461536|73.0185546875|196.53328125|BALANCE SHEETS"
+      },
+      "sourceTextLines": [
+        "BALANCE SHEETS"
+      ],
+      "sourceText": "BALANCE SHEETS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/023",
+      "label": "REVIEWED_HEADING",
+      "marker": "STATEMENTS OF INCOME",
+      "page": 82,
+      "sourceLineIds": [
+        "82|732.821311848958|72.62890625|246.5419375|STATEMENTS OF INCOME"
+      ],
+      "sourceSpan": {
+        "startLineId": "82|732.821311848958|72.62890625|246.5419375|STATEMENTS OF INCOME",
+        "endLineId": "82|732.821311848958|72.62890625|246.5419375|STATEMENTS OF INCOME"
+      },
+      "sourceTextLines": [
+        "STATEMENTS OF INCOME"
+      ],
+      "sourceText": "STATEMENTS OF INCOME",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/024",
+      "label": "REVIEWED_HEADING",
+      "marker": "STATEMENTS OF COMPREHENSIVE INCOME",
+      "page": 83,
+      "sourceLineIds": [
+        "83|714.8211832157259|72.62890625|373.3399375|STATEMENTS OF COMPREHENSIVE INCOME"
+      ],
+      "sourceSpan": {
+        "startLineId": "83|714.8211832157259|72.62890625|373.3399375|STATEMENTS OF COMPREHENSIVE INCOME",
+        "endLineId": "83|714.8211832157259|72.62890625|373.3399375|STATEMENTS OF COMPREHENSIVE INCOME"
+      },
+      "sourceTextLines": [
+        "STATEMENTS OF COMPREHENSIVE INCOME"
+      ],
+      "sourceText": "STATEMENTS OF COMPREHENSIVE INCOME",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/025",
+      "label": "REVIEWED_HEADING",
+      "marker": "STATEMENTS OF CHANGES IN RETAINED EARNINGS",
+      "page": 83,
+      "sourceLineIds": [
+        "83|427.87017792229767|72.62890625|428.3592812500001|STATEMENTS OF CHANGES IN RETAINED EARNINGS"
+      ],
+      "sourceSpan": {
+        "startLineId": "83|427.87017792229767|72.62890625|428.3592812500001|STATEMENTS OF CHANGES IN RETAINED EARNINGS",
+        "endLineId": "83|427.87017792229767|72.62890625|428.3592812500001|STATEMENTS OF CHANGES IN RETAINED EARNINGS"
+      },
+      "sourceTextLines": [
+        "STATEMENTS OF CHANGES IN RETAINED EARNINGS"
+      ],
+      "sourceText": "STATEMENTS OF CHANGES IN RETAINED EARNINGS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/026",
+      "label": "REVIEWED_HEADING",
+      "marker": "STATEMENTS OF CASH FLOWS",
+      "page": 84,
+      "sourceLineIds": [
+        "84|723.8207421874997|72.62890625|283.13728125|STATEMENTS OF CASH FLOWS"
+      ],
+      "sourceSpan": {
+        "startLineId": "84|723.8207421874997|72.62890625|283.13728125|STATEMENTS OF CASH FLOWS",
+        "endLineId": "84|723.8207421874997|72.62890625|283.13728125|STATEMENTS OF CASH FLOWS"
+      },
+      "sourceTextLines": [
+        "STATEMENTS OF CASH FLOWS"
+      ],
+      "sourceText": "STATEMENTS OF CASH FLOWS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/027",
+      "label": "REVIEWED_HEADING",
+      "marker": "SUMMARY STATEMENT OF LOANS",
+      "page": 86,
+      "sourceLineIds": [
+        "86|732.8174728260867|72.62890625|303.39528125|SUMMARY STATEMENT OF LOANS"
+      ],
+      "sourceSpan": {
+        "startLineId": "86|732.8174728260867|72.62890625|303.39528125|SUMMARY STATEMENT OF LOANS",
+        "endLineId": "86|732.8174728260867|72.62890625|303.39528125|SUMMARY STATEMENT OF LOANS"
+      },
+      "sourceTextLines": [
+        "SUMMARY STATEMENT OF LOANS"
+      ],
+      "sourceText": "SUMMARY STATEMENT OF LOANS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/028",
+      "label": "REVIEWED_HEADING",
+      "marker": "STATEMENT OF SUBSCRIPTIONS TO",
+      "page": 88,
+      "sourceLineIds": [
+        "88|732.8177185997595|72.62890625|318.25874218749993|STATEMENT OF SUBSCRIPTIONS TO",
+        "88|716.0211465685095|72.697265625|327.555453125|CAPITAL STOCK AND VOTING POWER"
+      ],
+      "sourceSpan": {
+        "startLineId": "88|732.8177185997595|72.62890625|318.25874218749993|STATEMENT OF SUBSCRIPTIONS TO",
+        "endLineId": "88|716.0211465685095|72.697265625|327.555453125|CAPITAL STOCK AND VOTING POWER"
+      },
+      "sourceTextLines": [
+        "STATEMENT OF SUBSCRIPTIONS TO",
+        "CAPITAL STOCK AND VOTING POWER"
+      ],
+      "sourceText": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCK AND VOTING POWER",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/029",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTES TO FINANCIAL STATEMENTS",
+      "page": 92,
+      "sourceLineIds": [
+        "92|714.8208736478365|73.06640625|314.80528124999995|NOTES TO FINANCIAL STATEMENTS"
+      ],
+      "sourceSpan": {
+        "startLineId": "92|714.8208736478365|73.06640625|314.80528124999995|NOTES TO FINANCIAL STATEMENTS",
+        "endLineId": "92|714.8208736478365|73.06640625|314.80528124999995|NOTES TO FINANCIAL STATEMENTS"
+      },
+      "sourceTextLines": [
+        "NOTES TO FINANCIAL STATEMENTS"
+      ],
+      "sourceText": "NOTES TO FINANCIAL STATEMENTS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/030",
+      "label": "REVIEWED_HEADING",
+      "marker": "PURPOSE AND AFFILIATED ORGANIZATIONS",
+      "page": 92,
+      "sourceLineIds": [
+        "92|693.1344175520837|72.80029296875|314.6288046875|PURPOSE AND AFFILIATED ORGANIZATIONS"
+      ],
+      "sourceSpan": {
+        "startLineId": "92|693.1344175520837|72.80029296875|314.6288046875|PURPOSE AND AFFILIATED ORGANIZATIONS",
+        "endLineId": "92|693.1344175520837|72.80029296875|314.6288046875|PURPOSE AND AFFILIATED ORGANIZATIONS"
+      },
+      "sourceTextLines": [
+        "PURPOSE AND AFFILIATED ORGANIZATIONS"
+      ],
+      "sourceText": "PURPOSE AND AFFILIATED ORGANIZATIONS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/031",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTE A—SUMMARY OF SIGNIFICANT ACCOUNTING AND RELATED POLICIES",
+      "page": 92,
+      "sourceLineIds": [
+        "92|529.9133888527199|72.81640625|486.3278046874999|NOTE A—SUMMARY OF SIGNIFICANT ACCOUNTING AND RELATED POLICIES"
+      ],
+      "sourceSpan": {
+        "startLineId": "92|529.9133888527199|72.81640625|486.3278046874999|NOTE A—SUMMARY OF SIGNIFICANT ACCOUNTING AND RELATED POLICIES",
+        "endLineId": "92|529.9133888527199|72.81640625|486.3278046874999|NOTE A—SUMMARY OF SIGNIFICANT ACCOUNTING AND RELATED POLICIES"
+      },
+      "sourceTextLines": [
+        "NOTE A—SUMMARY OF SIGNIFICANT ACCOUNTING AND RELATED POLICIES"
+      ],
+      "sourceText": "NOTE A—SUMMARY OF SIGNIFICANT ACCOUNTING AND RELATED POLICIES",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/032",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTE B—CAPITAL STOCK",
+      "page": 102,
+      "sourceLineIds": [
+        "102|715.8755425347222|72.81640625|213.71536328125003|NOTE B—CAPITAL STOCK"
+      ],
+      "sourceSpan": {
+        "startLineId": "102|715.8755425347222|72.81640625|213.71536328125003|NOTE B—CAPITAL STOCK",
+        "endLineId": "102|715.8755425347222|72.81640625|213.71536328125003|NOTE B—CAPITAL STOCK"
+      },
+      "sourceTextLines": [
+        "NOTE B—CAPITAL STOCK"
+      ],
+      "sourceText": "NOTE B—CAPITAL STOCK",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/033",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTE C—INVESTMENTS",
+      "page": 103,
+      "sourceLineIds": [
+        "103|715.8733484604779|72.81640625|202.21980468750002|NOTE C—INVESTMENTS"
+      ],
+      "sourceSpan": {
+        "startLineId": "103|715.8733484604779|72.81640625|202.21980468750002|NOTE C—INVESTMENTS",
+        "endLineId": "103|715.8733484604779|72.81640625|202.21980468750002|NOTE C—INVESTMENTS"
+      },
+      "sourceTextLines": [
+        "NOTE C—INVESTMENTS"
+      ],
+      "sourceText": "NOTE C—INVESTMENTS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/034",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTE D—LOANS AND OTHER EXPOSURES",
+      "page": 105,
+      "sourceLineIds": [
+        "105|355.8952898297991|72.81640625|302.4518046875|NOTE D—LOANS AND OTHER EXPOSURES"
+      ],
+      "sourceSpan": {
+        "startLineId": "105|355.8952898297991|72.81640625|302.4518046875|NOTE D—LOANS AND OTHER EXPOSURES",
+        "endLineId": "105|355.8952898297991|72.81640625|302.4518046875|NOTE D—LOANS AND OTHER EXPOSURES"
+      },
+      "sourceTextLines": [
+        "NOTE D—LOANS AND OTHER EXPOSURES"
+      ],
+      "sourceText": "NOTE D—LOANS AND OTHER EXPOSURES",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/035",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTE E—BORROWINGS",
+      "page": 113,
+      "sourceLineIds": [
+        "113|679.8697052001953|72.81640625|201.62580468750002|NOTE E—BORROWINGS"
+      ],
+      "sourceSpan": {
+        "startLineId": "113|679.8697052001953|72.81640625|201.62580468750002|NOTE E—BORROWINGS",
+        "endLineId": "113|679.8697052001953|72.81640625|201.62580468750002|NOTE E—BORROWINGS"
+      },
+      "sourceTextLines": [
+        "NOTE E—BORROWINGS"
+      ],
+      "sourceText": "NOTE E—BORROWINGS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/036",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTE F—DERIVATIVE INSTRUMENTS",
+      "page": 114,
+      "sourceLineIds": [
+        "114|518.8944408275463|72.81640625|271.25580468749996|NOTE F—DERIVATIVE INSTRUMENTS"
+      ],
+      "sourceSpan": {
+        "startLineId": "114|518.8944408275463|72.81640625|271.25580468749996|NOTE F—DERIVATIVE INSTRUMENTS",
+        "endLineId": "114|518.8944408275463|72.81640625|271.25580468749996|NOTE F—DERIVATIVE INSTRUMENTS"
+      },
+      "sourceTextLines": [
+        "NOTE F—DERIVATIVE INSTRUMENTS"
+      ],
+      "sourceText": "NOTE F—DERIVATIVE INSTRUMENTS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/037",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTE G—RETAINED EARNINGS ALLOCATIONS AND TRANSFERS",
+      "page": 118,
+      "sourceLineIds": [
+        "118|715.9116482204861|72.81640625|424.61780468749987|NOTE G—RETAINED EARNINGS ALLOCATIONS AND TRANSFERS"
+      ],
+      "sourceSpan": {
+        "startLineId": "118|715.9116482204861|72.81640625|424.61780468749987|NOTE G—RETAINED EARNINGS ALLOCATIONS AND TRANSFERS",
+        "endLineId": "118|715.9116482204861|72.81640625|424.61780468749987|NOTE G—RETAINED EARNINGS ALLOCATIONS AND TRANSFERS"
+      },
+      "sourceTextLines": [
+        "NOTE G—RETAINED EARNINGS ALLOCATIONS AND TRANSFERS"
+      ],
+      "sourceText": "NOTE G—RETAINED EARNINGS ALLOCATIONS AND TRANSFERS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/038",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTE H—TRANSACTIONS WITH AFFILIATED ORGANIZATIONS",
+      "page": 119,
+      "sourceLineIds": [
+        "119|234.71241404513893|72.81640625|405.0158046874999|NOTE H—TRANSACTIONS WITH AFFILIATED ORGANIZATIONS"
+      ],
+      "sourceSpan": {
+        "startLineId": "119|234.71241404513893|72.81640625|405.0158046874999|NOTE H—TRANSACTIONS WITH AFFILIATED ORGANIZATIONS",
+        "endLineId": "119|234.71241404513893|72.81640625|405.0158046874999|NOTE H—TRANSACTIONS WITH AFFILIATED ORGANIZATIONS"
+      },
+      "sourceTextLines": [
+        "NOTE H—TRANSACTIONS WITH AFFILIATED ORGANIZATIONS"
+      ],
+      "sourceText": "NOTE H—TRANSACTIONS WITH AFFILIATED ORGANIZATIONS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/039",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTE I—ACCUMULATED OTHER COMPREHENSIVE INCOME",
+      "page": 122,
+      "sourceLineIds": [
+        "122|715.9067501905488|72.81640625|392.8610625|NOTE I—ACCUMULATED OTHER COMPREHENSIVE INCOME"
+      ],
+      "sourceSpan": {
+        "startLineId": "122|715.9067501905488|72.81640625|392.8610625|NOTE I—ACCUMULATED OTHER COMPREHENSIVE INCOME",
+        "endLineId": "122|715.9067501905488|72.81640625|392.8610625|NOTE I—ACCUMULATED OTHER COMPREHENSIVE INCOME"
+      },
+      "sourceTextLines": [
+        "NOTE I—ACCUMULATED OTHER COMPREHENSIVE INCOME"
+      ],
+      "sourceText": "NOTE I—ACCUMULATED OTHER COMPREHENSIVE INCOME",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/040",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTE J— FAIR VALUE DISCLOSURES",
+      "page": 123,
+      "sourceLineIds": [
+        "123|500.1350567157452|72.81640625|273.7198046875|NOTE J— FAIR VALUE DISCLOSURES"
+      ],
+      "sourceSpan": {
+        "startLineId": "123|500.1350567157452|72.81640625|273.7198046875|NOTE J— FAIR VALUE DISCLOSURES",
+        "endLineId": "123|500.1350567157452|72.81640625|273.7198046875|NOTE J— FAIR VALUE DISCLOSURES"
+      },
+      "sourceTextLines": [
+        "NOTE J— FAIR VALUE DISCLOSURES"
+      ],
+      "sourceText": "NOTE J— FAIR VALUE DISCLOSURES",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/041",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTE K—PENSION AND OTHER POSTRETIREMENT BENEFITS",
+      "page": 132,
+      "sourceLineIds": [
+        "132|715.9122797056687|72.81640625|403.86080468749986|NOTE K—PENSION AND OTHER POSTRETIREMENT BENEFITS"
+      ],
+      "sourceSpan": {
+        "startLineId": "132|715.9122797056687|72.81640625|403.86080468749986|NOTE K—PENSION AND OTHER POSTRETIREMENT BENEFITS",
+        "endLineId": "132|715.9122797056687|72.81640625|403.86080468749986|NOTE K—PENSION AND OTHER POSTRETIREMENT BENEFITS"
+      },
+      "sourceTextLines": [
+        "NOTE K—PENSION AND OTHER POSTRETIREMENT BENEFITS"
+      ],
+      "sourceText": "NOTE K—PENSION AND OTHER POSTRETIREMENT BENEFITS",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/042",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTE L—TRUST FUNDS ADMINISTRATION AND OTHER SERVICES",
+      "page": 141,
+      "sourceLineIds": [
+        "141|445.7100294870921|72.81640625|425.82780468749996|NOTE L—TRUST FUNDS ADMINISTRATION AND OTHER SERVICES"
+      ],
+      "sourceSpan": {
+        "startLineId": "141|445.7100294870921|72.81640625|425.82780468749996|NOTE L—TRUST FUNDS ADMINISTRATION AND OTHER SERVICES",
+        "endLineId": "141|445.7100294870921|72.81640625|425.82780468749996|NOTE L—TRUST FUNDS ADMINISTRATION AND OTHER SERVICES"
+      },
+      "sourceTextLines": [
+        "NOTE L—TRUST FUNDS ADMINISTRATION AND OTHER SERVICES"
+      ],
+      "sourceText": "NOTE L—TRUST FUNDS ADMINISTRATION AND OTHER SERVICES",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "043/heading/043",
+      "label": "REVIEWED_HEADING",
+      "marker": "NOTE M—CONTINGENCIES",
+      "page": 142,
+      "sourceLineIds": [
+        "142|283.48002985608554|72.81640625|216.8938046875|NOTE M—CONTINGENCIES"
+      ],
+      "sourceSpan": {
+        "startLineId": "142|283.48002985608554|72.81640625|216.8938046875|NOTE M—CONTINGENCIES",
+        "endLineId": "142|283.48002985608554|72.81640625|216.8938046875|NOTE M—CONTINGENCIES"
+      },
+      "sourceTextLines": [
+        "NOTE M—CONTINGENCIES"
+      ],
+      "sourceText": "NOTE M—CONTINGENCIES",
+      "reviewNote": null
+    }
+  ],
+  "uncertainOccurrences": [
+    {
+      "goldStableId": "043/uncertain/0",
+      "page": 78,
+      "sourceLineIds": [
+        "78|755.731990168269|73.3056640625|252.79594531249995|Independent Auditor's Report"
+      ],
+      "sourceText": "Independent Auditor's Report",
+      "reason": "Second occurrence of the exact title 'Independent Auditor's Report' on page 78, two pages after the confirmed report heading on page 76 (source item index 3433). The table of contents lists only a single entry for this report (pointing to printed page 74, i.e. this extraction's page 76), and pages 76-78 contain almost no extracted body text (likely a scanned/image signature page), so it is unclear whether this is a repeated page-top title for a continuation page of the same multi-page report, or marks a second distinct report."
+    }
+  ]
+}

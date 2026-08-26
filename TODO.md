@@ -5397,10 +5397,30 @@ order; N3.4 does not start until N3.2/N3.3 are frozen, and R1 is not tuned in re
   not a silent rewrite, same discipline as the 057 taxonomy correction and the `b22` stale-reference
   correction before it. **Current N3 population: `keys/benchmark-n3/manifest.v2.json` -> `004`
   (legal), `030` (procurement), `043` (financial), `058` (textbook).**
-- [ ] N3.2 - reference labeling. If human review of all four is not taken on, `MODEL_ASSISTED_SILVER`
-  labels are permitted (as N1.2-S already used for 003/057), but provenance must say `SILVER_PROXY_ONLY`
-  explicitly, and R1's own output/candidate/rank must never reach the labeler's input - the same
-  blindness discipline as every other reviewed population in this project.
+- [x] N3.2 - reference labeling, `MODEL_ASSISTED_SILVER` (provenance `SILVER_PROXY_ONLY`,
+  `humanAdjudicated: false`), same discipline N1.2-S already used for 003/057. Each of the four
+  documents was labeled by a genuinely isolated agent - a fresh worktree/context with no access to this
+  branch's git history, `TODO.md`, or any other `eval`/`keys` file beyond its own single blind source
+  packet, explicitly instructed not to seek R1/R2/N1/N2/candidate/rank/pipeline information. Verified
+  after the fact, not just instructed: grepped all four outputs for candidate/rank/R1/R2/N1/N2/
+  `HeadingSpan`/`SourceFactsBuilder`/pipeline-shaped terms - the only matches are the `prohibitedEvidence`
+  schema field itself (echoed back as documentation), not leaked reasoning.
+
+  | doc | domain | items reviewed | headings | uncertain |
+  |---|---|---:|---:|---:|
+  | 004 | legal (Investment Law) | 2,688 | 93 | 0 |
+  | 030 | procurement (WB RFP, Consulting Services) | 6,273 | 239 | 5 |
+  | 043 | financial (IBRD MD&A + statements) | 7,047 | 43 | 1 |
+  | 058 | textbook (ML lecture notes) | 5,327 | 47 | 0 |
+
+  Labels: `eval/benchmark-n3/silver-labels/{stem}-n3.2-silver-model-assisted.v1.json`. Each labeler
+  independently rediscovered the same failure-class discipline this project has hit repeatedly rather
+  than being told about it: TOC/dot-leader exclusion, running-header exclusion, form-field vs.
+  outline-heading distinction (030), multi-line/wrapped-title reconstruction, cross-reference vs.
+  genuine-marker disambiguation, and (043) "(continued)" page-repeat exclusion. 030's document
+  independently has the same kind of restarting-local-scope structure 028 did (ITC/GCC-Time-Based/
+  GCC-Lump-Sum/Fraud-Attachment each renumbering from 1) and was given distinct `goldStableId` scopes for
+  the same reason, without being told 028 existed.
 - [ ] N3.3 - model-free census (candidate coverage, selected coverage, decision-relevant) per document,
   before any model or R1/baseline comparison - same discipline as A2c/B2's census work.
 - [ ] N3.4 - baseline build vs R1 build, measured independently per document, not tuned to each other:
