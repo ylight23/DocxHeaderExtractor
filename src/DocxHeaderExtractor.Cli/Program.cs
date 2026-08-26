@@ -80,6 +80,7 @@ try
         "pdf-semantic-recovery-result-eval" => RunPdfSemanticRecoveryResultEval(options),
         "pdf-hierarchy-facts-eval" => RunPdfHierarchyFactsEval(options),
         "pdf-shadow-compare" => RunPdfShadowCompare(options),
+        "pdf-human-audit-eval" => RunPdfHumanAuditEval(options),
         "pdf-tags" => await RunPdfTagsAsync(options, cts.Token),
         "pdf-bookmarks" => RunPdfBookmarks(options),
         "verify-corrupt" => await RunVerifyCorruptAsync(options, cts.Token),
@@ -1289,6 +1290,38 @@ static async Task<int> RunPdfVisualSchedulerBenchmarkAsync(CommandLineOptions o,
     return 0;
 }
 
+static int RunPdfHumanAuditEval(CommandLineOptions o)
+{
+    if (o.Inputs.Count != 1 || !File.Exists(o.Inputs[0]))
+    {
+        Console.Error.WriteLine("pdf-human-audit-eval cần đúng một human result JSON.");
+        return 2;
+    }
+
+    var root = RepositoryRoot();
+    var source = Path.Combine(root, "eval", "benchmark-n0", "audit-samples", "n1.4-silver-human-audit-source.v1.json");
+    var binding = Path.Combine(root, "eval", "benchmark-n0", "audit-samples", "n1.4-silver-human-audit-binding.v1.json");
+    var report = HumanAuditAgreementEvaluator.Evaluate(source, binding, o.Inputs[0]);
+    var json = JsonSerializer.Serialize(report, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+    if (o.OutputPath is null) Console.WriteLine(json);
+    else
+    {
+        var output = Path.GetFullPath(o.OutputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+        File.WriteAllText(output, json, new UTF8Encoding(false));
+        var disagreements = JsonSerializer.Serialize(new
+        {
+            schemaVersion = 1,
+            artifactKind = "n1_4_audit_disagreements",
+            status = "REVIEW_REQUIRED",
+            report.ClaimStatus,
+            disagreements = report.Disagreements,
+        }, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+        File.WriteAllText(Path.Combine(Path.GetDirectoryName(output)!, "audit-disagreements.v1.json"), disagreements, new UTF8Encoding(false));
+    }
+    return 0;
+}
+
 static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationToken ct)
 {
     if (o.Pipeline.DisableLlm)
@@ -1766,6 +1799,14 @@ static int RunPdfHierarchyMarkerCounterfactual(CommandLineOptions o)
 
 static string FileSha256(string path) =>
     Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
+
+static string RepositoryRoot()
+{
+    var directory = new DirectoryInfo(Directory.GetCurrentDirectory());
+    while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")))
+        directory = directory.Parent;
+    return directory?.FullName ?? Directory.GetCurrentDirectory();
+}
 
 static string HashText(string value) =>
     Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value))).ToLowerInvariant();
