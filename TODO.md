@@ -4460,6 +4460,103 @@ The last row is the important one. Separating "the glue broke the analyst" from 
 on Vietnamese" is still impossible from artifacts: both predict the same outcome, and every Vietnamese
 document reaching the analyst is glued, so there is no natural control.
 
+### C1 status, frozen
+
+| C1.1 | |
+|---|---|
+| 001 semantic loss | **PROVEN** - 0/162 |
+| deterministic gate as owner | **RULED OUT** - the cohort is by definition what the gates would not discard |
+| main analyst text damaged | **REFUTED** - see C1.3 preflight |
+
+| C1.2 | |
+|---|---|
+| `HeadingReadable` Vietnamese gluing | **PROVEN** |
+| source / extraction damage | **RULED OUT** - 169/171 source lines clean |
+| causal link to 0/162 | **NOT PROVEN** |
+| context-only contribution | **NOT PROVEN** |
+
+**C1.3 preflight refuted the counterfactual before it was run.** `PdfBlockAnalyst` sends
+`PromptSourceText(block.Text)` - a length truncation and nothing more. Over the 162-occurrence cohort,
+`block.Text` carries a glued token in **3**, while `DisplayText` carries one in **147**. The analyst
+judges clean text; the glue reaches the prompt only through neighbouring-context excerpts. Bypassing
+the repair at that boundary would have changed the surroundings and not the text under judgement, so
+the approved call was not spent on it. Context-only contribution remains a secondary hypothesis, not
+strong enough to justify its own counterfactual.
+
+### C1.4 - checkpoint-instrumented replication of 001
+
+One run, frozen B3 profile, **only** `--pdf-stage-checkpoint` added. Build revision `8ec3ed5`,
+backend OpenRouter, model `qwen/qwen3.5-9b`, wide+supplement, 160 blocks, manifest timeouts.
+
+**The zero reproduces.** `validatedHeadings: 0` again, so B3's result was not a one-off.
+
+**The analyst is not the owner.** The checkpoint holds 20 batches, all `completed`, carrying **160
+analyst decisions**: **158 `HeadingTopic`** and 2 `BodySentence`, at confidence 0.95-1.0, no reason
+strings. The role pass ran 02:32:34 to 02:34:21 - 107 seconds of a 300-second lane deadline.
+
+| owner | verdict |
+|---|---|
+| `ANALYST_NOT_PROPOSED` | **refuted** - 160 decisions returned |
+| `ANALYST_WRONG_ROLE` | **refuted** - 158 of 160 are `HeadingTopic` |
+| `ANALYST_WRONG_SPAN` / span lane | **remaining, and not distinguishable** |
+| `VALIDATOR_REJECTED` on scope/role/evidence | already ruled out - this cohort is decision-relevant |
+
+`IsEligibleHeading` needs `ValidateSpan` to pass, and that needs `decision.HeadingSpan`, which the
+role pass does not produce - spans come from a separate `ResolveHeadingSpansAsync` lane. So the loss
+is between a correct role answer and a validated structure, in the span lane. Whether that lane timed
+out or returned spans that failed validation **cannot be told from either artifact**.
+
+### The span lane is invisible, and the status field says "complete" anyway
+
+Two facts, both from reading the production path:
+
+- The span lane is **not checkpointed**. Every record in the checkpoint is the role batch lane, so a
+  span-lane outcome leaves no trace.
+- `semanticLaneStatus` is computed as
+  `semanticTimedOut || (includeSemanticHierarchyFallback && hierarchyRun.TimedOut)`. The **span run's
+  timeout is not in that expression.** A span lane that times out converts every decision to
+  `Uncertain` - and the artifact still reports `complete`.
+
+This replication shows exactly that shape: `semanticLaneStatus: complete`, timeouts 90/120/300, and
+zero validated headings from 158 correct role answers.
+
+That is the same defect M12-A2 promoted a fix for, one lane over: an authoritative runtime fact lost
+at the evidence boundary, leaving a degraded execution indistinguishable from a healthy one. It meets
+the observability gate's ambiguity test on its face, and it is **not implemented here** - the finding
+is recorded and the decision is open.
+
+- [ ] Candidate, not opened: carry the span lane's outcome into `semanticLaneStatus` (or beside it),
+  and checkpoint the span lane the way the role lane already is. Both are exact propagation of facts
+  the route already computes. Neither is attempted until it is chosen deliberately.
+- [ ] 001's owner remains **unresolved between span-lane timeout and invalid spans**. Resolving it
+  needs the instrumentation above, not another model call - a third run without it would produce the
+  same blind artifact.
+
+### The `HeadingReadable` debt, recorded separately
+
+It was found while investigating C1 and does not belong to C1's ledger.
+
+| | |
+|---|---|
+| Vietnamese `DisplayText` gluing | **PROVEN** - 92.6% on 001, 91.7% on 010 |
+| cross-document Vietnamese recurrence | **PROVEN** - not 001-specific |
+| English collateral benefit | **PROVEN** - the repair fixes real kerning damage |
+| product / semantic impact | **NOT PROVEN** |
+| remediation | **NOT JUSTIFIED** |
+
+Reopen only with a measured product impact, and never as `if Vietnamese then disable` on the evidence
+of two documents.
+
+### Meta-lesson, twice in one investigation
+
+- **A candidate id is not occurrence authority.** Ids are discovery-order assignments and shift across
+  code changes; `b22` was quoted from an old run as evidence about the current one.
+- **`DisplayText` is not the analyst's input.** It was tallied and described as analyst-facing without
+  checking the production path.
+
+Both are the same error: assigning causal meaning to a representation without re-resolving it on the
+exact production path where the decision is actually made.
+
 - [ ] **Not opened: repairing `HeadingReadable`.** The repair exists because kerning damage is real -
   092 and 056 show it - so narrowing it is a behaviour change needing its own population and collateral
   measurement, and there is as yet no evidence it would recover a single heading.
