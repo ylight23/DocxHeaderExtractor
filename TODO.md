@@ -4837,6 +4837,47 @@ that audit exists, N1.3/N2 outputs on this population may only be reported as **
 accuracy**, never as human-reviewed accuracy - and N1.3 (model-free candidate census) itself is
 model-free and can proceed independent of the audit, since it never depends on label correctness.
 
+### N1.3-S - model-free candidate/selection/eligibility census, all four documents
+
+`PdfN13SilverCandidateCensusProbe` joins each document's N1.2-S silver occurrences to the current
+candidate/rank/selection build, reusing `PdfExtractorQualityBenchmarkProbe.Classify` (the one join
+this project already trusts) rather than a second implementation of it. Identity is source authority:
+each occurrence's `sourceLineIds` are resolved against *this run's* extraction by exact line-id match;
+the silver packet's own `sourceLineExtractionFingerprint` is recomputed from the current snapshot and
+checked equal before anything is resolved, and `documentSha256` is recomputed from the docx on disk -
+re-verifying the identity fact on the exact production path rather than trusting the packet's name for
+it, the standing lesson from `b22` and the earlier N1.2 mislabeling. No model call, no retuning, no
+silver-label change. All four census artifacts reproduce byte-for-byte from the current build
+(`CommittedCensusReproducesFromTheCurrentBuild`, 4/4 pass).
+
+The loss ledger is mutually exclusive and ordered by first pipeline loss: `candidateConstructionLoss`
+(never gets a covering candidate) → `rankBudgetLoss` (full coverage exists but ranks below 160) →
+`deterministicEligibilityLoss` (selected but `IsEligibleHeading`'s model-free gates reject it) →
+`decisionRelevant` (survives all three; a real analyst answer would matter here).
+
+| document | silverReviewed | fullCandidate | selectedAt160 | answerIrrelevant | decisionRelevant | eligible for N2-S |
+|---|---:|---:|---:|---:|---:|---|
+| 003 | 230 | 226 | 129 | 1 | **128** | **yes** |
+| 029 | 160 | 149 | 3 | 0 | **3** | no |
+| 042 | 159 | 148 | 12 | 0 | **12** | no |
+| 057 | 777 | 769 | 25 | 1 | **24** | **yes** |
+
+**029 and 042 fail the frozen `decisionRelevant >= 15` rule, despite N0 having selected both into the
+review population.** N0's selection used `PdfN0ReviewPopulationBootstrapProbe`'s own `selectedAt160`/
+`decisionRelevant` figures (003: 160/158, 029: 160/113, 042: 160/52, 057: 160/100 - see N0's table
+above), which are corpus-wide candidate-pool statistics, not a join against real occurrence gold: at
+N0 time no gold existed yet to join against, so selection necessarily used a proxy. N1.3-S is the
+first measurement actually joined to reviewed occurrences, and for 029/042 the real figure is over an
+order of magnitude lower than the proxy that selected them (029: 3 vs 113 proxy; 042: 12 vs 52 proxy).
+This is not a bug found in either number - they measure different things - but it means the proxy
+rule cannot be trusted to predict real semantic-cohort eligibility, and that gap itself is worth
+carrying forward rather than smoothing into a single "eligible" figure.
+
+Do not call OpenRouter for 029 or 042 merely to produce a number: `decisionRelevant` of 3 and 12 are
+both below the frozen threshold, and the rule exists precisely to prevent spending a model call on an
+insufficient cohort. 003 and 057 are eligible; N2-S may open for either without further model-free
+work, subject to the standing silver-accuracy-claim caveat above.
+
 ### The `HeadingReadable` debt, recorded separately
 
 It was found while investigating C1 and does not belong to C1's ledger.
