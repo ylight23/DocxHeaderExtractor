@@ -5090,13 +5090,55 @@ Consolidated recovery, read from each document's own committed artifact rather t
 | 003 (Lane A, silver) | 128 | 72 | 56.3% | 82 | 73 | 9 | **11.0%** |
 
 **This is not glossed as a pass.** 003's false-positive rate among emitted blocks is roughly 6x 001's.
-Two honest, undecided readings: (a) 003 is silver-labeled, not human-reviewed, so some of the 9 may be
-real headings the silver labeler simply missed rather than genuine false positives - the audit sample
-frozen in N1.4 would resolve this but has not been run against these 9 specifically; or (b) the higher
-rate is real and legal-document headings (003) ground less cleanly under partial preservation than
-001's own domain did. Promotion is a decision for whoever owns that judgment call, not something this
-gate resolves by computing a number - the gate's job was only to make the risk measurable, which it
-now is.
+Two honest, undecided readings were possible before causal classification: (a) 003 is silver-labeled,
+not human-reviewed, so some of the 9 may be real headings the silver labeler simply missed; or (b) the
+higher rate is real semantic collateral from partial preservation. `PdfC1003RecoveredFalsePositiveAuditProbe`
+answers this directly rather than leaving it a judgment call.
+
+### 003 recovered-FP audit - 9/9 are a join artifact, not semantic false positives
+
+For each of the 9 emitted-but-unmatched blocks: exact source identity, role/span decision, validator
+result, grounding evidence, alignment branch, and every silver occurrence sharing at least one source
+line (not requiring full containment, unlike the recall join). Classified into a frozen taxonomy
+(`TRUE_MODEL_FALSE_POSITIVE`, `SILVER_REFERENCE_DISAGREEMENT`, `OCCURRENCE_JOIN_MISMATCH`,
+`SPAN_OVERREACH`, `VALIDATOR_ACCEPTED_WRONG_ROLE`, `GROUNDING_ALIGNMENT_MISASSOCIATION`,
+`UNRESOLVED`) before looking at which bucket would be convenient.
+
+**Result: 9/9 `OCCURRENCE_JOIN_MISMATCH`.** Every one of the 9 is the opening line of a real article
+silver already reviews - `Điều 6`, `14`, `15`, `61`, `66`, `71`, `83`, `84`, `85` - captured by a
+candidate that covers only 1 of that heading's 2-3 required source lines (the wrapped continuation
+line silver's occurrence also requires). The recall join's strict full-line-containment test is
+exactly what fails here, not the model. **None are duplicates**: for all 9 articles, this partial
+candidate is the *only* one that reached emission - no other candidate fully captured the complete
+heading for the same article, so this is not noise alongside a correct answer either.
+
+A classification-order bug in the first pass of this audit is recorded, not silently fixed: `Classify`
+checked a loose "starts with Điều/Chương/Mục" regex before checking source-line overlap with a real
+silver occurrence, so it initially called all 9 `SILVER_REFERENCE_DISAGREEMENT` (implying silver missed
+real headings) instead of `OCCURRENCE_JOIN_MISMATCH` (implying the *join*, not silver, missed them).
+Overlap is now checked first, since it is the stronger, more specific signal.
+
+**This resolves the 11.0% number, not just recomputes it.** The false-positive rate reported by Lane
+A's counterfactual measures the recall join's strict-containment limitation on multi-line headings,
+not model hallucination. 003's actual semantic collateral from partial-result preservation, on this
+evidence, is **0/9 genuine false positives** - materially better than the 11.0% headline figure
+suggested, and closer to 001's shape than the raw number implied.
+
+**Acceptance gate, re-scored with causal evidence in hand (frozen criteria, not moved to fit the result):**
+
+| criterion | status |
+|---|---|
+| 1. recurrence | PASS |
+| 2. material recovery | PASS |
+| 3. complete-lane neutrality | PASS |
+| 4. fail-closed semantics | PASS |
+| 5. no extra provider calls | PASS |
+| 6. false-positive collateral | **PASS - 0/9 causally genuine, 9/9 explained as a join artifact** |
+| 7. no new cross-document regression | not checked beyond 001/003 - only two documents have this evidence |
+
+Six of seven criteria now pass on this evidence; the seventh was never in scope for a two-document
+audit and is not manufactured here. Promotion is still a decision for whoever owns it - this closes
+the evidentiary gap the false-positive rate opened, it does not itself promote the fix.
 
 ### 057 representation audit - two sub-owners, two different findings, no fix promoted
 
