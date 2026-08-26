@@ -4587,14 +4587,35 @@ route settings match the frozen manifest. Semantic completed 20 batches / 160 bl
 | `ROLE_NO_DECISION` / `ROLE_NON_HEADING` | 0 |
 | `SPAN_BATCH_EXCEPTION` | 0 |
 | `SPAN_TIMEOUT` | **68** |
-| `SPAN_RESOLVED_BUT_INVALID` | **94** |
+| `SPAN_RESOLVED` (checkpoint only) | **94** |
 | `VALIDATED` | 0 |
 
-Thus C1's legal collapse is not analyst role failure. It has two observed downstream branches:
-timeout prevents 68 proposed headings from receiving a span, while 94 resolved pointers still fail
-before `ValidatedStructure`. Do **not** increase timeout or change the validator from this one
-document alone. The next owner question is narrow and offline: inspect pointer/validation reasons for
-the 94 resolved spans; any timeout remediation needs its own cost and cross-document gate.
+Thus C1's legal collapse is not analyst role failure. At this point the 94 resolved checkpoint spans
+were **not yet known invalid**: a partial timeout discards the whole `spanAnalysis` value before the
+product runs `PdfProposalValidator`. C1.6 therefore replays actual validator predicates offline rather
+than calling the checkpoint result invalid.
+
+### C1.6 - offline span validation and throughput audit
+
+**Lane A (94 resolved checkpoint pointers):** all **94/94** replay as `ValidateSpan == valid`, with
+no reason, and `PdfProposalValidator.Trace` reports `eligible`. They were not rejected by a pointer
+or scope predicate. The production wrapper replaces even these completed results with role decisions
+marked `Uncertain` when the enclosing span lane returns `partial_timeout`; their runtime disposition
+is therefore `discarded_by_span_partial_timeout`.
+
+**Lane B (68 without a recorded pointer):** the checkpoint has 20 semantic batches / 160 blocks and
+20 completed span batches / 80 blocks. Semantic's last completion is 10:03:57; span's first is
+10:03:59 and last is 10:05:16. The completed-span checkpoint window is 77.2 seconds; consecutive
+batch intervals have median 3.48 seconds, min 1.61, max 9.11. The old checkpoint has no request-start
+or timeout timestamp, so it cannot prove the precise timeout instant or distinguish a pre-first-batch
+stall. It does prove no exception and normal completed-batch throughput before the lane ended.
+
+**Corrected C1 owner statement:** role classification is refuted as the dominant owner. On this run,
+the **span-lane deadline plus its all-or-nothing timeout wrapper is causal for all 162 first losses**:
+68 never receive a checkpointed pointer; 94 receive valid pointers which the wrapper discards. This
+does **not** by itself justify a timeout increase: at observed median throughput, 40 heading batches
+would need roughly 139 seconds, and changing the deadline needs a separate cost and cross-document
+gate. Do not change the validator or exception swallow; neither was causal here.
 
 - [ ] 001's owner is still unresolved between span-lane timeout and span-resolution failure, and now
   **one instrumented replication answers both branches at once**: `spanLaneStatus` distinguishes

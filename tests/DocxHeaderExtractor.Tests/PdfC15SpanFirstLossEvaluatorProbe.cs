@@ -74,9 +74,10 @@ public sealed class PdfC15SpanFirstLossEvaluatorProbe
         if (!spanMatches.Any(item => item.Block.Resolved))
             return new Outcome(occurrence.GoldStableId, occurrence.GoldText, "SPAN_UNRESOLVED", roles.Select(block => block.Id).ToArray(), spanMatches.Select(item => item.Block.Id).ToArray());
 
-        // This run's authoritative route artifact emitted no validated structures. A pointer existed,
-        // therefore the first loss is downstream pointer validity/validation, not a span timeout.
-        return new Outcome(occurrence.GoldStableId, occurrence.GoldText, "SPAN_RESOLVED_BUT_INVALID",
+        // A partial timeout causes the lane wrapper to discard even spans completed before its
+        // deadline. The artifact alone does not establish that a recorded pointer was invalid.
+        // C1.6 replays ValidateSpan offline before assigning any validation reason.
+        return new Outcome(occurrence.GoldStableId, occurrence.GoldText, "SPAN_RESOLVED",
             roles.Select(block => block.Id).ToArray(), spanMatches.Select(item => item.Block.Id).ToArray());
     }
 
@@ -93,7 +94,8 @@ public sealed class PdfC15SpanFirstLossEvaluatorProbe
     private sealed record PreflightOccurrence(string GoldStableId, string GoldText, IReadOnlyList<string> RequiredLineIds);
     private sealed record CheckpointEntry(string Lane, CheckpointPayload Payload);
     private sealed record CheckpointPayload(string? FailureClass, IReadOnlyList<CheckpointBlock> Blocks);
-    private sealed record CheckpointBlock(string Id, string? Role, IReadOnlyList<string>? LineIds, bool Resolved);
+    private sealed record CheckpointBlock(string Id, string? Role, IReadOnlyList<string>? LineIds,
+        bool Resolved, int? Start, int? End);
     private sealed record Outcome(string GoldStableId, string GoldText, string FirstLoss,
         IReadOnlyList<string> DebugRoleCandidateIds, IReadOnlyList<string> DebugSpanCandidateIds);
 }
