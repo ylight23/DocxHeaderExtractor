@@ -2,6 +2,10 @@
   "schemaVersion": 1,
   "artifactKind": "n2s_057_pdf_docx_divergence_taxonomy",
   "usesModel": false,
+  "supersededBy": {
+    "artifact": "eval/benchmark-n0/n2-s/counterfactual/057-divergence-taxonomy-correction.v1.json",
+    "reason": "The tally below (21/1/1) does not exclude InTableOfContents paragraphs and conflates real body anchors with TOC-only listing-line matches. Corrected breakdown: 13/22 have a real body match, 11/22 of those carry NumberingId, 9/22 match only a TOC line. This file is kept unmodified below as the original evidence, not deleted or silently rewritten."
+  },
   "hypothesisTested": "DOCX Word-native auto-numbering (NumberingId set, number not literal paragraph text) vs the PDF render, which bakes the visible number into extracted line text.",
   "tally": {
     "DOCX_AUTO_NUMBERED_TITLE_ONLY": 21,

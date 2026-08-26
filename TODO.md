@@ -5321,6 +5321,82 @@ not deferred to "maybe later."
 discipline C1's earlier close used: the decision not to pursue R2 further is made from the bounded
 investigation's own evidence, not from a peek at N3.
 
+### 057 / R2 - closure ledger
+
+| | |
+|---|---|
+| Observed loss | PROVEN |
+| Original divergence audit (21/23) | CORRECTED - contaminated by unfiltered TOC paragraphs |
+| Marker-grammar limitation | PROVEN |
+| Span-boundary limitation | PROVEN |
+| Missing body anchor | PROVEN for 9/22 |
+| R2-v1 effectiveness | REFUTED (0/22 real-target recovery) |
+| R2-v2 bounded search (CF1/CF2/CF3) | EXHAUSTED - best result 3/22 |
+| Safe remediation | NOT JUSTIFIED |
+
+**STATUS: CLOSED / TRIGGER-GATED DEBT.**
+
+Terminology, held deliberately precise: TOC contamination is a defect in the *original diagnostic
+evidence* (an unfiltered paragraph search), not a third production root cause - production alignment
+already excludes `InTableOfContents` paragraphs and always did. The corrected 057 picture is: 13/22
+targets have a real (non-TOC) body paragraph, 11/22 of those carry `NumberingId`, and 9/22 match only a
+TOC line with no body anchor at all in the production population - a population fact, not a bug to fix.
+
+Reopen triggers - independent new evidence only, never "057 still misses headings" alone:
+- a different corpus document reproduces the same marker-grammar failure with material impact;
+- a new source representation supplies a body anchor for one of the 9 currently-anchor-less targets;
+- a new deterministic span/source reconciliation invariant is proposed and tested;
+- a product requirement changes to explicitly permit non-exact/fuzzy grounding.
+
+Explicitly not permitted as a way to chase the remaining ~19: fuzzy/tolerant matching, a
+057-specific dictionary or heuristic, or loosening exact matching generally - all outside the frozen
+investigation bound.
+
+**Correction artifact**, same discipline as the `b22` stale-candidate-id correction earlier in this
+project - wrong evidence is superseded explicitly, never silently rewritten:
+`eval/benchmark-n0/n2-s/counterfactual/057-divergence-taxonomy-correction.v1.json` supersedes (does not
+delete or modify the row data of) `057-pdf-docx-divergence-taxonomy.v1.json`, which now carries a
+`supersededBy` pointer back to the correction.
+
+### N3 remediation set - frozen before N3 opens
+
+| | |
+|---|---|
+| R1 (003 partial-span preservation) | **ACTIVE CANDIDATE** |
+| R2 (057 auto-numbered title-only alignment) | **NONE** - excluded from the remediation set, closed trigger-gated above |
+
+No other production change is in scope for N3. N3 is not a vehicle to continue debugging 057.
+
+### N3 validation protocol - frozen before any N3 label or model result is seen
+
+Sequence: N3.0 population freeze -> N3.1 blind source packets -> N3.2 reference labeling -> N3.3
+model-free census -> N3.4 baseline-vs-R1 evaluation -> N3.5 promotion decision. Steps are gated in
+order; N3.4 does not start until N3.2/N3.3 are frozen, and R1 is not tuned in response to any N3 result
+- a failing N3 blocks promotion, it does not trigger a patch-and-rerun against the same holdout.
+
+- [x] N3.0/N3.1 - population freeze and blind source packets for four fresh documents never used to
+  design or debug R1 or R2: `002` (legal), `026` (procurement), `043` (financial), `058` (textbook).
+  Manifest: `keys/benchmark-n3/manifest.v1.json`. Packets: `eval/benchmark-n3/source-packets/*.v1.json`
+  (`PdfN3FreshHoldoutBootstrapProbe`). Brought onto this branch by cherry-pick from
+  `n3-audit-bootstrap` (`21d8683`), which had diverged before R2's investigation and closure landed
+  here; verified additive-only via an isolated worktree test-suite comparison before merging.
+- [ ] N3.2 - reference labeling. If human review of all four is not taken on, `MODEL_ASSISTED_SILVER`
+  labels are permitted (as N1.2-S already used for 003/057), but provenance must say `SILVER_PROXY_ONLY`
+  explicitly, and R1's own output/candidate/rank must never reach the labeler's input - the same
+  blindness discipline as every other reviewed population in this project.
+- [ ] N3.3 - model-free census (candidate coverage, selected coverage, decision-relevant) per document,
+  before any model or R1/baseline comparison - same discipline as A2c/B2's census work.
+- [ ] N3.4 - baseline build vs R1 build, measured independently per document, not tuned to each other:
+  semantic role survival, span resolved, validated, grounded, emitted; precision; occurrence recall;
+  exact source-span correctness; `partial_timeout` behavior; `complete`-lane neutrality (R1 must not
+  touch the complete-lane path at all); `not_run`/exception fail-closed behavior preserved. **Gate #7,
+  the one this whole N3 round exists to answer**: does R1 create a new regression on fresh documents
+  never used to design or debug it? R1 is not patched after seeing N3 and re-run against the same
+  holdout - a regression here is a finding, not a bug to fix before re-measuring.
+- [ ] N3.5 - promotion decision. Material recovery with no meaningful collateral -> R1 promotion gate
+  PASS. Any regression on the fresh holdout -> R1 promotion FAIL/BLOCK, decided from this evidence, not
+  deferred or re-tested against a "cleaned up" N3.
+
 ### 057 representation audit - two sub-owners, two different findings, no fix promoted
 
 Per-target: `PdfN2S057RepresentationAuditProbe` rebuilds each of the 23 undelivered occurrences' own
