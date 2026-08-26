@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n14_census_hash_authority_audit",
+  "laneJPolicyCommit": "80fa52e",
+  "history": {
+    "censusCreatedBy": "573d018ef6d0b6f83b137665b9f701347e7b38fd",
+    "historicalPreflightCreatedBy": "03d985f36fd4428033e8ee15606d134b91ced029",
+    "historicalWriter": "PdfN14SilverAuditAndN2PreparationProbe.BuildPreflight",
+    "historicalWriterBehavior": "Sha256(File.ReadAllBytes(CensusPath(root, document)))"
+  },
+  "classification": [
+    "RUNTIME_EOL_TRANSFORM_PROVEN",
+    "PRELIGHT_HASH_CORRECT_FOR_EXECUTION_BYTES",
+    "PROBE_CONFLATES_HASH_SEMANTICS"
+  ],
+  "censusEvidence": [
+    {
+      "stem": "003",
+      "path": "eval/benchmark-n0/census/003-n1.3-census.v1.json",
+      "committedArtifactRawSha256": "601cc8dca07e2dfe9e49e873c651626974f5999c4d402abfa2866b924ecf7bfe",
+      "reconstructedHistoricalCrlfExecutionInputSha256": "99b7d66e8eef22aae35312be5bfe6930312af3f3daa1a5b3e7a5223b94d768c2",
+      "historicalPreflightCensusArtifactSha256": "99b7d66e8eef22aae35312be5bfe6930312af3f3daa1a5b3e7a5223b94d768c2",
+      "exactCrlfReconstructionMatch": true
+    },
+    {
+      "stem": "057",
+      "path": "eval/benchmark-n0/census/057-n1.3-census.v1.json",
+      "committedArtifactRawSha256": "aef54aa72ded770d5a4482db1f42c62086af4d018fce191ea09653f396db816c",
+      "reconstructedHistoricalCrlfExecutionInputSha256": "d6eafdde8eeeb2107e4b47ab99102cb864965a5756e1b55c3fdecddb6d27f635",
+      "historicalPreflightCensusArtifactSha256": "d6eafdde8eeeb2107e4b47ab99102cb864965a5756e1b55c3fdecddb6d27f635",
+      "exactCrlfReconstructionMatch": true
+    }
+  ],
+  "semantics": {
+    "COMMITTED_ARTIFACT_RAW_SHA": "Exact bytes of the version-controlled census blob.",
+    "EXECUTION_INPUT_RAW_SHA": "Exact bytes read by the historical N2 preflight process at runtime.",
+    "historicalPreflightField": "Retained unchanged as EXECUTION_INPUT_RAW_SHA provenance despite its legacy censusArtifactSha256 field name."
+  },
+  "verifierRemediation": {
+    "historicalPreflightRewritten": false,
+    "censusArtifactRewritten": false,
+    "expectedHashesRewritten": false,
+    "historicalContract": "Each persisted census hash must equal the deterministic LF-to-CRLF reconstruction of its committed census blob.",
+    "futureContract": "Current generated N2 manifest/preflight census hashes must equal the raw committed census blob bytes protected by Lane J -text policy.",
+    "structuralInvariant": "After removing only censusArtifactSha256 from N2 manifest/preflight, historical and current JSON structures are identical."
+  },
+  "contentMutation": false,
+  "modelOrProviderCall": false,
+  "verification": {
+    "freshCheckout": "Lane J -text policy yields LF worktree bytes for protected raw-hash artifacts under core.autocrlf=true.",
+    "historicalPreflightUntouched": true,
+    "committedCensusUntouched": true,
+    "n12RawBundleLocks": "passed",
+    "n14AuthorityVerifier": "passed",
+    "n0CanonicalParentManifest": "passed",
+    "fullSuite": "15 failed / 1124 passed; exactly the established frozen failure count"
+  },
+  "status": "PROMOTABLE"
+}
