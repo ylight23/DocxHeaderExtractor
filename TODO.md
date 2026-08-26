@@ -4948,6 +4948,54 @@ left open, not silently declared fixed.
 `checkpoints/{stem}-n2-s.jsonl`, and must not begin while another session may be writing to this same
 `eval/benchmark-n0/n2-s/` directory.
 
+### N2-S canonical execution and reconciliation - closed
+
+The worktree was confirmed idle (clean `git status`, in sync with `origin`, manifest hash matching its
+frozen sidecar) before either call. 003 then 057, `pdf-hierarchy-facts --openrouter --openrouter-model
+qwen/qwen3.5-9b`, wide+supplement, 160 blocks, `--pdf-stage-semantic-concurrency 2`, checkpoint
+enabled, written to `runs/{stem}-n2-s-run.v1.json` / `checkpoints/{stem}-n2-s.jsonl` exactly as the
+manifest requires. `PdfN2SContractGuardProbe.CanonicalRunIfPresentMatchesTheFrozenProfileExactly`
+confirms both runs' `routeConfigSha256` match the frozen profile bit-for-bit. No retry, no tuning.
+
+| document | semanticLaneStatus | spanLaneStatus | items | canonicalGroundings |
+|---|---|---|---:|---:|
+| 003 | complete | **partial_timeout** | 0 | 0 |
+| 057 | complete | complete | 35 | 9 |
+
+**003 collapses again at the correct concurrency.** The earlier off-protocol run (concurrency 1) also
+showed `partial_timeout`; this canonical run at concurrency 2 shows the identical outcome. The
+concurrency mismatch is therefore not what caused 003's collapse - it reproduces the same span-lane
+`partial_timeout` / all-or-nothing-discard mechanism found in C1.6/C1.7 on 001, now on a third
+document, at the profile that was actually supposed to run. Cross-document recurrence, previously
+"NOT PROVEN" in C1.8, now has a second and third clean instance.
+
+`PdfN2SReconciliationProbe` joins each canonical run's `items`/`canonicalGroundings` to N1.3-S's
+decisionRelevant cohort by source line id (never candidate id) and reports conditional semantic
+recall separately from end-to-end recall:
+
+| document | decisionRelevant | validated | emitted | validated/decisionRelevant | emitted/decisionRelevant |
+|---|---:|---:|---:|---:|---:|
+| 003 | 128 | 0 | 0 | **0.0%** | **0.0%** |
+| 057 | 24 | 23 | 0 | **95.8%** | **0.0%** |
+
+**057 shows two distinct, separable loss points.** The semantic role/span lanes process the
+decisionRelevant cohort almost perfectly (23/24 validated) - contradicting any hypothesis that Qwen9B
+itself cannot handle this cohort. But **0 of those 23 validated occurrences reach
+`canonicalGroundings`**: only 9 of the document's 35 validated headings survive to the emitted
+product at all, and by construction none of the 9 happen to be in the decisionRelevant cohort. This
+is not a semantic-lane failure; it isolates loss to the grounding/alignment stage, a mechanism
+distinct from 003's span-lane timeout.
+
+**What this settles for the ranking question raised before N2-S.** N1.3-S's model-free census showed
+ranking/budget as the dominant loss for all four documents; the standing question was whether the
+semantic lane would collapse for the two eligible documents regardless. The answer diverges by
+document: 057 shows the semantic lane basically works (95.8% would-be recall before grounding), so
+ranking/budget remains its dominant optimization target if remediation is pursued. 003 shows the
+semantic lane itself collapses before ranking/budget's effect can even be observed downstream -
+ranking is not 003's first loss on this evidence; the span-lane timeout is. Neither conclusion
+authorizes a production change here: this is silver/proxy evidence (N1.2-S, not human-reviewed), a
+single run each, and no collateral/promotion-gate work has been done.
+
 ### The `HeadingReadable` debt, recorded separately
 
 It was found while investigating C1 and does not belong to C1's ledger.

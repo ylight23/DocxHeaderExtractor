@@ -1,0 +1,790 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2_s_reconciliation",
+  "documentId": "003",
+  "identity": "documentSha256 (via run/census) \u002B page \u002B sourceLineIds; candidateId is diagnostics-only within one run",
+  "laneStatus": {
+    "semanticLaneStatus": "complete",
+    "spanLaneStatus": "partial_timeout"
+  },
+  "denominators": {
+    "decisionRelevant": 128,
+    "validated": 0,
+    "emitted": 0
+  },
+  "conditionalSemanticRecall": {
+    "validatedOverDecisionRelevant": 0,
+    "emittedOverDecisionRelevant": 0,
+    "note": "Conditional on N1.3-S\u0027s decisionRelevant cohort, not an end-to-end recall over all reviewed occurrences."
+  },
+  "occurrences": [
+    {
+      "stableId": "003/article/1",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/2",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/3",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/4",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/7",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/9",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/10",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/11",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/12",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/16",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/18",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/19",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/20",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/21",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/23",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/24",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/26",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/27",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/28",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/29",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/30",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/31",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/32",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/33",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/34",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/35",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/39",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/40",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/41",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/42",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/43",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/44",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/section/1",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/46",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/47",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/49",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/50",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/51",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/52",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/53",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/54",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/55",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/56",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/57",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/58",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/59",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/60",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/62",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/63",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/65",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/67",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/68",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/69",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/70",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/73",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/section/2",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/74",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/75",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/76",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/78",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/80",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/81",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/82",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/88",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/90",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/91",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/92",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/94",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/96",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/97",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/98",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/99",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/100",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/101",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/104",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/105",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/106",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/107",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/108",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/110",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/111",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/112",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/113",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/114",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/115",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/117",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/118",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/119",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/120",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/122",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/123",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/124",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/125",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/128",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/129",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/130",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/131",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/132",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/133",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/134",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/136",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/137",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/138",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/139",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/140",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/141",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/142",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/143",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/145",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/146",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/148",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/150",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/151",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/153",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/154",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/155",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/156",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/157",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/158",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/159",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/160",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/161",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/164",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/170",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/178",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/chapter/IX",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/214",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "003/article/215",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    }
+  ]
+}
