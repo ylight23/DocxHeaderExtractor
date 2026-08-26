@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "c1_partial_preservation_collateral_gate",
+  "usesModel": false,
+  "neutralityCheck": "CompleteLaneReconstructionIsByteForByteIdenticalToTheLiveRun - locked, passing",
+  "failClosedChecks": [
+    "ASpanLaneThatNeverRanIsNotReportedAsComplete (PdfSpanLaneProvenanceTests) - not_run is never read as complete",
+    "SemanticLaneMayBeCompleteWhileTheSpanLaneTimedOut (PdfSpanLaneProvenanceTests) - the two statuses never collapse into one",
+    "The span batch exception path (PdfBlockAnalyst\u0027s catch block) still records failureClass and still discards that batch\u0027s spans - unchanged by this gate"
+  ],
+  "recovery": [
+    {
+      "document": "001",
+      "decisionRelevant": 162,
+      "emittedDecisionRelevantOccurrences": 54,
+      "recoveryRate": 0.3333,
+      "emittedTotal": 55,
+      "emittedWithGoldOrSilverOccurrence": 54,
+      "emittedWithoutGoldOrSilverOccurrence": 1,
+      "falsePositiveRateAmongEmitted": 0.0182
+    },
+    {
+      "document": "003",
+      "decisionRelevant": 128,
+      "emittedDecisionRelevantOccurrences": 72,
+      "recoveryRate": 0.5625,
+      "emittedTotal": 82,
+      "emittedWithGoldOrSilverOccurrence": 73,
+      "emittedWithoutGoldOrSilverOccurrence": 9,
+      "falsePositiveRateAmongEmitted": 0.1098
+    }
+  ],
+  "interpretation": "001\u0027s evidence is human-reviewed gold; 003\u0027s is N1.2-S silver. The false-positive rate is materially higher on 003 (silver, procedurally different document) than on 001 (gold) - this is not glossed as automatically passing the collateral gate; it is the evidence the promotion decision must weigh."
+}

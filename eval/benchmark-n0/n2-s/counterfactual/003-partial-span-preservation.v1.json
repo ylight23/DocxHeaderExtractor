@@ -14,12 +14,15 @@
     "spanBlocksResolved": 88
   },
   "decisionRelevant": 128,
+  "silverHeadingOccurrenceCount": 230,
   "partialPreserve": {
     "validatedBlocks": 87,
     "validatedDecisionRelevantOccurrences": 75,
     "groundedBlocks": 83,
     "groundedDecisionRelevantOccurrences": 73,
     "emittedBlocks": 82,
-    "emittedDecisionRelevantOccurrences": 72
+    "emittedDecisionRelevantOccurrences": 72,
+    "emittedWithSilverOccurrence": 73,
+    "emittedWithoutSilverOccurrence": 9
   }
 }

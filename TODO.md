@@ -5072,6 +5072,62 @@ windows differ systematically from the 2 `WindowFragment` successes is not yet t
 **Ranking remains on hold**, exactly as flagged: raising 057's `selected@160` budget without addressing
 `WindowFragment` grounding/alignment would very plausibly still emit zero of these 23 occurrences.
 
+### 003 collateral/cost gate - measured, promotion decision still open
+
+`PdfC1PartialPreservationCollateralGateProbe` locks the two facts the gate needed. **Neutrality:** on
+057 (a complete span lane, nothing incomplete to preserve), the independently-reconstructed emitted
+candidate id set is byte-for-byte identical to the live canonical run's `canonicalGroundings`
+(`CompleteLaneReconstructionIsByteForByteIdenticalToTheLiveRun`) - the proposed policy is a true no-op
+whenever there is nothing to recover. **Fail-closed:** unchanged, already locked elsewhere
+(`ASpanLaneThatNeverRanIsNotReportedAsComplete`, `SemanticLaneMayBeCompleteWhileTheSpanLaneTimedOut`,
+and the span-batch exception path, which still discards that batch and still records `failureClass`).
+
+Consolidated recovery, read from each document's own committed artifact rather than restated by hand:
+
+| document | decisionRelevant | emitted (decision-relevant) | recovery | emitted total | with real occurrence | without | false-positive rate |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 001 (C1.7, gold) | 162 | 54 | 33.3% | 55 | 54 | 1 | **1.8%** |
+| 003 (Lane A, silver) | 128 | 72 | 56.3% | 82 | 73 | 9 | **11.0%** |
+
+**This is not glossed as a pass.** 003's false-positive rate among emitted blocks is roughly 6x 001's.
+Two honest, undecided readings: (a) 003 is silver-labeled, not human-reviewed, so some of the 9 may be
+real headings the silver labeler simply missed rather than genuine false positives - the audit sample
+frozen in N1.4 would resolve this but has not been run against these 9 specifically; or (b) the higher
+rate is real and legal-document headings (003) ground less cleanly under partial preservation than
+001's own domain did. Promotion is a decision for whoever owns that judgment call, not something this
+gate resolves by computing a number - the gate's job was only to make the risk measurable, which it
+now is.
+
+### 057 representation audit - two sub-owners, two different findings, no fix promoted
+
+Per-target: `PdfN2S057RepresentationAuditProbe` rebuilds each of the 23 undelivered occurrences' own
+required-lines-only text (dropping every other line the `WindowFragment` candidate also carries) and
+tests it against `PdfBlockGrounder`'s real `LooksGroundableText` shape (replicated verbatim, since
+private) and against literal presence in the DOCX paragraph population the live alignment matcher
+searched.
+
+**Sub-owner A (14 `GROUNDING_VALIDATOR_REJECTION`) - not composite noise, a numbering-depth artifact.**
+Only 4/14 required-only texts pass the shape gate. The other 10 fail for an exact, deterministic
+reason visible in the text itself: their marker is **three-level decimal** (`10.0.1`, `11.3.1`,
+`24.1.1`, `15.8.1`, `24.7.1`, `30.13.1`, `31.3.2`, `45.1.4`, `54.4.1`, `76.10.2`) - the marker alone
+contains 2 literal periods, which is exactly what `LooksGroundableText`'s `>= 2 periods` check exists
+to reject (aimed at prose/TOC shape, not multi-level numbering). All 4 that pass have a two-level
+marker (`12.3`, `22.4`, `23.2`, `76.4`). This means a source-preserving representation fix alone would
+recover 4/14 immediately; the other 10 need the text-shape heuristic itself to tolerate legitimate
+multi-level decimal markers, a second and distinct question this audit does not attempt to answer.
+
+**Sub-owner B (9 `NO_DOCX_SOURCE_ANCHOR`) - not a matcher problem.** 0/9 required-only canonical texts
+exist verbatim anywhere in the DOCX paragraph population the live matcher searched. This rules out "the
+matcher's search strategy missed it" - there was nothing present to find. What remains open is *why*:
+whether the PDF's own extracted text differs from the DOCX's real text at these points, or the DOCX
+segments the same heading across paragraph boundaries differently than the PDF window construction
+assumes. Distinguishing those needs a per-occurrence DOCX/PDF text diff, not attempted here.
+
+**Neither sub-owner has a promoted remediation candidate.** The `WindowFragment` correlation, the
+periods-heuristic mechanism for sub-owner A, and the verbatim-absence fact for sub-owner B are now all
+PROVEN facts, not hypotheses - but "loosen the periods check for N-level markers" and "why doesn't the
+DOCX contain this text" are each their own, separately gated piece of work.
+
 ### The `HeadingReadable` debt, recorded separately
 
 It was found while investigating C1 and does not belong to C1's ledger.

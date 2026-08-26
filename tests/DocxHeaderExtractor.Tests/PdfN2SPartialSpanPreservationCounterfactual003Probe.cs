@@ -110,6 +110,15 @@ public sealed class PdfN2SPartialSpanPreservationCounterfactual003Probe
         }
         var emittedIds = alignment.Headings.Select(h => h.SourceId!).ToArray();
 
+        // Precision/false-positive risk: does an emitted candidate correspond to ANY silver heading
+        // occurrence at all (not only the 128 decisionRelevant ones), or none? Mirrors C1.7's
+        // emittedWithReviewedGoldOccurrence/emittedWithoutReviewedGoldOccurrence split for 001, so the
+        // two documents' collateral risk is reported the same way.
+        bool EmittedMatchesAnySilverOccurrence(string candidateId) =>
+            bySource.TryGetValue(candidateId, out var provenance) &&
+            lineIdsByStableId.Values.Any(required => required.All(line => provenance.LineIds.Contains(line, StringComparer.Ordinal)));
+        var emittedWithSilverOccurrence = emittedIds.Count(EmittedMatchesAnySilverOccurrence);
+
         return new
         {
             schemaVersion = 1,
@@ -124,6 +133,7 @@ public sealed class PdfN2SPartialSpanPreservationCounterfactual003Probe
                 spanBlocksResolved = spans.Count,
             },
             decisionRelevant = decisionRelevantIds.Length,
+            silverHeadingOccurrenceCount = lineIdsByStableId.Count,
             partialPreserve = new
             {
                 validatedBlocks = validated.Count,
@@ -132,6 +142,8 @@ public sealed class PdfN2SPartialSpanPreservationCounterfactual003Probe
                 groundedDecisionRelevantOccurrences = DecisionRelevantCovered(groundedIds),
                 emittedBlocks = alignment.Headings.Count,
                 emittedDecisionRelevantOccurrences = DecisionRelevantCovered(emittedIds),
+                emittedWithSilverOccurrence,
+                emittedWithoutSilverOccurrence = emittedIds.Length - emittedWithSilverOccurrence,
             },
         };
     }
