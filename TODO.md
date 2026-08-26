@@ -4394,6 +4394,82 @@ output eligibility.
 **The end-to-end product figure (C) stays closed** until a product-facing question requires it, and it
 must then be reported with the known debts attached rather than as an extractor score.
 
+## C1 - 001's zero semantic survival: input census and glue provenance
+
+Opened as a **narrow follow-up to find an owner**, not to fix anything. B3 measured 0 of 162
+conditional semantic recall on 001 while 041 and 056 both returned 15 of 15.
+
+### C1.1 - model-free input census (162 decision-relevant occurrences)
+
+The structural input is uniform and correct, which rules out the easy answers: 162/162 carry a
+structural marker and a loose labelled marker, 160/162 parse as the `labelled` family, 162/162 sit in
+`document_body` under the `legal` regime, 155/162 carry a recognised legal domain role, 162/162 have
+trusted evidence origins, and 161/162 receive an identical context shape. Nothing malformed reaches
+the deterministic gates - by construction, since this cohort is the one those gates would not discard.
+
+What separates the cohort is token shape: **147/162 (90.7%)** carry a token longer than twelve
+characters, against 2/15 on 041, 3/15 on 056 and 3/18 on 054 - the three cohorts the semantic lane did
+survive. The heading text reads `Điều 1. Phạmviđiềuchỉnh` where the title is `Phạm vi điều chỉnh`.
+
+### C1.2a - the glue is ours, and it is not in extraction
+
+Provenance only, occurrence identity, no repair attempted. Comparing the PDF text layer, the source
+line and the analyst-facing text over the cohort's 171 source lines: **169/171 are `NO_GLUE` at the
+source line**. `Điều 1. Phạm vi điều chỉnh` extracts correctly, longest token 5.
+
+So `PdfLineExtraction` is **not** the producer, and the PDF is not damaged. This corrects the reading
+C1.1 invited: the glue appears later, in `PdfSemanticBlock.DisplayText`, which is
+`PdfTextUtilities.HeadingReadable(Text)`.
+
+**The producer, exactly.** `HeadingReadable` repairs kerning-fragmented words by joining runs of short
+letter-tokens with `string.Concat`. A token counts as a fragment when it is at most five letters, all
+lowercase, and **absent from a hard-coded English stop-list** (`a, an, and, as, at, by, for, from, in,
+into, is, must, not, of, on, or, should, that, the, these, this, those, to, vs, with`). Vietnamese
+words are mostly at most five letters and no Vietnamese function word is in that list, so
+`Phạm | vi | điều | chỉnh` is read as one fragmented word and glued.
+
+### C1.2b - control: the transform is language-dependent, measured
+
+Same population definition in every document - source lines carrying a structural marker - documents
+fixed before looking at any result.
+
+| doc | language | marked lines | glued (clean before, long token after) | rate |
+|---|---|---:|---:|---:|
+| 001 | vi | 2590 | 2398 | **92.6%** |
+| 010 | vi | 421 | 386 | **91.7%** |
+| 032 | en | 1480 | 146 | 9.9% |
+| 041 | en | 840 | 45 | 5.4% |
+| 056 | en | 1085 | 77 | 7.1% |
+| 092 | en | 230 | 18 | 7.8% |
+
+**Not 001-specific:** 010 is a second Vietnamese document at 91.7%. Where the transform fires on
+English it is doing its intended job on genuine kerning damage
+(`Ind ivid ua l pri nt` -> `Individualprint`), imperfectly.
+
+### What this establishes, and what it does not
+
+| | |
+|---|---|
+| source text quality | **not the owner** - source lines are clean |
+| `PdfLineExtraction` | **not the owner** - spaces present in line text |
+| deterministic producer | **identified**: `HeadingReadable` fragment repair, English-shaped heuristic |
+| language dependence | **PROVEN by measurement**, two Vietnamese documents at ~92% vs four English at 5-10% |
+| cause of 0/162 | **NOT PROVEN** |
+
+The last row is the important one. Separating "the glue broke the analyst" from "the analyst is weak
+on Vietnamese" is still impossible from artifacts: both predict the same outcome, and every Vietnamese
+document reaching the analyst is glued, so there is no natural control.
+
+- [ ] **Not opened: repairing `HeadingReadable`.** The repair exists because kerning damage is real -
+  092 and 056 show it - so narrowing it is a behaviour change needing its own population and collateral
+  measurement, and there is as yet no evidence it would recover a single heading.
+- [ ] Decision pending on how to test causality. The originally planned checkpoint replication answers
+  *what the analyst did* (not proposed / wrong role / wrong span) but not *why*, and cannot separate
+  the two confounded explanations. A single diagnostic counterfactual - one 001 run with the fragment
+  repair withheld for this cohort only, everything else frozen, compared against the existing B3
+  artifact - would test causality directly on one variable. It costs one model call and it changes
+  what the analyst sees, so it is a decision, not a next step.
+
 ## Decision gate
 
 - [ ] A/B remediation is deliberately not scheduled. Both are confirmed debt with promotion gates
