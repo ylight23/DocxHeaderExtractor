@@ -4878,6 +4878,39 @@ both below the frozen threshold, and the rule exists precisely to prevent spendi
 insufficient cohort. 003 and 057 are eligible; N2-S may open for either without further model-free
 work, subject to the standing silver-accuracy-claim caveat above.
 
+### N1.4 / N2-S preparation - closed, no live provider call
+
+`PdfN14SilverAuditAndN2PreparationProbe` freezes the safe lanes before either N2-S call. Its
+reviewer-facing packet has source facts only and contains **119 occurrences**: every N1.2-S
+`MEDIUM` heading for 029 (37) and 057 (2), plus a deterministic SHA-256 stratified sample of ten
+heading and ten non-heading occurrences for each of 003/029/042/057. The separate binding artifact
+holds the silver label/confidence and selection reason solely for later agreement/error calculation;
+the reviewer packet serializes none of them and no pipeline decision field.
+
+`n1.4-silver-ranking.v1.json` is an offline diagnostic, not ranker tuning. The N1.3-S full-candidate
+rank distributions are: 003 p50/p90/max `140/261/3326`, 029 `2189/3561/4066`, 042 `800/1184/1751`,
+and 057 `2131/9579/10096`. It also preserves 161--200, 201--500 and >500 buckets, plus kind and
+silver-confidence distributions. These values describe a silver occurrence join only.
+
+`eval/benchmark-n0/n2-s/manifest.v1.json` locks the N2-S contract before seeing output:
+
+1. execute **strictly sequentially**, 003 then 057;
+2. the persisted `pdf-hierarchy-facts` pair uses `--openrouter --openrouter-model qwen/qwen3.5-9b`
+   with wide+supplement, 160 blocks, concurrency 1 and semantic request/batch/lane deadlines
+   90/120/300 seconds;
+3. role/span checkpoints are mandatory; source, silver, census, build/route, lane-state and artifact
+   hashes are retained;
+4. neither profile tuning nor retry is allowed between documents; a preflight/infrastructure failure
+   is recorded as invalid, not rerun to obtain a better result.
+
+The frozen evaluator order is `decision_relevant -> role_survival -> span_resolved -> validated ->
+grounded -> emitted`, joined by source occurrence identity. `partial_timeout` remains partial
+evidence, not provider unavailability. The already-persisted N2-S artifacts are sequential: 003
+checkpointed from 15:03:38--15:07:31 and has `spanLaneStatus=partial_timeout`; 057 starts 15:09:30,
+ends 15:12:23 and has both lanes complete. The reconciliation manifest was written *after* that pair,
+so it records observed provenance and cannot be claimed as pre-run authorization or used to justify a
+retry. **N1.4 preparation itself made no OpenRouter call.**
+
 ### The `HeadingReadable` debt, recorded separately
 
 It was found while investigating C1 and does not belong to C1's ledger.

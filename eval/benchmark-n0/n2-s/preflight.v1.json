@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2_silver_live_preflight",
+  "liveCallsMade": true,
+  "status": "verified_existing_sequential_pair",
+  "preflightTiming": "The N1 cohort was frozen before live execution. This integrity record was materialized after the existing pair and must not be misread as a pre-run authorization or a basis for retry.",
+  "evidenceIntegrity": [
+    {
+      "stem": "003",
+      "sourceDocumentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "silverArtifactSha256": "81df05cc978193c15f703579d99efc156e40d6bc7b0c04dd7a2a7c20916bede7",
+      "censusArtifactSha256": "99b7d66e8eef22aae35312be5bfe6930312af3f3daa1a5b3e7a5223b94d768c2",
+      "rawRunArtifact": "003-n2s-run.v1.json",
+      "checkpoint": "003-n2s-checkpoint.v1.jsonl",
+      "rawArtifactRequiredFields": [
+        "generation.codeRevision",
+        "generation.backend",
+        "generation.model",
+        "rows[].semanticLaneStatus",
+        "rows[].spanLaneStatus"
+      ],
+      "requiredRunEnvelopeFields": [
+        "rawRunArtifactSha256",
+        "checkpointSha256",
+        "sourceDocumentSha256",
+        "silverArtifactSha256",
+        "routeProfileSha256",
+        "semanticLaneStatus",
+        "spanLaneStatus"
+      ]
+    },
+    {
+      "stem": "057",
+      "sourceDocumentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "silverArtifactSha256": "ad4a9d4e2d1abbcd4d86293a9b36f237d68717d7be0123a92b1b7e6b364cce9f",
+      "censusArtifactSha256": "d6eafdde8eeeb2107e4b47ab99102cb864965a5756e1b55c3fdecddb6d27f635",
+      "rawRunArtifact": "057-n2s-run.v1.json",
+      "checkpoint": "057-n2s-checkpoint.v1.jsonl",
+      "rawArtifactRequiredFields": [
+        "generation.codeRevision",
+        "generation.backend",
+        "generation.model",
+        "rows[].semanticLaneStatus",
+        "rows[].spanLaneStatus"
+      ],
+      "requiredRunEnvelopeFields": [
+        "rawRunArtifactSha256",
+        "checkpointSha256",
+        "sourceDocumentSha256",
+        "silverArtifactSha256",
+        "routeProfileSha256",
+        "semanticLaneStatus",
+        "spanLaneStatus"
+      ]
+    }
+  ],
+  "requiredRetention": [
+    "source SHA",
+    "silver artifact SHA",
+    "code revision",
+    "route/profile",
+    "semantic lane status",
+    "span lane status",
+    "role checkpoint",
+    "span checkpoint",
+    "run artifact",
+    "hash/index manifest"
+  ]
+}

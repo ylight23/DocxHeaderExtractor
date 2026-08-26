@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2_silver_live_run_manifest",
+  "parentManifestSha256": "529fecc53341c12e06fd34a873c544acddc6d96388670c4da80c7700030a01a7",
+  "silverBundleSha256": "c8131050d73b14d6587788ac670c0decac1d9211ac3f01f3f75b675dbeaad0d3",
+  "labelAuthority": "MODEL_ASSISTED_SILVER_ONLY",
+  "accuracyClaim": "N2-S is a silver semantic benchmark, not human-gold accuracy evidence.",
+  "profileProvenance": "The N1 cohort was frozen before these runs. This execution profile is reconciled from the two already-persisted, same-hash sequential run artifacts; it was not used to authorize a retry.",
+  "execution": {
+    "ordering": "strictly_sequential",
+    "documentOrder": [
+      "003",
+      "057"
+    ],
+    "prohibition": "057 starts only after 003 ends. The persisted pair proves this order; do not tune, retry, or create a second run to improve either outcome.",
+    "invalidRunRule": "Only a preflight or infrastructure failure may mark a run invalid; it is recorded, not retried for a better result."
+  },
+  "frozenProfile": {
+    "command": "pdf-hierarchy-facts",
+    "backend": "OpenRouter",
+    "model": "qwen/qwen3.5-9b",
+    "wideCandidates": true,
+    "supplementCandidates": true,
+    "analystBlocks": 160,
+    "semanticConcurrency": 1,
+    "semanticRequestTimeoutSeconds": 90,
+    "semanticBatchTimeoutSeconds": 120,
+    "semanticLaneDeadlineSeconds": 300,
+    "visualRegions": 0,
+    "retry": false,
+    "roleAndSpanCheckpoint": true
+  },
+  "evaluatorContract": {
+    "identity": "documentSha256 \u002B page \u002B sourceLineIds/sourceSpan; candidateId is diagnostics-only within one run",
+    "orderedMetrics": [
+      "decision_relevant",
+      "role_survival",
+      "span_resolved",
+      "validated",
+      "grounded",
+      "emitted"
+    ],
+    "laneStatus": [
+      "complete",
+      "partial_timeout",
+      "provider_unavailable",
+      "billing_unavailable",
+      "authentication_unavailable",
+      "cancelled",
+      "pipeline_fault",
+      "not_run"
+    ],
+    "interpretation": "A partial timeout is availability of partial evidence, not provider unavailability. Incomplete runs retain lane evidence but do not produce a final accuracy claim."
+  },
+  "documents": [
+    {
+      "stem": "003",
+      "documentPath": "todo10_8/heading_corpus_95_word/01_phap_quy/003_Luat_Doanh_nghiep_59-2020-QH14.docx",
+      "sourceDocumentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "silverArtifact": "003-n1.2-silver-model-assisted.v1.json",
+      "silverArtifactSha256": "81df05cc978193c15f703579d99efc156e40d6bc7b0c04dd7a2a7c20916bede7",
+      "censusArtifact": "003-n1.3-census.v1.json",
+      "censusArtifactSha256": "99b7d66e8eef22aae35312be5bfe6930312af3f3daa1a5b3e7a5223b94d768c2",
+      "outputArtifact": "003-n2s-run.v1.json",
+      "checkpoint": "003-n2s-checkpoint.v1.jsonl"
+    },
+    {
+      "stem": "057",
+      "documentPath": "todo10_8/heading_corpus_95_word/04_giao_trinh/057_Quantitative_Methods_in_Finance_Lecture_Notes.docx",
+      "sourceDocumentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "silverArtifact": "057-n1.2-silver-model-assisted.v1.json",
+      "silverArtifactSha256": "ad4a9d4e2d1abbcd4d86293a9b36f237d68717d7be0123a92b1b7e6b364cce9f",
+      "censusArtifact": "057-n1.3-census.v1.json",
+      "censusArtifactSha256": "d6eafdde8eeeb2107e4b47ab99102cb864965a5756e1b55c3fdecddb6d27f635",
+      "outputArtifact": "057-n2s-run.v1.json",
+      "checkpoint": "057-n2s-checkpoint.v1.jsonl"
+    }
+  ]
+}

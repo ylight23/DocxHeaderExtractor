@@ -1,0 +1,315 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n1_4_silver_ranking_diagnostics",
+  "labelAuthority": "MODEL_ASSISTED_SILVER_ONLY",
+  "purpose": "Offline diagnosis of candidate/rank losses. It does not change the scorer, selection budget, silver labels, or N2-S profile.",
+  "rankSemantics": "coveringRank from frozen N1.3-S candidate census; identity is source occurrence, never candidateId across runs.",
+  "documents": [
+    {
+      "stem": "003",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "denominators": {
+        "silverReviewed": 230,
+        "fullCandidate": 226,
+        "selectedAt160": 129,
+        "notFullCandidate": 4
+      },
+      "fullCandidateRank": {
+        "count": 226,
+        "min": 1,
+        "p50": 140,
+        "p90": 261,
+        "max": 3326
+      },
+      "rankBuckets": {
+        "selectedAt160": 129,
+        "rank161To200": 33,
+        "rank201To500": 44,
+        "rankAbove500": 20,
+        "fullCandidateWithoutRank": 0,
+        "candidateConstructionLoss": 4
+      },
+      "byKind": [
+        {
+          "key": "ARTICLE",
+          "reviewed": 218,
+          "fullCandidate": 214,
+          "selectedAt160": 126,
+          "candidateConstructionLoss": 4,
+          "rank161To200": 33,
+          "rank201To500": 43,
+          "rankAbove500": 12
+        },
+        {
+          "key": "CHAPTER",
+          "reviewed": 10,
+          "fullCandidate": 10,
+          "selectedAt160": 1,
+          "candidateConstructionLoss": 0,
+          "rank161To200": 0,
+          "rank201To500": 1,
+          "rankAbove500": 8
+        },
+        {
+          "key": "SECTION",
+          "reviewed": 2,
+          "fullCandidate": 2,
+          "selectedAt160": 2,
+          "candidateConstructionLoss": 0,
+          "rank161To200": 0,
+          "rank201To500": 0,
+          "rankAbove500": 0
+        }
+      ],
+      "bySilverConfidence": [
+        {
+          "key": "NOT_RECORDED",
+          "reviewed": 230,
+          "fullCandidate": 226,
+          "selectedAt160": 129,
+          "candidateConstructionLoss": 4,
+          "rank161To200": 33,
+          "rank201To500": 44,
+          "rankAbove500": 20
+        }
+      ]
+    },
+    {
+      "stem": "029",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "denominators": {
+        "silverReviewed": 160,
+        "fullCandidate": 149,
+        "selectedAt160": 3,
+        "notFullCandidate": 11
+      },
+      "fullCandidateRank": {
+        "count": 149,
+        "min": 39,
+        "p50": 2189,
+        "p90": 3561,
+        "max": 4066
+      },
+      "rankBuckets": {
+        "selectedAt160": 3,
+        "rank161To200": 0,
+        "rank201To500": 10,
+        "rankAbove500": 136,
+        "fullCandidateWithoutRank": 0,
+        "candidateConstructionLoss": 11
+      },
+      "byKind": [
+        {
+          "key": "PART",
+          "reviewed": 3,
+          "fullCandidate": 0,
+          "selectedAt160": 0,
+          "candidateConstructionLoss": 3,
+          "rank161To200": 0,
+          "rank201To500": 0,
+          "rankAbove500": 0
+        },
+        {
+          "key": "SECTION",
+          "reviewed": 10,
+          "fullCandidate": 5,
+          "selectedAt160": 0,
+          "candidateConstructionLoss": 5,
+          "rank161To200": 0,
+          "rank201To500": 4,
+          "rankAbove500": 1
+        },
+        {
+          "key": "SUBSECTION",
+          "reviewed": 12,
+          "fullCandidate": 12,
+          "selectedAt160": 2,
+          "candidateConstructionLoss": 0,
+          "rank161To200": 0,
+          "rank201To500": 1,
+          "rankAbove500": 9
+        },
+        {
+          "key": "TOC_RECONCILED_BODY_HEADING",
+          "reviewed": 135,
+          "fullCandidate": 132,
+          "selectedAt160": 1,
+          "candidateConstructionLoss": 3,
+          "rank161To200": 0,
+          "rank201To500": 5,
+          "rankAbove500": 126
+        }
+      ],
+      "bySilverConfidence": [
+        {
+          "key": "HIGH",
+          "reviewed": 123,
+          "fullCandidate": 113,
+          "selectedAt160": 3,
+          "candidateConstructionLoss": 10,
+          "rank161To200": 0,
+          "rank201To500": 9,
+          "rankAbove500": 101
+        },
+        {
+          "key": "MEDIUM",
+          "reviewed": 37,
+          "fullCandidate": 36,
+          "selectedAt160": 0,
+          "candidateConstructionLoss": 1,
+          "rank161To200": 0,
+          "rank201To500": 1,
+          "rankAbove500": 35
+        }
+      ]
+    },
+    {
+      "stem": "042",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "denominators": {
+        "silverReviewed": 159,
+        "fullCandidate": 148,
+        "selectedAt160": 12,
+        "notFullCandidate": 11
+      },
+      "fullCandidateRank": {
+        "count": 148,
+        "min": 4,
+        "p50": 800,
+        "p90": 1184,
+        "max": 1751
+      },
+      "rankBuckets": {
+        "selectedAt160": 12,
+        "rank161To200": 4,
+        "rank201To500": 32,
+        "rankAbove500": 100,
+        "fullCandidateWithoutRank": 0,
+        "candidateConstructionLoss": 11
+      },
+      "byKind": [
+        {
+          "key": "FINANCIAL_NOTE",
+          "reviewed": 13,
+          "fullCandidate": 12,
+          "selectedAt160": 4,
+          "candidateConstructionLoss": 1,
+          "rank161To200": 0,
+          "rank201To500": 1,
+          "rankAbove500": 7
+        },
+        {
+          "key": "REPORT_HEADING",
+          "reviewed": 3,
+          "fullCandidate": 3,
+          "selectedAt160": 0,
+          "candidateConstructionLoss": 0,
+          "rank161To200": 0,
+          "rank201To500": 0,
+          "rankAbove500": 3
+        },
+        {
+          "key": "SEMANTIC_OUTLINE",
+          "reviewed": 142,
+          "fullCandidate": 132,
+          "selectedAt160": 8,
+          "candidateConstructionLoss": 10,
+          "rank161To200": 4,
+          "rank201To500": 31,
+          "rankAbove500": 89
+        },
+        {
+          "key": "STATEMENT_HEADING",
+          "reviewed": 1,
+          "fullCandidate": 1,
+          "selectedAt160": 0,
+          "candidateConstructionLoss": 0,
+          "rank161To200": 0,
+          "rank201To500": 0,
+          "rankAbove500": 1
+        }
+      ],
+      "bySilverConfidence": [
+        {
+          "key": "HIGH",
+          "reviewed": 159,
+          "fullCandidate": 148,
+          "selectedAt160": 12,
+          "candidateConstructionLoss": 11,
+          "rank161To200": 4,
+          "rank201To500": 32,
+          "rankAbove500": 100
+        }
+      ]
+    },
+    {
+      "stem": "057",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "denominators": {
+        "silverReviewed": 777,
+        "fullCandidate": 769,
+        "selectedAt160": 25,
+        "notFullCandidate": 8
+      },
+      "fullCandidateRank": {
+        "count": 769,
+        "min": 4,
+        "p50": 2131,
+        "p90": 9579,
+        "max": 10096
+      },
+      "rankBuckets": {
+        "selectedAt160": 25,
+        "rank161To200": 0,
+        "rank201To500": 58,
+        "rankAbove500": 686,
+        "fullCandidateWithoutRank": 0,
+        "candidateConstructionLoss": 8
+      },
+      "byKind": [
+        {
+          "key": "NUMBERED_OUTLINE",
+          "reviewed": 476,
+          "fullCandidate": 474,
+          "selectedAt160": 15,
+          "candidateConstructionLoss": 2,
+          "rank161To200": 0,
+          "rank201To500": 32,
+          "rankAbove500": 427
+        },
+        {
+          "key": "NUMBERED_SUBOUTLINE",
+          "reviewed": 301,
+          "fullCandidate": 295,
+          "selectedAt160": 10,
+          "candidateConstructionLoss": 6,
+          "rank161To200": 0,
+          "rank201To500": 26,
+          "rankAbove500": 259
+        }
+      ],
+      "bySilverConfidence": [
+        {
+          "key": "HIGH",
+          "reviewed": 775,
+          "fullCandidate": 767,
+          "selectedAt160": 25,
+          "candidateConstructionLoss": 8,
+          "rank161To200": 0,
+          "rank201To500": 58,
+          "rankAbove500": 684
+        },
+        {
+          "key": "MEDIUM",
+          "reviewed": 2,
+          "fullCandidate": 2,
+          "selectedAt160": 0,
+          "candidateConstructionLoss": 0,
+          "rank161To200": 0,
+          "rank201To500": 0,
+          "rankAbove500": 2
+        }
+      ]
+    }
+  ]
+}
