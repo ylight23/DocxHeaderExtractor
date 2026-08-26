@@ -46,5 +46,14 @@
     "unplannedFindingTocContamination": "Found while investigating CF1-CF3's low recovery, not anticipated when R2 was scoped: the earlier divergence taxonomy (057-pdf-docx-divergence-taxonomy.v1.json) searched an UNFILTERED DOCX paragraph list, which includes table-of-contents listing lines - these repeat a heading's title with a trailing page number and can carry the same NumberingId styling as the real heading. Production alignment (and this fix) correctly excludes InTableOfContents paragraphs. Re-checking all 22 targets: only 13/22 have any real (non-TOC) body paragraph match at all, 11/22 of those also carry NumberingId, and 9/22 targets match ONLY a TOC line - they were never really 'auto-numbered body text' as the original 21/23 figure implied for them specifically.",
     "verdict": "R2's true, corrected causal picture is not 'auto-numbering vs PDF-baked marker' alone, as originally diagnosed - marker-grammar depth, span-lane precision, and TOC-line contamination in the original evidence are three separate, compounding factors, and this bounded investigation resolves only 3/22 even combining the first two.",
     "stopConditionReached": "Recovering the remaining ~19 would need either fuzzy/tolerant matching (excluded), a document-specific dictionary or heuristic (excluded), or resolving the TOC-contamination question for 9 targets that may have no valid body anchor at all - a different, not-yet-scoped investigation. Per the frozen stop conditions, this bounded investigation ends here without further tuning."
+  },
+  "outcome": {
+    "decision": "OUTCOME_B",
+    "meaning": "Formally declared no remediation exists within the frozen investigation scope, decided before any N3 evidence exists - not deferred to 'maybe later' and not re-opened just to chase 057 specifically.",
+    "057RemediationStatus": "NONE",
+    "code": "FindAutoNumberedTitleOnlyMatch stays in the codebase - safe (no collision risk per the collateral check) and inert (0/22 in practice) - but is not promoted.",
+    "debtStatus": "CLOSED_TRIGGER_GATED",
+    "reopenOnlyIf": "a future document supplies independent TOC-contamination-free auto-numbering evidence, or the marker-parser/span-precision limitations are separately diagnosed and fixed on their own merits (not specifically to chase 057)",
+    "n3RemediationSet": "R1 only"
   }
 }

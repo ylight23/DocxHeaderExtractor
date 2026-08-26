@@ -5303,6 +5303,24 @@ matching, a document-specific dictionary or heuristic, or resolving the TOC-cont
 9 targets - none of which this investigation's scope permits. R2 stays `FROZEN_INEFFECTIVE_AS_SPECIFIED`
 (manifest updated with the full investigation); no R2-v2 was found within the bounded budget.
 
+### R2 - Outcome B: no remediation, debt closed trigger-gated
+
+The bounded investigation frozen before it ran named exactly two valid outcomes: find R2-v2, or
+formally declare no safe remediation exists within scope. CF1/CF2/CF3 found neither a working fix
+(3/22 at best) nor a path to one without fuzzy matching, document-specific tuning, or opening the
+separate, unscoped TOC-contamination question - so this is Outcome B, decided *before* N3 is opened,
+not deferred to "maybe later."
+
+| | |
+|---|---|
+| R2 marker/span/TOC remediation | **NOT JUSTIFIED** within the frozen investigation scope |
+| 057 remediation | **NONE** - `FindAutoNumberedTitleOnlyMatch` stays in the codebase (safe, inert - 0/22 in practice, no collision risk per the collateral check) but is not promoted and recovers nothing |
+| 057 debt | **CLOSED, trigger-gated** - reopen only if a future document supplies independent TOC-contamination-free auto-numbering evidence, or the marker-parser/span-precision limitations are separately diagnosed and fixed on their own merits, never re-opened just to chase 057 specifically |
+
+**N3 remediation set is now R1 only.** This was frozen before any N3 evidence exists, per the same
+discipline C1's earlier close used: the decision not to pursue R2 further is made from the bounded
+investigation's own evidence, not from a peek at N3.
+
 ### 057 representation audit - two sub-owners, two different findings, no fix promoted
 
 Per-target: `PdfN2S057RepresentationAuditProbe` rebuilds each of the 23 undelivered occurrences' own
