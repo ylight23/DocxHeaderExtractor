@@ -4576,6 +4576,26 @@ before span starts yields `not_run`. Checkpoint payloads now carry every block's
 for both role and span batches, while retaining the old first `lineId` for old readers. This is
 provenance only; it does not change span behaviour.
 
+**C1.5 result - one and only one replication (`401a030`).** The source hash, prompt/profile and B3
+route settings match the frozen manifest. Semantic completed 20 batches / 160 blocks (158
+`HeadingTopic`, 2 `BodySentence`). Span completed 20 batches / 80 blocks, then the lane reported
+`partial_timeout`; no span batch recorded an exception. The frozen offline evaluator reconciled **all
+162** source occurrences by page + required line ids:
+
+| first loss | occurrences |
+|---|---:|
+| `ROLE_NO_DECISION` / `ROLE_NON_HEADING` | 0 |
+| `SPAN_BATCH_EXCEPTION` | 0 |
+| `SPAN_TIMEOUT` | **68** |
+| `SPAN_RESOLVED_BUT_INVALID` | **94** |
+| `VALIDATED` | 0 |
+
+Thus C1's legal collapse is not analyst role failure. It has two observed downstream branches:
+timeout prevents 68 proposed headings from receiving a span, while 94 resolved pointers still fail
+before `ValidatedStructure`. Do **not** increase timeout or change the validator from this one
+document alone. The next owner question is narrow and offline: inspect pointer/validation reasons for
+the 94 resolved spans; any timeout remediation needs its own cost and cross-document gate.
+
 - [ ] 001's owner is still unresolved between span-lane timeout and span-resolution failure, and now
   **one instrumented replication answers both branches at once**: `spanLaneStatus` distinguishes
   timeout from completion, and the span checkpoint shows missing or invalid spans per block. Not run
