@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n1_4_human_audit_result_template",
+  "inputPacket": "../audit-samples/n1.4-silver-human-audit-source.v1.json",
+  "authority": "Human reviewer must fill reviewerLabel and reviewerNote from source-only evidence. This template must not modify N1.2-S silver labels or their binding artifact.",
+  "allowedLabels": ["REVIEWED_HEADING", "REVIEWED_NON_HEADING", "UNCERTAIN"],
+  "results": []
+}
