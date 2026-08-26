@@ -89,6 +89,34 @@ public sealed class PdfN12ReviewedOccurrenceGoldProbe
         AssertNoForbiddenPipelineProperty(goldRoot);
     }
 
+    [Theory]
+    [InlineData("003")]
+    public void PhaseManifestHashesBindToTheCommittedPacketAndGold(string stem)
+    {
+        var root = PdfExtractorQualityBenchmarkProbe.RepositoryRoot();
+        var manifestPath = Path.Combine(root, "eval", "benchmark-n0", "phase-manifests", $"{stem}-n1.2-phase-manifest.v1.json");
+        var packetPath = Path.Combine(root, "eval", "benchmark-n0", "source-packets", $"{stem}-blind-source-review.v1.json");
+        var goldPath = Path.Combine(root, "eval", "benchmark-n0", "reviewed-gold", $"{stem}-n1.2-reviewed-occurrence-gold.v1.json");
+        Assert.True(File.Exists(manifestPath));
+
+        using var manifest = JsonDocument.Parse(File.ReadAllText(manifestPath));
+        var manifestRoot = manifest.RootElement;
+
+        Assert.Equal("n1_2_phase_manifest", manifestRoot.GetProperty("artifactKind").GetString());
+        Assert.Equal(Sha256(packetPath), manifestRoot.GetProperty("sourcePacket").GetProperty("sha256").GetString());
+        Assert.Equal(Sha256(goldPath), manifestRoot.GetProperty("reviewedGold").GetProperty("sha256").GetString());
+
+        // The manifest is a hash-bound index over the two committed artifacts, not a third place
+        // heading counts live - it must reproduce the gold's own summary, not merely echo it.
+        using var gold = JsonDocument.Parse(File.ReadAllText(goldPath));
+        var goldSummary = gold.RootElement.GetProperty("summary");
+        var manifestGold = manifestRoot.GetProperty("reviewedGold");
+        Assert.Equal(goldSummary.GetProperty("headingOccurrenceCount").GetInt32(), manifestGold.GetProperty("headingOccurrenceCount").GetInt32());
+        Assert.Equal(goldSummary.GetProperty("headingSourceLineCount").GetInt32(), manifestGold.GetProperty("headingSourceLineCount").GetInt32());
+        Assert.Equal(goldSummary.GetProperty("nonHeadingSourceLineCount").GetInt32(), manifestGold.GetProperty("nonHeadingSourceLineCount").GetInt32());
+        Assert.Equal(goldSummary.GetProperty("uncertainSourceLineCount").GetInt32(), manifestGold.GetProperty("uncertainSourceLineCount").GetInt32());
+    }
+
     [Fact]
     public void FourthDocumentGoldIsNotYetCommitted()
     {
@@ -107,6 +135,8 @@ public sealed class PdfN12ReviewedOccurrenceGoldProbe
         Assert.DoesNotContain("042-n1.2-reviewed-occurrence-gold.v1.json", committed);
         Assert.DoesNotContain("057-n1.2-reviewed-occurrence-gold.v1.json", committed);
     }
+
+    private static string Sha256(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
 
     private static void AssertNoForbiddenPipelineProperty(JsonElement value)
     {
