@@ -104,6 +104,8 @@ public sealed class CommandLineOptions
 
     /// <summary>Explicit key directory for a PDF stage holdout; never used by normal extraction.</summary>
     public string? PdfStageKeyRoot { get; private set; }
+    /// <summary>Evaluation-only: execute the PDF route without a .key; gold is joined offline later.</summary>
+    public bool PdfStageAllowNoKey { get; private set; }
 
     /// <summary>Use hosted NVIDIA NIM for text and visual PDF audit passes.</summary>
     public bool UseNvidiaNim { get; private set; }
@@ -218,6 +220,7 @@ public sealed class CommandLineOptions
                 case "--vlm-max-images": o.VlmMaxImagesPerRequest = Math.Max(1, int.Parse(Next(a))); break;
                 case "--vlm-concurrency": o.VlmMaxConcurrentRequests = Math.Max(1, int.Parse(Next(a))); break;
                 case "--pdf-stage-key-root": o.PdfStageKeyRoot = Next(a); break;
+                case "--pdf-stage-allow-no-key": o.PdfStageAllowNoKey = true; break;
                 case "--pdf-visual-probe-index": o.PdfVisualProbeIndex = Math.Max(0, int.Parse(Next(a))); break;
                 case "--pdf-visual-probe-text": o.PdfVisualProbeText = Next(a); break;
                 case "--pdf-visual-probe-list": o.PdfVisualProbeList = true; break;

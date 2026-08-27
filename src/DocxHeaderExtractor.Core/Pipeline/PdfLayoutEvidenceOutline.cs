@@ -594,6 +594,15 @@ public static class PdfLayoutEvidenceOutline
         var ranked = PdfCandidateRanker.Rank(context.Candidates, allCandidateContexts);
         var selection = SelectRankedCandidates(context.Candidates, ranked, effectiveBudget);
         var selected = selection.Selected;
+        var selectedSourceIdentities = selected.Select(block => new PdfSelectedSourceIdentity(
+            block.Id,
+            block.Page,
+            block.Lines.Select(PdfCandidateProvenance.LineId).ToArray(),
+            block.Text)).ToArray();
+        // Persist the selected cohort before any semantic/visual provider work starts. The
+        // candidate id remains run-local diagnostics; source line ids are the evaluation identity.
+        if (checkpoint is not null)
+            await checkpoint.RecordSelectionAsync(selectedSourceIdentities, ct);
         var excluded = context.Annotations.Where(a => a.ExcludeFromSemanticSamples).Select(a => a.Line).ToHashSet();
         var candidateContexts = selected.ToDictionary(block => block.Id, block => allCandidateContexts[block.Id], StringComparer.Ordinal);
         var samples = PdfSemanticClusterAnalyst.BuildSamples(context.Profile, context.Lines, excluded);
@@ -757,6 +766,7 @@ public static class PdfLayoutEvidenceOutline
                 visualRecovery.Traces.Count(trace => trace.Status == "visual-region-unavailable"),
                 0,
                 visualRecovery.Traces.Any(trace => trace.Status == "visual-region-unavailable") ? "region_failure" : null),
+            SelectedSourceIdentities = selectedSourceIdentities,
         };
 
         // Audit must preserve partial output and every loss even when the production acceptance
