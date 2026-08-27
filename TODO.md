@@ -127,6 +127,29 @@ metadata is better" is not a trigger, and "we might want to see this later" is n
 
 ## Việc ĐANG SỐNG
 
+### PR #2 — authority pipeline cutover (đang triển khai)
+
+Đã làm:
+- `PipelineDocumentExtractionTool`, CLI normal extract, Web và MCP đi qua `AuthorityExtractionPipeline`.
+- DOCX no-LLM đi theo `SourceFacts → deterministic proposal → PdfProposalValidator → hierarchy → ProductOutput`.
+- DOCX evidence ghi rõ `docx_parser`/`ooxml_parser`; shared validator chấp nhận đúng hai origin này.
+- quarantine được áp trước proposal/validation; ProductOutput adapter giữ source identity và text slice.
+- PDF-backed quarantine được áp sau canonical grounding nhưng trước FinalStructure/ProductOutput; DOCX quarantine áp sớm hơn ở source build.
+- Candidate stage DOCX hiện được ghi nhận trung thực là `ALL_PARAGRAPHS`: high-recall retrieval, chưa claim bounded precision hay candidate-recall benchmark.
+- Product source/span contract đã chốt additive dưới schema v2 (`sourceText` giữ canonical paragraph); PDF-backed quarantine fixture đã pass trước ProductOutput.
+- FinalStructure schema-v2 backward compatibility proof đã pass: legacy JSON không có `sourceText` deserialize được, còn serialization hiện tại giữ `schemaVersion=2` và thêm `sourceText`.
+- PDF quarantine boundary proof đã pass qua ProductOutput; true PDF-authority E2E chưa được claim vì route semantic cần analyst/provider, nên gate là `PDF_QUARANTINE_E2E=BLOCKED_BY_PROVIDER_REQUIREMENT`.
+- Provenance execution proof đã pass: semantic/span passes chỉ xuất hiện khi lane thực sự chạy; local/remote externality được ghi đúng.
+- normal authority không tự tạo VLM; normal writeback dùng `PdfProductWritebackTool`.
+
+Chưa đóng:
+- architecture guard suite đầy đủ cho mọi CLI/Web/MCP route và chứng minh provider/VLM call count bằng runtime smoke.
+- phân loại các caller `HeaderExtractionPipeline` còn lại: repair/evaluation/diagnostic only, không được trở lại normal production.
+- mở rộng true PDF-authority quarantine E2E chỉ khi có provider-free analyst fixture phù hợp; không giả lập trong proof hiện tại.
+- PR #2 chưa merge; không chạy full suite trong vòng proof này.
+
+Không nằm trong vòng này: accuracy remediation document 004, model/provider live run, full-suite rerun, merge main.
+
 ## 4. Đáp án có người xác nhận — **ĐÃ BẮT ĐẦU (§37), vẫn là thắt cổ chai**
 
 > **Thứ rẻ nhất mở khoá nhiều nhất, tính đến §49.** Ba nhóm, xếp theo giá trị trên mỗi phút bạn bỏ ra:

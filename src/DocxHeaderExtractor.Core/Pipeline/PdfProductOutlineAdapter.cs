@@ -12,10 +12,10 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// by the time a heading reaches here.
 /// <para>
 /// Fields <see cref="HeadingRecord"/> has that <see cref="PdfProductHeading"/> carries no authority
-/// for (<c>OriginalText</c>, <c>InlineBody</c>/<c>InlineBodySpan</c>, <c>StyleId</c>, <c>Evidence</c>,
+/// for (<c>InlineBody</c>/<c>InlineBodySpan</c>, <c>StyleId</c>, <c>Evidence</c>,
 /// <c>ModelConfirmed</c>/<c>CriticConfirmed</c>, <c>Disputed</c>, <c>CalibrationSamples</c>) are left
-/// at their honest default rather than silently filled from anywhere else - the M9 lane simply does
-/// not track those distinctions, and guessing one would misrepresent it as authority this route has.
+/// at their honest default rather than silently filled from anywhere else. <c>OriginalText</c> is
+/// copied only when ProductOutput carries the canonical paragraph source text.
 /// </para>
 /// </summary>
 internal static class PdfProductOutlineAdapter
@@ -42,6 +42,9 @@ internal static class PdfProductOutlineAdapter
         SourceId = heading.Id,
         Level = heading.Level,
         Text = heading.Text,
+        // ProductOutput text is already the validated source slice. Carry it through the
+        // compatibility shell so downstream source-span invariants can inspect the same fact.
+        OriginalText = heading.SourceText,
         HeadingSpan = new TextOffsetSpan(heading.Span.Start, heading.Span.End),
         BoundarySource = BoundarySource,
         Source = HeadingSource.Model,

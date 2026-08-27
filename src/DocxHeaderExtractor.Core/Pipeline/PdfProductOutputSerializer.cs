@@ -48,7 +48,8 @@ public static class PdfProductOutputSerializer
             heading.Level,
             heading.ParentId,
             decision.RequiresReview,
-            decision.Reasons);
+            decision.Reasons,
+            heading.SourceText);
     }
 }
 
@@ -78,4 +79,6 @@ public sealed record PdfProductHeading(
     [property: JsonPropertyName("level")] int? Level,
     [property: JsonPropertyName("parentId")] string? ParentId,
     [property: JsonPropertyName("requiresReview")] bool RequiresReview,
-    [property: JsonPropertyName("reasons")] IReadOnlyList<string> Reasons);
+    [property: JsonPropertyName("reasons")] IReadOnlyList<string> Reasons,
+    [property: JsonPropertyName("sourceText")]
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] string? SourceText = null);

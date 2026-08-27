@@ -132,14 +132,11 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
     }
 
     using var tool = new PipelineDocumentExtractionTool(o.Pipeline);
-    // Tool ghi chỉ được nạp khi người dùng nêu đích rõ ràng: một harness có sẵn quyền ghi mà
-    // không ai yêu cầu là bề mặt rủi ro không cần thiết. pdf-first-authority route đi qua
-    // PdfProductWriteback (M9 canonical anchor) - mọi route khác vẫn OutlineWritebackTool như cũ.
+    // Normal extraction always writes through the canonical ProductOutput authority. Legacy
+    // OutlineWriteback remains available only from explicit replay/evaluation commands.
     using IDocumentActionTool? actionTool = o.WritebackPath is null
         ? null
-        : o.Pipeline.PdfFirstValidatedFallback
-            ? new PdfProductWritebackTool(o.Pipeline.Extraction)
-            : new OutlineWritebackTool(o.Pipeline.Extraction);
+        : new PdfProductWritebackTool(o.Pipeline.Extraction);
     var harness = new DocumentAgentHarness(tool, actionTool: actionTool);
     if (!o.Quiet)
         Console.Error.WriteLine($"  policy: {harness.Skill}");

@@ -43,7 +43,7 @@ public sealed class PartialKeyPackage(PipelineOptions options)
         if (packageOptions.StartAt < 0)
             throw new ArgumentOutOfRangeException(nameof(packageOptions.StartAt), "StartAt must be non-negative.");
 
-        using var pipeline = new HeaderExtractionPipeline(options);
+        using var pipeline = new AuthorityExtractionPipeline(options);
         var outline = await pipeline.RunAsync(inputPath, ct);
 
         return await RunAsync(inputPath, outline, packageOptions, ct);

@@ -299,7 +299,8 @@ internal static class PdfProposalValidator
         ValidateSpan(decision, context.Source.RawText, out _) == "valid";
 
     private static bool HasTrustedEvidenceOrigins(PdfSourceFacts source) =>
-        source.EvidenceDetails.All(evidence => evidence.Origin is "layout_parser" or "marker_parser" or "scope_detector");
+        source.EvidenceDetails.All(evidence => evidence.Origin is "layout_parser" or "marker_parser" or
+            "scope_detector" or "docx_parser" or "ooxml_parser");
 
     private static string ValidateSpan(PdfBlockDecision decision, string sourceText, out string? reason)
     {

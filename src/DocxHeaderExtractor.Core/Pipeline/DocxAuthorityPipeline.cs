@@ -16,25 +16,42 @@ internal static class DocxAuthorityPipeline
     public static async Task<DocxAuthorityPipelineResult> RunAsync(
         SlimDocument document,
         DocumentModeReport mode,
-        IHeaderClassifier analyst,
+        IHeaderClassifier? analyst,
+        IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default)
     {
-        var source = Build(document, mode);
+        var source = Build(document, mode, quarantinedIndexes);
         if (source.Blocks.Count == 0) return new DocxAuthorityPipelineResult([], null);
 
-        var roles = await PdfBlockAnalyst.AnalyzeAsync(analyst, source.Blocks, source.ModelContexts, ct);
-        var spans = await PdfBlockAnalyst.ResolveHeadingSpansAsync(analyst, source.Blocks, roles.Decisions, source.ModelContexts, ct);
+        PdfBlockAnalysis roles;
+        PdfBlockAnalysis spans;
+        if (analyst is null)
+        {
+            var decisions = source.Contexts.Values
+                .Where(context => IsDeterministicallyStructured(context.Paragraph))
+                .Select(context => new PdfBlockDecision(
+                    SourceId(context.Paragraph), PdfBlockRole.HeadingTopic, 1,
+                    "deterministic-ooxml-structure",
+                    new TextOffsetSpan(0, context.Paragraph.Text.Length),
+                    SemanticRole: PdfSemanticRole.TopicHeading))
+                .ToArray();
+            roles = new PdfBlockAnalysis(source.Blocks, decisions, []);
+            spans = roles;
+        }
+        else
+        {
+            roles = await PdfBlockAnalyst.AnalyzeAsync(analyst, source.Blocks, source.ModelContexts, ct);
+            spans = await PdfBlockAnalyst.ResolveHeadingSpansAsync(analyst, source.Blocks, roles.Decisions, source.ModelContexts, ct);
+        }
+
         var traces = PdfProposalValidator.Trace(source.ModelContexts, spans.Decisions);
-        var validated = spans.Decisions.Where(decision => source.Contexts.TryGetValue(decision.Id, out var context) &&
-                IsEligible(decision, context))
-            .Select(decision => new PdfValidatedHeading(decision.Id, decision.HeadingSpan!, decision.Role,
-                source.Contexts[decision.Id].Scope, "docx-source-pointer-span"))
-            .ToArray();
+        var validated = PdfProposalValidator.Validate(source.ModelContexts, spans.Decisions);
         var markerStructures = PdfHierarchyResolver.Resolve(validated, source.ModelContexts);
         var hierarchyFacts = PdfHierarchyFactsInventory.Inspect(validated, source.ModelContexts);
-        var semanticHierarchy = await PdfSemanticHierarchyFallback.ResolveAsync(analyst, validated, markerStructures, source.ModelContexts, ct);
+        var semanticHierarchy = analyst is null
+            ? new PdfSemanticHierarchyResult(markerStructures, [], [], [])
+            : await PdfSemanticHierarchyFallback.ResolveAsync(analyst, validated, markerStructures, source.ModelContexts, ct);
         var structures = semanticHierarchy.Structures.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
-        var byId = source.Contexts;
         var headings = validated.Select(item =>
         {
             var context = source.Contexts[item.SourceId];
@@ -45,6 +62,7 @@ internal static class DocxAuthorityPipeline
             {
                 Index = paragraph.Index,
                 StableId = paragraph.StableId,
+                SourceId = item.SourceId,
                 Level = structure.Level,
                 Text = paragraph.Text[span.Start..span.End],
                 OriginalText = paragraph.Text,
@@ -77,20 +95,24 @@ internal static class DocxAuthorityPipeline
             ValidatedStructures = semanticHierarchy.Structures,
             HierarchyProposals = semanticHierarchy.Audit,
             HierarchyFacts = hierarchyFacts,
+            SemanticLane = analyst is null ? null : new RouteLaneExecutionAudit("complete", source.Blocks.Count,
+                roles.Decisions.Count, 0, 0),
+            SpanLane = analyst is null ? null : new RouteLaneExecutionAudit("complete", roles.Decisions.Count,
+                spans.Decisions.Count, 0, 0),
         };
         return new DocxAuthorityPipelineResult(headings, audit);
     }
 
-    private static bool IsEligible(PdfBlockDecision decision, DocxAuthorityContext context) =>
-        decision.Role == PdfBlockRole.HeadingTopic &&
-        context.Scope == "document_body" &&
-        !DocumentDomainPolicy.IsExcludedFromOutline(context.ModelContext.Source.DomainRole) &&
-        decision.HeadingSpan is { } span && span.Start >= 0 && span.End > span.Start && span.End <= context.Paragraph.Text.Length;
+    private static bool IsDeterministicallyStructured(SlimParagraph paragraph) =>
+        paragraph.HasBuiltInHeadingStyle || paragraph.OutlineLevel is >= 0 and <= 8 ||
+        paragraph.NumberingStyleLevel is >= 1 and <= 9;
 
-    private static DocxAuthoritySource Build(SlimDocument document, DocumentModeReport mode)
+    private static DocxAuthoritySource Build(SlimDocument document, DocumentModeReport mode,
+        IReadOnlySet<int>? quarantinedIndexes = null)
     {
         var paragraphs = document.Paragraphs.Where(paragraph => paragraph.Role != ParagraphRole.Empty &&
-                !string.IsNullOrWhiteSpace(paragraph.Text))
+                !string.IsNullOrWhiteSpace(paragraph.Text) &&
+                (quarantinedIndexes is null || !quarantinedIndexes.Contains(paragraph.Index)))
             .OrderBy(paragraph => paragraph.Index)
             .ToArray();
         var result = new Dictionary<string, DocxAuthorityContext>(StringComparer.Ordinal);
@@ -113,13 +135,18 @@ internal static class DocxAuthorityPipeline
             };
             if (paragraph.TableDepth > 0) evidence.Add("table_like");
             if (paragraph.InTableOfContents) evidence.Add("toc_entry");
+            if (paragraph.HasBuiltInHeadingStyle) evidence.Add("built_in_heading_style");
+            if (paragraph.OutlineLevel is >= 0 and <= 8) evidence.Add($"outline_level:{paragraph.OutlineLevel.Value}");
+            if (paragraph.NumberingStyleLevel is >= 1 and <= 9) evidence.Add($"numbering_style_level:{paragraph.NumberingStyleLevel.Value}");
             var facts = new PdfSourceFacts(id, paragraph.Text, 0, 1, 0, -paragraph.Index, 0, -paragraph.Index,
                 scope, evidence)
             {
                 Marker = marker,
                 LineIds = [paragraph.StableId],
                 EvidenceDetails = evidence.Select(item => new PdfObservedEvidence(item, "true",
-                    item.StartsWith("marker:", StringComparison.Ordinal) ? "marker_parser" : "docx_parser")).ToArray(),
+                    item.StartsWith("marker:", StringComparison.Ordinal) ? "marker_parser" :
+                    item is "built_in_heading_style" || item.StartsWith("outline_level:", StringComparison.Ordinal) ||
+                    item.StartsWith("numbering_style_level:", StringComparison.Ordinal) ? "ooxml_parser" : "docx_parser")).ToArray(),
             };
             facts = scopeTracker.Apply(facts);
             facts = facts with { DomainRole = DocumentDomainPolicy.Classify(facts, mode.Mode.ToString()) };

@@ -11,6 +11,19 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class PdfProductOutlineAdapterTests
 {
     [Fact]
+    public void Compatibility_shell_preserves_canonical_paragraph_for_nonzero_span()
+    {
+        var product = new PdfProductHeading(
+            "id", 4, "stable", new DocxTextSpan(7, 14), "HEADING", "Heading", 1, null, true, [],
+            "prefix HEADING body");
+
+        var heading = PdfProductOutlineAdapter.ToHeadingRecord(product);
+
+        Assert.Equal(new TextOffsetSpan(7, 14), heading.HeadingSpan);
+        Assert.Equal("prefix HEADING body", heading.OriginalText);
+        Assert.Equal("HEADING", heading.OriginalText![heading.HeadingSpan!.Start..heading.HeadingSpan.End]);
+    }
+    [Fact]
     public void CopiesCanonicalAnchorFieldsVerbatim()
     {
         var heading = new PdfProductHeading(
