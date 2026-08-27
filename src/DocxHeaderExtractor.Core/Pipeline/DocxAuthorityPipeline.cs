@@ -95,6 +95,10 @@ internal static class DocxAuthorityPipeline
             ValidatedStructures = semanticHierarchy.Structures,
             HierarchyProposals = semanticHierarchy.Audit,
             HierarchyFacts = hierarchyFacts,
+            SemanticLane = analyst is null ? null : new RouteLaneExecutionAudit("complete", source.Blocks.Count,
+                roles.Decisions.Count, 0, 0),
+            SpanLane = analyst is null ? null : new RouteLaneExecutionAudit("complete", roles.Decisions.Count,
+                spans.Decisions.Count, 0, 0),
         };
         return new DocxAuthorityPipelineResult(headings, audit);
     }
