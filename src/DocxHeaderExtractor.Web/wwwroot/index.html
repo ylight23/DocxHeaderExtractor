@@ -205,6 +205,19 @@
   .audit-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
   .audit-filter select { width: auto; min-width: 150px; }
   .audit-lock { color: var(--muted); font-size: 12px; margin: 10px 0 0; }
+  .gold-banner { background: var(--accbg); border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line)); border-radius: 7px; padding: 11px 13px; margin-bottom: 12px; }
+  .gold-banner strong { display: block; margin-bottom: 3px; }
+  .gold-form { display: grid; grid-template-columns: minmax(180px, .65fr) minmax(220px, 1fr); gap: 10px; margin-top: 12px; }
+  .gold-form textarea { min-height: 58px; }
+  .gold-span { margin-top: 12px; }
+  .gold-span label { display: block; color: var(--muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 5px; }
+  .gold-source-lines { display: flex; flex-wrap: wrap; gap: 6px; }
+  .gold-source-lines label { display: inline-flex; align-items: center; gap: 5px; color: var(--ink); text-transform: none; letter-spacing: 0; font-size: 12px; font-weight: 500; border: 1px solid var(--line); border-radius: 5px; padding: 4px 7px; background: var(--panel); }
+  .gold-source-lines input { accent-color: var(--accent); }
+  .gold-level { width: 120px; }
+  .gold-integrity { color: var(--ok); font-size: 12px; margin-top: 10px; }
+  .gold-mode .panel:not(#goldPanel) { display: none !important; }
+  @media (max-width: 700px) { .gold-form { grid-template-columns: 1fr; } }
   @media (max-width: 820px) { .audit-grid { grid-template-columns: 1fr; } .audit-list { max-height: 300px; } .audit-actions .next { margin-left: 0; } }
 </style>
 </head>
@@ -212,7 +225,7 @@
 <div class="wrap">
   <!-- Không còn h1/mô tả: tên app đã nằm ở <title> của tab, còn định dạng nhận được thì ô kéo thả
        đang nói rồi — hai dòng đó chỉ đẩy hai panel làm việc xuống dưới. -->
-  <div class="duo">
+  <div class="duo" id="analysisShell">
   <div class="col">
   <div class="panel">
     <h2>Thông tin &amp; cấu hình
@@ -358,9 +371,9 @@
   </div>
 
   <div class="panel" id="auditPanel">
-    <h2>6D-D · Blind source review</h2>
+    <h2>6D-D · Remaining-cohort adjudication <span class="tag dis">silver-positive cohort</span></h2>
     <p class="note" style="margin: 0 0 12px">
-      Nạp packet review nguồn. Màn hình này chỉ hiển thị occurrence, context và layout facts; không hiển thị rank, model hoặc kết quả pipeline.
+      Đây là adjudication bổ sung cho packet đã có silver positive. Nó không phải independent human gold; dùng workspace Blind Gold bên dưới cho review độc lập.
     </p>
     <div class="review-tools">
       <input id="auditFile" type="file" accept=".json,application/json">
@@ -377,6 +390,33 @@
           <div id="auditList" class="audit-list"></div>
         </div>
         <div id="auditReview" class="audit-review"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="goldPanel">
+    <h2>Independent Human Gold <span class="tag Style">source-only</span></h2>
+    <div class="gold-banner">
+      <strong>Review độc lập, không nhìn pipeline</strong>
+      Packet được hiển thị như nguồn thô. Mọi label, prediction, rank, candidate, validator và output có sẵn trong JSON đều bị bỏ qua. Chỉ sau khi export/freeze mới được join với kết quả hệ thống.
+    </div>
+    <div class="review-tools">
+      <input id="goldFile" type="file" accept=".json,application/json">
+      <input id="goldReviewerId" placeholder="Reviewer ID (pseudonymous)" autocomplete="off">
+      <input id="goldVersion" placeholder="Adjudication version" value="N0-human-gold.v1">
+      <button id="goldExit" class="secondary hidden">Thoát chế độ độc lập</button>
+      <button id="goldExport" class="secondary" disabled>Freeze &amp; export gold</button>
+      <button id="goldClear" class="secondary" disabled>Xóa nhãn nháp</button>
+    </div>
+    <p class="note" id="goldStatus">Chưa nạp source-first blind packet.</p>
+    <div id="goldWorkspace" class="hidden">
+      <div class="audit-progress"><strong id="goldCount">0/0</strong><span id="goldCountText">chưa adjudicate</span></div>
+      <div class="audit-grid">
+        <div>
+          <div class="audit-filter"><select id="goldDocFilter"><option value="all">Tất cả tài liệu</option></select><select id="goldLabelFilter"><option value="all">Tất cả nhãn</option><option value="pending">Chưa gán nhãn</option><option value="REVIEWED_HEADING">Heading</option><option value="REVIEWED_NON_HEADING">Non-heading</option><option value="UNCERTAIN">Uncertain</option></select></div>
+          <div id="goldList" class="audit-list"></div>
+        </div>
+        <div id="goldReview" class="audit-review"></div>
       </div>
     </div>
   </div>
@@ -443,6 +483,7 @@ let picked = null, outline = null, reviewBundle = null, serverError = false;
 let defaults = null, gpuBaseNote = '', gpuBaseLabel = '';
 let devStarted = 0, devLogLines = 0;
 let auditPacket = null, auditItems = [], auditIndex = 0;
+let goldPacket = null, goldItems = [], goldIndex = 0, goldMode = false;
 let traceExpected = null;
 
 // ---------- 6D-D blind source review ----------
@@ -536,6 +577,143 @@ function moveAudit(delta) {
   const position = visible.indexOf(auditItems[auditIndex]);
   auditIndex = visible.length ? visible[(position + delta + visible.length) % visible.length]._index : auditIndex;
   renderAudit();
+}
+
+// ---------- Independent human gold ----------
+// This path intentionally discards any labels embedded in the input packet. The packet is
+// treated as a source transport only; authority is created by the reviewer here.
+$('goldFile').onchange = async e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const packet = JSON.parse(await file.text());
+    const items = Array.isArray(packet.occurrences) ? packet.occurrences : Array.isArray(packet.items) ? packet.items : null;
+    if (!items || !items.length) throw new Error('Packet phải có occurrences hoặc items source-first.');
+    if (!items.every(item => item.documentSha256 && item.page !== undefined && (item.sourceLineIds || item.sourceSpan) && item.sourceText !== undefined))
+      throw new Error('Packet thiếu source authority: documentSha256, page, sourceLineIds/sourceSpan hoặc sourceText.');
+    goldPacket = packet;
+    goldItems = items.map((item, index) => ({
+      documentSha256: item.documentSha256,
+      page: item.page,
+      sourceLineIds: Array.isArray(item.sourceLineIds) ? [...item.sourceLineIds] : [],
+      sourceSpan: item.sourceSpan || null,
+      sourceText: item.sourceText || '',
+      precedingSourceLines: Array.isArray(item.precedingSourceLines) ? [...item.precedingSourceLines] : [],
+      followingSourceLines: Array.isArray(item.followingSourceLines) ? [...item.followingSourceLines] : [],
+      layoutFacts: item.layoutFacts || {},
+      _index: index,
+      label: null,
+      level: null,
+      headingText: '',
+      headingLineIds: Array.isArray(item.sourceLineIds) ? [...item.sourceLineIds] : []
+    }));
+    goldIndex = 0;
+    const docs = [...new Set(goldItems.map(item => item.documentSha256))];
+    $('goldDocFilter').innerHTML = '<option value="all">Tất cả tài liệu</option>' + docs.map((sha, i) => `<option value="${esc(sha)}">Tài liệu ${i + 1} · ${esc(sha.slice(0, 10))}</option>`).join('');
+    $('goldExport').disabled = false;
+    $('goldClear').disabled = false;
+    $('goldExit').classList.remove('hidden');
+    $('goldWorkspace').classList.remove('hidden');
+    setGoldMode(true);
+    $('goldStatus').textContent = `${goldItems.length} source occurrence đã nạp · mọi nhãn có sẵn đã bị bỏ qua · chưa freeze`;
+    renderGold();
+  } catch (error) {
+    $('goldStatus').textContent = error.message || 'Không đọc được blind packet.';
+    $('goldWorkspace').classList.add('hidden');
+  }
+};
+$('goldDocFilter').onchange = renderGold;
+$('goldLabelFilter').onchange = renderGold;
+$('goldClear').onclick = () => { goldItems.forEach(item => { item.label = null; item.level = null; item.headingText = ''; item.headingLineIds = [...item.sourceLineIds]; }); renderGold(); };
+$('goldExit').onclick = () => setGoldMode(false);
+$('goldExport').onclick = () => {
+  if (!goldPacket) return;
+  const reviewerId = $('goldReviewerId').value.trim();
+  const version = $('goldVersion').value.trim();
+  if (!reviewerId || !version) { $('goldStatus').textContent = 'Cần Reviewer ID và Adjudication version trước khi freeze.'; return; }
+  const pending = goldItems.filter(item => !item.label);
+  if (pending.length) { $('goldStatus').textContent = `Chưa freeze: còn ${pending.length} occurrence chưa gán nhãn.`; return; }
+  const output = {
+    artifactKind: 'independent_human_gold_occurrence_review',
+    authorityClass: 'HUMAN_GOLD',
+    sourcePacketSha256: goldPacket.sourcePacketSha256 || goldPacket.artifactSha256 || null,
+    reviewerId,
+    adjudicationVersion: version,
+    reviewedAt: new Date().toISOString(),
+    labelsFrozen: true,
+    occurrences: goldItems.map(item => ({
+      occurrenceId: `${item.documentSha256}:${item.page}:${item.sourceLineIds.join(',')}`,
+      documentSha256: item.documentSha256, page: item.page, sourceLineIds: item.sourceLineIds,
+      sourceSpan: item.sourceSpan, sourceText: item.sourceText, label: item.label,
+      ...(item.label === 'REVIEWED_HEADING' ? { headingText: item.headingText || item.sourceText, headingLineIds: item.headingLineIds, level: item.level } : {}),
+      ...(item.label === 'UNCERTAIN' ? { level: null } : {})
+    }))
+  };
+  downloadJson('independent-human-gold.v1.json', output);
+  $('goldStatus').textContent = 'Đã freeze artifact HUMAN_GOLD. Chỉ từ bây giờ mới được join với pipeline output.';
+};
+
+function setGoldMode(active) {
+  goldMode = active;
+  document.body.classList.toggle('gold-mode', active);
+  $('goldExit').classList.toggle('hidden', !active || !goldPacket);
+  if (!active) $('goldStatus').textContent = goldPacket ? 'Đã thoát chế độ độc lập; artifact chưa được join với pipeline.' : 'Chưa nạp source-first blind packet.';
+}
+
+function goldVisibleItems() {
+  const doc = $('goldDocFilter').value;
+  const label = $('goldLabelFilter').value;
+  return goldItems.filter(item => (doc === 'all' || item.documentSha256 === doc) &&
+    (label === 'all' || (label === 'pending' ? !item.label : item.label === label)));
+}
+
+function renderGold() {
+  if (!goldPacket) return;
+  const visible = goldVisibleItems();
+  if (!visible.includes(goldItems[goldIndex]) && visible.length) goldIndex = visible[0]._index;
+  const active = goldItems[goldIndex] || visible[0];
+  const completed = goldItems.filter(item => item.label).length;
+  $('goldCount').textContent = `${completed}/${goldItems.length}`;
+  $('goldCountText').textContent = completed === goldItems.length ? 'đã gán nhãn · sẵn sàng freeze' : 'đã gán nhãn';
+  $('goldList').innerHTML = visible.map(item => {
+    const state = item.label === 'REVIEWED_HEADING' ? 'heading' : item.label === 'REVIEWED_NON_HEADING' ? 'nonheading' : item.label === 'UNCERTAIN' ? 'uncertain' : '';
+    return `<button class="audit-row ${state} ${item === active ? 'active' : ''}" data-gold-index="${item._index}"><span class="audit-mark"></span><span class="audit-num">${item._index + 1}</span><span class="audit-text">${esc(item.sourceText || '(không có source text)')}</span></button>`;
+  }).join('') || '<p class="note" style="padding: 12px">Không có occurrence theo bộ lọc.</p>';
+  document.querySelectorAll('[data-gold-index]').forEach(button => button.onclick = () => { goldIndex = Number(button.dataset.goldIndex); renderGold(); });
+  if (!active) { $('goldReview').innerHTML = ''; return; }
+  const layout = active.layoutFacts || {};
+  const lineOptions = (active.sourceLineIds || []).map(id => `<label><input type="checkbox" data-gold-line="${esc(id)}" ${active.headingLineIds.includes(id) ? 'checked' : ''}>${esc(id)}</label>`).join('');
+  $('goldReview').innerHTML = `<div class="audit-source">
+    <h3>Source occurrence ${active._index + 1}</h3>
+    <div class="source-meta">page ${esc(String(active.page))} · ${esc(active.documentSha256)}<br>source lines: ${esc(active.sourceLineIds.join(', ') || '—')}</div>
+    <p class="audit-quote">${esc(active.sourceText || 'Không có source text')}</p>
+    <div class="audit-context"><section><h4>Ngay trước</h4><p>${esc(active.precedingSourceLines.join('\n') || '—')}</p></section><section><h4>Ngay sau</h4><p>${esc(active.followingSourceLines.join('\n') || '—')}</p></section></div>
+    <p class="gold-integrity">Source-only · không có model/prediction/rank/validator/output trong workspace này.</p>
+    <p class="audit-lock">Layout: ${esc(`${layout.lineCount ?? '—'} dòng · x ${layout.left ?? '—'}–${layout.right ?? '—'} · y ${layout.bottomY ?? '—'}–${layout.topY ?? '—'}`)}</p>
+    <div class="audit-actions">
+      <button class="${active.label === 'REVIEWED_HEADING' ? 'selected' : ''}" data-gold-label="REVIEWED_HEADING">Heading</button>
+      <button class="secondary ${active.label === 'REVIEWED_NON_HEADING' ? 'selected' : ''}" data-gold-label="REVIEWED_NON_HEADING">Non-heading</button>
+      <button class="secondary ${active.label === 'UNCERTAIN' ? 'selected' : ''}" data-gold-label="UNCERTAIN">Uncertain</button>
+      <button class="secondary next" id="goldNext">Tiếp theo →</button>
+    </div>
+    <div class="gold-form ${active.label === 'REVIEWED_HEADING' ? '' : 'hidden'}">
+      <div><label class="f" for="goldHeadingText">Heading text (exact source)</label><textarea id="goldHeadingText" placeholder="Giữ nguyên text từ source">${esc(active.headingText || active.sourceText)}</textarea></div>
+      <div><label class="f" for="goldLevel">Level</label><select id="goldLevel" class="gold-level"><option value="">— chưa biết —</option>${[1,2,3,4,5,6,7,8,9].map(level => `<option value="${level}"${active.level === level ? ' selected' : ''}>H${level}</option>`).join('')}</select></div>
+    </div>
+    <div class="gold-span ${active.label === 'REVIEWED_HEADING' ? '' : 'hidden'}"><label>Heading span · source line IDs</label><div class="gold-source-lines">${lineOptions || '<span class="note">Packet không có sourceLineIds; giữ sourceSpan làm identity.</span>'}</div></div>
+  </div>`;
+  document.querySelectorAll('[data-gold-label]').forEach(button => button.onclick = () => { active.label = button.dataset.goldLabel; if (active.label !== 'REVIEWED_HEADING') { active.level = null; active.headingText = ''; active.headingLineIds = [...active.sourceLineIds]; } else if (!active.headingText) active.headingText = active.sourceText; renderGold(); });
+  $('goldNext').onclick = () => moveGold(1);
+  const text = $('goldHeadingText'); if (text) text.oninput = () => active.headingText = text.value;
+  const level = $('goldLevel'); if (level) level.onchange = () => active.level = level.value ? Number(level.value) : null;
+  document.querySelectorAll('[data-gold-line]').forEach(input => input.onchange = () => { active.headingLineIds = [...document.querySelectorAll('[data-gold-line]:checked')].map(x => x.dataset.goldLine); });
+}
+
+function moveGold(delta) {
+  const visible = goldVisibleItems();
+  const position = visible.indexOf(goldItems[goldIndex]);
+  goldIndex = visible.length ? visible[(position + delta + visible.length) % visible.length]._index : goldIndex;
+  renderGold();
 }
 
 function downloadJson(name, value) {
