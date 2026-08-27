@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_7b_role_only_causal_diagnosis",
+  "usesModel": false,
+  "productionChangeMade": false,
+  "providerCallsMade": false,
+  "documentId": "004",
+  "sourceDocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+  "authority": {
+    "runArtifact": "eval/benchmark-n3/n3.4/runs/004-n3.4-canonical-run.v1.json",
+    "runArtifactSha256": "C2D57CE108EC6D4063B41A0A590ED7BC74A6DCE152D3868E479B4E9B653A4333",
+    "silverArtifact": "eval/benchmark-n3/silver-labels/004-n3.2-silver-model-assisted.v1.json",
+    "silverArtifactSha256": "555F652B394C71F5532B7A7D378D5864626F33E66B66B932B6FAF551CC342DEE",
+    "ownerArtifact": "eval/benchmark-n3/n3.4/reports/004-n3.6-twelve-output-diagnosis.v1.json",
+    "ownerArtifactSha256": "9268808DA862312978655C0C3D8D498B3EBBFB27C0E6E28D59ABD3BD86E5D587",
+    "joinKey": "exact source lineIds; sourceFactId only within the same run"
+  },
+  "markerFamilySemantics": {
+    "productionOwner": "PdfMarkerFactsParser / PdfCandidateContextBuilder.BuildFacts",
+    "families": {
+      "arabic": "NumberingAudit strict token with NumberKind.Arabic",
+      "letter": "NumberingAudit strict token with NumberKind.Letter",
+      "labelled": "NumberingAudit strict token with NumberKind.Labelled",
+      "loose_labelled": "fallback loose labelled marker from PdfLayoutEvidenceOutline"
+    },
+    "sourceDerivedBeforeRoleDecision": true,
+    "proof": [
+      "PdfCandidateContextBuilder.BuildFacts calls PdfMarkerFactsParser.Parse(block.DisplayText) before PdfCandidateContext is created.",
+      "BuildFacts stores the result in PdfSourceFacts.Marker and marker evidence; role analysis consumes candidate contexts later.",
+      "PdfHierarchyFactsInventory re-parses the immutable source only after PdfValidatedHeading exists, so hierarchy artifact markerFamily is an observation, not a role discriminator."
+    ],
+    "codeReferences": [
+      "src/DocxHeaderExtractor.Core/Pipeline/PdfCandidateContracts.cs:203-234",
+      "src/DocxHeaderExtractor.Core/Pipeline/PdfCandidateContracts.cs:345-378",
+      "src/DocxHeaderExtractor.Core/Pipeline/PdfHierarchyFactsInventory.cs:24-45"
+    ]
+  },
+  "004Counts": {
+    "canonicalOutputs": 92,
+    "labelled": 78,
+    "arabic": 8,
+    "letter": 6,
+    "arabicOrLetter": 14,
+    "reviewedSilverExactLineIdMatches": 0,
+    "classificationCounts": {
+      "SUPPORTED_HEADING": 0,
+      "PARTIAL_SAME_OCCURRENCE": 0,
+      "UNMATCHED_NON_HEADING": 14
+    },
+    "ownerClassOverlap": {
+      "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN": 6,
+      "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED": 6,
+      "outsideTwelveOutputDiagnosis": 2
+    }
+  },
+  "items": [
+    {"sourceFactId":"b30","markerFamily":"arabic","classification":"UNMATCHED_NON_HEADING","ownerClass":"OWNER_A_ROLE_PLUS_DEGENERATE_SPAN"},
+    {"sourceFactId":"b45","markerFamily":"arabic","classification":"UNMATCHED_NON_HEADING","ownerClass":"OWNER_A_ROLE_PLUS_DEGENERATE_SPAN"},
+    {"sourceFactId":"b56","markerFamily":"arabic","classification":"UNMATCHED_NON_HEADING","ownerClass":"OWNER_A_ROLE_PLUS_DEGENERATE_SPAN"},
+    {"sourceFactId":"b60","markerFamily":"arabic","classification":"UNMATCHED_NON_HEADING","ownerClass":"OWNER_A_ROLE_PLUS_DEGENERATE_SPAN"},
+    {"sourceFactId":"b99","markerFamily":"arabic","classification":"UNMATCHED_NON_HEADING","ownerClass":"OWNER_A_ROLE_PLUS_DEGENERATE_SPAN"},
+    {"sourceFactId":"b122","markerFamily":"arabic","classification":"UNMATCHED_NON_HEADING","ownerClass":"OWNER_A_ROLE_PLUS_DEGENERATE_SPAN"},
+    {"sourceFactId":"b208","markerFamily":"arabic","classification":"UNMATCHED_NON_HEADING","ownerClass":null,"resolution":"not in 12-output owner packet; exact silver line match absent"},
+    {"sourceFactId":"b221","markerFamily":"letter","classification":"UNMATCHED_NON_HEADING","ownerClass":"OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED"},
+    {"sourceFactId":"b238","markerFamily":"letter","classification":"UNMATCHED_NON_HEADING","ownerClass":"OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED"},
+    {"sourceFactId":"b251","markerFamily":"letter","classification":"UNMATCHED_NON_HEADING","ownerClass":"OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED"},
+    {"sourceFactId":"b388","markerFamily":"arabic","classification":"UNMATCHED_NON_HEADING","ownerClass":"OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED"},
+    {"sourceFactId":"b438","markerFamily":"letter","classification":"UNMATCHED_NON_HEADING","ownerClass":"OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED"},
+    {"sourceFactId":"b444","markerFamily":"letter","classification":"UNMATCHED_NON_HEADING","ownerClass":"OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED"},
+    {"sourceFactId":"b483","markerFamily":"letter","classification":"UNMATCHED_NON_HEADING","ownerClass":null,"resolution":"not in 12-output owner packet; exact silver line match absent"}
+  ],
+  "discriminatorAudit": {
+    "candidate": "reject arabic or letter markerFamily",
+    "TP_ownerB": 6,
+    "TP_ownerA": 6,
+    "FP_genuineHeading_004": 0,
+    "documentsCovered": 1,
+    "occurrencesCovered": 14,
+    "availableBeforeRoleDecision": true,
+    "productionOwner": "PdfMarkerFactsParser / PdfCandidateContextBuilder.BuildFacts",
+    "decision": "not_safe_to_promote_from_004_alone"
+  },
+  "crossDocumentControls": [
+    {
+      "documentId":"057",
+      "sourceEvidence":"eval/benchmark-n0/silver-labels/057-n1.2-silver-model-assisted.v1.json",
+      "finding":"genuine REVIEWED_HEADING occurrences use Arabic numbering (for example 1 Introduction and 1.1 Which tools are allowed...).",
+      "occurrenceSafeRunBridge":"unavailable",
+      "status":"control_refutes_generic_marker_family_rejection_but_not_a_joined_counterfactual"
+    },
+    {
+      "documentId":"003",
+      "sourceEvidence":"eval/benchmark-n0/n2-s/runs/003-n2-s-run.v1.json",
+      "finding":"run has no validated items; no marker-family occurrence control is reconstructible.",
+      "occurrenceSafeRunBridge":"unavailable",
+      "status":"not_reconstructible"
+    }
+  ],
+  "conclusion": {
+    "finalStatus":"ROLE_ERROR_PROVEN_REMEDIATION_NOT_JUSTIFIED",
+    "proven":"004 role-only collateral is associated with arabic/letter marker families; the fact is source-derived before role decision.",
+    "notProven":"a common cross-document causal invariant; generic arabic/letter rejection is unsafe because 057 silver contains genuine Arabic-numbered headings.",
+    "remediation":"not implemented; no generic rejection, rank change, confidence gate, prompt change, or document-specific rule",
+    "next":"stop N3.7-B before implementation; retain finding as diagnosis only"
+  }
+}
