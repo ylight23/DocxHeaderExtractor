@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_round6_semantic_first_loss_ledger",
+  "phase": "round6a",
+  "modelCalls": false,
+  "productionChanges": false,
+  "promptOrModelTuned": false,
+  "sourceAuthority": "Round 4 K=640 route/checkpoint \u002B consumed silver source-line packets",
+  "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is run-local diagnostics only",
+  "selectedCohort": "deterministic K=640 selected cohort; 184 reviewed headings according to Round 3 selection artifact",
+  "allowedOwners": [
+    "ROLE_FALSE_NEGATIVE",
+    "ROLE_FALSE_POSITIVE",
+    "SPAN_UNRESOLVED",
+    "SPAN_DEGENERATE",
+    "VALIDATOR_REJECTION",
+    "GROUNDING_FAILURE",
+    "OUTPUT_POLICY_WITHHELD",
+    "UNRESOLVED"
+  ],
+  "aggregate": {
+    "selectedReviewedHeadings": 184,
+    "roleCorrect": null,
+    "spanCorrect": null,
+    "validated": null,
+    "grounded": null,
+    "emitted": null,
+    "semanticPrecisionProxy": null,
+    "semanticConditionalRecall": null,
+    "exactSpanAccuracy": null,
+    "notMeasured": [
+      "roleCorrect",
+      "spanCorrect",
+      "validated",
+      "grounded",
+      "emitted",
+      "semanticPrecisionProxy",
+      "semanticConditionalRecall",
+      "exactSpanAccuracy",
+      "per_occurrence_selected_identity"
+    ]
+  },
+  "perDocument": [
+    {
+      "documentId": "004",
+      "reviewedHeadings": 93,
+      "selectedReviewedHeadings": 55,
+      "firstLossLedgerStatus": "selected_identity_not_persisted_in_round4",
+      "items": [],
+      "counts": {
+        "roleFalseNegative": 0,
+        "spanUnresolved": 0,
+        "spanDegenerate": 0,
+        "groundingFailure": 0,
+        "validated": 0,
+        "grounded": 0
+      }
+    },
+    {
+      "documentId": "030",
+      "reviewedHeadings": 239,
+      "selectedReviewedHeadings": 91,
+      "firstLossLedgerStatus": "selected_identity_not_persisted_in_round4",
+      "items": [],
+      "counts": {
+        "roleFalseNegative": 0,
+        "spanUnresolved": 0,
+        "spanDegenerate": 0,
+        "groundingFailure": 0,
+        "validated": 0,
+        "grounded": 0
+      }
+    },
+    {
+      "documentId": "043",
+      "reviewedHeadings": 43,
+      "selectedReviewedHeadings": 23,
+      "firstLossLedgerStatus": "selected_identity_not_persisted_in_round4",
+      "items": [],
+      "counts": {
+        "roleFalseNegative": 0,
+        "spanUnresolved": 0,
+        "spanDegenerate": 0,
+        "groundingFailure": 0,
+        "validated": 0,
+        "grounded": 0
+      }
+    },
+    {
+      "documentId": "058",
+      "reviewedHeadings": 47,
+      "selectedReviewedHeadings": 15,
+      "firstLossLedgerStatus": "selected_identity_not_persisted_in_round4",
+      "items": [],
+      "counts": {
+        "roleFalseNegative": 0,
+        "spanUnresolved": 0,
+        "spanDegenerate": 0,
+        "groundingFailure": 0,
+        "validated": 0,
+        "grounded": 0
+      }
+    }
+  ],
+  "executionAvailability": {
+    "K640": "checkpoint and route available; span lane partial_timeout on all four documents",
+    "K1024": "route/checkpoint available; zero downstream facts after frozen lane deadline; excluded from semantic quality denominator",
+    "newProviderCalls": 0
+  },
+  "decision": {
+    "status": "EVIDENCE_INSUFFICIENT_FOR_OCCURRENCE_LEDGER",
+    "reason": "Round 4 persists the aggregate K=640 selected count and route/checkpoint data, but not the selected source occurrence identities. Re-running extraction to reconstruct them would be a new census and is not used as historical authority.",
+    "nextStep": "freeze an occurrence-retaining semantic execution contract before any new provider call; persist sourceLineIds/sourceSpan and per-candidate role, span, validator, grounding, and output outcomes"
+  }
+}
