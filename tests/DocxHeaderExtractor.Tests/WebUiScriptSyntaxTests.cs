@@ -129,5 +129,7 @@ public class WebUiScriptSyntaxTests
         "file", "model", "backend", "lmStudioModel", "openrouterModel",
         // Ô upload của luồng ĐỐI CHIẾU bản đã sửa, gửi bằng FormData riêng chứ không qua fd.
         "correctedFile",
+        // Các ô của audit/trace/gold là các luồng độc lập, không phải tham số /api/extract.
+        "auditFile", "goldFile", "goldReviewerId", "goldVersion", "traceExpectedFile",
     };
 }
