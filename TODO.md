@@ -5503,6 +5503,42 @@ pursued: a narrow, separately-gated investigation into whether `OWNER_A`'s degen
 generalizes (a span-lane defect worth its own diagnosis) and whether `OWNER_B`'s role-only errors share
 a discoverable, non-invented distinguishing feature - not a single "fix the 12" patch.
 
+### N3.7-A - a deterministic invariant for Owner A, found clean, not yet promoted
+
+Bounded investigation only, no production code change: `PdfN37ADegenerateSpanInvariantProbe` tests a
+structural invariant - never `span.Length <= N` alone, since a genuine marker like `"I."` or `"1."` can
+be that short - **the resolved span, once the recognized production marker
+(`SourceFactsBuilder.FromPdfBlock`, never a new regex) is accounted for, carries no semantic residue,
+while the candidate's full source text does carry >= 4 letter-bearing characters beyond the marker that
+the span excluded.** A genuine marker-only heading with nothing beyond the marker in the source at all
+cannot trip this, by construction.
+
+**Result: 6/6 `OWNER_A` cases fire, 0/6 `OWNER_B` cases fire, and 0 genuine headings are falsely
+rejected across three independent control corpora** - 004's own 52 other silver-supported R1 outputs,
+003's 77 silver-supported occurrences replayed from its own committed span checkpoint, and 057's 23
+silver-supported items from a naturally-complete (non-timeout) semantic pass. 152 genuine headings
+checked, zero false positives.
+
+```
+allSixOwnerARejected:              true
+zeroOwnerBFalselyRejected:         true
+zeroGenuineHeadingsLostAcrossControls: true (0/152)
+```
+
+**This is diagnosis, not promotion.** The invariant is clean on every control corpus available, but
+that is three documents' worth of evidence, not a fresh holdout, and no acceptance gate (recurrence,
+collateral, cross-document regression) has been run against it the way R1 itself went through. Whether
+to implement this as a candidate `R1-v2` change - and if so, run it through the same gate discipline
+R1 did before any N3-equivalent validation - is a decision for whoever owns that call, not made here.
+Artifact: `eval/benchmark-n3/n3.4/reports/004-n3.7a-degenerate-span-invariant.v1.json`.
+
+- [ ] N3.7-B - Owner B diagnosis (role-misclassification-only, span well-formed). Not started. Per the
+  standing instruction: no confidence threshold, no punctuation heuristic, no numbered/lettered-marker
+  rejection rule, no rank cutoff, no document-specific dictionary. If no selective, non-invented
+  structural/semantic invariant is found that separates these 6 from genuine headings without loss,
+  the correct outcome is `OWNER_B_ROLE_ERROR: REMEDIATION_NOT_YET_JUSTIFIED`, left unresolved rather
+  than patched with a weak heuristic.
+
 ### 057 representation audit - two sub-owners, two different findings, no fix promoted
 
 Per-target: `PdfN2S057RepresentationAuditProbe` rebuilds each of the 23 undelivered occurrences' own
