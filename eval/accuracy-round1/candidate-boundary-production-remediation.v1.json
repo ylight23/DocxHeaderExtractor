@@ -1,0 +1,3885 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_round1_candidate_boundary_production_remediation",
+  "phase": "round1d",
+  "implementationRevision": "working-tree-r1d",
+  "owner": "PdfSemanticBlockGrouper.Build",
+  "operation": "LINE_GROUP",
+  "modelCalls": 0,
+  "productionBehaviorChanged": true,
+  "sourceAuthority": "Round1A b4685c8 \u002B Round1B 4d7c814 \u002B Round1C.2 7f365a1",
+  "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is diagnostics-only",
+  "before": {
+    "reviewed": 422,
+    "candidateRecall": "375/422",
+    "candidateCount": 10032,
+    "recallAt160": "80/422",
+    "recallAt640": "184/422",
+    "recallAtAll": "375/422"
+  },
+  "after": {
+    "reviewed": 422,
+    "candidateRecall": "382/422",
+    "candidateCount": 10282,
+    "recallAt40": "26/422",
+    "recallAt80": "47/422",
+    "recallAt160": "77/422",
+    "recallAt320": "92/422",
+    "recallAt640": "183/422",
+    "recallAtAll": "382/422"
+  },
+  "delta": {
+    "candidateCount": 250,
+    "recoveredBoundaryOccurrences": 7,
+    "baselineGenuineHeadingLoss": 3,
+    "duplicateCandidates": 0,
+    "candidateInflation": 250,
+    "existingTrueHeadingDisplacedFromTop160": 303
+  },
+  "boundary": {
+    "total": 18,
+    "recovered": 7,
+    "notRecovered": 11,
+    "shapes": {
+      "MULTILINE_BOUNDARY": 18
+    },
+    "negativeControlFailures": 3
+  },
+  "regression": {
+    "focusedGroupingTests": "PASS",
+    "fullSuite": "not_run",
+    "frozenEngineeringBaseline": "1186 passed / 15 failed",
+    "newR1DFailures": "not_assessed_until_full_suite"
+  },
+  "perDocument": [
+    {
+      "DocumentId": "004",
+      "CandidateCount": 2647,
+      "recoveredBoundary": 5,
+      "candidateRecall": "88/93",
+      "recallAt160": "59/93"
+    },
+    {
+      "DocumentId": "030",
+      "CandidateCount": 3478,
+      "recoveredBoundary": 2,
+      "candidateRecall": "209/239",
+      "recallAt160": "6/239"
+    },
+    {
+      "DocumentId": "043",
+      "CandidateCount": 2260,
+      "recoveredBoundary": 0,
+      "candidateRecall": "41/43",
+      "recallAt160": "0/43"
+    },
+    {
+      "DocumentId": "058",
+      "CandidateCount": 1897,
+      "recoveredBoundary": 3,
+      "candidateRecall": "44/47",
+      "recallAt160": "12/47"
+    }
+  ],
+  "occurrences": [
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/chapter/1",
+      "Covered": true,
+      "BestRank": 2,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/1",
+      "Covered": true,
+      "BestRank": 17,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/2",
+      "Covered": true,
+      "BestRank": 15,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/3",
+      "Covered": true,
+      "BestRank": 16,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/4",
+      "Covered": true,
+      "BestRank": 19,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/5",
+      "Covered": true,
+      "BestRank": 20,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/6",
+      "Covered": true,
+      "BestRank": 92,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/7",
+      "Covered": true,
+      "BestRank": 21,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/8",
+      "Covered": true,
+      "BestRank": 2593,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/9",
+      "Covered": true,
+      "BestRank": 826,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/chapter/2",
+      "Covered": true,
+      "BestRank": 3,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/10",
+      "Covered": true,
+      "BestRank": 23,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/11",
+      "Covered": true,
+      "BestRank": 94,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/12",
+      "Covered": true,
+      "BestRank": 2594,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/13",
+      "Covered": true,
+      "BestRank": 26,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/14",
+      "Covered": true,
+      "BestRank": 27,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/chapter/3",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/15",
+      "Covered": true,
+      "BestRank": 96,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/16",
+      "Covered": true,
+      "BestRank": 1957,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/17",
+      "Covered": true,
+      "BestRank": 30,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/18",
+      "Covered": true,
+      "BestRank": 97,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/19",
+      "Covered": true,
+      "BestRank": 2601,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/20",
+      "Covered": true,
+      "BestRank": 98,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/chapter/4",
+      "Covered": true,
+      "BestRank": 4,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/section/1",
+      "Covered": true,
+      "BestRank": 114,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/21",
+      "Covered": true,
+      "BestRank": 2588,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/22",
+      "Covered": true,
+      "BestRank": 34,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/23",
+      "Covered": true,
+      "BestRank": 2603,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/24",
+      "Covered": true,
+      "BestRank": 2604,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/25",
+      "Covered": true,
+      "BestRank": 2605,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/26",
+      "Covered": true,
+      "BestRank": 2017,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/27",
+      "Covered": true,
+      "BestRank": 99,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/28",
+      "Covered": true,
+      "BestRank": 39,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/section/2",
+      "Covered": true,
+      "BestRank": 116,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/29",
+      "Covered": true,
+      "BestRank": 40,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/30",
+      "Covered": true,
+      "BestRank": 2044,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/31",
+      "Covered": true,
+      "BestRank": 2052,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/32",
+      "Covered": true,
+      "BestRank": 2062,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/33",
+      "Covered": true,
+      "BestRank": 2069,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/34",
+      "Covered": true,
+      "BestRank": 829,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/35",
+      "Covered": true,
+      "BestRank": 2108,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/36",
+      "Covered": true,
+      "BestRank": 2616,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/section/3",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/37",
+      "Covered": true,
+      "BestRank": 2617,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/38",
+      "Covered": true,
+      "BestRank": 101,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/39",
+      "Covered": true,
+      "BestRank": 2136,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/40",
+      "Covered": true,
+      "BestRank": 51,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/41",
+      "Covered": true,
+      "BestRank": 52,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/section/4",
+      "Covered": true,
+      "BestRank": 120,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/42",
+      "Covered": true,
+      "BestRank": 53,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/43",
+      "Covered": true,
+      "BestRank": 54,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/44",
+      "Covered": true,
+      "BestRank": 55,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/45",
+      "Covered": true,
+      "BestRank": 2185,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/46",
+      "Covered": true,
+      "BestRank": 57,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/47",
+      "Covered": true,
+      "BestRank": 102,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/48",
+      "Covered": true,
+      "BestRank": 58,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/49",
+      "Covered": true,
+      "BestRank": 2219,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/50",
+      "Covered": true,
+      "BestRank": 2628,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/chapter/5",
+      "Covered": true,
+      "BestRank": 5,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/section/5",
+      "Covered": true,
+      "BestRank": 121,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/51",
+      "Covered": true,
+      "BestRank": 61,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/52",
+      "Covered": true,
+      "BestRank": 62,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/53",
+      "Covered": true,
+      "BestRank": 103,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/54",
+      "Covered": true,
+      "BestRank": 64,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/55",
+      "Covered": true,
+      "BestRank": 65,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/section/6",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/56",
+      "Covered": true,
+      "BestRank": 104,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/57",
+      "Covered": true,
+      "BestRank": 2260,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/58",
+      "Covered": true,
+      "BestRank": 2292,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/59",
+      "Covered": true,
+      "BestRank": 70,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/section/7",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/60",
+      "Covered": true,
+      "BestRank": 2635,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/61",
+      "Covered": true,
+      "BestRank": 2636,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/62",
+      "Covered": true,
+      "BestRank": 1,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/63",
+      "Covered": true,
+      "BestRank": 75,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/64",
+      "Covered": true,
+      "BestRank": 107,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/section/8",
+      "Covered": true,
+      "BestRank": 124,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/65",
+      "Covered": true,
+      "BestRank": 77,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/66",
+      "Covered": true,
+      "BestRank": 108,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/67",
+      "Covered": true,
+      "BestRank": 1792,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/68",
+      "Covered": true,
+      "BestRank": 79,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/chapter/6",
+      "Covered": true,
+      "BestRank": 6,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/69",
+      "Covered": true,
+      "BestRank": 80,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/70",
+      "Covered": true,
+      "BestRank": 83,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/71",
+      "Covered": true,
+      "BestRank": 84,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/72",
+      "Covered": true,
+      "BestRank": 85,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/73",
+      "Covered": true,
+      "BestRank": 86,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/74",
+      "Covered": true,
+      "BestRank": 87,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/chapter/7",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/75",
+      "Covered": true,
+      "BestRank": 2647,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/76",
+      "Covered": true,
+      "BestRank": 88,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/article/77",
+      "Covered": true,
+      "BestRank": 90,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "004",
+      "GoldStableId": "004/appendix/1",
+      "Covered": true,
+      "BestRank": 825,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/front/1",
+      "Covered": true,
+      "BestRank": 1383,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/front/2",
+      "Covered": true,
+      "BestRank": 1385,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/front/3",
+      "Covered": true,
+      "BestRank": 1396,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/front/4",
+      "Covered": true,
+      "BestRank": 1404,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/outline/1",
+      "Covered": true,
+      "BestRank": 55,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/outline/2",
+      "Covered": true,
+      "BestRank": 56,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/outline/3",
+      "Covered": true,
+      "BestRank": 244,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/outline/4",
+      "Covered": true,
+      "BestRank": 3475,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/outline/5",
+      "Covered": true,
+      "BestRank": 2061,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/outline/6",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/outline/7",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/outline/8",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/outline/9",
+      "Covered": true,
+      "BestRank": 18,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/outline/10",
+      "Covered": true,
+      "BestRank": 19,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/outline/11",
+      "Covered": true,
+      "BestRank": 35,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/outline/12",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/1",
+      "Covered": true,
+      "BestRank": 757,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/2",
+      "Covered": true,
+      "BestRank": 778,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/3",
+      "Covered": true,
+      "BestRank": 808,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/4",
+      "Covered": true,
+      "BestRank": 841,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/5",
+      "Covered": true,
+      "BestRank": 758,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/6",
+      "Covered": true,
+      "BestRank": 760,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/7",
+      "Covered": true,
+      "BestRank": 1859,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/8",
+      "Covered": true,
+      "BestRank": 772,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/9",
+      "Covered": true,
+      "BestRank": 773,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/10",
+      "Covered": true,
+      "BestRank": 770,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/11",
+      "Covered": true,
+      "BestRank": 782,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/12",
+      "Covered": true,
+      "BestRank": 783,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/13",
+      "Covered": true,
+      "BestRank": 779,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/14",
+      "Covered": true,
+      "BestRank": 413,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/15",
+      "Covered": true,
+      "BestRank": 787,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/16",
+      "Covered": true,
+      "BestRank": 786,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/17",
+      "Covered": true,
+      "BestRank": 794,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/18",
+      "Covered": true,
+      "BestRank": 800,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/19",
+      "Covered": true,
+      "BestRank": 804,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/20",
+      "Covered": true,
+      "BestRank": 805,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/21",
+      "Covered": true,
+      "BestRank": 418,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/22",
+      "Covered": true,
+      "BestRank": 817,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/23",
+      "Covered": true,
+      "BestRank": 822,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/24",
+      "Covered": true,
+      "BestRank": 823,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/25",
+      "Covered": true,
+      "BestRank": 824,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/26",
+      "Covered": true,
+      "BestRank": 827,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/27",
+      "Covered": true,
+      "BestRank": 828,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/28",
+      "Covered": true,
+      "BestRank": 832,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/29",
+      "Covered": true,
+      "BestRank": 835,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/30",
+      "Covered": true,
+      "BestRank": 839,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/31",
+      "Covered": true,
+      "BestRank": 430,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/32",
+      "Covered": true,
+      "BestRank": 842,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/33",
+      "Covered": true,
+      "BestRank": 852,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/34",
+      "Covered": true,
+      "BestRank": 851,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/35",
+      "Covered": true,
+      "BestRank": 853,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/36",
+      "Covered": true,
+      "BestRank": 854,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/37",
+      "Covered": true,
+      "BestRank": 857,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/38",
+      "Covered": true,
+      "BestRank": 860,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/itc/39",
+      "Covered": true,
+      "BestRank": 861,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/datasheet/1",
+      "Covered": true,
+      "BestRank": 862,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/datasheet/2",
+      "Covered": true,
+      "BestRank": 863,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/datasheet/3",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/datasheet/4",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/datasheet/5",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/techforms/1",
+      "Covered": true,
+      "BestRank": 1599,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/techforms/2",
+      "Covered": true,
+      "BestRank": 938,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/techforms/3",
+      "Covered": true,
+      "BestRank": 1626,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/techforms/4",
+      "Covered": true,
+      "BestRank": 1632,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/techforms/5",
+      "Covered": true,
+      "BestRank": 1638,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/techforms/6",
+      "Covered": true,
+      "BestRank": 1643,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/techforms/7",
+      "Covered": true,
+      "BestRank": 1647,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/techforms/8",
+      "Covered": true,
+      "BestRank": 1657,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/techforms/9",
+      "Covered": true,
+      "BestRank": 1675,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/finforms/1",
+      "Covered": true,
+      "BestRank": 506,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/finforms/2",
+      "Covered": true,
+      "BestRank": 1694,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/finforms/3",
+      "Covered": true,
+      "BestRank": 1714,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/finforms/4",
+      "Covered": true,
+      "BestRank": 1718,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/finforms/5",
+      "Covered": true,
+      "BestRank": 513,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/finforms/6",
+      "Covered": true,
+      "BestRank": 515,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/finforms/7",
+      "Covered": true,
+      "BestRank": 2079,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/finforms/8",
+      "Covered": true,
+      "BestRank": 984,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/fraud-standalone/1",
+      "Covered": true,
+      "BestRank": 247,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/fraud-standalone/2",
+      "Covered": true,
+      "BestRank": 521,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/tor/1",
+      "Covered": true,
+      "BestRank": 534,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/tor/2",
+      "Covered": true,
+      "BestRank": 535,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/tor/3",
+      "Covered": true,
+      "BestRank": 536,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/tor/4",
+      "Covered": true,
+      "BestRank": 542,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/tor/5",
+      "Covered": true,
+      "BestRank": 540,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/tor/6",
+      "Covered": true,
+      "BestRank": 543,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/1",
+      "Covered": true,
+      "BestRank": 931,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/2",
+      "Covered": true,
+      "BestRank": 438,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/3",
+      "Covered": true,
+      "BestRank": 555,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/4",
+      "Covered": true,
+      "BestRank": 556,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/5",
+      "Covered": true,
+      "BestRank": 556,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/6",
+      "Covered": true,
+      "BestRank": 560,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/7",
+      "Covered": true,
+      "BestRank": 561,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/8",
+      "Covered": true,
+      "BestRank": 557,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/9",
+      "Covered": true,
+      "BestRank": 306,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/10",
+      "Covered": true,
+      "BestRank": 558,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/11",
+      "Covered": true,
+      "BestRank": 559,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/12",
+      "Covered": true,
+      "BestRank": 562,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/13",
+      "Covered": true,
+      "BestRank": 563,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/14",
+      "Covered": true,
+      "BestRank": 566,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/15",
+      "Covered": true,
+      "BestRank": 568,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/16",
+      "Covered": true,
+      "BestRank": 307,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/17",
+      "Covered": true,
+      "BestRank": 569,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/18",
+      "Covered": true,
+      "BestRank": 570,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/19",
+      "Covered": true,
+      "BestRank": 565,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/20",
+      "Covered": true,
+      "BestRank": 575,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/21",
+      "Covered": true,
+      "BestRank": 571,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/22",
+      "Covered": true,
+      "BestRank": 577,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/23",
+      "Covered": true,
+      "BestRank": 585,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/24",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/25",
+      "Covered": true,
+      "BestRank": 594,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/26",
+      "Covered": true,
+      "BestRank": 595,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/27",
+      "Covered": true,
+      "BestRank": 596,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/28",
+      "Covered": true,
+      "BestRank": 597,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/29",
+      "Covered": true,
+      "BestRank": 598,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/30",
+      "Covered": true,
+      "BestRank": 599,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/31",
+      "Covered": true,
+      "BestRank": 600,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/32",
+      "Covered": true,
+      "BestRank": 601,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/33",
+      "Covered": true,
+      "BestRank": 602,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/34",
+      "Covered": true,
+      "BestRank": 604,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/35",
+      "Covered": true,
+      "BestRank": 605,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/36",
+      "Covered": true,
+      "BestRank": 607,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/37",
+      "Covered": true,
+      "BestRank": 608,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/38",
+      "Covered": true,
+      "BestRank": 609,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/39",
+      "Covered": true,
+      "BestRank": 610,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/40",
+      "Covered": true,
+      "BestRank": 308,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/41",
+      "Covered": true,
+      "BestRank": 612,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/42",
+      "Covered": true,
+      "BestRank": 613,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/43",
+      "Covered": true,
+      "BestRank": 1960,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/44",
+      "Covered": true,
+      "BestRank": 615,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/45",
+      "Covered": true,
+      "BestRank": 616,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/46",
+      "Covered": true,
+      "BestRank": 620,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/47",
+      "Covered": true,
+      "BestRank": 617,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/48",
+      "Covered": true,
+      "BestRank": 619,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/49",
+      "Covered": true,
+      "BestRank": 622,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/50",
+      "Covered": true,
+      "BestRank": 621,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/51",
+      "Covered": true,
+      "BestRank": 623,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/52",
+      "Covered": true,
+      "BestRank": 624,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/53",
+      "Covered": true,
+      "BestRank": 626,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/54",
+      "Covered": true,
+      "BestRank": 309,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/55",
+      "Covered": true,
+      "BestRank": 629,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/56",
+      "Covered": true,
+      "BestRank": 2131,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/57",
+      "Covered": true,
+      "BestRank": 584,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/58",
+      "Covered": true,
+      "BestRank": 606,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/59",
+      "Covered": true,
+      "BestRank": 611,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/60",
+      "Covered": true,
+      "BestRank": 618,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/61",
+      "Covered": true,
+      "BestRank": 625,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/62",
+      "Covered": true,
+      "BestRank": 627,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/fraud-attach-tb/1",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/fraud-attach-tb/2",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/fraud-attach-tb/3",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/arb-tb/1",
+      "Covered": true,
+      "BestRank": 655,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/arb-tb/2",
+      "Covered": true,
+      "BestRank": 657,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/arb-tb/3",
+      "Covered": true,
+      "BestRank": 658,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/arb-tb/4",
+      "Covered": true,
+      "BestRank": 659,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/arb-tb/5",
+      "Covered": true,
+      "BestRank": 660,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/63",
+      "Covered": true,
+      "BestRank": 632,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/64",
+      "Covered": true,
+      "BestRank": 661,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/65",
+      "Covered": true,
+      "BestRank": 1202,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/66",
+      "Covered": true,
+      "BestRank": 1204,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/67",
+      "Covered": true,
+      "BestRank": 3280,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/68",
+      "Covered": true,
+      "BestRank": 2348,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/69",
+      "Covered": true,
+      "BestRank": 30,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/70",
+      "Covered": true,
+      "BestRank": 1214,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-tb/71",
+      "Covered": true,
+      "BestRank": 1231,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/1",
+      "Covered": true,
+      "BestRank": 1975,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/2",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/3",
+      "Covered": true,
+      "BestRank": 3343,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/4",
+      "Covered": true,
+      "BestRank": 3343,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/5",
+      "Covered": true,
+      "BestRank": 1977,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/6",
+      "Covered": true,
+      "BestRank": 3346,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/7",
+      "Covered": true,
+      "BestRank": 672,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/8",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/9",
+      "Covered": true,
+      "BestRank": 3348,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/10",
+      "Covered": true,
+      "BestRank": 673,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/11",
+      "Covered": true,
+      "BestRank": 1978,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/12",
+      "Covered": true,
+      "BestRank": 675,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/13",
+      "Covered": true,
+      "BestRank": 367,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/14",
+      "Covered": true,
+      "BestRank": 676,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/15",
+      "Covered": true,
+      "BestRank": 368,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/16",
+      "Covered": true,
+      "BestRank": 678,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/17",
+      "Covered": true,
+      "BestRank": 679,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/18",
+      "Covered": true,
+      "BestRank": 3358,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/19",
+      "Covered": true,
+      "BestRank": 680,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/20",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/21",
+      "Covered": true,
+      "BestRank": 3364,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/22",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/23",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/24",
+      "Covered": true,
+      "BestRank": 369,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/25",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/26",
+      "Covered": true,
+      "BestRank": 370,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/27",
+      "Covered": true,
+      "BestRank": 686,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/28",
+      "Covered": true,
+      "BestRank": 687,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/29",
+      "Covered": true,
+      "BestRank": 688,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/30",
+      "Covered": true,
+      "BestRank": 3377,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/31",
+      "Covered": true,
+      "BestRank": 689,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/32",
+      "Covered": true,
+      "BestRank": 690,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/33",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/34",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/35",
+      "Covered": true,
+      "BestRank": 691,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/36",
+      "Covered": true,
+      "BestRank": 371,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/37",
+      "Covered": true,
+      "BestRank": 693,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/38",
+      "Covered": true,
+      "BestRank": 694,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/39",
+      "Covered": true,
+      "BestRank": 692,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/40",
+      "Covered": true,
+      "BestRank": 695,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/41",
+      "Covered": true,
+      "BestRank": 696,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/42",
+      "Covered": true,
+      "BestRank": 697,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/43",
+      "Covered": true,
+      "BestRank": 699,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/44",
+      "Covered": true,
+      "BestRank": 700,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/45",
+      "Covered": true,
+      "BestRank": 701,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/46",
+      "Covered": true,
+      "BestRank": 372,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/47",
+      "Covered": true,
+      "BestRank": 698,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/48",
+      "Covered": true,
+      "BestRank": 705,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/49",
+      "Covered": true,
+      "BestRank": 706,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/50",
+      "Covered": true,
+      "BestRank": 710,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/51",
+      "Covered": true,
+      "BestRank": 708,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/52",
+      "Covered": true,
+      "BestRank": 711,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/53",
+      "Covered": true,
+      "BestRank": 709,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/54",
+      "Covered": true,
+      "BestRank": 2374,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/55",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/56",
+      "Covered": true,
+      "BestRank": 3384,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/57",
+      "Covered": true,
+      "BestRank": 2427,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/58",
+      "Covered": true,
+      "BestRank": 3396,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/59",
+      "Covered": true,
+      "BestRank": 2448,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/60",
+      "Covered": true,
+      "BestRank": 3410,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/fraud-attach-ls/1",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/fraud-attach-ls/2",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/fraud-attach-ls/3",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/arb-ls/1",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/arb-ls/2",
+      "Covered": true,
+      "BestRank": 3429,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/arb-ls/3",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/arb-ls/4",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/arb-ls/5",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/61",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/62",
+      "Covered": true,
+      "BestRank": 3430,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/63",
+      "Covered": true,
+      "BestRank": 3430,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/64",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/65",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/66",
+      "Covered": true,
+      "BestRank": 177,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "030",
+      "GoldStableId": "030/gcc-ls/67",
+      "Covered": true,
+      "BestRank": 2033,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/001",
+      "Covered": true,
+      "BestRank": 442,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/002",
+      "Covered": true,
+      "BestRank": 425,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/003",
+      "Covered": true,
+      "BestRank": 443,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/004",
+      "Covered": true,
+      "BestRank": 445,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/005",
+      "Covered": true,
+      "BestRank": 448,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/006",
+      "Covered": true,
+      "BestRank": 449,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/007",
+      "Covered": true,
+      "BestRank": 450,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/008",
+      "Covered": true,
+      "BestRank": 431,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/009",
+      "Covered": true,
+      "BestRank": 432,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/010",
+      "Covered": true,
+      "BestRank": 456,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/011",
+      "Covered": true,
+      "BestRank": 457,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/012",
+      "Covered": true,
+      "BestRank": 458,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/013",
+      "Covered": true,
+      "BestRank": 433,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/014",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/015",
+      "Covered": true,
+      "BestRank": 1551,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/016",
+      "Covered": true,
+      "BestRank": 1552,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/017",
+      "Covered": true,
+      "BestRank": 782,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/018",
+      "Covered": true,
+      "BestRank": 2151,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/019",
+      "Covered": true,
+      "BestRank": 2152,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/020",
+      "Covered": true,
+      "BestRank": 1554,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/021",
+      "Covered": true,
+      "BestRank": 2153,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/022",
+      "Covered": true,
+      "BestRank": 1555,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/023",
+      "Covered": true,
+      "BestRank": 1556,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/024",
+      "Covered": true,
+      "BestRank": 1558,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/025",
+      "Covered": true,
+      "BestRank": 805,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/026",
+      "Covered": true,
+      "BestRank": 1559,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/027",
+      "Covered": true,
+      "BestRank": 1560,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/028",
+      "Covered": true,
+      "BestRank": 2157,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/029",
+      "Covered": true,
+      "BestRank": 1565,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/030",
+      "Covered": true,
+      "BestRank": 831,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/031",
+      "Covered": true,
+      "BestRank": 551,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/032",
+      "Covered": true,
+      "BestRank": 1568,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/033",
+      "Covered": true,
+      "BestRank": 423,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/034",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/035",
+      "Covered": true,
+      "BestRank": 569,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/036",
+      "Covered": true,
+      "BestRank": 944,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/037",
+      "Covered": true,
+      "BestRank": 1573,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/038",
+      "Covered": true,
+      "BestRank": 973,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/039",
+      "Covered": true,
+      "BestRank": 424,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/040",
+      "Covered": true,
+      "BestRank": 987,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/041",
+      "Covered": true,
+      "BestRank": 1578,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/042",
+      "Covered": true,
+      "BestRank": 293,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "043",
+      "GoldStableId": "043/heading/043",
+      "Covered": true,
+      "BestRank": 295,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/001",
+      "Covered": true,
+      "BestRank": 935,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/002",
+      "Covered": true,
+      "BestRank": 43,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/003",
+      "Covered": true,
+      "BestRank": 6,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/004",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/005",
+      "Covered": true,
+      "BestRank": 1606,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/006",
+      "Covered": true,
+      "BestRank": 146,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/007",
+      "Covered": true,
+      "BestRank": 147,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/008",
+      "Covered": true,
+      "BestRank": 1615,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/009",
+      "Covered": true,
+      "BestRank": 1616,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/010",
+      "Covered": true,
+      "BestRank": 149,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/011",
+      "Covered": true,
+      "BestRank": 1626,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/012",
+      "Covered": true,
+      "BestRank": 1630,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/013",
+      "Covered": true,
+      "BestRank": 153,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/014",
+      "Covered": true,
+      "BestRank": 154,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/015",
+      "Covered": true,
+      "BestRank": 157,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/016",
+      "Covered": true,
+      "BestRank": 1640,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/017",
+      "Covered": true,
+      "BestRank": 746,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/018",
+      "Covered": true,
+      "BestRank": 750,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/019",
+      "Covered": true,
+      "BestRank": 161,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/020",
+      "Covered": true,
+      "BestRank": 1660,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/021",
+      "Covered": true,
+      "BestRank": 1663,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/022",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/023",
+      "Covered": true,
+      "BestRank": 1664,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/024",
+      "Covered": true,
+      "BestRank": 1666,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/025",
+      "Covered": true,
+      "BestRank": 1670,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/026",
+      "Covered": true,
+      "BestRank": 164,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/027",
+      "Covered": false,
+      "BestRank": 0,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/028",
+      "Covered": true,
+      "BestRank": 1675,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/029",
+      "Covered": true,
+      "BestRank": 1676,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/030",
+      "Covered": true,
+      "BestRank": 167,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/031",
+      "Covered": true,
+      "BestRank": 1681,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/032",
+      "Covered": true,
+      "BestRank": 169,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/033",
+      "Covered": true,
+      "BestRank": 1689,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/034",
+      "Covered": true,
+      "BestRank": 50,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/035",
+      "Covered": true,
+      "BestRank": 8,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/036",
+      "Covered": true,
+      "BestRank": 1703,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/037",
+      "Covered": true,
+      "BestRank": 178,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/038",
+      "Covered": true,
+      "BestRank": 794,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/039",
+      "Covered": true,
+      "BestRank": 180,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/040",
+      "Covered": true,
+      "BestRank": 1720,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/041",
+      "Covered": true,
+      "BestRank": 9,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": false,
+      "DisplacedFrom160": false
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/042",
+      "Covered": true,
+      "BestRank": 1724,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/043",
+      "Covered": true,
+      "BestRank": 1733,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/044",
+      "Covered": true,
+      "BestRank": 1742,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/045",
+      "Covered": true,
+      "BestRank": 803,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/046",
+      "Covered": true,
+      "BestRank": 1748,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": true
+    },
+    {
+      "DocumentId": "058",
+      "GoldStableId": "058/heading/047",
+      "Covered": true,
+      "BestRank": 49,
+      "Shape": "MULTILINE_BOUNDARY",
+      "WasBaselinePresent": true,
+      "DisplacedFrom160": false
+    }
+  ],
+  "finalStatus": "BOUNDARY_PRODUCTION_REMEDIATION_REJECTED"
+}
