@@ -59,3 +59,15 @@ Backup tag: `backup/pre-consolidation-20260827`
 ## Consolidation status
 
 `MECHANICAL_CONFLICT_RESOLVED` for the performed source integrations. Final release/main promotion is not asserted until the full verification gate completes in an environment with sufficient disk space.
+
+## Final Failure-Set Delta
+
+The final same-machine `win-x64` comparison was completed without changing production code or expected values:
+
+- Base `b7854b5`: `1179 passed / 17 failed / 1196 total`.
+- Integration `b2f814c`: `1217 passed / 21 failed / 1238 total`.
+- Exact identity delta: 17 pre-existing failures, 4 integration-only test identities, 0 fixed identities.
+- Three integration-only corpus probes still fail when run individually because corpus `004` is externally locked; under the frozen protocol they remain `UNRESOLVED`, not `ENVIRONMENT_FILE_LOCK`.
+- `PdfN15RankingLossDiagnosisProbe` remains an artifact SHA drift and was not “fixed” by changing the expected hash.
+
+Therefore the full-suite delta gate is `BLOCKED`; the Draft PR remains open and `main` was not merged. See [full-suite-failure-delta.v1.json](../../eval/consolidation/full-suite-failure-delta.v1.json) and [consolidation-verification.v2.json](../../eval/consolidation/consolidation-verification.v2.json).
