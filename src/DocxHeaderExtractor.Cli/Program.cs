@@ -1370,16 +1370,16 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             ? paths.Where(path => path.StartsWith(sourceKeyRoot + Path.DirectorySeparatorChar,
                 StringComparison.OrdinalIgnoreCase)).ToArray()
             : Array.Empty<string>();
-        if (sourceKeys.Length != 1)
+        if (sourceKeys.Length != 1 && !o.PdfStageAllowNoKey)
         {
             rows.Add(new { file = Path.GetFileName(file), status = sourceKeys.Length == 0 ? "no-source-key" : "ambiguous-source-key" });
             continue;
         }
 
         var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
-        var rawKey = AnswerKey.Load(sourceKeys[0]);
+        var rawKey = sourceKeys.Length == 1 ? AnswerKey.Load(sourceKeys[0]) : AnswerKey.Parse("");
         var sourceDocumentSha256 = FileSha256(file);
-        var goldKeySha256 = FileSha256(sourceKeys[0]);
+        var goldKeySha256 = sourceKeys.Length == 1 ? FileSha256(sourceKeys[0]) : null;
         var stableMap = slim.Paragraphs
             .Where(p => !string.IsNullOrWhiteSpace(p.StableId))
             .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);

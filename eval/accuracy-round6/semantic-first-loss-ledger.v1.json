@@ -1,13 +1,53 @@
 {
   "schemaVersion": 1,
-  "artifactKind": "accuracy_round6_semantic_first_loss_ledger",
-  "phase": "round6a",
-  "modelCalls": false,
+  "artifactKind": "accuracy_round6b_semantic_first_loss_ledger",
+  "phase": "round6b",
+  "modelCalls": 4,
+  "newProviderCallsAfterRun": 0,
   "productionChanges": false,
   "promptOrModelTuned": false,
-  "sourceAuthority": "Round 4 K=640 route/checkpoint \u002B consumed silver source-line packets",
+  "executionContract": {
+    "command": "pdf-stage-eval",
+    "backend": "OpenRouter",
+    "model": "qwen/qwen3.5-9b",
+    "wideCandidates": true,
+    "supplementCandidates": true,
+    "analystBlocks": 160,
+    "semanticConcurrency": 2,
+    "semanticRequestTimeoutSeconds": 90,
+    "semanticBatchTimeoutSeconds": 120,
+    "semanticLaneDeadlineSeconds": 300,
+    "visualRegions": 0,
+    "roleAndSpanCheckpoint": true,
+    "retry": false
+  },
+  "sourceAuthority": "K=160 route output \u002B selection/semantic/span checkpoint \u002B consumed silver source-line packets",
   "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is run-local diagnostics only",
-  "selectedCohort": "deterministic K=640 selected cohort; 184 reviewed headings according to Round 3 selection artifact",
+  "aggregate": {
+    "selectedReviewedHeadings": 80,
+    "roleCorrect": 80,
+    "spanCorrect": 75,
+    "validated": null,
+    "grounded": null,
+    "emitted": null,
+    "semanticPrecisionProxy": null,
+    "semanticConditionalRecall": null,
+    "exactSpanAccuracy": null,
+    "supportedOutputCount": null,
+    "unmatchedOutputCount": null,
+    "notMeasured": [
+      "validated",
+      "grounded",
+      "emitted",
+      "semanticPrecisionProxy",
+      "semanticConditionalRecall",
+      "exactSpanAccuracy",
+      "supportedOutputCount",
+      "unmatchedOutputCount",
+      "validator_failure_reason",
+      "validated_emitted_occurrence_identity"
+    ]
+  },
   "allowedOwners": [
     "ROLE_FALSE_NEGATIVE",
     "ROLE_FALSE_POSITIVE",
@@ -16,100 +56,1488 @@
     "VALIDATOR_REJECTION",
     "GROUNDING_FAILURE",
     "OUTPUT_POLICY_WITHHELD",
+    "EXECUTION_BOUND",
     "UNRESOLVED"
   ],
-  "aggregate": {
-    "selectedReviewedHeadings": 184,
-    "roleCorrect": null,
-    "spanCorrect": null,
-    "validated": null,
-    "grounded": null,
-    "emitted": null,
-    "semanticPrecisionProxy": null,
-    "semanticConditionalRecall": null,
-    "exactSpanAccuracy": null,
-    "notMeasured": [
-      "roleCorrect",
-      "spanCorrect",
-      "validated",
-      "grounded",
-      "emitted",
-      "semanticPrecisionProxy",
-      "semanticConditionalRecall",
-      "exactSpanAccuracy",
-      "per_occurrence_selected_identity"
-    ]
-  },
   "perDocument": [
     {
       "documentId": "004",
       "reviewedHeadings": 93,
+      "selectedCandidateCount": 160,
       "selectedReviewedHeadings": 55,
-      "firstLossLedgerStatus": "selected_identity_not_persisted_in_round4",
-      "items": [],
+      "roleCorrect": 55,
+      "spanCorrect": 55,
+      "validated": null,
+      "grounded": null,
+      "emitted": null,
+      "semanticConditionalRecall": null,
+      "exactSpanAccuracy": null,
+      "firstLossLedgerStatus": "role_span_identity_available_downstream_identity_missing",
+      "items": [
+        {
+          "goldStableId": "004/chapter/1",
+          "candidateIdDiagnostic": "s-window-4",
+          "page": 1,
+          "sourceLineIds": [
+            "1|546.5598208102417|283.08529257324216|340.93931996039066|Chapter I",
+            "1|525.384495205509|232.57899350097654|391.39354694761704|GENERAL PROVISIONS"
+          ],
+          "sourceText": "Chapter I GENERAL PROVISIONS",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/1",
+          "candidateIdDiagnostic": "b8",
+          "page": 1,
+          "sourceLineIds": [
+            "1|479.7105736071158|120.609687421875|444.5373025173798|Article 1. Scope of regulation vn"
+          ],
+          "sourceText": "Article 1. Scope of regulation vn",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/2",
+          "candidateIdDiagnostic": "b11",
+          "page": 1,
+          "sourceLineIds": [
+            "1|420.15726557718153|120.609687421875|315.0225541126953|Article 2. SubLjectus oaf application"
+          ],
+          "sourceText": "Article 2. Sub Ljectus oaf application",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/3",
+          "candidateIdDiagnostic": "b14",
+          "page": 1,
+          "sourceLineIds": [
+            "1|359.61630697322596|120.609687421875|317.08113935984375|Article 3. Interpretation of terms"
+          ],
+          "sourceText": "Article 3. Interpretation of terms",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/4",
+          "candidateIdDiagnostic": "b64",
+          "page": 3,
+          "sourceLineIds": [
+            "3|505.5645854651992|120.609687421875|513.2478796398437|Article 4. Application of the Law on Investment and relevant laws"
+          ],
+          "sourceText": "Article 4. Application of the Law on Investment and relevant laws",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/5",
+          "candidateIdDiagnostic": "b92",
+          "page": 4,
+          "sourceLineIds": [
+            "4|414.943787590402|120.609687421875|346.7476382298438|Article 5. Business investment policies"
+          ],
+          "sourceText": "Article 5. Business investment policies",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/6",
+          "candidateIdDiagnostic": "b106",
+          "page": 5,
+          "sourceLineIds": [
+            "5|760.9450272033463|120.609687421875|492.3665754500784|Article 6. Sectors and trades banned from business investment"
+          ],
+          "sourceText": "Article 6. Sectors and trades banned from business investment",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/7",
+          "candidateIdDiagnostic": "b119",
+          "page": 5,
+          "sourceLineIds": [
+            "5|405.24091767554887|120.609687421875|529.053224790078|Article 7. Sectors and trades subject to conditional business investment"
+          ],
+          "sourceText": "Article 7. Sectors and trades subject to conditional business investment",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/chapter/2",
+          "candidateIdDiagnostic": "s-window-686",
+          "page": 7,
+          "sourceLineIds": [
+            "7|340.9618234426541|298.08529257324216|361.49154401039067|Chapter II",
+            "7|319.6805130690917|232.41106401855467|426.4938093976171|INVESTMENT GUARANTEES"
+          ],
+          "sourceText": "Chapter II INVESTMENT GUARANTEES",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/10",
+          "candidateIdDiagnostic": "b178",
+          "page": 7,
+          "sourceLineIds": [
+            "7|274.22505358559056|120.609687421875|386.52545271054686|Article 10. Guarantee of property ownership"
+          ],
+          "sourceText": "Article 10. Guarantee of property ownership",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/11",
+          "candidateIdDiagnostic": "b183",
+          "page": 7,
+          "sourceLineIds": [
+            "7|127.68880595214843|120.609687421875|443.0338896498437|Article 11. Guarantee of business investment activities"
+          ],
+          "sourceText": "Article 11. Guarantee of business investment activities",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/13",
+          "candidateIdDiagnostic": "b210",
+          "page": 8,
+          "sourceLineIds": [
+            "8|232.15027591013927|120.609687421875|530.7332612483596|Article 13. Guarantee of business investment in case of change of law"
+          ],
+          "sourceText": "Article 13. Guarantee of business investment in case of change of law",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/14",
+          "candidateIdDiagnostic": "b225",
+          "page": 9,
+          "sourceLineIds": [
+            "9|537.8174921941325|120.609687421875|510.8049213798438|Article 14. Settlement of disputes in business investment activities"
+          ],
+          "sourceText": "Article 14. Settlement of disputes in business investment activities",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/15",
+          "candidateIdDiagnostic": "b244",
+          "page": 10,
+          "sourceLineIds": [
+            "10|738.7958810993131|120.609687421875|523.5730083898438|Article 15. Forms of, and subjects eligible for, investment incentives"
+          ],
+          "sourceText": "Article 15. Forms of, and subjects eligible for, investment incentives",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/17",
+          "candidateIdDiagnostic": "b329",
+          "page": 12,
+          "sourceLineIds": [
+            "12|129.5314471456474|120.609687421875|491.7386149598439|Article 17. Procedures for application of investment incentives"
+          ],
+          "sourceText": "Article 17. Procedures for application of investment incentives",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/18",
+          "candidateIdDiagnostic": "b333",
+          "page": 13,
+          "sourceLineIds": [
+            "13|728.6975324844901|120.609687421875|359.16919032007814|Article 18. Forms of investment support"
+          ],
+          "sourceText": "Article 18. Forms of investment support",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/20",
+          "candidateIdDiagnostic": "b356",
+          "page": 13,
+          "sourceLineIds": [
+            "13|97.31826747375486|120.609687421875|441.5175707298439|Article 20. Special investment incentives and supports"
+          ],
+          "sourceText": "Article 20. Special investment incentives and supports",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/chapter/4",
+          "candidateIdDiagnostic": "s-window-1452",
+          "page": 14,
+          "sourceLineIds": [
+            "14|228.27001681043834|295.6852925732422|363.8966644583594|Chapter IV",
+            "14|206.96873828453323|194.73107401855466|464.42418039218734|INVESTMENT ACTIVITIES IN VIETNAM"
+          ],
+          "sourceText": "Chapter IV INVESTMENT ACTIVITIES IN VIETNAM",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/22",
+          "candidateIdDiagnostic": "b390",
+          "page": 15,
+          "sourceLineIds": [
+            "15|640.3691606396068|120.609687421875|512.6020400998436|Article 22. Investment in establishment of economic organizations"
+          ],
+          "sourceText": "Article 22. Investment in establishment of economic organizations",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/27",
+          "candidateIdDiagnostic": "b465",
+          "page": 18,
+          "sourceLineIds": [
+            "18|783.1791343141355|120.609687421875|435.27997611007805|Article 27. Investment in the form of a BCC contract"
+          ],
+          "sourceText": "Article 27. Investment in the form of a BCC contract",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/28",
+          "candidateIdDiagnostic": "b472",
+          "page": 18,
+          "sourceLineIds": [
+            "18|614.4244572137453|120.609687421875|297.93009940644527|Article 28. Contents of a BCC"
+          ],
+          "sourceText": "Article 28. Contents of a BCC",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/29",
+          "candidateIdDiagnostic": "b492",
+          "page": 18,
+          "sourceLineIds": [
+            "18|186.03024461097596|120.609687421875|524.4004031026953|Article 29. Investor selection for investment project implementation"
+          ],
+          "sourceText": "Article 29. Investor selection for investment project implementation",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/38",
+          "candidateIdDiagnostic": "b729",
+          "page": 26,
+          "sourceLineIds": [
+            "26|117.53870812244423|120.609687421875|536.9614227498437|Article 38. Procedures for grant of investment registration certificates"
+          ],
+          "sourceText": "Article 38. Procedures for grant of investment registration certificates",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/40",
+          "candidateIdDiagnostic": "b768",
+          "page": 28,
+          "sourceLineIds": [
+            "28|604.1636555154477|120.609687421875|478.5535835696484|Article 40. Contents of an investment registration certificate"
+          ],
+          "sourceText": "Article 40. Contents of an investment registration certificate",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/41",
+          "candidateIdDiagnostic": "b786",
+          "page": 28,
+          "sourceLineIds": [
+            "28|252.42532006830112|120.609687421875|398.34460147984373|Article 41. Modification of investment projects"
+          ],
+          "sourceText": "Article 41. Modification of investment projects",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/42",
+          "candidateIdDiagnostic": "b834",
+          "page": 30,
+          "sourceLineIds": [
+            "30|493.54645632455043|120.609687421875|493.80249348984376|Article 42. Principles of implementation of investment projects"
+          ],
+          "sourceText": "Article 42. Principles of implementation of investment projects",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/43",
+          "candidateIdDiagnostic": "b842",
+          "page": 30,
+          "sourceLineIds": [
+            "30|292.3747175461646|120.609687421875|490.01169618984375|Article 43. Security for implementation of investment projects"
+          ],
+          "sourceText": "Article 43. Security for implementation of investment projects",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/44",
+          "candidateIdDiagnostic": "b858",
+          "page": 31,
+          "sourceLineIds": [
+            "31|549.6821830838079|120.609687421875|438.54109284984366|Article 44. Operation duration of investment projects"
+          ],
+          "sourceText": "Article 44. Operation duration of investment projects",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/46",
+          "candidateIdDiagnostic": "b886",
+          "page": 32,
+          "sourceLineIds": [
+            "32|559.8759339941405|120.609687421875|374.12561872984367|Article 46. Transfer of investment projects"
+          ],
+          "sourceText": "Article 46. Transfer of investment projects",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/47",
+          "candidateIdDiagnostic": "b910",
+          "page": 33,
+          "sourceLineIds": [
+            "33|728.7572618766907|120.609687421875|378.9132553198437|Article 47. Cessation of investment projects"
+          ],
+          "sourceText": "Article 47. Cessation of investment projects",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/48",
+          "candidateIdDiagnostic": "b931",
+          "page": 33,
+          "sourceLineIds": [
+            "33|282.3340134582817|120.609687421875|396.7721225998437|Article 48. Termination of investment projects"
+          ],
+          "sourceText": "Article 48. Termination of investment projects",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/chapter/5",
+          "candidateIdDiagnostic": "s-window-3774",
+          "page": 36,
+          "sourceLineIds": [
+            "36|706.7765183489989|298.44527257324216|361.29336827835937|Chapter V",
+            "36|685.6158650211877|199.798437109375|459.4266451576171|OFFSHORE INVESTMENT ACTIVITIES"
+          ],
+          "sourceText": "Chapter V OFFSHORE INVESTMENT ACTIVITIES",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/51",
+          "candidateIdDiagnostic": "b1007",
+          "page": 36,
+          "sourceLineIds": [
+            "36|574.1998095805667|120.609687421875|438.34503486984363|Article 51. Principles of offshore investment activities"
+          ],
+          "sourceText": "Article 51. Principles of offshore investment activities",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/52",
+          "candidateIdDiagnostic": "b1013",
+          "page": 36,
+          "sourceLineIds": [
+            "36|395.09584667661824|120.609687421875|361.3173087900781|Article 52. Forms of offshore investment"
+          ],
+          "sourceText": "Article 52. Forms of offshore investment",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/53",
+          "candidateIdDiagnostic": "b1026",
+          "page": 36,
+          "sourceLineIds": [
+            "36|105.5939624471029|120.609687421875|498.7112477900782|Article 53. Sectors and trades banned from offshore investment"
+          ],
+          "sourceText": "Article 53. Sectors and trades banned from offshore investment",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/54",
+          "candidateIdDiagnostic": "b1033",
+          "page": 37,
+          "sourceLineIds": [
+            "37|684.6948380413437|120.609687421875|535.0200650700777|Article 54. Sectors and trades subject to conditional offshore investment"
+          ],
+          "sourceText": "Article 54. Sectors and trades subject to conditional offshore investment",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/55",
+          "candidateIdDiagnostic": "b1043",
+          "page": 37,
+          "sourceLineIds": [
+            "37|443.08046831673886|120.609687421875|399.0466009798438|Article 55. Offshore invteVstmeinet capital sources"
+          ],
+          "sourceText": "Article 55. Offshore invte Vstmeinet capital sources",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/56",
+          "candidateIdDiagnostic": "b1053",
+          "page": 37,
+          "sourceLineIds": [
+            "37|121.4632870605929|120.609687421875|488.26893435652346|Article 56. Competence to approve offshore investment policy"
+          ],
+          "sourceText": "Article 56. Competence to approve offshore investment policy",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/59",
+          "candidateIdDiagnostic": "b1142",
+          "page": 40,
+          "sourceLineIds": [
+            "40|222.1431483041865|120.609687421875|376.1575782200781|Article 59. Decision on offshore investment"
+          ],
+          "sourceText": "Article 59. Decision on offshore investment",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/62",
+          "candidateIdDiagnostic": "b1186",
+          "page": 42,
+          "sourceLineIds": [
+            "42|479.29169326191766|120.609687421875|531.0631461696485|Article 62. Contents of an offshore investment revgisntration certificate"
+          ],
+          "sourceText": "Article 62. Contents of an offshore investment revgisntration certificate",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": true,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "SPAN_DEGENERATE"
+        },
+        {
+          "goldStableId": "004/article/63",
+          "candidateIdDiagnostic": "b1198",
+          "page": 42,
+          "sourceLineIds": [
+            "42|270.47380057202884|120.609687421875|527.0889303798432|Article 63. Modification ofoffshore investment registration certificates"
+          ],
+          "sourceText": "Article 63. Modification ofoffshore investment registration certificates",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/64",
+          "candidateIdDiagnostic": "b1236",
+          "page": 44,
+          "sourceLineIds": [
+            "44|783.1302360931493|120.609687421875|525.6451908098431|Article 64. Termination ofoffshore investment registration certificates"
+          ],
+          "sourceText": "Article 64. Termination ofoffshore investment registration certificates",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/65",
+          "candidateIdDiagnostic": "b1260",
+          "page": 44,
+          "sourceLineIds": [
+            "44|226.10617174790607|120.609687421875|472.89694837984376|Article 65. Opening of offshore investment capital accounts"
+          ],
+          "sourceText": "Article 65. Opening of offshore investment capital accounts",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/66",
+          "candidateIdDiagnostic": "b1265",
+          "page": 44,
+          "sourceLineIds": [
+            "44|95.5392905569119|120.609687421875|427.1555384592187|Article 66. Outbound transfer of investment capital"
+          ],
+          "sourceText": "Article 66. Outbound transfer of investment capital",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/68",
+          "candidateIdDiagnostic": "b1289",
+          "page": 45,
+          "sourceLineIds": [
+            "45|244.2676392266486|120.609687421875|347.1126779698436|Article 68. Inbound transfer of profits"
+          ],
+          "sourceText": "Article 68. Inbound transfer of profits",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/chapter/6",
+          "candidateIdDiagnostic": "s-window-4783",
+          "page": 46,
+          "sourceLineIds": [
+            "46|652.5200268104385|295.6852925732422|363.7463926903906|Chapter VI",
+            "46|631.258736930429|192.41667916992188|466.9782325564063|STATE MANAGEMENT OF INVESTMENT"
+          ],
+          "sourceText": "Chapter VI STATE MANAGEMENT OF INVESTMENT",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/69",
+          "candidateIdDiagnostic": "b1300",
+          "page": 46,
+          "sourceLineIds": [
+            "46|586.0964027224395|120.609687421875|488.08437850007806|Article 69. Responsibility for state management of investment"
+          ],
+          "sourceText": "Article 69. Responsibility for state management of investment",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/70",
+          "candidateIdDiagnostic": "b1373",
+          "page": 48,
+          "sourceLineIds": [
+            "48|272.25741563612826|120.609687421875|414.8604011226952|Article 70. Investment monitoring and evaluation"
+          ],
+          "sourceText": "Article 70. Investment monitoring and evaluation",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/71",
+          "candidateIdDiagnostic": "b1404",
+          "page": 49,
+          "sourceLineIds": [
+            "49|250.21309796264632|120.609687421875|430.2153787798438|Article 71. National investment information systems"
+          ],
+          "sourceText": "Article 71. National investment information systems",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/72",
+          "candidateIdDiagnostic": "b1418",
+          "page": 50,
+          "sourceLineIds": [
+            "50|636.2731665177264|120.609687421875|504.86413075246094|Article 72. Reporting regime on investment activities in Vietnam"
+          ],
+          "sourceText": "Article 72. Reporting regime on investment activities in Vietnam",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/73",
+          "candidateIdDiagnostic": "b1445",
+          "page": 51,
+          "sourceLineIds": [
+            "51|614.0929799551667|120.609687421875|488.5673162998438|Article 73. Reporting regime on overseas investment activities"
+          ],
+          "sourceText": "Article 73. Reporting regime on overseas investment activities",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/74",
+          "candidateIdDiagnostic": "b1474",
+          "page": 52,
+          "sourceLineIds": [
+            "52|501.51524128142523|120.609687421875|375.3892178298437|Article 74. Investment promotion activities"
+          ],
+          "sourceText": "Article 74. Investment promotion activities",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/76",
+          "candidateIdDiagnostic": "b1557",
+          "page": 55,
+          "sourceLineIds": [
+            "55|294.3018213015567|120.609687421875|346.2562385798437|Article 76. Implementation provisions"
+          ],
+          "sourceText": "Article 76. Implementation provisions",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/77",
+          "candidateIdDiagnostic": "b1570",
+          "page": 56,
+          "sourceLineIds": [
+            "56|658.3900705431366|120.609687421875|324.5363740498437|Article 77. Transitional provisions"
+          ],
+          "sourceText": "Article 77. Transitional provisions",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/appendix/1",
+          "candidateIdDiagnostic": "s-window-6079",
+          "page": 59,
+          "sourceLineIds": [
+            "59|783.0553533339845|273.279667421875|350.5571983183595|Appendix IV",
+            "59|761.9512664278899|203.2305076269531|420.19401882761707|LIST OF SECTORS AND TRADES",
+            "59|745.8447020061935|132.14667916992187|492.03688889640625|SUBJECT TO CONDITIONAL BUSINESS INVESTMENT"
+          ],
+          "sourceText": "Appendix IV LIST OF SECTORS AND TRADES",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        }
+      ],
       "counts": {
         "roleFalseNegative": 0,
         "spanUnresolved": 0,
-        "spanDegenerate": 0,
-        "groundingFailure": 0,
-        "validated": 0,
-        "grounded": 0
+        "spanDegenerate": 1,
+        "unresolved": 54
       }
     },
     {
       "documentId": "030",
       "reviewedHeadings": 239,
-      "selectedReviewedHeadings": 91,
-      "firstLossLedgerStatus": "selected_identity_not_persisted_in_round4",
-      "items": [],
+      "selectedCandidateCount": 160,
+      "selectedReviewedHeadings": 9,
+      "roleCorrect": 9,
+      "spanCorrect": 6,
+      "validated": null,
+      "grounded": null,
+      "emitted": null,
+      "semanticConditionalRecall": null,
+      "exactSpanAccuracy": null,
+      "firstLossLedgerStatus": "role_span_identity_available_downstream_identity_missing",
+      "items": [
+        {
+          "goldStableId": "030/outline/1",
+          "candidateIdDiagnostic": "b96",
+          "page": 11,
+          "sourceLineIds": [
+            "11|528.2154531250001|286.775234375|339.64784656250004|PART I"
+          ],
+          "sourceText": "PART I",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": false,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "SPAN_UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/outline/2",
+          "candidateIdDiagnostic": "b97",
+          "page": 11,
+          "sourceLineIds": [
+            "11|423.0347869318182|183.9660546875|443.2297065625|Section 1. Request for Proposal Letter"
+          ],
+          "sourceText": "Section 1. Request for Proposal Letter",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/outline/8",
+          "candidateIdDiagnostic": "b1246",
+          "page": 83,
+          "sourceLineIds": [
+            "83|709.1841390625|207.3960546875|413.87366609375|Section 7. Terms of Reference"
+          ],
+          "sourceText": "Section 7. Terms of Reference",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/outline/9",
+          "candidateIdDiagnostic": "b1271",
+          "page": 85,
+          "sourceLineIds": [
+            "85|684.6018164062498|283.655234375|342.7362865625|PART II"
+          ],
+          "sourceText": "PART II",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": false,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "SPAN_UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/outline/10",
+          "candidateIdDiagnostic": "b1272",
+          "page": 85,
+          "sourceLineIds": [
+            "85|634.6888977864584|128.7660546875|497.74142937500017|Section 8. Conditions of Contract and Contract Forms"
+          ],
+          "sourceText": "Section 8. Conditions of Contract and Contract Forms",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/outline/11",
+          "candidateIdDiagnostic": "b2921",
+          "page": 191,
+          "sourceLineIds": [
+            "191|693.1192187500001|264.935234375|330.2247265625|PART III"
+          ],
+          "sourceText": "PART III",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": false,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "SPAN_UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/gcc-tb/67",
+          "candidateIdDiagnostic": "b2059",
+          "page": 135,
+          "sourceLineIds": [
+            "135|294.62180050223225|156.0246875|487.937708125|APPENDIX C \u2013 REMUNERATION COST ESTIMATES"
+          ],
+          "sourceText": "APPENDIX C \u2013 REMUNERATION COST ESTIMATES",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/gcc-tb/69",
+          "candidateIdDiagnostic": "b2090",
+          "page": 139,
+          "sourceLineIds": [
+            "139|709.5143843114099|122.06468749999999|522.051068125|APPENDIX D \u2013 REIMBURSABLE EXPENSES COST ESTIMATES"
+          ],
+          "sourceText": "APPENDIX D \u2013 REIMBURSABLE EXPENSES COST ESTIMATES",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/gcc-ls/65",
+          "candidateIdDiagnostic": "b2859",
+          "page": 185,
+          "sourceLineIds": [
+            "185|299.18574132582717|154.7046875|489.3413912500001|APPENDIX C \u2013 BREAKDOWN OF CONTRACT PRICE"
+          ],
+          "sourceText": "APPENDIX C \u2013 BREAKDOWN OF CONTRACT PRICE",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        }
+      ],
       "counts": {
         "roleFalseNegative": 0,
-        "spanUnresolved": 0,
+        "spanUnresolved": 3,
         "spanDegenerate": 0,
-        "groundingFailure": 0,
-        "validated": 0,
-        "grounded": 0
+        "unresolved": 6
       }
     },
     {
       "documentId": "043",
       "reviewedHeadings": 43,
-      "selectedReviewedHeadings": 23,
-      "firstLossLedgerStatus": "selected_identity_not_persisted_in_round4",
-      "items": [],
+      "selectedCandidateCount": 160,
+      "selectedReviewedHeadings": 3,
+      "roleCorrect": 3,
+      "spanCorrect": 3,
+      "validated": null,
+      "grounded": null,
+      "emitted": null,
+      "semanticConditionalRecall": null,
+      "exactSpanAccuracy": null,
+      "firstLossLedgerStatus": "role_span_identity_available_downstream_identity_missing",
+      "items": [
+        {
+          "goldStableId": "043/heading/034",
+          "candidateIdDiagnostic": "b1806",
+          "page": 105,
+          "sourceLineIds": [
+            "105|355.8952898297991|72.81640625|302.4518046875|NOTE D\u2014LOANS AND OTHER EXPOSURES"
+          ],
+          "sourceText": "NOTE D\u2014LOANS AND OTHER EXPOSURES",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "043/heading/042",
+          "candidateIdDiagnostic": "b2509",
+          "page": 141,
+          "sourceLineIds": [
+            "141|445.7100294870921|72.81640625|425.82780468749996|NOTE L\u2014TRUST FUNDS ADMINISTRATION AND OTHER SERVICES"
+          ],
+          "sourceText": "NOTE L\u2014TRUST FUNDS ADMINISTRATION AND OTHER SERVICES",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "043/heading/043",
+          "candidateIdDiagnostic": "b2538",
+          "page": 142,
+          "sourceLineIds": [
+            "142|283.48002985608554|72.81640625|216.8938046875|NOTE M\u2014CONTINGENCIES"
+          ],
+          "sourceText": "NOTE M\u2014CONTINGENCIES",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        }
+      ],
       "counts": {
         "roleFalseNegative": 0,
         "spanUnresolved": 0,
         "spanDegenerate": 0,
-        "groundingFailure": 0,
-        "validated": 0,
-        "grounded": 0
+        "unresolved": 3
       }
     },
     {
       "documentId": "058",
       "reviewedHeadings": 47,
-      "selectedReviewedHeadings": 15,
-      "firstLossLedgerStatus": "selected_identity_not_persisted_in_round4",
-      "items": [],
+      "selectedCandidateCount": 160,
+      "selectedReviewedHeadings": 13,
+      "roleCorrect": 13,
+      "spanCorrect": 11,
+      "validated": null,
+      "grounded": null,
+      "emitted": null,
+      "semanticConditionalRecall": null,
+      "exactSpanAccuracy": null,
+      "firstLossLedgerStatus": "role_span_identity_available_downstream_identity_missing",
+      "items": [
+        {
+          "goldStableId": "058/heading/002",
+          "candidateIdDiagnostic": "b23",
+          "page": 3,
+          "sourceLineIds": [
+            "3|584.74837584375|108.4058002|214.84904373|Contents"
+          ],
+          "sourceText": "Contents",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": false,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "SPAN_UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/006",
+          "candidateIdDiagnostic": "b114",
+          "page": 10,
+          "sourceLineIds": [
+            "10|242.83964544864884|161.33649120000004|421.4123030399999|2.1.1 Perceptron and margin loss functions"
+          ],
+          "sourceText": "2.1.1 Perceptron and margin loss functions",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/007",
+          "candidateIdDiagnostic": "b131",
+          "page": 11,
+          "sourceLineIds": [
+            "11|233.0855349677417|107.53849120000025|330.06182432000026|2.1.2 Softmax and cross entropy loss"
+          ],
+          "sourceText": "2.1.2 Softmax and cross entropy loss",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/010",
+          "candidateIdDiagnostic": "b243",
+          "page": 17,
+          "sourceLineIds": [
+            "17|493.73815100689615|107.53849120000005|322.26464288000005|2.2.2 A Nonlinear Energy Function"
+          ],
+          "sourceText": "2.2.2 A Nonlinear Energy Function",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/013",
+          "candidateIdDiagnostic": "b403",
+          "page": 24,
+          "sourceLineIds": [
+            "24|534.3485601066664|161.33649120000013|368.11243488|2.3.2 Stochastic Gradient Descent"
+          ],
+          "sourceText": "2.3.2 Stochastic Gradient Descent",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/014",
+          "candidateIdDiagnostic": "b425",
+          "page": 25,
+          "sourceLineIds": [
+            "25|573.6798463999997|107.53849120000002|345.47925024|2.3.3 Adaptive Learning Rate Methods"
+          ],
+          "sourceText": "2.3.3 Adaptive Learning Rate Methods",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/015",
+          "candidateIdDiagnostic": "b467",
+          "page": 27,
+          "sourceLineIds": [
+            "27|497.8886386029409|107.6723872|395.57336341999985|2.4 Generalization and Model Selection"
+          ],
+          "sourceText": "2.4 Generalization and Model Selection",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/019",
+          "candidateIdDiagnostic": "b672",
+          "page": 38,
+          "sourceLineIds": [
+            "38|453.00082168157877|161.47038719999992|491.6180531799997|2.5 Hyperparameter Tuning: Model Selection"
+          ],
+          "sourceText": "2.5 Hyperparameter Tuning: Model Selection",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/026",
+          "candidateIdDiagnostic": "b859",
+          "page": 48,
+          "sourceLineIds": [
+            "48|171.33363716944422|161.3412713999999|452.0340181399996|3.4 Permutation equivariance: attention"
+          ],
+          "sourceText": "3.4 Permutation equivariance: attention",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/030",
+          "candidateIdDiagnostic": "b976",
+          "page": 56,
+          "sourceLineIds": [
+            "56|165.57174231351354|161.03861120000016|419.79337344000004|4.2.1 Variational Gaussian mixture models"
+          ],
+          "sourceText": "4.2.1 Variational Gaussian mixture models",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/032",
+          "candidateIdDiagnostic": "b1054",
+          "page": 60,
+          "sourceLineIds": [
+            "60|524.3537026999999|161.11173219999992|438.0163461199998|4.3 Continuous latent variable models"
+          ],
+          "sourceText": "4.3 Continuous latent variable models",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/034",
+          "candidateIdDiagnostic": "s-window-5326",
+          "page": 67,
+          "sourceLineIds": [
+            "67|177.73793288421035|107.23961120000016|372.4525724800001|4.3.2 Importance sampling and its variance.",
+            "67|159.10737772166655|107.22765360000015|450.0118280600004|Before ending this section let us think of how we should compute the log-",
+            "67|147.01202161836724|107.18780320000016|355.54876564000006|marginal probability of an observation x from Eq. (4.69) :"
+          ],
+          "sourceText": "4.3.2 Importance sampling and its variance. Before ending this section let us think of how we should compute the log-",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": false,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "SPAN_UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/047",
+          "candidateIdDiagnostic": "b1915",
+          "page": 107,
+          "sourceLineIds": [
+            "107|583.9530067541666|107.8356969|262.57412607000003|Bibliography"
+          ],
+          "sourceText": "Bibliography",
+          "role": "HeadingTopic",
+          "roleCorrect": true,
+          "spanResolved": true,
+          "spanDegenerate": false,
+          "validated": null,
+          "grounded": null,
+          "emitted": null,
+          "firstLoss": "UNRESOLVED"
+        }
+      ],
       "counts": {
         "roleFalseNegative": 0,
-        "spanUnresolved": 0,
+        "spanUnresolved": 2,
         "spanDegenerate": 0,
-        "groundingFailure": 0,
-        "validated": 0,
-        "grounded": 0
+        "unresolved": 11
       }
     }
   ],
   "executionAvailability": {
-    "K640": "checkpoint and route available; span lane partial_timeout on all four documents",
-    "K1024": "route/checkpoint available; zero downstream facts after frozen lane deadline; excluded from semantic quality denominator",
-    "newProviderCalls": 0
+    "K160": "complete route; selection, semantic role, and span checkpoint available",
+    "selectionIdentityPersistedBeforeProvider": true,
+    "selectedCandidateTotal": 640,
+    "newProviderCallsAfterRun": 0
+  },
+  "instrumentationProof": {
+    "selectionAlgorithmChanged": false,
+    "rankingChanged": false,
+    "candidateGenerationChanged": false,
+    "selectionRecordedBeforeSemanticExecution": true,
+    "semanticPayloadChanged": false,
+    "validatorBehaviorChanged": false,
+    "finalOutputBehaviorChanged": false,
+    "proofBasis": "append-only checkpoint/audit projection after unchanged SelectRankedCandidates"
   },
   "decision": {
-    "status": "EVIDENCE_INSUFFICIENT_FOR_OCCURRENCE_LEDGER",
-    "reason": "Round 4 persists the aggregate K=640 selected count and route/checkpoint data, but not the selected source occurrence identities. Re-running extraction to reconstruct them would be a new census and is not used as historical authority.",
-    "nextStep": "freeze an occurrence-retaining semantic execution contract before any new provider call; persist sourceLineIds/sourceSpan and per-candidate role, span, validator, grounding, and output outcomes"
+    "status": "OCCURRENCE_LEDGER_PARTIAL_DOWNSTREAM_IDENTITY_UNAVAILABLE",
+    "reason": "The run retained selected source identities plus role/span outcomes, but not per-candidate validator, grounding, or emitted identities. Those metrics are intentionally not inferred from aggregates.",
+    "nextStep": "Persist validator, grounding, and emitted source identities in the same frozen execution artifact before downstream quality claims",
+    "remediationOpened": false
   }
 }

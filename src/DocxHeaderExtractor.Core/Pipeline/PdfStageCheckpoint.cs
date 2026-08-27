@@ -142,6 +142,25 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
         }, ct);
 
     /// <summary>
+    /// Records the selected source identities before the first semantic provider call. This is
+    /// append-only observability; it is never read by selection or execution decisions.
+    /// </summary>
+    public Task RecordSelectionAsync(
+        IReadOnlyList<PdfSelectedSourceIdentity> selected,
+        CancellationToken ct) =>
+        AppendAsync("selection", "selected", "completed", new
+        {
+            selected = selected.Select(item => new
+            {
+                item.CandidateIdDiagnostic,
+                item.Page,
+                item.SourceLineIds,
+                item.SourceText,
+                item.SourceSpan,
+            }).ToArray(),
+        }, ct);
+
+    /// <summary>
     /// One span-resolution batch as it actually ended. A heading cannot validate without a resolved
     /// span, and until now a batch that resolved nothing - or threw and was swallowed - left no trace
     /// at all, so a span-lane failure and a healthy run produced identical artifacts.

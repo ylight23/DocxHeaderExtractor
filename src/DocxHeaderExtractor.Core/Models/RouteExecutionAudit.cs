@@ -18,6 +18,10 @@ public sealed record RouteExecutionAudit(
     [property: JsonPropertyName("groundingRejections")] IReadOnlyList<RouteBlockRejectionAudit> GroundingRejections,
     [property: JsonPropertyName("alignedBlockIds")] IReadOnlyList<string> AlignedBlockIds)
 {
+    /// <summary>Source identities selected before any provider execution; candidate id is diagnostic only.</summary>
+    [JsonPropertyName("selectedSourceIdentities")]
+    public IReadOnlyList<PdfSelectedSourceIdentity> SelectedSourceIdentities { get; init; } = [];
+
     /// <summary>Raw analyst completions, populated only by explicit diagnostic routes.</summary>
     [JsonPropertyName("rawAnalystResponses")]
     public IReadOnlyList<string> RawAnalystResponses { get; init; } = [];
@@ -72,6 +76,13 @@ public sealed record RouteExecutionAudit(
     [JsonPropertyName("spanLane")]
     public RouteLaneExecutionAudit? SpanLane { get; init; }
 }
+
+public sealed record PdfSelectedSourceIdentity(
+    [property: JsonPropertyName("candidateIdDiagnostic")] string CandidateIdDiagnostic,
+    [property: JsonPropertyName("page")] int Page,
+    [property: JsonPropertyName("sourceLineIds")] IReadOnlyList<string> SourceLineIds,
+    [property: JsonPropertyName("sourceText")] string SourceText,
+    [property: JsonPropertyName("sourceSpan")] TextOffsetSpan? SourceSpan = null);
 
 public sealed record RouteLaneExecutionAudit(
     [property: JsonPropertyName("status")] string Status,
