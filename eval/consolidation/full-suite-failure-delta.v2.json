@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 2,
+  "artifactKind": "full_suite_failure_set_delta",
+  "date": "2026-08-27",
+  "baseRevision": "b7854b5e1a9832180d0729f65af7b76cf1b5b830",
+  "fullSuiteDeltaTestedRevision": "b2f814c5b508c02accd97bcb7dfa7a11713842a6",
+  "freshCheckoutVerificationRevision": "4da3fc24b3db44a732f496884dde73733fd1adc9",
+  "runtimeIdentifier": "win-x64",
+  "providerCalls": 0,
+  "base": { "passed": 1179, "failed": 17, "skipped": 0, "total": 1196 },
+  "integration": { "passed": 1217, "failed": 21, "skipped": 0, "total": 1238 },
+  "failureSetComparison": {
+    "preexistingFailures": 17,
+    "newTestFailures": 4,
+    "newProductionRegressionFailures": 0,
+    "resolvedEnvironmentFailures": 3,
+    "resolvedWorktreeStateFailures": 1,
+    "unresolvedFailures": 0
+  },
+  "resolvedClassifications": [
+    { "classification": "ENVIRONMENT_FILE_LOCK_RESOLVED", "count": 3, "evidence": "All three probes pass sequentially after Restart Manager reported no locking PID." },
+    { "classification": "STALE_WORKTREE_EOL_RESOLVED", "count": 1, "evidence": "Fresh checkout raw SHA matches expected LF blob 245c4c7b9b57d0e5331c740ab0f9df7baf0e2d7fca2408e4000226f9546ef1f9; prior 709999... was stale CRLF worktree state." }
+  ],
+  "method": {
+    "comparison": "exact TRX testName identity, not raw totals",
+    "freshCheckout": "4da3fc2 with .gitattributes raw-byte policy",
+    "expectedValuesModified": false,
+    "frozenArtifactsRegenerated": false,
+    "productionCodeModifiedByResolution": false
+  },
+  "status": "PASS_WITH_PREEXISTING_BASELINE_FAILURES"
+}

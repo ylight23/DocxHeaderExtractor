@@ -71,3 +71,13 @@ The final same-machine `win-x64` comparison was completed without changing produ
 - `PdfN15RankingLossDiagnosisProbe` remains an artifact SHA drift and was not “fixed” by changing the expected hash.
 
 Therefore the full-suite delta gate is `BLOCKED`; the Draft PR remains open and `main` was not merged. See [full-suite-failure-delta.v1.json](../../eval/consolidation/full-suite-failure-delta.v1.json) and [consolidation-verification.v2.json](../../eval/consolidation/consolidation-verification.v2.json).
+
+## Fresh Checkout Closeout
+
+Fresh checkout `4da3fc24b3db44a732f496884dde73733fd1adc9` verified the remaining diagnostic failures without changing production code, expected values, or frozen artifacts:
+
+- Three corpus probes pass sequentially after the external `004` file lock disappeared: `ENVIRONMENT_FILE_LOCK_RESOLVED`.
+- N15 passes with raw LF SHA `245c4c7b9b57d0e5331c740ab0f9df7baf0e2d7fca2408e4000226f9546ef1f9`; the prior CRLF `709999...` was stale worktree state: `STALE_WORKTREE_EOL_RESOLVED`.
+- Focused deterministic/replay/provenance: `27/27`; Web UI: `2/2`; `/` and `/api/defaults`: HTTP 200; provider calls: `0`.
+
+The baseline suite still has 17 pre-existing failures. The consolidation delta has `0` unresolved failures and `0` new production regression failures; this is not claimed as `FULL_SUITE_PASS`. See [full-suite-failure-delta.v2.json](../../eval/consolidation/full-suite-failure-delta.v2.json) and [consolidation-verification.v3.json](../../eval/consolidation/consolidation-verification.v3.json).
