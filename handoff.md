@@ -12414,6 +12414,7 @@ Implemented in the current branch:
 - Quarantine indexes are removed while building the authority source, before proposal, validation, hierarchy, and output.
 - PDF-backed quarantine is applied to grounded source identities before FinalStructure/ProductOutput; DOCX and PDF quarantine boundaries are covered by the authority contract suite.
 - The deterministic PDF-backed quarantine fixture is now covered: the grounded occurrence emits without quarantine and disappears from FinalStructure/ProductOutput when its canonical paragraph index is quarantined.
+- The provider-free true PDF-route E2E gate is not claimed: `AuthorityExtractionPipeline` requires an analyst for the PDF-backed semantic route, so `PDF_QUARANTINE_E2E=BLOCKED_BY_PROVIDER_REQUIREMENT`; the deterministic boundary proof remains PASS.
 - ProductOutput text/source identity is preserved through the compatibility shell so downstream grounding invariants remain valid.
 - Normal authority does not construct a VLM adapter. Visual routes remain explicit diagnostic/evaluation paths.
 - Partial key-package generation now uses the authority pipeline instead of `HeaderExtractionPipeline`.
@@ -12424,6 +12425,7 @@ Verification:
 - Focused authority/harness/writeback/release suite: 40 PASS, 0 FAIL.
 - Contract/projection/serializer/authority/AgentHarness/MCP/Web suite after closure: 64 PASS, 0 FAIL.
 - Final contract closure suite: 68 PASS, 0 FAIL (includes additive schema, flag-independence, and PDF quarantine fixture).
+- Latest release-gate rerun: 36 PASS, 0 FAIL for schema/projection/serializer/authority/provenance/quarantine tests.
 - Full suite: not rerun by design.
 - Provider/VLM live calls: not made.
 

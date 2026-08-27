@@ -2,6 +2,8 @@ using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
 using System.Reflection;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -31,6 +33,65 @@ public sealed class ProductionAuthorityCutoverTests
         Assert.NotNull(old);
         Assert.Null(old!.SourceText);
     }
+
+    [Fact]
+    public void Old_final_structure_schema_v2_without_source_text_round_trips()
+    {
+        var fact = new PdfHierarchyFactAudit("b1", 0, 1, "document_body", "semantic", null, null,
+            false, null, null, null, null, "relationship_unresolved", ["validated_source_span"])
+        {
+            FactId = "p1:b1:s7-14", SourceBlockText = "prefix HEADING body",
+            HeadingSpan = new TextOffsetSpan(7, 14), HeadingText = "HEADING",
+        };
+        var structure = new PdfValidatedStructure("b1", 1, null, "unresolved", "requires_review");
+        var grounding = new PdfCanonicalGrounding("b1", 4, "stable", new DocxTextSpan(7, 14), "prefix HEADING body");
+        var current = PdfFinalStructureProjection.Project("sha", [structure], [fact], [grounding]);
+        var oldNode = JsonNode.Parse(JsonSerializer.Serialize(current))!.AsObject();
+        oldNode["headings"]![0]!.AsObject().Remove("sourceText");
+
+        var old = oldNode.Deserialize<PdfFinalStructure>();
+
+        Assert.NotNull(old);
+        Assert.Equal(2, old!.SchemaVersion);
+        var oldHeading = Assert.Single(old.Headings);
+        Assert.Equal(current.Headings[0].Id, oldHeading.Id);
+        Assert.Equal(current.Headings[0].Text, oldHeading.Text);
+        Assert.Equal(current.Headings[0].Level, oldHeading.Level);
+        Assert.Equal(current.Headings[0].SourceAnchor, oldHeading.SourceAnchor);
+        Assert.Equal(new DocxTextSpan(7, 14), oldHeading.SourceAnchor!.Span);
+
+        var currentJson = JsonNode.Parse(JsonSerializer.Serialize(current))!.AsObject();
+        Assert.Equal(2, currentJson["schemaVersion"]!.GetValue<int>());
+        Assert.Equal("prefix HEADING body", currentJson["headings"]![0]! ["sourceText"]!.GetValue<string>());
+    }
+
+    [Fact]
+    public void Provenance_records_only_executed_lanes_and_externality()
+    {
+        var noLanes = Provenance(null, false);
+        Assert.DoesNotContain(noLanes.Passes, pass => pass.Name is "semantic-role" or "heading-span" or "semantic-hierarchy");
+
+        var audit = Audit() with
+        {
+            SemanticLane = new RouteLaneExecutionAudit("complete", 3, 3, 0, 0),
+            SpanLane = new RouteLaneExecutionAudit("not_run", 0, 0, 0, 0),
+            HierarchyProposals = [],
+        };
+        var local = Provenance(audit, false);
+        Assert.Contains(local.Passes, pass => pass.Name == "semantic-role" && !pass.SentDataExternally);
+        Assert.DoesNotContain(local.Passes, pass => pass.Name == "heading-span");
+
+        var remote = Provenance(audit, true);
+        Assert.Contains(remote.Passes, pass => pass.Name == "semantic-role" && pass.SentDataExternally);
+    }
+
+    private static OutlineRunProvenance Provenance(RouteExecutionAudit? audit, bool external) =>
+        (OutlineRunProvenance)typeof(AuthorityExtractionPipeline)
+            .GetMethod("BuildProvenance", BindingFlags.Static | BindingFlags.NonPublic)!
+            .Invoke(null, [audit, external])!;
+
+    private static RouteExecutionAudit Audit() =>
+        new("authority", 3, 3, 0, 0, [], [], [], [], [], [], []);
 
     [Fact]
     public async Task NoLlmBuiltInStylesBecomeGroundedProductHeadings()
