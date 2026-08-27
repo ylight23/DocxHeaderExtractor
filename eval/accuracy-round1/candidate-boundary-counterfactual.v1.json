@@ -1,0 +1,630 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_round1_candidate_boundary_counterfactual",
+  "phase": "round1c",
+  "modelCalls": 0,
+  "productionChanges": false,
+  "sourceAuthority": "Round1A b4685c8 \u002B Round1B 4d7c814",
+  "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is run-local diagnostics",
+  "boundaryMismatchCount": 18,
+  "input": {
+    "reviewed": 422,
+    "candidatePresent": 375,
+    "frozenMisses": 47
+  },
+  "simulation": {
+    "repair": "widen one existing touching candidate to cover the reviewed source lines",
+    "candidateSelection": "highest-ranked touching candidate",
+    "scorePolicy": "retain observed candidate score and rank; score recomputation not performed",
+    "newCandidates": 0,
+    "candidateInflation": 0,
+    "rankingInterpretation": "recovered-at-K uses retained observed rank; this is an upper-bound structural simulation, not a rerun of the ranker"
+  },
+  "baseline": {
+    "candidateRecall": "375/422",
+    "recallAt40": "not available from frozen census",
+    "recallAt80": "not available from frozen census",
+    "recallAt160": "not available from frozen census",
+    "recallAt320": "not available from frozen census",
+    "recallAt640": "not available from frozen census",
+    "recallAtAll": "375/422"
+  },
+  "counterfactual": {
+    "recoveredTrueHeadings": 18,
+    "newExtraCandidates": 0,
+    "duplicateCandidates": 0,
+    "candidateInflation": 0,
+    "recallAt40": "not measurable from frozen candidate census",
+    "recallAt80": "not measurable from frozen candidate census",
+    "recallAt160": "385/422",
+    "recallAt320": "385/422",
+    "recallAt640": "386/422",
+    "recallAtAll": "393/422"
+  },
+  "negativeControls": {
+    "candidatePresentOccurrences": 375,
+    "changed": 0,
+    "status": "PASS for simulation scope; only the frozen 18 miss identities are eligible",
+    "unavailableControls": [
+      "nearby body paragraphs",
+      "unreviewed wrapped headings",
+      "table/TOC non-heading population"
+    ]
+  },
+  "shapes": {
+    "RIGHT_TRUNCATION": {
+      "count": 4,
+      "documents": [
+        "004",
+        "030"
+      ],
+      "producerOwner": [
+        "not_exposed_by_snapshot"
+      ],
+      "recovered": 4,
+      "newCandidates": 0,
+      "inflation": 0,
+      "recallAt160Delta": 4,
+      "recallAt320Delta": 4,
+      "recallAt640Delta": 4
+    },
+    "LEFT_TRUNCATION": {
+      "count": 6,
+      "documents": [
+        "004",
+        "043",
+        "058"
+      ],
+      "producerOwner": [
+        "not_exposed_by_snapshot"
+      ],
+      "recovered": 6,
+      "newCandidates": 0,
+      "inflation": 0,
+      "recallAt160Delta": 3,
+      "recallAt320Delta": 3,
+      "recallAt640Delta": 4
+    },
+    "WINDOW_FRAGMENT_SPLIT": {
+      "count": 8,
+      "documents": [
+        "004",
+        "058"
+      ],
+      "producerOwner": [
+        "not_exposed_by_snapshot"
+      ],
+      "recovered": 8,
+      "newCandidates": 0,
+      "inflation": 0,
+      "recallAt160Delta": 3,
+      "recallAt320Delta": 3,
+      "recallAt640Delta": 3
+    }
+  },
+  "occurrences": [
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/chapter/3",
+      "ReviewedSourceLineIds": [
+        "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+        "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+      ],
+      "SourceText": "Chapter III INVESTMENT INCENTIVES AND SUPPORTS",
+      "TouchingCandidateIds": [
+        "b242",
+        "b243"
+      ],
+      "SelectedCandidateId": "b242",
+      "ObservedRank": 92,
+      "Shape": "RIGHT_TRUNCATION",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": true,
+      "RecoveredAt320": true,
+      "RecoveredAt640": true,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/1",
+      "ReviewedSourceLineIds": [
+        "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+        "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+      ],
+      "SourceText": "Section 1 FORMS OF INVESTMENT",
+      "TouchingCandidateIds": [
+        "b380",
+        "b381"
+      ],
+      "SelectedCandidateId": "b381",
+      "ObservedRank": 1004,
+      "Shape": "LEFT_TRUNCATION",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": false,
+      "RecoveredAt320": false,
+      "RecoveredAt640": false,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/2",
+      "ReviewedSourceLineIds": [
+        "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+        "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+        "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+      ],
+      "SourceText": "Section 2 INVESTMENT POLICY APPROVAL AND INVESTOR SELECTION",
+      "TouchingCandidateIds": [
+        "b489",
+        "b490",
+        "s-window-1867",
+        "b491"
+      ],
+      "SelectedCandidateId": "b490",
+      "ObservedRank": 1027,
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": false,
+      "RecoveredAt320": false,
+      "RecoveredAt640": false,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/3",
+      "ReviewedSourceLineIds": [
+        "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+        "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+        "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+        "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+      ],
+      "SourceText": "Section 3 PROCEDURES FOR GRANT MODIFICATION AND , REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES",
+      "TouchingCandidateIds": [
+        "b708",
+        "b709",
+        "s-window-2705",
+        "b710"
+      ],
+      "SelectedCandidateId": "b709",
+      "ObservedRank": 1075,
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [
+        "26|556.091717939453|346.4410899252343|349.03931073089836|,"
+      ],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": false,
+      "RecoveredAt320": false,
+      "RecoveredAt640": false,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/4",
+      "ReviewedSourceLineIds": [
+        "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+        "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+      ],
+      "SourceText": "Section 4 IMPLEMENTATION OF INVESTMENT PROJECTS",
+      "TouchingCandidateIds": [
+        "b832",
+        "b833"
+      ],
+      "SelectedCandidateId": "b833",
+      "ObservedRank": 1098,
+      "Shape": "LEFT_TRUNCATION",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": false,
+      "RecoveredAt320": false,
+      "RecoveredAt640": false,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/6",
+      "ReviewedSourceLineIds": [
+        "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+        "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+        "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+      ],
+      "SourceText": "Section 2 PROCEDURES FOR OFFSHORE INVESTMENT POLICY APPROVAL AND DECISION ON OFFSHORE INVESTMENT",
+      "TouchingCandidateIds": [
+        "b1051",
+        "s-window-3937",
+        "b1052"
+      ],
+      "SelectedCandidateId": "b1051",
+      "ObservedRank": 1147,
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [
+        "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2"
+      ],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": false,
+      "RecoveredAt320": false,
+      "RecoveredAt640": false,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/7",
+      "ReviewedSourceLineIds": [
+        "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+        "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+        "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+        "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+        "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+      ],
+      "SourceText": "Section 3 PROCEDURES FOR GRANT MODIFICATION AND , INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION CERTIFICATES",
+      "TouchingCandidateIds": [
+        "s-window-4271",
+        "b1152",
+        "s-window-4273",
+        "b1153"
+      ],
+      "SelectedCandidateId": "b1152",
+      "ObservedRank": 1163,
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [
+        "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+        "41|712.9617079394532|346.34942334523413|348.9476441508982|,"
+      ],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": false,
+      "RecoveredAt320": false,
+      "RecoveredAt640": false,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/8",
+      "ReviewedSourceLineIds": [
+        "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+        "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+        "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+      ],
+      "SourceText": "Section 4 IMPLEMENTATION OF OFFSHORE INVESTMENT ACTIVITIES",
+      "TouchingCandidateIds": [
+        "b1258",
+        "s-window-4644",
+        "b1259"
+      ],
+      "SelectedCandidateId": "b1258",
+      "ObservedRank": 1182,
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [
+        "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4"
+      ],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": false,
+      "RecoveredAt320": false,
+      "RecoveredAt640": false,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/chapter/7",
+      "ReviewedSourceLineIds": [
+        "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+        "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+      ],
+      "SourceText": "Chapter VII IMPLEMENTATION PROVISIONS",
+      "TouchingCandidateIds": [
+        "b1486",
+        "b1487"
+      ],
+      "SelectedCandidateId": "b1486",
+      "ObservedRank": 106,
+      "Shape": "RIGHT_TRUNCATION",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": true,
+      "RecoveredAt320": true,
+      "RecoveredAt640": true,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/outline/12",
+      "ReviewedSourceLineIds": [
+        "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial",
+        "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+      ],
+      "SourceText": "Section 9. Notification of Intention to Award and Beneficial Ownership Forms",
+      "TouchingCandidateIds": [
+        "b2922",
+        "b2923"
+      ],
+      "SelectedCandidateId": "b2922",
+      "ObservedRank": 32,
+      "Shape": "RIGHT_TRUNCATION",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": true,
+      "RecoveredAt320": true,
+      "RecoveredAt640": true,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/fraud-attach-tb/1",
+      "ReviewedSourceLineIds": [
+        "121|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+        "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+      ],
+      "SourceText": "Attachment 1 Fraud and Corruption",
+      "TouchingCandidateIds": [
+        "b1772",
+        "b1773"
+      ],
+      "SelectedCandidateId": "b1772",
+      "ObservedRank": 20,
+      "Shape": "RIGHT_TRUNCATION",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": true,
+      "RecoveredAt320": true,
+      "RecoveredAt640": true,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "043",
+      "DocumentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "GoldStableId": "043/heading/014",
+      "ReviewedSourceLineIds": [
+        "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+        "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+      ],
+      "SourceText": "Appendix Glossary of Terms",
+      "TouchingCandidateIds": [
+        "b1242",
+        "b1243"
+      ],
+      "SelectedCandidateId": "b1243",
+      "ObservedRank": 515,
+      "Shape": "LEFT_TRUNCATION",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": false,
+      "RecoveredAt320": false,
+      "RecoveredAt640": true,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/003",
+      "ReviewedSourceLineIds": [
+        "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+        "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+      ],
+      "SourceText": "Chapter 1 An Energy Function",
+      "TouchingCandidateIds": [
+        "b45",
+        "b46"
+      ],
+      "SelectedCandidateId": "b46",
+      "ObservedRank": 35,
+      "Shape": "LEFT_TRUNCATION",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": true,
+      "RecoveredAt320": true,
+      "RecoveredAt640": true,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/004",
+      "ReviewedSourceLineIds": [
+        "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+        "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+        "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+      ],
+      "SourceText": "Chapter 2 Basic Ideas in Machine Learning with Classification",
+      "TouchingCandidateIds": [
+        "b88",
+        "b89",
+        "b90"
+      ],
+      "SelectedCandidateId": "b89",
+      "ObservedRank": 36,
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": true,
+      "RecoveredAt320": true,
+      "RecoveredAt640": true,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/022",
+      "ReviewedSourceLineIds": [
+        "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+        "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural",
+        "43|509.72642258125|107.9100582|214.61852370000003|networks"
+      ],
+      "SourceText": "Chapter 3 Building blocks of neural networks",
+      "TouchingCandidateIds": [
+        "b742",
+        "b743",
+        "b744"
+      ],
+      "SelectedCandidateId": "b744",
+      "ObservedRank": 4,
+      "Shape": "LEFT_TRUNCATION",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": true,
+      "RecoveredAt320": true,
+      "RecoveredAt640": true,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/027",
+      "ReviewedSourceLineIds": [
+        "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+        "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine",
+        "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised",
+        "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+      ],
+      "SourceText": "Chapter 4 Probabilistic Machine Learning and Unsupervised Learning",
+      "TouchingCandidateIds": [
+        "b923",
+        "b924",
+        "b925",
+        "b926"
+      ],
+      "SelectedCandidateId": "b924",
+      "ObservedRank": 39,
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": true,
+      "RecoveredAt320": true,
+      "RecoveredAt640": true,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/035",
+      "ReviewedSourceLineIds": [
+        "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+        "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative",
+        "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+      ],
+      "SourceText": "Chapter 5 Undirected Generative Models",
+      "TouchingCandidateIds": [
+        "b1272",
+        "b1273"
+      ],
+      "SelectedCandidateId": "b1273",
+      "ObservedRank": 42,
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [
+        "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+      ],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": true,
+      "RecoveredAt320": true,
+      "RecoveredAt640": true,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/041",
+      "ReviewedSourceLineIds": [
+        "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6",
+        "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+      ],
+      "SourceText": "Chapter 6 Further Topics",
+      "TouchingCandidateIds": [
+        "b1555",
+        "b1556"
+      ],
+      "SelectedCandidateId": "b1556",
+      "ObservedRank": 43,
+      "Shape": "LEFT_TRUNCATION",
+      "ProducerOwner": "not_exposed_by_snapshot",
+      "RepresentationKind": "StandardBlock",
+      "StructuralScope": "observed_scope_not_exposed_by_snapshot",
+      "MissingLineIds": [],
+      "ExtraLineIds": [],
+      "RecoveredByBoundaryRepair": true,
+      "RecoveredAt160": true,
+      "RecoveredAt320": true,
+      "RecoveredAt640": true,
+      "Evidence": "existing candidate widened; no new source fact; observed rank retained"
+    }
+  ],
+  "status": "BOUNDARY_REMEDIATION_CANDIDATE"
+}
