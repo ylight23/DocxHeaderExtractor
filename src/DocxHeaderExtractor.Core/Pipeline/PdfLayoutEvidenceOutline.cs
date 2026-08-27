@@ -53,6 +53,22 @@ public sealed record PdfCandidateConstructionBlockLine(
     double Left,
     double Y);
 
+/// <summary>Behavior-neutral lineage for an evaluation-only source-boundary investigation.</summary>
+internal sealed record PdfCandidateBoundaryLineageStage(
+    string Component,
+    string Operation,
+    IReadOnlyList<string> InputLineIds,
+    IReadOnlyDictionary<string, IReadOnlyList<string>> CandidateLineIds,
+    string Reason);
+
+internal sealed record PdfCandidateBoundaryLineage(
+    string OccurrenceId,
+    IReadOnlyList<string> SourceLineIds,
+    IReadOnlyList<PdfCandidateBoundaryLineageStage> Stages,
+    string FirstLossComponent,
+    string FirstLossOperation,
+    string FirstLossReason);
+
 /// <summary>Audit-only result of the semantic recovery branch; it cannot write an outline.</summary>
 public sealed record PdfSemanticRecoveryAudit(
     string Status,
@@ -408,6 +424,88 @@ public static class PdfLayoutEvidenceOutline
         return new PdfCandidateRankingSnapshot(
             new PdfCandidateRankingAudit("ranked", ranked.Count, ranked),
             BuildProvenance(context), context.Candidates, context.Annotations, context.Lines);
+    }
+
+    /// <summary>
+    /// Diagnostic-only replay of the existing candidate construction stages. It reports where a
+    /// requested source occurrence stops being fully covered; it never feeds a result back into
+    /// candidate generation, ranking, or extraction.
+    /// </summary>
+    internal static IReadOnlyList<PdfCandidateBoundaryLineage> TraceCandidateBoundaryLineage(
+        string originalInputPath,
+        IReadOnlyDictionary<string, IReadOnlyList<string>> occurrenceLineIds)
+    {
+        var context = TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
+            includeSupplementCandidates: true, out _);
+        if (context is null) return [];
+
+        var standard = PdfSemanticBlockGrouper.Build(context.Annotations);
+        var broad = BuildBroadCandidates(standard, context.Profile);
+        var wide = BuildWideAuditCandidates(standard);
+        var supplement = BuildSupplementCandidates(context.Annotations, wide);
+        var merged = MergeCandidateSets(wide, supplement);
+        var lineIds = context.Lines.Select(PdfCandidateProvenance.LineId).ToArray();
+        var indexByLineId = lineIds.Select((id, index) => (id, index))
+            .ToDictionary(item => item.id, item => item.index, StringComparer.Ordinal);
+
+        return occurrenceLineIds.Select(request =>
+        {
+            var required = request.Value.Where(indexByLineId.ContainsKey)
+                .Select(id => indexByLineId[id]).ToHashSet();
+            var requiredLineIds = request.Value.Where(indexByLineId.ContainsKey).ToArray();
+            var stages = new List<PdfCandidateBoundaryLineageStage>();
+            AddBoundaryStage(stages, "PdfSourceFacts", "SOURCE_OCCURRENCE", required,
+                Array.Empty<PdfSemanticBlock>(), lineIds, indexByLineId, "source lines materialized");
+            AddBoundaryStage(stages, "PdfSemanticBlockGrouper.Build", "LINE_GROUP", required,
+                standard, lineIds, indexByLineId, "standard semantic blocks");
+            AddBoundaryStage(stages, "BuildBroadCandidates", "PRODUCER_CREATE", required,
+                broad, lineIds, indexByLineId, "style and shape gate");
+            AddBoundaryStage(stages, "BuildWideAuditCandidates", "PRODUCER_CREATE", required,
+                wide, lineIds, indexByLineId, "wide candidate producer");
+            AddBoundaryStage(stages, "BuildSupplementCandidates", "PRODUCER_CREATE", required,
+                supplement, lineIds, indexByLineId, "supplement candidate producer");
+            AddBoundaryStage(stages, "MergeCandidateSets", "MERGE", required,
+                merged, lineIds, indexByLineId, "deduplicated final candidate pool");
+
+            var firstLoss = stages.FirstOrDefault(stage =>
+                stage.Component != "PdfSourceFacts" &&
+                !stage.CandidateLineIds.Values.Any(lines =>
+                    requiredLineIds.All(line => lines.Any(value =>
+                        string.Equals(value, line, StringComparison.Ordinal)))));
+            return new PdfCandidateBoundaryLineage(
+                request.Key,
+                request.Value,
+                stages,
+                firstLoss?.Component ?? "NONE",
+                firstLoss?.Operation ?? "NONE",
+                firstLoss?.Reason ?? "all stages cover the occurrence");
+        }).ToArray();
+    }
+
+    private static void AddBoundaryStage(
+        ICollection<PdfCandidateBoundaryLineageStage> stages,
+        string component,
+        string operation,
+        IReadOnlySet<int> required,
+        IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlyList<string> lineIds,
+        IReadOnlyDictionary<string, int> indexByLineId,
+        string reason)
+    {
+        var candidates = blocks
+            .Where(block => block.Lines.Any(line =>
+                indexByLineId.TryGetValue(PdfCandidateProvenance.LineId(line), out var index) &&
+                required.Contains(index)))
+            .ToDictionary(
+                block => block.Id,
+                block => (IReadOnlyList<string>)block.Lines.Select(PdfCandidateProvenance.LineId).ToArray(),
+                StringComparer.Ordinal);
+        stages.Add(new PdfCandidateBoundaryLineageStage(
+            component,
+            operation,
+            required.OrderBy(index => index).Select(index => lineIds[index]).ToArray(),
+            candidates,
+            reason));
     }
 
     private static IReadOnlyDictionary<string, PdfCandidateProvenance> BuildProvenance(LayoutContext context)
