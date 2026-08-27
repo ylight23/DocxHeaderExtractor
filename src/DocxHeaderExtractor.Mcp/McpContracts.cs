@@ -15,7 +15,7 @@ public sealed record McpBackendStatus(
 public sealed record McpHeadingResult(
     int Index,
     string? StableId,
-    int Level,
+    int? Level,
     string Text,
     string Source,
     double Confidence,

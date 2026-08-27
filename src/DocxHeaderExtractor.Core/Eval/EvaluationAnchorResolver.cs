@@ -28,9 +28,11 @@ public static class EvaluationAnchorResolver
             var expected = Canonical(entry.Text);
             var candidates = paragraphs
                 .Where(paragraph => !used.Contains(paragraph.Index))
+                .Where(paragraph => !paragraph.InTableOfContents)
                 .Where(paragraph => Canonical(paragraph.Text).Contains(expected, StringComparison.Ordinal))
-                .OrderBy(paragraph => Distance(entry.Index, paragraph.Index))
-                .ThenBy(paragraph => paragraph.Index)
+                // The reviewed key is in document order.  Choosing the next unused occurrence
+                // keeps a duplicate title source-derived; old paragraph indexes are stale here.
+                .OrderBy(paragraph => paragraph.Index)
                 .ToArray();
             var chosen = candidates.FirstOrDefault();
             if (chosen is null)
@@ -43,15 +45,13 @@ public static class EvaluationAnchorResolver
             used.Add(chosen.Index);
             entries.Add(entry with { Index = chosen.Index, StableId = null });
             audit.Add(new EvaluationAnchorResolution(entry.Text, entry.Index, chosen.Index,
-                "resolved", "normalized-title+document-order"));
+                "resolved", "canonical-title+ordered-occurrence", chosen.StableId, candidates.Length));
         }
 
         var unresolved = audit.Count(item => item.Status == "unresolved" && !string.IsNullOrWhiteSpace(item.Title));
         var resolvedKey = AnswerKey.FromResolvedEntries(entries, key.Title, key.IsPartial || unresolved > 0);
         return new ResolvedEvaluationKey(resolvedKey, audit, unresolved == 0);
     }
-
-    private static int Distance(int? expected, int actual) => expected is null ? actual : Math.Abs(expected.Value - actual);
 
     private static string Canonical(string? value)
     {
@@ -67,7 +67,9 @@ public sealed record EvaluationAnchorResolution(
     int? OriginalIndex,
     int? ResolvedIndex,
     string Status,
-    string Method);
+    string Method,
+    string? ResolvedStableId = null,
+    int CandidateCount = 0);
 
 public sealed record ResolvedEvaluationKey(
     AnswerKey Key,

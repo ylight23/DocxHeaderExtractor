@@ -1,0 +1,500 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_6_twelve_output_causal_diagnosis",
+  "usesModel": false,
+  "documentId": "004",
+  "purpose": "Diagnosis only - no remediation implemented or proposed as production code here.",
+  "ownerClassTally": {
+    "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN": 6,
+    "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED": 6
+  },
+  "ownerClassDefinitions": {
+    "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN": "Role misclassified AND the span lane resolved a near-zero-length span (\u003C 6 chars) - the emitted heading text is a garbage fragment of the leading marker digits, not the source sentence. Two compounding upstream errors, not one.",
+    "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED": "Role misclassified but the span lane resolved a full, well-formed span matching the entire source line. The span-resolution mechanism did its job correctly; the error is confined to role classification."
+  },
+  "rows": [
+    {
+      "sourceId": "b30",
+      "candidateStage": {
+        "becameCandidate": true,
+        "rank": 113,
+        "selectedAt160": true
+      },
+      "eligibilityStage": {
+        "structuralScope": "document_body",
+        "domainRole": 0,
+        "deterministicExclusionReason": null,
+        "note": "no deterministic gate (scope/domain/evidence-origin) rejects this candidate - the only thing distinguishing it from a real heading is the analyst\u0027s own role call"
+      },
+      "roleStage": {
+        "role": "HeadingTopic",
+        "confidence": 1,
+        "reason": ""
+      },
+      "spanStage": {
+        "resolved": true,
+        "start": 0,
+        "end": 1,
+        "spanLength": 1,
+        "isDegenerateSpan": true,
+        "resultingHeadingText": "8"
+      },
+      "validatorStage": {
+        "validated": true,
+        "note": "validator accepts because structural scope/domain/evidence are clean and a non-null span exists - it has no invariant about span plausibility (length vs. source line length) or role-vs-marker-shape consistency"
+      },
+      "groundingStage": {
+        "sourceTextFull": "8. Business investment means the use of investment capital by investors to",
+        "note": "grounds to the real, correct source location in both owner classes - grounding is not where either failure originates"
+      },
+      "r1Stage": {
+        "note": "R1 only decides whether to keep or discard a batch\u0027s already-produced role\u002Bspan facts on partial_timeout. It does not propose a role or a span. Both owner classes\u0027 errors were produced upstream by the semantic/span lanes and were previously invisible only because baseline\u0027s all-or-nothing discard removed every block from that document\u0027s output on this run, true positives and latent errors alike."
+      },
+      "endsWithClausePunctuation": false,
+      "ownerClass": "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN"
+    },
+    {
+      "sourceId": "b45",
+      "candidateStage": {
+        "becameCandidate": true,
+        "rank": 114,
+        "selectedAt160": true
+      },
+      "eligibilityStage": {
+        "structuralScope": "document_body",
+        "domainRole": 0,
+        "deterministicExclusionReason": null,
+        "note": "no deterministic gate (scope/domain/evidence-origin) rejects this candidate - the only thing distinguishing it from a real heading is the analyst\u0027s own role call"
+      },
+      "roleStage": {
+        "role": "HeadingTopic",
+        "confidence": 1,
+        "reason": ""
+      },
+      "spanStage": {
+        "resolved": true,
+        "start": 0,
+        "end": 1,
+        "spanLength": 1,
+        "isDegenerateSpan": true,
+        "resultingHeadingText": "1"
+      },
+      "validatorStage": {
+        "validated": true,
+        "note": "validator accepts because structural scope/domain/evidence are clean and a non-null span exists - it has no invariant about span plausibility (length vs. source line length) or role-vs-marker-shape consistency"
+      },
+      "groundingStage": {
+        "sourceTextFull": "15. Export-processing zone means an industrial park specialized in producing",
+        "note": "grounds to the real, correct source location in both owner classes - grounding is not where either failure originates"
+      },
+      "r1Stage": {
+        "note": "R1 only decides whether to keep or discard a batch\u0027s already-produced role\u002Bspan facts on partial_timeout. It does not propose a role or a span. Both owner classes\u0027 errors were produced upstream by the semantic/span lanes and were previously invisible only because baseline\u0027s all-or-nothing discard removed every block from that document\u0027s output on this run, true positives and latent errors alike."
+      },
+      "endsWithClausePunctuation": false,
+      "ownerClass": "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN"
+    },
+    {
+      "sourceId": "b56",
+      "candidateStage": {
+        "becameCandidate": true,
+        "rank": 115,
+        "selectedAt160": true
+      },
+      "eligibilityStage": {
+        "structuralScope": "document_body",
+        "domainRole": 0,
+        "deterministicExclusionReason": null,
+        "note": "no deterministic gate (scope/domain/evidence-origin) rejects this candidate - the only thing distinguishing it from a real heading is the analyst\u0027s own role call"
+      },
+      "roleStage": {
+        "role": "HeadingTopic",
+        "confidence": 1,
+        "reason": ""
+      },
+      "spanStage": {
+        "resolved": true,
+        "start": 0,
+        "end": 4,
+        "spanLength": 4,
+        "isDegenerateSpan": true,
+        "resultingHeadingText": "20. "
+      },
+      "validatorStage": {
+        "validated": true,
+        "note": "validator accepts because structural scope/domain/evidence are clean and a non-null span exists - it has no invariant about span plausibility (length vs. source line length) or role-vs-marker-shape consistency"
+      },
+      "groundingStage": {
+        "sourceTextFull": "20. Domestic investor means a Vietnamese national or an economic",
+        "note": "grounds to the real, correct source location in both owner classes - grounding is not where either failure originates"
+      },
+      "r1Stage": {
+        "note": "R1 only decides whether to keep or discard a batch\u0027s already-produced role\u002Bspan facts on partial_timeout. It does not propose a role or a span. Both owner classes\u0027 errors were produced upstream by the semantic/span lanes and were previously invisible only because baseline\u0027s all-or-nothing discard removed every block from that document\u0027s output on this run, true positives and latent errors alike."
+      },
+      "endsWithClausePunctuation": false,
+      "ownerClass": "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN"
+    },
+    {
+      "sourceId": "b60",
+      "candidateStage": {
+        "becameCandidate": true,
+        "rank": 116,
+        "selectedAt160": true
+      },
+      "eligibilityStage": {
+        "structuralScope": "document_body",
+        "domainRole": 0,
+        "deterministicExclusionReason": null,
+        "note": "no deterministic gate (scope/domain/evidence-origin) rejects this candidate - the only thing distinguishing it from a real heading is the analyst\u0027s own role call"
+      },
+      "roleStage": {
+        "role": "HeadingTopic",
+        "confidence": 1,
+        "reason": ""
+      },
+      "spanStage": {
+        "resolved": true,
+        "start": 0,
+        "end": 2,
+        "spanLength": 2,
+        "isDegenerateSpan": true,
+        "resultingHeadingText": "22"
+      },
+      "validatorStage": {
+        "validated": true,
+        "note": "validator accepts because structural scope/domain/evidence are clean and a non-null span exists - it has no invariant about span plausibility (length vs. source line length) or role-vs-marker-shape consistency"
+      },
+      "groundingStage": {
+        "sourceTextFull": "22. Foreign-invested economic organization means an economic",
+        "note": "grounds to the real, correct source location in both owner classes - grounding is not where either failure originates"
+      },
+      "r1Stage": {
+        "note": "R1 only decides whether to keep or discard a batch\u0027s already-produced role\u002Bspan facts on partial_timeout. It does not propose a role or a span. Both owner classes\u0027 errors were produced upstream by the semantic/span lanes and were previously invisible only because baseline\u0027s all-or-nothing discard removed every block from that document\u0027s output on this run, true positives and latent errors alike."
+      },
+      "endsWithClausePunctuation": false,
+      "ownerClass": "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN"
+    },
+    {
+      "sourceId": "b99",
+      "candidateStage": {
+        "becameCandidate": true,
+        "rank": 117,
+        "selectedAt160": true
+      },
+      "eligibilityStage": {
+        "structuralScope": "document_body",
+        "domainRole": 0,
+        "deterministicExclusionReason": null,
+        "note": "no deterministic gate (scope/domain/evidence-origin) rejects this candidate - the only thing distinguishing it from a real heading is the analyst\u0027s own role call"
+      },
+      "roleStage": {
+        "role": "HeadingTopic",
+        "confidence": 1,
+        "reason": ""
+      },
+      "spanStage": {
+        "resolved": true,
+        "start": 0,
+        "end": 1,
+        "spanLength": 1,
+        "isDegenerateSpan": true,
+        "resultingHeadingText": "4"
+      },
+      "validatorStage": {
+        "validated": true,
+        "note": "validator accepts because structural scope/domain/evidence are clean and a non-null span exists - it has no invariant about span plausibility (length vs. source line length) or role-vs-marker-shape consistency"
+      },
+      "groundingStage": {
+        "sourceTextFull": "4. The State shall recognize and protect investors\u2019 ownership of property,",
+        "note": "grounds to the real, correct source location in both owner classes - grounding is not where either failure originates"
+      },
+      "r1Stage": {
+        "note": "R1 only decides whether to keep or discard a batch\u0027s already-produced role\u002Bspan facts on partial_timeout. It does not propose a role or a span. Both owner classes\u0027 errors were produced upstream by the semantic/span lanes and were previously invisible only because baseline\u0027s all-or-nothing discard removed every block from that document\u0027s output on this run, true positives and latent errors alike."
+      },
+      "endsWithClausePunctuation": false,
+      "ownerClass": "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN"
+    },
+    {
+      "sourceId": "b122",
+      "candidateStage": {
+        "becameCandidate": true,
+        "rank": 118,
+        "selectedAt160": true
+      },
+      "eligibilityStage": {
+        "structuralScope": "document_body",
+        "domainRole": 0,
+        "deterministicExclusionReason": null,
+        "note": "no deterministic gate (scope/domain/evidence-origin) rejects this candidate - the only thing distinguishing it from a real heading is the analyst\u0027s own role call"
+      },
+      "roleStage": {
+        "role": "HeadingTopic",
+        "confidence": 1,
+        "reason": ""
+      },
+      "spanStage": {
+        "resolved": true,
+        "start": 0,
+        "end": 1,
+        "spanLength": 1,
+        "isDegenerateSpan": true,
+        "resultingHeadingText": "2"
+      },
+      "validatorStage": {
+        "validated": true,
+        "note": "validator accepts because structural scope/domain/evidence are clean and a non-null span exists - it has no invariant about span plausibility (length vs. source line length) or role-vs-marker-shape consistency"
+      },
+      "groundingStage": {
+        "sourceTextFull": "2. The list of sectors and trades subject to conditional business investment",
+        "note": "grounds to the real, correct source location in both owner classes - grounding is not where either failure originates"
+      },
+      "r1Stage": {
+        "note": "R1 only decides whether to keep or discard a batch\u0027s already-produced role\u002Bspan facts on partial_timeout. It does not propose a role or a span. Both owner classes\u0027 errors were produced upstream by the semantic/span lanes and were previously invisible only because baseline\u0027s all-or-nothing discard removed every block from that document\u0027s output on this run, true positives and latent errors alike."
+      },
+      "endsWithClausePunctuation": false,
+      "ownerClass": "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN"
+    },
+    {
+      "sourceId": "b221",
+      "candidateStage": {
+        "becameCandidate": true,
+        "rank": 124,
+        "selectedAt160": true
+      },
+      "eligibilityStage": {
+        "structuralScope": "document_body",
+        "domainRole": 0,
+        "deterministicExclusionReason": null,
+        "note": "no deterministic gate (scope/domain/evidence-origin) rejects this candidate - the only thing distinguishing it from a real heading is the analyst\u0027s own role call"
+      },
+      "roleStage": {
+        "role": "HeadingTopic",
+        "confidence": 1,
+        "reason": ""
+      },
+      "spanStage": {
+        "resolved": true,
+        "start": 0,
+        "end": 58,
+        "spanLength": 58,
+        "isDegenerateSpan": false,
+        "resultingHeadingText": "b) Adjusting operational objectives ofinvestment projects;"
+      },
+      "validatorStage": {
+        "validated": true,
+        "note": "validator accepts because structural scope/domain/evidence are clean and a non-null span exists - it has no invariant about span plausibility (length vs. source line length) or role-vs-marker-shape consistency"
+      },
+      "groundingStage": {
+        "sourceTextFull": "b) Adjusting operational objectives ofinvestment projects;",
+        "note": "grounds to the real, correct source location in both owner classes - grounding is not where either failure originates"
+      },
+      "r1Stage": {
+        "note": "R1 only decides whether to keep or discard a batch\u0027s already-produced role\u002Bspan facts on partial_timeout. It does not propose a role or a span. Both owner classes\u0027 errors were produced upstream by the semantic/span lanes and were previously invisible only because baseline\u0027s all-or-nothing discard removed every block from that document\u0027s output on this run, true positives and latent errors alike."
+      },
+      "endsWithClausePunctuation": true,
+      "ownerClass": "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED"
+    },
+    {
+      "sourceId": "b238",
+      "candidateStage": {
+        "becameCandidate": true,
+        "rank": 125,
+        "selectedAt160": true
+      },
+      "eligibilityStage": {
+        "structuralScope": "document_body",
+        "domainRole": 0,
+        "deterministicExclusionReason": null,
+        "note": "no deterministic gate (scope/domain/evidence-origin) rejects this candidate - the only thing distinguishing it from a real heading is the analyst\u0027s own role call"
+      },
+      "roleStage": {
+        "role": "HeadingTopic",
+        "confidence": 1,
+        "reason": ""
+      },
+      "spanStage": {
+        "resolved": true,
+        "start": 0,
+        "end": 29,
+        "spanLength": 29,
+        "isDegenerateSpan": false,
+        "resultingHeadingText": "d) International arbitration;"
+      },
+      "validatorStage": {
+        "validated": true,
+        "note": "validator accepts because structural scope/domain/evidence are clean and a non-null span exists - it has no invariant about span plausibility (length vs. source line length) or role-vs-marker-shape consistency"
+      },
+      "groundingStage": {
+        "sourceTextFull": "d) International arbitration;",
+        "note": "grounds to the real, correct source location in both owner classes - grounding is not where either failure originates"
+      },
+      "r1Stage": {
+        "note": "R1 only decides whether to keep or discard a batch\u0027s already-produced role\u002Bspan facts on partial_timeout. It does not propose a role or a span. Both owner classes\u0027 errors were produced upstream by the semantic/span lanes and were previously invisible only because baseline\u0027s all-or-nothing discard removed every block from that document\u0027s output on this run, true positives and latent errors alike."
+      },
+      "endsWithClausePunctuation": true,
+      "ownerClass": "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED"
+    },
+    {
+      "sourceId": "b251",
+      "candidateStage": {
+        "becameCandidate": true,
+        "rank": 126,
+        "selectedAt160": true
+      },
+      "eligibilityStage": {
+        "structuralScope": "document_body",
+        "domainRole": 0,
+        "deterministicExclusionReason": null,
+        "note": "no deterministic gate (scope/domain/evidence-origin) rejects this candidate - the only thing distinguishing it from a real heading is the analyst\u0027s own role call"
+      },
+      "roleStage": {
+        "role": "HeadingTopic",
+        "confidence": 1,
+        "reason": ""
+      },
+      "spanStage": {
+        "resolved": true,
+        "start": 0,
+        "end": 73,
+        "spanLength": 73,
+        "isDegenerateSpan": false,
+        "resultingHeadingText": "d) Quick depreciation or increase in deductible expenses upon calculating"
+      },
+      "validatorStage": {
+        "validated": true,
+        "note": "validator accepts because structural scope/domain/evidence are clean and a non-null span exists - it has no invariant about span plausibility (length vs. source line length) or role-vs-marker-shape consistency"
+      },
+      "groundingStage": {
+        "sourceTextFull": "d) Quick depreciation or increase in deductible expenses upon calculating",
+        "note": "grounds to the real, correct source location in both owner classes - grounding is not where either failure originates"
+      },
+      "r1Stage": {
+        "note": "R1 only decides whether to keep or discard a batch\u0027s already-produced role\u002Bspan facts on partial_timeout. It does not propose a role or a span. Both owner classes\u0027 errors were produced upstream by the semantic/span lanes and were previously invisible only because baseline\u0027s all-or-nothing discard removed every block from that document\u0027s output on this run, true positives and latent errors alike."
+      },
+      "endsWithClausePunctuation": false,
+      "ownerClass": "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED"
+    },
+    {
+      "sourceId": "b388",
+      "candidateStage": {
+        "becameCandidate": true,
+        "rank": 135,
+        "selectedAt160": true
+      },
+      "eligibilityStage": {
+        "structuralScope": "document_body",
+        "domainRole": 0,
+        "deterministicExclusionReason": null,
+        "note": "no deterministic gate (scope/domain/evidence-origin) rejects this candidate - the only thing distinguishing it from a real heading is the analyst\u0027s own role call"
+      },
+      "roleStage": {
+        "role": "HeadingTopic",
+        "confidence": 0.95,
+        "reason": ""
+      },
+      "spanStage": {
+        "resolved": true,
+        "start": 0,
+        "end": 67,
+        "spanLength": 67,
+        "isDegenerateSpan": false,
+        "resultingHeadingText": "5. New forms of investment and economic organizations in accordance"
+      },
+      "validatorStage": {
+        "validated": true,
+        "note": "validator accepts because structural scope/domain/evidence are clean and a non-null span exists - it has no invariant about span plausibility (length vs. source line length) or role-vs-marker-shape consistency"
+      },
+      "groundingStage": {
+        "sourceTextFull": "5. New forms of investment and economic organizations in accordance",
+        "note": "grounds to the real, correct source location in both owner classes - grounding is not where either failure originates"
+      },
+      "r1Stage": {
+        "note": "R1 only decides whether to keep or discard a batch\u0027s already-produced role\u002Bspan facts on partial_timeout. It does not propose a role or a span. Both owner classes\u0027 errors were produced upstream by the semantic/span lanes and were previously invisible only because baseline\u0027s all-or-nothing discard removed every block from that document\u0027s output on this run, true positives and latent errors alike."
+      },
+      "endsWithClausePunctuation": false,
+      "ownerClass": "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED"
+    },
+    {
+      "sourceId": "b438",
+      "candidateStage": {
+        "becameCandidate": true,
+        "rank": 136,
+        "selectedAt160": true
+      },
+      "eligibilityStage": {
+        "structuralScope": "document_body",
+        "domainRole": 0,
+        "deterministicExclusionReason": null,
+        "note": "no deterministic gate (scope/domain/evidence-origin) rejects this candidate - the only thing distinguishing it from a real heading is the analyst\u0027s own role call"
+      },
+      "roleStage": {
+        "role": "HeadingTopic",
+        "confidence": 0.9,
+        "reason": ""
+      },
+      "spanStage": {
+        "resolved": true,
+        "start": 0,
+        "end": 73,
+        "spanLength": 73,
+        "isDegenerateSpan": false,
+        "resultingHeadingText": "c) Contributing capital to other economic organizations not prescribed at"
+      },
+      "validatorStage": {
+        "validated": true,
+        "note": "validator accepts because structural scope/domain/evidence are clean and a non-null span exists - it has no invariant about span plausibility (length vs. source line length) or role-vs-marker-shape consistency"
+      },
+      "groundingStage": {
+        "sourceTextFull": "c) Contributing capital to other economic organizations not prescribed at",
+        "note": "grounds to the real, correct source location in both owner classes - grounding is not where either failure originates"
+      },
+      "r1Stage": {
+        "note": "R1 only decides whether to keep or discard a batch\u0027s already-produced role\u002Bspan facts on partial_timeout. It does not propose a role or a span. Both owner classes\u0027 errors were produced upstream by the semantic/span lanes and were previously invisible only because baseline\u0027s all-or-nothing discard removed every block from that document\u0027s output on this run, true positives and latent errors alike."
+      },
+      "endsWithClausePunctuation": false,
+      "ownerClass": "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED"
+    },
+    {
+      "sourceId": "b444",
+      "candidateStage": {
+        "becameCandidate": true,
+        "rank": 137,
+        "selectedAt160": true
+      },
+      "eligibilityStage": {
+        "structuralScope": "document_body",
+        "domainRole": 0,
+        "deterministicExclusionReason": null,
+        "note": "no deterministic gate (scope/domain/evidence-origin) rejects this candidate - the only thing distinguishing it from a real heading is the analyst\u0027s own role call"
+      },
+      "roleStage": {
+        "role": "HeadingTopic",
+        "confidence": 1,
+        "reason": ""
+      },
+      "spanStage": {
+        "resolved": true,
+        "start": 0,
+        "end": 64,
+        "spanLength": 64,
+        "isDegenerateSpan": false,
+        "resultingHeadingText": "d) Purchasing capital contributions of members of other economic"
+      },
+      "validatorStage": {
+        "validated": true,
+        "note": "validator accepts because structural scope/domain/evidence are clean and a non-null span exists - it has no invariant about span plausibility (length vs. source line length) or role-vs-marker-shape consistency"
+      },
+      "groundingStage": {
+        "sourceTextFull": "d) Purchasing capital contributions of members of other economic",
+        "note": "grounds to the real, correct source location in both owner classes - grounding is not where either failure originates"
+      },
+      "r1Stage": {
+        "note": "R1 only decides whether to keep or discard a batch\u0027s already-produced role\u002Bspan facts on partial_timeout. It does not propose a role or a span. Both owner classes\u0027 errors were produced upstream by the semantic/span lanes and were previously invisible only because baseline\u0027s all-or-nothing discard removed every block from that document\u0027s output on this run, true positives and latent errors alike."
+      },
+      "endsWithClausePunctuation": false,
+      "ownerClass": "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED"
+    }
+  ],
+  "observedButNotActedOn": {
+    "clausePunctuationSignal": "2/12 of the 12 end with \u0027;\u0027 or \u0027:\u0027 - conventional legal enumerated-clause punctuation, already partially recognized elsewhere in this codebase (PdfSemanticBlockGrouper\u0027s allowSemicolonContinuation). This is observed as a candidate signal for a future, separately-gated investigation - not implemented, not promoted, and explicitly not a blanket \u0027numbered/lettered marker -\u003E reject\u0027 rule, which the project has already been burned by once (labelled_numbering_marker on 029/042)."
+  }
+}

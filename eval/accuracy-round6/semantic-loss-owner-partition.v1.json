@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_round6d_semantic_loss_owner_partition",
+  "phase": "round6d-a",
+  "modelCalls": false,
+  "semanticRerun": false,
+  "productionChanges": false,
+  "inputArtifact": "semantic-first-loss-ledger.v2.json",
+  "inputPositiveLosses": 7,
+  "partition": {
+    "SPAN_UNRESOLVED": 4,
+    "VALIDATOR_REJECTION_OR_DEGENERATE": 3
+  },
+  "spanUnresolved": {
+    "count": 4,
+    "status": "OWNER_UNRESOLVED",
+    "firstLossEvidence": "All four retained items have missing-pointer-span in replay, but the frozen checkpoint does not distinguish timeout, empty/no-proposal, reconciliation, boundary, or incomplete checkpoint. No causal owner is assigned.",
+    "items": [
+      {
+        "goldStableId": "030/outline/1",
+        "candidateIdsDiagnostic": [
+          "b96"
+        ],
+        "sourceLineIds": [
+          "11|528.2154531250001|286.775234375|339.64784656250004|PART I"
+        ],
+        "sourceText": "PART I",
+        "sourceSpanAuthority": {
+          "startLineId": "11|528.2154531250001|286.775234375|339.64784656250004|PART I",
+          "endLineId": "11|528.2154531250001|286.775234375|339.64784656250004|PART I"
+        },
+        "sourceSpan": null,
+        "roleSurvived": true,
+        "spanResolved": false,
+        "spanResolution": "unresolved",
+        "validated": false,
+        "validatorStatus": "rejected_replay",
+        "validatorReason": "missing-pointer-span",
+        "grounded": null,
+        "groundingStatus": null,
+        "emitted": null,
+        "outputStatus": null,
+        "firstLoss": "SPAN_UNRESOLVED",
+        "documentId": "030"
+      },
+      {
+        "goldStableId": "030/outline/9",
+        "candidateIdsDiagnostic": [
+          "b1271"
+        ],
+        "sourceLineIds": [
+          "85|684.6018164062498|283.655234375|342.7362865625|PART II"
+        ],
+        "sourceText": "PART II",
+        "sourceSpanAuthority": {
+          "startLineId": "85|684.6018164062498|283.655234375|342.7362865625|PART II",
+          "endLineId": "85|684.6018164062498|283.655234375|342.7362865625|PART II"
+        },
+        "sourceSpan": null,
+        "roleSurvived": true,
+        "spanResolved": false,
+        "spanResolution": "unresolved",
+        "validated": false,
+        "validatorStatus": "rejected_replay",
+        "validatorReason": "missing-pointer-span",
+        "grounded": null,
+        "groundingStatus": null,
+        "emitted": null,
+        "outputStatus": null,
+        "firstLoss": "SPAN_UNRESOLVED",
+        "documentId": "030"
+      },
+      {
+        "goldStableId": "030/outline/11",
+        "candidateIdsDiagnostic": [
+          "b2921"
+        ],
+        "sourceLineIds": [
+          "191|693.1192187500001|264.935234375|330.2247265625|PART III"
+        ],
+        "sourceText": "PART III",
+        "sourceSpanAuthority": {
+          "startLineId": "191|693.1192187500001|264.935234375|330.2247265625|PART III",
+          "endLineId": "191|693.1192187500001|264.935234375|330.2247265625|PART III"
+        },
+        "sourceSpan": null,
+        "roleSurvived": true,
+        "spanResolved": false,
+        "spanResolution": "unresolved",
+        "validated": false,
+        "validatorStatus": "rejected_replay",
+        "validatorReason": "missing-pointer-span",
+        "grounded": null,
+        "groundingStatus": null,
+        "emitted": null,
+        "outputStatus": null,
+        "firstLoss": "SPAN_UNRESOLVED",
+        "documentId": "030"
+      },
+      {
+        "goldStableId": "058/heading/002",
+        "candidateIdsDiagnostic": [
+          "b23"
+        ],
+        "sourceLineIds": [
+          "3|584.74837584375|108.4058002|214.84904373|Contents"
+        ],
+        "sourceText": "Contents",
+        "sourceSpanAuthority": {
+          "startLineId": "3|584.74837584375|108.4058002|214.84904373|Contents",
+          "endLineId": "3|584.74837584375|108.4058002|214.84904373|Contents"
+        },
+        "sourceSpan": null,
+        "roleSurvived": true,
+        "spanResolved": false,
+        "spanResolution": "unresolved",
+        "validated": false,
+        "validatorStatus": "rejected_replay",
+        "validatorReason": "missing-pointer-span",
+        "grounded": null,
+        "groundingStatus": null,
+        "emitted": null,
+        "outputStatus": null,
+        "firstLoss": "SPAN_UNRESOLVED",
+        "documentId": "058"
+      }
+    ]
+  },
+  "validatorLosses": {
+    "count": 3,
+    "status": "OWNER_MIXED",
+    "owner": "PdfProposalValidator replay predicates",
+    "reasonDistribution": {
+      "invalid-pointer-span": 2,
+      "scope-conflict": 1
+    },
+    "firstLossEvidence": "Three span-bearing decisions fail replay validation: two invalid-pointer-span and one scope-conflict. The predicate-level rejection is observable, but the upstream reason the pointer was produced that way is not retained.",
+    "items": [
+      {
+        "goldStableId": "004/article/28",
+        "candidateIdsDiagnostic": [
+          "b472"
+        ],
+        "sourceLineIds": [
+          "18|614.4244572137453|120.609687421875|297.93009940644527|Article 28. Contents of a BCC"
+        ],
+        "sourceText": "Article 28. Contents of a BCC",
+        "sourceSpanAuthority": {
+          "startLineId": "18|614.4244572137453|120.609687421875|297.93009940644527|Article 28. Contents of a BCC",
+          "endLineId": "18|614.4244572137453|120.609687421875|297.93009940644527|Article 28. Contents of a BCC"
+        },
+        "sourceSpan": {
+          "start": 0,
+          "end": 31
+        },
+        "roleSurvived": true,
+        "spanResolved": true,
+        "spanResolution": "resolved",
+        "validated": false,
+        "validatorStatus": "rejected_replay",
+        "validatorReason": "invalid-pointer-span",
+        "grounded": null,
+        "groundingStatus": null,
+        "emitted": null,
+        "outputStatus": null,
+        "firstLoss": "VALIDATOR_REJECTION",
+        "documentId": "004"
+      },
+      {
+        "goldStableId": "004/article/62",
+        "candidateIdsDiagnostic": [
+          "b1186"
+        ],
+        "sourceLineIds": [
+          "42|479.29169326191766|120.609687421875|531.0631461696485|Article 62. Contents of an offshore investment revgisntration certificate"
+        ],
+        "sourceText": "Article 62. Contents of an offshore investment revgisntration certificate",
+        "sourceSpanAuthority": {
+          "startLineId": "42|479.29169326191766|120.609687421875|531.0631461696485|Article 62. Contents of an offshore investment revgisntration certificate",
+          "endLineId": "42|479.29169326191766|120.609687421875|531.0631461696485|Article 62. Contents of an offshore investment revgisntration certificate"
+        },
+        "sourceSpan": {
+          "start": 0,
+          "end": 0
+        },
+        "roleSurvived": true,
+        "spanResolved": true,
+        "spanResolution": "resolved",
+        "validated": false,
+        "validatorStatus": "rejected_replay",
+        "validatorReason": "invalid-pointer-span",
+        "grounded": null,
+        "groundingStatus": null,
+        "emitted": null,
+        "outputStatus": null,
+        "firstLoss": "SPAN_DEGENERATE",
+        "documentId": "004"
+      },
+      {
+        "goldStableId": "030/outline/8",
+        "candidateIdsDiagnostic": [
+          "b1246"
+        ],
+        "sourceLineIds": [
+          "83|709.1841390625|207.3960546875|413.87366609375|Section 7. Terms of Reference"
+        ],
+        "sourceText": "Section 7. Terms of Reference",
+        "sourceSpanAuthority": {
+          "startLineId": "83|709.1841390625|207.3960546875|413.87366609375|Section 7. Terms of Reference",
+          "endLineId": "83|709.1841390625|207.3960546875|413.87366609375|Section 7. Terms of Reference"
+        },
+        "sourceSpan": {
+          "start": 0,
+          "end": 29
+        },
+        "roleSurvived": true,
+        "spanResolved": true,
+        "spanResolution": "resolved",
+        "validated": false,
+        "validatorStatus": "rejected_replay",
+        "validatorReason": "scope-conflict",
+        "grounded": null,
+        "groundingStatus": null,
+        "emitted": null,
+        "outputStatus": null,
+        "firstLoss": "VALIDATOR_REJECTION",
+        "documentId": "030"
+      }
+    ]
+  },
+  "decision": {
+    "status": "OWNER_MIXED",
+    "reason": "The four unresolved spans remain causally unresolved; the three validator losses share an observable validator boundary but have mixed predicate reasons. No remediation is opened.",
+    "remediationOpened": false
+  }
+}

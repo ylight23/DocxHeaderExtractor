@@ -43,7 +43,7 @@ public sealed record Defaults(
             GpuLayers: gpu ? GpuLayersFromEnvironment(defaultValue: 20) : 0,
             GpuBackend: gpu,
             OpenRouterAvailable: !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY")),
-            OpenRouterModel: Environment.GetEnvironmentVariable("OPENROUTER_MODEL") ?? "qwen/qwen-2.5-7b-instruct",
+            OpenRouterModel: Environment.GetEnvironmentVariable("OPENROUTER_MODEL") ?? OpenRouterOptions.DefaultModel,
             LmStudioEndpoint: lmStudio.Endpoint.GetLeftPart(UriPartial.Authority),
             LmStudioModel: lmStudio.Model,
             LmStudioContextSize: lmStudio.ContextSize,

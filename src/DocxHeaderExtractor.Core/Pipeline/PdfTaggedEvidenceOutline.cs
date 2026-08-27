@@ -97,7 +97,7 @@ internal static class PdfTaggedEvidenceOutline
 
             var parent = declared.Where(h => h.Index <= match.Paragraph.Paragraph.Index)
                 .OrderByDescending(h => h.Index).ThenByDescending(h => h.HeadingSpan!.Start).FirstOrDefault();
-            var level = parent is null ? declared.Min(h => h.Level) : Math.Min(9, parent.Level + 1);
+            var level = parent is null ? declared.Min(h => h.Level) ?? 1 : Math.Min(9, (parent.Level ?? 0) + 1);
             result.Add(new HeadingRecord
             {
                 Index = match.Paragraph.Paragraph.Index,

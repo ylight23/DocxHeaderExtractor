@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_blind_source_review_packet",
+  "parentManifestSha256": "7fa4ba7f3370d468326905c11172363cd8904702bc4f4261e5e468f3d9edffcb",
+  "Stem": "002",
+  "Domain": "01_phap_quy",
+  "documentSha256": "527e96865acf73847abc23c6e80208e92242215a94824388d8f575dd226372dd",
+  "sourceLineExtractionFingerprint": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "reviewInstructions": {
+    "question": "Which source occurrences are structural document-outline headings?",
+    "allowedLabels": [
+      "REVIEWED_HEADING",
+      "REVIEWED_NON_HEADING",
+      "UNCERTAIN"
+    ],
+    "prohibitedEvidence": [
+      "candidate id",
+      "candidate score",
+      "rank",
+      "selected status",
+      "scope",
+      "model output",
+      "validated output"
+    ]
+  },
+  "items": []
+}

@@ -15,7 +15,7 @@ public sealed record VerifiedCorrection(
     string SourceFile,
     string StableId,
     string Text,
-    int PredictedLevel,
+    int? PredictedLevel,
     int CorrectedLevel,
     DateTimeOffset CreatedUtc);
 

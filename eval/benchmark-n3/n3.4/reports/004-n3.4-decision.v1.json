@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_5_promotion_decision",
+  "status": "BLOCK",
+  "documentId": "004",
+  "case": "A",
+  "caseDefinition": "spanLaneStatus == partial_timeout (Section 6, Case A)",
+  "frozenInputs": {
+    "n3_2SilverCommit": "442bdf1",
+    "n3_3CensusCommit": "37e3300",
+    "baselineRevision": "f0681940df1c2586015b4d42d5813dad5734e047",
+    "r1Revision": "20a21923617c84e5c36475915bca6b8601f47b4e",
+    "remediationSet": ["R1"],
+    "excludedRemediations": ["R2"]
+  },
+  "liveTrace": {
+    "manifestFirstLiveCallSha256Recorded": true,
+    "providerExecutions": 1,
+    "semanticLaneStatus": "complete",
+    "spanLaneStatus": "partial_timeout",
+    "canonicalRun": "eval/benchmark-n3/n3.4/runs/004-n3.4-canonical-run.v1.json",
+    "checkpoint": "eval/benchmark-n3/n3.4/checkpoints/004-n3.4-canonical.jsonl"
+  },
+  "gate7Evaluation": {
+    "condition_materialFreshRecovery": {
+      "result": true,
+      "evidence": "Occurrence-level (decisionRelevant=55): R1 emitted stage exactOccurrenceMatches=47 vs baseline=0. Exact-span recovery and occurrence-level recovery are the same figure here (no PARTIAL_SAME_OCCURRENCE observed at the emitted stage within the decisionRelevant subset)."
+    },
+    "condition_noBaselineCorrectOutputsLost": {
+      "result": true,
+      "evidence": "Baseline (frozen all-or-nothing discard policy) emits 0 outputs on partial_timeout for this document, so there are no baseline-correct outputs that could be lost."
+    },
+    "condition_noNewTrueUnmatchedOutputCollateral": {
+      "result": false,
+      "evidence": "Output-centric check (reports/004-n3.4-collateral-check.v1.json) applies the SAME frozen identity/join taxonomy (EXACT_OCCURRENCE_MATCH / PARTIAL_SAME_OCCURRENCE / UNMATCHED_OUTPUT) to R1's full emitted set (83 items) against the FULL reviewed silver set (93 occurrences, not just the 55 decisionRelevant subset). 12 of 83 emitted items have zero support from any reviewed silver occurrence, exact or partial. All 12 are baseline=0 vs R1=12, i.e. strictly new under R1's partial-span-preservation policy. Sample: b30 'Bao 8. Business investment means the use of investment capital by investors to', b221 'b) Adjusting operational objectives ofinvestment projects;', b238 'd) International arbitration;' -- numbered clause/list fragments misclassified as headings, not headings themselves.",
+      "trueCollateralCount": 12,
+      "trueCollateralOf": 83
+    },
+    "condition_failClosedBehaviorPreserved": {
+      "result": true,
+      "evidence": "The 1 decisionRelevant occurrence whose span never resolved (SpanResolved stage: 54/55 EXACT_OCCURRENCE_MATCH, 1 UNMATCHED_OUTPUT) stays Uncertain under R1 policy and is correctly excluded from Emitted, matching R1's documented policy (unresolved spans remain Uncertain, not silently promoted)."
+    },
+    "condition_noExtraProviderCalls": {
+      "result": true,
+      "evidence": "providerExecutions=1 (manifest execution.providerExecutions), first-live-call-sha256 sidecar written exactly once, no retry, no call for 030/043/058."
+    },
+    "overallGate7": "FAIL",
+    "failingCondition": "condition_noNewTrueUnmatchedOutputCollateral"
+  },
+  "recoveryReportedSeparately": {
+    "exactSpanRecovery": { "r1": 47, "baseline": 0, "denominator": 55 },
+    "occurrenceLevelRecoveryBeyondExact": { "r1": 0, "baseline": 0, "denominator": 55 },
+    "note": "PARTIAL_SAME_OCCURRENCE is not counted as a false positive and is reported separately from exact-span success, per the frozen evaluatorContract. It is 0 at the decisionRelevant/emitted stage for this document; the 24 partial-supported items in the output-centric check fall outside the decisionRelevant=55 subset or are secondary matches on an occurrence already exact-matched by another item."
+  },
+  "decision": "BLOCK",
+  "decisionRationale": "R1's partial-span-preservation policy produces material fresh recovery of previously-lost decision-relevant headings (47/55 exact) on document 004's partial_timeout lane, but it also introduces 12 emitted outputs (of 83 total emitted) with zero support from any reviewed silver occurrence -- concrete false positives (numbered clauses and sub-list markers misclassified as headings) that do not exist under the true frozen baseline (which emits nothing on partial_timeout). Gate #7 requires ALL five conditions to hold for PROMOTE; this collateral-false-positive condition fails on real, measured evidence from the one canonical live trace. Per the frozen contract, this is BLOCK, not INSUFFICIENT_EVIDENCE -- the evidence is complete and unambiguous, not absent.",
+  "constraintsHonored": {
+    "noR1ModificationInN3_5": true,
+    "r1EvidencePreserved": true,
+    "remediationClosed": true,
+    "provenanceClaim": "SILVER_PROXY_ONLY / MODEL_ASSISTED_SILVER -- no system-accuracy claim is made from this result",
+    "n3ReopenForModifiedR1v2": "N3 (004/030/043/058, this live trace, this checkpoint) has now been opened and observed. It cannot be reused as a fresh holdout for a modified R1-v2. Any future remediation attempt at partial_timeout span handling requires a new fresh-holdout population."
+  },
+  "supportingArtifacts": [
+    "eval/benchmark-n3/n3.4/manifest.v1.json",
+    "eval/benchmark-n3/n3.4/preflight.v1.json",
+    "eval/benchmark-n3/n3.4/runs/004-n3.4-canonical-run.v1.json",
+    "eval/benchmark-n3/n3.4/checkpoints/004-n3.4-canonical.jsonl",
+    "eval/benchmark-n3/n3.4/reports/004-n3.4-baseline-replay.v1.json",
+    "eval/benchmark-n3/n3.4/reports/004-n3.4-r1-replay.v1.json",
+    "eval/benchmark-n3/n3.4/reports/004-n3.4-decision-input.v1.json",
+    "eval/benchmark-n3/n3.4/reports/004-n3.4-collateral-check.v1.json"
+  ]
+}

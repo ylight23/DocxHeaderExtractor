@@ -102,7 +102,7 @@ public sealed class SignatureTierTests
 
         StructuralHierarchyResolver.Apply(headings, doc);
 
-        Assert.Equal(levels, headings.OrderBy(h => h.Index).Select(h => h.Level));
+        Assert.Equal(levels.Select(l => (int?)l), headings.OrderBy(h => h.Index).Select(h => h.Level));
     }
 
     [Fact]

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n1_2_silver_bundle_manifest",
+  "labelSource": "MODEL_ASSISTED_SILVER",
+  "labelerModel": "GPT-5.6 Sol",
+  "humanAdjudicated": false,
+  "accuracyClaim": "SILVER_PROXY_ONLY",
+  "documents": [
+    {
+      "stem": "003",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "file": "003-n1.2-silver-model-assisted.v1.json",
+      "sha256": "81df05cc978193c15f703579d99efc156e40d6bc7b0c04dd7a2a7c20916bede7",
+      "summary": {
+        "totalSourceItemsReviewed": 5619,
+        "headingOccurrenceCount": 230,
+        "headingSourceLineCount": 265,
+        "nonHeadingSourceLineCount": 5354,
+        "uncertainSourceLineCount": 0,
+        "headingOccurrencesByKind": {
+          "CHAPTER": 10,
+          "SECTION": 2,
+          "ARTICLE": 218
+        }
+      }
+    },
+    {
+      "stem": "029",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "file": "029-n1.2-silver-model-assisted.v1.json",
+      "sha256": "245c4c7b9b57d0e5331c740ab0f9df7baf0e2d7fca2408e4000226f9546ef1f9",
+      "summary": {
+        "totalSourceItemsReviewed": 7335,
+        "headingOccurrenceCount": 160,
+        "headingSourceLineCount": 194,
+        "nonHeadingSourceLineCount": 7141,
+        "uncertainSourceLineCount": 0,
+        "headingOccurrencesByKind": {
+          "PART": 3,
+          "SECTION": 10,
+          "TOC_RECONCILED_BODY_HEADING": 135,
+          "SUBSECTION": 12
+        },
+        "silverConfidence": {
+          "HIGH": 123,
+          "MEDIUM": 37
+        }
+      }
+    },
+    {
+      "stem": "042",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "file": "042-n1.2-silver-model-assisted.v1.json",
+      "sha256": "da7b4899d92d710200b49028dee19de93a89ac0e6e8cb33e85b482015a407340",
+      "summary": {
+        "totalSourceItemsReviewed": 6938,
+        "headingOccurrenceCount": 159,
+        "headingSourceLineCount": 164,
+        "nonHeadingSourceLineCount": 6774,
+        "uncertainSourceLineCount": 0,
+        "headingOccurrencesByKind": {
+          "SEMANTIC_OUTLINE": 142,
+          "REPORT_HEADING": 3,
+          "STATEMENT_HEADING": 1,
+          "FINANCIAL_NOTE": 13
+        },
+        "silverConfidence": {
+          "HIGH": 159
+        }
+      }
+    },
+    {
+      "stem": "057",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "file": "057-n1.2-silver-model-assisted.v1.json",
+      "sha256": "ad4a9d4e2d1abbcd4d86293a9b36f237d68717d7be0123a92b1b7e6b364cce9f",
+      "summary": {
+        "totalSourceItemsReviewed": 24980,
+        "headingOccurrenceCount": 777,
+        "headingSourceLineCount": 803,
+        "nonHeadingSourceLineCount": 24177,
+        "uncertainSourceLineCount": 0,
+        "headingOccurrencesByKind": {
+          "NUMBERED_OUTLINE": 476,
+          "NUMBERED_SUBOUTLINE": 301
+        },
+        "silverConfidence": {
+          "HIGH": 775,
+          "MEDIUM": 2
+        }
+      }
+    }
+  ]
+}

@@ -152,7 +152,8 @@ public sealed class ReviewRow
     public required string StableId { get; init; }
     public required int Index { get; init; }
     public required string Text { get; init; }
-    public int PredictedLevel { get; init; }
+    /// <summary>0 = not a heading; null = a heading whose level the route could not resolve; 1..9 = predicted level.</summary>
+    public int? PredictedLevel { get; init; }
     public int? CorrectedLevel { get; set; }
     public string? Source { get; init; }
     public double? Confidence { get; init; }

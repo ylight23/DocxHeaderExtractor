@@ -13,7 +13,10 @@ internal sealed record PdfSemanticBlock(
 {
     public int LineCount => Lines.Count;
     public string DisplayText => PdfTextUtilities.HeadingReadable(Text);
-    public string CanonicalText => PdfTextUtilities.CanonicalForMatch(Text);
+    public string CanonicalText => string.Concat(Lines.Select(line => line.CanonicalMatchText ??
+        PdfTextUtilities.CanonicalForMatch(line.Text)));
+    public bool HasKerningJoinEvidence => Lines.Any(line => line.MatchText is not null &&
+        !string.Equals(line.MatchText, PdfTextUtilities.Readable(line.Text), StringComparison.Ordinal));
 }
 
 internal sealed record PdfSemanticBlockSummary(
@@ -31,7 +34,7 @@ internal static class PdfSemanticBlockGrouper
         bool includeRiskLines = false)
     {
         var candidates = annotations
-            .Where(a => includeRiskLines || !a.ExcludeFromSemanticSamples)
+            .Where(a => includeRiskLines || !a.ExcludeFromCandidateGrouping)
             .Select(a => a.Line)
             .OrderBy(l => l.Page)
             .ThenByDescending(l => l.Y)

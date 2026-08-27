@@ -62,9 +62,14 @@ public sealed class HeadingRecord
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? SourceId { get; init; }
 
-    /// <summary>Cấp tiêu đề 1..9.</summary>
+    /// <summary>
+    /// Cấp tiêu đề 1..9, hoặc null khi route tạo ra heading này không đủ bằng chứng để khẳng định
+    /// cấp (M9 hierarchy authority: <c>PdfFinalHeading.Level</c> abstain thay vì đoán). `required`
+    /// buộc caller phải khai báo rõ trạng thái, kể cả khi trạng thái đó là "chưa biết" — null không
+    /// phải giá trị bị bỏ quên.
+    /// </summary>
     [JsonPropertyName("level")]
-    public required int Level { get; set; }
+    public required int? Level { get; set; }
 
     /// <summary>Văn bản LẤY TỪ OpenXML (không lấy từ LLM để tránh bịa).</summary>
     [JsonPropertyName("text")]
@@ -219,6 +224,16 @@ public sealed class DocumentOutline
     [JsonPropertyName("provenance")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public OutlineRunProvenance? Provenance { get; set; }
+
+    /// <summary>
+    /// M9 authority for a route materialized through <c>PdfFinalStructureProjection</c> -
+    /// <see cref="HeadingRecord"/> above is a structural COPY of this, not the other way around.
+    /// Carried on the outline so a later writeback step acts on the exact same
+    /// <c>PdfProductOutput</c> the pipeline computed, never a reconstruction through
+    /// <see cref="HeadingRecord"/>. Internal transport only; never part of the JSON contract.
+    /// </summary>
+    [JsonIgnore]
+    public Pipeline.PdfProductOutput? ProductOutput { get; init; }
 
     /// <summary>
     /// Số đoạn đáng ngờ cần trọng tài xem lại: hai lượt quét bất đồng, hoặc hậu kiểm đánh số

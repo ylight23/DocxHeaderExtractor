@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 2,
+  "artifactKind": "docheaderextractor_consolidation_verification",
+  "date": "2026-08-27",
+  "canonicalPreMergeSha": "b7854b5e1a9832180d0729f65af7b76cf1b5b830",
+  "integrationSha": "b2f814c5b508c02accd97bcb7dfa7a11713842a6",
+  "backupTag": "backup/pre-consolidation-20260827",
+  "integrationBranch": "integration/consolidate-source-20260827",
+  "productionCodeModifiedByGate": false,
+  "providerCalls": 0,
+  "build": {
+    "baseWinX64": "PASS",
+    "integrationWinX64": "PASS",
+    "solutionMultiRid": "NOT_ASSESSED_AS_RELEASE_GATE; prior disk/native-asset limitation remains"
+  },
+  "fullSuite": {
+    "base": { "passed": 1179, "failed": 17, "skipped": 0, "total": 1196 },
+    "integration": { "passed": 1217, "failed": 21, "skipped": 0, "total": 1238 },
+    "preexistingFailureIdentities": 17,
+    "newIntegrationFailureIdentities": 4,
+    "fixedFailureIdentities": 0,
+    "environmentOnlyFailures": 0,
+    "unresolvedFailures": 3,
+    "deltaArtifact": "eval/consolidation/full-suite-failure-delta.v1.json"
+  },
+  "focusedVerification": {
+    "deterministicReplayProvenance": "27_PASS_0_FAIL",
+    "webUi": "2_PASS_0_FAIL",
+    "webApiSmoke": "ROOT_200_AND_API_DEFAULTS_200",
+    "providerCalls": 0
+  },
+  "gate": {
+    "sourceConsolidation": "PASS",
+    "architectureConsolidation": "PASS",
+    "winX64Build": "PASS",
+    "focusedVerification": "PASS",
+    "fullSuiteDelta": "BLOCKED",
+    "mainPromotion": "BLOCKED",
+    "prState": "DRAFT"
+  },
+  "notes": [
+    "The four integration-only identities are newly imported diagnostic tests, not production behavior regressions.",
+    "Three corpus probes remained failing when rerun individually and sequentially because corpus 004 DOCX was externally locked; they are UNRESOLVED, not ENVIRONMENT_FILE_LOCK under the frozen rule.",
+    "The N15 failure is an artifact hash drift and its expected SHA was not updated.",
+    "No expected values were changed and no tests were suppressed."
+  ],
+  "status": "FULL_SUITE_DELTA_BLOCKED"
+}

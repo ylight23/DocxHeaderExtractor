@@ -84,11 +84,14 @@ public static class StructuralRecovery
 
                 var next = FindNextSibling(anchor, anchorSeries, series, byIndex, current, recovered);
                 if (next is null) continue;
+                // A sibling is recovered AT the anchor's level - with no anchor level there is no
+                // level to give it, so recovery cannot proceed for this anchor.
+                if (anchor.Level is not { } anchorLevel) continue;
 
                 var nextSeries = series[next.Index];
                 recovered[next.Index] = new RecoveredHeading(
                     next,
-                    anchor.Level,
+                    anchorLevel,
                     $"{Describe(nextSeries)} là em kế tiếp của {Describe(anchorSeries)} " +
                     $"(đã nhận ở cấp H{anchor.Level}) nhưng mô hình loại — bằng chứng định dạng yếu hơn" +
                     (next.TableDepth > 0 ? ", đoạn nằm trong bảng" : ""));

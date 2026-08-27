@@ -1,0 +1,516 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "c1_003_recovered_false_positive_audit",
+  "usesModel": false,
+  "scope": "Only the 9 emitted-but-not-in-any-silver-occurrence blocks from Lane A\u0027s partial-preserve counterfactual (82 emitted total, 73 match a silver occurrence).",
+  "acceptanceGate": [
+    "1. recurrence - PASS (001, 003 independently)",
+    "2. material recovery - PASS (33.3%, 56.3%)",
+    "3. complete-lane neutrality - PASS (057 reconstruction byte-identical to live)",
+    "4. fail-closed semantics - PASS (unchanged locks)",
+    "5. no extra provider calls - PASS (all offline)",
+    "6. false-positive collateral - this artifact\u0027s job: classify causally, not just recompute the rate",
+    "7. no new cross-document regression - not yet checked beyond 001/003"
+  ],
+  "falsePositiveCount": 9,
+  "emittedTotal": 82,
+  "classificationTally": {
+    "OCCURRENCE_JOIN_MISMATCH": 9
+  },
+  "falsePositives": [
+    {
+      "candidateId": "s-line-126",
+      "page": 4,
+      "blockText": "\u0110i\u1EC1u 6. T\u1ED5 ch\u1EE9c ch\u00EDnh tr\u1ECB, t\u1ED5 ch\u1EE9c ch\u00EDnh tr\u1ECB - x\u00E3 h\u1ED9i v\u00E0 t\u1ED5 ch\u1EE9c \u0111\u1EA1i di\u1EC7n ng\u01B0\u1EDDi lao \u0111\u1ED9ng t\u1EA1i",
+      "displayText": "\u0110i\u1EC1u 6. T\u1ED5ch\u1EE9cch\u00EDnhtr\u1ECB, t\u1ED5ch\u1EE9cch\u00EDnhtr\u1ECB-x\u00E3h\u1ED9iv\u00E0t\u1ED5ch\u1EE9c\u0111\u1EA1idi\u1EC7nng\u01B0\u1EDDilao\u0111\u1ED9ngt\u1EA1i",
+      "lineIds": [
+        "4|489.05586817781625|72.229078125|527.1030781250001|\u0110i\u1EC1u 6. T\u1ED5 ch\u1EE9c ch\u00EDnh tr\u1ECB, t\u1ED5 ch\u1EE9c ch\u00EDnh tr\u1ECB - x\u00E3 h\u1ED9i v\u00E0 t\u1ED5 ch\u1EE9c \u0111\u1EA1i di\u1EC7n ng\u01B0\u1EDDi lao \u0111\u1ED9ng t\u1EA1i"
+      ],
+      "representationKind": "WindowFragment",
+      "roleDecision": {
+        "Role": "HeadingTopic",
+        "Confidence": 0.95,
+        "Reason": ""
+      },
+      "spanDecision": {
+        "Start": 0,
+        "End": 19
+      },
+      "validated": true,
+      "grounded": true,
+      "groundingEvidence": "block-role",
+      "emitted": true,
+      "alignmentBranch": "CursorFresh",
+      "alignmentAccepted": true,
+      "structuralScope": "document_body",
+      "domainRole": 4,
+      "deterministicExclusionReason": null,
+      "partialOverlapWithSilverOccurrence": [
+        {
+          "StableId": "003/article/6",
+          "Marker": "\u0110i\u1EC1u 6",
+          "Kind": "ARTICLE",
+          "sharedLines": 1,
+          "requiredLines": 2
+        }
+      ],
+      "isDuplicateOfAnAlreadyFullyEmittedOccurrence": false,
+      "samePageSilverOccurrences": [
+        {
+          "StableId": "003/article/5",
+          "Marker": "\u0110i\u1EC1u 5",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/6",
+          "Marker": "\u0110i\u1EC1u 6",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/7",
+          "Marker": "\u0110i\u1EC1u 7",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/8",
+          "Marker": "\u0110i\u1EC1u 8",
+          "Kind": "ARTICLE"
+        }
+      ],
+      "classification": "OCCURRENCE_JOIN_MISMATCH"
+    },
+    {
+      "candidateId": "s-line-279",
+      "page": 8,
+      "blockText": "\u0110i\u1EC1u 14. Ng\u01B0\u1EDDi \u0111\u1EA1i di\u1EC7n theo \u1EE7y quy\u1EC1n c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu, th\u00E0nh vi\u00EAn, c\u1ED5 \u0111\u00F4ng c\u00F4ng ty l\u00E0 t\u1ED5",
+      "displayText": "\u0110i\u1EC1u 14. Ng\u01B0\u1EDDi\u0111\u1EA1idi\u1EC7ntheo\u1EE7yquy\u1EC1nc\u1EE7ach\u1EE7s\u1EDFh\u1EEFu, th\u00E0nhvi\u00EAn, c\u1ED5\u0111\u00F4ngc\u00F4ngtyl\u00E0t\u1ED5",
+      "lineIds": [
+        "8|544.1723500689337|72.229078125|519.548265625|\u0110i\u1EC1u 14. Ng\u01B0\u1EDDi \u0111\u1EA1i di\u1EC7n theo \u1EE7y quy\u1EC1n c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu, th\u00E0nh vi\u00EAn, c\u1ED5 \u0111\u00F4ng c\u00F4ng ty l\u00E0 t\u1ED5"
+      ],
+      "representationKind": "WindowFragment",
+      "roleDecision": {
+        "Role": "HeadingTopic",
+        "Confidence": 1,
+        "Reason": ""
+      },
+      "spanDecision": {
+        "Start": 0,
+        "End": 19
+      },
+      "validated": true,
+      "grounded": true,
+      "groundingEvidence": "block-role",
+      "emitted": true,
+      "alignmentBranch": "CursorFresh",
+      "alignmentAccepted": true,
+      "structuralScope": "document_body",
+      "domainRole": 4,
+      "deterministicExclusionReason": null,
+      "partialOverlapWithSilverOccurrence": [
+        {
+          "StableId": "003/article/14",
+          "Marker": "\u0110i\u1EC1u 14",
+          "Kind": "ARTICLE",
+          "sharedLines": 1,
+          "requiredLines": 2
+        }
+      ],
+      "isDuplicateOfAnAlreadyFullyEmittedOccurrence": false,
+      "samePageSilverOccurrences": [
+        {
+          "StableId": "003/article/14",
+          "Marker": "\u0110i\u1EC1u 14",
+          "Kind": "ARTICLE"
+        }
+      ],
+      "classification": "OCCURRENCE_JOIN_MISMATCH"
+    },
+    {
+      "candidateId": "s-line-313",
+      "page": 9,
+      "blockText": "\u0110i\u1EC1u 15. Tr\u00E1ch nhi\u1EC7m c\u1EE7a ng\u01B0\u1EDDi \u0111\u1EA1i di\u1EC7n theo \u1EE7y quy\u1EC1n c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu, th\u00E0nh vi\u00EAn, c\u1ED5",
+      "displayText": "\u0110i\u1EC1u 15. Tr\u00E1chnhi\u1EC7mc\u1EE7ang\u01B0\u1EDDi\u0111\u1EA1idi\u1EC7ntheo\u1EE7yquy\u1EC1nc\u1EE7ach\u1EE7s\u1EDFh\u1EEFu, th\u00E0nhvi\u00EAn, c\u1ED5",
+      "lineIds": [
+        "9|625.1727133861942|72.229078125|514.0622656250002|\u0110i\u1EC1u 15. Tr\u00E1ch nhi\u1EC7m c\u1EE7a ng\u01B0\u1EDDi \u0111\u1EA1i di\u1EC7n theo \u1EE7y quy\u1EC1n c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu, th\u00E0nh vi\u00EAn, c\u1ED5"
+      ],
+      "representationKind": "WindowFragment",
+      "roleDecision": {
+        "Role": "HeadingTopic",
+        "Confidence": 1,
+        "Reason": ""
+      },
+      "spanDecision": {
+        "Start": 0,
+        "End": 19
+      },
+      "validated": true,
+      "grounded": true,
+      "groundingEvidence": "block-role",
+      "emitted": true,
+      "alignmentBranch": "CursorFresh",
+      "alignmentAccepted": true,
+      "structuralScope": "document_body",
+      "domainRole": 4,
+      "deterministicExclusionReason": null,
+      "partialOverlapWithSilverOccurrence": [
+        {
+          "StableId": "003/article/15",
+          "Marker": "\u0110i\u1EC1u 15",
+          "Kind": "ARTICLE",
+          "sharedLines": 1,
+          "requiredLines": 2
+        }
+      ],
+      "isDuplicateOfAnAlreadyFullyEmittedOccurrence": false,
+      "samePageSilverOccurrences": [
+        {
+          "StableId": "003/article/15",
+          "Marker": "\u0110i\u1EC1u 15",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/16",
+          "Marker": "\u0110i\u1EC1u 16",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/chapter/II",
+          "Marker": "Ch\u01B0\u01A1ng II",
+          "Kind": "CHAPTER"
+        }
+      ],
+      "classification": "OCCURRENCE_JOIN_MISMATCH"
+    },
+    {
+      "candidateId": "s-line-1189",
+      "page": 32,
+      "blockText": "\u0110i\u1EC1u 61. Th\u1EE7 t\u1EE5c th\u00F4ng qua ngh\u1ECB quy\u1EBFt, quy\u1EBFt \u0111\u1ECBnh c\u1EE7a H\u1ED9i \u0111\u1ED3ng th\u00E0nh vi\u00EAn theo h\u00ECnh th\u1EE9c",
+      "displayText": "\u0110i\u1EC1u 61. Th\u1EE7t\u1EE5cth\u00F4ngquangh\u1ECBquy\u1EBFt, quy\u1EBFt\u0111\u1ECBnhc\u1EE7a H\u1ED9i\u0111\u1ED3ngth\u00E0nhvi\u00EAntheoh\u00ECnhth\u1EE9c",
+      "lineIds": [
+        "32|550.1802756382042|72.229078125|535.9966406250004|\u0110i\u1EC1u 61. Th\u1EE7 t\u1EE5c th\u00F4ng qua ngh\u1ECB quy\u1EBFt, quy\u1EBFt \u0111\u1ECBnh c\u1EE7a H\u1ED9i \u0111\u1ED3ng th\u00E0nh vi\u00EAn theo h\u00ECnh th\u1EE9c"
+      ],
+      "representationKind": "WindowFragment",
+      "roleDecision": {
+        "Role": "HeadingTopic",
+        "Confidence": 1,
+        "Reason": ""
+      },
+      "spanDecision": {
+        "Start": 0,
+        "End": 20
+      },
+      "validated": true,
+      "grounded": true,
+      "groundingEvidence": "block-role",
+      "emitted": true,
+      "alignmentBranch": "CursorFresh",
+      "alignmentAccepted": true,
+      "structuralScope": "document_body",
+      "domainRole": 4,
+      "deterministicExclusionReason": null,
+      "partialOverlapWithSilverOccurrence": [
+        {
+          "StableId": "003/article/61",
+          "Marker": "\u0110i\u1EC1u 61",
+          "Kind": "ARTICLE",
+          "sharedLines": 1,
+          "requiredLines": 2
+        }
+      ],
+      "isDuplicateOfAnAlreadyFullyEmittedOccurrence": false,
+      "samePageSilverOccurrences": [
+        {
+          "StableId": "003/article/61",
+          "Marker": "\u0110i\u1EC1u 61",
+          "Kind": "ARTICLE"
+        }
+      ],
+      "classification": "OCCURRENCE_JOIN_MISMATCH"
+    },
+    {
+      "candidateId": "s-line-1276",
+      "page": 34,
+      "blockText": "\u0110i\u1EC1u 66. Ti\u1EC1n l\u01B0\u01A1ng th\u00F9 lao th\u01B0\u1EDFng v\u00E0 l\u1EE3i \u00EDch kh\u00E1c c\u1EE7a Ch\u1EE7 t\u1ECBch H\u1ED9i \u0111\u1ED3ng th\u00E0nh vi\u00EAn",
+      "displayText": "\u0110i\u1EC1u 66. Ti\u1EC1nl\u01B0\u01A1ngth\u00F9lao th\u01B0\u1EDFngv\u00E0l\u1EE3i\u00EDchkh\u00E1cc\u1EE7a Ch\u1EE7t\u1ECBch H\u1ED9i\u0111\u1ED3ngth\u00E0nhvi\u00EAn",
+      "lineIds": [
+        "34|334.94991654829573|72.229078125|510.67026562500024|\u0110i\u1EC1u 66. Ti\u1EC1n l\u01B0\u01A1ng th\u00F9 lao th\u01B0\u1EDFng v\u00E0 l\u1EE3i \u00EDch kh\u00E1c c\u1EE7a Ch\u1EE7 t\u1ECBch H\u1ED9i \u0111\u1ED3ng th\u00E0nh vi\u00EAn"
+      ],
+      "representationKind": "WindowFragment",
+      "roleDecision": {
+        "Role": "HeadingTopic",
+        "Confidence": 1,
+        "Reason": ""
+      },
+      "spanDecision": {
+        "Start": 0,
+        "End": 20
+      },
+      "validated": true,
+      "grounded": true,
+      "groundingEvidence": "block-role",
+      "emitted": true,
+      "alignmentBranch": "CursorFresh",
+      "alignmentAccepted": true,
+      "structuralScope": "document_body",
+      "domainRole": 4,
+      "deterministicExclusionReason": null,
+      "partialOverlapWithSilverOccurrence": [
+        {
+          "StableId": "003/article/66",
+          "Marker": "\u0110i\u1EC1u 66",
+          "Kind": "ARTICLE",
+          "sharedLines": 1,
+          "requiredLines": 3
+        }
+      ],
+      "isDuplicateOfAnAlreadyFullyEmittedOccurrence": false,
+      "samePageSilverOccurrences": [
+        {
+          "StableId": "003/article/64",
+          "Marker": "\u0110i\u1EC1u 64",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/65",
+          "Marker": "\u0110i\u1EC1u 65",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/66",
+          "Marker": "\u0110i\u1EC1u 66",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/67",
+          "Marker": "\u0110i\u1EC1u 67",
+          "Kind": "ARTICLE"
+        }
+      ],
+      "classification": "OCCURRENCE_JOIN_MISMATCH"
+    },
+    {
+      "candidateId": "s-line-1347",
+      "page": 36,
+      "blockText": "\u0110i\u1EC1u 71. Tr\u00E1ch nhi\u1EC7m c\u1EE7a Ch\u1EE7 t\u1ECBch H\u1ED9i \u0111\u1ED3ng th\u00E0nh vi\u00EAn Gi\u00E1m \u0111\u1ED1c T\u1ED5ng gi\u00E1m \u0111\u1ED1c v\u00E0",
+      "displayText": "\u0110i\u1EC1u 71. Tr\u00E1chnhi\u1EC7mc\u1EE7a Ch\u1EE7t\u1ECBch H\u1ED9i\u0111\u1ED3ngth\u00E0nhvi\u00EAn Gi\u00E1m\u0111\u1ED1c T\u1ED5nggi\u00E1m\u0111\u1ED1cv\u00E0",
+      "lineIds": [
+        "36|469.4295312499999|72.229078125|511.18078125000017|\u0110i\u1EC1u 71. Tr\u00E1ch nhi\u1EC7m c\u1EE7a Ch\u1EE7 t\u1ECBch H\u1ED9i \u0111\u1ED3ng th\u00E0nh vi\u00EAn Gi\u00E1m \u0111\u1ED1c T\u1ED5ng gi\u00E1m \u0111\u1ED1c v\u00E0"
+      ],
+      "representationKind": "WindowFragment",
+      "roleDecision": {
+        "Role": "HeadingTopic",
+        "Confidence": 1,
+        "Reason": ""
+      },
+      "spanDecision": {
+        "Start": 0,
+        "End": 19
+      },
+      "validated": true,
+      "grounded": true,
+      "groundingEvidence": "block-role",
+      "emitted": true,
+      "alignmentBranch": "CursorFresh",
+      "alignmentAccepted": true,
+      "structuralScope": "document_body",
+      "domainRole": 4,
+      "deterministicExclusionReason": null,
+      "partialOverlapWithSilverOccurrence": [
+        {
+          "StableId": "003/article/71",
+          "Marker": "\u0110i\u1EC1u 71",
+          "Kind": "ARTICLE",
+          "sharedLines": 1,
+          "requiredLines": 3
+        }
+      ],
+      "isDuplicateOfAnAlreadyFullyEmittedOccurrence": false,
+      "samePageSilverOccurrences": [
+        {
+          "StableId": "003/article/69",
+          "Marker": "\u0110i\u1EC1u 69",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/70",
+          "Marker": "\u0110i\u1EC1u 70",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/71",
+          "Marker": "\u0110i\u1EC1u 71",
+          "Kind": "ARTICLE"
+        }
+      ],
+      "classification": "OCCURRENCE_JOIN_MISMATCH"
+    },
+    {
+      "candidateId": "s-line-1575",
+      "page": 42,
+      "blockText": "\u0110i\u1EC1u 83. Tr\u00E1ch nhi\u1EC7m c\u1EE7a th\u00E0nh vi\u00EAn H\u1ED9i \u0111\u1ED3ng th\u00E0nh vi\u00EAn Ch\u1EE7 t\u1ECBch c\u00F4ng ty Gi\u00E1m \u0111\u1ED1c",
+      "displayText": "\u0110i\u1EC1u 83. Tr\u00E1chnhi\u1EC7mc\u1EE7ath\u00E0nhvi\u00EAn H\u1ED9i\u0111\u1ED3ngth\u00E0nhvi\u00EAn Ch\u1EE7t\u1ECBchc\u00F4ngty Gi\u00E1m\u0111\u1ED1c",
+      "lineIds": [
+        "42|579.8098768028842|72.229078125|514.5046406250002|\u0110i\u1EC1u 83. Tr\u00E1ch nhi\u1EC7m c\u1EE7a th\u00E0nh vi\u00EAn H\u1ED9i \u0111\u1ED3ng th\u00E0nh vi\u00EAn Ch\u1EE7 t\u1ECBch c\u00F4ng ty Gi\u00E1m \u0111\u1ED1c"
+      ],
+      "representationKind": "WindowFragment",
+      "roleDecision": {
+        "Role": "HeadingTopic",
+        "Confidence": 0.95,
+        "Reason": ""
+      },
+      "spanDecision": {
+        "Start": 0,
+        "End": 19
+      },
+      "validated": true,
+      "grounded": true,
+      "groundingEvidence": "block-role",
+      "emitted": true,
+      "alignmentBranch": "CursorFresh",
+      "alignmentAccepted": true,
+      "structuralScope": "document_body",
+      "domainRole": 4,
+      "deterministicExclusionReason": null,
+      "partialOverlapWithSilverOccurrence": [
+        {
+          "StableId": "003/article/83",
+          "Marker": "\u0110i\u1EC1u 83",
+          "Kind": "ARTICLE",
+          "sharedLines": 1,
+          "requiredLines": 3
+        }
+      ],
+      "isDuplicateOfAnAlreadyFullyEmittedOccurrence": false,
+      "samePageSilverOccurrences": [
+        {
+          "StableId": "003/article/83",
+          "Marker": "\u0110i\u1EC1u 83",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/84",
+          "Marker": "\u0110i\u1EC1u 84",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/85",
+          "Marker": "\u0110i\u1EC1u 85",
+          "Kind": "ARTICLE"
+        }
+      ],
+      "classification": "OCCURRENCE_JOIN_MISMATCH"
+    },
+    {
+      "candidateId": "s-line-1589",
+      "page": 42,
+      "blockText": "\u0110i\u1EC1u 84. Ti\u1EC1n l\u01B0\u01A1ng, th\u00F9 lao, th\u01B0\u1EDFng v\u00E0 l\u1EE3i \u00EDch kh\u00E1c c\u1EE7a ng\u01B0\u1EDDi qu\u1EA3n l\u00FD c\u00F4ng ty v\u00E0 Ki\u1EC3m",
+      "displayText": "\u0110i\u1EC1u 84. Ti\u1EC1nl\u01B0\u01A1ng, th\u00F9lao, th\u01B0\u1EDFngv\u00E0l\u1EE3i\u00EDchkh\u00E1cc\u1EE7ang\u01B0\u1EDDiqu\u1EA3nl\u00FDc\u00F4ngtyv\u00E0 Ki\u1EC3m",
+      "lineIds": [
+        "42|350.3041256893383|72.229078125|516.0375468750002|\u0110i\u1EC1u 84. Ti\u1EC1n l\u01B0\u01A1ng, th\u00F9 lao, th\u01B0\u1EDFng v\u00E0 l\u1EE3i \u00EDch kh\u00E1c c\u1EE7a ng\u01B0\u1EDDi qu\u1EA3n l\u00FD c\u00F4ng ty v\u00E0 Ki\u1EC3m"
+      ],
+      "representationKind": "WindowFragment",
+      "roleDecision": {
+        "Role": "HeadingTopic",
+        "Confidence": 0.95,
+        "Reason": ""
+      },
+      "spanDecision": {
+        "Start": 0,
+        "End": 18
+      },
+      "validated": true,
+      "grounded": true,
+      "groundingEvidence": "block-role",
+      "emitted": true,
+      "alignmentBranch": "CursorFresh",
+      "alignmentAccepted": true,
+      "structuralScope": "document_body",
+      "domainRole": 4,
+      "deterministicExclusionReason": null,
+      "partialOverlapWithSilverOccurrence": [
+        {
+          "StableId": "003/article/84",
+          "Marker": "\u0110i\u1EC1u 84",
+          "Kind": "ARTICLE",
+          "sharedLines": 1,
+          "requiredLines": 2
+        }
+      ],
+      "isDuplicateOfAnAlreadyFullyEmittedOccurrence": false,
+      "samePageSilverOccurrences": [
+        {
+          "StableId": "003/article/83",
+          "Marker": "\u0110i\u1EC1u 83",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/84",
+          "Marker": "\u0110i\u1EC1u 84",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/85",
+          "Marker": "\u0110i\u1EC1u 85",
+          "Kind": "ARTICLE"
+        }
+      ],
+      "classification": "OCCURRENCE_JOIN_MISMATCH"
+    },
+    {
+      "candidateId": "s-line-1600",
+      "page": 42,
+      "blockText": "\u0110i\u1EC1u 85. C\u01A1 c\u1EA5u t\u1ED5 ch\u1EE9c qu\u1EA3n l\u00FD c\u00F4ng ty tr\u00E1ch nhi\u1EC7m h\u1EEFu h\u1EA1n m\u1ED9t th\u00E0nh vi\u00EAn do c\u00E1 nh\u00E2n",
+      "displayText": "\u0110i\u1EC1u 85. C\u01A1c\u1EA5ut\u1ED5ch\u1EE9cqu\u1EA3nl\u00FDc\u00F4ngtytr\u00E1chnhi\u1EC7mh\u1EEFuh\u1EA1nm\u1ED9tth\u00E0nhvi\u00EAndoc\u00E1nh\u00E2n",
+      "lineIds": [
+        "42|174.6014417613638|72.229078125|525.476265625|\u0110i\u1EC1u 85. C\u01A1 c\u1EA5u t\u1ED5 ch\u1EE9c qu\u1EA3n l\u00FD c\u00F4ng ty tr\u00E1ch nhi\u1EC7m h\u1EEFu h\u1EA1n m\u1ED9t th\u00E0nh vi\u00EAn do c\u00E1 nh\u00E2n"
+      ],
+      "representationKind": "WindowFragment",
+      "roleDecision": {
+        "Role": "HeadingTopic",
+        "Confidence": 0.95,
+        "Reason": ""
+      },
+      "spanDecision": {
+        "Start": 0,
+        "End": 19
+      },
+      "validated": true,
+      "grounded": true,
+      "groundingEvidence": "block-role",
+      "emitted": true,
+      "alignmentBranch": "CursorFresh",
+      "alignmentAccepted": true,
+      "structuralScope": "document_body",
+      "domainRole": 4,
+      "deterministicExclusionReason": null,
+      "partialOverlapWithSilverOccurrence": [
+        {
+          "StableId": "003/article/85",
+          "Marker": "\u0110i\u1EC1u 85",
+          "Kind": "ARTICLE",
+          "sharedLines": 1,
+          "requiredLines": 2
+        }
+      ],
+      "isDuplicateOfAnAlreadyFullyEmittedOccurrence": false,
+      "samePageSilverOccurrences": [
+        {
+          "StableId": "003/article/83",
+          "Marker": "\u0110i\u1EC1u 83",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/84",
+          "Marker": "\u0110i\u1EC1u 84",
+          "Kind": "ARTICLE"
+        },
+        {
+          "StableId": "003/article/85",
+          "Marker": "\u0110i\u1EC1u 85",
+          "Kind": "ARTICLE"
+        }
+      ],
+      "classification": "OCCURRENCE_JOIN_MISMATCH"
+    }
+  ]
+}

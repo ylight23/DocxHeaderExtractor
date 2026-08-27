@@ -1,0 +1,1585 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n1_4_silver_audit_binding",
+  "parentManifestSha256": "529fecc53341c12e06fd34a873c544acddc6d96388670c4da80c7700030a01a7",
+  "labelAuthority": "MODEL_ASSISTED_SILVER_ONLY",
+  "accuracyClaim": "NOT_HUMAN_ADJUDICATED; this binding exists only for post-review agreement/error analysis.",
+  "items": [
+    {
+      "AuditItemId": "003/line/000248",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "5|93.3863029891304|72.43415625|216.13575000000003|c\u00F3 quy\u1EC1n v\u00E0 ngh\u0129a v\u1EE5 sau \u0111\u00E2y:"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "003/heading/003/article/12",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "6|176.2695052083335|72.229078125|363.07634375000015|\u0110i\u1EC1u 12. Ng\u01B0\u1EDDi \u0111\u1EA1i di\u1EC7n theo ph\u00E1p lu\u1EADt c\u1EE7a doanh nghi\u1EC7p"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "ARTICLE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "003/line/000666",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "14|360.64121544471163|72.451734375|395.51812500000005|a) \u0110\u0103ng k\u00FD doanh nghi\u1EC7p tr\u1EF1c ti\u1EBFp t\u1EA1i C\u01A1 quan \u0111\u0103ng k\u00FD kinh doanh;"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "003/line/001136",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "24|694.9669140625|358.86853124999993|360.61462499999993|,"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "003/heading/003/article/74",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "37|356.4245560213416|72.229078125|348.57426562500007|\u0110i\u1EC1u 74. C\u00F4ng ty tr\u00E1ch nhi\u1EC7m h\u1EEFu h\u1EA1n m\u1ED9t th\u00E0nh vi\u00EAn"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "ARTICLE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "003/line/001989",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "41|629.4204296875002|72.4224375|378.278390625|quy\u1EBFt \u0111\u1ECBnh \u0111\u00F3, tr\u1EEB tr\u01B0\u1EDDng h\u1EE3p \u0110i\u1EC1u l\u1EC7 c\u00F4ng ty c\u00F3 quy \u0111\u1ECBnh kh\u00E1c."
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "003/heading/003/article/85",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "42|174.6014417613638|72.229078125|525.476265625|\u0110i\u1EC1u 85. C\u01A1 c\u1EA5u t\u1ED5 ch\u1EE9c qu\u1EA3n l\u00FD c\u00F4ng ty tr\u00E1ch nhi\u1EC7m h\u1EEFu h\u1EA1n m\u1ED9t th\u00E0nh vi\u00EAn do c\u00E1 nh\u00E2n",
+        "42|160.9961328125|72.275953125|150.39510937499998|l\u00E0m ch\u1EE7 s\u1EDF h\u1EEFu"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "ARTICLE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "003/line/003027",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "61|85.98073339843745|72.2115|535.6477499999999|4. C\u00E1c h\u1EA1n ch\u1EBF quy \u0111\u1ECBnh t\u1EA1i kho\u1EA3n 3 \u0110i\u1EC1u n\u00E0y kh\u00F4ng \u00E1p d\u1EE5ng \u0111\u1ED1i v\u1EDBi c\u1ED5 ph\u1EA7n ph\u1ED5 th\u00F4ng sau \u0111\u00E2y:"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "003/heading/003/article/133",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "67|603.5906277901786|72.229078125|350.002671875|\u0110i\u1EC1u 133. Mua l\u1EA1i c\u1ED5 ph\u1EA7n theo quy\u1EBFt \u0111\u1ECBnh c\u1EE7a c\u00F4ng ty"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "ARTICLE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "003/line/003931",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "80|194.55967644457544|72.451734375|406.62012499999986|a) Kh\u00F4ng thu\u1ED9c \u0111\u1ED1i t\u01B0\u1EE3ng quy \u0111\u1ECBnh t\u1EA1i kho\u1EA3n 2 \u0110i\u1EC1u 17 c\u1EE7a Lu\u1EADt n\u00E0y;"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "003/line/003934",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "80|157.2869140625|441.0665312499999|442.8126249999999|,"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "003/heading/003/article/165",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "88|500.91492393092057|72.229078125|324.454671875|\u0110i\u1EC1u 165. Tr\u00E1ch nhi\u1EC7m c\u1EE7a ng\u01B0\u1EDDi qu\u1EA3n l\u00FD c\u00F4ng ty"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "ARTICLE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "003/heading/003/article/176",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "93|243.733115234375|72.229078125|225.07026562500002|\u0110i\u1EC1u 176. C\u00F4ng khai th\u00F4ng tin"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "ARTICLE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "003/heading/003/article/178",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "94|328.6956640624999|72.229078125|414.6083437500002|\u0110i\u1EC1u 178. Th\u1EF1c hi\u1EC7n g\u00F3p v\u1ED1n v\u00E0 c\u1EA5p gi\u1EA5y ch\u1EE9ng nh\u1EADn ph\u1EA7n v\u1ED1n g\u00F3p"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "ARTICLE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "003/line/004801",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "98|406.3369140625|226.97653125000005|228.72262500000005|,"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "003/heading/003/article/188",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "100|296.97406249999983|72.229078125|237.63426562499998|\u0110i\u1EC1u 188. Doanh nghi\u1EC7p t\u01B0 nh\u00E2n"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "ARTICLE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "003/heading/003/chapter/VII",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "100|336.60770833333333|72.498609375|134.60653125|Ch\u01B0\u01A1ng VII",
+        "100|317.54003446691166|229.288203125|382.70276562500004|DOANH NGHI\u1EC6P T\u01AF NH\u00C2N"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "CHAPTER",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "003/heading/003/article/190",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "101|589.8091532258069|72.229078125|279.61026562500007|\u0110i\u1EC1u 190. Qu\u1EA3n l\u00FD doanh nghi\u1EC7p t\u01B0 nh\u00E2n"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "ARTICLE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "003/line/005271",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "108|597.9696083047955|73.43025|526.1352656249999|1 . C\u00F4ng ty c\u1ED5 ph\u1EA7n c\u00F3 th\u1EC3 chuy\u1EC3n \u0111\u1ED5i th\u00E0nh c\u00F4ng ty tr\u00E1ch nhi\u1EC7m h\u1EEFu h\u1EA1n hai th\u00E0nh vi\u00EAn tr\u1EDF l\u00EAn"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "003/line/005612",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceLineIds": [
+        "115|623.8960853794639|73.43025|532.0612499999999|155 \u0111i\u1EC3m b kho\u1EA3n 5 \u0110i\u1EC1u 162 v\u00E0 kho\u1EA3n 2 \u0110i\u1EC1u 169 c\u1EE7a Lu\u1EADt n\u00E0y \u0111\u01B0\u1EE3c ti\u1EBFp t\u1EE5c th\u1EF1c hi\u1EC7n nhi\u1EC7m"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "029/line/000005",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "1|430.4549687500001|127.7390234375|484.42357421875|(Single-Stage Request for Proposals, after Initial Selection)"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/002",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "16|642.6772491455076|78.215015625|534.7462656250001|1. Scope of 1 . 1 The Employer, as specified in the PDS, issues this Request for"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/005",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "18|658.4044050480759|77.722828125|534.597296875|4. Eligible 4. 1 A Proposer may be a firm that is a private entity, a state-owned",
+        "18|644.6400042724613|99.3286875|534.5572656249999|Proposers enterprise or institution subject to ITP 4.6\u2014or any combination"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/008",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "21|681.7215985576917|77.8693125|534.5338906249998|6. Sections of 6. 1 The RFP Document consists ofParts 1 2 and 3 which include all"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/009",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "21|187.12718749999968|77.828296875|534.4018906249999|7. Clarification of 7. 1 A Proposer requiring any clarification ofthe RFP Document shall"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/011",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "23|530.0696262826497|77.793140625|534.5012656249999|9. Cost of 9. 1 The Proposer shall bear all costs associated with the preparation"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/012",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "23|476.6309754922944|78.215015625|534.1006249999999|10. Contacting the 10. 1 From the time ofProposal opening to the time ofContract award,",
+        "23|462.67276198814716|99.264234375|534.6782656249999|Employer if any Proposer wishes to contact the Employer on any matter"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/013",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "23|375.7728884242961|78.215015625|534.6356874999999|11. Language of 1 1 . 1 Unless otherwise specified in the PDS, the Proposal prepared by"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/018",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "26|705.8752036830356|78.215015625|534.986265625|15. Proposal 15. 1 Unless otherwise specified in the PDS, Proposers shall quote for",
+        "26|692.2926530481553|99.3286875|534.488328125|Prices the entire Works on a \u201Csingle responsibility\u201D basis such that the"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/019",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "27|508.3732331730766|78.215015625|535.9768437499994|16. Proposal 16. 1 The currency (ies) of the Proposal and the currency (ies) of",
+        "27|494.7197568044356|99.498609375|526.890390625|Currencies payments shall be the same and shall be as specified in the PDS."
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/020",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "27|366.361377527573|78.215015625|534.6932656249999|17. Documents 17. 1 In accordance with Section III Evaluation and Qualification"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/021",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "28|603.2564990234381|78.215015625|534.346046875|18. Documents 1 8. 1 Pursuant to ITP 12.2 (f), the Proposer shall furnish, as part of its",
+        "28|589.6058461441523|99.264234375|534.2779531250001|Establishing Proposal documents establishing the conformity to the RFP",
+        "28|575.5901704545455|99.498609375|535.0152968749999|Conformity of Documents ofthe Works that the Proposer proposes to design, and"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/023",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "30|354.43429082306284|77.71696875|535.052265625|20. Period of 20.1 Proposals shall remain valid until the date specified in the PDS or"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/024",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "31|672.2969042968757|77.71696875|534.5123281250001|21. Format and 21 . 1 The original and all copies of the Proposal, each consisting of the",
+        "31|658.7133407738085|99.64509375|534.6163281250001|Signing of documents listed in ITP 12 shall be typed or written in indelible"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/025",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "31|336.12587890624997|202.94041015624998|408.60186812499995|D. SUBMISSION OF PROPOSALS"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/026",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "31|308.34593749999954|77.71696875|534.5712968749997|22. Submission, 22. 1 Unless the PDS states that Proposals are to be submitted",
+        "31|294.40131373355257|99.64509375|461.7403906249999|Sealing and electronically the following procedures shall apply.",
+        "31|280.80628906250007|99.264234375|158.24671875|Marking of"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/027",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "32|263.639025213068|77.71696875|533.9420468749996|23. Deadline for 23. 1 Proposals must be received by the Employer at the address",
+        "32|250.00336928638092|99.64509375|533.970390625|Submission of specified and no later than the time and date specified in the PDS."
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/028",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "32|121.4184122242648|77.71696875|534.1643281249998|24. Late 24. 1 The Employer shall not consider any Proposal that arrives after the",
+        "32|107.61928466796873|99.3286875|534.058515625|Proposals deadline for submission of Proposals, in accordance with ITP 23."
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/line/001085",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "32|392.2938411458333|247.7271875|538.197296875|title and number as specified in the PDS for ITP 1.1 and"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/029",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "33|672.1948997043926|77.71696875|534.450265625|25. Withdrawal, 25. 1 A Proposer may withdraw, substitute, or modify its Proposal after",
+        "33|658.6647176846581|99.64509375|535.8448437499998|Substitution, it has been submitted and before the deadline for submission of"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/031",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "33|411.0495824795088|77.71696875|534.730328125|26. Opening of 26. 1 Except as in the cases specified in ITP 24 and ITP 25 the"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/034",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "35|672.282063116777|77.71696875|534.2963281249998|28. Clarification of 28. 1 To assist in the examination, evaluation, and comparison of the"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/035",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "35|516.2671891276041|77.71696875|534.550046875|29. Deviations, 29. 1 During the evaluation of Proposals, the following definitions",
+        "35|502.0359703947368|99.24665625|249.56975000000003|Reservations, apply:",
+        "35|488.40647600446437|99.5630625|311.492328125|and Omissions \u201C \u201D"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/037",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "35|317.9023665364586|77.617359375|534.7256875|30. Determination 30. 1 The Employer will examine the Technical Parts, including any"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/039",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "36|449.1921484375006|76.897359375|533.258046875|32. Evaluation of 32. 1 The Employer shall determine to its satisfaction that on the basis"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/045",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "39|681.4894510690783|76.897359375|539.1382656249999|36. Nonmaterial 36. 1 Provided that a Proposal is substantially responsive, the Employer",
+        "39|667.8270713682443|98.473921875|538.6379843749997|Nonconformities shall rectify quantifiable nonmaterial nonconformities related to"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/046",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "39|545.4152734374998|76.897359375|538.7892031249996|37. Arithmetic 37. 1 The Employer shall correct arithmetical errors on the following",
+        "39|531.5653149414063|98.778609375|251.38175000000004|Correction basis:"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/049",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "40|612.9378889744717|77.002828125|538.9278906249999|40. Evaluation 40. 1 To evaluate each Proposal\u2019s Financial Part, the Employer shall",
+        "40|599.1234807477682|98.6086875|335.24975|Process consider the following:",
+        "40|585.5089927455358|98.57353125|176.22618750000004|Financial Parts"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/051",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "41|488.70048005756547|77.002828125|539.0612656249998|42. Unbalanced or 42. 1 Ifthe Proposal that is evaluated as the lowest evaluated cost is, in",
+        "41|474.88064540578426|98.57353125|538.6283281249998|Front Loaded the Employer\u2019s opinion, seriously unbalanced or front loaded the",
+        "41|460.85469184027824|98.6086875|538.9052656249999|Proposals Employer may require the Proposer to provide written"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/053",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "41|215.3318749999996|77.002828125|538.637984375|43. Evaluation of 43. 1 The Employer\u2019s evaluation of responsive Proposals will take into",
+        "41|201.45923274253707|98.778609375|538.5083281249998|Combined account technical factors, in addition to cost factors in accordance"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/054",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "41|120.63165153952214|77.002828125|538.6498906249999|44. Best and Final 44. 1 After completion of the combined technical and financial",
+        "41|106.63282182835815|98.77275|538.9736875|Offer (BAFO) evaluation ofproposals, ifspecified in the PDS, the Employer may"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/058",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "42|131.16227957589274|77.002828125|538.6003281249999|48. Standstill 48. 1 The Contract shall not be awarded earlier than the expiry of the",
+        "42|117.50543273925794|98.6086875|538.4300468750002|Period Standstill Period. The Standstill Period shall be ten (10) Business"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/059",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "43|630.948424657534|77.002828125|538.7676874999999|49. Notification of 49. 1 The Employer shall send to each Proposer (that has not already"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/061",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "43|311.94694069602286|77.108296875|538.684328125|50. Award 50. 1 Subject to ITP 47.1, the Employer shall award the Contract to the",
+        "43|298.0650130208333|98.778609375|538.6403281249998|Criteria Proposer with the Most Advantageous Proposal, provided that the"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/062",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "43|244.6656265024041|77.108296875|539.0816874999999|51. Notification of 5 1 . 1 Prior to the date of expiry ofthe Proposal validity, and upon expiry"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/064",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "45|597.3026171875006|77.108296875|540.3468437499998|53. Signing of 53. 1 The Employer shall send to the successful Proposer the Letter of",
+        "45|583.4227944711529|98.778609375|538.838265625|Contract Acceptance including the Contract Agreement, and, if specified in"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/065",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "45|455.138225203805|77.108296875|540.2148437499999|54. Performance 54. 1 Within twenty-eight (28) days of the receipt of the Letter of",
+        "45|441.1213476562496|98.92509375|538.6738906249999|Security Acceptance from the Employer, the successful Proposer shall"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/line/001751",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "48|195.63371093749998|154.22328125|181.53575000000004|Time:"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "029/line/002096",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "58|591.953042084316|90.2818125|521.40859375|2. Evaluation ofTechnical Part (ITP 3 1) ......................................................................48"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/068",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "59|660.509365234375|72.94948828125|186.24885078125004|1. Qualification"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/073",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "63|145.71811572265625|77.13929296875|225.23821078125002|C. Combined Evaluation"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/077",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "73|707.6079785156252|222.670625|389.17240625|Appendix to Proposal"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "029/line/002683",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "81|591.9828125|85.07025|229.210390625|1 . \u2026 \u2026 \u2026 \u2026 \u2026 .."
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/088",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "86|707.9015360753679|149.991640625|462.4632812500002|Schedule of Daywork Rates: 2. Materials"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/094",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "92|707.8087109375002|94.675640625|517.8353828125|Schedule of Performance Guarantees and Performance"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/095",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "93|707.8304128196024|205.660390625|406.48928125|Technical Proposal Forms"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/099",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "97|708.0279492187502|93.0159140625|519.1583203125003|Code of Conduct for Contractor\u2019s Personnel (ES) Form"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/109",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "108|654.8501171875|187.1003515625|424.6632812500001|Major Activities/Sub-Activities",
+        "108|625.7445226883555|72.38728125|539.5023281249997|The following Subcontractors and/or manufacturers are proposed for carrying out the"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/113",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "111|671.864742647059|84.1619296875|527.7713984375002|Historical Contract Non-Performance, Pending Litigation"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "029/line/003365",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "112|537.6239453125|292.498671875|406.84132812500025|__________________"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/136",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "123|707.9199014559662|98.828296875|513.0847968749999|Form of Sexual Exploitation and Abuse (SEA), and/or"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "029/line/003661",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "124|540.4905924479164|104.0721875|290.2137499999999|to apply the restriction or state \u201Cnone\u201D]."
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "029/line/003701",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "126|749.3288454511088|90.6465|539.8147070312499|Section VI \u2013 Fraud and Corruption 1 14"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/section/VIII",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "145|691.6000381747159|157.2060546875|454.94401421875|SECTION VIII - GENERAL CONDITIONS (GC)"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "SECTION",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "029/line/006277",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "196|443.8007031250001|237.828828125|534.3956874999999|In reviewing the Referral the DAAB shall focus exclusively"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "029/line/006644",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "206|267.50119833669345|167.007734375|541.2028437499997|activities undertaken in the reporting period at each, and highlights of"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "029/heading/029/toc-body/134",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceLineIds": [
+        "226|705.407590553977|202.150625|409.8690078125001|Advance Payment Security"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "TOC_RECONCILED_BODY_HEADING",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "042/line/000109",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "5|681.137451875|75.21203125|537.0315525|Box 2: Financing Principles 28"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "042/heading/042/line/000616",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "13|299.15766276041677|72.95703125|169.87425000000002|IDA21 Funding"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "SEMANTIC_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "042/line/000794",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "16|144.44799332114357|72.029296875|539.9099609374995|with an allocation of $3.0 billion in eligible countries i.e. IDA-only countries at low or moderate risk of debt"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "042/line/001330",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "26|695.1474876158721|72.9326171875|539.3104296874999|IDA\u2019s net non-interest expenses are primarily comprised of administrative expenses net of revenue from"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "042/line/001454",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "29|685.9977725290702|74.99328125|537.1999162499998|For the fiscal year ended June 30 2025 2024 Variance"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "042/line/001707",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "32|99.1482786121325|72.6640625|539.4364843749998|is set by the Board at the beginning of each fiscal year. Commitment charges are set at a level to ensure"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "042/heading/042/line/002012",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "38|650.0321770312501|72.2578125|140.75774999999996|Trust Funds"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "SEMANTIC_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "042/heading/042/line/002184",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "42|709.7291618850807|75.280390625|356.830625|Section VIII: Borrowing Activities"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "SEMANTIC_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "042/line/002211",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "42|418.1124904687501|137.920078125|469.4596484375001|, , ,"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "042/heading/042/line/002581",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "48|172.59400343750002|72.5625|135.232640625|Credit Risk"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "SEMANTIC_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "042/heading/042/line/002991",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "55|362.2327053124999|72.849609375|139.240640625|Market Risk"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "SEMANTIC_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "042/heading/042/line/003223",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "60|710.9690529687504|75.1719921875|532.3671875|Section X: Critical Accounting Policies and the Use of Estimates"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "SEMANTIC_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "042/heading/042/line/003445",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "64|713.9600549316403|72.95703125|183.33937500000002|Internal Controls"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "SEMANTIC_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "042/heading/042/line/003477",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "65|680.9813216145831|72.669921875|194.259375|Glossary of Terms"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "SEMANTIC_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "042/heading/042/line/003581",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "76|696.0859515384617|73.1640625|214.32375|BALANCE SHEETS"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "SEMANTIC_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "042/line/003834",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "80|37.89246046875|262.120078125|263.1796484375|,"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "042/line/004193",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "86|208.364014375|319.2440725|320.09172875|,"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "042/line/005542",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "106|37.89246046875|262.120078125|263.1796484375|,"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "042/heading/042/note/E",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "114|454.7350793457033|73.0390625|236.992296875|NOTE E\u2014BORROWINGS"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "FINANCIAL_NOTE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "042/line/005952",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceLineIds": [
+        "114|635.1449010991381|74.989375|521.5044999999999|South Asia $ 938 $ 65 469 $ 91 6 $ 62 724"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "057/line/001220",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "32|199.87136208775533|89.00590960000001|359.8788625999998|\u2022 a large collection of commonly used scientific packages,"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "057/heading/057/numbered/9.3.1",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "50|330.63563872000014|72.50181860000006|420.6155632400001|9.3. 1 Mittag-Leffler function to approximate the exponential function"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "NUMBERED_SUBOUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "057/heading/057/numbered/14.2.2",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "80|705.7470022708334|72.9272735|208.66375025000008|14.2.2 Feature Engineering"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "NUMBERED_SUBOUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "057/heading/057/numbered/32.4.2",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "220|395.22267701754396|72.50181859999998|400.01590971|32.4.2 Cholesky or LDL decomposition, aka short-run restrictions"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "NUMBERED_SUBOUTLINE",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "057/heading/057/numbered/32.9",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "224|361.42046190769236|72.56189439999993|274.93473792|32.9 A VAR model from a textbook"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "NUMBERED_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "057/line/010430",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "237|237.41627500000016|72.981819|523.0138303899996|Inflation moments. For each country i and decade d, we compute within-decade inflation"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "057/line/011878",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "270|762.1831132800003|72.5618944|341.44749312|39.23 Chow Test: Testing for Structural Breaks"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "057/heading/057/numbered/45.1.1",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "305|706.0015009155175|72.327273|239.21686662000008|45. 1. 1 Median absolute deviation"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "MEDIUM",
+      "kind": "NUMBERED_SUBOUTLINE",
+      "selectionReason": "all_medium_heading"
+    },
+    {
+      "AuditItemId": "057/heading/057/numbered/54.3.1",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "351|519.7283659175005|72.4145458|182.13063723000008|54.3. 1 Factor analysis"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "NUMBERED_SUBOUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "057/heading/057/numbered/55.1.1",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "354|567.5868855809524|72.4145458|194.10010175000005|55. 1. 1 Plotting the data"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "NUMBERED_SUBOUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "057/heading/057/numbered/68.6",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "424|315.84478909090905|72.5618944|357.47822080000026|68.6 Conditional Quantile Regressions and copulas"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "NUMBERED_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "057/heading/057/numbered/71.1.3",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "442|683.4081079980001|72.50181859999998|229.4794686|71. 1.3 Homogeneity test 3: H3"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "NUMBERED_SUBOUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "057/line/020652",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "458|409.19669377183084|72.40363670000006|523.0563758799993|In the network of N nodes and M directed links a ground node which is connected to every"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "057/line/021222",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "471|487.96446300000025|290.0512525000001|303.0592527100001|t=1"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "057/line/021613",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "480|662.9570023333334|186.7790006|244.39323043|Fixed-effects"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "057/heading/057/numbered/79.6",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "483|183.74536243478258|72.5618944|224.99667200000007|79.6 Continuous treatment"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "NUMBERED_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "057/heading/057/numbered/82",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "502|762.6302701428568|72.6886176|315.74337262000006|82 Demand and supply estimations"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "NUMBERED_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "057/line/023266",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "515|443.098727647143|73.23272830000052|437.70500549000053|bivariate distribution function with marginal distributions F1 (x1 ) and F2 (x2 ) ."
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "057/line/023660",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "522|171.03790079027814|72.34909120000046|522.9005316800001|As expected when fitting272 an AR(1)-EGARCH(1 1) on the loss rate we find that loss rates"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "057/heading/057/numbered/85",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "527|762.997015105263|72.6886176|229.37637938000003|85 Measure of tail risk"
+      ],
+      "sourceRole": "HEADING",
+      "silverLabel": "REVIEWED_HEADING",
+      "silverConfidence": "HIGH",
+      "kind": "NUMBERED_OUTLINE",
+      "selectionReason": "stratified_heading"
+    },
+    {
+      "AuditItemId": "057/line/024714",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "544|488.77198518203124|72.3490912|442.93667274999996|Albert Madansky. Externally bayesian groups. The RAND Corporation, 1964."
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    },
+    {
+      "AuditItemId": "057/line/024972",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceLineIds": [
+        "549|321.07463595000047|281.08280155999995|282.29371166|,"
+      ],
+      "sourceRole": "NON_HEADING",
+      "silverLabel": "REVIEWED_NON_HEADING",
+      "silverConfidence": "NOT_RECORDED",
+      "kind": "SOURCE_LINE",
+      "selectionReason": "stratified_non_heading"
+    }
+  ]
+}

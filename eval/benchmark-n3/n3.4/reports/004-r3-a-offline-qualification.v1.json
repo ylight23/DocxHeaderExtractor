@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r3_a_offline_qualification",
+  "usesModel": false,
+  "providerCallsMade": false,
+  "productionReplay": false,
+  "documentId": "004",
+  "identity": "documentSha256 + page + sourceLineIds/sourceSpan; sourceFactId only within one run",
+  "inputs": {
+    "r1Replay": "eval/benchmark-n3/n3.4/reports/004-n3.4-r1-replay.v1.json",
+    "collateralCheck": "eval/benchmark-n3/n3.4/reports/004-n3.4-collateral-check.v1.json",
+    "markerDiagnosis": "eval/benchmark-n3/n3.4/reports/004-n3.7b-role-only-causal-diagnosis.v1.json",
+    "r3ARevision": "8cc962c7c7a0e70400ba9b77e6d0f21f01e07604"
+  },
+  "baselineR1": {
+    "emitted": 83,
+    "exactSupported": 47,
+    "unmatched": 12,
+    "supportedLost": 0
+  },
+  "counterfactualR1PlusR3A": {
+    "ownerARejected": 6,
+    "ownerBRejected": 0,
+    "emitted": 77,
+    "exactSupported": 47,
+    "unmatched": 6,
+    "supportedLost": 0,
+    "otherOutputDelta": 0,
+    "providerCalls": 0,
+    "method": "remove only the six exact Owner-A marker-only spans from the frozen R1 emitted set; retain all Owner-B spans"
+  },
+  "promotionGate": {
+    "materialRecovery": "inherited from R1: pass",
+    "noBaselineCorrectOutputsLost": "pass; baseline partial-timeout emitted zero",
+    "noNewTrueUnmatchedOutputCollateral": "fail; six Owner-B unmatched outputs remain",
+    "failClosed": "pass for R3-A predicate; non-triggered outputs are retained",
+    "noExtraProviderCalls": "pass; offline replay",
+    "overall": "BLOCK"
+  },
+  "controls": {
+    "arabicOrLetterRejection": "not part of R3-A; Owner-B letter spans remain unchanged",
+    "payloadBearingArabicOrLetterSpan": "retained by validator tests",
+    "markerOnlySourceWithoutSemanticResidue": "retained by validator tests",
+    "completeLane": "R3-A is evaluated only at span validation and has no lane-timeout behavior change"
+  },
+  "decision": {
+    "r3AMechanism": "PROVEN",
+    "r3AOfflineQualification": "QUALIFIED_OFFLINE",
+    "r3AStandalonePromotion": "NOT_JUSTIFIED",
+    "r1PlusR3APromotion": "BLOCKED",
+    "n4": "NOT_OPENED",
+    "reason": "R3-A removes all six Owner-A false outputs but cannot remove the six independent Owner-B role-only false outputs without an unproven selective discriminator. The frozen no-new-true-unmatched-output gate therefore remains false."
+  }
+}

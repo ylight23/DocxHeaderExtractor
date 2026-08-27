@@ -50,10 +50,10 @@ public static class OutlineFormatter
         sb.AppendLine();
         foreach (var h in NavigationCollapseReport(o.Headings).Headings)
         {
-            sb.Append(new string(' ', Math.Max(0, (h.Level - 1) * 2)))
+            sb.Append(new string(' ', Math.Max(0, ((h.Level ?? 1) - 1) * 2)))
               .Append("- ")
               .Append(h.Text)
-              .Append("  <!-- lvl=").Append(h.Level)
+              .Append("  <!-- lvl=").Append(h.Level?.ToString() ?? "?")
               .Append(" i=").Append(h.Index)
               .Append(string.IsNullOrEmpty(h.StableId) ? "" : " sid=" + h.StableId)
               .Append(" src=").Append(h.Source)
@@ -76,7 +76,7 @@ public static class OutlineFormatter
     {
         var sb = new StringBuilder();
         foreach (var h in NavigationCollapseReport(o.Headings).Headings)
-            sb.Append(new string(' ', Math.Max(0, (h.Level - 1) * 4))).AppendLine(h.Text);
+            sb.Append(new string(' ', Math.Max(0, ((h.Level ?? 1) - 1) * 4))).AppendLine(h.Text);
         return sb.ToString();
     }
 
@@ -96,7 +96,9 @@ public static class OutlineFormatter
 
         foreach (var h in headings)
         {
-            var level = Math.Clamp(h.Level, 1, 9);
+            // Unresolved level collapses/groups as top-level for this display-only navigation view;
+            // it never rewrites HeadingRecord.Level itself, so nothing product-authoritative is guessed.
+            var level = Math.Clamp(h.Level ?? 1, 1, 9);
             var parent = level == 1 ? "" : parentKeys[level - 1] ?? "";
             var text = h.Text ?? string.Empty;
             var canon = CanonicalNavigationTitle(text);
@@ -169,7 +171,7 @@ public static class OutlineFormatter
           .Append(o.Headings.Count).AppendLine("\">");
         foreach (var h in o.Headings)
         {
-            sb.Append("  <h level=\"").Append(h.Level)
+            sb.Append("  <h level=\"").Append(h.Level?.ToString() ?? "")
                .Append("\" index=\"").Append(h.Index)
                .Append(string.IsNullOrEmpty(h.StableId) ? "" : "\" stableId=\"" + Esc(h.StableId))
               .Append("\" source=\"").Append(h.Source)
@@ -187,7 +189,7 @@ public static class OutlineFormatter
         {
             sb.Append(h.Index).Append(',')
               .Append(Csv(h.StableId ?? "")).Append(',')
-              .Append(h.Level).Append(',')
+              .Append(h.Level?.ToString() ?? "").Append(',')
               .Append(h.Source).Append(',')
               .Append(h.Confidence.ToString("0.##", CultureInfo.InvariantCulture)).Append(',')
               .Append(Csv(h.StyleId ?? "")).Append(',')
@@ -206,7 +208,7 @@ public static class OutlineFormatter
 
     private sealed record CollapseAccumulator(
         int KeptIndex,
-        int KeptLevel,
+        int? KeptLevel,
         string KeptText,
         List<CollapsedHeadingRef> Collapsed);
 }
@@ -220,11 +222,11 @@ public sealed record NavigationCollapseReport(
 
 public sealed record NavigationCollapseGroup(
     [property: JsonPropertyName("keptIndex")] int KeptIndex,
-    [property: JsonPropertyName("keptLevel")] int KeptLevel,
+    [property: JsonPropertyName("keptLevel")] int? KeptLevel,
     [property: JsonPropertyName("keptText")] string KeptText,
     [property: JsonPropertyName("collapsed")] IReadOnlyList<CollapsedHeadingRef> Collapsed);
 
 public sealed record CollapsedHeadingRef(
     [property: JsonPropertyName("index")] int Index,
-    [property: JsonPropertyName("level")] int Level,
+    [property: JsonPropertyName("level")] int? Level,
     [property: JsonPropertyName("text")] string Text);

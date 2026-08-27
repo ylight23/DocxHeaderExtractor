@@ -1,0 +1,1258 @@
+{
+ "schemaVersion": 1,
+ "labelSchema": "table_like_branch_line_labels.v1",
+ "document": "092_RFC9111_HTTP_Caching.pdf",
+ "sourceDocumentSha256": "2663227a94ec8a81892a02f5697fc15c578571cdee96407adb5c60a60236c76f",
+ "items": [
+  {
+   "page": 1,
+   "readable": "Obsoletes: 72 34",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "metadata",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 1,
+   "readable": "Published: June 202 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "metadata",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 2,
+   "readable": "1 Intro duction",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 2,
+   "readable": "1 1 Requirements Notation",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 2,
+   "readable": "1 2 Syntax Notation",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 2,
+   "readable": "1 2 1 Imported Rules",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 2,
+   "readable": "1 2 2 D elta Sec onds",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 2,
+   "readable": "3 4 Combining Partial Content",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 2,
+   "readable": "4 2 Freshness",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 2,
+   "readable": "4 2 3 Calculating Age",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 2,
+   "readable": "4 2 4 Serving Stale Responses",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 2,
+   "readable": "4 3 Validation",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 Field D eﬁnitions",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 2 Ca che-Control",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 2 1 Request Directives",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 2 1 2 max-stale",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 2 1 3 min-fresh",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 2 1 6 no-transform",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 2 2 Response Directives",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 2 2 2 must-revalidate",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 2 2 3 must-understand",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 2 2 6 no-transform",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 2 2 8 proxy-revalidate",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 2 3 Extension Directives",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 2 4 Ca che Directive Registry",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 3 Expires",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 3,
+   "readable": "5 4 Pragma",
+   "tableLike": true,
+   "reason": "header-footer-zone,table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 4,
+   "readable": "5 5 Warning",
+   "tableLike": true,
+   "reason": "header-footer-zone,table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 4,
+   "readable": "7 Security Considerations",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 4,
+   "readable": "7 1 Ca che Poisoning",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 4,
+   "readable": "7 2 Timing Atta cks",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 4,
+   "readable": "8 IANA Considerations",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 4,
+   "readable": "8 1 Field Name Registration",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 4,
+   "readable": "8 3 Warn Co de Registry",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 4,
+   "readable": "9 Referenc es",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 4,
+   "readable": "9 1 Normative Referenc es",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 4,
+   "readable": "9 2 Informative Referenc es",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "toc_entry",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 4,
+   "readable": "1 Intro duction",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 5,
+   "readable": "unavailable (Section 4 2 4)",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 5,
+   "readable": "1 1 Requirements Notation",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 5,
+   "readable": "1 2 Syntax Notation",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 5,
+   "readable": "1 2 1 Imported Rules",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 6,
+   "readable": "1 2 2 Delta Seconds",
+   "tableLike": true,
+   "reason": "header-footer-zone,table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 7,
+   "readable": "Section 3 5); and",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 9,
+   "readable": "3 3 Storing Incomplete Responses",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 9,
+   "readable": "3 4 Combining Partial Content",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 10,
+   "readable": "Section 4 1) and",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 10,
+   "readable": "◦ fresh (see Section 4 2) or",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 11,
+   "readable": "4 2 Freshness",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 13,
+   "readable": "Section 6 6 1 of [HTTP]) or",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 14,
+   "readable": "4 2 3 Calculating Age",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 15,
+   "readable": "4 2 4 Serving Stale Respons es",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 15,
+   "readable": "4 3 Validation",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 17,
+   "readable": "and reused; see Section 4 3 4",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 17,
+   "readable": "c onstraints (see Section 3)",
+   "tableLike": true,
+   "reason": "header-footer-zone,table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 19,
+   "readable": "Section 3 2)",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 19,
+   "readable": "5 Field Deﬁnitions",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 19,
+   "readable": "Section 4 2 3",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 20,
+   "readable": "5 2 Ca che-Control",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 20,
+   "readable": "5 2 1 Request Directives",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 21,
+   "readable": "5 2 1 2 max-stale",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 21,
+   "readable": "5 2 1 3 min-fresh",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 22,
+   "readable": "5 2 1 6 no-transform",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 22,
+   "readable": "5 2 1 7 only-if-cached",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 22,
+   "readable": "5 2 2 Respons e Directives",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 22,
+   "readable": "5 2 2 2 must-revalidate",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 23,
+   "readable": "5 2 2 3 must-understand",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 24,
+   "readable": "5 2 2 6 no-transform",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 24,
+   "readable": "Section 3",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 24,
+   "readable": "5 2 2 8 proxy-revalidate",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 25,
+   "readable": "c a cheable (Section 4 2 2)",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 25,
+   "readable": "and revalidation (Section 3 5)",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 25,
+   "readable": "5 2 3 Extension Directives",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 26,
+   "readable": "5 2 4 Cache Directive Registry",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 26,
+   "readable": "5 3 Expires",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 27,
+   "readable": "5 4 Pragma",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 27,
+   "readable": "5 5 Warning",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 28,
+   "readable": "7 Security Considerations",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 29,
+   "readable": "7 1 Ca che Poisoning",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 29,
+   "readable": "HTTP/1 1",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 29,
+   "readable": "7 2 Timing Atta cks",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 29,
+   "readable": "8 IANA Considerations",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 29,
+   "readable": "8 1 Field Name Registration",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 30,
+   "readable": "Age permanent 5 1",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 30,
+   "readable": "Ca che-Control permanent 5 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 30,
+   "readable": "Expires permanent 5 3",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 30,
+   "readable": "Pragma deprec ated 5 4",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 30,
+   "readable": "Warning obsoleted 5 5",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 30,
+   "readable": "Table 1",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "caption_or_other_structural",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 30,
+   "readable": "max-stale 5 2 1 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 30,
+   "readable": "min-fresh 5 2 1 3",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 30,
+   "readable": "must-revalidate 5 2 2 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 30,
+   "readable": "must-understand 5 2 2 3",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 30,
+   "readable": "proxy-revalidate 5 2 2 8",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 30,
+   "readable": "Table 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "caption_or_other_structural",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 31,
+   "readable": "8 3 Warn Co de Registry",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 31,
+   "readable": "9 References",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 31,
+   "readable": "9 1 Normative References",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 31,
+   "readable": "editor org/info/rfc 5234>",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 31,
+   "readable": "9 2 Informative References",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "outline_heading",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "yes",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 33,
+   "readable": "intermediaries (Section 5 5)",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "body_prose",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 33,
+   "readable": "age Section 4 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 33,
+   "readable": "c a che Section 1",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 33,
+   "readable": "c ollapsed requests Section 4",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 33,
+   "readable": "Age Section 5 1; Section 5 1",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 33,
+   "readable": "Ca che-Control Section 5 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 33,
+   "readable": "Expires Section 5 3; Section 5 3",
+   "tableLike": true,
+   "reason": "header-footer-zone,table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "Pragma Section 5 4; Section 5 4",
+   "tableLike": true,
+   "reason": "header-footer-zone,table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "Warning Section 5 5",
+   "tableLike": true,
+   "reason": "header-footer-zone,table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "fresh Section 4 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "freshness lifetime Section 4 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "Age Section 5 1",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "Ca che-Control Section 5 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "DIGIT Section 1 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "Expires Section 5 3",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "delta-sec onds Section 1 2 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "Age Section 5 1; Section 5 1",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "Ca che-Control Section 5 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "Expires Section 5 3; Section 5 3",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "Pragma Section 5 4; Section 5 4",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 34,
+   "readable": "Warning Section 5 5",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 35,
+   "readable": "stale Section 4 2",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 35,
+   "readable": "validator Section 4 3 1",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "table_cell_or_tabular_value",
+   "shouldBeTableLike": "yes",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  },
+  {
+   "page": 35,
+   "readable": "345 Park Ave",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "metadata",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": true
+  },
+  {
+   "page": 35,
+   "readable": "Hafenweg 16",
+   "tableLike": true,
+   "reason": "table-like",
+   "role": "metadata",
+   "shouldBeTableLike": "no",
+   "shouldBeOutlineEligible": "no",
+   "leadingNumericRun": false
+  }
+ ]
+}

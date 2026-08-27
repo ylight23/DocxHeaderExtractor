@@ -1,0 +1,218 @@
+{
+ "schemaVersion": 1,
+ "goldVersion": "054-v3-occurrence-reviewed",
+ "previousGoldVersion": "054-v2-regenerated-docx",
+ "previousKeySha256": "988b55e871887ea00e280ed2c3b4f7b5dd89e21dcadc84934b632ab2a75f7b39",
+ "keySha256": "82fa71f3de8bbaad062c08e0b99e0e9d1cc589042d5e75c2573e61f90ef6ff4f",
+ "sourceDocumentSha256": "030d1e1242dd3c2fdef7bd7aeaddf86132d644ad9ac69d1732f3f0245388e65e",
+ "evaluationOnly": true,
+ "modelOutputUsed": false,
+ "pipelineOutputUsed": false,
+ "reviewedEntries": 23,
+ "unresolvedEntries": 1,
+ "repairKinds": {
+  "reviewer_selected_occurrence": 4,
+  "span_repair_same_occurrence": 1,
+  "label_prefix_repair": 9,
+  "structural_proposal": 9
+ },
+ "method": "canonical DOCX paragraph text read by stable id; occurrence chosen by structural signature, never by first occurrence or nearest title",
+ "rejectedSignatures": [
+  "table_of_contents_line",
+  "body_prose_or_cross_reference"
+ ],
+ "entries": [
+  {
+   "stableId": "body[1]/p[7]",
+   "level": 1,
+   "sourceText": "AVAILABILITY OF INFORMATION",
+   "repairKind": "label_prefix_repair",
+   "previousGoldTitle": "Availability of Information"
+  },
+  {
+   "stableId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+   "level": 1,
+   "sourceText": "SUMMARY INFORMATION",
+   "repairKind": "span_repair_same_occurrence",
+   "previousGoldTitle": "Summary Information"
+  },
+  {
+   "stableId": "body[1]/p[20]",
+   "level": 1,
+   "sourceText": "SECTION I: OVERVIEW",
+   "repairKind": "label_prefix_repair",
+   "previousGoldTitle": "Overview"
+  },
+  {
+   "stableId": "body[1]/p[73]",
+   "level": 1,
+   "sourceText": "SECTION II: EXECUTIVE SUMMARY",
+   "repairKind": "label_prefix_repair",
+   "previousGoldTitle": "Executive Summary"
+  },
+  {
+   "stableId": "body[1]/p[128]",
+   "level": 1,
+   "sourceText": "SECTION III: FINANCIAL RESULTS",
+   "repairKind": "structural_proposal",
+   "previousGoldTitle": "Financial Results"
+  },
+  {
+   "stableId": "body[1]/p[314]",
+   "level": 1,
+   "sourceText": "SECTION IV: LENDING ACTIVITIES",
+   "repairKind": "reviewer_selected_occurrence",
+   "previousGoldTitle": "Lending Activities"
+  },
+  {
+   "stableId": "body[1]/p[427]",
+   "level": 1,
+   "sourceText": "SECTION V: OTHER DEVELOPMENT ACTIVITIES",
+   "repairKind": "structural_proposal",
+   "previousGoldTitle": "Other Development Activities"
+  },
+  {
+   "stableId": "body[1]/p[523]",
+   "level": 1,
+   "sourceText": "SECTION VI: INVESTMENT ACTIVITIES",
+   "repairKind": "structural_proposal",
+   "previousGoldTitle": "Investment Activities"
+  },
+  {
+   "stableId": "body[1]/p[550]",
+   "level": 1,
+   "sourceText": "SECTION VII: BORROWING ACTIVITIES",
+   "repairKind": "reviewer_selected_occurrence",
+   "previousGoldTitle": "Borrowing Activities"
+  },
+  {
+   "stableId": "body[1]/p[604]",
+   "level": 1,
+   "sourceText": "SECTION VIII: CAPITAL ACTIVITIES",
+   "repairKind": "structural_proposal",
+   "previousGoldTitle": "Capital Activities"
+  },
+  {
+   "stableId": "body[1]/p[649]",
+   "level": 1,
+   "sourceText": "SECTION IX: RISK MANAGEMENT",
+   "repairKind": "structural_proposal",
+   "previousGoldTitle": "Risk Management"
+  },
+  {
+   "stableId": "body[1]/p[943]",
+   "level": 1,
+   "sourceText": "SECTION X: CONTRACTUAL OBLIGATIONS",
+   "repairKind": "structural_proposal",
+   "previousGoldTitle": "Contractual Obligations"
+  },
+  {
+   "stableId": "body[1]/p[957]",
+   "level": 1,
+   "sourceText": "SECTION XI: PENSION & OTHER POST-RETIREMENT BENEFITS",
+   "repairKind": "reviewer_selected_occurrence",
+   "previousGoldTitle": "Pension and other Post-Retirement Benefits"
+  },
+  {
+   "stableId": "body[1]/p[983]",
+   "level": 1,
+   "sourceText": "SECTION XII: CRITICAL ACCOUNTING POLICIES AND THE USE OF ESTIMATES",
+   "repairKind": "label_prefix_repair",
+   "previousGoldTitle": "Critical Accounting Policies and the Use of Estimates"
+  },
+  {
+   "stableId": "body[1]/p[1010]",
+   "level": 1,
+   "sourceText": "SECTION XIII: GOVERNANCE AND CONTROLS",
+   "repairKind": "label_prefix_repair",
+   "previousGoldTitle": "Governance and Controls"
+  },
+  {
+   "stableId": "body[1]/p[1085]",
+   "level": 1,
+   "sourceText": "SECTION XIV: RECONCILIATIONS OF COMPONENTS OF ALLOCABLE INCOME",
+   "repairKind": "structural_proposal",
+   "previousGoldTitle": "Reconciliations of Components of Allocable Income"
+  },
+  {
+   "stableId": "body[1]/p[1106]",
+   "level": 1,
+   "sourceText": "SECTION XV: AFFILIATED ORGANIZATIONS—IDA, IFC AND MIGA",
+   "repairKind": "reviewer_selected_occurrence",
+   "previousGoldTitle": "Affiliated Organizations — IFC IDA and MIGA"
+  },
+  {
+   "stableId": "body[1]/p[1116]",
+   "level": 1,
+   "sourceText": "SECTION XVI: ADMINISTRATION OF IBRD",
+   "repairKind": "label_prefix_repair",
+   "previousGoldTitle": "Administration of IBRD"
+  },
+  {
+   "stableId": "body[1]/p[1172]",
+   "level": 1,
+   "sourceText": "SECTION XVII: THE ARTICLES OF AGREEMENT",
+   "repairKind": "structural_proposal",
+   "previousGoldTitle": "The Articles of Agreement"
+  },
+  {
+   "stableId": "body[1]/p[1176]",
+   "level": 1,
+   "sourceText": "SECTION XVIII: LEGAL STATUS, PRIVILEGES AND IMMUNITIES",
+   "repairKind": "label_prefix_repair",
+   "previousGoldTitle": "Legal Status Privileges and Immunities"
+  },
+  {
+   "stableId": "body[1]/p[1187]",
+   "level": 1,
+   "sourceText": "SECTION XIX: FISCAL YEAR, ANNOUNCEMENTS, AND ALLOCATION OF NET INCOME",
+   "repairKind": "label_prefix_repair",
+   "previousGoldTitle": "Fiscal Year Announcements and Allocation of Net Income"
+  },
+  {
+   "stableId": "body[1]/p[1194]",
+   "level": 1,
+   "sourceText": "SECTION XX: FEES TO EXTERNAL AUDITORS",
+   "repairKind": "label_prefix_repair",
+   "previousGoldTitle": "Fees to External Auditors"
+  },
+  {
+   "stableId": "body[1]/p[1203]",
+   "level": 1,
+   "sourceText": "XXI: APPENDIX",
+   "repairKind": "structural_proposal",
+   "previousGoldTitle": "Appendix"
+  }
+ ],
+ "spanRepairs": [
+  {
+   "stableId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+   "paragraphIndex": 26,
+   "sourceText": "SUMMARY INFORMATION",
+   "span": {
+    "start": 0,
+    "end": 19
+   },
+   "paragraphText": "SUMMARY INFORMATION As of June 30, 2025, unless otherwise indicated",
+   "note": "heading is merged into the body paragraph; the occurrence is correct, only the span identifies the heading"
+  }
+ ],
+ "unresolved": [
+  {
+   "goldTitle": "Index to Financial Statements and Internal Control Reports",
+   "previousStableId": "body[1]/tbl[406]/tr[3]/tc[1]/p[1]",
+   "status": "unresolved_semantic_node",
+   "reason": "canonical_heading_spans_multiple_paragraphs",
+   "finding": "The literal previous title exists only as a table-of-contents entry. The body node it refers to is rendered across separate paragraphs, so no single stable id describes it.",
+   "paragraphs": [
+    4050,
+    4051
+   ],
+   "observedText": [
+    "FINANCIAL STATEMENTS AND INTERNAL CONTROL",
+    "REPORTS JUNE 30, 2025"
+   ],
+   "decision": "excluded from the occurrence-level denominator rather than anchored to a partial paragraph, which would have written a new gold defect on purpose"
+  }
+ ]
+}

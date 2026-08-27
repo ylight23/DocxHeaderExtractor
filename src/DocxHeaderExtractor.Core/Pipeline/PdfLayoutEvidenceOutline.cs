@@ -1,5 +1,6 @@
-using System.Text;
+﻿using System.Text;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Vision;
@@ -17,7 +18,92 @@ public sealed record PdfCandidateRetrievalTrace(
     bool FoundInWideCandidate,
     bool FoundInSupplementCandidate,
     string FirstLossStage,
-    string? RawWindowText);
+    string? RawWindowText,
+    bool FoundExactSourceLine = false);
+
+/// <summary>Key-guided observability of source facts through grouping and candidate producers.
+/// It is diagnostic only and is never consumed by extraction or ranking.</summary>
+public sealed record PdfCandidateConstructionTrace(
+    string ExpectedText,
+    IReadOnlyList<PdfCandidateConstructionSourceLine> SourceLines,
+    IReadOnlyList<string> PreGroupCandidateIds,
+    IReadOnlyList<string> PostGroupCandidateIds,
+    IReadOnlyList<PdfCandidateConstructionBlock> PostGroupBlocks,
+    IReadOnlyDictionary<string, IReadOnlyList<string>> ProducerCandidateIds,
+    IReadOnlyDictionary<string, string> ProducerDecisions,
+    string GroupOperation,
+    string FirstLoss);
+
+public sealed record PdfCandidateConstructionSourceLine(string SourceId, int Page, string Text,
+    string FilterReason, bool ExcludedFromSemanticSamples, bool ExcludedFromCandidateGrouping,
+    string? MatchText);
+
+public sealed record PdfCandidateConstructionBlock(string Id, int Page, int LineCount, string Text,
+    string CanonicalText, bool HasKerningJoinEvidence,
+    IReadOnlyList<PdfCandidateConstructionBlockLine> Lines);
+
+/// <summary>Raw PDF line facts inside a grouped block, exposed only by the diagnostic trace.</summary>
+public sealed record PdfCandidateConstructionBlockLine(
+    string Text,
+    string? MatchText,
+    double FontSize,
+    double BoldRatio,
+    string FontName,
+    string FillColor,
+    double Left,
+    double Y);
+
+/// <summary>Behavior-neutral lineage for an evaluation-only source-boundary investigation.</summary>
+internal sealed record PdfCandidateBoundaryLineageStage(
+    string Component,
+    string Operation,
+    IReadOnlyList<string> InputLineIds,
+    IReadOnlyDictionary<string, IReadOnlyList<string>> CandidateLineIds,
+    string Reason);
+
+internal sealed record PdfCandidateBoundaryLineage(
+    string OccurrenceId,
+    IReadOnlyList<string> SourceLineIds,
+    IReadOnlyList<PdfCandidateBoundaryLineageStage> Stages,
+    string FirstLossComponent,
+    string FirstLossOperation,
+    string FirstLossReason);
+
+/// <summary>Audit-only result of the semantic recovery branch; it cannot write an outline.</summary>
+public sealed record PdfSemanticRecoveryAudit(
+    string Status,
+    int RepresentedBlocks,
+    int DeterministicCandidateBlocks,
+    int EligibleUnresolvedBlocks,
+    int HeadingRoleProposals,
+    int CanonicalUniqueProposals,
+    int ValidatorAccepted,
+    IReadOnlyList<string> RoleResponses,
+    IReadOnlyList<string> PointerResponses,
+    IReadOnlyList<PdfSemanticRecoveryDecisionAudit> Decisions)
+{
+    public string Profile { get; init; } = "current_v6";
+    public string EligibleIdsSha256 { get; init; } = "";
+    public IReadOnlyList<string> RoleRequestSha256 { get; init; } = [];
+}
+
+public sealed record PdfSemanticRecoveryDecisionAudit(
+    string Id,
+    string SourceBlockId,
+    int SourceLineIndex,
+    int Page,
+    string SourceText,
+    string Role,
+    double Confidence,
+    int? SpanStart,
+    int? SpanEnd,
+    string? CanonicalSpan,
+    bool CanonicalUnique,
+    string ValidationStatus,
+    string? Reason)
+{
+    public string ContextSha256 { get; init; } = "";
+}
 
 /// <summary>
 /// Language-neutral PDF navigation-outline extractor. It learns the body baseline and visual
@@ -73,6 +159,123 @@ public static class PdfLayoutEvidenceOutline
                 t, false, [], false, false, false, false, "pdf-read-failed", null)).ToArray();
         }
     }
+
+    /// <summary>
+    /// Traces the narrow construction boundary for known text. This exposes whether a represented
+    /// source fact was dropped or absorbed by semantic grouping, or survived grouping but never
+    /// entered a candidate producer. It does not alter any source fact or candidate list.
+    /// </summary>
+    public static IReadOnlyList<PdfCandidateConstructionTrace> TraceCandidateConstruction(
+        string originalInputPath, IEnumerable<string> expectedTitles)
+    {
+        var expected = expectedTitles.Where(title => !string.IsNullOrWhiteSpace(title)).Distinct(StringComparer.Ordinal).ToArray();
+        if (expected.Length == 0) return [];
+        var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
+        if (pdf is null) return expected.Select(title => new PdfCandidateConstructionTrace(title, [], [], [],
+            [], EmptyProducers(), EmptyProducerDecisions(), "not_available", "no_sibling_pdf")).ToArray();
+        try
+        {
+            using var document = PdfDocument.Open(pdf);
+            var annotations = PdfLineBlockFilter.Analyze(PdfLineExtraction.ExtractLines(document));
+            var standard = PdfSemanticBlockGrouper.Build(annotations);
+            var profile = PdfStyleClusterProfile.Learn(annotations.Where(annotation => !annotation.ExcludeFromSemanticSamples)
+                .Select(annotation => annotation.Line).ToArray());
+            var broad = BuildBroadCandidates(standard, profile);
+            var wide = BuildWideAuditCandidates(standard);
+            var supplement = BuildSupplementCandidates(annotations, broad);
+            return expected.Select(title => TraceConstructionTitle(title, annotations, standard, profile, broad, wide, supplement)).ToArray();
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException)
+        {
+            return expected.Select(title => new PdfCandidateConstructionTrace(title, [], [], [],
+                [], EmptyProducers(), EmptyProducerDecisions(), "not_available", "pdf_read_failed")).ToArray();
+        }
+    }
+
+    /// <summary>
+    /// Thin semantic recovery experiment for represented facts that normal deterministic candidate
+    /// producers did not admit. It reuses the normal role, pointer-span, and validator contracts;
+    /// it is audit-only and never emits a HeadingRecord.
+    /// </summary>
+    public static async Task<PdfSemanticRecoveryAudit> RunSemanticRecoveryAuditAsync(
+        string originalInputPath,
+        IHeaderClassifier analyst,
+        PdfSemanticRecoveryOptions? options = null,
+        CancellationToken ct = default)
+    {
+        options ??= PdfSemanticRecoveryOptions.CurrentV6;
+        var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
+        if (pdf is null)
+            return new PdfSemanticRecoveryAudit("no_sibling_pdf", 0, 0, 0, 0, 0, 0, [], [], []);
+
+        try
+        {
+            using var document = PdfDocument.Open(pdf);
+            var annotations = PdfLineBlockFilter.Analyze(PdfLineExtraction.ExtractLines(document));
+            var represented = PdfSemanticBlockGrouper.Build(annotations);
+            var profile = PdfStyleClusterProfile.Learn(annotations.Where(annotation => !annotation.ExcludeFromSemanticSamples)
+                .Select(annotation => annotation.Line).ToArray());
+            var broad = BuildBroadCandidates(represented, profile);
+            var supplement = BuildSupplementCandidates(annotations, broad);
+            var deterministic = MergeCandidateSets(broad, supplement);
+            var selection = PdfSemanticRecoverySelector.Select(represented, deterministic, annotations, options);
+            if (selection.EligibleBlocks.Count == 0)
+                return new PdfSemanticRecoveryAudit("no_eligible_unresolved", selection.RepresentedBlockCount,
+                    selection.DeterministicCandidateCount, 0, 0, 0, 0, [], [], []);
+
+            var contexts = selection.EligibleBlocks.ToDictionary(block => block.Id, block => selection.Contexts[block.Id],
+                StringComparer.Ordinal);
+            var roleLane = SemanticLaneOptions.Default with { MaxBatchSize = options.RoleBatchSize };
+            var roles = await PdfBlockAnalyst.AnalyzeAsync(analyst, selection.EligibleBlocks, contexts, ct, roleLane);
+            var spans = await PdfBlockAnalyst.ResolveHeadingSpansAsync(analyst, selection.EligibleBlocks,
+                roles.Decisions, contexts, ct);
+            var traces = PdfProposalValidator.Trace(contexts, spans.Decisions)
+                .ToDictionary(trace => trace.Id, StringComparer.Ordinal);
+            var accepted = PdfProposalValidator.Validate(contexts, spans.Decisions)
+                .Select(heading => heading.SourceId).ToHashSet(StringComparer.Ordinal);
+            var decisionById = spans.Decisions.ToDictionary(decision => decision.Id, StringComparer.Ordinal);
+            var canonicalLineCounts = represented.SelectMany(block => block.Lines)
+                .Select(CanonicalForMatching)
+                .Where(canonical => canonical.Length >= 4)
+                .GroupBy(canonical => canonical, StringComparer.Ordinal)
+                .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal);
+            var audits = selection.EligibleBlocks.Select(block =>
+            {
+                decisionById.TryGetValue(block.Id, out var decision);
+                var span = decision?.HeadingSpan;
+                var spanText = span is not null && span.Start >= 0 && span.End <= block.Text.Length && span.End > span.Start
+                    ? block.Text[span.Start..span.End]
+                    : null;
+                var canonical = spanText is null ? null : PdfTextUtilities.CanonicalForMatch(spanText);
+                var unique = canonical is { Length: >= 4 } && canonicalLineCounts.TryGetValue(canonical, out var count) && count == 1;
+                var trace = traces.GetValueOrDefault(block.Id);
+            var origin = selection.Origins[block.Id];
+            return new PdfSemanticRecoveryDecisionAudit(block.Id, origin.SourceBlockId, origin.SourceLineIndex, block.Page, block.Text,
+                    decision?.Role.ToString() ?? "Uncertain", decision?.Confidence ?? 0,
+                    span?.Start, span?.End, canonical, unique,
+                    accepted.Contains(block.Id) ? "accepted" : trace?.ValidationStatus ?? "unresolved",
+                    trace?.Reason ?? decision?.Reason)
+                { ContextSha256 = Sha256(PdfBlockAnalyst.BuildUserPrompt([block], contexts)) };
+            }).ToArray();
+        return new PdfSemanticRecoveryAudit("complete", selection.RepresentedBlockCount,
+            selection.DeterministicCandidateCount, selection.EligibleBlocks.Count,
+            audits.Count(audit => audit.Role == PdfBlockRole.HeadingTopic.ToString()),
+            audits.Count(audit => audit.Role == PdfBlockRole.HeadingTopic.ToString() && audit.CanonicalUnique),
+            audits.Count(audit => audit.ValidationStatus == "accepted"), roles.RawResponses,
+            spans.RawResponses, audits)
+        {
+            Profile = options.Name,
+            EligibleIdsSha256 = Sha256(string.Join("\n", selection.EligibleBlocks.Select(block => block.Id))),
+            RoleRequestSha256 = roles.InputContracts.Select(Sha256).ToArray(),
+        };
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException)
+        {
+            return new PdfSemanticRecoveryAudit("pdf_read_failed", 0, 0, 0, 0, 0, 0, [], [], []);
+        }
+    }
+
+    private static string Sha256(string text) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text))).ToLowerInvariant();
 
     public static PdfTextbookOutlineResult TryBuild(string originalInputPath, SlimDocument slim)
     {
@@ -146,14 +349,197 @@ public static class PdfLayoutEvidenceOutline
     /// Freezes the broad PDF-first candidate pool and returns a lossless, feature-only processing
     /// plan. This is an audit operation: no LLM is invoked and no candidate is discarded.
     /// </summary>
-    public static PdfCandidateRankingAudit BuildCandidateRankingAudit(string originalInputPath)
+    /// <summary>
+    /// Runs the production alignment once and returns it with a passive trace of how each block
+    /// found its paragraph. Nothing here re-implements matching.
+    /// </summary>
+    internal static PdfDocxAlignmentSnapshot BuildDocxAlignmentSnapshot(
+        string originalInputPath, SlimDocument slim,
+        PdfDocxAlignmentPopulation population = PdfDocxAlignmentPopulation.NarrowRoute)
+    {
+        var context = population == PdfDocxAlignmentPopulation.NarrowRoute
+            ? TryBuildContext(originalInputPath, slim, out var reason)
+            : TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
+                includeSupplementCandidates: true, out reason);
+        if (context is null)
+            return new PdfDocxAlignmentSnapshot(reason, 0, [], [], [], slim);
+        var trace = new List<PdfDocxAlignmentTrace>();
+        var haystacks = new List<PdfDocxCanonicalParagraph>();
+        var alignment = AlignToDocx(context.Candidates, slim, context.Profile, Basis, trace, haystacks);
+        // TryBuild rejects the route below this ratio, so an audit that ignored it could describe an
+        // alignment production never uses.
+        var status = alignment.Headings.Count < Math.Max(3, (int)Math.Ceiling(context.Candidates.Count * 0.65))
+            ? $"low-docx-alignment:{alignment.Headings.Count}/{context.Candidates.Count}"
+            : "aligned";
+        return new PdfDocxAlignmentSnapshot(status, context.Candidates.Count, alignment.Headings, trace,
+            haystacks, slim);
+    }
+
+    /// <summary>
+    /// Replays the production broad-route alignment for an already-selected source-id set. This is
+    /// audit-only: it neither constructs candidates nor chooses ids, so a counterfactual can ask
+    /// what existing, source-grounded decisions would have emitted without reimplementing matching.
+    /// </summary>
+    internal static PdfDocxAlignmentSnapshot BuildBroadAlignmentForCandidateIds(
+        string originalInputPath, SlimDocument slim, IReadOnlySet<string> candidateIds,
+        IReadOnlyDictionary<string, TextOffsetSpan?>? headingSpans = null)
     {
         var context = TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
             includeSupplementCandidates: true, out var reason);
-        if (context is null) return new PdfCandidateRankingAudit(reason, 0, []);
+        if (context is null)
+            return new PdfDocxAlignmentSnapshot(reason, 0, [], [], [], slim);
+        var candidates = context.Candidates.Where(candidate => candidateIds.Contains(candidate.Id)).ToArray();
+        var trace = new List<PdfDocxAlignmentTrace>();
+        var haystacks = new List<PdfDocxCanonicalParagraph>();
+        var alignment = AlignToDocx(candidates, slim, context.Profile, AnalystBasis, trace, haystacks, headingSpans);
+        return new PdfDocxAlignmentSnapshot("aligned", candidates.Length, alignment.Headings, trace, haystacks, slim);
+    }
+
+    public static PdfCandidateRankingAudit BuildCandidateRankingAudit(string originalInputPath) =>
+        BuildCandidateRankingSnapshot(originalInputPath).Audit;
+
+    /// <summary>
+    /// The same ranking computation, with a passive record of which source lines each candidate was
+    /// built from.
+    /// <para>
+    /// Evaluation needs that provenance to ask whether a candidate represents a particular heading
+    /// occurrence rather than merely containing its words. Rebuilding the candidate graph on the
+    /// evaluation side to obtain it would create a second construction path that can drift from this
+    /// one, so the provenance is taken from the blocks this invocation already materialized. Nothing
+    /// here participates in ranking or selection; production calls
+    /// <see cref="BuildCandidateRankingAudit"/> and never sees these fields.
+    /// </para>
+    /// </summary>
+    internal static PdfCandidateRankingSnapshot BuildCandidateRankingSnapshot(
+        string originalInputPath,
+        IReadOnlySet<int>? withheldTableLikeLines = null)
+    {
+        var context = TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
+            includeSupplementCandidates: true, out var reason, withheldTableLikeLines);
+        if (context is null)
+            return new PdfCandidateRankingSnapshot(new PdfCandidateRankingAudit(reason, 0, []),
+                new Dictionary<string, PdfCandidateProvenance>(StringComparer.Ordinal), [], [], []);
         var contexts = PdfCandidateContextBuilder.Build(context.Candidates, context.Annotations);
         var ranked = PdfCandidateRanker.Rank(context.Candidates, contexts);
-        return new PdfCandidateRankingAudit("ranked", ranked.Count, ranked);
+        return new PdfCandidateRankingSnapshot(
+            new PdfCandidateRankingAudit("ranked", ranked.Count, ranked),
+            BuildProvenance(context), context.Candidates, context.Annotations, context.Lines);
+    }
+
+    /// <summary>
+    /// Diagnostic-only replay of the existing candidate construction stages. It reports where a
+    /// requested source occurrence stops being fully covered; it never feeds a result back into
+    /// candidate generation, ranking, or extraction.
+    /// </summary>
+    internal static IReadOnlyList<PdfCandidateBoundaryLineage> TraceCandidateBoundaryLineage(
+        string originalInputPath,
+        IReadOnlyDictionary<string, IReadOnlyList<string>> occurrenceLineIds)
+    {
+        var context = TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
+            includeSupplementCandidates: true, out _);
+        if (context is null) return [];
+
+        var standard = PdfSemanticBlockGrouper.Build(context.Annotations);
+        var broad = BuildBroadCandidates(standard, context.Profile);
+        var wide = BuildWideAuditCandidates(standard);
+        var supplement = BuildSupplementCandidates(context.Annotations, wide);
+        var merged = MergeCandidateSets(wide, supplement);
+        var lineIds = context.Lines.Select(PdfCandidateProvenance.LineId).ToArray();
+        var indexByLineId = lineIds.Select((id, index) => (id, index))
+            .ToDictionary(item => item.id, item => item.index, StringComparer.Ordinal);
+
+        return occurrenceLineIds.Select(request =>
+        {
+            var required = request.Value.Where(indexByLineId.ContainsKey)
+                .Select(id => indexByLineId[id]).ToHashSet();
+            var requiredLineIds = request.Value.Where(indexByLineId.ContainsKey).ToArray();
+            var stages = new List<PdfCandidateBoundaryLineageStage>();
+            AddBoundaryStage(stages, "PdfSourceFacts", "SOURCE_OCCURRENCE", required,
+                Array.Empty<PdfSemanticBlock>(), lineIds, indexByLineId, "source lines materialized");
+            AddBoundaryStage(stages, "PdfSemanticBlockGrouper.Build", "LINE_GROUP", required,
+                standard, lineIds, indexByLineId, "standard semantic blocks");
+            AddBoundaryStage(stages, "BuildBroadCandidates", "PRODUCER_CREATE", required,
+                broad, lineIds, indexByLineId, "style and shape gate");
+            AddBoundaryStage(stages, "BuildWideAuditCandidates", "PRODUCER_CREATE", required,
+                wide, lineIds, indexByLineId, "wide candidate producer");
+            AddBoundaryStage(stages, "BuildSupplementCandidates", "PRODUCER_CREATE", required,
+                supplement, lineIds, indexByLineId, "supplement candidate producer");
+            AddBoundaryStage(stages, "MergeCandidateSets", "MERGE", required,
+                merged, lineIds, indexByLineId, "deduplicated final candidate pool");
+
+            var firstLoss = stages.FirstOrDefault(stage =>
+                stage.Component != "PdfSourceFacts" &&
+                !stage.CandidateLineIds.Values.Any(lines =>
+                    requiredLineIds.All(line => lines.Any(value =>
+                        string.Equals(value, line, StringComparison.Ordinal)))));
+            return new PdfCandidateBoundaryLineage(
+                request.Key,
+                request.Value,
+                stages,
+                firstLoss?.Component ?? "NONE",
+                firstLoss?.Operation ?? "NONE",
+                firstLoss?.Reason ?? "all stages cover the occurrence");
+        }).ToArray();
+    }
+
+    private static void AddBoundaryStage(
+        ICollection<PdfCandidateBoundaryLineageStage> stages,
+        string component,
+        string operation,
+        IReadOnlySet<int> required,
+        IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlyList<string> lineIds,
+        IReadOnlyDictionary<string, int> indexByLineId,
+        string reason)
+    {
+        var candidates = blocks
+            .Where(block => block.Lines.Any(line =>
+                indexByLineId.TryGetValue(PdfCandidateProvenance.LineId(line), out var index) &&
+                required.Contains(index)))
+            .ToDictionary(
+                block => block.Id,
+                block => (IReadOnlyList<string>)block.Lines.Select(PdfCandidateProvenance.LineId).ToArray(),
+                StringComparer.Ordinal);
+        stages.Add(new PdfCandidateBoundaryLineageStage(
+            component,
+            operation,
+            required.OrderBy(index => index).Select(index => lineIds[index]).ToArray(),
+            candidates,
+            reason));
+    }
+
+    private static IReadOnlyDictionary<string, PdfCandidateProvenance> BuildProvenance(LayoutContext context)
+    {
+        var indexByLineId = new Dictionary<string, int>(StringComparer.Ordinal);
+        for (var index = 0; index < context.Lines.Count; index++)
+            indexByLineId[PdfCandidateProvenance.LineId(context.Lines[index])] = index;
+
+        var provenance = new Dictionary<string, PdfCandidateProvenance>(StringComparer.Ordinal);
+        foreach (var block in context.Candidates)
+        {
+            var lineIds = block.Lines.Select(PdfCandidateProvenance.LineId).ToArray();
+            var lineIndexes = lineIds
+                .Select(id => indexByLineId.TryGetValue(id, out var index) ? index : -1)
+                .Where(index => index >= 0)
+                .ToArray();
+            // The producer that made the block decides its kind. Reading it back off the id prefix
+            // would turn a naming convention into authority, and rename it and the meaning is gone.
+            var kind = context.SupplementCandidateRanks.ContainsKey(block.Id)
+                ? PdfCandidateRepresentationKind.WindowFragment
+                : PdfCandidateRepresentationKind.StandardBlock;
+            var candidate = new PdfCandidateProvenance(block.Id, lineIndexes, lineIds, kind);
+            if (provenance.TryGetValue(block.Id, out var existing))
+            {
+                // Two blocks under one id with different lines would let evaluation silently read
+                // the provenance of the other representation.
+                if (!existing.LineIndexes.SequenceEqual(candidate.LineIndexes))
+                    throw new InvalidOperationException(
+                        $"ambiguous_candidate_provenance: '{block.Id}' appears with two different source line sets.");
+                continue;
+            }
+            provenance[block.Id] = candidate;
+        }
+        return provenance;
     }
 
     /// <summary>
@@ -174,7 +560,12 @@ public static class PdfLayoutEvidenceOutline
         int maximumVisualRegions = 0,
         string? visualProducer = null,
         bool scheduleVisualRegions = false,
-        CancellationToken ct = default)
+        CancellationToken ct = default,
+        SemanticLaneOptions? semanticLaneOptions = null,
+        string? checkpointPath = null,
+        bool resume = false,
+        int visualMaxConcurrency = 1,
+        bool includeSemanticHierarchyFallback = true)
     {
         if (maximumAnalystBlocks < 0)
             return PdfTextbookOutlineResult.NotApplicable("invalid-analyst-block-budget");
@@ -182,25 +573,89 @@ public static class PdfLayoutEvidenceOutline
         var context = TryBuildBroadAuditContext(
             originalInputPath, includeAllVisualStyles, includeSupplementCandidates, out var reason);
         if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
+        var checkpoint = string.IsNullOrWhiteSpace(checkpointPath) ? null : new PdfStageCheckpoint(checkpointPath, resume, Path.GetFileName(context.Pdf));
 
+        // Visual scheduling is source-fact-only: it must not wait for a slow semantic batch.
+        // Its own canonical source validator remains the authority before any heading is emitted.
+        var visualRecoveryTask = visualAnalyst is null
+            ? Task.FromResult(new PdfVisualTextRecoveryResult([], [], [], [], [], []))
+            : PdfVisualTextRecovery.RecoverAsync(context.Pdf, context.Lines, slim, [], visualAnalyst,
+                visualDpi, maximumVisualRegions, visualProducer, scheduleVisualRegions, ct,
+                checkpoint?.CompletedVisualRegions,
+                checkpoint is null ? null : (trace, token) => checkpoint.RecordVisualRegionAsync(trace, token),
+                checkpoint?.CompletedVisualTraces, visualMaxConcurrency);
+
+        var semanticOptions = (semanticLaneOptions ?? SemanticLaneOptions.Default) with
+        {
+            DeadlineUtc = DateTimeOffset.UtcNow.Add((semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline),
+        };
         var effectiveBudget = maximumAnalystBlocks == 0 ? context.Candidates.Count : maximumAnalystBlocks;
         var allCandidateContexts = PdfCandidateContextBuilder.Build(context.Candidates, context.Annotations);
         var ranked = PdfCandidateRanker.Rank(context.Candidates, allCandidateContexts);
         var selection = SelectRankedCandidates(context.Candidates, ranked, effectiveBudget);
         var selected = selection.Selected;
+        var selectedSourceIdentities = selected.Select(block => new PdfSelectedSourceIdentity(
+            block.Id,
+            block.Page,
+            block.Lines.Select(PdfCandidateProvenance.LineId).ToArray(),
+            block.Text)).ToArray();
+        // Persist the selected cohort before any semantic/visual provider work starts. The
+        // candidate id remains run-local diagnostics; source line ids are the evaluation identity.
+        if (checkpoint is not null)
+            await checkpoint.RecordSelectionAsync(selectedSourceIdentities, ct);
         var excluded = context.Annotations.Where(a => a.ExcludeFromSemanticSamples).Select(a => a.Line).ToHashSet();
-        var samples = PdfSemanticClusterAnalyst.BuildSamples(context.Profile, context.Lines, excluded);
-        var clusters = await PdfSemanticClusterAnalyst.AnalyzeAsync(analyst, context.Profile, context.Lines, ct);
         var candidateContexts = selected.ToDictionary(block => block.Id, block => allCandidateContexts[block.Id], StringComparer.Ordinal);
-        var roleAnalysis = await PdfBlockAnalyst.AnalyzeAsync(analyst, selected, candidateContexts, ct);
+        var samples = PdfSemanticClusterAnalyst.BuildSamples(context.Profile, context.Lines, excluded);
+        var semanticRun = await PdfLaneExecution.RunAsync(async laneCt =>
+        {
+            var clusterResult = await PdfSemanticClusterAnalyst.AnalyzeAsync(analyst, context.Profile, context.Lines, laneCt);
+            var roleResult = await PdfBlockAnalyst.AnalyzeAsync(analyst, selected, candidateContexts, laneCt, semanticOptions, checkpoint);
+            return (Clusters: clusterResult, Roles: roleResult);
+        }, semanticOptions.LaneDeadline, ct);
+        var semanticTimedOut = semanticRun.TimedOut;
+        var clusters = !semanticTimedOut && semanticRun.Fault is null
+            ? semanticRun.Value.Clusters
+            : new PdfSemanticClusterAnalysis(samples, []);
+        var roleAnalysis = !semanticTimedOut && semanticRun.Fault is null
+            ? semanticRun.Value.Roles
+            : new PdfBlockAnalysis(selected,
+            selected.Select(block => new PdfBlockDecision(block.Id, PdfBlockRole.Uncertain, 0, "semantic_lane_timeout")).ToArray(), []);
         var visualCandidates = SelectVisualEvidenceCandidates(selected, ranked, roleAnalysis.Decisions);
         var visual = visualAnalyst is null || visualCandidates.Count == 0
             ? new PdfVisualBlockAnalysis([], [])
             : await PdfVisualBlockAnalyst.AnalyzeAsync(visualAnalyst, context.Pdf, visualCandidates, context.Lines, visualDpi,
                 candidateContexts, ct);
         var resolvedRoles = PdfProposalConflictResolver.Resolve(roleAnalysis.Decisions, visual.Decisions, candidateContexts);
-        var spanAnalysis = await PdfBlockAnalyst.ResolveHeadingSpansAsync(
-            analyst, selected, resolvedRoles.Decisions, candidateContexts, ct);
+        // The span lane's own outcome is kept rather than collapsed into the decisions it returns. A
+        // heading cannot validate without a resolved span, so this lane failing looks identical to a
+        // healthy run once the artifact is written - which is exactly what C1.4 measured on 001.
+        PdfBlockAnalysis spanAnalysis;
+        string spanLaneStatus;
+        if (semanticTimedOut)
+        {
+            spanAnalysis = roleAnalysis;
+            // Not "complete": the lane never executed, and saying otherwise would be the misreport
+            // this field exists to prevent.
+            spanLaneStatus = "not_run";
+        }
+        else
+        {
+            var spanRun = await PdfLaneExecution.RunAsync(
+                laneCt => PdfBlockAnalyst.ResolveHeadingSpansAsync(analyst, selected, resolvedRoles.Decisions,
+                    candidateContexts, laneCt, checkpoint),
+                semanticOptions.RemainingOr(semanticOptions.RequestTimeout), ct);
+            spanLaneStatus = spanRun.TimedOut ? "partial_timeout" : "complete";
+            spanAnalysis = spanRun switch
+            {
+                // A3: a batch that finished and was durably checkpointed before the deadline is kept -
+                // only blocks the lane never got a resolved span for are marked Uncertain. Without a
+                // checkpoint there is no durable record of what completed, so behavior is unchanged:
+                // every decision is marked Uncertain exactly as before.
+                { TimedOut: true } => PreservePartialSpanResolutions(roleAnalysis, checkpoint),
+                { Value: { } Value } => Value,
+                _ => roleAnalysis,
+            };
+        }
         var blockAnalysis = roleAnalysis with
         {
             Decisions = spanAnalysis.Decisions,
@@ -209,7 +664,13 @@ public static class PdfLayoutEvidenceOutline
         var stageTraces = PdfProposalValidator.Trace(candidateContexts, blockAnalysis.Decisions);
         var validated = PdfProposalValidator.Validate(candidateContexts, blockAnalysis.Decisions);
         var markerStructures = PdfHierarchyResolver.Resolve(validated, candidateContexts);
-        var semanticHierarchy = await PdfSemanticHierarchyFallback.ResolveAsync(analyst, validated, markerStructures, candidateContexts, ct);
+        var hierarchyFacts = PdfHierarchyFactsInventory.Inspect(validated, candidateContexts);
+        var hierarchyRun = semanticTimedOut || !includeSemanticHierarchyFallback
+            ? new PdfLaneExecution.Result<PdfSemanticHierarchyResult>(null, true, false)
+            : await PdfLaneExecution.RunAsync(
+                laneCt => PdfSemanticHierarchyFallback.ResolveAsync(analyst, validated, markerStructures, candidateContexts, laneCt),
+                semanticOptions.RemainingOr(semanticOptions.RequestTimeout), ct);
+        var semanticHierarchy = hierarchyRun.Value ?? new PdfSemanticHierarchyResult(markerStructures, [], [], []);
         var structures = semanticHierarchy.Structures;
         blockAnalysis = blockAnalysis with
         {
@@ -227,11 +688,21 @@ public static class PdfLayoutEvidenceOutline
             requireLearnedCandidateStyle: false);
         var acceptedIds = grounded.Headings.Select(h => h.Id).ToHashSet(StringComparer.Ordinal);
         var accepted = selected.Where(b => acceptedIds.Contains(b.Id)).ToArray();
-        var alignment = AlignToDocx(accepted, slim, context.Profile, AnalystBasis);
-        var visualRecovery = visualAnalyst is null
-            ? new PdfVisualTextRecoveryResult([], [], [], [], [], [])
-            : await PdfVisualTextRecovery.RecoverAsync(context.Pdf, context.Lines, slim, alignment.Headings, visualAnalyst,
-                visualDpi, maximumVisualRegions, visualProducer, scheduleVisualRegions, ct);
+        // B3: the resolved span (already required to reach eligibility) bounds each candidate's actual
+        // heading text within its possibly-wider window, so the auto-numbered title-only fallback in
+        // AlignToDocx never searches with trailing body-context text glued to the title.
+        var headingSpansByBlockId = eligibleDecisions.ToDictionary(d => d.Id, d => d.HeadingSpan, StringComparer.Ordinal);
+        var alignment = AlignToDocx(accepted, slim, context.Profile, AnalystBasis, trace: null, haystacks: null, headingSpansByBlockId);
+        if (checkpoint is not null)
+            await checkpoint.RecordDownstreamProvenanceAsync(
+                selected,
+                blockAnalysis.Decisions,
+                stageTraces,
+                acceptedIds,
+                alignment.AlignedBlockIds.ToHashSet(StringComparer.Ordinal),
+                clusters.Decisions,
+                ct);
+        var visualRecovery = await visualRecoveryTask;
         var recoveredHeadings = alignment.Headings.Concat(visualRecovery.Headings)
             .GroupBy(heading => (heading.Index, Start: heading.HeadingSpan?.Start ?? -1))
             .Select(group => group.First())
@@ -247,6 +718,10 @@ public static class PdfLayoutEvidenceOutline
 
         var lane = includeAllVisualStyles ? "wide" : "broad";
         if (includeSupplementCandidates) lane += "+supplement";
+        var semanticLaneStatus = semanticTimedOut || (includeSemanticHierarchyFallback && hierarchyRun.TimedOut)
+            ? "partial_timeout"
+            : "complete";
+        var semanticTimedOutBlocks = blockAnalysis.Decisions.Count(decision => decision.Reason is "semantic_batch_timeout" or "semantic_lane_timeout" or "semantic_request_timeout");
         var summary = $"audit-only {lane} PDF lane; pdf={Path.GetFileName(context.Pdf)}, candidateBlocks={selected.Count}/{selection.Available}, " +
                       $"pages={selection.SelectedPages}/{selection.AvailablePages}, grounded={accepted.Length}, aligned={alignment.Headings.Count}/{accepted.Length}, visualRecovered={visualRecovery.Headings.Count}, markerHierarchy={hierarchyChanges}";
         var audit = new RouteExecutionAudit(
@@ -258,7 +733,7 @@ public static class PdfLayoutEvidenceOutline
             context.Candidates.Select(ToAudit).ToArray(),
             selected.Select(ToAudit).ToArray(),
             context.Candidates.Where(b => !selected.Any(choice => choice.Id == b.Id)).Select(ToAudit).ToArray(),
-            blockAnalysis.Decisions.Select(d => new RouteBlockDecisionAudit(d.Id, d.Role.ToString(), d.Confidence)).ToArray(),
+            blockAnalysis.Decisions.Select(d => new RouteBlockDecisionAudit(d.Id, d.Role.ToString(), d.Confidence, d.Reason)).ToArray(),
             accepted.Select(b => b.Id).ToArray(),
             grounded.Rejected.Select(r => new RouteBlockRejectionAudit(r.Id, r.Role, r.Confidence, r.Reason)).ToArray(),
             alignment.AlignedBlockIds.ToArray())
@@ -270,11 +745,37 @@ public static class PdfLayoutEvidenceOutline
             RankedCandidates = ranked,
             ProposalResolutions = resolvedRoles.Audit,
             HierarchyProposals = semanticHierarchy.Audit,
+            HierarchyFacts = hierarchyFacts,
             TextLayerRecoveries = alignment.TextLayerRecoveries.Concat(visualRecovery.Audit).ToArray(),
             VisualEvidence = visual.Decisions.Select(decision => new RouteVisualEvidenceAudit(
                 decision.Id, decision.Role.ToString(), decision.Confidence, decision.Evidence,
                 decision.ContextLinesAbove, decision.ContextLinesBelow)).Concat(visualRecovery.Evidence).ToArray(),
             VisualRecoveries = visualRecovery.Traces,
+            SemanticLane = new RouteLaneExecutionAudit(
+                semanticLaneStatus, selected.Count,
+                Math.Max(0, selected.Count - semanticTimedOutBlocks), semanticTimedOutBlocks,
+                semanticTimedOut ? Math.Max(0, selected.Count - semanticTimedOutBlocks) : 0,
+                semanticLaneStatus == "partial_timeout" ? "timeout" : null),
+            SpanLane = new RouteLaneExecutionAudit(
+                spanLaneStatus,
+                spanLaneStatus == "not_run" ? 0 : selected.Count,
+                // A3: on partial_timeout, spanAnalysis may now carry independently-completed spans
+                // (PreservePartialSpanResolutions), so Completed/TimedOut reflect what actually
+                // resolved rather than a blanket 0 - the same expression already used for "complete",
+                // now correct for "partial_timeout" too instead of overridden to 0.
+                spanLaneStatus == "not_run" ? 0 : spanAnalysis.Decisions.Count(d => d.HeadingSpan is not null),
+                spanLaneStatus == "not_run" ? 0 : spanAnalysis.Decisions.Count(d => d.HeadingSpan is null),
+                spanLaneStatus == "not_run" ? selected.Count : 0,
+                spanLaneStatus == "partial_timeout" ? "timeout" : null),
+            VisualLane = new RouteLaneExecutionAudit(
+                visualRecovery.Traces.Any(trace => trace.Status == "visual-region-unavailable") ? "partial_timeout" : "complete",
+                visualRecovery.Traces.Count(trace => !trace.Status.EndsWith("excluded", StringComparison.Ordinal)),
+                visualRecovery.Traces.Count(trace => !trace.Status.EndsWith("excluded", StringComparison.Ordinal) &&
+                    trace.Status is not "visual-region-unavailable"),
+                visualRecovery.Traces.Count(trace => trace.Status == "visual-region-unavailable"),
+                0,
+                visualRecovery.Traces.Any(trace => trace.Status == "visual-region-unavailable") ? "region_failure" : null),
+            SelectedSourceIdentities = selectedSourceIdentities,
         };
 
         // Audit must preserve partial output and every loss even when the production acceptance
@@ -285,6 +786,40 @@ public static class PdfLayoutEvidenceOutline
                 ? $"audit-only:analyst-low-docx-alignment:{recoveredHeadings.Length}/{accepted.Length}"
                 : summary;
         return new PdfTextbookOutlineResult(recoveredHeadings, auditReason, audit);
+    }
+
+    /// <summary>
+    /// A3: when the span lane times out, a batch that finished and was durably checkpointed before the
+    /// deadline is kept - a heading cannot validate without a resolved span, and discarding an
+    /// independently completed one along with the batches that never got one is exactly the
+    /// all-or-nothing loss C1.6/C1.7 measured as recoverable on both 001 and 003. Every block without a
+    /// checkpointed resolution is marked <c>Uncertain</c>, unchanged from before. With no checkpoint at
+    /// all there is no durable record of what completed, so <paramref name="checkpoint"/> being null
+    /// reproduces today's exact behavior: every decision marked <c>Uncertain</c>.
+    /// </summary>
+    internal static PdfBlockAnalysis PreservePartialSpanResolutions(PdfBlockAnalysis roleAnalysis, PdfStageCheckpoint? checkpoint)
+    {
+        var resolved = checkpoint?.ReadCompletedSpanResolutions();
+        if (resolved is null || resolved.Count == 0)
+            return roleAnalysis with
+            {
+                Decisions = roleAnalysis.Decisions.Select(decision => decision with
+                {
+                    Role = PdfBlockRole.Uncertain,
+                    Confidence = 0,
+                    Reason = "semantic_request_timeout",
+                    HeadingSpan = null,
+                }).ToArray(),
+            };
+
+        return roleAnalysis with
+        {
+            Decisions = roleAnalysis.Decisions.Select(decision =>
+                resolved.TryGetValue(decision.Id, out var span)
+                    ? decision with { HeadingSpan = span }
+                    : decision with { Role = PdfBlockRole.Uncertain, Confidence = 0, Reason = "semantic_request_timeout", HeadingSpan = null })
+                .ToArray(),
+        };
     }
 
     /// <summary>
@@ -552,7 +1087,8 @@ public static class PdfLayoutEvidenceOutline
         string originalInputPath,
         bool includeAllVisualStyles,
         bool includeSupplementCandidates,
-        out string reason)
+        out string reason,
+        IReadOnlySet<int>? withheldTableLikeLines = null)
     {
         reason = "";
         var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
@@ -570,7 +1106,7 @@ public static class PdfLayoutEvidenceOutline
             return null;
         }
 
-        var annotations = PdfLineBlockFilter.Analyze(lines);
+        var annotations = PdfLineBlockFilter.Analyze(lines, withheldTableLikeLines);
         var semanticLines = annotations.Where(a => !a.ExcludeFromSemanticSamples).Select(a => a.Line).ToList();
         if (semanticLines.Count < 3) { reason = "too-few-semantic-lines"; return null; }
         var profile = PdfStyleClusterProfile.Learn(semanticLines);
@@ -668,7 +1204,7 @@ public static class PdfLayoutEvidenceOutline
         if (text.Count(c => c is '.' or ';') >= 2) return false;
         if (text.Length >= 80 && text.EndsWith('.')) return false;
         if (text.Length >= 40 && Regex.IsMatch(text, @"^(?:\d{1,3}|\*)\s+\S")) return false;
-        if (LooksLikeSpacedLogoFragment(text)) return false;
+        if (LooksLikeSpacedLogoFragment(text) && !HasKerningFragmentationForAudit(block)) return false;
         return text.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries).Length < 24;
     }
 
@@ -677,7 +1213,7 @@ public static class PdfLayoutEvidenceOutline
         var text = block.DisplayText.Trim();
         if (text.Length is < 3 or > 320 || !text.Any(char.IsLetter)) return false;
         if (block.LineCount > 8) return false;
-        if (LooksLikeSpacedLogoFragment(text)) return false;
+        if (LooksLikeSpacedLogoFragment(text) && !HasKerningFragmentationForAudit(block)) return false;
         return text.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries).Length < 56;
     }
 
@@ -685,13 +1221,25 @@ public static class PdfLayoutEvidenceOutline
     {
         var text = block.DisplayText.Trim();
         if (text.Length is < 3 or > 900 || !text.Any(char.IsLetter) || block.LineCount > 12) return false;
-        if (LooksLikeSpacedLogoFragment(text)) return false;
+        if (LooksLikeSpacedLogoFragment(text) && !HasKerningFragmentationForAudit(block)) return false;
         var words = text.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
         if (words.Length > 140) return false;
         if (NumberingAudit.Parse(text) is not null) return true;
         if (Regex.IsMatch(text, @"^\s*(?:chapter|chương|section|article|điều)\b", RegexOptions.IgnoreCase)) return true;
         var letters = text.Where(char.IsLetter).ToArray();
         return letters.Length >= 4 && letters.Count(char.IsUpper) / (double)letters.Length >= 0.55;
+    }
+
+    // Diagnostic predicate only. It is intentionally not a production producer until a separate
+    // style/geometry discontinuity is measured: kerning evidence alone widened the 076 pool.
+    internal static bool LooksLikeKerningRepairCandidate(PdfSemanticBlock block)
+    {
+        var text = block.DisplayText.Trim();
+        return block.LineCount == 1 &&
+               text.Length is >= 4 and <= 180 &&
+               text.Any(char.IsLetter) &&
+               !Regex.IsMatch(text, @"[.!?;:]\s*$") &&
+               HasKerningFragmentationForAudit(block);
     }
 
     private static PdfCandidateRetrievalTrace TraceTitle(
@@ -708,11 +1256,13 @@ public static class PdfLayoutEvidenceOutline
         var relevantLines = rawWindow
             .Where(a =>
             {
-                var line = PdfTextUtilities.CanonicalForMatch(a.Line.Text);
+                var line = CanonicalForMatching(a.Line);
                 return line.Length >= 4 && (target.Contains(line, StringComparison.Ordinal) || line.Contains(target, StringComparison.Ordinal));
             })
             .ToArray();
         if (relevantLines.Length == 0) relevantLines = rawWindow.ToArray();
+        var foundExactLine = relevantLines.Any(annotation =>
+            string.Equals(CanonicalForMatching(annotation.Line), target, StringComparison.Ordinal));
         var reasons = relevantLines.Select(a => a.Reason).Where(r => r != "semantic-candidate").Distinct().ToArray();
         bool Contains(IReadOnlyList<PdfSemanticBlock> blocks) => blocks.Any(b => b.CanonicalText.Contains(target, StringComparison.Ordinal));
         var inStandard = Contains(standard);
@@ -727,8 +1277,88 @@ public static class PdfLayoutEvidenceOutline
         var rawText = foundRaw ? string.Join(" ", relevantLines.Select(a => PdfTextUtilities.Readable(a.Line.Text))) : null;
         if (rawText is { Length: > 360 }) rawText = rawText[..360];
         return new PdfCandidateRetrievalTrace(
-            expected, foundRaw, reasons, inStandard, inBroad, inWide, inSupplement, firstLoss, rawText);
+            expected, foundRaw, reasons, inStandard, inBroad, inWide, inSupplement, firstLoss, rawText, foundExactLine);
     }
+
+    private static PdfCandidateConstructionTrace TraceConstructionTitle(string expected,
+        IReadOnlyList<PdfLineBlockAnnotation> annotations, IReadOnlyList<PdfSemanticBlock> standard,
+        PdfStyleClusterProfile profile,
+        IReadOnlyList<PdfSemanticBlock> broad, IReadOnlyList<PdfSemanticBlock> wide,
+        IReadOnlyList<PdfSemanticBlock> supplement)
+    {
+        var target = PdfTextUtilities.CanonicalForMatch(expected);
+        var rawWindow = FindRawWindow(annotations, target);
+        var relevant = rawWindow.Where(annotation =>
+        {
+            var canonical = CanonicalForMatching(annotation.Line);
+            return canonical.Length >= 4 && (target.Contains(canonical, StringComparison.Ordinal) ||
+                canonical.Contains(target, StringComparison.Ordinal));
+        }).ToArray();
+        if (relevant.Length == 0) relevant = rawWindow.ToArray();
+        var keys = relevant.Select(annotation => ConstructionLineId(annotation.Line)).ToHashSet(StringComparer.Ordinal);
+        var matchingStandard = standard.Where(block => block.CanonicalText.Contains(target, StringComparison.Ordinal)).ToArray();
+        var sharedStandard = standard.Where(block => block.Lines.Any(line => keys.Contains(ConstructionLineId(line)))).ToArray();
+        IReadOnlyList<string> MatchingIds(IReadOnlyList<PdfSemanticBlock> blocks) => blocks
+            .Where(block => block.CanonicalText.Contains(target, StringComparison.Ordinal)).Select(block => block.Id).ToArray();
+        var producers = new Dictionary<string, IReadOnlyList<string>>(StringComparer.Ordinal)
+        {
+            ["broad"] = MatchingIds(broad),
+            ["wide"] = MatchingIds(wide),
+            ["supplement"] = MatchingIds(supplement),
+        };
+        var producerDecisions = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["broad"] = matchingStandard.Length == 0 ? "no_standard_match" :
+                !matchingStandard.Any(block => profile.CandidateStyles.Contains(block.PrimaryStyle)) ? "style_not_selected" :
+                !matchingStandard.Any(LooksLikeBroadCandidateBlock) ? "shape_rejected" : "created",
+            ["wide"] = matchingStandard.Length == 0 ? "no_standard_match" :
+                !matchingStandard.Any(LooksLikeWideAuditBlock) ? "shape_rejected" : "created",
+            ["supplement"] = matchingStandard.Length == 0 ? "no_standard_match" :
+                !matchingStandard.Any(LooksLikeSupplementBlock) ? "shape_rejected" : "created_or_deduped",
+        };
+        var filteredBeforeGrouping = relevant.Length > 0 && relevant.All(annotation => annotation.ExcludeFromCandidateGrouping);
+        var firstLoss = relevant.Length == 0 ? "representation_missing" :
+            filteredBeforeGrouping ? "line_filter_gate" :
+            matchingStandard.Length == 0 ? "semantic_block_grouping" :
+            producers.All(pair => pair.Value.Count == 0) ? "candidate_producer" : "candidate_available";
+        var operation = relevant.Length == 0 ? "not_represented" :
+            filteredBeforeGrouping ? "filtered_before_grouping" :
+            matchingStandard.Length > 0 ? "preserved" :
+            sharedStandard.Length > 0 ? "absorbed_or_span_truncated" : "dropped_during_grouping";
+        return new PdfCandidateConstructionTrace(expected,
+            relevant.Select(annotation => new PdfCandidateConstructionSourceLine(ConstructionLineId(annotation.Line),
+                annotation.Line.Page, PdfTextUtilities.Readable(annotation.Line.Text), annotation.Reason,
+                annotation.ExcludeFromSemanticSamples, annotation.ExcludeFromCandidateGrouping,
+                annotation.Line.MatchText)).ToArray(),
+            relevant.Select(annotation => ConstructionLineId(annotation.Line)).ToArray(),
+            matchingStandard.Select(block => block.Id).Concat(sharedStandard.Select(block => block.Id)).Distinct(StringComparer.Ordinal).ToArray(),
+            matchingStandard.Concat(sharedStandard).DistinctBy(block => block.Id).Select(ToConstructionBlock).ToArray(),
+            producers, producerDecisions, operation, firstLoss);
+    }
+
+    private static IReadOnlyDictionary<string, IReadOnlyList<string>> EmptyProducers() =>
+        new Dictionary<string, IReadOnlyList<string>>(StringComparer.Ordinal)
+        {
+            ["broad"] = [], ["wide"] = [], ["supplement"] = [],
+        };
+
+    private static IReadOnlyDictionary<string, string> EmptyProducerDecisions() =>
+        new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["broad"] = "not_run", ["wide"] = "not_run", ["supplement"] = "not_run",
+        };
+
+    private static PdfCandidateConstructionBlock ToConstructionBlock(PdfSemanticBlock block) =>
+        new(block.Id, block.Page, block.LineCount, block.DisplayText, block.CanonicalText, block.HasKerningJoinEvidence,
+            block.Lines.Select(line => new PdfCandidateConstructionBlockLine(
+                PdfTextUtilities.Readable(line.Text), line.MatchText, line.FontSize, line.BoldRatio,
+                line.FontName, line.FillColorKey, line.Left, line.Y)).ToArray());
+
+    private static string ConstructionLineId(PdfLine line) => string.Create(System.Globalization.CultureInfo.InvariantCulture,
+        $"p{line.Page}:y{line.Y:R}:x{line.Left:R}");
+
+    private static string CanonicalForMatching(PdfLine line) => line.CanonicalMatchText ??
+        PdfTextUtilities.CanonicalForMatch(line.Text);
 
     private static IReadOnlyList<PdfLineBlockAnnotation> FindRawWindow(
         IReadOnlyList<PdfLineBlockAnnotation> annotations,
@@ -744,7 +1374,7 @@ public static class PdfLayoutEvidenceOutline
                 var current = ordered[start + offset];
                 if (current.Line.Page != ordered[start].Line.Page) break;
                 window.Add(current);
-                var text = PdfTextUtilities.CanonicalForMatch(string.Join(" ", window.Select(a => a.Line.Text)));
+                var text = string.Concat(window.Select(a => CanonicalForMatching(a.Line)));
                 if (text.Contains(target, StringComparison.Ordinal)) return window;
             }
         }
@@ -759,11 +1389,33 @@ public static class PdfLayoutEvidenceOutline
         return tokens.Count(t => t.Length == 1 && char.IsLetter(t[0])) / (double)tokens.Length >= 0.70;
     }
 
+    // A source block still keeps its observed text. This only prevents kerning-fragmented words
+    // with measured glyph-join evidence from being mistaken for a spaced logo by candidate shape
+    // gates; it is not a text rewrite and does not itself accept a heading.
+    internal static bool HasKerningFragmentationForAudit(PdfSemanticBlock block) =>
+        block.HasKerningJoinEvidence && Regex.IsMatch(block.DisplayText,
+            @"\b\p{Lu}\s+\p{Ll}{1,2}\s+\p{Ll}{3,}\b", RegexOptions.CultureInvariant);
+
     private static PdfLayoutAlignmentResult AlignToDocx(
         IReadOnlyList<PdfSemanticBlock> candidates,
         SlimDocument slim,
         PdfStyleClusterProfile profile,
-        string confidenceBasis)
+        string confidenceBasis) =>
+        AlignToDocx(candidates, slim, profile, confidenceBasis, trace: null);
+
+    /// <summary>
+    /// The alignment production runs, with an optional passive record of how each block reached the
+    /// paragraph it was grounded to. The sink observes this run; it never re-runs the matching, so an
+    /// audit cannot end up describing a second implementation that has drifted from this one.
+    /// </summary>
+    private static PdfLayoutAlignmentResult AlignToDocx(
+        IReadOnlyList<PdfSemanticBlock> candidates,
+        SlimDocument slim,
+        PdfStyleClusterProfile profile,
+        string confidenceBasis,
+        List<PdfDocxAlignmentTrace>? trace,
+        List<PdfDocxCanonicalParagraph>? haystacks = null,
+        IReadOnlyDictionary<string, TextOffsetSpan?>? headingSpans = null)
     {
         var paragraphs = slim.Paragraphs
             .Where(p => p.Role != ParagraphRole.Empty && !p.InTableOfContents && !string.IsNullOrWhiteSpace(p.Text))
@@ -771,6 +1423,10 @@ public static class PdfLayoutEvidenceOutline
             .Select(p => new CanonParagraph(p, CanonicalMap(p.Text)))
             .Where(p => p.Map.Text.Length > 0)
             .ToList();
+        // The exact strings the matcher searched. Recorded rather than recomputed, so an audit of how
+        // ambiguous a needle was cannot answer from a canonicalisation that has drifted from this one.
+        haystacks?.AddRange(paragraphs.Select(p =>
+            new PdfDocxCanonicalParagraph(p.Paragraph.Index, p.Map.Text)));
         var styles = candidates.Select(b => b.PrimaryStyle).Distinct()
             .OrderByDescending(s => s.FontSizeBucket)
             .ThenBy(s => s.FontName, StringComparer.Ordinal)
@@ -791,27 +1447,56 @@ public static class PdfLayoutEvidenceOutline
         {
             var needle = block.CanonicalText;
             if (needle.Length < 4) continue;
-            var match = FindMatch(paragraphs, needle, cursor, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: true) ??
-                        FindMatch(paragraphs, needle, 0, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: true) ??
-                        FindMatch(paragraphs, needle, cursor, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: false) ??
-                        FindMatch(paragraphs, needle, 0, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: false);
+            var branch = PdfDocxMatchBranch.Unmatched;
+            var match = FindMatch(paragraphs, needle, cursor, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: true);
+            if (match is not null) branch = PdfDocxMatchBranch.CursorFresh;
+            if (match is null && FindMatch(paragraphs, needle, 0, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: true) is { } fromZeroFresh)
+            {
+                match = fromZeroFresh;
+                branch = PdfDocxMatchBranch.FromZeroFresh;
+            }
+            if (match is null && FindMatch(paragraphs, needle, cursor, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: false) is { } cursorRelaxed)
+            {
+                match = cursorRelaxed;
+                branch = PdfDocxMatchBranch.CursorRelaxed;
+            }
+            if (match is null && FindMatch(paragraphs, needle, 0, block.PrimaryStyle, seen, occupiedSpans, requireFreshSpan: false) is { } fromZeroRelaxed)
+            {
+                match = fromZeroRelaxed;
+                branch = PdfDocxMatchBranch.FromZeroRelaxed;
+            }
             var directMatch = match;
             var reconstructed = directMatch is null
                 ? FindMarkerReconstruction(paragraphs, block, cursor, occupiedSpans) ??
                   FindMarkerReconstruction(paragraphs, block, 0, occupiedSpans)
                 : null;
             match ??= reconstructed?.Match;
+            var autoNumberedTitleOnly = match is null
+                ? FindAutoNumberedTitleOnlyMatch(paragraphs, block, headingSpans?.GetValueOrDefault(block.Id))
+                : null;
+            match ??= autoNumberedTitleOnly;
             if (match is null)
             {
                 var status = ParseLooseLabelledMarkerForAudit(block.Text) is null
                     ? "no-marker-for-reconstruction"
                     : "marker-reconstruction-unresolved";
                 textLayerRecoveries.Add(new PdfTextLayerRecoveryAudit(block.Id, block.Page, status));
+                trace?.Add(new PdfDocxAlignmentTrace(block.Id, needle, null, null, null,
+                    PdfDocxMatchBranch.Unmatched, false));
                 continue;
             }
             if (reconstructed is not null)
                 textLayerRecoveries.Add(new PdfTextLayerRecoveryAudit(block.Id, block.Page,
                     reconstructed.MarkerOnly ? "marker-only-span-reconstructed" : "marker-span-reconstructed"));
+            if (reconstructed is not null) branch = PdfDocxMatchBranch.MarkerReconstruction;
+            if (autoNumberedTitleOnly is not null)
+            {
+                branch = PdfDocxMatchBranch.AutoNumberedTitleOnly;
+                textLayerRecoveries.Add(new PdfTextLayerRecoveryAudit(block.Id, block.Page, "auto-numbered-title-only-anchor"));
+            }
+            trace?.Add(new PdfDocxAlignmentTrace(block.Id, needle, match.Value.Paragraph.Index,
+                match.Value.Start, match.Value.End - match.Value.Start, branch,
+                !seen.Contains((match.Value.Paragraph.Index, match.Value.Start, block.PrimaryStyle))));
             if (!seen.Add((match.Value.Paragraph.Index, match.Value.Start, block.PrimaryStyle))) continue;
             occupiedSpans.Add((match.Value.Paragraph.Index, match.Value.Start));
 
@@ -917,6 +1602,51 @@ public static class PdfLayoutEvidenceOutline
         return markerOnly && candidates.Count != 1 ? null : candidates[0];
     }
 
+    /// <summary>
+    /// B3: a candidate's PDF marker was recognized by the project's own marker authority
+    /// (<see cref="SourceFactsBuilder.FromPdfBlock"/>) but its full marker+title text never exists
+    /// verbatim in the DOCX, because the number is Word's auto-generated <c>NumberingId</c>, never
+    /// literal paragraph text - the divergence taxonomy proved this for 21/23 of 057's undelivered
+    /// occurrences. The title alone may still anchor, but only when it resolves to <em>exactly one</em>
+    /// <c>NumberingId</c>-bearing paragraph: zero or more than one is left unmatched, unchanged from
+    /// today's behavior. This is never a general strip-leading-number-and-fuzzy-match - it requires the
+    /// production marker parser to have recognized a marker at all, and it never falls back to a
+    /// paragraph without <c>NumberingId</c> or resolves an ambiguous duplicate.
+    /// </summary>
+    internal static MatchResult? FindAutoNumberedTitleOnlyMatch(IReadOnlyList<CanonParagraph> paragraphs, PdfSemanticBlock block, TextOffsetSpan? headingSpan)
+    {
+        // A WindowFragment candidate's Text is the whole window - the heading plus trailing body
+        // context the same candidate carries for the analyst. The resolved span (the span lane's own
+        // output, not a heuristic here) is what actually bounds the heading; without it, marker
+        // stripping runs over the whole window and the "title" ends up including unrelated body
+        // sentences that can never match a single DOCX paragraph.
+        var headingText = headingSpan is { } span && span.Start >= 0 && span.End > span.Start && span.End <= block.Text.Length
+            ? block.Text[span.Start..span.End]
+            : block.Text;
+
+        var marker = SourceFactsBuilder.FromPdfBlock(block with { Text = headingText }).Marker;
+        if (marker is null || string.IsNullOrEmpty(marker.Raw) || marker.Raw.Length >= headingText.Length) return null;
+
+        var titleOnly = headingText[marker.Raw.Length..].TrimStart();
+        if (titleOnly.Length < 4) return null;
+        var titleCanonical = CanonicalMap(titleOnly).Text;
+        if (titleCanonical.Length == 0) return null;
+
+        MatchResult? found = null;
+        foreach (var paragraph in paragraphs)
+        {
+            if (paragraph.Paragraph.NumberingId is null) continue;
+            var at = paragraph.Map.Text.IndexOf(titleCanonical, StringComparison.Ordinal);
+            if (at < 0) continue;
+            if (found is not null) return null; // ambiguous - more than one NumberingId paragraph matches; abstain
+            found = new MatchResult(
+                paragraph.Paragraph,
+                paragraph.Map.SourceIndexes[at],
+                paragraph.Map.SourceIndexes[at + titleCanonical.Length - 1] + 1);
+        }
+        return found;
+    }
+
     internal static string? ParseLooseLabelledMarkerForAudit(string text) =>
         TryParseLooseLabelledMarker(text)?.Canonical;
 
@@ -965,7 +1695,7 @@ public static class PdfLayoutEvidenceOutline
         return index;
     }
 
-    private static CanonMap CanonicalMap(string text)
+    internal static CanonMap CanonicalMap(string text)
     {
         var canonical = new StringBuilder(text.Length);
         var indexes = new List<int>(text.Length);
@@ -978,11 +1708,11 @@ public static class PdfLayoutEvidenceOutline
         return new CanonMap(canonical.ToString(), indexes);
     }
 
-    private sealed record CanonMap(string Text, IReadOnlyList<int> SourceIndexes);
-    private sealed record CanonParagraph(SlimParagraph Paragraph, CanonMap Map);
+    internal sealed record CanonMap(string Text, IReadOnlyList<int> SourceIndexes);
+    internal sealed record CanonParagraph(SlimParagraph Paragraph, CanonMap Map);
     private readonly record struct LooseLabelledMarker(string Canonical);
     private sealed record MarkerReconstruction(MatchResult Match, string HeadingText, bool MarkerOnly);
-    private readonly record struct MatchResult(SlimParagraph Paragraph, int Start, int End);
+    internal readonly record struct MatchResult(SlimParagraph Paragraph, int Start, int End);
     private sealed record PdfLayoutAlignmentResult(
         IReadOnlyList<HeadingRecord> Headings,
         IReadOnlySet<string> AlignedBlockIds,
@@ -1008,3 +1738,89 @@ internal sealed record PdfAnalystCandidateSelection(
     int Available,
     int AvailablePages,
     int SelectedPages);
+
+/// <summary>Diagnostic view over one ranking build. Production consumes only the audit.</summary>
+internal sealed record PdfCandidateRankingSnapshot(
+    PdfCandidateRankingAudit Audit,
+    IReadOnlyDictionary<string, PdfCandidateProvenance> Provenance,
+    IReadOnlyList<PdfSemanticBlock> CandidateBlocks,
+    IReadOnlyList<PdfLineBlockAnnotation> Annotations,
+    IReadOnlyList<PdfLine> Lines);
+
+/// <summary>
+/// Which source lines a candidate was built from. Only observed facts: no scoring, no text, and no
+/// judgement about whether the candidate is a heading.
+/// </summary>
+internal sealed record PdfCandidateProvenance(
+    string CandidateSourceId,
+    IReadOnlyList<int> LineIndexes,
+    IReadOnlyList<string> LineIds,
+    PdfCandidateRepresentationKind RepresentationKind)
+{
+    public static string LineId(PdfLine line) => string.Create(
+        System.Globalization.CultureInfo.InvariantCulture,
+        $"{line.Page}|{line.Y:R}|{line.Left:R}|{line.Right:R}|{line.Text}");
+
+    /// <summary>
+    /// A candidate represents an occurrence when it was built from the lines that occurrence is made
+    /// of. It may carry more - a window also holding the body text that follows still represents the
+    /// heading - so this is containment of the required lines, never a text comparison.
+    /// </summary>
+    public bool Covers(IEnumerable<int> requiredLineIndexes) =>
+        requiredLineIndexes.All(LineIndexes.Contains);
+}
+
+internal enum PdfCandidateRepresentationKind
+{
+    StandardBlock,
+    WindowFragment,
+}
+
+/// <summary>One production alignment run plus a passive record of how it reached each paragraph.</summary>
+internal sealed record PdfDocxAlignmentSnapshot(
+    string Status,
+    int CandidateCount,
+    IReadOnlyList<HeadingRecord> Headings,
+    IReadOnlyList<PdfDocxAlignmentTrace> Trace,
+    IReadOnlyList<PdfDocxCanonicalParagraph> Haystacks,
+    SlimDocument Document);
+
+/// <summary>A paragraph exactly as the matcher saw it.</summary>
+internal sealed record PdfDocxCanonicalParagraph(int Index, string CanonicalText);
+
+/// <summary>
+/// What the matcher was given and what it chose. Observed facts only: whether the choice was a good
+/// one is a judgement for evaluation to derive, not a field to assert here.
+/// </summary>
+internal sealed record PdfDocxAlignmentTrace(
+    string SourceBlockId,
+    string Needle,
+    int? ParagraphIndex,
+    int? Start,
+    int? Length,
+    PdfDocxMatchBranch Branch,
+    bool Accepted);
+
+/// <summary>
+/// Which population the matcher was run over. The analyst lanes decide their accepted blocks with a
+/// model, so no offline run can reproduce one; <see cref="RetrievalPopulation"/> exercises the same
+/// matcher over the retrieval superset instead. Rates measured there describe the matcher, not
+/// production - production aligns a subset of it.
+/// </summary>
+internal enum PdfDocxAlignmentPopulation
+{
+    NarrowRoute,
+    RetrievalPopulation,
+}
+
+/// <summary>Which of the matcher's existing attempts produced the match.</summary>
+internal enum PdfDocxMatchBranch
+{
+    Unmatched,
+    CursorFresh,
+    FromZeroFresh,
+    CursorRelaxed,
+    FromZeroRelaxed,
+    MarkerReconstruction,
+    AutoNumberedTitleOnly,
+}

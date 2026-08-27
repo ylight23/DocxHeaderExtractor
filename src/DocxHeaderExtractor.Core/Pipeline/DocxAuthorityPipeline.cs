@@ -31,6 +31,7 @@ internal static class DocxAuthorityPipeline
                 source.Contexts[decision.Id].Scope, "docx-source-pointer-span"))
             .ToArray();
         var markerStructures = PdfHierarchyResolver.Resolve(validated, source.ModelContexts);
+        var hierarchyFacts = PdfHierarchyFactsInventory.Inspect(validated, source.ModelContexts);
         var semanticHierarchy = await PdfSemanticHierarchyFallback.ResolveAsync(analyst, validated, markerStructures, source.ModelContexts, ct);
         var structures = semanticHierarchy.Structures.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
         var byId = source.Contexts;
@@ -75,6 +76,7 @@ internal static class DocxAuthorityPipeline
             CandidateStageTraces = traces,
             ValidatedStructures = semanticHierarchy.Structures,
             HierarchyProposals = semanticHierarchy.Audit,
+            HierarchyFacts = hierarchyFacts,
         };
         return new DocxAuthorityPipelineResult(headings, audit);
     }

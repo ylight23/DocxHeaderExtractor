@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_round6_frozen_semantic_execution_manifest",
+  "phase": "round6b",
+  "modelCallsAllowed": true,
+  "frozenProfile": {
+    "command": "pdf-stage-eval",
+    "backend": "OpenRouter",
+    "model": "qwen/qwen3.5-9b",
+    "wideCandidates": true,
+    "supplementCandidates": true,
+    "analystBlocks": 160,
+    "semanticConcurrency": 2,
+    "semanticRequestTimeoutSeconds": 90,
+    "semanticBatchTimeoutSeconds": 120,
+    "semanticLaneDeadlineSeconds": 300,
+    "visualRegions": 0,
+    "roleAndSpanCheckpoint": true,
+    "retry": false
+  },
+  "documents": ["004", "030", "043", "058"],
+  "selectionIdentity": "documentSha256 + page + sourceLineIds + sourceSpan; candidateId is diagnostic only",
+  "outcomeDrivenRetry": false,
+  "remediation": false
+}

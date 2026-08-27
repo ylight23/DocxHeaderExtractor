@@ -1,0 +1,2319 @@
+{
+  "schemaVersion": 4,
+  "artifactKind": "pdf_hierarchy_facts",
+  "usesGold": false,
+  "generation": {
+    "codeRevision": "573d018ef6d0b6f83b137665b9f701347e7b38fd",
+    "backend": "OpenRouter",
+    "model": "qwen/qwen3.5-9b",
+    "promptSha256": "6c5c9cfb8d13e5e0e40d57c9810d70143d4ccdbe6489c462fde43fa9e61fc02c",
+    "routeConfigSha256": "e46e1e8fe139d2ed3652a15f7008fb31e30736572592ac67e7f96c77c70ce675"
+  },
+  "rows": [
+    {
+      "file": "057_Quantitative_Methods_in_Finance_Lecture_Notes.docx",
+      "sourceDocumentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "occurrenceFingerprint": "4bb88e1f79a2d717eff7c0f919ded1afdfde02c3b238ab1da0f35aeaff0b08df",
+      "counters": {
+        "validatedHeadings": 42,
+        "markerPathFacts": 27,
+        "deterministicLevelResolved": 10,
+        "deterministicParentResolved": 2,
+        "unresolvedRelationships": 40,
+        "conflicts": "not_measured"
+      },
+      "items": [
+        {
+          "factId": "p13:s-window-1116:s0-36",
+          "sourceFactId": "s-window-1116",
+          "sourceOrder": 0,
+          "page": 13,
+          "sourceBlockText": "77 Univariate ARMA-GARCH model 470 77. 1 Explore for the best ARMA-GARCH . . . . . . . . . . . . . . . . . . . . . . . . . 472",
+          "sourceBlockTextSha256": "4af75e22435ae632966617c93347a6b2832ae86e8d6fb4c2402c599206e087d8",
+          "headingSpan": {
+            "start": 0,
+            "end": 36
+          },
+          "headingText": "77 Univariate ARMA-GARCH model 470 7",
+          "lineIds": [
+            "13|496.6828209583337|72.50181860000001|524.0076494000001|77 Univariate ARMA-GARCH model 470",
+            "13|481.84949015000046|88.8710005|522.7149983999996|77. 1 Explore for the best ARMA-GARCH . . . . . . . . . . . . . . . . . . . . . . . . . 472"
+          ],
+          "geometry": {
+            "left": 72.50181860000001,
+            "topY": 496.6828209583337,
+            "right": 524.0076494000001,
+            "bottomY": 481.84949015000046
+          },
+          "structuralScope": "document_body",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 1,
+          "markerPath": "77",
+          "markerComponents": [
+            77
+          ],
+          "previousValidatedId": null,
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": 1,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:document_body",
+            "regime:document_body",
+            "source_order:first",
+            "marker:arabic",
+            "marker_depth:1"
+          ]
+        },
+        {
+          "factId": "p26:s-window-2150:s0-40",
+          "sourceFactId": "s-window-2150",
+          "sourceOrder": 1,
+          "page": 26,
+          "sourceBlockText": "Step 7: Open a Pull Request (PR) . On Git Hub: 1. Go to your fork on Git Hub.",
+          "sourceBlockTextSha256": "dc1ce53f0f231ee152f70b17ef9bfe22cc20f1e8f6a6314c29ab684373d12ee0",
+          "headingSpan": {
+            "start": 0,
+            "end": 40
+          },
+          "headingText": "Step 7: Open a Pull Request (PR) . On Gi",
+          "lineIds": [
+            "26|461.48227517083353|72.5345459|316.5012946599999|Step 7: Open a Pull Request (PR) . On GitHub:",
+            "26|438.99485207391325|86.3836372|230.11866607000002|1. Go to your fork on GitHub.",
+            "26|416.3678101814816|85.9145459|253.05832154999993|2. Click Compare & pull request."
+          ],
+          "geometry": {
+            "left": 72.5345459,
+            "topY": 461.48227517083353,
+            "right": 316.5012946599999,
+            "bottomY": 438.99485207391325
+          },
+          "structuralScope": "document_body",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "s-window-1116",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:document_body",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p49:s-window-3713:s0-48",
+          "sourceFactId": "s-window-3713",
+          "sourceOrder": 2,
+          "page": 49,
+          "sourceBlockText": "9.2 Compute the area of an ellipse We draw an ellipse:",
+          "sourceBlockTextSha256": "79738debb147cb77cb3e3459a560d9291b3522b72cc59efb98f27cc125cb9115",
+          "headingSpan": {
+            "start": 0,
+            "end": 48
+          },
+          "headingText": "9.2 Compute the area of an ellipse We draw an el",
+          "lineIds": [
+            "49|537.4696214857144|72.56189439999997|267.81541632000005|9.2 Compute the area of an ellipse",
+            "49|516.5164113687501|72.19636379999997|163.59498541999997|We draw an ellipse:"
+          ],
+          "geometry": {
+            "left": 72.19636379999997,
+            "topY": 537.4696214857144,
+            "right": 267.81541632000005,
+            "bottomY": 516.5164113687501
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "9.2",
+          "markerComponents": [
+            9,
+            2
+          ],
+          "previousValidatedId": "s-window-2150",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p51:s-window-3765:s0-39",
+          "sourceFactId": "s-window-3765",
+          "sourceOrder": 3,
+          "page": 51,
+          "sourceBlockText": "9.4 Approximate the derivative of a function Remember that the derivative f′ (x) of a function f() at x is in fact a rate of change defined as:",
+          "sourceBlockTextSha256": "e455f3faa2940df6859c18a34b2d28473f12eae2b03fa2ea8b6e95dfad2a78c1",
+          "headingSpan": {
+            "start": 0,
+            "end": 39
+          },
+          "headingText": "9.4 Approximate the derivative of a fun",
+          "lineIds": [
+            "51|531.9915661473684|72.5618944|322.5750144000001|9.4 Approximate the derivative of a function",
+            "51|511.09822584740283|72.4581822|522.2998824499994|Remember that the derivative f′ (x) of a function f() at x is in fact a rate of change defined as:"
+          ],
+          "geometry": {
+            "left": 72.4581822,
+            "topY": 531.9915661473684,
+            "right": 522.2998824499994,
+            "bottomY": 511.09822584740283
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "9.4",
+          "markerComponents": [
+            9,
+            4
+          ],
+          "previousValidatedId": "s-window-3713",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p53:s-window-3875:s0-36",
+          "sourceFactId": "s-window-3875",
+          "sourceOrder": 4,
+          "page": 53,
+          "sourceBlockText": "10.0. 1 The Role of Sample Size To illustrate 10 how empirical sampling approaches theoretical distributions we consider the",
+          "sourceBlockTextSha256": "6d4257055f4bc6f0acc2f15fc902fe68b7bcf7fafb601cf6d31aa381c40d7537",
+          "headingSpan": {
+            "start": 0,
+            "end": 36
+          },
+          "headingText": "10.0. 1 The Role of Sample Size To i",
+          "lineIds": [
+            "53|334.1852570540006|72.9272735|232.53504287000013|10.0. 1 The Role of Sample Size",
+            "53|313.450831561729|72.3927276|522.9624051299995|To illustrate10 how empirical sampling approaches theoretical distributions we consider the",
+            "53|299.9579800827874|72.34909119999999|407.14718837999953|standard normal distribution N(0 1) with probability density function"
+          ],
+          "geometry": {
+            "left": 72.3927276,
+            "topY": 334.1852570540006,
+            "right": 522.9624051299995,
+            "bottomY": 313.450831561729
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "10.0",
+          "markerComponents": [
+            10,
+            0
+          ],
+          "previousValidatedId": "s-window-3765",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p63:s-window-4365:s0-33",
+          "sourceFactId": "s-window-4365",
+          "sourceOrder": 5,
+          "page": 63,
+          "sourceBlockText": "11.3. 1 Matrix and vector multiplication We create 14 a vector with its index as the matrix column names and we can then perform a",
+          "sourceBlockTextSha256": "34eed725e00e31ef5ff352a3b9f57bfbbceff81a7ea67226d4f6942df4c912dd",
+          "headingSpan": {
+            "start": 0,
+            "end": 33
+          },
+          "headingText": "11.3. 1 Matrix and vector multipl",
+          "lineIds": [
+            "63|509.1546777585715|72.92727350000001|269.33580081|11.3. 1 Matrix and vector multiplication",
+            "63|488.44918525633824|72.19636380000001|523.1960521899997|We create14 a vector with its index as the matrix column names and we can then perform a"
+          ],
+          "geometry": {
+            "left": 72.19636380000001,
+            "topY": 509.1546777585715,
+            "right": 523.1960521899997,
+            "bottomY": 488.44918525633824
+          },
+          "structuralScope": "document_body",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "11.3",
+          "markerComponents": [
+            11,
+            3
+          ],
+          "previousValidatedId": "s-window-3875",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:document_body",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p69:s-window-4767:s0-19",
+          "sourceFactId": "s-window-4767",
+          "sourceOrder": 6,
+          "page": 69,
+          "sourceBlockText": "12.3 Cleaning the imported data set The data set that has been imported and is stored into the Data Frame named df is not clean.",
+          "sourceBlockTextSha256": "4ca4fe7c20534ecae9713c600e81c060ffbb96db27590ef7e98cb44724868180",
+          "headingSpan": {
+            "start": 0,
+            "end": 19
+          },
+          "headingText": "12.3 Cleaning the i",
+          "lineIds": [
+            "69|456.89537717333366|73.0640128|276.8344192000001|12.3 Cleaning the imported data set",
+            "69|435.9344937675677|72.3927276|517.2996438099995|The data set that has been imported and is stored into the DataFrame named df is not clean."
+          ],
+          "geometry": {
+            "left": 72.3927276,
+            "topY": 456.89537717333366,
+            "right": 517.2996438099995,
+            "bottomY": 435.9344937675677
+          },
+          "structuralScope": "document_body",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "12.3",
+          "markerComponents": [
+            12,
+            3
+          ],
+          "previousValidatedId": "s-window-4365",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:document_body",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p85:s-window-5585:s0-47",
+          "sourceFactId": "s-window-5585",
+          "sourceOrder": 7,
+          "page": 85,
+          "sourceBlockText": "15.8. 1 Calculating Conditional Probabilities The conditional probability of observing W, A, and E given the sex can be represented as:",
+          "sourceBlockTextSha256": "30b2b7eaa5efa5d57c7e47201d730633f64d46f682a5bca54498324098c4682a",
+          "headingSpan": {
+            "start": 0,
+            "end": 47
+          },
+          "headingText": "15.8. 1 Calculating Conditional Probabilities T",
+          "lineIds": [
+            "85|323.820089067073|72.9272735|290.4296365700001|15.8. 1 Calculating Conditional Probabilities",
+            "85|302.8011128027028|72.3927276|502.8439953999995|The conditional probability of observing W, A, and E given the sex can be represented as:"
+          ],
+          "geometry": {
+            "left": 72.3927276,
+            "topY": 323.820089067073,
+            "right": 502.8439953999995,
+            "bottomY": 302.8011128027028
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "15.8",
+          "markerComponents": [
+            15,
+            8
+          ],
+          "previousValidatedId": "s-window-4767",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p130:s-line-3399:s0-28",
+          "sourceFactId": "s-line-3399",
+          "sourceOrder": 8,
+          "page": 130,
+          "sourceBlockText": "Step 0: Notation. Let π(n) be the average annual CPI inflation from t to t + n. For a",
+          "sourceBlockTextSha256": "69bc3f14abf911ba3c3541eb5877eedb49d12df58f1a88c3ea550c4551e64a30",
+          "headingSpan": {
+            "start": 0,
+            "end": 28
+          },
+          "headingText": "Step 0: Notation. Let π(n) b",
+          "lineIds": [
+            "130|476.13888661742425|72.53454590000003|523.1971032699997|Step 0: Notation. Let π(n) be the average annual CPI inflation from t to t + n. For a"
+          ],
+          "geometry": {
+            "left": 72.53454590000003,
+            "topY": 476.13888661742425,
+            "right": 523.1971032699997,
+            "bottomY": 476.13888661742425
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "s-window-5585",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p130:b2252:s0-66",
+          "sourceFactId": "b2252",
+          "sourceOrder": 9,
+          "page": 130,
+          "sourceBlockText": "Step 1: Pricing under the forward measure (foundation in (Ross, 1976 b)) . Let y(n) be the",
+          "sourceBlockTextSha256": "ed39e4d9a32dea96a45c01cda90af813c02e3d41d540ddd66c1f6ae3dafe828b",
+          "headingSpan": {
+            "start": 0,
+            "end": 66
+          },
+          "headingText": "Step 1: Pricing under the forward measure (foundation in (Ross, 19",
+          "lineIds": [
+            "130|389.93878863310835|72.53454590000005|522.96473944|Step 1: Pricing under the forward measure (foundation in (Ross, 1976b)) . Let y(n) be the"
+          ],
+          "geometry": {
+            "left": 72.53454590000005,
+            "topY": 389.93878863310835,
+            "right": 522.96473944,
+            "bottomY": 389.93878863310835
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "s-line-3399",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p130:b2254:s0-87",
+          "sourceFactId": "b2254",
+          "sourceOrder": 10,
+          "page": 130,
+          "sourceBlockText": "Step 2: Breeden–Litzenberger identity on strikes (Breeden and Litzenberger, 1978; Ross,",
+          "sourceBlockTextSha256": "604b4b2f0d8c7a976745266e5f9f489957e1931bd2886cc9b1cc8bef63f32c00",
+          "headingSpan": {
+            "start": 0,
+            "end": 87
+          },
+          "headingText": "Step 2: Breeden–Litzenberger identity on strikes (Breeden and Litzenberger, 1978; Ross,",
+          "lineIds": [
+            "130|312.2381924636363|72.53454590000011|522.2327388300001|Step 2: Breeden–Litzenberger identity on strikes (Breeden and Litzenberger, 1978; Ross,"
+          ],
+          "geometry": {
+            "left": 72.53454590000011,
+            "topY": 312.2381924636363,
+            "right": 522.2327388300001,
+            "bottomY": 312.2381924636363
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "b2252",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p130:b2259:s0-66",
+          "sourceFactId": "b2259",
+          "sourceOrder": 11,
+          "page": 130,
+          "sourceBlockText": "Step 3: Chain rule to work in inflation strike k. Since K = (1 + k)n define P(k) ≡ Pt (k n) =",
+          "sourceBlockTextSha256": "76b707d2ba5fc5dc2389542a7b08d7a7fcea4e50c0fc79663f6b533edfea1970",
+          "headingSpan": {
+            "start": 0,
+            "end": 66
+          },
+          "headingText": "Step 3: Chain rule to work in inflation strike k. Since K = (1 + k",
+          "lineIds": [
+            "130|213.9473133637681|72.5345459|522.6567579399999|Step 3: Chain rule to work in inflation strike k. Since K = (1 + k)n define P(k) ≡ Pt (k n) ="
+          ],
+          "geometry": {
+            "left": 72.5345459,
+            "topY": 213.9473133637681,
+            "right": 522.6567579399999,
+            "bottomY": 213.9473133637681
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "b2254",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p131:b2265:s0-5",
+          "sourceFactId": "b2265",
+          "sourceOrder": 12,
+          "page": 131,
+          "sourceBlockText": "Step 5: Local polynomial regression to estimate derivatives (Aıt-Sahalia and Duarte, 2003) .",
+          "sourceBlockTextSha256": "c6528af2510b9b8c1fcf820217bc28cb6414f7dbe89a5d04a2788042e82ed411",
+          "headingSpan": {
+            "start": 0,
+            "end": 5
+          },
+          "headingText": "Step ",
+          "lineIds": [
+            "131|678.7888660237502|72.5345459|522.23273883|Step 5: Local polynomial regression to estimate derivatives (Aıt-Sahalia and Duarte, 2003) ."
+          ],
+          "geometry": {
+            "left": 72.5345459,
+            "topY": 678.7888660237502,
+            "right": 522.23273883,
+            "bottomY": 678.7888660237502
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "b2259",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p131:b2271:s0-5",
+          "sourceFactId": "b2271",
+          "sourceOrder": 13,
+          "page": 131,
+          "sourceBlockText": "Step 6: Putting it together with discounting (Gürkaynak et al. , 2007) . Obtain y(n) from",
+          "sourceBlockTextSha256": "4dc77543fe544a2773b44dc5be2c332d16ee75ba4421ec90d0c8a5898cc5040e",
+          "headingSpan": {
+            "start": 0,
+            "end": 5
+          },
+          "headingText": "Step ",
+          "lineIds": [
+            "131|530.4111227790543|72.53454590000005|523.0192849399999|Step 6: Putting it together with discounting (Gürkaynak et al. , 2007) . Obtain y(n) from"
+          ],
+          "geometry": {
+            "left": 72.53454590000005,
+            "topY": 530.4111227790543,
+            "right": 523.0192849399999,
+            "bottomY": 530.4111227790543
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "b2265",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p133:b2297:s0-13",
+          "sourceFactId": "b2297",
+          "sourceOrder": 14,
+          "page": 133,
+          "sourceBlockText": "Step 1. Null hypothesis. We want to test",
+          "sourceBlockTextSha256": "3104369c9f80dcbf8c6bb515db10baed1c3090b2e5691cb2cdb94aced1874d89",
+          "headingSpan": {
+            "start": 0,
+            "end": 13
+          },
+          "headingText": "Step 1. Null ",
+          "lineIds": [
+            "133|602.1034651303032|72.5345459|279.41580921|Step 1. Null hypothesis. We want to test"
+          ],
+          "geometry": {
+            "left": 72.5345459,
+            "topY": 602.1034651303032,
+            "right": 279.41580921,
+            "bottomY": 602.1034651303032
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "b2271",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p133:b2299:s0-13",
+          "sourceFactId": "b2299",
+          "sourceOrder": 15,
+          "page": 133,
+          "sourceBlockText": "Step 2. Standardization. From the data we compute the sample mean and variance:",
+          "sourceBlockTextSha256": "4fdef54a050361888aebb81d17c94d36503d5bd073014f4c1e9afe9227c69bd7",
+          "headingSpan": {
+            "start": 0,
+            "end": 13
+          },
+          "headingText": "Step 2. Stand",
+          "lineIds": [
+            "133|526.2174785029852|72.53454590000003|483.0810698399996|Step 2. Standardization. From the data we compute the sample mean and variance:"
+          ],
+          "geometry": {
+            "left": 72.53454590000003,
+            "topY": 526.2174785029852,
+            "right": 483.0810698399996,
+            "bottomY": 526.2174785029852
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "b2297",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p133:b2306:s0-13",
+          "sourceFactId": "b2306",
+          "sourceOrder": 16,
+          "page": 133,
+          "sourceBlockText": "Step 3. Empirical distribution. Order the standardized data:",
+          "sourceBlockTextSha256": "37f24b80b54bcc997023240d1c0eda67e31f66d923aac5bf50d6493aa6516bf7",
+          "headingSpan": {
+            "start": 0,
+            "end": 13
+          },
+          "headingText": "Step 3. Empir",
+          "lineIds": [
+            "133|414.9527554415094|72.5345459|371.60534057999973|Step 3. Empirical distribution. Order the standardized data:"
+          ],
+          "geometry": {
+            "left": 72.5345459,
+            "topY": 414.9527554415094,
+            "right": 371.60534057999973,
+            "bottomY": 414.9527554415094
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "b2299",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p133:b2315:s0-14",
+          "sourceFactId": "b2315",
+          "sourceOrder": 17,
+          "page": 133,
+          "sourceBlockText": "Step 6. Decision rule. Reject H 0 at significance level α if",
+          "sourceBlockTextSha256": "c18b9987dc3b12f37fa2ecba67c9db5345a8668b973465762becd07ed145ff74",
+          "headingSpan": {
+            "start": 0,
+            "end": 14
+          },
+          "headingText": "Step 6. Decisi",
+          "lineIds": [
+            "133|169.31874867500002|72.53454589999994|355.7771848699998|Step 6. Decision rule. Reject H0 at significance level α if"
+          ],
+          "geometry": {
+            "left": 72.53454589999994,
+            "topY": 169.31874867500002,
+            "right": 355.7771848699998,
+            "bottomY": 169.31874867500002
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "b2306",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p134:s-window-7988:s0-50",
+          "sourceFactId": "s-window-7988",
+          "sourceOrder": 18,
+          "page": 134,
+          "sourceBlockText": "22.4 Chi-Square Goodness-of-Fit Test The chi-square test tests if a sample of data came from a population with a specific distribution.",
+          "sourceBlockTextSha256": "06fe380bc7198ea0aed6ba6c7547092be54c54b6ea67be63e955150ab288c630",
+          "headingSpan": {
+            "start": 0,
+            "end": 50
+          },
+          "headingText": "22.4 Chi-Square Goodness-of-Fit Test The chi-squar",
+          "lineIds": [
+            "134|179.4160796121212|72.5738496|285.5210675200001|22.4 Chi-Square Goodness-of-Fit Test",
+            "134|158.29631542407407|72.3927276|522.3036479799994|The chi-square test tests if a sample of data came from a population with a specific distribution.",
+            "134|144.8887766333334|72.3927276|438.9799789499996|The null hypothesis of the test is H0 : the data follow a specified distribution."
+          ],
+          "geometry": {
+            "left": 72.3927276,
+            "topY": 179.4160796121212,
+            "right": 522.3036479799994,
+            "bottomY": 158.29631542407407
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "22.4",
+          "markerComponents": [
+            22,
+            4
+          ],
+          "previousValidatedId": "b2315",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p140:s-window-8422:s0-54",
+          "sourceFactId": "s-window-8422",
+          "sourceOrder": 19,
+          "page": 140,
+          "sourceBlockText": "23.2 Classical linear regression assumptions We state the standard assumptions underlying OLS in the cross-sectional case.",
+          "sourceBlockTextSha256": "5330dd6eba2d573afdd41148eabe71789a30dd6bd30e8ed2397e4c366392c037",
+          "headingSpan": {
+            "start": 0,
+            "end": 54
+          },
+          "headingText": "23.2 Classical linear regression assumptions We state ",
+          "lineIds": [
+            "140|273.7121776000003|72.57384960000006|316.4144998400002|23.2 Classical linear regression assumptions",
+            "140|252.73849207985117|72.19636380000006|445.6759477599997|We state the standard assumptions underlying OLS in the cross-sectional case."
+          ],
+          "geometry": {
+            "left": 72.19636380000006,
+            "topY": 273.7121776000003,
+            "right": 445.6759477599997,
+            "bottomY": 252.73849207985117
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "23.2",
+          "markerComponents": [
+            23,
+            2
+          ],
+          "previousValidatedId": "s-window-7988",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p142:s-window-8501:s0-33",
+          "sourceFactId": "s-window-8501",
+          "sourceOrder": 20,
+          "page": 142,
+          "sourceBlockText": "23.5 Deriving β1 and showing E(β1 ) = β1 Consider the simple linear regression model",
+          "sourceBlockTextSha256": "5393bee20f4562b558ea638b4154428d7717186595bb75a331f69951515fb249",
+          "headingSpan": {
+            "start": 0,
+            "end": 33
+          },
+          "headingText": "23.5 Deriving β1 and showing E(β1",
+          "lineIds": [
+            "142|599.8868010609378|72.57384960000003|298.8356347|23.5 Deriving β1 and showing E(β1 ) = β1",
+            "142|579.1050884144739|72.60000050000002|278.38053562000005|Consider the simple linear regression model"
+          ],
+          "geometry": {
+            "left": 72.57384960000003,
+            "topY": 599.8868010609378,
+            "right": 298.8356347,
+            "bottomY": 579.1050884144739
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "23.5",
+          "markerComponents": [
+            23,
+            5
+          ],
+          "previousValidatedId": "s-window-8422",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p142:b2502:s0-36",
+          "sourceFactId": "b2502",
+          "sourceOrder": 21,
+          "page": 142,
+          "sourceBlockText": "Step 1: First-order conditions (FOC)",
+          "sourceBlockTextSha256": "300581eec48e296dbf6b957aa179880e47b13f3edef95da28c13d60c8949052f",
+          "headingSpan": {
+            "start": 0,
+            "end": 36
+          },
+          "headingText": "Step 1: First-order conditions (FOC)",
+          "lineIds": [
+            "142|458.95487752656237|72.53454590000011|255.30124366000018|Step 1: First-order conditions (FOC)"
+          ],
+          "geometry": {
+            "left": 72.53454590000011,
+            "topY": 458.95487752656237,
+            "right": 255.30124366000018,
+            "bottomY": 458.95487752656237
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "s-window-8501",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p154:s-window-9350:s0-36",
+          "sourceFactId": "s-window-9350",
+          "sourceOrder": 22,
+          "page": 154,
+          "sourceBlockText": "24. 1. 1 Concept of Integration of order d If ∆ is the difference operator defined as ∆yt = yt − yt− 1 , ∆2 yt = ∆(∆yt) , etc., we say that yt is",
+          "sourceBlockTextSha256": "98ef2ece2093a2e0c604862251318c79499701cb349ae0873c899b01d7d182ba",
+          "headingSpan": {
+            "start": 0,
+            "end": 36
+          },
+          "headingText": "24. 1. 1 Concept of Integration of o",
+          "lineIds": [
+            "154|280.08448899558834|72.5127277|274.90162363000013|24. 1. 1 Concept of Integration of order d",
+            "154|259.07336337133347|72.4036367|522.9017330400001|If ∆ is the difference operator defined as ∆yt = yt − yt− 1 , ∆2yt = ∆(∆yt) , etc., we say that yt is",
+            "154|245.7549780786586|72.8945462|522.3010017|integrated of order d or I(d) if yt , ∆yt , . . ., ∆d− 1 yt are non-stationary and ∆dyt is stationary79 ."
+          ],
+          "geometry": {
+            "left": 72.4036367,
+            "topY": 280.08448899558834,
+            "right": 522.9017330400001,
+            "bottomY": 259.07336337133347
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 1,
+          "markerPath": "24",
+          "markerComponents": [
+            24
+          ],
+          "previousValidatedId": "b2502",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": 1,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:1"
+          ]
+        },
+        {
+          "factId": "p161:s-window-9671:s0-38",
+          "sourceFactId": "s-window-9671",
+          "sourceOrder": 23,
+          "page": 161,
+          "sourceBlockText": "24.7. 1 Thorough augmented Dickey-Fuller test If no obvious conclusion can be taken from observations of the data set, then we can resort to",
+          "sourceBlockTextSha256": "1ecb43db489b686f471e8e9f61ef2739346b3f8768ce3d92475f8791d6e3bade",
+          "headingSpan": {
+            "start": 0,
+            "end": 38
+          },
+          "headingText": "24.7. 1 Thorough augmented Dickey-Full",
+          "lineIds": [
+            "161|566.9390478362502|72.5127277|307.7991055900001|24.7. 1 Thorough augmented Dickey-Fuller test",
+            "161|546.1982738051946|72.4036367|522.9461939699996|If no obvious conclusion can be taken from observations of the data set, then we can resort to",
+            "161|532.6249352526318|72.4690913|498.7378101599996|a thorough procedure for the augmented Dickey-Fuller test, with three competing models:"
+          ],
+          "geometry": {
+            "left": 72.4036367,
+            "topY": 566.9390478362502,
+            "right": 522.9461939699996,
+            "bottomY": 546.1982738051946
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "24.7",
+          "markerComponents": [
+            24,
+            7
+          ],
+          "previousValidatedId": "s-window-9350",
+          "markerPrefixParentCandidate": "s-window-9350",
+          "resolvedLevel": 2,
+          "parentResolution": "marker_prefix_parent_candidate",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "marker_prefix_parent_candidate"
+          ]
+        },
+        {
+          "factId": "p161:s-window-9703:s0-42",
+          "sourceFactId": "s-window-9703",
+          "sourceOrder": 24,
+          "page": 161,
+          "sourceBlockText": "24.8 Illustration of a spurious regression We can define two time series as in (Granger and Newbold 1974) :",
+          "sourceBlockTextSha256": "0dab314254ca2b035d755d73fef16f313036daf6d1a9f0ebe6fa00d29cac44cd",
+          "headingSpan": {
+            "start": 0,
+            "end": 42
+          },
+          "headingText": "24.8 Illustration of a spurious regression",
+          "lineIds": [
+            "161|237.95598758918956|72.57384960000009|297.3579110400002|24.8 Illustration of a spurious regression",
+            "161|217.10492214019652|72.19636380000009|385.86571609999976|We can define two time series as in (Granger and Newbold 1974) :"
+          ],
+          "geometry": {
+            "left": 72.19636380000009,
+            "topY": 237.95598758918956,
+            "right": 385.86571609999976,
+            "bottomY": 217.10492214019652
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "24.8",
+          "markerComponents": [
+            24,
+            8
+          ],
+          "previousValidatedId": "s-window-9671",
+          "markerPrefixParentCandidate": "s-window-9350",
+          "resolvedLevel": 2,
+          "parentResolution": "marker_prefix_parent_candidate",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "marker_prefix_parent_candidate"
+          ]
+        },
+        {
+          "factId": "p194:s-window-11773:s0-52",
+          "sourceFactId": "s-window-11773",
+          "sourceOrder": 25,
+          "page": 194,
+          "sourceBlockText": "30. 13. 1 Setup: mean and variance equations Let yt denote (demeaned) asset returns. A standard decomposition writes",
+          "sourceBlockTextSha256": "062e5dc2d50698e97ba668a1c72dabf34d99c8c432deecdd5fc2843f52443240",
+          "headingSpan": {
+            "start": 0,
+            "end": 52
+          },
+          "headingText": "30. 13. 1 Setup: mean and variance equations Let yt ",
+          "lineIds": [
+            "194|265.27581552432434|72.50181860000001|297.00673296|30. 13. 1 Setup: mean and variance equations",
+            "194|244.62717648548391|72.4581822|422.7482656599997|Let yt denote (demeaned) asset returns. A standard decomposition writes"
+          ],
+          "geometry": {
+            "left": 72.4581822,
+            "topY": 265.27581552432434,
+            "right": 422.7482656599997,
+            "bottomY": 244.62717648548391
+          },
+          "structuralScope": "document_body",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 1,
+          "markerPath": "30",
+          "markerComponents": [
+            30
+          ],
+          "previousValidatedId": "s-window-9703",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": 1,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:document_body",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:1"
+          ]
+        },
+        {
+          "factId": "p204:s-window-12396:s0-48",
+          "sourceFactId": "s-window-12396",
+          "sourceOrder": 26,
+          "page": 204,
+          "sourceBlockText": "31.3.2 Building two cointegrated time series We suggest to build two cointegrated time series with the system of equations:",
+          "sourceBlockTextSha256": "f1281c55a253c9252232660e5c468aa03a3eb0a1f8c9292feb1174de727647b6",
+          "headingSpan": {
+            "start": 0,
+            "end": 48
+          },
+          "headingText": "31.3.2 Building two cointegrated time series We ",
+          "lineIds": [
+            "204|496.83991848717983|72.50181860000001|294.48891268000006|31.3.2 Building two cointegrated time series",
+            "204|476.086555988637|72.1963638|444.5043104199997|We suggest to build two cointegrated time series with the system of equations:"
+          ],
+          "geometry": {
+            "left": 72.1963638,
+            "topY": 496.83991848717983,
+            "right": 444.5043104199997,
+            "bottomY": 476.086555988637
+          },
+          "structuralScope": "document_body",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 3,
+          "markerPath": "31.3.2",
+          "markerComponents": [
+            31,
+            3,
+            2
+          ],
+          "previousValidatedId": "s-window-11773",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:document_body",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:3",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p217:s-window-13137:s0-46",
+          "sourceFactId": "s-window-13137",
+          "sourceOrder": 27,
+          "page": 217,
+          "sourceBlockText": "1. Akaike’s Information Criterion (AIC) 2. Bayesian information criterion (BIC) or Schwarz information criterion",
+          "sourceBlockTextSha256": "96b87339b0bda4fbc1f4e2cd7cbb396f27914aab1bb16c7f0470535073ddb191",
+          "headingSpan": {
+            "start": 0,
+            "end": 46
+          },
+          "headingText": "1. Akaike’s Information Criterion (AIC) 2. Bay",
+          "lineIds": [
+            "217|371.9394181314288|86.38363720000017|275.4088856300001|1. Akaike’s Information Criterion (AIC)",
+            "217|349.14847959062536|85.91454590000016|431.74174317999984|2. Bayesian information criterion (BIC) or Schwarz information criterion"
+          ],
+          "geometry": {
+            "left": 85.91454590000016,
+            "topY": 371.9394181314288,
+            "right": 431.74174317999984,
+            "bottomY": 349.14847959062536
+          },
+          "structuralScope": "document_body",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 1,
+          "markerPath": "1",
+          "markerComponents": [
+            1
+          ],
+          "previousValidatedId": "s-window-12396",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": 1,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:document_body",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:1"
+          ]
+        },
+        {
+          "factId": "p262:s-window-16288:s0-56",
+          "sourceFactId": "s-window-16288",
+          "sourceOrder": 28,
+          "page": 262,
+          "sourceBlockText": "39. 14 The Fisher Test in Regression Analysis The Fisher Test also referred to as Fisher’s F-test plays a pivotal role in hypothesis testing",
+          "sourceBlockTextSha256": "07c2a9b7306470fb2830019d6225734fcaec6162ffdb2590d13bdd6e00656ba7",
+          "headingSpan": {
+            "start": 0,
+            "end": 56
+          },
+          "headingText": "39. 14 The Fisher Test in Regression Analysis The Fisher",
+          "lineIds": [
+            "262|207.560792168421|72.56189440000006|325.92247040000024|39. 14 The Fisher Test in Regression Analysis",
+            "262|186.51579521518974|72.39272760000006|523.1076486499994|The Fisher Test also referred to as Fisher’s F-test plays a pivotal role in hypothesis testing",
+            "262|172.99086600624995|72.19636380000006|522.9636485299997|within the realm of regression analysis. Named after Ronald A. Fisher the test facilitates the"
+          ],
+          "geometry": {
+            "left": 72.39272760000006,
+            "topY": 207.560792168421,
+            "right": 523.1076486499994,
+            "bottomY": 186.51579521518974
+          },
+          "structuralScope": "document_body",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 1,
+          "markerPath": "39",
+          "markerComponents": [
+            39
+          ],
+          "previousValidatedId": "s-window-13137",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": 1,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:document_body",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:1"
+          ]
+        },
+        {
+          "factId": "p281:s-window-17510:s0-42",
+          "sourceFactId": "s-window-17510",
+          "sourceOrder": 29,
+          "page": 281,
+          "sourceBlockText": "41.3 KDE illustration from a known density Let’s imagine that as in (Gramacki 2018) we have the following true density a mixture of two",
+          "sourceBlockTextSha256": "3a99954dc006c6a758238b9e23c8e3f304ca34340228b5934046ae8d9dac9a05",
+          "headingSpan": {
+            "start": 0,
+            "end": 42
+          },
+          "headingText": "41.3 KDE illustration from a known density",
+          "lineIds": [
+            "281|650.0401034666668|72.35865600000011|318.1539814400003|41.3 KDE illustration from a known density",
+            "281|629.0151985690793|72.45818220000011|522.9483757899994|Let’s imagine that as in (Gramacki 2018) we have the following true density a mixture of two",
+            "281|615.2321840200002|72.6000005000001|121.3036774500001|Gaussians:"
+          ],
+          "geometry": {
+            "left": 72.35865600000011,
+            "topY": 650.0401034666668,
+            "right": 522.9483757899994,
+            "bottomY": 629.0151985690793
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "41.3",
+          "markerComponents": [
+            41,
+            3
+          ],
+          "previousValidatedId": "s-window-16288",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p306:s-window-19015:s0-45",
+          "sourceFactId": "s-window-19015",
+          "sourceOrder": 30,
+          "page": 306,
+          "sourceBlockText": "45. 1.4 Outlier isolation comparison Finally we generate 100 samples of size 100 and compare the different methods:",
+          "sourceBlockTextSha256": "5bb3501b65dd11360ee7a9ef9fd6b1e03cc970b4aa22502219bfca0c3324fcaa",
+          "headingSpan": {
+            "start": 0,
+            "end": 45
+          },
+          "headingText": "45. 1.4 Outlier isolation comparison Finally ",
+          "lineIds": [
+            "306|277.7022978406255|72.327273|247.96596482000004|45. 1.4 Outlier isolation comparison",
+            "306|257.0265617576929|72.4472731|451.88649838999976|Finally we generate 100 samples of size 100 and compare the different methods:"
+          ],
+          "geometry": {
+            "left": 72.327273,
+            "topY": 277.7022978406255,
+            "right": 451.88649838999976,
+            "bottomY": 257.0265617576929
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 1,
+          "markerPath": "45",
+          "markerComponents": [
+            45
+          ],
+          "previousValidatedId": "s-window-17510",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": 1,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:1"
+          ]
+        },
+        {
+          "factId": "p322:s-window-19812:s0-50",
+          "sourceFactId": "s-window-19812",
+          "sourceOrder": 31,
+          "page": 322,
+          "sourceBlockText": "50.4 Time-Varying Transition Probabilities Filardo (1994) also assumes that the state of the economy cannot be known with certainty and",
+          "sourceBlockTextSha256": "ddc1716da21e20cd1e0e71b09fe37c8411bcb3d46783d25c142bd8c5e1711cd2",
+          "headingSpan": {
+            "start": 0,
+            "end": 50
+          },
+          "headingText": "50.4 Time-Varying Transition Probabilities Filardo",
+          "lineIds": [
+            "322|313.4050128820514|72.4542976|312.03531008000016|50.4 Time-Varying Transition Probabilities",
+            "322|292.3042644467533|72.4472731|522.9505576099992|Filardo (1994) also assumes that the state of the economy cannot be known with certainty and",
+            "322|278.71117065864206|72.4690913|517.2505528599994|allow for a time-varying transition probability between states. He modifies equation 273 with:"
+          ],
+          "geometry": {
+            "left": 72.4472731,
+            "topY": 313.4050128820514,
+            "right": 522.9505576099992,
+            "bottomY": 292.3042644467533
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "50.4",
+          "markerComponents": [
+            50,
+            4
+          ],
+          "previousValidatedId": "s-window-19015",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p323:s-window-19828:s0-51",
+          "sourceFactId": "s-window-19828",
+          "sourceOrder": 32,
+          "page": 323,
+          "sourceBlockText": "50.5 Mean and variance switching states Mc Connell and Perez-Quiros (2000) combined mean and variance state switching to model US",
+          "sourceBlockTextSha256": "47e8cdb29962e7f667e42f4e40a4727d28de13697383e7fce178c0904aad7c0c",
+          "headingSpan": {
+            "start": 0,
+            "end": 51
+          },
+          "headingText": "50.5 Mean and variance switching states Mc Connell ",
+          "lineIds": [
+            "323|237.27364875294123|72.4542976|301.73470976000004|50.5 Mean and variance switching states",
+            "323|216.4034808276317|72.4909095|522.6647391899993|McConnell and Perez-Quiros (2000) combined mean and variance state switching to model US"
+          ],
+          "geometry": {
+            "left": 72.4542976,
+            "topY": 237.27364875294123,
+            "right": 522.6647391899993,
+            "bottomY": 216.4034808276317
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "50.5",
+          "markerComponents": [
+            50,
+            5
+          ],
+          "previousValidatedId": "s-window-19812",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p325:s-window-19854:s0-49",
+          "sourceFactId": "s-window-19854",
+          "sourceOrder": 33,
+          "page": 325,
+          "sourceBlockText": "51. 1 Event study on fines impact on banks As in the 2016 paper on regulatory sanctions impact in the UK (John Armour and Polo 2017)",
+          "sourceBlockTextSha256": "abb17a4c4cac7ffd391d965c2e6176565793ca824ae013ed7f4b69edcd190376",
+          "headingSpan": {
+            "start": 0,
+            "end": 49
+          },
+          "headingText": "51. 1 Event study on fines impact on banks As in ",
+          "lineIds": [
+            "325|681.6264911030302|72.4542976|313.95890176000023|51. 1 Event study on fines impact on banks",
+            "325|660.7556113143839|72.3490912|519.1607362699998|As in the 2016 paper on regulatory sanctions impact in the UK (John Armour and Polo 2017)",
+            "325|647.0369242845239|72.1963638|335.2365829999999|we suggest to work on the impact of US fines on banks."
+          ],
+          "geometry": {
+            "left": 72.3490912,
+            "topY": 681.6264911030302,
+            "right": 519.1607362699998,
+            "bottomY": 660.7556113143839
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 1,
+          "markerPath": "51",
+          "markerComponents": [
+            51
+          ],
+          "previousValidatedId": "s-window-19828",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": 1,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:1"
+          ]
+        },
+        {
+          "factId": "p353:s-window-21744:s0-46",
+          "sourceFactId": "s-window-21744",
+          "sourceOrder": 34,
+          "page": 353,
+          "sourceBlockText": "54.4. 1 Risk Premia under the APT Once the βi k have been estimated, we can estimate the risk premia γk as follows:",
+          "sourceBlockTextSha256": "68042e5d254e1618070bcce99683c995199ffef03c64d4f95418eb9fcae851b9",
+          "headingSpan": {
+            "start": 0,
+            "end": 46
+          },
+          "headingText": "54.4. 1 Risk Premia under the APT Once the βi ",
+          "lineIds": [
+            "353|507.42390154814797|72.41454580000006|248.40451064000013|54.4. 1 Risk Premia under the APT",
+            "353|486.37913825075736|72.60000050000005|458.4213122|Once the βi k have been estimated, we can estimate the risk premia γk as follows:"
+          ],
+          "geometry": {
+            "left": 72.41454580000006,
+            "topY": 507.42390154814797,
+            "right": 458.4213122,
+            "bottomY": 486.37913825075736
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "54.4",
+          "markerComponents": [
+            54,
+            4
+          ],
+          "previousValidatedId": "s-window-19854",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p388:s-line-10573:s0-11",
+          "sourceFactId": "s-line-10573",
+          "sourceOrder": 35,
+          "page": 388,
+          "sourceBlockText": "Theorem 1. For a certain class of distributions 196 the GPD is the limit distribution for the ex-",
+          "sourceBlockTextSha256": "ed720f1d62bca7ce7f5cca28e03b94bf4f5d74aca31e7e895aeb3e20b55d6fff",
+          "headingSpan": {
+            "start": 0,
+            "end": 11
+          },
+          "headingText": "Theorem 1. ",
+          "lineIds": [
+            "388|276.81582583000005|72.44727309999995|523.0477217799998|Theorem 1. For a certain class of distributions196 the GPD is the limit distribution for the ex-"
+          ],
+          "geometry": {
+            "left": 72.44727309999995,
+            "topY": 276.81582583000005,
+            "right": 523.0477217799998,
+            "bottomY": 276.81582583000005
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "s-window-21744",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p389:s-line-10588:s0-12",
+          "sourceFactId": "s-line-10588",
+          "sourceOrder": 36,
+          "page": 389,
+          "sourceBlockText": "Assumption 1. Let F be a distribution with right end point x F we assume that for some high",
+          "sourceBlockTextSha256": "ee457c143d9d9dbbdbbc58a949c0f729fc14ed0d90c1fda4bb6186ba4fb4d02b",
+          "headingSpan": {
+            "start": 0,
+            "end": 12
+          },
+          "headingText": "Assumption 1",
+          "lineIds": [
+            "389|691.9994371397256|72.436364|523.5220316200001|Assumption 1. Let F be a distribution with right end point xF we assume that for some high"
+          ],
+          "geometry": {
+            "left": 72.436364,
+            "topY": 691.9994371397256,
+            "right": 523.5220316200001,
+            "bottomY": 691.9994371397256
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "s-line-10573",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p404:s-line-11027:s0-19",
+          "sourceFactId": "s-line-11027",
+          "sourceOrder": 37,
+          "page": 404,
+          "sourceBlockText": "Proposition 1: if an insurance company is willing to offer any insurance policy against loss",
+          "sourceBlockTextSha256": "78f7171c93ec1e1b93819fed95876dfa2fd6c40fa6ab25f15bc7f78b4a7a7597",
+          "headingSpan": {
+            "start": 0,
+            "end": 19
+          },
+          "headingText": "Proposition 1: if a",
+          "lineIds": [
+            "404|340.4562182493511|72.4254549|522.9047393899995|Proposition 1: if an insurance company is willing to offer any insurance policy against loss"
+          ],
+          "geometry": {
+            "left": 72.4254549,
+            "topY": 340.4562182493511,
+            "right": 522.9047393899995,
+            "bottomY": 340.4562182493511
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "labelled",
+          "markerDepth": 1,
+          "markerPath": null,
+          "markerComponents": [],
+          "previousValidatedId": "s-line-10588",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:labelled",
+            "marker_depth:1",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p443:s-window-27542:s0-40",
+          "sourceFactId": "s-window-27542",
+          "sourceOrder": 38,
+          "page": 443,
+          "sourceBlockText": "72.2 Within estimator, Fixed effects We obtain the Within estimator with an ordinary least square (OLS) on equation 470",
+          "sourceBlockTextSha256": "4718a329c227b7b735a14dbeed8639ed64a2b32b46fcb9268463f907d7a1bc2b",
+          "headingSpan": {
+            "start": 0,
+            "end": 40
+          },
+          "headingText": "72.2 Within estimator, Fixed effects We ",
+          "lineIds": [
+            "443|488.0337830709676|72.56189439999983|275.42011903999986|72.2 Within estimator, Fixed effects",
+            "443|467.0255992159421|72.19636379999983|479.8748853499993|We obtain the Within estimator with an ordinary least square (OLS) on equation 470",
+            "443|453.42663870000007|72.19636379999983|225.12558214999987|We can also estimate the model:"
+          ],
+          "geometry": {
+            "left": 72.19636379999983,
+            "topY": 488.0337830709676,
+            "right": 479.8748853499993,
+            "bottomY": 467.0255992159421
+          },
+          "structuralScope": "document_body",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "72.2",
+          "markerComponents": [
+            72,
+            2
+          ],
+          "previousValidatedId": "s-line-11027",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:document_body",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p464:s-window-28651:s0-22",
+          "sourceFactId": "s-window-28651",
+          "sourceOrder": 39,
+          "page": 464,
+          "sourceBlockText": "76.4 Are both series I (1)? We apply the first difference to the log of both index and we find that both series were I(1) .",
+          "sourceBlockTextSha256": "037a88940bd0f496df25f0247a1fb26ca7b9d6bc0f56d3cbd393483c5624ba6b",
+          "headingSpan": {
+            "start": 0,
+            "end": 22
+          },
+          "headingText": "76.4 Are both series I",
+          "lineIds": [
+            "464|314.4933131636367|72.5618944|218.1391692800001|76.4 Are both series I (1)?",
+            "464|293.3828379863017|72.1963638|508.45563643999947|We apply the first difference to the log of both index and we find that both series were I(1) ."
+          ],
+          "geometry": {
+            "left": 72.1963638,
+            "topY": 314.4933131636367,
+            "right": 508.45563643999947,
+            "bottomY": 293.3828379863017
+          },
+          "structuralScope": "document_body",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "76.4",
+          "markerComponents": [
+            76,
+            4
+          ],
+          "previousValidatedId": "s-window-27542",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:document_body",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        },
+        {
+          "factId": "p467:s-window-28860:s0-53",
+          "sourceFactId": "s-window-28860",
+          "sourceOrder": 40,
+          "page": 467,
+          "sourceBlockText": "76. 10.2 ARCH model of the residuals - PACF We use a PACF of the squared residual to determine the order m of the ARCH process. Visually",
+          "sourceBlockTextSha256": "34615bce4ead605292359bba95416d9e15b12a8d51b57c8159fc7728b16eaa52",
+          "headingSpan": {
+            "start": 0,
+            "end": 53
+          },
+          "headingText": "76. 10.2 ARCH model of the residuals - PACF We use a ",
+          "lineIds": [
+            "467|290.9559247228573|72.50181860000001|301.37582751|76. 10.2 ARCH model of the residuals - PACF",
+            "467|270.0241114526669|72.1963638|523.0574667899997|We use a PACF of the squared residual to determine the order m of the ARCH process. Visually",
+            "467|256.5865059519232|72.1963638|226.71612893000002|we decide to select an ARCH(4) :"
+          ],
+          "geometry": {
+            "left": 72.1963638,
+            "topY": 290.9559247228573,
+            "right": 523.0574667899997,
+            "bottomY": 270.0241114526669
+          },
+          "structuralScope": "document_body",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 1,
+          "markerPath": "76",
+          "markerComponents": [
+            76
+          ],
+          "previousValidatedId": "s-window-28651",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": 1,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:document_body",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:1"
+          ]
+        },
+        {
+          "factId": "p519:s-window-31993:s0-40",
+          "sourceFactId": "s-window-31993",
+          "sourceOrder": 41,
+          "page": 519,
+          "sourceBlockText": "83.7 Domain of Attraction of Copula A copula C belongs to the domain of attraction of an extreme value copula C∗ if for all u",
+          "sourceBlockTextSha256": "964dfc7a337966f1eed6a7019075d7ef852513f7866d1dacde84e5dc42583c21",
+          "headingSpan": {
+            "start": 0,
+            "end": 40
+          },
+          "headingText": "83.7 Domain of Attraction of Copula A co",
+          "lineIds": [
+            "519|443.8631905066667|72.5618944|280.56563712000013|83.7 Domain of Attraction of Copula",
+            "519|422.8528511316901|72.3490912|498.2404941399999|A copula C belongs to the domain of attraction of an extreme value copula C∗ if for all u"
+          ],
+          "geometry": {
+            "left": 72.3490912,
+            "topY": 443.8631905066667,
+            "right": 498.2404941399999,
+            "bottomY": 422.8528511316901
+          },
+          "structuralScope": "quoted_replacement",
+          "documentRegime": "document_body",
+          "markerFamily": "arabic",
+          "markerDepth": 2,
+          "markerPath": "83.7",
+          "markerComponents": [
+            83,
+            7
+          ],
+          "previousValidatedId": "s-window-28860",
+          "markerPrefixParentCandidate": null,
+          "resolvedLevel": null,
+          "parentResolution": "relationship_unresolved",
+          "evidence": [
+            "validated_source_span",
+            "scope:quoted_replacement",
+            "regime:document_body",
+            "source_order:previous_validated",
+            "marker:arabic",
+            "marker_depth:2",
+            "relationship_unresolved"
+          ]
+        }
+      ],
+      "validatedStructures": [
+        {
+          "sourceId": "s-window-7988",
+          "level": 2,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-8422",
+          "level": 2,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-19854",
+          "level": 2,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-4767",
+          "level": 2,
+          "parentId": "s-window-19854",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "document_body"
+        },
+        {
+          "sourceId": "s-window-28651",
+          "level": 2,
+          "parentId": "s-window-19854",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "document_body"
+        },
+        {
+          "sourceId": "b2502",
+          "level": 3,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-2150",
+          "level": 3,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "document_body"
+        },
+        {
+          "sourceId": "s-window-3713",
+          "level": 2,
+          "parentId": "s-window-19854",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-3765",
+          "level": 2,
+          "parentId": "s-window-19854",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-3875",
+          "level": 2,
+          "parentId": "s-window-19854",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-5585",
+          "level": 2,
+          "parentId": "s-window-19854",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-8501",
+          "level": 2,
+          "parentId": "s-window-19854",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-9350",
+          "level": 2,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-9671",
+          "level": 2,
+          "parentId": "s-window-9350",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-9703",
+          "level": 2,
+          "parentId": "s-window-9350",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-17510",
+          "level": 2,
+          "parentId": "s-window-9350",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-19015",
+          "level": 2,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-19812",
+          "level": 2,
+          "parentId": "s-window-19015",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-19828",
+          "level": 2,
+          "parentId": "s-window-19015",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-21744",
+          "level": 2,
+          "parentId": "s-window-19015",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-31993",
+          "level": 2,
+          "parentId": "s-window-19015",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-window-1116",
+          "level": 2,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "document_body"
+        },
+        {
+          "sourceId": "s-window-4365",
+          "level": 2,
+          "parentId": "s-window-1116",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "document_body"
+        },
+        {
+          "sourceId": "s-window-11773",
+          "level": 2,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "document_body"
+        },
+        {
+          "sourceId": "s-window-12396",
+          "level": 3,
+          "parentId": "s-window-4365",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "document_body"
+        },
+        {
+          "sourceId": "s-window-13137",
+          "level": 2,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "document_body"
+        },
+        {
+          "sourceId": "s-window-16288",
+          "level": 2,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "document_body"
+        },
+        {
+          "sourceId": "s-window-27542",
+          "level": 2,
+          "parentId": "s-window-16288",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "document_body"
+        },
+        {
+          "sourceId": "s-window-28860",
+          "level": 2,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "document_body"
+        },
+        {
+          "sourceId": "b2252",
+          "level": 3,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "b2254",
+          "level": 3,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "b2259",
+          "level": 3,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-line-3399",
+          "level": 3,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "b2265",
+          "level": 3,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "b2271",
+          "level": 3,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "b2297",
+          "level": 3,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "b2299",
+          "level": 3,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "b2306",
+          "level": 3,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "b2315",
+          "level": 3,
+          "parentId": null,
+          "parentResolution": "unresolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-line-10573",
+          "level": 5,
+          "parentId": "b2315",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-line-10588",
+          "level": 6,
+          "parentId": "s-line-10573",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        },
+        {
+          "sourceId": "s-line-11027",
+          "level": 7,
+          "parentId": "s-line-10588",
+          "parentResolution": "marker-resolved",
+          "decision": "requires_review",
+          "domainRole": 0,
+          "structuralScope": "quoted_replacement"
+        }
+      ],
+      "canonicalGroundings": [
+        {
+          "sourceFactId": "b2252",
+          "paragraphIndex": 6153,
+          "stableId": "body[1]/p[3957]",
+          "span": {
+            "start": 0,
+            "end": 88
+          },
+          "paragraphText": "Step 1: Pricing under the forward measure (foundation in (Ross, 1976b)). Let y(n) be the continuously compounded n-year zero yield and Qn the n-forward measure. The time-t price equals discounted forward-measure expectation:"
+        },
+        {
+          "sourceFactId": "b2254",
+          "paragraphIndex": 6160,
+          "stableId": "body[1]/p[3960]",
+          "span": {
+            "start": 0,
+            "end": 86
+          },
+          "paragraphText": "Step 2: Breeden–Litzenberger identity on strikes (Breeden and Litzenberger, 1978; Ross,"
+        },
+        {
+          "sourceFactId": "b2259",
+          "paragraphIndex": 6183,
+          "stableId": "body[1]/p[3977]",
+          "span": {
+            "start": 0,
+            "end": 89
+          },
+          "paragraphText": "Step 3: Chain rule to work in inflation strike k. Since K = (1 +k)n, define P (k) Pt(k, n) ="
+        },
+        {
+          "sourceFactId": "b2502",
+          "paragraphIndex": 6896,
+          "stableId": "body[1]/p[4491]",
+          "span": {
+            "start": 0,
+            "end": 35
+          },
+          "paragraphText": "Step 1: First-order conditions (FOC)"
+        },
+        {
+          "sourceFactId": "s-line-10573",
+          "paragraphIndex": 19058,
+          "stableId": "body[1]/p[13088]",
+          "span": {
+            "start": 0,
+            "end": 96
+          },
+          "paragraphText": "Theorem 1. For a certain class of distributions196, the GPD is the limit distribution for the ex-cess distribution when the threshold tends to xF . Formally, we can find a positive and measurable function β(u) such that"
+        },
+        {
+          "sourceFactId": "s-line-10588",
+          "paragraphIndex": 19069,
+          "stableId": "body[1]/p[13097]",
+          "span": {
+            "start": 0,
+            "end": 92
+          },
+          "paragraphText": "Assumption 1. Let F be a distribution with right end point xF , we assume that for some high threshold u we have Fu(x) = Gξ,β(u)(x) for 0 ≤ x ≤ xF − u and some ξ ∈ R and β > 0."
+        },
+        {
+          "sourceFactId": "s-line-11027",
+          "paragraphIndex": 20003,
+          "stableId": "body[1]/p[13689]",
+          "span": {
+            "start": 0,
+            "end": 92
+          },
+          "paragraphText": "Proposition 1: if an insurance company is willing to offer any insurance policy against loss desired by the buyer at a premium which depends only on the policy’s actuarial value, then the policy chosen by a risk-averting buyer will take the form of 100 per cent coverage above a deductible minimum."
+        }
+      ],
+      "semanticLaneStatus": "complete",
+      "spanLaneStatus": "complete",
+      "semanticLaneTimeouts": {
+        "requestSeconds": 90,
+        "batchSeconds": 120,
+        "laneDeadlineSeconds": 300
+      }
+    }
+  ],
+  "legacyProductHeadings": {
+    "057_Quantitative_Methods_in_Finance_Lecture_Notes.docx": []
+  },
+  "skipped": []
+}

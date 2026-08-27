@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2s_remediation_manifest",
+  "id": "R1",
+  "name": "partial-span-preservation",
+  "status": "FROZEN_NOT_PROMOTED",
+  "codeRevision": "20a2192",
+  "changedFiles": [
+    "src/DocxHeaderExtractor.Core/Pipeline/PdfLayoutEvidenceOutline.cs",
+    "src/DocxHeaderExtractor.Core/Pipeline/PdfStageCheckpoint.cs"
+  ],
+  "changeScope": {
+    "partial_timeout": "retain only independently completed, durably checkpointed span facts; every block the lane never resolved becomes Uncertain (unchanged reason string, HeadingSpan explicitly null)",
+    "complete": "unreachable by construction - PreservePartialSpanResolutions is only invoked on the TimedOut branch, never on a complete lane",
+    "not_run": "unchanged - semanticTimedOut branch untouched",
+    "exceptionSwallow": "unchanged - PdfBlockAnalyst's per-batch catch still discards that batch's spans, still records failureClass",
+    "prohibited": ["timeout increase", "retry", "extra provider call", "role/span model behavior change"]
+  },
+  "spanLaneStatusSemantics": "unchanged - a partial_timeout run still reports spanLaneStatus: partial_timeout honestly; this manifest changes what spanAnalysis carries, never the status field's meaning",
+  "implementationLocks": [
+    "PdfA3PartialSpanPreservationImplementationTests.NullCheckpointReproducesExactPriorBehaviorEveryDecisionBecomesUncertain",
+    "PdfA3PartialSpanPreservationImplementationTests.EmptyCheckpointFileReproducesExactPriorBehavior",
+    "PdfA3PartialSpanPreservationImplementationTests.ResolvedBlocksArePreservedAndUnresolvedBlocksBecomeUncertain",
+    "PdfA3PartialSpanPreservationImplementationTests.ATornFinalLineIsSkippedNotFaultedAndEarlierBatchesRemainUsable",
+    "PdfA3PartialSpanPreservationImplementationTests.AFailedBatchContributesNoResolutionsEvenWhenItRecordsSomeBlocks",
+    "PdfA3PartialSpanPreservationImplementationTests.Real003CheckpointRecoversTheSameCountLaneAAlreadyMeasured"
+  ],
+  "priorDiagnosticEvidence": [
+    "eval/benchmark-n0/n2-s/counterfactual/003-partial-span-preservation.v1.json",
+    "eval/benchmark-n0/n2-s/counterfactual/003-recovered-fp-audit.v1.json",
+    "eval/benchmark-n0/n2-s/counterfactual/c1-partial-preservation-collateral-gate.v1.json",
+    "eval/benchmark-n0/n2-s/counterfactual/c1-gate7-cross-document-inventory.v1.json"
+  ],
+  "acceptanceGate": {
+    "1_recurrence": "PASS - 001 (C1.6/C1.7) and 003 (N2-S Lane A), independently",
+    "2_materialRecovery": "PASS - 33.3% (001), 56.3% (003)",
+    "3_completeLaneNeutrality": "PASS - unreachable by construction for a complete lane",
+    "4_failClosedSemantics": "PASS - not_run/exception paths untouched, locked",
+    "5_noExtraProviderCalls": "PASS - purely offline, re-reads own checkpoint file",
+    "6_falsePositiveCollateral": "PASS - 0/9 of 003's apparent false positives are causally genuine (all OCCURRENCE_JOIN_MISMATCH)",
+    "7_crossDocumentRegression": "INSUFFICIENT_EXISTING_EVIDENCE - only 001 and 003 have ever produced retained span-lane evidence anywhere in this repository; not forced to a pass by absence, no document manufactured to force a verdict"
+  },
+  "nextStep": "hold until R2 (057) is also frozen, then write and freeze the N3 validation protocol before opening N3 labels/results. Do not open N3 to test R1 alone.",
+  "promotionDecision": "not made by this manifest - reserved for whoever owns the promotion call"
+}

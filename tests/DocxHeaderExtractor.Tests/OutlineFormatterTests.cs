@@ -67,7 +67,32 @@ public class OutlineFormatterTests
         Assert.Contains("\"index\": 3", json);
     }
 
-    private static HeadingRecord Heading(int index, int level, string text) => new()
+    /// <summary>M9.5a: an unresolved level (null) must format without crashing in every output shape.</summary>
+    [Fact]
+    public void UnresolvedLevelFormatsWithoutCrashingInEveryShape()
+    {
+        var outline = new DocumentOutline
+        {
+            File = "sample.docx",
+            ParagraphCount = 5,
+            CandidateCount = 1,
+            Headings = [Heading(2, null, "Untitled section")],
+        };
+
+        var json = OutlineFormatter.Format(outline, OutlineFormat.Json);
+        var markdown = OutlineFormatter.Format(outline, OutlineFormat.Markdown);
+        var text = OutlineFormatter.Format(outline, OutlineFormat.Text);
+        var xml = OutlineFormatter.Format(outline, OutlineFormat.Xml);
+        var csv = OutlineFormatter.Format(outline, OutlineFormat.Csv);
+
+        Assert.Contains("\"level\": null", json);
+        Assert.Contains("Untitled section", markdown);
+        Assert.Contains("Untitled section", text);
+        Assert.Contains("Untitled section", xml);
+        Assert.Contains("Untitled section", csv);
+    }
+
+    private static HeadingRecord Heading(int index, int? level, string text) => new()
     {
         Index = index,
         Level = level,

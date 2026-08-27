@@ -1,0 +1,922 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_model_assisted_silver_occurrence_labels",
+  "sourcePacket": {
+    "artifactKind": "n3_blind_source_review_packet",
+    "stem": "058",
+    "sourcePacketPath": "eval/benchmark-n3/source-packets/058-blind-source-review.v1.json"
+  },
+  "reviewContract": {
+    "question": "Which source occurrences are document outline headings?",
+    "allowedLabels": [
+      "REVIEWED_HEADING",
+      "REVIEWED_NON_HEADING",
+      "UNCERTAIN"
+    ],
+    "occurrenceRule": "A wrapped heading is one occurrence made of every participating source line; preserve all line ids and its source span.",
+    "prohibitedEvidence": [
+      "candidate id",
+      "candidate score",
+      "rank",
+      "selected status",
+      "pipeline-inferred scope",
+      "domain role",
+      "analyst output",
+      "validated output"
+    ]
+  },
+  "provenance": {
+    "labelSource": "MODEL_ASSISTED_SILVER",
+    "labelerModel": "claude-sonnet-5",
+    "humanAdjudicated": false,
+    "accuracyClaim": "SILVER_PROXY_ONLY"
+  },
+  "summary": {
+    "totalSourceItemsReviewed": 5327,
+    "headingOccurrenceCount": 47,
+    "uncertainOccurrenceCount": 0
+  },
+  "headingOccurrences": [
+    {
+      "goldStableId": "058/heading/001",
+      "label": "REVIEWED_HEADING",
+      "marker": "PREFACE",
+      "page": 2,
+      "sourceLineIds": [
+        "2|663.0714251285715|295.0691556|370.05961224|PREFACE"
+      ],
+      "sourceSpan": {
+        "startLineId": "2|663.0714251285715|295.0691556|370.05961224|PREFACE",
+        "endLineId": "2|663.0714251285715|295.0691556|370.05961224|PREFACE"
+      },
+      "sourceTextLines": [
+        "PREFACE"
+      ],
+      "sourceText": "PREFACE",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/002",
+      "label": "REVIEWED_HEADING",
+      "marker": "Contents",
+      "page": 3,
+      "sourceLineIds": [
+        "3|584.74837584375|108.4058002|214.84904373|Contents"
+      ],
+      "sourceSpan": {
+        "startLineId": "3|584.74837584375|108.4058002|214.84904373|Contents",
+        "endLineId": "3|584.74837584375|108.4058002|214.84904373|Contents"
+      },
+      "sourceTextLines": [
+        "Contents"
+      ],
+      "sourceText": "Contents",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/003",
+      "label": "REVIEWED_HEADING",
+      "marker": "Chapter 1",
+      "page": 5,
+      "sourceLineIds": [
+        "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+        "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+      ],
+      "sourceSpan": {
+        "startLineId": "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+        "endLineId": "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+      },
+      "sourceTextLines": [
+        "Chapter 1",
+        "An Energy Function"
+      ],
+      "sourceText": "Chapter 1 An Energy Function",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/004",
+      "label": "REVIEWED_HEADING",
+      "marker": "Chapter 2",
+      "page": 9,
+      "sourceLineIds": [
+        "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+        "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+        "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+      ],
+      "sourceSpan": {
+        "startLineId": "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+        "endLineId": "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+      },
+      "sourceTextLines": [
+        "Chapter 2",
+        "Basic Ideas in Machine",
+        "Learning with Classification"
+      ],
+      "sourceText": "Chapter 2 Basic Ideas in Machine Learning with Classification",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/005",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.1",
+      "page": 9,
+      "sourceLineIds": [
+        "9|449.85454498125006|107.6723872|236.25594317999997|2.1 Classification"
+      ],
+      "sourceSpan": {
+        "startLineId": "9|449.85454498125006|107.6723872|236.25594317999997|2.1 Classification",
+        "endLineId": "9|449.85454498125006|107.6723872|236.25594317999997|2.1 Classification"
+      },
+      "sourceTextLines": [
+        "2.1 Classification"
+      ],
+      "sourceText": "2.1 Classification",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/006",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.1.1",
+      "page": 10,
+      "sourceLineIds": [
+        "10|242.83964544864884|161.33649120000004|421.4123030399999|2.1.1 Perceptron and margin loss functions"
+      ],
+      "sourceSpan": {
+        "startLineId": "10|242.83964544864884|161.33649120000004|421.4123030399999|2.1.1 Perceptron and margin loss functions",
+        "endLineId": "10|242.83964544864884|161.33649120000004|421.4123030399999|2.1.1 Perceptron and margin loss functions"
+      },
+      "sourceTextLines": [
+        "2.1.1 Perceptron and margin loss functions"
+      ],
+      "sourceText": "2.1.1 Perceptron and margin loss functions",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/007",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.1.2",
+      "page": 11,
+      "sourceLineIds": [
+        "11|233.0855349677417|107.53849120000025|330.06182432000026|2.1.2 Softmax and cross entropy loss"
+      ],
+      "sourceSpan": {
+        "startLineId": "11|233.0855349677417|107.53849120000025|330.06182432000026|2.1.2 Softmax and cross entropy loss",
+        "endLineId": "11|233.0855349677417|107.53849120000025|330.06182432000026|2.1.2 Softmax and cross entropy loss"
+      },
+      "sourceTextLines": [
+        "2.1.2 Softmax and cross entropy loss"
+      ],
+      "sourceText": "2.1.2 Softmax and cross entropy loss",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/008",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.2",
+      "page": 15,
+      "sourceLineIds": [
+        "15|557.559883772222|107.67238720000003|261.99015674|2.2 Backpropagation"
+      ],
+      "sourceSpan": {
+        "startLineId": "15|557.559883772222|107.67238720000003|261.99015674|2.2 Backpropagation",
+        "endLineId": "15|557.559883772222|107.67238720000003|261.99015674|2.2 Backpropagation"
+      },
+      "sourceTextLines": [
+        "2.2 Backpropagation"
+      ],
+      "sourceText": "2.2 Backpropagation",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/009",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.2.1",
+      "page": 15,
+      "sourceLineIds": [
+        "15|294.50803913846136|107.53849119999997|301.89656863999994|2.2.1 A Linear Energy Function"
+      ],
+      "sourceSpan": {
+        "startLineId": "15|294.50803913846136|107.53849119999997|301.89656863999994|2.2.1 A Linear Energy Function",
+        "endLineId": "15|294.50803913846136|107.53849119999997|301.89656863999994|2.2.1 A Linear Energy Function"
+      },
+      "sourceTextLines": [
+        "2.2.1 A Linear Energy Function"
+      ],
+      "sourceText": "2.2.1 A Linear Energy Function",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/010",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.2.2",
+      "page": 17,
+      "sourceLineIds": [
+        "17|493.73815100689615|107.53849120000005|322.26464288000005|2.2.2 A Nonlinear Energy Function"
+      ],
+      "sourceSpan": {
+        "startLineId": "17|493.73815100689615|107.53849120000005|322.26464288000005|2.2.2 A Nonlinear Energy Function",
+        "endLineId": "17|493.73815100689615|107.53849120000005|322.26464288000005|2.2.2 A Nonlinear Energy Function"
+      },
+      "sourceTextLines": [
+        "2.2.2 A Nonlinear Energy Function"
+      ],
+      "sourceText": "2.2.2 A Nonlinear Energy Function",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/011",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.3",
+      "page": 21,
+      "sourceLineIds": [
+        "21|509.68233452499965|107.67238720000003|343.23555658000004|2.3 Stochastic Gradient Descent"
+      ],
+      "sourceSpan": {
+        "startLineId": "21|509.68233452499965|107.67238720000003|343.23555658000004|2.3 Stochastic Gradient Descent",
+        "endLineId": "21|509.68233452499965|107.67238720000003|343.23555658000004|2.3 Stochastic Gradient Descent"
+      },
+      "sourceTextLines": [
+        "2.3 Stochastic Gradient Descent"
+      ],
+      "sourceText": "2.3 Stochastic Gradient Descent",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/012",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.3.1",
+      "page": 23,
+      "sourceLineIds": [
+        "23|661.0743879529412|107.53849120000002|241.80614688|2.3.1 Descent Lemma"
+      ],
+      "sourceSpan": {
+        "startLineId": "23|661.0743879529412|107.53849120000002|241.80614688|2.3.1 Descent Lemma",
+        "endLineId": "23|661.0743879529412|107.53849120000002|241.80614688|2.3.1 Descent Lemma"
+      },
+      "sourceTextLines": [
+        "2.3.1 Descent Lemma"
+      ],
+      "sourceText": "2.3.1 Descent Lemma",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/013",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.3.2",
+      "page": 24,
+      "sourceLineIds": [
+        "24|534.3485601066664|161.33649120000013|368.11243488|2.3.2 Stochastic Gradient Descent"
+      ],
+      "sourceSpan": {
+        "startLineId": "24|534.3485601066664|161.33649120000013|368.11243488|2.3.2 Stochastic Gradient Descent",
+        "endLineId": "24|534.3485601066664|161.33649120000013|368.11243488|2.3.2 Stochastic Gradient Descent"
+      },
+      "sourceTextLines": [
+        "2.3.2 Stochastic Gradient Descent"
+      ],
+      "sourceText": "2.3.2 Stochastic Gradient Descent",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/014",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.3.3",
+      "page": 25,
+      "sourceLineIds": [
+        "25|573.6798463999997|107.53849120000002|345.47925024|2.3.3 Adaptive Learning Rate Methods"
+      ],
+      "sourceSpan": {
+        "startLineId": "25|573.6798463999997|107.53849120000002|345.47925024|2.3.3 Adaptive Learning Rate Methods",
+        "endLineId": "25|573.6798463999997|107.53849120000002|345.47925024|2.3.3 Adaptive Learning Rate Methods"
+      },
+      "sourceTextLines": [
+        "2.3.3 Adaptive Learning Rate Methods"
+      ],
+      "sourceText": "2.3.3 Adaptive Learning Rate Methods",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/015",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.4",
+      "page": 27,
+      "sourceLineIds": [
+        "27|497.8886386029409|107.6723872|395.57336341999985|2.4 Generalization and Model Selection"
+      ],
+      "sourceSpan": {
+        "startLineId": "27|497.8886386029409|107.6723872|395.57336341999985|2.4 Generalization and Model Selection",
+        "endLineId": "27|497.8886386029409|107.6723872|395.57336341999985|2.4 Generalization and Model Selection"
+      },
+      "sourceTextLines": [
+        "2.4 Generalization and Model Selection"
+      ],
+      "sourceText": "2.4 Generalization and Model Selection",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/016",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.4.1",
+      "page": 27,
+      "sourceLineIds": [
+        "27|473.17169707755085|107.5384912|450.2904886399999|2.4.1 Expected risk vs. empirical risk: a generalization",
+        "27|459.4992278399997|148.383432|184.51802400000003|bound"
+      ],
+      "sourceSpan": {
+        "startLineId": "27|473.17169707755085|107.5384912|450.2904886399999|2.4.1 Expected risk vs. empirical risk: a generalization",
+        "endLineId": "27|459.4992278399997|148.383432|184.51802400000003|bound"
+      },
+      "sourceTextLines": [
+        "2.4.1 Expected risk vs. empirical risk: a generalization",
+        "bound"
+      ],
+      "sourceText": "2.4.1 Expected risk vs. empirical risk: a generalization bound",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/017",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.4.2",
+      "page": 32,
+      "sourceLineIds": [
+        "32|661.0948920000001|161.3364912|386.18152415999987|2.4.2 Bias, Variance and Uncertainty"
+      ],
+      "sourceSpan": {
+        "startLineId": "32|661.0948920000001|161.3364912|386.18152415999987|2.4.2 Bias, Variance and Uncertainty",
+        "endLineId": "32|661.0948920000001|161.3364912|386.18152415999987|2.4.2 Bias, Variance and Uncertainty"
+      },
+      "sourceTextLines": [
+        "2.4.2 Bias, Variance and Uncertainty"
+      ],
+      "sourceText": "2.4.2 Bias, Variance and Uncertainty",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/018",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.4.3",
+      "page": 34,
+      "sourceLineIds": [
+        "34|661.1408448000001|161.3364912|372.06482399999993|2.4.3 Uncertainty in the error rate"
+      ],
+      "sourceSpan": {
+        "startLineId": "34|661.1408448000001|161.3364912|372.06482399999993|2.4.3 Uncertainty in the error rate",
+        "endLineId": "34|661.1408448000001|161.3364912|372.06482399999993|2.4.3 Uncertainty in the error rate"
+      },
+      "sourceTextLines": [
+        "2.4.3 Uncertainty in the error rate"
+      ],
+      "sourceText": "2.4.3 Uncertainty in the error rate",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/019",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.5",
+      "page": 38,
+      "sourceLineIds": [
+        "38|453.00082168157877|161.47038719999992|491.6180531799997|2.5 Hyperparameter Tuning: Model Selection"
+      ],
+      "sourceSpan": {
+        "startLineId": "38|453.00082168157877|161.47038719999992|491.6180531799997|2.5 Hyperparameter Tuning: Model Selection",
+        "endLineId": "38|453.00082168157877|161.47038719999992|491.6180531799997|2.5 Hyperparameter Tuning: Model Selection"
+      },
+      "sourceTextLines": [
+        "2.5 Hyperparameter Tuning: Model Selection"
+      ],
+      "sourceText": "2.5 Hyperparameter Tuning: Model Selection",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/020",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.5.1",
+      "page": 40,
+      "sourceLineIds": [
+        "40|661.1460904489796|161.3364912|503.62582239999983|2.5.1 Sequential model-based optimization for hyperpa-",
+        "40|647.0876274461535|202.181432|290.3809199999999|rameter tuning"
+      ],
+      "sourceSpan": {
+        "startLineId": "40|661.1460904489796|161.3364912|503.62582239999983|2.5.1 Sequential model-based optimization for hyperpa-",
+        "endLineId": "40|647.0876274461535|202.181432|290.3809199999999|rameter tuning"
+      },
+      "sourceTextLines": [
+        "2.5.1 Sequential model-based optimization for hyperpa-",
+        "rameter tuning"
+      ],
+      "sourceText": "2.5.1 Sequential model-based optimization for hyperpa- rameter tuning",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/021",
+      "label": "REVIEWED_HEADING",
+      "marker": "2.5.2",
+      "page": 41,
+      "sourceLineIds": [
+        "41|372.01921116595713|107.53849119999994|449.8278223999996|2.5.2 We still need to report the test set accuracy sepa-",
+        "41|358.0241322666665|148.38343199999994|181.90222623999992|rately"
+      ],
+      "sourceSpan": {
+        "startLineId": "41|372.01921116595713|107.53849119999994|449.8278223999996|2.5.2 We still need to report the test set accuracy sepa-",
+        "endLineId": "41|358.0241322666665|148.38343199999994|181.90222623999992|rately"
+      },
+      "sourceTextLines": [
+        "2.5.2 We still need to report the test set accuracy sepa-",
+        "rately"
+      ],
+      "sourceText": "2.5.2 We still need to report the test set accuracy sepa- rately",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/022",
+      "label": "REVIEWED_HEADING",
+      "marker": "Chapter 3",
+      "page": 43,
+      "sourceLineIds": [
+        "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+        "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural",
+        "43|509.72642258125|107.9100582|214.61852370000003|networks"
+      ],
+      "sourceSpan": {
+        "startLineId": "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+        "endLineId": "43|509.72642258125|107.9100582|214.61852370000003|networks"
+      },
+      "sourceTextLines": [
+        "Chapter 3",
+        "Building blocks of neural",
+        "networks"
+      ],
+      "sourceText": "Chapter 3 Building blocks of neural networks",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/023",
+      "label": "REVIEWED_HEADING",
+      "marker": "3.1",
+      "page": 44,
+      "sourceLineIds": [
+        "44|661.9410854687501|161.34127139999998|297.4278899799998|3.1 Normalization"
+      ],
+      "sourceSpan": {
+        "startLineId": "44|661.9410854687501|161.34127139999998|297.4278899799998|3.1 Normalization",
+        "endLineId": "44|661.9410854687501|161.34127139999998|297.4278899799998|3.1 Normalization"
+      },
+      "sourceTextLines": [
+        "3.1 Normalization"
+      ],
+      "sourceText": "3.1 Normalization",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/024",
+      "label": "REVIEWED_HEADING",
+      "marker": "3.2",
+      "page": 46,
+      "sourceLineIds": [
+        "46|323.41217150000034|161.34227140000004|343.7943737599998|3.2 Convolutional blocks"
+      ],
+      "sourceSpan": {
+        "startLineId": "46|323.41217150000034|161.34227140000004|343.7943737599998|3.2 Convolutional blocks",
+        "endLineId": "46|323.41217150000034|161.34227140000004|343.7943737599998|3.2 Convolutional blocks"
+      },
+      "sourceTextLines": [
+        "3.2 Convolutional blocks"
+      ],
+      "sourceText": "3.2 Convolutional blocks",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/025",
+      "label": "REVIEWED_HEADING",
+      "marker": "3.3",
+      "page": 48,
+      "sourceLineIds": [
+        "48|661.8649210944445|161.34127139999998|316.71635587999987|3.3 Recurrent blocks"
+      ],
+      "sourceSpan": {
+        "startLineId": "48|661.8649210944445|161.34127139999998|316.71635587999987|3.3 Recurrent blocks",
+        "endLineId": "48|661.8649210944445|161.34127139999998|316.71635587999987|3.3 Recurrent blocks"
+      },
+      "sourceTextLines": [
+        "3.3 Recurrent blocks"
+      ],
+      "sourceText": "3.3 Recurrent blocks",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/026",
+      "label": "REVIEWED_HEADING",
+      "marker": "3.4",
+      "page": 48,
+      "sourceLineIds": [
+        "48|171.33363716944422|161.3412713999999|452.0340181399996|3.4 Permutation equivariance: attention"
+      ],
+      "sourceSpan": {
+        "startLineId": "48|171.33363716944422|161.3412713999999|452.0340181399996|3.4 Permutation equivariance: attention",
+        "endLineId": "48|171.33363716944422|161.3412713999999|452.0340181399996|3.4 Permutation equivariance: attention"
+      },
+      "sourceTextLines": [
+        "3.4 Permutation equivariance: attention"
+      ],
+      "sourceText": "3.4 Permutation equivariance: attention",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/027",
+      "label": "REVIEWED_HEADING",
+      "marker": "Chapter 4",
+      "page": 53,
+      "sourceLineIds": [
+        "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+        "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine",
+        "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised",
+        "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+      ],
+      "sourceSpan": {
+        "startLineId": "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+        "endLineId": "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+      },
+      "sourceTextLines": [
+        "Chapter 4",
+        "Probabilistic Machine",
+        "Learning and Unsupervised",
+        "Learning"
+      ],
+      "sourceText": "Chapter 4 Probabilistic Machine Learning and Unsupervised Learning",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/028",
+      "label": "REVIEWED_HEADING",
+      "marker": "4.1",
+      "page": 53,
+      "sourceLineIds": [
+        "53|413.9206800913044|107.3137322|465.8496587399997|4.1 Probabilistic interpretation of the energy func-",
+        "53|396.230863775|143.9322702|171.0681075|tion"
+      ],
+      "sourceSpan": {
+        "startLineId": "53|413.9206800913044|107.3137322|465.8496587399997|4.1 Probabilistic interpretation of the energy func-",
+        "endLineId": "53|396.230863775|143.9322702|171.0681075|tion"
+      },
+      "sourceTextLines": [
+        "4.1 Probabilistic interpretation of the energy func-",
+        "tion"
+      ],
+      "sourceText": "4.1 Probabilistic interpretation of the energy func- tion",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/029",
+      "label": "REVIEWED_HEADING",
+      "marker": "4.2",
+      "page": 55,
+      "sourceLineIds": [
+        "55|610.6363140390245|107.31373219999998|450.11761581999974|4.2 Variational inference and Gaussian mixture",
+        "55|592.7743743833335|144.23354039999998|192.21871015999997|models"
+      ],
+      "sourceSpan": {
+        "startLineId": "55|610.6363140390245|107.31373219999998|450.11761581999974|4.2 Variational inference and Gaussian mixture",
+        "endLineId": "55|592.7743743833335|144.23354039999998|192.21871015999997|models"
+      },
+      "sourceTextLines": [
+        "4.2 Variational inference and Gaussian mixture",
+        "models"
+      ],
+      "sourceText": "4.2 Variational inference and Gaussian mixture models",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/030",
+      "label": "REVIEWED_HEADING",
+      "marker": "4.2.1",
+      "page": 56,
+      "sourceLineIds": [
+        "56|165.57174231351354|161.03861120000016|419.79337344000004|4.2.1 Variational Gaussian mixture models"
+      ],
+      "sourceSpan": {
+        "startLineId": "56|165.57174231351354|161.03861120000016|419.79337344000004|4.2.1 Variational Gaussian mixture models",
+        "endLineId": "56|165.57174231351354|161.03861120000016|419.79337344000004|4.2.1 Variational Gaussian mixture models"
+      },
+      "sourceTextLines": [
+        "4.2.1 Variational Gaussian mixture models"
+      ],
+      "sourceText": "4.2.1 Variational Gaussian mixture models",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/031",
+      "label": "REVIEWED_HEADING",
+      "marker": "4.2.2",
+      "page": 59,
+      "sourceLineIds": [
+        "59|621.4335841454545|107.23961120000003|261.19748128000003|4.2.2 K-means clustering"
+      ],
+      "sourceSpan": {
+        "startLineId": "59|621.4335841454545|107.23961120000003|261.19748128000003|4.2.2 K-means clustering",
+        "endLineId": "59|621.4335841454545|107.23961120000003|261.19748128000003|4.2.2 K-means clustering"
+      },
+      "sourceTextLines": [
+        "4.2.2 K-means clustering"
+      ],
+      "sourceText": "4.2.2 K-means clustering",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/032",
+      "label": "REVIEWED_HEADING",
+      "marker": "4.3",
+      "page": 60,
+      "sourceLineIds": [
+        "60|524.3537026999999|161.11173219999992|438.0163461199998|4.3 Continuous latent variable models"
+      ],
+      "sourceSpan": {
+        "startLineId": "60|524.3537026999999|161.11173219999992|438.0163461199998|4.3 Continuous latent variable models",
+        "endLineId": "60|524.3537026999999|161.11173219999992|438.0163461199998|4.3 Continuous latent variable models"
+      },
+      "sourceTextLines": [
+        "4.3 Continuous latent variable models"
+      ],
+      "sourceText": "4.3 Continuous latent variable models",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/033",
+      "label": "REVIEWED_HEADING",
+      "marker": "4.3.1",
+      "page": 63,
+      "sourceLineIds": [
+        "63|411.0551373714287|107.23961119999997|294.19741983999995|4.3.1 Variational autoencoders"
+      ],
+      "sourceSpan": {
+        "startLineId": "63|411.0551373714287|107.23961119999997|294.19741983999995|4.3.1 Variational autoencoders",
+        "endLineId": "63|411.0551373714287|107.23961119999997|294.19741983999995|4.3.1 Variational autoencoders"
+      },
+      "sourceTextLines": [
+        "4.3.1 Variational autoencoders"
+      ],
+      "sourceText": "4.3.1 Variational autoencoders",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/034",
+      "label": "REVIEWED_HEADING",
+      "marker": "4.3.2",
+      "page": 67,
+      "sourceLineIds": [
+        "67|177.73793288421035|107.23961120000016|372.4525724800001|4.3.2 Importance sampling and its variance."
+      ],
+      "sourceSpan": {
+        "startLineId": "67|177.73793288421035|107.23961120000016|372.4525724800001|4.3.2 Importance sampling and its variance.",
+        "endLineId": "67|177.73793288421035|107.23961120000016|372.4525724800001|4.3.2 Importance sampling and its variance."
+      },
+      "sourceTextLines": [
+        "4.3.2 Importance sampling and its variance."
+      ],
+      "sourceText": "4.3.2 Importance sampling and its variance.",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/035",
+      "label": "REVIEWED_HEADING",
+      "marker": "Chapter 5",
+      "page": 71,
+      "sourceLineIds": [
+        "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+        "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative",
+        "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+      ],
+      "sourceSpan": {
+        "startLineId": "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+        "endLineId": "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+      },
+      "sourceTextLines": [
+        "Chapter 5",
+        "Undirected Generative",
+        "Models"
+      ],
+      "sourceText": "Chapter 5 Undirected Generative Models",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/036",
+      "label": "REVIEWED_HEADING",
+      "marker": "5.1",
+      "page": 71,
+      "sourceLineIds": [
+        "71|315.8292607692309|107.67238720000007|449.6786220999999|5.1 Restricted Boltzmann machines: the Prod-",
+        "71|297.6881029250001|144.2335404000001|244.37145102000014|uct of Experts"
+      ],
+      "sourceSpan": {
+        "startLineId": "71|315.8292607692309|107.67238720000007|449.6786220999999|5.1 Restricted Boltzmann machines: the Prod-",
+        "endLineId": "71|297.6881029250001|144.2335404000001|244.37145102000014|uct of Experts"
+      },
+      "sourceTextLines": [
+        "5.1 Restricted Boltzmann machines: the Prod-",
+        "uct of Experts"
+      ],
+      "sourceText": "5.1 Restricted Boltzmann machines: the Prod- uct of Experts",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/037",
+      "label": "REVIEWED_HEADING",
+      "marker": "5.1.1",
+      "page": 74,
+      "sourceLineIds": [
+        "74|345.73154527999975|161.3364912|483.7766038399998|5.1.1 Markov Chain Monte Carlo (MCMC) Sampling"
+      ],
+      "sourceSpan": {
+        "startLineId": "74|345.73154527999975|161.3364912|483.7766038399998|5.1.1 Markov Chain Monte Carlo (MCMC) Sampling",
+        "endLineId": "74|345.73154527999975|161.3364912|483.7766038399998|5.1.1 Markov Chain Monte Carlo (MCMC) Sampling"
+      },
+      "sourceTextLines": [
+        "5.1.1 Markov Chain Monte Carlo (MCMC) Sampling"
+      ],
+      "sourceText": "5.1.1 Markov Chain Monte Carlo (MCMC) Sampling",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/038",
+      "label": "REVIEWED_HEADING",
+      "marker": "5.1.2",
+      "page": 78,
+      "sourceLineIds": [
+        "78|661.1682159157897|161.33649120000004|412.0729007999999|5.1.2 (Persistent) Contrastive Divergence"
+      ],
+      "sourceSpan": {
+        "startLineId": "78|661.1682159157897|161.33649120000004|412.0729007999999|5.1.2 (Persistent) Contrastive Divergence",
+        "endLineId": "78|661.1682159157897|161.33649120000004|412.0729007999999|5.1.2 (Persistent) Contrastive Divergence"
+      },
+      "sourceTextLines": [
+        "5.1.2 (Persistent) Contrastive Divergence"
+      ],
+      "sourceText": "5.1.2 (Persistent) Contrastive Divergence",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/039",
+      "label": "REVIEWED_HEADING",
+      "marker": "5.2",
+      "page": 79,
+      "sourceLineIds": [
+        "79|238.0207333000001|107.67238720000003|460.58747257999994|5.2 Energy-based generative adversarial networks"
+      ],
+      "sourceSpan": {
+        "startLineId": "79|238.0207333000001|107.67238720000003|460.58747257999994|5.2 Energy-based generative adversarial networks",
+        "endLineId": "79|238.0207333000001|107.67238720000003|460.58747257999994|5.2 Energy-based generative adversarial networks"
+      },
+      "sourceTextLines": [
+        "5.2 Energy-based generative adversarial networks"
+      ],
+      "sourceText": "5.2 Energy-based generative adversarial networks",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/040",
+      "label": "REVIEWED_HEADING",
+      "marker": "5.3",
+      "page": 83,
+      "sourceLineIds": [
+        "83|453.0064570391302|107.6723872000002|301.73343460000007|5.3 Autoregressive models"
+      ],
+      "sourceSpan": {
+        "startLineId": "83|453.0064570391302|107.6723872000002|301.73343460000007|5.3 Autoregressive models",
+        "endLineId": "83|453.0064570391302|107.6723872000002|301.73343460000007|5.3 Autoregressive models"
+      },
+      "sourceTextLines": [
+        "5.3 Autoregressive models"
+      ],
+      "sourceText": "5.3 Autoregressive models",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/041",
+      "label": "REVIEWED_HEADING",
+      "marker": "Chapter 6",
+      "page": 87,
+      "sourceLineIds": [
+        "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6",
+        "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+      ],
+      "sourceSpan": {
+        "startLineId": "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6",
+        "endLineId": "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+      },
+      "sourceTextLines": [
+        "Chapter 6",
+        "Further Topics"
+      ],
+      "sourceText": "Chapter 6 Further Topics",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/042",
+      "label": "REVIEWED_HEADING",
+      "marker": "6.1",
+      "page": 87,
+      "sourceLineIds": [
+        "87|479.4515861125001|107.5432714|313.3366411599999|6.1 Reinforcement Learning"
+      ],
+      "sourceSpan": {
+        "startLineId": "87|479.4515861125001|107.5432714|313.3366411599999|6.1 Reinforcement Learning",
+        "endLineId": "87|479.4515861125001|107.5432714|313.3366411599999|6.1 Reinforcement Learning"
+      },
+      "sourceTextLines": [
+        "6.1 Reinforcement Learning"
+      ],
+      "sourceText": "6.1 Reinforcement Learning",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/043",
+      "label": "REVIEWED_HEADING",
+      "marker": "6.2",
+      "page": 94,
+      "sourceLineIds": [
+        "94|519.9437753666665|161.34127140000004|331.12424453999995|6.2 Ensemble Methods"
+      ],
+      "sourceSpan": {
+        "startLineId": "94|519.9437753666665|161.34127140000004|331.12424453999995|6.2 Ensemble Methods",
+        "endLineId": "94|519.9437753666665|161.34127140000004|331.12424453999995|6.2 Ensemble Methods"
+      },
+      "sourceTextLines": [
+        "6.2 Ensemble Methods"
+      ],
+      "sourceText": "6.2 Ensemble Methods",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/044",
+      "label": "REVIEWED_HEADING",
+      "marker": "6.3",
+      "page": 100,
+      "sourceLineIds": [
+        "100|579.3828588437498|161.34127140000004|301.3372294799999|6.3 Meta-Learning"
+      ],
+      "sourceSpan": {
+        "startLineId": "100|579.3828588437498|161.34127140000004|301.3372294799999|6.3 Meta-Learning",
+        "endLineId": "100|579.3828588437498|161.34127140000004|301.3372294799999|6.3 Meta-Learning"
+      },
+      "sourceTextLines": [
+        "6.3 Meta-Learning"
+      ],
+      "sourceText": "6.3 Meta-Learning",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/045",
+      "label": "REVIEWED_HEADING",
+      "marker": "6.4",
+      "page": 102,
+      "sourceLineIds": [
+        "102|661.8065400305557|161.3412714|471.14172191999984|6.4 Regression: Mixture Density Networks"
+      ],
+      "sourceSpan": {
+        "startLineId": "102|661.8065400305557|161.3412714|471.14172191999984|6.4 Regression: Mixture Density Networks",
+        "endLineId": "102|661.8065400305557|161.3412714|471.14172191999984|6.4 Regression: Mixture Density Networks"
+      },
+      "sourceTextLines": [
+        "6.4 Regression: Mixture Density Networks"
+      ],
+      "sourceText": "6.4 Regression: Mixture Density Networks",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/046",
+      "label": "REVIEWED_HEADING",
+      "marker": "6.5",
+      "page": 104,
+      "sourceLineIds": [
+        "104|661.849180125|161.3412714|263.07161021999997|6.5 Causality"
+      ],
+      "sourceSpan": {
+        "startLineId": "104|661.849180125|161.3412714|263.07161021999997|6.5 Causality",
+        "endLineId": "104|661.849180125|161.3412714|263.07161021999997|6.5 Causality"
+      },
+      "sourceTextLines": [
+        "6.5 Causality"
+      ],
+      "sourceText": "6.5 Causality",
+      "reviewNote": null
+    },
+    {
+      "goldStableId": "058/heading/047",
+      "label": "REVIEWED_HEADING",
+      "marker": "Bibliography",
+      "page": 107,
+      "sourceLineIds": [
+        "107|583.9530067541666|107.8356969|262.57412607000003|Bibliography"
+      ],
+      "sourceSpan": {
+        "startLineId": "107|583.9530067541666|107.8356969|262.57412607000003|Bibliography",
+        "endLineId": "107|583.9530067541666|107.8356969|262.57412607000003|Bibliography"
+      },
+      "sourceTextLines": [
+        "Bibliography"
+      ],
+      "sourceText": "Bibliography",
+      "reviewNote": null
+    }
+  ],
+  "uncertainOccurrences": []
+}

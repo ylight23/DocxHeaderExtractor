@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2s_057_pdf_docx_divergence_taxonomy",
+  "usesModel": false,
+  "supersededBy": {
+    "artifact": "eval/benchmark-n0/n2-s/counterfactual/057-divergence-taxonomy-correction.v1.json",
+    "reason": "The tally below (21/1/1) does not exclude InTableOfContents paragraphs and conflates real body anchors with TOC-only listing-line matches. Corrected breakdown: 13/22 have a real body match, 11/22 of those carry NumberingId, 9/22 match only a TOC line. This file is kept unmodified below as the original evidence, not deleted or silently rewritten."
+  },
+  "hypothesisTested": "DOCX Word-native auto-numbering (NumberingId set, number not literal paragraph text) vs the PDF render, which bakes the visible number into extracted line text.",
+  "tally": {
+    "DOCX_AUTO_NUMBERED_TITLE_ONLY": 21,
+    "FULL_TEXT_FOUND_VERBATIM": 1,
+    "NOT_FOUND_EVEN_TITLE_ONLY": 1
+  },
+  "rows": [
+    {
+      "StableId": "057/numbered/9.4",
+      "groundingOwner": "NO_DOCX_SOURCE_ANCHOR",
+      "titleOnlyText": "Approximate the derivative of a function",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/10.0.1",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "The Role of Sample Size",
+      "divergenceOwner": "FULL_TEXT_FOUND_VERBATIM",
+      "matchedParagraphHasNumbering": false
+    },
+    {
+      "StableId": "057/numbered/11.3.1",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "Matrix and vector multiplication",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/12.3",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "Cleaning the imported data set",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/15.8.1",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "Calculating Conditional Probabilities",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/22.4",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "Chi-Square Goodness-of-Fit Test",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/23.2",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "Classical linear regression assumptions",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/23.5",
+      "groundingOwner": "NO_DOCX_SOURCE_ANCHOR",
+      "titleOnlyText": "Deriving \u03B21 and showing E(\u03B21 ) = \u03B21",
+      "divergenceOwner": "NOT_FOUND_EVEN_TITLE_ONLY",
+      "matchedParagraphHasNumbering": null
+    },
+    {
+      "StableId": "057/numbered/24.1.1",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "Concept of Integration of order d",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/24.7.1",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "Thorough augmented Dickey-Fuller test",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/24.8",
+      "groundingOwner": "NO_DOCX_SOURCE_ANCHOR",
+      "titleOnlyText": "Illustration of a spurious regression",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/30.13.1",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "Setup: mean and variance equations",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/31.3.2",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "Building two cointegrated time series",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/41.3",
+      "groundingOwner": "NO_DOCX_SOURCE_ANCHOR",
+      "titleOnlyText": "KDE illustration from a known density",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/45.1.4",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "Outlier isolation comparison",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/50.4",
+      "groundingOwner": "NO_DOCX_SOURCE_ANCHOR",
+      "titleOnlyText": "Time-Varying Transition Probabilities",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/50.5",
+      "groundingOwner": "NO_DOCX_SOURCE_ANCHOR",
+      "titleOnlyText": "Mean and variance switching states",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/51.1",
+      "groundingOwner": "NO_DOCX_SOURCE_ANCHOR",
+      "titleOnlyText": "Event study on fines impact on banks",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/54.4.1",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "Risk Premia under the APT",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/72.2",
+      "groundingOwner": "NO_DOCX_SOURCE_ANCHOR",
+      "titleOnlyText": "Within estimator, Fixed effects",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/76.4",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "Are both series I (1)?",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/76.10.2",
+      "groundingOwner": "GROUNDING_VALIDATOR_REJECTION",
+      "titleOnlyText": "ARCH model of the residuals - PACF",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    },
+    {
+      "StableId": "057/numbered/83.7",
+      "groundingOwner": "NO_DOCX_SOURCE_ANCHOR",
+      "titleOnlyText": "Domain of Attraction of Copula",
+      "divergenceOwner": "DOCX_AUTO_NUMBERED_TITLE_ONLY",
+      "matchedParagraphHasNumbering": true
+    }
+  ]
+}

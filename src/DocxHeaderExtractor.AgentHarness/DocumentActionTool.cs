@@ -79,6 +79,68 @@ public sealed class OutlineWritebackTool(ExtractionOptions extraction) : IDocume
 }
 
 /// <summary>
+/// M9.5b. The pdf-first-authority route's writeback: acts on the exact <c>PdfProductOutput</c>
+/// <see cref="HeaderExtractionPipeline"/> already materialized (<see cref="DocumentOutline.ProductOutput"/>),
+/// never a reconstruction through <see cref="HeadingRecord"/>. The mutation itself lives in
+/// <see cref="PdfProductWriteback"/>; this tool only carries the harness contract, mirroring
+/// <see cref="OutlineWritebackTool"/> for every other route.
+/// </summary>
+public sealed class PdfProductWritebackTool(ExtractionOptions extraction) : IDocumentActionTool
+{
+    private readonly ExtractionOptions _extraction = extraction
+        ?? throw new ArgumentNullException(nameof(extraction));
+
+    public AgentToolDescriptor Descriptor { get; } = new(
+        "write_document_outline",
+        "Ghi w:outlineLvl của các heading đã chốt (M9 FinalStructure authority) vào một bản sao .docx; không sửa nội dung.",
+        AgentToolRisk.High,
+        SendsDataExternally: false,
+        MutatesExternalState: true);
+
+    public bool CanExecute(DocumentAgentRequest request) => request.WantsWriteback;
+
+    public Task<AgentWritebackReport> ExecuteAsync(
+        DocumentAgentRequest request,
+        DocumentOutline outline,
+        CancellationToken ct = default)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(outline);
+        ct.ThrowIfCancellationRequested();
+
+        var productOutput = outline.ProductOutput
+            ?? throw new InvalidOperationException(
+                "Outline không mang PdfProductOutput - route tạo ra nó không phải pdf-first-authority.");
+        var target = request.WritebackTargetPath
+                     ?? throw new InvalidOperationException("Run không có đích writeback.");
+
+        var conversion = LegacyDocConverter.EnsureDocx(request.InputPath);
+        try
+        {
+            var result = PdfProductWriteback.Apply(
+                conversion.Path,
+                target,
+                productOutput,
+                _extraction,
+                new OutlineWritebackOptions
+                {
+                    ApplyHeadingStyles = request.ApplyHeadingStyles,
+                    Overwrite = request.AllowWritebackOverwrite,
+                });
+
+            return Task.FromResult(new AgentWritebackReport(
+                result.OutputPath, result.Applied, result.Skipped.Count));
+        }
+        finally
+        {
+            LegacyDocConverter.Cleanup(conversion);
+        }
+    }
+
+    public void Dispose() { }
+}
+
+/// <summary>
 /// Ghi partial key package để người duyệt tạo đáp án cho các file gate-pass nhưng thiếu key.
 /// Tool này không tạo nhãn vàng tự động: file .key luôn có marker partial_human và cần duyệt.
 /// </summary>

@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Core.Models;
@@ -18,6 +18,10 @@ public sealed record RouteExecutionAudit(
     [property: JsonPropertyName("groundingRejections")] IReadOnlyList<RouteBlockRejectionAudit> GroundingRejections,
     [property: JsonPropertyName("alignedBlockIds")] IReadOnlyList<string> AlignedBlockIds)
 {
+    /// <summary>Source identities selected before any provider execution; candidate id is diagnostic only.</summary>
+    [JsonPropertyName("selectedSourceIdentities")]
+    public IReadOnlyList<PdfSelectedSourceIdentity> SelectedSourceIdentities { get; init; } = [];
+
     /// <summary>Raw analyst completions, populated only by explicit diagnostic routes.</summary>
     [JsonPropertyName("rawAnalystResponses")]
     public IReadOnlyList<string> RawAnalystResponses { get; init; } = [];
@@ -45,12 +49,48 @@ public sealed record RouteExecutionAudit(
     [JsonPropertyName("hierarchyProposals")]
     public IReadOnlyList<PdfHierarchyProposalAudit> HierarchyProposals { get; init; } = [];
 
+    /// <summary>M8.1 source-only evidence inventory for already validated headings.</summary>
+    [JsonPropertyName("hierarchyFacts")]
+    public IReadOnlyList<PdfHierarchyFactAudit> HierarchyFacts { get; init; } = [];
+
     [JsonPropertyName("textLayerRecoveries")]
     public IReadOnlyList<PdfTextLayerRecoveryAudit> TextLayerRecoveries { get; init; } = [];
 
     [JsonPropertyName("rankedCandidates")]
     public IReadOnlyList<RankedCandidate> RankedCandidates { get; init; } = [];
+
+    /// <summary>Independent semantic execution outcome. A timeout is partial work, not provider unavailability.</summary>
+    [JsonPropertyName("semanticLane")]
+    public RouteLaneExecutionAudit? SemanticLane { get; init; }
+
+    /// <summary>Independent visual execution outcome.</summary>
+    [JsonPropertyName("visualLane")]
+    public RouteLaneExecutionAudit? VisualLane { get; init; }
+
+    /// <summary>
+    /// Independent span-resolution outcome. Reported separately from <see cref="SemanticLane"/> on
+    /// purpose: a heading needs a resolved span to pass validation, so this lane can fail while the
+    /// role lane completes - and folding it into the existing field would change what that field has
+    /// always meant.
+    /// </summary>
+    [JsonPropertyName("spanLane")]
+    public RouteLaneExecutionAudit? SpanLane { get; init; }
 }
+
+public sealed record PdfSelectedSourceIdentity(
+    [property: JsonPropertyName("candidateIdDiagnostic")] string CandidateIdDiagnostic,
+    [property: JsonPropertyName("page")] int Page,
+    [property: JsonPropertyName("sourceLineIds")] IReadOnlyList<string> SourceLineIds,
+    [property: JsonPropertyName("sourceText")] string SourceText,
+    [property: JsonPropertyName("sourceSpan")] TextOffsetSpan? SourceSpan = null);
+
+public sealed record RouteLaneExecutionAudit(
+    [property: JsonPropertyName("status")] string Status,
+    [property: JsonPropertyName("scheduled")] int Scheduled,
+    [property: JsonPropertyName("completed")] int Completed,
+    [property: JsonPropertyName("timedOut")] int TimedOut,
+    [property: JsonPropertyName("notStarted")] int NotStarted,
+    [property: JsonPropertyName("failureClass")] string? FailureClass = null);
 
 public sealed record RouteBlockAudit(
     [property: JsonPropertyName("id")] string Id,
@@ -60,7 +100,8 @@ public sealed record RouteBlockAudit(
 public sealed record RouteBlockDecisionAudit(
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("role")] string Role,
-    [property: JsonPropertyName("confidence")] double Confidence);
+    [property: JsonPropertyName("confidence")] double Confidence,
+    [property: JsonPropertyName("reason")] string? Reason = null);
 
 public sealed record RouteBlockRejectionAudit(
     [property: JsonPropertyName("id")] string Id,

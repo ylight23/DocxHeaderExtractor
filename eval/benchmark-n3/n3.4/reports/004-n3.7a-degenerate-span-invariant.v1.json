@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_7a_degenerate_span_invariant_investigation",
+  "usesModel": false,
+  "purpose": "Bounded diagnosis only - test whether the invariant rejects exactly Owner A\u0027s 6 cases and zero genuine headings across independent control corpora. No production code change here.",
+  "invariantDefinition": "resolved span, once the recognized production marker is accounted for, carries no semantic residue, AND the source candidate\u0027s full text does carry \u003E=4 chars of semantic (letter-bearing) content beyond the marker that the span excluded.",
+  "positiveCases": {
+    "total": 12,
+    "ownerAFiredCount": 6,
+    "ownerACount": 6,
+    "ownerBFiredCount": 0,
+    "rows": [
+      {
+        "SourceId": "b30",
+        "OwnerClass": "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN",
+        "spanText": "8",
+        "markerRaw": "8.",
+        "residue": "",
+        "invariantFires": true
+      },
+      {
+        "SourceId": "b45",
+        "OwnerClass": "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN",
+        "spanText": "1",
+        "markerRaw": "15.",
+        "residue": "",
+        "invariantFires": true
+      },
+      {
+        "SourceId": "b56",
+        "OwnerClass": "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN",
+        "spanText": "20. ",
+        "markerRaw": "20.",
+        "residue": "",
+        "invariantFires": true
+      },
+      {
+        "SourceId": "b60",
+        "OwnerClass": "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN",
+        "spanText": "22",
+        "markerRaw": "22.",
+        "residue": "",
+        "invariantFires": true
+      },
+      {
+        "SourceId": "b99",
+        "OwnerClass": "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN",
+        "spanText": "4",
+        "markerRaw": "4.",
+        "residue": "",
+        "invariantFires": true
+      },
+      {
+        "SourceId": "b122",
+        "OwnerClass": "OWNER_A_ROLE_PLUS_DEGENERATE_SPAN",
+        "spanText": "2",
+        "markerRaw": "2.",
+        "residue": "",
+        "invariantFires": true
+      },
+      {
+        "SourceId": "b221",
+        "OwnerClass": "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED",
+        "spanText": "b) Adjusting operational objectives ofinvestment projects;",
+        "markerRaw": "b)",
+        "residue": "Adjusting operational objectives ofinvestment projects;",
+        "invariantFires": false
+      },
+      {
+        "SourceId": "b238",
+        "OwnerClass": "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED",
+        "spanText": "d) International arbitration;",
+        "markerRaw": "d)",
+        "residue": "International arbitration;",
+        "invariantFires": false
+      },
+      {
+        "SourceId": "b251",
+        "OwnerClass": "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED",
+        "spanText": "d) Quick depreciation or increase in deductible expenses upon calculating",
+        "markerRaw": "d)",
+        "residue": "Quick depreciation or increase in deductible expenses upon calculating",
+        "invariantFires": false
+      },
+      {
+        "SourceId": "b388",
+        "OwnerClass": "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED",
+        "spanText": "5. New forms of investment and economic organizations in accordance",
+        "markerRaw": "5.",
+        "residue": "New forms of investment and economic organizations in accordance",
+        "invariantFires": false
+      },
+      {
+        "SourceId": "b438",
+        "OwnerClass": "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED",
+        "spanText": "c) Contributing capital to other economic organizations not prescribed at",
+        "markerRaw": "c)",
+        "residue": "Contributing capital to other economic organizations not prescribed at",
+        "invariantFires": false
+      },
+      {
+        "SourceId": "b444",
+        "OwnerClass": "OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED",
+        "spanText": "d) Purchasing capital contributions of members of other economic",
+        "markerRaw": "d)",
+        "residue": "Purchasing capital contributions of members of other economic",
+        "invariantFires": false
+      }
+    ]
+  },
+  "control004": {
+    "TotalChecked": 52,
+    "FalsePositives": [],
+    "OwnerAAlreadyExcluded": 0
+  },
+  "control003": {
+    "TotalChecked": 77,
+    "FalsePositives": []
+  },
+  "control057": {
+    "TotalChecked": 23,
+    "FalsePositives": []
+  },
+  "verdict": {
+    "allSixOwnerARejected": true,
+    "zeroOwnerBFalselyRejected": true,
+    "zeroGenuineHeadingsLostAcrossControls": true,
+    "totalGenuineHeadingsChecked": 152
+  }
+}

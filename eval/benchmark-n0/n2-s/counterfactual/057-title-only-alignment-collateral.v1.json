@@ -1,0 +1,380 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2s_057_title_only_alignment_collateral",
+  "usesModel": false,
+  "ruleTested": "PDF marker recognized by the marker authority AND title-only text matches a DOCX paragraph verbatim AND that paragraph has NumberingId set -\u003E permit a constrained title-only alignment attempt. Never a general strip-and-fuzzy-match.",
+  "population": {
+    "totalDocxParagraphs": 19249,
+    "withNumberingId": 2727,
+    "withoutNumberingId": 16522
+  },
+  "control1_duplicateTitlesAmongNumberedParagraphs": {
+    "count": 26,
+    "cases": [
+      {
+        "canonicalText": "python",
+        "count": 2,
+        "numberingLevels": [
+          0
+        ]
+      },
+      {
+        "canonicalText": "exploratorydataanalysis",
+        "count": 2,
+        "numberingLevels": [
+          0
+        ]
+      },
+      {
+        "canonicalText": "importthepackage",
+        "count": 2,
+        "numberingLevels": [
+          2
+        ]
+      },
+      {
+        "canonicalText": "descrip\u03B9i\u03BDes\u03B9a\u03B9is\u03B9ics",
+        "count": 2,
+        "numberingLevels": [
+          1
+        ]
+      },
+      {
+        "canonicalText": "generalizedex\u03B9reme\u03BDaluedis\u03B9ribu\u03B9ion",
+        "count": 2,
+        "numberingLevels": [
+          1
+        ]
+      },
+      {
+        "canonicalText": "linearregression",
+        "count": 2,
+        "numberingLevels": [
+          1,
+          2
+        ]
+      },
+      {
+        "canonicalText": "\u03BDistheerrorterm",
+        "count": 2,
+        "numberingLevels": [
+          0,
+          3
+        ]
+      },
+      {
+        "canonicalText": "impulseresponsefunction",
+        "count": 2,
+        "numberingLevels": [
+          2
+        ]
+      },
+      {
+        "canonicalText": "y",
+        "count": 2,
+        "numberingLevels": [
+          0
+        ]
+      },
+      {
+        "canonicalText": "sarima",
+        "count": 2,
+        "numberingLevels": [
+          1
+        ]
+      },
+      {
+        "canonicalText": "coin\u03B9egra\u03B9ion\u03B9es\u03B9",
+        "count": 2,
+        "numberingLevels": [
+          1
+        ]
+      },
+      {
+        "canonicalText": "zistheinstrumentalvariable",
+        "count": 2,
+        "numberingLevels": [
+          3
+        ]
+      },
+      {
+        "canonicalText": "wrepresentsotherexogenousregressors",
+        "count": 2,
+        "numberingLevels": [
+          3
+        ]
+      },
+      {
+        "canonicalText": "youmightwanttoconvertthedatesintodateformat",
+        "count": 2,
+        "numberingLevels": [
+          0
+        ]
+      },
+      {
+        "canonicalText": "strictparetodistributiontypei",
+        "count": 2,
+        "numberingLevels": [
+          2,
+          0
+        ]
+      },
+      {
+        "canonicalText": "generalizedparetodistributiontypeii",
+        "count": 2,
+        "numberingLevels": [
+          2,
+          0
+        ]
+      },
+      {
+        "canonicalText": "extendedparetodistribution",
+        "count": 2,
+        "numberingLevels": [
+          2,
+          0
+        ]
+      },
+      {
+        "canonicalText": "taildependence",
+        "count": 2,
+        "numberingLevels": [
+          2
+        ]
+      },
+      {
+        "canonicalText": "utilitywithinsuranceshouldbegreaterthanwithout",
+        "count": 2,
+        "numberingLevels": [
+          0
+        ]
+      },
+      {
+        "canonicalText": "budgetconstraintlettingqxpw1and\u03B71",
+        "count": 2,
+        "numberingLevels": [
+          0
+        ]
+      },
+      {
+        "canonicalText": "scr1",
+        "count": 2,
+        "numberingLevels": [
+          0
+        ]
+      },
+      {
+        "canonicalText": "da\u03B9a",
+        "count": 2,
+        "numberingLevels": [
+          1
+        ]
+      },
+      {
+        "canonicalText": "univariatearmagarchmodel",
+        "count": 2,
+        "numberingLevels": [
+          0,
+          2
+        ]
+      },
+      {
+        "canonicalText": "jtheareaofbirth",
+        "count": 3,
+        "numberingLevels": [
+          0
+        ]
+      },
+      {
+        "canonicalText": "ktheyearofbirth",
+        "count": 2,
+        "numberingLevels": [
+          0
+        ]
+      },
+      {
+        "canonicalText": "tthecensusyear",
+        "count": 2,
+        "numberingLevels": [
+          0
+        ]
+      }
+    ]
+  },
+  "control2_numberedTitleCollidesWithManuallyTypedParagraph": {
+    "count": 32,
+    "cases": [
+      "fsolve",
+      "x",
+      "n",
+      "r",
+      "choleskydecomposition",
+      "mean",
+      "gender",
+      "30",
+      "s",
+      "classificationaccuracy",
+      "sensitivity",
+      "gradientboostingclassifier",
+      "randomforestclassifier",
+      "falsepositiverate",
+      "auc077",
+      "68",
+      "58",
+      "y",
+      "93",
+      "rootmeansquareforecasterror",
+      "interpretation",
+      "203",
+      "method",
+      "sharperatio",
+      "xxi",
+      "historicalvar",
+      "70",
+      "arima",
+      "bpce",
+      "bnpparibas",
+      "creditagricolesa",
+      "societegeneralesa"
+    ]
+  },
+  "control3_numberingLevelDistribution": [
+    {
+      "level": 0,
+      "count": 1065
+    },
+    {
+      "level": 1,
+      "count": 1094
+    },
+    {
+      "level": 2,
+      "count": 321
+    },
+    {
+      "level": 3,
+      "count": 194
+    },
+    {
+      "level": 4,
+      "count": 48
+    },
+    {
+      "level": 5,
+      "count": 5
+    }
+  ],
+  "control4_actualTargetsResolveUnambiguously": {
+    "targetCount": 21,
+    "allUnambiguous": true,
+    "targets": [
+      {
+        "StableId": "057/numbered/9.4",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/11.3.1",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/12.3",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/15.8.1",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/22.4",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/23.2",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/24.1.1",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/24.7.1",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/24.8",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/30.13.1",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/31.3.2",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/41.3",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/45.1.4",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/50.4",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/50.5",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/51.1",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/54.4.1",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/72.2",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/76.4",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/76.10.2",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      },
+      {
+        "StableId": "057/numbered/83.7",
+        "matchingNumberedParagraphs": 1,
+        "unambiguous": true
+      }
+    ]
+  },
+  "verdict": "COLLISION_RISK_FOUND",
+  "note": "Single-document evidence only. A collision-free result here does not generalize to other documents without the same check repeated on them."
+}

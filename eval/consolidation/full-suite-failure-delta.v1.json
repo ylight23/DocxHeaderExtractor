@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "full_suite_failure_set_delta",
+  "date": "2026-08-27",
+  "baseRevision": "b7854b5e1a9832180d0729f65af7b76cf1b5b830",
+  "integrationRevision": "b2f814c5b508c02accd97bcb7dfa7a11713842a6",
+  "runtimeIdentifier": "win-x64",
+  "providerCalls": 0,
+  "base": { "passed": 1179, "failed": 17, "skipped": 0, "total": 1196 },
+  "integration": { "passed": 1217, "failed": 21, "skipped": 0, "total": 1238 },
+  "failureSetComparison": {
+    "preexistingFailures": 17,
+    "newIntegrationFailures": 4,
+    "newTestFailures": 4,
+    "fixedFailures": 0,
+    "environmentOnlyFailures": 0,
+    "unresolvedFailures": 3,
+    "baseFailureSetSource": "C:\\DocxHeaderExtractor-consolidation-base\\tests\\DocxHeaderExtractor.Tests\\TestResults\\base-failure-delta.trx",
+    "integrationFailureSetSource": "C:\\DocxHeaderExtractor\\tests\\DocxHeaderExtractor.Tests\\TestResults\\integration-failure-delta.trx"
+  },
+  "classifications": [
+    {
+      "testIdentity": "DocxHeaderExtractor.Tests.PdfCrossDocumentEvidenceExpansionProbe.WriteEvidenceExpansionArtifact",
+      "classification": "UNRESOLVED",
+      "introducingCommit": "7f61658",
+      "evidence": "Sequential rerun failed with IOException because corpus 004 DOCX was held by another process; protocol therefore does not classify it as ENVIRONMENT_FILE_LOCK."
+    },
+    {
+      "testIdentity": "DocxHeaderExtractor.Tests.PdfN3FreshHoldoutBootstrapV2Probe.CommittedV2BootstrapAndReplacementPacketsReproduce",
+      "classification": "UNRESOLVED",
+      "introducingCommit": "ebdb596",
+      "evidence": "Sequential rerun failed with IOException because corpus 004 DOCX was held by another process; protocol therefore does not classify it as ENVIRONMENT_FILE_LOCK."
+    },
+    {
+      "testIdentity": "DocxHeaderExtractor.Tests.PdfN3SilverCandidateCensusProbe.CommittedCensusReproducesFromFrozenPopulationAndSilver(stem: \"004\")",
+      "classification": "UNRESOLVED",
+      "introducingCommit": "37e3300",
+      "evidence": "Sequential rerun failed with IOException because corpus 004 DOCX was held by another process; protocol therefore does not classify it as ENVIRONMENT_FILE_LOCK."
+    },
+    {
+      "testIdentity": "DocxHeaderExtractor.Tests.PdfN15RankingLossDiagnosisProbe.CommittedDiagnosisReproducesByteForByte",
+      "classification": "ARTIFACT_HASH_DRIFT",
+      "introducingCommit": "3a81015",
+      "evidence": "Sequential rerun failed with expected reviewerArtifactSha256 245c4c7b9b57d0e5331c7 versus actual 7099994d18112001b732e; expected SHA was not changed."
+    }
+  ],
+  "sharedFailureIdentities": 17,
+  "method": {
+    "comparison": "exact TRX testName identity, not raw totals",
+    "baseBuild": "PASS with win-x64",
+    "integrationBuild": "PASS with win-x64",
+    "fileLockRerun": "three affected probes rerun individually and sequentially; all remained failing",
+    "productionCodeModified": false,
+    "expectedValuesModified": false,
+    "testsSuppressed": false
+  },
+  "status": "FULL_SUITE_DELTA_BLOCKED_BY_NEW_TEST_FAILURES"
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_4_r1_fresh_holdout_manifest",
+  "parentPopulationManifest": {
+    "path": "keys/benchmark-n3/manifest.v2.json",
+    "rawSha256": "4a39651e06ef7e1f682293679a1e1edf26c67973a75c267f8ed782f4e65b4e12"
+  },
+  "frozenInputs": {
+    "n3_2SilverCommit": "442bdf1",
+    "n3_3CensusCommit": "37e3300",
+    "baselineRevision": "f0681940df1c2586015b4d42d5813dad5734e047",
+    "r1Revision": "20a21923617c84e5c36475915bca6b8601f47b4e",
+    "r1Manifest": "eval/benchmark-n0/remediation/r1-partial-span-preservation.v1.json",
+    "remediationSet": ["R1"],
+    "excludedRemediations": ["R2"]
+  },
+  "baselineToR1DeltaVerification": {
+    "method": "git diff f068194 20a2192, read in full before any provider call",
+    "filesChanged": [
+      "src/DocxHeaderExtractor.Core/Pipeline/PdfLayoutEvidenceOutline.cs",
+      "src/DocxHeaderExtractor.Core/Pipeline/PdfStageCheckpoint.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfA3PartialSpanPreservationImplementationTests.cs"
+    ],
+    "scopeConfirmed": "partial_timeout span handling only - PreservePartialSpanResolutions (new) replaces the prior blanket-Uncertain branch on spanRun.TimedOut; ReadCompletedSpanResolutions (new) is a read-only checkpoint accessor; SpanLane Completed/TimedOut counters corrected to reflect what actually resolved instead of a hardcoded 0/selected.Count for partial_timeout (reporting fix, not a behavior change).",
+    "confirmedUnchanged": [
+      "candidate generation", "ranking", "selected@160", "prompt", "model", "route",
+      "semantic role request", "span request", "semantic concurrency", "timeout values",
+      "validator semantics (outside this function)", "grounding semantics", "complete-lane behavior"
+    ],
+    "stopConditionTriggered": false
+  },
+  "frozenProfile": {
+    "command": "pdf-hierarchy-facts",
+    "backend": "OpenRouter",
+    "model": "qwen/qwen3.5-9b",
+    "wideCandidates": true,
+    "supplementCandidates": true,
+    "analystBlocks": 160,
+    "semanticConcurrency": 2,
+    "semanticRequestTimeoutSeconds": 90,
+    "semanticBatchTimeoutSeconds": 120,
+    "semanticLaneDeadlineSeconds": 300,
+    "visualRegions": 0,
+    "roleAndSpanCheckpoint": true
+  },
+  "execution": {
+    "liveDocuments": ["004"],
+    "noLiveCallDocuments": ["030", "043", "058"],
+    "providerExecutions": 1,
+    "noOutcomeDrivenRetry": true,
+    "r1TuningForbidden": true,
+    "canonicalRun": "runs/004-n3.4-canonical-run.v1.json",
+    "checkpoint": "checkpoints/004-n3.4-canonical.jsonl",
+    "guard": {
+      "manifest": "eval/benchmark-n3/n3.4/manifest.v1.json",
+      "runLock": "eval/benchmark-n3/n3.4/004-n3.4.run.lock",
+      "canonicalOutput": "eval/benchmark-n3/n3.4/runs/004-n3.4-canonical-run.v1.json"
+    }
+  },
+  "evaluatorContract": {
+    "identity": "documentSha256 + page + sourceLineIds/sourceSpan; candidateId is diagnostics-only",
+    "join": ["EXACT_OCCURRENCE_MATCH", "PARTIAL_SAME_OCCURRENCE", "UNMATCHED_OUTPUT"],
+    "partialJoinSemantics": "PARTIAL_SAME_OCCURRENCE is neither an exact-stage success nor a false-positive.",
+    "orderedStages": ["decisionRelevant", "roleSurvival", "spanResolved", "validated", "grounded", "emitted"],
+    "pairedReplay": {
+      "baseline": "on partial_timeout discard all span facts",
+      "r1": "on partial_timeout retain only completed durable span facts; unresolved stays Uncertain",
+      "complete": "baseline and R1 are identical by construction",
+      "providerCalls": 0
+    }
+  },
+  "documents": [
+    {
+      "stem": "004",
+      "domain": "legal",
+      "silver": "eval/benchmark-n3/silver-labels/004-n3.2-silver-model-assisted.v1.json",
+      "silverRawSha256": "1ec0498b0fa027ae7af24dc7f267573e2ddc307c75f4f63657557f1cd3a79418",
+      "census": "eval/benchmark-n3/census/004-n3.3-census.v1.json",
+      "censusRawSha256": "851ff255242eb6f00edae11e5d3c1a55882218604b43dd604d01582b7892ffb8",
+      "frozenDenominators": { "silver": 93, "fullCandidate": 83, "selectedAt160": 55, "decisionRelevant": 55 },
+      "liveEligible": true
+    },
+    { "stem": "030", "decisionRelevant": 8, "liveEligible": false, "reason": "INSUFFICIENT_SEMANTIC_COHORT" },
+    { "stem": "043", "decisionRelevant": 3, "liveEligible": false, "reason": "INSUFFICIENT_SEMANTIC_COHORT" },
+    { "stem": "058", "decisionRelevant": 13, "liveEligible": false, "reason": "INSUFFICIENT_SEMANTIC_COHORT" }
+  ]
+}

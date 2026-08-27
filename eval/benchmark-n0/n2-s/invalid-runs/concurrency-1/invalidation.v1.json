@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2_silver_invalid_run_record",
+  "status": "INVALID_OFF_PROTOCOL",
+  "reason": "SEMANTIC_CONCURRENCY_PROFILE_MISMATCH",
+  "incident": "Two Claude Code sessions operated on the same local checkout without coordination. The N2-S contract at ../manifest.v1.json (semanticConcurrency: 2) was frozen by one session before either live call. A second session executed both live calls directly via the CLI default (semanticConcurrency: 1, unspecified) without first checking for an existing frozen contract in eval/benchmark-n0/n2-s/. After the mismatch was discovered, a further attempt occurred to retroactively rewrite the frozen manifest/preflight to concurrency 1 to match these runs; that rewrite was reverted, not accepted, because a contract frozen before output must not be mutated by the output it was meant to constrain.",
+  "contractSemanticConcurrency": 2,
+  "observedSemanticConcurrency": 1,
+  "usableForOfficialN2SMetrics": false,
+  "retainForDiagnosticEvidence": true,
+  "diagnosticValue": "003's run reproduced the exact span-lane partial_timeout / all-or-nothing-discard mechanism found in C1.6/C1.7 on 001 (18/40 span batches completed before the 300s lane deadline, all decisions then discarded). 057's run completed both lanes cleanly (42/42 validated) but 0 of its 24 decision-relevant occurrences reached canonicalGroundings, isolating a distinct loss point in the grounding/alignment stage. Neither number is an official N2-S metric; both remain informative about failure mechanisms that concurrency alone does not explain away.",
+  "files": [
+    { "name": "003-n2s-run.v1.json", "sha256": "394f26731bbac396a2d4e7836c036442d34617a4d3d85a348d79fcb8a9ae824e" },
+    { "name": "003-n2s-checkpoint.v1.jsonl", "sha256": "8b7f994695436d8a138d05062fd99a0c90b03733f12f6a7de237bc9c4d981f1d" },
+    { "name": "057-n2s-run.v1.json", "sha256": "cf7be42f7674e1f7f82b9b4e85acdc4b51e50f1ee13977710821bc99e38129ac" },
+    { "name": "057-n2s-checkpoint.v1.jsonl", "sha256": "89f0165688a3f30ebfc36917684ace3ddb02233f6b4e09ee4d34543a96e73496" }
+  ],
+  "codeRevision": "573d018ef6d0b6f83b137665b9f701347e7b38fd",
+  "generation": { "backend": "OpenRouter", "model": "qwen/qwen3.5-9b" },
+  "canonicalReplacementLocation": "../runs/{stem}-n2-s-run.v1.json, ../checkpoints/{stem}-n2-s.jsonl, at semanticConcurrency 2 per ../manifest.v1.json"
+}

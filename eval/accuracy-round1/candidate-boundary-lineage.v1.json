@@ -1,0 +1,2278 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_round1_candidate_boundary_lineage",
+  "phase": "round1c2",
+  "modelCalls": 0,
+  "productionBehaviorChanged": false,
+  "rankingChanged": false,
+  "sourceAuthority": "Round1A b4685c8 \u002B Round1B 4d7c814 \u002B Round1C fecc835",
+  "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is run-local diagnostics",
+  "total": 18,
+  "ownerResolved": 18,
+  "ownerUnresolved": 0,
+  "classification": {
+    "PRODUCTION_BOUNDARY_DEFECT": 18
+  },
+  "owners": [
+    {
+      "component": "PdfSemanticBlockGrouper.Build",
+      "operation": [
+        "LINE_GROUP"
+      ],
+      "count": 18,
+      "documents": [
+        "004",
+        "030",
+        "043",
+        "058"
+      ],
+      "shapes": {
+        "RIGHT_TRUNCATION": 4,
+        "LEFT_TRUNCATION": 6,
+        "WINDOW_FRAGMENT_SPLIT": 8
+      },
+      "firstLossEvidence": [
+        "standard semantic blocks"
+      ],
+      "repairInvariantAvailable": false
+    }
+  ],
+  "occurrences": [
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "goldStableId": "004/chapter/3",
+      "sourceLineIds": [
+        "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+        "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+      ],
+      "sourceText": "Chapter III INVESTMENT INCENTIVES AND SUPPORTS",
+      "shape": "RIGHT_TRUNCATION",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b242",
+        "b243"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+            "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+            "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+          ],
+          "CandidateLineIds": {
+            "b242": [
+              "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III"
+            ],
+            "b243": [
+              "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+            "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+          ],
+          "CandidateLineIds": {
+            "b242": [
+              "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III"
+            ],
+            "b243": [
+              "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+            "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+          ],
+          "CandidateLineIds": {
+            "b242": [
+              "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III"
+            ],
+            "b243": [
+              "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+            "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+            "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+          ],
+          "CandidateLineIds": {
+            "b242": [
+              "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III"
+            ],
+            "b243": [
+              "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "goldStableId": "004/section/1",
+      "sourceLineIds": [
+        "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+        "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+      ],
+      "sourceText": "Section 1 FORMS OF INVESTMENT",
+      "shape": "LEFT_TRUNCATION",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b380",
+        "b381"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+            "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+            "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b380": [
+              "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1"
+            ],
+            "b381": [
+              "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+            "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b380": [
+              "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1"
+            ],
+            "b381": [
+              "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+            "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b380": [
+              "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1"
+            ],
+            "b381": [
+              "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+            "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+            "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b380": [
+              "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1"
+            ],
+            "b381": [
+              "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "goldStableId": "004/section/2",
+      "sourceLineIds": [
+        "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+        "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+        "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+      ],
+      "sourceText": "Section 2 INVESTMENT POLICY APPROVAL AND INVESTOR SELECTION",
+      "shape": "WINDOW_FRAGMENT_SPLIT",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b489",
+        "b490",
+        "s-window-1867",
+        "b491"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+            "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+            "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+            "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+            "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+          ],
+          "CandidateLineIds": {
+            "b489": [
+              "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b490": [
+              "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR"
+            ],
+            "b491": [
+              "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+            "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+            "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+          ],
+          "CandidateLineIds": {
+            "b489": [
+              "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b490": [
+              "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR"
+            ],
+            "b491": [
+              "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+            "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+            "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+          ],
+          "CandidateLineIds": {
+            "b489": [
+              "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b490": [
+              "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR"
+            ],
+            "b491": [
+              "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+            "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+            "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+          ],
+          "CandidateLineIds": {
+            "s-window-1867": [
+              "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+              "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+            ]
+          },
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+            "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+            "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+          ],
+          "CandidateLineIds": {
+            "b489": [
+              "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b490": [
+              "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR"
+            ],
+            "s-window-1867": [
+              "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+              "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+            ],
+            "b491": [
+              "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "goldStableId": "004/section/3",
+      "sourceLineIds": [
+        "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+        "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+        "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+        "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+      ],
+      "sourceText": "Section 3 PROCEDURES FOR GRANT MODIFICATION AND , REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES",
+      "shape": "WINDOW_FRAGMENT_SPLIT",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b708",
+        "b709",
+        "s-window-2705",
+        "b710"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+            "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+            "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+            "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+            "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+            "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+            "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b708": [
+              "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b709": [
+              "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "b710": [
+              "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+            "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+            "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+            "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b708": [
+              "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b709": [
+              "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "b710": [
+              "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+            "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+            "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+            "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b708": [
+              "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b709": [
+              "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "b710": [
+              "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+            "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+            "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+            "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "s-window-2705": [
+              "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+              "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+            ]
+          },
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+            "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+            "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+            "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b708": [
+              "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b709": [
+              "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "s-window-2705": [
+              "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+              "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+            ],
+            "b710": [
+              "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "goldStableId": "004/section/4",
+      "sourceLineIds": [
+        "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+        "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+      ],
+      "sourceText": "Section 4 IMPLEMENTATION OF INVESTMENT PROJECTS",
+      "shape": "LEFT_TRUNCATION",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b832",
+        "b833"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+            "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+            "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+          ],
+          "CandidateLineIds": {
+            "b832": [
+              "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b833": [
+              "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+            "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+          ],
+          "CandidateLineIds": {
+            "b832": [
+              "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b833": [
+              "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+            "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+          ],
+          "CandidateLineIds": {
+            "b832": [
+              "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b833": [
+              "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+            "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+            "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+          ],
+          "CandidateLineIds": {
+            "b832": [
+              "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b833": [
+              "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "goldStableId": "004/section/6",
+      "sourceLineIds": [
+        "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+        "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+        "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+      ],
+      "sourceText": "Section 2 PROCEDURES FOR OFFSHORE INVESTMENT POLICY APPROVAL AND DECISION ON OFFSHORE INVESTMENT",
+      "shape": "WINDOW_FRAGMENT_SPLIT",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b1051",
+        "s-window-3937",
+        "b1052"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+            "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+            "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+            "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+            "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b1050": [
+              "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b1051": [
+              "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY"
+            ],
+            "b1052": [
+              "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+            "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+            "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b1050": [
+              "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b1051": [
+              "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY"
+            ],
+            "b1052": [
+              "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+            "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+            "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b1050": [
+              "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b1051": [
+              "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY"
+            ],
+            "b1052": [
+              "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+            "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+            "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "s-window-3937": [
+              "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+              "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+            ]
+          },
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+            "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+            "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b1051": [
+              "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY"
+            ],
+            "s-window-3937": [
+              "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+              "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+            ],
+            "b1052": [
+              "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "goldStableId": "004/section/7",
+      "sourceLineIds": [
+        "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+        "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+        "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+        "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+        "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+      ],
+      "sourceText": "Section 3 PROCEDURES FOR GRANT MODIFICATION AND , INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION CERTIFICATES",
+      "shape": "WINDOW_FRAGMENT_SPLIT",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "s-window-4271",
+        "b1152",
+        "s-window-4273",
+        "b1153"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+            "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+            "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+            "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+            "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+            "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+            "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+            "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+            "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b1150": [
+              "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b1151": [
+              "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "b1152": [
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION"
+            ],
+            "b1153": [
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+            "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+            "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+            "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+            "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b1150": [
+              "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b1151": [
+              "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "b1152": [
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION"
+            ],
+            "b1153": [
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+            "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+            "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+            "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+            "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b1150": [
+              "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b1151": [
+              "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "b1152": [
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION"
+            ],
+            "b1153": [
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+            "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+            "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+            "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+            "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "s-window-4271": [
+              "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ],
+            "s-window-4272": [
+              "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ],
+            "s-window-4273": [
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ]
+          },
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+            "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+            "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+            "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+            "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "s-window-4271": [
+              "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ],
+            "b1152": [
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION"
+            ],
+            "s-window-4273": [
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ],
+            "b1153": [
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "goldStableId": "004/section/8",
+      "sourceLineIds": [
+        "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+        "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+        "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+      ],
+      "sourceText": "Section 4 IMPLEMENTATION OF OFFSHORE INVESTMENT ACTIVITIES",
+      "shape": "WINDOW_FRAGMENT_SPLIT",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b1258",
+        "s-window-4644",
+        "b1259"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+            "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+            "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+            "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+            "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+          ],
+          "CandidateLineIds": {
+            "b1257": [
+              "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b1258": [
+              "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT"
+            ],
+            "b1259": [
+              "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+            "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+            "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+          ],
+          "CandidateLineIds": {
+            "b1257": [
+              "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b1258": [
+              "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT"
+            ],
+            "b1259": [
+              "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+            "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+            "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+          ],
+          "CandidateLineIds": {
+            "b1257": [
+              "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b1258": [
+              "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT"
+            ],
+            "b1259": [
+              "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+            "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+            "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+          ],
+          "CandidateLineIds": {
+            "s-window-4644": [
+              "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+              "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+            ]
+          },
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+            "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+            "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+          ],
+          "CandidateLineIds": {
+            "b1258": [
+              "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT"
+            ],
+            "s-window-4644": [
+              "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+              "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+            ],
+            "b1259": [
+              "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "goldStableId": "004/chapter/7",
+      "sourceLineIds": [
+        "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+        "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+      ],
+      "sourceText": "Chapter VII IMPLEMENTATION PROVISIONS",
+      "shape": "RIGHT_TRUNCATION",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b1486",
+        "b1487"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+            "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+            "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+          ],
+          "CandidateLineIds": {
+            "b1486": [
+              "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII"
+            ],
+            "b1487": [
+              "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+            "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+          ],
+          "CandidateLineIds": {
+            "b1486": [
+              "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII"
+            ],
+            "b1487": [
+              "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+            "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+          ],
+          "CandidateLineIds": {
+            "b1486": [
+              "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII"
+            ],
+            "b1487": [
+              "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+            "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+            "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+          ],
+          "CandidateLineIds": {
+            "b1486": [
+              "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII"
+            ],
+            "b1487": [
+              "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/outline/12",
+      "sourceLineIds": [
+        "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial",
+        "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+      ],
+      "sourceText": "Section 9. Notification of Intention to Award and Beneficial Ownership Forms",
+      "shape": "RIGHT_TRUNCATION",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b2922",
+        "b2923"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial",
+            "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial",
+            "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+          ],
+          "CandidateLineIds": {
+            "b2922": [
+              "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial"
+            ],
+            "b2923": [
+              "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial",
+            "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+          ],
+          "CandidateLineIds": {
+            "b2922": [
+              "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial"
+            ],
+            "b2923": [
+              "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial",
+            "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+          ],
+          "CandidateLineIds": {
+            "b2922": [
+              "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial"
+            ],
+            "b2923": [
+              "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial",
+            "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial",
+            "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+          ],
+          "CandidateLineIds": {
+            "b2922": [
+              "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial"
+            ],
+            "b2923": [
+              "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/fraud-attach-tb/1",
+      "sourceLineIds": [
+        "121|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+        "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+      ],
+      "sourceText": "Attachment 1 Fraud and Corruption",
+      "shape": "RIGHT_TRUNCATION",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b1772",
+        "b1773"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "121|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+            "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "121|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+            "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+          ],
+          "CandidateLineIds": {
+            "b1772": [
+              "121|689.998504971591|262.990625|365.9421171875001|Attachment 1"
+            ],
+            "b1773": [
+              "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "121|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+            "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "121|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+            "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+          ],
+          "CandidateLineIds": {
+            "b1772": [
+              "121|689.998504971591|262.990625|365.9421171875001|Attachment 1"
+            ],
+            "b1773": [
+              "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "121|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+            "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "121|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+            "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+          ],
+          "CandidateLineIds": {
+            "b1772": [
+              "121|689.998504971591|262.990625|365.9421171875001|Attachment 1"
+            ],
+            "b1773": [
+              "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "043",
+      "documentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "goldStableId": "043/heading/014",
+      "sourceLineIds": [
+        "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+        "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+      ],
+      "sourceText": "Appendix Glossary of Terms",
+      "shape": "LEFT_TRUNCATION",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b1242",
+        "b1243"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+            "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+            "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+          ],
+          "CandidateLineIds": {
+            "b1242": [
+              "68|711.0021335546874|74.63|138.28625000000002|Appendix"
+            ],
+            "b1243": [
+              "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+            "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+          ],
+          "CandidateLineIds": {
+            "b1242": [
+              "68|711.0021335546874|74.63|138.28625000000002|Appendix"
+            ],
+            "b1243": [
+              "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+            "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+          ],
+          "CandidateLineIds": {
+            "b1242": [
+              "68|711.0021335546874|74.63|138.28625000000002|Appendix"
+            ],
+            "b1243": [
+              "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+            "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+            "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+          ],
+          "CandidateLineIds": {
+            "b1242": [
+              "68|711.0021335546874|74.63|138.28625000000002|Appendix"
+            ],
+            "b1243": [
+              "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "058",
+      "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "goldStableId": "058/heading/003",
+      "sourceLineIds": [
+        "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+        "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+      ],
+      "sourceText": "Chapter 1 An Energy Function",
+      "shape": "LEFT_TRUNCATION",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b45",
+        "b46"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+            "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+            "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+          ],
+          "CandidateLineIds": {
+            "b45": [
+              "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1"
+            ],
+            "b46": [
+              "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+            "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+          ],
+          "CandidateLineIds": {
+            "b46": [
+              "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+            "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+          ],
+          "CandidateLineIds": {
+            "b45": [
+              "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1"
+            ],
+            "b46": [
+              "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+            "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+            "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+          ],
+          "CandidateLineIds": {
+            "b45": [
+              "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1"
+            ],
+            "b46": [
+              "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "058",
+      "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "goldStableId": "058/heading/004",
+      "sourceLineIds": [
+        "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+        "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+        "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+      ],
+      "sourceText": "Chapter 2 Basic Ideas in Machine Learning with Classification",
+      "shape": "WINDOW_FRAGMENT_SPLIT",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b88",
+        "b89",
+        "b90"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+            "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+            "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+            "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+            "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+          ],
+          "CandidateLineIds": {
+            "b88": [
+              "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2"
+            ],
+            "b89": [
+              "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine"
+            ],
+            "b90": [
+              "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+            "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+            "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+          ],
+          "CandidateLineIds": {
+            "b89": [
+              "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine"
+            ],
+            "b90": [
+              "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+            "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+            "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+          ],
+          "CandidateLineIds": {
+            "b88": [
+              "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2"
+            ],
+            "b89": [
+              "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine"
+            ],
+            "b90": [
+              "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+            "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+            "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+            "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+            "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+          ],
+          "CandidateLineIds": {
+            "b88": [
+              "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2"
+            ],
+            "b89": [
+              "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine"
+            ],
+            "b90": [
+              "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "058",
+      "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "goldStableId": "058/heading/022",
+      "sourceLineIds": [
+        "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+        "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural",
+        "43|509.72642258125|107.9100582|214.61852370000003|networks"
+      ],
+      "sourceText": "Chapter 3 Building blocks of neural networks",
+      "shape": "LEFT_TRUNCATION",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b742",
+        "b743",
+        "b744"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+            "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural",
+            "43|509.72642258125|107.9100582|214.61852370000003|networks"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+            "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural",
+            "43|509.72642258125|107.9100582|214.61852370000003|networks"
+          ],
+          "CandidateLineIds": {
+            "b742": [
+              "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3"
+            ],
+            "b743": [
+              "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural"
+            ],
+            "b744": [
+              "43|509.72642258125|107.9100582|214.61852370000003|networks"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+            "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural",
+            "43|509.72642258125|107.9100582|214.61852370000003|networks"
+          ],
+          "CandidateLineIds": {
+            "b743": [
+              "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural"
+            ],
+            "b744": [
+              "43|509.72642258125|107.9100582|214.61852370000003|networks"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+            "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural",
+            "43|509.72642258125|107.9100582|214.61852370000003|networks"
+          ],
+          "CandidateLineIds": {
+            "b742": [
+              "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3"
+            ],
+            "b743": [
+              "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural"
+            ],
+            "b744": [
+              "43|509.72642258125|107.9100582|214.61852370000003|networks"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+            "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural",
+            "43|509.72642258125|107.9100582|214.61852370000003|networks"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+            "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural",
+            "43|509.72642258125|107.9100582|214.61852370000003|networks"
+          ],
+          "CandidateLineIds": {
+            "b742": [
+              "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3"
+            ],
+            "b743": [
+              "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural"
+            ],
+            "b744": [
+              "43|509.72642258125|107.9100582|214.61852370000003|networks"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "058",
+      "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "goldStableId": "058/heading/027",
+      "sourceLineIds": [
+        "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+        "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine",
+        "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised",
+        "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+      ],
+      "sourceText": "Chapter 4 Probabilistic Machine Learning and Unsupervised Learning",
+      "shape": "WINDOW_FRAGMENT_SPLIT",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b923",
+        "b924",
+        "b925",
+        "b926"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+            "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine",
+            "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised",
+            "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+            "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine",
+            "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised",
+            "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+          ],
+          "CandidateLineIds": {
+            "b923": [
+              "53|586.99143046875|108.150075|208.62561374999996|Chapter 4"
+            ],
+            "b924": [
+              "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine"
+            ],
+            "b925": [
+              "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised"
+            ],
+            "b926": [
+              "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+            "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine",
+            "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised",
+            "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+          ],
+          "CandidateLineIds": {
+            "b924": [
+              "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine"
+            ],
+            "b925": [
+              "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised"
+            ],
+            "b926": [
+              "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+            "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine",
+            "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised",
+            "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+          ],
+          "CandidateLineIds": {
+            "b923": [
+              "53|586.99143046875|108.150075|208.62561374999996|Chapter 4"
+            ],
+            "b924": [
+              "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine"
+            ],
+            "b925": [
+              "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised"
+            ],
+            "b926": [
+              "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+            "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine",
+            "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised",
+            "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+            "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine",
+            "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised",
+            "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+          ],
+          "CandidateLineIds": {
+            "b923": [
+              "53|586.99143046875|108.150075|208.62561374999996|Chapter 4"
+            ],
+            "b924": [
+              "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine"
+            ],
+            "b925": [
+              "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised"
+            ],
+            "b926": [
+              "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "058",
+      "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "goldStableId": "058/heading/035",
+      "sourceLineIds": [
+        "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+        "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative",
+        "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+      ],
+      "sourceText": "Chapter 5 Undirected Generative Models",
+      "shape": "WINDOW_FRAGMENT_SPLIT",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b1272",
+        "b1273"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+            "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative",
+            "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+            "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative",
+            "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+          ],
+          "CandidateLineIds": {
+            "b1272": [
+              "71|587.57335078125|108.150075|208.10905124999996|Chapter 5"
+            ],
+            "b1273": [
+              "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative"
+            ],
+            "b1274": [
+              "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+            "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative",
+            "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+          ],
+          "CandidateLineIds": {
+            "b1273": [
+              "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative"
+            ],
+            "b1274": [
+              "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+            "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative",
+            "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+          ],
+          "CandidateLineIds": {
+            "b1272": [
+              "71|587.57335078125|108.150075|208.10905124999996|Chapter 5"
+            ],
+            "b1273": [
+              "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative"
+            ],
+            "b1274": [
+              "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+            "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative",
+            "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+            "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative",
+            "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+          ],
+          "CandidateLineIds": {
+            "b1272": [
+              "71|587.57335078125|108.150075|208.10905124999996|Chapter 5"
+            ],
+            "b1273": [
+              "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    },
+    {
+      "documentId": "058",
+      "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "goldStableId": "058/heading/041",
+      "sourceLineIds": [
+        "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6",
+        "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+      ],
+      "sourceText": "Chapter 6 Further Topics",
+      "shape": "LEFT_TRUNCATION",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "productionOwner": "PdfSemanticBlockGrouper.Build",
+      "classification": "PRODUCTION_BOUNDARY_DEFECT",
+      "finalCandidateIds": [
+        "b1555",
+        "b1556"
+      ],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6",
+            "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6",
+            "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+          ],
+          "CandidateLineIds": {
+            "b1555": [
+              "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6"
+            ],
+            "b1556": [
+              "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6",
+            "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+          ],
+          "CandidateLineIds": {
+            "b1556": [
+              "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6",
+            "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+          ],
+          "CandidateLineIds": {
+            "b1555": [
+              "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6"
+            ],
+            "b1556": [
+              "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6",
+            "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6",
+            "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+          ],
+          "CandidateLineIds": {
+            "b1555": [
+              "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6"
+            ],
+            "b1556": [
+              "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ]
+    }
+  ],
+  "finalStatus": "BOUNDARY_OWNER_PROVEN"
+}

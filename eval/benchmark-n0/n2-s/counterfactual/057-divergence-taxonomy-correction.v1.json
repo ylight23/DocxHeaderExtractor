@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2s_057_pdf_docx_divergence_taxonomy_correction",
+  "usesModel": false,
+  "supersedes": {
+    "artifact": "eval/benchmark-n0/n2-s/counterfactual/057-pdf-docx-divergence-taxonomy.v1.json",
+    "sha256": "888efc926df878a8fbe3b6877cb3a40704e7afae20d8c110087a9f08590064ef",
+    "reason": "The original taxonomy searched an unfiltered DOCX paragraph list and did not exclude InTableOfContents paragraphs. A TOC listing line repeats a heading's title with a trailing page number and can carry the same NumberingId styling as the real heading paragraph, so 21/23 DOCX_AUTO_NUMBERED_TITLE_ONLY conflated real body anchors with TOC-only matches. Production alignment (and R2) always excluded InTableOfContents paragraphs; the taxonomy that first diagnosed 057 did not."
+  },
+  "notASilentRewrite": "The superseded artifact is left in place, unmodified, at the path above. This file corrects the diagnosis; it does not replace or delete the original evidence.",
+  "discoveredDuring": "R2 bounded investigation (eval/benchmark-n0/n2-s/counterfactual/057-r2-bounded-investigation.v1.json), while investigating why CF1/CF2/CF3 recovered only 3/22 - not a planned re-audit.",
+  "correctedTally": {
+    "reviewedTargets": 22,
+    "targetsWithRealBodyMatch": 13,
+    "targetsWithRealBodyMatchAndNumberingId": 11,
+    "targetsWithTocOnlyMatch": 9,
+    "targetsWithNoMatchAtAll": 0
+  },
+  "correctedReading": "057's root cause is not one mechanism (auto-numbering vs PDF-baked marker) as first diagnosed. Three separate, compounding factors: (1) SourceFactsBuilder's marker-grammar depth on real PDF marker shapes, (2) span-lane HeadingSpan boundary imprecision, (3) the ORIGINAL EVIDENCE's own TOC contamination - not a fourth production mechanism, since production alignment already filters InTableOfContents correctly. Of the 13 targets with a real body anchor, only 11 carry NumberingId (the remaining 2 have a real paragraph but no numbering to align against). The other 9 targets have no body anchor in the production paragraph population at all - their only match is a TOC line - so no in-scope remediation could recover them; whether they have a valid body anchor by some other means is a separate, unscoped question this correction does not answer.",
+  "rows": [
+    { "stableId": "057/numbered/9.4", "matchCount": 1, "hasRealBodyMatch": true, "hasRealBodyMatchWithNumberingId": true, "matches": [{ "index": 57, "toc": false, "numberingId": 1 }] },
+    { "stableId": "057/numbered/10.0.1", "matchCount": 1, "hasRealBodyMatch": true, "hasRealBodyMatchWithNumberingId": false, "matches": [{ "index": 1654, "toc": false, "numberingId": null }] },
+    { "stableId": "057/numbered/11.3.1", "matchCount": 1, "hasRealBodyMatch": true, "hasRealBodyMatchWithNumberingId": true, "matches": [{ "index": 2185, "toc": false, "numberingId": 3 }] },
+    { "stableId": "057/numbered/12.3", "matchCount": 1, "hasRealBodyMatch": true, "hasRealBodyMatchWithNumberingId": true, "matches": [{ "index": 76, "toc": false, "numberingId": 1 }] },
+    { "stableId": "057/numbered/15.8.1", "matchCount": 1, "hasRealBodyMatch": true, "hasRealBodyMatchWithNumberingId": true, "matches": [{ "index": 3016, "toc": false, "numberingId": 3 }] },
+    { "stableId": "057/numbered/22.4", "matchCount": 2, "hasRealBodyMatch": true, "hasRealBodyMatchWithNumberingId": false, "matches": [{ "index": 156, "toc": true, "numberingId": 1 }, { "index": 6571, "toc": false, "numberingId": null }] },
+    { "stableId": "057/numbered/23.2", "matchCount": 1, "hasRealBodyMatch": false, "hasRealBodyMatchWithNumberingId": false, "matches": [{ "index": 163, "toc": true, "numberingId": 1 }] },
+    { "stableId": "057/numbered/24.1.1", "matchCount": 1, "hasRealBodyMatch": true, "hasRealBodyMatchWithNumberingId": true, "matches": [{ "index": 7839, "toc": false, "numberingId": 3 }] },
+    { "stableId": "057/numbered/24.7.1", "matchCount": 1, "hasRealBodyMatch": true, "hasRealBodyMatchWithNumberingId": true, "matches": [{ "index": 8197, "toc": false, "numberingId": 3 }] },
+    { "stableId": "057/numbered/24.8", "matchCount": 1, "hasRealBodyMatch": false, "hasRealBodyMatchWithNumberingId": false, "matches": [{ "index": 180, "toc": true, "numberingId": 1 }] },
+    { "stableId": "057/numbered/30.13.1", "matchCount": 1, "hasRealBodyMatch": true, "hasRealBodyMatchWithNumberingId": true, "matches": [{ "index": 9803, "toc": false, "numberingId": 3 }] },
+    { "stableId": "057/numbered/31.3.2", "matchCount": 1, "hasRealBodyMatch": true, "hasRealBodyMatchWithNumberingId": true, "matches": [{ "index": 10309, "toc": false, "numberingId": 3 }] },
+    { "stableId": "057/numbered/41.3", "matchCount": 1, "hasRealBodyMatch": false, "hasRealBodyMatchWithNumberingId": false, "matches": [{ "index": 303, "toc": true, "numberingId": 1 }] },
+    { "stableId": "057/numbered/45.1.4", "matchCount": 1, "hasRealBodyMatch": true, "hasRealBodyMatchWithNumberingId": true, "matches": [{ "index": 14826, "toc": false, "numberingId": 3 }] },
+    { "stableId": "057/numbered/50.4", "matchCount": 1, "hasRealBodyMatch": false, "hasRealBodyMatchWithNumberingId": false, "matches": [{ "index": 343, "toc": true, "numberingId": 1 }] },
+    { "stableId": "057/numbered/50.5", "matchCount": 1, "hasRealBodyMatch": false, "hasRealBodyMatchWithNumberingId": false, "matches": [{ "index": 344, "toc": true, "numberingId": 1 }] },
+    { "stableId": "057/numbered/51.1", "matchCount": 1, "hasRealBodyMatch": false, "hasRealBodyMatchWithNumberingId": false, "matches": [{ "index": 346, "toc": true, "numberingId": 1 }] },
+    { "stableId": "057/numbered/54.4.1", "matchCount": 1, "hasRealBodyMatch": true, "hasRealBodyMatchWithNumberingId": true, "matches": [{ "index": 17220, "toc": false, "numberingId": 3 }] },
+    { "stableId": "057/numbered/72.2", "matchCount": 1, "hasRealBodyMatch": false, "hasRealBodyMatchWithNumberingId": false, "matches": [{ "index": 459, "toc": true, "numberingId": 1 }] },
+    { "stableId": "057/numbered/76.4", "matchCount": 1, "hasRealBodyMatch": false, "hasRealBodyMatchWithNumberingId": false, "matches": [{ "index": 491, "toc": true, "numberingId": 1 }] },
+    { "stableId": "057/numbered/76.10.2", "matchCount": 1, "hasRealBodyMatch": true, "hasRealBodyMatchWithNumberingId": true, "matches": [{ "index": 23245, "toc": false, "numberingId": 3 }] },
+    { "stableId": "057/numbered/83.7", "matchCount": 1, "hasRealBodyMatch": false, "hasRealBodyMatchWithNumberingId": false, "matches": [{ "index": 542, "toc": true, "numberingId": 1 }] }
+  ],
+  "sourceOfTruth": "eval/benchmark-n0/n2-s/counterfactual/057-r2-bounded-investigation.v1.json (tocContaminationCheck block) - this file restates that block standalone, with explicit supersession metadata, so the correction is not only implied by a paragraph inside an unrelated investigation's artifact."
+}

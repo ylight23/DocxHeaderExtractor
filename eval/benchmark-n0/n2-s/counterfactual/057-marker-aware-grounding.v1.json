@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2s_057_marker_aware_grounding_counterfactual",
+  "usesModel": false,
+  "fix": "Strip a marker recognized by SourceFactsBuilder.ParseMarkerText (the project\u0027s existing marker authority) before LooksGroundableText\u0027s punctuation count, rather than counting the marker\u0027s own punctuation as prose evidence.",
+  "targets": [
+    {
+      "StableId": "057/numbered/10.0.1",
+      "requiredOnlyText": "10.0. 1 The Role of Sample Size",
+      "markerRecognized": true,
+      "markerRaw": "10.0.",
+      "markerKind": "DecimalDotted",
+      "markerDepth": 2,
+      "titleOnlyText": "1 The Role of Sample Size",
+      "titleOnlyGroundable": true
+    },
+    {
+      "StableId": "057/numbered/11.3.1",
+      "requiredOnlyText": "11.3. 1 Matrix and vector multiplication",
+      "markerRecognized": true,
+      "markerRaw": "11.3.",
+      "markerKind": "DecimalDotted",
+      "markerDepth": 2,
+      "titleOnlyText": "1 Matrix and vector multiplication",
+      "titleOnlyGroundable": true
+    },
+    {
+      "StableId": "057/numbered/15.8.1",
+      "requiredOnlyText": "15.8. 1 Calculating Conditional Probabilities",
+      "markerRecognized": true,
+      "markerRaw": "15.8.",
+      "markerKind": "DecimalDotted",
+      "markerDepth": 2,
+      "titleOnlyText": "1 Calculating Conditional Probabilities",
+      "titleOnlyGroundable": true
+    },
+    {
+      "StableId": "057/numbered/24.1.1",
+      "requiredOnlyText": "24. 1. 1 Concept of Integration of order d",
+      "markerRecognized": true,
+      "markerRaw": "24.",
+      "markerKind": "Decimal",
+      "markerDepth": 1,
+      "titleOnlyText": "1. 1 Concept of Integration of order d",
+      "titleOnlyGroundable": true
+    },
+    {
+      "StableId": "057/numbered/24.7.1",
+      "requiredOnlyText": "24.7. 1 Thorough augmented Dickey-Fuller test",
+      "markerRecognized": true,
+      "markerRaw": "24.7.",
+      "markerKind": "DecimalDotted",
+      "markerDepth": 2,
+      "titleOnlyText": "1 Thorough augmented Dickey-Fuller test",
+      "titleOnlyGroundable": true
+    },
+    {
+      "StableId": "057/numbered/30.13.1",
+      "requiredOnlyText": "30. 13. 1 Setup: mean and variance equations",
+      "markerRecognized": true,
+      "markerRaw": "30.",
+      "markerKind": "Decimal",
+      "markerDepth": 1,
+      "titleOnlyText": "13. 1 Setup: mean and variance equations",
+      "titleOnlyGroundable": true
+    },
+    {
+      "StableId": "057/numbered/31.3.2",
+      "requiredOnlyText": "31.3.2 Building two cointegrated time series",
+      "markerRecognized": true,
+      "markerRaw": "31.3.",
+      "markerKind": "DecimalDotted",
+      "markerDepth": 2,
+      "titleOnlyText": "2 Building two cointegrated time series",
+      "titleOnlyGroundable": true
+    },
+    {
+      "StableId": "057/numbered/45.1.4",
+      "requiredOnlyText": "45. 1.4 Outlier isolation comparison",
+      "markerRecognized": true,
+      "markerRaw": "45.",
+      "markerKind": "Decimal",
+      "markerDepth": 1,
+      "titleOnlyText": "1.4 Outlier isolation comparison",
+      "titleOnlyGroundable": true
+    },
+    {
+      "StableId": "057/numbered/54.4.1",
+      "requiredOnlyText": "54.4. 1 Risk Premia under the APT",
+      "markerRecognized": true,
+      "markerRaw": "54.4.",
+      "markerKind": "DecimalDotted",
+      "markerDepth": 2,
+      "titleOnlyText": "1 Risk Premia under the APT",
+      "titleOnlyGroundable": true
+    },
+    {
+      "StableId": "057/numbered/76.10.2",
+      "requiredOnlyText": "76. 10.2 ARCH model of the residuals - PACF",
+      "markerRecognized": true,
+      "markerRaw": "76.",
+      "markerKind": "Decimal",
+      "markerDepth": 1,
+      "titleOnlyText": "10.2 ARCH model of the residuals - PACF",
+      "titleOnlyGroundable": true
+    }
+  ],
+  "wouldNowPass": 10,
+  "outOf": 10,
+  "negativeControlScope": [
+    {
+      "stem": "003",
+      "headingClassifiedCandidates": 153,
+      "withThreeLevelOrDeeperMarker": 0,
+      "candidateIds": []
+    },
+    {
+      "stem": "057",
+      "headingClassifiedCandidates": 44,
+      "withThreeLevelOrDeeperMarker": 0,
+      "candidateIds": []
+    }
+  ],
+  "negativeControlNote": "This counts, it does not adjudicate. Every listed candidate ID is already HeadingTopic-classified by the analyst; whether letting its multi-level-marker text now pass the shape gate is correct or a new false positive requires the same silver/gold check as the FP audit - not attempted here."
+}

@@ -1,3 +1,5 @@
+﻿using System.Collections.Immutable;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -45,7 +47,14 @@ internal sealed record PdfCandidateContext(
     IReadOnlyList<string> NextBlocks,
     IReadOnlyList<string> AllowedParentIds,
     string DocumentRegime,
-    IReadOnlyList<string> ActiveHeadingStack);
+    IReadOnlyList<string> ActiveHeadingStack)
+{
+    /// <summary>
+    /// Nearby source-only blocks that independently passed a generic structural-looking shape.
+    /// Used only by the bounded semantic-recovery context experiment; never an asserted heading.
+    /// </summary>
+    public IReadOnlyList<string> SiblingStructuralBlocks { get; init; } = [];
+}
 
 /// <summary>Validated stage trace. It is diagnostic data, never a source of extraction facts.</summary>
 public sealed record PdfCandidateStageTrace(
@@ -67,14 +76,24 @@ internal sealed record PdfValidatedHeading(
     string StructuralScope,
     string ValidationBasis);
 
+/// <summary>
+/// Embedded verbatim in the frozen <c>pdf_hierarchy_facts</c> artifact
+/// (<see cref="PdfHierarchyFactsRow.ValidatedStructures"/>), which the CLI writes under a camelCase
+/// naming policy - explicit property names here so an offline reader (M9.4's shadow comparator among
+/// them) round-trips this type correctly instead of a case-sensitive reader silently leaving
+/// <see cref="SourceId"/>/<see cref="DomainRole"/>/etc. at their default.
+/// </summary>
 public sealed record PdfValidatedStructure(
-    string SourceId,
-    int Level,
-    string? ParentId,
-    string ParentResolution,
-    string Decision)
+    [property: JsonPropertyName("sourceId")] string SourceId,
+    [property: JsonPropertyName("level")] int Level,
+    [property: JsonPropertyName("parentId")] string? ParentId,
+    [property: JsonPropertyName("parentResolution")] string ParentResolution,
+    [property: JsonPropertyName("decision")] string Decision)
 {
+    [JsonPropertyName("domainRole")]
     public PdfDomainRole DomainRole { get; init; } = PdfDomainRole.Unknown;
+
+    [JsonPropertyName("structuralScope")]
     public string StructuralScope { get; init; } = "document_body";
 }
 
@@ -140,7 +159,11 @@ internal static class PdfCandidateContextBuilder
 {
     public static IReadOnlyDictionary<string, PdfCandidateContext> Build(
         IReadOnlyList<PdfSemanticBlock> blocks,
-        IReadOnlyList<PdfLineBlockAnnotation> annotations)
+        IReadOnlyList<PdfLineBlockAnnotation> annotations,
+        int contextWindow = 2,
+        List<StructuralScopeTransition>? scopeTrace = null,
+        IReadOnlySet<string>? withheldAppendixEntries = null,
+        IReadOnlySet<string>? withheldQuoteEntries = null)
     {
         var annotationByLine = annotations.ToDictionary(a => LineKey(a.Line));
         var ordered = blocks.OrderBy(b => b.Page).ThenByDescending(b => b.TopY).ThenBy(b => b.Id, StringComparer.Ordinal).ToArray();
@@ -149,14 +172,15 @@ internal static class PdfCandidateContextBuilder
         var regime = DocumentDomainPolicy.InferRegime(ordered.Select(block => block.DisplayText), fallbackRegime);
         var result = new Dictionary<string, PdfCandidateContext>(StringComparer.Ordinal);
         var tocBlockIds = PdfStructuralScopeDetector.DetectTocBlockIds(ordered);
-        var scopeTracker = new StructuralScopeTracker();
+        var scopeTracker = new StructuralScopeTracker(scopeTrace, withheldAppendixEntries, withheldQuoteEntries);
         var stack = new List<string>();
         for (var index = 0; index < ordered.Length; index++)
         {
             var block = ordered[index];
             var facts = scopeTracker.Apply(BuildFacts(block, annotationByLine, tocBlockIds.Contains(block.Id), regime));
-            var previous = ordered.Take(index).TakeLast(2).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
-            var next = ordered.Skip(index + 1).Take(2).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
+            var window = Math.Clamp(contextWindow, 0, 6);
+            var previous = ordered.Take(index).TakeLast(window).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
+            var next = ordered.Skip(index + 1).Take(window).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
             var parents = ordered.Take(index).TakeLast(8).Select(b => b.Id).ToArray();
             result[block.Id] = new PdfCandidateContext(facts, previous, next, parents, regime, stack.TakeLast(4).ToArray());
             if (facts.StructuralScope == "document_body" && PdfMarkerFactsParser.Parse(block.DisplayText) is not null)
@@ -301,7 +325,16 @@ internal static class PdfProposalValidator
 /// Parser-side marker facts are intentionally broader than <see cref="NumberingAudit"/>. They
 /// improve PDF retrieval/context only; final sequence auditing remains strict and independent.
 /// </summary>
-internal readonly record struct PdfMarkerFact(string Signature, int Depth, string Family, bool IsPath);
+internal readonly record struct PdfMarkerFact(string Signature, int Depth, string Family, bool IsPath)
+{
+    /// <summary>
+    /// M8.1d-2 representation only. The parser already knows every component of a numeric path;
+    /// previously it kept only the count, which forced downstream code to re-derive components with
+    /// a stricter grammar that cannot read a dot-stripped source. Carrying them here removes that
+    /// second parse as a source of truth. It grants no hierarchy authority on its own.
+    /// </summary>
+    public ImmutableArray<int> Components { get; init; } = ImmutableArray<int>.Empty;
+}
 
 internal static class PdfMarkerFactsParser
 {
@@ -317,15 +350,25 @@ internal static class PdfMarkerFactsParser
         if (spacedPath.Success)
         {
             var parts = Regex.Matches(spacedPath.Groups[1].Value, @"\d{1,3}")
-                .Select(match => match.Value)
+                .Select(match => int.Parse(match.Value, System.Globalization.CultureInfo.InvariantCulture))
                 .ToArray();
             if (parts.Length > 0)
-                return new PdfMarkerFact($"Arabic:{parts.Length}", parts.Length, "spaced_arabic", true);
+                return new PdfMarkerFact($"Arabic:{parts.Length}", parts.Length, "spaced_arabic", true)
+                {
+                    Components = [.. parts],
+                };
         }
 
         if (NumberingAudit.Parse(text) is { } strict)
             return new PdfMarkerFact(strict.Signature, strict.Depth, strict.Kind.ToString().ToLowerInvariant(),
-                strict.Kind == NumberKind.Arabic);
+                strict.Kind == NumberKind.Arabic)
+            {
+                // Only an arabic path has components. Roman/letter/labelled markers stay empty
+                // rather than being flattened into a one-element path they never had.
+                Components = strict.Kind == NumberKind.Arabic && NumberingAudit.ParseArabicPath(text) is { } strictPath
+                    ? [.. strictPath]
+                    : ImmutableArray<int>.Empty,
+            };
 
         var looseLabel = PdfLayoutEvidenceOutline.ParseLooseLabelledMarkerForAudit(text);
         if (looseLabel is not null)

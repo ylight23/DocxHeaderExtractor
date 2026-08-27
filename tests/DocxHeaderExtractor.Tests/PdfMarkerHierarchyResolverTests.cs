@@ -17,7 +17,7 @@ public sealed class PdfMarkerHierarchyResolverTests
 
         PdfMarkerHierarchyResolver.Apply(headings);
 
-        Assert.Equal(new[] { 1, 2, 2 }, headings.Select(h => h.Level));
+        Assert.Equal(new int?[] { 1, 2, 2 }, headings.Select(h => h.Level));
     }
 
     [Fact]
@@ -32,7 +32,7 @@ public sealed class PdfMarkerHierarchyResolverTests
 
         PdfMarkerHierarchyResolver.Apply(headings);
 
-        Assert.Equal(new[] { 1, 2, 2 }, headings.Select(h => h.Level));
+        Assert.Equal(new int?[] { 1, 2, 2 }, headings.Select(h => h.Level));
     }
 
     [Fact]

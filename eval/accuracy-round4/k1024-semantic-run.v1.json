@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 4,
+  "artifactKind": "pdf_hierarchy_facts",
+  "usesGold": false,
+  "generation": {
+    "codeRevision": "4a38f0febe44d2d3b91ea090e0603dcbc571a6dd",
+    "backend": "OpenRouter",
+    "model": "qwen/qwen3.5-9b",
+    "promptSha256": "6c5c9cfb8d13e5e0e40d57c9810d70143d4ccdbe6489c462fde43fa9e61fc02c",
+    "routeConfigSha256": "943d1deda7a9789c6f6f20468aaff1c08b66589fc653dd0cce8e82516ff2699d"
+  },
+  "rows": [
+    {
+      "file": "004_Luat_Dau_tu_61-2020-QH14_EN.docx",
+      "sourceDocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "occurrenceFingerprint": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counters": {
+        "validatedHeadings": 0,
+        "markerPathFacts": 0,
+        "deterministicLevelResolved": 0,
+        "deterministicParentResolved": 0,
+        "unresolvedRelationships": 0,
+        "conflicts": "not_measured"
+      },
+      "items": [],
+      "validatedStructures": [],
+      "canonicalGroundings": [],
+      "semanticLaneStatus": "complete",
+      "spanLaneStatus": "partial_timeout",
+      "semanticLaneTimeouts": {
+        "requestSeconds": 90,
+        "batchSeconds": 120,
+        "laneDeadlineSeconds": 300
+      }
+    },
+    {
+      "file": "030_WB_RFP_Consulting_Services_2019.docx",
+      "sourceDocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "occurrenceFingerprint": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counters": {
+        "validatedHeadings": 0,
+        "markerPathFacts": 0,
+        "deterministicLevelResolved": 0,
+        "deterministicParentResolved": 0,
+        "unresolvedRelationships": 0,
+        "conflicts": "not_measured"
+      },
+      "items": [],
+      "validatedStructures": [],
+      "canonicalGroundings": [],
+      "semanticLaneStatus": "complete",
+      "spanLaneStatus": "partial_timeout",
+      "semanticLaneTimeouts": {
+        "requestSeconds": 90,
+        "batchSeconds": 120,
+        "laneDeadlineSeconds": 300
+      }
+    },
+    {
+      "file": "043_IBRD_Financial_Statements_June_2024.docx",
+      "sourceDocumentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "occurrenceFingerprint": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counters": {
+        "validatedHeadings": 0,
+        "markerPathFacts": 0,
+        "deterministicLevelResolved": 0,
+        "deterministicParentResolved": 0,
+        "unresolvedRelationships": 0,
+        "conflicts": "not_measured"
+      },
+      "items": [],
+      "validatedStructures": [],
+      "canonicalGroundings": [],
+      "semanticLaneStatus": "complete",
+      "spanLaneStatus": "partial_timeout",
+      "semanticLaneTimeouts": {
+        "requestSeconds": 90,
+        "batchSeconds": 120,
+        "laneDeadlineSeconds": 300
+      }
+    },
+    {
+      "file": "058_Machine_Learning_Lecture_Note.docx",
+      "sourceDocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "occurrenceFingerprint": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counters": {
+        "validatedHeadings": 0,
+        "markerPathFacts": 0,
+        "deterministicLevelResolved": 0,
+        "deterministicParentResolved": 0,
+        "unresolvedRelationships": 0,
+        "conflicts": "not_measured"
+      },
+      "items": [],
+      "validatedStructures": [],
+      "canonicalGroundings": [],
+      "semanticLaneStatus": "complete",
+      "spanLaneStatus": "partial_timeout",
+      "semanticLaneTimeouts": {
+        "requestSeconds": 90,
+        "batchSeconds": 120,
+        "laneDeadlineSeconds": 300
+      }
+    }
+  ],
+  "legacyProductHeadings": {
+    "004_Luat_Dau_tu_61-2020-QH14_EN.docx": [],
+    "030_WB_RFP_Consulting_Services_2019.docx": [],
+    "043_IBRD_Financial_Statements_June_2024.docx": [],
+    "058_Machine_Learning_Lecture_Note.docx": []
+  },
+  "skipped": []
+}

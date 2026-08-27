@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 4,
+  "artifactKind": "pdf_hierarchy_facts",
+  "usesGold": false,
+  "generation": {
+    "codeRevision": "573d018ef6d0b6f83b137665b9f701347e7b38fd",
+    "backend": "OpenRouter",
+    "model": "qwen/qwen3.5-9b",
+    "promptSha256": "6c5c9cfb8d13e5e0e40d57c9810d70143d4ccdbe6489c462fde43fa9e61fc02c",
+    "routeConfigSha256": "e46e1e8fe139d2ed3652a15f7008fb31e30736572592ac67e7f96c77c70ce675"
+  },
+  "rows": [
+    {
+      "file": "003_Luat_Doanh_nghiep_59-2020-QH14.docx",
+      "sourceDocumentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "occurrenceFingerprint": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counters": {
+        "validatedHeadings": 0,
+        "markerPathFacts": 0,
+        "deterministicLevelResolved": 0,
+        "deterministicParentResolved": 0,
+        "unresolvedRelationships": 0,
+        "conflicts": "not_measured"
+      },
+      "items": [],
+      "validatedStructures": [],
+      "canonicalGroundings": [],
+      "semanticLaneStatus": "complete",
+      "spanLaneStatus": "partial_timeout",
+      "semanticLaneTimeouts": {
+        "requestSeconds": 90,
+        "batchSeconds": 120,
+        "laneDeadlineSeconds": 300
+      }
+    }
+  ],
+  "legacyProductHeadings": {
+    "003_Luat_Doanh_nghiep_59-2020-QH14.docx": []
+  },
+  "skipped": []
+}

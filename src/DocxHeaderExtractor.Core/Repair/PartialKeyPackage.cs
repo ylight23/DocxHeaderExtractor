@@ -120,7 +120,7 @@ public sealed class PartialKeyPackage(PipelineOptions options)
                 sb.Append('@').Append(h.StableId).Append(' ');
             else
                 sb.Append(h.Index.ToString(CultureInfo.InvariantCulture)).Append(' ');
-            sb.Append(h.Level.ToString(CultureInfo.InvariantCulture))
+            sb.Append(h.Level?.ToString(CultureInfo.InvariantCulture) ?? "")
               .Append("   # ")
               .AppendLine(NormalizeInline(h.Text));
         }
@@ -155,7 +155,7 @@ public sealed class PartialKeyPackage(PipelineOptions options)
             sb.Append((i + 1).ToString(CultureInfo.InvariantCulture)).Append(',')
               .Append(h.Index.ToString(CultureInfo.InvariantCulture)).Append(',')
               .Append(Csv(h.StableId ?? "")).Append(',')
-              .Append(h.Level.ToString(CultureInfo.InvariantCulture)).Append(',')
+              .Append(h.Level?.ToString(CultureInfo.InvariantCulture) ?? "").Append(',')
               .Append(Csv(NormalizeInline(h.Text))).Append(',')
               .Append(h.Source).Append(',')
               .Append(h.Confidence.ToString("0.###", CultureInfo.InvariantCulture)).Append(',')
@@ -163,7 +163,7 @@ public sealed class PartialKeyPackage(PipelineOptions options)
               .Append(h.DecisionStatus).Append(',')
               .Append(h.Disputed ? "true" : "false").Append(',')
               .Append("keep").Append(',')
-              .Append(h.Level.ToString(CultureInfo.InvariantCulture)).Append(',')
+              .Append(h.Level?.ToString(CultureInfo.InvariantCulture) ?? "").Append(',')
               .Append(Csv(NormalizeInline(h.Text))).Append(',')
               .AppendLine();
         }

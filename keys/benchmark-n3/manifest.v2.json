@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_fresh_holdout_population",
+  "supersedes": {
+    "artifact": "keys/benchmark-n3/manifest.v1.json",
+    "reason": "SELECTION_RULE_IMPLEMENTATION_ERROR",
+    "affectedDocuments": [
+      "002",
+      "026"
+    ],
+    "evidence": "pre-existing A3 usability facts (.verify-build/a3-screening.txt) - both already 0/0/0/0% before N3 existed",
+    "accuracyOutcomeUsed": false,
+    "modelOutputUsed": false,
+    "replacementRuleChanged": false,
+    "detail": "v1\u0027s selector picked the lowest remaining non-excluded document id per stratum but never enforced the A3 usability predicate (selected@160 \u003E= 20 AND decisionRelevant \u003E= 15). 002 and 026 have zero extractable candidates and produced genuinely empty blind packets - a selection-rule bug, not an N3 accuracy finding."
+  },
+  "notASilentReplacement": "keys/benchmark-n3/manifest.v1.json and its 002/026 packets are left in place, unmodified - not deleted or rewritten.",
+  "purpose": "Fresh source-first holdout, independent from N0/N2 diagnosis. It is not selected for a historical failure shape or candidate outcome.",
+  "selectionRule": {
+    "targetStrata": [
+      "01_phap_quy",
+      "02_hop_dong_mua_sam",
+      "03_tai_chinh_ke_toan",
+      "04_giao_trinh"
+    ],
+    "excludedDocumentStems": [
+      "001",
+      "002",
+      "003",
+      "026",
+      "028",
+      "029",
+      "032",
+      "041",
+      "042",
+      "054",
+      "056",
+      "057",
+      "091",
+      "092"
+    ],
+    "usabilityPredicate": "selected@160 \u003E= 20 AND decisionRelevant \u003E= 15 (same threshold as PdfA3PopulationScreeningProbe)",
+    "tieBreak": "lowest remaining numeric document id within each stratum that also clears the usability predicate",
+    "prohibitedInputs": [
+      "candidate counts",
+      "candidate rank",
+      "selected status",
+      "gold/silver label",
+      "model output",
+      "historical failure outcome"
+    ]
+  },
+  "documents": [
+    {
+      "stem": "004",
+      "domain": "01_phap_quy",
+      "file": "todo10_8/heading_corpus_95_word/01_phap_quy/004_Luat_Dau_tu_61-2020-QH14_EN.docx",
+      "sourceDocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "changedFromV1": true
+    },
+    {
+      "stem": "030",
+      "domain": "02_hop_dong_mua_sam",
+      "file": "todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/030_WB_RFP_Consulting_Services_2019.docx",
+      "sourceDocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "changedFromV1": true
+    },
+    {
+      "stem": "043",
+      "domain": "03_tai_chinh_ke_toan",
+      "file": "todo10_8/heading_corpus_95_word/03_tai_chinh_ke_toan/043_IBRD_Financial_Statements_June_2024.docx",
+      "sourceDocumentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "changedFromV1": false
+    },
+    {
+      "stem": "058",
+      "domain": "04_giao_trinh",
+      "file": "todo10_8/heading_corpus_95_word/04_giao_trinh/058_Machine_Learning_Lecture_Note.docx",
+      "sourceDocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "changedFromV1": false
+    }
+  ],
+  "reviewContract": {
+    "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is diagnostics-only and never cross-run identity",
+    "sourceFirst": true,
+    "modelCalls": "prohibited until a later separately frozen phase"
+  }
+}

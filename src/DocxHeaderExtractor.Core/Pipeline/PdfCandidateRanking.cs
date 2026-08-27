@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.Pipeline;
+﻿namespace DocxHeaderExtractor.Core.Pipeline;
 
 /// <summary>Execution capability, deliberately independent of any provider or model name.</summary>
 public enum ModelTier
@@ -23,7 +23,9 @@ public sealed record RankedCandidate(
     ModelTier Tier,
     IReadOnlyList<string> PositiveSignals,
     IReadOnlyList<string> NegativeSignals,
-    IReadOnlyList<string> AmbiguitySignals);
+    IReadOnlyList<string> AmbiguitySignals,
+    string Scope = "unknown",
+    string? OccurrenceKey = null);
 
 public sealed record PdfCandidateRankingAudit(
     string Status,
@@ -33,12 +35,20 @@ public sealed record PdfCandidateRankingAudit(
 /// <summary>Feature-only ordering; it has no model dependency and never removes a candidate.</summary>
 internal static class PdfCandidateRanker
 {
+    /// <summary>
+    /// Orders candidates by score. <paramref name="structuralMarkerCountsAsStrong"/> is
+    /// evaluation-only: it admits the existing strict structural-marker fact to the existing strong
+    /// marker path, changing no weight and adding no signal, so a counterfactual can ask whether the
+    /// two kinds of marker evidence are equivalent. It is false in production.
+    /// </summary>
     public static IReadOnlyList<RankedCandidate> Rank(
         IReadOnlyList<PdfSemanticBlock> blocks,
-        IReadOnlyDictionary<string, PdfCandidateContext> contexts)
+        IReadOnlyDictionary<string, PdfCandidateContext> contexts,
+        bool structuralMarkerCountsAsStrong = false)
     {
         var maxFont = Math.Max(1, blocks.Select(block => block.PrimaryStyle.FontSizeBucket).DefaultIfEmpty(1).Max());
-        return blocks.Select(block => Build(block, contexts[block.Id], maxFont, HasMarkerPrefixPredecessor(block, blocks)))
+        return blocks.Select(block => Build(block, contexts[block.Id], maxFont,
+                HasMarkerPrefixPredecessor(block, blocks), structuralMarkerCountsAsStrong))
             .OrderByDescending(item => item.CandidateScore)
             .ThenByDescending(item => item.EscalationScore)
             .ThenBy(item => item.Page)
@@ -46,12 +56,15 @@ internal static class PdfCandidateRanker
             .ToArray();
     }
 
-    private static RankedCandidate Build(PdfSemanticBlock block, PdfCandidateContext context, double maxFont, bool hasMarkerPrefixPredecessor)
+    private static RankedCandidate Build(PdfSemanticBlock block, PdfCandidateContext context, double maxFont,
+        bool hasMarkerPrefixPredecessor, bool structuralMarkerCountsAsStrong = false)
     {
         var positive = new List<string>();
         var negative = new List<string>();
         var ambiguity = new List<string>();
-        var labelledMarker = PdfLayoutEvidenceOutline.ParseLooseLabelledMarkerForAudit(block.DisplayText) is not null;
+        var labelledMarker = PdfLayoutEvidenceOutline.ParseLooseLabelledMarkerForAudit(block.DisplayText) is not null ||
+                             (structuralMarkerCountsAsStrong &&
+                              PdfLineBlockAnnotation.HasStructuralMarker(block.DisplayText));
         var genericMarker = NumberingAudit.Parse(block.DisplayText) is not null;
         var standalone = block.LineCount == 1;
         var markerTitleComposite = IsMarkerTitleComposite(block);
@@ -83,7 +96,8 @@ internal static class PdfCandidateRanker
             (context.Source.StructuralScope == "document_body" ? 0 : 0.25), 0, 1);
         var tier = PdfEscalationPolicy.Decide(likelihood, escalation, labelledMarker, context.Source.StructuralScope);
         return new RankedCandidate(block.Id, block.Page, block.DisplayText, likelihood, escalation, tier,
-            positive, negative, ambiguity);
+            positive, negative, ambiguity, context.Source.StructuralScope,
+            PdfProductionOccurrenceResolver.FamilyKey(block.Lines.FirstOrDefault()?.Text ?? block.DisplayText));
     }
 
     private static bool IsMarkerTitleComposite(PdfSemanticBlock block)

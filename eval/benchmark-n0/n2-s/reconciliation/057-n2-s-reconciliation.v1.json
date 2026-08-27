@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n2_s_reconciliation",
+  "documentId": "057",
+  "identity": "documentSha256 (via run/census) \u002B page \u002B sourceLineIds; candidateId is diagnostics-only within one run",
+  "laneStatus": {
+    "semanticLaneStatus": "complete",
+    "spanLaneStatus": "complete"
+  },
+  "denominators": {
+    "decisionRelevant": 24,
+    "validated": 23,
+    "emitted": 0
+  },
+  "conditionalSemanticRecall": {
+    "validatedOverDecisionRelevant": 0.9583,
+    "emittedOverDecisionRelevant": 0,
+    "note": "Conditional on N1.3-S\u0027s decisionRelevant cohort, not an end-to-end recall over all reviewed occurrences."
+  },
+  "occurrences": [
+    {
+      "stableId": "057/numbered/9.2",
+      "validated": false,
+      "emitted": false,
+      "coveringSourceFactId": null
+    },
+    {
+      "stableId": "057/numbered/9.4",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-3765"
+    },
+    {
+      "stableId": "057/numbered/10.0.1",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-3875"
+    },
+    {
+      "stableId": "057/numbered/11.3.1",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-4365"
+    },
+    {
+      "stableId": "057/numbered/12.3",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-4767"
+    },
+    {
+      "stableId": "057/numbered/15.8.1",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-5585"
+    },
+    {
+      "stableId": "057/numbered/22.4",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-7988"
+    },
+    {
+      "stableId": "057/numbered/23.2",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-8422"
+    },
+    {
+      "stableId": "057/numbered/23.5",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-8501"
+    },
+    {
+      "stableId": "057/numbered/24.1.1",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-9350"
+    },
+    {
+      "stableId": "057/numbered/24.7.1",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-9671"
+    },
+    {
+      "stableId": "057/numbered/24.8",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-9703"
+    },
+    {
+      "stableId": "057/numbered/30.13.1",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-11773"
+    },
+    {
+      "stableId": "057/numbered/31.3.2",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-12396"
+    },
+    {
+      "stableId": "057/numbered/41.3",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-17510"
+    },
+    {
+      "stableId": "057/numbered/45.1.4",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-19015"
+    },
+    {
+      "stableId": "057/numbered/50.4",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-19812"
+    },
+    {
+      "stableId": "057/numbered/50.5",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-19828"
+    },
+    {
+      "stableId": "057/numbered/51.1",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-19854"
+    },
+    {
+      "stableId": "057/numbered/54.4.1",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-21744"
+    },
+    {
+      "stableId": "057/numbered/72.2",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-27542"
+    },
+    {
+      "stableId": "057/numbered/76.4",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-28651"
+    },
+    {
+      "stableId": "057/numbered/76.10.2",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-28860"
+    },
+    {
+      "stableId": "057/numbered/83.7",
+      "validated": true,
+      "emitted": false,
+      "coveringSourceFactId": "s-window-31993"
+    }
+  ]
+}

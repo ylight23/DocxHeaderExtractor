@@ -24,6 +24,8 @@ public sealed class OpenRouterTests
         Assert.Contains("\"require_parameters\":true", handler.Body);
         Assert.Contains("\"response_format\":{\"type\":\"json_object\"}", handler.Body);
         Assert.DoesNotContain("json_schema", handler.Body);
+        Assert.Contains("\"model\":\"qwen/qwen3.5-9b\"", handler.Body);
+        Assert.Contains("\"reasoning\":{\"effort\":\"none\"}", handler.Body);
         Assert.Contains("[42]", handler.Body);
         Assert.Contains("items", handler.Body);
         Assert.Equal("Bearer", handler.AuthorizationScheme);

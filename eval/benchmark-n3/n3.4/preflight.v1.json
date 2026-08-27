@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n3_4_preflight",
+  "status": "READY_FOR_ONE_LIVE_TRACE",
+  "liveCallsMade": false,
+  "providerCallBudget": 1,
+  "eligibleDocument": "004",
+  "excludedFromLiveCalls": ["030", "043", "058"],
+  "requiredBeforeProviderConstruction": [
+    "manifest.v1.json committed and raw SHA recorded by BenchmarkRunGuard",
+    "frozen profile matches BenchmarkRunGuard exactly",
+    "canonical output path absent",
+    "exclusive benchmark run lock acquired",
+    "role and span checkpoint path supplied",
+    "N3.4 paired replay evaluator committed"
+  ],
+  "forbidden": [
+    "second provider execution",
+    "retry after provider failure or timeout",
+    "provider call for 030, 043, or 058",
+    "R1 source or profile modification",
+    "baseline provider replay",
+    "artifact regeneration before the canonical run exists"
+  ],
+  "postRunRequiredArtifacts": [
+    "manifest.v1.json.first-live-call-sha256",
+    "runs/004-n3.4-canonical-run.v1.json",
+    "checkpoints/004-n3.4-canonical.jsonl",
+    "reports/004-n3.4-baseline-replay.v1.json",
+    "reports/004-n3.4-r1-replay.v1.json",
+    "reports/004-n3.4-decision.v1.json"
+  ]
+}

@@ -1,0 +1,1525 @@
+{
+  "SchemaVersion": 1,
+  "ArtifactKind": "n3_4_paired_replay",
+  "DocumentId": "004",
+  "Policy": "r1_partial_span_preservation",
+  "Identity": "documentSha256 \u002B page \u002B sourceLineIds/sourceSpan; candidateId is diagnostics-only",
+  "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+  "LaneStatus": {
+    "Semantic": "complete",
+    "Span": "partial_timeout"
+  },
+  "Inputs": {
+    "canonicalRun": "004-n3.4-canonical-run.v1.json",
+    "checkpoint": "004-n3.4-canonical.jsonl",
+    "providerCalls": 0
+  },
+  "Denominators": {
+    "Silver": 93,
+    "FullCandidate": 83,
+    "SelectedAt160": 55,
+    "DecisionRelevant": 55
+  },
+  "Stages": {
+    "DecisionRelevant": 55,
+    "RoleSurvival": 55,
+    "SpanResolved": 54,
+    "Validated": 52,
+    "Grounded": 47,
+    "Emitted": 47
+  },
+  "Occurrences": [
+    {
+      "StableId": "004/appendix/1",
+      "Page": 59,
+      "SourceLineIds": [
+        "59|783.0553533339845|273.279667421875|350.5571983183595|Appendix IV",
+        "59|761.9512664278899|203.2305076269531|420.19401882761707|LIST OF SECTORS AND TRADES",
+        "59|745.8447020061935|132.14667916992187|492.03688889640625|SUBJECT TO CONDITIONAL BUSINESS INVESTMENT"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-6079"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-6079"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-6079"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-6079"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-6079"
+      }
+    },
+    {
+      "StableId": "004/article/1",
+      "Page": 1,
+      "SourceLineIds": [
+        "1|479.7105736071158|120.609687421875|444.5373025173798|Article 1. Scope of regulation vn"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b8"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b8"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b8"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b8"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b8"
+      }
+    },
+    {
+      "StableId": "004/article/10",
+      "Page": 7,
+      "SourceLineIds": [
+        "7|274.22505358559056|120.609687421875|386.52545271054686|Article 10. Guarantee of property ownership"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b178"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b178"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b178"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b178"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b178"
+      }
+    },
+    {
+      "StableId": "004/article/11",
+      "Page": 7,
+      "SourceLineIds": [
+        "7|127.68880595214843|120.609687421875|443.0338896498437|Article 11. Guarantee of business investment activities"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b183"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b183"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b183"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b183"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b183"
+      }
+    },
+    {
+      "StableId": "004/article/13",
+      "Page": 8,
+      "SourceLineIds": [
+        "8|232.15027591013927|120.609687421875|530.7332612483596|Article 13. Guarantee of business investment in case of change of law"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b210"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b210"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b210"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b210"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b210"
+      }
+    },
+    {
+      "StableId": "004/article/14",
+      "Page": 9,
+      "SourceLineIds": [
+        "9|537.8174921941325|120.609687421875|510.8049213798438|Article 14. Settlement of disputes in business investment activities"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b225"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b225"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b225"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b225"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b225"
+      }
+    },
+    {
+      "StableId": "004/article/15",
+      "Page": 10,
+      "SourceLineIds": [
+        "10|738.7958810993131|120.609687421875|523.5730083898438|Article 15. Forms of, and subjects eligible for, investment incentives"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b244"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b244"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b244"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b244"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b244"
+      }
+    },
+    {
+      "StableId": "004/article/17",
+      "Page": 12,
+      "SourceLineIds": [
+        "12|129.5314471456474|120.609687421875|491.7386149598439|Article 17. Procedures for application of investment incentives"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b329"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b329"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b329"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b329"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b329"
+      }
+    },
+    {
+      "StableId": "004/article/18",
+      "Page": 13,
+      "SourceLineIds": [
+        "13|728.6975324844901|120.609687421875|359.16919032007814|Article 18. Forms of investment support"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b333"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b333"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b333"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b333"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b333"
+      }
+    },
+    {
+      "StableId": "004/article/2",
+      "Page": 1,
+      "SourceLineIds": [
+        "1|420.15726557718153|120.609687421875|315.0225541126953|Article 2. SubLjectus oaf application"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b11"
+      },
+      "SpanResolved": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      },
+      "Validated": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      },
+      "Grounded": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      },
+      "Emitted": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      }
+    },
+    {
+      "StableId": "004/article/20",
+      "Page": 13,
+      "SourceLineIds": [
+        "13|97.31826747375486|120.609687421875|441.5175707298439|Article 20. Special investment incentives and supports"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b356"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b356"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b356"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b356"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b356"
+      }
+    },
+    {
+      "StableId": "004/article/22",
+      "Page": 15,
+      "SourceLineIds": [
+        "15|640.3691606396068|120.609687421875|512.6020400998436|Article 22. Investment in establishment of economic organizations"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b390"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b390"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b390"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b390"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b390"
+      }
+    },
+    {
+      "StableId": "004/article/27",
+      "Page": 18,
+      "SourceLineIds": [
+        "18|783.1791343141355|120.609687421875|435.27997611007805|Article 27. Investment in the form of a BCC contract"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b465"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b465"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b465"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b465"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b465"
+      }
+    },
+    {
+      "StableId": "004/article/28",
+      "Page": 18,
+      "SourceLineIds": [
+        "18|614.4244572137453|120.609687421875|297.93009940644527|Article 28. Contents of a BCC"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b472"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b472"
+      },
+      "Validated": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      },
+      "Grounded": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      },
+      "Emitted": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      }
+    },
+    {
+      "StableId": "004/article/29",
+      "Page": 18,
+      "SourceLineIds": [
+        "18|186.03024461097596|120.609687421875|524.4004031026953|Article 29. Investor selection for investment project implementation"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b492"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b492"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b492"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b492"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b492"
+      }
+    },
+    {
+      "StableId": "004/article/3",
+      "Page": 1,
+      "SourceLineIds": [
+        "1|359.61630697322596|120.609687421875|317.08113935984375|Article 3. Interpretation of terms"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b14"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b14"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b14"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b14"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b14"
+      }
+    },
+    {
+      "StableId": "004/article/38",
+      "Page": 26,
+      "SourceLineIds": [
+        "26|117.53870812244423|120.609687421875|536.9614227498437|Article 38. Procedures for grant of investment registration certificates"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b729"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b729"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b729"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b729"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b729"
+      }
+    },
+    {
+      "StableId": "004/article/4",
+      "Page": 3,
+      "SourceLineIds": [
+        "3|505.5645854651992|120.609687421875|513.2478796398437|Article 4. Application of the Law on Investment and relevant laws"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b64"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b64"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b64"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b64"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b64"
+      }
+    },
+    {
+      "StableId": "004/article/40",
+      "Page": 28,
+      "SourceLineIds": [
+        "28|604.1636555154477|120.609687421875|478.5535835696484|Article 40. Contents of an investment registration certificate"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b768"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b768"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b768"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b768"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b768"
+      }
+    },
+    {
+      "StableId": "004/article/41",
+      "Page": 28,
+      "SourceLineIds": [
+        "28|252.42532006830112|120.609687421875|398.34460147984373|Article 41. Modification of investment projects"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b786"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b786"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b786"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b786"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b786"
+      }
+    },
+    {
+      "StableId": "004/article/42",
+      "Page": 30,
+      "SourceLineIds": [
+        "30|493.54645632455043|120.609687421875|493.80249348984376|Article 42. Principles of implementation of investment projects"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b834"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b834"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b834"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b834"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b834"
+      }
+    },
+    {
+      "StableId": "004/article/43",
+      "Page": 30,
+      "SourceLineIds": [
+        "30|292.3747175461646|120.609687421875|490.01169618984375|Article 43. Security for implementation of investment projects"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b842"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b842"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b842"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b842"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b842"
+      }
+    },
+    {
+      "StableId": "004/article/44",
+      "Page": 31,
+      "SourceLineIds": [
+        "31|549.6821830838079|120.609687421875|438.54109284984366|Article 44. Operation duration of investment projects"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b858"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b858"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b858"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b858"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b858"
+      }
+    },
+    {
+      "StableId": "004/article/46",
+      "Page": 32,
+      "SourceLineIds": [
+        "32|559.8759339941405|120.609687421875|374.12561872984367|Article 46. Transfer of investment projects"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b886"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b886"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b886"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b886"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b886"
+      }
+    },
+    {
+      "StableId": "004/article/47",
+      "Page": 33,
+      "SourceLineIds": [
+        "33|728.7572618766907|120.609687421875|378.9132553198437|Article 47. Cessation of investment projects"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b910"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b910"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b910"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b910"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b910"
+      }
+    },
+    {
+      "StableId": "004/article/48",
+      "Page": 33,
+      "SourceLineIds": [
+        "33|282.3340134582817|120.609687421875|396.7721225998437|Article 48. Termination of investment projects"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b931"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b931"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b931"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b931"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b931"
+      }
+    },
+    {
+      "StableId": "004/article/5",
+      "Page": 4,
+      "SourceLineIds": [
+        "4|414.943787590402|120.609687421875|346.7476382298438|Article 5. Business investment policies"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b92"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b92"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b92"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b92"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b92"
+      }
+    },
+    {
+      "StableId": "004/article/51",
+      "Page": 36,
+      "SourceLineIds": [
+        "36|574.1998095805667|120.609687421875|438.34503486984363|Article 51. Principles of offshore investment activities"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1007"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1007"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1007"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1007"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1007"
+      }
+    },
+    {
+      "StableId": "004/article/52",
+      "Page": 36,
+      "SourceLineIds": [
+        "36|395.09584667661824|120.609687421875|361.3173087900781|Article 52. Forms of offshore investment"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1013"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1013"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1013"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1013"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1013"
+      }
+    },
+    {
+      "StableId": "004/article/53",
+      "Page": 36,
+      "SourceLineIds": [
+        "36|105.5939624471029|120.609687421875|498.7112477900782|Article 53. Sectors and trades banned from offshore investment"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1026"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1026"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1026"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1026"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1026"
+      }
+    },
+    {
+      "StableId": "004/article/54",
+      "Page": 37,
+      "SourceLineIds": [
+        "37|684.6948380413437|120.609687421875|535.0200650700777|Article 54. Sectors and trades subject to conditional offshore investment"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1033"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1033"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1033"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1033"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1033"
+      }
+    },
+    {
+      "StableId": "004/article/55",
+      "Page": 37,
+      "SourceLineIds": [
+        "37|443.08046831673886|120.609687421875|399.0466009798438|Article 55. Offshore invteVstmeinet capital sources"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1043"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1043"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1043"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1043"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1043"
+      }
+    },
+    {
+      "StableId": "004/article/56",
+      "Page": 37,
+      "SourceLineIds": [
+        "37|121.4632870605929|120.609687421875|488.26893435652346|Article 56. Competence to approve offshore investment policy"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1053"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1053"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1053"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1053"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1053"
+      }
+    },
+    {
+      "StableId": "004/article/59",
+      "Page": 40,
+      "SourceLineIds": [
+        "40|222.1431483041865|120.609687421875|376.1575782200781|Article 59. Decision on offshore investment"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1142"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1142"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1142"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1142"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1142"
+      }
+    },
+    {
+      "StableId": "004/article/6",
+      "Page": 5,
+      "SourceLineIds": [
+        "5|760.9450272033463|120.609687421875|492.3665754500784|Article 6. Sectors and trades banned from business investment"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b106"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b106"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b106"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b106"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b106"
+      }
+    },
+    {
+      "StableId": "004/article/62",
+      "Page": 42,
+      "SourceLineIds": [
+        "42|479.29169326191766|120.609687421875|531.0631461696485|Article 62. Contents of an offshore investment revgisntration certificate"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1186"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1186"
+      },
+      "Validated": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      },
+      "Grounded": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      },
+      "Emitted": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      }
+    },
+    {
+      "StableId": "004/article/63",
+      "Page": 42,
+      "SourceLineIds": [
+        "42|270.47380057202884|120.609687421875|527.0889303798432|Article 63. Modification ofoffshore investment registration certificates"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1198"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1198"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1198"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1198"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1198"
+      }
+    },
+    {
+      "StableId": "004/article/64",
+      "Page": 44,
+      "SourceLineIds": [
+        "44|783.1302360931493|120.609687421875|525.6451908098431|Article 64. Termination ofoffshore investment registration certificates"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1236"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1236"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1236"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1236"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1236"
+      }
+    },
+    {
+      "StableId": "004/article/65",
+      "Page": 44,
+      "SourceLineIds": [
+        "44|226.10617174790607|120.609687421875|472.89694837984376|Article 65. Opening of offshore investment capital accounts"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1260"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1260"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1260"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1260"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1260"
+      }
+    },
+    {
+      "StableId": "004/article/66",
+      "Page": 44,
+      "SourceLineIds": [
+        "44|95.5392905569119|120.609687421875|427.1555384592187|Article 66. Outbound transfer of investment capital"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1265"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1265"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1265"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1265"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1265"
+      }
+    },
+    {
+      "StableId": "004/article/68",
+      "Page": 45,
+      "SourceLineIds": [
+        "45|244.2676392266486|120.609687421875|347.1126779698436|Article 68. Inbound transfer of profits"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1289"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1289"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1289"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1289"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1289"
+      }
+    },
+    {
+      "StableId": "004/article/69",
+      "Page": 46,
+      "SourceLineIds": [
+        "46|586.0964027224395|120.609687421875|488.08437850007806|Article 69. Responsibility for state management of investment"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1300"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1300"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1300"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1300"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1300"
+      }
+    },
+    {
+      "StableId": "004/article/7",
+      "Page": 5,
+      "SourceLineIds": [
+        "5|405.24091767554887|120.609687421875|529.053224790078|Article 7. Sectors and trades subject to conditional business investment"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b119"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b119"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b119"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b119"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b119"
+      }
+    },
+    {
+      "StableId": "004/article/70",
+      "Page": 48,
+      "SourceLineIds": [
+        "48|272.25741563612826|120.609687421875|414.8604011226952|Article 70. Investment monitoring and evaluation"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1373"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1373"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1373"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1373"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1373"
+      }
+    },
+    {
+      "StableId": "004/article/71",
+      "Page": 49,
+      "SourceLineIds": [
+        "49|250.21309796264632|120.609687421875|430.2153787798438|Article 71. National investment information systems"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1404"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1404"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1404"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1404"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1404"
+      }
+    },
+    {
+      "StableId": "004/article/72",
+      "Page": 50,
+      "SourceLineIds": [
+        "50|636.2731665177264|120.609687421875|504.86413075246094|Article 72. Reporting regime on investment activities in Vietnam"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1418"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1418"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1418"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1418"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1418"
+      }
+    },
+    {
+      "StableId": "004/article/73",
+      "Page": 51,
+      "SourceLineIds": [
+        "51|614.0929799551667|120.609687421875|488.5673162998438|Article 73. Reporting regime on overseas investment activities"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1445"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1445"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1445"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1445"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1445"
+      }
+    },
+    {
+      "StableId": "004/article/74",
+      "Page": 52,
+      "SourceLineIds": [
+        "52|501.51524128142523|120.609687421875|375.3892178298437|Article 74. Investment promotion activities"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1474"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1474"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1474"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1474"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1474"
+      }
+    },
+    {
+      "StableId": "004/article/76",
+      "Page": 55,
+      "SourceLineIds": [
+        "55|294.3018213015567|120.609687421875|346.2562385798437|Article 76. Implementation provisions"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1557"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1557"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1557"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1557"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1557"
+      }
+    },
+    {
+      "StableId": "004/article/77",
+      "Page": 56,
+      "SourceLineIds": [
+        "56|658.3900705431366|120.609687421875|324.5363740498437|Article 77. Transitional provisions"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1570"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1570"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1570"
+      },
+      "Grounded": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1570"
+      },
+      "Emitted": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "b1570"
+      }
+    },
+    {
+      "StableId": "004/chapter/1",
+      "Page": 1,
+      "SourceLineIds": [
+        "1|546.5598208102417|283.08529257324216|340.93931996039066|Chapter I",
+        "1|525.384495205509|232.57899350097654|391.39354694761704|GENERAL PROVISIONS"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-4"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-4"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-4"
+      },
+      "Grounded": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      },
+      "Emitted": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      }
+    },
+    {
+      "StableId": "004/chapter/2",
+      "Page": 7,
+      "SourceLineIds": [
+        "7|340.9618234426541|298.08529257324216|361.49154401039067|Chapter II",
+        "7|319.6805130690917|232.41106401855467|426.4938093976171|INVESTMENT GUARANTEES"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-686"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-686"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-686"
+      },
+      "Grounded": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      },
+      "Emitted": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      }
+    },
+    {
+      "StableId": "004/chapter/4",
+      "Page": 14,
+      "SourceLineIds": [
+        "14|228.27001681043834|295.6852925732422|363.8966644583594|Chapter IV",
+        "14|206.96873828453323|194.73107401855466|464.42418039218734|INVESTMENT ACTIVITIES IN VIETNAM"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-1452"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-1452"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-1452"
+      },
+      "Grounded": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      },
+      "Emitted": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      }
+    },
+    {
+      "StableId": "004/chapter/5",
+      "Page": 36,
+      "SourceLineIds": [
+        "36|706.7765183489989|298.44527257324216|361.29336827835937|Chapter V",
+        "36|685.6158650211877|199.798437109375|459.4266451576171|OFFSHORE INVESTMENT ACTIVITIES"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-3774"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-3774"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-3774"
+      },
+      "Grounded": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      },
+      "Emitted": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      }
+    },
+    {
+      "StableId": "004/chapter/6",
+      "Page": 46,
+      "SourceLineIds": [
+        "46|652.5200268104385|295.6852925732422|363.7463926903906|Chapter VI",
+        "46|631.258736930429|192.41667916992188|466.9782325564063|STATE MANAGEMENT OF INVESTMENT"
+      ],
+      "RoleSurvival": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-4783"
+      },
+      "SpanResolved": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-4783"
+      },
+      "Validated": {
+        "Status": "EXACT_OCCURRENCE_MATCH",
+        "EvidenceSourceId": "s-window-4783"
+      },
+      "Grounded": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      },
+      "Emitted": {
+        "Status": "UNMATCHED_OUTPUT",
+        "EvidenceSourceId": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "artifactKind": "n0_review_population_bootstrap",
+  "selectionRule": {
+    "a3Usability": "selected@160 >= 20 AND decisionRelevant >= 15",
+    "targetStrata": [
+      "01_phap_quy",
+      "02_hop_dong_mua_sam",
+      "03_tai_chinh_ke_toan",
+      "04_giao_trinh"
+    ],
+    "excludedReviewedDocuments": [
+      "001",
+      "028",
+      "032",
+      "041",
+      "054",
+      "056",
+      "091",
+      "092"
+    ],
+    "tieBreak": "lowest unreviewed numeric document id within each stratum"
+  },
+  "documents": [
+    {
+      "stem": "003",
+      "domain": "01_phap_quy",
+      "relativePath": "todo10_8/heading_corpus_95_word/01_phap_quy/003_Luat_Doanh_nghiep_59-2020-QH14.docx",
+      "sourceDocumentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "candidateCount": 5190,
+      "selectedAt160": 160,
+      "decisionRelevant": 158
+    },
+    {
+      "stem": "029",
+      "domain": "02_hop_dong_mua_sam",
+      "relativePath": "todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.docx",
+      "sourceDocumentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "candidateCount": 4067,
+      "selectedAt160": 160,
+      "decisionRelevant": 113
+    },
+    {
+      "stem": "042",
+      "domain": "03_tai_chinh_ke_toan",
+      "relativePath": "todo10_8/heading_corpus_95_word/03_tai_chinh_ke_toan/042_IDA_Financial_Statements_June_2025.docx",
+      "sourceDocumentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "candidateCount": 1874,
+      "selectedAt160": 160,
+      "decisionRelevant": 52
+    },
+    {
+      "stem": "057",
+      "domain": "04_giao_trinh",
+      "relativePath": "todo10_8/heading_corpus_95_word/04_giao_trinh/057_Quantitative_Methods_in_Finance_Lecture_Notes.docx",
+      "sourceDocumentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "candidateCount": 10296,
+      "selectedAt160": 160,
+      "decisionRelevant": 100
+    }
+  ]
+}

@@ -39,7 +39,7 @@ internal static class PdfMarkerHierarchyResolver
         {
             var level = token is { Kind: NumberKind.Arabic, Depth: > 1 }
                 ? token.Value.Depth
-                : tiers.Count >= 2 ? tiers[signature!] : heading.Level;
+                : tiers.Count >= 2 ? tiers[signature!] : heading.Level ?? 1;
             level = Math.Clamp(level, 1, 9);
             if (heading.Level == level) continue;
 

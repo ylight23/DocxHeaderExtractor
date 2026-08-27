@@ -1,0 +1,2366 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_round1_candidate_unresolved_first_loss",
+  "phase": "round1e",
+  "modelCalls": 0,
+  "productionChanges": false,
+  "rankingChanged": false,
+  "inputUnresolved": 27,
+  "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is diagnostics-only",
+  "partition": {
+    "SOURCE_REPRESENTATION_MISSING": 0,
+    "CANDIDATE_PRODUCER_NOT_TRIGGERED": 26,
+    "CANDIDATE_BOUNDARY_MISMATCH": 0,
+    "CANDIDATE_MERGE_DESTROYS_OCCURRENCE": 1,
+    "HARD_FILTER_REJECTION": 0,
+    "OCCURRENCE_JOIN_MISMATCH": 0,
+    "UNRESOLVED": 0
+  },
+  "clusters": [
+    {
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "count": 26,
+      "documents": [
+        "030"
+      ],
+      "firstLossStages": [
+        "BuildSupplementCandidates",
+        "BuildBroadCandidates"
+      ],
+      "crossDocumentRecurrence": false,
+      "status": "NOT_YET_JUSTIFIED",
+      "sharedInvariant": "not established by diagnosis-only source lineage",
+      "positiveExamples": "not separately reviewed in Round 1E; no positive control promoted",
+      "negativeControls": "375 frozen candidate-present occurrences remain outside this input cohort",
+      "estimatedCandidateRecovery": "not measured; requires a separate counterfactual",
+      "candidateInflationRisk": "not measured; no remediation simulated"
+    },
+    {
+      "owner": "CANDIDATE_MERGE_DESTROYS_OCCURRENCE",
+      "count": 1,
+      "documents": [
+        "030"
+      ],
+      "firstLossStages": [
+        "PdfSemanticBlockGrouper.Build"
+      ],
+      "crossDocumentRecurrence": false,
+      "status": "NOT_YET_JUSTIFIED",
+      "sharedInvariant": "not established by diagnosis-only source lineage",
+      "positiveExamples": "not separately reviewed in Round 1E; no positive control promoted",
+      "negativeControls": "375 frozen candidate-present occurrences remain outside this input cohort",
+      "estimatedCandidateRecovery": "not measured; requires a separate counterfactual",
+      "candidateInflationRisk": "not measured; no remediation simulated"
+    }
+  ],
+  "occurrences": [
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/outline/3",
+      "page": 15,
+      "sourceLineIds": [
+        "15|709.4453984799593|132.2460546875|494.8589453125|Section 2. Instructions to Consultants and Data Sheet"
+      ],
+      "sourceText": "Section 2. Instructions to Consultants and Data Sheet",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildSupplementCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "supplement candidate producer",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "15|709.4453984799593|132.2460546875|494.8589453125|Section 2. Instructions to Consultants and Data Sheet"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "15|709.4453984799593|132.2460546875|494.8589453125|Section 2. Instructions to Consultants and Data Sheet"
+          ],
+          "CandidateLineIds": {
+            "b140": [
+              "15|709.4453984799593|132.2460546875|494.8589453125|Section 2. Instructions to Consultants and Data Sheet"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "15|709.4453984799593|132.2460546875|494.8589453125|Section 2. Instructions to Consultants and Data Sheet"
+          ],
+          "CandidateLineIds": {
+            "b140": [
+              "15|709.4453984799593|132.2460546875|494.8589453125|Section 2. Instructions to Consultants and Data Sheet"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "15|709.4453984799593|132.2460546875|494.8589453125|Section 2. Instructions to Consultants and Data Sheet"
+          ],
+          "CandidateLineIds": {
+            "b140": [
+              "15|709.4453984799593|132.2460546875|494.8589453125|Section 2. Instructions to Consultants and Data Sheet"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "15|709.4453984799593|132.2460546875|494.8589453125|Section 2. Instructions to Consultants and Data Sheet"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "15|709.4453984799593|132.2460546875|494.8589453125|Section 2. Instructions to Consultants and Data Sheet"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/outline/6",
+      "page": 79,
+      "sourceLineIds": [
+        "79|709.3951246995192|215.0760546875|411.42694937499994|Section 5. Eligible Countries"
+      ],
+      "sourceText": "Section 5. Eligible Countries",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildSupplementCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "supplement candidate producer",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "79|709.3951246995192|215.0760546875|411.42694937499994|Section 5. Eligible Countries"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "79|709.3951246995192|215.0760546875|411.42694937499994|Section 5. Eligible Countries"
+          ],
+          "CandidateLineIds": {
+            "b1208": [
+              "79|709.3951246995192|215.0760546875|411.42694937499994|Section 5. Eligible Countries"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "79|709.3951246995192|215.0760546875|411.42694937499994|Section 5. Eligible Countries"
+          ],
+          "CandidateLineIds": {
+            "b1208": [
+              "79|709.3951246995192|215.0760546875|411.42694937499994|Section 5. Eligible Countries"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "79|709.3951246995192|215.0760546875|411.42694937499994|Section 5. Eligible Countries"
+          ],
+          "CandidateLineIds": {
+            "b1208": [
+              "79|709.3951246995192|215.0760546875|411.42694937499994|Section 5. Eligible Countries"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "79|709.3951246995192|215.0760546875|411.42694937499994|Section 5. Eligible Countries"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "79|709.3951246995192|215.0760546875|411.42694937499994|Section 5. Eligible Countries"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/outline/7",
+      "page": 81,
+      "sourceLineIds": [
+        "81|709.192463107639|199.8360546875|426.81341328125|Section 6. Fraud and Corruption"
+      ],
+      "sourceText": "Section 6. Fraud and Corruption",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildSupplementCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "supplement candidate producer",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "81|709.192463107639|199.8360546875|426.81341328125|Section 6. Fraud and Corruption"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "81|709.192463107639|199.8360546875|426.81341328125|Section 6. Fraud and Corruption"
+          ],
+          "CandidateLineIds": {
+            "b1213": [
+              "81|709.192463107639|199.8360546875|426.81341328125|Section 6. Fraud and Corruption"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "81|709.192463107639|199.8360546875|426.81341328125|Section 6. Fraud and Corruption"
+          ],
+          "CandidateLineIds": {
+            "b1213": [
+              "81|709.192463107639|199.8360546875|426.81341328125|Section 6. Fraud and Corruption"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "81|709.192463107639|199.8360546875|426.81341328125|Section 6. Fraud and Corruption"
+          ],
+          "CandidateLineIds": {
+            "b1213": [
+              "81|709.192463107639|199.8360546875|426.81341328125|Section 6. Fraud and Corruption"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "81|709.192463107639|199.8360546875|426.81341328125|Section 6. Fraud and Corruption"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "81|709.192463107639|199.8360546875|426.81341328125|Section 6. Fraud and Corruption"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/datasheet/3",
+      "page": 40,
+      "sourceLineIds": [
+        "40|335.6334655761719|207.02509765625|395.32946937500014|B. Preparation of Proposals"
+      ],
+      "sourceText": "B. Preparation of Proposals",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "40|335.6334655761719|207.02509765625|395.32946937500014|B. Preparation of Proposals"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "40|335.6334655761719|207.02509765625|395.32946937500014|B. Preparation of Proposals"
+          ],
+          "CandidateLineIds": {
+            "b612": [
+              "40|335.6334655761719|207.02509765625|395.32946937500014|B. Preparation of Proposals"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "40|335.6334655761719|207.02509765625|395.32946937500014|B. Preparation of Proposals"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "40|335.6334655761719|207.02509765625|395.32946937500014|B. Preparation of Proposals"
+          ],
+          "CandidateLineIds": {
+            "b612": [
+              "40|335.6334655761719|207.02509765625|395.32946937500014|B. Preparation of Proposals"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "40|335.6334655761719|207.02509765625|395.32946937500014|B. Preparation of Proposals"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "40|335.6334655761719|207.02509765625|395.32946937500014|B. Preparation of Proposals"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/datasheet/4",
+      "page": 45,
+      "sourceLineIds": [
+        "45|698.3816619318181|177.77123046875|449.6534932812502|C. Submission, Opening and Evaluation"
+      ],
+      "sourceText": "C. Submission, Opening and Evaluation",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "45|698.3816619318181|177.77123046875|449.6534932812502|C. Submission, Opening and Evaluation"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "45|698.3816619318181|177.77123046875|449.6534932812502|C. Submission, Opening and Evaluation"
+          ],
+          "CandidateLineIds": {
+            "b708": [
+              "45|698.3816619318181|177.77123046875|449.6534932812502|C. Submission, Opening and Evaluation"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "45|698.3816619318181|177.77123046875|449.6534932812502|C. Submission, Opening and Evaluation"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "45|698.3816619318181|177.77123046875|449.6534932812502|C. Submission, Opening and Evaluation"
+          ],
+          "CandidateLineIds": {
+            "b708": [
+              "45|698.3816619318181|177.77123046875|449.6534932812502|C. Submission, Opening and Evaluation"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "45|698.3816619318181|177.77123046875|449.6534932812502|C. Submission, Opening and Evaluation"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "45|698.3816619318181|177.77123046875|449.6534932812502|C. Submission, Opening and Evaluation"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/datasheet/5",
+      "page": 49,
+      "sourceLineIds": [
+        "49|326.6016765802557|259.70041015625003|444.68491484375016|D. Negotiations and Award"
+      ],
+      "sourceText": "D. Negotiations and Award",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "49|326.6016765802557|259.70041015625003|444.68491484375016|D. Negotiations and Award"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "49|326.6016765802557|259.70041015625003|444.68491484375016|D. Negotiations and Award"
+          ],
+          "CandidateLineIds": {
+            "b808": [
+              "49|326.6016765802557|259.70041015625003|444.68491484375016|D. Negotiations and Award"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "49|326.6016765802557|259.70041015625003|444.68491484375016|D. Negotiations and Award"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "49|326.6016765802557|259.70041015625003|444.68491484375016|D. Negotiations and Award"
+          ],
+          "CandidateLineIds": {
+            "b808": [
+              "49|326.6016765802557|259.70041015625003|444.68491484375016|D. Negotiations and Award"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "49|326.6016765802557|259.70041015625003|444.68491484375016|D. Negotiations and Award"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "49|326.6016765802557|259.70041015625003|444.68491484375016|D. Negotiations and Award"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/fraud-attach-tb/2",
+      "page": 121,
+      "sourceLineIds": [
+        "121|605.2967578125|90.815015625|149.748921875|1. Purpose"
+      ],
+      "sourceText": "1. Purpose",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildSupplementCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "supplement candidate producer",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "121|605.2967578125|90.815015625|149.748921875|1. Purpose"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "121|605.2967578125|90.815015625|149.748921875|1. Purpose"
+          ],
+          "CandidateLineIds": {
+            "b1775": [
+              "121|605.2967578125|90.815015625|149.748921875|1. Purpose"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "121|605.2967578125|90.815015625|149.748921875|1. Purpose"
+          ],
+          "CandidateLineIds": {
+            "b1775": [
+              "121|605.2967578125|90.815015625|149.748921875|1. Purpose"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "121|605.2967578125|90.815015625|149.748921875|1. Purpose"
+          ],
+          "CandidateLineIds": {
+            "b1775": [
+              "121|605.2967578125|90.815015625|149.748921875|1. Purpose"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "121|605.2967578125|90.815015625|149.748921875|1. Purpose"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "121|605.2967578125|90.815015625|149.748921875|1. Purpose"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/fraud-attach-tb/3",
+      "page": 121,
+      "sourceLineIds": [
+        "121|552.064441964286|90.31696875|179.57018750000003|2. Requirements"
+      ],
+      "sourceText": "2. Requirements",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildSupplementCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "supplement candidate producer",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "121|552.064441964286|90.31696875|179.57018750000003|2. Requirements"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "121|552.064441964286|90.31696875|179.57018750000003|2. Requirements"
+          ],
+          "CandidateLineIds": {
+            "b1777": [
+              "121|552.064441964286|90.31696875|179.57018750000003|2. Requirements"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "121|552.064441964286|90.31696875|179.57018750000003|2. Requirements"
+          ],
+          "CandidateLineIds": {
+            "b1777": [
+              "121|552.064441964286|90.31696875|179.57018750000003|2. Requirements"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "121|552.064441964286|90.31696875|179.57018750000003|2. Requirements"
+          ],
+          "CandidateLineIds": {
+            "b1777": [
+              "121|552.064441964286|90.31696875|179.57018750000003|2. Requirements"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "121|552.064441964286|90.31696875|179.57018750000003|2. Requirements"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "121|552.064441964286|90.31696875|179.57018750000003|2. Requirements"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/gcc-ls/2",
+      "page": 153,
+      "sourceLineIds": [
+        "153|697.48794921875|188.88951171875|439.17610531250006|II. General Conditions of Contract"
+      ],
+      "sourceText": "II. General Conditions of Contract",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildSupplementCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "supplement candidate producer",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "153|697.48794921875|188.88951171875|439.17610531250006|II. General Conditions of Contract"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "153|697.48794921875|188.88951171875|439.17610531250006|II. General Conditions of Contract"
+          ],
+          "CandidateLineIds": {
+            "b2216": [
+              "153|697.48794921875|188.88951171875|439.17610531250006|II. General Conditions of Contract"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "153|697.48794921875|188.88951171875|439.17610531250006|II. General Conditions of Contract"
+          ],
+          "CandidateLineIds": {
+            "b2216": [
+              "153|697.48794921875|188.88951171875|439.17610531250006|II. General Conditions of Contract"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "153|697.48794921875|188.88951171875|439.17610531250006|II. General Conditions of Contract"
+          ],
+          "CandidateLineIds": {
+            "b2216": [
+              "153|697.48794921875|188.88951171875|439.17610531250006|II. General Conditions of Contract"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "153|697.48794921875|188.88951171875|439.17610531250006|II. General Conditions of Contract"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "153|697.48794921875|188.88951171875|439.17610531250006|II. General Conditions of Contract"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/gcc-ls/8",
+      "page": 155,
+      "sourceLineIds": [
+        "155|376.1072619047616|82.868296875|543.7240468749999|5. Headings The headings shall not limit alter or affect the meaning ofthis"
+      ],
+      "sourceText": "5. Headings The headings shall not limit alter or affect the meaning ofthis",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "155|376.1072619047616|82.868296875|543.7240468749999|5. Headings The headings shall not limit alter or affect the meaning ofthis"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "155|376.1072619047616|82.868296875|543.7240468749999|5. Headings The headings shall not limit alter or affect the meaning ofthis"
+          ],
+          "CandidateLineIds": {
+            "b2269": [
+              "155|376.1072619047616|82.868296875|543.7240468749999|5. Headings The headings shall not limit alter or affect the meaning ofthis"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "155|376.1072619047616|82.868296875|543.7240468749999|5. Headings The headings shall not limit alter or affect the meaning ofthis"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "155|376.1072619047616|82.868296875|543.7240468749999|5. Headings The headings shall not limit alter or affect the meaning ofthis"
+          ],
+          "CandidateLineIds": {
+            "b2269": [
+              "155|376.1072619047616|82.868296875|543.7240468749999|5. Headings The headings shall not limit alter or affect the meaning ofthis"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "155|376.1072619047616|82.868296875|543.7240468749999|5. Headings The headings shall not limit alter or affect the meaning ofthis"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "155|376.1072619047616|82.868296875|543.7240468749999|5. Headings The headings shall not limit alter or affect the meaning ofthis"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/gcc-ls/20",
+      "page": 157,
+      "sourceLineIds": [
+        "157|389.6411718749999|85.295015625|178.42892187500001|17. Force Majeure"
+      ],
+      "sourceText": "17. Force Majeure",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildSupplementCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "supplement candidate producer",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "157|389.6411718749999|85.295015625|178.42892187500001|17. Force Majeure"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "157|389.6411718749999|85.295015625|178.42892187500001|17. Force Majeure"
+          ],
+          "CandidateLineIds": {
+            "b2305": [
+              "157|389.6411718749999|85.295015625|178.42892187500001|17. Force Majeure"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "157|389.6411718749999|85.295015625|178.42892187500001|17. Force Majeure"
+          ],
+          "CandidateLineIds": {
+            "b2305": [
+              "157|389.6411718749999|85.295015625|178.42892187500001|17. Force Majeure"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "157|389.6411718749999|85.295015625|178.42892187500001|17. Force Majeure"
+          ],
+          "CandidateLineIds": {
+            "b2305": [
+              "157|389.6411718749999|85.295015625|178.42892187500001|17. Force Majeure"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "157|389.6411718749999|85.295015625|178.42892187500001|17. Force Majeure"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "157|389.6411718749999|85.295015625|178.42892187500001|17. Force Majeure"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/gcc-ls/22",
+      "page": 159,
+      "sourceLineIds": [
+        "159|644.8113552701275|85.295015625|541.9622656249998|19. Termination This Contract may be terminated by either Party as per"
+      ],
+      "sourceText": "19. Termination This Contract may be terminated by either Party as per",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "159|644.8113552701275|85.295015625|541.9622656249998|19. Termination This Contract may be terminated by either Party as per"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "159|644.8113552701275|85.295015625|541.9622656249998|19. Termination This Contract may be terminated by either Party as per"
+          ],
+          "CandidateLineIds": {
+            "b2339": [
+              "159|644.8113552701275|85.295015625|541.9622656249998|19. Termination This Contract may be terminated by either Party as per"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "159|644.8113552701275|85.295015625|541.9622656249998|19. Termination This Contract may be terminated by either Party as per"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "159|644.8113552701275|85.295015625|541.9622656249998|19. Termination This Contract may be terminated by either Party as per"
+          ],
+          "CandidateLineIds": {
+            "b2339": [
+              "159|644.8113552701275|85.295015625|541.9622656249998|19. Termination This Contract may be terminated by either Party as per"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "159|644.8113552701275|85.295015625|541.9622656249998|19. Termination This Contract may be terminated by either Party as per"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "159|644.8113552701275|85.295015625|541.9622656249998|19. Termination This Contract may be terminated by either Party as per"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/gcc-ls/23",
+      "page": 161,
+      "sourceLineIds": [
+        "161|484.10060546874985|81.67696875|140.5149375|20. General"
+      ],
+      "sourceText": "20. General",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildSupplementCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "supplement candidate producer",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "161|484.10060546874985|81.67696875|140.5149375|20. General"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "161|484.10060546874985|81.67696875|140.5149375|20. General"
+          ],
+          "CandidateLineIds": {
+            "b2390": [
+              "161|484.10060546874985|81.67696875|140.5149375|20. General"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "161|484.10060546874985|81.67696875|140.5149375|20. General"
+          ],
+          "CandidateLineIds": {
+            "b2390": [
+              "161|484.10060546874985|81.67696875|140.5149375|20. General"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "161|484.10060546874985|81.67696875|140.5149375|20. General"
+          ],
+          "CandidateLineIds": {
+            "b2390": [
+              "161|484.10060546874985|81.67696875|140.5149375|20. General"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "161|484.10060546874985|81.67696875|140.5149375|20. General"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "161|484.10060546874985|81.67696875|140.5149375|20. General"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/gcc-ls/25",
+      "page": 163,
+      "sourceLineIds": [
+        "163|502.7309167480462|81.67696875|544.8803281249999|22. Confidentiality Except with the prior written consent ofthe Client the"
+      ],
+      "sourceText": "22. Confidentiality Except with the prior written consent ofthe Client the",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "163|502.7309167480462|81.67696875|544.8803281249999|22. Confidentiality Except with the prior written consent ofthe Client the"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "163|502.7309167480462|81.67696875|544.8803281249999|22. Confidentiality Except with the prior written consent ofthe Client the"
+          ],
+          "CandidateLineIds": {
+            "b2431": [
+              "163|502.7309167480462|81.67696875|544.8803281249999|22. Confidentiality Except with the prior written consent ofthe Client the"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "163|502.7309167480462|81.67696875|544.8803281249999|22. Confidentiality Except with the prior written consent ofthe Client the"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "163|502.7309167480462|81.67696875|544.8803281249999|22. Confidentiality Except with the prior written consent ofthe Client the"
+          ],
+          "CandidateLineIds": {
+            "b2431": [
+              "163|502.7309167480462|81.67696875|544.8803281249999|22. Confidentiality Except with the prior written consent ofthe Client the"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "163|502.7309167480462|81.67696875|544.8803281249999|22. Confidentiality Except with the prior written consent ofthe Client the"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "163|502.7309167480462|81.67696875|544.8803281249999|22. Confidentiality Except with the prior written consent ofthe Client the"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/gcc-ls/33",
+      "page": 165,
+      "sourceLineIds": [
+        "165|263.8962307889346|81.577359375|545.2815625000001|30. Forced Labor The Consultant including its Subconsultants shall not"
+      ],
+      "sourceText": "30. Forced Labor The Consultant including its Subconsultants shall not",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "165|263.8962307889346|81.577359375|545.2815625000001|30. Forced Labor The Consultant including its Subconsultants shall not"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "165|263.8962307889346|81.577359375|545.2815625000001|30. Forced Labor The Consultant including its Subconsultants shall not"
+          ],
+          "CandidateLineIds": {
+            "b2472": [
+              "165|263.8962307889346|81.577359375|545.2815625000001|30. Forced Labor The Consultant including its Subconsultants shall not"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "165|263.8962307889346|81.577359375|545.2815625000001|30. Forced Labor The Consultant including its Subconsultants shall not"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "165|263.8962307889346|81.577359375|545.2815625000001|30. Forced Labor The Consultant including its Subconsultants shall not"
+          ],
+          "CandidateLineIds": {
+            "b2472": [
+              "165|263.8962307889346|81.577359375|545.2815625000001|30. Forced Labor The Consultant including its Subconsultants shall not"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "165|263.8962307889346|81.577359375|545.2815625000001|30. Forced Labor The Consultant including its Subconsultants shall not"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "165|263.8962307889346|81.577359375|545.2815625000001|30. Forced Labor The Consultant including its Subconsultants shall not"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/gcc-ls/34",
+      "page": 166,
+      "sourceLineIds": [
+        "166|672.6172460937494|67.177359375|530.8375625000001|31. Child Labor The Consultant including its Subconsultants shall not"
+      ],
+      "sourceText": "31. Child Labor The Consultant including its Subconsultants shall not",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "166|672.6172460937494|67.177359375|530.8375625000001|31. Child Labor The Consultant including its Subconsultants shall not"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "166|672.6172460937494|67.177359375|530.8375625000001|31. Child Labor The Consultant including its Subconsultants shall not"
+          ],
+          "CandidateLineIds": {
+            "b2479": [
+              "166|672.6172460937494|67.177359375|530.8375625000001|31. Child Labor The Consultant including its Subconsultants shall not"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "166|672.6172460937494|67.177359375|530.8375625000001|31. Child Labor The Consultant including its Subconsultants shall not"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "166|672.6172460937494|67.177359375|530.8375625000001|31. Child Labor The Consultant including its Subconsultants shall not"
+          ],
+          "CandidateLineIds": {
+            "b2479": [
+              "166|672.6172460937494|67.177359375|530.8375625000001|31. Child Labor The Consultant including its Subconsultants shall not"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "166|672.6172460937494|67.177359375|530.8375625000001|31. Child Labor The Consultant including its Subconsultants shall not"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "166|672.6172460937494|67.177359375|530.8375625000001|31. Child Labor The Consultant including its Subconsultants shall not"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/gcc-ls/55",
+      "page": 161,
+      "sourceLineIds": [
+        "161|516.8485341099333|201.36529296875|425.45692750000006|C. OBLIGATIONS OF THE CONSULTANT"
+      ],
+      "sourceText": "C. OBLIGATIONS OF THE CONSULTANT",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildSupplementCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "supplement candidate producer",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "161|516.8485341099333|201.36529296875|425.45692750000006|C. OBLIGATIONS OF THE CONSULTANT"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "161|516.8485341099333|201.36529296875|425.45692750000006|C. OBLIGATIONS OF THE CONSULTANT"
+          ],
+          "CandidateLineIds": {
+            "b2389": [
+              "161|516.8485341099333|201.36529296875|425.45692750000006|C. OBLIGATIONS OF THE CONSULTANT"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "161|516.8485341099333|201.36529296875|425.45692750000006|C. OBLIGATIONS OF THE CONSULTANT"
+          ],
+          "CandidateLineIds": {
+            "b2389": [
+              "161|516.8485341099333|201.36529296875|425.45692750000006|C. OBLIGATIONS OF THE CONSULTANT"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "161|516.8485341099333|201.36529296875|425.45692750000006|C. OBLIGATIONS OF THE CONSULTANT"
+          ],
+          "CandidateLineIds": {
+            "b2389": [
+              "161|516.8485341099333|201.36529296875|425.45692750000006|C. OBLIGATIONS OF THE CONSULTANT"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "161|516.8485341099333|201.36529296875|425.45692750000006|C. OBLIGATIONS OF THE CONSULTANT"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "161|516.8485341099333|201.36529296875|425.45692750000006|C. OBLIGATIONS OF THE CONSULTANT"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/fraud-attach-ls/1",
+      "page": 173,
+      "sourceLineIds": [
+        "173|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+        "173|668.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+      ],
+      "sourceText": "Attachment 1 Fraud and Corruption",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_MERGE_DESTROYS_OCCURRENCE",
+      "firstLossStage": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "173|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+            "173|668.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "173|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+            "173|668.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+          ],
+          "CandidateLineIds": {
+            "b2613": [
+              "173|689.998504971591|262.990625|365.9421171875001|Attachment 1"
+            ],
+            "b2614": [
+              "173|668.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "173|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+            "173|668.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "173|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+            "173|668.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+          ],
+          "CandidateLineIds": {
+            "b2613": [
+              "173|689.998504971591|262.990625|365.9421171875001|Attachment 1"
+            ],
+            "b2614": [
+              "173|668.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "173|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+            "173|668.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "173|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+            "173|668.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "line-group stage loses the complete source boundary before producers"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/fraud-attach-ls/2",
+      "page": 173,
+      "sourceLineIds": [
+        "173|624.2567578125|90.815015625|149.748921875|1. Purpose"
+      ],
+      "sourceText": "1. Purpose",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildSupplementCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "supplement candidate producer",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "173|624.2567578125|90.815015625|149.748921875|1. Purpose"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "173|624.2567578125|90.815015625|149.748921875|1. Purpose"
+          ],
+          "CandidateLineIds": {
+            "b2616": [
+              "173|624.2567578125|90.815015625|149.748921875|1. Purpose"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "173|624.2567578125|90.815015625|149.748921875|1. Purpose"
+          ],
+          "CandidateLineIds": {
+            "b2616": [
+              "173|624.2567578125|90.815015625|149.748921875|1. Purpose"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "173|624.2567578125|90.815015625|149.748921875|1. Purpose"
+          ],
+          "CandidateLineIds": {
+            "b2616": [
+              "173|624.2567578125|90.815015625|149.748921875|1. Purpose"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "173|624.2567578125|90.815015625|149.748921875|1. Purpose"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "173|624.2567578125|90.815015625|149.748921875|1. Purpose"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/fraud-attach-ls/3",
+      "page": 173,
+      "sourceLineIds": [
+        "173|571.0544419642858|90.31696875|179.57018750000003|2. Requirements"
+      ],
+      "sourceText": "2. Requirements",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildSupplementCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "supplement candidate producer",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "173|571.0544419642858|90.31696875|179.57018750000003|2. Requirements"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "173|571.0544419642858|90.31696875|179.57018750000003|2. Requirements"
+          ],
+          "CandidateLineIds": {
+            "b2618": [
+              "173|571.0544419642858|90.31696875|179.57018750000003|2. Requirements"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "173|571.0544419642858|90.31696875|179.57018750000003|2. Requirements"
+          ],
+          "CandidateLineIds": {
+            "b2618": [
+              "173|571.0544419642858|90.31696875|179.57018750000003|2. Requirements"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "173|571.0544419642858|90.31696875|179.57018750000003|2. Requirements"
+          ],
+          "CandidateLineIds": {
+            "b2618": [
+              "173|571.0544419642858|90.31696875|179.57018750000003|2. Requirements"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "173|571.0544419642858|90.31696875|179.57018750000003|2. Requirements"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "173|571.0544419642858|90.31696875|179.57018750000003|2. Requirements"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/arb-ls/1",
+      "page": 182,
+      "sourceLineIds": [
+        "182|431.14864257812553|206.037734375|520.615890625|arbitration shall be heard by a sole arbitrator or an arbitration panel"
+      ],
+      "sourceText": "arbitration shall be heard by a sole arbitrator or an arbitration panel",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "182|431.14864257812553|206.037734375|520.615890625|arbitration shall be heard by a sole arbitrator or an arbitration panel"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "182|431.14864257812553|206.037734375|520.615890625|arbitration shall be heard by a sole arbitrator or an arbitration panel"
+          ],
+          "CandidateLineIds": {
+            "b2803": [
+              "182|431.14864257812553|206.037734375|520.615890625|arbitration shall be heard by a sole arbitrator or an arbitration panel",
+              "182|417.2437951239221|206.02015625|520.5732031249995|composed ofthree (3) arbitrators, in accordance with the following",
+              "182|403.2395205965908|205.568984375|257.98175000000003|provisions:"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "182|431.14864257812553|206.037734375|520.615890625|arbitration shall be heard by a sole arbitrator or an arbitration panel"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "182|431.14864257812553|206.037734375|520.615890625|arbitration shall be heard by a sole arbitrator or an arbitration panel"
+          ],
+          "CandidateLineIds": {
+            "b2803": [
+              "182|431.14864257812553|206.037734375|520.615890625|arbitration shall be heard by a sole arbitrator or an arbitration panel",
+              "182|417.2437951239221|206.02015625|520.5732031249995|composed ofthree (3) arbitrators, in accordance with the following",
+              "182|403.2395205965908|205.568984375|257.98175000000003|provisions:"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "182|431.14864257812553|206.037734375|520.615890625|arbitration shall be heard by a sole arbitrator or an arbitration panel"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "182|431.14864257812553|206.037734375|520.615890625|arbitration shall be heard by a sole arbitrator or an arbitration panel"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/arb-ls/3",
+      "page": 183,
+      "sourceLineIds": [
+        "183|350.39826171875035|196.736328125|538.1419843749998|3. Substitute Arbitrators. If for any reason an arbitrator is unable to"
+      ],
+      "sourceText": "3. Substitute Arbitrators. If for any reason an arbitrator is unable to",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "183|350.39826171875035|196.736328125|538.1419843749998|3. Substitute Arbitrators. If for any reason an arbitrator is unable to"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "183|350.39826171875035|196.736328125|538.1419843749998|3. Substitute Arbitrators. If for any reason an arbitrator is unable to"
+          ],
+          "CandidateLineIds": {
+            "b2826": [
+              "183|350.39826171875035|196.736328125|538.1419843749998|3. Substitute Arbitrators. If for any reason an arbitrator is unable to"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "183|350.39826171875035|196.736328125|538.1419843749998|3. Substitute Arbitrators. If for any reason an arbitrator is unable to"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "183|350.39826171875035|196.736328125|538.1419843749998|3. Substitute Arbitrators. If for any reason an arbitrator is unable to"
+          ],
+          "CandidateLineIds": {
+            "b2826": [
+              "183|350.39826171875035|196.736328125|538.1419843749998|3. Substitute Arbitrators. If for any reason an arbitrator is unable to"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "183|350.39826171875035|196.736328125|538.1419843749998|3. Substitute Arbitrators. If for any reason an arbitrator is unable to"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "183|350.39826171875035|196.736328125|538.1419843749998|3. Substitute Arbitrators. If for any reason an arbitrator is unable to"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/arb-ls/4",
+      "page": 183,
+      "sourceLineIds": [
+        "183|295.3036680327867|196.4375|538.8202656249999|4. Nationality and Qualifications of Arbitrators. The sole arbitrator"
+      ],
+      "sourceText": "4. Nationality and Qualifications of Arbitrators. The sole arbitrator",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "183|295.3036680327867|196.4375|538.8202656249999|4. Nationality and Qualifications of Arbitrators. The sole arbitrator"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "183|295.3036680327867|196.4375|538.8202656249999|4. Nationality and Qualifications of Arbitrators. The sole arbitrator"
+          ],
+          "CandidateLineIds": {
+            "b2828": [
+              "183|295.3036680327867|196.4375|538.8202656249999|4. Nationality and Qualifications of Arbitrators. The sole arbitrator"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "183|295.3036680327867|196.4375|538.8202656249999|4. Nationality and Qualifications of Arbitrators. The sole arbitrator"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "183|295.3036680327867|196.4375|538.8202656249999|4. Nationality and Qualifications of Arbitrators. The sole arbitrator"
+          ],
+          "CandidateLineIds": {
+            "b2828": [
+              "183|295.3036680327867|196.4375|538.8202656249999|4. Nationality and Qualifications of Arbitrators. The sole arbitrator"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "183|295.3036680327867|196.4375|538.8202656249999|4. Nationality and Qualifications of Arbitrators. The sole arbitrator"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "183|295.3036680327867|196.4375|538.8202656249999|4. Nationality and Qualifications of Arbitrators. The sole arbitrator"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/arb-ls/5",
+      "page": 184,
+      "sourceLineIds": [
+        "184|571.1082226562502|178.79421875|476.3457499999997|5. Miscellaneous. In any arbitration proceeding hereunder:"
+      ],
+      "sourceText": "5. Miscellaneous. In any arbitration proceeding hereunder:",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "184|571.1082226562502|178.79421875|476.3457499999997|5. Miscellaneous. In any arbitration proceeding hereunder:"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "184|571.1082226562502|178.79421875|476.3457499999997|5. Miscellaneous. In any arbitration proceeding hereunder:"
+          ],
+          "CandidateLineIds": {
+            "b2843": [
+              "184|571.1082226562502|178.79421875|476.3457499999997|5. Miscellaneous. In any arbitration proceeding hereunder:"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "184|571.1082226562502|178.79421875|476.3457499999997|5. Miscellaneous. In any arbitration proceeding hereunder:"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "184|571.1082226562502|178.79421875|476.3457499999997|5. Miscellaneous. In any arbitration proceeding hereunder:"
+          ],
+          "CandidateLineIds": {
+            "b2843": [
+              "184|571.1082226562502|178.79421875|476.3457499999997|5. Miscellaneous. In any arbitration proceeding hereunder:"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "184|571.1082226562502|178.79421875|476.3457499999997|5. Miscellaneous. In any arbitration proceeding hereunder:"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "184|571.1082226562502|178.79421875|476.3457499999997|5. Miscellaneous. In any arbitration proceeding hereunder:"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/gcc-ls/61",
+      "page": 175,
+      "sourceLineIds": [
+        "175|709.5189535030242|187.56951171875|437.8557453125001|III. Special Conditions of Contract"
+      ],
+      "sourceText": "III. Special Conditions of Contract",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildSupplementCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "supplement candidate producer",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "175|709.5189535030242|187.56951171875|437.8557453125001|III. Special Conditions of Contract"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "175|709.5189535030242|187.56951171875|437.8557453125001|III. Special Conditions of Contract"
+          ],
+          "CandidateLineIds": {
+            "b2646": [
+              "175|709.5189535030242|187.56951171875|437.8557453125001|III. Special Conditions of Contract"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "175|709.5189535030242|187.56951171875|437.8557453125001|III. Special Conditions of Contract"
+          ],
+          "CandidateLineIds": {
+            "b2646": [
+              "175|709.5189535030242|187.56951171875|437.8557453125001|III. Special Conditions of Contract"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "175|709.5189535030242|187.56951171875|437.8557453125001|III. Special Conditions of Contract"
+          ],
+          "CandidateLineIds": {
+            "b2646": [
+              "175|709.5189535030242|187.56951171875|437.8557453125001|III. Special Conditions of Contract"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "175|709.5189535030242|187.56951171875|437.8557453125001|III. Special Conditions of Contract"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "175|709.5189535030242|187.56951171875|437.8557453125001|III. Special Conditions of Contract"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/gcc-ls/64",
+      "page": 185,
+      "sourceLineIds": [
+        "185|441.92830029296874|227.0946875|417.143948125|APPENDIX B - KEY EXPERTS"
+      ],
+      "sourceText": "APPENDIX B - KEY EXPERTS",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "185|441.92830029296874|227.0946875|417.143948125|APPENDIX B - KEY EXPERTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "185|441.92830029296874|227.0946875|417.143948125|APPENDIX B - KEY EXPERTS"
+          ],
+          "CandidateLineIds": {
+            "b2857": [
+              "185|441.92830029296874|227.0946875|417.143948125|APPENDIX B - KEY EXPERTS"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "185|441.92830029296874|227.0946875|417.143948125|APPENDIX B - KEY EXPERTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "185|441.92830029296874|227.0946875|417.143948125|APPENDIX B - KEY EXPERTS"
+          ],
+          "CandidateLineIds": {
+            "b2857": [
+              "185|441.92830029296874|227.0946875|417.143948125|APPENDIX B - KEY EXPERTS"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "185|441.92830029296874|227.0946875|417.143948125|APPENDIX B - KEY EXPERTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "185|441.92830029296874|227.0946875|417.143948125|APPENDIX B - KEY EXPERTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "goldStableId": "030/gcc-ls/67",
+      "page": 190,
+      "sourceLineIds": [
+        "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS"
+      ],
+      "sourceText": "APPENDIX E - CODE OF CONDUCT FOR EXPERTS",
+      "priorOwner": "UNRESOLVED",
+      "owner": "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+      "firstLossStage": "BuildBroadCandidates",
+      "firstLossOperation": "PRODUCER_CREATE",
+      "firstLossReason": "style and shape gate",
+      "missingSourceLineIds": [],
+      "fullCoverageCandidateIds": [],
+      "touchingCandidateIds": [],
+      "stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS"
+          ],
+          "CandidateLineIds": {
+            "b2919": [
+              "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS"
+          ],
+          "CandidateLineIds": {
+            "b2919": [
+              "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "evidence": "source lines survived grouping but no producer emitted a covering candidate"
+    }
+  ],
+  "recurringRemediationCandidates": [],
+  "finalStatus": "NO_RECURRING_CLASS_PROVEN"
+}

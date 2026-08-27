@@ -213,7 +213,7 @@ $env:OPENROUTER_API_KEY = "sk-or-v1-..."
 dhx extract tai-lieu.docx --openrouter -f json
 ```
 
-Model mặc định là `qwen/qwen-2.5-7b-instruct`; đổi bằng `--openrouter-model` hoặc biến
+Model mặc định là `qwen/qwen3.5-9b`; đổi bằng `--openrouter-model` hoặc biến
 `OPENROUTER_MODEL`. Mọi request bắt buộc HTTPS + JSON object (được hậu kiểm schema/ID cục bộ) và gửi provider preferences
 `zdr=true`, `data_collection=deny`, `require_parameters=true`. Nếu không có endpoint đáp ứng đủ,
 pipeline báo lỗi thay vì âm thầm hạ mức riêng tư. Nội dung DOCX vẫn được gửi ra dịch vụ bên ngoài;

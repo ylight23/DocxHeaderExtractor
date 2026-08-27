@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 3,
+  "artifactKind": "docheaderextractor_consolidation_verification",
+  "date": "2026-08-27",
+  "baseRevision": "b7854b5e1a9832180d0729f65af7b76cf1b5b830",
+  "fullSuiteDeltaTestedRevision": "b2f814c5b508c02accd97bcb7dfa7a11713842a6",
+  "freshCheckoutVerificationRevision": "4da3fc24b3db44a732f496884dde73733fd1adc9",
+  "reportCommit": "ee8c25c8f01b08aae5eb304a54d7aa13cb499bbc",
+  "integrationBranch": "integration/consolidate-source-20260827",
+  "backupTag": "backup/pre-consolidation-20260827",
+  "providerCalls": 0,
+  "correctedProviderScopeReview": {
+    "defaultQwen9B": "KEEP",
+    "openRouterHeaderContract": {
+      "reasoningEffortNone": "CANONICAL_QWEN9B_CONTRACT",
+      "jsonObjectResponseFormat": "CANONICAL_QWEN9B_CONTRACT",
+      "boundaryOutputBudget": "CANONICAL_QWEN9B_CONTRACT"
+    },
+    "openRouterVisualQuestion": "DIAGNOSTIC_EVAL_ONLY",
+    "visualCallsites": [
+      "pdf-visual-probe",
+      "pdf-stage-eval"
+    ],
+    "normalExtractionVisualAuthority": "ABSENT",
+    "newVlmProvider": "JUSTIFIED_DIAGNOSTIC_EVAL_ONLY",
+    "dePromotionCommit": false
+  },
+  "build": { "winX64": "PASS", "solutionRid": "NOT_ASSESSED; SDK solution RID restriction" },
+  "focusedVerification": { "deterministicReplayProvenance": "27_PASS_0_FAIL", "webUi": "2_PASS_0_FAIL", "webApiSmoke": "ROOT_200_AND_API_DEFAULTS_200", "providerCalls": 0 },
+  "fullSuiteBaseline": { "passed": 1179, "failed": 17, "total": 1196 },
+  "consolidationDelta": { "newTestFailures": 4, "newProductionRegressionFailures": 0, "unresolvedFailures": 0 },
+  "gates": {
+    "sourceConsolidation": "PASS",
+    "architectureConsolidation": "PASS",
+    "winX64Build": "PASS",
+    "focusedVerification": "PASS",
+    "failureSetDelta": "PASS_WITH_PREEXISTING_BASELINE_FAILURES",
+    "newProductionRegressionFailures": 0,
+    "unresolvedFailures": 0,
+    "fullSuite": "NOT_CLAIMED_PASS",
+    "mainPromotion": "NOT_DONE",
+    "prState": "READY_FOR_REVIEW"
+  },
+  "worktrees": { "siblingWorktrees": "ARCHIVE_CANDIDATE", "deleted": false },
+  "artifacts": { "failureDelta": "eval/consolidation/full-suite-failure-delta.v2.json", "priorFailureDeltaPreserved": "eval/consolidation/full-suite-failure-delta.v1.json", "priorVerificationPreserved": "eval/consolidation/consolidation-verification.v2.json" },
+  "status": "READY_FOR_REVIEW_WITH_PREEXISTING_BASELINE_FAILURES"
+}

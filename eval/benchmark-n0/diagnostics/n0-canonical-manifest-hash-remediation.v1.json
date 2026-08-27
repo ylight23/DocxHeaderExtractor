@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "n0_canonical_manifest_hash_remediation",
+  "laneHEvidenceCommit": "6b56b93",
+  "lane": "I",
+  "baseRevision": "f0681940df1c2586015b4d42d5813dad5734e047f",
+  "evidenceCommit": "6b56b9307aee79cd4378e407609715b2903ca54a",
+  "canonicalAlgorithmVersion": "crlf-to-lf-v1",
+  "algorithm": "Replace each CRLF byte pair with LF; preserve every other UTF-8 byte exactly; reject UTF-8 BOM and lone CR.",
+  "historicalLfRawSha256": "529fecc53341c12e06fd34a873c544acddc6d96388670c4da80c7700030a01a7",
+  "currentCrlfRawSha256": "0c2b3a6f5969f3c1cdbbd350913ae55858cf89d3cc52795911328a596015a07b",
+  "manifestCanonicalSha256": "529fecc53341c12e06fd34a873c544acddc6d96388670c4da80c7700030a01a7",
+  "canonicalSha256": "529fecc53341c12e06fd34a873c544acddc6d96388670c4da80c7700030a01a7",
+  "canonicalization": {
+    "transformation": "CRLF -> LF",
+    "preservesAllOtherBytes": true,
+    "jsonParseReserialize": false,
+    "propertySorting": false,
+    "whitespaceTrim": false,
+    "loneCr": "rejected"
+  },
+  "affectedConsumers": [
+    "PdfN1SourceFirstReviewPacketProbe.WritePackets",
+    "PdfN1SourceFirstReviewPacketProbe.CommittedPacketsBindToN0AndContainNoPipelineFields",
+    "PdfN14SilverAuditAndN2PreparationProbe audit/N2 manifest writers using parentManifestSha256 only",
+    "PdfN14SilverAuditAndN2PreparationProbe.BuildAudit",
+    "PdfN14SilverAuditAndN2PreparationProbe.BuildN2Manifest"
+  ],
+  "unchangedConsumers": [
+    "N1.2 silver artifact hashes",
+    "N2 frozen manifest immutability hash"
+  ],
+  "packetRegenerationRequired": false,
+  "semanticAuthorityChanged": false,
+  "silverChanged": false,
+  "providerCallsMade": false,
+  "rawShaRetainedForByteDiagnostics": true,
+  "rawArtifactIdentityExcluded": [
+    "silver labels and bundle manifests",
+    "census artifacts",
+    "run and checkpoint artifacts",
+    "audit packets"
+  ],
+  "verification": {
+    "n0ManifestIdentityTests": "3 passed",
+    "committedN1PacketBinding": "passed",
+    "baselineFullSuite": "18 failed / 1118 passed",
+    "laneIFullSuite": "17 failed / 1122 passed",
+    "unrelatedRawArtifactFinding": "Silver JSON files are index LF but worktree CRLF under core.autocrlf=true; their raw SHA locks remain intentionally uncanonicalized."
+  },
+  "remediationScope": "N0 benchmark manifest identity only; no JSON reserialization, property sorting, whitespace trimming, model call, silver regeneration/change, raw artifact hash canonicalization, or production heading behavior change.",
+  "tests": {
+    "canonicalHashFocused": "5/5 passed",
+    "n0ManifestBinding": "passed",
+    "n1CommittedPacketBinding": "passed",
+    "n14GenerationConsumerRegression": "passed during focused run",
+    "solutionBuild": "passed with existing CA1416/CS0618 warnings",
+    "fullSuite": "not_verified_to_completion",
+    "n1BindingFailureAfterFix": "not observed"
+  },
+  "decision": "PROMOTION_CANDIDATE_PENDING_FULL_SUITE_BASELINE_CONFIRMATION",
+  "productionBehaviorChanged": false,
+  "productionAccuracyBehaviorChanged": false,
+  "notes": "The remediation changes only the benchmark manifest identity hash contract. Existing packet parentManifestSha256 remains the historical canonical hash and no packet or manifest is regenerated."
+}
