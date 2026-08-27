@@ -1,0 +1,2566 @@
+{
+  "schemaVersion": 7,
+  "artifactKind": "004_authority_first_loss_final",
+  "silverDiagnosis": "FROZEN",
+  "referencePopulations": {
+    "n3Silver": {
+      "DOCUMENT_TITLE": 0,
+      "CHAPTER": 7,
+      "SECTION": 8,
+      "ARTICLE": 77,
+      "APPENDIX": 1,
+      "total": 93
+    },
+    "targetOntology": {
+      "status": "PASS",
+      "DOCUMENT_TITLE": 1,
+      "CHAPTER": 7,
+      "SECTION": 8,
+      "ARTICLE": 77,
+      "APPENDIX": 0,
+      "total": "93"
+    }
+  },
+  "targetTitle": {
+    "status": "PASS",
+    "windows": [
+      {
+        "page": 1,
+        "sourceLineIds": [
+          "1|680.1045367700195|295.39050762695314|328.4919778003906|LAW",
+          "1|657.9922989609781|253.078437109375|370.71666144640625|ON INVESTMENT"
+        ],
+        "sourceTextLines": [
+          "LAW",
+          "ON INVESTMENT"
+        ]
+      }
+    ],
+    "occurrence": {
+      "occurrenceId": "004/document-title/1",
+      "semanticClass": "DOCUMENT_TITLE",
+      "sourceLineIds": [
+        "1|680.1045367700195|295.39050762695314|328.4919778003906|LAW",
+        "1|657.9922989609781|253.078437109375|370.71666144640625|ON INVESTMENT"
+      ],
+      "sourceSpan": {
+        "startLineId": "1|680.1045367700195|295.39050762695314|328.4919778003906|LAW",
+        "endLineId": "1|657.9922989609781|253.078437109375|370.71666144640625|ON INVESTMENT"
+      },
+      "sourceTextLines": [
+        "LAW",
+        "ON INVESTMENT"
+      ],
+      "sourceText": "LAW ON INVESTMENT",
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-2"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    }
+  },
+  "execution": {
+    "semanticLaneStatus": "complete",
+    "spanLaneStatus": "partial_timeout",
+    "spanHttpRequestCount": "NOT_OBSERVABLE",
+    "spanPerOccurrenceTimeout": "NOT_OBSERVABLE",
+    "providerCallsThisTask": 0
+  },
+  "silverFirstLoss": {
+    "candidateGeneration": 10,
+    "candidateSelection": 28,
+    "spanLaneNoResolution": 55,
+    "total": 93,
+    "counts": {
+      "SPAN_LANE_NO_RESOLUTION": 55,
+      "CANDIDATE_SELECTION_LOSS": 28,
+      "CANDIDATE_GENERATION_LOSS": 10
+    }
+  },
+  "targetFirstLossCounts": {
+    "SPAN_LANE_NO_RESOLUTION": 54,
+    "CANDIDATE_SELECTION_LOSS": 29,
+    "CANDIDATE_GENERATION_LOSS": 10
+  },
+  "rowCausalConsistency": true,
+  "roleClassificationContract": true,
+  "rows": [
+    {
+      "occurrenceId": "004/chapter/1",
+      "semanticClass": "CHAPTER",
+      "sourceLineIds": [
+        "1|546.5598208102417|283.08529257324216|340.93931996039066|Chapter I",
+        "1|525.384495205509|232.57899350097654|391.39354694761704|GENERAL PROVISIONS"
+      ],
+      "sourceSpan": {
+        "startLineId": "1|546.5598208102417|283.08529257324216|340.93931996039066|Chapter I",
+        "endLineId": "1|525.384495205509|232.57899350097654|391.39354694761704|GENERAL PROVISIONS"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-4"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "s-window-4"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/1",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "1|479.7105736071158|120.609687421875|444.5373025173798|Article 1. Scope of regulation vn"
+      ],
+      "sourceSpan": {
+        "startLineId": "1|479.7105736071158|120.609687421875|444.5373025173798|Article 1. Scope of regulation vn",
+        "endLineId": "1|479.7105736071158|120.609687421875|444.5373025173798|Article 1. Scope of regulation vn"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b8",
+        "s-window-5"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b8"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/2",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "1|420.15726557718153|120.609687421875|315.0225541126953|Article 2. SubLjectus oaf application"
+      ],
+      "sourceSpan": {
+        "startLineId": "1|420.15726557718153|120.609687421875|315.0225541126953|Article 2. SubLjectus oaf application",
+        "endLineId": "1|420.15726557718153|120.609687421875|315.0225541126953|Article 2. SubLjectus oaf application"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-5",
+        "b11",
+        "s-window-14"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b11"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/3",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "1|359.61630697322596|120.609687421875|317.08113935984375|Article 3. Interpretation of terms"
+      ],
+      "sourceSpan": {
+        "startLineId": "1|359.61630697322596|120.609687421875|317.08113935984375|Article 3. Interpretation of terms",
+        "endLineId": "1|359.61630697322596|120.609687421875|317.08113935984375|Article 3. Interpretation of terms"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-14",
+        "b14",
+        "s-window-23"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b14"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/4",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "3|505.5645854651992|120.609687421875|513.2478796398437|Article 4. Application of the Law on Investment and relevant laws"
+      ],
+      "sourceSpan": {
+        "startLineId": "3|505.5645854651992|120.609687421875|513.2478796398437|Article 4. Application of the Law on Investment and relevant laws",
+        "endLineId": "3|505.5645854651992|120.609687421875|513.2478796398437|Article 4. Application of the Law on Investment and relevant laws"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-215",
+        "b64",
+        "s-window-224"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b64"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/5",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "4|414.943787590402|120.609687421875|346.7476382298438|Article 5. Business investment policies"
+      ],
+      "sourceSpan": {
+        "startLineId": "4|414.943787590402|120.609687421875|346.7476382298438|Article 5. Business investment policies",
+        "endLineId": "4|414.943787590402|120.609687421875|346.7476382298438|Article 5. Business investment policies"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b92",
+        "s-window-362"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b92"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/6",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "5|760.9450272033463|120.609687421875|492.3665754500784|Article 6. Sectors and trades banned from business investment"
+      ],
+      "sourceSpan": {
+        "startLineId": "5|760.9450272033463|120.609687421875|492.3665754500784|Article 6. Sectors and trades banned from business investment",
+        "endLineId": "5|760.9450272033463|120.609687421875|492.3665754500784|Article 6. Sectors and trades banned from business investment"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b106",
+        "s-window-416"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b106"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/7",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "5|405.24091767554887|120.609687421875|529.053224790078|Article 7. Sectors and trades subject to conditional business investment"
+      ],
+      "sourceSpan": {
+        "startLineId": "5|405.24091767554887|120.609687421875|529.053224790078|Article 7. Sectors and trades subject to conditional business investment",
+        "endLineId": "5|405.24091767554887|120.609687421875|529.053224790078|Article 7. Sectors and trades subject to conditional business investment"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b119",
+        "s-window-470"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b119"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/8",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "6|322.7129954948821|120.609687421875|538.0577791698437|Article 8. Amendment and supplementation of sectors and trades",
+        "6|306.656834529235|85.39878494628906|537.9127082676955|banned from business investment, the list of sectors and trades subject to",
+        "6|290.5839533045434|85.63872618164062|490.1228308998438|conditional business investment, and business investment conditions"
+      ],
+      "sourceSpan": {
+        "startLineId": "6|322.7129954948821|120.609687421875|538.0577791698437|Article 8. Amendment and supplementation of sectors and trades",
+        "endLineId": "6|290.5839533045434|85.63872618164062|490.1228308998438|conditional business investment, and business investment conditions"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-590"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/9",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "6|111.45876403181413|120.609687421875|537.9635588626953|Article 9. Sectors, trades and market access conditions for foreign",
+        "6|95.33743523193361|85.39192948242187|139.75488044984377|investors"
+      ],
+      "sourceSpan": {
+        "startLineId": "6|111.45876403181413|120.609687421875|537.9635588626953|Article 9. Sectors, trades and market access conditions for foreign",
+        "endLineId": "6|95.33743523193361|85.39192948242187|139.75488044984377|investors"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-625"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/chapter/2",
+      "semanticClass": "CHAPTER",
+      "sourceLineIds": [
+        "7|340.9618234426541|298.08529257324216|361.49154401039067|Chapter II",
+        "7|319.6805130690917|232.41106401855467|426.4938093976171|INVESTMENT GUARANTEES"
+      ],
+      "sourceSpan": {
+        "startLineId": "7|340.9618234426541|298.08529257324216|361.49154401039067|Chapter II",
+        "endLineId": "7|319.6805130690917|232.41106401855467|426.4938093976171|INVESTMENT GUARANTEES"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-686"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "s-window-686"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/10",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "7|274.22505358559056|120.609687421875|386.52545271054686|Article 10. Guarantee of property ownership"
+      ],
+      "sourceSpan": {
+        "startLineId": "7|274.22505358559056|120.609687421875|386.52545271054686|Article 10. Guarantee of property ownership",
+        "endLineId": "7|274.22505358559056|120.609687421875|386.52545271054686|Article 10. Guarantee of property ownership"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b178",
+        "s-window-687"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b178"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/11",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "7|127.68880595214843|120.609687421875|443.0338896498437|Article 11. Guarantee of business investment activities"
+      ],
+      "sourceSpan": {
+        "startLineId": "7|127.68880595214843|120.609687421875|443.0338896498437|Article 11. Guarantee of business investment activities",
+        "endLineId": "7|127.68880595214843|120.609687421875|443.0338896498437|Article 11. Guarantee of business investment activities"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b183",
+        "s-window-711"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b183"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/12",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "8|390.90736006764376|120.609687421875|538.0332333926951|Article 12. Guarantee of the right to transfer properties of foreign",
+        "8|374.79288393245446|85.39192948242187|184.79763633683586|investors abroad"
+      ],
+      "sourceSpan": {
+        "startLineId": "8|390.90736006764376|120.609687421875|538.0332333926951|Article 12. Guarantee of the right to transfer properties of foreign",
+        "endLineId": "8|374.79288393245446|85.39192948242187|184.79763633683586|investors abroad"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-780"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/13",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "8|232.15027591013927|120.609687421875|530.7332612483596|Article 13. Guarantee of business investment in case of change of law"
+      ],
+      "sourceSpan": {
+        "startLineId": "8|232.15027591013927|120.609687421875|530.7332612483596|Article 13. Guarantee of business investment in case of change of law",
+        "endLineId": "8|232.15027591013927|120.609687421875|530.7332612483596|Article 13. Guarantee of business investment in case of change of law"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-795",
+        "s-window-798",
+        "s-window-801",
+        "b210",
+        "s-window-804"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b210"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/14",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "9|537.8174921941325|120.609687421875|510.8049213798438|Article 14. Settlement of disputes in business investment activities"
+      ],
+      "sourceSpan": {
+        "startLineId": "9|537.8174921941325|120.609687421875|510.8049213798438|Article 14. Settlement of disputes in business investment activities",
+        "endLineId": "9|537.8174921941325|120.609687421875|510.8049213798438|Article 14. Settlement of disputes in business investment activities"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-858",
+        "s-window-862",
+        "b225",
+        "s-window-867"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b225"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/chapter/3",
+      "semanticClass": "CHAPTER",
+      "sourceLineIds": [
+        "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+        "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+      ],
+      "sourceSpan": {
+        "startLineId": "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+        "endLineId": "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_NOT_AVAILABLE_PROVEN",
+      "candidateIds": [],
+      "selectedStatus": "SELECTION_BINDING_UNRESOLVED",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_GENERATION_LOSS",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/15",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "10|738.7958810993131|120.609687421875|523.5730083898438|Article 15. Forms of, and subjects eligible for, investment incentives"
+      ],
+      "sourceSpan": {
+        "startLineId": "10|738.7958810993131|120.609687421875|523.5730083898438|Article 15. Forms of, and subjects eligible for, investment incentives",
+        "endLineId": "10|738.7958810993131|120.609687421875|523.5730083898438|Article 15. Forms of, and subjects eligible for, investment incentives"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b244",
+        "s-window-930"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b244"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/16",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "11|282.33970712570715|120.609687421875|538.0954261608987|Article 16. Sectors and trades eligible for investment incentives,",
+        "11|266.158406662089|85.63187071777344|395.9566179698438|geographical areas eligible for investment incentives"
+      ],
+      "sourceSpan": {
+        "startLineId": "11|282.33970712570715|120.609687421875|538.0954261608987|Article 16. Sectors and trades eligible for investment incentives,",
+        "endLineId": "11|266.158406662089|85.63187071777344|395.9566179698438|geographical areas eligible for investment incentives"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-1122",
+        "s-window-1125"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/17",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "12|129.5314471456474|120.609687421875|491.7386149598439|Article 17. Procedures for application of investment incentives"
+      ],
+      "sourceSpan": {
+        "startLineId": "12|129.5314471456474|120.609687421875|491.7386149598439|Article 17. Procedures for application of investment incentives",
+        "endLineId": "12|129.5314471456474|120.609687421875|491.7386149598439|Article 17. Procedures for application of investment incentives"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b329",
+        "s-window-1254"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b329"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/18",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "13|728.6975324844901|120.609687421875|359.16919032007814|Article 18. Forms of investment support"
+      ],
+      "sourceSpan": {
+        "startLineId": "13|728.6975324844901|120.609687421875|359.16919032007814|Article 18. Forms of investment support",
+        "endLineId": "13|728.6975324844901|120.609687421875|359.16919032007814|Article 18. Forms of investment support"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b333",
+        "s-window-1269"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b333"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/19",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "13|394.9128670008631|120.609687421875|539.5828424452344|Article 19. Support for development of infrastructure systems of",
+        "13|378.6225540023029|85.39192948242187|538.0943385598439|industrial parks, export-processing zones, hi-tech parks and economic zones"
+      ],
+      "sourceSpan": {
+        "startLineId": "13|394.9128670008631|120.609687421875|539.5828424452344|Article 19. Support for development of infrastructure systems of",
+        "endLineId": "13|378.6225540023029|85.39192948242187|538.0943385598439|industrial parks, export-processing zones, hi-tech parks and economic zones"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-1320"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/20",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "13|97.31826747375486|120.609687421875|441.5175707298439|Article 20. Special investment incentives and supports"
+      ],
+      "sourceSpan": {
+        "startLineId": "13|97.31826747375486|120.609687421875|441.5175707298439|Article 20. Special investment incentives and supports",
+        "endLineId": "13|97.31826747375486|120.609687421875|441.5175707298439|Article 20. Special investment incentives and supports"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b356",
+        "s-window-1370"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b356"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/chapter/4",
+      "semanticClass": "CHAPTER",
+      "sourceLineIds": [
+        "14|228.27001681043834|295.6852925732422|363.8966644583594|Chapter IV",
+        "14|206.96873828453323|194.73107401855466|464.42418039218734|INVESTMENT ACTIVITIES IN VIETNAM"
+      ],
+      "sourceSpan": {
+        "startLineId": "14|228.27001681043834|295.6852925732422|363.8966644583594|Chapter IV",
+        "endLineId": "14|206.96873828453323|194.73107401855466|464.42418039218734|INVESTMENT ACTIVITIES IN VIETNAM"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-1452"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "s-window-1452"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/section/1",
+      "semanticClass": "SECTION",
+      "sourceLineIds": [
+        "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+        "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+      ],
+      "sourceSpan": {
+        "startLineId": "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+        "endLineId": "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_NOT_AVAILABLE_PROVEN",
+      "candidateIds": [],
+      "selectedStatus": "SELECTION_BINDING_UNRESOLVED",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_GENERATION_LOSS",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/21",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "14|95.53954446298106|120.609687421875|308.9200661100781|Article 21. Forms of investment"
+      ],
+      "sourceSpan": {
+        "startLineId": "14|95.53954446298106|120.609687421875|308.9200661100781|Article 21. Forms of investment",
+        "endLineId": "14|95.53954446298106|120.609687421875|308.9200661100781|Article 21. Forms of investment"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b382"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/22",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "15|640.3691606396068|120.609687421875|512.6020400998436|Article 22. Investment in establishment of economic organizations"
+      ],
+      "sourceSpan": {
+        "startLineId": "15|640.3691606396068|120.609687421875|512.6020400998436|Article 22. Investment in establishment of economic organizations",
+        "endLineId": "15|640.3691606396068|120.609687421875|512.6020400998436|Article 22. Investment in establishment of economic organizations"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-1465",
+        "s-window-1468",
+        "b390",
+        "s-window-1474"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b390"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/23",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "15|314.6458752417864|120.609687421875|538.5594786279297|Article 23. Implementation of investment activities by foreign-",
+        "15|298.28447901080943|85.39192948242187|277.6266814998437|invested economic organizations"
+      ],
+      "sourceSpan": {
+        "startLineId": "15|314.6458752417864|120.609687421875|538.5594786279297|Article 23. Implementation of investment activities by foreign-",
+        "endLineId": "15|298.28447901080943|85.39192948242187|277.6266814998437|invested economic organizations"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-1528"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/24",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "16|533.6579692164393|120.609687421875|538.0410211996484|Article 24. Investment in the form of capital contribution, share",
+        "16|517.4147356986277|85.37136309082031|345.3830932096484|purchase and capital contribution purchase"
+      ],
+      "sourceSpan": {
+        "startLineId": "16|533.6579692164393|120.609687421875|538.0410211996484|Article 24. Investment in the form of capital contribution, share",
+        "endLineId": "16|517.4147356986277|85.37136309082031|345.3830932096484|purchase and capital contribution purchase"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-1606"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/25",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "16|288.26038271089686|120.609687421875|538.338219269219|Article 25. Forms of capital contribution, share purchase and capital",
+        "16|272.16437662854|85.63872618164062|217.43666433964842|contribution purchase"
+      ],
+      "sourceSpan": {
+        "startLineId": "16|288.26038271089686|120.609687421875|538.338219269219|Article 25. Forms of capital contribution, share purchase and capital",
+        "endLineId": "16|272.16437662854|85.63872618164062|217.43666433964842|contribution purchase"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-1645"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/26",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "17|674.6023737508617|120.609687421875|538.2539793292189|Article 26. Procedures for investment in the form of capital",
+        "17|658.199601885202|85.63872618164062|463.1505293296486|contribution, share purchase and capital contribution purchase"
+      ],
+      "sourceSpan": {
+        "startLineId": "17|674.6023737508617|120.609687421875|538.2539793292189|Article 26. Procedures for investment in the form of capital",
+        "endLineId": "17|658.199601885202|85.63872618164062|463.1505293296486|contribution, share purchase and capital contribution purchase"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-1687",
+        "s-window-1693"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/27",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "18|783.1791343141355|120.609687421875|435.27997611007805|Article 27. Investment in the form of a BCC contract"
+      ],
+      "sourceSpan": {
+        "startLineId": "18|783.1791343141355|120.609687421875|435.27997611007805|Article 27. Investment in the form of a BCC contract",
+        "endLineId": "18|783.1791343141355|120.609687421875|435.27997611007805|Article 27. Investment in the form of a BCC contract"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b465",
+        "s-window-1792"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b465"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/28",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "18|614.4244572137453|120.609687421875|297.93009940644527|Article 28. Contents of a BCC"
+      ],
+      "sourceSpan": {
+        "startLineId": "18|614.4244572137453|120.609687421875|297.93009940644527|Article 28. Contents of a BCC",
+        "endLineId": "18|614.4244572137453|120.609687421875|297.93009940644527|Article 28. Contents of a BCC"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-1810",
+        "b472",
+        "s-window-1819"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b472"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/section/2",
+      "semanticClass": "SECTION",
+      "sourceLineIds": [
+        "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+        "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+        "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+      ],
+      "sourceSpan": {
+        "startLineId": "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+        "endLineId": "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_NOT_AVAILABLE_PROVEN",
+      "candidateIds": [],
+      "selectedStatus": "SELECTION_BINDING_UNRESOLVED",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_GENERATION_LOSS",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/29",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "18|186.03024461097596|120.609687421875|524.4004031026953|Article 29. Investor selection for investment project implementation"
+      ],
+      "sourceSpan": {
+        "startLineId": "18|186.03024461097596|120.609687421875|524.4004031026953|Article 29. Investor selection for investment project implementation",
+        "endLineId": "18|186.03024461097596|120.609687421875|524.4004031026953|Article 29. Investor selection for investment project implementation"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b492",
+        "s-window-1868"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b492"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/30",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "19|278.2916146392714|120.609687421875|538.3106204400782|Article 30. Competence of the National Assembly to make investment",
+        "19|261.64997057355606|85.37136309082031|177.9726107292187|policy approval"
+      ],
+      "sourceSpan": {
+        "startLineId": "19|278.2916146392714|120.609687421875|538.3106204400782|Article 30. Competence of the National Assembly to make investment",
+        "endLineId": "19|261.64997057355606|85.37136309082031|177.9726107292187|policy approval"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-1961",
+        "s-window-1964"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/31",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "20|652.4189087183977|120.609687421875|538.1088628700783|Article 31. Competence of the Prime Minister to make investment",
+        "20|635.7399705735561|85.37136309082031|177.9726107292187|policy approval"
+      ],
+      "sourceSpan": {
+        "startLineId": "20|652.4189087183977|120.609687421875|538.1088628700783|Article 31. Competence of the Prime Minister to make investment",
+        "endLineId": "20|635.7399705735561|85.37136309082031|177.9726107292187|policy approval"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-2009",
+        "s-window-2015"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/32",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "21|684.6604776142827|120.609687421875|538.2165423576953|Article 32. Competence of provincial-level People\u2019s Committees to",
+        "21|668.2621353508649|85.62501525390626|282.7811360792186|make investment policy approval"
+      ],
+      "sourceSpan": {
+        "startLineId": "21|684.6604776142827|120.609687421875|538.2165423576953|Article 32. Competence of provincial-level People\u2019s Committees to",
+        "endLineId": "21|668.2621353508649|85.62501525390626|282.7811360792186|make investment policy approval"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-2117",
+        "s-window-2123"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/33",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "21|153.47773694394724|120.609687421875|538.2418040253907|Article 33. Dossiers and appraisal contents of application for",
+        "21|137.14203353230792|85.39192948242187|246.7124017692187|investment policy approval"
+      ],
+      "sourceSpan": {
+        "startLineId": "21|153.47773694394724|120.609687421875|538.2418040253907|Article 33. Dossiers and appraisal contents of application for",
+        "endLineId": "21|137.14203353230792|85.39192948242187|246.7124017692187|investment policy approval"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-2210",
+        "s-window-2213"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/34",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "23|113.29344502604162|120.609687421875|538.2138885765238|Article 34. Order and procedures for investment policy approval by",
+        "23|97.53525192549856|85.36450762695313|219.56109032652336|the National Assembly"
+      ],
+      "sourceSpan": {
+        "startLineId": "23|113.29344502604162|120.609687421875|538.2138885765238|Article 34. Order and procedures for investment policy approval by",
+        "endLineId": "23|97.53525192549856|85.36450762695313|219.56109032652336|the National Assembly"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-2444",
+        "s-window-2447",
+        "s-window-2450"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/35",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "25|706.530067429756|120.609687421875|538.2138885765238|Article 35. Order and procedures for investment policy approval by",
+        "25|690.9115885278319|85.36450762695313|198.4728608153906|the Prime Minister"
+      ],
+      "sourceSpan": {
+        "startLineId": "25|706.530067429756|120.609687421875|538.2138885765238|Article 35. Order and procedures for investment policy approval by",
+        "endLineId": "25|690.9115885278319|85.36450762695313|198.4728608153906|the Prime Minister"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-2570",
+        "s-window-2576"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/36",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "25|288.16175122789883|120.609687421875|538.2138885765238|Article 36. Order and procedures for investment policy approval by",
+        "25|272.3163763766659|85.37136309082031|304.63824958984367|provincial-level People\u0027s Committees"
+      ],
+      "sourceSpan": {
+        "startLineId": "25|288.16175122789883|120.609687421875|538.2138885765238|Article 36. Order and procedures for investment policy approval by",
+        "endLineId": "25|272.3163763766659|85.37136309082031|304.63824958984367|provincial-level People\u0027s Committees"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-2651"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/section/3",
+      "semanticClass": "SECTION",
+      "sourceLineIds": [
+        "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+        "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+        "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+        "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+      ],
+      "sourceSpan": {
+        "startLineId": "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+        "endLineId": "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_NOT_AVAILABLE_PROVEN",
+      "candidateIds": [],
+      "selectedStatus": "SELECTION_BINDING_UNRESOLVED",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_GENERATION_LOSS",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/37",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "26|499.3999038990103|120.609687421875|538.122902860078|Article 37. Cases of carrying out procedures for grant of investment",
+        "26|483.2275919216385|85.61815979003906|444.5373025173798|registration certificates n"
+      ],
+      "sourceSpan": {
+        "startLineId": "26|499.3999038990103|120.609687421875|538.122902860078|Article 37. Cases of carrying out procedures for grant of investment",
+        "endLineId": "26|483.2275919216385|85.61815979003906|444.5373025173798|registration certificates n"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-2706"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/38",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "26|117.53870812244423|120.609687421875|536.9614227498437|Article 38. Procedures for grant of investment registration certificates"
+      ],
+      "sourceSpan": {
+        "startLineId": "26|117.53870812244423|120.609687421875|536.9614227498437|Article 38. Procedures for grant of investment registration certificates",
+        "endLineId": "26|117.53870812244423|120.609687421875|536.9614227498437|Article 38. Procedures for grant of investment registration certificates"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b729",
+        "s-window-2763"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b729"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/39",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "27|384.78600787551585|120.609687421875|538.2492627700782|Article 39. Competence to grant, modify and revoke investment",
+        "27|368.8873750760906|85.61815979003906|223.3209009298437|registration certificates"
+      ],
+      "sourceSpan": {
+        "startLineId": "27|384.78600787551585|120.609687421875|538.2492627700782|Article 39. Competence to grant, modify and revoke investment",
+        "endLineId": "27|368.8873750760906|85.61815979003906|223.3209009298437|registration certificates"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-2829",
+        "s-window-2835"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/40",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "28|604.1636555154477|120.609687421875|478.5535835696484|Article 40. Contents of an investment registration certificate"
+      ],
+      "sourceSpan": {
+        "startLineId": "28|604.1636555154477|120.609687421875|478.5535835696484|Article 40. Contents of an investment registration certificate",
+        "endLineId": "28|604.1636555154477|120.609687421875|478.5535835696484|Article 40. Contents of an investment registration certificate"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-2904",
+        "b768",
+        "s-window-2913"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b768"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/41",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "28|252.42532006830112|120.609687421875|398.34460147984373|Article 41. Modification of investment projects"
+      ],
+      "sourceSpan": {
+        "startLineId": "28|252.42532006830112|120.609687421875|398.34460147984373|Article 41. Modification of investment projects",
+        "endLineId": "28|252.42532006830112|120.609687421875|398.34460147984373|Article 41. Modification of investment projects"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-2961",
+        "s-window-2967",
+        "b786",
+        "s-window-2970"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b786"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/section/4",
+      "semanticClass": "SECTION",
+      "sourceLineIds": [
+        "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+        "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+      ],
+      "sourceSpan": {
+        "startLineId": "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+        "endLineId": "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_NOT_AVAILABLE_PROVEN",
+      "candidateIds": [],
+      "selectedStatus": "SELECTION_BINDING_UNRESOLVED",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_GENERATION_LOSS",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/42",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "30|493.54645632455043|120.609687421875|493.80249348984376|Article 42. Principles of implementation of investment projects"
+      ],
+      "sourceSpan": {
+        "startLineId": "30|493.54645632455043|120.609687421875|493.80249348984376|Article 42. Principles of implementation of investment projects",
+        "endLineId": "30|493.54645632455043|120.609687421875|493.80249348984376|Article 42. Principles of implementation of investment projects"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b834",
+        "s-window-3135"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b834"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/43",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "30|292.3747175461646|120.609687421875|490.01169618984375|Article 43. Security for implementation of investment projects"
+      ],
+      "sourceSpan": {
+        "startLineId": "30|292.3747175461646|120.609687421875|490.01169618984375|Article 43. Security for implementation of investment projects",
+        "endLineId": "30|292.3747175461646|120.609687421875|490.01169618984375|Article 43. Security for implementation of investment projects"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b842",
+        "s-window-3168"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b842"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/44",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "31|549.6821830838079|120.609687421875|438.54109284984366|Article 44. Operation duration of investment projects"
+      ],
+      "sourceSpan": {
+        "startLineId": "31|549.6821830838079|120.609687421875|438.54109284984366|Article 44. Operation duration of investment projects",
+        "endLineId": "31|549.6821830838079|120.609687421875|438.54109284984366|Article 44. Operation duration of investment projects"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-3237",
+        "b858",
+        "s-window-3240"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b858"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/45",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "31|131.4345823725503|120.609687421875|539.7794023052343|Article 45. Determination of investment capital value; appraisal of",
+        "31|115.10100197653368|85.39192948242187|523.6924469898436|investment capital value; expertise of machines, equipment, technology lines"
+      ],
+      "sourceSpan": {
+        "startLineId": "31|131.4345823725503|120.609687421875|539.7794023052343|Article 45. Determination of investment capital value; appraisal of",
+        "endLineId": "31|115.10100197653368|85.39192948242187|523.6924469898436|investment capital value; expertise of machines, equipment, technology lines"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-3306",
+        "s-window-3309"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/46",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "32|559.8759339941405|120.609687421875|374.12561872984367|Article 46. Transfer of investment projects"
+      ],
+      "sourceSpan": {
+        "startLineId": "32|559.8759339941405|120.609687421875|374.12561872984367|Article 46. Transfer of investment projects",
+        "endLineId": "32|559.8759339941405|120.609687421875|374.12561872984367|Article 46. Transfer of investment projects"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-3342",
+        "s-window-3348",
+        "b886",
+        "s-window-3351"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b886"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/47",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "33|728.7572618766907|120.609687421875|378.9132553198437|Article 47. Cessation of investment projects"
+      ],
+      "sourceSpan": {
+        "startLineId": "33|728.7572618766907|120.609687421875|378.9132553198437|Article 47. Cessation of investment projects",
+        "endLineId": "33|728.7572618766907|120.609687421875|378.9132553198437|Article 47. Cessation of investment projects"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b910",
+        "s-window-3438"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b910"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/48",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "33|282.3340134582817|120.609687421875|396.7721225998437|Article 48. Termination of investment projects"
+      ],
+      "sourceSpan": {
+        "startLineId": "33|282.3340134582817|120.609687421875|396.7721225998437|Article 48. Termination of investment projects",
+        "endLineId": "33|282.3340134582817|120.609687421875|396.7721225998437|Article 48. Termination of investment projects"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-3510",
+        "b931",
+        "s-window-3516"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b931"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/49",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "34|218.072451492775|120.609687421875|537.9161420698437|Article 49. Establishment of executive offices of foreign investors",
+        "34|201.95145566119018|85.53589422363281|211.3607474798437|under BBC contracts"
+      ],
+      "sourceSpan": {
+        "startLineId": "34|218.072451492775|120.609687421875|537.9161420698437|Article 49. Establishment of executive offices of foreign investors",
+        "endLineId": "34|201.95145566119018|85.53589422363281|211.3607474798437|under BBC contracts"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-3633",
+        "s-window-3639"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/50",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "35|428.95356468512364|120.609687421875|538.0332333926951|Article 50. TLermuinaation of operation of executive offices of foreign",
+        "35|413.0198162818324|85.39192948242187|269.31677696984366|investors under BCC contracts"
+      ],
+      "sourceSpan": {
+        "startLineId": "35|428.95356468512364|120.609687421875|538.0332333926951|Article 50. TLermuinaation of operation of executive offices of foreign",
+        "endLineId": "35|413.0198162818324|85.39192948242187|269.31677696984366|investors under BCC contracts"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-3720"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/chapter/5",
+      "semanticClass": "CHAPTER",
+      "sourceLineIds": [
+        "36|706.7765183489989|298.44527257324216|361.29336827835937|Chapter V",
+        "36|685.6158650211877|199.798437109375|459.4266451576171|OFFSHORE INVESTMENT ACTIVITIES"
+      ],
+      "sourceSpan": {
+        "startLineId": "36|706.7765183489989|298.44527257324216|361.29336827835937|Chapter V",
+        "endLineId": "36|685.6158650211877|199.798437109375|459.4266451576171|OFFSHORE INVESTMENT ACTIVITIES"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-3774"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "s-window-3774"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/section/5",
+      "semanticClass": "SECTION",
+      "sourceLineIds": [
+        "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+        "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+      ],
+      "sourceSpan": {
+        "startLineId": "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+        "endLineId": "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_NOT_AVAILABLE_PROVEN",
+      "candidateIds": [],
+      "selectedStatus": "SELECTION_BINDING_UNRESOLVED",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_GENERATION_LOSS",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/51",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "36|574.1998095805667|120.609687421875|438.34503486984363|Article 51. Principles of offshore investment activities"
+      ],
+      "sourceSpan": {
+        "startLineId": "36|574.1998095805667|120.609687421875|438.34503486984363|Article 51. Principles of offshore investment activities",
+        "endLineId": "36|574.1998095805667|120.609687421875|438.34503486984363|Article 51. Principles of offshore investment activities"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b1007",
+        "s-window-3775"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1007"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/52",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "36|395.09584667661824|120.609687421875|361.3173087900781|Article 52. Forms of offshore investment"
+      ],
+      "sourceSpan": {
+        "startLineId": "36|395.09584667661824|120.609687421875|361.3173087900781|Article 52. Forms of offshore investment",
+        "endLineId": "36|395.09584667661824|120.609687421875|361.3173087900781|Article 52. Forms of offshore investment"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b1013",
+        "s-window-3808"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1013"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/53",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "36|105.5939624471029|120.609687421875|498.7112477900782|Article 53. Sectors and trades banned from offshore investment"
+      ],
+      "sourceSpan": {
+        "startLineId": "36|105.5939624471029|120.609687421875|498.7112477900782|Article 53. Sectors and trades banned from offshore investment",
+        "endLineId": "36|105.5939624471029|120.609687421875|498.7112477900782|Article 53. Sectors and trades banned from offshore investment"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-3847",
+        "b1026",
+        "s-window-3852"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1026"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/54",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "37|684.6948380413437|120.609687421875|535.0200650700777|Article 54. Sectors and trades subject to conditional offshore investment"
+      ],
+      "sourceSpan": {
+        "startLineId": "37|684.6948380413437|120.609687421875|535.0200650700777|Article 54. Sectors and trades subject to conditional offshore investment",
+        "endLineId": "37|684.6948380413437|120.609687421875|535.0200650700777|Article 54. Sectors and trades subject to conditional offshore investment"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-3862",
+        "b1033",
+        "s-window-3868"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1033"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/55",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "37|443.08046831673886|120.609687421875|399.0466009798438|Article 55. Offshore invteVstmeinet capital sources"
+      ],
+      "sourceSpan": {
+        "startLineId": "37|443.08046831673886|120.609687421875|399.0466009798438|Article 55. Offshore invteVstmeinet capital sources",
+        "endLineId": "37|443.08046831673886|120.609687421875|399.0466009798438|Article 55. Offshore invteVstmeinet capital sources"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b1043",
+        "s-window-3907"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1043"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/section/6",
+      "semanticClass": "SECTION",
+      "sourceLineIds": [
+        "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+        "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+        "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+      ],
+      "sourceSpan": {
+        "startLineId": "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+        "endLineId": "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_NOT_AVAILABLE_PROVEN",
+      "candidateIds": [],
+      "selectedStatus": "SELECTION_BINDING_UNRESOLVED",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_GENERATION_LOSS",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/56",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "37|121.4632870605929|120.609687421875|488.26893435652346|Article 56. Competence to approve offshore investment policy"
+      ],
+      "sourceSpan": {
+        "startLineId": "37|121.4632870605929|120.609687421875|488.26893435652346|Article 56. Competence to approve offshore investment policy",
+        "endLineId": "37|121.4632870605929|120.609687421875|488.26893435652346|Article 56. Competence to approve offshore investment policy"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b1053",
+        "s-window-3938"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1053"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/57",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "38|537.6505123999444|120.609687421875|538.2700485365235|Article 57. Dossier, order and procedures for the National Assembly",
+        "38|521.4095161510861|85.36450762695313|309.70107432652344|to approve offshore investment policy"
+      ],
+      "sourceSpan": {
+        "startLineId": "38|537.6505123999444|120.609687421875|538.2700485365235|Article 57. Dossier, order and procedures for the National Assembly",
+        "endLineId": "38|521.4095161510861|85.36450762695313|309.70107432652344|to approve offshore investment policy"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-3974",
+        "s-window-3980"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/58",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "40|531.686808410773|120.609687421875|538.0727027876957|Article 58. Dossier, order and procedures for the Prime Minister to",
+        "40|515.6029265746306|85.64558164550782|301.8915916865234|decide on offshore investment policy"
+      ],
+      "sourceSpan": {
+        "startLineId": "40|531.686808410773|120.609687421875|538.0727027876957|Article 58. Dossier, order and procedures for the Prime Minister to",
+        "endLineId": "40|515.6029265746306|85.64558164550782|301.8915916865234|decide on offshore investment policy"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-4190",
+        "s-window-4196"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/59",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "40|222.1431483041865|120.609687421875|376.1575782200781|Article 59. Decision on offshore investment"
+      ],
+      "sourceSpan": {
+        "startLineId": "40|222.1431483041865|120.609687421875|376.1575782200781|Article 59. Decision on offshore investment",
+        "endLineId": "40|222.1431483041865|120.609687421875|376.1575782200781|Article 59. Decision on offshore investment"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-4244",
+        "b1142",
+        "s-window-4250"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1142"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/section/7",
+      "semanticClass": "SECTION",
+      "sourceLineIds": [
+        "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+        "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+        "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+        "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+        "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+      ],
+      "sourceSpan": {
+        "startLineId": "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+        "endLineId": "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_NOT_AVAILABLE_PROVEN",
+      "candidateIds": [],
+      "selectedStatus": "SELECTION_BINDING_UNRESOLVED",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_GENERATION_LOSS",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/60",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "41|640.3997895913903|120.609687421875|538.3982731326952|Article 60. Conditions for grant of offshore investment registration",
+        "41|624.4130710288492|85.63872618164062|147.63131483984384|certificates"
+      ],
+      "sourceSpan": {
+        "startLineId": "41|640.3997895913903|120.609687421875|538.3982731326952|Article 60. Conditions for grant of offshore investment registration",
+        "endLineId": "41|624.4130710288492|85.63872618164062|147.63131483984384|certificates"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-4274"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/61",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "41|346.7592254424236|120.609687421875|538.0613133726954|Article 61. Procedures for grant of offshore investment registration",
+        "41|330.84306102884926|85.63872618164062|149.91983320984374|certificates"
+      ],
+      "sourceSpan": {
+        "startLineId": "41|346.7592254424236|120.609687421875|538.0613133726954|Article 61. Procedures for grant of offshore investment registration",
+        "endLineId": "41|330.84306102884926|85.63872618164062|149.91983320984374|certificates"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-4325"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/62",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "42|479.29169326191766|120.609687421875|531.0631461696485|Article 62. Contents of an offshore investment revgisntration certificate"
+      ],
+      "sourceSpan": {
+        "startLineId": "42|479.29169326191766|120.609687421875|531.0631461696485|Article 62. Contents of an offshore investment revgisntration certificate",
+        "endLineId": "42|479.29169326191766|120.609687421875|531.0631461696485|Article 62. Contents of an offshore investment revgisntration certificate"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-4398",
+        "b1186",
+        "s-window-4407"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1186"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/63",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "42|270.47380057202884|120.609687421875|527.0889303798432|Article 63. Modification ofoffshore investment registration certificates"
+      ],
+      "sourceSpan": {
+        "startLineId": "42|270.47380057202884|120.609687421875|527.0889303798432|Article 63. Modification ofoffshore investment registration certificates",
+        "endLineId": "42|270.47380057202884|120.609687421875|527.0889303798432|Article 63. Modification ofoffshore investment registration certificates"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-4434",
+        "s-window-4437",
+        "b1198",
+        "s-window-4440"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1198"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/64",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "44|783.1302360931493|120.609687421875|525.6451908098431|Article 64. Termination ofoffshore investment registration certificates"
+      ],
+      "sourceSpan": {
+        "startLineId": "44|783.1302360931493|120.609687421875|525.6451908098431|Article 64. Termination ofoffshore investment registration certificates",
+        "endLineId": "44|783.1302360931493|120.609687421875|525.6451908098431|Article 64. Termination ofoffshore investment registration certificates"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b1236",
+        "s-window-4572"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1236"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/section/8",
+      "semanticClass": "SECTION",
+      "sourceLineIds": [
+        "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+        "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+        "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+      ],
+      "sourceSpan": {
+        "startLineId": "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+        "endLineId": "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_NOT_AVAILABLE_PROVEN",
+      "candidateIds": [],
+      "selectedStatus": "SELECTION_BINDING_UNRESOLVED",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_GENERATION_LOSS",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/65",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "44|226.10617174790607|120.609687421875|472.89694837984376|Article 65. Opening of offshore investment capital accounts"
+      ],
+      "sourceSpan": {
+        "startLineId": "44|226.10617174790607|120.609687421875|472.89694837984376|Article 65. Opening of offshore investment capital accounts",
+        "endLineId": "44|226.10617174790607|120.609687421875|472.89694837984376|Article 65. Opening of offshore investment capital accounts"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b1260",
+        "s-window-4645"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1260"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/66",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "44|95.5392905569119|120.609687421875|427.1555384592187|Article 66. Outbound transfer of investment capital"
+      ],
+      "sourceSpan": {
+        "startLineId": "44|95.5392905569119|120.609687421875|427.1555384592187|Article 66. Outbound transfer of investment capital",
+        "endLineId": "44|95.5392905569119|120.609687421875|427.1555384592187|Article 66. Outbound transfer of investment capital"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-4657",
+        "b1265"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1265"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/67",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "45|489.5526387157263|120.609687421875|297.1594583768359|Article 67. Use profits abroad"
+      ],
+      "sourceSpan": {
+        "startLineId": "45|489.5526387157263|120.609687421875|297.1594583768359|Article 67. Use profits abroad",
+        "endLineId": "45|489.5526387157263|120.609687421875|297.1594583768359|Article 67. Use profits abroad"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b1277"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/68",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "45|244.2676392266486|120.609687421875|347.1126779698436|Article 68. Inbound transfer of profits"
+      ],
+      "sourceSpan": {
+        "startLineId": "45|244.2676392266486|120.609687421875|347.1126779698436|Article 68. Inbound transfer of profits",
+        "endLineId": "45|244.2676392266486|120.609687421875|347.1126779698436|Article 68. Inbound transfer of profits"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b1289",
+        "s-window-4747"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1289"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/chapter/6",
+      "semanticClass": "CHAPTER",
+      "sourceLineIds": [
+        "46|652.5200268104385|295.6852925732422|363.7463926903906|Chapter VI",
+        "46|631.258736930429|192.41667916992188|466.9782325564063|STATE MANAGEMENT OF INVESTMENT"
+      ],
+      "sourceSpan": {
+        "startLineId": "46|652.5200268104385|295.6852925732422|363.7463926903906|Chapter VI",
+        "endLineId": "46|631.258736930429|192.41667916992188|466.9782325564063|STATE MANAGEMENT OF INVESTMENT"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-4783"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "s-window-4783"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/69",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "46|586.0964027224395|120.609687421875|488.08437850007806|Article 69. Responsibility for state management of investment"
+      ],
+      "sourceSpan": {
+        "startLineId": "46|586.0964027224395|120.609687421875|488.08437850007806|Article 69. Responsibility for state management of investment",
+        "endLineId": "46|586.0964027224395|120.609687421875|488.08437850007806|Article 69. Responsibility for state management of investment"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b1300",
+        "s-window-4784"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1300"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/70",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "48|272.25741563612826|120.609687421875|414.8604011226952|Article 70. Investment monitoring and evaluation"
+      ],
+      "sourceSpan": {
+        "startLineId": "48|272.25741563612826|120.609687421875|414.8604011226952|Article 70. Investment monitoring and evaluation",
+        "endLineId": "48|272.25741563612826|120.609687421875|414.8604011226952|Article 70. Investment monitoring and evaluation"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-5057",
+        "b1373",
+        "s-window-5066"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1373"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/71",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "49|250.21309796264632|120.609687421875|430.2153787798438|Article 71. National investment information systems"
+      ],
+      "sourceSpan": {
+        "startLineId": "49|250.21309796264632|120.609687421875|430.2153787798438|Article 71. National investment information systems",
+        "endLineId": "49|250.21309796264632|120.609687421875|430.2153787798438|Article 71. National investment information systems"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-5180",
+        "b1404",
+        "s-window-5183"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1404"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/72",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "50|636.2731665177264|120.609687421875|504.86413075246094|Article 72. Reporting regime on investment activities in Vietnam"
+      ],
+      "sourceSpan": {
+        "startLineId": "50|636.2731665177264|120.609687421875|504.86413075246094|Article 72. Reporting regime on investment activities in Vietnam",
+        "endLineId": "50|636.2731665177264|120.609687421875|504.86413075246094|Article 72. Reporting regime on investment activities in Vietnam"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-5222",
+        "b1418",
+        "s-window-5228"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1418"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/73",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "51|614.0929799551667|120.609687421875|488.5673162998438|Article 73. Reporting regime on overseas investment activities"
+      ],
+      "sourceSpan": {
+        "startLineId": "51|614.0929799551667|120.609687421875|488.5673162998438|Article 73. Reporting regime on overseas investment activities",
+        "endLineId": "51|614.0929799551667|120.609687421875|488.5673162998438|Article 73. Reporting regime on overseas investment activities"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-5336",
+        "b1445",
+        "s-window-5345"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1445"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/74",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "52|501.51524128142523|120.609687421875|375.3892178298437|Article 74. Investment promotion activities"
+      ],
+      "sourceSpan": {
+        "startLineId": "52|501.51524128142523|120.609687421875|375.3892178298437|Article 74. Investment promotion activities",
+        "endLineId": "52|501.51524128142523|120.609687421875|375.3892178298437|Article 74. Investment promotion activities"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b1474",
+        "s-window-5480"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1474"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/chapter/7",
+      "semanticClass": "CHAPTER",
+      "sourceLineIds": [
+        "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+        "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+      ],
+      "sourceSpan": {
+        "startLineId": "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+        "endLineId": "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_NOT_AVAILABLE_PROVEN",
+      "candidateIds": [],
+      "selectedStatus": "SELECTION_BINDING_UNRESOLVED",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_GENERATION_LOSS",
+      "firstLossComponent": "PdfSemanticBlockGrouper.Build",
+      "firstLossOperation": "LINE_GROUP",
+      "firstLossReason": "standard semantic blocks",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/75",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "53|738.8258816717415|120.609687421875|539.4003225752344|Article 75. Amendments and supplements to a number of articles of",
+        "53|722.6921514494328|85.61815979003906|304.2576042200781|relevant laws on business investment"
+      ],
+      "sourceSpan": {
+        "startLineId": "53|738.8258816717415|120.609687421875|539.4003225752344|Article 75. Amendments and supplements to a number of articles of",
+        "endLineId": "53|722.6921514494328|85.61815979003906|304.2576042200781|relevant laws on business investment"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-5540"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/76",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "55|294.3018213015567|120.609687421875|346.2562385798437|Article 76. Implementation provisions"
+      ],
+      "sourceSpan": {
+        "startLineId": "55|294.3018213015567|120.609687421875|346.2562385798437|Article 76. Implementation provisions",
+        "endLineId": "55|294.3018213015567|120.609687421875|346.2562385798437|Article 76. Implementation provisions"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b1557",
+        "s-window-5813"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1557"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/article/77",
+      "semanticClass": "ARTICLE",
+      "sourceLineIds": [
+        "56|658.3900705431366|120.609687421875|324.5363740498437|Article 77. Transitional provisions"
+      ],
+      "sourceSpan": {
+        "startLineId": "56|658.3900705431366|120.609687421875|324.5363740498437|Article 77. Transitional provisions",
+        "endLineId": "56|658.3900705431366|120.609687421875|324.5363740498437|Article 77. Transitional provisions"
+      },
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "b1570",
+        "s-window-5858"
+      ],
+      "selectedStatus": "SELECTED_EXACT",
+      "selectedCandidateIds": [
+        "b1570"
+      ],
+      "roleStatus": "ROLE_HEADING_PROPOSAL",
+      "firstLossOwner": "SPAN_LANE_NO_RESOLUTION",
+      "firstLossComponent": "SpanLane",
+      "firstLossOperation": "RESOLVE_POINTER",
+      "firstLossReason": "pre-span role heading-like; span lane partial_timeout; no surviving HeadingSpan",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    },
+    {
+      "occurrenceId": "004/document-title/1",
+      "semanticClass": "DOCUMENT_TITLE",
+      "sourceLineIds": [
+        "1|680.1045367700195|295.39050762695314|328.4919778003906|LAW",
+        "1|657.9922989609781|253.078437109375|370.71666144640625|ON INVESTMENT"
+      ],
+      "sourceSpan": {
+        "startLineId": "1|680.1045367700195|295.39050762695314|328.4919778003906|LAW",
+        "endLineId": "1|657.9922989609781|253.078437109375|370.71666144640625|ON INVESTMENT"
+      },
+      "sourceTextLines": [
+        "LAW",
+        "ON INVESTMENT"
+      ],
+      "sourceText": "LAW ON INVESTMENT",
+      "rawSourceStatus": "RAW_SOURCE_LINE_PRESENT",
+      "candidateStatus": "CANDIDATE_AVAILABLE",
+      "candidateIds": [
+        "s-window-2"
+      ],
+      "selectedStatus": "NOT_SELECTED_EXACT",
+      "selectedCandidateIds": [],
+      "roleStatus": "ROLE_EVIDENCE_UNRECOVERABLE",
+      "firstLossOwner": "CANDIDATE_SELECTION_LOSS",
+      "firstLossComponent": "FrozenSelectedSourceIdentitiesJoin",
+      "firstLossOperation": "CONTAINMENT_JOIN",
+      "firstLossReason": "final candidate exists but occurrence is absent from selected source identities",
+      "bindingStatus": "EXACT_SOURCE_IDENTITY"
+    }
+  ],
+  "productionCodeChanged": false,
+  "remediationPerformed": false
+}
