@@ -1,0 +1,721 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_round1_candidate_boundary_owner_rerank",
+  "phase": "round1c1",
+  "modelCalls": 0,
+  "productionChanges": false,
+  "sourceAuthority": "Round1A b4685c8 \u002B Round1B 4d7c814 \u002B Round1C f9a7452",
+  "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is run-local diagnostics",
+  "boundaryMismatchCount": 18,
+  "classification": {
+    "REPRESENTATION_LOSS": 18
+  },
+  "owner": {
+    "productionOwner": "UNRESOLVED",
+    "reason": "current snapshot exposes candidate provenance but not producer/transform lineage",
+    "productionBoundaryDefect": 18,
+    "evaluatorJoinIssue": 0,
+    "representationLoss": 18,
+    "unresolved": 0
+  },
+  "baseline": {
+    "candidateCount": 10032,
+    "recallAt40": "27/422",
+    "recallAt80": "50/422",
+    "recallAt160": "80/422",
+    "recallAt320": "104/422",
+    "recallAt640": "184/422",
+    "recallAtAll": "375/422"
+  },
+  "counterfactual": {
+    "candidateCount": 10032,
+    "candidateCountDelta": 0,
+    "recoveredTrueHeadings": 18,
+    "recallAt40": "33/422",
+    "recallAt80": "56/422",
+    "recallAt160": "90/422",
+    "recallAt320": "117/422",
+    "recallAt640": "197/422",
+    "recallAtAll": "393/422",
+    "rankScoreRecomputed": true,
+    "candidatesAdded": 0,
+    "duplicateCandidates": 0,
+    "candidateInflation": 0,
+    "existingGoldDisplacedFrom160": 0,
+    "negativeControlFailures": 0
+  },
+  "perDocument": [
+    {
+      "DocumentId": "004",
+      "CandidateCountBefore": 2653,
+      "CandidateCountAfter": 2653,
+      "candidateCountDelta": 0,
+      "recallAt160Before": "55/93",
+      "recallAt160After": "60/93",
+      "recallAtAllBefore": "83/93",
+      "recallAtAllAfter": "92/93"
+    },
+    {
+      "DocumentId": "030",
+      "CandidateCountBefore": 3457,
+      "CandidateCountAfter": 3457,
+      "candidateCountDelta": 0,
+      "recallAt160Before": "9/239",
+      "recallAt160After": "9/239",
+      "recallAtAllBefore": "209/239",
+      "recallAtAllAfter": "211/239"
+    },
+    {
+      "DocumentId": "043",
+      "CandidateCountBefore": 2038,
+      "CandidateCountAfter": 2038,
+      "candidateCountDelta": 0,
+      "recallAt160Before": "3/43",
+      "recallAt160After": "3/43",
+      "recallAtAllBefore": "42/43",
+      "recallAtAllAfter": "43/43"
+    },
+    {
+      "DocumentId": "058",
+      "CandidateCountBefore": 1884,
+      "CandidateCountAfter": 1884,
+      "candidateCountDelta": 0,
+      "recallAt160Before": "13/47",
+      "recallAt160After": "18/47",
+      "recallAtAllBefore": "41/47",
+      "recallAtAllAfter": "47/47"
+    }
+  ],
+  "shapes": [
+    {
+      "shape": "RIGHT_TRUNCATION",
+      "count": 4,
+      "documents": [
+        "004",
+        "030"
+      ],
+      "recovered": 4,
+      "recall160Delta": 0
+    },
+    {
+      "shape": "LEFT_TRUNCATION",
+      "count": 6,
+      "documents": [
+        "004",
+        "043",
+        "058"
+      ],
+      "recovered": 6,
+      "recall160Delta": 5
+    },
+    {
+      "shape": "WINDOW_FRAGMENT_SPLIT",
+      "count": 8,
+      "documents": [
+        "004",
+        "058"
+      ],
+      "recovered": 8,
+      "recall160Delta": 5
+    }
+  ],
+  "occurrences": [
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/chapter/3",
+      "ReviewedSourceLineIds": [
+        "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+        "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+      ],
+      "SourceText": "Chapter III INVESTMENT INCENTIVES AND SUPPORTS",
+      "CandidateIdsBeforeRepair": [
+        "b242",
+        "b243"
+      ],
+      "RepairedCandidateId": "b242",
+      "CandidateLineIdsBeforeRepair": [
+        "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III"
+      ],
+      "MissingLineIds": [
+        "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "RIGHT_TRUNCATION",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 92,
+      "RankAfter": 827,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/1",
+      "ReviewedSourceLineIds": [
+        "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+        "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+      ],
+      "SourceText": "Section 1 FORMS OF INVESTMENT",
+      "CandidateIdsBeforeRepair": [
+        "b380",
+        "b381"
+      ],
+      "RepairedCandidateId": "b381",
+      "CandidateLineIdsBeforeRepair": [
+        "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+      ],
+      "MissingLineIds": [
+        "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "LEFT_TRUNCATION",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 1004,
+      "RankAfter": 4,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/2",
+      "ReviewedSourceLineIds": [
+        "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+        "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+        "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+      ],
+      "SourceText": "Section 2 INVESTMENT POLICY APPROVAL AND INVESTOR SELECTION",
+      "CandidateIdsBeforeRepair": [
+        "b489",
+        "b490",
+        "s-window-1867",
+        "b491"
+      ],
+      "RepairedCandidateId": "b490",
+      "CandidateLineIdsBeforeRepair": [
+        "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR"
+      ],
+      "MissingLineIds": [
+        "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+        "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 1027,
+      "RankAfter": 6,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/3",
+      "ReviewedSourceLineIds": [
+        "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+        "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+        "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+        "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+      ],
+      "SourceText": "Section 3 PROCEDURES FOR GRANT MODIFICATION AND , REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES",
+      "CandidateIdsBeforeRepair": [
+        "b708",
+        "b709",
+        "s-window-2705",
+        "b710"
+      ],
+      "RepairedCandidateId": "b709",
+      "CandidateLineIdsBeforeRepair": [
+        "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND"
+      ],
+      "MissingLineIds": [
+        "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+        "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+        "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 1075,
+      "RankAfter": 1357,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/4",
+      "ReviewedSourceLineIds": [
+        "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+        "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+      ],
+      "SourceText": "Section 4 IMPLEMENTATION OF INVESTMENT PROJECTS",
+      "CandidateIdsBeforeRepair": [
+        "b832",
+        "b833"
+      ],
+      "RepairedCandidateId": "b833",
+      "CandidateLineIdsBeforeRepair": [
+        "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+      ],
+      "MissingLineIds": [
+        "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "LEFT_TRUNCATION",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 1098,
+      "RankAfter": 7,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/6",
+      "ReviewedSourceLineIds": [
+        "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+        "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+        "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+      ],
+      "SourceText": "Section 2 PROCEDURES FOR OFFSHORE INVESTMENT POLICY APPROVAL AND DECISION ON OFFSHORE INVESTMENT",
+      "CandidateIdsBeforeRepair": [
+        "b1051",
+        "s-window-3937",
+        "b1052"
+      ],
+      "RepairedCandidateId": "b1051",
+      "CandidateLineIdsBeforeRepair": [
+        "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY"
+      ],
+      "MissingLineIds": [
+        "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+        "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 1147,
+      "RankAfter": 112,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/7",
+      "ReviewedSourceLineIds": [
+        "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+        "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+        "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+        "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+        "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+      ],
+      "SourceText": "Section 3 PROCEDURES FOR GRANT MODIFICATION AND , INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION CERTIFICATES",
+      "CandidateIdsBeforeRepair": [
+        "s-window-4271",
+        "b1152",
+        "s-window-4273",
+        "b1153"
+      ],
+      "RepairedCandidateId": "b1152",
+      "CandidateLineIdsBeforeRepair": [
+        "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION"
+      ],
+      "MissingLineIds": [
+        "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+        "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+        "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+        "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 1163,
+      "RankAfter": 2639,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/8",
+      "ReviewedSourceLineIds": [
+        "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+        "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+        "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+      ],
+      "SourceText": "Section 4 IMPLEMENTATION OF OFFSHORE INVESTMENT ACTIVITIES",
+      "CandidateIdsBeforeRepair": [
+        "b1258",
+        "s-window-4644",
+        "b1259"
+      ],
+      "RepairedCandidateId": "b1258",
+      "CandidateLineIdsBeforeRepair": [
+        "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT"
+      ],
+      "MissingLineIds": [
+        "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+        "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 1182,
+      "RankAfter": 113,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/chapter/7",
+      "ReviewedSourceLineIds": [
+        "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+        "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+      ],
+      "SourceText": "Chapter VII IMPLEMENTATION PROVISIONS",
+      "CandidateIdsBeforeRepair": [
+        "b1486",
+        "b1487"
+      ],
+      "RepairedCandidateId": "b1486",
+      "CandidateLineIdsBeforeRepair": [
+        "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII"
+      ],
+      "MissingLineIds": [
+        "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "RIGHT_TRUNCATION",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 106,
+      "RankAfter": 835,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/outline/12",
+      "ReviewedSourceLineIds": [
+        "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial",
+        "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+      ],
+      "SourceText": "Section 9. Notification of Intention to Award and Beneficial Ownership Forms",
+      "CandidateIdsBeforeRepair": [
+        "b2922",
+        "b2923"
+      ],
+      "RepairedCandidateId": "b2922",
+      "CandidateLineIdsBeforeRepair": [
+        "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial"
+      ],
+      "MissingLineIds": [
+        "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "RIGHT_TRUNCATION",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 32,
+      "RankAfter": 233,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/fraud-attach-tb/1",
+      "ReviewedSourceLineIds": [
+        "121|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+        "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+      ],
+      "SourceText": "Attachment 1 Fraud and Corruption",
+      "CandidateIdsBeforeRepair": [
+        "b1772",
+        "b1773"
+      ],
+      "RepairedCandidateId": "b1772",
+      "CandidateLineIdsBeforeRepair": [
+        "121|689.998504971591|262.990625|365.9421171875001|Attachment 1"
+      ],
+      "MissingLineIds": [
+        "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "RIGHT_TRUNCATION",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 20,
+      "RankAfter": 231,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "043",
+      "DocumentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "GoldStableId": "043/heading/014",
+      "ReviewedSourceLineIds": [
+        "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+        "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+      ],
+      "SourceText": "Appendix Glossary of Terms",
+      "CandidateIdsBeforeRepair": [
+        "b1242",
+        "b1243"
+      ],
+      "RepairedCandidateId": "b1243",
+      "CandidateLineIdsBeforeRepair": [
+        "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+      ],
+      "MissingLineIds": [
+        "68|711.0021335546874|74.63|138.28625000000002|Appendix"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "LEFT_TRUNCATION",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 515,
+      "RankAfter": 1908,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/003",
+      "ReviewedSourceLineIds": [
+        "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+        "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+      ],
+      "SourceText": "Chapter 1 An Energy Function",
+      "CandidateIdsBeforeRepair": [
+        "b45",
+        "b46"
+      ],
+      "RepairedCandidateId": "b46",
+      "CandidateLineIdsBeforeRepair": [
+        "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+      ],
+      "MissingLineIds": [
+        "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "LEFT_TRUNCATION",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 35,
+      "RankAfter": 1,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/004",
+      "ReviewedSourceLineIds": [
+        "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+        "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+        "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+      ],
+      "SourceText": "Chapter 2 Basic Ideas in Machine Learning with Classification",
+      "CandidateIdsBeforeRepair": [
+        "b88",
+        "b89",
+        "b90"
+      ],
+      "RepairedCandidateId": "b89",
+      "CandidateLineIdsBeforeRepair": [
+        "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine"
+      ],
+      "MissingLineIds": [
+        "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+        "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 36,
+      "RankAfter": 2,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/022",
+      "ReviewedSourceLineIds": [
+        "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+        "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural",
+        "43|509.72642258125|107.9100582|214.61852370000003|networks"
+      ],
+      "SourceText": "Chapter 3 Building blocks of neural networks",
+      "CandidateIdsBeforeRepair": [
+        "b742",
+        "b743",
+        "b744"
+      ],
+      "RepairedCandidateId": "b744",
+      "CandidateLineIdsBeforeRepair": [
+        "43|509.72642258125|107.9100582|214.61852370000003|networks"
+      ],
+      "MissingLineIds": [
+        "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+        "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "LEFT_TRUNCATION",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 4,
+      "RankAfter": 3,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/027",
+      "ReviewedSourceLineIds": [
+        "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+        "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine",
+        "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised",
+        "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+      ],
+      "SourceText": "Chapter 4 Probabilistic Machine Learning and Unsupervised Learning",
+      "CandidateIdsBeforeRepair": [
+        "b923",
+        "b924",
+        "b925",
+        "b926"
+      ],
+      "RepairedCandidateId": "b924",
+      "CandidateLineIdsBeforeRepair": [
+        "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine"
+      ],
+      "MissingLineIds": [
+        "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+        "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised",
+        "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 39,
+      "RankAfter": 223,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/035",
+      "ReviewedSourceLineIds": [
+        "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+        "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative",
+        "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+      ],
+      "SourceText": "Chapter 5 Undirected Generative Models",
+      "CandidateIdsBeforeRepair": [
+        "b1272",
+        "b1273"
+      ],
+      "RepairedCandidateId": "b1273",
+      "CandidateLineIdsBeforeRepair": [
+        "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative"
+      ],
+      "MissingLineIds": [
+        "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+        "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "WINDOW_FRAGMENT_SPLIT",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 42,
+      "RankAfter": 4,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/041",
+      "ReviewedSourceLineIds": [
+        "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6",
+        "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+      ],
+      "SourceText": "Chapter 6 Further Topics",
+      "CandidateIdsBeforeRepair": [
+        "b1555",
+        "b1556"
+      ],
+      "RepairedCandidateId": "b1556",
+      "CandidateLineIdsBeforeRepair": [
+        "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+      ],
+      "MissingLineIds": [
+        "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6"
+      ],
+      "ExtraLineIds": [],
+      "Shape": "LEFT_TRUNCATION",
+      "ProductionOwner": "UNRESOLVED",
+      "Classification": "REPRESENTATION_LOSS",
+      "RepresentationKind": "PdfSemanticBlock",
+      "RankBefore": 43,
+      "RankAfter": 5,
+      "RecoveredBeforeRanker": true,
+      "RecoveredAfterRanker": true,
+      "Evidence": "existing candidate widened in-memory; producer lineage unavailable"
+    }
+  ],
+  "status": "BOUNDARY_OWNER_UNRESOLVED"
+}
