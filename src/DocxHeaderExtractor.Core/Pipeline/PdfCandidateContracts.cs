@@ -316,9 +316,34 @@ internal static class PdfProposalValidator
             return "invalid";
         }
 
+        // A marker-only pointer is not a usable heading when the immutable source has semantic
+        // text after that marker. This targets the observed span-loss shape without rejecting
+        // Arabic/letter headings whose pointer includes their title payload.
+        if (IsMarkerOnlySpanWithSemanticSource(decision, sourceText))
+        {
+            reason = "marker-only-span-no-semantic-payload";
+            return "invalid";
+        }
+
         reason = null;
         return "valid";
     }
+
+    private static bool IsMarkerOnlySpanWithSemanticSource(PdfBlockDecision decision, string sourceText)
+    {
+        var marker = PdfMarkerFactsParser.Parse(sourceText);
+        if (marker is not { Family: "arabic" or "spaced_arabic" or "letter" }) return false;
+
+        var prefix = MarkerPrefixRx.Match(sourceText);
+        if (!prefix.Success || decision.HeadingSpan is not { } span || span.Start > prefix.Index ||
+            span.End > prefix.Index + prefix.Length) return false;
+
+        return !string.IsNullOrWhiteSpace(sourceText[(prefix.Index + prefix.Length)..]);
+    }
+
+    private static readonly Regex MarkerPrefixRx = new(
+        @"^\s*(?:\d{1,2}(?:\.\d{1,2}){0,4}|[A-Za-zĂÂĐÊÔƠƯăâđêôơư])\s*(?:[\.\)\-–:]|\s)\s*",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase);
 }
 
 /// <summary>

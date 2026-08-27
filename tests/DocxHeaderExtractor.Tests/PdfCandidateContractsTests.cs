@@ -70,6 +70,48 @@ public sealed class PdfCandidateContractsTests
     }
 
     [Fact]
+    public void ValidatorRejectsMarkerOnlyPointerWhenSourceHasSemanticPayload()
+    {
+        const string text = "8. Business investment means the use of investment capital";
+        var line = Line(text, 700);
+        var context = PdfCandidateContextBuilder.Build(
+            [Block("b1", line)], [new PdfLineBlockAnnotation(line, false, false, false, false, "semantic-candidate")]);
+        var decision = new PdfBlockDecision("b1", PdfBlockRole.HeadingTopic, .99, "topic", new TextOffsetSpan(0, 1));
+
+        var trace = Assert.Single(PdfProposalValidator.Trace(context, [decision]));
+
+        Assert.Equal("marker-only-span-no-semantic-payload", trace.Reason);
+        Assert.Equal("unresolved", trace.ValidationStatus);
+        Assert.False(PdfProposalValidator.IsEligibleHeading(decision, context["b1"]));
+    }
+
+    [Fact]
+    public void ValidatorKeepsMarkerPointerWhenItIncludesSemanticPayload()
+    {
+        const string text = "b) International arbitration;";
+        var line = Line(text, 700);
+        var context = PdfCandidateContextBuilder.Build(
+            [Block("b1", line)], [new PdfLineBlockAnnotation(line, false, false, false, false, "semantic-candidate")]);
+        var decision = new PdfBlockDecision("b1", PdfBlockRole.HeadingTopic, .99, "topic",
+            new TextOffsetSpan(0, text.Length));
+
+        Assert.True(PdfProposalValidator.IsEligibleHeading(decision, context["b1"]));
+    }
+
+    [Fact]
+    public void ValidatorKeepsMarkerOnlySourceWhenThereIsNoSemanticRemainder()
+    {
+        const string text = "8.";
+        var line = Line(text, 700);
+        var context = PdfCandidateContextBuilder.Build(
+            [Block("b1", line)], [new PdfLineBlockAnnotation(line, false, false, false, false, "semantic-candidate")]);
+        var decision = new PdfBlockDecision("b1", PdfBlockRole.HeadingTopic, .99, "topic",
+            new TextOffsetSpan(0, text.Length));
+
+        Assert.True(PdfProposalValidator.IsEligibleHeading(decision, context["b1"]));
+    }
+
+    [Fact]
     public void ValidatorCreatesSeparateValidatedHeadingOnlyFromGroundedPointer()
     {
         var line = Line("Operating context. The committee met.", 700);
