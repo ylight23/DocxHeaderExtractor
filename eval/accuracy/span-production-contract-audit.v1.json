@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "span_production_contract_audit",
+  "phase": "A_OFFLINE_ONLY",
+  "canonicalProductionBase": "main:a1c5b7d9a53ac665d6ceefb4729d5d603064d6dc",
+  "diagnosticEvidence": "diagnosis/004-authority-first-loss:9c777f326173190b338dbbb0cec72976972d3023",
+  "normalAuthorityCallPath": {
+    "route": "AuthorityExtractionPipeline.RunAsync -> PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync -> semantic role lane -> span lane -> PreservePartialSpanResolutions",
+    "checkpointPathArgument": null,
+    "resumeArgument": false,
+    "normalAuthorityCheckpoint": "DISABLED",
+    "checkpointProof": "AuthorityExtractionPipeline passes no checkpointPath/resume arguments; TryBuildBroadAuditWithAnalystAsync creates checkpoint only when checkpointPath is non-empty"
+  },
+  "r1": {
+    "codePresent": true,
+    "requiresCheckpoint": true,
+    "reachableFromNormalAuthorityRoute": false,
+    "nullCheckpointSemantics": "PreservePartialSpanResolutions marks every unresolved decision Uncertain and HeadingSpan null; this is the locked prior behavior"
+  },
+  "executionBudget": {
+    "semanticRequestTimeout": "00:01:30",
+    "semanticBatchTimeout": "00:02:00",
+    "semanticLaneDeadline": "00:05:00",
+    "semanticConcurrency": 1,
+    "spanBatchSize": 4,
+    "spanBatchExecution": "SEQUENTIAL",
+    "spanOuterTimeoutPolicy": "PdfLaneExecution.RunAsync with semanticOptions.RemainingOr(semanticOptions.RequestTimeout)",
+    "spanPerBatchRequestTimeout": "NOT_SEPARATE; ResolveHeadingSpansAsync passes the outer lane token to each BoundaryCutAsync call",
+    "spanBatchTimeout": "NOT_SEPARATE"
+  },
+  "frozen004RoleCohort": {
+    "selectedCandidates": 160,
+    "headingLikeCandidates": 96,
+    "nonHeadingCandidates": 64,
+    "uncertainCandidates": 0,
+    "spanBatchSize": 4,
+    "spanBatchesRequired": 24,
+    "basis": "unique candidate IDs recovered from frozen raw role responses; no final blockDecisions used"
+  },
+  "observabilityLimit": {
+    "actualSpanHttpRequestCount": "NOT_OBSERVABLE",
+    "spanBatchesStarted": "NOT_OBSERVABLE",
+    "spanBatchesCompletedWithHttpResponse": "NOT_OBSERVABLE",
+    "perBatchLatency": "NOT_OBSERVABLE",
+    "timeRemainingWhenSpanBegan": "NOT_OBSERVABLE",
+    "counterWarning": "SpanLane Scheduled/Completed/TimedOut are not interpreted as HTTP request or batch counts"
+  },
+  "historicalRecurrence": {
+    "001": { "spanLaneStatus": "partial_timeout", "checkpointedCompletedSpans": "observable in .verify-build/001-c15-span.jsonl", "materialRecovery": "historically measured; see existing C1 evidence" },
+    "003": { "spanLaneStatus": "partial_timeout", "checkpointedCompletedSpans": 22, "resolvedSpanBlocks": 88, "materialRecovery": "counterfactual retained 87 validated blocks / 72 decision-relevant emitted occurrences" },
+    "004": { "spanLaneStatus": "partial_timeout", "normalAuthorityCheckpoint": "DISABLED", "completedSpanFacts": "UNOBSERVABLE in the frozen run; no checkpoint was supplied" },
+    "sameLaneFailure": "PROVEN",
+    "sameDiscardMechanism": "PARTIAL",
+    "crossDocumentRecurrence": "PROVEN"
+  },
+  "hypotheses": {
+    "H1_checkpointReachability": { "status": "PROVEN", "evidence": "Normal AuthorityExtractionPipeline does not pass checkpointPath; existing R1 preservation therefore cannot receive durable span completion on this route" },
+    "H2_budget": { "status": "UNRESOLVED", "evidence": "A 5 minute lane deadline, 90 second request timeout, and 24 observed workload batches are known; actual batch starts/latencies are not persisted" },
+    "H3_provider": { "status": "UNRESOLVED", "evidence": "Frozen run reports partial_timeout and zero completed counters, but does not expose per-request provider outcomes" },
+    "H4_sequentialBatching": { "status": "UNRESOLVED", "evidence": "Source code iterates span batches sequentially; causal wall-clock contribution is not separable without per-batch timing" }
+  },
+  "liveCanaryJustified": true,
+  "liveCanaryExecuted": false,
+  "providerCallsPhaseA": 0,
+  "productionCodeChanged": false
+}
