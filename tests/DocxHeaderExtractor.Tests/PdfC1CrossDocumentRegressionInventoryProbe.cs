@@ -11,15 +11,20 @@ namespace DocxHeaderExtractor.Tests;
 /// pass or manufacturing a document to force a verdict.
 /// <para>
 /// `spanLaneStatus` was added this session (C1.4a); no artifact from before that commit can carry it
-/// by construction. The only question worth asking is whether any OTHER document besides 001 and 003
-/// has ever produced a retained `pdf_hierarchy_facts` run with span-lane evidence, checkpoint or
-/// artifact - and whether any of that evidence shows `partial_timeout` this gate hasn't already used.
+/// by construction. At the time this gate first ran, only 001 and 003 had ever produced retained
+/// span-lane evidence, so it locked <c>INSUFFICIENT_EXISTING_EVIDENCE</c> rather than forcing a verdict.
+/// N3.4's canonical live trace on `004` later supplied exactly the independent third document this gate
+/// was waiting for - and N3.5 already used it to reach a BLOCK decision (12 new `UNMATCHED_OUTPUT`
+/// collateral, not present on 001/003). This lock now records that outcome instead of the earlier
+/// "insufficient evidence" state - a correction, not a silent drift, since the underlying evidence and
+/// its N3.5 decision are both already committed and this test would otherwise silently disagree with
+/// them.
 /// </para>
 /// </summary>
 public sealed class PdfC1CrossDocumentRegressionInventoryProbe
 {
     [Fact]
-    public void NoIndependentPartialTimeoutDocumentExistsBeyond001And003()
+    public void IndependentPartialTimeoutEvidenceNowExistsAndWasConsumedByN35()
     {
         var root = PdfExtractorQualityBenchmarkProbe.RepositoryRoot();
         var searchRoots = new[] { "eval", "keys", ".verify-build" }
@@ -66,11 +71,17 @@ public sealed class PdfC1CrossDocumentRegressionInventoryProbe
         Assert.Contains("001", documentIds);
         Assert.Contains("003", documentIds);
 
-        // The actual gate #7 verdict: true only if a document beyond 001/003 shows partial_timeout,
-        // which would be independent cross-document regression evidence to replay. As of this lock,
-        // it is not - and this test fixes that fact so a future run can't silently drift from it.
+        // Corrected expectation: 004 is now the independent cross-document evidence this gate was
+        // waiting for. If a further document beyond {001, 003, 004} ever shows partial_timeout, this
+        // lock must be revisited deliberately - not silently pass a fourth data point unexamined.
         var independentPartialTimeoutDocuments = partialTimeoutDocuments.Where(d => d is not ("001" or "003")).ToArray();
-        Assert.Empty(independentPartialTimeoutDocuments);
+        Assert.Equal(["004"], independentPartialTimeoutDocuments);
+
+        // N3.5 already decided BLOCK using this exact evidence (12/83 emitted outputs with zero silver
+        // support, all new relative to baseline's 0) - the decision artifact is the authority, not a
+        // re-derivation here.
+        var decisionPath = Path.Combine(root, "eval", "benchmark-n3", "n3.4", "reports", "004-n3.4-decision.v1.json");
+        Assert.True(File.Exists(decisionPath), "N3.5's decision artifact for 004 should exist once this gate's evidence is consumed");
     }
 
     [Fact]
@@ -131,8 +142,8 @@ public sealed class PdfC1CrossDocumentRegressionInventoryProbe
             jsonlCheckpointsWithASpanLane = jsonlCheckpoints.Cast<dynamic>().Count(c => ((IDictionary<string, int>)c.lanes).ContainsKey("span")),
             allJsonlCheckpointsFound = jsonlCheckpoints,
             pdfHierarchyFactsRunArtifactsFound = runArtifacts,
-            verdict = "INSUFFICIENT_EXISTING_EVIDENCE",
-            verdictReason = "Only 001 and 003 have ever produced a retained pdf_hierarchy_facts run with span-lane evidence anywhere in this repository (working tree included). No independent third document exists to replay for cross-document regression evidence. This is not treated as a pass by default absence, nor is a synthetic document manufactured to force a verdict.",
+            verdict = "REGRESSION_FOUND",
+            verdictReason = "004 (N3.4's canonical live trace) supplied the independent third partial_timeout document this gate was waiting for. R1 recovered 47/55 exact-span decisionRelevant occurrences there, but the same trace also exposed 12/83 emitted outputs with zero support from any reviewed silver occurrence - all new relative to baseline's 0. N3.5 already decided BLOCK on this evidence (eval/benchmark-n3/n3.4/reports/004-n3.4-decision.v1.json); this gate's earlier INSUFFICIENT_EXISTING_EVIDENCE verdict is superseded, not silently left standing.",
         };
         Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(output))!);
         File.WriteAllText(output, JsonSerializer.Serialize(report, new JsonSerializerOptions { WriteIndented = true }));

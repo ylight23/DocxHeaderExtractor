@@ -5460,6 +5460,49 @@ order; N3.4 does not start until N3.2/N3.3 are frozen, and R1 is not tuned in re
   is made; provenance stays `SILVER_PROXY_ONLY`/`MODEL_ASSISTED_SILVER`.
   Decision artifact: `eval/benchmark-n3/n3.4/reports/004-n3.4-decision.v1.json`.
 
+- [x] Gate #7 (`PdfC1CrossDocumentRegressionInventoryProbe`) corrected to match N3.4/N3.5: it had locked
+  `INSUFFICIENT_EXISTING_EVIDENCE` when only 001/003 carried span-lane evidence. 004 now supplies the
+  independent third `partial_timeout` document this gate was waiting for, and N3.5 already used it to
+  reach BLOCK - the lock now asserts `["004"]` as the (sole, expected) independent partial-timeout
+  document and that N3.5's decision artifact exists, with verdict `REGRESSION_FOUND`, rather than
+  silently disagreeing with an outcome that is already committed.
+
+### N3.6 - causal diagnosis of the 12 `UNMATCHED_OUTPUT` items, no remediation attempted
+
+Per the explicit instruction not to infer one "owner" from a population that may not have one:
+`PdfN36TwelveOutputCausalDiagnosisProbe` traces each of the 12 items through Candidate -> Ranking ->
+Eligibility -> Role -> Span -> Validator -> Grounding -> R1, using only facts the canonical N3.4 run
+and checkpoint already recorded. No provider call, no candidate construction change, no remediation
+implemented or proposed here.
+
+**The 12 split cleanly into two distinct causal classes, 6/6:**
+
+| owner class | count | mechanism |
+|---|---:|---|
+| `OWNER_A_ROLE_PLUS_DEGENERATE_SPAN` | 6 | role misclassified **and** the span lane resolved a near-zero-length span (1-4 chars) - emitted heading text is a garbage fragment of the leading marker digits (`"8"`, `"1"`, `"20. "`, `"22"`, `"4"`, `"2"`), not the source sentence. Two compounding upstream errors. |
+| `OWNER_B_ROLE_ONLY_SPAN_WELL_FORMED` | 6 | role misclassified but the span lane resolved a full, well-formed span matching the entire source line - the span mechanism did its job correctly; the error is confined to role classification alone. |
+
+Both classes share the same upstream facts: all 12 rank 113-137 (clustered just inside the top-160
+selection boundary, not at extremes), none is caught by any deterministic eligibility gate
+(`structuralScope`/`domainRole`/evidence-origin all clean), and the analyst's own role confidence is
+uniformly high (0.9-1.0) in both classes - confidence does not discriminate the error either. Grounding
+is not where either failure originates; it correctly locates the real source position in every case.
+**R1 itself proposes neither a role nor a span** - it only decides whether to keep or discard a batch's
+already-produced facts on `partial_timeout`. Both owner classes existed upstream of R1 and were
+previously invisible only because baseline's all-or-nothing discard removed every block from `004`'s
+output on this run, true positives and latent errors alike.
+
+**Observed, not acted on**: only 2/12 end with legal-clause punctuation (`;` or `:`) - weaker than a
+first eyeball suggested (most clauses wrap onto a second, uncaptured source line), so this is recorded
+as a candidate signal for a possible future, separately-gated investigation, not implemented and
+explicitly not a blanket "numbered/lettered marker -> reject" rule - the project has already been
+burned once by exactly that shape of over-general fix (`labelled_numbering_marker` on 029/042).
+
+Artifact: `eval/benchmark-n3/n3.4/reports/004-n3.6-twelve-output-diagnosis.v1.json`. Next step, if
+pursued: a narrow, separately-gated investigation into whether `OWNER_A`'s degenerate-span mechanism
+generalizes (a span-lane defect worth its own diagnosis) and whether `OWNER_B`'s role-only errors share
+a discoverable, non-invented distinguishing feature - not a single "fix the 12" patch.
+
 ### 057 representation audit - two sub-owners, two different findings, no fix promoted
 
 Per-target: `PdfN2S057RepresentationAuditProbe` rebuilds each of the 23 undelivered occurrences' own
