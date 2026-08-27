@@ -22,7 +22,9 @@ public sealed class PdfRound3SelectionArchitectureProbe
         IReadOnlyList<RankedCandidate> Ranked, IReadOnlySet<string> GoldCoveredCandidateIds,
         IReadOnlyDictionary<string, int> GoldRankById);
     private sealed record CurveRow(string K, int SelectedCandidateCount, int SelectedReviewedHeadings,
-        string ReviewedHeadingRecall, int IncrementalHeadingGain, int IncrementalNoiseCost,
+        string ReviewedHeadingRecall, double SelectionCoverage, double OverallPreSemanticRecall,
+        int IncrementalHeadingGain, int IncrementalCandidates, double CandidatesPerIncrementalHeading,
+        int IncrementalNoiseCost,
         int TrueHeadingCoverage, int CandidatesSentToSemantic, double CandidatesPerRecoveredHeading,
         int EstimatedRequestCount, double RelativeCostVsK160);
 
@@ -74,6 +76,25 @@ public sealed class PdfRound3SelectionArchitectureProbe
                 baselineSelectionRatio = (double)baseCurve.SelectedReviewedHeadings / allReviewed
             },
             curve = curves,
+            paretoTable = curves.Select(row => new
+            {
+                K = row.K,
+                reviewedHeadingSelected = row.SelectedReviewedHeadings,
+                selectionCoverage = row.SelectionCoverage,
+                overallPreSemanticRecall = row.OverallPreSemanticRecall,
+                incrementalHeadingGain = row.IncrementalHeadingGain,
+                incrementalCandidates = row.IncrementalCandidates,
+                candidatesPerIncrementalHeading = row.CandidatesPerIncrementalHeading,
+                semanticBatchCount = row.EstimatedRequestCount,
+                relativeCostVs160 = row.RelativeCostVsK160
+            }).ToArray(),
+            paretoAssessment = new
+            {
+                frozenKValues = new[] { "40", "80", "160", "320", "640", "1024", "1600", "2048", "2400", "3200", "All" },
+                statusRule = "architecture status is not inferred from one attractive result; a useful knee requires a frozen cost/coverage threshold, otherwise status remains unresolved",
+                observed = "coverage keeps increasing through All; no cost/quality knee was frozen before this offline run",
+                conclusion = "no bounded pool is promoted by this artifact"
+            },
             perDocument,
             architectureOptions = new[]
             {
@@ -179,8 +200,13 @@ public sealed class PdfRound3SelectionArchitectureProbe
         });
         var denominator = Math.Max(1, selectedHeadings);
         var ratio = baselineSelected == 0 ? 0 : (double)selected / baselineSelected;
+        var incrementalCandidates = selected - previousSelected;
+        var incrementalGain = selectedHeadings - previousHeadings;
         return new CurveRow(k == int.MaxValue ? "All" : k.ToString(), selected, selectedHeadings, $"{selectedHeadings}/{reviewed}",
-            selectedHeadings - previousHeadings, noise, selectedHeadings, selected,
+            (double)selectedHeadings / Math.Max(1, documents.Sum(x => x.FullCandidate)),
+            (double)selectedHeadings / Math.Max(1, reviewed), incrementalGain, incrementalCandidates,
+            incrementalGain == 0 ? 0 : (double)incrementalCandidates / incrementalGain,
+            noise, selectedHeadings, selected,
             (double)selected / denominator, (selected + SemanticBatchSize - 1) / SemanticBatchSize, ratio);
     }
 
