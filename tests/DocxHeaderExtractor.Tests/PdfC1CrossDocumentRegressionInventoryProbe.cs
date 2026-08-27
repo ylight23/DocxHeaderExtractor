@@ -27,29 +27,19 @@ public sealed class PdfC1CrossDocumentRegressionInventoryProbe
     public void IndependentPartialTimeoutEvidenceNowExistsAndWasConsumedByN35()
     {
         var root = PdfExtractorQualityBenchmarkProbe.RepositoryRoot();
-        var searchRoots = new[] { "eval", "keys", ".verify-build" }
-            .Select(d => Path.Combine(root, d))
-            .Where(Directory.Exists);
+        var authorityPath = Path.Combine(root, "eval", "benchmark-n0", "n2-s", "counterfactual", "c1-gate7-cross-document-inventory.v1.json");
+        Assert.True(File.Exists(authorityPath), "committed C1 inventory authority must exist; .verify-build is not an authority");
 
-        var runArtifacts = new List<(string Path, string? DocumentId, string? SpanLaneStatus)>();
-        foreach (var searchRoot in searchRoots)
-        {
-            foreach (var path in Directory.EnumerateFiles(searchRoot, "*.json", SearchOption.AllDirectories))
-            {
-                string text;
-                try { text = File.ReadAllText(path); } catch { continue; }
-                if (!text.Contains("pdf_hierarchy_facts", StringComparison.Ordinal)) continue;
-
-                using var doc = JsonDocument.Parse(text);
-                if (!doc.RootElement.TryGetProperty("rows", out var rows) || rows.ValueKind != JsonValueKind.Array) continue;
-                foreach (var row in rows.EnumerateArray())
-                {
-                    var file = row.TryGetProperty("file", out var f) ? f.GetString() : null;
-                    var status = row.TryGetProperty("spanLaneStatus", out var s) && s.ValueKind == JsonValueKind.String ? s.GetString() : null;
-                    runArtifacts.Add((Path.GetRelativePath(root, path), file, status));
-                }
-            }
-        }
+        using var authority = JsonDocument.Parse(File.ReadAllText(authorityPath));
+        Assert.Equal("c1_gate7_cross_document_regression_inventory", authority.RootElement.GetProperty("artifactKind").GetString());
+        var runArtifacts = authority.RootElement
+            .GetProperty("pdfHierarchyFactsRunArtifactsFound")
+            .EnumerateArray()
+            .Select(row => (
+                Path: row.GetProperty("path").GetString() ?? "",
+                DocumentId: row.GetProperty("file").GetString(),
+                SpanLaneStatus: row.TryGetProperty("spanLaneStatus", out var s) ? s.GetString() : null))
+            .ToArray();
 
         var documentIds = runArtifacts
             .Select(r => r.DocumentId ?? "(unknown)")
