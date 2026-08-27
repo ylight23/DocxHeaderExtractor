@@ -9,6 +9,22 @@
   "integrationBranch": "integration/consolidate-source-20260827",
   "backupTag": "backup/pre-consolidation-20260827",
   "providerCalls": 0,
+  "correctedProviderScopeReview": {
+    "defaultQwen9B": "KEEP",
+    "openRouterHeaderContract": {
+      "reasoningEffortNone": "CANONICAL_QWEN9B_CONTRACT",
+      "jsonObjectResponseFormat": "CANONICAL_QWEN9B_CONTRACT",
+      "boundaryOutputBudget": "CANONICAL_QWEN9B_CONTRACT"
+    },
+    "openRouterVisualQuestion": "DIAGNOSTIC_EVAL_ONLY",
+    "visualCallsites": [
+      "pdf-visual-probe",
+      "pdf-stage-eval"
+    ],
+    "normalExtractionVisualAuthority": "ABSENT",
+    "newVlmProvider": "JUSTIFIED_DIAGNOSTIC_EVAL_ONLY",
+    "dePromotionCommit": false
+  },
   "build": { "winX64": "PASS", "solutionRid": "NOT_ASSESSED; SDK solution RID restriction" },
   "focusedVerification": { "deterministicReplayProvenance": "27_PASS_0_FAIL", "webUi": "2_PASS_0_FAIL", "webApiSmoke": "ROOT_200_AND_API_DEFAULTS_200", "providerCalls": 0 },
   "fullSuiteBaseline": { "passed": 1179, "failed": 17, "total": 1196 },
