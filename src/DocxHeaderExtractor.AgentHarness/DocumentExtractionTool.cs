@@ -14,19 +14,19 @@ public interface IDocumentExtractionTool : IDisposable
 }
 
 /// <summary>
-/// Adapter biến pipeline hiện tại thành một tool của harness. Pipeline vẫn là implementation
-/// chi tiết; Web/CLI không gọi thẳng pipeline nữa.
+/// Adapter của canonical authority pipeline thành một tool của harness. Web/CLI/MCP dùng cùng
+/// orchestrator; HeaderExtractionPipeline chỉ còn dành cho compatibility/evaluation callers.
 /// </summary>
 public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 {
-    private readonly HeaderExtractionPipeline _pipeline;
+    private readonly AuthorityExtractionPipeline _pipeline;
     private readonly IHeaderClassifier? _classifier;
     private readonly bool _ownsClassifier;
 
     public PipelineDocumentExtractionTool(PipelineOptions options)
     {
         ArgumentNullException.ThrowIfNull(options);
-        _pipeline = new HeaderExtractionPipeline(options);
+        _pipeline = new AuthorityExtractionPipeline(options);
         Descriptor = Describe(options);
     }
 
@@ -37,7 +37,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(classifier);
-        _pipeline = new HeaderExtractionPipeline(options, classifier);
+        _pipeline = new AuthorityExtractionPipeline(options, classifier);
         _classifier = classifier;
         _ownsClassifier = ownsClassifier;
         Descriptor = Describe(options);
