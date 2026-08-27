@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_round4_frozen_execution_manifest",
+  "frozenProfile": {
+    "command": "pdf-hierarchy-facts",
+    "backend": "OpenRouter",
+    "model": "qwen/qwen3.5-9b",
+    "wideCandidates": true,
+    "supplementCandidates": true,
+    "analystBlocks": 1024,
+    "semanticConcurrency": 2,
+    "semanticRequestTimeoutSeconds": 90,
+    "semanticBatchTimeoutSeconds": 120,
+    "semanticLaneDeadlineSeconds": 300,
+    "visualRegions": 0,
+    "roleAndSpanCheckpoint": true,
+    "retry": false
+  }
+}
