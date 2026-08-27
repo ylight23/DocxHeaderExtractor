@@ -12404,3 +12404,21 @@ or inferred a heading role. The frozen row retains source SHA-256, exact PDF sou
 and geometry, every carrier block, and the current primary carrier's actual scope/penalty/score/
 rank/selection/emittable chain. B2 must add a separate role-only review artifact for these exact
 identities; B3 traces only reviewed outline headings through the already-frozen actual behavior.
+# R3 closure and Accuracy Optimization Round 1
+
+As of 2026-08-27, R3 is closed on the remediation branch. R1-v1 remains blocked;
+the R3-A marker-only span mechanism is proven and qualified offline, but R1 + R3-A
+does not pass the frozen collateral gate because six Owner-B outputs remain. Owner-B
+is `ROLE_ERROR_PROVEN_REMEDIATION_NOT_JUSTIFIED`; N4 is not opened.
+
+The final engineering baseline is 1186 passing and 15 frozen failures. The apparent
+sixteenth failure was an evaluation-harness state dependency: the C1 inventory probe
+required a local `.verify-build` artifact for 001. It now reads the committed C1
+inventory authority, and the clean full suite returned to the frozen 15. No production
+behavior was changed, and R3-A is not promoted to main.
+
+The next development branch is Accuracy Optimization Round 1 from `b7854b5`, with
+candidate recall as the only first target. It will use occurrence-safe ledgers and
+offline counterfactuals across 004, 030, 043, and 058 before any candidate producer
+change. No provider calls, N4 holdout, ranking tuning, or document-specific rule is
+authorized in this round.

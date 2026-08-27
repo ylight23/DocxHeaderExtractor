@@ -5664,3 +5664,24 @@ exact production path where the decision is actually made.
 - [ ] Optional benchmark/escalation: retain `NvidiaNimVisualQuestion`, but call NVIDIA 90B only for a
   deliberately requested frozen A/B comparison or a documented Qwen unresolved case. Do not claim
   Qwen is better than NVIDIA without that comparison.
+# R3 closure (2026-08-27)
+
+- R1-v1: **BLOCKED**; R3-A marker-only span guard mechanism **PROVEN** and offline
+  qualification **QUALIFIED**, but R1 + R3-A remains blocked because six independent
+  Owner-B outputs remain and the frozen collateral gate is not met.
+- Owner-B: `ROLE_ERROR_PROVEN_REMEDIATION_NOT_JUSTIFIED`.
+- R3: **CLOSED**. N4: **NOT OPENED**. No provider calls were made for closure.
+- Engineering baseline: **1186 passed / 15 frozen failures**.
+- The extra failure was fixed in the evaluation harness by reading the committed C1
+  inventory authority instead of `.verify-build`; production behavior is unchanged.
+- R3-A remains remediation history and is not promoted to `main`.
+
+# Accuracy Optimization Round 1 (next)
+
+- Branch from the accepted development base `b7854b5` (`origin/m7-m8-audit-provenance`),
+  not from the R3 remediation branch.
+- Round 1 scope is candidate recall only: build an occurrence-safe loss ledger for
+  `004`, `030`, `043`, and `058`, classify recurring producer/boundary losses, then
+  measure offline counterfactuals before any deterministic fix.
+- No provider/model calls, N4 reservation, ranking tuning, gold leakage, or document-
+  specific rules. Report candidate recall, candidate inflation, and Recall@K side effects.
