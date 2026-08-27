@@ -88,11 +88,21 @@ public sealed class PdfRound3SelectionArchitectureProbe
                 semanticBatchCount = row.EstimatedRequestCount,
                 relativeCostVs160 = row.RelativeCostVsK160
             }).ToArray(),
+            paretoFrontier = curves.Where(row => !curves.Any(other =>
+                other.SelectedReviewedHeadings >= row.SelectedReviewedHeadings &&
+                other.SelectedCandidateCount <= row.SelectedCandidateCount &&
+                (other.SelectedReviewedHeadings > row.SelectedReviewedHeadings ||
+                 other.SelectedCandidateCount < row.SelectedCandidateCount)))
+                .Select(row => row.K).ToArray(),
             paretoAssessment = new
             {
                 frozenKValues = new[] { "40", "80", "160", "320", "640", "1024", "1600", "2048", "2400", "3200", "All" },
                 statusRule = "architecture status is not inferred from one attractive result; a useful knee requires a frozen cost/coverage threshold, otherwise status remains unresolved",
                 observed = "coverage keeps increasing through All; no cost/quality knee was frozen before this offline run",
+                firstUsefulExpansionBeyond160 = "640 (80 additional reviewed headings for 1280 additional candidates over K=320; measured observation, not a production recommendation)",
+                plateauStart = "1600 (92.16 incremental candidates per additional reviewed heading in the frozen interval)",
+                paretoKneeCandidate = (string?)null,
+                meaningfulKnee = false,
                 conclusion = "no bounded pool is promoted by this artifact"
             },
             perDocument,
@@ -141,6 +151,65 @@ public sealed class PdfRound3SelectionArchitectureProbe
                     auditability = "lowest initially; requires extensive provenance",
                     failClosedCompatibility = "not established",
                     decision = "not justified in Round 3"
+                }
+            },
+            architectureComparison = new[]
+            {
+                new
+                {
+                    option = "A_current_top160",
+                    measuredOrBoundedRecallCeiling = "80/375 selection coverage; 80/422 overall pre-semantic; absolute candidate ceiling 375/422",
+                    candidateVolume = 640,
+                    expectedModelBatchCost = "80 semantic batches",
+                    implementationComplexity = "none",
+                    trainingLabelRequirement = "none",
+                    auditability = "high",
+                    determinism = "deterministic",
+                    failClosedCompatibility = "yes",
+                    newProductionComponents = "none",
+                    supportingEvidence = "frozen K=160 row"
+                },
+                new
+                {
+                    option = "B_larger_deterministic_pool_plus_existing_semantic",
+                    measuredOrBoundedRecallCeiling = "266/375 at K=1024; 361/375 at K=3200; 375/375 only at All",
+                    candidateVolume = 4096,
+                    expectedModelBatchCost = "512 semantic batches at K=1024",
+                    implementationComplexity = "bounded scheduler/pool configuration only",
+                    trainingLabelRequirement = "none",
+                    auditability = "high",
+                    determinism = "deterministic pre-semantic selection",
+                    failClosedCompatibility = "yes if existing validator remains authority",
+                    newProductionComponents = "none beyond larger bounded pool configuration",
+                    supportingEvidence = "frozen Pareto curve; cost/coverage knee not established"
+                },
+                new
+                {
+                    option = "C_larger_pool_plus_lightweight_reranker",
+                    measuredOrBoundedRecallCeiling = "bounded by 375/422 candidate ceiling; reranker quality not measured",
+                    candidateVolume = 4096,
+                    expectedModelBatchCost = "not measured",
+                    implementationComplexity = "new reranking contract",
+                    trainingLabelRequirement = "likely held-out labels/calibration",
+                    auditability = "requires persisted reranker features and scores",
+                    determinism = "not established",
+                    failClosedCompatibility = "possible but unproven",
+                    newProductionComponents = "lightweight reranker",
+                    supportingEvidence = "only justified for investigation if B cost is rejected by a frozen product gate"
+                },
+                new
+                {
+                    option = "D_learned_ranker_replaces_deterministic_ordering",
+                    measuredOrBoundedRecallCeiling = "bounded by 375/422 candidate ceiling; no measurement",
+                    candidateVolume = 10032,
+                    expectedModelBatchCost = "not measured",
+                    implementationComplexity = "high",
+                    trainingLabelRequirement = "required representative training and holdout labels",
+                    auditability = "lowest until extensive provenance is added",
+                    determinism = "not established",
+                    failClosedCompatibility = "not established",
+                    newProductionComponents = "replacement learned ranker",
+                    supportingEvidence = "none beyond unresolved score-gap diagnosis"
                 }
             },
             finalStatus = "SELECTION_ARCHITECTURE_UNRESOLVED",
