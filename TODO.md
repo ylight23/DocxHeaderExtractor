@@ -3204,6 +3204,26 @@ reviewed population and is exactly the right gate for candidate grouping - and i
 candidates, which makes it useless for ordering them. "The fact already exists, propagate it
 downstream" is not a safe default.
 
+## Phase B - span production canary (2026-08-28)
+
+- [x] Ran exactly one OpenRouter canary on document 004 with `qwen/qwen3.5-9b`,
+  frozen budget/profile, no retry, no VLM, and no production change.
+- [x] Committed and pushed `eval/accuracy/span-production-canary.v1.json` and
+  `docs/accuracy/span-production-canary.md` in commit `6d4700d`.
+- [x] Checkpoint facts: 20 semantic batches, 21 span batches, 81 resolved span
+  blocks, 3 null blocks; the span lane completed.
+- [x] Both cohorts contain 160 candidates and 181 source-line IDs, but raw hashes
+  differ because source identities have different Unicode spellings. Downstream
+  accuracy is not compared as the same experiment.
+- [x] R1 terminology remains correct: preservation code is reachable on timeout,
+  requires a durable checkpoint, but normal authority does not pass one.
+- [x] Timing causal evidence is not claimed: checkpoint has no `startedAt`,
+  latency, or HTTP outcome fields. H3/H4 remain `UNRESOLVED`.
+- [ ] Add a diagnostic timing decorator/replay harness only if causal evidence is
+  needed; keep the request contract unchanged and do not retry this provider run.
+- [ ] Do not remediate 004 or tune timeout, batch, concurrency, retry, ranking,
+  candidate pool, validator, or production authority in this workstream.
+
 ### Debts frozen, all trigger-gated
 
 None of these is a backlog item. An observed defect is not scheduled work.
