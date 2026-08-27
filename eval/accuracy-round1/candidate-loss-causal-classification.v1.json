@@ -1,0 +1,2262 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_round1_candidate_loss_causal_classification",
+  "phase": "round1b",
+  "modelCalls": 0,
+  "productionChanges": false,
+  "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is diagnostics-only",
+  "input": {
+    "totalReviewed": 422,
+    "candidatePresent": 375,
+    "candidateMisses": 47
+  },
+  "ownerTaxonomy": [
+    "SOURCE_REPRESENTATION_MISSING",
+    "CANDIDATE_PRODUCER_NOT_TRIGGERED",
+    "CANDIDATE_BOUNDARY_MISMATCH",
+    "CANDIDATE_MERGE_DESTROYS_OCCURRENCE",
+    "HARD_FILTER_REJECTION",
+    "OCCURRENCE_JOIN_MISMATCH",
+    "UNRESOLVED"
+  ],
+  "partition": {
+    "CANDIDATE_BOUNDARY_MISMATCH": 18,
+    "CANDIDATE_MERGE_DESTROYS_OCCURRENCE": 1,
+    "UNRESOLVED": 27,
+    "HARD_FILTER_REJECTION": 1
+  },
+  "clusters": [
+    {
+      "owner": "UNRESOLVED",
+      "count": 27,
+      "documents": [
+        "030"
+      ],
+      "exampleIdentities": [
+        "030/outline/3",
+        "030/outline/6",
+        "030/outline/7"
+      ],
+      "repeatedFailure": false,
+      "remediationStatus": "NOT_YET_JUSTIFIED",
+      "invariant": "not promoted by this diagnosis-only trace"
+    },
+    {
+      "owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "count": 18,
+      "documents": [
+        "004",
+        "030",
+        "043",
+        "058"
+      ],
+      "exampleIdentities": [
+        "004/chapter/3",
+        "004/section/1",
+        "004/section/2"
+      ],
+      "repeatedFailure": true,
+      "remediationStatus": "NOT_YET_JUSTIFIED",
+      "invariant": "not promoted by this diagnosis-only trace"
+    },
+    {
+      "owner": "CANDIDATE_MERGE_DESTROYS_OCCURRENCE",
+      "count": 1,
+      "documents": [
+        "004"
+      ],
+      "exampleIdentities": [
+        "004/section/5"
+      ],
+      "repeatedFailure": false,
+      "remediationStatus": "NOT_YET_JUSTIFIED",
+      "invariant": "not promoted by this diagnosis-only trace"
+    },
+    {
+      "owner": "HARD_FILTER_REJECTION",
+      "count": 1,
+      "documents": [
+        "030"
+      ],
+      "exampleIdentities": [
+        "030/gcc-tb/24"
+      ],
+      "repeatedFailure": false,
+      "remediationStatus": "NOT_YET_JUSTIFIED",
+      "invariant": "not promoted by this diagnosis-only trace"
+    }
+  ],
+  "occurrences": [
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/chapter/3",
+      "Page": 9,
+      "SourceLineIds": [
+        "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+        "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+      ],
+      "SourceSpan": {
+        "startLineId": "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+        "endLineId": "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+      },
+      "SourceText": "Chapter III INVESTMENT INCENTIVES AND SUPPORTS",
+      "Marker": "Chapter III",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b242",
+        "b243"
+      ]
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/1",
+      "Page": 14,
+      "SourceLineIds": [
+        "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+        "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+      ],
+      "SourceSpan": {
+        "startLineId": "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+        "endLineId": "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+      },
+      "SourceText": "Section 1 FORMS OF INVESTMENT",
+      "Marker": "Section 1",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b380",
+        "b381"
+      ]
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/2",
+      "Page": 18,
+      "SourceLineIds": [
+        "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+        "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+        "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+      ],
+      "SourceSpan": {
+        "startLineId": "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+        "endLineId": "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+      },
+      "SourceText": "Section 2 INVESTMENT POLICY APPROVAL AND INVESTOR SELECTION",
+      "Marker": "Section 2",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b489",
+        "b490",
+        "s-window-1867",
+        "b491"
+      ]
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/3",
+      "Page": 26,
+      "SourceLineIds": [
+        "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+        "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+        "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+        "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+      ],
+      "SourceSpan": {
+        "startLineId": "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+        "endLineId": "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+      },
+      "SourceText": "Section 3 PROCEDURES FOR GRANT MODIFICATION AND , REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES",
+      "Marker": "Section 3",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b708",
+        "b709",
+        "s-window-2705",
+        "b710"
+      ]
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/4",
+      "Page": 30,
+      "SourceLineIds": [
+        "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+        "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+      ],
+      "SourceSpan": {
+        "startLineId": "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+        "endLineId": "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+      },
+      "SourceText": "Section 4 IMPLEMENTATION OF INVESTMENT PROJECTS",
+      "Marker": "Section 4",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b832",
+        "b833"
+      ]
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/5",
+      "Page": 36,
+      "SourceLineIds": [
+        "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+        "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+      ],
+      "SourceSpan": {
+        "startLineId": "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+        "endLineId": "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+      },
+      "SourceText": "Section 1 GENERAL PROVISIONS",
+      "Marker": "Section 1",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p36:y640.6243345974732:x303.2966891699219",
+        "p36:y619.2544952055091:x250.21899350097655"
+      ],
+      "PostGroupCandidateIds": [
+        "b1005",
+        "b1006"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [],
+        "supplement": []
+      },
+      "ProducerDecisions": {
+        "broad": "no_standard_match",
+        "wide": "no_standard_match",
+        "supplement": "no_standard_match"
+      },
+      "GroupOperation": "absorbed_or_span_truncated",
+      "FirstLoss": "semantic_block_grouping",
+      "Owner": "CANDIDATE_MERGE_DESTROYS_OCCURRENCE",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/6",
+      "Page": 37,
+      "SourceLineIds": [
+        "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+        "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+        "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+      ],
+      "SourceSpan": {
+        "startLineId": "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+        "endLineId": "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+      },
+      "SourceText": "Section 2 PROCEDURES FOR OFFSHORE INVESTMENT POLICY APPROVAL AND DECISION ON OFFSHORE INVESTMENT",
+      "Marker": "Section 2",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b1051",
+        "s-window-3937",
+        "b1052"
+      ]
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/7",
+      "Page": 41,
+      "SourceLineIds": [
+        "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+        "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+        "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+        "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+        "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+      ],
+      "SourceSpan": {
+        "startLineId": "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+        "endLineId": "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+      },
+      "SourceText": "Section 3 PROCEDURES FOR GRANT MODIFICATION AND , INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION CERTIFICATES",
+      "Marker": "Section 3",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "s-window-4271",
+        "b1152",
+        "s-window-4273",
+        "b1153"
+      ]
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/section/8",
+      "Page": 44,
+      "SourceLineIds": [
+        "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+        "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+        "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+      ],
+      "SourceSpan": {
+        "startLineId": "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+        "endLineId": "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+      },
+      "SourceText": "Section 4 IMPLEMENTATION OF OFFSHORE INVESTMENT ACTIVITIES",
+      "Marker": "Section 4",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b1258",
+        "s-window-4644",
+        "b1259"
+      ]
+    },
+    {
+      "DocumentId": "004",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "GoldStableId": "004/chapter/7",
+      "Page": 52,
+      "SourceLineIds": [
+        "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+        "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+      ],
+      "SourceSpan": {
+        "startLineId": "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+        "endLineId": "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+      },
+      "SourceText": "Chapter VII IMPLEMENTATION PROVISIONS",
+      "Marker": "Chapter VII",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b1486",
+        "b1487"
+      ]
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/outline/3",
+      "Page": 15,
+      "SourceLineIds": [
+        "15|709.4453984799593|132.2460546875|494.8589453125|Section 2. Instructions to Consultants and Data Sheet"
+      ],
+      "SourceSpan": {
+        "startLineId": "15|709.4453984799593|132.2460546875|494.8589453125|Section 2. Instructions to Consultants and Data Sheet",
+        "endLineId": "15|709.4453984799593|132.2460546875|494.8589453125|Section 2. Instructions to Consultants and Data Sheet"
+      },
+      "SourceText": "Section 2. Instructions to Consultants and Data Sheet",
+      "Marker": "Section 2. Instructions to Consultants and Data Sheet",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p7:y470.568643851902:x72.64509375"
+      ],
+      "PostGroupCandidateIds": [
+        "b57",
+        "b91",
+        "b124",
+        "b140"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [
+          "b57",
+          "b140"
+        ],
+        "wide": [
+          "b57",
+          "b124",
+          "b140"
+        ],
+        "supplement": [
+          "s-line-152",
+          "s-block-17",
+          "s-window-194",
+          "s-window-195",
+          "s-window-196",
+          "s-window-297",
+          "s-window-298",
+          "s-window-299",
+          "s-window-300",
+          "s-window-301",
+          "s-window-302",
+          "s-window-471",
+          "s-window-472",
+          "s-window-473",
+          "s-window-474",
+          "s-window-475"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "created",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/outline/6",
+      "Page": 79,
+      "SourceLineIds": [
+        "79|709.3951246995192|215.0760546875|411.42694937499994|Section 5. Eligible Countries"
+      ],
+      "SourceSpan": {
+        "startLineId": "79|709.3951246995192|215.0760546875|411.42694937499994|Section 5. Eligible Countries",
+        "endLineId": "79|709.3951246995192|215.0760546875|411.42694937499994|Section 5. Eligible Countries"
+      },
+      "SourceText": "Section 5. Eligible Countries",
+      "Marker": "Section 5. Eligible Countries",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p7:y167.00310997596145:x72.64509375"
+      ],
+      "PostGroupCandidateIds": [
+        "b65",
+        "b92",
+        "b125",
+        "b263",
+        "b1207",
+        "b1208"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [
+          "b65",
+          "b1207",
+          "b1208"
+        ],
+        "wide": [
+          "b65",
+          "b125",
+          "b263",
+          "b1207",
+          "b1208"
+        ],
+        "supplement": [
+          "s-block-17",
+          "s-window-300",
+          "s-window-301",
+          "s-window-302",
+          "s-window-303",
+          "s-window-304",
+          "s-window-305",
+          "s-window-306",
+          "s-window-307",
+          "s-window-308",
+          "s-window-309",
+          "s-window-310",
+          "s-window-311",
+          "s-window-1258",
+          "s-window-1259",
+          "s-window-1260"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "created",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/outline/7",
+      "Page": 81,
+      "SourceLineIds": [
+        "81|709.192463107639|199.8360546875|426.81341328125|Section 6. Fraud and Corruption"
+      ],
+      "SourceSpan": {
+        "startLineId": "81|709.192463107639|199.8360546875|426.81341328125|Section 6. Fraud and Corruption",
+        "endLineId": "81|709.192463107639|199.8360546875|426.81341328125|Section 6. Fraud and Corruption"
+      },
+      "SourceText": "Section 6. Fraud and Corruption",
+      "Marker": "Section 6. Fraud and Corruption",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p7:y111.64800347222223:x72.64509375"
+      ],
+      "PostGroupCandidateIds": [
+        "b67",
+        "b92",
+        "b126",
+        "b1212",
+        "b1213",
+        "b1214",
+        "b1231"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [
+          "b67",
+          "b1212",
+          "b1213",
+          "b1214",
+          "b1231"
+        ],
+        "wide": [
+          "b67",
+          "b126",
+          "b1212",
+          "b1213",
+          "b1214",
+          "b1231"
+        ],
+        "supplement": [
+          "s-block-18",
+          "s-window-303",
+          "s-window-304",
+          "s-window-305",
+          "s-window-306",
+          "s-window-307",
+          "s-window-308",
+          "s-window-309",
+          "s-window-310",
+          "s-window-311",
+          "s-window-312",
+          "s-window-313",
+          "s-window-314"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "created",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/outline/12",
+      "Page": 191,
+      "SourceLineIds": [
+        "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial",
+        "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+      ],
+      "SourceSpan": {
+        "startLineId": "191|643.4800980318512|96.0100546875|499.7153868750001|Section 9. Notification of Intention to Award and Beneficial",
+        "endLineId": "191|624.650078125|236.2334375|359.0209493749999|Ownership Forms"
+      },
+      "SourceText": "Section 9. Notification of Intention to Award and Beneficial Ownership Forms",
+      "Marker": "Section 9. Notification of Intention to Award and Beneficial Ownership Forms",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b2922",
+        "b2923"
+      ]
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/datasheet/3",
+      "Page": 40,
+      "SourceLineIds": [
+        "40|335.6334655761719|207.02509765625|395.32946937500014|B. Preparation of Proposals"
+      ],
+      "SourceSpan": {
+        "startLineId": "40|335.6334655761719|207.02509765625|395.32946937500014|B. Preparation of Proposals",
+        "endLineId": "40|335.6334655761719|207.02509765625|395.32946937500014|B. Preparation of Proposals"
+      },
+      "SourceText": "B. Preparation of Proposals",
+      "Marker": "B. Preparation of Proposals",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p15:y497.26990699404627:x86.62321875"
+      ],
+      "PostGroupCandidateIds": [
+        "b146",
+        "b278",
+        "b612"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b278",
+          "b612"
+        ],
+        "supplement": [
+          "s-line-256",
+          "s-line-564",
+          "s-block-26",
+          "s-window-525",
+          "s-window-526",
+          "s-window-527",
+          "s-window-528",
+          "s-window-529",
+          "s-window-530",
+          "s-window-531",
+          "s-window-532",
+          "s-window-533",
+          "s-window-534",
+          "s-window-535",
+          "s-window-1378",
+          "s-window-1379",
+          "s-window-1380"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/datasheet/4",
+      "Page": 45,
+      "SourceLineIds": [
+        "45|698.3816619318181|177.77123046875|449.6534932812502|C. Submission, Opening and Evaluation"
+      ],
+      "SourceSpan": {
+        "startLineId": "45|698.3816619318181|177.77123046875|449.6534932812502|C. Submission, Opening and Evaluation",
+        "endLineId": "45|698.3816619318181|177.77123046875|449.6534932812502|C. Submission, Opening and Evaluation"
+      },
+      "SourceText": "C. Submission, Opening and Evaluation",
+      "Marker": "C. Submission, Opening and Evaluation",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p15:y279.71138466282946:x86.85759375"
+      ],
+      "PostGroupCandidateIds": [
+        "b148",
+        "b364",
+        "b708"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b364",
+          "b708"
+        ],
+        "supplement": [
+          "s-line-267",
+          "s-line-754",
+          "s-window-558",
+          "s-window-559",
+          "s-window-560",
+          "s-window-561",
+          "s-window-562",
+          "s-window-563",
+          "s-window-564",
+          "s-window-565",
+          "s-window-566",
+          "s-window-567",
+          "s-window-568",
+          "s-window-569",
+          "s-window-1895",
+          "s-window-1896",
+          "s-window-1903",
+          "s-window-1904",
+          "s-window-1905"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/datasheet/5",
+      "Page": 49,
+      "SourceLineIds": [
+        "49|326.6016765802557|259.70041015625003|444.68491484375016|D. Negotiations and Award"
+      ],
+      "SourceSpan": {
+        "startLineId": "49|326.6016765802557|259.70041015625003|444.68491484375016|D. Negotiations and Award",
+        "endLineId": "49|326.6016765802557|259.70041015625003|444.68491484375016|D. Negotiations and Award"
+      },
+      "SourceText": "D. Negotiations and Award",
+      "Marker": "D. Negotiations and Award",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p16:y690.1346874999996:x72.229078125"
+      ],
+      "PostGroupCandidateIds": [
+        "b154",
+        "b489",
+        "b808"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b489",
+          "b808"
+        ],
+        "supplement": [
+          "s-line-279",
+          "s-line-1015",
+          "s-block-29",
+          "s-window-588",
+          "s-window-590",
+          "s-window-591",
+          "s-window-592",
+          "s-window-593",
+          "s-window-2626",
+          "s-window-2627",
+          "s-window-2628"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/gcc-tb/24",
+      "Page": 106,
+      "SourceLineIds": [
+        "106|702.5269140625|528.2865312499999|530.0326249999999|,"
+      ],
+      "SourceSpan": {
+        "startLineId": "106|702.5269140625|528.2865312499999|530.0326249999999|,",
+        "endLineId": "106|702.5269140625|528.2865312499999|530.0326249999999|,"
+      },
+      "SourceText": ",",
+      "Marker": "21. Conflict of Interest",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "all reviewed source lines are excluded from candidate grouping",
+      "Owner": "HARD_FILTER_REJECTION",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/fraud-attach-tb/1",
+      "Page": 121,
+      "SourceLineIds": [
+        "121|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+        "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+      ],
+      "SourceSpan": {
+        "startLineId": "121|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+        "endLineId": "121|656.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+      },
+      "SourceText": "Attachment 1 Fraud and Corruption",
+      "Marker": "Attachment 1 Fraud and Corruption",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b1772",
+        "b1773"
+      ]
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/fraud-attach-tb/2",
+      "Page": 121,
+      "SourceLineIds": [
+        "121|605.2967578125|90.815015625|149.748921875|1. Purpose"
+      ],
+      "SourceSpan": {
+        "startLineId": "121|605.2967578125|90.815015625|149.748921875|1. Purpose",
+        "endLineId": "121|605.2967578125|90.815015625|149.748921875|1. Purpose"
+      },
+      "SourceText": "1. Purpose",
+      "Marker": "1. Purpose",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p81:y639.7367578125:x87.215015625"
+      ],
+      "PostGroupCandidateIds": [
+        "b1215",
+        "b1775",
+        "b2616"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [
+          "b1215",
+          "b1775",
+          "b2616"
+        ],
+        "wide": [
+          "b1215",
+          "b1775",
+          "b2616"
+        ],
+        "supplement": []
+      },
+      "ProducerDecisions": {
+        "broad": "created",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/fraud-attach-tb/3",
+      "Page": 121,
+      "SourceLineIds": [
+        "121|552.064441964286|90.31696875|179.57018750000003|2. Requirements"
+      ],
+      "SourceSpan": {
+        "startLineId": "121|552.064441964286|90.31696875|179.57018750000003|2. Requirements",
+        "endLineId": "121|552.064441964286|90.31696875|179.57018750000003|2. Requirements"
+      },
+      "SourceText": "2. Requirements",
+      "Marker": "2. Requirements",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p81:y581.3744419642857:x86.71696875"
+      ],
+      "PostGroupCandidateIds": [
+        "b1217",
+        "b1777",
+        "b2618"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [
+          "b1217",
+          "b1777",
+          "b2618"
+        ],
+        "wide": [
+          "b1217",
+          "b1777",
+          "b2618"
+        ],
+        "supplement": []
+      },
+      "ProducerDecisions": {
+        "broad": "created",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/gcc-ls/2",
+      "Page": 153,
+      "SourceLineIds": [
+        "153|697.48794921875|188.88951171875|439.17610531250006|II. General Conditions of Contract"
+      ],
+      "SourceSpan": {
+        "startLineId": "153|697.48794921875|188.88951171875|439.17610531250006|II. General Conditions of Contract",
+        "endLineId": "153|697.48794921875|188.88951171875|439.17610531250006|II. General Conditions of Contract"
+      },
+      "SourceText": "II. General Conditions of Contract",
+      "Marker": "II. General Conditions of Contract",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p89:y658.2329810855271:x86.722828125"
+      ],
+      "PostGroupCandidateIds": [
+        "b1289",
+        "b1371",
+        "b2133",
+        "b2216"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [
+          "b1371",
+          "b2216"
+        ],
+        "wide": [
+          "b1371",
+          "b2216"
+        ],
+        "supplement": [
+          "s-line-2288",
+          "s-line-3967",
+          "s-window-5455",
+          "s-window-5458",
+          "s-window-5459",
+          "s-window-5460",
+          "s-window-5461",
+          "s-window-5462",
+          "s-window-5463",
+          "s-window-5815",
+          "s-window-5816",
+          "s-window-5817",
+          "s-window-9842",
+          "s-window-9843",
+          "s-window-9844",
+          "s-window-9845",
+          "s-window-9846",
+          "s-window-9847"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "created",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/gcc-ls/8",
+      "Page": 155,
+      "SourceLineIds": [
+        "155|376.1072619047616|82.868296875|543.7240468749999|5. Headings The headings shall not limit alter or affect the meaning ofthis"
+      ],
+      "SourceSpan": {
+        "startLineId": "155|376.1072619047616|82.868296875|543.7240468749999|5. Headings The headings shall not limit alter or affect the meaning ofthis",
+        "endLineId": "155|376.1072619047616|82.868296875|543.7240468749999|5. Headings The headings shall not limit alter or affect the meaning ofthis"
+      },
+      "SourceText": "5. Headings The headings shall not limit alter or affect the meaning ofthis",
+      "Marker": "5. Headings",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p99:y470.9217745535708:x76.19821875"
+      ],
+      "PostGroupCandidateIds": [
+        "b1420",
+        "b2269"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b1420",
+          "b2269"
+        ],
+        "supplement": [
+          "s-line-2535",
+          "s-window-6070",
+          "s-window-6071",
+          "s-window-6072",
+          "s-window-6079",
+          "s-window-6080",
+          "s-window-6081"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/gcc-ls/20",
+      "Page": 157,
+      "SourceLineIds": [
+        "157|389.6411718749999|85.295015625|178.42892187500001|17. Force Majeure"
+      ],
+      "SourceSpan": {
+        "startLineId": "157|389.6411718749999|85.295015625|178.42892187500001|17. Force Majeure",
+        "endLineId": "157|389.6411718749999|85.295015625|178.42892187500001|17. Force Majeure"
+      },
+      "SourceText": "17. Force Majeure",
+      "Marker": "17. Force Majeure",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p89:y397.44009462553925:x123.82625"
+      ],
+      "PostGroupCandidateIds": [
+        "b1293",
+        "b1455",
+        "b2138",
+        "b2305"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [
+          "b2305"
+        ],
+        "wide": [
+          "b1455",
+          "b2305"
+        ],
+        "supplement": [
+          "s-line-2306",
+          "s-line-3986",
+          "s-window-5506",
+          "s-window-5507",
+          "s-window-5508",
+          "s-window-5509",
+          "s-window-5510",
+          "s-window-5511",
+          "s-window-5512",
+          "s-window-5513",
+          "s-window-5514",
+          "s-window-5515",
+          "s-window-5516",
+          "s-window-5517",
+          "s-window-9893",
+          "s-window-9894",
+          "s-window-9895",
+          "s-window-9896",
+          "s-window-9897",
+          "s-window-9898",
+          "s-window-9899",
+          "s-window-9900",
+          "s-window-9901",
+          "s-window-9902",
+          "s-window-9903",
+          "s-window-9904"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "created",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/gcc-ls/22",
+      "Page": 159,
+      "SourceLineIds": [
+        "159|644.8113552701275|85.295015625|541.9622656249998|19. Termination This Contract may be terminated by either Party as per"
+      ],
+      "SourceSpan": {
+        "startLineId": "159|644.8113552701275|85.295015625|541.9622656249998|19. Termination This Contract may be terminated by either Party as per",
+        "endLineId": "159|644.8113552701275|85.295015625|541.9622656249998|19. Termination This Contract may be terminated by either Party as per"
+      },
+      "SourceText": "19. Termination This Contract may be terminated by either Party as per",
+      "Marker": "19. Termination",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p102:y216.3186434057205:x71.51025"
+      ],
+      "PostGroupCandidateIds": [
+        "b1483",
+        "b2339"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b1483",
+          "b2339"
+        ],
+        "supplement": [
+          "s-line-2673",
+          "s-window-6460",
+          "s-window-6461",
+          "s-window-6462"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/gcc-ls/23",
+      "Page": 161,
+      "SourceLineIds": [
+        "161|484.10060546874985|81.67696875|140.5149375|20. General"
+      ],
+      "SourceSpan": {
+        "startLineId": "161|484.10060546874985|81.67696875|140.5149375|20. General",
+        "endLineId": "161|484.10060546874985|81.67696875|140.5149375|20. General"
+      },
+      "SourceText": "20. General",
+      "Marker": "20. General",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p89:y330.1104495389355:x122.6778125"
+      ],
+      "PostGroupCandidateIds": [
+        "b1294",
+        "b1536",
+        "b2139",
+        "b2390"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [
+          "b2390"
+        ],
+        "wide": [
+          "b1536",
+          "b2390"
+        ],
+        "supplement": []
+      },
+      "ProducerDecisions": {
+        "broad": "created",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/gcc-ls/25",
+      "Page": 163,
+      "SourceLineIds": [
+        "163|502.7309167480462|81.67696875|544.8803281249999|22. Confidentiality Except with the prior written consent ofthe Client the"
+      ],
+      "SourceSpan": {
+        "startLineId": "163|502.7309167480462|81.67696875|544.8803281249999|22. Confidentiality Except with the prior written consent ofthe Client the",
+        "endLineId": "163|502.7309167480462|81.67696875|544.8803281249999|22. Confidentiality Except with the prior written consent ofthe Client the"
+      },
+      "SourceText": "22. Confidentiality Except with the prior written consent ofthe Client the",
+      "Marker": "22. Confidentiality",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p107:y672.5564306640617:x81.6418125"
+      ],
+      "PostGroupCandidateIds": [
+        "b1574",
+        "b2431"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b1574",
+          "b2431"
+        ],
+        "supplement": [
+          "s-line-2846",
+          "s-window-6925",
+          "s-window-6926",
+          "s-window-6927"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/gcc-ls/33",
+      "Page": 165,
+      "SourceLineIds": [
+        "165|263.8962307889346|81.577359375|545.2815625000001|30. Forced Labor The Consultant including its Subconsultants shall not"
+      ],
+      "SourceSpan": {
+        "startLineId": "165|263.8962307889346|81.577359375|545.2815625000001|30. Forced Labor The Consultant including its Subconsultants shall not",
+        "endLineId": "165|263.8962307889346|81.577359375|545.2815625000001|30. Forced Labor The Consultant including its Subconsultants shall not"
+      },
+      "SourceText": "30. Forced Labor The Consultant including its Subconsultants shall not",
+      "Marker": "30. Forced Labor",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p109:y435.5104194415988:x81.870328125"
+      ],
+      "PostGroupCandidateIds": [
+        "b1613",
+        "b2472"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b1613",
+          "b2472"
+        ],
+        "supplement": [
+          "s-line-2945",
+          "s-window-7198",
+          "s-window-7199",
+          "s-window-7200"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/gcc-ls/34",
+      "Page": 166,
+      "SourceLineIds": [
+        "166|672.6172460937494|67.177359375|530.8375625000001|31. Child Labor The Consultant including its Subconsultants shall not"
+      ],
+      "SourceSpan": {
+        "startLineId": "166|672.6172460937494|67.177359375|530.8375625000001|31. Child Labor The Consultant including its Subconsultants shall not",
+        "endLineId": "166|672.6172460937494|67.177359375|530.8375625000001|31. Child Labor The Consultant including its Subconsultants shall not"
+      },
+      "SourceText": "31. Child Labor The Consultant including its Subconsultants shall not",
+      "Marker": "31. Child Labor",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p109:y210.54310546875016:x81.870328125"
+      ],
+      "PostGroupCandidateIds": [
+        "b1618",
+        "b2479"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b1618",
+          "b2479"
+        ],
+        "supplement": [
+          "s-line-2960",
+          "s-window-7243",
+          "s-window-7244",
+          "s-window-7245"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/gcc-ls/55",
+      "Page": 161,
+      "SourceLineIds": [
+        "161|516.8485341099333|201.36529296875|425.45692750000006|C. OBLIGATIONS OF THE CONSULTANT"
+      ],
+      "SourceSpan": {
+        "startLineId": "161|516.8485341099333|201.36529296875|425.45692750000006|C. OBLIGATIONS OF THE CONSULTANT",
+        "endLineId": "161|516.8485341099333|201.36529296875|425.45692750000006|C. OBLIGATIONS OF THE CONSULTANT"
+      },
+      "SourceText": "C. OBLIGATIONS OF THE CONSULTANT",
+      "Marker": "C. OBLIGATIONS OF THE CONSULTANT",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p89:y350.366659307065:x104.85359375"
+      ],
+      "PostGroupCandidateIds": [
+        "b1294",
+        "b1535",
+        "b2138",
+        "b2389"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [
+          "b1535",
+          "b2389"
+        ],
+        "wide": [
+          "b1535",
+          "b2389"
+        ],
+        "supplement": [
+          "s-line-2309",
+          "s-line-3989",
+          "s-window-5515",
+          "s-window-5516",
+          "s-window-5517",
+          "s-window-5518",
+          "s-window-5519",
+          "s-window-5520",
+          "s-window-5521",
+          "s-window-5522",
+          "s-window-5523",
+          "s-window-5524",
+          "s-window-5525",
+          "s-window-5526",
+          "s-window-9902",
+          "s-window-9903",
+          "s-window-9904",
+          "s-window-9905",
+          "s-window-9906",
+          "s-window-9907",
+          "s-window-9908",
+          "s-window-9909",
+          "s-window-9910",
+          "s-window-9911",
+          "s-window-9912",
+          "s-window-9913"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "created",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/fraud-attach-ls/1",
+      "Page": 173,
+      "SourceLineIds": [
+        "173|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+        "173|668.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+      ],
+      "SourceSpan": {
+        "startLineId": "173|689.998504971591|262.990625|365.9421171875001|Attachment 1",
+        "endLineId": "173|668.8050000000001|228.454296875|401.4593984375|Fraud and Corruption"
+      },
+      "SourceText": "Attachment 1 Fraud and Corruption",
+      "Marker": "Attachment 1 Fraud and Corruption",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p94:y629.2879492187501:x135.45359375"
+      ],
+      "PostGroupCandidateIds": [
+        "b1346"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [],
+        "supplement": [
+          "s-window-5741",
+          "s-window-5742",
+          "s-window-5743"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "no_standard_match",
+        "wide": "no_standard_match",
+        "supplement": "no_standard_match"
+      },
+      "GroupOperation": "absorbed_or_span_truncated",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/fraud-attach-ls/2",
+      "Page": 173,
+      "SourceLineIds": [
+        "173|624.2567578125|90.815015625|149.748921875|1. Purpose"
+      ],
+      "SourceSpan": {
+        "startLineId": "173|624.2567578125|90.815015625|149.748921875|1. Purpose",
+        "endLineId": "173|624.2567578125|90.815015625|149.748921875|1. Purpose"
+      },
+      "SourceText": "1. Purpose",
+      "Marker": "1. Purpose",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p81:y639.7367578125:x87.215015625"
+      ],
+      "PostGroupCandidateIds": [
+        "b1215",
+        "b1775",
+        "b2616"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [
+          "b1215",
+          "b1775",
+          "b2616"
+        ],
+        "wide": [
+          "b1215",
+          "b1775",
+          "b2616"
+        ],
+        "supplement": []
+      },
+      "ProducerDecisions": {
+        "broad": "created",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/fraud-attach-ls/3",
+      "Page": 173,
+      "SourceLineIds": [
+        "173|571.0544419642858|90.31696875|179.57018750000003|2. Requirements"
+      ],
+      "SourceSpan": {
+        "startLineId": "173|571.0544419642858|90.31696875|179.57018750000003|2. Requirements",
+        "endLineId": "173|571.0544419642858|90.31696875|179.57018750000003|2. Requirements"
+      },
+      "SourceText": "2. Requirements",
+      "Marker": "2. Requirements",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p81:y581.3744419642857:x86.71696875"
+      ],
+      "PostGroupCandidateIds": [
+        "b1217",
+        "b1777",
+        "b2618"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [
+          "b1217",
+          "b1777",
+          "b2618"
+        ],
+        "wide": [
+          "b1217",
+          "b1777",
+          "b2618"
+        ],
+        "supplement": []
+      },
+      "ProducerDecisions": {
+        "broad": "created",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/arb-ls/1",
+      "Page": 182,
+      "SourceLineIds": [
+        "182|431.14864257812553|206.037734375|520.615890625|arbitration shall be heard by a sole arbitrator or an arbitration panel"
+      ],
+      "SourceSpan": {
+        "startLineId": "182|431.14864257812553|206.037734375|520.615890625|arbitration shall be heard by a sole arbitrator or an arbitration panel",
+        "endLineId": "182|431.14864257812553|206.037734375|520.615890625|arbitration shall be heard by a sole arbitrator or an arbitration panel"
+      },
+      "SourceText": "arbitration shall be heard by a sole arbitrator or an arbitration panel",
+      "Marker": "1. Selection of Arbitrators",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p131:y170.93864257812507:x224.037734375"
+      ],
+      "PostGroupCandidateIds": [
+        "b2002",
+        "b2803"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b2002",
+          "b2803"
+        ],
+        "supplement": [
+          "s-window-9353",
+          "s-window-9354",
+          "s-window-9355"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "shape_rejected"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/arb-ls/3",
+      "Page": 183,
+      "SourceLineIds": [
+        "183|350.39826171875035|196.736328125|538.1419843749998|3. Substitute Arbitrators. If for any reason an arbitrator is unable to"
+      ],
+      "SourceSpan": {
+        "startLineId": "183|350.39826171875035|196.736328125|538.1419843749998|3. Substitute Arbitrators. If for any reason an arbitrator is unable to",
+        "endLineId": "183|350.39826171875035|196.736328125|538.1419843749998|3. Substitute Arbitrators. If for any reason an arbitrator is unable to"
+      },
+      "SourceText": "3. Substitute Arbitrators. If for any reason an arbitrator is unable to",
+      "Marker": "3. Substitute Arbitrators",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p133:y665.8082617187503:x196.736328125"
+      ],
+      "PostGroupCandidateIds": [
+        "b2027",
+        "b2826"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b2027",
+          "b2826"
+        ],
+        "supplement": [
+          "s-line-3796",
+          "s-window-9485",
+          "s-window-9486",
+          "s-window-9487"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/arb-ls/4",
+      "Page": 183,
+      "SourceLineIds": [
+        "183|295.3036680327867|196.4375|538.8202656249999|4. Nationality and Qualifications of Arbitrators. The sole arbitrator"
+      ],
+      "SourceSpan": {
+        "startLineId": "183|295.3036680327867|196.4375|538.8202656249999|4. Nationality and Qualifications of Arbitrators. The sole arbitrator",
+        "endLineId": "183|295.3036680327867|196.4375|538.8202656249999|4. Nationality and Qualifications of Arbitrators. The sole arbitrator"
+      },
+      "SourceText": "4. Nationality and Qualifications of Arbitrators. The sole arbitrator",
+      "Marker": "4. Nationality and Qualifications of Arbitrators",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p133:y610.7136680327875:x196.4375"
+      ],
+      "PostGroupCandidateIds": [
+        "b2029",
+        "b2828"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b2029",
+          "b2828"
+        ],
+        "supplement": [
+          "s-line-3799",
+          "s-window-9485",
+          "s-window-9486",
+          "s-window-9487",
+          "s-window-9494",
+          "s-window-9495",
+          "s-window-9496"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/arb-ls/5",
+      "Page": 184,
+      "SourceLineIds": [
+        "184|571.1082226562502|178.79421875|476.3457499999997|5. Miscellaneous. In any arbitration proceeding hereunder:"
+      ],
+      "SourceSpan": {
+        "startLineId": "184|571.1082226562502|178.79421875|476.3457499999997|5. Miscellaneous. In any arbitration proceeding hereunder:",
+        "endLineId": "184|571.1082226562502|178.79421875|476.3457499999997|5. Miscellaneous. In any arbitration proceeding hereunder:"
+      },
+      "SourceText": "5. Miscellaneous. In any arbitration proceeding hereunder:",
+      "Marker": "5. Miscellaneous",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p133:y322.6582226562497:x196.82421875"
+      ],
+      "PostGroupCandidateIds": [
+        "b2043",
+        "b2843"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b2043",
+          "b2843"
+        ],
+        "supplement": [
+          "s-line-3818",
+          "s-window-9551",
+          "s-window-9552",
+          "s-window-9553"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/gcc-ls/61",
+      "Page": 175,
+      "SourceLineIds": [
+        "175|709.5189535030242|187.56951171875|437.8557453125001|III. Special Conditions of Contract"
+      ],
+      "SourceSpan": {
+        "startLineId": "175|709.5189535030242|187.56951171875|437.8557453125001|III. Special Conditions of Contract",
+        "endLineId": "175|709.5189535030242|187.56951171875|437.8557453125001|III. Special Conditions of Contract"
+      },
+      "SourceText": "III. Special Conditions of Contract",
+      "Marker": "III. Special Conditions of Contract",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p90:y370.5931047952593:x72.322828125"
+      ],
+      "PostGroupCandidateIds": [
+        "b1306",
+        "b1808",
+        "b2150",
+        "b2646"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [
+          "b1808",
+          "b2646"
+        ],
+        "wide": [
+          "b1306",
+          "b1808",
+          "b2150",
+          "b2646"
+        ],
+        "supplement": [
+          "s-line-2348",
+          "s-line-4025",
+          "s-block-236",
+          "s-block-350",
+          "s-window-5617",
+          "s-window-5618",
+          "s-window-5619",
+          "s-window-5620",
+          "s-window-5621",
+          "s-window-5622",
+          "s-window-5623",
+          "s-window-5624",
+          "s-window-5625",
+          "s-window-5627",
+          "s-window-5628",
+          "s-window-8505",
+          "s-window-8506",
+          "s-window-8507",
+          "s-window-9995",
+          "s-window-9996",
+          "s-window-9997",
+          "s-window-9998",
+          "s-window-9999",
+          "s-window-10000",
+          "s-window-10001",
+          "s-window-10002",
+          "s-window-10003",
+          "s-window-10005",
+          "s-window-10006"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "created",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/gcc-ls/64",
+      "Page": 185,
+      "SourceLineIds": [
+        "185|441.92830029296874|227.0946875|417.143948125|APPENDIX B - KEY EXPERTS"
+      ],
+      "SourceSpan": {
+        "startLineId": "185|441.92830029296874|227.0946875|417.143948125|APPENDIX B - KEY EXPERTS",
+        "endLineId": "185|441.92830029296874|227.0946875|417.143948125|APPENDIX B - KEY EXPERTS"
+      },
+      "SourceText": "APPENDIX B - KEY EXPERTS",
+      "Marker": "APPENDIX B - KEY EXPERTS",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p90:y310.87338188559283:x90.11775"
+      ],
+      "PostGroupCandidateIds": [
+        "b1307",
+        "b1349",
+        "b2055",
+        "b2151",
+        "b2193",
+        "b2857"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b1349",
+          "b2055",
+          "b2193",
+          "b2857"
+        ],
+        "supplement": [
+          "s-line-3841",
+          "s-window-5627",
+          "s-window-5628",
+          "s-window-5629",
+          "s-window-5630",
+          "s-window-5631",
+          "s-window-10005",
+          "s-window-10006",
+          "s-window-10007",
+          "s-window-10008",
+          "s-window-10009"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "030",
+      "DocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "GoldStableId": "030/gcc-ls/67",
+      "Page": 190,
+      "SourceLineIds": [
+        "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS"
+      ],
+      "SourceSpan": {
+        "startLineId": "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS",
+        "endLineId": "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS"
+      },
+      "SourceText": "APPENDIX E - CODE OF CONDUCT FOR EXPERTS",
+      "Marker": "APPENDIX E - CODE OF CONDUCT FOR EXPERTS",
+      "SourceRepresentation": "represented_in_trace_window",
+      "PreGroupCandidateIds": [
+        "p146:y233.865608258928:x90.11775"
+      ],
+      "PostGroupCandidateIds": [
+        "b2152",
+        "b2194",
+        "b2919"
+      ],
+      "ProducerCandidateIds": {
+        "broad": [],
+        "wide": [
+          "b2152",
+          "b2194",
+          "b2919"
+        ],
+        "supplement": [
+          "s-line-5442"
+        ]
+      },
+      "ProducerDecisions": {
+        "broad": "style_not_selected",
+        "wide": "created",
+        "supplement": "created_or_deduped"
+      },
+      "GroupOperation": "preserved",
+      "FirstLoss": "title trace resolves to a different source occurrence",
+      "Owner": "UNRESOLVED",
+      "CensusStatus": "absent",
+      "EvidenceStrength": "diagnostic_trace_only",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": []
+    },
+    {
+      "DocumentId": "043",
+      "DocumentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "GoldStableId": "043/heading/014",
+      "Page": 68,
+      "SourceLineIds": [
+        "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+        "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+      ],
+      "SourceSpan": {
+        "startLineId": "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+        "endLineId": "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+      },
+      "SourceText": "Appendix Glossary of Terms",
+      "Marker": "Appendix",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b1242",
+        "b1243"
+      ]
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/003",
+      "Page": 5,
+      "SourceLineIds": [
+        "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+        "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+      ],
+      "SourceSpan": {
+        "startLineId": "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+        "endLineId": "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+      },
+      "SourceText": "Chapter 1 An Energy Function",
+      "Marker": "Chapter 1",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b45",
+        "b46"
+      ]
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/004",
+      "Page": 9,
+      "SourceLineIds": [
+        "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+        "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+        "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+      ],
+      "SourceSpan": {
+        "startLineId": "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+        "endLineId": "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+      },
+      "SourceText": "Chapter 2 Basic Ideas in Machine Learning with Classification",
+      "Marker": "Chapter 2",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b88",
+        "b89",
+        "b90"
+      ]
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/022",
+      "Page": 43,
+      "SourceLineIds": [
+        "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+        "43|540.2311425295455|107.8356969|411.73050032000003|Building blocks of neural",
+        "43|509.72642258125|107.9100582|214.61852370000003|networks"
+      ],
+      "SourceSpan": {
+        "startLineId": "43|588.8273507812501|108.150075|208.29501374999995|Chapter 3",
+        "endLineId": "43|509.72642258125|107.9100582|214.61852370000003|networks"
+      },
+      "SourceText": "Chapter 3 Building blocks of neural networks",
+      "Marker": "Chapter 3",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b742",
+        "b743",
+        "b744"
+      ]
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/027",
+      "Page": 53,
+      "SourceLineIds": [
+        "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+        "53|536.876147385|107.8109098|372.59166942|Probabilistic Machine",
+        "53|505.93140865000004|107.8109098|441.6683597|Learning and Unsupervised",
+        "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+      ],
+      "SourceSpan": {
+        "startLineId": "53|586.99143046875|108.150075|208.62561374999996|Chapter 4",
+        "endLineId": "53|475.9388717499999|107.8109098|213.53037001000004|Learning"
+      },
+      "SourceText": "Chapter 4 Probabilistic Machine Learning and Unsupervised Learning",
+      "Marker": "Chapter 4",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b923",
+        "b924",
+        "b925",
+        "b926"
+      ]
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/035",
+      "Page": 71,
+      "SourceLineIds": [
+        "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+        "71|537.5667724800002|107.8109098|384.15485156999995|Undirected Generative",
+        "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+      ],
+      "SourceSpan": {
+        "startLineId": "71|587.57335078125|108.150075|208.10905124999996|Chapter 5",
+        "endLineId": "71|508.0576019916666|107.8852711|194.03035844000004|Models"
+      },
+      "SourceText": "Chapter 5 Undirected Generative Models",
+      "Marker": "Chapter 5",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b1272",
+        "b1273"
+      ]
+    },
+    {
+      "DocumentId": "058",
+      "DocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "GoldStableId": "058/heading/041",
+      "Page": 87,
+      "SourceLineIds": [
+        "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6",
+        "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+      ],
+      "SourceSpan": {
+        "startLineId": "87|588.9373507812501|108.150075|208.29501374999995|Chapter 6",
+        "endLineId": "87|540.0794594000001|107.8109098|285.37082194000004|Further Topics"
+      },
+      "SourceText": "Chapter 6 Further Topics",
+      "Marker": "Chapter 6",
+      "SourceRepresentation": "not_traced",
+      "PreGroupCandidateIds": [],
+      "PostGroupCandidateIds": [],
+      "ProducerCandidateIds": {},
+      "ProducerDecisions": {},
+      "GroupOperation": "not_traced",
+      "FirstLoss": "candidate touches reviewed source lines but covers only a subset",
+      "Owner": "CANDIDATE_BOUNDARY_MISMATCH",
+      "CensusStatus": "partial",
+      "EvidenceStrength": "insufficient",
+      "ExactSourceLineMatch": true,
+      "OverlappingCandidates": [
+        "b1555",
+        "b1556"
+      ]
+    }
+  ]
+}
