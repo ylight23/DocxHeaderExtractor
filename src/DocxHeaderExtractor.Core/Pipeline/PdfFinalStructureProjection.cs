@@ -204,4 +204,6 @@ public sealed record PdfFinalHeading(
     [property: JsonPropertyName("levelReason")] string? LevelReason,
     [property: JsonPropertyName("parentReason")] string? ParentReason,
     [property: JsonPropertyName("authority")] string Authority,
+    // Additive in schema v2: old artifacts simply omit this field; new products use it to preserve
+    // the canonical paragraph when the heading span starts after offset zero.
     [property: JsonPropertyName("sourceText")] string SourceText);

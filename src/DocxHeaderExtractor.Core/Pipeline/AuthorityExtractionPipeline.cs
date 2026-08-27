@@ -95,7 +95,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 RouteAudit = audit,
                 Diagnostics = diagnostics,
                 DecisionAudit = null,
-                Provenance = BuildProvenance(analyst, audit,
+                Provenance = BuildProvenance(audit,
                     !_options.DisableLlm && _options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang),
             };
         }
@@ -129,7 +129,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         return PdfProductOutputSerializer.Serialize(finalStructure, PdfOutputDecisionPolicy.Decide(finalStructure));
     }
 
-    private static RouteExecutionAudit? ApplyQuarantine(
+    internal static RouteExecutionAudit? ApplyQuarantine(
         RouteExecutionAudit? audit,
         IReadOnlyList<HeadingRecord> headings,
         IReadOnlySet<int>? quarantinedIndexes,
@@ -156,25 +156,25 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         };
     }
 
-    private static OutlineRunProvenance BuildProvenance(IHeaderClassifier? analyst, RouteExecutionAudit? audit,
+    private static OutlineRunProvenance BuildProvenance(RouteExecutionAudit? audit,
         bool sentDataExternally)
     {
-        var passes = new List<OutlinePass>
-        {
-            new("source-facts", 1, audit?.CandidatesAvailable ?? 0, false),
-            new("proposal-validation", 1, audit?.BlockDecisions.Count ?? 0, false),
-            new("deterministic-hierarchy", 1, audit?.ValidatedStructures.Count ?? 0, false),
-            new("output-policy", 1, audit?.ValidatedStructures.Count ?? 0, false),
-        };
-        if (analyst is not null)
-        {
-            passes.Insert(1, new OutlinePass("semantic-role", 1, audit?.CandidatesSelected ?? 0, sentDataExternally));
-            passes.Insert(2, new OutlinePass("heading-span", 1, audit?.CandidatesSelected ?? 0, sentDataExternally));
-            if (audit?.HierarchyProposals.Count > 0)
-                passes.Insert(3, new OutlinePass("semantic-hierarchy", 1, audit.ValidatedStructures.Count, sentDataExternally));
-        }
+        if (audit is null)
+            return new OutlineRunProvenance("deterministic-ooxml", false, []);
+
+        var passes = new List<OutlinePass>();
+        if (audit.SemanticLane is { Scheduled: > 0, Completed: > 0 })
+            passes.Add(new("semantic-role", audit.SemanticLane.Completed, audit.SemanticLane.Scheduled, sentDataExternally));
+        if (audit.SpanLane is { Scheduled: > 0, Completed: > 0 })
+            passes.Add(new("heading-span", audit.SpanLane.Completed, audit.SpanLane.Scheduled, sentDataExternally));
+        if (audit.HierarchyProposals.Count > 0)
+            passes.Add(new("semantic-hierarchy", audit.HierarchyProposals.Count, audit.HierarchyProposals.Count, sentDataExternally));
+        passes.Add(new("source-facts", 1, audit.CandidatesAvailable, false));
+        passes.Add(new("proposal-validation", 1, audit.BlockDecisions.Count, false));
+        passes.Add(new("deterministic-hierarchy", 1, audit.ValidatedStructures.Count, false));
+        passes.Add(new("output-policy", 1, audit.ValidatedStructures.Count, false));
         return new OutlineRunProvenance(
-            analyst?.ModelName ?? "deterministic-ooxml",
+            audit.SemanticLane is not null || audit.SpanLane is not null ? "configured-analyst" : "deterministic-ooxml",
             sentDataExternally,
             passes);
     }
