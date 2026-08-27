@@ -995,7 +995,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
         }
         else
         {
-            var result = await DocxAuthorityPipeline.RunAsync(slim, modeReport, analyst, ct);
+            var result = await DocxAuthorityPipeline.RunAsync(slim, modeReport, analyst, ct: ct);
             rawHeadings = result.Headings;
             audit = result.Audit;
             reason = "docx-source-authority";

@@ -31,6 +31,8 @@ public sealed class AgentKeyPackageActionTests
         });
 
         Assert.NotNull(run.Writeback);
+        Assert.True(run.Outline.Headings.Count > 0,
+            string.Join(" | ", run.Trace.Select(e => $"{e.Stage}:{e.Kind}:{e.Message}")));
         Assert.True(Directory.Exists(run.Writeback.OutputPath));
         Assert.InRange(run.Writeback.Applied, 1, 2);
         Assert.Contains(run.Trace, e => e.Stage == "guardrail.key_package_target" && e.Kind == AgentRunEventKind.Passed);

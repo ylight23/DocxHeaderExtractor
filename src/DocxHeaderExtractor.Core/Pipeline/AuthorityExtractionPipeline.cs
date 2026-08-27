@@ -46,25 +46,21 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             var slim = new DocxSlimExtractor(_options.Extraction).Extract(conversion.Path);
             var mode = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
             var diagnostics = DocumentDiagnosticRunner.Analyze(slim, mode);
-            if (_options.DisableLlm)
-                return Empty(inputPath, slim, mode, diagnostics, started);
-
-            var analyst = await GetAnalystAsync(ct);
+            var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
             var pdf = PdfTextbookOutline.FindSiblingPdf(inputPath);
             IReadOnlyList<HeadingRecord> rawHeadings;
             RouteExecutionAudit? audit;
             string route;
             string reason;
-            if (!string.IsNullOrWhiteSpace(pdf))
+            if (!string.IsNullOrWhiteSpace(pdf) && analyst is not null)
             {
-                using var visual = CreateVisualAnalyst();
                 var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
                     inputPath, slim, analyst,
                     maximumAnalystBlocks: _options.PdfFirstAnalystBlocks,
                     includeAllVisualStyles: true,
                     includeSupplementCandidates: true,
                     maximumVisualRegions: _options.PdfFirstVisualRegions,
-                    visualAnalyst: visual,
+                    visualAnalyst: null,
                     ct: ct);
                 rawHeadings = result.Headings;
                 audit = result.Audit;
@@ -73,7 +69,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             }
             else
             {
-                var result = await DocxAuthorityPipeline.RunAsync(slim, mode, analyst, ct);
+                var result = await DocxAuthorityPipeline.RunAsync(slim, mode, analyst, quarantinedIndexes, ct);
                 rawHeadings = result.Headings;
                 audit = result.Audit;
                 route = "docx-authority-v1";
@@ -93,14 +89,14 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 Headings = headings,
                 ProductOutput = product,
                 ElapsedMs = Environment.TickCount64 - started,
-                Model = analyst.ModelName,
+                Model = analyst?.ModelName,
                 DocumentMode = mode,
                 DeterministicRoute = route,
                 RouteAudit = audit,
                 Diagnostics = diagnostics,
                 DecisionAudit = null,
-                Provenance = new OutlineRunProvenance(_options.Backend.ToString(),
-                    !_options.DisableLlm && _options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang, []),
+                Provenance = BuildProvenance(analyst, audit,
+                    !_options.DisableLlm && _options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang),
             };
         }
         finally
@@ -124,14 +120,6 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         return _analyst;
     }
 
-    private IPdfVisualQuestion? CreateVisualAnalyst() =>
-        _options.Backend == InferenceBackend.Sglang &&
-        string.Equals(_options.Sglang.Endpoint.Host, "integrate.api.nvidia.com", StringComparison.OrdinalIgnoreCase) &&
-        !string.IsNullOrWhiteSpace(_options.Sglang.ApiKey)
-            ? new NvidiaNimVisualQuestion(_options.Sglang.Endpoint, _options.Sglang.ApiKey, _options.Sglang.Model,
-                _options.Sglang.RequestTimeoutSeconds, _options.Sglang.TransientRequestRetries)
-            : null;
-
     private static PdfProductOutput BuildProductOutput(string docxPath, RouteExecutionAudit audit,
         IReadOnlyList<HeadingRecord> rawHeadings)
     {
@@ -141,18 +129,23 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         return PdfProductOutputSerializer.Serialize(finalStructure, PdfOutputDecisionPolicy.Decide(finalStructure));
     }
 
-    private static DocumentOutline Empty(string path, SlimDocument slim, DocumentModeReport mode,
-        DocumentDiagnosticReport diagnostics, long started) => new()
+    private static OutlineRunProvenance BuildProvenance(IHeaderClassifier? analyst, RouteExecutionAudit? audit,
+        bool sentDataExternally)
     {
-        File = Path.GetFileName(path),
-        ParagraphCount = slim.Paragraphs.Count,
-        CandidateCount = 0,
-        Headings = [],
-        ElapsedMs = Environment.TickCount64 - started,
-        DocumentMode = mode,
-        DeterministicRoute = "authority-v1-no-model",
-        Diagnostics = diagnostics,
-    };
+        var passes = new List<OutlinePass>
+        {
+            new("source-facts", 1, audit?.CandidatesAvailable ?? 0, false),
+            new("proposal-validation", 1, audit?.BlockDecisions.Count ?? 0, false),
+            new("deterministic-hierarchy", 1, audit?.ValidatedStructures.Count ?? 0, false),
+            new("output-policy", 1, audit?.ValidatedStructures.Count ?? 0, false),
+        };
+        if (analyst is not null)
+            passes.Insert(1, new OutlinePass("semantic-role-and-span", 2, audit?.CandidatesSelected ?? 0, true));
+        return new OutlineRunProvenance(
+            analyst?.ModelName ?? "deterministic-ooxml",
+            sentDataExternally,
+            passes);
+    }
 
     private static string FileSha256(string path) =>
         Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();

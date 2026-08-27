@@ -42,6 +42,9 @@ internal static class PdfProductOutlineAdapter
         SourceId = heading.Id,
         Level = heading.Level,
         Text = heading.Text,
+        // ProductOutput text is already the validated source slice. Carry it through the
+        // compatibility shell so downstream source-span invariants can inspect the same fact.
+        OriginalText = heading.Text,
         HeadingSpan = new TextOffsetSpan(heading.Span.Start, heading.Span.End),
         BoundarySource = BoundarySource,
         Source = HeadingSource.Model,

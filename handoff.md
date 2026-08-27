@@ -12404,3 +12404,27 @@ or inferred a heading role. The frozen row retains source SHA-256, exact PDF sou
 and geometry, every carrier block, and the current primary carrier's actual scope/penalty/score/
 rank/selection/emittable chain. B2 must add a separate role-only review artifact for these exact
 identities; B3 traces only reviewed outline headings through the already-frozen actual behavior.
+# PR #2 authority cutover update (2026-08-27)
+
+Implemented in the current branch:
+
+- Normal extraction is routed through `AuthorityExtractionPipeline`; normal CLI/Web writeback uses `PdfProductWritebackTool`.
+- DOCX no-LLM now creates deterministic proposals only from built-in heading style, `outlineLvl`, or OOXML numbering-to-heading evidence, then uses the shared `PdfProposalValidator` and deterministic hierarchy.
+- DOCX parser evidence is explicitly attributed to `docx_parser`/`ooxml_parser`; the shared validator trusts those origins without a second DOCX eligibility predicate.
+- Quarantine indexes are removed while building the authority source, before proposal, validation, hierarchy, and output.
+- ProductOutput text/source identity is preserved through the compatibility shell so downstream grounding invariants remain valid.
+- Normal authority does not construct a VLM adapter. Visual routes remain explicit diagnostic/evaluation paths.
+- Partial key-package generation now uses the authority pipeline instead of `HeaderExtractionPipeline`.
+
+Verification:
+
+- `win-x64` build: PASS, 0 errors.
+- Focused authority/harness/writeback/release suite: 40 PASS, 0 FAIL.
+- Full suite: not rerun by design.
+- Provider/VLM live calls: not made.
+
+Remaining PR #2 work:
+
+- Complete static/runtime architecture guards for every normal CLI/Web/MCP route and document the remaining `HeaderExtractionPipeline` callers as diagnostic/evaluation-only.
+- Run the focused deterministic/replay/provenance, Web, MCP, and provider-zero smoke gates on the final branch state.
+- Do not merge main or begin document-004 accuracy remediation in this cutover.
