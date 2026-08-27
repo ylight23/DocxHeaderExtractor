@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_evidence_expansion_candidate_ranking",
+  "phase": "post-round5-model-free-cross-document-evidence-expansion",
+  "modelCalls": false,
+  "productionChanges": false,
+  "goldUsedForRuntimeSelection": false,
+  "candidateIdCrossRunAuthority": false,
+  "scope": [
+    "028",
+    "029",
+    "030",
+    "003",
+    "004",
+    "041",
+    "042",
+    "043",
+    "056",
+    "057",
+    "058"
+  ],
+  "documents": [
+    {
+      "documentId": "028",
+      "documentSha256": "f769b70bfb6a7f0ac7d62aea78ce9914eba629a5a781d73369e84a85fed47634",
+      "sourceOnlyCandidateCount": null,
+      "sourceOnlyRepresentationCounts": null,
+      "sourceExtraction": "not_reexecuted_in_lightweight_inventory",
+      "occurrenceAuthority": "missing",
+      "producerRecurrenceStatus": "not_proven_without_occurrence_trace"
+    },
+    {
+      "documentId": "029",
+      "documentSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceOnlyCandidateCount": null,
+      "sourceOnlyRepresentationCounts": null,
+      "sourceExtraction": "not_reexecuted_in_lightweight_inventory",
+      "occurrenceAuthority": "missing",
+      "producerRecurrenceStatus": "not_proven_without_occurrence_trace"
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "sourceOnlyCandidateCount": null,
+      "sourceOnlyRepresentationCounts": null,
+      "sourceExtraction": "not_reexecuted_in_lightweight_inventory",
+      "occurrenceAuthority": "committed_review_packet",
+      "producerRecurrenceStatus": "occurrence_packet_available_but_exact_trace_deferred",
+      "reviewedOccurrenceCount": 239,
+      "firstLossTraceStatus": "not_run_in_lightweight_inventory"
+    },
+    {
+      "documentId": "003",
+      "documentSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceOnlyCandidateCount": null,
+      "sourceOnlyRepresentationCounts": null,
+      "sourceExtraction": "not_reexecuted_in_lightweight_inventory",
+      "occurrenceAuthority": "committed_review_packet",
+      "producerRecurrenceStatus": "occurrence_packet_available_but_exact_trace_deferred",
+      "reviewedOccurrenceCount": 230,
+      "firstLossTraceStatus": "not_run_in_lightweight_inventory"
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "sourceOnlyCandidateCount": null,
+      "sourceOnlyRepresentationCounts": null,
+      "sourceExtraction": "not_reexecuted_in_lightweight_inventory",
+      "occurrenceAuthority": "committed_review_packet",
+      "producerRecurrenceStatus": "occurrence_packet_available_but_exact_trace_deferred",
+      "reviewedOccurrenceCount": 93,
+      "firstLossTraceStatus": "not_run_in_lightweight_inventory"
+    },
+    {
+      "documentId": "041",
+      "documentSha256": "a28a2845317be67e0edd675e7730f683fedbe8febc94ebd12a4971a3a36a32d1",
+      "sourceOnlyCandidateCount": null,
+      "sourceOnlyRepresentationCounts": null,
+      "sourceExtraction": "not_reexecuted_in_lightweight_inventory",
+      "occurrenceAuthority": "missing",
+      "producerRecurrenceStatus": "not_proven_without_occurrence_trace"
+    },
+    {
+      "documentId": "042",
+      "documentSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceOnlyCandidateCount": null,
+      "sourceOnlyRepresentationCounts": null,
+      "sourceExtraction": "not_reexecuted_in_lightweight_inventory",
+      "occurrenceAuthority": "committed_review_packet",
+      "producerRecurrenceStatus": "occurrence_packet_available_but_exact_trace_deferred",
+      "reviewedOccurrenceCount": 159,
+      "firstLossTraceStatus": "not_run_in_lightweight_inventory"
+    },
+    {
+      "documentId": "043",
+      "documentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "sourceOnlyCandidateCount": null,
+      "sourceOnlyRepresentationCounts": null,
+      "sourceExtraction": "not_reexecuted_in_lightweight_inventory",
+      "occurrenceAuthority": "committed_review_packet",
+      "producerRecurrenceStatus": "occurrence_packet_available_but_exact_trace_deferred",
+      "reviewedOccurrenceCount": 43,
+      "firstLossTraceStatus": "not_run_in_lightweight_inventory"
+    },
+    {
+      "documentId": "056",
+      "documentSha256": "9d567332514f7ed149f9b1e56830972b5080ffbec692ff26f1d675486dd0b683",
+      "sourceOnlyCandidateCount": null,
+      "sourceOnlyRepresentationCounts": null,
+      "sourceExtraction": "not_reexecuted_in_lightweight_inventory",
+      "occurrenceAuthority": "missing",
+      "producerRecurrenceStatus": "not_proven_without_occurrence_trace"
+    },
+    {
+      "documentId": "057",
+      "documentSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceOnlyCandidateCount": null,
+      "sourceOnlyRepresentationCounts": null,
+      "sourceExtraction": "not_reexecuted_in_lightweight_inventory",
+      "occurrenceAuthority": "committed_review_packet",
+      "producerRecurrenceStatus": "occurrence_packet_available_but_exact_trace_deferred",
+      "reviewedOccurrenceCount": 777,
+      "firstLossTraceStatus": "not_run_in_lightweight_inventory"
+    },
+    {
+      "documentId": "058",
+      "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "sourceOnlyCandidateCount": null,
+      "sourceOnlyRepresentationCounts": null,
+      "sourceExtraction": "not_reexecuted_in_lightweight_inventory",
+      "occurrenceAuthority": "committed_review_packet",
+      "producerRecurrenceStatus": "occurrence_packet_available_but_exact_trace_deferred",
+      "reviewedOccurrenceCount": 47,
+      "firstLossTraceStatus": "not_run_in_lightweight_inventory"
+    }
+  ],
+  "decision": {
+    "candidateProducerRecurrence": "not_yet_proven",
+    "rankingFailureRecurrence": "not_yet_proven",
+    "candidateRemediation": "not_justified",
+    "rankerRemediation": "unresolved",
+    "nextGate": "review exact lineage/first-loss distributions before any remediation or learned reranker"
+  }
+}
