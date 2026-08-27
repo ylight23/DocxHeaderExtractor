@@ -1,0 +1,2079 @@
+{
+  "schemaVersion": 2,
+  "artifactKind": "accuracy_round6c_semantic_first_loss_ledger",
+  "phase": "round6c",
+  "modelCalls": false,
+  "semanticRerun": false,
+  "productionChanges": false,
+  "sourceAuthority": "Round 6B K=160 selection/role/span checkpoint \u002B canonical source facts \u002B frozen silver heading occurrences",
+  "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is diagnostic only",
+  "trueHeading": {
+    "selected": 80,
+    "roleSurvival": 80,
+    "spanResolution": 76,
+    "exactSpan": null,
+    "validated": 73,
+    "grounded": null,
+    "emittedExact": null,
+    "firstLossCounts": {
+      "UNRESOLVED": 73,
+      "VALIDATOR_REJECTION": 2,
+      "SPAN_DEGENERATE": 1,
+      "SPAN_UNRESOLVED": 4
+    },
+    "semanticPositiveClassRecall": null,
+    "spanResolutionConditionalAccuracy": 0.95,
+    "exactSpanConditionalAccuracy": null,
+    "validatorSurvival": null,
+    "groundingSurvival": null,
+    "outputPrecisionProxy": null,
+    "supportedOutputCount": null,
+    "unmatchedOutputCount": null
+  },
+  "nonHeading": {
+    "selected": null,
+    "roleHeadingTopicFalsePositive": null,
+    "spanResolvedFalsePositive": null,
+    "validatedFalsePositive": null,
+    "emittedUnmatched": null,
+    "notMeasured": "The frozen silver artifact contains heading occurrences only; the blind source packet has no reviewed labels. Non-heading identity/labels were not retained."
+  },
+  "perDocument": [
+    {
+      "documentId": "004",
+      "sourceDocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "selectedCandidates": 160,
+      "selectedReviewedHeadings": 55,
+      "roleSurvival": 55,
+      "spanSurvival": 55,
+      "validated": 53,
+      "grounded": null,
+      "emittedExact": null,
+      "firstLossCounts": {
+        "UNRESOLVED": 53,
+        "VALIDATOR_REJECTION": 1,
+        "SPAN_DEGENERATE": 1
+      },
+      "validatorTraceAvailable": true,
+      "groundingTraceAvailable": false,
+      "emittedIdentityReplayed": false,
+      "missingDownstreamAuthority": [
+        "semantic_cluster_decisions",
+        "per_candidate_grounding_status",
+        "per_candidate_output_status"
+      ],
+      "items": [
+        {
+          "goldStableId": "004/chapter/1",
+          "candidateIdsDiagnostic": [
+            "s-window-4"
+          ],
+          "sourceLineIds": [
+            "1|546.5598208102417|283.08529257324216|340.93931996039066|Chapter I",
+            "1|525.384495205509|232.57899350097654|391.39354694761704|GENERAL PROVISIONS"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 28
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/1",
+          "candidateIdsDiagnostic": [
+            "b8"
+          ],
+          "sourceLineIds": [
+            "1|479.7105736071158|120.609687421875|444.5373025173798|Article 1. Scope of regulation vn"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 33
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/2",
+          "candidateIdsDiagnostic": [
+            "b11"
+          ],
+          "sourceLineIds": [
+            "1|420.15726557718153|120.609687421875|315.0225541126953|Article 2. SubLjectus oaf application"
+          ],
+          "sourceSpan": {
+            "start": 8,
+            "end": 38
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/3",
+          "candidateIdsDiagnostic": [
+            "b14"
+          ],
+          "sourceLineIds": [
+            "1|359.61630697322596|120.609687421875|317.08113935984375|Article 3. Interpretation of terms"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 34
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/4",
+          "candidateIdsDiagnostic": [
+            "b64"
+          ],
+          "sourceLineIds": [
+            "3|505.5645854651992|120.609687421875|513.2478796398437|Article 4. Application of the Law on Investment and relevant laws"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 65
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/5",
+          "candidateIdsDiagnostic": [
+            "b92"
+          ],
+          "sourceLineIds": [
+            "4|414.943787590402|120.609687421875|346.7476382298438|Article 5. Business investment policies"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 39
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/6",
+          "candidateIdsDiagnostic": [
+            "b106"
+          ],
+          "sourceLineIds": [
+            "5|760.9450272033463|120.609687421875|492.3665754500784|Article 6. Sectors and trades banned from business investment"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 61
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/7",
+          "candidateIdsDiagnostic": [
+            "b119"
+          ],
+          "sourceLineIds": [
+            "5|405.24091767554887|120.609687421875|529.053224790078|Article 7. Sectors and trades subject to conditional business investment"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 52
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/chapter/2",
+          "candidateIdsDiagnostic": [
+            "s-window-686"
+          ],
+          "sourceLineIds": [
+            "7|340.9618234426541|298.08529257324216|361.49154401039067|Chapter II",
+            "7|319.6805130690917|232.41106401855467|426.4938093976171|INVESTMENT GUARANTEES"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 32
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/10",
+          "candidateIdsDiagnostic": [
+            "b178"
+          ],
+          "sourceLineIds": [
+            "7|274.22505358559056|120.609687421875|386.52545271054686|Article 10. Guarantee of property ownership"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 39
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/11",
+          "candidateIdsDiagnostic": [
+            "b183"
+          ],
+          "sourceLineIds": [
+            "7|127.68880595214843|120.609687421875|443.0338896498437|Article 11. Guarantee of business investment activities"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 55
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/13",
+          "candidateIdsDiagnostic": [
+            "b210"
+          ],
+          "sourceLineIds": [
+            "8|232.15027591013927|120.609687421875|530.7332612483596|Article 13. Guarantee of business investment in case of change of law"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 69
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/14",
+          "candidateIdsDiagnostic": [
+            "b225"
+          ],
+          "sourceLineIds": [
+            "9|537.8174921941325|120.609687421875|510.8049213798438|Article 14. Settlement of disputes in business investment activities"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 68
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/15",
+          "candidateIdsDiagnostic": [
+            "b244"
+          ],
+          "sourceLineIds": [
+            "10|738.7958810993131|120.609687421875|523.5730083898438|Article 15. Forms of, and subjects eligible for, investment incentives"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 70
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/17",
+          "candidateIdsDiagnostic": [
+            "b329"
+          ],
+          "sourceLineIds": [
+            "12|129.5314471456474|120.609687421875|491.7386149598439|Article 17. Procedures for application of investment incentives"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 63
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/18",
+          "candidateIdsDiagnostic": [
+            "b333"
+          ],
+          "sourceLineIds": [
+            "13|728.6975324844901|120.609687421875|359.16919032007814|Article 18. Forms of investment support"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 39
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/20",
+          "candidateIdsDiagnostic": [
+            "b356"
+          ],
+          "sourceLineIds": [
+            "13|97.31826747375486|120.609687421875|441.5175707298439|Article 20. Special investment incentives and supports"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 49
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/chapter/4",
+          "candidateIdsDiagnostic": [
+            "s-window-1452"
+          ],
+          "sourceLineIds": [
+            "14|228.27001681043834|295.6852925732422|363.8966644583594|Chapter IV",
+            "14|206.96873828453323|194.73107401855466|464.42418039218734|INVESTMENT ACTIVITIES IN VIETNAM"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 43
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/22",
+          "candidateIdsDiagnostic": [
+            "b390"
+          ],
+          "sourceLineIds": [
+            "15|640.3691606396068|120.609687421875|512.6020400998436|Article 22. Investment in establishment of economic organizations"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 63
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/27",
+          "candidateIdsDiagnostic": [
+            "b465"
+          ],
+          "sourceLineIds": [
+            "18|783.1791343141355|120.609687421875|435.27997611007805|Article 27. Investment in the form of a BCC contract"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 50
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/28",
+          "candidateIdsDiagnostic": [
+            "b472"
+          ],
+          "sourceLineIds": [
+            "18|614.4244572137453|120.609687421875|297.93009940644527|Article 28. Contents of a BCC"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 31
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": false,
+          "validatorStatus": "rejected_replay",
+          "validatorReason": "invalid-pointer-span",
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "VALIDATOR_REJECTION"
+        },
+        {
+          "goldStableId": "004/article/29",
+          "candidateIdsDiagnostic": [
+            "b492"
+          ],
+          "sourceLineIds": [
+            "18|186.03024461097596|120.609687421875|524.4004031026953|Article 29. Investor selection for investment project implementation"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 66
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/38",
+          "candidateIdsDiagnostic": [
+            "b729"
+          ],
+          "sourceLineIds": [
+            "26|117.53870812244423|120.609687421875|536.9614227498437|Article 38. Procedures for grant of investment registration certificates"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 66
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/40",
+          "candidateIdsDiagnostic": [
+            "b768"
+          ],
+          "sourceLineIds": [
+            "28|604.1636555154477|120.609687421875|478.5535835696484|Article 40. Contents of an investment registration certificate"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 52
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/41",
+          "candidateIdsDiagnostic": [
+            "b786"
+          ],
+          "sourceLineIds": [
+            "28|252.42532006830112|120.609687421875|398.34460147984373|Article 41. Modification of investment projects"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 45
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/42",
+          "candidateIdsDiagnostic": [
+            "b834"
+          ],
+          "sourceLineIds": [
+            "30|493.54645632455043|120.609687421875|493.80249348984376|Article 42. Principles of implementation of investment projects"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 57
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/43",
+          "candidateIdsDiagnostic": [
+            "b842"
+          ],
+          "sourceLineIds": [
+            "30|292.3747175461646|120.609687421875|490.01169618984375|Article 43. Security for implementation of investment projects"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 56
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/44",
+          "candidateIdsDiagnostic": [
+            "b858"
+          ],
+          "sourceLineIds": [
+            "31|549.6821830838079|120.609687421875|438.54109284984366|Article 44. Operation duration of investment projects"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 44
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/46",
+          "candidateIdsDiagnostic": [
+            "b886"
+          ],
+          "sourceLineIds": [
+            "32|559.8759339941405|120.609687421875|374.12561872984367|Article 46. Transfer of investment projects"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 39
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/47",
+          "candidateIdsDiagnostic": [
+            "b910"
+          ],
+          "sourceLineIds": [
+            "33|728.7572618766907|120.609687421875|378.9132553198437|Article 47. Cessation of investment projects"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 32
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/48",
+          "candidateIdsDiagnostic": [
+            "b931"
+          ],
+          "sourceLineIds": [
+            "33|282.3340134582817|120.609687421875|396.7721225998437|Article 48. Termination of investment projects"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 40
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/chapter/5",
+          "candidateIdsDiagnostic": [
+            "s-window-3774"
+          ],
+          "sourceLineIds": [
+            "36|706.7765183489989|298.44527257324216|361.29336827835937|Chapter V",
+            "36|685.6158650211877|199.798437109375|459.4266451576171|OFFSHORE INVESTMENT ACTIVITIES"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 40
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/51",
+          "candidateIdsDiagnostic": [
+            "b1007"
+          ],
+          "sourceLineIds": [
+            "36|574.1998095805667|120.609687421875|438.34503486984363|Article 51. Principles of offshore investment activities"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 50
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/52",
+          "candidateIdsDiagnostic": [
+            "b1013"
+          ],
+          "sourceLineIds": [
+            "36|395.09584667661824|120.609687421875|361.3173087900781|Article 52. Forms of offshore investment"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 36
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/53",
+          "candidateIdsDiagnostic": [
+            "b1026"
+          ],
+          "sourceLineIds": [
+            "36|105.5939624471029|120.609687421875|498.7112477900782|Article 53. Sectors and trades banned from offshore investment"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 48
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/54",
+          "candidateIdsDiagnostic": [
+            "b1033"
+          ],
+          "sourceLineIds": [
+            "37|684.6948380413437|120.609687421875|535.0200650700777|Article 54. Sectors and trades subject to conditional offshore investment"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 54
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/55",
+          "candidateIdsDiagnostic": [
+            "b1043"
+          ],
+          "sourceLineIds": [
+            "37|443.08046831673886|120.609687421875|399.0466009798438|Article 55. Offshore invteVstmeinet capital sources"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 48
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/56",
+          "candidateIdsDiagnostic": [
+            "b1053"
+          ],
+          "sourceLineIds": [
+            "37|121.4632870605929|120.609687421875|488.26893435652346|Article 56. Competence to approve offshore investment policy"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 46
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/59",
+          "candidateIdsDiagnostic": [
+            "b1142"
+          ],
+          "sourceLineIds": [
+            "40|222.1431483041865|120.609687421875|376.1575782200781|Article 59. Decision on offshore investment"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 33
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/62",
+          "candidateIdsDiagnostic": [
+            "b1186"
+          ],
+          "sourceLineIds": [
+            "42|479.29169326191766|120.609687421875|531.0631461696485|Article 62. Contents of an offshore investment revgisntration certificate"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 0
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": false,
+          "validatorStatus": "rejected_replay",
+          "validatorReason": "invalid-pointer-span",
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "SPAN_DEGENERATE"
+        },
+        {
+          "goldStableId": "004/article/63",
+          "candidateIdsDiagnostic": [
+            "b1198"
+          ],
+          "sourceLineIds": [
+            "42|270.47380057202884|120.609687421875|527.0889303798432|Article 63. Modification ofoffshore investment registration certificates"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 36
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/64",
+          "candidateIdsDiagnostic": [
+            "b1236"
+          ],
+          "sourceLineIds": [
+            "44|783.1302360931493|120.609687421875|525.6451908098431|Article 64. Termination ofoffshore investment registration certificates"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 52
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/65",
+          "candidateIdsDiagnostic": [
+            "b1260"
+          ],
+          "sourceLineIds": [
+            "44|226.10617174790607|120.609687421875|472.89694837984376|Article 65. Opening of offshore investment capital accounts"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 50
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/66",
+          "candidateIdsDiagnostic": [
+            "b1265"
+          ],
+          "sourceLineIds": [
+            "44|95.5392905569119|120.609687421875|427.1555384592187|Article 66. Outbound transfer of investment capital"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 46
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/68",
+          "candidateIdsDiagnostic": [
+            "b1289"
+          ],
+          "sourceLineIds": [
+            "45|244.2676392266486|120.609687421875|347.1126779698436|Article 68. Inbound transfer of profits"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 37
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/chapter/6",
+          "candidateIdsDiagnostic": [
+            "s-window-4783"
+          ],
+          "sourceLineIds": [
+            "46|652.5200268104385|295.6852925732422|363.7463926903906|Chapter VI",
+            "46|631.258736930429|192.41667916992188|466.9782325564063|STATE MANAGEMENT OF INVESTMENT"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 41
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/69",
+          "candidateIdsDiagnostic": [
+            "b1300"
+          ],
+          "sourceLineIds": [
+            "46|586.0964027224395|120.609687421875|488.08437850007806|Article 69. Responsibility for state management of investment"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 56
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/70",
+          "candidateIdsDiagnostic": [
+            "b1373"
+          ],
+          "sourceLineIds": [
+            "48|272.25741563612826|120.609687421875|414.8604011226952|Article 70. Investment monitoring and evaluation"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 46
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/71",
+          "candidateIdsDiagnostic": [
+            "b1404"
+          ],
+          "sourceLineIds": [
+            "49|250.21309796264632|120.609687421875|430.2153787798438|Article 71. National investment information systems"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 46
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/72",
+          "candidateIdsDiagnostic": [
+            "b1418"
+          ],
+          "sourceLineIds": [
+            "50|636.2731665177264|120.609687421875|504.86413075246094|Article 72. Reporting regime on investment activities in Vietnam"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 58
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/73",
+          "candidateIdsDiagnostic": [
+            "b1445"
+          ],
+          "sourceLineIds": [
+            "51|614.0929799551667|120.609687421875|488.5673162998438|Article 73. Reporting regime on overseas investment activities"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 56
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/74",
+          "candidateIdsDiagnostic": [
+            "b1474"
+          ],
+          "sourceLineIds": [
+            "52|501.51524128142523|120.609687421875|375.3892178298437|Article 74. Investment promotion activities"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 43
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/76",
+          "candidateIdsDiagnostic": [
+            "b1557"
+          ],
+          "sourceLineIds": [
+            "55|294.3018213015567|120.609687421875|346.2562385798437|Article 76. Implementation provisions"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 37
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/article/77",
+          "candidateIdsDiagnostic": [
+            "b1570"
+          ],
+          "sourceLineIds": [
+            "56|658.3900705431366|120.609687421875|324.5363740498437|Article 77. Transitional provisions"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 35
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "004/appendix/1",
+          "candidateIdsDiagnostic": [
+            "s-window-6079"
+          ],
+          "sourceLineIds": [
+            "59|783.0553533339845|273.279667421875|350.5571983183595|Appendix IV",
+            "59|761.9512664278899|203.2305076269531|420.19401882761707|LIST OF SECTORS AND TRADES",
+            "59|745.8447020061935|132.14667916992187|492.03688889640625|SUBJECT TO CONDITIONAL BUSINESS INVESTMENT"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 38
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        }
+      ],
+      "nonHeadingFalsePositiveLedger": "not_available"
+    },
+    {
+      "documentId": "030",
+      "sourceDocumentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "selectedCandidates": 160,
+      "selectedReviewedHeadings": 9,
+      "roleSurvival": 9,
+      "spanSurvival": 6,
+      "validated": 5,
+      "grounded": null,
+      "emittedExact": null,
+      "firstLossCounts": {
+        "SPAN_UNRESOLVED": 3,
+        "UNRESOLVED": 5,
+        "VALIDATOR_REJECTION": 1
+      },
+      "validatorTraceAvailable": true,
+      "groundingTraceAvailable": false,
+      "emittedIdentityReplayed": false,
+      "missingDownstreamAuthority": [
+        "semantic_cluster_decisions",
+        "per_candidate_grounding_status",
+        "per_candidate_output_status"
+      ],
+      "items": [
+        {
+          "goldStableId": "030/outline/1",
+          "candidateIdsDiagnostic": [
+            "b96"
+          ],
+          "sourceLineIds": [
+            "11|528.2154531250001|286.775234375|339.64784656250004|PART I"
+          ],
+          "sourceSpan": null,
+          "roleSurvived": true,
+          "spanResolved": false,
+          "spanResolution": "unresolved",
+          "validated": false,
+          "validatorStatus": "rejected_replay",
+          "validatorReason": "missing-pointer-span",
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "SPAN_UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/outline/2",
+          "candidateIdsDiagnostic": [
+            "b97"
+          ],
+          "sourceLineIds": [
+            "11|423.0347869318182|183.9660546875|443.2297065625|Section 1. Request for Proposal Letter"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 38
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/outline/8",
+          "candidateIdsDiagnostic": [
+            "b1246"
+          ],
+          "sourceLineIds": [
+            "83|709.1841390625|207.3960546875|413.87366609375|Section 7. Terms of Reference"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 29
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": false,
+          "validatorStatus": "rejected_replay",
+          "validatorReason": "scope-conflict",
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "VALIDATOR_REJECTION"
+        },
+        {
+          "goldStableId": "030/outline/9",
+          "candidateIdsDiagnostic": [
+            "b1271"
+          ],
+          "sourceLineIds": [
+            "85|684.6018164062498|283.655234375|342.7362865625|PART II"
+          ],
+          "sourceSpan": null,
+          "roleSurvived": true,
+          "spanResolved": false,
+          "spanResolution": "unresolved",
+          "validated": false,
+          "validatorStatus": "rejected_replay",
+          "validatorReason": "missing-pointer-span",
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "SPAN_UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/outline/10",
+          "candidateIdsDiagnostic": [
+            "b1272"
+          ],
+          "sourceLineIds": [
+            "85|634.6888977864584|128.7660546875|497.74142937500017|Section 8. Conditions of Contract and Contract Forms"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 52
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/outline/11",
+          "candidateIdsDiagnostic": [
+            "b2921"
+          ],
+          "sourceLineIds": [
+            "191|693.1192187500001|264.935234375|330.2247265625|PART III"
+          ],
+          "sourceSpan": null,
+          "roleSurvived": true,
+          "spanResolved": false,
+          "spanResolution": "unresolved",
+          "validated": false,
+          "validatorStatus": "rejected_replay",
+          "validatorReason": "missing-pointer-span",
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "SPAN_UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/gcc-tb/67",
+          "candidateIdsDiagnostic": [
+            "b2059"
+          ],
+          "sourceLineIds": [
+            "135|294.62180050223225|156.0246875|487.937708125|APPENDIX C \u2013 REMUNERATION COST ESTIMATES"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 40
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/gcc-tb/69",
+          "candidateIdsDiagnostic": [
+            "b2090"
+          ],
+          "sourceLineIds": [
+            "139|709.5143843114099|122.06468749999999|522.051068125|APPENDIX D \u2013 REIMBURSABLE EXPENSES COST ESTIMATES"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 49
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "030/gcc-ls/65",
+          "candidateIdsDiagnostic": [
+            "b2859"
+          ],
+          "sourceLineIds": [
+            "185|299.18574132582717|154.7046875|489.3413912500001|APPENDIX C \u2013 BREAKDOWN OF CONTRACT PRICE"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 39
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        }
+      ],
+      "nonHeadingFalsePositiveLedger": "not_available"
+    },
+    {
+      "documentId": "043",
+      "sourceDocumentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "selectedCandidates": 160,
+      "selectedReviewedHeadings": 3,
+      "roleSurvival": 3,
+      "spanSurvival": 3,
+      "validated": 3,
+      "grounded": null,
+      "emittedExact": null,
+      "firstLossCounts": {
+        "UNRESOLVED": 3
+      },
+      "validatorTraceAvailable": true,
+      "groundingTraceAvailable": false,
+      "emittedIdentityReplayed": false,
+      "missingDownstreamAuthority": [
+        "semantic_cluster_decisions",
+        "per_candidate_grounding_status",
+        "per_candidate_output_status"
+      ],
+      "items": [
+        {
+          "goldStableId": "043/heading/034",
+          "candidateIdsDiagnostic": [
+            "b1806"
+          ],
+          "sourceLineIds": [
+            "105|355.8952898297991|72.81640625|302.4518046875|NOTE D\u2014LOANS AND OTHER EXPOSURES"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 32
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "043/heading/042",
+          "candidateIdsDiagnostic": [
+            "b2509"
+          ],
+          "sourceLineIds": [
+            "141|445.7100294870921|72.81640625|425.82780468749996|NOTE L\u2014TRUST FUNDS ADMINISTRATION AND OTHER SERVICES"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 52
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "043/heading/043",
+          "candidateIdsDiagnostic": [
+            "b2538"
+          ],
+          "sourceLineIds": [
+            "142|283.48002985608554|72.81640625|216.8938046875|NOTE M\u2014CONTINGENCIES"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 20
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        }
+      ],
+      "nonHeadingFalsePositiveLedger": "not_available"
+    },
+    {
+      "documentId": "058",
+      "sourceDocumentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "selectedCandidates": 160,
+      "selectedReviewedHeadings": 13,
+      "roleSurvival": 13,
+      "spanSurvival": 12,
+      "validated": 12,
+      "grounded": null,
+      "emittedExact": null,
+      "firstLossCounts": {
+        "SPAN_UNRESOLVED": 1,
+        "UNRESOLVED": 12
+      },
+      "validatorTraceAvailable": true,
+      "groundingTraceAvailable": false,
+      "emittedIdentityReplayed": false,
+      "missingDownstreamAuthority": [
+        "semantic_cluster_decisions",
+        "per_candidate_grounding_status",
+        "per_candidate_output_status"
+      ],
+      "items": [
+        {
+          "goldStableId": "058/heading/002",
+          "candidateIdsDiagnostic": [
+            "b23"
+          ],
+          "sourceLineIds": [
+            "3|584.74837584375|108.4058002|214.84904373|Contents"
+          ],
+          "sourceSpan": null,
+          "roleSurvived": true,
+          "spanResolved": false,
+          "spanResolution": "unresolved",
+          "validated": false,
+          "validatorStatus": "rejected_replay",
+          "validatorReason": "missing-pointer-span",
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "SPAN_UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/006",
+          "candidateIdsDiagnostic": [
+            "b114"
+          ],
+          "sourceLineIds": [
+            "10|242.83964544864884|161.33649120000004|421.4123030399999|2.1.1 Perceptron and margin loss functions"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 39
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/007",
+          "candidateIdsDiagnostic": [
+            "b131"
+          ],
+          "sourceLineIds": [
+            "11|233.0855349677417|107.53849120000025|330.06182432000026|2.1.2 Softmax and cross entropy loss"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 34
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/010",
+          "candidateIdsDiagnostic": [
+            "b243"
+          ],
+          "sourceLineIds": [
+            "17|493.73815100689615|107.53849120000005|322.26464288000005|2.2.2 A Nonlinear Energy Function"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 31
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/013",
+          "candidateIdsDiagnostic": [
+            "b403"
+          ],
+          "sourceLineIds": [
+            "24|534.3485601066664|161.33649120000013|368.11243488|2.3.2 Stochastic Gradient Descent"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 31
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/014",
+          "candidateIdsDiagnostic": [
+            "b425"
+          ],
+          "sourceLineIds": [
+            "25|573.6798463999997|107.53849120000002|345.47925024|2.3.3 Adaptive Learning Rate Methods"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 36
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/015",
+          "candidateIdsDiagnostic": [
+            "b467"
+          ],
+          "sourceLineIds": [
+            "27|497.8886386029409|107.6723872|395.57336341999985|2.4 Generalization and Model Selection"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 38
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/019",
+          "candidateIdsDiagnostic": [
+            "b672"
+          ],
+          "sourceLineIds": [
+            "38|453.00082168157877|161.47038719999992|491.6180531799997|2.5 Hyperparameter Tuning: Model Selection"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 42
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/026",
+          "candidateIdsDiagnostic": [
+            "b859"
+          ],
+          "sourceLineIds": [
+            "48|171.33363716944422|161.3412713999999|452.0340181399996|3.4 Permutation equivariance: attention"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 39
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/030",
+          "candidateIdsDiagnostic": [
+            "b976"
+          ],
+          "sourceLineIds": [
+            "56|165.57174231351354|161.03861120000016|419.79337344000004|4.2.1 Variational Gaussian mixture models"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 40
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/032",
+          "candidateIdsDiagnostic": [
+            "b1054"
+          ],
+          "sourceLineIds": [
+            "60|524.3537026999999|161.11173219999992|438.0163461199998|4.3 Continuous latent variable models"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 37
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/034",
+          "candidateIdsDiagnostic": [
+            "b1216",
+            "s-window-5326"
+          ],
+          "sourceLineIds": [
+            "67|177.73793288421035|107.23961120000016|372.4525724800001|4.3.2 Importance sampling and its variance."
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 43
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        },
+        {
+          "goldStableId": "058/heading/047",
+          "candidateIdsDiagnostic": [
+            "b1915"
+          ],
+          "sourceLineIds": [
+            "107|583.9530067541666|107.8356969|262.57412607000003|Bibliography"
+          ],
+          "sourceSpan": {
+            "start": 0,
+            "end": 12
+          },
+          "roleSurvived": true,
+          "spanResolved": true,
+          "spanResolution": "resolved",
+          "validated": true,
+          "validatorStatus": "eligible_replay",
+          "validatorReason": null,
+          "grounded": null,
+          "groundingStatus": null,
+          "emitted": null,
+          "outputStatus": null,
+          "firstLoss": "UNRESOLVED"
+        }
+      ],
+      "nonHeadingFalsePositiveLedger": "not_available"
+    }
+  ],
+  "missingRetainedFields": [
+    "semantic_cluster_decisions",
+    "validatorStatus",
+    "validatorReason",
+    "groundingStatus",
+    "groundedSourceLineIds",
+    "outputStatus",
+    "emittedSourceLineIds",
+    "reviewed_non_heading_labels"
+  ],
+  "decision": {
+    "status": "DOWNSTREAM_IDENTITY_EVIDENCE_INSUFFICIENT",
+    "reason": "Validator results are replay-derived from reconstructed source facts, not retained per-candidate run outcomes. Semantic cluster decisions, grounding/output statuses and reviewed non-heading labels were not retained, so false-positive, grounding and emitted-identity claims cannot be completed without recreating semantic decisions.",
+    "remediationOpened": false
+  }
+}
