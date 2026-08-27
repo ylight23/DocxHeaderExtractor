@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_round5_lightweight_reranker_feasibility",
+  "phase": "round5a-5b-5c-5d",
+  "reference": {
+    "round2": "d51cf62 / 45d47ad",
+    "round3": "4a38f0f",
+    "round4": "d4bea07"
+  },
+  "modelCalls": false,
+  "productionChanges": false,
+  "candidateGenerationChanged": false,
+  "rankingChanged": false,
+  "developmentPopulation": [
+    "004",
+    "030",
+    "043",
+    "058"
+  ],
+  "frozenInputs": {
+    "deterministicPoolSizes": [
+      640,
+      1024
+    ],
+    "expensiveSemanticShortlists": [
+      80,
+      160,
+      320
+    ],
+    "fullCandidate": 375,
+    "reviewed": 422,
+    "baselineTop160ReviewedHeadings": 80
+  },
+  "availablePreSemanticFeatures": [
+    "source/layout facts",
+    "marker facts",
+    "representation kind",
+    "deterministic score and signal lists",
+    "neighbor/context facts",
+    "structural scope",
+    "document regime",
+    "cheap lexical/structural facts"
+  ],
+  "forbiddenRuntimeInputs": [
+    "goldStableId",
+    "silver labels",
+    "validated outputs",
+    "future semantic decisions"
+  ],
+  "baselineShortlistTable": [
+    {
+      "sourcePool": "unchanged_deterministic_ranked_pool",
+      "shortlistK": 80,
+      "reviewedHeadingsInShortlist": 50,
+      "selectionCoverageOfFullCandidate": 0.13333333333333333,
+      "overallPreSemanticRecall": 0.11848341232227488,
+      "expensiveSemanticBatches": 40,
+      "relativeCostVs160": 0.5,
+      "rerankerApplied": false,
+      "status": "baseline_only"
+    },
+    {
+      "sourcePool": "unchanged_deterministic_ranked_pool",
+      "shortlistK": 160,
+      "reviewedHeadingsInShortlist": 80,
+      "selectionCoverageOfFullCandidate": 0.21333333333333335,
+      "overallPreSemanticRecall": 0.1895734597156398,
+      "expensiveSemanticBatches": 80,
+      "relativeCostVs160": 1,
+      "rerankerApplied": false,
+      "status": "baseline_only"
+    },
+    {
+      "sourcePool": "unchanged_deterministic_ranked_pool",
+      "shortlistK": 320,
+      "reviewedHeadingsInShortlist": 104,
+      "selectionCoverageOfFullCandidate": 0.2773333333333333,
+      "overallPreSemanticRecall": 0.24644549763033174,
+      "expensiveSemanticBatches": 160,
+      "relativeCostVs160": 2,
+      "rerankerApplied": false,
+      "status": "baseline_only"
+    }
+  ],
+  "observedLargerPoolExecution": {
+    "K640": {
+      "poolHeadingCoverage": "184/422",
+      "validated": 248,
+      "grounded": 168,
+      "spanLaneStatus": "partial_timeout",
+      "providerRequests": 390
+    },
+    "K1024": {
+      "poolHeadingCoverage": "266/422",
+      "validated": 0,
+      "grounded": 0,
+      "spanLaneStatus": "partial_timeout",
+      "providerRequests": 512
+    }
+  },
+  "architectureOptions": [
+    {
+      "option": "A_existing_deterministic_recombination",
+      "expectedShortlistRecall": "not_measured",
+      "relativeCost": "low",
+      "trainingOrCalibration": "none",
+      "auditability": "high",
+      "failClosedCompatibility": "yes",
+      "decision": "not_justified_without_proven_score_responsibility"
+    },
+    {
+      "option": "B_cheap_embedding_similarity",
+      "expectedShortlistRecall": "not_measured",
+      "relativeCost": "medium",
+      "trainingOrCalibration": "likely held-out calibration",
+      "auditability": "medium",
+      "failClosedCompatibility": "possible",
+      "decision": "investigation_only"
+    },
+    {
+      "option": "C_small_classifier_reranker",
+      "expectedShortlistRecall": "not_measured",
+      "relativeCost": "medium",
+      "trainingOrCalibration": "representative labels required",
+      "auditability": "medium",
+      "failClosedCompatibility": "possible",
+      "decision": "investigation_only"
+    },
+    {
+      "option": "D_9B_rank_only_pass",
+      "expectedShortlistRecall": "not_measured",
+      "relativeCost": "higher than cheap reranker; lower than full role-span pass",
+      "trainingOrCalibration": "none, but provider-dependent",
+      "auditability": "high after source grounding",
+      "failClosedCompatibility": "possible",
+      "decision": "not_run"
+    }
+  ],
+  "decision": {
+    "status": "RERANKER_FEASIBILITY_UNRESOLVED",
+    "reason": "Round 3 proves a larger pool contains more reviewed headings, while Round 4 proves the unchanged full semantic pipeline cannot process K=640/1024 under the frozen deadline. No pre-semantic causal score responsibility is proven yet, so a gold-optimized rerank counterfactual would be tuning rather than feasibility evidence.",
+    "nextAllowedStep": "freeze one non-gold feature contract and run one bounded offline counterfactual before any production change",
+    "productionImplementation": "not_started"
+  }
+}
