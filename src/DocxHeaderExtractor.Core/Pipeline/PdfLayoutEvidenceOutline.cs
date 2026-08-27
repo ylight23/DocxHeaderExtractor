@@ -595,6 +595,15 @@ public static class PdfLayoutEvidenceOutline
         // AlignToDocx never searches with trailing body-context text glued to the title.
         var headingSpansByBlockId = eligibleDecisions.ToDictionary(d => d.Id, d => d.HeadingSpan, StringComparer.Ordinal);
         var alignment = AlignToDocx(accepted, slim, context.Profile, AnalystBasis, trace: null, haystacks: null, headingSpansByBlockId);
+        if (checkpoint is not null)
+            await checkpoint.RecordDownstreamProvenanceAsync(
+                selected,
+                blockAnalysis.Decisions,
+                stageTraces,
+                acceptedIds,
+                alignment.AlignedBlockIds.ToHashSet(StringComparer.Ordinal),
+                clusters.Decisions,
+                ct);
         var visualRecovery = await visualRecoveryTask;
         var recoveredHeadings = alignment.Headings.Concat(visualRecovery.Headings)
             .GroupBy(heading => (heading.Index, Start: heading.HeadingSpan?.Start ?? -1))
