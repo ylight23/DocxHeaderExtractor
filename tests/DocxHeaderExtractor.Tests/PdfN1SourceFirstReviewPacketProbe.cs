@@ -21,7 +21,7 @@ public sealed class PdfN1SourceFirstReviewPacketProbe
 
         var root = PdfExtractorQualityBenchmarkProbe.RepositoryRoot();
         var manifestPath = Path.Combine(root, "keys", "benchmark-n0", "manifest.json");
-        var manifestSha256 = Sha256(manifestPath);
+        var manifestSha256 = BenchmarkManifestHash.ComputeCanonicalSha256(manifestPath);
         using var manifest = JsonDocument.Parse(File.ReadAllText(manifestPath));
         Directory.CreateDirectory(outputDirectory);
 
@@ -76,7 +76,7 @@ public sealed class PdfN1SourceFirstReviewPacketProbe
         var packetDirectory = Path.Combine(root, "eval", "benchmark-n0", "source-packets");
         if (!Directory.Exists(packetDirectory)) return;
 
-        var manifestSha256 = Sha256(Path.Combine(root, "keys", "benchmark-n0", "manifest.json"));
+        var manifestSha256 = BenchmarkManifestHash.ComputeCanonicalSha256(Path.Combine(root, "keys", "benchmark-n0", "manifest.json"));
         var packets = Directory.GetFiles(packetDirectory, "*-blind-source-review.v1.json").OrderBy(path => path).ToArray();
         Assert.Equal(4, packets.Length);
 
