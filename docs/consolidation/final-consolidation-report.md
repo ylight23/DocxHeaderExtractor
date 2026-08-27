@@ -3,7 +3,7 @@
 Date: 2026-08-27
 Integration branch: `integration/consolidate-source-20260827`
 Canonical pre-merge SHA: `b7854b5e1a9832180d0729f65af7b76cf1b5b830`
-Canonical post-consolidation SHA: `4dd9a0c979dcf302466d53846eefc8467846b822`
+Canonical post-consolidation SHA: `b133ed9f2fd72f68a0af0b1da42eabfb7a3e2adc`
 Backup tag: `backup/pre-consolidation-20260827`
 
 ## Imported or retained
@@ -19,7 +19,7 @@ Backup tag: `backup/pre-consolidation-20260827`
 
 - R3-A marker-only span guard production behavior.
 - Ranker tuning, candidate-generation remediation, and provider/model changes.
-- Dirty `accuracy-r1` Web `index.html` change and untracked sibling logs.
+- Latest `accuracy-r1` Web `index.html` was already identical to the selectively retained UI in integration; no sibling logs were imported.
 - Temporary/untracked corpus DOCX in the canonical worktree.
 
 ## Source heads
@@ -42,10 +42,12 @@ Backup tag: `backup/pre-consolidation-20260827`
 
 - `dotnet restore`: passed.
 - `dotnet clean`: passed; generated outputs only.
-- Full solution build: blocked by environment disk exhaustion while copying multi-platform native assets. Core and AgentHarness compiled before the copy failure. No source compile failure was observed in the reported output.
+- Runtime-specific builds (`win-x64`) for CLI, MCP, Web, and Tests: passed. The solution-level multi-RID build remains blocked by native-asset/disk behavior on this machine.
 - Provider calls: `0`.
-- Full test suite: not run to completion because the required build could not complete.
-- Focused post-consolidation suite: not claimed; requires disk space and a fresh build.
+- Focused deterministic/replay/provenance suite: `27 passed / 0 failed`.
+- Web UI syntax/contract suite: `2 passed / 0 failed`.
+- Web/API smoke: `/` and `/api/defaults` both returned HTTP 200.
+- Full test suite: `1217 passed / 21 failed / 1238 total`; remaining failures are historical route/tagged-fixture/hash/RID/file-lock expectations and are not claimed resolved here.
 
 ## Known unresolved accuracy status
 
