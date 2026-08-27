@@ -176,12 +176,13 @@ public sealed class PipelineOptions
     public bool PdfLayoutAnalystFallback { get; set; }
 
     /// <summary>
-    /// Explicit PDF-first execution following the 9B contract: broad source retrieval, model
-    /// proposal, source-pointer validation, and canonical DOCX writeback. This intentionally
-    /// overrides an otherwise stronger DOCX route so it can be evaluated as the source of truth;
-    /// it remains review-only until an independent multi-family holdout calibrates the route.
+    /// Canonical authority execution following the 9B contract: source retrieval, model proposal,
+    /// source-pointer validation, and canonical product output. DOCX and PDF use the same authority
+    /// boundary; their adapters only differ in how source facts are built. Legacy selectors remain
+    /// available to explicit diagnostic/evaluation callers, but normal extraction must not fall
+    /// through to them after this route is entered.
     /// </summary>
-    public bool PdfFirstValidatedFallback { get; set; }
+    public bool PdfFirstValidatedFallback { get; set; } = true;
 
     /// <summary>
     /// Optional bounded smoke budget for the explicit PDF-first route. Zero means no candidate is

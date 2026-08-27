@@ -503,8 +503,8 @@ public sealed class CommandLineOptions
                                     bằng luật .NET. Không gọi Python/Docling trong runtime.
               --pdf-layout-evidence Bật route layout PDF chung deterministic (sandbox).
               --pdf-layout-analyst  Hỏi LLM cho tối đa 40 PDF candidate blocks sau filter, rồi grounding.
-              --pdf-first            Chạy pipeline PDF-first mới: retrieval rộng + 9B role/span + validator.
-                                    Output chưa calibration giữ RequiresReview, không tự writeback.
+          --pdf-first            Giữ explicit authority route (normal extraction đã dùng route này).
+                                    Retrieval rộng + 9B role/span + validator; output giữ RequiresReview.
               --pdf-first-blocks n   Chỉ smoke PDF-first: giới hạn candidate đưa vào model; 0 = toàn bộ.
               --pdf-stage-wide      Chỉ pdf-stage-eval: mở candidate PDF cho LLM ngoài learned style (audit-only).
               --pdf-stage-supplement Chỉ pdf-stage-eval: thêm block PDF gộp dài từ raw lines (audit-only).
