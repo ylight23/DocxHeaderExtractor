@@ -421,6 +421,20 @@
     <h2>Cấu trúc tiêu đề</h2>
     <div class="scroll"><table id="tree"></table></div>
   </div>
+
+  <div class="panel hidden" id="outputTracePanel">
+    <h2>Output trace · pipeline only</h2>
+    <p class="note" style="margin: 0 0 12px">
+      Đây là danh sách output của lượt chạy hiện tại, không phải human review. Có thể nạp source-expected JSON để xem chênh lệch nhóm quan sát; việc đó không thay thế occurrence-safe evaluator.
+    </p>
+    <div class="review-tools">
+      <input id="traceExpectedFile" type="file" accept=".json,application/json">
+      <button id="traceClearExpected" class="secondary">Bỏ source expected</button>
+    </div>
+    <div class="tiles" id="traceTiles"></div>
+    <p class="note" id="traceNote"></p>
+    <div class="scroll"><table id="traceTable"></table></div>
+  </div>
 </div>
 
 <script>
@@ -429,6 +443,7 @@ let picked = null, outline = null, reviewBundle = null, serverError = false;
 let defaults = null, gpuBaseNote = '', gpuBaseLabel = '';
 let devStarted = 0, devLogLines = 0;
 let auditPacket = null, auditItems = [], auditIndex = 0;
+let traceExpected = null;
 
 // ---------- 6D-D blind source review ----------
 $('auditFile').onchange = async e => {
@@ -528,6 +543,53 @@ function downloadJson(name, value) {
   const link = document.createElement('a');
   link.href = URL.createObjectURL(blob); link.download = name; link.click();
   setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+}
+
+// ---------- output trace (pipeline output, never human authority) ----------
+$('traceExpectedFile').onchange = async e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const parsed = JSON.parse(await file.text());
+    if (!Array.isArray(parsed.headingOccurrences)) throw new Error('JSON không có headingOccurrences.');
+    traceExpected = parsed;
+    if (outline) renderOutputTrace(outline);
+  } catch (error) {
+    $('traceNote').textContent = error.message || 'Không đọc được source expected JSON.';
+  }
+};
+$('traceClearExpected').onclick = () => { traceExpected = null; $('traceExpectedFile').value = ''; if (outline) renderOutputTrace(outline); };
+
+function traceKind(text) {
+  const value = String(text || '').trim();
+  if (/^LAW\b|^ON\s+INVESTMENT\b/i.test(value)) return 'LAW';
+  if (/^CHAPTER\b/i.test(value)) return 'Chapter';
+  if (/^SECTION\b/i.test(value)) return 'Section';
+  if (/^ARTICLE\b/i.test(value)) return 'Article';
+  return 'Other';
+}
+
+function traceCounts(headings, textOf = h => h.text) {
+  const counts = { LAW: 0, Chapter: 0, Section: 0, Article: 0, Other: 0 };
+  headings.forEach(item => counts[traceKind(textOf(item))]++);
+  return counts;
+}
+
+function renderOutputTrace(o) {
+  const headings = Array.isArray(o.headings) ? o.headings : [];
+  const outputCounts = traceCounts(headings);
+  const expectedRows = traceExpected?.headingOccurrences?.filter(item => item.label === 'REVIEWED_HEADING') || [];
+  const expectedCounts = traceCounts(expectedRows, item => item.sourceText || (item.sourceTextLines || []).join(' '));
+  const tiles = [[headings.length, 'pipeline output']];
+  Object.entries(outputCounts).forEach(([kind, count]) => tiles.push([count, `output · ${kind}`]));
+  if (expectedRows.length) tiles.push([expectedRows.length, 'source expected · tham chiếu']);
+  $('traceTiles').innerHTML = tiles.map(item => `<div class="tile"><div class="v">${esc(String(item[0]))}</div><div class="k">${esc(item[1])}</div></div>`).join('');
+  $('traceNote').textContent = expectedRows.length
+    ? `Source expected đã nạp: ${expectedRows.length}. Chênh lệch nhóm chỉ là trace quan sát, không phải occurrence join hoặc kết luận missing.`
+    : 'Chưa nạp source expected JSON; đang hiển thị riêng output pipeline.';
+  $('traceTable').innerHTML = '<thead><tr><th>STT</th><th>Nhóm quan sát</th><th>Output text</th><th>Paragraph</th><th>Source</th></tr></thead><tbody>' +
+    headings.map((heading, index) => `<tr><td class="i">${index + 1}</td><td><span class="tag Model">${traceKind(heading.text)}</span></td><td>${esc(heading.text || '')}</td><td class="i">${esc(String(heading.index ?? '—'))}</td><td class="i">${esc(heading.source || '—')}</td></tr>`).join('') + '</tbody>';
+  $('outputTracePanel').classList.remove('hidden');
 }
 
 // ---------- chọn file ----------
@@ -993,6 +1055,7 @@ function render(o, s, review, agent) {
 
   $('statsPanel').classList.remove('hidden');
   $('treePanel').classList.remove('hidden');
+  renderOutputTrace(o);
   $('evalPanel').classList.remove('hidden');
   $('evalTiles').innerHTML = '';
   $('evalDetail').innerHTML = '';
