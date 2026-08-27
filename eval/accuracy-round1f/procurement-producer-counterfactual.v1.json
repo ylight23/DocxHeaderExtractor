@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_round1_procurement_producer_counterfactual",
+  "phase": "round1f-a-round1f-b",
+  "modelCalls": false,
+  "productionChanges": false,
+  "rankingChanged": false,
+  "candidateGenerationChanged": false,
+  "authority": "procurement-recurrence.v1.json @ 64e214f",
+  "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is diagnostic-only",
+  "producerLanes": [
+    {
+      "producer": "BuildBroadCandidates",
+      "recurringMissesObserved": 17,
+      "knownTrigger": "CandidateStyles.Contains(block.PrimaryStyle) AND LooksLikeBroadCandidateBlock(block)",
+      "sourceResponsibility": "style gate plus broad shape gate",
+      "counterfactual": "not applied: no source-selective invariant proven; relaxing either predicate would be gold-tuning",
+      "recoveredTrueHeadings": null,
+      "newCandidates": null,
+      "duplicates": null,
+      "candidateInflation": null,
+      "recallAllDelta": null,
+      "recall160Delta": null,
+      "existingTrueHeadingsDisplaced": null,
+      "negativeControls": "not measured because no safe predicate relaxation was defined",
+      "status": "PRODUCER_REMEDIATION_NOT_JUSTIFIED"
+    },
+    {
+      "producer": "BuildSupplementCandidates",
+      "recurringMissesObserved": 17,
+      "knownTrigger": "non-excluded atomic/loose/fragment block AND LooksLikeSupplementBlock AND canonical dedup",
+      "sourceResponsibility": "supplement path selection, shape gate and canonical dedup",
+      "counterfactual": "not applied: atomic, loose and adjacent-fragment paths have different collateral surfaces; no shared invariant proven",
+      "recoveredTrueHeadings": null,
+      "newCandidates": null,
+      "duplicates": null,
+      "candidateInflation": null,
+      "recallAllDelta": null,
+      "recall160Delta": null,
+      "existingTrueHeadingsDisplaced": null,
+      "negativeControls": "not measured because no safe predicate relaxation was defined",
+      "status": "PRODUCER_REMEDIATION_NOT_JUSTIFIED"
+    }
+  ],
+  "observedMissCounts": {
+    "030": {
+      "BuildBroadCandidates": 14,
+      "BuildSupplementCandidates": 12
+    },
+    "028": {
+      "BuildBroadCandidates": 10,
+      "BuildSupplementCandidates": 15
+    },
+    "029": {
+      "BuildBroadCandidates": 7,
+      "BuildSupplementCandidates": 2
+    }
+  },
+  "decision": {
+    "BuildBroadCandidates": "PRODUCER_REMEDIATION_NOT_JUSTIFIED",
+    "BuildSupplementCandidates": "PRODUCER_REMEDIATION_NOT_JUSTIFIED",
+    "nextStep": "freeze recurrence evidence; do not implement a producer relaxation without a selective invariant and occurrence-safe negative controls"
+  }
+}
