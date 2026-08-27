@@ -12412,6 +12412,7 @@ Implemented in the current branch:
 - DOCX no-LLM now creates deterministic proposals only from built-in heading style, `outlineLvl`, or OOXML numbering-to-heading evidence, then uses the shared `PdfProposalValidator` and deterministic hierarchy.
 - DOCX parser evidence is explicitly attributed to `docx_parser`/`ooxml_parser`; the shared validator trusts those origins without a second DOCX eligibility predicate.
 - Quarantine indexes are removed while building the authority source, before proposal, validation, hierarchy, and output.
+- PDF-backed quarantine is applied to grounded source identities before FinalStructure/ProductOutput; DOCX quarantine is covered by the authority contract suite, while a corpus-backed PDF quarantine fixture remains to be added.
 - ProductOutput text/source identity is preserved through the compatibility shell so downstream grounding invariants remain valid.
 - Normal authority does not construct a VLM adapter. Visual routes remain explicit diagnostic/evaluation paths.
 - Partial key-package generation now uses the authority pipeline instead of `HeaderExtractionPipeline`.
@@ -12420,11 +12421,13 @@ Verification:
 
 - `win-x64` build: PASS, 0 errors.
 - Focused authority/harness/writeback/release suite: 40 PASS, 0 FAIL.
+- Contract/projection/serializer/authority/AgentHarness/MCP/Web suite after closure: 64 PASS, 0 FAIL.
 - Full suite: not rerun by design.
 - Provider/VLM live calls: not made.
 
 Remaining PR #2 work:
 
 - Complete static/runtime architecture guards for every normal CLI/Web/MCP route and document the remaining `HeaderExtractionPipeline` callers as diagnostic/evaluation-only.
+- DOCX candidate stage is intentionally `ALL_PARAGRAPHS` until a bounded high-recall producer has replay evidence; no candidate rule was tuned against document 004.
 - Run the focused deterministic/replay/provenance, Web, MCP, and provider-zero smoke gates on the final branch state.
 - Do not merge main or begin document-004 accuracy remediation in this cutover.

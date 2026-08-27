@@ -134,6 +134,8 @@ metadata is better" is not a trigger, and "we might want to see this later" is n
 - DOCX no-LLM đi theo `SourceFacts → deterministic proposal → PdfProposalValidator → hierarchy → ProductOutput`.
 - DOCX evidence ghi rõ `docx_parser`/`ooxml_parser`; shared validator chấp nhận đúng hai origin này.
 - quarantine được áp trước proposal/validation; ProductOutput adapter giữ source identity và text slice.
+- PDF-backed quarantine được áp sau canonical grounding nhưng trước FinalStructure/ProductOutput; DOCX quarantine áp sớm hơn ở source build.
+- Candidate stage DOCX hiện được ghi nhận trung thực là `ALL_PARAGRAPHS`: high-recall retrieval, chưa claim bounded precision hay candidate-recall benchmark.
 - normal authority không tự tạo VLM; normal writeback dùng `PdfProductWritebackTool`.
 
 Chưa đóng:

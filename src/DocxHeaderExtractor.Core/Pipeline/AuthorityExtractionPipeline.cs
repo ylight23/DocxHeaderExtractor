@@ -63,7 +63,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                     visualAnalyst: null,
                     ct: ct);
                 rawHeadings = result.Headings;
-                audit = result.Audit;
+                audit = ApplyQuarantine(result.Audit, rawHeadings, quarantinedIndexes, out rawHeadings);
                 route = "pdf-authority-v1";
                 reason = result.Reason;
             }
@@ -129,6 +129,33 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         return PdfProductOutputSerializer.Serialize(finalStructure, PdfOutputDecisionPolicy.Decide(finalStructure));
     }
 
+    private static RouteExecutionAudit? ApplyQuarantine(
+        RouteExecutionAudit? audit,
+        IReadOnlyList<HeadingRecord> headings,
+        IReadOnlySet<int>? quarantinedIndexes,
+        out IReadOnlyList<HeadingRecord> remainingHeadings)
+    {
+        if (audit is null || quarantinedIndexes is null || quarantinedIndexes.Count == 0)
+        {
+            remainingHeadings = headings;
+            return audit;
+        }
+
+        var removedIds = headings.Where(heading => quarantinedIndexes.Contains(heading.Index))
+            .Select(heading => heading.SourceId ?? heading.StableId)
+            .Where(id => !string.IsNullOrWhiteSpace(id))
+            .ToHashSet(StringComparer.Ordinal);
+        remainingHeadings = headings.Where(heading => !quarantinedIndexes.Contains(heading.Index)).ToArray();
+        if (removedIds.Count == 0) return audit;
+        return audit with
+        {
+            ValidatedStructures = audit.ValidatedStructures.Where(item => !removedIds.Contains(item.SourceId)).ToArray(),
+            HierarchyFacts = audit.HierarchyFacts.Where(item => !removedIds.Contains(item.Id)).ToArray(),
+            GroundedBlockIds = audit.GroundedBlockIds.Where(id => !removedIds.Contains(id)).ToArray(),
+            AlignedBlockIds = audit.AlignedBlockIds.Where(id => !removedIds.Contains(id)).ToArray(),
+        };
+    }
+
     private static OutlineRunProvenance BuildProvenance(IHeaderClassifier? analyst, RouteExecutionAudit? audit,
         bool sentDataExternally)
     {
@@ -140,7 +167,12 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             new("output-policy", 1, audit?.ValidatedStructures.Count ?? 0, false),
         };
         if (analyst is not null)
-            passes.Insert(1, new OutlinePass("semantic-role-and-span", 2, audit?.CandidatesSelected ?? 0, true));
+        {
+            passes.Insert(1, new OutlinePass("semantic-role", 1, audit?.CandidatesSelected ?? 0, sentDataExternally));
+            passes.Insert(2, new OutlinePass("heading-span", 1, audit?.CandidatesSelected ?? 0, sentDataExternally));
+            if (audit?.HierarchyProposals.Count > 0)
+                passes.Insert(3, new OutlinePass("semantic-hierarchy", 1, audit.ValidatedStructures.Count, sentDataExternally));
+        }
         return new OutlineRunProvenance(
             analyst?.ModelName ?? "deterministic-ooxml",
             sentDataExternally,

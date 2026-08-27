@@ -80,7 +80,8 @@ public static class PdfFinalStructureProjection
                 Status(level, parentId),
                 levelReason,
                 parentReason,
-                "validated"));
+                "validated",
+                grounding?.ParagraphText ?? fact.SourceBlockText));
         }
 
         return new PdfFinalStructure(
@@ -202,4 +203,5 @@ public sealed record PdfFinalHeading(
     [property: JsonPropertyName("hierarchyStatus")] string HierarchyStatus,
     [property: JsonPropertyName("levelReason")] string? LevelReason,
     [property: JsonPropertyName("parentReason")] string? ParentReason,
-    [property: JsonPropertyName("authority")] string Authority);
+    [property: JsonPropertyName("authority")] string Authority,
+    [property: JsonPropertyName("sourceText")] string SourceText);
