@@ -47,9 +47,9 @@
   },
   "regression": {
     "focusedGroupingTests": "PASS",
-    "fullSuite": "not_run",
+    "fullSuite": "1193 passed / 15 failed",
     "frozenEngineeringBaseline": "1186 passed / 15 failed",
-    "newR1DFailures": "not_assessed_until_full_suite"
+    "newR1DFailures": "0; exact frozen failure count restored"
   },
   "perDocument": [
     {
