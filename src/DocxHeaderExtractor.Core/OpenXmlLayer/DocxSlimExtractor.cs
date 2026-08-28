@@ -54,8 +54,8 @@ public sealed class DocxSlimExtractor
 
         var candidatePolicy = new HeadingCandidatePolicy();
 
-        // Mục lục gõ tay phải nhận diện TRƯỚC hai lượt dưới: cả MarkParagraphsBeforeTables lẫn
-        // PostProcess đều đọc InTableOfContents, đặt sau thì chúng đọc phải cờ chưa cập nhật.
+        // Mục lục gõ tay phải nhận diện trước các policy lượt sau: cả MarkParagraphsBeforeTables
+        // lẫn post-classification policy đều đọc InTableOfContents.
         MarkTypedTableOfContentsRuns(paragraphs);
         var tocFeatures = new TocStructuralFeatureDeriver().Derive(
             sourceForFeatures,
@@ -67,7 +67,7 @@ public sealed class DocxSlimExtractor
                 string.IsNullOrWhiteSpace(p.StableId) ? $"p:{p.Index}" : p.StableId);
 
         // Quan hệ vị trí với bảng phải biết TRƯỚC khi chấm điểm: luật chú thích trong Classify dựa
-        // vào nó, mà PostProcess thì chạy sau nên đặt ở đó là cờ luôn false lúc cần.
+        // vào nó, còn post-classification policy chạy sau nên đặt ở đó là cờ luôn false lúc cần.
         MarkParagraphsBeforeTables(paragraphs);
         foreach (var p in paragraphs)
             candidatePolicy.Apply(new CandidatePolicyInput(p, derivedFeatures, _options));
@@ -95,12 +95,12 @@ public sealed class DocxSlimExtractor
             }
         }
 
-        // Cần IsCandidate nên phải chạy SAU Classify; và chạy TRƯỚC PostProcess để lượt cộng điểm
+        // Cần IsCandidate nên phải chạy SAU Classify; và chạy TRƯỚC post-classification policy để lượt cộng điểm
         // ngữ cảnh ở đó không kéo ngược dòng bìa vừa hạ lên lại.
         DemoteCoverPageBlock(paragraphs);
         DemoteInlineEmphasis(paragraphs, structuralMarkers);
         DemoteRunsWithoutOwnProse(paragraphs, structuralMarkers);
-        PostProcess(paragraphs);
+        ApplyPostClassificationPolicy(paragraphs, sourceForFeatures, tocFeatures);
 
         var headers = new List<string>();
         var footers = new List<string>();
@@ -638,36 +638,33 @@ public sealed class DocxSlimExtractor
         p.NumberingStyleLevel is not null ||
         OutlineAnchorCustomStyles.IsAnchoredCustomStyle(p, customStylesUnderOutlineAnchor);
 
-    /// <summary>
-    /// Hậu xử lý dựa trên ngữ cảnh: một dòng in đậm đứng ngay trước đoạn thân bài dài
-    /// khả năng cao là tiêu đề; ngược lại một "ứng viên" nằm giữa hai đoạn ngắn thì đáng ngờ.
-    /// </summary>
-    private static void PostProcess(List<SlimParagraph> ps)
+    private static void ApplyPostClassificationPolicy(
+        List<SlimParagraph> paragraphs,
+        SourceDocument source,
+        TocStructuralFeatures tocFeatures)
     {
-        for (int i = 0; i < ps.Count; i++)
+        var sourceById = source.Paragraphs.ToDictionary(p => p.SourceId, StringComparer.Ordinal);
+        var policy = new PostClassificationPolicy();
+        for (var i = 0; i < paragraphs.Count; i++)
         {
-            var p = ps[i];
+            var paragraph = paragraphs[i];
+            var sourceId = string.IsNullOrWhiteSpace(paragraph.StableId)
+                ? $"p:{paragraph.Index}"
+                : paragraph.StableId;
+            if (!sourceById.TryGetValue(sourceId, out var sourceParagraph)) continue;
 
-            if (p.PrecedesTableOfContents && p.Role is ParagraphRole.Normal or ParagraphRole.HeadingCandidate)
-            {
-                p.Role = ParagraphRole.HeadingCandidate;
-                p.Score = Math.Max(p.Score, 0.80);
-            }
+            var next = NextNonEmpty(paragraphs, i);
+            var previous = PrevNonEmpty(paragraphs, i);
+            var decision = policy.Decide(new PostClassificationInput(
+                sourceParagraph,
+                new CandidateDecision(paragraph.IsCandidate, paragraph.Score, paragraph.Role, paragraph.GuessedLevel),
+                tocFeatures,
+                next?.Text,
+                previous?.Role));
 
-            // Đoạn đứng ngay trước các DÒNG MỤC của mục lục chính là TIÊU ĐỀ của mục lục
-            // ("MỤC LỤC", "Contents", "Danh mục hình ảnh"). Quan hệ này là bằng chứng cấu trúc —
-            // dòng mục lục do Word đánh dấu bằng hyperlink neo _Toc, không phải do đoán từ chữ.
-            // Nhờ đó không cần một danh sách từ khoá nào cho họ tiêu đề này.
-            // `!p.InTableOfContents` là điều kiện bắt buộc: một DÒNG MỤC của mục lục cũng đứng ngay
-            // trước dòng mục kế tiếp. Thiếu vế này thì cả danh sách mục lục thành heading — đo được
-            // trên bench: recall lên 100% nhưng 04-bia-muc-luc-chu-thich thừa đúng hai dòng mục.
-            if (p.Role != ParagraphRole.HeadingCandidate) continue;
-
-            var next = NextNonEmpty(ps, i);
-            if (next is { Text.Length: > 200 }) p.Score = Math.Min(1, p.Score + 0.10);
-
-            var prev = PrevNonEmpty(ps, i);
-            if (prev is { Role: ParagraphRole.StyledHeading }) p.Score = Math.Min(1, p.Score + 0.05);
+            paragraph.Role = decision.Role;
+            paragraph.Score = decision.Score;
+            paragraph.GuessedLevel = decision.GuessedLevel;
         }
     }
 
