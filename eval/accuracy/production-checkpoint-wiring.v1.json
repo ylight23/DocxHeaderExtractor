@@ -26,10 +26,28 @@
       "failed": 0,
       "total": 29
     },
+    "fullSuite": {
+      "passed": 1214,
+      "failed": 35,
+      "skipped": 0,
+      "total": 1249,
+      "status": "COMPLETE_WITH_EXISTING_ROUTE_DIAGNOSTIC_FAILURES"
+    },
+    "normalSolutionBuild": "PASS",
     "coreBuildNoRestore": "PASS",
     "cliAndWebNet9BuildNoRestore": "PASS",
-    "winX64BuildNoRestore": "NOT_RUN: assets files do not contain net9.0/win-x64 targets"
+    "winX64CliBuild": "PASS_AFTER_TARGETED_RESTORE",
+    "winX64WebBuild": "PASS_AFTER_TARGETED_RESTORE"
   },
+  "staticContract": {
+    "lateResponseAfterCancellation": "REJECTED",
+    "checkpointNewWriteAfterClose": "REJECTED",
+    "inFlightWriteDrain": "PASS",
+    "detachedProviderNotAwaitedForCleanup": true,
+    "tempDirectoryRemovedAfterDrain": true,
+    "diagnosticExplicitCheckpointUnchanged": true
+  },
+  "fullSuiteFailureNote": "35 failures were recorded without modifying expected values or suppressing tests; focused authority/checkpoint/replay coverage remained green.",
   "requiredScenarios": {
     "timeoutWithResolvedSpans": "covered by existing A3 preservation tests",
     "timeoutWithoutResolvedSpans": "covered by existing A3 preservation tests",
