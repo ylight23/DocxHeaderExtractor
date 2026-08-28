@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "round2_artifact_delta_reconciliation",
+  "task": "INT-3",
+  "status": "PASS",
+  "targetBranch": "integration/final-authority-clean-architecture",
+  "round1CanonicalRevision": "92cd2d6d3cba29986858d30a91d5da0468044cff",
+  "executionRevision": "92ed397e0538de06cbdee9d700f0640f3b4c2bb2",
+  "artifactPublicationRevision": "052688b35ed76b5e175821543939278fa8eea960",
+  "revisionSemantics": {
+    "executionRevisionMeaning": "Focused gate evidence was executed before the INT-2 publication commit.",
+    "artifactPublicationRevisionMeaning": "Publication commit that added the INT-2 closure artifacts.",
+    "headVerifiedIsStale": false,
+    "bulkRewriteToPublicationRevisionJustified": false
+  },
+  "deltaRange": "92cd2d6d3cba29986858d30a91d5da0468044cff..052688b35ed76b5e175821543939278fa8eea960",
+  "deltaSummary": {
+    "commits": 27,
+    "srcAndTestDocsEvalFilesChanged": 61,
+    "docsEvalFilesAdded": 50,
+    "docsEvalFilesModified": 0,
+    "docsEvalFilesDeleted": 0,
+    "sourceFilesAdded": 2,
+    "sourceFilesModified": 5,
+    "testFilesAdded": 4,
+    "bannedRuntimeFilesInDelta": 0
+  },
+  "deltaFilesOfInterest": {
+    "source": [
+      "src/DocxHeaderExtractor.Core/Models/SourceDocument.cs",
+      "src/DocxHeaderExtractor.Core/OpenXmlLayer/BuiltInHeadingStyleIdentity.cs",
+      "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSourceFactsBuilder.cs",
+      "src/DocxHeaderExtractor.Core/OpenXmlLayer/HeadingHeuristics.cs",
+      "src/DocxHeaderExtractor.Core/OpenXmlLayer/NumberingStyleFeatures.cs",
+      "src/DocxHeaderExtractor.Core/OpenXmlLayer/SlimSourceFactsAdapter.cs",
+      "src/DocxHeaderExtractor.Core/Repair/RepairCorpusAudit.cs"
+    ],
+    "tests": [
+      "tests/DocxHeaderExtractor.Tests/NumberingStyleFeatureBoundaryTests.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfG0HierarchyHumanAuthorityPacketProbe.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfG1HumanHierarchyAnnotationProbe.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfG1aHumanHierarchyPilotExecutionProbe.cs"
+    ],
+    "integrationArtifacts": [
+      "eval/integration/git-publish-20260828.v1.json",
+      "eval/integration/round2-focused-gates.v1.json",
+      "docs/integration/git-publish-20260828.md",
+      "docs/integration/round2-focused-gates.md"
+    ],
+    "round2ArchitectureArtifacts": [
+      "eval/architecture/numbering-style-feature-boundary.v1.json",
+      "eval/architecture/builtin-heading-style-ownership.v1.json",
+      "eval/architecture/ordered-demotion-state-boundary.v1.json",
+      "eval/architecture/post-writeback-slim-blockers.v1.json",
+      "docs/architecture/numbering-style-feature-boundary.md",
+      "docs/architecture/builtin-heading-style-ownership.md",
+      "docs/architecture/ordered-demotion-state-boundary.md",
+      "docs/architecture/post-writeback-slim-blockers.md"
+    ],
+    "hierarchyAuthorityArtifacts": [
+      "eval/accuracy/hierarchy-human-authority-packet.v1.json",
+      "eval/accuracy/hierarchy-human-authority.v1.json",
+      "eval/accuracy/hierarchy-human-pilot-annotation.v1.json",
+      "docs/accuracy/hierarchy-human-authority-packet.md",
+      "docs/accuracy/hierarchy-human-annotation-guideline.md",
+      "docs/accuracy/hierarchy-human-pilot-annotation-execution.md"
+    ],
+    "verificationArtifacts": [
+      "eval/verification/canonical-execution-environment-env2.v1.json",
+      "eval/verification/verify-6c-prov2.v1.json",
+      "eval/verification/verify-6c-materialization.v1.json",
+      "eval/verification/canonical-integrated-full-suite.v1.json",
+      "docs/verification/canonical-execution-environment-env2.md",
+      "docs/verification/verify-6c-prov2.md",
+      "docs/verification/verify-6c-materialization.md",
+      "docs/verification/canonical-integrated-full-suite.md"
+    ]
+  },
+  "artifactValidation": {
+    "jsonArtifactsSampled": 12,
+    "jsonArtifactsParsed": 12,
+    "jsonArtifactsFailed": 0,
+    "missingRequiredRound2Artifacts": 0,
+    "duplicateAuthorityClaims": 0,
+    "contradictoryProviderClaims": 0,
+    "contradictoryProductionChangeClaims": 0,
+    "unresolvedRevisionSemantics": 0
+  },
+  "artifactHashes": [
+    {
+      "path": "eval/integration/round2-focused-gates.v1.json",
+      "sha256": "c783cf3d64e24a9ab37cd3682e61eac0b29f1585cc47d2b8133f75c2e069d411"
+    },
+    {
+      "path": "eval/integration/git-publish-20260828.v1.json",
+      "sha256": "10a32cb01fe4c9198d647ce5754effe0556536731fb3f67f4b0501213d3f02f5"
+    },
+    {
+      "path": "eval/verification/canonical-integrated-full-suite.v1.json",
+      "sha256": "c227d29ac557b062c8b7cc4603d9f20782ab8c375c0e9ecd2ea473caedc24fba"
+    },
+    {
+      "path": "eval/verification/verify-6c-materialization.v1.json",
+      "sha256": "68d6be49c336e6b9810544ba076c10c756e7f0bd36db28b6af0c74e13862c9e8"
+    },
+    {
+      "path": "eval/verification/verify-6c-prov2.v1.json",
+      "sha256": "4e9517cbbdd17c437e2193e4cc7463097705b2b0c1882aff81c9ef6757f475cb"
+    },
+    {
+      "path": "eval/architecture/numbering-style-feature-boundary.v1.json",
+      "sha256": "eb433a2257d8c4c70a17f1cd45aa3955875d41d09e68b2fca9651bc929c64a16"
+    },
+    {
+      "path": "eval/architecture/builtin-heading-style-ownership.v1.json",
+      "sha256": "ab79b8a9bee5d8d754249147f408ce2320220b0e92b59f4bb34c2effeb5ff40a"
+    },
+    {
+      "path": "eval/architecture/ordered-demotion-state-boundary.v1.json",
+      "sha256": "a6f7a93e71ff6045a6c2ab9f5f7ea9605cdf4a2ac463913de63e883d3236a819"
+    },
+    {
+      "path": "eval/regression/accuracy-regression-contract.v1.json",
+      "sha256": "66d17825402aec2dee33dea06ccddf07ad6d4dae552dac895c4d5f4a655ca27f"
+    },
+    {
+      "path": "eval/accuracy/hierarchy-human-authority-packet.v1.json",
+      "sha256": "f8516976aeb68fd79b318b2b3b0db71fd68e5e18ce8ff510cf646ddcfb37618c"
+    },
+    {
+      "path": "eval/accuracy/hierarchy-human-authority.v1.json",
+      "sha256": "cfd85e93e4ae89a4c80607ce7f4d51d3f9b300665fc79b5d479fee62ec7bc199"
+    },
+    {
+      "path": "eval/accuracy/hierarchy-human-pilot-annotation.v1.json",
+      "sha256": "0a65e14bd392443566649989daa9bac446cee8e007cda373763b6ecbea58d160"
+    }
+  ],
+  "gateClaims": {
+    "INT_2_CLOSE": {
+      "artifact": "eval/integration/round2-focused-gates.v1.json",
+      "status": "PASS",
+      "executionRevision": "92ed397e0538de06cbdee9d700f0640f3b4c2bb2",
+      "publicationRevision": "052688b35ed76b5e175821543939278fa8eea960",
+      "fullSuiteExecuted": false,
+      "providerCalls": 0,
+      "productionBehaviorChanged": false,
+      "readyForInt3": true
+    },
+    "VERIFY_6C_MAT": {
+      "artifact": "eval/verification/verify-6c-materialization.v1.json",
+      "canonicalRevision": "92cd2d6d3cba29986858d30a91d5da0468044cff",
+      "manifestEntries": 683,
+      "authorityResolved": 683,
+      "present": 683,
+      "readable": 683,
+      "authorityHashMatch": 683,
+      "hashMismatchesAfter": 0,
+      "provenanceUnresolved": 0,
+      "verify6cReady": true
+    },
+    "ROUND1_CANONICAL_FULL_SUITE": {
+      "artifact": "eval/verification/canonical-integrated-full-suite.v1.json",
+      "executionRevision": "92cd2d6d3cba29986858d30a91d5da0468044cff",
+      "fullSuiteTotal": 1326,
+      "fullSuitePass": 1296,
+      "fullSuiteFail": 30,
+      "fullSuiteSkip": 0,
+      "newFailures": 0,
+      "changedFingerprints": 0,
+      "unjoined": 0,
+      "failureUniverseFrozen": true,
+      "usableAsRound2FullSuite": false,
+      "reason": "Round-2 delta adds source, tests, and authority artifacts after 92cd2d6; INT-4 must run the Round-2 canonical full suite."
+    }
+  },
+  "reconciliationResults": {
+    "round2FocusedGateEvidenceComplete": true,
+    "artifactSetTraceable": true,
+    "executionVsPublicationRevisionSeparated": true,
+    "gitPublishSnapshotHeadExplained": true,
+    "round1FullSuiteNotReusedAsRound2FullSuite": true,
+    "runtimeBenchmarkManifest683NotBlindlyReusedForRound2Delta": true,
+    "artifactDeltaRequiresInt4FullSuite": true,
+    "readyForInt4": true
+  },
+  "FULL_SUITE_EXECUTED": false,
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_CODE_CHANGED": false,
+  "TEST_EXPECTED_CHANGED": false,
+  "REMEDIATION_PERFORMED": false
+}
