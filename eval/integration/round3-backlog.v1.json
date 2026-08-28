@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "round3_backlog",
+  "round": "ROUND-3",
+  "status": "OPEN",
+  "baseBranch": "main",
+  "baseRevision": "e9b4c61a7fe7c34419352812f5d1216d06d81736",
+  "round2Status": "CLOSED",
+  "nextTask": {
+    "id": "LEGACY-1",
+    "title": "Exact legacy reachability census",
+    "status": "READY",
+    "goal": "Inventory and classify remaining legacy references across production, tests, eval, replay, repair, output paths, and deprecated public APIs.",
+    "requiredUnknownReferences": 0,
+    "productionMigrationInScope": false,
+    "requiredOutputs": [
+      "eval/architecture/final-legacy-reachability.v1.json",
+      "docs/architecture/final-legacy-reachability.md"
+    ]
+  },
+  "backlogOrder": [
+    "LEGACY-1",
+    "LEGACY-2",
+    "LEGACY-3",
+    "LEGACY-4",
+    "LEGACY-5A",
+    "LEGACY-5",
+    "LEGACY-6",
+    "LEGACY-9"
+  ],
+  "constraints": {
+    "doNotDeleteLegacyBeforeZeroReferenceProof": true,
+    "doNotChangeBenchmarkExpectedValues": true,
+    "doNotRemoveHistoricalEvidence": true,
+    "providerCalls": 0,
+    "fullSuiteRequiredForKickoff": false
+  }
+}
