@@ -54,6 +54,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             string reason;
             if (!string.IsNullOrWhiteSpace(pdf) && analyst is not null)
             {
+                await using var productionCheckpoint = ProductionCheckpointScope.Create();
                 var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
                     inputPath, slim, analyst,
                     maximumAnalystBlocks: _options.PdfFirstAnalystBlocks,
@@ -61,7 +62,9 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                     includeSupplementCandidates: true,
                     maximumVisualRegions: _options.PdfFirstVisualRegions,
                     visualAnalyst: null,
-                    ct: ct);
+                    ct: ct,
+                    checkpointPath: productionCheckpoint.CheckpointPath,
+                    resume: false);
                 rawHeadings = result.Headings;
                 audit = ApplyQuarantine(result.Audit, rawHeadings, quarantinedIndexes, out rawHeadings);
                 route = "pdf-authority-v1";

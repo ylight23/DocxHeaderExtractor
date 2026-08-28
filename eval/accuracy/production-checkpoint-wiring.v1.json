@@ -1,0 +1,41 @@
+{
+  "status": "WIRED_FOCUSED_VERIFICATION_PASS",
+  "normalAuthorityCheckpoint": "ENABLED",
+  "checkpointPolicy": "TEMP_PER_RUN",
+  "checkpointOwner": "AuthorityExtractionPipeline",
+  "checkpointPathPolicy": "unique-run-directory-under-system-temp",
+  "resume": false,
+  "r1PreservationReachable": true,
+  "validatorBypass": false,
+  "cleanup": "PASS",
+  "concurrencyIsolation": "PASS",
+  "providerCalls": 0,
+  "candidateBehaviorChanged": false,
+  "timeoutChanged": false,
+  "productionBehaviorChanged": "true: preserves independently completed span work after a partial span-lane timeout",
+  "diagnosticRawModelOutputDefault": false,
+  "tests": {
+    "focusedCheckpointAuthority": {
+      "passed": 24,
+      "failed": 0,
+      "total": 24
+    },
+    "coreBuildNoRestore": "PASS",
+    "cliAndWebNet9BuildNoRestore": "PASS",
+    "winX64BuildNoRestore": "NOT_RUN: assets files do not contain net9.0/win-x64 targets"
+  },
+  "requiredScenarios": {
+    "timeoutWithResolvedSpans": "covered by existing A3 preservation tests",
+    "timeoutWithoutResolvedSpans": "covered by existing A3 preservation tests",
+    "nullCheckpointLegacyBehavior": "covered by existing A3 preservation tests",
+    "completeLaneNoOutputChange": "covered by existing A3 preservation tests",
+    "invalidSpanValidatorRejection": "covered by existing validator/replay tests",
+    "cleanupTerminalPaths": "scope cleanup is idempotent and exception-safe; production finally owns cleanup",
+    "concurrentRunIsolation": "unique scope path test PASS"
+  },
+  "notes": [
+    "Production route is the only new checkpoint caller; diagnostic APIs remain explicit-path APIs.",
+    "PdfStageCheckpoint is disposed before the production-owned temp directory is removed.",
+    "No provider or model calls were made by this change or verification."
+  ]
+}

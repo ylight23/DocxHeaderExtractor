@@ -573,7 +573,9 @@ public static class PdfLayoutEvidenceOutline
         var context = TryBuildBroadAuditContext(
             originalInputPath, includeAllVisualStyles, includeSupplementCandidates, out var reason);
         if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
-        var checkpoint = string.IsNullOrWhiteSpace(checkpointPath) ? null : new PdfStageCheckpoint(checkpointPath, resume, Path.GetFileName(context.Pdf));
+        await using var checkpoint = string.IsNullOrWhiteSpace(checkpointPath)
+            ? null
+            : new PdfStageCheckpoint(checkpointPath, resume, Path.GetFileName(context.Pdf));
 
         // Visual scheduling is source-fact-only: it must not wait for a slow semantic batch.
         // Its own canonical source validator remains the authority before any heading is emitted.
