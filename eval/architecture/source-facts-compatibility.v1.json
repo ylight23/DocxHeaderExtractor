@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "architecture_source_facts_compatibility",
+  "task": "ARCH-4B",
+  "SOURCE_FACT_TYPES_INTRODUCED": true,
+  "COMPATIBILITY_ADAPTER_IMPLEMENTED": true,
+  "SOURCE_IDENTITY_PRESERVED": true,
+  "SOURCE_FACT_IMMUTABILITY_CONTRACT": "PROVEN",
+  "RUNTIME_CALLER_CUTOVER": false,
+  "SLIM_BEHAVIOR_CHANGED": false,
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_BEHAVIOR_CHANGED": false,
+  "contract": {
+    "namespace": "DocxHeaderExtractor.Core.Models",
+    "types": [
+      "SourceDocument",
+      "SourceParagraph",
+      "SourceTextRunSpan",
+      "SourceSegment",
+      "SourceStyleFacts",
+      "SourceNumberingFacts",
+      "SourceLayoutFacts"
+    ],
+    "immutableProperties": true,
+    "readOnlyCollections": true,
+    "openXmlDependency": false,
+    "excludedFields": [
+      "IsCandidate",
+      "Score",
+      "Role",
+      "GuessedLevel",
+      "StyleTrust",
+      "candidate ranking",
+      "model proposal",
+      "validated heading",
+      "route decision",
+      "demotion result"
+    ]
+  },
+  "adapter": {
+    "name": "SlimSourceFactsAdapter",
+    "direction": "SlimDocument -> SourceDocument",
+    "sourceAndNormalizedFactsOnly": true,
+    "derivedFactsMapped": false,
+    "policyResultsMapped": false,
+    "validatedFactsMapped": false,
+    "ambiguousFactsSilentlyMapped": false,
+    "documentIdentity": "SlimDocument.SourcePath",
+    "paragraphIdentity": "StableId, with deterministic p:{Index} fallback",
+    "duplicateTextPreserved": true,
+    "segmentProvenancePreserved": true,
+    "textSpanProvenancePreserved": true
+  },
+  "runtimeGuards": {
+    "authorityPipelineStillConsumesSlimDocument": true,
+    "docxSlimExtractorReturnTypeUnchanged": true,
+    "callerCutover": false,
+    "productionCodeBehaviorChange": false,
+    "providerCalls": 0
+  },
+  "verification": {
+    "focusedArch4bTests": {
+      "status": "PASS",
+      "total": 3,
+      "failed": 0
+    },
+    "fRegressionHarnessContract": {
+      "status": "PASS",
+      "total": 2,
+      "failed": 0
+    },
+    "releaseBuild": {
+      "status": "PASS",
+      "configuration": "Release",
+      "solution": "DocxHeaderExtractor.sln",
+      "warnings": 28,
+      "errors": 0
+    }
+  },
+  "files": {
+    "sourceTypes": "src/DocxHeaderExtractor.Core/Models/SourceDocument.cs",
+    "adapter": "src/DocxHeaderExtractor.Core/OpenXmlLayer/SlimSourceFactsAdapter.cs",
+    "tests": "tests/DocxHeaderExtractor.Tests/SourceFactsCompatibilityTests.cs"
+  }
+}
