@@ -4,6 +4,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.OpenXmlLayer;
@@ -51,6 +52,8 @@ public sealed class DocxSlimExtractor
         foreach (var p in paragraphs)
             p.Corrupt = derivedFeatures.CorruptSourceIds.Contains(p.StableId);
 
+        var candidatePolicy = new HeadingCandidatePolicy();
+
         // Mục lục gõ tay phải nhận diện TRƯỚC hai lượt dưới: cả MarkParagraphsBeforeTables lẫn
         // PostProcess đều đọc InTableOfContents, đặt sau thì chúng đọc phải cờ chưa cập nhật.
         MarkTypedTableOfContentsRuns(paragraphs);
@@ -58,7 +61,8 @@ public sealed class DocxSlimExtractor
         // Quan hệ vị trí với bảng phải biết TRƯỚC khi chấm điểm: luật chú thích trong Classify dựa
         // vào nó, mà PostProcess thì chạy sau nên đặt ở đó là cờ luôn false lúc cần.
         MarkParagraphsBeforeTables(paragraphs);
-        foreach (var p in paragraphs) HeadingHeuristics.Classify(p, _options);
+        foreach (var p in paragraphs)
+            candidatePolicy.Apply(new CandidatePolicyInput(p, derivedFeatures, _options));
 
         // Style của TÀI LIỆU NÀY có đáng tin không — chấm sau lượt Classify đầu vì vế "trông không
         // phải đề mục" dùng lại chính các luật hình dạng ở đó. Không tin thì chấm LẠI, lần này style
@@ -78,7 +82,8 @@ public sealed class DocxSlimExtractor
             foreach (var p in paragraphs)
             {
                 p.HasBuiltInHeadingStyle = false;
-                HeadingHeuristics.Classify(p, _options, trustStyleSelection: false);
+                candidatePolicy.Apply(new CandidatePolicyInput(
+                    p, derivedFeatures, _options, TrustStyleSelection: false));
             }
         }
 
