@@ -1,0 +1,44 @@
+{
+  "milestone": "ARCH-4Q",
+  "status": "CLOSED_MIXED_OWNERSHIP",
+  "baseRevision": "7a7b22e",
+  "hasBuiltInHeadingStyleClassification": "MIXED",
+  "ownershipResolved": true,
+  "sourceStyleIdentity": {
+    "owner": "DERIVED_STYLE_FEATURE",
+    "producer": "StyleResolver + BuiltInHeadingStyleIdentity",
+    "inputs": ["styles.xml styleId", "w:name", "w:basedOn inheritance", "paragraph w:pStyle"],
+    "normalization": "resolved style name and style id are matched against the existing built-in identity grammar",
+    "output": "BuiltInHeadingStyleLevel",
+    "availableWithoutHeadingPolicy": true
+  },
+  "hasBuiltInHeadingStyle": {
+    "owner": "HEADING_POLICY_RESULT",
+    "writers": [
+      "HeadingHeuristics: trusted built-in style fast path",
+      "DocxSlimExtractor: clears the flag when StyleTrustAudit rejects style selection"
+    ],
+    "readers": ["candidate policy", "demotion operations", "outline/hierarchy", "document mode", "diagnostics"],
+    "dependsOnHeadingPolicy": true,
+    "dependsOnStyleTrust": true,
+    "sourceAuthority": false
+  },
+  "splitContract": {
+    "builtInStyleIdentity": "NumberingStyleFeatures.ParagraphStyleFeatures.BuiltInHeadingStyleLevel",
+    "headingStyleTrusted": "retained as Slim compatibility/policy state",
+    "candidateOrHeadingDecision": "not represented by the feature boundary"
+  },
+  "numberingStyleBoundaryExtended": true,
+  "demoteInlineEmphasisInputCoverage": "partial",
+  "demoteInlineEmphasisRemainingBlocker": "ordered compatibility/policy state; HasBuiltInHeadingStyle is not a pure source fact",
+  "candidateDelta": 0,
+  "roleDelta": 0,
+  "scoreDelta": 0,
+  "levelDelta": 0,
+  "styleFeatureDelta": 0,
+  "sourceFactMutation": false,
+  "policySemanticsChanged": false,
+  "providerCalls": 0,
+  "productionBehaviorChanged": false,
+  "nextStep": "ARCH-4R_ORDERED_DEMOTION_STATE_BOUNDARY"
+}

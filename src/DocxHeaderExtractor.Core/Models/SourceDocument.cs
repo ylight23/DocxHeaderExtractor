@@ -48,6 +48,8 @@ public sealed record SourceStyleFacts
 {
     public string? StyleId { get; init; }
     public string? StyleName { get; init; }
+    /// <summary>Built-in Word heading level derived only from resolved style identity; not a heading decision.</summary>
+    public int? BuiltInHeadingStyleLevel { get; init; }
     public int? OutlineLevel { get; init; }
     public bool Bold { get; init; }
     public bool Italic { get; init; }

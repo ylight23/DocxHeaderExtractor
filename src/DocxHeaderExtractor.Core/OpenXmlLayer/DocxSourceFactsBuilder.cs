@@ -39,6 +39,8 @@ internal static class DocxSourceFactsBuilder
         {
             StyleId = paragraph.StyleId,
             StyleName = paragraph.StyleName,
+            BuiltInHeadingStyleLevel = BuiltInHeadingStyleIdentity.LevelFromResolvedStyle(
+                paragraph.StyleName, paragraph.StyleId),
             OutlineLevel = paragraph.OutlineLevel,
             Bold = paragraph.Bold,
             Italic = paragraph.Italic,

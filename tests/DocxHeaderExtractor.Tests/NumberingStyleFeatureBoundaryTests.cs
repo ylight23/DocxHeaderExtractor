@@ -5,6 +5,18 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class NumberingStyleFeatureBoundaryTests
 {
+    [Theory]
+    [InlineData("Heading 1", "Heading1", 1)]
+    [InlineData("Title", "Title", 1)]
+    [InlineData("Subtitle", "Subtitle", 2)]
+    [InlineData("Custom Heading", "CustomHeading", null)]
+    public void Built_in_style_identity_is_pure_style_metadata(
+        string styleName, string styleId, int? expectedLevel)
+    {
+        Assert.Equal(expectedLevel,
+            BuiltInHeadingStyleIdentity.LevelFromResolvedStyle(styleName, styleId));
+    }
+
     [Fact]
     public void Features_preserve_source_identity_and_numbering_style_values()
     {
@@ -19,7 +31,7 @@ public sealed class NumberingStyleFeatureBoundaryTests
                 SourceId = "p-1",
                 SourceOrdinal = 3,
                 Text = "1. Heading",
-                Style = new SourceStyleFacts { StyleId = "Heading1", StyleName = "Heading 1", OutlineLevel = 0, Bold = true, FontSizePt = 14 },
+                Style = new SourceStyleFacts { StyleId = "Heading1", StyleName = "Heading 1", BuiltInHeadingStyleLevel = 1, OutlineLevel = 0, Bold = true, FontSizePt = 14 },
                 Numbering = new SourceNumberingFacts { NumberingId = 4, NumberingLevel = 1, NumberLabel = "1.", NumberingFormat = "decimal" },
                 Layout = new SourceLayoutFacts(),
             }]
@@ -34,6 +46,7 @@ public sealed class NumberingStyleFeatureBoundaryTests
         Assert.Equal("1.", numbering.NumberLabel);
         Assert.Equal("p-1", style.SourceId);
         Assert.Equal("Heading1", style.StyleId);
+        Assert.Equal(1, style.BuiltInHeadingStyleLevel);
         Assert.True(style.Bold);
     }
 
