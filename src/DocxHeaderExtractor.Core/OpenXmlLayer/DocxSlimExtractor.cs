@@ -57,6 +57,14 @@ public sealed class DocxSlimExtractor
         // Mục lục gõ tay phải nhận diện TRƯỚC hai lượt dưới: cả MarkParagraphsBeforeTables lẫn
         // PostProcess đều đọc InTableOfContents, đặt sau thì chúng đọc phải cờ chưa cập nhật.
         MarkTypedTableOfContentsRuns(paragraphs);
+        var tocFeatures = new TocStructuralFeatureDeriver().Derive(
+            sourceForFeatures,
+            paragraphs.Where(p => p.InTableOfContents)
+                .Select(p => string.IsNullOrWhiteSpace(p.StableId) ? $"p:{p.Index}" : p.StableId)
+                .ToHashSet(StringComparer.Ordinal));
+        foreach (var p in paragraphs)
+            p.PrecedesTableOfContents = tocFeatures.PrecedesTableOfContents(
+                string.IsNullOrWhiteSpace(p.StableId) ? $"p:{p.Index}" : p.StableId);
 
         // Quan hệ vị trí với bảng phải biết TRƯỚC khi chấm điểm: luật chú thích trong Classify dựa
         // vào nó, mà PostProcess thì chạy sau nên đặt ở đó là cờ luôn false lúc cần.
@@ -640,6 +648,12 @@ public sealed class DocxSlimExtractor
         {
             var p = ps[i];
 
+            if (p.PrecedesTableOfContents && p.Role is ParagraphRole.Normal or ParagraphRole.HeadingCandidate)
+            {
+                p.Role = ParagraphRole.HeadingCandidate;
+                p.Score = Math.Max(p.Score, 0.80);
+            }
+
             // Đoạn đứng ngay trước các DÒNG MỤC của mục lục chính là TIÊU ĐỀ của mục lục
             // ("MỤC LỤC", "Contents", "Danh mục hình ảnh"). Quan hệ này là bằng chứng cấu trúc —
             // dòng mục lục do Word đánh dấu bằng hyperlink neo _Toc, không phải do đoán từ chữ.
@@ -647,16 +661,6 @@ public sealed class DocxSlimExtractor
             // `!p.InTableOfContents` là điều kiện bắt buộc: một DÒNG MỤC của mục lục cũng đứng ngay
             // trước dòng mục kế tiếp. Thiếu vế này thì cả danh sách mục lục thành heading — đo được
             // trên bench: recall lên 100% nhưng 04-bia-muc-luc-chu-thich thừa đúng hai dòng mục.
-            if (!p.InTableOfContents && NextNonEmpty(ps, i) is { InTableOfContents: true })
-            {
-                p.PrecedesTableOfContents = true;
-                if (p.Role is ParagraphRole.Normal or ParagraphRole.HeadingCandidate)
-                {
-                    p.Role = ParagraphRole.HeadingCandidate;
-                    p.Score = Math.Max(p.Score, 0.80);
-                }
-            }
-
             if (p.Role != ParagraphRole.HeadingCandidate) continue;
 
             var next = NextNonEmpty(ps, i);
