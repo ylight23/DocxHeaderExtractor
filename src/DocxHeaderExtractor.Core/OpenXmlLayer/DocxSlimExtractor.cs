@@ -20,7 +20,9 @@ public sealed class DocxSlimExtractor
 
     public DocxSlimExtractor(ExtractionOptions? options = null) => _options = options ?? new ExtractionOptions();
 
-    public SlimDocument Extract(string path)
+    public SlimDocument Extract(string path) => ExtractWithSourceFacts(path).Slim;
+
+    public DocxSourceExtractionResult ExtractWithSourceFacts(string path)
     {
         using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
         using var doc = WordprocessingDocument.Open(stream, false);
@@ -96,7 +98,7 @@ public sealed class DocxSlimExtractor
         // khi tầng ứng viên đọc mốc, nếu không số trang sẽ được đọc thành mốc đánh số — §106.
         RunningHeaderAudit.Strip(paragraphs);
 
-        return new SlimDocument
+        var slim = new SlimDocument
         {
             FileName = Path.GetFileName(path),
             SourcePath = path,
@@ -107,6 +109,9 @@ public sealed class DocxSlimExtractor
             PageHeaders = headers,
             PageFooters = footers,
         }.Build();
+
+        var source = DocxSourceFactsBuilder.Build(path, paragraphs, headers, footers);
+        return new DocxSourceExtractionResult(slim, source);
     }
 
     private static SlimParagraph BuildParagraph(WalkedParagraph walked, StyleResolver resolver, int index)
