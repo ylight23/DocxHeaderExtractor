@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "eval_replay_authority_cutover",
+  "task": "LEGACY-3",
+  "status": "PASS",
+  "baseRevision": "f4e92c12cd09a88059ba80c4d794243c71268340",
+  "cutoverRevision": "2846f66da06fe1c31279a51bdd4d14350d71bc09",
+  "executableEvalLegacyCallersBefore": 9,
+  "executableEvalLegacyCallersAfter": 0,
+  "legacyAdapterCallsAfter": 1,
+  "legacyAdapterCallLocation": "src/DocxHeaderExtractor.Core/Eval/AuthorityEvaluationSourceReader.cs",
+  "sourceEvaluationBoundary": "IEvaluationSourceReader -> AuthorityEvaluationSourceReader -> SourceDocument",
+  "authorityOutputEvaluationBoundary": "PipelineDocumentExtractionTool -> DocumentOutline",
+  "migratedExecutableSurfaces": [
+    "EvalRunner",
+    "BenchDocumentFactory",
+    "EvaluationAnchorResolver",
+    "ReviewBundle",
+    "TocAnswerKeyGenerator",
+    "CLI review/TOC/anchor evaluation paths",
+    "Web review bundle path",
+    "evaluation focused fixtures"
+  ],
+  "preservedHistoricalArtifacts": true,
+  "replayHistoricalArtifactsRewritten": false,
+  "evaluationBehaviorUnexpectedDelta": 0,
+  "benchmarkExpectedChanged": false,
+  "historicalEvidenceChanged": false,
+  "productionCodeChanged": true,
+  "testCodeChanged": true,
+  "legacyDeleted": false,
+  "docxSlimRemoved": false,
+  "providerCalls": 0,
+  "fullSuiteExecuted": false,
+  "releaseBuild": {
+    "status": "PASS",
+    "configuration": "Release",
+    "command": "dotnet build DocxHeaderExtractor.sln -c Release --no-restore"
+  },
+  "focusedTests": {
+    "status": "PASS",
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "total": 19,
+    "classes": [
+      "EvaluationAnchorResolverTests",
+      "TocAnswerKeyGeneratorTests",
+      "ReviewBundleTests",
+      "SourceFactsDualBuildTests",
+      "AutoRepairWorkflowTests"
+    ],
+    "trxPathLocal": "C:\\DocxHeaderExtractor-legacy3\\tests\\DocxHeaderExtractor.Tests\\TestResults\\legacy3-focused.trx",
+    "trxSha256": "33409F2A3B4D0E765D4F77FB466F58D29D0C125924DEBE91FCD6DA30FFAC7B27"
+  },
+  "gates": {
+    "EXECUTABLE_LEGACY_EVAL_CALLERS": 0,
+    "EVAL_BEHAVIOR_UNEXPECTED_DELTA": 0,
+    "REPLAY_HISTORICAL_ARTIFACTS_REWRITTEN": 0,
+    "PROVIDER_CALLS": 0,
+    "FULL_SUITE_EXECUTED": false
+  },
+  "nextTask": "LEGACY-4"
+}
