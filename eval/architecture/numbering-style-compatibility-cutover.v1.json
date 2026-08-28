@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "numbering_style_compatibility_cutover",
+  "task": "LEGACY-4",
+  "status": "PASS",
+  "baseRevision": "e1f3172bb059eb7eda187f8e70245ce3d7bf28bd",
+  "cutoverRevision": "e1ee02a5c97bdf4be126220361ef35af1a2e4185",
+  "boundary": "SourceDocument -> NumberingStyleFeatures -> ParagraphNumberingFeatures/ParagraphStyleFeatures",
+  "executableSlimNumberingStyleReadersBefore": 1,
+  "executableSlimNumberingStyleReadersAfter": 0,
+  "migratedConsumers": [
+    "RepairCorpusAudit.StructureSourceAudit built-in heading style counter"
+  ],
+  "remainingCompatibilityConsumers": [
+    "DocxSlimExtractor source producer",
+    "SlimCompatibilityBoundary",
+    "three ordered Demote* operations"
+  ],
+  "demotionOperationsMigrated": false,
+  "numberingIdDelta": 0,
+  "numberingLevelDelta": 0,
+  "numberLabelDelta": 0,
+  "numberingFormatDelta": 0,
+  "styleIdDelta": 0,
+  "builtinHeadingStyleLevelDelta": 0,
+  "outlineLevelDelta": 0,
+  "styleEmphasisDelta": 0,
+  "policyStateLeakage": 0,
+  "demotionStateLeakage": 0,
+  "expectedChanged": false,
+  "legacyDeleted": false,
+  "docxSlimRemoved": false,
+  "providerCalls": 0,
+  "fullSuiteExecuted": false,
+  "releaseBuild": {
+    "status": "PASS",
+    "configuration": "Release",
+    "errors": 0,
+    "warnings": 161,
+    "command": "dotnet build DocxHeaderExtractor.sln -c Release --no-restore"
+  },
+  "focusedTests": {
+    "status": "PASS",
+    "passed": 77,
+    "failed": 0,
+    "skipped": 0,
+    "total": 77,
+    "scope": [
+      "NumberingStyleFeatureBoundaryTests",
+      "NumberingAuditTests",
+      "NumberingResolverTests",
+      "StyleTrustNumberingTests",
+      "StyleDeclaredOutlineTests",
+      "OutlineStructureResolverTests",
+      "RepairDiagnosticGateTests",
+      "RepairValidationGateTests",
+      "AutoRepairWorkflowTests",
+      "DemotionPolicyOwnershipTests"
+    ],
+    "trxPathLocal": "C:\\DocxHeaderExtractor-legacy4\\tests\\DocxHeaderExtractor.Tests\\TestResults\\legacy4-focused.trx",
+    "trxSha256": "BDEA743646CDC0E9F3A700307BB544630AA6CCDBDC6865035AD41D158DBDC65C"
+  },
+  "gates": {
+    "EXECUTABLE_SLIM_NUMBERING_STYLE_READERS_AFTER": 0,
+    "NUMBERING_ID_DELTA": 0,
+    "NUMBERING_LEVEL_DELTA": 0,
+    "NUMBER_LABEL_DELTA": 0,
+    "NUMBERING_FORMAT_DELTA": 0,
+    "STYLE_ID_DELTA": 0,
+    "BUILTIN_HEADING_STYLE_LEVEL_DELTA": 0,
+    "OUTLINE_LEVEL_DELTA": 0,
+    "STYLE_EMPHASIS_DELTA": 0,
+    "POLICY_STATE_LEAKAGE": 0,
+    "DEMOTION_STATE_LEAKAGE": 0,
+    "PROVIDER_CALLS": 0
+  },
+  "nextTask": "LEGACY-5"
+}
