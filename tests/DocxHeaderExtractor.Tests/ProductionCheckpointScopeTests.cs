@@ -97,4 +97,22 @@ public sealed class ProductionCheckpointScopeTests
         Assert.Null(await writerFault.Task);
         Assert.False(File.Exists(Path.Combine(directory, "span-checkpoint.jsonl")));
     }
+
+    [Fact]
+    public async Task Admitted_write_with_pre_cancelled_token_exits_and_drains()
+    {
+        await using var scope = ProductionCheckpointScope.Create();
+        await using var checkpoint = new PdfStageCheckpoint(scope.CheckpointPath, false, "test.pdf");
+        using var cancellation = new CancellationTokenSource();
+        cancellation.Cancel();
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => checkpoint.RecordSpanBatchAsync(
+            [("b1", 1, "l1", (IReadOnlyList<string>)["l1"], new TextOffsetSpan(0, 1))],
+            null, cancellation.Token));
+
+        await checkpoint.StopAcceptingWritesAndDrainAsync();
+        await checkpoint.DisposeAsync();
+        await scope.DisposeAsync();
+        Assert.False(Directory.Exists(scope.DirectoryPath));
+    }
 }

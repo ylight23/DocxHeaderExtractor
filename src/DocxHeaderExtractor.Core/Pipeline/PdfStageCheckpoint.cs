@@ -253,15 +253,17 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
             if (_activeWrites++ == 0)
                 _writesIdle = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
         }
-        var line = JsonSerializer.Serialize(new { lane, identity = _documentIdentity + ":" + identity, status, completedAt = DateTimeOffset.UtcNow, payload });
-        await _write.WaitAsync(ct);
+        var acquired = false;
         try
         {
+            var line = JsonSerializer.Serialize(new { lane, identity = _documentIdentity + ":" + identity, status, completedAt = DateTimeOffset.UtcNow, payload });
+            await _write.WaitAsync(ct);
+            acquired = true;
             await File.AppendAllTextAsync(_path, line + Environment.NewLine, ct);
         }
         finally
         {
-            _write.Release();
+            if (acquired) _write.Release();
             ExitWrite();
         }
     }

@@ -6,4 +6,4 @@ Status: `DETACHED_WRITER_LIFETIME_PASS`
 
 The change preserves the existing authority chain: checkpointed spans are only reused by `PreservePartialSpanResolutions`; validation, grounding, and output policy remain authoritative. Candidate construction, ranking, model configuration, timeout, and concurrency are unchanged.
 
-Verification: focused checkpoint/lane/authority tests passed `29/29`; Core, CLI, Web, and test projects built successfully without a RID. A `win-x64 --no-restore` build was not available because the existing assets files do not contain `net9.0/win-x64` targets. No provider calls were made.
+Verification: focused checkpoint/lane/authority tests passed `30/30`; the complete suite recorded `1215/35/0` and matched the exact 35-test baseline failure set from `a1c5b7d` (`1211/35/0`), proving no new full-suite regression. Core, CLI, Web, and test projects built successfully; targeted `win-x64` restore/build also passed. No provider calls were made.
