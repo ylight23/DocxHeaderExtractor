@@ -22,17 +22,27 @@
   "diagnosticRawModelOutputDefault": false,
   "tests": {
     "focusedCheckpointAuthority": {
-      "passed": 29,
+      "passed": 30,
       "failed": 0,
-      "total": 29
+      "total": 30
     },
     "fullSuite": {
-      "passed": 1214,
+      "passed": 1215,
       "failed": 35,
       "skipped": 0,
-      "total": 1249,
+      "total": 1250,
       "status": "COMPLETE_WITH_EXISTING_ROUTE_DIAGNOSTIC_FAILURES"
     },
+    "baselineFullSuite": {
+      "revision": "a1c5b7d",
+      "passed": 1211,
+      "failed": 35,
+      "skipped": 0,
+      "total": 1246,
+      "status": "COMPLETE_WITH_EXISTING_ROUTE_DIAGNOSTIC_FAILURES"
+    },
+    "failureSetMatch": true,
+    "noNewFullSuiteRegression": "PROVEN",
     "normalSolutionBuild": "PASS",
     "coreBuildNoRestore": "PASS",
     "cliAndWebNet9BuildNoRestore": "PASS",
