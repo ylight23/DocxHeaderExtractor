@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "performance_authority_pipeline_cost_model",
+  "phase": "H-authority-pipeline-cost-model",
+  "sourceAuthority": "frozen k160-semantic-run.v1.json \u002B k160-role-span.jsonl \u002B current source snapshot",
+  "config": {
+    "k": 160,
+    "roleBatchSize": 8,
+    "spanBatchSize": 4,
+    "roleTimeoutSeconds": 90,
+    "batchTimeoutSeconds": 120,
+    "laneDeadlineSeconds": 300,
+    "concurrency": 2,
+    "visualRegions": 0,
+    "source": "k160 semantic execution manifest"
+  },
+  "documents": [
+    {
+      "documentId": "004",
+      "relativePath": "01_phap_quy/004_Luat_Dau_tu_61-2020-QH14_EN.docx",
+      "sourceLines": 2688,
+      "generatedCandidates": 2653,
+      "selectedCandidates": 160,
+      "roleInputs": 160,
+      "roleBatches": 20,
+      "spanInputs": 112,
+      "spanBatches": 28,
+      "checkpointWrites": 49,
+      "checkpointBytes": 146403,
+      "validatedHeadings": 96,
+      "emittedHeadings": 85,
+      "counterfactuals": [
+        {
+          "population": "population_plus_10%",
+          "candidateInputDelta": 266,
+          "roleInputDelta": 16,
+          "roleBatchDelta": 2,
+          "spanInputDelta": 12,
+          "spanBatchDelta": 3,
+          "checkpointWriteDelta": 5,
+          "interpretation": "estimate_work_units_not_latency"
+        },
+        {
+          "population": "population_plus_25%",
+          "candidateInputDelta": 664,
+          "roleInputDelta": 40,
+          "roleBatchDelta": 5,
+          "spanInputDelta": 28,
+          "spanBatchDelta": 7,
+          "checkpointWriteDelta": 12,
+          "interpretation": "estimate_work_units_not_latency"
+        },
+        {
+          "population": "population_plus_50%",
+          "candidateInputDelta": 1327,
+          "roleInputDelta": 80,
+          "roleBatchDelta": 10,
+          "spanInputDelta": 56,
+          "spanBatchDelta": 14,
+          "checkpointWriteDelta": 24,
+          "interpretation": "estimate_work_units_not_latency"
+        }
+      ]
+    },
+    {
+      "documentId": "030",
+      "relativePath": "02_hop_dong_mua_sam/030_WB_RFP_Consulting_Services_2019.docx",
+      "sourceLines": 6273,
+      "generatedCandidates": 3457,
+      "selectedCandidates": 160,
+      "roleInputs": 160,
+      "roleBatches": 20,
+      "spanInputs": 59,
+      "spanBatches": 15,
+      "checkpointWrites": 36,
+      "checkpointBytes": 123616,
+      "validatedHeadings": 49,
+      "emittedHeadings": 49,
+      "counterfactuals": [
+        {
+          "population": "population_plus_10%",
+          "candidateInputDelta": 346,
+          "roleInputDelta": 16,
+          "roleBatchDelta": 2,
+          "spanInputDelta": 6,
+          "spanBatchDelta": 2,
+          "checkpointWriteDelta": 4,
+          "interpretation": "estimate_work_units_not_latency"
+        },
+        {
+          "population": "population_plus_25%",
+          "candidateInputDelta": 865,
+          "roleInputDelta": 40,
+          "roleBatchDelta": 5,
+          "spanInputDelta": 15,
+          "spanBatchDelta": 4,
+          "checkpointWriteDelta": 9,
+          "interpretation": "estimate_work_units_not_latency"
+        },
+        {
+          "population": "population_plus_50%",
+          "candidateInputDelta": 1729,
+          "roleInputDelta": 80,
+          "roleBatchDelta": 10,
+          "spanInputDelta": 30,
+          "spanBatchDelta": 8,
+          "checkpointWriteDelta": 18,
+          "interpretation": "estimate_work_units_not_latency"
+        }
+      ]
+    },
+    {
+      "documentId": "043",
+      "relativePath": "03_tai_chinh_ke_toan/043_IBRD_Financial_Statements_June_2024.docx",
+      "sourceLines": 7047,
+      "generatedCandidates": 2038,
+      "selectedCandidates": 160,
+      "roleInputs": 160,
+      "roleBatches": 20,
+      "spanInputs": 18,
+      "spanBatches": 5,
+      "checkpointWrites": 26,
+      "checkpointBytes": 106372,
+      "validatedHeadings": 17,
+      "emittedHeadings": 11,
+      "counterfactuals": [
+        {
+          "population": "population_plus_10%",
+          "candidateInputDelta": 204,
+          "roleInputDelta": 16,
+          "roleBatchDelta": 2,
+          "spanInputDelta": 2,
+          "spanBatchDelta": 0,
+          "checkpointWriteDelta": 2,
+          "interpretation": "estimate_work_units_not_latency"
+        },
+        {
+          "population": "population_plus_25%",
+          "candidateInputDelta": 510,
+          "roleInputDelta": 40,
+          "roleBatchDelta": 5,
+          "spanInputDelta": 5,
+          "spanBatchDelta": 1,
+          "checkpointWriteDelta": 6,
+          "interpretation": "estimate_work_units_not_latency"
+        },
+        {
+          "population": "population_plus_50%",
+          "candidateInputDelta": 1019,
+          "roleInputDelta": 80,
+          "roleBatchDelta": 10,
+          "spanInputDelta": 9,
+          "spanBatchDelta": 2,
+          "checkpointWriteDelta": 12,
+          "interpretation": "estimate_work_units_not_latency"
+        }
+      ]
+    },
+    {
+      "documentId": "058",
+      "relativePath": "04_giao_trinh/058_Machine_Learning_Lecture_Note.docx",
+      "sourceLines": 5327,
+      "generatedCandidates": 1884,
+      "selectedCandidates": 160,
+      "roleInputs": 160,
+      "roleBatches": 20,
+      "spanInputs": 66,
+      "spanBatches": 17,
+      "checkpointWrites": 38,
+      "checkpointBytes": 128872,
+      "validatedHeadings": 31,
+      "emittedHeadings": 12,
+      "counterfactuals": [
+        {
+          "population": "population_plus_10%",
+          "candidateInputDelta": 189,
+          "roleInputDelta": 16,
+          "roleBatchDelta": 2,
+          "spanInputDelta": 7,
+          "spanBatchDelta": 2,
+          "checkpointWriteDelta": 4,
+          "interpretation": "estimate_work_units_not_latency"
+        },
+        {
+          "population": "population_plus_25%",
+          "candidateInputDelta": 471,
+          "roleInputDelta": 40,
+          "roleBatchDelta": 5,
+          "spanInputDelta": 17,
+          "spanBatchDelta": 4,
+          "checkpointWriteDelta": 9,
+          "interpretation": "estimate_work_units_not_latency"
+        },
+        {
+          "population": "population_plus_50%",
+          "candidateInputDelta": 942,
+          "roleInputDelta": 80,
+          "roleBatchDelta": 10,
+          "spanInputDelta": 33,
+          "spanBatchDelta": 8,
+          "checkpointWriteDelta": 18,
+          "interpretation": "estimate_work_units_not_latency"
+        }
+      ]
+    }
+  ],
+  "ACTUAL_PROVIDER_LATENCY": "NOT_OBSERVABLE",
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_CODE_CHANGED": false
+}

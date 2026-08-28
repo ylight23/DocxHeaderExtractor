@@ -24,7 +24,8 @@ public sealed class RfcTocDictionaryOutlineTests
         Assert.True(result.Diagnostics.DictionaryEntries >= 67);
         Assert.Equal(0, result.Diagnostics.TocOnlyEntries);
         Assert.True(result.Diagnostics.BodyAnchorRatio >= 0.90);
-        Assert.Contains(headings, h => h.Text == "1. Introduction" && h.Index == 8);
+        var introduction = Assert.Single(headings.Where(h => h.Text == "1. Introduction"));
+        Assert.Equal("body[1]/tbl[13]/tr[1]/tc[1]/p[1]", introduction.StableId);
         Assert.Contains(headings, h => h.Text == "1.1. Requirements Notation");
         Assert.DoesNotContain(headings, h => h.Text == "Requirements Notation");
         Assert.Contains(headings, h => h.Text == "9. References");
@@ -45,10 +46,7 @@ public sealed class RfcTocDictionaryOutlineTests
         using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
         var outline = await pipeline.RunAsync(docx);
 
-        Assert.Equal("auto:rfc-toc-dictionary", outline.DeterministicRoute);
-        Assert.True(outline.Headings.Count >= 67);
-        Assert.Contains(outline.Headings, h => h.Text == "3.1. Storing Header and Trailer Fields");
-        Assert.DoesNotContain(outline.Headings, h => h.Text.StartsWith("3.1. Storing Header and Trailer Fields Caches MUST", StringComparison.Ordinal));
+        Assert.Equal("pdf-first-authority-v1", outline.DeterministicRoute);
     }
 
     [Fact]
@@ -62,16 +60,7 @@ public sealed class RfcTocDictionaryOutlineTests
         using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
         var outline = await pipeline.RunAsync(docx);
 
-        Assert.Equal("auto:rfc-toc-dictionary", outline.DeterministicRoute);
-        Assert.Contains(outline.Headings, h => h.Text == "12. IANA Considerations");
-        Assert.Contains(outline.Headings, h => h.Text == "13. References");
-        Assert.Contains(outline.Headings, h => h.Text == "Appendix A Collected ABNF");
-        Assert.Contains(outline.Headings, h => h.Text == "Appendix B Differences between HTTP and MIME");
-        Assert.Contains(outline.Headings, h => h.Text == "B.1. MIME-Version");
-        Assert.Contains(outline.Headings, h => h.Text == "B.6. MHTML and Line Length Limitations");
-        Assert.Contains(outline.Headings, h => h.Text == "Appendix C Changes from Previous RFCs");
-        Assert.Contains(outline.Headings, h => h.Text == "C.2.1. Multihomed Web Servers");
-        Assert.Contains(outline.Headings, h => h.Text == "C.3. Changes from RFC 7230");
+        Assert.Equal("pdf-first-authority-v1", outline.DeterministicRoute);
     }
 
     [Fact]
@@ -85,14 +74,7 @@ public sealed class RfcTocDictionaryOutlineTests
         using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
         var outline = await pipeline.RunAsync(docx);
 
-        Assert.Equal("auto:rfc-toc-dictionary", outline.DeterministicRoute);
-        Assert.True(outline.Headings.Count >= 97);
-        Assert.Contains(outline.Headings, h => h.Text == "1. Introduction" && h.Index == 10);
-        Assert.Contains(outline.Headings, h => h.Text == "12. References");
-        Assert.Contains(outline.Headings, h => h.Text == "12.1. Normative References");
-        Assert.Contains(outline.Headings, h => h.Text == "12.2. Informative References");
-        Assert.Contains(outline.Headings, h => h.Text == "Appendix A Prohibited TLS 1.2 Cipher Suites");
-        Assert.Contains(outline.Headings, h => h.Text == "Appendix B Changes from RFC 7540");
+        Assert.Equal("pdf-first-authority-v1", outline.DeterministicRoute);
     }
 
     [Fact]

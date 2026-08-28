@@ -1,0 +1,62 @@
+{
+  "task": "RFC-4B",
+  "status": "ROUTE_ASSERTIONS_RECONCILED_SEMANTIC_GATE_PENDING",
+  "tests": [
+    {
+      "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_no_llm_khong_cat_lai_tieu_de_rfc_da_lay_tu_toc",
+      "sourceFile": "tests/DocxHeaderExtractor.Tests/RfcTocDictionaryOutlineTests.cs",
+      "assertionLine": 49,
+      "oldExpectedRoute": "auto:rfc-toc-dictionary",
+      "actualRoute": "pdf-first-authority-v1",
+      "c1Classification": "STALE_TEST_EXPECTATION",
+      "c1RootCauseGroup": "AUTHORITY_ROUTE_CUTOVER_EXPECTATION",
+      "alreadyPresentInC1": true,
+      "postRouteAssertionResult": "FAIL at heading-count semantic assertion"
+    },
+    {
+      "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_khong_bam_nguong_cu_khi_cum_toc_thap_hon_van_khop_than_bai",
+      "sourceFile": "tests/DocxHeaderExtractor.Tests/RfcTocDictionaryOutlineTests.cs",
+      "assertionLine": 66,
+      "oldExpectedRoute": "auto:rfc-toc-dictionary",
+      "actualRoute": "pdf-first-authority-v1",
+      "c1Classification": "STALE_TEST_EXPECTATION",
+      "c1RootCauseGroup": "AUTHORITY_ROUTE_CUTOVER_EXPECTATION",
+      "alreadyPresentInC1": true,
+      "postRouteAssertionResult": "FAIL at semantic heading assertion"
+    },
+    {
+      "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_bat_duoc_than_bai_sau_toc_duoi_acknowledgments_contributors_authors",
+      "sourceFile": "tests/DocxHeaderExtractor.Tests/RfcTocDictionaryOutlineTests.cs",
+      "assertionLine": 89,
+      "oldExpectedRoute": "auto:rfc-toc-dictionary",
+      "actualRoute": "pdf-first-authority-v1",
+      "c1Classification": "STALE_TEST_EXPECTATION",
+      "c1RootCauseGroup": "AUTHORITY_ROUTE_CUTOVER_EXPECTATION",
+      "alreadyPresentInC1": true,
+      "postRouteAssertionResult": "FAIL at heading-count semantic assertion"
+    }
+  ],
+  "routeTrace": {
+    "entryPoint": "HeaderExtractionPipeline.RunAsync",
+    "branch": "PdfFirstValidatedFallback",
+    "owner": "HeaderExtractionPipeline.RunPdfFirstAuthorityPipelineAsync",
+    "actualDeterministicRoute": "pdf-first-authority-v1",
+    "classification": "LEGACY_RUNTIME",
+    "oldRouteProducer": "HeaderExtractionPipeline.TryBuildDeclaredOutline -> RfcTocDictionaryOutline",
+    "oldPipeline": "declared auto:typed-numbering -> auto:rfc-toc-dictionary",
+    "oldRouteStillProductionReachable": "conditional only when PDF-first fallback is disabled",
+    "currentAuthorityOwner": "PdfFirstValidatedFallback / RunPdfFirstAuthorityPipelineAsync"
+  },
+  "assertionContract": "The three stale route assertions were removed; semantic assertions were preserved and exposed the next unrelated contract failures.",
+  "c1CountsChanged": false,
+  "finalFailureCounts": {
+    "total": 35,
+    "staleTestExpectation": 18,
+    "realProductionFailure": 0,
+    "legacyOnlyTest": 15,
+    "diagnosticContractMismatch": 2
+  },
+  "providerCalls": 0,
+  "productionCodeChanged": false,
+  "testExpectationChanged": true
+}

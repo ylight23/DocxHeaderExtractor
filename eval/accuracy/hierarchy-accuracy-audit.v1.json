@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_hierarchy_audit",
+  "auditVersion": "hierarchy-accuracy-audit.v1",
+  "status": "NOT_OBSERVABLE",
+  "scope": "structure_after_heading_occurrence_identification",
+  "excludedFromAudit": [
+    "provider",
+    "candidate_generation",
+    "ranking",
+    "production_remediation",
+    "gold_or_silver_replacement",
+    "retrieval_loss_as_hierarchy_failure"
+  ],
+  "dimensions": [
+    "heading_text",
+    "heading_type",
+    "level",
+    "parent",
+    "scope"
+  ],
+  "authorityOrder": [
+    "marker_deterministic_fact",
+    "reviewed_hierarchy_fact",
+    "validated_structure",
+    "model_proposal"
+  ],
+  "modelProposalOverride": false,
+  "population": {
+    "sourceArtifact": "eval/accuracy-round6/k160-semantic-run.v1.json",
+    "measuredDocuments": 4,
+    "retainedHierarchyFactItems": 193,
+    "occurrencesWithComparablePredictionAndAuthority": 0,
+    "retrievalLossItemsExcluded": true,
+    "reason": "The retained run has hierarchy facts and source spans, but semanticHierarchy.items, emitted structure, and per-occurrence authoritative joins are absent. The 076 hierarchy key is not joined to this run and is therefore not used as a fallback."
+  },
+  "evidenceAvailability": {
+    "scopeFacts": {
+      "status": "AVAILABLE_AS_SOURCE_FACT",
+      "items": 193,
+      "accuracyDenominator": 0
+    },
+    "markerDeterministicLevelFacts": {
+      "status": "AVAILABLE_AS_SOURCE_FACT",
+      "items": 26,
+      "accuracyDenominator": 0
+    },
+    "markerDeterministicParentFacts": {
+      "status": "PARTIAL_SOURCE_FACT_ONLY",
+      "items": 14,
+      "accuracyDenominator": 0
+    },
+    "reviewedHierarchyFacts": {
+      "status": "NOT_JOINABLE",
+      "items": 0,
+      "accuracyDenominator": 0
+    },
+    "validatedStructure": {
+      "status": "NOT_JOINABLE_PER_OCCURRENCE",
+      "items": 0,
+      "accuracyDenominator": 0
+    },
+    "modelProposals": {
+      "status": "NOT_RETAINED_PER_OCCURRENCE",
+      "items": 0,
+      "accuracyDenominator": 0
+    }
+  },
+  "classificationCounts": {
+    "FULLY_CORRECT": 0,
+    "TEXT_CORRECT_TYPE_WRONG": 0,
+    "TEXT_CORRECT_LEVEL_WRONG": 0,
+    "TEXT_CORRECT_PARENT_WRONG": 0,
+    "TEXT_CORRECT_SCOPE_WRONG": 0,
+    "NOT_OBSERVABLE": 193
+  },
+  "metrics": {
+    "LEVEL_ACCURACY": {
+      "value": null,
+      "status": "NOT_OBSERVABLE",
+      "correct": 0,
+      "denominator": 0
+    },
+    "PARENT_ACCURACY": {
+      "value": null,
+      "status": "NOT_OBSERVABLE",
+      "correct": 0,
+      "denominator": 0
+    },
+    "SCOPE_ACCURACY": {
+      "value": null,
+      "status": "NOT_OBSERVABLE",
+      "correct": 0,
+      "denominator": 0
+    },
+    "TYPE_ACCURACY": {
+      "value": null,
+      "status": "NOT_OBSERVABLE",
+      "correct": 0,
+      "denominator": 0
+    },
+    "FULL_PATH_ACCURACY": {
+      "value": null,
+      "status": "NOT_OBSERVABLE",
+      "correct": 0,
+      "denominator": 0
+    }
+  },
+  "classificationRule": "Compare a single identified occurrence only when text and authoritative structure are joinable. Apply the highest available authority. If any required comparison is absent, classify NOT_OBSERVABLE; do not infer a hierarchy error from retrieval or missing downstream observation.",
+  "sourceArtifacts": [
+    "eval/accuracy-round6/k160-semantic-run.v1.json",
+    "eval/accuracy-round6/k160-role-span.jsonl",
+    "keys/hierarchy/076_ICP_IACG08_Minutes_2023.hierarchy.json",
+    "eval/regression/accuracy-regression-contract.v1.json"
+  ],
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_CODE_CHANGED": false
+}

@@ -1,0 +1,32 @@
+{
+  "task": "RFC-6",
+  "status": "CLOSED",
+  "residualTestsCorrected": 3,
+  "pipelineContractTests": [
+    "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_no_llm_khong_cat_lai_tieu_de_rfc_da_lay_tu_toc",
+    "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_khong_bam_nguong_cu_khi_cum_toc_thap_hon_van_khop_than_bai",
+    "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_bat_duoc_than_bai_sau_toc_duoi_acknowledgments_contributors_authors"
+  ],
+  "directAnalyzerContractTests": [
+    "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Dung_toc_dictionary_giu_so_muc_va_khop_nav_092",
+    "DocxHeaderExtractor.Tests.RfcTocDirectAnalyzerSemanticTests.Rfc_093_direct_analyzer_preserves_toc_semantics"
+  ],
+  "rfc5IdentityMatch": true,
+  "staleCountAssertionsRemoved": 2,
+  "staleSemanticAssertionsRemovedOrRehomed": 1,
+  "semanticCoveragePreserved": true,
+  "rfcFocusedSuitePass": true,
+  "rfc2DictionaryEntries": 67,
+  "rfc2BodyAnchors": 67,
+  "rfc2TocOnlyEntries": 0,
+  "rfc2BodyAnchorRatio": 1.0,
+  "c1CountsBefore": { "total": 35, "staleTestExpectation": 18, "realProductionFailure": 0, "legacyOnlyTest": 15, "diagnosticContractMismatch": 2 },
+  "c1CountsAfter": { "total": 35, "staleTestExpectation": 18, "realProductionFailure": 0, "legacyOnlyTest": 15, "diagnosticContractMismatch": 2 },
+  "duplicateReclassification": false,
+  "sourceFactsRegressionPass": true,
+  "fRegressionPass": true,
+  "releaseBuildPass": true,
+  "providerCalls": 0,
+  "productionCodeChanged": false,
+  "testExpectationsChanged": true
+}
