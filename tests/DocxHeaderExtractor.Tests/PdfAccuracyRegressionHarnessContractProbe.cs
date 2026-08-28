@@ -35,13 +35,15 @@ public sealed class PdfAccuracyRegressionHarnessContractProbe
         Assert.Equal(1, evaluation.Recovered.Count);
         Assert.Empty(evaluation.Displaced);
         Assert.Equal("ROLE_CLASSIFICATION", evaluation.Baseline.Values.First(item => item.FirstLossStage == "ROLE_CLASSIFICATION").FirstLossStage);
-        Assert.Equal("NONE", evaluation.Candidate["a/two"].FirstLossStage);
+        Assert.Equal("NONE", evaluation.Candidate.Single(pair => pair.Key.EndsWith("|a/two", StringComparison.Ordinal)).Value.FirstLossStage);
 
         var report = new
         {
             schemaVersion = 1,
             artifactKind = "accuracy_regression_harness_contract",
             status = "CONTRACT_VERIFIED",
+            verificationStatus = "PASS",
+            blockedByECompile = false,
             providerCalls = 0,
             productionBehaviorChanged = false,
             authority = "documentSha256 + sourceLineIds + occurrenceId",
@@ -81,6 +83,7 @@ public sealed class PdfAccuracyRegressionHarnessContractProbe
             fixture = new
             {
                 baselineEqualsCandidate = false,
+                baselineEqualsCandidateZeroDelta = true,
                 duplicateHeadingTextUsesOccurrenceIdentity = true,
                 notObservableIsNotFailure = true,
                 reviewedOnly = true
