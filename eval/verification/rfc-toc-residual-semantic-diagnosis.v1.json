@@ -1,0 +1,188 @@
+{
+  "task": "RFC-5",
+  "residualFailures": 3,
+  "headingCountFailures": 2,
+  "semanticHeadingFailures": 1,
+  "latentAfterRouteReconciliation": 3,
+  "newProductionRegressionsProven": 0,
+  "sameRootCause": "PROVEN",
+  "productionRemediationJustifiedCount": 0,
+  "testExpectationReviewJustifiedCount": 3,
+  "unresolvedCount": 0,
+  "c1CountsChanged": false,
+  "providerCalls": 0,
+  "productionCodeChanged": false,
+  "testExpectationsChanged": false,
+  "cases": [
+    {
+      "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_no_llm_khong_cat_lai_tieu_de_rfc_da_lay_tu_toc",
+      "assertionLine": 49,
+      "assertionType": "count_at_least",
+      "expected": "\u003E= 67",
+      "actualCount": 0,
+      "actualRoute": "pdf-first-authority-v1",
+      "directAnalyzer": {
+        "Accepted": true,
+        "DictionaryEntries": 67,
+        "BodyAnchors": 67,
+        "TocOnlyEntries": 0,
+        "BodyAnchorRatio": 1,
+        "headings": 67
+      },
+      "historicalC1Classification": "STALE_TEST_EXPECTATION",
+      "historicalC1FailureFingerprint": "8dd9748aef275e13520ba663e6b56cb64e0d7f20f8cb6eeb9bd74c736cc2be27",
+      "currentResidualFingerprint": "7fdcd8528961bdd0f2f0bb5787c17acfaa6da00f0198bf1df572b234774809e8",
+      "sameAssertionAsC1": false,
+      "latentAfterRouteReconciliation": true,
+      "firstLossStage": "AUTHORITY_ROUTE_SELECTION",
+      "firstLossOperation": "PdfFirstValidatedFallback -\u003E RunPdfFirstAuthorityPipelineAsync",
+      "rootCauseClassification": "STALE_HEADING_COUNT_EXPECTATION",
+      "productionRemediationJustified": "NO",
+      "testExpectationReviewJustified": "YES",
+      "expectedOccurrenceSetAuthority": "NOT_OBSERVABLE; assertions provide lower bounds or named expectations only",
+      "expectedHeadings": [
+        {
+          "text": "3.1. Storing Header and Trailer Fields",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        }
+      ],
+      "actualHeadings": []
+    },
+    {
+      "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_khong_bam_nguong_cu_khi_cum_toc_thap_hon_van_khop_than_bai",
+      "assertionLine": 65,
+      "assertionType": "named_headings",
+      "expected": "12. IANA Considerations, 13. References, Appendix A Collected ABNF, Appendix B Differences between HTTP and MIME, B.1. MIME-Version, B.6. MHTML and Line Length Limitations, Appendix C Changes from Previous RFCs, C.2.1. Multihomed Web Servers, C.3. Changes from RFC 7230",
+      "actualCount": 0,
+      "actualRoute": "pdf-first-authority-v1",
+      "directAnalyzer": {
+        "Accepted": true,
+        "DictionaryEntries": 73,
+        "BodyAnchors": 73,
+        "TocOnlyEntries": 0,
+        "BodyAnchorRatio": 1,
+        "headings": 73
+      },
+      "historicalC1Classification": "STALE_TEST_EXPECTATION",
+      "historicalC1FailureFingerprint": "df906db1749d1870f78bbcd65bc4e3920c0d194c3c4cbeb7f635f9c8194fd65b",
+      "currentResidualFingerprint": "4c2dd5a5d6ed5713dbda4d9b1cb0df195e8f1f8b321b68b01816140490745e2c",
+      "sameAssertionAsC1": false,
+      "latentAfterRouteReconciliation": true,
+      "firstLossStage": "AUTHORITY_ROUTE_SELECTION",
+      "firstLossOperation": "PdfFirstValidatedFallback -\u003E RunPdfFirstAuthorityPipelineAsync",
+      "rootCauseClassification": "STALE_SEMANTIC_EXPECTATION",
+      "productionRemediationJustified": "NO",
+      "testExpectationReviewJustified": "YES",
+      "expectedOccurrenceSetAuthority": "NOT_OBSERVABLE; assertions provide lower bounds or named expectations only",
+      "expectedHeadings": [
+        {
+          "text": "12. IANA Considerations",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        },
+        {
+          "text": "13. References",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        },
+        {
+          "text": "Appendix A Collected ABNF",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        },
+        {
+          "text": "Appendix B Differences between HTTP and MIME",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        },
+        {
+          "text": "B.1. MIME-Version",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        },
+        {
+          "text": "B.6. MHTML and Line Length Limitations",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        },
+        {
+          "text": "Appendix C Changes from Previous RFCs",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        },
+        {
+          "text": "C.2.1. Multihomed Web Servers",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        },
+        {
+          "text": "C.3. Changes from RFC 7230",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        }
+      ],
+      "actualHeadings": []
+    },
+    {
+      "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_bat_duoc_than_bai_sau_toc_duoi_acknowledgments_contributors_authors",
+      "assertionLine": 87,
+      "assertionType": "count_at_least",
+      "expected": "\u003E= 97",
+      "actualCount": 0,
+      "actualRoute": "pdf-first-authority-v1",
+      "directAnalyzer": {
+        "Accepted": false,
+        "DictionaryEntries": 97,
+        "BodyAnchors": 82,
+        "TocOnlyEntries": 15,
+        "BodyAnchorRatio": 0.845360824742268,
+        "headings": 82
+      },
+      "historicalC1Classification": "STALE_TEST_EXPECTATION",
+      "historicalC1FailureFingerprint": "7b45a437a22f17c36548716c3997e8357c78c64d24773ae40e69362bf9931265",
+      "currentResidualFingerprint": "7fdcd8528961bdd0f2f0bb5787c17acfaa6da00f0198bf1df572b234774809e8",
+      "sameAssertionAsC1": false,
+      "latentAfterRouteReconciliation": true,
+      "firstLossStage": "AUTHORITY_ROUTE_SELECTION",
+      "firstLossOperation": "PdfFirstValidatedFallback -\u003E RunPdfFirstAuthorityPipelineAsync",
+      "rootCauseClassification": "STALE_HEADING_COUNT_EXPECTATION",
+      "productionRemediationJustified": "NO",
+      "testExpectationReviewJustified": "YES",
+      "expectedOccurrenceSetAuthority": "NOT_OBSERVABLE; assertions provide lower bounds or named expectations only",
+      "expectedHeadings": [
+        {
+          "text": "1. Introduction",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        },
+        {
+          "text": "12. References",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        },
+        {
+          "text": "12.1. Normative References",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        },
+        {
+          "text": "12.2. Informative References",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        },
+        {
+          "text": "Appendix A Prohibited TLS 1.2 Cipher Suites",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        },
+        {
+          "text": "Appendix B Changes from RFC 7540",
+          "observableInActual": false,
+          "authority": "test_assertion_only; no committed gold occurrence set"
+        }
+      ],
+      "actualHeadings": []
+    }
+  ]
+}

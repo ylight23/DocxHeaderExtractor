@@ -1,0 +1,20 @@
+{
+  "task": "VERIFY-6C-ENV",
+  "verificationTreeSha": "92cd2d6d3cba29986858d30a91d5da0468044cff",
+  "verificationTree": "C:\\DocxHeaderExtractor-verify6a",
+  "TEMP_ROOT": "C:\\DocxHeaderExtractor-verify6a\\.verify6c-temp",
+  "TEMP_ROOT_CLEAN": false,
+  "TEMP_FREE_BYTES": 36105617408,
+  "WORKTREE_FREE_BYTES": 36105617408,
+  "ESTIMATED_REQUIRED_HEADROOM_BYTES": 8589934592,
+  "WORKTREE_WRITABLE": true,
+  "TEMP_WRITABLE": true,
+  "BUILD_TEST_OUTPUT_CLEAN": false,
+  "CLEANUP_BLOCKED": true,
+  "CLEANUP_BLOCK_REASON": "Runtime policy rejected recursive deletion of generated directories in the replay tree.",
+  "DISK_PREFLIGHT_PASS": true,
+  "ENVIRONMENT_READY": false,
+  "FULL_SUITE_RUN": false,
+  "PRODUCTION_CODE_CHANGED": false,
+  "PROVIDER_CALLS": 0
+}

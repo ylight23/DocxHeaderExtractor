@@ -5,8 +5,8 @@
 This triage is a source join over the exact 35 failed-test rows in the C0
 baseline/current TRX packets. The baseline is
 `3b4e358c2696190e2aafd5a609587ad335cb1eea`; the current triage revision is
-`a0a3638178e0b6092880abbce933a8954fa1780f`. No production code, test, or
-expected value was changed, and no provider was called.
+`a0a3638178e0b6092880abbce933a8954fa1780f`. RFC-4 changed one exact test
+assertion; no production code was changed and no provider was called.
 
 The 11 route-diversion rows were reclassified after the ARCH-2 authority-route
 reachability audit. The source for that reclassification is
@@ -21,8 +21,8 @@ file, and assertion line.
 
 | Classification | Count |
 | --- | ---: |
-| `STALE_TEST_EXPECTATION` | 17 |
-| `REAL_PRODUCTION_FAILURE` | 1 |
+| `STALE_TEST_EXPECTATION` | 18 |
+| `REAL_PRODUCTION_FAILURE` | 0 |
 | `DIAGNOSTIC_CONTRACT_MISMATCH` | 2 |
 | `LEGACY_ONLY_TEST` | 15 |
 | `ENVIRONMENT_DEPENDENT` | 0 |
@@ -38,7 +38,7 @@ file, and assertion line.
 | `MERGED_PARAGRAPH_SPLIT_CONTRACT` | 2 | `LEGACY_ONLY_TEST` | ARCH-2 shows route diversion before merged-paragraph splitter integration; the splitter contract is not exercised. |
 | `ROLLING_OUTLINE_INPUT_CONTRACT` | 4 | `LEGACY_ONLY_TEST` | ARCH-2 shows route diversion before BuildRollingOutline; the rolling contract is not exercised. |
 | `SLIM_EXTRACTION_REVIEWED_CANDIDATE_CONTRACT` | 1 | `LEGACY_ONLY_TEST` | ARCH-2 shows route diversion before heuristic-only reviewed-candidate projection. |
-| `RFC_TOC_DICTIONARY_ANALYSIS` | 1 | `REAL_PRODUCTION_FAILURE` | Direct `RfcTocDictionaryOutline.Analyze` contract fails on the RFC fixture. |
+| `RFC_TOC_DICTIONARY_ANALYSIS` | 1 | `STALE_TEST_EXPECTATION` | RFC-2 restores 67/67 TOC/body matching; RFC-3 identifies the old numeric index assertion as stale, and RFC-4 replaces it with StableId authority. |
 | `C1_HISTORICAL_INVENTORY_ARTIFACT` | 1 | `DIAGNOSTIC_CONTRACT_MISMATCH` | Historical 001 evidence is unavailable to the inventory in this checkout. |
 | `N15_RANKING_DIAGNOSIS_ARTIFACT_HASH` | 1 | `DIAGNOSTIC_CONTRACT_MISMATCH` | Replay output disagrees with the committed diagnosis artifact hash. |
 
@@ -46,9 +46,9 @@ The four route groups are retained as root-cause groups, but their
 classification is now `LEGACY_ONLY_TEST`: all 11 exact rows use
 `HeaderExtractionPipeline` directly and do not enter the normal
 `PipelineDocumentExtractionTool -> AuthorityExtractionPipeline` route. The
-RFC analyzer row remains the sole `REAL_PRODUCTION_FAILURE`; it calls the
-analyzer directly and is not explained by route selection. The C1 and N15 rows
-remain diagnostic failures.
+RFC analyzer row is now the eighteenth `STALE_TEST_EXPECTATION`: RFC-3 proved
+the old numeric index assertion had no authority and RFC-4 replaced it with the
+authoritative StableId assertion. The C1 and N15 rows remain diagnostic failures.
 
 ## Contract Boundary
 
@@ -57,22 +57,24 @@ contract while the current authority contract is explicitly present in the
 implementation. `LEGACY_ONLY_TEST` is reserved for historical/evaluation
 probes that intentionally exercise a route no longer authoritative in the
 production pipeline. ARCH-2 establishes that the 11 reclassified rows are
-such direct legacy/evaluation route fixtures. Only the RFC TOC analyzer row
-remains classified as a real production failure; this task deliberately does
-not fix it.
+such direct legacy/evaluation route fixtures. The RFC TOC analyzer row is now
+classified as a stale test expectation after the RFC-4 contract correction.
 
 ## Reclassification contract
 
 ```text
 TOTAL = 35
-REAL_PRODUCTION_FAILURE = 1
+REAL_PRODUCTION_FAILURE = 0
+STALE_TEST_EXPECTATION = 18
 LEGACY_ONLY_TEST = 15
-RECLASSIFICATION_SOURCE = ARCH-2_AUTHORITY_ROUTE_REACHABILITY
+DIAGNOSTIC_CONTRACT_MISMATCH = 2
+RECLASSIFICATION_SOURCE = RFC3_OCCURRENCE_INDEX_DIAGNOSIS
 ```
 
 Full per-test evidence is in
-`eval/verification/full-suite-failure-ledger.v1.json`. No expected values were
-updated and no failure was suppressed.
+`eval/verification/full-suite-failure-ledger.v1.json`. The original RFC failure
+fingerprint and expected/actual evidence remain preserved; only the exact stale
+assertion was replaced by its RFC-3-authoritative identity contract.
 
 `PROVIDER_CALLS = 0`
 

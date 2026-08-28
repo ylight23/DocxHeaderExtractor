@@ -1,0 +1,528 @@
+{
+  "task": "VERIFY-6A",
+  "status": "BLOCKED_PRE_CANONICAL_FULL_SUITE",
+  "checkpointDiagnosis": {
+    "historicalObservationAdded": {
+      "revision": "a1c5b7d9a53ac665d6ceefb4729d5d603064d6dc",
+      "result": "FAIL",
+      "exactFailureReproduced": true
+    },
+    "failurePredatesArchitectureReplay": true,
+    "failurePredatesMcp2": true,
+    "introducedByArchitecture": false,
+    "introducedByMcp2": false,
+    "architectureIntroducedFailure": "REFUTED",
+    "mcp2IntroducedFailure": "REFUTED",
+    "classification": "PREEXISTING_RELATIVE_TO_INTEGRATION",
+    "rootCause": "UNKNOWN",
+    "remediationJustified": false,
+    "verify6e": "NOT_APPLICABLE",
+    "reason": "Checkpoint A fails before architecture replay; B/C do not provide valid executions."
+  },
+  "RFC_CLOSED_REVISION": "30befaad58ea5c73e8ebd56b051982e4f117a403",
+  "MCP2_REVISION": "e3e6edb218ff007f7194838873d5ae26b089fe75",
+  "ARCHITECTURE_TARGET": "d173feb92b4bcf69e9371518e8f22ee6b6fa020b",
+  "VERIFY5_TREE": "ae304304d69d2ae0b621f414cd6e0cdeeb7bda55",
+  "mergeBase": "fbc8c0bc3763a51a7f27d0a2ebcdc8e847561cd2",
+  "replayHead": "9e6fd17cde276ed16d3c662e43943347d93f798c",
+  "combinedHead": "92cd2d6d3cba29986858d30a91d5da0468044cff",
+  "replayWorktreePath": "C:\\DocxHeaderExtractor-verify6a",
+  "gitStatusClean": "NOT_VERIFIABLE_AFTER_WORKTREE_METADATA_LOSS",
+  "architectureCommitCount": 18,
+  "architectureCommits": [
+    "43b198b0edf78b62844f65c380807c1757162b2b",
+    "954f9c771f5ae6108b9087c055eddb84bd03f723",
+    "6be589181610d4430f2d2bf35bc81847bc07d41e",
+    "4fbdbd31e843e23f76b88c5bb83a838a01787673",
+    "1d17d84ab59a0b63cef3bb905866b4a4093de625",
+    "03778e4b619e3130e98a10a862b09e9dce81a81b",
+    "5caba231e8de7de51771e9fdb6d855c11c569f19",
+    "90351bc2e399350c4adb5bcfdbc2a43340e620d4",
+    "af495ad8d1c481dfb6b3ae22aa03176ad61c1a12",
+    "4689fa867b53a1dbba643bc24735340398860c4f",
+    "f29c6afff64f4e58260bb66cce4864f7f7ad5209",
+    "eba9d75b5c35cbf673eb86ac3846a9f6e0bc0f9c",
+    "c5309a5c2ef29d570ff832ec6c01523c81dda246",
+    "90f7fd68da107baa865c0c6af64bab02ba563e19",
+    "be8d9a40c5c6813e69c88ff4aa7a8b16c65fe7b3",
+    "5d73b51f39652d83fe97c73a9d95d767de32575d",
+    "6c8be6d960c60532530aab78be67ed57599ce5e6",
+    "d173feb92b4bcf69e9371518e8f22ee6b6fa020b"
+  ],
+  "RFC_FILE_ARCHITECTURE_COMMITS": [],
+  "ROUTE_ASSERTIONS_REINTRODUCED": 4,
+  "PROVENANCE_IDENTIFIED": "4/4; RFC contract originates in RFC-closed 30bef snapshot, architecture target retains pre-RFC assertions",
+  "RFC4_6_CORRECTIONS_PRESERVED": true,
+  "ROUTE_ASSERTION_ROLLBACKS": 0,
+  "MCP2_PRESENT": true,
+  "ARCHITECTURE_PRESENT": true,
+  "RFC_PRESERVING_TREE_BUILT": true,
+  "gateResults": {
+    "rfcLane": {
+      "passed": true,
+      "passedTests": 5,
+      "totalTests": 5
+    },
+    "rfc2Invariants": {
+      "dictionaryEntries": 67,
+      "bodyAnchors": 67,
+      "tocOnlyEntries": 0,
+      "bodyAnchorRatio": 1.0,
+      "passed": true
+    },
+    "mcpDefaultRid": true,
+    "mcpWinX64": true,
+    "architectureFocused": {
+      "passed": 40,
+      "total": 40
+    },
+    "fRegression": {
+      "passed": 2,
+      "total": 2
+    },
+    "releaseBuild": {
+      "passed": true,
+      "errors": 0
+    }
+  },
+  "fullSuite": {
+    "total": 1326,
+    "passed": 1256,
+    "failed": 70,
+    "skipped": 0,
+    "failureRows": [
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Tagged_pdf_076_has_perfect_precision_but_misses_coverage_review_headings",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_khong_bam_nguong_cu_khi_cum_toc_thap_hon_van_khop_than_bai",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.AutoDocumentModePipelineTests.Auto_mode_chon_route_phap_luat_khi_khong_goi_model",
+        "failureFingerprint": "Assert.Equal() Failure: Strings differ ↓ (pos 0) Expected: \"auto:vietnamese-legal\" Actual: \"pdf-first-authority-v1\" ↑ (pos 0)",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.SplitMergedParagraphsTests.Bat_co_thi_cuu_duoc_tieu_de_trong_doan_gop",
+        "failureFingerprint": "Assert.Contains() Failure: Filter not matched in collection Collection: []",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfBookmarkOutlineTests.PipelineRejects_partial_bookmark_tree_and_keeps_verified_pdf_route",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RollingOutlineTests.Khung_giu_bo_xuong_cap_1_ca_tai_lieu_khong_chi_muc_gan_nhat",
+        "failureFingerprint": "System.ArgumentOutOfRangeException : Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "UNKNOWN"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_bat_duoc_than_bai_sau_toc_duoi_acknowledgments_contributors_authors",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfN14SilverAuditAndN2PreparationProbe.CommittedArtifactsBindHistoricalExecutionInputsAndCurrentByteAuthority",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Could not find a part of the path 'C:\\DocxHeaderExtractor-verify6a\\eval\\benchmark-n0\\silver-labels\\057-n1.2-silver-model-assisted.v1.json'.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfHAuthorityPipelineCostModelProbe.CostModelIsMeasuredWithoutProvider",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Could not find a part of the path 'C:\\DocxHeaderExtractor-verify6a\\tests\\DocxHeaderExtractor.Tests\\bin\\Release\\net9.0\\win-x64\\eval\\accuracy-round6\\k160-semantic-run.v1.json'.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_no_llm_khong_cat_lai_tieu_de_rfc_da_lay_tu_toc",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Tagged_title_probe_recovers_clean_visual_prefixes",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Explicit_h_levels_ground_all_candidates_for_minutes_076",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Structure_tree_h_tags_are_read_through_mcid_for_legal_pdf_001",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfD1CandidateSelectionFirstLossProbe.CandidateSelectionDiagnosisReplaysOffline",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Could not find a part of the path 'C:\\DocxHeaderExtractor-verify6a\\tests\\DocxHeaderExtractor.Tests\\bin\\Release\\net9.0\\win-x64\\eval\\benchmark-n3\\silver-labels\\004-n3.2-silver-model-assisted.v1.json'.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.DocumentDiagnosticRunnerTests.Pipeline_tra_diagnostic_report_trong_outline",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RollingOutlineTests.Tat_co_thi_khong_khoi_nao_nhan_khung",
+        "failureFingerprint": "Assert.NotEmpty() Failure: Collection was empty",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfRound1CandidateLossLedgerProbe.CommittedCensusLossCountsMatchFrozenRound1Population",
+        "failureFingerprint": "missing frozen census for 004",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.FinancialStatementsTocOutlineTests.WbgFinancialStatement041UsesContentsDictionary",
+        "failureFingerprint": "Assert.Equal() Failure: Strings differ ↓ (pos 0) Expected: \"auto:financial-statement-toc\" Actual: \"pdf-first-authority-v1\" ↑ (pos 0)",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTocDictionaryOutlineTests.PipelineUsesPdfTocDictionaryForIbrdInformationStatement054",
+        "failureFingerprint": "Assert.Equal() Failure: Strings differ ↓ (pos 0) Expected: \"auto:pdf-toc-dictionary\" Actual: \"pdf-first-authority-v1\" ↑ (pos 0)",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Noisy_structure_tree_tags_are_not_evidence_of_a_usable_outline",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Repeated_label_marker_recovers_all_agenda_days_on_both_minutes",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfC1CrossDocumentRegressionInventoryProbe.IndependentPartialTimeoutEvidenceNowExistsAndWasConsumedByN35",
+        "failureFingerprint": "expected at least one retained pdf_hierarchy_facts artifact to exist (001's, at minimum)",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfProcurementRecurrenceAuthorityProbe.WriteProcurementRecurrenceReport",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Could not find a part of the path 'C:\\DocxHeaderExtractor-verify6a\\tests\\DocxHeaderExtractor.Tests\\bin\\Release\\net9.0\\win-x64\\keys\\occurrence-bridge\\028_WB_RFB_Works_Without_Prequal_2017.occurrence-bridge.json'.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Tagged_structure_sandbox_fuses_only_grounded_consecutive_markers",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfN2S057RepresentationAuditProbe.CommittedAuditReproducesFromCommittedTraceAndSilver",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Could not find a part of the path 'C:\\DocxHeaderExtractor-verify6a\\eval\\benchmark-n0\\n2-s\\counterfactual\\057-representation-audit.v1.json'.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Tagged_structure_sandbox_fuses_only_grounded_consecutive_markers",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Dung_toc_dictionary_giu_so_muc_va_khop_nav_092",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.Docx004StructuralFirstLossAuditProbe.AuditContractAccountsForAllExpectedStructuralOccurrences",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Could not find a part of the path 'C:\\DocxHeaderExtractor-verify6a\\tests\\DocxHeaderExtractor.Tests\\bin\\Release\\net9.0\\win-x64\\eval\\benchmark-n3\\silver-labels\\004-n3.2-silver-model-assisted.v1.json'.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfFinancialReportOutlineTests.PipelineWbgTrustFund052MatchesAuthoritativeUserKey",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.AutoDocumentModePipelineTests.Toc_text_day_thang_route_typed_numbering_khi_mat_xml_signal",
+        "failureFingerprint": "Assert.Equal() Failure: Strings differ ↓ (pos 0) Expected: \"auto:part-section-text-toc\" Actual: \"pdf-first-authority-v1\" ↑ (pos 0)",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfBookmarkOutlineTests.Raw_bookmark_probe_reads_author_declared_destinations_without_enabling_route",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocResidualSemanticDiagnosisTests.Capture_rfc5_residuals_without_changing_production_or_expectations",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Tags_plus_day_markers_improve_recall_without_false_positives",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.BookTocDictionaryOutlineTests.PipelineReportsBookTocDictionaryRoute",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.CriticTitleContradictionTests.Doan_mang_style_heading_built_in_khong_bi_critic_dung_toi",
+        "failureFingerprint": "Assert.NotNull() Failure: Value is null",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfN13SilverCandidateCensusProbe.CommittedCensusReproducesFromTheCurrentBuild",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Could not find a part of the path 'C:\\DocxHeaderExtractor-verify6a\\eval\\benchmark-n0\\census\\029-n1.3-census.v1.json'.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Tagged_title_probe_recovers_clean_visual_prefixes",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.CriticTitleContradictionTests.Nhieu_document_title_khong_duoc_xoa_heading_ma_chi_bat_duyet",
+        "failureFingerprint": "Assert.Contains() Failure: Filter not matched in collection Collection: []",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Production_tagged_route_matches_the_coverage_key",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfRound6dSemanticLossOwnerProbe.WriteSemanticLossOwnerPartition",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Could not find a part of the path 'C:\\DocxHeaderExtractor-verify6a\\tests\\DocxHeaderExtractor.Tests\\bin\\Release\\net9.0\\win-x64\\eval\\accuracy-round6\\semantic-first-loss-ledger.v2.json'.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Tags_plus_day_markers_improve_recall_without_false_positives",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfFinancialReportOutlineTests.PipelineWbgTrustFund051MatchesAuthoritativeUserKey",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.DocumentFeatureDeriverTests.Feature_deriver_has_no_policy_dependency",
+        "failureFingerprint": "System.InvalidOperationException : Repository root not found.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "UNKNOWN"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.BookTocDictionaryOutlineTests.AdvancedLinearAlgebraUsesTocTitlesAndBodyAnchors",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.DemotionPolicyOwnershipTests.Frozen_order_and_behavior_deltas_are_zero",
+        "failureFingerprint": "System.InvalidOperationException : Repository root not found.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "UNKNOWN"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfB3RealTargetValidationProbe.CommittedValidationReproduces",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Could not find a part of the path 'C:\\DocxHeaderExtractor-verify6a\\eval\\benchmark-n0\\n2-s\\counterfactual\\057-b3-real-target-validation.v1.json'.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfN15RankingLossDiagnosisProbe.CommittedDiagnosisReproducesByteForByte",
+        "failureFingerprint": "Assert.Equal() Failure: Strings differ ↓ (pos 692) Expected: ···\"erArtifactSha256\": \"245c4c7b9b57d0e5331c7\"··· Actual: ···\"erArtifactSha256\": \"7099994d18112001b732e\"··· ↑ (pos 692)",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.SplitMergedParagraphsTests.Cac_lat_cat_dung_chung_chi_so_doan_goc",
+        "failureFingerprint": "Assert.Equal() Failure: Values differ Expected: 2 Actual: 0",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.McpStdioIntegrationTests.Stdio_server_advertises_only_the_three_read_only_tools",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Không tìm thấy root DocxHeaderExtractor từ test output.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocOccurrenceIndexDiagnosisTests.Rfc_092_occurrence_index_spaces_are_audited_without_remediation",
+        "failureFingerprint": "System.IO.IOException : There is not enough space on the disk. : 'C:\\Users\\dungp\\AppData\\Local\\Temp\\tmppm1jtv.tmp'.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RollingOutlineTests.Khung_mang_theo_cap_ma_mo_hinh_da_chot_khong_phai_cap_mac_dinh",
+        "failureFingerprint": "Assert.Equal() Failure: Collections differ ↓ (pos 0) Expected: [1, 3] Actual: []",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.SlimExtractionTests.Heuristic_only_run_reports_only_candidates_as_reviewed",
+        "failureFingerprint": "Assert.Equal() Failure: Values differ Expected: 6 Actual: 0",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.TocStructuralFeatureDeriverTests.Deriver_does_not_depend_on_candidate_or_model_policy",
+        "failureFingerprint": "System.InvalidOperationException : Repository root not found.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "UNKNOWN"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RollingOutlineTests.Khoi_dau_khong_co_khung_cac_khoi_sau_deu_co",
+        "failureFingerprint": "Cần ≥5 khối để kiểm, chỉ có 0.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "UNKNOWN"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.CriticAnchorContextTests.Anchor_bam_theo_khoi_va_khong_lap_lai_doan_dang_bi_phan_bien",
+        "failureFingerprint": "Assert.NotEmpty() Failure: Collection was empty",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.CriticTitleContradictionTests.Mot_document_title_duy_nhat_cung_khong_duoc_xoa",
+        "failureFingerprint": "Assert.NotNull() Failure: Value is null",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.DemotionPolicyOwnershipTests.Demotion_ownership_does_not_import_forbidden_layers",
+        "failureFingerprint": "System.InvalidOperationException : Repository root not found.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "UNKNOWN"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.AutoDocumentModePipelineTests.Auto_typed_numbering_giu_cap_theo_do_sau_marker_khi_no_llm",
+        "failureFingerprint": "Assert.Null() Failure: Value is not null Expected: null Actual: \"pdf-first-authority-v1\"",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfD2RankingInversionDiagnosisProbe.DiagnosisIsOfflineAndPreservesFrozenBoundary",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Could not find a part of the path 'C:\\DocxHeaderExtractor-verify6a\\tests\\DocxHeaderExtractor.Tests\\bin\\Release\\net9.0\\win-x64\\eval\\benchmark-n3\\silver-labels\\004-n3.2-silver-model-assisted.v1.json'.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Repeated_label_marker_recovers_all_agenda_days_on_both_minutes",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Tagged_pdf_078_confirms_the_coverage_recall_limit_on_holdout",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.AutoDocumentModePipelineTests.Tat_auto_mode_thi_quay_ve_heuristic_no_llm",
+        "failureFingerprint": "Assert.Null() Failure: Value is not null Expected: null Actual: \"pdf-first-authority-v1\"",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.DemotionPolicyOwnershipTests.Ownership_artifact_resolves_all_three_operations_without_moving_them",
+        "failureFingerprint": "System.InvalidOperationException : Repository root not found.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "UNKNOWN"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfTaggedHeadingProbeTests.Production_tagged_route_matches_the_coverage_key",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfN2SGroundingAlignmentTrace057Probe.CommittedTraceReproducesFromCommittedCheckpointAndReconciliation",
+        "failureFingerprint": "System.IO.IOException : There is not enough space on the disk. : 'C:\\Users\\dungp\\AppData\\Local\\Temp\\tmpkhip3w.tmp'.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocFirstRejectDiagnosticTests.Rfc_092_first_reject_diagnostic_is_offline_and_deterministic",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Cannot find repository root.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfRound6dSelectedCohortNegativeAuthorityProbe.WriteSelectedCohortSourceFirstPacket",
+        "failureFingerprint": "System.IO.DirectoryNotFoundException : Could not find a part of the path 'C:\\DocxHeaderExtractor-verify6a\\tests\\DocxHeaderExtractor.Tests\\bin\\Release\\net9.0\\win-x64\\eval\\accuracy-round6\\k160-semantic-run.v1.json'.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.NormalSlimApiRetirementTests.Normal_pipeline_uses_the_new_extraction_entry_point",
+        "failureFingerprint": "System.InvalidOperationException : Repository root not found.",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "UNKNOWN"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.DoclingLayoutOutlineTests.PipelineCanUseExplicitDoclingJsonAsDeterministicRoute",
+        "failureFingerprint": "Assert.Equal() Failure: Strings differ ↓ (pos 0) Expected: \"auto:docling-layout\" Actual: \"pdf-first-authority-v1\" ↑ (pos 0)",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ASSERTION_FAILURE"
+      },
+      {
+        "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.PdfR3AOfflineQualificationProbe.R1_plus_R3A_replay_preserves_recovery_but_fails_collateral_gate",
+        "failureFingerprint": "System.IO.FileNotFoundException : eval/benchmark-n3/n3.4/reports/004-r3-a-offline-qualification.v1.json",
+        "currentStatus": "STILL_FAILING_OR_UNJOINED",
+        "observedFailureKind": "ENVIRONMENT_OR_MISSING_ARTIFACT"
+      }
+    ],
+    "validCanonicalBaseline": false,
+    "invalidationReasons": [
+      "replay worktree lacks non-versioned benchmark artifacts required by existing probes",
+      "disk exhausted during run; failures include temp-file IO errors",
+      "full suite was run before a complete artifact-bearing clean tree could be established"
+    ]
+  },
+  "FULL_SUITE_RUN": true,
+  "CURRENT_INTEGRATED_FAILURE_UNIVERSE": "NOT_FROZEN",
+  "UNJOINED": "NOT_ESTABLISHED_DUE_TO_INVALID_RUN_CONTEXT",
+  "PRODUCTION_SEMANTICS_CHANGED_BY_INTEGRATION": false,
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_CODE_CHANGED": false
+}

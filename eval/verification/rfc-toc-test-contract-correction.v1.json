@@ -1,0 +1,41 @@
+{
+  "task": "RFC-4",
+  "status": "EXACT_TEST_CLOSED_GROUP_PENDING",
+  "testIdentity": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Dung_toc_dictionary_giu_so_muc_va_khop_nav_092",
+  "sourceFile": "tests/DocxHeaderExtractor.Tests/RfcTocDictionaryOutlineTests.cs",
+  "assertionLine": 28,
+  "previousRootCause": "STALE_TEST_EXPECTATION",
+  "oldAssertion": {
+    "field": "Index",
+    "expected": 8,
+    "authority": "NONE_PROVEN"
+  },
+  "newAssertion": {
+    "field": "StableId",
+    "expected": "body[1]/tbl[13]/tr[1]/tc[1]/p[1]",
+    "authority": "RFC3_OCCURRENCE_IDENTITY"
+  },
+  "exactTestPass": true,
+  "focusedRfcTestsPass": false,
+  "focusedRfcTestResult": "2 passed; 3 unrelated legacy auto-route assertions still expect auto:rfc-toc-dictionary while runtime route is pdf-first-authority-v1",
+  "fRegressionPass": true,
+  "releaseBuildPass": true,
+  "c1Reclassified": true,
+  "finalFailureCounts": {
+    "total": 35,
+    "staleTestExpectation": 18,
+    "realProductionFailure": 0,
+    "legacyOnlyTest": 15,
+    "diagnosticContractMismatch": 2
+  },
+  "historicalChain": [
+    "C1 classified the RFC row as REAL_PRODUCTION_FAILURE",
+    "RFC-1 located first loss at TOC_CANDIDATE_GENERATION / FindTocCluster",
+    "RFC-2 recovered candidate generation and 67/67 body anchors",
+    "RFC-3 proved Index=8 was a stale expectation and StableId was authoritative",
+    "RFC-4 corrected the exact test contract"
+  ],
+  "providerCalls": 0,
+  "productionCodeChanged": false,
+  "testExpectationChanged": true
+}

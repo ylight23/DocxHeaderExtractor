@@ -1,0 +1,1557 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "hierarchy_human_pilot_annotation",
+  "annotationVersion": "g1a-human-hierarchy-pilot.v1",
+  "status": "READY_FOR_BLIND_HUMAN_ANNOTATION",
+  "PILOT_SEEDS": 24,
+  "PILOT_REVIEWED": 0,
+  "LEVEL_REVIEWED": 0,
+  "PARENT_REVIEWED": 0,
+  "SCOPE_REVIEWED": 0,
+  "TYPE_PATH_REVIEWED": 0,
+  "PREDICTION_VISIBLE_DURING_ANNOTATION": false,
+  "SECOND_ANNOTATOR_AVAILABLE": false,
+  "INTER_ANNOTATOR_AGREEMENT": "NOT_MEASURED",
+  "TEXT_BASED_JOIN": false,
+  "DUPLICATE_OCCURRENCE_COLLAPSE": false,
+  "identityRule": "documentSha256 \u002B sourceLineIds \u002B occurrenceId",
+  "allowedStatuses": [
+    "OBSERVABLE",
+    "NOT_OBSERVABLE",
+    "AMBIGUOUS"
+  ],
+  "rows": [
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "occurrenceId": "004/chapter/1",
+      "sourceLineIds": [
+        "1|546.5598208102417|283.08529257324216|340.93931996039066|Chapter I",
+        "1|525.384495205509|232.57899350097654|391.39354694761704|GENERAL PROVISIONS"
+      ],
+      "sourceText": "Chapter I GENERAL PROVISIONS",
+      "page": 1,
+      "sourceContext": [
+        {
+          "page": 1,
+          "lineId": "1|546.5598208102417|283.08529257324216|340.93931996039066|Chapter I",
+          "text": "Chapter I",
+          "previousLines": [
+            {
+              "page": 1,
+              "lineId": "1|590.6410128533565|121.48033133300781|455.729163041875|The National Assemblypromulgates the Law on Investment.",
+              "text": "The National Assemblypromulgates the Law on Investment."
+            },
+            {
+              "page": 1,
+              "lineId": "1|612.9080585359274|120.16408227050782|487.4726517482811|Pursuant to the Constitution ofthe Socialist Republic of Vietnam;",
+              "text": "Pursuant to the Constitution ofthe Socialist Republic of Vietnam;"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 1,
+              "lineId": "1|525.384495205509|232.57899350097654|391.39354694761704|GENERAL PROVISIONS",
+              "text": "GENERAL PROVISIONS"
+            },
+            {
+              "page": 1,
+              "lineId": "1|479.7105736071158|120.609687421875|444.5373025173798|Article 1. Scope of regulation vn",
+              "text": "Article 1. Scope of regulation vn"
+            }
+          ]
+        },
+        {
+          "page": 1,
+          "lineId": "1|525.384495205509|232.57899350097654|391.39354694761704|GENERAL PROVISIONS",
+          "text": "GENERAL PROVISIONS",
+          "previousLines": [
+            {
+              "page": 1,
+              "lineId": "1|546.5598208102417|283.08529257324216|340.93931996039066|Chapter I",
+              "text": "Chapter I"
+            },
+            {
+              "page": 1,
+              "lineId": "1|590.6410128533565|121.48033133300781|455.729163041875|The National Assemblypromulgates the Law on Investment.",
+              "text": "The National Assemblypromulgates the Law on Investment."
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 1,
+              "lineId": "1|479.7105736071158|120.609687421875|444.5373025173798|Article 1. Scope of regulation vn",
+              "text": "Article 1. Scope of regulation vn"
+            },
+            {
+              "page": 1,
+              "lineId": "1|458.12011160059086|120.92503875976563|538.3643797193358|This Law prescribes business intvenstmaenmt activ.ities in Vietnam and",
+              "text": "This Law prescribes business intvenstmaenmt activ.ities in Vietnam and"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "occurrenceId": "004/article/1",
+      "sourceLineIds": [
+        "1|479.7105736071158|120.609687421875|444.5373025173798|Article 1. Scope of regulation vn"
+      ],
+      "sourceText": "Article 1. Scope of regulation vn",
+      "page": 1,
+      "sourceContext": [
+        {
+          "page": 1,
+          "lineId": "1|479.7105736071158|120.609687421875|444.5373025173798|Article 1. Scope of regulation vn",
+          "text": "Article 1. Scope of regulation vn",
+          "previousLines": [
+            {
+              "page": 1,
+              "lineId": "1|525.384495205509|232.57899350097654|391.39354694761704|GENERAL PROVISIONS",
+              "text": "GENERAL PROVISIONS"
+            },
+            {
+              "page": 1,
+              "lineId": "1|546.5598208102417|283.08529257324216|340.93931996039066|Chapter I",
+              "text": "Chapter I"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 1,
+              "lineId": "1|458.12011160059086|120.92503875976563|538.3643797193358|This Law prescribes business intvenstmaenmt activ.ities in Vietnam and",
+              "text": "This Law prescribes business intvenstmaenmt activ.ities in Vietnam and"
+            },
+            {
+              "page": 1,
+              "lineId": "1|441.9777932186497|85.57702700683593|386.27862251925774|offshore business investment atctVivitieisefrom Vietnam.",
+              "text": "offshore business investment atctVivitieisefrom Vietnam."
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "occurrenceId": "004/article/2",
+      "sourceLineIds": [
+        "1|420.15726557718153|120.609687421875|315.0225541126953|Article 2. SubLjectus oaf application"
+      ],
+      "sourceText": "Article 2. SubLjectus oaf application",
+      "page": 1,
+      "sourceContext": [
+        {
+          "page": 1,
+          "lineId": "1|420.15726557718153|120.609687421875|315.0225541126953|Article 2. SubLjectus oaf application",
+          "text": "Article 2. SubLjectus oaf application",
+          "previousLines": [
+            {
+              "page": 1,
+              "lineId": "1|441.9777932186497|85.57702700683593|386.27862251925774|offshore business investment atctVivitieisefrom Vietnam.",
+              "text": "offshore business investment atctVivitieisefrom Vietnam."
+            },
+            {
+              "page": 1,
+              "lineId": "1|458.12011160059086|120.92503875976563|538.3643797193358|This Law prescribes business intvenstmaenmt activ.ities in Vietnam and",
+              "text": "This Law prescribes business intvenstmaenmt activ.ities in Vietnam and"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 1,
+              "lineId": "1|397.8208414811464|120.92503875976563|537.880877563711|This Law applies to investors, agencies, organizations and individuals",
+              "text": "This Law applies to investors, agencies, organizations and individuals"
+            },
+            {
+              "page": 1,
+              "lineId": "1|381.9062371899414|85.51532783203125|320.7961091592578|involved in business investment activities.",
+              "text": "involved in business investment activities."
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "occurrenceId": "004/article/3",
+      "sourceLineIds": [
+        "1|359.61630697322596|120.609687421875|317.08113935984375|Article 3. Interpretation of terms"
+      ],
+      "sourceText": "Article 3. Interpretation of terms",
+      "page": 1,
+      "sourceContext": [
+        {
+          "page": 1,
+          "lineId": "1|359.61630697322596|120.609687421875|317.08113935984375|Article 3. Interpretation of terms",
+          "text": "Article 3. Interpretation of terms",
+          "previousLines": [
+            {
+              "page": 1,
+              "lineId": "1|381.9062371899414|85.51532783203125|320.7961091592578|involved in business investment activities.",
+              "text": "involved in business investment activities."
+            },
+            {
+              "page": 1,
+              "lineId": "1|397.8208414811464|120.92503875976563|537.880877563711|This Law applies to investors, agencies, organizations and individuals",
+              "text": "This Law applies to investors, agencies, organizations and individuals"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 1,
+              "lineId": "1|337.5707841044379|120.84962865722656|422.5888123368749|In this Law, the terms below are construed as follows:",
+              "text": "In this Law, the terms below are construed as follows:"
+            },
+            {
+              "page": 1,
+              "lineId": "1|315.10954308440165|122.145311328125|538.268527488008|1 . Investmentpolicy approval means a competent state agency\u2019s approval",
+              "text": "1 . Investmentpolicy approval means a competent state agency\u2019s approval"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "occurrenceId": "004/article/40",
+      "sourceLineIds": [
+        "28|604.1636555154477|120.609687421875|478.5535835696484|Article 40. Contents of an investment registration certificate"
+      ],
+      "sourceText": "Article 40. Contents of an investment registration certificate",
+      "page": 28,
+      "sourceContext": [
+        {
+          "page": 28,
+          "lineId": "28|604.1636555154477|120.609687421875|478.5535835696484|Article 40. Contents of an investment registration certificate",
+          "text": "Article 40. Contents of an investment registration certificate",
+          "previousLines": [
+            {
+              "page": 28,
+              "lineId": "28|626.6805918311525|85.213687421875|257.8127140192576|Articles 34 and 35 ofthis Law.",
+              "text": "Articles 34 and 35 ofthis Law."
+            },
+            {
+              "page": 28,
+              "lineId": "28|642.3416842277487|85.24110927734375|538.2250980451956|to grant investment registration certificates, except for the cases specified in",
+              "text": "to grant investment registration certificates, except for the cases specified in"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 28,
+              "lineId": "28|582.1843606241581|122.145311328125|303.95067746203125|1 . Title ofthe investment project",
+              "text": "1 . Title ofthe investment project"
+            },
+            {
+              "page": 28,
+              "lineId": "28|559.8285441877091|120.80164041015625|207.43841510925776|2. The investor.",
+              "text": "2. The investor."
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "004",
+      "documentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "occurrenceId": "004/appendix/1",
+      "sourceLineIds": [
+        "59|783.0553533339845|273.279667421875|350.5571983183595|Appendix IV",
+        "59|761.9512664278899|203.2305076269531|420.19401882761707|LIST OF SECTORS AND TRADES",
+        "59|745.8447020061935|132.14667916992187|492.03688889640625|SUBJECT TO CONDITIONAL BUSINESS INVESTMENT"
+      ],
+      "sourceText": "Appendix IV LIST OF SECTORS AND TRADES SUBJECT TO CONDITIONAL BUSINESS INVESTMENT",
+      "page": 59,
+      "sourceContext": [
+        {
+          "page": 59,
+          "lineId": "59|783.0553533339845|273.279667421875|350.5571983183595|Appendix IV",
+          "text": "Appendix IV",
+          "previousLines": [
+            {
+              "page": 58,
+              "lineId": "58|422.8710751225977|200.2625523741669|261.48457936449677|Lua",
+              "text": "Lua"
+            },
+            {
+              "page": 58,
+              "lineId": "58|439.61865520304127|257.1446321208142|320.95292698185193|tVie",
+              "text": "tVie"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 59,
+              "lineId": "59|761.9512664278899|203.2305076269531|420.19401882761707|LIST OF SECTORS AND TRADES",
+              "text": "LIST OF SECTORS AND TRADES"
+            },
+            {
+              "page": 59,
+              "lineId": "59|745.8447020061935|132.14667916992187|492.03688889640625|SUBJECT TO CONDITIONAL BUSINESS INVESTMENT",
+              "text": "SUBJECT TO CONDITIONAL BUSINESS INVESTMENT"
+            }
+          ]
+        },
+        {
+          "page": 59,
+          "lineId": "59|761.9512664278899|203.2305076269531|420.19401882761707|LIST OF SECTORS AND TRADES",
+          "text": "LIST OF SECTORS AND TRADES",
+          "previousLines": [
+            {
+              "page": 59,
+              "lineId": "59|783.0553533339845|273.279667421875|350.5571983183595|Appendix IV",
+              "text": "Appendix IV"
+            },
+            {
+              "page": 58,
+              "lineId": "58|422.8710751225977|200.2625523741669|261.48457936449677|Lua",
+              "text": "Lua"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 59,
+              "lineId": "59|745.8447020061935|132.14667916992187|492.03688889640625|SUBJECT TO CONDITIONAL BUSINESS INVESTMENT",
+              "text": "SUBJECT TO CONDITIONAL BUSINESS INVESTMENT"
+            },
+            {
+              "page": 59,
+              "lineId": "59|699.3968128653117|95.02281845214844|411.5702272776171|No. SECTORS AND TRADES",
+              "text": "No. SECTORS AND TRADES"
+            }
+          ]
+        },
+        {
+          "page": 59,
+          "lineId": "59|745.8447020061935|132.14667916992187|492.03688889640625|SUBJECT TO CONDITIONAL BUSINESS INVESTMENT",
+          "text": "SUBJECT TO CONDITIONAL BUSINESS INVESTMENT",
+          "previousLines": [
+            {
+              "page": 59,
+              "lineId": "59|761.9512664278899|203.2305076269531|420.19401882761707|LIST OF SECTORS AND TRADES",
+              "text": "LIST OF SECTORS AND TRADES"
+            },
+            {
+              "page": 59,
+              "lineId": "59|783.0553533339845|273.279667421875|350.5571983183595|Appendix IV",
+              "text": "Appendix IV"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 59,
+              "lineId": "59|699.3968128653117|95.02281845214844|411.5702272776171|No. SECTORS AND TRADES",
+              "text": "No. SECTORS AND TRADES"
+            },
+            {
+              "page": 59,
+              "lineId": "59|673.9059346118164|103.305311328125|199.8282822737109|1 Making seals",
+              "text": "1 Making seals"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "occurrenceId": "030/front/1",
+      "sourceLineIds": [
+        "3|709.4377278645833|72.3201328125|136.303149375|Revisions"
+      ],
+      "sourceText": "Revisions",
+      "page": 3,
+      "sourceContext": [
+        {
+          "page": 3,
+          "lineId": "3|709.4377278645833|72.3201328125|136.303149375|Revisions",
+          "text": "Revisions",
+          "previousLines": [
+            {
+              "page": 3,
+              "lineId": "3|750.21779296875|528.5117968750001|536.26404296875|iii",
+              "text": "iii"
+            },
+            {
+              "page": 2,
+              "lineId": "2|656.9067633056642|72.100171875|433.647296875|works such as unofficial translations based on this document is not allowed",
+              "text": "works such as unofficial translations based on this document is not allowed"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 3,
+              "lineId": "3|673.3506982421875|72.23441015625001|176.71131328125003|December 2019",
+              "text": "December 2019"
+            },
+            {
+              "page": 3,
+              "lineId": "3|645.1492264597031|72.38728125|506.5339062499999|This SPD applies to consulting services, under Projects with Project Concept Notes (PCN)",
+              "text": "This SPD applies to consulting services, under Projects with Project Concept Notes (PCN)"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "occurrenceId": "030/front/2",
+      "sourceLineIds": [
+        "5|688.6333178710938|277.1284765625|343.84495484375|Foreword"
+      ],
+      "sourceText": "Foreword",
+      "page": 5,
+      "sourceContext": [
+        {
+          "page": 5,
+          "lineId": "5|688.6333178710938|277.1284765625|343.84495484375|Foreword",
+          "text": "Foreword",
+          "previousLines": [
+            {
+              "page": 5,
+              "lineId": "5|748.9192968750001|86.50667578125001|91.31159765625|v",
+              "text": "v"
+            },
+            {
+              "page": 3,
+              "lineId": "3|250.976328125|72.873609375|74.174390625|.",
+              "text": "."
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 5,
+              "lineId": "5|659.018147403492|81.815015625|540.3682656249999|1. This Standard Procurement Document (SPD), Request for Proposals (RFPs), for",
+              "text": "1. This Standard Procurement Document (SPD), Request for Proposals (RFPs), for"
+            },
+            {
+              "page": 5,
+              "lineId": "5|645.1918981291125|117.6059375|540.261296875|selection ofconsultants to provide Consultancy Services, has been prepared by the World",
+              "text": "selection ofconsultants to provide Consultancy Services, has been prepared by the World"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "occurrenceId": "030/front/3",
+      "sourceLineIds": [
+        "7|671.260849609375|264.1560546875|348.33196250000003|SUMMARY"
+      ],
+      "sourceText": "SUMMARY",
+      "page": 7,
+      "sourceContext": [
+        {
+          "page": 7,
+          "lineId": "7|671.260849609375|264.1560546875|348.33196250000003|SUMMARY",
+          "text": "SUMMARY",
+          "previousLines": [
+            {
+              "page": 7,
+              "lineId": "7|707.8150911458334|176.511640625|436.260359375|Standard Procurement Document",
+              "text": "Standard Procurement Document"
+            },
+            {
+              "page": 7,
+              "lineId": "7|749.3093802584135|72.6465|521.86272296875|SPD Summary vii",
+              "text": "SPD Summary vii"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 7,
+              "lineId": "7|609.2902539062501|72.3286875|410.319359375|PART I \u2013 SELECTION PROCEDURES AND REQUIREMENTS",
+              "text": "PART I \u2013 SELECTION PROCEDURES AND REQUIREMENTS"
+            },
+            {
+              "page": 7,
+              "lineId": "7|580.925057091346|72.64509375|310.1025312499999|Section 1: Request for Proposals (RFP) Letter",
+              "text": "Section 1: Request for Proposals (RFP) Letter"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "occurrenceId": "030/gcc-tb/35",
+      "sourceLineIds": [
+        "111|705.9546484374999|81.870328125|544.876328125|33. Training ofExperts The Consultant shall provide appropriate"
+      ],
+      "sourceText": "33. Training ofExperts The Consultant shall provide appropriate",
+      "page": 111,
+      "sourceContext": [
+        {
+          "page": 111,
+          "lineId": "111|705.9546484374999|81.870328125|544.876328125|33. Training ofExperts The Consultant shall provide appropriate",
+          "text": "33. Training ofExperts The Consultant shall provide appropriate",
+          "previousLines": [
+            {
+              "page": 111,
+              "lineId": "111|749.4122192796608|87.04650000000001|535.3441796875|Section 8. Conditions of Contract and Contract Forms (Time Based) 1 1 1",
+              "text": "Section 8. Conditions of Contract and Contract Forms (Time Based) 1 1 1"
+            },
+            {
+              "page": 110,
+              "lineId": "110|119.79224609374992|237.22015625|529.890390625|children (ofworking age in accordance with Clause GCC 3 1).",
+              "text": "children (ofworking age in accordance with Clause GCC 3 1)."
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 111,
+              "lineId": "111|692.2161176215275|251.2071875|544.774328125|training/sensitization to the Experts on social aspects of the",
+              "text": "training/sensitization to the Experts on social aspects of the"
+            },
+            {
+              "page": 111,
+              "lineId": "111|678.5688014481708|251.52359375|497.610390625|Contract including on prohibition of SEA and SH .",
+              "text": "Contract including on prohibition of SEA and SH ."
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "occurrenceId": "030/gcc-tb/65",
+      "sourceLineIds": [
+        "135|653.4808928034852|195.5346875|448.50227125000004|APPENDIX A \u2013 TERMS OF REFERENCE"
+      ],
+      "sourceText": "APPENDIX A \u2013 TERMS OF REFERENCE",
+      "page": 135,
+      "sourceContext": [
+        {
+          "page": 135,
+          "lineId": "135|653.4808928034852|195.5346875|448.50227125000004|APPENDIX A \u2013 TERMS OF REFERENCE",
+          "text": "APPENDIX A \u2013 TERMS OF REFERENCE",
+          "previousLines": [
+            {
+              "page": 135,
+              "lineId": "135|697.0616338641828|252.36951171875|370.24142937499994|IV. Appendices",
+              "text": "IV. Appendices"
+            },
+            {
+              "page": 135,
+              "lineId": "135|749.4090869968219|87.04650000000001|535.9034570312499|Section 8. Conditions of Contract and Contract Forms (Time Based) 135",
+              "text": "Section 8. Conditions of Contract and Contract Forms (Time Based) 135"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 135,
+              "lineId": "135|623.726520432693|86.500171875|540.6481874999998|[This Appendix shall include thefinal Terms ofReference (TORs) worked out by the Client and",
+              "text": "[This Appendix shall include thefinal Terms ofReference (TORs) worked out by the Client and"
+            },
+            {
+              "page": 135,
+              "lineId": "135|609.7061929086536|86.9161875|542.3182968750003|the Consultant during the negotiations; dates for completion of various tasks; location of",
+              "text": "the Consultant during the negotiations; dates for completion of various tasks; location of"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "030",
+      "documentSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "occurrenceId": "030/gcc-ls/67",
+      "sourceLineIds": [
+        "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS"
+      ],
+      "sourceText": "APPENDIX E - CODE OF CONDUCT FOR EXPERTS",
+      "page": 190,
+      "sourceContext": [
+        {
+          "page": 190,
+          "lineId": "190|759.4562402343746|145.2246875|467.693948125|APPENDIX E - CODE OF CONDUCT FOR EXPERTS",
+          "text": "APPENDIX E - CODE OF CONDUCT FOR EXPERTS",
+          "previousLines": [
+            {
+              "page": 190,
+              "lineId": "190|799.7574952855603|72.6465|521.8249804687499|Section 8. Conditions of Contract and Contract Forms (Lump-Sum) 190",
+              "text": "Section 8. Conditions of Contract and Contract Forms (Lump-Sum) 190"
+            },
+            {
+              "page": 189,
+              "lineId": "189|76.56494238281249|81.35956640625|152.15361234375|ofthe guarantee.\u201D",
+              "text": "ofthe guarantee.\u201D"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 191,
+              "lineId": "191|799.8552445652169|72.6465|520.9641796875|Section 9. Notification ofIntention to Award and Beneficial Ownership Forms 191",
+              "text": "Section 9. Notification ofIntention to Award and Beneficial Ownership Forms 191"
+            },
+            {
+              "page": 191,
+              "lineId": "191|693.1192187500001|264.935234375|330.2247265625|PART III",
+              "text": "PART III"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "043",
+      "documentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "occurrenceId": "043/heading/001",
+      "sourceLineIds": [
+        "6|711.1847556250001|75.135859375|274.368546875|Section I: Executive Summary"
+      ],
+      "sourceText": "Section I: Executive Summary",
+      "page": 6,
+      "sourceContext": [
+        {
+          "page": 6,
+          "lineId": "6|711.1847556250001|75.135859375|274.368546875|Section I: Executive Summary",
+          "text": "Section I: Executive Summary",
+          "previousLines": [
+            {
+              "page": 6,
+              "lineId": "6|754.1356698235446|78.01720703125|405.82210937499997|Management\u2019s Discussion and Analysis Section I: Executive Summary",
+              "text": "Management\u2019s Discussion and Analysis Section I: Executive Summary"
+            },
+            {
+              "page": 5,
+              "lineId": "5|26.39246046875|480.420068125|481.4796384375|,",
+              "text": ","
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 6,
+              "lineId": "6|686.7573370670588|72.302734375|540.0035546875|This Management\u2019s Discussion and Analysis (MD\u0026A) discusses the financial results of the International Bank for",
+              "text": "This Management\u2019s Discussion and Analysis (MD\u0026A) discusses the financial results of the International Bank for"
+            },
+            {
+              "page": 6,
+              "lineId": "6|674.7412413565353|72.1708984375|539.6033103125001|Reconstruction and Development (IBRD) for the fiscal year ended June 30 2024 (FY24). IBRD undertakes no",
+              "text": "Reconstruction and Development (IBRD) for the fiscal year ended June 30 2024 (FY24). IBRD undertakes no"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "043",
+      "documentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "occurrenceId": "043/heading/002",
+      "sourceLineIds": [
+        "10|711.3455444704862|75.135859375|207.67681249999995|Section II: Overview"
+      ],
+      "sourceText": "Section II: Overview",
+      "page": 10,
+      "sourceContext": [
+        {
+          "page": 10,
+          "lineId": "10|711.3455444704862|75.135859375|207.67681249999995|Section II: Overview",
+          "text": "Section II: Overview",
+          "previousLines": [
+            {
+              "page": 10,
+              "lineId": "10|754.1563224862127|78.01720703125|361.39355468749994|Management\u2019s Discussion and Analysis Section I I: Overview",
+              "text": "Management\u2019s Discussion and Analysis Section I I: Overview"
+            },
+            {
+              "page": 9,
+              "lineId": "9|26.39246046875|480.420068125|481.4796384375|,",
+              "text": ","
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 10,
+              "lineId": "10|685.85449265625|72.8203125|141.18548437499996|Introduction",
+              "text": "Introduction"
+            },
+            {
+              "page": 10,
+              "lineId": "10|666.2608715201815|72.2490234375|539.2519921874996|IBRD, an international organization owned by its 1 89 member countries, is one of the five institutions of the WBG.",
+              "text": "IBRD, an international organization owned by its 1 89 member countries, is one of the five institutions of the WBG."
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "043",
+      "documentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "occurrenceId": "043/heading/003",
+      "sourceLineIds": [
+        "13|711.4666291782409|75.135859375|263.7953749999999|Section III: Financial Results"
+      ],
+      "sourceText": "Section III: Financial Results",
+      "page": 13,
+      "sourceContext": [
+        {
+          "page": 13,
+          "lineId": "13|711.4666291782409|75.135859375|263.7953749999999|Section III: Financial Results",
+          "text": "Section III: Financial Results",
+          "previousLines": [
+            {
+              "page": 13,
+              "lineId": "13|754.2313447460931|78.01720703125|398.29425781250006|Management\u2019s Discussion and Analysis Section I I I: Financial Results",
+              "text": "Management\u2019s Discussion and Analysis Section I I I: Financial Results"
+            },
+            {
+              "page": 12,
+              "lineId": "12|27.13251046875|348.460078125|349.5196484375|,",
+              "text": ","
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 13,
+              "lineId": "13|685.8429617067308|72.884765625|324.25335937500006|Financial Results and Portfolio Performance",
+              "text": "Financial Results and Portfolio Performance"
+            },
+            {
+              "page": 13,
+              "lineId": "13|666.3400153140774|72.302734375|539.4660546875|The following is a discussion ofthe key drivers ofIBRD\u2019s financial performance including a reconciliation between",
+              "text": "The following is a discussion ofthe key drivers ofIBRD\u2019s financial performance including a reconciliation between"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "043",
+      "documentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "occurrenceId": "043/heading/014",
+      "sourceLineIds": [
+        "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+        "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms"
+      ],
+      "sourceText": "Appendix Glossary of Terms",
+      "page": 68,
+      "sourceContext": [
+        {
+          "page": 68,
+          "lineId": "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+          "text": "Appendix",
+          "previousLines": [
+            {
+              "page": 68,
+              "lineId": "68|754.2585972808689|75.26720703125|314.23675781250006|Management\u2019s Discussion and Analysis Appendix",
+              "text": "Management\u2019s Discussion and Analysis Appendix"
+            },
+            {
+              "page": 67,
+              "lineId": "67|26.39246046875|480.420068125|481.4796384375|,",
+              "text": ","
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 68,
+              "lineId": "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms",
+              "text": "Glossary of Terms"
+            },
+            {
+              "page": 68,
+              "lineId": "68|666.8684918382359|72.0703125|217.92867187500013|Articles: IBRD\u2019s Articles ofAgreement",
+              "text": "Articles: IBRD\u2019s Articles ofAgreement"
+            }
+          ]
+        },
+        {
+          "page": 68,
+          "lineId": "68|685.6311528125001|72.57421875|176.79375000000002|Glossary of Terms",
+          "text": "Glossary of Terms",
+          "previousLines": [
+            {
+              "page": 68,
+              "lineId": "68|711.0021335546874|74.63|138.28625000000002|Appendix",
+              "text": "Appendix"
+            },
+            {
+              "page": 68,
+              "lineId": "68|754.2585972808689|75.26720703125|314.23675781250006|Management\u2019s Discussion and Analysis Appendix",
+              "text": "Management\u2019s Discussion and Analysis Appendix"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 68,
+              "lineId": "68|666.8684918382359|72.0703125|217.92867187500013|Articles: IBRD\u2019s Articles ofAgreement",
+              "text": "Articles: IBRD\u2019s Articles ofAgreement"
+            },
+            {
+              "page": 68,
+              "lineId": "68|651.6754173172015|72.18896484375|540.1879726562494|Below GDI Country: Country whose Gross National Income per capita is below the Graduation Discussion Income as published",
+              "text": "Below GDI Country: Country whose Gross National Income per capita is below the Graduation Discussion Income as published"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "043",
+      "documentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "occurrenceId": "043/heading/022",
+      "sourceLineIds": [
+        "80|732.8202163461536|73.0185546875|196.53328125|BALANCE SHEETS"
+      ],
+      "sourceText": "BALANCE SHEETS",
+      "page": 80,
+      "sourceContext": [
+        {
+          "page": 80,
+          "lineId": "80|732.8202163461536|73.0185546875|196.53328125|BALANCE SHEETS",
+          "text": "BALANCE SHEETS",
+          "previousLines": [
+            {
+              "page": 79,
+              "lineId": "79|35.39246046875|470.670068125|471.7296384375|,",
+              "text": ","
+            },
+            {
+              "page": 79,
+              "lineId": "79|39.06223314670137|282.7726171875|536.917421875|IBRD FINANCIAL STATEMENTS: June 30 2024 77",
+              "text": "IBRD FINANCIAL STATEMENTS: June 30 2024 77"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 80,
+              "lineId": "80|717.1399825475545|72.33203125|220.93618187500005|June 30 2024 and June 30 2023",
+              "text": "June 30 2024 and June 30 2023"
+            },
+            {
+              "page": 80,
+              "lineId": "80|713.69781203125|107.80925781250001|194.90270531250002|, ,",
+              "text": ", ,"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "043",
+      "documentSha256": "87e40ead7c3af617b79a9d96f7ac678f7018bcdf14a0aab6905fd71c678cf9ed",
+      "occurrenceId": "043/heading/043",
+      "sourceLineIds": [
+        "142|283.48002985608554|72.81640625|216.8938046875|NOTE M\u2014CONTINGENCIES"
+      ],
+      "sourceText": "NOTE M\u2014CONTINGENCIES",
+      "page": 142,
+      "sourceContext": [
+        {
+          "page": 142,
+          "lineId": "142|283.48002985608554|72.81640625|216.8938046875|NOTE M\u2014CONTINGENCIES",
+          "text": "NOTE M\u2014CONTINGENCIES",
+          "previousLines": [
+            {
+              "page": 142,
+              "lineId": "142|307.3003810937499|72.3857421875|254.6619921875001|funded activities in the Statements ofIncome.",
+              "text": "funded activities in the Statements ofIncome."
+            },
+            {
+              "page": 142,
+              "lineId": "142|316.32577171875|194.727109375|332.7521675|, ,",
+              "text": ", ,"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 142,
+              "lineId": "142|264.0444740379209|72.1611328125|539.8260546875|From time to time, IBRD may be named as a defendant or co-defendant in legal actions on different grounds in",
+              "text": "From time to time, IBRD may be named as a defendant or co-defendant in legal actions on different grounds in"
+            },
+            {
+              "page": 142,
+              "lineId": "142|252.00887991210888|72.0830078125|539.5096874999999|various jurisdictions. The outcome of any existing legal action, in which IBRD has been named as a defendant or co-",
+              "text": "various jurisdictions. The outcome of any existing legal action, in which IBRD has been named as a defendant or co-"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "058",
+      "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "occurrenceId": "058/heading/001",
+      "sourceLineIds": [
+        "2|663.0714251285715|295.0691556|370.05961224|PREFACE"
+      ],
+      "sourceText": "PREFACE",
+      "page": 2,
+      "sourceContext": [
+        {
+          "page": 2,
+          "lineId": "2|663.0714251285715|295.0691556|370.05961224|PREFACE",
+          "text": "PREFACE",
+          "previousLines": [
+            {
+              "page": 2,
+              "lineId": "2|689.4445458|161.16513|165.1402074|2",
+              "text": "2"
+            },
+            {
+              "page": 1,
+              "lineId": "1|228.59000000000003|22.799999999999997|32.2|a",
+              "text": "a"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 2,
+              "lineId": "2|638.9106889295083|175.8899528|503.8049467600002|I prepared this lecture note in order to teach DS-GA 1003 \u201CMachine Learn-",
+              "text": "I prepared this lecture note in order to teach DS-GA 1003 \u201CMachine Learn-"
+            },
+            {
+              "page": 2,
+              "lineId": "2|626.9513355741936|160.99576580000002|503.8148093599998|ing\u201D at the Center for Data Science of New York University. This is the first",
+              "text": "ing\u201D at the Center for Data Science of New York University. This is the first"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "058",
+      "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "occurrenceId": "058/heading/002",
+      "sourceLineIds": [
+        "3|584.74837584375|108.4058002|214.84904373|Contents"
+      ],
+      "sourceText": "Contents",
+      "page": 3,
+      "sourceContext": [
+        {
+          "page": 3,
+          "lineId": "3|584.74837584375|108.4058002|214.84904373|Contents",
+          "text": "Contents",
+          "previousLines": [
+            {
+              "page": 2,
+              "lineId": "2|136.52634946031716|160.8562894|498.09627695999995|this same course, although there is no immediate plan to do so anytime soon.",
+              "text": "this same course, although there is no immediate plan to do so anytime soon."
+            },
+            {
+              "page": 2,
+              "lineId": "2|148.67171209558794|160.99576580000002|504.1784442599999|literature. I will hopefully add citations more thoroughly the next time I teach",
+              "text": "literature. I will hopefully add citations more thoroughly the next time I teach"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 3,
+              "lineId": "3|518.6529162500001|107.715821|449.77571444|1 An Energy Function 1",
+              "text": "1 An Energy Function 1"
+            },
+            {
+              "page": 3,
+              "lineId": "3|496.52733933695635|107.4368682|450.00186546000003|2 Basic Ideas in Machine Learning with Classification 5",
+              "text": "2 Basic Ideas in Machine Learning with Classification 5"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "058",
+      "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "occurrenceId": "058/heading/003",
+      "sourceLineIds": [
+        "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+        "5|538.5708072499998|107.8356969|354.55657546|An Energy Function"
+      ],
+      "sourceText": "Chapter 1 An Energy Function",
+      "page": 5,
+      "sourceContext": [
+        {
+          "page": 5,
+          "lineId": "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+          "text": "Chapter 1",
+          "previousLines": [
+            {
+              "page": 4,
+              "lineId": "4|484.0404692956518|176.02942919999995|503.97929225999883|6.5 Causality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 100",
+              "text": "6.5 Causality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 100"
+            },
+            {
+              "page": 4,
+              "lineId": "4|496.7254401943398|176.02942919999995|503.9533894999994|6.4 Regression: Mixture Density Networks . . . . . . . . . . . . . . . 98",
+              "text": "6.4 Regression: Mixture Density Networks . . . . . . . . . . . . . . . 98"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 5,
+              "lineId": "5|538.5708072499998|107.8356969|354.55657546|An Energy Function",
+              "text": "An Energy Function"
+            },
+            {
+              "page": 5,
+              "lineId": "5|482.5055368241935|107.1878032|450.3824367799999|A usual way to teaching machine learning is to go through different problem",
+              "text": "A usual way to teaching machine learning is to go through different problem"
+            }
+          ]
+        },
+        {
+          "page": 5,
+          "lineId": "5|538.5708072499998|107.8356969|354.55657546|An Energy Function",
+          "text": "An Energy Function",
+          "previousLines": [
+            {
+              "page": 5,
+              "lineId": "5|588.3548476562501|108.150075|207.65447624999996|Chapter 1",
+              "text": "Chapter 1"
+            },
+            {
+              "page": 4,
+              "lineId": "4|484.0404692956518|176.02942919999995|503.97929225999883|6.5 Causality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 100",
+              "text": "6.5 Causality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 100"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 5,
+              "lineId": "5|482.5055368241935|107.1878032|450.3824367799999|A usual way to teaching machine learning is to go through different problem",
+              "text": "A usual way to teaching machine learning is to go through different problem"
+            },
+            {
+              "page": 5,
+              "lineId": "5|470.4169993324327|107.1977658|450.0048542399999|setups. It often starts with binary classification, when perceptron, logistic regres-",
+              "text": "setups. It often starts with binary classification, when perceptron, logistic regres-"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "058",
+      "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "occurrenceId": "058/heading/004",
+      "sourceLineIds": [
+        "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+        "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+        "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification"
+      ],
+      "sourceText": "Chapter 2 Basic Ideas in Machine Learning with Classification",
+      "page": 9,
+      "sourceContext": [
+        {
+          "page": 9,
+          "lineId": "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+          "text": "Chapter 2",
+          "previousLines": [
+            {
+              "page": 8,
+              "lineId": "8|689.4096767|160.94595280000001|505.17574176|4 CHAPTER 1. AN ENERGY FUNCTION",
+              "text": "4 CHAPTER 1. AN ENERGY FUNCTION"
+            },
+            {
+              "page": 7,
+              "lineId": "7|289.98044743142833|107.20772839999991|281.61001522000004|different paradigms of machine learning.",
+              "text": "different paradigms of machine learning."
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 9,
+              "lineId": "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+              "text": "Basic Ideas in Machine"
+            },
+            {
+              "page": 9,
+              "lineId": "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification",
+              "text": "Learning with Classification"
+            }
+          ]
+        },
+        {
+          "page": 9,
+          "lineId": "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+          "text": "Basic Ideas in Machine",
+          "previousLines": [
+            {
+              "page": 9,
+              "lineId": "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+              "text": "Chapter 2"
+            },
+            {
+              "page": 8,
+              "lineId": "8|689.4096767|160.94595280000001|505.17574176|4 CHAPTER 1. AN ENERGY FUNCTION",
+              "text": "4 CHAPTER 1. AN ENERGY FUNCTION"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 9,
+              "lineId": "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification",
+              "text": "Learning with Classification"
+            },
+            {
+              "page": 9,
+              "lineId": "9|449.85454498125006|107.6723872|236.25594317999997|2.1 Classification",
+              "text": "2.1 Classification"
+            }
+          ]
+        },
+        {
+          "page": 9,
+          "lineId": "9|510.469227456|107.8109098|446.81168294999986|Learning with Classification",
+          "text": "Learning with Classification",
+          "previousLines": [
+            {
+              "page": 9,
+              "lineId": "9|540.4461479157895|107.8356969|387.95471399999997|Basic Ideas in Machine",
+              "text": "Basic Ideas in Machine"
+            },
+            {
+              "page": 9,
+              "lineId": "9|588.9528476562501|108.150075|208.10905124999996|Chapter 2",
+              "text": "Chapter 2"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 9,
+              "lineId": "9|449.85454498125006|107.6723872|236.25594317999997|2.1 Classification",
+              "text": "2.1 Classification"
+            },
+            {
+              "page": 9,
+              "lineId": "9|426.6985579833334|107.1479528|450.29498288|In the problem of classification an observation x can be split into the input and",
+              "text": "In the problem of classification an observation x can be split into the input and"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "058",
+      "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "occurrenceId": "058/heading/024",
+      "sourceLineIds": [
+        "46|323.41217150000034|161.34227140000004|343.7943737599998|3.2 Convolutional blocks"
+      ],
+      "sourceText": "3.2 Convolutional blocks",
+      "page": 46,
+      "sourceContext": [
+        {
+          "page": 46,
+          "lineId": "46|323.41217150000034|161.34227140000004|343.7943737599998|3.2 Convolutional blocks",
+          "text": "3.2 Convolutional blocks",
+          "previousLines": [
+            {
+              "page": 46,
+              "lineId": "46|355.9208772303576|161.08642920000003|433.31347793999987|applies the same normalization to all instances simultaneously.",
+              "text": "applies the same normalization to all instances simultaneously."
+            },
+            {
+              "page": 46,
+              "lineId": "46|365.00762690000033|383.0621235400001|384.22774774000004|,",
+              "text": ","
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 46,
+              "lineId": "46|299.8927377390629|161.03661620000003|504.17047792000017|Many problems in machine learning boil down to detecting patterns within an",
+              "text": "Many problems in machine learning boil down to detecting patterns within an"
+            },
+            {
+              "page": 46,
+              "lineId": "46|287.90747882318897|160.99676580000005|504.08579582000004|input that repeatedly appear within the training data set. Consider for instance",
+              "text": "input that repeatedly appear within the training data set. Consider for instance"
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    },
+    {
+      "documentId": "058",
+      "documentSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "occurrenceId": "058/heading/047",
+      "sourceLineIds": [
+        "107|583.9530067541666|107.8356969|262.57412607000003|Bibliography"
+      ],
+      "sourceText": "Bibliography",
+      "page": 107,
+      "sourceContext": [
+        {
+          "page": 107,
+          "lineId": "107|583.9530067541666|107.8356969|262.57412607000003|Bibliography",
+          "text": "Bibliography",
+          "previousLines": [
+            {
+              "page": 106,
+              "lineId": "106|433.30121431724103|161.00572839999998|292.5668427000001|causal representation learning.",
+              "text": "causal representation learning."
+            },
+            {
+              "page": 106,
+              "lineId": "106|445.3434782369225|160.98580319999996|504.0947584199998|move on to more in-depth materials on causal inference, causal discovery and",
+              "text": "move on to more in-depth materials on causal inference, causal discovery and"
+            }
+          ],
+          "nextLines": [
+            {
+              "page": 107,
+              "lineId": "107|528.0269806349996|107.217691|450.3077172800001|D. H. Ackley, G. E. Hinton, and T. J. Sejnowski. A learning algorithm for",
+              "text": "D. H. Ackley, G. E. Hinton, and T. J. Sejnowski. A learning algorithm for"
+            },
+            {
+              "page": 107,
+              "lineId": "107|516.3166064176471|117.11095279999999|377.14551451999967|boltzmann machines. Cognitive science 9(1) :147\u2013169 1985.",
+              "text": "boltzmann machines. Cognitive science 9(1) :147\u2013169 1985."
+            }
+          ]
+        }
+      ],
+      "predictionVisible": false,
+      "levelStatus": "PENDING_HUMAN_REVIEW",
+      "level": null,
+      "parentStatus": "PENDING_HUMAN_REVIEW",
+      "parentOccurrenceId": null,
+      "scopeStatus": "PENDING_HUMAN_REVIEW",
+      "scope": null,
+      "typePathStatus": "PENDING_HUMAN_REVIEW",
+      "typePath": null,
+      "annotatorId": null,
+      "annotatedAt": null,
+      "annotationVersion": null,
+      "evidenceSourceLineIds": [],
+      "note": null
+    }
+  ],
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_CODE_CHANGED": false
+}
