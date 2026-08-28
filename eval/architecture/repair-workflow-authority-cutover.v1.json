@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "repair_workflow_authority_cutover",
+  "task": "LEGACY-2",
+  "status": "PASS",
+  "baseRevision": "24a1745ffdefb4e171c62ca45727fe4ab9294149",
+  "cutoverRevision": "5185c75f73757b93c5a0efab51b3ba92943a8e25",
+  "target": "HeaderExtractionPipeline repair reachability = 0",
+  "boundary": {
+    "interface": "IRepairOutlineRunner",
+    "implementation": "AuthorityRepairOutlineRunner",
+    "authority": "AuthorityExtractionPipeline",
+    "runnerContract": "RunAsync(string inputPath, CancellationToken cancellationToken = default)"
+  },
+  "callersChanged": [
+    "AutoRepairWorkflow",
+    "RepairGateCalibration",
+    "RepairCorpusAudit",
+    "CLI repair-key-package review-rate collection"
+  ],
+  "callersNotChanged": [
+    "DocxSlimExtractor compatibility/review/eval callers",
+    "SlimDocument",
+    "SlimParagraph",
+    "deprecated Slim APIs",
+    "eval/replay callers",
+    "historical tests/evidence"
+  ],
+  "reachability": {
+    "headerExtractionPipelineRepairCallersBefore": 4,
+    "headerExtractionPipelineRepairCallersAfter": 0,
+    "headerExtractionPipelineNormalProductionCallersAfter": 0,
+    "headerExtractionPipelineDefinitionRetained": true,
+    "docxSlimCompatibilityCallersRetained": true
+  },
+  "parityEvidence": {
+    "fixture": "tests/DocxHeaderExtractor.Tests/AutoRepairWorkflowTests.cs::RepairWorkflowWritesEvidencePromptAndRuntimePolicy",
+    "beforeRevision": "24a1745ffdefb4e171c62ca45727fe4ab9294149",
+    "beforeResult": "1 passed / 0 failed",
+    "beforeTrxLocalPath": "C:/DocxHeaderExtractor-legacy2-pre/tests/DocxHeaderExtractor.Tests/TestResults/legacy2-pre.trx",
+    "afterResult": "1 passed / 0 failed",
+    "afterTrxLocalPath": "tests/DocxHeaderExtractor.Tests/TestResults/legacy2-post.trx",
+    "observableContract": [
+      "failure-case.json",
+      "probe-report.json",
+      "candidate-report.json",
+      "validation-report.json",
+      "analysis-plan.json",
+      "llm-analysis-prompt.md",
+      "runtime-self-fix-plan.md",
+      "repair-learning-log.jsonl"
+    ],
+    "repairObservableUnexpectedDelta": 0,
+    "expectedChanged": false
+  },
+  "verification": {
+    "releaseRestore": "PASS",
+    "releaseBuild": "PASS: 0 errors, 175 existing warnings",
+    "focusedRepairTests": "PASS: 1/1",
+    "providerCalls": 0,
+    "fullSuiteExecuted": false,
+    "productionNormalRouteChanged": false,
+    "benchmarkExpectedChanged": false,
+    "legacyDeleted": false
+  },
+  "gate": {
+    "HEADER_EXTRACTION_PIPELINE_REPAIR_REACHABILITY": 0,
+    "REPAIR_BEHAVIOR_UNEXPECTED_DELTA": 0,
+    "LEGACY_REMOVAL_AUTHORIZED": false,
+    "DOCX_SLIM_REMOVAL_AUTHORIZED": false
+  },
+  "nextTask": "LEGACY-3"
+}
