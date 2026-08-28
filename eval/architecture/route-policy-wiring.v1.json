@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "normal_authority_route_policy_wiring",
+  "sourceRevision": "de20821",
+  "auditOnly": false,
+  "scope": "ARCH-3B normal authority route decision owner only",
+  "ROUTE_POLICY_WIRED": true,
+  "ROUTE_DECISION_OWNER": "APPLICATION_ROUTE_POLICY",
+  "CURRENT_RUNTIME_DOMAIN_EQUIVALENCE": "PROVEN",
+  "TARGET_UNSUPPORTED_CASE": "CONTRACT_EXTENSION",
+  "LEGACY_FALLBACK_SEMANTICS_IMPORTED": false,
+  "AUTHORITY_PIPELINE_DEPENDS_ON_LEGACY_ROUTE": false,
+  "ARCH3_CHARACTERIZATION_PASS": true,
+  "ARCH3B_WIRING_TESTS": "BLOCKED_BY_PREEXISTING_TEST_PROJECT_COMPILE_ERRORS",
+  "F_REGRESSION_PASS": "NOT_RUN",
+  "RELEASE_BUILD": "CORE_PASS; FULL_SOLUTION_BLOCKED_BY_PREEXISTING_TEST_COMPILE_ERRORS",
+  "implementation": {
+    "productionBoundary": "Core.Application.Routing",
+    "types": ["SourceCapabilities", "AuthorityRoute", "IAuthorityRoutePolicy", "DefaultAuthorityRoutePolicy"],
+    "constructorCompatibility": "Existing AuthorityExtractionPipeline(options) uses DefaultAuthorityRoutePolicy; injected routePolicy overload is available.",
+    "decisionInput": ["HasDocx", "HasPdf", "AnalystAvailable"],
+    "unchangedBodies": ["PDF extraction", "DocxAuthorityPipeline", "checkpoint creation/drain", "analyst creation", "candidate generation", "span resolution", "validator", "hierarchy", "grounding", "output projection", "provenance"]
+  },
+  "runtimeMatrix": [
+    { "hasDocx": true, "hasPdf": true, "analystAvailable": true, "route": "PdfAuthority", "deterministicRoute": "pdf-authority-v1" },
+    { "hasDocx": true, "hasPdf": true, "analystAvailable": false, "route": "DocxAuthority", "deterministicRoute": "docx-authority-v1" },
+    { "hasDocx": true, "hasPdf": false, "analystAvailable": true, "route": "DocxAuthority", "deterministicRoute": "docx-authority-v1" },
+    { "hasDocx": true, "hasPdf": false, "analystAvailable": false, "route": "DocxAuthority", "deterministicRoute": "docx-authority-v1" },
+    { "hasDocx": false, "hasPdf": true, "analystAvailable": true, "route": "Unsupported", "deterministicRoute": "OUT_OF_CURRENT_RUNTIME_DOMAIN" }
+  ],
+  "guards": [
+    { "name": "policy_has_no_legacy_route_dependency", "pass": true, "evidence": "DefaultAuthorityRoutePolicy references only SourceCapabilities and AuthorityRoute" },
+    { "name": "normal_pipeline_has_no_legacy_route_call", "pass": true, "evidence": "AuthorityExtractionPipeline switch uses IAuthorityRoutePolicy; no HeaderExtractionPipeline/PdfFirstValidatedFallback reference" },
+    { "name": "provider_calls", "pass": true, "value": 0 },
+    { "name": "candidate_ranking_prompt_timeout_concurrency_changed", "pass": true, "value": false }
+  ],
+  "verification": {
+    "coreBuild": { "status": "PASS", "command": "dotnet build src/DocxHeaderExtractor.Core/DocxHeaderExtractor.Core.csproj --no-restore", "warnings": 0, "errors": 0 },
+    "architectureCharacterization": { "status": "PASS", "tests": 6 },
+    "wiringTestAttempt": { "status": "BLOCKED", "reason": "Existing SourceFactsCompatibilityTests.cs has compile errors unrelated to ARCH-3B: DocumentMode.Normal/constructor mismatch and IsExternalInit." },
+    "fullRegression": { "status": "NOT_RUN", "reason": "Test project cannot compile before test execution." }
+  },
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_BEHAVIOR_CHANGED": false,
+  "PRODUCTION_CODE_CHANGED": true,
+  "TEST_EXPECTATIONS_CHANGED": false
+}

@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace DocxHeaderExtractor.Tests.Architecture;
+namespace DocxHeaderExtractor.Tests.Architecture.ContractDraft;
 
 public sealed record SourceCapabilities(bool HasDocx, bool HasPdf, bool AnalystAvailable);
 
