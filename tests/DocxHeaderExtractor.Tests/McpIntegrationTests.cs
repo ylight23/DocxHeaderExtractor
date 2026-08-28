@@ -180,10 +180,17 @@ public sealed class McpStdioIntegrationTests : IDisposable
 #else
             "Release";
 #endif
-        var path = Path.Combine(
-            FindRepositoryRoot(), "src", "DocxHeaderExtractor.Mcp", "bin", configuration, "net9.0", "dhx-mcp.dll");
-        Assert.True(File.Exists(path), $"Không tìm thấy MCP test host: {path}");
-        return path;
+        var outputRoot = Path.Combine(
+            FindRepositoryRoot(), "src", "DocxHeaderExtractor.Mcp", "bin", configuration, "net9.0");
+        var runtimeIdentifier = System.Runtime.InteropServices.RuntimeInformation.RuntimeIdentifier;
+        var candidates = new[]
+        {
+            Path.Combine(outputRoot, runtimeIdentifier, "dhx-mcp.dll"),
+            Path.Combine(outputRoot, "dhx-mcp.dll")
+        };
+        var path = candidates.FirstOrDefault(File.Exists);
+        Assert.True(path is not null, $"Không tìm thấy MCP test host. Searched: {string.Join(", ", candidates)}");
+        return path!;
     }
 
     private static string FindRepositoryRoot()
