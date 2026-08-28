@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "artifactKind": "normal_authority_route_policy_wiring",
-  "sourceRevision": "de20821",
+  "sourceRevision": "8204721fef05a29dc5937f9a1b91485c653c87be",
   "auditOnly": false,
   "scope": "ARCH-3B normal authority route decision owner only",
   "ROUTE_POLICY_WIRED": true,
@@ -11,9 +11,9 @@
   "LEGACY_FALLBACK_SEMANTICS_IMPORTED": false,
   "AUTHORITY_PIPELINE_DEPENDS_ON_LEGACY_ROUTE": false,
   "ARCH3_CHARACTERIZATION_PASS": true,
-  "ARCH3B_WIRING_TESTS": "BLOCKED_BY_PREEXISTING_TEST_PROJECT_COMPILE_ERRORS",
-  "F_REGRESSION_PASS": "NOT_RUN",
-  "RELEASE_BUILD": "CORE_PASS; FULL_SOLUTION_BLOCKED_BY_PREEXISTING_TEST_COMPILE_ERRORS",
+  "ARCH3B_WIRING_TESTS_PASS": true,
+  "F_REGRESSION_PASS": true,
+  "RELEASE_BUILD_PASS": true,
   "implementation": {
     "productionBoundary": "Core.Application.Routing",
     "types": ["SourceCapabilities", "AuthorityRoute", "IAuthorityRoutePolicy", "DefaultAuthorityRoutePolicy"],
@@ -37,8 +37,12 @@
   "verification": {
     "coreBuild": { "status": "PASS", "command": "dotnet build src/DocxHeaderExtractor.Core/DocxHeaderExtractor.Core.csproj --no-restore", "warnings": 0, "errors": 0 },
     "architectureCharacterization": { "status": "PASS", "tests": 6 },
-    "wiringTestAttempt": { "status": "BLOCKED", "reason": "Existing SourceFactsCompatibilityTests.cs has compile errors unrelated to ARCH-3B: DocumentMode.Normal/constructor mismatch and IsExternalInit." },
-    "fullRegression": { "status": "NOT_RUN", "reason": "Test project cannot compile before test execution." }
+    "testProjectBuild": { "status": "PASS", "command": "dotnet build tests/DocxHeaderExtractor.Tests/DocxHeaderExtractor.Tests.csproj --no-restore", "warnings": 28, "errors": 0 },
+    "wiringTests": { "status": "PASS", "tests": 6 },
+    "focusedRouteAndContractTotal": { "status": "PASS", "tests": 12 },
+    "fRegression": { "status": "PASS", "tests": 2 },
+    "fullRegression": { "status": "NOT_RUN", "reason": "ARCH-3B-V required focused F regression, not a new full-suite run." },
+    "releaseBuild": { "status": "PASS", "command": "dotnet build DocxHeaderExtractor.sln -c Release --no-restore", "warnings": 0, "errors": 0 }
   },
   "PROVIDER_CALLS": 0,
   "PRODUCTION_BEHAVIOR_CHANGED": false,

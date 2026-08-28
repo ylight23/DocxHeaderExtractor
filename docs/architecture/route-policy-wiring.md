@@ -1,6 +1,6 @@
 # ARCH-3B: Normal Authority Route Policy Wiring
 
-**Revision:** `de20821` plus the uncommitted ARCH-3B wiring changes  
+**Revision under verification:** `8204721fef05a29dc5937f9a1b91485c653c87be`
 **Scope:** normal authority route decision only.
 
 ## Change
@@ -39,20 +39,24 @@ The ARCH-3 characterization matrix remains green (`6/6`). The legacy
 `HeaderExtractionPipeline.PdfFirstValidatedFallback` semantics are not
 imported into this normal route.
 
-## Verification boundary
+## Verification closure
 
-The Core project builds successfully with zero warnings/errors. The focused
-test-project attempt is currently blocked before test execution by pre-existing
-compile errors in `SourceFactsCompatibilityTests.cs` (`DocumentMode.Normal`,
-the `DocumentModeReport` constructor, and `IsExternalInit`). Those errors are
-outside ARCH-3B and were not modified or suppressed. Therefore the wiring test
-suite and F regression are not claimed as passed yet.
+The combined tree now builds cleanly: test-project build completed with zero
+errors (28 existing warnings), the ARCH-3/3B route and contract tests pass
+`12/12`, the F regression harness passes `2/2`, and the Release solution build
+completes with zero warnings/errors. These checks ran on the current combined
+tree after ARCH-3B and ARCH-4B were present.
+
+The full suite was not rerun in this focused closure and is not claimed here.
 
 ```text
 ROUTE_POLICY_WIRED = true
 CURRENT_RUNTIME_DOMAIN_EQUIVALENCE = PROVEN
 LEGACY_FALLBACK_SEMANTICS_IMPORTED = false
 AUTHORITY_PIPELINE_DEPENDS_ON_LEGACY_ROUTE = false
+ARCH3B_WIRING_TESTS_PASS = true
+F_REGRESSION_PASS = true
+RELEASE_BUILD_PASS = true
 PROVIDER_CALLS = 0
 PRODUCTION_BEHAVIOR_CHANGED = false
 ```
