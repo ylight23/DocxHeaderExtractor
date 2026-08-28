@@ -7,9 +7,22 @@ namespace DocxHeaderExtractor.Core.OpenXmlLayer;
 /// Narrow transitional view of mutable Slim policy state. Source facts are intentionally absent;
 /// normal authority code must read those from SourceDocument.
 /// </summary>
-internal sealed record SlimCompatibilityContext(
-    IReadOnlyDictionary<string, SlimCompatibilityParagraph> Paragraphs)
+internal sealed class SlimCompatibilityContext
 {
+    public SlimCompatibilityContext(
+        IReadOnlyDictionary<string, SlimCompatibilityParagraph> paragraphs,
+        SlimDocument legacyDocument)
+    {
+        Paragraphs = paragraphs;
+        _legacyDocument = legacyDocument;
+    }
+
+    private readonly SlimDocument _legacyDocument;
+
+    public IReadOnlyDictionary<string, SlimCompatibilityParagraph> Paragraphs { get; }
+
+    internal SlimDocument ForLegacyCompatibility() => _legacyDocument;
+
     public bool TryGet(string sourceId, out SlimCompatibilityParagraph paragraph) =>
         Paragraphs.TryGetValue(sourceId, out paragraph!);
 
@@ -51,7 +64,7 @@ internal static class SlimCompatibilityBoundary
                 paragraph.NumberingStyleLevel,
                 paragraph),
             StringComparer.Ordinal);
-        return new SlimCompatibilityContext(paragraphs);
+        return new SlimCompatibilityContext(paragraphs, document);
     }
 
     private static string SourceId(SlimParagraph paragraph) =>

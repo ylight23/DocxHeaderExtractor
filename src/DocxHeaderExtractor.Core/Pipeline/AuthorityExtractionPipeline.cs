@@ -62,10 +62,10 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         var conversion = LegacyDocConverter.EnsureDocx(inputPath);
         try
         {
-            var extraction = new DocxSlimExtractor(_options.Extraction).ExtractWithSourceFacts(conversion.Path);
-            var slim = extraction.Slim;
+            var extraction = new DocxSlimExtractor(_options.Extraction).ExtractForAuthority(conversion.Path);
             var source = extraction.Source;
-            var compatibility = SlimCompatibilityBoundary.Capture(slim);
+            var compatibility = extraction.Compatibility;
+            var slim = compatibility.ForLegacyCompatibility();
             var mode = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
             var diagnostics = DocumentDiagnosticRunner.Analyze(slim, mode);
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);

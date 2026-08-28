@@ -24,6 +24,14 @@ public sealed class DocxSlimExtractor
 
     public SlimDocument Extract(string path) => ExtractWithSourceFacts(path).Slim;
 
+    internal AuthoritySourceExtractionResult ExtractForAuthority(string path)
+    {
+        var extraction = ExtractWithSourceFacts(path);
+        return new AuthoritySourceExtractionResult(
+            extraction.Source,
+            SlimCompatibilityBoundary.Capture(extraction.Slim));
+    }
+
     public DocxSourceExtractionResult ExtractWithSourceFacts(string path)
     {
         using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
