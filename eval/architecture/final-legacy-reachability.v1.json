@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "final_legacy_reachability_census",
+  "task": "LEGACY-1",
+  "status": "PASS",
+  "auditOnly": true,
+  "baseRevision": "e9b4c61a7fe7c34419352812f5d1216d06d81736",
+  "scope": [
+    "production",
+    "tests",
+    "eval",
+    "replay",
+    "repair",
+    "output paths",
+    "deprecated public APIs",
+    "documentation and artifact references"
+  ],
+  "search": {
+    "trackedRoots": ["src", "tests", "eval", "docs"],
+    "excludedGeneratedRoots": ["bin", "obj", "TestResults"],
+    "symbols": [
+      "HeaderExtractionPipeline",
+      "DocxSlimExtractor",
+      "SlimDocument",
+      "SlimParagraph",
+      "Extract()",
+      "ExtractWithSourceFacts()",
+      "ExtractForAuthority()",
+      "SlimCompatibilityBoundary",
+      "SlimCompatibilityContext"
+    ],
+    "matchedFiles": 247,
+    "matchedLines": 1284,
+    "dynamicLookupScan": {
+      "patterns": ["reflection", "typeof", "GetType", "Activator", "Assembly.Load", "plugin loading"],
+      "localDynamicCallSitesForLegacySymbols": 0,
+      "externalInvocationRisk": "RECORDED_NOT_A_LOCAL_REFERENCE"
+    }
+  },
+  "classificationRules": {
+    "NORMAL_PRODUCTION": "Reachable from current normal authority hosts or their supporting adapters.",
+    "COMPATIBILITY_RUNTIME": "Reachable only through retained compatibility or deprecated runtime behavior.",
+    "REPAIR_RUNTIME": "Reachable from repair workflows or repair-specific commands.",
+    "EVAL_ONLY": "Used by evaluation/diagnostic execution but not normal runtime authority.",
+    "REPLAY_ONLY": "Used to replay or preserve historical behavior/evidence.",
+    "TEST_ONLY": "Referenced by tests only.",
+    "DEAD": "No executable reachability and no preserved evidence role.",
+    "DOCUMENTATION_ONLY": "Textual reference with no executable reachability; tracked separately from code roles."
+  },
+  "records": [
+    {
+      "symbol": "HeaderExtractionPipeline",
+      "file": "src/DocxHeaderExtractor.Core/Pipeline/HeaderExtractionPipeline.cs",
+      "member": "class HeaderExtractionPipeline",
+      "referenceKind": "DEFINITION",
+      "classification": "COMPATIBILITY_RUNTIME",
+      "reachableFrom": ["CLI repair-key-package", "Core.Repair", "legacy/evaluation tests"],
+      "replacementAuthority": "AuthorityExtractionPipeline",
+      "migrationRequired": true,
+      "removalBlocker": "Repair and compatibility callers remain; historical tests/evidence still reference the facade.",
+      "evidence": "Definition at HeaderExtractionPipeline.cs:362; direct constructors are retained outside the normal authority route."
+    },
+    {
+      "symbol": "HeaderExtractionPipeline",
+      "file": "src/DocxHeaderExtractor.Cli/Program.cs",
+      "member": "RunRepairKeyPackageAsync / constructor call",
+      "referenceKind": "CONSTRUCTOR_CALL",
+      "classification": "REPAIR_RUNTIME",
+      "reachableFrom": ["dhx repair-key-package"],
+      "replacementAuthority": "AuthorityExtractionPipeline",
+      "migrationRequired": true,
+      "removalBlocker": "LEGACY-2 repair workflow cutover.",
+      "evidence": "Program.cs:740 constructs the facade for the explicit repair-key-package path."
+    },
+    {
+      "symbol": "HeaderExtractionPipeline",
+      "file": "src/DocxHeaderExtractor.Core/Repair/AutoRepairWorkflow.cs; src/DocxHeaderExtractor.Core/Repair/RepairGateCalibration.cs; src/DocxHeaderExtractor.Core/Repair/RepairCorpusAudit.cs",
+      "member": "repair workflow constructors",
+      "referenceKind": "CONSTRUCTOR_CALL",
+      "classification": "REPAIR_RUNTIME",
+      "reachableFrom": ["AutoRepairWorkflow", "RepairGateCalibration", "RepairCorpusAudit"],
+      "replacementAuthority": "AuthorityExtractionPipeline",
+      "migrationRequired": true,
+      "removalBlocker": "Behavior-neutral repair cutover has not been performed.",
+      "evidence": "Direct constructor calls at AutoRepairWorkflow.cs:116, RepairGateCalibration.cs:116, and RepairCorpusAudit.cs:87."
+    },
+    {
+      "symbol": "DocxSlimExtractor",
+      "file": "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+      "member": "class DocxSlimExtractor",
+      "referenceKind": "DEFINITION",
+      "classification": "NORMAL_PRODUCTION",
+      "reachableFrom": ["AuthorityExtractionPipeline", "Web inspect/review", "CLI review/diagnostics"],
+      "replacementAuthority": "AuthorityExtractionPipeline with source-facts boundary",
+      "migrationRequired": true,
+      "removalBlocker": "Normal authority still uses ExtractForAuthority; review and compatibility adapters remain.",
+      "evidence": "Definition at DocxSlimExtractor.cs:17; AuthorityExtractionPipeline.cs:65 invokes ExtractForAuthority."
+    },
+    {
+      "symbol": "DocxSlimExtractor",
+      "file": "src/DocxHeaderExtractor.Core/Repair; src/DocxHeaderExtractor.Cli; src/DocxHeaderExtractor.Web; src/DocxHeaderExtractor.Core/Eval",
+      "member": "Extract / ExtractForAuthority callers",
+      "referenceKind": "METHOD_CALL",
+      "classification": "COMPATIBILITY_RUNTIME",
+      "reachableFrom": ["repair", "review/inspect", "CLI diagnostic commands", "Web review endpoints", "evaluation factory"],
+      "replacementAuthority": "AuthorityExtractionPipeline or explicit diagnostic adapter",
+      "migrationRequired": true,
+      "removalBlocker": "LEGACY-2 through LEGACY-4 caller and output cutovers.",
+      "evidence": "Static call-site scan found constructors and Extract calls in Program.cs, EvalRunner.cs, Repair, Web, PdfClusterProbe, and writeback adapters."
+    },
+    {
+      "symbol": "SlimDocument",
+      "file": "src/DocxHeaderExtractor.Core/Models/SlimDocument.cs",
+      "member": "class SlimDocument",
+      "referenceKind": "TYPE_DEFINITION",
+      "classification": "COMPATIBILITY_RUNTIME",
+      "reachableFrom": ["DocxSlimExtractor", "HeaderExtractionPipeline", "legacy tests", "review/eval adapters"],
+      "replacementAuthority": "SourceDocument / ValidatedStructure",
+      "migrationRequired": true,
+      "removalBlocker": "Slim-compatible APIs, output adapters, and tests still consume the model.",
+      "evidence": "Definition at Models/SlimDocument.cs:8; broad type-use scan includes pipeline, repair, eval, and tests."
+    },
+    {
+      "symbol": "SlimParagraph",
+      "file": "src/DocxHeaderExtractor.Core/Models/SlimParagraph.cs",
+      "member": "class SlimParagraph",
+      "referenceKind": "TYPE_DEFINITION",
+      "classification": "COMPATIBILITY_RUNTIME",
+      "reachableFrom": ["DocxSlimExtractor", "demotion operations", "legacy tests", "writeback/review adapters"],
+      "replacementAuthority": "ValidatedStructure paragraph facts",
+      "migrationRequired": true,
+      "removalBlocker": "LEGACY-5 demotion replacement and legacy test lineage are not complete.",
+      "evidence": "Definition at Models/SlimParagraph.cs:41; direct uses remain in demotion and test fixtures."
+    },
+    {
+      "symbol": "SlimCompatibilityContext",
+      "file": "src/DocxHeaderExtractor.Core/OpenXmlLayer/SlimCompatibilityBoundary.cs",
+      "member": "internal sealed class SlimCompatibilityContext",
+      "referenceKind": "TYPE_DEFINITION_AND_CONSTRUCTION",
+      "classification": "COMPATIBILITY_RUNTIME",
+      "reachableFrom": ["DocxSlimExtractor.ExtractForAuthority", "authority compatibility result"],
+      "replacementAuthority": "narrow source/authority port",
+      "migrationRequired": true,
+      "removalBlocker": "Source-facts compatibility boundary remains in the current authority path.",
+      "evidence": "Definition at SlimCompatibilityBoundary.cs:10; boundary helper at line 51."
+    },
+    {
+      "symbol": "SlimCompatibilityBoundary",
+      "file": "src/DocxHeaderExtractor.Core/OpenXmlLayer/SlimCompatibilityBoundary.cs",
+      "member": "internal static class SlimCompatibilityBoundary",
+      "referenceKind": "ADAPTER_CALL",
+      "classification": "COMPATIBILITY_RUNTIME",
+      "reachableFrom": ["source extraction and compatibility adapters"],
+      "replacementAuthority": "explicit source/authority port",
+      "migrationRequired": true,
+      "removalBlocker": "LEGACY-2/3/4 must remove runtime compatibility dependence first.",
+      "evidence": "Static scan finds the boundary in source-facts compatibility implementation; no reflection-based access found."
+    },
+    {
+      "symbol": "ExtractWithSourceFacts",
+      "file": "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+      "member": "public DocxSourceExtractionResult ExtractWithSourceFacts(string path)",
+      "referenceKind": "PUBLIC_API_AND_INTERNAL_CALL",
+      "classification": "COMPATIBILITY_RUNTIME",
+      "reachableFrom": ["DocxSlimExtractor.Extract", "legacy callers"],
+      "replacementAuthority": "AuthorityExtractionPipeline source extraction",
+      "migrationRequired": true,
+      "removalBlocker": "Deprecated Slim-returning API callers remain.",
+      "evidence": "DocxSlimExtractor.cs:26 delegates Extract to ExtractWithSourceFacts; definition at line 37."
+    },
+    {
+      "symbol": "Extract()",
+      "file": "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs; src/DocxHeaderExtractor.Cli/Program.cs; src/DocxHeaderExtractor.Core/Repair; src/DocxHeaderExtractor.Web/Program.cs; src/DocxHeaderExtractor.Core/Eval",
+      "member": "Slim-returning extraction calls",
+      "referenceKind": "METHOD_CALL",
+      "classification": "COMPATIBILITY_RUNTIME",
+      "reachableFrom": ["review", "inspect", "repair", "diagnostic eval", "legacy tests"],
+      "replacementAuthority": "ExtractForAuthority / AuthorityExtractionPipeline where applicable",
+      "migrationRequired": true,
+      "removalBlocker": "LEGACY-2/3/4 and legacy test migration.",
+      "evidence": "Call-site scan separates these calls from the normal AuthorityExtractionPipeline route."
+    },
+    {
+      "symbol": "HeaderExtractionPipeline / DocxSlimExtractor / SlimDocument / SlimParagraph",
+      "file": "tests/DocxHeaderExtractor.Tests/**/*.cs",
+      "member": "fixtures, direct constructors, helper parameters and assertions",
+      "referenceKind": "TEST_REFERENCE",
+      "classification": "TEST_ONLY",
+      "reachableFrom": ["dotnet test runner"],
+      "replacementAuthority": "preserve lineage, then migrate or retire with explicit classification",
+      "migrationRequired": true,
+      "removalBlocker": "LEGACY test migration/retirement decision has not been made.",
+      "evidence": "Static scan finds legacy symbols across test fixtures; no test expectation was changed by this census."
+    },
+    {
+      "symbol": "legacy pipeline/model references",
+      "file": "eval/**/*.json; docs/**/*.md",
+      "member": "historical manifests, replay contracts, architecture records and narrative references",
+      "referenceKind": "ARTIFACT_OR_DOCUMENT_REFERENCE",
+      "classification": "REPLAY_ONLY",
+      "reachableFrom": ["offline replay/evidence readers", "documentation readers"],
+      "replacementAuthority": "archived evidence or explicit evaluation adapter",
+      "migrationRequired": false,
+      "removalBlocker": "Historical evidence must remain available; do not delete or rewrite as part of LEGACY-1.",
+      "evidence": "Repository-wide scan records these as non-executable evidence references; they are not production call-sites."
+    }
+  ],
+  "classificationCounts": {
+    "NORMAL_PRODUCTION": 1,
+    "COMPATIBILITY_RUNTIME": 9,
+    "REPAIR_RUNTIME": 2,
+    "EVAL_ONLY": 0,
+    "REPLAY_ONLY": 1,
+    "TEST_ONLY": 1,
+    "DEAD": 0,
+    "DOCUMENTATION_ONLY": 0,
+    "UNKNOWN": 0
+  },
+  "removalDependencyMap": [
+    {
+      "component": "HeaderExtractionPipeline",
+      "normalProductionCallers": 0,
+      "compatibilityRuntime": 1,
+      "repairRuntime": 2,
+      "evalReplayTest": 1,
+      "dead": 0,
+      "replacement": "AuthorityExtractionPipeline",
+      "blockers": ["repair cutover", "eval/replay separation", "legacy test lineage"],
+      "candidateNextTask": "LEGACY-2"
+    },
+    {
+      "component": "DocxSlimExtractor and Slim models",
+      "normalProductionCallers": 1,
+      "compatibilityRuntime": 4,
+      "repairRuntime": 1,
+      "evalReplayTest": 2,
+      "dead": 0,
+      "replacement": "SourceDocument + ValidatedStructure + explicit compatibility ports",
+      "blockers": ["source boundary migration", "ordered demotion contract", "output adapter cutover"],
+      "candidateNextTask": "LEGACY-2"
+    }
+  ],
+  "gate": {
+    "unknown": 0,
+    "allLegacyDefinitionsInventoried": true,
+    "allProductionCallSitesClassified": true,
+    "allRepairCallSitesClassified": true,
+    "allCompatibilityCallSitesClassified": true,
+    "allEvalReplayTestReferencesClassified": true,
+    "migrationPerformed": false,
+    "legacyDeleted": false,
+    "expectedChanged": false,
+    "productionCodeChanged": false,
+    "testCodeChanged": false,
+    "providerCalls": 0,
+    "fullSuiteExecuted": false
+  },
+  "nextTask": "LEGACY-2",
+  "decision": "PASS_WITH_LEGACY_REMAINING",
+  "notes": [
+    "Definition existence is not treated as normal production reachability.",
+    "DocxSlimExtractor is intentionally recorded in both normal-authority and compatibility roles.",
+    "No REMOVE_CANDIDATE is justified by this audit alone."
+  ]
+}
