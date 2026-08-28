@@ -28,6 +28,19 @@ public sealed class NormalSlimApiRetirementTests
             ?? throw new InvalidOperationException("Legacy extraction API not found.");
 
         Assert.Equal("SlimDocument", method.ReturnType.Name);
+        Assert.True(method.IsDefined(typeof(ObsoleteAttribute), inherit: false));
+    }
+
+    [Fact]
+    public void Source_facts_legacy_api_is_deprecated_without_deprecating_types()
+    {
+        var method = typeof(DocxSlimExtractor).GetMethod("ExtractWithSourceFacts", [typeof(string)])
+            ?? throw new InvalidOperationException("Legacy source-facts extraction API not found.");
+
+        Assert.True(method.IsDefined(typeof(ObsoleteAttribute), inherit: false));
+        Assert.Equal("DocxSourceExtractionResult", method.ReturnType.Name);
+        Assert.False(typeof(SlimDocument).IsDefined(typeof(ObsoleteAttribute), inherit: false));
+        Assert.False(typeof(SlimParagraph).IsDefined(typeof(ObsoleteAttribute), inherit: false));
     }
 
     [Fact]
