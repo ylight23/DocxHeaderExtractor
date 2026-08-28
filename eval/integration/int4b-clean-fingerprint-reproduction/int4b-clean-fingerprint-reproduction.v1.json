@@ -1,0 +1,125 @@
+﻿{
+    "schemaVersion":  1,
+    "artifactKind":  "int4b_clean_fingerprint_reproduction",
+    "task":  "INT-4B",
+    "status":  "REPRODUCED_BASELINE_SEMANTIC_FAILURE",
+    "executionRevision":  "952e3ceadc5079c8f46c8afff0c8366f5ec0490b",
+    "worktree":  "C:\\DocxHeaderExtractor-int4b-clean-fingerprint",
+    "fqn":  "DocxHeaderExtractor.Tests.PdfC1CrossDocumentRegressionInventoryProbe.IndependentPartialTimeoutEvidenceNowExistsAndWasConsumedByN35",
+    "command":  "dotnet test tests\\DocxHeaderExtractor.Tests\\DocxHeaderExtractor.Tests.csproj -c Release --no-build --no-restore --filter FullyQualifiedName=\u003cFQN\u003e --logger trx;LogFileName=int4b-clean-fingerprint.trx --logger console;verbosity=detailed",
+    "dotnetTestExitCode":  1,
+    "outcome":  "Failed",
+    "rawTrx":  "tests/DocxHeaderExtractor.Tests/TestResults/int4b-clean-fingerprint.trx",
+    "rawTrxSha256":  "9fddb62fef801de2b3eef0c3addbe38e991275859f7f5602967b846d7707be66",
+    "consoleOutput":  "eval/integration/int4b-clean-fingerprint-reproduction/single-fqn.console.txt",
+    "consoleOutputSha256":  "1973d9115a33b1d006131399beae3fd09af79164914d9b54a26d11309134eda3",
+    "beforeInventory":  "eval/integration/int4b-clean-fingerprint-reproduction/runtime-inventory.before.v1.json",
+    "afterInventory":  "eval/integration/int4b-clean-fingerprint-reproduction/runtime-inventory.after.v1.json",
+    "beforeArtifactCount":  7,
+    "afterArtifactCount":  7,
+    "beforeSearchRoots":  [
+                              "eval",
+                              "keys"
+                          ],
+    "afterSearchRoots":  [
+                             "eval",
+                             "keys"
+                         ],
+    "beforeDocumentIds":  [
+                              "003",
+                              "004",
+                              "030",
+                              "043",
+                              "057",
+                              "058"
+                          ],
+    "beforePartialTimeoutDocuments":  [
+                                          "003",
+                                          "004",
+                                          "030",
+                                          "043",
+                                          "058"
+                                      ],
+    "afterDocumentIds":  [
+                             "003",
+                             "004",
+                             "030",
+                             "043",
+                             "057",
+                             "058"
+                         ],
+    "afterPartialTimeoutDocuments":  [
+                                         "003",
+                                         "004",
+                                         "030",
+                                         "043",
+                                         "058"
+                                     ],
+    "artifactsActuallyScannedByEquivalentInventory":  [
+                                                          {
+                                                              "path":  "eval/accuracy-round4/k1024-semantic-run.v1.json",
+                                                              "sha256":  "863b23f11da881d72cc1bf9798dafb9dbda0f49f911f505a3532b5f4a40cbff7",
+                                                              "rowCount":  4
+                                                          },
+                                                          {
+                                                              "path":  "eval/accuracy-round4/k640-semantic-run.v1.json",
+                                                              "sha256":  "6de537a5a5aa5b5535cea208a9ab89a0fada45c434e3037b67a4b124cf799b95",
+                                                              "rowCount":  4
+                                                          },
+                                                          {
+                                                              "path":  "eval/benchmark-n0/n2-s/invalid-runs/concurrency-1/003-n2s-run.v1.json",
+                                                              "sha256":  "394f26731bbac396a2d4e7836c036442d34617a4d3d85a348d79fcb8a9ae824e",
+                                                              "rowCount":  1
+                                                          },
+                                                          {
+                                                              "path":  "eval/benchmark-n0/n2-s/invalid-runs/concurrency-1/057-n2s-run.v1.json",
+                                                              "sha256":  "cf7be42f7674e1f7f82b9b4e85acdc4b51e50f1ee13977710821bc99e38129ac",
+                                                              "rowCount":  1
+                                                          },
+                                                          {
+                                                              "path":  "eval/benchmark-n0/n2-s/runs/003-n2-s-run.v1.json",
+                                                              "sha256":  "a8a9f8f3792ea8e797fc17e2fb8bca0825869dca593c45521f87ea69bb005a58",
+                                                              "rowCount":  1
+                                                          },
+                                                          {
+                                                              "path":  "eval/benchmark-n0/n2-s/runs/057-n2-s-run.v1.json",
+                                                              "sha256":  "5dd64aeb3790b25725e4df33cb02fd36cd5c1f003376fd6bab3944ae0d2d55ac",
+                                                              "rowCount":  1
+                                                          },
+                                                          {
+                                                              "path":  "eval/benchmark-n3/n3.4/runs/004-n3.4-canonical-run.v1.json",
+                                                              "sha256":  "c2d57ce108ec6d4063b41a0a590ed7bc74a6dce152d3868e479b4e9b653a4333",
+                                                              "rowCount":  1
+                                                          }
+                                                      ],
+    "baseline":  {
+                     "assertionLine":  71,
+                     "normalizedFailure":  "Assert.Contains() Failure: Item not found in collection Collection: [\"003\", \"004\", \"030\", \"043\", \"057\", ···] Not found: \"001\"",
+                     "normalizedFingerprint":  "49ac736c492365180928804a69a0cb7843328e1eb611aa31052211bf3fe1c997"
+                 },
+    "round2Int4":  {
+                       "assertionLine":  78,
+                       "normalizedFailure":  "Assert.Equal() Failure: Collections differ Expected: [\"004\"] Actual: [\"004\", \"030\", \"043\", \"058\"] ↑ (pos 1)",
+                       "normalizedFingerprint":  "0ab5b96aac59ae8b1bcb403d1785dff4829a4177b3424a3616bbe9cba9bdbb6c"
+                   },
+    "reproduction":  {
+                         "assertionLine":  71,
+                         "rawLineJoinedFailure":  "Assert.Contains() Failure: Item not found in collection Collection: [\"003\", \"004\", \"030\", \"043\", \"057\", ···] Not found:  \"001\"",
+                         "rawLineJoinedMessageOnlySha256":  "aa0b226a285a128bc1fcf06665581db50f9a8e9018804d07fb34fdea383fad1e",
+                         "canonicalNormalizedFailure":  "Assert.Contains() Failure: Item not found in collection Collection: [\"003\", \"004\", \"030\", \"043\", \"057\", ···] Not found: \"001\"",
+                         "canonicalNormalizedMessageOnlySha256":  "2c3e8d66c2c7ec120931d2134f2df3cc8cd5c55a4113d44f3efa2aafd9b7ced6",
+                         "ledgerEquivalentObservedNormalizedFingerprint":  "49ac736c492365180928804a69a0cb7843328e1eb611aa31052211bf3fe1c997",
+                         "matchesBaselineSemanticFailure":  true,
+                         "matchesRound2Int4ChangedFailure":  false
+                     },
+    "adjudication":  {
+                         "productionRegressionProven":  false,
+                         "fingerprintAuthorityUpdateAuthorized":  false,
+                         "classification":  "clean reproduction returns baseline semantic failure; INT-4 changed fingerprint is not reproduced from clean inventory"
+                     },
+    "productionCodeChanged":  false,
+    "testCodeChanged":  false,
+    "providerCalls":  0,
+    "evidencePackageRawTrx":  "eval/integration/int4b-clean-fingerprint-reproduction/int4b-clean-fingerprint.trx",
+    "evidencePackageRawTrxSha256":  "9fddb62fef801de2b3eef0c3addbe38e991275859f7f5602967b846d7707be66"
+}
