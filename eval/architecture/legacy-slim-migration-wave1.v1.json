@@ -1,0 +1,43 @@
+{
+  "milestone": "ARCH-4L",
+  "status": "BLOCKED_NO_SAFE_SOURCE_ONLY_WAVE",
+  "baseRevision": "be8d9a4",
+  "selectionRule": "only logical callers proven to require source facts and no policy, demotion, mutable, or writeback state",
+  "migratedComponents": [],
+  "deferredComponents": [
+    {"component": "HeaderExtractionPipeline", "reason": "legacy route reads mutable policy and demotion state", "target": "KEEP_LEGACY_TEMPORARILY"},
+    {"component": "Repair and repair calibration", "reason": "mutable paragraph and source-to-writeback mapping", "target": "MIGRATE_TO_WRITEBACK_ADAPTER"},
+    {"component": "Evaluation and replay consumers", "reason": "Slim-shaped policy/TOC state remains part of compatibility contracts", "target": "MIGRATE_TO_SOURCE_DOCUMENT_OR_COMPATIBILITY_CONTEXT"},
+    {"component": "Outline/writeback consumers", "reason": "OOXML mutation requires explicit writeback mapping", "target": "MIGRATE_TO_WRITEBACK_ADAPTER"},
+    {"component": "OpenXML demotion helpers", "reason": "three deferred Demote* operations mutate Slim state", "target": "MIGRATE_TO_COMPATIBILITY_CONTEXT"},
+    {"component": "Tests and fixture builders", "reason": "mixed legacy, policy, demotion, and fixture responsibilities", "target": "REPLACE_WITH_TEST_FIXTURE_BUILDER"}
+  ],
+  "migratedSourceOnly": false,
+  "selectionFindings": [
+    {"component": "SourceFactsBuilder", "decision": "DEFER", "reason": "current FromParagraph reads Slim TableRole and numbering state; SourceParagraph does not yet carry an equivalent table-role fact without crossing ARCH-4D2 boundaries"},
+    {"component": "DocumentStructureEvidence", "decision": "DEFER", "reason": "some facts are source-backed, but all current production callers still provide Slim and migration would require a broader route cutover"},
+    {"component": "EvaluationAnchorResolver", "decision": "DEFER", "reason": "reads InTableOfContents in addition to text/order; that is compatibility/TOC state, not source-only input"}
+  ],
+  "normalAuthoritySlimRefs": 0,
+  "newSlimDependencies": 0,
+  "sourceIdentityDelta": 0,
+  "duplicateTextCollapse": false,
+  "sourceFactDelta": 0,
+  "candidateDelta": 0,
+  "roleDelta": 0,
+  "scoreDelta": 0,
+  "levelDelta": 0,
+  "routeDelta": 0,
+  "legacyApiCallersBefore": 170,
+  "legacyApiCallersAfter": 170,
+  "productionFilesWithSlimReferencesBefore": 75,
+  "productionFilesWithSlimReferencesAfter": 75,
+  "testFilesWithSlimReferencesBefore": 95,
+  "testFilesWithSlimReferencesAfter": 95,
+  "providerCalls": 0,
+  "productionBehaviorChanged": false,
+  "focusedPass": "N/A - no migration performed",
+  "fRegressionPass": "2/2 PASS (existing authority)",
+  "releaseBuildPass": "PASS",
+  "nextSafeWave": "Introduce an explicit SourceFactsBuilder/source-paragraph boundary only after equivalent TableRole/numbering ownership is resolved; do not force a Slim removal in ARCH-4L"
+}
