@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "span_production_canary_final_offline_closure",
+  "runScope": "existing_canary_only",
+  "providerCallsThisTask": 0,
+  "totalProviderRuns": 1,
+  "productionCodeChanged": false,
+  "remediationPerformed": false,
+  "artifactGap": {
+    "PDF_STAGE_EVAL_PERSISTS_SPAN_LANE": false,
+    "PROPOSAL_RESOLUTION_ITEMS_IN_MEMORY": true,
+    "PROPOSAL_RESOLUTION_ITEMS_PERSISTED": false,
+    "reason": "ShowRawOutput=false"
+  },
+  "role": {
+    "rawHeadingTopic": 144,
+    "rawBodySentence": 16,
+    "markerOnlyNeedsVisual": 8,
+    "postConflict": {
+      "headingTopic": 136,
+      "bodySentence": 16,
+      "uncertain": 8
+    },
+    "idLevelPostConflictMapping": "NOT_OBSERVABLE"
+  },
+  "spanWorkload": {
+    "expectedInputCount": 136,
+    "batchSize": 4,
+    "batchesRequired": 34,
+    "checkpointSpanBatches": 21,
+    "checkpointSpanInputs": 84,
+    "resolved": 81,
+    "null": 3,
+    "fullCompletion": "REFUTED"
+  },
+  "codePathConclusion": {
+    "normalValuePath": "IMPOSSIBLE",
+    "normalValuePathReason": "34 expected batches differ from 21 recorded batches",
+    "faultFallbackPath": "IMPOSSIBLE",
+    "faultFallbackPathReason": "roleAnalysis without spans cannot account for 79 validated and 69 product headings",
+    "spanTimeoutPath": "PROVEN"
+  },
+  "partialPreservation": {
+    "checkpointResolved": 81,
+    "unresolvedAfterTimeout": 79,
+    "routeAudit": {
+      "completed": 81,
+      "timedOut": 79
+    },
+    "counterClassification": "POST_SPAN_PRESERVATION_COUNTERS",
+    "notSemanticRoleExecutionCounters": true
+  },
+  "materialEffect": {
+    "R1_CHECKPOINT_PRESERVATION_EXERCISED": true,
+    "preservedSpans": 81,
+    "validatedAfterPreservation": 79,
+    "groundedAfterPreservation": 78,
+    "productHeadingsAfterPreservation": 69,
+    "H1_ARCHITECTURE_GAP": "PROVEN",
+    "H1_OPERATIONAL_IMPACT": "PROVEN"
+  },
+  "hypotheses": {
+    "CANARY_H2_BUDGET": "PROVEN_FOR_THIS_RUN",
+    "CANARY_H3_PROVIDER": "UNRESOLVED",
+    "CANARY_H4_SEQUENTIAL": "UNRESOLVED",
+    "FROZEN_004_H2_H3_H4": "UNRESOLVED",
+    "frozenHypothesisReason": "exact selection identity differs"
+  },
+  "status": "SPAN_CANARY_FINAL_OFFLINE_CLOSED",
+  "authorityNotes": [
+    "The 79/78/69 counters are downstream post-preservation counters, not semantic role execution totals.",
+    "No provider call was made by this closure task.",
+    "No production behavior, V1, V2, or V3 was modified."
+  ]
+}
