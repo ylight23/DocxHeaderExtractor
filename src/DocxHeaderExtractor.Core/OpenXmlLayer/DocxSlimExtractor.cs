@@ -48,6 +48,8 @@ public sealed class DocxSlimExtractor
         var derivedFeatures = new DocumentFeatureDeriver().Derive(sourceForFeatures);
         var bodySize = derivedFeatures.BodyFontSizePt ?? resolver.DefaultFontSizePt;
         foreach (var p in paragraphs) p.BodyFontSizePt = bodySize;
+        foreach (var p in paragraphs)
+            p.Corrupt = derivedFeatures.CorruptSourceIds.Contains(p.StableId);
 
         // Mục lục gõ tay phải nhận diện TRƯỚC hai lượt dưới: cả MarkParagraphsBeforeTables lẫn
         // PostProcess đều đọc InTableOfContents, đặt sau thì chúng đọc phải cờ chưa cập nhật.
@@ -160,7 +162,7 @@ public sealed class DocxSlimExtractor
             Index = index,
             StableId = walked.StableId,
             InContentControl = p.Ancestors<SdtElement>().Any(),
-            Corrupt = CorruptParagraphDetector.IsDoubled(text),
+            Corrupt = false,
             Text = text,
             TextSpans = textSpans,
             LineBreakOffsets = built.LineBreaks,

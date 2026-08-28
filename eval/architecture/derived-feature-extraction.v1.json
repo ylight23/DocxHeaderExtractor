@@ -12,12 +12,18 @@
       "oldWriter": "DocxSlimExtractor.EstimateBodyFontSize",
       "newWriter": "DocumentFeatureDeriver.Derive",
       "behaviorEquivalent": true
+    },
+    {
+      "field": "Corrupt",
+      "arch4aClassification": "DERIVED_FACT",
+      "oldWriter": "CorruptParagraphDetector/DocxSlimExtractor",
+      "newWriter": "DocumentFeatureDeriver.Derive",
+      "behaviorEquivalent": true
     }
   ],
   "derivedStatistics": ["FontSizeCharacterWeights"],
   "deferredDerivedFields": [
     "HasBuiltInHeadingStyle",
-    "Corrupt",
     "TableRole",
     "NumberingDepth",
     "NumberingStyleLevel",

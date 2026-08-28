@@ -43,6 +43,18 @@ public sealed class DocumentFeatureDeriverTests
     }
 
     [Fact]
+    public void Derives_corruption_from_source_text_without_policy_fields()
+    {
+        var source = SourceDocument("corrupt.docx",
+            [Paragraph("p1", "HHììnnhh 11.1 22", 11), Paragraph("p2", "Normal source", 11)]);
+
+        var features = new DocumentFeatureDeriver().Derive(source);
+
+        Assert.Contains("p1", features.CorruptSourceIds);
+        Assert.DoesNotContain("p2", features.CorruptSourceIds);
+    }
+
+    [Fact]
     public void Feature_deriver_has_no_policy_dependency()
     {
         var sourcePath = Path.Combine(FindRepositoryRoot(),
