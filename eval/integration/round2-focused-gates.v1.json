@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "round2_focused_gate_closure",
+  "task": "INT-2-CLOSE",
+  "status": "PASS",
+  "targetBranch": "integration/final-authority-clean-architecture",
+  "HEAD_VERIFIED": "92ed397e0538de06cbdee9d700f0640f3b4c2bb2",
+  "HEAD_EXPECTED": true,
+  "WORKTREE_CLEAN_BEFORE_ARTIFACT": true,
+  "FULL_SUITE_EXECUTED": false,
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_BEHAVIOR_CHANGED": false,
+  "GITHUB_CI_STATUS_OBSERVED": "NOT_OBSERVABLE",
+  "dotnet": {
+    "sdkVersion": "9.0.301",
+    "hostVersion": "9.0.6",
+    "rid": "win-x64",
+    "vstestVersion": "17.14.0"
+  },
+  "existingFocusedEvidence": {
+    "source": "local publish verification on target HEAD before INT-2-CLOSE artifact",
+    "command": "dotnet test tests\\DocxHeaderExtractor.Tests\\DocxHeaderExtractor.Tests.csproj -c Release --no-build --no-restore --filter \"FullyQualifiedName~RfcToc|FullyQualifiedName~AuthorityRoutePolicyContractTests|FullyQualifiedName~SourceFactsCompatibilityTests|FullyQualifiedName~NumberingStyleFeatureBoundaryTests|FullyQualifiedName~DemotionPolicyOwnershipTests\" --logger \"console;verbosity=minimal\"",
+    "observedResult": "18/18 PASS",
+    "executionRevision": "92ed397e0538de06cbdee9d700f0640f3b4c2bb2",
+    "rawLogLocation": "NOT_RETAINED",
+    "fqnReconciledFromCurrentAssembly": true,
+    "note": "The prior 18/18 aggregate is reused as publish evidence. Current assembly FQN enumeration is retained below so the gate mapping is explicit."
+  },
+  "gates": [
+    {
+      "gate": "RFC",
+      "required": "5/5 PASS",
+      "observedResult": "PASS",
+      "evidenceType": "REUSED_EXECUTION_EVIDENCE",
+      "executionRevision": "92ed397e0538de06cbdee9d700f0640f3b4c2bb2",
+      "tests": [
+        "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Dung_toc_dictionary_giu_so_muc_va_khop_nav_092",
+        "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_no_llm_khong_cat_lai_tieu_de_rfc_da_lay_tu_toc",
+        "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_khong_bam_nguong_cu_khi_cum_toc_thap_hon_van_khop_than_bai",
+        "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_bat_duoc_than_bai_sau_toc_duoi_acknowledgments_contributors_authors",
+        "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Toc_dictionary_tu_loai_khi_chi_co_than_bai_nhieu_so_muc"
+      ]
+    },
+    {
+      "gate": "RFC2",
+      "required": "67/67/0/1.0 PASS",
+      "observedResult": "PASS",
+      "evidenceType": "REUSED_ARTIFACT_INVARIANT",
+      "executionRevision": "92cd2d6d3cba29986858d30a91d5da0468044cff",
+      "authorityArtifact": "eval/verification/canonical-execution-environment-env2.v1.json",
+      "dictionaryEntries": 67,
+      "bodyAnchors": 67,
+      "tocOnlyEntries": 0,
+      "bodyAnchorRatio": 1.0,
+      "tests": []
+    },
+    {
+      "gate": "MCP",
+      "required": "PASS",
+      "observedResult": "7/7 PASS",
+      "evidenceType": "EXECUTED_IN_INT_2_CLOSE",
+      "executionRevision": "92ed397e0538de06cbdee9d700f0640f3b4c2bb2",
+      "command": "dotnet test tests\\DocxHeaderExtractor.Tests\\DocxHeaderExtractor.Tests.csproj -c Release --no-build --no-restore --filter \"FullyQualifiedName~Mcp\" --logger \"console;verbosity=minimal\"",
+      "tests": [
+        "DocxHeaderExtractor.Tests.McpPathPolicyTests.Resolves_relative_file_inside_allowed_root",
+        "DocxHeaderExtractor.Tests.McpPathPolicyTests.Rejects_path_traversal_outside_allowed_root",
+        "DocxHeaderExtractor.Tests.McpPathPolicyTests.Rejects_file_over_size_limit",
+        "DocxHeaderExtractor.Tests.McpPathPolicyTests.Windows_root_comparison_respects_directory_boundary(candidate: \"C:\\\\safe\\\\file.docx\", root: \"C:\\\\safe\", expected: True)",
+        "DocxHeaderExtractor.Tests.McpPathPolicyTests.Windows_root_comparison_respects_directory_boundary(candidate: \"C:\\\\safe-other\\\\file.docx\", root: \"C:\\\\safe\", expected: False)",
+        "DocxHeaderExtractor.Tests.McpContractSerializationTests.Pending_job_keeps_required_nullable_fields_in_structured_output",
+        "DocxHeaderExtractor.Tests.McpStdioIntegrationTests.Stdio_server_advertises_only_the_three_read_only_tools"
+      ]
+    },
+    {
+      "gate": "F",
+      "required": "2/2 PASS",
+      "observedResult": "PASS",
+      "evidenceType": "REUSED_EXECUTION_EVIDENCE",
+      "executionRevision": "92ed397e0538de06cbdee9d700f0640f3b4c2bb2",
+      "tests": [
+        "DocxHeaderExtractor.Tests.PdfAccuracyRegressionHarnessContractProbe.WriteContractArtifact",
+        "DocxHeaderExtractor.Tests.PdfAccuracyRegressionHarnessContractProbe.ContractInvariantsHold"
+      ]
+    },
+    {
+      "gate": "ARCH4P",
+      "required": "PASS",
+      "observedResult": "PASS",
+      "evidenceType": "REUSED_EXECUTION_EVIDENCE",
+      "executionRevision": "92ed397e0538de06cbdee9d700f0640f3b4c2bb2",
+      "tests": [
+        "DocxHeaderExtractor.Tests.NumberingStyleFeatureBoundaryTests.Built_in_style_identity_is_pure_style_metadata(styleName: \"Heading 1\", styleId: \"Heading1\", expectedLevel: 1)",
+        "DocxHeaderExtractor.Tests.NumberingStyleFeatureBoundaryTests.Built_in_style_identity_is_pure_style_metadata(styleName: \"Title\", styleId: \"Title\", expectedLevel: 1)",
+        "DocxHeaderExtractor.Tests.NumberingStyleFeatureBoundaryTests.Built_in_style_identity_is_pure_style_metadata(styleName: \"Subtitle\", styleId: \"Subtitle\", expectedLevel: 2)",
+        "DocxHeaderExtractor.Tests.NumberingStyleFeatureBoundaryTests.Built_in_style_identity_is_pure_style_metadata(styleName: \"Custom Heading\", styleId: \"CustomHeading\", expectedLevel: null)",
+        "DocxHeaderExtractor.Tests.NumberingStyleFeatureBoundaryTests.Features_preserve_source_identity_and_numbering_style_values",
+        "DocxHeaderExtractor.Tests.NumberingStyleFeatureBoundaryTests.Features_do_not_expose_policy_or_demotion_fields"
+      ]
+    },
+    {
+      "gate": "ARCH4Q",
+      "required": "PASS",
+      "observedResult": "PASS",
+      "evidenceType": "REUSED_EXECUTION_EVIDENCE",
+      "executionRevision": "92ed397e0538de06cbdee9d700f0640f3b4c2bb2",
+      "tests": [
+        "DocxHeaderExtractor.Tests.NumberingStyleFeatureBoundaryTests.Built_in_style_identity_is_pure_style_metadata(styleName: \"Heading 1\", styleId: \"Heading1\", expectedLevel: 1)",
+        "DocxHeaderExtractor.Tests.NumberingStyleFeatureBoundaryTests.Built_in_style_identity_is_pure_style_metadata(styleName: \"Title\", styleId: \"Title\", expectedLevel: 1)",
+        "DocxHeaderExtractor.Tests.NumberingStyleFeatureBoundaryTests.Built_in_style_identity_is_pure_style_metadata(styleName: \"Subtitle\", styleId: \"Subtitle\", expectedLevel: 2)",
+        "DocxHeaderExtractor.Tests.NumberingStyleFeatureBoundaryTests.Built_in_style_identity_is_pure_style_metadata(styleName: \"Custom Heading\", styleId: \"CustomHeading\", expectedLevel: null)"
+      ],
+      "authorityArtifact": "eval/architecture/builtin-heading-style-ownership.v1.json"
+    },
+    {
+      "gate": "ARCH4R",
+      "required": "PASS",
+      "observedResult": "PASS",
+      "evidenceType": "REUSED_EXECUTION_EVIDENCE",
+      "executionRevision": "92ed397e0538de06cbdee9d700f0640f3b4c2bb2",
+      "tests": [
+        "DocxHeaderExtractor.Tests.DemotionPolicyOwnershipTests.Ownership_artifact_resolves_all_three_operations_without_moving_them",
+        "DocxHeaderExtractor.Tests.DemotionPolicyOwnershipTests.Frozen_order_and_behavior_deltas_are_zero",
+        "DocxHeaderExtractor.Tests.DemotionPolicyOwnershipTests.Demotion_ownership_does_not_import_forbidden_layers"
+      ]
+    },
+    {
+      "gate": "Release",
+      "required": "PASS",
+      "observedResult": "PASS",
+      "evidenceType": "REUSED_EXECUTION_EVIDENCE",
+      "executionRevision": "92ed397e0538de06cbdee9d700f0640f3b4c2bb2",
+      "command": "dotnet build DocxHeaderExtractor.sln -c Release --no-restore",
+      "errors": 0,
+      "warnings": "EXISTING_WARNINGS"
+    }
+  ],
+  "additionalFqnInventoryFromCurrentAssembly": {
+    "command": "dotnet test tests\\DocxHeaderExtractor.Tests\\DocxHeaderExtractor.Tests.csproj -c Release --no-build --no-restore --filter \"FullyQualifiedName~RfcToc|FullyQualifiedName~AuthorityRoutePolicyContractTests|FullyQualifiedName~SourceFactsCompatibilityTests|FullyQualifiedName~NumberingStyleFeatureBoundaryTests|FullyQualifiedName~DemotionPolicyOwnershipTests|FullyQualifiedName~PdfAccuracyRegressionHarnessContractProbe\" --list-tests",
+    "matchedTests": 26,
+    "notExecuted": true,
+    "extraRfcDiagnosticTestsListedButNotCountedInRfc5Gate": [
+      "DocxHeaderExtractor.Tests.RfcTocDirectAnalyzerSemanticTests.Rfc_093_direct_analyzer_preserves_toc_semantics",
+      "DocxHeaderExtractor.Tests.RfcTocFirstRejectDiagnosticTests.Rfc_092_first_reject_diagnostic_is_offline_and_deterministic",
+      "DocxHeaderExtractor.Tests.RfcTocOccurrenceIndexDiagnosisTests.Rfc_092_occurrence_index_spaces_are_audited_without_remediation",
+      "DocxHeaderExtractor.Tests.RfcTocResidualSemanticDiagnosisTests.Capture_rfc5_residuals_without_changing_production_or_expectations"
+    ],
+    "contractDraftAuthorityRouteTestsListed": 3,
+    "sourceFactsCompatibilityTestsListed": 3,
+    "numberingStyleBoundaryTestsListed": 6,
+    "demotionOwnershipTestsListed": 3,
+    "fRegressionTestsListed": 2
+  },
+  "summary": {
+    "RFC": "5/5 PASS",
+    "RFC2": "67/67/0/1.0 PASS",
+    "MCP": "7/7 PASS",
+    "F": "2/2 PASS",
+    "ARCH4P": "PASS",
+    "ARCH4Q": "PASS",
+    "ARCH4R": "PASS",
+    "Release": "PASS",
+    "INT_2_CLOSE_READY_FOR_INT_3": true
+  }
+}
