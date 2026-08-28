@@ -10,7 +10,7 @@ namespace DocxHeaderExtractor.Core.Eval;
 /// </summary>
 public static class EvaluationAnchorResolver
 {
-    public static ResolvedEvaluationKey Resolve(AnswerKey key, IReadOnlyList<SlimParagraph> paragraphs)
+    public static ResolvedEvaluationKey Resolve(AnswerKey key, IReadOnlyList<SourceParagraph> paragraphs)
     {
         var used = new HashSet<int>();
         var audit = new List<EvaluationAnchorResolution>();
@@ -27,12 +27,12 @@ public static class EvaluationAnchorResolver
 
             var expected = Canonical(entry.Text);
             var candidates = paragraphs
-                .Where(paragraph => !used.Contains(paragraph.Index))
+                .Where(paragraph => !used.Contains(paragraph.SourceOrdinal))
                 .Where(paragraph => !paragraph.InTableOfContents)
                 .Where(paragraph => Canonical(paragraph.Text).Contains(expected, StringComparison.Ordinal))
                 // The reviewed key is in document order.  Choosing the next unused occurrence
                 // keeps a duplicate title source-derived; old paragraph indexes are stale here.
-                .OrderBy(paragraph => paragraph.Index)
+                .OrderBy(paragraph => paragraph.SourceOrdinal)
                 .ToArray();
             var chosen = candidates.FirstOrDefault();
             if (chosen is null)
@@ -42,10 +42,10 @@ public static class EvaluationAnchorResolver
                 continue;
             }
 
-            used.Add(chosen.Index);
-            entries.Add(entry with { Index = chosen.Index, StableId = null });
-            audit.Add(new EvaluationAnchorResolution(entry.Text, entry.Index, chosen.Index,
-                "resolved", "canonical-title+ordered-occurrence", chosen.StableId, candidates.Length));
+            used.Add(chosen.SourceOrdinal);
+            entries.Add(entry with { Index = chosen.SourceOrdinal, StableId = null });
+            audit.Add(new EvaluationAnchorResolution(entry.Text, entry.Index, chosen.SourceOrdinal,
+                "resolved", "canonical-title+ordered-occurrence", chosen.SourceId, candidates.Length));
         }
 
         var unresolved = audit.Count(item => item.Status == "unresolved" && !string.IsNullOrWhiteSpace(item.Title));

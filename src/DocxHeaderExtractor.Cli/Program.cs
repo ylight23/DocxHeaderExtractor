@@ -395,22 +395,14 @@ static async Task<int> RunReviewAsync(CommandLineOptions o, CancellationToken ct
     foreach (var file in files)
     {
         if (!o.Quiet) Console.Error.WriteLine($"» Review: {Path.GetFileName(file)}");
-        var conversion = LegacyDocConverter.EnsureDocx(file);
-        try
-        {
-            var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(conversion.Path);
-            var agentRun = await harness.RunAsync(AgentRequest(file, o), ct);
-            var outline = agentRun.Outline;
-            var bundle = ReviewBundle.Create(outline, slim);
-            var output = o.OutputPath ?? Path.ChangeExtension(file, ".review.json");
-            await File.WriteAllTextAsync(output, bundle.ToJson(), new UTF8Encoding(false), ct);
-            if (!o.Quiet)
-                Console.Error.WriteLine($"  Đã ghi {bundle.Rows.Count} paragraph cần duyệt: {output}");
-        }
-        finally
-        {
-            LegacyDocConverter.Cleanup(conversion);
-        }
+    var source = new AuthorityEvaluationSourceReader(o.Pipeline.Extraction).Read(file).Document;
+    var agentRun = await harness.RunAsync(AgentRequest(file, o), ct);
+    var outline = agentRun.Outline;
+    var bundle = ReviewBundle.Create(outline, source);
+    var output = o.OutputPath ?? Path.ChangeExtension(file, ".review.json");
+    await File.WriteAllTextAsync(output, bundle.ToJson(), new UTF8Encoding(false), ct);
+    if (!o.Quiet)
+        Console.Error.WriteLine($"  Đã ghi {bundle.Rows.Count} paragraph cần duyệt: {output}");
     }
     return 0;
 }
@@ -480,17 +472,9 @@ static int RunTocKeys(CommandLineOptions o)
     var results = new List<TocKeyResult>();
     foreach (var file in files)
     {
-        var conversion = LegacyDocConverter.EnsureDocx(file);
-        try
-        {
-            var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(conversion.Path);
-            var result = TocAnswerKeyGenerator.Generate(slim, o.TocMatchThreshold);
-            results.Add(result with { FileName = Path.GetFileName(file) });
-        }
-        finally
-        {
-            LegacyDocConverter.Cleanup(conversion);
-        }
+        var source = new AuthorityEvaluationSourceReader(o.Pipeline.Extraction).Read(file).Document;
+        var result = TocAnswerKeyGenerator.Generate(source, o.TocMatchThreshold);
+        results.Add(result with { FileName = Path.GetFileName(file) });
     }
 
     var accepted = 0;
@@ -1162,8 +1146,8 @@ static async Task<int> RunKeyRebaseAsync(CommandLineOptions o, CancellationToken
     var documentPath = Path.GetFullPath(o.Inputs[0]);
     var sourceKeyPath = Path.GetFullPath(o.PdfVisualRepresentationGoldPath);
     var rawKey = AnswerKey.Load(sourceKeyPath);
-    var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(documentPath);
-    var resolved = EvaluationAnchorResolver.Resolve(rawKey, slim.Paragraphs);
+    var source = new AuthorityEvaluationSourceReader(o.Pipeline.Extraction).Read(documentPath).Document;
+    var resolved = EvaluationAnchorResolver.Resolve(rawKey, source.Paragraphs);
     var hash = Convert.ToHexString(SHA256.HashData(await File.ReadAllBytesAsync(documentPath, ct))).ToLowerInvariant();
     var goldVersion = o.GoldVersion ?? $"{Path.GetFileNameWithoutExtension(sourceKeyPath)}-rebased";
     var provenance = new

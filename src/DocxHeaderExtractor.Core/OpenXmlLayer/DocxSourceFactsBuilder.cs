@@ -64,6 +64,7 @@ internal static class DocxSourceFactsBuilder
             TableDepth = paragraph.TableDepth,
             SectionIndex = paragraph.SectionIndex,
         },
+        InTableOfContents = paragraph.InTableOfContents,
     };
 
     private static ReadOnlyCollection<T> ReadOnly<T>(IEnumerable<T> values) =>

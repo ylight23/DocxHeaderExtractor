@@ -336,18 +336,19 @@ public static class BenchDocumentFactory
 
         // Chỉ số đoạn do chính bộ đọc gán — lấy lại từ file vừa ghi thay vì tự đếm,
         // để đáp án không lệch nếu cách đánh chỉ số thay đổi.
-        var slim = new OpenXmlLayer.DocxSlimExtractor(new OpenXmlLayer.ExtractionOptions()).Extract(docxPath);
+        var source = new AuthorityEvaluationSourceReader(new OpenXmlLayer.ExtractionOptions())
+            .Read(docxPath).Document;
         var expected = doc.Paragraphs.Where(p => p.Level is not null).ToList();
 
         var answers = new List<(int, int, string)>();
         var used = new HashSet<int>();
         foreach (var want in expected)
         {
-            var hit = slim.Paragraphs.FirstOrDefault(p => p.Text == want.Text && !used.Contains(p.Index))
+            var hit = source.Paragraphs.FirstOrDefault(p => p.Text == want.Text && !used.Contains(p.SourceOrdinal))
                 ?? throw new InvalidOperationException(
                     $"{doc.Name}: không tìm thấy đoạn \"{want.Text}\" trong file vừa sinh.");
-            used.Add(hit.Index);
-            answers.Add((hit.Index, want.Level!.Value, want.Text));
+            used.Add(hit.SourceOrdinal);
+            answers.Add((hit.SourceOrdinal, want.Level!.Value, want.Text));
         }
 
         File.WriteAllText(

@@ -18,19 +18,19 @@ public sealed class ReviewBundle
     public DateTimeOffset CreatedUtc { get; init; } = DateTimeOffset.UtcNow;
     public required IReadOnlyList<ReviewRow> Rows { get; init; }
 
-    public static ReviewBundle Create(DocumentOutline outline, SlimDocument document)
+    public static ReviewBundle Create(DocumentOutline outline, SourceDocument document)
     {
         var headings = outline.Headings.ToDictionary(h => h.Index);
         return new ReviewBundle
         {
             SourceFile = outline.File,
             Rows = document.Paragraphs
-                .Where(p => p.Role != ParagraphRole.Empty)
-                .Select(p => headings.TryGetValue(p.Index, out var heading)
+                .Where(p => !string.IsNullOrWhiteSpace(p.Text))
+                .Select(p => headings.TryGetValue(p.SourceOrdinal, out var heading)
                     ? new ReviewRow
                     {
-                        StableId = p.StableId,
-                        Index = p.Index,
+                        StableId = p.SourceId,
+                        Index = p.SourceOrdinal,
                         Text = p.Text,
                         PredictedLevel = heading.Level,
                         Source = heading.Source.ToString(),
@@ -44,8 +44,8 @@ public sealed class ReviewBundle
                     }
                     : new ReviewRow
                     {
-                        StableId = p.StableId,
-                        Index = p.Index,
+                        StableId = p.SourceId,
+                        Index = p.SourceOrdinal,
                         Text = p.Text,
                         PredictedLevel = 0,
                     })

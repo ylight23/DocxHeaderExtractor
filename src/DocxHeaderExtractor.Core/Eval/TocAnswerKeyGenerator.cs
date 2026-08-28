@@ -62,7 +62,7 @@ public static class TocAnswerKeyGenerator
 
     public const double DefaultMatchThreshold = 0.80;
 
-    public static TocKeyResult Generate(SlimDocument document, double matchThreshold = DefaultMatchThreshold)
+    public static TocKeyResult Generate(SourceDocument document, double matchThreshold = DefaultMatchThreshold)
     {
         // depth: -1 nghĩa là hai mục lục trùng chuẩn hoá nhưng khác cấp -> không phân định được, bỏ.
         var tocDepthByKey = new Dictionary<string, int>(StringComparer.Ordinal);
@@ -81,7 +81,7 @@ public static class TocAnswerKeyGenerator
             // không để lại số nào trong TEXT của mục lục, nhưng NumberLabel vẫn đúng — đo được trên
             // tài liệu thật: TableOfContentsAnchor.DepthOf mặc định cả 14 mục về cấp 1 vì rơi vào
             // nhánh "không có ký hiệu số trong text -> cấp 1", trong khi NumberLabel ghi rõ "1.1.1".
-            var depth = TableOfContentsAnchor.DepthFromNumberLabel(p.NumberLabel) ?? TableOfContentsAnchor.DepthOf(p.Text);
+            var depth = TableOfContentsAnchor.DepthFromNumberLabel(p.Numbering.NumberLabel) ?? TableOfContentsAnchor.DepthOf(p.Text);
             if (depth is not { } d) continue;
             var key = TableOfContentsAnchor.Normalize(p.Text);
             if (key.Length < 4) continue;
@@ -105,7 +105,7 @@ public static class TocAnswerKeyGenerator
 
         // Chỉ mục thân bài: chuẩn hoá -> danh sách đoạn khớp. KHÔNG lọc theo IsCandidate/Role —
         // TOC phải được đối chiếu với nguồn độc lập với phán đoán của pipeline.
-        var bodyByKey = new Dictionary<string, List<SlimParagraph>>(StringComparer.Ordinal);
+        var bodyByKey = new Dictionary<string, List<SourceParagraph>>(StringComparer.Ordinal);
         foreach (var p in document.Paragraphs)
         {
             if (p.InTableOfContents) continue;
@@ -134,7 +134,7 @@ public static class TocAnswerKeyGenerator
                 continue;
             }
             var p = candidates[0];
-            matches.Add(new TocKeyEntry(p.StableId, Math.Clamp(depth, 1, 9), p.Text, tocRawTextByKey[key]));
+            matches.Add(new TocKeyEntry(p.SourceId, Math.Clamp(depth, 1, 9), p.Text, tocRawTextByKey[key]));
         }
 
         var ratio = (double)matches.Count / usableEntries.Count;
