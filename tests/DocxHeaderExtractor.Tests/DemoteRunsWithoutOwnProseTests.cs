@@ -16,7 +16,9 @@ public sealed class DemoteRunsWithoutOwnProseTests
             P(3, "Advance Payment Security", style: "SPDForms1", role: ParagraphRole.HeadingCandidate, score: 0.65, bold: true, center: true),
         };
 
-        DocxSlimExtractor.DemoteRunsWithoutOwnProse(ps, structuralMarkers: 5);
+        var state = State(ps);
+        DocxSlimExtractor.DemoteRunsWithoutOwnProse(state.Paragraphs, structuralMarkers: 5);
+        state.ApplyPolicyStateTo(ps);
 
         Assert.All(ps, p => Assert.True(p.IsCandidate));
     }
@@ -30,7 +32,9 @@ public sealed class DemoteRunsWithoutOwnProseTests
             P(1, "Nguyễn Văn A", role: ParagraphRole.HeadingCandidate, score: 0.45),
         };
 
-        DocxSlimExtractor.DemoteRunsWithoutOwnProse(ps, structuralMarkers: 5);
+        var state = State(ps);
+        DocxSlimExtractor.DemoteRunsWithoutOwnProse(state.Paragraphs, structuralMarkers: 5);
+        state.ApplyPolicyStateTo(ps);
 
         Assert.Equal(ParagraphRole.Normal, ps[0].Role);
         Assert.True(ps[1].IsCandidate);
@@ -56,4 +60,19 @@ public sealed class DemoteRunsWithoutOwnProseTests
         Role = role,
         Score = score,
     };
+
+    private static OrderedDemotionState State(List<SlimParagraph> paragraphs)
+    {
+        var document = new SlimDocument
+        {
+            FileName = "demotion-test.docx",
+            SourcePath = "demotion-test.docx",
+            Paragraphs = paragraphs,
+        }.Build();
+        var source = SlimSourceFactsAdapter.Adapt(document);
+        return OrderedDemotionState.Create(
+            paragraphs,
+            source,
+            NumberingStyleFeatures.FromSourceDocument(source));
+    }
 }

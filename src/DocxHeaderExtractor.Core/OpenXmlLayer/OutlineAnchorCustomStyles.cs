@@ -40,6 +40,25 @@ internal static class OutlineAnchorCustomStyles
         ];
     }
 
+    public static HashSet<string> Find(IReadOnlyList<OrderedDemotionParagraph> paragraphs)
+    {
+        var anchored = new List<OrderedDemotionParagraph>();
+        var hasAnchor = false;
+
+        foreach (var p in paragraphs.OrderBy(p => p.Index))
+        {
+            if (p.OutlineLevel is not null && !p.InTableOfContents)
+                hasAnchor = true;
+            if (!hasAnchor || !CanContribute(p)) continue;
+            anchored.Add(p);
+        }
+
+        return [.. anchored
+            .GroupBy(p => p.StyleId!, StringComparer.OrdinalIgnoreCase)
+            .Where(g => g.Count() >= MinimumUses && g.Average(p => p.Text.Length) < MaxAverageLength)
+            .Select(g => g.Key)];
+    }
+
     public static HashSet<string> FindTableStyles(IReadOnlyList<SlimParagraph> paragraphs)
     {
         var anchored = new List<SlimParagraph>();
@@ -75,6 +94,15 @@ internal static class OutlineAnchorCustomStyles
         paragraph.StyleId is { Length: > 0 } styleId &&
         (stylesUnderOutlineAnchor.Contains(styleId) || LooksLikeSparseCustomHeading(paragraph));
 
+    public static bool IsAnchoredCustomStyle(
+        OrderedDemotionParagraph paragraph,
+        HashSet<string> stylesUnderOutlineAnchor) =>
+        paragraph.TableDepth == 0 &&
+        paragraph.OutlineLevel is null &&
+        !paragraph.TrustedHeadingStyle &&
+        paragraph.StyleId is { Length: > 0 } styleId &&
+        (stylesUnderOutlineAnchor.Contains(styleId) || LooksLikeSparseCustomHeading(paragraph));
+
     public static bool IsAnchoredTableCustomStyle(
         SlimParagraph paragraph,
         HashSet<string> tableStylesUnderOutlineAnchor) =>
@@ -89,6 +117,15 @@ internal static class OutlineAnchorCustomStyles
         p.TableDepth == 0 &&
         p.OutlineLevel is null &&
         !p.HasBuiltInHeadingStyle &&
+        !string.IsNullOrWhiteSpace(p.StyleId) &&
+        !string.IsNullOrWhiteSpace(p.Text) &&
+        !p.InTableOfContents &&
+        !p.Corrupt;
+
+    private static bool CanContribute(OrderedDemotionParagraph p) =>
+        p.TableDepth == 0 &&
+        p.OutlineLevel is null &&
+        !p.TrustedHeadingStyle &&
         !string.IsNullOrWhiteSpace(p.StyleId) &&
         !string.IsNullOrWhiteSpace(p.Text) &&
         !p.InTableOfContents &&
@@ -133,6 +170,14 @@ internal static class OutlineAnchorCustomStyles
         return HasHeadingFormat(paragraph);
     }
 
+    private static bool LooksLikeSparseCustomHeading(OrderedDemotionParagraph paragraph)
+    {
+        if (paragraph.StyleId is not { Length: > 0 } styleId || IsGenericBodyStyle(styleId))
+            return false;
+        if (!LooksLikeShortHeading(paragraph.Text)) return false;
+        return HasHeadingFormat(paragraph);
+    }
+
     private static bool HasHeadingFormat(SlimParagraph paragraph)
     {
         var fontLift = paragraph.FontSizePt is { } size && paragraph.BodyFontSizePt is { } body
@@ -141,6 +186,15 @@ internal static class OutlineAnchorCustomStyles
         var centered = string.Equals(paragraph.Alignment, "center", StringComparison.OrdinalIgnoreCase);
         var numbered = paragraph.NumberingId is not null || !string.IsNullOrWhiteSpace(paragraph.NumberLabel);
         return paragraph.Bold || centered || fontLift >= 1.5 || numbered;
+    }
+
+    private static bool HasHeadingFormat(OrderedDemotionParagraph paragraph)
+    {
+        var fontLift = paragraph.Style.FontSizePt is { } size && paragraph.BodyFontSizePt is { } body
+            ? size - body
+            : 0;
+        var centered = string.Equals(paragraph.Style.Alignment, "center", StringComparison.OrdinalIgnoreCase);
+        return paragraph.Bold || centered || fontLift >= 1.5 || paragraph.HasNumbering;
     }
 
     private static bool LooksLikeHeadingStyleGroup(IEnumerable<SlimParagraph> paragraphs)
