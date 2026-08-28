@@ -11,8 +11,8 @@
   "concurrencyIsolation": "PASS",
   "productionCheckpointLifetime": "PASS",
   "detachedWriterSafe": "PASS",
-  "lateWriteAfterDeadline": "BLOCKED_UNTIL_DETACHED_WORK_QUIESCES",
-  "timeoutCleanupPolicy": "DEFERRED_UNTIL_DETACHED_LANE_COMPLETION",
+  "lateWriteAfterDeadline": "BLOCKED",
+  "timeoutCleanupPolicy": "CLOSE_ADMISSION_DRAIN_ACTIVE_WRITERS_THEN_CLEANUP",
   "immediateCompleteCleanup": "PASS",
   "diagnosticCheckpointBehaviorChanged": false,
   "providerCalls": 0,
@@ -22,9 +22,9 @@
   "diagnosticRawModelOutputDefault": false,
   "tests": {
     "focusedCheckpointAuthority": {
-      "passed": 22,
+      "passed": 29,
       "failed": 0,
-      "total": 22
+      "total": 29
     },
     "coreBuildNoRestore": "PASS",
     "cliAndWebNet9BuildNoRestore": "PASS",
@@ -36,7 +36,7 @@
     "nullCheckpointLegacyBehavior": "covered by existing A3 preservation tests",
     "completeLaneNoOutputChange": "covered by existing A3 preservation tests",
     "invalidSpanValidatorRejection": "covered by existing validator/replay tests",
-    "cleanupTerminalPaths": "scope cleanup is idempotent and exception-safe; production finally owns cleanup and defers detached cleanup",
+    "cleanupTerminalPaths": "scope cleanup is idempotent and exception-safe; production closes checkpoint admission, drains active writers, then cleans up without waiting for a provider that ignores cancellation",
     "concurrentRunIsolation": "unique scope path test PASS"
   },
   "notes": [

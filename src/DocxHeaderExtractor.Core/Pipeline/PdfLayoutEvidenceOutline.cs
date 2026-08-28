@@ -548,7 +548,7 @@ public static class PdfLayoutEvidenceOutline
     /// only used after PDF selection to map an accepted PDF block to a stable writeback span.
     /// This method is intentionally not called by <see cref="HeaderExtractionPipeline"/>.
     /// </summary>
-    public static async Task<PdfTextbookOutlineResult> TryBuildBroadAuditWithAnalystAsync(
+    public static Task<PdfTextbookOutlineResult> TryBuildBroadAuditWithAnalystAsync(
         string originalInputPath,
         SlimDocument slim,
         IHeaderClassifier analyst,
@@ -565,7 +565,32 @@ public static class PdfLayoutEvidenceOutline
         string? checkpointPath = null,
         bool resume = false,
         int visualMaxConcurrency = 1,
-        bool includeSemanticHierarchyFallback = true)
+        bool includeSemanticHierarchyFallback = true) =>
+        TryBuildBroadAuditWithAnalystCoreAsync(
+            originalInputPath, slim, analyst, maximumAnalystBlocks, includeAllVisualStyles,
+            includeSupplementCandidates, visualAnalyst, visualDpi, maximumVisualRegions, visualProducer,
+            scheduleVisualRegions, ct, semanticLaneOptions, checkpointPath, resume, visualMaxConcurrency,
+            includeSemanticHierarchyFallback, null);
+
+    internal static async Task<PdfTextbookOutlineResult> TryBuildBroadAuditWithAnalystCoreAsync(
+        string originalInputPath,
+        SlimDocument slim,
+        IHeaderClassifier analyst,
+        int maximumAnalystBlocks = 0,
+        bool includeAllVisualStyles = false,
+        bool includeSupplementCandidates = false,
+        IPdfVisualQuestion? visualAnalyst = null,
+        int visualDpi = 120,
+        int maximumVisualRegions = 0,
+        string? visualProducer = null,
+        bool scheduleVisualRegions = false,
+        CancellationToken ct = default,
+        SemanticLaneOptions? semanticLaneOptions = null,
+        string? checkpointPath = null,
+        bool resume = false,
+        int visualMaxConcurrency = 1,
+        bool includeSemanticHierarchyFallback = true,
+        PdfStageCheckpoint? checkpointInstance = null)
     {
         if (maximumAnalystBlocks < 0)
             return PdfTextbookOutlineResult.NotApplicable("invalid-analyst-block-budget");
@@ -573,9 +598,9 @@ public static class PdfLayoutEvidenceOutline
         var context = TryBuildBroadAuditContext(
             originalInputPath, includeAllVisualStyles, includeSupplementCandidates, out var reason);
         if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
-        var checkpoint = string.IsNullOrWhiteSpace(checkpointPath)
+        var checkpoint = checkpointInstance ?? (string.IsNullOrWhiteSpace(checkpointPath)
             ? null
-            : new PdfStageCheckpoint(checkpointPath, resume, Path.GetFileName(context.Pdf));
+            : new PdfStageCheckpoint(checkpointPath, resume, Path.GetFileName(context.Pdf)));
 
         // Visual scheduling is source-fact-only: it must not wait for a slow semantic batch.
         // Its own canonical source validator remains the authority before any heading is emitted.

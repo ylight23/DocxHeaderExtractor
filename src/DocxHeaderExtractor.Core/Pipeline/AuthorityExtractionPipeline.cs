@@ -55,17 +55,26 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             if (!string.IsNullOrWhiteSpace(pdf) && analyst is not null)
             {
                 await using var productionCheckpoint = ProductionCheckpointScope.Create();
-                var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
-                    inputPath, slim, analyst,
-                    maximumAnalystBlocks: _options.PdfFirstAnalystBlocks,
-                    includeAllVisualStyles: true,
-                    includeSupplementCandidates: true,
-                    maximumVisualRegions: _options.PdfFirstVisualRegions,
-                    visualAnalyst: null,
-                    ct: ct,
-                    checkpointPath: productionCheckpoint.CheckpointPath,
-                    resume: false);
-                productionCheckpoint.DeferCleanup(result.DetachedTasks);
+                await using var checkpoint = new PdfStageCheckpoint(
+                    productionCheckpoint.CheckpointPath, resume: false, Path.GetFileName(pdf));
+                PdfTextbookOutlineResult result;
+                try
+                {
+                    result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystCoreAsync(
+                        inputPath, slim, analyst,
+                        maximumAnalystBlocks: _options.PdfFirstAnalystBlocks,
+                        includeAllVisualStyles: true,
+                        includeSupplementCandidates: true,
+                        maximumVisualRegions: _options.PdfFirstVisualRegions,
+                        visualAnalyst: null,
+                        ct: ct,
+                        resume: false,
+                        checkpointInstance: checkpoint);
+                }
+                finally
+                {
+                    await checkpoint.StopAcceptingWritesAndDrainAsync();
+                }
                 rawHeadings = result.Headings;
                 audit = ApplyQuarantine(result.Audit, rawHeadings, quarantinedIndexes, out rawHeadings);
                 route = "pdf-authority-v1";

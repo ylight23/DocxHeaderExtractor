@@ -59,6 +59,9 @@ public sealed class ProductionCheckpointScopeTests
     {
         await using var scope = ProductionCheckpointScope.Create();
         await using var checkpoint = new PdfStageCheckpoint(scope.CheckpointPath, false, "test.pdf");
+        await checkpoint.RecordSpanBatchAsync(
+            [("b0", 1, "l0", (IReadOnlyList<string>)["l0"], new TextOffsetSpan(0, 1))],
+            null, CancellationToken.None);
         var releaseWriter = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
         var writerFault = new TaskCompletionSource<Exception?>(TaskCreationOptions.RunContinuationsAsynchronously);
 
@@ -82,12 +85,16 @@ public sealed class ProductionCheckpointScopeTests
 
         Assert.True(lane.TimedOut);
         Assert.NotNull(lane.DetachedTask);
-        scope.DeferCleanup([lane.DetachedTask!]);
+        var directory = scope.DirectoryPath;
+        await checkpoint.StopAcceptingWritesAndDrainAsync();
+        await checkpoint.DisposeAsync();
+        await scope.DisposeAsync();
+        Assert.False(Directory.Exists(directory));
+
+        // The detached provider is still allowed to complete, but its late write is blocked.
         releaseWriter.SetResult();
         await lane.DetachedTask!;
         Assert.Null(await writerFault.Task);
-        Assert.True(File.Exists(scope.CheckpointPath));
-        await scope.WaitForCleanupAsync();
-        Assert.False(Directory.Exists(scope.DirectoryPath));
+        Assert.False(File.Exists(Path.Combine(directory, "span-checkpoint.jsonl")));
     }
 }

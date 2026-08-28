@@ -12,14 +12,20 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
     private readonly string _path;
     private readonly string _documentIdentity;
     private readonly SemaphoreSlim _write = new(1, 1);
+    private readonly object _writeState = new();
+    private TaskCompletionSource _writesIdle = CompletedSource();
     private readonly HashSet<string> _completedVisualRegions = new(StringComparer.Ordinal);
     private readonly List<PdfVisualRecoveryTrace> _completedVisualTraces = [];
     private readonly Dictionary<string, (PdfBlockRole Role, double Confidence, string Reason)> _semanticDecisions = new(StringComparer.Ordinal);
+    private int _activeWrites;
+    private bool _acceptWrites = true;
+    private int _disposed;
 
     public PdfStageCheckpoint(string path, bool resume, string documentIdentity)
     {
         _path = Path.GetFullPath(path);
         _documentIdentity = documentIdentity;
+        _writesIdle.TrySetResult();
         Directory.CreateDirectory(Path.GetDirectoryName(_path)!);
         if (!resume || !File.Exists(_path)) return;
 
@@ -241,6 +247,12 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
 
     private async Task AppendAsync(string lane, string identity, string status, object payload, CancellationToken ct)
     {
+        lock (_writeState)
+        {
+            if (!_acceptWrites) return;
+            if (_activeWrites++ == 0)
+                _writesIdle = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        }
         var line = JsonSerializer.Serialize(new { lane, identity = _documentIdentity + ":" + identity, status, completedAt = DateTimeOffset.UtcNow, payload });
         await _write.WaitAsync(ct);
         try
@@ -250,7 +262,36 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
         finally
         {
             _write.Release();
+            ExitWrite();
         }
+    }
+
+    /// <summary>Stops late writes and drains only writes already admitted to the checkpoint.</summary>
+    public async Task StopAcceptingWritesAndDrainAsync()
+    {
+        Task? idle;
+        lock (_writeState)
+        {
+            _acceptWrites = false;
+            idle = _activeWrites > 0 ? _writesIdle.Task : null;
+        }
+        if (idle is not null) await idle.ConfigureAwait(false);
+    }
+
+    private void ExitWrite()
+    {
+        lock (_writeState)
+        {
+            if (--_activeWrites == 0 && !_acceptWrites)
+                _writesIdle.TrySetResult();
+        }
+    }
+
+    private static TaskCompletionSource CompletedSource()
+    {
+        var source = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        source.SetResult();
+        return source;
     }
 
     private static string SpanOutcome(TextOffsetSpan? span, string? failureClass) =>
@@ -265,7 +306,8 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
 
     public ValueTask DisposeAsync()
     {
-        _write.Dispose();
+        if (Interlocked.Exchange(ref _disposed, 1) == 0)
+            _write.Dispose();
         return ValueTask.CompletedTask;
     }
 
