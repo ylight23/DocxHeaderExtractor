@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "full_suite_failure_triage_ledger",
+  "status": "EVIDENCE_INSUFFICIENT",
+  "input": {
+    "claimedFailureIdentityCount": 35,
+    "identitySetProvenance": "full-suite failure-set delta was reported as baseline-matching",
+    "availableInRepository": false,
+    "missingFields": [
+      "fullyQualifiedTestName",
+      "testFile",
+      "assertion",
+      "expected",
+      "actual",
+      "firstRelevantStackFrame"
+    ],
+    "availableEvidence": [
+      "exact failure count 35",
+      "baseline equality claim",
+      "provider calls 0",
+      "production code unchanged"
+    ]
+  },
+  "classificationSummary": {
+    "TOTAL": 35,
+    "STALE_TEST_EXPECTATION": 0,
+    "REAL_PRODUCTION_FAILURE": 0,
+    "DIAGNOSTIC_CONTRACT_MISMATCH": 0,
+    "LEGACY_ONLY_TEST": 0,
+    "ENVIRONMENT_DEPENDENT": 0,
+    "UNKNOWN": 35
+  },
+  "rootCauseGroups": [],
+  "failures": [],
+  "triageDecision": "BLOCKED_ON_OCCURRENCE_LEVEL_FAILURE_PACKET",
+  "reason": "Counts and baseline equality do not identify the 35 tests or their assertions. No failure was classified from aggregate evidence.",
+  "providerCalls": 0,
+  "productionCodeChanged": false,
+  "testExpectationsChanged": false,
+  "requiredNextArtifact": "A committed or supplied TRX/JSON packet containing the exact 35 failure identities and assertion details"
+}
