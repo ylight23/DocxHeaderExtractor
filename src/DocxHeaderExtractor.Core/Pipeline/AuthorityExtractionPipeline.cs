@@ -65,6 +65,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                     ct: ct,
                     checkpointPath: productionCheckpoint.CheckpointPath,
                     resume: false);
+                productionCheckpoint.DeferCleanup(result.DetachedTasks);
                 rawHeadings = result.Headings;
                 audit = ApplyQuarantine(result.Audit, rawHeadings, quarantinedIndexes, out rawHeadings);
                 route = "pdf-authority-v1";

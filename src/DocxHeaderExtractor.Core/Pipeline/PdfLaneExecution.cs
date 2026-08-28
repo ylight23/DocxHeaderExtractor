@@ -7,7 +7,11 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// </summary>
 internal static class PdfLaneExecution
 {
-    internal sealed record Result<T>(T? Value, bool TimedOut, bool Cancelled, Exception? Fault = null);
+    internal sealed record Result<T>(T? Value, bool TimedOut, bool Cancelled, Exception? Fault = null)
+    {
+        /// <summary>Work that outlived the hard deadline and may still touch its checkpoint.</summary>
+        public Task? DetachedTask { get; init; }
+    }
 
     public static async Task<Result<T>> RunAsync<T>(
         Func<CancellationToken, Task<T>> action,
@@ -38,6 +42,9 @@ internal static class PdfLaneExecution
         // Observe an eventual provider failure without retaining it as an unobserved task fault.
         _ = work.ContinueWith(task => _ = task.Exception,
             CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.Default);
-        return new Result<T>(default, !callerCancellation.IsCancellationRequested, callerCancellation.IsCancellationRequested);
+        return new Result<T>(default, !callerCancellation.IsCancellationRequested, callerCancellation.IsCancellationRequested)
+        {
+            DetachedTask = work,
+        };
     }
 }

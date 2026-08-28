@@ -11,6 +11,8 @@ public sealed record PdfTextbookOutlineResult(
     string Reason,
     RouteExecutionAudit? Audit = null)
 {
+    public IReadOnlyList<Task> DetachedTasks { get; init; } = [];
+
     public static PdfTextbookOutlineResult NotApplicable(string reason) => new([], reason);
 }
 

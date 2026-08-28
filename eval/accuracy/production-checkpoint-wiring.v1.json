@@ -1,5 +1,5 @@
 {
-  "status": "WIRED_FOCUSED_VERIFICATION_PASS",
+  "status": "DETACHED_WRITER_LIFETIME_PASS",
   "normalAuthorityCheckpoint": "ENABLED",
   "checkpointPolicy": "TEMP_PER_RUN",
   "checkpointOwner": "AuthorityExtractionPipeline",
@@ -9,6 +9,12 @@
   "validatorBypass": false,
   "cleanup": "PASS",
   "concurrencyIsolation": "PASS",
+  "productionCheckpointLifetime": "PASS",
+  "detachedWriterSafe": "PASS",
+  "lateWriteAfterDeadline": "BLOCKED_UNTIL_DETACHED_WORK_QUIESCES",
+  "timeoutCleanupPolicy": "DEFERRED_UNTIL_DETACHED_LANE_COMPLETION",
+  "immediateCompleteCleanup": "PASS",
+  "diagnosticCheckpointBehaviorChanged": false,
   "providerCalls": 0,
   "candidateBehaviorChanged": false,
   "timeoutChanged": false,
@@ -16,9 +22,9 @@
   "diagnosticRawModelOutputDefault": false,
   "tests": {
     "focusedCheckpointAuthority": {
-      "passed": 24,
+      "passed": 22,
       "failed": 0,
-      "total": 24
+      "total": 22
     },
     "coreBuildNoRestore": "PASS",
     "cliAndWebNet9BuildNoRestore": "PASS",
@@ -30,12 +36,12 @@
     "nullCheckpointLegacyBehavior": "covered by existing A3 preservation tests",
     "completeLaneNoOutputChange": "covered by existing A3 preservation tests",
     "invalidSpanValidatorRejection": "covered by existing validator/replay tests",
-    "cleanupTerminalPaths": "scope cleanup is idempotent and exception-safe; production finally owns cleanup",
+    "cleanupTerminalPaths": "scope cleanup is idempotent and exception-safe; production finally owns cleanup and defers detached cleanup",
     "concurrentRunIsolation": "unique scope path test PASS"
   },
   "notes": [
     "Production route is the only new checkpoint caller; diagnostic APIs remain explicit-path APIs.",
-    "PdfStageCheckpoint is disposed before the production-owned temp directory is removed.",
+    "A detached lane keeps the production-owned checkpoint directory alive until its task quiesces; complete lanes clean up immediately.",
     "No provider or model calls were made by this change or verification."
   ]
 }

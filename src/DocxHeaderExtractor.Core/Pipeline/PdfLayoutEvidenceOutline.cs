@@ -573,7 +573,7 @@ public static class PdfLayoutEvidenceOutline
         var context = TryBuildBroadAuditContext(
             originalInputPath, includeAllVisualStyles, includeSupplementCandidates, out var reason);
         if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
-        await using var checkpoint = string.IsNullOrWhiteSpace(checkpointPath)
+        var checkpoint = string.IsNullOrWhiteSpace(checkpointPath)
             ? null
             : new PdfStageCheckpoint(checkpointPath, resume, Path.GetFileName(context.Pdf));
 
@@ -615,6 +615,8 @@ public static class PdfLayoutEvidenceOutline
             return (Clusters: clusterResult, Roles: roleResult);
         }, semanticOptions.LaneDeadline, ct);
         var semanticTimedOut = semanticRun.TimedOut;
+        var detachedTasks = new List<Task>();
+        if (semanticRun.DetachedTask is not null) detachedTasks.Add(semanticRun.DetachedTask);
         var clusters = !semanticTimedOut && semanticRun.Fault is null
             ? semanticRun.Value.Clusters
             : new PdfSemanticClusterAnalysis(samples, []);
@@ -647,6 +649,7 @@ public static class PdfLayoutEvidenceOutline
                     candidateContexts, laneCt, checkpoint),
                 semanticOptions.RemainingOr(semanticOptions.RequestTimeout), ct);
             spanLaneStatus = spanRun.TimedOut ? "partial_timeout" : "complete";
+            if (spanRun.DetachedTask is not null) detachedTasks.Add(spanRun.DetachedTask);
             spanAnalysis = spanRun switch
             {
                 // A3: a batch that finished and was durably checkpointed before the deadline is kept -
@@ -787,7 +790,10 @@ public static class PdfLayoutEvidenceOutline
             : recoveredHeadings.Length < Math.Max(3, (int)Math.Ceiling(accepted.Length * 0.65))
                 ? $"audit-only:analyst-low-docx-alignment:{recoveredHeadings.Length}/{accepted.Length}"
                 : summary;
-        return new PdfTextbookOutlineResult(recoveredHeadings, auditReason, audit);
+        return new PdfTextbookOutlineResult(recoveredHeadings, auditReason, audit)
+        {
+            DetachedTasks = detachedTasks,
+        };
     }
 
     /// <summary>
