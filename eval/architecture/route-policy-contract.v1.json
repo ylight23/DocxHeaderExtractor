@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "normal_authority_route_policy_contract",
+  "auditOnly": true,
+  "sourceRevision": "42585a177f6a1d4992153c5aecc211f33ecdcaa2",
+  "CURRENT_ROUTE_OWNER": "AuthorityExtractionPipeline",
+  "TARGET_ROUTE_OWNER": "APPLICATION_ROUTE_POLICY",
+  "ROUTE_CONTRACT_DEFINED": true,
+  "CURRENT_BEHAVIOR_CHARACTERIZED": true,
+  "BEHAVIOR_EQUIVALENCE": "PROVEN",
+  "CHARACTERIZATION_MODE": "static predicate equivalence; production pipeline not wired or changed",
+  "DEPENDENCY_ON_HEADER_EXTRACTION_PIPELINE": false,
+  "DEPENDENCY_ON_PDF_FIRST_VALIDATED_FALLBACK": false,
+  "LEGACY_FALLBACK_SEMANTICS_IMPORTED": false,
+  "contract": {
+    "namespaceTarget": "Core.Application.Routing",
+    "sourceCapabilities": ["HasDocx", "HasPdf", "AnalystAvailable"],
+    "routeValues": ["DocxAuthority", "PdfAuthority", "Unsupported"],
+    "decideSignature": "AuthorityRoute Decide(SourceCapabilities capabilities)",
+    "inputsExcluded": ["validatedHeadingCount", "confidence", "fallbackScore", "qualityThreshold", "repairMode", "providerImplementation"],
+    "rules": [
+      { "when": "HasDocx=false", "route": "Unsupported", "reason": "DOCX_CAPABILITY_UNAVAILABLE" },
+      { "when": "HasDocx=true AND HasPdf=true AND AnalystAvailable=true", "route": "PdfAuthority", "reason": "PDF_AVAILABLE_AND_ANALYST_AVAILABLE" },
+      { "when": "HasDocx=true AND NOT(HasPdf AND AnalystAvailable)", "route": "DocxAuthority", "reason": "PDF_AUTHORITY_CAPABILITY_UNAVAILABLE" }
+    ],
+    "reasonModel": "reason is a closed characterization value associated with the route decision, not an arbitrary downstream business message"
+  },
+  "characterizationMatrix": [
+    { "hasDocx": true, "hasPdf": true, "analystAvailable": true, "currentAuthorityPipelineDecision": "pdf-authority-v1", "contractDecision": "PdfAuthority", "reason": "PDF_AVAILABLE_AND_ANALYST_AVAILABLE", "match": true, "evidence": "AuthorityExtractionPipeline.cs:51-91" },
+    { "hasDocx": true, "hasPdf": true, "analystAvailable": false, "currentAuthorityPipelineDecision": "docx-authority-v1", "contractDecision": "DocxAuthority", "reason": "PDF_AUTHORITY_CAPABILITY_UNAVAILABLE", "match": true, "evidence": "AuthorityExtractionPipeline.cs:51-91" },
+    { "hasDocx": true, "hasPdf": false, "analystAvailable": true, "currentAuthorityPipelineDecision": "docx-authority-v1", "contractDecision": "DocxAuthority", "reason": "PDF_AUTHORITY_CAPABILITY_UNAVAILABLE", "match": true, "evidence": "AuthorityExtractionPipeline.cs:51-91" },
+    { "hasDocx": true, "hasPdf": false, "analystAvailable": false, "currentAuthorityPipelineDecision": "docx-authority-v1", "contractDecision": "DocxAuthority", "reason": "PDF_AUTHORITY_CAPABILITY_UNAVAILABLE", "match": true, "evidence": "AuthorityExtractionPipeline.cs:51-91" },
+    { "hasDocx": false, "hasPdf": true, "analystAvailable": true, "currentAuthorityPipelineDecision": "OUT_OF_CURRENT_CONTRACT", "contractDecision": "Unsupported", "reason": "DOCX_CAPABILITY_UNAVAILABLE", "match": true, "evidence": "AuthorityExtractionPipeline requires an input DOCX conversion before route selection" }
+  ],
+  "guardAssertions": [
+    { "name": "NORMAL_ROUTE_POLICY_DEPENDS_ON_PdfFirstValidatedFallback", "expected": false, "evidence": "Contract input contains only SourceCapabilities" },
+    { "name": "NORMAL_ROUTE_POLICY_DEPENDS_ON_HeaderExtractionPipeline", "expected": false, "evidence": "Contract is test-local characterization and target namespace is Core.Application.Routing" },
+    { "name": "provider implementation appears in Decide signature", "expected": false, "evidence": "Decide accepts facts only" }
+  ],
+  "nextGate": "ARCH-3B may wire an equivalent policy into AuthorityExtractionPipeline only after this contract remains unchanged and F verifies no behavior regression",
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_CODE_CHANGED": false,
+  "PRODUCTION_BEHAVIOR_CHANGED": false,
+  "TEST_EXPECTATIONS_CHANGED": false
+}
