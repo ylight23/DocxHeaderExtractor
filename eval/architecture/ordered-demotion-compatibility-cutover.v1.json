@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "ordered_demotion_compatibility_cutover",
+  "task": "LEGACY-5",
+  "status": "PASS",
+  "baseRevision": "8258f24b8e52a575e097846e1216cc6a199f72f5",
+  "cutoverRevision": "42b75d29fecf9b424a511dd479562ae3452671db",
+  "phaseA": {
+    "orderedStateContractJustified": true,
+    "contractType": "OrderedDemotionState",
+    "sourceFactsImmutable": true,
+    "numberingStyleFeaturesImmutable": true,
+    "trustedHeadingStyleIsPolicyState": true,
+    "trustedHeadingStyleSourceFactSubstitution": false,
+    "orderedMutationRequired": true,
+    "demotionStateBoundaryIntroduced": true
+  },
+  "phaseB": {
+    "operations": [
+      "DemoteCoverPageBlock",
+      "DemoteInlineEmphasis",
+      "DemoteRunsWithoutOwnProse"
+    ],
+    "executionInput": "OrderedDemotionState",
+    "slimExecutionDependencyAfter": 0,
+    "order": [
+      "Initial HeadingCandidatePolicy",
+      "DemoteCoverPageBlock",
+      "DemoteInlineEmphasis",
+      "DemoteRunsWithoutOwnProse",
+      "TocStructuralFeatureDeriver",
+      "PostClassificationPolicy"
+    ],
+    "orderEquivalent": true
+  },
+  "stateContract": {
+    "sourceIdentityAndOrder": true,
+    "sourceFacts": true,
+    "numberingStyleFeatures": true,
+    "candidateState": true,
+    "trustedHeadingStylePolicyState": true,
+    "currentRoleScore": true,
+    "orderedDemotionContext": true,
+    "containsWholeSlimParagraph": false,
+    "mutatedFields": ["Role", "Score"]
+  },
+  "gates": {
+    "DEMOTION_SLIM_EXECUTION_DEPENDENCY_AFTER": 0,
+    "COVER_DEMOTION_DELTA": 0,
+    "INLINE_EMPHASIS_DEMOTION_DELTA": 0,
+    "RUN_WITHOUT_PROSE_DEMOTION_DELTA": 0,
+    "CANDIDATE_DELTA": 0,
+    "ROLE_DELTA": 0,
+    "SCORE_DELTA": 0,
+    "LEVEL_DELTA": 0,
+    "DEMOTION_ORDER_EQUIVALENT": true,
+    "SOURCE_FACT_MUTATION": false,
+    "NUMBERING_STYLE_MUTATION": false,
+    "EXPECTED_CHANGED": false,
+    "LEGACY_DELETED": false,
+    "DOCX_SLIM_REMOVED": false,
+    "PROVIDER_CALLS": 0
+  },
+  "validation": {
+    "releaseBuild": {
+      "status": "PASS",
+      "errors": 0,
+      "warnings": 161,
+      "command": "dotnet build DocxHeaderExtractor.sln -c Release --no-restore"
+    },
+    "focusedTests": {
+      "status": "PASS",
+      "passed": 20,
+      "failed": 0,
+      "skipped": 0,
+      "total": 20,
+      "scope": [
+        "DemoteRunsWithoutOwnProseTests",
+        "NumberingStyleFeatureBoundaryTests",
+        "DemotionPolicyOwnershipTests",
+        "SlimCompatibilityIsolationTests",
+        "AutoRepairWorkflowTests",
+        "RepairDiagnosticGateTests",
+        "RepairValidationGateTests"
+      ],
+      "trxPathLocal": "C:\\DocxHeaderExtractor-legacy5\\tests\\DocxHeaderExtractor.Tests\\TestResults\\legacy5-focused.trx",
+      "trxSha256": "ECA96AF62F67AD1A844F6A190BD03940259DDDF4F616D1E14BAE901C208652C9"
+    },
+    "fullSuiteExecuted": false
+  },
+  "productionCodeChanged": true,
+  "productionObservableBehaviorChanged": false,
+  "testExpectedChanged": false,
+  "legacyDeleted": false,
+  "docxSlimRemoved": false,
+  "nextTask": "LEGACY-6"
+}
