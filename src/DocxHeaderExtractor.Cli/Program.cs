@@ -1401,6 +1401,7 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             continue;
         }
         hasPartialTimeout |= string.Equals(audit.SemanticLane?.Status, "partial_timeout", StringComparison.Ordinal) ||
+                             string.Equals(audit.SpanLane?.Status, "partial_timeout", StringComparison.Ordinal) ||
                              string.Equals(audit.VisualLane?.Status, "partial_timeout", StringComparison.Ordinal);
 
         string Canon(string? value) => string.Concat((value ?? "").Where(char.IsLetterOrDigit).Select(char.ToLowerInvariant));
@@ -1481,6 +1482,7 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
         var visualRepresentation = visualAnalyst is null
             ? null
             : PdfVisualRepresentationAudit.Evaluate(PdfTextbookOutline.FindSiblingPdf(file)!, slim, key);
+        var laneDiagnostics = PdfStageEvalDiagnostics.BuildLaneDiagnostics(audit);
         rows.Add(new
         {
             file = Path.GetFileName(file), status = modelUnavailable ? "model-unavailable" : semanticPartialTimeout ? "partial_timeout" : "measured", key = key.Count,
@@ -1517,7 +1519,10 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
                     .Select(trace => trace.RegionId).OrderBy(id => id, StringComparer.Ordinal))),
                 resume = o.PdfStageResume,
             },
-            lanes = new { semantic = audit.SemanticLane, visual = audit.VisualLane },
+            semanticLane = laneDiagnostics.SemanticLane,
+            spanLane = laneDiagnostics.SpanLane,
+            visualLane = laneDiagnostics.VisualLane,
+            lanes = laneDiagnostics.Lanes,
             rawCandidateRecall = new { hits = Hits(allCandidates.Select(b => b.Text)), total = key.Count, candidates = allCandidates.Count },
             analystCoverage = new { hits = Hits(selected.Select(b => b.Text)), total = key.Count, selected = selected.Count, available = audit.CandidatesAvailable },
             vlmRole = new { hits = Hits(roleHeading.Select(b => b.Text)), selected = roleHeading.Length, precision = roleHeading.Length == 0 ? (double?)null : Hits(roleHeading.Select(b => b.Text)) / (double)roleHeading.Length },
@@ -1554,13 +1559,8 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
                     .Select(group => new { role = group.Key, count = group.Count() }).ToArray(),
                 evidence = o.Pipeline.ShowRawOutput ? audit.VisualEvidence : null,
             },
-            proposalResolution = new
-            {
-                decisions = audit.ProposalResolutions.GroupBy(item => item.Resolution)
-                    .OrderBy(group => group.Key, StringComparer.Ordinal)
-                    .Select(group => new { resolution = group.Key, count = group.Count() }).ToArray(),
-                items = o.Pipeline.ShowRawOutput ? audit.ProposalResolutions : null,
-            },
+            proposalResolution = PdfStageEvalDiagnostics.BuildProposalResolutionDiagnostics(
+                audit.ProposalResolutions, o.Pipeline.ShowRawOutput),
             semanticHierarchy = new
             {
                 proposals = audit.HierarchyProposals.Count,

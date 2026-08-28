@@ -1,0 +1,49 @@
+{
+  "milestone": "ARCH-4D",
+  "status": "CLOSED",
+  "baseRevision": "954f9c7",
+  "derivedFeatureComponentIntroduced": true,
+  "component": "DocumentFeatureDeriver",
+  "contract": "IDocumentFeatureDeriver(SourceDocument) -> DerivedDocumentFeatures",
+  "movedInventoryFields": [
+    {
+      "field": "BodyFontSizePt",
+      "arch4aClassification": "DERIVED_FACT",
+      "oldWriter": "DocxSlimExtractor.EstimateBodyFontSize",
+      "newWriter": "DocumentFeatureDeriver.Derive",
+      "behaviorEquivalent": true
+    },
+    {
+      "field": "Corrupt",
+      "arch4aClassification": "DERIVED_FACT",
+      "oldWriter": "CorruptParagraphDetector/DocxSlimExtractor",
+      "newWriter": "DocumentFeatureDeriver.Derive",
+      "behaviorEquivalent": true
+    }
+  ],
+  "derivedStatistics": ["FontSizeCharacterWeights"],
+  "deferredDerivedFields": [
+    "HasBuiltInHeadingStyle",
+    "TableRole",
+    "NumberingDepth",
+    "NumberingStyleLevel",
+    "PrecedesTableOfContents",
+    "PrecedesTable",
+    "InTableOfContents",
+    "DefaultFontSizePt"
+  ],
+  "deferredReason": "These fields require producer-local numbering/style metadata, document traversal state, or existing policy-adjacent semantics not represented as immutable SourceDocument facts; moving them here would create a second or altered authority path.",
+  "derivedFactSingleOwnerForMovedFields": true,
+  "derivationOrderPreserved": true,
+  "sourceFactMutated": false,
+  "policyOutputDelta": 0,
+  "slimCompatibilityPreserved": true,
+  "runtimeSourceFactsConsumerCutover": false,
+  "arch4cTests": "5/5 PASS",
+  "arch4dTests": "4/4 PASS",
+  "combinedArchitectureRegression": "26/26 PASS",
+  "fRegression": "2/2 PASS",
+  "releaseBuild": "PASS",
+  "providerCalls": 0,
+  "productionBehaviorChanged": false
+}

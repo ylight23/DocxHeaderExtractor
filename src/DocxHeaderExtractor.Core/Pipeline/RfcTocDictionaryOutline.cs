@@ -22,15 +22,17 @@ public static class RfcTocDictionaryOutline
     private const int MinimumDensityGap = 3;
 
     private static readonly Regex NumberMarkerRx = new(
-        @"(?<![\w.])(?<num>\d{1,2}(?:\.\d{1,2}){0,3})\.\s+(?=[A-Za-z])",
+        // RFC TOC text extracted from some generated DOCX files omits the space after the marker.
+        // Keep marker parsing unchanged otherwise; this is the candidate-generation boundary.
+        @"(?<![\w.])(?<num>\d{1,2}(?:\.\d{1,2}){0,3})\.\s*(?=[A-Za-z])",
         RegexOptions.Compiled);
 
     private static readonly Regex AppendixMarkerRx = new(
-        @"(?<![\w.])Appendix\s+(?<num>[A-Z])\.\s+(?=[A-Z])",
+        @"(?<![\w.])Appendix\s+(?<num>[A-Z])\.\s*(?=[A-Z])",
         RegexOptions.Compiled);
 
     private static readonly Regex AppendixChildMarkerRx = new(
-        @"(?<![\w.])(?<app>[A-Z])(?<tail>(?:\.\d{1,2}){1,3})\.\s+(?=[A-Za-z])",
+        @"(?<![\w.])(?<app>[A-Z])(?<tail>(?:\.\d{1,2}){1,3})\.\s*(?=[A-Za-z])",
         RegexOptions.Compiled);
 
     private static readonly Regex CrossReferencePrefixRx = new(
@@ -58,14 +60,29 @@ public static class RfcTocDictionaryOutline
     public static RfcTocDictionaryResult Analyze(SlimDocument document)
     {
         var paragraphs = document.Paragraphs
-            .Where(p => !p.Corrupt && p.TableDepth == 0 && !string.IsNullOrWhiteSpace(p.Text))
+            .Where(p => !p.Corrupt && !string.IsNullOrWhiteSpace(p.Text))
             .OrderBy(p => p.Index)
             .ToList();
         if (paragraphs.Count == 0)
             return Reject([], new HashSet<int>(), null, 0, 0, "không có paragraph text hợp lệ");
 
         var marksByIndex = paragraphs.ToDictionary(p => p.Index, p => Marks(p.Text));
-        var tocCluster = FindTocCluster(paragraphs.Count, marksByIndex);
+        var tocParagraphs = paragraphs.Where(p => p.TableDepth == 0).ToList();
+        var tocMarksByIndex = tocParagraphs.ToDictionary(p => p.Index, p => marksByIndex[p.Index]);
+        var tocCluster = FindTocCluster(tocParagraphs, tocMarksByIndex);
+        if (tocCluster is not null)
+        {
+            // Some generated RFC files place individual TOC rows in tables. Discovery stays
+            // top-level; once its source window is known, include only marked rows in that window.
+            var first = tocCluster.Indexes.Min();
+            var last = tocCluster.Indexes.Max();
+            var expandedIndexes = tocCluster.Indexes
+                .Union(marksByIndex
+                    .Where(kv => kv.Key >= first && kv.Key <= last && kv.Value.Count > 0)
+                    .Select(kv => kv.Key))
+                .ToHashSet();
+            tocCluster = tocCluster with { Indexes = expandedIndexes };
+        }
         if (tocCluster is null)
             return Reject(paragraphs, new HashSet<int>(), null, 0, 0, "không có cụm TOC dày, sớm và gọn");
 
@@ -120,14 +137,48 @@ public static class RfcTocDictionaryOutline
     }
 
     private static RfcTocCluster? FindTocCluster(
-        int paragraphCount,
+        IReadOnlyList<SlimParagraph> paragraphs,
         IReadOnlyDictionary<int, List<Mark>> marksByIndex)
     {
+        var explicitToc = paragraphs.FirstOrDefault(p =>
+            p.Text.Contains("Table of Contents", StringComparison.OrdinalIgnoreCase)
+            && marksByIndex.TryGetValue(p.Index, out var marks)
+            && marks.Count > 0);
+        if (explicitToc is not null)
+        {
+            // Generated RFC DOCX files may split one TOC across paragraphs with different
+            // marker densities. The explicit TOC label identifies the candidate window; later
+            // dictionary and body-anchor checks remain the acceptance gate.
+            var firstTocMark = marksByIndex[explicitToc.Index][0].Key;
+            var repeatedFirstMark = marksByIndex
+                .Where(kv => kv.Key > explicitToc.Index && kv.Value.Any(mark => mark.Key == firstTocMark))
+                .Select(kv => (int?)kv.Key)
+                .FirstOrDefault();
+            var lastIndex = repeatedFirstMark
+                ?? explicitToc.Index + Math.Max(40, paragraphs.Count / 8);
+            var explicitIndexes = marksByIndex
+                .Where(kv => kv.Key >= explicitToc.Index && kv.Key < lastIndex && kv.Value.Count > 0)
+                .Select(kv => kv.Key)
+                .ToHashSet();
+            var markerCount = explicitIndexes.Sum(index => marksByIndex[index].Count);
+            if (explicitIndexes.Count > 0 && markerCount >= MinimumDictionaryEntries)
+                return new RfcTocCluster(explicitIndexes, explicitIndexes.Min(index => marksByIndex[index].Count), 0);
+        }
+
+        var paragraphCount = paragraphs.Count;
         var densities = marksByIndex
             .Select(kv => (kv.Key, Count: kv.Value.Count))
             .Where(x => x.Count > 0)
             .ToList();
         if (densities.Count == 0) return null;
+
+        // Slim indexes include paragraphs inside tables that this analyzer filtered out.
+        // Use the eligible sequence ordinal for front-matter locality, while retaining raw
+        // paragraph indexes for identity and all downstream matching.
+        var eligibleOrdinalByIndex = marksByIndex.Keys
+            .OrderBy(index => index)
+            .Select((index, ordinal) => (index, ordinal))
+            .ToDictionary(x => x.index, x => x.ordinal);
 
         var distinct = densities
             .Select(x => x.Count)
@@ -147,7 +198,7 @@ public static class RfcTocDictionaryOutline
             var dense = densities.Where(x => x.Count >= high).ToList();
             var markerCount = dense.Sum(x => x.Count);
             if (dense.Count > maxDenseParagraphs || markerCount < MinimumDictionaryEntries) continue;
-            if (!IsCompactFrontMatterCluster(paragraphCount, dense.Select(x => x.Key))) continue;
+            if (!IsCompactFrontMatterCluster(paragraphCount, dense.Select(x => eligibleOrdinalByIndex[x.Key]))) continue;
 
             if (markerCount > best.MarkerCount || (markerCount == best.MarkerCount && gap > best.Gap))
                 best = (gap, high, markerCount);

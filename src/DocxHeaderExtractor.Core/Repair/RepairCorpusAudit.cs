@@ -292,7 +292,10 @@ public static class RepairCorpusAudit
 
         try
         {
-            var slim = new DocxSlimExtractor().Extract(file);
+            var extraction = new DocxSlimExtractor().ExtractForAuthority(file);
+            var source = extraction.Source;
+            var features = NumberingStyleFeatures.FromSourceDocument(source);
+            var slim = extraction.Compatibility.ForLegacyCompatibility();
             var tagged = PdfTaggedEvidenceOutline.TryBuild(file, slim);
             var toc = mode is null
                 ? PdfTocDictionaryOutlineResult.NotApplicable("no-document-mode")
@@ -307,9 +310,9 @@ public static class RepairCorpusAudit
                 toc.Probe.Entries,
                 toc.Probe.RelaxedPageAnchors,
                 slim.Paragraphs.Count(p => p.InTableOfContents),
-                slim.Paragraphs.Count(p => p.OutlineLevel is not null),
+                features.Styles.Count(style => style.OutlineLevel is not null),
                 slim.Paragraphs.Count(p => p.HasBuiltInHeadingStyle),
-                slim.Paragraphs.Count(p => p.NumberingId is not null || p.NumberingStyleLevel is not null),
+                features.Numbering.Count(numbering => numbering.NumberingId is not null || numbering.NumberingLevel is not null),
                 slim.Paragraphs.Count(p => NumberingAudit.Parse(p.Text) is not null),
                 slim.Paragraphs.Count(p => DocumentModeClassifier.IsLegalMarker(p.Text)),
                 null);

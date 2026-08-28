@@ -71,7 +71,8 @@ public static class PdfProductWriteback
 
         // Read from the SOURCE, not the copy about to be opened for writing: the two are still
         // byte-identical here, and reading the target in parallel would contend with the write handle.
-        var slim = new DocxSlimExtractor(extraction).Extract(source);
+        var sourceExtraction = new DocxSlimExtractor(extraction).ExtractForAuthority(source);
+        var mappings = WritebackMappingSet.FromSourceDocument(sourceExtraction.Source);
         try
         {
             using (var doc = WordprocessingDocument.Open(target, true))
@@ -102,8 +103,9 @@ public static class PdfProductWriteback
                     // The anchor's span must still point at the exact text the projection captured -
                     // the source may have moved on since FinalStructure was materialized, and a stale
                     // anchor writing over the wrong slice is worse than an honest skip.
-                    var sourceParagraph = slim.ByIndex(heading.ParagraphIndex);
-                    if (SpanText(sourceParagraph, heading.Span) != heading.Text)
+                    if (mappings.Values.FirstOrDefault(mapping =>
+                            mapping.Locator.ParagraphIndex == heading.ParagraphIndex) is not { } sourceMapping ||
+                        SpanText(sourceMapping.Locator.SourceText, heading.Span) != heading.Text)
                     {
                         skipped.Add(new OutlineWritebackSkip(heading.ParagraphIndex, "anchor_text_mismatched"));
                         continue;
@@ -122,11 +124,11 @@ public static class PdfProductWriteback
                     // (paragraph text never carries a run of consecutive spaces), so the real split
                     // point is one past the span, not the span's own end.
                     var bodyStart = heading.Span.End;
-                    while (bodyStart < sourceParagraph!.Text.Length && sourceParagraph.Text[bodyStart] == ' ') bodyStart++;
+                    while (bodyStart < sourceMapping.Locator.SourceText.Length && sourceMapping.Locator.SourceText[bodyStart] == ' ') bodyStart++;
 
-                    if (bodyStart < sourceParagraph.Text.Length)
+                    if (bodyStart < sourceMapping.Locator.SourceText.Length)
                     {
-                        if (OutlineWriteback.TrySplitPoint(sourceParagraph, walked.Element, bodyStart)
+                        if (OutlineWriteback.TrySplitPoint(sourceMapping, walked.Element, bodyStart)
                             is not { } runIndex)
                         {
                             skipped.Add(new OutlineWritebackSkip(heading.ParagraphIndex, "inline_body_not_splittable"));
@@ -182,10 +184,9 @@ public static class PdfProductWriteback
         return null;
     }
 
-    private static string? SpanText(SlimParagraph? paragraph, DocxTextSpan span)
+    private static string? SpanText(string? text, DocxTextSpan span)
     {
-        if (paragraph is null) return null;
-        var text = paragraph.Text;
+        if (text is null) return null;
         if (span.Start < 0 || span.End <= span.Start || span.End > text.Length) return null;
         return text[span.Start..span.End];
     }
@@ -201,20 +202,20 @@ public static class PdfProductWriteback
         IReadOnlyList<PdfProductHeading> applied,
         IReadOnlyCollection<int> splitIndexes)
     {
-        var written = new DocxSlimExtractor(extraction).Extract(target);
+        var written = new DocxSlimExtractor(extraction).ExtractForAuthority(target).Source;
         foreach (var heading in applied)
         {
             var shift = splitIndexes.Count(i => i < heading.ParagraphIndex);
             var at = heading.ParagraphIndex + shift;
 
-            var paragraph = written.ByIndex(at)
+            var paragraph = written.Paragraphs.FirstOrDefault(item => item.SourceOrdinal == at)
                             ?? throw new InvalidOperationException(
                                 $"Sau khi ghi, đoạn {heading.ParagraphIndex} không còn tồn tại trong bản đích.");
 
-            if (shift == 0 && heading.StableId is { Length: > 0 } stableId && paragraph.StableId != stableId)
+            if (shift == 0 && heading.StableId is { Length: > 0 } stableId && paragraph.SourceId != stableId)
                 throw new InvalidOperationException(
                     $"Sau khi ghi, đoạn {heading.ParagraphIndex} đổi địa chỉ XML " +
-                    $"({paragraph.StableId} ≠ {stableId}).");
+                    $"({paragraph.SourceId} ≠ {stableId}).");
 
             // A split paragraph keeps only the heading slice; an unsplit one still holds the exact
             // grounded text the anchor pointed at.
@@ -222,9 +223,9 @@ public static class PdfProductWriteback
                 throw new InvalidOperationException(
                     $"Sau khi ghi, nội dung đoạn {heading.ParagraphIndex} không còn khớp anchor.");
 
-            if (paragraph.OutlineLevel != heading.Level - 1)
+            if (paragraph.Style.OutlineLevel != heading.Level - 1)
                 throw new InvalidOperationException(
-                    $"Sau khi ghi, đoạn {heading.ParagraphIndex} có outline level {paragraph.OutlineLevel}, " +
+                    $"Sau khi ghi, đoạn {heading.ParagraphIndex} có outline level {paragraph.Style.OutlineLevel}, " +
                     $"khác cấp {heading.Level} đã chốt.");
         }
     }

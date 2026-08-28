@@ -21,10 +21,6 @@ public static class HeadingHeuristics
     /// của style dựng sẵn vẫn là "Heading1"/"heading 1", "Title", "Subtitle".
     /// Vì vậy luật này không phụ thuộc ngôn ngữ tài liệu và luôn được bật.
     /// </summary>
-    private static readonly Regex BuiltInHeadingRx = new(
-        @"^(heading\s*([1-9])|title|subtitle|toc\s*heading)$",
-        RegexOptions.Compiled | RegexOptions.IgnoreCase);
-
     /// <summary>
     /// Style do người dùng TỰ ĐẶT TÊN theo ngôn ngữ của họ. Đây mới thực sự là mapping cứng:
     /// nó chỉ đúng với vài thứ tiếng và phải bổ sung tay khi gặp tiếng khác.
@@ -471,15 +467,7 @@ public static class HeadingHeuristics
     /// <c>w:lvl/w:pStyle</c> của danh sách đa cấp, nơi chỉ có tên style chứ không có paragraph.
     /// </summary>
     public static int? BuiltInLevelFromStyleId(string? styleId)
-    {
-        if (string.IsNullOrWhiteSpace(styleId)) return null;
-
-        var m = BuiltInHeadingRx.Match(styleId.Trim());
-        if (!m.Success) return null;
-
-        if (m.Groups[2].Success) return int.Parse(m.Groups[2].Value);
-        return m.Value.StartsWith("subtitle", StringComparison.OrdinalIgnoreCase) ? 2 : 1;
-    }
+        => BuiltInHeadingStyleIdentity.LevelFromStyleIdentity(styleId);
 
     private static int? LocalizedStyleLevel(SlimParagraph p)
     {

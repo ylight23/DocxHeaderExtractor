@@ -252,7 +252,11 @@ internal static class PdfBlockAnalyst
             {
                 var prompt = BuildPointerSpanPrompt(batch, contexts);
                 inputContracts.Add(prompt);
+                ct.ThrowIfCancellationRequested();
                 raw = await classifier.BoundaryCutAsync(PointerSpanSystemPrompt, prompt, ct);
+                // A provider may ignore cancellation. A late response must not become a durable
+                // span fact after the lane deadline has already been crossed.
+                ct.ThrowIfCancellationRequested();
             }
             catch (OperationCanceledException)
             {
@@ -278,12 +282,15 @@ internal static class PdfBlockAnalyst
             }
 
             if (checkpoint is not null)
+            {
+                ct.ThrowIfCancellationRequested();
                 await checkpoint.RecordSpanBatchAsync(
                         batch.Select(b => (b.Id, b.Page,
                         LineIdOf(b),
                         LineIdsOf(b),
                         byId.TryGetValue(b.Id, out var d) ? d.HeadingSpan : null)).ToArray(),
                     null, ct);
+            }
         }
 
         return new PdfBlockAnalysis(blocks, blocks.Where(block => byId.ContainsKey(block.Id)).Select(block => byId[block.Id]).ToArray(), rawResponses)

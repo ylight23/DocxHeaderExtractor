@@ -1,0 +1,5318 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_candidate_boundary_repair_feasibility",
+  "phase": "A2",
+  "providerCalls": 0,
+  "productionCodeChanged": false,
+  "goldSilverChanged": false,
+  "rankWeightsChanged": false,
+  "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is run-local diagnostics",
+  "frozenClasses": {
+    "lineGroupBoundarySplit": {
+      "count": 9,
+      "source": "004 frozen first-loss authority"
+    },
+    "lineGroupAbsorbedOrTruncated": {
+      "count": 1,
+      "source": "004 frozen first-loss authority"
+    }
+  },
+  "policy": {
+    "name": "marker-led structural continuation",
+    "scope": "test-only alternate PdfSemanticBlockGrouper replay",
+    "invariant": "a marker-led block may continue into an adjacent title-like uppercase line when source order and visual proximity are compatible; no document/text/page exception",
+    "existingGroupingPredicatesRetained": true,
+    "maxLinesRetained": 4,
+    "rankRecomputed": true,
+    "absorbedOrTruncatedPolicy": "separate audit only; no shared repair"
+  },
+  "baseline": {
+    "generatedCandidates": 10032,
+    "candidatePopulationDelta": 0,
+    "reviewedHeadingRecovered": 375,
+    "reviewedHeadingLost": 47,
+    "selectedAt160": 80,
+    "trueSelectedLost": 0,
+    "duplicateDelta": 0,
+    "rankDelta": -981
+  },
+  "counterfactual": {
+    "generatedCandidates": 10071,
+    "candidatePopulationDelta": 39,
+    "reviewedHeadingRecovered": 380,
+    "reviewedHeadingLost": 42,
+    "selectedAt160": 84,
+    "trueSelectedLost": 1,
+    "duplicateDelta": 0,
+    "rankDelta": -981
+  },
+  "documents": [
+    {
+      "DocumentId": "004",
+      "BaselineCandidateCount": 2653,
+      "CounterfactualCandidateCount": 2662,
+      "Baseline": {
+        "Rows": [
+          {
+            "Id": "004/chapter/1",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 2
+          },
+          {
+            "Id": "004/article/1",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 17
+          },
+          {
+            "Id": "004/article/2",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 14
+          },
+          {
+            "Id": "004/article/3",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 15
+          },
+          {
+            "Id": "004/article/4",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 18
+          },
+          {
+            "Id": "004/article/5",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 19
+          },
+          {
+            "Id": "004/article/6",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 89
+          },
+          {
+            "Id": "004/article/7",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 20
+          },
+          {
+            "Id": "004/article/8",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2599
+          },
+          {
+            "Id": "004/article/9",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 822
+          },
+          {
+            "Id": "004/chapter/2",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 3
+          },
+          {
+            "Id": "004/article/10",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 23
+          },
+          {
+            "Id": "004/article/11",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 91
+          },
+          {
+            "Id": "004/article/12",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2600
+          },
+          {
+            "Id": "004/article/13",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 25
+          },
+          {
+            "Id": "004/article/14",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 26
+          },
+          {
+            "Id": "004/chapter/3",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/15",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 93
+          },
+          {
+            "Id": "004/article/16",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1962
+          },
+          {
+            "Id": "004/article/17",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 29
+          },
+          {
+            "Id": "004/article/18",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 94
+          },
+          {
+            "Id": "004/article/19",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2607
+          },
+          {
+            "Id": "004/article/20",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 95
+          },
+          {
+            "Id": "004/chapter/4",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 4
+          },
+          {
+            "Id": "004/section/1",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/21",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2595
+          },
+          {
+            "Id": "004/article/22",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 33
+          },
+          {
+            "Id": "004/article/23",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2609
+          },
+          {
+            "Id": "004/article/24",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2610
+          },
+          {
+            "Id": "004/article/25",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2611
+          },
+          {
+            "Id": "004/article/26",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2022
+          },
+          {
+            "Id": "004/article/27",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 96
+          },
+          {
+            "Id": "004/article/28",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 38
+          },
+          {
+            "Id": "004/section/2",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/29",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 39
+          },
+          {
+            "Id": "004/article/30",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2049
+          },
+          {
+            "Id": "004/article/31",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2055
+          },
+          {
+            "Id": "004/article/32",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2066
+          },
+          {
+            "Id": "004/article/33",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2073
+          },
+          {
+            "Id": "004/article/34",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 825
+          },
+          {
+            "Id": "004/article/35",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2112
+          },
+          {
+            "Id": "004/article/36",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2622
+          },
+          {
+            "Id": "004/section/3",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/37",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2623
+          },
+          {
+            "Id": "004/article/38",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 98
+          },
+          {
+            "Id": "004/article/39",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2140
+          },
+          {
+            "Id": "004/article/40",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 49
+          },
+          {
+            "Id": "004/article/41",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 50
+          },
+          {
+            "Id": "004/section/4",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/42",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 51
+          },
+          {
+            "Id": "004/article/43",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 52
+          },
+          {
+            "Id": "004/article/44",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 53
+          },
+          {
+            "Id": "004/article/45",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2189
+          },
+          {
+            "Id": "004/article/46",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 55
+          },
+          {
+            "Id": "004/article/47",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 99
+          },
+          {
+            "Id": "004/article/48",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 56
+          },
+          {
+            "Id": "004/article/49",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2223
+          },
+          {
+            "Id": "004/article/50",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2634
+          },
+          {
+            "Id": "004/chapter/5",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 5
+          },
+          {
+            "Id": "004/section/5",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/51",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 60
+          },
+          {
+            "Id": "004/article/52",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 61
+          },
+          {
+            "Id": "004/article/53",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 100
+          },
+          {
+            "Id": "004/article/54",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 62
+          },
+          {
+            "Id": "004/article/55",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 63
+          },
+          {
+            "Id": "004/section/6",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/56",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 101
+          },
+          {
+            "Id": "004/article/57",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2263
+          },
+          {
+            "Id": "004/article/58",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2295
+          },
+          {
+            "Id": "004/article/59",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 67
+          },
+          {
+            "Id": "004/section/7",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/60",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2641
+          },
+          {
+            "Id": "004/article/61",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2642
+          },
+          {
+            "Id": "004/article/62",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 1
+          },
+          {
+            "Id": "004/article/63",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 71
+          },
+          {
+            "Id": "004/article/64",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 104
+          },
+          {
+            "Id": "004/section/8",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/65",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 73
+          },
+          {
+            "Id": "004/article/66",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 105
+          },
+          {
+            "Id": "004/article/67",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1795
+          },
+          {
+            "Id": "004/article/68",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 75
+          },
+          {
+            "Id": "004/chapter/6",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 6
+          },
+          {
+            "Id": "004/article/69",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 77
+          },
+          {
+            "Id": "004/article/70",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 79
+          },
+          {
+            "Id": "004/article/71",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 80
+          },
+          {
+            "Id": "004/article/72",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 81
+          },
+          {
+            "Id": "004/article/73",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 82
+          },
+          {
+            "Id": "004/article/74",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 83
+          },
+          {
+            "Id": "004/chapter/7",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/75",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2653
+          },
+          {
+            "Id": "004/article/76",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 84
+          },
+          {
+            "Id": "004/article/77",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 86
+          },
+          {
+            "Id": "004/appendix/1",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 87
+          }
+        ],
+        "CandidateCount": 2653,
+        "TrueSelectedLost": 0,
+        "ReviewedPresent": 83,
+        "ReviewedLost": 10,
+        "SelectedAt160": 55,
+        "RankSum": 66076
+      },
+      "Counterfactual": {
+        "Rows": [
+          {
+            "Id": "004/chapter/1",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 2
+          },
+          {
+            "Id": "004/article/1",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 20
+          },
+          {
+            "Id": "004/article/2",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 18
+          },
+          {
+            "Id": "004/article/3",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 19
+          },
+          {
+            "Id": "004/article/4",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 22
+          },
+          {
+            "Id": "004/article/5",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 23
+          },
+          {
+            "Id": "004/article/6",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 93
+          },
+          {
+            "Id": "004/article/7",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 24
+          },
+          {
+            "Id": "004/article/8",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2608
+          },
+          {
+            "Id": "004/article/9",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 831
+          },
+          {
+            "Id": "004/chapter/2",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 3
+          },
+          {
+            "Id": "004/article/10",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 26
+          },
+          {
+            "Id": "004/article/11",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 95
+          },
+          {
+            "Id": "004/article/12",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2609
+          },
+          {
+            "Id": "004/article/13",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 29
+          },
+          {
+            "Id": "004/article/14",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 30
+          },
+          {
+            "Id": "004/chapter/3",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 91
+          },
+          {
+            "Id": "004/article/15",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 97
+          },
+          {
+            "Id": "004/article/16",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1971
+          },
+          {
+            "Id": "004/article/17",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 33
+          },
+          {
+            "Id": "004/article/18",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 98
+          },
+          {
+            "Id": "004/article/19",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2616
+          },
+          {
+            "Id": "004/article/20",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 99
+          },
+          {
+            "Id": "004/chapter/4",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 4
+          },
+          {
+            "Id": "004/section/1",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 5
+          },
+          {
+            "Id": "004/article/21",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2604
+          },
+          {
+            "Id": "004/article/22",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 37
+          },
+          {
+            "Id": "004/article/23",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2618
+          },
+          {
+            "Id": "004/article/24",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2619
+          },
+          {
+            "Id": "004/article/25",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2620
+          },
+          {
+            "Id": "004/article/26",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2031
+          },
+          {
+            "Id": "004/article/27",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 100
+          },
+          {
+            "Id": "004/article/28",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 42
+          },
+          {
+            "Id": "004/section/2",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/29",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 43
+          },
+          {
+            "Id": "004/article/30",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2058
+          },
+          {
+            "Id": "004/article/31",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2064
+          },
+          {
+            "Id": "004/article/32",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2075
+          },
+          {
+            "Id": "004/article/33",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2082
+          },
+          {
+            "Id": "004/article/34",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 834
+          },
+          {
+            "Id": "004/article/35",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2121
+          },
+          {
+            "Id": "004/article/36",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2631
+          },
+          {
+            "Id": "004/section/3",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/37",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2632
+          },
+          {
+            "Id": "004/article/38",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 102
+          },
+          {
+            "Id": "004/article/39",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2149
+          },
+          {
+            "Id": "004/article/40",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 53
+          },
+          {
+            "Id": "004/article/41",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 54
+          },
+          {
+            "Id": "004/section/4",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 8
+          },
+          {
+            "Id": "004/article/42",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 55
+          },
+          {
+            "Id": "004/article/43",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 56
+          },
+          {
+            "Id": "004/article/44",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 57
+          },
+          {
+            "Id": "004/article/45",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2198
+          },
+          {
+            "Id": "004/article/46",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 59
+          },
+          {
+            "Id": "004/article/47",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 103
+          },
+          {
+            "Id": "004/article/48",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 60
+          },
+          {
+            "Id": "004/article/49",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2232
+          },
+          {
+            "Id": "004/article/50",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2643
+          },
+          {
+            "Id": "004/chapter/5",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 9
+          },
+          {
+            "Id": "004/section/5",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 115
+          },
+          {
+            "Id": "004/article/51",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 64
+          },
+          {
+            "Id": "004/article/52",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 63
+          },
+          {
+            "Id": "004/article/53",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 104
+          },
+          {
+            "Id": "004/article/54",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 66
+          },
+          {
+            "Id": "004/article/55",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 67
+          },
+          {
+            "Id": "004/section/6",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/56",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 105
+          },
+          {
+            "Id": "004/article/57",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2272
+          },
+          {
+            "Id": "004/article/58",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2304
+          },
+          {
+            "Id": "004/article/59",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 71
+          },
+          {
+            "Id": "004/section/7",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/60",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2650
+          },
+          {
+            "Id": "004/article/61",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2651
+          },
+          {
+            "Id": "004/article/62",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 1
+          },
+          {
+            "Id": "004/article/63",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 75
+          },
+          {
+            "Id": "004/article/64",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 108
+          },
+          {
+            "Id": "004/section/8",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "004/article/65",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 77
+          },
+          {
+            "Id": "004/article/66",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 109
+          },
+          {
+            "Id": "004/article/67",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1804
+          },
+          {
+            "Id": "004/article/68",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 79
+          },
+          {
+            "Id": "004/chapter/6",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 10
+          },
+          {
+            "Id": "004/article/69",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 80
+          },
+          {
+            "Id": "004/article/70",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 83
+          },
+          {
+            "Id": "004/article/71",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 84
+          },
+          {
+            "Id": "004/article/72",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 85
+          },
+          {
+            "Id": "004/article/73",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 86
+          },
+          {
+            "Id": "004/article/74",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 87
+          },
+          {
+            "Id": "004/chapter/7",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 92
+          },
+          {
+            "Id": "004/article/75",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2662
+          },
+          {
+            "Id": "004/article/76",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 88
+          },
+          {
+            "Id": "004/article/77",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 90
+          },
+          {
+            "Id": "004/appendix/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 830
+          }
+        ],
+        "CandidateCount": 2662,
+        "TrueSelectedLost": 1,
+        "ReviewedPresent": 88,
+        "ReviewedLost": 5,
+        "SelectedAt160": 59,
+        "RankSum": 67577
+      },
+      "Controls": {
+        "NewCandidates": 10,
+        "NewNearbyBodyParagraphs": 0,
+        "NewTableTocCandidates": 0,
+        "NewWrappedNonHeadingText": 0
+      },
+      "BoundaryClassRows": 9,
+      "AbsorbedClassRows": 1,
+      "BoundaryOccurrences": [
+        "004/chapter/3",
+        "004/section/1",
+        "004/section/2",
+        "004/section/3",
+        "004/section/4",
+        "004/section/6",
+        "004/section/7",
+        "004/section/8",
+        "004/chapter/7"
+      ],
+      "CounterfactualCandidateDelta": 9
+    },
+    {
+      "DocumentId": "030",
+      "BaselineCandidateCount": 3457,
+      "CounterfactualCandidateCount": 3462,
+      "Baseline": {
+        "Rows": [
+          {
+            "Id": "030/front/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1360
+          },
+          {
+            "Id": "030/front/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1362
+          },
+          {
+            "Id": "030/front/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1372
+          },
+          {
+            "Id": "030/front/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1379
+          },
+          {
+            "Id": "030/outline/1",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 50
+          },
+          {
+            "Id": "030/outline/2",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 51
+          },
+          {
+            "Id": "030/outline/3",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/outline/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3457
+          },
+          {
+            "Id": "030/outline/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2040
+          },
+          {
+            "Id": "030/outline/6",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/outline/7",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/outline/8",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 16
+          },
+          {
+            "Id": "030/outline/9",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 17
+          },
+          {
+            "Id": "030/outline/10",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 18
+          },
+          {
+            "Id": "030/outline/11",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 31
+          },
+          {
+            "Id": "030/outline/12",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/itc/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 740
+          },
+          {
+            "Id": "030/itc/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 761
+          },
+          {
+            "Id": "030/itc/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 791
+          },
+          {
+            "Id": "030/itc/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 824
+          },
+          {
+            "Id": "030/itc/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 741
+          },
+          {
+            "Id": "030/itc/6",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 743
+          },
+          {
+            "Id": "030/itc/7",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1838
+          },
+          {
+            "Id": "030/itc/8",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 755
+          },
+          {
+            "Id": "030/itc/9",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 756
+          },
+          {
+            "Id": "030/itc/10",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 753
+          },
+          {
+            "Id": "030/itc/11",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 765
+          },
+          {
+            "Id": "030/itc/12",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 766
+          },
+          {
+            "Id": "030/itc/13",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 762
+          },
+          {
+            "Id": "030/itc/14",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 401
+          },
+          {
+            "Id": "030/itc/15",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 770
+          },
+          {
+            "Id": "030/itc/16",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 769
+          },
+          {
+            "Id": "030/itc/17",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 776
+          },
+          {
+            "Id": "030/itc/18",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 783
+          },
+          {
+            "Id": "030/itc/19",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 787
+          },
+          {
+            "Id": "030/itc/20",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 788
+          },
+          {
+            "Id": "030/itc/21",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 406
+          },
+          {
+            "Id": "030/itc/22",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 800
+          },
+          {
+            "Id": "030/itc/23",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 805
+          },
+          {
+            "Id": "030/itc/24",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 806
+          },
+          {
+            "Id": "030/itc/25",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 807
+          },
+          {
+            "Id": "030/itc/26",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 810
+          },
+          {
+            "Id": "030/itc/27",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 811
+          },
+          {
+            "Id": "030/itc/28",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 815
+          },
+          {
+            "Id": "030/itc/29",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 817
+          },
+          {
+            "Id": "030/itc/30",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 822
+          },
+          {
+            "Id": "030/itc/31",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 420
+          },
+          {
+            "Id": "030/itc/32",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 825
+          },
+          {
+            "Id": "030/itc/33",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 835
+          },
+          {
+            "Id": "030/itc/34",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 834
+          },
+          {
+            "Id": "030/itc/35",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 836
+          },
+          {
+            "Id": "030/itc/36",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 837
+          },
+          {
+            "Id": "030/itc/37",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 840
+          },
+          {
+            "Id": "030/itc/38",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 843
+          },
+          {
+            "Id": "030/itc/39",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 844
+          },
+          {
+            "Id": "030/datasheet/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 845
+          },
+          {
+            "Id": "030/datasheet/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 846
+          },
+          {
+            "Id": "030/datasheet/3",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/datasheet/4",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/datasheet/5",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/techforms/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1575
+          },
+          {
+            "Id": "030/techforms/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1593
+          },
+          {
+            "Id": "030/techforms/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1598
+          },
+          {
+            "Id": "030/techforms/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1604
+          },
+          {
+            "Id": "030/techforms/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1610
+          },
+          {
+            "Id": "030/techforms/6",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1616
+          },
+          {
+            "Id": "030/techforms/7",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1622
+          },
+          {
+            "Id": "030/techforms/8",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1637
+          },
+          {
+            "Id": "030/techforms/9",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1651
+          },
+          {
+            "Id": "030/finforms/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 491
+          },
+          {
+            "Id": "030/finforms/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1669
+          },
+          {
+            "Id": "030/finforms/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1689
+          },
+          {
+            "Id": "030/finforms/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1693
+          },
+          {
+            "Id": "030/finforms/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 499
+          },
+          {
+            "Id": "030/finforms/6",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 501
+          },
+          {
+            "Id": "030/finforms/7",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2059
+          },
+          {
+            "Id": "030/finforms/8",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 960
+          },
+          {
+            "Id": "030/fraud-standalone/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 239
+          },
+          {
+            "Id": "030/fraud-standalone/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 505
+          },
+          {
+            "Id": "030/tor/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 518
+          },
+          {
+            "Id": "030/tor/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 519
+          },
+          {
+            "Id": "030/tor/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 520
+          },
+          {
+            "Id": "030/tor/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 526
+          },
+          {
+            "Id": "030/tor/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 521
+          },
+          {
+            "Id": "030/tor/6",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 527
+          },
+          {
+            "Id": "030/gcc-tb/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 977
+          },
+          {
+            "Id": "030/gcc-tb/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 427
+          },
+          {
+            "Id": "030/gcc-tb/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 538
+          },
+          {
+            "Id": "030/gcc-tb/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 539
+          },
+          {
+            "Id": "030/gcc-tb/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 539
+          },
+          {
+            "Id": "030/gcc-tb/6",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 543
+          },
+          {
+            "Id": "030/gcc-tb/7",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 544
+          },
+          {
+            "Id": "030/gcc-tb/8",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 540
+          },
+          {
+            "Id": "030/gcc-tb/9",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 297
+          },
+          {
+            "Id": "030/gcc-tb/10",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 541
+          },
+          {
+            "Id": "030/gcc-tb/11",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 542
+          },
+          {
+            "Id": "030/gcc-tb/12",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 545
+          },
+          {
+            "Id": "030/gcc-tb/13",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 546
+          },
+          {
+            "Id": "030/gcc-tb/14",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 549
+          },
+          {
+            "Id": "030/gcc-tb/15",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 551
+          },
+          {
+            "Id": "030/gcc-tb/16",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 298
+          },
+          {
+            "Id": "030/gcc-tb/17",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 552
+          },
+          {
+            "Id": "030/gcc-tb/18",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 553
+          },
+          {
+            "Id": "030/gcc-tb/19",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 548
+          },
+          {
+            "Id": "030/gcc-tb/20",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 558
+          },
+          {
+            "Id": "030/gcc-tb/21",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 554
+          },
+          {
+            "Id": "030/gcc-tb/22",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 560
+          },
+          {
+            "Id": "030/gcc-tb/23",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 568
+          },
+          {
+            "Id": "030/gcc-tb/24",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-tb/25",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 577
+          },
+          {
+            "Id": "030/gcc-tb/26",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 578
+          },
+          {
+            "Id": "030/gcc-tb/27",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 579
+          },
+          {
+            "Id": "030/gcc-tb/28",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 580
+          },
+          {
+            "Id": "030/gcc-tb/29",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 581
+          },
+          {
+            "Id": "030/gcc-tb/30",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 582
+          },
+          {
+            "Id": "030/gcc-tb/31",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 583
+          },
+          {
+            "Id": "030/gcc-tb/32",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 584
+          },
+          {
+            "Id": "030/gcc-tb/33",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 585
+          },
+          {
+            "Id": "030/gcc-tb/34",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 587
+          },
+          {
+            "Id": "030/gcc-tb/35",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 588
+          },
+          {
+            "Id": "030/gcc-tb/36",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 590
+          },
+          {
+            "Id": "030/gcc-tb/37",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 591
+          },
+          {
+            "Id": "030/gcc-tb/38",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 592
+          },
+          {
+            "Id": "030/gcc-tb/39",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 593
+          },
+          {
+            "Id": "030/gcc-tb/40",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 299
+          },
+          {
+            "Id": "030/gcc-tb/41",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 595
+          },
+          {
+            "Id": "030/gcc-tb/42",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 596
+          },
+          {
+            "Id": "030/gcc-tb/43",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1936
+          },
+          {
+            "Id": "030/gcc-tb/44",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 598
+          },
+          {
+            "Id": "030/gcc-tb/45",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 599
+          },
+          {
+            "Id": "030/gcc-tb/46",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 603
+          },
+          {
+            "Id": "030/gcc-tb/47",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 600
+          },
+          {
+            "Id": "030/gcc-tb/48",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 602
+          },
+          {
+            "Id": "030/gcc-tb/49",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 605
+          },
+          {
+            "Id": "030/gcc-tb/50",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 604
+          },
+          {
+            "Id": "030/gcc-tb/51",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 606
+          },
+          {
+            "Id": "030/gcc-tb/52",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 607
+          },
+          {
+            "Id": "030/gcc-tb/53",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 609
+          },
+          {
+            "Id": "030/gcc-tb/54",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 300
+          },
+          {
+            "Id": "030/gcc-tb/55",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 612
+          },
+          {
+            "Id": "030/gcc-tb/56",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2113
+          },
+          {
+            "Id": "030/gcc-tb/57",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 567
+          },
+          {
+            "Id": "030/gcc-tb/58",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 589
+          },
+          {
+            "Id": "030/gcc-tb/59",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 594
+          },
+          {
+            "Id": "030/gcc-tb/60",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 601
+          },
+          {
+            "Id": "030/gcc-tb/61",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 608
+          },
+          {
+            "Id": "030/gcc-tb/62",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 610
+          },
+          {
+            "Id": "030/fraud-attach-tb/1",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/fraud-attach-tb/2",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/fraud-attach-tb/3",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/arb-tb/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 638
+          },
+          {
+            "Id": "030/arb-tb/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 640
+          },
+          {
+            "Id": "030/arb-tb/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 641
+          },
+          {
+            "Id": "030/arb-tb/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 642
+          },
+          {
+            "Id": "030/arb-tb/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 643
+          },
+          {
+            "Id": "030/gcc-tb/63",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 615
+          },
+          {
+            "Id": "030/gcc-tb/64",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 644
+          },
+          {
+            "Id": "030/gcc-tb/65",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1174
+          },
+          {
+            "Id": "030/gcc-tb/66",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1176
+          },
+          {
+            "Id": "030/gcc-tb/67",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 23
+          },
+          {
+            "Id": "030/gcc-tb/68",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1822
+          },
+          {
+            "Id": "030/gcc-tb/69",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 27
+          },
+          {
+            "Id": "030/gcc-tb/70",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1188
+          },
+          {
+            "Id": "030/gcc-tb/71",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1205
+          },
+          {
+            "Id": "030/gcc-ls/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1953
+          },
+          {
+            "Id": "030/gcc-ls/2",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3331
+          },
+          {
+            "Id": "030/gcc-ls/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3331
+          },
+          {
+            "Id": "030/gcc-ls/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1954
+          },
+          {
+            "Id": "030/gcc-ls/6",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3334
+          },
+          {
+            "Id": "030/gcc-ls/7",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 653
+          },
+          {
+            "Id": "030/gcc-ls/8",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/9",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3336
+          },
+          {
+            "Id": "030/gcc-ls/10",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 654
+          },
+          {
+            "Id": "030/gcc-ls/11",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1955
+          },
+          {
+            "Id": "030/gcc-ls/12",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 656
+          },
+          {
+            "Id": "030/gcc-ls/13",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 358
+          },
+          {
+            "Id": "030/gcc-ls/14",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 657
+          },
+          {
+            "Id": "030/gcc-ls/15",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 359
+          },
+          {
+            "Id": "030/gcc-ls/16",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 659
+          },
+          {
+            "Id": "030/gcc-ls/17",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 660
+          },
+          {
+            "Id": "030/gcc-ls/18",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3346
+          },
+          {
+            "Id": "030/gcc-ls/19",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 661
+          },
+          {
+            "Id": "030/gcc-ls/20",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/21",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3352
+          },
+          {
+            "Id": "030/gcc-ls/22",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/23",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/24",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 360
+          },
+          {
+            "Id": "030/gcc-ls/25",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/26",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 361
+          },
+          {
+            "Id": "030/gcc-ls/27",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 667
+          },
+          {
+            "Id": "030/gcc-ls/28",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 668
+          },
+          {
+            "Id": "030/gcc-ls/29",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 669
+          },
+          {
+            "Id": "030/gcc-ls/30",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3365
+          },
+          {
+            "Id": "030/gcc-ls/31",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 670
+          },
+          {
+            "Id": "030/gcc-ls/32",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 671
+          },
+          {
+            "Id": "030/gcc-ls/33",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/34",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/35",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 672
+          },
+          {
+            "Id": "030/gcc-ls/36",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 362
+          },
+          {
+            "Id": "030/gcc-ls/37",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 674
+          },
+          {
+            "Id": "030/gcc-ls/38",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 675
+          },
+          {
+            "Id": "030/gcc-ls/39",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 673
+          },
+          {
+            "Id": "030/gcc-ls/40",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 676
+          },
+          {
+            "Id": "030/gcc-ls/41",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 677
+          },
+          {
+            "Id": "030/gcc-ls/42",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 678
+          },
+          {
+            "Id": "030/gcc-ls/43",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 680
+          },
+          {
+            "Id": "030/gcc-ls/44",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 681
+          },
+          {
+            "Id": "030/gcc-ls/45",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 682
+          },
+          {
+            "Id": "030/gcc-ls/46",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 363
+          },
+          {
+            "Id": "030/gcc-ls/47",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 679
+          },
+          {
+            "Id": "030/gcc-ls/48",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 686
+          },
+          {
+            "Id": "030/gcc-ls/49",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 687
+          },
+          {
+            "Id": "030/gcc-ls/50",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 691
+          },
+          {
+            "Id": "030/gcc-ls/51",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 689
+          },
+          {
+            "Id": "030/gcc-ls/52",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 692
+          },
+          {
+            "Id": "030/gcc-ls/53",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 690
+          },
+          {
+            "Id": "030/gcc-ls/54",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2361
+          },
+          {
+            "Id": "030/gcc-ls/55",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/56",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3372
+          },
+          {
+            "Id": "030/gcc-ls/57",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2415
+          },
+          {
+            "Id": "030/gcc-ls/58",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3384
+          },
+          {
+            "Id": "030/gcc-ls/59",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2436
+          },
+          {
+            "Id": "030/gcc-ls/60",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3398
+          },
+          {
+            "Id": "030/fraud-attach-ls/1",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/fraud-attach-ls/2",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/fraud-attach-ls/3",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/arb-ls/1",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/arb-ls/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3417
+          },
+          {
+            "Id": "030/arb-ls/3",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/arb-ls/4",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/arb-ls/5",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/61",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/62",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3418
+          },
+          {
+            "Id": "030/gcc-ls/63",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3418
+          },
+          {
+            "Id": "030/gcc-ls/64",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/65",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 29
+          },
+          {
+            "Id": "030/gcc-ls/66",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 177
+          },
+          {
+            "Id": "030/gcc-ls/67",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          }
+        ],
+        "CandidateCount": 3457,
+        "TrueSelectedLost": 0,
+        "ReviewedPresent": 209,
+        "ReviewedLost": 30,
+        "SelectedAt160": 9,
+        "RankSum": 198750
+      },
+      "Counterfactual": {
+        "Rows": [
+          {
+            "Id": "030/front/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1362
+          },
+          {
+            "Id": "030/front/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1364
+          },
+          {
+            "Id": "030/front/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1374
+          },
+          {
+            "Id": "030/front/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1381
+          },
+          {
+            "Id": "030/outline/1",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 50
+          },
+          {
+            "Id": "030/outline/2",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 51
+          },
+          {
+            "Id": "030/outline/3",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/outline/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3462
+          },
+          {
+            "Id": "030/outline/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2045
+          },
+          {
+            "Id": "030/outline/6",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/outline/7",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/outline/8",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 16
+          },
+          {
+            "Id": "030/outline/9",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 17
+          },
+          {
+            "Id": "030/outline/10",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 18
+          },
+          {
+            "Id": "030/outline/11",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 31
+          },
+          {
+            "Id": "030/outline/12",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/itc/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 742
+          },
+          {
+            "Id": "030/itc/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 763
+          },
+          {
+            "Id": "030/itc/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 793
+          },
+          {
+            "Id": "030/itc/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 826
+          },
+          {
+            "Id": "030/itc/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 743
+          },
+          {
+            "Id": "030/itc/6",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 745
+          },
+          {
+            "Id": "030/itc/7",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1840
+          },
+          {
+            "Id": "030/itc/8",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 757
+          },
+          {
+            "Id": "030/itc/9",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 758
+          },
+          {
+            "Id": "030/itc/10",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 755
+          },
+          {
+            "Id": "030/itc/11",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 767
+          },
+          {
+            "Id": "030/itc/12",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 768
+          },
+          {
+            "Id": "030/itc/13",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 764
+          },
+          {
+            "Id": "030/itc/14",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 401
+          },
+          {
+            "Id": "030/itc/15",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 772
+          },
+          {
+            "Id": "030/itc/16",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 771
+          },
+          {
+            "Id": "030/itc/17",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 778
+          },
+          {
+            "Id": "030/itc/18",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 785
+          },
+          {
+            "Id": "030/itc/19",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 789
+          },
+          {
+            "Id": "030/itc/20",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 790
+          },
+          {
+            "Id": "030/itc/21",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 406
+          },
+          {
+            "Id": "030/itc/22",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 802
+          },
+          {
+            "Id": "030/itc/23",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 807
+          },
+          {
+            "Id": "030/itc/24",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 808
+          },
+          {
+            "Id": "030/itc/25",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 809
+          },
+          {
+            "Id": "030/itc/26",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 812
+          },
+          {
+            "Id": "030/itc/27",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 813
+          },
+          {
+            "Id": "030/itc/28",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 817
+          },
+          {
+            "Id": "030/itc/29",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 819
+          },
+          {
+            "Id": "030/itc/30",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 824
+          },
+          {
+            "Id": "030/itc/31",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 420
+          },
+          {
+            "Id": "030/itc/32",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 827
+          },
+          {
+            "Id": "030/itc/33",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 837
+          },
+          {
+            "Id": "030/itc/34",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 836
+          },
+          {
+            "Id": "030/itc/35",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 838
+          },
+          {
+            "Id": "030/itc/36",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 839
+          },
+          {
+            "Id": "030/itc/37",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 842
+          },
+          {
+            "Id": "030/itc/38",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 845
+          },
+          {
+            "Id": "030/itc/39",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 846
+          },
+          {
+            "Id": "030/datasheet/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 847
+          },
+          {
+            "Id": "030/datasheet/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 848
+          },
+          {
+            "Id": "030/datasheet/3",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/datasheet/4",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/datasheet/5",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/techforms/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1577
+          },
+          {
+            "Id": "030/techforms/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1595
+          },
+          {
+            "Id": "030/techforms/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1600
+          },
+          {
+            "Id": "030/techforms/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1606
+          },
+          {
+            "Id": "030/techforms/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1612
+          },
+          {
+            "Id": "030/techforms/6",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1618
+          },
+          {
+            "Id": "030/techforms/7",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1624
+          },
+          {
+            "Id": "030/techforms/8",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1637
+          },
+          {
+            "Id": "030/techforms/9",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1652
+          },
+          {
+            "Id": "030/finforms/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 493
+          },
+          {
+            "Id": "030/finforms/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1670
+          },
+          {
+            "Id": "030/finforms/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1690
+          },
+          {
+            "Id": "030/finforms/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1694
+          },
+          {
+            "Id": "030/finforms/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 501
+          },
+          {
+            "Id": "030/finforms/6",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 503
+          },
+          {
+            "Id": "030/finforms/7",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2064
+          },
+          {
+            "Id": "030/finforms/8",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 962
+          },
+          {
+            "Id": "030/fraud-standalone/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 239
+          },
+          {
+            "Id": "030/fraud-standalone/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 507
+          },
+          {
+            "Id": "030/tor/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 520
+          },
+          {
+            "Id": "030/tor/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 521
+          },
+          {
+            "Id": "030/tor/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 522
+          },
+          {
+            "Id": "030/tor/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 528
+          },
+          {
+            "Id": "030/tor/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 523
+          },
+          {
+            "Id": "030/tor/6",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 529
+          },
+          {
+            "Id": "030/gcc-tb/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 979
+          },
+          {
+            "Id": "030/gcc-tb/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 427
+          },
+          {
+            "Id": "030/gcc-tb/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 429
+          },
+          {
+            "Id": "030/gcc-tb/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 540
+          },
+          {
+            "Id": "030/gcc-tb/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 540
+          },
+          {
+            "Id": "030/gcc-tb/6",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 545
+          },
+          {
+            "Id": "030/gcc-tb/7",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 546
+          },
+          {
+            "Id": "030/gcc-tb/8",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 542
+          },
+          {
+            "Id": "030/gcc-tb/9",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 297
+          },
+          {
+            "Id": "030/gcc-tb/10",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 543
+          },
+          {
+            "Id": "030/gcc-tb/11",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 544
+          },
+          {
+            "Id": "030/gcc-tb/12",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 547
+          },
+          {
+            "Id": "030/gcc-tb/13",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 548
+          },
+          {
+            "Id": "030/gcc-tb/14",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 550
+          },
+          {
+            "Id": "030/gcc-tb/15",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 553
+          },
+          {
+            "Id": "030/gcc-tb/16",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 298
+          },
+          {
+            "Id": "030/gcc-tb/17",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 554
+          },
+          {
+            "Id": "030/gcc-tb/18",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 555
+          },
+          {
+            "Id": "030/gcc-tb/19",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 549
+          },
+          {
+            "Id": "030/gcc-tb/20",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 560
+          },
+          {
+            "Id": "030/gcc-tb/21",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 556
+          },
+          {
+            "Id": "030/gcc-tb/22",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 562
+          },
+          {
+            "Id": "030/gcc-tb/23",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 570
+          },
+          {
+            "Id": "030/gcc-tb/24",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-tb/25",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 579
+          },
+          {
+            "Id": "030/gcc-tb/26",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 580
+          },
+          {
+            "Id": "030/gcc-tb/27",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 581
+          },
+          {
+            "Id": "030/gcc-tb/28",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 582
+          },
+          {
+            "Id": "030/gcc-tb/29",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 583
+          },
+          {
+            "Id": "030/gcc-tb/30",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 584
+          },
+          {
+            "Id": "030/gcc-tb/31",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 585
+          },
+          {
+            "Id": "030/gcc-tb/32",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 586
+          },
+          {
+            "Id": "030/gcc-tb/33",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 587
+          },
+          {
+            "Id": "030/gcc-tb/34",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 589
+          },
+          {
+            "Id": "030/gcc-tb/35",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 590
+          },
+          {
+            "Id": "030/gcc-tb/36",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 592
+          },
+          {
+            "Id": "030/gcc-tb/37",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 593
+          },
+          {
+            "Id": "030/gcc-tb/38",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 594
+          },
+          {
+            "Id": "030/gcc-tb/39",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 595
+          },
+          {
+            "Id": "030/gcc-tb/40",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 299
+          },
+          {
+            "Id": "030/gcc-tb/41",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 597
+          },
+          {
+            "Id": "030/gcc-tb/42",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 598
+          },
+          {
+            "Id": "030/gcc-tb/43",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1939
+          },
+          {
+            "Id": "030/gcc-tb/44",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 600
+          },
+          {
+            "Id": "030/gcc-tb/45",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 601
+          },
+          {
+            "Id": "030/gcc-tb/46",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 605
+          },
+          {
+            "Id": "030/gcc-tb/47",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 602
+          },
+          {
+            "Id": "030/gcc-tb/48",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 604
+          },
+          {
+            "Id": "030/gcc-tb/49",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 607
+          },
+          {
+            "Id": "030/gcc-tb/50",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 606
+          },
+          {
+            "Id": "030/gcc-tb/51",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 608
+          },
+          {
+            "Id": "030/gcc-tb/52",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 609
+          },
+          {
+            "Id": "030/gcc-tb/53",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 611
+          },
+          {
+            "Id": "030/gcc-tb/54",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 300
+          },
+          {
+            "Id": "030/gcc-tb/55",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 614
+          },
+          {
+            "Id": "030/gcc-tb/56",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1921
+          },
+          {
+            "Id": "030/gcc-tb/57",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 569
+          },
+          {
+            "Id": "030/gcc-tb/58",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 591
+          },
+          {
+            "Id": "030/gcc-tb/59",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 596
+          },
+          {
+            "Id": "030/gcc-tb/60",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 603
+          },
+          {
+            "Id": "030/gcc-tb/61",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 610
+          },
+          {
+            "Id": "030/gcc-tb/62",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 612
+          },
+          {
+            "Id": "030/fraud-attach-tb/1",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/fraud-attach-tb/2",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/fraud-attach-tb/3",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/arb-tb/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 640
+          },
+          {
+            "Id": "030/arb-tb/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 642
+          },
+          {
+            "Id": "030/arb-tb/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 643
+          },
+          {
+            "Id": "030/arb-tb/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 644
+          },
+          {
+            "Id": "030/arb-tb/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 645
+          },
+          {
+            "Id": "030/gcc-tb/63",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 617
+          },
+          {
+            "Id": "030/gcc-tb/64",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 646
+          },
+          {
+            "Id": "030/gcc-tb/65",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1176
+          },
+          {
+            "Id": "030/gcc-tb/66",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1178
+          },
+          {
+            "Id": "030/gcc-tb/67",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 23
+          },
+          {
+            "Id": "030/gcc-tb/68",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1824
+          },
+          {
+            "Id": "030/gcc-tb/69",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 27
+          },
+          {
+            "Id": "030/gcc-tb/70",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1190
+          },
+          {
+            "Id": "030/gcc-tb/71",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1207
+          },
+          {
+            "Id": "030/gcc-ls/1",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1956
+          },
+          {
+            "Id": "030/gcc-ls/2",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/3",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3336
+          },
+          {
+            "Id": "030/gcc-ls/4",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3336
+          },
+          {
+            "Id": "030/gcc-ls/5",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1958
+          },
+          {
+            "Id": "030/gcc-ls/6",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3339
+          },
+          {
+            "Id": "030/gcc-ls/7",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 655
+          },
+          {
+            "Id": "030/gcc-ls/8",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/9",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3341
+          },
+          {
+            "Id": "030/gcc-ls/10",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 656
+          },
+          {
+            "Id": "030/gcc-ls/11",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1959
+          },
+          {
+            "Id": "030/gcc-ls/12",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 658
+          },
+          {
+            "Id": "030/gcc-ls/13",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 358
+          },
+          {
+            "Id": "030/gcc-ls/14",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 659
+          },
+          {
+            "Id": "030/gcc-ls/15",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 359
+          },
+          {
+            "Id": "030/gcc-ls/16",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 661
+          },
+          {
+            "Id": "030/gcc-ls/17",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 662
+          },
+          {
+            "Id": "030/gcc-ls/18",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3351
+          },
+          {
+            "Id": "030/gcc-ls/19",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 663
+          },
+          {
+            "Id": "030/gcc-ls/20",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/21",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3357
+          },
+          {
+            "Id": "030/gcc-ls/22",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/23",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/24",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 360
+          },
+          {
+            "Id": "030/gcc-ls/25",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/26",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 361
+          },
+          {
+            "Id": "030/gcc-ls/27",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 669
+          },
+          {
+            "Id": "030/gcc-ls/28",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 670
+          },
+          {
+            "Id": "030/gcc-ls/29",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 671
+          },
+          {
+            "Id": "030/gcc-ls/30",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3370
+          },
+          {
+            "Id": "030/gcc-ls/31",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 672
+          },
+          {
+            "Id": "030/gcc-ls/32",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 673
+          },
+          {
+            "Id": "030/gcc-ls/33",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/34",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/35",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 674
+          },
+          {
+            "Id": "030/gcc-ls/36",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 362
+          },
+          {
+            "Id": "030/gcc-ls/37",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 676
+          },
+          {
+            "Id": "030/gcc-ls/38",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 677
+          },
+          {
+            "Id": "030/gcc-ls/39",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 675
+          },
+          {
+            "Id": "030/gcc-ls/40",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 678
+          },
+          {
+            "Id": "030/gcc-ls/41",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 679
+          },
+          {
+            "Id": "030/gcc-ls/42",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 680
+          },
+          {
+            "Id": "030/gcc-ls/43",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 682
+          },
+          {
+            "Id": "030/gcc-ls/44",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 683
+          },
+          {
+            "Id": "030/gcc-ls/45",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 684
+          },
+          {
+            "Id": "030/gcc-ls/46",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 363
+          },
+          {
+            "Id": "030/gcc-ls/47",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 681
+          },
+          {
+            "Id": "030/gcc-ls/48",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 688
+          },
+          {
+            "Id": "030/gcc-ls/49",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 689
+          },
+          {
+            "Id": "030/gcc-ls/50",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 693
+          },
+          {
+            "Id": "030/gcc-ls/51",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 691
+          },
+          {
+            "Id": "030/gcc-ls/52",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 694
+          },
+          {
+            "Id": "030/gcc-ls/53",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 692
+          },
+          {
+            "Id": "030/gcc-ls/54",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2366
+          },
+          {
+            "Id": "030/gcc-ls/55",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/56",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3377
+          },
+          {
+            "Id": "030/gcc-ls/57",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2420
+          },
+          {
+            "Id": "030/gcc-ls/58",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3389
+          },
+          {
+            "Id": "030/gcc-ls/59",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 2441
+          },
+          {
+            "Id": "030/gcc-ls/60",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3403
+          },
+          {
+            "Id": "030/fraud-attach-ls/1",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/fraud-attach-ls/2",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/fraud-attach-ls/3",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/arb-ls/1",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/arb-ls/2",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 3422
+          },
+          {
+            "Id": "030/arb-ls/3",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/arb-ls/4",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/arb-ls/5",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/61",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/62",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1986
+          },
+          {
+            "Id": "030/gcc-ls/63",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1986
+          },
+          {
+            "Id": "030/gcc-ls/64",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "030/gcc-ls/65",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 29
+          },
+          {
+            "Id": "030/gcc-ls/66",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 176
+          },
+          {
+            "Id": "030/gcc-ls/67",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          }
+        ],
+        "CandidateCount": 3462,
+        "TrueSelectedLost": 0,
+        "ReviewedPresent": 209,
+        "ReviewedLost": 30,
+        "SelectedAt160": 9,
+        "RankSum": 195991
+      },
+      "Controls": {
+        "NewCandidates": 6,
+        "NewNearbyBodyParagraphs": 0,
+        "NewTableTocCandidates": 0,
+        "NewWrappedNonHeadingText": 0
+      },
+      "BoundaryClassRows": 0,
+      "AbsorbedClassRows": 0,
+      "BoundaryOccurrences": [],
+      "CounterfactualCandidateDelta": 5
+    },
+    {
+      "DocumentId": "043",
+      "BaselineCandidateCount": 2038,
+      "CounterfactualCandidateCount": 2044,
+      "Baseline": {
+        "Rows": [
+          {
+            "Id": "043/heading/001",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 218
+          },
+          {
+            "Id": "043/heading/002",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 219
+          },
+          {
+            "Id": "043/heading/003",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 220
+          },
+          {
+            "Id": "043/heading/004",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 222
+          },
+          {
+            "Id": "043/heading/005",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 225
+          },
+          {
+            "Id": "043/heading/006",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 226
+          },
+          {
+            "Id": "043/heading/007",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 227
+          },
+          {
+            "Id": "043/heading/008",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 228
+          },
+          {
+            "Id": "043/heading/009",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 229
+          },
+          {
+            "Id": "043/heading/010",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 233
+          },
+          {
+            "Id": "043/heading/011",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 234
+          },
+          {
+            "Id": "043/heading/012",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 235
+          },
+          {
+            "Id": "043/heading/013",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 236
+          },
+          {
+            "Id": "043/heading/014",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "043/heading/015",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1311
+          },
+          {
+            "Id": "043/heading/016",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1312
+          },
+          {
+            "Id": "043/heading/017",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 542
+          },
+          {
+            "Id": "043/heading/018",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1909
+          },
+          {
+            "Id": "043/heading/019",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1910
+          },
+          {
+            "Id": "043/heading/020",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1314
+          },
+          {
+            "Id": "043/heading/021",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1406
+          },
+          {
+            "Id": "043/heading/022",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1315
+          },
+          {
+            "Id": "043/heading/023",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1316
+          },
+          {
+            "Id": "043/heading/024",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1318
+          },
+          {
+            "Id": "043/heading/025",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 564
+          },
+          {
+            "Id": "043/heading/026",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1319
+          },
+          {
+            "Id": "043/heading/027",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1320
+          },
+          {
+            "Id": "043/heading/028",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1922
+          },
+          {
+            "Id": "043/heading/029",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1325
+          },
+          {
+            "Id": "043/heading/030",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 588
+          },
+          {
+            "Id": "043/heading/031",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 312
+          },
+          {
+            "Id": "043/heading/032",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1328
+          },
+          {
+            "Id": "043/heading/033",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 208
+          },
+          {
+            "Id": "043/heading/034",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 72
+          },
+          {
+            "Id": "043/heading/035",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 331
+          },
+          {
+            "Id": "043/heading/036",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 698
+          },
+          {
+            "Id": "043/heading/037",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1333
+          },
+          {
+            "Id": "043/heading/038",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 726
+          },
+          {
+            "Id": "043/heading/039",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 209
+          },
+          {
+            "Id": "043/heading/040",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 741
+          },
+          {
+            "Id": "043/heading/041",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1338
+          },
+          {
+            "Id": "043/heading/042",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 104
+          },
+          {
+            "Id": "043/heading/043",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 107
+          }
+        ],
+        "CandidateCount": 2038,
+        "TrueSelectedLost": 0,
+        "ReviewedPresent": 42,
+        "ReviewedLost": 1,
+        "SelectedAt160": 3,
+        "RankSum": 31150
+      },
+      "Counterfactual": {
+        "Rows": [
+          {
+            "Id": "043/heading/001",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 216
+          },
+          {
+            "Id": "043/heading/002",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 217
+          },
+          {
+            "Id": "043/heading/003",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 218
+          },
+          {
+            "Id": "043/heading/004",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 220
+          },
+          {
+            "Id": "043/heading/005",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 223
+          },
+          {
+            "Id": "043/heading/006",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 224
+          },
+          {
+            "Id": "043/heading/007",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 225
+          },
+          {
+            "Id": "043/heading/008",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 226
+          },
+          {
+            "Id": "043/heading/009",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 227
+          },
+          {
+            "Id": "043/heading/010",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 231
+          },
+          {
+            "Id": "043/heading/011",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 232
+          },
+          {
+            "Id": "043/heading/012",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 233
+          },
+          {
+            "Id": "043/heading/013",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 234
+          },
+          {
+            "Id": "043/heading/014",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "043/heading/015",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1315
+          },
+          {
+            "Id": "043/heading/016",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1316
+          },
+          {
+            "Id": "043/heading/017",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 544
+          },
+          {
+            "Id": "043/heading/018",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1914
+          },
+          {
+            "Id": "043/heading/019",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1915
+          },
+          {
+            "Id": "043/heading/020",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1318
+          },
+          {
+            "Id": "043/heading/021",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1410
+          },
+          {
+            "Id": "043/heading/022",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1319
+          },
+          {
+            "Id": "043/heading/023",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1320
+          },
+          {
+            "Id": "043/heading/024",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1322
+          },
+          {
+            "Id": "043/heading/025",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 566
+          },
+          {
+            "Id": "043/heading/026",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1323
+          },
+          {
+            "Id": "043/heading/027",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1324
+          },
+          {
+            "Id": "043/heading/028",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1927
+          },
+          {
+            "Id": "043/heading/029",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1329
+          },
+          {
+            "Id": "043/heading/030",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 590
+          },
+          {
+            "Id": "043/heading/031",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 313
+          },
+          {
+            "Id": "043/heading/032",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1332
+          },
+          {
+            "Id": "043/heading/033",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 207
+          },
+          {
+            "Id": "043/heading/034",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 71
+          },
+          {
+            "Id": "043/heading/035",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 332
+          },
+          {
+            "Id": "043/heading/036",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 700
+          },
+          {
+            "Id": "043/heading/037",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1129
+          },
+          {
+            "Id": "043/heading/038",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 728
+          },
+          {
+            "Id": "043/heading/039",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 208
+          },
+          {
+            "Id": "043/heading/040",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 744
+          },
+          {
+            "Id": "043/heading/041",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1342
+          },
+          {
+            "Id": "043/heading/042",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 103
+          },
+          {
+            "Id": "043/heading/043",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 106
+          }
+        ],
+        "CandidateCount": 2044,
+        "TrueSelectedLost": 0,
+        "ReviewedPresent": 42,
+        "ReviewedLost": 1,
+        "SelectedAt160": 3,
+        "RankSum": 30993
+      },
+      "Controls": {
+        "NewCandidates": 9,
+        "NewNearbyBodyParagraphs": 0,
+        "NewTableTocCandidates": 1,
+        "NewWrappedNonHeadingText": 0
+      },
+      "BoundaryClassRows": 0,
+      "AbsorbedClassRows": 0,
+      "BoundaryOccurrences": [],
+      "CounterfactualCandidateDelta": 6
+    },
+    {
+      "DocumentId": "058",
+      "BaselineCandidateCount": 1884,
+      "CounterfactualCandidateCount": 1903,
+      "Baseline": {
+        "Rows": [
+          {
+            "Id": "058/heading/001",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 909
+          },
+          {
+            "Id": "058/heading/002",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 34
+          },
+          {
+            "Id": "058/heading/003",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "058/heading/004",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "058/heading/005",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1592
+          },
+          {
+            "Id": "058/heading/006",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 134
+          },
+          {
+            "Id": "058/heading/007",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 135
+          },
+          {
+            "Id": "058/heading/008",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1602
+          },
+          {
+            "Id": "058/heading/009",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1603
+          },
+          {
+            "Id": "058/heading/010",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 137
+          },
+          {
+            "Id": "058/heading/011",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1613
+          },
+          {
+            "Id": "058/heading/012",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1617
+          },
+          {
+            "Id": "058/heading/013",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 140
+          },
+          {
+            "Id": "058/heading/014",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 141
+          },
+          {
+            "Id": "058/heading/015",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 144
+          },
+          {
+            "Id": "058/heading/016",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1627
+          },
+          {
+            "Id": "058/heading/017",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 717
+          },
+          {
+            "Id": "058/heading/018",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 721
+          },
+          {
+            "Id": "058/heading/019",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 148
+          },
+          {
+            "Id": "058/heading/020",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1647
+          },
+          {
+            "Id": "058/heading/021",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1650
+          },
+          {
+            "Id": "058/heading/022",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "058/heading/023",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1651
+          },
+          {
+            "Id": "058/heading/024",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1653
+          },
+          {
+            "Id": "058/heading/025",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1657
+          },
+          {
+            "Id": "058/heading/026",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 151
+          },
+          {
+            "Id": "058/heading/027",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "058/heading/028",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1662
+          },
+          {
+            "Id": "058/heading/029",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1663
+          },
+          {
+            "Id": "058/heading/030",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 154
+          },
+          {
+            "Id": "058/heading/031",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1669
+          },
+          {
+            "Id": "058/heading/032",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 156
+          },
+          {
+            "Id": "058/heading/033",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1677
+          },
+          {
+            "Id": "058/heading/034",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 45
+          },
+          {
+            "Id": "058/heading/035",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "058/heading/036",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1690
+          },
+          {
+            "Id": "058/heading/037",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 165
+          },
+          {
+            "Id": "058/heading/038",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 766
+          },
+          {
+            "Id": "058/heading/039",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 167
+          },
+          {
+            "Id": "058/heading/040",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1708
+          },
+          {
+            "Id": "058/heading/041",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "058/heading/042",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1712
+          },
+          {
+            "Id": "058/heading/043",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1721
+          },
+          {
+            "Id": "058/heading/044",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1731
+          },
+          {
+            "Id": "058/heading/045",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 776
+          },
+          {
+            "Id": "058/heading/046",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1737
+          },
+          {
+            "Id": "058/heading/047",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 44
+          }
+        ],
+        "CandidateCount": 1884,
+        "TrueSelectedLost": 0,
+        "ReviewedPresent": 41,
+        "ReviewedLost": 6,
+        "SelectedAt160": 13,
+        "RankSum": 40666
+      },
+      "Counterfactual": {
+        "Rows": [
+          {
+            "Id": "058/heading/001",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 912
+          },
+          {
+            "Id": "058/heading/002",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 33
+          },
+          {
+            "Id": "058/heading/003",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "058/heading/004",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "058/heading/005",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1611
+          },
+          {
+            "Id": "058/heading/006",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 135
+          },
+          {
+            "Id": "058/heading/007",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 136
+          },
+          {
+            "Id": "058/heading/008",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1620
+          },
+          {
+            "Id": "058/heading/009",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1621
+          },
+          {
+            "Id": "058/heading/010",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 138
+          },
+          {
+            "Id": "058/heading/011",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1631
+          },
+          {
+            "Id": "058/heading/012",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1635
+          },
+          {
+            "Id": "058/heading/013",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 141
+          },
+          {
+            "Id": "058/heading/014",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 142
+          },
+          {
+            "Id": "058/heading/015",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 145
+          },
+          {
+            "Id": "058/heading/016",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1645
+          },
+          {
+            "Id": "058/heading/017",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 721
+          },
+          {
+            "Id": "058/heading/018",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 724
+          },
+          {
+            "Id": "058/heading/019",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 149
+          },
+          {
+            "Id": "058/heading/020",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1667
+          },
+          {
+            "Id": "058/heading/021",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1670
+          },
+          {
+            "Id": "058/heading/022",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "058/heading/023",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1671
+          },
+          {
+            "Id": "058/heading/024",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1673
+          },
+          {
+            "Id": "058/heading/025",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1677
+          },
+          {
+            "Id": "058/heading/026",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 152
+          },
+          {
+            "Id": "058/heading/027",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "058/heading/028",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1682
+          },
+          {
+            "Id": "058/heading/029",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1683
+          },
+          {
+            "Id": "058/heading/030",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 155
+          },
+          {
+            "Id": "058/heading/031",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1689
+          },
+          {
+            "Id": "058/heading/032",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 157
+          },
+          {
+            "Id": "058/heading/033",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1697
+          },
+          {
+            "Id": "058/heading/034",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 44
+          },
+          {
+            "Id": "058/heading/035",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "058/heading/036",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1710
+          },
+          {
+            "Id": "058/heading/037",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 166
+          },
+          {
+            "Id": "058/heading/038",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 769
+          },
+          {
+            "Id": "058/heading/039",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 168
+          },
+          {
+            "Id": "058/heading/040",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1728
+          },
+          {
+            "Id": "058/heading/041",
+            "Present": false,
+            "SelectedAt160": false,
+            "Rank": 2147483647
+          },
+          {
+            "Id": "058/heading/042",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1732
+          },
+          {
+            "Id": "058/heading/043",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1741
+          },
+          {
+            "Id": "058/heading/044",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1751
+          },
+          {
+            "Id": "058/heading/045",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 779
+          },
+          {
+            "Id": "058/heading/046",
+            "Present": true,
+            "SelectedAt160": false,
+            "Rank": 1757
+          },
+          {
+            "Id": "058/heading/047",
+            "Present": true,
+            "SelectedAt160": true,
+            "Rank": 43
+          }
+        ],
+        "CandidateCount": 1903,
+        "TrueSelectedLost": 0,
+        "ReviewedPresent": 41,
+        "ReviewedLost": 6,
+        "SelectedAt160": 13,
+        "RankSum": 41100
+      },
+      "Controls": {
+        "NewCandidates": 21,
+        "NewNearbyBodyParagraphs": 0,
+        "NewTableTocCandidates": 0,
+        "NewWrappedNonHeadingText": 0
+      },
+      "BoundaryClassRows": 0,
+      "AbsorbedClassRows": 0,
+      "BoundaryOccurrences": [],
+      "CounterfactualCandidateDelta": 19
+    }
+  ],
+  "controls": {
+    "candidatePresentReviewedOccurrences": 375,
+    "candidatePresentChanged": true,
+    "nearbyBodyParagraphs": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "tableTocCandidates": [
+      0,
+      0,
+      1,
+      0
+    ],
+    "wrappedNonHeadingText": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "newCandidates": [
+      10,
+      6,
+      9,
+      21
+    ],
+    "interpretation": "controls are source/layout-shaped diagnostics; no unlabeled control is promoted to gold"
+  },
+  "absorbedOrTruncated": [
+    {
+      "document": "004",
+      "occurrence": "004/section/5",
+      "sourceLineIds": [
+        "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+        "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+      ],
+      "sourceText": "Section 1 GENERAL PROVISIONS",
+      "counterfactual": "not applied; no safe invariant shared with boundary split"
+    }
+  ],
+  "recurrence": {
+    "status": "PROVEN",
+    "documents": [
+      "004",
+      "030",
+      "043",
+      "058"
+    ],
+    "basis": "first-loss recurrence is frozen across four documents; this A2 replay measures the same policy on all four, while the 004 class split remains 9 \u002B 1"
+  },
+  "REMEDIATION_JUSTIFIED": "NO",
+  "finalStatus": "REMEDIATION_NOT_JUSTIFIED"
+}

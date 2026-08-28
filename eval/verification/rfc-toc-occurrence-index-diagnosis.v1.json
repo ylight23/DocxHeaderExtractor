@@ -1,0 +1,223 @@
+{
+  "task": "RFC-3",
+  "rfc2CandidateGenerationRecovered": true,
+  "targetText": "1. Introduction",
+  "expectedIndex": 8,
+  "actualIndex": 100,
+  "expectedIndexSemantics": "hard-coded historical test assertion; no producer or source mapping found",
+  "expectedIndexAuthority": "STALE_EXPECTATION",
+  "actualIndexSemantics": "raw ParagraphWalker/SlimParagraph source index copied by RfcTocDictionaryOutline",
+  "actualIndexAuthority": "SOURCE_FACT",
+  "occurrenceIdentityMatch": true,
+  "positionalIndexMatch": false,
+  "firstIndexDivergenceStage": "TEST_EXPECTATION",
+  "firstIndexDivergenceOperation": "RfcTocDictionaryOutlineTests.Dung_toc_dictionary_giu_so_muc_va_khop_nav_092 assertion",
+  "rootCauseClassification": "STALE_TEST_EXPECTATION",
+  "productionRemediationJustified": "NO",
+  "testExpectationReviewJustified": "YES",
+  "sameDocumentControls": [
+    {
+      "text": "1. Introduction",
+      "runtimeIndex": 100,
+      "runtimeStableId": "body[1]/tbl[13]/tr[1]/tc[1]/p[1]",
+      "runtimeTableDepth": 1,
+      "tocSourceIndex": 60,
+      "tocStableId": "body[1]/p[14]",
+      "tocTableDepth": 0
+    },
+    {
+      "text": "5. Field Definitions",
+      "runtimeIndex": 729,
+      "runtimeStableId": "body[1]/p[192]",
+      "runtimeTableDepth": 0,
+      "tocSourceIndex": 77,
+      "tocStableId": "body[1]/p[23]",
+      "tocTableDepth": 0
+    },
+    {
+      "text": "Appendix A Collected ABNF",
+      "runtimeIndex": 1251,
+      "runtimeStableId": "body[1]/tbl[186]/tr[1]/tc[1]/p[1]",
+      "runtimeTableDepth": 1,
+      "tocSourceIndex": 97,
+      "tocStableId": "body[1]/p[34]",
+      "tocTableDepth": 0
+    }
+  ],
+  "occurrences": [
+    {
+      "occurrenceId": "body[1]/p[14]#target-18",
+      "rawText": "1.Introduction",
+      "normalizedText": "1. Introduction",
+      "sourceParagraphIndex": 60,
+      "eligibleParagraphOrdinal": 41,
+      "bodyAnchorOrdinal": null,
+      "tocOrdinal": 1,
+      "tableDepth": 0,
+      "stableId": "body[1]/p[14]",
+      "sourceLineIds": null,
+      "sourceSegments": [
+        {
+          "Start": 0,
+          "End": 18,
+          "RunIndex": 0,
+          "RawStart": 0
+        },
+        {
+          "Start": 18,
+          "End": 19,
+          "RunIndex": 2,
+          "RawStart": 0
+        },
+        {
+          "Start": 19,
+          "End": 20,
+          "RunIndex": 3,
+          "RawStart": 0
+        },
+        {
+          "Start": 20,
+          "End": 33,
+          "RunIndex": 4,
+          "RawStart": 0
+        },
+        {
+          "Start": 33,
+          "End": 36,
+          "RunIndex": 7,
+          "RawStart": 0
+        },
+        {
+          "Start": 36,
+          "End": 37,
+          "RunIndex": 8,
+          "RawStart": 0
+        },
+        {
+          "Start": 37,
+          "End": 59,
+          "RunIndex": 9,
+          "RawStart": 0
+        },
+        {
+          "Start": 59,
+          "End": 62,
+          "RunIndex": 12,
+          "RawStart": 0
+        },
+        {
+          "Start": 62,
+          "End": 63,
+          "RunIndex": 13,
+          "RawStart": 0
+        },
+        {
+          "Start": 63,
+          "End": 79,
+          "RunIndex": 14,
+          "RawStart": 0
+        },
+        {
+          "Start": 79,
+          "End": 84,
+          "RunIndex": 18,
+          "RawStart": 0
+        },
+        {
+          "Start": 84,
+          "End": 85,
+          "RunIndex": 19,
+          "RawStart": 0
+        },
+        {
+          "Start": 85,
+          "End": 100,
+          "RunIndex": 20,
+          "RawStart": 0
+        },
+        {
+          "Start": 100,
+          "End": 105,
+          "RunIndex": 24,
+          "RawStart": 0
+        },
+        {
+          "Start": 105,
+          "End": 106,
+          "RunIndex": 25,
+          "RawStart": 0
+        },
+        {
+          "Start": 106,
+          "End": 119,
+          "RunIndex": 26,
+          "RawStart": 0
+        }
+      ],
+      "isTocOccurrence": true,
+      "isBodyOccurrence": false,
+      "selectedAsAnchor": false
+    },
+    {
+      "occurrenceId": "body[1]/tbl[13]/tr[1]/tc[1]/p[1]#target-0",
+      "rawText": "1. Introduction",
+      "normalizedText": "1. Introduction",
+      "sourceParagraphIndex": 100,
+      "eligibleParagraphOrdinal": 71,
+      "bodyAnchorOrdinal": 1,
+      "tocOrdinal": null,
+      "tableDepth": 1,
+      "stableId": "body[1]/tbl[13]/tr[1]/tc[1]/p[1]",
+      "sourceLineIds": null,
+      "sourceSegments": [
+        {
+          "Start": 0,
+          "End": 15,
+          "RunIndex": 0,
+          "RawStart": 0
+        }
+      ],
+      "isTocOccurrence": false,
+      "isBodyOccurrence": true,
+      "selectedAsAnchor": true
+    }
+  ],
+  "indexSpaces": [
+    {
+      "field": "WalkedParagraph.StableId",
+      "writer": "ParagraphWalker",
+      "meaning": "XML structural identity",
+      "zeroBased": null,
+      "source": "document.xml traversal",
+      "stableAcrossFiltering": true,
+      "stableAcrossTables": true
+    },
+    {
+      "field": "SlimParagraph.Index",
+      "writer": "DocxSlimExtractor.BuildParagraph",
+      "meaning": "raw document paragraph traversal ordinal",
+      "zeroBased": true,
+      "source": "ParagraphWalker output",
+      "stableAcrossFiltering": true,
+      "stableAcrossTables": true
+    },
+    {
+      "field": "HeadingRecord.Index",
+      "writer": "RfcTocDictionaryOutline",
+      "meaning": "copied source paragraph index",
+      "zeroBased": true,
+      "source": "SlimParagraph.Index",
+      "stableAcrossFiltering": true,
+      "stableAcrossTables": true
+    },
+    {
+      "field": "expected test value",
+      "writer": "RfcTocDictionaryOutlineTests line 27",
+      "meaning": "unexplained literal 8",
+      "zeroBased": null,
+      "source": "test assertion",
+      "stableAcrossFiltering": false,
+      "stableAcrossTables": false
+    }
+  ]
+}

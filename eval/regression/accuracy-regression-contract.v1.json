@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_regression_harness_contract",
+  "status": "CONTRACT_VERIFIED",
+  "verificationStatus": "PASS",
+  "blockedByECompile": false,
+  "providerCalls": 0,
+  "productionBehaviorChanged": false,
+  "authority": "documentSha256 \u002B sourceLineIds \u002B occurrenceId",
+  "candidateIdAuthority": "diagnostic-only",
+  "pipelineStages": [
+    "SOURCE",
+    "GENERATED",
+    "SELECTED",
+    "ROLE",
+    "POST_CONFLICT",
+    "SPAN",
+    "VALIDATED",
+    "GROUNDED",
+    "EMITTED"
+  ],
+  "firstLossStages": [
+    "SOURCE_UNAVAILABLE",
+    "CANDIDATE_GENERATION",
+    "CANDIDATE_SELECTION",
+    "ROLE_CLASSIFICATION",
+    "CONFLICT_RESOLUTION",
+    "SPAN_RESOLUTION",
+    "VALIDATION",
+    "GROUNDING",
+    "OUTPUT",
+    "NONE",
+    "NOT_OBSERVABLE"
+  ],
+  "observationSchema": {
+    "occurrenceId": "string",
+    "sourceLineIds": "string[]",
+    "documentId": "string",
+    "documentSha256": "string",
+    "headingType": "string",
+    "stageStatus": "bool? per stage; null means NOT_OBSERVABLE",
+    "candidateId": "diagnostic-only"
+  },
+  "metrics": {
+    "generationRecallDelta": 1,
+    "selectionRecallDelta": 1,
+    "roleRecallDelta": 2,
+    "postConflictRecallDelta": 2,
+    "spanRecallDelta": 2,
+    "validatedRecallDelta": 2,
+    "groundedRecallDelta": 2,
+    "outputRecallDelta": 2,
+    "reviewedRecovered": 1,
+    "reviewedDisplaced": 0,
+    "netReviewedGain": 1,
+    "candidatePopulationDelta": 0,
+    "selectedPopulationDelta": 0
+  },
+  "fixture": {
+    "baselineEqualsCandidate": false,
+    "baselineEqualsCandidateZeroDelta": true,
+    "duplicateHeadingTextUsesOccurrenceIdentity": true,
+    "notObservableIsNotFailure": true,
+    "reviewedOnly": true
+  },
+  "firstLossSummary": {
+    "NONE": 1,
+    "ROLE_CLASSIFICATION": 1,
+    "CANDIDATE_GENERATION": 1
+  },
+  "contractTests": [
+    "duplicate heading text does not collapse occurrences",
+    "candidateId changes do not change occurrence identity",
+    "one occurrence has exactly one first-loss stage",
+    "NOT_OBSERVABLE remains distinct from failure",
+    "baseline equals candidate yields zero deltas",
+    "recovered and displaced are reported separately",
+    "unreviewed candidates are not classified as false positives"
+  ]
+}

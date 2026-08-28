@@ -1,0 +1,58 @@
+{
+  "milestone": "ARCH-4K",
+  "status": "CLOSED",
+  "baseRevision": "90f7fd6",
+  "publicSlimApiDeprecation": true,
+  "supportedNormalApi": ["DocxSlimExtractor.ExtractForAuthority(string)"],
+  "legacySlimEntrypoints": [
+    {
+      "api": "DocxSlimExtractor.Extract(string)",
+      "returnType": "SlimDocument",
+      "classification": "LEGACY_COMPATIBILITY_API",
+      "deprecated": true,
+      "message": "Legacy Slim compatibility API. Normal authority code must use ExtractForAuthority()."
+    },
+    {
+      "api": "DocxSlimExtractor.ExtractWithSourceFacts(string)",
+      "returnType": "DocxSourceExtractionResult (contains SlimDocument)",
+      "classification": "LEGACY_COMPATIBILITY_API",
+      "deprecated": true,
+      "message": "Legacy Slim compatibility API. Normal authority code must use ExtractForAuthority()."
+    }
+  ],
+  "unknownSlimExposingApis": 0,
+  "slimTypesDeprecated": false,
+  "normalAuthoritySlimReferences": 0,
+  "normalAuthorityLegacyApiCalls": 0,
+  "intentionalCompatibilityCallerFiles": 170,
+  "allowlistedLifecycleClasses": [
+    {"class": "LEGACY_RUNTIME", "temporaryAllowed": true, "migrationTarget": "KEEP_LEGACY_TEMPORARILY"},
+    {"class": "REPAIR_COMPATIBILITY", "temporaryAllowed": true, "migrationTarget": "MIGRATE_TO_WRITEBACK_ADAPTER"},
+    {"class": "EVAL_ONLY", "temporaryAllowed": true, "migrationTarget": "MIGRATE_TO_SOURCE_DOCUMENT"},
+    {"class": "WRITEBACK_COMPATIBILITY", "temporaryAllowed": true, "migrationTarget": "MIGRATE_TO_WRITEBACK_ADAPTER"},
+    {"class": "INTERNAL_IMPLEMENTATION", "temporaryAllowed": true, "migrationTarget": "MIGRATE_TO_COMPATIBILITY_CONTEXT"},
+    {"class": "TEST_ONLY", "temporaryAllowed": true, "migrationTarget": "REPLACE_WITH_TEST_FIXTURE_BUILDER"}
+  ],
+  "warningImpact": {
+    "obsoleteWarningsBeforeRelease": 0,
+    "obsoleteWarningsAfterRelease": 0,
+    "intentionalCompatibilityWarnings": "entrypoint deprecation is non-error and type declarations remain active"
+  },
+  "slimTypesRemainActive": true,
+  "demotionBlockers": 3,
+  "legacyApiChanged": false,
+  "sourceFactDelta": 0,
+  "candidateDelta": 0,
+  "roleDelta": 0,
+  "scoreDelta": 0,
+  "levelDelta": 0,
+  "demotionOrderChanged": false,
+  "demotionBehaviorDelta": 0,
+  "routeBehaviorChanged": false,
+  "focusedTests": "4/4 PASS",
+  "fRegression": "2/2 PASS (existing authority)",
+  "releaseBuild": "PASS",
+  "fullSlimRetirementReady": false,
+  "providerCalls": 0,
+  "productionBehaviorChanged": false
+}

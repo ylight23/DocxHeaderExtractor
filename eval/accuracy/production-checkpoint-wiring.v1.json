@@ -1,0 +1,78 @@
+{
+  "status": "DETACHED_WRITER_LIFETIME_PASS",
+  "normalAuthorityCheckpoint": "ENABLED",
+  "checkpointPolicy": "TEMP_PER_RUN",
+  "checkpointOwner": "AuthorityExtractionPipeline",
+  "checkpointPathPolicy": "unique-run-directory-under-system-temp",
+  "resume": false,
+  "r1PreservationReachable": true,
+  "validatorBypass": false,
+  "cleanup": "PASS",
+  "concurrencyIsolation": "PASS",
+  "productionCheckpointLifetime": "PASS",
+  "detachedWriterSafe": "PASS",
+  "activeWriterCancelDrain": "PASS",
+  "activeWriterFaultDrain": "PASS",
+  "drainCanHangFromLostActiveCount": false,
+  "lateWriteAfterDeadline": "BLOCKED",
+  "timeoutCleanupPolicy": "CLOSE_ADMISSION_DRAIN_ACTIVE_WRITERS_THEN_CLEANUP",
+  "immediateCompleteCleanup": "PASS",
+  "diagnosticCheckpointBehaviorChanged": false,
+  "providerCalls": 0,
+  "candidateBehaviorChanged": false,
+  "timeoutChanged": false,
+  "productionBehaviorChanged": "true: preserves independently completed span work after a partial span-lane timeout",
+  "diagnosticRawModelOutputDefault": false,
+  "tests": {
+    "focusedCheckpointAuthority": {
+      "passed": 31,
+      "failed": 0,
+      "total": 31
+    },
+    "fullSuite": {
+      "passed": 1216,
+      "failed": 35,
+      "skipped": 0,
+      "total": 1251,
+      "status": "COMPLETE_WITH_EXISTING_ROUTE_DIAGNOSTIC_FAILURES"
+    },
+    "baselineFullSuite": {
+      "revision": "3b4e358c2696190e2aafd5a609587ad335cb1eea",
+      "passed": 1214,
+      "failed": 35,
+      "skipped": 0,
+      "total": 1249,
+      "status": "COMPLETE_WITH_EXISTING_ROUTE_DIAGNOSTIC_FAILURES"
+    },
+    "failureSetMatch": true,
+    "noNewFullSuiteRegression": "PROVEN",
+    "normalSolutionBuild": "PASS",
+    "coreBuildNoRestore": "PASS",
+    "cliAndWebNet9BuildNoRestore": "PASS",
+    "winX64CliBuild": "PASS_AFTER_TARGETED_RESTORE",
+    "winX64WebBuild": "PASS_AFTER_TARGETED_RESTORE"
+  },
+  "staticContract": {
+    "lateResponseAfterCancellation": "REJECTED",
+    "checkpointNewWriteAfterClose": "REJECTED",
+    "inFlightWriteDrain": "PASS",
+    "detachedProviderNotAwaitedForCleanup": true,
+    "tempDirectoryRemovedAfterDrain": true,
+    "diagnosticExplicitCheckpointUnchanged": true
+  },
+  "fullSuiteFailureNote": "35 failures were recorded without modifying expected values or suppressing tests; focused authority/checkpoint/replay coverage remained green.",
+  "requiredScenarios": {
+    "timeoutWithResolvedSpans": "covered by existing A3 preservation tests",
+    "timeoutWithoutResolvedSpans": "covered by existing A3 preservation tests",
+    "nullCheckpointLegacyBehavior": "covered by existing A3 preservation tests",
+    "completeLaneNoOutputChange": "covered by existing A3 preservation tests",
+    "invalidSpanValidatorRejection": "covered by existing validator/replay tests",
+    "cleanupTerminalPaths": "scope cleanup is idempotent and exception-safe; production closes checkpoint admission, drains active writers, then cleans up without waiting for a provider that ignores cancellation",
+    "concurrentRunIsolation": "unique scope path test PASS"
+  },
+  "notes": [
+    "Production route is the only new checkpoint caller; diagnostic APIs remain explicit-path APIs.",
+    "A detached lane keeps the production-owned checkpoint directory alive until its task quiesces; complete lanes clean up immediately.",
+    "No provider or model calls were made by this change or verification."
+  ]
+}

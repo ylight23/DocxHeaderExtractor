@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "artifactKind": "full_suite_failure_packet_compare",
+  "baselineRevision": "3b4e358c2696190e2aafd5a609587ad335cb1eea",
+  "currentRevision": "a0a3638178e0b6092880abbce933a8954fa1780",
+  "baselineFailureCount": 35,
+  "currentFailureCount": 35,
+  "sameTestIdentitySet": true,
+  "sameFailureFingerprintSet": true,
+  "addedFailures": [],
+  "removedFailures": [],
+  "addedFailureFingerprints": [],
+  "removedFailureFingerprints": [],
+  "occurrenceLevelPacketAvailable": true,
+  "providerCalls": 0,
+  "productionCodeChanged": false,
+  "testExpectationsChanged": false
+}

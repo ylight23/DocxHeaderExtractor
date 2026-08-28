@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "clean_architecture_authority_routing_review",
+  "auditOnly": true,
+  "sourceRevision": "521ab902d89d4f3c8c7a68cb528b84ca6ebccfb2",
+  "CURRENT_ARCHITECTURE": "Modular monolith. Core contains models, application orchestration, source adapters, inference clients, output, evaluation, and repair. Hosts compose both the current AuthorityExtractionPipeline and legacy/evaluation paths.",
+  "CLEAN_ARCHITECTURE_COMPLIANCE": "FAIL",
+  "AUTHORITY_ROUTE_OWNER": "AuthorityExtractionPipeline for the normal product route; route policy is not extracted as a separate component.",
+  "PDF_FIRST_FALLBACK_OWNER": "APPLICATION_POLICY_IMPLEMENTED_IN_MIXED_PIPELINE",
+  "ROUTE_POLICY_MIXED_WITH_INFRASTRUCTURE": true,
+  "SLIM_PRODUCTION_REACHABLE": true,
+  "SLIM_ARCHITECTURAL_LEGACY": true,
+  "SLIM_SINGLE_RESPONSIBILITY": "FAIL",
+  "SOURCE_FACT_BOUNDARY": "PARTIAL",
+  "DEPENDENCY_RULE_VIOLATIONS": [
+    "MODEL_LAYER_IMPORTS_OPENXML_LAYER",
+    "CORE_PROJECT_OWNS_INFRASTRUCTURE_PACKAGES",
+    "APPLICATION_CONSTRUCTS_PROVIDER_IMPLEMENTATIONS",
+    "SOURCE_ADAPTER_EMBEDS_HEADING_POLICY",
+    "ROUTE_POLICY_EMBEDDED_IN_LEGACY_ORCHESTRATOR",
+    "EVALUATION_AND_REPAIR_COLOCATED_WITH_RUNTIME",
+    "HOSTS_DUPLICATE_PROVIDER_COMPOSITION"
+  ],
+  "LEGACY_COMPONENTS": [
+    {
+      "component": "HeaderExtractionPipeline",
+      "status": "LEGACY_REACHABLE",
+      "reason": "Historical compatibility/evaluation route remains directly reachable from CLI and tests; also mixes extraction, policy, routing, model passes, critic, hierarchy, and output concerns."
+    },
+    {
+      "component": "DocxSlimExtractor",
+      "status": "ARCHITECTURAL_LEGACY_PRODUCTION_REACHABLE",
+      "reason": "Still useful in production preprocessing, but combines OpenXML I/O, normalization, fact extraction, heuristic classification, policy demotion, and diagnostics."
+    },
+    {
+      "component": "PdfFirstValidatedFallback inside HeaderExtractionPipeline",
+      "status": "LEGACY_ROUTE_POLICY",
+      "reason": "A boolean policy in the legacy orchestrator changes authority route and can bypass the historical downstream path."
+    },
+    {
+      "component": "Core.Eval and Core.Repair",
+      "status": "SUPPORTING_LEGACY_SURFACE",
+      "reason": "Evaluation/repair callers remain colocated with runtime Core and some repair workflows instantiate legacy pipeline types."
+    }
+  ],
+  "TARGET_COMPONENTS": [
+    "Domain.SourceDocument",
+    "Domain.SourceParagraph",
+    "Domain.SourceFact",
+    "Domain.ModelProposal",
+    "Domain.ValidatedStructure",
+    "Domain.HierarchyFact",
+    "Domain.OutputDecision",
+    "Application.ExtractOutlineUseCase",
+    "Application.RoutePolicy",
+    "Application.CandidateGeneration",
+    "Application.ProposalResolution",
+    "Application.Validation",
+    "Application.HierarchyResolution",
+    "Application.OutputPolicy",
+    "Ports.IDocumentSource",
+    "Ports.ILayoutSource",
+    "Ports.IHeadingAnalyst",
+    "Ports.ICheckpointStore",
+    "Ports.IDocumentWriter",
+    "Infrastructure.Docx.OpenXmlDocumentSource",
+    "Infrastructure.Pdf.PdfPigLayoutSource",
+    "Infrastructure.Inference.ProviderAdapters",
+    "Hosts.CLI.Web.MCP.AgentHarness"
+  ],
+  "productionCallGraph": [
+    { "node": "CLI", "classification": "PRODUCTION_REACHABLE", "calls": ["PipelineDocumentExtractionTool", "HeaderExtractionPipeline for compatibility/eval command", "provider composition for explicit commands"] },
+    { "node": "Web", "classification": "PRODUCTION_REACHABLE", "calls": ["PipelineDocumentExtractionTool", "AuthorityExtractionPipeline", "host-level provider composition"] },
+    { "node": "MCP", "classification": "PRODUCTION_REACHABLE", "calls": ["McpExtractionService", "PipelineDocumentExtractionTool", "AuthorityExtractionPipeline"] },
+    { "node": "AgentHarness", "classification": "PRODUCTION_REACHABLE", "calls": ["PipelineDocumentExtractionTool", "AuthorityExtractionPipeline"] },
+    { "node": "AuthorityExtractionPipeline", "classification": "PRODUCTION_REACHABLE", "calls": ["LegacyDocConverter", "DocxSlimExtractor", "DocumentModeClassifier", "PDF discovery", "DocxAuthorityPipeline", "PdfLayoutEvidenceOutline", "validator", "grounding", "output projection"] },
+    { "node": "HeaderExtractionPipeline", "classification": "LEGACY_REACHABLE", "calls": ["DocxSlimExtractor", "candidate/critic/rolling/hierarchy logic", "PdfFirstValidatedFallback", "legacy output paths"] },
+    { "node": "LegacyDocConverter", "classification": "PRODUCTION_REACHABLE", "calls": ["document conversion/preparation"] },
+    { "node": "DocxSlimExtractor", "classification": "PRODUCTION_REACHABLE", "calls": ["OpenXML read", "style/numbering", "source spans", "TOC/table interpretation", "heuristics", "demotion/post-processing"] },
+    { "node": "PdfLayoutEvidenceOutline", "classification": "PRODUCTION_REACHABLE", "calls": ["PDF layout/source facts", "analyst proposal path", "canonical/validator pipeline"] },
+    { "node": "PdfFirstValidatedFallback", "classification": "PRODUCTION_REACHABLE", "calls": ["route policy embedded in HeaderExtractionPipeline"] },
+    { "node": "IHeaderClassifier", "classification": "PRODUCTION_REACHABLE", "calls": ["inference port used by orchestration"] },
+    { "node": "OpenRouter/LMStudio/SGLang/Llama implementations", "classification": "PRODUCTION_REACHABLE", "calls": ["constructed from Core orchestration and/or hosts"] },
+    { "node": "Validator/Grounding/Hierarchy/Output", "classification": "PRODUCTION_REACHABLE", "calls": ["deterministic downstream authority stages"] },
+    { "node": "Core.Eval/Core.Repair", "classification": "EVAL_ONLY", "calls": ["explicit benchmark/repair workflows; some legacy pipeline construction"] },
+    { "node": "Tests", "classification": "TEST_ONLY", "calls": ["legacy and authority route contracts"] }
+  ],
+  "authorityRouting": {
+    "normalRoute": "PipelineDocumentExtractionTool -> AuthorityExtractionPipeline",
+    "pdfFirstValidatedFallback": {
+      "predicate": "PipelineOptions.PdfFirstValidatedFallback",
+      "inputFact": "application option, default true on HeaderExtractionPipeline",
+      "decision": "HeaderExtractionPipeline.RunAsync diverts to RunPdfFirstAuthorityPipelineAsync when enabled",
+      "targetRoute": "PDF-first authority route; with no usable PDF/analyst it may fall back to DocxAuthorityPipeline, while DisableLlm can produce an empty PDF-first result",
+      "authorityConsequence": "Changes the source authority and can bypass legacy candidate/split/critic/rolling downstream behavior; C2-P traced 11 failures to this route diversion",
+      "responsibility": "APPLICATION_POLICY",
+      "implementationFinding": "Mixed with legacy orchestration and infrastructure/source availability checks"
+    },
+    "branches": [
+      { "condition": "sibling PDF and analyst available", "route": "PDF authority via PdfLayoutEvidenceOutline", "authority": "PDF source/layout facts plus existing validator/grounding/output" },
+      { "condition": "no sibling PDF but analyst available", "route": "DocxAuthorityPipeline", "authority": "DOCX authority" },
+      { "condition": "DisableLlm on legacy PDF-first route", "route": "empty DocumentOutline with pdf-first route metadata", "authority": "policy-controlled fail-closed/empty result" }
+    ],
+    "sourceCapabilityVsAccuracyPolicy": "Not cleanly separated. PDF existence/discovery is a source capability concern; PdfFirstValidatedFallback is an accuracy/authority policy concern, but both are evaluated inside orchestration."
+  },
+  "slimResponsibilities": [
+    { "responsibility": "SOURCE_IO", "evidence": "opens and walks OpenXML document parts" },
+    { "responsibility": "SOURCE_NORMALIZATION", "evidence": "normalizes paragraph/run text and builds source segments/line-break offsets" },
+    { "responsibility": "SOURCE_FACT_EXTRACTION", "evidence": "style, numbering, font, alignment, table depth, spans, stable IDs" },
+    { "responsibility": "DERIVED_FEATURE", "evidence": "body font size, style trust, document mode, TOC/table positional facts" },
+    { "responsibility": "HEURISTIC_CLASSIFICATION", "evidence": "HeadingHeuristics.Classify and ParagraphRole/GuessedLevel/Score" },
+    { "responsibility": "POLICY", "evidence": "candidate role, cover-page demotion, emphasis/body demotion, corrupt/table handling" },
+    { "responsibility": "POST_PROCESSING", "evidence": "TOC marking, running-header stripping, cover and inline demotions" },
+    { "responsibility": "DIAGNOSTIC", "evidence": "style trust and document mode reports retained on the slim model" }
+  ],
+  "sourceFactFieldClassification": [
+    { "fields": ["Text", "StyleId", "StyleName", "OutlineLevel", "NumberingId", "NumberingLevel", "NumberLabel", "NumberingDepth", "NumberingFormat", "FontSizePt", "Bold", "Italic", "Underline", "AllCaps", "Alignment", "TableDepth", "SourceSegments", "LineBreakOffsets", "SectionIndex", "KeepNext", "PageBreakBefore"], "classification": "SOURCE_FACT", "writer": "DocxSlimExtractor/OpenXML readers", "evidence": "read or normalized directly from document structure/layout" },
+    { "fields": ["BodyFontSizePt", "HasBuiltInHeadingStyle", "NumberingStyleLevel", "InContentControl", "Corrupt", "TableRole", "InTableOfContents", "PrecedesTable", "PrecedesTableOfContents", "Mode", "StyleTrust"], "classification": "DERIVED_FACT_OR_INTERPRETED", "writer": "post-read analyzers and OpenXmlLayer classifiers", "evidence": "computed from document-wide context or structural interpretation" },
+    { "fields": ["Role", "IsCandidate", "Score", "GuessedLevel"], "classification": "POLICY_RESULT", "writer": "HeadingHeuristics and pipeline candidate policy", "evidence": "changes eligibility/order and is not raw source authority" },
+    { "fields": ["ModelHeading", "HeadingTopic", "HeadingSpan", "ProposalResolution"], "classification": "PROPOSAL", "writer": "IHeaderClassifier and proposal/span resolution", "evidence": "model or proposal-stage output requiring canonical mapping and validation" },
+    { "fields": ["ValidatedStructure", "PdfCanonicalGrounding", "validatorStatus", "groundingStatus"], "classification": "VALIDATED_FACT", "writer": "deterministic validator and grounding stages", "evidence": "accepted only after source-span/authority checks" },
+    { "fields": ["OutputDecision", "emitted", "route metadata", "checkpoint diagnostics"], "classification": "POLICY_RESULT_OR_DIAGNOSTIC", "writer": "output policy and observability layers", "evidence": "delivery decision or audit data, not source fact" },
+    { "fields": ["DocumentMode", "PrecedesTable", "PrecedesTableOfContents", "HasBuiltInHeadingStyle"], "classification": "AMBIGUOUS_WITH_CURRENT_MODEL", "writer": "multiple post-processing/classifier stages", "evidence": "some are observable facts, but their current placement and use blend derived evidence with policy" }
+  ],
+  "dependencyMap": [
+    { "module": "Core.Models", "layer": "Domain-like", "dependsOn": ["OpenXmlLayer"], "finding": "violates dependency direction; SlimDocument imports StyleTrust/DocumentMode types" },
+    { "module": "Core.OpenXmlLayer", "layer": "Infrastructure/adapter", "dependsOn": ["DocumentFormat.OpenXml", "Core.Models in places"], "finding": "source adapter also supplies classifications consumed by models/pipeline" },
+    { "module": "Core.Pipeline", "layer": "Application plus mixed adapters", "dependsOn": ["Models", "OpenXmlLayer", "Llm", "Vision", "Output", "Eval-adjacent concerns"], "finding": "orchestration and infrastructure/provider knowledge coexist" },
+    { "module": "Core.Llm", "layer": "Infrastructure", "dependsOn": ["HttpClient", "LLamaSharp", "provider protocols"], "finding": "network/model implementations live in Core" },
+    { "module": "Core.Vision", "layer": "Infrastructure", "dependsOn": ["PDF rendering", "LLamaSharp", "HTTP"], "finding": "infrastructure package and provider concerns live in Core" },
+    { "module": "Core.Output", "layer": "Application/output adapter", "dependsOn": ["Models", "JSON"], "finding": "reasonable boundary, but currently invoked by mixed pipelines" },
+    { "module": "Core.Eval", "layer": "Diagnostic", "dependsOn": ["Models", "Pipeline", "OpenXmlLayer"], "finding": "evaluation is colocated with runtime and reaches legacy orchestration" },
+    { "module": "Core.Repair", "layer": "Diagnostic/repair", "dependsOn": ["Pipeline", "Output", "OpenXmlLayer"], "finding": "repair workflows are not isolated from runtime pipeline" },
+    { "module": "CLI/Web/MCP/AgentHarness", "layer": "Host", "dependsOn": ["Core/AgentHarness"], "finding": "hosts partly duplicate provider composition and expose legacy CLI route" }
+  ],
+  "migrationPhases": [
+    { "phase": 0, "name": "Freeze current behavior and regression harness", "status": "current/ongoing", "scope": "Keep authority, provenance, and failure-set contracts observable before moves" },
+    { "phase": 1, "name": "Define immutable SourceFacts contract", "status": "planned", "scope": "Separate source identity/facts from derived and policy fields" },
+    { "phase": 2, "name": "Wrap existing DocxSlimExtractor behind IDocumentSource", "status": "planned", "scope": "Preserve behavior while introducing a port" },
+    { "phase": 3, "name": "Separate raw extraction from derived features", "status": "planned", "scope": "Move style trust, mode, TOC/table interpretation behind explicit derived-fact services" },
+    { "phase": 4, "name": "Move heuristic and policy logic out of source adapter", "status": "planned", "scope": "Extract candidate/heading policy from Slim extraction" },
+    { "phase": 5, "name": "Extract RoutePolicy from AuthorityExtractionPipeline/PdfFirstValidatedFallback", "status": "planned", "scope": "Make source capability and accuracy authority policy explicit" },
+    { "phase": 6, "name": "Introduce infrastructure adapters", "status": "planned", "scope": "Move OpenXML/PDF/inference implementations behind ports and composition roots" },
+    { "phase": 7, "name": "Deprecate old facade after caller count reaches zero", "status": "planned", "scope": "Retire HeaderExtractionPipeline only after compatibility/eval callers are migrated" }
+  ],
+  "findings": [
+    { "id": "ARCH-1-R1", "finding": "AuthorityExtractionPipeline is the normal product orchestrator, but route policy is still implemented in orchestration rather than a dedicated application policy." },
+    { "id": "ARCH-1-R2", "finding": "PdfFirstValidatedFallback is application policy, not infrastructure; its current placement mixes policy with source availability and legacy route logic." },
+    { "id": "ARCH-1-R3", "finding": "DocxSlimExtractor is production reachable and architecturally legacy, with multiple responsibilities and policy decisions." },
+    { "id": "ARCH-1-R4", "finding": "The source-fact boundary is partial: raw/normalized facts exist, but Slim models also carry derived, policy, proposal-adjacent, and diagnostic state." },
+    { "id": "ARCH-1-R5", "finding": "The current Core project is not a strict Clean Architecture graph; this is a refactoring roadmap, not justification for a big-bang rewrite." }
+  ],
+  "IMMEDIATE_REFACTOR_JUSTIFIED": "NO",
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_CODE_CHANGED": false,
+  "TEST_EXPECTATIONS_CHANGED": false
+}

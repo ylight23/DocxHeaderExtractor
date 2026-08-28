@@ -1,0 +1,35 @@
+{
+  "task": "RFC-2",
+  "status": "REMEDIATED_WITH_DOWNSTREAM_INDEX_GAP",
+  "fixture": "todo10_8/heading_corpus_95_word/07_system_generated/092_RFC9111_HTTP_Caching.docx",
+  "firstLossOwner": "RfcTocDictionaryOutline.FindTocCluster",
+  "scope": "candidate_generation_only",
+  "changes": {
+    "markerWhitespace": "optional_after_numeric_and_appendix_markers",
+    "tocDiscovery": "Table of Contents anchor with first repeated marker boundary",
+    "tocSourceWindow": "top-level discovery plus marked table rows inside the discovered window",
+    "bodyAnchorInput": "all non-corrupt non-empty paragraphs, preserving source indexes"
+  },
+  "result": {
+    "candidateGenerated": true,
+    "tocParagraphs": 18,
+    "dictionaryEntries": 67,
+    "bodyAnchors": 67,
+    "tocOnlyEntries": 0,
+    "bodyAnchorRatio": 1.0,
+    "accepted": true
+  },
+  "guards": {
+    "dictionaryMatchingChanged": false,
+    "navigationAlignmentChanged": false,
+    "numberingPreservationChanged": false,
+    "routePolicyChanged": false,
+    "expectedTestsChanged": false,
+    "providerCalls": 0
+  },
+  "verification": {
+    "diagnosticProbe": "PASS",
+    "directAnalyzerSemanticCounts": "PASS",
+    "knownResidual": "Existing assertion expects 1. Introduction at Index 8; current source occurrence is Index 100. This is outside FindTocCluster and is not remediated by RFC-2."
+  }
+}

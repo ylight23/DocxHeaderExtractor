@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "verification_canonical_execution_environment_env2",
+  "task": "VERIFY-6C-ENV2",
+  "status": "ENV_READY_ARTIFACT_LANE_BLOCKED",
+  "BASE": "92cd2d6d3cba29986858d30a91d5da0468044cff",
+  "VERIFY_6C_ENV_READY": true,
+  "VERIFY_6C_READY": false,
+  "TREE_COMPOSITION_VALID": true,
+  "tree": {
+    "head": "92cd2d6d3cba29986858d30a91d5da0468044cff",
+    "headMatchesBase": true,
+    "statusPorcelain": "",
+    "worktreeCleanAtStart": true,
+    "rfcCorrectionsPreserved": true,
+    "mcp2Present": true,
+    "architectureTargetPresent": true,
+    "existingVerificationTreesUntouched": true
+  },
+  "freshness": {
+    "binDirectoriesBeforeBuild": 0,
+    "objDirectoriesBeforeBuild": 0,
+    "testResultsDirectoriesBeforeBuild": 0,
+    "dedicatedTempRoot": "C:\\DocxHeaderExtractor-verify6c-env2-temp",
+    "tempRootExistedBeforeCreation": false,
+    "tempRootInitiallyEmpty": true,
+    "TEMP_ROOT_CLEAN": true,
+    "WORKTREE_CLEAN_AT_START": true
+  },
+  "storage": {
+    "DISK_PREFLIGHT_PASS": true,
+    "observedFreeBytesBeforeBuild": 36106870784,
+    "worktreeAndTempRootSameVolume": true
+  },
+  "benchmarkArtifacts": {
+    "requiredArtifactsEnumerated": 8,
+    "MISSING_REQUIRED_ARTIFACTS": 0,
+    "UNREADABLE_REQUIRED_ARTIFACTS": 0,
+    "ARTIFACT_HASH_MISMATCHES": 1,
+    "UNKNOWN_REQUIRED_ARTIFACT_PROVENANCE": 7,
+    "materializedFromExistingTree": false,
+    "replacementArtifactsCreated": false,
+    "hashMismatch": {
+      "path": "eval/benchmark-n3/silver-labels/004-n3.2-silver-model-assisted.v1.json",
+      "manifestSha256": "1ec0498b0fa027ae7af24dc7f267573e2ddc307c75f4f63657557f1cd3a79418",
+      "observedSha256": "555f652b394c71f5532b7a7d378d5864626f33e66b66b932b6faf551cc342dee",
+      "classification": "AUTHORITY_HASH_MISMATCH"
+    }
+  },
+  "preFullSuiteGates": {
+    "RFC_LANE_PASS": { "passed": true, "passedTests": 5, "totalTests": 5, "execution": "fresh-env2" },
+    "RFC2_INVARIANTS_PASS": { "passed": true, "dictionaryEntries": 67, "bodyAnchors": 67, "tocOnlyEntries": 0, "bodyAnchorRatio": 1.0, "execution": "retained-authority-invariant" },
+    "ARCHITECTURE_FOCUSED_PASS": { "passed": true, "passedTests": 2, "totalTests": 2, "execution": "fresh-env2" },
+    "F_REGRESSION_PASS": { "passed": true, "passedTests": 2, "totalTests": 2, "execution": "fresh-env2" },
+    "MCP_PASS": { "passed": true, "passedTests": 7, "totalTests": 7, "execution": "fresh-env2" },
+    "RELEASE_BUILD_PASS": { "passed": true, "errors": 0, "command": "dotnet build DocxHeaderExtractor.sln -c Release --no-restore", "execution": "fresh-env2" }
+  },
+  "FULL_SUITE_EXECUTED": false,
+  "VERIFY_6B_OPEN": false,
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_CODE_CHANGED": false
+}

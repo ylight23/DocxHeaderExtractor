@@ -1,0 +1,1562 @@
+{
+  "schemaVersion": "git-publish-20260828.v1",
+  "task": "GIT-PUBLISH-20260828",
+  "repository": "ylight23/DocxHeaderExtractor",
+  "remote": "origin",
+  "remoteMainObserved": "a1c5b7d9a53ac665d6ceefb4729d5d603064d6dc",
+  "remoteBranch": "integration/final-authority-clean-architecture",
+  "localHead": "9b43a037132599ef4a070854614112a78af9d422",
+  "localCommitsDiscovered": 71,
+  "commitsAlreadyRemote": 27,
+  "commitsPushed": 44,
+  "commitsExcluded": 0,
+  "sourceFilesPushed": 210,
+  "testFilesPushed": 293,
+  "docsFilesPushed": 91,
+  "evalArtifactsPushed": 196,
+  "tempBuildFilesPushed": 0,
+  "secretFilesPushed": 0,
+  "unknownFilesPushed": 0,
+  "approvedRuntimeFilesExcludedFromCommit": [],
+  "commitCensus": [
+    {
+      "sha": "9b43a037132599ef4a070854614112a78af9d422",
+      "message": "merge: retain canonical verification checkpoint lineage",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "0d1525c9ae641444e8a0e8b5d3d8a336197a4a01",
+        "92cd2d6d3cba29986858d30a91d5da0468044cff"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": false,
+      "containsEvalArtifact": false,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": []
+    },
+    {
+      "sha": "0d1525c9ae641444e8a0e8b5d3d8a336197a4a01",
+      "message": "merge: integrate clean architecture lineage",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "5a124393974694eaa511027f3f696ebf0c9d4e7d",
+        "71ede77a6373e3dafa7d1aa7f2ab28e3815b9d97"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": false,
+      "containsEvalArtifact": false,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": []
+    },
+    {
+      "sha": "5a124393974694eaa511027f3f696ebf0c9d4e7d",
+      "message": "chore: publish today's authority verification work",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "fbc8c0bc3763a51a7f27d0a2ebcdc8e847561cd2"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/accuracy/hierarchy-accuracy-audit.md",
+        "docs/accuracy/hierarchy-human-annotation-guideline.md",
+        "docs/accuracy/hierarchy-human-authority-packet.md",
+        "docs/accuracy/hierarchy-human-pilot-annotation-execution.md",
+        "docs/architecture/legacy-reachability.md",
+        "docs/performance/authority-pipeline-cost-model.md",
+        "docs/verification/canonical-execution-environment-env2.md",
+        "docs/verification/canonical-execution-environment-reconstruction.md",
+        "docs/verification/canonical-integrated-baseline.md",
+        "docs/verification/canonical-integrated-full-suite.md",
+        "docs/verification/current-full-suite-failure-reconciliation.md",
+        "docs/verification/document-diagnostic-runner-provenance.md",
+        "docs/verification/full-suite-failure-triage.md",
+        "docs/verification/mcp-rid-packaging-resolution.md",
+        "docs/verification/post-arch4k-integrated-baseline.md",
+        "docs/verification/post-mcp-full-suite-delta.md",
+        "docs/verification/post-rfc-full-suite.md",
+        "docs/verification/rfc-preserving-architecture-replay.md",
+        "docs/verification/rfc-toc-first-reject.md",
+        "docs/verification/rfc-toc-minimal-candidate-generation.md",
+        "docs/verification/rfc-toc-occurrence-index-diagnosis.md",
+        "docs/verification/rfc-toc-residual-semantic-diagnosis.md",
+        "docs/verification/rfc-toc-residual-test-contract-correction.md",
+        "docs/verification/rfc-toc-route-expectation-reconciliation.md",
+        "docs/verification/rfc-toc-test-contract-correction.md",
+        "docs/verification/verify-6c-artifact.md",
+        "docs/verification/verify-6c-env.md",
+        "docs/verification/verify-6c-materialization.md",
+        "docs/verification/verify-6c-prov2.md",
+        "docs/verification/verify-6c-provenance-reconstruction.md",
+        "eval/accuracy-round6/semantic-first-loss-ledger.v1.json",
+        "eval/accuracy/hierarchy-accuracy-audit.v1.json",
+        "eval/accuracy/hierarchy-human-authority-packet.v1.json",
+        "eval/accuracy/hierarchy-human-authority.v1.json",
+        "eval/accuracy/hierarchy-human-pilot-annotation.v1.json",
+        "eval/architecture/legacy-reachability.v1.json",
+        "eval/performance/authority-pipeline-cost-model.v1.json",
+        "eval/verification/canonical-execution-environment-env2.v1.json",
+        "eval/verification/canonical-execution-environment-reconstruction.v1.json",
+        "eval/verification/canonical-integrated-baseline.v1.json",
+        "eval/verification/canonical-integrated-full-suite.v1.json",
+        "eval/verification/current-full-suite-failure-reconciliation.v1.json",
+        "eval/verification/document-diagnostic-runner-provenance.v1.json",
+        "eval/verification/full-suite-failure-ledger.v1.json",
+        "eval/verification/mcp-rid-packaging-resolution.v1.json",
+        "eval/verification/post-arch4k-integrated-baseline.v1.json",
+        "eval/verification/post-mcp-full-suite-delta.v1.json",
+        "eval/verification/post-rfc-full-suite.v1.json",
+        "eval/verification/rfc-preserving-architecture-replay.v1.json",
+        "eval/verification/rfc-toc-first-reject.v1.json",
+        "eval/verification/rfc-toc-minimal-candidate-generation.v1.json",
+        "eval/verification/rfc-toc-occurrence-index-diagnosis.v1.json",
+        "eval/verification/rfc-toc-residual-semantic-diagnosis.v1.json",
+        "eval/verification/rfc-toc-residual-test-contract-correction.v1.json",
+        "eval/verification/rfc-toc-route-expectation-reconciliation.v1.json",
+        "eval/verification/rfc-toc-test-contract-correction.v1.json",
+        "eval/verification/verify-6c-artifact.v1.json",
+        "eval/verification/verify-6c-env.v1.json",
+        "eval/verification/verify-6c-materialization.v1.json",
+        "eval/verification/verify-6c-prov2.v1.json",
+        "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+        "src/DocxHeaderExtractor.Core/Pipeline/RfcTocDictionaryOutline.cs",
+        "tests/DocxHeaderExtractor.Tests/McpIntegrationTests.cs",
+        "tests/DocxHeaderExtractor.Tests/PdfG0HierarchyHumanAuthorityPacketProbe.cs",
+        "tests/DocxHeaderExtractor.Tests/PdfG1HumanHierarchyAnnotationProbe.cs",
+        "tests/DocxHeaderExtractor.Tests/PdfG1aHumanHierarchyPilotExecutionProbe.cs",
+        "tests/DocxHeaderExtractor.Tests/PdfHAuthorityPipelineCostModelProbe.cs",
+        "tests/DocxHeaderExtractor.Tests/RfcTocDictionaryOutlineTests.cs",
+        "tests/DocxHeaderExtractor.Tests/RfcTocDirectAnalyzerSemanticTests.cs",
+        "tests/DocxHeaderExtractor.Tests/RfcTocFirstRejectDiagnosticTests.cs",
+        "tests/DocxHeaderExtractor.Tests/RfcTocOccurrenceIndexDiagnosisTests.cs",
+        "tests/DocxHeaderExtractor.Tests/RfcTocResidualSemanticDiagnosisTests.cs"
+      ]
+    },
+    {
+      "sha": "71ede77a6373e3dafa7d1aa7f2ab28e3815b9d97",
+      "message": "architecture: resolve ordered demotion state boundary",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "15da9245d99fb149759b485ddcb669eada97e911"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/ordered-demotion-state-boundary.md",
+        "eval/architecture/ordered-demotion-state-boundary.v1.json"
+      ]
+    },
+    {
+      "sha": "15da9245d99fb149759b485ddcb669eada97e911",
+      "message": "architecture: resolve built-in heading style ownership",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "7a7b22ec74e83459d1fe05d31b9d11cd1e05aff6"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/builtin-heading-style-ownership.md",
+        "eval/architecture/builtin-heading-style-ownership.v1.json",
+        "src/DocxHeaderExtractor.Core/Models/SourceDocument.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/BuiltInHeadingStyleIdentity.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSourceFactsBuilder.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/HeadingHeuristics.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/NumberingStyleFeatures.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/SlimSourceFactsAdapter.cs",
+        "tests/DocxHeaderExtractor.Tests/NumberingStyleFeatureBoundaryTests.cs"
+      ]
+    },
+    {
+      "sha": "92cd2d6d3cba29986858d30a91d5da0468044cff",
+      "message": "Fix MCP test host lookup for RID output",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "9e6fd17cde276ed16d3c662e43943347d93f798c"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": true,
+      "containsDocs": false,
+      "containsEvalArtifact": false,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "tests/DocxHeaderExtractor.Tests/McpIntegrationTests.cs"
+      ]
+    },
+    {
+      "sha": "9e6fd17cde276ed16d3c662e43943347d93f798c",
+      "message": "arch: introduce source writeback mapping boundary",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "d358786155242b87bf36648168a483d70215dbd6"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/writeback-mapping-boundary.md",
+        "eval/architecture/writeback-mapping-boundary.v1.json",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/OutlineWriteback.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/WritebackMapping.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/PdfProductWriteback.cs",
+        "tests/DocxHeaderExtractor.Tests/WritebackMappingBoundaryTests.cs"
+      ]
+    },
+    {
+      "sha": "d358786155242b87bf36648168a483d70215dbd6",
+      "message": "arch: resolve legacy slim blocker boundaries",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "91dc38198b97af62042ebfc9783c94639cca1e4e"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/slim-blocker-boundary-resolution.md",
+        "eval/architecture/slim-blocker-boundary-resolution.v1.json"
+      ]
+    },
+    {
+      "sha": "91dc38198b97af62042ebfc9783c94639cca1e4e",
+      "message": "arch: audit legacy slim migration wave one",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "5209bbd39c5599f661d1d0700b41c3b779adb9f3"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/legacy-slim-migration-wave1.md",
+        "eval/architecture/legacy-slim-migration-wave1.v1.json"
+      ]
+    },
+    {
+      "sha": "5209bbd39c5599f661d1d0700b41c3b779adb9f3",
+      "message": "arch: deprecate legacy slim extraction entrypoints",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "a4281c60c36a169d934337a957bd88b3534a0216"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/public-slim-api-deprecation.md",
+        "eval/architecture/public-slim-api-deprecation.v1.json",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "tests/DocxHeaderExtractor.Tests/NormalSlimApiRetirementTests.cs"
+      ]
+    },
+    {
+      "sha": "a4281c60c36a169d934337a957bd88b3534a0216",
+      "message": "arch: document legacy slim exit plan",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "67f57eb2448f1daab53498bd8fad3d6079543083"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/legacy-slim-exit-plan.md",
+        "eval/architecture/legacy-slim-exit-plan.v1.json"
+      ]
+    },
+    {
+      "sha": "67f57eb2448f1daab53498bd8fad3d6079543083",
+      "message": "arch: retire slim from normal authority api",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "7cae94df7e8ec5ed468585eeca6c34b6873bdb3d"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/normal-slim-api-retirement.md",
+        "eval/architecture/normal-slim-api-retirement.v1.json",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/AuthoritySourceExtractionResult.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/SlimCompatibilityBoundary.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/AuthorityExtractionPipeline.cs",
+        "tests/DocxHeaderExtractor.Tests/NormalSlimApiRetirementTests.cs"
+      ]
+    },
+    {
+      "sha": "7cae94df7e8ec5ed468585eeca6c34b6873bdb3d",
+      "message": "arch: isolate slim compatibility boundary",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "2f6dbc16c38101ac2927b040ae8ebeaa8a1e25f8"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/slim-compatibility-isolation.md",
+        "eval/architecture/slim-compatibility-isolation.v1.json",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/SlimCompatibilityBoundary.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/AuthorityExtractionPipeline.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/DocxAuthorityPipeline.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/HeaderExtractionPipeline.cs",
+        "tests/DocxHeaderExtractor.Tests/SlimCompatibilityIsolationTests.cs"
+      ]
+    },
+    {
+      "sha": "2f6dbc16c38101ac2927b040ae8ebeaa8a1e25f8",
+      "message": "arch: audit slim facade retirement readiness",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "22ad14b692f5a0282c919b5890bff00a301669f6"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/slim-retirement-readiness.md",
+        "eval/architecture/slim-retirement-readiness.v1.json",
+        "tests/DocxHeaderExtractor.Tests/SlimRetirementReadinessTests.cs"
+      ]
+    },
+    {
+      "sha": "22ad14b692f5a0282c919b5890bff00a301669f6",
+      "message": "arch: cut normal authority over to source document",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "b2fab7399c9bfafc550f1558ce7091855987f6c8"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/source-authority-cutover.md",
+        "eval/architecture/source-authority-cutover.v1.json",
+        "src/DocxHeaderExtractor.Core/Pipeline/AuthorityExtractionPipeline.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/DocxAuthorityPipeline.cs",
+        "tests/DocxHeaderExtractor.Tests/SourceAuthorityCutoverTests.cs"
+      ]
+    },
+    {
+      "sha": "b2fab7399c9bfafc550f1558ce7091855987f6c8",
+      "message": "arch: resolve demotion policy ownership",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "9c39e51a84f9654b57167823618131aa72116a35"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/demotion-policy-ownership.md",
+        "eval/architecture/demotion-policy-ownership.v1.json",
+        "tests/DocxHeaderExtractor.Tests/DemotionPolicyOwnershipTests.cs"
+      ]
+    },
+    {
+      "sha": "9c39e51a84f9654b57167823618131aa72116a35",
+      "message": "arch: extract pure post-classification policy",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "84603ab48ad32177572394d3c516d8dd3416f44e"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/pure-postclassification-policy.md",
+        "eval/architecture/pure-postclassification-policy.v1.json",
+        "src/DocxHeaderExtractor.Core/Application/Policy/IPostClassificationPolicy.cs",
+        "src/DocxHeaderExtractor.Core/Application/Policy/PostClassificationDecision.cs",
+        "src/DocxHeaderExtractor.Core/Application/Policy/PostClassificationInput.cs",
+        "src/DocxHeaderExtractor.Core/Application/Policy/PostClassificationPolicy.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "tests/DocxHeaderExtractor.Tests/PostClassificationPolicyTests.cs"
+      ]
+    },
+    {
+      "sha": "84603ab48ad32177572394d3c516d8dd3416f44e",
+      "message": "arch: split TOC fact from post-classification policy",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "e7b3476c3d29137fbe0999c68a04c2365c8a823e"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/postprocess-toc-boundary.md",
+        "eval/architecture/postprocess-toc-boundary.v1.json",
+        "src/DocxHeaderExtractor.Core/Application/Features/ITocStructuralFeatureDeriver.cs",
+        "src/DocxHeaderExtractor.Core/Application/Features/TocStructuralFeatureDeriver.cs",
+        "src/DocxHeaderExtractor.Core/Application/Features/TocStructuralFeatures.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "tests/DocxHeaderExtractor.Tests/TocStructuralFeatureDeriverTests.cs"
+      ]
+    },
+    {
+      "sha": "e7b3476c3d29137fbe0999c68a04c2365c8a823e",
+      "message": "arch: resolve post-classification policy ownership",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "45574b0ceef94316d88a695c99869e270c1545c8"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/post-classification-policy-extraction.md",
+        "eval/architecture/post-classification-policy-extraction.v1.json"
+      ]
+    },
+    {
+      "sha": "45574b0ceef94316d88a695c99869e270c1545c8",
+      "message": "arch: extract initial heading candidate policy",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "e1abc576aa4f2c805dbaf27fd8d2e36b65843111"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/candidate-policy-extraction.md",
+        "eval/architecture/candidate-policy-extraction.v1.json",
+        "src/DocxHeaderExtractor.Core/Application/Policy/CandidateDecision.cs",
+        "src/DocxHeaderExtractor.Core/Application/Policy/CandidatePolicyInput.cs",
+        "src/DocxHeaderExtractor.Core/Application/Policy/HeadingCandidatePolicy.cs",
+        "src/DocxHeaderExtractor.Core/Application/Policy/IHeadingCandidatePolicy.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "tests/DocxHeaderExtractor.Tests/CandidatePolicyExtractionTests.cs"
+      ]
+    },
+    {
+      "sha": "e1abc576aa4f2c805dbaf27fd8d2e36b65843111",
+      "message": "arch: resolve remaining derived fact ownership",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "cecc35bb15f04cf4003e8726456fb33af9b6da7f"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/remaining-derived-facts.md",
+        "eval/architecture/derived-feature-extraction.v1.json",
+        "eval/architecture/remaining-derived-facts.v1.json",
+        "src/DocxHeaderExtractor.Core/Application/Features/DerivedDocumentFeatures.cs",
+        "src/DocxHeaderExtractor.Core/Application/Features/DocumentFeatureDeriver.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "tests/DocxHeaderExtractor.Tests/DocumentFeatureDeriverTests.cs"
+      ]
+    },
+    {
+      "sha": "cecc35bb15f04cf4003e8726456fb33af9b6da7f",
+      "message": "arch: extract document derived font features",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "7530b94b7cb851d7890557edbc852a4d44951bdb"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/derived-feature-extraction.md",
+        "eval/architecture/derived-feature-extraction.v1.json",
+        "src/DocxHeaderExtractor.Core/Application/Features/DerivedDocumentFeatures.cs",
+        "src/DocxHeaderExtractor.Core/Application/Features/DocumentFeatureDeriver.cs",
+        "src/DocxHeaderExtractor.Core/Application/Features/IDocumentFeatureDeriver.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "tests/DocxHeaderExtractor.Tests/DocumentFeatureDeriverTests.cs"
+      ]
+    },
+    {
+      "sha": "7530b94b7cb851d7890557edbc852a4d44951bdb",
+      "message": "arch: add DOCX source facts dual build",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "af6cfca34041c8a23f8a551df82fa20753552fce"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/source-facts-dual-build.md",
+        "eval/architecture/source-facts-dual-build.v1.json",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSourceExtractionResult.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSourceFactsBuilder.cs",
+        "tests/DocxHeaderExtractor.Tests/SourceFactsDualBuildTests.cs"
+      ]
+    },
+    {
+      "sha": "af6cfca34041c8a23f8a551df82fa20753552fce",
+      "message": "docs: record combined architecture baseline",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "30befaad58ea5c73e8ebd56b051982e4f117a403"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": false,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "eval/architecture/architecture-baseline.v1.json"
+      ]
+    },
+    {
+      "sha": "7a7b22ec74e83459d1fe05d31b9d11cd1e05aff6",
+      "message": "arch: add immutable numbering style feature boundary",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "ce985bfaead07da19d81926b9d5b914a1fdddc04"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/numbering-style-feature-boundary.md",
+        "eval/architecture/numbering-style-feature-boundary.v1.json",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/NumberingStyleFeatures.cs",
+        "src/DocxHeaderExtractor.Core/Repair/RepairCorpusAudit.cs",
+        "tests/DocxHeaderExtractor.Tests/NumberingStyleFeatureBoundaryTests.cs"
+      ]
+    },
+    {
+      "sha": "ce985bfaead07da19d81926b9d5b914a1fdddc04",
+      "message": "arch: reevaluate slim blockers after writeback boundary",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "d173feb92b4bcf69e9371518e8f22ee6b6fa020b"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/post-writeback-slim-blockers.md",
+        "eval/architecture/post-writeback-slim-blockers.v1.json"
+      ]
+    },
+    {
+      "sha": "d173feb92b4bcf69e9371518e8f22ee6b6fa020b",
+      "message": "arch: introduce source writeback mapping boundary",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "6c8be6d960c60532530aab78be67ed57599ce5e6"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/writeback-mapping-boundary.md",
+        "eval/architecture/writeback-mapping-boundary.v1.json",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/OutlineWriteback.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/WritebackMapping.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/PdfProductWriteback.cs",
+        "tests/DocxHeaderExtractor.Tests/WritebackMappingBoundaryTests.cs"
+      ]
+    },
+    {
+      "sha": "6c8be6d960c60532530aab78be67ed57599ce5e6",
+      "message": "arch: resolve legacy slim blocker boundaries",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "5d73b51f39652d83fe97c73a9d95d767de32575d"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/slim-blocker-boundary-resolution.md",
+        "eval/architecture/slim-blocker-boundary-resolution.v1.json"
+      ]
+    },
+    {
+      "sha": "5d73b51f39652d83fe97c73a9d95d767de32575d",
+      "message": "arch: audit legacy slim migration wave one",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "be8d9a40c5c6813e69c88ff4aa7a8b16c65fe7b3"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/legacy-slim-migration-wave1.md",
+        "eval/architecture/legacy-slim-migration-wave1.v1.json"
+      ]
+    },
+    {
+      "sha": "be8d9a40c5c6813e69c88ff4aa7a8b16c65fe7b3",
+      "message": "arch: deprecate legacy slim extraction entrypoints",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "90f7fd68da107baa865c0c6af64bab02ba563e19"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/public-slim-api-deprecation.md",
+        "eval/architecture/public-slim-api-deprecation.v1.json",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "tests/DocxHeaderExtractor.Tests/NormalSlimApiRetirementTests.cs"
+      ]
+    },
+    {
+      "sha": "90f7fd68da107baa865c0c6af64bab02ba563e19",
+      "message": "arch: document legacy slim exit plan",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "c5309a5c2ef29d570ff832ec6c01523c81dda246"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/legacy-slim-exit-plan.md",
+        "eval/architecture/legacy-slim-exit-plan.v1.json"
+      ]
+    },
+    {
+      "sha": "c5309a5c2ef29d570ff832ec6c01523c81dda246",
+      "message": "arch: retire slim from normal authority api",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "eba9d75b5c35cbf673eb86ac3846a9f6e0bc0f9c"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/normal-slim-api-retirement.md",
+        "eval/architecture/normal-slim-api-retirement.v1.json",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/AuthoritySourceExtractionResult.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/SlimCompatibilityBoundary.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/AuthorityExtractionPipeline.cs",
+        "tests/DocxHeaderExtractor.Tests/NormalSlimApiRetirementTests.cs"
+      ]
+    },
+    {
+      "sha": "eba9d75b5c35cbf673eb86ac3846a9f6e0bc0f9c",
+      "message": "arch: isolate slim compatibility boundary",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "f29c6afff64f4e58260bb66cce4864f7f7ad5209"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/slim-compatibility-isolation.md",
+        "eval/architecture/slim-compatibility-isolation.v1.json",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/SlimCompatibilityBoundary.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/AuthorityExtractionPipeline.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/DocxAuthorityPipeline.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/HeaderExtractionPipeline.cs",
+        "tests/DocxHeaderExtractor.Tests/SlimCompatibilityIsolationTests.cs"
+      ]
+    },
+    {
+      "sha": "f29c6afff64f4e58260bb66cce4864f7f7ad5209",
+      "message": "arch: audit slim facade retirement readiness",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "4689fa867b53a1dbba643bc24735340398860c4f"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/slim-retirement-readiness.md",
+        "eval/architecture/slim-retirement-readiness.v1.json",
+        "tests/DocxHeaderExtractor.Tests/SlimRetirementReadinessTests.cs"
+      ]
+    },
+    {
+      "sha": "4689fa867b53a1dbba643bc24735340398860c4f",
+      "message": "arch: cut normal authority over to source document",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "af495ad8d1c481dfb6b3ae22aa03176ad61c1a12"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/source-authority-cutover.md",
+        "eval/architecture/source-authority-cutover.v1.json",
+        "src/DocxHeaderExtractor.Core/Pipeline/AuthorityExtractionPipeline.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/DocxAuthorityPipeline.cs",
+        "tests/DocxHeaderExtractor.Tests/SourceAuthorityCutoverTests.cs"
+      ]
+    },
+    {
+      "sha": "af495ad8d1c481dfb6b3ae22aa03176ad61c1a12",
+      "message": "arch: resolve demotion policy ownership",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "90351bc2e399350c4adb5bcfdbc2a43340e620d4"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/demotion-policy-ownership.md",
+        "eval/architecture/demotion-policy-ownership.v1.json",
+        "tests/DocxHeaderExtractor.Tests/DemotionPolicyOwnershipTests.cs"
+      ]
+    },
+    {
+      "sha": "30befaad58ea5c73e8ebd56b051982e4f117a403",
+      "message": "VERIFY-1 post-RFC baseline snapshot",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "fbc8c0bc3763a51a7f27d0a2ebcdc8e847561cd2"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/accuracy/hierarchy-accuracy-audit.md",
+        "docs/architecture/legacy-reachability.md",
+        "docs/performance/authority-pipeline-cost-model.md",
+        "docs/verification/full-suite-failure-triage.md",
+        "docs/verification/rfc-toc-first-reject.md",
+        "docs/verification/rfc-toc-minimal-candidate-generation.md",
+        "docs/verification/rfc-toc-occurrence-index-diagnosis.md",
+        "docs/verification/rfc-toc-residual-semantic-diagnosis.md",
+        "docs/verification/rfc-toc-residual-test-contract-correction.md",
+        "docs/verification/rfc-toc-route-expectation-reconciliation.md",
+        "docs/verification/rfc-toc-test-contract-correction.md",
+        "eval/accuracy-round6/semantic-first-loss-ledger.v1.json",
+        "eval/accuracy/hierarchy-accuracy-audit.v1.json",
+        "eval/architecture/legacy-reachability.v1.json",
+        "eval/performance/authority-pipeline-cost-model.v1.json",
+        "eval/verification/full-suite-failure-ledger.v1.json",
+        "eval/verification/rfc-toc-first-reject.v1.json",
+        "eval/verification/rfc-toc-minimal-candidate-generation.v1.json",
+        "eval/verification/rfc-toc-occurrence-index-diagnosis.v1.json",
+        "eval/verification/rfc-toc-residual-semantic-diagnosis.v1.json",
+        "eval/verification/rfc-toc-residual-test-contract-correction.v1.json",
+        "eval/verification/rfc-toc-route-expectation-reconciliation.v1.json",
+        "eval/verification/rfc-toc-test-contract-correction.v1.json",
+        "src/DocxHeaderExtractor.Core/Pipeline/RfcTocDictionaryOutline.cs",
+        "tests/DocxHeaderExtractor.Tests/PdfHAuthorityPipelineCostModelProbe.cs",
+        "tests/DocxHeaderExtractor.Tests/RfcTocDictionaryOutlineTests.cs",
+        "tests/DocxHeaderExtractor.Tests/RfcTocDirectAnalyzerSemanticTests.cs",
+        "tests/DocxHeaderExtractor.Tests/RfcTocFirstRejectDiagnosticTests.cs",
+        "tests/DocxHeaderExtractor.Tests/RfcTocOccurrenceIndexDiagnosisTests.cs",
+        "tests/DocxHeaderExtractor.Tests/RfcTocResidualSemanticDiagnosisTests.cs"
+      ]
+    },
+    {
+      "sha": "90351bc2e399350c4adb5bcfdbc2a43340e620d4",
+      "message": "arch: extract pure post-classification policy",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "5caba231e8de7de51771e9fdb6d855c11c569f19"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/pure-postclassification-policy.md",
+        "eval/architecture/pure-postclassification-policy.v1.json",
+        "src/DocxHeaderExtractor.Core/Application/Policy/IPostClassificationPolicy.cs",
+        "src/DocxHeaderExtractor.Core/Application/Policy/PostClassificationDecision.cs",
+        "src/DocxHeaderExtractor.Core/Application/Policy/PostClassificationInput.cs",
+        "src/DocxHeaderExtractor.Core/Application/Policy/PostClassificationPolicy.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "tests/DocxHeaderExtractor.Tests/PostClassificationPolicyTests.cs"
+      ]
+    },
+    {
+      "sha": "5caba231e8de7de51771e9fdb6d855c11c569f19",
+      "message": "arch: split TOC fact from post-classification policy",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "03778e4b619e3130e98a10a862b09e9dce81a81b"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/postprocess-toc-boundary.md",
+        "eval/architecture/postprocess-toc-boundary.v1.json",
+        "src/DocxHeaderExtractor.Core/Application/Features/ITocStructuralFeatureDeriver.cs",
+        "src/DocxHeaderExtractor.Core/Application/Features/TocStructuralFeatureDeriver.cs",
+        "src/DocxHeaderExtractor.Core/Application/Features/TocStructuralFeatures.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "tests/DocxHeaderExtractor.Tests/TocStructuralFeatureDeriverTests.cs"
+      ]
+    },
+    {
+      "sha": "03778e4b619e3130e98a10a862b09e9dce81a81b",
+      "message": "arch: resolve post-classification policy ownership",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "1d17d84ab59a0b63cef3bb905866b4a4093de625"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/post-classification-policy-extraction.md",
+        "eval/architecture/post-classification-policy-extraction.v1.json"
+      ]
+    },
+    {
+      "sha": "1d17d84ab59a0b63cef3bb905866b4a4093de625",
+      "message": "arch: extract initial heading candidate policy",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "4fbdbd31e843e23f76b88c5bb83a838a01787673"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/candidate-policy-extraction.md",
+        "eval/architecture/candidate-policy-extraction.v1.json",
+        "src/DocxHeaderExtractor.Core/Application/Policy/CandidateDecision.cs",
+        "src/DocxHeaderExtractor.Core/Application/Policy/CandidatePolicyInput.cs",
+        "src/DocxHeaderExtractor.Core/Application/Policy/HeadingCandidatePolicy.cs",
+        "src/DocxHeaderExtractor.Core/Application/Policy/IHeadingCandidatePolicy.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "tests/DocxHeaderExtractor.Tests/CandidatePolicyExtractionTests.cs"
+      ]
+    },
+    {
+      "sha": "4fbdbd31e843e23f76b88c5bb83a838a01787673",
+      "message": "arch: resolve remaining derived fact ownership",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "6be589181610d4430f2d2bf35bc81847bc07d41e"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/remaining-derived-facts.md",
+        "eval/architecture/derived-feature-extraction.v1.json",
+        "eval/architecture/remaining-derived-facts.v1.json",
+        "src/DocxHeaderExtractor.Core/Application/Features/DerivedDocumentFeatures.cs",
+        "src/DocxHeaderExtractor.Core/Application/Features/DocumentFeatureDeriver.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "tests/DocxHeaderExtractor.Tests/DocumentFeatureDeriverTests.cs"
+      ]
+    },
+    {
+      "sha": "6be589181610d4430f2d2bf35bc81847bc07d41e",
+      "message": "arch: extract document derived font features",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "954f9c771f5ae6108b9087c055eddb84bd03f723"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/derived-feature-extraction.md",
+        "eval/architecture/derived-feature-extraction.v1.json",
+        "src/DocxHeaderExtractor.Core/Application/Features/DerivedDocumentFeatures.cs",
+        "src/DocxHeaderExtractor.Core/Application/Features/DocumentFeatureDeriver.cs",
+        "src/DocxHeaderExtractor.Core/Application/Features/IDocumentFeatureDeriver.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "tests/DocxHeaderExtractor.Tests/DocumentFeatureDeriverTests.cs"
+      ]
+    },
+    {
+      "sha": "954f9c771f5ae6108b9087c055eddb84bd03f723",
+      "message": "arch: add DOCX source facts dual build",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "43b198b0edf78b62844f65c380807c1757162b2b"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/source-facts-dual-build.md",
+        "eval/architecture/source-facts-dual-build.v1.json",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSourceExtractionResult.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSourceFactsBuilder.cs",
+        "tests/DocxHeaderExtractor.Tests/SourceFactsDualBuildTests.cs"
+      ]
+    },
+    {
+      "sha": "43b198b0edf78b62844f65c380807c1757162b2b",
+      "message": "docs: record combined architecture baseline",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "fbc8c0bc3763a51a7f27d0a2ebcdc8e847561cd2"
+      ],
+      "alreadyOnOrigin": false,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": false,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "eval/architecture/architecture-baseline.v1.json"
+      ]
+    },
+    {
+      "sha": "fbc8c0bc3763a51a7f27d0a2ebcdc8e847561cd2",
+      "message": "feat: add immutable source facts compatibility boundary",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "5a9494a08d353910136391e825d03b98279935e0"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/source-facts-boundary.md",
+        "docs/architecture/source-facts-compatibility.md",
+        "eval/architecture/source-facts-boundary.v1.json",
+        "eval/architecture/source-facts-compatibility.v1.json",
+        "src/DocxHeaderExtractor.Core/Models/SourceDocument.cs",
+        "src/DocxHeaderExtractor.Core/OpenXmlLayer/SlimSourceFactsAdapter.cs",
+        "tests/DocxHeaderExtractor.Tests/SourceFactsCompatibilityTests.cs"
+      ]
+    },
+    {
+      "sha": "5a9494a08d353910136391e825d03b98279935e0",
+      "message": "docs: close route policy wiring verification",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "8204721fef05a29dc5937f9a1b91485c653c87be"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/route-policy-wiring.md",
+        "eval/architecture/route-policy-wiring.v1.json"
+      ]
+    },
+    {
+      "sha": "8204721fef05a29dc5937f9a1b91485c653c87be",
+      "message": "feat: wire normal authority route policy",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "de20821ec7919a0555689b2fd80732960a8fc329"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/route-policy-wiring.md",
+        "eval/architecture/route-policy-wiring.v1.json",
+        "src/DocxHeaderExtractor.Core/Application/Routing/AuthorityRoute.cs",
+        "src/DocxHeaderExtractor.Core/Application/Routing/DefaultAuthorityRoutePolicy.cs",
+        "src/DocxHeaderExtractor.Core/Application/Routing/IAuthorityRoutePolicy.cs",
+        "src/DocxHeaderExtractor.Core/Application/Routing/SourceCapabilities.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/AuthorityExtractionPipeline.cs",
+        "tests/DocxHeaderExtractor.Tests/AuthorityRoutePolicyContractTests.cs",
+        "tests/DocxHeaderExtractor.Tests/AuthorityRoutePolicyWiringTests.cs"
+      ]
+    },
+    {
+      "sha": "de20821ec7919a0555689b2fd80732960a8fc329",
+      "message": "test: characterize normal authority route policy",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "42585a177f6a1d4992153c5aecc211f33ecdcaa2"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/route-policy-contract.md",
+        "eval/architecture/route-policy-contract.v1.json",
+        "tests/DocxHeaderExtractor.Tests/AuthorityRoutePolicyContractTests.cs"
+      ]
+    },
+    {
+      "sha": "42585a177f6a1d4992153c5aecc211f33ecdcaa2",
+      "message": "docs: reconcile legacy route failure classifications",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "2822a694f8ad32feb2b179fdda75854da86fad42"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/verification/full-suite-failure-triage.md",
+        "eval/verification/full-suite-failure-ledger.v1.json"
+      ]
+    },
+    {
+      "sha": "2822a694f8ad32feb2b179fdda75854da86fad42",
+      "message": "docs: reconcile authority route reachability",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "3b8d34763b75b041fe7561dbed28738fa0af8c75"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/authority-route-reachability.md",
+        "eval/architecture/authority-route-reachability.v1.json"
+      ]
+    },
+    {
+      "sha": "3b8d34763b75b041fe7561dbed28738fa0af8c75",
+      "message": "docs: add clean architecture authority routing review",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "521ab902d89d4f3c8c7a68cb528b84ca6ebccfb2"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/architecture/clean-architecture-review.md",
+        "eval/architecture/clean-architecture-review.v1.json"
+      ]
+    },
+    {
+      "sha": "521ab902d89d4f3c8c7a68cb528b84ca6ebccfb2",
+      "message": "test: reproduce production failure groups",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "969262b20a979ae869b2621b103cbcfaee5ff64f"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/verification/production-failure-reproduction.md",
+        "eval/verification/production-failure-reproduction.v1.json"
+      ]
+    },
+    {
+      "sha": "969262b20a979ae869b2621b103cbcfaee5ff64f",
+      "message": "test: triage full-suite failure roots",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "d20a865114c2c316a5549c028305b336652d42e5"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/verification/full-suite-failure-triage.md",
+        "eval/verification/full-suite-failure-ledger.v1.json"
+      ]
+    },
+    {
+      "sha": "d20a865114c2c316a5549c028305b336652d42e5",
+      "message": "test: reconstruct full-suite failure packets",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "26d44fe9c5ac8de693bde2a8fa901f1ab59096d7"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/verification/full-suite-failure-packet.md",
+        "eval/verification/full-suite-failure-packet-compare.v1.json",
+        "eval/verification/full-suite-failure-packet.baseline.v1.json",
+        "eval/verification/full-suite-failure-packet.current.v1.json"
+      ]
+    },
+    {
+      "sha": "26d44fe9c5ac8de693bde2a8fa901f1ab59096d7",
+      "message": "test(accuracy): close regression verification",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "a0a3638178e0b6092880abbce933a8954fa1780f"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/accuracy/candidate-selection-first-loss.md",
+        "docs/accuracy/marker-only-policy-audit.md",
+        "docs/accuracy/ranking-inversion-diagnosis.md",
+        "eval/accuracy/candidate-selection-first-loss.v1.json",
+        "eval/accuracy/marker-only-policy-audit.v1.json",
+        "eval/accuracy/ranking-inversion-diagnosis.v1.json",
+        "eval/regression/accuracy-regression-contract.v1.json",
+        "tests/DocxHeaderExtractor.Tests/PdfAccuracyRegressionHarnessContractProbe.cs",
+        "tests/DocxHeaderExtractor.Tests/PdfD1CandidateSelectionFirstLossProbe.cs",
+        "tests/DocxHeaderExtractor.Tests/PdfD2RankingInversionDiagnosisProbe.cs",
+        "tests/DocxHeaderExtractor.Tests/PdfEMarkerOnlyPolicyAuditProbe.cs"
+      ]
+    },
+    {
+      "sha": "a0a3638178e0b6092880abbce933a8954fa1780f",
+      "message": "test(accuracy): complete harness fixture assertions",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "5aa6a6f4d32903062ed4541a47cec7bfdedaa22d"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": true,
+      "containsDocs": false,
+      "containsEvalArtifact": false,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "tests/DocxHeaderExtractor.Tests/PdfAccuracyRegressionHarnessContractProbe.cs"
+      ]
+    },
+    {
+      "sha": "5aa6a6f4d32903062ed4541a47cec7bfdedaa22d",
+      "message": "docs(verification): record full-suite triage evidence gap",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "b9e2768d47e0787efc9980ddbf07e761b6bb2045"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/verification/full-suite-failure-triage.md",
+        "eval/verification/full-suite-failure-ledger.v1.json"
+      ]
+    },
+    {
+      "sha": "b9e2768d47e0787efc9980ddbf07e761b6bb2045",
+      "message": "test(accuracy): define regression harness contract",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "ad191583b56931ecf6f821b075a583bcfbd9c735"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/accuracy/accuracy-regression-harness.md",
+        "eval/regression/accuracy-regression-contract.v1.json",
+        "tests/DocxHeaderExtractor.Tests/PdfAccuracyRegressionHarnessContractProbe.cs"
+      ]
+    },
+    {
+      "sha": "ad191583b56931ecf6f821b075a583bcfbd9c735",
+      "message": "test(accuracy): measure candidate boundary repair feasibility",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "5ca9bef0a93c4b6cb4599481dbe4d60291899b64"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/accuracy/candidate-boundary-repair-feasibility.md",
+        "eval/accuracy/candidate-boundary-repair-feasibility.v1.json",
+        "tests/DocxHeaderExtractor.Tests/PdfCandidateBoundaryRepairFeasibilityProbe.cs"
+      ]
+    },
+    {
+      "sha": "5ca9bef0a93c4b6cb4599481dbe4d60291899b64",
+      "message": "feat(diagnostics): persist pdf stage execution evidence",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "f2017a8e54abf159523d22b5a4061c157319df3e"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/accuracy/diagnostic-observability.md",
+        "eval/accuracy/diagnostic-observability.v1.json",
+        "src/DocxHeaderExtractor.Cli/Program.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/PdfStageEvalDiagnostics.cs",
+        "tests/DocxHeaderExtractor.Tests/PdfStageEvalDiagnosticsSerializationTests.cs"
+      ]
+    },
+    {
+      "sha": "f2017a8e54abf159523d22b5a4061c157319df3e",
+      "message": "test(accuracy): trace candidate generation first loss",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "6b4c68d35a17c5bc20a8d3c78db98c4ea99e8674"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/accuracy/candidate-generation-first-loss.md",
+        "eval/accuracy/candidate-generation-first-loss.v1.json",
+        "tests/DocxHeaderExtractor.Tests/PdfCandidateGenerationFirstLossProbe.cs"
+      ]
+    },
+    {
+      "sha": "6b4c68d35a17c5bc20a8d3c78db98c4ea99e8674",
+      "message": "test(checkpoint): close writer cancellation drain",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "68ca66babfb5dfdf44389515f45ae8a4b0860090"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/accuracy/production-checkpoint-wiring.md",
+        "eval/accuracy/production-checkpoint-wiring.v1.json",
+        "tests/DocxHeaderExtractor.Tests/ProductionCheckpointScopeTests.cs"
+      ]
+    },
+    {
+      "sha": "68ca66babfb5dfdf44389515f45ae8a4b0860090",
+      "message": "fix(checkpoint): close admitted writer cancellation drain",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "3b4e358c2696190e2aafd5a609587ad335cb1eea"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": false,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/accuracy/production-checkpoint-wiring.md",
+        "src/DocxHeaderExtractor.Core/Pipeline/PdfStageCheckpoint.cs",
+        "tests/DocxHeaderExtractor.Tests/ProductionCheckpointScopeTests.cs"
+      ]
+    },
+    {
+      "sha": "3b4e358c2696190e2aafd5a609587ad335cb1eea",
+      "message": "docs(verification): record cancellation drain and baseline delta",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "21a3b647ecfc80bd9f0a09858a4144f896842d19"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": false,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "eval/accuracy/production-checkpoint-wiring.v1.json"
+      ]
+    },
+    {
+      "sha": "21a3b647ecfc80bd9f0a09858a4144f896842d19",
+      "message": "docs(verification): record checkpoint final gates",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "732ca486c6cb61886a93319388766995b8ff726a"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": false,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "eval/accuracy/production-checkpoint-wiring.v1.json"
+      ]
+    },
+    {
+      "sha": "732ca486c6cb61886a93319388766995b8ff726a",
+      "message": "fix(pdf): reject late span responses after cancellation",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "b687c34ea644100ccbc75d400cb3e6734a2585a4"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": true,
+      "containsTests": false,
+      "containsDocs": false,
+      "containsEvalArtifact": false,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "src/DocxHeaderExtractor.Core/Pipeline/PdfBlockAnalyst.cs"
+      ]
+    },
+    {
+      "sha": "b687c34ea644100ccbc75d400cb3e6734a2585a4",
+      "message": "fix(authority): bound checkpoint writer lifetime",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "38b4473664e571ab7f016a1d07684dc921bdaca3"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/accuracy/production-checkpoint-wiring.md",
+        "eval/accuracy/production-checkpoint-wiring.v1.json",
+        "src/DocxHeaderExtractor.Core/Pipeline/AuthorityExtractionPipeline.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/PdfLayoutEvidenceOutline.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/PdfStageCheckpoint.cs",
+        "tests/DocxHeaderExtractor.Tests/ProductionCheckpointScopeTests.cs"
+      ]
+    },
+    {
+      "sha": "38b4473664e571ab7f016a1d07684dc921bdaca3",
+      "message": "fix(authority): defer checkpoint cleanup past detached lanes",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "ee25c4fc49b3739e41eb69c1f6121046b292f6dd"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/accuracy/production-checkpoint-wiring.md",
+        "eval/accuracy/production-checkpoint-wiring.v1.json",
+        "src/DocxHeaderExtractor.Core/Pipeline/AuthorityExtractionPipeline.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/PdfLaneExecution.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/PdfLayoutEvidenceOutline.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/PdfTextbookOutline.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/ProductionCheckpointScope.cs",
+        "tests/DocxHeaderExtractor.Tests/ProductionCheckpointScopeTests.cs"
+      ]
+    },
+    {
+      "sha": "ee25c4fc49b3739e41eb69c1f6121046b292f6dd",
+      "message": "feat(authority): wire temporary production span checkpoints",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "a4ff7ea5e2d8086f26bb8e08dcea4de449327515"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": true,
+      "containsTests": true,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/accuracy/production-checkpoint-wiring.md",
+        "eval/accuracy/production-checkpoint-wiring.v1.json",
+        "src/DocxHeaderExtractor.Core/Pipeline/AuthorityExtractionPipeline.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/PdfLayoutEvidenceOutline.cs",
+        "src/DocxHeaderExtractor.Core/Pipeline/ProductionCheckpointScope.cs",
+        "tests/DocxHeaderExtractor.Tests/ProductionCheckpointScopeTests.cs"
+      ]
+    },
+    {
+      "sha": "a4ff7ea5e2d8086f26bb8e08dcea4de449327515",
+      "message": "docs(accuracy): close span canary offline",
+      "branch": "integration/final-authority-clean-architecture",
+      "parentShas": [
+        "a1c5b7d9a53ac665d6ceefb4729d5d603064d6dc"
+      ],
+      "alreadyOnOrigin": true,
+      "containsSource": false,
+      "containsTests": false,
+      "containsDocs": true,
+      "containsEvalArtifact": true,
+      "containsGeneratedBuildOutput": false,
+      "filesTouched": [
+        "docs/accuracy/span-production-canary-final.md",
+        "eval/accuracy/span-production-canary.final.json"
+      ]
+    }
+  ],
+  "REMOTE_BRANCH_EXISTS": true,
+  "REMOTE_HEAD_SHA_AT_VERIFICATION": "5117f74e453029b2d862760550b3b00c92892566",
+  "LOCAL_HEAD_SHA_AT_VERIFICATION": "5117f74e453029b2d862760550b3b00c92892566",
+  "REMOTE_HEAD_MATCHES_LOCAL": true,
+  "MISSING_APPROVED_COMMITS": 0,
+  "MAIN_MODIFIED": false,
+  "FORCE_PUSH_USED": false,
+  "gates": {
+    "mainModified": false,
+    "forcePushUsed": false,
+    "unknownOmittedCommits": 0,
+    "unclassifiedCommits": 0,
+    "noBinObjTrxInTargetTree": true
+  }
+}

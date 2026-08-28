@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "round2_canonical_full_suite_closure",
+  "task": "INT-4",
+  "initialInt4": "NON_CANONICAL_ENVIRONMENT_CONTAMINATED",
+  "int4A": "RESOLVED_RUNTIME_INVENTORY_CONTAMINATION",
+  "int4B": "REPRODUCED_BASELINE_SEMANTIC_FAILURE",
+  "int4C": "PASS",
+  "canonicalExecutionRevision": "952e3ceadc5079c8f46c8afff0c8366f5ec0490b",
+  "canonicalFullSuite": {
+    "total": 1338,
+    "passed": 1308,
+    "failed": 30,
+    "skipped": 0
+  },
+  "newFailures": 0,
+  "changedFingerprints": 0,
+  "unjoined": 0,
+  "failureUniverseFrozen": true,
+  "regressionProven": false,
+  "fingerprintRebaseAuthorized": false,
+  "productionCodeChanged": false,
+  "testExpectedChange": "none",
+  "testCodeChanged": false,
+  "providerCalls": 0,
+  "rawTrxPublishPolicy": "DO_NOT_PUSH_RAW_TRX",
+  "status": "PASS"
+}

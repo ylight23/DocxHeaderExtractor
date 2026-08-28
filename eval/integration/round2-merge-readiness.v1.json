@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "round2_merge_readiness",
+  "task": "INT-5",
+  "status": "PASS",
+  "targetBranch": "integration/final-authority-clean-architecture",
+  "targetBranchHead": "6a768e4de91836e45839cc69969bfba874602934",
+  "mainHead": "a1c5b7d9a53ac665d6ceefb4729d5d603064d6dc",
+  "localRemoteAheadBehind": "0 / 0",
+  "mainUnchanged": true,
+  "gates": {
+    "INT-2": "PASS",
+    "INT-3": "PASS",
+    "INT-4": "PASS",
+    "unresolvedGates": 0
+  },
+  "canonicalExecutionRevision": "952e3ceadc5079c8f46c8afff0c8366f5ec0490b",
+  "canonicalFullSuite": {
+    "total": 1338,
+    "passed": 1308,
+    "failed": 30,
+    "skipped": 0,
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0,
+    "failureUniverseFrozen": true
+  },
+  "ancestry": {
+    "approvedCommitsPublished": true,
+    "missingApprovedCommits": 0,
+    "architectureAncestryComplete": true,
+    "localOnlyCommits": 0,
+    "forcePushOrHistoryRewriteObserved": false
+  },
+  "postCanonicalAudit": {
+    "range": "952e3ceadc5079c8f46c8afff0c8366f5ec0490b..6a768e4de91836e45839cc69969bfba874602934",
+    "changedFiles": 12,
+    "allowedRootsOnly": ["docs/", "eval/"],
+    "productionDeltaAfterCanonicalRun": 0,
+    "testDeltaAfterCanonicalRun": 0,
+    "canonicalAuthorityPreserved": true
+  },
+  "packaging": {
+    "bannedRuntimeFiles": 0,
+    "rawTrxPublished": false,
+    "requiredInt2Int3Int4ArtifactsPresentAndParseable": true,
+    "round1FullSuiteMisrepresentedAsRound2": false,
+    "unresolvedFingerprintAdjudication": 0
+  },
+  "mergePolicy": {
+    "round2ReadyForMerge": true,
+    "fullSuiteRerunRequired": false,
+    "mainMergeMode": "MERGE_COMMIT",
+    "squash": false,
+    "forceRewrite": false
+  },
+  "productionCodeChanged": false,
+  "testCodeChanged": false,
+  "providerCalls": 0
+}

@@ -1,0 +1,106 @@
+{
+  "milestone": "ARCH-4O",
+  "status": "CLOSED",
+  "baseRevision": "d173feb",
+  "arch4mComponents": 6,
+  "components": [
+    {
+      "component": "HeaderExtractionPipeline",
+      "statusAfter4N": "STILL_BLOCKED",
+      "oldFirstBlocker": "LEGACY_OUTPUT_CONTRACT",
+      "oldSecondaryBlockers": ["DEMOTION_BOUNDARY", "TOC_BOUNDARY", "NUMBERING_STYLE_BOUNDARY", "ORDERED_MUTABLE_STATE"],
+      "currentSlimReads": ["policy state", "TOC state", "demotion state", "legacy output fields"],
+      "currentSlimWrites": ["ordered legacy policy state"],
+      "remainingFirstBlocker": "LEGACY_OUTPUT_CONTRACT",
+      "remainingSecondaryBlockers": ["DEMOTION_BOUNDARY", "TOC_BOUNDARY", "NUMBERING_STYLE_BOUNDARY", "ORDERED_MUTABLE_STATE"]
+    },
+    {
+      "component": "Repair workflows",
+      "statusAfter4N": "PARTIALLY_RESOLVED",
+      "oldFirstBlocker": "WRITEBACK_MAPPING_BOUNDARY",
+      "oldSecondaryBlockers": ["ORDERED_MUTABLE_STATE", "NUMBERING_STYLE_BOUNDARY"],
+      "currentSlimReads": ["repair mutable state", "numbering/style facts"],
+      "currentSlimWrites": ["repair-specific compatibility state"],
+      "remainingFirstBlocker": "NUMBERING_STYLE_BOUNDARY",
+      "remainingSecondaryBlockers": ["ORDERED_MUTABLE_STATE"],
+      "note": "ARCH-4N supplies the mapping concept, but this group was not cut over wholesale."
+    },
+    {
+      "component": "Evaluation and replay",
+      "statusAfter4N": "STILL_BLOCKED",
+      "oldFirstBlocker": "TOC_BOUNDARY",
+      "oldSecondaryBlockers": ["NUMBERING_STYLE_BOUNDARY", "LEGACY_OUTPUT_CONTRACT"],
+      "currentSlimReads": ["source facts", "TOC compatibility state", "numbering/style state"],
+      "currentSlimWrites": [],
+      "remainingFirstBlocker": "TOC_BOUNDARY",
+      "remainingSecondaryBlockers": ["NUMBERING_STYLE_BOUNDARY", "LEGACY_OUTPUT_CONTRACT"]
+    },
+    {
+      "component": "Outline and product writeback",
+      "statusAfter4N": "RESOLVED",
+      "oldFirstBlocker": "WRITEBACK_MAPPING_BOUNDARY",
+      "oldSecondaryBlockers": ["ORDERED_MUTABLE_STATE", "NUMBERING_STYLE_BOUNDARY"],
+      "currentSlimReads": [],
+      "currentSlimWrites": ["OpenXML target only"],
+      "remainingFirstBlocker": null,
+      "remainingSecondaryBlockers": [],
+      "writebackSlimDependency": 0
+    },
+    {
+      "component": "OpenXML demotion helpers",
+      "statusAfter4N": "STILL_BLOCKED",
+      "oldFirstBlocker": "DEMOTION_BOUNDARY",
+      "oldSecondaryBlockers": ["NUMBERING_STYLE_BOUNDARY", "ORDERED_MUTABLE_STATE"],
+      "currentSlimReads": ["numbering/style facts", "whole-document ordered Slim state"],
+      "currentSlimWrites": ["Role/Score/demotion state on Slim paragraphs"],
+      "remainingFirstBlocker": "DEMOTION_BOUNDARY",
+      "remainingSecondaryBlockers": ["NUMBERING_STYLE_BOUNDARY", "ORDERED_MUTABLE_STATE"]
+    },
+    {
+      "component": "Test fixtures and characterization probes",
+      "statusAfter4N": "PARTIALLY_RESOLVED",
+      "oldFirstBlocker": "MULTIPLE_COUPLED_BLOCKERS",
+      "oldSecondaryBlockers": ["LEGACY_OUTPUT_CONTRACT", "DEMOTION_BOUNDARY", "WRITEBACK_MAPPING_BOUNDARY"],
+      "currentSlimReads": ["mixed by fixture/test"],
+      "currentSlimWrites": ["mixed by fixture/test"],
+      "remainingFirstBlocker": "MULTIPLE_COUPLED_BLOCKERS",
+      "remainingSecondaryBlockers": ["LEGACY_OUTPUT_CONTRACT", "DEMOTION_BOUNDARY"]
+    }
+  ],
+  "resolvedComponents": 1,
+  "partiallyResolvedComponents": 2,
+  "stillBlockedComponents": 3,
+  "unjoinedComponents": 0,
+  "writebackFirstBlockersRemaining": 0,
+  "blockerMatrix": {
+    "tocBlocked": 1,
+    "numberingStyleBlocked": 1,
+    "demotionBlocked": 1,
+    "orderedStateBlocked": 0,
+    "legacyOutputBlocked": 1,
+    "multiBlocked": 1,
+    "unknownBlocked": 0
+  },
+  "demotionClassificationChanged": false,
+  "dependencyOrder": [
+    "numbering/style facts",
+    "demotion boundary and ordered compatibility state",
+    "TOC structural state for evaluation consumers",
+    "writeback mapping boundary",
+    "legacy output contract retirement"
+  ],
+  "unlockAnalysis": [
+    {"boundary": "NUMBERING_STYLE", "directlyUnblockedComponents": 0, "partiallyUnblockedComponents": 2, "secondaryBlockersRemaining": ["DEMOTION_BOUNDARY", "ORDERED_MUTABLE_STATE"], "productionReachability": "repair and demotion", "mutationRisk": "high", "behaviorSensitivity": "high"},
+    {"boundary": "TOC", "directlyUnblockedComponents": 1, "partiallyUnblockedComponents": 0, "secondaryBlockersRemaining": ["NUMBERING_STYLE_BOUNDARY", "LEGACY_OUTPUT_CONTRACT"], "productionReachability": "evaluation/replay", "mutationRisk": "medium", "behaviorSensitivity": "medium"},
+    {"boundary": "DEMOTION", "directlyUnblockedComponents": 1, "partiallyUnblockedComponents": 1, "secondaryBlockersRemaining": ["NUMBERING_STYLE_BOUNDARY", "ORDERED_MUTABLE_STATE"], "productionReachability": "legacy runtime", "mutationRisk": "high", "behaviorSensitivity": "high"},
+    {"boundary": "ORDERED_MUTABLE_STATE", "directlyUnblockedComponents": 0, "partiallyUnblockedComponents": 2, "secondaryBlockersRemaining": ["DEMOTION_BOUNDARY", "LEGACY_OUTPUT_CONTRACT"], "productionReachability": "legacy/repair", "mutationRisk": "high", "behaviorSensitivity": "high"},
+    {"boundary": "LEGACY_OUTPUT_CONTRACT", "directlyUnblockedComponents": 1, "partiallyUnblockedComponents": 1, "secondaryBlockersRemaining": ["DEMOTION_BOUNDARY", "TOC_BOUNDARY"], "productionReachability": "legacy runtime", "mutationRisk": "high", "behaviorSensitivity": "high"}
+  ],
+  "nextAction": "BUILD_NUMBERING_STYLE_BOUNDARY",
+  "nextActionJustified": true,
+  "decisionReason": "Numbering/style facts are a prerequisite for DemoteInlineEmphasis and remain the first blocker for repair workflows after writeback mapping is available; this is a real source/derived concept, not a generic Slim wrapper.",
+  "migrationPerformed": false,
+  "normalAuthoritySlimRefs": 0,
+  "providerCalls": 0,
+  "productionBehaviorChanged": false
+}

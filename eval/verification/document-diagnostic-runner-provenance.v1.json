@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "verification_document_diagnostic_runner_provenance",
+  "task": "VERIFY-6D",
+  "status": "DIAGNOSED_BUT_TREE_PROVENANCE_INCOMPLETE",
+  "failure": {
+    "fqn": "DocxHeaderExtractor.Tests.DocumentDiagnosticRunnerTests.Pipeline_tra_diagnostic_report_trong_outline",
+    "sourceFile": "tests/DocxHeaderExtractor.Tests/DocumentDiagnosticRunnerTests.cs",
+    "assertionLine": 75,
+    "assertion": "Assert.Contains(outline.Diagnostics!.Candidates, c => c.Route == auto:rfc-toc-dictionary && c.Accepted && c.BodyAnchorRatio >= 0.90)",
+    "verify5Expected": "accepted auto:rfc-toc-dictionary candidate with BodyAnchorRatio >= 0.90",
+    "verify5Actual": "no matching diagnostic candidate; retained route evidence reports pdf-first-authority-v1",
+    "failureFingerprint": "d70614ef1bf1c7079d06a20aae2dcbed2e85852024fb3cfff7562e5cd19789ec",
+    "baselineFingerprint": "d70614ef1bf1c7079d06a20aae2dcbed2e85852024fb3cfff7562e5cd19789ec",
+    "fingerprintComparison": "EXACT_MATCH_RETAINED_BASELINE_AND_VERIFY5_COMBINED"
+  },
+  "treePresenceAndOutcome": {
+    "verify3": { "existsInVerify3": null, "passesInVerify3": null, "status": "NOT_OBSERVABLE_NO_CHECKOUT_RETAINED" },
+    "rfcClosed": { "existsInRfcClosed": null, "passesInRfcClosed": null, "status": "NOT_OBSERVABLE_NO_CHECKOUT_RETAINED" },
+    "architecturePreIntegration": { "existsInArchitectureTree": null, "passesInArchitectureTree": null, "status": "NOT_OBSERVABLE_NO_CHECKOUT_RETAINED" },
+    "verify5Combined": { "existsInVerify5Combined": true, "passesInVerify5Combined": false, "status": "OBSERVED_FAILURE_IN_RETAINED_PACKET" },
+    "failsOnlyAfterComposition": false,
+    "compositionOnlyClaim": "NOT_SUPPORTED; the retained baseline packet contains the same FQN and assertion line failure"
+  },
+  "gitProvenance": {
+    "lastCommitTouchingTest": "3fbd3f6a",
+    "lastCommitTouchingExpectedContract": "3fbd3f6a",
+    "lastCommitTouchingProductionPath": "3fbd3f6a",
+    "knownCorrectionCommit": null,
+    "knownCorrectionExists": false,
+    "note": "Current test and DocumentDiagnosticRunner were introduced together by 3fbd3f6a; no retained commit proves a later correction for this exact assertion."
+  },
+  "classification": "UNKNOWN",
+  "ROOT_CAUSE": "UNKNOWN",
+  "REMEDIATION_JUSTIFIED": "NO",
+  "excludedActions": ["expected_contract_edit", "production_change", "provider_call", "VERIFY-6B_full_suite"],
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_CODE_CHANGED": false
+}

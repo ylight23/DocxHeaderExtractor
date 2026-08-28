@@ -1,0 +1,2814 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy_candidate_generation_first_loss",
+  "phase": "candidate_generation_cross_document_diagnosis",
+  "sourceAuthority": "Round 1A frozen 004 candidate-construction-loss population",
+  "identity": "documentSha256 \u002B page \u002B sourceLineIds \u002B sourceSpan; candidateId is diagnostics-only",
+  "TOTAL_REVIEWED_LOSSES": 10,
+  "BY_FIRST_REJECTING_OPERATION": {
+    "LINE_GROUP": 10
+  },
+  "occurrences": [
+    {
+      "SourceOccurrenceId": "004/chapter/3",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "SourcePage": 9,
+      "SourceLineIds": [
+        "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+        "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+      ],
+      "SourceText": "Chapter III INVESTMENT INCENTIVES AND SUPPORTS",
+      "Marker": "Chapter III",
+      "HeadingType": "chapter",
+      "SourceFacts": [
+        {
+          "lineId": "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+          "page": 9,
+          "text": "Chapter III",
+          "matchText": "Chapter III",
+          "fontSize": 14.03999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 295.3252825732422,
+          "right": 364.0883821903907,
+          "y": 85.65744154858399,
+          "annotationReason": "header-footer-zone",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": true,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS",
+          "page": 10,
+          "text": "INVESTMENT INCENTIVES AND SUPPORTS",
+          "matchText": "INVESTMENT INCENTIVES AND SUPPORTS",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 182.22107401855467,
+          "right": 476.615668897617,
+          "y": 784.0231458024352,
+          "annotationReason": "header-footer-zone",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": true,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        }
+      ],
+      "SurroundingSourceLines": [
+        {
+          "lineId": "9|145.68838193765131|85.22739834960937|538.4755144293359|Vietnamese arbitration or court, unless otherwise agreed in contracts or provided",
+          "page": 9,
+          "text": "Vietnamese arbitration or court, unless otherwise agreed in contracts or provided",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 85.22739834960937,
+          "right": 538.4755144293359,
+          "y": 145.68838193765131,
+          "matchText": "Vietnamese arbitration or court, unless otherwise agreed in contracts orprovided",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "9|129.7153880784256|85.06972268066406|513.0737722092578|by a treaty to which the Socialist Republic ofVietnam is a contracting party.",
+          "page": 9,
+          "text": "by a treaty to which the Socialist Republic ofVietnam is a contracting party.",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 85.06972268066406,
+          "right": 513.0737722092578,
+          "y": 129.7153880784256,
+          "matchText": "by atreatyto whichthe SocialistRepublic ofVietnamis a contractingparty.",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+          "page": 9,
+          "text": "Chapter III",
+          "fontSize": 14.03999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 295.3252825732422,
+          "right": 364.0883821903907,
+          "y": 85.65744154858399,
+          "matchText": "Chapter III",
+          "annotation": "header-footer-zone"
+        },
+        {
+          "lineId": "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS",
+          "page": 10,
+          "text": "INVESTMENT INCENTIVES AND SUPPORTS",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 182.22107401855467,
+          "right": 476.615668897617,
+          "y": 784.0231458024352,
+          "matchText": "INVESTMENT INCENTIVES AND SUPPORTS",
+          "annotation": "header-footer-zone"
+        },
+        {
+          "lineId": "10|738.7958810993131|120.609687421875|523.5730083898438|Article 15. Forms of, and subjects eligible for, investment incentives",
+          "page": 10,
+          "text": "Article 15. Forms of, and subjects eligible for, investment incentives",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 120.609687421875,
+          "right": 523.5730083898438,
+          "y": 738.7958810993131,
+          "matchText": "Article 15. Forms of, and subjects eligible for, investment incentives",
+          "annotation": "header-footer-zone"
+        },
+        {
+          "lineId": "10|717.0240054960705|122.145311328125|387.83983708687504|1 . Forms ofinvestment incentives shall include:",
+          "page": 10,
+          "text": "1 . Forms ofinvestment incentives shall include:",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 122.145311328125,
+          "right": 387.83983708687504,
+          "y": 717.0240054960705,
+          "matchText": "1. Forms ofinvestment incentives shall include:",
+          "annotation": "semantic-candidate"
+        }
+      ],
+      "ProducerAvailable": {
+        "BuildBroadCandidates": false,
+        "BuildWideAuditCandidates": false,
+        "BuildSupplementCandidates": false
+      },
+      "FirstRejectingComponent": "PdfSemanticBlockGrouper.Build",
+      "FirstLossOperation": "LINE_GROUP",
+      "FirstRejectingPredicate": "no single stage candidate covers every sourceLineId",
+      "RootCause": "LINE_GROUP_BOUNDARY_SPLIT",
+      "Stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+            "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+            "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+          ],
+          "CandidateLineIds": {
+            "b242": [
+              "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III"
+            ],
+            "b243": [
+              "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+            "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+          ],
+          "CandidateLineIds": {
+            "b242": [
+              "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III"
+            ],
+            "b243": [
+              "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+            "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+          ],
+          "CandidateLineIds": {
+            "b242": [
+              "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III"
+            ],
+            "b243": [
+              "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+            "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+            "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+          ],
+          "CandidateLineIds": {
+            "b242": [
+              "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III"
+            ],
+            "b243": [
+              "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "DiagnosticCandidateIds": [
+        "9|85.65744154858399|295.3252825732422|364.0883821903907|Chapter III",
+        "10|784.0231458024352|182.22107401855467|476.615668897617|INVESTMENT INCENTIVES AND SUPPORTS"
+      ],
+      "CounterfactualRecovery": "constrained boundary simulation recovered this occurrence; no production predicate was removed",
+      "CollateralCandidateCost": "0 in prior constrained simulation"
+    },
+    {
+      "SourceOccurrenceId": "004/section/1",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "SourcePage": 14,
+      "SourceLineIds": [
+        "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+        "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+      ],
+      "SourceText": "Section 1 FORMS OF INVESTMENT",
+      "Marker": "Section 1",
+      "HeadingType": "section",
+      "SourceFacts": [
+        {
+          "lineId": "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+          "page": 14,
+          "text": "Section 1",
+          "matchText": "Section 1",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 355.53362368285167,
+          "y": 161.98432459747315,
+          "annotationReason": "table-like",
+          "tableLike": true,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": true,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT",
+          "page": 14,
+          "text": "FORMS OF INVESTMENT",
+          "matchText": "FORMS OF INVESTMENT",
+          "fontSize": 14.039989999999996,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 244.32534133789062,
+          "right": 414.6360140964063,
+          "y": 140.608849529383,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        }
+      ],
+      "SurroundingSourceLines": [
+        {
+          "lineId": "14|228.27001681043834|295.6852925732422|363.8966644583594|Chapter IV",
+          "page": 14,
+          "text": "Chapter IV",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 295.6852925732422,
+          "right": 363.8966644583594,
+          "y": 228.27001681043834,
+          "matchText": "Chapter IV",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "14|206.96873828453323|194.73107401855466|464.42418039218734|INVESTMENT ACTIVITIES IN VIETNAM",
+          "page": 14,
+          "text": "INVESTMENT ACTIVITIES IN VIETNAM",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 194.73107401855466,
+          "right": 464.42418039218734,
+          "y": 206.96873828453323,
+          "matchText": "INVESTMENT ACTIVITIES IN VIETNAM",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+          "page": 14,
+          "text": "Section 1",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 355.53362368285167,
+          "y": 161.98432459747315,
+          "matchText": "Section 1",
+          "annotation": "table-like"
+        },
+        {
+          "lineId": "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT",
+          "page": 14,
+          "text": "FORMS OF INVESTMENT",
+          "fontSize": 14.039989999999996,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 244.32534133789062,
+          "right": 414.6360140964063,
+          "y": 140.608849529383,
+          "matchText": "FORMS OF INVESTMENT",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "14|95.53954446298106|120.609687421875|308.9200661100781|Article 21. Forms of investment",
+          "page": 14,
+          "text": "Article 21. Forms of investment",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 120.609687421875,
+          "right": 308.9200661100781,
+          "y": 95.53954446298106,
+          "matchText": "Article 21. Forms ofinvestment",
+          "annotation": "header-footer-zone,table-like"
+        },
+        {
+          "lineId": "15|783.1311957900106|122.145311328125|446.1967295192578|1 . Investment in establishment of economic organizations.",
+          "page": 15,
+          "text": "1 . Investment in establishment of economic organizations.",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 122.145311328125,
+          "right": 446.1967295192578,
+          "y": 783.1311957900106,
+          "matchText": "1. Investment in establishment ofeconomic organizations.",
+          "annotation": "header-footer-zone"
+        }
+      ],
+      "ProducerAvailable": {
+        "BuildBroadCandidates": false,
+        "BuildWideAuditCandidates": false,
+        "BuildSupplementCandidates": false
+      },
+      "FirstRejectingComponent": "PdfSemanticBlockGrouper.Build",
+      "FirstLossOperation": "LINE_GROUP",
+      "FirstRejectingPredicate": "no single stage candidate covers every sourceLineId",
+      "RootCause": "LINE_GROUP_BOUNDARY_SPLIT",
+      "Stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+            "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+            "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b380": [
+              "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1"
+            ],
+            "b381": [
+              "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+            "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b380": [
+              "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1"
+            ],
+            "b381": [
+              "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+            "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b380": [
+              "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1"
+            ],
+            "b381": [
+              "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+            "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+            "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b380": [
+              "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1"
+            ],
+            "b381": [
+              "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "DiagnosticCandidateIds": [
+        "14|161.98432459747315|303.2966891699219|355.53362368285167|Section 1",
+        "14|140.608849529383|244.32534133789062|414.6360140964063|FORMS OF INVESTMENT"
+      ],
+      "CounterfactualRecovery": "constrained boundary simulation recovered this occurrence; no production predicate was removed",
+      "CollateralCandidateCost": "0 in prior constrained simulation"
+    },
+    {
+      "SourceOccurrenceId": "004/section/2",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "SourcePage": 18,
+      "SourceLineIds": [
+        "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+        "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+        "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+      ],
+      "SourceText": "Section 2 INVESTMENT POLICY APPROVAL AND INVESTOR SELECTION",
+      "Marker": "Section 2",
+      "HeadingType": "section",
+      "SourceFacts": [
+        {
+          "lineId": "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+          "page": 18,
+          "text": "Section 2",
+          "matchText": "Section 2",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 355.92438512328135,
+          "y": 268.6943145974731,
+          "annotationReason": "table-like",
+          "tableLike": true,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": true,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+          "page": 18,
+          "text": "INVESTMENT POLICY APPROVAL AND INVESTOR",
+          "matchText": "INVESTMENT POLICYAPPROVAL AND INVESTOR",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 157.98107401855466,
+          "right": 501.67915171917946,
+          "y": 247.32477325020935,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION",
+          "page": 18,
+          "text": "SELECTION",
+          "matchText": "SELECTION",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 271.73665916992184,
+          "right": 352.57853768394534,
+          "y": 231.2458170106337,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        }
+      ],
+      "SurroundingSourceLines": [
+        {
+          "lineId": "18|328.91655997395856|121.06900350097656|537.7825976337108|3. Parties to a BCC contract have the right to agree on other contents",
+          "page": 18,
+          "text": "3. Parties to a BCC contract have the right to agree on other contents",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 121.06900350097656,
+          "right": 537.7825976337108,
+          "y": 328.91655997395856,
+          "matchText": "3. Parties to a BCC contract have the right to agree on other contents",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "18|312.7376662302073|85.19312103027343|278.90077899925774|which must not be contrary to law.",
+          "page": 18,
+          "text": "which must not be contrary to law.",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 85.19312103027343,
+          "right": 278.90077899925774,
+          "y": 312.7376662302073,
+          "matchText": "whichmustnotbe contraryto law.",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+          "page": 18,
+          "text": "Section 2",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 355.92438512328135,
+          "y": 268.6943145974731,
+          "matchText": "Section 2",
+          "annotation": "table-like"
+        },
+        {
+          "lineId": "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+          "page": 18,
+          "text": "INVESTMENT POLICY APPROVAL AND INVESTOR",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 157.98107401855466,
+          "right": 501.67915171917946,
+          "y": 247.32477325020935,
+          "matchText": "INVESTMENT POLICYAPPROVAL AND INVESTOR",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION",
+          "page": 18,
+          "text": "SELECTION",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 271.73665916992184,
+          "right": 352.57853768394534,
+          "y": 231.2458170106337,
+          "matchText": "SELECTION",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "18|186.03024461097596|120.609687421875|524.4004031026953|Article 29. Investor selection for investment project implementation",
+          "page": 18,
+          "text": "Article 29. Investor selection for investment project implementation",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 120.609687421875,
+          "right": 524.4004031026953,
+          "y": 186.03024461097596,
+          "matchText": "Article 29. Investor selection for investment project implementation",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "18|164.2283064835205|122.145311328125|538.4319123769136|1. Investor selection shall be carried out through one of the following",
+          "page": 18,
+          "text": "1. Investor selection shall be carried out through one of the following",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 122.145311328125,
+          "right": 538.4319123769136,
+          "y": 164.2283064835205,
+          "matchText": "1. Investor selection shall be carried out through one of the following",
+          "annotation": "semantic-candidate"
+        }
+      ],
+      "ProducerAvailable": {
+        "BuildBroadCandidates": false,
+        "BuildWideAuditCandidates": false,
+        "BuildSupplementCandidates": false
+      },
+      "FirstRejectingComponent": "PdfSemanticBlockGrouper.Build",
+      "FirstLossOperation": "LINE_GROUP",
+      "FirstRejectingPredicate": "no single stage candidate covers every sourceLineId",
+      "RootCause": "LINE_GROUP_BOUNDARY_SPLIT",
+      "Stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+            "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+            "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+            "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+            "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+          ],
+          "CandidateLineIds": {
+            "b489": [
+              "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b490": [
+              "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR"
+            ],
+            "b491": [
+              "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+            "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+            "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+          ],
+          "CandidateLineIds": {
+            "b489": [
+              "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b490": [
+              "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR"
+            ],
+            "b491": [
+              "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+            "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+            "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+          ],
+          "CandidateLineIds": {
+            "b489": [
+              "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b490": [
+              "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR"
+            ],
+            "b491": [
+              "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+            "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+            "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+          ],
+          "CandidateLineIds": {
+            "s-window-1867": [
+              "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+              "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+            ]
+          },
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+            "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+            "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+          ],
+          "CandidateLineIds": {
+            "b489": [
+              "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b490": [
+              "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR"
+            ],
+            "s-window-1867": [
+              "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+              "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+            ],
+            "b491": [
+              "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "DiagnosticCandidateIds": [
+        "18|268.6943145974731|303.2966891699219|355.92438512328135|Section 2",
+        "18|247.32477325020935|157.98107401855466|501.67915171917946|INVESTMENT POLICY APPROVAL AND INVESTOR",
+        "18|231.2458170106337|271.73665916992184|352.57853768394534|SELECTION"
+      ],
+      "CounterfactualRecovery": "constrained boundary simulation recovered this occurrence; no production predicate was removed",
+      "CollateralCandidateCost": "0 in prior constrained simulation"
+    },
+    {
+      "SourceOccurrenceId": "004/section/3",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "SourcePage": 26,
+      "SourceLineIds": [
+        "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+        "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+        "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+        "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+      ],
+      "SourceText": "Section 3 PROCEDURES FOR GRANT MODIFICATION AND , REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES",
+      "Marker": "Section 3",
+      "HeadingType": "section",
+      "SourceFacts": [
+        {
+          "lineId": "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+          "page": 26,
+          "text": "Section 3",
+          "matchText": "Section 3",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 355.800986773672,
+          "y": 582.2618790692139,
+          "annotationReason": "table-like",
+          "tableLike": true,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": true,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+          "page": 26,
+          "text": "PROCEDURES FOR GRANT MODIFICATION AND",
+          "matchText": "PROCEDURES FOR GRANT MODIFICATION AND",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 162.85648412109376,
+          "right": 496.08029049699206,
+          "y": 560.913601934038,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+          "page": 26,
+          "text": ",",
+          "matchText": ",",
+          "fontSize": 14.03999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 346.4410899252343,
+          "right": 349.03931073089836,
+          "y": 556.091717939453,
+          "annotationReason": "table-like",
+          "tableLike": true,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": true,
+          "excludedFromCandidateGrouping": true
+        },
+        {
+          "lineId": "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES",
+          "page": 26,
+          "text": "REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES",
+          "matchText": "REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 93.16451762695313,
+          "right": 530.4478488276171,
+          "y": 544.710190331235,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        }
+      ],
+      "SurroundingSourceLines": [
+        {
+          "lineId": "26|642.3525550347381|85.51532783203125|537.4711574625782|investment policy approval covering the contents specified in Clause 1, Article 3",
+          "page": 26,
+          "text": "investment policy approval covering the contents specified in Clause 1, Article 3",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 85.51532783203125,
+          "right": 537.4711574625782,
+          "y": 642.3525550347381,
+          "matchText": "investmentpolicy approval covering the contents specified in Clause 1, Article 3",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "26|626.4236490454102|85.57702700683593|151.4176697992578|ofthis Law.",
+          "page": 26,
+          "text": "ofthis Law.",
+          "fontSize": 14.03999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 85.57702700683593,
+          "right": 151.4176697992578,
+          "y": 626.4236490454102,
+          "matchText": "ofthis Law.",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+          "page": 26,
+          "text": "Section 3",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 355.800986773672,
+          "y": 582.2618790692139,
+          "matchText": "Section 3",
+          "annotation": "table-like"
+        },
+        {
+          "lineId": "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+          "page": 26,
+          "text": "PROCEDURES FOR GRANT MODIFICATION AND",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 162.85648412109376,
+          "right": 496.08029049699206,
+          "y": 560.913601934038,
+          "matchText": "PROCEDURES FOR GRANT MODIFICATION AND",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+          "page": 26,
+          "text": ",",
+          "fontSize": 14.03999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 346.4410899252343,
+          "right": 349.03931073089836,
+          "y": 556.091717939453,
+          "matchText": ",",
+          "annotation": "table-like"
+        },
+        {
+          "lineId": "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES",
+          "page": 26,
+          "text": "REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 93.16451762695313,
+          "right": 530.4478488276171,
+          "y": 544.710190331235,
+          "matchText": "REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "26|499.3999038990103|120.609687421875|538.122902860078|Article 37. Cases of carrying out procedures for grant of investment",
+          "page": 26,
+          "text": "Article 37. Cases of carrying out procedures for grant of investment",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 120.609687421875,
+          "right": 538.122902860078,
+          "y": 499.3999038990103,
+          "matchText": "Article 37. Cases of carrying out procedures for grant of investment",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "26|483.2275919216385|85.61815979003906|444.5373025173798|registration certificates n",
+          "page": 26,
+          "text": "registration certificates n",
+          "fontSize": 14.919390799999995,
+          "boldRatio": 0.9629629629629629,
+          "fontName": "times new roman,bold",
+          "left": 85.61815979003906,
+          "right": 444.5373025173798,
+          "y": 483.2275919216385,
+          "matchText": "registration certificates n",
+          "annotation": "semantic-candidate"
+        }
+      ],
+      "ProducerAvailable": {
+        "BuildBroadCandidates": false,
+        "BuildWideAuditCandidates": false,
+        "BuildSupplementCandidates": false
+      },
+      "FirstRejectingComponent": "PdfSemanticBlockGrouper.Build",
+      "FirstLossOperation": "LINE_GROUP",
+      "FirstRejectingPredicate": "no single stage candidate covers every sourceLineId",
+      "RootCause": "LINE_GROUP_BOUNDARY_SPLIT",
+      "Stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+            "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+            "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+            "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+            "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+            "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+            "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b708": [
+              "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b709": [
+              "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "b710": [
+              "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+            "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+            "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+            "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b708": [
+              "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b709": [
+              "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "b710": [
+              "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+            "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+            "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+            "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b708": [
+              "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b709": [
+              "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "b710": [
+              "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+            "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+            "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+            "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "s-window-2705": [
+              "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+              "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+            ]
+          },
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+            "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+            "26|556.091717939453|346.4410899252343|349.03931073089836|,",
+            "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b708": [
+              "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b709": [
+              "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "s-window-2705": [
+              "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+              "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+            ],
+            "b710": [
+              "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "DiagnosticCandidateIds": [
+        "26|582.2618790692139|303.2966891699219|355.800986773672|Section 3",
+        "26|560.913601934038|162.85648412109376|496.08029049699206|PROCEDURES FOR GRANT MODIFICATION AND",
+        "26|544.710190331235|93.16451762695313|530.4478488276171|REVOCATION OF INVESTMENT REGISTRATION CERTIFICATES"
+      ],
+      "CounterfactualRecovery": "constrained boundary simulation recovered this occurrence; no production predicate was removed",
+      "CollateralCandidateCost": "0 in prior constrained simulation"
+    },
+    {
+      "SourceOccurrenceId": "004/section/4",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "SourcePage": 30,
+      "SourceLineIds": [
+        "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+        "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+      ],
+      "SourceText": "Section 4 IMPLEMENTATION OF INVESTMENT PROJECTS",
+      "Marker": "Section 4",
+      "HeadingType": "section",
+      "SourceFacts": [
+        {
+          "lineId": "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+          "page": 30,
+          "text": "Section 4",
+          "matchText": "Section 4",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 356.0409280090235,
+          "y": 560.1942845974731,
+          "annotationReason": "table-like",
+          "tableLike": true,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": true,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS",
+          "page": 30,
+          "text": "IMPLEMENTATION OF INVESTMENT PROJECTS",
+          "matchText": "IMPLEMENTATION OF INVESTMENT PROJECTS",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 164.34107401855468,
+          "right": 494.6277424076171,
+          "y": 538.7018839987362,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        }
+      ],
+      "SurroundingSourceLines": [
+        {
+          "lineId": "30|625.9854706465659|85.51532783203125|191.44568128925778|investment project.",
+          "page": 30,
+          "text": "investment project.",
+          "fontSize": 14.039989999999996,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 85.51532783203125,
+          "right": 191.44568128925778,
+          "y": 625.9854706465659,
+          "matchText": "investmentproject.",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "30|604.4540760044143|121.35007751953125|428.17513788925794|8. The Government shall stipulate in detail this Article.",
+          "page": 30,
+          "text": "8. The Government shall stipulate in detail this Article.",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 121.35007751953125,
+          "right": 428.17513788925794,
+          "y": 604.4540760044143,
+          "matchText": "8. The Government shall stipulate in detail this Article.",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+          "page": 30,
+          "text": "Section 4",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 356.0409280090235,
+          "y": 560.1942845974731,
+          "matchText": "Section 4",
+          "annotation": "table-like"
+        },
+        {
+          "lineId": "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS",
+          "page": 30,
+          "text": "IMPLEMENTATION OF INVESTMENT PROJECTS",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 164.34107401855468,
+          "right": 494.6277424076171,
+          "y": 538.7018839987362,
+          "matchText": "IMPLEMENTATION OF INVESTMENT PROJECTS",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "30|493.54645632455043|120.609687421875|493.80249348984376|Article 42. Principles of implementation of investment projects",
+          "page": 30,
+          "text": "Article 42. Principles of implementation of investment projects",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 120.609687421875,
+          "right": 493.80249348984376,
+          "y": 493.54645632455043,
+          "matchText": "Article 42. Principles ofimplementation ofinvestment projects",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "30|471.45877875741536|122.145311328125|538.2478368335937|1 . With regard to investment projects smubjectvtoninvestment policy",
+          "page": 30,
+          "text": "1 . With regard to investment projects smubjectvtoninvestment policy",
+          "fontSize": 15.139240999999991,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 122.145311328125,
+          "right": 538.2478368335937,
+          "y": 471.45877875741536,
+          "matchText": "1. With regard to investment projects smubjectvtoninvestment policy",
+          "annotation": "semantic-candidate"
+        }
+      ],
+      "ProducerAvailable": {
+        "BuildBroadCandidates": false,
+        "BuildWideAuditCandidates": false,
+        "BuildSupplementCandidates": false
+      },
+      "FirstRejectingComponent": "PdfSemanticBlockGrouper.Build",
+      "FirstLossOperation": "LINE_GROUP",
+      "FirstRejectingPredicate": "no single stage candidate covers every sourceLineId",
+      "RootCause": "LINE_GROUP_BOUNDARY_SPLIT",
+      "Stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+            "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+            "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+          ],
+          "CandidateLineIds": {
+            "b832": [
+              "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b833": [
+              "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+            "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+          ],
+          "CandidateLineIds": {
+            "b832": [
+              "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b833": [
+              "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+            "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+          ],
+          "CandidateLineIds": {
+            "b832": [
+              "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b833": [
+              "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+            "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+            "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+          ],
+          "CandidateLineIds": {
+            "b832": [
+              "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b833": [
+              "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "DiagnosticCandidateIds": [
+        "30|560.1942845974731|303.2966891699219|356.0409280090235|Section 4",
+        "30|538.7018839987362|164.34107401855468|494.6277424076171|IMPLEMENTATION OF INVESTMENT PROJECTS"
+      ],
+      "CounterfactualRecovery": "constrained boundary simulation recovered this occurrence; no production predicate was removed",
+      "CollateralCandidateCost": "0 in prior constrained simulation"
+    },
+    {
+      "SourceOccurrenceId": "004/section/5",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "SourcePage": 36,
+      "SourceLineIds": [
+        "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+        "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+      ],
+      "SourceText": "Section 1 GENERAL PROVISIONS",
+      "Marker": "Section 1",
+      "HeadingType": "section",
+      "SourceFacts": [
+        {
+          "lineId": "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+          "page": 36,
+          "text": "Section 1",
+          "matchText": "Section 1",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 355.53362368285167,
+          "y": 640.6243345974732,
+          "annotationReason": "table-like",
+          "tableLike": true,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": true,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS",
+          "page": 36,
+          "text": "GENERAL PROVISIONS",
+          "matchText": "GENERAL PROVISIONS",
+          "fontSize": 14.039989999999996,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 250.21899350097655,
+          "right": 409.0335469476171,
+          "y": 619.2544952055091,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        }
+      ],
+      "SurroundingSourceLines": [
+        {
+          "lineId": "36|706.7765183489989|298.44527257324216|361.29336827835937|Chapter V",
+          "page": 36,
+          "text": "Chapter V",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 298.44527257324216,
+          "right": 361.29336827835937,
+          "y": 706.7765183489989,
+          "matchText": "Chapter V",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "36|685.6158650211877|199.798437109375|459.4266451576171|OFFSHORE INVESTMENT ACTIVITIES",
+          "page": 36,
+          "text": "OFFSHORE INVESTMENT ACTIVITIES",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 199.798437109375,
+          "right": 459.4266451576171,
+          "y": 685.6158650211877,
+          "matchText": "OFFSHORE INVESTMENT ACTIVITIES",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+          "page": 36,
+          "text": "Section 1",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 355.53362368285167,
+          "y": 640.6243345974732,
+          "matchText": "Section 1",
+          "annotation": "table-like"
+        },
+        {
+          "lineId": "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS",
+          "page": 36,
+          "text": "GENERAL PROVISIONS",
+          "fontSize": 14.039989999999996,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 250.21899350097655,
+          "right": 409.0335469476171,
+          "y": 619.2544952055091,
+          "matchText": "GENERAL PROVISIONS",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "36|574.1998095805667|120.609687421875|438.34503486984363|Article 51. Principles of offshore investment activities",
+          "page": 36,
+          "text": "Article 51. Principles of offshore investment activities",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 120.609687421875,
+          "right": 438.34503486984363,
+          "y": 574.1998095805667,
+          "matchText": "Article 51. Principles ofoffshore investment activities",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "36|552.1676652056882|122.145311328125|538.4614530876952|1 . The State shall encourage investors to make offshore investment for",
+          "page": 36,
+          "text": "1 . The State shall encourage investors to make offshore investment for",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 122.145311328125,
+          "right": 538.4614530876952,
+          "y": 552.1676652056882,
+          "matchText": "1. The State shall encourage investors to make offshore investment for",
+          "annotation": "semantic-candidate"
+        }
+      ],
+      "ProducerAvailable": {
+        "BuildBroadCandidates": false,
+        "BuildWideAuditCandidates": false,
+        "BuildSupplementCandidates": false
+      },
+      "FirstRejectingComponent": "PdfSemanticBlockGrouper.Build",
+      "FirstLossOperation": "LINE_GROUP",
+      "FirstRejectingPredicate": "no single stage candidate covers every sourceLineId",
+      "RootCause": "LINE_GROUP_ABSORBED_OR_TRUNCATED",
+      "Stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+            "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+            "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+          ],
+          "CandidateLineIds": {
+            "b1005": [
+              "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1"
+            ],
+            "b1006": [
+              "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+            "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+          ],
+          "CandidateLineIds": {
+            "b1005": [
+              "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1"
+            ],
+            "b1006": [
+              "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+            "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+          ],
+          "CandidateLineIds": {
+            "b1005": [
+              "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1"
+            ],
+            "b1006": [
+              "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+            "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "36|640.6243345974732|303.2966891699219|355.53362368285167|Section 1",
+            "36|619.2544952055091|250.21899350097655|409.0335469476171|GENERAL PROVISIONS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "DiagnosticCandidateIds": [],
+      "CounterfactualRecovery": "not measured; no exact grouping predicate isolated",
+      "CollateralCandidateCost": "not measured"
+    },
+    {
+      "SourceOccurrenceId": "004/section/6",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "SourcePage": 37,
+      "SourceLineIds": [
+        "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+        "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+        "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+      ],
+      "SourceText": "Section 2 PROCEDURES FOR OFFSHORE INVESTMENT POLICY APPROVAL AND DECISION ON OFFSHORE INVESTMENT",
+      "Marker": "Section 2",
+      "HeadingType": "section",
+      "SourceFacts": [
+        {
+          "lineId": "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+          "page": 37,
+          "text": "Section 2",
+          "matchText": "Section 2",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 355.92438512328135,
+          "y": 204.34432459747313,
+          "annotationReason": "table-like",
+          "tableLike": true,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": true,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+          "page": 37,
+          "text": "PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+          "matchText": "PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 147.13648412109376,
+          "right": 512.2014833606249,
+          "y": 182.97614640229088,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT",
+          "page": 37,
+          "text": "APPROVAL AND DECISION ON OFFSHORE INVESTMENT",
+          "matchText": "APPROVAL AND DECISION ON OFFSHORE INVESTMENT",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 118.56969742187499,
+          "right": 504.81048044640625,
+          "y": 166.89604138546667,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        }
+      ],
+      "SurroundingSourceLines": [
+        {
+          "lineId": "37|264.656985045796|85.06972268066406|538.0612250369138|branches in Vietnam to investors under Clause 2 of this Article for making",
+          "page": 37,
+          "text": "branches in Vietnam to investors under Clause 2 of this Article for making",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 85.06972268066406,
+          "right": 538.0612250369138,
+          "y": 264.656985045796,
+          "matchText": "branches in Vietnam to investors under Clause 2 of this Article for making",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "37|248.335812969521|85.57702700683593|199.26042460925774|offshore investment.",
+          "page": 37,
+          "text": "offshore investment.",
+          "fontSize": 14.039989999999994,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 85.57702700683593,
+          "right": 199.26042460925774,
+          "y": 248.335812969521,
+          "matchText": "offshore investment.",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+          "page": 37,
+          "text": "Section 2",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 355.92438512328135,
+          "y": 204.34432459747313,
+          "matchText": "Section 2",
+          "annotation": "table-like"
+        },
+        {
+          "lineId": "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+          "page": 37,
+          "text": "PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 147.13648412109376,
+          "right": 512.2014833606249,
+          "y": 182.97614640229088,
+          "matchText": "PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT",
+          "page": 37,
+          "text": "APPROVAL AND DECISION ON OFFSHORE INVESTMENT",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 118.56969742187499,
+          "right": 504.81048044640625,
+          "y": 166.89604138546667,
+          "matchText": "APPROVAL AND DECISION ON OFFSHORE INVESTMENT",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "37|121.4632870605929|120.609687421875|488.26893435652346|Article 56. Competence to approve offshore investment policy",
+          "page": 37,
+          "text": "Article 56. Competence to approve offshore investment policy",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 120.609687421875,
+          "right": 488.26893435652346,
+          "y": 121.4632870605929,
+          "matchText": "Article 56. Competence to approve offshore investment policy",
+          "annotation": "header-footer-zone"
+        },
+        {
+          "lineId": "37|99.71365003564446|122.145311328125|538.7891851976952|1 . The National Assembly shall approve offshore investment policy for",
+          "page": 37,
+          "text": "1 . The National Assembly shall approve offshore investment policy for",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 122.145311328125,
+          "right": 538.7891851976952,
+          "y": 99.71365003564446,
+          "matchText": "1. The National Assembly shall approve offshore investment policy for",
+          "annotation": "header-footer-zone"
+        }
+      ],
+      "ProducerAvailable": {
+        "BuildBroadCandidates": false,
+        "BuildWideAuditCandidates": false,
+        "BuildSupplementCandidates": false
+      },
+      "FirstRejectingComponent": "PdfSemanticBlockGrouper.Build",
+      "FirstLossOperation": "LINE_GROUP",
+      "FirstRejectingPredicate": "no single stage candidate covers every sourceLineId",
+      "RootCause": "LINE_GROUP_BOUNDARY_SPLIT",
+      "Stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+            "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+            "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+            "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+            "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b1050": [
+              "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b1051": [
+              "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY"
+            ],
+            "b1052": [
+              "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+            "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+            "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b1050": [
+              "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b1051": [
+              "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY"
+            ],
+            "b1052": [
+              "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+            "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+            "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b1050": [
+              "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2"
+            ],
+            "b1051": [
+              "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY"
+            ],
+            "b1052": [
+              "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+            "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+            "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "s-window-3937": [
+              "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+              "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+            ]
+          },
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "37|204.34432459747313|303.2966891699219|355.92438512328135|Section 2",
+            "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+            "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+          ],
+          "CandidateLineIds": {
+            "b1051": [
+              "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY"
+            ],
+            "s-window-3937": [
+              "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+              "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+            ],
+            "b1052": [
+              "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "DiagnosticCandidateIds": [
+        "37|182.97614640229088|147.13648412109376|512.2014833606249|PROCEDURES FOR OFFSHORE INVESTMENT POLICY",
+        "37|166.89604138546667|118.56969742187499|504.81048044640625|APPROVAL AND DECISION ON OFFSHORE INVESTMENT"
+      ],
+      "CounterfactualRecovery": "constrained boundary simulation recovered this occurrence; no production predicate was removed",
+      "CollateralCandidateCost": "0 in prior constrained simulation"
+    },
+    {
+      "SourceOccurrenceId": "004/section/7",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "SourcePage": 41,
+      "SourceLineIds": [
+        "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+        "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+        "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+        "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+        "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+      ],
+      "SourceText": "Section 3 PROCEDURES FOR GRANT MODIFICATION AND , INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION CERTIFICATES",
+      "Marker": "Section 3",
+      "HeadingType": "section",
+      "SourceFacts": [
+        {
+          "lineId": "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+          "page": 41,
+          "text": "Section 3",
+          "matchText": "Section 3",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 355.800986773672,
+          "y": 739.1318690692138,
+          "annotationReason": "header-footer-zone,table-like",
+          "tableLike": true,
+          "repeated": false,
+          "headerFooterZone": true,
+          "excludedFromSemanticSamples": true,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+          "page": 41,
+          "text": "PROCEDURES FOR GRANT MODIFICATION AND",
+          "matchText": "PROCEDURES FORGRANT MODIFICATIONAND",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 166.69648412109376,
+          "right": 492.4060470669921,
+          "y": 717.7835919340376,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+          "page": 41,
+          "text": ",",
+          "matchText": ",",
+          "fontSize": 14.03999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 346.34942334523413,
+          "right": 348.9476441508982,
+          "y": 712.9617079394532,
+          "annotationReason": "table-like",
+          "tableLike": true,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": true,
+          "excludedFromCandidateGrouping": true
+        },
+        {
+          "lineId": "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+          "page": 41,
+          "text": "INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+          "matchText": "INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 106.9810840185547,
+          "right": 517.123391953945,
+          "y": 701.6974096941586,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES",
+          "page": 41,
+          "text": "CERTIFICATES",
+          "matchText": "CERTIFICATES",
+          "fontSize": 14.039989999999998,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 261.1253025732422,
+          "right": 362.7686876776169,
+          "y": 685.6356968988035,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        }
+      ],
+      "SurroundingSourceLines": [
+        {
+          "lineId": "40|75.73461100778891|85.61130432617188|538.1689380851954|Clauses 1 and 2 of this Article shall be responsible for their decisions on",
+          "page": 40,
+          "text": "Clauses 1 and 2 of this Article shall be responsible for their decisions on",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 85.61130432617188,
+          "right": 538.1689380851954,
+          "y": 75.73461100778891,
+          "matchText": "Clauses 1 and 2 of this Article shall be responsible for their decisions on",
+          "annotation": "header-footer-zone"
+        },
+        {
+          "lineId": "41|783.125772969521|85.57702700683593|199.20979575925773|offshore investment.",
+          "page": 41,
+          "text": "offshore investment.",
+          "fontSize": 14.039989999999994,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 85.57702700683593,
+          "right": 199.20979575925773,
+          "y": 783.125772969521,
+          "matchText": "offshore investment.",
+          "annotation": "header-footer-zone"
+        },
+        {
+          "lineId": "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+          "page": 41,
+          "text": "Section 3",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 355.800986773672,
+          "y": 739.1318690692138,
+          "matchText": "Section 3",
+          "annotation": "header-footer-zone,table-like"
+        },
+        {
+          "lineId": "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+          "page": 41,
+          "text": "PROCEDURES FOR GRANT MODIFICATION AND",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 166.69648412109376,
+          "right": 492.4060470669921,
+          "y": 717.7835919340376,
+          "matchText": "PROCEDURES FORGRANT MODIFICATIONAND",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+          "page": 41,
+          "text": ",",
+          "fontSize": 14.03999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 346.34942334523413,
+          "right": 348.9476441508982,
+          "y": 712.9617079394532,
+          "matchText": ",",
+          "annotation": "table-like"
+        },
+        {
+          "lineId": "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+          "page": 41,
+          "text": "INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 106.9810840185547,
+          "right": 517.123391953945,
+          "y": 701.6974096941586,
+          "matchText": "INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES",
+          "page": 41,
+          "text": "CERTIFICATES",
+          "fontSize": 14.039989999999998,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 261.1253025732422,
+          "right": 362.7686876776169,
+          "y": 685.6356968988035,
+          "matchText": "CERTIFICATES",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "41|640.3997895913903|120.609687421875|538.3982731326952|Article 60. Conditions for grant of offshore investment registration",
+          "page": 41,
+          "text": "Article 60. Conditions for grant of offshore investment registration",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 120.609687421875,
+          "right": 538.3982731326952,
+          "y": 640.3997895913903,
+          "matchText": "Article 60. Conditions for grant of offshore investment registration",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "41|624.4130710288492|85.63872618164062|147.63131483984384|certificates",
+          "page": 41,
+          "text": "certificates",
+          "fontSize": 14.039989999999998,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 85.63872618164062,
+          "right": 147.63131483984384,
+          "y": 624.4130710288492,
+          "matchText": "certificates",
+          "annotation": "semantic-candidate"
+        }
+      ],
+      "ProducerAvailable": {
+        "BuildBroadCandidates": false,
+        "BuildWideAuditCandidates": false,
+        "BuildSupplementCandidates": false
+      },
+      "FirstRejectingComponent": "PdfSemanticBlockGrouper.Build",
+      "FirstLossOperation": "LINE_GROUP",
+      "FirstRejectingPredicate": "no single stage candidate covers every sourceLineId",
+      "RootCause": "LINE_GROUP_BOUNDARY_SPLIT",
+      "Stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+            "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+            "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+            "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+            "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+            "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+            "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+            "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+            "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b1150": [
+              "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b1151": [
+              "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "b1152": [
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION"
+            ],
+            "b1153": [
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+            "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+            "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+            "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+            "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b1150": [
+              "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b1151": [
+              "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "b1152": [
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION"
+            ],
+            "b1153": [
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+            "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+            "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+            "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+            "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "b1150": [
+              "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3"
+            ],
+            "b1151": [
+              "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND"
+            ],
+            "b1152": [
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION"
+            ],
+            "b1153": [
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+            "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+            "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+            "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+            "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "s-window-4271": [
+              "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ],
+            "s-window-4272": [
+              "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ],
+            "s-window-4273": [
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ]
+          },
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "41|739.1318690692138|303.2966891699219|355.800986773672|Section 3",
+            "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+            "41|712.9617079394532|346.34942334523413|348.9476441508982|,",
+            "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+            "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+          ],
+          "CandidateLineIds": {
+            "s-window-4271": [
+              "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ],
+            "b1152": [
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION"
+            ],
+            "s-window-4273": [
+              "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ],
+            "b1153": [
+              "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "DiagnosticCandidateIds": [
+        "41|717.7835919340376|166.69648412109376|492.4060470669921|PROCEDURES FOR GRANT MODIFICATION AND",
+        "41|701.6974096941586|106.9810840185547|517.123391953945|INVALIDATION OF OFFSHORE INVESTMENT REGISTRATION",
+        "41|685.6356968988035|261.1253025732422|362.7686876776169|CERTIFICATES"
+      ],
+      "CounterfactualRecovery": "constrained boundary simulation recovered this occurrence; no production predicate was removed",
+      "CollateralCandidateCost": "0 in prior constrained simulation"
+    },
+    {
+      "SourceOccurrenceId": "004/section/8",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "SourcePage": 44,
+      "SourceLineIds": [
+        "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+        "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+        "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+      ],
+      "SourceText": "Section 4 IMPLEMENTATION OF OFFSHORE INVESTMENT ACTIVITIES",
+      "Marker": "Section 4",
+      "HeadingType": "section",
+      "SourceFacts": [
+        {
+          "lineId": "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+          "page": 44,
+          "text": "Section 4",
+          "matchText": "Section 4",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 356.0409280090235,
+          "y": 308.89432459747314,
+          "annotationReason": "table-like",
+          "tableLike": true,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": true,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+          "page": 44,
+          "text": "IMPLEMENTATION OF OFFSHORE INVESTMENT",
+          "matchText": "IMPLEMENTATION OF OFFSHORE INVESTMENT",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 162.42107401855466,
+          "right": 496.5968788964063,
+          "y": 287.40498928373455,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES",
+          "page": 44,
+          "text": "ACTIVITIES",
+          "matchText": "ACTIVITIES",
+          "fontSize": 14.03999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 270.759677421875,
+          "right": 352.6310820776171,
+          "y": 271.3366334091796,
+          "annotationReason": "semantic-candidate",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": false,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        }
+      ],
+      "SurroundingSourceLines": [
+        {
+          "lineId": "44|369.18838414535264|121.06900350097656|539.784228551797|3. The Ministry of Planning and Investment shall terminate the validity of",
+          "page": 44,
+          "text": "3. The Ministry of Planning and Investment shall terminate the validity of",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 121.06900350097656,
+          "right": 539.784228551797,
+          "y": 369.18838414535264,
+          "matchText": "3. The Ministry ofPlanning and Investment shall terminate the validity of",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "44|352.9318120524846|85.57702700683593|331.3195213192579|offshore investment registration certificates.",
+          "page": 44,
+          "text": "offshore investment registration certificates.",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 85.57702700683593,
+          "right": 331.3195213192579,
+          "y": 352.9318120524846,
+          "matchText": "offshore investmentregistration certificates.",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+          "page": 44,
+          "text": "Section 4",
+          "fontSize": 14.039990000000001,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 303.2966891699219,
+          "right": 356.0409280090235,
+          "y": 308.89432459747314,
+          "matchText": "Section 4",
+          "annotation": "table-like"
+        },
+        {
+          "lineId": "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+          "page": 44,
+          "text": "IMPLEMENTATION OF OFFSHORE INVESTMENT",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 162.42107401855466,
+          "right": 496.5968788964063,
+          "y": 287.40498928373455,
+          "matchText": "IMPLEMENTATION OF OFFSHORE INVESTMENT",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES",
+          "page": 44,
+          "text": "ACTIVITIES",
+          "fontSize": 14.03999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 270.759677421875,
+          "right": 352.6310820776171,
+          "y": 271.3366334091796,
+          "matchText": "ACTIVITIES",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "44|226.10617174790607|120.609687421875|472.89694837984376|Article 65. Opening of offshore investment capital accounts",
+          "page": 44,
+          "text": "Article 65. Opening of offshore investment capital accounts",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 120.609687421875,
+          "right": 472.89694837984376,
+          "y": 226.10617174790607,
+          "matchText": "Article 65. Opening ofoffshore investment capital accounts",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "44|204.19584073238047|122.145311328125|538.3116273798048|1 . The investor shall open an offshore investment capital account at a",
+          "page": 44,
+          "text": "1 . The investor shall open an offshore investment capital account at a",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 122.145311328125,
+          "right": 538.3116273798048,
+          "y": 204.19584073238047,
+          "matchText": "1. The investor shall open an offshore investment capital account at a",
+          "annotation": "semantic-candidate"
+        }
+      ],
+      "ProducerAvailable": {
+        "BuildBroadCandidates": false,
+        "BuildWideAuditCandidates": false,
+        "BuildSupplementCandidates": false
+      },
+      "FirstRejectingComponent": "PdfSemanticBlockGrouper.Build",
+      "FirstLossOperation": "LINE_GROUP",
+      "FirstRejectingPredicate": "no single stage candidate covers every sourceLineId",
+      "RootCause": "LINE_GROUP_BOUNDARY_SPLIT",
+      "Stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+            "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+            "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+            "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+            "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+          ],
+          "CandidateLineIds": {
+            "b1257": [
+              "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b1258": [
+              "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT"
+            ],
+            "b1259": [
+              "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+            "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+            "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+          ],
+          "CandidateLineIds": {
+            "b1257": [
+              "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b1258": [
+              "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT"
+            ],
+            "b1259": [
+              "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+            "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+            "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+          ],
+          "CandidateLineIds": {
+            "b1257": [
+              "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4"
+            ],
+            "b1258": [
+              "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT"
+            ],
+            "b1259": [
+              "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+            "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+            "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+          ],
+          "CandidateLineIds": {
+            "s-window-4644": [
+              "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+              "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+            ]
+          },
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "44|308.89432459747314|303.2966891699219|356.0409280090235|Section 4",
+            "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+            "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+          ],
+          "CandidateLineIds": {
+            "b1258": [
+              "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT"
+            ],
+            "s-window-4644": [
+              "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+              "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+            ],
+            "b1259": [
+              "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "DiagnosticCandidateIds": [
+        "44|287.40498928373455|162.42107401855466|496.5968788964063|IMPLEMENTATION OF OFFSHORE INVESTMENT",
+        "44|271.3366334091796|270.759677421875|352.6310820776171|ACTIVITIES"
+      ],
+      "CounterfactualRecovery": "constrained boundary simulation recovered this occurrence; no production predicate was removed",
+      "CollateralCandidateCost": "0 in prior constrained simulation"
+    },
+    {
+      "SourceOccurrenceId": "004/chapter/7",
+      "DocumentSha256": "c11cc1eae355146df203875fb099f8867e1f09750aa4ab93ff4de9322867450c",
+      "SourcePage": 52,
+      "SourceLineIds": [
+        "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+        "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+      ],
+      "SourceText": "Chapter VII IMPLEMENTATION PROVISIONS",
+      "Marker": "Chapter VII",
+      "HeadingType": "chapter",
+      "SourceFacts": [
+        {
+          "lineId": "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+          "page": 52,
+          "text": "Chapter VII",
+          "matchText": "Chapter VII",
+          "fontSize": 14.03999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 293.04528257324216,
+          "right": 366.5117788403906,
+          "y": 89.36681557958985,
+          "annotationReason": "header-footer-zone",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": true,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        },
+        {
+          "lineId": "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS",
+          "page": 53,
+          "text": "IMPLEMENTATION PROVISIONS",
+          "matchText": "IMPLEMENTATION PROVISIONS",
+          "fontSize": 14.039989999999994,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 217.65107401855468,
+          "right": 441.3234709576171,
+          "y": 784.0340279298911,
+          "annotationReason": "header-footer-zone",
+          "tableLike": false,
+          "repeated": false,
+          "headerFooterZone": true,
+          "excludedFromSemanticSamples": false,
+          "excludedFromCandidateGrouping": false
+        }
+      ],
+      "SurroundingSourceLines": [
+        {
+          "lineId": "52|155.551555336639|85.05601175292969|533.2008020092572|programs shall be allocated from the state budget and other lawful support sources.",
+          "page": 52,
+          "text": "programs shall be allocated from the state budget and other lawful support sources.",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 85.05601175292969,
+          "right": 533.2008020092572,
+          "y": 155.551555336639,
+          "matchText": "programs shallbe allocatedfromthe statebudgetandotherlawful supportsources.",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "52|133.7321073004525|121.17183545898438|428.17513788925794|5. The Government shall stipulate in detail this Article.",
+          "page": 52,
+          "text": "5. The Government shall stipulate in detail this Article.",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 0,
+          "fontName": "times new roman",
+          "left": 121.17183545898438,
+          "right": 428.17513788925794,
+          "y": 133.7321073004525,
+          "matchText": "5. The Government shall stipulate in detail this Article.",
+          "annotation": "semantic-candidate"
+        },
+        {
+          "lineId": "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+          "page": 52,
+          "text": "Chapter VII",
+          "fontSize": 14.03999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 293.04528257324216,
+          "right": 366.5117788403906,
+          "y": 89.36681557958985,
+          "matchText": "Chapter VII",
+          "annotation": "header-footer-zone"
+        },
+        {
+          "lineId": "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS",
+          "page": 53,
+          "text": "IMPLEMENTATION PROVISIONS",
+          "fontSize": 14.039989999999994,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 217.65107401855468,
+          "right": 441.3234709576171,
+          "y": 784.0340279298911,
+          "matchText": "IMPLEMENTATION PROVISIONS",
+          "annotation": "header-footer-zone"
+        },
+        {
+          "lineId": "53|738.8258816717415|120.609687421875|539.4003225752344|Article 75. Amendments and supplements to a number of articles of",
+          "page": 53,
+          "text": "Article 75. Amendments and supplements to a number of articles of",
+          "fontSize": 14.03998999999999,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 120.609687421875,
+          "right": 539.4003225752344,
+          "y": 738.8258816717415,
+          "matchText": "Article 75. Amendments and supplements to a number of articles of",
+          "annotation": "header-footer-zone"
+        },
+        {
+          "lineId": "53|722.6921514494328|85.61815979003906|304.2576042200781|relevant laws on business investment",
+          "page": 53,
+          "text": "relevant laws on business investment",
+          "fontSize": 14.039989999999992,
+          "boldRatio": 1,
+          "fontName": "times new roman,bold",
+          "left": 85.61815979003906,
+          "right": 304.2576042200781,
+          "y": 722.6921514494328,
+          "matchText": "relevant laws on business investment",
+          "annotation": "semantic-candidate"
+        }
+      ],
+      "ProducerAvailable": {
+        "BuildBroadCandidates": false,
+        "BuildWideAuditCandidates": false,
+        "BuildSupplementCandidates": false
+      },
+      "FirstRejectingComponent": "PdfSemanticBlockGrouper.Build",
+      "FirstLossOperation": "LINE_GROUP",
+      "FirstRejectingPredicate": "no single stage candidate covers every sourceLineId",
+      "RootCause": "LINE_GROUP_BOUNDARY_SPLIT",
+      "Stages": [
+        {
+          "Component": "PdfSourceFacts",
+          "Operation": "SOURCE_OCCURRENCE",
+          "InputLineIds": [
+            "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+            "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "source lines materialized"
+        },
+        {
+          "Component": "PdfSemanticBlockGrouper.Build",
+          "Operation": "LINE_GROUP",
+          "InputLineIds": [
+            "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+            "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+          ],
+          "CandidateLineIds": {
+            "b1486": [
+              "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII"
+            ],
+            "b1487": [
+              "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+            ]
+          },
+          "Reason": "standard semantic blocks"
+        },
+        {
+          "Component": "BuildBroadCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+            "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+          ],
+          "CandidateLineIds": {
+            "b1486": [
+              "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII"
+            ],
+            "b1487": [
+              "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+            ]
+          },
+          "Reason": "style and shape gate"
+        },
+        {
+          "Component": "BuildWideAuditCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+            "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+          ],
+          "CandidateLineIds": {
+            "b1486": [
+              "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII"
+            ],
+            "b1487": [
+              "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+            ]
+          },
+          "Reason": "wide candidate producer"
+        },
+        {
+          "Component": "BuildSupplementCandidates",
+          "Operation": "PRODUCER_CREATE",
+          "InputLineIds": [
+            "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+            "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+          ],
+          "CandidateLineIds": {},
+          "Reason": "supplement candidate producer"
+        },
+        {
+          "Component": "MergeCandidateSets",
+          "Operation": "MERGE",
+          "InputLineIds": [
+            "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+            "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+          ],
+          "CandidateLineIds": {
+            "b1486": [
+              "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII"
+            ],
+            "b1487": [
+              "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+            ]
+          },
+          "Reason": "deduplicated final candidate pool"
+        }
+      ],
+      "DiagnosticCandidateIds": [
+        "52|89.36681557958985|293.04528257324216|366.5117788403906|Chapter VII",
+        "53|784.0340279298911|217.65107401855468|441.3234709576171|IMPLEMENTATION PROVISIONS"
+      ],
+      "CounterfactualRecovery": "constrained boundary simulation recovered this occurrence; no production predicate was removed",
+      "CollateralCandidateCost": "0 in prior constrained simulation"
+    }
+  ],
+  "COUNTERFACTUAL_RECOVERY": {
+    "boundarySplit": {
+      "occurrences": 9,
+      "recovered": "9/9 by the previously committed constrained boundary simulation",
+      "reference": "eval/accuracy-round1/candidate-boundary-counterfactual.v1.json",
+      "productionReplay": false
+    },
+    "absorbedOrTruncated": {
+      "occurrences": 1,
+      "recovered": "not measured; no exact safe predicate isolated",
+      "productionReplay": false
+    }
+  },
+  "COLLATERAL_CANDIDATE_COST": {
+    "constrainedBoundarySimulation": "0 new candidates, 0 duplicate candidates, 0 inflation in its measured scope; not equivalent to a safe grouping fix",
+    "groupingPredicateRemoval": "not run; exact predicate/invariant is not proven",
+    "negativeControls": "not measured by this diagnosis-only pass"
+  },
+  "CROSS_DOCUMENT_RECURRENCE": "PROVEN",
+  "crossDocumentEvidence": {
+    "mechanism": "PdfSemanticBlockGrouper.Build / LINE_GROUP loses one complete source occurrence boundary",
+    "documents": [
+      "004",
+      "030",
+      "043",
+      "058"
+    ],
+    "source": "candidate-boundary-lineage.v1.json; existing reviewed occurrence traces",
+    "interpretation": "producer recurrence is observed; a safe general remediation invariant is not established"
+  },
+  "REMEDIATION_JUSTIFIED": "NO",
+  "providerCalls": 0,
+  "productionCodeChanged": false,
+  "finalStatus": "DIAGNOSIS_ONLY_REMEDIATION_NOT_JUSTIFIED"
+}

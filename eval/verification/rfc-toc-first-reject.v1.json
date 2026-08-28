@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "rfc_toc_first_reject_diagnosis",
+  "task": "RFC-1",
+  "testIdentity": {
+    "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Dung_toc_dictionary_giu_so_muc_va_khop_nav_092",
+    "sourceFile": "tests/DocxHeaderExtractor.Tests/RfcTocDictionaryOutlineTests.cs",
+    "assertionLine": 22,
+    "failureFingerprint": "43d1d677ca71cc675e47525aca6d35489b5080d241126df6388a89e04063a50b",
+    "expected": true,
+    "actual": false,
+    "c1IdentityMatch": true
+  },
+  "entryPoint": {
+    "api": "RfcTocDictionaryOutline.Analyze(SlimDocument)",
+    "pipelineType": "deterministic RFC TOC dictionary analyzer",
+    "normalProductionReachable": true,
+    "productionCaller": "HeaderExtractionPipeline.cs:1272"
+  },
+  "normalProductionReachable": true,
+  "candidateGenerated": false,
+  "firstLossStage": "TOC_CANDIDATE_GENERATION",
+  "firstRejectingPredicate": "NOT_APPLICABLE",
+  "firstLossProven": true,
+  "inputFactSnapshot": {
+    "documentIdentity": "todo10_8/heading_corpus_95_word/07_system_generated/092_RFC9111_HTTP_Caching.docx",
+    "totalSlimParagraphs": 1555,
+    "nonEmptySlimParagraphs": 1141,
+    "eligibleAnalyzerParagraphs": 147,
+    "tableDepthDistribution": {
+      "0": 409,
+      "1": 1092,
+      "2": 35,
+      "3": 19
+    },
+    "analyzerRelevantFacts": [
+      { "name": "Corrupt", "value": "false for eligible paragraphs", "source": "SlimParagraph", "normalizedFrom": null, "observable": true },
+      { "name": "TableDepth", "value": "eligible set requires 0; 1092 source paragraphs have depth 1", "source": "SlimParagraph", "normalizedFrom": null, "observable": true },
+      { "name": "Text", "value": "147 non-empty eligible paragraph texts", "source": "SlimParagraph.Text", "normalizedFrom": null, "observable": true },
+      { "name": "NumberMarkerDensity", "value": "max non-TOC density 1; no dense paragraph cluster", "source": "RfcTocDictionaryOutline.Marks", "normalizedFrom": "SlimParagraph.Text", "observable": true },
+      { "name": "AppendixMarkerDensity", "value": "included in NumberMarkerDensity; no dense cluster", "source": "RfcTocDictionaryOutline.Marks", "normalizedFrom": "SlimParagraph.Text", "observable": true }
+    ]
+  },
+  "predicateTrace": [
+    { "sequence": 1, "predicateName": "FilterValidTextParagraphs", "result": "PASS", "decisionBefore": "ALL_SLIM_PARAGRAPHS", "decisionAfter": "147_ELIGIBLE_PARAGRAPHS", "observable": true, "sourceLocation": "src/DocxHeaderExtractor.Core/Pipeline/RfcTocDictionaryOutline.cs:61-67" },
+    { "sequence": 2, "predicateName": "FindTocCluster", "result": "FAIL", "inputFacts": "no dense, early, compact marker cluster; TocParagraphs=0", "decisionBefore": "NO_CANDIDATE_YET", "decisionAfter": "NO_TOC_CANDIDATE", "observable": true, "sourceLocation": "src/DocxHeaderExtractor.Core/Pipeline/RfcTocDictionaryOutline.cs:69-73, 108-135" },
+    { "sequence": 3, "predicateName": "BuildDictionary", "result": "NOT_EXECUTED", "observable": true, "sourceLocation": "src/DocxHeaderExtractor.Core/Pipeline/RfcTocDictionaryOutline.cs:75-77" },
+    { "sequence": 4, "predicateName": "BodyAnchorAndNavigationMatching", "result": "NOT_EXECUTED", "observable": true, "sourceLocation": "src/DocxHeaderExtractor.Core/Pipeline/RfcTocDictionaryOutline.cs:80-105" }
+  ],
+  "observedAnalyzerResult": {
+    "textParagraphs": 147,
+    "tocParagraphs": 0,
+    "tocThreshold": 0,
+    "densityGap": 0,
+    "dictionaryEntries": 0,
+    "bodyAnchors": 0,
+    "tocOnlyEntries": 0,
+    "bodyAnchorRatio": 0,
+    "accepted": false,
+    "reason": "không có cụm TOC dày, sớm và gọn"
+  },
+  "sectionNumberPreserved": "NOT_OBSERVABLE",
+  "navTargetMatched": "NOT_OBSERVABLE",
+  "invariantBasis": "No TOC candidate or dictionary exists before the first loss; no section/nav result is observable.",
+  "negativeControl": {
+    "test": "RfcTocFirstRejectDiagnosticTests.AnalyzePassingControl",
+    "kind": "controlled synthetic fixture using the same production analyzer",
+    "firstCausalDivergence": "FindTocCluster",
+    "failingCase": { "textParagraphs": 147, "tocParagraphs": 0, "dictionaryEntries": 0, "bodyAnchors": 0, "accepted": false },
+    "passingCase": { "textParagraphs": 21, "tocParagraphs": 1, "tocThreshold": 20, "densityGap": 19, "dictionaryEntries": 20, "bodyAnchors": 20, "bodyAnchorRatio": 1, "accepted": true },
+    "factDifferences": ["dense TOC marker paragraph exists only in control", "control has 20 body anchor paragraphs"],
+    "predicateDifferences": ["FindTocCluster FAIL for 092; PASS for control", "dictionary and body-anchor stages are not executed for 092; executed for control"]
+  },
+  "rootCauseClassification": "TOC_CANDIDATE_GENERATION",
+  "causalCounterfactual": "NOT_RUN",
+  "remediationJustified": "YES",
+  "remediationDecision": "Diagnosis supports opening RFC-2 for a narrowly scoped TOC source/cluster handling change; no fix is implemented here.",
+  "providerCalls": 0,
+  "productionCodeChanged": false,
+  "testExpectationChanged": false
+}

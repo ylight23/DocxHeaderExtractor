@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0",
+  "artifactKind": "MCP_RID_PACKAGING_RESOLUTION",
+  "BASE_REVISION": "30befaad58ea5c73e8ebd56b051982e4f117a403",
+  "worktree": "C:\\DocxHeaderExtractor-mcp2",
+  "gitStatusCleanBefore": true,
+  "VERIFY2_IDENTITY_MATCH": true,
+  "fullyQualifiedTestName": "DocxHeaderExtractor.Tests.McpStdioIntegrationTests.Stdio_server_advertises_only_the_three_read_only_tools",
+  "sourceFile": "tests/McpIntegrationTests.cs",
+  "assertionLine": 185,
+  "failureFingerprint": "2438b662f33d6573c78d1b6bc8811efa525ab6f97707b54d6a7c38a6fb35fd8f",
+  "expected": "dhx-mcp.dll at src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/dhx-mcp.dll",
+  "actual": "artifact emitted at src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64/dhx-mcp.dll",
+  "DEFAULT_RID_RESULT_BEFORE": "PASS",
+  "WIN_X64_RESULT_BEFORE": "FAIL",
+  "RID_SENSITIVE": true,
+  "buildMatrix": [
+    { "buildConfiguration": "Release", "runtimeIdentifier": null, "selfContained": null, "outputDirectory": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0", "testOutputDirectory": "tests/DocxHeaderExtractor.Tests/bin/Release/net9.0", "publishDirectory": null, "mcpHostDllExists": true, "exactPath": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/dhx-mcp.dll", "result": "PASS" },
+    { "buildConfiguration": "Release", "runtimeIdentifier": "win-x64", "selfContained": null, "outputDirectory": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64", "testOutputDirectory": "tests/DocxHeaderExtractor.Tests/bin/Release/net9.0/win-x64", "publishDirectory": null, "mcpHostDllExists": true, "exactPath": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64/dhx-mcp.dll", "result": "PASS_AFTER_HELPER_FIX" },
+    { "buildConfiguration": "Release", "runtimeIdentifier": "win-x64", "selfContained": false, "outputDirectory": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64", "testOutputDirectory": null, "publishDirectory": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64/publish", "mcpHostDllExists": true, "exactPath": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64/publish/dhx-mcp.dll", "result": "PASS" }
+  ],
+  "artifacts": [
+    { "artifact": "dhx-mcp.dll", "defaultBuildPath": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/dhx-mcp.dll", "ridBuildPath": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64/dhx-mcp.dll", "publishPath": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64/publish/dhx-mcp.dll", "exists": true },
+    { "artifact": "dhx-mcp.exe", "defaultBuildPath": null, "ridBuildPath": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64/dhx-mcp.exe", "publishPath": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64/publish/dhx-mcp.exe", "exists": true },
+    { "artifact": "dhx-mcp.deps.json", "defaultBuildPath": null, "ridBuildPath": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64/dhx-mcp.deps.json", "publishPath": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64/publish/dhx-mcp.deps.json", "exists": true },
+    { "artifact": "dhx-mcp.runtimeconfig.json", "defaultBuildPath": null, "ridBuildPath": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64/dhx-mcp.runtimeconfig.json", "publishPath": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64/publish/dhx-mcp.runtimeconfig.json", "exists": true }
+  ],
+  "findMcpDllTrace": {
+    "before": [
+      { "path": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/dhx-mcp.dll", "exists": false, "reasonRejected": "RID build appended win-x64 to output path" }
+    ],
+    "after": [
+      { "path": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/win-x64/dhx-mcp.dll", "exists": true, "reasonRejected": null },
+      { "path": "src/DocxHeaderExtractor.Mcp/bin/Release/net9.0/dhx-mcp.dll", "exists": true, "reasonRejected": null }
+    ],
+    "FIRST_LOOKUP_DIVERGENCE": "TEST_LOOKUP_CONTRACT: helper searched only non-RID net9.0 path while valid RID output was under net9.0/win-x64"
+  },
+  "projectContract": {
+    "RuntimeIdentifier": { "declaredWhere": "command line for RID run", "effectiveDefault": null, "effectiveWinX64": "win-x64", "changesOutputLayout": true },
+    "AppendRuntimeIdentifierToOutputPath": { "declaredWhere": "SDK default", "effectiveDefault": true, "effectiveWinX64": true, "changesOutputLayout": true },
+    "SelfContained": { "declaredWhere": "SDK default / publish override", "effectiveDefault": false, "effectiveWinX64": false, "changesOutputLayout": false },
+    "OutputPath": { "declaredWhere": "SDK default", "effectiveDefault": "bin/Release/net9.0/", "effectiveWinX64": "bin/Release/net9.0/win-x64/", "changesOutputLayout": true },
+    "BaseOutputPath": { "declaredWhere": "SDK default", "effectiveDefault": "bin/", "effectiveWinX64": "bin/", "changesOutputLayout": false },
+    "TargetFramework": { "declaredWhere": "DocxHeaderExtractor.Mcp.csproj", "effectiveDefault": "net9.0", "effectiveWinX64": "net9.0", "changesOutputLayout": false },
+    "ProjectReference": { "declaredWhere": "DocxHeaderExtractor.Mcp.csproj", "effectiveDefault": "AgentHarness/Core", "effectiveWinX64": "AgentHarness/Core", "changesOutputLayout": false }
+  },
+  "ROOT_CAUSE": "TEST_LOOKUP_CONTRACT",
+  "COUNTERFACTUAL_RECOVERS": true,
+  "counterfactualType": "RID_AWARE_TEST_HELPER_SEARCH",
+  "counterfactualEvidence": "Searching net9.0/{RuntimeInformation.RuntimeIdentifier}/dhx-mcp.dll recovers the existing RID artifact; fallback preserves default layout.",
+  "REMEDIATION_JUSTIFIED": "YES",
+  "REMEDIATION_OWNER": "tests/McpIntegrationTests.cs::FindMcpDll",
+  "WIN_X64_RESULT_AFTER": "PASS",
+  "DEFAULT_RID_RESULT_AFTER": "PASS",
+  "PRODUCTION_REMEDIATION_JUSTIFIED": "NO",
+  "testHelperChanged": true,
+  "architectureNonInterference": true,
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_CODE_CHANGED": false
+}

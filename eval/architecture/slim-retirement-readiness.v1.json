@@ -1,0 +1,121 @@
+{
+  "milestone": "ARCH-4G",
+  "status": "CLOSED",
+  "baseRevision": "4689fa8",
+  "inventoryMethod": "repository-wide static caller and field ownership audit",
+  "directSlimReferenceFiles": {
+    "productionFiles": 66,
+    "testFiles": 66,
+    "uniqueFiles": 132,
+    "note": "Counts are file-level caller sites; a file can belong to more than one route classification."
+  },
+  "callerInventory": [
+    {
+      "caller": "AuthorityExtractionPipeline",
+      "entryPoint": "normal public authority route",
+      "normalProductionReachable": true,
+      "legacyRuntimeReachable": false,
+      "evalReachable": false,
+      "testReachable": true,
+      "fieldsRead": ["Mode", "Paragraphs.Count", "compatibility sidecar"],
+      "fieldsWritten": []
+    },
+    {
+      "caller": "DocxAuthorityPipeline",
+      "entryPoint": "normal DOCX authority stage",
+      "normalProductionReachable": true,
+      "legacyRuntimeReachable": false,
+      "evalReachable": false,
+      "testReachable": true,
+      "fieldsRead": ["Role", "Index", "InTableOfContents", "HasBuiltInHeadingStyle", "NumberingStyleLevel", "NumberingId"],
+      "fieldsWritten": [],
+      "classification": "POLICY_STATE plus deferred compatibility state"
+    },
+    {
+      "caller": "HeaderExtractionPipeline",
+      "entryPoint": "legacy runtime extraction",
+      "normalProductionReachable": false,
+      "legacyRuntimeReachable": true,
+      "evalReachable": false,
+      "testReachable": true,
+      "fieldsRead": ["SlimDocument", "SlimParagraph policy and source mirror fields"],
+      "fieldsWritten": ["legacy pipeline state"]
+    },
+    {
+      "caller": "CLI/Web/Eval/Repair and PDF alignment components",
+      "entryPoint": "diagnostic, eval, repair, writeback, or compatibility route",
+      "normalProductionReachable": false,
+      "legacyRuntimeReachable": false,
+      "evalReachable": true,
+      "testReachable": true,
+      "fieldsRead": ["source mirrors", "derived facts", "policy state", "diagnostic state"],
+      "fieldsWritten": ["only component-specific compatibility state"]
+    }
+  ],
+  "fieldOwnership": [
+    {
+      "fields": ["StableId", "Text", "TextSpans", "LineBreakOffsets", "SourceSegments", "StyleId", "StyleName", "OutlineLevel", "Bold", "Italic", "Underline", "AllCaps", "FontSizePt", "Alignment", "NumberingId", "NumberingLevel", "NumberLabel", "NumberingFormat", "InContentControl", "KeepNext", "PageBreakBefore", "TableDepth", "SectionIndex"],
+      "classification": "SOURCE_FACT_MIRROR",
+      "authorityAfterArch4F": "SourceDocument",
+      "slimRole": "compatibility mirror",
+      "normalAuthorityRead": false
+    },
+    {
+      "fields": ["BodyFontSizePt", "Corrupt", "TableRole", "PrecedesTable"],
+      "classification": "DERIVED_FACT",
+      "authorityAfterArch4F": "derived/component-specific boundary",
+      "slimRole": "compatibility or diagnostic mirror",
+      "normalAuthorityRead": false
+    },
+    {
+      "fields": ["Role", "Score", "GuessedLevel", "IsCandidate"],
+      "classification": "POLICY_STATE",
+      "authorityAfterArch4F": "candidate/post-classification policy decisions",
+      "slimRole": "mutable policy state",
+      "normalAuthorityRead": true
+    },
+    {
+      "fields": ["InTableOfContents", "PrecedesTableOfContents", "HasBuiltInHeadingStyle", "NumberingStyleLevel"],
+      "classification": "DEMOTION_STATE",
+      "authorityAfterArch4F": "TOC/numbering/demotion compatibility boundaries",
+      "slimRole": "deferred compatibility state",
+      "normalAuthorityRead": true
+    }
+  ],
+  "normalPathDebt": {
+    "normalSlimReadsTotal": 8,
+    "normalSourceFactMirrorReads": 0,
+    "normalPolicyStateReads": 4,
+    "normalDemotionStateReads": 4,
+    "unexplainedNormalSlimReads": 0,
+    "explainedReads": [
+      { "reader": "AuthorityExtractionPipeline", "fields": ["Mode", "Paragraphs.Count"], "owner": "route/output compatibility", "blocker": "public result still reports Slim-derived mode/count" },
+      { "reader": "DocxAuthorityPipeline", "fields": ["Role", "InTableOfContents", "HasBuiltInHeadingStyle", "NumberingStyleLevel", "NumberingId", "Index"], "owner": "policy and deferred demotion compatibility", "blocker": "ARCH-4E5 boundaries" }
+    ]
+  },
+  "writeOwnership": [
+    { "fields": ["Role", "Score", "GuessedLevel"], "writers": ["HeadingHeuristics", "HeadingCandidatePolicy", "DemoteCoverPageBlock", "DemoteInlineEmphasis", "DemoteRunsWithoutOwnProse", "PostClassificationPolicy projection"], "replacementBoundary": "candidate/post-classification policy", "retirementBlocker": "DEMOTION_COMPATIBILITY" },
+    { "fields": ["InTableOfContents", "PrecedesTableOfContents"], "writers": ["MarkTypedTableOfContentsRuns", "TocStructuralFeatureDeriver projection"], "replacementBoundary": "TOC structural feature boundary plus compatibility projection", "retirementBlocker": "DEMOTION_COMPATIBILITY" },
+    { "fields": ["Text", "TextSpans", "SourceSegments"], "writers": ["DocxSlimExtractor source producer", "RunningHeaderAudit before SourceDocument snapshot", "inline compatibility transforms"], "replacementBoundary": "SourceDocument", "retirementBlocker": "SOURCE_MIRROR_ONLY" }
+  ],
+  "retirementBlockers": [
+    { "kind": "DEMOTION_COMPATIBILITY", "owner": "DocxSlimExtractor", "scope": "three deferred Demote* operations", "status": "OPEN" },
+    { "kind": "LEGACY_RUNTIME_CALLER", "owner": "HeaderExtractionPipeline", "scope": "legacy Slim pipeline consumers", "status": "OPEN" },
+    { "kind": "EVAL_REPLAY_CONSUMER", "owner": "evaluation/repair/PDF alignment components", "scope": "Slim-shaped replay/writeback contracts", "status": "OPEN" },
+    { "kind": "TEST_ONLY_CALLER", "owner": "tests", "scope": "fixture construction and compatibility characterization", "status": "KNOWN_MIGRATION_COST" },
+    { "kind": "SOURCE_MIRROR_ONLY", "owner": "compatibility facade", "scope": "no normal authority source reads remain", "status": "CONTROLLED" }
+  ],
+  "exitCriteria": [
+    "normal production source reads from Slim = 0",
+    "demotion state has a new boundary or is isolated",
+    "legacy runtime caller is migrated or deprecated with an owner",
+    "eval/replay callers have explicit adapters",
+    "source identity has no Slim authority dependency",
+    "compatibility facade caller count is bounded and known"
+  ],
+  "sourceAuthorityCutover": true,
+  "slimDemotionResponsibilityRemaining": true,
+  "retirementReadiness": "READY_FOR_PARTIAL_DEPRECATION",
+  "providerCalls": 0,
+  "productionCodeChanged": false
+}

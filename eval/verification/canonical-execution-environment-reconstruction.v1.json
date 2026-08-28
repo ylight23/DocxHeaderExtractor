@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "verification_canonical_execution_environment_reconstruction",
+  "task": "VERIFY-6C",
+  "status": "BLOCKED_ARTIFACT_PROVENANCE",
+  "CANONICAL_EXECUTION_ENVIRONMENT_READY": false,
+  "TREE_COMPOSITION_VALID": false,
+  "tree": {
+    "currentRevision": "fbc8c0bc3763a51a7f27d0a2ebcdc8e847561cd2",
+    "expectedRfcClosedRevision": "30befaad58ea5c73e8ebd56b051982e4f117a403",
+    "expectedArchitectureTarget": "d173feb92b4bcf69e9371518e8f22ee6b6fa020b",
+    "expectedMcp2Revision": "e3e6edb218ff007f7194838873d5ae26b089fe75",
+    "expectedCombinedRevision": "92cd2d6d3cba29986858d30a91d5da0468044cff",
+    "exactCombinedShaVerified": false,
+    "rfcCorrectionsPreserved": "RETAINED_EVIDENCE_ONLY",
+    "mcp2Present": true,
+    "architectureTargetPresent": true,
+    "worktreeClean": false,
+    "reason": "Current worktree is fbc8c0b with unrelated dirty changes; exact combined tree is not checked out."
+  },
+  "benchmarkArtifacts": {
+    "requiredArtifactsEnumerated": 8,
+    "missingRequiredArtifacts": 0,
+    "unreadableRequiredArtifacts": 0,
+    "artifactHashMismatches": 0,
+    "unknownRequiredArtifactProvenance": 7,
+    "inventory": [
+      { "path": "eval/benchmark-n3/silver-labels/004-n3.2-silver-model-assisted.v1.json", "present": true, "readable": true, "authoritySha256": "1ec0498b0fa027ae7af24dc7f267573e2ddc307c75f4f63657557f1cd3a79418", "provenance": "MANIFEST_BOUND" },
+      { "path": "eval/benchmark-n3/silver-labels/030-n3.2-silver-model-assisted.v1.json", "present": true, "readable": true, "authoritySha256": null, "provenance": "UNKNOWN" },
+      { "path": "eval/benchmark-n3/silver-labels/043-n3.2-silver-model-assisted.v1.json", "present": true, "readable": true, "authoritySha256": null, "provenance": "UNKNOWN" },
+      { "path": "eval/benchmark-n3/silver-labels/058-n3.2-silver-model-assisted.v1.json", "present": true, "readable": true, "authoritySha256": null, "provenance": "UNKNOWN" },
+      { "path": "eval/benchmark-n3/n3.4/manifest.v1.json", "present": true, "readable": true, "authoritySha256": null, "provenance": "UNKNOWN" },
+      { "path": "eval/benchmark-n3/n3.4/runs/004-n3.4-canonical-run.v1.json", "present": true, "readable": true, "authoritySha256": null, "provenance": "UNKNOWN" },
+      { "path": "eval/accuracy-round6/k160-semantic-execution-manifest.v1.json", "present": true, "readable": true, "authoritySha256": null, "provenance": "UNKNOWN" },
+      { "path": "eval/accuracy-round6/k160-semantic-run.v1.json", "present": true, "readable": true, "authoritySha256": null, "provenance": "UNKNOWN" }
+    ],
+    "noReplacementArtifactsCreated": true
+  },
+  "storage": {
+    "tempRoot": "C:\\DocxHeaderExtractor-canonical-temp-6c",
+    "tempRootClean": true,
+    "diskPreflightPass": true,
+    "observedFreeBytes": 36106870784,
+    "worktreeFreeSpaceSameVolume": true
+  },
+  "preFullSuiteGates": {
+    "rfcLanePass": true,
+    "rfc2InvariantsPass": true,
+    "architectureFocusedPass": true,
+    "fRegressionPass": true,
+    "mcpPass": true,
+    "releaseBuildPass": true,
+    "evidenceMode": "RETAINED_PRIOR_GATE_EVIDENCE; NOT_REEXECUTED_ON_EXACT_CLEAN_TREE"
+  },
+  "FULL_SUITE_EXECUTED": false,
+  "nextTask": "VERIFY-6C remediation of artifact authority/provenance, then VERIFY-6B",
+  "VERIFY_6B_OPEN": false,
+  "PROVIDER_CALLS": 0,
+  "PRODUCTION_CODE_CHANGED": false
+}

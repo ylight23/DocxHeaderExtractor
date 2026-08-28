@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using DocxHeaderExtractor.Core.Application.Routing;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
@@ -14,18 +15,36 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 public sealed class AuthorityExtractionPipeline : IDisposable
 {
     private readonly PipelineOptions _options;
+    private readonly IAuthorityRoutePolicy _routePolicy;
     private IHeaderClassifier? _analyst;
     private readonly bool _ownsAnalyst;
 
     public AuthorityExtractionPipeline(PipelineOptions options)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
+        _routePolicy = new DefaultAuthorityRoutePolicy();
         _ownsAnalyst = true;
     }
 
     public AuthorityExtractionPipeline(PipelineOptions options, IHeaderClassifier analyst)
+        : this(options, new DefaultAuthorityRoutePolicy(), analyst)
+    {
+    }
+
+    public AuthorityExtractionPipeline(PipelineOptions options, IAuthorityRoutePolicy routePolicy)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
+        _routePolicy = routePolicy ?? throw new ArgumentNullException(nameof(routePolicy));
+        _ownsAnalyst = true;
+    }
+
+    public AuthorityExtractionPipeline(
+        PipelineOptions options,
+        IAuthorityRoutePolicy routePolicy,
+        IHeaderClassifier analyst)
+    {
+        _options = options ?? throw new ArgumentNullException(nameof(options));
+        _routePolicy = routePolicy ?? throw new ArgumentNullException(nameof(routePolicy));
         _analyst = analyst ?? throw new ArgumentNullException(nameof(analyst));
         _ownsAnalyst = false;
     }
@@ -43,7 +62,10 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         var conversion = LegacyDocConverter.EnsureDocx(inputPath);
         try
         {
-            var slim = new DocxSlimExtractor(_options.Extraction).Extract(conversion.Path);
+            var extraction = new DocxSlimExtractor(_options.Extraction).ExtractForAuthority(conversion.Path);
+            var source = extraction.Source;
+            var compatibility = extraction.Compatibility;
+            var slim = compatibility.ForLegacyCompatibility();
             var mode = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
             var diagnostics = DocumentDiagnosticRunner.Analyze(slim, mode);
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
@@ -52,28 +74,54 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             RouteExecutionAudit? audit;
             string route;
             string reason;
-            if (!string.IsNullOrWhiteSpace(pdf) && analyst is not null)
+            var authorityRoute = _routePolicy.Decide(new SourceCapabilities(
+                HasDocx: true,
+                HasPdf: !string.IsNullOrWhiteSpace(pdf),
+                AnalystAvailable: analyst is not null));
+            switch (authorityRoute)
             {
-                var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
-                    inputPath, slim, analyst,
-                    maximumAnalystBlocks: _options.PdfFirstAnalystBlocks,
-                    includeAllVisualStyles: true,
-                    includeSupplementCandidates: true,
-                    maximumVisualRegions: _options.PdfFirstVisualRegions,
-                    visualAnalyst: null,
-                    ct: ct);
-                rawHeadings = result.Headings;
-                audit = ApplyQuarantine(result.Audit, rawHeadings, quarantinedIndexes, out rawHeadings);
-                route = "pdf-authority-v1";
-                reason = result.Reason;
-            }
-            else
-            {
-                var result = await DocxAuthorityPipeline.RunAsync(slim, mode, analyst, quarantinedIndexes, ct);
-                rawHeadings = result.Headings;
-                audit = result.Audit;
-                route = "docx-authority-v1";
-                reason = "docx-source-authority";
+                case AuthorityRoute.PdfAuthority:
+                {
+                    await using var productionCheckpoint = ProductionCheckpointScope.Create();
+                    await using var checkpoint = new PdfStageCheckpoint(
+                        productionCheckpoint.CheckpointPath, resume: false, Path.GetFileName(pdf));
+                    PdfTextbookOutlineResult result;
+                    try
+                    {
+                        result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystCoreAsync(
+                            inputPath, slim, analyst!,
+                            maximumAnalystBlocks: _options.PdfFirstAnalystBlocks,
+                            includeAllVisualStyles: true,
+                            includeSupplementCandidates: true,
+                            maximumVisualRegions: _options.PdfFirstVisualRegions,
+                            visualAnalyst: null,
+                            ct: ct,
+                            resume: false,
+                            checkpointInstance: checkpoint);
+                    }
+                    finally
+                    {
+                        await checkpoint.StopAcceptingWritesAndDrainAsync();
+                    }
+                    rawHeadings = result.Headings;
+                    audit = ApplyQuarantine(result.Audit, rawHeadings, quarantinedIndexes, out rawHeadings);
+                    route = "pdf-authority-v1";
+                    reason = result.Reason;
+                    break;
+                }
+                case AuthorityRoute.DocxAuthority:
+                {
+                    var result = await DocxAuthorityPipeline.RunAsync(source, compatibility, mode, analyst, quarantinedIndexes, ct);
+                    rawHeadings = result.Headings;
+                    audit = result.Audit;
+                    route = "docx-authority-v1";
+                    reason = "docx-source-authority";
+                    break;
+                }
+                case AuthorityRoute.Unsupported:
+                    throw new InvalidOperationException("Normal authority route requires a DOCX source.");
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(authorityRoute), authorityRoute, null);
             }
 
             var product = audit is null

@@ -1,0 +1,33 @@
+{
+  "milestone": "ARCH-4E1",
+  "status": "CLOSED",
+  "baseRevision": "4fbdbd3",
+  "policyFieldsAudited": ["IsCandidate", "Score", "Role", "GuessedLevel"],
+  "candidatePolicyComponentIntroduced": true,
+  "component": "HeadingCandidatePolicy",
+  "contract": "CandidatePolicyInput -> CandidateDecision",
+  "legacyHeuristicImplementationChanged": false,
+  "demotionOperations": {
+    "DemoteCoverPageBlock": "DEFER_TO_POST_CLASSIFICATION_POLICY",
+    "DemoteInlineEmphasis": "DEFER_TO_POST_CLASSIFICATION_POLICY",
+    "DemoteRunsWithoutOwnProse": "DEFER_TO_POST_CLASSIFICATION_POLICY",
+    "PostProcess": "DEFER_TO_POST_CLASSIFICATION_POLICY"
+  },
+  "candidateCountDelta": 0,
+  "isCandidateDelta": 0,
+  "scoreDelta": 0,
+  "roleDelta": 0,
+  "guessedLevelDelta": 0,
+  "policyExecutionOrderPreserved": true,
+  "slimCompatibilityPreserved": true,
+  "sourceFactMutated": false,
+  "modelProposalImported": false,
+  "validatorImported": false,
+  "hierarchyImported": false,
+  "routePolicyImported": false,
+  "arch4Tests": "3/3 PASS",
+  "fRegression": "2/2 PASS",
+  "releaseBuild": "PASS",
+  "providerCalls": 0,
+  "productionBehaviorChanged": false
+}
