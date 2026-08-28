@@ -1,0 +1,71 @@
+{
+  "milestone": "ARCH-4R",
+  "status": "CLOSED_OWNERSHIP_AUDIT",
+  "baseRevision": "15da924",
+  "demotionStateBoundaryIntroduced": false,
+  "operations": [
+    {
+      "operation": "DemoteCoverPageBlock",
+      "readsBefore": ["paragraph sequence", "Role", "IsCandidate", "Text", "HasBuiltInHeadingStyle", "NumberingId"],
+      "writes": ["Role", "Score"],
+      "readsPreviousDemotionOutput": false,
+      "readsNeighborParagraphState": true,
+      "readsWholeDocumentState": true,
+      "firstBlockingDependency": "document-wide first-prose boundary over mutable Slim candidate state",
+      "classification": "BLOCKED_BY_MUTABLE_NEIGHBOR_STATE",
+      "decision": "KEEP_SLIM_COMPATIBILITY"
+    },
+    {
+      "operation": "DemoteInlineEmphasis",
+      "readsBefore": ["paragraph sequence", "Role", "IsCandidate", "Bold", "Italic", "HasBuiltInHeadingStyle", "NumberingId", "NumberingStyleLevel", "OutlineLevel", "structural marker count"],
+      "writes": ["Role", "Score"],
+      "readsPreviousDemotionOutput": true,
+      "readsNeighborParagraphState": false,
+      "readsWholeDocumentState": true,
+      "firstBlockingDependency": "HasBuiltInHeadingStyle policy state plus document structural-marker gate",
+      "classification": "BLOCKED_BY_POLICY_STATE",
+      "decision": "BLOCKED_BY_POLICY_STATE"
+    },
+    {
+      "operation": "DemoteRunsWithoutOwnProse",
+      "readsBefore": ["ordered paragraph sequence", "Role", "IsCandidate", "Text", "HasBuiltInHeadingStyle", "NumberingId", "NumberingStyleLevel", "OutlineLevel", "custom style anchor set", "structural marker count"],
+      "writes": ["Role", "Score"],
+      "readsPreviousDemotionOutput": true,
+      "readsNeighborParagraphState": true,
+      "readsWholeDocumentState": true,
+      "firstBlockingDependency": "incremental run state over Role mutations from preceding demotion",
+      "classification": "BLOCKED_BY_MUTABLE_NEIGHBOR_STATE",
+      "decision": "BLOCKED_BY_MUTABLE_NEIGHBOR_STATE"
+    }
+  ],
+  "stateClassification": {
+    "candidateState": ["IsCandidate"],
+    "roleState": ["Role"],
+    "scoreState": ["Score"],
+    "levelState": ["GuessedLevel"],
+    "sourceFacts": ["Text", "Bold", "Italic", "OutlineLevel", "NumberingId", "NumberingStyleLevel"],
+    "derivedFeatures": ["structural marker count", "custom style anchor set"],
+    "policyCompatibilityState": ["HasBuiltInHeadingStyle"],
+    "orderingContext": ["paragraph collection order", "current demotion run", "first body-prose boundary"],
+    "slimOnlyAccidental": [],
+    "unknown": 0
+  },
+  "order": ["Initial HeadingCandidatePolicy", "DemoteCoverPageBlock", "DemoteInlineEmphasis", "DemoteRunsWithoutOwnProse", "TocStructuralFeatureDeriver", "PostClassificationPolicy"],
+  "demotionOrderEquivalent": true,
+  "orderedMutationRequired": true,
+  "demoteInlinePolicyInputRequired": true,
+  "demoteInlineEmphasisInputCoverage": "partial",
+  "s1Delta": 0,
+  "s2Delta": 0,
+  "s3Delta": 0,
+  "candidateDelta": 0,
+  "roleDelta": 0,
+  "scoreDelta": 0,
+  "levelDelta": 0,
+  "sourceFactMutation": false,
+  "derivedFactMutation": false,
+  "normalAuthoritySlimRefs": 0,
+  "providerCalls": 0,
+  "productionBehaviorChanged": false,
+  "nextStep": "ARCH-4S_ONLY_AFTER_A_NEW_ORDERED_STATE_CONTRACT_IS_JUSTIFIED"
+}
