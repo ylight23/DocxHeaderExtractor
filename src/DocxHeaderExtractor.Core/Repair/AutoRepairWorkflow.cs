@@ -113,8 +113,8 @@ public sealed class AutoRepairWorkflow
     {
         Directory.CreateDirectory(options.OutputDirectory);
 
-        using var pipeline = new HeaderExtractionPipeline(_pipelineOptions);
-        var outline = await pipeline.RunAsync(inputPath, ct);
+        using var repairRunner = new AuthorityRepairOutlineRunner(_pipelineOptions);
+        var outline = await repairRunner.RunAsync(inputPath, ct);
 
         var needsAnalysis = NeedsAnalysis(outline);
         if (!needsAnalysis && !options.AlwaysWriteCase)

@@ -737,8 +737,8 @@ static async Task<int> RunRepairKeyPackageAsync(CommandLineOptions o, Cancellati
         {
             try
             {
-                using var pipeline = new HeaderExtractionPipeline(o.Pipeline);
-                var outline = await pipeline.RunAsync(file, ct);
+                using var repairRunner = new AuthorityRepairOutlineRunner(o.Pipeline);
+                var outline = await repairRunner.RunAsync(file, ct);
                 runs.Add((file, outline, null));
             }
             catch (Exception ex) when (ex is not OperationCanceledException)

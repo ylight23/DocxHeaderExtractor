@@ -84,8 +84,8 @@ public static class RepairCorpusAudit
 
             try
             {
-                using var pipeline = new HeaderExtractionPipeline(options);
-                var outline = await pipeline.RunAsync(file, ct);
+                using var repairRunner = new AuthorityRepairOutlineRunner(options);
+                var outline = await repairRunner.RunAsync(file, ct);
                 var structureSources = ProbeStructureSources(file, outline.DocumentMode);
                 var candidateReport = RepairCandidateRunner.Analyze(outline);
                 var validation = RepairValidationGate.Validate(outline, candidateReport);

@@ -113,8 +113,8 @@ public static class RepairGateCalibration
                 LegacyDocConverter.Cleanup(conversion);
             }
 
-            using var pipeline = new HeaderExtractionPipeline(options);
-            var outline = await pipeline.RunAsync(file, ct);
+            using var repairRunner = new AuthorityRepairOutlineRunner(options);
+            var outline = await repairRunner.RunAsync(file, ct);
             var candidateReport = RepairCandidateRunner.Analyze(outline);
             var validation = RepairValidationGate.Validate(outline, candidateReport);
             var score = Evaluator.Score(Path.GetFileNameWithoutExtension(file), outline, candidateIndexes, key);
