@@ -311,7 +311,7 @@ public static class RepairCorpusAudit
                 toc.Probe.RelaxedPageAnchors,
                 slim.Paragraphs.Count(p => p.InTableOfContents),
                 features.Styles.Count(style => style.OutlineLevel is not null),
-                slim.Paragraphs.Count(p => p.HasBuiltInHeadingStyle),
+                features.Styles.Count(style => style.BuiltInHeadingStyleLevel is not null),
                 features.Numbering.Count(numbering => numbering.NumberingId is not null || numbering.NumberingLevel is not null),
                 slim.Paragraphs.Count(p => NumberingAudit.Parse(p.Text) is not null),
                 slim.Paragraphs.Count(p => DocumentModeClassifier.IsLegalMarker(p.Text)),
