@@ -115,4 +115,25 @@ public sealed class ProductionCheckpointScopeTests
         await scope.DisposeAsync();
         Assert.False(Directory.Exists(scope.DirectoryPath));
     }
+
+    [Fact]
+    public async Task Admitted_write_fault_exits_and_drains()
+    {
+        await using var scope = ProductionCheckpointScope.Create();
+        // The directory is a valid checkpoint parent, but cannot be opened as an append file.
+        await using var checkpoint = new PdfStageCheckpoint(scope.DirectoryPath, false, "test.pdf");
+
+        await Assert.ThrowsAnyAsync<Exception>(() => checkpoint.RecordSpanBatchAsync(
+            [("b1", 1, "l1", (IReadOnlyList<string>)["l1"], new TextOffsetSpan(0, 1))],
+            null, CancellationToken.None));
+
+        var drain = checkpoint.StopAcceptingWritesAndDrainAsync();
+        var completed = await Task.WhenAny(drain, Task.Delay(TimeSpan.FromSeconds(2)));
+        Assert.Same(drain, completed);
+        await drain;
+
+        await checkpoint.DisposeAsync();
+        await scope.DisposeAsync();
+        Assert.False(Directory.Exists(scope.DirectoryPath));
+    }
 }
