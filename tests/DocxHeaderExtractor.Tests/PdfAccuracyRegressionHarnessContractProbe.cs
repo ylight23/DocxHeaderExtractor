@@ -19,6 +19,8 @@ public sealed class PdfAccuracyRegressionHarnessContractProbe
         var output = Environment.GetEnvironmentVariable("ACCURACY_REGRESSION_CONTRACT") ??
             Path.Combine(PdfExtractorQualityBenchmarkProbe.RepositoryRoot(), "eval", "regression",
                 "accuracy-regression-contract.v1.json");
+        if (!Path.IsPathRooted(output))
+            output = Path.Combine(PdfExtractorQualityBenchmarkProbe.RepositoryRoot(), output);
         var baseline = new[]
         {
             MakeObservation("doc-sha-a", "a/one", ["line-a"], "article", true, true, true, true, true, true, true, true, true),
