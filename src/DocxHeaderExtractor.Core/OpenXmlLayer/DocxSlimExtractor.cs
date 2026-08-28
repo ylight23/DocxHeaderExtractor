@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using DocxHeaderExtractor.Core.Application.Features;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.OpenXmlLayer;
@@ -43,7 +44,9 @@ public sealed class DocxSlimExtractor
         // numbering.xml chứa phần số Word hiển thị nhưng không nằm trong text paragraph.
         NumberingResolver.Apply(main, paragraphs);
 
-        var bodySize = EstimateBodyFontSize(paragraphs) ?? resolver.DefaultFontSizePt;
+        var sourceForFeatures = DocxSourceFactsBuilder.Build(path, paragraphs, [], []);
+        var derivedFeatures = new DocumentFeatureDeriver().Derive(sourceForFeatures);
+        var bodySize = derivedFeatures.BodyFontSizePt ?? resolver.DefaultFontSizePt;
         foreach (var p in paragraphs) p.BodyFontSizePt = bodySize;
 
         // Mục lục gõ tay phải nhận diện TRƯỚC hai lượt dưới: cả MarkParagraphsBeforeTables lẫn
@@ -430,25 +433,6 @@ public sealed class DocxSlimExtractor
         }
 
         return (sb.ToString(), breaks);
-    }
-
-    /// <summary>
-    /// Cỡ chữ thân bài = cỡ chiếm nhiều KÝ TỰ nhất. Đếm theo ký tự (không phải theo số đoạn)
-    /// để các đoạn văn dài áp đảo, còn tiêu đề ngắn không kéo lệch kết quả.
-    /// </summary>
-    private static double? EstimateBodyFontSize(List<SlimParagraph> paragraphs)
-    {
-        var weight = new Dictionary<double, long>();
-
-        foreach (var p in paragraphs)
-        {
-            if (p.FontSizePt is not { } size || p.Text.Length == 0) continue;
-            weight[size] = weight.GetValueOrDefault(size) + p.Text.Length;
-        }
-
-        if (weight.Count == 0) return null;
-
-        return weight.OrderByDescending(kv => kv.Value).ThenBy(kv => kv.Key).First().Key;
     }
 
     private static string Normalize(string s) => WhitespaceRx.Replace(s, " ").Trim();
