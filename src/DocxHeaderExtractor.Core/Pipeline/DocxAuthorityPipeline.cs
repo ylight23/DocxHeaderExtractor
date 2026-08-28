@@ -12,24 +12,24 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 internal static class DocxAuthorityPipeline
 {
     internal static DocxAuthoritySource BuildForAudit(SlimDocument document, DocumentModeReport mode) =>
-        Build(SlimSourceFactsAdapter.Adapt(document), document, mode);
+        Build(SlimSourceFactsAdapter.Adapt(document), SlimCompatibilityBoundary.Capture(document), mode);
 
     internal static DocxAuthoritySource BuildForAudit(
         SourceDocument source,
         SlimDocument compatibility,
-        DocumentModeReport mode) => Build(source, compatibility, mode);
+        DocumentModeReport mode) => Build(source, SlimCompatibilityBoundary.Capture(compatibility), mode);
 
-    public static Task<DocxAuthorityPipelineResult> RunAsync(
+    internal static Task<DocxAuthorityPipelineResult> RunAsync(
         SlimDocument document,
         DocumentModeReport mode,
         IHeaderClassifier? analyst,
         IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default) =>
-        RunAsync(SlimSourceFactsAdapter.Adapt(document), document, mode, analyst, quarantinedIndexes, ct);
+        RunAsync(SlimSourceFactsAdapter.Adapt(document), SlimCompatibilityBoundary.Capture(document), mode, analyst, quarantinedIndexes, ct);
 
     public static async Task<DocxAuthorityPipelineResult> RunAsync(
         SourceDocument sourceDocument,
-        SlimDocument compatibility,
+        SlimCompatibilityContext compatibility,
         DocumentModeReport mode,
         IHeaderClassifier? analyst,
         IReadOnlySet<int>? quarantinedIndexes = null,
@@ -43,11 +43,11 @@ internal static class DocxAuthorityPipeline
         if (analyst is null)
         {
             var decisions = source.Contexts.Values
-                .Where(context => IsDeterministicallyStructured(context.Paragraph))
+                .Where(context => IsDeterministicallyStructured(context.Source, context.Paragraph))
                 .Select(context => new PdfBlockDecision(
-                    SourceId(context.Paragraph), PdfBlockRole.HeadingTopic, 1,
+                    context.Source.SourceId, PdfBlockRole.HeadingTopic, 1,
                     "deterministic-ooxml-structure",
-                    new TextOffsetSpan(0, context.Paragraph.Text.Length),
+                    new TextOffsetSpan(0, context.Source.Text.Length),
                     SemanticRole: PdfSemanticRole.TopicHeading))
                 .ToArray();
             roles = new PdfBlockAnalysis(source.Blocks, decisions, []);
@@ -119,17 +119,17 @@ internal static class DocxAuthorityPipeline
         return new DocxAuthorityPipelineResult(headings, audit);
     }
 
-    private static bool IsDeterministicallyStructured(SlimParagraph paragraph) =>
-        paragraph.HasBuiltInHeadingStyle || paragraph.OutlineLevel is >= 0 and <= 8 ||
+    private static bool IsDeterministicallyStructured(SourceParagraph source, SlimCompatibilityParagraph paragraph) =>
+        paragraph.HasBuiltInHeadingStyle || source.Style.OutlineLevel is >= 0 and <= 8 ||
         paragraph.NumberingStyleLevel is >= 1 and <= 9;
 
     private static DocxAuthoritySource Build(
         SourceDocument sourceDocument,
-        SlimDocument compatibility,
+        SlimCompatibilityContext compatibility,
         DocumentModeReport mode,
         IReadOnlySet<int>? quarantinedIndexes = null)
     {
-        var compatibilityById = compatibility.Paragraphs.ToDictionary(SourceId, StringComparer.Ordinal);
+        var compatibilityById = compatibility.Paragraphs;
         var paragraphs = sourceDocument.Paragraphs
             .Where(source => compatibilityById.ContainsKey(source.SourceId))
             .Select(source => (Source: source, Compatibility: compatibilityById[source.SourceId]))
@@ -149,9 +149,7 @@ internal static class DocxAuthorityPipeline
             var paragraph = paragraphs[index].Compatibility;
             var id = sourceParagraph.SourceId;
             var scope = ScopeOf(sourceParagraph, paragraph);
-            var marker = NumberingAudit.ParseParagraph(paragraph, sourceParagraph.Text) is { } strict
-                ? new PdfMarkerFact(strict.Signature, strict.Depth, strict.Kind.ToString().ToLowerInvariant(), strict.Kind == NumberKind.Arabic)
-                : PdfMarkerFactsParser.Parse(sourceParagraph.Text);
+            var marker = compatibility.MarkerFor(id, sourceParagraph.Text);
             var evidence = new List<string>
             {
                 sourceParagraph.Text.Length <= 180 ? "short_source_paragraph" : "long_source_paragraph",
@@ -191,21 +189,18 @@ internal static class DocxAuthorityPipeline
         return new DocxAuthoritySource(blocks, result, modelContexts);
     }
 
-    private static string ScopeOf(SourceParagraph source, SlimParagraph compatibility) =>
+    private static string ScopeOf(SourceParagraph source, SlimCompatibilityParagraph compatibility) =>
         compatibility.InTableOfContents ? "table_of_contents" :
         source.Layout.TableDepth > 0 ? "table" :
         PdfStructuralScopeDetector.IsFormalSyntax(source.Text) ? "code_or_grammar" :
         "document_body";
-
-    private static string SourceId(SlimParagraph paragraph) =>
-        string.IsNullOrWhiteSpace(paragraph.StableId) ? $"p{paragraph.Index}" : paragraph.StableId;
 
     private static string Excerpt(string text) => text.Length <= 180 ? text : text[..180];
 }
 
 internal sealed record DocxAuthorityContext(
     SourceParagraph Source,
-    SlimParagraph Paragraph,
+    SlimCompatibilityParagraph Paragraph,
     string Scope,
     PdfCandidateContext ModelContext);
 
