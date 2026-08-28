@@ -1,0 +1,32 @@
+{
+  "milestone": "ARCH-4C",
+  "status": "CLOSED",
+  "baselineRevision": "fbc8c0bc3763a51a7f27d0a2ebcdc8e847561cd2",
+  "directBuilder": "DocxSourceFactsBuilder",
+  "resultContract": "DocxSourceExtractionResult",
+  "compatibilityApi": "DocxSlimExtractor.Extract",
+  "sourceReadCountPerExtraction": 1,
+  "secondParserOrIo": false,
+  "sourceAuthority": "direct producer source state",
+  "compatibilityOracle": "SlimSourceFactsAdapter",
+  "identity": "StableId/source ordinal and source spans preserved; duplicate text does not identify occurrences",
+  "policyFieldsCopiedToSource": false,
+  "callerCutover": false,
+  "staticForbiddenDependencies": [
+    "HeadingHeuristics",
+    "ranking",
+    "ModelProposal",
+    "ValidatedHeading",
+    "HeaderExtractionPipeline",
+    "PdfFirstValidatedFallback",
+    "RoutePolicy"
+  ],
+  "focusedTests": {
+    "SourceFactsDualBuildTests": "5/5 PASS",
+    "combinedArchitectureRegression": "22/22 PASS",
+    "providerCalls": 0
+  },
+  "releaseBuild": "PASS",
+  "providerCalls": 0,
+  "productionBehaviorChanged": false
+}

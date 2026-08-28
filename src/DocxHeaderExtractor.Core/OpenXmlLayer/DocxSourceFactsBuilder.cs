@@ -4,26 +4,24 @@ using DocxHeaderExtractor.Core.Models;
 namespace DocxHeaderExtractor.Core.OpenXmlLayer;
 
 /// <summary>
-/// One-way compatibility projection from the mixed Slim model to the immutable source contract.
-/// Derived, policy, and validated Slim state is intentionally not copied.
+/// Builds source facts from the producer's parsed paragraph state without consulting policy state.
 /// </summary>
-public static class SlimSourceFactsAdapter
+internal static class DocxSourceFactsBuilder
 {
-    public static SourceDocument Adapt(SlimDocument document)
+    public static SourceDocument Build(
+        string path,
+        IReadOnlyList<SlimParagraph> paragraphs,
+        IReadOnlyList<string> pageHeaders,
+        IReadOnlyList<string> pageFooters) => new()
     {
-        ArgumentNullException.ThrowIfNull(document);
-
-        return new SourceDocument
-        {
-            DocumentId = document.SourcePath,
-            FileName = document.FileName,
-            SourcePath = document.SourcePath,
-            SourceKind = "docx",
-            Paragraphs = ReadOnly(document.Paragraphs.Select(MapParagraph)),
-            PageHeaders = ReadOnly(document.PageHeaders),
-            PageFooters = ReadOnly(document.PageFooters),
-        };
-    }
+        DocumentId = path,
+        FileName = Path.GetFileName(path),
+        SourcePath = path,
+        SourceKind = "docx",
+        Paragraphs = ReadOnly(paragraphs.Select(MapParagraph)),
+        PageHeaders = ReadOnly(pageHeaders),
+        PageFooters = ReadOnly(pageFooters),
+    };
 
     private static SourceParagraph MapParagraph(SlimParagraph paragraph) => new()
     {

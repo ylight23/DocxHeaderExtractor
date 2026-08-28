@@ -1,0 +1,39 @@
+{
+  "milestone": "ARCH-4F",
+  "status": "CLOSED",
+  "baseRevision": "af495ad",
+  "sourceAuthorityCutover": true,
+  "sourceFactAuthority": "SourceDocument",
+  "slimRole": "compatibility sidecar",
+  "slimDemotionResponsibilityRemaining": true,
+  "normalSourceFactReadsFromSlim": 2,
+  "unexplainedSourceReadsFromSlim": 0,
+  "slimReadsRetained": [
+    {
+      "reader": "DocxAuthorityPipeline",
+      "fields": ["HasBuiltInHeadingStyle"],
+      "reason": "compatibility demotion/style state is not represented in SourceDocument",
+      "owner": "deferred Slim compatibility boundary",
+      "migrationBlocker": "demotion dependency boundary"
+    },
+    {
+      "reader": "DocxAuthorityPipeline",
+      "fields": ["NumberingId", "NumberingStyleLevel"],
+      "reason": "existing NumberingAudit parser consumes the Slim numbering representation",
+      "owner": "numbering boundary",
+      "migrationBlocker": "ARCH-4E5 deferred numbering/style ownership"
+    }
+  ],
+  "sourceIdentityDelta": 0,
+  "sourceFactDelta": 0,
+  "candidateDelta": 0,
+  "roleDelta": 0,
+  "scoreDelta": 0,
+  "levelDelta": 0,
+  "routeBehaviorChanged": false,
+  "productionBehaviorChanged": false,
+  "providerCalls": 0,
+  "arch3And4Regression": "PASS",
+  "fRegression": "2/2 PASS",
+  "releaseBuild": "PASS"
+}

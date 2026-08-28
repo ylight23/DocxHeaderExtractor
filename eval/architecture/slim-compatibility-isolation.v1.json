@@ -1,0 +1,37 @@
+{
+  "milestone": "ARCH-4H",
+  "status": "CLOSED",
+  "baseRevision": "f29c6af",
+  "slimCompatibilityBoundaryIntroduced": true,
+  "sourceAuthority": "SourceDocument",
+  "normalDirectSlimTypeReferencesBefore": 2,
+  "normalDirectSlimTypeReferencesAfter": 0,
+  "normalSourceFactReadsFromSlim": 0,
+  "unexplainedNormalSlimReads": 0,
+  "demotionOperationsMoved": 0,
+  "demotionBehaviorDelta": 0,
+  "legacyRuntimeCutover": false,
+  "sourceFactDelta": 0,
+  "candidateDelta": 0,
+  "roleDelta": 0,
+  "scoreDelta": 0,
+  "levelDelta": 0,
+  "slimCompatibilityResponsibilityRemaining": true,
+  "focusedTests": "10/10 PASS",
+  "fRegression": "2/2 PASS",
+  "releaseBuild": "PASS",
+  "providerCalls": 0,
+  "productionBehaviorChanged": false,
+  "remainingDirectDependencies": [
+    {
+      "boundary": "SlimCompatibilityBoundary",
+      "owner": "OpenXmlLayer",
+      "reason": "Captures only mutable policy/TOC/demotion compatibility state for normal authority; source facts are absent."
+    },
+    {
+      "boundary": "legacy/eval adapters",
+      "owner": "legacy and evaluation consumers",
+      "reason": "ARCH-4H does not cut over HeaderExtractionPipeline, repair, eval, writeback, or test fixtures."
+    }
+  ]
+}

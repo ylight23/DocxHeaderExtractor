@@ -70,7 +70,8 @@ public static class OutlineWriteback
         // Đường về nguồn của từng ký tự — thứ duy nhất cho phép tách đoạn mà không đoán mò offset.
         // Đọc từ NGUỒN chứ không từ đích: hai file lúc này giống hệt nhau từng byte, còn đích thì
         // sắp bị mở để ghi và đọc song song sẽ tranh khoá.
-        var slim = new DocxSlimExtractor(extraction).Extract(source);
+        var sourceExtraction = new DocxSlimExtractor(extraction).ExtractForAuthority(source);
+        var mappings = WritebackMappingSet.FromSourceDocument(sourceExtraction.Source);
         try
         {
             using (var doc = WordprocessingDocument.Open(target, true))
@@ -97,7 +98,8 @@ public static class OutlineWriteback
                     // Heading dính nội dung cùng dòng: tách được thì tách, không thì từ chối như cũ.
                     if (heading.InlineBodySpan is { } bodySpan)
                     {
-                        if (TrySplitPoint(slim.ByIndex(heading.Index), walked.Element, bodySpan.Start)
+                        if (TrySplitPoint(mappings.Values.FirstOrDefault(mapping =>
+                                mapping.Locator.ParagraphIndex == heading.Index), walked.Element, bodySpan.Start)
                             is not { } runIndex)
                         {
                             skipped.Add(new OutlineWritebackSkip(heading.Index, "inline_body_not_splittable"));
@@ -175,21 +177,21 @@ public static class OutlineWriteback
         IReadOnlyList<HeadingRecord> applied,
         IReadOnlyCollection<int> splitIndexes)
     {
-        var written = new DocxSlimExtractor(extraction).Extract(target);
+        var written = new DocxSlimExtractor(extraction).ExtractForAuthority(target).Source;
         foreach (var heading in applied)
         {
             var shift = splitIndexes.Count(i => i < heading.Index);
             var wasSplit = splitIndexes.Contains(heading.Index);
             var at = heading.Index + shift;
 
-            var paragraph = written.ByIndex(at)
+            var paragraph = written.Paragraphs.FirstOrDefault(item => item.SourceOrdinal == at)
                             ?? throw new InvalidOperationException(
                                 $"Sau khi ghi, đoạn {heading.Index} không còn tồn tại trong bản đích.");
 
             // Địa chỉ XML là theo vị trí nên chỉ so được khi phía trước chưa có lần tách nào.
-            if (shift == 0 && heading.StableId is { Length: > 0 } stableId && paragraph.StableId != stableId)
+            if (shift == 0 && heading.StableId is { Length: > 0 } stableId && paragraph.SourceId != stableId)
                 throw new InvalidOperationException(
-                    $"Sau khi ghi, đoạn {heading.Index} đổi địa chỉ XML ({paragraph.StableId} ≠ {stableId}).");
+                    $"Sau khi ghi, đoạn {heading.Index} đổi địa chỉ XML ({paragraph.SourceId} ≠ {stableId}).");
 
             // Đoạn đã tách thì phần còn lại đúng bằng phần TIÊU ĐỀ, không còn là text gốc.
             var expected = wasSplit ? heading.Text : heading.OriginalText ?? heading.Text;
@@ -197,9 +199,9 @@ public static class OutlineWriteback
                 throw new InvalidOperationException(
                     $"Sau khi ghi, nội dung đoạn {heading.Index} không còn khớp nguồn.");
 
-            if (paragraph.OutlineLevel != heading.Level - 1)
+            if (paragraph.Style.OutlineLevel != heading.Level - 1)
                 throw new InvalidOperationException(
-                    $"Sau khi ghi, đoạn {heading.Index} có outline level {paragraph.OutlineLevel}, " +
+                    $"Sau khi ghi, đoạn {heading.Index} có outline level {paragraph.Style.OutlineLevel}, " +
                     $"khác cấp {heading.Level} đã chốt.");
         }
     }
@@ -222,14 +224,14 @@ public static class OutlineWriteback
     /// với <c>Elements&lt;Run&gt;()</c>.</item>
     /// </list>
     /// </summary>
-    internal static int? TrySplitPoint(SlimParagraph? paragraph, Paragraph element, int bodyStart)
+    internal static int? TrySplitPoint(WritebackMapping? mapping, Paragraph element, int bodyStart)
     {
-        if (paragraph is null || bodyStart <= 0) return null;
+        if (mapping is null || bodyStart <= 0) return null;
 
         var descendants = element.Descendants<Run>().ToList();
         if (descendants.Count == 0 || descendants.Any(r => !ReferenceEquals(r.Parent, element))) return null;
 
-        foreach (var segment in paragraph.SourceSegments)
+        foreach (var segment in mapping.Locator.SourceSegments)
         {
             if (segment.Start != bodyStart || segment.RawStart != 0) continue;
             return segment.RunIndex >= 0 && segment.RunIndex < descendants.Count ? segment.RunIndex : null;

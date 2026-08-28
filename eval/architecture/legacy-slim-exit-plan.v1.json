@@ -1,0 +1,117 @@
+{
+  "milestone": "ARCH-4J",
+  "status": "CLOSED",
+  "baseRevision": "c5309a5",
+  "inventoryMethod": "repository-wide static reference census; counts are source files and each file may contain multiple callers",
+  "totalRemainingSlimCallers": 170,
+  "productionReferenceFiles": 75,
+  "testReferenceFiles": 95,
+  "normalAuthoritySlimCallers": 0,
+  "callerGroups": [
+    {
+      "primaryClass": "LEGACY_RUNTIME",
+      "callers": [
+        "HeaderExtractionPipeline",
+        "DocxSlimExtractor.Extract",
+        "DocxSlimExtractor.ExtractWithSourceFacts",
+        "DocxSlimExtractor legacy helpers"
+      ],
+      "files": ["src/DocxHeaderExtractor.Core/Pipeline/HeaderExtractionPipeline.cs", "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs"],
+      "normalProductionReachable": false,
+      "legacyRuntimeReachable": true,
+      "reads": ["SlimDocument", "SlimParagraph source mirrors", "Role", "Score", "IsCandidate", "GuessedLevel", "demotion/TOC state"],
+      "writes": ["legacy policy and demotion state"],
+      "needs": {"sourceFacts": true, "policyState": true, "demotionState": true, "mutableParagraphs": true, "writebackMapping": false, "legacyOutputContract": true},
+      "migrationTarget": "KEEP_LEGACY_TEMPORARILY",
+      "blocker": "legacy runtime contract plus deferred demotion ownership"
+    },
+    {
+      "primaryClass": "REPAIR_COMPATIBILITY",
+      "callers": ["AutoRepairWorkflow", "RepairGateCalibration", "RepairCorpusAudit", "PartialKeyPackage", "CorruptParagraphVisualVerifier", "TextLayoutLineProbe"],
+      "files": ["src/DocxHeaderExtractor.Core/Repair/*.cs"],
+      "normalProductionReachable": false,
+      "repairReachable": true,
+      "reads": ["mutable paragraph layout/corruption state", "text spans", "source-to-repair mapping"],
+      "writes": ["repair-specific Slim state", "writeback preparation state"],
+      "needs": {"sourceFacts": true, "policyState": false, "demotionState": false, "mutableParagraphs": true, "writebackMapping": true, "legacyOutputContract": false},
+      "migrationTarget": "MIGRATE_TO_WRITEBACK_ADAPTER",
+      "blocker": "source identity and mutable repair/writeback mapping are not yet represented by a dedicated adapter"
+    },
+    {
+      "primaryClass": "EVAL_ONLY",
+      "callers": ["EvalRunner", "BenchDocumentFactory", "ReviewBundle", "EvaluationAnchorResolver", "TocAnswerKeyGenerator", "evaluation probes"],
+      "files": ["src/DocxHeaderExtractor.Cli/EvalRunner.cs", "src/DocxHeaderExtractor.Core/Eval/*.cs", "tests/DocxHeaderExtractor.Tests/*Probe.cs"],
+      "normalProductionReachable": false,
+      "evalReachable": true,
+      "reads": ["Slim source mirrors", "candidate/policy state", "stable IDs", "review/evaluation fields"],
+      "writes": ["diagnostic/evaluation artifacts only"],
+      "needs": {"sourceFacts": true, "policyState": true, "demotionState": false, "mutableParagraphs": false, "writebackMapping": false, "legacyOutputContract": false},
+      "migrationTarget": "MIGRATE_TO_SOURCE_DOCUMENT",
+      "blocker": "replay artifacts and probes still have Slim-shaped contracts"
+    },
+    {
+      "primaryClass": "WRITEBACK_COMPATIBILITY",
+      "callers": ["OutlineWriteback", "PdfProductWriteback", "InlineHeadingSplitter", "writeback tests"],
+      "files": ["src/DocxHeaderExtractor.Core/OpenXmlLayer/OutlineWriteback.cs", "src/DocxHeaderExtractor.Core/Pipeline/PdfProductWriteback.cs", "src/DocxHeaderExtractor.Core/Pipeline/InlineHeadingSplitter.cs", "tests/DocxHeaderExtractor.Tests/OutlineWriteback*Tests.cs"],
+      "normalProductionReachable": false,
+      "writebackReachable": true,
+      "reads": ["paragraph index", "stable identity", "text spans", "OOXML paragraph mapping"],
+      "writes": ["DOCX outline/writeback state"],
+      "needs": {"sourceFacts": true, "policyState": false, "demotionState": false, "mutableParagraphs": true, "writebackMapping": true, "legacyOutputContract": false},
+      "migrationTarget": "MIGRATE_TO_WRITEBACK_ADAPTER",
+      "blocker": "writeback requires an explicit SourceIdentity plus WritebackMapping contract"
+    },
+    {
+      "primaryClass": "INTERNAL_IMPLEMENTATION",
+      "callers": ["DocxSlimExtractor source producer", "SlimCompatibilityBoundary", "SlimSourceFactsAdapter", "OpenXML numbering/style/table helpers", "DocumentDiagnosticRunner", "legacy/PDF alignment helpers"],
+      "files": ["src/DocxHeaderExtractor.Core/OpenXmlLayer/*.cs", "src/DocxHeaderExtractor.Core/Pipeline/*Slim-dependent.cs", "src/DocxHeaderExtractor.Core/Models/SlimDocument.cs", "src/DocxHeaderExtractor.Core/Models/SlimParagraph.cs"],
+      "normalProductionReachable": false,
+      "legacyRuntimeReachable": true,
+      "reads": ["source construction inputs", "compatibility state", "demotion state"],
+      "writes": ["Slim construction and compatibility mutations"],
+      "needs": {"sourceFacts": true, "policyState": true, "demotionState": true, "mutableParagraphs": true, "writebackMapping": false, "legacyOutputContract": false},
+      "migrationTarget": "MIGRATE_TO_COMPATIBILITY_CONTEXT",
+      "blocker": "three deferred demotion operations remain implemented against mutable Slim paragraphs"
+    },
+    {
+      "primaryClass": "TEST_ONLY",
+      "callers": ["legacy behavior tests", "fixture builders", "architecture characterization tests", "accuracy/evidence probes"],
+      "files": ["tests/DocxHeaderExtractor.Tests/*.cs"],
+      "normalProductionReachable": false,
+      "testReachable": true,
+      "reads": ["fields needed by the test under coverage"],
+      "writes": ["test fixture state only"],
+      "needs": {"sourceFacts": "mixed", "policyState": "mixed", "demotionState": "mixed", "mutableParagraphs": "mixed", "writebackMapping": "mixed", "legacyOutputContract": "mixed"},
+      "migrationTarget": "REPLACE_WITH_TEST_FIXTURE_BUILDER",
+      "blocker": "migration cost only; not a production retirement blocker"
+    }
+  ],
+  "entryPointReachability": {
+    "DocxSlimExtractor.Extract": {"normalProductionReachable": false, "legacyRuntimeReachable": true, "repairReachable": true, "evalReachable": true, "writebackReachable": true, "testOnly": true},
+    "DocxSlimExtractor.ExtractWithSourceFacts": {"normalProductionReachable": false, "legacyRuntimeReachable": true, "repairReachable": true, "evalReachable": true, "writebackReachable": false, "testOnly": true},
+    "AuthorityExtractionPipeline": {"normalProductionReachable": true, "slimApiDependency": 0, "uses": "ExtractForAuthority"}
+  },
+  "demotionBlockers": [
+    {"operation": "DemoteCoverPageBlock", "currentOwner": "DocxSlimExtractor", "futureBoundary": "compatibility/demotion policy state", "retirementImpact": "blocks full retirement"},
+    {"operation": "DemoteInlineEmphasis", "currentOwner": "DocxSlimExtractor", "futureBoundary": "compatibility/demotion policy state", "retirementImpact": "blocks full retirement"},
+    {"operation": "DemoteRunsWithoutOwnProse", "currentOwner": "DocxSlimExtractor", "futureBoundary": "compatibility/demotion policy state", "retirementImpact": "blocks full retirement"}
+  ],
+  "retirementLevels": {
+    "level1NormalRetired": true,
+    "level2RuntimeRetired": false,
+    "level3FullRetired": false
+  },
+  "migrationPlan": {
+    "sourceFactsOnly": "MIGRATE_TO_SOURCE_DOCUMENT",
+    "mutableCompatibility": "MIGRATE_TO_COMPATIBILITY_CONTEXT",
+    "repairAndWriteback": "MIGRATE_TO_WRITEBACK_ADAPTER",
+    "legacyRoute": "KEEP_LEGACY_TEMPORARILY",
+    "tests": "REPLACE_WITH_TEST_FIXTURE_BUILDER"
+  },
+  "unexplainedNormalSlimCallers": 0,
+  "publicSlimApiDeprecationReady": true,
+  "fullSlimRetirementReady": false,
+  "readiness": "READY_FOR_PUBLIC_API_DEPRECATION",
+  "providerCalls": 0,
+  "productionCodeChanged": false
+}
