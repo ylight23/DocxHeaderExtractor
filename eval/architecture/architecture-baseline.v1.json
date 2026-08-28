@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "architecture_integration_baseline",
+  "revision": "fbc8c0bc3763a51a7f27d0a2ebcdc8e847561cd2",
+  "branch": "integration/architecture-baseline",
+  "worktree": "C:\\DocxHeaderExtractor-integration-0",
+  "worktreeClean": true,
+  "routePolicyTests": "12/12 PASS",
+  "sourceFactsTests": "3/3 PASS",
+  "fRegression": "2/2 PASS",
+  "releaseBuild": "PASS",
+  "releaseBuildWarnings": 28,
+  "releaseBuildErrors": 0,
+  "providerCalls": 0,
+  "productionBehaviorChanged": false,
+  "notes": [
+    "All checks ran on one clean tree containing ARCH-3B and ARCH-4B.",
+    "Restore was required because the clean worktree had no assets file; subsequent builds used the restored tree.",
+    "Warnings were pre-existing and did not prevent the build."
+  ]
+}
