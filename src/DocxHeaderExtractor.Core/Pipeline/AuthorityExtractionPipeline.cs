@@ -65,6 +65,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             var extraction = new DocxSlimExtractor(_options.Extraction).ExtractWithSourceFacts(conversion.Path);
             var slim = extraction.Slim;
             var source = extraction.Source;
+            var compatibility = SlimCompatibilityBoundary.Capture(slim);
             var mode = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
             var diagnostics = DocumentDiagnosticRunner.Analyze(slim, mode);
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
@@ -110,7 +111,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 }
                 case AuthorityRoute.DocxAuthority:
                 {
-                    var result = await DocxAuthorityPipeline.RunAsync(source, slim, mode, analyst, quarantinedIndexes, ct);
+                    var result = await DocxAuthorityPipeline.RunAsync(source, compatibility, mode, analyst, quarantinedIndexes, ct);
                     rawHeadings = result.Headings;
                     audit = result.Audit;
                     route = "docx-authority-v1";
