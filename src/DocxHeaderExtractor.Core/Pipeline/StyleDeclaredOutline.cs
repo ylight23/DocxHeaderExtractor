@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -231,6 +232,36 @@ public static class StyleDeclaredOutline
         return result;
     }
 
+    public static List<HeadingRecord> Build(IReadOnlyList<IPolicyParagraph> paragraphs)
+    {
+        ArgumentNullException.ThrowIfNull(paragraphs);
+        var frontMatter = (int)(paragraphs.Count * FrontMatterFraction);
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var result = new List<HeadingRecord>();
+        foreach (var p in paragraphs.OrderBy(p => p.Index))
+        {
+            if (!p.HasBuiltInHeadingStyle || string.IsNullOrWhiteSpace(p.Text) || p.Corrupt ||
+                Caption.IsMatch(p.Text)) continue;
+            if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
+            result.Add(new HeadingRecord
+            {
+                Index = p.Index, StableId = p.StableId, SourceId = p.StableId,
+                Level = LevelOf(p), Text = p.Text, StyleId = p.StyleId,
+                Source = HeadingSource.Style, Confidence = 1.0,
+                ConfidenceBasis = "style_declared",
+                DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
+            });
+        }
+        return result;
+    }
+
+    private static int LevelOf(IPolicyParagraph paragraph)
+    {
+        if (TypedNumber.Match(paragraph.Text) is { Success: true } match)
+            return Math.Clamp(match.Groups[1].Value.Count(c => c == '.') + 2, 1, 9);
+        return paragraph.NumberingId is not null ? 2 : 1;
+    }
+
     /// <summary>
     /// Outline do chính <c>w:outlineLvl</c> khai trên paragraph/style. Khác với
     /// <see cref="Build"/>: style Heading built-in chỉ là một cách Word UI đặt outline level, còn
@@ -323,6 +354,73 @@ public static class StyleDeclaredOutline
 
         return result;
     }
+
+    public static List<HeadingRecord> BuildFromOutlineLevel(IReadOnlyList<IPolicyParagraph> paragraphs)
+    {
+        ArgumentNullException.ThrowIfNull(paragraphs);
+        var frontMatter = (int)(paragraphs.Count * FrontMatterFraction);
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var result = new List<HeadingRecord>();
+        foreach (var p in paragraphs.OrderBy(p => p.Index))
+        {
+            if (string.IsNullOrWhiteSpace(p.Text) || p.Corrupt || p.InTableOfContents ||
+                p.StyleId?.StartsWith("TOC", StringComparison.OrdinalIgnoreCase) == true ||
+                Caption.IsMatch(p.Text)) continue;
+            if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
+            if (p.OutlineLevel is null or < 0 or > 8) continue;
+            result.Add(new HeadingRecord
+            {
+                Index = p.Index, StableId = p.StableId, SourceId = p.StableId,
+                Level = Math.Clamp(p.OutlineLevel.Value + 1, 1, 9), Text = p.Text,
+                StyleId = p.StyleId, Source = HeadingSource.Structure, Confidence = 1.0,
+                ConfidenceBasis = "outline_level_declared",
+                DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
+            });
+        }
+        return result;
+    }
+
+    public static List<HeadingRecord> BuildFromNumbering(IReadOnlyList<IPolicyParagraph> paragraphs)
+    {
+        ArgumentNullException.ThrowIfNull(paragraphs);
+        var frontMatter = (int)(paragraphs.Count * FrontMatterFraction);
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var headingLists = paragraphs
+            .Where(p => p.NumberingId is not null && p.NumberingLevel >= 1 &&
+                        !string.IsNullOrWhiteSpace(p.Text))
+            .GroupBy(p => (Id: p.NumberingId!.Value, Level: p.NumberingLevel!.Value))
+            .Where(g => g.Count() >= MinimumListItems &&
+                        g.Count(p => p.HasBuiltInHeadingStyle) >= g.Count() * HeadingStyleShare)
+            .Select(g => g.Key)
+            .ToHashSet();
+        var result = new List<HeadingRecord>();
+        foreach (var p in paragraphs.OrderBy(p => p.Index))
+        {
+            if (string.IsNullOrWhiteSpace(p.Text) || p.Corrupt || Caption.IsMatch(p.Text) || p.TableDepth > 0 ||
+                p.StyleId?.StartsWith("TOC", StringComparison.OrdinalIgnoreCase) == true) continue;
+            int level;
+            if (p.NumberingLevel is { } ilvl && ilvl >= 1 && p.NumberingId is { } id &&
+                headingLists.Contains((id, ilvl)))
+                level = Math.Clamp(ilvl + 1, 1, 9);
+            else if (StructuralKeyword.IsMatch(p.Text) && IsStandaloneKeyword(p))
+                level = 1;
+            else continue;
+            if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
+            result.Add(new HeadingRecord
+            {
+                Index = p.Index, StableId = p.StableId, SourceId = p.StableId,
+                Level = level, Text = p.Text,
+                Source = p.NumberingLevel is not null ? HeadingSource.Structure : HeadingSource.Style,
+                Confidence = 1.0, ConfidenceBasis = "numbering_declared",
+                DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
+            });
+        }
+        return result;
+    }
+
+    private static bool IsStandaloneKeyword(IPolicyParagraph p) =>
+        !string.Equals(p.StyleId, "BodyText", StringComparison.OrdinalIgnoreCase) &&
+        p.Text.Length <= HeadingTextMaxLength && !p.Text.Contains(':');
 
     private static bool IsAnchoredNumberedCandidateShape(SlimParagraph p)
     {
