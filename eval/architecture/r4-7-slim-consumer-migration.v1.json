@@ -1,0 +1,44 @@
+{
+  "schema": "r4-7-slim-consumer-migration.v1",
+  "status": "PASS",
+  "branch": "round4/legacy-free-authority-runtime",
+  "baseClosureRevision": "d9eaf830971cf645bd4251a9b35d1842edc84f0c",
+  "migrationExecutionRevision": "a4c36fa9d4209798e04b65c02dda4dec019b9991",
+  "scope": {
+    "executableDocxSlimExtractCallers": 0,
+    "cliSlimRuntimeCallers": 0,
+    "webSlimRuntimeCallers": 0,
+    "repairSlimCallers": 0,
+    "evalExecutableSlimCallers": 0,
+    "unknownCallers": 0,
+    "legacyOwnerReferencesExcludedFromExecutableCounts": true,
+    "physicalLegacyRetirement": false
+  },
+  "nativeContracts": {
+    "sourceFacts": "SourceDocument",
+    "numberingAndStyle": "NumberingStyleFeatures",
+    "candidateAndPolicy": "DocxPolicyState",
+    "diagnostics": "native paragraph contracts and diagnostic producers",
+    "output": "DocumentOutline and validated/product structures"
+  },
+  "validation": {
+    "releaseBuild": "PASS",
+    "releaseBuildErrors": 0,
+    "focusedMigrationTests": {
+      "passed": 74,
+      "failed": 0,
+      "skipped": 0
+    },
+    "providerCalls": 0,
+    "expectedChanged": false,
+    "productionBehaviorChanged": false,
+    "fullSuite": "NOT_RUN",
+    "knownBaselineProbeFailuresReproduced": true
+  },
+  "remainingWork": {
+    "r4_8CompatibilityBoundary": "AUTHORIZED",
+    "r4_9HeaderExtractionPipelineRemoval": "NOT_STARTED",
+    "r4_10PhysicalSlimRemoval": "NOT_STARTED",
+    "zeroReferenceProof": "PENDING"
+  }
+}
