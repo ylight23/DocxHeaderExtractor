@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r4_native_runtime_behavior_reconciliation",
+  "task": "R4-6",
+  "diagnosticBaselineRevision": "3b350543d3f6b88d074553915169d84587fecf00",
+  "pdfBaselineRevision": "a920b2adfc0a7e6caa8eea3c2d93fb63067b530c",
+  "executionRevision": "9b8a91bd75966d86eecbf32648c572d3ff0d57da",
+  "r4_6Structural": "PASS",
+  "behaviorReconciliation": "BLOCKED",
+  "evidence": {
+    "currentFocusedDeterministicTests": { "passed": 48, "failed": 0, "skipped": 0 },
+    "diagnosticBaselineFocusedTests": { "passed": 2, "failed": 0, "skipped": 0 },
+    "pdfBaselineFocusedTests": { "passed": 46, "failed": 0, "skipped": 0 },
+    "fullSuiteRun": false,
+    "providerCalls": 0
+  },
+  "gates": {
+    "diagnosticResultDelta": "BLOCKED",
+    "pdfCandidateSelectionDelta": "BLOCKED",
+    "pdfAlignmentTargetDelta": "BLOCKED",
+    "pdfHeadingSpanDelta": "BLOCKED",
+    "pdfVisualMappingDelta": "BLOCKED",
+    "pdfValidatedStructureDelta": "BLOCKED",
+    "pdfOutputDelta": "BLOCKED",
+    "expectedChanged": false,
+    "benchmarkExpectedChanged": false
+  },
+  "findings": [
+    {
+      "scope": "diagnostics and PDF behavior",
+      "classification": "MIGRATION_BUG",
+      "owner": "R4-6 reconciliation infrastructure",
+      "firstDivergenceStage": "not measurable",
+      "reason": "No shared pinned-corpus normalized serializer/replay comparator exists for both revisions; focused test pass is not semantic parity evidence."
+    }
+  ],
+  "decision": "R4-6 structural PASS, behavioral closure blocked; R4-7 not authorized",
+  "nextStep": "Run one deterministic baseline/current comparator, preserve expected outputs, and classify every delta before proceeding."
+}
