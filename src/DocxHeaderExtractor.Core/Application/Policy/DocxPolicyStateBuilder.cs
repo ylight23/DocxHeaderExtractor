@@ -31,13 +31,24 @@ public static class DocxPolicyStateBuilder
                 Numbering = numbering,
                 Style = style,
                 NumberingStyleHeadingLevel = numbering.NumberingStyleHeadingLevel,
-                PrecedesTableOfContents = paragraph.InTableOfContents,
+                PrecedesTableOfContents = false,
                 BodyFontSizePt = derivedFeatures.BodyFontSizePt,
                 Corrupt = derivedFeatures.CorruptSourceIds.Contains(paragraph.SourceId),
                 TrustedHeadingStyle = false,
                 InTableOfContents = paragraph.InTableOfContents,
             };
         }).ToArray();
+
+        for (var index = 0; index < source.Paragraphs.Count; index++)
+        {
+            var paragraph = source.Paragraphs[index];
+            if (paragraph.InTableOfContents || string.IsNullOrWhiteSpace(paragraph.Text)) continue;
+            var next = source.Paragraphs.Skip(index + 1)
+                .FirstOrDefault(candidate => !string.IsNullOrWhiteSpace(candidate.Text));
+            if (next?.InTableOfContents == true &&
+                paragraphs.FirstOrDefault(item => item.Source.SourceId == paragraph.SourceId) is { } policyParagraph)
+                policyParagraph.PrecedesTableOfContents = true;
+        }
 
         var policy = new DocxPolicyState(source, structuralFeatures, derivedFeatures, paragraphs);
         var candidatePolicy = new HeadingCandidatePolicy();
