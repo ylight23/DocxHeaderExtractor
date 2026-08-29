@@ -1,6 +1,12 @@
 # R4 Native Runtime Behavior Reconciliation
 
-Status: `BLOCKED`
+Status: `BLOCKED_DELTA_UNCLASSIFIED`
+
+R4-6R has now produced all 12 required snapshots from independent clean
+worktrees. Corpus provenance is valid, but semantic parity is not yet closed:
+diagnostic has 3 first divergences and PDF has 1 first divergence at
+`pdf.alignment` for fixture 056. The measured closure is recorded in
+`eval/reconciliation/r4-behavior-comparison.v1.json`.
 
 This gate keeps the structural R4-6 result separate from behavioral parity.
 The structural result is already closed as PASS:
@@ -30,38 +36,35 @@ diagnostic baseline focused filter passed `2/2`, and the PDF baseline focused
 filter passed `46/46`. These are build/test-health checks only. They do not
 emit the same corpus-level normalized records required by this gate.
 
-The repository has no committed comparator or replay manifest that produces,
-for both revisions, the required normalized fields for StyleSignal,
-LayoutSignal, CandidateDiagnostics, PDF retrieval, grounding, visual mapping,
-validation, and product output. The focused test counts therefore cannot prove
-`DIAGNOSTIC_RESULT_DELTA = 0` or any PDF delta is zero.
+The exporter now produces revision- and corpus-provenance-bound snapshots,
+including source-only visual reconciliation with no VLM calls. The comparator
+reports the earliest divergence rather than collapsing downstream differences.
 
 ## Gate result
 
 ```text
-DIAGNOSTIC_RESULT_DELTA = BLOCKED
-PDF_CANDIDATE_SELECTION_DELTA = BLOCKED
-PDF_ALIGNMENT_TARGET_DELTA = BLOCKED
-PDF_HEADING_SPAN_DELTA = BLOCKED
-PDF_VISUAL_MAPPING_DELTA = BLOCKED
-PDF_VALIDATED_STRUCTURE_DELTA = BLOCKED
-PDF_OUTPUT_DELTA = BLOCKED
+DIAGNOSTIC_RESULT_DELTA = BLOCKED_DELTA_UNCLASSIFIED (3 fixtures)
+PDF_CANDIDATE_SELECTION_DELTA = 0 (3 fixtures)
+PDF_ALIGNMENT_TARGET_DELTA = BLOCKED_DELTA_UNCLASSIFIED (fixture 056)
+PDF_HEADING_SPAN_DELTA = BLOCKED_DELTA_UNCLASSIFIED (downstream)
+PDF_VISUAL_MAPPING_DELTA = 0 (3 fixtures)
+PDF_VALIDATED_STRUCTURE_DELTA = BLOCKED_DELTA_UNCLASSIFIED (downstream)
+PDF_OUTPUT_DELTA = BLOCKED_DELTA_UNCLASSIFIED (downstream)
 
 EXPECTED_CHANGED = false
 BENCHMARK_EXPECTED_CHANGED = false
 PROVIDER_CALLS = 0
 ```
 
-Classification: `MIGRATION_BUG` / reconciliation infrastructure gap. The
-native migration changed the diagnostic and PDF call surfaces, but no shared
-corpus serializer/replay comparator exists to establish semantic identity.
-Expected outputs must not be rebased and no `DELTA = 0` claim is authorized.
+Classification: `UNCLASSIFIED` pending adjudication of the measured first
+divergences. The results are now measurable; expected outputs must not be
+rebased and no delta is authorized as zero except where explicitly listed.
 
 ## Decision
 
 ```text
 R4-6_STRUCTURAL = PASS
-R4-6_BEHAVIOR_RECONCILIATION = BLOCKED
+R4-6_BEHAVIOR_RECONCILIATION = BLOCKED_DELTA_UNCLASSIFIED
 R4-6 = BLOCKED_FOR_BEHAVIORAL_CLOSURE
 R4-7 = NOT_AUTHORIZED
 ```

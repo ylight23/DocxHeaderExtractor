@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r4_behavior_comparison_closure",
+  "diagnosticBaselineRevision": "3b350543d3f6b88d074553915169d84587fecf00",
+  "pdfBaselineRevision": "a920b2adfc0a7e6caa8eea3c2d93fb63067b530c",
+  "currentBehaviorRevision": "9b8a91bd75966d86eecbf32648c572d3ff0d57da",
+  "blockedArtifactPublication": "d07fc0bfb227ba6f0f7f646ee47f65c4fcceb9b6",
+  "corpus": {
+    "manifest": "eval/reconciliation/r4-behavior-corpus.v1.json",
+    "items": 3,
+    "filesMissing": 0,
+    "hashMismatches": 0,
+    "sameCorpusAllRevisions": true
+  },
+  "snapshots": {
+    "diagnosticBaseline": 3,
+    "diagnosticCurrent": 3,
+    "pdfBaseline": 3,
+    "pdfCurrent": 3,
+    "unmeasured": 0,
+    "providerCalls": 0,
+    "networkEnabled": false,
+    "liveLlm": false,
+    "liveVlm": false
+  },
+  "diagnostic": {
+    "joined": 3,
+    "deltaCount": 3,
+    "firstDivergences": [
+      { "documentId": "028-wb-rfb-works-without-prequal-2017", "stage": "diagnostic.outcome", "field": "status", "baseline": "normal", "current": "needs_analysis", "classification": "UNCLASSIFIED" },
+      { "documentId": "056-openstax-business-law-essentials", "stage": "diagnostic.layout", "field": "layoutSignal.tocAdjacentCount", "baseline": 45, "current": 0, "classification": "UNCLASSIFIED" },
+      { "documentId": "091-rfc9110-http-semantics", "stage": "diagnostic.outcome", "field": "status", "baseline": "needs_analysis", "current": "normal", "classification": "UNCLASSIFIED" }
+    ],
+    "resultDelta": "BLOCKED_DELTA_UNCLASSIFIED"
+  },
+  "pdf": {
+    "joined": 3,
+    "deltaCount": 1,
+    "firstDivergences": [
+      { "documentId": "056-openstax-business-law-essentials", "stage": "pdf.alignment", "field": "alignment", "baselineCount": 1822, "currentCount": 1835, "classification": "UNCLASSIFIED" }
+    ],
+    "candidateSelectionDelta": "0 for measured fixtures",
+    "visualMappingDelta": "0 for measured fixtures",
+    "resultDelta": "BLOCKED_DELTA_UNCLASSIFIED"
+  },
+  "gates": {
+    "expectedChanged": false,
+    "benchmarkExpectedChanged": false,
+    "diagnosticResultDelta": "BLOCKED_DELTA_UNCLASSIFIED",
+    "pdfCandidateSelectionDelta": "0",
+    "pdfAlignmentTargetDelta": "BLOCKED_DELTA_UNCLASSIFIED",
+    "pdfHeadingSpanDelta": "BLOCKED_DELTA_UNCLASSIFIED",
+    "pdfVisualMappingDelta": "0",
+    "pdfValidatedStructureDelta": "BLOCKED_DELTA_UNCLASSIFIED",
+    "pdfOutputDelta": "BLOCKED_DELTA_UNCLASSIFIED"
+  },
+  "decision": "R4-6 structural PASS; behavioral reconciliation blocked. Do not authorize R4-7.",
+  "nextStep": "Classify and fix the measured diagnostic and PDF alignment divergences, then rerun the same comparator without changing expected outputs."
+}
