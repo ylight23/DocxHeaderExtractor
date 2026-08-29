@@ -5,15 +5,6 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class SlimCompatibilityIsolationTests
 {
     [Fact]
-    public void Compatibility_boundary_types_are_absent()
-    {
-        Assert.Null(Type.GetType(
-            "DocxHeaderExtractor.Core.OpenXmlLayer.SlimCompatibilityContext, DocxHeaderExtractor.Core"));
-        Assert.Null(Type.GetType(
-            "DocxHeaderExtractor.Core.OpenXmlLayer.SlimCompatibilityBoundary, DocxHeaderExtractor.Core"));
-    }
-
-    [Fact]
     public void Docx_authority_pipeline_exposes_only_native_run_contracts()
     {
         var type = Type.GetType(

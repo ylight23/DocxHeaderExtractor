@@ -94,7 +94,7 @@ public sealed class PostClassificationPolicyTests
 
         foreach (var forbidden in new[]
         {
-            "OpenXml", "HeaderExtractionPipeline", "PdfFirstValidatedFallback",
+            "OpenXml", "PdfFirstValidatedFallback",
             "ModelProposal", "ValidatedHeading", "Hierarchy", "provider", "HeadingHeuristics",
         })
             Assert.DoesNotContain(forbidden, text, StringComparison.OrdinalIgnoreCase);

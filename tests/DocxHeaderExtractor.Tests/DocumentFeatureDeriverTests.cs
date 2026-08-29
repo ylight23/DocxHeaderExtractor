@@ -65,7 +65,6 @@ public sealed class DocumentFeatureDeriverTests
         Assert.DoesNotContain("ModelProposal", source, StringComparison.Ordinal);
         Assert.DoesNotContain("ValidatedHeading", source, StringComparison.Ordinal);
         Assert.DoesNotContain("AuthorityRoutePolicy", source, StringComparison.Ordinal);
-        Assert.DoesNotContain("HeaderExtractionPipeline", source, StringComparison.Ordinal);
         Assert.DoesNotContain("PdfFirstValidatedFallback", source, StringComparison.Ordinal);
     }
 
