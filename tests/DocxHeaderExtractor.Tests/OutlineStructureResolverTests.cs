@@ -83,7 +83,7 @@ public sealed class OutlineStructureResolverTests
 
     /// <summary>
     /// Cây La Mã→số→chữ là SUY LUẬN; <c>w:lvl/w:pStyle</c> và style Heading built-in là TUYÊN BỐ của
-    /// người soạn. Thứ tự quyền lực trong <c>HeaderExtractionPipeline.ResolveLevel</c> đặt tuyên bố
+    /// người soạn. Thứ tự quyền lực trong authority resolver đặt tuyên bố
     /// trên suy luận, và <c>StructuralHierarchyResolver</c> đã tôn trọng điều đó — nhưng bộ suy luận
     /// cấu trúc thứ hai này thì từng không. Kết quả là cùng một đoạn được gán hai cấp khác nhau tuỳ
     /// vào bộ nào chạy sau.

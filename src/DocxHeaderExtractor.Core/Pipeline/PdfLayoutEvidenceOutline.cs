@@ -549,7 +549,7 @@ public static class PdfLayoutEvidenceOutline
     /// Audit-only PDF-first lane. It deliberately starts from the broader candidate generator used
     /// by <c>pdf-clusters</c>, rather than the sparse-style production experiment above. DOCX is
     /// only used after PDF selection to map an accepted PDF block to a stable writeback span.
-    /// This method is intentionally not called by <see cref="HeaderExtractionPipeline"/>.
+    /// This method is intentionally not called by the normal authority pipeline.
     /// </summary>
     public static Task<PdfTextbookOutlineResult> TryBuildBroadAuditWithAnalystAsync(
         string originalInputPath,

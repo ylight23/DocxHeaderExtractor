@@ -41,28 +41,6 @@ public sealed class PdfFinancialReportOutlineTests
     }
 
     [Fact]
-    public async Task PipelineWbgTrustFund051MatchesAuthoritativeUserKey()
-    {
-        var root = RepositoryRoot();
-        var docx = Path.Combine(
-            root, "todo10_8", "heading_corpus_95_word", "03_tai_chinh_ke_toan",
-            "051_WBG_Trust_Fund_FIS_June_2024.docx");
-        var pdf = Path.Combine(
-            root, "todo10_8", "heading_corpus_100", "03_tai_chinh_ke_toan",
-            "051_WBG_Trust_Fund_FIS_June_2024.pdf");
-        var keyPath = Path.Combine(root, "keys", "partial-human", "051_WBG_Trust_Fund_FIS_June_2024.key");
-        if (!File.Exists(docx) || !File.Exists(pdf) || !File.Exists(keyPath)) return;
-
-        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
-        var outline = await pipeline.RunAsync(docx);
-        var key = ResolveKey(docx, keyPath);
-        var score = Score(outline, key);
-
-        Assert.Equal("auto:pdf-financial-report", outline.DeterministicRoute);
-        AssertPerfect(score);
-    }
-
-    [Fact]
     public void WbgTrustFund052KeepsRepeatedPageHeadings()
     {
         var docx = Path.Combine(
@@ -86,28 +64,6 @@ public sealed class PdfFinancialReportOutlineTests
         Assert.Equal(1, result.Headings.Count(h => h.Level == 1 && h.Text == "Cost Recovery"));
         Assert.Equal(2, result.Headings.Count(h => h.Level == 2 && h.Text == "Cost Recovery"));
         Assert.All(result.Headings, h => Assert.Equal(PdfFinancialReportOutline.Basis, h.ConfidenceBasis));
-    }
-
-    [Fact]
-    public async Task PipelineWbgTrustFund052MatchesAuthoritativeUserKey()
-    {
-        var root = RepositoryRoot();
-        var docx = Path.Combine(
-            root, "todo10_8", "heading_corpus_95_word", "03_tai_chinh_ke_toan",
-            "052_WBG_Trust_Fund_FIS_December_2025.docx");
-        var pdf = Path.Combine(
-            root, "todo10_8", "heading_corpus_100", "03_tai_chinh_ke_toan",
-            "052_WBG_Trust_Fund_FIS_December_2025.pdf");
-        var keyPath = Path.Combine(root, "keys", "partial-human", "052_WBG_Trust_Fund_FIS_December_2025.key");
-        if (!File.Exists(docx) || !File.Exists(pdf) || !File.Exists(keyPath)) return;
-
-        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
-        var outline = await pipeline.RunAsync(docx);
-        var key = ResolveKey(docx, keyPath);
-        var score = Score(outline, key);
-
-        Assert.Equal("auto:pdf-financial-report", outline.DeterministicRoute);
-        AssertPerfect(score);
     }
 
     private static AnswerKey ResolveKey(string docx, string keyPath)

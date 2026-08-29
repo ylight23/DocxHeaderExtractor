@@ -76,7 +76,7 @@ public sealed class DocumentDiagnosticRunnerTests
             root, "todo10_8", "heading_corpus_95_word", "07_system_generated",
             "092_RFC9111_HTTP_Caching.docx");
 
-        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
+        using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
         var outline = await pipeline.RunAsync(docx);
 
         Assert.NotNull(outline.Diagnostics);

@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.Tests;
 /// ĐO XEM lỗ hổng phát hiện khi xây dựng <c>TocAnswerKeyGenerator</c> (chỉ đọc SỐ trong TEXT của
 /// dòng mục lục, bỏ qua NumberLabel đã resolve từ numbering.xml) có ảnh hưởng đường PRODUCTION
 /// <see cref="TableOfContentsAnchor.Apply"/> hay không — đường này chạy trong
-/// <c>HeaderExtractionPipeline</c> và code tự ghi "phải nói lời cuối" (ghi đè mọi nguồn cấp khác).
+/// authority pipeline và code tự ghi "phải nói lời cuối" (ghi đè mọi nguồn cấp khác).
 /// <para>
 /// Câu hỏi cụ thể: nếu một heading đã được cấp ĐÚNG từ nguồn khác (numPr, style...), và tài liệu có
 /// mục lục Word cho heading đó nhưng dòng mục lục KHÔNG chứa số (vì numbering do Word vẽ, không gõ
@@ -73,7 +73,7 @@ public sealed class TableOfContentsAnchorNumberLabelTests : IDisposable
         var target = slim.Paragraphs.First(p => p.Text == "Giới thiệu chung" && !p.InTableOfContents);
 
         // Mô phỏng: một nguồn cấp KHÁC (numPr, style...) đã gán ĐÚNG cấp 2 cho heading này trước khi
-        // TableOfContentsAnchor.Apply chạy — đúng thứ tự thật trong HeaderExtractionPipeline.
+        // TableOfContentsAnchor.Apply chạy — đúng thứ tự thật trong authority pipeline.
         var headings = new List<HeadingRecord>
         {
             new() { Index = target.Index, StableId = target.StableId, Level = 2, Text = target.Text },

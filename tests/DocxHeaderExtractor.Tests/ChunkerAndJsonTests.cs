@@ -362,7 +362,7 @@ public class LevelNormalizationTests
     public void Collapses_level_jumps()
     {
         var list = new List<HeadingRecord> { H(0, 1), H(1, 3), H(2, 5), H(3, 1) };
-        HeaderExtractionPipeline.NormalizeLevels(list);
+        OutlineLevelNormalizer.NormalizeLevels(list);
 
         Assert.Equal([1, 2, 3, 1], list.Select(h => h.Level));
     }
@@ -371,7 +371,7 @@ public class LevelNormalizationTests
     public void Keeps_already_valid_hierarchy()
     {
         var list = new List<HeadingRecord> { H(0, 1), H(1, 2), H(2, 2), H(3, 3), H(4, 1) };
-        HeaderExtractionPipeline.NormalizeLevels(list);
+        OutlineLevelNormalizer.NormalizeLevels(list);
 
         Assert.Equal([1, 2, 2, 3, 1], list.Select(h => h.Level));
     }
@@ -380,7 +380,7 @@ public class LevelNormalizationTests
     public void Document_starting_at_deep_level_is_lifted_to_one()
     {
         var list = new List<HeadingRecord> { H(0, 4), H(1, 5) };
-        HeaderExtractionPipeline.NormalizeLevels(list);
+        OutlineLevelNormalizer.NormalizeLevels(list);
 
         Assert.Equal([1, 2], list.Select(h => h.Level));
     }

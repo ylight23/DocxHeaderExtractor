@@ -10,7 +10,7 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// heading + cấp với confidence 1.0 và <b>rút hẳn khỏi luồng LLM</b>.
 /// <para>
 /// TỒN TẠI ĐỂ ĐO, KHÔNG PHẢI ĐỂ DÙNG. Mặc định tắt. Bằng chứng chống lại nó trước lượt đo này chỉ
-/// là gián tiếp: <see cref="HeaderExtractionPipeline.SkipStyledCandidates"/> bỏ HỎI nhưng vẫn giữ
+/// là gián tiếp: nhánh style cũ bỏ HỎI nhưng vẫn giữ
 /// đoạn trong khối làm ngữ cảnh, và riêng thay đổi đó đã đủ làm precision tụt 100% → 94,1%. R1 mạnh
 /// hơn hẳn — nó rút đoạn ra khỏi tập ứng viên — nên phải có số của chính nó.
 /// </para>

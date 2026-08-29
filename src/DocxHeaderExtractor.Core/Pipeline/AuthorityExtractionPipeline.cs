@@ -12,7 +12,7 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// <summary>
 /// The single normal extraction orchestrator. Source adapters may differ, but every accepted
 /// heading crosses the same proposal, source-grounding, validation, structure, and product stages.
-/// The historical <see cref="HeaderExtractionPipeline"/> is intentionally not used here.
+/// Legacy extraction is intentionally not used here.
 /// </summary>
 public sealed class AuthorityExtractionPipeline : IDisposable
 {

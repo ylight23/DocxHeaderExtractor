@@ -12,25 +12,8 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// </summary>
 internal static class DocxAuthorityPipeline
 {
-    internal static DocxAuthoritySource BuildForAudit(SlimDocument document, DocumentModeReport mode) =>
-        Build(SlimSourceFactsAdapter.Adapt(document), SlimCompatibilityBoundary.Capture(document), mode);
-
     internal static DocxAuthoritySource BuildForAudit(DocxPolicyState policyState, DocumentModeReport mode) =>
-        Build(policyState.Source, policyState.Paragraphs.ToDictionary<DocxPolicyParagraph, string, IPolicyParagraph>(p => p.Source.SourceId, p => p), mode,
-            (id, text) => PdfMarkerFactsParser.Parse(text), quarantinedIndexes: null);
-
-    internal static DocxAuthoritySource BuildForAudit(
-        SourceDocument source,
-        SlimDocument compatibility,
-        DocumentModeReport mode) => Build(source, SlimCompatibilityBoundary.Capture(compatibility), mode);
-
-    internal static Task<DocxAuthorityPipelineResult> RunAsync(
-        SlimDocument document,
-        DocumentModeReport mode,
-        IHeaderClassifier? analyst,
-        IReadOnlySet<int>? quarantinedIndexes = null,
-        CancellationToken ct = default) =>
-        RunAsync(SlimSourceFactsAdapter.Adapt(document), SlimCompatibilityBoundary.Capture(document), mode, analyst, quarantinedIndexes, ct);
+        BuildForAudit(policyState, mode, quarantinedIndexes: null);
 
     public static async Task<DocxAuthorityPipelineResult> RunAsync(
         DocxPolicyState policyState,
@@ -40,18 +23,6 @@ internal static class DocxAuthorityPipeline
         CancellationToken ct = default)
     {
         var source = BuildForAudit(policyState, mode, quarantinedIndexes);
-        return await RunCoreAsync(source, analyst, ct);
-    }
-
-    public static async Task<DocxAuthorityPipelineResult> RunAsync(
-        SourceDocument sourceDocument,
-        SlimCompatibilityContext compatibility,
-        DocumentModeReport mode,
-        IHeaderClassifier? analyst,
-        IReadOnlySet<int>? quarantinedIndexes = null,
-        CancellationToken ct = default)
-    {
-        var source = Build(sourceDocument, compatibility, mode, quarantinedIndexes);
         return await RunCoreAsync(source, analyst, ct);
     }
 
@@ -146,14 +117,6 @@ internal static class DocxAuthorityPipeline
     private static bool IsDeterministicallyStructured(SourceParagraph source, IPolicyParagraph paragraph) =>
         paragraph.HasBuiltInHeadingStyle || source.Style.OutlineLevel is >= 0 and <= 8 ||
         paragraph.NumberingStyleLevel is >= 1 and <= 9;
-
-    private static DocxAuthoritySource Build(
-        SourceDocument sourceDocument,
-        SlimCompatibilityContext compatibility,
-        DocumentModeReport mode,
-        IReadOnlySet<int>? quarantinedIndexes = null)
-        => Build(sourceDocument, compatibility.Paragraphs.ToDictionary(pair => pair.Key, pair => (IPolicyParagraph)pair.Value.Original),
-            mode, compatibility.MarkerFor, quarantinedIndexes);
 
     private static DocxAuthoritySource BuildForAudit(
         DocxPolicyState policyState,

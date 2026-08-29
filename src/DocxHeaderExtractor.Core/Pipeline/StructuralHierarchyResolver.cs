@@ -11,7 +11,7 @@ public static class StructuralHierarchyResolver
     /// <param name="respectStyleTrust">
     /// Cờ <c>--style-trust</c>. Mặc định FALSE để giữ đúng hợp đồng của cờ: StyleTrust luôn được ĐO
     /// và ghi vào <see cref="SlimDocument.StyleTrust"/> để báo cáo, nhưng chỉ được phép ĐỔI HÀNH VI
-    /// khi người dùng bật. Chỗ tương đương ở <c>HeaderExtractionPipeline</c> cũng kiểm cờ như vậy.
+    /// khi người dùng bật. Authority pipeline cũng kiểm cờ như vậy.
     /// </param>
     public static int Apply(IList<HeadingRecord> headings, SlimDocument document,
         bool respectStyleTrust = false)
@@ -309,7 +309,7 @@ public static class StructuralHierarchyResolver
     /// <summary>
     /// Đoạn đã được chính tài liệu khai cấp: danh sách đa cấp gắn style Heading N
     /// (<c>w:lvl/w:pStyle</c>) hoặc style Heading built-in trên chính đoạn. Đây là hai nguồn đứng
-    /// trên suy luận trong thứ tự quyền lực của <c>HeaderExtractionPipeline.ResolveLevel</c> — nếu rồi thì không suy lại (§6.2).
+    /// trên suy luận trong thứ tự quyền lực của authority resolver — nếu rồi thì không suy lại (§6.2).
     /// <para>
     /// NGOẠI LỆ: style Heading chỉ được tính là "đã khai" khi nó THẬT SỰ mang thông tin cấp.
     /// <c>StyleTrust.LevelTrusted</c> sai nghĩa là mọi đề mục dùng chung một cấp style hoặc con số

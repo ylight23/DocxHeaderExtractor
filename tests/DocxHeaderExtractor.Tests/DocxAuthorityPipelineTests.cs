@@ -23,7 +23,7 @@ public sealed class DocxAuthorityPipelineTests
             ],
         }.Build();
 
-        var source = DocxAuthorityPipeline.BuildForAudit(document, Mode());
+        var source = DocxAuthorityPipeline.BuildForAudit(PolicyStateFixture.FromSlim(document), Mode());
 
         Assert.Equal(5, source.Blocks.Count);
         Assert.Equal("table_of_contents", source.Contexts["toc"].Scope);
@@ -50,7 +50,7 @@ public sealed class DocxAuthorityPipelineTests
             ],
         }.Build();
 
-        var source = DocxAuthorityPipeline.BuildForAudit(document,
+        var source = DocxAuthorityPipeline.BuildForAudit(PolicyStateFixture.FromSlim(document),
             new DocumentModeReport(DocumentMode.VietnameseLegal, 3, 0, 0, 0, 0, 0, false));
 
         Assert.Equal(PdfDomainRole.LegalPart, source.ModelContexts["part"].Source.DomainRole);

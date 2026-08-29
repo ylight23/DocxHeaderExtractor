@@ -15,7 +15,7 @@ public interface IDocumentExtractionTool : IDisposable
 
 /// <summary>
 /// Adapter của canonical authority pipeline thành một tool của harness. Web/CLI/MCP dùng cùng
-/// orchestrator; HeaderExtractionPipeline chỉ còn dành cho compatibility/evaluation callers.
+/// orchestrator; compatibility/evaluation callers are migrated separately from normal authority.
 /// </summary>
 public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 {
@@ -66,7 +66,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     {
         // LM Studio bị khóa vào loopback nên vẫn là local processing. OpenRouter (Internet) và
         // SGLang/vLLM (gateway LAN, không loopback) đều chuyển nội dung ra khỏi tiến trình này và
-        // cần consent theo từng run — phải khớp BackendSendsDataExternally trong HeaderExtractionPipeline,
+        // cần consent theo từng run — phải khớp với contract provenance của authority pipeline,
         // nếu không RunProvenanceValidator sẽ chặn với provenance_contradicts_descriptor.
         var remote = !options.DisableLlm &&
             options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang;

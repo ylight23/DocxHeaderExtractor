@@ -199,7 +199,7 @@ public sealed class PdfTaggedHeadingProbeTests
         var keyPath = Path.Combine(root, "keys", "tagged-pdf-coverage", $"{stem}.key");
         if (!File.Exists(docx) || !File.Exists(keyPath)) return;
 
-        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
+        using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
         var outline = await pipeline.RunAsync(docx);
         var slim = new DocxSlimExtractor().Extract(docx);
         var key = AnswerKey.Load(keyPath).ResolveStableIds(slim.Paragraphs.ToDictionary(p => p.StableId, p => p.Index));

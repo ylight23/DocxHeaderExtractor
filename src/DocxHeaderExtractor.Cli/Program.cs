@@ -226,7 +226,7 @@ static async Task DumpChunksAsync(DocxPolicyState policyState, CommandLineOption
 
     using (local)
     {
-    // Sao đúng cách pipeline dựng view (HeaderExtractionPipeline.RunModelAsync): reviewIndexes
+    // Sao đúng cách authority pipeline dựng view: reviewIndexes
     // LUÔN khác null, nên MỌI đoạn không rỗng vào view làm ngữ cảnh và chỉ tập được liệt kê mới
     // mang requested=true. Bản đầu của lệnh này truyền null khi không có --review-all, tức chỉ đưa
     // ứng viên — view nhỏ hơn 4 lần và thiếu hẳn phần thân bài quanh mỗi ứng viên. Dùng nó để so

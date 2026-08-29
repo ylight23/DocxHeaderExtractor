@@ -22,18 +22,10 @@ public sealed class DocxSlimExtractor
 
     public DocxSlimExtractor(ExtractionOptions? options = null) => _options = options ?? new ExtractionOptions();
 
-    [Obsolete("Legacy Slim compatibility API. Normal authority code must use ExtractForAuthority().", error: false)]
+    [Obsolete("Legacy Slim compatibility API. Normal authority code must use native source/policy contracts.", error: false)]
     public SlimDocument Extract(string path) => ExtractWithSourceFacts(path).Slim;
 
-    internal AuthoritySourceExtractionResult ExtractForAuthority(string path)
-    {
-        var extraction = ExtractWithSourceFacts(path);
-        return new AuthoritySourceExtractionResult(
-            extraction.Source,
-            SlimCompatibilityBoundary.Capture(extraction.Slim));
-    }
-
-    [Obsolete("Legacy Slim compatibility API. Normal authority code must use ExtractForAuthority().", error: false)]
+    [Obsolete("Legacy Slim compatibility API. Normal authority code must use native source/policy contracts.", error: false)]
     public DocxSourceExtractionResult ExtractWithSourceFacts(string path)
     {
         using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);

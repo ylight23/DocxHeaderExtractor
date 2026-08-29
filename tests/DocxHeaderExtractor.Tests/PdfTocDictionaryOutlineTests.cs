@@ -16,7 +16,7 @@ public sealed class PdfTocDictionaryOutlineTests
             "054_IBRD_Information_Statement_FY25.pdf");
         if (!File.Exists(docx) || !File.Exists(pdf)) return;
 
-        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
+        using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
         var outline = await pipeline.RunAsync(docx);
 
         Assert.Equal("auto:pdf-toc-dictionary", outline.DeterministicRoute);

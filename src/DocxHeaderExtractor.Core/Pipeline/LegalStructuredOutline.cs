@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using System.Text;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -26,11 +27,15 @@ public static class LegalStructuredOutline
 
     private static readonly Regex TitleWordRx = new(@"\p{L}{2,}", RegexOptions.Compiled);
 
-    public static List<HeadingRecord> Build(SlimDocument document, bool splitMergedParagraphs = true)
+    public static List<HeadingRecord> Build(SlimDocument document, bool splitMergedParagraphs = true) =>
+        Build(document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), splitMergedParagraphs);
+
+    public static List<HeadingRecord> Build(
+        IReadOnlyList<IPolicyParagraph> paragraphs, bool splitMergedParagraphs = true)
     {
         List<HeadingRecord> result = [];
 
-        foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
+        foreach (var p in paragraphs.OrderBy(x => x.Index))
         {
             if (p.Corrupt || p.TableDepth > 0 || string.IsNullOrWhiteSpace(p.Text)) continue;
             var text = p.Text.Normalize(NormalizationForm.FormC);

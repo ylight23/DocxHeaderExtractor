@@ -71,7 +71,7 @@ public sealed class DoclingLayoutOutlineTests : IDisposable
         }
         """, Encoding.UTF8);
 
-        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions
+        using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions
         {
             DisableLlm = true,
             DoclingJsonPath = json,

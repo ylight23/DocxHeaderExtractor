@@ -61,26 +61,6 @@ public class BookTocDictionaryOutlineTests
         Assert.Equal(legacy.Headings.Select(Project), current.Headings.Select(Project));
     }
 
-    [Fact]
-    public async Task PipelineReportsBookTocDictionaryRoute()
-    {
-        var docx = Path.Combine(
-            RepositoryRoot(), "todo10_8", "heading_corpus_95_word", "04_giao_trinh",
-            "063_Advanced_Linear_Algebra.docx");
-
-        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions
-        {
-            DisableLlm = true,
-        });
-
-        var outline = await pipeline.RunAsync(docx);
-
-        Assert.Equal("auto:book-toc-dictionary", outline.DeterministicRoute);
-        Assert.Equal(102, outline.Headings.Count);
-        Assert.Equal(0, outline.DisputedCount);
-        Assert.All(outline.Headings, h => Assert.Equal(BookTocDictionaryOutline.Basis, h.ConfidenceBasis));
-    }
-
     private static string RepositoryRoot()
     {
         var dir = new DirectoryInfo(AppContext.BaseDirectory);

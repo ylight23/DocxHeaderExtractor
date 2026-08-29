@@ -123,25 +123,6 @@ public sealed class SlimExtractionTests : IDisposable
     }
 
     [Fact]
-    public async Task Heuristic_only_run_reports_only_candidates_as_reviewed()
-    {
-        var log = new List<string>();
-        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions
-        {
-            DisableLlm = true,
-            ReviewAllParagraphs = true,
-            Log = log.Add,
-        });
-
-        var outline = await pipeline.RunAsync(_docx);
-        var expectedCandidates = Extract().Candidates.Count();
-
-        Assert.Equal(expectedCandidates, outline.CandidateCount);
-        Assert.Contains(log, line => line.Contains($"luật xét {expectedCandidates} ứng viên"));
-        Assert.DoesNotContain(log, line => line.Contains("LLM review"));
-    }
-
-    [Fact]
     public void Textbox_paragraph_is_extracted_separately_from_its_anchor()
     {
         var path = Path.Combine(Path.GetTempPath(), $"dhx-textbox-{Guid.NewGuid():N}.docx");

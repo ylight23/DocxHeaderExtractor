@@ -1,5 +1,7 @@
 using System.Text;
 using System.Text.Json;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
@@ -42,12 +44,16 @@ public sealed class Docx004StructuralFirstLossAuditProbe
         var expected = LoadExpected(silverPath);
 
         var extraction = new ExtractionOptions { UseLexicalRules = false, SplitMergedParagraphs = false };
-        var slim = new DocxSlimExtractor(extraction).Extract(docxPath);
-        var mode = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
-        var mergedParagraphs = slim.Paragraphs.Count(p => !string.IsNullOrWhiteSpace(p.Text) &&
+        var sourceDocument = new OpenXmlDocumentSource(extraction).Read(docxPath);
+        var structuralFeatures = NumberingStyleFeatures.FromSourceDocument(sourceDocument);
+        var policyState = DocxPolicyStateBuilder.Build(sourceDocument, structuralFeatures,
+            new DocumentFeatureDeriver().Derive(sourceDocument), extraction);
+        var paragraphs = policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray();
+        var mode = policyState.Mode ?? DocumentModeClassifier.Measure(paragraphs);
+        var mergedParagraphs = paragraphs.Count(p => !string.IsNullOrWhiteSpace(p.Text) &&
             ParagraphHeadingSplitter.Segments(p.Text).Count > 1);
         var autoRouteCanActivate = mergedParagraphs > 0;
-        var legalBuilder = LegalStructuredOutline.Build(slim, splitMergedParagraphs: autoRouteCanActivate);
+        var legalBuilder = LegalStructuredOutline.Build(paragraphs, splitMergedParagraphs: autoRouteCanActivate);
 
         var options = new PipelineOptions
         {
@@ -55,15 +61,15 @@ public sealed class Docx004StructuralFirstLossAuditProbe
             AutoDetectDocumentMode = true,
             Extraction = extraction,
         };
-        using var pipeline = new HeaderExtractionPipeline(options);
+        using var pipeline = new AuthorityExtractionPipeline(options);
         var outline = await pipeline.RunAsync(docxPath);
 
         var lastSourceIndex = -1;
         var rows = expected.Select(item =>
         {
-            var source = FindSourceWindow(item, slim, lastSourceIndex);
+            var source = FindSourceWindow(item, paragraphs, lastSourceIndex);
             if (source is not null) lastSourceIndex = source.StartIndex;
-            return BuildRow(item, source, slim, legalBuilder, outline, autoRouteCanActivate);
+            return BuildRow(item, source, policyState, legalBuilder, outline, autoRouteCanActivate);
         }).ToArray();
         var firstLossCounts = rows.GroupBy(row => row.FirstLoss, StringComparer.Ordinal)
             .OrderBy(group => group.Key, StringComparer.Ordinal)
@@ -73,7 +79,7 @@ public sealed class Docx004StructuralFirstLossAuditProbe
             ArtifactKind: "004_structural_first_loss_audit",
             UsesModel: false,
             ProductionChanges: false,
-            ExecutionContract: "HeaderExtractionPipeline with the web no-LLM defaults: structuralOnly=true, autoMode=true, splitMerged=false",
+            ExecutionContract: "AuthorityExtractionPipeline with native source/policy contracts and no-LLM defaults",
             ReferenceAuthority: "source-observed title plus MODEL_ASSISTED_SILVER structural occurrences; not independent human gold",
             Mode: mode.Mode.ToString(),
             AutoRoute: "auto:vietnamese-legal",
@@ -88,12 +94,12 @@ public sealed class Docx004StructuralFirstLossAuditProbe
             Rows: rows);
     }
 
-    private static AuditRow BuildRow(ExpectedOccurrence expected, SourceWindow? source, SlimDocument slim,
+    private static AuditRow BuildRow(ExpectedOccurrence expected, SourceWindow? source, DocxPolicyState policyState,
         IReadOnlyList<HeadingRecord> legalBuilder, DocumentOutline outline, bool autoRouteCanActivate)
     {
         var sourceIndexes = source?.Paragraphs.Select(paragraph => paragraph.Index).ToArray() ?? [];
-        var candidate = source is not null && source.Paragraphs.All(paragraph => slim.Candidates.Any(candidate => candidate.Index == paragraph.Index));
-        var candidatePartial = source is not null && source.Paragraphs.Any(paragraph => slim.Candidates.Any(candidate => candidate.Index == paragraph.Index));
+        var candidate = source is not null && source.Paragraphs.All(paragraph => policyState.Candidates.Any(candidate => candidate.Index == paragraph.Index));
+        var candidatePartial = source is not null && source.Paragraphs.Any(paragraph => policyState.Candidates.Any(candidate => candidate.Index == paragraph.Index));
         var legal = source is not null && legalBuilder.Any(heading => heading.Index == source.StartIndex &&
             CoversExpectedText(heading.Text, expected.SourceText));
         var output = source is not null && outline.Headings.Any(heading => heading.Index == source.StartIndex &&
@@ -139,25 +145,27 @@ public sealed class Docx004StructuralFirstLossAuditProbe
         return occurrences;
     }
 
-    private static SourceWindow? FindSourceWindow(ExpectedOccurrence expected, SlimDocument slim, int afterIndex)
+    private static SourceWindow? FindSourceWindow(ExpectedOccurrence expected,
+        IReadOnlyList<IPolicyParagraph> paragraphs, int afterIndex)
     {
-        var candidates = slim.Paragraphs
+        var candidates = paragraphs
             .Where(paragraph => paragraph.Index > afterIndex && ContainsMarker(paragraph.Text, expected.Marker))
-            .Select(paragraph => BuildSourceWindow(paragraph, slim, expected.SourceText))
+            .Select(paragraph => BuildSourceWindow(paragraph, paragraphs, expected.SourceText))
             .OrderByDescending(window => window.Score)
             .ThenBy(window => window.StartIndex)
             .ToArray();
         return candidates.FirstOrDefault(window => window.Score >= 0.55);
     }
 
-    private static SourceWindow BuildSourceWindow(SlimParagraph start, SlimDocument slim, string expectedText)
+    private static SourceWindow BuildSourceWindow(IPolicyParagraph start,
+        IReadOnlyList<IPolicyParagraph> paragraphs, string expectedText)
     {
-        var paragraphs = slim.Paragraphs.Where(paragraph => paragraph.Index >= start.Index && paragraph.Index <= start.Index + 3).ToArray();
-        var best = paragraphs.Take(1).ToArray();
+        var windowParagraphs = paragraphs.Where(paragraph => paragraph.Index >= start.Index && paragraph.Index <= start.Index + 3).ToArray();
+        var best = windowParagraphs.Take(1).ToArray();
         var score = TextCoverage(string.Join(" ", best.Select(paragraph => paragraph.Text)), expectedText);
-        for (var length = 2; length <= paragraphs.Length; length++)
+        for (var length = 2; length <= windowParagraphs.Length; length++)
         {
-            var window = paragraphs.Take(length).ToArray();
+            var window = windowParagraphs.Take(length).ToArray();
             var nextScore = TextCoverage(string.Join(" ", window.Select(paragraph => paragraph.Text)), expectedText);
             if (nextScore > score)
             {
@@ -205,7 +213,7 @@ public sealed class Docx004StructuralFirstLossAuditProbe
         bool CandidatePartial, bool LegalStructuredBuilderEmits, bool Output, string Role, string Span, string Validator,
         string Grounding, string OutputStatus, string FirstLoss);
 
-    private sealed record SourceWindow(int StartIndex, IReadOnlyList<SlimParagraph> Paragraphs, string Text, double Score);
+    private sealed record SourceWindow(int StartIndex, IReadOnlyList<IPolicyParagraph> Paragraphs, string Text, double Score);
 
     private sealed record AuditReport(
         int SchemaVersion, string ArtifactKind, bool UsesModel, bool ProductionChanges, string ExecutionContract,
