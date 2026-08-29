@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "round3_post_merge_verification",
+  "task": "ROUND3-POST-MERGE-VERIFICATION",
+  "status": "CLOSED",
+  "mainBaseRevision": "e9b4c61a7fe7c34419352812f5d1216d06d81736",
+  "canonicalExecutionRevision": "32bb000343361516078f37da63943e5073b678fe",
+  "legacy9PublicationLineage": "9253c08357a23266b5895ebfdf3f10a976dea5c4",
+  "mergeReadinessPublication": "ffebac20dea6824f274bbc61f1792e9add085810",
+  "actualMainMergeRevision": "cae17c9f417604999a0cdd376bc1071ee16c5c7d",
+  "merge": {
+    "strategy": "NO_FF",
+    "parent1": "e9b4c61a7fe7c34419352812f5d1216d06d81736",
+    "parent2": "ffebac20dea6824f274bbc61f1792e9add085810",
+    "postMergeSrcTestDelta": 0,
+    "postMergeTreeDelta": 0,
+    "fullSuiteRerunRequired": false
+  },
+  "gates": {
+    "round3CumulativeRegression": "PASS",
+    "round3MergeReadiness": "PASS",
+    "legacy9": "PASS_REMOVAL_READINESS_AUDIT",
+    "physicalSlimRetirementReady": false,
+    "failureUniverseFrozen": true,
+    "fullSuiteValidForFreeze": true,
+    "providerCalls": 0,
+    "rawRuntimeArtifactsTracked": 0
+  },
+  "canonicalAuthority": {
+    "revisionRemains": "32bb000343361516078f37da63943e5073b678fe",
+    "rewrittenToMergeRevision": false
+  },
+  "preservation": {
+    "knownExtractCompatibilityCallers": 17,
+    "physicalSlimRemovalAttempted": false,
+    "untrackedMainEntriesPreserved": true,
+    "untrackedMainEntriesMerged": false
+  },
+  "decision": "ROUND-3 = CLOSED"
+}
