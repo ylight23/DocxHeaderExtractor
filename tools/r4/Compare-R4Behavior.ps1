@@ -61,7 +61,11 @@ function Select-Diagnostic([object] $Snapshot) {
 function Select-Pdf([object] $Snapshot) {
     [ordered]@{
         documentId = $Snapshot.documentId
-        retrieval = $Snapshot.retrieval
+        retrieval = [ordered]@{
+            candidateIds = @($Snapshot.retrieval.candidateIds)
+            candidateOrder = @($Snapshot.retrieval.candidateOrder)
+            selectedSourceIdentities = @($Snapshot.retrieval.selectedSourceIdentities)
+        }
         alignment = @($Snapshot.alignment)
         visualMapping = @($Snapshot.visualMapping)
         validatedStructures = @($Snapshot.validatedStructures)
@@ -78,8 +82,9 @@ function Get-StageFields([string] $Kind) {
         )
     }
     return @(
-        @{ stage = 'pdf.retrieval'; field = 'retrieval' },
-        @{ stage = 'pdf.selection'; field = 'retrieval' },
+        @{ stage = 'pdf.retrieval'; field = 'retrieval.candidateIds' },
+        @{ stage = 'pdf.selection'; field = 'retrieval.candidateOrder' },
+        @{ stage = 'pdf.selection'; field = 'retrieval.selectedSourceIdentities' },
         @{ stage = 'pdf.alignment'; field = 'alignment' },
         @{ stage = 'pdf.visualMapping'; field = 'visualMapping' },
         @{ stage = 'pdf.validation'; field = 'validatedStructures' },
@@ -127,8 +132,9 @@ foreach ($item in @($corpusObject.items | Where-Object { @($_.enabledFor) -conta
     $first = $null
     foreach ($stageField in $stageFields) {
         $field = $stageField.field
-        $left = Normalize-Value $baseSelected[$field]
-        $right = Normalize-Value $currentSelected[$field]
+        $left = $baseSelected
+        $right = $currentSelected
+        foreach ($part in $field.Split('.')) { $left = $left.$part; $right = $right.$part }
         $leftJson = $left | ConvertTo-Json -Depth 40 -Compress
         $rightJson = $right | ConvertTo-Json -Depth 40 -Compress
         if ($leftJson -cne $rightJson) {
@@ -152,7 +158,7 @@ $result = [ordered]@{
     currentSnapshots = (Resolve-RepoPath $CurrentSnapshots)
     providerCalls = 0
     unmeasured = 0
-    joined = ($rows.Count - $deltas.Count)
+    joined = $rows.Count
     deltas = $deltas
     gate = if ($deltas.Count -eq 0) { 'PASS' } else { 'BLOCKED_DELTA_UNCLASSIFIED' }
 }
