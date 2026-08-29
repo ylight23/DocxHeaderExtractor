@@ -199,49 +199,19 @@ public static class StyleDeclaredOutline
         !p.Text.Contains(':');
 
     public static List<HeadingRecord> Build(SlimDocument document)
+        => BuildCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray());
+
+    private static List<HeadingRecord> BuildCore(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
-        var frontMatter = (int)(document.Paragraphs.Count * FrontMatterFraction);
-        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
-        var kept = new List<SlimParagraph>();
-        foreach (var p in document.Paragraphs.OrderBy(p => p.Index))
-        {
-            if (!p.HasBuiltInHeadingStyle || string.IsNullOrWhiteSpace(p.Text)) continue;
-            if (p.Corrupt) continue;                                   // X1
-            if (Caption.IsMatch(p.Text)) continue;                     // X2
-            // X6: khối bìa lặp — cùng văn bản xuất hiện lần hai trong phần đầu tài liệu.
-            if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
-            kept.Add(p);
-        }
-
-        var result = kept.Select(p => new HeadingRecord
-        {
-            Index = p.Index,
-            Level = LevelOf(p),
-            Text = p.Text,
-            Source = HeadingSource.Style,
-            Confidence = 1.0,
-            ConfidenceBasis = "style_declared",
-            DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
-        }).ToList();
-
-        // KHÔNG gọi RepairInvertedTree ở đây: đo được nó kéo khoá luận từ đúng cấp 100% xuống
-        // 89,7% và đúng cha 100% xuống 82,4%. Cây "lộn ngược" là hình dạng THẬT của tài liệu đó,
-        // không phải lỗi cần sửa. Luật này chỉ đúng cho tài liệu numpr-driven, nên nó thuộc về
-        // BuildFromNumbering nếu cần, không thuộc về đường style.
-        return result;
-    }
-
-    public static List<HeadingRecord> Build(IReadOnlyList<IPolicyParagraph> paragraphs)
-    {
-        ArgumentNullException.ThrowIfNull(paragraphs);
         var frontMatter = (int)(paragraphs.Count * FrontMatterFraction);
         var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var result = new List<HeadingRecord>();
         foreach (var p in paragraphs.OrderBy(p => p.Index))
         {
-            if (!p.HasBuiltInHeadingStyle || string.IsNullOrWhiteSpace(p.Text) || p.Corrupt ||
-                Caption.IsMatch(p.Text)) continue;
+            if (!p.HasBuiltInHeadingStyle || string.IsNullOrWhiteSpace(p.Text)) continue;
+            if (p.Corrupt) continue;                                   // X1
+            if (Caption.IsMatch(p.Text)) continue;                     // X2
+            // X6: khối bìa lặp — cùng văn bản xuất hiện lần hai trong phần đầu tài liệu.
             if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
             result.Add(new HeadingRecord
             {
@@ -252,8 +222,15 @@ public static class StyleDeclaredOutline
                 DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
             });
         }
+
+        // KHÔNG gọi RepairInvertedTree ở đây: đo được nó kéo khoá luận từ đúng cấp 100% xuống
+        // 89,7% và đúng cha 100% xuống 82,4%. Cây "lộn ngược" là hình dạng THẬT của tài liệu đó,
+        // không phải lỗi cần sửa. Luật này chỉ đúng cho tài liệu numpr-driven, nên nó thuộc về
+        // BuildFromNumbering nếu cần, không thuộc về đường style.
         return result;
     }
+
+    public static List<HeadingRecord> Build(IReadOnlyList<IPolicyParagraph> paragraphs) => BuildCore(paragraphs);
 
     private static int LevelOf(IPolicyParagraph paragraph)
     {
