@@ -1,4 +1,6 @@
 using System.Security.Cryptography;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Application.Routing;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Models;
@@ -62,11 +64,15 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         var conversion = LegacyDocConverter.EnsureDocx(inputPath);
         try
         {
+            var sourceDocument = new OpenXmlDocumentSource().Read(conversion.Path);
+            var structuralFeatures = NumberingStyleFeatures.FromSourceDocument(sourceDocument);
+            var derivedFeatures = new DocumentFeatureDeriver().Derive(sourceDocument);
+            var policyState = DocxPolicyStateBuilder.Build(
+                sourceDocument, structuralFeatures, derivedFeatures, _options.Extraction);
             var extraction = new DocxSlimExtractor(_options.Extraction).ExtractForAuthority(conversion.Path);
-            var source = extraction.Source;
             var compatibility = extraction.Compatibility;
             var slim = compatibility.ForLegacyCompatibility();
-            var mode = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
+            var mode = DocumentModeClassifier.Measure(policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray());
             var diagnostics = DocumentDiagnosticRunner.Analyze(slim, mode);
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
             var pdf = PdfTextbookOutline.FindSiblingPdf(inputPath);
@@ -111,7 +117,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 }
                 case AuthorityRoute.DocxAuthority:
                 {
-                    var result = await DocxAuthorityPipeline.RunAsync(source, compatibility, mode, analyst, quarantinedIndexes, ct);
+                    var result = await DocxAuthorityPipeline.RunAsync(policyState, mode, analyst, quarantinedIndexes, ct);
                     rawHeadings = result.Headings;
                     audit = result.Audit;
                     route = "docx-authority-v1";
@@ -132,7 +138,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             return new DocumentOutline
             {
                 File = Path.GetFileName(inputPath),
-                ParagraphCount = slim.Paragraphs.Count,
+                ParagraphCount = sourceDocument.Paragraphs.Count,
                 CandidateCount = audit?.CandidatesSelected ?? 0,
                 Headings = headings,
                 ProductOutput = product,

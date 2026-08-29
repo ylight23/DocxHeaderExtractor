@@ -69,6 +69,8 @@ public sealed record SourceNumberingFacts
     public int? NumberingLevel { get; init; }
     public string? NumberLabel { get; init; }
     public string? NumberingFormat { get; init; }
+    /// <summary>Heading level only when the OOXML list level is explicitly linked to a heading style.</summary>
+    public int? NumberingStyleHeadingLevel { get; init; }
 }
 
 /// <summary>Source layout/containment facts. It contains no table or heading policy result.</summary>

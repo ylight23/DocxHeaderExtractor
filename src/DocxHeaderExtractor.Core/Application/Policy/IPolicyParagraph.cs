@@ -28,6 +28,7 @@ public interface IPolicyParagraph
     string? NumberLabel { get; }
     int? NumberingStyleLevel { get; set; }
     bool InTableOfContents { get; set; }
+    bool PrecedesTableOfContents { get; set; }
     bool PrecedesTable { get; set; }
     bool KeepNext { get; }
     bool PageBreakBefore { get; }

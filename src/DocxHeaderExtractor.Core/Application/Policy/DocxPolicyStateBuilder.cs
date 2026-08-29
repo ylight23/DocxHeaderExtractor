@@ -30,6 +30,8 @@ public static class DocxPolicyStateBuilder
                 Source = paragraph,
                 Numbering = numbering,
                 Style = style,
+                NumberingStyleHeadingLevel = numbering.NumberingStyleHeadingLevel,
+                PrecedesTableOfContents = paragraph.InTableOfContents,
                 BodyFontSizePt = derivedFeatures.BodyFontSizePt,
                 Corrupt = derivedFeatures.CorruptSourceIds.Contains(paragraph.SourceId),
                 TrustedHeadingStyle = false,

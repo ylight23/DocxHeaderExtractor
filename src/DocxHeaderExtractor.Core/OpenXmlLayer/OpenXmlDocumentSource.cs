@@ -130,6 +130,7 @@ public sealed class OpenXmlDocumentSource : IDocumentSource
             NumberingLevel = paragraph.NumberingLevel,
             NumberLabel = paragraph.NumberLabel,
             NumberingFormat = paragraph.NumberingFormat,
+            NumberingStyleHeadingLevel = paragraph.NumberingStyleLevel,
         },
         Layout = new SourceLayoutFacts
         {

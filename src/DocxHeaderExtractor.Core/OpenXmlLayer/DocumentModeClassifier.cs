@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Core.OpenXmlLayer;
@@ -155,7 +156,7 @@ public static class DocumentModeClassifier
     /// <summary>Đoạn dài hơn mức này được coi là thân bài khi tìm baseline định dạng (spec §4.1).</summary>
     private const int BodyTextMinLength = 200;
 
-    public static DocumentModeReport Measure(IReadOnlyList<SlimParagraph> paragraphs)
+    public static DocumentModeReport Measure(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
         var body = paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.Text)).ToList();
         if (body.Count == 0)
@@ -242,7 +243,7 @@ public static class DocumentModeClassifier
     /// hỏi "có LỆCH không", không hỏi "có to hơn không".
     /// </para>
     /// </summary>
-    private static bool FormatDiffersFromBody(IReadOnlyList<SlimParagraph> body)
+    private static bool FormatDiffersFromBody(IReadOnlyList<IPolicyParagraph> body)
     {
         var longOnes = body.Where(p => p.Text.Length > BodyTextMinLength).ToList();
         if (longOnes.Count == 0) return false;
@@ -267,7 +268,7 @@ public static class DocumentModeClassifier
     /// trước một đoạn dài. Thiếu vế cuối thì style thân bài cũng lọt.
     /// </para>
     /// </summary>
-    private static bool HasCustomHeadingStyle(IReadOnlyList<SlimParagraph> body)
+    private static bool HasCustomHeadingStyle(IReadOnlyList<IPolicyParagraph> body)
     {
         var longFollows = new HashSet<int>();
         for (var i = 0; i + 1 < body.Count; i++)
