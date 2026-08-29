@@ -6,6 +6,7 @@ namespace DocxHeaderExtractor.Core.Application.Policy;
 /// <summary>Common mutable policy surface implemented by legacy and source-native policy state.</summary>
 public interface IPolicyParagraph
 {
+    string StableId { get; }
     int Index { get; }
     string Text { get; }
     string? StyleId { get; }

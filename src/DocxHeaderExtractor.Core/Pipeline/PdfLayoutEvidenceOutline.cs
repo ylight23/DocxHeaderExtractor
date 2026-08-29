@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Vision;
 using UglyToad.PdfPig;
@@ -1431,10 +1432,32 @@ public static class PdfLayoutEvidenceOutline
 
     private static PdfLayoutAlignmentResult AlignToDocx(
         IReadOnlyList<PdfSemanticBlock> candidates,
+        DocxPolicyState policyState,
+        PdfStyleClusterProfile profile,
+        string confidenceBasis,
+        List<PdfDocxAlignmentTrace>? trace = null,
+        List<PdfDocxCanonicalParagraph>? haystacks = null,
+        IReadOnlyDictionary<string, TextOffsetSpan?>? headingSpans = null) =>
+        AlignToDocx(candidates, policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(), profile,
+            confidenceBasis, trace, haystacks, headingSpans);
+
+    private static PdfLayoutAlignmentResult AlignToDocx(
+        IReadOnlyList<PdfSemanticBlock> candidates,
         SlimDocument slim,
         PdfStyleClusterProfile profile,
         string confidenceBasis) =>
-        AlignToDocx(candidates, slim, profile, confidenceBasis, trace: null);
+        AlignToDocx(candidates, slim.Paragraphs.Cast<IPolicyParagraph>().ToArray(), profile, confidenceBasis, trace: null);
+
+    private static PdfLayoutAlignmentResult AlignToDocx(
+        IReadOnlyList<PdfSemanticBlock> candidates,
+        SlimDocument slim,
+        PdfStyleClusterProfile profile,
+        string confidenceBasis,
+        List<PdfDocxAlignmentTrace>? trace,
+        List<PdfDocxCanonicalParagraph>? haystacks = null,
+        IReadOnlyDictionary<string, TextOffsetSpan?>? headingSpans = null) =>
+        AlignToDocx(candidates, slim.Paragraphs.Cast<IPolicyParagraph>().ToArray(), profile,
+            confidenceBasis, trace, haystacks, headingSpans);
 
     /// <summary>
     /// The alignment production runs, with an optional passive record of how each block reached the
@@ -1443,14 +1466,14 @@ public static class PdfLayoutEvidenceOutline
     /// </summary>
     private static PdfLayoutAlignmentResult AlignToDocx(
         IReadOnlyList<PdfSemanticBlock> candidates,
-        SlimDocument slim,
+        IReadOnlyList<IPolicyParagraph> policyParagraphs,
         PdfStyleClusterProfile profile,
         string confidenceBasis,
         List<PdfDocxAlignmentTrace>? trace,
         List<PdfDocxCanonicalParagraph>? haystacks = null,
         IReadOnlyDictionary<string, TextOffsetSpan?>? headingSpans = null)
     {
-        var paragraphs = slim.Paragraphs
+        var paragraphs = policyParagraphs
             .Where(p => p.Role != ParagraphRole.Empty && !p.InTableOfContents && !string.IsNullOrWhiteSpace(p.Text))
             .OrderBy(p => p.Index)
             .Select(p => new CanonParagraph(p, CanonicalMap(p.Text)))
@@ -1742,10 +1765,10 @@ public static class PdfLayoutEvidenceOutline
     }
 
     internal sealed record CanonMap(string Text, IReadOnlyList<int> SourceIndexes);
-    internal sealed record CanonParagraph(SlimParagraph Paragraph, CanonMap Map);
+    internal sealed record CanonParagraph(IPolicyParagraph Paragraph, CanonMap Map);
     private readonly record struct LooseLabelledMarker(string Canonical);
     private sealed record MarkerReconstruction(MatchResult Match, string HeadingText, bool MarkerOnly);
-    internal readonly record struct MatchResult(SlimParagraph Paragraph, int Start, int End);
+    internal readonly record struct MatchResult(IPolicyParagraph Paragraph, int Start, int End);
     private sealed record PdfLayoutAlignmentResult(
         IReadOnlyList<HeadingRecord> Headings,
         IReadOnlySet<string> AlignedBlockIds,

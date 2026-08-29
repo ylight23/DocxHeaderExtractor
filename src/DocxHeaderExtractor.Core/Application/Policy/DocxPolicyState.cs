@@ -59,6 +59,7 @@ public sealed class DocxPolicyParagraph : IPolicyParagraph
     public double Score { get; set; }
 
     public int Index => Source.SourceOrdinal;
+    public string StableId => Source.SourceId;
     public string Text => Source.Text;
     public bool InContentControl => Source.Layout.InContentControl;
     public bool IsCandidate => Role is ParagraphRole.StyledHeading or ParagraphRole.HeadingCandidate;
