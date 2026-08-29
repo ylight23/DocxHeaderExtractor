@@ -434,6 +434,9 @@ public static class NumberingAudit
     public static NumberToken? ParseParagraph(SlimParagraph? paragraph, string fallbackText) =>
         Parse(TextWithNumberLabel(paragraph, fallbackText));
 
+    public static NumberToken? ParseParagraph(IPolicyParagraph? paragraph, string fallbackText) =>
+        Parse(TextWithNumberLabel(paragraph, fallbackText));
+
     private static NumberToken? ParseHeadingNumber(
         HeadingRecord heading,
         SlimParagraph? paragraph,

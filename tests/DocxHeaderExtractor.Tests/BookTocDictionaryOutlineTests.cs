@@ -1,4 +1,6 @@
 using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
@@ -43,6 +45,23 @@ public class BookTocDictionaryOutlineTests
     }
 
     [Fact]
+    public void Native_analyzer_matches_legacy_output()
+    {
+        var docx = Path.Combine(
+            RepositoryRoot(), "todo10_8", "heading_corpus_95_word", "04_giao_trinh",
+            "063_Advanced_Linear_Algebra.docx");
+        var slim = new DocxSlimExtractor().Extract(docx);
+        var native = PolicyStateFixture.FromSlim(slim).Paragraphs.Cast<IPolicyParagraph>().ToArray();
+
+        var legacy = BookTocDictionaryOutline.Analyze(slim);
+        var current = BookTocDictionaryOutline.Analyze(native);
+
+        Assert.Equal(legacy.Accepted, current.Accepted);
+        Assert.Equal(legacy.Diagnostics, current.Diagnostics);
+        Assert.Equal(legacy.Headings.Select(Project), current.Headings.Select(Project));
+    }
+
+    [Fact]
     public async Task PipelineReportsBookTocDictionaryRoute()
     {
         var docx = Path.Combine(
@@ -69,4 +88,17 @@ public class BookTocDictionaryOutlineTests
             dir = dir.Parent;
         return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
     }
+
+    private static object Project(HeadingRecord heading) => new
+    {
+        heading.Index,
+        heading.StableId,
+        heading.SourceId,
+        heading.Text,
+        heading.Level,
+        heading.HeadingSpan,
+        heading.BoundarySource,
+        heading.DecisionStatus,
+        heading.ConfidenceBasis,
+    };
 }

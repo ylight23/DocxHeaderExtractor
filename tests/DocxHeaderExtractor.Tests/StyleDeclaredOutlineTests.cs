@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
@@ -63,6 +64,45 @@ public class StyleDeclaredOutlineTests
             Assert.Equal(HeadingDecisionStatus.AutoAcceptedEvidence, h.DecisionStatus);
         });
     }
+
+    [Fact]
+    public void P1_P4_native_producers_match_legacy_outputs()
+    {
+        var doc = new SlimDocument
+        {
+            FileName = "producer-parity.docx",
+            SourcePath = "producer-parity.docx",
+            Paragraphs =
+            [
+                new SlimParagraph { Index = 0, StableId = "p[0]", Text = "1. Overview", HasBuiltInHeadingStyle = true, StyleId = "Heading1", OutlineLevel = 0 },
+                new SlimParagraph { Index = 1, StableId = "p[1]", Text = "1.1. Requirements", HasBuiltInHeadingStyle = true, StyleId = "Heading2", OutlineLevel = 1 },
+                new SlimParagraph { Index = 2, StableId = "p[2]", Text = "1.2. Syntax", HasBuiltInHeadingStyle = true, StyleId = "Heading2", OutlineLevel = 1 },
+                new SlimParagraph { Index = 3, StableId = "p[3]", Text = "2. Operation", NumberingId = 7, NumberingLevel = 1, NumberLabel = "2.", HasBuiltInHeadingStyle = true, StyleId = "Heading1", OutlineLevel = 0 },
+                new SlimParagraph { Index = 4, StableId = "p[4]", Text = "3. Security", NumberingId = 7, NumberingLevel = 1, NumberLabel = "3.", HasBuiltInHeadingStyle = true, StyleId = "Heading1", OutlineLevel = 0 },
+                new SlimParagraph { Index = 5, StableId = "p[5]", Text = "4. Appendix", NumberingId = 7, NumberingLevel = 1, NumberLabel = "4.", HasBuiltInHeadingStyle = true, StyleId = "Heading1", OutlineLevel = 0 },
+                new SlimParagraph { Index = 6, StableId = "p[6]", Text = "Body paragraph with ordinary prose." },
+            ],
+        }.Build();
+        var native = PolicyStateFixture.FromSlim(doc).Paragraphs.Cast<IPolicyParagraph>().ToArray();
+
+        Assert.Equal(StyleDeclaredOutline.Build(doc).Select(Project), StyleDeclaredOutline.Build(native).Select(Project));
+        Assert.Equal(StyleDeclaredOutline.BuildFromOutlineLevel(doc).Select(Project), StyleDeclaredOutline.BuildFromOutlineLevel(native).Select(Project));
+        Assert.Equal(StyleDeclaredOutline.BuildFromNumbering(doc).Select(Project), StyleDeclaredOutline.BuildFromNumbering(native).Select(Project));
+        Assert.Equal(TypedNumberingOutline.Build(doc).Select(Project), TypedNumberingOutline.Build(native).Select(Project));
+    }
+
+    private static object Project(HeadingRecord heading) => new
+    {
+        heading.Index,
+        heading.StableId,
+        heading.SourceId,
+        heading.Text,
+        heading.Level,
+        heading.HeadingSpan,
+        heading.BoundarySource,
+        heading.DecisionStatus,
+        heading.ConfidenceBasis,
+    };
 
     private static SlimParagraph P(string text, int? listId = null) =>
         new() { Index = 0, Text = text, HasBuiltInHeadingStyle = true, NumberingId = listId };

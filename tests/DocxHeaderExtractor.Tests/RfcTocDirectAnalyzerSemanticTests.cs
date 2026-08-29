@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Pipeline;
 
@@ -27,6 +28,19 @@ public sealed class RfcTocDirectAnalyzerSemanticTests
         Assert.Contains(result.Headings, h => h.Text == "C.3. Changes from RFC 7230");
     }
 
+    [Fact]
+    public void Rfc_093_native_analyzer_matches_legacy_output()
+    {
+        var slim = Extract("093_RFC9112_HTTP_1_1.docx");
+        var native = PolicyStateFixture.FromSlim(slim).Paragraphs.Cast<IPolicyParagraph>().ToArray();
+        var legacy = RfcTocDictionaryOutline.Analyze(slim);
+        var current = RfcTocDictionaryOutline.Analyze(native);
+
+        Assert.Equal(legacy.Accepted, current.Accepted);
+        Assert.Equal(legacy.Diagnostics, current.Diagnostics);
+        Assert.Equal(legacy.Headings.Select(Project), current.Headings.Select(Project));
+    }
+
     private static SlimDocument Extract(string fileName)
     {
         var root = RepositoryRoot();
@@ -41,4 +55,17 @@ public sealed class RfcTocDirectAnalyzerSemanticTests
             dir = dir.Parent;
         return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
     }
+
+    private static object Project(HeadingRecord heading) => new
+    {
+        heading.Index,
+        heading.StableId,
+        heading.SourceId,
+        heading.Text,
+        heading.Level,
+        heading.HeadingSpan,
+        heading.BoundarySource,
+        heading.DecisionStatus,
+        heading.ConfidenceBasis,
+    };
 }

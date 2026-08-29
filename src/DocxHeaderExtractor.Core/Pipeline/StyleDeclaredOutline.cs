@@ -104,25 +104,6 @@ public static class StyleDeclaredOutline
         return BuildFromNumberingCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray());
     }
 
-    /// <summary>
-    /// Những <c>numId</c> thực sự dùng cho đề mục — spec §4.3: <i>"cần lọc thêm theo numId, xác
-    /// định tập numId nào thực sự dùng cho heading"</i>.
-    /// <para>
-    /// ĐO ĐƯỢC trên báo cáo thực tập: đề mục thật dùng <c>numId=3</c> (văn bản ngắn, trung bình dưới
-    /// 60 ký tự), còn <c>numId=4</c> là danh sách NỘI DUNG trong thân bài (<c>ListParagraph</c>, mỗi
-    /// mục là một câu dài). Không lọc thì 5 danh sách nội dung lọt vào outline.
-    /// </para>
-    /// </summary>
-    private static HashSet<(int Id, int Level)> HeadingNumberingIds(SlimDocument document) =>
-    [
-        .. document.Paragraphs
-            .Where(p => p.NumberingId is not null && p.NumberingLevel >= 1 && !string.IsNullOrWhiteSpace(p.Text))
-            .GroupBy(p => (Id: p.NumberingId!.Value, Level: p.NumberingLevel!.Value))
-            .Where(g => g.Count() >= MinimumListItems &&
-                        g.Count(p => p.HasBuiltInHeadingStyle) >= g.Count() * HeadingStyleShare)
-            .Select(g => g.Key),
-    ];
-
     /// <summary>Danh sách phải có bấy nhiêu mục thì tỉ lệ mới có nghĩa.</summary>
     private const int MinimumListItems = 3;
 
@@ -146,17 +127,6 @@ public static class StyleDeclaredOutline
 
     /// <summary>Trung bình độ dài để một danh sách được coi là danh sách ĐỀ MỤC, không phải nội dung.</summary>
     private const int HeadingTextMaxLength = 90;
-
-    /// <summary>
-    /// Từ khoá cấu trúc chỉ tính khi đoạn ĐỨNG RIÊNG làm đề mục, không phải khi nó xuất hiện giữa
-    /// thân bài. Đo được: <c>Chương 1: Giới thiệu tổng quát…</c> nằm trong đoạn liệt kê của phần mở
-    /// đầu (<c>BodyText</c>) và <c>Phụ lục 1: Các tài khoản…</c> là mục con, cả hai đều không thuộc
-    /// outline theo đáp án người dùng.
-    /// </summary>
-    private static bool IsStandaloneKeyword(SlimParagraph p) =>
-        !string.Equals(p.StyleId, "BodyText", StringComparison.OrdinalIgnoreCase) &&
-        p.Text.Length <= HeadingTextMaxLength &&
-        !p.Text.Contains(':');
 
     public static List<HeadingRecord> Build(SlimDocument document)
         => BuildCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray());
@@ -206,17 +176,18 @@ public static class StyleDeclaredOutline
     /// Nhánh <c>auto:outline-level</c> phải đọc tín hiệu này, không được thu hẹp về
     /// <c>HasBuiltInHeadingStyle</c>.
     /// </summary>
-    public static List<HeadingRecord> BuildFromOutlineLevel(SlimDocument document)
+    private static List<HeadingRecord> BuildFromOutlineLevelCore(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
-        var frontMatter = (int)(document.Paragraphs.Count * FrontMatterFraction);
+        ArgumentNullException.ThrowIfNull(paragraphs);
+        var frontMatter = (int)(paragraphs.Count * FrontMatterFraction);
         var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var seenIndexes = new HashSet<int>();
-        var customStylesUnderOutlineAnchor = OutlineAnchorCustomStyles.Find(document.Paragraphs);
-        var tableStylesUnderOutlineAnchor = OutlineAnchorCustomStyles.FindTableStyles(document.Paragraphs);
+        var customStylesUnderOutlineAnchor = OutlineAnchorCustomStyles.Find(paragraphs);
+        var tableStylesUnderOutlineAnchor = OutlineAnchorCustomStyles.FindTableStyles(paragraphs);
         var result = new List<HeadingRecord>();
         int? currentAnchorLevel = null;
 
-        foreach (var p in document.Paragraphs.OrderBy(p => p.Index))
+        foreach (var p in paragraphs.OrderBy(p => p.Index))
         {
             if (string.IsNullOrWhiteSpace(p.Text)) continue;
             if (p.Corrupt) continue;                                   // X1
@@ -292,30 +263,14 @@ public static class StyleDeclaredOutline
         return result;
     }
 
-    public static List<HeadingRecord> BuildFromOutlineLevel(IReadOnlyList<IPolicyParagraph> paragraphs)
+    public static List<HeadingRecord> BuildFromOutlineLevel(SlimDocument document)
     {
-        ArgumentNullException.ThrowIfNull(paragraphs);
-        var frontMatter = (int)(paragraphs.Count * FrontMatterFraction);
-        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        var result = new List<HeadingRecord>();
-        foreach (var p in paragraphs.OrderBy(p => p.Index))
-        {
-            if (string.IsNullOrWhiteSpace(p.Text) || p.Corrupt || p.InTableOfContents ||
-                p.StyleId?.StartsWith("TOC", StringComparison.OrdinalIgnoreCase) == true ||
-                Caption.IsMatch(p.Text)) continue;
-            if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
-            if (p.OutlineLevel is null or < 0 or > 8) continue;
-            result.Add(new HeadingRecord
-            {
-                Index = p.Index, StableId = p.StableId, SourceId = p.StableId,
-                Level = Math.Clamp(p.OutlineLevel.Value + 1, 1, 9), Text = p.Text,
-                StyleId = p.StyleId, Source = HeadingSource.Structure, Confidence = 1.0,
-                ConfidenceBasis = "outline_level_declared",
-                DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
-            });
-        }
-        return result;
+        ArgumentNullException.ThrowIfNull(document);
+        return BuildFromOutlineLevelCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray());
     }
+
+    public static List<HeadingRecord> BuildFromOutlineLevel(IReadOnlyList<IPolicyParagraph> paragraphs)
+        => BuildFromOutlineLevelCore(paragraphs);
 
     public static List<HeadingRecord> BuildFromNumbering(IReadOnlyList<IPolicyParagraph> paragraphs)
         => BuildFromNumberingCore(paragraphs);
@@ -362,7 +317,7 @@ public static class StyleDeclaredOutline
         !string.Equals(p.StyleId, "BodyText", StringComparison.OrdinalIgnoreCase) &&
         p.Text.Length <= HeadingTextMaxLength && !p.Text.Contains(':');
 
-    private static bool IsAnchoredNumberedCandidateShape(SlimParagraph p)
+    private static bool IsAnchoredNumberedCandidateShape(IPolicyParagraph p)
     {
         if (!p.IsCandidate || p.TableDepth > 0 || p.OutlineLevel is not null || p.NumberingId is null)
             return false;
@@ -374,7 +329,7 @@ public static class StyleDeclaredOutline
         return NumberingAudit.ParseParagraph(p, p.Text) is not null;
     }
 
-    private static bool IsAnchoredTableHeadingShape(SlimParagraph p)
+    private static bool IsAnchoredTableHeadingShape(IPolicyParagraph p)
     {
         if (p.TableDepth <= 0 || p.OutlineLevel is not null || p.HasBuiltInHeadingStyle)
             return false;

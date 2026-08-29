@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 
@@ -39,7 +40,17 @@ public static class BookTocDictionaryOutline
 
     public static BookTocDictionaryResult Analyze(SlimDocument document)
     {
-        var toc = FindTocCluster(document);
+        ArgumentNullException.ThrowIfNull(document);
+        return AnalyzeCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray());
+    }
+
+    public static BookTocDictionaryResult Analyze(IReadOnlyList<IPolicyParagraph> paragraphs) =>
+        AnalyzeCore(paragraphs);
+
+    private static BookTocDictionaryResult AnalyzeCore(IReadOnlyList<IPolicyParagraph> paragraphs)
+    {
+        ArgumentNullException.ThrowIfNull(paragraphs);
+        var toc = FindTocCluster(paragraphs);
         if (toc is null)
             return Reject("no-book-toc-cluster");
 
@@ -47,7 +58,7 @@ public static class BookTocDictionaryOutline
         if (entries.Count < 20)
             return Reject("too-few-book-toc-entries", toc, entries.Count, 0);
 
-        var anchored = AnchorEntries(document, entries, toc.EndIndex);
+        var anchored = AnchorEntries(paragraphs, entries, toc.EndIndex);
         var ratio = anchored.Count / (double)entries.Count;
         if (anchored.Count < 20 || ratio < 0.65)
             return Reject("low-body-anchor-ratio", toc, entries.Count, anchored.Count);
@@ -85,29 +96,29 @@ public static class BookTocDictionaryOutline
                 toc?.EndIndex ?? -1));
     }
 
-    private static TocCluster? FindTocCluster(SlimDocument document)
+    private static TocCluster? FindTocCluster(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
-        var paragraphs = document.Paragraphs
+        var eligible = paragraphs
             .Where(p => p.Role != ParagraphRole.Empty && !string.IsNullOrWhiteSpace(p.Text))
             .OrderBy(p => p.Index)
             .ToList();
 
-        for (var i = 0; i < paragraphs.Count; i++)
+        for (var i = 0; i < eligible.Count; i++)
         {
-            var text = paragraphs[i].Text;
+            var text = eligible[i].Text;
             if (!text.Equals("Contents", StringComparison.OrdinalIgnoreCase) &&
                 !text.Contains("Table of Contents", StringComparison.OrdinalIgnoreCase))
                 continue;
 
-            var parts = new List<SlimParagraph>();
+            var parts = new List<IPolicyParagraph>();
             // PDF-to-DOCX converters frequently split a visual TOC table into one paragraph per
             // cell.  The TOC label, title, and page number are then separate paragraphs, so use
             // a bounded contiguous window instead of requiring "Contents" and "Chapter" to be
             // in the same paragraph.
-            for (var j = i; j < paragraphs.Count && parts.Count < 320; j++)
+            for (var j = i; j < eligible.Count && parts.Count < 320; j++)
             {
-                var p = paragraphs[j];
-                if (p.Index > paragraphs[i].Index &&
+                var p = eligible[j];
+                if (p.Index > eligible[i].Index &&
                     StandaloneBodyStartRx.IsMatch(p.Text) &&
                     CountEntries(string.Join(' ', parts.Select(x => x.Text))) >= 8)
                     break;
@@ -115,15 +126,15 @@ public static class BookTocDictionaryOutline
                 parts.Add(p);
                 var combined = NormalizeSpace(string.Join(' ', parts.Select(x => x.Text)));
                 if (CountEntries(combined) >= 20 &&
-                    j + 1 < paragraphs.Count &&
-                    StandaloneBodyStartRx.IsMatch(paragraphs[j + 1].Text))
+                    j + 1 < eligible.Count &&
+                    StandaloneBodyStartRx.IsMatch(eligible[j + 1].Text))
                     break;
             }
 
             var clusterText = NormalizeSpace(string.Join(' ', parts.Select(x => x.Text)));
             if (CountEntries(clusterText) >= 20)
                 return new TocCluster(
-                    paragraphs[i].Index,
+                    eligible[i].Index,
                     parts[^1].Index,
                     parts.Count,
                     clusterText);
@@ -214,11 +225,11 @@ public static class BookTocDictionaryOutline
     }
 
     private static List<HeadingRecord> AnchorEntries(
-        SlimDocument document,
+        IReadOnlyList<IPolicyParagraph> document,
         IReadOnlyList<BookTocEntry> entries,
         int tocEndIndex)
     {
-        var paragraphs = document.Paragraphs
+        var paragraphs = document
             .Where(p => p.Index > tocEndIndex &&
                         p.Role != ParagraphRole.Empty &&
                         !string.IsNullOrWhiteSpace(p.Text))
@@ -254,7 +265,7 @@ public static class BookTocDictionaryOutline
     }
 
     private static MatchResult? FindAnchor(
-        IReadOnlyList<SlimParagraph> paragraphs,
+        IReadOnlyList<IPolicyParagraph> paragraphs,
         BookTocEntry entry,
         int minIndex)
     {
@@ -296,7 +307,7 @@ public static class BookTocDictionaryOutline
     }
 
     private static MatchResult? FindSplitMarkerTitleAnchor(
-        IReadOnlyList<SlimParagraph> paragraphs,
+        IReadOnlyList<IPolicyParagraph> paragraphs,
         BookTocEntry entry,
         int minIndex)
     {
@@ -392,7 +403,7 @@ public static class BookTocDictionaryOutline
     private sealed record TocCluster(int StartIndex, int EndIndex, int ParagraphCount, string Text);
     private sealed record TokenSpan(string Text, int Start, int End);
     private readonly record struct MatchResult(
-        SlimParagraph Paragraph,
+        IPolicyParagraph Paragraph,
         string Text,
         int Start,
         int End,
