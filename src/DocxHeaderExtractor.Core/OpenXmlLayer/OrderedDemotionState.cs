@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Application.Policy;
 
 namespace DocxHeaderExtractor.Core.OpenXmlLayer;
 
@@ -54,6 +55,22 @@ internal sealed class OrderedDemotionState
         return new OrderedDemotionState(result);
     }
 
+    public static OrderedDemotionState Create(DocxPolicyState policyState)
+    {
+        ArgumentNullException.ThrowIfNull(policyState);
+        var result = policyState.Paragraphs.Select(paragraph => new OrderedDemotionParagraph(
+            paragraph.Source,
+            paragraph.Numbering,
+            paragraph.Style,
+            paragraph.BodyFontSizePt,
+            paragraph.Corrupt,
+            paragraph.TrustedHeadingStyle,
+            paragraph.NumberingStyleHeadingLevel,
+            paragraph.Role,
+            paragraph.Score)).ToArray();
+        return new OrderedDemotionState(result);
+    }
+
     public void ApplyPolicyStateTo(IReadOnlyList<SlimParagraph> legacyParagraphs)
     {
         if (legacyParagraphs.Count != Paragraphs.Count)
@@ -63,6 +80,18 @@ internal sealed class OrderedDemotionState
         {
             legacyParagraphs[i].Role = Paragraphs[i].Role;
             legacyParagraphs[i].Score = Paragraphs[i].Score;
+        }
+    }
+
+    public void ApplyPolicyStateTo(DocxPolicyState policyState)
+    {
+        ArgumentNullException.ThrowIfNull(policyState);
+        if (policyState.Paragraphs.Count != Paragraphs.Count)
+            throw new InvalidOperationException("Ordered demotion state and policy paragraph order diverged.");
+        for (var i = 0; i < Paragraphs.Count; i++)
+        {
+            policyState.Paragraphs[i].Role = Paragraphs[i].Role;
+            policyState.Paragraphs[i].Score = Paragraphs[i].Score;
         }
     }
 }
