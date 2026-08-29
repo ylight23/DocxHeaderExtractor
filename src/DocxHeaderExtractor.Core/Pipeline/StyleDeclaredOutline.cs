@@ -100,48 +100,8 @@ public static class StyleDeclaredOutline
     /// </summary>
     public static List<HeadingRecord> BuildFromNumbering(SlimDocument document)
     {
-        var frontMatter = (int)(document.Paragraphs.Count * FrontMatterFraction);
-        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        var result = new List<HeadingRecord>();
-
-        var headingLists = HeadingNumberingIds(document);
-
-        foreach (var p in document.Paragraphs.OrderBy(p => p.Index))
-        {
-            if (string.IsNullOrWhiteSpace(p.Text) || p.Corrupt) continue;   // X1
-            if (Caption.IsMatch(p.Text)) continue;                          // X2
-            if (p.TableDepth > 0) continue;
-            // Dòng mục lục do Word sinh mang style TOC1–TOC9 — chúng LẶP LẠI tên đề mục khác nên mọi
-            // luật nội dung đều nhận nhầm; chỉ style mới tách được.
-            if (p.StyleId?.StartsWith("TOC", StringComparison.OrdinalIgnoreCase) == true) continue;
-
-            int level;
-            if (p.NumberingLevel is { } ilvl && ilvl >= 1 &&
-                p.NumberingId is { } id && headingLists.Contains((id, ilvl)))
-            {
-                level = Math.Clamp(ilvl + 1, 1, 9);
-            }
-            else if (StructuralKeyword.IsMatch(p.Text) && IsStandaloneKeyword(p))
-            {
-                level = 1;
-            }
-            else continue;
-
-            // X6: khối bìa lặp — cùng văn bản lần hai trong phần đầu tài liệu.
-            if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
-
-            result.Add(new HeadingRecord
-            {
-                Index = p.Index,
-                Level = level,
-                Text = p.Text,
-                Source = p.NumberingLevel is not null ? HeadingSource.Structure : HeadingSource.Style,
-                Confidence = 1.0,
-                ConfidenceBasis = "numbering_declared",
-                DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
-            });
-        }
-        return result;
+        ArgumentNullException.ThrowIfNull(document);
+        return BuildFromNumberingCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray());
     }
 
     /// <summary>
@@ -358,6 +318,9 @@ public static class StyleDeclaredOutline
     }
 
     public static List<HeadingRecord> BuildFromNumbering(IReadOnlyList<IPolicyParagraph> paragraphs)
+        => BuildFromNumberingCore(paragraphs);
+
+    private static List<HeadingRecord> BuildFromNumberingCore(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
         ArgumentNullException.ThrowIfNull(paragraphs);
         var frontMatter = (int)(paragraphs.Count * FrontMatterFraction);
