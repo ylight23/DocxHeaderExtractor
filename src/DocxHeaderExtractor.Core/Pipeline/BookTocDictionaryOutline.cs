@@ -36,14 +36,6 @@ public static class BookTocDictionaryOutline
         @"^(?:Part\s+[IVXLC]+|CHAPTER\s+\d{1,2})\.?$",
         RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-    public static IReadOnlyList<HeadingRecord> Build(SlimDocument document) => Analyze(document).Headings;
-
-    public static BookTocDictionaryResult Analyze(SlimDocument document)
-    {
-        ArgumentNullException.ThrowIfNull(document);
-        return AnalyzeCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray());
-    }
-
     public static BookTocDictionaryResult Analyze(IReadOnlyList<IPolicyParagraph> paragraphs) =>
         AnalyzeCore(paragraphs);
 

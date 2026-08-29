@@ -24,8 +24,10 @@ public static class SiblingShapeAudit
     public const double LengthDeviationFactor = 3.0;
 
     /// <summary>Đánh dấu các mục lệch hình dạng so với anh em; trả về số mục đã đánh dấu.</summary>
-    public static int Apply(IList<HeadingRecord> headings, SlimDocument document)
+    public static int Apply(IList<HeadingRecord> headings, SourceDocument source)
     {
+        ArgumentNullException.ThrowIfNull(source);
+        var textByIndex = source.Paragraphs.ToDictionary(p => p.SourceOrdinal, p => p.Text);
         var ordered = headings.OrderBy(h => h.Index).ToList();
         var marked = 0;
 
@@ -33,13 +35,13 @@ public static class SiblingShapeAudit
         {
             if (group.Count < MinimumSiblings) continue;
 
-            var lengths = group.Select(h => TextOf(h, document).Length).OrderBy(x => x).ToList();
+            var lengths = group.Select(h => TextOf(h, textByIndex).Length).OrderBy(x => x).ToList();
             var median = lengths[lengths.Count / 2];
             if (median == 0) continue;
 
             foreach (var heading in group)
             {
-                var length = TextOf(heading, document).Length;
+                var length = TextOf(heading, textByIndex).Length;
                 if (length <= median * LengthDeviationFactor && length * LengthDeviationFactor >= median)
                     continue;
                 heading.Disputed = true;
@@ -69,6 +71,6 @@ public static class SiblingShapeAudit
         return [.. groups.Values];
     }
 
-    private static string TextOf(HeadingRecord heading, SlimDocument document) =>
-        document.ByIndex(heading.Index)?.Text ?? heading.Text ?? "";
+    private static string TextOf(HeadingRecord heading, IReadOnlyDictionary<int, string> textByIndex) =>
+        textByIndex.TryGetValue(heading.Index, out var text) ? text : heading.Text ?? "";
 }

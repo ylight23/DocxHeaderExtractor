@@ -71,13 +71,6 @@ public static class PrecisionAcceptanceGate
             // Heading do luật R1 gán thẳng đi qua cổng mà không bị hạ: spec nói rõ nhánh
             // auto_assign "không có cơ chế review nào phía sau bắt lại". Giữ đúng như vậy để phép
             // đo chấm chính cái spec đề xuất, không phải một bản đã bị làm mềm.
-            if (heading.ConfidenceBasis == OoxmlStyleAutoAssign.Basis)
-            {
-                heading.DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence;
-                heading.Confidence = 1;
-                continue;
-            }
-
             if (IsDeterministicDeclaredBasis(heading.ConfidenceBasis))
             {
                 heading.DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence;
@@ -191,9 +184,7 @@ public static class PrecisionAcceptanceGate
         basis == RfcTocDictionaryOutline.Basis ||
         basis == PdfTocDictionaryOutline.Basis ||
         basis == PartSectionOutline.Basis ||
-        basis == FinancialStatementsTocOutline.Basis ||
         basis == PdfFinancialReportOutline.Basis ||
         basis == PdfBoldLabelOutline.Basis ||
-        basis == DoclingLayoutOutline.Basis ||
         basis.StartsWith("outline_anchor_", StringComparison.Ordinal);
 }

@@ -40,12 +40,6 @@ public static class PartSectionOutline
         RegexOptions.Compiled | RegexOptions.Singleline);
     private static readonly Regex WordRx = new(@"\p{L}{2,}", RegexOptions.Compiled);
 
-    public static List<HeadingRecord> Build(SlimDocument document)
-    {
-        ArgumentNullException.ThrowIfNull(document);
-        return BuildCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray());
-    }
-
     public static List<HeadingRecord> Build(IReadOnlyList<IPolicyParagraph> paragraphs) =>
         BuildCore(paragraphs);
 
@@ -104,21 +98,11 @@ public static class PartSectionOutline
         return [.. byKey.Values.Select(c => c.Heading).OrderBy(h => h.Index).ThenBy(h => h.Level)];
     }
 
-    public static bool HasStrongSignal(SlimDocument document)
-    {
-        var headings = Build(document);
-        return headings.Count(h => h.Level == 1) >= 1 && headings.Count(h => h.Level == 2) >= 5;
-    }
-
     public static bool HasStrongSignal(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
         var headings = Build(paragraphs);
         return headings.Count(h => h.Level == 1) >= 1 && headings.Count(h => h.Level == 2) >= 5;
     }
-
-    public static bool HasTextTocSignal(SlimDocument document) =>
-        TextTocEntries(document).Count(e => e.Level == 1) >= 1 &&
-        TextTocEntries(document).Count(e => e.Level == 2) >= 5;
 
     public static bool HasTextTocSignal(IReadOnlyList<IPolicyParagraph> paragraphs) =>
         TextTocEntriesCore(paragraphs).Count(e => e.Level == 1) >= 1 &&
@@ -130,9 +114,9 @@ public static class PartSectionOutline
     /// nguồn anchor theo paragraph/page. Đây là route điều hướng cho file mất XML signal, không phải
     /// phục hồi span title/body hoàn chỉnh.
     /// </summary>
-    public static List<HeadingRecord> BuildFromTextToc(SlimDocument document)
+    public static List<HeadingRecord> BuildFromTextToc(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
-        var entries = TextTocEntries(document);
+        var entries = TextTocEntriesCore(paragraphs);
         if (entries.Count(e => e.Level == 1) < 1 || entries.Count(e => e.Level == 2) < 5)
             return [];
 
@@ -140,7 +124,7 @@ public static class PartSectionOutline
         var cursor = entries[0].TocParagraphIndex + 1;
         foreach (var entry in entries)
         {
-            var paragraph = FindBodyOccurrence(document, entry, cursor);
+            var paragraph = FindBodyOccurrence(paragraphs, entry, cursor);
             if (paragraph is null) continue;
 
             headings.Add(new HeadingRecord
@@ -175,9 +159,6 @@ public static class PartSectionOutline
     private static bool LooksLikeDenseContentsParagraph(string text) =>
         text.Contains("Table of Contents", StringComparison.OrdinalIgnoreCase) &&
         DotLeaderRx.Matches(text).Count >= 2;
-
-    private static List<TocEntry> TextTocEntries(SlimDocument document) =>
-        TextTocEntriesCore(document.Paragraphs);
 
     private static List<TocEntry> TextTocEntriesCore(IEnumerable<IPolicyParagraph> paragraphs)
     {
@@ -224,15 +205,16 @@ public static class PartSectionOutline
     /// </summary>
     private static bool LooksLikeTocEntryTitle(string text) => text.Length is >= 4 and <= 140;
 
-    private static SlimParagraph? FindBodyOccurrence(SlimDocument document, TocEntry entry, int minIndex)
+    private static IPolicyParagraph? FindBodyOccurrence(
+        IReadOnlyList<IPolicyParagraph> paragraphs, TocEntry entry, int minIndex)
     {
         var marker = MarkerRx.Match(entry.Title);
         if (!marker.Success) return null;
         var markerText = MarkerText(marker);
         var titleKey = NormalizeKey(entry.Title);
 
-        SlimParagraph? fallback = null;
-        foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
+        IPolicyParagraph? fallback = null;
+        foreach (var p in paragraphs.OrderBy(x => x.Index))
         {
             if (p.Index < minIndex || string.IsNullOrWhiteSpace(p.Text) || LooksLikeDenseContentsParagraph(p.Text))
                 continue;

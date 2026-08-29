@@ -19,9 +19,6 @@ public static class PdfTaggedHeadingProbe
 {
     private static readonly Regex HeadingTag = new(@"^H(?<level>[1-6])?$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-    public static PdfTaggedHeadingProbeReport Analyze(string pdfPath, SlimDocument? docx = null) =>
-        AnalyzeCore(pdfPath, docx?.Paragraphs);
-
     public static PdfTaggedHeadingProbeReport Analyze(
         string pdfPath, IReadOnlyList<IPolicyParagraph>? paragraphs) =>
         AnalyzeCore(pdfPath, paragraphs);

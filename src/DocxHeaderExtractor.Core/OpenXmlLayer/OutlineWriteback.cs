@@ -30,7 +30,7 @@ public sealed record OutlineWritebackResult(
 /// 1. Không sửa file nguồn — luôn ghi ra đường dẫn đích riêng.
 /// 2. Không chạm vào một ký tự nội dung nào; chỉ đặt <c>w:outlineLvl</c> (và tuỳ chọn
 ///    <c>w:pStyle</c>) trong <c>w:pPr</c>.
-/// 3. Sau khi ghi, đọc lại bản đích bằng đúng <see cref="DocxSlimExtractor"/> và đối chiếu
+/// 3. Sau khi ghi, đọc lại bản đích bằng source-native reader và đối chiếu
 ///    stableId + text + outline level. Lệch một mục là xoá file đích và ném lỗi, vì một tài
 ///    liệu bị đánh dấu sai chỗ nguy hiểm hơn hẳn việc không ghi được.
 /// </para>

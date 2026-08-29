@@ -75,18 +75,9 @@ public class LocalListDepthTests
         Assert.Equal(3, headings.Single(h => h.Index == 0).Level);
     }
 
-    private static SlimDocument Doc(params (int Index, string Text, int? ListId)[] items) =>
-        new SlimDocument
-        {
-            FileName = "x.docx",
-            SourcePath = "x.docx",
-            Paragraphs = [.. items.Select(x => new SlimParagraph
-            {
-                Index = x.Index,
-                Text = x.Text,
-                NumberingId = x.ListId,
-            })],
-        }.Build();
+    private static DocxHeaderExtractor.Core.Application.Policy.DocxPolicyState Doc(
+        params (int Index, string Text, int? ListId)[] items) =>
+        NativePolicyStateFactory.Create(items.Select(x => (x.Index, x.Text, x.ListId, (int?)null)));
 
     private static List<HeadingRecord> Headings(params (int Index, int Level)[] items) =>
         [.. items.Select(x => new HeadingRecord { Index = x.Index, Level = x.Level, Text = "" })];

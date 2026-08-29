@@ -44,12 +44,8 @@ public class SiblingShapeTests
         Assert.Equal(0, SiblingShapeAudit.Apply(headings, doc));
     }
 
-    private static SlimDocument Doc(params (int Index, string Text)[] items) =>
-        new SlimDocument
-        {
-            FileName = "x.docx", SourcePath = "x.docx",
-            Paragraphs = [.. items.Select(x => new SlimParagraph { Index = x.Index, Text = x.Text })],
-        }.Build();
+    private static SourceDocument Doc(params (int Index, string Text)[] items) =>
+        NativePolicyStateFactory.Create(items.Select(x => (x.Index, x.Text, (int?)null, (int?)null))).Source;
 
     private static List<HeadingRecord> H(params (int Index, int Level)[] items) =>
         [.. items.Select(x => new HeadingRecord { Index = x.Index, Level = x.Level, Text = "" })];

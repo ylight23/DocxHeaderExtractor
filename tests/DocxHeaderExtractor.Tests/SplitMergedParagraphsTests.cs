@@ -85,12 +85,10 @@ public class SplitMergedParagraphsTests : IDisposable
     [Fact]
     public void Hai_lat_cung_chi_so_khong_lam_sup_bo_suy_cap()
     {
-        List<SlimParagraph> ps =
-        [
-            new() { Index = 0, Text = "Chương I QUY ĐỊNH CHUNG Điều 1. Phạm vi Điều 2. Đối tượng", FontSizePt = 13 },
-            new() { Index = 1, Text = "Thân bài dài trình bày chi tiết các bước thực hiện của quy trình.", FontSizePt = 13 },
-        ];
-        var doc = new SlimDocument { FileName = "t.docx", SourcePath = "t.docx", Paragraphs = ps }.Build();
+        var doc = NativePolicyStateFactory.Create([
+            (0, "Chương I QUY ĐỊNH CHUNG Điều 1. Phạm vi Điều 2. Đối tượng", (int?)null, (int?)null),
+            (1, "Thân bài dài trình bày chi tiết các bước thực hiện của quy trình.", (int?)null, (int?)null),
+        ]);
 
         List<HeadingRecord> headings =
         [

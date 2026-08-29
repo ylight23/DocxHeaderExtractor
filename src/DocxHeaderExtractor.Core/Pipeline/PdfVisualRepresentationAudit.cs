@@ -14,9 +14,6 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// </summary>
 public static class PdfVisualRepresentationAudit
 {
-    public static PdfVisualRepresentationReport Evaluate(string pdfPath, SlimDocument document, AnswerKey key) =>
-        Evaluate(pdfPath, document.SourcePath, document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), key);
-
     public static PdfVisualRepresentationReport Evaluate(
         string pdfPath, DocxPolicyState policyState, AnswerKey key) =>
         Evaluate(pdfPath, policyState.Source.SourcePath,
@@ -35,14 +32,6 @@ public static class PdfVisualRepresentationAudit
         return EvaluateForAudit(paragraphs, key, lines, regions,
             text => retrieval.TryGetValue(text, out var trace) && trace.FoundInRawWindow);
     }
-
-    internal static PdfVisualRepresentationReport EvaluateForAudit(
-        SlimDocument document,
-        AnswerKey key,
-        IReadOnlyList<PdfLine> lines,
-        IReadOnlyList<PdfVisualRegionAudit> regions,
-        Func<string, bool>? isTextObservable = null)
-        => EvaluateForAudit(document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), key, lines, regions, isTextObservable);
 
     internal static PdfVisualRepresentationReport EvaluateForAudit(
         IReadOnlyList<IPolicyParagraph> paragraphs,
@@ -155,13 +144,6 @@ public sealed record PdfVisualRegionCoverage(string RegionId, int Page, double L
 /// </summary>
 public static class PdfFirstLossAudit
 {
-    public static PdfFirstLossReport Evaluate(string documentPath, SlimDocument document, AnswerKey key,
-        int selectedBudget = 160,
-        PdfReviewedOccurrenceBridge? occurrenceBridge = null,
-        IReadOnlyList<string?>? goldStableIds = null)
-        => Evaluate(documentPath, document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), key,
-            selectedBudget, occurrenceBridge, goldStableIds);
-
     public static PdfFirstLossReport Evaluate(string documentPath, DocxPolicyState policyState, AnswerKey key,
         int selectedBudget = 160,
         PdfReviewedOccurrenceBridge? occurrenceBridge = null,
@@ -454,9 +436,6 @@ public sealed record PdfFirstLossCandidateOccurrence(int Rank, string SourceId, 
 /// </summary>
 public static class PdfGoldOccurrenceEvaluator
 {
-    public static PdfGoldOccurrenceReport Evaluate(SlimDocument document, AnswerKey key, PdfFirstLossReport firstLoss) =>
-        Evaluate(document.SourcePath, document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), key, firstLoss);
-
     public static PdfGoldOccurrenceReport Evaluate(
         DocxPolicyState policyState, AnswerKey key, PdfFirstLossReport firstLoss) =>
         Evaluate(policyState.Source.SourcePath,

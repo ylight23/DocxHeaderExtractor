@@ -12,7 +12,7 @@ public sealed record WalkedParagraph(
 
 /// <summary>
 /// Thứ tự duyệt paragraph của document.xml — nguồn duy nhất sinh ra <c>index</c> và
-/// <c>stableId</c>. Cả đường đọc (<see cref="DocxSlimExtractor"/>) và đường ghi
+/// <c>stableId</c>. Cả đường đọc source-native và đường ghi
 /// (<see cref="OutlineWriteback"/>) đều dùng bộ duyệt này, nên chỉ số mà model trả về luôn
 /// trỏ đúng phần tử XML khi ghi ngược. Tách đôi hai bộ duyệt là cách chắc chắn nhất để
 /// writeback đặt heading sai chỗ sau một thay đổi nhỏ ở một bên.

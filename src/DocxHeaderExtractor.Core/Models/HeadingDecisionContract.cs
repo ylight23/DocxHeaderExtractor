@@ -27,7 +27,7 @@ public sealed record SourceAnchor
     public required string SourceType { get; init; }
     public string? ParagraphId { get; init; }
     public int? ParagraphIndex { get; init; }
-    public IReadOnlyList<SlimSourceSegment> SourceSegments { get; init; } = [];
+    public IReadOnlyList<SourceSegment> SourceSegments { get; init; } = [];
     public int? Page { get; init; }
     public string? RenderBlockId { get; init; }
     public IReadOnlyList<string> RenderLineIds { get; init; } = [];

@@ -31,7 +31,7 @@ public sealed record CorruptParagraphVisualCheck(
 
 /// <summary>
 /// Cổng chẩn đoán CÓ ĐIỀU KIỆN KÍCH HOẠT — chỉ chạy khi <see cref="OpenXmlLayer.CorruptParagraphDetector"/>
-/// đã báo động (<c>SlimParagraph.Corrupt</c>), không chạy trên đường trích xuất chính (chậm, tốn VLM).
+/// đã báo động bằng policy state, không chạy trên đường trích xuất chính (chậm, tốn VLM).
 /// Case gốc đã xác nhận cơ chế này đúng bằng tay: <c>HHììnnhh 11.1</c> — render ra ảnh khớp với text đã
 /// trích, xác nhận lỗi thật ở nguồn Word (spec §3.6, xem doc comment CorruptParagraphDetector). Lớp này
 /// tự động hoá đúng bước render-rồi-nhìn đó cho các ca khác.
@@ -63,17 +63,6 @@ public static class CorruptParagraphVisualVerifier
         CancellationToken ct = default) =>
         VerifyCore(originalInputPath, policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(),
             corruptParagraph, vlm, dpi, ct);
-
-    public static async Task<CorruptParagraphVisualCheck> VerifyAsync(
-        string originalInputPath,
-        SlimDocument document,
-        SlimParagraph corruptParagraph,
-        VlmImageQuestion vlm,
-        int dpi = 110,
-        CancellationToken ct = default)
-    {
-        return await VerifyCore(originalInputPath, document.Paragraphs, corruptParagraph, vlm, dpi, ct);
-    }
 
     private static async Task<CorruptParagraphVisualCheck> VerifyCore(
         string originalInputPath,
@@ -164,9 +153,6 @@ public static class CorruptParagraphVisualVerifier
         return new CorruptParagraphVisualCheck(
             corruptParagraph.Index, corruptParagraph.Text, verdict, answer, pdfPath, page);
     }
-
-    internal static string? FindNearestCleanNeighborText(SlimDocument document, int index) =>
-        FindNearestCleanNeighborText(document.Paragraphs, index);
 
     internal static string? FindNearestCleanNeighborText(
         IReadOnlyList<IPolicyParagraph> paragraphs, int index)

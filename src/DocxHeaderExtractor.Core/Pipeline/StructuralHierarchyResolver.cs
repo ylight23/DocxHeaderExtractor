@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -10,12 +11,14 @@ public static class StructuralHierarchyResolver
 {
     /// <param name="respectStyleTrust">
     /// Cờ <c>--style-trust</c>. Mặc định FALSE để giữ đúng hợp đồng của cờ: StyleTrust luôn được ĐO
-    /// và ghi vào <see cref="SlimDocument.StyleTrust"/> để báo cáo, nhưng chỉ được phép ĐỔI HÀNH VI
+    /// và ghi vào <see cref="DocxPolicyState.StyleTrust"/> để báo cáo, nhưng chỉ được phép ĐỔI HÀNH VI
     /// khi người dùng bật. Authority pipeline cũng kiểm cờ như vậy.
     /// </param>
-    public static int Apply(IList<HeadingRecord> headings, SlimDocument document,
+    public static int Apply(IList<HeadingRecord> headings, DocxPolicyState state,
         bool respectStyleTrust = false)
     {
+        ArgumentNullException.ThrowIfNull(state);
+        var paragraphs = state.Paragraphs.ToDictionary(p => p.Index);
         var ordered = headings.OrderBy(h => h.Index).ToList();
         // Khoá theo THAM CHIẾU HeadingRecord, không theo Index. Từ §51 hai tính năng gặp nhau:
         // --split-merged sinh nhiều mục dùng chung một Index (chủ đích, để đáp án trong keys/ không
@@ -24,9 +27,9 @@ public static class StructuralHierarchyResolver
         // Khoá theo tham chiếu cũng ĐÚNG NGHĨA hơn: hai lát cắt có text khác nhau nên phải có
         // đường dẫn đánh số khác nhau, gộp chúng vào một khoá là mất thông tin.
         var paths = new Dictionary<HeadingRecord, int[]?>(ReferenceEqualityComparer.Instance);
-        foreach (var h in ordered) paths[h] = PathOf(h, document);
-        var tiers = SignatureTiers(ordered, document, respectStyleTrust);
-        var nesting = StyleNestingDepths(ordered, document, respectStyleTrust);
+        foreach (var h in ordered) paths[h] = PathOf(h, paragraphs);
+        var tiers = SignatureTiers(ordered, paragraphs, state.StyleTrust, respectStyleTrust);
+        var nesting = StyleNestingDepths(ordered, paragraphs, state.StyleTrust, respectStyleTrust);
         var changed = 0;
 
         for (var i = 0; i < ordered.Count; i++)
@@ -46,12 +49,12 @@ public static class StructuralHierarchyResolver
             // Cùng một chốt mà nhánh chữ ký đã có (xem SignatureTiers): cấu trúc đã khai cấp thì
             // không suy lại. Đoạn vẫn nằm trong `paths` vì nó là NEO cha/anh em cho các mục khác —
             // chỉ riêng việc GHI cấp của chính nó là bị cấm.
-            if (Declared(current, document, respectStyleTrust)) continue;
+            if (Declared(current, paragraphs, state.StyleTrust, respectStyleTrust)) continue;
 
             if (path is null)
             {
                 // Item của danh sách đa cấp thì NEO CỤC BỘ thắng tầng chữ ký — xem LocalListDepth.
-                if (LocalListDepth(i, ordered, document) is { } anchored)
+                if (LocalListDepth(i, ordered, paragraphs) is { } anchored)
                 {
                     if (anchored != current.Level) { current.Level = anchored; changed++; }
                     continue;
@@ -74,7 +77,7 @@ public static class StructuralHierarchyResolver
             // qua FindSibling/FindParent, tức suy cấp từ hàng xóm — mà hàng xóm cũng đang sai cùng
             // một kiểu. Trên khoá luận thật, 39/51 lỗi cấp là "sâu hơn đúng một cấp" (5→4: 24 mục,
             // 4→3: 15 mục), đúng nhóm Heading4/Heading5 mà §16.2 đã truy ra.
-            if (respectStyleTrust && document.StyleTrust is { LevelTrusted: false }
+            if (respectStyleTrust && state.StyleTrust is { LevelTrusted: false }
                 && path.Length is >= 1 and <= 9 && path.Length != current.Level)
             {
                 current.Level = path.Length;
@@ -113,7 +116,10 @@ public static class StructuralHierarchyResolver
     /// </para>
     /// </summary>
     private static Dictionary<HeadingRecord, int> SignatureTiers(
-        IReadOnlyList<HeadingRecord> ordered, SlimDocument document, bool respectStyleTrust)
+        IReadOnlyList<HeadingRecord> ordered,
+        IReadOnlyDictionary<int, DocxPolicyParagraph> paragraphs,
+        StyleTrust? styleTrust,
+        bool respectStyleTrust)
     {
         // Khoá theo THAM CHIẾU, không theo Index — xem chú thích ở Apply và handoff §55.3. Dictionary<int,…> không
         // ném khi trùng khoá, nó GHI ĐÈ: hai lát cắt cùng Index nhưng khác chữ ký ("Chương I" và
@@ -124,14 +130,14 @@ public static class StructuralHierarchyResolver
 
         foreach (var heading in ordered)
         {
-            var paragraph = document.ByIndex(heading.Index);
+            paragraphs.TryGetValue(heading.Index, out var paragraph);
             // Cấu trúc đã khai cấp cho đoạn này (style Heading built-in, hoặc danh sách đa cấp gắn
             // style) thì không suy lại. ĐO ĐƯỢC khi thiếu chốt này: trên 01-style-chuan — tài liệu
             // dùng toàn style chuẩn — tầng chữ ký ghi đè 5 cấp và kéo độ chính xác cấp từ 100%
             // xuống 87,2%. Lý do kép: vừa vi phạm thứ tự quyền lực (cấu trúc trên suy luận), vừa
             // xếp hạng sai vì "Chương 1." không phân tích được nên chữ ký đầu tiên gặp lại là
             // Arabic:2 của "1.1." và nó bị coi là tầng ngoài cùng.
-            if (Declared(heading, document, respectStyleTrust)) continue;
+            if (Declared(heading, paragraphs, styleTrust, respectStyleTrust)) continue;
 
             if (NumberingAudit.ParseParagraph(paragraph, heading.Text) is not { } token) continue;
 
@@ -166,17 +172,20 @@ public static class StructuralHierarchyResolver
     /// </para>
     /// </summary>
     private static Dictionary<HeadingRecord, int> StyleNestingDepths(
-        IReadOnlyList<HeadingRecord> ordered, SlimDocument document, bool respectStyleTrust)
+        IReadOnlyList<HeadingRecord> ordered,
+        IReadOnlyDictionary<int, DocxPolicyParagraph> paragraphs,
+        StyleTrust? styleTrust,
+        bool respectStyleTrust)
     {
         var result = new Dictionary<HeadingRecord, int>(ReferenceEqualityComparer.Instance);
         if (!respectStyleTrust) return result;
         // LevelTrusted đúng ⇒ Declared() đã chặn từ trước và cấp lấy thẳng từ style; không tới đây.
-        if (document.StyleTrust is not { LevelTrusted: false, NestingTrusted: true }) return result;
+        if (styleTrust is not { LevelTrusted: false, NestingTrusted: true }) return result;
 
         var ancestors = new List<int>();
         foreach (var heading in ordered)
         {
-            if (document.ByIndex(heading.Index)
+            if (paragraphs.GetValueOrDefault(heading.Index)
                 is not { HasBuiltInHeadingStyle: true, GuessedLevel: { } styleLevel }) continue;
 
             // Mục không đánh style thì không đụng tới ngăn xếp: cấp của chúng đến từ độ sâu đánh số,
@@ -210,13 +219,15 @@ public static class StructuralHierarchyResolver
     /// </para>
     /// </summary>
     private static int? LocalListDepth(
-        int at, IReadOnlyList<HeadingRecord> ordered, SlimDocument document)
+        int at, IReadOnlyList<HeadingRecord> ordered,
+        IReadOnlyDictionary<int, DocxPolicyParagraph> paragraphs)
     {
-        if (document.ByIndex(ordered[at].Index) is not { NumberingId: { } listId }) return null;
+        if (!paragraphs.TryGetValue(ordered[at].Index, out var current) || current.NumberingId is not { } listId)
+            return null;
 
         for (var i = at - 1; i >= 0; i--)
         {
-            var previous = document.ByIndex(ordered[i].Index);
+            paragraphs.TryGetValue(ordered[i].Index, out var previous);
             // Cùng danh sách ⇒ anh em, không phải cha. Bỏ qua để đi tiếp lên trên.
             if (previous?.NumberingId == listId) continue;
             return ordered[i].Level is { } level ? Math.Clamp(level + 1, 1, 9) : null;
@@ -323,18 +334,24 @@ public static class StructuralHierarchyResolver
     /// bằng cấu hình một lần cho cả tài liệu, không nhiễm lỗi copy định dạng như style.
     /// </para>
     /// </summary>
-    private static bool Declared(HeadingRecord heading, SlimDocument document, bool respectStyleTrust)
+    private static bool Declared(
+        HeadingRecord heading,
+        IReadOnlyDictionary<int, DocxPolicyParagraph> paragraphs,
+        StyleTrust? styleTrust,
+        bool respectStyleTrust)
     {
-        var p = document.ByIndex(heading.Index);
+        paragraphs.TryGetValue(heading.Index, out var p);
         if (p is { NumberingStyleLevel: not null }) return true;
         if (p is not { HasBuiltInHeadingStyle: true }) return false;
         if (!respectStyleTrust) return true;
-        return document.StyleTrust is null || document.StyleTrust.LevelTrusted;
+        return styleTrust is null || styleTrust.LevelTrusted;
     }
 
-    private static int[]? PathOf(HeadingRecord heading, SlimDocument document)
+    private static int[]? PathOf(
+        HeadingRecord heading,
+        IReadOnlyDictionary<int, DocxPolicyParagraph> paragraphs)
     {
-        var paragraph = document.ByIndex(heading.Index);
+        paragraphs.TryGetValue(heading.Index, out var paragraph);
         // Trước đây truyền NHÃN TRƠ khi có NumberLabel ("3.1." không kèm tên mục), nên
         // ParseArabicPath (đòi HasTitleRemainder) luôn loại nó — cùng lỗi mà 13ac456 đã gom về
         // NumberingAudit.ParseParagraph ở sáu chỗ khác nhưng bỏ sót đúng chỗ này. Hệ quả đo được:

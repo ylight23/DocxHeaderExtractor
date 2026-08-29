@@ -52,18 +52,6 @@ public static class RfcTocDictionaryOutline
         @"(?:(?:Acknowledg(?:e)?ments?|Index|Contributors)\s+){1,4}Authors.{0,3}\s+Addresses\s+",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-    public static List<HeadingRecord> Build(SlimDocument document)
-    {
-        var result = Analyze(document);
-        return result.Accepted ? result.Headings.ToList() : [];
-    }
-
-    public static RfcTocDictionaryResult Analyze(SlimDocument document)
-    {
-        ArgumentNullException.ThrowIfNull(document);
-        return AnalyzeCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray());
-    }
-
     public static RfcTocDictionaryResult Analyze(IReadOnlyList<IPolicyParagraph> paragraphs) =>
         AnalyzeCore(paragraphs);
 

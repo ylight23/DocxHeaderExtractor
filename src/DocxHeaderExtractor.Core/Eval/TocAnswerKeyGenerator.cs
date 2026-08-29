@@ -40,7 +40,7 @@ public sealed record TocKeyResult(
 /// Sinh đáp án ỨNG VIÊN (chưa qua người duyệt) từ mục lục do Word tự sinh, để mở rộng bench —
 /// KHÔNG thay thế cho gán nhãn tay trong <c>keys/</c>.
 /// <para>
-/// Khớp mục lục với TOÀN BỘ đoạn thân bài (<see cref="SlimDocument.Paragraphs"/>), không chỉ những
+/// Khớp mục lục với TOÀN BỘ đoạn thân bài (<see cref="SourceDocument.Paragraphs"/>), không chỉ những
 /// đoạn pipeline đã xếp là ứng viên heading. Nếu khớp với đầu ra của chính pipeline đang nghi ngờ thì
 /// không đo được gì có ý nghĩa độc lập — đúng cái bẫy TODO.md gọi là "không suy về ĐẦU VÀO từ ĐẦU RA
 /// của chính pipeline đang nghi ngờ" (§46.5).

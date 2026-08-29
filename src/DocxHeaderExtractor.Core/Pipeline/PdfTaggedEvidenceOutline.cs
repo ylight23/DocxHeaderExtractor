@@ -14,9 +14,6 @@ internal static class PdfTaggedEvidenceOutline
 {
     public const string Basis = "pdf_tagged_structural";
 
-    public static PdfTaggedEvidenceOutlineResult TryBuild(string inputPath, SlimDocument slim) =>
-        TryBuild(inputPath, slim.Paragraphs.Cast<IPolicyParagraph>().ToArray());
-
     public static PdfTaggedEvidenceOutlineResult TryBuild(
         string inputPath, IReadOnlyList<IPolicyParagraph> paragraphs)
     {

@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using UglyToad.PdfPig;
@@ -45,10 +46,10 @@ public static class PdfBoldLabelOutline
 
     public static PdfTextbookOutlineResult TryBuild(
         string originalInputPath,
-        SlimDocument slim,
+        IReadOnlyList<IPolicyParagraph> paragraphs,
         DocumentModeReport mode)
     {
-        if (DocumentStructureEvidence.HasNativeSemanticStructure(slim))
+        if (DocumentStructureEvidence.HasNativeSemanticStructure(paragraphs))
             return PdfTextbookOutlineResult.NotApplicable("docx-structure-present");
 
         var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
@@ -73,7 +74,7 @@ public static class PdfBoldLabelOutline
         if (candidates.Count < 2)
             return PdfTextbookOutlineResult.NotApplicable($"too-few-bold-labels:{candidates.Count}");
 
-        var aligned = AlignToDocx(candidates, slim);
+        var aligned = AlignToDocx(candidates, paragraphs);
         if (aligned.Headings.Count < Math.Max(2, (int)Math.Ceiling(aligned.ConsideredCandidates * 0.60)))
             return PdfTextbookOutlineResult.NotApplicable(
                 $"low-docx-alignment:{aligned.Headings.Count}/{aligned.ConsideredCandidates}");
@@ -271,13 +272,14 @@ public static class PdfBoldLabelOutline
         // pháp thật, không phải điểm cắt PDF ngẫu nhiên.
         (EndsWithSentenceTerminator(text) || text.Contains(' '));
 
-    private static AlignmentResult AlignToDocx(IReadOnlyList<PdfHeadingCandidate> candidates, SlimDocument slim)
+    private static AlignmentResult AlignToDocx(IReadOnlyList<PdfHeadingCandidate> candidates,
+        IReadOnlyList<IPolicyParagraph> paragraphs)
     {
         // Khớp trên chuỗi CANON (chỉ chữ/số, bỏ mọi khoảng trắng) thay vì khớp token-theo-token:
         // PDF và DOCX ở nhóm tài liệu này đều có thể lỡ khoảng trắng giữa hai từ ("of the" ->
         // "ofthe") vì cùng một khâu trích chữ theo khoảng cách letter — canon bỏ qua đúng chỗ lệch
         // đó mà không cần đoán quy tắc chèn khoảng trắng đúng hơn.
-        var docx = slim.Paragraphs
+        var docx = paragraphs
             .Where(p => p.Role != ParagraphRole.Empty && !string.IsNullOrWhiteSpace(p.Text))
             .Select(p => new DocxParagraphCanon(p, BuildCanon(p.Text)))
             .ToList();
@@ -519,7 +521,7 @@ public static class PdfBoldLabelOutline
     }
 
     private sealed record PdfHeadingCandidate(string Text, int Page, double Y);
-    private sealed record DocxParagraphCanon(SlimParagraph Paragraph, (string Canon, int[] OriginalIndex) Canon);
+    private sealed record DocxParagraphCanon(IPolicyParagraph Paragraph, (string Canon, int[] OriginalIndex) Canon);
     private sealed record AlignmentResult(List<HeadingRecord> Headings, int ConsideredCandidates);
-    private readonly record struct MatchResult(SlimParagraph Paragraph, string Text, int Start, int End);
+    private readonly record struct MatchResult(IPolicyParagraph Paragraph, string Text, int Start, int End);
 }

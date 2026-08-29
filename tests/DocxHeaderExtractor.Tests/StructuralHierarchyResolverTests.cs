@@ -56,7 +56,7 @@ public class StructuralHierarchyResolverTests
         // đã khai nó là cấp 3. Đoạn thứ ba chứng minh nó VẪN nằm trong tập đường dẫn: "2.1." tìm cha
         // "2." và lấy cấp 3 + 1 = 4. Cấm ghi cấp của chính nó, không phải gỡ nó khỏi cây.
         var document = Doc((0, "1. Mục một"), (2, "2. Mục hai"), (4, "2.1. Mục con"));
-        document.ByIndex(2)!.NumberingStyleLevel = 3;
+        document.Paragraphs.Single(p => p.Index == 2).NumberingStyleLevel = 3;
         var headings = Headings((0, 2), (2, 3), (4, 1));
 
         StructuralHierarchyResolver.Apply(headings, document);
@@ -76,8 +76,10 @@ public class StructuralHierarchyResolverTests
     public void Dotted_number_via_word_numbering_label_is_still_child_of_its_parent()
     {
         var document = Doc((0, "Cha"), (2, "Con"));
-        document.ByIndex(0)!.NumberLabel = "3.";
-        document.ByIndex(2)!.NumberLabel = "3.1.";
+        document = NativePolicyStateFactory.Create([
+            (0, "Cha", (int?)null, (int?)null, "3."),
+            (2, "Con", (int?)null, (int?)null, "3.1."),
+        ]);
         var headings = Headings((0, 2), (2, 1));
 
         var fixes = StructuralHierarchyResolver.Apply(headings, document);
@@ -91,7 +93,7 @@ public class StructuralHierarchyResolverTests
     public void Nhanh_duong_dan_so_khong_ghi_de_cap_ma_style_built_in_da_khai()
     {
         var document = Doc((0, "1. Mục một"), (2, "2. Mục hai"));
-        document.ByIndex(2)!.HasBuiltInHeadingStyle = true;
+        document.Paragraphs.Single(p => p.Index == 2).HasBuiltInHeadingStyle = true;
         var headings = Headings((0, 2), (2, 3));
 
         var fixes = StructuralHierarchyResolver.Apply(headings, document);
@@ -100,11 +102,9 @@ public class StructuralHierarchyResolverTests
         Assert.Equal(3, headings.Single(h => h.Index == 2).Level);
     }
 
-    private static SlimDocument Doc(params (int Index, string Text)[] items) => new SlimDocument
-    {
-        FileName = "x.docx", SourcePath = "x.docx",
-        Paragraphs = items.Select(x => new SlimParagraph { Index = x.Index, Text = x.Text }).ToList(),
-    }.Build();
+    private static DocxHeaderExtractor.Core.Application.Policy.DocxPolicyState Doc(
+        params (int Index, string Text)[] items) =>
+        NativePolicyStateFactory.Create(items.Select(x => (x.Index, x.Text, (int?)null, (int?)null)));
 
     private static List<HeadingRecord> Headings(params (int Index, int Level)[] items) =>
         items.Select(x => new HeadingRecord { Index = x.Index, Level = x.Level, Text = "" }).ToList();

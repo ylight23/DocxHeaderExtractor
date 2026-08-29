@@ -10,7 +10,7 @@ namespace DocxHeaderExtractor.Core.OpenXmlLayer;
 
 /// <summary>
 /// Reads observed DOCX facts directly from OpenXML. This adapter deliberately does not construct
-/// SlimParagraph or any candidate/policy/demotion state.
+/// candidate/policy/demotion state.
 /// </summary>
 public sealed class OpenXmlDocumentSource : IDocumentSource
 {

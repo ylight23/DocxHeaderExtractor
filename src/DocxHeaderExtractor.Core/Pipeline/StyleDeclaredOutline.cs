@@ -39,13 +39,6 @@ public static class StyleDeclaredOutline
     /// liệu, không phải lỗi.
     /// </para>
     /// </summary>
-    public static int LevelOf(SlimParagraph paragraph)
-    {
-        if (TypedNumber.Match(paragraph.Text ?? "") is { Success: true } m)
-            return Math.Clamp(m.Groups[1].Value.Count(c => c == '.') + 2, 1, 9);
-        return paragraph.NumberingId is not null ? 2 : 1;
-    }
-
     /// <summary>Chú thích hình/bảng — luật X2 của spec §5.1, loại bất kể style.</summary>
     private static readonly Regex Caption = new(
         @"^\s*(hình(\s*ảnh|\s*vẽ)?|ảnh|bảng|biểu\s*đồ|sơ\s*đồ|đồ\s*thị|figure|fig|table|chart)\s*\d",
@@ -98,12 +91,6 @@ public static class StyleDeclaredOutline
     /// báo cáo này, style đưa vào 10 mục bìa/danh mục và làm vỡ cây ở 6 chỗ.
     /// </para>
     /// </summary>
-    public static List<HeadingRecord> BuildFromNumbering(SlimDocument document)
-    {
-        ArgumentNullException.ThrowIfNull(document);
-        return BuildFromNumberingCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray());
-    }
-
     /// <summary>Danh sách phải có bấy nhiêu mục thì tỉ lệ mới có nghĩa.</summary>
     private const int MinimumListItems = 3;
 
@@ -127,9 +114,6 @@ public static class StyleDeclaredOutline
 
     /// <summary>Trung bình độ dài để một danh sách được coi là danh sách ĐỀ MỤC, không phải nội dung.</summary>
     private const int HeadingTextMaxLength = 90;
-
-    public static List<HeadingRecord> Build(SlimDocument document)
-        => BuildCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray());
 
     private static List<HeadingRecord> BuildCore(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
@@ -261,12 +245,6 @@ public static class StyleDeclaredOutline
         }
 
         return result;
-    }
-
-    public static List<HeadingRecord> BuildFromOutlineLevel(SlimDocument document)
-    {
-        ArgumentNullException.ThrowIfNull(document);
-        return BuildFromOutlineLevelCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray());
     }
 
     public static List<HeadingRecord> BuildFromOutlineLevel(IReadOnlyList<IPolicyParagraph> paragraphs)

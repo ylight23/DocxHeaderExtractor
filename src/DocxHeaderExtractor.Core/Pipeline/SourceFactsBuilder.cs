@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -14,7 +15,7 @@ public static class SourceFactsBuilder
     private static readonly Regex Alpha = new(
         @"^\s*(?<value>\p{L})\s*[\.)](?=\s*\S)", RegexOptions.Compiled);
 
-    public static SourceFacts FromParagraph(SlimParagraph paragraph)
+    public static SourceFacts FromParagraph(IPolicyParagraph paragraph)
     {
         var observed = new List<ObservedEvidence>();
         if (paragraph.HasBuiltInHeadingStyle)
@@ -35,8 +36,9 @@ public static class SourceFactsBuilder
             observed.Add(new(ObservedEvidenceKind.PageBreakBefore, "true", EvidenceOrigin.DocxParser));
         if (paragraph.KeepNext)
             observed.Add(new(ObservedEvidenceKind.KeepNext, "true", EvidenceOrigin.DocxParser));
-        if (paragraph.LineBreakOffsets.Count > 0)
-            observed.Add(new(ObservedEvidenceKind.LineBreak, string.Join(',', paragraph.LineBreakOffsets), EvidenceOrigin.DocxParser));
+        var lineBreakOffsets = (paragraph as DocxPolicyParagraph)?.Source.LineBreakOffsets ?? [];
+        if (lineBreakOffsets.Count > 0)
+            observed.Add(new(ObservedEvidenceKind.LineBreak, string.Join(',', lineBreakOffsets), EvidenceOrigin.DocxParser));
 
         var marker = ParseMarker(paragraph);
         if (marker is not null)
@@ -52,14 +54,14 @@ public static class SourceFactsBuilder
                 SourceType = "docx",
                 ParagraphId = paragraph.StableId,
                 ParagraphIndex = paragraph.Index,
-                SourceSegments = paragraph.SourceSegments,
+                SourceSegments = paragraph is DocxPolicyParagraph native ? native.Source.SourceSegments : [],
             },
             Marker = marker,
             ObservedEvidence = observed,
         };
     }
 
-    public static MarkerFacts? ParseMarker(SlimParagraph paragraph)
+    public static MarkerFacts? ParseMarker(IPolicyParagraph paragraph)
     {
         if (paragraph.NumberingId is { } numId && paragraph.NumberingLevel is { } ilvl)
             return new MarkerFacts

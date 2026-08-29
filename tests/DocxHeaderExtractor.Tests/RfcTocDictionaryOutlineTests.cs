@@ -40,24 +40,15 @@ public sealed class RfcTocDictionaryOutlineTests
     [Fact]
     public void Toc_dictionary_tu_loai_khi_chi_co_than_bai_nhieu_so_muc()
     {
-        var paragraphs = Enumerable.Range(0, 36)
-            .Select(i => new SlimParagraph
-            {
-                Index = i,
-                StableId = $"p[{i}]",
-                Text = $"{i + 1}. Heading {i + 1} This paragraph references 1. Alpha 2. Beta 3. Gamma in prose.",
-                FontSizePt = 12,
-            })
-            .ToList();
-        var slim = new SlimDocument
-        {
-            FileName = "no-toc.docx",
-            SourcePath = "no-toc.docx",
-            Paragraphs = paragraphs,
-        }.Build();
+        var state = NativePolicyStateFactory.Create(
+            Enumerable.Range(0, 36).Select(i =>
+                (i,
+                 $"{i + 1}. Heading {i + 1} This paragraph references 1. Alpha 2. Beta 3. Gamma in prose.",
+                 (int?)null,
+                 (int?)null)));
 
         var result = RfcTocDictionaryOutline.Analyze(
-            PolicyStateFixture.FromSlim(slim).Paragraphs.Cast<IPolicyParagraph>().ToArray());
+            state.Paragraphs.Cast<IPolicyParagraph>().ToArray());
 
         Assert.False(result.Accepted);
         Assert.Empty(result.Headings);

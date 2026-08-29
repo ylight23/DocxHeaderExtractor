@@ -17,19 +17,15 @@ internal static class DocumentStructureEvidence
         PdfBookmarkOutline.Basis,
         PdfTaggedEvidenceOutline.Basis,
         PartSectionOutline.Basis,
-        FinancialStatementsTocOutline.Basis,
     ];
-
-    public static bool HasNativeSemanticStructure(SlimDocument document) =>
-        document.Paragraphs.Any(p =>
-            p.OutlineLevel is not null ||
-            p.HasBuiltInHeadingStyle ||
-            p.NumberingStyleLevel is not null ||
-            p.NumberingId is not null);
 
     public static bool HasNativeSemanticStructure(DocxPolicyState policyState) =>
         policyState.Paragraphs.Any(p => p.OutlineLevel is not null ||
             p.TrustedHeadingStyle || p.NumberingStyleHeadingLevel is not null || p.NumberingId is not null);
+
+    public static bool HasNativeSemanticStructure(IReadOnlyList<IPolicyParagraph> paragraphs) =>
+        paragraphs.Any(p => p.OutlineLevel is not null ||
+            p.HasBuiltInHeadingStyle || p.NumberingStyleLevel is not null || p.NumberingId is not null);
 
     /// <summary>
     /// A table of contents supplied by the document is semantic evidence even when the conversion

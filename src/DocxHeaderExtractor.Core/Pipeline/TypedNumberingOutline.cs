@@ -47,13 +47,6 @@ public static class TypedNumberingOutline
         @"^\s*(?<marker>\d{1,3}(?:\.\d{1,3}){1,4})\s*\u2022\s*(?<title>[^\d\u2022]{2,120}?)\s+\d{1,4}\s+(?<body>.{12,})$",
         RegexOptions.Compiled);
 
-    public static List<HeadingRecord> Build(SlimDocument document, bool splitMergedParagraphs = true)
-    {
-        ArgumentNullException.ThrowIfNull(document);
-        return BuildCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), splitMergedParagraphs,
-            PartSectionOutline.HasStrongSignal(document));
-    }
-
     /// <summary>Native producer equivalent used by policy diagnostics; no Slim intermediate.</summary>
     public static List<HeadingRecord> Build(IReadOnlyList<IPolicyParagraph> paragraphs, bool splitMergedParagraphs = true)
         => BuildCore(paragraphs, splitMergedParagraphs,
@@ -191,11 +184,11 @@ public static class TypedNumberingOutline
         return tocLike >= 4 && tocLike >= segments.Count * 0.6;
     }
 
-    internal static bool LooksLikeQuantitativeTypedLayout(SlimDocument document)
+    internal static bool LooksLikeQuantitativeTypedLayout(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
         var typed = 0;
         var quantitative = 0;
-        foreach (var p in document.Paragraphs)
+        foreach (var p in paragraphs)
         {
             if (p.Corrupt || p.TableDepth > 0 || p.InTableOfContents || string.IsNullOrWhiteSpace(p.Text)) continue;
             foreach (var seg in ParagraphHeadingSplitter.Segments(StripPageArtifacts(p.Text)))

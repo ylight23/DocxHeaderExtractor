@@ -28,12 +28,6 @@ internal static class PdfTocDictionaryOutline
 
     public static PdfTocDictionaryOutlineResult TryBuild(
         string originalInputPath,
-        SlimDocument slim,
-        DocumentModeReport mode) =>
-        TryBuild(originalInputPath, slim.Paragraphs.Cast<IPolicyParagraph>().ToArray(), mode);
-
-    public static PdfTocDictionaryOutlineResult TryBuild(
-        string originalInputPath,
         IReadOnlyList<IPolicyParagraph> paragraphs,
         DocumentModeReport mode)
     {

@@ -90,7 +90,7 @@ internal static class Program
 
     private static Dictionary<string, object?> ExportDiagnostic(Assembly core, CorpusItem item, string docx, string pdf, string revision)
     {
-        var input = BuildInput(core, docx, legacy: revision.StartsWith("3b35054", StringComparison.OrdinalIgnoreCase));
+        var input = BuildInput(core, docx);
         var runner = core.GetType("DocxHeaderExtractor.Core.Pipeline.DocumentDiagnosticRunner")!;
         var analyze = runner.GetMethods(BindingFlags.Public | BindingFlags.Static).Single(m => m.Name == "Analyze");
         var report = analyze.Invoke(null, [input.Document, input.Mode])!;
@@ -109,8 +109,7 @@ internal static class Program
 
     private static Dictionary<string, object?> ExportPdf(Assembly core, CorpusItem item, string docx, string pdf, string revision)
     {
-        var legacy = revision.StartsWith("a920b2a", StringComparison.OrdinalIgnoreCase);
-        var input = BuildInput(core, docx, legacy);
+        var input = BuildInput(core, docx);
         var layout = core.GetType("DocxHeaderExtractor.Core.Pipeline.PdfLayoutEvidenceOutline")
                      ?? throw new InvalidOperationException("PDF_LAYOUT_TYPE_MISSING");
         var rankingMethod = layout.GetMethod("BuildCandidateRankingAudit", BindingFlags.Public | BindingFlags.Static)
@@ -184,36 +183,24 @@ internal static class Program
         };
     }
 
-    private static InputObjects BuildInput(Assembly core, string docx, bool legacy)
+    private static InputObjects BuildInput(Assembly core, string docx)
     {
-        var models = core.GetType("DocxHeaderExtractor.Core.Models.SlimDocument")!;
         var options = Activator.CreateInstance(core.GetType("DocxHeaderExtractor.Core.OpenXmlLayer.ExtractionOptions")!)!;
-        object document;
-        object mode;
-        if (legacy)
-        {
-            var extractor = Activator.CreateInstance(core.GetType("DocxHeaderExtractor.Core.OpenXmlLayer.DocxSlimExtractor")!, options)!;
-            document = extractor.GetType().GetMethod("Extract")!.Invoke(extractor, [docx])!;
-            mode = Prop(document, "Mode")!;
-        }
-        else
-        {
-            var source = Activator.CreateInstance(core.GetType("DocxHeaderExtractor.Core.OpenXmlLayer.OpenXmlDocumentSource")!, options)!;
-            var sourceDocument = source.GetType().GetMethod("Read")!.Invoke(source, [docx])!;
-            var featuresType = core.GetType("DocxHeaderExtractor.Core.OpenXmlLayer.NumberingStyleFeatures")!;
-            var features = featuresType.GetMethod("FromSourceDocument")!.Invoke(null, [sourceDocument])!;
-            var deriver = Activator.CreateInstance(core.GetType("DocxHeaderExtractor.Core.Application.Features.DocumentFeatureDeriver")!)!;
-            var derived = deriver.GetType().GetMethod("Derive")!.Invoke(deriver, [sourceDocument])!;
-            var builder = core.GetType("DocxHeaderExtractor.Core.Application.Policy.DocxPolicyStateBuilder")!;
-            document = builder.GetMethod("Build")!.Invoke(null, [sourceDocument, features, derived, options])!;
-            var paragraphs = Prop(document, "Paragraphs")!;
-            var policyParagraph = core.GetType("DocxHeaderExtractor.Core.Application.Policy.IPolicyParagraph")!;
-            var array = Array.CreateInstance(policyParagraph, ((System.Collections.IEnumerable)paragraphs).Cast<object>().Count());
-            var index = 0;
-            foreach (var paragraph in (System.Collections.IEnumerable)paragraphs) array.SetValue(paragraph, index++);
-            var classifier = core.GetType("DocxHeaderExtractor.Core.OpenXmlLayer.DocumentModeClassifier")!;
-            mode = classifier.GetMethod("Measure")!.Invoke(null, [array])!;
-        }
+        var source = Activator.CreateInstance(core.GetType("DocxHeaderExtractor.Core.OpenXmlLayer.OpenXmlDocumentSource")!, options)!;
+        var sourceDocument = source.GetType().GetMethod("Read")!.Invoke(source, [docx])!;
+        var featuresType = core.GetType("DocxHeaderExtractor.Core.OpenXmlLayer.NumberingStyleFeatures")!;
+        var features = featuresType.GetMethod("FromSourceDocument")!.Invoke(null, [sourceDocument])!;
+        var deriver = Activator.CreateInstance(core.GetType("DocxHeaderExtractor.Core.Application.Features.DocumentFeatureDeriver")!)!;
+        var derived = deriver.GetType().GetMethod("Derive")!.Invoke(deriver, [sourceDocument])!;
+        var builder = core.GetType("DocxHeaderExtractor.Core.Application.Policy.DocxPolicyStateBuilder")!;
+        var document = builder.GetMethod("Build")!.Invoke(null, [sourceDocument, features, derived, options])!;
+        var paragraphs = Prop(document, "Paragraphs")!;
+        var policyParagraph = core.GetType("DocxHeaderExtractor.Core.Application.Policy.IPolicyParagraph")!;
+        var array = Array.CreateInstance(policyParagraph, ((System.Collections.IEnumerable)paragraphs).Cast<object>().Count());
+        var index = 0;
+        foreach (var paragraph in (System.Collections.IEnumerable)paragraphs) array.SetValue(paragraph, index++);
+        var classifier = core.GetType("DocxHeaderExtractor.Core.OpenXmlLayer.DocumentModeClassifier")!;
+        var mode = classifier.GetMethod("Measure")!.Invoke(null, [array])!;
         return new InputObjects(document, mode);
     }
 

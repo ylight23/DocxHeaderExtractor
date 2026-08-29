@@ -115,7 +115,7 @@ public static class HeadingHeuristics
     /// <para>
     /// Không liệt kê từ nào: "Bảng"/"Hình"/"Table"/"Figure" đều chỉ là "một từ 2–12 chữ cái".
     /// Bản thân mẫu này KHÔNG đủ để kết luận — nó phải đi cùng bằng chứng vị trí
-    /// <see cref="SlimParagraph.PrecedesTable"/>.
+    /// source policy paragraph's table-boundary fact.
     /// </para>
     /// </summary>
     private static readonly Regex ObjectLabelPrefixRx = new(
@@ -155,7 +155,7 @@ public static class HeadingHeuristics
     public static bool EndsLikeSentence(string text) => SentenceEndRx.IsMatch(text);
 
     /// <summary>
-    /// Gán <see cref="SlimParagraph.Role"/>, <see cref="SlimParagraph.GuessedLevel"/> và điểm số.
+    /// Gán role, guessed level và điểm số cho policy paragraph.
     /// </summary>
     /// <param name="trustStyleSelection">
     /// Cho phép style built-in thoát sớm với <c>Score = 1.0</c>. Đặt false khi

@@ -43,8 +43,7 @@ public class CongKhongDuocChanLuatDeterministicTests
     public void Moi_bo_dung_deterministic_deu_duoc_cong_dang_ky(string type, string basis)
     {
         Assert.True(
-            PrecisionAcceptanceGate.IsDeterministicDeclaredBasis(basis) ||
-            basis == OoxmlStyleAutoAssign.Basis,
+            PrecisionAcceptanceGate.IsDeterministicDeclaredBasis(basis),
             $"{type}.Basis = \"{basis}\" chưa được đăng ký ở PrecisionAcceptanceGate. " +
             "Mọi mục của bộ dựng này sẽ bị hạ khỏi tự nhận dù có bằng chứng cấu trúc.");
     }
