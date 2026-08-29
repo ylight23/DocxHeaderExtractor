@@ -68,9 +68,15 @@ public sealed class DocxPolicyParagraph : IPolicyParagraph
     public string? StyleName => Style.StyleName;
     public bool Bold => Style.Bold;
     public bool Italic => Style.Italic;
+    public bool Underline => Style.Underline;
+    public bool AllCaps => Style.AllCaps;
     public double? FontSizePt => Style.FontSizePt;
+    public string? Alignment => Style.Alignment;
+    public bool KeepNext => Source.Layout.KeepNext;
+    public bool PageBreakBefore => Source.Layout.PageBreakBefore;
     public int? NumberingId => Numbering.NumberingId;
     public string? NumberingFormat => Numbering.NumberingFormat;
+    public string? NumberLabel => Numbering.NumberLabel;
     public bool HasBuiltInHeadingStyle
     {
         get => TrustedHeadingStyle;

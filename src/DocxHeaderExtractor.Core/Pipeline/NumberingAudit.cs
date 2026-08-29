@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.Core.Application.Policy;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -486,6 +487,11 @@ public static class NumberingAudit
     public static string TextWithNumberLabel(SlimParagraph? paragraph, string fallbackText) =>
         paragraph?.NumberLabel is { Length: > 0 } label
             ? label + " " + (paragraph.Text ?? fallbackText)
+            : paragraph?.Text ?? fallbackText;
+
+    public static string TextWithNumberLabel(IPolicyParagraph? paragraph, string fallbackText) =>
+        paragraph?.NumberLabel is { Length: > 0 } label
+            ? label + " " + paragraph.Text
             : paragraph?.Text ?? fallbackText;
 
     /// <summary>

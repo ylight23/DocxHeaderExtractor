@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.Core.Pipeline;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Application.Policy;
 
 namespace DocxHeaderExtractor.Core.OpenXmlLayer;
 
@@ -10,7 +11,7 @@ public static class StyleTrustAudit
     /// tiên vì vế "trông không phải đề mục" dùng lại đúng những luật hình dạng đã có ở đó — chú
     /// thích đối tượng, dòng mục lục, gạch đầu dòng — thay vì dựng một bộ luật thứ hai đi lệch dần.
     /// </summary>
-    public static StyleTrust Measure(IReadOnlyList<SlimParagraph> paragraphs)
+    public static StyleTrust Measure(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
         var nonEmpty = paragraphs.Count(p => p.Role != ParagraphRole.Empty);
         var styled = paragraphs.Where(p => HeadingHeuristics.BuiltInLevel(p) is not null).ToList();
@@ -52,7 +53,7 @@ public static class StyleTrustAudit
     /// Đoạn mang style Heading nhưng mọi dấu hiệu khác nói nó không phải đề mục. Cố ý CHỈ dùng tín
     /// hiệu cấu trúc/hình dạng, không dùng một từ tiếng Việt nào — cùng kỷ luật §9.
     /// </summary>
-    private static bool LooksNothingLikeHeading(SlimParagraph p) =>
+    private static bool LooksNothingLikeHeading(IPolicyParagraph p) =>
         p.InTableOfContents
         || p.TableDepth > 0
         || HeadingHeuristics.IsObjectCaption(p)
