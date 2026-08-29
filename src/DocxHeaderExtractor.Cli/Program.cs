@@ -959,6 +959,16 @@ static int RunPdfBookmarks(CommandLineOptions o)
     return 0;
 }
 
+static DocxPolicyState BuildPolicyState(string path, ExtractionOptions options)
+{
+    var source = new OpenXmlDocumentSource().Read(path);
+    var features = NumberingStyleFeatures.FromSourceDocument(source);
+    var built = DocxPolicyStateBuilder.Build(source, features,
+        new DocumentFeatureDeriver().Derive(source), options);
+    return new DocxPolicyState(source, features, built.DerivedFeatures, built.Paragraphs,
+        built.StyleTrust, built.Mode);
+}
+
 static async Task<int> RunPdfVisualProbeAsync(CommandLineOptions o, CancellationToken ct)
 {
     var files = ExpandCalibrationInputs(o.Inputs);
@@ -1365,6 +1375,7 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
         }
 
         var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var policyState = BuildPolicyState(file, o.Pipeline.Extraction);
         var rawKey = sourceKeys.Length == 1 ? AnswerKey.Load(sourceKeys[0]) : AnswerKey.Parse("");
         var sourceDocumentSha256 = FileSha256(file);
         var goldKeySha256 = sourceKeys.Length == 1 ? FileSha256(sourceKeys[0]) : null;
@@ -1381,7 +1392,7 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
 
         var analystBudget = o.PdfStageAllCandidates ? 0 : o.PdfStageAnalystBlocks;
         var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
-            file, slim, analyst, analystBudget, o.PdfStageWideCandidates,
+            file, policyState, analyst, analystBudget, o.PdfStageWideCandidates,
             o.PdfStageSupplementCandidates, visualAnalyst, o.VlmDpi, o.PdfStageVisualRegions, o.PdfStageVisualProducer,
             o.PdfStageVisualScheduler, ct, semanticLaneOptions, o.PdfStageCheckpointPath, o.PdfStageResume,
             o.PdfStageVisualConcurrency, o.PdfStageSemanticHierarchy);
@@ -1689,9 +1700,10 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
     {
         if (!o.Quiet) Console.Error.WriteLine($"» PDF hierarchy facts: {Path.GetFileName(file)}");
         var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var policyState = BuildPolicyState(file, o.Pipeline.Extraction);
         // Visual analyst stays out: M8.1a freezes the deterministic semantic route only.
         var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
-            file, slim, analyst, analystBudget, o.PdfStageWideCandidates, o.PdfStageSupplementCandidates,
+            file, policyState, analyst, analystBudget, o.PdfStageWideCandidates, o.PdfStageSupplementCandidates,
             null, o.VlmDpi, 0, null, false, ct, semanticLaneOptions, o.PdfStageCheckpointPath, o.PdfStageResume, o.PdfStageVisualConcurrency,
             o.PdfStageSemanticHierarchy);
         if (result.Audit is not { } audit)

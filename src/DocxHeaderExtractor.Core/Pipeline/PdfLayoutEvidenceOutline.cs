@@ -280,23 +280,12 @@ public static class PdfLayoutEvidenceOutline
 
     private static string Sha256(string text) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text))).ToLowerInvariant();
 
-    private static DocxPolicyState BuildPolicyState(SlimDocument document)
+    public static PdfTextbookOutlineResult TryBuild(string originalInputPath, DocxPolicyState policyState)
     {
-        var source = DocxSourceFactsBuilder.Build(document.SourcePath, document.Paragraphs,
-            document.PageHeaders, document.PageFooters);
-        var features = NumberingStyleFeatures.FromSourceDocument(source);
-        var built = DocxPolicyStateBuilder.Build(source, features,
-            new DocumentFeatureDeriver().Derive(source), new ExtractionOptions());
-        return new DocxPolicyState(source, features, built.DerivedFeatures, built.Paragraphs,
-            document.StyleTrust, document.Mode);
-    }
-
-    public static PdfTextbookOutlineResult TryBuild(string originalInputPath, SlimDocument slim)
-    {
-        var context = TryBuildContext(originalInputPath, BuildPolicyState(slim), out var reason);
+        var context = TryBuildContext(originalInputPath, policyState, out var reason);
         if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
 
-        var alignment = AlignToDocx(context.Candidates, slim, context.Profile, Basis);
+        var alignment = AlignToDocx(context.Candidates, policyState, context.Profile, Basis);
         if (alignment.Headings.Count < Math.Max(3, (int)Math.Ceiling(context.Candidates.Count * 0.65)))
             return PdfTextbookOutlineResult.NotApplicable($"low-docx-alignment:{alignment.Headings.Count}/{context.Candidates.Count}");
 
@@ -312,11 +301,11 @@ public static class PdfLayoutEvidenceOutline
     /// </summary>
     public static async Task<PdfTextbookOutlineResult> TryBuildWithAnalystAsync(
         string originalInputPath,
-        SlimDocument slim,
+        DocxPolicyState policyState,
         IHeaderClassifier analyst,
         CancellationToken ct = default)
     {
-        var context = TryBuildContext(originalInputPath, BuildPolicyState(slim), out var reason);
+        var context = TryBuildContext(originalInputPath, policyState, out var reason);
         if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
 
         var selection = SelectAnalystCandidates(context.Candidates, MaximumAnalystBlocks);
@@ -335,7 +324,7 @@ public static class PdfLayoutEvidenceOutline
         if (accepted.Length < 3)
             return PdfTextbookOutlineResult.NotApplicable($"analyst-grounded-too-few:{accepted.Length}/{candidates.Count}");
 
-        var alignment = AlignToDocx(accepted, slim, context.Profile, AnalystBasis);
+        var alignment = AlignToDocx(accepted, policyState, context.Profile, AnalystBasis);
         if (alignment.Headings.Count < Math.Max(3, (int)Math.Ceiling(accepted.Length * 0.65)))
             return PdfTextbookOutlineResult.NotApplicable($"analyst-low-docx-alignment:{alignment.Headings.Count}/{accepted.Length}");
 
@@ -564,7 +553,7 @@ public static class PdfLayoutEvidenceOutline
     /// </summary>
     public static Task<PdfTextbookOutlineResult> TryBuildBroadAuditWithAnalystAsync(
         string originalInputPath,
-        SlimDocument slim,
+        DocxPolicyState policyState,
         IHeaderClassifier analyst,
         int maximumAnalystBlocks = 0,
         bool includeAllVisualStyles = false,
@@ -581,7 +570,7 @@ public static class PdfLayoutEvidenceOutline
         int visualMaxConcurrency = 1,
         bool includeSemanticHierarchyFallback = true) =>
         TryBuildBroadAuditWithAnalystCoreAsync(
-            originalInputPath, BuildPolicyState(slim), analyst, maximumAnalystBlocks, includeAllVisualStyles,
+            originalInputPath, policyState, analyst, maximumAnalystBlocks, includeAllVisualStyles,
             includeSupplementCandidates, visualAnalyst, visualDpi, maximumVisualRegions, visualProducer,
             scheduleVisualRegions, ct, semanticLaneOptions, checkpointPath, resume, visualMaxConcurrency,
             includeSemanticHierarchyFallback, null);
@@ -1452,24 +1441,6 @@ public static class PdfLayoutEvidenceOutline
         List<PdfDocxCanonicalParagraph>? haystacks = null,
         IReadOnlyDictionary<string, TextOffsetSpan?>? headingSpans = null) =>
         AlignToDocx(candidates, policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(), profile,
-            confidenceBasis, trace, haystacks, headingSpans);
-
-    private static PdfLayoutAlignmentResult AlignToDocx(
-        IReadOnlyList<PdfSemanticBlock> candidates,
-        SlimDocument slim,
-        PdfStyleClusterProfile profile,
-        string confidenceBasis) =>
-        AlignToDocx(candidates, slim.Paragraphs.Cast<IPolicyParagraph>().ToArray(), profile, confidenceBasis, trace: null);
-
-    private static PdfLayoutAlignmentResult AlignToDocx(
-        IReadOnlyList<PdfSemanticBlock> candidates,
-        SlimDocument slim,
-        PdfStyleClusterProfile profile,
-        string confidenceBasis,
-        List<PdfDocxAlignmentTrace>? trace,
-        List<PdfDocxCanonicalParagraph>? haystacks = null,
-        IReadOnlyDictionary<string, TextOffsetSpan?>? headingSpans = null) =>
-        AlignToDocx(candidates, slim.Paragraphs.Cast<IPolicyParagraph>().ToArray(), profile,
             confidenceBasis, trace, haystacks, headingSpans);
 
     /// <summary>

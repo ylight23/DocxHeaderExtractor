@@ -576,7 +576,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             // the old route instead of the requested PDF-first contract.
             var pdfFirstValidatedFallback = _options.PdfFirstValidatedFallback && !_options.DisableLlm
                 ? await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
-                    inputPath, slim, await GetModelAsync(ct), maximumAnalystBlocks: _options.PdfFirstAnalystBlocks,
+                    inputPath, diagnosticPolicy, await GetModelAsync(ct), maximumAnalystBlocks: _options.PdfFirstAnalystBlocks,
                     includeAllVisualStyles: true, includeSupplementCandidates: true, ct: ct)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
             if (pdfFirstValidatedFallback.Headings.Count > 0)
@@ -585,7 +585,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                 Log($"PDF-first validated: bỏ qua ({pdfFirstValidatedFallback.Reason}).");
 
             var pdfLayoutFallback = preferPdfEvidence && pdfTocFallback.Headings.Count == 0 && pdfTaggedFallback.Headings.Count == 0 && pdfFirstValidatedFallback.Headings.Count == 0 && _options.PdfLayoutEvidenceFallback
-                ? PdfLayoutEvidenceOutline.TryBuild(inputPath, slim)
+                ? PdfLayoutEvidenceOutline.TryBuild(inputPath, diagnosticPolicy)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
             if (pdfLayoutFallback.Headings.Count > 0)
                 Log($"PDF layout evidence: dùng {pdfLayoutFallback.Headings.Count} heading từ baseline/cụm/block ({pdfLayoutFallback.Reason}).");
@@ -596,7 +596,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
                                            pdfLayoutFallback.Headings.Count == 0 &&
                                            _options.PdfLayoutAnalystFallback && !_options.DisableLlm
                 ? await PdfLayoutEvidenceOutline.TryBuildWithAnalystAsync(
-                    inputPath, slim, await GetModelAsync(ct), ct)
+                    inputPath, diagnosticPolicy, await GetModelAsync(ct), ct)
                 : PdfTextbookOutlineResult.NotApplicable("disabled");
             if (pdfLayoutAnalystFallback.Headings.Count > 0)
                 Log($"PDF layout analyst: dùng {pdfLayoutAnalystFallback.Headings.Count} heading đã grounding block ({pdfLayoutAnalystFallback.Reason}).");
@@ -978,6 +978,12 @@ public sealed class HeaderExtractionPipeline : IDisposable
 
         var analyst = await GetModelAsync(ct);
         var siblingPdf = PdfTextbookOutline.FindSiblingPdf(inputPath);
+        var authoritySource = new OpenXmlDocumentSource().Read(inputPath);
+        var authorityFeatures = NumberingStyleFeatures.FromSourceDocument(authoritySource);
+        var authorityBuilt = DocxPolicyStateBuilder.Build(authoritySource, authorityFeatures,
+            new DocumentFeatureDeriver().Derive(authoritySource), _options.Extraction);
+        var authorityPolicy = new DocxPolicyState(authoritySource, authorityFeatures,
+            authorityBuilt.DerivedFeatures, authorityBuilt.Paragraphs, authorityBuilt.StyleTrust, authorityBuilt.Mode);
         IReadOnlyList<HeadingRecord> rawHeadings;
         RouteExecutionAudit? audit;
         string reason;
@@ -987,7 +993,7 @@ public sealed class HeaderExtractionPipeline : IDisposable
             using IPdfVisualQuestion? visual = CreatePdfFirstVisualAnalyst();
             var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
                 inputPath,
-                slim,
+                authorityPolicy,
                 analyst,
                 maximumAnalystBlocks: _options.PdfFirstAnalystBlocks,
                 includeAllVisualStyles: true,
