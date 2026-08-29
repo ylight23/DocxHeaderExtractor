@@ -49,66 +49,19 @@ public static class TypedNumberingOutline
 
     public static List<HeadingRecord> Build(SlimDocument document, bool splitMergedParagraphs = true)
     {
-        List<HeadingRecord> result = [];
-        var seen = new HashSet<(int Index, string Text)>();
-        var usePartSectionLevels = PartSectionOutline.HasStrongSignal(document);
-
-        // Ngưỡng "nhan đề đã dính thân bài" do CHÍNH tài liệu khai ra — trung vị độ dài các đơn vị
-        // sau khi cắt, nhân một tỉ lệ. Không có hằng số ký tự nào ở đây.
-        var nguong = AdministrativeOutline.NguongNhanDe(
-            document.Paragraphs
-                .Where(x => !x.Corrupt && x.TableDepth == 0 && !x.InTableOfContents)
-                .SelectMany(x => splitMergedParagraphs
-                    ? ParagraphHeadingSplitter.Segments(StripPageArtifacts(x.Text ?? string.Empty))
-                    : [StripPageArtifacts(x.Text ?? string.Empty)]));
-
-        foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
-        {
-            if (p.Corrupt || p.TableDepth > 0 || p.InTableOfContents || string.IsNullOrWhiteSpace(p.Text)) continue;
-            var text = StripPageArtifacts(p.Text);
-            var segments = splitMergedParagraphs
-                ? ParagraphHeadingSplitter.Segments(text)
-                : [text];
-            if (LooksLikeDenseTypedTableOfContents(text, segments)) continue;
-
-            foreach (var seg in segments)
-            {
-                if (LooksLikeTextLayoutPageHeader(seg)) continue;
-                if (NumberingAudit.Parse(seg) is not { } token) continue;
-                if (LooksLikeCaptionLabel(token)) continue;
-                if (HasZeroArabicPathComponent(token, seg)) continue;
-                if (LooksLikeNumericMeasurement(token, seg)) continue;
-                if (LooksLikeQuantitativeAmount(token, seg)) continue;
-                if (LooksLikeQuantitativeTableRow(token, seg)) continue;
-
-                var split = SplitTypedHeadingBody(token, seg, nguong);
-                if (!seen.Add((p.Index, split.Heading))) continue;
-                result.Add(new HeadingRecord
-                {
-                    Index = p.Index,
-                    StableId = p.StableId,
-                    Level = usePartSectionLevels
-                        ? PartSectionOutline.LevelForHeading(split.Heading) ?? Math.Clamp(token.Depth, 1, 9)
-                        : Math.Clamp(token.Depth, 1, 9),
-                    Text = split.Heading,
-                    StyleId = p.StyleId,
-                    Source = HeadingSource.Structure,
-                    Confidence = 1.0,
-                    ConfidenceBasis = "typed_number_depth",
-                    DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
-                    InlineBody = split.Body,
-                    OriginalText = split.Body is null ? null : seg,
-                    HeadingSpan = split.Body is null ? null : split.HeadingSpan,
-                    InlineBodySpan = split.Body is null ? null : split.BodySpan,
-                });
-            }
-        }
-
-        return result;
+        ArgumentNullException.ThrowIfNull(document);
+        return BuildCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), splitMergedParagraphs,
+            PartSectionOutline.HasStrongSignal(document));
     }
 
     /// <summary>Native producer equivalent used by policy diagnostics; no Slim intermediate.</summary>
     public static List<HeadingRecord> Build(IReadOnlyList<IPolicyParagraph> paragraphs, bool splitMergedParagraphs = true)
+        => BuildCore(paragraphs, splitMergedParagraphs, usePartSectionLevels: false);
+
+    private static List<HeadingRecord> BuildCore(
+        IReadOnlyList<IPolicyParagraph> paragraphs,
+        bool splitMergedParagraphs,
+        bool usePartSectionLevels)
     {
         ArgumentNullException.ThrowIfNull(paragraphs);
         var result = new List<HeadingRecord>();
@@ -136,7 +89,10 @@ public static class TypedNumberingOutline
                 result.Add(new HeadingRecord
                 {
                     Index = paragraph.Index, StableId = paragraph.StableId, SourceId = paragraph.StableId,
-                    Level = Math.Clamp(token.Depth, 1, 9), Text = split.Heading, StyleId = paragraph.StyleId,
+                    Level = usePartSectionLevels
+                        ? PartSectionOutline.LevelForHeading(split.Heading) ?? Math.Clamp(token.Depth, 1, 9)
+                        : Math.Clamp(token.Depth, 1, 9),
+                    Text = split.Heading, StyleId = paragraph.StyleId,
                     Source = HeadingSource.Structure, Confidence = 1.0,
                     ConfidenceBasis = "typed_number_depth",
                     DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,

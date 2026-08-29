@@ -1,10 +1,36 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
 public sealed class TypedNumberingOutlineTests
 {
+    [Fact]
+    public void Legacy_and_native_producers_have_identical_output()
+    {
+        var doc = new SlimDocument
+        {
+            FileName = "typed.docx",
+            SourcePath = "typed.docx",
+            Paragraphs =
+            [
+                P(0, "1. Overview"),
+                P(1, "1.1. Requirements Notation"),
+                P(2, "1.2. Syntax Notation"),
+                P(3, "1.2.1. Imported Rules"),
+                P(4, "2. Operation"),
+            ],
+        }.Build();
+
+        var legacy = TypedNumberingOutline.Build(doc);
+        var native = TypedNumberingOutline.Build(
+            doc.Paragraphs.Cast<IPolicyParagraph>().ToArray());
+
+        Assert.Equal(legacy.Count, native.Count);
+        Assert.Equal(legacy.Select(Project), native.Select(Project));
+    }
+
     [Fact]
     public void Cap_lay_truc_tiep_tu_do_sau_marker()
     {
@@ -240,5 +266,11 @@ public sealed class TypedNumberingOutlineTests
         StableId = $"p[{index}]",
         Text = text,
         FontSizePt = 13,
+    };
+
+    private static object Project(HeadingRecord heading) => new
+    {
+        heading.Index, heading.StableId, heading.Text, heading.Level,
+        heading.HeadingSpan, heading.BoundarySource,
     };
 }
