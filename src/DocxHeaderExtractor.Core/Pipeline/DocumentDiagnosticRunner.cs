@@ -55,7 +55,7 @@ public static class DocumentDiagnosticRunner
             paragraphs.Where(p => p.HasBuiltInHeadingStyle && !string.IsNullOrWhiteSpace(p.Text)).ToArray(),
             true, state);
         yield return Candidate("auto:outline-level",
-            paragraphs.Where(p => OutlineEvidenceLevel(p) is not null && !p.InTableOfContents).ToArray(),
+            paragraphs.Where(p => p.IsCandidate && OutlineEvidenceLevel(p) is not null && !p.InTableOfContents).ToArray(),
             false, state);
         yield return Candidate("auto:numbering",
             paragraphs.Where(p => p.NumberingStyleHeadingLevel is >= 1 and <= 9 && !p.InTableOfContents).ToArray(),
@@ -81,7 +81,10 @@ public static class DocumentDiagnosticRunner
             if (paragraph.Corrupt || paragraph.TableDepth > 0 || paragraph.InTableOfContents ||
                 string.IsNullOrWhiteSpace(paragraph.Text)) continue;
 
-            foreach (var segment in ParagraphHeadingSplitter.Segments(paragraph.Text))
+            var segments = ParagraphHeadingSplitter.Segments(paragraph.Text);
+            if (TypedNumberingOutline.LooksLikeDenseTypedTableOfContents(paragraph.Text, segments))
+                continue;
+            foreach (var segment in segments)
             {
                 if (NumberingAudit.Parse(TypedNumberingOutline.StripPageArtifacts(segment)) is not { } token)
                     continue;
