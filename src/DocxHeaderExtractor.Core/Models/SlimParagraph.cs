@@ -38,7 +38,7 @@ public sealed record SlimSourceSegment(int Start, int End, int RunIndex, int Raw
 /// <summary>
 /// Một đoạn văn đã được rút gọn: chỉ giữ những thuộc tính có ích cho việc nhận diện tiêu đề.
 /// </summary>
-public sealed class SlimParagraph
+public sealed class SlimParagraph : DocxHeaderExtractor.Core.Application.Policy.IPolicyParagraph
 {
     /// <summary>Chỉ số đoạn theo thứ tự tài liệu (ổn định, dùng làm khoá khi LLM trả kết quả).</summary>
     public required int Index { get; init; }

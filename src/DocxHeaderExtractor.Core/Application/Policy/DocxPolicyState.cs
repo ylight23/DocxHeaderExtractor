@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.Core.Application.Features;
 
 namespace DocxHeaderExtractor.Core.Application.Policy;
 
@@ -35,7 +36,7 @@ public sealed class DocxPolicyState
 }
 
 /// <summary>Mutable deterministic role/score state paired with one source paragraph.</summary>
-public sealed class DocxPolicyParagraph
+public sealed class DocxPolicyParagraph : IPolicyParagraph
 {
     public required SourceParagraph Source { get; init; }
     public required ParagraphNumberingFeatures Numbering { get; init; }
@@ -44,6 +45,11 @@ public sealed class DocxPolicyParagraph
     public bool Corrupt { get; set; }
     public bool TrustedHeadingStyle { get; set; }
     public int? NumberingStyleHeadingLevel { get; set; }
+    public int? NumberingStyleLevel
+    {
+        get => NumberingStyleHeadingLevel;
+        set => NumberingStyleHeadingLevel = value;
+    }
     public bool InTableOfContents { get; set; }
     public bool PrecedesTableOfContents { get; set; }
     public bool PrecedesTable { get; set; }
@@ -54,6 +60,7 @@ public sealed class DocxPolicyParagraph
 
     public int Index => Source.SourceOrdinal;
     public string Text => Source.Text;
+    public bool InContentControl => Source.Layout.InContentControl;
     public bool IsCandidate => Role is ParagraphRole.StyledHeading or ParagraphRole.HeadingCandidate;
     public int TableDepth => Source.Layout.TableDepth;
     public int? OutlineLevel => Style.OutlineLevel;
@@ -61,6 +68,16 @@ public sealed class DocxPolicyParagraph
     public string? StyleName => Style.StyleName;
     public bool Bold => Style.Bold;
     public bool Italic => Style.Italic;
+    public double? FontSizePt => Style.FontSizePt;
+    public int? NumberingId => Numbering.NumberingId;
+    public string? NumberingFormat => Numbering.NumberingFormat;
+    public bool HasBuiltInHeadingStyle
+    {
+        get => TrustedHeadingStyle;
+        set => TrustedHeadingStyle = value;
+    }
     public bool HasNumbering => Numbering.NumberingId is not null || !string.IsNullOrWhiteSpace(Numbering.NumberLabel);
     public bool HasStructuralNumbering => Numbering.NumberingId is not null;
+    public int? NumberingLevel => Numbering.NumberingLevel;
+    public int? NumberingDepth => Numbering.NumberingLevel is { } level ? level + 1 : null;
 }
