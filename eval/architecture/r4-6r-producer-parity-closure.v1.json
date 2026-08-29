@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r4_6r_producer_parity_closure",
+  "task": "R4-6R",
+  "diagnosticBaselineRevision": "3b350543d3f6b88d074553915169d84587fecf00",
+  "pdfBaselineRevision": "a920b2adfc0a7e6caa8eea3c2d93fb63067b530c",
+  "initialNativeBehaviorRevision": "9b8a91bd75966d86eecbf32648c572d3ff0d57da",
+  "measurementToolRevision": "e5bfda4e70976a623a169909ed48a056bb97ad9d",
+  "behaviorFixExecutionRevision": "dfe9c5ff4f3b96d19cd5d49ee97496e372c50927",
+  "producerMigration": {
+    "p1StyleDeclared": "SHARED_NATIVE_CORE",
+    "p2OutlineLevel": "SHARED_NATIVE_CORE",
+    "p3NumberingDeclared": "SHARED_NATIVE_CORE",
+    "p4TypedNumbering": "NATIVE_PARITY_RESTORED",
+    "p5BookTocDictionary": "SHARED_NATIVE_CORE",
+    "p6RfcTocDictionary": "SHARED_NATIVE_CORE",
+    "p7Docling": "RETIRE_AUDIT"
+  },
+  "evidence": {
+    "diagnosticSnapshots": {
+      "baseline": "C:\\r4-snapshots\\diagnostic-baseline-p1p6",
+      "current": "C:\\r4-snapshots\\diagnostic-current-dfe9c5f",
+      "joined": 3,
+      "deltas": 0,
+      "gate": "PASS"
+    },
+    "pdfSnapshots": {
+      "baseline": "C:\\r4-snapshots\\pdf-baseline-p1p6",
+      "current": "C:\\r4-snapshots\\pdf-current-dfe9c5f",
+      "joined": 3,
+      "deltas": 0,
+      "gate": "PASS"
+    },
+    "releaseBuild": { "passed": true, "errors": 0 },
+    "focusedTests": { "passed": 8, "failed": 0, "skipped": 0 },
+    "fullSuiteRun": false,
+    "providerCalls": 0,
+    "unmeasured": 0
+  },
+  "gates": {
+    "p1Delta": 0,
+    "p2Delta": 0,
+    "p3Delta": 0,
+    "p4Delta": 0,
+    "p5Delta": 0,
+    "p6Delta": 0,
+    "diagnosticResultDelta": 0,
+    "pdfCandidateSelectionDelta": 0,
+    "pdfAlignmentTargetDelta": 0,
+    "pdfHeadingSpanDelta": 0,
+    "pdfVisualMappingDelta": 0,
+    "pdfValidatedStructureDelta": 0,
+    "pdfOutputDelta": 0,
+    "expectedChanged": false,
+    "benchmarkExpectedChanged": false
+  },
+  "decision": {
+    "r4_6Structural": "PASS",
+    "r4_6r": "PASS",
+    "r4_6": "PASS",
+    "r4_7": "AUTHORIZED"
+  }
+}

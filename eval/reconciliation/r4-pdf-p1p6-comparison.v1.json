@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r4_behavior_comparison",
+  "mode": "pdf",
+  "corpus": "eval/reconciliation/r4-behavior-corpus.v1.json",
+  "corpusFilesMissing": 0,
+  "corpusHashMismatch": 0,
+  "sameCorpusAllRevisions": true,
+  "baselineSnapshots": "C:\\r4-snapshots\\pdf-baseline-p1p6",
+  "currentSnapshots": "C:\\r4-snapshots\\pdf-current-dfe9c5f",
+  "baselineRevision": "a920b2adfc0a7e6caa8eea3c2d93fb63067b530c",
+  "currentRevision": "dfe9c5ff4f3b96d19cd5d49ee97496e372c50927",
+  "providerCalls": 0,
+  "unmeasured": 0,
+  "joined": 3,
+  "deltas": [],
+  "gate": "PASS"
+}
