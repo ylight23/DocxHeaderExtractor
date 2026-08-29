@@ -93,6 +93,7 @@ public sealed class DocxSlimExtractor
         // hạ quyền ngay dưới đây xoá sạch. Đếm sau thì hạ quyền style không chỉ chuyển quyền cho một
         // chỗ trống (§11.2) mà còn TẮT LUÔN luật lẽ ra tiếp quản: số đếm về 0, chốt không đạt, luật
         // trả về ngay. Đây là lý do StyleTrust "nhận đúng mà kết quả không đổi một chữ số".
+        var structuralMarkers = CountStructuralMarkers(paragraphs);
         if (_options.UseStyleTrust && !styleTrust.SelectionTrusted)
         {
             foreach (var p in paragraphs)
@@ -107,7 +108,6 @@ public sealed class DocxSlimExtractor
             paragraphs,
             sourceForFeatures,
             NumberingStyleFeatures.FromSourceDocument(sourceForFeatures));
-        var structuralMarkers = CountStructuralMarkers(demotionState.Paragraphs);
 
         // Cần IsCandidate nên phải chạy SAU Classify; và chạy TRƯỚC post-classification policy để lượt cộng điểm
         // ngữ cảnh ở đó không kéo ngược dòng bìa vừa hạ lên lại.
@@ -485,6 +485,9 @@ public sealed class DocxSlimExtractor
     /// nhánh đó xoá <see cref="SlimParagraph.HasBuiltInHeadingStyle"/> nên gọi sau sẽ luôn ra 0 trên
     /// đúng những tài liệu cần luật hình dạng nhất.
     /// </summary>
+    private static int CountStructuralMarkers(IReadOnlyList<SlimParagraph> ps) => ps.Count(p =>
+        p.HasBuiltInHeadingStyle || p.NumberingStyleLevel is not null || p.NumberingId is not null);
+
     private static int CountStructuralMarkers(IReadOnlyList<OrderedDemotionParagraph> ps) => ps.Count(p =>
         p.TrustedHeadingStyle || p.NumberingStyleHeadingLevel is not null || p.HasStructuralNumbering);
 
