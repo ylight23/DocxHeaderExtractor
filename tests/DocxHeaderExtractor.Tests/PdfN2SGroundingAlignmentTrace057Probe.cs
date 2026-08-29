@@ -93,7 +93,7 @@ public sealed class PdfN2SGroundingAlignmentTrace057Probe
         var rejectedByCandidate = grounding.Rejected.ToDictionary(r => r.Id, StringComparer.Ordinal);
 
         var slim = new DocxSlimExtractor().Extract(docx);
-        var alignment = PdfLayoutEvidenceOutline.BuildBroadAlignmentForCandidateIds(docx, slim, groundedIds);
+        var alignment = PdfLayoutEvidenceOutline.BuildBroadAlignmentForCandidateIds(docx, PolicyStateFixture.FromSlim(slim), groundedIds);
         var traceByCandidate = alignment.Trace.ToDictionary(t => t.SourceBlockId, StringComparer.Ordinal);
         var emittedIds = alignment.Headings.Select(h => h.SourceId!).ToHashSet(StringComparer.Ordinal);
 

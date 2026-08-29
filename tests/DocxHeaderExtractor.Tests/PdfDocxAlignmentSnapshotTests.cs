@@ -64,7 +64,7 @@ public sealed class PdfDocxAlignmentSnapshotTests
         var docx = Path.Combine(RepositoryRoot(),
             @"todo10_8\heading_corpus_95_word\01_phap_quy\010_Luat_An_ninh_mang_24-2018-QH14.docx");
         if (!File.Exists(docx)) return null;
-        return PdfLayoutEvidenceOutline.BuildDocxAlignmentSnapshot(docx, new DocxSlimExtractor().Extract(docx));
+        return PdfLayoutEvidenceOutline.BuildDocxAlignmentSnapshot(docx, PolicyStateFixture.FromSlim(new DocxSlimExtractor().Extract(docx)));
     }
 
     private static string RepositoryRoot()

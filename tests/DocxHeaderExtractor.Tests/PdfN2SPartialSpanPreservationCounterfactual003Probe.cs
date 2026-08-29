@@ -97,7 +97,7 @@ public sealed class PdfN2SPartialSpanPreservationCounterfactual003Probe
             profile, samples, [], requireLearnedCandidateStyle: false);
         var groundedIds = grounded.Headings.Select(h => h.Id).ToHashSet(StringComparer.Ordinal);
         var slim = new DocxSlimExtractor().Extract(docx);
-        var alignment = PdfLayoutEvidenceOutline.BuildBroadAlignmentForCandidateIds(docx, slim, groundedIds);
+        var alignment = PdfLayoutEvidenceOutline.BuildBroadAlignmentForCandidateIds(docx, PolicyStateFixture.FromSlim(slim), groundedIds);
 
         var bySource = snapshot.Provenance;
         int DecisionRelevantCovered(IEnumerable<string> candidateIds)

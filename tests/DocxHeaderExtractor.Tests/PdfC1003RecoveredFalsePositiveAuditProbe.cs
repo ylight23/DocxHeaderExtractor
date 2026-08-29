@@ -99,7 +99,7 @@ public sealed class PdfC1003RecoveredFalsePositiveAuditProbe
             profile, samples, [], requireLearnedCandidateStyle: false);
         var groundedIds = grounded.Headings.Select(h => h.Id).ToHashSet(StringComparer.Ordinal);
         var slim = new DocxSlimExtractor().Extract(docx);
-        var alignment = PdfLayoutEvidenceOutline.BuildBroadAlignmentForCandidateIds(docx, slim, groundedIds);
+        var alignment = PdfLayoutEvidenceOutline.BuildBroadAlignmentForCandidateIds(docx, PolicyStateFixture.FromSlim(slim), groundedIds);
         var traceByCandidate = alignment.Trace.ToDictionary(t => t.SourceBlockId, StringComparer.Ordinal);
 
         var bySource = snapshot.Provenance;

@@ -20,7 +20,7 @@ public sealed class PdfDocxGroundingAuditProbe
         var docx = Path.Combine(RepositoryRoot(),
             @"todo10_8\heading_corpus_95_word\01_phap_quy\010_Luat_An_ninh_mang_24-2018-QH14.docx");
         var slim = new DocxSlimExtractor().Extract(docx);
-        var snapshot = PdfLayoutEvidenceOutline.BuildDocxAlignmentSnapshot(docx, slim,
+        var snapshot = PdfLayoutEvidenceOutline.BuildDocxAlignmentSnapshot(docx, PolicyStateFixture.FromSlim(slim),
             PdfDocxAlignmentPopulation.RetrievalPopulation);
         var text = slim.Paragraphs.ToDictionary(p => p.Index, p => p.Text ?? "");
 

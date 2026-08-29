@@ -73,7 +73,7 @@ public sealed class PdfN2S057RepresentationAuditProbe
         // matcher's own branch selection.
         var slim = new DocxSlimExtractor().Extract(docx);
         var allCandidateIds = snapshot.CandidateBlocks.Select(b => b.Id).ToHashSet(StringComparer.Ordinal);
-        var alignment = PdfLayoutEvidenceOutline.BuildBroadAlignmentForCandidateIds(docx, slim, allCandidateIds);
+        var alignment = PdfLayoutEvidenceOutline.BuildBroadAlignmentForCandidateIds(docx, PolicyStateFixture.FromSlim(slim), allCandidateIds);
         var haystackTexts = alignment.Haystacks.Select(h => h.CanonicalText).ToArray();
 
         var rows = targets.Select(target =>

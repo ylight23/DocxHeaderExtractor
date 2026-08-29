@@ -110,7 +110,7 @@ public sealed class PdfRound6cDownstreamFirstLossProbe
         var groundedIds = grounded.Headings.Select(item => item.Id).ToHashSet(StringComparer.Ordinal);
         var headingSpans = decisions.Where(item => item.HeadingSpan is not null).ToDictionary(item => item.Id, item => item.HeadingSpan, StringComparer.Ordinal);
         var slim = new DocxSlimExtractor().Extract(file);
-        var alignment = PdfLayoutEvidenceOutline.BuildBroadAlignmentForCandidateIds(file, slim, groundedIds, headingSpans);
+        var alignment = PdfLayoutEvidenceOutline.BuildBroadAlignmentForCandidateIds(file, PolicyStateFixture.FromSlim(slim), groundedIds, headingSpans);
         var emittedIds = alignment.Headings.Select(item => item.SourceId).Where(item => item is not null).Cast<string>().ToHashSet(StringComparer.Ordinal);
         var gold = JsonNode.Parse(File.ReadAllText(Path.Combine(root, document.GoldFile.Replace('/', Path.DirectorySeparatorChar))))!;
         var goldRows = gold["headingOccurrences"]!.AsArray().Where(item => item!["label"]?.GetValue<string>() == "REVIEWED_HEADING").ToArray();

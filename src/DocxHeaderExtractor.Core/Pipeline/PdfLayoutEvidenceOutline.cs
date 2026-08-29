@@ -293,7 +293,7 @@ public static class PdfLayoutEvidenceOutline
 
     public static PdfTextbookOutlineResult TryBuild(string originalInputPath, SlimDocument slim)
     {
-        var context = TryBuildContext(originalInputPath, slim, out var reason);
+        var context = TryBuildContext(originalInputPath, BuildPolicyState(slim), out var reason);
         if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
 
         var alignment = AlignToDocx(context.Candidates, slim, context.Profile, Basis);
@@ -316,7 +316,7 @@ public static class PdfLayoutEvidenceOutline
         IHeaderClassifier analyst,
         CancellationToken ct = default)
     {
-        var context = TryBuildContext(originalInputPath, slim, out var reason);
+        var context = TryBuildContext(originalInputPath, BuildPolicyState(slim), out var reason);
         if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
 
         var selection = SelectAnalystCandidates(context.Candidates, MaximumAnalystBlocks);
@@ -368,25 +368,25 @@ public static class PdfLayoutEvidenceOutline
     /// found its paragraph. Nothing here re-implements matching.
     /// </summary>
     internal static PdfDocxAlignmentSnapshot BuildDocxAlignmentSnapshot(
-        string originalInputPath, SlimDocument slim,
+        string originalInputPath, DocxPolicyState policyState,
         PdfDocxAlignmentPopulation population = PdfDocxAlignmentPopulation.NarrowRoute)
     {
         var context = population == PdfDocxAlignmentPopulation.NarrowRoute
-            ? TryBuildContext(originalInputPath, slim, out var reason)
+            ? TryBuildContext(originalInputPath, policyState, out var reason)
             : TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
                 includeSupplementCandidates: true, out reason);
         if (context is null)
-            return new PdfDocxAlignmentSnapshot(reason, 0, [], [], [], slim);
+            return new PdfDocxAlignmentSnapshot(reason, 0, [], [], [], []);
         var trace = new List<PdfDocxAlignmentTrace>();
         var haystacks = new List<PdfDocxCanonicalParagraph>();
-        var alignment = AlignToDocx(context.Candidates, slim, context.Profile, Basis, trace, haystacks);
+        var alignment = AlignToDocx(context.Candidates, policyState, context.Profile, Basis, trace, haystacks);
         // TryBuild rejects the route below this ratio, so an audit that ignored it could describe an
         // alignment production never uses.
         var status = alignment.Headings.Count < Math.Max(3, (int)Math.Ceiling(context.Candidates.Count * 0.65))
             ? $"low-docx-alignment:{alignment.Headings.Count}/{context.Candidates.Count}"
             : "aligned";
         return new PdfDocxAlignmentSnapshot(status, context.Candidates.Count, alignment.Headings, trace,
-            haystacks, slim);
+            haystacks, haystacks);
     }
 
     /// <summary>
@@ -395,18 +395,18 @@ public static class PdfLayoutEvidenceOutline
     /// what existing, source-grounded decisions would have emitted without reimplementing matching.
     /// </summary>
     internal static PdfDocxAlignmentSnapshot BuildBroadAlignmentForCandidateIds(
-        string originalInputPath, SlimDocument slim, IReadOnlySet<string> candidateIds,
+        string originalInputPath, DocxPolicyState policyState, IReadOnlySet<string> candidateIds,
         IReadOnlyDictionary<string, TextOffsetSpan?>? headingSpans = null)
     {
         var context = TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
             includeSupplementCandidates: true, out var reason);
         if (context is null)
-            return new PdfDocxAlignmentSnapshot(reason, 0, [], [], [], slim);
+            return new PdfDocxAlignmentSnapshot(reason, 0, [], [], [], []);
         var candidates = context.Candidates.Where(candidate => candidateIds.Contains(candidate.Id)).ToArray();
         var trace = new List<PdfDocxAlignmentTrace>();
         var haystacks = new List<PdfDocxCanonicalParagraph>();
-        var alignment = AlignToDocx(candidates, slim, context.Profile, AnalystBasis, trace, haystacks, headingSpans);
-        return new PdfDocxAlignmentSnapshot("aligned", candidates.Length, alignment.Headings, trace, haystacks, slim);
+        var alignment = AlignToDocx(candidates, policyState, context.Profile, AnalystBasis, trace, haystacks, headingSpans);
+        return new PdfDocxAlignmentSnapshot("aligned", candidates.Length, alignment.Headings, trace, haystacks, haystacks);
     }
 
     public static PdfCandidateRankingAudit BuildCandidateRankingAudit(string originalInputPath) =>
@@ -1094,10 +1094,10 @@ public static class PdfLayoutEvidenceOutline
         return selected;
     }
 
-    private static LayoutContext? TryBuildContext(string originalInputPath, SlimDocument slim, out string reason)
+    private static LayoutContext? TryBuildContext(string originalInputPath, DocxPolicyState policyState, out string reason)
     {
         reason = "";
-        if (DocumentStructureEvidence.HasNativeSemanticStructure(slim)) { reason = "docx-structure-present"; return null; }
+        if (DocumentStructureEvidence.HasNativeSemanticStructure(policyState)) { reason = "docx-structure-present"; return null; }
         var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
         if (pdf is null) { reason = "no-pdf"; return null; }
 
@@ -1852,7 +1852,7 @@ internal sealed record PdfDocxAlignmentSnapshot(
     IReadOnlyList<HeadingRecord> Headings,
     IReadOnlyList<PdfDocxAlignmentTrace> Trace,
     IReadOnlyList<PdfDocxCanonicalParagraph> Haystacks,
-    SlimDocument Document);
+    IReadOnlyList<PdfDocxCanonicalParagraph> SourceParagraphs);
 
 /// <summary>A paragraph exactly as the matcher saw it.</summary>
 internal sealed record PdfDocxCanonicalParagraph(int Index, string CanonicalText);
