@@ -73,7 +73,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             var compatibility = extraction.Compatibility;
             var slim = compatibility.ForLegacyCompatibility();
             var mode = DocumentModeClassifier.Measure(policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray());
-            var diagnostics = DocumentDiagnosticRunner.Analyze(slim, mode);
+            var diagnostics = DocumentDiagnosticRunner.Analyze(policyState, mode);
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
             var pdf = PdfTextbookOutline.FindSiblingPdf(inputPath);
             IReadOnlyList<HeadingRecord> rawHeadings;
