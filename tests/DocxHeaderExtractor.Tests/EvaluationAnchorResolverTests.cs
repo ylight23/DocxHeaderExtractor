@@ -47,10 +47,13 @@ public sealed class EvaluationAnchorResolverTests
         Assert.All(result.Entries, entry => Assert.Equal("canonical-title+ordered-occurrence", entry.Method));
     }
 
-    private static SlimParagraph Paragraph(int index, string text) => new()
+    private static SourceParagraph Paragraph(int index, string text) => new()
     {
-        Index = index,
-        StableId = $"body[1]/p[{index}]",
-        Text = text
+        SourceOrdinal = index,
+        SourceId = $"body[1]/p[{index}]",
+        Text = text,
+        Style = new SourceStyleFacts(),
+        Numbering = new SourceNumberingFacts(),
+        Layout = new SourceLayoutFacts(),
     };
 }

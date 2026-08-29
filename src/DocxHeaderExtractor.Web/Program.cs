@@ -277,10 +277,7 @@ app.MapPost("/api/extract", async (
         options.CorrectionMemoryPath = correctionMemory.PathOnDisk;
 
         // Dùng đúng extractor/options như pipeline để bundle review có stable ID khớp tài liệu.
-        var conversion = LegacyDocConverter.EnsureDocx(inputPath);
-        SlimDocument slim;
-        try { slim = new DocxSlimExtractor(options.Extraction).Extract(conversion.Path); }
-        finally { LegacyDocConverter.Cleanup(conversion); }
+        var source = new AuthorityEvaluationSourceReader(options).Read(inputPath).Document;
 
         // Hai backend dùng tài nguyên máy này cần khóa. OpenRouter có thể chạy đồng thời và không
         // được giữ hàng chỉ vì GPU local/LM Studio đang bận.
@@ -372,7 +369,7 @@ app.MapPost("/api/extract", async (
                 type = "result",
                 outline,
                 stats = Stats.From(outline),
-                review = ReviewBundle.Create(outline, slim),
+                review = ReviewBundle.Create(outline, source),
                 agent = new
                 {
                     runId = agentRun.RunId,

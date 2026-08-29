@@ -93,28 +93,15 @@ public static class RepairGateCalibration
             var keyPath = ResolveKeyPath(file, keyIndex);
             if (keyPath is null) continue;
 
-            var conversion = LegacyDocConverter.EnsureDocx(file);
-            SlimDocument slim;
             AnswerKey key;
             HashSet<int> candidateIndexes;
-            try
-            {
-                slim = new DocxSlimExtractor(options.Extraction).Extract(conversion.Path);
-                key = AnswerKey.Load(keyPath).ResolveStableIds(
-                    slim.Paragraphs.ToDictionary(p => p.StableId, p => p.Index));
-                candidateIndexes = options.DisableLlm || !options.ReviewAllParagraphs
-                    ? [.. slim.Candidates.Select(p => p.Index)]
-                    : [.. slim.Paragraphs
-                        .Where(p => p.Role != Models.ParagraphRole.Empty)
-                        .Select(p => p.Index)];
-            }
-            finally
-            {
-                LegacyDocConverter.Cleanup(conversion);
-            }
+            var sourceSnapshot = new AuthorityEvaluationSourceReader(options).Read(file);
+            key = AnswerKey.Load(keyPath).ResolveStableIds(
+                sourceSnapshot.Document.Paragraphs.ToDictionary(p => p.SourceId, p => p.SourceOrdinal));
+            candidateIndexes = [.. sourceSnapshot.CandidateIndexes];
 
-            using var pipeline = new HeaderExtractionPipeline(options);
-            var outline = await pipeline.RunAsync(file, ct);
+            using var repairRunner = new AuthorityRepairOutlineRunner(options);
+            var outline = await repairRunner.RunAsync(file, ct);
             var candidateReport = RepairCandidateRunner.Analyze(outline);
             var validation = RepairValidationGate.Validate(outline, candidateReport);
             var score = Evaluator.Score(Path.GetFileNameWithoutExtension(file), outline, candidateIndexes, key);

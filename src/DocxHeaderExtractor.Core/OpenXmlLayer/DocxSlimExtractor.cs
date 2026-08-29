@@ -94,7 +94,6 @@ public sealed class DocxSlimExtractor
         // chỗ trống (§11.2) mà còn TẮT LUÔN luật lẽ ra tiếp quản: số đếm về 0, chốt không đạt, luật
         // trả về ngay. Đây là lý do StyleTrust "nhận đúng mà kết quả không đổi một chữ số".
         var structuralMarkers = CountStructuralMarkers(paragraphs);
-
         if (_options.UseStyleTrust && !styleTrust.SelectionTrusted)
         {
             foreach (var p in paragraphs)
@@ -105,11 +104,17 @@ public sealed class DocxSlimExtractor
             }
         }
 
+        var demotionState = OrderedDemotionState.Create(
+            paragraphs,
+            sourceForFeatures,
+            NumberingStyleFeatures.FromSourceDocument(sourceForFeatures));
+
         // Cần IsCandidate nên phải chạy SAU Classify; và chạy TRƯỚC post-classification policy để lượt cộng điểm
         // ngữ cảnh ở đó không kéo ngược dòng bìa vừa hạ lên lại.
-        DemoteCoverPageBlock(paragraphs);
-        DemoteInlineEmphasis(paragraphs, structuralMarkers);
-        DemoteRunsWithoutOwnProse(paragraphs, structuralMarkers);
+        DemoteCoverPageBlock(demotionState.Paragraphs);
+        DemoteInlineEmphasis(demotionState.Paragraphs, structuralMarkers);
+        DemoteRunsWithoutOwnProse(demotionState.Paragraphs, structuralMarkers);
+        demotionState.ApplyPolicyStateTo(paragraphs);
         ApplyPostClassificationPolicy(paragraphs, sourceForFeatures, tocFeatures);
 
         var headers = new List<string>();
@@ -480,8 +485,11 @@ public sealed class DocxSlimExtractor
     /// nhánh đó xoá <see cref="SlimParagraph.HasBuiltInHeadingStyle"/> nên gọi sau sẽ luôn ra 0 trên
     /// đúng những tài liệu cần luật hình dạng nhất.
     /// </summary>
-    private static int CountStructuralMarkers(List<SlimParagraph> ps) => ps.Count(p =>
+    private static int CountStructuralMarkers(IReadOnlyList<SlimParagraph> ps) => ps.Count(p =>
         p.HasBuiltInHeadingStyle || p.NumberingStyleLevel is not null || p.NumberingId is not null);
+
+    private static int CountStructuralMarkers(IReadOnlyList<OrderedDemotionParagraph> ps) => ps.Count(p =>
+        p.TrustedHeadingStyle || p.NumberingStyleHeadingLevel is not null || p.HasStructuralNumbering);
 
     /// <summary>
     /// Nhấn mạnh trong THÂN BÀI, không phải đề mục: đậm + nghiêng cùng lúc mà KHÔNG có một dấu hiệu
@@ -503,15 +511,15 @@ public sealed class DocxSlimExtractor
     /// *thiếu* dấu hiệu cấu trúc chỉ mang thông tin khi tài liệu có dùng dấu hiệu đó ở chỗ khác.
     /// </para>
     /// </summary>
-    private static void DemoteInlineEmphasis(List<SlimParagraph> ps, int structuralMarkers)
+    internal static void DemoteInlineEmphasis(IReadOnlyList<OrderedDemotionParagraph> ps, int structuralMarkers)
     {
         if (structuralMarkers < MinStructuralMarkersForEmphasisRule) return;
 
         foreach (var p in ps)
         {
             if (!p.IsCandidate) continue;
-            if (p.HasBuiltInHeadingStyle || p.NumberingId is not null
-                || p.NumberingStyleLevel is not null || p.OutlineLevel is not null) continue;
+            if (p.TrustedHeadingStyle || p.HasStructuralNumbering
+                || p.NumberingStyleHeadingLevel is not null || p.OutlineLevel is not null) continue;
 
             // Hai dạng "không có tuyên bố cấu trúc nào" đều thuộc thân bài, không phải đề mục:
             //   • đậm + nghiêng → câu dẫn liệt kê trong đoạn ("Một là,… / Hai là,…")
@@ -555,18 +563,26 @@ public sealed class DocxSlimExtractor
     /// tường minh — §1); và ứng viên cuối cùng luôn được giữ.
     /// </para>
     /// </summary>
-    private static void DemoteCoverPageBlock(List<SlimParagraph> ps)
+    internal static void DemoteCoverPageBlock(IReadOnlyList<OrderedDemotionParagraph> ps)
     {
-        var firstProse = ps.FindIndex(p =>
-            p.Role != ParagraphRole.Empty && !p.IsCandidate && p.Text.Length >= BodyProseMinLength);
+        var firstProse = -1;
+        for (var i = 0; i < ps.Count; i++)
+        {
+            var p = ps[i];
+            if (p.Role != ParagraphRole.Empty && !p.IsCandidate && p.Text.Length >= BodyProseMinLength)
+            {
+                firstProse = i;
+                break;
+            }
+        }
         if (firstProse < 0) return;
 
-        var block = new List<SlimParagraph>();
+        var block = new List<OrderedDemotionParagraph>();
         for (var i = 0; i < firstProse; i++)
         {
             var p = ps[i];
             if (p.Role == ParagraphRole.Empty || !p.IsCandidate) continue;
-            if (p.HasBuiltInHeadingStyle || p.NumberingId is not null) continue;
+            if (p.TrustedHeadingStyle || p.HasStructuralNumbering) continue;
             block.Add(p);
         }
 
@@ -595,12 +611,12 @@ public sealed class DocxSlimExtractor
     /// không mang thông tin gì.
     /// </para>
     /// </summary>
-    internal static void DemoteRunsWithoutOwnProse(List<SlimParagraph> ps, int structuralMarkers)
+    internal static void DemoteRunsWithoutOwnProse(IReadOnlyList<OrderedDemotionParagraph> ps, int structuralMarkers)
     {
         if (structuralMarkers < MinStructuralMarkersForEmphasisRule) return;
 
         var customStylesUnderOutlineAnchor = OutlineAnchorCustomStyles.Find(ps);
-        var run = new List<SlimParagraph>();
+        var run = new List<OrderedDemotionParagraph>();
         void Flush()
         {
             foreach (var p in run.SkipLast(1))
@@ -641,11 +657,11 @@ public sealed class DocxSlimExtractor
     }
 
     private static bool IsOwnProseRunExempt(
-        SlimParagraph p,
+        OrderedDemotionParagraph p,
         HashSet<string> customStylesUnderOutlineAnchor) =>
-        p.HasBuiltInHeadingStyle ||
-        p.NumberingId is not null ||
-        p.NumberingStyleLevel is not null ||
+        p.TrustedHeadingStyle ||
+        p.HasStructuralNumbering ||
+        p.NumberingStyleHeadingLevel is not null ||
         OutlineAnchorCustomStyles.IsAnchoredCustomStyle(p, customStylesUnderOutlineAnchor);
 
     private static void ApplyPostClassificationPolicy(

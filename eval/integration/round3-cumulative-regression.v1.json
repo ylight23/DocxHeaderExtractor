@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "round3_cumulative_regression",
+  "task": "ROUND3-CUMULATIVE-REGRESSION",
+  "status": "PASS",
+  "initialExecutionRevision": "03e5a0fd29554cab54d01eeb410f3b300ddf0990",
+  "initialResult": {
+    "total": 1338,
+    "passed": 1307,
+    "failed": 31,
+    "skipped": 0
+  },
+  "initialNewFailures": 1,
+  "initialStatus": "BLOCKED_NEW_FAILURE",
+  "regression": {
+    "fqn": "DocxHeaderExtractor.Tests.TrailingBlockTests.Nhan_khoi_chu_ky_mang_style_Heading_van_bi_ha_khi_style_khong_dang_tin",
+    "owner": "LEGACY-5 ordered demotion cutover",
+    "proven": true,
+    "cause": "Structural markers were counted after StyleTrust clearing, so pre-clear built-in heading evidence was lost before ordered demotion rules evaluated document-level structure.",
+    "testExistedInRound2Canonical": true,
+    "testExistedInRound3Legacy6Head": true
+  },
+  "fix": {
+    "revision": "32bb000343361516078f37da63943e5073b678fe",
+    "branch": "round3/regression-1-pretrust-structural-marker",
+    "scopeFiles": 1,
+    "changedFiles": [
+      "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs"
+    ],
+    "testExpectedChanged": false,
+    "failureRebaseAuthorized": false,
+    "legacy9Authorized": false,
+    "providerCalls": 0
+  },
+  "validation": {
+    "singleRegressionFqn": {
+      "beforeFix": "FAIL",
+      "afterFix": "PASS"
+    },
+    "trailingBlockTests": {
+      "status": "PASS",
+      "passed": 2,
+      "failed": 0,
+      "total": 2
+    },
+    "legacyFocusedSuperset": {
+      "status": "PASS",
+      "passed": 61,
+      "failed": 0,
+      "total": 61
+    },
+    "releaseBuild": {
+      "status": "PASS",
+      "errors": 0,
+      "warnings": 160
+    }
+  },
+  "canonicalExecution": {
+    "revision": "32bb000343361516078f37da63943e5073b678fe",
+    "worktree": "C:/DocxHeaderExtractor-round3-fix-fullsuite",
+    "command": "dotnet test tests\\DocxHeaderExtractor.Tests\\DocxHeaderExtractor.Tests.csproj -c Release --no-build --no-restore --logger \"trx;LogFileName=round3-fix-cumulative-full-suite.trx\" --logger \"console;verbosity=minimal\"",
+    "exitCode": 1,
+    "result": {
+      "total": 1338,
+      "passed": 1308,
+      "failed": 30,
+      "skipped": 0,
+      "duration": "00:08:03"
+    },
+    "rawTrxLocalPath": "C:/DocxHeaderExtractor-round3-fix-fullsuite/tests/DocxHeaderExtractor.Tests/TestResults/round3-fix-cumulative-full-suite.trx",
+    "rawTrxSha256": "083E57E41529511EF6781A06EDD770005B481FE6DD1A021E1A20640047226620",
+    "rawTrxPublishPolicy": "DO_NOT_PUSH_RAW_TRX"
+  },
+  "baseline": {
+    "authority": "Round-2 canonical",
+    "failureUniverseArtifact": "eval/verification/canonical-integrated-full-suite.v1.json",
+    "closureArtifact": "eval/integration/int4c-clean-canonical-full-suite/int4c-clean-canonical-full-suite.v1.json",
+    "failureUniverse": 30,
+    "joinMethod": "EXACT_FQN_PLUS_PRESENTATION_INSENSITIVE_NORMALIZED_FAILURE"
+  },
+  "reconciliation": {
+    "stillFailing": 30,
+    "stillFailingSameNormalizedFailure": 30,
+    "resolved": 0,
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0,
+    "failureUniverseFrozen": true,
+    "fullSuiteValidForFreeze": true,
+    "changedFingerprintLedger": [],
+    "newFailureLedger": [],
+    "resolvedLedger": []
+  },
+  "publication": {
+    "canonicalExecutionRevisionMustRemain": "32bb000343361516078f37da63943e5073b678fe",
+    "publicationRevision": "the commit containing this artifact; intentionally later than canonicalExecution.revision"
+  },
+  "providerCalls": 0
+}

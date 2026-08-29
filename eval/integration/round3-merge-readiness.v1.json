@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "round3_merge_readiness",
+  "task": "ROUND3-MERGE-READINESS",
+  "status": "PASS",
+  "mainBaseRevision": "e9b4c61a7fe7c34419352812f5d1216d06d81736",
+  "publicationHead": "9253c08357a23266b5895ebfdf3f10a976dea5c4",
+  "canonicalExecutionRevision": "32bb000343361516078f37da63943e5073b678fe",
+  "ancestry": {
+    "aheadBy": 16,
+    "behindBy": 0,
+    "mergeBaseExactMain": true,
+    "publicationBranch": "round3/regression-1-pretrust-structural-marker"
+  },
+  "authority": {
+    "round3CumulativeRegression": "PASS",
+    "failureUniverseFrozen": true,
+    "fullSuiteValidForFreeze": true,
+    "legacy9": "PASS_REMOVAL_READINESS_AUDIT",
+    "physicalSlimRetirementReady": false,
+    "benchmarkExpectedChanged": false,
+    "providerCalls": 0
+  },
+  "deltaFromCanonicalExecution": {
+    "sourceFiles": 0,
+    "testFiles": 0,
+    "allFiles": [
+      "docs/architecture/final-legacy-removal-readiness.md",
+      "docs/integration/round3-cumulative-regression.md",
+      "docs/integration/round3-merge-readiness.md",
+      "eval/architecture/final-legacy-removal-readiness.v1.json",
+      "eval/integration/round3-cumulative-regression.v1.json",
+      "eval/integration/round3-merge-readiness.v1.json"
+    ]
+  },
+  "runtime": {
+    "rawRuntimeArtifactsTracked": 0,
+    "rawTrxPublishPolicy": "DO_NOT_PUSH_RAW_TRX"
+  },
+  "postMergeContract": {
+    "mergeStrategy": "NO_FF",
+    "postMergeSrcTestDelta": 0,
+    "postMergeTreeDelta": 0,
+    "fullSuiteRerunRequired": false
+  },
+  "decision": "ROUND3_MERGE_READINESS = PASS",
+  "revisionSemantics": {
+    "canonicalExecutionRemains": "32bb000343361516078f37da63943e5073b678fe",
+    "mergeMustUseCurrentPublicationHead": true,
+    "mergeCommitIsDistinctFromExecutionRevision": true
+  }
+}

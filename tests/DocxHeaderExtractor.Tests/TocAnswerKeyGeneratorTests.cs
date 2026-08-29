@@ -86,7 +86,7 @@ public sealed class TocAnswerKeyGeneratorTests : IDisposable
             Plain("2.1. Phương pháp thực hiện"),
             Plain("Phương pháp được mô tả chi tiết trong phần này của tài liệu nghiên cứu."));
 
-        var doc = new DocxSlimExtractor(new ExtractionOptions()).Extract(path);
+        var doc = new AuthorityEvaluationSourceReader(new ExtractionOptions()).Read(path).Document;
         var result = TocAnswerKeyGenerator.Generate(doc);
 
         Assert.Equal(TocKeyStatus.Accepted, result.Status);
@@ -113,7 +113,7 @@ public sealed class TocAnswerKeyGeneratorTests : IDisposable
             Plain("1.1. Lý do chọn đề tài"),
             Plain("Lý do được trình bày chi tiết trong phần này của tài liệu nghiên cứu."));
 
-        var doc = new DocxSlimExtractor(new ExtractionOptions()).Extract(path);
+        var doc = new AuthorityEvaluationSourceReader(new ExtractionOptions()).Read(path).Document;
         var result = TocAnswerKeyGenerator.Generate(doc);
 
         Assert.Equal(TocKeyStatus.InsufficientTocEntries, result.Status);
@@ -143,7 +143,7 @@ public sealed class TocAnswerKeyGeneratorTests : IDisposable
             Plain("2.1. Phương pháp thực hiện"),
             Plain("Phương pháp được mô tả chi tiết trong phần này của tài liệu nghiên cứu."));
 
-        var doc = new DocxSlimExtractor(new ExtractionOptions()).Extract(path);
+        var doc = new AuthorityEvaluationSourceReader(new ExtractionOptions()).Read(path).Document;
         var result = TocAnswerKeyGenerator.Generate(doc, matchThreshold: 0.90);
 
         Assert.Equal(TocKeyStatus.BelowMatchThreshold, result.Status);
@@ -176,7 +176,7 @@ public sealed class TocAnswerKeyGeneratorTests : IDisposable
             Plain("Phạm vi áp dụng"),
             Plain("Phần này áp dụng cho nhóm đối tượng thứ hai được mô tả trong tài liệu này."));
 
-        var doc = new DocxSlimExtractor(new ExtractionOptions()).Extract(path);
+        var doc = new AuthorityEvaluationSourceReader(new ExtractionOptions()).Read(path).Document;
         var result = TocAnswerKeyGenerator.Generate(doc, matchThreshold: 0.5);
 
         Assert.DoesNotContain(result.Matches, m => m.BodyText == "Phạm vi áp dụng");
@@ -211,7 +211,7 @@ public sealed class TocAnswerKeyGeneratorTests : IDisposable
             Plain("2.1. Phương pháp thực hiện"),
             Plain("Phương pháp được mô tả chi tiết trong phần này của tài liệu nghiên cứu."));
 
-        var doc = new DocxSlimExtractor(new ExtractionOptions()).Extract(path);
+        var doc = new AuthorityEvaluationSourceReader(new ExtractionOptions()).Read(path).Document;
         var matchedParagraphs = doc.Paragraphs.Where(p => p.Text == "Chương 1. Mở đầu").ToList();
         Assert.Single(matchedParagraphs);
         // Bằng chứng độc lập: đoạn này không nhất thiết được heuristic xếp candidate, nhưng vẫn khớp.
@@ -242,7 +242,7 @@ public sealed class TocAnswerKeyGeneratorTests : IDisposable
             Plain("2.1. Phương pháp thực hiện"),
             Plain("Phương pháp được mô tả chi tiết trong phần này của tài liệu nghiên cứu."));
 
-        var doc = new DocxSlimExtractor(new ExtractionOptions()).Extract(path);
+        var doc = new AuthorityEvaluationSourceReader(new ExtractionOptions()).Read(path).Document;
         var result = TocAnswerKeyGenerator.Generate(doc) with { FileName = "vidu.docx" };
         var text = result.ToAnswerKeyText();
 
@@ -271,7 +271,7 @@ public sealed class TocAnswerKeyGeneratorTests : IDisposable
             Plain("Chương 2. Nội dung"),
             Plain("2.1. Phương pháp thực hiện"));
 
-        var doc = new DocxSlimExtractor(new ExtractionOptions()).Extract(path);
+        var doc = new AuthorityEvaluationSourceReader(new ExtractionOptions()).Read(path).Document;
         var result = TocAnswerKeyGenerator.Generate(doc) with { FileName = "partial.docx" };
         var text = result.ToAnswerKeyText(partial: true);
 
@@ -310,7 +310,7 @@ public sealed class TocAnswerKeyGeneratorTests : IDisposable
             Plain("2.1. Phương pháp thực hiện"),
             Plain("Phương pháp được mô tả chi tiết trong phần này của tài liệu nghiên cứu."));
 
-        var doc = new DocxSlimExtractor(new ExtractionOptions()).Extract(path);
+        var doc = new AuthorityEvaluationSourceReader(new ExtractionOptions()).Read(path).Document;
         var result = TocAnswerKeyGenerator.Generate(doc);
 
         Assert.Equal(TocKeyStatus.Accepted, result.Status);

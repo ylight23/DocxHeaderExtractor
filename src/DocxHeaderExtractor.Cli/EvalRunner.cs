@@ -55,6 +55,7 @@ public static class EvalRunner
 
         using var tool = new PipelineDocumentExtractionTool(options);
         var harness = new DocumentAgentHarness(tool);
+        var sourceReader = new AuthorityEvaluationSourceReader(options);
         var scores = new List<DocScore>();
         var calibration = new PrecisionCalibrationBuilder(
             PrecisionCalibrationProfile.ConfigurationFor(options),
@@ -76,20 +77,15 @@ public static class EvalRunner
                 // vì đó là trần của phần MÔ HÌNH quyết được — nó không nhìn thấy cái đã bị loại.
                 // Recall cuối vẫn có thể vượt tỉ lệ này nhờ StructuralRecovery/OutlineStructureResolver
                 // chạy SAU mô hình và cứu theo quan hệ đánh số.
-                var conversion = LegacyDocConverter.EnsureDocx(docx);
                 HashSet<int> candidates;
-                try
                 {
-                    var slim = new DocxSlimExtractor(options.Extraction).Extract(conversion.Path);
+                    var sourceSnapshot = sourceReader.Read(docx);
                     // Review key dùng stable ID nên vẫn sống khi một đoạn phía trước bị thêm/xoá.
                     // Chỉ ở đúng đây nó mới được resolve về index của bản DOCX đang chấm.
-                    key = key.ResolveStableIds(slim.Paragraphs.ToDictionary(p => p.StableId, p => p.Index));
-                    candidates = options.DisableLlm || !options.ReviewAllParagraphs
-                        ? [.. slim.Candidates.Select(p => p.Index)]
-                        : [.. slim.Paragraphs.Where(p => p.Role != DocxHeaderExtractor.Core.Models.ParagraphRole.Empty)
-                                           .Select(p => p.Index)];
+                    key = key.ResolveStableIds(sourceSnapshot.Document.Paragraphs
+                        .ToDictionary(p => p.SourceId, p => p.SourceOrdinal));
+                    candidates = [.. sourceSnapshot.CandidateIndexes];
                 }
-                finally { LegacyDocConverter.Cleanup(conversion); }
 
                 var run = await harness.RunAsync(new DocumentAgentRequest(
                     docx,
