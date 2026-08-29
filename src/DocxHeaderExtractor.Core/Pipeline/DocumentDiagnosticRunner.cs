@@ -60,9 +60,15 @@ public static class DocumentDiagnosticRunner
         yield return Candidate("auto:typed-numbering", typedHeadings, false, state);
         yield return Candidate("auto:book-toc-dictionary", book.Headings, false, state,
             bodyAnchorRatio: book.Diagnostics.BodyAnchorRatio,
+            tocCoverage: book.Diagnostics.DictionaryEntries == 0
+                ? null
+                : (double)book.Diagnostics.BodyAnchors / book.Diagnostics.DictionaryEntries,
             forcedAccepted: book.Accepted, forcedReason: book.Diagnostics.Reason);
         yield return Candidate("auto:rfc-toc-dictionary", rfc.Headings, false, state,
             bodyAnchorRatio: rfc.Diagnostics.BodyAnchorRatio,
+            tocCoverage: rfc.Diagnostics.DictionaryEntries == 0
+                ? null
+                : (double)rfc.Diagnostics.BodyAnchors / rfc.Diagnostics.DictionaryEntries,
             forcedAccepted: rfc.Accepted, forcedReason: rfc.Diagnostics.Reason);
     }
 

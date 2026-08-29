@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -41,10 +42,20 @@ public static class PartSectionOutline
 
     public static List<HeadingRecord> Build(SlimDocument document)
     {
-        var byKey = new Dictionary<string, Candidate>(StringComparer.Ordinal);
-        var firstBodyPartIndex = FirstBodyPartIndex(document);
+        ArgumentNullException.ThrowIfNull(document);
+        return BuildCore(document.Paragraphs.Cast<IPolicyParagraph>().ToArray());
+    }
 
-        foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
+    public static List<HeadingRecord> Build(IReadOnlyList<IPolicyParagraph> paragraphs) =>
+        BuildCore(paragraphs);
+
+    private static List<HeadingRecord> BuildCore(IReadOnlyList<IPolicyParagraph> paragraphs)
+    {
+        ArgumentNullException.ThrowIfNull(paragraphs);
+        var byKey = new Dictionary<string, Candidate>(StringComparer.Ordinal);
+        var firstBodyPartIndex = FirstBodyPartIndex(paragraphs);
+
+        foreach (var p in paragraphs.OrderBy(x => x.Index))
         {
             if (p.Corrupt || p.TableDepth > 0 || p.InTableOfContents || string.IsNullOrWhiteSpace(p.Text))
                 continue;
@@ -96,6 +107,12 @@ public static class PartSectionOutline
     public static bool HasStrongSignal(SlimDocument document)
     {
         var headings = Build(document);
+        return headings.Count(h => h.Level == 1) >= 1 && headings.Count(h => h.Level == 2) >= 5;
+    }
+
+    public static bool HasStrongSignal(IReadOnlyList<IPolicyParagraph> paragraphs)
+    {
+        var headings = Build(paragraphs);
         return headings.Count(h => h.Level == 1) >= 1 && headings.Count(h => h.Level == 2) >= 5;
     }
 
@@ -310,9 +327,9 @@ public static class PartSectionOutline
         return false;
     }
 
-    private static int? FirstBodyPartIndex(SlimDocument document)
+    private static int? FirstBodyPartIndex(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
-        foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
+        foreach (var p in paragraphs.OrderBy(x => x.Index))
         {
             if (p.Corrupt || p.TableDepth > 0 || p.InTableOfContents || string.IsNullOrWhiteSpace(p.Text))
                 continue;

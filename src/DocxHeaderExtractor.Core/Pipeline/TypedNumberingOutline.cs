@@ -56,7 +56,8 @@ public static class TypedNumberingOutline
 
     /// <summary>Native producer equivalent used by policy diagnostics; no Slim intermediate.</summary>
     public static List<HeadingRecord> Build(IReadOnlyList<IPolicyParagraph> paragraphs, bool splitMergedParagraphs = true)
-        => BuildCore(paragraphs, splitMergedParagraphs, usePartSectionLevels: false);
+        => BuildCore(paragraphs, splitMergedParagraphs,
+            usePartSectionLevels: PartSectionOutline.HasStrongSignal(paragraphs));
 
     private static List<HeadingRecord> BuildCore(
         IReadOnlyList<IPolicyParagraph> paragraphs,
