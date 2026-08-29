@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_PHYSICAL_RETIREMENT_FOCUSED",
+  "r4_8_r4_9PublicationRevision": "564e9a3e776a861e0c8d06519b989f605421bb29",
+  "physicalRetirementExecutionRevision": "592e8bf",
+  "fullSuiteRevision": null,
+  "retiredTypes": [
+    "DocxSlimExtractor",
+    "SlimDocument",
+    "SlimParagraph",
+    "SlimSourceFactsAdapter",
+    "DocxSourceExtractionResult",
+    "OrderedDemotionState"
+  ],
+  "nativeRuntime": {
+    "coreBuild": "PASS",
+    "solutionBuild": "PASS",
+    "testProjectBuild": "PASS",
+    "focusedTests": { "passed": 34, "failed": 0, "skipped": 0 },
+    "bannedExecutableReferencesSrcTestsTools": 0,
+    "providerCalls": 0,
+    "rawRuntimeArtifactsTracked": 0
+  },
+  "canonicalFullSuite": "NOT_RUN",
+  "executionRevisionPreserved": true,
+  "physicalSlimRetirementReady": true
+}
