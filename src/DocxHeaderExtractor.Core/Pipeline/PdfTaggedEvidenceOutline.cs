@@ -1,4 +1,5 @@
 using System.Text;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 
@@ -13,12 +14,16 @@ internal static class PdfTaggedEvidenceOutline
 {
     public const string Basis = "pdf_tagged_structural";
 
-    public static PdfTaggedEvidenceOutlineResult TryBuild(string inputPath, SlimDocument slim)
+    public static PdfTaggedEvidenceOutlineResult TryBuild(string inputPath, SlimDocument slim) =>
+        TryBuild(inputPath, slim.Paragraphs.Cast<IPolicyParagraph>().ToArray());
+
+    public static PdfTaggedEvidenceOutlineResult TryBuild(
+        string inputPath, IReadOnlyList<IPolicyParagraph> paragraphs)
     {
         var pdf = PdfTextbookOutline.FindSiblingPdf(inputPath);
         if (pdf is null) return PdfTaggedEvidenceOutlineResult.NotApplicable("no-pdf");
 
-        var tags = PdfTaggedHeadingProbe.Analyze(pdf, slim);
+        var tags = PdfTaggedHeadingProbe.Analyze(pdf, paragraphs);
         var aligned = tags.Candidates.Where(c => c.DocxParagraphIndex is not null && c.HeadingSpan is not null).ToList();
         var levels = aligned.Select(c => c.Level).Distinct().OrderBy(x => x).ToList();
         // The route is deliberately narrow: automatic taggers commonly emit deep, dense /H* trees.
@@ -33,14 +38,15 @@ internal static class PdfTaggedEvidenceOutline
             return PdfTaggedEvidenceOutlineResult.NotApplicable(
                 $"low-title-line-grounding:{titleByTaggedElement.Count}/{aligned.Count}");
 
-        var headings = aligned.Select(candidate => ToHeading(candidate, slim, titleByTaggedElement[(candidate.Page, candidate.MarkedContentIdentifier)]))
+        var headings = aligned.Select(candidate => ToHeading(candidate, paragraphs,
+                titleByTaggedElement[(candidate.Page, candidate.MarkedContentIdentifier)]))
             .OrderBy(h => h.Index).ThenBy(h => h.HeadingSpan!.Start).ToList();
         var markers = PdfRepeatedLabelMarkerProbe.Analyze(pdf).Series
             .Where(s => s.Markers.Count >= 3)
             .SelectMany(s => s.Markers)
             .OrderBy(m => m.Page).ThenByDescending(m => m.Y)
             .ToList();
-        var added = AddGroundedMarkers(markers, headings, slim);
+        var added = AddGroundedMarkers(markers, headings, paragraphs);
         headings.AddRange(added);
         headings = headings.OrderBy(h => h.Index).ThenBy(h => h.HeadingSpan!.Start).ToList();
 
@@ -48,10 +54,11 @@ internal static class PdfTaggedEvidenceOutline
             $"pdf={Path.GetFileName(pdf)}, tags={aligned.Count}, titleLines={titleByTaggedElement.Count}, sequentialMarkers={added.Count}");
     }
 
-    private static HeadingRecord ToHeading(PdfTaggedHeadingCandidate candidate, SlimDocument slim, string title)
+    private static HeadingRecord ToHeading(
+        PdfTaggedHeadingCandidate candidate, IReadOnlyList<IPolicyParagraph> paragraphs, string title)
     {
         var index = candidate.DocxParagraphIndex!.Value;
-        var paragraph = slim.Paragraphs.First(p => p.Index == index);
+        var paragraph = paragraphs.First(p => p.Index == index);
         var titleSpan = FindSourceSpan(paragraph.Text, title) ?? candidate.HeadingSpan!;
         return new HeadingRecord
         {
@@ -72,9 +79,9 @@ internal static class PdfTaggedEvidenceOutline
     private static List<HeadingRecord> AddGroundedMarkers(
         IReadOnlyList<PdfRepeatedLabelMarker> markers,
         IReadOnlyList<HeadingRecord> declared,
-        SlimDocument slim)
+        IReadOnlyList<IPolicyParagraph> paragraphs)
     {
-        var paragraphs = slim.Paragraphs
+        var candidates = paragraphs
             .Where(p => p.Role != ParagraphRole.Empty && !p.InTableOfContents && !string.IsNullOrWhiteSpace(p.Text))
             .OrderBy(p => p.Index)
             .Select(p => new CanonParagraph(p, CanonicalMap.For(p.Text)))
@@ -85,7 +92,7 @@ internal static class PdfTaggedEvidenceOutline
         {
             var needle = CanonicalMap.For(marker.Text).Canonical;
             if (needle.Length < 4) continue;
-            var match = paragraphs.Where(p => p.Paragraph.Index >= cursor)
+            var match = candidates.Where(p => p.Paragraph.Index >= cursor)
                 .Select(p => new { Paragraph = p, At = p.Map.Canonical.IndexOf(needle, StringComparison.Ordinal) })
                 .FirstOrDefault(x => x.At >= 0);
             if (match is null) continue;
@@ -136,7 +143,7 @@ internal static class PdfTaggedEvidenceOutline
         .Replace('\u2014', '-')
         .Replace('\u2212', '-');
 
-    private sealed record CanonParagraph(SlimParagraph Paragraph, CanonicalMap Map);
+    private sealed record CanonParagraph(IPolicyParagraph Paragraph, CanonicalMap Map);
     private sealed record CanonicalMap(string Canonical, IReadOnlyList<int> SourceIndexes)
     {
         public static CanonicalMap For(string text)

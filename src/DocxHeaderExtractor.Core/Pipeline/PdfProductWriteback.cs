@@ -71,8 +71,8 @@ public static class PdfProductWriteback
 
         // Read from the SOURCE, not the copy about to be opened for writing: the two are still
         // byte-identical here, and reading the target in parallel would contend with the write handle.
-        var sourceExtraction = new DocxSlimExtractor(extraction).ExtractForAuthority(source);
-        var mappings = WritebackMappingSet.FromSourceDocument(sourceExtraction.Source);
+        var sourceDocument = new OpenXmlDocumentSource(extraction).Read(source);
+        var mappings = WritebackMappingSet.FromSourceDocument(sourceDocument);
         try
         {
             using (var doc = WordprocessingDocument.Open(target, true))
@@ -202,7 +202,7 @@ public static class PdfProductWriteback
         IReadOnlyList<PdfProductHeading> applied,
         IReadOnlyCollection<int> splitIndexes)
     {
-        var written = new DocxSlimExtractor(extraction).ExtractForAuthority(target).Source;
+        var written = new OpenXmlDocumentSource(extraction).Read(target);
         foreach (var heading in applied)
         {
             var shift = splitIndexes.Count(i => i < heading.ParagraphIndex);

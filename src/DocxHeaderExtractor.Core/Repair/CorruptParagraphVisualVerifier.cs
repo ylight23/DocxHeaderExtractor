@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Pipeline;
 using DocxHeaderExtractor.Core.Vision;
@@ -53,6 +54,16 @@ public static class CorruptParagraphVisualVerifier
 {
     private const int NeighborSearchWindow = 6;
 
+    public static Task<CorruptParagraphVisualCheck> VerifyAsync(
+        string originalInputPath,
+        DocxPolicyState policyState,
+        DocxPolicyParagraph corruptParagraph,
+        VlmImageQuestion vlm,
+        int dpi = 110,
+        CancellationToken ct = default) =>
+        VerifyCore(originalInputPath, policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(),
+            corruptParagraph, vlm, dpi, ct);
+
     public static async Task<CorruptParagraphVisualCheck> VerifyAsync(
         string originalInputPath,
         SlimDocument document,
@@ -60,6 +71,17 @@ public static class CorruptParagraphVisualVerifier
         VlmImageQuestion vlm,
         int dpi = 110,
         CancellationToken ct = default)
+    {
+        return await VerifyCore(originalInputPath, document.Paragraphs, corruptParagraph, vlm, dpi, ct);
+    }
+
+    private static async Task<CorruptParagraphVisualCheck> VerifyCore(
+        string originalInputPath,
+        IReadOnlyList<IPolicyParagraph> paragraphs,
+        IPolicyParagraph corruptParagraph,
+        VlmImageQuestion vlm,
+        int dpi,
+        CancellationToken ct)
     {
         if (!corruptParagraph.Corrupt)
             throw new ArgumentException(
@@ -72,7 +94,7 @@ public static class CorruptParagraphVisualVerifier
                 corruptParagraph.Index, corruptParagraph.Text, CorruptParagraphVisualVerdict.Inconclusive,
                 "Không có PDF anh em — chưa hỗ trợ render DOCX thuần (cần soffice, chưa thêm).", null, null);
 
-        var neighborText = FindNearestCleanNeighborText(document, corruptParagraph.Index);
+        var neighborText = FindNearestCleanNeighborText(paragraphs, corruptParagraph.Index);
         if (neighborText is null)
             return new CorruptParagraphVisualCheck(
                 corruptParagraph.Index, corruptParagraph.Text, CorruptParagraphVisualVerdict.Inconclusive,
@@ -143,9 +165,13 @@ public static class CorruptParagraphVisualVerifier
             corruptParagraph.Index, corruptParagraph.Text, verdict, answer, pdfPath, page);
     }
 
-    internal static string? FindNearestCleanNeighborText(SlimDocument document, int index)
+    internal static string? FindNearestCleanNeighborText(SlimDocument document, int index) =>
+        FindNearestCleanNeighborText(document.Paragraphs, index);
+
+    internal static string? FindNearestCleanNeighborText(
+        IReadOnlyList<IPolicyParagraph> paragraphs, int index)
     {
-        var byIndex = document.Paragraphs.ToDictionary(p => p.Index);
+        var byIndex = paragraphs.ToDictionary(p => p.Index);
         for (var offset = 1; offset <= NeighborSearchWindow; offset++)
         {
             foreach (var candidateIndex in new[] { index - offset, index + offset })

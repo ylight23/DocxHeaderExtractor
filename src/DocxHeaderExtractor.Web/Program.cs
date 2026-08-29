@@ -3,6 +3,8 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Channels;
 using DocxHeaderExtractor.AgentHarness;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Learning;
@@ -116,23 +118,30 @@ app.MapPost("/api/inspect", async (HttpRequest req, CancellationToken ct) =>
             UseLexicalRules = form["structuralOnly"].ToString() is not ("1" or "true" or "on"),
         };
         var conversion = LegacyDocConverter.EnsureDocx(inputPath);
-        SlimDocument slim;
-        try { slim = new DocxSlimExtractor(extraction).Extract(conversion.Path); }
-        finally { LegacyDocConverter.Cleanup(conversion); }
-
-        var report = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
-        var suggestedRoute = report.Status != DocumentStatus.Normal
-            ? null
-            : report.Mode == DocumentMode.TypedNumbering && PartSectionOutline.HasTextTocSignal(slim)
-                ? "auto:part-section-text-toc"
-                : SuggestedRoute(report.Mode);
-        return Results.Json(new
+        DocumentModeReport report;
+        try
         {
-            file = Path.GetFileName(inputPath),
-            report = ModePayload(report),
-            suggestedRoute,
-            canRunDeterministic = suggestedRoute is not null,
-        }, json);
+            var source = new OpenXmlDocumentSource(extraction).Read(conversion.Path);
+            var features = NumberingStyleFeatures.FromSourceDocument(source);
+            var policy = DocxPolicyStateBuilder.Build(
+                source, features, new DocumentFeatureDeriver().Derive(source), extraction);
+            report = policy.Mode ?? DocumentModeClassifier.Measure(
+                policy.Paragraphs.Cast<IPolicyParagraph>().ToArray());
+            var suggestedRoute = report.Status != DocumentStatus.Normal
+                ? null
+                : report.Mode == DocumentMode.TypedNumbering &&
+                  PartSectionOutline.HasTextTocSignal(policy.Paragraphs.Cast<IPolicyParagraph>().ToArray())
+                    ? "auto:part-section-text-toc"
+                    : SuggestedRoute(report.Mode);
+            return Results.Json(new
+            {
+                file = Path.GetFileName(inputPath),
+                report = ModePayload(report),
+                suggestedRoute,
+                canRunDeterministic = suggestedRoute is not null,
+            }, json);
+        }
+        finally { LegacyDocConverter.Cleanup(conversion); }
     }
     catch (Exception ex) when (ex is IOException or InvalidDataException or OpenXmlPackageException)
     {

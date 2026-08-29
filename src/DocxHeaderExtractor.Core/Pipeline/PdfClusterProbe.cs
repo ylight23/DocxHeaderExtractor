@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
@@ -288,13 +290,17 @@ public static class PdfClusterProbe
 
         try
         {
-            var slim = new DocxSlimExtractor().Extract(inputPath);
-            var paragraphs = slim.Paragraphs.Where(p => p.Role != ParagraphRole.Empty).ToList();
-            var mode = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
+            var source = new OpenXmlDocumentSource().Read(inputPath);
+            var features = NumberingStyleFeatures.FromSourceDocument(source);
+            var policyState = DocxPolicyStateBuilder.Build(
+                source, features, new DocumentFeatureDeriver().Derive(source), new ExtractionOptions());
+            var paragraphs = policyState.Paragraphs.Where(p => p.Role != ParagraphRole.Empty).ToList();
+            var mode = policyState.Mode ?? DocumentModeClassifier.Measure(
+                policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray());
             return new DocxDeterministicSignalDto(
                 paragraphs.Count,
-                slim.Candidates.Count(),
-                paragraphs.Count(p => p.HasBuiltInHeadingStyle || p.Role == ParagraphRole.StyledHeading),
+                policyState.Candidates.Count(),
+                paragraphs.Count(p => p.TrustedHeadingStyle || p.Role == ParagraphRole.StyledHeading),
                 paragraphs.Count(p => p.OutlineLevel is not null),
                 paragraphs.Count(p => p.NumberingId is not null || p.NumberingLevel is not null),
                 paragraphs.Count(p => p.TableDepth > 0),

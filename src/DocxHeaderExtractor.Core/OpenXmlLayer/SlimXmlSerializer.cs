@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.OpenXmlLayer;
@@ -17,6 +18,21 @@ public sealed record XmlLine(string Text, int? ParagraphIndex, bool IsCandidate)
 /// </summary>
 public static class SlimXmlSerializer
 {
+    public static string ToFullXml(DocxPolicyState state, ExtractionOptions options)
+    {
+        var sb = new StringBuilder();
+        sb.Append("<doc file=\"").Append(Escape(state.Source.FileName)).Append("\" n=\"")
+            .Append(state.Paragraphs.Count).Append("\" mode=\"")
+            .Append(state.Mode?.Mode.ToString() ?? "Unknown").Append("\">\n");
+        foreach (var p in state.Paragraphs)
+        {
+            if (p.Role == ParagraphRole.Empty) continue;
+            sb.Append(Element(p, options.MaxTextLength)).Append('\n');
+        }
+        sb.Append("</doc>");
+        return sb.ToString();
+    }
+
     /// <summary>XML rút gọn nhưng giữ TẤT CẢ các đoạn – dùng để debug/kiểm tra bộ lọc.</summary>
     public static string ToFullXml(SlimDocument doc, ExtractionOptions options)
     {
@@ -71,6 +87,32 @@ public static class SlimXmlSerializer
         if (p.TableDepth > 0) sb.Append(" tbl=\"").Append(p.TableDepth).Append('"');
         if (includeScore) sb.Append(" role=\"").Append(p.Role).Append("\" sc=\"").Append(Fmt(p.Score)).Append('"');
 
+        sb.Append('>').Append(Escape(Truncate(p.Text, maxText))).Append("</p>");
+        return sb.ToString();
+    }
+
+    private static string Element(DocxPolicyParagraph p, int maxText)
+    {
+        var sb = new StringBuilder(96);
+        sb.Append("<p i=\"").Append(p.Index).Append('"');
+        if (!string.IsNullOrEmpty(p.StableId)) sb.Append(" sid=\"").Append(Escape(p.StableId)).Append('"');
+        if (!string.IsNullOrEmpty(p.StyleId)) sb.Append(" s=\"").Append(Escape(p.StyleId)).Append('"');
+        if (p.OutlineLevel is { } ol) sb.Append(" out=\"").Append(ol).Append('"');
+        if (p.GuessedLevel is { } gl) sb.Append(" lvl=\"").Append(gl).Append('"');
+        if (p.InContentControl) sb.Append(" sdt=\"1\"");
+        if (p.Bold) sb.Append(" b=\"1\"");
+        if (p.AllCaps) sb.Append(" caps=\"1\"");
+        if (p.Italic) sb.Append(" it=\"1\"");
+        if (p.Underline) sb.Append(" u=\"1\"");
+        if (p.FontSizePt is { } fs) sb.Append(" sz=\"").Append(Fmt(fs)).Append('"');
+        if (!string.IsNullOrEmpty(p.Alignment) && p.Alignment != "left")
+            sb.Append(" al=\"").Append(Escape(p.Alignment)).Append('"');
+        if (p.NumberingId is { } nid) sb.Append(" num=\"").Append(nid).Append('.').Append(p.NumberingLevel ?? 0).Append('"');
+        if (!string.IsNullOrEmpty(p.NumberLabel)) sb.Append(" nlab=\"").Append(Escape(p.NumberLabel)).Append('"');
+        if (p.KeepNext) sb.Append(" kn=\"1\"");
+        if (p.PageBreakBefore) sb.Append(" pb=\"1\"");
+        if (p.TableDepth > 0) sb.Append(" tbl=\"").Append(p.TableDepth).Append('"');
+        sb.Append(" role=\"").Append(p.Role).Append("\" sc=\"").Append(Fmt(p.Score)).Append('"');
         sb.Append('>').Append(Escape(Truncate(p.Text, maxText))).Append("</p>");
         return sb.ToString();
     }

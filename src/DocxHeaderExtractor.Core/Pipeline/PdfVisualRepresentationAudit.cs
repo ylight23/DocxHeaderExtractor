@@ -1,4 +1,5 @@
 ﻿using DocxHeaderExtractor.Core.Eval;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using UglyToad.PdfPig;
 using System.Text.RegularExpressions;
@@ -13,21 +14,38 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// </summary>
 public static class PdfVisualRepresentationAudit
 {
-    public static PdfVisualRepresentationReport Evaluate(string pdfPath, SlimDocument document, AnswerKey key)
+    public static PdfVisualRepresentationReport Evaluate(string pdfPath, SlimDocument document, AnswerKey key) =>
+        Evaluate(pdfPath, document.SourcePath, document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), key);
+
+    public static PdfVisualRepresentationReport Evaluate(
+        string pdfPath, DocxPolicyState policyState, AnswerKey key) =>
+        Evaluate(pdfPath, policyState.Source.SourcePath,
+            policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(), key);
+
+    internal static PdfVisualRepresentationReport Evaluate(
+        string pdfPath, string sourcePath, IReadOnlyList<IPolicyParagraph> paragraphs, AnswerKey key)
     {
         using var pdf = PdfDocument.Open(pdfPath);
         var lines = PdfLineExtraction.ExtractLines(pdf);
         var regions = PdfVisualTextRecovery.ListRegionsForAudit(pdfPath);
         var titles = key.PositiveEntries.Where(entry => !string.IsNullOrWhiteSpace(entry.Text))
             .Select(entry => entry.Text!).Distinct(StringComparer.Ordinal).ToArray();
-        var retrieval = PdfLayoutEvidenceOutline.TraceCandidateRetrieval(document.SourcePath, titles)
+        var retrieval = PdfLayoutEvidenceOutline.TraceCandidateRetrieval(sourcePath, titles)
             .ToDictionary(trace => trace.ExpectedText, StringComparer.Ordinal);
-        return EvaluateForAudit(document, key, lines, regions,
+        return EvaluateForAudit(paragraphs, key, lines, regions,
             text => retrieval.TryGetValue(text, out var trace) && trace.FoundInRawWindow);
     }
 
     internal static PdfVisualRepresentationReport EvaluateForAudit(
         SlimDocument document,
+        AnswerKey key,
+        IReadOnlyList<PdfLine> lines,
+        IReadOnlyList<PdfVisualRegionAudit> regions,
+        Func<string, bool>? isTextObservable = null)
+        => EvaluateForAudit(document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), key, lines, regions, isTextObservable);
+
+    internal static PdfVisualRepresentationReport EvaluateForAudit(
+        IReadOnlyList<IPolicyParagraph> paragraphs,
         AnswerKey key,
         IReadOnlyList<PdfLine> lines,
         IReadOnlyList<PdfVisualRegionAudit> regions,
@@ -141,6 +159,21 @@ public static class PdfFirstLossAudit
         int selectedBudget = 160,
         PdfReviewedOccurrenceBridge? occurrenceBridge = null,
         IReadOnlyList<string?>? goldStableIds = null)
+        => Evaluate(documentPath, document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), key,
+            selectedBudget, occurrenceBridge, goldStableIds);
+
+    public static PdfFirstLossReport Evaluate(string documentPath, DocxPolicyState policyState, AnswerKey key,
+        int selectedBudget = 160,
+        PdfReviewedOccurrenceBridge? occurrenceBridge = null,
+        IReadOnlyList<string?>? goldStableIds = null)
+        => Evaluate(documentPath, policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(), key,
+            selectedBudget, occurrenceBridge, goldStableIds);
+
+    private static PdfFirstLossReport Evaluate(string documentPath,
+        IReadOnlyList<IPolicyParagraph> paragraphs, AnswerKey key,
+        int selectedBudget,
+        PdfReviewedOccurrenceBridge? occurrenceBridge,
+        IReadOnlyList<string?>? goldStableIds)
     {
         var positives = key.PositiveEntries
             .Where(entry => !entry.Excluded && !string.IsNullOrWhiteSpace(entry.Text))
@@ -155,7 +188,7 @@ public static class PdfFirstLossAudit
         // Visual geometry is needed only for text-unobservable gold. Building it for every
         // financial title is expensive and cannot add evidence to a title already in SourceFacts.
         var visual = pdf is not null && retrieval.Values.Any(trace => !trace.FoundInRawWindow)
-            ? PdfVisualRepresentationAudit.Evaluate(pdf, document, key)
+            ? PdfVisualRepresentationAudit.Evaluate(pdf, documentPath, paragraphs, key)
             : null;
         var visualByTitle = visual?.Entries
             .GroupBy(entry => entry.Gold, StringComparer.Ordinal)
@@ -421,11 +454,21 @@ public sealed record PdfFirstLossCandidateOccurrence(int Rank, string SourceId, 
 /// </summary>
 public static class PdfGoldOccurrenceEvaluator
 {
-    public static PdfGoldOccurrenceReport Evaluate(SlimDocument document, AnswerKey key, PdfFirstLossReport firstLoss)
+    public static PdfGoldOccurrenceReport Evaluate(SlimDocument document, AnswerKey key, PdfFirstLossReport firstLoss) =>
+        Evaluate(document.SourcePath, document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), key, firstLoss);
+
+    public static PdfGoldOccurrenceReport Evaluate(
+        DocxPolicyState policyState, AnswerKey key, PdfFirstLossReport firstLoss) =>
+        Evaluate(policyState.Source.SourcePath,
+            policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(), key, firstLoss);
+
+    private static PdfGoldOccurrenceReport Evaluate(
+        string documentPath, IReadOnlyList<IPolicyParagraph> sourceParagraphs,
+        AnswerKey key, PdfFirstLossReport firstLoss)
     {
         var positive = key.PositiveEntries.Where(entry => !entry.Excluded && !string.IsNullOrWhiteSpace(entry.Text)).ToArray();
-        var paragraphs = document.Paragraphs.ToDictionary(paragraph => paragraph.Index);
-        var pageEvidence = BuildAnchorPageEvidence(document.SourcePath, positive, paragraphs);
+        var paragraphs = sourceParagraphs.ToDictionary(paragraph => paragraph.Index);
+        var pageEvidence = BuildAnchorPageEvidence(documentPath, positive, paragraphs);
         var entries = firstLoss.Entries.Select(entry =>
         {
             var gold = entry.Ordinal < positive.Length ? positive[entry.Ordinal] : null;
@@ -468,7 +511,7 @@ public static class PdfGoldOccurrenceEvaluator
     }
 
     private static IReadOnlyDictionary<int, AnchorPage> BuildAnchorPageEvidence(string documentPath,
-        IReadOnlyList<AnswerKeyEntry> positive, IReadOnlyDictionary<int, SlimParagraph> paragraphs)
+        IReadOnlyList<AnswerKeyEntry> positive, IReadOnlyDictionary<int, IPolicyParagraph> paragraphs)
     {
         var pdfPath = PdfTextbookOutline.FindSiblingPdf(documentPath);
         if (pdfPath is null) return new Dictionary<int, AnchorPage>();

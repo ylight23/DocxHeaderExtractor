@@ -70,8 +70,8 @@ public static class OutlineWriteback
         // Đường về nguồn của từng ký tự — thứ duy nhất cho phép tách đoạn mà không đoán mò offset.
         // Đọc từ NGUỒN chứ không từ đích: hai file lúc này giống hệt nhau từng byte, còn đích thì
         // sắp bị mở để ghi và đọc song song sẽ tranh khoá.
-        var sourceExtraction = new DocxSlimExtractor(extraction).ExtractForAuthority(source);
-        var mappings = WritebackMappingSet.FromSourceDocument(sourceExtraction.Source);
+        var sourceDocument = new OpenXmlDocumentSource(extraction).Read(source);
+        var mappings = WritebackMappingSet.FromSourceDocument(sourceDocument);
         try
         {
             using (var doc = WordprocessingDocument.Open(target, true))
@@ -177,7 +177,7 @@ public static class OutlineWriteback
         IReadOnlyList<HeadingRecord> applied,
         IReadOnlyCollection<int> splitIndexes)
     {
-        var written = new DocxSlimExtractor(extraction).ExtractForAuthority(target).Source;
+        var written = new OpenXmlDocumentSource(extraction).Read(target);
         foreach (var heading in applied)
         {
             var shift = splitIndexes.Count(i => i < heading.Index);

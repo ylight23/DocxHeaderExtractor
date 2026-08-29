@@ -2,6 +2,8 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
@@ -292,14 +294,15 @@ public static class RepairCorpusAudit
 
         try
         {
-            var extraction = new DocxSlimExtractor().ExtractForAuthority(file);
-            var source = extraction.Source;
+            var source = new OpenXmlDocumentSource().Read(file);
             var features = NumberingStyleFeatures.FromSourceDocument(source);
-            var slim = extraction.Compatibility.ForLegacyCompatibility();
-            var tagged = PdfTaggedEvidenceOutline.TryBuild(file, slim);
+            var derived = new DocumentFeatureDeriver().Derive(source);
+            var policyState = DocxPolicyStateBuilder.Build(source, features, derived, new ExtractionOptions());
+            var paragraphs = policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray();
+            var tagged = PdfTaggedEvidenceOutline.TryBuild(file, paragraphs);
             var toc = mode is null
                 ? PdfTocDictionaryOutlineResult.NotApplicable("no-document-mode")
-                : PdfTocDictionaryOutline.TryBuild(file, slim, mode);
+                : PdfTocDictionaryOutline.TryBuild(file, paragraphs, mode);
             var pdf = PdfTextbookOutline.FindSiblingPdf(file);
             var bookmarks = pdf is null ? 0 : PdfBookmarkProbe.Analyze(pdf).Candidates.Count;
             return new StructureSourceAudit(
@@ -309,12 +312,12 @@ public static class RepairCorpusAudit
                 bookmarks,
                 toc.Probe.Entries,
                 toc.Probe.RelaxedPageAnchors,
-                slim.Paragraphs.Count(p => p.InTableOfContents),
+                paragraphs.Count(p => p.InTableOfContents),
                 features.Styles.Count(style => style.OutlineLevel is not null),
                 features.Styles.Count(style => style.BuiltInHeadingStyleLevel is not null),
                 features.Numbering.Count(numbering => numbering.NumberingId is not null || numbering.NumberingLevel is not null),
-                slim.Paragraphs.Count(p => NumberingAudit.Parse(p.Text) is not null),
-                slim.Paragraphs.Count(p => DocumentModeClassifier.IsLegalMarker(p.Text)),
+                paragraphs.Count(p => NumberingAudit.Parse(p.Text) is not null),
+                paragraphs.Count(p => DocumentModeClassifier.IsLegalMarker(p.Text)),
                 null);
         }
         catch (Exception ex)

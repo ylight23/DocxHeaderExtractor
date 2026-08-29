@@ -120,6 +120,10 @@ public static class PartSectionOutline
         TextTocEntries(document).Count(e => e.Level == 1) >= 1 &&
         TextTocEntries(document).Count(e => e.Level == 2) >= 5;
 
+    public static bool HasTextTocSignal(IReadOnlyList<IPolicyParagraph> paragraphs) =>
+        TextTocEntriesCore(paragraphs).Count(e => e.Level == 1) >= 1 &&
+        TextTocEntriesCore(paragraphs).Count(e => e.Level == 2) >= 5;
+
     /// <summary>
     /// PDF→DOCX text-layout thường không còn OOXML TOC field/style, nhưng vẫn giữ "TABLE OF CONTENT"
     /// như text phẳng. Với World Bank Part/Section frame, TOC text là nguồn title đầy đủ còn body là
@@ -172,10 +176,13 @@ public static class PartSectionOutline
         text.Contains("Table of Contents", StringComparison.OrdinalIgnoreCase) &&
         DotLeaderRx.Matches(text).Count >= 2;
 
-    private static List<TocEntry> TextTocEntries(SlimDocument document)
+    private static List<TocEntry> TextTocEntries(SlimDocument document) =>
+        TextTocEntriesCore(document.Paragraphs);
+
+    private static List<TocEntry> TextTocEntriesCore(IEnumerable<IPolicyParagraph> paragraphs)
     {
         var entries = new List<TocEntry>();
-        foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
+        foreach (var p in paragraphs.OrderBy(x => x.Index))
         {
             if (string.IsNullOrWhiteSpace(p.Text) ||
                 !p.Text.Contains("TABLE OF CONTENT", StringComparison.OrdinalIgnoreCase) ||
