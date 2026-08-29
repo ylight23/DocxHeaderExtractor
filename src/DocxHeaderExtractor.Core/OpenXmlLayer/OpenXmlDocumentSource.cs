@@ -15,6 +15,8 @@ namespace DocxHeaderExtractor.Core.OpenXmlLayer;
 public sealed class OpenXmlDocumentSource : IDocumentSource
 {
     private static readonly Regex WhitespaceRx = new(@"\s+", RegexOptions.Compiled);
+    private static readonly Regex TrailingPageNumberRx = new(@"^(?<title>.*\S)\s+(?<page>\d{1,4})$", RegexOptions.Compiled);
+    private const int MinTypedTableOfContentsRunLength = 3;
     private readonly ExtractionOptions _options;
 
     public OpenXmlDocumentSource(ExtractionOptions? options = null) => _options = options ?? new ExtractionOptions();
@@ -36,6 +38,7 @@ public sealed class OpenXmlDocumentSource : IDocumentSource
         }
 
         NumberingResolver.Apply(main, paragraphs);
+        MarkTypedTableOfContentsRuns(paragraphs);
         var headers = new List<string>();
         var footers = new List<string>();
         if (_options.IncludePageHeadersFooters)
@@ -157,6 +160,42 @@ public sealed class OpenXmlDocumentSource : IDocumentSource
             return anchor is not null && (anchor.StartsWith("_Toc", StringComparison.OrdinalIgnoreCase) ||
                                           anchor.StartsWith("_heading", StringComparison.OrdinalIgnoreCase));
         });
+    }
+
+    // Preserve the legacy source fact for manually typed TOCs. A single numbered title is
+    // insufficient; only a monotonic run is accepted, with a new run after a page reset.
+    private static void MarkTypedTableOfContentsRuns(List<OpenXmlSourceParagraph> paragraphs)
+    {
+        var run = new List<OpenXmlSourceParagraph>();
+        var pages = new List<int>();
+
+        void Flush()
+        {
+            if (run.Count >= MinTypedTableOfContentsRunLength)
+                foreach (var paragraph in run) paragraph.InTableOfContents = true;
+            run.Clear();
+            pages.Clear();
+        }
+
+        foreach (var paragraph in paragraphs)
+        {
+            if (string.IsNullOrWhiteSpace(paragraph.Text) || paragraph.TableDepth > 0 || paragraph.NumberingId is not null)
+            {
+                Flush();
+                continue;
+            }
+
+            var match = TrailingPageNumberRx.Match(paragraph.Text.Trim());
+            if (!match.Success || !int.TryParse(match.Groups["page"].Value, out var page))
+            {
+                Flush();
+                continue;
+            }
+            if (pages.Count > 0 && page < pages[^1]) Flush();
+            run.Add(paragraph);
+            pages.Add(page);
+        }
+        Flush();
     }
 
     private readonly record struct RunFormat(bool? Bold, bool? Italic, bool? Underline, bool? Caps, double? FontSizePt);
@@ -317,5 +356,5 @@ internal sealed class OpenXmlSourceParagraph
     public bool PageBreakBefore { get; init; }
     public int TableDepth { get; init; }
     public int SectionIndex { get; init; }
-    public bool InTableOfContents { get; init; }
+    public bool InTableOfContents { get; set; }
 }

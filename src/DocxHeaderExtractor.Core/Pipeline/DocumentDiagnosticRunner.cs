@@ -15,7 +15,7 @@ public static class DocumentDiagnosticRunner
         ArgumentNullException.ThrowIfNull(policyState);
         ArgumentNullException.ThrowIfNull(modeReport);
         var style = StyleSignal(policyState.StyleTrust);
-        var layout = LayoutSignal(policyState.Source);
+        var layout = LayoutSignal(policyState);
         var candidates = CandidateSignals(policyState).ToArray();
         var status = FailureStatus(style, layout, candidates, modeReport, out var reason);
         return new DocumentDiagnosticReport(status, reason, style, layout, candidates);
@@ -28,12 +28,12 @@ public static class DocumentDiagnosticRunner
             trust.LevelTrusted, trust.StyledCount >= StyleTrust.MinimumStyledSample &&
             (!trust.SelectionTrusted || !trust.LevelTrusted));
 
-    private static LayoutSignalDiagnostic LayoutSignal(SourceDocument source)
+    private static LayoutSignalDiagnostic LayoutSignal(DocxPolicyState policyState)
     {
         var mergedParagraphs = 0;
         var mergedMarkers = 0;
         var typedSegments = 0;
-        foreach (var paragraph in source.Paragraphs)
+        foreach (var paragraph in policyState.Source.Paragraphs)
         {
             if (string.IsNullOrWhiteSpace(paragraph.Text)) continue;
             var segments = ParagraphHeadingSplitter.Segments(paragraph.Text);
@@ -41,7 +41,7 @@ public static class DocumentDiagnosticRunner
             typedSegments += segments.Count(s => TypedNumberSegmentRx.IsMatch(s));
         }
         return new LayoutSignalDiagnostic(mergedParagraphs, mergedMarkers,
-            source.Paragraphs.Count(p => p.InTableOfContents), typedSegments);
+            policyState.Paragraphs.Count(p => p.InTableOfContents || p.PrecedesTableOfContents), typedSegments);
     }
 
     private static IEnumerable<OutlineCandidateDiagnostic> CandidateSignals(DocxPolicyState state)
