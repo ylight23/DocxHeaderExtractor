@@ -1,0 +1,44 @@
+{
+  "task": "R4-8/R4-9",
+  "status": "PASS",
+  "baseRevision": "0a13116352312f37903ad9667199d4e905328411",
+  "executionRevision": "833ee6e4336a3c753df9e28d93d96f9c31b3eb5d",
+  "publicationRevision": "PENDING",
+  "headerExtractionPipeline": {
+    "callers": 0,
+    "typeDeleted": true
+  },
+  "slimCompatibilityBoundary": {
+    "callers": 0,
+    "typeDeleted": true,
+    "contextReferencesInSource": 0,
+    "forLegacyCompatibilityReferencesInSource": 0,
+    "authoritySourceExtractionResultReferencesInSource": 0
+  },
+  "extractForAuthorityDeleted": true,
+  "pipelineOptionsPreserved": true,
+  "inferenceBackendPreserved": true,
+  "slimFamilyPhysicalRemoval": false,
+  "remainingLegacySlimApis": [
+    "DocxSlimExtractor.Extract",
+    "DocxSlimExtractor.ExtractWithSourceFacts",
+    "SlimDocument",
+    "SlimParagraph"
+  ],
+  "releaseBuild": {
+    "status": "PASS",
+    "errors": 0
+  },
+  "focusedRetirementTests": {
+    "status": "PASS",
+    "passed": 56,
+    "failed": 0,
+    "skipped": 0
+  },
+  "providerCalls": 0,
+  "expectedChanged": false,
+  "normalProductionBehaviorChanged": false,
+  "rawRuntimeArtifactsTracked": 0,
+  "fullSuite": "NOT_RUN_BY_DESIGN",
+  "nextMilestone": "R4-10 physical Slim family removal"
+}
