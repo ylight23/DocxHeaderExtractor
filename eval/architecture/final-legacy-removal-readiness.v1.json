@@ -4,7 +4,8 @@
   "task": "LEGACY-9",
   "status": "PASS_REMOVAL_READINESS_AUDIT",
   "auditOnly": true,
-  "publicationRevision": "f4db8ee1dea3fa55dfe5f0568dec588044632ab6",
+  "auditBaseRevision": "f4db8ee1dea3fa55dfe5f0568dec588044632ab6",
+  "publicationRevision": "the commit containing this artifact; intentionally later than auditBaseRevision and canonicalExecutionRevision",
   "canonicalExecutionRevision": "32bb000343361516078f37da63943e5073b678fe",
   "scope": "final physical-removal readiness census; no source or test change",
   "authority": {
