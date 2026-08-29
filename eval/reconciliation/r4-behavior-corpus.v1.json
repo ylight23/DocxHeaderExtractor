@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r4_behavior_corpus",
+  "root": ".",
+  "items": [
+    {
+      "id": "028-wb-rfb-works-without-prequal-2017",
+      "docx": "todo10_8/generated-docx/02_hop_dong_mua_sam/028_WB_RFB_Works_Without_Prequal_2017.docx",
+      "pdf": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/028_WB_RFB_Works_Without_Prequal_2017.pdf",
+      "docxSha256": "f769b70bfb6a7f0ac7d62aea78ce9914eba629a5a781d73369e84a85fed47634",
+      "pdfSha256": "2dea390e45f4c07bc90d834be616cdbfc804db8c42e90b506d87bca037b29027",
+      "enabledFor": ["diagnostic", "pdf"]
+    },
+    {
+      "id": "056-openstax-business-law-essentials",
+      "docx": "todo10_8/generated-docx/04_giao_trinh/056_OpenStax_Business_Law_I_Essentials.docx",
+      "pdf": "todo10_8/heading_corpus_100/04_giao_trinh/056_OpenStax_Business_Law_I_Essentials.pdf",
+      "docxSha256": "9d567332514f7ed149f9b1e56830972b5080ffbec692ff26f1d675486dd0b683",
+      "pdfSha256": "c56eef123fd5699ef7fac923394687c34cb46f349bad0b0f5f59b2106bc303bc",
+      "enabledFor": ["diagnostic", "pdf"]
+    },
+    {
+      "id": "091-rfc9110-http-semantics",
+      "docx": "todo10_8/generated-docx/07_system_generated/091_RFC9110_HTTP_Semantics.docx",
+      "pdf": "todo10_8/heading_corpus_100/07_system_generated/091_RFC9110_HTTP_Semantics.pdf",
+      "docxSha256": "c2bdbf91a6bd16e848f6f3c4d690534eb7449cb5f0cd3bc39c5afa6610264641",
+      "pdfSha256": "60b30efa1048900833d1758440247fe8ac85a3134f2327388dcb24e07d814c89",
+      "enabledFor": ["diagnostic", "pdf"]
+    }
+  ]
+}
