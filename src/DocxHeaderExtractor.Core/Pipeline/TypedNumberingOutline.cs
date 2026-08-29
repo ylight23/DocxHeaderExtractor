@@ -1,5 +1,6 @@
 ﻿using DocxHeaderExtractor.Core.Models;
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -103,6 +104,48 @@ public static class TypedNumberingOutline
             }
         }
 
+        return result;
+    }
+
+    /// <summary>Native producer equivalent used by policy diagnostics; no Slim intermediate.</summary>
+    public static List<HeadingRecord> Build(IReadOnlyList<IPolicyParagraph> paragraphs, bool splitMergedParagraphs = true)
+    {
+        ArgumentNullException.ThrowIfNull(paragraphs);
+        var result = new List<HeadingRecord>();
+        var seen = new HashSet<(int Index, string Text)>();
+        var usable = paragraphs.Where(p => !p.Corrupt && p.TableDepth == 0 &&
+            !p.InTableOfContents && !string.IsNullOrWhiteSpace(p.Text)).ToArray();
+        var threshold = AdministrativeOutline.NguongNhanDe(usable.SelectMany(p => splitMergedParagraphs
+            ? ParagraphHeadingSplitter.Segments(StripPageArtifacts(p.Text))
+            : [StripPageArtifacts(p.Text)]));
+
+        foreach (var paragraph in usable.OrderBy(p => p.Index))
+        {
+            var segments = splitMergedParagraphs
+                ? ParagraphHeadingSplitter.Segments(StripPageArtifacts(paragraph.Text))
+                : [StripPageArtifacts(paragraph.Text)];
+            if (LooksLikeDenseTypedTableOfContents(paragraph.Text, segments)) continue;
+            foreach (var segment in segments)
+            {
+                if (LooksLikeTextLayoutPageHeader(segment) || NumberingAudit.Parse(segment) is not { } token ||
+                    LooksLikeCaptionLabel(token) || HasZeroArabicPathComponent(token, segment) ||
+                    LooksLikeNumericMeasurement(token, segment) || LooksLikeQuantitativeAmount(token, segment) ||
+                    LooksLikeQuantitativeTableRow(token, segment)) continue;
+                var split = SplitTypedHeadingBody(token, segment, threshold);
+                if (!seen.Add((paragraph.Index, split.Heading))) continue;
+                result.Add(new HeadingRecord
+                {
+                    Index = paragraph.Index, StableId = paragraph.StableId, SourceId = paragraph.StableId,
+                    Level = Math.Clamp(token.Depth, 1, 9), Text = split.Heading, StyleId = paragraph.StyleId,
+                    Source = HeadingSource.Structure, Confidence = 1.0,
+                    ConfidenceBasis = "typed_number_depth",
+                    DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
+                    InlineBody = split.Body, OriginalText = split.Body is null ? null : segment,
+                    HeadingSpan = split.Body is null ? null : split.HeadingSpan,
+                    InlineBodySpan = split.Body is null ? null : split.BodySpan,
+                });
+            }
+        }
         return result;
     }
 
