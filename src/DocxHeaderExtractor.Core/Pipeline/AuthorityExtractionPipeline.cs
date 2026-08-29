@@ -69,9 +69,6 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             var derivedFeatures = new DocumentFeatureDeriver().Derive(sourceDocument);
             var policyState = DocxPolicyStateBuilder.Build(
                 sourceDocument, structuralFeatures, derivedFeatures, _options.Extraction);
-            var extraction = new DocxSlimExtractor(_options.Extraction).ExtractForAuthority(conversion.Path);
-            var compatibility = extraction.Compatibility;
-            var slim = compatibility.ForLegacyCompatibility();
             var mode = DocumentModeClassifier.Measure(policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray());
             var diagnostics = DocumentDiagnosticRunner.Analyze(policyState, mode);
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
@@ -88,6 +85,9 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             {
                 case AuthorityRoute.PdfAuthority:
                 {
+                    // PDF migration is intentionally the remaining temporary Slim boundary.
+                    var legacyExtraction = new DocxSlimExtractor(_options.Extraction).ExtractForAuthority(conversion.Path);
+                    var slim = legacyExtraction.Compatibility.ForLegacyCompatibility();
                     await using var productionCheckpoint = ProductionCheckpointScope.Create();
                     await using var checkpoint = new PdfStageCheckpoint(
                         productionCheckpoint.CheckpointPath, resume: false, Path.GetFileName(pdf));
