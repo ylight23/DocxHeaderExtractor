@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "task": "LEGACY-6",
+  "status": "PASS_SCOPED_WITH_COMPATIBILITY_BLOCKERS",
+  "baseRevision": "c60ced1967f89b11c080146624705aab3d8341a6",
+  "cutoverRevision": "b719d9f",
+  "scope": "executable legacy-facade reachability closure; no physical removal",
+  "gates": {
+    "HEADER_EXTRACTION_PIPELINE_EXECUTABLE_CALLERS_BEFORE": 0,
+    "HEADER_EXTRACTION_PIPELINE_EXECUTABLE_CALLERS_AFTER": 0,
+    "DEPRECATED_EXTRACT_WITH_SOURCE_FACTS_EXTERNAL_CALLERS_BEFORE": 0,
+    "DEPRECATED_EXTRACT_WITH_SOURCE_FACTS_EXTERNAL_CALLERS_AFTER": 0,
+    "NORMAL_AUTHORITY_SLIM_API_CALLERS": 0,
+    "DEPRECATED_EXTRACT_COMPATIBILITY_CALLERS_AFTER": 17,
+    "UNKNOWN_REACHABILITY": 0,
+    "BEHAVIOR_UNEXPECTED_DELTA": 0,
+    "TEST_EXPECTED_CHANGED": false,
+    "HISTORICAL_EVIDENCE_REWRITTEN": false,
+    "SLIM_TYPES_DELETED": false,
+    "LEGACY_PHYSICAL_REMOVAL": false,
+    "PROVIDER_CALLS": 0,
+    "FULL_SUITE_EXECUTED": false
+  },
+  "definitions": [
+    { "symbol": "HeaderExtractionPipeline", "file": "src/DocxHeaderExtractor.Core/Pipeline/HeaderExtractionPipeline.cs", "classification": "COMPATIBILITY_RUNTIME", "executableCallersAfter": 0, "removalBlocker": "historical facade definition and compatibility/eval/test lineage" },
+    { "symbol": "DocxSlimExtractor.Extract", "file": "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs", "classification": "COMPATIBILITY_RUNTIME", "executableCallersAfter": 17, "removalBlocker": "CLI/Web inspect, repair evidence, PDF probes and diagnostic/eval flows still consume Slim-shaped output" },
+    { "symbol": "DocxSlimExtractor.ExtractWithSourceFacts", "file": "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs", "classification": "INTERNAL_IMPLEMENTATION", "executableExternalCallersAfter": 0, "removalBlocker": "internal Slim compatibility adapter remains behind authority boundary" },
+    { "symbol": "SlimCompatibilityBoundary", "file": "src/DocxHeaderExtractor.Core/OpenXmlLayer/SlimCompatibilityBoundary.cs", "classification": "COMPATIBILITY_RUNTIME", "executableCallersAfter": 5, "removalBlocker": "authority pipeline and compatibility consumers still require legacy context" },
+    { "symbol": "SlimDocument/SlimParagraph", "file": "src/DocxHeaderExtractor.Core/Models", "classification": "COMPATIBILITY_RUNTIME", "executableCallersAfter": "nonzero", "removalBlocker": "compatibility, diagnostic, test and historical lineage" }
+  ],
+  "remainingCompatibilityCallers": [
+    { "file": "src/DocxHeaderExtractor.Web/Program.cs:120", "role": "COMPATIBILITY_RUNTIME", "evidence": "inspect endpoint reports Slim mode" },
+    { "file": "src/DocxHeaderExtractor.Cli/Program.cs:288,815,894,977,1073,1255,1360,1684,1816,1878,1931,1989,2311", "role": "EVAL_ONLY/REPLAY_ONLY/DIAGNOSTIC", "evidence": "CLI audit, PDF, benchmark and inspection flows" },
+    { "file": "src/DocxHeaderExtractor.Core/Repair/AutoRepairWorkflow.cs:133", "role": "COMPATIBILITY_RUNTIME", "evidence": "repair evidence case construction" },
+    { "file": "src/DocxHeaderExtractor.Core/Repair/PartialKeyPackage.cs:212", "role": "REPLAY_ONLY", "evidence": "TextLayoutLineProbe consumes Slim paragraphs" },
+    { "file": "src/DocxHeaderExtractor.Core/Pipeline/PdfClusterProbe.cs:291", "role": "EVAL_ONLY/DIAGNOSTIC", "evidence": "deterministic PDF audit signal" }
+  ],
+  "cutover": {
+    "changedCaller": "RepairGateCalibration",
+    "newBoundary": "AuthorityEvaluationSourceReader",
+    "observableUnexpectedDelta": 0,
+    "productionNormalRouteChanged": false
+  },
+  "verification": {
+    "releaseBuild": { "status": "PASS", "errors": 0, "warnings": 160 },
+    "focusedTests": { "status": "PASS", "passed": 30, "failed": 0, "total": 30, "trxLocalPath": "C:/DocxHeaderExtractor-legacy6/tests/DocxHeaderExtractor.Tests/TestResults/legacy6-focused.trx", "trxSha256": "ECA96AF62F67AD1A844F6A190BD03940259DDDF4F616D1E14BAE901C208652C9" }
+  },
+  "nextTask": "ROUND3-CUMULATIVE-REGRESSION",
+  "notes": [
+    "The HeaderExtractionPipeline definition is retained; zero means executable source callers, not textual references.",
+    "Compatibility callers remain explicit blockers for LEGACY-9 physical retirement.",
+    "Raw TRX is local evidence only and is not published."
+  ]
+}
