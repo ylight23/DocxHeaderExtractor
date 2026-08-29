@@ -35,6 +35,8 @@ Example diagnostic comparison:
 ```powershell
 .\tools\r4\Compare-R4Behavior.ps1 `
   -Corpus .\eval\reconciliation\r4-behavior-corpus.v1.json `
+  -BaselineRevision 3b350543d3f6b88d074553915169d84587fecf00 `
+  -CurrentRevision 9b8a91bd75966d86eecbf32648c572d3ff0d57da `
   -BaselineSnapshots C:\r4-snapshots\diagnostic-baseline `
   -CurrentSnapshots C:\r4-snapshots\current `
   -Mode diagnostic `

@@ -1,9 +1,11 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory)] [string] $Corpus,
+    [Parameter(Mandatory)] [string] $BaselineRevision,
+    [Parameter(Mandatory)] [string] $CurrentRevision,
     [Parameter(Mandatory)] [string] $BaselineSnapshots,
     [Parameter(Mandatory)] [string] $CurrentSnapshots,
-    [ValidateSet('diagnostic', 'pdf')] [string] $Mode,
+    [Parameter(Mandatory)] [ValidateSet('diagnostic', 'pdf')] [string] $Mode,
     [string] $Output = "r4-behavior-comparison.v1.json"
 )
 
@@ -76,6 +78,8 @@ function Select-Pdf([object] $Snapshot) {
 function Get-StageFields([string] $Kind) {
     if ($Kind -eq 'diagnostic') {
         return @(
+            @{ stage = 'diagnostic.outcome'; field = 'status' },
+            @{ stage = 'diagnostic.outcome'; field = 'reason' },
             @{ stage = 'diagnostic.style'; field = 'styleSignal' },
             @{ stage = 'diagnostic.layout'; field = 'layoutSignal' },
             @{ stage = 'diagnostic.candidates'; field = 'candidateDiagnostics' }
@@ -112,11 +116,26 @@ foreach ($item in @($corpusObject.items)) {
     }
 }
 
-function Read-Snapshot([string] $Root, [string] $Id) {
-    $path = Join-Path (Resolve-RepoPath $Root) "$Id.json"
+function Read-Snapshot([string] $Root, [object] $Item, [string] $ExpectedRevision) {
+    $path = Join-Path (Resolve-RepoPath $Root) "$($Item.id).json"
     if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw "UNMEASURED: $path" }
     $snapshot = Read-Json $path
-    if ($snapshot.providerCalls -ne 0 -or $snapshot.networkEnabled -eq $true -or $snapshot.liveLlm -eq $true -or $snapshot.liveVlm -eq $true) {
+    Assert-String $snapshot.documentId "snapshot.documentId"
+    Assert-String $snapshot.revision "snapshot.revision"
+    Assert-String $snapshot.docxSha256 "snapshot.docxSha256"
+    Assert-String $snapshot.pdfSha256 "snapshot.pdfSha256"
+    Assert-String $snapshot.mode "snapshot.mode"
+    if ($snapshot.documentId -cne [string]$Item.id) { throw "SNAPSHOT_DOCUMENT_ID_MISMATCH: $path" }
+    if ($snapshot.revision -cne $ExpectedRevision) { throw "SNAPSHOT_REVISION_MISMATCH: $path" }
+    if ($snapshot.mode -cne $Mode) { throw "SNAPSHOT_MODE_MISMATCH: $path" }
+    if ($snapshot.docxSha256.ToLowerInvariant() -cne ([string]$Item.docxSha256).ToLowerInvariant() -or
+        $snapshot.pdfSha256.ToLowerInvariant() -cne ([string]$Item.pdfSha256).ToLowerInvariant()) {
+        throw "SNAPSHOT_CORPUS_HASH_MISMATCH: $path"
+    }
+    if ($null -eq $snapshot.providerCalls -or [int]$snapshot.providerCalls -ne 0 -or
+        $null -eq $snapshot.networkEnabled -or $snapshot.networkEnabled -ne $false -or
+        $null -eq $snapshot.liveLlm -or $snapshot.liveLlm -ne $false -or
+        $null -eq $snapshot.liveVlm -or $snapshot.liveVlm -ne $false) {
         throw "PROVIDER_CALLS_OR_LIVE_MODEL: $path"
     }
     return $snapshot
@@ -125,8 +144,8 @@ function Read-Snapshot([string] $Root, [string] $Id) {
 $rows = @()
 $stageFields = Get-StageFields $Mode
 foreach ($item in @($corpusObject.items | Where-Object { @($_.enabledFor) -contains $Mode })) {
-    $baseline = Read-Snapshot $BaselineSnapshots $item.id
-    $current = Read-Snapshot $CurrentSnapshots $item.id
+    $baseline = Read-Snapshot $BaselineSnapshots $item $BaselineRevision
+    $current = Read-Snapshot $CurrentSnapshots $item $CurrentRevision
     $baseSelected = if ($Mode -eq 'diagnostic') { Select-Diagnostic $baseline } else { Select-Pdf $baseline }
     $currentSelected = if ($Mode -eq 'diagnostic') { Select-Diagnostic $current } else { Select-Pdf $current }
     $first = $null
@@ -135,6 +154,8 @@ foreach ($item in @($corpusObject.items | Where-Object { @($_.enabledFor) -conta
         $left = $baseSelected
         $right = $currentSelected
         foreach ($part in $field.Split('.')) { $left = $left.$part; $right = $right.$part }
+        $left = Normalize-Value $left
+        $right = Normalize-Value $right
         $leftJson = $left | ConvertTo-Json -Depth 40 -Compress
         $rightJson = $right | ConvertTo-Json -Depth 40 -Compress
         if ($leftJson -cne $rightJson) {
@@ -156,6 +177,8 @@ $result = [ordered]@{
     sameCorpusAllRevisions = $true
     baselineSnapshots = (Resolve-RepoPath $BaselineSnapshots)
     currentSnapshots = (Resolve-RepoPath $CurrentSnapshots)
+    baselineRevision = $BaselineRevision
+    currentRevision = $CurrentRevision
     providerCalls = 0
     unmeasured = 0
     joined = $rows.Count
