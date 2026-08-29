@@ -3,7 +3,9 @@ using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.Core.Application.Features;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Vision;
 using UglyToad.PdfPig;
 
@@ -277,6 +279,17 @@ public static class PdfLayoutEvidenceOutline
     }
 
     private static string Sha256(string text) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text))).ToLowerInvariant();
+
+    private static DocxPolicyState BuildPolicyState(SlimDocument document)
+    {
+        var source = DocxSourceFactsBuilder.Build(document.SourcePath, document.Paragraphs,
+            document.PageHeaders, document.PageFooters);
+        var features = NumberingStyleFeatures.FromSourceDocument(source);
+        var built = DocxPolicyStateBuilder.Build(source, features,
+            new DocumentFeatureDeriver().Derive(source), new ExtractionOptions());
+        return new DocxPolicyState(source, features, built.DerivedFeatures, built.Paragraphs,
+            document.StyleTrust, document.Mode);
+    }
 
     public static PdfTextbookOutlineResult TryBuild(string originalInputPath, SlimDocument slim)
     {
@@ -568,14 +581,14 @@ public static class PdfLayoutEvidenceOutline
         int visualMaxConcurrency = 1,
         bool includeSemanticHierarchyFallback = true) =>
         TryBuildBroadAuditWithAnalystCoreAsync(
-            originalInputPath, slim, analyst, maximumAnalystBlocks, includeAllVisualStyles,
+            originalInputPath, BuildPolicyState(slim), analyst, maximumAnalystBlocks, includeAllVisualStyles,
             includeSupplementCandidates, visualAnalyst, visualDpi, maximumVisualRegions, visualProducer,
             scheduleVisualRegions, ct, semanticLaneOptions, checkpointPath, resume, visualMaxConcurrency,
             includeSemanticHierarchyFallback, null);
 
     internal static async Task<PdfTextbookOutlineResult> TryBuildBroadAuditWithAnalystCoreAsync(
         string originalInputPath,
-        SlimDocument slim,
+        DocxPolicyState policyState,
         IHeaderClassifier analyst,
         int maximumAnalystBlocks = 0,
         bool includeAllVisualStyles = false,
@@ -607,7 +620,7 @@ public static class PdfLayoutEvidenceOutline
         // Its own canonical source validator remains the authority before any heading is emitted.
         var visualRecoveryTask = visualAnalyst is null
             ? Task.FromResult(new PdfVisualTextRecoveryResult([], [], [], [], [], []))
-            : PdfVisualTextRecovery.RecoverAsync(context.Pdf, context.Lines, slim, [], visualAnalyst,
+            : PdfVisualTextRecovery.RecoverAsync(context.Pdf, context.Lines, policyState, [], visualAnalyst,
                 visualDpi, maximumVisualRegions, visualProducer, scheduleVisualRegions, ct,
                 checkpoint?.CompletedVisualRegions,
                 checkpoint is null ? null : (trace, token) => checkpoint.RecordVisualRegionAsync(trace, token),
@@ -723,7 +736,7 @@ public static class PdfLayoutEvidenceOutline
         // heading text within its possibly-wider window, so the auto-numbered title-only fallback in
         // AlignToDocx never searches with trailing body-context text glued to the title.
         var headingSpansByBlockId = eligibleDecisions.ToDictionary(d => d.Id, d => d.HeadingSpan, StringComparer.Ordinal);
-        var alignment = AlignToDocx(accepted, slim, context.Profile, AnalystBasis, trace: null, haystacks: null, headingSpansByBlockId);
+        var alignment = AlignToDocx(accepted, policyState, context.Profile, AnalystBasis, trace: null, haystacks: null, headingSpansByBlockId);
         if (checkpoint is not null)
             await checkpoint.RecordDownstreamProvenanceAsync(
                 selected,

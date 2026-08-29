@@ -85,9 +85,6 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             {
                 case AuthorityRoute.PdfAuthority:
                 {
-                    // PDF migration is intentionally the remaining temporary Slim boundary.
-                    var legacyExtraction = new DocxSlimExtractor(_options.Extraction).ExtractForAuthority(conversion.Path);
-                    var slim = legacyExtraction.Compatibility.ForLegacyCompatibility();
                     await using var productionCheckpoint = ProductionCheckpointScope.Create();
                     await using var checkpoint = new PdfStageCheckpoint(
                         productionCheckpoint.CheckpointPath, resume: false, Path.GetFileName(pdf));
@@ -95,7 +92,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                     try
                     {
                         result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystCoreAsync(
-                            inputPath, slim, analyst!,
+                            inputPath, policyState, analyst!,
                             maximumAnalystBlocks: _options.PdfFirstAnalystBlocks,
                             includeAllVisualStyles: true,
                             includeSupplementCandidates: true,
