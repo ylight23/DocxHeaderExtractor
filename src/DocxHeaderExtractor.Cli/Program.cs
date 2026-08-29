@@ -5,6 +5,8 @@ using DocxHeaderExtractor.Cli;
 using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Chunking;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
@@ -974,7 +976,12 @@ static async Task<int> RunPdfVisualProbeAsync(CommandLineOptions o, Cancellation
         return 2;
     }
 
-    var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(docx);
+    var source = new OpenXmlDocumentSource().Read(docx);
+    var features = NumberingStyleFeatures.FromSourceDocument(source);
+    var builtPolicy = DocxPolicyStateBuilder.Build(source, features,
+        new DocumentFeatureDeriver().Derive(source), o.Pipeline.Extraction);
+    var policyState = new DocxPolicyState(source, features, builtPolicy.DerivedFeatures,
+        builtPolicy.Paragraphs, builtPolicy.StyleTrust, builtPolicy.Mode);
     if (o.PdfVisualPage is { } page)
     {
         var bounds = PdfRegionRasterizer.GetPageBounds(pdf, page);
@@ -1015,7 +1022,7 @@ static async Task<int> RunPdfVisualProbeAsync(CommandLineOptions o, Cancellation
     }
     if (!string.IsNullOrWhiteSpace(o.PdfVisualProbeText))
     {
-        var sourceOnly = PdfVisualTextRecovery.InspectSourceForAudit(slim, o.PdfVisualProbeText);
+        var sourceOnly = PdfVisualTextRecovery.InspectSourceForAudit(policyState, o.PdfVisualProbeText);
         var sourceJson = JsonSerializer.Serialize(new { file = Path.GetFileName(docx), sourceOnly }, new JsonSerializerOptions { WriteIndented = true });
         if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(sourceJson);
         else
@@ -1039,7 +1046,7 @@ static async Task<int> RunPdfVisualProbeAsync(CommandLineOptions o, Cancellation
                 ? new OpenRouterVisualQuestion(o.Pipeline.OpenRouter.Endpoint, o.Pipeline.OpenRouter.ApiKey, o.Pipeline.OpenRouter.Model)
             : throw new ArgumentException("pdf-visual-probe cần --nvidia-nim hoặc --vlm-model/--vlm-mmproj.");
 
-    var result = await PdfVisualTextRecovery.ProbeAsync(pdf, slim, visual, o.PdfVisualProbeIndex, o.VlmDpi, ct);
+    var result = await PdfVisualTextRecovery.ProbeAsync(pdf, policyState, visual, o.PdfVisualProbeIndex, o.VlmDpi, ct);
     var payload = new { file = Path.GetFileName(docx), pdf = Path.GetFileName(pdf), result };
     var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true });
     if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(json);

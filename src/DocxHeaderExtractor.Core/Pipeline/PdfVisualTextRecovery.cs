@@ -41,23 +41,6 @@ public static class PdfVisualTextRecovery
 {
     private static readonly Regex SubordinateListItemRx = new(@"^\s*(?:[a-z]|[ivxlcdm]{1,5}|\d{1,3})[.)]\s+", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-    [Obsolete("Temporary Slim compatibility overload during R4-6 migration.", error: false)]
-    internal static Task<PdfVisualTextRecoveryResult> RecoverAsync(
-        string pdfPath, IReadOnlyList<PdfLine> lines, SlimDocument document,
-        IReadOnlyList<HeadingRecord> existing, IPdfVisualQuestion visual, int dpi,
-        int maximumRegions, string? producer, bool schedule, CancellationToken ct,
-        IReadOnlySet<string>? completedRegionIds = null,
-        Func<PdfVisualRecoveryTrace, CancellationToken, Task>? checkpoint = null,
-        IReadOnlyList<PdfVisualRecoveryTrace>? resumedTraces = null, int maxConcurrency = 1)
-    {
-        var source = DocxSourceFactsBuilder.Build(document.SourcePath, document.Paragraphs, document.PageHeaders, document.PageFooters);
-        var features = NumberingStyleFeatures.FromSourceDocument(source);
-        var built = DocxPolicyStateBuilder.Build(source, features, new DocumentFeatureDeriver().Derive(source), new ExtractionOptions());
-        var policy = new DocxPolicyState(source, features, built.DerivedFeatures, built.Paragraphs, document.StyleTrust, document.Mode);
-        return RecoverAsync(pdfPath, lines, policy, existing, visual, dpi, maximumRegions, producer, schedule, ct,
-            completedRegionIds, checkpoint, resumedTraces, maxConcurrency);
-    }
-
     internal static async Task<PdfVisualTextRecoveryResult> RecoverAsync(
         string pdfPath,
         IReadOnlyList<PdfLine> lines,
@@ -205,7 +188,7 @@ public static class PdfVisualTextRecovery
     /// </summary>
     public static async Task<PdfVisualProbeResult> ProbeAsync(
         string pdfPath,
-        SlimDocument document,
+        DocxPolicyState policyState,
         IPdfVisualQuestion visual,
         int regionIndex,
         int dpi,
@@ -244,10 +227,10 @@ public static class PdfVisualTextRecovery
         var production = Parse(region.SourceId, productionRaw);
         var usableProduction = IsUsableForRecovery(production) && HasObservableText(production.ObservedText);
         var matchCount = usableProduction
-            ? CountCanonicalMatches(document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), production.ObservedText, new HashSet<(int Index, int Start)>())
+            ? CountCanonicalMatches(policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(), production.ObservedText, new HashSet<(int Index, int Start)>())
             : 0;
         var mapped = usableProduction
-            ? MapUnique(document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), region.SourceId, production.ObservedText, new HashSet<(int Index, int Start)>())
+            ? MapUnique(policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(), region.SourceId, production.ObservedText, new HashSet<(int Index, int Start)>())
             : null;
         stages.Add(new PdfVisualProbeStage("D-production-reconciliation", productionRaw,
             !usableProduction ? "fail:proposal-contract" :
@@ -258,7 +241,7 @@ public static class PdfVisualTextRecovery
     }
 
     /// <summary>Source-only trace for a VLM-observed string. It makes reconciliation loss observable without a model call.</summary>
-    public static PdfSourceReconciliationProbe InspectSourceForAudit(SlimDocument document, string observedText)
+    public static PdfSourceReconciliationProbe InspectSourceForAudit(DocxPolicyState policyState, string observedText)
     {
         var canonical = CanonicalMap(observedText).Text;
         var allTerms = observedText.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries)
@@ -267,7 +250,7 @@ public static class PdfVisualTextRecovery
             .Where(item => item.Length >= 3)
             .Distinct(StringComparer.Ordinal)
             .ToArray();
-        var termMatches = document.Paragraphs
+        var termMatches = policyState.Paragraphs
             .Where(paragraph => !paragraph.InTableOfContents)
             .Where(paragraph =>
             {
@@ -276,8 +259,8 @@ public static class PdfVisualTextRecovery
             })
             .Select(paragraph => paragraph.Index)
             .ToArray();
-        return new PdfSourceReconciliationProbe(canonical, CountCanonicalMatches(document.Paragraphs.Cast<IPolicyParagraph>().ToArray(), observedText,
-            new HashSet<(int Index, int Start)>()), termMatches, document.Paragraphs.Count);
+        return new PdfSourceReconciliationProbe(canonical, CountCanonicalMatches(policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(), observedText,
+            new HashSet<(int Index, int Start)>()), termMatches, policyState.Paragraphs.Count);
     }
 
     /// <summary>Lists every geometry-derived visual source fact before any VLM budget is applied.</summary>
