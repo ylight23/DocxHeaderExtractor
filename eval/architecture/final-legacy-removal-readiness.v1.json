@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "final_legacy_removal_readiness",
+  "task": "LEGACY-9",
+  "status": "PASS_REMOVAL_READINESS_AUDIT",
+  "auditOnly": true,
+  "publicationRevision": "f4db8ee1dea3fa55dfe5f0568dec588044632ab6",
+  "canonicalExecutionRevision": "32bb000343361516078f37da63943e5073b678fe",
+  "scope": "final physical-removal readiness census; no source or test change",
+  "authority": {
+    "round3Status": "PASS",
+    "round3CanonicalResult": { "total": 1338, "passed": 1308, "failed": 30, "skipped": 0 },
+    "failureUniverseFrozen": true,
+    "fullSuiteValidForFreeze": true,
+    "providerCalls": 0
+  },
+  "census": {
+    "unknown": 0,
+    "headerExtractionPipelineExecutableCallers": 0,
+    "extractWithSourceFactsExternalCallers": 0,
+    "normalAuthoritySlimCallers": 0,
+    "extractCompatibilityCallers": 17,
+    "slimCompatibilityBoundaryCallers": 5,
+    "slimDocumentAndSlimParagraphCallers": "nonzero"
+  },
+  "classifications": [
+    {
+      "surface": "HeaderExtractionPipeline",
+      "classification": "KEEP_FOR_API_LINEAGE",
+      "removableNow": false,
+      "blocker": "Legacy definition and explicit compatibility/evaluation test lineage remain.",
+      "owner": "pipeline migration"
+    },
+    {
+      "surface": "DocxSlimExtractor.ExtractWithSourceFacts",
+      "classification": "REMOVE_CANDIDATE",
+      "removableNow": false,
+      "blocker": "Internal implementation remains behind the current compatibility adapter.",
+      "owner": "OpenXml boundary migration"
+    },
+    {
+      "surface": "Normal authority Slim callers",
+      "classification": "REMOVE_CANDIDATE",
+      "removableNow": true,
+      "blocker": null,
+      "owner": "authority boundary"
+    },
+    {
+      "surface": "DocxSlimExtractor.Extract",
+      "classification": "KEEP_COMPATIBILITY",
+      "removableNow": false,
+      "knownCallerCount": 17,
+      "blocker": "Web inspect, CLI audit/PDF/benchmark, repair evidence, replay, and deterministic diagnostics still consume Slim output.",
+      "owner": "respective command/workflow owners"
+    },
+    {
+      "surface": "SlimCompatibilityBoundary",
+      "classification": "KEEP_COMPATIBILITY",
+      "removableNow": false,
+      "knownCallerCount": 5,
+      "blocker": "Authority compatibility context and legacy runtime bridge remain.",
+      "owner": "OpenXml/authority boundary"
+    },
+    {
+      "surface": "SlimDocument/SlimParagraph",
+      "classification": "KEEP_COMPATIBILITY",
+      "removableNow": false,
+      "blocker": "Demotion, compatibility, diagnostic, writeback, and test lineage remain.",
+      "owner": "demotion and compatibility migration"
+    }
+  ],
+  "gates": {
+    "everyRemainingCallerClassified": true,
+    "everyRemainingCallerHasBlockerOrOwner": true,
+    "historicalEvidenceDeletion": false,
+    "benchmarkExpectedChanged": false,
+    "sourceDeltaFromCanonicalExecution": 0,
+    "testDeltaFromCanonicalExecution": 0,
+    "physicalSlimRetirementReady": false,
+    "doNotDeleteLegacyBeforeZeroReferenceProof": true
+  },
+  "decision": "PASS_REMOVAL_READINESS_AUDIT",
+  "nextStep": "Keep compatibility surfaces; authorize physical removal only after zero-reference proof and a separate source/test validation gate."
+}
