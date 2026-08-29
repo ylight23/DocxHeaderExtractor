@@ -41,6 +41,26 @@ public static class NumberingResolver
         }
     }
 
+    internal static void Apply(MainDocumentPart mainPart, IReadOnlyList<OpenXmlSourceParagraph> paragraphs)
+    {
+        var numbering = mainPart.NumberingDefinitionsPart?.Numbering;
+        if (numbering is null) return;
+        var abstractLevels = ReadAbstractLevels(numbering);
+        var instances = ReadInstances(numbering, abstractLevels, mainPart);
+        var counters = new Dictionary<(int NumId, int Level), int>();
+        foreach (var paragraph in paragraphs)
+        {
+            if (paragraph.NumberingId is not { } numId || paragraph.NumberingLevel is not { } level ||
+                !instances.TryGetValue(numId, out var levels) || !levels.TryGetValue(level, out var definition)) continue;
+            var key = (numId, level);
+            counters[key] = counters.TryGetValue(key, out var previous) ? previous + 1 : definition.Start;
+            foreach (var child in counters.Keys.Where(k => k.NumId == numId && k.Level > level).ToArray()) counters.Remove(child);
+            paragraph.NumberingFormat = definition.Format;
+            paragraph.NumberLabel = Render(definition.Text, levels, counters, numId, level);
+            paragraph.NumberingStyleLevel = HeadingHeuristics.BuiltInLevelFromStyleId(definition.StyleId);
+        }
+    }
+
     /// <summary>Định dạng một w:lvlText bằng bộ đếm hiện tại.</summary>
     private static string Render(
         string template,
