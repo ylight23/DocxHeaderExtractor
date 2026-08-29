@@ -1,4 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
 
@@ -47,7 +49,13 @@ public sealed class DocumentDiagnosticRunnerTests
                 FormatDiffers: true),
         }.Build();
 
-        var report = DocumentDiagnosticRunner.Analyze(slim, slim.Mode!);
+        var source = DocxSourceFactsBuilder.Build(slim.SourcePath, slim.Paragraphs, [], []);
+        var features = NumberingStyleFeatures.FromSourceDocument(source);
+        var built = DocxPolicyStateBuilder.Build(source, features,
+            new DocumentFeatureDeriver().Derive(source), new ExtractionOptions());
+        var policy = new DocxPolicyState(source, features, built.DerivedFeatures, built.Paragraphs,
+            slim.StyleTrust, slim.Mode);
+        var report = DocumentDiagnosticRunner.Analyze(policy, slim.Mode!);
 
         Assert.Equal("needs_analysis", report.Status);
         Assert.Equal("mixed_style_signals", report.Reason);

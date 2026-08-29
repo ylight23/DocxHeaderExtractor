@@ -3,6 +3,8 @@ using System.Security.Cryptography;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Chunking;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Learning;
@@ -445,7 +447,12 @@ public sealed class HeaderExtractionPipeline : IDisposable
             var extractor = new DocxSlimExtractor(_options.Extraction);
             var slim = extractor.Extract(conversion.Path);
             var modeReport = slim.Mode ?? DocumentModeClassifier.Measure(slim.Paragraphs);
-            var diagnostics = DocumentDiagnosticRunner.Analyze(slim, modeReport);
+            var diagnosticSource = DocxSourceFactsBuilder.Build(
+                inputPath, slim.Paragraphs, slim.PageHeaders, slim.PageFooters);
+            var diagnosticFeatures = NumberingStyleFeatures.FromSourceDocument(diagnosticSource);
+            var diagnosticPolicy = DocxPolicyStateBuilder.Build(
+                diagnosticSource, diagnosticFeatures, new DocumentFeatureDeriver().Derive(diagnosticSource), _options.Extraction);
+            var diagnostics = DocumentDiagnosticRunner.Analyze(diagnosticPolicy, modeReport);
             Log(modeReport.Describe());
             if (diagnostics.Status != "normal")
             {
