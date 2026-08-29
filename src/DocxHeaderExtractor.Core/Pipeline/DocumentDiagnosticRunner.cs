@@ -55,7 +55,7 @@ public static class DocumentDiagnosticRunner
             paragraphs.Where(p => p.HasBuiltInHeadingStyle && !string.IsNullOrWhiteSpace(p.Text)).ToArray(),
             true, state);
         yield return Candidate("auto:outline-level",
-            paragraphs.Where(p => OutlineEvidenceLevel(p) is not null && !p.InTableOfContents).ToArray(),
+            paragraphs.Where(p => p.OutlineLevel is >= 0 and <= 8 && !p.InTableOfContents).ToArray(),
             false, state);
         yield return Candidate("auto:numbering",
             paragraphs.Where(p => p.NumberingStyleHeadingLevel is >= 1 and <= 9 && !p.InTableOfContents).ToArray(),
@@ -83,16 +83,9 @@ public static class DocumentDiagnosticRunner
 
             foreach (var segment in ParagraphHeadingSplitter.Segments(paragraph.Text))
             {
-                if (NumberingAudit.Parse(TypedNumberingOutline.StripPageArtifacts(segment)) is not { } token)
+                if (!TypedNumberSegmentRx.IsMatch(segment) || NumberingAudit.Parse(segment) is not { } token)
                     continue;
-                var heading = TypedNumberingOutline.StripPageArtifacts(segment).Trim();
-                if (TypedNumberingOutline.LooksLikeTextLayoutPageHeader(heading) ||
-                    TypedNumberingOutline.LooksLikeCaptionLabel(token) ||
-                    TypedNumberingOutline.HasZeroArabicPathComponent(token, heading) ||
-                    TypedNumberingOutline.LooksLikeNumericMeasurement(token, heading) ||
-                    TypedNumberingOutline.LooksLikeQuantitativeAmount(token, heading) ||
-                    TypedNumberingOutline.LooksLikeQuantitativeTableRow(token, heading))
-                    continue;
+                var heading = segment.Trim();
                 if (!seen.Add((paragraph.Index, heading))) continue;
                 result.Add(new HeadingRecord
                 {
@@ -120,20 +113,13 @@ public static class DocumentDiagnosticRunner
         var headings = items.Select(p => new HeadingRecord
         {
             Index = p.Index, StableId = p.StableId, SourceId = p.StableId,
-            Level = p.NumberingStyleHeadingLevel ?? OutlineEvidenceLevel(p) ?? p.GuessedLevel ?? 1,
+            Level = p.NumberingStyleHeadingLevel ?? p.OutlineLevel ?? p.GuessedLevel ?? 1,
             Text = p.Text, OriginalText = p.Text, HeadingSpan = new TextOffsetSpan(0, p.Text.Length),
             BoundarySource = "diagnostic-source-native", StyleId = p.StyleId, Source = HeadingSource.Structure,
             Confidence = 1, DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence, ConfidenceBasis = route,
         }).ToArray();
         return Candidate(route, headings, styleTrustRequired, state, bodyAnchorRatio, tocCoverage, forcedAccepted, forcedReason);
     }
-
-    private static int? OutlineEvidenceLevel(DocxPolicyParagraph paragraph) =>
-        paragraph.OutlineLevel is >= 0 and <= 8
-            ? paragraph.OutlineLevel.Value + 1
-            : paragraph.Style.BuiltInHeadingStyleLevel is >= 1 and <= 9
-                ? paragraph.Style.BuiltInHeadingStyleLevel
-                : null;
 
     private static OutlineCandidateDiagnostic Candidate(string route, IReadOnlyList<HeadingRecord> headings,
         bool styleTrustRequired, DocxPolicyState state, double? bodyAnchorRatio = null,
