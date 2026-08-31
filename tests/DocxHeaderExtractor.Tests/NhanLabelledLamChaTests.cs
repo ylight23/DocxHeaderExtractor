@@ -10,13 +10,6 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public class NhanLabelledLamChaTests
 {
-    private static SlimParagraph P(int i, string text) => new()
-    {
-        Index = i,
-        Text = text,
-        FontSizePt = 13,
-    };
-
     private static HeadingRecord H(int i, int level, string text) => new()
     {
         Index = i,
@@ -27,7 +20,7 @@ public class NhanLabelledLamChaTests
     };
 
     /// <summary>Đúng nội dung và đúng cấp khởi tạo của bench/02, để tái lập lỗi thật.</summary>
-    private static (List<HeadingRecord> Headings, SlimDocument Document) Bench02()
+    private static (List<HeadingRecord> Headings, DocxHeaderExtractor.Core.Application.Policy.DocxPolicyState Document) Bench02()
     {
         (int I, int Lvl, string T)[] rows =
         [
@@ -43,16 +36,11 @@ public class NhanLabelledLamChaTests
         const string Body = "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu " +
                             "về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị.";
 
-        List<SlimParagraph> ps = [];
+        var items = new List<(int Index, string Text, int? NumberingId, int? StyleLevel)>();
         for (var i = 0; i <= 13; i++)
-            ps.Add(P(i, rows.FirstOrDefault(r => r.I == i) is { T: { } t } ? t : Body));
+            items.Add((i, rows.FirstOrDefault(r => r.I == i) is { T: { } t } ? t : Body, null, null));
 
-        var doc = new SlimDocument
-        {
-            FileName = "02.docx",
-            SourcePath = "02.docx",
-            Paragraphs = ps,
-        }.Build();
+        var doc = NativePolicyStateFactory.Create(items);
 
         return ([.. rows.Select(r => H(r.I, r.Lvl, r.T))], doc);
     }

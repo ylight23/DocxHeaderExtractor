@@ -36,7 +36,7 @@ public sealed class PdfReleaseSmokeProbe
             var name = Path.GetFileNameWithoutExtension(path);
             try
             {
-                using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
+                using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
                 var outline = await pipeline.RunAsync(path);
                 rows.Add(Inspect(name, path, outline));
             }

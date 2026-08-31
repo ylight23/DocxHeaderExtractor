@@ -174,7 +174,7 @@ public sealed class CorrectionMemory
     /// Áp dụng ground truth chỉ khi khớp đồng thời tên file, stable ID và nguyên văn paragraph.
     /// Không tổng quát hóa sang file/đoạn khác; model vẫn xử lý các trường hợp tương tự.
     /// </summary>
-    public int ApplyExact(string sourceFile, SlimDocument document, List<HeadingRecord> headings)
+    public int ApplyExact(string sourceFile, SourceDocument document, List<HeadingRecord> headings)
     {
         var file = System.IO.Path.GetFileName(sourceFile);
         var applicable = _items
@@ -195,11 +195,11 @@ public sealed class CorrectionMemory
 
             if (correction.CorrectedLevel == 0)
             {
-                if (byIndex.Remove(paragraph.Index)) applied++;
+                if (byIndex.Remove(paragraph.SourceOrdinal)) applied++;
                 continue;
             }
 
-            if (byIndex.TryGetValue(paragraph.Index, out var existing))
+            if (byIndex.TryGetValue(paragraph.SourceOrdinal, out var existing))
             {
                 existing.Level = correction.CorrectedLevel;
                 existing.Source = HeadingSource.HumanCorrection;
@@ -208,13 +208,13 @@ public sealed class CorrectionMemory
             }
             else
             {
-                byIndex[paragraph.Index] = new HeadingRecord
+                byIndex[paragraph.SourceOrdinal] = new HeadingRecord
                 {
-                    Index = paragraph.Index,
+                    Index = paragraph.SourceOrdinal,
                     StableId = paragraph.StableId,
                     Level = correction.CorrectedLevel,
                     Text = paragraph.Text,
-                    StyleId = paragraph.StyleId,
+                    StyleId = paragraph.Style.StyleId,
                     Source = HeadingSource.HumanCorrection,
                     Confidence = 1,
                 };

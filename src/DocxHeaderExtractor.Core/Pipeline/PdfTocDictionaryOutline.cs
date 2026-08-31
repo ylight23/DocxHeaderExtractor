@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using UglyToad.PdfPig;
@@ -27,7 +28,7 @@ internal static class PdfTocDictionaryOutline
 
     public static PdfTocDictionaryOutlineResult TryBuild(
         string originalInputPath,
-        SlimDocument slim,
+        IReadOnlyList<IPolicyParagraph> paragraphs,
         DocumentModeReport mode)
     {
         var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
@@ -53,7 +54,7 @@ internal static class PdfTocDictionaryOutline
         if (pdfAnchorRatio < 0.85)
             return new PdfTocDictionaryOutlineResult(false, [], $"low-pdf-page-anchor-ratio:{probe.RelaxedPageAnchors}/{probe.Entries}", probe);
 
-        var headings = AlignToDocx(probe.Items, slim);
+        var headings = AlignToDocx(probe.Items, paragraphs);
         var ratio = headings.Count / (double)probe.Entries;
         if (headings.Count < 8 || ratio < 0.70)
             return new PdfTocDictionaryOutlineResult(false, headings, $"low-docx-alignment:{headings.Count}/{probe.Entries}", probe);
@@ -67,9 +68,9 @@ internal static class PdfTocDictionaryOutline
 
     private static List<HeadingRecord> AlignToDocx(
         IReadOnlyList<PdfTocDictionaryEntry> entries,
-        SlimDocument slim)
+        IReadOnlyList<IPolicyParagraph> paragraphs)
     {
-        var paragraphs = slim.Paragraphs
+        var sourceParagraphs = paragraphs
             .Where(p => p.Role != ParagraphRole.Empty &&
                         !p.InTableOfContents &&
                         !string.IsNullOrWhiteSpace(p.Text))
@@ -82,7 +83,7 @@ internal static class PdfTocDictionaryOutline
         var cursor = 0;
         foreach (var entry in entries)
         {
-            var match = FindAnchor(paragraphs, entry, cursor);
+            var match = FindAnchor(sourceParagraphs, entry, cursor);
             if (match is null) continue;
 
             var title = CleanTitle(entry.Title);
@@ -175,6 +176,6 @@ internal static class PdfTocDictionaryOutline
         WhitespaceRx.Replace(PdfTextUtilities.HeadingReadable(text), " ").Trim(' ', '.');
 
     private sealed record CanonMap(string Canonical, IReadOnlyList<int> SourceIndexes);
-    private sealed record CanonParagraph(SlimParagraph Paragraph, CanonMap Map);
-    private readonly record struct MatchResult(SlimParagraph Paragraph, int Start, int End);
+    private sealed record CanonParagraph(IPolicyParagraph Paragraph, CanonMap Map);
+    private readonly record struct MatchResult(IPolicyParagraph Paragraph, int Start, int End);
 }

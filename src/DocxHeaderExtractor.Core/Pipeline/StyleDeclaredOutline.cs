@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -38,13 +39,6 @@ public static class StyleDeclaredOutline
     /// liệu, không phải lỗi.
     /// </para>
     /// </summary>
-    public static int LevelOf(SlimParagraph paragraph)
-    {
-        if (TypedNumber.Match(paragraph.Text ?? "") is { Success: true } m)
-            return Math.Clamp(m.Groups[1].Value.Count(c => c == '.') + 2, 1, 9);
-        return paragraph.NumberingId is not null ? 2 : 1;
-    }
-
     /// <summary>Chú thích hình/bảng — luật X2 của spec §5.1, loại bất kể style.</summary>
     private static readonly Regex Caption = new(
         @"^\s*(hình(\s*ảnh|\s*vẽ)?|ảnh|bảng|biểu\s*đồ|sơ\s*đồ|đồ\s*thị|figure|fig|table|chart)\s*\d",
@@ -97,71 +91,6 @@ public static class StyleDeclaredOutline
     /// báo cáo này, style đưa vào 10 mục bìa/danh mục và làm vỡ cây ở 6 chỗ.
     /// </para>
     /// </summary>
-    public static List<HeadingRecord> BuildFromNumbering(SlimDocument document)
-    {
-        var frontMatter = (int)(document.Paragraphs.Count * FrontMatterFraction);
-        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        var result = new List<HeadingRecord>();
-
-        var headingLists = HeadingNumberingIds(document);
-
-        foreach (var p in document.Paragraphs.OrderBy(p => p.Index))
-        {
-            if (string.IsNullOrWhiteSpace(p.Text) || p.Corrupt) continue;   // X1
-            if (Caption.IsMatch(p.Text)) continue;                          // X2
-            if (p.TableDepth > 0) continue;
-            // Dòng mục lục do Word sinh mang style TOC1–TOC9 — chúng LẶP LẠI tên đề mục khác nên mọi
-            // luật nội dung đều nhận nhầm; chỉ style mới tách được.
-            if (p.StyleId?.StartsWith("TOC", StringComparison.OrdinalIgnoreCase) == true) continue;
-
-            int level;
-            if (p.NumberingLevel is { } ilvl && ilvl >= 1 &&
-                p.NumberingId is { } id && headingLists.Contains((id, ilvl)))
-            {
-                level = Math.Clamp(ilvl + 1, 1, 9);
-            }
-            else if (StructuralKeyword.IsMatch(p.Text) && IsStandaloneKeyword(p))
-            {
-                level = 1;
-            }
-            else continue;
-
-            // X6: khối bìa lặp — cùng văn bản lần hai trong phần đầu tài liệu.
-            if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
-
-            result.Add(new HeadingRecord
-            {
-                Index = p.Index,
-                Level = level,
-                Text = p.Text,
-                Source = p.NumberingLevel is not null ? HeadingSource.Structure : HeadingSource.Style,
-                Confidence = 1.0,
-                ConfidenceBasis = "numbering_declared",
-                DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
-            });
-        }
-        return result;
-    }
-
-    /// <summary>
-    /// Những <c>numId</c> thực sự dùng cho đề mục — spec §4.3: <i>"cần lọc thêm theo numId, xác
-    /// định tập numId nào thực sự dùng cho heading"</i>.
-    /// <para>
-    /// ĐO ĐƯỢC trên báo cáo thực tập: đề mục thật dùng <c>numId=3</c> (văn bản ngắn, trung bình dưới
-    /// 60 ký tự), còn <c>numId=4</c> là danh sách NỘI DUNG trong thân bài (<c>ListParagraph</c>, mỗi
-    /// mục là một câu dài). Không lọc thì 5 danh sách nội dung lọt vào outline.
-    /// </para>
-    /// </summary>
-    private static HashSet<(int Id, int Level)> HeadingNumberingIds(SlimDocument document) =>
-    [
-        .. document.Paragraphs
-            .Where(p => p.NumberingId is not null && p.NumberingLevel >= 1 && !string.IsNullOrWhiteSpace(p.Text))
-            .GroupBy(p => (Id: p.NumberingId!.Value, Level: p.NumberingLevel!.Value))
-            .Where(g => g.Count() >= MinimumListItems &&
-                        g.Count(p => p.HasBuiltInHeadingStyle) >= g.Count() * HeadingStyleShare)
-            .Select(g => g.Key),
-    ];
-
     /// <summary>Danh sách phải có bấy nhiêu mục thì tỉ lệ mới có nghĩa.</summary>
     private const int MinimumListItems = 3;
 
@@ -186,49 +115,42 @@ public static class StyleDeclaredOutline
     /// <summary>Trung bình độ dài để một danh sách được coi là danh sách ĐỀ MỤC, không phải nội dung.</summary>
     private const int HeadingTextMaxLength = 90;
 
-    /// <summary>
-    /// Từ khoá cấu trúc chỉ tính khi đoạn ĐỨNG RIÊNG làm đề mục, không phải khi nó xuất hiện giữa
-    /// thân bài. Đo được: <c>Chương 1: Giới thiệu tổng quát…</c> nằm trong đoạn liệt kê của phần mở
-    /// đầu (<c>BodyText</c>) và <c>Phụ lục 1: Các tài khoản…</c> là mục con, cả hai đều không thuộc
-    /// outline theo đáp án người dùng.
-    /// </summary>
-    private static bool IsStandaloneKeyword(SlimParagraph p) =>
-        !string.Equals(p.StyleId, "BodyText", StringComparison.OrdinalIgnoreCase) &&
-        p.Text.Length <= HeadingTextMaxLength &&
-        !p.Text.Contains(':');
-
-    public static List<HeadingRecord> Build(SlimDocument document)
+    private static List<HeadingRecord> BuildCore(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
-        var frontMatter = (int)(document.Paragraphs.Count * FrontMatterFraction);
+        var frontMatter = (int)(paragraphs.Count * FrontMatterFraction);
         var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
-        var kept = new List<SlimParagraph>();
-        foreach (var p in document.Paragraphs.OrderBy(p => p.Index))
+        var result = new List<HeadingRecord>();
+        foreach (var p in paragraphs.OrderBy(p => p.Index))
         {
             if (!p.HasBuiltInHeadingStyle || string.IsNullOrWhiteSpace(p.Text)) continue;
             if (p.Corrupt) continue;                                   // X1
             if (Caption.IsMatch(p.Text)) continue;                     // X2
             // X6: khối bìa lặp — cùng văn bản xuất hiện lần hai trong phần đầu tài liệu.
             if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
-            kept.Add(p);
+            result.Add(new HeadingRecord
+            {
+                Index = p.Index, StableId = p.StableId, SourceId = p.StableId,
+                Level = LevelOf(p), Text = p.Text, StyleId = p.StyleId,
+                Source = HeadingSource.Style, Confidence = 1.0,
+                ConfidenceBasis = "style_declared",
+                DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
+            });
         }
-
-        var result = kept.Select(p => new HeadingRecord
-        {
-            Index = p.Index,
-            Level = LevelOf(p),
-            Text = p.Text,
-            Source = HeadingSource.Style,
-            Confidence = 1.0,
-            ConfidenceBasis = "style_declared",
-            DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
-        }).ToList();
 
         // KHÔNG gọi RepairInvertedTree ở đây: đo được nó kéo khoá luận từ đúng cấp 100% xuống
         // 89,7% và đúng cha 100% xuống 82,4%. Cây "lộn ngược" là hình dạng THẬT của tài liệu đó,
         // không phải lỗi cần sửa. Luật này chỉ đúng cho tài liệu numpr-driven, nên nó thuộc về
         // BuildFromNumbering nếu cần, không thuộc về đường style.
         return result;
+    }
+
+    public static List<HeadingRecord> Build(IReadOnlyList<IPolicyParagraph> paragraphs) => BuildCore(paragraphs);
+
+    private static int LevelOf(IPolicyParagraph paragraph)
+    {
+        if (TypedNumber.Match(paragraph.Text) is { Success: true } match)
+            return Math.Clamp(match.Groups[1].Value.Count(c => c == '.') + 2, 1, 9);
+        return paragraph.NumberingId is not null ? 2 : 1;
     }
 
     /// <summary>
@@ -238,17 +160,18 @@ public static class StyleDeclaredOutline
     /// Nhánh <c>auto:outline-level</c> phải đọc tín hiệu này, không được thu hẹp về
     /// <c>HasBuiltInHeadingStyle</c>.
     /// </summary>
-    public static List<HeadingRecord> BuildFromOutlineLevel(SlimDocument document)
+    private static List<HeadingRecord> BuildFromOutlineLevelCore(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
-        var frontMatter = (int)(document.Paragraphs.Count * FrontMatterFraction);
+        ArgumentNullException.ThrowIfNull(paragraphs);
+        var frontMatter = (int)(paragraphs.Count * FrontMatterFraction);
         var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var seenIndexes = new HashSet<int>();
-        var customStylesUnderOutlineAnchor = OutlineAnchorCustomStyles.Find(document.Paragraphs);
-        var tableStylesUnderOutlineAnchor = OutlineAnchorCustomStyles.FindTableStyles(document.Paragraphs);
+        var customStylesUnderOutlineAnchor = OutlineAnchorCustomStyles.Find(paragraphs);
+        var tableStylesUnderOutlineAnchor = OutlineAnchorCustomStyles.FindTableStyles(paragraphs);
         var result = new List<HeadingRecord>();
         int? currentAnchorLevel = null;
 
-        foreach (var p in document.Paragraphs.OrderBy(p => p.Index))
+        foreach (var p in paragraphs.OrderBy(p => p.Index))
         {
             if (string.IsNullOrWhiteSpace(p.Text)) continue;
             if (p.Corrupt) continue;                                   // X1
@@ -324,7 +247,55 @@ public static class StyleDeclaredOutline
         return result;
     }
 
-    private static bool IsAnchoredNumberedCandidateShape(SlimParagraph p)
+    public static List<HeadingRecord> BuildFromOutlineLevel(IReadOnlyList<IPolicyParagraph> paragraphs)
+        => BuildFromOutlineLevelCore(paragraphs);
+
+    public static List<HeadingRecord> BuildFromNumbering(IReadOnlyList<IPolicyParagraph> paragraphs)
+        => BuildFromNumberingCore(paragraphs);
+
+    private static List<HeadingRecord> BuildFromNumberingCore(IReadOnlyList<IPolicyParagraph> paragraphs)
+    {
+        ArgumentNullException.ThrowIfNull(paragraphs);
+        var frontMatter = (int)(paragraphs.Count * FrontMatterFraction);
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var headingLists = paragraphs
+            .Where(p => p.NumberingId is not null && p.NumberingLevel >= 1 &&
+                        !string.IsNullOrWhiteSpace(p.Text))
+            .GroupBy(p => (Id: p.NumberingId!.Value, Level: p.NumberingLevel!.Value))
+            .Where(g => g.Count() >= MinimumListItems &&
+                        g.Count(p => p.HasBuiltInHeadingStyle) >= g.Count() * HeadingStyleShare)
+            .Select(g => g.Key)
+            .ToHashSet();
+        var result = new List<HeadingRecord>();
+        foreach (var p in paragraphs.OrderBy(p => p.Index))
+        {
+            if (string.IsNullOrWhiteSpace(p.Text) || p.Corrupt || Caption.IsMatch(p.Text) || p.TableDepth > 0 ||
+                p.StyleId?.StartsWith("TOC", StringComparison.OrdinalIgnoreCase) == true) continue;
+            int level;
+            if (p.NumberingLevel is { } ilvl && ilvl >= 1 && p.NumberingId is { } id &&
+                headingLists.Contains((id, ilvl)))
+                level = Math.Clamp(ilvl + 1, 1, 9);
+            else if (StructuralKeyword.IsMatch(p.Text) && IsStandaloneKeyword(p))
+                level = 1;
+            else continue;
+            if (p.Index < frontMatter && !seen.Add(p.Text.Trim())) continue;
+            result.Add(new HeadingRecord
+            {
+                Index = p.Index, StableId = p.StableId, SourceId = p.StableId,
+                Level = level, Text = p.Text,
+                Source = p.NumberingLevel is not null ? HeadingSource.Structure : HeadingSource.Style,
+                Confidence = 1.0, ConfidenceBasis = "numbering_declared",
+                DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
+            });
+        }
+        return result;
+    }
+
+    private static bool IsStandaloneKeyword(IPolicyParagraph p) =>
+        !string.Equals(p.StyleId, "BodyText", StringComparison.OrdinalIgnoreCase) &&
+        p.Text.Length <= HeadingTextMaxLength && !p.Text.Contains(':');
+
+    private static bool IsAnchoredNumberedCandidateShape(IPolicyParagraph p)
     {
         if (!p.IsCandidate || p.TableDepth > 0 || p.OutlineLevel is not null || p.NumberingId is null)
             return false;
@@ -336,7 +307,7 @@ public static class StyleDeclaredOutline
         return NumberingAudit.ParseParagraph(p, p.Text) is not null;
     }
 
-    private static bool IsAnchoredTableHeadingShape(SlimParagraph p)
+    private static bool IsAnchoredTableHeadingShape(IPolicyParagraph p)
     {
         if (p.TableDepth <= 0 || p.OutlineLevel is not null || p.HasBuiltInHeadingStyle)
             return false;

@@ -1,4 +1,5 @@
 using System.Text;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using UglyToad.PdfPig;
@@ -27,7 +28,7 @@ internal static class PdfBookmarkOutline
 {
     public const string Basis = "pdf_bookmarks";
 
-    public static PdfBookmarkOutlineResult TryBuild(string originalInputPath, SlimDocument slim)
+    public static PdfBookmarkOutlineResult TryBuild(string originalInputPath, IReadOnlyList<IPolicyParagraph> paragraphs)
     {
         var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
         if (pdf is null) return PdfBookmarkOutlineResult.NotApplicable("no-pdf");
@@ -51,7 +52,7 @@ internal static class PdfBookmarkOutline
         if (usable.Count < 5 || usable.Count != entries.Count)
             return new PdfBookmarkOutlineResult(false, [], $"invalid-bookmark-tree:{usable.Count}/{entries.Count}", entries.Count, 0, 0);
 
-        var headings = AlignToDocx(usable, slim);
+        var headings = AlignToDocx(usable, paragraphs);
         var ratio = headings.Count / (double)usable.Count;
         if (headings.Count < 5 || ratio < 0.70)
             return new PdfBookmarkOutlineResult(false, headings,
@@ -189,9 +190,9 @@ internal static class PdfBookmarkOutline
         CanonicalMap.For(entry.Title).Canonical.Length >= 3 &&
         entry.Title.Length <= 240;
 
-    private static List<HeadingRecord> AlignToDocx(IReadOnlyList<PdfBookmarkEntry> entries, SlimDocument slim)
+    private static List<HeadingRecord> AlignToDocx(IReadOnlyList<PdfBookmarkEntry> entries, IReadOnlyList<IPolicyParagraph> paragraphs)
     {
-        var paragraphs = slim.Paragraphs
+        var sourceParagraphs = paragraphs
             .Where(p => p.Role != ParagraphRole.Empty && !p.InTableOfContents && !string.IsNullOrWhiteSpace(p.Text))
             .OrderBy(p => p.Index)
             .Select(p => new CanonParagraph(p, CanonicalMap.For(p.Text)))
@@ -203,7 +204,7 @@ internal static class PdfBookmarkOutline
         foreach (var entry in entries)
         {
             var needle = CanonicalMap.For(entry.Title).Canonical;
-            var match = paragraphs
+            var match = sourceParagraphs
                 .Where(p => p.Paragraph.Index >= cursor)
                 .Select(p => (Paragraph: p, At: p.Map.Canonical.IndexOf(needle, StringComparison.Ordinal)))
                 .FirstOrDefault(x => x.At >= 0);
@@ -235,7 +236,7 @@ internal static class PdfBookmarkOutline
     private static string CleanTitle(string value) => PdfTextUtilities.HeadingReadable(value).Trim();
 
     internal sealed record PdfBookmarkEntry(string Title, int Level, int Page);
-    private sealed record CanonParagraph(SlimParagraph Paragraph, CanonicalMap Map);
+    private sealed record CanonParagraph(IPolicyParagraph Paragraph, CanonicalMap Map);
 
     private sealed record CanonicalMap(string Canonical, IReadOnlyList<int> SourceIndexes)
     {

@@ -1,13 +1,15 @@
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 
 namespace DocxHeaderExtractor.Tests;
 
 public sealed class SourceAuthorityCutoverTests
 {
     [Fact]
-    public void Normal_authority_context_reads_source_text_when_compatibility_text_differs()
+    public void Native_authority_context_reads_source_text()
     {
         var source = new SourceDocument
         {
@@ -17,21 +19,10 @@ public sealed class SourceAuthorityCutoverTests
             SourceKind = "docx",
             Paragraphs = [SourceParagraph("p0", "authoritative source text")],
         };
-        var compatibility = new SlimDocument
-        {
-            FileName = "source.docx",
-            SourcePath = "source.docx",
-            Paragraphs = [new SlimParagraph
-            {
-                Index = 0,
-                StableId = "p0",
-                Text = "compatibility projection text",
-                Role = ParagraphRole.HeadingCandidate,
-                Score = 0.7,
-            }],
-        }.Build();
-
-        var authority = DocxAuthorityPipeline.BuildForAudit(source, compatibility, Mode());
+        var features = NumberingStyleFeatures.FromSourceDocument(source);
+        var policy = DocxPolicyStateBuilder.Build(source, features,
+            new DocumentFeatureDeriver().Derive(source), new ExtractionOptions());
+        var authority = DocxAuthorityPipeline.BuildForAudit(policy, Mode());
 
         Assert.Equal("authoritative source text", authority.Blocks.Single().DisplayText);
         Assert.Equal("authoritative source text", authority.ModelContexts["p0"].Source.RawText);

@@ -100,7 +100,8 @@ public sealed class McpExtractionService : IDisposable
             outline.Model,
             outline.Headings.Select(h => new McpHeadingResult(
                 h.Index, h.StableId, h.Level, h.Text, h.Source.ToString(), h.Confidence,
-                h.DecisionStatus.ToString(), h.Disputed, h.ModelConfirmed, h.CriticConfirmed, h.Evidence)).ToArray(),
+                h.DecisionStatus.ToString(), h.Disputed, h.ModelConfirmed, h.CriticConfirmed, h.Evidence,
+                h.HeadingSpan)).ToArray(),
             run.Trace.Select(e => new McpTraceResult(
                 e.Sequence, e.Stage, e.Kind.ToString(), e.Message)).ToArray());
     }

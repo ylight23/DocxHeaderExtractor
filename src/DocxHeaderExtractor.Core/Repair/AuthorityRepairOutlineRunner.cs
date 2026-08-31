@@ -5,7 +5,7 @@ namespace DocxHeaderExtractor.Core.Repair;
 
 /// <summary>
 /// Repair adapter that delegates outline production to the normal authority pipeline.
-/// It deliberately does not remove or alter the historical HeaderExtractionPipeline.
+/// Legacy extraction remains outside this repair adapter until its physical retirement step.
 /// </summary>
 public sealed class AuthorityRepairOutlineRunner : IRepairOutlineRunner
 {

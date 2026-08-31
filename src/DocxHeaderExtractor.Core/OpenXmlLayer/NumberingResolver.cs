@@ -12,31 +12,22 @@ public static class NumberingResolver
 {
     private sealed record LevelDefinition(int Start, string Format, string Text, string? StyleId);
 
-    public static void Apply(MainDocumentPart mainPart, IReadOnlyList<SlimParagraph> paragraphs)
+    internal static void Apply(MainDocumentPart mainPart, IReadOnlyList<OpenXmlSourceParagraph> paragraphs)
     {
         var numbering = mainPart.NumberingDefinitionsPart?.Numbering;
         if (numbering is null) return;
-
         var abstractLevels = ReadAbstractLevels(numbering);
         var instances = ReadInstances(numbering, abstractLevels, mainPart);
         var counters = new Dictionary<(int NumId, int Level), int>();
-
         foreach (var paragraph in paragraphs)
         {
             if (paragraph.NumberingId is not { } numId || paragraph.NumberingLevel is not { } level ||
-                !instances.TryGetValue(numId, out var levels) || !levels.TryGetValue(level, out var definition))
-                continue;
-
+                !instances.TryGetValue(numId, out var levels) || !levels.TryGetValue(level, out var definition)) continue;
             var key = (numId, level);
             counters[key] = counters.TryGetValue(key, out var previous) ? previous + 1 : definition.Start;
-            foreach (var child in counters.Keys.Where(k => k.NumId == numId && k.Level > level).ToArray())
-                counters.Remove(child);
-
-            paragraph.NumberingDepth = level + 1;
+            foreach (var child in counters.Keys.Where(k => k.NumId == numId && k.Level > level).ToArray()) counters.Remove(child);
             paragraph.NumberingFormat = definition.Format;
             paragraph.NumberLabel = Render(definition.Text, levels, counters, numId, level);
-            // Cấp của danh sách chỉ trở thành cấp heading khi CHÍNH danh sách khai báo nó gắn với
-            // style Heading — không suy ra từ độ sâu list, vì danh sách gạch đầu dòng cũng có độ sâu.
             paragraph.NumberingStyleLevel = HeadingHeuristics.BuiltInLevelFromStyleId(definition.StyleId);
         }
     }

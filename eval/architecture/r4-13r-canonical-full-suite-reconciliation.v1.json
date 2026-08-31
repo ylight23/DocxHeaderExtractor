@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r4_13r_canonical_full_suite_reconciliation",
+  "status": "PASS",
+  "round3CanonicalExecutionRevision": "32bb000343361516078f37da63943e5073b678fe",
+  "blockedR4_13PublicationRevision": "c778fbf533731c68a9589c7acd3349da36171173",
+  "executionRevision": "4b11d7b51c56edf963b5b249f12425732188af95",
+  "publicationRevision": "containing-closure-commit",
+  "fullCurrentSuiteExecuted": true,
+  "excludedTests": 0,
+  "currentSuite": {
+    "total": 807,
+    "passed": 805,
+    "failed": 2,
+    "skipped": 0
+  },
+  "testInventory": {
+    "baselineExecutionTotal": 1338,
+    "baselineUniqueTestDefinitions": 1328,
+    "currentExecutionTotal": 807,
+    "currentUniqueTestDefinitions": 801,
+    "unchanged": 795,
+    "retiredByDeletedFile": 514,
+    "retiredInRetainedTestFiles": 14,
+    "migratedOrRenamed": 5,
+    "added": 6,
+    "unaccounted": 0,
+    "unprovenMigrations": 0,
+    "retiredTestsWithoutOwner": 0,
+    "retiredTestsWithoutCoverage": 0,
+    "classification": "Exact FQN, then source-file retirement evidence or explicit current replacement mapping"
+  },
+  "pdf054": {
+    "status": "PROVEN",
+    "classification": "HISTORICAL_STALE_NORMAL_ROUTE_CONTRACT",
+    "baselineNormalRoute": "pdf-first-authority-v1",
+    "currentNormalRoute": "docx-authority-v1",
+    "baselineNormalHeadings": 0,
+    "currentNormalHeadings": 0,
+    "baselineDirectPdfTocAccepted": true,
+    "currentDirectPdfTocAccepted": true,
+    "baselineDirectPdfTocEntries": 24,
+    "currentDirectPdfTocEntries": 24,
+    "baselineDirectRelaxedPageAnchors": 24,
+    "currentDirectRelaxedPageAnchors": 24,
+    "baselineDirectHeadings": 24,
+    "currentDirectHeadings": 24,
+    "directHeadingParity": true,
+    "testContractMigration": "PdfTocDictionaryOutline.TryBuild native producer oracle",
+    "directHeadingProjection": [
+      { "text": "Availability of Information", "level": 1, "start": 0, "end": 27 },
+      { "text": "Summary Information", "level": 1, "start": 0, "end": 19 },
+      { "text": "Overview", "level": 1, "start": 11, "end": 19 },
+      { "text": "Executive Summary", "level": 1, "start": 12, "end": 29 },
+      { "text": "Financial Results", "level": 1, "start": 63, "end": 80 },
+      { "text": "Lending Activities", "level": 1, "start": 13, "end": 31 },
+      { "text": "Other Development Activities", "level": 1, "start": 11, "end": 39 },
+      { "text": "Investment Activities", "level": 1, "start": 12, "end": 33 },
+      { "text": "Borrowing Activities", "level": 1, "start": 28, "end": 48 },
+      { "text": "Capital Activities", "level": 1, "start": 14, "end": 32 },
+      { "text": "Risk Management", "level": 1, "start": 270, "end": 285 },
+      { "text": "Contractual Obligations", "level": 1, "start": 160, "end": 183 },
+      { "text": "Pension and other Post-Retirement Benefits", "level": 1, "start": 614, "end": 656 },
+      { "text": "Critical Accounting Policies and the Use of Estimates", "level": 1, "start": 13, "end": 66 },
+      { "text": "Governance and Controls", "level": 1, "start": 14, "end": 37 },
+      { "text": "Reconciliations of Components of Allocable Income", "level": 1, "start": 13, "end": 62 },
+      { "text": "Affiliated Organizations - IFC IDA and MIGA", "level": 1, "start": 2453, "end": 2495 },
+      { "text": "Administration of IBRD", "level": 1, "start": 0, "end": 22 },
+      { "text": "The Articles of Agreement", "level": 1, "start": 0, "end": 25 },
+      { "text": "Legal Status Privileges and Immunities", "level": 1, "start": 153, "end": 192 },
+      { "text": "Fiscal Year Announcements and Allocation of Net Income", "level": 1, "start": 298, "end": 354 },
+      { "text": "Fees to External Auditors", "level": 1, "start": 428, "end": 453 },
+      { "text": "Appendix", "level": 1, "start": 583, "end": 591 },
+      { "text": "Index to Financial Statements and Internal Control Reports", "level": 1, "start": 748, "end": 806 }
+    ]
+  },
+  "inventoryMappings": [
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.CongKhongDuocChanLuatDeterministicTests.Moi_bo_dung_deterministic_deu_duoc_cong_dang_ky(type: \"DoclingLayoutOutline\", basis: \"docling_layout_sidecar\")",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Docling producer/test retirement; current deterministic-basis reflection gate covers supported producers",
+      "ownerRevision": "592e8bf"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.CongKhongDuocChanLuatDeterministicTests.Moi_bo_dung_deterministic_deu_duoc_cong_dang_ky(type: \"FinancialStatementsTocOutline\", basis: \"financial_statement_toc_text\")",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Financial statement producer/test retirement; current deterministic-basis reflection gate covers supported producers",
+      "ownerRevision": "592e8bf"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.CongKhongDuocChanLuatDeterministicTests.Moi_bo_dung_deterministic_deu_duoc_cong_dang_ky(type: \"OoxmlStyleAutoAssign\", basis: \"ooxml_style_auto_assign\")",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Retired deterministic producer signature; current reflection gate covers remaining registered bases",
+      "ownerRevision": "833ee6e"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.PdfBookmarkOutlineTests.PipelineRejects_partial_bookmark_tree_and_keeps_verified_pdf_route",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Route contract retired; raw bookmark probe remains covered",
+      "ownerRevision": "833ee6e"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_bat_duoc_than_bai_sau_toc_duoi_acknowledgments_contributors_authors",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Legacy pipeline route assertion retired; native RFC analyzer coverage remains",
+      "ownerRevision": "833ee6e"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_khong_bam_nguong_cu_khi_cum_toc_thap_hon_van_khop_than_bai",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Legacy pipeline route assertion retired; native RFC analyzer coverage remains",
+      "ownerRevision": "833ee6e"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.Pipeline_no_llm_khong_cat_lai_tieu_de_rfc_da_lay_tu_toc",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Legacy pipeline route assertion retired; native RFC analyzer coverage remains",
+      "ownerRevision": "833ee6e"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.SlimCompatibilityIsolationTests.Boundary_artifact_records_zero_demotion_and_source_deltas",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Compatibility artifact contract retired; static zero-reference gate replaces it",
+      "ownerRevision": "833ee6e"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.SlimCompatibilityIsolationTests.Boundary_does_not_expose_source_fact_properties",
+      "currentFqn": "DocxHeaderExtractor.Tests.SlimCompatibilityIsolationTests.Removed_boundary_source_files_are_not_referenced_by_normal_pipeline",
+      "classification": "MIGRATED",
+      "coverageEvidence": "Native isolation and no-boundary source proof",
+      "ownerRevision": "833ee6e"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.SlimCompatibilityIsolationTests.Normal_authority_pipeline_has_no_concrete_slim_signature",
+      "currentFqn": "DocxHeaderExtractor.Tests.SlimCompatibilityIsolationTests.Docx_authority_pipeline_exposes_only_native_run_contracts",
+      "classification": "MIGRATED",
+      "coverageEvidence": "Native authority contract reflection proof",
+      "ownerRevision": "833ee6e"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.SourceAuthorityCutoverTests.Normal_authority_context_reads_source_text_when_compatibility_text_differs",
+      "currentFqn": "DocxHeaderExtractor.Tests.SourceAuthorityCutoverTests.Native_authority_context_reads_source_text",
+      "classification": "MIGRATED",
+      "coverageEvidence": "Native source authority context test",
+      "ownerRevision": "833ee6e"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.SplitMergedParagraphsTests.Bat_co_thi_cuu_duoc_tieu_de_trong_doan_gop",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Legacy merged-paragraph route contract retired with legacy pipeline",
+      "ownerRevision": "592e8bf"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.SplitMergedParagraphsTests.Cac_lat_cat_dung_chung_chi_so_doan_goc",
+      "currentFqn": "DocxHeaderExtractor.Tests.SplitMergedParagraphsTests.Hai_lat_cung_chi_so_khong_lam_sup_bo_suy_cap",
+      "classification": "MIGRATED",
+      "coverageEvidence": "Native duplicate-index hierarchy safety replacement",
+      "ownerRevision": "592e8bf"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.SplitMergedParagraphsTests.Chi_giu_page_header_section_lan_dau_trong_doan_gop",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Legacy split route contract retired with legacy pipeline",
+      "ownerRevision": "592e8bf"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.SplitMergedParagraphsTests.Khong_che_lai_table_of_contents_day_dac_thanh_heading",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Legacy split route contract retired with legacy pipeline",
+      "ownerRevision": "592e8bf"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.SplitMergedParagraphsTests.Lat_cat_giu_span_nguon_trong_doan_gop",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Legacy split route contract retired with legacy pipeline",
+      "ownerRevision": "592e8bf"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.SplitMergedParagraphsTests.Van_giu_section_body_du_co_table_of_contents_cua_chinh_section",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Legacy split route contract retired with legacy pipeline",
+      "ownerRevision": "592e8bf"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.SplitMergedParagraphsTests.Van_giu_section_toc_slice_neu_no_la_anchor_high_level",
+      "currentFqn": null,
+      "classification": "RETIRED",
+      "coverageEvidence": "Legacy split route contract retired with legacy pipeline",
+      "ownerRevision": "592e8bf"
+    },
+    {
+      "baselineFqn": "DocxHeaderExtractor.Tests.PdfTocDictionaryOutlineTests.PipelineUsesPdfTocDictionaryForIbrdInformationStatement054",
+      "currentFqn": "DocxHeaderExtractor.Tests.PdfTocDictionaryOutlineTests.DirectPdfTocProducerPreservesIbrdInformationStatement054",
+      "classification": "MIGRATED_TO_AUTHORIZED_PRODUCER_CONTRACT",
+      "coverageEvidence": "Round-3/current direct producer parity: Accepted, 24 entries, 24 anchors, 24 headings, identical texts/levels/spans/basis",
+      "ownerRevision": "4b11d7b"
+    }
+  ],
+  "failureReconciliation": {
+    "baselineFailureUniverse": 30,
+    "stillFailingSameFingerprint": 2,
+    "changedFingerprints": 0,
+    "resolvedByBehavior": 0,
+    "resolvedByAuthorizedContractMigration": 1,
+    "retiredFailureCasesAccounted": 27,
+    "newFailures": 0,
+    "unjoined": 0,
+    "failureUniverseFrozen": true,
+    "knownStillFailing": [
+      "DocxHeaderExtractor.Tests.PdfC1CrossDocumentRegressionInventoryProbe.IndependentPartialTimeoutEvidenceNowExistsAndWasConsumedByN35",
+      "DocxHeaderExtractor.Tests.PdfN15RankingLossDiagnosisProbe.CommittedDiagnosisReproducesByteForByte"
+    ]
+  },
+  "behaviorGates": {
+    "diagnosticJoined": 3,
+    "diagnosticDelta": 0,
+    "pdfJoined": 3,
+    "pdfDelta": 0,
+    "hostFingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "hostFingerprintChanged": false,
+    "bannedLegacyRefs": 0,
+    "unknownLegacyRefs": 0
+  },
+  "providerCalls": 0,
+  "unmeasured": 0,
+  "expectedChanged": false,
+  "releaseBuild": "PASS",
+  "fullSuite": "EXECUTED",
+  "rawTrxPublishPolicy": "DO_NOT_PUSH_RAW_TRX",
+  "r4_13": "PASS",
+  "r4_14": "AUTHORIZED"
+}

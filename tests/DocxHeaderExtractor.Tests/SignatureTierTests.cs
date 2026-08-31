@@ -15,20 +15,12 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class SignatureTierTests
 {
-    private static (List<HeadingRecord> Headings, SlimDocument Document) Build(params string[] texts)
+    private static (List<HeadingRecord> Headings, DocxHeaderExtractor.Core.Application.Policy.DocxPolicyState Document) Build(
+        params string[] texts)
     {
-        var paragraphs = new List<SlimParagraph>();
         var headings = new List<HeadingRecord>();
         for (var i = 0; i < texts.Length; i++)
         {
-            paragraphs.Add(new SlimParagraph
-            {
-                Index = i,
-                StableId = $"body[1]/p[{i + 1}]",
-                Text = texts[i],
-                StyleId = "Normal",
-                Role = ParagraphRole.HeadingCandidate,
-            });
             // Cấp khởi đầu cố tình sai hết về 1: bài kiểm là bộ sắp cấp có tự dựng lại được không.
             headings.Add(new HeadingRecord
             {
@@ -39,12 +31,8 @@ public sealed class SignatureTierTests
                 Source = HeadingSource.Model,
             });
         }
-        var doc = new SlimDocument
-        {
-            FileName = "t.docx",
-            SourcePath = "t.docx",
-            Paragraphs = paragraphs,
-        }.Build();
+        var doc = NativePolicyStateFactory.Create(texts.Select((text, index) =>
+            (index, text, (int?)null, (int?)null)));
         return (headings, doc);
     }
 

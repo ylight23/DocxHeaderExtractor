@@ -110,7 +110,7 @@ public class StyleNestingDepthTests
     /// <param name="items">
     /// <c>StyleLevel</c> null nghĩa là đoạn không mang style Heading built-in.
     /// </param>
-    private static SlimDocument Doc(
+    private static DocxHeaderExtractor.Core.Application.Policy.DocxPolicyState Doc(
         bool LevelTrusted, params (int Index, string Text, int? StyleLevel)[] items)
     {
         // Ba vế của StyleTrust được đặt tay để test cô lập ĐÚNG vế đang kiểm. Vế NumberedDisagree là
@@ -127,19 +127,8 @@ public class StyleNestingDepthTests
             NumberedDisagree: LevelTrusted ? 0 : StyleTrust.MinimumNumberedSample);
         Assert.Equal(LevelTrusted, trust.LevelTrusted);
 
-        return new SlimDocument
-        {
-            FileName = "x.docx",
-            SourcePath = "x.docx",
-            StyleTrust = trust,
-            Paragraphs = items.Select(x => new SlimParagraph
-            {
-                Index = x.Index,
-                Text = x.Text,
-                HasBuiltInHeadingStyle = x.StyleLevel is not null,
-                GuessedLevel = x.StyleLevel,
-            }).ToList(),
-        }.Build();
+        return NativePolicyStateFactory.Create(
+            items.Select(x => (x.Index, x.Text, (int?)null, x.StyleLevel)), trust);
     }
 
     private static List<HeadingRecord> Headings(params (int Index, int Level)[] items) =>

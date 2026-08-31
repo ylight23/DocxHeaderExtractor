@@ -2,6 +2,8 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Output;
@@ -127,10 +129,13 @@ public sealed class AutoRepairWorkflow
                 []);
 
         var conversion = LegacyDocConverter.EnsureDocx(inputPath);
-        SlimDocument slim;
+        DocxPolicyState policyState;
         try
         {
-            slim = new DocxSlimExtractor(_pipelineOptions.Extraction).Extract(conversion.Path);
+            var source = new OpenXmlDocumentSource(_pipelineOptions.Extraction).Read(conversion.Path);
+            var features = NumberingStyleFeatures.FromSourceDocument(source);
+            var derived = new DocumentFeatureDeriver().Derive(source);
+            policyState = DocxPolicyStateBuilder.Build(source, features, derived, _pipelineOptions.Extraction);
         }
         finally
         {
@@ -141,7 +146,7 @@ public sealed class AutoRepairWorkflow
         var caseDir = Path.Combine(options.OutputDirectory, caseId);
         Directory.CreateDirectory(caseDir);
 
-        var failureCase = BuildFailureCase(caseId, inputPath, outline, slim, needsAnalysis);
+        var failureCase = BuildFailureCase(caseId, inputPath, outline, policyState, needsAnalysis);
         var candidateReport = RepairCandidateRunner.Analyze(outline);
         var validationReport = RepairValidationGate.Validate(outline, candidateReport);
         var analysisPlan = BuildAnalysisPlan(failureCase);
@@ -187,7 +192,7 @@ public sealed class AutoRepairWorkflow
         string caseId,
         string inputPath,
         DocumentOutline outline,
-        SlimDocument slim,
+        DocxPolicyState policyState,
         bool needsAnalysis)
     {
         var reviewIndexes = outline.Headings
@@ -197,9 +202,9 @@ public sealed class AutoRepairWorkflow
 
         var evidenceIndexes = new HashSet<int>(reviewIndexes);
         foreach (var h in outline.Headings.Take(20)) evidenceIndexes.Add(h.Index);
-        foreach (var candidate in slim.Candidates.Take(20)) evidenceIndexes.Add(candidate.Index);
+        foreach (var candidate in policyState.Candidates.Take(20)) evidenceIndexes.Add(candidate.Index);
 
-        var paragraphs = slim.Paragraphs
+        var paragraphs = policyState.Paragraphs
             .Where(p => evidenceIndexes.Contains(p.Index))
             .OrderBy(p => p.Index)
             .Take(80)

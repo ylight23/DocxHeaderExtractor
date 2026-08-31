@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -51,23 +52,21 @@ public static class RfcTocDictionaryOutline
         @"(?:(?:Acknowledg(?:e)?ments?|Index|Contributors)\s+){1,4}Authors.{0,3}\s+Addresses\s+",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-    public static List<HeadingRecord> Build(SlimDocument document)
-    {
-        var result = Analyze(document);
-        return result.Accepted ? result.Headings.ToList() : [];
-    }
+    public static RfcTocDictionaryResult Analyze(IReadOnlyList<IPolicyParagraph> paragraphs) =>
+        AnalyzeCore(paragraphs);
 
-    public static RfcTocDictionaryResult Analyze(SlimDocument document)
+    private static RfcTocDictionaryResult AnalyzeCore(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
-        var paragraphs = document.Paragraphs
+        ArgumentNullException.ThrowIfNull(paragraphs);
+        var orderedParagraphs = paragraphs
             .Where(p => !p.Corrupt && !string.IsNullOrWhiteSpace(p.Text))
             .OrderBy(p => p.Index)
             .ToList();
-        if (paragraphs.Count == 0)
+        if (orderedParagraphs.Count == 0)
             return Reject([], new HashSet<int>(), null, 0, 0, "không có paragraph text hợp lệ");
 
-        var marksByIndex = paragraphs.ToDictionary(p => p.Index, p => Marks(p.Text));
-        var tocParagraphs = paragraphs.Where(p => p.TableDepth == 0).ToList();
+        var marksByIndex = orderedParagraphs.ToDictionary(p => p.Index, p => Marks(p.Text));
+        var tocParagraphs = orderedParagraphs.Where(p => p.TableDepth == 0).ToList();
         var tocMarksByIndex = tocParagraphs.ToDictionary(p => p.Index, p => marksByIndex[p.Index]);
         var tocCluster = FindTocCluster(tocParagraphs, tocMarksByIndex);
         if (tocCluster is not null)
@@ -84,15 +83,15 @@ public static class RfcTocDictionaryOutline
             tocCluster = tocCluster with { Indexes = expandedIndexes };
         }
         if (tocCluster is null)
-            return Reject(paragraphs, new HashSet<int>(), null, 0, 0, "không có cụm TOC dày, sớm và gọn");
+            return Reject(orderedParagraphs, new HashSet<int>(), null, 0, 0, "không có cụm TOC dày, sớm và gọn");
 
-        var titles = BuildDictionary(paragraphs, marksByIndex, tocCluster.Indexes);
+        var titles = BuildDictionary(orderedParagraphs, marksByIndex, tocCluster.Indexes);
         if (titles.Count < MinimumDictionaryEntries)
-            return Reject(paragraphs, tocCluster.Indexes, tocCluster, titles.Count, 0, "dictionary TOC quá ít mục");
+            return Reject(orderedParagraphs, tocCluster.Indexes, tocCluster, titles.Count, 0, "dictionary TOC quá ít mục");
 
         var seen = new HashSet<string>(StringComparer.Ordinal);
         var headings = new List<HeadingRecord>();
-        foreach (var p in paragraphs)
+        foreach (var p in orderedParagraphs)
         {
             var bodyStart = tocCluster.Indexes.Contains(p.Index) ? BodyStartInTocParagraph(p.Text, marksByIndex[p.Index]) : 0;
             if (tocCluster.Indexes.Contains(p.Index) && bodyStart is null) continue;
@@ -125,7 +124,7 @@ public static class RfcTocDictionaryOutline
         return new RfcTocDictionaryResult(
             headings,
             BuildDiagnostics(
-                paragraphs,
+                orderedParagraphs,
                 tocCluster.Indexes,
                 tocCluster,
                 titles.Count,
@@ -137,7 +136,7 @@ public static class RfcTocDictionaryOutline
     }
 
     private static RfcTocCluster? FindTocCluster(
-        IReadOnlyList<SlimParagraph> paragraphs,
+        IReadOnlyList<IPolicyParagraph> paragraphs,
         IReadOnlyDictionary<int, List<Mark>> marksByIndex)
     {
         var explicitToc = paragraphs.FirstOrDefault(p =>
@@ -225,7 +224,7 @@ public static class RfcTocDictionaryOutline
     }
 
     private static Dictionary<string, TocTitle> BuildDictionary(
-        IReadOnlyList<SlimParagraph> paragraphs,
+        IReadOnlyList<IPolicyParagraph> paragraphs,
         IReadOnlyDictionary<int, List<Mark>> marksByIndex,
         IReadOnlySet<int> tocIndexes)
     {
@@ -255,7 +254,7 @@ public static class RfcTocDictionaryOutline
         return result;
     }
 
-    private static Regex? RepeatedHeaderPattern(IReadOnlyList<SlimParagraph> paragraphs)
+    private static Regex? RepeatedHeaderPattern(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
         var candidates = new Dictionary<string, int>(StringComparer.Ordinal);
         foreach (var p in paragraphs)
@@ -377,7 +376,7 @@ public static class RfcTocDictionaryOutline
     }
 
     private static RfcTocDictionaryResult Reject(
-        IReadOnlyList<SlimParagraph> paragraphs,
+        IReadOnlyList<IPolicyParagraph> paragraphs,
         IReadOnlySet<int> tocIndexes,
         RfcTocCluster? cluster,
         int dictionaryEntries,
@@ -397,7 +396,7 @@ public static class RfcTocDictionaryOutline
                 reason));
 
     private static RfcTocDictionaryDiagnostics BuildDiagnostics(
-        IReadOnlyList<SlimParagraph> paragraphs,
+        IReadOnlyList<IPolicyParagraph> paragraphs,
         IReadOnlySet<int> tocIndexes,
         RfcTocCluster? cluster,
         int dictionaryEntries,

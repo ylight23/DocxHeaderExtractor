@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using UglyToad.PdfPig;
@@ -22,10 +23,10 @@ public static class PdfFinancialReportOutline
 
     public static PdfTextbookOutlineResult TryBuild(
         string originalInputPath,
-        SlimDocument slim,
+        IReadOnlyList<IPolicyParagraph> paragraphs,
         DocumentModeReport mode)
     {
-        if (DocumentStructureEvidence.HasNativeSemanticStructure(slim))
+        if (DocumentStructureEvidence.HasNativeSemanticStructure(paragraphs))
             return PdfTextbookOutlineResult.NotApplicable("docx-structure-present");
 
         var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
@@ -52,14 +53,14 @@ public static class PdfFinancialReportOutline
 
         var candidates = DetectFinancialHeadings(lines, profile);
         var pdfPageExtent = candidates.Select(candidate => candidate.Page).DefaultIfEmpty(1).Max();
-        var usablePageFrame = slim.Paragraphs.Count(paragraph =>
+        var usablePageFrame = paragraphs.Count(paragraph =>
                 paragraph.Role != ParagraphRole.Empty && !string.IsNullOrWhiteSpace(paragraph.Text))
             <= pdfPageExtent * 12;
         string frameDiagnostic;
         List<FinancialHeadingCandidate> frameCandidates;
         if (usablePageFrame)
         {
-            frameCandidates = DetectDocxPageFrameHeadings(slim, candidates, out frameDiagnostic);
+            frameCandidates = DetectDocxPageFrameHeadings(paragraphs, candidates, out frameDiagnostic);
         }
         else
         {
@@ -75,8 +76,8 @@ public static class PdfFinancialReportOutline
             return PdfTextbookOutlineResult.NotApplicable(
                 $"too-few-financial-headings:{candidates.Count}, frame={frameCandidates.Count}, {frameDiagnostic}");
 
-        var aligned = AlignToDocx(candidates, slim);
-        RecoverTrustFundFrameTitles(aligned, slim);
+        var aligned = AlignToDocx(candidates, paragraphs);
+        RecoverTrustFundFrameTitles(aligned, paragraphs);
         if (aligned.Count < Math.Max(10, (int)Math.Ceiling(candidates.Count * 0.55)))
             return PdfTextbookOutlineResult.NotApplicable($"low-docx-alignment:{aligned.Count}/{candidates.Count}");
 
@@ -197,32 +198,32 @@ public static class PdfFinancialReportOutline
         Regex.IsMatch(CleanPdfTitle(line.Text), @"^\d{1,3}$");
 
     private static List<FinancialHeadingCandidate> DetectDocxPageFrameHeadings(
-        SlimDocument slim,
+        IReadOnlyList<IPolicyParagraph> paragraphs,
         IReadOnlyList<FinancialHeadingCandidate> pdfCandidates,
         out string diagnostic)
     {
         diagnostic = "frameDiag=not-run";
-        var paragraphs = slim.Paragraphs
+        var sourceParagraphs = paragraphs
             .Where(p => p.Index > 4 && p.Role != ParagraphRole.Empty && !string.IsNullOrWhiteSpace(p.Text))
             .OrderBy(p => p.Index)
             .ToList();
-        if (paragraphs.Count < 8)
+        if (sourceParagraphs.Count < 8)
         {
-            diagnostic = $"frameParas={paragraphs.Count}";
+            diagnostic = $"frameParas={sourceParagraphs.Count}";
             return [];
         }
 
-        var frameEnds = paragraphs
+        var frameEnds = sourceParagraphs
             .Select(p => FrameHeaderEnd(p.Text))
             .Where(i => i > 40)
             .ToList();
-        var prefix = LongestCommonPrefix(paragraphs.Select(p => p.Text).ToList());
+        var prefix = LongestCommonPrefix(sourceParagraphs.Select(p => p.Text).ToList());
         var lastSpace = prefix.LastIndexOf(' ');
         if (lastSpace > 40) prefix = prefix[..(lastSpace + 1)];
-        var hasFrameEnd = frameEnds.Count >= Math.Max(5, paragraphs.Count / 3);
-        var sample = paragraphs.Count == 0 ? "" : CleanPdfTitle(paragraphs[0].Text);
+        var hasFrameEnd = frameEnds.Count >= Math.Max(5, sourceParagraphs.Count / 3);
+        var sample = sourceParagraphs.Count == 0 ? "" : CleanPdfTitle(sourceParagraphs[0].Text);
         if (sample.Length > 40) sample = sample[..40];
-        diagnostic = $"frameParas={paragraphs.Count}, frameEnds={frameEnds.Count}, prefix={prefix.Length}, sample='{sample}'";
+        diagnostic = $"frameParas={sourceParagraphs.Count}, frameEnds={frameEnds.Count}, prefix={prefix.Length}, sample='{sample}'";
         var useWholeParagraph = !hasFrameEnd && prefix.Length < 40;
 
         var knownGroups = pdfCandidates
@@ -236,7 +237,7 @@ public static class PdfFinancialReportOutline
         var result = new List<FinancialHeadingCandidate>();
         string? activeGroup = null;
         var page = 1;
-        foreach (var paragraph in paragraphs)
+        foreach (var paragraph in sourceParagraphs)
         {
             var frameEnd = FrameHeaderEnd(paragraph.Text);
             if (hasFrameEnd && frameEnd < 0) continue;
@@ -459,9 +460,9 @@ public static class PdfFinancialReportOutline
         return blocks;
     }
 
-    private static List<HeadingRecord> AlignToDocx(IReadOnlyList<FinancialHeadingCandidate> candidates, SlimDocument slim)
+    private static List<HeadingRecord> AlignToDocx(IReadOnlyList<FinancialHeadingCandidate> candidates, IReadOnlyList<IPolicyParagraph> paragraphs)
     {
-        var docx = slim.Paragraphs
+        var docx = paragraphs
             .Where(p => p.Role != ParagraphRole.Empty && !string.IsNullOrWhiteSpace(p.Text))
             .Select(p => new DocxParagraphCanon(p, BuildCanon(p.Text)))
             .ToList();
@@ -585,7 +586,7 @@ public static class PdfFinancialReportOutline
         ConfidenceBasis = Basis,
     };
 
-    private static HeadingRecord ToPdfVirtualGroup(SlimParagraph anchor, FinancialHeadingCandidate candidate) => new()
+    private static HeadingRecord ToPdfVirtualGroup(IPolicyParagraph anchor, FinancialHeadingCandidate candidate) => new()
     {
         Index = anchor.Index,
         StableId = anchor.StableId,
@@ -601,7 +602,7 @@ public static class PdfFinancialReportOutline
         ConfidenceBasis = Basis,
     };
 
-    private static void RecoverTrustFundFrameTitles(List<HeadingRecord> result, SlimDocument slim)
+    private static void RecoverTrustFundFrameTitles(List<HeadingRecord> result, IReadOnlyList<IPolicyParagraph> paragraphs)
     {
         if (!result.Any(h => h.Text.Contains("Trust Fund", StringComparison.OrdinalIgnoreCase))) return;
 
@@ -653,7 +654,7 @@ public static class PdfFinancialReportOutline
                 result.RemoveAll(h => BuildCanon(h.Text).Text == titleCanon && h.Index <= afterIndex.Value);
             if (result.Any(h => BuildCanon(h.Text).Text == titleCanon)) return;
 
-            foreach (var paragraph in slim.Paragraphs.Where(p =>
+            foreach (var paragraph in paragraphs.Where(p =>
                          p.Role != ParagraphRole.Empty &&
                          p.Text.Length > 0 &&
                          (!afterIndex.HasValue || p.Index > afterIndex.Value)))
@@ -696,7 +697,7 @@ public static class PdfFinancialReportOutline
     }
 
     private static MatchResult? FindCanonInParagraph(
-        SlimParagraph paragraph,
+        IPolicyParagraph paragraph,
         string needle,
         HashSet<(int Index, int Start, string Text)> seen)
     {
@@ -790,6 +791,6 @@ public static class PdfFinancialReportOutline
     }
 
     private sealed record FinancialHeadingCandidate(int Level, string Text, int Page, double Y, string Reason);
-    private sealed record DocxParagraphCanon(SlimParagraph Paragraph, (string Text, List<int> SourceOffsets) Canon);
-    private readonly record struct MatchResult(SlimParagraph Paragraph, string Text, int Start, int End);
+    private sealed record DocxParagraphCanon(IPolicyParagraph Paragraph, (string Text, List<int> SourceOffsets) Canon);
+    private readonly record struct MatchResult(IPolicyParagraph Paragraph, string Text, int Start, int End);
 }

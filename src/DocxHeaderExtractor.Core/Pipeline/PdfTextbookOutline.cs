@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using UglyToad.PdfPig;
@@ -20,7 +21,7 @@ public sealed record PdfTextbookOutlineResult(
 /// Fallback hẹp cho typed textbook PDF→DOCX text-layout.
 /// <para>
 /// PDF chỉ cung cấp tín hiệu layout để chọn occurrence/title boundary; kết quả vẫn align ngược về
-/// <see cref="SlimParagraph"/> của DOCX để evaluator/writeback không mất neo OOXML.
+/// paragraph native của DOCX để evaluator/writeback không mất neo OOXML.
 /// </para>
 /// </summary>
 public static class PdfTextbookOutline
@@ -36,10 +37,10 @@ public static class PdfTextbookOutline
 
     public static PdfTextbookOutlineResult TryBuild(
         string originalInputPath,
-        SlimDocument slim,
+        IReadOnlyList<IPolicyParagraph> paragraphs,
         DocumentModeReport mode)
     {
-        if (DocumentStructureEvidence.HasNativeSemanticStructure(slim))
+        if (DocumentStructureEvidence.HasNativeSemanticStructure(paragraphs))
             return PdfTextbookOutlineResult.NotApplicable("docx-structure-present");
 
         var pdf = FindSiblingPdf(originalInputPath);
@@ -64,7 +65,7 @@ public static class PdfTextbookOutline
         if (pdfHeadings.Count < 10)
             return PdfTextbookOutlineResult.NotApplicable($"too-few-pdf-headings:{pdfHeadings.Count}");
 
-        var aligned = AlignToDocx(pdfHeadings, slim);
+        var aligned = AlignToDocx(pdfHeadings, paragraphs);
         if (aligned.Count < Math.Max(10, (int)Math.Ceiling(pdfHeadings.Count * 0.60)))
             return PdfTextbookOutlineResult.NotApplicable($"low-docx-alignment:{aligned.Count}/{pdfHeadings.Count}");
 
@@ -165,9 +166,9 @@ public static class PdfTextbookOutline
             .OrderBy(h => h.Page).ThenByDescending(h => h.Y).ToList();
     }
 
-    private static List<HeadingRecord> AlignToDocx(IReadOnlyList<PdfHeadingCandidate> pdfHeadings, SlimDocument slim)
+    private static List<HeadingRecord> AlignToDocx(IReadOnlyList<PdfHeadingCandidate> pdfHeadings, IReadOnlyList<IPolicyParagraph> paragraphs)
     {
-        var docx = slim.Paragraphs
+        var docx = paragraphs
             .Where(p => p.Role != ParagraphRole.Empty && !string.IsNullOrWhiteSpace(p.Text))
             .Select(p => new DocxParagraphTokens(p, Tokenize(p.Text)))
             .ToList();
@@ -315,6 +316,6 @@ public static class PdfTextbookOutline
 
     private sealed record PdfHeadingCandidate(int Level, string Text, int Page, double Y, string Reason);
     private sealed record TokenSpan(string Text, int Start, int End);
-    private sealed record DocxParagraphTokens(SlimParagraph Paragraph, IReadOnlyList<TokenSpan> Tokens);
-    private readonly record struct MatchResult(SlimParagraph Paragraph, string Text, int Start, int End);
+    private sealed record DocxParagraphTokens(IPolicyParagraph Paragraph, IReadOnlyList<TokenSpan> Tokens);
+    private readonly record struct MatchResult(IPolicyParagraph Paragraph, string Text, int Start, int End);
 }

@@ -3,6 +3,9 @@ using System.Text.Json;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Vision;
 using UglyToad.PdfPig;
 
@@ -41,7 +44,7 @@ public static class PdfVisualTextRecovery
     internal static async Task<PdfVisualTextRecoveryResult> RecoverAsync(
         string pdfPath,
         IReadOnlyList<PdfLine> lines,
-        SlimDocument document,
+        DocxPolicyState policyState,
         IReadOnlyList<HeadingRecord> existing,
         IPdfVisualQuestion visual,
         int dpi,
@@ -60,7 +63,7 @@ public static class PdfVisualTextRecovery
         var regions = (maximumRegions <= 0 ? scheduledRegions : scheduledRegions.Take(maximumRegions))
             .Where(region => completedRegionIds is null || !completedRegionIds.Contains(region.SourceId))
             .ToArray();
-        var documentRegime = DocumentDomainPolicy.InferRegime(document.Paragraphs.Select(paragraph => paragraph.Text));
+        var documentRegime = DocumentDomainPolicy.InferRegime(policyState.Paragraphs.Select(paragraph => paragraph.Text));
         var repeatedArtifacts = RepeatedHeaderArtifactKeys(lines);
         var occupied = existing.Where(heading => heading.HeadingSpan is not null)
             .Select(heading => (heading.Index, heading.HeadingSpan!.Start)).ToHashSet();
@@ -79,7 +82,7 @@ public static class PdfVisualTextRecovery
         using var visualGate = new SemaphoreSlim(Math.Max(1, maxConcurrency));
         foreach (var trace in traces.Where(trace => trace.Status == "visual-ocr-canonical-map"))
         {
-            var restored = MapUnique(document, trace.RegionId, trace.ObservedText, occupied);
+            var restored = MapUnique(policyState.Paragraphs, trace.RegionId, trace.ObservedText, occupied);
             if (restored is null) continue;
             occupied.Add((restored.Index, restored.HeadingSpan!.Start));
             headings.Add(restored);
@@ -125,7 +128,7 @@ public static class PdfVisualTextRecovery
                     traces.Add(Trace(region, proposal, "visual-ocr-text-unavailable", attempts: Attempts(visual)));
                     continue;
                 }
-                var mapped = MapUnique(document, region.SourceId, proposal.ObservedText, occupied);
+            var mapped = MapUnique(policyState.Paragraphs, region.SourceId, proposal.ObservedText, occupied);
                 if (mapped is null)
                 {
                     audit.Add(new PdfTextLayerRecoveryAudit(region.SourceId, region.Page, "visual-ocr-map-unresolved"));
@@ -185,7 +188,7 @@ public static class PdfVisualTextRecovery
     /// </summary>
     public static async Task<PdfVisualProbeResult> ProbeAsync(
         string pdfPath,
-        SlimDocument document,
+        DocxPolicyState policyState,
         IPdfVisualQuestion visual,
         int regionIndex,
         int dpi,
@@ -224,10 +227,10 @@ public static class PdfVisualTextRecovery
         var production = Parse(region.SourceId, productionRaw);
         var usableProduction = IsUsableForRecovery(production) && HasObservableText(production.ObservedText);
         var matchCount = usableProduction
-            ? CountCanonicalMatches(document, production.ObservedText, new HashSet<(int Index, int Start)>())
+            ? CountCanonicalMatches(policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(), production.ObservedText, new HashSet<(int Index, int Start)>())
             : 0;
         var mapped = usableProduction
-            ? MapUnique(document, region.SourceId, production.ObservedText, new HashSet<(int Index, int Start)>())
+            ? MapUnique(policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(), region.SourceId, production.ObservedText, new HashSet<(int Index, int Start)>())
             : null;
         stages.Add(new PdfVisualProbeStage("D-production-reconciliation", productionRaw,
             !usableProduction ? "fail:proposal-contract" :
@@ -238,7 +241,7 @@ public static class PdfVisualTextRecovery
     }
 
     /// <summary>Source-only trace for a VLM-observed string. It makes reconciliation loss observable without a model call.</summary>
-    public static PdfSourceReconciliationProbe InspectSourceForAudit(SlimDocument document, string observedText)
+    public static PdfSourceReconciliationProbe InspectSourceForAudit(DocxPolicyState policyState, string observedText)
     {
         var canonical = CanonicalMap(observedText).Text;
         var allTerms = observedText.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries)
@@ -247,7 +250,7 @@ public static class PdfVisualTextRecovery
             .Where(item => item.Length >= 3)
             .Distinct(StringComparer.Ordinal)
             .ToArray();
-        var termMatches = document.Paragraphs
+        var termMatches = policyState.Paragraphs
             .Where(paragraph => !paragraph.InTableOfContents)
             .Where(paragraph =>
             {
@@ -256,8 +259,8 @@ public static class PdfVisualTextRecovery
             })
             .Select(paragraph => paragraph.Index)
             .ToArray();
-        return new PdfSourceReconciliationProbe(canonical, CountCanonicalMatches(document, observedText,
-            new HashSet<(int Index, int Start)>()), termMatches, document.Paragraphs.Count);
+        return new PdfSourceReconciliationProbe(canonical, CountCanonicalMatches(policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(), observedText,
+            new HashSet<(int Index, int Start)>()), termMatches, policyState.Paragraphs.Count);
     }
 
     /// <summary>Lists every geometry-derived visual source fact before any VLM budget is applied.</summary>
@@ -578,9 +581,9 @@ public static class PdfVisualTextRecovery
 
     private static bool HasObservableText(string text) => CanonicalMap(text).Text.Length >= 4;
 
-    private static HeadingRecord? MapUnique(SlimDocument document, string sourceId, string observedText, IReadOnlySet<(int Index, int Start)> occupied)
+    private static HeadingRecord? MapUnique(IReadOnlyList<IPolicyParagraph> paragraphs, string sourceId, string observedText, IReadOnlySet<(int Index, int Start)> occupied)
     {
-        var matches = FindCanonicalMatches(document, observedText, occupied);
+        var matches = FindCanonicalMatches(paragraphs, observedText, occupied);
         if (matches.Count != 1) return null;
         var match = matches[0];
         return new HeadingRecord
@@ -640,18 +643,18 @@ public static class PdfVisualTextRecovery
             Source = HeadingSource.Structure,
         }, documentRegime).Text;
 
-    private static int CountCanonicalMatches(SlimDocument document, string observedText, IReadOnlySet<(int Index, int Start)> occupied) =>
-        FindCanonicalMatches(document, observedText, occupied).Count;
+    private static int CountCanonicalMatches(IReadOnlyList<IPolicyParagraph> paragraphs, string observedText, IReadOnlySet<(int Index, int Start)> occupied) =>
+        FindCanonicalMatches(paragraphs, observedText, occupied).Count;
 
-    private static List<(SlimParagraph Paragraph, int Start, int End)> FindCanonicalMatches(
-        SlimDocument document,
+    private static List<(IPolicyParagraph Paragraph, int Start, int End)> FindCanonicalMatches(
+        IReadOnlyList<IPolicyParagraph> paragraphs,
         string observedText,
         IReadOnlySet<(int Index, int Start)> occupied)
     {
         var needle = CanonicalMap(observedText);
         if (needle.Text.Length < 8) return [];
-        var matches = new List<(SlimParagraph Paragraph, int Start, int End)>();
-        foreach (var paragraph in document.Paragraphs.Where(item => !item.InTableOfContents && !string.IsNullOrWhiteSpace(item.Text)))
+        var matches = new List<(IPolicyParagraph Paragraph, int Start, int End)>();
+        foreach (var paragraph in paragraphs.Where(item => !item.InTableOfContents && !string.IsNullOrWhiteSpace(item.Text)))
         {
             var map = CanonicalMap(paragraph.Text);
             var at = map.Text.IndexOf(needle.Text, StringComparison.Ordinal);

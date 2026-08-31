@@ -1,6 +1,8 @@
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -15,8 +17,7 @@ public sealed class RfcTocDictionaryOutlineTests
             "092_RFC9111_HTTP_Caching.docx");
         Assert.True(File.Exists(docx), $"Missing fixture: {docx}");
 
-        var slim = new DocxSlimExtractor(new ExtractionOptions()).Extract(docx);
-        var result = RfcTocDictionaryOutline.Analyze(slim);
+        var result = AnalyzeNative(docx);
         var headings = result.Headings;
 
         Assert.True(result.Accepted);
@@ -37,66 +38,17 @@ public sealed class RfcTocDictionaryOutlineTests
     }
 
     [Fact]
-    public async Task Pipeline_no_llm_khong_cat_lai_tieu_de_rfc_da_lay_tu_toc()
-    {
-        var root = RepositoryRoot();
-        var docx = Path.Combine(
-            root, "todo10_8", "heading_corpus_95_word", "07_system_generated",
-            "092_RFC9111_HTTP_Caching.docx");
-        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
-        var outline = await pipeline.RunAsync(docx);
-
-        Assert.Equal("pdf-first-authority-v1", outline.DeterministicRoute);
-    }
-
-    [Fact]
-    public async Task Pipeline_khong_bam_nguong_cu_khi_cum_toc_thap_hon_van_khop_than_bai()
-    {
-        var root = RepositoryRoot();
-        var docx = Path.Combine(
-            root, "todo10_8", "heading_corpus_95_word", "07_system_generated",
-            "093_RFC9112_HTTP_1_1.docx");
-
-        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
-        var outline = await pipeline.RunAsync(docx);
-
-        Assert.Equal("pdf-first-authority-v1", outline.DeterministicRoute);
-    }
-
-    [Fact]
-    public async Task Pipeline_bat_duoc_than_bai_sau_toc_duoi_acknowledgments_contributors_authors()
-    {
-        var root = RepositoryRoot();
-        var docx = Path.Combine(
-            root, "todo10_8", "heading_corpus_95_word", "07_system_generated",
-            "094_RFC9113_HTTP_2.docx");
-
-        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
-        var outline = await pipeline.RunAsync(docx);
-
-        Assert.Equal("pdf-first-authority-v1", outline.DeterministicRoute);
-    }
-
-    [Fact]
     public void Toc_dictionary_tu_loai_khi_chi_co_than_bai_nhieu_so_muc()
     {
-        var paragraphs = Enumerable.Range(0, 36)
-            .Select(i => new SlimParagraph
-            {
-                Index = i,
-                StableId = $"p[{i}]",
-                Text = $"{i + 1}. Heading {i + 1} This paragraph references 1. Alpha 2. Beta 3. Gamma in prose.",
-                FontSizePt = 12,
-            })
-            .ToList();
-        var slim = new SlimDocument
-        {
-            FileName = "no-toc.docx",
-            SourcePath = "no-toc.docx",
-            Paragraphs = paragraphs,
-        }.Build();
+        var state = NativePolicyStateFactory.Create(
+            Enumerable.Range(0, 36).Select(i =>
+                (i,
+                 $"{i + 1}. Heading {i + 1} This paragraph references 1. Alpha 2. Beta 3. Gamma in prose.",
+                 (int?)null,
+                 (int?)null)));
 
-        var result = RfcTocDictionaryOutline.Analyze(slim);
+        var result = RfcTocDictionaryOutline.Analyze(
+            state.Paragraphs.Cast<IPolicyParagraph>().ToArray());
 
         Assert.False(result.Accepted);
         Assert.Empty(result.Headings);
@@ -108,5 +60,14 @@ public sealed class RfcTocDictionaryOutlineTests
         while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
             dir = dir.Parent;
         return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
+    }
+
+    private static RfcTocDictionaryResult AnalyzeNative(string path)
+    {
+        var source = new OpenXmlDocumentSource().Read(path);
+        var features = NumberingStyleFeatures.FromSourceDocument(source);
+        var policy = DocxPolicyStateBuilder.Build(source, features,
+            new DocumentFeatureDeriver().Derive(source), new ExtractionOptions());
+        return RfcTocDictionaryOutline.Analyze(policy.Paragraphs.Cast<IPolicyParagraph>().ToArray());
     }
 }

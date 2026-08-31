@@ -1,5 +1,7 @@
 using System.Globalization;
 using System.Text;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Output;
@@ -209,8 +211,11 @@ public sealed class PartialKeyPackage(PipelineOptions options)
         var conversion = LegacyDocConverter.EnsureDocx(inputPath);
         try
         {
-            var slim = new DocxSlimExtractor(options.Extraction).Extract(conversion.Path);
-            return TextLayoutLineProbe.Analyze(slim.Paragraphs);
+            var source = new OpenXmlDocumentSource(options.Extraction).Read(conversion.Path);
+            var features = NumberingStyleFeatures.FromSourceDocument(source);
+            var policyState = DocxPolicyStateBuilder.Build(
+                source, features, new DocumentFeatureDeriver().Derive(source), options.Extraction);
+            return TextLayoutLineProbe.Analyze(policyState);
         }
         finally
         {

@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using UglyToad.PdfPig;
@@ -18,7 +19,13 @@ public static class PdfTaggedHeadingProbe
 {
     private static readonly Regex HeadingTag = new(@"^H(?<level>[1-6])?$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-    public static PdfTaggedHeadingProbeReport Analyze(string pdfPath, SlimDocument? docx = null)
+    public static PdfTaggedHeadingProbeReport Analyze(
+        string pdfPath, IReadOnlyList<IPolicyParagraph>? paragraphs) =>
+        AnalyzeCore(pdfPath, paragraphs);
+
+    private static PdfTaggedHeadingProbeReport AnalyzeCore<TParagraph>(
+        string pdfPath, IReadOnlyList<TParagraph>? paragraphs)
+        where TParagraph : IPolicyParagraph
     {
         try
         {
@@ -62,7 +69,7 @@ public static class PdfTaggedHeadingProbe
             if (structureCandidates.Count > 0)
                 all = structureCandidates;
 
-            var aligned = docx is null ? all : Align(all, docx);
+            var aligned = paragraphs is null ? all : Align(all, paragraphs);
             return new PdfTaggedHeadingProbeReport(
                 pdfPath, document.NumberOfPages, markedCount, aligned.Count,
                 aligned.Count(c => c.DocxParagraphIndex is not null), "ok", structureTrace, aligned);
@@ -266,11 +273,12 @@ public static class PdfTaggedHeadingProbe
         return PdfTextUtilities.HeadingReadable(text.ToString());
     }
 
-    private static List<PdfTaggedHeadingCandidate> Align(
+    private static List<PdfTaggedHeadingCandidate> Align<TParagraph>(
         IReadOnlyList<PdfTaggedHeadingCandidate> candidates,
-        SlimDocument docx)
+        IReadOnlyList<TParagraph> docx)
+        where TParagraph : IPolicyParagraph
     {
-        var paragraphs = docx.Paragraphs
+        var paragraphs = docx
             .Where(p => p.Role != ParagraphRole.Empty && !p.InTableOfContents && !string.IsNullOrWhiteSpace(p.Text))
             .OrderBy(p => p.Index)
             .Select(p => new { Paragraph = p, Map = CanonicalMap.For(p.Text) })

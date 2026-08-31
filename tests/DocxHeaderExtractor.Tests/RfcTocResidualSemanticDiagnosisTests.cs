@@ -1,4 +1,6 @@
 using System.Text.Json;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
 
@@ -20,9 +22,15 @@ public sealed class RfcTocResidualSemanticDiagnosisTests
         var reports = new List<object>();
         foreach (var item in cases)
         {
-            using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
+            using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
             var outline = await pipeline.RunAsync(Path.Combine(root, "todo10_8", "heading_corpus_95_word", "07_system_generated", item.Item2));
-            var direct = RfcTocDictionaryOutline.Analyze(new DocxSlimExtractor(new ExtractionOptions()).Extract(Path.Combine(root, "todo10_8", "heading_corpus_95_word", "07_system_generated", item.Item2)));
+            var directPath = Path.Combine(root, "todo10_8", "heading_corpus_95_word", "07_system_generated", item.Item2);
+            var directSource = new OpenXmlDocumentSource().Read(directPath);
+            var directFeatures = NumberingStyleFeatures.FromSourceDocument(directSource);
+            var directPolicy = DocxPolicyStateBuilder.Build(directSource, directFeatures,
+                new DocumentFeatureDeriver().Derive(directSource), new ExtractionOptions());
+            var direct = RfcTocDictionaryOutline.Analyze(
+                directPolicy.Paragraphs.Cast<IPolicyParagraph>().ToArray());
             reports.Add(new
             {
                 fullyQualifiedTestName = $"DocxHeaderExtractor.Tests.RfcTocDictionaryOutlineTests.{item.Item1}",

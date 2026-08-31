@@ -2,7 +2,10 @@
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.Core.Application.Features;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Vision;
 using UglyToad.PdfPig;
 
@@ -277,12 +280,12 @@ public static class PdfLayoutEvidenceOutline
 
     private static string Sha256(string text) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text))).ToLowerInvariant();
 
-    public static PdfTextbookOutlineResult TryBuild(string originalInputPath, SlimDocument slim)
+    public static PdfTextbookOutlineResult TryBuild(string originalInputPath, DocxPolicyState policyState)
     {
-        var context = TryBuildContext(originalInputPath, slim, out var reason);
+        var context = TryBuildContext(originalInputPath, policyState, out var reason);
         if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
 
-        var alignment = AlignToDocx(context.Candidates, slim, context.Profile, Basis);
+        var alignment = AlignToDocx(context.Candidates, policyState, context.Profile, Basis);
         if (alignment.Headings.Count < Math.Max(3, (int)Math.Ceiling(context.Candidates.Count * 0.65)))
             return PdfTextbookOutlineResult.NotApplicable($"low-docx-alignment:{alignment.Headings.Count}/{context.Candidates.Count}");
 
@@ -298,11 +301,11 @@ public static class PdfLayoutEvidenceOutline
     /// </summary>
     public static async Task<PdfTextbookOutlineResult> TryBuildWithAnalystAsync(
         string originalInputPath,
-        SlimDocument slim,
+        DocxPolicyState policyState,
         IHeaderClassifier analyst,
         CancellationToken ct = default)
     {
-        var context = TryBuildContext(originalInputPath, slim, out var reason);
+        var context = TryBuildContext(originalInputPath, policyState, out var reason);
         if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
 
         var selection = SelectAnalystCandidates(context.Candidates, MaximumAnalystBlocks);
@@ -321,7 +324,7 @@ public static class PdfLayoutEvidenceOutline
         if (accepted.Length < 3)
             return PdfTextbookOutlineResult.NotApplicable($"analyst-grounded-too-few:{accepted.Length}/{candidates.Count}");
 
-        var alignment = AlignToDocx(accepted, slim, context.Profile, AnalystBasis);
+        var alignment = AlignToDocx(accepted, policyState, context.Profile, AnalystBasis);
         if (alignment.Headings.Count < Math.Max(3, (int)Math.Ceiling(accepted.Length * 0.65)))
             return PdfTextbookOutlineResult.NotApplicable($"analyst-low-docx-alignment:{alignment.Headings.Count}/{accepted.Length}");
 
@@ -354,25 +357,25 @@ public static class PdfLayoutEvidenceOutline
     /// found its paragraph. Nothing here re-implements matching.
     /// </summary>
     internal static PdfDocxAlignmentSnapshot BuildDocxAlignmentSnapshot(
-        string originalInputPath, SlimDocument slim,
+        string originalInputPath, DocxPolicyState policyState,
         PdfDocxAlignmentPopulation population = PdfDocxAlignmentPopulation.NarrowRoute)
     {
         var context = population == PdfDocxAlignmentPopulation.NarrowRoute
-            ? TryBuildContext(originalInputPath, slim, out var reason)
+            ? TryBuildContext(originalInputPath, policyState, out var reason)
             : TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
                 includeSupplementCandidates: true, out reason);
         if (context is null)
-            return new PdfDocxAlignmentSnapshot(reason, 0, [], [], [], slim);
+            return new PdfDocxAlignmentSnapshot(reason, 0, [], [], [], []);
         var trace = new List<PdfDocxAlignmentTrace>();
         var haystacks = new List<PdfDocxCanonicalParagraph>();
-        var alignment = AlignToDocx(context.Candidates, slim, context.Profile, Basis, trace, haystacks);
+        var alignment = AlignToDocx(context.Candidates, policyState, context.Profile, Basis, trace, haystacks);
         // TryBuild rejects the route below this ratio, so an audit that ignored it could describe an
         // alignment production never uses.
         var status = alignment.Headings.Count < Math.Max(3, (int)Math.Ceiling(context.Candidates.Count * 0.65))
             ? $"low-docx-alignment:{alignment.Headings.Count}/{context.Candidates.Count}"
             : "aligned";
         return new PdfDocxAlignmentSnapshot(status, context.Candidates.Count, alignment.Headings, trace,
-            haystacks, slim);
+            haystacks, haystacks);
     }
 
     /// <summary>
@@ -381,18 +384,18 @@ public static class PdfLayoutEvidenceOutline
     /// what existing, source-grounded decisions would have emitted without reimplementing matching.
     /// </summary>
     internal static PdfDocxAlignmentSnapshot BuildBroadAlignmentForCandidateIds(
-        string originalInputPath, SlimDocument slim, IReadOnlySet<string> candidateIds,
+        string originalInputPath, DocxPolicyState policyState, IReadOnlySet<string> candidateIds,
         IReadOnlyDictionary<string, TextOffsetSpan?>? headingSpans = null)
     {
         var context = TryBuildBroadAuditContext(originalInputPath, includeAllVisualStyles: true,
             includeSupplementCandidates: true, out var reason);
         if (context is null)
-            return new PdfDocxAlignmentSnapshot(reason, 0, [], [], [], slim);
+            return new PdfDocxAlignmentSnapshot(reason, 0, [], [], [], []);
         var candidates = context.Candidates.Where(candidate => candidateIds.Contains(candidate.Id)).ToArray();
         var trace = new List<PdfDocxAlignmentTrace>();
         var haystacks = new List<PdfDocxCanonicalParagraph>();
-        var alignment = AlignToDocx(candidates, slim, context.Profile, AnalystBasis, trace, haystacks, headingSpans);
-        return new PdfDocxAlignmentSnapshot("aligned", candidates.Length, alignment.Headings, trace, haystacks, slim);
+        var alignment = AlignToDocx(candidates, policyState, context.Profile, AnalystBasis, trace, haystacks, headingSpans);
+        return new PdfDocxAlignmentSnapshot("aligned", candidates.Length, alignment.Headings, trace, haystacks, haystacks);
     }
 
     public static PdfCandidateRankingAudit BuildCandidateRankingAudit(string originalInputPath) =>
@@ -546,11 +549,11 @@ public static class PdfLayoutEvidenceOutline
     /// Audit-only PDF-first lane. It deliberately starts from the broader candidate generator used
     /// by <c>pdf-clusters</c>, rather than the sparse-style production experiment above. DOCX is
     /// only used after PDF selection to map an accepted PDF block to a stable writeback span.
-    /// This method is intentionally not called by <see cref="HeaderExtractionPipeline"/>.
+    /// This method is intentionally not called by the normal authority pipeline.
     /// </summary>
     public static Task<PdfTextbookOutlineResult> TryBuildBroadAuditWithAnalystAsync(
         string originalInputPath,
-        SlimDocument slim,
+        DocxPolicyState policyState,
         IHeaderClassifier analyst,
         int maximumAnalystBlocks = 0,
         bool includeAllVisualStyles = false,
@@ -567,14 +570,14 @@ public static class PdfLayoutEvidenceOutline
         int visualMaxConcurrency = 1,
         bool includeSemanticHierarchyFallback = true) =>
         TryBuildBroadAuditWithAnalystCoreAsync(
-            originalInputPath, slim, analyst, maximumAnalystBlocks, includeAllVisualStyles,
+            originalInputPath, policyState, analyst, maximumAnalystBlocks, includeAllVisualStyles,
             includeSupplementCandidates, visualAnalyst, visualDpi, maximumVisualRegions, visualProducer,
             scheduleVisualRegions, ct, semanticLaneOptions, checkpointPath, resume, visualMaxConcurrency,
             includeSemanticHierarchyFallback, null);
 
     internal static async Task<PdfTextbookOutlineResult> TryBuildBroadAuditWithAnalystCoreAsync(
         string originalInputPath,
-        SlimDocument slim,
+        DocxPolicyState policyState,
         IHeaderClassifier analyst,
         int maximumAnalystBlocks = 0,
         bool includeAllVisualStyles = false,
@@ -606,7 +609,7 @@ public static class PdfLayoutEvidenceOutline
         // Its own canonical source validator remains the authority before any heading is emitted.
         var visualRecoveryTask = visualAnalyst is null
             ? Task.FromResult(new PdfVisualTextRecoveryResult([], [], [], [], [], []))
-            : PdfVisualTextRecovery.RecoverAsync(context.Pdf, context.Lines, slim, [], visualAnalyst,
+            : PdfVisualTextRecovery.RecoverAsync(context.Pdf, context.Lines, policyState, [], visualAnalyst,
                 visualDpi, maximumVisualRegions, visualProducer, scheduleVisualRegions, ct,
                 checkpoint?.CompletedVisualRegions,
                 checkpoint is null ? null : (trace, token) => checkpoint.RecordVisualRegionAsync(trace, token),
@@ -722,7 +725,7 @@ public static class PdfLayoutEvidenceOutline
         // heading text within its possibly-wider window, so the auto-numbered title-only fallback in
         // AlignToDocx never searches with trailing body-context text glued to the title.
         var headingSpansByBlockId = eligibleDecisions.ToDictionary(d => d.Id, d => d.HeadingSpan, StringComparer.Ordinal);
-        var alignment = AlignToDocx(accepted, slim, context.Profile, AnalystBasis, trace: null, haystacks: null, headingSpansByBlockId);
+        var alignment = AlignToDocx(accepted, policyState, context.Profile, AnalystBasis, trace: null, haystacks: null, headingSpansByBlockId);
         if (checkpoint is not null)
             await checkpoint.RecordDownstreamProvenanceAsync(
                 selected,
@@ -1080,10 +1083,10 @@ public static class PdfLayoutEvidenceOutline
         return selected;
     }
 
-    private static LayoutContext? TryBuildContext(string originalInputPath, SlimDocument slim, out string reason)
+    private static LayoutContext? TryBuildContext(string originalInputPath, DocxPolicyState policyState, out string reason)
     {
         reason = "";
-        if (DocumentStructureEvidence.HasNativeSemanticStructure(slim)) { reason = "docx-structure-present"; return null; }
+        if (DocumentStructureEvidence.HasNativeSemanticStructure(policyState)) { reason = "docx-structure-present"; return null; }
         var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
         if (pdf is null) { reason = "no-pdf"; return null; }
 
@@ -1431,10 +1434,14 @@ public static class PdfLayoutEvidenceOutline
 
     private static PdfLayoutAlignmentResult AlignToDocx(
         IReadOnlyList<PdfSemanticBlock> candidates,
-        SlimDocument slim,
+        DocxPolicyState policyState,
         PdfStyleClusterProfile profile,
-        string confidenceBasis) =>
-        AlignToDocx(candidates, slim, profile, confidenceBasis, trace: null);
+        string confidenceBasis,
+        List<PdfDocxAlignmentTrace>? trace = null,
+        List<PdfDocxCanonicalParagraph>? haystacks = null,
+        IReadOnlyDictionary<string, TextOffsetSpan?>? headingSpans = null) =>
+        AlignToDocx(candidates, policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(), profile,
+            confidenceBasis, trace, haystacks, headingSpans);
 
     /// <summary>
     /// The alignment production runs, with an optional passive record of how each block reached the
@@ -1443,14 +1450,14 @@ public static class PdfLayoutEvidenceOutline
     /// </summary>
     private static PdfLayoutAlignmentResult AlignToDocx(
         IReadOnlyList<PdfSemanticBlock> candidates,
-        SlimDocument slim,
+        IReadOnlyList<IPolicyParagraph> policyParagraphs,
         PdfStyleClusterProfile profile,
         string confidenceBasis,
         List<PdfDocxAlignmentTrace>? trace,
         List<PdfDocxCanonicalParagraph>? haystacks = null,
         IReadOnlyDictionary<string, TextOffsetSpan?>? headingSpans = null)
     {
-        var paragraphs = slim.Paragraphs
+        var paragraphs = policyParagraphs
             .Where(p => p.Role != ParagraphRole.Empty && !p.InTableOfContents && !string.IsNullOrWhiteSpace(p.Text))
             .OrderBy(p => p.Index)
             .Select(p => new CanonParagraph(p, CanonicalMap(p.Text)))
@@ -1742,10 +1749,10 @@ public static class PdfLayoutEvidenceOutline
     }
 
     internal sealed record CanonMap(string Text, IReadOnlyList<int> SourceIndexes);
-    internal sealed record CanonParagraph(SlimParagraph Paragraph, CanonMap Map);
+    internal sealed record CanonParagraph(IPolicyParagraph Paragraph, CanonMap Map);
     private readonly record struct LooseLabelledMarker(string Canonical);
     private sealed record MarkerReconstruction(MatchResult Match, string HeadingText, bool MarkerOnly);
-    internal readonly record struct MatchResult(SlimParagraph Paragraph, int Start, int End);
+    internal readonly record struct MatchResult(IPolicyParagraph Paragraph, int Start, int End);
     private sealed record PdfLayoutAlignmentResult(
         IReadOnlyList<HeadingRecord> Headings,
         IReadOnlySet<string> AlignedBlockIds,
@@ -1816,7 +1823,7 @@ internal sealed record PdfDocxAlignmentSnapshot(
     IReadOnlyList<HeadingRecord> Headings,
     IReadOnlyList<PdfDocxAlignmentTrace> Trace,
     IReadOnlyList<PdfDocxCanonicalParagraph> Haystacks,
-    SlimDocument Document);
+    IReadOnlyList<PdfDocxCanonicalParagraph> SourceParagraphs);
 
 /// <summary>A paragraph exactly as the matcher saw it.</summary>
 internal sealed record PdfDocxCanonicalParagraph(int Index, string CanonicalText);

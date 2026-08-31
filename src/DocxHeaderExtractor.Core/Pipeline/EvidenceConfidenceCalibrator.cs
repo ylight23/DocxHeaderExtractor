@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Application.Policy;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -10,11 +11,12 @@ public static class EvidenceConfidenceCalibrator
 {
     public static int Apply(
         IList<HeadingRecord> headings,
-        SlimDocument document,
+        DocxPolicyState document,
         IReadOnlySet<int>? auditConflicts = null,
         IReadOnlyList<double>? confidenceTiers = null)
     {
         var ordered = headings.OrderBy(x => x.Index).ToList();
+        var paragraphs = document.Paragraphs.ToDictionary(p => p.Index);
         var structure = ordered.Where(x => x.Source == HeadingSource.Structure).ToList();
         var eligible = ordered.Where(x => x.Source is HeadingSource.Structure or HeadingSource.Model).ToList();
         if (eligible.Count == 0) return 0;
@@ -25,7 +27,7 @@ public static class EvidenceConfidenceCalibrator
         var siblingGroups = ordered
             .Select((h, i) => (
                 Heading: h,
-                Token: NumberingAudit.ParseParagraph(document.ByIndex(h.Index), h.Text),
+                Token: NumberingAudit.ParseParagraph(paragraphs.GetValueOrDefault(h.Index), h.Text),
                 Parent: ParentIndex(ordered, i)))
             .Where(x => x.Token is not null)
             .GroupBy(x => (x.Parent, x.Heading.Level, x.Token!.Value.Signature))
@@ -34,7 +36,7 @@ public static class EvidenceConfidenceCalibrator
         foreach (var heading in eligible)
         {
             var at = ordered.IndexOf(heading);
-            var token = NumberingAudit.ParseParagraph(document.ByIndex(heading.Index), heading.Text);
+            var token = NumberingAudit.ParseParagraph(paragraphs.GetValueOrDefault(heading.Index), heading.Text);
             var parent = ParentIndex(ordered, at);
             var numberingValid = token is not null;
             var siblingsValid = false;
@@ -45,7 +47,7 @@ public static class EvidenceConfidenceCalibrator
                 var values = siblings.Select(x => x.Token!.Value.Value).Distinct().Order().ToList();
                 siblingsValid = values.Count >= 2 && values.Zip(values.Skip(1)).All(x => x.Second == x.First + 1);
                 formattingConsistent = siblings.Count >= 2 && SameFormatting(
-                    siblings.Select(x => document.ByIndex(x.Heading.Index)).Where(x => x is not null).Cast<SlimParagraph>());
+                    siblings.Select(x => paragraphs.GetValueOrDefault(x.Heading.Index)).Where(x => x is not null).Cast<IPolicyParagraph>());
             }
 
             var treeValid = (heading.Level == 1 || parent is not null) &&
@@ -88,7 +90,7 @@ public static class EvidenceConfidenceCalibrator
         return null;
     }
 
-    private static bool SameFormatting(IEnumerable<SlimParagraph> paragraphs)
+    private static bool SameFormatting(IEnumerable<IPolicyParagraph> paragraphs)
     {
         var formats = paragraphs.Select(PrefixFormat).ToList();
         if (formats.Count < 2) return false;
@@ -97,9 +99,9 @@ public static class EvidenceConfidenceCalibrator
             (x.Size is null || first.Size is null || Math.Abs(x.Size.Value - first.Size.Value) <= 0.5));
     }
 
-    private static (bool Bold, string Alignment, double? Size) PrefixFormat(SlimParagraph p)
+    private static (bool Bold, string Alignment, double? Size) PrefixFormat(IPolicyParagraph p)
     {
-        var first = p.TextSpans.FirstOrDefault(x => x.End > x.Start);
+        var first = (p as DocxPolicyParagraph)?.Source.TextSpans.FirstOrDefault(x => x.End > x.Start);
         return first is null
             ? (p.Bold, p.Alignment ?? "left", p.FontSizePt)
             : (first.Bold, p.Alignment ?? "left", first.FontSizePt ?? p.FontSizePt);

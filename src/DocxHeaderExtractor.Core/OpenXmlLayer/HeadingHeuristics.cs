@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Application.Policy;
 
 namespace DocxHeaderExtractor.Core.OpenXmlLayer;
 
@@ -114,7 +115,7 @@ public static class HeadingHeuristics
     /// <para>
     /// Không liệt kê từ nào: "Bảng"/"Hình"/"Table"/"Figure" đều chỉ là "một từ 2–12 chữ cái".
     /// Bản thân mẫu này KHÔNG đủ để kết luận — nó phải đi cùng bằng chứng vị trí
-    /// <see cref="SlimParagraph.PrecedesTable"/>.
+    /// source policy paragraph's table-boundary fact.
     /// </para>
     /// </summary>
     private static readonly Regex ObjectLabelPrefixRx = new(
@@ -144,7 +145,7 @@ public static class HeadingHeuristics
     /// sinh. Công khai để <see cref="StyleTrustAudit"/> dùng lại đúng luật này thay vì dựng bộ thứ
     /// hai — hai bộ luật cho cùng một khái niệm thì sớm muộn đi lệch nhau.
     /// </summary>
-    public static bool IsObjectCaption(SlimParagraph p) =>
+    public static bool IsObjectCaption(IPolicyParagraph p) =>
         p.PrecedesTable && p.NumberingId is null && ObjectLabelPrefixRx.IsMatch(p.Text);
 
     /// <summary>Mở đầu bằng ký hiệu gạch đầu dòng — quy ước ký hiệu, không gắn với ngôn ngữ nào.</summary>
@@ -154,7 +155,7 @@ public static class HeadingHeuristics
     public static bool EndsLikeSentence(string text) => SentenceEndRx.IsMatch(text);
 
     /// <summary>
-    /// Gán <see cref="SlimParagraph.Role"/>, <see cref="SlimParagraph.GuessedLevel"/> và điểm số.
+    /// Gán role, guessed level và điểm số cho policy paragraph.
     /// </summary>
     /// <param name="trustStyleSelection">
     /// Cho phép style built-in thoát sớm với <c>Score = 1.0</c>. Đặt false khi
@@ -162,7 +163,7 @@ public static class HeadingHeuristics
     /// style vẫn đi tiếp xuống phần tính điểm — nó KHÔNG bị xoá, chỉ mất quyền phủ quyết mọi luật
     /// hình dạng phía dưới (bảng, chú thích, gạch đầu dòng, dấu câu cuối).
     /// </param>
-    public static void Classify(SlimParagraph p, ExtractionOptions options, bool trustStyleSelection = true)
+    public static void Classify(IPolicyParagraph p, ExtractionOptions options, bool trustStyleSelection = true)
     {
         if (string.IsNullOrWhiteSpace(p.Text))
         {
@@ -415,7 +416,7 @@ public static class HeadingHeuristics
     /// tăng nên chậm hơn, và mở thêm cửa cho false positive — phải theo dõi bằng eval.
     /// </para>
     /// </summary>
-    private static void PromoteStandaloneLine(SlimParagraph p, ExtractionOptions options)
+    private static void PromoteStandaloneLine(IPolicyParagraph p, ExtractionOptions options)
     {
         if (!options.PromoteStandaloneLines) return;
         if (p.TableDepth > 0) return;
@@ -446,14 +447,14 @@ public static class HeadingHeuristics
     /// style dựng sẵn OOXML → w:outlineLvl → (tuỳ chọn) tên style bản địa hoá.
     /// Trả null nếu không có bằng chứng nào.
     /// </summary>
-    public static int? LevelFromStyle(SlimParagraph p, ExtractionOptions options)
+    public static int? LevelFromStyle(IPolicyParagraph p, ExtractionOptions options)
     {
         return BuiltInLevel(p) ?? (p.OutlineLevel is >= 0 and <= 8 ? p.OutlineLevel.Value + 1 : (int?)null)
                ?? (options.UseLexicalRules ? LocalizedStyleLevel(p) : (int?)null);
     }
 
     /// <summary>Chỉ nhận style chuẩn OOXML, không nhận outline level hay tên người dùng tự đặt.</summary>
-    public static int? BuiltInLevel(SlimParagraph p)
+    public static int? BuiltInLevel(IPolicyParagraph p)
     {
         foreach (var candidate in new[] { p.StyleName, p.StyleId })
         {
@@ -469,7 +470,7 @@ public static class HeadingHeuristics
     public static int? BuiltInLevelFromStyleId(string? styleId)
         => BuiltInHeadingStyleIdentity.LevelFromStyleIdentity(styleId);
 
-    private static int? LocalizedStyleLevel(SlimParagraph p)
+    private static int? LocalizedStyleLevel(IPolicyParagraph p)
     {
         var name = p.StyleName ?? p.StyleId;
         if (string.IsNullOrEmpty(name)) return null;

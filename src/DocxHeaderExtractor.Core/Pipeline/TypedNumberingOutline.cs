@@ -1,5 +1,6 @@
 ﻿using DocxHeaderExtractor.Core.Models;
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -46,63 +47,55 @@ public static class TypedNumberingOutline
         @"^\s*(?<marker>\d{1,3}(?:\.\d{1,3}){1,4})\s*\u2022\s*(?<title>[^\d\u2022]{2,120}?)\s+\d{1,4}\s+(?<body>.{12,})$",
         RegexOptions.Compiled);
 
-    public static List<HeadingRecord> Build(SlimDocument document, bool splitMergedParagraphs = true)
+    /// <summary>Native producer equivalent used by policy diagnostics; no Slim intermediate.</summary>
+    public static List<HeadingRecord> Build(IReadOnlyList<IPolicyParagraph> paragraphs, bool splitMergedParagraphs = true)
+        => BuildCore(paragraphs, splitMergedParagraphs,
+            usePartSectionLevels: PartSectionOutline.HasStrongSignal(paragraphs));
+
+    private static List<HeadingRecord> BuildCore(
+        IReadOnlyList<IPolicyParagraph> paragraphs,
+        bool splitMergedParagraphs,
+        bool usePartSectionLevels)
     {
-        List<HeadingRecord> result = [];
+        ArgumentNullException.ThrowIfNull(paragraphs);
+        var result = new List<HeadingRecord>();
         var seen = new HashSet<(int Index, string Text)>();
-        var usePartSectionLevels = PartSectionOutline.HasStrongSignal(document);
+        var usable = paragraphs.Where(p => !p.Corrupt && p.TableDepth == 0 &&
+            !p.InTableOfContents && !string.IsNullOrWhiteSpace(p.Text)).ToArray();
+        var threshold = AdministrativeOutline.NguongNhanDe(usable.SelectMany(p => splitMergedParagraphs
+            ? ParagraphHeadingSplitter.Segments(StripPageArtifacts(p.Text))
+            : [StripPageArtifacts(p.Text)]));
 
-        // Ngưỡng "nhan đề đã dính thân bài" do CHÍNH tài liệu khai ra — trung vị độ dài các đơn vị
-        // sau khi cắt, nhân một tỉ lệ. Không có hằng số ký tự nào ở đây.
-        var nguong = AdministrativeOutline.NguongNhanDe(
-            document.Paragraphs
-                .Where(x => !x.Corrupt && x.TableDepth == 0 && !x.InTableOfContents)
-                .SelectMany(x => splitMergedParagraphs
-                    ? ParagraphHeadingSplitter.Segments(StripPageArtifacts(x.Text ?? string.Empty))
-                    : [StripPageArtifacts(x.Text ?? string.Empty)]));
-
-        foreach (var p in document.Paragraphs.OrderBy(x => x.Index))
+        foreach (var paragraph in usable.OrderBy(p => p.Index))
         {
-            if (p.Corrupt || p.TableDepth > 0 || p.InTableOfContents || string.IsNullOrWhiteSpace(p.Text)) continue;
-            var text = StripPageArtifacts(p.Text);
             var segments = splitMergedParagraphs
-                ? ParagraphHeadingSplitter.Segments(text)
-                : [text];
-            if (LooksLikeDenseTypedTableOfContents(text, segments)) continue;
-
-            foreach (var seg in segments)
+                ? ParagraphHeadingSplitter.Segments(StripPageArtifacts(paragraph.Text))
+                : [StripPageArtifacts(paragraph.Text)];
+            if (LooksLikeDenseTypedTableOfContents(paragraph.Text, segments)) continue;
+            foreach (var segment in segments)
             {
-                if (LooksLikeTextLayoutPageHeader(seg)) continue;
-                if (NumberingAudit.Parse(seg) is not { } token) continue;
-                if (LooksLikeCaptionLabel(token)) continue;
-                if (HasZeroArabicPathComponent(token, seg)) continue;
-                if (LooksLikeNumericMeasurement(token, seg)) continue;
-                if (LooksLikeQuantitativeAmount(token, seg)) continue;
-                if (LooksLikeQuantitativeTableRow(token, seg)) continue;
-
-                var split = SplitTypedHeadingBody(token, seg, nguong);
-                if (!seen.Add((p.Index, split.Heading))) continue;
+                if (LooksLikeTextLayoutPageHeader(segment) || NumberingAudit.Parse(segment) is not { } token ||
+                    LooksLikeCaptionLabel(token) || HasZeroArabicPathComponent(token, segment) ||
+                    LooksLikeNumericMeasurement(token, segment) || LooksLikeQuantitativeAmount(token, segment) ||
+                    LooksLikeQuantitativeTableRow(token, segment)) continue;
+                var split = SplitTypedHeadingBody(token, segment, threshold);
+                if (!seen.Add((paragraph.Index, split.Heading))) continue;
                 result.Add(new HeadingRecord
                 {
-                    Index = p.Index,
-                    StableId = p.StableId,
+                    Index = paragraph.Index, StableId = paragraph.StableId, SourceId = paragraph.StableId,
                     Level = usePartSectionLevels
                         ? PartSectionOutline.LevelForHeading(split.Heading) ?? Math.Clamp(token.Depth, 1, 9)
                         : Math.Clamp(token.Depth, 1, 9),
-                    Text = split.Heading,
-                    StyleId = p.StyleId,
-                    Source = HeadingSource.Structure,
-                    Confidence = 1.0,
+                    Text = split.Heading, StyleId = paragraph.StyleId,
+                    Source = HeadingSource.Structure, Confidence = 1.0,
                     ConfidenceBasis = "typed_number_depth",
                     DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
-                    InlineBody = split.Body,
-                    OriginalText = split.Body is null ? null : seg,
+                    InlineBody = split.Body, OriginalText = split.Body is null ? null : segment,
                     HeadingSpan = split.Body is null ? null : split.HeadingSpan,
                     InlineBodySpan = split.Body is null ? null : split.BodySpan,
                 });
             }
         }
-
         return result;
     }
 
@@ -191,11 +184,11 @@ public static class TypedNumberingOutline
         return tocLike >= 4 && tocLike >= segments.Count * 0.6;
     }
 
-    internal static bool LooksLikeQuantitativeTypedLayout(SlimDocument document)
+    internal static bool LooksLikeQuantitativeTypedLayout(IReadOnlyList<IPolicyParagraph> paragraphs)
     {
         var typed = 0;
         var quantitative = 0;
-        foreach (var p in document.Paragraphs)
+        foreach (var p in paragraphs)
         {
             if (p.Corrupt || p.TableDepth > 0 || p.InTableOfContents || string.IsNullOrWhiteSpace(p.Text)) continue;
             foreach (var seg in ParagraphHeadingSplitter.Segments(StripPageArtifacts(p.Text)))

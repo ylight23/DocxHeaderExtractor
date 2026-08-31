@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
@@ -27,10 +28,10 @@ public static class TableOfContentsAnchor
     private static readonly Regex SpaceRx = new(@"\s+", RegexOptions.Compiled);
 
     /// <summary>Trả về số cấp đã pin.</summary>
-    public static int Apply(IList<HeadingRecord> headings, SlimDocument document)
+    public static int Apply(IList<HeadingRecord> headings, IReadOnlyList<IPolicyParagraph> paragraphs)
     {
         var entries = new Dictionary<string, int>(StringComparer.Ordinal);
-        foreach (var p in document.Paragraphs)
+        foreach (var p in paragraphs)
         {
             if (!p.InTableOfContents) continue;
             // Ưu tiên NumberLabel đã resolve từ numbering.xml ("1.1.1" -> cấp 3) trước khi đọc TEXT:

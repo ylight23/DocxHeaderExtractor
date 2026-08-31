@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 
@@ -11,31 +12,25 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// </summary>
 internal static class DocxAuthorityPipeline
 {
-    internal static DocxAuthoritySource BuildForAudit(SlimDocument document, DocumentModeReport mode) =>
-        Build(SlimSourceFactsAdapter.Adapt(document), SlimCompatibilityBoundary.Capture(document), mode);
-
-    internal static DocxAuthoritySource BuildForAudit(
-        SourceDocument source,
-        SlimDocument compatibility,
-        DocumentModeReport mode) => Build(source, SlimCompatibilityBoundary.Capture(compatibility), mode);
-
-    internal static Task<DocxAuthorityPipelineResult> RunAsync(
-        SlimDocument document,
-        DocumentModeReport mode,
-        IHeaderClassifier? analyst,
-        IReadOnlySet<int>? quarantinedIndexes = null,
-        CancellationToken ct = default) =>
-        RunAsync(SlimSourceFactsAdapter.Adapt(document), SlimCompatibilityBoundary.Capture(document), mode, analyst, quarantinedIndexes, ct);
+    internal static DocxAuthoritySource BuildForAudit(DocxPolicyState policyState, DocumentModeReport mode) =>
+        BuildForAudit(policyState, mode, quarantinedIndexes: null);
 
     public static async Task<DocxAuthorityPipelineResult> RunAsync(
-        SourceDocument sourceDocument,
-        SlimCompatibilityContext compatibility,
+        DocxPolicyState policyState,
         DocumentModeReport mode,
         IHeaderClassifier? analyst,
         IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default)
     {
-        var source = Build(sourceDocument, compatibility, mode, quarantinedIndexes);
+        var source = BuildForAudit(policyState, mode, quarantinedIndexes);
+        return await RunCoreAsync(source, analyst, ct);
+    }
+
+    private static async Task<DocxAuthorityPipelineResult> RunCoreAsync(
+        DocxAuthoritySource source,
+        IHeaderClassifier? analyst,
+        CancellationToken ct)
+    {
         if (source.Blocks.Count == 0) return new DocxAuthorityPipelineResult([], null);
 
         PdfBlockAnalysis roles;
@@ -119,17 +114,25 @@ internal static class DocxAuthorityPipeline
         return new DocxAuthorityPipelineResult(headings, audit);
     }
 
-    private static bool IsDeterministicallyStructured(SourceParagraph source, SlimCompatibilityParagraph paragraph) =>
+    private static bool IsDeterministicallyStructured(SourceParagraph source, IPolicyParagraph paragraph) =>
         paragraph.HasBuiltInHeadingStyle || source.Style.OutlineLevel is >= 0 and <= 8 ||
         paragraph.NumberingStyleLevel is >= 1 and <= 9;
 
+    private static DocxAuthoritySource BuildForAudit(
+        DocxPolicyState policyState,
+        DocumentModeReport mode,
+        IReadOnlySet<int>? quarantinedIndexes) =>
+        Build(policyState.Source, policyState.Paragraphs.ToDictionary<DocxPolicyParagraph, string, IPolicyParagraph>(p => p.Source.SourceId, p => p), mode,
+            (id, text) => PdfMarkerFactsParser.Parse(text), quarantinedIndexes);
+
     private static DocxAuthoritySource Build(
         SourceDocument sourceDocument,
-        SlimCompatibilityContext compatibility,
+        IReadOnlyDictionary<string, IPolicyParagraph> policyParagraphs,
         DocumentModeReport mode,
+        Func<string, string, PdfMarkerFact?> markerFor,
         IReadOnlySet<int>? quarantinedIndexes = null)
     {
-        var compatibilityById = compatibility.Paragraphs;
+        var compatibilityById = policyParagraphs;
         var paragraphs = sourceDocument.Paragraphs
             .Where(source => compatibilityById.ContainsKey(source.SourceId))
             .Select(source => (Source: source, Compatibility: compatibilityById[source.SourceId]))
@@ -149,7 +152,7 @@ internal static class DocxAuthorityPipeline
             var paragraph = paragraphs[index].Compatibility;
             var id = sourceParagraph.SourceId;
             var scope = ScopeOf(sourceParagraph, paragraph);
-            var marker = compatibility.MarkerFor(id, sourceParagraph.Text);
+            var marker = markerFor(id, sourceParagraph.Text);
             var evidence = new List<string>
             {
                 sourceParagraph.Text.Length <= 180 ? "short_source_paragraph" : "long_source_paragraph",
@@ -189,7 +192,7 @@ internal static class DocxAuthorityPipeline
         return new DocxAuthoritySource(blocks, result, modelContexts);
     }
 
-    private static string ScopeOf(SourceParagraph source, SlimCompatibilityParagraph compatibility) =>
+    private static string ScopeOf(SourceParagraph source, IPolicyParagraph compatibility) =>
         compatibility.InTableOfContents ? "table_of_contents" :
         source.Layout.TableDepth > 0 ? "table" :
         PdfStructuralScopeDetector.IsFormalSyntax(source.Text) ? "code_or_grammar" :
@@ -200,7 +203,7 @@ internal static class DocxAuthorityPipeline
 
 internal sealed record DocxAuthorityContext(
     SourceParagraph Source,
-    SlimCompatibilityParagraph Paragraph,
+    IPolicyParagraph Paragraph,
     string Scope,
     PdfCandidateContext ModelContext);
 

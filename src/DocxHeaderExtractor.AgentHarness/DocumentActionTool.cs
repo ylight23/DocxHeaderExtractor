@@ -80,7 +80,7 @@ public sealed class OutlineWritebackTool(ExtractionOptions extraction) : IDocume
 
 /// <summary>
 /// M9.5b. The pdf-first-authority route's writeback: acts on the exact <c>PdfProductOutput</c>
-/// <see cref="HeaderExtractionPipeline"/> already materialized (<see cref="DocumentOutline.ProductOutput"/>),
+/// the authority pipeline already materialized (<see cref="DocumentOutline.ProductOutput"/>),
 /// never a reconstruction through <see cref="HeadingRecord"/>. The mutation itself lives in
 /// <see cref="PdfProductWriteback"/>; this tool only carries the harness contract, mirroring
 /// <see cref="OutlineWritebackTool"/> for every other route.

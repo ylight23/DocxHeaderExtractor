@@ -23,7 +23,8 @@ public sealed record McpHeadingResult(
     bool Disputed,
     bool ModelConfirmed,
     bool CriticConfirmed,
-    HeadingEvidence? Evidence);
+    HeadingEvidence? Evidence,
+    TextOffsetSpan? HeadingSpan = null);
 
 public sealed record McpTraceResult(
     int Sequence,

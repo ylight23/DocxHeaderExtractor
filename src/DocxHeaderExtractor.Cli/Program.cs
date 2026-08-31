@@ -5,6 +5,8 @@ using DocxHeaderExtractor.Cli;
 using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Chunking;
+using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
@@ -207,7 +209,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
 /// thật và tệp ghi rõ điều đó.
 /// </para>
 /// </summary>
-static async Task DumpChunksAsync(SlimDocument slim, CommandLineOptions o, string directory, CancellationToken ct)
+static async Task DumpChunksAsync(DocxPolicyState policyState, CommandLineOptions o, string directory, CancellationToken ct)
 {
     Directory.CreateDirectory(directory);
 
@@ -224,16 +226,16 @@ static async Task DumpChunksAsync(SlimDocument slim, CommandLineOptions o, strin
 
     using (local)
     {
-    // Sao đúng cách pipeline dựng view (HeaderExtractionPipeline.RunModelAsync): reviewIndexes
+    // Sao đúng cách authority pipeline dựng view: reviewIndexes
     // LUÔN khác null, nên MỌI đoạn không rỗng vào view làm ngữ cảnh và chỉ tập được liệt kê mới
     // mang requested=true. Bản đầu của lệnh này truyền null khi không có --review-all, tức chỉ đưa
     // ứng viên — view nhỏ hơn 4 lần và thiếu hẳn phần thân bài quanh mỗi ứng viên. Dùng nó để so
     // hai mô hình thì cả hai cùng đọc một đầu vào KHÔNG PHẢI đầu vào thật.
     var review = (o.Pipeline.ReviewAllParagraphs
-            ? slim.Paragraphs.Where(p => p.Role != ParagraphRole.Empty)
-            : slim.Candidates)
+            ? policyState.Paragraphs.Where(p => p.Role != ParagraphRole.Empty)
+            : policyState.Candidates)
         .Select(p => p.Index).ToHashSet();
-    var lines = NeutralDocumentViewSerializer.BuildLines(slim, o.Pipeline.Extraction, review);
+    var lines = NeutralDocumentViewSerializer.BuildLines(policyState, o.Pipeline.Extraction, review);
     var chunks = SlimXmlChunker.Split(
         lines,
         o.Pipeline.Chunking.TokenBudget,
@@ -285,25 +287,25 @@ static async Task<int> RunDumpXmlAsync(CommandLineOptions o, CancellationToken c
         var conversion = LegacyDocConverter.EnsureDocx(file);
         try
         {
-            var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(conversion.Path);
-            var candidates = slim.Candidates.ToList();
+            var policyState = BuildPolicyState(conversion.Path, o.Pipeline.Extraction);
+            var candidates = policyState.Candidates.ToList();
 
             if (!o.Quiet)
             {
                 Console.Error.WriteLine(
-                    $"{slim.FileName}: {slim.Paragraphs.Count} đoạn, {candidates.Count} ứng viên, " +
+                    $"{policyState.Source.FileName}: {policyState.Paragraphs.Count} đoạn, {candidates.Count} ứng viên, " +
                     $"{candidates.Count(p => p.Role == ParagraphRole.StyledHeading)} theo style");
             }
 
             if (o.Pipeline.Extraction.ReportModeOnly)
             {
-                Console.WriteLine($"{Path.GetFileName(file)}	{slim.Mode?.Mode}	{slim.Mode?.Status}	{slim.Mode?.Describe()}");
+                Console.WriteLine($"{Path.GetFileName(file)}	{policyState.Mode?.Mode}	{policyState.Mode?.Status}	{policyState.Mode?.Describe()}");
                 continue;
             }
 
             if (o.DumpChunksDir is { } chunkDir)
             {
-                await DumpChunksAsync(slim, o, chunkDir, ct);
+                await DumpChunksAsync(policyState, o, chunkDir, ct);
                 continue;
             }
 
@@ -314,14 +316,14 @@ static async Task<int> RunDumpXmlAsync(CommandLineOptions o, CancellationToken c
                 // metadata JSON) từ lâu — dump lệch khỏi thứ mô hình thật sự đọc thì mọi phiên gỡ
                 // lỗi dựa vào nó đều đi sai hướng. Dùng đúng bộ serializer của pipeline.
                 var review = o.Pipeline.ReviewAllParagraphs
-                    ? slim.Paragraphs.Where(p => p.Role != ParagraphRole.Empty).Select(p => p.Index).ToHashSet()
+                    ? policyState.Paragraphs.Where(p => p.Role != ParagraphRole.Empty).Select(p => p.Index).ToHashSet()
                     : null;
-                var lines = NeutralDocumentViewSerializer.BuildLines(slim, o.Pipeline.Extraction, review);
+                var lines = NeutralDocumentViewSerializer.BuildLines(policyState, o.Pipeline.Extraction, review);
                 Console.WriteLine(NeutralDocumentViewSerializer.WrapChunk(lines, 1, 1));
             }
             else
             {
-                Console.WriteLine(SlimXmlSerializer.ToFullXml(slim, o.Pipeline.Extraction));
+                Console.WriteLine(SlimXmlSerializer.ToFullXml(policyState, o.Pipeline.Extraction));
             }
         }
         finally
@@ -808,13 +810,17 @@ static async Task<int> RunVerifyCorruptAsync(CommandLineOptions o, CancellationT
     }
     // Quét TRƯỚC, đòi model SAU: không có đoạn nào bị gắn cờ thì chẳng cần VLM, và người dùng không
     // phải chỉ định model chỉ để nghe "không có gì để kiểm".
-    var pending = new List<(string File, SlimDocument Document, List<SlimParagraph> Corrupt)>();
+    var pending = new List<(string File, DocxPolicyState State, List<DocxPolicyParagraph> Corrupt)>();
     foreach (var file in files)
     {
         var conversion = LegacyDocConverter.EnsureDocx(file);
-        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(conversion.Path);
-        var corrupt = slim.Paragraphs.Where(p => p.Corrupt).ToList();
-        if (corrupt.Count > 0) pending.Add((file, slim, corrupt));
+        try
+        {
+            var state = BuildPolicyState(conversion.Path, o.Pipeline.Extraction);
+            var corrupt = state.Paragraphs.Where(p => p.Corrupt).ToList();
+            if (corrupt.Count > 0) pending.Add((file, state, corrupt));
+        }
+        finally { LegacyDocConverter.Cleanup(conversion); }
     }
 
     var totalCorrupt = pending.Sum(p => p.Corrupt.Count);
@@ -842,13 +848,13 @@ static async Task<int> RunVerifyCorruptAsync(CommandLineOptions o, CancellationT
     var confirmed = 0;
     var suspectedBug = 0;
     var inconclusive = 0;
-    foreach (var (file, document, corruptParagraphs) in pending)
+    foreach (var (file, state, corruptParagraphs) in pending)
     {
         Console.Error.WriteLine($"» {Path.GetFileName(file)} ({corruptParagraphs.Count} đoạn nghi vấn)");
         foreach (var paragraph in corruptParagraphs)
         {
             var check = await CorruptParagraphVisualVerifier.VerifyAsync(
-                file, document, paragraph, vlm, o.VlmDpi, ct);
+                file, state, paragraph, vlm, o.VlmDpi, ct);
             switch (check.Verdict)
             {
                 case CorruptParagraphVisualVerdict.ConfirmedSourceCorruption: confirmed++; break;
@@ -886,20 +892,25 @@ static Task<int> RunPdfTagsAsync(CommandLineOptions o, CancellationToken ct)
     foreach (var input in inputs)
     {
         ct.ThrowIfCancellationRequested();
-        SlimDocument? slim = null;
+        DocxPolicyState? policyState = null;
         var pdf = input;
         if (!string.Equals(Path.GetExtension(input), ".pdf", StringComparison.OrdinalIgnoreCase))
         {
             var conversion = LegacyDocConverter.EnsureDocx(input);
-            slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(conversion.Path);
-            pdf = PdfTextbookOutline.FindSiblingPdf(input) ?? "";
+            try
+            {
+                policyState = BuildPolicyState(conversion.Path, o.Pipeline.Extraction);
+                pdf = PdfTextbookOutline.FindSiblingPdf(input) ?? "";
+            }
+            finally { LegacyDocConverter.Cleanup(conversion); }
         }
         if (string.IsNullOrWhiteSpace(pdf) || !File.Exists(pdf))
         {
             reports.Add(new PdfTaggedHeadingProbeReport(input, 0, 0, 0, 0, "no-sibling-pdf", TaggedStructureTrace.Empty, []));
             continue;
         }
-        var report = PdfTaggedHeadingProbe.Analyze(pdf, slim);
+        var report = PdfTaggedHeadingProbe.Analyze(pdf,
+            policyState?.Paragraphs.Cast<IPolicyParagraph>().ToArray());
         reports.Add(report);
         if (!o.Quiet)
             Console.Error.WriteLine($"{Path.GetFileName(input)}: H={report.HeadingElements}, aligned={report.DocxAligned}, status={report.Status}");
@@ -957,6 +968,16 @@ static int RunPdfBookmarks(CommandLineOptions o)
     return 0;
 }
 
+static DocxPolicyState BuildPolicyState(string path, ExtractionOptions options)
+{
+    var source = new OpenXmlDocumentSource().Read(path);
+    var features = NumberingStyleFeatures.FromSourceDocument(source);
+    var built = DocxPolicyStateBuilder.Build(source, features,
+        new DocumentFeatureDeriver().Derive(source), options);
+    return new DocxPolicyState(source, features, built.DerivedFeatures, built.Paragraphs,
+        built.StyleTrust, built.Mode);
+}
+
 static async Task<int> RunPdfVisualProbeAsync(CommandLineOptions o, CancellationToken ct)
 {
     var files = ExpandCalibrationInputs(o.Inputs);
@@ -974,7 +995,12 @@ static async Task<int> RunPdfVisualProbeAsync(CommandLineOptions o, Cancellation
         return 2;
     }
 
-    var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(docx);
+    var source = new OpenXmlDocumentSource().Read(docx);
+    var features = NumberingStyleFeatures.FromSourceDocument(source);
+    var builtPolicy = DocxPolicyStateBuilder.Build(source, features,
+        new DocumentFeatureDeriver().Derive(source), o.Pipeline.Extraction);
+    var policyState = new DocxPolicyState(source, features, builtPolicy.DerivedFeatures,
+        builtPolicy.Paragraphs, builtPolicy.StyleTrust, builtPolicy.Mode);
     if (o.PdfVisualPage is { } page)
     {
         var bounds = PdfRegionRasterizer.GetPageBounds(pdf, page);
@@ -1015,7 +1041,7 @@ static async Task<int> RunPdfVisualProbeAsync(CommandLineOptions o, Cancellation
     }
     if (!string.IsNullOrWhiteSpace(o.PdfVisualProbeText))
     {
-        var sourceOnly = PdfVisualTextRecovery.InspectSourceForAudit(slim, o.PdfVisualProbeText);
+        var sourceOnly = PdfVisualTextRecovery.InspectSourceForAudit(policyState, o.PdfVisualProbeText);
         var sourceJson = JsonSerializer.Serialize(new { file = Path.GetFileName(docx), sourceOnly }, new JsonSerializerOptions { WriteIndented = true });
         if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(sourceJson);
         else
@@ -1039,7 +1065,7 @@ static async Task<int> RunPdfVisualProbeAsync(CommandLineOptions o, Cancellation
                 ? new OpenRouterVisualQuestion(o.Pipeline.OpenRouter.Endpoint, o.Pipeline.OpenRouter.ApiKey, o.Pipeline.OpenRouter.Model)
             : throw new ArgumentException("pdf-visual-probe cần --nvidia-nim hoặc --vlm-model/--vlm-mmproj.");
 
-    var result = await PdfVisualTextRecovery.ProbeAsync(pdf, slim, visual, o.PdfVisualProbeIndex, o.VlmDpi, ct);
+    var result = await PdfVisualTextRecovery.ProbeAsync(pdf, policyState, visual, o.PdfVisualProbeIndex, o.VlmDpi, ct);
     var payload = new { file = Path.GetFileName(docx), pdf = Path.GetFileName(pdf), result };
     var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true });
     if (string.IsNullOrWhiteSpace(o.OutputPath)) Console.WriteLine(json);
@@ -1070,12 +1096,12 @@ static async Task<int> RunPdfVisualRepresentationEvalAsync(CommandLineOptions o,
         return 2;
     }
 
-    var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(docx);
+    var policyState = BuildPolicyState(docx, o.Pipeline.Extraction);
     var rawKey = AnswerKey.Load(o.PdfVisualRepresentationGoldPath);
-    var stableMap = slim.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
+    var stableMap = policyState.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
         .ToDictionary(p => p.StableId, p => p.Index, StringComparer.Ordinal);
     var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
-    var report = PdfVisualRepresentationAudit.Evaluate(pdf, slim, key);
+    var report = PdfVisualRepresentationAudit.Evaluate(pdf, policyState, key);
     var payload = new
     {
         file = Path.GetFileName(docx),
@@ -1252,7 +1278,7 @@ static async Task<int> RunPdfVisualSchedulerBenchmarkAsync(CommandLineOptions o,
     var docx = o.Inputs[0];
     var pdf = PdfTextbookOutline.FindSiblingPdf(docx);
     if (pdf is null) { Console.Error.WriteLine("Không tìm thấy PDF sibling cho scheduler benchmark."); return 2; }
-    var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(docx);
+    var policyState = BuildPolicyState(docx, o.Pipeline.Extraction);
     var traces = new List<PdfVisualRecoveryTrace>();
     foreach (var input in o.PdfVisualArtifacts)
     {
@@ -1262,7 +1288,7 @@ static async Task<int> RunPdfVisualSchedulerBenchmarkAsync(CommandLineOptions o,
         { Console.Error.WriteLine($"Artifact thiếu recoveries: {input}"); return 2; }
         traces.AddRange(recoveries.Deserialize<List<PdfVisualRecoveryTrace>>() ?? []);
     }
-    var regime = PdfDocumentRegime.Infer(slim.Paragraphs.Select(paragraph => paragraph.Text));
+    var regime = PdfDocumentRegime.Infer(policyState.Paragraphs.Select(paragraph => paragraph.Text));
     var report = PdfVisualSchedulerBenchmark.Evaluate(regime, PdfVisualTextRecovery.ListRegionsForAudit(pdf), traces);
     var payload = new { file = Path.GetFileName(docx), artifacts = o.PdfVisualArtifacts.Select(Path.GetFileName).ToArray(), report };
     var output = JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true });
@@ -1357,11 +1383,11 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             continue;
         }
 
-        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var policyState = BuildPolicyState(file, o.Pipeline.Extraction);
         var rawKey = sourceKeys.Length == 1 ? AnswerKey.Load(sourceKeys[0]) : AnswerKey.Parse("");
         var sourceDocumentSha256 = FileSha256(file);
         var goldKeySha256 = sourceKeys.Length == 1 ? FileSha256(sourceKeys[0]) : null;
-        var stableMap = slim.Paragraphs
+        var stableMap = policyState.Paragraphs
             .Where(p => !string.IsNullOrWhiteSpace(p.StableId))
             .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
         var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
@@ -1374,7 +1400,7 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
 
         var analystBudget = o.PdfStageAllCandidates ? 0 : o.PdfStageAnalystBlocks;
         var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
-            file, slim, analyst, analystBudget, o.PdfStageWideCandidates,
+            file, policyState, analyst, analystBudget, o.PdfStageWideCandidates,
             o.PdfStageSupplementCandidates, visualAnalyst, o.VlmDpi, o.PdfStageVisualRegions, o.PdfStageVisualProducer,
             o.PdfStageVisualScheduler, ct, semanticLaneOptions, o.PdfStageCheckpointPath, o.PdfStageResume,
             o.PdfStageVisualConcurrency, o.PdfStageSemanticHierarchy);
@@ -1403,7 +1429,7 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
         var finalOutline = new DocumentOutline
         {
             File = file,
-            ParagraphCount = slim.Paragraphs.Count,
+            ParagraphCount = policyState.Paragraphs.Count,
             CandidateCount = audit.CandidatesSelected,
             Headings = result.Headings,
             DeterministicRoute = "auto:pdf-layout-block-grounded",
@@ -1465,7 +1491,7 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
         // the immutable per-region facts so a changed key/metric can be replayed offline.
         var visualRepresentation = visualAnalyst is null
             ? null
-            : PdfVisualRepresentationAudit.Evaluate(PdfTextbookOutline.FindSiblingPdf(file)!, slim, key);
+            : PdfVisualRepresentationAudit.Evaluate(PdfTextbookOutline.FindSiblingPdf(file)!, policyState, key);
         var laneDiagnostics = PdfStageEvalDiagnostics.BuildLaneDiagnostics(audit);
         rows.Add(new
         {
@@ -1681,10 +1707,10 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
     foreach (var file in files)
     {
         if (!o.Quiet) Console.Error.WriteLine($"» PDF hierarchy facts: {Path.GetFileName(file)}");
-        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var policyState = BuildPolicyState(file, o.Pipeline.Extraction);
         // Visual analyst stays out: M8.1a freezes the deterministic semantic route only.
         var result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystAsync(
-            file, slim, analyst, analystBudget, o.PdfStageWideCandidates, o.PdfStageSupplementCandidates,
+            file, policyState, analyst, analystBudget, o.PdfStageWideCandidates, o.PdfStageSupplementCandidates,
             null, o.VlmDpi, 0, null, false, ct, semanticLaneOptions, o.PdfStageCheckpointPath, o.PdfStageResume, o.PdfStageVisualConcurrency,
             o.PdfStageSemanticHierarchy);
         if (result.Audit is not { } audit)
@@ -1813,9 +1839,9 @@ static int RunPdfFirstLossAudit(CommandLineOptions o)
             continue;
         }
 
-        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var policyState = BuildPolicyState(file, o.Pipeline.Extraction);
         var rawKey = AnswerKey.Load(sourceKeys[0]);
-        var stableMap = slim.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
+        var stableMap = policyState.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
             .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
         var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
         // Resolving stable ids into paragraph indexes drops the ids, and the reviewed occurrence
@@ -1828,7 +1854,7 @@ static int RunPdfFirstLossAudit(CommandLineOptions o)
         var bridge = File.Exists(bridgePath)
             ? PdfReviewedOccurrenceBridge.Load(File.ReadAllText(bridgePath))
             : null;
-        var report = PdfFirstLossAudit.Evaluate(file, slim, key, o.PdfStageAnalystBlocks, bridge, goldStableIds);
+        var report = PdfFirstLossAudit.Evaluate(file, policyState, key, o.PdfStageAnalystBlocks, bridge, goldStableIds);
         rows.Add(new
         {
             file = Path.GetFileName(file),
@@ -1875,13 +1901,13 @@ static int RunPdfOccurrenceEval(CommandLineOptions o)
             continue;
         }
 
-        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var policyState = BuildPolicyState(file, o.Pipeline.Extraction);
         var rawKey = AnswerKey.Load(sourceKeys[0]);
-        var stableMap = slim.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
+        var stableMap = policyState.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
             .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
         var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
-        var firstLoss = PdfFirstLossAudit.Evaluate(file, slim, key, o.PdfStageAnalystBlocks);
-        var occurrence = PdfGoldOccurrenceEvaluator.Evaluate(slim, key, firstLoss);
+        var firstLoss = PdfFirstLossAudit.Evaluate(file, policyState, key, o.PdfStageAnalystBlocks);
+        var occurrence = PdfGoldOccurrenceEvaluator.Evaluate(policyState, key, firstLoss);
         rows.Add(new
         {
             file = Path.GetFileName(file),
@@ -1928,13 +1954,13 @@ static int RunPdfOccurrenceCounterfactualEval(CommandLineOptions o)
             continue;
         }
 
-        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var policyState = BuildPolicyState(file, o.Pipeline.Extraction);
         var rawKey = AnswerKey.Load(sourceKeys[0]);
-        var stableMap = slim.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
+        var stableMap = policyState.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
             .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
         var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
-        var firstLoss = PdfFirstLossAudit.Evaluate(file, slim, key, o.PdfStageAnalystBlocks);
-        var goldOccurrence = PdfGoldOccurrenceEvaluator.Evaluate(slim, key, firstLoss);
+        var firstLoss = PdfFirstLossAudit.Evaluate(file, policyState, key, o.PdfStageAnalystBlocks);
+        var goldOccurrence = PdfGoldOccurrenceEvaluator.Evaluate(policyState, key, firstLoss);
         // The resolver receives only the feature-only PDF ranking. Gold data is consumed below
         // exclusively by the counterfactual evaluator.
         var productionOccurrence = PdfProductionOccurrenceResolver.Resolve(
@@ -1986,12 +2012,12 @@ static int RunPdfCandidateConstructionAudit(CommandLineOptions o)
             continue;
         }
 
-        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var policyState = BuildPolicyState(file, o.Pipeline.Extraction);
         var rawKey = AnswerKey.Load(sourceKeys[0]);
-        var stableMap = slim.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
+        var stableMap = policyState.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
             .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
         var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
-        var firstLoss = PdfFirstLossAudit.Evaluate(file, slim, key, o.PdfStageAnalystBlocks);
+        var firstLoss = PdfFirstLossAudit.Evaluate(file, policyState, key, o.PdfStageAnalystBlocks);
         var targets = firstLoss.Entries.Where(entry => entry.FirstLoss is "semantic_block_grouping" or "candidate_producer")
             .Select(entry => entry.Gold).ToArray();
         var construction = PdfLayoutEvidenceOutline.TraceCandidateConstruction(file, targets)
@@ -2308,9 +2334,9 @@ static int RunPdfRankEval(CommandLineOptions o)
             continue;
         }
 
-        var slim = new DocxSlimExtractor(o.Pipeline.Extraction).Extract(file);
+        var policyState = BuildPolicyState(file, o.Pipeline.Extraction);
         var rawKey = AnswerKey.Load(sourceKeys[0]);
-        var stableMap = slim.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
+        var stableMap = policyState.Paragraphs.Where(p => !string.IsNullOrWhiteSpace(p.StableId))
             .ToDictionary(p => p.StableId!, p => p.Index, StringComparer.Ordinal);
         var key = rawKey.HasStableIds ? rawKey.ResolveStableIds(stableMap) : rawKey;
         var truth = key.PositiveEntries.Where(entry => !string.IsNullOrWhiteSpace(entry.Text)).ToArray();

@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.Core.Application.Policy;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
 
@@ -66,7 +67,7 @@ public static class NumberingAudit
     //   HeadingHeuristics  — chạy TRƯỚC mô hình, quyết định "có đáng hỏi không". Sai theo hướng
     //                        rộng: bỏ sót một ứng viên là mất hẳn, vì mô hình không bao giờ thấy nó.
     //                        LƯU Ý: vế "sai theo hướng rộng" ĐÚNG với phần chấm điểm ở đây, nhưng
-    //                        KHÔNG áp cho nhóm luật hạ cấp theo cấu trúc trong DocxSlimExtractor —
+    //                        KHÔNG áp cho nhóm luật hạ cấp theo cấu trúc policy —
     //                        §21 đo được rằng nới chúng ra làm F1 tụt 90,8% → 78,4%.
     //   NumberingAudit     — chạy SAU mô hình, quyết định "dãy số này có nhất quán không". Sai theo
     //                        hướng hẹp: nhận nhầm "1: 03/04" là mục số 1 thì hậu kiểm sẽ báo thiếu
@@ -178,12 +179,12 @@ public static class NumberingAudit
     /// thay một lỗi bằng một lỗi khác. Việc của nó là chỉ đúng chỗ cần nhìn lại.
     /// </summary>
     /// <param name="document">
-    /// Nguồn <see cref="SlimParagraph.NumberLabel"/> cho heading được Word tự đánh số. Bỏ trống thì
+    /// Nguồn NumberLabel cho heading được Word tự đánh số. Bỏ trống thì
     /// hậu kiểm chỉ đọc được số gõ tay trong text — đủ cho unit test, thiếu cho tài liệu thật.
     /// </param>
     public static IReadOnlyList<AuditWarning> Run(
         IReadOnlyList<HeadingRecord> headings,
-        SlimDocument? document = null,
+        IReadOnlyList<IPolicyParagraph>? document = null,
         ExtractionOptions? options = null)
     {
         if (headings.Count == 0) return [];
@@ -191,7 +192,8 @@ public static class NumberingAudit
         options ??= new ExtractionOptions();
         var ordered = headings.OrderBy(h => h.Index).ToList();
         var tokens = ordered
-            .Select(h => (Heading: h, Token: ParseHeadingNumber(h, document?.ByIndex(h.Index), options)))
+            .Select(h => (Heading: h, Token: ParseHeadingNumber(h,
+                document?.FirstOrDefault(p => p.Index == h.Index), options)))
             .Where(x => x.Token is not null)
             .Select(x => new AuditItem(x.Heading, x.Token!.Value,
                 ScopeKey(ordered, ordered.IndexOf(x.Heading), document)))
@@ -362,12 +364,13 @@ public static class NumberingAudit
     /// Xác định phạm vi sibling bằng heading cha gần nhất. Đây là điểm quan trọng:
     /// cùng dạng 3.1 ở hai chương khác nhau không phải cùng một nhóm kiểm tra.
     /// </summary>
-    private static string ScopeKey(IReadOnlyList<HeadingRecord> ordered, int at, SlimDocument? document)
+    private static string ScopeKey(IReadOnlyList<HeadingRecord> ordered, int at,
+        IReadOnlyList<IPolicyParagraph>? document)
     {
         var current = ordered[at];
         // La Mã ở đầu chương là chuỗi section-level; giữ chung một scope để phát hiện
         // I → III, nhưng không suy ra parent từ cấp model có thể đang lệch.
-        if (ParseHeadingNumber(current, document?.ByIndex(current.Index))?.Kind == NumberKind.Roman)
+        if (ParseHeadingNumber(current, document?.FirstOrDefault(p => p.Index == current.Index))?.Kind == NumberKind.Roman)
             return "roman-root";
         for (var i = at - 1; i >= 0; i--)
         {
@@ -421,7 +424,7 @@ public static class NumberingAudit
     /// Đọc ký hiệu đánh số của một ĐOẠN chứ không của một chuỗi rời.
     /// <para>
     /// Khi Word đánh số qua <c>w:numPr</c>, con số KHÔNG nằm trong text của run —
-    /// <c>NumberingResolver</c> tính nó ra <see cref="SlimParagraph.NumberLabel"/>. Gọi thẳng
+    /// <c>NumberingResolver</c> tính nó ra NumberLabel. Gọi thẳng
     /// <see cref="Parse"/> trên text hiển thị thì cả nhóm tài liệu dùng danh sách nhiều cấp kiểu
     /// Word đều trả null, tức là "không có đánh số" cho đúng những đoạn được đánh số bài bản nhất.
     /// </para>
@@ -430,12 +433,12 @@ public static class NumberingAudit
     /// cùng một luật đọc được cả hai nguồn, và ràng buộc "sau tiền tố phải có tên mục" vẫn giữ.
     /// </para>
     /// </summary>
-    public static NumberToken? ParseParagraph(SlimParagraph? paragraph, string fallbackText) =>
+    public static NumberToken? ParseParagraph(IPolicyParagraph? paragraph, string fallbackText) =>
         Parse(TextWithNumberLabel(paragraph, fallbackText));
 
     private static NumberToken? ParseHeadingNumber(
         HeadingRecord heading,
-        SlimParagraph? paragraph,
+        IPolicyParagraph? paragraph,
         ExtractionOptions? options = null)
     {
         if (heading.ConfidenceBasis == "pdf_textbook_layout" ||
@@ -457,7 +460,7 @@ public static class NumberingAudit
     /// </para>
     /// </summary>
     public static NumberToken? ParseParagraph(
-        SlimParagraph? paragraph, string fallbackText, ExtractionOptions options)
+        IPolicyParagraph? paragraph, string fallbackText, ExtractionOptions options)
     {
         if (ParseParagraph(paragraph, fallbackText) is { } token) return token;
         if (!options.AllowBareLabelledNumbers) return null;
@@ -483,9 +486,9 @@ public static class NumberingAudit
         RegexOptions.Compiled);
 
     /// <summary>Chuỗi dùng để đọc đánh số: nhãn do OOXML sinh (nếu có) ghép trước text hiển thị.</summary>
-    public static string TextWithNumberLabel(SlimParagraph? paragraph, string fallbackText) =>
+    public static string TextWithNumberLabel(IPolicyParagraph? paragraph, string fallbackText) =>
         paragraph?.NumberLabel is { Length: > 0 } label
-            ? label + " " + (paragraph.Text ?? fallbackText)
+            ? label + " " + paragraph.Text
             : paragraph?.Text ?? fallbackText;
 
     /// <summary>

@@ -26,26 +26,6 @@ public sealed class PdfBookmarkOutlineTests
             seventh => Assert.Equal(9, seventh.Page));
     }
 
-    [Fact]
-    public async Task PipelineRejects_partial_bookmark_tree_and_keeps_verified_pdf_route()
-    {
-        var root = RepositoryRoot();
-        var docx = Path.Combine(
-            root, "todo10_8", "heading_corpus_95_word", "04_giao_trinh",
-            "056_OpenStax_Business_Law_I_Essentials.docx");
-        var pdf = Path.Combine(
-            root, "todo10_8", "heading_corpus_100", "04_giao_trinh",
-            "056_OpenStax_Business_Law_I_Essentials.pdf");
-        if (!File.Exists(docx) || !File.Exists(pdf)) return;
-
-        using var pipeline = new HeaderExtractionPipeline(new PipelineOptions { DisableLlm = true });
-        var outline = await pipeline.RunAsync(docx);
-
-        Assert.Equal("auto:pdf-textbook-layout", outline.DeterministicRoute);
-        Assert.Equal(46, outline.Headings.Count);
-        Assert.DoesNotContain(outline.Headings, h => h.ConfidenceBasis == PdfBookmarkOutline.Basis);
-    }
-
     private static string RepositoryRoot()
     {
         var dir = new DirectoryInfo(AppContext.BaseDirectory);

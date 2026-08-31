@@ -7,7 +7,8 @@ public sealed record ParagraphNumberingFeatures(
     int? NumberingId,
     int? NumberingLevel,
     string? NumberLabel,
-    string? NumberingFormat);
+    string? NumberingFormat,
+    int? NumberingStyleHeadingLevel);
 
 public sealed record ParagraphStyleFeatures(
     string SourceId,
@@ -36,7 +37,8 @@ public sealed record NumberingStyleFeatures(
                 paragraph.Numbering.NumberingId,
                 paragraph.Numbering.NumberingLevel,
                 paragraph.Numbering.NumberLabel,
-                paragraph.Numbering.NumberingFormat)).ToArray(),
+                paragraph.Numbering.NumberingFormat,
+                paragraph.Numbering.NumberingStyleHeadingLevel)).ToArray(),
             source.Paragraphs.Select(paragraph => new ParagraphStyleFeatures(
                 paragraph.SourceId,
                 paragraph.Style.StyleId,

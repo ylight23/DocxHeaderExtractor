@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Repair;
@@ -20,20 +21,21 @@ public static class TextLayoutLineProbe
         @"(?<=[a-z\)\]\.:;,%\d])(?=[A-Z])",
         RegexOptions.Compiled);
 
-    public static TextLayoutLineProbeReport Analyze(IReadOnlyList<SlimParagraph> paragraphs)
+    public static TextLayoutLineProbeReport Analyze(DocxPolicyState policyState)
     {
+        ArgumentNullException.ThrowIfNull(policyState);
         var textParagraphs = 0;
         var hardLines = 0;
         var recoveredLines = 0;
         var longParagraphs = 0;
 
-        foreach (var p in paragraphs)
+        foreach (var paragraph in policyState.Paragraphs)
         {
-            if (string.IsNullOrWhiteSpace(p.Text)) continue;
+            if (string.IsNullOrWhiteSpace(paragraph.Text)) continue;
             textParagraphs++;
-            if (p.Text.Length >= 500) longParagraphs++;
+            if (paragraph.Text.Length >= 500) longParagraphs++;
 
-            var hard = SplitHardLines(p).ToList();
+            var hard = SplitHardLines(paragraph.Source.Text, paragraph.Source.LineBreakOffsets).ToList();
             hardLines += hard.Count;
             recoveredLines += hard.Sum(RecoverLines);
         }
@@ -41,17 +43,16 @@ public static class TextLayoutLineProbe
         return new TextLayoutLineProbeReport(textParagraphs, hardLines, recoveredLines, longParagraphs);
     }
 
-    private static IEnumerable<string> SplitHardLines(SlimParagraph paragraph)
+    private static IEnumerable<string> SplitHardLines(string text, IReadOnlyList<int> lineBreakOffsets)
     {
-        var text = paragraph.Text;
-        if (paragraph.LineBreakOffsets.Count == 0)
+        if (lineBreakOffsets.Count == 0)
         {
             yield return text;
             yield break;
         }
 
         var start = 0;
-        foreach (var rawBreak in paragraph.LineBreakOffsets.Order().Distinct())
+        foreach (var rawBreak in lineBreakOffsets.Order().Distinct())
         {
             var at = Math.Clamp(rawBreak, 0, text.Length);
             var line = text[start..at].Trim();
