@@ -115,10 +115,10 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 case AuthorityRoute.DocxAuthority:
                 {
                     var result = await DocxAuthorityPipeline.RunAsync(policyState, mode, analyst, quarantinedIndexes, ct);
-                    rawHeadings = result.Headings;
+                    rawHeadings = HeadingOutlineProjection.Project(result.Structure);
                     audit = result.Audit;
                     route = "docx-authority-v1";
-                    reason = "docx-source-authority";
+                    reason = result.Reason;
                     break;
                 }
                 case AuthorityRoute.Unsupported:

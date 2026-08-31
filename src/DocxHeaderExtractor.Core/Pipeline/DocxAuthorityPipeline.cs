@@ -15,7 +15,7 @@ internal static class DocxAuthorityPipeline
     internal static DocxAuthoritySource BuildForAudit(DocxPolicyState policyState, DocumentModeReport mode) =>
         BuildForAudit(policyState, mode, quarantinedIndexes: null);
 
-    public static async Task<DocxAuthorityPipelineResult> RunAsync(
+    public static async Task<StructuralAuthorityResult> RunAsync(
         DocxPolicyState policyState,
         DocumentModeReport mode,
         IHeaderClassifier? analyst,
@@ -26,12 +26,13 @@ internal static class DocxAuthorityPipeline
         return await RunCoreAsync(source, analyst, ct);
     }
 
-    private static async Task<DocxAuthorityPipelineResult> RunCoreAsync(
+    private static async Task<StructuralAuthorityResult> RunCoreAsync(
         DocxAuthoritySource source,
         IHeaderClassifier? analyst,
         CancellationToken ct)
     {
-        if (source.Blocks.Count == 0) return new DocxAuthorityPipelineResult([], null);
+        if (source.Blocks.Count == 0)
+            return new StructuralAuthorityResult(new ValidatedStructure([]), null, "empty-docx-source");
 
         PdfBlockAnalysis roles;
         PdfBlockAnalysis spans;
@@ -62,30 +63,7 @@ internal static class DocxAuthorityPipeline
             ? new PdfSemanticHierarchyResult(markerStructures, [], [], [])
             : await PdfSemanticHierarchyFallback.ResolveAsync(analyst, validated, markerStructures, source.ModelContexts, ct);
         var structures = semanticHierarchy.Structures.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
-        var headings = validated.Select(item =>
-        {
-            var context = source.Contexts[item.SourceId];
-            var paragraph = context.Paragraph;
-            var sourceParagraph = context.Source;
-            var structure = structures[item.SourceId];
-            var span = item.HeadingSpan;
-            return new HeadingRecord
-            {
-                Index = paragraph.Index,
-                StableId = sourceParagraph.SourceId,
-                SourceId = item.SourceId,
-                Level = structure.Level,
-                Text = sourceParagraph.Text[span.Start..span.End],
-                OriginalText = sourceParagraph.Text,
-                HeadingSpan = span,
-                BoundarySource = "docx-source-pointer-span",
-                StyleId = sourceParagraph.Style.StyleId,
-                Source = HeadingSource.Structure,
-                Confidence = 0,
-                DecisionStatus = HeadingDecisionStatus.RequiresReview,
-                ConfidenceBasis = "docx-authority-validated-review",
-            };
-        }).ToArray();
+        var structuralAuthority = MaterializeStructuralAuthority(validated, structures, source.Contexts);
         var audit = new RouteExecutionAudit(
             "docx-authority-v1",
             source.Blocks.Count,
@@ -111,7 +89,79 @@ internal static class DocxAuthorityPipeline
             SpanLane = analyst is null ? null : new RouteLaneExecutionAudit("complete", roles.Decisions.Count,
                 spans.Decisions.Count, 0, 0),
         };
-        return new DocxAuthorityPipelineResult(headings, audit);
+        return new StructuralAuthorityResult(structuralAuthority, audit, "docx-source-authority");
+    }
+
+    private static ValidatedStructure MaterializeStructuralAuthority(
+        IReadOnlyList<PdfValidatedHeading> validated,
+        IReadOnlyDictionary<string, PdfValidatedStructure> structures,
+        IReadOnlyDictionary<string, DocxAuthorityContext> contexts)
+    {
+        var elementIdBySourceId = validated.ToDictionary(
+            item => item.SourceId,
+            item => $"structural:docx:{item.SourceId}",
+            StringComparer.Ordinal);
+        var elements = new List<ValidatedStructuralElement>(validated.Count);
+
+        foreach (var item in validated)
+        {
+            var context = contexts[item.SourceId];
+            var sourceParagraph = context.Source;
+            var hierarchy = structures[item.SourceId];
+            var sourceFacts = new SourceFacts
+            {
+                SourceId = sourceParagraph.SourceId,
+                RawText = sourceParagraph.Text,
+                Source = new SourceAnchor
+                {
+                    SourceType = "docx",
+                    ParagraphId = sourceParagraph.SourceId,
+                    ParagraphIndex = sourceParagraph.SourceOrdinal,
+                },
+                RawSpan = new SourceTextSpan(0, sourceParagraph.Text.Length),
+            };
+            var candidate = new StructuralCandidate
+            {
+                CandidateId = item.SourceId,
+                ObservedSourceFacts = [sourceFacts],
+            };
+            var proposal = new StructuralProposal
+            {
+                CandidateId = item.SourceId,
+                Type = StructuralElementType.Heading,
+                Role = ProposedRole.HeadingTopic,
+                ProposedSources =
+                [
+                    new ProposedSourceReference(item.SourceId,
+                        new StructuralSpan(item.HeadingSpan.Start, item.HeadingSpan.End)),
+                ],
+                ProposedParentId = hierarchy.ParentId is { } parent
+                    ? elementIdBySourceId.GetValueOrDefault(parent)
+                    : null,
+                ProposedLevel = hierarchy.Level,
+            };
+            var decision = new StructuralDecision(
+                "structure", nameof(HeadingDecisionStatus.RequiresReview), 0,
+                "docx-authority-validated-review");
+            var element = StructuralProposalValidator.Materialize(
+                candidate, proposal, elementIdBySourceId[item.SourceId], decision,
+                elementIdBySourceId.Values.ToHashSet(StringComparer.Ordinal),
+                new StructuralProjectionMetadata
+                {
+                    OriginalText = sourceParagraph.Text,
+                    BoundarySource = "docx-source-pointer-span",
+                    StyleId = sourceParagraph.Style.StyleId,
+                });
+            if (element is null)
+                throw new InvalidOperationException($"Validated DOCX heading '{item.SourceId}' failed generic materialization.");
+
+            elements.Add(element with
+            {
+                Sources = element.Sources.Select(source => source with { StableId = sourceParagraph.SourceId }).ToArray(),
+            });
+        }
+
+        return ValidatedStructure.FromElements(elements);
     }
 
     private static bool IsDeterministicallyStructured(SourceParagraph source, IPolicyParagraph paragraph) =>
@@ -200,7 +250,6 @@ internal static class DocxAuthorityPipeline
 
     private static string Excerpt(string text) => text.Length <= 180 ? text : text[..180];
 }
-
 internal sealed record DocxAuthorityContext(
     SourceParagraph Source,
     IPolicyParagraph Paragraph,
@@ -211,5 +260,3 @@ internal sealed record DocxAuthoritySource(
     IReadOnlyList<PdfSemanticBlock> Blocks,
     IReadOnlyDictionary<string, DocxAuthorityContext> Contexts,
     IReadOnlyDictionary<string, PdfCandidateContext> ModelContexts);
-
-internal sealed record DocxAuthorityPipelineResult(IReadOnlyList<HeadingRecord> Headings, RouteExecutionAudit? Audit);
