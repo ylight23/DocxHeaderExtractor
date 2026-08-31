@@ -13,16 +13,17 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 internal static class DocxAuthorityPipeline
 {
     internal static DocxAuthoritySource BuildForAudit(DocxPolicyState policyState, DocumentModeReport mode) =>
-        BuildForAudit(policyState, mode, quarantinedIndexes: null);
+        Build(policyState.Source,
+            policyState.Paragraphs.ToDictionary<DocxPolicyParagraph, string, IPolicyParagraph>(p => p.Source.SourceId, p => p),
+            mode, (id, text) => PdfMarkerFactsParser.Parse(text));
 
     public static async Task<StructuralAuthorityResult> RunAsync(
         DocxPolicyState policyState,
         DocumentModeReport mode,
         IHeaderClassifier? analyst,
-        IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default)
     {
-        var source = BuildForAudit(policyState, mode, quarantinedIndexes);
+        var source = BuildForAudit(policyState, mode);
         return await RunCoreAsync(source, analyst, ct);
     }
 
@@ -168,27 +169,18 @@ internal static class DocxAuthorityPipeline
         paragraph.HasBuiltInHeadingStyle || source.Style.OutlineLevel is >= 0 and <= 8 ||
         paragraph.NumberingStyleLevel is >= 1 and <= 9;
 
-    private static DocxAuthoritySource BuildForAudit(
-        DocxPolicyState policyState,
-        DocumentModeReport mode,
-        IReadOnlySet<int>? quarantinedIndexes) =>
-        Build(policyState.Source, policyState.Paragraphs.ToDictionary<DocxPolicyParagraph, string, IPolicyParagraph>(p => p.Source.SourceId, p => p), mode,
-            (id, text) => PdfMarkerFactsParser.Parse(text), quarantinedIndexes);
-
     private static DocxAuthoritySource Build(
         SourceDocument sourceDocument,
         IReadOnlyDictionary<string, IPolicyParagraph> policyParagraphs,
         DocumentModeReport mode,
-        Func<string, string, PdfMarkerFact?> markerFor,
-        IReadOnlySet<int>? quarantinedIndexes = null)
+        Func<string, string, PdfMarkerFact?> markerFor)
     {
         var compatibilityById = policyParagraphs;
         var paragraphs = sourceDocument.Paragraphs
             .Where(source => compatibilityById.ContainsKey(source.SourceId))
             .Select(source => (Source: source, Compatibility: compatibilityById[source.SourceId]))
             .Where(item => item.Compatibility.Role != ParagraphRole.Empty &&
-                !string.IsNullOrWhiteSpace(item.Source.Text) &&
-                (quarantinedIndexes is null || !quarantinedIndexes.Contains(item.Compatibility.Index)))
+                !string.IsNullOrWhiteSpace(item.Source.Text))
             .OrderBy(item => item.Source.SourceOrdinal)
             .ToArray();
         var result = new Dictionary<string, DocxAuthorityContext>(StringComparer.Ordinal);

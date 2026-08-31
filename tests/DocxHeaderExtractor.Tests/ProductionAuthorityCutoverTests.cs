@@ -152,17 +152,60 @@ public sealed class ProductionAuthorityCutoverTests
             ValidatedStructures = [structure], HierarchyFacts = [fact],
         };
 
-        IReadOnlyList<HeadingRecord> remaining;
-        var without = AuthorityExtractionPipeline.ApplyQuarantine(audit, [heading], null, out remaining)!;
-        var with = AuthorityExtractionPipeline.ApplyQuarantine(audit, [heading], new HashSet<int> { 7 }, out remaining)!;
-        var output = (RouteExecutionAudit source) =>
-            PdfProductOutputSerializer.Serialize(
-                PdfFinalStructureProjection.Project("sha", source.ValidatedStructures, source.HierarchyFacts,
-                    PdfCanonicalGrounding.FromGroundedHeadings(source == without ? [heading] : remaining)),
-                PdfOutputDecisionPolicy.Decide(PdfFinalStructureProjection.Project("sha", source.ValidatedStructures,
-                    source.HierarchyFacts, PdfCanonicalGrounding.FromGroundedHeadings(source == without ? [heading] : remaining))));
+        var final = PdfFinalStructureProjection.Project("sha", audit.ValidatedStructures, audit.HierarchyFacts,
+            PdfCanonicalGrounding.FromGroundedHeadings([heading]));
+        var decisions = PdfOutputDecisionPolicy.Decide(final);
+        var materialized = StructuralAuthorityMaterializer.Materialize(final, decisions);
+        var authority = new StructuralAuthorityResult(materialized.Structure, audit, "pdf",
+            materialized.EmittedElementIds);
 
-        Assert.Single(output(without).Headings); // The unquarantined grounded occurrence is emitted.
-        Assert.Empty(output(with).Headings); // The authority audit is filtered before ProductOutput.
+        var without = AuthorityExtractionPipeline.ApplyStructuralQuarantine(authority, null);
+        var with = AuthorityExtractionPipeline.ApplyStructuralQuarantine(authority, new HashSet<int> { 7 });
+
+        Assert.Single(HeadingOutlineProjection.Project(without.Structure, without.EmittedElementIds));
+        Assert.Empty(HeadingOutlineProjection.Project(with.Structure, with.EmittedElementIds));
+        Assert.Empty(with.Structure.Relations);
+    }
+
+    [Fact]
+    public void Structural_quarantine_removes_dangling_parent_relations_and_emissions()
+    {
+        var source = (string id, int ordinal) => new SourceReference(
+            id, ordinal, new StructuralSpan(0, 1));
+        var valid = new StructuralValidation(true, true, true, true, 1, true, true, true, null);
+        var decision = new StructuralDecision("model", "RequiresReview", 1, "test");
+        var parent = new ValidatedStructuralElement
+        {
+            Id = "parent",
+            Type = StructuralElementType.Heading,
+            Role = ProposedRole.HeadingTopic,
+            Sources = [source("p0", 0)],
+            Text = "P",
+            Level = 1,
+            Validation = valid,
+            Decision = decision,
+        };
+        var child = parent with
+        {
+            Id = "child",
+            Sources = [source("p1", 1)],
+            Text = "C",
+            Level = 2,
+            ParentId = "parent",
+        };
+        var authority = new StructuralAuthorityResult(
+            ValidatedStructure.FromElements([parent, child]),
+            null,
+            "test",
+            new HashSet<string>(["parent", "child"], StringComparer.Ordinal));
+
+        var filtered = AuthorityExtractionPipeline.ApplyStructuralQuarantine(
+            authority, new HashSet<int> { 0 });
+
+        var surviving = Assert.Single(filtered.Structure.Elements);
+        Assert.Equal("child", surviving.Id);
+        Assert.Null(surviving.ParentId);
+        Assert.Empty(filtered.Structure.Relations);
+        Assert.Equal(["child"], filtered.EmittedElementIds);
     }
 }

@@ -73,11 +73,10 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             var diagnostics = DocumentDiagnosticRunner.Analyze(policyState, mode);
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
             var pdf = PdfTextbookOutline.FindSiblingPdf(inputPath);
-            IReadOnlyList<HeadingRecord> rawHeadings;
+            StructuralAuthorityResult authority;
             RouteExecutionAudit? audit;
             string route;
             string reason;
-            StructuralAuthorityResult? nativeAuthority = null;
             PdfFinalStructure? routeFinalStructure = null;
             IReadOnlyList<PdfOutputDecision>? routeOutputDecisions = null;
             var authorityRoute = _routePolicy.Decide(new SourceCapabilities(
@@ -109,25 +108,23 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                     {
                         await checkpoint.StopAcceptingWritesAndDrainAsync();
                     }
-                    nativeAuthority = result.StructuralAuthority ??
+                    authority = result.StructuralAuthority ??
                         throw new InvalidOperationException("PDF authority producer returned no generic structural result.");
-                    rawHeadings = HeadingOutlineProjection.Project(nativeAuthority.Structure,
-                        nativeAuthority.EmittedElementIds ?? nativeAuthority.Structure.Elements
-                            .Select(element => element.Id).ToHashSet(StringComparer.Ordinal));
                     routeFinalStructure = result.FinalStructure;
                     routeOutputDecisions = result.OutputDecisions;
-                    audit = ApplyQuarantine(result.Audit, rawHeadings, quarantinedIndexes, out rawHeadings);
+                    authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
                     route = "pdf-authority-v1";
                     reason = result.Reason;
+                    audit = authority.Audit;
                     break;
                 }
                 case AuthorityRoute.DocxAuthority:
                 {
-                    var result = await DocxAuthorityPipeline.RunAsync(policyState, mode, analyst, quarantinedIndexes, ct);
-                    rawHeadings = HeadingOutlineProjection.Project(result.Structure);
-                    audit = result.Audit;
+                    authority = await DocxAuthorityPipeline.RunAsync(policyState, mode, analyst, ct);
+                    authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
+                    audit = authority.Audit;
                     route = "docx-authority-v1";
-                    reason = result.Reason;
+                    reason = authority.Reason;
                     break;
                 }
                 case AuthorityRoute.Unsupported:
@@ -141,23 +138,29 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 new ValidatedStructure([]), new HashSet<string>(StringComparer.Ordinal), 0, 0);
             if (audit is not null)
             {
-                var canUseNativePdf = nativeAuthority is not null && routeFinalStructure is not null &&
+                var canUseNativePdf = routeFinalStructure is not null &&
                     (quarantinedIndexes is null || quarantinedIndexes.Count == 0);
                 var finalStructure = canUseNativePdf
                     ? routeFinalStructure!
-                    : BuildFinalStructure(conversion.Path, audit, rawHeadings);
+                    : BuildFinalStructure(conversion.Path, audit, authority.Structure);
                 var decisions = canUseNativePdf && routeOutputDecisions is not null
                     ? routeOutputDecisions!
                     : PdfOutputDecisionPolicy.Decide(finalStructure);
+                if (routeFinalStructure is not null && quarantinedIndexes is not null && quarantinedIndexes.Count > 0)
+                {
+                    var survivingCompatibilityIds = authority.Structure.Elements
+                        .Select(element => element.ProjectionMetadata?.CompatibilitySourceId)
+                        .Where(id => !string.IsNullOrWhiteSpace(id))
+                        .ToHashSet(StringComparer.Ordinal);
+                    decisions = decisions.Where(decision => survivingCompatibilityIds.Contains(decision.HeadingId)).ToArray();
+                }
                 product = PdfProductOutputSerializer.Serialize(finalStructure, decisions);
-                structural = canUseNativePdf
-                    ? new StructuralMaterializationResult(
-                        nativeAuthority.Structure,
-                        nativeAuthority.EmittedElementIds ?? nativeAuthority.Structure.Elements
-                            .Select(element => element.Id).ToHashSet(StringComparer.Ordinal),
-                        0,
-                        0)
-                    : StructuralAuthorityMaterializer.Materialize(finalStructure, decisions);
+                structural = new StructuralMaterializationResult(
+                    authority.Structure,
+                    authority.EmittedElementIds ?? authority.Structure.Elements
+                        .Select(element => element.Id).ToHashSet(StringComparer.Ordinal),
+                    0,
+                    0);
             }
 
             var headings = HeadingOutlineProjection.Project(
@@ -203,37 +206,57 @@ public sealed class AuthorityExtractionPipeline : IDisposable
     }
 
     private static PdfFinalStructure BuildFinalStructure(string docxPath, RouteExecutionAudit audit,
-        IReadOnlyList<HeadingRecord> rawHeadings)
+        ValidatedStructure structure)
     {
         return PdfFinalStructureProjection.Project(
             FileSha256(docxPath), audit.ValidatedStructures, audit.HierarchyFacts,
-            PdfCanonicalGrounding.FromGroundedHeadings(rawHeadings));
+            PdfCanonicalGrounding.FromValidatedStructure(structure));
     }
 
-    internal static RouteExecutionAudit? ApplyQuarantine(
-        RouteExecutionAudit? audit,
-        IReadOnlyList<HeadingRecord> headings,
-        IReadOnlySet<int>? quarantinedIndexes,
-        out IReadOnlyList<HeadingRecord> remainingHeadings)
+    internal static StructuralAuthorityResult ApplyStructuralQuarantine(
+        StructuralAuthorityResult authority,
+        IReadOnlySet<int>? quarantinedIndexes)
     {
-        if (audit is null || quarantinedIndexes is null || quarantinedIndexes.Count == 0)
-        {
-            remainingHeadings = headings;
-            return audit;
-        }
+        ArgumentNullException.ThrowIfNull(authority);
+        if (quarantinedIndexes is null || quarantinedIndexes.Count == 0) return authority;
 
-        var removedIds = headings.Where(heading => quarantinedIndexes.Contains(heading.Index))
-            .Select(heading => heading.SourceId ?? heading.StableId)
+        var removedElements = authority.Structure.Elements
+            .Where(element => element.Sources.Any(source => quarantinedIndexes.Contains(source.SourceOrdinal)))
+            .ToArray();
+        if (removedElements.Length == 0) return authority;
+
+        var removedElementIds = removedElements.Select(element => element.Id).ToHashSet(StringComparer.Ordinal);
+        var removedSourceIds = removedElements.SelectMany(element => element.Sources)
+            .SelectMany(source => new[] { source.SourceId, source.StableId })
             .Where(id => !string.IsNullOrWhiteSpace(id))
             .ToHashSet(StringComparer.Ordinal);
-        remainingHeadings = headings.Where(heading => !quarantinedIndexes.Contains(heading.Index)).ToArray();
-        if (removedIds.Count == 0) return audit;
-        return audit with
+        var remaining = authority.Structure.Elements
+            .Where(element => !removedElementIds.Contains(element.Id))
+            .Select(element => element.ParentId is not null && removedElementIds.Contains(element.ParentId)
+                ? element with { ParentId = null }
+                : element)
+            .ToArray();
+        var emitted = (authority.EmittedElementIds ?? authority.Structure.Elements
+                .Select(element => element.Id).ToHashSet(StringComparer.Ordinal))
+            .Where(id => !removedElementIds.Contains(id))
+            .ToHashSet(StringComparer.Ordinal);
+        var audit = authority.Audit;
+        if (audit is not null)
         {
-            ValidatedStructures = audit.ValidatedStructures.Where(item => !removedIds.Contains(item.SourceId)).ToArray(),
-            HierarchyFacts = audit.HierarchyFacts.Where(item => !removedIds.Contains(item.Id)).ToArray(),
-            GroundedBlockIds = audit.GroundedBlockIds.Where(id => !removedIds.Contains(id)).ToArray(),
-            AlignedBlockIds = audit.AlignedBlockIds.Where(id => !removedIds.Contains(id)).ToArray(),
+            audit = audit with
+            {
+                ValidatedStructures = audit.ValidatedStructures.Where(item => !removedSourceIds.Contains(item.SourceId)).ToArray(),
+                HierarchyFacts = audit.HierarchyFacts.Where(item => !removedSourceIds.Contains(item.Id)).ToArray(),
+                GroundedBlockIds = audit.GroundedBlockIds.Where(id => !removedSourceIds.Contains(id)).ToArray(),
+                AlignedBlockIds = audit.AlignedBlockIds.Where(id => !removedSourceIds.Contains(id)).ToArray(),
+            };
+        }
+
+        return authority with
+        {
+            Structure = ValidatedStructure.FromElements(remaining),
+            Audit = audit,
+            EmittedElementIds = emitted,
         };
     }
 
