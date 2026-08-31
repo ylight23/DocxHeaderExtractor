@@ -149,6 +149,8 @@ internal static class DocxAuthorityPipeline
                 elementIdBySourceId.Values.ToHashSet(StringComparer.Ordinal),
                 new StructuralProjectionMetadata
                 {
+                    CompatibilitySourceId = sourceParagraph.SourceId,
+                    CompatibilityLevelIsSet = true,
                     OriginalText = sourceParagraph.Text,
                     BoundarySource = "docx-source-pointer-span",
                     StyleId = sourceParagraph.Style.StyleId,

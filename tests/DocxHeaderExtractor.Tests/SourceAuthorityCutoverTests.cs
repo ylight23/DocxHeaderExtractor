@@ -52,7 +52,7 @@ public sealed class SourceAuthorityCutoverTests
         Assert.Equal("p0", element.Sources[0].SourceId);
         Assert.Equal(new StructuralSpan(0, source.Paragraphs[0].Text.Length), element.Sources[0].Span);
         Assert.Equal("1. Authoritative heading", projected.Text);
-        Assert.Equal(1, projected.Level);
+        Assert.Null(projected.Level);
         Assert.Equal("p0", projected.SourceId);
     }
 

@@ -83,6 +83,8 @@ public static class StructuralAuthorityMaterializer
                 new StructuralProjectionMetadata
                 {
                     CompatibilitySourceId = heading.Id,
+                    CompatibilityLevel = heading.Level,
+                    CompatibilityLevelIsSet = true,
                     OriginalText = heading.SourceText,
                     BoundarySource = BoundarySource,
                     AcceptanceSignature = reasons.Count > 0 ? string.Join(",", reasons) : null,

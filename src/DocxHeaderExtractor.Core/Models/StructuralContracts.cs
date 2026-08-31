@@ -122,6 +122,12 @@ public sealed record StructuralProjectionMetadata
 {
     /// <summary>Legacy output identity when it differs from the generic source identity.</summary>
     public string? CompatibilitySourceId { get; init; }
+    /// <summary>Legacy output level, including an intentional null value.</summary>
+    [JsonIgnore]
+    public int? CompatibilityLevel { get; init; }
+    /// <summary>Whether the compatibility level should override the generic structural level.</summary>
+    [JsonIgnore]
+    public bool CompatibilityLevelIsSet { get; init; }
     public string? OriginalText { get; init; }
     public string? InlineBody { get; init; }
     public StructuralSpan? InlineBodySpan { get; init; }

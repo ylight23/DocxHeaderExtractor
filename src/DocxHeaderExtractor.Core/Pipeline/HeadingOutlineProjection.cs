@@ -61,7 +61,7 @@ public static class HeadingOutlineProjection
             Index = source.SourceOrdinal,
             StableId = source.StableId ?? source.SourceId,
             SourceId = metadata?.CompatibilitySourceId ?? source.SourceId,
-            Level = element.Level,
+            Level = metadata?.CompatibilityLevelIsSet == true ? metadata.CompatibilityLevel : element.Level,
             Text = element.Text,
             OriginalText = metadata?.OriginalText,
             HeadingSpan = new TextOffsetSpan(source.Span.Start, source.Span.End),

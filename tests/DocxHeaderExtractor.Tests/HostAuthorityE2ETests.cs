@@ -21,6 +21,9 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class HostAuthorityE2ETests
 {
+    private const string ExpectedFingerprint =
+        "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429";
+
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         PropertyNameCaseInsensitive = true,
@@ -52,6 +55,7 @@ public sealed class HostAuthorityE2ETests
             };
 
             Assert.All(fingerprints, item => Assert.Equal(canonicalFingerprint, item.Value));
+            Assert.Equal(ExpectedFingerprint, canonicalFingerprint);
             Assert.Equal(0, fingerprints.Values.Distinct(StringComparer.Ordinal).Count() - 1);
 
             AssertNoExternalProvider(canonical, "canonical tool");
