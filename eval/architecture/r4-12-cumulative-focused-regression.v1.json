@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "baseRevision": "838622b4a37bd48162b164c3876e51b167e52fa9",
+  "executionRevision": "ce890674d70a8203c76f179bb44d82d753c1bc82",
+  "publicationRevision": "containing-closure-commit",
+  "releaseBuild": "PASS",
+  "focusedTests": {
+    "total": 109,
+    "passed": 109,
+    "failed": 0,
+    "skipped": 0
+  },
+  "diagnosticBaselineRevision": "3b350543d3f6b88d074553915169d84587fecf00",
+  "pdfBaselineRevision": "a920b2adfc0a7e6caa8eea3c2d93fb63067b530c",
+  "diagnosticJoined": 3,
+  "diagnosticDelta": 0,
+  "pdfJoined": 3,
+  "pdfDelta": 0,
+  "hostFingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+  "hostFingerprintChanged": false,
+  "unjoinedHostResults": 0,
+  "bannedLegacyRefs": 0,
+  "unknownLegacyRefs": 0,
+  "providerCalls": 0,
+  "unmeasured": 0,
+  "expectedChanged": false,
+  "productionBehaviorChanged": false,
+  "preExistingExcludedContracts": [
+    {
+      "test": "PdfTocDictionaryOutlineTests.PipelineUsesPdfTocDictionaryForIbrdInformationStatement054",
+      "reason": "pre-R4-10 route contract; expected auto:pdf-toc-dictionary, current normal authority route is docx-authority-v1"
+    }
+  ],
+  "fullSuite": "NOT_RUN",
+  "r4_13": "AUTHORIZED"
+}
