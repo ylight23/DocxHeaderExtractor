@@ -203,8 +203,9 @@ public sealed class ValidatedStructure
         Elements.Where(element => element.Type is StructuralElementType.Title or
             StructuralElementType.Subtitle or StructuralElementType.Heading).ToArray();
 
-    [Obsolete("Use OutlineElements; retained as a source-compatible heading-only view during migration.")]
-    public IReadOnlyList<ValidatedStructuralElement> Headings => OutlineElements;
+    [Obsolete("Use OutlineElements for compatibility projection; this legacy view is heading-only.")]
+    public IReadOnlyList<ValidatedStructuralElement> Headings =>
+        Elements.Where(element => element.Type == StructuralElementType.Heading).ToArray();
 
     public static ValidatedStructure FromElements(IEnumerable<ValidatedStructuralElement> elements)
     {
