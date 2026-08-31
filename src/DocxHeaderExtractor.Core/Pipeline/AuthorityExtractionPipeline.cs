@@ -138,22 +138,15 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 new ValidatedStructure([]), new HashSet<string>(StringComparer.Ordinal), 0, 0);
             if (audit is not null)
             {
-                var canUseNativePdf = routeFinalStructure is not null &&
-                    (quarantinedIndexes is null || quarantinedIndexes.Count == 0);
-                var finalStructure = canUseNativePdf
+                var isNativePdf = routeFinalStructure is not null;
+                var finalStructure = isNativePdf
                     ? routeFinalStructure!
                     : BuildFinalStructure(conversion.Path, audit, authority.Structure);
-                var decisions = canUseNativePdf && routeOutputDecisions is not null
+                var decisions = isNativePdf && routeOutputDecisions is not null
                     ? routeOutputDecisions!
                     : PdfOutputDecisionPolicy.Decide(finalStructure);
-                if (routeFinalStructure is not null && quarantinedIndexes is not null && quarantinedIndexes.Count > 0)
-                {
-                    var survivingCompatibilityIds = authority.Structure.Elements
-                        .Select(element => element.ProjectionMetadata?.CompatibilitySourceId)
-                        .Where(id => !string.IsNullOrWhiteSpace(id))
-                        .ToHashSet(StringComparer.Ordinal);
-                    decisions = decisions.Where(decision => survivingCompatibilityIds.Contains(decision.HeadingId)).ToArray();
-                }
+                if (isNativePdf && quarantinedIndexes is { Count: > 0 })
+                    decisions = FilterPdfOutputDecisions(decisions, authority.Structure);
                 product = PdfProductOutputSerializer.Serialize(finalStructure, decisions);
                 structural = new StructuralMaterializationResult(
                     authority.Structure,
@@ -258,6 +251,19 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             Audit = audit,
             EmittedElementIds = emitted,
         };
+    }
+
+    internal static IReadOnlyList<PdfOutputDecision> FilterPdfOutputDecisions(
+        IReadOnlyList<PdfOutputDecision> decisions,
+        ValidatedStructure survivingStructure)
+    {
+        ArgumentNullException.ThrowIfNull(decisions);
+        ArgumentNullException.ThrowIfNull(survivingStructure);
+        var survivingCompatibilityIds = survivingStructure.Elements
+            .Select(element => element.ProjectionMetadata?.CompatibilitySourceId)
+            .Where(id => !string.IsNullOrWhiteSpace(id))
+            .ToHashSet(StringComparer.Ordinal);
+        return decisions.Where(decision => survivingCompatibilityIds.Contains(decision.HeadingId)).ToArray();
     }
 
     private static OutlineRunProvenance BuildProvenance(RouteExecutionAudit? audit,

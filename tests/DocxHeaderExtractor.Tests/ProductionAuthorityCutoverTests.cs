@@ -208,4 +208,56 @@ public sealed class ProductionAuthorityCutoverTests
         Assert.Empty(filtered.Structure.Relations);
         Assert.Equal(["child"], filtered.EmittedElementIds);
     }
+
+    [Fact]
+    public void Pdf_quarantine_keeps_final_structure_and_filters_only_product_decisions()
+    {
+        var final = PdfFinalStructureProjection.Project(
+            "sha",
+            [
+                new PdfValidatedStructure("pdf:block:17", 1, null, "unresolved", "requires_review"),
+                new PdfValidatedStructure("pdf:block:18", 2, "pdf:block:17", "resolved", "requires_review"),
+            ],
+            [
+                Fact("pdf:block:17", 0, "First heading", 1),
+                Fact("pdf:block:18", 1, "Second heading", 2),
+            ],
+            [
+                new PdfCanonicalGrounding("pdf:block:17", 42, "@body[1]/p[42]", new DocxTextSpan(0, 13), "First heading"),
+                new PdfCanonicalGrounding("pdf:block:18", 43, "@body[1]/p[43]", new DocxTextSpan(0, 14), "Second heading"),
+            ]);
+        var originalDecisions = PdfOutputDecisionPolicy.Decide(final);
+        var materialized = StructuralAuthorityMaterializer.Materialize(final, originalDecisions);
+        var authority = new StructuralAuthorityResult(materialized.Structure, null, "pdf", materialized.EmittedElementIds);
+        var quarantined = AuthorityExtractionPipeline.ApplyStructuralQuarantine(
+            authority, new HashSet<int> { 42 });
+
+        var filteredDecisions = AuthorityExtractionPipeline.FilterPdfOutputDecisions(
+            originalDecisions, quarantined.Structure);
+        var product = PdfProductOutputSerializer.Serialize(final, filteredDecisions);
+        var survivingFinalHeading = final.Headings.Single(heading => heading.SourceAnchor!.ParagraphIndex == 43);
+        var expected = PdfProductOutputSerializer.Serialize(
+            final, originalDecisions.Where(decision => decision.HeadingId == survivingFinalHeading.Id).ToArray());
+        var survivingProductHeading = Assert.Single(product.Headings);
+
+        Assert.Equal(1, product.Headings.Count);
+        Assert.Equal(survivingFinalHeading.SourceAnchor!.ParagraphIndex, survivingProductHeading.ParagraphIndex);
+        Assert.Equal(survivingFinalHeading.SourceAnchor.StableId, survivingProductHeading.StableId);
+        Assert.Equal(survivingFinalHeading.SourceAnchor.Span, survivingProductHeading.Span);
+        Assert.Equal(survivingFinalHeading.Text, survivingProductHeading.Text);
+        Assert.Equal(JsonSerializer.Serialize(expected), JsonSerializer.Serialize(product));
+        Assert.Empty(quarantined.Structure.Relations);
+        Assert.NotNull(quarantined.EmittedElementIds);
+        Assert.Single(quarantined.EmittedElementIds!, id => id.Contains("p[43]", StringComparison.Ordinal));
+    }
+
+    private static PdfHierarchyFactAudit Fact(string id, int order, string text, int level) =>
+        new(id, order, 1, "document_body", "semantic", null, null, false, null,
+            null, null, level, "relationship_unresolved", [])
+        {
+            FactId = $"fact:{id}",
+            SourceBlockText = text,
+            HeadingSpan = new TextOffsetSpan(0, text.Length),
+            HeadingText = text,
+        };
 }
