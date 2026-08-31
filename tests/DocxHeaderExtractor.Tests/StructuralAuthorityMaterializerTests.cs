@@ -23,6 +23,12 @@ public sealed class StructuralAuthorityMaterializerTests
         Assert.Equal(JsonSerializer.Serialize(oldHeadings), JsonSerializer.Serialize(newHeadings));
         Assert.Equal(0, materialized.UnjoinedSourceCount);
         Assert.Equal(0, materialized.UnjoinedParentCount);
+
+        var first = materialized.Structure.Elements[0];
+        Assert.NotEqual(first.Id, first.Sources[0].SourceId);
+        Assert.Equal("@body[1]/p[0]", first.Sources[0].SourceId);
+        Assert.Equal(first.Id.Replace("structural:pdf:", "", StringComparison.Ordinal),
+            first.ProjectionMetadata!.CompatibilitySourceId);
     }
 
     [Fact]

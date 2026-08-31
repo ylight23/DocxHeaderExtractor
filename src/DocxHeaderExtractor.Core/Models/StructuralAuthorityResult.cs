@@ -4,4 +4,5 @@ namespace DocxHeaderExtractor.Core.Models;
 public sealed record StructuralAuthorityResult(
     ValidatedStructure Structure,
     RouteExecutionAudit? Audit,
-    string Reason);
+    string Reason,
+    IReadOnlySet<string>? EmittedElementIds = null);

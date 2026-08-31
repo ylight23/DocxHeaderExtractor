@@ -280,6 +280,9 @@ public static class PdfLayoutEvidenceOutline
 
     private static string Sha256(string text) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text))).ToLowerInvariant();
 
+    private static string FileSha256(string path) =>
+        Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
+
     public static PdfTextbookOutlineResult TryBuild(string originalInputPath, DocxPolicyState policyState)
     {
         var context = TryBuildContext(originalInputPath, policyState, out var reason);
@@ -818,8 +821,15 @@ public static class PdfLayoutEvidenceOutline
             : recoveredHeadings.Length < Math.Max(3, (int)Math.Ceiling(accepted.Length * 0.65))
                 ? $"audit-only:analyst-low-docx-alignment:{recoveredHeadings.Length}/{accepted.Length}"
                 : summary;
+        var finalStructure = PdfFinalStructureProjection.Project(
+            FileSha256(originalInputPath), audit.ValidatedStructures, audit.HierarchyFacts,
+            PdfCanonicalGrounding.FromGroundedHeadings(recoveredHeadings));
+        var decisions = PdfOutputDecisionPolicy.Decide(finalStructure);
+        var materialized = StructuralAuthorityMaterializer.Materialize(finalStructure, decisions);
         return new PdfTextbookOutlineResult(recoveredHeadings, auditReason, audit)
         {
+            StructuralAuthority = new StructuralAuthorityResult(
+                materialized.Structure, audit, auditReason, materialized.EmittedElementIds),
             DetachedTasks = detachedTasks,
         };
     }

@@ -106,7 +106,11 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                     {
                         await checkpoint.StopAcceptingWritesAndDrainAsync();
                     }
-                    rawHeadings = result.Headings;
+                    rawHeadings = result.StructuralAuthority is { } native
+                        ? HeadingOutlineProjection.Project(native.Structure,
+                            native.EmittedElementIds ?? native.Structure.Elements
+                                .Select(element => element.Id).ToHashSet(StringComparer.Ordinal))
+                        : result.Headings;
                     audit = ApplyQuarantine(result.Audit, rawHeadings, quarantinedIndexes, out rawHeadings);
                     route = "pdf-authority-v1";
                     reason = result.Reason;

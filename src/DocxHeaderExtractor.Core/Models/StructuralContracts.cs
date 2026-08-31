@@ -120,6 +120,8 @@ public sealed record StructuralValidation(
 /// </summary>
 public sealed record StructuralProjectionMetadata
 {
+    /// <summary>Legacy output identity when it differs from the generic source identity.</summary>
+    public string? CompatibilitySourceId { get; init; }
     public string? OriginalText { get; init; }
     public string? InlineBody { get; init; }
     public StructuralSpan? InlineBodySpan { get; init; }

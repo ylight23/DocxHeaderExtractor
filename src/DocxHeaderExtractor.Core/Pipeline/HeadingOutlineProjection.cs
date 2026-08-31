@@ -59,7 +59,7 @@ public static class HeadingOutlineProjection
         {
             Index = source.SourceOrdinal,
             StableId = source.StableId ?? source.SourceId,
-            SourceId = source.SourceId,
+            SourceId = metadata?.CompatibilitySourceId ?? source.SourceId,
             Level = element.Level,
             Text = element.Text,
             OriginalText = metadata?.OriginalText,

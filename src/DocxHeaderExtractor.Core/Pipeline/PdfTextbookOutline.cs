@@ -12,6 +12,12 @@ public sealed record PdfTextbookOutlineResult(
     string Reason,
     RouteExecutionAudit? Audit = null)
 {
+    /// <summary>
+    /// Native authority for the normal broad PDF route. <see cref="Headings"/> remains temporarily
+    /// available as the old-path shadow oracle while PDF producers migrate to the generic contract.
+    /// </summary>
+    public StructuralAuthorityResult? StructuralAuthority { get; init; }
+
     public IReadOnlyList<Task> DetachedTasks { get; init; } = [];
 
     public static PdfTextbookOutlineResult NotApplicable(string reason) => new([], reason);

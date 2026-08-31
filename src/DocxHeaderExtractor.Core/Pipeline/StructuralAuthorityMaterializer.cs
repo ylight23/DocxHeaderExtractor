@@ -37,67 +37,66 @@ public static class StructuralAuthorityMaterializer
 
             var elementId = ElementId(heading.Id);
             elementIdByHeadingId[heading.Id] = elementId;
-            var source = new SourceReference(
-                heading.Id,
-                heading.SourceAnchor.ParagraphIndex,
-                new StructuralSpan(heading.SourceAnchor.Span.Start, heading.SourceAnchor.Span.End))
-            {
-                StableId = heading.SourceAnchor.StableId,
-            };
             var decision = decisionById.GetValueOrDefault(heading.Id);
             var decisionStatus = decision?.RequiresReview == false
                 ? nameof(HeadingDecisionStatus.AutoAcceptedEvidence)
                 : nameof(HeadingDecisionStatus.RequiresReview);
             var reasons = decision?.Reasons ?? [];
-
-            elements.Add(new ValidatedStructuralElement
+            var sourceId = heading.SourceAnchor.StableId ?? heading.Id;
+            var sourceText = heading.SourceText;
+            var sourceFacts = new SourceFacts
             {
-                Id = elementId,
+                SourceId = sourceId,
+                RawText = sourceText,
+                Source = new SourceAnchor
+                {
+                    SourceType = "docx",
+                    ParagraphId = sourceId,
+                    ParagraphIndex = heading.SourceAnchor.ParagraphIndex,
+                },
+                RawSpan = new SourceTextSpan(0, sourceText.Length),
+            };
+            var candidate = new StructuralCandidate
+            {
+                CandidateId = heading.Id,
+                ObservedSourceFacts = [sourceFacts],
+            };
+            var proposal = new StructuralProposal
+            {
+                CandidateId = heading.Id,
                 Type = ElementType(heading.Role),
                 Role = ElementRole(heading.Role),
-                Sources = [source],
-                Text = heading.Text,
-                Level = heading.Level,
-                ParentId = null,
-                Validation = new StructuralValidation(
-                    CandidateGrounded: true,
-                    SourceFactsPresent: true,
-                    ProposedSpanValid: true,
-                    SourceSelectionValid: true,
-                    ValidatedSourceCount: 1,
-                    TypeValid: true,
-                    LevelValid: true,
-                    ParentValid: true,
-                    RejectionReason: null),
-                Decision = new StructuralDecision(
-                    Origin: "model",
-                    Status: decisionStatus,
-                    Confidence: 1.0,
-                    ConfidenceBasis: ConfidenceBasis),
-                ProjectionMetadata = new StructuralProjectionMetadata
+                ProposedSources =
+                [
+                    new ProposedSourceReference(sourceId,
+                        new StructuralSpan(heading.SourceAnchor.Span.Start, heading.SourceAnchor.Span.End)),
+                ],
+                ProposedParentId = heading.ParentId is { } parent && elementIdByHeadingId.ContainsKey(parent)
+                    ? elementIdByHeadingId[parent]
+                    : null,
+                ProposedLevel = heading.Level,
+            };
+            var element = StructuralProposalValidator.Materialize(
+                candidate, proposal, elementId,
+                new StructuralDecision("model", decisionStatus, 1.0, ConfidenceBasis),
+                elementIdByHeadingId.Values.ToHashSet(StringComparer.Ordinal),
+                new StructuralProjectionMetadata
                 {
+                    CompatibilitySourceId = heading.Id,
                     OriginalText = heading.SourceText,
                     BoundarySource = BoundarySource,
                     AcceptanceSignature = reasons.Count > 0 ? string.Join(",", reasons) : null,
-                },
+                });
+            if (element is null)
+                throw new InvalidOperationException($"Validated PDF heading '{heading.Id}' failed generic materialization.");
+
+            elements.Add(element with
+            {
+                Sources = element.Sources.Select(item => item with { StableId = heading.SourceAnchor.StableId }).ToArray(),
             });
         }
 
-        var parentUnjoined = 0;
-        var withParents = elements.Select(element =>
-        {
-            var heading = finalStructure.Headings.First(item => ElementId(item.Id) == element.Id);
-            if (heading.ParentId is null) return element;
-            if (!elementIdByHeadingId.TryGetValue(heading.ParentId, out var parentId))
-            {
-                parentUnjoined++;
-                return element;
-            }
-
-            return element with { ParentId = parentId };
-        }).ToArray();
-
-        var structure = ValidatedStructure.FromElements(withParents);
+        var structure = ValidatedStructure.FromElements(elements);
         var emittedElementIds = finalStructure.Headings
             .Where(heading => decisionById.TryGetValue(heading.Id, out var decision) &&
                 decision.Emit && elementIdByHeadingId.ContainsKey(heading.Id))
@@ -108,7 +107,9 @@ public static class StructuralAuthorityMaterializer
             structure,
             emittedElementIds,
             sourceUnjoined,
-            parentUnjoined);
+            finalStructure.Headings.Count(heading => heading.ParentId is not null &&
+                (!elementIdByHeadingId.ContainsKey(heading.Id) ||
+                 !elementIdByHeadingId.ContainsKey(heading.ParentId!))));
     }
 
     private static string ElementId(string headingId) => $"structural:pdf:{headingId}";
