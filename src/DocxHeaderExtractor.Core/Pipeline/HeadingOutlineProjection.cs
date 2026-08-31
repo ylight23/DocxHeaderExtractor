@@ -37,28 +37,42 @@ public static class HeadingOutlineProjection
     {
         ArgumentNullException.ThrowIfNull(structure);
         return structure.Headings
-            .OrderBy(element => element.Source.SourceOrdinal)
+            .OrderBy(element => element.Sources.First().SourceOrdinal)
             .Select(ProjectHeading)
             .ToArray();
     }
 
     private static HeadingRecord ProjectHeading(ValidatedStructuralElement element)
     {
-        if (element.Level is null)
+        var source = element.Sources.FirstOrDefault();
+        if (source is null || element.Level is null)
             throw new InvalidOperationException($"Heading '{element.Id}' has no validated level.");
+        var metadata = element.ProjectionMetadata;
 
         return new HeadingRecord
         {
-            Index = element.Source.SourceOrdinal,
-            StableId = element.Source.SourceId,
-            SourceId = element.Source.SourceId,
+            Index = source.SourceOrdinal,
+            StableId = source.SourceId,
+            SourceId = source.SourceId,
             Level = element.Level,
             Text = element.Text,
-            HeadingSpan = new TextOffsetSpan(element.Source.Span.Start, element.Source.Span.End),
+            OriginalText = metadata?.OriginalText,
+            HeadingSpan = new TextOffsetSpan(source.Span.Start, source.Span.End),
+            InlineBody = metadata?.InlineBody,
+            InlineBodySpan = metadata?.InlineBodySpan is { } bodySpan
+                ? new TextOffsetSpan(bodySpan.Start, bodySpan.End)
+                : null,
+            BoundarySource = metadata?.BoundarySource,
+            StyleId = metadata?.StyleId,
             Source = ParseSource(element.Decision.Origin),
             Confidence = element.Decision.Confidence,
+            ModelConfirmed = metadata?.ModelConfirmed ?? false,
+            CriticConfirmed = metadata?.CriticConfirmed ?? false,
             DecisionStatus = ParseStatus(element.Decision.Status),
             ConfidenceBasis = element.Decision.ConfidenceBasis,
+            AcceptanceSignature = metadata?.AcceptanceSignature,
+            CalibrationSamples = metadata?.CalibrationSamples ?? 0,
+            Evidence = metadata?.Evidence,
             Disputed = element.Decision.Disputed,
         };
     }

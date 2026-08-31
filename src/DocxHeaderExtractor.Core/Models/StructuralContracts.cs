@@ -23,20 +23,44 @@ public sealed record StructuralSpan(
     public bool IsValidFor(string text) => Start >= 0 && End > Start && End <= text.Length;
 }
 
-/// <summary>Stable source identity and the exact source span owned by the parser.</summary>
+/// <summary>Observed source identity and parser-owned text span.</summary>
 public sealed record SourceReference(
     [property: JsonPropertyName("sourceId")] string SourceId,
     [property: JsonPropertyName("sourceOrdinal")] int SourceOrdinal,
     [property: JsonPropertyName("span")] StructuralSpan Span);
 
 /// <summary>
-/// Untrusted structural proposal. Text, source span, and source identity remain outside the
-/// proposal so a model cannot become authority over observed document facts.
+/// A parser/deterministic candidate. Its source facts and observed spans are authority inputs; a
+/// proposal may refer to this candidate but cannot replace its source facts.
+/// </summary>
+public sealed record StructuralCandidate
+{
+    [JsonPropertyName("candidateId")]
+    public required string CandidateId { get; init; }
+
+    [JsonIgnore]
+    public required IReadOnlyList<SourceFacts> SourceFacts { get; init; }
+
+    [JsonPropertyName("sources")]
+    public IReadOnlyList<SourceReference> Sources => SourceFacts
+        .Select((facts, index) => new SourceReference(
+            facts.SourceId,
+            facts.Source.ParagraphIndex ?? index,
+            new StructuralSpan(facts.RawSpan.Start, facts.RawSpan.End)))
+        .ToArray();
+
+    [JsonPropertyName("observedEvidence")]
+    public IReadOnlyList<ObservedEvidence> ObservedEvidence { get; init; } = [];
+}
+
+/// <summary>
+/// Untrusted structural proposal. CandidateId is a routing key; type, role, proposed span,
+/// parent, and level remain subject to validation against the candidate's observed facts.
 /// </summary>
 public sealed record StructuralProposal
 {
-    [JsonPropertyName("sourceId")]
-    public required string SourceId { get; init; }
+    [JsonPropertyName("candidateId")]
+    public required string CandidateId { get; init; }
 
     [JsonPropertyName("type")]
     [JsonConverter(typeof(JsonStringEnumConverter))]
@@ -46,11 +70,14 @@ public sealed record StructuralProposal
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public required ProposedRole Role { get; init; }
 
-    [JsonPropertyName("parentId")]
-    public string? ParentId { get; init; }
+    [JsonPropertyName("proposedSpan")]
+    public StructuralSpan? ProposedSpan { get; init; }
 
-    [JsonPropertyName("level")]
-    public int? Level { get; init; }
+    [JsonPropertyName("proposedParentId")]
+    public string? ProposedParentId { get; init; }
+
+    [JsonPropertyName("proposedLevel")]
+    public int? ProposedLevel { get; init; }
 }
 
 /// <summary>Generic decision metadata carried after validation, independent of heading output.</summary>
@@ -62,8 +89,9 @@ public sealed record StructuralDecision(
     [property: JsonPropertyName("disputed")] bool Disputed = false);
 
 public sealed record StructuralValidation(
-    [property: JsonPropertyName("sourceGrounded")] bool SourceGrounded,
-    [property: JsonPropertyName("spanValid")] bool SpanValid,
+    [property: JsonPropertyName("candidateGrounded")] bool CandidateGrounded,
+    [property: JsonPropertyName("sourceFactsPresent")] bool SourceFactsPresent,
+    [property: JsonPropertyName("proposedSpanValid")] bool ProposedSpanValid,
     [property: JsonPropertyName("typeValid")] bool TypeValid,
     [property: JsonPropertyName("levelValid")] bool LevelValid,
     [property: JsonPropertyName("parentValid")] bool ParentValid,
@@ -71,6 +99,24 @@ public sealed record StructuralValidation(
 {
     [JsonIgnore]
     public bool Accepted => RejectionReason is null;
+}
+
+/// <summary>
+/// Compatibility payload used only while the existing HeadingRecord API remains public. It keeps
+/// projection details out of generic validation logic while allowing a lossless heading projection.
+/// </summary>
+public sealed record StructuralProjectionMetadata
+{
+    public string? OriginalText { get; init; }
+    public string? InlineBody { get; init; }
+    public StructuralSpan? InlineBodySpan { get; init; }
+    public string? BoundarySource { get; init; }
+    public string? StyleId { get; init; }
+    public bool ModelConfirmed { get; init; }
+    public bool CriticConfirmed { get; init; }
+    public string? AcceptanceSignature { get; init; }
+    public int CalibrationSamples { get; init; }
+    public HeadingEvidence? Evidence { get; init; }
 }
 
 /// <summary>Source-grounded structural element consumed by relations and downstream projections.</summary>
@@ -87,8 +133,8 @@ public sealed record ValidatedStructuralElement
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public required ProposedRole Role { get; init; }
 
-    [JsonPropertyName("source")]
-    public required SourceReference Source { get; init; }
+    [JsonPropertyName("sources")]
+    public required IReadOnlyList<SourceReference> Sources { get; init; }
 
     [JsonPropertyName("text")]
     public required string Text { get; init; }
@@ -104,6 +150,9 @@ public sealed record ValidatedStructuralElement
 
     [JsonPropertyName("decision")]
     public required StructuralDecision Decision { get; init; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public StructuralProjectionMetadata? ProjectionMetadata { get; init; }
 }
 
 public sealed record StructuralRelation(

@@ -28,21 +28,25 @@ public static class ModelProposalValidator
         // checks remain here because they are still specific to the heading proposal contract.
         var structuralValidation = isOutlineRole && proposal.HeadingSpan is { } headingSpan
             ? StructuralProposalValidator.Validate(
-                source,
+                source is null ? null : new StructuralCandidate
+                {
+                    CandidateId = proposal.SourceId,
+                    SourceFacts = [source],
+                },
                 new StructuralProposal
                 {
-                    SourceId = proposal.SourceId,
+                    CandidateId = proposal.SourceId,
                     Type = proposal.Role == ProposedRole.DocumentTitle
                         ? StructuralElementType.Title
                         : StructuralElementType.Heading,
                     Role = proposal.Role,
-                    Level = proposal.ProposedLevel,
-                },
-                new StructuralSpan(headingSpan.Start, headingSpan.End))
+                    ProposedSpan = new StructuralSpan(headingSpan.Start, headingSpan.End),
+                    ProposedLevel = proposal.ProposedLevel,
+                })
             : null;
-        var grounded = structuralValidation?.SourceGrounded ??
+        var grounded = structuralValidation?.CandidateGrounded ??
             (source is not null && string.Equals(source.SourceId, proposal.SourceId, StringComparison.Ordinal));
-        var spanValid = structuralValidation?.SpanValid ??
+        var spanValid = structuralValidation?.ProposedSpanValid ??
             (!isOutlineRole || proposal.HeadingSpan is { } span && source is not null && span.IsValidFor(source.RawText));
         var evidenceValid = proposal.SemanticEvidence.Distinct().Count() == proposal.SemanticEvidence.Count &&
                             proposal.VisualEvidence.Distinct().Count() == proposal.VisualEvidence.Count;

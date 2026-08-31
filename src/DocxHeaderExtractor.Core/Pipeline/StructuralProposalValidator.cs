@@ -3,60 +3,67 @@ using DocxHeaderExtractor.Core.Models;
 namespace DocxHeaderExtractor.Core.Pipeline;
 
 /// <summary>
-/// Generic source/span gate for structural proposals. It validates the proposal against parser
-/// facts, but never lets the proposal replace those facts.
+/// Generic source/span gate for structural proposals. It validates proposed coordinates against
+/// parser facts, but never lets a proposal replace observed source identity or source spans.
 /// </summary>
 public static class StructuralProposalValidator
 {
     public static StructuralValidation Validate(
-        SourceFacts? source,
+        StructuralCandidate? candidate,
         StructuralProposal proposal,
-        StructuralSpan authoritativeSpan,
-        IReadOnlySet<string>? knownSourceIds = null)
+        IReadOnlySet<string>? knownStructuralElementIds = null)
     {
         ArgumentNullException.ThrowIfNull(proposal);
-        ArgumentNullException.ThrowIfNull(authoritativeSpan);
-
-        var sourceGrounded = source is not null &&
-            string.Equals(source.SourceId, proposal.SourceId, StringComparison.Ordinal);
-        var spanValid = source is not null && authoritativeSpan.IsValidFor(source.RawText);
+        var candidateGrounded = candidate is not null &&
+            string.Equals(candidate.CandidateId, proposal.CandidateId, StringComparison.Ordinal);
+        var sourceFactsPresent = candidate?.SourceFacts is { Count: > 0 };
+        var proposedSpanValid = proposal.ProposedSpan is null ||
+            candidate?.SourceFacts.Any(source => proposal.ProposedSpan.IsValidFor(source.RawText)) == true;
         var typeValid = Enum.IsDefined(proposal.Type);
-        var levelValid = proposal.Level is null or >= 1 and <= 9;
-        var parentValid = proposal.ParentId is null || knownSourceIds is null ||
-            knownSourceIds.Contains(proposal.ParentId);
-        var reason = !sourceGrounded ? "source-not-grounded"
-            : !spanValid ? "invalid-source-span"
+        var levelValid = proposal.ProposedLevel is null or >= 1 and <= 9;
+        var parentValid = proposal.ProposedParentId is null || knownStructuralElementIds is null ||
+            knownStructuralElementIds.Contains(proposal.ProposedParentId);
+        var reason = !candidateGrounded ? "candidate-not-grounded"
+            : !sourceFactsPresent ? "source-facts-missing"
+            : !proposedSpanValid ? "invalid-proposed-span"
             : !typeValid ? "unsupported-structural-type"
             : !levelValid ? "invalid-structural-level"
-            : !parentValid ? "parent-not-grounded"
+            : !parentValid ? "structural-parent-not-grounded"
             : null;
-        return new StructuralValidation(sourceGrounded, spanValid, typeValid, levelValid, parentValid, reason);
+        return new StructuralValidation(
+            candidateGrounded, sourceFactsPresent, proposedSpanValid, typeValid, levelValid,
+            parentValid, reason);
     }
 
     public static ValidatedStructuralElement? Materialize(
-        SourceFacts source,
+        StructuralCandidate candidate,
         StructuralProposal proposal,
-        StructuralSpan authoritativeSpan,
+        string structuralElementId,
         StructuralDecision decision,
-        int sourceOrdinal,
-        IReadOnlySet<string>? knownSourceIds = null)
+        IReadOnlySet<string>? knownStructuralElementIds = null,
+        StructuralProjectionMetadata? projectionMetadata = null)
     {
-        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(candidate);
+        ArgumentException.ThrowIfNullOrWhiteSpace(structuralElementId);
         ArgumentNullException.ThrowIfNull(decision);
-        var validation = Validate(source, proposal, authoritativeSpan, knownSourceIds);
+        var validation = Validate(candidate, proposal, knownStructuralElementIds);
         if (!validation.Accepted) return null;
 
+        var sources = candidate.Sources;
+        var text = string.Join(" ", candidate.SourceFacts.Select(source =>
+            source.RawText[source.RawSpan.Start..source.RawSpan.End]));
         return new ValidatedStructuralElement
         {
-            Id = proposal.SourceId,
+            Id = structuralElementId,
             Type = proposal.Type,
             Role = proposal.Role,
-            Source = new SourceReference(proposal.SourceId, sourceOrdinal, authoritativeSpan),
-            Text = source.RawText[authoritativeSpan.Start..authoritativeSpan.End],
-            Level = proposal.Level,
-            ParentId = proposal.ParentId,
+            Sources = sources,
+            Text = text,
+            Level = proposal.ProposedLevel,
+            ParentId = proposal.ProposedParentId,
             Validation = validation,
             Decision = decision,
+            ProjectionMetadata = projectionMetadata,
         };
     }
 }
