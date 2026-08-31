@@ -38,6 +38,15 @@ public enum PdfDomainRole
 
 internal static class DocumentDomainPolicy
 {
+    public static DomainStructuralEvidence Observe(PdfSourceFacts source, string documentRegime)
+    {
+        var role = ClassifyRole(source, documentRegime);
+        return EvidenceForRole(role);
+    }
+
+    public static DomainStructuralEvidence EvidenceForRole(PdfDomainRole role, string basis = "document-domain-detector") =>
+        new(role, ProposedLevel(role), ProposesOutlineExclusion(role), IsStructuralRole(role), $"{basis}:{role}");
+
     public static string InferRegime(IEnumerable<string> texts, string fallback = "document_body")
     {
         var samples = texts.Take(600).Select(Fold).ToArray();
@@ -57,6 +66,9 @@ internal static class DocumentDomainPolicy
     }
 
     public static PdfDomainRole Classify(PdfSourceFacts source, string documentRegime)
+        => ClassifyRole(source, documentRegime);
+
+    private static PdfDomainRole ClassifyRole(PdfSourceFacts source, string documentRegime)
     {
         if (source.StructuralScope == "running_page_artifact") return PdfDomainRole.RunningArtifact;
         if (source.StructuralScope == "table_of_contents") return PdfDomainRole.OutlineReference;
@@ -79,7 +91,7 @@ internal static class DocumentDomainPolicy
         return PdfDomainRole.Unknown;
     }
 
-    public static int? HierarchyTier(PdfDomainRole role) => role switch
+    private static int? ProposedLevel(PdfDomainRole role) => role switch
     {
         PdfDomainRole.LegalPart or PdfDomainRole.ProcurementPart => 1,
         PdfDomainRole.LegalChapter or PdfDomainRole.ProcurementSection => 2,
@@ -92,12 +104,27 @@ internal static class DocumentDomainPolicy
         _ => null,
     };
 
-    public static bool IsExcludedFromOutline(PdfDomainRole role) => role is
+    private static bool ProposesOutlineExclusion(PdfDomainRole role) => role is
         PdfDomainRole.AmendmentAnnotation or PdfDomainRole.EditorialInstruction or
         PdfDomainRole.InlineClauseReference or PdfDomainRole.FormFieldLabel or
         PdfDomainRole.OutlineReference or PdfDomainRole.TableTitle or PdfDomainRole.FigureOrBoxCaption or
         PdfDomainRole.RunningArtifact;
 
+    private static bool IsStructuralRole(PdfDomainRole role) => role is
+        PdfDomainRole.LegalPart or PdfDomainRole.LegalChapter or PdfDomainRole.LegalSection or
+        PdfDomainRole.LegalArticle or PdfDomainRole.LegalClause or PdfDomainRole.LegalPoint or
+        PdfDomainRole.ProcurementPart or PdfDomainRole.ProcurementSection or PdfDomainRole.ProcurementGroup or
+        PdfDomainRole.ProcurementClause or PdfDomainRole.ProcurementSubclause or
+        PdfDomainRole.FinancialSection or PdfDomainRole.FinancialNote or
+        PdfDomainRole.MeetingSession or PdfDomainRole.MeetingAgenda;
+
+    [Obsolete("Use Observe(...).ProposedLevel as source evidence.")]
+    public static int? HierarchyTier(PdfDomainRole role) => ProposedLevel(role);
+
+    [Obsolete("Use Observe(...).ProposesOutlineExclusion as source evidence.")]
+    public static bool IsExcludedFromOutline(PdfDomainRole role) => ProposesOutlineExclusion(role);
+
+    [Obsolete("Use Observe(...).IsStructuralRole as source evidence.")]
     public static bool IsConventionalOutlineRole(PdfDomainRole role) => role is not
         PdfDomainRole.LegalClause and not PdfDomainRole.LegalPoint and not PdfDomainRole.ProcurementSubclause;
 
@@ -159,6 +186,21 @@ internal static class DocumentDomainPolicy
         }
         return builder.ToString();
     }
+}
+
+/// <summary>
+/// Domain detection output is evidence and proposal input. It is intentionally not a validated
+/// structural element and cannot authorize a structural graph by itself.
+/// </summary>
+internal sealed record DomainStructuralEvidence(
+    PdfDomainRole Role,
+    int? ProposedLevel,
+    bool ProposesOutlineExclusion,
+    bool IsStructuralRole,
+    string Basis)
+{
+    public static readonly DomainStructuralEvidence Unknown = new(
+        PdfDomainRole.Unknown, null, false, false, "no-domain-evidence");
 }
 
 /// <summary>Public, source-text-only regime inference for diagnostics and scheduler benchmarks.</summary>

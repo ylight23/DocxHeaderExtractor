@@ -32,6 +32,9 @@ internal sealed record PdfSourceFacts(
     /// <summary>Document-family role inferred only from source scope, marker, and text shape.</summary>
     public PdfDomainRole DomainRole { get; init; } = PdfDomainRole.Unknown;
 
+    /// <summary>Domain detector output retained as evidence, never as validated authority.</summary>
+    public DomainStructuralEvidence DomainEvidence { get; init; } = DomainStructuralEvidence.Unknown;
+
     public string? ScopeHostSourceId { get; init; }
     public string? ScopeTargetDocument { get; init; }
     public bool InsideQuote { get; init; }
@@ -95,6 +98,10 @@ public sealed record PdfValidatedStructure(
 
     [JsonPropertyName("structuralScope")]
     public string StructuralScope { get; init; } = "document_body";
+
+    /// <summary>Non-authoritative domain exclusion proposal carried for product policy decisions.</summary>
+    [JsonIgnore]
+    public bool DomainExclusionProposed { get; init; }
 }
 
 internal static class PdfHierarchyResolver
@@ -113,13 +120,14 @@ internal static class PdfHierarchyResolver
             var marker = PdfMarkerFactsParser.Parse(source.RawText) ?? source.Marker;
             var signature = marker?.Signature;
             if (signature is not null && !signatures.ContainsKey(signature)) signatures[signature] = signatures.Count + 1;
-            return (Heading: heading, Marker: marker, Signature: signature, Role: source.DomainRole);
+            return (Heading: heading, Marker: marker, Signature: signature, Role: source.DomainRole,
+                DomainEvidence: source.DomainEvidence);
         }).ToArray();
 
         var result = new List<PdfValidatedStructure>();
         foreach (var item in items)
         {
-            var tier = DocumentDomainPolicy.HierarchyTier(item.Role);
+            var tier = item.DomainEvidence.ProposedLevel;
             var parent = FindParent(item, items, result, tier);
             var level = tier ?? (item.Marker is { IsPath: true, Depth: > 1 }
                 ? item.Marker.Value.Depth
@@ -129,13 +137,16 @@ internal static class PdfHierarchyResolver
             {
                 DomainRole = item.Role,
                 StructuralScope = contexts[item.Heading.SourceId].Source.StructuralScope,
+                DomainExclusionProposed = contexts[item.Heading.SourceId].Source.DomainEvidence.ProposesOutlineExclusion,
             });
         }
         return result;
     }
 
-    private static string? FindParent((PdfValidatedHeading Heading, PdfMarkerFact? Marker, string? Signature, PdfDomainRole Role) item,
-        IReadOnlyList<(PdfValidatedHeading Heading, PdfMarkerFact? Marker, string? Signature, PdfDomainRole Role)> all,
+    private static string? FindParent((PdfValidatedHeading Heading, PdfMarkerFact? Marker, string? Signature,
+            PdfDomainRole Role, DomainStructuralEvidence DomainEvidence) item,
+        IReadOnlyList<(PdfValidatedHeading Heading, PdfMarkerFact? Marker, string? Signature,
+            PdfDomainRole Role, DomainStructuralEvidence DomainEvidence)> all,
         IReadOnlyList<PdfValidatedStructure> resolved, int? tier)
     {
         if (item.Marker is not { } current) return null;
@@ -143,7 +154,7 @@ internal static class PdfHierarchyResolver
         {
             var previous = all[index];
             if (previous.Marker is not { } marker) continue;
-            var previousTier = DocumentDomainPolicy.HierarchyTier(previous.Role);
+            var previousTier = previous.DomainEvidence.ProposedLevel;
             if (tier is not null && previousTier is not null && previousTier < tier)
                 return previous.Heading.SourceId;
             if (current.IsPath && marker.IsPath && marker.Depth == current.Depth - 1)
@@ -237,7 +248,8 @@ internal static class PdfCandidateContextBuilder
                     ? "layout_parser"
                     : item.StartsWith("marker:", StringComparison.Ordinal) ? "marker_parser" : "scope_detector")).ToArray(),
         };
-        return facts with { DomainRole = DocumentDomainPolicy.Classify(facts, regime) };
+        var domainEvidence = DocumentDomainPolicy.Observe(facts, regime);
+        return facts with { DomainRole = domainEvidence.Role, DomainEvidence = domainEvidence };
     }
 
     private static string LineKey(PdfLine line) => string.Create(
@@ -277,7 +289,7 @@ internal static class PdfProposalValidator
                 ? ValidateSpan(decision, context.Source.RawText, out spanReason)
                 : "not-applicable";
             var structuralScopeRejected = context.Source.StructuralScope is "table" or "running_page_artifact" or "table_of_contents" or "code_or_grammar" or "reference_list" or "index_terms";
-            var scopeRejected = structuralScopeRejected || DocumentDomainPolicy.IsExcludedFromOutline(context.Source.DomainRole);
+            var scopeRejected = structuralScopeRejected || context.Source.DomainEvidence.ProposesOutlineExclusion;
             var validation = decision.Role != PdfBlockRole.HeadingTopic
                 ? "not-heading"
                 : scopeRejected
@@ -294,7 +306,7 @@ internal static class PdfProposalValidator
     public static bool IsEligibleHeading(PdfBlockDecision decision, PdfCandidateContext context) =>
         decision.Role == PdfBlockRole.HeadingTopic &&
         context.Source.StructuralScope is not ("table" or "running_page_artifact" or "table_of_contents" or "code_or_grammar" or "reference_list" or "index_terms") &&
-        !DocumentDomainPolicy.IsExcludedFromOutline(context.Source.DomainRole) &&
+        !context.Source.DomainEvidence.ProposesOutlineExclusion &&
         HasTrustedEvidenceOrigins(context.Source) &&
         ValidateSpan(decision, context.Source.RawText, out _) == "valid";
 

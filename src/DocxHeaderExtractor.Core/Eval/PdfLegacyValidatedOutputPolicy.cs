@@ -19,7 +19,8 @@ public static class PdfLegacyValidatedOutputPolicy
         var structuresById = structures?.ToDictionary(item => item.SourceId, StringComparer.Ordinal) ?? [];
         return headings.Where(heading => heading.HeadingSpan is not null && !string.IsNullOrWhiteSpace(heading.Text) &&
                 (string.IsNullOrWhiteSpace(heading.SourceId) || !structuresById.TryGetValue(heading.SourceId, out var structure) ||
-                 (!DocumentDomainPolicy.IsExcludedFromOutline(structure.DomainRole) &&
+                 (!structure.DomainExclusionProposed &&
+                  !DocumentDomainPolicy.EvidenceForRole(structure.DomainRole, "legacy-domain-fact").ProposesOutlineExclusion &&
                   structure.StructuralScope != "embedded_amendment" &&
                   structure.StructuralScope != "quoted_replacement" &&
                   structure.StructuralScope != "appendix_table" &&

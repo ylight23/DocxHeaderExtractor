@@ -146,11 +146,13 @@ public static class PdfVisualTextRecovery
                 mapped.Level = level;
                 occupied.Add((mapped.Index, mapped.HeadingSpan!.Start));
                 headings.Add(mapped);
+                var domainEvidence = DocumentDomainPolicy.EvidenceForRole(domainRole, "visual-domain-detector");
                 structures.Add(new PdfValidatedStructure(region.SourceId, level, null,
                     "visual-canonical-map-unresolved-parent", "requires_review")
                 {
                     DomainRole = domainRole,
                     StructuralScope = region.StructuralScope,
+                    DomainExclusionProposed = domainEvidence.ProposesOutlineExclusion,
                 });
                 audit.Add(new PdfTextLayerRecoveryAudit(region.SourceId, region.Page, "visual-ocr-canonical-map"));
                 traces.Add(Trace(region, proposal, "visual-ocr-canonical-map", mapped, attempts: Attempts(visual)));
@@ -489,11 +491,12 @@ public static class PdfVisualTextRecovery
             Marker = PdfMarkerFactsParser.Parse(text),
         };
         domainRole = ResolveVisualDomainRole(source, documentRegime, region.ObservedEvidence);
-        level = Math.Clamp(DocumentDomainPolicy.HierarchyTier(domainRole) ??
+        var domainEvidence = DocumentDomainPolicy.EvidenceForRole(domainRole, "visual-domain-detector");
+        level = Math.Clamp(domainEvidence.ProposedLevel ??
             (source.Marker is { IsPath: true, Depth: > 1 } ? source.Marker.Value.Depth : 1), 1, 9);
         return text.Length is >= 3 and <= 240 && text.Any(char.IsLetter) &&
-               !(SubordinateListItemRx.IsMatch(text) && !IsStructuralDomainRole(domainRole)) &&
-               !DocumentDomainPolicy.IsExcludedFromOutline(domainRole) &&
+               !(SubordinateListItemRx.IsMatch(text) && !domainEvidence.IsStructuralRole) &&
+               !domainEvidence.ProposesOutlineExclusion &&
                region.StructuralScope == "document_body";
     }
 
@@ -515,19 +518,12 @@ public static class PdfVisualTextRecovery
             Marker = PdfMarkerFactsParser.Parse(text),
         };
         var role = ResolveVisualDomainRole(source, documentRegime, region.ObservedEvidence);
-        if (SubordinateListItemRx.IsMatch(text) && !IsStructuralDomainRole(role)) return "list_item_body";
-        if (DocumentDomainPolicy.IsExcludedFromOutline(role)) return "domain_scope_excluded";
+        var domainEvidence = DocumentDomainPolicy.EvidenceForRole(role, "visual-domain-detector");
+        if (SubordinateListItemRx.IsMatch(text) && !domainEvidence.IsStructuralRole) return "list_item_body";
+        if (domainEvidence.ProposesOutlineExclusion) return "domain_scope_excluded";
         if (region.StructuralScope != "document_body") return "structural_scope_excluded";
         return "source_shape_rejected";
     }
-
-    private static bool IsStructuralDomainRole(PdfDomainRole role) => role is
-        PdfDomainRole.LegalPart or PdfDomainRole.LegalChapter or PdfDomainRole.LegalSection or
-        PdfDomainRole.LegalArticle or PdfDomainRole.LegalClause or PdfDomainRole.LegalPoint or
-        PdfDomainRole.ProcurementPart or PdfDomainRole.ProcurementSection or PdfDomainRole.ProcurementGroup or
-        PdfDomainRole.ProcurementClause or PdfDomainRole.ProcurementSubclause or
-        PdfDomainRole.FinancialSection or PdfDomainRole.FinancialNote or
-        PdfDomainRole.MeetingSession or PdfDomainRole.MeetingAgenda;
 
     // A bare Arabic marker is not a legal article on its own. After the visual model selected a
     // bold marker-line crop and canonical mapping grounded it, legal document context gives that
@@ -535,7 +531,7 @@ public static class PdfVisualTextRecovery
     private static PdfDomainRole ResolveVisualDomainRole(PdfSourceFacts source, string documentRegime,
         IReadOnlyList<string> observedEvidence)
     {
-        var classified = DocumentDomainPolicy.Classify(source, documentRegime);
+        var classified = DocumentDomainPolicy.Observe(source, documentRegime).Role;
         if (classified != PdfDomainRole.Unknown || documentRegime is not "legal" and not "VietnameseLegal")
             return classified;
 

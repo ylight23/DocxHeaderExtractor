@@ -218,7 +218,8 @@ internal static class DocxAuthorityPipeline
                     item.StartsWith("numbering_style_level:", StringComparison.Ordinal) ? "ooxml_parser" : "docx_parser")).ToArray(),
             };
             facts = scopeTracker.Apply(facts);
-            facts = facts with { DomainRole = DocumentDomainPolicy.Classify(facts, mode.Mode.ToString()) };
+            var domainEvidence = DocumentDomainPolicy.Observe(facts, mode.Mode.ToString());
+            facts = facts with { DomainRole = domainEvidence.Role, DomainEvidence = domainEvidence };
             var previous = paragraphs.Take(index).TakeLast(3).Select(item => Excerpt(item.Source.Text)).ToArray();
             var next = paragraphs.Skip(index + 1).Take(3).Select(item => Excerpt(item.Source.Text)).ToArray();
             var parents = paragraphs.Take(index).TakeLast(8).Select(item => item.Source.SourceId).ToArray();

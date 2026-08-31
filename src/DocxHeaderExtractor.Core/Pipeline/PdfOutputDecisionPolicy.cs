@@ -36,8 +36,7 @@ public static class PdfOutputDecisionPolicy
         var reasons = new List<string>();
         if (string.IsNullOrWhiteSpace(heading.Text)) reasons.Add("empty_source_text");
         if (Array.IndexOf(ExcludedScopes, heading.Scope) >= 0) reasons.Add($"excluded_scope:{heading.Scope}");
-        if (Enum.TryParse<PdfDomainRole>(heading.Role, out var role) &&
-            DocumentDomainPolicy.IsExcludedFromOutline(role)) reasons.Add($"excluded_role:{heading.Role}");
+        if (heading.DomainExclusionProposed) reasons.Add($"excluded_role:{heading.Role}");
         if (!string.Equals(heading.ValidationDecision, "requires_review", StringComparison.Ordinal))
             reasons.Add($"unexpected_validation_decision:{heading.ValidationDecision}");
         // A product heading has to be locatable in the canonical source; without that anchor it can
