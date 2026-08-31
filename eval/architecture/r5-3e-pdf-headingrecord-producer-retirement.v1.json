@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r5_3e_pdf_headingrecord_producer_retirement",
+  "status": "PASS",
+  "executionRevision": "1b3471bb90a3f2c40ec1e7e3b702fc76c506d797",
+  "publicationRevision": "containing-closure-commit",
+  "precedingR5_3dPublicationRevision": "406c4936d0d5d68837b08c2f0362dc6ae4c2cdfc",
+  "pdfProductionResultContainsHeadingRecords": false,
+  "pdfNormalHeadingRecordProducer": 0,
+  "pdfProductionHeadingApiCallers": 0,
+  "structureToHeadingToStructureBridges": 0,
+  "compatibilityOracle": "PdfCompatibilityHeadingOracle",
+  "replay": {
+    "joined": 3,
+    "cases": 9,
+    "passed": 9,
+    "structureDelta": 0,
+    "decisionDelta": 0,
+    "productDelta": 0,
+    "finalHeadingDelta": 0,
+    "providerCalls": 0
+  },
+  "hostE2E": {
+    "status": "PASS",
+    "cases": 2,
+    "fingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "fingerprintChanged": false,
+    "unjoined": 0,
+    "providerCalls": 0
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "fullSuite": {
+    "executed": true,
+    "excludedTests": 0,
+    "total": 829,
+    "passed": 827,
+    "failed": 2,
+    "skipped": 0,
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0,
+    "frozenFailures": [
+      "DocxHeaderExtractor.Tests.PdfC1CrossDocumentRegressionInventoryProbe.IndependentPartialTimeoutEvidenceNowExistsAndWasConsumedByN35",
+      "DocxHeaderExtractor.Tests.PdfN15RankingLossDiagnosisProbe.CommittedDiagnosisReproducesByteForByte"
+    ]
+  },
+  "expectedChanged": false,
+  "r5_3e": "PASS",
+  "r5_3": "PASS",
+  "r5_4": "AUTHORIZED"
+}
