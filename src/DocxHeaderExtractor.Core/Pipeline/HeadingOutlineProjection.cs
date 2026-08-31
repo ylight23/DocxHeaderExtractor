@@ -34,9 +34,15 @@ public static class HeadingOutlineProjection
     }
 
     public static IReadOnlyList<HeadingRecord> Project(ValidatedStructure structure)
+        => Project(structure, null);
+
+    public static IReadOnlyList<HeadingRecord> Project(
+        ValidatedStructure structure,
+        IReadOnlySet<string>? emittedElementIds)
     {
         ArgumentNullException.ThrowIfNull(structure);
-        return structure.Headings
+        return structure.OutlineElements
+            .Where(element => emittedElementIds is null || emittedElementIds.Contains(element.Id))
             .OrderBy(element => element.Sources.First().SourceOrdinal)
             .Select(ProjectHeading)
             .ToArray();
@@ -45,14 +51,14 @@ public static class HeadingOutlineProjection
     private static HeadingRecord ProjectHeading(ValidatedStructuralElement element)
     {
         var source = element.Sources.FirstOrDefault();
-        if (source is null || element.Level is null)
-            throw new InvalidOperationException($"Heading '{element.Id}' has no validated level.");
+        if (source is null)
+            throw new InvalidOperationException($"Structural element '{element.Id}' has no validated source.");
         var metadata = element.ProjectionMetadata;
 
         return new HeadingRecord
         {
             Index = source.SourceOrdinal,
-            StableId = source.SourceId,
+            StableId = source.StableId ?? source.SourceId,
             SourceId = source.SourceId,
             Level = element.Level,
             Text = element.Text,

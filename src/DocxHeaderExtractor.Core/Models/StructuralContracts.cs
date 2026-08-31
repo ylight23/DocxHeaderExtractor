@@ -27,7 +27,13 @@ public sealed record StructuralSpan(
 public sealed record SourceReference(
     [property: JsonPropertyName("sourceId")] string SourceId,
     [property: JsonPropertyName("sourceOrdinal")] int SourceOrdinal,
-    [property: JsonPropertyName("span")] StructuralSpan Span);
+    [property: JsonPropertyName("span")] StructuralSpan Span)
+{
+    /// <summary>Optional stable source identity retained for compatibility projections.</summary>
+    [JsonPropertyName("stableId")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? StableId { get; init; }
+}
 
 /// <summary>Untrusted source/span selection proposed by a model or visual boundary pass.</summary>
 public sealed record ProposedSourceReference(
@@ -188,8 +194,17 @@ public sealed class ValidatedStructure
     [JsonPropertyName("relations")]
     public IReadOnlyList<StructuralRelation> Relations { get; }
 
-    public IReadOnlyList<ValidatedStructuralElement> Headings =>
-        Elements.Where(element => element.Type == StructuralElementType.Heading).ToArray();
+    /// <summary>
+    /// Elements that the existing document-outline contract can represent. Title and Subtitle are
+    /// intentionally included so the compatibility projection does not silently drop them while
+    /// the generic taxonomy remains closed to the initial three element types.
+    /// </summary>
+    public IReadOnlyList<ValidatedStructuralElement> OutlineElements =>
+        Elements.Where(element => element.Type is StructuralElementType.Title or
+            StructuralElementType.Subtitle or StructuralElementType.Heading).ToArray();
+
+    [Obsolete("Use OutlineElements; retained as a source-compatible heading-only view during migration.")]
+    public IReadOnlyList<ValidatedStructuralElement> Headings => OutlineElements;
 
     public static ValidatedStructure FromElements(IEnumerable<ValidatedStructuralElement> elements)
     {

@@ -127,10 +127,19 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                     throw new ArgumentOutOfRangeException(nameof(authorityRoute), authorityRoute, null);
             }
 
-            var product = audit is null
-                ? new PdfProductOutput(FileSha256(conversion.Path), [])
-                : BuildProductOutput(conversion.Path, audit, rawHeadings);
-            var headings = PdfProductOutlineAdapter.ToHeadingRecords(product);
+            var product = new PdfProductOutput(FileSha256(conversion.Path), []);
+            var structural = new StructuralMaterializationResult(
+                new ValidatedStructure([]), new HashSet<string>(StringComparer.Ordinal), 0, 0);
+            if (audit is not null)
+            {
+                var finalStructure = BuildFinalStructure(conversion.Path, audit, rawHeadings);
+                var decisions = PdfOutputDecisionPolicy.Decide(finalStructure);
+                product = PdfProductOutputSerializer.Serialize(finalStructure, decisions);
+                structural = StructuralAuthorityMaterializer.Materialize(finalStructure, decisions);
+            }
+
+            var headings = HeadingOutlineProjection.Project(
+                structural.Structure, structural.EmittedElementIds);
             _options.Log?.Invoke($"Authority route {route}: validated={headings.Count}; {reason}");
             return new DocumentOutline
             {
@@ -171,13 +180,12 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         return _analyst;
     }
 
-    private static PdfProductOutput BuildProductOutput(string docxPath, RouteExecutionAudit audit,
+    private static PdfFinalStructure BuildFinalStructure(string docxPath, RouteExecutionAudit audit,
         IReadOnlyList<HeadingRecord> rawHeadings)
     {
-        var finalStructure = PdfFinalStructureProjection.Project(
+        return PdfFinalStructureProjection.Project(
             FileSha256(docxPath), audit.ValidatedStructures, audit.HierarchyFacts,
             PdfCanonicalGrounding.FromGroundedHeadings(rawHeadings));
-        return PdfProductOutputSerializer.Serialize(finalStructure, PdfOutputDecisionPolicy.Decide(finalStructure));
     }
 
     internal static RouteExecutionAudit? ApplyQuarantine(
