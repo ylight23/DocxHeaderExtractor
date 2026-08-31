@@ -29,6 +29,11 @@ public sealed record SourceReference(
     [property: JsonPropertyName("sourceOrdinal")] int SourceOrdinal,
     [property: JsonPropertyName("span")] StructuralSpan Span);
 
+/// <summary>Untrusted source/span selection proposed by a model or visual boundary pass.</summary>
+public sealed record ProposedSourceReference(
+    [property: JsonPropertyName("sourceId")] string SourceId,
+    [property: JsonPropertyName("span")] StructuralSpan Span);
+
 /// <summary>
 /// A parser/deterministic candidate. Its source facts and observed spans are authority inputs; a
 /// proposal may refer to this candidate but cannot replace its source facts.
@@ -39,10 +44,10 @@ public sealed record StructuralCandidate
     public required string CandidateId { get; init; }
 
     [JsonIgnore]
-    public required IReadOnlyList<SourceFacts> SourceFacts { get; init; }
+    public required IReadOnlyList<SourceFacts> ObservedSourceFacts { get; init; }
 
-    [JsonPropertyName("sources")]
-    public IReadOnlyList<SourceReference> Sources => SourceFacts
+    [JsonPropertyName("observedSources")]
+    public IReadOnlyList<SourceReference> ObservedSources => ObservedSourceFacts
         .Select((facts, index) => new SourceReference(
             facts.SourceId,
             facts.Source.ParagraphIndex ?? index,
@@ -70,8 +75,8 @@ public sealed record StructuralProposal
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public required ProposedRole Role { get; init; }
 
-    [JsonPropertyName("proposedSpan")]
-    public StructuralSpan? ProposedSpan { get; init; }
+    [JsonPropertyName("proposedSources")]
+    public IReadOnlyList<ProposedSourceReference>? ProposedSources { get; init; }
 
     [JsonPropertyName("proposedParentId")]
     public string? ProposedParentId { get; init; }
@@ -92,6 +97,8 @@ public sealed record StructuralValidation(
     [property: JsonPropertyName("candidateGrounded")] bool CandidateGrounded,
     [property: JsonPropertyName("sourceFactsPresent")] bool SourceFactsPresent,
     [property: JsonPropertyName("proposedSpanValid")] bool ProposedSpanValid,
+    [property: JsonPropertyName("sourceSelectionValid")] bool SourceSelectionValid,
+    [property: JsonPropertyName("validatedSourceCount")] int ValidatedSourceCount,
     [property: JsonPropertyName("typeValid")] bool TypeValid,
     [property: JsonPropertyName("levelValid")] bool LevelValid,
     [property: JsonPropertyName("parentValid")] bool ParentValid,

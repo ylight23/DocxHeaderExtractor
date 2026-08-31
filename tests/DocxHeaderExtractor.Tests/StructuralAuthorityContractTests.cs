@@ -7,15 +7,16 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class StructuralAuthorityContractTests
 {
     [Fact]
-    public void Proposed_span_is_validated_but_observed_span_remains_authority()
+    public void One_source_proposed_subspan_materializes_validated_subspan()
     {
-        var candidate = Candidate("c1", Source("p1", "1 Introduction and body", 0, 14));
+        var source = Source("p1", "1 Introduction and body", 0, 23);
+        var candidate = Candidate("c1", source);
         var proposal = new StructuralProposal
         {
             CandidateId = "c1",
             Type = StructuralElementType.Heading,
             Role = ProposedRole.HeadingTopic,
-            ProposedSpan = new StructuralSpan(0, 11),
+            ProposedSources = [new ProposedSourceReference("p1", new StructuralSpan(0, 14))],
             ProposedLevel = 1,
         };
 
@@ -28,7 +29,63 @@ public sealed class StructuralAuthorityContractTests
         Assert.Equal("p1", Assert.Single(element.Sources).SourceId);
         Assert.Equal(new StructuralSpan(0, 14), element.Sources[0].Span);
         Assert.Equal("1 Introduction", element.Text);
-        Assert.True(element.Validation.ProposedSpanValid);
+        Assert.True(element.Validation.SourceSelectionValid);
+    }
+
+    [Fact]
+    public void Multi_source_proposal_materializes_per_source_spans()
+    {
+        var first = Source("p20", "CHƯƠNG II", 20, 9);
+        var second = Source("p21", "QUYỀN VÀ NGHĨA VỤ", 21, 17);
+        var candidate = new StructuralCandidate
+        {
+            CandidateId = "c-chapter",
+            ObservedSourceFacts = [first, second],
+        };
+        var proposal = new StructuralProposal
+        {
+            CandidateId = "c-chapter",
+            Type = StructuralElementType.Heading,
+            Role = ProposedRole.HeadingTopic,
+            ProposedSources =
+            [
+                new ProposedSourceReference("p20", new StructuralSpan(0, first.RawText.Length)),
+                new ProposedSourceReference("p21", new StructuralSpan(0, second.RawText.Length)),
+            ],
+            ProposedLevel = 1,
+        };
+
+        var element = StructuralProposalValidator.Materialize(
+            candidate, proposal, "se:chapter-2", Decision("structure"));
+
+        Assert.NotNull(element);
+        Assert.Equal(["p20", "p21"], element.Sources.Select(source => source.SourceId));
+        Assert.Equal(
+            [new StructuralSpan(0, first.RawText.Length), new StructuralSpan(0, second.RawText.Length)],
+            element.Sources.Select(source => source.Span));
+        Assert.Equal("CHƯƠNG II QUYỀN VÀ NGHĨA VỤ", element.Text);
+    }
+
+    [Fact]
+    public void Proposed_source_for_wrong_source_is_rejected()
+    {
+        var candidate = Candidate("c1", Source("p1", "Heading", 0, 7));
+        var proposal = new StructuralProposal
+        {
+            CandidateId = "c1",
+            Type = StructuralElementType.Heading,
+            Role = ProposedRole.HeadingTopic,
+            ProposedSources = [new ProposedSourceReference("p9", new StructuralSpan(0, 7))],
+            ProposedLevel = 1,
+        };
+
+        var validation = StructuralProposalValidator.Validate(candidate, proposal);
+        var element = StructuralProposalValidator.Materialize(
+            candidate, proposal, "se:wrong", Decision("model"));
+
+        Assert.False(validation.Accepted);
+        Assert.Equal("invalid-proposed-sources", validation.RejectionReason);
+        Assert.Null(element);
     }
 
     [Fact]
@@ -154,7 +211,7 @@ public sealed class StructuralAuthorityContractTests
     private static StructuralCandidate Candidate(string id, SourceFacts source) => new()
     {
         CandidateId = id,
-        SourceFacts = [source],
+        ObservedSourceFacts = [source],
     };
 
     private static SourceFacts Source(string id, string text, int ordinal, int end) => new()
@@ -193,7 +250,7 @@ public sealed class StructuralAuthorityContractTests
     };
 
     private static StructuralValidation AcceptedValidation() =>
-        new(true, true, true, true, true, true, null);
+        new(true, true, true, true, 1, true, true, true, null);
 
     private static StructuralDecision Decision(string origin) =>
         new(origin, "AutoAcceptedEvidence", 1, "test");

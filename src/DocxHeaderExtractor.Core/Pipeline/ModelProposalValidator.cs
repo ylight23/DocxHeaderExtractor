@@ -31,7 +31,7 @@ public static class ModelProposalValidator
                 source is null ? null : new StructuralCandidate
                 {
                     CandidateId = proposal.SourceId,
-                    SourceFacts = [source],
+                    ObservedSourceFacts = [source],
                 },
                 new StructuralProposal
                 {
@@ -40,7 +40,8 @@ public static class ModelProposalValidator
                         ? StructuralElementType.Title
                         : StructuralElementType.Heading,
                     Role = proposal.Role,
-                    ProposedSpan = new StructuralSpan(headingSpan.Start, headingSpan.End),
+                    ProposedSources = [new ProposedSourceReference(
+                        proposal.SourceId, new StructuralSpan(headingSpan.Start, headingSpan.End))],
                     ProposedLevel = proposal.ProposedLevel,
                 })
             : null;
