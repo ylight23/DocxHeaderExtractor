@@ -459,8 +459,8 @@ static object ModePayload(DocumentModeReport report) => new
     description = report.Describe(),
 };
 
-// Lớp sinh ra từ top-level statements là internal partial — phải khớp accessibility.
-internal partial class Program
+// Public để integration test khởi động đúng host WebApplicationFactory, không cần facade riêng.
+public partial class Program
 {
     /// <summary>Chỉ cho một tài liệu chạy qua mô hình tại một thời điểm.</summary>
     internal static readonly SemaphoreSlim Gate = new(1, 1);
