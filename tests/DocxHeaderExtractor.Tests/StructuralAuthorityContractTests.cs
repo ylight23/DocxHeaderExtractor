@@ -81,6 +81,33 @@ public sealed class StructuralAuthorityContractTests
         Assert.Equal(StructuralRelationType.ParentChild, relation.Type);
     }
 
+    [Fact]
+    public void Document_outline_projection_preserves_non_heading_metadata()
+    {
+        var structure = ValidatedStructure.FromElements([
+            Materialize("p1", "1 Introduction", 0, 1, null, "style")]);
+        var original = new DocumentOutline
+        {
+            File = "sample.docx",
+            ParagraphCount = 3,
+            CandidateCount = 1,
+            Headings = [],
+            ElapsedMs = 42,
+            Model = "rules-only",
+            DeterministicRoute = "docx-authority-v1",
+        };
+
+        var projected = HeadingOutlineProjection.Project(original, structure);
+
+        Assert.Equal(original.File, projected.File);
+        Assert.Equal(original.ParagraphCount, projected.ParagraphCount);
+        Assert.Equal(original.CandidateCount, projected.CandidateCount);
+        Assert.Equal(original.ElapsedMs, projected.ElapsedMs);
+        Assert.Equal(original.Model, projected.Model);
+        Assert.Equal(original.DeterministicRoute, projected.DeterministicRoute);
+        Assert.Single(projected.Headings);
+    }
+
     private static SourceFacts Source(string id, string text) => new()
     {
         SourceId = id,
