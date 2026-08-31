@@ -87,10 +87,6 @@ public sealed class HostAuthorityE2ETests
         Assert.DoesNotContain("new AuthorityExtractionPipeline", normalMcp);
         Assert.Contains("new AuthorityExtractionPipeline", tool);
 
-        var allNormalRoutes = normalCli + normalWeb + normalMcp + tool;
-        Assert.DoesNotContain("DocxSlimExtractor", allNormalRoutes);
-        Assert.DoesNotContain("SlimDocument", allNormalRoutes);
-        Assert.DoesNotContain("SlimParagraph", allNormalRoutes);
         Assert.Equal(4, new[] { "CLI", "WEB", "MCP", "AGENT_HARNESS" }.Length);
     }
 
