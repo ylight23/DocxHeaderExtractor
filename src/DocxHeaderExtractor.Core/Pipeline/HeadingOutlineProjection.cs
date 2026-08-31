@@ -43,7 +43,8 @@ public static class HeadingOutlineProjection
         ArgumentNullException.ThrowIfNull(structure);
         return structure.OutlineElements
             .Where(element => emittedElementIds is null || emittedElementIds.Contains(element.Id))
-            .OrderBy(element => element.Sources.First().SourceOrdinal)
+            // ValidatedStructure.Elements already carries the producer's canonical order. Sorting
+            // by source ordinal here loses distinct PDF occurrences that share one paragraph.
             .Select(ProjectHeading)
             .ToArray();
     }
