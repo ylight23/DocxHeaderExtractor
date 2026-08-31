@@ -108,8 +108,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                     {
                         await checkpoint.StopAcceptingWritesAndDrainAsync();
                     }
-                    authority = result.StructuralAuthority ??
-                        throw new InvalidOperationException("PDF authority producer returned no generic structural result.");
+                    authority = result.Authority;
                     routeFinalStructure = result.FinalStructure;
                     routeOutputDecisions = result.OutputDecisions;
                     authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);

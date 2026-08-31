@@ -21,17 +21,17 @@ public static class PdfFinancialReportOutline
         @"(?<![A-Za-z])(?:Key\s+)?[A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+){1,5}\s+Activit(?:y|ies)(?![A-Za-z])",
         RegexOptions.Compiled);
 
-    public static PdfTextbookOutlineResult TryBuild(
+    public static PdfCompatibilityHeadingOracle TryBuild(
         string originalInputPath,
         IReadOnlyList<IPolicyParagraph> paragraphs,
         DocumentModeReport mode)
     {
         if (DocumentStructureEvidence.HasNativeSemanticStructure(paragraphs))
-            return PdfTextbookOutlineResult.NotApplicable("docx-structure-present");
+            return new PdfCompatibilityHeadingOracle([], "docx-structure-present");
 
         var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
         if (pdf is null)
-            return PdfTextbookOutlineResult.NotApplicable("no-pdf");
+            return new PdfCompatibilityHeadingOracle([], "no-pdf");
 
         IReadOnlyList<PdfLine> lines;
         try
@@ -41,7 +41,7 @@ public static class PdfFinancialReportOutline
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException)
         {
-            return PdfTextbookOutlineResult.NotApplicable("pdf-read-failed");
+            return new PdfCompatibilityHeadingOracle([], "pdf-read-failed");
         }
 
         var profile = PdfStyleClusterProfile.Learn(
@@ -49,7 +49,7 @@ public static class PdfFinancialReportOutline
             line => LooksLikeFinancialTitle(CleanPdfTitle(line.Text)),
             line => LooksLikeGroupLabel(CleanPdfTitle(line.Text)));
         if (!LooksLikeStructuredPdfReport(lines, profile))
-            return PdfTextbookOutlineResult.NotApplicable("not-structured-pdf-report-layout");
+            return new PdfCompatibilityHeadingOracle([], "not-structured-pdf-report-layout");
 
         var candidates = DetectFinancialHeadings(lines, profile);
         var pdfPageExtent = candidates.Select(candidate => candidate.Page).DefaultIfEmpty(1).Max();
@@ -73,15 +73,16 @@ public static class PdfFinancialReportOutline
         if (candidates.Count < 10 && frameCandidates.Count >= 10)
             candidates = frameCandidates;
         if (candidates.Count < 10)
-            return PdfTextbookOutlineResult.NotApplicable(
+            return new PdfCompatibilityHeadingOracle(
+                [],
                 $"too-few-financial-headings:{candidates.Count}, frame={frameCandidates.Count}, {frameDiagnostic}");
 
         var aligned = AlignToDocx(candidates, paragraphs);
         RecoverTrustFundFrameTitles(aligned, paragraphs);
         if (aligned.Count < Math.Max(10, (int)Math.Ceiling(candidates.Count * 0.55)))
-            return PdfTextbookOutlineResult.NotApplicable($"low-docx-alignment:{aligned.Count}/{candidates.Count}");
+            return new PdfCompatibilityHeadingOracle([], $"low-docx-alignment:{aligned.Count}/{candidates.Count}");
 
-        return new PdfTextbookOutlineResult(
+        return new PdfCompatibilityHeadingOracle(
             aligned,
             $"pdf={Path.GetFileName(pdf)}, aligned={aligned.Count}/{candidates.Count}");
     }

@@ -1410,6 +1410,8 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             rows.Add(new { file = Path.GetFileName(file), status = "route-not-applicable", key = key.Count, reason = result.Reason });
             continue;
         }
+        var resultHeadings = HeadingOutlineProjection.Project(
+            result.Authority.Structure, result.Authority.EmittedElementIds);
         hasPartialTimeout |= string.Equals(audit.SemanticLane?.Status, "partial_timeout", StringComparison.Ordinal) ||
                              string.Equals(audit.SpanLane?.Status, "partial_timeout", StringComparison.Ordinal) ||
                              string.Equals(audit.VisualLane?.Status, "partial_timeout", StringComparison.Ordinal);
@@ -1431,12 +1433,12 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             File = file,
             ParagraphCount = policyState.Paragraphs.Count,
             CandidateCount = audit.CandidatesSelected,
-            Headings = result.Headings,
+            Headings = resultHeadings,
             DeterministicRoute = "auto:pdf-layout-block-grounded",
             RouteAudit = audit,
         };
         var score = Evaluator.Score(file, finalOutline, [], key);
-        var exact = Hits(result.Headings.Select(h => h.Text));
+        var exact = Hits(resultHeadings.Select(h => h.Text));
         // A failed hosted batch is materialized as one Uncertain decision per input so candidate
         // coverage remains auditable. Treat that shape as unavailable only when no raw model reply
         // exists; an actual all-Uncertain reply is still a measured result.
@@ -1472,11 +1474,11 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             408 or 429 or 502 or 503 or 504 => true,
             _ => (bool?)null,
         };
-        var levelHits = truth.Count(e => result.Headings.Any(h => Canon(h.Text) == Canon(e.Text) && h.Level == e.Level));
-        var markerReconstructed = result.Headings
+        var levelHits = truth.Count(e => resultHeadings.Any(h => Canon(h.Text) == Canon(e.Text) && h.Level == e.Level));
+        var markerReconstructed = resultHeadings
             .Where(h => h.BoundarySource == "pdf-marker-span-reconstruction")
             .ToArray();
-        var visualRecovered = result.Headings
+        var visualRecovered = resultHeadings
             .Where(h => h.SourceId?.StartsWith("v-", StringComparison.Ordinal) == true)
             .ToArray();
         var visualRecoveredKeyTitles = truth
@@ -1618,8 +1620,8 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
             },
             levelAccuracy = new { hits = levelHits, total = key.Count },
             final = semanticPartialTimeout
-                ? new { state = "not-measured-partial-run", result = result.Headings.Count, precision = (double?)null, recall = (double?)null, f1 = (double?)null, nav = (double?)null, navLevel = (double?)null }
-                : new { state = "measured", result = result.Headings.Count, precision = (double?)score.Precision, recall = (double?)score.Recall, f1 = (double?)score.F1, nav = (double?)score.NavigationRecall, navLevel = (double?)score.NavigationLevelAccuracy },
+                ? new { state = "not-measured-partial-run", result = resultHeadings.Count, precision = (double?)null, recall = (double?)null, f1 = (double?)null, nav = (double?)null, navLevel = (double?)null }
+                : new { state = "measured", result = resultHeadings.Count, precision = (double?)score.Precision, recall = (double?)score.Recall, f1 = (double?)score.F1, nav = (double?)score.NavigationRecall, navLevel = (double?)score.NavigationLevelAccuracy },
             rawAnalystResponses = o.Pipeline.ShowRawOutput ? audit.RawAnalystResponses : null,
             modelInputContracts = o.Pipeline.ShowRawOutput ? audit.ModelInputContracts : null,
             candidateKeyTitles = o.Pipeline.ShowRawOutput
@@ -1718,13 +1720,15 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
             skipped.Add(new { file = Path.GetFileName(file), status = "route-not-applicable", reason = result.Reason });
             continue;
         }
+        var resultHeadings = HeadingOutlineProjection.Project(
+            result.Authority.Structure, result.Authority.EmittedElementIds);
 
         var row = PdfHierarchyFactsArtifact.BuildRow(Path.GetFileName(file), FileSha256(file), audit.HierarchyFacts,
-            audit.ValidatedStructures, PdfCanonicalGrounding.FromGroundedHeadings(result.Headings),
+            audit.ValidatedStructures, PdfCanonicalGrounding.FromGroundedHeadings(resultHeadings),
             audit.SemanticLane?.Status, semanticLaneOptions, audit.SpanLane?.Status);
         rows.Add(row);
         legacyProductByFile[Path.GetFileName(file)] =
-            PdfLegacyValidatedOutputPolicy.ProjectDocumentOutline(result.Headings, audit.ValidatedStructures);
+            PdfLegacyValidatedOutputPolicy.ProjectDocumentOutline(resultHeadings, audit.ValidatedStructures);
         if (!o.Quiet)
             Console.Error.WriteLine(
                 $"  validated={row.Counters.ValidatedHeadings} markerPath={row.Counters.MarkerPathFacts} " +

@@ -87,7 +87,7 @@ public sealed class PdfR5FrozenProducerReplayTests
                 semanticLaneOptions: new SemanticLaneOptions(
                     TimeSpan.FromSeconds(90), TimeSpan.FromSeconds(120), TimeSpan.FromSeconds(300), 2),
                 includeSemanticHierarchyFallback: true);
-            if (result.FinalStructure is null || result.StructuralAuthority is null)
+            if (result.FinalStructure is null)
             {
                 errors.Add($"{item.Id}:CURRENT_AUTHORITY_MISSING");
                 continue;
@@ -95,7 +95,7 @@ public sealed class PdfR5FrozenProducerReplayTests
 
             var currentProduct = PdfProductOutputSerializer.Serialize(result.FinalStructure, result.OutputDecisions);
             var currentHeadings = HeadingOutlineProjection.Project(
-                result.StructuralAuthority.Structure, result.StructuralAuthority.EmittedElementIds);
+                result.Authority.Structure, result.Authority.EmittedElementIds);
             var baselineStructure = fixture.Oracle.FinalStructure?.Deserialize<PdfFinalStructure>(JsonOptions);
             var baselineDecisions = fixture.Oracle.OutputDecisions?.Deserialize<IReadOnlyList<PdfOutputDecision>>(JsonOptions);
             var baselineProduct = fixture.Oracle.ProductOutput?.Deserialize<PdfProductOutput>(JsonOptions);

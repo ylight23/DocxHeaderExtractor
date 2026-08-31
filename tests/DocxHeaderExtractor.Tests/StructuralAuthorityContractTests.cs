@@ -7,6 +7,21 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class StructuralAuthorityContractTests
 {
     [Fact]
+    public void Pdf_producer_result_is_structural_authority_centric()
+    {
+        var resultType = typeof(PdfTextbookOutlineResult);
+        var authority = resultType.GetProperty(nameof(PdfTextbookOutlineResult.Authority));
+
+        Assert.NotNull(authority);
+        Assert.Equal(typeof(StructuralAuthorityResult), authority.PropertyType);
+        Assert.DoesNotContain(resultType.GetProperties(), property =>
+            typeof(IEnumerable<HeadingRecord>).IsAssignableFrom(property.PropertyType));
+        Assert.DoesNotContain(resultType.GetConstructors(), constructor =>
+            constructor.GetParameters().Any(parameter =>
+                typeof(IEnumerable<HeadingRecord>).IsAssignableFrom(parameter.ParameterType)));
+    }
+
+    [Fact]
     public void One_source_proposed_subspan_materializes_validated_subspan()
     {
         var source = Source("p1", "1 Introduction and body", 0, 23);

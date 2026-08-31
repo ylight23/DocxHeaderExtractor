@@ -8,20 +8,13 @@ using UglyToad.PdfPig;
 namespace DocxHeaderExtractor.Core.Pipeline;
 
 public sealed record PdfTextbookOutlineResult(
-    IReadOnlyList<HeadingRecord> Headings,
+    StructuralAuthorityResult Authority,
     string Reason,
     RouteExecutionAudit? Audit = null)
 {
     /// <summary>
-    /// Native authority for the normal broad PDF route. <see cref="Headings"/> remains temporarily
-    /// available as the old-path shadow oracle while PDF producers migrate to the generic contract.
-    /// </summary>
-    public StructuralAuthorityResult? StructuralAuthority { get; init; }
-
-    /// <summary>
     /// The PDF-specific validated facts retained alongside the generic authority while the
-    /// product serializer is still PDF-aware. This prevents the normal orchestrator from
-    /// rebuilding final structure from the shadow <see cref="Headings"/> list.
+    /// product serializer is still PDF-aware.
     /// </summary>
     public PdfFinalStructure? FinalStructure { get; init; }
 
@@ -29,7 +22,8 @@ public sealed record PdfTextbookOutlineResult(
 
     public IReadOnlyList<Task> DetachedTasks { get; init; } = [];
 
-    public static PdfTextbookOutlineResult NotApplicable(string reason) => new([], reason);
+    public static PdfTextbookOutlineResult NotApplicable(string reason) => new(
+        new StructuralAuthorityResult(new ValidatedStructure([]), null, reason), reason);
 }
 
 /// <summary>
@@ -50,17 +44,17 @@ public static class PdfTextbookOutline
     private static readonly Regex NonAlphaNumRx = new(@"[^a-z0-9]+", RegexOptions.Compiled);
     private static readonly Regex WhitespaceRx = new(@"\s+", RegexOptions.Compiled);
 
-    public static PdfTextbookOutlineResult TryBuild(
+    public static PdfCompatibilityHeadingOracle TryBuild(
         string originalInputPath,
         IReadOnlyList<IPolicyParagraph> paragraphs,
         DocumentModeReport mode)
     {
         if (DocumentStructureEvidence.HasNativeSemanticStructure(paragraphs))
-            return PdfTextbookOutlineResult.NotApplicable("docx-structure-present");
+            return new PdfCompatibilityHeadingOracle([], "docx-structure-present");
 
         var pdf = FindSiblingPdf(originalInputPath);
         if (pdf is null)
-            return PdfTextbookOutlineResult.NotApplicable("no-pdf");
+            return new PdfCompatibilityHeadingOracle([], "no-pdf");
 
         IReadOnlyList<PdfLine> lines;
         try
@@ -70,21 +64,21 @@ public static class PdfTextbookOutline
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException)
         {
-            return PdfTextbookOutlineResult.NotApplicable("pdf-read-failed");
+            return new PdfCompatibilityHeadingOracle([], "pdf-read-failed");
         }
 
         if (!IsFontStrong(lines, out var bodyFont))
-            return PdfTextbookOutlineResult.NotApplicable("pdf-not-font-strong");
+            return new PdfCompatibilityHeadingOracle([], "pdf-not-font-strong");
 
         var pdfHeadings = DetectTextbookHeadings(lines, bodyFont);
         if (pdfHeadings.Count < 10)
-            return PdfTextbookOutlineResult.NotApplicable($"too-few-pdf-headings:{pdfHeadings.Count}");
+            return new PdfCompatibilityHeadingOracle([], $"too-few-pdf-headings:{pdfHeadings.Count}");
 
         var aligned = AlignToDocx(pdfHeadings, paragraphs);
         if (aligned.Count < Math.Max(10, (int)Math.Ceiling(pdfHeadings.Count * 0.60)))
-            return PdfTextbookOutlineResult.NotApplicable($"low-docx-alignment:{aligned.Count}/{pdfHeadings.Count}");
+            return new PdfCompatibilityHeadingOracle([], $"low-docx-alignment:{aligned.Count}/{pdfHeadings.Count}");
 
-        return new PdfTextbookOutlineResult(aligned, $"pdf={Path.GetFileName(pdf)}, bodyFs={bodyFont.ToString("F1", CultureInfo.InvariantCulture)}, aligned={aligned.Count}/{pdfHeadings.Count}");
+        return new PdfCompatibilityHeadingOracle(aligned, $"pdf={Path.GetFileName(pdf)}, bodyFs={bodyFont.ToString("F1", CultureInfo.InvariantCulture)}, aligned={aligned.Count}/{pdfHeadings.Count}");
     }
 
     public static string? FindSiblingPdf(string inputPath)
