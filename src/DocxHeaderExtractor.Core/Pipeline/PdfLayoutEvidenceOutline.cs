@@ -830,6 +830,8 @@ public static class PdfLayoutEvidenceOutline
         {
             StructuralAuthority = new StructuralAuthorityResult(
                 materialized.Structure, audit, auditReason, materialized.EmittedElementIds),
+            FinalStructure = finalStructure,
+            OutputDecisions = decisions,
             DetachedTasks = detachedTasks,
         };
     }

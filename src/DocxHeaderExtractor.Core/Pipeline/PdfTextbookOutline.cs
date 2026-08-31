@@ -18,6 +18,15 @@ public sealed record PdfTextbookOutlineResult(
     /// </summary>
     public StructuralAuthorityResult? StructuralAuthority { get; init; }
 
+    /// <summary>
+    /// The PDF-specific validated facts retained alongside the generic authority while the
+    /// product serializer is still PDF-aware. This prevents the normal orchestrator from
+    /// rebuilding final structure from the shadow <see cref="Headings"/> list.
+    /// </summary>
+    public PdfFinalStructure? FinalStructure { get; init; }
+
+    public IReadOnlyList<PdfOutputDecision> OutputDecisions { get; init; } = [];
+
     public IReadOnlyList<Task> DetachedTasks { get; init; } = [];
 
     public static PdfTextbookOutlineResult NotApplicable(string reason) => new([], reason);

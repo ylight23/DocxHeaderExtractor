@@ -77,6 +77,9 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             RouteExecutionAudit? audit;
             string route;
             string reason;
+            StructuralAuthorityResult? nativeAuthority = null;
+            PdfFinalStructure? routeFinalStructure = null;
+            IReadOnlyList<PdfOutputDecision>? routeOutputDecisions = null;
             var authorityRoute = _routePolicy.Decide(new SourceCapabilities(
                 HasDocx: true,
                 HasPdf: !string.IsNullOrWhiteSpace(pdf),
@@ -106,11 +109,13 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                     {
                         await checkpoint.StopAcceptingWritesAndDrainAsync();
                     }
-                    rawHeadings = result.StructuralAuthority is { } native
-                        ? HeadingOutlineProjection.Project(native.Structure,
-                            native.EmittedElementIds ?? native.Structure.Elements
-                                .Select(element => element.Id).ToHashSet(StringComparer.Ordinal))
-                        : result.Headings;
+                    nativeAuthority = result.StructuralAuthority ??
+                        throw new InvalidOperationException("PDF authority producer returned no generic structural result.");
+                    rawHeadings = HeadingOutlineProjection.Project(nativeAuthority.Structure,
+                        nativeAuthority.EmittedElementIds ?? nativeAuthority.Structure.Elements
+                            .Select(element => element.Id).ToHashSet(StringComparer.Ordinal));
+                    routeFinalStructure = result.FinalStructure;
+                    routeOutputDecisions = result.OutputDecisions;
                     audit = ApplyQuarantine(result.Audit, rawHeadings, quarantinedIndexes, out rawHeadings);
                     route = "pdf-authority-v1";
                     reason = result.Reason;
@@ -136,10 +141,23 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 new ValidatedStructure([]), new HashSet<string>(StringComparer.Ordinal), 0, 0);
             if (audit is not null)
             {
-                var finalStructure = BuildFinalStructure(conversion.Path, audit, rawHeadings);
-                var decisions = PdfOutputDecisionPolicy.Decide(finalStructure);
+                var canUseNativePdf = nativeAuthority is not null && routeFinalStructure is not null &&
+                    (quarantinedIndexes is null || quarantinedIndexes.Count == 0);
+                var finalStructure = canUseNativePdf
+                    ? routeFinalStructure!
+                    : BuildFinalStructure(conversion.Path, audit, rawHeadings);
+                var decisions = canUseNativePdf && routeOutputDecisions is not null
+                    ? routeOutputDecisions!
+                    : PdfOutputDecisionPolicy.Decide(finalStructure);
                 product = PdfProductOutputSerializer.Serialize(finalStructure, decisions);
-                structural = StructuralAuthorityMaterializer.Materialize(finalStructure, decisions);
+                structural = canUseNativePdf
+                    ? new StructuralMaterializationResult(
+                        nativeAuthority.Structure,
+                        nativeAuthority.EmittedElementIds ?? nativeAuthority.Structure.Elements
+                            .Select(element => element.Id).ToHashSet(StringComparer.Ordinal),
+                        0,
+                        0)
+                    : StructuralAuthorityMaterializer.Materialize(finalStructure, decisions);
             }
 
             var headings = HeadingOutlineProjection.Project(
