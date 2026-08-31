@@ -23,10 +23,27 @@ public static class ModelProposalValidator
         HeadingPolicy? policy = null)
     {
         policy ??= new HeadingPolicy();
-        var grounded = source is not null && string.Equals(source.SourceId, proposal.SourceId, StringComparison.Ordinal);
         var isOutlineRole = policy.Includes(proposal.Role);
-        var spanRequired = isOutlineRole;
-        var spanValid = !spanRequired || proposal.HeadingSpan is { } span && source is not null && span.IsValidFor(source.RawText);
+        // Heading proposals now pass through the generic source/span gate. Evidence and marker
+        // checks remain here because they are still specific to the heading proposal contract.
+        var structuralValidation = isOutlineRole && proposal.HeadingSpan is { } headingSpan
+            ? StructuralProposalValidator.Validate(
+                source,
+                new StructuralProposal
+                {
+                    SourceId = proposal.SourceId,
+                    Type = proposal.Role == ProposedRole.DocumentTitle
+                        ? StructuralElementType.Title
+                        : StructuralElementType.Heading,
+                    Role = proposal.Role,
+                    Level = proposal.ProposedLevel,
+                },
+                new StructuralSpan(headingSpan.Start, headingSpan.End))
+            : null;
+        var grounded = structuralValidation?.SourceGrounded ??
+            (source is not null && string.Equals(source.SourceId, proposal.SourceId, StringComparison.Ordinal));
+        var spanValid = structuralValidation?.SpanValid ??
+            (!isOutlineRole || proposal.HeadingSpan is { } span && source is not null && span.IsValidFor(source.RawText));
         var evidenceValid = proposal.SemanticEvidence.Distinct().Count() == proposal.SemanticEvidence.Count &&
                             proposal.VisualEvidence.Distinct().Count() == proposal.VisualEvidence.Count;
         var markerValid = source?.Marker is null || source.Marker.Raw.Length > 0;
