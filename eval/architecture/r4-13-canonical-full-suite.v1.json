@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r4_13_canonical_full_suite",
+  "status": "BLOCKED",
+  "baseRevision": "eb517ab11f427ff60f109573047609809963709b",
+  "round3CanonicalExecutionRevision": "32bb000343361516078f37da63943e5073b678fe",
+  "executionRevision": "eb517ab11f427ff60f109573047609809963709b",
+  "publicationRevision": "containing-closure-commit",
+  "fullSuiteExecuted": true,
+  "excludedTests": 0,
+  "currentSuite": {
+    "total": 807,
+    "passed": 804,
+    "failed": 3,
+    "skipped": 0
+  },
+  "inventory": {
+    "baselineExecutionTotal": 1338,
+    "baselineUniqueTestDefinitions": 1328,
+    "currentExecutionTotal": 807,
+    "currentUniqueTestDefinitions": 801,
+    "unchanged": 796,
+    "retiredByDeletedFile": 514,
+    "migratedOrRenamedProven": 0,
+    "unresolvedRenameCandidates": 18,
+    "added": 5,
+    "unaccounted": 18,
+    "baselineInventorySha256": "A1E511FFCCF8F1AA1FC65D6E0E078ED2E93EF8D1654E2FE1F5B516226C704B06",
+    "currentInventorySha256": "72F23C1EF826FE43F33DC23BF3C34E9F26EB3AE79F967F62C42255DBAB612565",
+    "classificationPolicy": "Exact FQN first; deleted source files are retirement candidates; retained/modified files require explicit replacement FQN mapping."
+  },
+  "staleContract": {
+    "fqn": "DocxHeaderExtractor.Tests.PdfTocDictionaryOutlineTests.PipelineUsesPdfTocDictionaryForIbrdInformationStatement054",
+    "status": "NOT_PROVEN",
+    "expectedRoute": "auto:pdf-toc-dictionary",
+    "actualRoute": "docx-authority-v1",
+    "expectedHeadingCount": 24,
+    "observedHeadingCount": 0,
+    "testExpectationChanged": false
+  },
+  "failureReconciliation": {
+    "baselineFailureUniverse": 30,
+    "stillFailingSameFingerprint": 2,
+    "changedFingerprints": 1,
+    "retiredOrUnresolved": 27,
+    "resolvedByBehavior": 0,
+    "newFailures": 0,
+    "unjoined": 27,
+    "failureUniverseFrozen": false,
+    "currentFailures": [
+      {
+        "fqn": "DocxHeaderExtractor.Tests.PdfC1CrossDocumentRegressionInventoryProbe.IndependentPartialTimeoutEvidenceNowExistsAndWasConsumedByN35",
+        "classification": "STILL_FAILING_SAME_FINGERPRINT"
+      },
+      {
+        "fqn": "DocxHeaderExtractor.Tests.PdfN15RankingLossDiagnosisProbe.CommittedDiagnosisReproducesByteForByte",
+        "classification": "STILL_FAILING_SAME_FINGERPRINT"
+      },
+      {
+        "fqn": "DocxHeaderExtractor.Tests.PdfTocDictionaryOutlineTests.PipelineUsesPdfTocDictionaryForIbrdInformationStatement054",
+        "classification": "CHANGED_FINGERPRINT_SEMANTICS_UNPROVEN"
+      }
+    ]
+  },
+  "staticRetirementGate": {
+    "bannedLegacyRefs": 0,
+    "normalAuthorityLegacyRefs": 0,
+    "hostLegacyFallback": 0,
+    "unknownLegacyRefs": 0
+  },
+  "carriedForwardBehaviorGates": {
+    "diagnosticJoined": 3,
+    "diagnosticDelta": 0,
+    "pdfJoined": 3,
+    "pdfDelta": 0,
+    "hostFingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "hostFingerprintChanged": false
+  },
+  "providerCalls": 0,
+  "unmeasured": 0,
+  "expectedChanged": false,
+  "releaseBuild": "PASS_CARRIED_FROM_R4_12",
+  "rawTrxPublishPolicy": "DO_NOT_PUSH_RAW_TRX",
+  "fullSuite": "EXECUTED",
+  "r4_14": "NOT_AUTHORIZED"
+}
