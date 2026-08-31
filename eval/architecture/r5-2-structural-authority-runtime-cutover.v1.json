@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "round5Checkpoint": "R5-2",
+  "baseRevision": "b3a3d78",
+  "executionRevision": "e2fd747",
+  "publicationRevision": "this publication commit",
+  "shadowParity": "PASS",
+  "oldVsNewHeadingJsonDelta": 0,
+  "productOutputJsonDelta": 0,
+  "titleCompatibilityProjection": "PASS",
+  "subtitleCompatibilityProjection": "PASS",
+  "headingCompatibilityProjection": "PASS",
+  "structuralParentUnjoined": 0,
+  "structuralSourceUnjoined": 0,
+  "normalRuntimePdfProductOutlineAdapterCallers": 0,
+  "cliApiChanged": false,
+  "webApiChanged": false,
+  "mcpApiChanged": false,
+  "hostE2E": "PASS",
+  "hostFingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+  "hostFingerprintChanged": false,
+  "unjoinedHostResults": 0,
+  "providerCalls": 0,
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "focusedTests": {
+    "structuralAuthority": { "total": 9, "passed": 9, "failed": 0, "skipped": 0 },
+    "compatibilityAndProduction": { "total": 16, "passed": 16, "failed": 0, "skipped": 0 },
+    "hostAuthority": { "total": 2, "passed": 2, "failed": 0, "skipped": 0 }
+  },
+  "fullSuite": "NOT_RUN",
+  "r5_3": "AUTHORIZED"
+}
