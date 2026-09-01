@@ -75,11 +75,88 @@ public sealed record RetrievalHit(
     [property: JsonPropertyName("structuralContext")] IReadOnlyList<StructuralContextItem> StructuralContext,
     [property: JsonPropertyName("relations")] IReadOnlyList<StructuralRelation> Relations);
 
-/// <summary>Source-backed input context for a future fact proposal/validation pipeline.</summary>
-public sealed record FactExtractionContext(
-    [property: JsonPropertyName("sourceText")] string SourceText,
-    [property: JsonPropertyName("sectionPath")] IReadOnlyList<string> SectionPath,
-    [property: JsonPropertyName("nearbyStructuralElements")] IReadOnlyList<StructuralContextItem> NearbyStructuralElements,
-    [property: JsonPropertyName("figureTableContext")] IReadOnlyList<StructuralContextItem> FigureTableContext,
-    [property: JsonPropertyName("sourceIds")] IReadOnlyList<string> SourceIds,
-    [property: JsonPropertyName("structuralElementIds")] IReadOnlyList<string> StructuralElementIds);
+/// <summary>Canonical source excerpt metadata exposed to the fact proposal boundary.</summary>
+public sealed record FactSourceExcerpt(
+    [property: JsonPropertyName("sourceId")] string SourceId,
+    [property: JsonPropertyName("sourceOrdinal")] int SourceOrdinal,
+    [property: JsonPropertyName("text")] string Text);
+
+/// <summary>Source-backed input context for a fact proposal/validation pipeline.</summary>
+public sealed record FactExtractionContext
+{
+    // Compatibility constructor for existing IE consumers that do not yet carry document IDs.
+    public FactExtractionContext(
+        string sourceText,
+        IReadOnlyList<string> sectionPath,
+        IReadOnlyList<StructuralContextItem> nearbyStructuralElements,
+        IReadOnlyList<StructuralContextItem> figureTableContext,
+        IReadOnlyList<string> sourceIds,
+        IReadOnlyList<string> structuralElementIds)
+        : this(
+            null,
+            null,
+            null,
+            sourceText,
+            sectionPath,
+            nearbyStructuralElements,
+            figureTableContext,
+            sourceIds,
+            structuralElementIds,
+            [])
+    {
+    }
+
+    public FactExtractionContext(
+        string? documentId,
+        string? chunkId,
+        string? sectionId,
+        string sourceText,
+        IReadOnlyList<string> sectionPath,
+        IReadOnlyList<StructuralContextItem> nearbyStructuralElements,
+        IReadOnlyList<StructuralContextItem> figureTableContext,
+        IReadOnlyList<string> sourceIds,
+        IReadOnlyList<string> structuralElementIds,
+        IReadOnlyList<FactSourceExcerpt> sourceUnits)
+    {
+        DocumentId = documentId;
+        ChunkId = chunkId;
+        SectionId = sectionId;
+        SourceText = sourceText;
+        SectionPath = sectionPath;
+        NearbyStructuralElements = nearbyStructuralElements;
+        FigureTableContext = figureTableContext;
+        SourceIds = sourceIds;
+        StructuralElementIds = structuralElementIds;
+        SourceUnits = sourceUnits;
+    }
+
+    [JsonPropertyName("documentId")]
+    public string? DocumentId { get; }
+
+    [JsonPropertyName("chunkId")]
+    public string? ChunkId { get; }
+
+    [JsonPropertyName("sectionId")]
+    public string? SectionId { get; }
+
+    [JsonPropertyName("sourceText")]
+    public string SourceText { get; }
+
+    [JsonPropertyName("sectionPath")]
+    public IReadOnlyList<string> SectionPath { get; }
+
+    [JsonPropertyName("nearbyStructuralElements")]
+    public IReadOnlyList<StructuralContextItem> NearbyStructuralElements { get; }
+
+    [JsonPropertyName("figureTableContext")]
+    public IReadOnlyList<StructuralContextItem> FigureTableContext { get; }
+
+    [JsonPropertyName("sourceIds")]
+    public IReadOnlyList<string> SourceIds { get; }
+
+    [JsonPropertyName("structuralElementIds")]
+    public IReadOnlyList<string> StructuralElementIds { get; }
+
+    [JsonPropertyName("sourceUnits")]
+    public IReadOnlyList<FactSourceExcerpt> SourceUnits { get; }
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r7_generic_fact_authority",
+  "status": "PASS",
+  "round": "ROUND7",
+  "baseRevision": "b747c92d50c0597c268790f553d4e5ddf9d1a414",
+  "executionRevision": "c4360da15a668ec58888e202d177781d08760710",
+  "publicationRevision": "containing-closure-commit",
+  "contracts": {
+    "proposalContainsModelValue": false,
+    "factValueFromSourceSlicePercent": 100,
+    "factIdIndependentFromProposalId": true,
+    "factIdIndependentFromSourceId": true,
+    "schemaCoreDomainHardcode": 0,
+    "proposalDirectAuthority": 0,
+    "modelValueAuthority": 0,
+    "confidenceAuthority": 0
+  },
+  "authorityGates": {
+    "sourceUnjoined": 0,
+    "contextUnjoined": 0,
+    "spanInvalidAccepted": 0,
+    "crossContextEvidenceAccepted": 0,
+    "semanticPolicyBypass": 0,
+    "withoutSemanticPolicyAccepted": 0,
+    "validatedFacts": 1,
+    "expectedRejections": 1,
+    "validatedFactStructuralUnjoined": 0,
+    "ieContextSourceBackedPercent": 100
+  },
+  "rejectionMatrix": {
+    "unknownSchemaAccepted": 0,
+    "unknownFieldAccepted": 0,
+    "missingRequiredFieldAccepted": 0,
+    "duplicateFieldAccepted": 0,
+    "unknownSourceAccepted": 0,
+    "outOfRangeSpanAccepted": 0,
+    "sourceOutsideChunkAccepted": 0,
+    "semanticRejectedAccepted": 0,
+    "noSemanticPolicyAccepted": 0
+  },
+  "compatibility": {
+    "replays": ["028", "056", "091"],
+    "replayJoined": 3,
+    "extractionOutputDelta": 0,
+    "searchIndexOutputDelta": 0,
+    "retrievalRuntimeDelta": 0,
+    "hostFingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "hostFingerprintChanged": false,
+    "externalProviderCalls": 0
+  },
+  "dependencies": {
+    "elasticsearch": 0,
+    "embedding": 0,
+    "vectorDb": 0,
+    "llmFactProvider": 0
+  },
+  "focusedTests": {
+    "total": 93,
+    "passed": 93,
+    "failed": 0,
+    "skipped": 0
+  },
+  "fullSuite": {
+    "executed": true,
+    "total": 876,
+    "passed": 874,
+    "failed": 2,
+    "skipped": 0,
+    "frozenFailures": ["C1", "N15"],
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "expectedChanged": false,
+  "r7a": "PASS",
+  "r7b": "PASS",
+  "r7c": "PASS",
+  "r7d": "PASS",
+  "r7e": "PASS",
+  "r7f": "PASS",
+  "next": "round8_fact_proposal_producers"
+}

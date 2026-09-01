@@ -17,6 +17,9 @@ public sealed class DocumentConsumerProjectionTests
         Assert.Equal(result.Chunks[0].Text, retrieval.Text);
         Assert.Equal(result.Chunks[0].Text, index.Text);
         Assert.Equal(result.Chunks[0].Text, ie.SourceText);
+        Assert.Equal("doc-1", ie.DocumentId);
+        Assert.Equal(result.Chunks[0].Id, ie.ChunkId);
+        Assert.Equal(result.Chunks[0].SourceIds, ie.SourceUnits.Select(unit => unit.SourceId));
         Assert.Equal(["h1"], retrieval.SectionPath);
         Assert.Equal(retrieval.SectionPath, index.SectionPath);
         Assert.Equal(result.Chunks[0].SourceIds, retrieval.SourceIds);
