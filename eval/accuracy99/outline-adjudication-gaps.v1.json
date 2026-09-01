@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy99_outline_adjudication_gaps",
+  "baseRevision": "732c3505afc5dd312423ed0fa58056192fb39608",
+  "blindHoldout": "NOT_AVAILABLE",
+  "gaps": [
+    {
+      "gap": "reviewed_exhaustive_negative_labels",
+      "status": "MISSING",
+      "impact": "precision_not_measurable"
+    },
+    {
+      "gap": "parser_owned_exact_gold_spans",
+      "status": "MISSING",
+      "impact": "exact_span_and_strict_recall_not_measurable"
+    },
+    {
+      "gap": "gold_parent_relations",
+      "status": "MISSING",
+      "impact": "parent_and_hierarchy_not_measurable"
+    },
+    {
+      "gap": "blind_holdout",
+      "status": "NOT_AVAILABLE",
+      "impact": "holdout_generalization_not_measurable"
+    }
+  ],
+  "selectedNegativeAdjudication": {
+    "artifact": "eval/accuracy-round6/selected-cohort-negative-adjudication.v1.json",
+    "occurrenceCount": 560,
+    "labelsFrozen": false,
+    "usableForPrecision": false
+  }
+}

@@ -1,0 +1,354 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy99_outline_dataset_inventory",
+  "baseRevision": "732c3505afc5dd312423ed0fa58056192fb39608",
+  "selectedDatasets": [
+    {
+      "id": "010",
+      "labelClass": "HUMAN_GOLD",
+      "document": "todo10_8/generated-docx/01_phap_quy/010_Luat_An_ninh_mang_24-2018-QH14.docx",
+      "key": "keys/rebased/010_Luat_An_ninh_mang_24-2018-QH14.v2-regenerated-docx.key",
+      "complete": true,
+      "notes": "full human legal key; rebased to this DOCX"
+    },
+    {
+      "id": "025",
+      "labelClass": "HUMAN_GOLD",
+      "document": "todo10_8/generated-docx/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+      "key": "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+      "complete": true,
+      "notes": "full human legal key; duplicate paragraph anchors require text disambiguation"
+    },
+    {
+      "id": "051",
+      "labelClass": "HUMAN_GOLD",
+      "document": "todo10_8/generated-docx/03_tai_chinh_ke_toan/051_WBG_Trust_Fund_FIS_June_2024.docx",
+      "key": "keys/partial-human/051_WBG_Trust_Fund_FIS_June_2024.key",
+      "complete": true,
+      "notes": "user-confirmed full page-title key; exact source spans not recorded"
+    },
+    {
+      "id": "052",
+      "labelClass": "HUMAN_GOLD",
+      "document": "todo10_8/generated-docx/03_tai_chinh_ke_toan/052_WBG_Trust_Fund_FIS_December_2025.docx",
+      "key": "keys/partial-human/052_WBG_Trust_Fund_FIS_December_2025.key",
+      "complete": true,
+      "notes": "user-confirmed full page-title key; exact source spans not recorded"
+    },
+    {
+      "id": "056",
+      "labelClass": "HUMAN_GOLD",
+      "document": "todo10_8/generated-docx/04_giao_trinh/056_OpenStax_Business_Law_I_Essentials.docx",
+      "key": "keys/typed-human/056_OpenStax_Business_Law_I_Essentials.key",
+      "complete": true,
+      "notes": "reviewed typed-numbering key; exact source spans not recorded"
+    },
+    {
+      "id": "063",
+      "labelClass": "HUMAN_GOLD",
+      "document": "todo10_8/generated-docx/04_giao_trinh/063_Advanced_Linear_Algebra.docx",
+      "key": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+      "complete": true,
+      "notes": "user-confirmed full TOC key; exact source spans not recorded"
+    },
+    {
+      "id": "092",
+      "labelClass": "HUMAN_GOLD",
+      "document": "todo10_8/generated-docx/07_system_generated/092_RFC9111_HTTP_Caching.docx",
+      "key": "keys/rebased/092_RFC9111_HTTP_Caching.v2-regenerated-docx.key",
+      "complete": true,
+      "notes": "reviewed RFC key rebased to this DOCX"
+    }
+  ],
+  "trackedKeyAndLabelArtifacts": {
+    "total": 58,
+    "classCounts": {
+      "HUMAN_GOLD": 27,
+      "UNKNOWN": 16,
+      "REVIEWED_SILVER": 2,
+      "PIPELINE_DERIVED": 13
+    },
+    "files": [
+      {
+        "path": "keys/bao-cao-thuc-tap.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/benchmark-n0/bootstrap.json",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/benchmark-n0/manifest.json",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/benchmark-n3/manifest.v1.json",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/benchmark-n3/manifest.v2.json",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/benchmark-round-2/manifest.json",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/format-driven-human/073_FORTIS_GC_Minutes_Mar_2026.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/format-driven-human/074_FORTIS_GC_Minutes_Nov27_2024.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/format-driven-human/075_FORTIS_GC_Minutes_Nov21_2024.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/format-driven-human/080_ICP_Governing_Board_Minutes_Feb_2023.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/hierarchy/076_ICP_IACG08_Minutes_2023.hierarchy.json",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/kltn-style.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/legal-human/010_Luat_An_ninh_mang_24-2018-QH14.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/occurrence-bridge/001_Bo_luat_Dan_su_91-2015-QH13.occurrence-bridge.json",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/occurrence-bridge/028_WB_RFB_Works_Without_Prequal_2017.occurrence-bridge.json",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/occurrence-bridge/041_IBRD_Financial_Statements_June_2025.occurrence-bridge.json",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/occurrence-bridge/054_IBRD_Information_Statement_FY25.occurrence-bridge.json",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/occurrence-bridge/056_OpenStax_Business_Law_I_Essentials.occurrence-bridge.json",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/partial-human/051_WBG_Trust_Fund_FIS_June_2024.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/partial-human/052_WBG_Trust_Fund_FIS_December_2025.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/partial-human/057_Quantitative_Methods_in_Finance_Lecture_Notes.key",
+        "labelClass": "REVIEWED_SILVER"
+      },
+      {
+        "path": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/plph1-dqp.outline",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/rebased/010_Luat_An_ninh_mang_24-2018-QH14.v2-regenerated-docx.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/rebased/010_Luat_An_ninh_mang_24-2018-QH14.v2-regenerated-docx.provenance.json",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/rebased/026_WB_RFB_Goods_One_Envelope_2017.v2-regenerated-docx.provenance.json",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/rebased/054_IBRD_Information_Statement_FY25.v3-occurrence-reviewed.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/rebased/054_IBRD_Information_Statement_FY25.v3-occurrence-reviewed.provenance.json",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/rebased/076_ICP_IACG08_Minutes_2023.v2-regenerated-docx.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/rebased/076_ICP_IACG08_Minutes_2023.v2-regenerated-docx.provenance.json",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/rebased/092_RFC9111_HTTP_Caching.v2-regenerated-docx.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/rebased/092_RFC9111_HTTP_Caching.v2-regenerated-docx.provenance.json",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.provenance.json",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/rebased/m712/092_RFC9111_HTTP_Caching.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/rebased/m712/092_RFC9111_HTTP_Caching.provenance.json",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/superseded/054_IBRD_Information_Statement_FY25.key",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/superseded/054_IBRD_Information_Statement_FY25.provenance.json",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/superseded/054_IBRD_Information_Statement_FY25.v2-regenerated-docx.key",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/superseded/054_IBRD_Information_Statement_FY25.v2-regenerated-docx.provenance.json",
+        "labelClass": "UNKNOWN"
+      },
+      {
+        "path": "keys/tagged-pdf-coverage/076_ICP_IACG08_Minutes_2023.key",
+        "labelClass": "PIPELINE_DERIVED"
+      },
+      {
+        "path": "keys/tagged-pdf-coverage/076_ICP_IACG08_Minutes_2023.provenance.json",
+        "labelClass": "PIPELINE_DERIVED"
+      },
+      {
+        "path": "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+        "labelClass": "PIPELINE_DERIVED"
+      },
+      {
+        "path": "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.provenance.json",
+        "labelClass": "PIPELINE_DERIVED"
+      },
+      {
+        "path": "keys/toc-derived/026_WB_RFB_Goods_One_Envelope_2017.key",
+        "labelClass": "PIPELINE_DERIVED"
+      },
+      {
+        "path": "keys/toc-derived/027_WB_RFB_NonConsulting_2021.key",
+        "labelClass": "PIPELINE_DERIVED"
+      },
+      {
+        "path": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+        "labelClass": "PIPELINE_DERIVED"
+      },
+      {
+        "path": "keys/toc-derived/033_WB_EPC_Turnkey_TwoStage_2025.key",
+        "labelClass": "PIPELINE_DERIVED"
+      },
+      {
+        "path": "keys/toc-derived/036_WB_Plant_SingleStage_2025.key",
+        "labelClass": "PIPELINE_DERIVED"
+      },
+      {
+        "path": "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+        "labelClass": "PIPELINE_DERIVED"
+      },
+      {
+        "path": "keys/toc-derived/038_WB_Works_DB_SingleStage_NoSEASH_2025.key",
+        "labelClass": "PIPELINE_DERIVED"
+      },
+      {
+        "path": "keys/toc-derived/039_WB_EPC_Turnkey_SingleStage_2025.key",
+        "labelClass": "PIPELINE_DERIVED"
+      },
+      {
+        "path": "keys/toc-derived/040_WB_Works_DB_SingleStage_2023.key",
+        "labelClass": "PIPELINE_DERIVED"
+      },
+      {
+        "path": "keys/typed-human/054_IBRD_Information_Statement_FY25.key",
+        "labelClass": "REVIEWED_SILVER"
+      },
+      {
+        "path": "keys/typed-human/056_OpenStax_Business_Law_I_Essentials.key",
+        "labelClass": "HUMAN_GOLD"
+      },
+      {
+        "path": "keys/typed-human/092_RFC9111_HTTP_Caching.key",
+        "labelClass": "HUMAN_GOLD"
+      }
+    ]
+  },
+  "evalArtifacts": {
+    "exists": true,
+    "total": 265,
+    "byTopLevelDirectory": {
+      "accuracy": 12,
+      "accuracy-evidence-expansion": 1,
+      "accuracy-procurement-recurrence": 3,
+      "accuracy-round1": 6,
+      "accuracy-round1f": 1,
+      "accuracy-round2": 3,
+      "accuracy-round3": 1,
+      "accuracy-round4": 9,
+      "accuracy-round5": 1,
+      "accuracy-round6": 9,
+      "accuracy99": 4,
+      "architecture": 68,
+      "benchmark-n0": 54,
+      "benchmark-n3": 28,
+      "consolidation": 5,
+      "integration": 19,
+      "manual-labels": 4,
+      "performance": 1,
+      "reconciliation": 7,
+      "regression": 1,
+      "verification": 28
+    }
+  },
+  "testArtifacts": {
+    "totalCsFiles": 221,
+    "accuracyRelatedCsFiles": [
+      "tests/DocxHeaderExtractor.Tests/ParentAccuracyTests.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfAccuracyRegressionHarnessContractProbe.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfC15SpanFirstLossEvaluatorProbe.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfCandidateGenerationFirstLossProbe.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfD1CandidateSelectionFirstLossProbe.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfFirstLossLedgerProbe.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfRankingFirstLossProbe.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfRound1UnresolvedFirstLossProbe.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfRound6SemanticFirstLossLedgerProbe.cs",
+      "tests/DocxHeaderExtractor.Tests/PdfTableLikeFirstLossProbe.cs"
+    ]
+  },
+  "sourceLabelRoots": {
+    "gold": false,
+    "silver": false
+  },
+  "blindHoldout": "NOT_AVAILABLE",
+  "policy": "Only explicit reviewed labels are eligible; pipeline-derived and unlabeled silver artifacts are retained as inventory, never promoted to gold."
+}
