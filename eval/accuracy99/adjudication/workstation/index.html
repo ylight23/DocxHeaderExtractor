@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accuracy-99 local adjudication workstation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">ACCURACY-99 · PHASE C1.5</p>
+      <h1>Local human adjudication workstation</h1>
+      <p class="subtitle">Offline source-first review. Human labels only; no model, provider, or production prediction is loaded.</p>
+    </div>
+    <div class="toolbar">
+      <label class="button primary" for="packetFiles">Load packet(s)</label>
+      <input id="packetFiles" type="file" accept=".jsonl,.json,.txt" multiple hidden>
+      <button id="exportCurrent" type="button">Export current</button>
+      <button id="exportAll" type="button">Export all</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <section class="panel">
+        <h2>Packets</h2>
+        <p id="emptyState" class="muted">Load one or more <code>.review.jsonl</code> packets to begin.</p>
+        <div id="packetList" class="packet-list"></div>
+      </section>
+      <section class="panel progress-panel">
+        <h2>Progress</h2>
+        <div id="progressSummary" class="muted">No packet loaded.</div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+        <dl id="counts" class="counts"></dl>
+      </section>
+    </aside>
+
+    <section class="workspace">
+      <div id="notice" class="notice" role="status" aria-live="polite"></div>
+      <div id="reviewView" hidden>
+        <section class="panel review-header">
+          <div>
+            <p id="documentLabel" class="eyebrow"></p>
+            <h2 id="occurrenceTitle">Occurrence</h2>
+            <p id="sourceIdentity" class="mono"></p>
+          </div>
+          <div class="navigation">
+            <label class="filter-label">Show
+              <select id="filter">
+                <option value="ALL">All occurrences</option>
+                <option value="UNREVIEWED">Unreviewed only</option>
+                <option value="HEADING">HEADING only</option>
+                <option value="UNCERTAIN">UNCERTAIN only</option>
+                <option value="REVIEW_REQUIRED">Historical REVIEW_REQUIRED</option>
+                <option value="AMBIGUOUS">Historical AMBIGUOUS</option>
+              </select>
+            </label>
+            <button id="previous" type="button" title="Previous (Left arrow)">← Previous</button>
+            <span id="position" class="position"></span>
+            <button id="next" type="button" title="Next (Right arrow)">Next →</button>
+          </div>
+        </section>
+
+        <section class="panel source-panel">
+          <div class="section-heading"><h2>Source-first evidence</h2><span id="provenance" class="badge"></span></div>
+          <dl id="metadata" class="metadata"></dl>
+          <div class="context-grid">
+            <div><h3>Previous occurrence</h3><pre id="previousText" class="context"></pre></div>
+            <div><h3>Next occurrence</h3><pre id="nextText" class="context"></pre></div>
+          </div>
+          <h3>Raw source text · select exact heading span here</h3>
+          <pre id="rawText" class="raw-text" tabindex="0"></pre>
+          <div class="span-tools">
+            <button id="useSelection" type="button">Use selected text as heading span</button>
+            <button id="clearHeadingFields" type="button" class="quiet">Clear heading fields</button>
+            <span id="selectionHint" class="muted">Select text with the mouse, then apply it.</span>
+          </div>
+        </section>
+
+        <section class="panel decision-panel">
+          <div class="section-heading"><h2>Human decision</h2><span class="shortcut-help">H heading · N non-heading · U uncertain · X excluded</span></div>
+          <div id="labelButtons" class="label-buttons">
+            <button data-label="HEADING" type="button" class="label heading">H · HEADING</button>
+            <button data-label="NON_HEADING" type="button" class="label non-heading">N · NON_HEADING</button>
+            <button data-label="UNCERTAIN" type="button" class="label uncertain">U · UNCERTAIN</button>
+            <button data-label="EXCLUDED" type="button" class="label excluded">X · EXCLUDED</button>
+          </div>
+          <p id="labelStatus" class="decision-status">No label selected.</p>
+          <div class="field-row reviewer-row">
+            <label>Reviewer <input id="reviewer" type="text" placeholder="Enter your name or ID"></label>
+          </div>
+
+          <div id="headingFields" class="heading-fields" hidden>
+            <div class="field-row">
+              <label>Heading start <input id="headingStart" type="number" min="0"></label>
+              <label>Heading end <input id="headingEnd" type="number" min="1"></label>
+              <label>Structural type
+                <select id="structuralType">
+                  <option value="">Select…</option>
+                  <option>Title</option><option>Subtitle</option><option>Heading</option>
+                  <option>ListItem</option><option>Caption</option><option>TableTitle</option>
+                  <option>FigureTitle</option><option>Figure</option><option>Table</option>
+                </select>
+              </label>
+            </div>
+            <p><strong>Heading text:</strong> <code id="headingText">Not selected.</code></p>
+            <div class="field-row">
+              <label>Level
+                <input id="level" type="number" min="1" placeholder="1–9">
+              </label>
+              <label class="checkbox-label"><input id="levelNotReviewed" type="checkbox"> LEVEL_NOT_REVIEWED</label>
+            </div>
+            <div class="parent-row">
+              <label>Parent
+                <select id="parentStatus">
+                  <option value="">Select…</option>
+                  <option value="ROOT">ROOT</option>
+                  <option value="PARENT_UNKNOWN">PARENT_UNKNOWN</option>
+                  <option value="PARENT_REVIEWED">PARENT_REVIEWED</option>
+                </select>
+              </label>
+              <label id="parentIdLabel" hidden>Reviewed parent
+                <select id="parentGoldId"><option value="">Select heading…</option></select>
+              </label>
+            </div>
+          </div>
+          <label class="notes-label">Review notes
+            <textarea id="reviewNotes" rows="3" placeholder="Optional human review note"></textarea>
+          </label>
+          <div id="validation" class="validation" role="alert"></div>
+        </section>
+
+        <section class="panel document-status-panel">
+          <div class="section-heading"><h2>Document readiness</h2><div class="toolbar"><button id="validatePacket" type="button">Validate packet</button><button id="markComplete" type="button">Mark REVIEW_COMPLETE</button></div></div>
+          <div id="documentStatus"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

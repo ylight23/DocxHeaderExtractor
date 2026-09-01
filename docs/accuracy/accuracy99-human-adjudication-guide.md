@@ -14,3 +14,14 @@ Every reviewed row requires `reviewer`. Non-heading labels must leave every head
 After all rows are complete, change the manifest `reviewStatus` to `REVIEW_COMPLETE` and run the importer with `--import-reviews=<directory>`. A discrepancy pass may preserve `initialAdjudicatedLabel`, then set `finalAdjudicatedLabel` plus `resolutionReason`; it must never overwrite the initial label silently.
 
 `--refresh-review-packets` is only for regenerating untouched blank packets. The runner refuses to refresh any packet containing human input. A frozen `development-gold.v1.json` is immutable; corrections require a new explicit dataset version.
+
+## Local workstation
+
+For practical review, open `eval/accuracy99/adjudication/workstation/index.html` in a modern browser. Load one or more `*.review.jsonl` packets; the workstation keeps edits in memory and never overwrites the source packet.
+
+1. Use `H`, `N`, `U`, or `X` to classify the current occurrence. Use the arrow keys to move.
+2. For `HEADING`, select the exact substring in the raw source panel and apply it as the heading span.
+3. Set structural type, level state, parent state, reviewer, and optional notes.
+4. Use the filters and progress counters to find unreviewed or special-provenance rows; filters only change navigation and never remove rows from the packet.
+5. Run **Validate packet**, resolve every issue, then mark `REVIEW_COMPLETE` and export the completed JSONL.
+6. Return the exported files for Phase C2 import. Do not create or infer labels for rows that have not been reviewed.
