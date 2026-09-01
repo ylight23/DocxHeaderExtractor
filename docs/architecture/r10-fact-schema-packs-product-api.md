@@ -50,5 +50,5 @@ The exact execution full suite measured `907 total / 905 passed / 2 failed / 0 s
 failures are frozen `C1` and `N15`; new failures, changed fingerprints, and unjoined failures are
 all `0`. The full suite was run once at the integrated execution revision.
 
-`R10A-I = PASS`  
+`R10A-I = PASS`
 `ROUND10 = MERGE_READY`
