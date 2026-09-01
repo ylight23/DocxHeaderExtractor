@@ -15,7 +15,10 @@ public static class FactProposalModelRequestBuilder
             request.RequestId,
             request.Context.ChunkId!,
             request.Schema,
-            request.Context.SourceUnits);
+            request.Context.SourceUnits)
+        {
+            OffsetSources = FactProposalOffsetMapBuilder.Build(request.Context.SourceUnits),
+        };
     }
 }
 
@@ -185,13 +188,20 @@ public sealed class FactProposalModelProducer : IFactProposalProducer
 {
     private readonly string _producerId;
     private readonly IFactProposalModel _model;
+    private readonly int? _maximumSourceCharacters;
 
-    public FactProposalModelProducer(string producerId, IFactProposalModel model)
+    public FactProposalModelProducer(
+        string producerId,
+        IFactProposalModel model,
+        int? maximumSourceCharacters = null)
     {
         _producerId = string.IsNullOrWhiteSpace(producerId)
             ? throw new ArgumentException("Producer ID is required.", nameof(producerId))
             : producerId;
         _model = model ?? throw new ArgumentNullException(nameof(model));
+        if (maximumSourceCharacters is <= 0)
+            throw new ArgumentOutOfRangeException(nameof(maximumSourceCharacters));
+        _maximumSourceCharacters = maximumSourceCharacters;
     }
 
     public async Task<FactProposalProductionResult> ProduceAsync(
@@ -202,6 +212,12 @@ public sealed class FactProposalModelProducer : IFactProposalProducer
         try
         {
             var modelRequest = FactProposalModelRequestBuilder.Build(request);
+            modelRequest = modelRequest with
+            {
+                OffsetSources = FactProposalOffsetMapBuilder.Build(
+                    request.Context.SourceUnits,
+                    _maximumSourceCharacters),
+            };
             var rawJson = await _model.CompleteAsync(modelRequest, cancellationToken).ConfigureAwait(false);
             var proposals = FactProposalModelResponseParser.Parse(rawJson, modelRequest)
                 .Select(proposal => new ProducedFactProposal(
