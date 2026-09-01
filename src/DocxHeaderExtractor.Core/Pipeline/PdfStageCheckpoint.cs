@@ -16,7 +16,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
     private TaskCompletionSource _writesIdle = CompletedSource();
     private readonly HashSet<string> _completedVisualRegions = new(StringComparer.Ordinal);
     private readonly List<PdfVisualRecoveryTrace> _completedVisualTraces = [];
-    private readonly Dictionary<string, (PdfBlockRole Role, double Confidence, string Reason, PdfSemanticRole SemanticRole)> _semanticDecisions = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, (PdfBlockRole Role, double Confidence, string Reason, PdfSemanticRole SemanticRole, TextOffsetSpan? ProposedSourceSpan)> _semanticDecisions = new(StringComparer.Ordinal);
     private int _activeWrites;
     private bool _acceptWrites = true;
     private int _disposed;
@@ -65,8 +65,14 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
                                            Enum.TryParse<PdfSemanticRole>(semanticRoleProperty.GetString(), true, out var parsedSemanticRole)
                             ? parsedSemanticRole
                             : PdfSemanticRole.Unknown;
+                        TextOffsetSpan? proposedSourceSpan = null;
+                        if (block.TryGetProperty("sourceSpan", out var sourceSpan) &&
+                            sourceSpan.ValueKind == JsonValueKind.Object &&
+                            sourceSpan.TryGetProperty("start", out var start) && start.TryGetInt32(out var startValue) &&
+                            sourceSpan.TryGetProperty("end", out var end) && end.TryGetInt32(out var endValue))
+                            proposedSourceSpan = new TextOffsetSpan(startValue, endValue);
                         if (!string.IsNullOrWhiteSpace(id) && Enum.TryParse<PdfBlockRole>(role, true, out var parsedRole))
-                            _semanticDecisions[id] = (parsedRole, confidence, reason, semanticRole);
+                            _semanticDecisions[id] = (parsedRole, confidence, reason, semanticRole, proposedSourceSpan);
                     }
                 }
             }
@@ -80,7 +86,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
     public IReadOnlySet<string> CompletedVisualRegions => _completedVisualRegions;
     public IReadOnlyList<PdfVisualRecoveryTrace> CompletedVisualTraces => _completedVisualTraces;
 
-    public bool TryGetSemanticDecision(string blockId, out (PdfBlockRole Role, double Confidence, string Reason, PdfSemanticRole SemanticRole) decision) =>
+    public bool TryGetSemanticDecision(string blockId, out (PdfBlockRole Role, double Confidence, string Reason, PdfSemanticRole SemanticRole, TextOffsetSpan? ProposedSourceSpan) decision) =>
         _semanticDecisions.TryGetValue(blockId, out decision);
 
     /// <summary>
@@ -146,6 +152,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
                     lineIds,
                     role = d.Role.ToString(),
                     semanticRole = d.SemanticRole.ToString(),
+                    sourceSpan = d.ProposedSourceSpan,
                     d.Confidence,
                     d.Reason,
                 };

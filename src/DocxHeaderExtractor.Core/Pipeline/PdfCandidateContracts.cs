@@ -1,8 +1,17 @@
 ﻿using System.Collections.Immutable;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Pipeline;
+
+internal sealed record PdfStructuralContainerObservation(
+    string ContainerId,
+    StructuralElementType Type,
+    string SourceId,
+    StructuralSpan Span,
+    IReadOnlyList<string> MemberSourceIds,
+    string Evidence);
 
 /// <summary>
 /// Immutable facts observed by the PDF parser and layout filter. Model output is deliberately
@@ -39,6 +48,9 @@ internal sealed record PdfSourceFacts(
     public string? ScopeTargetDocument { get; init; }
     public bool InsideQuote { get; init; }
     public string? AmendmentOperation { get; init; }
+
+    /// <summary>Parser/layout-owned container observations; semantic labels cannot create these.</summary>
+    public IReadOnlyList<PdfStructuralContainerObservation> LayoutContainers { get; init; } = [];
 }
 
 internal sealed record PdfObservedEvidence(string Kind, string Value, string Origin);
@@ -249,7 +261,17 @@ internal static class PdfCandidateContextBuilder
                     : item.StartsWith("marker:", StringComparison.Ordinal) ? "marker_parser" : "scope_detector")).ToArray(),
         };
         var domainEvidence = DocumentDomainPolicy.Observe(facts, regime);
-        return facts with { DomainRole = domainEvidence.Role, DomainEvidence = domainEvidence };
+        var layoutContainers = scope == "table"
+            ? new[] { new PdfStructuralContainerObservation(
+                "table:" + block.Id, StructuralElementType.Table, block.Id,
+                new StructuralSpan(0, block.Text.Length), [block.Id], "table_like_layout") }
+            : Array.Empty<PdfStructuralContainerObservation>();
+        return facts with
+        {
+            DomainRole = domainEvidence.Role,
+            DomainEvidence = domainEvidence,
+            LayoutContainers = layoutContainers,
+        };
     }
 
     private static string LineKey(PdfLine line) => string.Create(

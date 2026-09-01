@@ -826,12 +826,13 @@ public static class PdfLayoutEvidenceOutline
             PdfCanonicalGrounding.FromGroundedHeadings(recoveredHeadings));
         var decisions = PdfOutputDecisionPolicy.Decide(finalStructure);
         var materialized = StructuralAuthorityMaterializer.Materialize(finalStructure, decisions);
-        var nonHeadingElements = PdfNonHeadingStructuralProducer.Materialize(selected, blockAnalysis.Decisions, candidateContexts);
+        var structuralLane = PdfNonHeadingStructuralProducer.MaterializeLane(selected, blockAnalysis.Decisions, candidateContexts);
         var relationProposals = materialized.Structure.Relations
             .Select(relation => new StructuralRelationProposal(
-                relation.FromId, relation.ToId, relation.Type));
+                relation.FromId, relation.ToId, relation.Type))
+            .Concat(structuralLane.RelationProposals);
         var combinedStructure = ValidatedStructure.FromElements(
-            materialized.Structure.Elements.Concat(nonHeadingElements), relationProposals);
+            materialized.Structure.Elements.Concat(structuralLane.Elements), relationProposals);
         return new PdfTextbookOutlineResult(
             new StructuralAuthorityResult(
                 combinedStructure, audit, auditReason, materialized.EmittedElementIds),

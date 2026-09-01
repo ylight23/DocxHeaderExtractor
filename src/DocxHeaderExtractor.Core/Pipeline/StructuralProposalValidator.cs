@@ -122,7 +122,8 @@ public static class StructuralProposalValidator
         StructuralElementType.ListItem => role == ProposedRole.ListItemTopic,
         StructuralElementType.Caption => role == ProposedRole.Caption,
         StructuralElementType.TableTitle => role == ProposedRole.Caption,
-        StructuralElementType.FigureTitle => role == ProposedRole.Caption,
+        StructuralElementType.FigureTitle => role is ProposedRole.FigureTitle or ProposedRole.Caption,
+        StructuralElementType.Figure or StructuralElementType.Table => role == ProposedRole.StructuralContainer,
         _ => false,
     };
 }

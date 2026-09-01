@@ -144,6 +144,9 @@ public sealed class StructuralAuthorityContractTests
     [InlineData(StructuralElementType.Caption, ProposedRole.Caption)]
     [InlineData(StructuralElementType.TableTitle, ProposedRole.Caption)]
     [InlineData(StructuralElementType.FigureTitle, ProposedRole.Caption)]
+    [InlineData(StructuralElementType.FigureTitle, ProposedRole.FigureTitle)]
+    [InlineData(StructuralElementType.Figure, ProposedRole.StructuralContainer)]
+    [InlineData(StructuralElementType.Table, ProposedRole.StructuralContainer)]
     public void New_structural_types_validate_against_schema_roles(
         StructuralElementType type,
         ProposedRole role)
@@ -244,6 +247,89 @@ public sealed class StructuralAuthorityContractTests
         });
         Assert.Equal("Table 1. Results", elements[0].Text);
         Assert.Equal("Figure 2. Architecture", elements[1].Text);
+    }
+
+    [Fact]
+    public void Figure_and_table_semantics_materialize_with_validated_relations()
+    {
+        var figureLayout = Block("b-figure-layout", "[figure layout region]");
+        var figureTitle = Block("b-figure-title", "Figure 1. Architecture");
+        var caption = Block("b-caption", "Source: World Bank");
+        var tableLayout = Block("b-table-layout", "[table layout region]");
+        var tableTitle = Block("b-table-title", "Table 1. Results");
+        var contexts = new Dictionary<string, PdfCandidateContext>
+        {
+            [figureLayout.Id] = ContextWithEvidence(figureLayout, "figure_layout"),
+            [figureTitle.Id] = ContextWithEvidence(figureTitle, "figure_title_source"),
+            [caption.Id] = ContextWithEvidence(caption, "figure_caption_source"),
+            [tableLayout.Id] = ContextWithEvidence(tableLayout, "table_layout"),
+            [tableTitle.Id] = ContextWithEvidence(tableTitle, "table_title_source"),
+        };
+        contexts[figureLayout.Id] = contexts[figureLayout.Id] with
+        {
+            Source = contexts[figureLayout.Id].Source with
+            {
+                LayoutContainers =
+                [new PdfStructuralContainerObservation(
+                    "figure-1", StructuralElementType.Figure, figureLayout.Id,
+                    new StructuralSpan(0, figureLayout.Text.Length),
+                    [figureTitle.Id, caption.Id], "figure_layout_parser")],
+            },
+        };
+        contexts[tableLayout.Id] = contexts[tableLayout.Id] with
+        {
+            Source = contexts[tableLayout.Id].Source with
+            {
+                LayoutContainers =
+                [new PdfStructuralContainerObservation(
+                    "table-1", StructuralElementType.Table, tableLayout.Id,
+                    new StructuralSpan(0, tableLayout.Text.Length),
+                    [tableTitle.Id], "table_layout_parser")],
+            },
+        };
+        var decisions = new PdfBlockDecision[]
+        {
+            new(figureTitle.Id, PdfBlockRole.TableOrChartLabel, .90, "semantic",
+                SemanticRole: PdfSemanticRole.FigureTitle,
+                ProposedSourceSpan: new TextOffsetSpan(0, 8)),
+            new(caption.Id, PdfBlockRole.TableOrChartLabel, .90, "semantic",
+                SemanticRole: PdfSemanticRole.FigureCaption),
+            new(tableTitle.Id, PdfBlockRole.TableOrChartLabel, .90, "semantic",
+                SemanticRole: PdfSemanticRole.TableTitle),
+        };
+
+        var result = PdfNonHeadingStructuralProducer.MaterializeLane(
+            [figureLayout, figureTitle, caption, tableLayout, tableTitle], decisions, contexts);
+
+        Assert.Contains(result.Elements, element => element.Type == StructuralElementType.Figure);
+        Assert.Contains(result.Elements, element => element.Type == StructuralElementType.Table);
+        var figureTitleElement = Assert.Single(result.Elements, element => element.Type == StructuralElementType.FigureTitle);
+        Assert.Equal(ProposedRole.FigureTitle, figureTitleElement.Role);
+        Assert.Equal("Figure 1", figureTitleElement.Text);
+        Assert.Contains(result.RelationProposals, relation =>
+            relation.Type == StructuralRelationType.Labels && relation.FromId == figureTitleElement.Id);
+        Assert.Contains(result.RelationProposals, relation => relation.Type == StructuralRelationType.CaptionOf);
+        Assert.Contains(result.RelationProposals, relation => relation.Type == StructuralRelationType.Labels &&
+            result.Elements.Single(element => element.Type == StructuralElementType.TableTitle).Id == relation.FromId);
+
+        var structure = ValidatedStructure.FromElements(result.Elements, result.RelationProposals);
+        Assert.Equal(2, structure.Relations.Count(relation => relation.Type == StructuralRelationType.Labels));
+        Assert.Single(structure.Relations, relation => relation.Type == StructuralRelationType.CaptionOf);
+    }
+
+    [Fact]
+    public void Caption_of_figure_title_is_rejected_by_relation_validator()
+    {
+        var caption = Element("se:caption", Source("p1", "Caption", 0, 7),
+            new StructuralSpan(0, 7), "Caption", null, StructuralElementType.Caption, ProposedRole.Caption);
+        var figureTitle = Element("se:title", Source("p2", "Figure title", 1, 12),
+            new StructuralSpan(0, 12), "Figure title", null, StructuralElementType.FigureTitle, ProposedRole.FigureTitle);
+
+        var ex = Assert.Throws<InvalidOperationException>(() => ValidatedStructure.FromElements(
+            [caption, figureTitle],
+            [new StructuralRelationProposal(caption.Id, figureTitle.Id, StructuralRelationType.CaptionOf)]));
+
+        Assert.Equal("relation-type-incompatible", ex.Message);
     }
 
     [Fact]

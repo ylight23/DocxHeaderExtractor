@@ -12,11 +12,15 @@ public enum StructuralElementType
     Caption,
     TableTitle,
     FigureTitle,
+    Figure,
+    Table,
 }
 
 public enum StructuralRelationType
 {
     ParentChild,
+    CaptionOf,
+    Labels,
 }
 
 /// <summary>Exact source-text coordinates. End is exclusive, matching <see cref="TextOffsetSpan"/>.</summary>
@@ -212,7 +216,8 @@ public static class StructuralRelationProposalValidator
 {
     public static StructuralRelationValidation Validate(
         StructuralRelationProposal proposal,
-        IReadOnlySet<string> knownStructuralElementIds)
+        IReadOnlySet<string> knownStructuralElementIds,
+        IReadOnlyDictionary<string, StructuralElementType>? structuralElementTypes = null)
     {
         ArgumentNullException.ThrowIfNull(proposal);
         ArgumentNullException.ThrowIfNull(knownStructuralElementIds);
@@ -220,15 +225,19 @@ public static class StructuralRelationProposalValidator
             knownStructuralElementIds.Contains(proposal.ToId);
         var distinctEndpoints = !string.Equals(proposal.FromId, proposal.ToId, StringComparison.Ordinal);
         var typeValid = Enum.IsDefined(proposal.Type);
+        var semanticValid = structuralElementTypes is null || !endpointsPresent ||
+            IsSemanticallyCompatible(proposal, structuralElementTypes);
         var reason = !endpointsPresent ? "relation-endpoint-not-grounded" :
             !distinctEndpoints ? "relation-self-reference" :
-            !typeValid ? "relation-type-unsupported" : null;
+            !typeValid ? "relation-type-unsupported" :
+            !semanticValid ? "relation-type-incompatible" : null;
         return new StructuralRelationValidation(endpointsPresent, distinctEndpoints, typeValid, reason);
     }
 
     public static IReadOnlyList<StructuralRelation> Materialize(
         IReadOnlySet<string> knownStructuralElementIds,
-        IEnumerable<StructuralRelationProposal> proposals)
+        IEnumerable<StructuralRelationProposal> proposals,
+        IReadOnlyDictionary<string, StructuralElementType>? structuralElementTypes = null)
     {
         ArgumentNullException.ThrowIfNull(knownStructuralElementIds);
         ArgumentNullException.ThrowIfNull(proposals);
@@ -237,7 +246,7 @@ public static class StructuralRelationProposalValidator
         var parentByChild = new Dictionary<string, string>(StringComparer.Ordinal);
         foreach (var proposal in proposals)
         {
-            var validation = Validate(proposal, knownStructuralElementIds);
+            var validation = Validate(proposal, knownStructuralElementIds, structuralElementTypes);
             if (!validation.Accepted)
                 throw new InvalidOperationException(validation.RejectionReason);
 
@@ -251,6 +260,26 @@ public static class StructuralRelationProposalValidator
                 relations.Add(new StructuralRelation(proposal.FromId, proposal.ToId, proposal.Type));
         }
         return relations;
+    }
+
+    private static bool IsSemanticallyCompatible(
+        StructuralRelationProposal proposal,
+        IReadOnlyDictionary<string, StructuralElementType> structuralElementTypes)
+    {
+        if (!structuralElementTypes.TryGetValue(proposal.FromId, out var from) ||
+            !structuralElementTypes.TryGetValue(proposal.ToId, out var to))
+            return false;
+
+        return proposal.Type switch
+        {
+            StructuralRelationType.ParentChild => true,
+            StructuralRelationType.CaptionOf => from == StructuralElementType.Caption &&
+                to == StructuralElementType.Figure,
+            StructuralRelationType.Labels =>
+                (from == StructuralElementType.FigureTitle && to == StructuralElementType.Figure) ||
+                (from == StructuralElementType.TableTitle && to == StructuralElementType.Table),
+            _ => false,
+        };
     }
 }
 
@@ -271,7 +300,8 @@ public sealed class ValidatedStructure
             throw new InvalidOperationException("duplicate-structural-element-id");
         var proposedRelations = (relations ?? [])
             .Select(relation => new StructuralRelationProposal(relation.FromId, relation.ToId, relation.Type));
-        Relations = StructuralRelationProposalValidator.Materialize(ids, proposedRelations);
+        var types = materialized.ToDictionary(element => element.Id, element => element.Type, StringComparer.Ordinal);
+        Relations = StructuralRelationProposalValidator.Materialize(ids, proposedRelations, types);
         var parentByChild = Relations
             .Where(relation => relation.Type == StructuralRelationType.ParentChild)
             .ToDictionary(relation => relation.ToId, relation => relation.FromId, StringComparer.Ordinal);
@@ -312,7 +342,8 @@ public sealed class ValidatedStructure
             .Select(element => new StructuralRelationProposal(
                 element.ParentId!, element.Id, StructuralRelationType.ParentChild))
             .ToArray();
-        var relations = StructuralRelationProposalValidator.Materialize(ids, proposals);
+        var types = materialized.ToDictionary(element => element.Id, element => element.Type, StringComparer.Ordinal);
+        var relations = StructuralRelationProposalValidator.Materialize(ids, proposals, types);
         return new ValidatedStructure(materialized, relations);
     }
 }
