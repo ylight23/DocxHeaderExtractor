@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Threading.Channels;
 using DocxHeaderExtractor.AgentHarness;
@@ -35,6 +36,7 @@ builder.Services.AddSingleton(_ => new CorrectionMemory(CorrectionMemory.Default
 builder.Services.AddSingleton<DocumentAgentHarnessFactory>();
 builder.Services.AddSingleton<LmStudioModelDiscovery>();
 builder.Services.AddSingleton<WritebackStore>();
+builder.Services.AddSingleton<Accuracy99DocumentFirstReview>();
 builder.Services.AddHttpClient("OpenRouter", client =>
 {
     client.Timeout = TimeSpan.FromMinutes(5);
@@ -79,6 +81,99 @@ app.MapGet("/api/lmstudio/models", async (LmStudioModelDiscovery discovery, Canc
 
 // Mặc định lấy thẳng từ Core, để giao diện luôn khớp với lệnh CLI tương ứng.
 app.MapGet("/api/defaults", () => Results.Json(Defaults.Current(), json));
+
+// Accuracy-99 document-first review is an evaluation-only lane. It reads parser-owned DOCX
+// paragraphs directly and never calls the production authority pipeline or a provider.
+app.MapPost("/api/accuracy99/review/source", async (
+    HttpRequest req,
+    Accuracy99DocumentFirstReview reviews,
+    CancellationToken ct) =>
+{
+    if (!req.HasFormContentType)
+        return Results.BadRequest(new { message = "Cần multipart/form-data." });
+    var form = await req.ReadFormAsync(ct);
+    var upload = form.Files["file"];
+    if (upload is null || upload.Length == 0)
+        return Results.BadRequest(new { message = "Chưa chọn DOCX." });
+    try
+    {
+        var session = await reviews.CreateOrResumeAsync(upload, ct);
+        req.HttpContext.Response.Headers["X-DHX-Review-Session"] = session.Id;
+        req.HttpContext.Response.Headers["X-DHX-Review-Status"] = session.Frozen ? "GOLD_FROZEN" : ManifestStatus(session.Packet.Manifest);
+        return Results.Text(Accuracy99DocumentFirstReview.ToJsonLines(session.Packet), "application/x-ndjson", Encoding.UTF8);
+    }
+    catch (Exception ex) when (ex is InvalidDataException or IOException or OpenXmlPackageException)
+    {
+        return Results.BadRequest(new { message = ex.Message });
+    }
+});
+
+app.MapGet("/api/accuracy99/review/session/{id}", (string id, Accuracy99DocumentFirstReview reviews, HttpResponse res) =>
+{
+    try
+    {
+        var session = reviews.Load(id);
+        res.Headers["X-DHX-Review-Status"] = session.Frozen ? "GOLD_FROZEN" : ManifestStatus(session.Packet.Manifest);
+        return Results.Text(Accuracy99DocumentFirstReview.ToJsonLines(session.Packet), "application/x-ndjson", Encoding.UTF8);
+    }
+    catch (Exception ex) when (ex is InvalidDataException or FileNotFoundException or IOException)
+    {
+        return Results.NotFound(new { message = ex.Message });
+    }
+});
+
+app.MapPut("/api/accuracy99/review/session/{id}", async (string id, HttpRequest req, Accuracy99DocumentFirstReview reviews, CancellationToken ct) =>
+{
+    using var reader = new StreamReader(req.Body, Encoding.UTF8, detectEncodingFromByteOrderMarks: true);
+    try
+    {
+        await reviews.SaveDraftAsync(id, await reader.ReadToEndAsync(ct), ct);
+        var session = reviews.Load(id);
+        return Results.Json(new { saved = true, status = ManifestStatus(session.Packet.Manifest), autosave = "DISK_WORKDIR" }, json);
+    }
+    catch (Exception ex) when (ex is InvalidDataException or InvalidOperationException or FileNotFoundException or IOException)
+    {
+        return Results.BadRequest(new { message = ex.Message });
+    }
+});
+
+app.MapPost("/api/accuracy99/review/session/{id}/validate", (string id, Accuracy99DocumentFirstReview reviews) =>
+{
+    try
+    {
+        var errors = reviews.Validate(id);
+        return Results.Json(new { valid = errors.Count == 0, errors }, json);
+    }
+    catch (Exception ex) when (ex is InvalidDataException or FileNotFoundException or IOException)
+    {
+        return Results.BadRequest(new { message = ex.Message });
+    }
+});
+
+app.MapPost("/api/accuracy99/review/session/{id}/finalize", async (string id, Accuracy99DocumentFirstReview reviews, CancellationToken ct) =>
+{
+    try
+    {
+        var session = await reviews.FreezeAsync(id, ct);
+        return Results.Json(new { sessionId = session.Id, status = "GOLD_FROZEN", immutable = true }, json);
+    }
+    catch (Exception ex) when (ex is InvalidDataException or InvalidOperationException or FileNotFoundException or IOException)
+    {
+        return Results.Conflict(new { message = ex.Message });
+    }
+});
+
+app.MapPost("/api/accuracy99/review/session/{id}/compare", async (string id, Accuracy99DocumentFirstReview reviews, CancellationToken ct) =>
+{
+    try
+    {
+        return Results.Json(await reviews.CompareAsync(id, ct), json);
+    }
+    catch (Exception ex) when (ex is InvalidDataException or InvalidOperationException or FileNotFoundException or IOException)
+    {
+        return Results.Conflict(new { message = ex.Message });
+    }
+});
 
 // Kiểm tra nhanh mode tài liệu bằng deterministic rules, không gọi mô hình.
 app.MapPost("/api/inspect", async (HttpRequest req, CancellationToken ct) =>
@@ -458,6 +553,9 @@ static object ModePayload(DocumentModeReport report) => new
     formatDiffers = report.FormatDiffers,
     description = report.Describe(),
 };
+
+static string ManifestStatus(JsonObject manifest) =>
+    manifest["reviewStatus"]?.GetValue<string>() ?? "UNKNOWN";
 
 // Public để integration test khởi động đúng host WebApplicationFactory, không cần facade riêng.
 public partial class Program

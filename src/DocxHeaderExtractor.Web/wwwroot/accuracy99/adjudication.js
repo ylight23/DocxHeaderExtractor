@@ -1,153 +1,115 @@
 (() => {
-  'use strict';
-
-  const LABELS = ['HEADING', 'NON_HEADING', 'UNCERTAIN', 'EXCLUDED'];
-  const STRUCTURAL_TYPES = new Set(['Title', 'Subtitle', 'Heading', 'ListItem', 'Caption', 'TableTitle', 'FigureTitle', 'Figure', 'Table']);
-  const packets = new Map();
-  let currentDatasetId = null;
-  let currentIndex = 0;
-  let filter = 'ALL';
-
   const $ = id => document.getElementById(id);
-  const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-  const effectiveLabel = row => row.finalAdjudicatedLabel || row.initialAdjudicatedLabel || row.adjudicatedLabel || null;
-  const rows = () => packets.get(currentDatasetId)?.occurrences || [];
-  const currentRow = () => rows()[currentIndex];
-  const setNotice = (message = '', error = false) => { $('notice').textContent = message; $('notice').className = error ? 'notice error' : 'notice'; };
+  const LABELS = ['HEADING', 'NON_HEADING', 'UNCERTAIN', 'EXCLUDED'];
+  let packet = null, sessionId = new URLSearchParams(location.search).get('session');
+  let currentIndex = 0, frozen = false, saveTimer = null, saving = false, filter = 'ALL';
 
-  function parsePacket(text, fileName) {
-    const lines = text.split(/\r?\n/).filter(line => line.trim());
-    if (!lines.length) throw new Error(`${fileName}: empty packet`);
-    const manifest = JSON.parse(lines[0]);
-    if (manifest.recordType !== 'manifest' || !manifest.datasetId) throw new Error(`${fileName}: invalid manifest`);
-    const occurrences = lines.slice(1).map((line, offset) => {
-      const row = JSON.parse(line);
-      if (row.recordType !== 'occurrence') throw new Error(`${fileName}: invalid occurrence line ${offset + 2}`);
-      return row;
-    });
-    if (occurrences.length !== Number(manifest.catalogOccurrenceCount)) throw new Error(`${fileName}: occurrence count does not match manifest`);
-    const ids = new Set();
-    for (const row of occurrences) {
-      if (!row.sourceId || ids.has(row.sourceId)) throw new Error(`${fileName}: duplicate or empty SourceId`);
-      ids.add(row.sourceId);
-    }
-    if (manifest.predictionsIncluded) throw new Error(`${fileName}: production predictions are not allowed in source-first packets`);
-    return { fileName, manifest, occurrences };
+  function setNotice(message, error = false) { $('notice').textContent = message; $('notice').classList.toggle('error', error); }
+  function effectiveLabel(row) { return row.finalAdjudicatedLabel || row.initialAdjudicatedLabel || row.adjudicatedLabel || null; }
+  function parseJsonl(text) {
+    const nodes = text.split(/\r?\n/).filter(line => line.trim()).map(line => JSON.parse(line));
+    if (!nodes.length || nodes[0].recordType !== 'manifest') throw new Error('Review JSONL manifest is missing.');
+    const manifest = nodes[0]; const occurrences = nodes.slice(1);
+    if (manifest.predictionsIncluded) throw new Error('Source-first review cannot include prediction data.');
+    if (occurrences.length !== Number(manifest.catalogOccurrenceCount)) throw new Error('Occurrence count does not match source catalog.');
+    if (occurrences.some(row => row.recordType !== 'occurrence' || !row.sourceId)) throw new Error('Occurrence source identity is invalid.');
+    return { manifest, occurrences };
+  }
+  function jsonl() { return [packet.manifest, ...packet.occurrences].map(row => JSON.stringify(row)).join('\n') + '\n'; }
+
+  async function loadSession(id) {
+    const response = await fetch(`/api/accuracy99/review/session/${encodeURIComponent(id)}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error((await response.json().catch(() => ({}))).message || 'Review session not found.');
+    packet = parseJsonl(await response.text()); frozen = response.headers.get('X-DHX-Review-Status') === 'GOLD_FROZEN' || packet.manifest.reviewStatus === 'GOLD_FROZEN';
+    currentIndex = 0; render(); setNotice(frozen ? 'GOLD_FROZEN is immutable. Review is read-only.' : 'Review session resumed.');
+  }
+  async function createSession(file) {
+    const form = new FormData(); form.append('file', file);
+    setNotice('Reading parser-owned source catalog…');
+    const response = await fetch('/api/accuracy99/review/source', { method: 'POST', body: form });
+    if (!response.ok) throw new Error((await response.json().catch(() => ({}))).message || 'Could not create review session.');
+    sessionId = response.headers.get('X-DHX-Review-Session');
+    if (!sessionId) throw new Error('Review session identity was not returned.');
+    history.replaceState(null, '', `adjudication.html?session=${encodeURIComponent(sessionId)}`);
+    packet = parseJsonl(await response.text()); frozen = packet.manifest.reviewStatus === 'GOLD_FROZEN'; currentIndex = 0; render();
+    setNotice(frozen ? 'Existing GOLD_FROZEN review resumed read-only.' : 'Source catalog ready. Draft autosave is active.');
   }
 
-  function importFiles(fileList) {
-    const files = [...fileList]; if (!files.length) return;
-    let pending = files.length; let imported = 0;
-    for (const file of files) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        try {
-          const packet = parsePacket(reader.result, file.name);
-          packets.set(packet.manifest.datasetId, packet);
-          if (!currentDatasetId) currentDatasetId = packet.manifest.datasetId;
-          imported++;
-        } catch (error) { setNotice(error.message, true); }
-        if (!--pending) { renderPacketList(); render(); setNotice(imported ? `${imported} packet(s) loaded in memory. Input files are unchanged.` : ''); }
-      };
-      reader.onerror = () => { if (!--pending) setNotice('Could not read one or more packet files.', true); };
-      reader.readAsText(file);
-    }
+  function validateRow(row) {
+    const errors = [], label = effectiveLabel(row), text = row.rawSourceText || '';
+    if (!label) errors.push('label required');
+    if (label && !LABELS.includes(label)) errors.push('invalid label');
+    if (label === 'HEADING') {
+      if (!Number.isInteger(row.headingStart) || !Number.isInteger(row.headingEnd) || row.headingStart < 0 || row.headingEnd <= row.headingStart || row.headingEnd > text.length || text.slice(row.headingStart, row.headingEnd) !== row.headingText) errors.push('exact heading span required');
+      if (!row.structuralType) errors.push('structural type required');
+      if (row.levelReviewStatus === 'REVIEWED' ? !(Number.isInteger(row.level) && row.level >= 1 && row.level <= 9) : row.levelReviewStatus !== 'LEVEL_NOT_REVIEWED' || row.level != null) errors.push('level review required');
+      if (!['ROOT', 'PARENT_UNKNOWN', 'PARENT_REVIEWED'].includes(row.parentReviewStatus)) errors.push('parent review required');
+      if (row.parentReviewStatus === 'PARENT_REVIEWED' && !row.parentGoldId) errors.push('reviewed parent required');
+    } else if (label && ['headingStart','headingEnd','headingText','structuralType','level','levelReviewStatus','parentGoldId','parentReviewStatus','goldHeadingId'].some(field => row[field] != null)) errors.push('non-heading fields must be cleared');
+    if (label && !String(row.reviewer || '').trim()) errors.push('reviewer required');
+    return errors;
   }
-
-  function renderPacketList() {
-    $('emptyState').hidden = packets.size > 0;
-    $('packetList').innerHTML = [...packets.values()].map(packet => {
-      const reviewed = packet.occurrences.filter(row => effectiveLabel(row)).length;
-      const active = packet.manifest.datasetId === currentDatasetId ? ' active' : '';
-      return `<button type="button" class="packet-item${active}" data-dataset="${esc(packet.manifest.datasetId)}"><span>${esc(packet.manifest.datasetId)}</span><span class="packet-count">${reviewed}/${packet.occurrences.length}</span></button>`;
-    }).join('');
-    document.querySelectorAll('.packet-item').forEach(button => button.addEventListener('click', () => { currentDatasetId = button.dataset.dataset; currentIndex = 0; renderPacketList(); render(); }));
+  function allErrors() { return packet.occurrences.flatMap(row => validateRow(row).map(error => `${row.sourceId}: ${error}`)); }
+  function updateStatus() {
+    if (!packet || frozen) return;
+    packet.manifest.reviewStatus = allErrors().length === 0 ? 'REVIEW_COMPLETE' : 'REVIEW_DRAFT';
   }
-
+  function scheduleSave() {
+    if (!packet || frozen) return;
+    updateStatus(); clearTimeout(saveTimer); setNotice(`Autosave pending · ${packet.manifest.reviewStatus}`);
+    saveTimer = setTimeout(saveDraft, 350);
+  }
+  async function saveDraft() {
+    if (!packet || frozen || saving) return;
+    saving = true; setNotice(`Autosaving ${packet.manifest.reviewStatus}…`);
+    try {
+      const response = await fetch(`/api/accuracy99/review/session/${encodeURIComponent(sessionId)}`, { method: 'PUT', headers: { 'Content-Type': 'application/x-ndjson' }, body: jsonl() });
+      if (!response.ok) throw new Error((await response.json().catch(() => ({}))).message || 'Autosave failed.');
+      setNotice(`Autosaved · ${packet.manifest.reviewStatus}`);
+    } catch (error) { setNotice(error.message, true); } finally { saving = false; }
+  }
+  function rows() { return packet?.occurrences || []; }
+  function visibleIndices() {
+    return rows().map((row, index) => ({ row, index })).filter(({ row }) =>
+      filter === 'ALL' || (filter === 'UNREVIEWED' ? !effectiveLabel(row) :
+      ['HEADING', 'NON_HEADING', 'UNCERTAIN', 'EXCLUDED'].includes(filter) ? effectiveLabel(row) === filter :
+      (row.historicalProvenanceStatus || 'NONE') === filter)).map(item => item.index);
+  }
   function render() {
-    const packet = packets.get(currentDatasetId);
-    if (!packet) { $('reviewView').hidden = true; $('progressSummary').textContent = 'No packet loaded.'; $('counts').innerHTML = ''; $('progressBar').style.width = '0%'; return; }
-    $('reviewView').hidden = false;
-    currentIndex = Math.max(0, Math.min(currentIndex, packet.occurrences.length - 1));
-    const row = packet.occurrences[currentIndex];
-    $('documentLabel').textContent = `DOCUMENT ${packet.manifest.datasetId}`;
-    $('occurrenceTitle').textContent = `Occurrence ${row.sourceOrdinal}`;
-    $('sourceIdentity').textContent = `${row.documentId} · ${row.sourceId}`;
-    const visible = visibleIndices(packet); const visiblePosition = Math.max(0, visible.indexOf(currentIndex));
-    $('position').textContent = `${visiblePosition + 1} / ${visible.length}`;
-    $('rawText').textContent = row.rawSourceText || '(empty source text)';
-    $('previousText').textContent = row.previousSourceText || '(none)'; $('nextText').textContent = row.nextSourceText || '(none)';
-    const provenance = row.historicalProvenanceStatus || 'NONE'; $('provenance').textContent = provenance; $('provenance').className = `badge ${provenance === 'EXACT_REBOUND' ? 'exact' : provenance === 'AMBIGUOUS' ? 'ambiguous' : provenance === 'REVIEW_REQUIRED' ? 'review' : ''}`;
-    const refs = Array.isArray(row.historicalPositiveReferences) ? row.historicalPositiveReferences.map(reference => typeof reference === 'string' ? reference : (reference.historicalSourceId || reference.historicalText || JSON.stringify(reference))).join(', ') || '—' : '—';
-    $('metadata').innerHTML = [['DocumentId', row.documentId], ['SourceOrdinal', row.sourceOrdinal], ['SourceId', row.sourceId], ['SourceType', row.sourceType], ['Page', row.page ?? '—'], ['Raw text length', row.rawTextLength ?? (row.rawSourceText || '').length], ['Raw source span', `${row.rawSourceSpan?.start ?? 0}..${row.rawSourceSpan?.end ?? 0}`], ['Historical references', refs]].map(([key, value]) => `<dt>${esc(key)}</dt><dd>${esc(value)}</dd>`).join('');
+    if (!packet) return;
+    $('reviewView').hidden = false; const visible = visibleIndices(); if (!visible.length) { $('position').textContent = '0 / 0'; return; } if (!visible.includes(currentIndex)) currentIndex = visible[0]; const row = rows()[currentIndex];
+    $('sessionTitle').textContent = `${packet.manifest.datasetId} · ${packet.manifest.documentId}`;
+    $('sessionStatus').textContent = packet.manifest.reviewStatus; $('sessionStatus').className = `badge ${packet.manifest.reviewStatus === 'GOLD_FROZEN' ? 'exact' : ''}`;
+    $('documentLabel').textContent = `DOCUMENT ${packet.manifest.datasetId}`; $('occurrenceTitle').textContent = `Occurrence ${row.sourceOrdinal}`; $('sourceIdentity').textContent = `${row.documentId} · ${row.sourceId}`;
+    $('position').textContent = `${visible.indexOf(currentIndex) + 1} / ${visible.length}`; $('filter').value = filter; $('rawText').textContent = row.rawSourceText || '(empty source text)'; $('previousText').textContent = row.previousSourceText || '(none)'; $('nextText').textContent = row.nextSourceText || '(none)';
+    const provenance = row.historicalProvenanceStatus || 'NONE'; $('provenance').textContent = provenance; $('provenance').className = `badge ${provenance === 'EXACT_REBOUND' ? 'exact' : provenance === 'AMBIGUOUS' || provenance === 'REVIEW_REQUIRED' ? 'review' : ''}`;
+    const refs = Array.isArray(row.historicalPositiveReferences) ? row.historicalPositiveReferences.map(ref => typeof ref === 'string' ? ref : ref.historicalSourceId || ref.historicalText || JSON.stringify(ref)).join(', ') || '—' : '—';
+    $('metadata').innerHTML = [['DocumentId',row.documentId],['SourceOrdinal',row.sourceOrdinal],['SourceId',row.sourceId],['SourceType',row.sourceType],['Page',row.page ?? '—'],['Raw text length',row.rawTextLength ?? row.rawSourceText.length],['Raw source span',`${row.rawSourceSpan?.start ?? 0}..${row.rawSourceSpan?.end ?? 0}`],['Historical references',refs]].map(([key,value]) => `<dt>${esc(key)}</dt><dd>${esc(value)}</dd>`).join('');
     const label = effectiveLabel(row); document.querySelectorAll('.label').forEach(button => button.classList.toggle('selected', button.dataset.label === label)); $('labelStatus').textContent = label ? `Current human label: ${label}` : 'No label selected.'; $('headingFields').hidden = label !== 'HEADING';
-    populateFields(row); renderProgress(packet); renderDocumentStatus(packet); validateCurrent(false); renderPacketList();
+    $('headingStart').value = row.headingStart ?? ''; $('headingEnd').value = row.headingEnd ?? ''; $('headingText').textContent = row.headingText || 'Not selected.'; $('structuralType').value = row.structuralType || ''; $('level').value = row.level ?? ''; $('levelNotReviewed').checked = row.levelReviewStatus === 'LEVEL_NOT_REVIEWED'; $('parentStatus').value = row.parentReviewStatus || ''; $('reviewer').value = row.reviewer || ''; $('reviewNotes').value = row.reviewNotes || '';
+    populateParents(row); $('parentGoldId').value = row.parentGoldId || ''; $('parentIdLabel').hidden = row.parentReviewStatus !== 'PARENT_REVIEWED';
+    const errors = validateRow(row); $('currentErrors').className = `validation ${errors.length ? '' : 'ok'}`; $('currentErrors').innerHTML = errors.length ? `<strong>Not ready:</strong><ul>${errors.map(esc).map(error => `<li>${error}</li>`).join('')}</ul>` : 'Current occurrence passes local validation.';
+    const reviewed = rows().filter(item => effectiveLabel(item)).length; $('progressSummary').textContent = `${reviewed}/${rows().length} reviewed · ${rows().length - reviewed} remaining`; $('progressBar').style.width = `${rows().length ? reviewed / rows().length * 100 : 0}%`; $('counts').innerHTML = LABELS.map(labelName => `<dt>${labelName}</dt><dd>${rows().filter(item => effectiveLabel(item) === labelName).length}</dd>`).join(''); $('finalizeReview').disabled = frozen; $('runCompare').hidden = !frozen; document.querySelectorAll('#reviewView input,#reviewView select,#reviewView textarea,.label,#useSelection,#clearHeadingFields').forEach(control => control.disabled = frozen);
   }
-
-  function visibleIndices(packet) {
-    return packet.occurrences.map((row, index) => ({row, index})).filter(({row}) => {
-      const label = effectiveLabel(row); const provenance = row.historicalProvenanceStatus || 'NONE';
-      if (filter === 'UNREVIEWED') return !label;
-      if (LABELS.includes(filter)) return label === filter;
-      if (['EXACT_REBOUND','REVIEW_REQUIRED','AMBIGUOUS'].includes(filter)) return provenance === filter;
-      return true;
-    }).map(({index}) => index);
-  }
-
-  function populateFields(row) {
-    $('headingStart').value = row.headingStart ?? ''; $('headingEnd').value = row.headingEnd ?? ''; $('structuralType').value = row.structuralType ?? ''; $('level').value = row.level ?? '';
-    $('levelNotReviewed').checked = row.levelReviewStatus === 'LEVEL_NOT_REVIEWED'; $('reviewer').value = row.reviewer ?? ''; $('parentStatus').value = row.parentReviewStatus ?? ''; $('parentIdLabel').hidden = row.parentReviewStatus !== 'PARENT_REVIEWED';
-    populateParentChoices(row); $('parentGoldId').value = row.parentGoldId ?? ''; $('reviewNotes').value = row.reviewNotes ?? ''; updateHeadingText(row);
-  }
-
-  function populateParentChoices(row) {
-    const options = rows().filter(candidate => candidate !== row && effectiveLabel(candidate) === 'HEADING' && candidate.goldHeadingId).map(candidate => `<option value="${esc(candidate.goldHeadingId)}">${esc(candidate.goldHeadingId)} · ${esc((candidate.headingText || '').slice(0, 90))} · ordinal ${esc(candidate.sourceOrdinal)}</option>`).join('');
-    $('parentGoldId').innerHTML = '<option value="">Select heading…</option>' + options;
-  }
-
-  function renderProgress(packet) {
-    const list = packet.occurrences; const reviewed = list.filter(row => effectiveLabel(row)).length; const count = label => list.filter(row => effectiveLabel(row) === label).length;
-    const spanIncomplete = list.filter(row => effectiveLabel(row) === 'HEADING' && (row.headingStart == null || row.headingEnd == null || !row.headingText)).length;
-    const levelIncomplete = list.filter(row => effectiveLabel(row) === 'HEADING' && !['REVIEWED','LEVEL_NOT_REVIEWED'].includes(row.levelReviewStatus)).length;
-    const parentIncomplete = list.filter(row => effectiveLabel(row) === 'HEADING' && !['ROOT','PARENT_REVIEWED','PARENT_UNKNOWN'].includes(row.parentReviewStatus)).length;
-    $('progressSummary').innerHTML = `<strong>${esc(packet.manifest.datasetId)}</strong><br>Current: ${currentIndex + 1} / ${list.length}<br>Reviewed: ${reviewed} · Remaining: ${list.length - reviewed}`; $('progressBar').style.width = `${list.length ? reviewed / list.length * 100 : 0}%`;
-    $('counts').innerHTML = [['HEADING',count('HEADING')],['NON_HEADING',count('NON_HEADING')],['UNCERTAIN',count('UNCERTAIN')],['EXCLUDED',count('EXCLUDED')],['Heading spans incomplete',spanIncomplete],['Levels incomplete',levelIncomplete],['Parents incomplete',parentIncomplete]].map(([label,value]) => `<dt>${label}</dt><dd>${value}</dd>`).join('');
-  }
-
-  function renderDocumentStatus(packet) {
-    const reviewed = packet.occurrences.filter(row => effectiveLabel(row)).length; const errors = packet.occurrences.reduce((total,row) => total + validateRow(row,packet.occurrences).length,0); const ready = reviewed === packet.occurrences.length && errors === 0 && packet.manifest.reviewStatus === 'REVIEW_COMPLETE';
-    $('documentStatus').innerHTML = `<p><strong>${esc(packet.manifest.datasetId)}: ${ready ? 'READY FOR IMPORT' : 'INCOMPLETE'}</strong> · ${reviewed}/${packet.occurrences.length} classified · ${errors} current validation issue(s)</p><p class="muted">This UI never freezes gold, runs baseline, or overwrites imported JSONL.</p>`;
-  }
-
-  function updateHeadingText(row) { const start = Number(row.headingStart), end = Number(row.headingEnd); $('headingText').textContent = Number.isInteger(start) && Number.isInteger(end) && start >= 0 && end > start ? (row.rawSourceText || '').slice(start,end) : 'Not selected.'; }
-  function setField(name,value) { const row=currentRow(); if(!row)return; row[name]=value===''?null:value; updateHeadingText(row); validateCurrent(false); renderProgress(packets.get(currentDatasetId)); renderDocumentStatus(packets.get(currentDatasetId)); }
-  async function sha256(value) { const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(value)); return [...new Uint8Array(digest)].map(byte=>byte.toString(16).padStart(2,'0')).join(''); }
-  async function goldHeadingId(row) { const framed=[row.documentId,row.sourceId,row.headingStart,row.headingEnd].map(value=>`${String(value ?? '').length}:${value ?? ''}|`).join(''); return `gold-heading:${await sha256(framed)}`; }
-  function selectionOffsets(container) { const selection=window.getSelection(); if(!selection||selection.rangeCount===0||selection.isCollapsed)return null; const range=selection.getRangeAt(0); if(!container.contains(range.commonAncestorContainer))return null; const before=range.cloneRange(); before.selectNodeContents(container); before.setEnd(range.startContainer,range.startOffset); const selected=range.toString(); const start=before.toString().length; return {start,end:start+selected.length,selected}; }
-  async function applySelection() { const row=currentRow(),selected=selectionOffsets($('rawText')); if(!row||!selected||selected.start>=selected.end){setNotice('Select a non-empty exact substring in Raw source text first.',true);return;} row.headingStart=selected.start; row.headingEnd=selected.end; row.headingText=selected.selected; row.goldHeadingId=await goldHeadingId(row); setNotice('Human-selected heading span applied.'); render(); }
-  function setLabel(label) { const row=currentRow(); if(!row)return; row.adjudicatedLabel=label; render(); }
-  function clearHeadingFields() { const row=currentRow(); if(!row)return; ['headingStart','headingEnd','headingText','structuralType','level','levelReviewStatus','parentGoldId','parentReviewStatus','goldHeadingId'].forEach(field=>row[field]=null); render(); }
-
-  function validateRow(row,allRows) {
-    const errors=[]; const label=effectiveLabel(row); const text=row.rawSourceText||''; if(!label)errors.push('label required'); if(label&&!LABELS.includes(label))errors.push('invalid label');
-    if(label==='HEADING') {
-      if(!Number.isInteger(row.headingStart)||!Number.isInteger(row.headingEnd)||row.headingStart<0||row.headingStart>=row.headingEnd||row.headingEnd>text.length)errors.push('invalid heading span'); else if(text.slice(row.headingStart,row.headingEnd)!==row.headingText)errors.push('heading text does not match span');
-      if(!STRUCTURAL_TYPES.has(row.structuralType))errors.push('structural type required'); if(!(row.levelReviewStatus==='LEVEL_NOT_REVIEWED'&&row.level==null)&&!(row.levelReviewStatus==='REVIEWED'&&Number.isInteger(row.level)&&row.level>=1&&row.level<=9))errors.push('level review required');
-      if(!['ROOT','PARENT_REVIEWED','PARENT_UNKNOWN'].includes(row.parentReviewStatus))errors.push('parent review required'); if(row.parentReviewStatus==='PARENT_REVIEWED'){const parent=allRows.find(candidate=>candidate.goldHeadingId===row.parentGoldId&&effectiveLabel(candidate)==='HEADING');if(!parent)errors.push('parent heading not found');else if(parent.documentId!==row.documentId)errors.push('parent document mismatch');else if(parent===row)errors.push('heading cannot parent itself');}else if(row.parentGoldId!=null)errors.push('parent id contradicts status');
-    } else if(label&&LABELS.slice(1).includes(label)) { if(['headingStart','headingEnd','headingText','structuralType','level','levelReviewStatus','parentGoldId','parentReviewStatus','goldHeadingId'].some(field=>row[field]!=null))errors.push('non-heading fields must be cleared'); }
-    if(label&&!String(row.reviewer||'').trim())errors.push('reviewer required'); return errors;
-  }
-  function validateCurrent(showNotice) { const row=currentRow();if(!row)return[];const errors=validateRow(row,rows());$('validation').className=errors.length?'validation':'validation ok';$('validation').innerHTML=errors.length?`<strong>Not import-ready:</strong><ul>${errors.map(error=>`<li>${esc(error)}</li>`).join('')}</ul>`:(effectiveLabel(row)?'Current occurrence passes local validation.':'Choose a human label to begin.');if(showNotice)setNotice(errors.length?`${errors.length} validation issue(s) in ${row.sourceId}.`:'Current packet rows validated locally.');return errors; }
-  function validatePacket() { const packet=packets.get(currentDatasetId);if(!packet)return;const errors=packet.occurrences.flatMap(row=>validateRow(row,packet.occurrences).map(error=>`${row.sourceId}: ${error}`));if(packet.manifest.reviewStatus!=='REVIEW_COMPLETE')errors.push('manifest: reviewStatus must be REVIEW_COMPLETE before import');$('validation').className=errors.length?'validation':'validation ok';$('validation').innerHTML=errors.length?`<strong>Packet is not ready:</strong><ul>${errors.slice(0,30).map(error=>`<li>${esc(error)}</li>`).join('')}${errors.length>30?`<li>…and ${errors.length-30} more</li>`:''}</ul>`:'Packet passes all workstation validation gates.';setNotice(errors.length?`${errors.length} packet issue(s) found.`:'Packet passes all workstation validation gates.'); }
-  function markComplete() { const packet=packets.get(currentDatasetId);if(!packet)return;const errors=packet.occurrences.flatMap(row=>validateRow(row,packet.occurrences));if(errors.length){setNotice('Resolve all occurrence validation issues before marking REVIEW_COMPLETE.',true);validatePacket();return;}packet.manifest.reviewStatus='REVIEW_COMPLETE';render();setNotice(`${packet.manifest.datasetId} marked REVIEW_COMPLETE in memory. Export it for C2.`); }
-  function exportPacket(packet) { const errors=packet.occurrences.flatMap(row=>validateRow(row,packet.occurrences));if(errors.length||packet.manifest.reviewStatus!=='REVIEW_COMPLETE'){setNotice(`Cannot export ${packet.manifest.datasetId}: complete labels, fields, reviewer, and manifest status first.`,true);return;}const lines=[JSON.stringify(packet.manifest),...packet.occurrences.map(row=>JSON.stringify(row))].join('\n')+'\n';const url=URL.createObjectURL(new Blob([lines],{type:'application/x-ndjson'}));const anchor=document.createElement('a');anchor.href=url;anchor.download=`${packet.manifest.datasetId}.review.completed.jsonl`;anchor.click();URL.revokeObjectURL(url);setNotice(`Exported ${packet.manifest.datasetId}.review.completed.jsonl. Original packet was not overwritten.`); }
-  function move(delta) { const packet=packets.get(currentDatasetId);if(!packet)return;const visible=visibleIndices(packet);if(!visible.length)return;let position=visible.indexOf(currentIndex);if(position<0)position=delta>0?-1:visible.length;currentIndex=visible[Math.max(0,Math.min(visible.length-1,position+delta))];render(); }
-  function moveNextUnreviewed() { const packet=packets.get(currentDatasetId);if(!packet)return;const pending=packet.occurrences.map((row,index)=>({row,index})).filter(item=>!effectiveLabel(item.row));if(!pending.length){setNotice('No unreviewed occurrences remain.');return;}const next=pending.find(item=>item.index>currentIndex)||pending[0];currentIndex=next.index;filter='ALL';$('filter').value='ALL';render(); }
-
-  $('packetFiles').addEventListener('change',event=>importFiles(event.target.files)); $('previous').addEventListener('click',()=>move(-1)); $('next').addEventListener('click',()=>move(1)); $('nextUnreviewed').addEventListener('click',moveNextUnreviewed);
-  $('filter').addEventListener('change',event=>{filter=event.target.value;const packet=packets.get(currentDatasetId),visible=packet?visibleIndices(packet):[];if(visible.length&&!visible.includes(currentIndex))currentIndex=visible[0];render();}); $('useSelection').addEventListener('click',applySelection); $('clearHeadingFields').addEventListener('click',clearHeadingFields); $('validatePacket').addEventListener('click',validatePacket); $('markComplete').addEventListener('click',markComplete);
-  $('exportCurrent').addEventListener('click',()=>{const packet=packets.get(currentDatasetId);if(packet)exportPacket(packet);else setNotice('Load packet(s) first.',true);}); $('exportAll').addEventListener('click',()=>{if(!packets.size){setNotice('Load packet(s) first.',true);return;}for(const packet of packets.values())exportPacket(packet);});
-  document.querySelectorAll('.label').forEach(button=>button.addEventListener('click',()=>setLabel(button.dataset.label))); $('headingStart').addEventListener('input',event=>{const row=currentRow();if(!row)return;row.headingStart=event.target.value===''?null:Number(event.target.value);row.headingText=Number.isInteger(row.headingStart)&&Number.isInteger(row.headingEnd)?(row.rawSourceText||'').slice(row.headingStart,row.headingEnd):null;goldHeadingId(row).then(id=>{row.goldHeadingId=id;render();});}); $('headingEnd').addEventListener('input',event=>{const row=currentRow();if(!row)return;row.headingEnd=event.target.value===''?null:Number(event.target.value);row.headingText=Number.isInteger(row.headingStart)&&Number.isInteger(row.headingEnd)?(row.rawSourceText||'').slice(row.headingStart,row.headingEnd):null;goldHeadingId(row).then(id=>{row.goldHeadingId=id;render();});});
-  $('structuralType').addEventListener('change',event=>setField('structuralType',event.target.value)); $('level').addEventListener('input',event=>{const row=currentRow();if(row){row.level=event.target.value===''?null:Number(event.target.value);row.levelReviewStatus=row.level==null?null:'REVIEWED';render();}}); $('levelNotReviewed').addEventListener('change',event=>{const row=currentRow();if(row){row.levelReviewStatus=event.target.checked?'LEVEL_NOT_REVIEWED':(row.level==null?null:'REVIEWED');if(event.target.checked)row.level=null;render();}}); $('parentStatus').addEventListener('change',event=>{const row=currentRow();if(row){row.parentReviewStatus=event.target.value||null;if(row.parentReviewStatus!=='PARENT_REVIEWED')row.parentGoldId=null;render();}}); $('parentGoldId').addEventListener('change',event=>setField('parentGoldId',event.target.value)); $('reviewer').addEventListener('input',event=>setField('reviewer',event.target.value.trim())); $('reviewNotes').addEventListener('input',event=>setField('reviewNotes',event.target.value));
-  document.addEventListener('keydown',event=>{if(event.target.matches('input,textarea,select'))return;const key=event.key.toLowerCase();if(key==='h')setLabel('HEADING');else if(key==='n')setLabel('NON_HEADING');else if(key==='u')setLabel('UNCERTAIN');else if(key==='x')setLabel('EXCLUDED');else if(event.key==='ArrowLeft')move(-1);else if(event.key==='ArrowRight')move(1);});
+  function populateParents(row) { $('parentGoldId').innerHTML = '<option value="">Select heading…</option>' + rows().filter(candidate => candidate !== row && effectiveLabel(candidate) === 'HEADING' && candidate.goldHeadingId).map(candidate => `<option value="${esc(candidate.goldHeadingId)}">${esc(candidate.goldHeadingId)} · ${esc(candidate.headingText || '')}</option>`).join(''); }
+  function mutate(callback) { if (frozen || !packet) return; callback(rows()[currentIndex]); render(); scheduleSave(); }
+  function setLabel(label) { mutate(row => { row.adjudicatedLabel = label; if (label !== 'HEADING') ['headingStart','headingEnd','headingText','structuralType','level','levelReviewStatus','parentGoldId','parentReviewStatus','goldHeadingId'].forEach(field => row[field] = null); }); }
+  async function refreshHeadingId(row) { if (row.adjudicatedLabel === 'HEADING' && Number.isInteger(row.headingStart) && Number.isInteger(row.headingEnd) && row.headingEnd > row.headingStart) row.goldHeadingId = await goldHeadingId(row); else row.goldHeadingId = null; }
+  async function applySelection() { if (frozen) return; const selection = selectionOffsets($('rawText')); if (!selection || selection.start >= selection.end) return setNotice('Select a non-empty exact substring first.', true); const row = rows()[currentIndex]; row.headingStart = selection.start; row.headingEnd = selection.end; row.headingText = selection.selected; row.goldHeadingId = await goldHeadingId(row); render(); scheduleSave(); }
+  function selectionOffsets(element) { const selection = window.getSelection(); if (!selection || !selection.rangeCount || !element.contains(selection.anchorNode) || !element.contains(selection.focusNode)) return null; const range = selection.getRangeAt(0), probe = document.createRange(); probe.selectNodeContents(element); const startRange = document.createRange(); startRange.setStart(probe.startContainer, probe.startOffset); startRange.setEnd(range.startContainer, range.startOffset); const endRange = document.createRange(); endRange.setStart(probe.startContainer, probe.startOffset); endRange.setEnd(range.endContainer, range.endOffset); const start = startRange.toString().length, end = endRange.toString().length; return { start: Math.min(start,end), end: Math.max(start,end), selected: selection.toString() }; }
+  async function goldHeadingId(row) { const frame = [row.documentId,row.sourceId,row.headingStart,row.headingEnd].map(value => `${String(value ?? '').length}:${value ?? ''}|`).join(''); const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(frame)); return `gold-heading:${[...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2,'0')).join('')}`; }
+  async function validatePacket() { if (!packet) return; const response = await fetch(`/api/accuracy99/review/session/${encodeURIComponent(sessionId)}/validate`, { method: 'POST' }); const result = await response.json(); setNotice(result.valid ? 'Gold validation PASS.' : `Gold validation BLOCKED: ${result.errors.join(', ')}`, !result.valid); }
+  async function finalize() { if (!packet || frozen) return; await saveDraft(); const response = await fetch(`/api/accuracy99/review/session/${encodeURIComponent(sessionId)}/finalize`, { method: 'POST' }); const result = await response.json(); if (!response.ok) return setNotice(result.message || 'Finalize blocked.', true); frozen = true; packet.manifest.reviewStatus = 'GOLD_FROZEN'; render(); setNotice('GOLD_FROZEN created explicitly and is immutable.'); }
+  async function compare() { if (!frozen) return; $('runCompare').disabled = true; setNotice('Running current pipeline and comparing independent metrics…'); try { const response = await fetch(`/api/accuracy99/review/session/${encodeURIComponent(sessionId)}/compare`, { method: 'POST' }); const result = await response.json(); if (!response.ok) throw new Error(result.message || 'Run & Compare failed.'); renderCompare(result); setNotice('Run & Compare complete · provider calls 0.'); } catch (error) { setNotice(error.message, true); } finally { $('runCompare').disabled = false; } }
+  function renderCompare(result) { $('comparePanel').hidden = false; const metricNames = [['Heading precision','headingPrecision'],['Heading recall','headingRecall'],['F1','f1'],['Exact-span accuracy','exactSpanAccuracy'],['Level accuracy','levelAccuracy'],['Parent accuracy','parentAccuracy']]; $('compareMetrics').innerHTML = metricNames.map(([label,key]) => `<div class="metric"><strong>${pct(result.metrics[key])}</strong><small>${label}</small></div>`).join(''); $('compareRoute').textContent = `Runtime: Web → PipelineDocumentExtractionTool → DocumentProcessingService → AuthorityExtractionPipeline → ValidatedStructure · provider calls ${result.providerCalls}`; $('compareCounts').textContent = `TP ${result.counts.tp} · FP ${result.counts.fp} · FN ${result.counts.fn}`; $('compareDetails').textContent = JSON.stringify({tp:result.tp,fp:result.fp,fn:result.fn}, null, 2); }
+  function pct(value) { return `${(Number(value || 0) * 100).toFixed(1)}%`; }
+  function esc(value) { return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char])); }
+  $('docxFile').addEventListener('change', event => event.target.files[0] && createSession(event.target.files[0]).catch(error => setNotice(error.message, true)));
+  $('previous').onclick = () => { const visible = visibleIndices(); if (visible.length) currentIndex = visible[(visible.indexOf(currentIndex) - 1 + visible.length) % visible.length]; render(); }; $('next').onclick = () => { const visible = visibleIndices(); if (visible.length) currentIndex = visible[(visible.indexOf(currentIndex) + 1) % visible.length]; render(); }; $('nextUnreviewed').onclick = () => { filter = 'ALL'; const next = rows().findIndex((row,index) => index > currentIndex && !effectiveLabel(row)); currentIndex = next >= 0 ? next : rows().findIndex(row => !effectiveLabel(row)); if (currentIndex < 0) currentIndex = 0; render(); };
+  document.querySelectorAll('.label').forEach(button => button.onclick = () => setLabel(button.dataset.label)); $('useSelection').onclick = applySelection; $('clearHeadingFields').onclick = () => mutate(row => ['headingStart','headingEnd','headingText','structuralType','level','levelReviewStatus','parentGoldId','parentReviewStatus','goldHeadingId'].forEach(field => row[field] = null)); $('validatePacket').onclick = validatePacket; $('finalizeReview').onclick = finalize; $('runCompare').onclick = compare;
+  [['headingStart','headingStart'],['headingEnd','headingEnd'],['level','level'],['reviewer','reviewer'],['reviewNotes','reviewNotes']].forEach(([id,field]) => $(id).addEventListener('input', async event => { if (frozen || !packet) return; const row = rows()[currentIndex]; row[field] = event.target.value === '' ? null : (id === 'level' || id.startsWith('heading') ? Number(event.target.value) : event.target.value); if (field === 'level') row.levelReviewStatus = row.level == null ? null : 'REVIEWED'; if (field === 'headingStart' || field === 'headingEnd') { row.headingText = Number.isInteger(row.headingStart) && Number.isInteger(row.headingEnd) ? row.rawSourceText.slice(row.headingStart,row.headingEnd) : null; await refreshHeadingId(row); } render(); scheduleSave(); }));
+  $('structuralType').onchange = event => mutate(row => row.structuralType = event.target.value || null); $('parentStatus').onchange = event => mutate(row => { row.parentReviewStatus = event.target.value || null; if (row.parentReviewStatus !== 'PARENT_REVIEWED') row.parentGoldId = null; }); $('parentGoldId').onchange = event => mutate(row => row.parentGoldId = event.target.value || null); $('levelNotReviewed').onchange = event => mutate(row => { row.levelReviewStatus = event.target.checked ? 'LEVEL_NOT_REVIEWED' : null; row.level = null; });
+  $('filter').onchange = event => { filter = event.target.value; const visible = visibleIndices(); currentIndex = visible[0] ?? 0; render(); };
+  document.addEventListener('keydown', event => { if (event.target.matches('input,textarea,select') || frozen) return; const key = event.key.toLowerCase(); if (LABELS.find(label => label[0].toLowerCase() === key)) setLabel(LABELS.find(label => label[0].toLowerCase() === key)); else if (event.key === 'ArrowLeft') $('previous').click(); else if (event.key === 'ArrowRight') $('next').click(); });
+  if (sessionId) loadSession(sessionId).catch(error => setNotice(error.message, true));
 })();

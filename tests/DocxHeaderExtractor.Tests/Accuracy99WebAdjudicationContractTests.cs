@@ -14,15 +14,14 @@ public sealed class Accuracy99WebAdjudicationContractTests
         Assert.True(File.Exists(Path.Combine(web, "accuracy99", "adjudication.css")));
         Assert.Contains("Accuracy-99 Human Adjudication", product, StringComparison.Ordinal);
         Assert.Contains("/api/extract", product, StringComparison.Ordinal);
-        foreach (var token in new[] { "HEADING", "NON_HEADING", "UNCERTAIN", "EXCLUDED", "Next Unreviewed", "EXACT_REBOUND", "REVIEW_REQUIRED", "AMBIGUOUS", "Structural type", "LEVEL_NOT_REVIEWED", "PARENT_REVIEWED", "Validate packet" })
+        foreach (var token in new[] { "Human Review", "docxFile", "HEADING", "NON_HEADING", "UNCERTAIN", "EXCLUDED", "Next Unreviewed", "EXACT_REBOUND", "REVIEW_REQUIRED", "AMBIGUOUS", "Structural type", "LEVEL_NOT_REVIEWED", "PARENT_REVIEWED", "Validate review", "Finalize GOLD_FROZEN", "Run &amp; Compare", "predictionsIncluded" })
             Assert.Contains(token, html + script, StringComparison.Ordinal);
-        Assert.Contains("FileReader", script, StringComparison.Ordinal);
+        Assert.Contains("/api/accuracy99/review/source", script, StringComparison.Ordinal);
+        Assert.Contains("/api/accuracy99/review/session", script, StringComparison.Ordinal);
         Assert.Contains("crypto.subtle", script, StringComparison.Ordinal);
-        Assert.Contains("review.completed.jsonl", script, StringComparison.Ordinal);
-        Assert.DoesNotContain("fetch(", script, StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("predicted", script, StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("confidence", script, StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("model", script, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("packetFiles", html + script, StringComparison.Ordinal);
+        Assert.DoesNotContain("review.jsonl" + "\"", html + script, StringComparison.Ordinal);
+        Assert.Contains("Source-first mode never loads prediction, model, confidence, or current pipeline result.", html, StringComparison.Ordinal);
     }
 
     [Fact]
