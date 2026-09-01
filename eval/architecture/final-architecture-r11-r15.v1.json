@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "final_architecture_r11_r15",
+  "status": "IMPLEMENTED_VERIFICATION_PENDING",
+  "baseRevision": "1053cb4b61e243dc1e4c96eb82909e6110701eb4",
+  "implementationRevision": "containing-implementation-commit",
+  "sourceAuthority": "parser-owned",
+  "structuralAuthority": "ValidatedStructure",
+  "relationAuthority": "StructuralRelation",
+  "headingRecordAuthority": false,
+  "headingRecordBoundary": "compatibility-projection",
+  "factAuthority": "ValidatedFact",
+  "schemaAuthority": "validated-registered-schema-selection",
+  "modelDirectStructuralAuthority": false,
+  "modelDirectFactAuthority": false,
+  "modelDirectSchemaAuthority": false,
+  "legacyRuntimeAuthority": false,
+  "schemaDiscovery": {
+    "proposal": "SchemaSelectionProposal",
+    "validator": "SchemaSelectionValidator",
+    "noMatch": "NO_SCHEMA_MATCH",
+    "unknownSchemaFallback": false,
+    "multiSchemaReusesOneExtraction": true
+  },
+  "unifiedApplication": {
+    "service": "DocumentProcessingService",
+    "request": "DocumentProcessingRequest",
+    "modes": ["StructureOnly", "ExplicitSchemas", "AutoSchemaDiscovery"],
+    "result": "DocumentProcessingResult"
+  },
+  "physicalProjectSplit": {
+    "performed": true,
+    "project": "DocxHeaderExtractor.Eval",
+    "direction": "Eval -> Core"
+  },
+  "verification": {
+    "status": "PENDING_VERIFICATION",
+    "tests": "PENDING_VERIFICATION",
+    "releaseBuild": "PENDING_VERIFICATION",
+    "replay028056091": "PENDING_VERIFICATION",
+    "hostE2E": "PENDING_VERIFICATION",
+    "providerCalls": "PENDING_VERIFICATION",
+    "legacyCensus": "PENDING_VERIFICATION",
+    "fullSuite": "PENDING_VERIFICATION",
+    "accuracyBenchmark": "PENDING_VERIFICATION"
+  },
+  "freezePolicy": "Closure requires a later final verification; further architecture changes require a concrete product requirement or Accuracy-99 evidence."
+}
