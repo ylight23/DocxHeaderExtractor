@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "cleanup_final_legacy_boundary",
+  "status": "PASS",
+  "baseRevision": "c67ac6683156efd25ddf1105557ac1d4f82ab60a",
+  "executionRevision": "3b318f93fe6ac94813a30afc8a8615ad9bcc445d",
+  "publicationRevision": "containing-closure-commit",
+  "legacyAuthorityPath": 0,
+  "mergeStructuralSources": 0,
+  "obsoleteZeroCallerApis": 0,
+  "validatedStructureHeadingsView": 0,
+  "corePdfLegacyPolicyReferences": 0,
+  "normalProductionPdfLegacyPolicyCallers": 0,
+  "slimXmlChunkerRetained": true,
+  "legacyDocConverterRetained": true,
+  "headingRecordBoundaries": {
+    "genericStructuralAuthority": 0,
+    "sectionChunk": 0,
+    "retrieval": 0,
+    "fact": 0,
+    "compatibilityProjectionDiagnosticEval": "allowed"
+  },
+  "replay": {
+    "fixtures": ["028", "056", "091"],
+    "joined": 3,
+    "structureDelta": 0,
+    "productDelta": 0,
+    "finalHeadingDelta": 0
+  },
+  "host": {
+    "status": "PASS",
+    "fingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "fingerprintChanged": false,
+    "unjoinedResults": 0
+  },
+  "focusedTests": {
+    "total": 45,
+    "passed": 45,
+    "failed": 0,
+    "skipped": 0
+  },
+  "fullSuite": {
+    "total": 910,
+    "passed": 908,
+    "failed": 2,
+    "skipped": 0,
+    "frozenFailures": ["C1", "N15"],
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0
+  },
+  "providerCalls": 0,
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "expectedChanged": false,
+  "mergeReady": true
+}
