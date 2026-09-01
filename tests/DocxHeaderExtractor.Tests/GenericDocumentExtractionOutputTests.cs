@@ -93,19 +93,135 @@ public sealed class GenericDocumentExtractionOutputTests
     }
 
     [Fact]
-    public void Parser_owned_structural_sources_can_join_a_catalog_without_inventing_text()
+    public void Parser_owned_facts_build_catalog_without_inventing_text()
     {
-        var source = BuildSource();
-        var baseCatalog = DocumentSourceCatalogBuilder.FromSourceDocument(source);
-        var element = Element("pdf-element-1", "Figure 2", 20, StructuralElementType.Figure,
-            ProposedRole.StructuralContainer, "pdf-block-1");
-        var merged = DocumentSourceCatalogBuilder.MergeStructuralSources(
-            baseCatalog, ValidatedStructure.FromElements([element]));
+        const string raw = "prefix Figure 3 caption suffix";
+        var catalog = DocumentSourceCatalogBuilder.FromSourceFacts([
+            new SourceFacts
+            {
+                SourceId = "pdf-block-1",
+                RawText = raw,
+                RawSpan = new SourceTextSpan(7, 23),
+                Source = new SourceAnchor
+                {
+                    SourceType = "pdf",
+                    RenderBlockId = "pdf-block-1",
+                    ParagraphIndex = 20,
+                },
+            },
+        ]);
 
-        var unit = Assert.Single(merged.Units, item => item.SourceId == "pdf-block-1");
-        Assert.Equal("Figure 2", unit.Text);
-        Assert.Equal(20, unit.SourceOrdinal);
-        Assert.Equal("parser-fact", unit.SourceAnchor.SourceType);
+        var unit = Assert.Single(catalog.Units);
+        Assert.Equal(raw, unit.Text);
+        Assert.Equal(new StructuralSpan(0, raw.Length), unit.SourceSpan);
+
+        var candidate = new StructuralCandidate
+        {
+            CandidateId = "caption-1",
+            ObservedSourceFacts =
+            [
+                new SourceFacts
+                {
+                    SourceId = "pdf-block-1",
+                    RawText = raw,
+                    RawSpan = new SourceTextSpan(0, raw.Length),
+                    Source = new SourceAnchor { SourceType = "pdf", ParagraphIndex = 20 },
+                },
+            ],
+        };
+        var element = StructuralProposalValidator.Materialize(
+            candidate,
+            new StructuralProposal
+            {
+                CandidateId = "caption-1",
+                Type = StructuralElementType.Caption,
+                Role = ProposedRole.Caption,
+                ProposedSources = [new ProposedSourceReference("pdf-block-1", new StructuralSpan(7, 23))],
+            },
+            "structural:caption:1",
+            new StructuralDecision("test", "accepted", 1, "parser-fact"));
+
+        Assert.NotNull(element);
+        Assert.Equal(new StructuralSpan(7, 23), Assert.Single(element!.Sources).Span);
+        Assert.Equal("Figure 3 caption", element.Text);
+    }
+
+    [Fact]
+    public void Multi_source_structural_element_keeps_each_parser_span()
+    {
+        var facts = new[]
+        {
+            new SourceFacts
+            {
+                SourceId = "pdf-a", RawText = "first", RawSpan = new SourceTextSpan(0, 5),
+                Source = new SourceAnchor { SourceType = "pdf", ParagraphIndex = 1 },
+            },
+            new SourceFacts
+            {
+                SourceId = "pdf-b", RawText = "second", RawSpan = new SourceTextSpan(0, 6),
+                Source = new SourceAnchor { SourceType = "pdf", ParagraphIndex = 2 },
+            },
+        };
+        var candidate = new StructuralCandidate { CandidateId = "multi", ObservedSourceFacts = facts };
+        var element = StructuralProposalValidator.Materialize(
+            candidate,
+            new StructuralProposal
+            {
+                CandidateId = "multi",
+                Type = StructuralElementType.Caption,
+                Role = ProposedRole.Caption,
+                ProposedSources =
+                [
+                    new ProposedSourceReference("pdf-a", new StructuralSpan(0, 5)),
+                    new ProposedSourceReference("pdf-b", new StructuralSpan(0, 6)),
+                ],
+            },
+            "structural:multi",
+            new StructuralDecision("test", "accepted", 1, "parser-facts"));
+
+        Assert.NotNull(element);
+        Assert.Equal(new[] { "pdf-a", "pdf-b" }, element!.Sources.Select(source => source.SourceId));
+        Assert.Equal(new[] { 1, 2 }, element.Sources.Select(source => source.SourceOrdinal));
+    }
+
+    [Fact]
+    public void Pdf_materializer_joins_parser_catalog_and_preserves_narrow_structural_span()
+    {
+        const string raw = "prefix Figure 3 caption suffix";
+        var fact = new PdfHierarchyFactAudit(
+            "b1", 0, 1, "document_body", "document_body", null, null, false, null,
+            null, null, 1, "relationship_unresolved", [])
+        {
+            FactId = "p1:b1:s7-23",
+            SourceBlockText = raw,
+            HeadingSpan = new TextOffsetSpan(7, 23),
+            HeadingText = "Figure 3 caption",
+        };
+        var final = PdfFinalStructureProjection.Project(
+            "sha",
+            [new PdfValidatedStructure("b1", 1, null, "unresolved", "requires_review")],
+            [fact],
+            [new PdfCanonicalGrounding(
+                "b1", 0, "docx-p1", new DocxTextSpan(7, 23), raw)]);
+        var catalog = DocumentSourceCatalogBuilder.FromSourceFacts([
+            new SourceFacts
+            {
+                SourceId = "b1",
+                RawText = raw,
+                RawSpan = new SourceTextSpan(0, raw.Length),
+                Source = new SourceAnchor { SourceType = "pdf", ParagraphIndex = 0, RenderBlockId = "b1" },
+            },
+        ]);
+
+        var materialized = StructuralAuthorityMaterializer.Materialize(
+            final, PdfOutputDecisionPolicy.Decide(final), catalog);
+        var source = Assert.Single(materialized.Structure.Elements).Sources.Single();
+
+        Assert.Equal("b1", source.SourceId);
+        Assert.Equal(0, source.SourceOrdinal);
+        Assert.Equal(new StructuralSpan(7, 23), source.Span);
+        Assert.Equal(raw, catalog.Units.Single().Text);
+        Assert.Equal(new StructuralSpan(0, raw.Length), catalog.Units.Single().SourceSpan);
     }
 
     private static SourceDocument BuildSource() => new()

@@ -31,8 +31,13 @@ public static class SectionChunkProjection
         var chunks = new List<DocumentChunk>();
         foreach (var section in sections)
         {
+            var missingSourceIds = section.SourceIds
+                .Where(sourceId => !sources.ContainsKey(sourceId))
+                .ToArray();
+            if (missingSourceIds.Length > 0)
+                throw new InvalidOperationException("chunk-source-not-grounded");
+
             var sectionSources = section.SourceIds
-                .Where(sources.ContainsKey)
                 .Select(sourceId => sources[sourceId])
                 .OrderBy(unit => unit.SourceOrdinal)
                 .ThenBy(unit => unit.SourceId, StringComparer.Ordinal)

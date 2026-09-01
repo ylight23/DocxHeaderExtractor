@@ -821,11 +821,13 @@ public static class PdfLayoutEvidenceOutline
             : recoveredHeadings.Length < Math.Max(3, (int)Math.Ceiling(accepted.Length * 0.65))
                 ? $"audit-only:analyst-low-docx-alignment:{recoveredHeadings.Length}/{accepted.Length}"
                 : summary;
+        var parserBlocks = PdfSemanticBlockGrouper.Build(context.Annotations);
+        var sourceCatalog = DocumentSourceCatalogBuilder.FromPdfParserBlocks(parserBlocks);
         var finalStructure = PdfFinalStructureProjection.Project(
             FileSha256(originalInputPath), audit.ValidatedStructures, audit.HierarchyFacts,
             PdfCanonicalGrounding.FromGroundedHeadings(recoveredHeadings));
         var decisions = PdfOutputDecisionPolicy.Decide(finalStructure);
-        var materialized = StructuralAuthorityMaterializer.Materialize(finalStructure, decisions);
+        var materialized = StructuralAuthorityMaterializer.Materialize(finalStructure, decisions, sourceCatalog);
         var structuralLane = PdfNonHeadingStructuralProducer.MaterializeLane(selected, blockAnalysis.Decisions, candidateContexts);
         var relationProposals = materialized.Structure.Relations
             .Select(relation => new StructuralRelationProposal(
@@ -840,6 +842,7 @@ public static class PdfLayoutEvidenceOutline
         {
             FinalStructure = finalStructure,
             OutputDecisions = decisions,
+            SourceCatalog = sourceCatalog,
             DetachedTasks = detachedTasks,
         };
     }

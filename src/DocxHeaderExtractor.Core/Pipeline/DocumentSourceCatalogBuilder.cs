@@ -5,6 +5,7 @@ namespace DocxHeaderExtractor.Core.Pipeline;
 /// <summary>Builds generic source units from parser-owned source representations.</summary>
 public static class DocumentSourceCatalogBuilder
 {
+    /// <summary>Builds the DOCX catalog directly from parser-owned source paragraphs.</summary>
     public static DocumentSourceCatalog FromSourceDocument(SourceDocument source)
     {
         ArgumentNullException.ThrowIfNull(source);
@@ -24,35 +25,30 @@ public static class DocumentSourceCatalogBuilder
     }
 
     /// <summary>
-    /// Adds parser-owned units that are not present in the canonical source document, such as
-    /// PDF layout blocks used by non-heading structural elements. Existing source identity wins.
+    /// Builds a catalog from parser-owned facts. The catalog span covers the complete raw fact;
+    /// a structural proposal may still retain a narrower span in its own SourceReference.
     /// </summary>
-    public static DocumentSourceCatalog MergeStructuralSources(
-        DocumentSourceCatalog catalog,
-        ValidatedStructure structure)
+    public static DocumentSourceCatalog FromSourceFacts(IEnumerable<SourceFacts> facts)
     {
-        ArgumentNullException.ThrowIfNull(catalog);
-        ArgumentNullException.ThrowIfNull(structure);
-        var known = catalog.Units.Select(unit => unit.SourceId).ToHashSet(StringComparer.Ordinal);
-        var additions = structure.Elements
-            .SelectMany(element => element.Sources.Select(source => (element, source)))
-            .Where(item => !known.Contains(item.source.SourceId))
-            .GroupBy(item => item.source.SourceId, StringComparer.Ordinal)
-            .Select(group =>
-            {
-                var item = group.First();
-                return new DocumentSourceUnit(
-                    item.source.SourceId,
-                    item.source.SourceOrdinal,
-                    item.element.Text,
-                    new SourceAnchor
-                    {
-                        SourceType = "parser-fact",
-                        ParagraphId = item.source.SourceId,
-                        ParagraphIndex = item.source.SourceOrdinal,
-                    },
-                    item.source.Span);
-            });
-        return new DocumentSourceCatalog(catalog.Units.Concat(additions));
+        ArgumentNullException.ThrowIfNull(facts);
+        return new DocumentSourceCatalog(facts
+            .Where(fact => !string.IsNullOrWhiteSpace(fact.RawText))
+            .Select((fact, index) => new DocumentSourceUnit(
+                fact.SourceId,
+                fact.Source.ParagraphIndex ?? index,
+                fact.RawText,
+                fact.Source,
+                new StructuralSpan(0, fact.RawText.Length))));
+    }
+
+    /// <summary>Builds the PDF catalog from parser-owned semantic blocks, never from structure text.</summary>
+    internal static DocumentSourceCatalog FromPdfParserBlocks(IReadOnlyList<PdfSemanticBlock> blocks)
+    {
+        ArgumentNullException.ThrowIfNull(blocks);
+        return FromSourceFacts(blocks.Select((block, index) =>
+        {
+            var fact = SourceFactsBuilder.FromPdfBlock(block);
+            return fact with { Source = fact.Source with { ParagraphIndex = index } };
+        }));
     }
 }

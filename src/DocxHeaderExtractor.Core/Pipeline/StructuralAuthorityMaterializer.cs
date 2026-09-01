@@ -15,7 +15,8 @@ public static class StructuralAuthorityMaterializer
 
     public static StructuralMaterializationResult Materialize(
         PdfFinalStructure finalStructure,
-        IReadOnlyList<PdfOutputDecision> decisions)
+        IReadOnlyList<PdfOutputDecision> decisions,
+        DocumentSourceCatalog? sourceCatalog = null)
     {
         ArgumentNullException.ThrowIfNull(finalStructure);
         ArgumentNullException.ThrowIfNull(decisions);
@@ -42,17 +43,33 @@ public static class StructuralAuthorityMaterializer
                 ? nameof(HeadingDecisionStatus.AutoAcceptedEvidence)
                 : nameof(HeadingDecisionStatus.RequiresReview);
             var reasons = decision?.Reasons ?? [];
-            var sourceId = heading.SourceAnchor.StableId ?? heading.Id;
-            var sourceText = heading.SourceText;
+            // The catalog-bearing overload is the production PDF path. The catalog-free form is
+            // retained for the compatibility/shadow oracle: it must continue to project the old
+            // DOCX-grounded identity until those callers migrate.
+            var usesPdfParserSource = sourceCatalog is not null && heading.PdfEvidence is not null;
+            var sourceId = usesPdfParserSource
+                ? heading.PdfEvidence!.BlockId
+                : heading.SourceAnchor.StableId ?? heading.Id;
+            var sourceUnit = usesPdfParserSource
+                ? sourceCatalog?.Units.FirstOrDefault(unit => unit.SourceId == sourceId)
+                : null;
+            var sourceText = sourceUnit?.Text ?? heading.SourceText;
+            var sourceSpan = usesPdfParserSource && heading.PdfEvidence is { } pdfEvidence
+                ? new StructuralSpan(pdfEvidence.Span.Start, pdfEvidence.Span.End)
+                : new StructuralSpan(heading.SourceAnchor.Span.Start, heading.SourceAnchor.Span.End);
             var sourceFacts = new SourceFacts
             {
                 SourceId = sourceId,
                 RawText = sourceText,
                 Source = new SourceAnchor
                 {
-                    SourceType = "docx",
+                    SourceType = usesPdfParserSource ? "pdf" : "docx",
                     ParagraphId = sourceId,
-                    ParagraphIndex = heading.SourceAnchor.ParagraphIndex,
+                    ParagraphIndex = sourceUnit?.SourceOrdinal ??
+                        (usesPdfParserSource ? PdfBlockOrdinal(sourceId) : heading.SourceAnchor.ParagraphIndex),
+                    Page = usesPdfParserSource ? heading.PdfEvidence?.Page : null,
+                    RenderBlockId = usesPdfParserSource ? heading.PdfEvidence?.BlockId : null,
+                    RenderLineIds = usesPdfParserSource ? heading.PdfEvidence?.LineIds ?? [] : [],
                 },
                 RawSpan = new SourceTextSpan(0, sourceText.Length),
             };
@@ -69,7 +86,7 @@ public static class StructuralAuthorityMaterializer
                 ProposedSources =
                 [
                     new ProposedSourceReference(sourceId,
-                        new StructuralSpan(heading.SourceAnchor.Span.Start, heading.SourceAnchor.Span.End)),
+                        sourceSpan),
                 ],
                 ProposedParentId = heading.ParentId is { } parent && elementIdByHeadingId.ContainsKey(parent)
                     ? elementIdByHeadingId[parent]
@@ -119,6 +136,12 @@ public static class StructuralAuthorityMaterializer
     }
 
     private static string ElementId(string headingId) => $"structural:pdf:{headingId}";
+
+    private static int PdfBlockOrdinal(string sourceId) =>
+        sourceId.StartsWith("b", StringComparison.Ordinal) &&
+        int.TryParse(sourceId.AsSpan(1), out var ordinal)
+            ? Math.Max(0, ordinal - 1)
+            : 0;
 
     private static StructuralElementType ElementType(string role) => role switch
     {

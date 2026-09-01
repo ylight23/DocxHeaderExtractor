@@ -97,6 +97,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             RouteExecutionAudit? audit;
             string route;
             string reason;
+            DocumentSourceCatalog? routeSourceCatalog = null;
             PdfFinalStructure? routeFinalStructure = null;
             IReadOnlyList<PdfOutputDecision>? routeOutputDecisions = null;
             var authorityRoute = _routePolicy.Decide(new SourceCapabilities(
@@ -131,6 +132,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                     authority = result.Authority;
                     routeFinalStructure = result.FinalStructure;
                     routeOutputDecisions = result.OutputDecisions;
+                    routeSourceCatalog = result.SourceCatalog;
                     authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
                     route = "pdf-authority-v1";
                     reason = result.Reason;
@@ -178,8 +180,9 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             var headings = HeadingOutlineProjection.Project(
                 structural.Structure, structural.EmittedElementIds);
             _options.Log?.Invoke($"Authority route {route}: validated={headings.Count}; {reason}");
-            var sourceCatalog = DocumentSourceCatalogBuilder.MergeStructuralSources(
-                DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument), structural.Structure);
+            var sourceCatalog = authorityRoute == AuthorityRoute.PdfAuthority
+                ? routeSourceCatalog ?? throw new InvalidOperationException("pdf-source-catalog-missing")
+                : DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument);
             var sections = StructuralSectionProjection.Project(structural.Structure, sourceCatalog);
             var chunks = SectionChunkProjection.Project(
                 sections, sourceCatalog, structural.Structure,

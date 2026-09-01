@@ -18,12 +18,18 @@ public sealed record PdfTextbookOutlineResult(
     /// </summary>
     public PdfFinalStructure? FinalStructure { get; init; }
 
+    /// <summary>Parser-owned PDF source inventory used by generic sections and chunks.</summary>
+    public DocumentSourceCatalog? SourceCatalog { get; init; }
+
     public IReadOnlyList<PdfOutputDecision> OutputDecisions { get; init; } = [];
 
     public IReadOnlyList<Task> DetachedTasks { get; init; } = [];
 
     public static PdfTextbookOutlineResult NotApplicable(string reason) => new(
-        new StructuralAuthorityResult(new ValidatedStructure([]), null, reason), reason);
+        new StructuralAuthorityResult(new ValidatedStructure([]), null, reason), reason)
+    {
+        SourceCatalog = new DocumentSourceCatalog([]),
+    };
 }
 
 /// <summary>
