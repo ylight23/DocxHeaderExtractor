@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r5_6a_c_retrieval_index_ie_consumers",
+  "status": "PASS",
+  "baseRevision": "c056d7a72e667b33556315ce0139de1a41522309",
+  "executionRevision": "4a7ccee0882cde8ffd811e9da323c38cca246e50",
+  "publicationRevision": "containing-closure-commit",
+  "records": {
+    "retrieval": 1,
+    "searchIndex": 1,
+    "ieContext": 1
+  },
+  "textAuthority": {
+    "retrievalTextInvention": 0,
+    "indexTextInvention": 0,
+    "ieContextTextInvention": 0,
+    "sourceUnjoined": 0,
+    "sectionUnjoined": 0,
+    "structuralReferenceUnjoined": 0,
+    "relationReferenceUnjoined": 0,
+    "chunkTextSourceBackedPercent": 100
+  },
+  "context": {
+    "figureContext": "PASS",
+    "tableContext": "PASS",
+    "listItemContext": "PASS",
+    "sectionPath": "PASS",
+    "relations": ["ParentChild", "CaptionOf", "Labels"]
+  },
+  "dependencies": {
+    "consumerDependsOnHeadingRecord": false,
+    "consumerDependsOnSlim": false,
+    "embeddingProviderCalls": 0,
+    "llmProviderCalls": 0
+  },
+  "replay": {
+    "fixtures": ["028", "056", "091"],
+    "joined": 3,
+    "structureDelta": 0,
+    "decisionDelta": 0,
+    "productDelta": 0,
+    "finalHeadingDelta": 0,
+    "hostFingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "hostFingerprintChanged": false,
+    "unjoinedHostResults": 0
+  },
+  "focusedTests": {
+    "total": 55,
+    "passed": 55,
+    "failed": 0,
+    "skipped": 0
+  },
+  "consumerContractTests": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "fullSuite": {
+    "total": 859,
+    "passed": 857,
+    "failed": 2,
+    "skipped": 0,
+    "knownFrozenFailures": ["C1", "N15"],
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0
+  },
+  "expectedChanged": false,
+  "r5_6a_c": "PASS",
+  "next": "embedding_or_fact_proposal_validation"
+}
