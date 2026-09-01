@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy99_blind_holdout_acquisition_manifest",
+  "status": "NOT_AVAILABLE",
+  "blind": false,
+  "documentCount": 0,
+  "developmentDocumentsExcluded": [
+    "010",
+    "051",
+    "052",
+    "056",
+    "092"
+  ],
+  "hashesFrozen": false,
+  "labelsFrozen": false,
+  "requirements": [
+    "unseen documents where possible",
+    "available parser-owned source facts",
+    "exhaustive source-first labels including negatives",
+    "exact heading spans, reviewed levels, and reviewed parent states",
+    "PDF and DOCX strata appropriate to the claim",
+    "document and source-catalog hashes frozen before evaluation"
+  ]
+}

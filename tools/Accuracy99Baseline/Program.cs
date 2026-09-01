@@ -18,6 +18,8 @@ var only = args.FirstOrDefault(arg => arg.StartsWith("--only=", StringComparison
 if (!string.IsNullOrWhiteSpace(only))
     datasets = datasets.Where(dataset => string.Equals(dataset.Id, only, StringComparison.OrdinalIgnoreCase)).ToArray();
 var debug = args.Any(arg => string.Equals(arg, "--debug", StringComparison.OrdinalIgnoreCase));
+var importReviewRoot = args.FirstOrDefault(arg => arg.StartsWith("--import-reviews=", StringComparison.OrdinalIgnoreCase))?[17..];
+var refreshReviewPackets = args.Any(arg => string.Equals(arg, "--refresh-review-packets", StringComparison.OrdinalIgnoreCase));
 var inventory = BuildInventory(root, datasets);
 var runs = new List<DatasetRun>();
 
@@ -256,8 +258,181 @@ Directory.CreateDirectory(Path.GetDirectoryName(docPath)!);
 File.WriteAllText(docPath, RenderMarkdown(baseline, runs, allFirstLoss));
 var phaseBDocPath = Path.Combine(root, "docs", "accuracy", "accuracy99-gold-protocol.md");
 File.WriteAllText(phaseBDocPath, RenderPhaseBMarkdown(sourceCatalogs, rebinding, phaseBReconciliation));
+var phaseC = PreparePhaseC(root, outputRoot, sourceCatalogs, rebinding, importReviewRoot, refreshReviewPackets, jsonOptions);
 
-Console.WriteLine($"ACCURACY-99 BASELINE = NOT_YET_MEASURABLE; datasets={runs.Count}; providerCalls={providerCalls}; unjoined={baseline.unjoinedOccurrences}");
+Console.WriteLine($"ACCURACY-99 PHASE C = {phaseC.Status}; datasets={runs.Count}; reviewOccurrences={phaseC.TotalOccurrences}; providerCalls={providerCalls}");
+
+static PhaseCExecutionSummary PreparePhaseC(
+    string root,
+    string outputRoot,
+    IReadOnlyList<SourceCatalogSnapshot> sourceCatalogs,
+    IReadOnlyList<HistoricalRebinding> rebinding,
+    string? importReviewRoot,
+    bool refreshReviewPackets,
+    JsonSerializerOptions jsonOptions)
+{
+    var documents = sourceCatalogs.Where(item => item.Status == "AVAILABLE").Select(catalog => new PhaseCSourceDocument
+    {
+        DatasetId = catalog.DatasetId,
+        DocumentId = catalog.DocumentId!,
+        SourceCatalogVersion = PhaseCAdjudication.SourceCatalogVersion,
+        Occurrences = catalog.Occurrences.Select(item => new PhaseCSourceOccurrence
+        {
+            SourceId = item.SourceId,
+            SourceOrdinal = item.SourceOrdinal,
+            RawSourceText = item.RawText,
+            RawSourceSpan = item.RawSourceSpan,
+            SourceType = item.SourceType,
+            PreviousSourceText = item.PreviousContext,
+            NextSourceText = item.NextContext,
+            Page = item.Page,
+        }).ToArray(),
+    }).ToArray();
+
+    var developmentRoot = Path.Combine(outputRoot, "adjudication", "development");
+    Directory.CreateDirectory(developmentRoot);
+    var importing = !string.IsNullOrWhiteSpace(importReviewRoot);
+    var reviewRoot = importing ? Path.GetFullPath(importReviewRoot!) : developmentRoot;
+    var summaries = new List<PhaseCPacketSummary>();
+    var imports = new List<PhaseCImportResult>();
+
+    foreach (var document in documents)
+    {
+        var historical = rebinding.Where(item => item.DatasetId == document.DatasetId && item.ReboundSourceId is not null)
+            .GroupBy(item => item.ReboundSourceId!, StringComparer.Ordinal)
+            .ToDictionary(group => group.Key, group => (IReadOnlyList<PhaseCHistoricalReference>)group.Select(item => new PhaseCHistoricalReference
+            {
+                HistoricalOrdinal = item.HistoricalOrdinal,
+                HistoricalSourceId = item.HistoricalSourceId,
+                HistoricalSourceOrdinal = item.HistoricalSourceOrdinal,
+                HistoricalText = item.HistoricalText,
+                HistoricalLevel = item.HistoricalLevel,
+                Status = item.Status,
+            }).ToArray(), StringComparer.Ordinal);
+        var packetPath = Path.Combine(reviewRoot, $"{document.DatasetId}.review.jsonl");
+        if (!importing && refreshReviewPackets && File.Exists(packetPath) && HasHumanReviewData(PhaseCAdjudication.ReadPacket(packetPath)))
+            throw new InvalidOperationException($"Refusing to overwrite human review data in {packetPath}.");
+        if (!importing && (refreshReviewPackets || !File.Exists(packetPath)))
+            PhaseCAdjudication.WritePacket(packetPath, PhaseCAdjudication.CreateBlankPacket(document, historical));
+        if (!File.Exists(packetPath))
+            throw new FileNotFoundException($"Review packet {document.DatasetId} was not supplied.", packetPath);
+
+        var completenessErrors = PhaseCAdjudication.ValidatePacketCompleteness(packetPath, document);
+        if (completenessErrors.Count != 0)
+            throw new InvalidDataException($"Review packet {document.DatasetId} failed completeness validation: {string.Join(", ", completenessErrors)}");
+        var packet = PhaseCAdjudication.ReadPacket(packetPath);
+        var labels = rebinding.Where(item => item.DatasetId == document.DatasetId).ToArray();
+        var unlabeled = packet.Occurrences.Count(item =>
+            item.AdjudicatedLabel is null && item.InitialAdjudicatedLabel is null && item.FinalAdjudicatedLabel is null);
+        summaries.Add(new PhaseCPacketSummary
+        {
+            DatasetId = document.DatasetId,
+            Packet = importing ? Path.GetFullPath(packetPath) : Path.GetRelativePath(root, packetPath).Replace('\\', '/'),
+            CatalogOccurrenceCount = document.Occurrences.Count,
+            ReviewPacketOccurrenceCount = packet.Occurrences.Count,
+            SourceCatalogHash = PhaseCAdjudication.ComputeSourceCatalogHash(document),
+            ReviewPacketHash = PhaseCAdjudication.ComputeFileHash(packetPath),
+            HistoricalExactRebounds = labels.Count(item => item.Status == "EXACT_REBOUND"),
+            HistoricalReviewRequired = labels.Count(item => item.Status == "REVIEW_REQUIRED"),
+            HistoricalAmbiguous = labels.Count(item => item.Status == "AMBIGUOUS"),
+            Unlabeled = unlabeled,
+            PacketCompleteness = "PASS",
+            ReviewStatus = packet.Manifest.ReviewStatus,
+        });
+        if (importing) imports.Add(PhaseCAdjudication.ImportAndValidate(packetPath, document));
+    }
+
+    var status = "WAITING_FOR_HUMAN_ADJUDICATION";
+    if (importing)
+    {
+        var invalid = imports.Where(item => !item.GoldReady).ToArray();
+        if (invalid.Length != 0)
+        {
+            var detail = string.Join("; ", invalid.Select(item => $"{item.DatasetId}=[{string.Join(",", item.Errors)}]"));
+            throw new InvalidDataException("Human review import is not GOLD_READY: " + detail);
+        }
+        var gold = PhaseCAdjudication.FreezeDevelopmentGold(imports, "accuracy99-development-gold-v1");
+        var goldPath = Path.Combine(outputRoot, "development-gold.v1.json");
+        if (File.Exists(goldPath))
+            throw new InvalidOperationException("development-gold.v1.json is already frozen; corrections require a new explicit version.");
+        File.WriteAllText(goldPath, JsonSerializer.Serialize(gold, jsonOptions));
+        status = "DEVELOPMENT_GOLD_READY";
+    }
+
+    File.WriteAllText(Path.Combine(outputRoot, "phase-c-adjudication-status.v1.json"), JsonSerializer.Serialize(new
+    {
+        schemaVersion = 1,
+        artifactKind = "accuracy99_phase_c_development_gold_adjudication",
+        productionBaselineRevision = PhaseCAdjudication.ProductionBaselineRevision,
+        status,
+        sourceFirst = true,
+        predictionsIncluded = false,
+        importer = "READY",
+        goldValidators = "READY",
+        packetCompleteness = summaries.All(item => item.PacketCompleteness == "PASS") ? "PASS" : "FAIL",
+        totalOccurrences = summaries.Sum(item => item.CatalogOccurrenceCount),
+        unlabeledOccurrences = summaries.Sum(item => item.Unlabeled),
+        developmentGold = status == "DEVELOPMENT_GOLD_READY" ? "FROZEN" : "NOT_FROZEN",
+        developmentBaseline = "NOT_RUN",
+        providerCalls = 0,
+        productionSourceChanged = false,
+        tuningPerformed = false,
+        packets = summaries,
+    }, jsonOptions));
+
+    File.WriteAllText(Path.Combine(outputRoot, "blind-holdout-manifest.v1.json"), JsonSerializer.Serialize(new
+    {
+        schemaVersion = 1,
+        artifactKind = "accuracy99_blind_holdout_acquisition_manifest",
+        status = "NOT_AVAILABLE",
+        blind = false,
+        documentCount = 0,
+        developmentDocumentsExcluded = documents.Select(item => item.DatasetId).ToArray(),
+        hashesFrozen = false,
+        labelsFrozen = false,
+        requirements = new[]
+        {
+            "unseen documents where possible",
+            "available parser-owned source facts",
+            "exhaustive source-first labels including negatives",
+            "exact heading spans, reviewed levels, and reviewed parent states",
+            "PDF and DOCX strata appropriate to the claim",
+            "document and source-catalog hashes frozen before evaluation",
+        },
+    }, jsonOptions));
+
+    var guidePath = Path.Combine(root, "docs", "accuracy", "accuracy99-human-adjudication-guide.md");
+    File.WriteAllText(guidePath, RenderHumanAdjudicationGuide());
+    return new PhaseCExecutionSummary(status, summaries.Sum(item => item.CatalogOccurrenceCount));
+}
+
+static bool HasHumanReviewData(PhaseCReviewPacket packet) =>
+    packet.Manifest.ReviewStatus != "READY_FOR_REVIEW" || packet.Occurrences.Any(item =>
+        item.AdjudicatedLabel is not null || item.InitialAdjudicatedLabel is not null ||
+        item.FinalAdjudicatedLabel is not null || item.Reviewer is not null || item.ReviewNotes is not null ||
+        item.HeadingStart is not null || item.HeadingEnd is not null || item.HeadingText is not null ||
+        item.StructuralType is not null || item.Level is not null || item.LevelReviewStatus is not null ||
+        item.ParentGoldId is not null || item.ParentReviewStatus is not null || item.GoldHeadingId is not null);
+
+static string RenderHumanAdjudicationGuide() =>
+    """
+    # Accuracy-99 human adjudication guide
+
+    Edit the five `eval/accuracy99/adjudication/development/*.review.jsonl` files source-first. The first line is an immutable manifest; every later line is one parser-owned occurrence. Do not remove, duplicate, reorder, or edit source identity/text fields.
+
+    - `HEADING`: the occurrence contains a heading. Set the exact zero-based, end-exclusive `headingStart`/`headingEnd`, copy the exact substring into `headingText`, set `structuralType`, and record level/parent review status.
+    - `NON_HEADING`: reviewed source content that is not a heading.
+    - `UNCERTAIN`: source evidence is insufficient for a defensible semantic decision.
+    - `EXCLUDED`: occurrence is outside the benchmark's eligible source universe for an explicit protocol reason.
+
+    For `HEADING`, coordinates may cover only part of `rawSourceText`. Never normalize text when selecting the span. Set `levelReviewStatus` to `REVIEWED` with a positive `level`, or `LEVEL_NOT_REVIEWED` with `level=null`. Set `parentReviewStatus` to `ROOT`, `PARENT_REVIEWED`, or `PARENT_UNKNOWN`; `PARENT_REVIEWED` must use another heading's deterministic `goldHeadingId` in the same document.
+
+    Every reviewed row requires `reviewer`. Non-heading labels must leave every heading, level, parent, and gold-heading field null. Historical provenance is evidence only and does not pre-fill the human decision. Production predictions are intentionally absent.
+
+    After all rows are complete, change the manifest `reviewStatus` to `REVIEW_COMPLETE` and run the importer with `--import-reviews=<directory>`. A discrepancy pass may preserve `initialAdjudicatedLabel`, then set `finalAdjudicatedLabel` plus `resolutionReason`; it must never overwrite the initial label silently.
+
+    `--refresh-review-packets` is only for regenerating untouched blank packets. The runner refuses to refresh any packet containing human input. A frozen `development-gold.v1.json` is immutable; corrections require a new explicit dataset version.
+    """ + Environment.NewLine;
 
 static string FindRepositoryRoot(string[] args)
 {
@@ -754,6 +929,24 @@ static string RenderMarkdown(object baseline, IReadOnlyList<DatasetRun> runs, IR
 }
 
 sealed record DatasetSpec(string Id, string LabelClass, string DocumentPath, string KeyPath, bool Complete, string Notes);
+
+sealed record PhaseCExecutionSummary(string Status, int TotalOccurrences);
+
+sealed class PhaseCPacketSummary
+{
+    public required string DatasetId { get; init; }
+    public required string Packet { get; init; }
+    public required int CatalogOccurrenceCount { get; init; }
+    public required int ReviewPacketOccurrenceCount { get; init; }
+    public required string SourceCatalogHash { get; init; }
+    public required string ReviewPacketHash { get; init; }
+    public required int HistoricalExactRebounds { get; init; }
+    public required int HistoricalReviewRequired { get; init; }
+    public required int HistoricalAmbiguous { get; init; }
+    public required int Unlabeled { get; init; }
+    public required string PacketCompleteness { get; init; }
+    public required string ReviewStatus { get; init; }
+}
 
 sealed class SourceCatalogSnapshot
 {

@@ -305,7 +305,7 @@
   },
   "evalArtifacts": {
     "exists": true,
-    "total": 276,
+    "total": 283,
     "byTopLevelDirectory": {
       "accuracy": 12,
       "accuracy-evidence-expansion": 1,
@@ -317,7 +317,7 @@
       "accuracy-round4": 9,
       "accuracy-round5": 1,
       "accuracy-round6": 9,
-      "accuracy99": 15,
+      "accuracy99": 22,
       "architecture": 68,
       "benchmark-n0": 54,
       "benchmark-n3": 28,
@@ -331,9 +331,10 @@
     }
   },
   "testArtifacts": {
-    "totalCsFiles": 222,
+    "totalCsFiles": 223,
     "accuracyRelatedCsFiles": [
       "tests/DocxHeaderExtractor.Tests/Accuracy99PhaseBContractTests.cs",
+      "tests/DocxHeaderExtractor.Tests/Accuracy99PhaseCAdjudicationTests.cs",
       "tests/DocxHeaderExtractor.Tests/ParentAccuracyTests.cs",
       "tests/DocxHeaderExtractor.Tests/PdfAccuracyRegressionHarnessContractProbe.cs",
       "tests/DocxHeaderExtractor.Tests/PdfC15SpanFirstLossEvaluatorProbe.cs",
