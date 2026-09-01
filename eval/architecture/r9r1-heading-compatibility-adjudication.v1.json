@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r9r1_heading_compatibility_adjudication",
+  "status": "PASS",
+  "round9": "CLOSED",
+  "round10": "AUTHORIZED",
+  "baseRevision": "fa8ad32ae9d90eb9de4ffb8c2239e579bb3b8122",
+  "originalR9ExecutionRevision": "69d0a3333c7deb6a47d468d293cc278351ce13e3",
+  "originalR9PublicationRevision": "cf8aa9fba7bf8fd7f28179228108661b3b063ea3",
+  "initialStrictReplayClaim": "INCOMPLETE",
+  "rootCauseRound": "R5-5R1",
+  "executionRevision": "bef9d5e1b9d42f42998cef99a19a458503e1deba",
+  "publicationRevision": "containing-closure-commit",
+  "genericPdfSourceAuthorityChanged": false,
+  "pdfSourceCatalogParserOwned": true,
+  "compatibilityMetadata": {
+    "sourceOrdinal": "PASS",
+    "stableId": "PASS",
+    "headingSpan": "PASS",
+    "text": "PASS",
+    "usedAsGenericAuthority": 0
+  },
+  "productionCatalogBearingCompatibility": "PASS",
+  "catalogFreeCompatibility": "PASS",
+  "replay": {
+    "fixtures": ["028", "056", "091"],
+    "joined": 3,
+    "finalStructureDelta": 0,
+    "outputDecisionDelta": 0,
+    "productDelta": 0,
+    "finalHeadingDelta": 0,
+    "providerCalls": 0
+  },
+  "coordinateSeparationRegression": "PASS",
+  "expectedRebased": false,
+  "frozenFixtureChanged": false,
+  "r9FactRuntimeDelta": 0,
+  "focusedTests": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0
+  },
+  "hostE2E": {
+    "total": 2,
+    "passed": 2,
+    "fingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "fingerprintChanged": false,
+    "providerCalls": 0
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "fullSuite": {
+    "total": 901,
+    "passed": 899,
+    "failed": 2,
+    "skipped": 0,
+    "frozenFailures": ["C1", "N15"],
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0
+  },
+  "originalR9ReplayClaim": "INCOMPLETE",
+  "productionCompatibilityRestored": true,
+  "rawTrxPolicy": "DO_NOT_PUSH_RAW_TRX"
+}
