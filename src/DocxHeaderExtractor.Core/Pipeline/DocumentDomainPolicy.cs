@@ -118,16 +118,6 @@ internal static class DocumentDomainPolicy
         PdfDomainRole.FinancialSection or PdfDomainRole.FinancialNote or
         PdfDomainRole.MeetingSession or PdfDomainRole.MeetingAgenda;
 
-    [Obsolete("Use Observe(...).ProposedLevel as source evidence.")]
-    public static int? HierarchyTier(PdfDomainRole role) => ProposedLevel(role);
-
-    [Obsolete("Use Observe(...).ProposesOutlineExclusion as source evidence.")]
-    public static bool IsExcludedFromOutline(PdfDomainRole role) => ProposesOutlineExclusion(role);
-
-    [Obsolete("Use Observe(...).IsStructuralRole as source evidence.")]
-    public static bool IsConventionalOutlineRole(PdfDomainRole role) => role is not
-        PdfDomainRole.LegalClause and not PdfDomainRole.LegalPoint and not PdfDomainRole.ProcurementSubclause;
-
     private static PdfDomainRole LegalRole(string text)
     {
         if (StartsWithAny(text, "PHAN ", "PART ")) return PdfDomainRole.LegalPart;
