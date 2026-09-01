@@ -19,7 +19,8 @@ public static class SearchIndexProjection
                 chunk.SourceIds,
                 slice.Context.Select(item => item.Type.ToString()).Distinct(StringComparer.Ordinal).ToArray(),
                 slice.Section.PathElementIds,
-                slice.Relations);
+                slice.Relations,
+                slice.Context);
         }).ToArray();
     }
 }

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r6_retrieval_index_runtime",
+  "status": "PASS",
+  "round": "R6A-C",
+  "baseRevision": "8838fd0f4b844822c820dc0755d28be51513b137",
+  "executionRevision": "2093890217087d5ef67a0ac1259fe5775c5785fe",
+  "publicationRevision": "containing-closure-commit",
+  "indexLifecycle": {
+    "indexDocuments": 1,
+    "reindexDuplicates": 0,
+    "staleChunksAfterReplace": 0,
+    "deleteLifecycle": "PASS",
+    "documentChunkIdentity": "DocumentId+ChunkId"
+  },
+  "retrieval": {
+    "hits": 1,
+    "sectionFilter": "PASS",
+    "structuralTypeFilter": "PASS",
+    "documentFilter": "PASS",
+    "searchScoreAsAuthority": 0,
+    "sourceUnjoined": 0,
+    "chunkUnjoined": 0,
+    "sectionUnjoined": 0,
+    "structuralReferenceUnjoined": 0,
+    "relationReferenceUnjoined": 0
+  },
+  "textAuthority": {
+    "indexTextInvented": 0,
+    "retrievalTextInvented": 0,
+    "sourceBacked": true
+  },
+  "dependencies": {
+    "genericCoreElasticDependency": 0,
+    "headingRecordDependency": 0,
+    "slimDependency": 0,
+    "embeddingProviderCalls": 0,
+    "llmProviderCalls": 0
+  },
+  "compatibility": {
+    "replays": ["028", "056", "091"],
+    "replayJoined": 3,
+    "extractionOutputDelta": 0,
+    "legacyHeadingDelta": 0,
+    "productDelta": 0,
+    "hostFingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "hostFingerprintChanged": false
+  },
+  "focusedTests": {
+    "total": 80,
+    "passed": 80,
+    "failed": 0,
+    "skipped": 0
+  },
+  "fullSuite": {
+    "executed": true,
+    "total": 863,
+    "passed": 861,
+    "failed": 2,
+    "skipped": 0,
+    "frozenFailures": ["C1", "N15"],
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "expectedChanged": false,
+  "r6a": "PASS",
+  "r6b": "PASS",
+  "r6c": "PASS",
+  "next": "round7_fact_proposal_validation"
+}
