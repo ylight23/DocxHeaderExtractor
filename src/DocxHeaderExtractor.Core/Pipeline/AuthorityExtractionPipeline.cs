@@ -66,15 +66,21 @@ public sealed class AuthorityExtractionPipeline : IDisposable
     public async Task<DocumentExtractionResult> RunDocumentAsync(
         string inputPath,
         CancellationToken ct = default) =>
-        (await ExecuteDocumentAsync(inputPath, null, ct)).Result;
+        (await RunDocumentWithCompatibilityAsync(inputPath, null, ct)).Result;
 
     public async Task<DocumentExtractionResult> RunDocumentAsync(
         string inputPath,
         IReadOnlySet<int>? quarantinedIndexes,
         CancellationToken ct = default) =>
-        (await ExecuteDocumentAsync(inputPath, quarantinedIndexes, ct)).Result;
+        (await RunDocumentWithCompatibilityAsync(inputPath, quarantinedIndexes, ct)).Result;
 
-    private async Task<PipelineExecution> ExecuteDocumentAsync(
+    public Task<AuthorityPipelineExecutionResult> RunDocumentWithCompatibilityAsync(
+        string inputPath,
+        IReadOnlySet<int>? quarantinedIndexes = null,
+        CancellationToken ct = default) =>
+        ExecuteDocumentAsync(inputPath, quarantinedIndexes, ct);
+
+    private async Task<AuthorityPipelineExecutionResult> ExecuteDocumentAsync(
         string inputPath,
         IReadOnlySet<int>? quarantinedIndexes,
         CancellationToken ct = default)
@@ -218,7 +224,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 Provenance = BuildProvenance(audit,
                     !_options.DisableLlm && _options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang),
             };
-            return new PipelineExecution(extractionResult, compatibilityOutline);
+            return new AuthorityPipelineExecutionResult(extractionResult, compatibilityOutline);
         }
         finally
         {
@@ -248,10 +254,6 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             FileSha256(docxPath), audit.ValidatedStructures, audit.HierarchyFacts,
             PdfCanonicalGrounding.FromValidatedStructure(structure));
     }
-
-    private sealed record PipelineExecution(
-        DocumentExtractionResult Result,
-        DocumentOutline CompatibilityOutline);
 
     internal static StructuralAuthorityResult ApplyStructuralQuarantine(
         StructuralAuthorityResult authority,

@@ -19,14 +19,14 @@ public interface IDocumentExtractionTool : IDisposable
 /// </summary>
 public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 {
-    private readonly AuthorityExtractionPipeline _pipeline;
+    private readonly DocumentProcessingService _processing;
     private readonly IHeaderClassifier? _classifier;
     private readonly bool _ownsClassifier;
 
     public PipelineDocumentExtractionTool(PipelineOptions options)
     {
         ArgumentNullException.ThrowIfNull(options);
-        _pipeline = new AuthorityExtractionPipeline(options);
+        _processing = new DocumentProcessingService(new AuthorityExtractionPipeline(options));
         Descriptor = Describe(options);
     }
 
@@ -37,7 +37,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(classifier);
-        _pipeline = new AuthorityExtractionPipeline(options, classifier);
+        _processing = new DocumentProcessingService(new AuthorityExtractionPipeline(options, classifier));
         _classifier = classifier;
         _ownsClassifier = ownsClassifier;
         Descriptor = Describe(options);
@@ -56,7 +56,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     {
         ArgumentNullException.ThrowIfNull(invocation);
         var quarantine = invocation.Feedback?.QuarantineIndexes;
-        return _pipeline.RunAsync(
+        return _processing.ProcessStructureOnlyAsync(
             invocation.Request.InputPath,
             quarantine is { Count: > 0 } ? quarantine.ToHashSet() : null,
             ct);
@@ -89,7 +89,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 
     public void Dispose()
     {
-        _pipeline.Dispose();
+        _processing.Dispose();
         if (_ownsClassifier) _classifier?.Dispose();
     }
 }

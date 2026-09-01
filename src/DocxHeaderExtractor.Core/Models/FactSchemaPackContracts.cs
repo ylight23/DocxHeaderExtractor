@@ -54,9 +54,13 @@ public sealed class FactSchemaPack : IFactSchemaPack
     public IFactSemanticAuthority SemanticAuthority { get; }
 }
 
-public sealed class InMemoryFactSchemaPackRegistry : IFactSchemaPackRegistry
+public sealed class InMemoryFactSchemaPackRegistry : IFactSchemaPackRegistry, IRegisteredSchemaPackCatalog
 {
     private readonly IReadOnlyDictionary<string, IFactSchemaPack> _packs;
+
+    public IReadOnlyList<IFactSchemaPack> Packs => _packs.Values
+        .OrderBy(pack => pack.Key, StringComparer.Ordinal)
+        .ToArray();
 
     public InMemoryFactSchemaPackRegistry(IEnumerable<IFactSchemaPack> packs)
     {

@@ -71,6 +71,11 @@ public sealed record DocumentExtractionResult(
     [property: JsonPropertyName("chunks")] IReadOnlyList<DocumentChunk> Chunks,
     [property: JsonPropertyName("provenance")] DocumentExtractionProvenance Provenance);
 
+/// <summary>One authority execution with its explicit compatibility projection.</summary>
+public sealed record AuthorityPipelineExecutionResult(
+    DocumentExtractionResult Result,
+    DocumentOutline CompatibilityOutline);
+
 public sealed record DocumentExtractionProvenance(
     [property: JsonPropertyName("route")] string Route,
     [property: JsonPropertyName("sourceCatalogKind")] string SourceCatalogKind,
