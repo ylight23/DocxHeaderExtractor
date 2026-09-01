@@ -42,6 +42,6 @@ The exact execution full suite measured `901 total / 899 passed / 2 failed / 0 s
 failures are the unchanged frozen `C1` and `N15` fingerprints; there are no new, changed, or
 unjoined failures.
 
-`R9R1 = PASS`  
-`ROUND9 = CLOSED`  
+`R9R1 = PASS`
+`ROUND9 = CLOSED`
 `ROUND10 = AUTHORIZED`
