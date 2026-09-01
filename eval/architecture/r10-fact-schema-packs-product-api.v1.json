@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r10_fact_schema_packs_product_api",
+  "status": "MERGE_READY",
+  "round10": "MERGE_READY",
+  "baseRevision": "dec5495745591a119f76f35e4087bade115ce092",
+  "executionRevision": "63825c65c175f02bd5cf21779b7b2151000123f0",
+  "publicationRevision": "containing-closure-commit",
+  "schemaPacks": {
+    "count": 3,
+    "keys": ["test.amount", "test.entity", "test.period"],
+    "domainHardcodeInCore": 0,
+    "authorityRouting": "PASS",
+    "crossSchemaAuthority": 0,
+    "unknownPackDefaultAccept": 0,
+    "unknownSchemaProviderCalls": 0
+  },
+  "product": {
+    "facts": 3,
+    "validatedOnlyPercent": 100,
+    "proposalsExposedAsFacts": 0,
+    "rejectionsExposedAsFacts": 0,
+    "sourceUnjoined": 0,
+    "contextUnjoined": 0,
+    "outputDeterministic": "PASS"
+  },
+  "multiSchemaRuntime": {
+    "documentExtractionCount": 1,
+    "ieContextProjectionCount": 1,
+    "schemaResultOrder": "PASS",
+    "factOrder": "PASS",
+    "producerFailureIsolation": "PASS"
+  },
+  "authorityBoundary": {
+    "r7AuthorityBypass": 0,
+    "r8StrictParserBypass": 0,
+    "r9ProviderBoundaryBypass": 0,
+    "providerCalls": 0
+  },
+  "regression": {
+    "replayFixtures": ["028", "056", "091"],
+    "finalStructureDelta": 0,
+    "decisionDelta": 0,
+    "productDelta": 0,
+    "finalHeadingDelta": 0,
+    "hostFingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "hostFingerprintChanged": false,
+    "structuralAuthorityDelta": 0,
+    "headingCompatibilityDelta": 0,
+    "searchIndexDelta": 0,
+    "retrievalDelta": 0
+  },
+  "focusedTests": {
+    "total": 35,
+    "passed": 35,
+    "failed": 0,
+    "skipped": 0
+  },
+  "canonicalFullSuite": {
+    "total": 907,
+    "passed": 905,
+    "failed": 2,
+    "skipped": 0,
+    "frozenFailures": ["C1", "N15"],
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "genericResultDependsOnHeadingRecord": 0,
+  "genericChunkerDependsOnSlim": 0,
+  "consumerDependsOnHeadingRecord": 0,
+  "consumerDependsOnSlim": 0,
+  "expectedChanged": false,
+  "fullSuite": "EXECUTED",
+  "round11": "AUTHORIZED"
+}
