@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r5_5r1_parser_owned_source_catalog",
+  "status": "PASS",
+  "baseRevision": "f84a84bab13075bcd6e589299fd05d107f571591",
+  "executionRevision": "e32ed8b0df1e40d17fa318fdfbb1bb585e7439b5",
+  "publicationRevision": "containing-closure-commit",
+  "catalog": {
+    "docxFromParserSourceDocument": true,
+    "pdfFromParserBlocks": true,
+    "pdfUsesDocxBody": false,
+    "structureToSourceCatalogReconstruction": false,
+    "mergeStructuralSourcesPresent": false,
+    "elementTextUsedAsSourceText": false,
+    "sourceOffsetCoordinatePreserved": true,
+    "sourceUnjoined": 0,
+    "sourceTextInvented": 0
+  },
+  "contractTests": {
+    "nonzeroSpanSource": "PASS",
+    "multiSourceElement": "PASS",
+    "fullRawText": "prefix Figure 3 caption suffix",
+    "catalogSpan": "0..30",
+    "structuralSpan": "7..23"
+  },
+  "sections": {
+    "nonEmpty": true,
+    "sourceUnjoined": 0
+  },
+  "chunks": {
+    "nonEmpty": true,
+    "textSourceBackedPercent": 100,
+    "sourceUnjoined": 0
+  },
+  "replay": {
+    "fixtures": ["028", "056", "091"],
+    "joined": 3,
+    "structureDelta": 0,
+    "decisionDelta": 0,
+    "productDelta": 0,
+    "finalHeadingDelta": 0,
+    "providerCalls": 0
+  },
+  "hostE2E": {
+    "fingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "fingerprintChanged": false,
+    "unjoined": 0
+  },
+  "focusedTests": {
+    "total": 53,
+    "passed": 53,
+    "failed": 0,
+    "skipped": 0
+  },
+  "fullSuite": {
+    "total": 857,
+    "passed": 855,
+    "failed": 2,
+    "skipped": 0,
+    "knownFrozenFailures": ["C1", "N15"],
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "providerCalls": 0,
+  "expectedChanged": false,
+  "r5_5r1": "PASS",
+  "next": "rag_index_ie_consumers"
+}
