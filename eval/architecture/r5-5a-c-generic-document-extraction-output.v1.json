@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r5_5a_c_generic_document_extraction_output",
+  "status": "PASS",
+  "baseRevision": "a96a251f70770831111f918a3d296274ab836659",
+  "executionRevision": "90b949acc59a8af1ff3a6a49c14280e6590a161f",
+  "publicationRevision": "containing-closure-commit",
+  "genericExtractionResult": "PASS",
+  "contracts": {
+    "documentIdentity": true,
+    "sourceCatalog": true,
+    "validatedStructure": true,
+    "sections": true,
+    "chunks": true,
+    "provenance": true,
+    "genericResultDependsOnHeadingRecord": false,
+    "genericChunkerDependsOnSlim": false
+  },
+  "sourceCatalog": {
+    "docxJoined": true,
+    "pdfJoined": true,
+    "sourceUnjoined": 0,
+    "sourceTextInvented": 0,
+    "duplicateSourceId": 0,
+    "pdfStrategy": "canonical grounded units plus parser-fact units for structural source identities"
+  },
+  "structure": {
+    "validatedStructurePreserved": true,
+    "nonHeadingElementsPreserved": true,
+    "figureRelationsPreserved": true,
+    "tableRelationsPreserved": true,
+    "listItemsPreserved": true,
+    "sectionAuthorityInference": 0,
+    "relationEndpointUnjoined": 0,
+    "danglingRelations": 0
+  },
+  "sections": {
+    "nonEmpty": true,
+    "danglingAnchor": 0,
+    "sourceUnjoined": 0,
+    "parentUnjoined": 0,
+    "parentSource": "validated ParentChild relations only"
+  },
+  "chunks": {
+    "nonEmpty": true,
+    "sourceUnjoined": 0,
+    "textInvented": 0,
+    "structuralReferenceUnjoined": 0,
+    "textSource": "newline concatenation of DocumentSourceCatalog units",
+    "llmSummaryUsed": false
+  },
+  "compatibility": {
+    "legacyDocumentOutlineDelta": 0,
+    "headingJsonDelta": 0,
+    "productJsonDelta": 0,
+    "headingProjectionNonHeadingTypes": 0
+  },
+  "replay": {
+    "fixtures": ["028", "056", "091"],
+    "joined": 3,
+    "structureDelta": 0,
+    "decisionDelta": 0,
+    "productDelta": 0,
+    "finalHeadingDelta": 0,
+    "providerCalls": 0
+  },
+  "hostE2E": {
+    "total": 2,
+    "passed": 2,
+    "fingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "fingerprintChanged": false,
+    "unjoined": 0
+  },
+  "focusedTests": {
+    "total": 96,
+    "passed": 96,
+    "failed": 0,
+    "skipped": 0
+  },
+  "fullSuite": {
+    "total": 855,
+    "passed": 853,
+    "failed": 2,
+    "skipped": 0,
+    "knownFrozenFailures": ["C1", "N15"],
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0
+  },
+  "providerCalls": 0,
+  "expectedChanged": false,
+  "r5_5a": "PASS",
+  "r5_5b": "PASS",
+  "r5_5c": "PASS",
+  "next": "section_chunk_consumers_and_generic_document_extraction_projections"
+}
