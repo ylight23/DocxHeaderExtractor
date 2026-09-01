@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r5_round5_merge_readiness",
+  "status": "PASS",
+  "round5": "PASS",
+  "mergeReady": true,
+  "baseRevision": "2951a2d5f5420efee0babfb17e5411af478b219e",
+  "executionRevision": "17dc586e01275255a0c1857cdadf6c8b367d7119",
+  "publicationRevision": "containing-closure-commit",
+  "runtime": {
+    "normalDocxRouteUsesValidatedStructure": true,
+    "normalPdfRouteUsesValidatedStructure": true,
+    "genericValidatorDomainDependency": 0,
+    "domainDirectHierarchyAuthority": 0,
+    "structuralElementIdIsSourceId": false,
+    "sourceUnjoined": 0,
+    "relationEndpointUnjoined": 0,
+    "danglingRelations": 0,
+    "structuralTypes": [
+      "Title",
+      "Subtitle",
+      "Heading",
+      "ListItem",
+      "Caption",
+      "TableTitle",
+      "FigureTitle",
+      "Figure",
+      "Table"
+    ],
+    "relations": ["ParentChild", "CaptionOf", "Labels"]
+  },
+  "sourceAndConsumers": {
+    "sourceCatalogParserOwned": true,
+    "structureToSourceReconstruction": 0,
+    "sectionsSourceBacked": true,
+    "chunksSourceBacked": true,
+    "chunkTextInvented": 0,
+    "retrievalTextInvented": 0,
+    "indexTextInvented": 0,
+    "ieTextInvented": 0,
+    "genericResultDependsOnHeadingRecord": 0,
+    "genericChunkerDependsOnSlim": 0,
+    "consumerDependsOnHeadingRecord": 0,
+    "consumerDependsOnSlim": 0
+  },
+  "compatibility": {
+    "replays": ["028", "056", "091"],
+    "replayJoined": 3,
+    "structureHeadingDelta": 0,
+    "outputDecisionDelta": 0,
+    "productJsonDelta": 0,
+    "finalHeadingJsonDelta": 0,
+    "hostE2e": "2/2",
+    "hostFingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "hostFingerprintChanged": false,
+    "providerCalls": 0
+  },
+  "regression": {
+    "fullSuiteExecuted": true,
+    "excludedTests": 0,
+    "total": 859,
+    "passed": 857,
+    "failed": 2,
+    "skipped": 0,
+    "frozenFailures": ["C1", "N15"],
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0,
+    "expectedChanged": false
+  },
+  "repository": {
+    "releaseBuild": "PASS",
+    "diffCheck": "PASS",
+    "trackedDirtyFiles": 0,
+    "unknownLegacyRefs": 0
+  },
+  "r5_1": "PASS",
+  "r5_2": "PASS",
+  "r5_3": "PASS",
+  "r5_4": "PASS",
+  "r5_5": "PASS",
+  "r5_6": "PASS"
+}
