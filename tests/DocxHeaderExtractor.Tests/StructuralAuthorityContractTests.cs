@@ -217,6 +217,36 @@ public sealed class StructuralAuthorityContractTests
     }
 
     [Fact]
+    public void Pdf_semantic_roles_emit_only_table_title_and_caption_through_generic_validator()
+    {
+        var tableTitle = Block("b-table", "Table 1. Results");
+        var figureCaption = Block("b-figure", "Figure 2. Architecture");
+        var tableHeader = Block("b-header", "Column A Column B");
+        var decisions = new PdfBlockDecision[]
+        {
+            new(tableTitle.Id, PdfBlockRole.TableOrChartLabel, .90, "semantic", SemanticRole: PdfSemanticRole.TableTitle),
+            new(figureCaption.Id, PdfBlockRole.TableOrChartLabel, .88, "semantic", SemanticRole: PdfSemanticRole.FigureCaption),
+            new(tableHeader.Id, PdfBlockRole.TableOrChartLabel, .95, "semantic", SemanticRole: PdfSemanticRole.TableHeader),
+        };
+
+        var elements = PdfNonHeadingStructuralProducer.Materialize(
+            [tableTitle, figureCaption, tableHeader], decisions);
+
+        Assert.Equal(2, elements.Count);
+        Assert.Equal(
+            [StructuralElementType.TableTitle, StructuralElementType.Caption],
+            elements.Select(element => element.Type));
+        Assert.All(elements, element =>
+        {
+            Assert.True(element.Validation.SourceSelectionValid);
+            Assert.Equal(element.Id.Replace("structural:pdf:semantic:", ""),
+                Assert.Single(element.Sources).SourceId);
+        });
+        Assert.Equal("Table 1. Results", elements[0].Text);
+        Assert.Equal("Figure 2. Architecture", elements[1].Text);
+    }
+
+    [Fact]
     public void One_source_can_produce_multiple_structural_elements()
     {
         var source = Source("p1", "1 Heading body", 0, 14);
@@ -354,6 +384,12 @@ public sealed class StructuralAuthorityContractTests
         },
         RawSpan = new SourceTextSpan(0, end),
     };
+
+    private static PdfSemanticBlock Block(string id, string text)
+    {
+        var line = new PdfLine(1, 700, 12, text, .8, "", 0, 72, 300, "serif", "black");
+        return new PdfSemanticBlock(id, [line], PdfStyleClusterProfile.StyleOf(line), 1, 700, 700, 72, 300, text);
+    }
 
     private static SourceReference SourceReference(string id, int ordinal, int start, int end) =>
         new(id, ordinal, new StructuralSpan(start, end));
