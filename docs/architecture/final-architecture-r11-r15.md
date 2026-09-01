@@ -1,13 +1,28 @@
 # Final Architecture R11-R15
 
-Status: IMPLEMENTED / VERIFICATION PENDING
+Status: VERIFIED / PUBLICATION PENDING
 
 Base revision: `1053cb4b61e243dc1e4c96eb82909e6110701eb4`
 
-Implementation revision: containing-implementation-commit
+Implementation revision: `de5d33103b1fd44282445c0be4fa46d961dce66c`
 
-This document records the intended final architecture. It does not claim that the later final
-verification has passed.
+This document records the implemented final architecture and its verification result. Publication
+and the final no-ff merge remain pending.
+
+## Final Verification
+
+The execution revision was `de5d33103b1fd44282445c0be4fa46d961dce66c`. Focused authority, replay,
+consumer, and host checks measured `88/88`; the deterministic `028/056/091` replay joined `3/3`.
+The Release build completed with zero errors and `git diff --check` was clean.
+
+The canonical suite measured `910 total / 908 passed / 2 failed / 0 skipped`. The only failures were
+the frozen `C1` and `N15` lineage, with no new FQNs, changed fingerprints, or unjoined failures.
+The C1 fingerprint is `383ec4a94b319a5969fc69e042ae286ef96fefd2045ecf098016c1356603caad`; the N15
+fingerprint is `197b86a209a2236047e386d256589434f927ac41d9467cceb48835034a7e7ac6`.
+
+Provider calls were `0`. Accuracy-99 benchmarking was not run. This verification does not itself
+close the architecture; the publication commit and final merge must still preserve the execution
+parent and publication tree.
 
 ## Canonical Flow
 

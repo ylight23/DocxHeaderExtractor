@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "artifactKind": "final_architecture_r11_r15",
-  "status": "IMPLEMENTED_VERIFICATION_PENDING",
+  "status": "VERIFIED_PUBLICATION_PENDING",
   "baseRevision": "1053cb4b61e243dc1e4c96eb82909e6110701eb4",
-  "implementationRevision": "containing-implementation-commit",
+  "implementationRevision": "de5d33103b1fd44282445c0be4fa46d961dce66c",
   "sourceAuthority": "parser-owned",
   "structuralAuthority": "ValidatedStructure",
   "relationAuthority": "StructuralRelation",
@@ -34,15 +34,16 @@
     "direction": "Eval -> Core"
   },
   "verification": {
-    "status": "PENDING_VERIFICATION",
-    "tests": "PENDING_VERIFICATION",
-    "releaseBuild": "PENDING_VERIFICATION",
-    "replay028056091": "PENDING_VERIFICATION",
-    "hostE2E": "PENDING_VERIFICATION",
-    "providerCalls": "PENDING_VERIFICATION",
-    "legacyCensus": "PENDING_VERIFICATION",
-    "fullSuite": "PENDING_VERIFICATION",
+    "status": "VERIFIED",
+    "tests": "focused 88/88; full 910/908/2/0",
+    "releaseBuild": "PASS",
+    "replay028056091": "3/3 PASS",
+    "hostE2E": "PASS",
+    "providerCalls": 0,
+    "legacyCensus": "STATIC_CHECKED",
+    "fullSuite": "910 total / 908 passed / 2 frozen failures / 0 skipped",
     "accuracyBenchmark": "PENDING_VERIFICATION"
   },
-  "freezePolicy": "Closure requires a later final verification; further architecture changes require a concrete product requirement or Accuracy-99 evidence."
+  "frozenFailures": ["C1", "N15"],
+  "freezePolicy": "Verification is complete; publication and merge are still pending. After merge, further architecture changes require a concrete product requirement or Accuracy-99 evidence."
 }
