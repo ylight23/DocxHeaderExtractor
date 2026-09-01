@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy99_phase_b_reconciliation",
+  "baseRevision": "732c3505afc5dd312423ed0fa58056192fb39608",
+  "historicalPositiveLabels": 222,
+  "firstLossRecords": 224,
+  "positiveOccurrenceFirstLossRecords": 222,
+  "missingDatasetSentinelRecords": 2,
+  "sourceNotParsed": 41,
+  "unknown": 183,
+  "difference": 2,
+  "differenceReason": "The first-loss ledger contains two explicit dataset-level missing-input sentinel records for 025 and 063. They are not positive occurrences; the 222 labeled occurrence records reconcile exactly.",
+  "historicalPositiveAccountingDelta": 0,
+  "sourceNotParsedPartition": {
+    "EVALUATOR_LOOKUP_OR_FIRST_LOSS_PROVENANCE_CONFLICT": 41
+  },
+  "unknownPartition": {
+    "INSUFFICIENT_HISTORICAL_PROVENANCE": 181,
+    "SOURCE_DOCUMENT_MISSING": 2
+  },
+  "integrity": {
+    "duplicateGoldIdentity": 0,
+    "invalidGoldSpanForGoldReady": 0,
+    "goldSourceNotFoundForGoldReady": 0,
+    "pipelineDerivedGold": 0,
+    "unreviewedLabelUsedAsHumanGold": 0,
+    "partialDocumentUsedForPrecision": 0,
+    "holdoutContaminationUnreported": 0
+  }
+}

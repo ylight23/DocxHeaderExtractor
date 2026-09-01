@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy99_non_blind_development_set",
+  "baseRevision": "732c3505afc5dd312423ed0fa58056192fb39608",
+  "blind": false,
+  "tuningAllowed": true,
+  "documentCount": 5,
+  "documents": [
+    "010",
+    "051",
+    "052",
+    "056",
+    "092"
+  ],
+  "reviewedHeadingOccurrences": 0,
+  "reviewedNonHeadingOccurrences": 0,
+  "exhaustiveDocuments": 0,
+  "status": "READY_FOR_HUMAN_ADJUDICATION",
+  "note": "Historical inspection makes this a development/adjudication set, not a final blind 99% holdout."
+}

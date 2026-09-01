@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy99_blind_holdout_manifest",
+  "baseRevision": "732c3505afc5dd312423ed0fa58056192fb39608",
+  "status": "NOT_AVAILABLE",
+  "blind": false,
+  "documentCount": 0,
+  "contaminationStatus": "NOT_APPLICABLE",
+  "acquisitionRequired": "Acquire source files not previously used for extraction tuning, freeze document hashes and parser coordinates, then perform source-first exhaustive review before claiming blind holdout support."
+}

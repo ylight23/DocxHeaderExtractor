@@ -1,0 +1,3566 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "accuracy99_historical_positive_rebinding",
+  "baseRevision": "732c3505afc5dd312423ed0fa58056192fb39608",
+  "historicalPositiveLabels": 222,
+  "statusCounts": {
+    "EXACT_REBOUND": 98,
+    "REVIEW_REQUIRED": 100,
+    "AMBIGUOUS": 24
+  },
+  "records": [
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 0,
+      "historicalSourceId": "body[1]/p[10]",
+      "historicalText": "Ch\u01B0\u01A1ng I NH\u1EEENG QUY \u0110\u1ECANH CHUNG",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[10]",
+      "reboundSourceOrdinal": 14,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 1,
+      "historicalSourceId": "body[1]/p[11]",
+      "historicalText": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[11]",
+      "reboundSourceOrdinal": 15,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 194
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 2,
+      "historicalSourceId": "body[1]/p[12]",
+      "historicalText": "\u0110i\u1EC1u 2. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[12]",
+      "reboundSourceOrdinal": 16,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 266
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 3,
+      "historicalSourceId": "body[1]/p[35]",
+      "historicalText": "\u0110i\u1EC1u 3. Ch\u00EDnh s\u00E1ch c\u1EE7a Nh\u00E0 n\u01B0\u1EDBc v\u1EC1 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[35]",
+      "reboundSourceOrdinal": 43,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 47
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 4,
+      "historicalSourceId": "body[1]/p[41]",
+      "historicalText": "\u0110i\u1EC1u 4. Nguy\u00EAn t\u1EAFc b\u1EA3o v\u1EC7 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[41]",
+      "reboundSourceOrdinal": 49,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 5,
+      "historicalSourceId": "body[1]/p[51]",
+      "historicalText": "\u0110i\u1EC1u 5. Bi\u1EC7n ph\u00E1p b\u1EA3o v\u1EC7 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[51]",
+      "reboundSourceOrdinal": 61,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 37
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 6,
+      "historicalSourceId": "body[1]/p[69]",
+      "historicalText": "\u0110i\u1EC1u 6. B\u1EA3o v\u1EC7 kh\u00F4ng gian m\u1EA1ng qu\u1ED1c gia",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[69]",
+      "reboundSourceOrdinal": 81,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 7,
+      "historicalSourceId": "body[1]/p[71]",
+      "historicalText": "\u0110i\u1EC1u 7. H\u1EE3p t\u00E1c qu\u1ED1c t\u1EBF v\u1EC1 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[71]",
+      "reboundSourceOrdinal": 83,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 8,
+      "historicalSourceId": "body[1]/p[87]",
+      "historicalText": "\u0110i\u1EC1u 8. C\u00E1c h\u00E0nh vi b\u1ECB nghi\u00EAm c\u1EA5m v\u1EC1 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[87]",
+      "reboundSourceOrdinal": 101,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 948
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 9,
+      "historicalSourceId": "body[1]/p[95]",
+      "historicalText": "\u0110i\u1EC1u 9. X\u1EED l\u00FD vi ph\u1EA1m ph\u00E1p lu\u1EADt v\u1EC1 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[95]",
+      "reboundSourceOrdinal": 111,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 47
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 10,
+      "historicalSourceId": "body[1]/p[97]",
+      "historicalText": "Ch\u01B0\u01A1ng II B\u1EA2O V\u1EC6 AN NINH M\u1EA0NG \u0110\u1ED0I V\u1EDAI H\u1EC6 TH\u1ED0NG TH\u00D4NG TIN QUAN TR\u1ECCNG V\u1EC0 AN NINH QU\u1ED0C GIA",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[97]",
+      "reboundSourceOrdinal": 113,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 87
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 11,
+      "historicalSourceId": "body[1]/p[98]",
+      "historicalText": "\u0110i\u1EC1u 10. H\u1EC7 th\u1ED1ng th\u00F4ng tin quan tr\u1ECDng v\u1EC1 an ninh qu\u1ED1c gia",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[98]",
+      "reboundSourceOrdinal": 114,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 58
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 12,
+      "historicalSourceId": "body[1]/p[113]",
+      "historicalText": "\u0110i\u1EC1u 11. Th\u1EA9m \u0111\u1ECBnh an ninh m\u1EA1ng \u0111\u1ED1i v\u1EDBi h\u1EC7 th\u1ED1ng th\u00F4ng tin quan tr\u1ECDng v\u1EC1 an ninh qu\u1ED1c gia",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[113]",
+      "reboundSourceOrdinal": 131,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 89
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 13,
+      "historicalSourceId": "body[1]/p[122]",
+      "historicalText": "\u0110i\u1EC1u 12. \u0110\u00E1nh gi\u00E1 \u0111i\u1EC1u ki\u1EC7n an ninh m\u1EA1ng \u0111\u1ED1i v\u1EDBi h\u1EC7 th\u1ED1ng th\u00F4ng tin quan tr\u1ECDng v\u1EC1 an ninh qu\u1ED1c gia",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[122]",
+      "reboundSourceOrdinal": 142,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 244
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 14,
+      "historicalSourceId": "body[1]/p[132]",
+      "historicalText": "\u0110i\u1EC1u 13. Ki\u1EC3m tra an ninh m\u1EA1ng \u0111\u1ED1i v\u1EDBi h\u1EC7 th\u1ED1ng th\u00F4ng tin quan tr\u1ECDng v\u1EC1 an ninh qu\u1ED1c gia",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[132]",
+      "reboundSourceOrdinal": 154,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 88
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 15,
+      "historicalSourceId": "body[1]/p[159]",
+      "historicalText": "\u0110i\u1EC1u 14. Gi\u00E1m s\u00E1t an ninh m\u1EA1ng \u0111\u1ED1i v\u1EDBi h\u1EC7 th\u1ED1ng th\u00F4ng tin quan tr\u1ECDng v\u1EC1 an ninh qu\u1ED1c gia",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[159]",
+      "reboundSourceOrdinal": 185,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 88
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 16,
+      "historicalSourceId": "body[1]/p[163]",
+      "historicalText": "\u0110i\u1EC1u 15. \u1EE8ng ph\u00F3, kh\u1EAFc ph\u1EE5c s\u1EF1 c\u1ED1 an ninh m\u1EA1ng \u0111\u1ED1i v\u1EDBi h\u1EC7 th\u1ED1ng th\u00F4ng tin quan tr\u1ECDng v\u1EC1 an ninh qu\u1ED1c gia",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[163]",
+      "reboundSourceOrdinal": 189,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 104
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 17,
+      "historicalSourceId": "body[1]/p[183]",
+      "historicalText": "Ch\u01B0\u01A1ng III PH\u00D2NG NG\u1EEAA, X\u1EEC L\u00DD H\u00C0NH VI X\u00C2M PH\u1EA0M AN NINH M\u1EA0NG",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[183]",
+      "reboundSourceOrdinal": 213,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 58
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 18,
+      "historicalSourceId": "body[1]/p[184]",
+      "historicalText": "\u0110i\u1EC1u 16. Ph\u00F2ng ng\u1EEBa, x\u1EED l\u00FD th\u00F4ng tin tr\u00EAn kh\u00F4ng gian m\u1EA1ng c\u00F3 n\u1ED9i dung tuy\u00EAn truy\u1EC1n ch\u1ED1ng Nh\u00E0 n\u01B0\u1EDBc C\u1ED9ng h\u00F2a x\u00E3 h\u1ED9i ch\u1EE7 ngh\u0129a Vi\u1EC7t Nam; k\u00EDch \u0111\u1ED9ng g\u00E2y b\u1EA1o lo\u1EA1n, ph\u00E1 r\u1ED1i an ninh, g\u00E2y r\u1ED1i tr\u1EADt t\u1EF1 c\u00F4ng c\u1ED9ng; l\u00E0m nh\u1EE5c, vu kh\u1ED1ng; x\u00E2m ph\u1EA1m tr\u1EADt t\u1EF1 qu\u1EA3n l\u00FD kinh t\u1EBF",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[184]",
+      "reboundSourceOrdinal": 214,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 254
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 19,
+      "historicalSourceId": "body[1]/p[205]",
+      "historicalText": "\u0110i\u1EC1u 17. Ph\u00F2ng, ch\u1ED1ng gi\u00E1n \u0111i\u1EC7p m\u1EA1ng; b\u1EA3o v\u1EC7 th\u00F4ng tin thu\u1ED9c b\u00ED m\u1EADt nh\u00E0 n\u01B0\u1EDBc, b\u00ED m\u1EADt c\u00F4ng t\u00E1c, b\u00ED m\u1EADt kinh doanh, b\u00ED m\u1EADt c\u00E1 nh\u00E2n, b\u00ED m\u1EADt gia \u0111\u00ECnh v\u00E0 \u0111\u1EDDi s\u1ED1ng ri\u00EAng t\u01B0 tr\u00EAn kh\u00F4ng gian m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[205]",
+      "reboundSourceOrdinal": 237,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 187
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 20,
+      "historicalSourceId": "body[1]/p[232]",
+      "historicalText": "\u0110i\u1EC1u 18. Ph\u00F2ng, ch\u1ED1ng h\u00E0nh vi s\u1EED d\u1EE5ng kh\u00F4ng gian m\u1EA1ng, c\u00F4ng ngh\u1EC7 th\u00F4ng tin, ph\u01B0\u01A1ng ti\u1EC7n \u0111i\u1EC7n t\u1EED \u0111\u1EC3 vi ph\u1EA1m ph\u00E1p lu\u1EADt v\u1EC1 an ninh qu\u1ED1c gia, tr\u1EADt t\u1EF1, an to\u00E0n x\u00E3 h\u1ED9i",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[232]",
+      "reboundSourceOrdinal": 268,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 161
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 21,
+      "historicalSourceId": "body[1]/p[240]",
+      "historicalText": "\u0110i\u1EC1u 19. Ph\u00F2ng, ch\u1ED1ng t\u1EA5n c\u00F4ng m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[240]",
+      "reboundSourceOrdinal": 278,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1364
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 22,
+      "historicalSourceId": "body[1]/p[249]",
+      "historicalText": "\u0110i\u1EC1u 20. Ph\u00F2ng, ch\u1ED1ng kh\u1EE7ng b\u1ED1 m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[249]",
+      "reboundSourceOrdinal": 289,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 35
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 23,
+      "historicalSourceId": "body[1]/p[258]",
+      "historicalText": "\u0110i\u1EC1u 21. Ph\u00F2ng ng\u1EEBa, x\u1EED l\u00FD t\u00ECnh hu\u1ED1ng nguy hi\u1EC3m v\u1EC1 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[258]",
+      "reboundSourceOrdinal": 300,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 63
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 24,
+      "historicalSourceId": "body[1]/p[286]",
+      "historicalText": "\u0110i\u1EC1u 22. \u0110\u1EA5u tranh b\u1EA3o v\u1EC7 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[286]",
+      "reboundSourceOrdinal": 332,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 25,
+      "historicalSourceId": "body[1]/p[294]",
+      "historicalText": "Ch\u01B0\u01A1ng IV HO\u1EA0T \u0110\u1ED8NG B\u1EA2O V\u1EC6 AN NINH M\u1EA0NG",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[294]",
+      "reboundSourceOrdinal": 340,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 26,
+      "historicalSourceId": "body[1]/p[295]",
+      "historicalText": "\u0110i\u1EC1u 23. Tri\u1EC3n khai ho\u1EA1t \u0111\u1ED9ng b\u1EA3o v\u1EC7 an ninh m\u1EA1ng trong c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc, t\u1ED5 ch\u1EE9c ch\u00EDnh tr\u1ECB \u1EDF trung \u01B0\u01A1ng v\u00E0 \u0111\u1ECBa ph\u01B0\u01A1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[295]",
+      "reboundSourceOrdinal": 341,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 118
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 27,
+      "historicalSourceId": "body[1]/p[304]",
+      "historicalText": "\u0110i\u1EC1u 24. Ki\u1EC3m tra an ninh m\u1EA1ng \u0111\u1ED1i v\u1EDBi h\u1EC7 th\u1ED1ng th\u00F4ng tin c\u1EE7a c\u01A1 quan, t\u1ED5 ch\u1EE9c kh\u00F4ng thu\u1ED9c Danh m\u1EE5c h\u1EC7 th\u1ED1ng th\u00F4ng tin quan tr\u1ECDng v\u1EC1 an ninh qu\u1ED1c gia",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[304]",
+      "reboundSourceOrdinal": 352,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 503
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 28,
+      "historicalSourceId": "body[1]/p[314]",
+      "historicalText": "\u0110i\u1EC1u 25. B\u1EA3o v\u1EC7 an ninh m\u1EA1ng \u0111\u1ED1i v\u1EDBi c\u01A1 s\u1EDF h\u1EA1 t\u1EA7ng kh\u00F4ng gian m\u1EA1ng qu\u1ED1c gia, c\u1ED5ng k\u1EBFt n\u1ED1i m\u1EA1ng qu\u1ED1c t\u1EBF",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[314]",
+      "reboundSourceOrdinal": 364,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 102
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 29,
+      "historicalSourceId": "body[1]/p[319]",
+      "historicalText": "\u0110i\u1EC1u 26. B\u1EA3o \u0111\u1EA3m an ninh th\u00F4ng tin tr\u00EAn kh\u00F4ng gian m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[319]",
+      "reboundSourceOrdinal": 369,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 55
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 30,
+      "historicalSourceId": "body[1]/p[330]",
+      "historicalText": "\u0110i\u1EC1u 27. Nghi\u00EAn c\u1EE9u, ph\u00E1t tri\u1EC3n an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[330]",
+      "reboundSourceOrdinal": 382,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 44
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 31,
+      "historicalSourceId": "body[1]/p[339]",
+      "historicalText": "\u0110i\u1EC1u 28. N\u00E2ng cao n\u0103ng l\u1EF1c t\u1EF1 ch\u1EE7 v\u1EC1 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[339]",
+      "reboundSourceOrdinal": 393,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 262
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 32,
+      "historicalSourceId": "body[1]/p[341]",
+      "historicalText": "\u0110i\u1EC1u 29. B\u1EA3o v\u1EC7 tr\u1EBB em tr\u00EAn kh\u00F4ng gian m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[341]",
+      "reboundSourceOrdinal": 395,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 233
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 33,
+      "historicalSourceId": "body[1]/p[349]",
+      "historicalText": "Ch\u01B0\u01A1ng V B\u1EA2O \u0110\u1EA2M HO\u1EA0T \u0110\u1ED8NG B\u1EA2O V\u1EC6 AN NINH M\u1EA0NG",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[349]",
+      "reboundSourceOrdinal": 405,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 46
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 34,
+      "historicalSourceId": "body[1]/p[350]",
+      "historicalText": "\u0110i\u1EC1u 30. L\u1EF1c l\u01B0\u1EE3ng b\u1EA3o v\u1EC7 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[350]",
+      "reboundSourceOrdinal": 406,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 35,
+      "historicalSourceId": "body[1]/p[354]",
+      "historicalText": "\u0110i\u1EC1u 31. B\u1EA3o \u0111\u1EA3m ngu\u1ED3n nh\u00E2n l\u1EF1c b\u1EA3o v\u1EC7 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[354]",
+      "reboundSourceOrdinal": 410,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 36,
+      "historicalSourceId": "body[1]/p[361]",
+      "historicalText": "\u0110i\u1EC1u 32. Tuy\u1EC3n ch\u1ECDn, \u0111\u00E0o t\u1EA1o, ph\u00E1t tri\u1EC3n l\u1EF1c l\u01B0\u1EE3ng b\u1EA3o v\u1EC7 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[361]",
+      "reboundSourceOrdinal": 419,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 70
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 37,
+      "historicalSourceId": "body[1]/p[365]",
+      "historicalText": "\u0110i\u1EC1u 33. Gi\u00E1o d\u1EE5c, b\u1ED3i d\u01B0\u1EE1ng ki\u1EBFn th\u1EE9c, nghi\u1EC7p v\u1EE5 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[365]",
+      "reboundSourceOrdinal": 423,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 62
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 38,
+      "historicalSourceId": "body[1]/p[369]",
+      "historicalText": "\u0110i\u1EC1u 34. Ph\u1ED5 bi\u1EBFn ki\u1EBFn th\u1EE9c v\u1EC1 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[369]",
+      "reboundSourceOrdinal": 427,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 43
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 39,
+      "historicalSourceId": "body[1]/p[375]",
+      "historicalText": "\u0110i\u1EC1u 35. Kinh ph\u00ED b\u1EA3o v\u1EC7 an ninh m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[375]",
+      "reboundSourceOrdinal": 435,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 37
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 40,
+      "historicalSourceId": "body[1]/p[378]",
+      "historicalText": "Ch\u01B0\u01A1ng VI TR\u00C1CH NHI\u1EC6M C\u1EE6A C\u01A0 QUAN, T\u1ED4 CH\u1EE8C, C\u00C1 NH\u00C2N",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[378]",
+      "reboundSourceOrdinal": 438,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 41,
+      "historicalSourceId": "body[1]/p[379]",
+      "historicalText": "\u0110i\u1EC1u 36. Tr\u00E1ch nhi\u1EC7m c\u1EE7a B\u1ED9 C\u00F4ng an",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[379]",
+      "reboundSourceOrdinal": 439,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 35
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 42,
+      "historicalSourceId": "body[1]/p[390]",
+      "historicalText": "\u0110i\u1EC1u 37. Tr\u00E1ch nhi\u1EC7m c\u1EE7a B\u1ED9 Qu\u1ED1c ph\u00F2ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[390]",
+      "reboundSourceOrdinal": 452,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 43,
+      "historicalSourceId": "body[1]/p[397]",
+      "historicalText": "\u0110i\u1EC1u 38. Tr\u00E1ch nhi\u1EC7m c\u1EE7a B\u1ED9 Th\u00F4ng tin v\u00E0 Truy\u1EC1n th\u00F4ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[397]",
+      "reboundSourceOrdinal": 459,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 53
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 44,
+      "historicalSourceId": "body[1]/p[401]",
+      "historicalText": "\u0110i\u1EC1u 39. Tr\u00E1ch nhi\u1EC7m c\u1EE7a Ban C\u01A1 y\u1EBFu Ch\u00EDnh ph\u1EE7",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[401]",
+      "reboundSourceOrdinal": 463,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 45
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 45,
+      "historicalSourceId": "body[1]/p[407]",
+      "historicalText": "\u0110i\u1EC1u 40. Tr\u00E1ch nhi\u1EC7m c\u1EE7a B\u1ED9, ng\u00E0nh, \u1EE6y ban nh\u00E2n d\u00E2n c\u1EA5p t\u1EC9nh",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[407]",
+      "reboundSourceOrdinal": 471,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 46,
+      "historicalSourceId": "body[1]/p[409]",
+      "historicalText": "\u0110i\u1EC1u 41. Tr\u00E1ch nhi\u1EC7m c\u1EE7a doanh nghi\u1EC7p cung c\u1EA5p d\u1ECBch v\u1EE5 tr\u00EAn kh\u00F4ng gian m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[409]",
+      "reboundSourceOrdinal": 473,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 75
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 47,
+      "historicalSourceId": "body[1]/p[416]",
+      "historicalText": "\u0110i\u1EC1u 42. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u01A1 quan, t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n s\u1EED d\u1EE5ng kh\u00F4ng gian m\u1EA1ng",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[416]",
+      "reboundSourceOrdinal": 480,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 74
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 48,
+      "historicalSourceId": "body[1]/p[422]",
+      "historicalText": "Ch\u01B0\u01A1ng VII \u0110I\u1EC0U KHO\u1EA2N THI H\u00C0NH",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[422]",
+      "reboundSourceOrdinal": 488,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "010",
+      "historicalOrdinal": 49,
+      "historicalSourceId": "body[1]/p[423]",
+      "historicalText": "\u0110i\u1EC1u 43. Hi\u1EC7u l\u1EF1c thi h\u00E0nh",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[423]",
+      "reboundSourceOrdinal": 489,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 26
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 0,
+      "historicalSourceId": "body[1]/p[6]",
+      "historicalText": "Introduction",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[6]",
+      "reboundSourceOrdinal": 5,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 1,
+      "historicalSourceId": "body[1]/p[8]",
+      "historicalText": "Abbreviations and Acronyms",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[8]",
+      "reboundSourceOrdinal": 7,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 2,
+      "historicalSourceId": "body[1]/p[10]",
+      "historicalText": "Contents and Summary of Financial Data",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[10]",
+      "reboundSourceOrdinal": 9,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 138
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 3,
+      "historicalSourceId": "body[1]/p[12]",
+      "historicalText": "Portfolio at a Glance - IBRD/IDA/IFC Trust Funds",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[12]",
+      "reboundSourceOrdinal": 11,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 534
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 4,
+      "historicalSourceId": "body[1]/p[14]",
+      "historicalText": "Portfolio at a Glance - FIFs",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[14]",
+      "reboundSourceOrdinal": 13,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 162
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 5,
+      "historicalSourceId": "body[1]/p[16]",
+      "historicalText": "Trust Fund FY24 Key Highlights",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[16]",
+      "reboundSourceOrdinal": 15,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 6,
+      "historicalSourceId": "body[1]/p[16]",
+      "historicalText": "Top 3 trust funds activated during the fiscal year ended June 30, 2024, on the basis of Expected Funding",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[16]",
+      "reboundSourceOrdinal": 15,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 7,
+      "historicalSourceId": "body[1]/p[18]",
+      "historicalText": "Key Trust Fund Activity",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[18]",
+      "reboundSourceOrdinal": 17,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 8,
+      "historicalSourceId": "body[1]/p[18]",
+      "historicalText": "Trust Fund Asset Summary",
+      "historicalLevel": 2,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[18]",
+      "reboundSourceOrdinal": 17,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 9,
+      "historicalSourceId": "body[1]/p[20]",
+      "historicalText": "Composition of Active Trust Funds",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[20]",
+      "reboundSourceOrdinal": 19,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 138
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 10,
+      "historicalSourceId": "body[1]/p[22]",
+      "historicalText": "Composition of Active Umbrella Trust Funds",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[22]",
+      "reboundSourceOrdinal": 21,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 11,
+      "historicalSourceId": "body[1]/p[24]",
+      "historicalText": "Active Grants",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[24]",
+      "reboundSourceOrdinal": 23,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 12,
+      "historicalSourceId": "body[1]/p[26]",
+      "historicalText": "Disbursements and FIF Transfers",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[26]",
+      "reboundSourceOrdinal": 25,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 13,
+      "historicalSourceId": "body[1]/p[28]",
+      "historicalText": "Undisbursed Commitments",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[28]",
+      "reboundSourceOrdinal": 27,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 14,
+      "historicalSourceId": "body[1]/p[30]",
+      "historicalText": "New Commitments",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[30]",
+      "reboundSourceOrdinal": 29,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 15,
+      "historicalSourceId": "body[1]/p[32]",
+      "historicalText": "New Administration Agreements",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[32]",
+      "reboundSourceOrdinal": 31,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 16,
+      "historicalSourceId": "body[1]/p[34]",
+      "historicalText": "New Administration Agreements (Cont\u0027d)",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[34]",
+      "reboundSourceOrdinal": 33,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 138
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 17,
+      "historicalSourceId": "body[1]/p[36]",
+      "historicalText": "Contribution and Receivables",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[36]",
+      "reboundSourceOrdinal": 40,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 12
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 18,
+      "historicalSourceId": "body[1]/p[36]",
+      "historicalText": "Cash Contributions",
+      "historicalLevel": 2,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[36]",
+      "reboundSourceOrdinal": 40,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 12
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 19,
+      "historicalSourceId": "body[1]/p[38]",
+      "historicalText": "Cash Contributions (cont\u0027d)",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[38]",
+      "reboundSourceOrdinal": 327,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 246
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 20,
+      "historicalSourceId": "body[1]/p[40]",
+      "historicalText": "Contributions Receivable",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[40]",
+      "reboundSourceOrdinal": 329,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 21,
+      "historicalSourceId": "body[1]/p[42]",
+      "historicalText": "Contributions Receivable (Cont\u0027d)",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[42]",
+      "reboundSourceOrdinal": 331,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 22,
+      "historicalSourceId": "body[1]/p[44]",
+      "historicalText": "Promissory Notes Receivable",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[44]",
+      "reboundSourceOrdinal": 333,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 28
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 23,
+      "historicalSourceId": "body[1]/p[46]",
+      "historicalText": "Commitment Authority",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[46]",
+      "reboundSourceOrdinal": 350,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 24,
+      "historicalSourceId": "body[1]/p[48]",
+      "historicalText": "Investments",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[48]",
+      "reboundSourceOrdinal": 365,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 25,
+      "historicalSourceId": "body[1]/p[48]",
+      "historicalText": "Cash and Investments",
+      "historicalLevel": 2,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[48]",
+      "reboundSourceOrdinal": 365,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 26,
+      "historicalSourceId": "body[1]/p[50]",
+      "historicalText": "Cash and Investments (cont\u0027d)",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[50]",
+      "reboundSourceOrdinal": 367,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 27,
+      "historicalSourceId": "body[1]/p[52]",
+      "historicalText": "Cash and Investments (cont\u0027d)",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[52]",
+      "reboundSourceOrdinal": 369,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 28,
+      "historicalSourceId": "body[1]/p[54]",
+      "historicalText": "Cost Recovery",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[54]",
+      "reboundSourceOrdinal": 371,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 350
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "051",
+      "historicalOrdinal": 29,
+      "historicalSourceId": "body[1]/p[54]",
+      "historicalText": "Cost Recovery",
+      "historicalLevel": 2,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[54]",
+      "reboundSourceOrdinal": 371,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 350
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 0,
+      "historicalSourceId": "body[1]/p[6]",
+      "historicalText": "Introduction",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[6]",
+      "reboundSourceOrdinal": 5,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 1,
+      "historicalSourceId": "body[1]/p[8]",
+      "historicalText": "Abbreviations and Acronyms",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[8]",
+      "reboundSourceOrdinal": 7,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 105
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 2,
+      "historicalSourceId": "body[1]/p[10]",
+      "historicalText": "Contents and Summary of Financial Data",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[10]",
+      "reboundSourceOrdinal": 9,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 660
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 3,
+      "historicalSourceId": "body[1]/p[12]",
+      "historicalText": "Portfolio at a Glance - IBRD/IDA/IFC Trust Funds",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[12]",
+      "reboundSourceOrdinal": 11,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 4,
+      "historicalSourceId": "body[1]/p[14]",
+      "historicalText": "Portfolio at a Glance - IBRD/IDA/IFC Trust Funds",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[14]",
+      "reboundSourceOrdinal": 13,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 5,
+      "historicalSourceId": "body[1]/p[16]",
+      "historicalText": "Portfolio at a Glance - FIFs",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[16]",
+      "reboundSourceOrdinal": 15,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 6,
+      "historicalSourceId": "body[1]/p[18]",
+      "historicalText": "Trust Fund YTD FY26 Key Highlights",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[18]",
+      "reboundSourceOrdinal": 17,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 144
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 7,
+      "historicalSourceId": "body[1]/p[18]",
+      "historicalText": "Top 3 trust funds activated during the fiscal year ended December 31, 2025, on the basis of Expected Funding",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[18]",
+      "reboundSourceOrdinal": 17,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 144
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 8,
+      "historicalSourceId": "body[1]/p[20]",
+      "historicalText": "Trust Fund Asset Summary",
+      "historicalLevel": 2,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[20]",
+      "reboundSourceOrdinal": 19,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 9,
+      "historicalSourceId": "body[1]/p[20]",
+      "historicalText": "Key Trust Fund Activity",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[20]",
+      "reboundSourceOrdinal": 19,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 10,
+      "historicalSourceId": "body[1]/p[22]",
+      "historicalText": "Composition of Active Trust Funds",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[22]",
+      "reboundSourceOrdinal": 107,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 11,
+      "historicalSourceId": "body[1]/p[24]",
+      "historicalText": "Composition of Active Umbrella Programs",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[24]",
+      "reboundSourceOrdinal": 195,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 12,
+      "historicalSourceId": "body[1]/p[26]",
+      "historicalText": "Active Grants",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[26]",
+      "reboundSourceOrdinal": 201,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 13,
+      "historicalSourceId": "body[1]/p[28]",
+      "historicalText": "Disbursements and FIF Transfers",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[28]",
+      "reboundSourceOrdinal": 203,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 14,
+      "historicalSourceId": "body[1]/p[30]",
+      "historicalText": "Undisbursed Commitments",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[30]",
+      "reboundSourceOrdinal": 205,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 15,
+      "historicalSourceId": "body[1]/p[32]",
+      "historicalText": "New Commitments",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[32]",
+      "reboundSourceOrdinal": 272,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 16,
+      "historicalSourceId": "body[1]/p[34]",
+      "historicalText": "New Administration Agreements",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[34]",
+      "reboundSourceOrdinal": 274,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 17,
+      "historicalSourceId": "body[1]/p[36]",
+      "historicalText": "New Administration Agreements (Cont\u0027d)",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[36]",
+      "reboundSourceOrdinal": 276,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 48
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 18,
+      "historicalSourceId": "body[1]/p[38]",
+      "historicalText": "Contribution and Receivables",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[38]",
+      "reboundSourceOrdinal": 287,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 19,
+      "historicalSourceId": "body[1]/p[38]",
+      "historicalText": "Cash Contributions",
+      "historicalLevel": 2,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[38]",
+      "reboundSourceOrdinal": 287,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 20,
+      "historicalSourceId": "body[1]/p[40]",
+      "historicalText": "Cash Contributions (cont\u0027d)",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[40]",
+      "reboundSourceOrdinal": 297,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 21,
+      "historicalSourceId": "body[1]/p[42]",
+      "historicalText": "Contributions Receivable",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[42]",
+      "reboundSourceOrdinal": 299,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 22,
+      "historicalSourceId": "body[1]/p[44]",
+      "historicalText": "Contributions Receivable (Cont\u0027d)",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[44]",
+      "reboundSourceOrdinal": 301,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 48
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 23,
+      "historicalSourceId": "body[1]/p[46]",
+      "historicalText": "Promissory Notes Receivable",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[46]",
+      "reboundSourceOrdinal": 313,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 24,
+      "historicalSourceId": "body[1]/p[48]",
+      "historicalText": "Commitment Authority",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[48]",
+      "reboundSourceOrdinal": 427,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 25,
+      "historicalSourceId": "body[1]/p[50]",
+      "historicalText": "Investments",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[50]",
+      "reboundSourceOrdinal": 429,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 26,
+      "historicalSourceId": "body[1]/p[50]",
+      "historicalText": "Cash and Investments",
+      "historicalLevel": 2,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[50]",
+      "reboundSourceOrdinal": 429,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 27,
+      "historicalSourceId": "body[1]/p[52]",
+      "historicalText": "Cash and Investments (cont\u0027d)",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[52]",
+      "reboundSourceOrdinal": 431,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 28
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 28,
+      "historicalSourceId": "body[1]/p[54]",
+      "historicalText": "Cash and Investments (cont\u0027d)",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[54]",
+      "reboundSourceOrdinal": 433,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 58
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 29,
+      "historicalSourceId": "body[1]/p[56]",
+      "historicalText": "Cost Recovery",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[56]",
+      "reboundSourceOrdinal": 455,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 30,
+      "historicalSourceId": "body[1]/p[56]",
+      "historicalText": "Cost Recovery",
+      "historicalLevel": 2,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[56]",
+      "reboundSourceOrdinal": 455,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "052",
+      "historicalOrdinal": 31,
+      "historicalSourceId": "body[1]/p[58]",
+      "historicalText": "Cost Recovery",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[58]",
+      "reboundSourceOrdinal": 457,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 0,
+      "historicalSourceId": "body[1]/p[27]",
+      "historicalText": "1 American Law, Legal Reasoning, and the Legal System",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[27]",
+      "reboundSourceOrdinal": 33,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 107
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 1,
+      "historicalSourceId": "body[1]/p[47]",
+      "historicalText": "2 Disputes and Dispute Settlement",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[47]",
+      "reboundSourceOrdinal": 53,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 2,
+      "historicalSourceId": "body[1]/p[75]",
+      "historicalText": "3 Business Ethics and Social Responsibility",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[75]",
+      "reboundSourceOrdinal": 94,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 18
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 3,
+      "historicalSourceId": "body[1]/p[95]",
+      "historicalText": "4 Business and the United States Constitution",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[95]",
+      "reboundSourceOrdinal": 135,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 4,
+      "historicalSourceId": "body[1]/p[115]",
+      "historicalText": "5 Criminal Liability",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[115]",
+      "reboundSourceOrdinal": 170,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 48
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 5,
+      "historicalSourceId": "body[1]/p[135]",
+      "historicalText": "6 The Tort System",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[135]",
+      "reboundSourceOrdinal": 211,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 6,
+      "historicalSourceId": "body[1]/p[159]",
+      "historicalText": "7 Contract Law",
+      "historicalLevel": 1,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[159]",
+      "reboundSourceOrdinal": 250,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 7,
+      "historicalSourceId": "body[1]/p[175]",
+      "historicalText": "8 Sales Contracts",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[175]",
+      "reboundSourceOrdinal": 266,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 8,
+      "historicalSourceId": "body[1]/p[195]",
+      "historicalText": "9 Employment and Labor Law",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[195]",
+      "reboundSourceOrdinal": 286,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 40
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 9,
+      "historicalSourceId": "body[1]/p[223]",
+      "historicalText": "10 Government Regulation",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[223]",
+      "reboundSourceOrdinal": 318,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 10,
+      "historicalSourceId": "body[1]/p[239]",
+      "historicalText": "11 Antitrust Law",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[239]",
+      "reboundSourceOrdinal": 334,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 11,
+      "historicalSourceId": "body[1]/p[259]",
+      "historicalText": "12 Unfair Trade Practices and the Federal Trade Commission",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[259]",
+      "reboundSourceOrdinal": 354,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 169
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 12,
+      "historicalSourceId": "body[1]/p[271]",
+      "historicalText": "13 International Law",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[271]",
+      "reboundSourceOrdinal": 366,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 13,
+      "historicalSourceId": "body[1]/p[291]",
+      "historicalText": "14 Securities Regulation",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[291]",
+      "reboundSourceOrdinal": 386,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 142
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 14,
+      "historicalSourceId": "body[1]/p[27]",
+      "historicalText": "1.1 Basic American Legal Principles",
+      "historicalLevel": 2,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[27]",
+      "reboundSourceOrdinal": 33,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 107
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 15,
+      "historicalSourceId": "body[1]/p[31]",
+      "historicalText": "1.2 Sources and Types of Law",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[31]",
+      "reboundSourceOrdinal": 37,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 16,
+      "historicalSourceId": "body[1]/p[35]",
+      "historicalText": "1.3 Important Business Laws and Regulations",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[35]",
+      "reboundSourceOrdinal": 41,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 17,
+      "historicalSourceId": "body[1]/p[51]",
+      "historicalText": "2.1 Negotiation",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[51]",
+      "reboundSourceOrdinal": 57,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 18,
+      "historicalSourceId": "body[1]/p[55]",
+      "historicalText": "2.2 Mediation",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[55]",
+      "reboundSourceOrdinal": 61,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 19,
+      "historicalSourceId": "body[1]/p[59]",
+      "historicalText": "2.3 Arbitration",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[59]",
+      "reboundSourceOrdinal": 65,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 20,
+      "historicalSourceId": "body[1]/p[79]",
+      "historicalText": "3.1 Business Ethics",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[79]",
+      "reboundSourceOrdinal": 98,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 11
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 21,
+      "historicalSourceId": "body[1]/p[83]",
+      "historicalText": "3.2 Social Responsibility",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[83]",
+      "reboundSourceOrdinal": 109,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 22,
+      "historicalSourceId": "body[1]/p[99]",
+      "historicalText": "4.1 Commerce Clause",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[99]",
+      "reboundSourceOrdinal": 139,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 23,
+      "historicalSourceId": "body[1]/p[103]",
+      "historicalText": "4.2 Constitutional Protections",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[103]",
+      "reboundSourceOrdinal": 145,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 15
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 24,
+      "historicalSourceId": "body[1]/p[119]",
+      "historicalText": "5.1 Common Business Crimes",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[119]",
+      "reboundSourceOrdinal": 178,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 25,
+      "historicalSourceId": "body[1]/p[123]",
+      "historicalText": "5.2 Civil vs. Criminal Liability",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[123]",
+      "reboundSourceOrdinal": 186,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 26,
+      "historicalSourceId": "body[1]/p[139]",
+      "historicalText": "6.1 Intentional Torts and Negligence",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[139]",
+      "reboundSourceOrdinal": 220,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 37
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 27,
+      "historicalSourceId": "body[1]/p[143]",
+      "historicalText": "6.2 Product and Strict Liability",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[143]",
+      "reboundSourceOrdinal": 227,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 28,
+      "historicalSourceId": "body[1]/p[159]",
+      "historicalText": "7.1 Agreement, Consideration, and Promissory Estoppel",
+      "historicalLevel": 2,
+      "status": "AMBIGUOUS",
+      "reason": "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate",
+      "reboundSourceId": "body[1]/p[159]",
+      "reboundSourceOrdinal": 250,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 29,
+      "historicalSourceId": "body[1]/p[163]",
+      "historicalText": "7.2 Capacity and Legality",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[163]",
+      "reboundSourceOrdinal": 254,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 110
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 30,
+      "historicalSourceId": "body[1]/p[167]",
+      "historicalText": "7.3 Breach of Contract and Remedies",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[167]",
+      "reboundSourceOrdinal": 258,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 413
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 31,
+      "historicalSourceId": "body[1]/p[179]",
+      "historicalText": "8.1 The Nature and Origins of Sales Contracts",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[179]",
+      "reboundSourceOrdinal": 270,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 32,
+      "historicalSourceId": "body[1]/p[187]",
+      "historicalText": "8.2 Warranties and Sales Contracts",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[187]",
+      "reboundSourceOrdinal": 278,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 244
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 33,
+      "historicalSourceId": "body[1]/p[199]",
+      "historicalText": "9.1 Employment, Worker Protection, and Immigration Law",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[199]",
+      "reboundSourceOrdinal": 290,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 34,
+      "historicalSourceId": "body[1]/p[203]",
+      "historicalText": "9.2 Labor Law",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[203]",
+      "reboundSourceOrdinal": 294,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 108
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 35,
+      "historicalSourceId": "body[1]/p[211]",
+      "historicalText": "9.3 Equal Opportunity in Employment",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[211]",
+      "reboundSourceOrdinal": 306,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 36,
+      "historicalSourceId": "body[1]/p[227]",
+      "historicalText": "10.1 Administrative Law",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[227]",
+      "reboundSourceOrdinal": 322,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 37,
+      "historicalSourceId": "body[1]/p[231]",
+      "historicalText": "10.2 Regulatory Agencies",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[231]",
+      "reboundSourceOrdinal": 326,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 28
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 38,
+      "historicalSourceId": "body[1]/p[243]",
+      "historicalText": "11.1 History of Antitrust Law",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[243]",
+      "reboundSourceOrdinal": 338,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 537
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 39,
+      "historicalSourceId": "body[1]/p[247]",
+      "historicalText": "11.2 Antitrust Laws",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[247]",
+      "reboundSourceOrdinal": 342,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 8
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 40,
+      "historicalSourceId": "body[1]/p[263]",
+      "historicalText": "12.1 Unfair Trade Practices",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[263]",
+      "reboundSourceOrdinal": 358,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 43
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 41,
+      "historicalSourceId": "body[1]/p[267]",
+      "historicalText": "12.2 The Federal Trade Commission",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[267]",
+      "reboundSourceOrdinal": 362,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 559
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 42,
+      "historicalSourceId": "body[1]/p[275]",
+      "historicalText": "13.1 Introduction to International Law",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[275]",
+      "reboundSourceOrdinal": 370,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 519
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 43,
+      "historicalSourceId": "body[1]/p[279]",
+      "historicalText": "13.2 Sources and Practice of International Law",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[279]",
+      "reboundSourceOrdinal": 374,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 388
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 44,
+      "historicalSourceId": "body[1]/p[295]",
+      "historicalText": "14.1 Liability Under the Securities Act",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[295]",
+      "reboundSourceOrdinal": 390,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 647
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "056",
+      "historicalOrdinal": 45,
+      "historicalSourceId": "body[1]/p[299]",
+      "historicalText": "14.2 The Framework of Securities Regulation",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[299]",
+      "reboundSourceOrdinal": 394,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 0,
+      "historicalSourceId": "body[1]/p[14]",
+      "historicalText": "1. Introduction",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[14]",
+      "reboundSourceOrdinal": 60,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 119
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 1,
+      "historicalSourceId": "body[1]/tbl[18]/tr[1]/tc[1]/p[1]",
+      "historicalText": "1.1. Requirements Notation",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[18]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 123,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 26
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 2,
+      "historicalSourceId": "body[1]/tbl[19]/tr[1]/tc[1]/p[1]",
+      "historicalText": "1.2. Syntax Notation",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[19]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 145,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 104
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 3,
+      "historicalSourceId": "body[1]/p[47]",
+      "historicalText": "1.2.1. Imported Rules",
+      "historicalLevel": 3,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[47]",
+      "reboundSourceOrdinal": 154,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 4,
+      "historicalSourceId": "body[1]/p[52]",
+      "historicalText": "1.2.2. Delta Seconds",
+      "historicalLevel": 3,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[52]",
+      "reboundSourceOrdinal": 174,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 20
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 5,
+      "historicalSourceId": "body[1]/p[15]",
+      "historicalText": "2. Overview of Cache Operation",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[15]",
+      "reboundSourceOrdinal": 61,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 242
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 6,
+      "historicalSourceId": "body[1]/tbl[33]/tr[1]/tc[1]/p[1]",
+      "historicalText": "3. Storing Responses in Caches",
+      "historicalLevel": 1,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[33]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 216,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 7,
+      "historicalSourceId": "body[1]/tbl[39]/tr[1]/tc[1]/p[1]",
+      "historicalText": "3.1. Storing Header and Trailer Fields",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[39]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 262,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 8,
+      "historicalSourceId": "body[1]/p[75]",
+      "historicalText": "3.2. Updating Stored Header Fields",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[75]",
+      "reboundSourceOrdinal": 292,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 34
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 9,
+      "historicalSourceId": "body[1]/tbl[45]/tr[1]/tc[1]/p[1]",
+      "historicalText": "3.3. Storing Incomplete Responses",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[45]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 316,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 132
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 10,
+      "historicalSourceId": "body[1]/p[84]",
+      "historicalText": "3.4. Combining Partial Content",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[84]",
+      "reboundSourceOrdinal": 334,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 11,
+      "historicalSourceId": "body[1]/tbl[48]/tr[1]/tc[1]/p[1]",
+      "historicalText": "3.5. Storing Responses to Authenticated Requests",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[48]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 357,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 48
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 12,
+      "historicalSourceId": "body[1]/p[16]",
+      "historicalText": "4. Constructing Responses from Caches",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[16]",
+      "reboundSourceOrdinal": 62,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 231
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 13,
+      "historicalSourceId": "body[1]/tbl[54]/tr[1]/tc[1]/p[1]",
+      "historicalText": "4.1. Calculating Cache Keys with the Vary Header Field",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[54]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 410,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 132
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 14,
+      "historicalSourceId": "body[1]/tbl[57]/tr[1]/tc[1]/p[1]",
+      "historicalText": "4.2. Freshness",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[57]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 431,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 14
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 15,
+      "historicalSourceId": "body[1]/p[125]",
+      "historicalText": "4.2.1. Calculating Freshness Lifetime",
+      "historicalLevel": 3,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[125]",
+      "reboundSourceOrdinal": 481,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 37
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 16,
+      "historicalSourceId": "body[1]/tbl[68]/tr[1]/tc[1]/p[1]",
+      "historicalText": "4.2.2. Calculating Heuristic Freshness",
+      "historicalLevel": 3,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[68]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 490,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 17,
+      "historicalSourceId": "body[1]/p[141]",
+      "historicalText": "4.2.3. Calculating Age",
+      "historicalLevel": 3,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[141]",
+      "reboundSourceOrdinal": 522,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 18,
+      "historicalSourceId": "body[1]/tbl[83]/tr[1]/tc[1]/p[1]",
+      "historicalText": "4.2.4. Serving Stale Responses",
+      "historicalLevel": 3,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[83]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 567,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 19,
+      "historicalSourceId": "body[1]/p[17]",
+      "historicalText": "4.3. Validation",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[17]",
+      "reboundSourceOrdinal": 63,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 49
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 20,
+      "historicalSourceId": "body[1]/p[158]",
+      "historicalText": "4.3.1. Sending a Validation Request",
+      "historicalLevel": 3,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[158]",
+      "reboundSourceOrdinal": 585,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 35
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 21,
+      "historicalSourceId": "body[1]/tbl[8]/tr[1]/tc[1]/p[1]",
+      "historicalText": "4.3.2. Handling a Received Validation Request",
+      "historicalLevel": 3,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/tbl[8]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 64,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 44
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 22,
+      "historicalSourceId": "body[1]/p[21]",
+      "historicalText": "4.3.3. Handling a Validation Response",
+      "historicalLevel": 3,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[21]",
+      "reboundSourceOrdinal": 75,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 123
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 23,
+      "historicalSourceId": "body[1]/p[180]",
+      "historicalText": "4.3.4. Freshening Stored Responses upon Validation",
+      "historicalLevel": 3,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[180]",
+      "reboundSourceOrdinal": 676,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 50
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 24,
+      "historicalSourceId": "body[1]/p[184]",
+      "historicalText": "4.3.5. Freshening Responses with HEAD",
+      "historicalLevel": 3,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[184]",
+      "reboundSourceOrdinal": 690,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 37
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 25,
+      "historicalSourceId": "body[1]/p[22]",
+      "historicalText": "4.4. Invalidating Stored Responses",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[22]",
+      "reboundSourceOrdinal": 76,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 33
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 26,
+      "historicalSourceId": "body[1]/p[23]",
+      "historicalText": "5. Field Definitions",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[23]",
+      "reboundSourceOrdinal": 77,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 200
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 27,
+      "historicalSourceId": "body[1]/p[194]",
+      "historicalText": "5.1. Age",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[194]",
+      "reboundSourceOrdinal": 731,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 8
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 28,
+      "historicalSourceId": "body[1]/p[201]",
+      "historicalText": "5.2. Cache-Control",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[201]",
+      "reboundSourceOrdinal": 750,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 18
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 29,
+      "historicalSourceId": "body[1]/tbl[114]/tr[1]/tc[1]/p[1]",
+      "historicalText": "5.2.1. Request Directives",
+      "historicalLevel": 3,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[114]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 765,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 143
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 30,
+      "historicalSourceId": "body[1]/tbl[115]/tr[1]/tc[1]/p[1]",
+      "historicalText": "5.2.1.1. max-age",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[115]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 767,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 16
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 31,
+      "historicalSourceId": "body[1]/p[219]",
+      "historicalText": "5.2.1.2. max-stale",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[219]",
+      "reboundSourceOrdinal": 790,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 69
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 32,
+      "historicalSourceId": "body[1]/p[220]",
+      "historicalText": "5.2.1.3. min-fresh",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[220]",
+      "reboundSourceOrdinal": 795,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 69
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 33,
+      "historicalSourceId": "body[1]/p[221]",
+      "historicalText": "5.2.1.4. no-cache",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[221]",
+      "reboundSourceOrdinal": 800,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 187
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 34,
+      "historicalSourceId": "body[1]/tbl[120]/tr[1]/tc[1]/p[1]",
+      "historicalText": "5.2.1.5. no-store",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[120]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 801,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 17
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 35,
+      "historicalSourceId": "body[1]/p[227]",
+      "historicalText": "5.2.1.6. no-transform",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[227]",
+      "reboundSourceOrdinal": 822,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 160
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 36,
+      "historicalSourceId": "body[1]/tbl[123]/tr[1]/tc[1]/p[1]",
+      "historicalText": "5.2.1.7. only-if-cached",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[123]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 823,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 37,
+      "historicalSourceId": "body[1]/p[24]",
+      "historicalText": "5.2.2. Response Directives",
+      "historicalLevel": 3,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[24]",
+      "reboundSourceOrdinal": 78,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 218
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 38,
+      "historicalSourceId": "body[1]/p[229]",
+      "historicalText": "5.2.2.1. max-age",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[229]",
+      "reboundSourceOrdinal": 828,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 33
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 39,
+      "historicalSourceId": "body[1]/tbl[126]/tr[1]/tc[1]/p[1]",
+      "historicalText": "5.2.2.2. must-revalidate",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[126]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 835,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 116
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 40,
+      "historicalSourceId": "body[1]/p[239]",
+      "historicalText": "5.2.2.3. must-understand",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[239]",
+      "reboundSourceOrdinal": 866,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 24
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 41,
+      "historicalSourceId": "body[1]/p[240]",
+      "historicalText": "5.2.2.4. no-cache",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[240]",
+      "reboundSourceOrdinal": 869,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 34
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 42,
+      "historicalSourceId": "body[1]/tbl[135]/tr[1]/tc[1]/p[1]",
+      "historicalText": "5.2.2.5. no-store",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[135]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 886,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 17
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 43,
+      "historicalSourceId": "body[1]/tbl[137]/tr[1]/tc[1]/p[1]",
+      "historicalText": "5.2.2.6. no-transform",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[137]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 910,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 102
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 44,
+      "historicalSourceId": "body[1]/p[254]",
+      "historicalText": "5.2.2.7. private",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[254]",
+      "reboundSourceOrdinal": 914,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 33
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 45,
+      "historicalSourceId": "body[1]/tbl[141]/tr[1]/tc[1]/p[1]",
+      "historicalText": "5.2.2.8. proxy-revalidate",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[141]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 929,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 25
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 46,
+      "historicalSourceId": "body[1]/tbl[144]/tr[1]/tc[1]/p[1]",
+      "historicalText": "5.2.2.9. public",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[144]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 951,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 15
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 47,
+      "historicalSourceId": "body[1]/p[268]",
+      "historicalText": "5.2.2.10. s-maxage",
+      "historicalLevel": 4,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[268]",
+      "reboundSourceOrdinal": 955,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 35
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 48,
+      "historicalSourceId": "body[1]/p[25]",
+      "historicalText": "5.2.3. Extension Directives",
+      "historicalLevel": 3,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[25]",
+      "reboundSourceOrdinal": 79,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 57
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 49,
+      "historicalSourceId": "body[1]/tbl[153]/tr[1]/tc[1]/p[1]",
+      "historicalText": "5.2.4. Cache Directive Registry",
+      "historicalLevel": 3,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/tbl[153]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 995,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 50,
+      "historicalSourceId": "body[1]/p[26]",
+      "historicalText": "5.3. Expires",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[26]",
+      "reboundSourceOrdinal": 80,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 11
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 51,
+      "historicalSourceId": "body[1]/tbl[10]/tr[1]/tc[1]/p[1]",
+      "historicalText": "5.4. Pragma",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/tbl[10]/tr[1]/tc[1]/p[1]",
+      "reboundSourceOrdinal": 81,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 52,
+      "historicalSourceId": "body[1]/p[30]",
+      "historicalText": "5.5. Warning",
+      "historicalLevel": 2,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[30]",
+      "reboundSourceOrdinal": 93,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 11
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 53,
+      "historicalSourceId": "body[1]/p[31]",
+      "historicalText": "6. Relationship to Applications and Other Caches",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[31]",
+      "reboundSourceOrdinal": 94,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 149
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 54,
+      "historicalSourceId": "body[1]/p[313]",
+      "historicalText": "7. Security Considerations",
+      "historicalLevel": 1,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[313]",
+      "reboundSourceOrdinal": 1066,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 26
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 55,
+      "historicalSourceId": "body[1]/p[320]",
+      "historicalText": "7.1. Cache Poisoning",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[320]",
+      "reboundSourceOrdinal": 1082,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 20
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 56,
+      "historicalSourceId": "body[1]/p[322]",
+      "historicalText": "7.2. Timing Attacks",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[322]",
+      "reboundSourceOrdinal": 1089,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 57,
+      "historicalSourceId": "body[1]/p[325]",
+      "historicalText": "7.3. Caching of Sensitive Information",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[325]",
+      "reboundSourceOrdinal": 1093,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 37
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 58,
+      "historicalSourceId": "body[1]/p[32]",
+      "historicalText": "8. IANA Considerations",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[32]",
+      "reboundSourceOrdinal": 95,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 105
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 59,
+      "historicalSourceId": "body[1]/p[329]",
+      "historicalText": "8.1. Field Name Registration",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[329]",
+      "reboundSourceOrdinal": 1100,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 28
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 60,
+      "historicalSourceId": "body[1]/p[334]",
+      "historicalText": "8.2. Cache Directive Registration",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[334]",
+      "reboundSourceOrdinal": 1152,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 33
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 61,
+      "historicalSourceId": "body[1]/p[341]",
+      "historicalText": "8.3. Warn Code Registry",
+      "historicalLevel": 2,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[341]",
+      "reboundSourceOrdinal": 1187,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 62,
+      "historicalSourceId": "body[1]/p[34]",
+      "historicalText": "A. Collected ABNF",
+      "historicalLevel": 1,
+      "status": "REVIEW_REQUIRED",
+      "reason": "source identity exists but historical text is not contained in the raw source text",
+      "reboundSourceId": "body[1]/p[34]",
+      "reboundSourceOrdinal": 97,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 81
+      },
+      "goldReady": false
+    },
+    {
+      "datasetId": "092",
+      "historicalOrdinal": 63,
+      "historicalSourceId": "body[1]/p[363]",
+      "historicalText": "B. Changes from RFC 7234",
+      "historicalLevel": 1,
+      "status": "EXACT_REBOUND",
+      "reason": "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review",
+      "reboundSourceId": "body[1]/p[363]",
+      "reboundSourceOrdinal": 1273,
+      "reboundRawSourceSpan": {
+        "start": 0,
+        "end": 33
+      },
+      "goldReady": false
+    }
+  ],
+  "policy": "Historical labels are candidate evidence only. EXACT_REBOUND does not imply GOLD_READY until an exact heading span and explicit review are recorded."
+}

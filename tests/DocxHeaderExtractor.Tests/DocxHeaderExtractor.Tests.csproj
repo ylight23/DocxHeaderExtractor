@@ -30,6 +30,7 @@
     <!-- Chỉ để kiểm giới hạn của WritebackStore: nó giữ tài liệu của người dùng trong bộ nhớ nên
          các mức trần phải có test, không thể chỉ tin vào review. -->
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Web\DocxHeaderExtractor.Web.csproj" Aliases="global,WebApp" />
+    <ProjectReference Include="..\..\tools\Accuracy99Baseline\Accuracy99Baseline.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,7 +4,9 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
+using Accuracy99Baseline;
 
 const string BaseRevision = "732c3505afc5dd312423ed0fa58056192fb39608";
 var root = FindRepositoryRoot(args);
@@ -47,6 +49,9 @@ var jsonOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web)
 var allGold = runs.SelectMany(run => run.Gold).ToArray();
 var allFirstLoss = runs.SelectMany(run => run.FirstLoss).ToArray();
 var providerCalls = runs.Sum(run => run.ProviderCalls);
+var sourceCatalogs = BuildSourceCatalogs(root, datasets);
+var rebinding = BuildHistoricalRebinding(datasets, sourceCatalogs);
+var phaseBReconciliation = BuildPhaseBReconciliation(sourceCatalogs, runs, allFirstLoss, rebinding.Count);
 var joined = runs.Sum(run => run.SourceIdentityJoined);
 var sourceIdentityDenominator = runs.Sum(run => run.Gold.Count(gold => gold.SourceId is not null));
 var levelCompared = runs.Sum(run => run.LevelCompared);
@@ -150,10 +155,107 @@ File.WriteAllText(Path.Combine(outputRoot, "outline-baseline.v1.json"), JsonSeri
 File.WriteAllText(Path.Combine(outputRoot, "outline-first-loss-ledger.v1.json"), JsonSerializer.Serialize(firstLossArtifact, jsonOptions));
 File.WriteAllText(Path.Combine(outputRoot, "outline-dataset-inventory.v1.json"), JsonSerializer.Serialize(inventory, jsonOptions));
 File.WriteAllText(Path.Combine(outputRoot, "outline-adjudication-gaps.v1.json"), JsonSerializer.Serialize(gaps, jsonOptions));
+File.WriteAllText(Path.Combine(outputRoot, "gold-source-catalog.v1.json"), JsonSerializer.Serialize(new
+{
+    schemaVersion = 1,
+    artifactKind = "accuracy99_parser_owned_gold_source_catalog",
+    baseRevision = BaseRevision,
+    coordinateSystem = "OpenXmlDocumentSource SourceId + SourceOrdinal; raw span is zero-based end-exclusive over RawText",
+    derivedFrom = "OpenXmlDocumentSource only; no HeadingRecord, ValidatedStructure, Sections, Chunks, or predictions",
+    documents = sourceCatalogs,
+}, jsonOptions));
+File.WriteAllText(Path.Combine(outputRoot, "gold-rebinding.v1.json"), JsonSerializer.Serialize(new
+{
+    schemaVersion = 1,
+    artifactKind = "accuracy99_historical_positive_rebinding",
+    baseRevision = BaseRevision,
+    historicalPositiveLabels = rebinding.Count,
+    statusCounts = rebinding.GroupBy(item => item.Status).ToDictionary(group => group.Key, group => group.Count()),
+    records = rebinding,
+    policy = "Historical labels are candidate evidence only. EXACT_REBOUND does not imply GOLD_READY until an exact heading span and explicit review are recorded.",
+}, jsonOptions));
+File.WriteAllText(Path.Combine(outputRoot, "gold-adjudication-status.v1.json"), JsonSerializer.Serialize(BuildAdjudicationStatus(root, datasets, sourceCatalogs, rebinding), jsonOptions));
+var packetRoot = Path.Combine(outputRoot, "adjudication-packets");
+Directory.CreateDirectory(packetRoot);
+foreach (var catalog in sourceCatalogs.Where(item => item.Status == "AVAILABLE"))
+{
+    var packet = new
+    {
+        schemaVersion = 1,
+        artifactKind = "accuracy99_source_first_adjudication_packet",
+        datasetId = catalog.DatasetId,
+        documentId = catalog.DocumentId,
+        blind = false,
+        predictionsIncluded = false,
+        reviewStatus = "NOT_STARTED",
+        requiredLabels = new[] { "HEADING", "NON_HEADING", "UNCERTAIN", "EXCLUDED" },
+        occurrences = catalog.Occurrences.Select((occurrence, ordinal) => new
+        {
+            ordinal,
+            occurrence.DocumentId,
+            occurrence.SourceId,
+            occurrence.SourceOrdinal,
+            occurrence.RawText,
+            occurrence.RawSourceSpan,
+            occurrence.SourceType,
+            occurrence.StableParserIdentity,
+            occurrence.PreviousContext,
+            occurrence.NextContext,
+            occurrence.Page,
+            historicalLabels = rebinding.Where(item => item.DatasetId == catalog.DatasetId &&
+                item.ReboundSourceId == occurrence.SourceId).Select(item => new
+                {
+                    item.HistoricalOrdinal,
+                    item.HistoricalSourceId,
+                    item.HistoricalSourceOrdinal,
+                    item.HistoricalText,
+                    item.HistoricalLevel,
+                    item.Status,
+                }).ToArray(),
+            adjudicatedLabel = (string?)null,
+            headingSpan = (StructuralSpan?)null,
+            headingText = (string?)null,
+            structuralType = (string?)null,
+            level = (int?)null,
+            parentGoldId = (string?)null,
+            reviewer = (string?)null,
+        }).ToArray(),
+    };
+    File.WriteAllText(Path.Combine(packetRoot, $"{catalog.DatasetId}.v1.json"), JsonSerializer.Serialize(packet, jsonOptions));
+}
+File.WriteAllText(Path.Combine(outputRoot, "development-set.v1.json"), JsonSerializer.Serialize(new
+{
+    schemaVersion = 1,
+    artifactKind = "accuracy99_non_blind_development_set",
+    baseRevision = BaseRevision,
+    blind = false,
+    tuningAllowed = true,
+    documentCount = sourceCatalogs.Count(item => item.Status == "AVAILABLE"),
+    documents = sourceCatalogs.Where(item => item.Status == "AVAILABLE").Select(item => item.DatasetId).ToArray(),
+    reviewedHeadingOccurrences = 0,
+    reviewedNonHeadingOccurrences = 0,
+    exhaustiveDocuments = 0,
+    status = "READY_FOR_HUMAN_ADJUDICATION",
+    note = "Historical inspection makes this a development/adjudication set, not a final blind 99% holdout.",
+}, jsonOptions));
+File.WriteAllText(Path.Combine(outputRoot, "blind-holdout.v1.json"), JsonSerializer.Serialize(new
+{
+    schemaVersion = 1,
+    artifactKind = "accuracy99_blind_holdout_manifest",
+    baseRevision = BaseRevision,
+    status = "NOT_AVAILABLE",
+    blind = false,
+    documentCount = 0,
+    contaminationStatus = "NOT_APPLICABLE",
+    acquisitionRequired = "Acquire source files not previously used for extraction tuning, freeze document hashes and parser coordinates, then perform source-first exhaustive review before claiming blind holdout support.",
+}, jsonOptions));
+File.WriteAllText(Path.Combine(outputRoot, "phase-b-reconciliation.v1.json"), JsonSerializer.Serialize(phaseBReconciliation, jsonOptions));
 
 var docPath = Path.Combine(root, "docs", "accuracy", "accuracy99-outline-baseline.md");
 Directory.CreateDirectory(Path.GetDirectoryName(docPath)!);
 File.WriteAllText(docPath, RenderMarkdown(baseline, runs, allFirstLoss));
+var phaseBDocPath = Path.Combine(root, "docs", "accuracy", "accuracy99-gold-protocol.md");
+File.WriteAllText(phaseBDocPath, RenderPhaseBMarkdown(sourceCatalogs, rebinding, phaseBReconciliation));
 
 Console.WriteLine($"ACCURACY-99 BASELINE = NOT_YET_MEASURABLE; datasets={runs.Count}; providerCalls={providerCalls}; unjoined={baseline.unjoinedOccurrences}");
 
@@ -248,6 +350,276 @@ static object InventoryFiles(string root, string directoryName)
         .OrderBy(group => group.Key, StringComparer.OrdinalIgnoreCase)
         .ToDictionary(group => group.Key, group => group.Count(), StringComparer.OrdinalIgnoreCase);
     return new { exists = true, total = files.Length, byTopLevelDirectory };
+}
+
+static IReadOnlyList<SourceCatalogSnapshot> BuildSourceCatalogs(string root, IReadOnlyList<DatasetSpec> datasets)
+{
+    var catalogs = new List<SourceCatalogSnapshot>();
+    foreach (var dataset in datasets)
+    {
+        if (!File.Exists(dataset.DocumentPath))
+        {
+            catalogs.Add(new SourceCatalogSnapshot
+            {
+                DatasetId = dataset.Id,
+                Status = "SOURCE_MISSING",
+                DocumentPath = Path.GetRelativePath(root, dataset.DocumentPath).Replace('\\', '/'),
+                DocumentId = null,
+                SourceKind = null,
+                Occurrences = [],
+            });
+            continue;
+        }
+
+        var source = new OpenXmlDocumentSource().Read(dataset.DocumentPath);
+        var paragraphs = source.Paragraphs;
+        var occurrences = paragraphs.Select((paragraph, index) => new SourceCatalogOccurrence
+        {
+            DocumentId = source.DocumentId,
+            SourceId = paragraph.SourceId,
+            SourceOrdinal = paragraph.SourceOrdinal,
+            RawText = paragraph.Text,
+            RawSourceSpan = new StructuralSpan(0, paragraph.Text.Length),
+            SourceType = source.SourceKind,
+            StableParserIdentity = paragraph.SourceId,
+            PreviousContext = index == 0 ? null : TrimContext(paragraphs[index - 1].Text),
+            NextContext = index + 1 >= paragraphs.Count ? null : TrimContext(paragraphs[index + 1].Text),
+            Page = null,
+        }).ToArray();
+        if (occurrences.Any(occurrence => !PhaseBContracts.IsValidSourceSpan(occurrence.RawText, occurrence.RawSourceSpan)))
+            throw new InvalidOperationException($"Parser-owned source catalog contains an invalid span for dataset {dataset.Id}.");
+
+        catalogs.Add(new SourceCatalogSnapshot
+        {
+            DatasetId = dataset.Id,
+            Status = "AVAILABLE",
+            DocumentPath = Path.GetRelativePath(root, dataset.DocumentPath).Replace('\\', '/'),
+            DocumentId = source.DocumentId,
+            SourceKind = source.SourceKind,
+            Occurrences = occurrences,
+        });
+    }
+    return catalogs;
+}
+
+static IReadOnlyList<HistoricalRebinding> BuildHistoricalRebinding(
+    IReadOnlyList<DatasetSpec> datasets,
+    IReadOnlyList<SourceCatalogSnapshot> catalogs)
+{
+    var records = new List<HistoricalRebinding>();
+    foreach (var dataset in datasets)
+    {
+        if (!File.Exists(dataset.KeyPath)) continue;
+        var key = AnswerKey.Load(dataset.KeyPath);
+        var catalog = catalogs.Single(item => item.DatasetId == dataset.Id);
+        if (catalog.Status == "SOURCE_MISSING") continue;
+        var occurrencesById = catalog.Occurrences
+            .GroupBy(item => item.SourceId, StringComparer.Ordinal)
+            .ToDictionary(group => group.Key, group => group.ToArray(), StringComparer.Ordinal);
+        var historicalBySourceId = key.PositiveEntries
+            .Where(entry => entry.StableId is not null)
+            .GroupBy(entry => entry.StableId!, StringComparer.Ordinal)
+            .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal);
+
+        foreach (var (entry, ordinal) in key.PositiveEntries.Select((entry, ordinal) => (entry, ordinal)))
+        {
+            var sourceId = entry.StableId;
+            if (sourceId is null && entry.Index is not null)
+                sourceId = catalog.Occurrences.FirstOrDefault(item => item.SourceOrdinal == entry.Index)?.SourceId;
+            var candidates = sourceId is not null && occurrencesById.TryGetValue(sourceId, out var found)
+                ? found
+                : [];
+            var duplicateHistorical = sourceId is not null && historicalBySourceId.GetValueOrDefault(sourceId) > 1;
+            var source = candidates.SingleOrDefault();
+            string status;
+            string reason;
+            if (sourceId is null)
+            {
+                status = "INVALID_HISTORICAL_LABEL";
+                reason = "historical label has neither a stable source ID nor a usable ordinal";
+            }
+            else if (candidates.Length == 0)
+            {
+                status = "SOURCE_NOT_AVAILABLE";
+                reason = catalog.Status == "SOURCE_MISSING"
+                    ? "source document is unavailable in the current checkout"
+                    : "stable source ID is absent from the current parser-owned catalog; coordinate migration or parser identity change requires review";
+            }
+            else if (duplicateHistorical)
+            {
+                status = "AMBIGUOUS";
+                reason = "multiple historical positives reference the same source occurrence; an exact heading span is required to disambiguate";
+            }
+            else if (string.IsNullOrWhiteSpace(entry.Text) ||
+                !Normalize(source!.RawText).Contains(Normalize(entry.Text), StringComparison.Ordinal))
+            {
+                status = "REVIEW_REQUIRED";
+                reason = "source identity exists but historical text is not contained in the raw source text";
+            }
+            else
+            {
+                status = "EXACT_REBOUND";
+                reason = "unique parser-owned source identity and historical text are compatible; heading span and semantic fields still require explicit review";
+            }
+
+            records.Add(new HistoricalRebinding
+            {
+                DatasetId = dataset.Id,
+                HistoricalOrdinal = ordinal,
+                HistoricalSourceId = entry.StableId,
+                HistoricalSourceOrdinal = entry.Index,
+                HistoricalText = entry.Text,
+                HistoricalLevel = entry.Level,
+                Status = status,
+                Reason = reason,
+                ReboundSourceId = source?.SourceId,
+                ReboundSourceOrdinal = source?.SourceOrdinal,
+                ReboundRawSourceSpan = source?.RawSourceSpan,
+                GoldReady = false,
+            });
+        }
+    }
+    return records;
+}
+
+static object BuildAdjudicationStatus(
+    string root,
+    IReadOnlyList<DatasetSpec> datasets,
+    IReadOnlyList<SourceCatalogSnapshot> catalogs,
+    IReadOnlyList<HistoricalRebinding> rebinding)
+{
+    return new
+    {
+        schemaVersion = 1,
+        artifactKind = "accuracy99_gold_adjudication_status",
+        baseRevision = BaseRevision,
+        documents = datasets.Select(dataset =>
+        {
+            var catalog = catalogs.Single(item => item.DatasetId == dataset.Id);
+            var labels = rebinding.Where(item => item.DatasetId == dataset.Id).ToArray();
+            var keyPositiveCount = File.Exists(dataset.KeyPath) ? AnswerKey.Load(dataset.KeyPath).PositiveEntries.Count : 0;
+            return new
+            {
+                datasetId = dataset.Id,
+                document = Path.GetRelativePath(root, dataset.DocumentPath).Replace('\\', '/'),
+                status = catalog.Status == "SOURCE_MISSING" ? "SOURCE_MISSING" : "PARTIAL_REVIEW",
+                sourceOccurrences = catalog.Occurrences.Count,
+                historicalPositiveLabels = labels.Length,
+                historicalKeyLabelsOutsidePhaseACohort = catalog.Status == "SOURCE_MISSING" ? keyPositiveCount : 0,
+                exactRebound = labels.Count(item => item.Status == "EXACT_REBOUND"),
+                reviewRequired = labels.Count(item => item.Status == "REVIEW_REQUIRED"),
+                sourceNotAvailable = labels.Count(item => item.Status == "SOURCE_NOT_AVAILABLE"),
+                ambiguous = labels.Count(item => item.Status == "AMBIGUOUS"),
+                invalid = labels.Count(item => item.Status == "INVALID_HISTORICAL_LABEL"),
+                exhaustiveReview = "NOT_STARTED",
+                goldReady = false,
+                eligibleForPrecision = false,
+                packet = catalog.Status == "AVAILABLE" ? $"eval/accuracy99/adjudication-packets/{dataset.Id}.v1.json" : null,
+            };
+        }),
+        protocol = new
+        {
+            sourceFirst = true,
+            predictionHiddenDuringInitialReview = true,
+            requiredFinalLabels = new[] { "HEADING", "NON_HEADING", "UNCERTAIN", "EXCLUDED" },
+            unlabeledIsNotNegative = true,
+        },
+    };
+}
+
+static object BuildPhaseBReconciliation(
+    IReadOnlyList<SourceCatalogSnapshot> catalogs,
+    IReadOnlyList<DatasetRun> runs,
+    IReadOnlyList<FirstLossEntry> firstLoss,
+    int rebindingCount)
+{
+    var byDataset = catalogs.ToDictionary(item => item.DatasetId, StringComparer.Ordinal);
+    var positiveRecords = firstLoss.Count(item => item.GoldOrdinal >= 0);
+    var missingSentinels = firstLoss.Count(item => item.GoldOrdinal < 0);
+    var sourceNotParsed = firstLoss.Where(item => item.Stage == "SOURCE_NOT_PARSED").ToArray();
+    var unknown = firstLoss.Where(item => item.Stage == "UNKNOWN").ToArray();
+    static string Classify(FirstLossEntry item, IReadOnlyDictionary<string, SourceCatalogSnapshot> catalogsByDataset)
+    {
+        if (!catalogsByDataset.TryGetValue(item.DatasetId, out var catalog) || catalog.Status == "SOURCE_MISSING")
+            return "SOURCE_DOCUMENT_MISSING";
+        var sourcePresent = item.SourceId is not null && catalog.Occurrences.Any(source => source.SourceId == item.SourceId);
+        if (item.Stage == "SOURCE_NOT_PARSED")
+            return sourcePresent
+                ? "EVALUATOR_LOOKUP_OR_FIRST_LOSS_PROVENANCE_CONFLICT"
+                : "HISTORICAL_COORDINATE_INCOMPATIBLE";
+        return !sourcePresent ? "NO_CURRENT_SOURCE_BINDING" : "INSUFFICIENT_HISTORICAL_PROVENANCE";
+    }
+
+    return new
+    {
+        schemaVersion = 1,
+        artifactKind = "accuracy99_phase_b_reconciliation",
+        baseRevision = BaseRevision,
+        historicalPositiveLabels = runs.Sum(run => run.Gold.Count),
+        firstLossRecords = firstLoss.Count,
+        positiveOccurrenceFirstLossRecords = positiveRecords,
+        missingDatasetSentinelRecords = missingSentinels,
+        sourceNotParsed = sourceNotParsed.Length,
+        unknown = unknown.Length,
+        difference = firstLoss.Count - runs.Sum(run => run.Gold.Count),
+        differenceReason = "The first-loss ledger contains two explicit dataset-level missing-input sentinel records for 025 and 063. They are not positive occurrences; the 222 labeled occurrence records reconcile exactly.",
+        historicalPositiveAccountingDelta = rebindingCount - runs.Sum(run => run.Gold.Count),
+        sourceNotParsedPartition = sourceNotParsed
+            .GroupBy(item => Classify(item, byDataset))
+            .ToDictionary(group => group.Key, group => group.Count()),
+        unknownPartition = unknown
+            .GroupBy(item => Classify(item, byDataset))
+            .ToDictionary(group => group.Key, group => group.Count()),
+        integrity = new
+        {
+            duplicateGoldIdentity = 0,
+            invalidGoldSpanForGoldReady = 0,
+            goldSourceNotFoundForGoldReady = 0,
+            pipelineDerivedGold = 0,
+            unreviewedLabelUsedAsHumanGold = 0,
+            partialDocumentUsedForPrecision = 0,
+            holdoutContaminationUnreported = 0,
+        },
+    };
+}
+
+static string TrimContext(string text) => text.Length <= 240 ? text : text[..240];
+
+static string RenderPhaseBMarkdown(
+    IReadOnlyList<SourceCatalogSnapshot> catalogs,
+    IReadOnlyList<HistoricalRebinding> rebinding,
+    object reconciliation)
+{
+    var counts = rebinding.GroupBy(item => item.Status).ToDictionary(group => group.Key, group => group.Count());
+    var lines = new List<string>
+    {
+        "# ACCURACY-99 Phase B gold protocol",
+        "",
+        "This branch establishes parser-owned annotation coordinates and human-review packets only. Production extraction code, thresholds, prompts, and validators are unchanged.",
+        "",
+        $"- Base revision: `{BaseRevision}`",
+        "- Status: `READY_FOR_HUMAN_ADJUDICATION`",
+        "- Blind holdout: `NOT_AVAILABLE`",
+        "",
+        "## Historical accounting",
+        "",
+        "The 222 historical positive labels are accounted for in `gold-rebinding.v1.json`. The earlier 224 first-loss records reconcile as 222 occurrence records plus two explicit missing-input sentinels for datasets 025 and 063.",
+        "",
+        $"Rebinding status counts: {string.Join(", ", counts.OrderBy(item => item.Key).Select(item => $"{item.Key}={item.Value}"))}.",
+        "",
+        "`EXACT_REBOUND` means only that a unique parser source identity and historical text are compatible. It is not `GOLD_READY`: exact heading span, semantic label, level, parent, and exhaustive negative review remain pending.",
+        "",
+        "## Review protocol",
+        "",
+        "Reviewers first see source identity, raw text, exact parser coordinates, and neighboring context. Production predictions remain hidden until initial labels are frozen. Every source occurrence must receive `HEADING`, `NON_HEADING`, `UNCERTAIN`, or `EXCLUDED`; unlabeled is never a negative.",
+        "",
+        "## Dataset status",
+        "",
+    };
+    lines.AddRange(catalogs.Select(catalog => $"- `{catalog.DatasetId}`: `{catalog.Status}`, occurrences={catalog.Occurrences.Count}"));
+    lines.Add("");
+    lines.Add("Precision/recall remain unavailable until an exhaustive reviewed development set and a genuinely blind holdout are frozen. No accuracy remediation is authorized by this phase.");
+    return string.Join(Environment.NewLine, lines) + Environment.NewLine;
 }
 
 static string ClassifyKey(string relativePath)
@@ -382,6 +754,46 @@ static string RenderMarkdown(object baseline, IReadOnlyList<DatasetRun> runs, IR
 }
 
 sealed record DatasetSpec(string Id, string LabelClass, string DocumentPath, string KeyPath, bool Complete, string Notes);
+
+sealed class SourceCatalogSnapshot
+{
+    public required string DatasetId { get; init; }
+    public required string Status { get; init; }
+    public required string DocumentPath { get; init; }
+    public required string? DocumentId { get; init; }
+    public required string? SourceKind { get; init; }
+    public required IReadOnlyList<SourceCatalogOccurrence> Occurrences { get; init; }
+}
+
+sealed record SourceCatalogOccurrence
+{
+    public required string DocumentId { get; init; }
+    public required string SourceId { get; init; }
+    public required int SourceOrdinal { get; init; }
+    public required string RawText { get; init; }
+    public required StructuralSpan RawSourceSpan { get; init; }
+    public required string SourceType { get; init; }
+    public required string StableParserIdentity { get; init; }
+    public string? PreviousContext { get; init; }
+    public string? NextContext { get; init; }
+    public int? Page { get; init; }
+}
+
+sealed class HistoricalRebinding
+{
+    public required string DatasetId { get; init; }
+    public required int HistoricalOrdinal { get; init; }
+    public required string? HistoricalSourceId { get; init; }
+    public required int? HistoricalSourceOrdinal { get; init; }
+    public required string? HistoricalText { get; init; }
+    public required int? HistoricalLevel { get; init; }
+    public required string Status { get; init; }
+    public required string Reason { get; init; }
+    public required string? ReboundSourceId { get; init; }
+    public required int? ReboundSourceOrdinal { get; init; }
+    public required StructuralSpan? ReboundRawSourceSpan { get; init; }
+    public required bool GoldReady { get; init; }
+}
 
 sealed record FirstLossEntry(string DatasetId, int GoldOrdinal, string? SourceId, string? Text, string Stage, string Owner);
 
