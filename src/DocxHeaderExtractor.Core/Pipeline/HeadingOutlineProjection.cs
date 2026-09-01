@@ -58,13 +58,15 @@ public static class HeadingOutlineProjection
 
         return new HeadingRecord
         {
-            Index = source.SourceOrdinal,
-            StableId = source.StableId ?? source.SourceId,
+            Index = metadata?.CompatibilitySourceOrdinal ?? source.SourceOrdinal,
+            StableId = metadata?.CompatibilityStableId ?? source.StableId ?? source.SourceId,
             SourceId = metadata?.CompatibilitySourceId ?? source.SourceId,
             Level = metadata?.CompatibilityLevelIsSet == true ? metadata.CompatibilityLevel : element.Level,
-            Text = element.Text,
+            Text = metadata?.CompatibilityText ?? element.Text,
             OriginalText = metadata?.OriginalText,
-            HeadingSpan = new TextOffsetSpan(source.Span.Start, source.Span.End),
+            HeadingSpan = metadata?.CompatibilityHeadingSpan is { } compatibilitySpan
+                ? new TextOffsetSpan(compatibilitySpan.Start, compatibilitySpan.End)
+                : new TextOffsetSpan(source.Span.Start, source.Span.End),
             InlineBody = metadata?.InlineBody,
             InlineBodySpan = metadata?.InlineBodySpan is { } bodySpan
                 ? new TextOffsetSpan(bodySpan.Start, bodySpan.End)

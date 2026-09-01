@@ -131,6 +131,14 @@ public sealed record StructuralProjectionMetadata
 {
     /// <summary>Legacy output identity when it differs from the generic source identity.</summary>
     public string? CompatibilitySourceId { get; init; }
+    /// <summary>Legacy heading index when it differs from the generic source ordinal.</summary>
+    public int? CompatibilitySourceOrdinal { get; init; }
+    /// <summary>Legacy heading stable identity when it differs from the generic source identity.</summary>
+    public string? CompatibilityStableId { get; init; }
+    /// <summary>Legacy heading span when it differs from the validated source span.</summary>
+    public StructuralSpan? CompatibilityHeadingSpan { get; init; }
+    /// <summary>Legacy heading text when the generic source unit contains a wider observed block.</summary>
+    public string? CompatibilityText { get; init; }
     /// <summary>Legacy output level, including an intentional null value.</summary>
     [JsonIgnore]
     public int? CompatibilityLevel { get; init; }

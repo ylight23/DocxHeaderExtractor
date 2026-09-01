@@ -100,6 +100,12 @@ public static class StructuralAuthorityMaterializer
                 new StructuralProjectionMetadata
                 {
                     CompatibilitySourceId = heading.Id,
+                    CompatibilitySourceOrdinal = heading.SourceAnchor.ParagraphIndex,
+                    CompatibilityStableId = heading.SourceAnchor.StableId,
+                    CompatibilityHeadingSpan = new StructuralSpan(
+                        heading.SourceAnchor.Span.Start,
+                        heading.SourceAnchor.Span.End),
+                    CompatibilityText = heading.Text,
                     CompatibilityLevel = heading.Level,
                     CompatibilityLevelIsSet = true,
                     OriginalText = heading.SourceText,
