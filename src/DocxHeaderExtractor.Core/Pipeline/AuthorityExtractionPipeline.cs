@@ -224,9 +224,6 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             .ToHashSet(StringComparer.Ordinal);
         var remaining = authority.Structure.Elements
             .Where(element => !removedElementIds.Contains(element.Id))
-            .Select(element => element.ParentId is not null && removedElementIds.Contains(element.ParentId)
-                ? element with { ParentId = null }
-                : element)
             .ToArray();
         var emitted = (authority.EmittedElementIds ?? authority.Structure.Elements
                 .Select(element => element.Id).ToHashSet(StringComparer.Ordinal))
@@ -244,9 +241,14 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             };
         }
 
+        var survivingRelations = authority.Structure.Relations
+            .Where(relation => !removedElementIds.Contains(relation.FromId) &&
+                !removedElementIds.Contains(relation.ToId))
+            .Select(relation => new StructuralRelationProposal(
+                relation.FromId, relation.ToId, relation.Type));
         return authority with
         {
-            Structure = ValidatedStructure.FromElements(remaining),
+            Structure = ValidatedStructure.FromElements(remaining, survivingRelations),
             Audit = audit,
             EmittedElementIds = emitted,
         };

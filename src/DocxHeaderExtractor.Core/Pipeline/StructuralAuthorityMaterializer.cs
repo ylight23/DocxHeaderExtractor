@@ -98,7 +98,11 @@ public static class StructuralAuthorityMaterializer
             });
         }
 
-        var structure = ValidatedStructure.FromElements(elements);
+        var relationProposals = elements
+            .Where(element => element.ParentId is not null)
+            .Select(element => new StructuralRelationProposal(
+                element.ParentId!, element.Id, StructuralRelationType.ParentChild));
+        var structure = ValidatedStructure.FromElements(elements, relationProposals);
         var emittedElementIds = finalStructure.Headings
             .Where(heading => decisionById.TryGetValue(heading.Id, out var decision) &&
                 decision.Emit && elementIdByHeadingId.ContainsKey(heading.Id))

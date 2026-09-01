@@ -182,6 +182,73 @@ public sealed record StructuralRelation(
     [property: JsonPropertyName("type")]
     [property: JsonConverter(typeof(JsonStringEnumConverter))] StructuralRelationType Type);
 
+/// <summary>Untrusted relation proposal. Endpoints are structural element IDs, never source IDs.</summary>
+public sealed record StructuralRelationProposal(
+    [property: JsonPropertyName("fromId")] string FromId,
+    [property: JsonPropertyName("toId")] string ToId,
+    [property: JsonPropertyName("type")]
+    [property: JsonConverter(typeof(JsonStringEnumConverter))] StructuralRelationType Type);
+
+public sealed record StructuralRelationValidation(
+    [property: JsonPropertyName("endpointsPresent")] bool EndpointsPresent,
+    [property: JsonPropertyName("distinctEndpoints")] bool DistinctEndpoints,
+    [property: JsonPropertyName("typeValid")] bool TypeValid,
+    [property: JsonPropertyName("rejectionReason")] string? RejectionReason)
+{
+    [JsonIgnore]
+    public bool Accepted => RejectionReason is null;
+}
+
+/// <summary>
+/// Validates relation proposals before they enter the structural authority graph. This contract is
+/// intentionally open to additional relation types without making ParentId a second authority.
+/// </summary>
+public static class StructuralRelationProposalValidator
+{
+    public static StructuralRelationValidation Validate(
+        StructuralRelationProposal proposal,
+        IReadOnlySet<string> knownStructuralElementIds)
+    {
+        ArgumentNullException.ThrowIfNull(proposal);
+        ArgumentNullException.ThrowIfNull(knownStructuralElementIds);
+        var endpointsPresent = knownStructuralElementIds.Contains(proposal.FromId) &&
+            knownStructuralElementIds.Contains(proposal.ToId);
+        var distinctEndpoints = !string.Equals(proposal.FromId, proposal.ToId, StringComparison.Ordinal);
+        var typeValid = Enum.IsDefined(proposal.Type);
+        var reason = !endpointsPresent ? "relation-endpoint-not-grounded" :
+            !distinctEndpoints ? "relation-self-reference" :
+            !typeValid ? "relation-type-unsupported" : null;
+        return new StructuralRelationValidation(endpointsPresent, distinctEndpoints, typeValid, reason);
+    }
+
+    public static IReadOnlyList<StructuralRelation> Materialize(
+        IReadOnlySet<string> knownStructuralElementIds,
+        IEnumerable<StructuralRelationProposal> proposals)
+    {
+        ArgumentNullException.ThrowIfNull(knownStructuralElementIds);
+        ArgumentNullException.ThrowIfNull(proposals);
+        var relations = new List<StructuralRelation>();
+        var seen = new HashSet<(string FromId, string ToId, StructuralRelationType Type)>();
+        var parentByChild = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var proposal in proposals)
+        {
+            var validation = Validate(proposal, knownStructuralElementIds);
+            if (!validation.Accepted)
+                throw new InvalidOperationException(validation.RejectionReason);
+
+            if (proposal.Type == StructuralRelationType.ParentChild &&
+                parentByChild.TryGetValue(proposal.ToId, out var existingParent) &&
+                !string.Equals(existingParent, proposal.FromId, StringComparison.Ordinal))
+                throw new InvalidOperationException("multiple-parent-relations");
+
+            parentByChild[proposal.ToId] = proposal.FromId;
+            if (seen.Add((proposal.FromId, proposal.ToId, proposal.Type)))
+                relations.Add(new StructuralRelation(proposal.FromId, proposal.ToId, proposal.Type));
+        }
+        return relations;
+    }
+}
+
 /// <summary>
 /// The generic structural authority graph. It contains only validated elements and relations;
 /// heading-specific consumers enter through a projection.
@@ -192,8 +259,22 @@ public sealed class ValidatedStructure
         IReadOnlyList<ValidatedStructuralElement> elements,
         IReadOnlyList<StructuralRelation>? relations = null)
     {
-        Elements = elements ?? throw new ArgumentNullException(nameof(elements));
-        Relations = relations ?? [];
+        ArgumentNullException.ThrowIfNull(elements);
+        var materialized = elements.ToArray();
+        var ids = materialized.Select(element => element.Id).ToHashSet(StringComparer.Ordinal);
+        if (ids.Count != materialized.Length)
+            throw new InvalidOperationException("duplicate-structural-element-id");
+        var proposedRelations = (relations ?? [])
+            .Select(relation => new StructuralRelationProposal(relation.FromId, relation.ToId, relation.Type));
+        Relations = StructuralRelationProposalValidator.Materialize(ids, proposedRelations);
+        var parentByChild = Relations
+            .Where(relation => relation.Type == StructuralRelationType.ParentChild)
+            .ToDictionary(relation => relation.ToId, relation => relation.FromId, StringComparer.Ordinal);
+        // ParentId is a compatibility view. It is always projected from the validated graph.
+        Elements = materialized.Select(element => element with
+        {
+            ParentId = parentByChild.GetValueOrDefault(element.Id),
+        }).ToArray();
     }
 
     [JsonPropertyName("elements")]
@@ -215,15 +296,18 @@ public sealed class ValidatedStructure
     public IReadOnlyList<ValidatedStructuralElement> Headings =>
         Elements.Where(element => element.Type == StructuralElementType.Heading).ToArray();
 
-    public static ValidatedStructure FromElements(IEnumerable<ValidatedStructuralElement> elements)
+    public static ValidatedStructure FromElements(
+        IEnumerable<ValidatedStructuralElement> elements,
+        IEnumerable<StructuralRelationProposal>? relationProposals = null)
     {
         var materialized = elements?.ToArray() ?? throw new ArgumentNullException(nameof(elements));
         var ids = materialized.Select(element => element.Id).ToHashSet(StringComparer.Ordinal);
-        var relations = materialized
-            .Where(element => element.ParentId is not null && ids.Contains(element.ParentId))
-            .Select(element => new StructuralRelation(
+        var proposals = relationProposals?.ToArray() ?? materialized
+            .Where(element => element.ParentId is not null)
+            .Select(element => new StructuralRelationProposal(
                 element.ParentId!, element.Id, StructuralRelationType.ParentChild))
             .ToArray();
+        var relations = StructuralRelationProposalValidator.Materialize(ids, proposals);
         return new ValidatedStructure(materialized, relations);
     }
 }

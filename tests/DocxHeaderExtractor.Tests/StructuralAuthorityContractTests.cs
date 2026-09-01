@@ -22,6 +22,39 @@ public sealed class StructuralAuthorityContractTests
     }
 
     [Fact]
+    public void Relation_proposal_is_validated_and_parent_id_is_only_a_projection()
+    {
+        var root = Element("se:root", Source("p1", "Root", 0, 4), new StructuralSpan(0, 4), "Root", 1);
+        var child = Element("se:child", Source("p2", "Child", 1, 5), new StructuralSpan(0, 5), "Child", 2) with
+        {
+            ParentId = "stale-compatibility-value",
+        };
+        IReadOnlyList<StructuralRelationProposal> proposals =
+        [new StructuralRelationProposal("se:root", "se:child", StructuralRelationType.ParentChild)];
+
+        var structure = ValidatedStructure.FromElements([root, child], proposals);
+
+        var relation = Assert.Single(structure.Relations);
+        Assert.Equal("se:root", relation.FromId);
+        Assert.Equal("se:child", relation.ToId);
+        Assert.Equal("se:root", structure.Elements.Single(element => element.Id == "se:child").ParentId);
+    }
+
+    [Fact]
+    public void Relation_proposal_rejects_dangling_endpoint_before_materialization()
+    {
+        var proposal = new StructuralRelationProposal("se:missing", "se:child", StructuralRelationType.ParentChild);
+        var validation = StructuralRelationProposalValidator.Validate(proposal, new HashSet<string>(["se:child"]));
+
+        Assert.False(validation.Accepted);
+        Assert.False(validation.EndpointsPresent);
+        Assert.Equal("relation-endpoint-not-grounded", validation.RejectionReason);
+        Assert.Throws<InvalidOperationException>(() =>
+            StructuralRelationProposalValidator.Materialize(
+                new HashSet<string>(["se:child"]), [proposal]));
+    }
+
+    [Fact]
     public void One_source_proposed_subspan_materializes_validated_subspan()
     {
         var source = Source("p1", "1 Introduction and body", 0, 23);

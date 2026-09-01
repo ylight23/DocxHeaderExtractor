@@ -164,7 +164,11 @@ internal static class DocxAuthorityPipeline
             });
         }
 
-        return ValidatedStructure.FromElements(elements);
+        var relationProposals = elements
+            .Where(element => element.ParentId is not null)
+            .Select(element => new StructuralRelationProposal(
+                element.ParentId!, element.Id, StructuralRelationType.ParentChild));
+        return ValidatedStructure.FromElements(elements, relationProposals);
     }
 
     private static bool IsDeterministicallyStructured(SourceParagraph source, IPolicyParagraph paragraph) =>
