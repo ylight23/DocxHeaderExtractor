@@ -26,6 +26,7 @@ public static class StructuralProposalValidator
             validatedSources.Select(source => source.SourceId).Distinct(StringComparer.Ordinal).Count() ==
             validatedSources.Count;
         var typeValid = Enum.IsDefined(proposal.Type);
+        var typeRoleValid = typeValid && IsRoleCompatible(proposal.Type, proposal.Role);
         var levelValid = proposal.ProposedLevel is null or >= 1 and <= 9;
         var parentValid = proposal.ProposedParentId is null || knownStructuralElementIds is null ||
             knownStructuralElementIds.Contains(proposal.ProposedParentId);
@@ -34,12 +35,13 @@ public static class StructuralProposalValidator
             : !proposedSpanValid ? "invalid-proposed-sources"
             : !sourceSelectionValid ? "invalid-proposed-sources"
             : !typeValid ? "unsupported-structural-type"
+            : !typeRoleValid ? "incompatible-structural-role"
             : !levelValid ? "invalid-structural-level"
             : !parentValid ? "structural-parent-not-grounded"
             : null;
         return new StructuralValidation(
             candidateGrounded, sourceFactsPresent, proposedSpanValid, sourceSelectionValid,
-            validatedSources.Count, typeValid, levelValid, parentValid, reason);
+            validatedSources.Count, typeValid, levelValid, parentValid, reason, typeRoleValid);
     }
 
     public static ValidatedStructuralElement? Materialize(
@@ -111,4 +113,16 @@ public static class StructuralProposalValidator
         }
         return selected;
     }
+
+    private static bool IsRoleCompatible(StructuralElementType type, ProposedRole role) => type switch
+    {
+        StructuralElementType.Title => role is ProposedRole.DocumentTitle or ProposedRole.CoverTitle,
+        StructuralElementType.Subtitle => role is ProposedRole.LocalSubheading or ProposedRole.CoverTitle,
+        StructuralElementType.Heading => role is ProposedRole.HeadingTopic or ProposedRole.LocalSubheading,
+        StructuralElementType.ListItem => role == ProposedRole.ListItemTopic,
+        StructuralElementType.Caption => role == ProposedRole.Caption,
+        StructuralElementType.TableTitle => role == ProposedRole.Caption,
+        StructuralElementType.FigureTitle => role == ProposedRole.Caption,
+        _ => false,
+    };
 }

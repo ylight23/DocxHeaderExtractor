@@ -136,6 +136,86 @@ public sealed class StructuralAuthorityContractTests
         Assert.Null(element);
     }
 
+    [Theory]
+    [InlineData(StructuralElementType.Title, ProposedRole.DocumentTitle)]
+    [InlineData(StructuralElementType.Subtitle, ProposedRole.LocalSubheading)]
+    [InlineData(StructuralElementType.Heading, ProposedRole.HeadingTopic)]
+    [InlineData(StructuralElementType.ListItem, ProposedRole.ListItemTopic)]
+    [InlineData(StructuralElementType.Caption, ProposedRole.Caption)]
+    [InlineData(StructuralElementType.TableTitle, ProposedRole.Caption)]
+    [InlineData(StructuralElementType.FigureTitle, ProposedRole.Caption)]
+    public void New_structural_types_validate_against_schema_roles(
+        StructuralElementType type,
+        ProposedRole role)
+    {
+        var candidate = Candidate("c1", Source("p1", "Observed structure", 0, 18));
+        var proposal = new StructuralProposal
+        {
+            CandidateId = "c1",
+            Type = type,
+            Role = role,
+            ProposedSources = [new ProposedSourceReference("p1", new StructuralSpan(0, 18))],
+            ProposedLevel = 1,
+        };
+
+        var validation = StructuralProposalValidator.Validate(candidate, proposal);
+        var element = StructuralProposalValidator.Materialize(
+            candidate, proposal, $"se:{type}", Decision("deterministic"));
+
+        Assert.True(validation.TypeRoleValid);
+        Assert.True(validation.Accepted);
+        Assert.NotNull(element);
+        Assert.Equal(type, element.Type);
+    }
+
+    [Fact]
+    public void Type_role_mismatch_is_rejected_without_domain_semantics()
+    {
+        var candidate = Candidate("c1", Source("p1", "Figure 1", 0, 8));
+        var proposal = new StructuralProposal
+        {
+            CandidateId = "c1",
+            Type = StructuralElementType.FigureTitle,
+            Role = ProposedRole.SignatureLabel,
+            ProposedSources = [new ProposedSourceReference("p1", new StructuralSpan(0, 8))],
+        };
+
+        var validation = StructuralProposalValidator.Validate(candidate, proposal);
+
+        Assert.False(validation.TypeRoleValid);
+        Assert.False(validation.Accepted);
+        Assert.Equal("incompatible-structural-role", validation.RejectionReason);
+    }
+
+    [Fact]
+    public void New_structural_types_are_grounded_and_parented_but_not_heading_projected()
+    {
+        var source = Source("p1", "Architecture Figure 3 caption item", 0, 33);
+        var heading = Element("se:heading", source, new StructuralSpan(0, 12), "Architecture", 1);
+        var listItem = Element("se:list", source, new StructuralSpan(13, 17), "Figure", 2,
+            StructuralElementType.ListItem, ProposedRole.ListItemTopic);
+        var figureTitle = Element("se:figure", source, new StructuralSpan(18, 26), "3 caption", 2,
+            StructuralElementType.FigureTitle, ProposedRole.Caption);
+        var caption = Element("se:caption", source, new StructuralSpan(27, 33), " item", null,
+            StructuralElementType.Caption, ProposedRole.Caption);
+        IReadOnlyList<StructuralRelationProposal> relations =
+        [
+            new("se:heading", "se:list", StructuralRelationType.ParentChild),
+            new("se:heading", "se:figure", StructuralRelationType.ParentChild),
+            new("se:heading", "se:caption", StructuralRelationType.ParentChild),
+        ];
+
+        var structure = ValidatedStructure.FromElements([heading, listItem, figureTitle, caption], relations);
+        var projected = HeadingOutlineProjection.Project(structure);
+
+        Assert.Equal(4, structure.Elements.Count);
+        Assert.Equal(3, structure.Relations.Count);
+        Assert.Equal(3, structure.Elements.Count(element => element.ParentId == "se:heading"));
+        var projectedHeading = Assert.Single(projected);
+        Assert.Equal("p1", projectedHeading.StableId);
+        Assert.Equal("Architecture", projectedHeading.Text);
+    }
+
     [Fact]
     public void One_source_can_produce_multiple_structural_elements()
     {

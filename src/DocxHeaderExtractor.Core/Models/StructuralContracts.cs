@@ -2,12 +2,16 @@ using System.Text.Json.Serialization;
 
 namespace DocxHeaderExtractor.Core.Models;
 
-/// <summary>Closed set for the first structural-authority migration.</summary>
+/// <summary>Structural taxonomy currently supported by the generic authority contract.</summary>
 public enum StructuralElementType
 {
     Title,
     Subtitle,
     Heading,
+    ListItem,
+    Caption,
+    TableTitle,
+    FigureTitle,
 }
 
 public enum StructuralRelationType
@@ -108,7 +112,8 @@ public sealed record StructuralValidation(
     [property: JsonPropertyName("typeValid")] bool TypeValid,
     [property: JsonPropertyName("levelValid")] bool LevelValid,
     [property: JsonPropertyName("parentValid")] bool ParentValid,
-    [property: JsonPropertyName("rejectionReason")] string? RejectionReason)
+    [property: JsonPropertyName("rejectionReason")] string? RejectionReason,
+    [property: JsonPropertyName("typeRoleValid")] bool TypeRoleValid = true)
 {
     [JsonIgnore]
     public bool Accepted => RejectionReason is null;
