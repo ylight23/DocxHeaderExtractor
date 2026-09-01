@@ -30,7 +30,11 @@ public sealed record FactProposalModelRequest(
     [property: JsonPropertyName("requestId")] string RequestId,
     [property: JsonPropertyName("contextChunkId")] string ContextChunkId,
     [property: JsonPropertyName("schema")] FactSchemaDefinition Schema,
-    [property: JsonPropertyName("sources")] IReadOnlyList<FactSourceExcerpt> Sources);
+    [property: JsonPropertyName("sources")] IReadOnlyList<FactSourceExcerpt> Sources)
+{
+    [JsonPropertyName("offsetSources")]
+    public IReadOnlyList<FactProposalOffsetSource> OffsetSources { get; init; } = [];
+}
 
 public sealed record FactProposalProvenance(
     [property: JsonPropertyName("producerId")] string ProducerId,
