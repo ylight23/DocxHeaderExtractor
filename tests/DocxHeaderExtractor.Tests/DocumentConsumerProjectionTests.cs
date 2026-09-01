@@ -21,6 +21,7 @@ public sealed class DocumentConsumerProjectionTests
         Assert.Equal(retrieval.SectionPath, index.SectionPath);
         Assert.Equal(result.Chunks[0].SourceIds, retrieval.SourceIds);
         Assert.Equal(result.Chunks[0].StructuralElementIds, ie.StructuralElementIds);
+        Assert.Equal(retrieval.StructuralContext, index.StructuralContext);
         Assert.Contains(nameof(StructuralElementType.ListItem), index.StructuralTypes);
         Assert.Contains(nameof(StructuralElementType.Figure), index.StructuralTypes);
         Assert.Contains(nameof(StructuralElementType.FigureTitle), index.StructuralTypes);
