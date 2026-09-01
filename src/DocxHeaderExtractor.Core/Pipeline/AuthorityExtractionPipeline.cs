@@ -59,6 +59,26 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         IReadOnlySet<int>? quarantinedIndexes,
         CancellationToken ct = default)
     {
+        var execution = await ExecuteDocumentAsync(inputPath, quarantinedIndexes, ct);
+        return execution.CompatibilityOutline;
+    }
+
+    public async Task<DocumentExtractionResult> RunDocumentAsync(
+        string inputPath,
+        CancellationToken ct = default) =>
+        (await ExecuteDocumentAsync(inputPath, null, ct)).Result;
+
+    public async Task<DocumentExtractionResult> RunDocumentAsync(
+        string inputPath,
+        IReadOnlySet<int>? quarantinedIndexes,
+        CancellationToken ct = default) =>
+        (await ExecuteDocumentAsync(inputPath, quarantinedIndexes, ct)).Result;
+
+    private async Task<PipelineExecution> ExecuteDocumentAsync(
+        string inputPath,
+        IReadOnlySet<int>? quarantinedIndexes,
+        CancellationToken ct = default)
+    {
         ArgumentException.ThrowIfNullOrWhiteSpace(inputPath);
         var started = Environment.TickCount64;
         var conversion = LegacyDocConverter.EnsureDocx(inputPath);
@@ -158,7 +178,27 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             var headings = HeadingOutlineProjection.Project(
                 structural.Structure, structural.EmittedElementIds);
             _options.Log?.Invoke($"Authority route {route}: validated={headings.Count}; {reason}");
-            return new DocumentOutline
+            var sourceCatalog = DocumentSourceCatalogBuilder.MergeStructuralSources(
+                DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument), structural.Structure);
+            var sections = StructuralSectionProjection.Project(structural.Structure, sourceCatalog);
+            var chunks = SectionChunkProjection.Project(
+                sections, sourceCatalog, structural.Structure,
+                new DocumentChunkingPolicy(Math.Max(1, _options.Chunking.TokenBudget)));
+            var extractionResult = new DocumentExtractionResult(
+                new DocumentIdentity(
+                    sourceDocument.DocumentId,
+                    Path.GetFileName(inputPath),
+                    sourceDocument.SourceKind,
+                    inputPath),
+                sourceCatalog,
+                structural.Structure,
+                sections,
+                chunks,
+                new DocumentExtractionProvenance(
+                    route,
+                    route == "pdf-authority-v1" ? "pdf-parser-facts-plus-canonical-grounding" : "docx-source-document",
+                    _options.DisableLlm ? 0 : audit?.RawAnalystResponses.Count ?? 0));
+            var compatibilityOutline = new DocumentOutline
             {
                 File = Path.GetFileName(inputPath),
                 ParagraphCount = sourceDocument.Paragraphs.Count,
@@ -175,6 +215,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 Provenance = BuildProvenance(audit,
                     !_options.DisableLlm && _options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang),
             };
+            return new PipelineExecution(extractionResult, compatibilityOutline);
         }
         finally
         {
@@ -204,6 +245,10 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             FileSha256(docxPath), audit.ValidatedStructures, audit.HierarchyFacts,
             PdfCanonicalGrounding.FromValidatedStructure(structure));
     }
+
+    private sealed record PipelineExecution(
+        DocumentExtractionResult Result,
+        DocumentOutline CompatibilityOutline);
 
     internal static StructuralAuthorityResult ApplyStructuralQuarantine(
         StructuralAuthorityResult authority,
