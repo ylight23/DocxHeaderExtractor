@@ -10,7 +10,8 @@ internal static class PdfNonHeadingStructuralProducer
 {
     public static IReadOnlyList<ValidatedStructuralElement> Materialize(
         IReadOnlyList<PdfSemanticBlock> blocks,
-        IReadOnlyList<PdfBlockDecision> decisions)
+        IReadOnlyList<PdfBlockDecision> decisions,
+        IReadOnlyDictionary<string, PdfCandidateContext>? contexts = null)
     {
         ArgumentNullException.ThrowIfNull(blocks);
         ArgumentNullException.ThrowIfNull(decisions);
@@ -20,11 +21,19 @@ internal static class PdfNonHeadingStructuralProducer
         var seenIds = new HashSet<string>(StringComparer.Ordinal);
         foreach (var (decision, ordinal) in decisions.Select((item, index) => (item, index)))
         {
-            if (!TryMap(decision.SemanticRole, out var type) ||
+            if (!TryMap(decision.SemanticRole, out var type, out var role) ||
                 decision.Confidence < 0.65 ||
                 !seenIds.Add(decision.Id) ||
                 !blocksById.TryGetValue(decision.Id, out var block) ||
                 string.IsNullOrWhiteSpace(block.Text))
+                continue;
+
+            // A semantic list proposal is necessary but not sufficient. The parser must also
+            // have observed a marker and a standalone/list-shaped source block. This keeps a
+            // numbered heading from becoming a ListItem merely because it contains numbering.
+            if (decision.SemanticRole == PdfSemanticRole.ListItemTopic &&
+                (contexts is null || !contexts.TryGetValue(decision.Id, out var context) ||
+                 !HasListEvidence(context.Source)))
                 continue;
 
             var sourceFacts = ToSourceFacts(block, ordinal);
@@ -37,7 +46,7 @@ internal static class PdfNonHeadingStructuralProducer
             {
                 CandidateId = block.Id,
                 Type = type,
-                Role = ProposedRole.Caption,
+                Role = role,
                 ProposedSources =
                 [
                     new ProposedSourceReference(
@@ -76,14 +85,22 @@ internal static class PdfNonHeadingStructuralProducer
         RawSpan = new SourceTextSpan(0, block.Text.Length),
     };
 
-    private static bool TryMap(PdfSemanticRole role, out StructuralElementType type)
+    private static bool TryMap(PdfSemanticRole role, out StructuralElementType type, out ProposedRole proposedRole)
     {
         type = role switch
         {
             PdfSemanticRole.TableTitle => StructuralElementType.TableTitle,
             PdfSemanticRole.FigureCaption => StructuralElementType.Caption,
+            PdfSemanticRole.ListItemTopic => StructuralElementType.ListItem,
             _ => default,
         };
-        return role is PdfSemanticRole.TableTitle or PdfSemanticRole.FigureCaption;
+        proposedRole = role == PdfSemanticRole.ListItemTopic ? ProposedRole.ListItemTopic : ProposedRole.Caption;
+        return role is PdfSemanticRole.TableTitle or PdfSemanticRole.FigureCaption or PdfSemanticRole.ListItemTopic;
     }
+
+    private static bool HasListEvidence(PdfSourceFacts source) =>
+        source.StructuralScope == "document_body" &&
+        source.Marker is not null &&
+        source.ObservedEvidence.Any(evidence => evidence.StartsWith("marker:", StringComparison.Ordinal)) &&
+        source.ObservedEvidence.Any(evidence => evidence is "standalone_line" or "multi_line_cluster");
 }

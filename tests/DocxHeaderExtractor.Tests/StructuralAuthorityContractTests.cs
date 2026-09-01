@@ -247,6 +247,61 @@ public sealed class StructuralAuthorityContractTests
     }
 
     [Fact]
+    public void List_item_requires_semantic_proposal_and_observed_list_evidence()
+    {
+        var block = Block("b-list", "1. First requirement");
+        var decision = new PdfBlockDecision(
+            block.Id, PdfBlockRole.ListItem, .90, "semantic",
+            SemanticRole: PdfSemanticRole.ListItemTopic);
+
+        var elements = PdfNonHeadingStructuralProducer.Materialize(
+            [block], [decision], new Dictionary<string, PdfCandidateContext>
+            {
+                [block.Id] = ContextWithEvidence(block, "marker:arabic", "standalone_line"),
+            });
+
+        var element = Assert.Single(elements);
+        Assert.Equal(StructuralElementType.ListItem, element.Type);
+        Assert.Equal(ProposedRole.ListItemTopic, element.Role);
+        Assert.True(element.Validation.SourceSelectionValid);
+        Assert.Equal(block.Id, Assert.Single(element.Sources).SourceId);
+    }
+
+    [Fact]
+    public void Numbering_without_observed_list_evidence_does_not_emit_list_item()
+    {
+        var block = Block("b-numbered", "1. Numbered heading");
+        var decision = new PdfBlockDecision(
+            block.Id, PdfBlockRole.ListItem, .90, "semantic",
+            SemanticRole: PdfSemanticRole.ListItemTopic);
+
+        var elements = PdfNonHeadingStructuralProducer.Materialize(
+            [block], [decision], new Dictionary<string, PdfCandidateContext>
+            {
+                [block.Id] = ContextWithEvidence(block, "standalone_line"),
+            });
+
+        Assert.Empty(elements);
+    }
+
+    [Fact]
+    public void Numbering_evidence_without_list_semantic_proposal_does_not_emit_list_item()
+    {
+        var block = Block("b-heading", "1. Numbered heading");
+        var decision = new PdfBlockDecision(
+            block.Id, PdfBlockRole.HeadingTopic, .90, "semantic",
+            SemanticRole: PdfSemanticRole.TopicHeading);
+
+        var elements = PdfNonHeadingStructuralProducer.Materialize(
+            [block], [decision], new Dictionary<string, PdfCandidateContext>
+            {
+                [block.Id] = ContextWithEvidence(block, "marker:arabic", "standalone_line"),
+            });
+
+        Assert.Empty(elements);
+    }
+
+    [Fact]
     public void One_source_can_produce_multiple_structural_elements()
     {
         var source = Source("p1", "1 Heading body", 0, 14);
@@ -389,6 +444,18 @@ public sealed class StructuralAuthorityContractTests
     {
         var line = new PdfLine(1, 700, 12, text, .8, "", 0, 72, 300, "serif", "black");
         return new PdfSemanticBlock(id, [line], PdfStyleClusterProfile.StyleOf(line), 1, 700, 700, 72, 300, text);
+    }
+
+    private static PdfCandidateContext ContextWithEvidence(PdfSemanticBlock block, params string[] evidence)
+    {
+        var marker = PdfMarkerFactsParser.Parse(block.Text);
+        var source = new PdfSourceFacts(
+            block.Id, block.Text, block.Page, block.LineCount, block.Left, block.TopY,
+            block.Right, block.BottomY, "document_body", evidence)
+        {
+            Marker = marker,
+        };
+        return new PdfCandidateContext(source, [], [], [], "document_body", []);
     }
 
     private static SourceReference SourceReference(string id, int ordinal, int start, int end) =>

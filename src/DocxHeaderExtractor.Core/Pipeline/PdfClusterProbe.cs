@@ -450,6 +450,7 @@ public static class PdfClusterProbe
     private static string RoleName(PdfBlockRole role) => role switch
     {
         PdfBlockRole.HeadingTopic => "heading_topic",
+        PdfBlockRole.ListItem => "list_item",
         PdfBlockRole.BodySentence => "body_sentence",
         PdfBlockRole.TableOrChartLabel => "table_or_chart_label",
         PdfBlockRole.DecorativeNoise => "decorative_noise",

@@ -19,6 +19,18 @@ public sealed class PdfBlockAnalystTests
     }
 
     [Fact]
+    public void ListItemSemanticRoleProjectsToListItemRoute()
+    {
+        var block = Block("b1", "1. First requirement");
+
+        var decision = Assert.Single(PdfBlockAnalyst.ParseDecisions(
+            "{\"blocks\":[{\"id\":\"b1\",\"role\":\"list_item_topic\",\"confidence\":0.9}]}", [block]));
+
+        Assert.Equal(PdfSemanticRole.ListItemTopic, decision.SemanticRole);
+        Assert.Equal(PdfBlockRole.ListItem, decision.Role);
+    }
+
+    [Fact]
     public async Task AnalystAcceptsOnlyKnownBlockIdsAndWhitelistedRoles()
     {
         var blocks = new[]
