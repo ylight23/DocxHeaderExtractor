@@ -354,6 +354,7 @@ app.MapPost("/api/extract", async (
     var work = Path.Combine(Path.GetTempPath(), "dhx-ui", Guid.NewGuid().ToString("N"));
     Directory.CreateDirectory(work);
     var inputPath = Path.Combine(work, SafeName(upload.FileName));
+    DocxHeaderExtractor.Core.Llm.OpenRouterHeaderExtractor? openRouterClassifier = null;
 
     try
     {
@@ -403,7 +404,7 @@ app.MapPost("/api/extract", async (
             {
                 classifier = options.Backend switch
                 {
-                    InferenceBackend.OpenRouter => new DocxHeaderExtractor.Core.Llm.OpenRouterHeaderExtractor(
+                    InferenceBackend.OpenRouter => openRouterClassifier = new DocxHeaderExtractor.Core.Llm.OpenRouterHeaderExtractor(
                         httpClientFactory.CreateClient("OpenRouter"), options.OpenRouter),
                     InferenceBackend.LmStudio => new DocxHeaderExtractor.Core.Llm.LmStudioHeaderExtractor(
                         httpClientFactory.CreateClient("LmStudio"), options.LmStudio),
@@ -456,6 +457,9 @@ app.MapPost("/api/extract", async (
 
             var agentRun = await run;
             var outline = agentRun.Outline;
+            if ((Environment.GetEnvironmentVariable("DHX_DIAGNOSTIC_LOG") is "1" or "true") &&
+                openRouterClassifier is not null)
+                Console.Error.WriteLine($"[DHX] [diagnostic] OPENROUTER_DIAGNOSTICS {JsonSerializer.Serialize(openRouterClassifier.Diagnostics.Snapshot(), json)}");
 
             // Đọc vào bộ nhớ trước khi finally xoá thư mục tạm; link chỉ tải được đúng một lần.
             string? download = null;
@@ -501,6 +505,13 @@ app.MapPost("/api/extract", async (
     }
     catch (Exception ex)
     {
+        if (Environment.GetEnvironmentVariable("DHX_DIAGNOSTIC_LOG") is "1" or "true")
+        {
+            Console.Error.WriteLine($"[DHX] [diagnostic] FULL_EXCEPTION type={ex.GetType().FullName}");
+            Console.Error.WriteLine(ex.ToString());
+            if (openRouterClassifier is not null)
+                Console.Error.WriteLine($"[DHX] [diagnostic] OPENROUTER_DIAGNOSTICS {JsonSerializer.Serialize(openRouterClassifier.Diagnostics.Snapshot(), json)}");
+        }
         try { await EmitAsync(new { type = "error", message = AgentRunNarrator.DescribeError(ex) }); }
         catch (Exception) { /* kết nối đã đứt */ }
     }

@@ -52,17 +52,26 @@ internal static class DocxAuthorityPipeline
         }
         else
         {
+            Diagnostic("stage=PdfBlockAnalyst.AnalyzeAsync.begin");
             roles = await PdfBlockAnalyst.AnalyzeAsync(analyst, source.Blocks, source.ModelContexts, ct);
+            Diagnostic($"stage=PdfBlockAnalyst.AnalyzeAsync.complete decisions={roles.Decisions.Count} responses={roles.RawResponses.Count}");
+            Diagnostic("stage=PdfBlockAnalyst.ResolveHeadingSpansAsync.begin");
             spans = await PdfBlockAnalyst.ResolveHeadingSpansAsync(analyst, source.Blocks, roles.Decisions, source.ModelContexts, ct);
+            Diagnostic($"stage=PdfBlockAnalyst.ResolveHeadingSpansAsync.complete decisions={spans.Decisions.Count} responses={spans.RawResponses.Count}");
         }
 
+        Diagnostic("stage=PdfProposalValidator.Trace.begin");
         var traces = PdfProposalValidator.Trace(source.ModelContexts, spans.Decisions);
+        Diagnostic("stage=PdfProposalValidator.Validate.begin");
         var validated = PdfProposalValidator.Validate(source.ModelContexts, spans.Decisions);
+        Diagnostic($"stage=PdfProposalValidator.Validate.complete headings={validated.Count}");
+        Diagnostic("stage=PdfHierarchyResolver.Resolve.begin");
         var markerStructures = PdfHierarchyResolver.Resolve(validated, source.ModelContexts);
+        Diagnostic("stage=PdfHierarchyResolver.Resolve.complete");
         var hierarchyFacts = PdfHierarchyFactsInventory.Inspect(validated, source.ModelContexts);
         var semanticHierarchy = analyst is null
             ? new PdfSemanticHierarchyResult(markerStructures, [], [], [])
-            : await PdfSemanticHierarchyFallback.ResolveAsync(analyst, validated, markerStructures, source.ModelContexts, ct);
+            : await ResolveHierarchyWithDiagnosticAsync(analyst, validated, markerStructures, source.ModelContexts, ct);
         var structures = semanticHierarchy.Structures.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
         var structuralAuthority = MaterializeStructuralAuthority(validated, structures, source.Contexts);
         var audit = new RouteExecutionAudit(
@@ -248,6 +257,25 @@ internal static class DocxAuthorityPipeline
         "document_body";
 
     private static string Excerpt(string text) => text.Length <= 180 ? text : text[..180];
+
+    private static async Task<PdfSemanticHierarchyResult> ResolveHierarchyWithDiagnosticAsync(
+        IHeaderClassifier analyst,
+        IReadOnlyList<PdfValidatedHeading> validated,
+        IReadOnlyList<PdfValidatedStructure> markerStructures,
+        IReadOnlyDictionary<string, PdfCandidateContext> contexts,
+        CancellationToken ct)
+    {
+        Diagnostic("stage=PdfSemanticHierarchyFallback.ResolveAsync.begin");
+        var result = await PdfSemanticHierarchyFallback.ResolveAsync(analyst, validated, markerStructures, contexts, ct);
+        Diagnostic($"stage=PdfSemanticHierarchyFallback.ResolveAsync.complete proposals={result.Audit.Count}");
+        return result;
+    }
+
+    private static void Diagnostic(string message)
+    {
+        if (Environment.GetEnvironmentVariable("DHX_DIAGNOSTIC_LOG") is "1" or "true")
+            Console.WriteLine($"[DHX] [diagnostic] {message}");
+    }
 }
 internal sealed record DocxAuthorityContext(
     SourceParagraph Source,

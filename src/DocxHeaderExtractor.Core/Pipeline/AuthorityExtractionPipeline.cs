@@ -87,10 +87,12 @@ public sealed class AuthorityExtractionPipeline : IDisposable
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(inputPath);
         var started = Environment.TickCount64;
+        Diagnostic("stage=source.begin");
         var conversion = LegacyDocConverter.EnsureDocx(inputPath);
         try
         {
             var sourceDocument = new OpenXmlDocumentSource().Read(conversion.Path);
+            Diagnostic($"stage=source.complete paragraphs={sourceDocument.Paragraphs.Count}");
             var structuralFeatures = NumberingStyleFeatures.FromSourceDocument(sourceDocument);
             var derivedFeatures = new DocumentFeatureDeriver().Derive(sourceDocument);
             var policyState = DocxPolicyStateBuilder.Build(
@@ -110,6 +112,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 HasDocx: true,
                 HasPdf: !string.IsNullOrWhiteSpace(pdf),
                 AnalystAvailable: analyst is not null));
+            Diagnostic($"stage=route.complete selected={authorityRoute} siblingPdf={!string.IsNullOrWhiteSpace(pdf)} analyst={analyst is not null}");
             switch (authorityRoute)
             {
                 case AuthorityRoute.PdfAuthority:
@@ -147,7 +150,9 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 }
                 case AuthorityRoute.DocxAuthority:
                 {
+                    Diagnostic("stage=DocxAuthorityPipeline.begin");
                     authority = await DocxAuthorityPipeline.RunAsync(policyState, mode, analyst, ct);
+                    Diagnostic("stage=DocxAuthorityPipeline.complete");
                     authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
                     audit = authority.Audit;
                     route = "docx-authority-v1";
@@ -342,6 +347,12 @@ public sealed class AuthorityExtractionPipeline : IDisposable
 
     private static string FileSha256(string path) =>
         Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
+
+    private void Diagnostic(string message)
+    {
+        if (Environment.GetEnvironmentVariable("DHX_DIAGNOSTIC_LOG") is "1" or "true")
+            _options.Log?.Invoke($"[diagnostic] {message}");
+    }
 
     public void Dispose()
     {

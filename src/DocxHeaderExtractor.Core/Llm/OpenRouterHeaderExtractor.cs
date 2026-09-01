@@ -44,18 +44,20 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
     private readonly HttpClient _http;
     private readonly OpenRouterOptions _options;
     private readonly bool _ownsHttp;
+    public OpenRouterRequestDiagnostics Diagnostics { get; }
 
-    public OpenRouterHeaderExtractor(HttpClient http, OpenRouterOptions options)
+    public OpenRouterHeaderExtractor(HttpClient http, OpenRouterOptions options, OpenRouterRequestDiagnostics? diagnostics = null)
     {
         _http = http;
         _options = Validate(options);
+        Diagnostics = diagnostics ?? new OpenRouterRequestDiagnostics();
     }
 
-    private OpenRouterHeaderExtractor(HttpClient http, OpenRouterOptions options, bool ownsHttp)
-        : this(http, options) => _ownsHttp = ownsHttp;
+    private OpenRouterHeaderExtractor(HttpClient http, OpenRouterOptions options, bool ownsHttp, OpenRouterRequestDiagnostics? diagnostics = null)
+        : this(http, options, diagnostics) => _ownsHttp = ownsHttp;
 
-    public static OpenRouterHeaderExtractor CreateOwned(OpenRouterOptions options) =>
-        new(new HttpClient { Timeout = TimeSpan.FromMinutes(5) }, options, ownsHttp: true);
+    public static OpenRouterHeaderExtractor CreateOwned(OpenRouterOptions options, OpenRouterRequestDiagnostics? diagnostics = null) =>
+        new(new HttpClient { Timeout = TimeSpan.FromMinutes(5) }, options, ownsHttp: true, diagnostics);
 
     public string ModelName => _options.Model;
     public int ContextSize => _options.ContextSize;
@@ -153,10 +155,24 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
             request.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor");
 
+            var category = roles ? OpenRouterRequestCategory.Role : OpenRouterRequestCategory.Hierarchy;
+            Diagnostics.Request(category, JsonSerializer.Serialize(body).Length, _options.Endpoint, _options.Model);
             var sw = Stopwatch.StartNew();
-            using var response = await _http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct);
+            HttpResponseMessage response;
+            try
+            {
+                response = await _http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct);
+            }
+            catch (TaskCanceledException)
+            {
+                Diagnostics.Timeout();
+                throw;
+            }
+            using (response)
+            {
             var responseText = await response.Content.ReadAsStringAsync(ct);
             sw.Stop();
+            Diagnostics.Response(category, (int)response.StatusCode, responseText, sw.Elapsed);
             elapsedMs += sw.ElapsedMilliseconds;
 
             if (!response.IsSuccessStatusCode)
@@ -198,6 +214,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             }
 
             remaining = allAllowed.Where(i => !seen.Contains(i)).ToList();
+            }
         }
 
         if (remaining.Count > 0)
@@ -250,14 +267,31 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
         request.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor");
 
-        using var response = await _http.SendAsync(request, ct);
+        var category = OpenRouterRequestDiagnostics.CategoryFor(systemPrompt);
+        Diagnostics.Request(category, JsonSerializer.Serialize(body).Length, _options.Endpoint, _options.Model);
+        var sw = Stopwatch.StartNew();
+        HttpResponseMessage response;
+        try
+        {
+            response = await _http.SendAsync(request, ct);
+        }
+        catch (TaskCanceledException)
+        {
+            Diagnostics.Timeout();
+            throw;
+        }
+        using (response)
+        {
         var responseText = await response.Content.ReadAsStringAsync(ct);
+        sw.Stop();
+        Diagnostics.Response(category, (int)response.StatusCode, responseText, sw.Elapsed);
         if (!response.IsSuccessStatusCode)
             throw new HttpRequestException(
                 $"OpenRouter trả {(int)response.StatusCode} {response.ReasonPhrase}: {SafeError(responseText)}",
                 null,
                 response.StatusCode);
         return ExtractContent(responseText).Trim();
+        }
     }
 
     private static string ExtractContent(string response)
@@ -317,4 +351,81 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
     {
         if (_ownsHttp) _http.Dispose();
     }
+}
+
+public enum OpenRouterRequestCategory
+{
+    Role,
+    Span,
+    Hierarchy,
+}
+
+public sealed record OpenRouterRequestDiagnosticsSnapshot(
+    int RoleRequests,
+    int RoleResponses,
+    int SpanRequests,
+    int SpanResponses,
+    int HierarchyRequests,
+    int HierarchyResponses,
+    long PayloadBytes,
+    int LastStatus,
+    string? LastCategory,
+    string? LastResponseError,
+    string? Model,
+    string? Endpoint,
+    bool ProviderTimeout);
+
+/// <summary>Development-only OpenRouter telemetry; no prompts, keys, or model output are stored.</summary>
+public sealed class OpenRouterRequestDiagnostics
+{
+    private int _roleRequests, _roleResponses, _spanRequests, _spanResponses, _hierarchyRequests, _hierarchyResponses;
+    private long _payloadBytes;
+    private int _lastStatus, _providerTimeout;
+    private string? _lastCategory, _lastResponseError, _model, _endpoint;
+
+    public OpenRouterRequestDiagnosticsSnapshot Snapshot() => new(
+        Volatile.Read(ref _roleRequests), Volatile.Read(ref _roleResponses),
+        Volatile.Read(ref _spanRequests), Volatile.Read(ref _spanResponses),
+        Volatile.Read(ref _hierarchyRequests), Volatile.Read(ref _hierarchyResponses),
+        Interlocked.Read(ref _payloadBytes), Volatile.Read(ref _lastStatus),
+        _lastCategory, _lastResponseError, _model, _endpoint,
+        Volatile.Read(ref _providerTimeout) != 0);
+
+    internal void Request(OpenRouterRequestCategory category, int payloadBytes, Uri endpoint, string model)
+    {
+        _model = model; _endpoint = endpoint.ToString(); _lastCategory = category.ToString();
+        Interlocked.Add(ref _payloadBytes, payloadBytes);
+        switch (category)
+        {
+            case OpenRouterRequestCategory.Role: Interlocked.Increment(ref _roleRequests); break;
+            case OpenRouterRequestCategory.Span: Interlocked.Increment(ref _spanRequests); break;
+            case OpenRouterRequestCategory.Hierarchy: Interlocked.Increment(ref _hierarchyRequests); break;
+        }
+    }
+
+    internal void Response(OpenRouterRequestCategory category, int status, string body, TimeSpan elapsed)
+    {
+        _lastStatus = status;
+        switch (category)
+        {
+            case OpenRouterRequestCategory.Role: Interlocked.Increment(ref _roleResponses); break;
+            case OpenRouterRequestCategory.Span: Interlocked.Increment(ref _spanResponses); break;
+            case OpenRouterRequestCategory.Hierarchy: Interlocked.Increment(ref _hierarchyResponses); break;
+        }
+        if (status < 200 || status >= 300)
+        {
+            var error = body.ReplaceLineEndings(" ").Trim();
+            _lastResponseError = error.Length <= 4000 ? error : error[..4000] + "…";
+        }
+    }
+
+    internal void Timeout() => Interlocked.Exchange(ref _providerTimeout, 1);
+
+    internal static OpenRouterRequestCategory CategoryFor(string systemPrompt) =>
+        systemPrompt.Contains("source pointer span", StringComparison.OrdinalIgnoreCase) ||
+        systemPrompt.Contains("heading portion", StringComparison.OrdinalIgnoreCase)
+            ? OpenRouterRequestCategory.Span
+            : systemPrompt.Contains("resolve parent", StringComparison.OrdinalIgnoreCase)
+                ? OpenRouterRequestCategory.Hierarchy
+                : OpenRouterRequestCategory.Role;
 }
