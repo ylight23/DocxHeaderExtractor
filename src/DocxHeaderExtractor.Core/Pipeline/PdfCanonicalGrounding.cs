@@ -32,6 +32,24 @@ public sealed record PdfCanonicalGrounding(
                 new DocxTextSpan(heading.HeadingSpan!.Start, heading.HeadingSpan.End),
                 heading.OriginalText ?? heading.Text))
             .ToArray();
+
+    /// <summary>Builds canonical occurrences from the generic authority projection metadata.</summary>
+    public static IReadOnlyList<PdfCanonicalGrounding> FromValidatedStructure(ValidatedStructure structure) =>
+        structure.OutlineElements
+            .Select(element => (Element: element, Source: element.Sources.FirstOrDefault()))
+            .Where(item => item.Source is not null)
+            .Select(item =>
+            {
+                var source = item.Source!;
+                var paragraphText = item.Element.ProjectionMetadata?.OriginalText ?? item.Element.Text;
+                return new PdfCanonicalGrounding(
+                    source.SourceId,
+                    source.SourceOrdinal,
+                    source.StableId,
+                    new DocxTextSpan(source.Span.Start, source.Span.End),
+                    paragraphText);
+            })
+            .ToArray();
 }
 
 /// <summary>

@@ -93,6 +93,8 @@ public enum ProposedRole
     RunningHeader,
     RunningFooter,
     Caption,
+    FigureTitle,
+    StructuralContainer,
     BodyText,
     Metadata,
     Unknown,

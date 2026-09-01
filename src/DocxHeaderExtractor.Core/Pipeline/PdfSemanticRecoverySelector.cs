@@ -62,7 +62,7 @@ internal static class PdfSemanticRecoverySelector
     internal static bool IsHardExcluded(PdfSourceFacts source) =>
         source.StructuralScope is "table" or "running_page_artifact" or "table_of_contents" or
             "code_or_grammar" or "reference_list" or "index_terms" ||
-        DocumentDomainPolicy.IsExcludedFromOutline(source.DomainRole);
+        source.DomainEvidence.ProposesOutlineExclusion;
 
     internal static bool HasWeakHeadingPrefix(PdfSemanticBlock block)
     {

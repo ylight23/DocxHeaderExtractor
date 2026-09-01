@@ -255,6 +255,32 @@ public sealed class PdfCandidateContractsTests
     }
 
     [Fact]
+    public void Domain_detector_emits_evidence_without_materializing_structural_authority()
+    {
+        var article = new PdfSourceFacts(
+            "article", "DIEU 1. Pham vi dieu chinh", 1, 1, 0, 100, 100, 90,
+            "document_body", [])
+        {
+            Marker = PdfMarkerFactsParser.Parse("DIEU 1. Pham vi dieu chinh"),
+        };
+        var amendment = new PdfSourceFacts(
+            "amendment", "Khoan 3 Dieu 3 duoc sua doi, bo sung", 1, 1, 0, 80, 100, 70,
+            "document_body", []);
+
+        var articleEvidence = DocumentDomainPolicy.Observe(article, "legal");
+        var amendmentEvidence = DocumentDomainPolicy.Observe(amendment, "legal");
+
+        Assert.Equal(PdfDomainRole.LegalArticle, articleEvidence.Role);
+        Assert.Equal(4, articleEvidence.ProposedLevel);
+        Assert.True(articleEvidence.IsStructuralRole);
+        Assert.False(articleEvidence.ProposesOutlineExclusion);
+        Assert.Equal(PdfDomainRole.AmendmentAnnotation, amendmentEvidence.Role);
+        Assert.Null(amendmentEvidence.ProposedLevel);
+        Assert.False(amendmentEvidence.IsStructuralRole);
+        Assert.True(amendmentEvidence.ProposesOutlineExclusion);
+    }
+
+    [Fact]
     public void ProcurementPolicyKeepsStructuralMarkersAndRejectsTemplateFields()
     {
         var partOne = Line("PART 1 - BIDDING PROCEDURES", 700);

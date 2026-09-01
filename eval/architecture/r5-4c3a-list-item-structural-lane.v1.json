@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r5_4c3a_list_item_structural_lane",
+  "status": "PASS",
+  "baseRevision": "c05138025f311fecd365ae21d7a02598b23b8b19",
+  "executionRevision": "7d4986f92a3b2a3192ae5780bff60a4759824844",
+  "publicationRevision": "containing-closure-commit",
+  "semanticProposal": "PdfSemanticRole.ListItemTopic",
+  "structuralType": "ListItem",
+  "structuralRole": "ListItemTopic",
+  "productionListItemEmission": 1,
+  "listItemNumberingOnlyAutoAuthority": 0,
+  "listItemValidatorBypasses": 0,
+  "listItemSourceUnjoined": 0,
+  "listItemSpanInvalid": 0,
+  "headingProjectionListItem": 0,
+  "observedEvidenceGate": [
+    "document_body",
+    "parsed_marker",
+    "marker:*",
+    "standalone_line_or_multi_line_cluster"
+  ],
+  "replay": {
+    "fixtures": ["028", "056", "091"],
+    "joined": 3,
+    "structureDelta": 0,
+    "decisionDelta": 0,
+    "productDelta": 0,
+    "headingDelta": 0,
+    "providerCalls": 0
+  },
+  "focusedTests": {
+    "total": 58,
+    "passed": 58,
+    "failed": 0,
+    "skipped": 0
+  },
+  "hostE2E": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "fingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "fingerprintChanged": false,
+    "unjoined": 0
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "fullSuite": {
+    "total": 846,
+    "passed": 844,
+    "failed": 2,
+    "skipped": 0,
+    "knownFrozenFailures": ["C1", "N15"],
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0
+  },
+  "providerCalls": 0,
+  "expectedChanged": false,
+  "figureTitleActivation": "NOT_INCLUDED",
+  "captionOfRelation": "NOT_INCLUDED",
+  "r5_4c3a": "PASS",
+  "r5_4c3b": "AUTHORIZED"
+}

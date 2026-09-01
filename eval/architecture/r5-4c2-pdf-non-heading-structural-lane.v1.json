@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "executionRevision": "4e1b27b3bb9d7e5683b66ff62dd018a69f4571e0",
+  "publicationRevision": "containing-closure-commit",
+  "activation": {
+    "tableTitle": 1,
+    "caption": 1,
+    "listItem": 0,
+    "figureTitle": 0,
+    "newStructuralElementCount": 2,
+    "bypassedValidator": 0,
+    "sourceUnjoined": 0,
+    "spanInvalid": 0
+  },
+  "headingProjectionNewTypes": 0,
+  "replay": {
+    "fixtures": ["028", "056", "091"],
+    "joined": 3,
+    "delta": 0,
+    "providerCalls": 0
+  },
+  "host": {
+    "tests": "2/2",
+    "fingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "fingerprintChanged": false,
+    "providerCalls": 0
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "fullSuite": {
+    "total": 842,
+    "passed": 840,
+    "failed": 2,
+    "skipped": 0,
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0,
+    "frozenFailures": ["C1", "N15"]
+  },
+  "productHeadingJsonDelta": 0,
+  "finalHeadingJsonDelta": 0,
+  "providerCalls": 0,
+  "expectedChanged": false,
+  "r5_4c2": "PASS",
+  "r5_4c3": "AUTHORIZED"
+}

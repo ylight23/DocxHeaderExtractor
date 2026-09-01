@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r5_3d_generic_structural_producer_replay_closure",
+  "status": "PASS",
+  "executionRevision": "85a9cff996bc36a82ec84713bfa51b2b6bd09d2a",
+  "publicationRevision": "containing-closure-commit",
+  "baselineRevision": "0b98ade75f4c5ada46d8af6b4c3fffd3e829d2b8",
+  "currentBaseRevision": "9afdadacdc383ad400e80f73ad70bda976e37d89",
+  "replay": {
+    "fixtures": [
+      "028-wb-rfb-works-without-prequal-2017",
+      "056-openstax-business-law-essentials",
+      "091-rfc9110-http-semantics"
+    ],
+    "joined": 3,
+    "structureDelta": 0,
+    "outputDecisionDelta": 0,
+    "productOutputDelta": 0,
+    "headingProjectionDelta": 0,
+    "providerCalls": 0,
+    "testTotal": 9,
+    "testPassed": 9,
+    "testFailed": 0,
+    "testSkipped": 0,
+    "unmeasured": 0
+  },
+  "hostE2E": {
+    "canonicalTool": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "cli": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "web": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "mcp": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "agentHarness": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "joined": true,
+    "unjoined": 0,
+    "providerCalls": 0
+  },
+  "fullSuite": {
+    "executed": true,
+    "excludedTests": 0,
+    "total": 828,
+    "passed": 826,
+    "failed": 2,
+    "skipped": 0,
+    "knownFailures": [
+      "DocxHeaderExtractor.Tests.PdfC1CrossDocumentRegressionInventoryProbe.IndependentPartialTimeoutEvidenceNowExistsAndWasConsumedByN35",
+      "DocxHeaderExtractor.Tests.PdfN15RankingLossDiagnosisProbe.CommittedDiagnosisReproducesByteForByte"
+    ],
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0,
+    "failureUniverseFrozen": true
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "worktreeCleanAtPublicationPreparation": true,
+  "rawTrxPublishPolicy": "DO_NOT_PUSH_RAW_TRX",
+  "r5_3d": "PASS",
+  "r5_3e": "AUTHORIZED"
+}

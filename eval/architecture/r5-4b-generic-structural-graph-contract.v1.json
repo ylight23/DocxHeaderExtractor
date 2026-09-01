@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "executionRevision": "9bc2fbf63d04f19d25db971d16c8c2f43da15c08",
+  "publicationRevision": "containing-closure-commit",
+  "relationEndpointUnjoined": 0,
+  "danglingRelations": 0,
+  "relationAuthoritySource": "validated relation proposal",
+  "parentIdDualAuthority": 0,
+  "structuralElementTypeExpansion": 0,
+  "productionBehaviorDelta": 0,
+  "replay": {
+    "fixtures": ["028", "056", "091"],
+    "joined": 3,
+    "delta": 0,
+    "providerCalls": 0
+  },
+  "host": {
+    "tests": "2/2",
+    "fingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "fingerprintChanged": false,
+    "providerCalls": 0
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "fullSuite": {
+    "total": 832,
+    "passed": 830,
+    "failed": 2,
+    "skipped": 0,
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0,
+    "frozenFailures": ["C1", "N15"]
+  },
+  "expectedChanged": false,
+  "r5_4b": "PASS",
+  "r5_4c": "AUTHORIZED"
+}

@@ -44,17 +44,17 @@ public static class PdfBoldLabelOutline
         @"^(?<prefix>(?:Session|Annex|Item)\s+[IVXLC\d]+[:.]?)\s*(?<title>.*)$",
         RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-    public static PdfTextbookOutlineResult TryBuild(
+    public static PdfCompatibilityHeadingOracle TryBuild(
         string originalInputPath,
         IReadOnlyList<IPolicyParagraph> paragraphs,
         DocumentModeReport mode)
     {
         if (DocumentStructureEvidence.HasNativeSemanticStructure(paragraphs))
-            return PdfTextbookOutlineResult.NotApplicable("docx-structure-present");
+            return new PdfCompatibilityHeadingOracle([], "docx-structure-present");
 
         var pdf = PdfTextbookOutline.FindSiblingPdf(originalInputPath);
         if (pdf is null)
-            return PdfTextbookOutlineResult.NotApplicable("no-pdf");
+            return new PdfCompatibilityHeadingOracle([], "no-pdf");
 
         IReadOnlyList<PdfLine> lines;
         try
@@ -64,22 +64,23 @@ public static class PdfBoldLabelOutline
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException)
         {
-            return PdfTextbookOutlineResult.NotApplicable("pdf-read-failed");
+            return new PdfCompatibilityHeadingOracle([], "pdf-read-failed");
         }
 
         if (!IsBoldStrong(lines))
-            return PdfTextbookOutlineResult.NotApplicable("pdf-not-bold-strong");
+            return new PdfCompatibilityHeadingOracle([], "pdf-not-bold-strong");
 
         var candidates = DetectBoldLabelHeadings(lines);
         if (candidates.Count < 2)
-            return PdfTextbookOutlineResult.NotApplicable($"too-few-bold-labels:{candidates.Count}");
+            return new PdfCompatibilityHeadingOracle([], $"too-few-bold-labels:{candidates.Count}");
 
         var aligned = AlignToDocx(candidates, paragraphs);
         if (aligned.Headings.Count < Math.Max(2, (int)Math.Ceiling(aligned.ConsideredCandidates * 0.60)))
-            return PdfTextbookOutlineResult.NotApplicable(
+            return new PdfCompatibilityHeadingOracle(
+                [],
                 $"low-docx-alignment:{aligned.Headings.Count}/{aligned.ConsideredCandidates}");
 
-        return new PdfTextbookOutlineResult(
+        return new PdfCompatibilityHeadingOracle(
             aligned.Headings,
             $"pdf={Path.GetFileName(pdf)}, aligned={aligned.Headings.Count}/{aligned.ConsideredCandidates}");
     }

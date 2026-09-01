@@ -8,6 +8,7 @@ internal enum PdfBlockRole
 {
     DocumentTitle,
     HeadingTopic,
+    ListItem,
     BodySentence,
     TableOrChartLabel,
     DecorativeNoise,
@@ -19,7 +20,7 @@ internal enum PdfSemanticRole
     DocumentTitle, SectionHeading, TopicHeading, LocalSubheading,
     LegalChapter, LegalSection, LegalArticle, LegalClause, LegalPoint, AppendixHeading,
     MeetingSection, AgendaItem, NoteHeading,
-    TableTitle, TableHeader, FigureCaption, RunningHeader, RunningFooter, FormLabel,
+    TableTitle, TableHeader, FigureTitle, FigureCaption, ListItemTopic, RunningHeader, RunningFooter, FormLabel,
     SignatureLabel, TranslationNotice, BodyText, Unknown,
 }
 
@@ -30,7 +31,8 @@ internal sealed record PdfBlockDecision(
     string Reason,
     DocxHeaderExtractor.Core.Models.TextOffsetSpan? HeadingSpan = null,
     string? ProposedParentId = null,
-    PdfSemanticRole SemanticRole = PdfSemanticRole.Unknown);
+    PdfSemanticRole SemanticRole = PdfSemanticRole.Unknown,
+    DocxHeaderExtractor.Core.Models.TextOffsetSpan? ProposedSourceSpan = null);
 
 internal sealed record PdfBlockAnalysis(
     IReadOnlyList<PdfSemanticBlock> Blocks,
@@ -73,10 +75,10 @@ internal static class PdfBlockAnalyst
     private const string SystemPrompt =
         "You classify candidate PDF text blocks for document outline extraction.\n" +
         "Deterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\n" +
-        "For each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_caption, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\n" +
+        "For each block, choose exactly one closed semantic role: document_title, section_heading, topic_heading, local_subheading, legal_chapter, legal_section, legal_article, legal_clause, legal_point, appendix_heading, meeting_section, agenda_item, note_heading, table_title, table_header, figure_title, figure_caption, list_item_topic, running_header, running_footer, form_label, signature_label, translation_notice, body_text, or unknown.\n" +
         "A domain_role_hint is parser evidence, not a request to generate text. Treat amendment_annotation, inline_clause_reference, form_field_label, outline_reference, table_title, and running_artifact as non-heading roles even when visually prominent.\n" +
         "Do not mark a block heading_topic merely because it is bold/uppercase. Prefer heading_topic for concise topic labels such as 'AVAILABILITY OF INFORMATION'.\n" +
-        "This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\n" +
+        "Classify numbered or indented prose as list_item_topic only when the source facts show a list marker or list layout; numbering alone must not authorize a structural element. This is role pass only. Do not infer heading text, pointer spans, levels, or parents.\n" +
         "Return one compact strict JSON object for every input id. Omit explanations unless needed.\n" +
         "Format: {\"blocks\":[{\"id\":\"b1\",\"role\":\"closed_role\",\"confidence\":0.0}]}";
 
@@ -111,7 +113,8 @@ internal static class PdfBlockAnalyst
             return new PdfBlockAnalysis(blocks, blocks.Select(block =>
             {
                 checkpoint.TryGetSemanticDecision(block.Id, out var saved);
-                return new PdfBlockDecision(block.Id, saved.Role, saved.Confidence, saved.Reason);
+                return new PdfBlockDecision(block.Id, saved.Role, saved.Confidence, saved.Reason,
+                    SemanticRole: saved.SemanticRole, ProposedSourceSpan: saved.ProposedSourceSpan);
             }).ToArray(), []);
         }
 
@@ -460,7 +463,8 @@ internal static class PdfBlockAnalyst
                     ? parentProp.GetString()
                     : null;
                 var semanticRole = ParseSemanticRole(roleText);
-                result.Add(new PdfBlockDecision(id, ProjectRole(semanticRole), confidence, reason, span, parent, semanticRole));
+                var proposedSourceSpan = TryParseSpan(item, "source_span");
+                result.Add(new PdfBlockDecision(id, ProjectRole(semanticRole), confidence, reason, span, parent, semanticRole, proposedSourceSpan));
             }
         }
         catch (JsonException)
@@ -471,9 +475,9 @@ internal static class PdfBlockAnalyst
         return result;
     }
 
-    private static DocxHeaderExtractor.Core.Models.TextOffsetSpan? TryParseSpan(JsonElement item)
+    private static DocxHeaderExtractor.Core.Models.TextOffsetSpan? TryParseSpan(JsonElement item, string propertyName = "heading_span")
     {
-        if (!item.TryGetProperty("heading_span", out var span) || span.ValueKind != JsonValueKind.Object ||
+        if (!item.TryGetProperty(propertyName, out var span) || span.ValueKind != JsonValueKind.Object ||
             !span.TryGetProperty("start", out var start) || !start.TryGetInt32(out var from) ||
             !span.TryGetProperty("end", out var end) || !end.TryGetInt32(out var to))
             return null;
@@ -543,7 +547,9 @@ internal static class PdfBlockAnalyst
             "note_heading" => PdfSemanticRole.NoteHeading,
             "table_title" => PdfSemanticRole.TableTitle,
             "table_header" or "table_or_chart_label" or "table_label" or "chart_label" or "table" or "chart" => PdfSemanticRole.TableHeader,
+            "figure_title" => PdfSemanticRole.FigureTitle,
             "figure_caption" or "box_title" => PdfSemanticRole.FigureCaption,
+            "list_item_topic" or "list_item" => PdfSemanticRole.ListItemTopic,
             "running_header" => PdfSemanticRole.RunningHeader,
             "running_footer" => PdfSemanticRole.RunningFooter,
             "form_label" or "form_field_label" => PdfSemanticRole.FormLabel,
@@ -561,6 +567,7 @@ internal static class PdfBlockAnalyst
         PdfSemanticRole.AppendixHeading or PdfSemanticRole.MeetingSection or PdfSemanticRole.AgendaItem or
         PdfSemanticRole.NoteHeading => PdfBlockRole.HeadingTopic,
         PdfSemanticRole.TableTitle or PdfSemanticRole.TableHeader or PdfSemanticRole.FigureCaption => PdfBlockRole.TableOrChartLabel,
+        PdfSemanticRole.ListItemTopic => PdfBlockRole.ListItem,
         PdfSemanticRole.RunningHeader or PdfSemanticRole.RunningFooter or PdfSemanticRole.FormLabel or
         PdfSemanticRole.SignatureLabel or PdfSemanticRole.TranslationNotice => PdfBlockRole.DecorativeNoise,
         PdfSemanticRole.BodyText => PdfBlockRole.BodySentence,

@@ -3,13 +3,11 @@ using DocxHeaderExtractor.Core.Models;
 namespace DocxHeaderExtractor.Core.Pipeline;
 
 /// <summary>
-/// M9.5b compatibility shell. <c>DocumentOutline</c>/<c>HeadingRecord</c> is the contract the whole
+/// M9.5b compatibility oracle. <c>DocumentOutline</c>/<c>HeadingRecord</c> is the contract the whole
 /// downstream stack (CLI formatters, Web, MCP, <c>AgentHarness</c> validators) already reads with no
-/// abstraction over it, so the pdf-first-authority route still returns one - but every field on it is
-/// now a structural copy from <see cref="PdfProductHeading"/>, never a re-derivation. This class does
-/// not decide emission, does not resolve level or parent, and does not recompute
-/// <see cref="PdfProductHeading.RequiresReview"/> - those are M9.1/M9.2's authority, already settled
-/// by the time a heading reaches here.
+/// abstraction over it. Normal runtime now projects through generic structural authority; this class
+/// remains as a lossless old-path oracle for R5 parity tests. It does not decide emission, resolve
+/// level or parent, or recompute <see cref="PdfProductHeading.RequiresReview"/>.
 /// <para>
 /// Fields <see cref="HeadingRecord"/> has that <see cref="PdfProductHeading"/> carries no authority
 /// for (<c>InlineBody</c>/<c>InlineBodySpan</c>, <c>StyleId</c>, <c>Evidence</c>,

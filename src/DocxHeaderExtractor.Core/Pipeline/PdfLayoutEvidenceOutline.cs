@@ -280,16 +280,19 @@ public static class PdfLayoutEvidenceOutline
 
     private static string Sha256(string text) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text))).ToLowerInvariant();
 
-    public static PdfTextbookOutlineResult TryBuild(string originalInputPath, DocxPolicyState policyState)
+    private static string FileSha256(string path) =>
+        Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
+
+    public static PdfCompatibilityHeadingOracle TryBuild(string originalInputPath, DocxPolicyState policyState)
     {
         var context = TryBuildContext(originalInputPath, policyState, out var reason);
-        if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
+        if (context is null) return new PdfCompatibilityHeadingOracle([], reason);
 
         var alignment = AlignToDocx(context.Candidates, policyState, context.Profile, Basis);
         if (alignment.Headings.Count < Math.Max(3, (int)Math.Ceiling(context.Candidates.Count * 0.65)))
-            return PdfTextbookOutlineResult.NotApplicable($"low-docx-alignment:{alignment.Headings.Count}/{context.Candidates.Count}");
+            return new PdfCompatibilityHeadingOracle([], $"low-docx-alignment:{alignment.Headings.Count}/{context.Candidates.Count}");
 
-        return new PdfTextbookOutlineResult(
+        return new PdfCompatibilityHeadingOracle(
             alignment.Headings,
             $"pdf={Path.GetFileName(context.Pdf)}, styles={context.HeadingStyles.Count}, aligned={alignment.Headings.Count}/{context.Candidates.Count}");
     }
@@ -299,14 +302,14 @@ public static class PdfLayoutEvidenceOutline
     /// roles are grounded back to the same blocks before DOCX alignment; the model cannot invent a
     /// title or a source span.
     /// </summary>
-    public static async Task<PdfTextbookOutlineResult> TryBuildWithAnalystAsync(
+    public static async Task<PdfCompatibilityHeadingOracle> TryBuildWithAnalystAsync(
         string originalInputPath,
         DocxPolicyState policyState,
         IHeaderClassifier analyst,
         CancellationToken ct = default)
     {
         var context = TryBuildContext(originalInputPath, policyState, out var reason);
-        if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
+        if (context is null) return new PdfCompatibilityHeadingOracle([], reason);
 
         var selection = SelectAnalystCandidates(context.Candidates, MaximumAnalystBlocks);
         var candidates = selection.Selected;
@@ -322,15 +325,15 @@ public static class PdfLayoutEvidenceOutline
         var acceptedIds = grounded.Headings.Select(h => h.Id).ToHashSet(StringComparer.Ordinal);
         var accepted = candidates.Where(b => acceptedIds.Contains(b.Id)).ToArray();
         if (accepted.Length < 3)
-            return PdfTextbookOutlineResult.NotApplicable($"analyst-grounded-too-few:{accepted.Length}/{candidates.Count}");
+            return new PdfCompatibilityHeadingOracle([], $"analyst-grounded-too-few:{accepted.Length}/{candidates.Count}");
 
         var alignment = AlignToDocx(accepted, policyState, context.Profile, AnalystBasis);
         if (alignment.Headings.Count < Math.Max(3, (int)Math.Ceiling(accepted.Length * 0.65)))
-            return PdfTextbookOutlineResult.NotApplicable($"analyst-low-docx-alignment:{alignment.Headings.Count}/{accepted.Length}");
+            return new PdfCompatibilityHeadingOracle([], $"analyst-low-docx-alignment:{alignment.Headings.Count}/{accepted.Length}");
 
         var summary = $"pdf={Path.GetFileName(context.Pdf)}, candidateBlocks={candidates.Count}/{selection.Available}, " +
                       $"pages={selection.SelectedPages}/{selection.AvailablePages}, grounded={accepted.Length}, aligned={alignment.Headings.Count}/{accepted.Length}";
-        return new PdfTextbookOutlineResult(
+        return new PdfCompatibilityHeadingOracle(
             alignment.Headings,
             summary,
             new RouteExecutionAudit(
@@ -818,8 +821,28 @@ public static class PdfLayoutEvidenceOutline
             : recoveredHeadings.Length < Math.Max(3, (int)Math.Ceiling(accepted.Length * 0.65))
                 ? $"audit-only:analyst-low-docx-alignment:{recoveredHeadings.Length}/{accepted.Length}"
                 : summary;
-        return new PdfTextbookOutlineResult(recoveredHeadings, auditReason, audit)
+        var parserBlocks = PdfSemanticBlockGrouper.Build(context.Annotations);
+        var sourceCatalog = DocumentSourceCatalogBuilder.FromPdfParserBlocks(parserBlocks);
+        var finalStructure = PdfFinalStructureProjection.Project(
+            FileSha256(originalInputPath), audit.ValidatedStructures, audit.HierarchyFacts,
+            PdfCanonicalGrounding.FromGroundedHeadings(recoveredHeadings));
+        var decisions = PdfOutputDecisionPolicy.Decide(finalStructure);
+        var materialized = StructuralAuthorityMaterializer.Materialize(finalStructure, decisions, sourceCatalog);
+        var structuralLane = PdfNonHeadingStructuralProducer.MaterializeLane(selected, blockAnalysis.Decisions, candidateContexts);
+        var relationProposals = materialized.Structure.Relations
+            .Select(relation => new StructuralRelationProposal(
+                relation.FromId, relation.ToId, relation.Type))
+            .Concat(structuralLane.RelationProposals);
+        var combinedStructure = ValidatedStructure.FromElements(
+            materialized.Structure.Elements.Concat(structuralLane.Elements), relationProposals);
+        return new PdfTextbookOutlineResult(
+            new StructuralAuthorityResult(
+                combinedStructure, audit, auditReason, materialized.EmittedElementIds),
+            auditReason, audit)
         {
+            FinalStructure = finalStructure,
+            OutputDecisions = decisions,
+            SourceCatalog = sourceCatalog,
             DetachedTasks = detachedTasks,
         };
     }

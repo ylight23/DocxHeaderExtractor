@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r5_4a_domain_authority_decoupling",
+  "status": "PASS",
+  "executionRevision": "4d8fe1a0df053369bbcd7763c5a6c6abff8ce2c8",
+  "publicationRevision": "containing-closure-commit",
+  "precedingR5_3ePublicationRevision": "3c0c17fdc801da5c2c749f11d7f43c5652c0e3db",
+  "genericValidatorDomainDependency": 0,
+  "domainRoleDirectLevelAuthority": 0,
+  "domainRoleDirectParentAuthority": 0,
+  "domainRoleDirectStructureExclusion": 0,
+  "fileSpecificRuntimeRules": 0,
+  "corpusIdRuntimeRules": 0,
+  "domainRulesAsEvidence": "PASS",
+  "evidenceContract": {
+    "type": "DomainStructuralEvidence",
+    "proposesRole": true,
+    "proposesLevel": true,
+    "proposesOutlineExclusion": true,
+    "authorizesValidatedStructure": false
+  },
+  "focusedTests": {
+    "total": 49,
+    "passed": 49,
+    "failed": 0,
+    "skipped": 0
+  },
+  "replay": {
+    "joined": 3,
+    "cases": 9,
+    "structureDelta": 0,
+    "decisionDelta": 0,
+    "productDelta": 0,
+    "finalHeadingDelta": 0,
+    "providerCalls": 0
+  },
+  "hostE2E": {
+    "status": "PASS",
+    "cases": 2,
+    "fingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "fingerprintChanged": false,
+    "unjoined": 0,
+    "providerCalls": 0
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "fullSuite": {
+    "executed": true,
+    "excludedTests": 0,
+    "total": 830,
+    "passed": 828,
+    "failed": 2,
+    "skipped": 0,
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0,
+    "frozenFailures": [
+      "DocxHeaderExtractor.Tests.PdfC1CrossDocumentRegressionInventoryProbe.IndependentPartialTimeoutEvidenceNowExistsAndWasConsumedByN35",
+      "DocxHeaderExtractor.Tests.PdfN15RankingLossDiagnosisProbe.CommittedDiagnosisReproducesByteForByte"
+    ]
+  },
+  "hostFingerprintChanged": false,
+  "providerCalls": 0,
+  "expectedChanged": false,
+  "r5_4a": "PASS",
+  "r5_4b": "AUTHORIZED"
+}

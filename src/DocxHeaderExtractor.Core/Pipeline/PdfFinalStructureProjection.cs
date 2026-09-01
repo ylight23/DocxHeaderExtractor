@@ -81,7 +81,14 @@ public static class PdfFinalStructureProjection
                 levelReason,
                 parentReason,
                 "validated",
-                grounding?.ParagraphText ?? fact.SourceBlockText));
+                grounding?.ParagraphText ?? fact.SourceBlockText)
+            {
+                // Rehydrate the proposal for legacy serialized facts that predate the explicit
+                // evidence field. New producer output already carries this value from the source
+                // detector; the fallback does not create or validate a structural element.
+                DomainExclusionProposed = structure.DomainExclusionProposed ||
+                    DocumentDomainPolicy.EvidenceForRole(structure.DomainRole, "legacy-domain-fact").ProposesOutlineExclusion,
+            });
         }
 
         return new PdfFinalStructure(
@@ -206,4 +213,9 @@ public sealed record PdfFinalHeading(
     [property: JsonPropertyName("authority")] string Authority,
     // Additive in schema v2: old artifacts simply omit this field; new products use it to preserve
     // the canonical paragraph when the heading span starts after offset zero.
-    [property: JsonPropertyName("sourceText")] string SourceText);
+    [property: JsonPropertyName("sourceText")] string SourceText)
+{
+    /// <summary>Domain detector evidence used by product policy; excluded from serialized output.</summary>
+    [JsonIgnore]
+    public bool DomainExclusionProposed { get; init; }
+}

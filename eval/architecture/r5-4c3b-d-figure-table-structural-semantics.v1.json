@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "r5_4c3b_d_figure_table_structural_semantics",
+  "status": "PASS",
+  "baseRevision": "cd80a1a89f831b427ab3ac8164aa9dfb81cca3c7",
+  "executionRevision": "44cd42001b29ea9bd1371358dedfc438c5b69d73",
+  "publicationRevision": "containing-closure-commit",
+  "semanticRoles": {
+    "figure_title": "FigureTitle",
+    "figure_caption": "Caption"
+  },
+  "activatedTypes": [
+    "FigureTitle",
+    "Caption",
+    "Figure",
+    "Table",
+    "TableTitle",
+    "ListItem"
+  ],
+  "productionEmissionEvidence": {
+    "figureTitle": 1,
+    "caption": 1,
+    "tableTitle": 1,
+    "listItem": 1,
+    "figure": 1,
+    "table": 1,
+    "figureTitleAsCaption": 0,
+    "captionAsFigureTitle": 0
+  },
+  "relations": {
+    "validatedCaptionOf": 1,
+    "validatedLabels": 2,
+    "endpointUnjoined": 0,
+    "dangling": 0,
+    "validatorBypasses": 0,
+    "invalidCaptionOfFigureTitleRejected": true
+  },
+  "sourceAndSpan": {
+    "sourceUnjoined": 0,
+    "spanInvalid": 0,
+    "containerEvidence": "parser_or_layout_observation",
+    "captionSpanPolicy": "exact semantic span when supplied; whole block only for whole-block proposal"
+  },
+  "projection": {
+    "headingProjectionNonHeadingTypes": 0,
+    "headingDelta": 0,
+    "productDelta": 0,
+    "replayFixtures": ["028", "056", "091"],
+    "replayJoined": 3,
+    "replayStructureDelta": 0,
+    "replayDecisionDelta": 0,
+    "replayProductDelta": 0,
+    "replayFinalHeadingDelta": 0
+  },
+  "focusedTests": {
+    "total": 91,
+    "passed": 91,
+    "failed": 0,
+    "skipped": 0
+  },
+  "hostE2E": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "fingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "fingerprintChanged": false,
+    "unjoined": 0
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "fullSuite": {
+    "total": 852,
+    "passed": 850,
+    "failed": 2,
+    "skipped": 0,
+    "knownFrozenFailures": ["C1", "N15"],
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0
+  },
+  "providerCalls": 0,
+  "expectedChanged": false,
+  "r5_4c3b": "PASS",
+  "r5_4c3c": "PASS",
+  "r5_4c3d": "PASS",
+  "r5_4c3": "PASS",
+  "next": "section_chunk_projection_and_generic_document_extraction_output"
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "executionRevision": "935e0cd91027c866a6feb15ce6728c5176184ba5",
+  "publicationRevision": "containing-closure-commit",
+  "structuralTypes": [
+    "Title",
+    "Subtitle",
+    "Heading",
+    "ListItem",
+    "Caption",
+    "TableTitle",
+    "FigureTitle"
+  ],
+  "typeRoleInvalidAccepted": 0,
+  "newTypeSourceGrounding": "PASS",
+  "newTypeSpanValidation": "PASS",
+  "newTypeRelationValidation": "PASS",
+  "headingProjectionNewTypes": 0,
+  "productionNewTypeEmission": 0,
+  "replay": {
+    "fixtures": ["028", "056", "091"],
+    "joined": 3,
+    "delta": 0,
+    "providerCalls": 0
+  },
+  "host": {
+    "tests": "2/2",
+    "fingerprint": "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429",
+    "fingerprintChanged": false,
+    "providerCalls": 0
+  },
+  "releaseBuild": "PASS",
+  "diffCheck": "PASS",
+  "focusedTests": {
+    "total": 54,
+    "passed": 54,
+    "failed": 0,
+    "skipped": 0
+  },
+  "fullSuite": {
+    "total": 841,
+    "passed": 839,
+    "failed": 2,
+    "skipped": 0,
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0,
+    "frozenFailures": ["C1", "N15"]
+  },
+  "expectedChanged": false,
+  "r5_4c1": "PASS",
+  "r5_4c2": "AUTHORIZED"
+}

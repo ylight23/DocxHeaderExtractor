@@ -19,6 +19,34 @@ public sealed class PdfBlockAnalystTests
     }
 
     [Fact]
+    public void ListItemSemanticRoleProjectsToListItemRoute()
+    {
+        var block = Block("b1", "1. First requirement");
+
+        var decision = Assert.Single(PdfBlockAnalyst.ParseDecisions(
+            "{\"blocks\":[{\"id\":\"b1\",\"role\":\"list_item_topic\",\"confidence\":0.9}]}", [block]));
+
+        Assert.Equal(PdfSemanticRole.ListItemTopic, decision.SemanticRole);
+        Assert.Equal(PdfBlockRole.ListItem, decision.Role);
+    }
+
+    [Fact]
+    public void FigureTitleAndFigureCaptionRemainDistinctSemanticRoles()
+    {
+        var blocks = new[] { Block("title", "Figure 1. Architecture"), Block("caption", "Source: World Bank") };
+        var decisions = PdfBlockAnalyst.ParseDecisions(
+            "{\"blocks\":[" +
+            "{\"id\":\"title\",\"role\":\"figure_title\",\"confidence\":0.9}," +
+            "{\"id\":\"caption\",\"role\":\"figure_caption\",\"confidence\":0.9}" +
+            "]}", blocks);
+
+        Assert.Equal(PdfSemanticRole.FigureTitle, decisions.Single(item => item.Id == "title").SemanticRole);
+        Assert.Equal(PdfSemanticRole.FigureCaption, decisions.Single(item => item.Id == "caption").SemanticRole);
+        Assert.DoesNotContain(decisions, item => item.SemanticRole == PdfSemanticRole.FigureTitle &&
+            item.Role == PdfBlockRole.HeadingTopic);
+    }
+
+    [Fact]
     public async Task AnalystAcceptsOnlyKnownBlockIdsAndWhitelistedRoles()
     {
         var blocks = new[]

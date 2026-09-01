@@ -59,7 +59,7 @@ internal static class PdfProposalConflictResolver
                     continue;
                 }
                 var markerBacked = facts?.StructuralScope == "document_body" &&
-                    facts.DomainRole is not PdfDomainRole.AmendmentAnnotation and not PdfDomainRole.EditorialInstruction &&
+                    !facts.DomainEvidence.ProposesOutlineExclusion &&
                     facts.ObservedEvidence.Any(evidence => evidence.StartsWith("marker:", StringComparison.Ordinal));
                 var tableCorroborated = visual.Role == PdfBlockRole.TableOrChartLabel &&
                     (facts?.StructuralScope == "table" || facts?.ObservedEvidence.Contains("table_like") == true);
