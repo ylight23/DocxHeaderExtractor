@@ -11,13 +11,21 @@ public static class IEContextProjection
         return result.Chunks.Select(chunk =>
         {
             var slice = DocumentConsumerProjectionSupport.Slice(result, chunk);
+            var sourceUnits = chunk.SourceIds
+                .Select(sourceId => result.SourceCatalog.Units.Single(unit => unit.SourceId == sourceId))
+                .Select(unit => new FactSourceExcerpt(unit.SourceId, unit.SourceOrdinal, unit.Text))
+                .ToArray();
             return new FactExtractionContext(
+                result.DocumentIdentity.DocumentId,
+                chunk.Id,
+                chunk.SectionId,
                 chunk.Text,
                 slice.Section.PathElementIds,
                 slice.Context,
                 slice.FigureTableContext,
                 chunk.SourceIds,
-                chunk.StructuralElementIds);
+                chunk.StructuralElementIds,
+                sourceUnits);
         }).ToArray();
     }
 }
