@@ -15,9 +15,13 @@ public sealed class ProductionAuthorityCutoverTests
         var options = new PipelineOptions { PdfFirstValidatedFallback = false };
         using var tool = new DocxHeaderExtractor.AgentHarness.PipelineDocumentExtractionTool(options);
 
-        var pipeline = typeof(DocxHeaderExtractor.AgentHarness.PipelineDocumentExtractionTool)
-            .GetField("_pipeline", BindingFlags.Instance | BindingFlags.NonPublic)?.GetValue(tool);
-        Assert.IsType<AuthorityExtractionPipeline>(pipeline);
+        var processing = typeof(DocxHeaderExtractor.AgentHarness.PipelineDocumentExtractionTool)
+            .GetField("_processing", BindingFlags.Instance | BindingFlags.NonPublic)?.GetValue(tool);
+        Assert.IsType<DocumentProcessingService>(processing);
+
+        var authority = typeof(DocumentProcessingService)
+            .GetField("_authority", BindingFlags.Instance | BindingFlags.NonPublic)?.GetValue(processing);
+        Assert.IsType<AuthorityExtractionPipeline>(authority);
     }
 
     [Fact]
