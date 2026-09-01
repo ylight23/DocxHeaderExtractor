@@ -328,7 +328,7 @@ public sealed class PdfExtractorQualityBenchmarkProbe
         var structuralScopeRejected = ctx.Source.StructuralScope is
             "table" or "running_page_artifact" or "table_of_contents" or "code_or_grammar" or "reference_list" or "index_terms";
         if (structuralScopeRejected) return $"structuralScope:{ctx.Source.StructuralScope}";
-        if (DocumentDomainPolicy.IsExcludedFromOutline(ctx.Source.DomainRole)) return $"domainRole:{ctx.Source.DomainRole}";
+        if (DocumentDomainPolicy.EvidenceForRole(ctx.Source.DomainRole).ProposesOutlineExclusion) return $"domainRole:{ctx.Source.DomainRole}";
         var untrustedOrigins = ctx.Source.EvidenceDetails
             .Where(e => e.Origin is not ("layout_parser" or "marker_parser" or "scope_detector"))
             .Select(e => e.Origin).Distinct().ToArray();

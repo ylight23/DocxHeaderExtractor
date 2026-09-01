@@ -4,11 +4,8 @@ using DocxHeaderExtractor.Core.Pipeline;
 namespace DocxHeaderExtractor.Core.Eval;
 
 /// <summary>
-/// M9.5c historical projection retained exclusively for M9.4 diagnostic/evaluation artifacts.
-/// It is not an output authority and must not be referenced by the production PDF-first route.
-/// The new production authority is <c>PdfFinalStructure -&gt; PdfOutputDecision -&gt;
-/// PdfProductOutput</c>; this helper exists only to reproduce the previous lane from the same
-/// frozen validated input for comparisons.
+/// Historical projection retained exclusively for evaluation artifacts. It is isolated from the
+/// Core runtime assembly so normal extraction cannot depend on the legacy PDF lane.
 /// </summary>
 public static class PdfLegacyValidatedOutputPolicy
 {
@@ -36,7 +33,7 @@ public static class PdfLegacyValidatedOutputPolicy
             .ToArray();
     }
 
-    /// <summary>Legal/contract tree projection keeps clause and point nodes after the same validation.</summary>
+    /// <summary>Historical legal/contract tree projection used only by frozen evaluation tooling.</summary>
     public static IReadOnlyList<HeadingRecord> ProjectFullStructuralTree(IReadOnlyList<HeadingRecord> headings) =>
         ProjectDocumentOutline(headings, []);
 }

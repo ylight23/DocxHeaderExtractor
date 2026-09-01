@@ -128,7 +128,7 @@ public sealed class PdfConditionalValidationSurvivalProbe
             {
                 var structuralScopeRejected = ctx.Source.StructuralScope is
                     "table" or "running_page_artifact" or "table_of_contents" or "code_or_grammar" or "reference_list" or "index_terms";
-                var domainRejected = DocumentDomainPolicy.IsExcludedFromOutline(ctx.Source.DomainRole);
+                var domainRejected = DocumentDomainPolicy.EvidenceForRole(ctx.Source.DomainRole).ProposesOutlineExclusion;
                 var untrustedOrigins = ctx.Source.EvidenceDetails
                     .Where(e => e.Origin is not ("layout_parser" or "marker_parser" or "scope_detector"))
                     .Select(e => e.Origin).Distinct().ToArray();
