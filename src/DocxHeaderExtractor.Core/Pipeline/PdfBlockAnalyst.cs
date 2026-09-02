@@ -85,6 +85,8 @@ public sealed record SemanticLaneOptions(
 /// </summary>
 internal static class PdfBlockAnalyst
 {
+    internal const int InternalSafePointerPromptUtf8Bytes = 800_000;
+
     private const string SystemPrompt =
         "You classify candidate PDF text blocks for document outline extraction.\n" +
         "Deterministic code has already removed obvious page numbers, repeated headers/footers, and numeric table noise.\n" +
@@ -272,8 +274,56 @@ internal static class PdfBlockAnalyst
         var inputContracts = new List<string>();
         var requestInstrumentation = new List<PdfSpanRequestInstrumentation>();
         var batchIndex = 0;
-        foreach (var batch in headingBlocks.Chunk(4))
+        var pendingBatches = headingBlocks.Chunk(4).ToList();
+        while (pendingBatches.Count > 0)
         {
+            var batch = pendingBatches[0];
+            pendingBatches.RemoveAt(0);
+            ct.ThrowIfCancellationRequested();
+            var compactSourceMenuIds = new HashSet<string>(StringComparer.Ordinal);
+            var initialPrompt = BuildPointerSpanPrompt(batch, contexts, explicitPairMenuIds);
+            if (Encoding.UTF8.GetByteCount(initialPrompt) > InternalSafePointerPromptUtf8Bytes)
+            {
+                if (batch.Length > 1)
+                {
+                    var midpoint = batch.Length / 2;
+                    pendingBatches.Insert(0, batch[midpoint..]);
+                    pendingBatches.Insert(0, batch[..midpoint]);
+                    continue;
+                }
+
+                if (explicitPairMenuIds.Contains(batch[0].Id))
+                {
+                    compactSourceMenuIds.Add(batch[0].Id);
+                    initialPrompt = BuildPointerSpanPrompt(batch, contexts, explicitPairMenuIds, compactSourceMenuIds);
+                }
+
+                if (Encoding.UTF8.GetByteCount(initialPrompt) > InternalSafePointerPromptUtf8Bytes)
+                {
+                    batchIndex++;
+                    var guardStartedUtc = DateTimeOffset.UtcNow;
+                    var guardStartedTimestamp = Stopwatch.GetTimestamp();
+                    var guardSourceIds = batch.Select(block => block.Id).ToArray();
+                    var guardSourceOrdinals = batch.Select(block => contexts.TryGetValue(block.Id, out var context)
+                        ? context.Source.SourceOrdinal
+                        : null).ToArray();
+                    var guardRoles = batch.Select(block => byId[block.Id].SemanticRole.ToString()).ToArray();
+                    var guardCounts = AllowedSpanCounts(batch, explicitPairMenuIds, compactSourceMenuIds);
+                    requestInstrumentation.Add(BuildSpanRequestInstrumentation(
+                        Guid.NewGuid().ToString("N"), batchIndex, guardSourceIds, guardSourceOrdinals, guardRoles,
+                        initialPrompt.Length, Encoding.UTF8.GetByteCount(initialPrompt), guardCounts, 0,
+                        guardStartedUtc, guardStartedTimestamp, configuredRequestTimeout, deadlineUtc,
+                        "preflight-guard", null, false, ct.IsCancellationRequested, false, null, null,
+                        "pointer prompt exceeds internal safe UTF-8 ceiling after source compaction"));
+                    foreach (var block in batch)
+                    {
+                        if (!byId.TryGetValue(block.Id, out var decision)) continue;
+                        byId[block.Id] = decision with { SpanResponseStatus = "request-guard-rejected" };
+                    }
+                    continue;
+                }
+            }
+
             batchIndex++;
             var requestId = Guid.NewGuid().ToString("N");
             var startedUtc = DateTimeOffset.UtcNow;
@@ -284,13 +334,8 @@ internal static class PdfBlockAnalyst
                 ? context.Source.SourceOrdinal
                 : null).ToArray();
             var semanticRoles = batch.Select(block => byId[block.Id].SemanticRole.ToString()).ToArray();
-            var allowedSpanCountPerSource = batch.ToDictionary(
-                block => block.Id,
-                block => explicitPairMenuIds.Contains(block.Id) ? PdfSpanCandidateMenu.For(block.Text).Count : 0,
-                StringComparer.Ordinal);
-            var sourceSliceCharsTotal = batch
-                .Where(block => explicitPairMenuIds.Contains(block.Id))
-                .Sum(block => PdfSpanCandidateMenu.For(block.Text).Sum(candidate => candidate.SourceSlice.Length));
+            var allowedSpanCountPerSource = AllowedSpanCounts(batch, explicitPairMenuIds, compactSourceMenuIds);
+            const int sourceSliceCharsTotal = 0;
             var promptChars = 0;
             var promptUtf8Bytes = 0;
             string outcome = "unknown-fault";
@@ -301,7 +346,9 @@ internal static class PdfBlockAnalyst
             PdfPointerSpanParseResult? parsed = null;
             try
             {
-                var prompt = BuildPointerSpanPrompt(batch, contexts, explicitPairMenuIds);
+                var prompt = compactSourceMenuIds.Count == 0
+                    ? initialPrompt
+                    : BuildPointerSpanPrompt(batch, contexts, explicitPairMenuIds, compactSourceMenuIds);
                 promptChars = prompt.Length;
                 promptUtf8Bytes = Encoding.UTF8.GetByteCount(prompt);
                 inputContracts.Add(prompt);
@@ -312,7 +359,7 @@ internal static class PdfBlockAnalyst
                 // A provider may ignore cancellation. A late response must not become a durable
                 // span fact after the lane deadline has already been crossed.
                 ct.ThrowIfCancellationRequested();
-                parsed = ParsePointerSpanResponses(raw, batch, explicitPairMenuIds);
+                parsed = ParsePointerSpanResponses(raw, batch, explicitPairMenuIds, compactSourceMenuIds);
                 outcome = parsed.ParseFault ? "parse-fault" : "success";
             }
             catch (OperationCanceledException ex)
@@ -417,7 +464,8 @@ internal static class PdfBlockAnalyst
         bool cancellationRequestedAfter,
         bool responseReceived,
         int? responseBytes,
-        PdfPointerSpanParseResult? parsed)
+        PdfPointerSpanParseResult? parsed,
+        string? diagnosticMessage = null)
     {
         var completedUtc = DateTimeOffset.UtcNow;
         var returned = parsed?.Spans.Select(item => item.Id).Distinct(StringComparer.Ordinal).ToArray() ?? [];
@@ -430,7 +478,7 @@ internal static class PdfBlockAnalyst
             (long)Math.Max(0, Stopwatch.GetElapsedTime(startedTimestamp).TotalMilliseconds),
             configuredRequestTimeout is { } timeout ? (long)timeout.TotalMilliseconds : null,
             deadlineUtc is { } deadline ? (long)Math.Max(0, (deadline - startedUtc).TotalMilliseconds) : null,
-            outcome, failure?.GetType().FullName, SanitizeExceptionMessage(failure),
+            outcome, failure?.GetType().FullName, diagnosticMessage ?? SanitizeExceptionMessage(failure),
             (failure as HttpRequestException)?.StatusCode is { } httpStatus ? (int)httpStatus : null,
             cancellationRequestedBefore, cancellationRequestedAfter, effectiveResponseReceived, responseBytes,
             returned,
@@ -541,17 +589,20 @@ internal static class PdfBlockAnalyst
     internal static string BuildPointerSpanPrompt(
         IReadOnlyList<PdfSemanticBlock> blocks,
         IReadOnlyDictionary<string, PdfCandidateContext> contexts,
-        IReadOnlySet<string>? explicitPairMenuIds = null)
+        IReadOnlySet<string>? explicitPairMenuIds = null,
+        IReadOnlySet<string>? compactSourceMenuIds = null)
     {
         var payload = blocks.Select(block => BuildPointerSpanPromptBlock(block, contexts,
-            explicitPairMenuIds?.Contains(block.Id) == true));
+            explicitPairMenuIds?.Contains(block.Id) == true,
+            compactSourceMenuIds?.Contains(block.Id) == true));
         return JsonSerializer.Serialize(new { blocks = payload });
     }
 
     private static object BuildPointerSpanPromptBlock(
         PdfSemanticBlock block,
         IReadOnlyDictionary<string, PdfCandidateContext> contexts,
-        bool useExplicitPairMenu)
+        bool useExplicitPairMenu,
+        bool useCompactPairMenu)
     {
         var context = contexts.TryGetValue(block.Id, out var found)
             ? new
@@ -567,7 +618,18 @@ internal static class PdfBlockAnalyst
                 id = block.Id,
                 source_text = block.Text,
                 source_length = block.Text.Length,
-                allowed_spans = PdfSpanCandidateMenu.For(block.Text),
+                boundary_context = new
+                {
+                    prefix_start_offsets = PdfSpanCandidateMenu.PrefixStarts(block.Text),
+                    end_offsets = PdfSpanBoundaryMap.For(block.Text).Take(
+                        (useCompactPairMenu ? PdfSpanCandidateMenu.MaxCompactCandidatesPerSource : PdfSpanCandidateMenu.MaxCandidatesPerSource) - 1)
+                        .Append(block.Text.Length)
+                        .Distinct()
+                        .ToArray(),
+                },
+                allowed_spans = useCompactPairMenu
+                    ? PdfSpanCandidateMenu.ForCompact(block.Text)
+                    : PdfSpanCandidateMenu.For(block.Text),
                 context,
             };
         return new
@@ -580,6 +642,18 @@ internal static class PdfBlockAnalyst
             context,
         };
     }
+
+    private static IReadOnlyDictionary<string, int> AllowedSpanCounts(
+        IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlySet<string> explicitPairMenuIds,
+        IReadOnlySet<string> compactSourceMenuIds) => blocks.ToDictionary(
+            block => block.Id,
+            block => explicitPairMenuIds.Contains(block.Id)
+                ? (compactSourceMenuIds.Contains(block.Id)
+                    ? PdfSpanCandidateMenu.ForCompact(block.Text).Count
+                    : PdfSpanCandidateMenu.For(block.Text).Count)
+                : 0,
+            StringComparer.Ordinal);
 
     private static string BuildCriticPrompt(IReadOnlyList<PdfSemanticBlock> blocks,
         IReadOnlyDictionary<string, PdfCandidateContext> contexts) => JsonSerializer.Serialize(new
@@ -664,15 +738,17 @@ internal static class PdfBlockAnalyst
     internal static IReadOnlyList<(string Id, DocxHeaderExtractor.Core.Models.TextOffsetSpan? Span)> ParsePointerSpans(
         string raw,
         IReadOnlyList<PdfSemanticBlock> blocks,
-        IReadOnlySet<string>? explicitPairMenuIds = null)
+        IReadOnlySet<string>? explicitPairMenuIds = null,
+        IReadOnlySet<string>? compactSourceMenuIds = null)
     {
-        return ParsePointerSpanResponses(raw, blocks, explicitPairMenuIds).Spans;
+        return ParsePointerSpanResponses(raw, blocks, explicitPairMenuIds, compactSourceMenuIds).Spans;
     }
 
     internal static PdfPointerSpanParseResult ParsePointerSpanResponses(
         string raw,
         IReadOnlyList<PdfSemanticBlock> blocks,
-        IReadOnlySet<string>? explicitPairMenuIds = null)
+        IReadOnlySet<string>? explicitPairMenuIds = null,
+        IReadOnlySet<string>? compactSourceMenuIds = null)
     {
         var byId = blocks.ToDictionary(block => block.Id, StringComparer.Ordinal);
         var result = new List<(string Id, DocxHeaderExtractor.Core.Models.TextOffsetSpan? Span)>();
@@ -729,7 +805,10 @@ internal static class PdfBlockAnalyst
                     statuses[id] = "invalid-span";
                     span = null;
                 }
-                else if (useExplicitPairMenu && span is not null && !PdfSpanCandidateMenu.Contains(block.Text, span))
+                else if (useExplicitPairMenu && span is not null &&
+                    !(compactSourceMenuIds?.Contains(id) == true
+                        ? PdfSpanCandidateMenu.ContainsCompact(block.Text, span)
+                        : PdfSpanCandidateMenu.Contains(block.Text, span)))
                 {
                     statuses[id] = "invalid-pair";
                     span = null;

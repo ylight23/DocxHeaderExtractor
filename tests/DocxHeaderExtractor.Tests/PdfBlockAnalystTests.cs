@@ -176,7 +176,28 @@ public sealed class PdfBlockAnalystTests
         Assert.False(payload.TryGetProperty("allowed_start_offsets", out _));
         var exact = allowedSpans.EnumerateArray().Single(item => item.GetProperty("end").GetInt32() == block.Text.Length);
         Assert.Equal(0, exact.GetProperty("start").GetInt32());
-        Assert.Equal(block.Text, exact.GetProperty("source_slice").GetString());
+        Assert.False(exact.TryGetProperty("source_slice", out _));
+        Assert.True(payload.TryGetProperty("boundary_context", out var boundaryContext));
+        Assert.Contains(block.Text.Length, boundaryContext.GetProperty("end_offsets").EnumerateArray().Select(item => item.GetInt32()));
+    }
+
+    [Fact]
+    public void ExplicitSpanMenuIsBoundedAndDoesNotRepeatSourceSlice()
+    {
+        var block = Block("b1", new string('x', 5000));
+        var candidates = PdfSpanCandidateMenu.For(block.Text);
+        using var prompt = JsonDocument.Parse(PdfBlockAnalyst.BuildPointerSpanPrompt(
+            [block], new Dictionary<string, PdfCandidateContext>(), new HashSet<string> { "b1" }));
+        var allowed = prompt.RootElement.GetProperty("blocks")[0].GetProperty("allowed_spans");
+
+        Assert.InRange(candidates.Count, 1, PdfSpanCandidateMenu.MaxCandidatesPerSource);
+        Assert.Equal(candidates.Count, allowed.GetArrayLength());
+        Assert.All(allowed.EnumerateArray(), item =>
+        {
+            Assert.True(item.TryGetProperty("start", out _));
+            Assert.True(item.TryGetProperty("end", out _));
+            Assert.False(item.TryGetProperty("source_slice", out _));
+        });
     }
 
     [Fact]
@@ -191,7 +212,8 @@ public sealed class PdfBlockAnalystTests
         Assert.Equal("valid-boundary", parsed.StatusById["b1"]);
         Assert.Equal(expected, parsed.Spans.Single(item => item.Id == "b1").Span);
         var candidate = PdfSpanCandidateMenu.For(block.Text).Single(item => item.Start == expected.Start && item.End == expected.End);
-        Assert.Equal(block.Text[expected.Start..expected.End], candidate.SourceSlice);
+        Assert.Equal(expected.Start, candidate.Start);
+        Assert.Equal(expected.End, candidate.End);
     }
 
     [Theory]
@@ -241,8 +263,7 @@ public sealed class PdfBlockAnalystTests
 
         Assert.Equal(8, expected.Count);
         Assert.All(expected, item => Assert.Contains(PdfSpanCandidateMenu.For(item.Text),
-            candidate => candidate.Start == item.Start && candidate.End == item.End &&
-                candidate.SourceSlice == item.Text[item.Start..item.End]));
+            candidate => candidate.Start == item.Start && candidate.End == item.End));
     }
 
     [Fact]
@@ -359,7 +380,7 @@ public sealed class PdfBlockAnalystTests
         Assert.True(request.PromptUtf8Bytes >= request.PromptChars);
         Assert.True(request.AllowedSpanCountTotal > 0);
         Assert.True(request.AllowedSpanCountPerSource["b1"] > 0);
-        Assert.True(request.SourceSliceCharsTotal > 0);
+        Assert.Equal(0, request.SourceSliceCharsTotal);
         Assert.True(request.CompletedUtc >= request.StartedUtc);
         Assert.Equal("success", request.Outcome);
         Assert.True(request.ResponseReceived);
@@ -386,6 +407,49 @@ public sealed class PdfBlockAnalystTests
         Assert.True(request.ExceptionType?.Contains("HttpRequestException", StringComparison.Ordinal));
         Assert.True(request.ResponseReceived);
         Assert.Equal("request-failed", Assert.Single(analysis.Decisions).SpanResponseStatus);
+        Assert.Null(Assert.Single(analysis.Decisions).HeadingSpan);
+    }
+
+    [Fact]
+    public async Task OversizedSpanBatchSplitsBeforeProviderCall()
+    {
+        var blocks = Enumerable.Range(1, 4)
+            .Select(index => Block($"b{index}", new string('x', 210_000)))
+            .ToArray();
+        var decisions = blocks.Select(block => new PdfBlockDecision(
+            block.Id, PdfBlockRole.HeadingTopic, 0.9, "test", SemanticRole: PdfSemanticRole.LegalArticle)).ToArray();
+        var classifier = new DynamicSpanClassifier();
+
+        var analysis = await PdfBlockAnalyst.ResolveHeadingSpansAsync(
+            classifier, blocks, decisions, new Dictionary<string, PdfCandidateContext>());
+
+        Assert.Equal(2, classifier.Calls);
+        Assert.Equal(2, analysis.SpanRequestInstrumentation.Count);
+        Assert.All(analysis.SpanRequestInstrumentation, request =>
+        {
+            Assert.InRange(request.SourceCount, 1, 2);
+            Assert.InRange(request.PromptUtf8Bytes, 1, PdfBlockAnalyst.InternalSafePointerPromptUtf8Bytes);
+            Assert.Equal("success", request.Outcome);
+        });
+        Assert.All(analysis.Decisions, decision => Assert.NotNull(decision.HeadingSpan));
+    }
+
+    [Fact]
+    public async Task OversizedSingleSpanFailsClosedAfterCompactionWithoutProviderCall()
+    {
+        var block = Block("b1", new string('x', 810_000));
+        var decision = new PdfBlockDecision(
+            block.Id, PdfBlockRole.HeadingTopic, 0.9, "test", SemanticRole: PdfSemanticRole.LegalArticle);
+        var classifier = new DynamicSpanClassifier();
+
+        var analysis = await PdfBlockAnalyst.ResolveHeadingSpansAsync(
+            classifier, [block], [decision], new Dictionary<string, PdfCandidateContext>());
+
+        Assert.Equal(0, classifier.Calls);
+        var request = Assert.Single(analysis.SpanRequestInstrumentation);
+        Assert.Equal("preflight-guard", request.Outcome);
+        Assert.Equal("b1", Assert.Single(request.SourceIds));
+        Assert.Equal("request-guard-rejected", Assert.Single(analysis.Decisions).SpanResponseStatus);
         Assert.Null(Assert.Single(analysis.Decisions).HeadingSpan);
     }
 
@@ -613,6 +677,34 @@ public sealed class PdfBlockAnalystTests
         public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default) =>
             throw new HttpRequestException("simulated 429", null, System.Net.HttpStatusCode.TooManyRequests);
+        public void Dispose() { }
+    }
+
+    private sealed class DynamicSpanClassifier : IHeaderClassifier
+    {
+        public int Calls { get; private set; }
+        public string ModelName => "dynamic-span";
+        public int ContextSize => 4096;
+        public string RuntimeDescription => "dynamic-span";
+        public int SharedPrefixTokens => 0;
+        public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
+        {
+            Calls++;
+            using var document = JsonDocument.Parse(userMessage);
+            var response = document.RootElement.GetProperty("blocks").EnumerateArray().Select(item => new
+            {
+                id = item.GetProperty("id").GetString(),
+                heading_span = new
+                {
+                    start = 0,
+                    end = item.GetProperty("source_length").GetInt32(),
+                },
+            });
+            return Task.FromResult(JsonSerializer.Serialize(new { blocks = response }));
+        }
         public void Dispose() { }
     }
 }

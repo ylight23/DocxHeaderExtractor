@@ -108,26 +108,50 @@ internal static class PdfSpanBoundaryMap
         offset >= 0 && offset <= sourceText.Length && For(sourceText).Contains(offset);
 }
 
-/// <summary>
-/// A parser-owned source span candidate. SourceSlice is evidence for model selection only; the
-/// validator must continue to materialize authority text from the immutable source text.
-/// </summary>
+/// <summary>Parser-owned source span coordinates; authority text is always materialized later.</summary>
 internal sealed record PdfAllowedSpanCandidate(
     [property: JsonPropertyName("start")] int Start,
-    [property: JsonPropertyName("end")] int End,
-    [property: JsonPropertyName("source_slice")] string SourceSlice);
+    [property: JsonPropertyName("end")] int End);
 
 /// <summary>
-/// Explicit pair menu for high-value structural roles. The menu contains only prefix spans from
-/// parser-owned starts to parser-owned UTF-16 boundaries; it does not infer heading semantics.
+/// Explicit pair menu for high-value structural roles. The menu is deliberately bounded: it uses
+/// parser-owned prefix starts and only the first bounded set of UTF-16 end boundaries, plus the
+/// source end. It does not infer heading semantics and never repeats source text per candidate.
 /// </summary>
 internal static class PdfSpanCandidateMenu
 {
+    internal const int MaxCandidatesPerSource = 96;
+    internal const int MaxCompactCandidatesPerSource = 16;
+
     public static IReadOnlyList<PdfAllowedSpanCandidate> For(string sourceText)
+        => For(sourceText, MaxCandidatesPerSource);
+
+    public static IReadOnlyList<PdfAllowedSpanCandidate> ForCompact(string sourceText)
+        => For(sourceText, MaxCompactCandidatesPerSource);
+
+    private static IReadOnlyList<PdfAllowedSpanCandidate> For(string sourceText, int maxCandidates)
     {
         ArgumentNullException.ThrowIfNull(sourceText);
 
         var boundaries = PdfSpanBoundaryMap.For(sourceText);
+        var starts = PrefixStarts(sourceText);
+        var boundedEnds = boundaries.Take(maxCandidates - 1).ToHashSet();
+        boundedEnds.Add(sourceText.Length);
+
+        return starts
+            .SelectMany(start => boundedEnds
+            .Where(end => end > start)
+                .OrderBy(end => end)
+                .Select(end => new PdfAllowedSpanCandidate(start, end)))
+            .DistinctBy(candidate => (candidate.Start, candidate.End))
+            .Take(maxCandidates)
+            .ToArray();
+    }
+
+    public static IReadOnlyList<int> PrefixStarts(string sourceText)
+    {
+        ArgumentNullException.ThrowIfNull(sourceText);
+
         var starts = new SortedSet<int> { 0 };
         var firstNonWhitespace = 0;
         while (firstNonWhitespace < sourceText.Length && char.IsWhiteSpace(sourceText[firstNonWhitespace]))
@@ -135,17 +159,14 @@ internal static class PdfSpanCandidateMenu
         if (firstNonWhitespace > 0 && firstNonWhitespace < sourceText.Length &&
             PdfSpanBoundaryMap.Contains(sourceText, firstNonWhitespace))
             starts.Add(firstNonWhitespace);
-
-        return starts
-            .SelectMany(start => boundaries
-                .Where(end => end > start)
-                .Select(end => new PdfAllowedSpanCandidate(start, end, sourceText[start..end])))
-            .DistinctBy(candidate => (candidate.Start, candidate.End))
-            .ToArray();
+        return starts.ToArray();
     }
 
     public static bool Contains(string sourceText, TextOffsetSpan span) =>
         For(sourceText).Any(candidate => candidate.Start == span.Start && candidate.End == span.End);
+
+    public static bool ContainsCompact(string sourceText, TextOffsetSpan span) =>
+        ForCompact(sourceText).Any(candidate => candidate.Start == span.Start && candidate.End == span.End);
 }
 
 /// <summary>Validated stage trace. It is diagnostic data, never a source of extraction facts.</summary>
