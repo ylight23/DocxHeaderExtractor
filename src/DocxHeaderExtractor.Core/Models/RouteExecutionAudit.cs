@@ -89,6 +89,7 @@ public sealed record PdfLossInstrumentation(
     [property: JsonPropertyName("spanResponseNull")] int SpanResponseNull,
     [property: JsonPropertyName("spanMalformed")] int SpanMalformed,
     [property: JsonPropertyName("spanInvalidBoundary")] int SpanInvalidBoundary,
+    [property: JsonPropertyName("spanInvalidPair")] int SpanInvalidPair,
     [property: JsonPropertyName("spanValidBoundary")] int SpanValidBoundary,
     [property: JsonPropertyName("validatorAccepted")] int ValidatorAccepted,
     [property: JsonPropertyName("validatorRejected")] int ValidatorRejected,

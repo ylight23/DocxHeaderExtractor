@@ -108,6 +108,46 @@ internal static class PdfSpanBoundaryMap
         offset >= 0 && offset <= sourceText.Length && For(sourceText).Contains(offset);
 }
 
+/// <summary>
+/// A parser-owned source span candidate. SourceSlice is evidence for model selection only; the
+/// validator must continue to materialize authority text from the immutable source text.
+/// </summary>
+internal sealed record PdfAllowedSpanCandidate(
+    [property: JsonPropertyName("start")] int Start,
+    [property: JsonPropertyName("end")] int End,
+    [property: JsonPropertyName("source_slice")] string SourceSlice);
+
+/// <summary>
+/// Explicit pair menu for high-value structural roles. The menu contains only prefix spans from
+/// parser-owned starts to parser-owned UTF-16 boundaries; it does not infer heading semantics.
+/// </summary>
+internal static class PdfSpanCandidateMenu
+{
+    public static IReadOnlyList<PdfAllowedSpanCandidate> For(string sourceText)
+    {
+        ArgumentNullException.ThrowIfNull(sourceText);
+
+        var boundaries = PdfSpanBoundaryMap.For(sourceText);
+        var starts = new SortedSet<int> { 0 };
+        var firstNonWhitespace = 0;
+        while (firstNonWhitespace < sourceText.Length && char.IsWhiteSpace(sourceText[firstNonWhitespace]))
+            firstNonWhitespace++;
+        if (firstNonWhitespace > 0 && firstNonWhitespace < sourceText.Length &&
+            PdfSpanBoundaryMap.Contains(sourceText, firstNonWhitespace))
+            starts.Add(firstNonWhitespace);
+
+        return starts
+            .SelectMany(start => boundaries
+                .Where(end => end > start)
+                .Select(end => new PdfAllowedSpanCandidate(start, end, sourceText[start..end])))
+            .DistinctBy(candidate => (candidate.Start, candidate.End))
+            .ToArray();
+    }
+
+    public static bool Contains(string sourceText, TextOffsetSpan span) =>
+        For(sourceText).Any(candidate => candidate.Start == span.Start && candidate.End == span.End);
+}
+
 /// <summary>Validated stage trace. It is diagnostic data, never a source of extraction facts.</summary>
 public sealed record PdfCandidateStageTrace(
     string Id,
@@ -398,6 +438,7 @@ internal static class PdfProposalValidator
             items.Count(item => item.SpanStatus == "null"),
             items.Count(item => item.SpanStatus == "malformed"),
             items.Count(item => item.SpanStatus == "invalid-boundary"),
+            items.Count(item => item.SpanStatus == "invalid-pair"),
             items.Count(item => item.SpanStatus == "valid-boundary"),
             items.Count(item => item.ValidatorStatus == "accepted"),
             items.Count(item => item.ValidatorStatus == "rejected"),
@@ -433,6 +474,7 @@ internal static class PdfProposalValidator
         {
             "valid-boundary" => true,
             "invalid-boundary" => false,
+            "invalid-pair" => false,
             _ => null,
         };
         var firstLoss = FirstLoss(decision, spanStatus, validatorStatus, trace?.Reason,
@@ -468,6 +510,7 @@ internal static class PdfProposalValidator
             "null" => "SPAN_NULL",
             "malformed" => "SPAN_MALFORMED",
             "invalid-boundary" => "INVALID_BOUNDARY",
+            "invalid-pair" => "INVALID_PAIR",
             "invalid-span" => "SPAN_INVALID",
             "request-failed" => "SPAN_REQUEST_FAILED",
             _ when validatorStatus == "rejected" => $"VALIDATOR_REJECTED:{validatorReason ?? "unspecified"}",

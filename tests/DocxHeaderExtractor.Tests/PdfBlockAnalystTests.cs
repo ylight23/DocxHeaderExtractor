@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Pipeline;
 using System.Text.Json;
 
@@ -161,6 +162,87 @@ public sealed class PdfBlockAnalystTests
         Assert.Contains(0, starts);
         Assert.Contains(block.Text.Length, ends);
         Assert.Contains(block.Text.IndexOf(' ') + 1, ends);
+    }
+
+    [Fact]
+    public void HighValuePointerSpanPromptProvidesExplicitSourceSpanPairs()
+    {
+        var block = Block("b1", "Điều 1. Phạm vi điều chỉnh");
+        using var prompt = JsonDocument.Parse(PdfBlockAnalyst.BuildPointerSpanPrompt(
+            [block], new Dictionary<string, PdfCandidateContext>(), new HashSet<string> { "b1" }));
+        var payload = prompt.RootElement.GetProperty("blocks")[0];
+
+        Assert.True(payload.TryGetProperty("allowed_spans", out var allowedSpans));
+        Assert.False(payload.TryGetProperty("allowed_start_offsets", out _));
+        var exact = allowedSpans.EnumerateArray().Single(item => item.GetProperty("end").GetInt32() == block.Text.Length);
+        Assert.Equal(0, exact.GetProperty("start").GetInt32());
+        Assert.Equal(block.Text, exact.GetProperty("source_slice").GetString());
+    }
+
+    [Fact]
+    public void ExplicitPointerSpanParserAcceptsOnlySuppliedPair()
+    {
+        var block = Block("b1", "Điều 1. Phạm vi điều chỉnh");
+        var expected = new TextOffsetSpan(0, 7);
+        var parsed = PdfBlockAnalyst.ParsePointerSpanResponses(
+            "{\"blocks\":[{\"id\":\"b1\",\"heading_span\":{\"start\":0,\"end\":7}}]}",
+            [block], new HashSet<string> { "b1" });
+
+        Assert.Equal("valid-boundary", parsed.StatusById["b1"]);
+        Assert.Equal(expected, parsed.Spans.Single(item => item.Id == "b1").Span);
+        var candidate = PdfSpanCandidateMenu.For(block.Text).Single(item => item.Start == expected.Start && item.End == expected.End);
+        Assert.Equal(block.Text[expected.Start..expected.End], candidate.SourceSlice);
+    }
+
+    [Theory]
+    [InlineData(1, 7)]
+    [InlineData(0, 3)]
+    public void ExplicitPointerSpanParserRejectsPairOutsideMenu(int start, int end)
+    {
+        var block = Block("b1", "Điều 1. Phạm vi điều chỉnh");
+        var parsed = PdfBlockAnalyst.ParsePointerSpanResponses(
+            $"{{\"blocks\":[{{\"id\":\"b1\",\"heading_span\":{{\"start\":{start},\"end\":{end}}}}}]}}",
+            [block], new HashSet<string> { "b1" });
+
+        Assert.Equal("invalid-pair", parsed.StatusById["b1"]);
+        Assert.Null(parsed.Spans.Single(item => item.Id == "b1").Span);
+    }
+
+    [Fact]
+    public void ExplicitPointerSpanParserRejectsModelRewrittenText()
+    {
+        var block = Block("b1", "Điều 1. Phạm vi điều chỉnh");
+        var parsed = PdfBlockAnalyst.ParsePointerSpanResponses(
+            "{\"blocks\":[{\"id\":\"b1\",\"heading_span\":{\"start\":0,\"end\":7},\"source_slice\":\"invented\"}]}",
+            [block], new HashSet<string> { "b1" });
+
+        Assert.Equal("malformed", parsed.StatusById["b1"]);
+        Assert.Null(parsed.Spans.Single(item => item.Id == "b1").Span);
+    }
+
+    [Fact]
+    public void Historical010ShortPrefixSpansAreRepresentableByExplicitMenu()
+    {
+        var path = Path.Combine(FindRepositoryRoot(), "eval", "accuracy99", "adjudication", "development", "010.review.jsonl");
+        var expected = new List<(string Text, int Start, int End)>();
+        foreach (var line in File.ReadLines(path))
+        {
+            using var document = JsonDocument.Parse(line);
+            var root = document.RootElement;
+            if (!root.TryGetProperty("recordType", out var recordType) || recordType.GetString() != "occurrence" ||
+                !root.TryGetProperty("historicalProvenanceStatus", out var status) || status.GetString() != "EXACT_REBOUND")
+                continue;
+            var sourceText = root.GetProperty("rawSourceText").GetString() ?? "";
+            var historicalText = root.GetProperty("historicalPositiveReferences")[0].GetProperty("historicalText").GetString() ?? "";
+            if (historicalText.Length >= sourceText.Length || !sourceText.StartsWith(historicalText, StringComparison.Ordinal))
+                continue;
+            expected.Add((sourceText, 0, historicalText.Length));
+        }
+
+        Assert.Equal(8, expected.Count);
+        Assert.All(expected, item => Assert.Contains(PdfSpanCandidateMenu.For(item.Text),
+            candidate => candidate.Start == item.Start && candidate.End == item.End &&
+                candidate.SourceSlice == item.Text[item.Start..item.End]));
     }
 
     [Fact]
@@ -378,6 +460,14 @@ public sealed class PdfBlockAnalystTests
             Left: 72,
             Right: 420,
             Text: text);
+    }
+
+    private static string FindRepositoryRoot()
+    {
+        var directory = new DirectoryInfo(AppContext.BaseDirectory);
+        while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")))
+            directory = directory.Parent;
+        return directory?.FullName ?? throw new InvalidOperationException("Repository root not found.");
     }
 
     private sealed class ScriptedClassifier(string response) : IHeaderClassifier

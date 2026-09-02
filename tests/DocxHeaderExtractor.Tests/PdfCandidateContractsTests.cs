@@ -496,6 +496,7 @@ public sealed class PdfCandidateContractsTests
         Assert.Equal(1, instrumentation.UnknownRoleCount);
         Assert.Equal(2, instrumentation.SpanRequested);
         Assert.Equal(1, instrumentation.SpanInvalidBoundary);
+        Assert.Equal(0, instrumentation.SpanInvalidPair);
         Assert.Equal(1, instrumentation.SpanValidBoundary);
         Assert.Equal(1, instrumentation.ValidatorAccepted);
         Assert.Equal(1, instrumentation.ValidatorRejected);
