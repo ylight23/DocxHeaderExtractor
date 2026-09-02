@@ -19,6 +19,28 @@ public sealed class PdfBlockAnalystTests
     }
 
     [Fact]
+    public void EquivalentLegalSectionHeadingAliasNormalizesToCanonicalLegalSection()
+    {
+        var decision = Assert.Single(PdfBlockAnalyst.ParseDecisions(
+            "{\"blocks\":[{\"id\":\"b1\",\"role\":\"legal_section_heading\",\"confidence\":0.9}]}",
+            [Block("b1", "Điều 3. Scope of regulation")]));
+
+        Assert.Equal(PdfSemanticRole.LegalSection, decision.SemanticRole);
+        Assert.Equal(PdfBlockRole.HeadingTopic, decision.Role);
+    }
+
+    [Fact]
+    public void UnrelatedRoleStringRemainsUnknown()
+    {
+        var decision = Assert.Single(PdfBlockAnalyst.ParseDecisions(
+            "{\"blocks\":[{\"id\":\"b1\",\"role\":\"legal_section_heading_variant\",\"confidence\":0.9}]}",
+            [Block("b1", "Section-like text")]));
+
+        Assert.Equal(PdfSemanticRole.Unknown, decision.SemanticRole);
+        Assert.Equal(PdfBlockRole.Uncertain, decision.Role);
+    }
+
+    [Fact]
     public void ListItemSemanticRoleProjectsToListItemRoute()
     {
         var block = Block("b1", "1. First requirement");
@@ -109,6 +131,63 @@ public sealed class PdfBlockAnalystTests
         var span = Assert.Single(spans);
         Assert.Equal("b1", span.Id);
         Assert.Equal(new DocxHeaderExtractor.Core.Models.TextOffsetSpan(0, 7), span.Span);
+    }
+
+    [Fact]
+    public void PointerSpanParserSkipsNullItemsButKeepsKnownObjectItems()
+    {
+        var spans = PdfBlockAnalyst.ParsePointerSpans(
+            "{\"blocks\":[null,{\"id\":\"b1\",\"heading_span\":{\"start\":0,\"end\":7}}]}",
+            [Block("b1", "Heading body text")]);
+
+        var span = Assert.Single(spans);
+        Assert.Equal("b1", span.Id);
+        Assert.Equal(new DocxHeaderExtractor.Core.Models.TextOffsetSpan(0, 7), span.Span);
+    }
+
+    [Fact]
+    public void PointerSpanParserKeepsNullOrMalformedSpansUnresolved()
+    {
+        var spans = PdfBlockAnalyst.ParsePointerSpans(
+            "{\"blocks\":[{\"id\":\"b1\",\"heading_span\":null},{\"id\":\"b2\",\"heading_span\":\"bad\"}]}",
+            [Block("b1", "Heading one"), Block("b2", "Heading two")]);
+
+        Assert.Equal(2, spans.Count);
+        Assert.All(spans, item => Assert.Null(item.Span));
+    }
+
+    [Fact]
+    public void PointerSpanParserRejectsCoordinateInsideSourceToken()
+    {
+        var spans = PdfBlockAnalyst.ParsePointerSpans(
+            "{\"blocks\":[{\"id\":\"b1\",\"heading_span\":{\"start\":0,\"end\":3}}]}",
+            [Block("b1", "Heading body text")]);
+
+        Assert.Null(Assert.Single(spans).Span);
+    }
+
+    [Fact]
+    public void PointerSpanParserPreservesFailClosedMalformedJsonBehavior()
+    {
+        Assert.Empty(PdfBlockAnalyst.ParsePointerSpans("not json", [Block("b1", "Heading")]));
+    }
+
+    [Fact]
+    public void PointerSpanPromptProvidesParserOwnedBoundaryMap()
+    {
+        var block = Block("b1", "Điều 1. Phạm vi điều chỉnh");
+        using var prompt = JsonDocument.Parse(PdfBlockAnalyst.BuildPointerSpanPrompt(
+            [block], new Dictionary<string, PdfCandidateContext>()));
+        var payload = prompt.RootElement.GetProperty("blocks")[0];
+
+        Assert.Equal(block.Text.Length, payload.GetProperty("source_length").GetInt32());
+        var starts = payload.GetProperty("allowed_start_offsets").EnumerateArray()
+            .Select(item => item.GetInt32()).ToArray();
+        var ends = payload.GetProperty("allowed_end_offsets").EnumerateArray()
+            .Select(item => item.GetInt32()).ToArray();
+        Assert.Contains(0, starts);
+        Assert.Contains(block.Text.Length, ends);
+        Assert.Contains(block.Text.IndexOf(' ') + 1, ends);
     }
 
     [Fact]
