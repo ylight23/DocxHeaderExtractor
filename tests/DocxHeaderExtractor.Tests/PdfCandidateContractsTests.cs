@@ -461,6 +461,51 @@ public sealed class PdfCandidateContractsTests
         Assert.Contains("marker_body_boundary", ranked.Single(item => item.SourceId == "window").AmbiguitySignals);
     }
 
+    [Fact]
+    public void LossInstrumentationPreservesPerSourceFirstLossAndAggregateCounts()
+    {
+        var first = Line("Heading title", 700);
+        var second = Line("Heading title", 680);
+        var unknown = Line("Body sentence", 660);
+        var contexts = new Dictionary<string, PdfCandidateContext>(PdfCandidateContextBuilder.Build(
+            [Block("b1", first), Block("b2", second), Block("b3", unknown)],
+            [new PdfLineBlockAnnotation(first, false, false, false, false, "semantic-candidate"),
+             new PdfLineBlockAnnotation(second, false, false, false, false, "semantic-candidate"),
+             new PdfLineBlockAnnotation(unknown, false, false, false, false, "semantic-candidate")]));
+        contexts["b1"] = contexts["b1"] with
+        {
+            Source = contexts["b1"].Source with { SourceOrdinal = 7 },
+        };
+        var validSpan = new TextOffsetSpan(0, first.Text.Length);
+        var decisions = new[]
+        {
+            new PdfBlockDecision("b1", PdfBlockRole.HeadingTopic, .9, "topic", validSpan,
+                SemanticRole: PdfSemanticRole.TopicHeading, RawRole: "heading_topic",
+                SpanResponseStatus: "valid-boundary", ProposedSpan: validSpan),
+            new PdfBlockDecision("b2", PdfBlockRole.HeadingTopic, .9, "topic",
+                new TextOffsetSpan(0, 3), SemanticRole: PdfSemanticRole.TopicHeading, RawRole: "heading_topic",
+                SpanResponseStatus: "invalid-boundary", ProposedSpan: new TextOffsetSpan(0, 3)),
+            new PdfBlockDecision("b3", PdfBlockRole.Uncertain, .1, "role",
+                SemanticRole: PdfSemanticRole.Unknown, RawRole: "invented_role"),
+        };
+
+        var traces = PdfProposalValidator.Trace(contexts, decisions);
+        var instrumentation = PdfProposalValidator.BuildLossInstrumentation(contexts, decisions, traces);
+
+        Assert.Equal(3, instrumentation.RoleProposalsTotal);
+        Assert.Equal(1, instrumentation.UnknownRoleCount);
+        Assert.Equal(2, instrumentation.SpanRequested);
+        Assert.Equal(1, instrumentation.SpanInvalidBoundary);
+        Assert.Equal(1, instrumentation.SpanValidBoundary);
+        Assert.Equal(1, instrumentation.ValidatorAccepted);
+        Assert.Equal(1, instrumentation.ValidatorRejected);
+        Assert.Equal(1, instrumentation.ValidatorRejectedByReason["invalid-pointer-boundary"]);
+        Assert.Equal(7, instrumentation.Items.Single(item => item.SourceId == "b1").SourceOrdinal);
+        Assert.Equal("INVALID_BOUNDARY", instrumentation.Items.Single(item => item.SourceId == "b2").FirstLoss);
+        Assert.Equal(new TextOffsetSpan(0, 3), instrumentation.Items.Single(item => item.SourceId == "b2").ProposedSpan);
+        Assert.Equal("ROLE_UNKNOWN", instrumentation.Items.Single(item => item.SourceId == "b3").FirstLoss);
+    }
+
     private static PdfLine Line(string text, double y) => new(
         1, y, 14, text, 0.8, "", 0, 72, 420, "serif", "0.00,0.20,0.40");
 

@@ -782,6 +782,8 @@ public static class PdfLayoutEvidenceOutline
             ProposalResolutions = resolvedRoles.Audit,
             HierarchyProposals = semanticHierarchy.Audit,
             HierarchyFacts = hierarchyFacts,
+            LossInstrumentation = PdfProposalValidator.BuildLossInstrumentation(
+                candidateContexts, blockAnalysis.Decisions, stageTraces, semanticHierarchy.Audit),
             TextLayerRecoveries = alignment.TextLayerRecoveries.Concat(visualRecovery.Audit).ToArray(),
             VisualEvidence = visual.Decisions.Select(decision => new RouteVisualEvidenceAudit(
                 decision.Id, decision.Role.ToString(), decision.Confidence, decision.Evidence,

@@ -27,6 +27,8 @@ public sealed class PdfBlockAnalystTests
 
         Assert.Equal(PdfSemanticRole.LegalSection, decision.SemanticRole);
         Assert.Equal(PdfBlockRole.HeadingTopic, decision.Role);
+        Assert.Equal("legal_section_heading", decision.RawRole);
+        Assert.True(decision.AliasNormalized);
     }
 
     [Fact]
@@ -223,6 +225,33 @@ public sealed class PdfBlockAnalystTests
             "{\"blocks\":[", [Block("b1", "Heading body text")]);
 
         Assert.Empty(spans);
+    }
+
+    [Fact]
+    public void PointerSpanObservabilitySeparatesNullMalformedBoundaryAndValidResponses()
+    {
+        var blocks = new[]
+        {
+            Block("null", "Heading body text"),
+            Block("bad", "Heading body text"),
+            Block("boundary", "Heading body text"),
+            Block("valid", "Heading body text"),
+        };
+        var parsed = PdfBlockAnalyst.ParsePointerSpanResponses("""
+        {"blocks":[
+          {"id":"null","heading_span":null},
+          {"id":"bad","heading_span":"bad"},
+          {"id":"boundary","heading_span":{"start":0,"end":3}},
+          {"id":"valid","heading_span":{"start":0,"end":7}}
+        ]}
+        """, blocks);
+
+        Assert.Equal("null", parsed.StatusById["null"]);
+        Assert.Equal("malformed", parsed.StatusById["bad"]);
+        Assert.Equal("invalid-boundary", parsed.StatusById["boundary"]);
+        Assert.Equal("valid-boundary", parsed.StatusById["valid"]);
+        Assert.Equal(new DocxHeaderExtractor.Core.Models.TextOffsetSpan(0, 3), parsed.ProposedSpanById["boundary"]);
+        Assert.Equal(new DocxHeaderExtractor.Core.Models.TextOffsetSpan(0, 7), parsed.Spans.Single(item => item.Id == "valid").Span);
     }
 
     [Fact]

@@ -72,6 +72,8 @@ internal static class DocxAuthorityPipeline
         var semanticHierarchy = analyst is null
             ? new PdfSemanticHierarchyResult(markerStructures, [], [], [])
             : await ResolveHierarchyWithDiagnosticAsync(analyst, validated, markerStructures, source.ModelContexts, ct);
+        var lossInstrumentation = PdfProposalValidator.BuildLossInstrumentation(
+            source.ModelContexts, spans.Decisions, traces, semanticHierarchy.Audit);
         var structures = semanticHierarchy.Structures.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
         var structuralAuthority = MaterializeStructuralAuthority(validated, structures, source.Contexts);
         var audit = new RouteExecutionAudit(
@@ -98,6 +100,7 @@ internal static class DocxAuthorityPipeline
                 roles.Decisions.Count, 0, 0),
             SpanLane = analyst is null ? null : new RouteLaneExecutionAudit("complete", roles.Decisions.Count,
                 spans.Decisions.Count, 0, 0),
+            LossInstrumentation = lossInstrumentation,
         };
         return new StructuralAuthorityResult(structuralAuthority, audit, "docx-source-authority");
     }
@@ -223,6 +226,7 @@ internal static class DocxAuthorityPipeline
             var facts = new PdfSourceFacts(id, sourceParagraph.Text, 0, 1, 0, -sourceParagraph.SourceOrdinal, 0, -sourceParagraph.SourceOrdinal,
                 scope, evidence)
             {
+                SourceOrdinal = sourceParagraph.SourceOrdinal,
                 Marker = marker,
                 LineIds = [sourceParagraph.SourceId],
                 EvidenceDetails = evidence.Select(item => new PdfObservedEvidence(item, "true",

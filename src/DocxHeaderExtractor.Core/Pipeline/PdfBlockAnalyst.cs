@@ -32,7 +32,11 @@ internal sealed record PdfBlockDecision(
     DocxHeaderExtractor.Core.Models.TextOffsetSpan? HeadingSpan = null,
     string? ProposedParentId = null,
     PdfSemanticRole SemanticRole = PdfSemanticRole.Unknown,
-    DocxHeaderExtractor.Core.Models.TextOffsetSpan? ProposedSourceSpan = null);
+    DocxHeaderExtractor.Core.Models.TextOffsetSpan? ProposedSourceSpan = null,
+    string? RawRole = null,
+    bool AliasNormalized = false,
+    string SpanResponseStatus = "not-requested",
+    DocxHeaderExtractor.Core.Models.TextOffsetSpan? ProposedSpan = null);
 
 internal sealed record PdfBlockAnalysis(
     IReadOnlyList<PdfSemanticBlock> Blocks,
@@ -45,6 +49,11 @@ internal sealed record PdfBlockAnalysis(
         .Select(d => d.Id)
         .ToHashSet(StringComparer.Ordinal);
 }
+
+internal sealed record PdfPointerSpanParseResult(
+    IReadOnlyList<(string Id, DocxHeaderExtractor.Core.Models.TextOffsetSpan? Span)> Spans,
+    IReadOnlyDictionary<string, string> StatusById,
+    IReadOnlyDictionary<string, DocxHeaderExtractor.Core.Models.TextOffsetSpan?> ProposedSpanById);
 
 /// <summary>Independent execution budget for the semantic lane; visual has its own lifecycle.</summary>
 public sealed record SemanticLaneOptions(
@@ -275,14 +284,35 @@ internal static class PdfBlockAnalyst
                     await checkpoint.RecordSpanBatchAsync(
                         batch.Select(b => (b.Id, b.Page, LineIdOf(b), LineIdsOf(b), (TextOffsetSpan?)null)).ToArray(),
                         ex.GetType().Name, ct);
+                foreach (var block in batch)
+                {
+                    if (!byId.TryGetValue(block.Id, out var decision)) continue;
+                    byId[block.Id] = decision with { SpanResponseStatus = "request-failed" };
+                }
                 continue;
             }
 
             rawResponses.Add(raw);
-            foreach (var (id, span) in ParsePointerSpans(raw, batch))
+            var parsed = ParsePointerSpanResponses(raw, batch);
+            foreach (var (id, span) in parsed.Spans)
             {
                 if (!byId.TryGetValue(id, out var decision)) continue;
-                byId[id] = decision with { HeadingSpan = span };
+                byId[id] = decision with
+                {
+                    HeadingSpan = span,
+                    SpanResponseStatus = parsed.StatusById.GetValueOrDefault(id, "null"),
+                    ProposedSpan = parsed.ProposedSpanById.GetValueOrDefault(id),
+                };
+            }
+
+            foreach (var block in batch)
+            {
+                if (!byId.TryGetValue(block.Id, out var decision)) continue;
+                byId[block.Id] = decision with
+                {
+                    SpanResponseStatus = parsed.StatusById.GetValueOrDefault(block.Id, "null"),
+                    ProposedSpan = parsed.ProposedSpanById.GetValueOrDefault(block.Id),
+                };
             }
 
             if (checkpoint is not null)
@@ -467,7 +497,8 @@ internal static class PdfBlockAnalyst
                     : null;
                 var semanticRole = ParseSemanticRole(roleText);
                 var proposedSourceSpan = TryParseSpan(item, "source_span");
-                result.Add(new PdfBlockDecision(id, ProjectRole(semanticRole), confidence, reason, span, parent, semanticRole, proposedSourceSpan));
+                result.Add(new PdfBlockDecision(id, ProjectRole(semanticRole), confidence, reason, span, parent, semanticRole, proposedSourceSpan,
+                    roleText.Trim(), IsCompatibilityAlias(roleText), "not-requested"));
             }
         }
         catch (JsonException)
@@ -491,33 +522,80 @@ internal static class PdfBlockAnalyst
         string raw,
         IReadOnlyList<PdfSemanticBlock> blocks)
     {
+        return ParsePointerSpanResponses(raw, blocks).Spans;
+    }
+
+    internal static PdfPointerSpanParseResult ParsePointerSpanResponses(
+        string raw,
+        IReadOnlyList<PdfSemanticBlock> blocks)
+    {
         var byId = blocks.ToDictionary(block => block.Id, StringComparer.Ordinal);
         var result = new List<(string Id, DocxHeaderExtractor.Core.Models.TextOffsetSpan? Span)>();
+        var statuses = blocks.ToDictionary(block => block.Id, _ => "null", StringComparer.Ordinal);
+        var proposedSpans = blocks.ToDictionary(block => block.Id,
+            _ => (DocxHeaderExtractor.Core.Models.TextOffsetSpan?)null, StringComparer.Ordinal);
         try
         {
             using var doc = JsonDocument.Parse(ExtractJsonObject(raw));
             if (!doc.RootElement.TryGetProperty("blocks", out var items) || items.ValueKind != JsonValueKind.Array)
-                return result;
+                return new PdfPointerSpanParseResult(result,
+                    statuses.ToDictionary(item => item.Key, _ => "malformed", StringComparer.Ordinal), proposedSpans);
             foreach (var item in items.EnumerateArray())
             {
                 if (item.ValueKind != JsonValueKind.Object) continue;
                 var id = item.TryGetProperty("id", out var idProp) ? idProp.GetString() ?? "" : "";
                 if (!byId.TryGetValue(id, out var block)) continue;
 
-                var span = TryParseSpan(item);
-                if (span is not null &&
+                if (!item.TryGetProperty("heading_span", out var spanElement) || spanElement.ValueKind == JsonValueKind.Null)
+                {
+                    statuses[id] = "null";
+                    result.Add((id, null));
+                    continue;
+                }
+
+                if (spanElement.ValueKind != JsonValueKind.Object)
+                {
+                    statuses[id] = "malformed";
+                    result.Add((id, null));
+                    continue;
+                }
+
+                if (!spanElement.TryGetProperty("start", out var startElement) || !startElement.TryGetInt32(out var start) ||
+                    !spanElement.TryGetProperty("end", out var endElement) || !endElement.TryGetInt32(out var end))
+                {
+                    statuses[id] = "malformed";
+                    result.Add((id, null));
+                    continue;
+                }
+
+                var span = new DocxHeaderExtractor.Core.Models.TextOffsetSpan(start, end);
+                proposedSpans[id] = span;
+                if (span is not null && (span.Start < 0 || span.End <= span.Start || span.End > block.Text.Length))
+                {
+                    statuses[id] = "invalid-span";
+                    span = null;
+                }
+                else if (span is not null &&
                     (!PdfSpanBoundaryMap.Contains(block.Text, span.Start) ||
                      !PdfSpanBoundaryMap.Contains(block.Text, span.End)))
+                {
+                    statuses[id] = "invalid-boundary";
                     span = null;
+                }
+                else if (span is not null)
+                {
+                    statuses[id] = "valid-boundary";
+                }
 
                 result.Add((id, span));
             }
         }
         catch (JsonException)
         {
-            return [];
+            return new PdfPointerSpanParseResult(result,
+                statuses.ToDictionary(item => item.Key, _ => "malformed", StringComparer.Ordinal), proposedSpans);
         }
-        return result;
+        return new PdfPointerSpanParseResult(result, statuses, proposedSpans);
     }
 
     internal static IReadOnlyList<(string Id, string Verdict)> ParseCriticDecisions(string raw,
@@ -569,6 +647,9 @@ internal static class PdfBlockAnalyst
             "body_sentence" or "body_text" or "body" or "prose" => PdfSemanticRole.BodyText,
             _ => PdfSemanticRole.Unknown,
         };
+
+    private static bool IsCompatibilityAlias(string role) =>
+        string.Equals(role.Trim(), "legal_section_heading", StringComparison.OrdinalIgnoreCase);
 
     private static PdfBlockRole ProjectRole(PdfSemanticRole role) => role switch
     {
