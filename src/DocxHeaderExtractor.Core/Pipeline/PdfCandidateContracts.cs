@@ -38,9 +38,6 @@ internal sealed record PdfSourceFacts(
     /// <summary>Stable parser line identities retained for source/audit correlation.</summary>
     public IReadOnlyList<string> LineIds { get; init; } = [];
 
-    /// <summary>Parser-owned normalized source run boundaries, when the source adapter exposes them.</summary>
-    public IReadOnlyList<SourceTextRunSpan> SourceTextRuns { get; init; } = [];
-
     /// <summary>Structured fact provenance for validator authority checks.</summary>
     public IReadOnlyList<PdfObservedEvidence> EvidenceDetails { get; init; } = [];
 
@@ -115,121 +112,6 @@ internal static class PdfSpanBoundaryMap
 internal sealed record PdfAllowedSpanCandidate(
     [property: JsonPropertyName("start")] int Start,
     [property: JsonPropertyName("end")] int End);
-
-/// <summary>
-/// Parser-owned semantic extent. Preview is copied from the immutable source and is never accepted
-/// from model output; the resolved span remains the only authority input to later validation.
-/// </summary>
-internal sealed record PdfSemanticExtentCandidate(
-    [property: JsonPropertyName("id")] string Id,
-    [property: JsonPropertyName("start")] int Start,
-    [property: JsonPropertyName("end")] int End,
-    [property: JsonPropertyName("kind")] string Kind,
-    [property: JsonPropertyName("preview")] string Preview);
-
-internal static class PdfSemanticExtentCandidateMenu
-{
-    internal const int MaxCandidatesPerSource = 8;
-
-    public static IReadOnlyList<PdfSemanticExtentCandidate> For(
-        string sourceText,
-        IReadOnlyList<SourceTextRunSpan>? sourceRuns = null,
-        IReadOnlyList<int>? lineBreakOffsets = null)
-    {
-        ArgumentNullException.ThrowIfNull(sourceText);
-        if (sourceText.Length == 0) return [];
-
-        var starts = PdfSpanCandidateMenu.PrefixStarts(sourceText);
-        var boundaries = PdfSpanBoundaryMap.For(sourceText).ToHashSet();
-        if (sourceRuns is not null)
-        {
-            foreach (var run in sourceRuns)
-            {
-                if (run.End > 0 && run.End <= sourceText.Length) boundaries.Add(run.End);
-                if (run.Start >= 0 && run.Start <= sourceText.Length) boundaries.Add(run.Start);
-            }
-        }
-        if (lineBreakOffsets is not null)
-        {
-            foreach (var offset in lineBreakOffsets)
-                if (offset >= 0 && offset <= sourceText.Length) boundaries.Add(offset);
-        }
-
-        var markerEnd = PdfMarkerFactsParser.TryGetMarkerPrefixEnd(sourceText);
-        var candidates = new List<(int Start, int End, string Kind)>();
-        if (markerEnd is { } marker && marker > 0 && marker <= sourceText.Length)
-            candidates.Add((starts[0], marker, "marker"));
-
-        var orderedBoundaries = boundaries.OrderBy(value => value).ToArray();
-        foreach (var start in starts)
-        {
-            foreach (var end in orderedBoundaries.Where(value => value > start))
-            {
-                if (markerEnd is { } markerPrefixEnd && markerPrefixEnd < sourceText.Length && end <= markerPrefixEnd)
-                    continue;
-                var kind = sourceRuns?.Any(run => run.End == end) == true ? "run_boundary" :
-                    lineBreakOffsets?.Contains(end) == true ? "line_boundary" :
-                    IsSentenceBoundary(sourceText, end) ? "sentence_prefix" : "token_prefix";
-                candidates.Add((start, end, kind));
-            }
-        }
-
-        var sourceEnd = sourceText.Length;
-        candidates.Add((starts[0], sourceEnd, "whole_paragraph"));
-        var normalized = candidates
-            .Where(candidate => candidate.End > candidate.Start)
-            .Select(candidate =>
-            {
-                var end = candidate.End;
-                while (end > candidate.Start && char.IsWhiteSpace(sourceText[end - 1])) end--;
-                return (candidate.Start, End: end, candidate.Kind);
-            })
-            .Where(candidate => candidate.End > candidate.Start)
-            .GroupBy(candidate => (candidate.Start, candidate.End))
-            .Select(group => group.OrderBy(candidate => CandidatePriority(candidate.Kind)).First())
-            .OrderBy(candidate => CandidatePriority(candidate.Kind))
-            .ThenBy(candidate => candidate.End - candidate.Start)
-            .ThenBy(candidate => candidate.Start)
-            .ThenBy(candidate => candidate.End)
-            .ToList();
-        var whole = normalized.FirstOrDefault(candidate => candidate.Kind == "whole_paragraph");
-        var selected = normalized
-            .Where(candidate => candidate.Kind != "whole_paragraph")
-            .Take(Math.Max(0, MaxCandidatesPerSource - 1))
-            .ToList();
-        if (whole.End > whole.Start) selected.Add(whole);
-        return selected
-            .Distinct()
-            .Take(MaxCandidatesPerSource)
-            .Select((candidate, index) => new PdfSemanticExtentCandidate(
-                $"c{index + 1}", candidate.Start, candidate.End, candidate.Kind,
-                sourceText[candidate.Start..candidate.End]))
-            .ToArray();
-    }
-
-    private static int CandidatePriority(string kind) => kind switch
-    {
-        "run_boundary" => 0,
-        "line_boundary" => 1,
-        "sentence_prefix" => 2,
-        "whole_paragraph" => 3,
-        "token_prefix" => 4,
-        "marker" => 5,
-        _ => 9,
-    };
-
-    private static bool IsSentenceBoundary(string sourceText, int end)
-    {
-        var index = end - 1;
-        if (index < 0 || !char.IsPunctuation(sourceText[index])) return false;
-        for (var next = end; next < sourceText.Length; next++)
-        {
-            if (char.IsWhiteSpace(sourceText[next])) continue;
-            return char.IsUpper(sourceText[next]) || char.IsDigit(sourceText[next]);
-        }
-        return true;
-    }
-}
 
 /// <summary>
 /// Explicit pair menu for high-value structural roles. The menu is deliberately bounded: it uses
@@ -753,26 +635,6 @@ internal static class PdfMarkerFactsParser
             return new PdfMarkerFact($"label:{label}", 1, "loose_labelled", false);
         }
 
-        return null;
-    }
-
-    internal static int? TryGetMarkerPrefixEnd(string sourceText)
-    {
-        if (Parse(sourceText) is null) return null;
-
-        // Reuse the parser's closed marker grammar to find the first parser boundary that can
-        // precede a title. The probe suffix is synthetic evidence only; it never becomes output.
-        foreach (var boundary in PdfSpanBoundaryMap.For(sourceText).Where(value => value > 0))
-        {
-            var prefix = sourceText[..boundary].TrimEnd();
-            if (prefix.Length == 0 || Parse(prefix + " xx") is null) continue;
-
-            var end = prefix.Length;
-            while (end < sourceText.Length &&
-                   (char.IsPunctuation(sourceText[end]) || char.IsSymbol(sourceText[end])))
-                end++;
-            return end;
-        }
         return null;
     }
 }
