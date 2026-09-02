@@ -76,6 +76,13 @@
   .tile .v { font-size: 21px; font-weight: 650; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
   .tile .k { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
   .tile.big .v { color: var(--accent); }
+  .quality-status { display: grid; grid-template-columns: repeat(3, minmax(150px, 1fr)); gap: 8px; margin-bottom: 12px; }
+  .quality-status div { border: 1px solid var(--line); border-radius: 7px; padding: 9px 11px; background: var(--bg); }
+  .quality-status small { display: block; color: var(--muted); font-size: 11px; }
+  .quality-status strong { display: block; margin-top: 2px; font-size: 13px; }
+  .quality-status .working { color: var(--ok); }
+  .quality-status .unmeasured { color: var(--warn); }
+  @media (max-width:900px) { .quality-status { grid-template-columns: 1fr; } }
 
   /* min-height:0 là bắt buộc: mặc định min-height của flex item là auto, log dài bao nhiêu thì
      card cao bấy nhiêu và tràn khỏi màn hình thay vì tự cuộn bên trong. */
@@ -338,7 +345,7 @@
     
 
     <div class="actions">
-      <button id="inspectMode" class="secondary" disabled>Kiểm tra mode</button>
+      <button id="inspectMode" class="secondary" disabled>Kiểm tra file</button>
       <button id="humanReview" class="secondary" disabled>Human Review</button>
       <button id="run" disabled>Phân tích</button>
     </div>
@@ -376,6 +383,7 @@
   <div class="panel hidden" id="statsPanel">
     <h2>Tổng quan</h2>
     <p class="err hidden" id="cfgWarn"></p>
+    <div id="qualityStatus" class="quality-status" role="status"></div>
     <div class="tiles" id="tiles"></div>
     <p class="note" id="confNote"></p>
     <button id="downloadDocx" class="hidden">Tải bản .docx đã gắn outline</button>
@@ -1244,6 +1252,11 @@ function render(o, s, review, agent) {
     (o.model ? ` — mô hình <code>${esc(o.model)}</code>` : ' — chạy bằng luật OpenXML') +
     `.<br><b>Evidence 93–95% chỉ là mục tiêu nội bộ; holdout_wilson_lower95 mới là cận dưới precision đo được.</b> ` +
     `Mục chưa đủ chuẩn được giữ ở trạng thái cần duyệt.`;
+
+  $('qualityStatus').innerHTML =
+    '<div><small>PIPELINE EXECUTION</small><strong class="working">WORKING · ' + esc(o.deterministicRoute || 'unknown') + '</strong></div>' +
+    '<div><small>HEADING QUALITY</small><strong class="unmeasured">NOT YET MEASURED · ' + esc(String(s.headings)) + ' output</strong></div>' +
+    '<div><small>ACCURACY-99</small><strong class="unmeasured">NOT PROVEN · cần Human Review + Gold Freeze</strong></div>';
 
   // Nút tải chỉ hiện khi harness thật sự đã ghi được file. Không dựng link từ runId ở phía
   // trình duyệt: run bị gate chặn thì không có gì để tải, và một link chết còn khó hiểu hơn.
