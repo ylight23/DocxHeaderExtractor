@@ -85,6 +85,7 @@ internal static class PdfBlockAnalyst
     private const string PointerSpanSystemPrompt =
         "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\n" +
         "The span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\n" +
+        "Choose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\n" +
         "Never rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\n" +
         "Format: {\"blocks\":[{\"id\":\"b1\",\"heading_span\":{\"start\":0,\"end\":19}}]}.";
 
@@ -393,6 +394,8 @@ internal static class PdfBlockAnalyst
             id = block.Id,
             source_text = block.Text,
             source_length = block.Text.Length,
+            allowed_start_offsets = PdfSpanBoundaryMap.For(block.Text),
+            allowed_end_offsets = PdfSpanBoundaryMap.For(block.Text),
             context = contexts.TryGetValue(block.Id, out var context)
                 ? new
                 {
@@ -488,7 +491,7 @@ internal static class PdfBlockAnalyst
         string raw,
         IReadOnlyList<PdfSemanticBlock> blocks)
     {
-        var allowed = blocks.Select(block => block.Id).ToHashSet(StringComparer.Ordinal);
+        var byId = blocks.ToDictionary(block => block.Id, StringComparer.Ordinal);
         var result = new List<(string Id, DocxHeaderExtractor.Core.Models.TextOffsetSpan? Span)>();
         try
         {
@@ -499,8 +502,15 @@ internal static class PdfBlockAnalyst
             {
                 if (item.ValueKind != JsonValueKind.Object) continue;
                 var id = item.TryGetProperty("id", out var idProp) ? idProp.GetString() ?? "" : "";
-                if (!allowed.Contains(id)) continue;
-                result.Add((id, TryParseSpan(item)));
+                if (!byId.TryGetValue(id, out var block)) continue;
+
+                var span = TryParseSpan(item);
+                if (span is not null &&
+                    (!PdfSpanBoundaryMap.Contains(block.Text, span.Start) ||
+                     !PdfSpanBoundaryMap.Contains(block.Text, span.End)))
+                    span = null;
+
+                result.Add((id, span));
             }
         }
         catch (JsonException)
@@ -538,7 +548,7 @@ internal static class PdfBlockAnalyst
             "heading_topic" or "topic_heading" or "heading" or "topic" => PdfSemanticRole.TopicHeading,
             "local_subheading" or "region_subheading" => PdfSemanticRole.LocalSubheading,
             "legal_chapter" => PdfSemanticRole.LegalChapter,
-            "legal_section" => PdfSemanticRole.LegalSection,
+            "legal_section" or "legal_section_heading" => PdfSemanticRole.LegalSection,
             "legal_article" => PdfSemanticRole.LegalArticle,
             "legal_clause" => PdfSemanticRole.LegalClause,
             "legal_point" => PdfSemanticRole.LegalPoint,
