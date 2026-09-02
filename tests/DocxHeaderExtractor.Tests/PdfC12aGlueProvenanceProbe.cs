@@ -43,7 +43,7 @@ public sealed class PdfC12aGlueProvenanceProbe
         }
 
         var docx = Path.Combine(corpus, population.Relative);
-        var pdf = PdfTextbookOutline.FindSiblingPdf(docx);
+        var pdf = EvaluationCorpusPdfResolver.Find(docx);
         if (pdf is null) { File.WriteAllText(output, $"doc={stem}: no sibling PDF"); return; }
 
         var classifications = PdfExtractorQualityBenchmarkProbe.Classify(docx, population.Occurrences);
