@@ -172,32 +172,76 @@ public sealed class PdfBlockAnalystTests
             [block], new Dictionary<string, PdfCandidateContext>(), new HashSet<string> { "b1" }));
         var payload = prompt.RootElement.GetProperty("blocks")[0];
 
-        Assert.True(payload.TryGetProperty("allowed_spans", out var allowedSpans));
+        Assert.True(payload.TryGetProperty("candidates", out var candidates));
         Assert.False(payload.TryGetProperty("allowed_start_offsets", out _));
-        var exact = allowedSpans.EnumerateArray().Single(item => item.GetProperty("end").GetInt32() == block.Text.Length);
+        var exact = candidates.EnumerateArray().Single(item => item.GetProperty("end").GetInt32() == block.Text.Length);
         Assert.Equal(0, exact.GetProperty("start").GetInt32());
-        Assert.False(exact.TryGetProperty("source_slice", out _));
-        Assert.True(payload.TryGetProperty("boundary_context", out var boundaryContext));
-        Assert.Contains(block.Text.Length, boundaryContext.GetProperty("end_offsets").EnumerateArray().Select(item => item.GetInt32()));
+        Assert.Equal("whole_paragraph", exact.GetProperty("kind").GetString());
+        Assert.Equal(block.Text, exact.GetProperty("preview").GetString());
+        Assert.All(candidates.EnumerateArray(), item => Assert.True(item.TryGetProperty("id", out _)));
     }
 
     [Fact]
     public void ExplicitSpanMenuIsBoundedAndDoesNotRepeatSourceSlice()
     {
         var block = Block("b1", new string('x', 5000));
-        var candidates = PdfSpanCandidateMenu.For(block.Text);
+        var candidates = PdfSemanticExtentCandidateMenu.For(block.Text);
         using var prompt = JsonDocument.Parse(PdfBlockAnalyst.BuildPointerSpanPrompt(
             [block], new Dictionary<string, PdfCandidateContext>(), new HashSet<string> { "b1" }));
-        var allowed = prompt.RootElement.GetProperty("blocks")[0].GetProperty("allowed_spans");
+        var allowed = prompt.RootElement.GetProperty("blocks")[0].GetProperty("candidates");
 
         Assert.InRange(candidates.Count, 1, PdfSpanCandidateMenu.MaxCandidatesPerSource);
         Assert.Equal(candidates.Count, allowed.GetArrayLength());
         Assert.All(allowed.EnumerateArray(), item =>
         {
+            Assert.True(item.TryGetProperty("id", out _));
             Assert.True(item.TryGetProperty("start", out _));
             Assert.True(item.TryGetProperty("end", out _));
-            Assert.False(item.TryGetProperty("source_slice", out _));
+            Assert.True(item.TryGetProperty("kind", out _));
+            Assert.Equal(item.GetProperty("start").GetInt32(), 0);
+            var start = item.GetProperty("start").GetInt32();
+            var end = item.GetProperty("end").GetInt32();
+            Assert.Equal(block.Text[start..Math.Min(end, start + 180)], item.GetProperty("preview").GetString());
         });
+    }
+
+    [Fact]
+    public void SemanticExtentParserResolvesCandidateIdOnly()
+    {
+        var block = Block("b1", "Section 1. Topic text");
+        var menu = PdfSemanticExtentCandidateMenu.For(block.Text);
+        var selected = menu.Single(candidate => candidate.Kind == "whole_paragraph");
+        var menus = new Dictionary<string, IReadOnlyList<PdfSemanticExtentCandidate>> { ["b1"] = menu };
+
+        var parsed = PdfBlockAnalyst.ParsePointerSpanResponses(
+            $"{{\"blocks\":[{{\"id\":\"b1\",\"candidate_id\":\"{selected.Id}\"}}]}}",
+            [block], new HashSet<string> { "b1" }, semanticExtentMenus: menus);
+
+        Assert.Equal("valid-candidate", parsed.StatusById["b1"]);
+        Assert.Equal(new TextOffsetSpan(selected.Start, selected.End), parsed.Spans.Single().Span);
+    }
+
+    [Fact]
+    public void SemanticExtentParserRejectsUnknownIdNullAndModelText()
+    {
+        var block = Block("b1", "Section 1. Topic text");
+        var menu = PdfSemanticExtentCandidateMenu.For(block.Text);
+        var menus = new Dictionary<string, IReadOnlyList<PdfSemanticExtentCandidate>> { ["b1"] = menu };
+
+        var unknown = PdfBlockAnalyst.ParsePointerSpanResponses(
+            "{\"blocks\":[{\"id\":\"b1\",\"candidate_id\":\"c404\"}]}",
+            [block], new HashSet<string> { "b1" }, semanticExtentMenus: menus);
+        var nullChoice = PdfBlockAnalyst.ParsePointerSpanResponses(
+            "{\"blocks\":[{\"id\":\"b1\",\"candidate_id\":null}]}",
+            [block], new HashSet<string> { "b1" }, semanticExtentMenus: menus);
+        var injected = PdfBlockAnalyst.ParsePointerSpanResponses(
+            "{\"blocks\":[{\"id\":\"b1\",\"candidate_id\":\"c1\",\"heading_text\":\"invented\"}]}",
+            [block], new HashSet<string> { "b1" }, semanticExtentMenus: menus);
+
+        Assert.Equal("invalid-candidate", unknown.StatusById["b1"]);
+        Assert.Equal("null", nullChoice.StatusById["b1"]);
+        Assert.Equal("malformed", injected.StatusById["b1"]);
+        Assert.All(new[] { unknown, nullChoice, injected }, result => Assert.Null(result.Spans.Single().Span));
     }
 
     [Fact]
@@ -243,9 +287,13 @@ public sealed class PdfBlockAnalystTests
     }
 
     [Fact]
-    public void Historical010ShortPrefixSpansAreRepresentableByExplicitMenu()
+    public void Historical010ShortPrefixSpansAreRepresentableBySemanticExtentMenu()
     {
-        var path = Path.Combine(FindRepositoryRoot(), "eval", "accuracy99", "adjudication", "development", "010.review.jsonl");
+        var repositoryRoot = FindRepositoryRoot();
+        var path = Path.Combine(repositoryRoot, "eval", "accuracy99", "adjudication", "development", "010.review.jsonl");
+        var sourcePath = Path.Combine(repositoryRoot, "todo10_8", "generated-docx", "01_phap_quy",
+            "010_Luat_An_ninh_mang_24-2018-QH14.docx");
+        var source = new DocxHeaderExtractor.Core.OpenXmlLayer.OpenXmlDocumentSource().Read(sourcePath);
         var expected = new List<(string Text, int Start, int End)>();
         foreach (var line in File.ReadLines(path))
         {
@@ -262,8 +310,10 @@ public sealed class PdfBlockAnalystTests
         }
 
         Assert.Equal(8, expected.Count);
-        Assert.All(expected, item => Assert.Contains(PdfSpanCandidateMenu.For(item.Text),
-            candidate => candidate.Start == item.Start && candidate.End == item.End));
+        Assert.All(expected, item => Assert.Contains(PdfSemanticExtentCandidateMenu.For(item.Text,
+                source.Paragraphs.Single(paragraph => paragraph.Text == item.Text).TextSpans),
+            candidate => candidate.Start == item.Start && candidate.End == item.End &&
+                candidate.Preview == item.Text[item.Start..item.End]));
     }
 
     [Fact]
@@ -363,8 +413,7 @@ public sealed class PdfBlockAnalystTests
         var block = Block("b1", "Điều 1. Phạm vi điều chỉnh");
         var decision = new PdfBlockDecision(
             block.Id, PdfBlockRole.HeadingTopic, 0.9, "test", SemanticRole: PdfSemanticRole.LegalArticle);
-        var response = "{\"blocks\":[{\"id\":\"b1\",\"heading_span\":{\"start\":0,\"end\":" +
-            block.Text.Length + "}}]}";
+        var response = "{\"blocks\":[{\"id\":\"b1\",\"candidate_id\":\"c1\"}]}";
 
         var analysis = await PdfBlockAnalyst.ResolveHeadingSpansAsync(
             new ScriptedClassifier(response),
@@ -697,11 +746,9 @@ public sealed class PdfBlockAnalystTests
             var response = document.RootElement.GetProperty("blocks").EnumerateArray().Select(item => new
             {
                 id = item.GetProperty("id").GetString(),
-                heading_span = new
-                {
-                    start = 0,
-                    end = item.GetProperty("source_length").GetInt32(),
-                },
+                candidate_id = item.GetProperty("candidates").EnumerateArray()
+                    .Single(candidate => candidate.GetProperty("end").GetInt32() == item.GetProperty("source_length").GetInt32())
+                    .GetProperty("id").GetString(),
             });
             return Task.FromResult(JsonSerializer.Serialize(new { blocks = response }));
         }
