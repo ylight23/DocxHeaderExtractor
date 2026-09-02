@@ -112,6 +112,70 @@ public sealed class PdfBlockAnalystTests
     }
 
     [Fact]
+    public void PointerSpanParserSkipsNullItems()
+    {
+        var spans = PdfBlockAnalyst.ParsePointerSpans(
+            "{\"blocks\":[null]}", [Block("b1", "Heading body text")]);
+
+        Assert.Empty(spans);
+    }
+
+    [Fact]
+    public void PointerSpanParserSkipsNullItemsButKeepsKnownObjectItems()
+    {
+        var spans = PdfBlockAnalyst.ParsePointerSpans(
+            "{\"blocks\":[null,{\"id\":\"b1\",\"heading_span\":{\"start\":0,\"end\":7}}]}",
+            [Block("b1", "Heading body text")]);
+
+        var span = Assert.Single(spans);
+        Assert.Equal("b1", span.Id);
+        Assert.Equal(new DocxHeaderExtractor.Core.Models.TextOffsetSpan(0, 7), span.Span);
+    }
+
+    [Fact]
+    public void PointerSpanParserTreatsNullSpanAsUnresolved()
+    {
+        var spans = PdfBlockAnalyst.ParsePointerSpans(
+            "{\"blocks\":[{\"id\":\"b1\",\"heading_span\":null}]}",
+            [Block("b1", "Heading body text")]);
+
+        var span = Assert.Single(spans);
+        Assert.Equal("b1", span.Id);
+        Assert.Null(span.Span);
+    }
+
+    [Fact]
+    public void PointerSpanParserTreatsNonObjectSpanAsUnresolved()
+    {
+        var spans = PdfBlockAnalyst.ParsePointerSpans(
+            "{\"blocks\":[{\"id\":\"b1\",\"heading_span\":\"bad\"}]}",
+            [Block("b1", "Heading body text")]);
+
+        var span = Assert.Single(spans);
+        Assert.Equal("b1", span.Id);
+        Assert.Null(span.Span);
+    }
+
+    [Fact]
+    public void PointerSpanParserIgnoresUnknownIds()
+    {
+        var spans = PdfBlockAnalyst.ParsePointerSpans(
+            "{\"blocks\":[{\"id\":\"b404\",\"heading_span\":{\"start\":0,\"end\":7}}]}",
+            [Block("b1", "Heading body text")]);
+
+        Assert.Empty(spans);
+    }
+
+    [Fact]
+    public void PointerSpanParserRemainsFailClosedForMalformedJson()
+    {
+        var spans = PdfBlockAnalyst.ParsePointerSpans(
+            "{\"blocks\":[", [Block("b1", "Heading body text")]);
+
+        Assert.Empty(spans);
+    }
+
+    [Fact]
     public void CriticParserAcceptsOnlyClosedVerdictsForKnownIds()
     {
         var verdicts = PdfBlockAnalyst.ParseCriticDecisions("""

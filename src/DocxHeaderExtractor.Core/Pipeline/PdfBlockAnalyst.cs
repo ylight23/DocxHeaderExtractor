@@ -497,6 +497,7 @@ internal static class PdfBlockAnalyst
                 return result;
             foreach (var item in items.EnumerateArray())
             {
+                if (item.ValueKind != JsonValueKind.Object) continue;
                 var id = item.TryGetProperty("id", out var idProp) ? idProp.GetString() ?? "" : "";
                 if (!allowed.Contains(id)) continue;
                 result.Add((id, TryParseSpan(item)));
