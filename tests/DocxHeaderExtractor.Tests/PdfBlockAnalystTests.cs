@@ -201,27 +201,6 @@ public sealed class PdfBlockAnalystTests
     }
 
     [Fact]
-    public void ExplicitSpanMenuRejectsMarkerOnlyPrefixWhenTitleFollows()
-    {
-        const string source = "Section 1. Topic text";
-
-        var candidates = PdfSpanCandidateMenu.For(source);
-
-        Assert.DoesNotContain(candidates, candidate => candidate.Start == 0 && candidate.End == "Section".Length);
-        Assert.Contains(candidates, candidate => candidate.Start == 0 && candidate.End == source.Length);
-    }
-
-    [Fact]
-    public void ExplicitSpanMenuKeepsMarkerOnlySourceWhenNoTitleFollows()
-    {
-        const string source = "Section 1.";
-
-        var candidates = PdfSpanCandidateMenu.For(source);
-
-        Assert.Contains(candidates, candidate => candidate.Start == 0 && candidate.End == source.Length);
-    }
-
-    [Fact]
     public void ExplicitPointerSpanParserAcceptsOnlySuppliedPair()
     {
         var block = Block("b1", "Điều 1. Phạm vi điều chỉnh");

@@ -138,25 +138,13 @@ internal static class PdfSpanCandidateMenu
         var boundedEnds = boundaries.Take(maxCandidates - 1).ToHashSet();
         boundedEnds.Add(sourceText.Length);
 
-        var candidates = starts
+        return starts
             .SelectMany(start => boundedEnds
             .Where(end => end > start)
                 .OrderBy(end => end)
                 .Select(end => new PdfAllowedSpanCandidate(start, end)))
             .DistinctBy(candidate => (candidate.Start, candidate.End))
             .Take(maxCandidates)
-            .ToArray();
-
-        if (TryGetMarkerOnlyEnd(sourceText) is not { } markerEnd ||
-            !sourceText[markerEnd..].Any(character => !char.IsWhiteSpace(character)))
-            return candidates;
-
-        var startsWithLongerCandidate = candidates
-            .GroupBy(candidate => candidate.Start)
-            .ToDictionary(group => group.Key, group => group.Any(candidate => candidate.End > markerEnd));
-        return candidates
-            .Where(candidate => candidate.End > markerEnd ||
-                !startsWithLongerCandidate.GetValueOrDefault(candidate.Start))
             .ToArray();
     }
 
@@ -179,28 +167,6 @@ internal static class PdfSpanCandidateMenu
 
     public static bool ContainsCompact(string sourceText, TextOffsetSpan span) =>
         ForCompact(sourceText).Any(candidate => candidate.Start == span.Start && candidate.End == span.End);
-
-    private static int? TryGetMarkerOnlyEnd(string sourceText)
-    {
-        if (PdfMarkerFactsParser.Parse(sourceText) is null) return null;
-
-        // Probe only the parser's existing marker grammar with a synthetic title suffix. This
-        // discovers the marker boundary without naming a language or document family. Punctuation
-        // and whitespace immediately following the marker remain part of the marker prefix.
-        foreach (var boundary in PdfSpanBoundaryMap.For(sourceText).Where(value => value > 0))
-        {
-            var prefix = sourceText[..boundary].TrimEnd();
-            if (prefix.Length == 0 || PdfMarkerFactsParser.Parse(prefix + " xx") is null) continue;
-
-            var end = boundary;
-            while (end < sourceText.Length &&
-                   (char.IsWhiteSpace(sourceText[end]) || char.IsPunctuation(sourceText[end]) ||
-                    char.IsSymbol(sourceText[end])))
-                end++;
-            return end;
-        }
-        return null;
-    }
 }
 
 /// <summary>Validated stage trace. It is diagnostic data, never a source of extraction facts.</summary>
