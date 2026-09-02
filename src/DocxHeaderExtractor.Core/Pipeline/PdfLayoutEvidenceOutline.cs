@@ -677,7 +677,8 @@ public static class PdfLayoutEvidenceOutline
         {
             var spanRun = await PdfLaneExecution.RunAsync(
                 laneCt => PdfBlockAnalyst.ResolveHeadingSpansAsync(analyst, selected, resolvedRoles.Decisions,
-                    candidateContexts, laneCt, checkpoint),
+                    candidateContexts, laneCt, checkpoint,
+                    semanticOptions.RequestTimeout, semanticOptions.DeadlineUtc),
                 semanticOptions.RemainingOr(semanticOptions.RequestTimeout), ct);
             spanLaneStatus = spanRun.TimedOut ? "partial_timeout" : "complete";
             if (spanRun.DetachedTask is not null) detachedTasks.Add(spanRun.DetachedTask);
@@ -778,6 +779,7 @@ public static class PdfLayoutEvidenceOutline
             ModelInputContracts = roleAnalysis.InputContracts.Concat(spanAnalysis.InputContracts).ToArray(),
             CandidateStageTraces = stageTraces,
             ValidatedStructures = structures,
+            SpanRequestInstrumentation = spanAnalysis.SpanRequestInstrumentation,
             RankedCandidates = ranked,
             ProposalResolutions = resolvedRoles.Audit,
             HierarchyProposals = semanticHierarchy.Audit,

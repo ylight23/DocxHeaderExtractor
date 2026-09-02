@@ -337,6 +337,59 @@ public sealed class PdfBlockAnalystTests
     }
 
     [Fact]
+    public async Task PointerSpanRequestInstrumentationRecordsPayloadTimingAndResults()
+    {
+        var block = Block("b1", "Điều 1. Phạm vi điều chỉnh");
+        var decision = new PdfBlockDecision(
+            block.Id, PdfBlockRole.HeadingTopic, 0.9, "test", SemanticRole: PdfSemanticRole.LegalArticle);
+        var response = "{\"blocks\":[{\"id\":\"b1\",\"heading_span\":{\"start\":0,\"end\":" +
+            block.Text.Length + "}}]}";
+
+        var analysis = await PdfBlockAnalyst.ResolveHeadingSpansAsync(
+            new ScriptedClassifier(response),
+            [block], [decision], new Dictionary<string, PdfCandidateContext>());
+
+        var request = Assert.Single(analysis.SpanRequestInstrumentation);
+        Assert.False(string.IsNullOrWhiteSpace(request.RequestId));
+        Assert.Equal(1, request.BatchIndex);
+        Assert.Equal(["b1"], request.SourceIds);
+        Assert.Equal(["LegalArticle"], request.SemanticRoles);
+        Assert.Equal(1, request.SourceCount);
+        Assert.True(request.PromptChars > 0);
+        Assert.True(request.PromptUtf8Bytes >= request.PromptChars);
+        Assert.True(request.AllowedSpanCountTotal > 0);
+        Assert.True(request.AllowedSpanCountPerSource["b1"] > 0);
+        Assert.True(request.SourceSliceCharsTotal > 0);
+        Assert.True(request.CompletedUtc >= request.StartedUtc);
+        Assert.Equal("success", request.Outcome);
+        Assert.True(request.ResponseReceived);
+        Assert.True(request.ResponseBytes > 0);
+        Assert.Equal(["b1"], request.ReturnedIds);
+        Assert.Empty(request.NullSpanIds);
+        Assert.Empty(request.MalformedIds);
+        Assert.Empty(request.InvalidBoundaryIds);
+        Assert.Empty(request.InvalidPairIds);
+    }
+
+    [Fact]
+    public async Task PointerSpanRequestInstrumentationRecordsHttpFailureWithoutChangingFailClosedBehavior()
+    {
+        var block = Block("b1", "Heading body text");
+        var decision = new PdfBlockDecision(block.Id, PdfBlockRole.HeadingTopic, 0.9, "test");
+
+        var analysis = await PdfBlockAnalyst.ResolveHeadingSpansAsync(
+            new SpanHttpFailureClassifier(), [block], [decision], new Dictionary<string, PdfCandidateContext>());
+
+        var request = Assert.Single(analysis.SpanRequestInstrumentation);
+        Assert.Equal("provider-http-error", request.Outcome);
+        Assert.Equal(429, request.HttpStatus);
+        Assert.True(request.ExceptionType?.Contains("HttpRequestException", StringComparison.Ordinal));
+        Assert.True(request.ResponseReceived);
+        Assert.Equal("request-failed", Assert.Single(analysis.Decisions).SpanResponseStatus);
+        Assert.Null(Assert.Single(analysis.Decisions).HeadingSpan);
+    }
+
+    [Fact]
     public void CriticParserAcceptsOnlyClosedVerdictsForKnownIds()
     {
         var verdicts = PdfBlockAnalyst.ParseCriticDecisions("""
@@ -546,6 +599,20 @@ public sealed class PdfBlockAnalystTests
             if (Interlocked.Increment(ref _spanCalls) == 2) throw new InvalidOperationException("test later span failure");
             return Task.FromResult("""{"blocks":[{"id":"b1","heading_span":{"start":0,"end":9}},{"id":"b2","heading_span":{"start":0,"end":9}},{"id":"b3","heading_span":{"start":0,"end":9}},{"id":"b4","heading_span":{"start":0,"end":9}}]}""");
         }
+        public void Dispose() { }
+    }
+
+    private sealed class SpanHttpFailureClassifier : IHeaderClassifier
+    {
+        public string ModelName => "http-failure";
+        public int ContextSize => 4096;
+        public string RuntimeDescription => "http-failure";
+        public int SharedPrefixTokens => 0;
+        public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default) =>
+            throw new HttpRequestException("simulated 429", null, System.Net.HttpStatusCode.TooManyRequests);
         public void Dispose() { }
     }
 }

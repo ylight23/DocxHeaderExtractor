@@ -1,4 +1,6 @@
 ﻿using System.Text.Json;
+using System.Diagnostics;
+using System.Text;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Models;
 
@@ -44,6 +46,7 @@ internal sealed record PdfBlockAnalysis(
     IReadOnlyList<string> RawResponses)
 {
     public IReadOnlyList<string> InputContracts { get; init; } = [];
+    public IReadOnlyList<PdfSpanRequestInstrumentation> SpanRequestInstrumentation { get; init; } = [];
     public IReadOnlySet<string> HeadingBlockIds => Decisions
         .Where(d => d.Role == PdfBlockRole.HeadingTopic && d.Confidence >= 0.65)
         .Select(d => d.Id)
@@ -53,7 +56,8 @@ internal sealed record PdfBlockAnalysis(
 internal sealed record PdfPointerSpanParseResult(
     IReadOnlyList<(string Id, DocxHeaderExtractor.Core.Models.TextOffsetSpan? Span)> Spans,
     IReadOnlyDictionary<string, string> StatusById,
-    IReadOnlyDictionary<string, DocxHeaderExtractor.Core.Models.TextOffsetSpan?> ProposedSpanById);
+    IReadOnlyDictionary<string, DocxHeaderExtractor.Core.Models.TextOffsetSpan?> ProposedSpanById,
+    bool ParseFault = false);
 
 /// <summary>Independent execution budget for the semantic lane; visual has its own lifecycle.</summary>
 public sealed record SemanticLaneOptions(
@@ -249,7 +253,9 @@ internal static class PdfBlockAnalyst
         IReadOnlyList<PdfBlockDecision> roleDecisions,
         IReadOnlyDictionary<string, PdfCandidateContext> contexts,
         CancellationToken ct = default,
-        PdfStageCheckpoint? checkpoint = null)
+        PdfStageCheckpoint? checkpoint = null,
+        TimeSpan? configuredRequestTimeout = null,
+        DateTimeOffset? deadlineUtc = null)
     {
         var byId = roleDecisions.ToDictionary(d => d.Id, StringComparer.Ordinal);
         var headingBlocks = blocks.Where(block =>
@@ -264,25 +270,73 @@ internal static class PdfBlockAnalyst
 
         var rawResponses = new List<string>();
         var inputContracts = new List<string>();
+        var requestInstrumentation = new List<PdfSpanRequestInstrumentation>();
+        var batchIndex = 0;
         foreach (var batch in headingBlocks.Chunk(4))
         {
-            string raw;
+            batchIndex++;
+            var requestId = Guid.NewGuid().ToString("N");
+            var startedUtc = DateTimeOffset.UtcNow;
+            var startedTimestamp = Stopwatch.GetTimestamp();
+            var cancellationRequestedBefore = ct.IsCancellationRequested;
+            var sourceIds = batch.Select(block => block.Id).ToArray();
+            var sourceOrdinals = batch.Select(block => contexts.TryGetValue(block.Id, out var context)
+                ? context.Source.SourceOrdinal
+                : null).ToArray();
+            var semanticRoles = batch.Select(block => byId[block.Id].SemanticRole.ToString()).ToArray();
+            var allowedSpanCountPerSource = batch.ToDictionary(
+                block => block.Id,
+                block => explicitPairMenuIds.Contains(block.Id) ? PdfSpanCandidateMenu.For(block.Text).Count : 0,
+                StringComparer.Ordinal);
+            var sourceSliceCharsTotal = batch
+                .Where(block => explicitPairMenuIds.Contains(block.Id))
+                .Sum(block => PdfSpanCandidateMenu.For(block.Text).Sum(candidate => candidate.SourceSlice.Length));
+            var promptChars = 0;
+            var promptUtf8Bytes = 0;
+            string outcome = "unknown-fault";
+            Exception? failure = null;
+            string? raw = null;
+            var responseReceived = false;
+            int? responseBytes = null;
+            PdfPointerSpanParseResult? parsed = null;
             try
             {
                 var prompt = BuildPointerSpanPrompt(batch, contexts, explicitPairMenuIds);
+                promptChars = prompt.Length;
+                promptUtf8Bytes = Encoding.UTF8.GetByteCount(prompt);
                 inputContracts.Add(prompt);
                 ct.ThrowIfCancellationRequested();
                 raw = await classifier.BoundaryCutAsync(PointerSpanSystemPrompt, prompt, ct);
+                responseReceived = true;
+                responseBytes = Encoding.UTF8.GetByteCount(raw);
                 // A provider may ignore cancellation. A late response must not become a durable
                 // span fact after the lane deadline has already been crossed.
                 ct.ThrowIfCancellationRequested();
+                parsed = ParsePointerSpanResponses(raw, batch, explicitPairMenuIds);
+                outcome = parsed.ParseFault ? "parse-fault" : "success";
             }
-            catch (OperationCanceledException)
+            catch (OperationCanceledException ex)
             {
+                failure = ex;
+                outcome = ct.IsCancellationRequested ? "cancelled" : "timeout";
+                requestInstrumentation.Add(BuildSpanRequestInstrumentation(
+                    requestId, batchIndex, sourceIds, sourceOrdinals, semanticRoles, promptChars,
+                    promptUtf8Bytes, allowedSpanCountPerSource, sourceSliceCharsTotal, startedUtc,
+                    startedTimestamp, configuredRequestTimeout, deadlineUtc, outcome, failure,
+                    cancellationRequestedBefore, ct.IsCancellationRequested, responseReceived,
+                    responseBytes, parsed));
                 throw;
             }
             catch (Exception ex)
             {
+                failure = ex;
+                outcome = ClassifySpanRequestFailure(ex);
+                requestInstrumentation.Add(BuildSpanRequestInstrumentation(
+                    requestId, batchIndex, sourceIds, sourceOrdinals, semanticRoles, promptChars,
+                    promptUtf8Bytes, allowedSpanCountPerSource, sourceSliceCharsTotal, startedUtc,
+                    startedTimestamp, configuredRequestTimeout, deadlineUtc, outcome, failure,
+                    cancellationRequestedBefore, ct.IsCancellationRequested, responseReceived,
+                    responseBytes, parsed));
                 // Still swallowed - changing that is a behaviour question, not this one. But the
                 // batch no longer disappears: the exception type is a fact this frame already holds,
                 // and without it a failed span batch is indistinguishable from a healthy one.
@@ -298,9 +352,8 @@ internal static class PdfBlockAnalyst
                 continue;
             }
 
-            rawResponses.Add(raw);
-            var parsed = ParsePointerSpanResponses(raw, batch, explicitPairMenuIds);
-            foreach (var (id, span) in parsed.Spans)
+            rawResponses.Add(raw!);
+            foreach (var (id, span) in parsed!.Spans)
             {
                 if (!byId.TryGetValue(id, out var decision)) continue;
                 byId[id] = decision with
@@ -321,6 +374,13 @@ internal static class PdfBlockAnalyst
                 };
             }
 
+            requestInstrumentation.Add(BuildSpanRequestInstrumentation(
+                requestId, batchIndex, sourceIds, sourceOrdinals, semanticRoles, promptChars,
+                promptUtf8Bytes, allowedSpanCountPerSource, sourceSliceCharsTotal, startedUtc,
+                startedTimestamp, configuredRequestTimeout, deadlineUtc, outcome, failure,
+                cancellationRequestedBefore, ct.IsCancellationRequested, responseReceived,
+                responseBytes, parsed));
+
             if (checkpoint is not null)
             {
                 ct.ThrowIfCancellationRequested();
@@ -334,7 +394,64 @@ internal static class PdfBlockAnalyst
         }
 
         return new PdfBlockAnalysis(blocks, blocks.Where(block => byId.ContainsKey(block.Id)).Select(block => byId[block.Id]).ToArray(), rawResponses)
-        { InputContracts = inputContracts };
+        { InputContracts = inputContracts, SpanRequestInstrumentation = requestInstrumentation };
+    }
+
+    private static PdfSpanRequestInstrumentation BuildSpanRequestInstrumentation(
+        string requestId,
+        int batchIndex,
+        IReadOnlyList<string> sourceIds,
+        IReadOnlyList<int?> sourceOrdinals,
+        IReadOnlyList<string> semanticRoles,
+        int promptChars,
+        int promptUtf8Bytes,
+        IReadOnlyDictionary<string, int> allowedSpanCountPerSource,
+        int sourceSliceCharsTotal,
+        DateTimeOffset startedUtc,
+        long startedTimestamp,
+        TimeSpan? configuredRequestTimeout,
+        DateTimeOffset? deadlineUtc,
+        string outcome,
+        Exception? failure,
+        bool cancellationRequestedBefore,
+        bool cancellationRequestedAfter,
+        bool responseReceived,
+        int? responseBytes,
+        PdfPointerSpanParseResult? parsed)
+    {
+        var completedUtc = DateTimeOffset.UtcNow;
+        var returned = parsed?.Spans.Select(item => item.Id).Distinct(StringComparer.Ordinal).ToArray() ?? [];
+        var status = parsed?.StatusById ?? new Dictionary<string, string>();
+        var effectiveResponseReceived = responseReceived || failure is HttpRequestException { StatusCode: not null };
+        return new PdfSpanRequestInstrumentation(
+            requestId, batchIndex, sourceIds, sourceOrdinals, semanticRoles, sourceIds.Count,
+            promptChars, promptUtf8Bytes, allowedSpanCountPerSource.Values.Sum(), allowedSpanCountPerSource,
+            sourceSliceCharsTotal, startedUtc, completedUtc,
+            (long)Math.Max(0, Stopwatch.GetElapsedTime(startedTimestamp).TotalMilliseconds),
+            configuredRequestTimeout is { } timeout ? (long)timeout.TotalMilliseconds : null,
+            deadlineUtc is { } deadline ? (long)Math.Max(0, (deadline - startedUtc).TotalMilliseconds) : null,
+            outcome, failure?.GetType().FullName, SanitizeExceptionMessage(failure),
+            (failure as HttpRequestException)?.StatusCode is { } httpStatus ? (int)httpStatus : null,
+            cancellationRequestedBefore, cancellationRequestedAfter, effectiveResponseReceived, responseBytes,
+            returned,
+            returned.Where(id => status.GetValueOrDefault(id) == "null").ToArray(),
+            returned.Where(id => status.GetValueOrDefault(id) == "malformed").ToArray(),
+            returned.Where(id => status.GetValueOrDefault(id) is "invalid-boundary" or "invalid-span").ToArray(),
+            returned.Where(id => status.GetValueOrDefault(id) == "invalid-pair").ToArray());
+    }
+
+    private static string ClassifySpanRequestFailure(Exception exception) => exception switch
+    {
+        HttpRequestException => "provider-http-error",
+        FormatException or JsonException => "parse-fault",
+        _ => "provider-fault",
+    };
+
+    private static string? SanitizeExceptionMessage(Exception? exception)
+    {
+        if (exception is null) return null;
+        var message = exception.Message.Replace('\r', ' ').Replace('\n', ' ').Trim();
+        return message.Length <= 500 ? message : message[..500];
     }
 
     /// <summary>Source-line identity for a block, so a checkpoint row can be matched across runs.</summary>
@@ -567,7 +684,7 @@ internal static class PdfBlockAnalyst
             using var doc = JsonDocument.Parse(ExtractJsonObject(raw));
             if (!doc.RootElement.TryGetProperty("blocks", out var items) || items.ValueKind != JsonValueKind.Array)
                 return new PdfPointerSpanParseResult(result,
-                    statuses.ToDictionary(item => item.Key, _ => "malformed", StringComparer.Ordinal), proposedSpans);
+                    statuses.ToDictionary(item => item.Key, _ => "malformed", StringComparer.Ordinal), proposedSpans, true);
             foreach (var item in items.EnumerateArray())
             {
                 if (item.ValueKind != JsonValueKind.Object) continue;
