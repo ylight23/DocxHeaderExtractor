@@ -53,6 +53,8 @@ public sealed class AgentHarnessTests : IDisposable
         Assert.Same(result.Outline, result.TaskResult.Value);
         Assert.StartsWith("plan-", result.TaskResult.PlanId);
         Assert.Equal("ValidatedStructure", result.TaskResult.Projection.Authority);
+        Assert.Equal("fake_extract", result.TaskResult.Provenance!.CapabilityId);
+        Assert.Equal(DocxHeaderExtractor.Application.Tasks.TaskRunStatus.Completed, result.TaskResult.StatusCode);
         Assert.Contains("intent.validation", result.TaskResult.CompletedStages);
         Assert.Contains("projection.prompt-driven", result.TaskResult.CompletedStages);
     }

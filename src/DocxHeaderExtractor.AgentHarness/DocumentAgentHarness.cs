@@ -298,7 +298,16 @@ public sealed class DocumentAgentHarness
                             .Select(e => e.Stage).Distinct(StringComparer.Ordinal).ToArray()),
                     stageNames,
                     startedAt,
-                    completedAt),
+                    completedAt)
+                {
+                    Provenance = new TaskProvenance(
+                        Path.GetFileName(request.InputPath),
+                        tool.Descriptor.Name,
+                        outline.Provenance?.Backend,
+                        outline.Model,
+                        outline.Provenance?.SentDataExternally ?? tool.Descriptor.SendsDataExternally,
+                        "ValidatedStructure"),
+                },
                 Skill = _skill,
                 RepairAttempts = attempt - 1,
                 Writeback = writeback,
