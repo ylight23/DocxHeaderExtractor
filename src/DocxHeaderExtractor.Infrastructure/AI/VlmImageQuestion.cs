@@ -2,7 +2,7 @@ using LLama;
 using LLama.Common;
 using LLama.Native;
 
-using DocxHeaderExtractor.Core.Vision;
+using DocxHeaderExtractor.DocumentProcessing.Vision;
 
 namespace DocxHeaderExtractor.Infrastructure.AI;
 

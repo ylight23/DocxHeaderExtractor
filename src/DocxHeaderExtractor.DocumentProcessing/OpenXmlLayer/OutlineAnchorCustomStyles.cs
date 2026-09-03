@@ -1,7 +1,8 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 
-namespace DocxHeaderExtractor.Core.OpenXmlLayer;
+namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 /// <summary>
 /// Style tự đặt lặp lại dưới một anchor <c>w:outlineLvl</c>.

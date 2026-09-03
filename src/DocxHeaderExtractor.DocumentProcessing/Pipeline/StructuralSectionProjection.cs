@@ -1,6 +1,7 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Projects sections from validated outline elements and the validated ParentChild graph. It does

@@ -1,6 +1,7 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// M9.5b compatibility oracle. <c>DocumentOutline</c>/<c>HeadingRecord</c> is the contract the whole

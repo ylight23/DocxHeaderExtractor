@@ -1,7 +1,7 @@
 using System.Net;
 using System.Text;
 using System.Text.Json;
-using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -13,7 +13,7 @@ public sealed class OpenRouterTests
         var handler = new CaptureHandler(
             """{"choices":[{"message":{"content":"{\"h\":[{\"i\":42,\"r\":\"h\",\"l\":2}]}"}}]}""");
         using var http = new HttpClient(handler);
-        using var model = new OpenRouterHeaderExtractor(http, new OpenRouterOptions { ApiKey = "test-key" });
+        using var model = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions { ApiKey = "test-key" });
 
         var result = await model.ClassifyAsync("<p i=\"42\">2. Mục</p>", [42]);
 
@@ -37,7 +37,7 @@ public sealed class OpenRouterTests
     {
         using var http = new HttpClient(new CaptureHandler("{}"));
         var ex = Assert.Throws<InvalidOperationException>(() =>
-            new OpenRouterHeaderExtractor(http, new OpenRouterOptions()));
+            new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions()));
 
         Assert.Contains("OPENROUTER_API_KEY", ex.Message);
     }
@@ -48,7 +48,7 @@ public sealed class OpenRouterTests
         var handler = new CaptureHandler(
             """{"choices":[{"message":{"content":"{\"items\":[{\"i\":11,\"r\":\"f\",\"l\":0}]}"}}]}""");
         using var http = new HttpClient(handler);
-        using var model = new OpenRouterHeaderExtractor(http, new OpenRouterOptions { ApiKey = "test-key" });
+        using var model = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions { ApiKey = "test-key" });
 
         var result = await model.CritiqueAsync("<p i=\"11\">Đơn vị A gửi đơn vị B</p>", [11]);
 
@@ -68,7 +68,7 @@ public sealed class OpenRouterTests
             """{"choices":[{"message":{"content":"{\"items\":[{\"i\":10,\"r\":\"h\",\"l\":1}]}"}}]}""",
             """{"choices":[{"message":{"content":"{\"items\":[{\"i\":20,\"r\":\"n\",\"l\":0}]}"}}]}""");
         using var http = new HttpClient(handler);
-        using var model = new OpenRouterHeaderExtractor(http, new OpenRouterOptions
+        using var model = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
         {
             ApiKey = "test-key",
             MissingIdRetries = 2,
@@ -90,7 +90,7 @@ public sealed class OpenRouterTests
         var handler = new CaptureHandler(
             """{"choices":[{"message":{"content":"{\"items\":[]}"}}]}""");
         using var http = new HttpClient(handler);
-        using var model = new OpenRouterHeaderExtractor(http, new OpenRouterOptions
+        using var model = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
         {
             ApiKey = "test-key",
             MissingIdRetries = 1,

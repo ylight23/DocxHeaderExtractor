@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace DocxHeaderExtractor.Core.OpenXmlLayer;
+namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 /// <summary>Pure Word built-in heading style identity derived from style metadata.</summary>
 public static class BuiltInHeadingStyleIdentity

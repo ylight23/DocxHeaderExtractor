@@ -1,6 +1,6 @@
-using DocxHeaderExtractor.Core.Chunking;
+using DocxHeaderExtractor.DocumentProcessing.Chunking;
 using DocxHeaderExtractor.Cli;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -9,7 +9,7 @@ namespace DocxHeaderExtractor.Tests;
 /// lâu, nhánh LM Studio thì không — nên mọi lượt LM Studio chạy với ngân sách của bản local và tài
 /// liệu bị xé vụn: đo trên tài liệu thật là 13 ứng viên → 27 lượt RPC.
 /// <para>
-/// Sau khi tách <c>ChunkingOptions</c> ra khỏi <c>LlamaOptions</c>, các test này khoá thêm một điều:
+/// Sau khi tách <c>ChunkingOptions</c> ra khỏi <c>LocalModelOptions</c>, các test này khoá thêm một điều:
 /// backend RPC KHÔNG được ghi gì vào cấu hình của backend GGUF cục bộ. Trước đây nó phải đặt
 /// <c>Llama.ContextSize = 8192</c> — một giá trị giả, mô tả context của llama.cpp — chỉ để phép
 /// chia khối ra đúng.
@@ -28,7 +28,7 @@ public sealed class RemoteChunkProfileTests
 
         Assert.Equal(5000, o.Pipeline.Chunking.TokenBudget);
         // Không chạm vào context của backend cục bộ: nó không tham gia lượt chạy này.
-        Assert.Equal(LocalDefaultContext, o.Pipeline.Llama.ContextSize);
+        Assert.Equal(LocalDefaultContext, o.Pipeline.LocalModel.ContextSize);
     }
 
     [Fact]
@@ -56,7 +56,7 @@ public sealed class RemoteChunkProfileTests
     {
         var o = CommandLineOptions.Parse(["a.docx", "--ctx", "16384", "--lmstudio"]);
 
-        Assert.Equal(16384u, o.Pipeline.Llama.ContextSize);
+        Assert.Equal(16384u, o.Pipeline.LocalModel.ContextSize);
         Assert.Equal(5000, o.Pipeline.Chunking.TokenBudget);
     }
 
@@ -73,7 +73,7 @@ public sealed class RemoteChunkProfileTests
         o.Pipeline.PrepareLocalModelProfile();
 
         Assert.Equal(5000, o.Pipeline.Chunking.TokenBudget);
-        Assert.Equal(8192u, o.Pipeline.Llama.ContextSize);
+        Assert.Equal(8192u, o.Pipeline.LocalModel.ContextSize);
     }
 
     [Fact]
@@ -85,7 +85,7 @@ public sealed class RemoteChunkProfileTests
 
         // Ngân sách RPC do nhánh backend quyết, không bị profile của file .gguf trên đĩa chen vào.
         Assert.Equal(5000, o.Pipeline.Chunking.TokenBudget);
-        Assert.Equal(LocalDefaultContext, o.Pipeline.Llama.ContextSize);
+        Assert.Equal(LocalDefaultContext, o.Pipeline.LocalModel.ContextSize);
     }
 
     [Theory]
@@ -121,9 +121,9 @@ public sealed class RemoteChunkProfileTests
     [Fact]
     public void Chunking_khong_con_nam_trong_cau_hinh_backend()
     {
-        // Chốt bằng phản chiếu: chừng nào LlamaOptions còn ba trường này thì vẫn có hai nguồn sự
+        // Chốt bằng phản chiếu: chừng nào LocalModelOptions còn ba trường này thì vẫn có hai nguồn sự
         // thật cho cùng một quyết định, và một trong hai sẽ lặng lẽ đi lệch.
-        var llama = typeof(Core.Llm.LlamaOptions);
+        var llama = typeof(DocxHeaderExtractor.DocumentProcessing.Inference.LocalModelOptions);
         Assert.Null(llama.GetProperty("MaxCandidatesPerChunk"));
         Assert.Null(llama.GetProperty("ChunkOverlap"));
         Assert.Null(llama.GetMethod("UseRemoteChunkProfile"));

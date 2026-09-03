@@ -1,6 +1,6 @@
-using DocxHeaderExtractor.Core.Application.Routing;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests.Architecture;
 

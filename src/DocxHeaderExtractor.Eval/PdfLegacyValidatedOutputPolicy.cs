@@ -1,7 +1,8 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-namespace DocxHeaderExtractor.Core.Eval;
+namespace DocxHeaderExtractor.Eval;
 
 /// <summary>
 /// Historical projection retained exclusively for evaluation artifacts. It is isolated from the

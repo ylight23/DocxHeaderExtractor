@@ -1,5 +1,5 @@
-using DocxHeaderExtractor.Core.Llm;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using System.Text.Json;
 
 namespace DocxHeaderExtractor.Tests;
@@ -93,7 +93,7 @@ public sealed class PdfBlockAnalystTests
 
         var decision = Assert.Single(decisions);
         Assert.Equal("b1", decision.Id);
-        Assert.Equal(new DocxHeaderExtractor.Core.Models.TextOffsetSpan(0, 7), decision.HeadingSpan);
+        Assert.Equal(new DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan(0, 7), decision.HeadingSpan);
     }
 
     [Fact]
@@ -108,7 +108,7 @@ public sealed class PdfBlockAnalystTests
 
         var span = Assert.Single(spans);
         Assert.Equal("b1", span.Id);
-        Assert.Equal(new DocxHeaderExtractor.Core.Models.TextOffsetSpan(0, 7), span.Span);
+        Assert.Equal(new DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan(0, 7), span.Span);
     }
 
     [Fact]

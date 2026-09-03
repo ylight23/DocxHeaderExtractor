@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.OpenXmlLayer;
+namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 /// <summary>
 /// Paragraph HỎNG trong chính file nguồn — không phải lỗi parser. Spec §3.6.

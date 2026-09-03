@@ -1,7 +1,8 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Append-only diagnostic checkpoint. Each line has a stable lane identity so a resumed visual

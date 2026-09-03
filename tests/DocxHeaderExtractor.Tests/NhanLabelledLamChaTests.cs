@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -20,7 +21,7 @@ public class NhanLabelledLamChaTests
     };
 
     /// <summary>Đúng nội dung và đúng cấp khởi tạo của bench/02, để tái lập lỗi thật.</summary>
-    private static (List<HeadingRecord> Headings, DocxHeaderExtractor.Core.Application.Policy.DocxPolicyState Document) Bench02()
+    private static (List<HeadingRecord> Headings, DocxHeaderExtractor.DocumentProcessing.Policy.DocxPolicyState Document) Bench02()
     {
         (int I, int Lvl, string T)[] rows =
         [

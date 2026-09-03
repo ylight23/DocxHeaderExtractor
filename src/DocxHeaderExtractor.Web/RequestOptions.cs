@@ -1,5 +1,5 @@
 using System.Globalization;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Web;
 
@@ -56,21 +56,21 @@ public static class RequestOptions
         // hàng chục khối — 13 ứng viên thành 27 lượt RPC.
         if (o.Backend == InferenceBackend.OpenRouter)
         {
-            o.OpenRouter = DocxHeaderExtractor.Core.Llm.OpenRouterOptions.FromEnvironment();
+            o.Remote = DocxHeaderExtractor.DocumentProcessing.Inference.RemoteInferenceOptions.FromEnvironment("openrouter");
             o.Chunking.UseRemoteProfile();
-            if (string.IsNullOrWhiteSpace(o.OpenRouter.ApiKey))
+            if (string.IsNullOrWhiteSpace(o.Remote.ApiKey))
                 problem = "Backend OpenRouter chưa được cấu hình OPENROUTER_API_KEY trên server.";
             return o;
         }
 
         if (o.Backend == InferenceBackend.LmStudio)
         {
-            o.LmStudio = DocxHeaderExtractor.Core.Llm.LmStudioOptions.FromEnvironment();
+            o.Remote = DocxHeaderExtractor.DocumentProcessing.Inference.RemoteInferenceOptions.FromEnvironment("lmstudio");
             var selectedModel = form["lmStudioModel"].ToString().Trim();
-            if (!string.IsNullOrEmpty(selectedModel)) o.LmStudio.Model = selectedModel;
+            if (!string.IsNullOrEmpty(selectedModel)) o.Remote.Model = selectedModel;
             try
             {
-                o.LmStudio.Validate();
+                o.Remote.Validate();
             }
             catch (InvalidOperationException ex)
             {
@@ -101,11 +101,11 @@ public static class RequestOptions
             return o;
         }
 
-            o.Llama.ModelPath = model;
+            o.LocalModel.ModelPath = model;
             if (Number(form, "ctx") is { } ctx and >= 1024)
-                o.Llama.ContextSize = (uint)ctx;
+                o.LocalModel.ContextSize = (uint)ctx;
             else
-                o.Llama.ContextSize = ModelCatalog.List().FirstOrDefault(m => m.Path == model)?.SuggestedCtx ?? 4096u;
+                o.LocalModel.ContextSize = ModelCatalog.List().FirstOrDefault(m => m.Path == model)?.SuggestedCtx ?? 4096u;
 
         if (Number(form, "chunkCandidates") is { } cc and >= 2 and <= 64)
             o.Chunking.MaxCandidatesPerChunk = (int)cc;
@@ -113,11 +113,11 @@ public static class RequestOptions
         // Bản CPU bỏ qua giá trị này; bản dựng với -p:UseVulkan=true / -p:UseCuda=true thì
         // 0 nghĩa là vẫn chạy CPU, nên không truyền xuống là giao diện không bao giờ dùng GPU.
         if (Number(form, "gpuLayers") is { } gl and >= 0)
-            o.Llama.GpuLayerCount = (int)gl;
+            o.LocalModel.GpuLayerCount = (int)gl;
 
         // Chốt profile ở server. Trình duyệt cũ có thể vẫn gửi 4096; không để request đi
         // tới bước nạp model rồi mới vỡ vì tổng ngân sách lớn hơn context.
-        o.Llama.ApplyRecommendedModelProfile(o.Chunking);
+        o.LocalModel.ApplyRecommendedModelProfile(o.Chunking);
         return o;
     }
 

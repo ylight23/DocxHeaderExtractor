@@ -1,4 +1,4 @@
-﻿namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// M9.2. Decides which validated facts a document-outline product emits, reading only what

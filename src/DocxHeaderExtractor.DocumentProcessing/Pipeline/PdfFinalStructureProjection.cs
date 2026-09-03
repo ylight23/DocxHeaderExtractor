@@ -1,6 +1,6 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// M9.1 materialization. It projects what the pipeline already validated into the shape a product

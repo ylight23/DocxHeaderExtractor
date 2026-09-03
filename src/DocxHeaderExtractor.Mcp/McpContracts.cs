@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 using System.Text.Json.Serialization;
 
 namespace DocxHeaderExtractor.Mcp;

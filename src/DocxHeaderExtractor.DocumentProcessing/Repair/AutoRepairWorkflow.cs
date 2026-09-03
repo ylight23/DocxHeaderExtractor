@@ -2,14 +2,15 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using DocxHeaderExtractor.Core.Application.Features;
-using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Features;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
-using DocxHeaderExtractor.Core.Output;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Projection;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-namespace DocxHeaderExtractor.Core.Repair;
+namespace DocxHeaderExtractor.DocumentProcessing.Repair;
 
 public sealed record AutoRepairOptions(
     string OutputDirectory,

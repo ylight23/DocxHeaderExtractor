@@ -1,9 +1,10 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Application.Policy;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-namespace DocxHeaderExtractor.Core.OpenXmlLayer;
+namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 /// <summary>
 /// Chế độ tài liệu — tín hiệu nào thực sự mang cấu trúc trong CHÍNH tài liệu này.

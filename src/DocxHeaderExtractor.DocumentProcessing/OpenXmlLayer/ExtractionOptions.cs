@@ -1,4 +1,4 @@
-﻿namespace DocxHeaderExtractor.Core.OpenXmlLayer;
+namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 public sealed class ExtractionOptions
 {

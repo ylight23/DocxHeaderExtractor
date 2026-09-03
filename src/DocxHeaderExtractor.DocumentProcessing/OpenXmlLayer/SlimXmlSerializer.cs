@@ -1,8 +1,9 @@
 using System.Text;
-using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.OpenXmlLayer;
+namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 /// <summary>Human-readable XML dump of the native DOCX policy state.</summary>
 public static class SlimXmlSerializer

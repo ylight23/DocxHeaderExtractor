@@ -1,5 +1,6 @@
-using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.DocumentProcessing.Features;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -41,7 +42,7 @@ public sealed class TocStructuralFeatureDeriverTests
     public void Deriver_does_not_depend_on_candidate_or_model_policy()
     {
         var path = Path.Combine(FindRepositoryRoot(), "src", "DocxHeaderExtractor.DocumentProcessing",
-            "Application", "Features", "TocStructuralFeatureDeriver.cs");
+            "Features", "TocStructuralFeatureDeriver.cs");
         var text = File.ReadAllText(path);
 
         Assert.DoesNotContain("HeadingCandidatePolicy", text, StringComparison.Ordinal);

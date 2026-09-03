@@ -1,7 +1,8 @@
 using System.Reflection;
 using System.Runtime.Loader;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Cli;
 
@@ -12,7 +13,7 @@ namespace DocxHeaderExtractor.Cli;
 /// </summary>
 internal static class EvaluationProjectionBridge
 {
-    private const string PolicyTypeName = "DocxHeaderExtractor.Core.Eval.PdfLegacyValidatedOutputPolicy";
+    private const string PolicyTypeName = "DocxHeaderExtractor.Eval.PdfLegacyValidatedOutputPolicy";
     private const string AssemblyName = "DocxHeaderExtractor.Eval.dll";
 
     public static IReadOnlyList<HeadingRecord> ProjectDocumentOutline(

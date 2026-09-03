@@ -1,6 +1,7 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>Normalizes an ordered heading sequence without depending on a legacy pipeline owner.</summary>
 public static class OutlineLevelNormalizer

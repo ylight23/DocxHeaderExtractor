@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.Tests;
 

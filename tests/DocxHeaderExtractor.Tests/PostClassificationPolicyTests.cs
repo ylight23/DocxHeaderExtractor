@@ -1,7 +1,8 @@
 using System.Collections.Frozen;
-using DocxHeaderExtractor.Core.Application.Features;
-using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Features;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -89,7 +90,7 @@ public sealed class PostClassificationPolicyTests
     public void Has_no_dependency_on_extraction_or_model_layers()
     {
         var path = Path.Combine(FindRepositoryRoot(), "src", "DocxHeaderExtractor.DocumentProcessing",
-            "Application", "Policy", "PostClassificationPolicy.cs");
+            "Policy", "PostClassificationPolicy.cs");
         var text = File.ReadAllText(path);
 
         foreach (var forbidden in new[]

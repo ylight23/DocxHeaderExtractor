@@ -1,6 +1,6 @@
 using System.Security.Cryptography;
-using DocxHeaderExtractor.Core.Eval;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.Eval;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using UglyToad.PdfPig;
 
 namespace DocxHeaderExtractor.Tests;

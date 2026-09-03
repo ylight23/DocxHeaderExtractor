@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -49,8 +49,8 @@ public class AutoContextSizeTests
     [Fact]
     public void Tran_auto_context_bang_cau_hinh_da_do()
     {
-        Assert.Equal(32768u, LlamaOptions.MaxAutoContextSize);
-        Assert.True(LlamaOptions.MaxAutoContextSize
+        Assert.Equal(32768u, LocalModelOptions.MaxAutoContextSize);
+        Assert.True(LocalModelOptions.MaxAutoContextSize
                     < LlamaHeaderExtractor.DeclaredContextLength(Meta("qwen35", "262144")));
     }
 
@@ -58,7 +58,7 @@ public class AutoContextSizeTests
     [Fact]
     public void Mac_dinh_bat()
     {
-        Assert.True(new LlamaOptions().AutoContextSize);
+        Assert.True(new LocalModelOptions().AutoContextSize);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class AutoContextSizeTests
     /// chỉnh trên bản clone, còn <c>PrecisionCalibrationProfile.ConfigurationFor</c> đọc bản GỐC —
     /// nên nếu không ghi lại, chữ ký ghi <c>ctx=4096</c> cho lượt chạy thật sự dùng 32768.
     /// <para>
-    /// Test này ghim rằng <see cref="LlamaOptions.Clone"/> KHÔNG chia sẻ trạng thái (nếu nó chia sẻ
+    /// Test này ghim rằng <see cref="LocalModelOptions.Clone"/> KHÔNG chia sẻ trạng thái (nếu nó chia sẻ
     /// thì việc ghi lại là vô nghĩa và test dưới cũng vô nghĩa), và rằng chữ ký cấu hình đọc chính
     /// trường <c>ContextSize</c> — tức ghi lại vào bản gốc là cách duy nhất làm nó trung thực.
     /// </para>
@@ -74,7 +74,7 @@ public class AutoContextSizeTests
     [Fact]
     public void Clone_khong_chia_se_trang_thai_nen_phai_ghi_lai()
     {
-        var goc = new LlamaOptions { ContextSize = 4096 };
+        var goc = new LocalModelOptions { ContextSize = 4096 };
         var ban = goc.Clone();
 
         ban.ContextSize = 32768;
@@ -85,13 +85,13 @@ public class AutoContextSizeTests
 
     /// <summary>Chữ ký cấu hình lấy ctx từ chính trường đó, nên ghi lại là đủ để nó trung thực.</summary>
     [Fact]
-    public void Chu_ky_cau_hinh_doc_ctx_tu_LlamaOptions()
+    public void Chu_ky_cau_hinh_doc_ctx_tu_LocalModelOptions()
     {
-        var o = new DocxHeaderExtractor.Core.Pipeline.PipelineOptions();
-        o.Llama.ContextSize = 32768;
+        var o = new DocxHeaderExtractor.DocumentProcessing.Pipeline.PipelineOptions();
+        o.LocalModel.ContextSize = 32768;
 
         Assert.Contains("ctx=32768",
-            DocxHeaderExtractor.Core.Eval.PrecisionCalibrationProfile.ConfigurationFor(o),
+            DocxHeaderExtractor.Eval.PrecisionCalibrationProfile.ConfigurationFor(o),
             StringComparison.Ordinal);
     }
 }

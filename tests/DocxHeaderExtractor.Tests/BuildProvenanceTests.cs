@@ -1,6 +1,6 @@
 using System.Reflection;
 using System.Reflection.Emit;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 

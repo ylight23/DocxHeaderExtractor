@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -75,7 +76,7 @@ public class LocalListDepthTests
         Assert.Equal(3, headings.Single(h => h.Index == 0).Level);
     }
 
-    private static DocxHeaderExtractor.Core.Application.Policy.DocxPolicyState Doc(
+    private static DocxHeaderExtractor.DocumentProcessing.Policy.DocxPolicyState Doc(
         params (int Index, string Text, int? ListId)[] items) =>
         NativePolicyStateFactory.Create(items.Select(x => (x.Index, x.Text, x.ListId, (int?)null)));
 

@@ -1,9 +1,10 @@
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 public sealed record BookTocDictionaryResult(
     bool Accepted,

@@ -1,8 +1,9 @@
-﻿using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Builder tất định cho tài liệu dùng số gõ tay kiểu <c>1.</c>, <c>1.1.</c>,

@@ -1,19 +1,20 @@
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using UglyToad.PdfPig;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 internal sealed record PdfTocDictionaryOutlineResult(
     bool Accepted,
     IReadOnlyList<HeadingRecord> Headings,
     string Reason,
-    PdfTocDictionaryProbeResult Probe)
+    PdfTocDictionaryAnalyzerResult Probe)
 {
     public static PdfTocDictionaryOutlineResult NotApplicable(string reason) =>
-        new(false, [], reason, PdfTocDictionaryProbeResult.Empty);
+        new(false, [], reason, PdfTocDictionaryAnalyzerResult.Empty);
 }
 
 /// <summary>
@@ -46,7 +47,7 @@ internal static class PdfTocDictionaryOutline
             return PdfTocDictionaryOutlineResult.NotApplicable("pdf-read-failed");
         }
 
-        var probe = PdfTocDictionaryProbe.Analyze(lines);
+        var probe = PdfTocDictionaryAnalyzer.Analyze(lines);
         if (probe.Entries < 8)
             return new PdfTocDictionaryOutlineResult(false, [], "no-strong-pdf-toc", probe);
 

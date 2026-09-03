@@ -1,7 +1,8 @@
 using System.Globalization;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Builds coordinates in the original .NET string. No normalization, trimming or truncation is

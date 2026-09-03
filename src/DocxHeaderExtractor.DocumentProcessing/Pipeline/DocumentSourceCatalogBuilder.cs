@@ -1,6 +1,7 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>Builds generic source units from parser-owned source representations.</summary>
 public static class DocumentSourceCatalogBuilder

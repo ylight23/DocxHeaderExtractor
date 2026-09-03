@@ -1,8 +1,9 @@
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Repair;
+namespace DocxHeaderExtractor.DocumentProcessing.Repair;
 
 public sealed record TextLayoutLineProbeReport(
     int TextParagraphs,

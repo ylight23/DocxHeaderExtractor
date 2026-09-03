@@ -1,8 +1,9 @@
 using DocxHeaderExtractor.Application.Capabilities;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
-using DocxHeaderExtractor.Core.Pipeline;
-using DocxHeaderExtractor.Core.Repair;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Repair;
 
 namespace DocxHeaderExtractor.AgentHarness;
 

@@ -1,3 +1,5 @@
+using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.DocumentProcessing.Chunking;
 using System.Globalization;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -8,7 +10,7 @@ using LLama.Common;
 using LLama.Native;
 using LLama.Sampling;
 
-namespace DocxHeaderExtractor.Core.Llm;
+namespace DocxHeaderExtractor.Infrastructure.AI;
 
 /// <summary>
 /// Bọc LLamaSharp: nạp mô hình .gguf lượng tử hoá, chạy suy luận trên CPU cho từng khối XML.
@@ -19,13 +21,13 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     private readonly LLamaWeights _weights;
     private readonly ModelParams _modelParams;
     private readonly StatelessExecutor _executor;
-    private readonly LlamaOptions _options;
+    private readonly LocalModelOptions _options;
     private readonly bool _hasBuiltInTemplate;
     private readonly bool _usesQwen35Template;
     private PrefixCachedRunner? _prefixRunner;
 
     /// <summary>Số token dành sẵn cho system prompt (kèm ví dụ one-shot) và phần đệm template.</summary>
-    private const int SystemPromptReserve = LlamaOptions.FixedPromptTokens;
+    private const int SystemPromptReserve = LocalModelOptions.FixedPromptTokens;
 
     public string ModelName { get; }
     public int ContextSize => (int)(_modelParams.ContextSize ?? 0);
@@ -95,7 +97,7 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     private LlamaHeaderExtractor(
         LLamaWeights weights,
         ModelParams modelParams,
-        LlamaOptions options,
+        LocalModelOptions options,
         bool hasTemplate,
         bool usesQwen35Template)
     {
@@ -204,7 +206,7 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     /// thứ ba. Áp lên chính <paramref name="options"/> thì một hàm tên "Load" lại âm thầm sửa
     /// context/ngân sách khối của đối tượng người gọi đang giữ và dùng lại cho lượt chạy sau.
     /// </summary>
-    public static async Task<LlamaHeaderExtractor> LoadAsync(LlamaOptions options, CancellationToken ct = default)
+    public static async Task<LlamaHeaderExtractor> LoadAsync(LocalModelOptions options, CancellationToken ct = default)
     {
         // Giữ tham chiếu bản GỐC để ghi lại context đã CHỐT (xem khối AutoContextSize bên dưới).
         // Không ghi lại thì PrecisionCalibrationProfile.ConfigurationFor đọc bản gốc và ghi
@@ -212,7 +214,7 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
         // số ghi kèm cấu hình đo" mất hiệu lực đúng lúc nó cần nhất.
         var caller = options;
         options = options.Clone();
-        options.ApplyRecommendedModelProfile(new Chunking.ChunkingOptions { TokenBudget = options.ChunkTokenBudget });
+        options.ApplyRecommendedModelProfile(new ChunkingOptions { TokenBudget = options.ChunkTokenBudget });
         options.Validate();
 
         ConfigureNativeLogging(options.VerboseNativeLog, options.GpuLayerCount);
@@ -233,7 +235,7 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
         // hạ: sàn do người dùng/profile đặt vẫn được tôn trọng.
         if (options.AutoContextSize && DeclaredContextLength(weights.Metadata) is { } declared)
         {
-            var target = Math.Min(declared, LlamaOptions.MaxAutoContextSize);
+            var target = Math.Min(declared, LocalModelOptions.MaxAutoContextSize);
             if (target > modelParams.ContextSize)
             {
                 options.ContextSize = target;
@@ -423,11 +425,11 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
         }
 
         sw.Stop();
-        var parsed = ModelJson.Parse(raw, includeNonHeadings: true);
+        var parsed = HeadingProposalJson.Parse(raw, includeNonHeadings: true);
 
         // Chốt chặn chống ảo giác: bỏ mọi chỉ số không nằm trong khối, kẹp cấp về 1..9, khử trùng lặp.
         var seen = new HashSet<int>();
-        var kept = new List<ModelHeading>();
+        var kept = new List<HeadingClassificationProposal>();
         var explicitNonHeadings = new HashSet<int>();
         var rejectedRoles = new Dictionary<int, SemanticRole>();
         int rejected = 0;
@@ -506,7 +508,7 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
         await foreach (var token in _executor.InferAsync(prompt, parameters, ct)) sb.Append(token);
         sw.Stop();
         var raw = sb.ToString();
-        var parsed = ModelJson.Parse(raw, includeNonHeadings: true);
+        var parsed = HeadingProposalJson.Parse(raw, includeNonHeadings: true);
         return new ChunkResult(parsed, raw, 0, sw.ElapsedMilliseconds, new HashSet<int>());
     }
 

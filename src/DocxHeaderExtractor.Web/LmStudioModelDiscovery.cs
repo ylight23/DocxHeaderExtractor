@@ -1,6 +1,6 @@
 using System.Net.Http.Headers;
 using System.Text.Json;
-using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 
 namespace DocxHeaderExtractor.Web;
 
@@ -11,8 +11,10 @@ public sealed class LmStudioModelDiscovery(IHttpClientFactory httpClientFactory)
 {
     public async Task<IReadOnlyList<LmStudioModelEntry>> ListAsync(CancellationToken ct = default)
     {
-        var options = LmStudioOptions.FromEnvironment();
+        var options = RemoteInferenceOptions.FromEnvironment("lmstudio");
         options.Validate(requireModel: false);
+        if (!RemoteInferenceOptions.IsLoopback(options.Endpoint))
+            throw new InvalidOperationException("LMSTUDIO_ENDPOINT phải là địa chỉ loopback.");
         using var request = new HttpRequestMessage(HttpMethod.Get, options.ModelsEndpoint);
         if (!string.IsNullOrWhiteSpace(options.ApiKey))
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", options.ApiKey);

@@ -1,8 +1,8 @@
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Core.Eval;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.Eval;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 

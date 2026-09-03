@@ -1,5 +1,6 @@
-using DocxHeaderExtractor.Core.Chunking;
-using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.DocumentProcessing.Chunking;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Web;
 
@@ -13,7 +14,7 @@ public sealed class LlamaModelCache : IDisposable
     private ModelLoadKey? _key;
 
     public async Task<LlamaHeaderExtractor> GetAsync(
-        LlamaOptions options, ChunkingOptions chunking, CancellationToken ct)
+        LocalModelOptions options, ChunkingOptions chunking, CancellationToken ct)
     {
         options.ApplyRecommendedModelProfile(chunking);
         var key = ModelLoadKey.From(options);
@@ -38,7 +39,7 @@ public sealed class LlamaModelCache : IDisposable
     }
 
     // Extractor giữ cả cấu hình nạp lẫn cấu hình sampling, vì vậy khóa phải bao phủ toàn bộ
-    // LlamaOptions để request sau không dùng nhầm giới hạn token/grammar của request trước.
+    // LocalModelOptions để request sau không dùng nhầm giới hạn token/grammar của request trước.
     private sealed record ModelLoadKey(
         string Path,
         uint ContextSize,
@@ -53,7 +54,7 @@ public sealed class LlamaModelCache : IDisposable
         GrammarMode GrammarMode,
         bool VerboseNativeLog)
     {
-        public static ModelLoadKey From(LlamaOptions o) => new(
+        public static ModelLoadKey From(LocalModelOptions o) => new(
             System.IO.Path.GetFullPath(o.ModelPath), o.ContextSize, o.ChunkTokenBudget,
             o.MaxOutputTokens, o.Threads, o.BatchThreads, o.BatchSize, o.GpuLayerCount,
             o.Temperature, o.Seed, o.GrammarMode, o.VerboseNativeLog);

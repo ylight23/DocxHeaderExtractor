@@ -1,15 +1,17 @@
+using DocxHeaderExtractor.DocumentProcessing.Review;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Channels;
 using DocxHeaderExtractor.AgentHarness;
-using DocxHeaderExtractor.Core.Application.Features;
-using DocxHeaderExtractor.Core.Application.Policy;
-using DocxHeaderExtractor.Core.Eval;
+using DocxHeaderExtractor.DocumentProcessing.Features;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.Infrastructure.Learning;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.Application.Runtime;
 using DocxHeaderExtractor.Application.Feedback;
 using DocxHeaderExtractor.Application.Semantics;
@@ -294,13 +296,13 @@ app.MapPost("/api/extract", async (
                 events.Writer.TryWrite(new { type = "log", message = m });
             };
         if (options.Backend == InferenceBackend.LmStudio && options.ShowRawOutput)
-            options.LmStudio.DebugLog = options.Log;
+            options.Remote.DebugLog = options.Log;
         // Mọi backend áp dụng correction khớp chính xác sau suy luận. Local GGUF và LM Studio
         // được retrieval ví dụ tương tự; pipeline không gửi lịch sử correction ra OpenRouter.
         options.CorrectionMemoryPath = correctionMemory.PathOnDisk;
 
         // Dùng đúng extractor/options như pipeline để bundle review có stable ID khớp tài liệu.
-        var source = new AuthorityEvaluationSourceReader(options).Read(inputPath).Document;
+        var source = new AuthorityDocumentSourceReader(options).Read(inputPath).Document;
 
         // Hai backend dùng tài nguyên máy này cần khóa. OpenRouter có thể chạy đồng thời và không
         // được giữ hàng chỉ vì GPU local/LM Studio đang bận.
@@ -317,16 +319,16 @@ app.MapPost("/api/extract", async (
 
         try
         {
-            DocxHeaderExtractor.Core.Llm.IHeaderClassifier? classifier = null;
+            DocxHeaderExtractor.DocumentProcessing.Inference.IHeaderClassifier? classifier = null;
             if (!options.DisableLlm)
             {
                 classifier = options.Backend switch
                 {
-                    InferenceBackend.OpenRouter => new DocxHeaderExtractor.Core.Llm.OpenRouterHeaderExtractor(
-                        httpClientFactory.CreateClient("OpenRouter"), options.OpenRouter),
-                    InferenceBackend.LmStudio => new DocxHeaderExtractor.Core.Llm.LmStudioHeaderExtractor(
-                        httpClientFactory.CreateClient("LmStudio"), options.LmStudio),
-                    _ => await modelCache.GetAsync(options.Llama, options.Chunking, ct),
+                    InferenceBackend.OpenRouter => new DocxHeaderExtractor.Infrastructure.AI.OpenRouterHeaderExtractor(
+                        httpClientFactory.CreateClient("OpenRouter"), options.Remote),
+                    InferenceBackend.LmStudio => new DocxHeaderExtractor.Infrastructure.AI.LmStudioHeaderExtractor(
+                        httpClientFactory.CreateClient("LmStudio"), options.Remote),
+                    _ => await modelCache.GetAsync(options.LocalModel, options.Chunking, ct),
                 };
             }
             using var tool = classifier is null
@@ -432,7 +434,7 @@ app.MapPost("/api/extract", async (
 // Cấu hình log của llama.cpp một lần cho cả tiến trình, trước khi có request nào chạm native lib.
 // Native backend selection is process-wide, while GPU layer count remains per model load. Prefer
 // the backend bundled with this web executable so a later request can legitimately offload layers.
-DocxHeaderExtractor.Core.Llm.LlamaHeaderExtractor.ConfigureNativeLogging(verbose: false, gpuLayerCount: int.MaxValue);
+DocxHeaderExtractor.Infrastructure.AI.LlamaHeaderExtractor.ConfigureNativeLogging(verbose: false, gpuLayerCount: int.MaxValue);
 
 Console.OutputEncoding = Encoding.UTF8;
 Console.WriteLine($"dhx-ui đang chạy: {string.Join(", ", app.Urls.DefaultIfEmpty("http://localhost:5099"))}");

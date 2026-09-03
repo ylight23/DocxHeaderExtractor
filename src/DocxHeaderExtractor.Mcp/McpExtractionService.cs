@@ -1,9 +1,10 @@
 using System.Net.Http.Headers;
 using System.Text.Json;
 using DocxHeaderExtractor.AgentHarness;
-using DocxHeaderExtractor.Core.Chunking;
-using DocxHeaderExtractor.Core.Llm;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Chunking;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Mcp;
 
@@ -34,11 +35,13 @@ public sealed class McpExtractionService : IDisposable
             return new McpBackendStatus(true, "rules-only", "local", null, [], _options.AllowedRoots,
                 "Parser, rule và validator chạy cục bộ; LLM đã tắt bởi DHX_MCP_RULES_ONLY.");
 
-        LmStudioOptions lm;
+        RemoteInferenceOptions lm;
         try
         {
-            lm = LmStudioOptions.FromEnvironment();
+            lm = RemoteInferenceOptions.FromEnvironment("lmstudio");
             lm.Validate(requireModel: false);
+            if (!RemoteInferenceOptions.IsLoopback(lm.Endpoint))
+                throw new InvalidOperationException("LMSTUDIO_ENDPOINT phải là địa chỉ loopback.");
             var models = await ListModelsAsync(lm, ct);
             var selected = SelectModel(lm.Model, models, throwWhenAmbiguous: false);
             var ready = selected is not null;
@@ -73,7 +76,7 @@ public sealed class McpExtractionService : IDisposable
         IHeaderClassifier? classifier = null;
         if (!_options.RulesOnly)
         {
-            var lm = pipeline.LmStudio;
+            var lm = pipeline.Remote;
             var models = await ListModelsAsync(lm, ct);
             lm.Model = SelectModel(lm.Model, models, throwWhenAmbiguous: true)!;
             classifier = new LmStudioHeaderExtractor(_http, lm);
@@ -108,19 +111,21 @@ public sealed class McpExtractionService : IDisposable
 
     private PipelineOptions BuildPipelineOptions()
     {
-        var lm = LmStudioOptions.FromEnvironment();
+        var lm = RemoteInferenceOptions.FromEnvironment("lmstudio");
         lm.Validate(requireModel: false);
+        if (!RemoteInferenceOptions.IsLoopback(lm.Endpoint))
+            throw new InvalidOperationException("LMSTUDIO_ENDPOINT phải là địa chỉ loopback.");
 
         var maxOutput = Math.Min(768, lm.MaxOutputTokens);
-        var maxChunk = Math.Max(400, lm.ContextSize - maxOutput - LlamaOptions.FixedPromptTokens);
+        var maxChunk = Math.Max(400, lm.ContextSize - maxOutput - LocalModelOptions.FixedPromptTokens);
         var chunk = Math.Min(5_000, maxChunk);
 
         return new PipelineOptions
         {
             Backend = InferenceBackend.LmStudio,
             DisableLlm = _options.RulesOnly,
-            LmStudio = lm,
-            Llama = new LlamaOptions
+            Remote = lm,
+            LocalModel = new LocalModelOptions
             {
                 ContextSize = checked((uint)lm.ContextSize),
                 
@@ -140,7 +145,7 @@ public sealed class McpExtractionService : IDisposable
         };
     }
 
-    private async Task<IReadOnlyList<string>> ListModelsAsync(LmStudioOptions lm, CancellationToken ct)
+    private async Task<IReadOnlyList<string>> ListModelsAsync(RemoteInferenceOptions lm, CancellationToken ct)
     {
         using var request = new HttpRequestMessage(HttpMethod.Get, lm.ModelsEndpoint);
         if (!string.IsNullOrWhiteSpace(lm.ApiKey))

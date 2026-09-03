@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Runs one lane under a hard wall-clock budget. The returned timeout result intentionally does

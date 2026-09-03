@@ -1,8 +1,9 @@
 using UglyToad.PdfPig;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 using System.Text.RegularExpressions;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Uses a PDF line carrying the same labelled marker to ground the title boundary of a legal

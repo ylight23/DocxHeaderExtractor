@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 internal sealed record PdfSemanticBlock(
     string Id,

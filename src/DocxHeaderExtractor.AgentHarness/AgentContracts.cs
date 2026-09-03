@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.Application.Tasks;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.AgentHarness;
 

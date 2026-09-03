@@ -1,6 +1,6 @@
 using System.Net;
 using System.Text;
-using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -12,9 +12,10 @@ public sealed class LmStudioTests
         var handler = new CaptureHandler(
             """{"choices":[{"message":{"content":"{\"items\":[{\"i\":42,\"r\":\"h\",\"l\":2}]}"}}]}""");
         using var http = new HttpClient(handler);
-        using var model = new LmStudioHeaderExtractor(http, new LmStudioOptions
+        using var model = new LmStudioHeaderExtractor(http, new RemoteInferenceOptions
         {
             Model = "local/qwen",
+            Endpoint = new Uri("http://127.0.0.1:1234/v1/chat/completions"),
         });
 
         var result = await model.ClassifyAsync("DOCUMENT_VIEW", [42]);
@@ -35,7 +36,7 @@ public sealed class LmStudioTests
         using var http = new HttpClient(new CaptureHandler("{}"));
 
         var error = Assert.Throws<InvalidOperationException>(() =>
-            new LmStudioHeaderExtractor(http, new LmStudioOptions
+            new LmStudioHeaderExtractor(http, new RemoteInferenceOptions
             {
                 Model = "x",
                 Endpoint = new Uri("http://example.com/v1/chat/completions"),
@@ -51,9 +52,10 @@ public sealed class LmStudioTests
             """{"choices":[{"message":{"content":"{\"items\":[{\"i\":10,\"r\":\"h\",\"l\":1}]}"}}]}""",
             """{"choices":[{"message":{"content":"{\"items\":[{\"i\":20,\"r\":\"n\",\"l\":0}]}"}}]}""");
         using var http = new HttpClient(handler);
-        using var model = new LmStudioHeaderExtractor(http, new LmStudioOptions
+        using var model = new LmStudioHeaderExtractor(http, new RemoteInferenceOptions
         {
             Model = "local/model",
+            Endpoint = new Uri("http://127.0.0.1:1234/v1/chat/completions"),
             MissingIdRetries = 2,
         });
 
@@ -71,9 +73,10 @@ public sealed class LmStudioTests
         var handler = new CaptureHandler(
             """{"choices":[{"message":{"content":"{\"items\":[{\"i\":1,\"r\":\"n\",\"l\":0}]}"}}]}""");
         using var http = new HttpClient(handler);
-        using var model = new LmStudioHeaderExtractor(http, new LmStudioOptions
+        using var model = new LmStudioHeaderExtractor(http, new RemoteInferenceOptions
         {
             Model = "local/model",
+            Endpoint = new Uri("http://127.0.0.1:1234/v1/chat/completions"),
             ApiKey = "local-test-token",
         });
 

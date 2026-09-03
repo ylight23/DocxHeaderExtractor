@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Owns the short-lived checkpoint directory for one normal authority invocation.

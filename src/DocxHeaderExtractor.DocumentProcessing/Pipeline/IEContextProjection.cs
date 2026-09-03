@@ -1,6 +1,8 @@
+using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>Projects source-backed IE context; it does not create or validate facts.</summary>
 public static class IEContextProjection

@@ -1,7 +1,8 @@
 using System.Text.Json.Serialization;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Application.Processing;
+namespace DocxHeaderExtractor.DocumentProcessing;
 
 public enum DocumentProcessingMode
 {

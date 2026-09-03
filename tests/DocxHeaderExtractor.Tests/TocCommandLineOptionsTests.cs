@@ -1,5 +1,5 @@
 using DocxHeaderExtractor.Cli;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -166,8 +166,8 @@ public sealed class TocCommandLineOptionsTests
             var o = CommandLineOptions.Parse(["extract", "file.docx", "--nvidia"]);
 
             Assert.Equal(InferenceBackend.Sglang, o.Pipeline.Backend);
-            Assert.Equal("meta/llama-3.2-90b-vision-instruct", o.Pipeline.Sglang.Model);
-            Assert.Equal("https://integrate.api.nvidia.com/v1/chat/completions", o.Pipeline.Sglang.Endpoint.ToString());
+            Assert.Equal("meta/llama-3.2-90b-vision-instruct", o.Pipeline.Remote.Model);
+            Assert.Equal("https://integrate.api.nvidia.com/v1/chat/completions", o.Pipeline.Remote.Endpoint.ToString());
         }
         finally
         {

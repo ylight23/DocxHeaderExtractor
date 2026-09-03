@@ -1,7 +1,7 @@
-using DocxHeaderExtractor.Core.Llm;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 internal sealed record BoundaryCutPrompt(string SystemPrompt, string UserPrefix, string LabelWord);
 

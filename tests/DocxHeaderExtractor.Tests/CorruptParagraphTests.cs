@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.Tests;
 

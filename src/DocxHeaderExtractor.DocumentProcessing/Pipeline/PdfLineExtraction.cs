@@ -1,7 +1,7 @@
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Content;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Dòng PDF dựng lại từ letter theo toạ độ Y (không phải dòng logic OOXML). <see cref="BoldRatio"/>

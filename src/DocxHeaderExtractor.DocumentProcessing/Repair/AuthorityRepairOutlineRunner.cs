@@ -1,7 +1,8 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-namespace DocxHeaderExtractor.Core.Repair;
+namespace DocxHeaderExtractor.DocumentProcessing.Repair;
 
 /// <summary>
 /// Repair adapter that delegates outline production to the normal authority pipeline.

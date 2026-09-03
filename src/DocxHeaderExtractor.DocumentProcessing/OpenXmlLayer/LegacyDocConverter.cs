@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Runtime.Versioning;
 
-namespace DocxHeaderExtractor.Core.OpenXmlLayer;
+namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 /// <summary>
 /// OpenXML SDK chỉ đọc được định dạng OOXML (.docx). File .doc là định dạng nhị phân CFB đời cũ,

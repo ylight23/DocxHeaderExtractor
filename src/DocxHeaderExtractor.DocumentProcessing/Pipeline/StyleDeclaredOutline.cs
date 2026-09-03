@@ -1,9 +1,10 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Application.Policy;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Outline = ĐÚNG những gì tác giả đã khai bằng style Heading của Word, cấp suy từ ký hiệu đánh số.

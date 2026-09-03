@@ -3,13 +3,14 @@ using System.Text.Json;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Application.Policy;
-using DocxHeaderExtractor.Core.Application.Features;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
-using DocxHeaderExtractor.Core.Vision;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Features;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Vision;
 using UglyToad.PdfPig;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>Immutable visual source evidence for a region absent from the PDF text layer.</summary>
 internal sealed record PdfVisualSourceFacts(

@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Resolves an optional visual proposal against the text-model proposal without granting visual

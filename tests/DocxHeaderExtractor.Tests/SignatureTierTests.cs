@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -15,7 +16,7 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class SignatureTierTests
 {
-    private static (List<HeadingRecord> Headings, DocxHeaderExtractor.Core.Application.Policy.DocxPolicyState Document) Build(
+    private static (List<HeadingRecord> Headings, DocxHeaderExtractor.DocumentProcessing.Policy.DocxPolicyState Document) Build(
         params string[] texts)
     {
         var headings = new List<HeadingRecord>();

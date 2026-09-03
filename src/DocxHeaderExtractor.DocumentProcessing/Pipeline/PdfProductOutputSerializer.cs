@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// M9.3. Turns a decided <see cref="PdfFinalStructure"/> into the product's minimal heading shape.

@@ -1,8 +1,9 @@
 using System.Security.Cryptography;
 using System.Text;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>Validates source coordinates, schema shape, and semantic authority before materializing facts.</summary>
 public sealed class FactProposalValidator

@@ -1,7 +1,8 @@
 using System.Text.Json.Serialization;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// The canonical occurrence a validated fact belongs to. For a DOCX product the document is the

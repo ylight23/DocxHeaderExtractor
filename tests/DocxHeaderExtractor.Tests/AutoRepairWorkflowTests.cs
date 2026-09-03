@@ -1,6 +1,6 @@
-using DocxHeaderExtractor.Core.OpenXmlLayer;
-using DocxHeaderExtractor.Core.Pipeline;
-using DocxHeaderExtractor.Core.Repair;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Repair;
 
 namespace DocxHeaderExtractor.Tests;
 

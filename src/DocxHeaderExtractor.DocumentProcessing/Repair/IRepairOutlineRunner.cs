@@ -1,6 +1,7 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Repair;
+namespace DocxHeaderExtractor.DocumentProcessing.Repair;
 
 /// <summary>
 /// Repair-facing boundary for obtaining an outline from the current authority pipeline.

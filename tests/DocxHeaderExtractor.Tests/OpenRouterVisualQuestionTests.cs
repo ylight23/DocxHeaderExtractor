@@ -1,5 +1,5 @@
 using System.Net;
-using DocxHeaderExtractor.Core.Vision;
+using DocxHeaderExtractor.DocumentProcessing.Vision;
 
 namespace DocxHeaderExtractor.Tests;
 

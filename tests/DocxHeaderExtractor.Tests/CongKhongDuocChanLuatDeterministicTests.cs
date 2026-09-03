@@ -1,6 +1,7 @@
 using System.Reflection;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -22,7 +23,7 @@ public class CongKhongDuocChanLuatDeterministicTests
     public static TheoryData<string, string> MoiBasis()
     {
         var data = new TheoryData<string, string>();
-        foreach (var type in typeof(PrecisionAcceptanceGate).Assembly.GetTypes())
+        foreach (var type in typeof(PdfBookmarkOutline).Assembly.GetTypes())
         {
             var field = type.GetField("Basis",
                 BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);

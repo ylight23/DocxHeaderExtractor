@@ -1,6 +1,8 @@
+using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>Projects generic extraction into a search/index contract without an index SDK.</summary>
 public static class SearchIndexProjection

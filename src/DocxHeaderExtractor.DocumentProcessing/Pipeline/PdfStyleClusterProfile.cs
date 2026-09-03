@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Learns the visual style baseline of a PDF from the PDF itself. The body baseline is the

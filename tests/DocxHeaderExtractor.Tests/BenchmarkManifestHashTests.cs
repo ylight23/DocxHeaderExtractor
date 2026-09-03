@@ -1,6 +1,6 @@
 using System.Security.Cryptography;
 using System.Text;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 

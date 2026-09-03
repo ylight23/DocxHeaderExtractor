@@ -1,7 +1,7 @@
 using System.Text.Json;
-using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Last hierarchy stage for source-grounded headings that marker/structural evidence could not

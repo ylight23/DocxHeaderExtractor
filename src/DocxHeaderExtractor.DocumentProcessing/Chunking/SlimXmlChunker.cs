@@ -1,6 +1,6 @@
-using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
-namespace DocxHeaderExtractor.Core.Chunking;
+namespace DocxHeaderExtractor.DocumentProcessing.Chunking;
 
 /// <summary>
 /// Một khối các dòng prompt gửi cho mô hình. <see cref="CandidateIndexes"/> là những đoạn mô hình PHẢI

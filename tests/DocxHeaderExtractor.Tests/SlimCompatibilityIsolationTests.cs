@@ -8,7 +8,7 @@ public sealed class SlimCompatibilityIsolationTests
     public void Docx_authority_pipeline_exposes_only_native_run_contracts()
     {
         var type = Type.GetType(
-            "DocxHeaderExtractor.Core.Pipeline.DocxAuthorityPipeline, DocxHeaderExtractor.DocumentProcessing")
+            "DocxHeaderExtractor.DocumentProcessing.Pipeline.DocxAuthorityPipeline, DocxHeaderExtractor.DocumentProcessing")
             ?? throw new InvalidOperationException("Authority pipeline type not found.");
         var methods = type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
 

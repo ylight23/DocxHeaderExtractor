@@ -2,7 +2,7 @@ using System.Drawing;
 using PDFtoImage;
 using SkiaSharp;
 
-namespace DocxHeaderExtractor.Core.Vision;
+namespace DocxHeaderExtractor.DocumentProcessing.Vision;
 
 /// <summary>
 /// Kết xuất một vùng crop nhỏ trên một trang PDF thành PNG — mảnh còn thiếu duy nhất để bắt đầu vai

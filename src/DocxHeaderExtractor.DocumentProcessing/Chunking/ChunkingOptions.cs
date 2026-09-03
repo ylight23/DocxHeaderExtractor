@@ -1,10 +1,10 @@
-namespace DocxHeaderExtractor.Core.Chunking;
+namespace DocxHeaderExtractor.DocumentProcessing.Chunking;
 
 /// <summary>
 /// Cách cắt document view thành khối để hỏi mô hình. Đây là việc của PIPELINE, không của backend:
 /// cùng một tài liệu, cùng cách cắt, dù câu hỏi đi tới GGUF cục bộ, LM Studio hay OpenRouter.
 /// <para>
-/// Trước đây ba giá trị này nằm trong <c>LlamaOptions</c> — lớp mang tên backend GGUF, chỉ vì
+/// Trước đây ba giá trị này nằm trong <c>LocalModelOptions</c> — lớp mang tên backend GGUF, chỉ vì
 /// backend đó ra đời trước. Bốn hậu quả đã đo được:
 /// </para>
 /// <list type="number">

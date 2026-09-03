@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.Application.Capabilities;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.AgentHarness;

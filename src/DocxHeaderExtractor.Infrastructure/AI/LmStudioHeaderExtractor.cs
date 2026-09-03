@@ -1,10 +1,11 @@
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 
-namespace DocxHeaderExtractor.Core.Llm;
+namespace DocxHeaderExtractor.Infrastructure.AI;
 
 
 /// <summary>
@@ -15,7 +16,7 @@ namespace DocxHeaderExtractor.Core.Llm;
 public sealed class LmStudioHeaderExtractor : IHeaderClassifier
 {
     private readonly HttpClient _http;
-    private readonly LmStudioOptions _options;
+    private readonly RemoteInferenceOptions _options;
     private readonly bool _ownsHttp;
 
     // Giữ nguyên tiếng Việt có dấu thay vì \uXXXX — dùng cho cả body gửi đi lẫn dòng log debug.
@@ -24,16 +25,16 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
     };
 
-    public LmStudioHeaderExtractor(HttpClient http, LmStudioOptions options)
+    public LmStudioHeaderExtractor(HttpClient http, RemoteInferenceOptions options)
     {
         _http = http;
         _options = Validate(options);
     }
 
-    private LmStudioHeaderExtractor(HttpClient http, LmStudioOptions options, bool ownsHttp)
+    private LmStudioHeaderExtractor(HttpClient http, RemoteInferenceOptions options, bool ownsHttp)
         : this(http, options) => _ownsHttp = ownsHttp;
 
-    public static LmStudioHeaderExtractor CreateOwned(LmStudioOptions options) =>
+    public static LmStudioHeaderExtractor CreateOwned(RemoteInferenceOptions options) =>
         new(new HttpClient { Timeout = TimeSpan.FromMinutes(10) }, options, ownsHttp: true);
 
     public string ModelName => _options.Model;
@@ -78,7 +79,7 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
         var allowed = allAllowed.ToHashSet();
         var remaining = allAllowed.ToList();
         var seen = new HashSet<int>();
-        var kept = new Dictionary<int, ModelHeading>();
+        var kept = new Dictionary<int, HeadingClassificationProposal>();
         var explicitNonHeadings = new HashSet<int>();
         var rejectedRoles = new Dictionary<int, SemanticRole>();
         var rawOutputs = new List<string>();
@@ -105,7 +106,7 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
                 top_k = 1,
                 top_p = 0.9,
                 repeat_penalty = 1.0,
-                seed = LlamaOptions.SharedSamplerSeed,
+                seed = LocalModelOptions.SharedSamplerSeed,
                 // Heading classification is a structured extraction task. LM Studio's
                 // reasoning models can spend the whole small output budget on hidden
                 // reasoning and leave message.content empty; disable that channel so
@@ -147,7 +148,7 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
 
             var raw = ExtractContent(responseText);
             rawOutputs.Add(raw);
-            var parsed = ModelJson.Parse(raw, includeNonHeadings: true);
+            var parsed = HeadingProposalJson.Parse(raw, includeNonHeadings: true);
             var requestedThisAttempt = remaining.ToHashSet();
 
             foreach (var decision in parsed)
@@ -280,7 +281,7 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
             top_k = 1,
             top_p = 0.9,
             repeat_penalty = 1.0,
-            seed = LlamaOptions.SharedSamplerSeed,
+            seed = LocalModelOptions.SharedSamplerSeed,
             reasoning_effort = "none",
             max_tokens = 120,
             stream = false,
@@ -340,9 +341,13 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
         return oneLine.Length <= max ? oneLine : oneLine[..max] + "…";
     }
 
-    private static LmStudioOptions Validate(LmStudioOptions options)
+    private static RemoteInferenceOptions Validate(RemoteInferenceOptions options)
     {
         options.Validate();
+        if (!RemoteInferenceOptions.IsLoopback(options.Endpoint))
+            throw new InvalidOperationException("LMSTUDIO_ENDPOINT phải là địa chỉ loopback.");
+        if (options.ContextSize < 4096)
+            throw new InvalidOperationException("LM Studio ContextSize phải nằm trong khoảng 4096..1048576.");
         return options;
     }
 

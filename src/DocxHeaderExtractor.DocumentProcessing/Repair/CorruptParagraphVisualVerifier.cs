@@ -1,11 +1,12 @@
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
-using DocxHeaderExtractor.Core.Vision;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Vision;
 using UglyToad.PdfPig;
 
-namespace DocxHeaderExtractor.Core.Repair;
+namespace DocxHeaderExtractor.DocumentProcessing.Repair;
 
 public enum CorruptParagraphVisualVerdict
 {

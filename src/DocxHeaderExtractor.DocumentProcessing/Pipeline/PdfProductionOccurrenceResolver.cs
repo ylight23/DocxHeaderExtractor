@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Source-fact-only occurrence resolver. It selects or defers between repeated candidate

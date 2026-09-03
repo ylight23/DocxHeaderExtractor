@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Tách tiêu đề nằm LỌT GIỮA một paragraph.

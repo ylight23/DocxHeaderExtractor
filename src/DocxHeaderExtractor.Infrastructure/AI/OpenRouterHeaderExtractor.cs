@@ -1,9 +1,10 @@
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
 
-namespace DocxHeaderExtractor.Core.Llm;
+namespace DocxHeaderExtractor.Infrastructure.AI;
 
 /// <summary>
 /// RPC JSON qua OpenRouter Chat Completions. Mỗi request bắt buộc ZDR, cấm endpoint thu thập
@@ -12,19 +13,19 @@ namespace DocxHeaderExtractor.Core.Llm;
 public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
 {
     private readonly HttpClient _http;
-    private readonly OpenRouterOptions _options;
+    private readonly RemoteInferenceOptions _options;
     private readonly bool _ownsHttp;
 
-    public OpenRouterHeaderExtractor(HttpClient http, OpenRouterOptions options)
+    public OpenRouterHeaderExtractor(HttpClient http, RemoteInferenceOptions options)
     {
         _http = http;
         _options = Validate(options);
     }
 
-    private OpenRouterHeaderExtractor(HttpClient http, OpenRouterOptions options, bool ownsHttp)
+    private OpenRouterHeaderExtractor(HttpClient http, RemoteInferenceOptions options, bool ownsHttp)
         : this(http, options) => _ownsHttp = ownsHttp;
 
-    public static OpenRouterHeaderExtractor CreateOwned(OpenRouterOptions options) =>
+    public static OpenRouterHeaderExtractor CreateOwned(RemoteInferenceOptions options) =>
         new(new HttpClient { Timeout = TimeSpan.FromMinutes(5) }, options, ownsHttp: true);
 
     public string ModelName => _options.Model;
@@ -69,7 +70,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         var allowed = allAllowed.ToHashSet();
         var remaining = allAllowed.ToList();
         var seen = new HashSet<int>();
-        var kept = new Dictionary<int, ModelHeading>();
+        var kept = new Dictionary<int, HeadingClassificationProposal>();
         var explicitNonHeadings = new HashSet<int>();
         var rejectedRoles = new Dictionary<int, SemanticRole>();
         var rawOutputs = new List<string>();
@@ -104,7 +105,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
                     new { role = "user", content = constrainedUser },
                 },
                 // Qwen 2.5 7B công bố response_format nhưng strict JSON Schema không ổn định giữa
-                // các provider. json_object tương thích hơn; ModelJson + kiểm tra đủ ID bên dưới
+                // các provider. json_object tương thích hơn; HeadingProposalJson + kiểm tra đủ ID bên dưới
                 // vẫn từ chối mọi output sai cấu trúc hoặc thiếu quyết định.
                 response_format = new { type = "json_object" },
                 provider = new
@@ -143,7 +144,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
 
             var raw = ExtractContent(responseText);
             rawOutputs.Add(raw);
-            var parsed = ModelJson.Parse(raw, includeNonHeadings: true);
+            var parsed = HeadingProposalJson.Parse(raw, includeNonHeadings: true);
             var requestedThisAttempt = remaining.ToHashSet();
 
             foreach (var decision in parsed)
@@ -277,9 +278,13 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         return null;
     }
 
-    private static OpenRouterOptions Validate(OpenRouterOptions options)
+    private static RemoteInferenceOptions Validate(RemoteInferenceOptions options)
     {
         options.Validate();
+        if (string.IsNullOrWhiteSpace(options.ApiKey))
+            throw new InvalidOperationException("Chưa có OPENROUTER_API_KEY. API key chỉ được đọc ở server, không nhập trên trình duyệt.");
+        if (!options.Endpoint.Scheme.Equals(Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidOperationException("OpenRouter endpoint bắt buộc dùng HTTPS.");
         return options;
     }
 

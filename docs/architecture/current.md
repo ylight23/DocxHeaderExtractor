@@ -1,12 +1,13 @@
 # Current architecture contract
 
-Status: `ACTIVE — PHASE 1 CUTOVER`
+Status: `ACTIVE — PHASE 2 SOURCE-TREE HYGIENE`
 
-Baseline: `main@732c3505afc5dd312423ed0fa58056192fb39608`
+Baseline: `main@5678b454dc28c8bab811c5ce35a789d540fa82be`
 
-The architecture cutover is being developed on `architecture/auto-harness-phase1` in an isolated
-worktree. The Accuracy-99 branch is not a source of architecture changes and is not modified by
-this workstream.
+The Phase-2 source-tree hygiene work is being developed on
+`verification/auto-harness-phase2` in `C:\DocxHeaderExtractor-auto-harness-phase2`. The
+Accuracy-99 branch is not a source of architecture changes and is not modified by this
+workstream.
 
 ## Current host routes
 
@@ -49,10 +50,10 @@ retained for existing library/test callers and is not a second authority route.
 |---|---|---|
 | `Core` | pure source/structure/fact contracts and authority value objects/validators | no project or parser/render/provider package references |
 | `Application` | provider-independent intent, plan compiler, policy, projection, task/resource, capability, semantic-registry and runtime contracts | `Core` |
-| `DocumentProcessing` | DOCX/PDF source adapters, authority pipeline implementations, processing service, repair/eval compatibility | `Application`, `Core`; owns OpenXML/PdfPig/PDFtoImage |
+| `DocumentProcessing` | DOCX/PDF source adapters, authority pipeline implementations, processing service, bounded review/repair compatibility | `Application`, `Core`; owns OpenXML/PdfPig/PDFtoImage |
 | `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Application`, `DocumentProcessing`, `Core` |
 | `Web` | HTTP host and UI composition root | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure` |
-| `Cli` | command host and explicit evaluation/repair commands | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure`; optional Eval plugin bridge |
+| `Cli` | command host and explicit evaluation/repair commands | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure`, explicit `Eval` plugin bridge |
 | `Mcp` | MCP host and async job adapter | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure` |
 | `Eval` | evaluation/replay-only adapters | `Core`, `DocumentProcessing` |
 | `Infrastructure` | provider implementations, prompt/cache adapters, source infrastructure ports and fact-provider adapters | `Application`, `Core`, `DocumentProcessing` |
@@ -63,11 +64,10 @@ DocumentProcessing now owns source/parser/rendering and authority pipeline imple
 contains only package-free contracts/value objects/validators. Infrastructure now contains provider
 contracts, heading-provider implementations, prompt/cache
 adapters, fact-provider adapters, LLamaSharp/SGLang VLM adapters, and an allowlisted file resource
-resolver. Core exposes only the neutral classifier and visual-question seams. Web/MCP and the CLI normal, review, and evaluation paths wire the resolver
+resolver. Core exposes only package-free contracts. Web/MCP wire normal and review paths; CLI evaluation commands use an explicit Eval project boundary and the CLI normal path does not activate Eval. The hosts wire the resolver
 and trusted semantic registry into the common harness; the MCP subprocess worker composes the same
-source boundary plus runtime state adapters. CLI has no compile-time Eval reference; explicit
-evaluation commands use `EvaluationProjectionBridge` and never load that plugin on the normal
-extraction route.
+source boundary plus runtime state adapters. Evaluation commands use `EvaluationProjectionBridge`
+and the normal extraction route never activates the Eval project.
 
 ## Persisted artifacts and ownership
 
@@ -101,13 +101,13 @@ compatibility, keeps `DocxSlimExtractor` behind source preparation, and retains 
 only as an explicit input compatibility adapter before the canonical authority pipeline. The normal
 authority pipeline now receives normalized OOXML and has no converter call.
 
-The repeatable mechanical audit is `scripts/architecture-phase1-audit.ps1`. At the current
-checkpoint it passes project presence, central package versions, the Core project-reference
-boundary, heading-provider isolation, CLI compile-time Eval isolation, and host source/semantic
-composition checks. The broader final reachability and Core package-ownership gates remain open.
-The complete DoD check is `scripts/architecture-phase1-final-gate.ps1`; it is intentionally
-separate and currently reports those remaining blockers instead of treating the partial audit as
-publication evidence.
+The repeatable mechanical audits are `scripts/architecture-phase1-audit.ps1` and
+`scripts/source-tree-hygiene-gate.ps1`. The Phase-1 mechanical audit passes project presence,
+central package versions, the Core project-reference boundary, heading-provider isolation, the
+explicit CLI Eval bridge, and host source/semantic composition checks. The source-tree gate adds
+ownership, namespace, folder, Eval isolation, legacy-route, and duplicate-harness checks. The
+complete Phase-1 publication gate remains intentionally separate: this Phase-2 branch is not
+merged to `main`, so that gate must not be presented as publication evidence here.
 
 ## Phase control
 

@@ -1,8 +1,8 @@
-using DocxHeaderExtractor.Core.Chunking;
-using DocxHeaderExtractor.Core.Llm;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Chunking;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 public enum InferenceBackend
 {
@@ -18,14 +18,12 @@ public sealed class PipelineOptions
 
     /// <summary>
     /// Cách cắt khối — thuộc pipeline, không thuộc backend. Xem <see cref="ChunkingOptions"/> để
-    /// biết bốn lỗi đã đo được hồi ba giá trị này còn nằm trong <see cref="LlamaOptions"/>.
+    /// biết bốn lỗi đã đo được hồi ba giá trị này còn nằm trong <see cref="LocalModelOptions"/>.
     /// </summary>
     public ChunkingOptions Chunking { get; set; } = new();
 
-    public LlamaOptions Llama { get; set; } = new();
-    public OpenRouterOptions OpenRouter { get; set; } = OpenRouterOptions.FromEnvironment();
-    public LmStudioOptions LmStudio { get; set; } = LmStudioOptions.FromEnvironment();
-    public SglangOptions Sglang { get; set; } = SglangOptions.FromEnvironment();
+    public LocalModelOptions LocalModel { get; set; } = new();
+    public RemoteInferenceOptions Remote { get; set; } = RemoteInferenceOptions.FromEnvironment();
     public InferenceBackend Backend { get; set; }
 
     /// <summary>Bỏ qua LLM, chỉ dùng luật (nhanh, để đối chiếu).</summary>
@@ -303,7 +301,7 @@ public sealed class PipelineOptions
     /// MẶC ĐỊNH TẮT. Bật lên là hỏi lại theo lịch chứ không theo bằng chứng, và cái giá đã đo
     /// được: trên công văn 344 đoạn, lượt critic chạy 6 khối mất khoảng 37 phút rồi kết luận
     /// "giữ 14, bác 0" — không đổi một mục nào. Khi tắt, critic chỉ nhận hai nhóm: mục bằng chứng
-    /// yếu theo <see cref="ModelHeadingCriticGate"/>, và mục nằm trong khối mà mô hình có dấu hiệu
+    /// yếu theo <see cref="HeadingClassificationProposalCriticGate"/>, và mục nằm trong khối mà mô hình có dấu hiệu
     /// trôi (bịa chỉ số, hoặc sập về một cấp duy nhất).
     /// </para>
     /// <para>Giữ lại làm công tắc cho lúc cần siết precision bằng mọi giá, ví dụ khi hiệu chuẩn.</para>
@@ -346,7 +344,7 @@ public sealed class PipelineOptions
     public void PrepareLocalModelProfile()
     {
         if (DisableLlm || Backend != InferenceBackend.Local) return;
-        if (string.IsNullOrWhiteSpace(Llama.ModelPath)) return;
-        Llama.ApplyRecommendedModelProfile(Chunking);
+        if (string.IsNullOrWhiteSpace(LocalModel.ModelPath)) return;
+        LocalModel.ApplyRecommendedModelProfile(Chunking);
     }
 }

@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Document-family ontology derived from source facts. It is deliberately a small vocabulary of

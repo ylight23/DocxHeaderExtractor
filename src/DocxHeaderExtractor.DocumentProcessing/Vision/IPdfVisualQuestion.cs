@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.Vision;
+namespace DocxHeaderExtractor.DocumentProcessing.Vision;
 
 /// <summary>Minimal image-question contract used by PDF visual evidence stages.</summary>
 public interface IPdfVisualQuestion : IDisposable

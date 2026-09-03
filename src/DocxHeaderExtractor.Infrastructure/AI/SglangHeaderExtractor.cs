@@ -1,10 +1,11 @@
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 
-namespace DocxHeaderExtractor.Core.Llm;
+namespace DocxHeaderExtractor.Infrastructure.AI;
 
 
 /// <summary>
@@ -24,7 +25,7 @@ namespace DocxHeaderExtractor.Core.Llm;
 public sealed class SglangHeaderExtractor : IHeaderClassifier
 {
     private readonly HttpClient _http;
-    private readonly SglangOptions _options;
+    private readonly RemoteInferenceOptions _options;
     private readonly bool _ownsHttp;
 
     // Giữ nguyên tiếng Việt có dấu thay vì \uXXXX trong body gửi đi lẫn dòng log debug.
@@ -33,16 +34,16 @@ public sealed class SglangHeaderExtractor : IHeaderClassifier
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
     };
 
-    public SglangHeaderExtractor(HttpClient http, SglangOptions options)
+    public SglangHeaderExtractor(HttpClient http, RemoteInferenceOptions options)
     {
         _http = http;
         _options = Validate(options);
     }
 
-    private SglangHeaderExtractor(HttpClient http, SglangOptions options, bool ownsHttp)
+    private SglangHeaderExtractor(HttpClient http, RemoteInferenceOptions options, bool ownsHttp)
         : this(http, options) => _ownsHttp = ownsHttp;
 
-    public static SglangHeaderExtractor CreateOwned(SglangOptions options) =>
+    public static SglangHeaderExtractor CreateOwned(RemoteInferenceOptions options) =>
         new(new HttpClient { Timeout = TimeSpan.FromMinutes(10) }, options, ownsHttp: true);
 
     public string ModelName => _options.Model;
@@ -87,7 +88,7 @@ public sealed class SglangHeaderExtractor : IHeaderClassifier
         var allowed = allAllowed.ToHashSet();
         var remaining = allAllowed.ToList();
         var seen = new HashSet<int>();
-        var kept = new Dictionary<int, ModelHeading>();
+        var kept = new Dictionary<int, HeadingClassificationProposal>();
         var explicitNonHeadings = new HashSet<int>();
         var rejectedRoles = new Dictionary<int, SemanticRole>();
         var rawOutputs = new List<string>();
@@ -140,7 +141,7 @@ public sealed class SglangHeaderExtractor : IHeaderClassifier
 
             var raw = ExtractContent(responseText);
             rawOutputs.Add(raw);
-            var parsed = ModelJson.Parse(raw, includeNonHeadings: true);
+            var parsed = HeadingProposalJson.Parse(raw, includeNonHeadings: true);
             var requestedThisAttempt = remaining.ToHashSet();
 
             foreach (var decision in parsed)
@@ -360,7 +361,7 @@ public sealed class SglangHeaderExtractor : IHeaderClassifier
         return oneLine.Length <= max ? oneLine : oneLine[..max] + "…";
     }
 
-    private static SglangOptions Validate(SglangOptions options)
+    private static RemoteInferenceOptions Validate(RemoteInferenceOptions options)
     {
         options.Validate();
         return options;

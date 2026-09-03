@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using Xunit;
 
 namespace DocxHeaderExtractor.Tests;
@@ -102,7 +103,7 @@ public class StructuralHierarchyResolverTests
         Assert.Equal(3, headings.Single(h => h.Index == 2).Level);
     }
 
-    private static DocxHeaderExtractor.Core.Application.Policy.DocxPolicyState Doc(
+    private static DocxHeaderExtractor.DocumentProcessing.Policy.DocxPolicyState Doc(
         params (int Index, string Text)[] items) =>
         NativePolicyStateFactory.Create(items.Select(x => (x.Index, x.Text, (int?)null, (int?)null)));
 

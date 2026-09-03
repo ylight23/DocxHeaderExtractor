@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.OpenXmlLayer;
+namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 /// <summary>Role of a table containing a source paragraph.</summary>
 public enum TableRole

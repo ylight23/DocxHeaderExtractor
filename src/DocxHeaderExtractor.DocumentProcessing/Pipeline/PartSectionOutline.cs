@@ -1,8 +1,9 @@
-﻿using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Core.Application.Policy;
+using System.Text.RegularExpressions;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Helper for procurement/PDF text-layout documents with an outer PART / Section frame.

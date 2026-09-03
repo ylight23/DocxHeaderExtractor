@@ -1,5 +1,5 @@
-using DocxHeaderExtractor.Core.Llm;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Infrastructure.AI;
 
@@ -12,13 +12,13 @@ public sealed class HeaderClassifierFactory : IHeaderClassifierFactory
     {
         ArgumentNullException.ThrowIfNull(options);
         options.PrepareLocalModelProfile();
-        options.Llama.ChunkTokenBudget = options.Chunking.TokenBudget;
+        options.LocalModel.ChunkTokenBudget = options.Chunking.TokenBudget;
         return options.Backend switch
         {
-            InferenceBackend.OpenRouter => OpenRouterHeaderExtractor.CreateOwned(options.OpenRouter),
-            InferenceBackend.LmStudio => LmStudioHeaderExtractor.CreateOwned(options.LmStudio),
-            InferenceBackend.Sglang => SglangHeaderExtractor.CreateOwned(options.Sglang),
-            _ => await LlamaHeaderExtractor.LoadAsync(options.Llama, ct),
+            InferenceBackend.OpenRouter => OpenRouterHeaderExtractor.CreateOwned(options.Remote),
+            InferenceBackend.LmStudio => LmStudioHeaderExtractor.CreateOwned(options.Remote),
+            InferenceBackend.Sglang => SglangHeaderExtractor.CreateOwned(options.Remote),
+            _ => await LlamaHeaderExtractor.LoadAsync(options.LocalModel, ct),
         };
     }
 }

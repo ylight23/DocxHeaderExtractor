@@ -1,7 +1,8 @@
-﻿using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-using DocxHeaderExtractor.Core.Eval;
+using DocxHeaderExtractor.Eval;
 
 namespace DocxHeaderExtractor.Tests;
 

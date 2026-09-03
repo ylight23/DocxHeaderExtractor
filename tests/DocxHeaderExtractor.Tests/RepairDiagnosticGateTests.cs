@@ -1,5 +1,7 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Repair;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Repair;
+using DocxHeaderExtractor.Eval;
 
 namespace DocxHeaderExtractor.Tests;
 

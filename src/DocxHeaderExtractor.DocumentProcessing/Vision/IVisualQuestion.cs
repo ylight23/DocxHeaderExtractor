@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.Vision;
+namespace DocxHeaderExtractor.DocumentProcessing.Vision;
 
 /// <summary>Single-image visual question contract shared by local and OpenAI-compatible VLMs.</summary>
 public interface IVisualQuestion : IDisposable

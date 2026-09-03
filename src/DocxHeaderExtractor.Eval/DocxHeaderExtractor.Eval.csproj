@@ -4,11 +4,12 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>DocxHeaderExtractor.Core.Eval</RootNamespace>
+    <RootNamespace>DocxHeaderExtractor.Eval</RootNamespace>
     <AssemblyName>DocxHeaderExtractor.Eval</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
     <ProjectReference Include="..\DocxHeaderExtractor.Core\DocxHeaderExtractor.Core.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.DocumentProcessing\DocxHeaderExtractor.DocumentProcessing.csproj" />
   </ItemGroup>

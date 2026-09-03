@@ -1,5 +1,6 @@
-using DocxHeaderExtractor.Core.Application.Features;
+using DocxHeaderExtractor.DocumentProcessing.Features;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -58,7 +59,7 @@ public sealed class DocumentFeatureDeriverTests
     public void Feature_deriver_has_no_policy_dependency()
     {
         var sourcePath = Path.Combine(FindRepositoryRoot(),
-            "src", "DocxHeaderExtractor.DocumentProcessing", "Application", "Features", "DocumentFeatureDeriver.cs");
+            "src", "DocxHeaderExtractor.DocumentProcessing", "Features", "DocumentFeatureDeriver.cs");
         var source = File.ReadAllText(sourcePath);
 
         Assert.DoesNotContain("HeadingHeuristics", source, StringComparison.Ordinal);

@@ -1,9 +1,10 @@
-﻿using System.Collections.Immutable;
+using System.Collections.Immutable;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 internal sealed record PdfStructuralContainerObservation(
     string ContainerId,
@@ -86,7 +87,7 @@ public sealed record PdfCandidateStageTrace(
 /// </summary>
 internal sealed record PdfValidatedHeading(
     string SourceId,
-    DocxHeaderExtractor.Core.Models.TextOffsetSpan HeadingSpan,
+    DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan HeadingSpan,
     PdfBlockRole Role,
     string StructuralScope,
     string ValidationBasis);

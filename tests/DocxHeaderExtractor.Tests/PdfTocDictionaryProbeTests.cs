@@ -1,8 +1,8 @@
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
-public sealed class PdfTocDictionaryProbeTests
+public sealed class PdfTocDictionaryAnalyzerTests
 {
     [Fact]
     public void ProbeAnchorsDotLeaderTocEntriesByCanonicalPageMatch()
@@ -22,7 +22,7 @@ public sealed class PdfTocDictionaryProbeTests
             Line(67, 700, "Appendix"),
         };
 
-        var result = PdfTocDictionaryProbe.Analyze(lines);
+        var result = PdfTocDictionaryAnalyzer.Analyze(lines);
 
         Assert.Equal(10, result.TocPage);
         Assert.Equal(5, result.Entries);
@@ -51,7 +51,7 @@ public sealed class PdfTocDictionaryProbeTests
             Line(11, 700, "This ordinary body line ended in 2025"),
         };
 
-        var result = PdfTocDictionaryProbe.Analyze(lines);
+        var result = PdfTocDictionaryAnalyzer.Analyze(lines);
 
         Assert.Equal(5, result.Entries);
         Assert.Equal(5, result.ExactPageAnchors);
@@ -77,7 +77,7 @@ public sealed class PdfTocDictionaryProbeTests
             Line(70, 700, "FINANCIAL STATEMENTS AND INTERNAL CONTROL REPORTS"),
         };
 
-        var result = PdfTocDictionaryProbe.Analyze(lines);
+        var result = PdfTocDictionaryAnalyzer.Analyze(lines);
         var index = Assert.Single(result.Items, i => i.Title.StartsWith("Index to", StringComparison.Ordinal));
 
         Assert.Null(index.ExactAnchorPage);
@@ -104,7 +104,7 @@ public sealed class PdfTocDictionaryProbeTests
             Line(79, 700, "SECTION XV: AFFILIATED ORGANIZATIONS—IDA, IFC AND MIGA"),
         };
 
-        var result = PdfTocDictionaryProbe.Analyze(lines);
+        var result = PdfTocDictionaryAnalyzer.Analyze(lines);
         var affiliated = Assert.Single(result.Items, i => i.Title.StartsWith("Affiliated", StringComparison.Ordinal));
 
         Assert.Null(affiliated.ExactAnchorPage);

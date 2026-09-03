@@ -1,6 +1,6 @@
 using System.Text;
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 

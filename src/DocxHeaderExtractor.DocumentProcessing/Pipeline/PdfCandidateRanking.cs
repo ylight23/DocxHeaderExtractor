@@ -1,4 +1,4 @@
-﻿namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>Execution capability, deliberately independent of any provider or model name.</summary>
 public enum ModelTier

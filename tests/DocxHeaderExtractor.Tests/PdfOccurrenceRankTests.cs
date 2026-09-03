@@ -1,5 +1,5 @@
-using DocxHeaderExtractor.Core.Eval;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.Eval;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 

@@ -1,8 +1,9 @@
 using System.Net;
 using System.Text.Json;
-using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -79,7 +80,7 @@ public sealed class FactModelRuntimeTests
         var response = ProviderResponse(R8Response(FactProposalModelRequestBuilder.Build(request), "value", "p1", 7, 12));
         var handler = new CapturingHandler(response);
         using var client = new HttpClient(handler);
-        var adapter = new OpenRouterFactProposalModel(client, new OpenRouterOptions
+        var adapter = new OpenRouterFactProposalModel(client, new RemoteInferenceOptions
         {
             ApiKey = "secret-api-key",
             Model = "test-model",
@@ -109,7 +110,7 @@ public sealed class FactModelRuntimeTests
         var request = ModelRequest(Schema("test.value", Required("value")));
         var handler = new CapturingHandler(ProviderResponse(R8Response(FactProposalModelRequestBuilder.Build(request), "value", "p1", 7, 12)));
         using var client = new HttpClient(handler);
-        var adapter = new SglangFactProposalModel(client, new SglangOptions
+        var adapter = new SglangFactProposalModel(client, new RemoteInferenceOptions
         {
             Model = "test-sglang",
             Endpoint = new Uri("http://provider.test/v1/chat/completions"),
@@ -135,7 +136,7 @@ public sealed class FactModelRuntimeTests
         var request = ModelRequest(Schema("test.value", Required("value")));
         var handler = new CapturingHandler(ProviderResponse(R8Response(FactProposalModelRequestBuilder.Build(request), "value", "p1", 0, 999)));
         using var client = new HttpClient(handler);
-        var adapter = new SglangFactProposalModel(client, new SglangOptions
+        var adapter = new SglangFactProposalModel(client, new RemoteInferenceOptions
         {
             Model = "test-sglang",
             Endpoint = new Uri("http://provider.test/v1/chat/completions"),
@@ -156,7 +157,7 @@ public sealed class FactModelRuntimeTests
         var request = ModelRequest(Schema("test.value", Required("value")));
         var handler = new CapturingHandler("{\"choices\":[{\"message\":{}}]}");
         using var client = new HttpClient(handler);
-        var adapter = new OpenRouterFactProposalModel(client, new OpenRouterOptions
+        var adapter = new OpenRouterFactProposalModel(client, new RemoteInferenceOptions
         {
             ApiKey = "secret",
             Endpoint = new Uri("https://provider.test/v1/chat/completions"),
@@ -175,7 +176,7 @@ public sealed class FactModelRuntimeTests
         var request = ModelRequest(Schema("test.value", Required("value")));
         var handler = new CapturingHandler(new HttpResponseMessage(HttpStatusCode.TooManyRequests));
         using var client = new HttpClient(handler);
-        var adapter = new SglangFactProposalModel(client, new SglangOptions
+        var adapter = new SglangFactProposalModel(client, new RemoteInferenceOptions
         {
             Model = "test-sglang",
             Endpoint = new Uri("http://provider.test/v1/chat/completions"),

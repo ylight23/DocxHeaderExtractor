@@ -50,7 +50,7 @@ $coreProjectReferences = @([regex]::Matches($coreProjectText, '<ProjectReference
 Add-Finding "core-has-no-project-dependencies" ($coreProjectReferences.Count -eq 0) `
     ($(if ($coreProjectReferences.Count -eq 0) { "Core has no ProjectReference" } else { $coreProjectReferences -join ", " }))
 
-$coreLlmFiles = @(Get-ChildItem (Join-Path $rootPath "src\DocxHeaderExtractor.DocumentProcessing\Llm") `
+$coreLlmFiles = @(Get-ChildItem (Join-Path $rootPath "src\DocxHeaderExtractor.DocumentProcessing\Inference") `
     -Filter *.cs -File -ErrorAction SilentlyContinue)
 $coreProviderFiles = @($coreLlmFiles | Where-Object {
     (Get-Content -Raw $_.FullName) -match '\b(class|record)\s+\w*(HeaderExtractor|Provider|Runner)\b'
@@ -63,8 +63,12 @@ Add-Finding "core-has-no-llm-provider-packages" ($coreProviderPackages.Count -eq
     ($(if ($coreProviderPackages.Count -eq 0) { "Core has no direct LLM provider package" } else { "Core provider packages: " + ($coreProviderPackages -join ", ") }))
 
 $cliProject = Get-Content -Raw (Join-Path $rootPath "src\DocxHeaderExtractor.Cli\DocxHeaderExtractor.Cli.csproj")
-Add-Finding "cli-does-not-reference-eval" ($cliProject -notmatch 'DocxHeaderExtractor\.Eval') `
-    ($(if ($cliProject -notmatch 'DocxHeaderExtractor\.Eval') { "CLI has no Eval project reference" } else { "CLI still references DocxHeaderExtractor.Eval" }))
+$cliEvalReference = $cliProject -match 'DocxHeaderExtractor\.Eval'
+$cliBridgeForReference = $cliEvalReference -and (Test-Path (Join-Path $rootPath "src\DocxHeaderExtractor.Cli\EvaluationProjectionBridge.cs"))
+Add-Finding "cli-eval-reference-is-explicit" (!$cliEvalReference -or $cliBridgeForReference) `
+    ($(if (!$cliEvalReference) { "CLI has no Eval project reference" } elseif ($cliBridgeForReference) {
+        "CLI Eval reference is paired with the explicit evaluation projection bridge"
+    } else { "CLI Eval reference has no explicit evaluation projection bridge" }))
 
 $cliBridge = Join-Path $rootPath "src\DocxHeaderExtractor.Cli\EvaluationProjectionBridge.cs"
 $bridgeText = if (Test-Path $cliBridge) { Get-Content -Raw $cliBridge } else { "" }

@@ -1,5 +1,5 @@
 using System.Text.Json;
-using DocxHeaderExtractor.Core.Eval;
+using DocxHeaderExtractor.Eval;
 
 namespace DocxHeaderExtractor.Tests;
 

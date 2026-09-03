@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using System.Text;
 using LLama;
 using LLama.Batched;
@@ -5,7 +6,7 @@ using LLama.Common;
 using LLama.Native;
 using LLama.Sampling;
 
-namespace DocxHeaderExtractor.Core.Llm;
+namespace DocxHeaderExtractor.Infrastructure.AI;
 
 /// <summary>
 /// Chạy suy luận với phần prompt dùng chung được nạp MỘT LẦN.

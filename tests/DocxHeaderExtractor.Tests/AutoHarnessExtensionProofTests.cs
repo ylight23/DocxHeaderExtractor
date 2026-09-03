@@ -1,12 +1,14 @@
+using DocxHeaderExtractor.DocumentProcessing.Review;
 using DocxHeaderExtractor.Application.Capabilities;
 using DocxHeaderExtractor.Application.Feedback;
 using DocxHeaderExtractor.Application.Semantics;
 using DocxHeaderExtractor.Application.Tasks;
 using DocxHeaderExtractor.Application.Skills;
-using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
-using DocxHeaderExtractor.Core.Eval;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.Eval;
 using DocxHeaderExtractor.Infrastructure.Learning;
 using DocxHeaderExtractor.Infrastructure.Feedback;
 using DocxHeaderExtractor.Infrastructure.Sources;

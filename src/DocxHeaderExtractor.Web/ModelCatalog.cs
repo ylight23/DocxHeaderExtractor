@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Core.Llm;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 
 namespace DocxHeaderExtractor.Web;
 
@@ -50,7 +50,7 @@ public static class ModelCatalog
     /// Qwen2.5 và Llama 3.2 hiện đều cần 8192 với prompt cố định + ngân sách mặc định.
     /// </summary>
     private static uint SuggestCtx(string fileName) =>
-        LlamaOptions.SuggestedContextForModel(fileName);
+        LocalModelOptions.SuggestedContextForModel(fileName);
 
     private static IEnumerable<string> Directories()
     {

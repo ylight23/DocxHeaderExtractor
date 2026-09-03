@@ -1,6 +1,7 @@
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using System.Text;
 
-namespace DocxHeaderExtractor.Core.Llm;
+namespace DocxHeaderExtractor.Infrastructure.AI;
 
 /// <summary>
 /// Prompt và GBNF grammar cho tác vụ: từ view trung lập của tài liệu, chọn đoạn nào là tiêu đề.

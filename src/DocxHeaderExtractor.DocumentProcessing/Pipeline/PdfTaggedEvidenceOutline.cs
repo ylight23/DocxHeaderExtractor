@@ -1,9 +1,10 @@
 using System.Text;
-using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Uses a clean tagged-PDF tree as partial author evidence and supplements it with a generic,
@@ -20,7 +21,7 @@ internal static class PdfTaggedEvidenceOutline
         var pdf = PdfTextbookOutline.FindSiblingPdf(inputPath);
         if (pdf is null) return PdfTaggedEvidenceOutlineResult.NotApplicable("no-pdf");
 
-        var tags = PdfTaggedHeadingProbe.Analyze(pdf, paragraphs);
+        var tags = PdfTaggedHeadingAnalyzer.Analyze(pdf, paragraphs);
         var aligned = tags.Candidates.Where(c => c.DocxParagraphIndex is not null && c.HeadingSpan is not null).ToList();
         var levels = aligned.Select(c => c.Level).Distinct().OrderBy(x => x).ToList();
         // The route is deliberately narrow: automatic taggers commonly emit deep, dense /H* trees.
@@ -28,7 +29,7 @@ internal static class PdfTaggedEvidenceOutline
             return PdfTaggedEvidenceOutlineResult.NotApplicable(
                 $"untrusted-tag-tree:{aligned.Count}/{tags.Candidates.Count},levels={levels.Count}");
 
-        var titleByTaggedElement = PdfTaggedTitleGroundingProbe.Analyze(pdf, tags).Candidates
+        var titleByTaggedElement = PdfTaggedTitleGroundingAnalyzer.Analyze(pdf, tags).Candidates
             .Where(candidate => !string.IsNullOrWhiteSpace(candidate.GroundedTitle))
             .ToDictionary(candidate => (candidate.Page, candidate.Mcid), candidate => candidate.GroundedTitle!);
         if (titleByTaggedElement.Count != aligned.Count)
@@ -38,7 +39,7 @@ internal static class PdfTaggedEvidenceOutline
         var headings = aligned.Select(candidate => ToHeading(candidate, paragraphs,
                 titleByTaggedElement[(candidate.Page, candidate.MarkedContentIdentifier)]))
             .OrderBy(h => h.Index).ThenBy(h => h.HeadingSpan!.Start).ToList();
-        var markers = PdfRepeatedLabelMarkerProbe.Analyze(pdf).Series
+        var markers = PdfRepeatedLabelMarkerAnalyzer.Analyze(pdf).Series
             .Where(s => s.Markers.Count >= 3)
             .SelectMany(s => s.Markers)
             .OrderBy(m => m.Page).ThenByDescending(m => m.Y)

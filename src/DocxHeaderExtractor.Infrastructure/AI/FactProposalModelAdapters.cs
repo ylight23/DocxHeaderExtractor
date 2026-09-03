@@ -1,18 +1,20 @@
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-namespace DocxHeaderExtractor.Core.Llm;
+namespace DocxHeaderExtractor.Infrastructure.AI;
 
 /// <summary>OpenRouter transport adapter. Parsing and authority remain outside this class.</summary>
 public sealed class OpenRouterFactProposalModel : IFactProposalModel
 {
     private readonly HttpClient _http;
-    private readonly OpenRouterOptions _options;
+    private readonly RemoteInferenceOptions _options;
 
-    public OpenRouterFactProposalModel(HttpClient http, OpenRouterOptions options)
+    public OpenRouterFactProposalModel(HttpClient http, RemoteInferenceOptions options)
     {
         _http = http ?? throw new ArgumentNullException(nameof(http));
         _options = options ?? throw new ArgumentNullException(nameof(options));
@@ -96,9 +98,9 @@ public sealed class OpenRouterFactProposalModel : IFactProposalModel
 public sealed class SglangFactProposalModel : IFactProposalModel
 {
     private readonly HttpClient _http;
-    private readonly SglangOptions _options;
+    private readonly RemoteInferenceOptions _options;
 
-    public SglangFactProposalModel(HttpClient http, SglangOptions options)
+    public SglangFactProposalModel(HttpClient http, RemoteInferenceOptions options)
     {
         _http = http ?? throw new ArgumentNullException(nameof(http));
         _options = options ?? throw new ArgumentNullException(nameof(options));

@@ -1,5 +1,5 @@
-using DocxHeaderExtractor.Core.Eval;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.Eval;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -21,8 +21,8 @@ public sealed class MeasurementConfigSignatureTests
     {
         var a = new PipelineOptions();
         var b = new PipelineOptions();
-        a.Llama.GpuLayerCount = 20;
-        b.Llama.GpuLayerCount = 99;
+        a.LocalModel.GpuLayerCount = 20;
+        b.LocalModel.GpuLayerCount = 99;
 
         Assert.NotEqual(
             PrecisionCalibrationProfile.ConfigurationFor(a),
@@ -34,7 +34,7 @@ public sealed class MeasurementConfigSignatureTests
     {
         var a = new PipelineOptions();
         var b = new PipelineOptions();
-        b.Llama.Seed = a.Llama.Seed + 1;
+        b.LocalModel.Seed = a.LocalModel.Seed + 1;
 
         Assert.NotEqual(
             PrecisionCalibrationProfile.ConfigurationFor(a),

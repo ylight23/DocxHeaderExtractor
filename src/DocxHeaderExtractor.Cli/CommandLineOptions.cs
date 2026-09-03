@@ -1,6 +1,6 @@
-﻿using DocxHeaderExtractor.Core.Llm;
-using DocxHeaderExtractor.Core.Output;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.DocumentProcessing.Projection;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Cli;
 
@@ -32,7 +32,7 @@ public sealed class CommandLineOptions
     public bool WritebackHeadingStyles { get; private set; }
 
     /// <summary>Lệnh `toc-keys`: tỉ lệ khớp tối thiểu giữa mục lục và thân bài để nhận file.</summary>
-    public double TocMatchThreshold { get; private set; } = Core.Eval.TocAnswerKeyGenerator.DefaultMatchThreshold;
+    public double TocMatchThreshold { get; private set; } = DocxHeaderExtractor.Eval.TocAnswerKeyGenerator.DefaultMatchThreshold;
 
     /// <summary>Lệnh `toc-keys`: ghi cả key từng phần cho file dưới ngưỡng, đánh dấu partial_toc.</summary>
     public bool TocPartial { get; private set; }
@@ -137,7 +137,7 @@ public sealed class CommandLineOptions
     public static CommandLineOptions Parse(string[] args)
     {
         var o = new CommandLineOptions();
-        var llama = o.Pipeline.Llama;
+        var llama = o.Pipeline.LocalModel;
         var extraction = o.Pipeline.Extraction;
 
         if (args.Length == 0) { o.ShowHelp = true; return o; }
@@ -243,63 +243,74 @@ public sealed class CommandLineOptions
                 case "--llm-boundary-cut-fallback": o.Pipeline.LlmBoundaryCutFallback = true; break;
                 case "--openrouter":
                     o.Pipeline.Backend = InferenceBackend.OpenRouter;
+                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("openrouter");
                     break;
                 case "--openrouter-model":
                     o.Pipeline.Backend = InferenceBackend.OpenRouter;
-                    o.Pipeline.OpenRouter.Model = Next(a);
+                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("openrouter");
+                    o.Pipeline.Remote.Model = Next(a);
                     break;
                 case "--lmstudio":
                     o.Pipeline.Backend = InferenceBackend.LmStudio;
+                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("lmstudio");
                     break;
                 case "--lmstudio-model":
                     o.Pipeline.Backend = InferenceBackend.LmStudio;
-                    o.Pipeline.LmStudio.Model = Next(a);
+                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("lmstudio");
+                    o.Pipeline.Remote.Model = Next(a);
                     break;
                 case "--lmstudio-endpoint":
                     o.Pipeline.Backend = InferenceBackend.LmStudio;
-                    o.Pipeline.LmStudio.Endpoint = new Uri(Next(a), UriKind.Absolute);
+                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("lmstudio");
+                    o.Pipeline.Remote.Endpoint = new Uri(Next(a), UriKind.Absolute);
                     break;
                 case "--lmstudio-context":
                     o.Pipeline.Backend = InferenceBackend.LmStudio;
-                    o.Pipeline.LmStudio.ContextSize = int.Parse(Next(a));
+                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("lmstudio");
+                    o.Pipeline.Remote.ContextSize = int.Parse(Next(a));
                     break;
                 case "--sglang":
                     o.Pipeline.Backend = InferenceBackend.Sglang;
+                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
                     break;
                 case "--sglang-model":
                     o.Pipeline.Backend = InferenceBackend.Sglang;
-                    o.Pipeline.Sglang.Model = Next(a);
+                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
+                    o.Pipeline.Remote.Model = Next(a);
                     break;
                 case "--sglang-endpoint":
                     o.Pipeline.Backend = InferenceBackend.Sglang;
-                    o.Pipeline.Sglang.Endpoint = new Uri(Next(a), UriKind.Absolute);
+                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
+                    o.Pipeline.Remote.Endpoint = new Uri(Next(a), UriKind.Absolute);
                     break;
                 case "--sglang-api-key":
                     o.Pipeline.Backend = InferenceBackend.Sglang;
-                    o.Pipeline.Sglang.ApiKey = Next(a);
+                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
+                    o.Pipeline.Remote.ApiKey = Next(a);
                     break;
                 case "--sglang-context":
                     o.Pipeline.Backend = InferenceBackend.Sglang;
-                    o.Pipeline.Sglang.ContextSize = int.Parse(Next(a));
+                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
+                    o.Pipeline.Remote.ContextSize = int.Parse(Next(a));
                     break;
                 case "--nvidia-nim" or "--nvidia":
                     o.UseNvidiaNim = true;
                     o.Pipeline.Backend = InferenceBackend.Sglang;
-                    o.Pipeline.Sglang.Endpoint = new Uri("https://integrate.api.nvidia.com/v1/chat/completions");
-                    o.Pipeline.Sglang.ApiKey = Environment.GetEnvironmentVariable("NVIDIA_API_KEY") ?? "";
-                    o.Pipeline.Sglang.Model = Environment.GetEnvironmentVariable("NVIDIA_MODEL")
+                    o.Pipeline.Remote.Endpoint = new Uri("https://integrate.api.nvidia.com/v1/chat/completions");
+                    o.Pipeline.Remote.ApiKey = Environment.GetEnvironmentVariable("NVIDIA_API_KEY") ?? "";
+                    o.Pipeline.Remote.Model = Environment.GetEnvironmentVariable("NVIDIA_MODEL")
                         ?? "meta/llama-3.2-90b-vision-instruct";
-                    o.Pipeline.Sglang.RequestTimeoutSeconds = int.TryParse(
+                    o.Pipeline.Remote.RequestTimeoutSeconds = int.TryParse(
                         Environment.GetEnvironmentVariable("NVIDIA_REQUEST_TIMEOUT_SECONDS"), out var nvidiaTimeout)
                         ? Math.Clamp(nvidiaTimeout, 10, 600) : 90;
-                    o.Pipeline.Sglang.TransientRequestRetries = int.TryParse(
+                    o.Pipeline.Remote.TransientRequestRetries = int.TryParse(
                         Environment.GetEnvironmentVariable("NVIDIA_TRANSIENT_RETRIES"), out var nvidiaRetries)
                         ? Math.Clamp(nvidiaRetries, 0, 4) : 2;
-                    o.Pipeline.Sglang.ContextSize = 131072;
-                    o.Pipeline.Sglang.MaxOutputTokens = 384;
-                    o.Pipeline.Sglang.SendChatTemplateKwargs = false;
-                    o.Pipeline.Sglang.RequireJsonObjectResponse = true;
-                    if (string.IsNullOrWhiteSpace(o.Pipeline.Sglang.ApiKey))
+                    o.Pipeline.Remote.ContextSize = 131072;
+                    o.Pipeline.Remote.MaxOutputTokens = 384;
+                    o.Pipeline.Remote.SendChatTemplateKwargs = false;
+                    o.Pipeline.Remote.RequireJsonObjectResponse = true;
+                    if (string.IsNullOrWhiteSpace(o.Pipeline.Remote.ApiKey))
                         throw new InvalidOperationException("Thiếu NVIDIA_API_KEY cho --nvidia-nim.");
                     break;
                 case "--candidates-only": o.Pipeline.ReviewAllParagraphs = false; break;
@@ -550,7 +561,7 @@ public sealed class CommandLineOptions
                                     -p:UseVulkan=true (AMD/Intel/NVIDIA). Bản CPU bỏ qua.
               --chunk-tokens <n>    Ngân sách token mỗi khối document view (mặc định 2200)
               --chunk-candidates <n> Trần số ứng viên mỗi khối (mặc định 12). Khối càng dài,
-                                    mô hình càng dễ trượt theo dãy 0 — xem LlamaOptions.
+                                    mô hình càng dễ trượt theo dãy 0 — xem LocalModelOptions.
               --max-out <n>         Token đầu ra tối đa mỗi khối (mặc định 900)
               --overlap <n>         Số ứng viên chồng lấn giữa hai khối (mặc định 2)
               --temp <f>            Nhiệt độ (mặc định 0 = greedy)

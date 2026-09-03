@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Cli;
 
@@ -128,10 +128,10 @@ public sealed record BenchmarkRunProfile(IReadOnlyDictionary<string, string> Val
         var backend = options.Pipeline.Backend.ToString();
         var model = options.Pipeline.Backend switch
         {
-            InferenceBackend.OpenRouter => options.Pipeline.OpenRouter.Model,
-            InferenceBackend.Sglang => options.Pipeline.Sglang.Model,
-            InferenceBackend.LmStudio => options.Pipeline.LmStudio.Model,
-            _ => options.Pipeline.Llama.ModelPath,
+            InferenceBackend.OpenRouter => options.Pipeline.Remote.Model,
+            InferenceBackend.Sglang => options.Pipeline.Remote.Model,
+            InferenceBackend.LmStudio => options.Pipeline.Remote.Model,
+            _ => options.Pipeline.LocalModel.ModelPath,
         };
         return new BenchmarkRunProfile(new Dictionary<string, string>(StringComparer.Ordinal)
         {

@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -110,7 +111,7 @@ public class StyleNestingDepthTests
     /// <param name="items">
     /// <c>StyleLevel</c> null nghĩa là đoạn không mang style Heading built-in.
     /// </param>
-    private static DocxHeaderExtractor.Core.Application.Policy.DocxPolicyState Doc(
+    private static DocxHeaderExtractor.DocumentProcessing.Policy.DocxPolicyState Doc(
         bool LevelTrusted, params (int Index, string Text, int? StyleLevel)[] items)
     {
         // Ba vế của StyleTrust được đặt tay để test cô lập ĐÚNG vế đang kiểm. Vế NumberedDisagree là

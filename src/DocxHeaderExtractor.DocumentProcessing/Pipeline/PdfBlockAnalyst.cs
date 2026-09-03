@@ -1,8 +1,9 @@
-﻿using System.Text.Json;
-using DocxHeaderExtractor.Core.Llm;
+using System.Text.Json;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 internal enum PdfBlockRole
 {
@@ -29,10 +30,10 @@ internal sealed record PdfBlockDecision(
     PdfBlockRole Role,
     double Confidence,
     string Reason,
-    DocxHeaderExtractor.Core.Models.TextOffsetSpan? HeadingSpan = null,
+    DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan? HeadingSpan = null,
     string? ProposedParentId = null,
     PdfSemanticRole SemanticRole = PdfSemanticRole.Unknown,
-    DocxHeaderExtractor.Core.Models.TextOffsetSpan? ProposedSourceSpan = null);
+    DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan? ProposedSourceSpan = null);
 
 internal sealed record PdfBlockAnalysis(
     IReadOnlyList<PdfSemanticBlock> Blocks,
@@ -475,21 +476,21 @@ internal static class PdfBlockAnalyst
         return result;
     }
 
-    private static DocxHeaderExtractor.Core.Models.TextOffsetSpan? TryParseSpan(JsonElement item, string propertyName = "heading_span")
+    private static DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan? TryParseSpan(JsonElement item, string propertyName = "heading_span")
     {
         if (!item.TryGetProperty(propertyName, out var span) || span.ValueKind != JsonValueKind.Object ||
             !span.TryGetProperty("start", out var start) || !start.TryGetInt32(out var from) ||
             !span.TryGetProperty("end", out var end) || !end.TryGetInt32(out var to))
             return null;
-        return new DocxHeaderExtractor.Core.Models.TextOffsetSpan(from, to);
+        return new DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan(from, to);
     }
 
-    internal static IReadOnlyList<(string Id, DocxHeaderExtractor.Core.Models.TextOffsetSpan? Span)> ParsePointerSpans(
+    internal static IReadOnlyList<(string Id, DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan? Span)> ParsePointerSpans(
         string raw,
         IReadOnlyList<PdfSemanticBlock> blocks)
     {
         var allowed = blocks.Select(block => block.Id).ToHashSet(StringComparer.Ordinal);
-        var result = new List<(string Id, DocxHeaderExtractor.Core.Models.TextOffsetSpan? Span)>();
+        var result = new List<(string Id, DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan? Span)>();
         try
         {
             using var doc = JsonDocument.Parse(ExtractJsonObject(raw));

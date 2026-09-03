@@ -1,10 +1,11 @@
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Core.Application.Policy;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Mục lục của chính tài liệu là TUYÊN BỐ CỦA TÁC GIẢ về bố cục đáng lẽ phải có — kèm cả tên mục

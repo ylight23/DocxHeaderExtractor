@@ -1,12 +1,12 @@
-using DocxHeaderExtractor.Core.Chunking;
-using DocxHeaderExtractor.Core.Llm;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Chunking;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Web;
 
 /// <summary>
-/// Giá trị mặc định đọc thẳng từ <see cref="LlamaOptions"/> và <see cref="ExtractionOptions"/>,
+/// Giá trị mặc định đọc thẳng từ <see cref="LocalModelOptions"/> và <see cref="ExtractionOptions"/>,
 /// để giao diện không tự chép hằng số rồi lệch khỏi CLI khi Core đổi.
 /// </summary>
 public sealed record Defaults(
@@ -25,11 +25,11 @@ public sealed record Defaults(
 {
     public static Defaults Current()
     {
-        var llama = new LlamaOptions();
+        var llama = new LocalModelOptions();
         var chunking = new ChunkingOptions();
         var extraction = new ExtractionOptions();
         var gpu = HasGpuBackend();
-        var lmStudio = LmStudioOptions.FromEnvironment();
+        var lmStudio = RemoteInferenceOptions.FromEnvironment("lmstudio");
         return new Defaults(
             ChunkTokens: chunking.TokenBudget,
             // 6 là mức cân bằng giữa số request và độ chính xác ID/cấp trên Qwen 7B.
@@ -43,7 +43,7 @@ public sealed record Defaults(
             GpuLayers: gpu ? GpuLayersFromEnvironment(defaultValue: 20) : 0,
             GpuBackend: gpu,
             OpenRouterAvailable: !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY")),
-            OpenRouterModel: Environment.GetEnvironmentVariable("OPENROUTER_MODEL") ?? OpenRouterOptions.DefaultModel,
+            OpenRouterModel: Environment.GetEnvironmentVariable("OPENROUTER_MODEL") ?? RemoteInferenceOptions.DefaultModel,
             LmStudioEndpoint: lmStudio.Endpoint.GetLeftPart(UriPartial.Authority),
             LmStudioModel: lmStudio.Model,
             LmStudioContextSize: lmStudio.ContextSize,

@@ -1,6 +1,6 @@
 using System.Net;
 using System.Text;
-using DocxHeaderExtractor.Core.Vision;
+using DocxHeaderExtractor.DocumentProcessing.Vision;
 using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Tests;

@@ -1,8 +1,9 @@
+using DocxHeaderExtractor.DocumentProcessing.Review;
 using System.Text;
 using DocxHeaderExtractor.AgentHarness;
-using DocxHeaderExtractor.Core.Eval;
-using DocxHeaderExtractor.Core.OpenXmlLayer;
-using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.Eval;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Cli;
 
@@ -55,7 +56,7 @@ public static class EvalRunner
 
         using var tool = new PipelineDocumentExtractionTool(options);
         var harness = CliHarnessComposition.Create(pairs.Select(pair => pair.Docx), tool);
-        var sourceReader = new AuthorityEvaluationSourceReader(options);
+        var sourceReader = new AuthorityDocumentSourceReader(options);
         var scores = new List<DocScore>();
         var calibration = new PrecisionCalibrationBuilder(
             PrecisionCalibrationProfile.ConfigurationFor(options),
@@ -131,10 +132,10 @@ public static class EvalRunner
             ? "chỉ luật OpenXML"
             : options.Backend switch
             {
-                InferenceBackend.OpenRouter => options.OpenRouter.Model,
-                InferenceBackend.LmStudio => $"LM Studio/{options.LmStudio.Model}",
-                InferenceBackend.Sglang => $"SGLang/{options.Sglang.Model}",
-                _ => Path.GetFileNameWithoutExtension(options.Llama.ModelPath),
+                InferenceBackend.OpenRouter => options.Remote.Model,
+                InferenceBackend.LmStudio => $"LM Studio/{options.Remote.Model}",
+                InferenceBackend.Sglang => $"SGLang/{options.Remote.Model}",
+                _ => Path.GetFileNameWithoutExtension(options.LocalModel.ModelPath),
             };
 
         sb.AppendLine($"Bộ test: {suite.Documents} tài liệu · chế độ: {mode}");

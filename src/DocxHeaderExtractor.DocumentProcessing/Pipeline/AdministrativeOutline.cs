@@ -1,6 +1,7 @@
-﻿using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Bộ dựng outline TẤT ĐỊNH cho văn bản hành chính Việt Nam — hệ ký hiệu gõ tay
@@ -42,7 +43,7 @@ public static class AdministrativeOutline
     /// khác nhau — một chữ ký duy nhất không suy ra được quan hệ lồng nhau nào, và đoán bừa ở đó
     /// là đúng thứ file này sinh ra để tránh.
     /// </summary>
-    public static List<HeadingRecord> Build(IReadOnlyList<DocxHeaderExtractor.Core.Application.Policy.IPolicyParagraph> paragraphs, bool splitMergedParagraphs = true)
+    public static List<HeadingRecord> Build(IReadOnlyList<DocxHeaderExtractor.DocumentProcessing.Policy.IPolicyParagraph> paragraphs, bool splitMergedParagraphs = true)
     {
         var units = Units(paragraphs, splitMergedParagraphs);
         if (units.Count == 0) return [];
@@ -89,13 +90,13 @@ public static class AdministrativeOutline
         return result;
     }
 
-    private readonly record struct Unit(DocxHeaderExtractor.Core.Application.Policy.IPolicyParagraph Paragraph, string Text, NumberToken Token);
+    private readonly record struct Unit(DocxHeaderExtractor.DocumentProcessing.Policy.IPolicyParagraph Paragraph, string Text, NumberToken Token);
 
     /// <summary>
     /// Đơn vị đo là LÁT CẮT, không phải đoạn — bản chuyển PDF gộp cả trang vào một <c>w:p</c> nên
     /// 94% mốc nằm giữa đoạn (§47.1). Đoạn không bị gộp trả về chính nó.
     /// </summary>
-    private static List<Unit> Units(IReadOnlyList<DocxHeaderExtractor.Core.Application.Policy.IPolicyParagraph> paragraphs, bool splitMergedParagraphs)
+    private static List<Unit> Units(IReadOnlyList<DocxHeaderExtractor.DocumentProcessing.Policy.IPolicyParagraph> paragraphs, bool splitMergedParagraphs)
     {
         List<Unit> units = [];
         foreach (var p in paragraphs.OrderBy(x => x.Index))

@@ -1,7 +1,8 @@
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.Core.Repair;
+namespace DocxHeaderExtractor.DocumentProcessing.Repair;
 
 public sealed record RepairCandidateReport(
     string FormatVersion,
