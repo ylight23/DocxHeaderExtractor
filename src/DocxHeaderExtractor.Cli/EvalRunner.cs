@@ -54,7 +54,7 @@ public static class EvalRunner
                 "bảng nào ghi số tài liệu lớn hơn.");
 
         using var tool = new PipelineDocumentExtractionTool(options);
-        var harness = new DocumentAgentHarness(tool);
+        var harness = CliHarnessComposition.Create(pairs.Select(pair => pair.Docx), tool);
         var sourceReader = new AuthorityEvaluationSourceReader(options);
         var scores = new List<DocScore>();
         var calibration = new PrecisionCalibrationBuilder(

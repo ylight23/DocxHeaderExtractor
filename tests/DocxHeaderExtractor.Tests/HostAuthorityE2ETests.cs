@@ -7,9 +7,11 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using DocxHeaderExtractor.AgentHarness;
+using DocxHeaderExtractor.Application.Semantics;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.Infrastructure.Sources;
 using DocxHeaderExtractor.Mcp;
 using Microsoft.AspNetCore.Mvc.Testing;
 
@@ -75,6 +77,7 @@ public sealed class HostAuthorityE2ETests
     {
         var root = FindRepositoryRoot();
         var cli = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.Cli", "Program.cs"));
+        var cliComposition = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.Cli", "CliHarnessComposition.cs"));
         var web = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.Web", "Program.cs"));
         var mcp = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.Mcp", "McpExtractionService.cs"));
         var tool = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.AgentHarness", "DocumentExtractionTool.cs"));
@@ -90,6 +93,8 @@ public sealed class HostAuthorityE2ETests
         Assert.Contains("new PipelineDocumentExtractionTool", normalMcp);
         Assert.DoesNotContain("new AuthorityExtractionPipeline", normalMcp);
         Assert.Contains("new AuthorityExtractionPipeline", tool);
+        Assert.Contains("FileInputResourceResolver", cliComposition);
+        Assert.Contains("SemanticRegistryDefaults.Create", cliComposition);
 
         Assert.Equal(4, new[] { "CLI", "WEB", "MCP", "AGENT_HARNESS" }.Length);
     }
@@ -118,7 +123,9 @@ public sealed class HostAuthorityE2ETests
         using var service = new McpExtractionService(
             options,
             new McpPathPolicy(options),
-            new DocumentAgentHarnessFactory());
+            new DocumentAgentHarnessFactory(
+                new FileInputResourceResolver(options.AllowedRoots),
+                SemanticRegistryDefaults.Create()));
 
         var result = await service.ExtractAsync(fixture);
         Assert.Equal("rules-only", result.Backend);

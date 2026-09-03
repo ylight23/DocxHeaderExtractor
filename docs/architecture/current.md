@@ -61,10 +61,11 @@ retained for existing library/test callers and is not a second authority route.
 versions are centrally declared in `Directory.Packages.props` without changing the pinned versions.
 Infrastructure now contains provider contracts, heading-provider implementations, prompt/cache
 adapters, fact-provider adapters, and an allowlisted file resource resolver. Core exposes only the
-neutral classifier seam. Web and MCP wire the resolver into `DocumentAgentHarnessFactory`; CLI's
-standalone compatibility construction remains open for the final host cutover. CLI has no
-compile-time Eval reference; explicit evaluation commands use `EvaluationProjectionBridge` and
-never load that plugin on the normal extraction route.
+neutral classifier seam. Web/MCP and the CLI normal, review, and evaluation paths wire the resolver
+and trusted semantic registry into the common harness; the MCP subprocess worker composes the same
+source boundary plus runtime state adapters. CLI has no compile-time Eval reference; explicit
+evaluation commands use `EvaluationProjectionBridge` and never load that plugin on the normal
+extraction route.
 
 ## Persisted artifacts and ownership
 
@@ -91,8 +92,8 @@ those gates would risk breaking compatibility.
 
 The repeatable mechanical audit is `scripts/architecture-phase1-audit.ps1`. At the current
 checkpoint it passes project presence, central package versions, the Core project-reference
-boundary, heading-provider isolation, and CLI compile-time Eval isolation. Remaining checks cover
-the explicit optional evaluation bridge and the broader final reachability gate.
+boundary, heading-provider isolation, CLI compile-time Eval isolation, and host source/semantic
+composition checks. The broader final reachability and Core package-ownership gates remain open.
 
 ## Phase control
 

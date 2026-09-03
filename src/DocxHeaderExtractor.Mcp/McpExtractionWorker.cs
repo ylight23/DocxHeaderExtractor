@@ -1,4 +1,9 @@
 using DocxHeaderExtractor.AgentHarness;
+using DocxHeaderExtractor.Application.Runtime;
+using DocxHeaderExtractor.Application.Semantics;
+using DocxHeaderExtractor.Application.Tasks;
+using DocxHeaderExtractor.Infrastructure.Runtime;
+using DocxHeaderExtractor.Infrastructure.Sources;
 
 namespace DocxHeaderExtractor.Mcp;
 
@@ -15,7 +20,13 @@ public static class McpExtractionWorker
         {
             var options = DhxMcpOptions.FromEnvironment();
             var paths = new McpPathPolicy(options);
-            var factory = new DocumentAgentHarnessFactory();
+            await using var runStore = new JsonFileTaskRunStore(RuntimeStatePaths.RunDirectory);
+            await using var telemetry = new JsonLinesTaskTelemetrySink(RuntimeStatePaths.TelemetryPath);
+            var factory = new DocumentAgentHarnessFactory(
+                new FileInputResourceResolver(options.AllowedRoots),
+                SemanticRegistryDefaults.Create(),
+                runStore,
+                telemetry);
             using var extraction = new McpExtractionService(options, paths, factory);
             var result = await extraction.ExtractAsync(inputPath);
             store.Save(current with

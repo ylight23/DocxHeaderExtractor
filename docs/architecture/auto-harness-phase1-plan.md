@@ -22,10 +22,11 @@ tuning, or benchmark tuning.
   ownership and Eval isolation. Boundary project shells now exist, but the parent is not complete
   until provider/source package ownership, dependency direction, and Eval isolation pass. Provider
   implementations and an allowlisted file source resolver now live in Infrastructure; CLI no longer
-  has a compile-time Eval reference and uses an explicit evaluation-only plugin bridge. Web/MCP now
-  inject the resolver into the common harness; standalone CLI wiring and Core package purity remain
-  open. Evidence: `ffabc65`, `09f2c82`, `83581d1`,
-  `src/DocxHeaderExtractor.Infrastructure/Sources/FileInputResourceResolver.cs`, and
+  has a compile-time Eval reference and uses an explicit evaluation-only plugin bridge. Web/MCP and
+  CLI now inject the resolver into the common harness; Core package purity remains open. Evidence:
+  `ffabc65`, `09f2c82`, `83581d1`,
+  `src/DocxHeaderExtractor.Infrastructure/Sources/FileInputResourceResolver.cs`,
+  `src/DocxHeaderExtractor.Cli/CliHarnessComposition.cs`, and
   `src/DocxHeaderExtractor.Cli/EvaluationProjectionBridge.cs`.
 - [x] WS3 — Generic `InputResource` and `AgentTaskRequest`; legacy request adapter. Evidence:
   commit `0f67d4b`, `src/DocxHeaderExtractor.Application/Tasks/ResourceContracts.cs`,
@@ -50,7 +51,8 @@ tuning, or benchmark tuning.
   Progress: generic run status, failure, provenance, retry, cancellation, and deadline contracts
   exist; external-call budget is fail-closed in the application policy evaluator. Application now
   has a typed provider-failure retry executor that never retries cancellation, arbitrary exceptions,
-  or non-transient failures; lifecycle persistence integration remains open. Evidence: commits
+  or non-transient failures; the common harness now records lifecycle persistence when injected.
+  Evidence: commits
   `5af36a9`, `1fcb241`, `b33de5c`, `c828596`, and `TaskRetryExecutor` contract tests.
 - [ ] WS8 — Microsoft AI/Agent Framework seams and generic harness/skill catalog isolation.
 - [ ] WS9 — Generic source-grounded execution and non-authoritative projection/output negotiation.
@@ -63,6 +65,9 @@ tuning, or benchmark tuning.
   `1a40c24`, `src/DocxHeaderExtractor.Application/Runtime/RuntimeContracts.cs`,
   `src/DocxHeaderExtractor.Infrastructure/Runtime/`, lifecycle wiring commit, and contract tests.
 - [ ] WS11 — Web/CLI/MCP composition-root cutover with zero normal bypasses.
+  Progress: Web/MCP and the CLI normal, review, and evaluation paths now use the common allowlisted
+  source resolver and trusted semantic registry; the MCP subprocess worker composes the same source
+  boundary plus runtime state adapters. Final bypass/reachability proof remains open.
 - [ ] WS12 — Central build/package rules and architecture enforcement.
   Progress: package versions are centralized in `Directory.Packages.props`; the repeatable audit is
   `scripts/architecture-phase1-audit.ps1`. The audit passes provider isolation and remains blocked

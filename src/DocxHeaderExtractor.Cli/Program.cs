@@ -139,7 +139,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
     using IDocumentActionTool? actionTool = o.WritebackPath is null
         ? null
         : new PdfProductWritebackTool(o.Pipeline.Extraction);
-    var harness = new DocumentAgentHarness(tool, actionTool: actionTool);
+    var harness = CliHarnessComposition.Create(files, tool, actionTool);
     if (!o.Quiet)
         Console.Error.WriteLine($"  policy: {harness.Skill}");
     var outputs = new List<string>();
@@ -393,7 +393,7 @@ static async Task<int> RunReviewAsync(CommandLineOptions o, CancellationToken ct
     }
 
     using var tool = new PipelineDocumentExtractionTool(o.Pipeline);
-    var harness = new DocumentAgentHarness(tool);
+    var harness = CliHarnessComposition.Create(files, tool);
     foreach (var file in files)
     {
         if (!o.Quiet) Console.Error.WriteLine($"» Review: {Path.GetFileName(file)}");
