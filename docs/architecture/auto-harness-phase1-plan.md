@@ -19,8 +19,11 @@ tuning, or benchmark tuning.
 - [x] WS1 — Baseline, reachability, and canonical ADR. Evidence: `docs/architecture/current.md`,
   `docs/architecture/legacy-reachability.md`, `docs/architecture/clean-architecture-review.md`.
 - [ ] WS2 — Project boundaries: `Application`, `DocumentProcessing`, `Infrastructure`; package
-  ownership and Eval isolation.
-- [ ] WS3 — Generic `InputResource` and `AgentTaskRequest`; legacy request adapter.
+  ownership and Eval isolation. `Application` and `DocumentProcessing` exist, but the parent is not
+  complete until Infrastructure/package ownership and Eval isolation pass.
+- [x] WS3 — Generic `InputResource` and `AgentTaskRequest`; legacy request adapter. Evidence:
+  commit `0f67d4b`, `src/DocxHeaderExtractor.Application/Tasks/ResourceContracts.cs`,
+  `src/DocxHeaderExtractor.AgentHarness/GenericTaskRequestAdapter.cs`, and contract tests.
 - [ ] WS4 — Intent compiler: closed `IntentProposal`, validator states/clarification,
   provider-independent `SemanticTaskPlan`, bounded `ExecutionPlan`.
 - [ ] WS5 — Dynamic concepts/schema registries, alias/version/lifecycle, fail-closed resolution.
@@ -38,7 +41,8 @@ tuning, or benchmark tuning.
 
 ## Completed implementation slice
 
-- [x] Generic task envelope introduced in `DocxHeaderExtractor.AgentHarness`:
+- [x] Generic task envelope introduced in `DocxHeaderExtractor.Application` and consumed by
+  `DocxHeaderExtractor.AgentHarness`:
   `IntentProposal`, `ValidatedIntent`, `SemanticTaskPlan`, `ExecutionPlan`, `PolicyDecision`,
   `PromptDrivenProjection<T>`, and `GenericTaskResult<T>`.
 - [x] Existing `DocumentAgentHarness` emits the explicit intent/plan/capability/policy/
@@ -51,7 +55,8 @@ Evidence for this slice must be filled with the commit SHA after commit:
 
 ```text
 Commit: 38c65f3
-Files: src/DocxHeaderExtractor.AgentHarness/TaskContracts.cs,
+Files: src/DocxHeaderExtractor.Application/Tasks/TaskContracts.cs,
+  src/DocxHeaderExtractor.AgentHarness/DocumentTaskAdapters.cs,
        src/DocxHeaderExtractor.AgentHarness/DocumentAgentHarness.cs,
        src/DocxHeaderExtractor.Web/Program.cs,
        src/DocxHeaderExtractor.Cli/Program.cs,

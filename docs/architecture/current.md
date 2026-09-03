@@ -41,14 +41,16 @@ retained for existing library/test callers and is not a second authority route.
 | Project | Current role | Current references |
 |---|---|---|
 | `Core` | authority contracts, OpenXML/PDF/LLM implementation and pipeline (legacy mixed boundary) | package dependencies include OpenXML, PdfPig, PDFtoImage, LLamaSharp |
+| `Application` | provider-independent intent, plan, policy, projection, and task result contracts | `Core` |
+| `DocumentProcessing` | application processing service and processing contracts; delegates authority | `Application`, `Core` |
 | `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Core` |
 | `Web` | HTTP host and UI composition root | `AgentHarness`, `Core` |
 | `Cli` | command host and evaluation/repair commands | `AgentHarness`, `Core`, `Eval` |
 | `Mcp` | MCP host and async job adapter | `AgentHarness`, `Core` |
 | `Eval` | evaluation/replay-only adapters | `Core` |
 
-The desired `Application`, `DocumentProcessing`, and `Infrastructure` projects do not yet exist in
-the baseline. Their absence is an open Phase 1 workstream, not silently treated as complete.
+The desired `Infrastructure` project does not yet exist. `Application` and `DocumentProcessing` are
+now present, while package/provider ownership and deeper Core purity remain open Phase 1 work.
 
 ## Persisted artifacts and ownership
 
