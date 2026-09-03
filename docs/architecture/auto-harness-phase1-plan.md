@@ -51,8 +51,8 @@ tuning, or benchmark tuning.
   `scripts/architecture-phase1-audit.ps1`. Current audit is BLOCKED only on provider implementations
   still in Core and the CLI→Eval project reference; heading provider implementations and prompt/cache
   code now live in Infrastructure, with Core consuming `IHeaderClassifierFactory`. Evidence:
-  provider seam commits in the current worktree and the audit script. Dependency-direction gates
-  remain open for CLI/Eval.
+  provider seam commits `7a0e651` and `cb113e9`, plus the audit script. The audit passes provider
+  isolation and remains blocked only on CLI/Eval.
 - [ ] WS13 — Final reachability/dead-code/root-hygiene audit and only justified deletions.
 - [ ] WS14 — Extension contract proof for capability, concept/schema, provider, source, and task.
 - [ ] WS15 — Phase 2 test seams prepared without running quality/provider tests.
