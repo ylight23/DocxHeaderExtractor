@@ -56,6 +56,7 @@ public static class TaskPlanCompiler
         {
             MaxWallTime = request.Budget?.MaxWallTime,
             Retry = retry,
+            ExternalTransferRequired = capability.SendsDataExternally,
         };
 
         return new CompiledTaskPlan(semantic, execution);

@@ -93,6 +93,7 @@ public sealed class AutoHarnessArchitectureContractTests
         Assert.Equal(first.Semantic.PlanId, second.Semantic.PlanId);
         Assert.Equal(8, first.Execution.MaxSteps);
         Assert.Equal(0, first.Execution.MaxExternalCalls);
+        Assert.False(first.Execution.ExternalTransferRequired);
         Assert.Equal("extract", first.Execution.Steps[0].CapabilityId);
         Assert.Equal(TaskRunStatus.Failed, new GenericTaskResult<string>(
             Guid.NewGuid(), first.Semantic.PlanId, "not-a-status",
@@ -100,5 +101,27 @@ public sealed class AutoHarnessArchitectureContractTests
             DateTimeOffset.UtcNow, DateTimeOffset.UtcNow).StatusCode);
         Assert.True(first.Execution.CancellationSupported);
         Assert.Equal(1, first.Execution.Retry.MaxAttempts);
+    }
+
+    [Fact]
+    public void Remote_capability_with_zero_provider_budget_is_denied()
+    {
+        var request = new AgentTaskRequest(
+            "inspect",
+            [new InputResource("doc-1", InputResourceKind.Document, "a.docx", "application/docx", "opaque:a")],
+            new AgentTaskPermissions(AllowExternalDataTransfer: true),
+            Budget: new TaskBudget(MaxProviderCalls: 0));
+        var intent = new ValidatedIntent(
+            "extract-document-structure", ["document-structure"], [], "document", null,
+            "outline", [], false);
+        var capability = new DocxHeaderExtractor.Application.Capabilities.CapabilityDescriptor(
+            "remote", "test", DocxHeaderExtractor.Application.Capabilities.CapabilityRisk.Medium,
+            SendsDataExternally: true, MutatesExternalState: false);
+
+        var plan = TaskPlanCompiler.Compile(request, intent, capability, "input", "output");
+        var decision = PolicyEvaluator.Evaluate(plan.Execution, true, false, false);
+
+        Assert.Equal(PolicyDecisionKind.Denied, decision.Kind);
+        Assert.Equal("external-call-budget-exhausted", decision.Code);
     }
 }
