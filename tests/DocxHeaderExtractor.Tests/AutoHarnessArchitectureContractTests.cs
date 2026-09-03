@@ -150,4 +150,19 @@ public sealed class AutoHarnessArchitectureContractTests
         Assert.False(draft.IsResolved);
         Assert.False(missing.IsResolved);
     }
+
+    [Fact]
+    public void Runtime_contracts_redact_secrets_and_validate_storage_identity()
+    {
+        var key = new DocxHeaderExtractor.Application.Runtime.RunStorageKey("run-1");
+        key.Validate();
+
+        var redacted = new DocxHeaderExtractor.Application.Runtime.SecretRedactor().Redact(
+            "Authorization: Bearer abc.def api_key='sk-test' token=xyz");
+
+        Assert.DoesNotContain("abc.def", redacted);
+        Assert.DoesNotContain("sk-test", redacted);
+        Assert.DoesNotContain("xyz", redacted);
+        Assert.Contains("[REDACTED]", redacted);
+    }
 }
