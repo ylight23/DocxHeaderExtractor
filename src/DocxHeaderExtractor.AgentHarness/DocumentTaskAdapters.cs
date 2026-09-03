@@ -1,6 +1,4 @@
 using DocxHeaderExtractor.Application.Tasks;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
@@ -21,31 +19,16 @@ internal static class DocumentTaskAdapters
             [],
             request.WantsAction);
 
-    public static SemanticTaskPlan CreateSemanticPlan(
+    public static CompiledTaskPlan Compile(
+        AgentTaskRequest request,
         ValidatedIntent intent,
         AgentToolSelection selection) =>
-        new(
-            "plan-" + Convert.ToHexString(SHA256.HashData(
-                Encoding.UTF8.GetBytes(intent.Operation + "\n" + selection.Extraction.Descriptor.Name)))
-                .ToLowerInvariant()[..16],
-            1,
-            "document-extraction",
-            intent);
-
-    public static ExecutionPlan CreateExecutionPlan(
-        SemanticTaskPlan plan,
-        AgentToolSelection selection,
-        AgentSkill skill) =>
-        new(
-            plan.PlanId,
-            [new ExecutionStep(
-                "extract-structure",
-                selection.Extraction.Descriptor.Name,
-                [],
-                "DocumentAgentRequest",
-                "DocumentOutline")],
-            1,
-            selection.Extraction.Descriptor.SendsDataExternally ? 1 : 0);
+        TaskPlanCompiler.Compile(
+            request,
+            intent,
+            selection.Extraction.Descriptor,
+            "DocumentAgentRequest",
+            "DocumentOutline");
 
     public static PolicyDecision EvaluatePolicy(
         ExecutionPlan plan,

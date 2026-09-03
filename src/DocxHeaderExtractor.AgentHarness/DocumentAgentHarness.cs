@@ -117,10 +117,11 @@ public sealed class DocumentAgentHarness
             var selection = _registry.Select(request);
             var tool = selection.Extraction;
             var actionTool = selection.Action;
-            var semanticPlan = DocumentTaskAdapters.CreateSemanticPlan(intent, selection);
+            var compiledPlan = DocumentTaskAdapters.Compile(genericRequest, intent, selection);
+            var semanticPlan = compiledPlan.Semantic;
             await EmitAsync("plan.semantic", AgentRunEventKind.Completed,
                 $"SemanticTaskPlan={semanticPlan.TaskName}.");
-            var executionPlan = DocumentTaskAdapters.CreateExecutionPlan(semanticPlan, selection, _skill);
+            var executionPlan = compiledPlan.Execution;
             await EmitAsync("plan.execution", AgentRunEventKind.Completed,
                 $"ExecutionPlan dùng capability {executionPlan.Steps[0].CapabilityId}.");
             await EmitAsync("plan.tools", AgentRunEventKind.Passed, $"Chọn {selection.Rationale}");

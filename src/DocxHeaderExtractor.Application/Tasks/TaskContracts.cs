@@ -100,7 +100,11 @@ public static class IntentValidator
         if (string.IsNullOrWhiteSpace(proposal.OutputShape)) reasons.Add("output-shape-missing");
         if (proposal.StructuralDepth is < 0) reasons.Add("structural-depth-invalid");
         if (reasons.Count > 0)
-            return new(IntentState.Rejected, null, reasons);
+        {
+            var canClarify = reasons.All(reason =>
+                reason is "operation-missing" or "granularity-missing" or "output-shape-missing");
+            return new(canClarify ? IntentState.NeedsClarification : IntentState.Rejected, null, reasons);
+        }
 
         if (!string.Equals(proposal.Operation, "extract-document-structure", StringComparison.Ordinal))
             return new(IntentState.Unsupported, null, ["operation-unsupported"]);
