@@ -18,8 +18,8 @@
 
   <ItemGroup>
     <!-- Stable official MCP C# SDK. Stdio is the local transport expected by LM Studio mcp.json. -->
-    <PackageReference Include="ModelContextProtocol" Version="1.4.1" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.6" />
+    <PackageReference Include="ModelContextProtocol" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
   </ItemGroup>
 
 </Project>

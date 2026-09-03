@@ -27,9 +27,9 @@
       vulkan-1.dll của driver. Chỉ đặt MỘT trong hai cờ: bật cả hai thì cả hai gói
       cùng đổ native lib vào runtimes/ và LLamaSharp sẽ chọn theo thứ tự riêng của nó.
     -->
-    <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.27.0" Condition="'$(UseCuda)' != 'true' AND '$(UseVulkan)' != 'true'" />
-    <PackageReference Include="LLamaSharp.Backend.Cuda12" Version="0.27.0" Condition="'$(UseCuda)' == 'true'" />
-    <PackageReference Include="LLamaSharp.Backend.Vulkan" Version="0.27.0" Condition="'$(UseVulkan)' == 'true'" />
+    <PackageReference Include="LLamaSharp.Backend.Cpu" Condition="'$(UseCuda)' != 'true' AND '$(UseVulkan)' != 'true'" />
+    <PackageReference Include="LLamaSharp.Backend.Cuda12" Condition="'$(UseCuda)' == 'true'" />
+    <PackageReference Include="LLamaSharp.Backend.Vulkan" Condition="'$(UseVulkan)' == 'true'" />
   </ItemGroup>
 
   <ItemGroup>
