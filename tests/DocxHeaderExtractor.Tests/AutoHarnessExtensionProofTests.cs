@@ -31,6 +31,18 @@ public sealed class AutoHarnessExtensionProofTests
     }
 
     [Fact]
+    public void Trusted_semantic_extensions_are_registered_without_model_inference()
+    {
+        var registry = SemanticRegistryDefaults.Create([
+            new SemanticDefinition("custom.schema", 1, SemanticDefinitionKind.Schema,
+                SemanticDefinitionLifecycle.Active, ["custom-output"]),
+        ]);
+
+        Assert.True(registry.Resolve("custom-output", SemanticDefinitionKind.Schema).IsResolved);
+        Assert.False(registry.Resolve("model-invented").IsResolved);
+    }
+
+    [Fact]
     public async Task Extension_points_compose_without_provider_calls()
     {
         var root = Path.Combine(Path.GetTempPath(), "dhx-extension-" + Guid.NewGuid().ToString("N"));

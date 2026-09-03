@@ -43,7 +43,7 @@ public sealed record SemanticResolution(
 /// </summary>
 public static class SemanticRegistryDefaults
 {
-    public static SemanticRegistry Create()
+    public static SemanticRegistry Create(IEnumerable<SemanticDefinition>? trustedExtensions = null)
     {
         var registry = new SemanticRegistry();
         registry.Register(new SemanticDefinition(
@@ -52,6 +52,8 @@ public static class SemanticRegistryDefaults
         registry.Register(new SemanticDefinition(
             "document.outline", 1, SemanticDefinitionKind.Schema,
             SemanticDefinitionLifecycle.Active, ["outline", "document-outline"]));
+        foreach (var extension in trustedExtensions ?? [])
+            registry.Register(extension);
         return registry;
     }
 }
