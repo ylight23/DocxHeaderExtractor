@@ -2,6 +2,7 @@ using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Application.Tasks;
 using DocxHeaderExtractor.Application.Runtime;
 using DocxHeaderExtractor.Infrastructure.Runtime;
+using DocxHeaderExtractor.Infrastructure.Sources;
 using System.Text.Json;
 
 namespace DocxHeaderExtractor.Tests;
@@ -217,6 +218,37 @@ public sealed class AutoHarnessArchitectureContractTests
         finally
         {
             if (Directory.Exists(directory)) Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task File_resource_resolver_requires_an_allowlisted_source_root()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-phase1-source-" + Guid.NewGuid().ToString("N"));
+        var outside = Path.Combine(Path.GetTempPath(), "dhx-phase1-outside-" + Guid.NewGuid().ToString("N") + ".txt");
+        var inside = Path.Combine(root, "input.txt");
+        try
+        {
+            Directory.CreateDirectory(root);
+            await File.WriteAllTextAsync(inside, "source");
+            await File.WriteAllTextAsync(outside, "outside");
+            var resolver = new FileInputResourceResolver([root]);
+            var resource = new InputResource("r1", InputResourceKind.Text, "input.txt", "text/plain", inside);
+
+            var resolved = await resolver.ResolveAsync(resource);
+            await using (resolved.Content)
+            {
+                using var reader = new StreamReader(resolved.Content);
+                Assert.Equal("source", await reader.ReadToEndAsync());
+            }
+
+            await Assert.ThrowsAsync<UnauthorizedAccessException>(async () =>
+                await resolver.ResolveAsync(resource with { Locator = outside }).AsTask());
+        }
+        finally
+        {
+            if (File.Exists(outside)) File.Delete(outside);
+            if (Directory.Exists(root)) Directory.Delete(root, recursive: true);
         }
     }
 }

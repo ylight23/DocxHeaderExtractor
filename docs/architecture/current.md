@@ -58,8 +58,9 @@ retained for existing library/test callers and is not a second authority route.
 `Application`, `DocumentProcessing`, and `Infrastructure` project boundaries now exist. Package
 versions are centrally declared in `Directory.Packages.props` without changing the pinned versions.
 Infrastructure now contains provider contracts, heading-provider implementations, prompt/cache
-adapters, and fact-provider adapters. Core exposes only the neutral classifier seam; source-adapter
-ownership and Eval isolation remain open Phase 1 work.
+adapters, fact-provider adapters, and an allowlisted file resource resolver. Core exposes only the
+neutral classifier seam; end-to-end source resolver wiring and Eval isolation remain open Phase 1
+work.
 
 ## Persisted artifacts and ownership
 

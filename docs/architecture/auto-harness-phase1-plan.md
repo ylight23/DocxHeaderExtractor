@@ -20,8 +20,10 @@ tuning, or benchmark tuning.
   `docs/architecture/legacy-reachability.md`, `docs/architecture/clean-architecture-review.md`.
 - [ ] WS2 — Project boundaries: `Application`, `DocumentProcessing`, `Infrastructure`; package
   ownership and Eval isolation. Boundary project shells now exist, but the parent is not complete
-  until provider/source package ownership, dependency direction, and Eval isolation pass. Evidence:
-  `ffabc65`, `09f2c82`, `83581d1`.
+  until provider/source package ownership, dependency direction, and Eval isolation pass. Provider
+  implementations and an allowlisted file source resolver now live in Infrastructure; end-to-end
+  resolver wiring and Eval isolation remain open. Evidence: `ffabc65`, `09f2c82`, `83581d1`,
+  `src/DocxHeaderExtractor.Infrastructure/Sources/FileInputResourceResolver.cs`.
 - [x] WS3 — Generic `InputResource` and `AgentTaskRequest`; legacy request adapter. Evidence:
   commit `0f67d4b`, `src/DocxHeaderExtractor.Application/Tasks/ResourceContracts.cs`,
   `src/DocxHeaderExtractor.AgentHarness/GenericTaskRequestAdapter.cs`, and contract tests.
