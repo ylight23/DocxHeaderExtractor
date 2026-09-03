@@ -62,6 +62,13 @@ $cliProject = Get-Content -Raw (Join-Path $rootPath "src\DocxHeaderExtractor.Cli
 Add-Finding "cli-does-not-reference-eval" ($cliProject -notmatch 'DocxHeaderExtractor\.Eval') `
     ($(if ($cliProject -notmatch 'DocxHeaderExtractor\.Eval') { "CLI has no Eval project reference" } else { "CLI still references DocxHeaderExtractor.Eval" }))
 
+$cliBridge = Join-Path $rootPath "src\DocxHeaderExtractor.Cli\EvaluationProjectionBridge.cs"
+$bridgeText = if (Test-Path $cliBridge) { Get-Content -Raw $cliBridge } else { "" }
+$bridgeIsExplicit = $bridgeText -match 'DHX_EVAL_ASSEMBLY' -and
+    $bridgeText -match 'normal CLI extraction path never'
+Add-Finding "cli-eval-access-is-explicit-only" $bridgeIsExplicit `
+    ($(if ($bridgeIsExplicit) { "Eval is optional and loaded only by the explicit evaluation bridge" } else { "CLI Eval bridge is missing explicit-only guard" }))
+
 $blocked = @($findings | Where-Object { $_.status -eq "BLOCKED" })
 [ordered]@{
     artifactKind = "auto_harness_phase1_mechanical_audit"

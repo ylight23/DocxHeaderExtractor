@@ -52,7 +52,7 @@ retained for existing library/test callers and is not a second authority route.
 | `DocumentProcessing` | application processing service and processing contracts; delegates authority | `Application`, `Core` |
 | `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Application`, `DocumentProcessing`, `Core` |
 | `Web` | HTTP host and UI composition root | `AgentHarness`, `Core` |
-| `Cli` | command host and evaluation/repair commands | `AgentHarness`, `Core`, `Eval` |
+| `Cli` | command host and explicit evaluation/repair commands | `AgentHarness`, `Core`; optional Eval plugin bridge |
 | `Mcp` | MCP host and async job adapter | `AgentHarness`, `Core` |
 | `Eval` | evaluation/replay-only adapters | `Core` |
 | `Infrastructure` | provider implementations, prompt/cache adapters, source infrastructure ports and fact-provider adapters | `Application`, `Core` |
@@ -61,8 +61,9 @@ retained for existing library/test callers and is not a second authority route.
 versions are centrally declared in `Directory.Packages.props` without changing the pinned versions.
 Infrastructure now contains provider contracts, heading-provider implementations, prompt/cache
 adapters, fact-provider adapters, and an allowlisted file resource resolver. Core exposes only the
-neutral classifier seam; end-to-end source resolver wiring and Eval isolation remain open Phase 1
-work.
+neutral classifier seam; end-to-end source resolver wiring remains open Phase 1 work. CLI has no
+compile-time Eval reference; explicit evaluation commands use `EvaluationProjectionBridge` and
+never load that plugin on the normal extraction route.
 
 ## Persisted artifacts and ownership
 
@@ -88,8 +89,8 @@ those gates would risk breaking compatibility.
 
 The repeatable mechanical audit is `scripts/architecture-phase1-audit.ps1`. At the current
 checkpoint it passes project presence, central package versions, the Core project-reference
-boundary, and heading-provider isolation; it remains blocked by the CLI's direct reference to
-`DocxHeaderExtractor.Eval`.
+boundary, heading-provider isolation, and CLI compile-time Eval isolation. Remaining checks cover
+the explicit optional evaluation bridge and the broader final reachability gate.
 
 ## Phase control
 

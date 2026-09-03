@@ -21,9 +21,11 @@ tuning, or benchmark tuning.
 - [ ] WS2 — Project boundaries: `Application`, `DocumentProcessing`, `Infrastructure`; package
   ownership and Eval isolation. Boundary project shells now exist, but the parent is not complete
   until provider/source package ownership, dependency direction, and Eval isolation pass. Provider
-  implementations and an allowlisted file source resolver now live in Infrastructure; end-to-end
-  resolver wiring and Eval isolation remain open. Evidence: `ffabc65`, `09f2c82`, `83581d1`,
-  `src/DocxHeaderExtractor.Infrastructure/Sources/FileInputResourceResolver.cs`.
+  implementations and an allowlisted file source resolver now live in Infrastructure; CLI no longer
+  has a compile-time Eval reference and uses an explicit evaluation-only plugin bridge. End-to-end
+  resolver wiring and Core package purity remain open. Evidence: `ffabc65`, `09f2c82`, `83581d1`,
+  `src/DocxHeaderExtractor.Infrastructure/Sources/FileInputResourceResolver.cs`, and
+  `src/DocxHeaderExtractor.Cli/EvaluationProjectionBridge.cs`.
 - [x] WS3 — Generic `InputResource` and `AgentTaskRequest`; legacy request adapter. Evidence:
   commit `0f67d4b`, `src/DocxHeaderExtractor.Application/Tasks/ResourceContracts.cs`,
   `src/DocxHeaderExtractor.AgentHarness/GenericTaskRequestAdapter.cs`, and contract tests.
@@ -62,9 +64,10 @@ tuning, or benchmark tuning.
 - [ ] WS12 — Central build/package rules and architecture enforcement.
   Progress: package versions are centralized in `Directory.Packages.props`; the repeatable audit is
   `scripts/architecture-phase1-audit.ps1`. The audit passes provider isolation and remains blocked
-  on the CLI→Eval project reference, which is retained for explicit evaluation commands and requires
-  a separate host cutover. Evidence: provider seam commits `7a0e651` and `cb113e9`, runtime adapter
-  commit `de407c6`, plus the audit script.
+  on final package/source ownership and broader host/reachability checks. CLI compile-time Eval
+  isolation is now verified; explicit evaluation loading remains restricted to the bridge.
+  Evidence: provider seam commits `7a0e651` and `cb113e9`, `EvaluationProjectionBridge.cs`,
+  runtime adapter commit `de407c6`, plus the audit script.
 - [ ] WS13 — Final reachability/dead-code/root-hygiene audit and only justified deletions.
 - [ ] WS14 — Extension contract proof for capability, concept/schema, provider, source, and task.
 - [ ] WS15 — Phase 2 test seams prepared without running quality/provider tests.

@@ -1728,7 +1728,7 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
             audit.SemanticLane?.Status, semanticLaneOptions, audit.SpanLane?.Status);
         rows.Add(row);
         legacyProductByFile[Path.GetFileName(file)] =
-            PdfLegacyValidatedOutputPolicy.ProjectDocumentOutline(resultHeadings, audit.ValidatedStructures);
+            EvaluationProjectionBridge.ProjectDocumentOutline(resultHeadings, audit.ValidatedStructures);
         if (!o.Quiet)
             Console.Error.WriteLine(
                 $"  validated={row.Counters.ValidatedHeadings} markerPath={row.Counters.MarkerPathFacts} " +
