@@ -94,8 +94,8 @@ tuning, or benchmark tuning.
   check. All three normal hosts consume the shared harness/tool composition.
 - [x] WS12 — Central build/package rules and architecture enforcement.
   Progress: package versions are centralized in `Directory.Packages.props`; the repeatable audit is
-  `scripts/architecture-phase1-audit.ps1`. The audit passes provider isolation and remains blocked
-  on final package/source ownership and broader host/reachability checks. CLI compile-time Eval
+  `scripts/architecture-phase1-audit.ps1`. The audit and final gate pass package/source ownership,
+  host composition, and reachability checks. CLI compile-time Eval
   isolation is now verified; explicit evaluation loading remains restricted to the bridge.
   Evidence: provider seam commits `7a0e651` and `cb113e9`, `EvaluationProjectionBridge.cs`,
   runtime adapter commit `de407c6`, plus the audit and final-gate scripts.
@@ -110,10 +110,10 @@ tuning, or benchmark tuning.
 - [x] WS15 — Phase 2 test seams prepared without running quality/provider tests.
   Evidence: `docs/architecture/phase2-seams.md`, architecture/extension/runtime contract tests,
   and the final-gate Phase-2 record. The seams are recorded but not activated.
-- [ ] WS16 — Mechanical gate and publication into `main`. The broader gate is now executable as
-  `scripts/architecture-phase1-final-gate.ps1`; it intentionally remains blocked until Core
-  package ownership, feedback ownership, legacy reachability, Phase 2 record, and main publication
-  satisfy the final DoD.
+- [x] WS16 — Mechanical gate and publication into `main`. The broader gate is executable as
+  `scripts/architecture-phase1-final-gate.ps1`; final package/source ownership, feedback ownership,
+  legacy reachability, Phase-2 seam record, and publication into `main` passed at commit
+  `8856d34021db170ab2baa81a37b052482e3c9b32`.
 
 ## Completed implementation slice
 

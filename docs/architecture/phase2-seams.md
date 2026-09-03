@@ -1,6 +1,6 @@
 # AUTO-HARNESS PHASE 2 — Prepared Seams
 
-Status: `DEFERRED_UNTIL_PHASE_1_DESIGN_COMPLETE`
+Status: `READY_NOT_STARTED`
 
 This matrix records the extension points prepared during Phase 1. It is a boundary
 record only: Phase 1 does not activate an external agent framework, provider-quality
