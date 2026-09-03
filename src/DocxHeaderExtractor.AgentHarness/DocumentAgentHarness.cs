@@ -3,6 +3,7 @@
 using DocxHeaderExtractor.Application.Tasks;
 using DocxHeaderExtractor.Application.Semantics;
 using DocxHeaderExtractor.Application.Runtime;
+using DocxHeaderExtractor.Application.Skills;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
@@ -604,6 +605,8 @@ public sealed class AgentSkillContractException(
 public sealed class DocumentAgentHarnessFactory
 {
     private readonly Lazy<AgentSkill> _skill = new(AgentSkillLoader.LoadDefault, isThreadSafe: true);
+    private readonly Lazy<ISkillCatalog> _skillCatalog = new(
+        () => new SkillCatalog([AgentSkillLoader.LoadDefault().ToDescriptor()]), isThreadSafe: true);
     private readonly IInputResourceResolver? _inputResourceResolver;
     private readonly SemanticRegistry? _semanticRegistry;
     private readonly ITaskRunStore? _runStore;
@@ -623,12 +626,14 @@ public sealed class DocumentAgentHarnessFactory
 
     public AgentSkill Skill => _skill.Value;
 
+    public ISkillCatalog Skills => _skillCatalog.Value;
+
     public DocumentAgentHarness Create(
         IDocumentExtractionTool tool,
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null,
         IDocumentActionTool? actionTool = null) =>
-        new(tool, sink: sink, options: options, actionTool: actionTool, skill: _skill.Value,
+        new(tool, sink: sink, options: options, actionTool: actionTool, skill: ResolveSkill(),
             inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry,
             runStore: _runStore, telemetrySink: _telemetrySink);
 
@@ -637,7 +642,7 @@ public sealed class DocumentAgentHarnessFactory
         IEnumerable<IDocumentActionTool> actionTools,
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null) =>
-        new(new AgentToolRegistry([tool], actionTools), sink: sink, options: options, skill: _skill.Value,
+        new(new AgentToolRegistry([tool], actionTools), sink: sink, options: options, skill: ResolveSkill(),
             inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry,
             runStore: _runStore, telemetrySink: _telemetrySink);
 
@@ -645,7 +650,16 @@ public sealed class DocumentAgentHarnessFactory
         IAgentToolRegistry registry,
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null) =>
-        new(registry, sink: sink, options: options, skill: _skill.Value,
+        new(registry, sink: sink, options: options, skill: ResolveSkill(),
             inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry,
             runStore: _runStore, telemetrySink: _telemetrySink);
+
+    private AgentSkill ResolveSkill()
+    {
+        var skill = _skill.Value;
+        var resolved = _skillCatalog.Value.Resolve(skill.Name, skill.Version);
+        if (!resolved.IsResolved)
+            throw new AgentSkillException($"Skill không resolve được qua catalog: {resolved.FailureReason}.");
+        return skill;
+    }
 }

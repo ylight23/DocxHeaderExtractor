@@ -70,7 +70,9 @@ extraction route.
 ## Persisted artifacts and ownership
 
 - correction memory: local JSONL through `CorrectionMemory` (migration to a feedback port is open)
-- skill policy: versioned `skills/heading-extraction/SKILL.md` (generic catalog migration is open)
+- skill policy: versioned `skills/heading-extraction/SKILL.md`, parsed into the provider-independent
+  Application `SkillCatalog` before harness creation; framework-specific adapter remains deferred
+  without adding a runtime dependency in Phase 1
 - semantic definitions: provider-independent concept/schema registry in Application; trusted
   generic defaults are composed by Web/MCP, while external configuration registration and feature
   consumers remain open

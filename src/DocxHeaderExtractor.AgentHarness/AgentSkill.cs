@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 using System.Text;
+using DocxHeaderExtractor.Application.Skills;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
@@ -30,6 +31,10 @@ public sealed record AgentSkill(
     AgentSkillRequirements Requires,
     IReadOnlyList<string> Sections)
 {
+    public SkillDescriptor ToDescriptor() => new(
+        Name, Version, Digest, SkillLifecycle.Active, [], Requires.Guardrails, Requires.Validators,
+        Requires.HumanReviewBeforeWriteback, Requires.MaxRepairAttempts);
+
     public override string ToString() => $"{Name}@{Version} ({Digest})";
 }
 

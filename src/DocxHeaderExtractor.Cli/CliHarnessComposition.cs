@@ -29,10 +29,9 @@ internal static class CliHarnessComposition
         if (roots.Length == 0)
             throw new ArgumentException("CLI cần ít nhất một input path hợp lệ.", nameof(inputPaths));
 
-        return new DocumentAgentHarness(
-            extractionTool,
-            actionTool: actionTool,
-            inputResourceResolver: new FileInputResourceResolver(roots),
-            semanticRegistry: SemanticRegistryDefaults.Create());
+        var factory = new DocumentAgentHarnessFactory(
+            new FileInputResourceResolver(roots),
+            SemanticRegistryDefaults.Create());
+        return factory.Create(extractionTool, actionTool: actionTool);
     }
 }

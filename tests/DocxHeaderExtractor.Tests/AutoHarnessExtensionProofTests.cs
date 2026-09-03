@@ -1,6 +1,7 @@
 using DocxHeaderExtractor.Application.Capabilities;
 using DocxHeaderExtractor.Application.Semantics;
 using DocxHeaderExtractor.Application.Tasks;
+using DocxHeaderExtractor.Application.Skills;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Pipeline;
@@ -14,6 +15,21 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class AutoHarnessExtensionProofTests
 {
+    [Fact]
+    public void Skill_catalog_is_versioned_and_fail_closed()
+    {
+        var catalog = new SkillCatalog([
+            new SkillDescriptor("outline", "1.0.0", "sha256:test", SkillLifecycle.Active,
+                ["document-outline"], ["input"], ["grounding"], true, 1),
+            new SkillDescriptor("draft", "1.0.0", "sha256:draft", SkillLifecycle.Draft,
+                [], [], [], true, 0),
+        ]);
+
+        Assert.True(catalog.Resolve("document-outline", "1.0.0").IsResolved);
+        Assert.False(catalog.Resolve("draft").IsResolved);
+        Assert.False(catalog.Resolve("outline", "2.0.0").IsResolved);
+    }
+
     [Fact]
     public async Task Extension_points_compose_without_provider_calls()
     {

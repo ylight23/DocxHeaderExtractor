@@ -55,6 +55,10 @@ tuning, or benchmark tuning.
   Evidence: commits
   `5af36a9`, `1fcb241`, `b33de5c`, `c828596`, and `TaskRetryExecutor` contract tests.
 - [ ] WS8 — Microsoft AI/Agent Framework seams and generic harness/skill catalog isolation.
+  Progress: Application now owns a versioned, alias-aware, lifecycle-filtered `SkillCatalog`; the
+  existing `SKILL.md` loader exposes its machine-checkable descriptor and the harness factory
+  resolves it through that catalog. The external framework adapter remains a Phase 2 seam; no
+  framework package or provider behavior is introduced in Phase 1.
 - [ ] WS9 — Generic source-grounded execution and non-authoritative projection/output negotiation.
 - [ ] WS10 — Persistence ports, lifecycle/versioning, provenance, secret redaction, telemetry seam.
   Progress: Application now defines versioned run storage identity, persisted lifecycle projection,
