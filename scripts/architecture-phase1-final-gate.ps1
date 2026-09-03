@@ -109,10 +109,18 @@ Add-Check "generic-task-and-projection-seams" $genericContracts `
     ($(if ($genericContracts) { "generic resources, plans, and task result projection are present" } else { "generic task contract files are incomplete" }))
 
 $planText = Get-Content -Raw (Join-Path $rootPath "docs\architecture\auto-harness-phase1-plan.md")
-$phase2Doc = Test-Path (Join-Path $rootPath "docs\architecture\phase2-seams.md")
-$phase2Recorded = $phase2Doc -and $planText -match "Phase 2" -and $planText -match "deferred"
+$phase2Path = Join-Path $rootPath "docs\architecture\phase2-seams.md"
+$phase2Doc = Test-Path $phase2Path
+$phase2Text = if ($phase2Doc) { Get-Content -Raw $phase2Path } else { "" }
+$phase2Deferred = $phase2Doc -and $phase2Text -match 'Status:\s*`READY_NOT_STARTED`' -and
+    $planText -match "Phase 2" -and $planText -match "deferred"
+$phase2Verified = $phase2Doc -and $phase2Text -match 'Status:\s*`VERIFIED`' -and
+    $planText -match "Phase 2"
+$phase2Recorded = $phase2Deferred -or $phase2Verified
 Add-Check "phase2-seams-recorded" $phase2Recorded `
-    ($(if ($phase2Recorded) { "Phase 2 seam record is present and not activated" } else { "Phase 2 seam record is missing" }))
+    ($(if ($phase2Deferred) { "Phase 2 seam record is present and not activated" } elseif ($phase2Verified) {
+        "Phase 2 seam record is present and VERIFIED after Phase-2 completion"
+    } else { "Phase 2 seam record is missing or has an invalid lifecycle state" }))
 
 $architectureDoc = Get-Content -Raw (Join-Path $rootPath "docs\architecture\auto-harness-phase1.md")
 $head = (& git -C $rootPath rev-parse HEAD).Trim()

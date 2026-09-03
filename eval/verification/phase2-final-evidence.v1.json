@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "auto_harness_phase2_final_evidence",
+  "branch": "verification/auto-harness-phase2",
+  "providerCalls": 0,
+  "fullSuite": {
+    "command": "dotnet test tests/DocxHeaderExtractor.Tests/DocxHeaderExtractor.Tests.csproj -c Release --no-build --no-restore --logger console;verbosity=minimal",
+    "exitCode": 0,
+    "passed": 939,
+    "failed": 0,
+    "skipped": 0,
+    "total": 939,
+    "duration": "13m 30s"
+  },
+  "focusedMatrix": {
+    "exitCode": 0,
+    "passed": 30,
+    "failed": 0,
+    "total": 30
+  },
+  "releaseBuild": {
+    "command": "dotnet build DocxHeaderExtractor.sln -c Release --no-restore",
+    "exitCode": 0,
+    "errors": 0,
+    "warnings": 26
+  },
+  "diffCheck": {
+    "exitCode": 0
+  },
+  "accuracyBoundary": {
+    "accuracy99Changed": false,
+    "humanGoldChanged": false
+  },
+  "notes": [
+    "Phase-2 verification is deterministic and provider-free.",
+    "N13 heavy offline probes pass without assertion failure; a 90-second blame inactivity threshold is not used for the final suite record."
+  ]
+}

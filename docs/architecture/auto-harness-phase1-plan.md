@@ -159,5 +159,5 @@ Files: src/DocxHeaderExtractor.Application/Tasks/TaskContracts.cs,
 - [x] Full mechanical source/package/build/diff checks pass on the current branch.
 - [x] Final reachability audit proves `LEGACY_NORMAL_ROUTE = 0` and `DUPLICATE_HARNESS = 0`.
 - [x] Architecture is published into `main`, with final main/tree SHAs recorded.
-- [x] Status is `DESIGN_COMPLETE`; deferred Phase 2 work is recorded in
-  `docs/architecture/phase2-seams.md`, and Phase 2 remains unopened.
+- [x] Status is `DESIGN_COMPLETE`; Phase 2 was initially deferred and recorded in
+  `docs/architecture/phase2-seams.md`, then verified separately by the Phase-2 completion gate.

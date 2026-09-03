@@ -28,6 +28,7 @@ public sealed class DocumentAgentHarness
     private readonly SemanticRegistry? _semanticRegistry;
     private readonly ITaskRunStore? _runStore;
     private readonly ITaskTelemetrySink? _telemetrySink;
+    private readonly IIntentProposalProducer _intentProducer;
 
     public DocumentAgentHarness(
         IDocumentExtractionTool tool,
@@ -40,9 +41,10 @@ public sealed class DocumentAgentHarness
         IInputResourceResolver? inputResourceResolver = null,
         SemanticRegistry? semanticRegistry = null,
         ITaskRunStore? runStore = null,
-        ITaskTelemetrySink? telemetrySink = null)
+        ITaskTelemetrySink? telemetrySink = null,
+        IIntentProposalProducer? intentProducer = null)
         : this(new AgentToolRegistry(tool, actionTool), guardrails, validators, sink, options, skill,
-            inputResourceResolver, semanticRegistry, runStore, telemetrySink)
+            inputResourceResolver, semanticRegistry, runStore, telemetrySink, intentProducer)
     {
     }
 
@@ -56,7 +58,8 @@ public sealed class DocumentAgentHarness
         IInputResourceResolver? inputResourceResolver = null,
         SemanticRegistry? semanticRegistry = null,
         ITaskRunStore? runStore = null,
-        ITaskTelemetrySink? telemetrySink = null)
+        ITaskTelemetrySink? telemetrySink = null,
+        IIntentProposalProducer? intentProducer = null)
     {
         _registry = registry ?? throw new ArgumentNullException(nameof(registry));
         _guardrails = (guardrails ?? DefaultGuardrails()).ToArray();
@@ -69,6 +72,7 @@ public sealed class DocumentAgentHarness
         _semanticRegistry = semanticRegistry;
         _runStore = runStore;
         _telemetrySink = telemetrySink;
+        _intentProducer = intentProducer ?? new DocumentIntentProposalProducer();
     }
 
     public AgentSkill Skill => _skill;
@@ -123,7 +127,7 @@ public sealed class DocumentAgentHarness
 
             // 2. Dựng và kiểm tra intent trước khi chọn capability. Đây là application contract;
             // input guardrail vẫn là nơi duy nhất quyết định file có thực sự tồn tại/hợp lệ.
-            var proposal = DocumentTaskAdapters.Propose(request);
+            var proposal = _intentProducer.Propose(request);
             var genericRequest = GenericTaskRequestAdapter.FromDocumentRequest(request);
             await EmitAsync("intent.proposal", AgentRunEventKind.Completed,
                 $"Intent {proposal.Operation} cho {genericRequest.Resources.Count} resource.");
@@ -633,10 +637,11 @@ public sealed class DocumentAgentHarnessFactory
         IDocumentExtractionTool tool,
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null,
-        IDocumentActionTool? actionTool = null) =>
+        IDocumentActionTool? actionTool = null,
+        IIntentProposalProducer? intentProducer = null) =>
         new(tool, sink: sink, options: options, actionTool: actionTool, skill: ResolveSkill(),
             inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry,
-            runStore: _runStore, telemetrySink: _telemetrySink);
+            runStore: _runStore, telemetrySink: _telemetrySink, intentProducer: intentProducer);
 
     public DocumentAgentHarness Create(
         IDocumentExtractionTool tool,
@@ -650,10 +655,11 @@ public sealed class DocumentAgentHarnessFactory
     public DocumentAgentHarness Create(
         IAgentToolRegistry registry,
         IAgentRunSink? sink = null,
-        AgentHarnessOptions? options = null) =>
+        AgentHarnessOptions? options = null,
+        IIntentProposalProducer? intentProducer = null) =>
         new(registry, sink: sink, options: options, skill: ResolveSkill(),
             inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry,
-            runStore: _runStore, telemetrySink: _telemetrySink);
+            runStore: _runStore, telemetrySink: _telemetrySink, intentProducer: intentProducer);
 
     private AgentSkill ResolveSkill()
     {

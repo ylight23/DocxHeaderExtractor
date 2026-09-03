@@ -1,6 +1,6 @@
 # AUTO-HARNESS PHASE 2 — Runtime Verification & Activation
 
-Status: `ACTIVE`
+Status: `VERIFICATION_COMPLETE`
 
 Phase 1 is frozen at `main@5678b454dc28c8bab811c5ce35a789d540fa82be`. This phase activates and
 verifies the prepared generic seams without Accuracy-99 tuning, Human Gold work, corpus-specific
@@ -32,21 +32,30 @@ or explicitly classified before the Phase-2 regression gate can pass.
 ## Workstreams
 
 - [x] P2-WS1 — Baseline and test inventory frozen; Phase-1 gates pass unchanged.
-- [ ] P2-WS2 — Provider-neutral conversational intent producer and all intent states.
-- [ ] P2-WS3 — Microsoft Agent Framework adapter outside Core with approval boundary.
-- [ ] P2-WS4 — Skill catalog runtime verification.
-- [ ] P2-WS5 — Semantic registry runtime verification.
-- [ ] P2-WS6 — Capability execution matrix.
-- [ ] P2-WS7 — Source-grounding end-to-end verification.
-- [ ] P2-WS8 — Generic multi-prompt functional matrix.
-- [ ] P2-WS9 — Web/CLI/MCP host parity.
-- [ ] P2-WS10 — Approval, policy, security, and prompt-injection resistance.
-- [ ] P2-WS11 — Retry, cancellation, deadline, and idempotency.
-- [ ] P2-WS12 — Durable state and resume.
-- [ ] P2-WS13 — Provider interchangeability.
-- [ ] P2-WS14 — Reliability/performance profile.
-- [ ] P2-WS15 — Full regression.
-- [ ] P2-WS16 — Phase-2 verification gate and publication.
+- [x] P2-WS2 — Provider-neutral conversational intent producer and all intent states.
+- [x] P2-WS3 — Microsoft Agent Framework adapter outside Core with approval boundary.
+- [x] P2-WS4 — Skill catalog runtime verification.
+- [x] P2-WS5 — Semantic registry runtime verification.
+- [x] P2-WS6 — Capability execution matrix.
+- [x] P2-WS7 — Source-grounding end-to-end verification.
+- [x] P2-WS8 — Generic multi-prompt functional matrix.
+- [x] P2-WS9 — Web/CLI/MCP host parity.
+- [x] P2-WS10 — Approval, policy, security, and prompt-injection resistance.
+- [x] P2-WS11 — Retry, cancellation, deadline, and idempotency.
+- [x] P2-WS12 — Durable state and resume.
+- [x] P2-WS13 — Provider interchangeability.
+- [x] P2-WS14 — Reliability/performance profile.
+- [x] P2-WS15 — Full regression.
+- [x] P2-WS16 — Phase-2 verification gate and publication.
+
+## Verification evidence
+
+The deterministic verification matrix is recorded in
+[`phase2-verification-evidence.md`](phase2-verification-evidence.md) and the machine-readable
+gate input is `eval/verification/phase2-final-evidence.v1.json`. The matrix covers the generic
+runtime contracts, all three production hosts, source-grounded execution/projection, policy and
+security boundaries, lifecycle persistence, provider-neutral composition, and the full test
+regression. No provider call or Accuracy-99 mutation is part of this phase.
 
 ## Product boundary
 
