@@ -29,6 +29,11 @@ tuning, or benchmark tuning.
   provider-independent `SemanticTaskPlan`, bounded `ExecutionPlan`. Evidence: commit `44833ef`,
   `src/DocxHeaderExtractor.Application/Tasks/TaskPlanCompiler.cs`, and architecture contract tests.
 - [ ] WS5 — Dynamic concepts/schema registries, alias/version/lifecycle, fail-closed resolution.
+  Progress: the provider-independent `SemanticRegistry` contract now supports concept/schema
+  definitions, aliases, version selection, lifecycle filtering, and fail-closed resolution in
+  `Application`. Runtime registrations and composition-root consumers remain open. Evidence:
+  commit `bb70b28`, `src/DocxHeaderExtractor.Application/Semantics/SemanticRegistry.cs`, and
+  the semantic registry contract test.
 - [ ] WS6 — Generic capability descriptors/registry/resolver and explicit capability gaps.
   Progress: `CapabilityDescriptor`, `ICapabilityCatalog`, and exact fail-closed resolution are in
   Application; host-specific selection remains an adapter until generic resolution is wired.
@@ -66,7 +71,7 @@ tuning, or benchmark tuning.
 Evidence for this slice:
 
 ```text
-Commits: 38c65f3, ffabc65, 09f2c82, 0f67d4b, 83581d1
+Commits: 38c65f3, ffabc65, 09f2c82, 0f67d4b, 83581d1, bb70b28
 Files: src/DocxHeaderExtractor.Application/Tasks/TaskContracts.cs,
   src/DocxHeaderExtractor.Application/Tasks/ResourceContracts.cs,
   src/DocxHeaderExtractor.DocumentProcessing/ProcessingContracts.cs,
@@ -79,7 +84,7 @@ Files: src/DocxHeaderExtractor.Application/Tasks/TaskContracts.cs,
        src/DocxHeaderExtractor.Web/Program.cs,
        src/DocxHeaderExtractor.Cli/Program.cs,
        src/DocxHeaderExtractor.Mcp/McpExtractionService.cs,
-       tests/DocxHeaderExtractor.Tests/AutoHarnessArchitectureContractTests.cs
+  tests/DocxHeaderExtractor.Tests/AutoHarnessArchitectureContractTests.cs
 ```
 
 ## Phase controls

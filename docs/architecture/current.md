@@ -64,7 +64,8 @@ are open Phase 1 work.
 
 - correction memory: local JSONL through `CorrectionMemory` (migration to a feedback port is open)
 - skill policy: versioned `skills/heading-extraction/SKILL.md` (generic catalog migration is open)
-- schema packs: registered in Core application contracts (registry extraction is open)
+- semantic definitions: provider-independent concept/schema registry in Application; runtime
+  registrations and composition-root consumers remain open
 - MCP job state: temporary `McpJobStore` snapshots owned by the MCP host
 - generated/writeback files: request-owned temp directories and explicit writeback adapters
 - Accuracy-99 review/gold: evaluation-owned and excluded from this cutover
