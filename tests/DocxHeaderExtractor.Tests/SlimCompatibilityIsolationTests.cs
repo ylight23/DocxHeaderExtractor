@@ -8,7 +8,7 @@ public sealed class SlimCompatibilityIsolationTests
     public void Docx_authority_pipeline_exposes_only_native_run_contracts()
     {
         var type = Type.GetType(
-            "DocxHeaderExtractor.Core.Pipeline.DocxAuthorityPipeline, DocxHeaderExtractor.Core")
+            "DocxHeaderExtractor.Core.Pipeline.DocxAuthorityPipeline, DocxHeaderExtractor.DocumentProcessing")
             ?? throw new InvalidOperationException("Authority pipeline type not found.");
         var methods = type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
 
@@ -23,9 +23,9 @@ public sealed class SlimCompatibilityIsolationTests
     public void Removed_boundary_source_files_are_not_referenced_by_normal_pipeline()
     {
         var root = FindRepositoryRoot();
-        var authority = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.Core", "Pipeline",
+        var authority = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.DocumentProcessing", "Pipeline",
             "AuthorityExtractionPipeline.cs"));
-        var docxAuthority = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.Core", "Pipeline",
+        var docxAuthority = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.DocumentProcessing", "Pipeline",
             "DocxAuthorityPipeline.cs"));
 
         Assert.DoesNotContain("SlimCompatibility", authority, StringComparison.Ordinal);

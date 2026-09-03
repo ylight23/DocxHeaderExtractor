@@ -40,7 +40,7 @@ public sealed class TocStructuralFeatureDeriverTests
     [Fact]
     public void Deriver_does_not_depend_on_candidate_or_model_policy()
     {
-        var path = Path.Combine(FindRepositoryRoot(), "src", "DocxHeaderExtractor.Core",
+        var path = Path.Combine(FindRepositoryRoot(), "src", "DocxHeaderExtractor.DocumentProcessing",
             "Application", "Features", "TocStructuralFeatureDeriver.cs");
         var text = File.ReadAllText(path);
 

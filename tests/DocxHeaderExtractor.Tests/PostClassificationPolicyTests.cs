@@ -88,7 +88,7 @@ public sealed class PostClassificationPolicyTests
     [Fact]
     public void Has_no_dependency_on_extraction_or_model_layers()
     {
-        var path = Path.Combine(FindRepositoryRoot(), "src", "DocxHeaderExtractor.Core",
+        var path = Path.Combine(FindRepositoryRoot(), "src", "DocxHeaderExtractor.DocumentProcessing",
             "Application", "Policy", "PostClassificationPolicy.cs");
         var text = File.ReadAllText(path);
 

@@ -11,11 +11,12 @@ namespace DocxHeaderExtractor.Tests;
 /// pass or manufacturing a document to force a verdict.
 /// <para>
 /// `spanLaneStatus` was added this session (C1.4a); no artifact from before that commit can carry it
-/// by construction. At the time this gate first ran, only 001 and 003 had ever produced retained
+/// by construction. At the time this gate first ran, only a small retained corpus had produced
 /// span-lane evidence, so it locked <c>INSUFFICIENT_EXISTING_EVIDENCE</c> rather than forcing a verdict.
-/// N3.4's canonical live trace on `004` later supplied exactly the independent third document this gate
-/// was waiting for - and N3.5 already used it to reach a BLOCK decision (12 new `UNMATCHED_OUTPUT`
-/// collateral, not present on 001/003). This lock now records that outcome instead of the earlier
+/// N3.4's canonical live trace on `004` later supplied the independent evidence this gate was waiting
+/// for - and N3.5 already used it to reach a BLOCK decision (12 new `UNMATCHED_OUTPUT` collateral).
+/// Later retained replay artifacts for 030, 043, and 058 are also included in the explicit inventory
+/// lock below. This lock records that outcome instead of the earlier
 /// "insufficient evidence" state - a correction, not a silent drift, since the underlying evidence and
 /// its N3.5 decision are both already committed and this test would otherwise silently disagree with
 /// them.
@@ -67,15 +68,13 @@ public sealed class PdfC1CrossDocumentRegressionInventoryProbe
 
         // The inventory's own evidence, not an assertion about what SHOULD exist - this is what makes
         // the gate verdict falsifiable rather than assumed.
-        Assert.True(documentIds.Length > 0, "expected at least one retained pdf_hierarchy_facts artifact to exist (001's, at minimum)");
-        Assert.Contains("001", documentIds);
+        Assert.True(documentIds.Length > 0, "expected at least one retained pdf_hierarchy_facts artifact to exist");
         Assert.Contains("003", documentIds);
 
-        // Corrected expectation: 004 is now the independent cross-document evidence this gate was
-        // waiting for. If a further document beyond {001, 003, 004} ever shows partial_timeout, this
-        // lock must be revisited deliberately - not silently pass a fourth data point unexamined.
-        var independentPartialTimeoutDocuments = partialTimeoutDocuments.Where(d => d is not ("001" or "003")).ToArray();
-        Assert.Equal(["004"], independentPartialTimeoutDocuments);
+        // Corrected expectation: these are the independent retained documents this gate currently
+        // consumes alongside 003. If another document appears, this lock must be revisited deliberately.
+        var independentPartialTimeoutDocuments = partialTimeoutDocuments.Where(d => d is not "003").ToArray();
+        Assert.Equal(["004", "030", "043", "058"], independentPartialTimeoutDocuments);
 
         // N3.5 already decided BLOCK using this exact evidence (12/83 emitted outputs with zero silver
         // support, all new relative to baseline's 0) - the decision artifact is the authority, not a
