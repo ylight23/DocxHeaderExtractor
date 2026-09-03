@@ -56,6 +56,7 @@ public sealed record ExecutionPlan(
     public TimeSpan? MaxWallTime { get; init; }
     public RetryPolicy Retry { get; init; } = RetryPolicy.None;
     public bool CancellationSupported { get; init; } = true;
+    public bool ExternalTransferRequired { get; init; }
 };
 
 public sealed record ExecutionStep(
@@ -146,7 +147,10 @@ public static class PolicyEvaluator
         bool humanReviewBeforeMutation)
     {
         ArgumentNullException.ThrowIfNull(plan);
-        if (plan.MaxExternalCalls is > 0 && !externalConsentGranted)
+        if (plan.ExternalTransferRequired && plan.MaxExternalCalls is not > 0)
+            return new(PolicyDecisionKind.Denied, "external-call-budget-exhausted",
+                "Capability cần external call nhưng task budget không cho phép provider call.");
+        if ((plan.ExternalTransferRequired || plan.MaxExternalCalls is > 0) && !externalConsentGranted)
             return new(PolicyDecisionKind.Denied, "external-consent-required",
                 "Capability cần consent trước khi gửi dữ liệu ra ngoài.");
         if (mutationRequested && humanReviewBeforeMutation)
