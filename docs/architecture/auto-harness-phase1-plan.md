@@ -50,7 +50,7 @@ tuning, or benchmark tuning.
 Evidence for this slice must be filled with the commit SHA after commit:
 
 ```text
-Commit:
+Commit: 38c65f3
 Files: src/DocxHeaderExtractor.AgentHarness/TaskContracts.cs,
        src/DocxHeaderExtractor.AgentHarness/DocumentAgentHarness.cs,
        src/DocxHeaderExtractor.Web/Program.cs,
