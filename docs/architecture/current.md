@@ -44,7 +44,7 @@ retained for existing library/test callers and is not a second authority route.
 | Project | Current role | Current references |
 |---|---|---|
 | `Core` | authority contracts, OpenXML/PDF pipeline, provider-neutral classifier contracts/options | package dependencies include OpenXML, PdfPig, PDFtoImage, LLamaSharp for remaining VLM support |
-| `Application` | provider-independent intent, plan compiler, policy, projection, task/resource and capability contracts | `Core` |
+| `Application` | provider-independent intent, plan compiler, policy, projection, task/resource, capability, semantic-registry and runtime contracts | `Core` |
 | `DocumentProcessing` | application processing service and processing contracts; delegates authority | `Application`, `Core` |
 | `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Application`, `DocumentProcessing`, `Core` |
 | `Web` | HTTP host and UI composition root | `AgentHarness`, `Core` |
@@ -65,6 +65,8 @@ ownership and Eval isolation remain open Phase 1 work.
 - skill policy: versioned `skills/heading-extraction/SKILL.md` (generic catalog migration is open)
 - semantic definitions: provider-independent concept/schema registry in Application; runtime
   registrations and composition-root consumers remain open
+- run lifecycle: versioned persistence/telemetry ports and secret redaction contract in Application;
+  durable host implementation remains open
 - MCP job state: temporary `McpJobStore` snapshots owned by the MCP host
 - generated/writeback files: request-owned temp directories and explicit writeback adapters
 - Accuracy-99 review/gold: evaluation-owned and excluded from this cutover
