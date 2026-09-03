@@ -24,8 +24,13 @@ Add-Check "core-is-package-pure" ($corePackages.Count -eq 0) `
 
 $feedbackInCore = Test-Path (Join-Path $rootPath "src\DocxHeaderExtractor.Core\Learning\CorrectionMemory.cs")
 $feedbackPort = Test-Path (Join-Path $rootPath "src\DocxHeaderExtractor.Application\Feedback\FeedbackContracts.cs")
-Add-Check "feedback-owned-by-infrastructure" (!$feedbackInCore -and $feedbackPort) `
-    ($(if (!$feedbackInCore -and $feedbackPort) { "feedback port and Infrastructure implementation are the only runtime owners" } else { "Core CorrectionMemory remains; port=" + $feedbackPort }))
+$feedbackImplementation = Test-Path (Join-Path $rootPath "src\DocxHeaderExtractor.Infrastructure\Learning\CorrectionMemory.cs")
+Add-Check "feedback-owned-by-infrastructure" (!$feedbackInCore -and $feedbackPort -and $feedbackImplementation) `
+    ($(if (!$feedbackInCore -and $feedbackPort -and $feedbackImplementation) {
+        "Application port plus Infrastructure CorrectionMemory implementation; no Core implementation"
+    } else {
+        "feedback ownership incomplete; core=" + $feedbackInCore + ", port=" + $feedbackPort + ", infrastructure=" + $feedbackImplementation
+    }))
 
 $authority = Get-Content -Raw (Join-Path $rootPath "src\DocxHeaderExtractor.Core\Pipeline\AuthorityExtractionPipeline.cs")
 $normalLegacyAdapter = $authority -match "LegacyDocConverter\.EnsureDocx"

@@ -70,8 +70,9 @@ extraction route.
 ## Persisted artifacts and ownership
 
 - correction memory: Web writes through Application `IHumanFeedbackStore` and the Infrastructure
-  `CorrectionMemoryFeedbackStore`; the underlying Core append-only implementation remains for
-  compatibility and still needs migration out of Core
+  `CorrectionMemoryFeedbackStore`; the append-only implementation is owned by Infrastructure at
+  `src/DocxHeaderExtractor.Infrastructure/Learning/CorrectionMemory.cs` and remains compatible
+  with existing JSONL files
 - skill policy: versioned `skills/heading-extraction/SKILL.md`, parsed into the provider-independent
   Application `SkillCatalog` before harness creation; framework-specific adapter remains deferred
   without adding a runtime dependency in Phase 1

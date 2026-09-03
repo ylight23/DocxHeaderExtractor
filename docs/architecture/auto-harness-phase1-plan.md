@@ -72,8 +72,9 @@ tuning, or benchmark tuning.
   `src/DocxHeaderExtractor.Application/Runtime/RuntimeContracts.cs`,
   `src/DocxHeaderExtractor.Infrastructure/Runtime/`, lifecycle wiring commit, and contract tests.
   Feedback persistence now has an Application `IHumanFeedbackStore` port and an Infrastructure
-  adapter around the existing append-only `CorrectionMemory`; migrating the remaining Core
-  learning implementation is still open.
+  implementation at `src/DocxHeaderExtractor.Infrastructure/Learning/CorrectionMemory.cs` that
+  preserves the existing append-only JSONL format; Core no longer owns the persisted feedback
+  implementation. Feedback remains non-authoritative and is consumed only through the port.
 - [ ] WS11 — Web/CLI/MCP composition-root cutover with zero normal bypasses.
   Progress: Web/MCP and the CLI normal, review, and evaluation paths now use the common allowlisted
   source resolver and trusted semantic registry; the MCP subprocess worker composes the same source

@@ -8,7 +8,7 @@ using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Pipeline;
 
-namespace DocxHeaderExtractor.Core.Learning;
+namespace DocxHeaderExtractor.Infrastructure.Learning;
 
 public sealed record VerifiedCorrection(
     string Id,

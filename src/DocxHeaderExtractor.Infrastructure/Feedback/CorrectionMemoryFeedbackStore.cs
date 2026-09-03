@@ -1,6 +1,6 @@
 using DocxHeaderExtractor.Application.Feedback;
 using DocxHeaderExtractor.Core.Eval;
-using DocxHeaderExtractor.Core.Learning;
+using DocxHeaderExtractor.Infrastructure.Learning;
 
 namespace DocxHeaderExtractor.Infrastructure.Feedback;
 

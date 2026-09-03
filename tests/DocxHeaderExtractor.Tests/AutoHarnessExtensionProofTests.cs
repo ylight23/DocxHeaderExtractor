@@ -7,7 +7,7 @@ using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Pipeline;
 using DocxHeaderExtractor.Core.Eval;
-using DocxHeaderExtractor.Core.Learning;
+using DocxHeaderExtractor.Infrastructure.Learning;
 using DocxHeaderExtractor.Infrastructure.Feedback;
 using DocxHeaderExtractor.Infrastructure.Sources;
 

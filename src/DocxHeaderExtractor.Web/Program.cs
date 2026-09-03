@@ -7,7 +7,7 @@ using DocxHeaderExtractor.Core.Application.Features;
 using DocxHeaderExtractor.Core.Application.Policy;
 using DocxHeaderExtractor.Core.Eval;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Learning;
+using DocxHeaderExtractor.Infrastructure.Learning;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
 using DocxHeaderExtractor.Application.Runtime;
