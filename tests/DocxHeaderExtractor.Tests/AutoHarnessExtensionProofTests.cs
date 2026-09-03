@@ -1,10 +1,14 @@
 using DocxHeaderExtractor.Application.Capabilities;
+using DocxHeaderExtractor.Application.Feedback;
 using DocxHeaderExtractor.Application.Semantics;
 using DocxHeaderExtractor.Application.Tasks;
 using DocxHeaderExtractor.Application.Skills;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.Core.Eval;
+using DocxHeaderExtractor.Core.Learning;
+using DocxHeaderExtractor.Infrastructure.Feedback;
 using DocxHeaderExtractor.Infrastructure.Sources;
 
 namespace DocxHeaderExtractor.Tests;
@@ -40,6 +44,33 @@ public sealed class AutoHarnessExtensionProofTests
 
         Assert.True(registry.Resolve("custom-output", SemanticDefinitionKind.Schema).IsResolved);
         Assert.False(registry.Resolve("model-invented").IsResolved);
+    }
+
+    [Fact]
+    public async Task Human_feedback_port_preserves_existing_append_only_storage_contract()
+    {
+        var path = Path.Combine(Path.GetTempPath(), "dhx-feedback-" + Guid.NewGuid().ToString("N") + ".jsonl");
+        try
+        {
+            var memory = new CorrectionMemory(path);
+            IHumanFeedbackStore feedback = new CorrectionMemoryFeedbackStore(memory);
+            var emptyBundle = new ReviewBundle
+            {
+                SourceFile = "fixture.docx",
+                Rows = [new ReviewRow { StableId = "p1", Index = 1, Text = "body", PredictedLevel = 0 }],
+            };
+
+            var saved = await feedback.SaveChangedAsync(new HumanFeedbackSubmission(emptyBundle.ToJson()));
+
+            Assert.Equal(0, saved);
+            Assert.Equal(0, feedback.Count);
+        }
+        finally
+        {
+            if (File.Exists(path)) File.Delete(path);
+            var decisions = Path.ChangeExtension(path, ".decisions.jsonl");
+            if (File.Exists(decisions)) File.Delete(decisions);
+        }
     }
 
     [Fact]

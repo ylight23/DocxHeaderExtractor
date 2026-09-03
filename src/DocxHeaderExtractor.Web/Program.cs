@@ -11,10 +11,12 @@ using DocxHeaderExtractor.Core.Learning;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
 using DocxHeaderExtractor.Application.Runtime;
+using DocxHeaderExtractor.Application.Feedback;
 using DocxHeaderExtractor.Application.Semantics;
 using DocxHeaderExtractor.Application.Tasks;
 using DocxHeaderExtractor.Infrastructure.Runtime;
 using DocxHeaderExtractor.Infrastructure.Sources;
+using DocxHeaderExtractor.Infrastructure.Feedback;
 using DocxHeaderExtractor.Web;
 using DocumentFormat.OpenXml.Packaging;
 using Microsoft.AspNetCore.Http.Features;
@@ -37,6 +39,8 @@ builder.Services.Configure<FormOptions>(o => o.MultipartBodyLengthLimit = MaxUpl
 builder.WebHost.ConfigureKestrel(o => o.Limits.MaxRequestBodySize = MaxUploadBytes);
 builder.Services.AddSingleton<LlamaModelCache>();
 builder.Services.AddSingleton(_ => new CorrectionMemory(CorrectionMemory.DefaultPath()));
+builder.Services.AddSingleton<IHumanFeedbackStore>(sp =>
+    new CorrectionMemoryFeedbackStore(sp.GetRequiredService<CorrectionMemory>()));
 builder.Services.AddSingleton<DocumentAgentHarnessFactory>();
 builder.Services.AddSingleton<LmStudioModelDiscovery>();
 builder.Services.AddSingleton<WritebackStore>();
@@ -186,15 +190,15 @@ app.MapPost("/api/review/key", async (HttpRequest req, CancellationToken ct) =>
 
 // Chỉ lưu những dòng người dùng đổi khác dự đoán. Correction nằm cục bộ và chỉ được retrieval
 // làm ví dụ; endpoint không fine-tune hoặc tự deploy model mới.
-app.MapPost("/api/corrections", async (HttpRequest req, CorrectionMemory memory, CancellationToken ct) =>
+app.MapPost("/api/corrections", async (HttpRequest req, IHumanFeedbackStore feedbackStore, CancellationToken ct) =>
 {
     try
     {
         using var reader = new StreamReader(req.Body, Encoding.UTF8,
             detectEncodingFromByteOrderMarks: true, bufferSize: 1024, leaveOpen: false);
-        var bundle = ReviewBundle.Parse(await reader.ReadToEndAsync(ct));
-        var saved = await memory.SaveChangedAsync(bundle, ct);
-        return Results.Json(new { saved, total = memory.Count }, json);
+        var saved = await feedbackStore.SaveChangedAsync(
+            new HumanFeedbackSubmission(await reader.ReadToEndAsync(ct)), ct);
+        return Results.Json(new { saved, total = feedbackStore.Count }, json);
     }
     catch (Exception ex) when (ex is FormatException or InvalidOperationException or JsonException)
     {

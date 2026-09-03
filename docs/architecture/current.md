@@ -47,7 +47,7 @@ retained for existing library/test callers and is not a second authority route.
 
 | Project | Current role | Current references |
 |---|---|---|
-| `Core` | authority contracts, OpenXML/PDF pipeline, provider-neutral classifier contracts/options | package dependencies include OpenXML, PdfPig, PDFtoImage, LLamaSharp for remaining VLM support |
+| `Core` | authority contracts, OpenXML/PDF pipeline, provider-neutral classifier/visual ports/options | package dependencies include OpenXML, PdfPig, and PDFtoImage; document/PDF authority migration remains open |
 | `Application` | provider-independent intent, plan compiler, policy, projection, task/resource, capability, semantic-registry and runtime contracts | `Core` |
 | `DocumentProcessing` | application processing service and processing contracts; delegates authority | `Application`, `Core` |
 | `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Application`, `DocumentProcessing`, `Core` |
@@ -69,7 +69,9 @@ extraction route.
 
 ## Persisted artifacts and ownership
 
-- correction memory: local JSONL through `CorrectionMemory` (migration to a feedback port is open)
+- correction memory: Web writes through Application `IHumanFeedbackStore` and the Infrastructure
+  `CorrectionMemoryFeedbackStore`; the underlying Core append-only implementation remains for
+  compatibility and still needs migration out of Core
 - skill policy: versioned `skills/heading-extraction/SKILL.md`, parsed into the provider-independent
   Application `SkillCatalog` before harness creation; framework-specific adapter remains deferred
   without adding a runtime dependency in Phase 1

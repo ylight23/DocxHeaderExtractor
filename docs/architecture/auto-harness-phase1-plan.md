@@ -71,6 +71,9 @@ tuning, or benchmark tuning.
   states when these ports are injected. Evidence: commits `1a40c24` and `425880e`,
   `src/DocxHeaderExtractor.Application/Runtime/RuntimeContracts.cs`,
   `src/DocxHeaderExtractor.Infrastructure/Runtime/`, lifecycle wiring commit, and contract tests.
+  Feedback persistence now has an Application `IHumanFeedbackStore` port and an Infrastructure
+  adapter around the existing append-only `CorrectionMemory`; migrating the remaining Core
+  learning implementation is still open.
 - [ ] WS11 — Web/CLI/MCP composition-root cutover with zero normal bypasses.
   Progress: Web/MCP and the CLI normal, review, and evaluation paths now use the common allowlisted
   source resolver and trusted semantic registry; the MCP subprocess worker composes the same source
