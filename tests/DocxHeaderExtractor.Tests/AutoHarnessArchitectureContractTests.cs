@@ -264,4 +264,46 @@ public sealed class AutoHarnessArchitectureContractTests
             if (Directory.Exists(root)) Directory.Delete(root, recursive: true);
         }
     }
+
+    [Fact]
+    public async Task Typed_retry_retries_only_transient_provider_failures_when_enabled()
+    {
+        var attempts = 0;
+        var result = await TaskRetryExecutor.ExecuteAsync(
+            _ =>
+            {
+                attempts++;
+                if (attempts < 3)
+                    throw new ProviderCallException("503", "temporary", isTransient: true);
+                return Task.FromResult("ok");
+            },
+            new RetryPolicy(MaxAttempts: 3, RetryProviderFaults: true));
+
+        Assert.Equal("ok", result);
+        Assert.Equal(3, attempts);
+    }
+
+    [Fact]
+    public async Task Typed_retry_does_not_retry_non_transient_or_untyped_failures()
+    {
+        var typedAttempts = 0;
+        await Assert.ThrowsAsync<ProviderCallException>(() => TaskRetryExecutor.ExecuteAsync<string>(
+            _ =>
+            {
+                typedAttempts++;
+                throw new ProviderCallException("400", "permanent", isTransient: false);
+            },
+            new RetryPolicy(MaxAttempts: 4, RetryProviderFaults: true)));
+        Assert.Equal(1, typedAttempts);
+
+        var untypedAttempts = 0;
+        await Assert.ThrowsAsync<InvalidOperationException>(() => TaskRetryExecutor.ExecuteAsync<string>(
+            _ =>
+            {
+                untypedAttempts++;
+                throw new InvalidOperationException("not a provider failure");
+            },
+            new RetryPolicy(MaxAttempts: 4, RetryProviderFaults: true)));
+        Assert.Equal(1, untypedAttempts);
+    }
 }

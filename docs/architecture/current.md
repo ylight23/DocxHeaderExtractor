@@ -38,6 +38,8 @@ retained for existing library/test callers and is not a second authority route.
   host tool selection cannot silently overwrite duplicate capability names.
 - Policy/guardrails authorize transfer and mutation; a model cannot grant permission. A remote
   capability with an exhausted provider-call budget is denied before execution.
+- Retry is typed and policy-driven: only explicitly transient `ProviderCallException` failures may
+  be retried, and cancellation/untyped failures remain fail-closed.
 - Projection and formatting cannot create authority.
 - Accuracy-99 gold, human adjudication, and provider-quality tuning are outside Phase 1.
 
