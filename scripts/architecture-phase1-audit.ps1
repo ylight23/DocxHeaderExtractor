@@ -88,6 +88,13 @@ $mcpWorkerComposition = $mcpWorkerText -match 'FileInputResourceResolver' -and
 Add-Finding "mcp-worker-uses-common-composition" $mcpWorkerComposition `
     ($(if ($mcpWorkerComposition) { "MCP worker composes source, semantic, persistence and telemetry boundaries" } else { "MCP worker still bypasses common composition" }))
 
+$webProgram = Join-Path $rootPath "src\DocxHeaderExtractor.Web\Program.cs"
+$webText = if (Test-Path $webProgram) { Get-Content -Raw $webProgram } else { "" }
+$feedbackPort = $webText -match 'IHumanFeedbackStore' -and
+    $webText -match 'CorrectionMemoryFeedbackStore'
+Add-Finding "web-uses-feedback-port" $feedbackPort `
+    ($(if ($feedbackPort) { "Web correction endpoint uses the Application feedback port and Infrastructure adapter" } else { "Web correction endpoint still bypasses the feedback port" }))
+
 $blocked = @($findings | Where-Object { $_.status -eq "BLOCKED" })
 [ordered]@{
     artifactKind = "auto_harness_phase1_mechanical_audit"
