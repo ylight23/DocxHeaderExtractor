@@ -58,9 +58,10 @@ tuning, or benchmark tuning.
   Progress: Application now defines versioned run storage identity, persisted lifecycle projection,
   `ITaskRunStore`, `ITaskTelemetrySink`, and conservative `ISecretRedactor` contracts. Infrastructure
   now provides atomic JSON run persistence and redacted JSONL telemetry, and Web/MCP compose them
-  from `DHX_RUNTIME_STATE_DIR`; end-to-end lifecycle callers remain open. Evidence: commit
+  from `DHX_RUNTIME_STATE_DIR`; `DocumentAgentHarness` records Running and terminal lifecycle
+  states when these ports are injected. Evidence: commit
   `1a40c24`, `src/DocxHeaderExtractor.Application/Runtime/RuntimeContracts.cs`,
-  `src/DocxHeaderExtractor.Infrastructure/Runtime/`, commit `de407c6`, and contract tests.
+  `src/DocxHeaderExtractor.Infrastructure/Runtime/`, lifecycle wiring commit, and contract tests.
 - [ ] WS11 — Web/CLI/MCP composition-root cutover with zero normal bypasses.
 - [ ] WS12 — Central build/package rules and architecture enforcement.
   Progress: package versions are centralized in `Directory.Packages.props`; the repeatable audit is

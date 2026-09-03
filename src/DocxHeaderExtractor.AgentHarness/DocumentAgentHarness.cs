@@ -2,6 +2,7 @@
 
 using DocxHeaderExtractor.Application.Tasks;
 using DocxHeaderExtractor.Application.Semantics;
+using DocxHeaderExtractor.Application.Runtime;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
@@ -23,6 +24,8 @@ public sealed class DocumentAgentHarness
     private readonly AgentSkill _skill;
     private readonly IInputResourceResolver? _inputResourceResolver;
     private readonly SemanticRegistry? _semanticRegistry;
+    private readonly ITaskRunStore? _runStore;
+    private readonly ITaskTelemetrySink? _telemetrySink;
 
     public DocumentAgentHarness(
         IDocumentExtractionTool tool,
@@ -33,9 +36,11 @@ public sealed class DocumentAgentHarness
         IDocumentActionTool? actionTool = null,
         AgentSkill? skill = null,
         IInputResourceResolver? inputResourceResolver = null,
-        SemanticRegistry? semanticRegistry = null)
+        SemanticRegistry? semanticRegistry = null,
+        ITaskRunStore? runStore = null,
+        ITaskTelemetrySink? telemetrySink = null)
         : this(new AgentToolRegistry(tool, actionTool), guardrails, validators, sink, options, skill,
-            inputResourceResolver, semanticRegistry)
+            inputResourceResolver, semanticRegistry, runStore, telemetrySink)
     {
     }
 
@@ -47,7 +52,9 @@ public sealed class DocumentAgentHarness
         AgentHarnessOptions? options = null,
         AgentSkill? skill = null,
         IInputResourceResolver? inputResourceResolver = null,
-        SemanticRegistry? semanticRegistry = null)
+        SemanticRegistry? semanticRegistry = null,
+        ITaskRunStore? runStore = null,
+        ITaskTelemetrySink? telemetrySink = null)
     {
         _registry = registry ?? throw new ArgumentNullException(nameof(registry));
         _guardrails = (guardrails ?? DefaultGuardrails()).ToArray();
@@ -58,6 +65,8 @@ public sealed class DocumentAgentHarness
         _skill = skill ?? AgentSkillLoader.LoadDefault();
         _inputResourceResolver = inputResourceResolver;
         _semanticRegistry = semanticRegistry;
+        _runStore = runStore;
+        _telemetrySink = telemetrySink;
     }
 
     public AgentSkill Skill => _skill;
@@ -75,6 +84,8 @@ public sealed class DocumentAgentHarness
         var sequence = 0;
         var steps = 0;
         var startedAt = DateTimeOffset.UtcNow;
+        string? planId = null;
+        DocxHeaderExtractor.Application.Capabilities.CapabilityDescriptor? capability = null;
 
         async ValueTask EmitAsync(string stage, AgentRunEventKind kind, string message)
         {
@@ -160,11 +171,24 @@ public sealed class DocumentAgentHarness
             await EmitAsync("plan.semantic", AgentRunEventKind.Completed,
                 $"SemanticTaskPlan={semanticPlan.TaskName}.");
             var executionPlan = compiledPlan.Execution;
+            planId = semanticPlan.PlanId;
+            capability = tool.Descriptor;
             await EmitAsync("plan.execution", AgentRunEventKind.Completed,
                 $"ExecutionPlan dùng capability {executionPlan.Steps[0].CapabilityId}.");
             await EmitAsync("plan.tools", AgentRunEventKind.Passed, $"Chọn {selection.Rationale}");
             await EmitAsync("capability.resolve", AgentRunEventKind.Passed,
                 $"Resolved capability {tool.Descriptor.Name}.");
+            await RecordLifecycleAsync(
+                runId,
+                startedAt,
+                PersistedRunLifecycle.Running,
+                TaskRunStatus.Started,
+                planId,
+                request,
+                capability,
+                outline: null,
+                failure: null,
+                ct);
 
             // PolicyEvaluator chỉ mô tả quyết định ở application boundary. Các guardrail hiện hữu
             // tiếp tục là enforcement point để không tạo một policy implementation song song.
@@ -323,6 +347,22 @@ public sealed class DocumentAgentHarness
 
             var completedAt = DateTimeOffset.UtcNow;
             var stageNames = trace.Select(e => e.Stage).Distinct(StringComparer.Ordinal).ToArray();
+            var finalProvenance = CreateProvenance(request, tool.Descriptor, outline);
+            await RecordLifecycleAsync(
+                runId,
+                startedAt,
+                outcome == AgentRunOutcome.NeedsHumanReview
+                    ? PersistedRunLifecycle.NeedsHumanReview
+                    : PersistedRunLifecycle.Completed,
+                outcome == AgentRunOutcome.NeedsHumanReview
+                    ? TaskRunStatus.NeedsHumanReview
+                    : TaskRunStatus.Completed,
+                semanticPlan.PlanId,
+                request,
+                tool.Descriptor,
+                outline,
+                failure: null,
+                ct);
             return new DocumentAgentRunResult(runId, outcome, outline, steps, trace.ToArray())
             {
                 TaskResult = new GenericTaskResult<DocumentOutline>(
@@ -338,13 +378,7 @@ public sealed class DocumentAgentHarness
                     startedAt,
                     completedAt)
                 {
-                    Provenance = new TaskProvenance(
-                        Path.GetFileName(request.InputPath),
-                        tool.Descriptor.Name,
-                        outline.Provenance?.Backend,
-                        outline.Model,
-                        outline.Provenance?.SentDataExternally ?? tool.Descriptor.SendsDataExternally,
-                        "ValidatedStructure"),
+                    Provenance = finalProvenance,
                 },
                 Skill = _skill,
                 RepairAttempts = attempt - 1,
@@ -353,23 +387,78 @@ public sealed class DocumentAgentHarness
         }
         catch (OperationCanceledException)
         {
+            await RecordLifecycleAsync(
+                runId,
+                startedAt,
+                PersistedRunLifecycle.Cancelled,
+                TaskRunStatus.Cancelled,
+                planId,
+                request,
+                capability,
+                outline: null,
+                new TaskFailure(TaskFailureKind.Cancelled, "cancelled", "Run bị hủy.", "run"),
+                CancellationToken.None);
             await EmitWithoutCancellationAsync("run", AgentRunEventKind.Cancelled, "Run đã bị hủy.", trace, runId, ++sequence);
             throw;
         }
         catch (AgentRunBlockedException)
         {
+            await RecordLifecycleAsync(
+                runId,
+                startedAt,
+                PersistedRunLifecycle.Blocked,
+                TaskRunStatus.Blocked,
+                planId,
+                request,
+                capability,
+                outline: null,
+                new TaskFailure(TaskFailureKind.PolicyDenied, "agent-run-blocked", "Run bị chặn bởi policy/guardrail.", "run"),
+                CancellationToken.None);
             throw;
         }
         catch (AgentSkillContractException)
         {
+            await RecordLifecycleAsync(
+                runId,
+                startedAt,
+                PersistedRunLifecycle.Failed,
+                TaskRunStatus.Failed,
+                planId,
+                request,
+                capability,
+                outline: null,
+                new TaskFailure(TaskFailureKind.Validation, "skill-contract-failed", "Skill contract không hợp lệ.", "skill.contract"),
+                CancellationToken.None);
             throw;
         }
         catch (AgentOutputValidationException)
         {
+            await RecordLifecycleAsync(
+                runId,
+                startedAt,
+                PersistedRunLifecycle.Failed,
+                TaskRunStatus.Failed,
+                planId,
+                request,
+                capability,
+                outline: null,
+                new TaskFailure(TaskFailureKind.Validation, "output-validation-failed", "Output không qua validation.", "validation"),
+                CancellationToken.None);
             throw;
         }
         catch (Exception ex)
         {
+            await RecordLifecycleAsync(
+                runId,
+                startedAt,
+                PersistedRunLifecycle.Failed,
+                TaskRunStatus.Failed,
+                planId,
+                request,
+                capability,
+                outline: null,
+                new TaskFailure(TaskFailureKind.Unknown, ex.GetType().Name, "Run thất bại.", "run"),
+                CancellationToken.None);
             await EmitWithoutCancellationAsync("run", AgentRunEventKind.Failed,
                 $"Run thất bại: {ex.GetType().Name}.", trace, runId, ++sequence);
             throw;
@@ -414,6 +503,72 @@ public sealed class DocumentAgentHarness
         await _sink.WriteAsync(evt, CancellationToken.None);
     }
 
+    private async ValueTask RecordLifecycleAsync(
+        Guid runId,
+        DateTimeOffset startedAt,
+        PersistedRunLifecycle lifecycle,
+        TaskRunStatus status,
+        string? planId,
+        DocumentAgentRequest request,
+        DocxHeaderExtractor.Application.Capabilities.CapabilityDescriptor? capability,
+        DocumentOutline? outline,
+        TaskFailure? failure,
+        CancellationToken ct)
+    {
+        if (_runStore is null && _telemetrySink is null) return;
+        if (string.IsNullOrWhiteSpace(planId)) return;
+
+        var provenance = CreateProvenance(request, capability, outline);
+        var run = new PersistedTaskRun(
+            new RunStorageKey(runId.ToString("N")), planId, lifecycle,
+            status, startedAt, CompletedAt: lifecycle is PersistedRunLifecycle.Completed
+                or PersistedRunLifecycle.NeedsHumanReview or PersistedRunLifecycle.Failed
+                or PersistedRunLifecycle.Blocked or PersistedRunLifecycle.Cancelled
+                ? DateTimeOffset.UtcNow : null,
+            provenance, failure);
+
+        // Runtime state is diagnostic/non-authoritative. A storage outage must not change the
+        // validated extraction result or turn a successful authority run into a false failure.
+        try
+        {
+            if (_runStore is not null)
+                await _runStore.SaveAsync(run, ct).ConfigureAwait(false);
+        }
+        catch
+        {
+            // Host telemetry may be unavailable during shutdown or filesystem failure.
+        }
+
+        try
+        {
+            if (_telemetrySink is not null)
+                await _telemetrySink.RecordAsync(new TaskTelemetryEvent(
+                    run.Key.RunId, "run.lifecycle", lifecycle.ToString(), DateTimeOffset.UtcNow,
+                    new Dictionary<string, string>
+                    {
+                        ["planId"] = planId,
+                        ["status"] = status.ToString(),
+                        ["capability"] = capability?.Name ?? "unknown",
+                    }), ct).ConfigureAwait(false);
+        }
+        catch
+        {
+            // Runtime telemetry is deliberately best-effort and never an authority path.
+        }
+    }
+
+    private static TaskProvenance CreateProvenance(
+        DocumentAgentRequest request,
+        DocxHeaderExtractor.Application.Capabilities.CapabilityDescriptor? capability,
+        DocumentOutline? outline) =>
+        new(
+            Path.GetFileName(request.InputPath),
+            capability?.Name,
+            outline?.Provenance?.Backend,
+            outline?.Model,
+            outline?.Provenance?.SentDataExternally ?? capability?.SendsDataExternally ?? false,
+            "ValidatedStructure");
+
     private static IEnumerable<IDocumentAgentGuardrail> DefaultGuardrails()
     {
         yield return new InputDocumentGuardrail();
@@ -451,13 +606,19 @@ public sealed class DocumentAgentHarnessFactory
     private readonly Lazy<AgentSkill> _skill = new(AgentSkillLoader.LoadDefault, isThreadSafe: true);
     private readonly IInputResourceResolver? _inputResourceResolver;
     private readonly SemanticRegistry? _semanticRegistry;
+    private readonly ITaskRunStore? _runStore;
+    private readonly ITaskTelemetrySink? _telemetrySink;
 
     public DocumentAgentHarnessFactory(
         IInputResourceResolver? inputResourceResolver = null,
-        SemanticRegistry? semanticRegistry = null)
+        SemanticRegistry? semanticRegistry = null,
+        ITaskRunStore? runStore = null,
+        ITaskTelemetrySink? telemetrySink = null)
     {
         _inputResourceResolver = inputResourceResolver;
         _semanticRegistry = semanticRegistry;
+        _runStore = runStore;
+        _telemetrySink = telemetrySink;
     }
 
     public AgentSkill Skill => _skill.Value;
@@ -468,7 +629,8 @@ public sealed class DocumentAgentHarnessFactory
         AgentHarnessOptions? options = null,
         IDocumentActionTool? actionTool = null) =>
         new(tool, sink: sink, options: options, actionTool: actionTool, skill: _skill.Value,
-            inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry);
+            inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry,
+            runStore: _runStore, telemetrySink: _telemetrySink);
 
     public DocumentAgentHarness Create(
         IDocumentExtractionTool tool,
@@ -476,12 +638,14 @@ public sealed class DocumentAgentHarnessFactory
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null) =>
         new(new AgentToolRegistry([tool], actionTools), sink: sink, options: options, skill: _skill.Value,
-            inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry);
+            inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry,
+            runStore: _runStore, telemetrySink: _telemetrySink);
 
     public DocumentAgentHarness Create(
         IAgentToolRegistry registry,
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null) =>
         new(registry, sink: sink, options: options, skill: _skill.Value,
-            inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry);
+            inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry,
+            runStore: _runStore, telemetrySink: _telemetrySink);
 }

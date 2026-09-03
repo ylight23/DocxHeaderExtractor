@@ -74,8 +74,9 @@ never load that plugin on the normal extraction route.
   generic defaults are composed by Web/MCP, while external configuration registration and feature
   consumers remain open
 - run lifecycle: versioned persistence/telemetry ports and secret redaction contract in Application;
-  Web and MCP compose `JsonFileTaskRunStore` and `JsonLinesTaskTelemetrySink` from the configurable
-  `DHX_RUNTIME_STATE_DIR` boundary; provider payloads are not part of these artifacts
+  Web/MCP compose `JsonFileTaskRunStore` and `JsonLinesTaskTelemetrySink` from the configurable
+  `DHX_RUNTIME_STATE_DIR` boundary, and the common harness records Running and terminal states;
+  persistence failures remain non-authoritative and provider payloads are not part of these artifacts
 - MCP job state: temporary `McpJobStore` snapshots owned by the MCP host
 - generated/writeback files: request-owned temp directories and explicit writeback adapters
 - Accuracy-99 review/gold: evaluation-owned and excluded from this cutover
