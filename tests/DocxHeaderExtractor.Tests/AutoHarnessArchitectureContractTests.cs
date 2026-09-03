@@ -43,4 +43,22 @@ public sealed class AutoHarnessArchitectureContractTests
         Assert.Equal(PolicyDecisionKind.Denied, denied.Kind);
         Assert.Equal(PolicyDecisionKind.DeferredToHumanReview, deferred.Kind);
     }
+
+    [Fact]
+    public void Generic_task_request_supports_multiple_opaque_resources_and_budget()
+    {
+        var request = new AgentTaskRequest(
+            "inspect these resources",
+            [
+                new InputResource("doc", InputResourceKind.Document, "a.docx", "application/docx", "opaque:a"),
+                new InputResource("image", InputResourceKind.Image, "page.png", "image/png", "opaque:b"),
+            ],
+            new AgentTaskPermissions(),
+            OutputPreference: "grouped",
+            Budget: new TaskBudget(MaxSteps: 8, MaxInputBytes: 1_000_000));
+
+        Assert.Equal(2, request.Resources.Count);
+        Assert.Equal("opaque:a", request.Resources[0].Locator);
+        Assert.Equal(8, request.Budget!.MaxSteps);
+    }
 }

@@ -101,8 +101,9 @@ public sealed class DocumentAgentHarness
             // 2. Dựng và kiểm tra intent trước khi chọn capability. Đây là application contract;
             // input guardrail vẫn là nơi duy nhất quyết định file có thực sự tồn tại/hợp lệ.
             var proposal = DocumentTaskAdapters.Propose(request);
+            var genericRequest = GenericTaskRequestAdapter.FromDocumentRequest(request);
             await EmitAsync("intent.proposal", AgentRunEventKind.Completed,
-                $"Intent {proposal.Operation} cho {Path.GetFileName(request.InputPath)}.");
+                $"Intent {proposal.Operation} cho {genericRequest.Resources.Count} resource.");
             var intentValidation = IntentValidator.Validate(proposal);
             if (!intentValidation.IsExecutable && intentValidation.Intent is null)
                 throw new InvalidOperationException(
