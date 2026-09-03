@@ -46,6 +46,9 @@ builder.Services.AddSingleton<DocxHeaderExtractor.Application.Runtime.ITaskRunSt
 builder.Services.AddSingleton<DocxHeaderExtractor.Application.Runtime.ITaskTelemetrySink>(_ =>
     new DocxHeaderExtractor.Infrastructure.Runtime.JsonLinesTaskTelemetrySink(
         DocxHeaderExtractor.Infrastructure.Runtime.RuntimeStatePaths.TelemetryPath));
+builder.Services.AddSingleton<DocxHeaderExtractor.Application.Tasks.IInputResourceResolver>(sp =>
+    new DocxHeaderExtractor.Infrastructure.Sources.FileInputResourceResolver(
+        sp.GetRequiredService<DhxMcpOptions>().AllowedRoots));
 builder.Services.AddSingleton(
     DocxHeaderExtractor.Application.Semantics.SemanticRegistryDefaults.Create());
 builder.Services.AddSingleton<McpPathPolicy>();

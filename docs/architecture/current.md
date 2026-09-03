@@ -61,7 +61,8 @@ retained for existing library/test callers and is not a second authority route.
 versions are centrally declared in `Directory.Packages.props` without changing the pinned versions.
 Infrastructure now contains provider contracts, heading-provider implementations, prompt/cache
 adapters, fact-provider adapters, and an allowlisted file resource resolver. Core exposes only the
-neutral classifier seam; end-to-end source resolver wiring remains open Phase 1 work. CLI has no
+neutral classifier seam. Web and MCP wire the resolver into `DocumentAgentHarnessFactory`; CLI's
+standalone compatibility construction remains open for the final host cutover. CLI has no
 compile-time Eval reference; explicit evaluation commands use `EvaluationProjectionBridge` and
 never load that plugin on the normal extraction route.
 

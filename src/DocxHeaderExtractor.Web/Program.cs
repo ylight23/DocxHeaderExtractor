@@ -12,7 +12,9 @@ using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
 using DocxHeaderExtractor.Application.Runtime;
 using DocxHeaderExtractor.Application.Semantics;
+using DocxHeaderExtractor.Application.Tasks;
 using DocxHeaderExtractor.Infrastructure.Runtime;
+using DocxHeaderExtractor.Infrastructure.Sources;
 using DocxHeaderExtractor.Web;
 using DocumentFormat.OpenXml.Packaging;
 using Microsoft.AspNetCore.Http.Features;
@@ -40,6 +42,8 @@ builder.Services.AddSingleton<LmStudioModelDiscovery>();
 builder.Services.AddSingleton<WritebackStore>();
 builder.Services.AddSingleton<ITaskRunStore>(_ => new JsonFileTaskRunStore(RuntimeStatePaths.RunDirectory));
 builder.Services.AddSingleton<ITaskTelemetrySink>(_ => new JsonLinesTaskTelemetrySink(RuntimeStatePaths.TelemetryPath));
+builder.Services.AddSingleton<IInputResourceResolver>(_ =>
+    new FileInputResourceResolver([Path.GetTempPath(), AppContext.BaseDirectory]));
 builder.Services.AddSingleton(SemanticRegistryDefaults.Create());
 builder.Services.AddHttpClient("OpenRouter", client =>
 {

@@ -20,6 +20,7 @@ public sealed class DocumentAgentHarness
     private readonly IAgentRunSink _sink;
     private readonly AgentHarnessOptions _options;
     private readonly AgentSkill _skill;
+    private readonly IInputResourceResolver? _inputResourceResolver;
 
     public DocumentAgentHarness(
         IDocumentExtractionTool tool,
@@ -28,8 +29,10 @@ public sealed class DocumentAgentHarness
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null,
         IDocumentActionTool? actionTool = null,
-        AgentSkill? skill = null)
-        : this(new AgentToolRegistry(tool, actionTool), guardrails, validators, sink, options, skill)
+        AgentSkill? skill = null,
+        IInputResourceResolver? inputResourceResolver = null)
+        : this(new AgentToolRegistry(tool, actionTool), guardrails, validators, sink, options, skill,
+            inputResourceResolver)
     {
     }
 
@@ -39,7 +42,8 @@ public sealed class DocumentAgentHarness
         IEnumerable<IDocumentAgentValidator>? validators = null,
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null,
-        AgentSkill? skill = null)
+        AgentSkill? skill = null,
+        IInputResourceResolver? inputResourceResolver = null)
     {
         _registry = registry ?? throw new ArgumentNullException(nameof(registry));
         _guardrails = (guardrails ?? DefaultGuardrails()).ToArray();
@@ -48,6 +52,7 @@ public sealed class DocumentAgentHarness
         _options = options ?? new AgentHarnessOptions();
         _options.Validate();
         _skill = skill ?? AgentSkillLoader.LoadDefault();
+        _inputResourceResolver = inputResourceResolver;
     }
 
     public AgentSkill Skill => _skill;
@@ -111,6 +116,19 @@ public sealed class DocumentAgentHarness
             var intent = intentValidation.Intent!;
             await EmitAsync("intent.validation", AgentRunEventKind.Passed,
                 "Intent hợp lệ; chưa cấp quyền thực thi hay tạo authority.");
+
+            if (_inputResourceResolver is not null)
+            {
+                TakeStep("source.resolve");
+                foreach (var resource in genericRequest.Resources)
+                {
+                    var resolved = await _inputResourceResolver.ResolveAsync(resource, ct);
+                    if (!resolved.LeaveOpen)
+                        await resolved.Content.DisposeAsync();
+                }
+                await EmitAsync("source.resolve", AgentRunEventKind.Passed,
+                    $"Đã resolve {genericRequest.Resources.Count} resource qua host source boundary.");
+            }
 
             // 3. Chọn capability bằng luật của code, rồi ghi lựa chọn kèm lý do vào trace.
             TakeStep("plan.tools");
@@ -411,6 +429,12 @@ public sealed class AgentSkillContractException(
 public sealed class DocumentAgentHarnessFactory
 {
     private readonly Lazy<AgentSkill> _skill = new(AgentSkillLoader.LoadDefault, isThreadSafe: true);
+    private readonly IInputResourceResolver? _inputResourceResolver;
+
+    public DocumentAgentHarnessFactory(IInputResourceResolver? inputResourceResolver = null)
+    {
+        _inputResourceResolver = inputResourceResolver;
+    }
 
     public AgentSkill Skill => _skill.Value;
 
@@ -419,18 +443,21 @@ public sealed class DocumentAgentHarnessFactory
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null,
         IDocumentActionTool? actionTool = null) =>
-        new(tool, sink: sink, options: options, actionTool: actionTool, skill: _skill.Value);
+        new(tool, sink: sink, options: options, actionTool: actionTool, skill: _skill.Value,
+            inputResourceResolver: _inputResourceResolver);
 
     public DocumentAgentHarness Create(
         IDocumentExtractionTool tool,
         IEnumerable<IDocumentActionTool> actionTools,
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null) =>
-        new(new AgentToolRegistry([tool], actionTools), sink: sink, options: options, skill: _skill.Value);
+        new(new AgentToolRegistry([tool], actionTools), sink: sink, options: options, skill: _skill.Value,
+            inputResourceResolver: _inputResourceResolver);
 
     public DocumentAgentHarness Create(
         IAgentToolRegistry registry,
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null) =>
-        new(registry, sink: sink, options: options, skill: _skill.Value);
+        new(registry, sink: sink, options: options, skill: _skill.Value,
+            inputResourceResolver: _inputResourceResolver);
 }
