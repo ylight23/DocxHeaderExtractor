@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DocumentFormat.OpenXml" />
-    <PackageReference Include="PdfPig" />
-    <PackageReference Include="PDFtoImage" />
-  </ItemGroup>
-
-  <ItemGroup>
     <!-- Phần thuần của RuntimeDescription phải kiểm được mà không nạp 4,4 GB trọng số. -->
     <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
     <!-- Historical evaluation is isolated from the normal Core runtime path. -->

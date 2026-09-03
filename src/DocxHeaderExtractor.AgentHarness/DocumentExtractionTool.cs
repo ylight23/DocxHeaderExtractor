@@ -1,6 +1,7 @@
 using DocxHeaderExtractor.Application.Capabilities;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing;
 using DocxHeaderExtractor.Infrastructure.AI;
@@ -60,10 +61,25 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     {
         ArgumentNullException.ThrowIfNull(invocation);
         var quarantine = invocation.Feedback?.QuarantineIndexes;
-        return _processing.ProcessStructureOnlyAsync(
-            invocation.Request.InputPath,
-            quarantine is { Count: > 0 } ? quarantine.ToHashSet() : null,
-            ct);
+        return ExecuteNormalizedAsync(invocation.Request.InputPath,
+            quarantine is { Count: > 0 } ? quarantine.ToHashSet() : null, ct);
+    }
+
+    private async Task<DocumentOutline> ExecuteNormalizedAsync(
+        string inputPath,
+        IReadOnlySet<int>? quarantine,
+        CancellationToken ct)
+    {
+        var conversion = LegacyDocConverter.EnsureDocx(inputPath);
+        try
+        {
+            return await _processing.ProcessStructureOnlyAsync(conversion.Path, quarantine, ct)
+                .ConfigureAwait(false);
+        }
+        finally
+        {
+            LegacyDocConverter.Cleanup(conversion);
+        }
     }
 
     private static CapabilityDescriptor Describe(PipelineOptions options)

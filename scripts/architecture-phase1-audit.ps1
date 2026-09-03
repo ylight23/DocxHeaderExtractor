@@ -50,7 +50,7 @@ $coreProjectReferences = @([regex]::Matches($coreProjectText, '<ProjectReference
 Add-Finding "core-has-no-project-dependencies" ($coreProjectReferences.Count -eq 0) `
     ($(if ($coreProjectReferences.Count -eq 0) { "Core has no ProjectReference" } else { $coreProjectReferences -join ", " }))
 
-$coreLlmFiles = @(Get-ChildItem (Join-Path $rootPath "src\DocxHeaderExtractor.Core\Llm") `
+$coreLlmFiles = @(Get-ChildItem (Join-Path $rootPath "src\DocxHeaderExtractor.DocumentProcessing\Llm") `
     -Filter *.cs -File -ErrorAction SilentlyContinue)
 $coreProviderFiles = @($coreLlmFiles | Where-Object {
     (Get-Content -Raw $_.FullName) -match '\b(class|record)\s+\w*(HeaderExtractor|Provider|Runner)\b'

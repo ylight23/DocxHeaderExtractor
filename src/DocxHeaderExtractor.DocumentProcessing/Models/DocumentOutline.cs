@@ -141,14 +141,6 @@ public sealed class HeadingRecord
     public bool Disputed { get; set; }
 }
 
-public sealed record HeadingEvidence(
-    [property: JsonPropertyName("numberingValid")] bool NumberingValid,
-    [property: JsonPropertyName("siblingSequenceValid")] bool SiblingSequenceValid,
-    [property: JsonPropertyName("formattingConsistent")] bool FormattingConsistent,
-    [property: JsonPropertyName("modelConfirmed")] bool ModelConfirmed,
-    [property: JsonPropertyName("treeValid")] bool TreeValid,
-    [property: JsonPropertyName("status")] string Status);
-
 public sealed record TextOffsetSpan(
     [property: JsonPropertyName("start")] int Start,
     [property: JsonPropertyName("end")] int End);

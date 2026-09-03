@@ -7,8 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- Historical evaluation helpers consume internal processing diagnostics only through the explicit Eval project. -->
+    <InternalsVisibleTo Include="DocxHeaderExtractor.Eval" />
+    <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DocxHeaderExtractor.Application\DocxHeaderExtractor.Application.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.Core\DocxHeaderExtractor.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" />
+    <PackageReference Include="PdfPig" />
+    <PackageReference Include="PDFtoImage" />
   </ItemGroup>
 
 </Project>

@@ -70,15 +70,15 @@ public sealed class AuthorityExtractionPipeline : IDisposable
     public async Task<DocumentExtractionResult> RunDocumentAsync(
         string inputPath,
         CancellationToken ct = default) =>
-        (await RunDocumentWithCompatibilityAsync(inputPath, null, ct)).Result;
+        (await RunDocumentExecutionAsync(inputPath, null, ct)).Result;
 
     public async Task<DocumentExtractionResult> RunDocumentAsync(
         string inputPath,
         IReadOnlySet<int>? quarantinedIndexes,
         CancellationToken ct = default) =>
-        (await RunDocumentWithCompatibilityAsync(inputPath, quarantinedIndexes, ct)).Result;
+        (await RunDocumentExecutionAsync(inputPath, quarantinedIndexes, ct)).Result;
 
-    public Task<AuthorityPipelineExecutionResult> RunDocumentWithCompatibilityAsync(
+    public Task<AuthorityPipelineExecutionResult> RunDocumentExecutionAsync(
         string inputPath,
         IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default) =>
@@ -90,11 +90,15 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         CancellationToken ct = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(inputPath);
+        var extension = Path.GetExtension(inputPath);
+        if (!string.Equals(extension, ".docx", StringComparison.OrdinalIgnoreCase) &&
+            !string.Equals(extension, ".docm", StringComparison.OrdinalIgnoreCase))
+            throw new NotSupportedException(
+                "AuthorityExtractionPipeline nhận đầu vào OOXML đã chuẩn hoá (.docx/.docm); " +
+                "compatibility adapter phải chuyển đổi định dạng đời cũ trước khi gọi pipeline.");
+
         var started = Environment.TickCount64;
-        var conversion = LegacyDocConverter.EnsureDocx(inputPath);
-        try
-        {
-            var sourceDocument = new OpenXmlDocumentSource().Read(conversion.Path);
+        var sourceDocument = new OpenXmlDocumentSource().Read(inputPath);
             var structuralFeatures = NumberingStyleFeatures.FromSourceDocument(sourceDocument);
             var derivedFeatures = new DocumentFeatureDeriver().Derive(sourceDocument);
             var policyState = DocxPolicyStateBuilder.Build(
@@ -164,7 +168,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                     throw new ArgumentOutOfRangeException(nameof(authorityRoute), authorityRoute, null);
             }
 
-            var product = new PdfProductOutput(FileSha256(conversion.Path), []);
+            var product = new PdfProductOutput(FileSha256(inputPath), []);
             var structural = new StructuralMaterializationResult(
                 new ValidatedStructure([]), new HashSet<string>(StringComparer.Ordinal), 0, 0);
             if (audit is not null)
@@ -172,7 +176,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 var isNativePdf = routeFinalStructure is not null;
                 var finalStructure = isNativePdf
                     ? routeFinalStructure!
-                    : BuildFinalStructure(conversion.Path, audit, authority.Structure);
+                    : BuildFinalStructure(inputPath, audit, authority.Structure);
                 var decisions = isNativePdf && routeOutputDecisions is not null
                     ? routeOutputDecisions!
                     : PdfOutputDecisionPolicy.Decide(finalStructure);
@@ -229,11 +233,6 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                     !_options.DisableLlm && _options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang),
             };
             return new AuthorityPipelineExecutionResult(extractionResult, compatibilityOutline);
-        }
-        finally
-        {
-            LegacyDocConverter.Cleanup(conversion);
-        }
     }
 
     private async Task<IHeaderClassifier> GetAnalystAsync(CancellationToken ct)

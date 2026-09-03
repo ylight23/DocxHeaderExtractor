@@ -37,7 +37,7 @@
       "entryPoint": "dhx eval/bench/pdf-* commands",
       "host": "CLI",
       "normalUserReachable": false,
-      "invokedPipeline": "EvalRunner, PdfLayoutEvidenceOutline probes, Core.Eval and Core.Repair",
+      "invokedPipeline": "EvalRunner, PdfLayoutEvidenceOutline probes, DocumentProcessing.Eval and DocumentProcessing.Repair",
       "authorityStatus": "EVAL_OR_DIAGNOSTIC_ONLY"
     },
     {
@@ -70,17 +70,18 @@
     }
   ],
   "classificationCounts": {
-    "NORMAL_PRODUCTION": 10,
+    "NORMAL_PRODUCTION": 9,
     "LEGACY_RUNTIME": 3,
     "EVAL_ONLY": 5,
     "REPLAY_ONLY": 3,
     "TEST_ONLY": 1,
     "DEAD": 0,
     "MIXED": 4,
-    "UNKNOWN": 1
+    "UNKNOWN": 1,
+    "COMPATIBILITY_ONLY": 1
   },
   "TOTAL_COMPONENTS_AUDITED": 26,
-  "NORMAL_PRODUCTION_COUNT": 10,
+  "NORMAL_PRODUCTION_COUNT": 9,
   "LEGACY_RUNTIME_COUNT": 2,
   "EVAL_ONLY_COUNT": 5,
   "REPLAY_ONLY_COUNT": 3,
@@ -88,10 +89,11 @@
   "DEAD_COUNT": 0,
   "MIXED_COUNT": 4,
   "UNKNOWN_COUNT": 1,
+  "COMPATIBILITY_ONLY_COUNT": 1,
   "components": [
     {
       "component": "AuthorityExtractionPipeline",
-      "file": "src/DocxHeaderExtractor.Core/Pipeline/AuthorityExtractionPipeline.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/AuthorityExtractionPipeline.cs",
       "namespace": "DocxHeaderExtractor.Core.Pipeline",
       "directCallers": ["PipelineDocumentExtractionTool"],
       "transitiveEntryPoints": ["CLI extract", "Web /api/extract", "MCP extract_document_headings", "AgentHarness extraction tool"],
@@ -171,7 +173,7 @@
     },
     {
       "component": "DocxAuthorityPipeline",
-      "file": "src/DocxHeaderExtractor.Core/Pipeline/DocxAuthorityPipeline.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxAuthorityPipeline.cs",
       "namespace": "DocxHeaderExtractor.Core.Pipeline",
       "directCallers": ["AuthorityExtractionPipeline", "HeaderExtractionPipeline"],
       "transitiveEntryPoints": ["normal hosts through AuthorityExtractionPipeline", "legacy compatibility path"],
@@ -191,7 +193,7 @@
     },
     {
       "component": "DocxSlimExtractor",
-      "file": "src/DocxHeaderExtractor.Core/OpenXmlLayer/DocxSlimExtractor.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/OpenXmlLayer/DocxSlimExtractor.cs",
       "namespace": "DocxHeaderExtractor.Core.OpenXmlLayer",
       "directCallers": ["AuthorityExtractionPipeline", "HeaderExtractionPipeline", "Web inspect", "CLI review", "tests"],
       "transitiveEntryPoints": ["all normal extraction hosts", "review/inspect", "eval and tests"],
@@ -211,7 +213,7 @@
     },
     {
       "component": "PdfLayoutEvidenceOutline",
-      "file": "src/DocxHeaderExtractor.Core/Pipeline/PdfLayoutEvidenceOutline.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfLayoutEvidenceOutline.cs",
       "namespace": "DocxHeaderExtractor.Core.Pipeline",
       "directCallers": ["AuthorityExtractionPipeline", "CLI pdf-stage-eval and pdf-* commands", "PDF tests"],
       "transitiveEntryPoints": ["normal PDF authority path", "diagnostic/eval CLI"],
@@ -231,27 +233,27 @@
     },
     {
       "component": "LegacyDocConverter",
-      "file": "src/DocxHeaderExtractor.Core/OpenXmlLayer/LegacyDocConverter.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/OpenXmlLayer/LegacyDocConverter.cs",
       "namespace": "DocxHeaderExtractor.Core.OpenXmlLayer",
       "directCallers": ["CLI Program.cs", "Web Program.cs", "AgentHarness DocumentActionTool", "EvalRunner"],
       "transitiveEntryPoints": ["CLI extraction/review", "Web inspect/extract", "Agent action", "eval"],
-      "normalProductionReachable": true,
+      "normalProductionReachable": false,
       "legacyRuntimeReachable": false,
       "evalReachable": true,
       "replayReachable": false,
       "testReachable": true,
       "reflectionOrDynamicRisk": "LOW",
-      "classification": "NORMAL_PRODUCTION",
+      "classification": "COMPATIBILITY_ONLY",
       "architecturalLegacy": true,
       "currentOwner": "INFRASTRUCTURE",
       "targetOwner": "INFRASTRUCTURE",
       "ownershipMismatch": false,
       "deprecationDecision": "KEEP",
-      "classificationEvidence": "Despite its name, it is directly called by normal CLI/Web/Agent flows. It is not classified LEGACY_RUNTIME."
+      "classificationEvidence": "Used only by explicit input-compatibility adapters before normalized OOXML processing, plus repair/eval compatibility; it is not an authority route."
     },
     {
       "component": "HeaderExtractionPipeline",
-      "file": "src/DocxHeaderExtractor.Core/Pipeline/HeaderExtractionPipeline.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/HeaderExtractionPipeline.cs",
       "namespace": "DocxHeaderExtractor.Core.Pipeline",
       "directCallers": ["CLI repair-key-package construction", "Core.Repair", "tests"],
       "transitiveEntryPoints": ["CLI repair-key-package", "repair commands", "legacy tests"],
@@ -278,11 +280,11 @@
           "evidence": "Bool policy/branch in HeaderExtractionPipeline; it diverts that legacy facade to RunPdfFirstAuthorityPipelineAsync."
         }
       ],
-      "classificationEvidence": "CLI repair-key-package and Core Repair contain direct construction; normal host extraction constructs AuthorityExtractionPipeline instead."
+      "classificationEvidence": "CLI repair-key-package and DocumentProcessing Repair contain direct construction; normal host extraction constructs AuthorityExtractionPipeline instead."
     },
     {
       "component": "OutlineWriteback",
-      "file": "src/DocxHeaderExtractor.Core/OpenXmlLayer/OutlineWriteback.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/OpenXmlLayer/OutlineWriteback.cs",
       "namespace": "DocxHeaderExtractor.Core.OpenXmlLayer",
       "directCallers": ["OutlineWritebackTool", "writeback tests"],
       "transitiveEntryPoints": ["explicit AgentHarness action/legacy writeback path"],
@@ -302,7 +304,7 @@
     },
     {
       "component": "AutoRepairWorkflow",
-      "file": "src/DocxHeaderExtractor.Core/Repair/AutoRepairWorkflow.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Repair/AutoRepairWorkflow.cs",
       "namespace": "DocxHeaderExtractor.Core.Repair",
       "directCallers": ["CLI repair command", "AutoRepairWorkflowTests"],
       "transitiveEntryPoints": ["CLI repair", "tests"],
@@ -322,7 +324,7 @@
     },
     {
       "component": "RepairCandidateRunner",
-      "file": "src/DocxHeaderExtractor.Core/Repair/RepairCandidateRunner.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Repair/RepairCandidateRunner.cs",
       "namespace": "DocxHeaderExtractor.Core.Repair",
       "directCallers": ["AutoRepairWorkflow", "RepairGateCalibration", "RepairCorpusAudit", "tests"],
       "transitiveEntryPoints": ["repair CLI", "repair calibration/audit CLI", "tests"],
@@ -342,7 +344,7 @@
     },
     {
       "component": "RepairCorpusAudit",
-      "file": "src/DocxHeaderExtractor.Core/Repair/RepairCorpusAudit.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Repair/RepairCorpusAudit.cs",
       "namespace": "DocxHeaderExtractor.Core.Repair",
       "directCallers": ["CLI repair-audit command"],
       "transitiveEntryPoints": ["CLI repair-audit"],
@@ -362,7 +364,7 @@
     },
     {
       "component": "RepairGateCalibration",
-      "file": "src/DocxHeaderExtractor.Core/Repair/RepairGateCalibration.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Repair/RepairGateCalibration.cs",
       "namespace": "DocxHeaderExtractor.Core.Repair",
       "directCallers": ["CLI repair-calibrate command"],
       "transitiveEntryPoints": ["CLI repair-calibrate"],
@@ -402,7 +404,7 @@
     },
     {
       "component": "BenchDocumentFactory",
-      "file": "src/DocxHeaderExtractor.Core/Eval/BenchDocumentFactory.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Eval/BenchDocumentFactory.cs",
       "namespace": "DocxHeaderExtractor.Core.Eval",
       "directCallers": ["CLI bench command", "eval/tests"],
       "transitiveEntryPoints": ["CLI bench", "test fixtures"],
@@ -422,7 +424,7 @@
     },
     {
       "component": "PdfClusterProbe",
-      "file": "src/DocxHeaderExtractor.Core/Pipeline/PdfClusterProbe.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfClusterProbe.cs",
       "namespace": "DocxHeaderExtractor.Core.Pipeline",
       "directCallers": ["CLI pdf-clusters command", "PDF probe tests"],
       "transitiveEntryPoints": ["CLI diagnostic command", "tests"],
@@ -442,7 +444,7 @@
     },
     {
       "component": "PdfTaggedHeadingProbe",
-      "file": "src/DocxHeaderExtractor.Core/Pipeline/PdfTaggedHeadingProbe.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfTaggedHeadingProbe.cs",
       "namespace": "DocxHeaderExtractor.Core.Pipeline",
       "directCallers": ["CLI pdf-tags command", "PdfTaggedHeadingProbeTests", "PdfTaggedEvidenceOutline"],
       "transitiveEntryPoints": ["CLI diagnostic/eval", "tests", "PDF authority evidence adapter"],
@@ -462,7 +464,7 @@
     },
     {
       "component": "PdfHierarchyFactsArtifactEvaluator",
-      "file": "src/DocxHeaderExtractor.Core/Eval/PdfHierarchyFactsArtifactEvaluator.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Eval/PdfHierarchyFactsArtifactEvaluator.cs",
       "namespace": "DocxHeaderExtractor.Core.Eval",
       "directCallers": ["CLI pdf-hierarchy-facts-eval command", "eval tests"],
       "transitiveEntryPoints": ["CLI eval/replay"],
@@ -482,7 +484,7 @@
     },
     {
       "component": "PdfLegacyValidatedOutputPolicy",
-      "file": "src/DocxHeaderExtractor.Core/Eval/PdfLegacyValidatedOutputPolicy.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Eval/PdfLegacyValidatedOutputPolicy.cs",
       "namespace": "DocxHeaderExtractor.Core.Eval",
       "directCallers": ["Pdf hierarchy diagnostic/eval paths", "tests"],
       "transitiveEntryPoints": ["CLI replay/eval"],
@@ -502,7 +504,7 @@
     },
     {
       "component": "PdfShadowLaneComparison",
-      "file": "src/DocxHeaderExtractor.Core/Eval/PdfShadowLaneComparison.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Eval/PdfShadowLaneComparison.cs",
       "namespace": "DocxHeaderExtractor.Core.Eval",
       "directCallers": ["CLI pdf-shadow-compare command", "shadow comparison tests"],
       "transitiveEntryPoints": ["CLI replay/eval"],
@@ -542,7 +544,7 @@
     },
     {
       "component": "NumberingAudit",
-      "file": "src/DocxHeaderExtractor.Core/Pipeline/NumberingAudit.cs",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/NumberingAudit.cs",
       "namespace": "DocxHeaderExtractor.Core.Pipeline",
       "directCallers": ["normal structural pipeline components", "tests"],
       "transitiveEntryPoints": ["normal extraction hosts", "eval/tests"],
@@ -745,8 +747,7 @@
   "ARCHITECTURE_VIOLATIONS": [
     "CLI compatibility/eval reaches HeaderExtractionPipeline",
     "Repair reaches HeaderExtractionPipeline",
-    "Application orchestration constructs provider implementations",
-    "Core.Models depends on OpenXmlLayer"
+    "Host composition selects concrete provider implementations outside Application"
   ],
   "REMOVE_CANDIDATES": [],
   "DEPRECATE_AFTER_MIGRATION": [

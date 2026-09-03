@@ -47,19 +47,21 @@ retained for existing library/test callers and is not a second authority route.
 
 | Project | Current role | Current references |
 |---|---|---|
-| `Core` | authority contracts, OpenXML/PDF pipeline, provider-neutral classifier/visual ports/options | package dependencies include OpenXML, PdfPig, and PDFtoImage; document/PDF authority migration remains open |
+| `Core` | pure source/structure/fact contracts and authority value objects/validators | no project or parser/render/provider package references |
 | `Application` | provider-independent intent, plan compiler, policy, projection, task/resource, capability, semantic-registry and runtime contracts | `Core` |
-| `DocumentProcessing` | application processing service and processing contracts; delegates authority | `Application`, `Core` |
+| `DocumentProcessing` | DOCX/PDF source adapters, authority pipeline implementations, processing service, repair/eval compatibility | `Application`, `Core`; owns OpenXML/PdfPig/PDFtoImage |
 | `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Application`, `DocumentProcessing`, `Core` |
-| `Web` | HTTP host and UI composition root | `AgentHarness`, `Core` |
-| `Cli` | command host and explicit evaluation/repair commands | `AgentHarness`, `Core`; optional Eval plugin bridge |
-| `Mcp` | MCP host and async job adapter | `AgentHarness`, `Core` |
-| `Eval` | evaluation/replay-only adapters | `Core` |
-| `Infrastructure` | provider implementations, prompt/cache adapters, source infrastructure ports and fact-provider adapters | `Application`, `Core` |
+| `Web` | HTTP host and UI composition root | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure` |
+| `Cli` | command host and explicit evaluation/repair commands | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure`; optional Eval plugin bridge |
+| `Mcp` | MCP host and async job adapter | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure` |
+| `Eval` | evaluation/replay-only adapters | `Core`, `DocumentProcessing` |
+| `Infrastructure` | provider implementations, prompt/cache adapters, source infrastructure ports and fact-provider adapters | `Application`, `Core`, `DocumentProcessing` |
 
 `Application`, `DocumentProcessing`, and `Infrastructure` project boundaries now exist. Package
 versions are centrally declared in `Directory.Packages.props` without changing the pinned versions.
-Infrastructure now contains provider contracts, heading-provider implementations, prompt/cache
+DocumentProcessing now owns source/parser/rendering and authority pipeline implementations; Core
+contains only package-free contracts/value objects/validators. Infrastructure now contains provider
+contracts, heading-provider implementations, prompt/cache
 adapters, fact-provider adapters, LLamaSharp/SGLang VLM adapters, and an allowlisted file resource
 resolver. Core exposes only the neutral classifier and visual-question seams. Web/MCP and the CLI normal, review, and evaluation paths wire the resolver
 and trusted semantic registry into the common harness; the MCP subprocess worker composes the same
@@ -94,11 +96,10 @@ without adding a second authority route or making a provider call.
 
 ## Open architecture findings
 
-The existing reachability audit proves no safe deletion candidate yet: `HeaderExtractionPipeline`
-remains reachable from repair/evaluation, `DocxSlimExtractor` remains source-preparation reachable,
-and `LegacyDocConverter` remains a normal input compatibility adapter. The correct next action is
-boundary extraction and caller migration, followed by a new reachability audit; deletion before
-those gates would risk breaking compatibility.
+The current reachability audit retains `HeaderExtractionPipeline` only for repair/evaluation
+compatibility, keeps `DocxSlimExtractor` behind source preparation, and retains `LegacyDocConverter`
+only as an explicit input compatibility adapter before the canonical authority pipeline. The normal
+authority pipeline now receives normalized OOXML and has no converter call.
 
 The repeatable mechanical audit is `scripts/architecture-phase1-audit.ps1`. At the current
 checkpoint it passes project presence, central package versions, the Core project-reference

@@ -32,7 +32,7 @@ public sealed class DocumentProcessingService : IDocumentProcessingService
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(request);
-        var execution = await _authority.RunDocumentWithCompatibilityAsync(request.InputPath, null, cancellationToken)
+        var execution = await _authority.RunDocumentExecutionAsync(request.InputPath, null, cancellationToken)
             .ConfigureAwait(false);
         var extraction = execution.Result;
         var compatibility = execution.CompatibilityOutline;
@@ -69,7 +69,7 @@ public sealed class DocumentProcessingService : IDocumentProcessingService
         IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken cancellationToken = default)
     {
-        var execution = await _authority.RunDocumentWithCompatibilityAsync(
+        var execution = await _authority.RunDocumentExecutionAsync(
                 inputPath, quarantinedIndexes, cancellationToken)
             .ConfigureAwait(false);
         return execution.CompatibilityOutline;

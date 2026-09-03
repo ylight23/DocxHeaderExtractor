@@ -158,9 +158,9 @@ Danh sách dưới đây là **nợ kỹ thuật CÓ ĐIỀU KIỆN** — chỉ 
 
 | Luật hiện tại | File | Vì sao có thể là nợ |
 |---|---|---|
-| `TitleAbbreviations` deny-list (Mr./Ms./Dr...) | [`PdfBoldLabelOutline.cs`](../src/DocxHeaderExtractor.Core/Pipeline/PdfBoldLabelOutline.cs) | Vá đúng MỘT lớp lỗi hình thái học (viết tắt danh xưng); LLM ranh giới đã đo đúng ca này khi có shot phù hợp |
-| Gate "paragraph phải cho ≥2 entry PART/Section" | [`PartSectionOutline.cs`](../src/DocxHeaderExtractor.Core/Pipeline/PartSectionOutline.cs) `TextTocEntries` | Luật cấu trúc thay cho phán đoán ngữ nghĩa "đây có phải TOC thật không" — LLM có thể đọc ngữ cảnh trực tiếp |
-| 5 exemption trong `InlineHeadingSplitter` (`pdf_bold_label`, `part_section_toc_text`, `pdf_textbook_layout`, `typed_number_depth`, `legal_marker_declared`) | [`InlineHeadingSplitter.cs`](../src/DocxHeaderExtractor.Core/Pipeline/InlineHeadingSplitter.cs) | Tồn tại vì splitter generic không tách được các dạng này — nếu tầng LLM thay hẳn splitter generic cho các route đó, exemption không còn ý nghĩa (không có gì để miễn trừ) |
+| `TitleAbbreviations` deny-list (Mr./Ms./Dr...) | [`PdfBoldLabelOutline.cs`](../src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfBoldLabelOutline.cs) | Vá đúng MỘT lớp lỗi hình thái học (viết tắt danh xưng); LLM ranh giới đã đo đúng ca này khi có shot phù hợp |
+| Gate "paragraph phải cho ≥2 entry PART/Section" | [`PartSectionOutline.cs`](../src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PartSectionOutline.cs) `TextTocEntries` | Luật cấu trúc thay cho phán đoán ngữ nghĩa "đây có phải TOC thật không" — LLM có thể đọc ngữ cảnh trực tiếp |
+| 5 exemption trong `InlineHeadingSplitter` (`pdf_bold_label`, `part_section_toc_text`, `pdf_textbook_layout`, `typed_number_depth`, `legal_marker_declared`) | [`InlineHeadingSplitter.cs`](../src/DocxHeaderExtractor.DocumentProcessing/Pipeline/InlineHeadingSplitter.cs) | Tồn tại vì splitter generic không tách được các dạng này — nếu tầng LLM thay hẳn splitter generic cho các route đó, exemption không còn ý nghĩa (không có gì để miễn trừ) |
 | `PdfBoldLabelOutline` (bộ dựng cả file) | như trên | Nếu LLM ranh giới đạt ≥ điều kiện mục 4 trên đúng domain `FormatDriven`/biên bản họp, có thể thay bằng: ứng viên từ heuristic thường (không cần đọc PDF riêng) + LLM cắt ranh giới — bỏ hẳn phần đọc PdfPig song song |
 
 **Đo bằng cách nào:** với mỗi dòng, tắt luật đó (feature flag hoặc comment tạm), thay bằng gọi tầng

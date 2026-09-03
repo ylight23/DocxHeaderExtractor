@@ -5,7 +5,7 @@
   "baseline": "732c3505afc5dd312423ed0fa58056192fb39608",
   "branch": "architecture/auto-harness-phase1",
   "isolatedWorktree": "C:\\DocxHeaderExtractor-auto-harness",
-  "lastVerifiedCommit": "ee5783d",
+  "lastVerifiedCommit": "13d9232",
   "applicationOrchestrator": "DocxHeaderExtractor.AgentHarness.DocumentAgentHarness",
   "flow": [
     "IntentProposal",
@@ -38,11 +38,16 @@
   "verification": {
     "baselineReleaseBuild": "PASS",
     "baselineFocusedTests": "33/33 PASS",
-    "focusedTests": "51/51 PASS (latest host + architecture + extension filter)",
+    "focusedTests": "70/70 PASS (host, architecture, extension, generic output, cutover, materializer, and rasterizer filter)",
     "releaseBuild": "PASS",
     "diffCheck": "PASS",
-    "mechanicalAudit": "PASS: partial mechanical audit; complete DoD gate remains BLOCKED",
-    "mechanicalAuditScript": "scripts/architecture-phase1-audit.ps1"
+    "mechanicalAudit": "PASS: 11/11 checks",
+    "mechanicalAuditScript": "scripts/architecture-phase1-audit.ps1",
+    "finalGate": "PASS for architecture checks; BLOCKED only until publication into origin/main",
+    "finalGateScript": "scripts/architecture-phase1-final-gate.ps1",
+    "corePurity": "PASS: Core has no parser/render/provider package or source usage",
+    "dependencyDirection": "PASS: Application -> Core; DocumentProcessing -> Application/Core; Infrastructure -> Application/Core/DocumentProcessing",
+    "phase2Seams": "docs/architecture/phase2-seams.md"
   },
   "legacyRemoval": {
     "deleted": [

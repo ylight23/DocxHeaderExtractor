@@ -35,7 +35,7 @@ only as a compatibility projection while downstream callers migrate.
 | Intent and task planning | `DocxHeaderExtractor.AgentHarness` | Host input is validated before capability execution |
 | Capability selection | `AgentToolRegistry` | Selection is code-owned, never model-owned |
 | Consent and mutation policy | `PolicyEvaluator` + existing guardrails | No implicit external transfer or writeback |
-| Extraction authority | `AuthorityExtractionPipeline` | Existing `ValidatedStructure` authority is preserved |
+| Extraction authority | `AuthorityExtractionPipeline` in `DocumentProcessing` | Existing `ValidatedStructure` authority is preserved |
 | Validation | `OutlineGroundingValidator`, `RunProvenanceValidator` | Fail closed on ungrounded output/provenance |
 | Projection | `PromptDrivenProjection<T>` | Projection cannot create authority |
 | Evaluation/legacy | `DocxHeaderExtractor.Eval`, repair compatibility paths | Not part of normal authority routing |
@@ -44,9 +44,9 @@ only as a compatibility projection while downstream callers migrate.
 
 No deletion is justified in this slice. The current audit shows `HeaderExtractionPipeline` remains
 reachable from repair/evaluation callers, `DocxSlimExtractor` remains an implementation dependency
-of source preparation, and `LegacyDocConverter` is still used by normal input compatibility. These
-are migration candidates, not dead code. Removal will require a separate reachability proof and
-regression gate.
+of source preparation, and `LegacyDocConverter` is used only by explicit input compatibility
+adapters before the canonical pipeline. These are migration candidates, not dead code. Removal
+will require a separate reachability proof and regression gate.
 
 ## Verification checkpoint
 

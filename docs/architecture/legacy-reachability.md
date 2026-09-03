@@ -20,8 +20,9 @@ The retained compatibility path is:
 
 | Class | Count |
 | --- | ---: |
-| `NORMAL_PRODUCTION` | 10 |
+| `NORMAL_PRODUCTION` | 9 |
 | `LEGACY_RUNTIME` | 2 |
+| `COMPATIBILITY_ONLY` | 1 |
 | `EVAL_ONLY` | 5 |
 | `REPLAY_ONLY` | 3 |
 | `TEST_ONLY` | 1 |
@@ -48,8 +49,9 @@ Repair callers that still construct that facade, plus their tests/eval paths.
 reachable from the normal authority path as well as review/eval/test paths. The name or folder does
 not make it runtime legacy.
 
-`LegacyDocConverter` is `NORMAL_PRODUCTION` despite its name. CLI, Web, and AgentHarness call it on
-normal input paths. It is an infrastructure compatibility helper, not evidence of a legacy route.
+`LegacyDocConverter` is `COMPATIBILITY_ONLY` despite its name. Explicit CLI/Web/AgentHarness
+compatibility adapters may call it before normalized OOXML enters the canonical pipeline. It is an
+infrastructure input adapter, not a legacy authority route.
 
 `PdfLayoutEvidenceOutline` is normal-production reachable through the PDF authority path and is
 also exposed by diagnostic CLI commands. `PdfLegacyValidatedOutputPolicy`, hierarchy artifact
@@ -80,13 +82,14 @@ remain. No code is deleted or renamed in this audit.
 
 Recorded architecture violations are:
 
-- CLI `repair-key-package` and Core Repair reach `HeaderExtractionPipeline`.
+- CLI `repair-key-package` and DocumentProcessing Repair reach `HeaderExtractionPipeline`.
 - Application orchestration constructs concrete provider implementations.
-- `Core.Models` depends on `OpenXmlLayer` types.
+- `Core` no longer depends on `OpenXmlLayer` types; source/parser implementation is owned by
+  DocumentProcessing.
 
 No normal-production-to-eval edge was found in the audited static call sites. The normal path's
-use of `LegacyDocConverter` is allowed because it is an input compatibility adapter still required
-by normal users; it is not counted as `NORMAL_TO_LEGACY_DEPENDENCIES`.
+use of `LegacyDocConverter` is retained only in explicit input-compatibility adapters before the
+canonical pipeline; it is not counted as a legacy authority route.
 
 ## Lifecycle Decisions
 
