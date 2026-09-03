@@ -36,12 +36,12 @@ This plan is the first Phase-2 workstream. It normalizes semantic ownership and 
 | Inventory | `6ef3759` | Complete production `.cs` ledger generated from `src/` excluding build output; `tests/`, `scripts/`, and `docs/` inventory coverage is recorded in the ledger. |
 | Semantic normalization | `6ef3759` | `DocumentProcessing/Application` and `/Eval` absent; namespaces match projects; provider adapters are outside DocumentProcessing; production pipeline has no legacy converter route; Eval-only diagnostics/replay/calibration implementations are under `DocxHeaderExtractor.Eval`. |
 | Naming normalization | `6ef3759` | `HeadingClassificationProposal`/`HeadingProposalJson` make untrusted classifier output explicit; analyzer/projection/inference/review folders and target names are recorded in the ledger. |
-| Tests/build | `927ee92` + working-tree verification | Release build PASS; focused affected tests PASS `51/51` after provider-boundary refactor; full suite PASS `930/930`, exit `0`, with crash diagnostics enabled. |
+| Tests/build | `905a048` | Release build PASS; focused affected tests PASS `75/75` after provider-boundary refactor; full suite PASS `930/930`, exit `0`, with crash diagnostics enabled. |
 | Provider ownership | working tree | Provider/runtime options and selection moved to `Infrastructure/AI`; `PipelineOptions` is provider-neutral; semantic scan finds no provider configuration or vendor endpoints in `DocumentProcessing`. |
 | Pipeline re-audit | working tree | Strategy, runtime, and projection helpers moved under bounded `Pipeline/Strategies`, `Pipeline/Runtime`, and `Pipeline/Projections`; namespaces and public contracts remain unchanged. |
 | Eval classification | working tree | `9989cd1` is classified as verification maintenance: four stale test source/assembly paths after relocation, two retained silver artifact hash corrections, and the C1 inventory expectation update to existing retained evidence. Gold labels, predictions, thresholds, production rules, prompts, and accuracy logic are unchanged; accuracy tuning is `0`. |
 | Gate split | working tree | Default hygiene gate is a pre-merge candidate gate; `-RequirePublication` invokes the post-merge Phase-1 publication gate. Phase-1 final-gate semantics are unchanged. |
-| Final candidate gate | working tree | Source hygiene candidate gate PASS; Phase-1 architecture audit PASS; focused tests PASS `75/75`; Release build PASS `0 errors`; full suite PASS `930/930`, exit `0`; `git diff --check` PASS; provider calls `0`. |
+| Final candidate gate | `905a048` | Source hygiene candidate gate PASS; Phase-1 architecture audit PASS; focused tests PASS `75/75`; Release build PASS `0 errors`; full suite PASS `930/930`, exit `0`; `git diff --check` PASS; provider calls `0`. |
 | Publication | `6ef3759` | Branch pushed to `origin/verification/auto-harness-phase2`; no merge to `main`. |
 
 ## Boundaries
