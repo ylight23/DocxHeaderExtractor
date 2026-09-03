@@ -40,6 +40,9 @@ public static class TaskPlanCompiler
         if (maxExternalCalls is < 0)
             throw new ArgumentOutOfRangeException(nameof(request), "Task budget MaxProviderCalls không được âm.");
 
+        var retry = RetryPolicy.None;
+        retry.Validate();
+
         var execution = new ExecutionPlan(
             planId,
             [new ExecutionStep(
@@ -49,7 +52,11 @@ public static class TaskPlanCompiler
                 inputContract,
                 outputContract)],
             maxSteps,
-            maxExternalCalls);
+            maxExternalCalls)
+        {
+            MaxWallTime = request.Budget?.MaxWallTime,
+            Retry = retry,
+        };
 
         return new CompiledTaskPlan(semantic, execution);
     }

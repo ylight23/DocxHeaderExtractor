@@ -94,5 +94,11 @@ public sealed class AutoHarnessArchitectureContractTests
         Assert.Equal(8, first.Execution.MaxSteps);
         Assert.Equal(0, first.Execution.MaxExternalCalls);
         Assert.Equal("extract", first.Execution.Steps[0].CapabilityId);
+        Assert.Equal(TaskRunStatus.Failed, new GenericTaskResult<string>(
+            Guid.NewGuid(), first.Semantic.PlanId, "not-a-status",
+            new PromptDrivenProjection<string>("value", "test", []), [],
+            DateTimeOffset.UtcNow, DateTimeOffset.UtcNow).StatusCode);
+        Assert.True(first.Execution.CancellationSupported);
+        Assert.Equal(1, first.Execution.Retry.MaxAttempts);
     }
 }

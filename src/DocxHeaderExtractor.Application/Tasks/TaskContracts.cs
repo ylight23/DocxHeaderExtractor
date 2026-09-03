@@ -51,7 +51,12 @@ public sealed record ExecutionPlan(
     string PlanId,
     IReadOnlyList<ExecutionStep> Steps,
     int MaxSteps,
-    int? MaxExternalCalls);
+    int? MaxExternalCalls)
+{
+    public TimeSpan? MaxWallTime { get; init; }
+    public RetryPolicy Retry { get; init; } = RetryPolicy.None;
+    public bool CancellationSupported { get; init; } = true;
+};
 
 public sealed record ExecutionStep(
     string StepId,
@@ -87,6 +92,14 @@ public sealed record GenericTaskResult<T>(
     DateTimeOffset CompletedAt)
 {
     public T Value => Projection.Value;
+
+    public TaskRunStatus StatusCode =>
+        Enum.TryParse<TaskRunStatus>(Status, ignoreCase: true, out var parsed)
+            ? parsed
+            : TaskRunStatus.Failed;
+
+    public TaskProvenance? Provenance { get; init; }
+    public TaskFailure? Failure { get; init; }
 }
 
 public static class IntentValidator
