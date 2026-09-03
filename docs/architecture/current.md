@@ -66,8 +66,9 @@ work.
 
 - correction memory: local JSONL through `CorrectionMemory` (migration to a feedback port is open)
 - skill policy: versioned `skills/heading-extraction/SKILL.md` (generic catalog migration is open)
-- semantic definitions: provider-independent concept/schema registry in Application; runtime
-  registrations and composition-root consumers remain open
+- semantic definitions: provider-independent concept/schema registry in Application; trusted
+  generic defaults are composed by Web/MCP, while external configuration registration and feature
+  consumers remain open
 - run lifecycle: versioned persistence/telemetry ports and secret redaction contract in Application;
   Web and MCP compose `JsonFileTaskRunStore` and `JsonLinesTaskTelemetrySink` from the configurable
   `DHX_RUNTIME_STATE_DIR` boundary; provider payloads are not part of these artifacts

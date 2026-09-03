@@ -46,6 +46,8 @@ builder.Services.AddSingleton<DocxHeaderExtractor.Application.Runtime.ITaskRunSt
 builder.Services.AddSingleton<DocxHeaderExtractor.Application.Runtime.ITaskTelemetrySink>(_ =>
     new DocxHeaderExtractor.Infrastructure.Runtime.JsonLinesTaskTelemetrySink(
         DocxHeaderExtractor.Infrastructure.Runtime.RuntimeStatePaths.TelemetryPath));
+builder.Services.AddSingleton(
+    DocxHeaderExtractor.Application.Semantics.SemanticRegistryDefaults.Create());
 builder.Services.AddSingleton<McpPathPolicy>();
 builder.Services.AddSingleton<McpJobStore>();
 builder.Services.AddSingleton<DocumentAgentHarnessFactory>();

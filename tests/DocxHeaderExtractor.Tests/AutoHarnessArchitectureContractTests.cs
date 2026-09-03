@@ -171,6 +171,19 @@ public sealed class AutoHarnessArchitectureContractTests
     }
 
     [Fact]
+    public void Composition_defaults_register_only_trusted_generic_semantics()
+    {
+        var registry = DocxHeaderExtractor.Application.Semantics.SemanticRegistryDefaults.Create();
+
+        Assert.True(registry.Resolve("document-structure",
+            DocxHeaderExtractor.Application.Semantics.SemanticDefinitionKind.Concept).IsResolved);
+        Assert.True(registry.Resolve("outline",
+            DocxHeaderExtractor.Application.Semantics.SemanticDefinitionKind.Schema).IsResolved);
+        Assert.False(registry.Resolve("document-structure",
+            DocxHeaderExtractor.Application.Semantics.SemanticDefinitionKind.Schema).IsResolved);
+    }
+
+    [Fact]
     public void Runtime_contracts_redact_secrets_and_validate_storage_identity()
     {
         var key = new DocxHeaderExtractor.Application.Runtime.RunStorageKey("run-1");

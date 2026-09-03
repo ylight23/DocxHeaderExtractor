@@ -38,6 +38,25 @@ public sealed record SemanticResolution(
 }
 
 /// <summary>
+/// Trusted baseline definitions for the generic document task surface. Hosts may register additional
+/// definitions from trusted configuration; model output is never a registration source.
+/// </summary>
+public static class SemanticRegistryDefaults
+{
+    public static SemanticRegistry Create()
+    {
+        var registry = new SemanticRegistry();
+        registry.Register(new SemanticDefinition(
+            "document.structure", 1, SemanticDefinitionKind.Concept,
+            SemanticDefinitionLifecycle.Active, ["document-structure"]));
+        registry.Register(new SemanticDefinition(
+            "document.outline", 1, SemanticDefinitionKind.Schema,
+            SemanticDefinitionLifecycle.Active, ["outline", "document-outline"]));
+        return registry;
+    }
+}
+
+/// <summary>
 /// Exact, version-aware catalog shared by concepts and schemas. Ambiguous or retired entries never
 /// resolve silently.
 /// </summary>
