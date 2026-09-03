@@ -1,6 +1,7 @@
 ﻿using DocxHeaderExtractor.Core.Models;
 
 using DocxHeaderExtractor.Application.Tasks;
+using DocxHeaderExtractor.Application.Semantics;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
@@ -21,6 +22,7 @@ public sealed class DocumentAgentHarness
     private readonly AgentHarnessOptions _options;
     private readonly AgentSkill _skill;
     private readonly IInputResourceResolver? _inputResourceResolver;
+    private readonly SemanticRegistry? _semanticRegistry;
 
     public DocumentAgentHarness(
         IDocumentExtractionTool tool,
@@ -30,9 +32,10 @@ public sealed class DocumentAgentHarness
         AgentHarnessOptions? options = null,
         IDocumentActionTool? actionTool = null,
         AgentSkill? skill = null,
-        IInputResourceResolver? inputResourceResolver = null)
+        IInputResourceResolver? inputResourceResolver = null,
+        SemanticRegistry? semanticRegistry = null)
         : this(new AgentToolRegistry(tool, actionTool), guardrails, validators, sink, options, skill,
-            inputResourceResolver)
+            inputResourceResolver, semanticRegistry)
     {
     }
 
@@ -43,7 +46,8 @@ public sealed class DocumentAgentHarness
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null,
         AgentSkill? skill = null,
-        IInputResourceResolver? inputResourceResolver = null)
+        IInputResourceResolver? inputResourceResolver = null,
+        SemanticRegistry? semanticRegistry = null)
     {
         _registry = registry ?? throw new ArgumentNullException(nameof(registry));
         _guardrails = (guardrails ?? DefaultGuardrails()).ToArray();
@@ -53,6 +57,7 @@ public sealed class DocumentAgentHarness
         _options.Validate();
         _skill = skill ?? AgentSkillLoader.LoadDefault();
         _inputResourceResolver = inputResourceResolver;
+        _semanticRegistry = semanticRegistry;
     }
 
     public AgentSkill Skill => _skill;
@@ -116,6 +121,21 @@ public sealed class DocumentAgentHarness
             var intent = intentValidation.Intent!;
             await EmitAsync("intent.validation", AgentRunEventKind.Passed,
                 "Intent hợp lệ; chưa cấp quyền thực thi hay tạo authority.");
+
+            if (_semanticRegistry is not null)
+            {
+                TakeStep("semantic.resolve");
+                foreach (var concept in proposal.Concepts)
+                {
+                    if (!_semanticRegistry.Resolve(concept, SemanticDefinitionKind.Concept).IsResolved)
+                        throw new InvalidOperationException($"Semantic concept không được đăng ký: {concept}.");
+                }
+                if (!_semanticRegistry.Resolve(proposal.OutputShape, SemanticDefinitionKind.Schema).IsResolved)
+                    throw new InvalidOperationException(
+                        $"Semantic output schema không được đăng ký: {proposal.OutputShape}.");
+                await EmitAsync("semantic.resolve", AgentRunEventKind.Passed,
+                    "Concept và output schema đã resolve qua trusted semantic registry.");
+            }
 
             if (_inputResourceResolver is not null)
             {
@@ -430,10 +450,14 @@ public sealed class DocumentAgentHarnessFactory
 {
     private readonly Lazy<AgentSkill> _skill = new(AgentSkillLoader.LoadDefault, isThreadSafe: true);
     private readonly IInputResourceResolver? _inputResourceResolver;
+    private readonly SemanticRegistry? _semanticRegistry;
 
-    public DocumentAgentHarnessFactory(IInputResourceResolver? inputResourceResolver = null)
+    public DocumentAgentHarnessFactory(
+        IInputResourceResolver? inputResourceResolver = null,
+        SemanticRegistry? semanticRegistry = null)
     {
         _inputResourceResolver = inputResourceResolver;
+        _semanticRegistry = semanticRegistry;
     }
 
     public AgentSkill Skill => _skill.Value;
@@ -444,7 +468,7 @@ public sealed class DocumentAgentHarnessFactory
         AgentHarnessOptions? options = null,
         IDocumentActionTool? actionTool = null) =>
         new(tool, sink: sink, options: options, actionTool: actionTool, skill: _skill.Value,
-            inputResourceResolver: _inputResourceResolver);
+            inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry);
 
     public DocumentAgentHarness Create(
         IDocumentExtractionTool tool,
@@ -452,12 +476,12 @@ public sealed class DocumentAgentHarnessFactory
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null) =>
         new(new AgentToolRegistry([tool], actionTools), sink: sink, options: options, skill: _skill.Value,
-            inputResourceResolver: _inputResourceResolver);
+            inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry);
 
     public DocumentAgentHarness Create(
         IAgentToolRegistry registry,
         IAgentRunSink? sink = null,
         AgentHarnessOptions? options = null) =>
         new(registry, sink: sink, options: options, skill: _skill.Value,
-            inputResourceResolver: _inputResourceResolver);
+            inputResourceResolver: _inputResourceResolver, semanticRegistry: _semanticRegistry);
 }
