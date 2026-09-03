@@ -356,6 +356,7 @@ app.MapPost("/api/extract", async (
                     type = "agent",
                     runId = evt.RunId,
                     sequence = evt.Sequence,
+                    timestamp = evt.Timestamp,
                     stage = evt.Stage,
                     kind = evt.Kind.ToString(),
                     message = evt.Message,
@@ -368,6 +369,9 @@ app.MapPost("/api/extract", async (
                 AllowExternalDataTransfer:
                     !options.DisableLlm && provider.SendsDataExternally)
             {
+                UserPrompt = form["userPrompt"].ToString().Trim() is { Length: > 0 } prompt
+                    ? prompt
+                    : "Extract the document structure.",
                 WritebackTargetPath = writebackTarget,
             };
             var run = Task.Run(() => harness.RunAsync(request, ct), ct);

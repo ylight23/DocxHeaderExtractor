@@ -10,7 +10,9 @@ internal static class GenericTaskRequestAdapter
 {
     public static AgentTaskRequest FromDocumentRequest(DocumentAgentRequest request) =>
         new(
-            "Extract the document structure.",
+            string.IsNullOrWhiteSpace(request.UserPrompt)
+                ? "Extract the document structure."
+                : request.UserPrompt,
             [new InputResource(
                 "input-0",
                 InputResourceKind.Document,
