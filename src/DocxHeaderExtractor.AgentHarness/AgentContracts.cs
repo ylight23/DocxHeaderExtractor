@@ -21,39 +21,6 @@ public enum AgentRunEventKind
     Skipped,
 }
 
-public enum AgentToolRisk
-{
-    Low,
-    Medium,
-    High,
-}
-
-/// <summary>
-/// Mô tả khả năng và tác động của tool để harness áp guardrail trước khi thực thi.
-/// Không dùng mô tả do model tự khai báo.
-/// </summary>
-public sealed record AgentToolDescriptor(
-    string Name,
-    string Description,
-    AgentToolRisk Risk,
-    bool SendsDataExternally,
-    bool MutatesExternalState)
-{
-    /// <summary>
-    /// Tool biết dựng lại kết quả khi bị deterministic validator bác, thay vì trả nguyên kết quả cũ.
-    /// Tool không hỗ trợ thì harness fail ngay ở lượt đầu — lặp lại y hệt chỉ tốn thời gian.
-    /// </summary>
-    public bool SupportsRepair { get; init; }
-
-    /// <summary>
-    /// Đường dẫn mà tool sẽ ghi TRONG khi chạy, ngoài đích writeback của request — ví dụ file dump
-    /// document view khi bật cờ debug. Khai ở đây thì <see cref="ToolSideEffectPathGuardrail"/> soi
-    /// được; bỏ trống thì đường ghi đó nằm ngoài mọi guardrail và harness hứa "chỉ đọc" trong khi
-    /// tool có ghi file.
-    /// </summary>
-    public IReadOnlyList<string> SideEffectPaths { get; init; } = [];
-}
-
 /// <summary>
 /// Yêu cầu cho một agent run. Cả việc gửi dữ liệu ra ngoài lẫn việc ghi ra file đều phải được
 /// caller xác nhận rõ ràng cho từng run; có API key hay có quyền ghi thư mục không phải là đồng ý.

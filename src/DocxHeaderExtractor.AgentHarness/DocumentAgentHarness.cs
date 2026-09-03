@@ -53,7 +53,7 @@ public sealed class DocumentAgentHarness
     public AgentSkill Skill => _skill;
 
     /// <summary>Bề mặt quyền của harness này: mọi tool có thể được chọn, kèm rủi ro đã khai báo.</summary>
-    public IReadOnlyList<AgentToolDescriptor> Tools => _registry.Descriptors;
+    public IReadOnlyList<DocxHeaderExtractor.Application.Capabilities.CapabilityDescriptor> Tools => _registry.Descriptors;
 
     public async Task<DocumentAgentRunResult> RunAsync(
         DocumentAgentRequest request,

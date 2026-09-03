@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Application.Capabilities;
 using DocxHeaderExtractor.Core.Models;
 using System.Text.RegularExpressions;
 
@@ -21,7 +22,7 @@ public sealed record AgentValidationResult(IReadOnlyList<AgentValidationIssue> I
 /// </summary>
 public sealed record DocumentAgentValidationContext(
     DocumentAgentRequest Request,
-    AgentToolDescriptor Tool);
+    CapabilityDescriptor Tool);
 
 public interface IDocumentAgentValidator
 {

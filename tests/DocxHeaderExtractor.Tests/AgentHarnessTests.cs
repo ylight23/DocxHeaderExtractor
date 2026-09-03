@@ -594,10 +594,10 @@ public sealed class AgentHarnessTests : IDisposable
         public int Calls => _invocations.Count;
         public IReadOnlyList<AgentToolInvocation> Invocations => _invocations;
 
-        public AgentToolDescriptor Descriptor => new(
+        public DocxHeaderExtractor.Application.Capabilities.CapabilityDescriptor Descriptor => new(
             "fake_extract",
             "Synthetic test tool",
-            _sendsDataExternally ? AgentToolRisk.Medium : AgentToolRisk.Low,
+            _sendsDataExternally ? DocxHeaderExtractor.Application.Capabilities.CapabilityRisk.Medium : DocxHeaderExtractor.Application.Capabilities.CapabilityRisk.Low,
             _sendsDataExternally,
             MutatesExternalState: SideEffectPaths.Count > 0)
         {
@@ -620,8 +620,8 @@ public sealed class AgentHarnessTests : IDisposable
     {
         public int Calls { get; private set; }
 
-        public AgentToolDescriptor Descriptor { get; } = new(
-            "fake_write", "Synthetic writeback", AgentToolRisk.High,
+        public DocxHeaderExtractor.Application.Capabilities.CapabilityDescriptor Descriptor { get; } = new(
+            "fake_write", "Synthetic writeback", DocxHeaderExtractor.Application.Capabilities.CapabilityRisk.High,
             SendsDataExternally: false, MutatesExternalState: true);
 
         public bool CanExecute(DocumentAgentRequest request) => request.WantsWriteback;

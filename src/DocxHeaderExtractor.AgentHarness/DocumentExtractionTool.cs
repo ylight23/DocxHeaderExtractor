@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Application.Capabilities;
 using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Pipeline;
@@ -7,7 +8,7 @@ namespace DocxHeaderExtractor.AgentHarness;
 
 public interface IDocumentExtractionTool : IDisposable
 {
-    AgentToolDescriptor Descriptor { get; }
+    CapabilityDescriptor Descriptor { get; }
 
     Task<DocumentOutline> ExecuteAsync(
         AgentToolInvocation invocation,
@@ -44,7 +45,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         Descriptor = Describe(options);
     }
 
-    public AgentToolDescriptor Descriptor { get; }
+    public CapabilityDescriptor Descriptor { get; }
 
     /// <summary>
     /// Lượt sửa cách ly các đoạn bị validator bác rồi chạy lại pipeline từ đầu. Không lọc kết quả
@@ -63,7 +64,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
             ct);
     }
 
-    private static AgentToolDescriptor Describe(PipelineOptions options)
+    private static CapabilityDescriptor Describe(PipelineOptions options)
     {
         // LM Studio bị khóa vào loopback nên vẫn là local processing. OpenRouter (Internet) và
         // SGLang/vLLM (gateway LAN, không loopback) đều chuyển nội dung ra khỏi tiến trình này và
@@ -76,10 +77,10 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         // để ToolSideEffectPathGuardrail soi được, thay vì để harness hứa "chỉ đọc".
         var dump = options.DumpXmlPath;
         var writes = !string.IsNullOrWhiteSpace(dump);
-        return new AgentToolDescriptor(
+        return new CapabilityDescriptor(
             "extract_document_headings",
             "Đọc cấu trúc Word, gọi classifier khi cần, dựng cây heading và áp precision gate.",
-            remote ? AgentToolRisk.Medium : AgentToolRisk.Low,
+            remote ? CapabilityRisk.Medium : CapabilityRisk.Low,
             SendsDataExternally: remote,
             MutatesExternalState: writes)
         {

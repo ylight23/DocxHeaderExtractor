@@ -1,3 +1,5 @@
+using DocxHeaderExtractor.Application.Capabilities;
+
 namespace DocxHeaderExtractor.AgentHarness;
 
 /// <summary>Bộ tool đã chọn cho đúng một run, kèm lý do chọn để ghi vào trace.</summary>
@@ -9,7 +11,7 @@ public sealed record AgentToolSelection(
 public interface IAgentToolRegistry
 {
     /// <summary>Toàn bộ tool đã đăng ký — để host và test soi được bề mặt quyền của một harness.</summary>
-    IReadOnlyList<AgentToolDescriptor> Descriptors { get; }
+    IReadOnlyList<CapabilityDescriptor> Descriptors { get; }
 
     AgentToolSelection Select(DocumentAgentRequest request);
 }
@@ -48,7 +50,7 @@ public sealed class AgentToolRegistry : IAgentToolRegistry
         _actions = actions.ToArray();
     }
 
-    public IReadOnlyList<AgentToolDescriptor> Descriptors =>
+    public IReadOnlyList<CapabilityDescriptor> Descriptors =>
         [.. _extraction.Select(t => t.Descriptor), .. _actions.Select(t => t.Descriptor)];
 
     public AgentToolSelection Select(DocumentAgentRequest request)

@@ -1,3 +1,5 @@
+using DocxHeaderExtractor.Application.Capabilities;
+
 namespace DocxHeaderExtractor.AgentHarness;
 
 public sealed record AgentGuardrailDecision(bool Allowed, string Code, string Message)
@@ -8,8 +10,8 @@ public sealed record AgentGuardrailDecision(bool Allowed, string Code, string Me
 
 public sealed record DocumentAgentGuardrailContext(
     DocumentAgentRequest Request,
-    AgentToolDescriptor Tool,
-    AgentToolDescriptor? ActionTool = null);
+    CapabilityDescriptor Tool,
+    CapabilityDescriptor? ActionTool = null);
 
 public interface IDocumentAgentGuardrail
 {

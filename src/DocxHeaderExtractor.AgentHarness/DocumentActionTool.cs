@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Application.Capabilities;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
@@ -11,7 +12,7 @@ namespace DocxHeaderExtractor.AgentHarness;
 /// </summary>
 public interface IDocumentActionTool : IDisposable
 {
-    AgentToolDescriptor Descriptor { get; }
+    CapabilityDescriptor Descriptor { get; }
 
     bool CanExecute(DocumentAgentRequest request);
 
@@ -31,10 +32,10 @@ public sealed class OutlineWritebackTool(ExtractionOptions extraction) : IDocume
     private readonly ExtractionOptions _extraction = extraction
         ?? throw new ArgumentNullException(nameof(extraction));
 
-    public AgentToolDescriptor Descriptor { get; } = new(
+    public CapabilityDescriptor Descriptor { get; } = new(
         "write_document_outline",
         "Ghi w:outlineLvl của các heading đã chốt vào một bản sao .docx; không sửa nội dung.",
-        AgentToolRisk.High,
+        CapabilityRisk.High,
         SendsDataExternally: false,
         MutatesExternalState: true);
 
@@ -90,10 +91,10 @@ public sealed class PdfProductWritebackTool(ExtractionOptions extraction) : IDoc
     private readonly ExtractionOptions _extraction = extraction
         ?? throw new ArgumentNullException(nameof(extraction));
 
-    public AgentToolDescriptor Descriptor { get; } = new(
+    public CapabilityDescriptor Descriptor { get; } = new(
         "write_document_outline",
         "Ghi w:outlineLvl của các heading đã chốt (M9 FinalStructure authority) vào một bản sao .docx; không sửa nội dung.",
-        AgentToolRisk.High,
+        CapabilityRisk.High,
         SendsDataExternally: false,
         MutatesExternalState: true);
 
@@ -148,10 +149,10 @@ public sealed class PartialKeyPackageActionTool(PipelineOptions options) : IDocu
 {
     private readonly PartialKeyPackage _packager = new(options);
 
-    public AgentToolDescriptor Descriptor { get; } = new(
+    public CapabilityDescriptor Descriptor { get; } = new(
         "create_partial_key_package",
         "Ghi current outline, CSV review và partial_human .key draft cho người duyệt.",
-        AgentToolRisk.Medium,
+        CapabilityRisk.Medium,
         SendsDataExternally: false,
         MutatesExternalState: true);
 
