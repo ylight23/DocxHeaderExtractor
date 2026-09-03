@@ -45,6 +45,10 @@ tuning, or benchmark tuning.
 - [ ] WS8 — Microsoft AI/Agent Framework seams and generic harness/skill catalog isolation.
 - [ ] WS9 — Generic source-grounded execution and non-authoritative projection/output negotiation.
 - [ ] WS10 — Persistence ports, lifecycle/versioning, provenance, secret redaction, telemetry seam.
+  Progress: Application now defines versioned run storage identity, persisted lifecycle projection,
+  `ITaskRunStore`, `ITaskTelemetrySink`, and conservative `ISecretRedactor` contracts. Host wiring,
+  durable implementation, and end-to-end lifecycle persistence remain open. Evidence: commit
+  `1a40c24`, `src/DocxHeaderExtractor.Application/Runtime/RuntimeContracts.cs`, and contract tests.
 - [ ] WS11 — Web/CLI/MCP composition-root cutover with zero normal bypasses.
 - [ ] WS12 — Central build/package rules and architecture enforcement.
   Progress: package versions are centralized in `Directory.Packages.props`; the repeatable audit is
