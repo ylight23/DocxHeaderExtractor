@@ -85,6 +85,27 @@ public sealed class OpenRouterTests
     }
 
     [Fact]
+    public async Task Explicit_debug_log_exposes_provider_exchange_without_authorization_header()
+    {
+        var handler = new CaptureHandler(
+            """{"choices":[{"message":{"content":"{\"items\":[{\"i\":42,\"r\":\"h\",\"l\":2}]}"}}]}""");
+        var logs = new List<string>();
+        using var http = new HttpClient(handler);
+        using var model = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        {
+            ApiKey = "test-key",
+            DebugLog = logs.Add,
+        });
+
+        await model.ClassifyAsync("<p i=\"42\">Heading</p>", [42]);
+
+        Assert.Contains(logs, log => log.Contains("LLM REQUEST") && log.Contains("qwen/qwen3.5-9b"));
+        Assert.Contains(logs, log => log.Contains("LLM RESPONSE") && log.Contains("choices"));
+        Assert.DoesNotContain(logs, log => log.Contains("test-key"));
+        Assert.DoesNotContain(logs, log => log.Contains("Authorization", StringComparison.OrdinalIgnoreCase));
+    }
+
+    [Fact]
     public async Task Missing_ids_still_fail_after_bounded_retries()
     {
         var handler = new CaptureHandler(

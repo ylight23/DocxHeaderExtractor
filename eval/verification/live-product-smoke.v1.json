@@ -1,0 +1,85 @@
+{
+  "artifactKind": "live_product_smoke_verification",
+  "schemaVersion": 1,
+  "status": "PASS_PENDING_REVIEW",
+  "branch": "verification/live-product-smoke",
+  "baselineSha": "2a4ba9276dc6c2666f7787992c2bf1ac37c0056e",
+  "fixture": {
+    "kind": "synthetic_docx",
+    "source": "samples/mau.docx",
+    "sha256": "AA4556D7946FD391EF8FA2D0B7BA9308D9CEACE2B94B9726954B59829543394D"
+  },
+  "provider": {
+    "backend": "OpenRouter",
+    "model": "qwen/qwen3.5-9b",
+    "modelsEndpointHttpStatus": 200,
+    "credentialRecorded": false
+  },
+  "supportedRuns": [
+    {
+      "case": "prompt-1",
+      "httpStatus": 200,
+      "outcome": "Completed",
+      "agentEvents": 25,
+      "timestampedAgentEvents": 25,
+      "providerRequests": 6,
+      "providerResponses": 6,
+      "headings": 6,
+      "sourceIds": 6,
+      "headingSpans": 6,
+      "depth": null,
+      "planId": "plan-74ac960182939eb2",
+      "rawAuthorizationLeak": false
+    },
+    {
+      "case": "prompt-2",
+      "httpStatus": 200,
+      "outcome": "Completed",
+      "agentEvents": 25,
+      "timestampedAgentEvents": 25,
+      "providerRequests": 6,
+      "providerResponses": 6,
+      "headings": 6,
+      "sourceIds": 6,
+      "headingSpans": 6,
+      "depth": 2,
+      "planId": "plan-e2eadbef278f7390",
+      "rawAuthorizationLeak": false
+    }
+  ],
+  "intentFailures": {
+    "unsupported": "IntentState=Unsupported",
+    "needsClarification": "IntentState=NeedsClarification",
+    "rejected": "IntentState=Rejected",
+    "providerRequestsForEach": 0
+  },
+  "writeback": {
+    "policyDeferred": true,
+    "actionEvents": ["Started", "Completed"],
+    "downloadPresent": true,
+    "sourceShaUnchanged": true,
+    "writebackApplied": 0
+  },
+  "providerFailure": {
+    "backend": "LMStudio",
+    "model": "smoke-missing-model",
+    "errorClass": "provider-failure",
+    "agentFailed": true,
+    "resultPresent": false
+  },
+  "cancellation": {
+    "clientExitCode": 28,
+    "partialAgentEvents": 17,
+    "resultPresent": false,
+    "cancelledTelemetryRecordsObserved": 2,
+    "latestRunRecorded": true
+  },
+  "gates": {
+    "releaseBuildErrors": 0,
+    "focusedTests": { "passed": 105, "failed": 0, "skipped": 0 },
+    "fullSuite": { "passed": 943, "failed": 0, "skipped": 0 },
+    "sourceTreeHygiene": "PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "rawEvidenceCommitted": false
+}

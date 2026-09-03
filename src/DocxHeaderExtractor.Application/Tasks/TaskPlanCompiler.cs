@@ -72,8 +72,9 @@ public static class TaskPlanCompiler
         var identity = request.IdempotencyKey
             ?? string.Join("|", request.Resources.Select(resource =>
                 $"{resource.ResourceId}:{resource.Kind}:{resource.MediaType}:{resource.Locator}"));
-        var material = string.Join("\n", intent.Operation, capability.Name, inputContract,
-            outputContract, identity);
+        var material = string.Join("\n", request.UserPrompt, intent.Operation,
+            intent.Granularity, intent.StructuralDepth?.ToString() ?? "", intent.OutputShape,
+            capability.Name, inputContract, outputContract, identity);
         var digest = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(material)))
             .ToLowerInvariant();
         return "plan-" + digest[..16];

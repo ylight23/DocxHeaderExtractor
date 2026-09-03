@@ -39,6 +39,57 @@ public sealed class Phase2RuntimeVerificationTests
     }
 
     [Fact]
+    public void User_prompt_drives_intent_and_generic_adapter_without_fixed_sentence_matching()
+    {
+        var first = new DocumentAgentRequest("fixture.docx")
+        {
+            UserPrompt = "Extract the document structure as a tree.",
+        };
+        var second = new DocumentAgentRequest("fixture.docx")
+        {
+            UserPrompt = "Extract the document structure to two levels and return a tree.",
+        };
+
+        var firstProposal = new DocumentIntentProposalProducer().Propose(first);
+        var secondProposal = new DocumentIntentProposalProducer().Propose(second);
+        var firstGeneric = GenericTaskRequestAdapter.FromDocumentRequest(first);
+        var secondGeneric = GenericTaskRequestAdapter.FromDocumentRequest(second);
+        var capability = new CapabilityDescriptor("inspect", "test", CapabilityRisk.Low, false, false);
+        var firstPlan = TaskPlanCompiler.Compile(
+            firstGeneric, IntentValidator.Validate(firstProposal).Intent!, capability, "input", "output");
+        var secondPlan = TaskPlanCompiler.Compile(
+            secondGeneric, IntentValidator.Validate(secondProposal).Intent!, capability, "input", "output");
+
+        Assert.Equal(first.UserPrompt, firstGeneric.UserPrompt);
+        Assert.Equal(second.UserPrompt, secondGeneric.UserPrompt);
+        Assert.Equal("outline", firstProposal.OutputShape);
+        Assert.Null(firstProposal.StructuralDepth);
+        Assert.Equal(2, secondProposal.StructuralDepth);
+        Assert.NotEqual(firstPlan.Semantic.PlanId, secondPlan.Semantic.PlanId);
+        Assert.Equal(2, secondPlan.Semantic.Intent.StructuralDepth);
+    }
+
+    [Fact]
+    public void Unsupported_and_incomplete_prompts_fail_closed_with_distinct_intent_states()
+    {
+        var producer = new DocumentIntentProposalProducer();
+
+        var unsupported = IntentValidator.Validate(producer.Propose(
+            new DocumentAgentRequest("fixture.docx") { UserPrompt = "Translate the document into English." }));
+        var incomplete = IntentValidator.Validate(producer.Propose(
+            new DocumentAgentRequest("fixture.docx") { UserPrompt = "Please inspect this file." }));
+        var invalid = IntentValidator.Validate(producer.Propose(
+            new DocumentAgentRequest("fixture.docx")
+            {
+                UserPrompt = "Extract the document structure to -1 levels and return a tree.",
+            }));
+
+        Assert.Equal(IntentState.Unsupported, unsupported.State);
+        Assert.Equal(IntentState.NeedsClarification, incomplete.State);
+        Assert.Equal(IntentState.Rejected, invalid.State);
+    }
+
+    [Fact]
     public void Framework_adapter_is_an_outer_delegate_over_the_harness_contract()
     {
         Assert.True(typeof(IMicrosoftAgentFrameworkAdapter).IsAssignableFrom(
