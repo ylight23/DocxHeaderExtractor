@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Encodings.Web;
@@ -7,81 +6,6 @@ using System.Text.Json;
 
 namespace DocxHeaderExtractor.Core.Llm;
 
-public sealed class LmStudioOptions
-{
-    public Uri Endpoint { get; set; } = new("http://127.0.0.1:1234/v1/chat/completions");
-    public string ApiKey { get; set; } = "";
-    public string Model { get; set; } = "";
-    public int ContextSize { get; set; } = 16_384;
-    public int MaxOutputTokens { get; set; } = 768;
-    public int MissingIdRetries { get; set; } = 2;
-
-    /// <summary>
-    /// Số khối gửi song song. Mỗi khối là một request /v1/chat/completions độc lập, không có state
-    /// phía server, nên nội dung TỪNG request không đổi khi tăng số này.
-    /// <para>
-    /// MẶC ĐỊNH 1 dù đường đi song song đã có sẵn. Đo trên máy này: LM Studio xử lý chồng lấn thật
-    /// (khối 3 xong ở 260 s trong khi khối 1 mất 325 s — xếp hàng FIFO thì không thể vậy), và
-    /// continuous batching có thể làm lệch số học của chính lượt suy luận đó. Chưa có lần đối chiếu
-    /// tuần tự-vs-song song nào chạy trọn vẹn để khẳng định kết quả trùng khít, nên bật sẵn là đánh
-    /// cược vào điều chưa đo. Ngoài ra độ trễ mỗi request phình theo số slot (354 s → 569 s) trong
-    /// khi HttpClient chỉ chờ 10 phút.
-    /// </para>
-    /// Đặt LMSTUDIO_PARALLEL=N sau khi đã tự đối chiếu output trên đúng model của mình.
-    /// </summary>
-    public int MaxParallelRequests { get; set; } = 1;
-
-    /// <summary>Hook debug cục bộ để hiển thị request trước khi gửi tới LM Studio.</summary>
-    public Action<string>? DebugLog { get; set; }
-
-    public void Validate(bool requireModel = true)
-    {
-        if (requireModel && string.IsNullOrWhiteSpace(Model))
-            throw new InvalidOperationException(
-                "Chưa chọn model LM Studio. Hãy nạp model trong LM Studio hoặc đặt LMSTUDIO_MODEL.");
-        if ((!Endpoint.Scheme.Equals(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase) &&
-             !Endpoint.Scheme.Equals(Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase)) ||
-            !IsLoopback(Endpoint))
-            throw new InvalidOperationException(
-                "LMSTUDIO_ENDPOINT phải là địa chỉ loopback http(s)://127.0.0.1, localhost hoặc [::1].");
-        if (!Endpoint.AbsolutePath.EndsWith("/v1/chat/completions", StringComparison.OrdinalIgnoreCase))
-            throw new InvalidOperationException("LMSTUDIO_ENDPOINT phải kết thúc bằng /v1/chat/completions.");
-        if (ContextSize is < 4096 or > 1_048_576)
-            throw new InvalidOperationException("LM Studio ContextSize phải nằm trong khoảng 4096..1048576.");
-        if (MissingIdRetries is < 0 or > 5)
-            throw new InvalidOperationException("LM Studio MissingIdRetries phải nằm trong khoảng 0..5.");
-        if (MaxParallelRequests is < 1 or > 16)
-            throw new InvalidOperationException("LMSTUDIO_PARALLEL phải nằm trong khoảng 1..16.");
-    }
-
-    public Uri ModelsEndpoint => new(Endpoint, "/v1/models");
-
-    public static LmStudioOptions FromEnvironment()
-    {
-        var endpointText = Environment.GetEnvironmentVariable("LMSTUDIO_ENDPOINT")
-            ?? "http://127.0.0.1:1234/v1/chat/completions";
-        if (!Uri.TryCreate(endpointText, UriKind.Absolute, out var endpoint))
-            throw new InvalidOperationException("LMSTUDIO_ENDPOINT không phải URI hợp lệ.");
-
-        return new LmStudioOptions
-        {
-            Endpoint = endpoint,
-            ApiKey = Environment.GetEnvironmentVariable("LMSTUDIO_API_KEY") ?? "",
-            Model = Environment.GetEnvironmentVariable("LMSTUDIO_MODEL") ?? "",
-            ContextSize = int.TryParse(Environment.GetEnvironmentVariable("LMSTUDIO_CONTEXT_SIZE"), out var context)
-                ? context
-                : 16_384,
-            MaxParallelRequests = int.TryParse(Environment.GetEnvironmentVariable("LMSTUDIO_PARALLEL"), out var parallel)
-                ? Math.Clamp(parallel, 1, 16)
-                : 1,
-        };
-    }
-
-    public static bool IsLoopback(Uri endpoint) =>
-        endpoint.IsLoopback ||
-        endpoint.Host.Equals("localhost", StringComparison.OrdinalIgnoreCase) ||
-        IPAddress.TryParse(endpoint.Host, out var address) && IPAddress.IsLoopback(address);
-}
 
 /// <summary>
 /// Backend OpenAI-compatible của LM Studio. Mỗi request độc lập, dùng structured output schema
@@ -427,3 +351,4 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
         if (_ownsHttp) _http.Dispose();
     }
 }
+

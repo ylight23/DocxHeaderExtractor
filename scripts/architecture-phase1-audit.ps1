@@ -50,10 +50,13 @@ $coreProjectReferences = @([regex]::Matches($coreProjectText, '<ProjectReference
 Add-Finding "core-has-no-project-dependencies" ($coreProjectReferences.Count -eq 0) `
     ($(if ($coreProjectReferences.Count -eq 0) { "Core has no ProjectReference" } else { $coreProjectReferences -join ", " }))
 
-$coreProviderFiles = @(Get-ChildItem (Join-Path $rootPath "src\DocxHeaderExtractor.Core\Llm") `
+$coreLlmFiles = @(Get-ChildItem (Join-Path $rootPath "src\DocxHeaderExtractor.Core\Llm") `
     -Filter *.cs -File -ErrorAction SilentlyContinue)
+$coreProviderFiles = @($coreLlmFiles | Where-Object {
+    (Get-Content -Raw $_.FullName) -match '\b(class|record)\s+\w*(HeaderExtractor|Provider|Runner)\b'
+})
 Add-Finding "provider-implementations-isolated-from-core" ($coreProviderFiles.Count -eq 0) `
-    ($(if ($coreProviderFiles.Count -eq 0) { "no Core/Llm implementation files" } else { "Core/Llm contains " + ($coreProviderFiles.Name -join ", ") }))
+    ($(if ($coreProviderFiles.Count -eq 0) { "Core contains only provider-neutral contracts/options" } else { "Core provider implementations: " + ($coreProviderFiles.Name -join ", ") }))
 
 $cliProject = Get-Content -Raw (Join-Path $rootPath "src\DocxHeaderExtractor.Cli\DocxHeaderExtractor.Cli.csproj")
 Add-Finding "cli-does-not-reference-eval" ($cliProject -notmatch 'DocxHeaderExtractor\.Eval') `

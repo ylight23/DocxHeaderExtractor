@@ -6,90 +6,6 @@ using System.Text.Json;
 
 namespace DocxHeaderExtractor.Core.Llm;
 
-public sealed class SglangOptions
-{
-    public Uri Endpoint { get; set; } = new("http://127.0.0.1:30000/v1/chat/completions");
-    public string ApiKey { get; set; } = "";
-    public string Model { get; set; } = "";
-
-    /// <summary>
-    /// Chưa đo context thật của model/gateway này (Qwen3.8-27B qua vLLM). Đặt bảo thủ; server tự
-    /// khai context lớn hơn thì <c>AdoptBackendContextBudget</c> chỉ NÂNG chunk budget, không hạ.
-    /// </summary>
-    public int ContextSize { get; set; } = 8192;
-
-    public int MaxOutputTokens { get; set; } = 768;
-    public int MissingIdRetries { get; set; } = 2;
-    public int RequestTimeoutSeconds { get; set; } = 90;
-    public int TransientRequestRetries { get; set; } = 2;
-
-    /// <summary>
-    /// Chưa đối chiếu song song-vs-tuần tự trên đúng gateway này (khác máy LM Studio đã đo ở
-    /// <see cref="LmStudioOptions.MaxParallelRequests"/>). Mặc định 1; đặt SGLANG_PARALLEL sau khi
-    /// tự đối chiếu output.
-    /// </summary>
-    public int MaxParallelRequests { get; set; } = 1;
-
-    /// <summary>
-    /// SGLang accepts a Qwen-specific thinking switch. Hosted OpenAI-compatible providers do not
-    /// necessarily recognize that field, so adapters must disable it rather than relying on the
-    /// server to ignore unknown JSON properties.
-    /// </summary>
-    public bool SendChatTemplateKwargs { get; set; } = true;
-
-    /// <summary>Ask compatible hosted APIs to return a JSON object for narrow pointer/role passes.</summary>
-    public bool RequireJsonObjectResponse { get; set; }
-
-    /// <summary>Hook debug cục bộ để hiển thị request trước khi gửi.</summary>
-    public Action<string>? DebugLog { get; set; }
-
-    public void Validate(bool requireModel = true)
-    {
-        if (requireModel && string.IsNullOrWhiteSpace(Model))
-            throw new InvalidOperationException("Chưa cấu hình SGLANG_MODEL.");
-        if (Endpoint.Scheme != Uri.UriSchemeHttp && Endpoint.Scheme != Uri.UriSchemeHttps)
-            throw new InvalidOperationException("SGLANG_ENDPOINT phải là http hoặc https.");
-        if (!Endpoint.AbsolutePath.EndsWith("/v1/chat/completions", StringComparison.OrdinalIgnoreCase))
-            throw new InvalidOperationException("SGLANG_ENDPOINT phải kết thúc bằng /v1/chat/completions.");
-        if (ContextSize is < 1024 or > 1_048_576)
-            throw new InvalidOperationException("SGLANG_CONTEXT_SIZE phải nằm trong khoảng 1024..1048576.");
-        if (MissingIdRetries is < 0 or > 5)
-            throw new InvalidOperationException("SGLang MissingIdRetries phải nằm trong khoảng 0..5.");
-        if (RequestTimeoutSeconds is < 10 or > 600)
-            throw new InvalidOperationException("SGLANG_REQUEST_TIMEOUT_SECONDS phải nằm trong khoảng 10..600.");
-        if (TransientRequestRetries is < 0 or > 4)
-            throw new InvalidOperationException("SGLANG_TRANSIENT_RETRIES phải nằm trong khoảng 0..4.");
-        if (MaxParallelRequests is < 1 or > 16)
-            throw new InvalidOperationException("SGLANG_PARALLEL phải nằm trong khoảng 1..16.");
-    }
-
-    public static SglangOptions FromEnvironment()
-    {
-        var endpointText = Environment.GetEnvironmentVariable("SGLANG_ENDPOINT")
-            ?? "http://127.0.0.1:30000/v1/chat/completions";
-        if (!Uri.TryCreate(endpointText, UriKind.Absolute, out var endpoint))
-            throw new InvalidOperationException("SGLANG_ENDPOINT không phải URI hợp lệ.");
-
-        return new SglangOptions
-        {
-            Endpoint = endpoint,
-            ApiKey = Environment.GetEnvironmentVariable("SGLANG_API_KEY") ?? "",
-            Model = Environment.GetEnvironmentVariable("SGLANG_MODEL") ?? "",
-            ContextSize = int.TryParse(Environment.GetEnvironmentVariable("SGLANG_CONTEXT_SIZE"), out var context)
-                ? context
-                : 8192,
-            MaxParallelRequests = int.TryParse(Environment.GetEnvironmentVariable("SGLANG_PARALLEL"), out var parallel)
-                ? Math.Clamp(parallel, 1, 16)
-                : 1,
-            RequestTimeoutSeconds = int.TryParse(Environment.GetEnvironmentVariable("SGLANG_REQUEST_TIMEOUT_SECONDS"), out var timeout)
-                ? Math.Clamp(timeout, 10, 600)
-                : 90,
-            TransientRequestRetries = int.TryParse(Environment.GetEnvironmentVariable("SGLANG_TRANSIENT_RETRIES"), out var retries)
-                ? Math.Clamp(retries, 0, 4)
-                : 2,
-        };
-    }
-}
 
 /// <summary>
 /// Backend OpenAI-compatible cho gateway SGLang/vLLM tự host (đo tay 2026-08-19: endpoint
@@ -455,3 +371,4 @@ public sealed class SglangHeaderExtractor : IHeaderClassifier
         if (_ownsHttp) _http.Dispose();
     }
 }
+

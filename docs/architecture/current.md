@@ -43,7 +43,7 @@ retained for existing library/test callers and is not a second authority route.
 
 | Project | Current role | Current references |
 |---|---|---|
-| `Core` | authority contracts, OpenXML/PDF/LLM implementation and pipeline (legacy mixed boundary) | package dependencies include OpenXML, PdfPig, PDFtoImage, LLamaSharp |
+| `Core` | authority contracts, OpenXML/PDF pipeline, provider-neutral classifier contracts/options | package dependencies include OpenXML, PdfPig, PDFtoImage, LLamaSharp for remaining VLM support |
 | `Application` | provider-independent intent, plan compiler, policy, projection, task/resource and capability contracts | `Core` |
 | `DocumentProcessing` | application processing service and processing contracts; delegates authority | `Application`, `Core` |
 | `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Application`, `DocumentProcessing`, `Core` |
@@ -51,14 +51,13 @@ retained for existing library/test callers and is not a second authority route.
 | `Cli` | command host and evaluation/repair commands | `AgentHarness`, `Core`, `Eval` |
 | `Mcp` | MCP host and async job adapter | `AgentHarness`, `Core` |
 | `Eval` | evaluation/replay-only adapters | `Core` |
-| `Infrastructure` | provider/source infrastructure ports and fact-provider adapters | `Application`, `Core` |
+| `Infrastructure` | provider implementations, prompt/cache adapters, source infrastructure ports and fact-provider adapters | `Application`, `Core` |
 
 `Application`, `DocumentProcessing`, and `Infrastructure` project boundaries now exist. Package
 versions are centrally declared in `Directory.Packages.props` without changing the pinned versions.
-The
-Infrastructure now contains provider contracts and the fact-provider adapters. The heading-provider
-implementations and source adapters still remain in Core, so deeper Core purity and Eval isolation
-are open Phase 1 work.
+Infrastructure now contains provider contracts, heading-provider implementations, prompt/cache
+adapters, and fact-provider adapters. Core exposes only the neutral classifier seam; source-adapter
+ownership and Eval isolation remain open Phase 1 work.
 
 ## Persisted artifacts and ownership
 
@@ -79,9 +78,9 @@ boundary extraction and caller migration, followed by a new reachability audit; 
 those gates would risk breaking compatibility.
 
 The repeatable mechanical audit is `scripts/architecture-phase1-audit.ps1`. At the current
-checkpoint it passes project presence, central package versions, and the Core project-reference
-boundary; it remains blocked by concrete provider implementations in `Core/Llm` and the CLI's
-direct reference to `DocxHeaderExtractor.Eval`.
+checkpoint it passes project presence, central package versions, the Core project-reference
+boundary, and heading-provider isolation; it remains blocked by the CLI's direct reference to
+`DocxHeaderExtractor.Eval`.
 
 ## Phase control
 

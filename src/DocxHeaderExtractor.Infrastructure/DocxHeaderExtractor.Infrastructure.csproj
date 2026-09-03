@@ -7,8 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DocxHeaderExtractor.Application\DocxHeaderExtractor.Application.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.Core\DocxHeaderExtractor.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LLamaSharp" />
   </ItemGroup>
 
 </Project>

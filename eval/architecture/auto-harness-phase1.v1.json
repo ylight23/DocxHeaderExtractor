@@ -41,7 +41,7 @@
     "focusedTests": "48/48 PASS",
     "releaseBuild": "PASS",
     "diffCheck": "PASS",
-    "mechanicalAudit": "BLOCKED",
+    "mechanicalAudit": "BLOCKED: CLI→Eval project reference",
     "mechanicalAuditScript": "scripts/architecture-phase1-audit.ps1"
   },
   "legacyRemoval": {

@@ -3,6 +3,7 @@ using DocxHeaderExtractor.Core.Llm;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing;
+using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
@@ -28,7 +29,8 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     public PipelineDocumentExtractionTool(PipelineOptions options)
     {
         ArgumentNullException.ThrowIfNull(options);
-        _processing = new DocumentProcessingService(new AuthorityExtractionPipeline(options));
+        _processing = new DocumentProcessingService(
+            new AuthorityExtractionPipeline(options, new HeaderClassifierFactory()));
         Descriptor = Describe(options);
     }
 

@@ -49,8 +49,10 @@ tuning, or benchmark tuning.
 - [ ] WS12 — Central build/package rules and architecture enforcement.
   Progress: package versions are centralized in `Directory.Packages.props`; the repeatable audit is
   `scripts/architecture-phase1-audit.ps1`. Current audit is BLOCKED only on provider implementations
-  still in Core and the CLI→Eval project reference; one fact-provider adapter family has moved to
-  Infrastructure in commit `7a0e651`. Dependency-direction gates remain open.
+  still in Core and the CLI→Eval project reference; heading provider implementations and prompt/cache
+  code now live in Infrastructure, with Core consuming `IHeaderClassifierFactory`. Evidence:
+  provider seam commits in the current worktree and the audit script. Dependency-direction gates
+  remain open for CLI/Eval.
 - [ ] WS13 — Final reachability/dead-code/root-hygiene audit and only justified deletions.
 - [ ] WS14 — Extension contract proof for capability, concept/schema, provider, source, and task.
 - [ ] WS15 — Phase 2 test seams prepared without running quality/provider tests.

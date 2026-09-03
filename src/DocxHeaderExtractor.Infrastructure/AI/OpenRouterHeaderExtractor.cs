@@ -5,36 +5,6 @@ using System.Text.Json;
 
 namespace DocxHeaderExtractor.Core.Llm;
 
-public sealed class OpenRouterOptions
-{
-    public const string DefaultModel = "qwen/qwen3.5-9b";
-
-    public string ApiKey { get; set; } = "";
-    public string Model { get; set; } = DefaultModel;
-    public Uri Endpoint { get; set; } = new("https://openrouter.ai/api/v1/chat/completions");
-    public int ContextSize { get; set; } = 32768;
-    public int MaxOutputTokens { get; set; } = 768;
-    public int MissingIdRetries { get; set; } = 2;
-
-    public void Validate()
-    {
-        if (string.IsNullOrWhiteSpace(ApiKey))
-            throw new InvalidOperationException(
-                "Chưa có OPENROUTER_API_KEY. API key chỉ được đọc ở server, không nhập trên trình duyệt.");
-        if (string.IsNullOrWhiteSpace(Model)) throw new InvalidOperationException("Thiếu model OpenRouter.");
-        if (MissingIdRetries is < 0 or > 5)
-            throw new InvalidOperationException("MissingIdRetries phải nằm trong khoảng 0..5.");
-        if (Endpoint.Scheme != Uri.UriSchemeHttps)
-            throw new InvalidOperationException("OpenRouter endpoint bắt buộc dùng HTTPS.");
-    }
-
-    public static OpenRouterOptions FromEnvironment() => new()
-    {
-        ApiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY") ?? "",
-        Model = Environment.GetEnvironmentVariable("OPENROUTER_MODEL") ?? DefaultModel,
-    };
-}
-
 /// <summary>
 /// RPC JSON qua OpenRouter Chat Completions. Mỗi request bắt buộc ZDR, cấm endpoint thu thập
 /// dữ liệu và yêu cầu provider trả JSON. Schema/ID được hậu kiểm cục bộ trước khi chấp nhận.

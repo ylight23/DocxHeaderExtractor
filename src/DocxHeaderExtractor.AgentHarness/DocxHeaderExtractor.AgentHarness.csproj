@@ -10,6 +10,7 @@
     <ProjectReference Include="..\DocxHeaderExtractor.Application\DocxHeaderExtractor.Application.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.DocumentProcessing\DocxHeaderExtractor.DocumentProcessing.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.Core\DocxHeaderExtractor.Core.csproj" />
+    <ProjectReference Include="..\DocxHeaderExtractor.Infrastructure\DocxHeaderExtractor.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

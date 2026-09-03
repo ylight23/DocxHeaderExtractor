@@ -18,37 +18,41 @@ public sealed class AuthorityExtractionPipeline : IDisposable
 {
     private readonly PipelineOptions _options;
     private readonly IAuthorityRoutePolicy _routePolicy;
+    private readonly IHeaderClassifierFactory? _analystFactory;
     private IHeaderClassifier? _analyst;
     private readonly bool _ownsAnalyst;
 
     public AuthorityExtractionPipeline(PipelineOptions options)
-    {
-        _options = options ?? throw new ArgumentNullException(nameof(options));
-        _routePolicy = new DefaultAuthorityRoutePolicy();
-        _ownsAnalyst = true;
-    }
+        : this(options, new DefaultAuthorityRoutePolicy(), null, null) { }
+
+    public AuthorityExtractionPipeline(PipelineOptions options, IHeaderClassifierFactory analystFactory)
+        : this(options, new DefaultAuthorityRoutePolicy(), null, analystFactory) { }
 
     public AuthorityExtractionPipeline(PipelineOptions options, IHeaderClassifier analyst)
-        : this(options, new DefaultAuthorityRoutePolicy(), analyst)
+        : this(options, new DefaultAuthorityRoutePolicy(), analyst, null)
     {
     }
 
     public AuthorityExtractionPipeline(PipelineOptions options, IAuthorityRoutePolicy routePolicy)
-    {
-        _options = options ?? throw new ArgumentNullException(nameof(options));
-        _routePolicy = routePolicy ?? throw new ArgumentNullException(nameof(routePolicy));
-        _ownsAnalyst = true;
-    }
+        : this(options, routePolicy, null, null) { }
 
     public AuthorityExtractionPipeline(
         PipelineOptions options,
         IAuthorityRoutePolicy routePolicy,
         IHeaderClassifier analyst)
+        : this(options, routePolicy, analyst, null) { }
+
+    private AuthorityExtractionPipeline(
+        PipelineOptions options,
+        IAuthorityRoutePolicy routePolicy,
+        IHeaderClassifier? analyst,
+        IHeaderClassifierFactory? analystFactory)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _routePolicy = routePolicy ?? throw new ArgumentNullException(nameof(routePolicy));
-        _analyst = analyst ?? throw new ArgumentNullException(nameof(analyst));
-        _ownsAnalyst = false;
+        _analyst = analyst;
+        _analystFactory = analystFactory;
+        _ownsAnalyst = analystFactory is not null || analyst is null;
     }
 
     public Task<DocumentOutline> RunAsync(string inputPath, CancellationToken ct = default) =>
@@ -235,15 +239,10 @@ public sealed class AuthorityExtractionPipeline : IDisposable
     private async Task<IHeaderClassifier> GetAnalystAsync(CancellationToken ct)
     {
         if (_analyst is not null) return _analyst;
-        _options.PrepareLocalModelProfile();
-        _options.Llama.ChunkTokenBudget = _options.Chunking.TokenBudget;
-        _analyst = _options.Backend switch
-        {
-            InferenceBackend.OpenRouter => OpenRouterHeaderExtractor.CreateOwned(_options.OpenRouter),
-            InferenceBackend.LmStudio => LmStudioHeaderExtractor.CreateOwned(_options.LmStudio),
-            InferenceBackend.Sglang => SglangHeaderExtractor.CreateOwned(_options.Sglang),
-            _ => await LlamaHeaderExtractor.LoadAsync(_options.Llama, ct),
-        };
+        if (_analystFactory is null)
+            throw new InvalidOperationException(
+                "Inference provider factory chưa được đăng ký ở composition root.");
+        _analyst = await _analystFactory.CreateAsync(_options, ct);
         return _analyst;
     }
 

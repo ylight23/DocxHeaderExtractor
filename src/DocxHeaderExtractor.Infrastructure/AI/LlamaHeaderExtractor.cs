@@ -571,25 +571,3 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
         _weights.Dispose();
     }
 }
-
-public sealed record ChunkResult(
-    IReadOnlyList<ModelHeading> Headings,
-    string RawOutput,
-    int RejectedIndexes,
-    long ElapsedMs,
-    IReadOnlySet<int> ExplicitNonHeadings,
-    /// <summary>
-    /// Vai trò mô hình đã gán cho các đoạn bị bác. Cần thiết vì không phải phủ định nào cũng
-    /// đáng tin như nhau: "document_title" gán cho nhiều đoạn trong cùng một tài liệu là mâu
-    /// thuẫn tự thân, còn form_label/table_header thì không.
-    /// </summary>
-    IReadOnlyDictionary<int, SemanticRole>? RejectedRoles = null);
-
-/// <summary>Một heading trong lượt dựng hierarchy toàn cục.</summary>
-public sealed record HierarchyItem(
-    int Index,
-    string Text,
-    int? StyleLevel,
-    int? OutlineLevel,
-    int? HintLevel,
-    string? Numbering);

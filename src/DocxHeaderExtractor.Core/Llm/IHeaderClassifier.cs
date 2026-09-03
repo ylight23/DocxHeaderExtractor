@@ -1,3 +1,5 @@
+using DocxHeaderExtractor.Core.Pipeline;
+
 namespace DocxHeaderExtractor.Core.Llm;
 
 /// <summary>Backend suy luận dùng chung cho GGUF local, LM Studio local RPC và OpenRouter.</summary>
@@ -37,4 +39,13 @@ public interface IHeaderClassifier : IDisposable
     /// đảm điều đó.
     /// </summary>
     Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default);
+}
+
+/// <summary>
+/// Composition-root seam for inference providers. Core consumes the neutral classifier contract;
+/// provider construction belongs to Infrastructure.
+/// </summary>
+public interface IHeaderClassifierFactory
+{
+    Task<IHeaderClassifier> CreateAsync(PipelineOptions options, CancellationToken ct = default);
 }

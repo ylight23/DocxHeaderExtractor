@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DocxHeaderExtractor.AgentHarness\DocxHeaderExtractor.AgentHarness.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.Core\DocxHeaderExtractor.Core.csproj" />
+    <ProjectReference Include="..\DocxHeaderExtractor.Infrastructure\DocxHeaderExtractor.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
