@@ -151,7 +151,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
         try
         {
             var agentRun = await harness.RunAsync(AgentRequest(file, o), ct);
-            var outline = agentRun.Outline;
+            var outline = agentRun.TaskResult.Value;
             if (!o.Quiet)
             {
                 Console.Error.WriteLine($"  {AgentRunNarrator.Describe(agentRun)}");
@@ -399,7 +399,7 @@ static async Task<int> RunReviewAsync(CommandLineOptions o, CancellationToken ct
         if (!o.Quiet) Console.Error.WriteLine($"» Review: {Path.GetFileName(file)}");
     var source = new AuthorityEvaluationSourceReader(o.Pipeline.Extraction).Read(file).Document;
     var agentRun = await harness.RunAsync(AgentRequest(file, o), ct);
-    var outline = agentRun.Outline;
+    var outline = agentRun.TaskResult.Value;
     var bundle = ReviewBundle.Create(outline, source);
     var output = o.OutputPath ?? Path.ChangeExtension(file, ".review.json");
     await File.WriteAllTextAsync(output, bundle.ToJson(), new UTF8Encoding(false), ct);

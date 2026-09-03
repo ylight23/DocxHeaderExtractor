@@ -119,6 +119,12 @@ public sealed record DocumentAgentRunResult(
     int Steps,
     IReadOnlyList<AgentRunEvent> Trace)
 {
+    /// <summary>
+    /// Generic task envelope consumed by hosts. <see cref="Outline"/> remains as a compatibility
+    /// projection for existing callers while they migrate to this validated task result.
+    /// </summary>
+    public required GenericTaskResult<DocumentOutline> TaskResult { get; init; }
+
     public required AgentSkill Skill { get; init; }
 
     /// <summary>Số lượt sửa đã dùng (0 = qua validator ngay lượt đầu).</summary>

@@ -91,7 +91,7 @@ public static class EvalRunner
                     docx,
                     AllowExternalDataTransfer:
                         !options.DisableLlm && options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang), ct);
-                var outline = run.Outline;
+                var outline = run.TaskResult.Value;
                 scores.Add(Evaluator.Score(name, outline, candidates, key));
                 if (!key.IsPartial)
                     calibration.Add(outline, key);

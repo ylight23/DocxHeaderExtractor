@@ -105,7 +105,7 @@ public sealed class HostAuthorityE2ETests
         using var tool = new PipelineDocumentExtractionTool(DeterministicOptions());
         var harness = new DocumentAgentHarness(tool);
         var run = await harness.RunAsync(new DocumentAgentRequest(fixture));
-        return run.Outline;
+        return run.TaskResult.Value;
     }
 
     private static async Task<IReadOnlyList<HostHeading>> RunMcpAsync(string fixture)

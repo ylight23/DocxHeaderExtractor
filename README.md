@@ -1,7 +1,9 @@
 ﻿# DocxHeaderExtractor
 
 Kiến trúc runtime dùng một [agent harness có policy skill, guardrail, vòng sửa giới hạn, trace và
-human-review gate chặn hành động ghi](docs/agent-harness.md).
+human-review gate chặn hành động ghi](docs/agent-harness.md). Luồng application canonical được ghi
+trong [Auto-harness Phase 1](docs/architecture/auto-harness-phase1.md): host request đi qua intent,
+plan, capability, policy, validation và `GenericTaskResult` dùng chung.
 LLM là tool suy luận có giới hạn; nó không tự sửa code, tự tạo nhãn vàng hay bỏ qua precision gate.
 
 Trích xuất cấu trúc tiêu đề (heading) từ file **.docx / .doc** bằng **OpenXML SDK** + **LLamaSharp**

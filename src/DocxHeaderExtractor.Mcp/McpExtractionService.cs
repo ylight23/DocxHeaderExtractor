@@ -84,7 +84,7 @@ public sealed class McpExtractionService : IDisposable
             : new PipelineDocumentExtractionTool(pipeline, classifier);
         var harness = _harnessFactory.Create(extractionTool);
         var run = await harness.RunAsync(new DocumentAgentRequest(resolved), ct);
-        var outline = run.Outline;
+        var outline = run.TaskResult.Value;
 
         return new McpExtractionResult(
             run.RunId.ToString("D"),

@@ -1,0 +1,75 @@
+# Current architecture contract
+
+Status: `ACTIVE — PHASE 1 CUTOVER`
+
+Baseline: `main@732c3505afc5dd312423ed0fa58056192fb39608`
+
+The architecture cutover is being developed on `architecture/auto-harness-phase1` in an isolated
+worktree. The Accuracy-99 branch is not a source of architecture changes and is not modified by
+this workstream.
+
+## Current host routes
+
+```text
+Web / CLI / MCP
+  -> DocumentAgentHarness
+  -> PipelineDocumentExtractionTool
+  -> DocumentProcessingService
+  -> AuthorityExtractionPipeline
+  -> ValidatedStructure
+  -> PromptDrivenProjection
+  -> GenericTaskResult
+```
+
+All three hosts currently use the same `DocumentAgentHarness`; Web, CLI, and MCP consume the
+validated `TaskResult.Value` projection. The compatibility `DocumentAgentRunResult.Outline` is
+retained for existing library/test callers and is not a second authority route.
+
+## Trust and authority boundaries
+
+- Model output is a proposal, never authority.
+- Input documents and tool output are untrusted until deterministic validation.
+- Parser-owned source coordinates are the only materialization source.
+- `ValidatedStructure` is structural authority.
+- `ValidatedFact` is fact authority.
+- Policy/guardrails authorize transfer and mutation; a model cannot grant permission.
+- Projection and formatting cannot create authority.
+- Accuracy-99 gold, human adjudication, and provider-quality tuning are outside Phase 1.
+
+## Project dependency baseline
+
+| Project | Current role | Current references |
+|---|---|---|
+| `Core` | authority contracts, OpenXML/PDF/LLM implementation and pipeline (legacy mixed boundary) | package dependencies include OpenXML, PdfPig, PDFtoImage, LLamaSharp |
+| `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Core` |
+| `Web` | HTTP host and UI composition root | `AgentHarness`, `Core` |
+| `Cli` | command host and evaluation/repair commands | `AgentHarness`, `Core`, `Eval` |
+| `Mcp` | MCP host and async job adapter | `AgentHarness`, `Core` |
+| `Eval` | evaluation/replay-only adapters | `Core` |
+
+The desired `Application`, `DocumentProcessing`, and `Infrastructure` projects do not yet exist in
+the baseline. Their absence is an open Phase 1 workstream, not silently treated as complete.
+
+## Persisted artifacts and ownership
+
+- correction memory: local JSONL through `CorrectionMemory` (migration to a feedback port is open)
+- skill policy: versioned `skills/heading-extraction/SKILL.md` (generic catalog migration is open)
+- schema packs: registered in Core application contracts (registry extraction is open)
+- MCP job state: temporary `McpJobStore` snapshots owned by the MCP host
+- generated/writeback files: request-owned temp directories and explicit writeback adapters
+- Accuracy-99 review/gold: evaluation-owned and excluded from this cutover
+
+## Open architecture findings
+
+The existing reachability audit proves no safe deletion candidate yet: `HeaderExtractionPipeline`
+remains reachable from repair/evaluation, `DocxSlimExtractor` remains source-preparation reachable,
+and `LegacyDocConverter` remains a normal input compatibility adapter. The correct next action is
+boundary extraction and caller migration, followed by a new reachability audit; deletion before
+those gates would risk breaking compatibility.
+
+## Phase control
+
+`HUMAN_ADJUDICATION = NOT_STARTED_IN_PHASE1`  
+`ACCURACY_TUNING = NOT_STARTED_IN_PHASE1`  
+`PROVIDER_QUALITY_TUNING = NOT_STARTED_IN_PHASE1`  
+`MULTI_PROMPT_FUNCTIONAL_VERIFICATION = NOT_STARTED_IN_PHASE1`

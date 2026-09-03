@@ -360,7 +360,7 @@ app.MapPost("/api/extract", async (
                 await EmitAsync(evt);
 
             var agentRun = await run;
-            var outline = agentRun.Outline;
+            var outline = agentRun.TaskResult.Value;
 
             // Đọc vào bộ nhớ trước khi finally xoá thư mục tạm; link chỉ tải được đúng một lần.
             string? download = null;

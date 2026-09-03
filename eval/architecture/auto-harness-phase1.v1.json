@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "auto_harness_phase1_cutover",
+  "status": "IN_PROGRESS",
+  "baseline": "732c3505afc5dd312423ed0fa58056192fb39608",
+  "branch": "architecture/auto-harness-phase1",
+  "isolatedWorktree": "C:\\DocxHeaderExtractor-auto-harness",
+  "applicationOrchestrator": "DocxHeaderExtractor.AgentHarness.DocumentAgentHarness",
+  "flow": [
+    "IntentProposal",
+    "IntentValidator",
+    "ValidatedIntent",
+    "SemanticTaskPlan",
+    "ExecutionPlan",
+    "CapabilityResolver",
+    "PolicyApproval",
+    "CapabilityExecution",
+    "SourceAuthorityValidation",
+    "PromptDrivenProjection",
+    "GenericTaskResult"
+  ],
+  "hostCutover": {
+    "web": "TaskResult.Value",
+    "cli": "TaskResult.Value",
+    "mcp": "TaskResult.Value"
+  },
+  "authority": {
+    "productionPipelineChanged": false,
+    "structuralAuthority": "ValidatedStructure",
+    "providerCalls": 0
+  },
+  "verification": {
+    "baselineReleaseBuild": "PASS",
+    "focusedTests": "32/32 PASS",
+    "releaseBuild": "PASS",
+    "diffCheck": "PASS"
+  },
+  "legacyRemoval": {
+    "deleted": [],
+    "reason": "Existing reachability audit does not prove any candidate dead."
+  }
+}

@@ -62,6 +62,7 @@ public sealed class DocumentAgentHarness
         var trace = new List<AgentRunEvent>();
         var sequence = 0;
         var steps = 0;
+        var startedAt = DateTimeOffset.UtcNow;
 
         async ValueTask EmitAsync(string stage, AgentRunEventKind kind, string message)
         {
@@ -95,14 +96,39 @@ public sealed class DocumentAgentHarness
             await EmitAsync("skill.contract", AgentRunEventKind.Passed,
                 $"Cấu hình thoả policy {_skill.Name}@{_skill.Version} ({_skill.Digest}).");
 
-            // 2. Chọn tool bằng luật của code, rồi ghi lựa chọn kèm lý do vào trace.
+            // 2. Dựng và kiểm tra intent trước khi chọn capability. Đây là application contract;
+            // input guardrail vẫn là nơi duy nhất quyết định file có thực sự tồn tại/hợp lệ.
+            var proposal = IntentProposal.From(request);
+            await EmitAsync("intent.proposal", AgentRunEventKind.Completed,
+                $"Intent {proposal.Operation} cho {Path.GetFileName(proposal.InputPath)}.");
+            var intent = IntentValidator.Validate(proposal);
+            await EmitAsync("intent.validation", AgentRunEventKind.Passed,
+                "Intent hợp lệ; chưa cấp quyền thực thi hay tạo authority.");
+
+            // 3. Chọn capability bằng luật của code, rồi ghi lựa chọn kèm lý do vào trace.
             TakeStep("plan.tools");
             var selection = _registry.Select(request);
             var tool = selection.Extraction;
             var actionTool = selection.Action;
+            var semanticPlan = SemanticTaskPlanner.Create(intent, selection);
+            await EmitAsync("plan.semantic", AgentRunEventKind.Completed,
+                $"SemanticTaskPlan={semanticPlan.TaskName}.");
+            var executionPlan = ExecutionPlanner.Create(semanticPlan, selection, _skill);
+            await EmitAsync("plan.execution", AgentRunEventKind.Completed,
+                $"ExecutionPlan dùng capability {executionPlan.CapabilityName}.");
             await EmitAsync("plan.tools", AgentRunEventKind.Passed, $"Chọn {selection.Rationale}");
+            await EmitAsync("capability.resolve", AgentRunEventKind.Passed,
+                $"Resolved capability {tool.Descriptor.Name}.");
 
-            // 3. Guardrail.
+            // PolicyEvaluator chỉ mô tả quyết định ở application boundary. Các guardrail hiện hữu
+            // tiếp tục là enforcement point để không tạo một policy implementation song song.
+            var policy = PolicyEvaluator.Evaluate(executionPlan, request);
+            await EmitAsync("policy.approval", policy.Kind == PolicyDecisionKind.Denied
+                    ? AgentRunEventKind.Skipped
+                    : AgentRunEventKind.Completed,
+                $"{policy.Code}: {policy.Message}");
+
+            // 4. Guardrail.
             var guardrailContext = new DocumentAgentGuardrailContext(
                 request, tool.Descriptor, actionTool?.Descriptor);
             foreach (var guardrail in _guardrails)
@@ -118,7 +144,7 @@ public sealed class DocumentAgentHarness
                 await EmitAsync(stage, AgentRunEventKind.Passed, decision.Message);
             }
 
-            // 4. Tool + validator, có tối đa MaxRepairAttempts lượt dựng lại.
+            // 5. Capability execution + validator, có tối đa MaxRepairAttempts lượt dựng lại.
             var toolStage = $"tool.{tool.Descriptor.Name}";
             DocumentOutline outline;
             AgentRepairFeedback? feedback = null;
@@ -136,6 +162,8 @@ public sealed class DocumentAgentHarness
                 outline = await tool.ExecuteAsync(new AgentToolInvocation(request, attempt, feedback), ct);
                 await EmitAsync(toolStage, AgentRunEventKind.Completed,
                     $"Tool trả {outline.Headings.Count} heading từ {outline.ParagraphCount} đoạn.");
+                await EmitAsync("capability.execute", AgentRunEventKind.Completed,
+                    $"Capability hoàn tất lượt {attempt}.");
 
                 var validationContext = new DocumentAgentValidationContext(request, tool.Descriptor);
                 var issues = new List<AgentValidationIssue>();
@@ -186,7 +214,10 @@ public sealed class DocumentAgentHarness
                 feedback = new AgentRepairFeedback(issues, quarantine);
             }
 
-            // 5. Human-review gate.
+            await EmitAsync("validation.source-authority", AgentRunEventKind.Passed,
+                $"Đã qua {_validators.Count} validator nguồn/authority.");
+
+            // 6. Human-review gate.
             TakeStep("gate.human_review");
             // Cổng này là cổng chống ẢO GIÁC, nên nó chỉ đếm mục do MÔ HÌNH dựng (§109 tầng 2).
             //
@@ -210,7 +241,10 @@ public sealed class DocumentAgentHarness
                     ? $"Chuyển {reviewCount} heading sang người duyệt."
                     : "Không còn heading bắt buộc người duyệt.");
 
-            // 6. Hành động ghi — chỉ sau khi output đã qua validator VÀ qua gate.
+            await EmitAsync("projection.prompt-driven", AgentRunEventKind.Completed,
+                "Projection lấy từ capability result sau validation; không tạo authority mới.");
+
+            // 7. Hành động ghi — chỉ sau khi output đã qua validator VÀ qua gate.
             AgentWritebackReport? writeback = null;
             if (actionTool is not null && request.WantsAction)
             {
@@ -241,8 +275,21 @@ public sealed class DocumentAgentHarness
 
             await EmitAsync("run", AgentRunEventKind.Completed, $"Kết thúc run: {outcome}.");
 
+            var completedAt = DateTimeOffset.UtcNow;
+            var stageNames = trace.Select(e => e.Stage).Distinct(StringComparer.Ordinal).ToArray();
             return new DocumentAgentRunResult(runId, outcome, outline, steps, trace.ToArray())
             {
+                TaskResult = new GenericTaskResult<DocumentOutline>(
+                    runId,
+                    outcome.ToString(),
+                    new PromptDrivenProjection<DocumentOutline>(
+                        outline,
+                        "ValidatedStructure",
+                        trace.Where(e => e.Stage == "validation.source-authority")
+                            .Select(e => e.Stage).Distinct(StringComparer.Ordinal).ToArray()),
+                    stageNames,
+                    startedAt,
+                    completedAt),
                 Skill = _skill,
                 RepairAttempts = attempt - 1,
                 Writeback = writeback,
