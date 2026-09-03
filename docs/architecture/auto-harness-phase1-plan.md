@@ -77,7 +77,10 @@ tuning, or benchmark tuning.
   Evidence: provider seam commits `7a0e651` and `cb113e9`, `EvaluationProjectionBridge.cs`,
   runtime adapter commit `de407c6`, plus the audit script.
 - [ ] WS13 — Final reachability/dead-code/root-hygiene audit and only justified deletions.
-- [ ] WS14 — Extension contract proof for capability, concept/schema, provider, source, and task.
+- [x] WS14 — Extension contract proof for capability, concept/schema, provider, source, and task.
+  Evidence: `tests/DocxHeaderExtractor.Tests/AutoHarnessExtensionProofTests.cs` proves custom
+  capability/semantic registration, allowlisted source resolution, task-plan composition, and
+  provider-neutral classifier substitution without provider calls.
 - [ ] WS15 — Phase 2 test seams prepared without running quality/provider tests.
 - [ ] WS16 — Mechanical gate and publication into `main`.
 

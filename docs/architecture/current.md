@@ -82,6 +82,11 @@ extraction route.
 - generated/writeback files: request-owned temp directories and explicit writeback adapters
 - Accuracy-99 review/gold: evaluation-owned and excluded from this cutover
 
+The extension seam is executable-tested in
+`tests/DocxHeaderExtractor.Tests/AutoHarnessExtensionProofTests.cs`: a custom capability, semantic
+definition, allowlisted source, compiled task plan, and provider-neutral classifier can compose
+without adding a second authority route or making a provider call.
+
 ## Open architecture findings
 
 The existing reachability audit proves no safe deletion candidate yet: `HeaderExtractionPipeline`
