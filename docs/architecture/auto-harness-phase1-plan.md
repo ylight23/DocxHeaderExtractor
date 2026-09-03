@@ -92,7 +92,10 @@ tuning, or benchmark tuning.
   capability/semantic registration, allowlisted source resolution, task-plan composition, and
   provider-neutral classifier substitution without provider calls.
 - [ ] WS15 — Phase 2 test seams prepared without running quality/provider tests.
-- [ ] WS16 — Mechanical gate and publication into `main`.
+- [ ] WS16 — Mechanical gate and publication into `main`. The broader gate is now executable as
+  `scripts/architecture-phase1-final-gate.ps1`; it intentionally remains blocked until Core
+  package ownership, feedback ownership, legacy reachability, Phase 2 record, and main publication
+  satisfy the final DoD.
 
 ## Completed implementation slice
 

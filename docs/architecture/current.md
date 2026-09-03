@@ -103,6 +103,9 @@ The repeatable mechanical audit is `scripts/architecture-phase1-audit.ps1`. At t
 checkpoint it passes project presence, central package versions, the Core project-reference
 boundary, heading-provider isolation, CLI compile-time Eval isolation, and host source/semantic
 composition checks. The broader final reachability and Core package-ownership gates remain open.
+The complete DoD check is `scripts/architecture-phase1-final-gate.ps1`; it is intentionally
+separate and currently reports those remaining blockers instead of treating the partial audit as
+publication evidence.
 
 ## Phase control
 
