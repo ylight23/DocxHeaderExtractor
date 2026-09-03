@@ -115,14 +115,20 @@ Add-Check "phase2-seams-recorded" $phase2Recorded `
     ($(if ($phase2Recorded) { "deferred Phase 2 work is recorded" } else { "deferred Phase 2 work is not recorded" }))
 
 $architectureDoc = Get-Content -Raw (Join-Path $rootPath "docs\architecture\auto-harness-phase1.md")
-$statusConsistent = $planText -match 'Status: `ACTIVE`' -and $architectureDoc -match 'Status: `IN_PROGRESS`'
-Add-Check "architecture-status-is-consistent" $statusConsistent `
-    ($(if ($statusConsistent) { "Phase 1 remains ACTIVE/IN_PROGRESS until publication" } else { "architecture status documents disagree" }))
-
 $head = (& git -C $rootPath rev-parse HEAD).Trim()
 $main = (& git -C $rootPath rev-parse origin/main).Trim()
 & git -C $rootPath merge-base --is-ancestor $head $main *> $null
 $merged = $LASTEXITCODE -eq 0
+$statusConsistent = if ($merged) {
+    $planText -match 'Status: `DESIGN_COMPLETE`' -and $architectureDoc -match 'Status: `DESIGN_COMPLETE`'
+} else {
+    $planText -match 'Status: `ACTIVE`' -and $architectureDoc -match 'Status: `IN_PROGRESS`'
+}
+Add-Check "architecture-status-is-consistent" $statusConsistent `
+    ($(if ($statusConsistent) {
+        if ($merged) { "Phase 1 is DESIGN_COMPLETE after publication" } else { "Phase 1 remains ACTIVE/IN_PROGRESS until publication" }
+    } else { "architecture status documents disagree with publication state" }))
+
 Add-Check "published-into-main" $merged `
     ($(if ($merged) { "HEAD $head is contained in origin/main" } else { "HEAD $head is not contained in origin/main $main" }))
 

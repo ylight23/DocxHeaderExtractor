@@ -1,6 +1,6 @@
 # Auto-harness Phase 1 architecture cutover
 
-Status: `IN_PROGRESS`
+Status: `DESIGN_COMPLETE`
 
 Baseline: `main@732c3505afc5dd312423ed0fa58056192fb39608`
 

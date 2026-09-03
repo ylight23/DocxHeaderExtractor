@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "artifactKind": "auto_harness_phase1_cutover",
-  "status": "IN_PROGRESS",
+  "status": "DESIGN_COMPLETE",
   "baseline": "732c3505afc5dd312423ed0fa58056192fb39608",
   "branch": "architecture/auto-harness-phase1",
   "isolatedWorktree": "C:\\DocxHeaderExtractor-auto-harness",
-  "lastVerifiedCommit": "13d9232",
+  "lastVerifiedCommit": "2ac43ba",
   "applicationOrchestrator": "DocxHeaderExtractor.AgentHarness.DocumentAgentHarness",
   "flow": [
     "IntentProposal",
@@ -43,7 +43,7 @@
     "diffCheck": "PASS",
     "mechanicalAudit": "PASS: 11/11 checks",
     "mechanicalAuditScript": "scripts/architecture-phase1-audit.ps1",
-    "finalGate": "PASS for architecture checks; BLOCKED only until publication into origin/main",
+    "finalGate": "PASS: all architecture checks and publication into origin/main",
     "finalGateScript": "scripts/architecture-phase1-final-gate.ps1",
     "corePurity": "PASS: Core has no parser/render/provider package or source usage",
     "dependencyDirection": "PASS: Application -> Core; DocumentProcessing -> Application/Core; Infrastructure -> Application/Core/DocumentProcessing",

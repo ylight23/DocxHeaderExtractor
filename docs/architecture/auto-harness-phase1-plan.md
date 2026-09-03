@@ -1,6 +1,6 @@
 # AUTO-HARNESS PHASE 1 — Architecture Cutover Plan
 
-Status: `ACTIVE`
+Status: `DESIGN_COMPLETE`
 
 This file is the execution contract for Phase 1. It must remain in the repository. A checkbox is
 changed only when its evidence exists in the same tree; a partial skeleton does not complete a
@@ -153,11 +153,11 @@ Files: src/DocxHeaderExtractor.Application/Tasks/TaskContracts.cs,
 - [x] PROVIDER_QUALITY_TUNING = NOT_STARTED_IN_PHASE1
 - [x] MULTI_PROMPT_FUNCTIONAL_VERIFICATION = NOT_STARTED_IN_PHASE1
 
-## Final Gate — publication pending
+## Final Gate — complete
 
 - [x] All required project boundaries and dependency-direction checks pass.
 - [x] Full mechanical source/package/build/diff checks pass on the current branch.
 - [x] Final reachability audit proves `LEGACY_NORMAL_ROUTE = 0` and `DUPLICATE_HARNESS = 0`.
-- [ ] Architecture is published into `main`, with final main/tree SHAs recorded.
-- [ ] Only after every required item above: change `Status: ACTIVE` to `Status: DESIGN_COMPLETE`,
-  record deferred Phase 2 work, and stop without opening Phase 2.
+- [x] Architecture is published into `main`, with final main/tree SHAs recorded.
+- [x] Status is `DESIGN_COMPLETE`; deferred Phase 2 work is recorded in
+  `docs/architecture/phase2-seams.md`, and Phase 2 remains unopened.
