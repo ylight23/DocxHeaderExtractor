@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "span_production_canary",
+  "document": "004_Luat_Dau_tu_61-2020-QH14_EN.docx",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.5-9b",
+  "providerRuns": 1,
+  "vlmCalls": 0,
+  "productionCodeChanged": false,
+  "remediationPerformed": false,
+  "profile": {
+    "candidateBudget": 160,
+    "requestTimeoutSeconds": 90,
+    "batchTimeoutSeconds": 120,
+    "laneDeadlineSeconds": 300,
+    "semanticConcurrency": 1,
+    "spanBatchSize": 4,
+    "resume": false,
+    "promptProfile": "pdf-stage:wide+supplement:visual-scheduler=False",
+    "promptSha256": "6c5c9cfb8d13e5e0e40d57c9810d70143d4ccdbe6489c462fde43fa9e61fc02c"
+  },
+  "selection": {
+    "frozenCandidates": 160,
+    "canaryCandidates": 160,
+    "frozenSourceLineIds": 181,
+    "canarySourceLineIds": 181,
+    "frozenSelectionSha256": "c866d3840b8f687dd3c381fae5c2451abafdc3d7f6a8fbdf9e233066cb40e579",
+    "canarySelectionSha256": "87275249ee36e88038eeb4bbf2c005badfa8bdd3613bca90270d9fdad8d58955",
+    "selectionMatch": false,
+    "mismatchReason": "raw source-line identity differs in Unicode encoding; downstream accuracy is not compared as the same experiment"
+  },
+  "lanes": {
+    "semantic": { "status": "complete", "scheduled": 160, "completed": 81, "timedOut": 79, "notStarted": 0 },
+    "visual": { "status": "complete", "scheduled": 0, "completed": 0, "timedOut": 0, "notStarted": 0 },
+    "span": { "status": "complete", "checkpointRowsCompleted": 21, "checkpointRowsFailed": 0, "blocksResolved": 81, "blocksNull": 3 }
+  },
+  "roleCohort": {
+    "selected": 160,
+    "headingLike": 81,
+    "nonHeading": 79,
+    "uncertain": 0,
+    "batchesRequired": 21,
+    "basis": "canary result validation counters; checkpoint does not expose a separate role timing decorator"
+  },
+  "checkpoint": {
+    "path": ".verify-build/span-canary/004-qwen9b-checkpoint.jsonl",
+    "sha256": "75258355e53ce9bbfb894ba4ed51168dc5310b88b205b285ac13ea2ace4eaf12",
+    "rows": 43,
+    "semanticRows": 20,
+    "spanRows": 21,
+    "selectionRows": 1,
+    "downstreamRows": 1,
+    "spanCallsStarted": "NOT_OBSERVABLE",
+    "spanCallsSuccessful": 21,
+    "spanCallsCancelled": "NOT_OBSERVABLE",
+    "spanCallsFaulted": "NOT_OBSERVABLE",
+    "timingTrace": "NOT_CAPTURED"
+  },
+  "execution": {
+    "semanticLaneStart": "NOT_OBSERVABLE",
+    "semanticLaneEnd": "NOT_OBSERVABLE",
+    "spanLaneStart": "NOT_OBSERVABLE",
+    "spanLaneEnd": "NOT_OBSERVABLE",
+    "spanBudgetAtStartMs": 300000,
+    "requiredMeanBatchTimeMs": 14285.7142857143,
+    "completedSpanLatencyMs": "NOT_OBSERVABLE",
+    "theoreticalMaxSpanWindowMs": 90000,
+    "semanticHttpTimeoutCount": "NOT_OBSERVABLE",
+    "spanHttpRequestCount": "NOT_OBSERVABLE"
+  },
+  "preservation": {
+    "preTimeoutHeadingLike": 81,
+    "checkpointResolvedSpans": 81,
+    "preservedSpansAfterTimeout": 0,
+    "validatorAcceptedFromPreserved": 0,
+    "groundedFromPreserved": 0,
+    "productOutputFromPreserved": 0,
+    "note": "span lane completed; no after-timeout preservation cohort was observed"
+  },
+  "product": {
+    "validatedStructures": 79,
+    "grounded": 78,
+    "productHeadings": 69,
+    "invalidSpan": 2,
+    "unresolved": 2
+  },
+  "hypotheses": {
+    "H1ArchitectureGap": "PROVEN",
+    "H1OperationalImpact": "NOT_APPLICABLE",
+    "H2Budget": "REFUTED",
+    "H3Provider": "UNRESOLVED",
+    "H4Sequential": "UNRESOLVED",
+    "partialTimeoutLaneRecurrence": "PROVEN",
+    "r1DurablePreservationMechanismRecurrence": "PARTIAL"
+  },
+  "artifacts": {
+    "resultPath": ".verify-build/span-canary/004-qwen9b-result.json",
+    "resultSha256": "640cab3c590920602311430820eed4945a12e5e8b7db377a1490efb775f69ee9"
+  }
+}

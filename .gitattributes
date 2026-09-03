@@ -10,3 +10,5 @@
 /eval/benchmark-n3/n3.4/*.json -text
 /eval/benchmark-n3/n3.4/*.jsonl -text
 /eval/benchmark-n3/n3.4/*.sha256 -text
+# Historical D evidence is byte-preserved and not an active text diff surface.
+/archive/d-legacy/** -text -diff

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 3,
+  "artifactKind": "span_production_canary_post_conflict_role_reconciliation",
+  "preservedArtifacts": [
+    "eval/accuracy/span-production-canary.v1.json",
+    "eval/accuracy/span-production-canary.v2.json"
+  ],
+  "source": {
+    "result": ".verify-build/span-canary/004-qwen9b-result.json",
+    "checkpoint": ".verify-build/span-canary/004-qwen9b-checkpoint.jsonl",
+    "providerCallsThisTask": 0,
+    "productionCodeChanged": false,
+    "remediationPerformed": false
+  },
+  "rawModelRoleCohort": {
+    "headingTopic": 144,
+    "bodySentence": 16,
+    "total": 160,
+    "basis": "semantic checkpoint payloads"
+  },
+  "visual": {
+    "proposals": 0,
+    "basis": "retained result visualProposal.queried"
+  },
+  "proposalResolution": {
+    "aggregateResolutions": {
+      "marker-only-needs-visual": 8,
+      "no-visual-proposal": 152
+    },
+    "itemsPersisted": false,
+    "resolvedRolesPersisted": false,
+    "candidateIdsPersistedPerDecision": false,
+    "exactTransitions": "NOT_OBSERVABLE",
+    "headingTopicToUncertainIds": "NOT_OBSERVABLE",
+    "headingRetainedAfterConflict": "NOT_OBSERVABLE",
+    "headingLoweredAfterConflict": "NOT_OBSERVABLE",
+    "markerOnlyLowered": "NOT_OBSERVABLE",
+    "markerOnlyEffect": "UNRESOLVED",
+    "note": "aggregate resolution counts cannot prove role transitions or identify the expected 60 occurrences"
+  },
+  "postConflictRoleCohort": {
+    "headingTopic": "NOT_OBSERVABLE",
+    "bodySentence": "NOT_OBSERVABLE",
+    "uncertain": "NOT_OBSERVABLE",
+    "total": "NOT_OBSERVABLE",
+    "status": "UNRESOLVED"
+  },
+  "spanInput": {
+    "uniqueInputs": 84,
+    "resolved": 81,
+    "null": 3,
+    "resolvedPlusNullEqualsInput": true,
+    "postConflictToSpanIdMatch": "UNRESOLVED",
+    "executionCohortConsistency": "UNRESOLVED",
+    "reason": "post-conflict ResolvedRole and its exact IDs are absent from the retained result"
+  },
+  "routeCounters": {
+    "semanticScheduled": 160,
+    "semanticCompleted": 81,
+    "semanticTimedOut": 79,
+    "warning": "execution counters are not role counts and are not used to reconstruct span input"
+  },
+  "final": {
+    "rawHeadingTopic": 144,
+    "rawBodySentence": 16,
+    "headingRetainedAfterConflict": "NOT_OBSERVABLE",
+    "headingLoweredAfterConflict": "NOT_OBSERVABLE",
+    "markerOnlyLowered": "NOT_OBSERVABLE",
+    "postConflictHeadingTopic": "NOT_OBSERVABLE",
+    "spanUniqueInputs": 84,
+    "spanResolved": 81,
+    "spanNull": 3,
+    "status": "UNRESOLVED"
+  }
+}

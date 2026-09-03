@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 2,
+  "artifactKind": "span_production_canary_offline_evidence_closure",
+  "preservedArtifacts": [
+    "eval/accuracy/span-production-canary.v1.json"
+  ],
+  "source": {
+    "checkpoint": ".verify-build/span-canary/004-qwen9b-checkpoint.jsonl",
+    "checkpointSha256": "75258355e53ce9bbfb894ba4ed51168dc5310b88b205b285ac13ea2ace4eaf12",
+    "providerCallsThisTask": 0,
+    "totalProviderRunsRetained": 1
+  },
+  "checkpointAccounting": {
+    "totalRows": 43,
+    "selectionRows": 1,
+    "semanticRows": 20,
+    "spanRows": 21,
+    "downstreamRows": 1,
+    "duplicateSelectionIdentities": [],
+    "duplicateSemanticIdentities": [],
+    "duplicateSpanIdentities": [],
+    "duplicateDownstreamIdentities": [],
+    "singleRunCoherence": "PASS",
+    "semanticCandidateIdsTotal": 160,
+    "semanticCandidateIdsUnique": 160,
+    "semanticCandidateIdsDuplicated": 0,
+    "missingSelectedCandidateIds": 0,
+    "spanBlockIdsTotal": 84,
+    "spanBlockIdsUnique": 84,
+    "spanBlockIdsDuplicated": 0
+  },
+  "roleCohort": {
+    "selected": 160,
+    "HeadingTopic": 144,
+    "BodySentence": 16,
+    "TableOrChartLabel": 0,
+    "DecorativeNoise": 0,
+    "Uncertain": 0,
+    "uncertainReasons": {},
+    "roleIdsUnique": 160,
+    "basis": "semantic checkpoint payloads, exact PdfBlockRole values"
+  },
+  "spanInputReconciliation": {
+    "roleHeadingTopic": 144,
+    "spanUniqueBlockIds": 84,
+    "roleCohortConsistency": "FAIL",
+    "resolvedUnique": 81,
+    "nullUnique": 3,
+    "resolvedPlusNullEqualsUnique": true,
+    "interpretation": "span checkpoint does not contain a one-to-one record for all HeadingTopic IDs; do not interpret the 84-block span set as the full 144-heading role cohort"
+  },
+  "budget": {
+    "spanBudgetAtStartMs": "NOT_OBSERVABLE",
+    "spanBudgetUpperBoundMs": 90000,
+    "spanBatchesObserved": 21,
+    "upperBoundMeanBatchBudgetMs": 4285.714285714286,
+    "laneDeadlineMs": 300000,
+    "note": "the direct span outer timeout is RemainingOr(RequestTimeout), not the shared five-minute lane deadline"
+  },
+  "selection": {
+    "exactSelectionMatch": false,
+    "frozenSelectionSha256": "c866d3840b8f687dd3c381fae5c2451abafdc3d7f6a8fbdf9e233066cb40e579",
+    "canarySelectionSha256": "87275249ee36e88038eeb4bbf2c005badfa8bdd3613bca90270d9fdad8d58955",
+    "geometricSelectionEquivalence": "NOT_CHECKED",
+    "authorityRule": "raw source-line identity; no normalization used"
+  },
+  "routeCounters": {
+    "semanticScheduled": 160,
+    "semanticCompleted": 81,
+    "semanticTimedOut": 79,
+    "semanticNotStarted": 0,
+    "semanticCountersAreRoleCounts": false,
+    "interpretation": "these are route execution counters, not recovered PdfBlockRole counts"
+  },
+  "hypotheses": {
+    "canary": {
+      "H1ArchitectureGap": "PROVEN",
+      "H1OperationalImpact": "NOT_APPLICABLE",
+      "H2BudgetInsufficient": "REFUTED",
+      "H3ProviderCausedSpanFailure": "NOT_APPLICABLE",
+      "H4SequentialCausedSpanFailure": "REFUTED_FOR_CANARY"
+    },
+    "frozen004": {
+      "H2Budget": "UNRESOLVED",
+      "H3Provider": "UNRESOLVED",
+      "H4Sequential": "UNRESOLVED"
+    },
+    "r1ArchitectureGap": "PROVEN",
+    "r1MaterialRecoveryOn004Canary": "NOT_TESTED_BY_OUTCOME"
+  },
+  "final": {
+    "spanLaneStatus": "complete",
+    "selected": 160,
+    "spanBatches": 21,
+    "spanUniqueBlocks": 84,
+    "spanResolved": 81,
+    "spanNull": 3,
+    "spanRoleCohortConsistency": "FAIL",
+    "productionCodeChanged": false,
+    "remediationPerformed": false
+  }
+}
