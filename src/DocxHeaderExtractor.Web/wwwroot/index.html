@@ -404,7 +404,7 @@
 
     <div class="panel" id="workCard">
       <h2>Automatic Harness execution <span class="chip acc">Intent → Plan → Tool → Validator → Source</span></h2>
-      <div class="harness-heading"><strong>HARNESS EXECUTION</strong><span class="note">Intent â†’ Plan â†’ Capabilities â†’ Policy â†’ Stages</span></div>
+      <div class="harness-heading"><strong>HARNESS EXECUTION</strong><span class="note">Intent -> Plan -> Capabilities -> Policy -> Stages</span></div>
       <div class="workgrid">
         <div class="workitem"><span class="worklabel">Trạng thái</span><span id="workState" class="workvalue">Chờ tài liệu</span></div>
         <div class="workitem"><span class="worklabel">Tài liệu</span><span id="workFile" class="workvalue">Chưa chọn file</span></div>
@@ -412,7 +412,7 @@
         <div class="workitem"><span class="worklabel">Context / batch</span><span id="workConfig" class="workvalue">—</span></div>
       </div>
       <ol class="stages" id="stages"></ol>
-      <div class="harness-detail" id="harnessDetail"><h3>Harness trace</h3><p class="note" style="margin:0">Chá»n má»™t stage Ä‘á»ƒ xem contract vÃ  event thá»±c táº¿.</p></div>
+      <div class="harness-detail" id="harnessDetail"><h3>Harness trace</h3><p class="note" style="margin:0">Select a stage to inspect its contract and emitted events.</p></div>
       <div class="spacer"></div>
       <p id="workHint">Chọn tài liệu để bắt đầu một lượt phân tích có thể theo dõi.</p>
     </div>
@@ -423,7 +423,7 @@
       <div class="devbar"><span id="devDot" class="devdot"></span><span id="devState">Đang chờ</span><span id="devElapsed">0 s</span></div>
       <p id="devMeta">Chưa có lượt xử lý.</p>
       <div class="log-tabs" role="tablist" aria-label="Log filter">
-        <button class="secondary active" data-log-tab="all" role="tab">Táº¥t cáº£</button>
+        <button class="secondary active" data-log-tab="all" role="tab">All</button>
         <button class="secondary" data-log-tab="agent" role="tab">Agent</button>
         <button class="secondary" data-log-tab="raw" role="tab">LLM raw</button>
       </div>
@@ -671,17 +671,17 @@ function handleStreamEvent(evt) {
   } else if (evt.type === 'error') {
     serverError = true;
     $('devDot').className = 'devdot error';
-    $('devState').textContent = 'Lá»—i xá»­ lÃ½';
-    $('workState').textContent = 'Lá»—i';
+    $('devState').textContent = 'Processing error';
+    $('workState').textContent = 'Error';
     $('workHint').textContent = evt.message;
     showError(evt.message);
   } else if (evt.type === 'result') {
     $('devDot').className = 'devdot done';
-    $('devState').textContent = 'ÄÃ£ hoÃ n táº¥t · ' + devLogLines + ' sá»± kiá»‡n';
+    $('devState').textContent = 'Completed · ' + devLogLines + ' events';
     renderStages(true);
     renderHarnessStages();
-    $('workState').textContent = 'HoÃ n táº¥t';
-    $('workHint').textContent = 'ÄÃ£ qua pipeline; xem validated result vÃ  source evidence bÃªn dÆ°á»›i.';
+    $('workState').textContent = 'Completed';
+    $('workHint').textContent = 'Pipeline complete; inspect the validated result and source evidence below.';
     outline = evt.outline;
     if (evt.agent) {
       const event = { category: 'agent', stage: 'run', kind: 'Completed', message: evt.agent.message || 'Run completed.', timestamp: Date.now(), order: logEvents.length };
@@ -1252,7 +1252,7 @@ $('run').onclick = async () => {
   harnessStagePinned = false;
   rawDataVisible = $('showRaw').checked;
   $('log').textContent = '';
-  $('harnessDetail').innerHTML = '<h3>Harness trace</h3><p class="note" style="margin:0">Chá»n má»™t stage Ä‘á»ƒ xem contract vÃ  event thá»±c táº¿.</p>';
+  $('harnessDetail').innerHTML = '<h3>Harness trace</h3><p class="note" style="margin:0">Select a stage to inspect its contract and emitted events.</p>';
   devStarted = Date.now(); devLogLines = 0;
   stageIndex = 0; renderStages();
   $('devDot').className = 'devdot live';
@@ -1386,7 +1386,7 @@ function updateDevState(message) {
 function renderStages(allDone = false) { renderHarnessStages(); }
 function updateDevState(message) {
   const latest = harnessEvents[harnessEvents.length - 1];
-  $('devState').textContent = latest ? `${latest.stage} · ${latest.kind}` : 'Äang xá»­ lÃ½â€¦';
+  $('devState').textContent = latest ? `${latest.stage} · ${latest.kind}` : 'Processing...';
 }
 function handle(evt) { handleStreamEvent(evt); }
 renderHarnessStages();
