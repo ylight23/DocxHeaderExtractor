@@ -10,6 +10,8 @@ using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Learning;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.Application.Runtime;
+using DocxHeaderExtractor.Infrastructure.Runtime;
 using DocxHeaderExtractor.Web;
 using DocumentFormat.OpenXml.Packaging;
 using Microsoft.AspNetCore.Http.Features;
@@ -35,6 +37,8 @@ builder.Services.AddSingleton(_ => new CorrectionMemory(CorrectionMemory.Default
 builder.Services.AddSingleton<DocumentAgentHarnessFactory>();
 builder.Services.AddSingleton<LmStudioModelDiscovery>();
 builder.Services.AddSingleton<WritebackStore>();
+builder.Services.AddSingleton<ITaskRunStore>(_ => new JsonFileTaskRunStore(RuntimeStatePaths.RunDirectory));
+builder.Services.AddSingleton<ITaskTelemetrySink>(_ => new JsonLinesTaskTelemetrySink(RuntimeStatePaths.TelemetryPath));
 builder.Services.AddHttpClient("OpenRouter", client =>
 {
     client.Timeout = TimeSpan.FromMinutes(5);

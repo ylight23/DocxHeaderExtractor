@@ -40,6 +40,12 @@ builder.Logging.ClearProviders();
 builder.Logging.AddConsole(options => options.LogToStandardErrorThreshold = LogLevel.Trace);
 
 builder.Services.AddSingleton(DhxMcpOptions.FromEnvironment());
+builder.Services.AddSingleton<DocxHeaderExtractor.Application.Runtime.ITaskRunStore>(_ =>
+    new DocxHeaderExtractor.Infrastructure.Runtime.JsonFileTaskRunStore(
+        DocxHeaderExtractor.Infrastructure.Runtime.RuntimeStatePaths.RunDirectory));
+builder.Services.AddSingleton<DocxHeaderExtractor.Application.Runtime.ITaskTelemetrySink>(_ =>
+    new DocxHeaderExtractor.Infrastructure.Runtime.JsonLinesTaskTelemetrySink(
+        DocxHeaderExtractor.Infrastructure.Runtime.RuntimeStatePaths.TelemetryPath));
 builder.Services.AddSingleton<McpPathPolicy>();
 builder.Services.AddSingleton<McpJobStore>();
 builder.Services.AddSingleton<DocumentAgentHarnessFactory>();

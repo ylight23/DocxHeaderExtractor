@@ -1,5 +1,8 @@
 using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Application.Tasks;
+using DocxHeaderExtractor.Application.Runtime;
+using DocxHeaderExtractor.Infrastructure.Runtime;
+using System.Text.Json;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -164,5 +167,41 @@ public sealed class AutoHarnessArchitectureContractTests
         Assert.DoesNotContain("sk-test", redacted);
         Assert.DoesNotContain("xyz", redacted);
         Assert.Contains("[REDACTED]", redacted);
+    }
+
+    [Fact]
+    public async Task Infrastructure_runtime_adapters_round_trip_runs_and_redact_telemetry()
+    {
+        var directory = Path.Combine(Path.GetTempPath(), "dhx-phase1-runtime-" + Guid.NewGuid().ToString("N"));
+        var telemetryPath = Path.Combine(directory, "telemetry.jsonl");
+        try
+        {
+            var run = new PersistedTaskRun(
+                new RunStorageKey("run/with\u005cpath"), "plan-1", PersistedRunLifecycle.Completed,
+                TaskRunStatus.Completed, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow,
+                new TaskProvenance("sha256:source", "extract", "local", "model", false, "ValidatedStructure"));
+
+            await using (var store = new JsonFileTaskRunStore(directory))
+            {
+                await store.SaveAsync(run);
+                var loaded = await store.LoadAsync(run.Key);
+                Assert.Equal(run, loaded);
+            }
+
+            await using (var sink = new JsonLinesTaskTelemetrySink(telemetryPath))
+            {
+                await sink.RecordAsync(new TaskTelemetryEvent(
+                    run.Key.RunId, "provider", "completed", DateTimeOffset.UtcNow,
+                    new Dictionary<string, string> { ["message"] = "api_key=secret-value" }));
+            }
+
+            using var json = JsonDocument.Parse(await File.ReadAllTextAsync(telemetryPath));
+            Assert.Equal("api_key=[REDACTED]", json.RootElement.GetProperty("dimensions")
+                .GetProperty("message").GetString());
+        }
+        finally
+        {
+            if (Directory.Exists(directory)) Directory.Delete(directory, recursive: true);
+        }
     }
 }

@@ -46,17 +46,18 @@ tuning, or benchmark tuning.
 - [ ] WS9 — Generic source-grounded execution and non-authoritative projection/output negotiation.
 - [ ] WS10 — Persistence ports, lifecycle/versioning, provenance, secret redaction, telemetry seam.
   Progress: Application now defines versioned run storage identity, persisted lifecycle projection,
-  `ITaskRunStore`, `ITaskTelemetrySink`, and conservative `ISecretRedactor` contracts. Host wiring,
-  durable implementation, and end-to-end lifecycle persistence remain open. Evidence: commit
-  `1a40c24`, `src/DocxHeaderExtractor.Application/Runtime/RuntimeContracts.cs`, and contract tests.
+  `ITaskRunStore`, `ITaskTelemetrySink`, and conservative `ISecretRedactor` contracts. Infrastructure
+  now provides atomic JSON run persistence and redacted JSONL telemetry, and Web/MCP compose them
+  from `DHX_RUNTIME_STATE_DIR`; end-to-end lifecycle callers remain open. Evidence: commit
+  `1a40c24`, `src/DocxHeaderExtractor.Application/Runtime/RuntimeContracts.cs`,
+  `src/DocxHeaderExtractor.Infrastructure/Runtime/`, and contract tests.
 - [ ] WS11 — Web/CLI/MCP composition-root cutover with zero normal bypasses.
 - [ ] WS12 — Central build/package rules and architecture enforcement.
   Progress: package versions are centralized in `Directory.Packages.props`; the repeatable audit is
-  `scripts/architecture-phase1-audit.ps1`. Current audit is BLOCKED only on provider implementations
-  still in Core and the CLI→Eval project reference; heading provider implementations and prompt/cache
-  code now live in Infrastructure, with Core consuming `IHeaderClassifierFactory`. Evidence:
-  provider seam commits `7a0e651` and `cb113e9`, plus the audit script. The audit passes provider
-  isolation and remains blocked only on CLI/Eval.
+  `scripts/architecture-phase1-audit.ps1`. The audit passes provider isolation and remains blocked
+  on the CLI→Eval project reference, which is retained for explicit evaluation commands and requires
+  a separate host cutover. Evidence: provider seam commits `7a0e651` and `cb113e9`, runtime adapter
+  commit after this checkpoint, plus the audit script.
 - [ ] WS13 — Final reachability/dead-code/root-hygiene audit and only justified deletions.
 - [ ] WS14 — Extension contract proof for capability, concept/schema, provider, source, and task.
 - [ ] WS15 — Phase 2 test seams prepared without running quality/provider tests.

@@ -66,7 +66,8 @@ ownership and Eval isolation remain open Phase 1 work.
 - semantic definitions: provider-independent concept/schema registry in Application; runtime
   registrations and composition-root consumers remain open
 - run lifecycle: versioned persistence/telemetry ports and secret redaction contract in Application;
-  durable host implementation remains open
+  Web and MCP compose `JsonFileTaskRunStore` and `JsonLinesTaskTelemetrySink` from the configurable
+  `DHX_RUNTIME_STATE_DIR` boundary; provider payloads are not part of these artifacts
 - MCP job state: temporary `McpJobStore` snapshots owned by the MCP host
 - generated/writeback files: request-owned temp directories and explicit writeback adapters
 - Accuracy-99 review/gold: evaluation-owned and excluded from this cutover
