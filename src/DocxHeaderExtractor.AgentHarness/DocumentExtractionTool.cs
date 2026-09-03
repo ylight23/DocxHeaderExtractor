@@ -31,22 +31,33 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     public PipelineDocumentExtractionTool(PipelineOptions options)
     {
         ArgumentNullException.ThrowIfNull(options);
+        var factory = new HeaderClassifierFactory();
         _processing = new DocumentProcessingService(
-            new AuthorityExtractionPipeline(options, new HeaderClassifierFactory()));
-        Descriptor = Describe(options);
+            new AuthorityExtractionPipeline(options, factory));
+        Descriptor = Describe(options, factory.SendsDataExternally);
+    }
+
+    public PipelineDocumentExtractionTool(PipelineOptions options, IHeaderClassifierFactory factory)
+    {
+        ArgumentNullException.ThrowIfNull(options);
+        ArgumentNullException.ThrowIfNull(factory);
+        _processing = new DocumentProcessingService(new AuthorityExtractionPipeline(options, factory));
+        Descriptor = Describe(options, factory.SendsDataExternally);
     }
 
     public PipelineDocumentExtractionTool(
         PipelineOptions options,
         IHeaderClassifier classifier,
-        bool ownsClassifier = false)
+        bool ownsClassifier = false,
+        bool sendsDataExternally = false)
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(classifier);
-        _processing = new DocumentProcessingService(new AuthorityExtractionPipeline(options, classifier));
+        _processing = new DocumentProcessingService(
+            new AuthorityExtractionPipeline(options, classifier, sendsDataExternally));
         _classifier = classifier;
         _ownsClassifier = ownsClassifier;
-        Descriptor = Describe(options);
+        Descriptor = Describe(options, sendsDataExternally);
     }
 
     public CapabilityDescriptor Descriptor { get; }
@@ -83,14 +94,13 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         }
     }
 
-    private static CapabilityDescriptor Describe(PipelineOptions options)
+    private static CapabilityDescriptor Describe(PipelineOptions options, bool sendsDataExternally)
     {
         // LM Studio bị khóa vào loopback nên vẫn là local processing. OpenRouter (Internet) và
         // SGLang/vLLM (gateway LAN, không loopback) đều chuyển nội dung ra khỏi tiến trình này và
         // cần consent theo từng run — phải khớp với contract provenance của authority pipeline,
         // nếu không RunProvenanceValidator sẽ chặn với provenance_contradicts_descriptor.
-        var remote = !options.DisableLlm &&
-            options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang;
+        var remote = !options.DisableLlm && sendsDataExternally;
         // Pipeline ghi document view ra đĩa khi DumpXmlPath được đặt — đường ghi này không đi qua
         // IDocumentActionTool nên WritebackTargetGuardrail không thấy. Khai ra cả cờ lẫn đường dẫn
         // để ToolSideEffectPathGuardrail soi được, thay vì để harness hứa "chỉ đọc".

@@ -31,20 +31,17 @@ catch (Exception ex)
     Console.Error.WriteLine("Chạy `dhx help` để xem hướng dẫn.");
     return 2;
 }
-
 if (options.ShowHelp)
 {
     Console.WriteLine(CommandLineOptions.HelpText);
     return 0;
 }
-
 // `sample`/`bench`/`eval` có đích mặc định, `info` tự dò mô hình – không cần đầu vào.
 if (options.Inputs.Count == 0 && options.Command is not ("sample" or "info" or "bench" or "eval"))
 {
     Console.Error.WriteLine("Chưa chỉ định file đầu vào.");
     return 2;
 }
-
 if (!options.Quiet) options.Pipeline.Log = m => Console.Error.WriteLine($"  {m}");
 
 using var cts = new CancellationTokenSource();
@@ -104,11 +101,11 @@ catch (Exception ex)
         Console.Error.WriteLine(ex);
     return 1;
 }
-
+// Keep the top-level CLI source terminated by a single newline.
 static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken ct)
 {
-    if (!o.Pipeline.DisableLlm && o.Pipeline.Backend == InferenceBackend.Local &&
-        string.IsNullOrWhiteSpace(o.Pipeline.LocalModel.ModelPath))
+    if (!o.Pipeline.DisableLlm && o.Provider.Backend == InferenceBackend.Local &&
+        string.IsNullOrWhiteSpace(o.Provider.LocalModel.ModelPath))
     {
         var found = ModelLocator.Locate();
         if (found is null)
@@ -121,7 +118,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
                 """);
             return 2;
         }
-        o.Pipeline.LocalModel.ModelPath = found;
+        o.Provider.LocalModel.ModelPath = found;
     }
 
     var files = ExpandInputs(o.Inputs);
@@ -136,7 +133,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
         return 2;
     }
 
-    using var tool = new PipelineDocumentExtractionTool(o.Pipeline);
+    using var tool = new PipelineDocumentExtractionTool(o.Pipeline, new HeaderClassifierFactory(o.Provider));
     // Normal extraction always writes through the canonical ProductOutput authority. Legacy
     // OutlineWriteback remains available only from explicit replay/evaluation commands.
     using IDocumentActionTool? actionTool = o.WritebackPath is null
@@ -220,10 +217,10 @@ static async Task DumpChunksAsync(DocxPolicyState policyState, CommandLineOption
     // này không suy luận, chỉ cần bộ đếm token.
     LlamaHeaderExtractor? local = null;
     Func<string, int>? countTokens = null;
-    if (!string.IsNullOrWhiteSpace(o.Pipeline.LocalModel.ModelPath))
+    if (!string.IsNullOrWhiteSpace(o.Provider.LocalModel.ModelPath))
     {
-        o.Pipeline.PrepareLocalModelProfile();
-        local = await LlamaHeaderExtractor.LoadAsync(o.Pipeline.LocalModel, ct);
+        o.Provider.LocalModel.ApplyRecommendedModelProfile(o.Pipeline.Chunking);
+        local = await LlamaHeaderExtractor.LoadAsync(o.Provider.LocalModel, ct);
         countTokens = local.CountTokens;
     }
 
@@ -282,7 +279,6 @@ static async Task DumpChunksAsync(DocxPolicyState policyState, CommandLineOption
         $"lệch {SlimXmlChunker.CharsPerToken / ((double)chars / tokens):0.##} lần)");
     }
 }
-
 static async Task<int> RunDumpXmlAsync(CommandLineOptions o, CancellationToken ct)
 {
     foreach (var file in ExpandInputs(o.Inputs))
@@ -353,8 +349,8 @@ static int RunBench(CommandLineOptions o)
 
 static async Task<int> RunEvalAsync(CommandLineOptions o, CancellationToken ct)
 {
-    if (!o.Pipeline.DisableLlm && o.Pipeline.Backend == InferenceBackend.Local &&
-        string.IsNullOrWhiteSpace(o.Pipeline.LocalModel.ModelPath))
+    if (!o.Pipeline.DisableLlm && o.Provider.Backend == InferenceBackend.Local &&
+        string.IsNullOrWhiteSpace(o.Provider.LocalModel.ModelPath))
     {
         var found = ModelLocator.Locate();
         if (found is null)
@@ -362,17 +358,17 @@ static async Task<int> RunEvalAsync(CommandLineOptions o, CancellationToken ct)
             Console.Error.WriteLine("Chưa có mô hình. Dùng --no-llm để chấm riêng tầng luật OpenXML.");
             return 2;
         }
-        o.Pipeline.LocalModel.ModelPath = found;
+        o.Provider.LocalModel.ModelPath = found;
     }
 
     var dir = Path.GetFullPath(o.Inputs.FirstOrDefault() ?? "bench");
-    return await EvalRunner.RunAsync(dir, o.Pipeline, o.Quiet, ct, o.CalibrationOutputPath);
+    return await EvalRunner.RunAsync(dir, o.Pipeline, o.Provider, o.Quiet, ct, o.CalibrationOutputPath);
 }
 
 static async Task<int> RunReviewAsync(CommandLineOptions o, CancellationToken ct)
 {
-    if (!o.Pipeline.DisableLlm && o.Pipeline.Backend == InferenceBackend.Local &&
-        string.IsNullOrWhiteSpace(o.Pipeline.LocalModel.ModelPath))
+    if (!o.Pipeline.DisableLlm && o.Provider.Backend == InferenceBackend.Local &&
+        string.IsNullOrWhiteSpace(o.Provider.LocalModel.ModelPath))
     {
         var found = ModelLocator.Locate();
         if (found is null)
@@ -380,7 +376,7 @@ static async Task<int> RunReviewAsync(CommandLineOptions o, CancellationToken ct
             Console.Error.WriteLine("Chưa có mô hình. Dùng --no-llm hoặc chỉ định --model để tạo review.");
             return 2;
         }
-        o.Pipeline.LocalModel.ModelPath = found;
+        o.Provider.LocalModel.ModelPath = found;
     }
 
     var files = ExpandInputs(o.Inputs);
@@ -395,7 +391,7 @@ static async Task<int> RunReviewAsync(CommandLineOptions o, CancellationToken ct
         return 2;
     }
 
-    using var tool = new PipelineDocumentExtractionTool(o.Pipeline);
+    using var tool = new PipelineDocumentExtractionTool(o.Pipeline, new HeaderClassifierFactory(o.Provider));
     var harness = CliHarnessComposition.Create(files, tool);
     foreach (var file in files)
     {
@@ -1062,10 +1058,10 @@ static async Task<int> RunPdfVisualProbeAsync(CommandLineOptions o, Cancellation
     using IPdfVisualQuestion visual = !string.IsNullOrWhiteSpace(o.VlmModelPath)
         ? await VlmImageQuestion.LoadAsync(o.VlmModelPath!, o.VlmMmprojPath!, o.VlmContextSize, o.VlmGpuLayerCount, ct)
         : o.UseNvidiaNim
-            ? new NvidiaNimVisualQuestion(o.Pipeline.Remote.Endpoint, o.Pipeline.Remote.ApiKey, o.Pipeline.Remote.Model,
-                o.Pipeline.Remote.RequestTimeoutSeconds, o.Pipeline.Remote.TransientRequestRetries)
-            : o.Pipeline.Backend == InferenceBackend.OpenRouter
-                ? new OpenRouterVisualQuestion(o.Pipeline.Remote.Endpoint, o.Pipeline.Remote.ApiKey, o.Pipeline.Remote.Model)
+            ? new NvidiaNimVisualQuestion(o.Provider.Remote.Endpoint, o.Provider.Remote.ApiKey, o.Provider.Remote.Model,
+                o.Provider.Remote.RequestTimeoutSeconds, o.Provider.Remote.TransientRequestRetries)
+            : o.Provider.Backend == InferenceBackend.OpenRouter
+                ? new OpenRouterVisualQuestion(o.Provider.Remote.Endpoint, o.Provider.Remote.ApiKey, o.Provider.Remote.Model)
             : throw new ArgumentException("pdf-visual-probe cần --nvidia-nim hoặc --vlm-model/--vlm-mmproj.");
 
     var result = await PdfVisualTextRecovery.ProbeAsync(pdf, policyState, visual, o.PdfVisualProbeIndex, o.VlmDpi, ct);
@@ -1357,10 +1353,10 @@ static async Task<int> RunPdfStageEvalAsync(CommandLineOptions o, CancellationTo
         : !string.IsNullOrWhiteSpace(o.VlmModelPath)
             ? await VlmImageQuestion.LoadAsync(o.VlmModelPath!, o.VlmMmprojPath!, o.VlmContextSize, o.VlmGpuLayerCount, ct)
         : o.UseNvidiaNim
-            ? new NvidiaNimVisualQuestion(o.Pipeline.Remote.Endpoint, o.Pipeline.Remote.ApiKey, o.Pipeline.Remote.Model,
-                o.Pipeline.Remote.RequestTimeoutSeconds, o.Pipeline.Remote.TransientRequestRetries)
-        : o.Pipeline.Backend == InferenceBackend.OpenRouter
-            ? new OpenRouterVisualQuestion(o.Pipeline.Remote.Endpoint, o.Pipeline.Remote.ApiKey, o.Pipeline.Remote.Model)
+            ? new NvidiaNimVisualQuestion(o.Provider.Remote.Endpoint, o.Provider.Remote.ApiKey, o.Provider.Remote.Model,
+                o.Provider.Remote.RequestTimeoutSeconds, o.Provider.Remote.TransientRequestRetries)
+        : o.Provider.Backend == InferenceBackend.OpenRouter
+            ? new OpenRouterVisualQuestion(o.Provider.Remote.Endpoint, o.Provider.Remote.ApiKey, o.Provider.Remote.Model)
             : null;
     var rows = new List<object>();
     var hasPartialTimeout = false;
@@ -1747,13 +1743,13 @@ static async Task<int> RunPdfHierarchyFactsAsync(CommandLineOptions o, Cancellat
             BuildProvenance.ResolveCodeRevision(
                 System.Reflection.Assembly.GetEntryAssembly() ?? typeof(CommandLineOptions).Assembly,
                 Environment.GetEnvironmentVariable("DHX_CODE_REVISION")),
-            o.Pipeline.Backend.ToString(),
-            o.Pipeline.Backend switch
+            o.Provider.Backend.ToString(),
+            o.Provider.Backend switch
             {
-                InferenceBackend.OpenRouter => o.Pipeline.Remote.Model,
-                InferenceBackend.Sglang => o.Pipeline.Remote.Model,
-                InferenceBackend.LmStudio => o.Pipeline.Remote.Model,
-                _ => o.Pipeline.LocalModel.ModelPath,
+                InferenceBackend.OpenRouter => o.Provider.Remote.Model,
+                InferenceBackend.Sglang => o.Provider.Remote.Model,
+                InferenceBackend.LmStudio => o.Provider.Remote.Model,
+                _ => o.Provider.LocalModel.ModelPath,
             },
             PdfStagePromptProfile.SemanticPromptSha256,
             HashText(routeConfig)),
@@ -2086,7 +2082,7 @@ static async Task<int> RunPdfSemanticRecoveryEvalAsync(CommandLineOptions o, Can
             file = Path.GetFileName(file),
             sourceDocumentSha256 = FileSha256(file),
             usesGold = false,
-            backend = o.Pipeline.Backend.ToString(),
+            backend = o.Provider.Backend.ToString(),
             semanticRecoveryProfile = recoveryOptions.Name,
             report,
         });
@@ -2464,25 +2460,25 @@ static async Task<int> RunPdfClustersAsync(CommandLineOptions o, CancellationTok
 
 static async Task<IHeaderClassifier> CreateClassifierAsync(CommandLineOptions o, CancellationToken ct)
 {
-    switch (o.Pipeline.Backend)
+    switch (o.Provider.Backend)
     {
         case InferenceBackend.OpenRouter:
-            return OpenRouterHeaderExtractor.CreateOwned(o.Pipeline.Remote);
+            return OpenRouterHeaderExtractor.CreateOwned(o.Provider.Remote);
         case InferenceBackend.LmStudio:
-            return LmStudioHeaderExtractor.CreateOwned(o.Pipeline.Remote);
+            return LmStudioHeaderExtractor.CreateOwned(o.Provider.Remote);
         case InferenceBackend.Sglang:
-            return SglangHeaderExtractor.CreateOwned(o.Pipeline.Remote);
+            return SglangHeaderExtractor.CreateOwned(o.Provider.Remote);
         default:
-            if (string.IsNullOrWhiteSpace(o.Pipeline.LocalModel.ModelPath))
+            if (string.IsNullOrWhiteSpace(o.Provider.LocalModel.ModelPath))
             {
                 var found = ModelLocator.Locate();
                 if (found is null)
                     throw new InvalidOperationException(
                         "Chưa có mô hình cho pdf-clusters analyst. Dùng --no-llm để chỉ dump cluster samples, hoặc chỉ định --model/--lmstudio/--openrouter.");
-                o.Pipeline.LocalModel.ModelPath = found;
+                o.Provider.LocalModel.ModelPath = found;
             }
-            o.Pipeline.PrepareLocalModelProfile();
-            return await LlamaHeaderExtractor.LoadAsync(o.Pipeline.LocalModel, ct);
+            o.Provider.LocalModel.ApplyRecommendedModelProfile(o.Pipeline.Chunking);
+            return await LlamaHeaderExtractor.LoadAsync(o.Provider.LocalModel, ct);
     }
 }
 
@@ -2563,7 +2559,7 @@ static List<string> ExpandCalibrationInputs(IEnumerable<string> inputs)
 
 static DocumentAgentRequest AgentRequest(string file, CommandLineOptions o) =>
     new(file, AllowExternalDataTransfer:
-        !o.Pipeline.DisableLlm && o.Pipeline.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang)
+        !o.Pipeline.DisableLlm && o.Provider.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang)
     {
         WritebackTargetPath = o.WritebackPath,
         AllowWritebackOverwrite = o.WritebackOverwrite,
@@ -2583,7 +2579,7 @@ static int RunSample(CommandLineOptions o)
 
 static int RunModelInfo(CommandLineOptions o)
 {
-    var path = o.Inputs.FirstOrDefault() ?? o.Pipeline.LocalModel.ModelPath;
+    var path = o.Inputs.FirstOrDefault() ?? o.Provider.LocalModel.ModelPath;
     if (string.IsNullOrWhiteSpace(path)) path = ModelLocator.Locate() ?? "";
     if (!File.Exists(path))
     {
@@ -2591,7 +2587,7 @@ static int RunModelInfo(CommandLineOptions o)
         return 2;
     }
 
-    DocxHeaderExtractor.Infrastructure.AI.LlamaHeaderExtractor.ConfigureNativeLogging(o.Pipeline.LocalModel.VerboseNativeLog);
+    DocxHeaderExtractor.Infrastructure.AI.LlamaHeaderExtractor.ConfigureNativeLogging(o.Provider.LocalModel.VerboseNativeLog);
 
     var fi = new FileInfo(path);
     Console.WriteLine($"File   : {fi.FullName}");
@@ -2728,3 +2724,4 @@ static class ModelLocator
         yield return Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "models"));
     }
 }
+// EOF

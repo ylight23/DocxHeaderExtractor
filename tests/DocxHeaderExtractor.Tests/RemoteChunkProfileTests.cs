@@ -28,7 +28,7 @@ public sealed class RemoteChunkProfileTests
 
         Assert.Equal(5000, o.Pipeline.Chunking.TokenBudget);
         // Không chạm vào context của backend cục bộ: nó không tham gia lượt chạy này.
-        Assert.Equal(LocalDefaultContext, o.Pipeline.LocalModel.ContextSize);
+        Assert.Equal(LocalDefaultContext, o.Provider.LocalModel.ContextSize);
     }
 
     [Fact]
@@ -36,7 +36,7 @@ public sealed class RemoteChunkProfileTests
     {
         var o = CommandLineOptions.Parse(["a.docx"]);
 
-        Assert.Equal(InferenceBackend.Local, o.Pipeline.Backend);
+        Assert.Equal(InferenceBackend.Local, o.Provider.Backend);
         Assert.Equal(2200, o.Pipeline.Chunking.TokenBudget);
     }
 
@@ -56,7 +56,7 @@ public sealed class RemoteChunkProfileTests
     {
         var o = CommandLineOptions.Parse(["a.docx", "--ctx", "16384", "--lmstudio"]);
 
-        Assert.Equal(16384u, o.Pipeline.LocalModel.ContextSize);
+        Assert.Equal(16384u, o.Provider.LocalModel.ContextSize);
         Assert.Equal(5000, o.Pipeline.Chunking.TokenBudget);
     }
 
@@ -70,10 +70,10 @@ public sealed class RemoteChunkProfileTests
         var o = CommandLineOptions.Parse(["a.docx", "-m", "models/Qwen2.5-7B-Instruct-Q4_K_M.gguf"]);
         Assert.Equal(2200, o.Pipeline.Chunking.TokenBudget);
 
-        o.Pipeline.PrepareLocalModelProfile();
+        o.Provider.LocalModel.ApplyRecommendedModelProfile(o.Pipeline.Chunking);
 
         Assert.Equal(5000, o.Pipeline.Chunking.TokenBudget);
-        Assert.Equal(8192u, o.Pipeline.LocalModel.ContextSize);
+        Assert.Equal(8192u, o.Provider.LocalModel.ContextSize);
     }
 
     [Fact]
@@ -81,11 +81,9 @@ public sealed class RemoteChunkProfileTests
     {
         var o = CommandLineOptions.Parse(["a.docx", "--lmstudio", "-m", "models/Qwen2.5-7B-Instruct-Q4_K_M.gguf"]);
 
-        o.Pipeline.PrepareLocalModelProfile();
-
         // Ngân sách RPC do nhánh backend quyết, không bị profile của file .gguf trên đĩa chen vào.
         Assert.Equal(5000, o.Pipeline.Chunking.TokenBudget);
-        Assert.Equal(LocalDefaultContext, o.Pipeline.LocalModel.ContextSize);
+        Assert.Equal(LocalDefaultContext, o.Provider.LocalModel.ContextSize);
     }
 
     [Theory]
@@ -123,7 +121,7 @@ public sealed class RemoteChunkProfileTests
     {
         // Chốt bằng phản chiếu: chừng nào LocalModelOptions còn ba trường này thì vẫn có hai nguồn sự
         // thật cho cùng một quyết định, và một trong hai sẽ lặng lẽ đi lệch.
-        var llama = typeof(DocxHeaderExtractor.DocumentProcessing.Inference.LocalModelOptions);
+        var llama = typeof(DocxHeaderExtractor.Infrastructure.AI.LocalModelOptions);
         Assert.Null(llama.GetProperty("MaxCandidatesPerChunk"));
         Assert.Null(llama.GetProperty("ChunkOverlap"));
         Assert.Null(llama.GetMethod("UseRemoteChunkProfile"));

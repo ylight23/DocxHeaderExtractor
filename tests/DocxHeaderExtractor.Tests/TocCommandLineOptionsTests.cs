@@ -165,9 +165,9 @@ public sealed class TocCommandLineOptionsTests
             Environment.SetEnvironmentVariable("NVIDIA_API_KEY", "test-token");
             var o = CommandLineOptions.Parse(["extract", "file.docx", "--nvidia"]);
 
-            Assert.Equal(InferenceBackend.Sglang, o.Pipeline.Backend);
-            Assert.Equal("meta/llama-3.2-90b-vision-instruct", o.Pipeline.Remote.Model);
-            Assert.Equal("https://integrate.api.nvidia.com/v1/chat/completions", o.Pipeline.Remote.Endpoint.ToString());
+            Assert.Equal(InferenceBackend.Sglang, o.Provider.Backend);
+            Assert.Equal("meta/llama-3.2-90b-vision-instruct", o.Provider.Remote.Model);
+            Assert.Equal("https://integrate.api.nvidia.com/v1/chat/completions", o.Provider.Remote.Endpoint.ToString());
         }
         finally
         {

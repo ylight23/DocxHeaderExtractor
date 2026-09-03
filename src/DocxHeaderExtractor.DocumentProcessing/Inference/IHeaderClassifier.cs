@@ -2,7 +2,7 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Inference;
 
-/// <summary>Backend suy luận dùng chung cho GGUF local, LM Studio local RPC và OpenRouter.</summary>
+/// <summary>Provider-neutral classifier contract consumed by document processing.</summary>
 public interface IHeaderClassifier : IDisposable
 {
     string ModelName { get; }
@@ -47,5 +47,7 @@ public interface IHeaderClassifier : IDisposable
 /// </summary>
 public interface IHeaderClassifierFactory
 {
+    bool SendsDataExternally => false;
+
     Task<IHeaderClassifier> CreateAsync(PipelineOptions options, CancellationToken ct = default);
 }

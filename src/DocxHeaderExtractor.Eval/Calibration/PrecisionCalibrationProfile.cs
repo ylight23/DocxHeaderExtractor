@@ -4,6 +4,7 @@ using System.Globalization;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Eval;
 
@@ -75,8 +76,10 @@ public sealed class PrecisionCalibrationProfile
     /// nói ra điều đó thay vì để tài liệu nhắc suông.
     /// </para>
     /// </summary>
-    public static string ConfigurationFor(PipelineOptions o) => string.Join('|',
-        $"backend={o.Backend}",
+    public static string ConfigurationFor(PipelineOptions o) => ConfigurationFor(o, new InferenceProviderSelection());
+
+    public static string ConfigurationFor(PipelineOptions o, InferenceProviderSelection provider) => string.Join('|',
+        $"backend={provider.Backend}",
         $"twoPass={o.TwoPass}",
         $"rollingOutline={o.RollingOutline}",
         $"highPrecision={o.HighPrecisionMode}",
@@ -96,14 +99,14 @@ public sealed class PrecisionCalibrationProfile
         $"useLexical={o.Extraction.UseLexicalRules}",
         $"includeTables={o.Extraction.IncludeTables}",
         $"includeContext={o.Extraction.IncludeFollowingContext}",
-        $"ctx={o.LocalModel.ContextSize}",
+        $"ctx={provider.LocalModel.ContextSize}",
         $"chunkTokens={o.Chunking.TokenBudget}",
         $"chunkCandidates={o.Chunking.MaxCandidatesPerChunk}",
         $"overlap={o.Chunking.Overlap}",
-        $"grammar={o.LocalModel.GrammarMode}",
-        $"temperature={o.LocalModel.Temperature.ToString("R", CultureInfo.InvariantCulture)}",
-        $"seed={o.LocalModel.Seed}",
-        $"gpuLayers={o.LocalModel.GpuLayerCount}",
+        $"grammar={provider.LocalModel.GrammarMode}",
+        $"temperature={provider.LocalModel.Temperature.ToString("R", CultureInfo.InvariantCulture)}",
+        $"seed={provider.LocalModel.Seed}",
+        $"gpuLayers={provider.LocalModel.GpuLayerCount}",
         $"threshold={o.Extraction.CandidateThreshold.ToString("R", CultureInfo.InvariantCulture)}",
         $"criticWeakThreshold={o.ModelCriticWeakEvidenceThreshold.ToString("R", CultureInfo.InvariantCulture)}",
         $"evidenceTiers={string.Join(";", o.EvidenceConfidenceTiers.Select(x => x.ToString("R", CultureInfo.InvariantCulture)))}",

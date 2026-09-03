@@ -1,30 +1,16 @@
 using DocxHeaderExtractor.DocumentProcessing.Chunking;
-using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
-
-public enum InferenceBackend
-{
-    Local,
-    OpenRouter,
-    LmStudio,
-    Sglang,
-}
 
 public sealed class PipelineOptions
 {
     public ExtractionOptions Extraction { get; set; } = new();
 
     /// <summary>
-    /// Cách cắt khối — thuộc pipeline, không thuộc backend. Xem <see cref="ChunkingOptions"/> để
-    /// biết bốn lỗi đã đo được hồi ba giá trị này còn nằm trong <see cref="LocalModelOptions"/>.
+    /// Cách cắt khối — thuộc pipeline, không thuộc provider/runtime.
     /// </summary>
     public ChunkingOptions Chunking { get; set; } = new();
-
-    public LocalModelOptions LocalModel { get; set; } = new();
-    public RemoteInferenceOptions Remote { get; set; } = RemoteInferenceOptions.FromEnvironment();
-    public InferenceBackend Backend { get; set; }
 
     /// <summary>Bỏ qua LLM, chỉ dùng luật (nhanh, để đối chiếu).</summary>
     public bool DisableLlm { get; set; }
@@ -331,20 +317,4 @@ public sealed class PipelineOptions
     public string? CalibrationProfilePath { get; set; } =
         Environment.GetEnvironmentVariable("DHX_CALIBRATION_PROFILE");
 
-    /// <summary>
-    /// Áp profile của model GGUF lên NGÂN SÁCH THẬT mà pipeline dùng để chia khối, rồi chép sang
-    /// backend cục bộ để nó tự nới context cho vừa.
-    /// <para>
-    /// Phải gọi trước khi chia khối. Bản đầu của refactor tách chunking để
-    /// <c>LlamaHeaderExtractor.LoadAsync</c> tự áp profile lên một <see cref="ChunkingOptions"/>
-    /// TẠM — cú nâng "qwen thì 2200 → 5000" rơi vào vật thể tạm rồi bị vứt, pipeline vẫn chia khối
-    /// bằng 2200. Đo được ngay ở dòng log "ngân sách … token thật/khối": 5000 tụt về 2200.
-    /// </para>
-    /// </summary>
-    public void PrepareLocalModelProfile()
-    {
-        if (DisableLlm || Backend != InferenceBackend.Local) return;
-        if (string.IsNullOrWhiteSpace(LocalModel.ModelPath)) return;
-        LocalModel.ApplyRecommendedModelProfile(Chunking);
-    }
 }

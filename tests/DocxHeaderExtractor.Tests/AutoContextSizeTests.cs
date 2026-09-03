@@ -88,10 +88,11 @@ public class AutoContextSizeTests
     public void Chu_ky_cau_hinh_doc_ctx_tu_LocalModelOptions()
     {
         var o = new DocxHeaderExtractor.DocumentProcessing.Pipeline.PipelineOptions();
-        o.LocalModel.ContextSize = 32768;
+        var provider = new DocxHeaderExtractor.Infrastructure.AI.InferenceProviderSelection();
+        provider.LocalModel.ContextSize = 32768;
 
         Assert.Contains("ctx=32768",
-            DocxHeaderExtractor.Eval.PrecisionCalibrationProfile.ConfigurationFor(o),
+            DocxHeaderExtractor.Eval.PrecisionCalibrationProfile.ConfigurationFor(o, provider),
             StringComparison.Ordinal);
     }
 }

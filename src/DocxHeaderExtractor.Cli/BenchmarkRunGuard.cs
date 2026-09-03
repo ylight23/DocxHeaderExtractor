@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Cli;
 
@@ -120,18 +121,17 @@ public sealed class BenchmarkRunGuard : IDisposable
     }
     private static string Sha256(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
 }
-
 public sealed record BenchmarkRunProfile(IReadOnlyDictionary<string, string> Values)
 {
     public static BenchmarkRunProfile FromOptions(CommandLineOptions options)
     {
-        var backend = options.Pipeline.Backend.ToString();
-        var model = options.Pipeline.Backend switch
+        var backend = options.Provider.Backend.ToString();
+        var model = options.Provider.Backend switch
         {
-            InferenceBackend.OpenRouter => options.Pipeline.Remote.Model,
-            InferenceBackend.Sglang => options.Pipeline.Remote.Model,
-            InferenceBackend.LmStudio => options.Pipeline.Remote.Model,
-            _ => options.Pipeline.LocalModel.ModelPath,
+            InferenceBackend.OpenRouter => options.Provider.Remote.Model,
+            InferenceBackend.Sglang => options.Provider.Remote.Model,
+            InferenceBackend.LmStudio => options.Provider.Remote.Model,
+            _ => options.Provider.LocalModel.ModelPath,
         };
         return new BenchmarkRunProfile(new Dictionary<string, string>(StringComparer.Ordinal)
         {

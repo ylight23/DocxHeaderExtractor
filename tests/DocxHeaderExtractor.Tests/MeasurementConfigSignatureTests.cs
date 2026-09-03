@@ -21,12 +21,14 @@ public sealed class MeasurementConfigSignatureTests
     {
         var a = new PipelineOptions();
         var b = new PipelineOptions();
-        a.LocalModel.GpuLayerCount = 20;
-        b.LocalModel.GpuLayerCount = 99;
+        var aProvider = new DocxHeaderExtractor.Infrastructure.AI.InferenceProviderSelection();
+        var bProvider = new DocxHeaderExtractor.Infrastructure.AI.InferenceProviderSelection();
+        aProvider.LocalModel.GpuLayerCount = 20;
+        bProvider.LocalModel.GpuLayerCount = 99;
 
         Assert.NotEqual(
-            PrecisionCalibrationProfile.ConfigurationFor(a),
-            PrecisionCalibrationProfile.ConfigurationFor(b));
+            PrecisionCalibrationProfile.ConfigurationFor(a, aProvider),
+            PrecisionCalibrationProfile.ConfigurationFor(b, bProvider));
     }
 
     [Fact]
@@ -34,11 +36,13 @@ public sealed class MeasurementConfigSignatureTests
     {
         var a = new PipelineOptions();
         var b = new PipelineOptions();
-        b.LocalModel.Seed = a.LocalModel.Seed + 1;
+        var aProvider = new DocxHeaderExtractor.Infrastructure.AI.InferenceProviderSelection();
+        var bProvider = new DocxHeaderExtractor.Infrastructure.AI.InferenceProviderSelection();
+        bProvider.LocalModel.Seed = aProvider.LocalModel.Seed + 1;
 
         Assert.NotEqual(
-            PrecisionCalibrationProfile.ConfigurationFor(a),
-            PrecisionCalibrationProfile.ConfigurationFor(b));
+            PrecisionCalibrationProfile.ConfigurationFor(a, aProvider),
+            PrecisionCalibrationProfile.ConfigurationFor(b, bProvider));
     }
 
     /// <summary>

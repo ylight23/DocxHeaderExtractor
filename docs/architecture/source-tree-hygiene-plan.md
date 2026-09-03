@@ -1,6 +1,6 @@
 # Source-tree hygiene plan
 
-Status: ACTIVE
+Status: SOURCE_TREE_HYGIENE_COMPLETE
 
 Baseline: `main@5678b454dc28c8bab811c5ce35a789d540fa82be`
 Worktree: `C:\DocxHeaderExtractor-auto-harness-phase2`
@@ -25,8 +25,8 @@ This plan is the first Phase-2 workstream. It normalizes semantic ownership and 
 - [x] WS-H13 — Record product-name scope without renaming the product.
 - [x] WS-H14 — Delete only proven dead files, aliases, registrations, and folders.
 - [x] WS-H15 — Update current architecture comments/docs.
-- [ ] WS-H16 — Add and pass `source-tree-hygiene-gate.ps1`.
-- [ ] WS-H17 — Restore, Release build, relevant tests, Phase-1 gates, and diff check pass.
+- [x] WS-H16 — Add and pass `source-tree-hygiene-gate.ps1`.
+- [x] WS-H17 — Restore, Release build, relevant tests, Phase-1 gates, and diff check pass.
 - [x] WS-H18 — Commit and push Phase-2 cleanup; do not merge `main`.
 
 ## Evidence log
@@ -36,7 +36,12 @@ This plan is the first Phase-2 workstream. It normalizes semantic ownership and 
 | Inventory | `6ef3759` | Complete production `.cs` ledger generated from `src/` excluding build output; `tests/`, `scripts/`, and `docs/` inventory coverage is recorded in the ledger. |
 | Semantic normalization | `6ef3759` | `DocumentProcessing/Application` and `/Eval` absent; namespaces match projects; provider adapters are outside DocumentProcessing; production pipeline has no legacy converter route; Eval-only diagnostics/replay/calibration implementations are under `DocxHeaderExtractor.Eval`. |
 | Naming normalization | `6ef3759` | `HeadingClassificationProposal`/`HeadingProposalJson` make untrusted classifier output explicit; analyzer/projection/inference/review folders and target names are recorded in the ledger. |
-| Tests/build | `6ef3759` | Release restore/build PASS; focused affected tests PASS `95/95`; full suite reached `762 passed` before testhost crash and is not claimed as PASS. |
+| Tests/build | `927ee92` + working-tree verification | Release build PASS; focused affected tests PASS `51/51` after provider-boundary refactor; full suite PASS `930/930`, exit `0`, with crash diagnostics enabled. |
+| Provider ownership | working tree | Provider/runtime options and selection moved to `Infrastructure/AI`; `PipelineOptions` is provider-neutral; semantic scan finds no provider configuration or vendor endpoints in `DocumentProcessing`. |
+| Pipeline re-audit | working tree | Strategy, runtime, and projection helpers moved under bounded `Pipeline/Strategies`, `Pipeline/Runtime`, and `Pipeline/Projections`; namespaces and public contracts remain unchanged. |
+| Eval classification | working tree | `9989cd1` is classified as verification maintenance: four stale test source/assembly paths after relocation, two retained silver artifact hash corrections, and the C1 inventory expectation update to existing retained evidence. Gold labels, predictions, thresholds, production rules, prompts, and accuracy logic are unchanged; accuracy tuning is `0`. |
+| Gate split | working tree | Default hygiene gate is a pre-merge candidate gate; `-RequirePublication` invokes the post-merge Phase-1 publication gate. Phase-1 final-gate semantics are unchanged. |
+| Final candidate gate | working tree | Source hygiene candidate gate PASS; Phase-1 architecture audit PASS; focused tests PASS `75/75`; Release build PASS `0 errors`; full suite PASS `930/930`, exit `0`; `git diff --check` PASS; provider calls `0`. |
 | Publication | `6ef3759` | Branch pushed to `origin/verification/auto-harness-phase2`; no merge to `main`. |
 
 ## Boundaries
@@ -51,10 +56,24 @@ This plan is the first Phase-2 workstream. It normalizes semantic ownership and 
 - `scripts/architecture-phase1-audit.ps1`: PASS.
 - Source ownership, namespace, folder, Eval isolation, route, and duplicate-harness checks:
   PASS.
-- `scripts/architecture-phase1-final-gate.ps1`: BLOCKED only because this Phase-2 branch is not
-  contained in `origin/main`; publication is intentionally deferred and must not be represented
-  as complete here.
+- `scripts/architecture-phase1-final-gate.ps1`: intentionally deferred on this unmerged Phase-2
+  candidate; use `source-tree-hygiene-gate.ps1 -RequirePublication` only after publication.
 - Provider calls: 0. Accuracy-99 and Human Gold: untouched.
-- Current source-tree status: semantic checks PASS; overall gate remains BLOCKED by the required
-  Phase-1 publication check on this intentionally unmerged Phase-2 branch and by the full-suite
-  testhost crash. `SOURCE_TREE_HYGIENE_COMPLETE` is therefore not claimed.
+- Current source-tree status: candidate semantic gate PASS; full suite PASS; H16/H17 complete.
+  The post-merge publication gate remains intentionally separate and is not run on this unmerged
+  branch. No main merge is authorized by this checkpoint.
+
+## Final status contract
+
+```text
+SOURCE_TREE_HYGIENE = PASS
+FILE_NAMING = PASS
+FOLDER_NAMING = PASS
+NAMESPACE_NORMALIZATION = PASS
+EVAL_ISOLATION = PASS
+PROVIDER_OWNERSHIP = PASS
+GENERIC_VS_CAPABILITY_NAMING = PASS
+COMPATIBILITY_NAMING = PASS
+DEAD_CODE_AUDIT = PASS
+FULL_SUITE = PASS
+```

@@ -1,14 +1,16 @@
 using System.Globalization;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Web;
 
 /// <summary>Dựng <see cref="PipelineOptions"/> từ form của giao diện.</summary>
 public static class RequestOptions
 {
-    public static PipelineOptions Build(IFormCollection form, out string? problem)
+    public static PipelineOptions Build(IFormCollection form, out string? problem, out InferenceProviderSelection provider)
     {
         problem = null;
+        provider = new InferenceProviderSelection();
         var o = new PipelineOptions();
 
         o.Extraction.UseLexicalRules = !Flag(form, "structuralOnly");
@@ -44,7 +46,7 @@ public static class RequestOptions
 
         if (o.DisableLlm) return o;
 
-        o.Backend = form["backend"].ToString().ToLowerInvariant() switch
+        provider.Backend = form["backend"].ToString().ToLowerInvariant() switch
         {
             "openrouter" => InferenceBackend.OpenRouter,
             "lmstudio" => InferenceBackend.LmStudio,
@@ -54,23 +56,23 @@ public static class RequestOptions
         // Cả hai backend RPC đều không bị VRAM local ràng buộc nên dùng profile 8K/5K đã đo cho
         // Qwen. Thiếu dòng này thì ngân sách rơi về 2200 của bản local và tài liệu bị xé thành
         // hàng chục khối — 13 ứng viên thành 27 lượt RPC.
-        if (o.Backend == InferenceBackend.OpenRouter)
+        if (provider.Backend == InferenceBackend.OpenRouter)
         {
-            o.Remote = DocxHeaderExtractor.DocumentProcessing.Inference.RemoteInferenceOptions.FromEnvironment("openrouter");
+            provider.Remote = RemoteInferenceOptions.FromEnvironment("openrouter");
             o.Chunking.UseRemoteProfile();
-            if (string.IsNullOrWhiteSpace(o.Remote.ApiKey))
+            if (string.IsNullOrWhiteSpace(provider.Remote.ApiKey))
                 problem = "Backend OpenRouter chưa được cấu hình OPENROUTER_API_KEY trên server.";
             return o;
         }
 
-        if (o.Backend == InferenceBackend.LmStudio)
+        if (provider.Backend == InferenceBackend.LmStudio)
         {
-            o.Remote = DocxHeaderExtractor.DocumentProcessing.Inference.RemoteInferenceOptions.FromEnvironment("lmstudio");
+            provider.Remote = RemoteInferenceOptions.FromEnvironment("lmstudio");
             var selectedModel = form["lmStudioModel"].ToString().Trim();
-            if (!string.IsNullOrEmpty(selectedModel)) o.Remote.Model = selectedModel;
+            if (!string.IsNullOrEmpty(selectedModel)) provider.Remote.Model = selectedModel;
             try
             {
-                o.Remote.Validate();
+                provider.Remote.Validate();
             }
             catch (InvalidOperationException ex)
             {
@@ -101,11 +103,11 @@ public static class RequestOptions
             return o;
         }
 
-            o.LocalModel.ModelPath = model;
+            provider.LocalModel.ModelPath = model;
             if (Number(form, "ctx") is { } ctx and >= 1024)
-                o.LocalModel.ContextSize = (uint)ctx;
+                provider.LocalModel.ContextSize = (uint)ctx;
             else
-                o.LocalModel.ContextSize = ModelCatalog.List().FirstOrDefault(m => m.Path == model)?.SuggestedCtx ?? 4096u;
+                provider.LocalModel.ContextSize = ModelCatalog.List().FirstOrDefault(m => m.Path == model)?.SuggestedCtx ?? 4096u;
 
         if (Number(form, "chunkCandidates") is { } cc and >= 2 and <= 64)
             o.Chunking.MaxCandidatesPerChunk = (int)cc;
@@ -113,11 +115,11 @@ public static class RequestOptions
         // Bản CPU bỏ qua giá trị này; bản dựng với -p:UseVulkan=true / -p:UseCuda=true thì
         // 0 nghĩa là vẫn chạy CPU, nên không truyền xuống là giao diện không bao giờ dùng GPU.
         if (Number(form, "gpuLayers") is { } gl and >= 0)
-            o.LocalModel.GpuLayerCount = (int)gl;
+            provider.LocalModel.GpuLayerCount = (int)gl;
 
         // Chốt profile ở server. Trình duyệt cũ có thể vẫn gửi 4096; không để request đi
         // tới bước nạp model rồi mới vỡ vì tổng ngân sách lớn hơn context.
-        o.LocalModel.ApplyRecommendedModelProfile(o.Chunking);
+        provider.LocalModel.ApplyRecommendedModelProfile(o.Chunking);
         return o;
     }
 

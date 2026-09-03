@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param(
-    [string] $Root
+    [string] $Root,
+    [switch] $RequirePublication
 )
 
 $ErrorActionPreference = "Stop"
@@ -31,10 +32,10 @@ Add-Check "document-processing-application-absent" (!$legacyApplication) `
 Add-Check "document-processing-eval-absent" (!$legacyEval) `
     ($(if (!$legacyEval) { "DocumentProcessing/Eval is absent" } else { "legacy Eval directory still exists" }))
 
-$providerPattern = '(?i)\b(class|record|interface|enum)\s+\w*(Llama|OpenRouter|LmStudio|Sglang|Qwen)\w*\b|\bProviderOptions\b'
-$providerHits = @($processingFiles | Select-String -Pattern $providerPattern | ForEach-Object { "$($_.Path):$($_.LineNumber)" })
+$providerPattern = '(?i)OPENROUTER_|LMSTUDIO_|SGLANG_|\bApiKey\s*(?:\{|=|\b)|openrouter\.ai|\b(?:InferenceBackend|OpenRouter|LmStudio|Sglang)\b|\b(?:RemoteInferenceOptions|LocalModelOptions)\b|GGUF.{0,80}(?:runtime|load|model|context)|(?:runtime|load|model|context).{0,80}GGUF|LLamaSharp'
+$providerHits = @($processingFiles | Select-String -Pattern $providerPattern | ForEach-Object { "$($_.Path):$($_.LineNumber):$($_.Line.Trim())" })
 Add-Check "provider-specific-types-absent-from-document-processing" ($providerHits.Count -eq 0) `
-    ($(if ($providerHits.Count -eq 0) { "DocumentProcessing contains capability-neutral inference contracts only" } else { $providerHits -join "; " }))
+    ($(if ($providerHits.Count -eq 0) { "DocumentProcessing contains no provider secrets, endpoints, vendor enums, or runtime configuration" } else { $providerHits -join "; " }))
 
 $evalNamespaceHits = @($processingFiles | Select-String -Pattern '^namespace\s+DocxHeaderExtractor\.Eval\b' |
     ForEach-Object { "$($_.Path):$($_.LineNumber)" })
@@ -124,9 +125,14 @@ $phase1Audit = Invoke-ArchitectureGate "architecture-phase1-audit.ps1"
 Add-Check "phase1-architecture-audit" ($null -ne $phase1Audit.Result -and $phase1Audit.Result.status -eq "PASS") `
     ($(if ($null -ne $phase1Audit.Result -and $phase1Audit.Result.status -eq "PASS") { "architecture-phase1-audit.ps1 PASS" } else { "architecture-phase1-audit.ps1 BLOCKED" }))
 
-$phase1Final = Invoke-ArchitectureGate "architecture-phase1-final-gate.ps1"
-Add-Check "phase1-final-gate" ($phase1Final.ExitCode -eq 0 -and $null -ne $phase1Final.Result -and $phase1Final.Result.status -eq "PASS") `
-    ($(if ($phase1Final.ExitCode -eq 0) { "architecture-phase1-final-gate.ps1 PASS" } else { "architecture-phase1-final-gate.ps1 BLOCKED" }))
+$phase1Final = $null
+if ($RequirePublication) {
+    $phase1Final = Invoke-ArchitectureGate "architecture-phase1-final-gate.ps1"
+    Add-Check "phase1-publication-gate" ($phase1Final.ExitCode -eq 0 -and $null -ne $phase1Final.Result -and $phase1Final.Result.status -eq "PASS") `
+        ($(if ($phase1Final.ExitCode -eq 0) { "post-merge architecture-phase1-final-gate.ps1 PASS" } else { "post-merge publication gate BLOCKED" }))
+} else {
+    Add-Check "phase1-candidate-gate" $true "pre-merge candidate mode; publication is intentionally checked after merge"
+}
 
 $blocked = @($checks | Where-Object { $_.status -eq "BLOCKED" })
 [ordered]@{

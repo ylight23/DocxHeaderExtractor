@@ -1,6 +1,6 @@
 using DocxHeaderExtractor.DocumentProcessing.Chunking;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Inference;
+namespace DocxHeaderExtractor.Infrastructure.AI;
 
 public enum GrammarMode
 {

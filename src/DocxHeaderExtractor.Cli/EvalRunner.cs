@@ -4,6 +4,7 @@ using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Eval;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Cli;
 
@@ -16,6 +17,7 @@ public static class EvalRunner
     public static async Task<int> RunAsync(
         string directory,
         PipelineOptions options,
+        InferenceProviderSelection provider,
         bool quiet,
         CancellationToken ct,
         string? calibrationOutputPath = null)
@@ -54,12 +56,12 @@ public static class EvalRunner
                 $"{string.Join(", ", orphanKeys)}. Bộ đo nhỏ hơn bộ đáp án — đừng so con số này với " +
                 "bảng nào ghi số tài liệu lớn hơn.");
 
-        using var tool = new PipelineDocumentExtractionTool(options);
+        using var tool = new PipelineDocumentExtractionTool(options, new HeaderClassifierFactory(provider));
         var harness = CliHarnessComposition.Create(pairs.Select(pair => pair.Docx), tool);
         var sourceReader = new AuthorityDocumentSourceReader(options);
         var scores = new List<DocScore>();
         var calibration = new PrecisionCalibrationBuilder(
-            PrecisionCalibrationProfile.ConfigurationFor(options),
+            PrecisionCalibrationProfile.ConfigurationFor(options, provider),
             options.TargetPrecision,
             options.MinimumCalibrationSamples);
         var processingFailures = 0;
@@ -91,7 +93,7 @@ public static class EvalRunner
                 var run = await harness.RunAsync(new DocumentAgentRequest(
                     docx,
                     AllowExternalDataTransfer:
-                        !options.DisableLlm && options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang), ct);
+                        !options.DisableLlm && provider.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang), ct);
                 var outline = run.TaskResult.Value;
                 scores.Add(Evaluator.Score(name, outline, candidates, key));
                 if (!key.IsPartial)
@@ -104,7 +106,7 @@ public static class EvalRunner
             }
         }
 
-        Console.WriteLine(Report(new SuiteScore(scores), options));
+        Console.WriteLine(Report(new SuiteScore(scores), options, provider));
         if (!string.IsNullOrWhiteSpace(calibrationOutputPath))
         {
             if (processingFailures > 0)
@@ -125,17 +127,17 @@ public static class EvalRunner
             : 0;
     }
 
-    private static string Report(SuiteScore suite, PipelineOptions options)
+    private static string Report(SuiteScore suite, PipelineOptions options, InferenceProviderSelection provider)
     {
         var sb = new StringBuilder();
         var mode = options.DisableLlm
             ? "chỉ luật OpenXML"
-            : options.Backend switch
+            : provider.Backend switch
             {
-                InferenceBackend.OpenRouter => options.Remote.Model,
-                InferenceBackend.LmStudio => $"LM Studio/{options.Remote.Model}",
-                InferenceBackend.Sglang => $"SGLang/{options.Remote.Model}",
-                _ => Path.GetFileNameWithoutExtension(options.LocalModel.ModelPath),
+                InferenceBackend.OpenRouter => provider.Remote.Model,
+                InferenceBackend.LmStudio => $"LM Studio/{provider.Remote.Model}",
+                InferenceBackend.Sglang => $"SGLang/{provider.Remote.Model}",
+                _ => Path.GetFileNameWithoutExtension(provider.LocalModel.ModelPath),
             };
 
         sb.AppendLine($"Bộ test: {suite.Documents} tài liệu · chế độ: {mode}");
@@ -143,7 +145,7 @@ public static class EvalRunner
         // "mọi con số phải ghi kèm số lớp offload", nhưng công cụ sinh ra con số lại không ghi — nên
         // một lượt CPU và một lượt GPU trông giống hệt nhau trên giấy. Cùng họ với bẫy §4.3 (cấu
         // hình đo lệch cấu hình chạy) và §4.4 (log nói dối).
-        sb.AppendLine($"Cấu hình: {PrecisionCalibrationProfile.ConfigurationFor(options)}");
+        sb.AppendLine($"Cấu hình: {PrecisionCalibrationProfile.ConfigurationFor(options, provider)}");
         if (suite.Docs.Any(d => d.PartialTruth))
             sb.AppendLine("Đáp án partial: không phạt false positive ngoài phạm vi đã gán; P/F1 chỉ đọc trong phạm vi đã gán.");
         sb.AppendLine();

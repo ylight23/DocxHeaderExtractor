@@ -71,12 +71,12 @@ public sealed class McpExtractionService : IDisposable
     public async Task<McpExtractionResult> ExtractAsync(string inputPath, CancellationToken ct = default)
     {
         var resolved = _paths.ResolveReadableDocument(inputPath);
-        var pipeline = BuildPipelineOptions();
+        var pipeline = BuildPipelineOptions(out var provider);
 
         IHeaderClassifier? classifier = null;
         if (!_options.RulesOnly)
         {
-            var lm = pipeline.Remote;
+            var lm = provider.Remote;
             var models = await ListModelsAsync(lm, ct);
             lm.Model = SelectModel(lm.Model, models, throwWhenAmbiguous: true)!;
             classifier = new LmStudioHeaderExtractor(_http, lm);
@@ -109,7 +109,7 @@ public sealed class McpExtractionService : IDisposable
                 e.Sequence, e.Stage, e.Kind.ToString(), e.Message)).ToArray());
     }
 
-    private PipelineOptions BuildPipelineOptions()
+    private PipelineOptions BuildPipelineOptions(out InferenceProviderSelection provider)
     {
         var lm = RemoteInferenceOptions.FromEnvironment("lmstudio");
         lm.Validate(requireModel: false);
@@ -120,17 +120,20 @@ public sealed class McpExtractionService : IDisposable
         var maxChunk = Math.Max(400, lm.ContextSize - maxOutput - LocalModelOptions.FixedPromptTokens);
         var chunk = Math.Min(5_000, maxChunk);
 
-        return new PipelineOptions
+        provider = new InferenceProviderSelection
         {
             Backend = InferenceBackend.LmStudio,
-            DisableLlm = _options.RulesOnly,
             Remote = lm,
             LocalModel = new LocalModelOptions
             {
                 ContextSize = checked((uint)lm.ContextSize),
-                
                 MaxOutputTokens = maxOutput,
             },
+        };
+
+        return new PipelineOptions
+        {
+            DisableLlm = _options.RulesOnly,
             // Giữ batch vừa đủ lớn để giảm số request nhưng không làm Qwen nhầm ID/cấp khi mỗi
             // ứng viên mang theo lân cận. Với context 4096, 5–6 ứng viên ổn định hơn 12.
             Chunking = BuildChunking(chunk),

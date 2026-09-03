@@ -20,6 +20,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
     private readonly PipelineOptions _options;
     private readonly IAuthorityRoutePolicy _routePolicy;
     private readonly IHeaderClassifierFactory? _analystFactory;
+    private readonly bool _classifierSendsDataExternally;
     private IHeaderClassifier? _analyst;
     private readonly bool _ownsAnalyst;
 
@@ -30,7 +31,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         : this(options, new DefaultAuthorityRoutePolicy(), null, analystFactory) { }
 
     public AuthorityExtractionPipeline(PipelineOptions options, IHeaderClassifier analyst)
-        : this(options, new DefaultAuthorityRoutePolicy(), analyst, null)
+        : this(options, new DefaultAuthorityRoutePolicy(), analyst, null, false)
     {
     }
 
@@ -41,18 +42,26 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         PipelineOptions options,
         IAuthorityRoutePolicy routePolicy,
         IHeaderClassifier analyst)
-        : this(options, routePolicy, analyst, null) { }
+        : this(options, routePolicy, analyst, null, false) { }
+
+    public AuthorityExtractionPipeline(
+        PipelineOptions options,
+        IHeaderClassifier analyst,
+        bool sendsDataExternally)
+        : this(options, new DefaultAuthorityRoutePolicy(), analyst, null, sendsDataExternally) { }
 
     private AuthorityExtractionPipeline(
         PipelineOptions options,
         IAuthorityRoutePolicy routePolicy,
         IHeaderClassifier? analyst,
-        IHeaderClassifierFactory? analystFactory)
+        IHeaderClassifierFactory? analystFactory,
+        bool classifierSendsDataExternally = false)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _routePolicy = routePolicy ?? throw new ArgumentNullException(nameof(routePolicy));
         _analyst = analyst;
         _analystFactory = analystFactory;
+        _classifierSendsDataExternally = classifierSendsDataExternally || analystFactory?.SendsDataExternally == true;
         _ownsAnalyst = analystFactory is not null || analyst is null;
     }
 
@@ -231,7 +240,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 Diagnostics = diagnostics,
                 DecisionAudit = null,
                 Provenance = BuildProvenance(audit,
-                    !_options.DisableLlm && _options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang),
+                    !_options.DisableLlm && (_analystFactory?.SendsDataExternally ?? _classifierSendsDataExternally)),
             };
             return new AuthorityPipelineExecutionResult(extractionResult, compatibilityOutline);
     }

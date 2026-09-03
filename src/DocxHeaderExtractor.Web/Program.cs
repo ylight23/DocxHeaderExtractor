@@ -281,7 +281,7 @@ app.MapPost("/api/extract", async (
         await using (var fs = File.Create(inputPath))
             await upload.CopyToAsync(fs, ct);
 
-        var options = RequestOptions.Build(form, out var problem);
+        var options = RequestOptions.Build(form, out var problem, out var provider);
         if (problem is not null)
         {
             await EmitAsync(new { type = "error", message = problem });
@@ -295,8 +295,8 @@ app.MapPost("/api/extract", async (
                 Console.WriteLine($"[{DateTimeOffset.Now:yyyy-MM-dd HH:mm:ss}] [DHX] {m}");
                 events.Writer.TryWrite(new { type = "log", message = m });
             };
-        if (options.Backend == InferenceBackend.LmStudio && options.ShowRawOutput)
-            options.Remote.DebugLog = options.Log;
+        if (provider.Backend == InferenceBackend.LmStudio && options.ShowRawOutput)
+            provider.Remote.DebugLog = options.Log;
         // Mọi backend áp dụng correction khớp chính xác sau suy luận. Local GGUF và LM Studio
         // được retrieval ví dụ tương tự; pipeline không gửi lịch sử correction ra OpenRouter.
         options.CorrectionMemoryPath = correctionMemory.PathOnDisk;
@@ -307,7 +307,7 @@ app.MapPost("/api/extract", async (
         // Hai backend dùng tài nguyên máy này cần khóa. OpenRouter có thể chạy đồng thời và không
         // được giữ hàng chỉ vì GPU local/LM Studio đang bận.
         var gateHeld = false;
-        var usesLocalCompute = options.Backend is InferenceBackend.Local or InferenceBackend.LmStudio;
+        var usesLocalCompute = provider.Backend is InferenceBackend.Local or InferenceBackend.LmStudio;
         if (!options.DisableLlm && usesLocalCompute && !await Gate.WaitAsync(0, ct))
         {
             await EmitAsync(new { type = "log", message = "Đang có tài liệu khác chạy — xếp hàng chờ…" });
@@ -322,13 +322,13 @@ app.MapPost("/api/extract", async (
             DocxHeaderExtractor.DocumentProcessing.Inference.IHeaderClassifier? classifier = null;
             if (!options.DisableLlm)
             {
-                classifier = options.Backend switch
+                classifier = provider.Backend switch
                 {
                     InferenceBackend.OpenRouter => new DocxHeaderExtractor.Infrastructure.AI.OpenRouterHeaderExtractor(
-                        httpClientFactory.CreateClient("OpenRouter"), options.Remote),
+                        httpClientFactory.CreateClient("OpenRouter"), provider.Remote),
                     InferenceBackend.LmStudio => new DocxHeaderExtractor.Infrastructure.AI.LmStudioHeaderExtractor(
-                        httpClientFactory.CreateClient("LmStudio"), options.Remote),
-                    _ => await modelCache.GetAsync(options.LocalModel, options.Chunking, ct),
+                        httpClientFactory.CreateClient("LmStudio"), provider.Remote),
+                    _ => await modelCache.GetAsync(provider.LocalModel, options.Chunking, ct),
                 };
             }
             using var tool = classifier is null
@@ -336,7 +336,8 @@ app.MapPost("/api/extract", async (
                 : new PipelineDocumentExtractionTool(
                     options,
                     classifier,
-                    ownsClassifier: options.Backend is InferenceBackend.OpenRouter or InferenceBackend.LmStudio);
+                    ownsClassifier: provider.Backend is InferenceBackend.OpenRouter or InferenceBackend.LmStudio,
+                    sendsDataExternally: provider.SendsDataExternally);
 
             // Đích ghi do server đặt bên trong thư mục tạm của request, không bao giờ lấy từ form:
             // một đường dẫn do client chỉ định là đường để ghi đè file bất kỳ trên máy chủ.
@@ -365,7 +366,7 @@ app.MapPost("/api/extract", async (
             var request = new DocumentAgentRequest(
                 inputPath,
                 AllowExternalDataTransfer:
-                    !options.DisableLlm && options.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang)
+                    !options.DisableLlm && provider.SendsDataExternally)
             {
                 WritebackTargetPath = writebackTarget,
             };

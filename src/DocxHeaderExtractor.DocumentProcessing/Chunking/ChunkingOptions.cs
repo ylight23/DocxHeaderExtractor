@@ -2,20 +2,18 @@ namespace DocxHeaderExtractor.DocumentProcessing.Chunking;
 
 /// <summary>
 /// Cách cắt document view thành khối để hỏi mô hình. Đây là việc của PIPELINE, không của backend:
-/// cùng một tài liệu, cùng cách cắt, dù câu hỏi đi tới GGUF cục bộ, LM Studio hay OpenRouter.
+/// cùng một tài liệu, cùng cách cắt, bất kể classifier được cung cấp bởi host nào.
 /// <para>
-/// Trước đây ba giá trị này nằm trong <c>LocalModelOptions</c> — lớp mang tên backend GGUF, chỉ vì
-/// backend đó ra đời trước. Bốn hậu quả đã đo được:
+/// Trước đây ba giá trị này nằm trong một lớp cấu hình runtime chỉ vì backend đó ra đời trước.
+/// Bốn hậu quả đã đo được:
 /// </para>
 /// <list type="number">
 /// <item>Nhánh LM Studio quên đặt profile chunk nên thừa hưởng mặc định 2200 của bản local bị giới
 /// hạn VRAM: 13 ứng viên bị xé thành 27 khối thay vì ~7, mỗi khối một lượt RPC.</item>
-/// <item>Luật nâng ngân sách lên 5000 bám vào TÊN FILE .gguf (<c>Path.GetFileName(ModelPath)</c>
-/// chứa "qwen"). Chạy đúng bộ trọng số đó qua LM Studio thì luật không bao giờ kích hoạt vì không
-/// có đường dẫn file nào.</item>
-/// <item>Backend RPC phải ghi giá trị giả vào <c>Llama.ContextSize</c> — ô mô tả context của
-/// llama.cpp cục bộ — chỉ để phép chia khối ra đúng, trong khi context thật của LM Studio nằm ở
-/// trường khác.</item>
+/// <item>Luật nâng ngân sách từng bám vào một runtime-specific model path nên không áp dụng được
+/// khi cùng model được cung cấp qua host khác.</item>
+/// <item>Backend RPC từng phải ghi giá trị giả vào cấu hình runtime cục bộ chỉ để phép chia khối
+/// ra đúng, trong khi context thật nằm ở provider.</item>
 /// <item>Chữ ký calibration nhúng <c>grammar</c>/<c>temperature</c> của backend cục bộ vào cả
 /// những lượt chạy không dùng backend đó.</item>
 /// </list>
@@ -55,13 +53,13 @@ public sealed class ChunkingOptions
     }
 
     /// <summary>
-    /// Profile cho backend chạy qua RPC (LM Studio, OpenRouter). Mặc định 2200 là của bản local bị
-    /// giới hạn VRAM; backend RPC không có ràng buộc đó nên dùng bộ 5K đã đo cho Qwen.
+/// Profile cho backend chạy qua RPC. Mặc định 2200 là của bản local bị giới hạn tài nguyên; RPC
+/// không có ràng buộc đó nên dùng bộ 5K đã đo.
     /// </summary>
     public void UseRemoteProfile() => TokenBudget = 5000;
 
     /// <summary>
-    /// Phần context dành cho document view, suy từ profile DUY NHẤT đã đo: Qwen 7B dùng ngân sách
+    /// Phần context dành cho document view, suy từ profile duy nhất đã đo: model chuẩn dùng ngân sách
     /// 5000 trên context 8192 — tức khoảng 61%, phần còn lại cho prompt hệ thống, chat template,
     /// JSON đầu ra và đệm.
     /// </summary>

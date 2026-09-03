@@ -1,6 +1,7 @@
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Cli;
 
@@ -25,6 +26,8 @@ public sealed class CommandLineOptions
     public string? DumpChunksDir { get; private set; }
     public bool ShowHelp { get; private set; }
     public PipelineOptions Pipeline { get; } = new();
+    /// <summary>Provider selection owned by the CLI composition root, not the processing pipeline.</summary>
+    public InferenceProviderSelection Provider { get; } = new();
 
     /// <summary>Đích .docx cho hành động ghi outline; null = run chỉ đọc.</summary>
     public string? WritebackPath { get; private set; }
@@ -137,7 +140,7 @@ public sealed class CommandLineOptions
     public static CommandLineOptions Parse(string[] args)
     {
         var o = new CommandLineOptions();
-        var llama = o.Pipeline.LocalModel;
+        var llama = o.Provider.LocalModel;
         var extraction = o.Pipeline.Extraction;
 
         if (args.Length == 0) { o.ShowHelp = true; return o; }
@@ -242,75 +245,75 @@ public sealed class CommandLineOptions
                 case "--session-code-fallback": o.Pipeline.SessionCodeFallback = true; break;
                 case "--llm-boundary-cut-fallback": o.Pipeline.LlmBoundaryCutFallback = true; break;
                 case "--openrouter":
-                    o.Pipeline.Backend = InferenceBackend.OpenRouter;
-                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("openrouter");
+                    o.Provider.Backend = InferenceBackend.OpenRouter;
+                    o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("openrouter");
                     break;
                 case "--openrouter-model":
-                    o.Pipeline.Backend = InferenceBackend.OpenRouter;
-                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("openrouter");
-                    o.Pipeline.Remote.Model = Next(a);
+                    o.Provider.Backend = InferenceBackend.OpenRouter;
+                    o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("openrouter");
+                    o.Provider.Remote.Model = Next(a);
                     break;
                 case "--lmstudio":
-                    o.Pipeline.Backend = InferenceBackend.LmStudio;
-                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("lmstudio");
+                    o.Provider.Backend = InferenceBackend.LmStudio;
+                    o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("lmstudio");
                     break;
                 case "--lmstudio-model":
-                    o.Pipeline.Backend = InferenceBackend.LmStudio;
-                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("lmstudio");
-                    o.Pipeline.Remote.Model = Next(a);
+                    o.Provider.Backend = InferenceBackend.LmStudio;
+                    o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("lmstudio");
+                    o.Provider.Remote.Model = Next(a);
                     break;
                 case "--lmstudio-endpoint":
-                    o.Pipeline.Backend = InferenceBackend.LmStudio;
-                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("lmstudio");
-                    o.Pipeline.Remote.Endpoint = new Uri(Next(a), UriKind.Absolute);
+                    o.Provider.Backend = InferenceBackend.LmStudio;
+                    o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("lmstudio");
+                    o.Provider.Remote.Endpoint = new Uri(Next(a), UriKind.Absolute);
                     break;
                 case "--lmstudio-context":
-                    o.Pipeline.Backend = InferenceBackend.LmStudio;
-                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("lmstudio");
-                    o.Pipeline.Remote.ContextSize = int.Parse(Next(a));
+                    o.Provider.Backend = InferenceBackend.LmStudio;
+                    o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("lmstudio");
+                    o.Provider.Remote.ContextSize = int.Parse(Next(a));
                     break;
                 case "--sglang":
-                    o.Pipeline.Backend = InferenceBackend.Sglang;
-                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
+                    o.Provider.Backend = InferenceBackend.Sglang;
+                    o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
                     break;
                 case "--sglang-model":
-                    o.Pipeline.Backend = InferenceBackend.Sglang;
-                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
-                    o.Pipeline.Remote.Model = Next(a);
+                    o.Provider.Backend = InferenceBackend.Sglang;
+                    o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
+                    o.Provider.Remote.Model = Next(a);
                     break;
                 case "--sglang-endpoint":
-                    o.Pipeline.Backend = InferenceBackend.Sglang;
-                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
-                    o.Pipeline.Remote.Endpoint = new Uri(Next(a), UriKind.Absolute);
+                    o.Provider.Backend = InferenceBackend.Sglang;
+                    o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
+                    o.Provider.Remote.Endpoint = new Uri(Next(a), UriKind.Absolute);
                     break;
                 case "--sglang-api-key":
-                    o.Pipeline.Backend = InferenceBackend.Sglang;
-                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
-                    o.Pipeline.Remote.ApiKey = Next(a);
+                    o.Provider.Backend = InferenceBackend.Sglang;
+                    o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
+                    o.Provider.Remote.ApiKey = Next(a);
                     break;
                 case "--sglang-context":
-                    o.Pipeline.Backend = InferenceBackend.Sglang;
-                    o.Pipeline.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
-                    o.Pipeline.Remote.ContextSize = int.Parse(Next(a));
+                    o.Provider.Backend = InferenceBackend.Sglang;
+                    o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
+                    o.Provider.Remote.ContextSize = int.Parse(Next(a));
                     break;
                 case "--nvidia-nim" or "--nvidia":
                     o.UseNvidiaNim = true;
-                    o.Pipeline.Backend = InferenceBackend.Sglang;
-                    o.Pipeline.Remote.Endpoint = new Uri("https://integrate.api.nvidia.com/v1/chat/completions");
-                    o.Pipeline.Remote.ApiKey = Environment.GetEnvironmentVariable("NVIDIA_API_KEY") ?? "";
-                    o.Pipeline.Remote.Model = Environment.GetEnvironmentVariable("NVIDIA_MODEL")
+                    o.Provider.Backend = InferenceBackend.Sglang;
+                    o.Provider.Remote.Endpoint = new Uri("https://integrate.api.nvidia.com/v1/chat/completions");
+                    o.Provider.Remote.ApiKey = Environment.GetEnvironmentVariable("NVIDIA_API_KEY") ?? "";
+                    o.Provider.Remote.Model = Environment.GetEnvironmentVariable("NVIDIA_MODEL")
                         ?? "meta/llama-3.2-90b-vision-instruct";
-                    o.Pipeline.Remote.RequestTimeoutSeconds = int.TryParse(
+                    o.Provider.Remote.RequestTimeoutSeconds = int.TryParse(
                         Environment.GetEnvironmentVariable("NVIDIA_REQUEST_TIMEOUT_SECONDS"), out var nvidiaTimeout)
                         ? Math.Clamp(nvidiaTimeout, 10, 600) : 90;
-                    o.Pipeline.Remote.TransientRequestRetries = int.TryParse(
+                    o.Provider.Remote.TransientRequestRetries = int.TryParse(
                         Environment.GetEnvironmentVariable("NVIDIA_TRANSIENT_RETRIES"), out var nvidiaRetries)
                         ? Math.Clamp(nvidiaRetries, 0, 4) : 2;
-                    o.Pipeline.Remote.ContextSize = 131072;
-                    o.Pipeline.Remote.MaxOutputTokens = 384;
-                    o.Pipeline.Remote.SendChatTemplateKwargs = false;
-                    o.Pipeline.Remote.RequireJsonObjectResponse = true;
-                    if (string.IsNullOrWhiteSpace(o.Pipeline.Remote.ApiKey))
+                    o.Provider.Remote.ContextSize = 131072;
+                    o.Provider.Remote.MaxOutputTokens = 384;
+                    o.Provider.Remote.SendChatTemplateKwargs = false;
+                    o.Provider.Remote.RequireJsonObjectResponse = true;
+                    if (string.IsNullOrWhiteSpace(o.Provider.Remote.ApiKey))
                         throw new InvalidOperationException("Thiếu NVIDIA_API_KEY cho --nvidia-nim.");
                     break;
                 case "--candidates-only": o.Pipeline.ReviewAllParagraphs = false; break;
@@ -405,7 +408,7 @@ public sealed class CommandLineOptions
         // Áp profile RPC SAU vòng lặp, không áp ngay trong nhánh cờ backend: `--chunk-tokens 3000
         // --openrouter` từng bị chính nhánh backend ghi đè mất giá trị người dùng vừa gõ, chỉ vì
         // thứ tự hai cờ. Ở đây override tường minh luôn thắng, bất kể viết trước hay sau.
-        if (o.Pipeline.Backend is InferenceBackend.OpenRouter or InferenceBackend.LmStudio or InferenceBackend.Sglang)
+        if (o.Provider.Backend is InferenceBackend.OpenRouter or InferenceBackend.LmStudio or InferenceBackend.Sglang)
         {
             var chunkTokens = o.Pipeline.Chunking.TokenBudget;
             o.Pipeline.Chunking.UseRemoteProfile();

@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Inference;
+namespace DocxHeaderExtractor.Infrastructure.AI;
 
 /// <summary>
 /// Provider-neutral settings for an OpenAI-compatible inference endpoint.
