@@ -33,10 +33,11 @@ This plan is the first Phase-2 workstream. It normalizes semantic ownership and 
 
 | Checkpoint | Commit | Evidence |
 |---|---|---|
-| Inventory | working tree | Complete production `.cs` ledger generated from `src/` excluding build output. |
-| Semantic normalization | working tree | `DocumentProcessing/Application` and `/Eval` absent; namespaces match projects; provider adapters are outside DocumentProcessing; production pipeline has no legacy converter route; Eval-only diagnostics/replay/calibration implementations are under `DocxHeaderExtractor.Eval`. |
-| Naming normalization | working tree | `HeadingClassificationProposal`/`HeadingProposalJson` make untrusted classifier output explicit; analyzer/projection/inference/review folders and target names are recorded in the ledger. |
-| Tests/build | working tree | Release restore/build PASS; focused affected tests PASS; full-suite follow-up is recorded below. |
+| Inventory | `6ef3759` | Complete production `.cs` ledger generated from `src/` excluding build output; `tests/`, `scripts/`, and `docs/` inventory coverage is recorded in the ledger. |
+| Semantic normalization | `6ef3759` | `DocumentProcessing/Application` and `/Eval` absent; namespaces match projects; provider adapters are outside DocumentProcessing; production pipeline has no legacy converter route; Eval-only diagnostics/replay/calibration implementations are under `DocxHeaderExtractor.Eval`. |
+| Naming normalization | `6ef3759` | `HeadingClassificationProposal`/`HeadingProposalJson` make untrusted classifier output explicit; analyzer/projection/inference/review folders and target names are recorded in the ledger. |
+| Tests/build | `6ef3759` | Release restore/build PASS; focused affected tests PASS `95/95`; full suite reached `762 passed` before testhost crash and is not claimed as PASS. |
+| Publication | `6ef3759` | Branch pushed to `origin/verification/auto-harness-phase2`; no merge to `main`. |
 
 ## Boundaries
 
@@ -54,3 +55,6 @@ This plan is the first Phase-2 workstream. It normalizes semantic ownership and 
   contained in `origin/main`; publication is intentionally deferred and must not be represented
   as complete here.
 - Provider calls: 0. Accuracy-99 and Human Gold: untouched.
+- Current source-tree status: semantic checks PASS; overall gate remains BLOCKED by the required
+  Phase-1 publication check on this intentionally unmerged Phase-2 branch and by the full-suite
+  testhost crash. `SOURCE_TREE_HYGIENE_COMPLETE` is therefore not claimed.
