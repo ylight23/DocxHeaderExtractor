@@ -25,6 +25,10 @@
     "cli": "TaskResult.Value",
     "mcp": "TaskResult.Value"
   },
+  "packageManagement": {
+    "centralProps": "Directory.Packages.props",
+    "versionsChanged": false
+  },
   "authority": {
     "productionPipelineChanged": false,
     "structuralAuthority": "ValidatedStructure",

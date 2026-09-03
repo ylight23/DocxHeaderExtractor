@@ -30,12 +30,18 @@ tuning, or benchmark tuning.
   `src/DocxHeaderExtractor.Application/Tasks/TaskPlanCompiler.cs`, and architecture contract tests.
 - [ ] WS5 — Dynamic concepts/schema registries, alias/version/lifecycle, fail-closed resolution.
 - [ ] WS6 — Generic capability descriptors/registry/resolver and explicit capability gaps.
+  Progress: `CapabilityDescriptor`, `ICapabilityCatalog`, and exact fail-closed resolution are in
+  Application; host-specific selection remains an adapter until generic resolution is wired.
 - [ ] WS7 — Generic policy, approval state, budgets, cancellation, failure taxonomy, typed retry.
+  Progress: generic run status, failure, provenance, retry, cancellation, and deadline contracts
+  exist; runtime lifecycle/policy enforcement remains open.
 - [ ] WS8 — Microsoft AI/Agent Framework seams and generic harness/skill catalog isolation.
 - [ ] WS9 — Generic source-grounded execution and non-authoritative projection/output negotiation.
 - [ ] WS10 — Persistence ports, lifecycle/versioning, provenance, secret redaction, telemetry seam.
 - [ ] WS11 — Web/CLI/MCP composition-root cutover with zero normal bypasses.
 - [ ] WS12 — Central build/package rules and architecture enforcement.
+  Progress: package versions are centralized in `Directory.Packages.props`; architecture
+  enforcement and dependency-direction gates remain open.
 - [ ] WS13 — Final reachability/dead-code/root-hygiene audit and only justified deletions.
 - [ ] WS14 — Extension contract proof for capability, concept/schema, provider, source, and task.
 - [ ] WS15 — Phase 2 test seams prepared without running quality/provider tests.

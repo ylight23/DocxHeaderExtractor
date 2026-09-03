@@ -52,7 +52,9 @@ retained for existing library/test callers and is not a second authority route.
 | `Eval` | evaluation/replay-only adapters | `Core` |
 | `Infrastructure` | provider/source infrastructure ports (initial seam only) | `Application`, `Core` |
 
-`Application`, `DocumentProcessing`, and `Infrastructure` project boundaries now exist. The
+`Application`, `DocumentProcessing`, and `Infrastructure` project boundaries now exist. Package
+versions are centrally declared in `Directory.Packages.props` without changing the pinned versions.
+The
 Infrastructure project currently contains provider contracts only; concrete provider/source
 implementations and package ownership still remain open Phase 1 work. Deeper Core purity and Eval
 isolation are also open.
