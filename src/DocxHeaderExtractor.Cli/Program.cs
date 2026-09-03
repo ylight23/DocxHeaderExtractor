@@ -14,6 +14,7 @@ using DocxHeaderExtractor.Core.Output;
 using DocxHeaderExtractor.Core.Pipeline;
 using DocxHeaderExtractor.Core.Repair;
 using DocxHeaderExtractor.Core.Vision;
+using DocxHeaderExtractor.Infrastructure.AI;
 
 Console.OutputEncoding = Encoding.UTF8;
 

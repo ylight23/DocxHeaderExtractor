@@ -2,7 +2,9 @@ using LLama;
 using LLama.Common;
 using LLama.Native;
 
-namespace DocxHeaderExtractor.Core.Vision;
+using DocxHeaderExtractor.Core.Vision;
+
+namespace DocxHeaderExtractor.Infrastructure.AI;
 
 /// <summary>
 /// Bọc suy luận đa phương thức (VLM) qua LLamaSharp: nạp một model .gguf + mmproj, trả lời MỘT câu hỏi

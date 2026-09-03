@@ -58,7 +58,7 @@ public static class CorruptParagraphVisualVerifier
         string originalInputPath,
         DocxPolicyState policyState,
         DocxPolicyParagraph corruptParagraph,
-        VlmImageQuestion vlm,
+        IPdfVisualQuestion vlm,
         int dpi = 110,
         CancellationToken ct = default) =>
         VerifyCore(originalInputPath, policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray(),
@@ -68,7 +68,7 @@ public static class CorruptParagraphVisualVerifier
         string originalInputPath,
         IReadOnlyList<IPolicyParagraph> paragraphs,
         IPolicyParagraph corruptParagraph,
-        VlmImageQuestion vlm,
+        IPdfVisualQuestion vlm,
         int dpi,
         CancellationToken ct)
     {

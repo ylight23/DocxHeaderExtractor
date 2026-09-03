@@ -166,7 +166,7 @@ public static class PdfClusterProbe
     public static async Task<PdfClusterProbeReport> RunAsync(
         string inputPath,
         IHeaderClassifier? analyst = null,
-        VlmImageQuestion? visualAnalyst = null,
+        IPdfVisualQuestion? visualAnalyst = null,
         int visualDpi = 120,
         CancellationToken ct = default)
     {

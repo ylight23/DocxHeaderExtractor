@@ -58,6 +58,10 @@ $coreProviderFiles = @($coreLlmFiles | Where-Object {
 Add-Finding "provider-implementations-isolated-from-core" ($coreProviderFiles.Count -eq 0) `
     ($(if ($coreProviderFiles.Count -eq 0) { "Core contains only provider-neutral contracts/options" } else { "Core provider implementations: " + ($coreProviderFiles.Name -join ", ") }))
 
+$coreProviderPackages = @("LLamaSharp", "Sglang") | Where-Object { $coreProjectText -match [regex]::Escape($_) }
+Add-Finding "core-has-no-llm-provider-packages" ($coreProviderPackages.Count -eq 0) `
+    ($(if ($coreProviderPackages.Count -eq 0) { "Core has no direct LLM provider package" } else { "Core provider packages: " + ($coreProviderPackages -join ", ") }))
+
 $cliProject = Get-Content -Raw (Join-Path $rootPath "src\DocxHeaderExtractor.Cli\DocxHeaderExtractor.Cli.csproj")
 Add-Finding "cli-does-not-reference-eval" ($cliProject -notmatch 'DocxHeaderExtractor\.Eval') `
     ($(if ($cliProject -notmatch 'DocxHeaderExtractor\.Eval') { "CLI has no Eval project reference" } else { "CLI still references DocxHeaderExtractor.Eval" }))

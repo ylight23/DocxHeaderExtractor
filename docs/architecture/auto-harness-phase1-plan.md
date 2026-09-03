@@ -21,11 +21,13 @@ tuning, or benchmark tuning.
 - [ ] WS2 — Project boundaries: `Application`, `DocumentProcessing`, `Infrastructure`; package
   ownership and Eval isolation. Boundary project shells now exist, but the parent is not complete
   until provider/source package ownership, dependency direction, and Eval isolation pass. Provider
-  implementations and an allowlisted file source resolver now live in Infrastructure; CLI no longer
+  implementations, including LLamaSharp/SGLang VLM adapters, and an allowlisted file source resolver now live in Infrastructure; CLI no longer
   has a compile-time Eval reference and uses an explicit evaluation-only plugin bridge. Web/MCP and
   CLI now inject the resolver into the common harness; Core package purity remains open. Evidence:
   `ffabc65`, `09f2c82`, `83581d1`,
   `src/DocxHeaderExtractor.Infrastructure/Sources/FileInputResourceResolver.cs`,
+  `src/DocxHeaderExtractor.Infrastructure/AI/VlmImageQuestion.cs`,
+  `src/DocxHeaderExtractor.Infrastructure/AI/SglangVlmImageQuestion.cs`,
   `src/DocxHeaderExtractor.Cli/CliHarnessComposition.cs`, and
   `src/DocxHeaderExtractor.Cli/EvaluationProjectionBridge.cs`.
 - [x] WS3 — Generic `InputResource` and `AgentTaskRequest`; legacy request adapter. Evidence:

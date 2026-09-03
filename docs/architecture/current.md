@@ -60,8 +60,8 @@ retained for existing library/test callers and is not a second authority route.
 `Application`, `DocumentProcessing`, and `Infrastructure` project boundaries now exist. Package
 versions are centrally declared in `Directory.Packages.props` without changing the pinned versions.
 Infrastructure now contains provider contracts, heading-provider implementations, prompt/cache
-adapters, fact-provider adapters, and an allowlisted file resource resolver. Core exposes only the
-neutral classifier seam. Web/MCP and the CLI normal, review, and evaluation paths wire the resolver
+adapters, fact-provider adapters, LLamaSharp/SGLang VLM adapters, and an allowlisted file resource
+resolver. Core exposes only the neutral classifier and visual-question seams. Web/MCP and the CLI normal, review, and evaluation paths wire the resolver
 and trusted semantic registry into the common harness; the MCP subprocess worker composes the same
 source boundary plus runtime state adapters. CLI has no compile-time Eval reference; explicit
 evaluation commands use `EvaluationProjectionBridge` and never load that plugin on the normal

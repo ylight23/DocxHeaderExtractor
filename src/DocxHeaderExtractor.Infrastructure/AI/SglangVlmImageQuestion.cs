@@ -1,8 +1,9 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
+using DocxHeaderExtractor.Core.Vision;
 
-namespace DocxHeaderExtractor.Core.Vision;
+namespace DocxHeaderExtractor.Infrastructure.AI;
 
 /// <summary>OpenAI-compatible image client for a self-hosted SGLang VLM such as Qwen2.5-VL.</summary>
 public sealed class SglangVlmImageQuestion : IMultiImageVisualQuestion
