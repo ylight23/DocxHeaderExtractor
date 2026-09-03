@@ -77,6 +77,11 @@ and `LegacyDocConverter` remains a normal input compatibility adapter. The corre
 boundary extraction and caller migration, followed by a new reachability audit; deletion before
 those gates would risk breaking compatibility.
 
+The repeatable mechanical audit is `scripts/architecture-phase1-audit.ps1`. At the current
+checkpoint it passes project presence, central package versions, and the Core project-reference
+boundary; it remains blocked by concrete provider implementations in `Core/Llm` and the CLI's
+direct reference to `DocxHeaderExtractor.Eval`.
+
 ## Phase control
 
 `HUMAN_ADJUDICATION = NOT_STARTED_IN_PHASE1`

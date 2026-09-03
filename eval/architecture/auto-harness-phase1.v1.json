@@ -36,9 +36,12 @@
   },
   "verification": {
     "baselineReleaseBuild": "PASS",
-    "focusedTests": "33/33 PASS",
+    "baselineFocusedTests": "33/33 PASS",
+    "focusedTests": "46/46 PASS",
     "releaseBuild": "PASS",
-    "diffCheck": "PASS"
+    "diffCheck": "PASS",
+    "mechanicalAudit": "BLOCKED",
+    "mechanicalAuditScript": "scripts/architecture-phase1-audit.ps1"
   },
   "legacyRemoval": {
     "deleted": [

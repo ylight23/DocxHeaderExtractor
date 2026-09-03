@@ -42,8 +42,9 @@ tuning, or benchmark tuning.
 - [ ] WS10 — Persistence ports, lifecycle/versioning, provenance, secret redaction, telemetry seam.
 - [ ] WS11 — Web/CLI/MCP composition-root cutover with zero normal bypasses.
 - [ ] WS12 — Central build/package rules and architecture enforcement.
-  Progress: package versions are centralized in `Directory.Packages.props`; architecture
-  enforcement and dependency-direction gates remain open.
+  Progress: package versions are centralized in `Directory.Packages.props`; the repeatable audit is
+  `scripts/architecture-phase1-audit.ps1`. Current audit is BLOCKED only on provider implementations
+  still in Core and the CLI→Eval project reference; dependency-direction gates remain open.
 - [ ] WS13 — Final reachability/dead-code/root-hygiene audit and only justified deletions.
 - [ ] WS14 — Extension contract proof for capability, concept/schema, provider, source, and task.
 - [ ] WS15 — Phase 2 test seams prepared without running quality/provider tests.
