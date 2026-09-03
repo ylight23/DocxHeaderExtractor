@@ -25,8 +25,9 @@ tuning, or benchmark tuning.
 - [x] WS3 — Generic `InputResource` and `AgentTaskRequest`; legacy request adapter. Evidence:
   commit `0f67d4b`, `src/DocxHeaderExtractor.Application/Tasks/ResourceContracts.cs`,
   `src/DocxHeaderExtractor.AgentHarness/GenericTaskRequestAdapter.cs`, and contract tests.
-- [ ] WS4 — Intent compiler: closed `IntentProposal`, validator states/clarification,
-  provider-independent `SemanticTaskPlan`, bounded `ExecutionPlan`.
+- [x] WS4 — Intent compiler: closed `IntentProposal`, validator states/clarification,
+  provider-independent `SemanticTaskPlan`, bounded `ExecutionPlan`. Evidence: commit `44833ef`,
+  `src/DocxHeaderExtractor.Application/Tasks/TaskPlanCompiler.cs`, and architecture contract tests.
 - [ ] WS5 — Dynamic concepts/schema registries, alias/version/lifecycle, fail-closed resolution.
 - [ ] WS6 — Generic capability descriptors/registry/resolver and explicit capability gaps.
 - [ ] WS7 — Generic policy, approval state, budgets, cancellation, failure taxonomy, typed retry.

@@ -32,6 +32,8 @@ retained for existing library/test callers and is not a second authority route.
 - Parser-owned source coordinates are the only materialization source.
 - `ValidatedStructure` is structural authority.
 - `ValidatedFact` is fact authority.
+- Application plan compilation creates stable `PlanId` values from task/resource identity and
+  capability metadata; explicit idempotency keys override the resource identity when supplied.
 - Policy/guardrails authorize transfer and mutation; a model cannot grant permission.
 - Projection and formatting cannot create authority.
 - Accuracy-99 gold, human adjudication, and provider-quality tuning are outside Phase 1.
@@ -41,7 +43,7 @@ retained for existing library/test callers and is not a second authority route.
 | Project | Current role | Current references |
 |---|---|---|
 | `Core` | authority contracts, OpenXML/PDF/LLM implementation and pipeline (legacy mixed boundary) | package dependencies include OpenXML, PdfPig, PDFtoImage, LLamaSharp |
-| `Application` | provider-independent intent, plan, policy, projection, and task result contracts | `Core` |
+| `Application` | provider-independent intent, plan compiler, policy, projection, task/resource and capability contracts | `Core` |
 | `DocumentProcessing` | application processing service and processing contracts; delegates authority | `Application`, `Core` |
 | `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Application`, `DocumentProcessing`, `Core` |
 | `Web` | HTTP host and UI composition root | `AgentHarness`, `Core` |
