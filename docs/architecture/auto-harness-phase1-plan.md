@@ -34,7 +34,9 @@ tuning, or benchmark tuning.
   Application; host-specific selection remains an adapter until generic resolution is wired.
 - [ ] WS7 — Generic policy, approval state, budgets, cancellation, failure taxonomy, typed retry.
   Progress: generic run status, failure, provenance, retry, cancellation, and deadline contracts
-  exist; runtime lifecycle/policy enforcement remains open.
+  exist; external-call budget is fail-closed in the application policy evaluator. Runtime lifecycle
+  persistence and typed retry execution remain open. Evidence: commits `5af36a9`, `1fcb241`,
+  `b33de5c`, `c828596`.
 - [ ] WS8 — Microsoft AI/Agent Framework seams and generic harness/skill catalog isolation.
 - [ ] WS9 — Generic source-grounded execution and non-authoritative projection/output negotiation.
 - [ ] WS10 — Persistence ports, lifecycle/versioning, provenance, secret redaction, telemetry seam.

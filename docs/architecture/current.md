@@ -34,7 +34,8 @@ retained for existing library/test callers and is not a second authority route.
 - `ValidatedFact` is fact authority.
 - Application plan compilation creates stable `PlanId` values from task/resource identity and
   capability metadata; explicit idempotency keys override the resource identity when supplied.
-- Policy/guardrails authorize transfer and mutation; a model cannot grant permission.
+- Policy/guardrails authorize transfer and mutation; a model cannot grant permission. A remote
+  capability with an exhausted provider-call budget is denied before execution.
 - Projection and formatting cannot create authority.
 - Accuracy-99 gold, human adjudication, and provider-quality tuning are outside Phase 1.
 
