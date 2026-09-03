@@ -5,7 +5,7 @@
   "baseline": "732c3505afc5dd312423ed0fa58056192fb39608",
   "branch": "architecture/auto-harness-phase1",
   "isolatedWorktree": "C:\\DocxHeaderExtractor-auto-harness",
-  "lastVerifiedCommit": "c88f713",
+  "lastVerifiedCommit": "c9e2379",
   "applicationOrchestrator": "DocxHeaderExtractor.AgentHarness.DocumentAgentHarness",
   "flow": [
     "IntentProposal",
@@ -41,7 +41,7 @@
     "focusedTests": "15/15 PASS (latest architecture contract filter)",
     "releaseBuild": "PASS",
     "diffCheck": "PASS",
-    "mechanicalAudit": "BLOCKED: CLI→Eval project reference; provider isolation PASS",
+    "mechanicalAudit": "PASS: compile-time boundaries and explicit Eval bridge",
     "mechanicalAuditScript": "scripts/architecture-phase1-audit.ps1"
   },
   "legacyRemoval": {
