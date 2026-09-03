@@ -50,14 +50,14 @@ tuning, or benchmark tuning.
   now provides atomic JSON run persistence and redacted JSONL telemetry, and Web/MCP compose them
   from `DHX_RUNTIME_STATE_DIR`; end-to-end lifecycle callers remain open. Evidence: commit
   `1a40c24`, `src/DocxHeaderExtractor.Application/Runtime/RuntimeContracts.cs`,
-  `src/DocxHeaderExtractor.Infrastructure/Runtime/`, and contract tests.
+  `src/DocxHeaderExtractor.Infrastructure/Runtime/`, commit `de407c6`, and contract tests.
 - [ ] WS11 — Web/CLI/MCP composition-root cutover with zero normal bypasses.
 - [ ] WS12 — Central build/package rules and architecture enforcement.
   Progress: package versions are centralized in `Directory.Packages.props`; the repeatable audit is
   `scripts/architecture-phase1-audit.ps1`. The audit passes provider isolation and remains blocked
   on the CLI→Eval project reference, which is retained for explicit evaluation commands and requires
   a separate host cutover. Evidence: provider seam commits `7a0e651` and `cb113e9`, runtime adapter
-  commit after this checkpoint, plus the audit script.
+  commit `de407c6`, plus the audit script.
 - [ ] WS13 — Final reachability/dead-code/root-hygiene audit and only justified deletions.
 - [ ] WS14 — Extension contract proof for capability, concept/schema, provider, source, and task.
 - [ ] WS15 — Phase 2 test seams prepared without running quality/provider tests.
