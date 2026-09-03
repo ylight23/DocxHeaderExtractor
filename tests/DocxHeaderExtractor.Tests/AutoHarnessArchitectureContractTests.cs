@@ -124,4 +124,30 @@ public sealed class AutoHarnessArchitectureContractTests
         Assert.Equal(PolicyDecisionKind.Denied, decision.Kind);
         Assert.Equal("external-call-budget-exhausted", decision.Code);
     }
+
+    [Fact]
+    public void Semantic_registry_resolves_active_aliases_and_fails_closed()
+    {
+        var registry = new DocxHeaderExtractor.Application.Semantics.SemanticRegistry();
+        registry.Register(new DocxHeaderExtractor.Application.Semantics.SemanticDefinition(
+            "outline.heading", 1,
+            DocxHeaderExtractor.Application.Semantics.SemanticDefinitionKind.Schema,
+            DocxHeaderExtractor.Application.Semantics.SemanticDefinitionLifecycle.Active,
+            ["heading-v1"]));
+        registry.Register(new DocxHeaderExtractor.Application.Semantics.SemanticDefinition(
+            "draft.heading", 1,
+            DocxHeaderExtractor.Application.Semantics.SemanticDefinitionKind.Schema,
+            DocxHeaderExtractor.Application.Semantics.SemanticDefinitionLifecycle.Draft,
+            []));
+
+        var resolved = registry.Resolve("heading-v1",
+            DocxHeaderExtractor.Application.Semantics.SemanticDefinitionKind.Schema);
+        var draft = registry.Resolve("draft.heading");
+        var missing = registry.Resolve("heading-v2");
+
+        Assert.True(resolved.IsResolved);
+        Assert.Equal("outline.heading", resolved.Definition!.Key);
+        Assert.False(draft.IsResolved);
+        Assert.False(missing.IsResolved);
+    }
 }
