@@ -5,7 +5,7 @@
   "baseline": "732c3505afc5dd312423ed0fa58056192fb39608",
   "branch": "architecture/auto-harness-phase1",
   "isolatedWorktree": "C:\\DocxHeaderExtractor-auto-harness",
-  "lastVerifiedCommit": "45ae0f3",
+  "lastVerifiedCommit": "ee5783d",
   "applicationOrchestrator": "DocxHeaderExtractor.AgentHarness.DocumentAgentHarness",
   "flow": [
     "IntentProposal",
@@ -41,7 +41,7 @@
     "focusedTests": "51/51 PASS (latest host + architecture + extension filter)",
     "releaseBuild": "PASS",
     "diffCheck": "PASS",
-    "mechanicalAudit": "PASS: compile-time boundaries, explicit Eval bridge, host composition, and Core LLM package isolation",
+    "mechanicalAudit": "PASS: partial mechanical audit; complete DoD gate remains BLOCKED",
     "mechanicalAuditScript": "scripts/architecture-phase1-audit.ps1"
   },
   "legacyRemoval": {
