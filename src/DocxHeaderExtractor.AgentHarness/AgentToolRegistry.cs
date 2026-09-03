@@ -8,11 +8,8 @@ public sealed record AgentToolSelection(
     IDocumentActionTool? Action,
     string Rationale);
 
-public interface IAgentToolRegistry
+public interface IAgentToolRegistry : ICapabilityCatalog
 {
-    /// <summary>Toàn bộ tool đã đăng ký — để host và test soi được bề mặt quyền của một harness.</summary>
-    IReadOnlyList<CapabilityDescriptor> Descriptors { get; }
-
     AgentToolSelection Select(DocumentAgentRequest request);
 }
 
@@ -52,6 +49,22 @@ public sealed class AgentToolRegistry : IAgentToolRegistry
 
     public IReadOnlyList<CapabilityDescriptor> Descriptors =>
         [.. _extraction.Select(t => t.Descriptor), .. _actions.Select(t => t.Descriptor)];
+
+    public CapabilityResolutionResult Resolve(string capabilityId)
+    {
+        if (string.IsNullOrWhiteSpace(capabilityId))
+            return CapabilityResolutionResult.Failed("capability-id-missing");
+
+        var matches = Descriptors
+            .Where(descriptor => string.Equals(descriptor.Name, capabilityId, StringComparison.Ordinal))
+            .ToArray();
+        return matches.Length switch
+        {
+            1 => CapabilityResolutionResult.Resolved(matches[0]),
+            0 => CapabilityResolutionResult.Failed("capability-not-found"),
+            _ => CapabilityResolutionResult.Failed("capability-ambiguous"),
+        };
+    }
 
     public AgentToolSelection Select(DocumentAgentRequest request)
     {

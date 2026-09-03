@@ -77,6 +77,21 @@ public sealed class AgentHarnessTests : IDisposable
     }
 
     [Fact]
+    public void Registry_resolves_capabilities_exactly_and_rejects_unknown_ids()
+    {
+        using var tool = new FakeTool(Outline(), sendsDataExternally: false);
+        var registry = new AgentToolRegistry(tool);
+
+        var resolved = registry.Resolve("fake_extract");
+        var missing = registry.Resolve("fake-extract");
+
+        Assert.True(resolved.IsResolved);
+        Assert.Equal("fake_extract", resolved.Capability!.Name);
+        Assert.False(missing.IsResolved);
+        Assert.Equal("capability-not-found", missing.FailureReason);
+    }
+
+    [Fact]
     public async Task Duong_ghi_phu_tro_vao_thu_muc_khong_ton_tai_bi_chan_truoc_khi_chay()
     {
         var missing = Path.Combine(Path.GetTempPath(), $"dhx-no-dir-{Guid.NewGuid():N}", "dump.xml");
