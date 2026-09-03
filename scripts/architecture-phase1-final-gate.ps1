@@ -112,7 +112,7 @@ $planText = Get-Content -Raw (Join-Path $rootPath "docs\architecture\auto-harnes
 $phase2Doc = Test-Path (Join-Path $rootPath "docs\architecture\phase2-seams.md")
 $phase2Recorded = $phase2Doc -and $planText -match "Phase 2" -and $planText -match "deferred"
 Add-Check "phase2-seams-recorded" $phase2Recorded `
-    ($(if ($phase2Recorded) { "deferred Phase 2 work is recorded" } else { "deferred Phase 2 work is not recorded" }))
+    ($(if ($phase2Recorded) { "Phase 2 seam record is present and not activated" } else { "Phase 2 seam record is missing" }))
 
 $architectureDoc = Get-Content -Raw (Join-Path $rootPath "docs\architecture\auto-harness-phase1.md")
 $head = (& git -C $rootPath rev-parse HEAD).Trim()
