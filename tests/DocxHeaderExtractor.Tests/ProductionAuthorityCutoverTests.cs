@@ -1,6 +1,7 @@
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.OpenXmlLayer;
 using DocxHeaderExtractor.Core.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Nodes;
