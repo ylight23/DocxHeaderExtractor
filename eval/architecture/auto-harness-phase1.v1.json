@@ -31,12 +31,16 @@
   },
   "verification": {
     "baselineReleaseBuild": "PASS",
-    "focusedTests": "32/32 PASS",
+    "focusedTests": "33/33 PASS",
     "releaseBuild": "PASS",
     "diffCheck": "PASS"
   },
   "legacyRemoval": {
-    "deleted": [],
-    "reason": "Existing reachability audit does not prove any candidate dead."
+    "deleted": [
+      "src/DocxHeaderExtractor.AgentHarness/TaskContracts.cs",
+      "src/DocxHeaderExtractor.Core/Models/DocumentProcessingContracts.cs",
+      "src/DocxHeaderExtractor.Core/Pipeline/DocumentProcessingService.cs"
+    ],
+    "reason": "Contracts and service moved to Application/DocumentProcessing; existing legacy reachability audit still does not prove any further safe deletion candidate."
   }
 }

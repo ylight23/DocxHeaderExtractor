@@ -43,14 +43,17 @@ retained for existing library/test callers and is not a second authority route.
 | `Core` | authority contracts, OpenXML/PDF/LLM implementation and pipeline (legacy mixed boundary) | package dependencies include OpenXML, PdfPig, PDFtoImage, LLamaSharp |
 | `Application` | provider-independent intent, plan, policy, projection, and task result contracts | `Core` |
 | `DocumentProcessing` | application processing service and processing contracts; delegates authority | `Application`, `Core` |
-| `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Core` |
+| `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Application`, `DocumentProcessing`, `Core` |
 | `Web` | HTTP host and UI composition root | `AgentHarness`, `Core` |
 | `Cli` | command host and evaluation/repair commands | `AgentHarness`, `Core`, `Eval` |
 | `Mcp` | MCP host and async job adapter | `AgentHarness`, `Core` |
 | `Eval` | evaluation/replay-only adapters | `Core` |
+| `Infrastructure` | provider/source infrastructure ports (initial seam only) | `Application`, `Core` |
 
-The desired `Infrastructure` project does not yet exist. `Application` and `DocumentProcessing` are
-now present, while package/provider ownership and deeper Core purity remain open Phase 1 work.
+`Application`, `DocumentProcessing`, and `Infrastructure` project boundaries now exist. The
+Infrastructure project currently contains provider contracts only; concrete provider/source
+implementations and package ownership still remain open Phase 1 work. Deeper Core purity and Eval
+isolation are also open.
 
 ## Persisted artifacts and ownership
 

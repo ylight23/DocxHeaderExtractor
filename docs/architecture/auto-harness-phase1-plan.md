@@ -19,8 +19,9 @@ tuning, or benchmark tuning.
 - [x] WS1 — Baseline, reachability, and canonical ADR. Evidence: `docs/architecture/current.md`,
   `docs/architecture/legacy-reachability.md`, `docs/architecture/clean-architecture-review.md`.
 - [ ] WS2 — Project boundaries: `Application`, `DocumentProcessing`, `Infrastructure`; package
-  ownership and Eval isolation. `Application` and `DocumentProcessing` exist, but the parent is not
-  complete until Infrastructure/package ownership and Eval isolation pass.
+  ownership and Eval isolation. Boundary project shells now exist, but the parent is not complete
+  until provider/source package ownership, dependency direction, and Eval isolation pass. Evidence:
+  `ffabc65`, `09f2c82`, `83581d1`.
 - [x] WS3 — Generic `InputResource` and `AgentTaskRequest`; legacy request adapter. Evidence:
   commit `0f67d4b`, `src/DocxHeaderExtractor.Application/Tasks/ResourceContracts.cs`,
   `src/DocxHeaderExtractor.AgentHarness/GenericTaskRequestAdapter.cs`, and contract tests.
@@ -51,12 +52,18 @@ tuning, or benchmark tuning.
   compatibility projection only.
 - [x] Contract tests cover unsupported intent, policy denial/defer, and result projection identity.
 
-Evidence for this slice must be filled with the commit SHA after commit:
+Evidence for this slice:
 
 ```text
-Commit: 38c65f3
+Commits: 38c65f3, ffabc65, 09f2c82, 0f67d4b, 83581d1
 Files: src/DocxHeaderExtractor.Application/Tasks/TaskContracts.cs,
+  src/DocxHeaderExtractor.Application/Tasks/ResourceContracts.cs,
+  src/DocxHeaderExtractor.DocumentProcessing/ProcessingContracts.cs,
+  src/DocxHeaderExtractor.DocumentProcessing/DocumentProcessingService.cs,
+  src/DocxHeaderExtractor.Infrastructure/AI/ProviderContracts.cs,
+  src/DocxHeaderExtractor.Infrastructure/DocxHeaderExtractor.Infrastructure.csproj,
   src/DocxHeaderExtractor.AgentHarness/DocumentTaskAdapters.cs,
+       src/DocxHeaderExtractor.AgentHarness/GenericTaskRequestAdapter.cs,
        src/DocxHeaderExtractor.AgentHarness/DocumentAgentHarness.cs,
        src/DocxHeaderExtractor.Web/Program.cs,
        src/DocxHeaderExtractor.Cli/Program.cs,
