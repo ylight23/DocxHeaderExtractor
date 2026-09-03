@@ -129,6 +129,21 @@ public sealed class AutoHarnessArchitectureContractTests
     }
 
     [Fact]
+    public void Generic_capability_catalog_resolves_exactly_and_fails_closed_on_ambiguity()
+    {
+        static DocxHeaderExtractor.Application.Capabilities.CapabilityDescriptor Capability(string name) =>
+            new(name, "test capability", DocxHeaderExtractor.Application.Capabilities.CapabilityRisk.Low,
+                SendsDataExternally: false, MutatesExternalState: false);
+
+        var catalog = new DocxHeaderExtractor.Application.Capabilities.CapabilityCatalog(
+            [Capability("extract"), Capability("extract"), Capability("inspect")]);
+
+        Assert.Equal("capability-ambiguous", catalog.Resolve("extract").FailureReason);
+        Assert.True(catalog.Resolve("inspect").IsResolved);
+        Assert.Equal("capability-not-found", catalog.Resolve("missing").FailureReason);
+    }
+
+    [Fact]
     public void Semantic_registry_resolves_active_aliases_and_fails_closed()
     {
         var registry = new DocxHeaderExtractor.Application.Semantics.SemanticRegistry();

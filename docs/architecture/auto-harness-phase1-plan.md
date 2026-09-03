@@ -35,8 +35,11 @@ tuning, or benchmark tuning.
   commit `bb70b28`, `src/DocxHeaderExtractor.Application/Semantics/SemanticRegistry.cs`, and
   the semantic registry contract test.
 - [ ] WS6 — Generic capability descriptors/registry/resolver and explicit capability gaps.
-  Progress: `CapabilityDescriptor`, `ICapabilityCatalog`, and exact fail-closed resolution are in
-  Application; host-specific selection remains an adapter until generic resolution is wired.
+  Progress: `CapabilityDescriptor`, `ICapabilityCatalog`, and `CapabilityCatalog` now provide
+  provider-independent exact resolution in Application, including explicit ambiguity failures;
+  AgentHarness delegates to that catalog. Host-specific selection remains an adapter.
+  Evidence: `src/DocxHeaderExtractor.Application/Capabilities/CapabilityCatalog.cs`,
+  `src/DocxHeaderExtractor.AgentHarness/AgentToolRegistry.cs`, and contract tests.
 - [ ] WS7 — Generic policy, approval state, budgets, cancellation, failure taxonomy, typed retry.
   Progress: generic run status, failure, provenance, retry, cancellation, and deadline contracts
   exist; external-call budget is fail-closed in the application policy evaluator. Runtime lifecycle

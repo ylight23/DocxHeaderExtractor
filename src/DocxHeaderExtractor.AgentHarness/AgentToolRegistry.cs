@@ -26,6 +26,7 @@ public sealed class AgentToolRegistry : IAgentToolRegistry
 {
     private readonly IReadOnlyList<IDocumentExtractionTool> _extraction;
     private readonly IReadOnlyList<IDocumentActionTool> _actions;
+    private readonly CapabilityCatalog _capabilities;
 
     public AgentToolRegistry(IDocumentExtractionTool extraction, IDocumentActionTool? action = null)
         : this([extraction], action) { }
@@ -45,26 +46,13 @@ public sealed class AgentToolRegistry : IAgentToolRegistry
         if (_extraction.Count == 0)
             throw new ArgumentException("Cần ít nhất một tool phân tích.", nameof(extraction));
         _actions = actions.ToArray();
+        _capabilities = new CapabilityCatalog(
+            [.. _extraction.Select(t => t.Descriptor), .. _actions.Select(t => t.Descriptor)]);
     }
 
-    public IReadOnlyList<CapabilityDescriptor> Descriptors =>
-        [.. _extraction.Select(t => t.Descriptor), .. _actions.Select(t => t.Descriptor)];
+    public IReadOnlyList<CapabilityDescriptor> Descriptors => _capabilities.Descriptors;
 
-    public CapabilityResolutionResult Resolve(string capabilityId)
-    {
-        if (string.IsNullOrWhiteSpace(capabilityId))
-            return CapabilityResolutionResult.Failed("capability-id-missing");
-
-        var matches = Descriptors
-            .Where(descriptor => string.Equals(descriptor.Name, capabilityId, StringComparison.Ordinal))
-            .ToArray();
-        return matches.Length switch
-        {
-            1 => CapabilityResolutionResult.Resolved(matches[0]),
-            0 => CapabilityResolutionResult.Failed("capability-not-found"),
-            _ => CapabilityResolutionResult.Failed("capability-ambiguous"),
-        };
-    }
+    public CapabilityResolutionResult Resolve(string capabilityId) => _capabilities.Resolve(capabilityId);
 
     public AgentToolSelection Select(DocumentAgentRequest request)
     {

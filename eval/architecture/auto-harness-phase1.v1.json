@@ -38,7 +38,7 @@
   "verification": {
     "baselineReleaseBuild": "PASS",
     "baselineFocusedTests": "33/33 PASS",
-    "focusedTests": "69/69 PASS",
+    "focusedTests": "41/41 PASS (latest AgentHarness + architecture contract filter)",
     "releaseBuild": "PASS",
     "diffCheck": "PASS",
     "mechanicalAudit": "BLOCKED: CLI→Eval project reference; provider isolation PASS",
