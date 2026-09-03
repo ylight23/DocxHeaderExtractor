@@ -27,7 +27,7 @@ This plan is the first Phase-2 workstream. It normalizes semantic ownership and 
 - [x] WS-H15 — Update current architecture comments/docs.
 - [ ] WS-H16 — Add and pass `source-tree-hygiene-gate.ps1`.
 - [ ] WS-H17 — Restore, Release build, relevant tests, Phase-1 gates, and diff check pass.
-- [ ] WS-H18 — Commit and push Phase-2 cleanup; do not merge `main`.
+- [x] WS-H18 — Commit and push Phase-2 cleanup; do not merge `main`.
 
 ## Evidence log
 
