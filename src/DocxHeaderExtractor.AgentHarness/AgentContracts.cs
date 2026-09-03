@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Application.Tasks;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.AgentHarness;

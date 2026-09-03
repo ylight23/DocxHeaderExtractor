@@ -51,6 +51,7 @@ public sealed class AgentHarnessTests : IDisposable
         Assert.All(result.Trace, e => Assert.Equal(result.RunId, e.RunId));
         Assert.Equal(Enumerable.Range(1, result.Trace.Count), result.Trace.Select(e => e.Sequence));
         Assert.Same(result.Outline, result.TaskResult.Value);
+        Assert.StartsWith("plan-", result.TaskResult.PlanId);
         Assert.Equal("ValidatedStructure", result.TaskResult.Projection.Authority);
         Assert.Contains("intent.validation", result.TaskResult.CompletedStages);
         Assert.Contains("projection.prompt-driven", result.TaskResult.CompletedStages);

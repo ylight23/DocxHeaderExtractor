@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.AgentHarness;
+using DocxHeaderExtractor.Application.Tasks;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -7,42 +8,37 @@ public sealed class AutoHarnessArchitectureContractTests
     [Fact]
     public void Intent_is_validated_before_it_becomes_a_task_plan()
     {
-        var request = new DocumentAgentRequest("sample.docx", AllowExternalDataTransfer: true);
+        var proposal = new IntentProposal(
+            "extract-document-structure", ["document-structure"], [], "document", null,
+            "outline", [], false);
+        var validation = IntentValidator.Validate(proposal);
 
-        var proposal = IntentProposal.From(request);
-        var intent = IntentValidator.Validate(proposal);
-
-        Assert.Equal("extract-document-structure", intent.Operation);
-        Assert.Equal(request.InputPath, intent.InputPath);
-        Assert.True(intent.ExternalDataTransferRequested);
-        Assert.True(intent is ValidatedIntent);
+        Assert.True(validation.IsExecutable);
+        Assert.Equal("extract-document-structure", validation.Intent!.Operation);
+        Assert.True(validation.Intent is ValidatedIntent);
     }
 
     [Fact]
     public void Unsupported_intent_fails_closed()
     {
-        var proposal = new IntentProposal("write-arbitrary-file", "sample.docx", false, true);
+        var proposal = new IntentProposal(
+            "write-arbitrary-file", [], [], "document", null, "outline", [], true);
+        var result = IntentValidator.Validate(proposal);
 
-        var error = Assert.Throws<InvalidOperationException>(() => IntentValidator.Validate(proposal));
-
-        Assert.Contains("Unsupported intent operation", error.Message);
+        Assert.Equal(IntentState.Unsupported, result.State);
+        Assert.Contains("operation-unsupported", result.Reasons);
     }
 
     [Fact]
     public void Policy_does_not_silently_approve_external_transfer_or_mutation()
     {
-        var descriptor = new AgentToolDescriptor(
-            "remote", "remote capability", AgentToolRisk.Medium,
-            SendsDataExternally: true, MutatesExternalState: true);
-        var plan = new ExecutionPlan("remote", descriptor, true, true);
+        var plan = new ExecutionPlan("plan", [new ExecutionStep(
+            "step", "remote", [], "input", "output")], 1, 1);
 
-        var denied = PolicyEvaluator.Evaluate(
-            plan, new DocumentAgentRequest("sample.docx"));
-        var deferred = PolicyEvaluator.Evaluate(
-            plan, new DocumentAgentRequest("sample.docx", AllowExternalDataTransfer: true)
-            {
-                WritebackTargetPath = "copy.docx",
-            });
+        var denied = PolicyEvaluator.Evaluate(plan, externalConsentGranted: false,
+            mutationRequested: false, humanReviewBeforeMutation: true);
+        var deferred = PolicyEvaluator.Evaluate(plan, externalConsentGranted: true,
+            mutationRequested: true, humanReviewBeforeMutation: true);
 
         Assert.Equal(PolicyDecisionKind.Denied, denied.Kind);
         Assert.Equal(PolicyDecisionKind.DeferredToHumanReview, deferred.Kind);

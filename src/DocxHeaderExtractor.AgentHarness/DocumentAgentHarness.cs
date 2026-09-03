@@ -1,5 +1,7 @@
 ﻿using DocxHeaderExtractor.Core.Models;
 
+using DocxHeaderExtractor.Application.Tasks;
+
 namespace DocxHeaderExtractor.AgentHarness;
 
 /// <summary>
@@ -98,10 +100,14 @@ public sealed class DocumentAgentHarness
 
             // 2. Dựng và kiểm tra intent trước khi chọn capability. Đây là application contract;
             // input guardrail vẫn là nơi duy nhất quyết định file có thực sự tồn tại/hợp lệ.
-            var proposal = IntentProposal.From(request);
+            var proposal = DocumentTaskAdapters.Propose(request);
             await EmitAsync("intent.proposal", AgentRunEventKind.Completed,
-                $"Intent {proposal.Operation} cho {Path.GetFileName(proposal.InputPath)}.");
-            var intent = IntentValidator.Validate(proposal);
+                $"Intent {proposal.Operation} cho {Path.GetFileName(request.InputPath)}.");
+            var intentValidation = IntentValidator.Validate(proposal);
+            if (!intentValidation.IsExecutable && intentValidation.Intent is null)
+                throw new InvalidOperationException(
+                    $"Intent không thực thi được: {string.Join(", ", intentValidation.Reasons)}.");
+            var intent = intentValidation.Intent!;
             await EmitAsync("intent.validation", AgentRunEventKind.Passed,
                 "Intent hợp lệ; chưa cấp quyền thực thi hay tạo authority.");
 
@@ -110,19 +116,19 @@ public sealed class DocumentAgentHarness
             var selection = _registry.Select(request);
             var tool = selection.Extraction;
             var actionTool = selection.Action;
-            var semanticPlan = SemanticTaskPlanner.Create(intent, selection);
+            var semanticPlan = DocumentTaskAdapters.CreateSemanticPlan(intent, selection);
             await EmitAsync("plan.semantic", AgentRunEventKind.Completed,
                 $"SemanticTaskPlan={semanticPlan.TaskName}.");
-            var executionPlan = ExecutionPlanner.Create(semanticPlan, selection, _skill);
+            var executionPlan = DocumentTaskAdapters.CreateExecutionPlan(semanticPlan, selection, _skill);
             await EmitAsync("plan.execution", AgentRunEventKind.Completed,
-                $"ExecutionPlan dùng capability {executionPlan.CapabilityName}.");
+                $"ExecutionPlan dùng capability {executionPlan.Steps[0].CapabilityId}.");
             await EmitAsync("plan.tools", AgentRunEventKind.Passed, $"Chọn {selection.Rationale}");
             await EmitAsync("capability.resolve", AgentRunEventKind.Passed,
                 $"Resolved capability {tool.Descriptor.Name}.");
 
             // PolicyEvaluator chỉ mô tả quyết định ở application boundary. Các guardrail hiện hữu
             // tiếp tục là enforcement point để không tạo một policy implementation song song.
-            var policy = PolicyEvaluator.Evaluate(executionPlan, request);
+            var policy = DocumentTaskAdapters.EvaluatePolicy(executionPlan, selection, request, _skill);
             await EmitAsync("policy.approval", policy.Kind == PolicyDecisionKind.Denied
                     ? AgentRunEventKind.Skipped
                     : AgentRunEventKind.Completed,
@@ -281,6 +287,7 @@ public sealed class DocumentAgentHarness
             {
                 TaskResult = new GenericTaskResult<DocumentOutline>(
                     runId,
+                    semanticPlan.PlanId,
                     outcome.ToString(),
                     new PromptDrivenProjection<DocumentOutline>(
                         outline,
