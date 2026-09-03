@@ -61,13 +61,14 @@ tuning, or benchmark tuning.
   `ITaskRunStore`, `ITaskTelemetrySink`, and conservative `ISecretRedactor` contracts. Infrastructure
   now provides atomic JSON run persistence and redacted JSONL telemetry, and Web/MCP compose them
   from `DHX_RUNTIME_STATE_DIR`; `DocumentAgentHarness` records Running and terminal lifecycle
-  states when these ports are injected. Evidence: commit
-  `1a40c24`, `src/DocxHeaderExtractor.Application/Runtime/RuntimeContracts.cs`,
+  states when these ports are injected. Evidence: commits `1a40c24` and `425880e`,
+  `src/DocxHeaderExtractor.Application/Runtime/RuntimeContracts.cs`,
   `src/DocxHeaderExtractor.Infrastructure/Runtime/`, lifecycle wiring commit, and contract tests.
 - [ ] WS11 — Web/CLI/MCP composition-root cutover with zero normal bypasses.
   Progress: Web/MCP and the CLI normal, review, and evaluation paths now use the common allowlisted
   source resolver and trusted semantic registry; the MCP subprocess worker composes the same source
   boundary plus runtime state adapters. Final bypass/reachability proof remains open.
+  Evidence: `e2c4f5d`, `CliHarnessComposition.cs`, and the host E2E composition assertion.
 - [ ] WS12 — Central build/package rules and architecture enforcement.
   Progress: package versions are centralized in `Directory.Packages.props`; the repeatable audit is
   `scripts/architecture-phase1-audit.ps1`. The audit passes provider isolation and remains blocked
