@@ -37,8 +37,9 @@ tuning, or benchmark tuning.
 - [ ] WS5 — Dynamic concepts/schema registries, alias/version/lifecycle, fail-closed resolution.
   Progress: the provider-independent `SemanticRegistry` contract now supports concept/schema
   definitions, aliases, version selection, lifecycle filtering, and fail-closed resolution in
-  `Application`. Trusted generic defaults are now created by `SemanticRegistryDefaults` and
-  composed by Web/MCP; external configuration registration and feature consumers remain open.
+  `Application`. Trusted generic defaults and explicitly supplied trusted extensions are now
+  created by `SemanticRegistryDefaults` and composed by Web/MCP; broader feature consumers remain
+  open.
   Evidence: commit `bb70b28`, `src/DocxHeaderExtractor.Application/Semantics/SemanticRegistry.cs`,
   and the semantic registry contract tests.
 - [ ] WS6 — Generic capability descriptors/registry/resolver and explicit capability gaps.
