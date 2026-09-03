@@ -193,7 +193,7 @@ public sealed class KeyPackageTargetGuardrail : IDocumentAgentGuardrail
 }
 
 /// <summary>
-/// Soi các đường ghi phụ mà tool tự khai (<see cref="AgentToolDescriptor.SideEffectPaths"/>), áp
+/// Soi các đường ghi phụ mà tool tự khai (capability side-effect paths), áp
 /// đúng hai chốt như đích writeback: không được trùng tài liệu nguồn, và thư mục đích phải có sẵn.
 /// <para>
 /// Lý do tồn tại: pipeline ghi document view ra <c>DumpXmlPath</c> ngay giữa lượt chạy, không đi

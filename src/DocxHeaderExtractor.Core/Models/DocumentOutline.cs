@@ -161,7 +161,7 @@ public sealed record OutlinePass(
     [property: JsonPropertyName("sentDataExternally")] bool SentDataExternally);
 
 /// <summary>
-/// Những gì lượt chạy ĐÃ LÀM, đối lại với những gì <c>AgentToolDescriptor</c> hứa trước khi chạy.
+/// Những gì lượt chạy ĐÃ LÀM, đối lại với capability metadata đã hứa trước khi chạy.
 /// <para>
 /// Lý do tồn tại: harness nhìn cả pipeline là MỘT tool và chốt <c>SendsDataExternally</c> đúng một
 /// lần lúc dựng tool, trong khi bên trong có tới năm lượt hỏi mô hình, mỗi lượt gửi một tập nội
