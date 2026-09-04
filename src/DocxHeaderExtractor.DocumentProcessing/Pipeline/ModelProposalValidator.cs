@@ -23,6 +23,7 @@ public static class ModelProposalValidator
         ModelProposal proposal,
         HeadingPolicy? policy = null)
     {
+        ArgumentNullException.ThrowIfNull(proposal);
         policy ??= new HeadingPolicy();
         var isOutlineRole = policy.Includes(proposal.Role);
         // Heading proposals now pass through the generic source/span gate. Evidence and marker
@@ -50,6 +51,9 @@ public static class ModelProposalValidator
             (source is not null && string.Equals(source.SourceId, proposal.SourceId, StringComparison.Ordinal));
         var spanValid = structuralValidation?.ProposedSpanValid ??
             (!isOutlineRole || proposal.HeadingSpan is { } span && source is not null && span.IsValidFor(source.RawText));
+        var parserBoundaryValid = !isOutlineRole ||
+            proposal.HeadingSpan is { } candidateSpan && source is not null &&
+            IsParserBoundaryAligned(source, candidateSpan);
         var evidenceValid = proposal.SemanticEvidence.Distinct().Count() == proposal.SemanticEvidence.Count &&
                             proposal.VisualEvidence.Distinct().Count() == proposal.VisualEvidence.Count;
         var markerValid = source?.Marker is null || source.Marker.Raw.Length > 0;
@@ -60,10 +64,12 @@ public static class ModelProposalValidator
             markerValid,
             MarkerSequenceValid: false,
             HierarchyValid: false,
-            ParentValid: false);
+            ParentValid: false,
+            ParserBoundaryValid: parserBoundaryValid);
 
         var reason = !grounded ? "source-not-grounded"
             : !spanValid ? "invalid-or-missing-heading-span"
+            : !parserBoundaryValid ? "span-not-parser-boundary"
             : !evidenceValid ? "duplicate-evidence-tag"
             : !markerValid ? "invalid-marker-facts"
             : null;
@@ -75,5 +81,15 @@ public static class ModelProposalValidator
         if (!span.IsValidFor(source.RawText))
             throw new ArgumentOutOfRangeException(nameof(span), "Heading span is outside immutable source text.");
         return source.RawText[span.Start..span.End];
+    }
+
+    private static bool IsParserBoundaryAligned(SourceFacts source, SourceTextSpan span)
+    {
+        if (!span.IsValidFor(source.RawText)) return false;
+        var boundaries = source.ParserBoundaries.Count == 0
+            ? SourceTextBoundaryMap.For(source.RawText)
+            : source.ParserBoundaries;
+        return SourceTextBoundaryMap.Contains(boundaries, span.Start) &&
+               SourceTextBoundaryMap.Contains(boundaries, span.End);
     }
 }

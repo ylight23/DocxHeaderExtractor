@@ -59,6 +59,7 @@ public static class SourceFactsBuilder
             },
             Marker = marker,
             ObservedEvidence = observed,
+            ParserBoundaries = SourceTextBoundaryMap.For(paragraph.Text),
         };
     }
 
@@ -103,6 +104,7 @@ public static class SourceFactsBuilder
             },
             Marker = marker,
             ObservedEvidence = observed,
+            ParserBoundaries = SourceTextBoundaryMap.For(block.Text),
         };
     }
 

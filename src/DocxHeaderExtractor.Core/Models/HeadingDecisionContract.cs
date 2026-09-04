@@ -14,6 +14,12 @@ public sealed record SourceFacts
     public required SourceTextSpan RawSpan { get; init; }
     public MarkerFacts? Marker { get; init; }
     public IReadOnlyList<ObservedEvidence> ObservedEvidence { get; init; } = [];
+
+    /// <summary>
+    /// Parser-owned UTF-16 boundaries that a proposal may point to. An empty value means the
+    /// deterministic boundary map derived from <see cref="RawText"/> is used.
+    /// </summary>
+    public IReadOnlyList<int> ParserBoundaries { get; init; } = [];
 }
 
 public sealed record SourceTextSpan(int Start, int End)
@@ -138,7 +144,8 @@ public sealed record HeadingValidation(
     bool MarkerSequenceValid,
     bool HierarchyValid,
     bool ParentValid,
-    string? ParentResolution = null);
+    string? ParentResolution = null,
+    bool ParserBoundaryValid = true);
 
 /// <summary>The only heading contract that downstream writeback/output may consume.</summary>
 public sealed record ValidatedHeading
@@ -150,6 +157,13 @@ public sealed record ValidatedHeading
     public required int Level { get; init; }
     public string? ParentId { get; init; }
     public required HeadingValidation Validation { get; init; }
+    public double? Confidence { get; init; }
+    public IReadOnlyList<ObservedEvidence> SourceEvidence { get; init; } = [];
+    public IReadOnlyList<SemanticEvidenceTag> SemanticEvidence { get; init; } = [];
+    public IReadOnlyList<VisualEvidenceTag> VisualEvidence { get; init; } = [];
+    public string Status { get; init; } = "validated";
+    public string? DiagnosticReason { get; init; }
+    public string Provenance { get; init; } = "source-facts-validator";
 }
 
 public sealed record HeadingPolicy(
@@ -165,4 +179,36 @@ public sealed record HeadingPolicy(
         ProposedRole.ListItemTopic => IncludeListItemTopic,
         _ => false,
     };
+}
+
+/// <summary>
+/// Deterministic UTF-16 boundaries derived from parser-owned source text. It is intentionally
+/// vocabulary-free: models may select a boundary, but they cannot invent one.
+/// </summary>
+public static class SourceTextBoundaryMap
+{
+    public static IReadOnlyList<int> For(string sourceText)
+    {
+        ArgumentNullException.ThrowIfNull(sourceText);
+
+        var boundaries = new SortedSet<int> { 0, sourceText.Length };
+        for (var index = 0; index < sourceText.Length; index++)
+        {
+            var current = sourceText[index];
+            var previous = index == 0 ? '\0' : sourceText[index - 1];
+            if (char.IsWhiteSpace(current) || char.IsPunctuation(current) || char.IsSymbol(current))
+            {
+                boundaries.Add(index);
+                boundaries.Add(index + 1);
+            }
+
+            if (index > 0 && char.IsLetterOrDigit(current) != char.IsLetterOrDigit(previous))
+                boundaries.Add(index);
+        }
+
+        return boundaries.ToArray();
+    }
+
+    public static bool Contains(IReadOnlyList<int> boundaries, int offset) =>
+        boundaries.Contains(offset);
 }
