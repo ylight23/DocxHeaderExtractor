@@ -86,6 +86,41 @@ public sealed class PdfCandidateContractsTests
     }
 
     [Fact]
+    public void ValidatorRejectsPointerInsideSourceToken()
+    {
+        var line = Line("Operating context. The committee met.", 700);
+        var context = PdfCandidateContextBuilder.Build(
+            [Block("b1", line)], [new PdfLineBlockAnnotation(line, false, false, false, false, "semantic-candidate")]);
+        var decision = new PdfBlockDecision("b1", PdfBlockRole.HeadingTopic, 0.99, "topic", new TextOffsetSpan(0, 5));
+
+        var trace = Assert.Single(PdfProposalValidator.Trace(context, [decision]));
+
+        Assert.Equal("invalid", trace.SpanStatus);
+        Assert.Equal("invalid-pointer-boundary", trace.Reason);
+        Assert.False(PdfProposalValidator.IsEligibleHeading(decision, context["b1"]));
+    }
+
+    [Fact]
+    public void ValidatorAcceptsGenericWholeAndPrefixBoundaries()
+    {
+        var whole = Line("Operating context. The committee met.", 700);
+        var prefix = Line("Heading title — body prose", 680);
+        var contexts = PdfCandidateContextBuilder.Build(
+            [Block("whole", whole), Block("prefix", prefix)],
+            [new PdfLineBlockAnnotation(whole, false, false, false, false, "semantic-candidate"),
+             new PdfLineBlockAnnotation(prefix, false, false, false, false, "semantic-candidate")]);
+        var decisions = new[]
+        {
+            new PdfBlockDecision("whole", PdfBlockRole.HeadingTopic, 0.99, "topic", new TextOffsetSpan(0, whole.Text.Length)),
+            new PdfBlockDecision("prefix", PdfBlockRole.HeadingTopic, 0.99, "topic", new TextOffsetSpan(0, "Heading title".Length)),
+        };
+
+        var validated = PdfProposalValidator.Validate(contexts, decisions);
+
+        Assert.Equal(2, validated.Count);
+    }
+
+    [Fact]
     public void HierarchyResolverUsesArabicMarkerDepthForParent()
     {
         var first = Line("1. Parent", 700);

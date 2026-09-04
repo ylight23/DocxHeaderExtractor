@@ -72,6 +72,40 @@ internal sealed record PdfCandidateContext(
     public IReadOnlyList<string> SiblingStructuralBlocks { get; init; } = [];
 }
 
+/// <summary>
+/// Parser-owned UTF-16 source boundaries for pointer spans. The model may select from this map,
+/// but it never creates or materializes heading text. Boundaries are derived only from immutable
+/// source text and remain independent of document-specific literals.
+/// </summary>
+internal static class PdfSpanBoundaryMap
+{
+    public static IReadOnlyList<int> For(string sourceText)
+    {
+        ArgumentNullException.ThrowIfNull(sourceText);
+
+        var boundaries = new SortedSet<int> { 0, sourceText.Length };
+        for (var index = 0; index < sourceText.Length; index++)
+        {
+            var current = sourceText[index];
+            var previous = index == 0 ? '\0' : sourceText[index - 1];
+
+            if (char.IsWhiteSpace(current) || char.IsPunctuation(current) || char.IsSymbol(current))
+            {
+                boundaries.Add(index);
+                boundaries.Add(index + 1);
+            }
+
+            if (index > 0 && char.IsLetterOrDigit(current) != char.IsLetterOrDigit(previous))
+                boundaries.Add(index);
+        }
+
+        return boundaries.ToArray();
+    }
+
+    public static bool Contains(string sourceText, int offset) =>
+        offset >= 0 && offset <= sourceText.Length && For(sourceText).Contains(offset);
+}
+
 /// <summary>Validated stage trace. It is diagnostic data, never a source of extraction facts.</summary>
 public sealed record PdfCandidateStageTrace(
     string Id,
@@ -349,6 +383,13 @@ internal static class PdfProposalValidator
         if (span.Start < 0 || span.End <= span.Start || span.End > sourceText.Length)
         {
             reason = "invalid-pointer-span";
+            return "invalid";
+        }
+
+        if (!PdfSpanBoundaryMap.Contains(sourceText, span.Start) ||
+            !PdfSpanBoundaryMap.Contains(sourceText, span.End))
+        {
+            reason = "invalid-pointer-boundary";
             return "invalid";
         }
 
