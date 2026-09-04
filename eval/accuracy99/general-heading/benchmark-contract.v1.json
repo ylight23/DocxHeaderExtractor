@@ -1,0 +1,40 @@
+{
+  "artifactKind": "accuracy99_benchmark_contract",
+  "contractVersion": "accuracy99-general-heading-v1",
+  "accuracyClaim": "NOT_YET_ESTABLISHED",
+  "authority": "HUMAN_GOLD_REQUIRED",
+  "goldPolicy": {
+    "acceptedArtifactKind": "human_gold",
+    "acceptedAuthorityClass": "HUMAN_GOLD",
+    "silverArtifactsAreEvidence": false,
+    "exhaustiveSourceLabelsRequired": true,
+    "ambiguousAndNotObservableAreNotNegatives": true
+  },
+  "joinPolicy": {
+    "primaryIdentity": "SourceId",
+    "spanCoordinateSystem": "UTF-16 source text offsets",
+    "textOnlyJoin": false
+  },
+  "profiles": [
+    {
+      "name": "structural",
+      "providerCalls": 0,
+      "status": "READY_FOR_MEASUREMENT"
+    },
+    {
+      "name": "product",
+      "providerCalls": "REQUIRES_EXPLICIT_PROVIDER",
+      "status": "NOT_MEASURED"
+    }
+  ],
+  "splits": [
+    "DEV",
+    "BLIND_HOLDOUT"
+  ],
+  "finalClaimPolicy": {
+    "minimumPrecision": 0.99,
+    "minimumRecall": 0.99,
+    "roundingIsNotAllowed": true,
+    "claimStatusWithoutHumanGold": "NOT_MEASURED"
+  }
+}
