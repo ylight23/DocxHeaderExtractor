@@ -73,6 +73,30 @@ public sealed class ApprovedWritebackTests
     }
 
     [Fact]
+    public void Source_backed_text_correction_is_derived_without_mutating_review()
+    {
+        var source = Source("doc-3", Paragraph("p-1", 0, "prefix corrected suffix"));
+        var review = Review("doc-3", new ReviewHeadingDto(
+            "p-1", "corrected", 1, new ReviewOffsetSpan(7, 15), .9, "RequiresReview", [],
+            new HeadingProvenanceDto("p-1", "docx", 0, null, "test")));
+        var before = JsonSerializer.Serialize(review, JsonOptions);
+        var record = new HumanReviewRecord(
+            "doc-3",
+            new HumanReviewDecision("p-1", HumanReviewAction.Correct, "correct", 2, "narrow"),
+            ReviewState.Corrected,
+            DateTimeOffset.UtcNow);
+
+        var plan = ApprovedWritebackPlanProjector.Build(review, [record], source);
+        var decision = Assert.Single(plan.Headings);
+
+        Assert.True(plan.IsReady);
+        Assert.Equal("correct", decision.Text);
+        Assert.Equal(new ReviewOffsetSpan(7, 14), decision.Span);
+        Assert.Equal(2, decision.Level);
+        Assert.Equal(before, JsonSerializer.Serialize(review, JsonOptions));
+    }
+
+    [Fact]
     public void Executor_requires_explicit_approval_and_writes_a_copy_only()
     {
         var sourcePath = Path.Combine(Path.GetTempPath(), $"dhx-r17-{Guid.NewGuid():N}.docx");

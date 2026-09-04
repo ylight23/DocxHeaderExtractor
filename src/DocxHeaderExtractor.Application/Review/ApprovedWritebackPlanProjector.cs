@@ -21,7 +21,9 @@ public static class ApprovedWritebackPlanProjector
         {
             if (!string.Equals(record.DocumentId, review.DocumentId, StringComparison.Ordinal))
                 return Deferred(review.DocumentId, "review-record-document-mismatch", []);
-            latest[record.Decision.HeadingId] = record;
+            if (!latest.TryGetValue(record.Decision.HeadingId, out var previous) ||
+                record.RecordedAtUtc >= previous.RecordedAtUtc)
+                latest[record.Decision.HeadingId] = record;
         }
 
         var knownHeadingIds = review.Headings.Select(heading => heading.HeadingId)
@@ -66,16 +68,29 @@ public static class ApprovedWritebackPlanProjector
                     case HumanReviewAction.Correct:
                         if (record.Decision.CorrectedText is { } correctedText)
                         {
-                            // This writeback boundary only accepts text already proven to occupy
-                            // the reviewed source span. It never invents or relocates content.
-                            if (!string.Equals(correctedText, originalText, StringComparison.Ordinal))
+                            // A correction may narrow the reviewed range only when the replacement
+                            // is a unique, source-backed substring. It never invents or relocates text.
+                            var correctedSpan = span;
+                            if (!string.Equals(correctedText, originalText, StringComparison.Ordinal) &&
+                                !TryNarrowToUniqueSourceMatch(
+                                    sourceText, span, correctedText, out correctedSpan))
                                 return Deferred(review.DocumentId,
                                     $"writeback-corrected-text-not-source-backed:{heading.HeadingId}",
                                     decisions);
+                            if (!string.Equals(correctedText, originalText, StringComparison.Ordinal))
+                            {
+                                span = correctedSpan;
+                                originalText = sourceText[span.Start..span.End];
+                            }
                             text = correctedText;
                         }
                         if (record.Decision.CorrectedLevel is { } correctedLevel)
+                        {
+                            if (correctedLevel is < 1 or > 9)
+                                return Deferred(review.DocumentId,
+                                    $"writeback-corrected-level-invalid:{heading.HeadingId}", decisions);
                             level = correctedLevel;
+                        }
                         break;
                     default:
                         return Deferred(review.DocumentId, $"writeback-action-invalid:{heading.HeadingId}", decisions);
@@ -129,4 +144,25 @@ public static class ApprovedWritebackPlanProjector
         string reason,
         IReadOnlyList<ReviewedHeadingDecision> decisions) =>
         new(documentId, ApprovedWritebackPlanStatus.DeferredToHuman, reason, decisions);
+
+    private static bool TryNarrowToUniqueSourceMatch(
+        string sourceText,
+        TextOffsetSpan reviewedSpan,
+        string correctedText,
+        out TextOffsetSpan correctedSpan)
+    {
+        correctedSpan = new TextOffsetSpan(0, 0);
+        if (correctedText.Length == 0 || correctedText.Length > reviewedSpan.End - reviewedSpan.Start)
+            return false;
+
+        var match = sourceText.IndexOf(correctedText, reviewedSpan.Start, StringComparison.Ordinal);
+        if (match < reviewedSpan.Start || match + correctedText.Length > reviewedSpan.End)
+            return false;
+        if (sourceText.IndexOf(correctedText, match + 1, StringComparison.Ordinal) is var next &&
+            next >= reviewedSpan.Start && next + correctedText.Length <= reviewedSpan.End)
+            return false;
+
+        correctedSpan = new TextOffsetSpan(match, match + correctedText.Length);
+        return true;
+    }
 }
