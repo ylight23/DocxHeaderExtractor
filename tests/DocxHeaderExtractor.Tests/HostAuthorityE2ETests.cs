@@ -155,6 +155,9 @@ public sealed class HostAuthorityE2ETests
             .LastOrDefault(node => node.TryGetProperty("type", out var type) && type.GetString() == "result");
         Assert.True(resultLine.ValueKind != JsonValueKind.Undefined, "Web không trả event result.");
         var outline = resultLine.GetProperty("outline");
+        var humanReview = resultLine.GetProperty("humanReview");
+        Assert.Equal(outline.GetProperty("paragraphCount").GetInt32() >= 0, humanReview.ValueKind == JsonValueKind.Object);
+        Assert.False(string.IsNullOrWhiteSpace(resultLine.GetProperty("humanReviewUrl").GetString()));
         return outline.GetProperty("headings").EnumerateArray()
             .Select(heading => new HostHeading(
                 GetString(heading, "stableId"),
