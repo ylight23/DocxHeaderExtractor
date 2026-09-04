@@ -1,0 +1,34 @@
+{
+  "artifactKind": "r18_final_decision",
+  "schemaVersion": "r18-final-decision-v1",
+  "baseMainRevision": "324663fe2608207086a0ac830eaea7db7dc66f98",
+  "r18_0Revision": "267308bcd4d1e932cb0230018a47d86bde8c06c7",
+  "executionRevision": "2cdac63b619898b3839cc22d512353e82fa67304",
+  "releaseBuild": "PASS",
+  "focusedTests": { "total": 141, "passed": 141, "failed": 0, "skipped": 0 },
+  "fullSuite": {
+    "total": 992,
+    "passed": 991,
+    "failed": 1,
+    "skipped": 0,
+    "newFailures": 0,
+    "changedFingerprints": 0,
+    "unjoined": 0,
+    "knownFrozenFailures": ["N15"]
+  },
+  "r18_1Decision": "NO_EVIDENCE",
+  "r18_1ProductionBehavior": "REVERTED",
+  "r18_2Decision": "TELEMETRY_ONLY",
+  "r18_2Diagnostics": {
+    "markerSequence": "NOT_MEASURED_WITHOUT_REFERENCE",
+    "hierarchyConstraint": "NOT_MEASURED_WITHOUT_REFERENCE",
+    "siblingConsistency": "NOT_APPLICABLE_WITHOUT_EXPLICIT_RELATION",
+    "providerCalls": 0
+  },
+  "r18_3": "NOT_JUSTIFIED",
+  "diffCheck": "PASS",
+  "providerCalls": 0,
+  "accuracy99": "NOT_MEASURED",
+  "frozenFailures": ["N15"],
+  "nextStep": "No further R18 architecture change; use a reference-backed evaluation corpus before any repair experiment."
+}

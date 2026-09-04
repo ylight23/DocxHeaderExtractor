@@ -11,6 +11,7 @@ public sealed class CommandLineOptions
     public List<string> Inputs { get; } = [];
     public string? OutputPath { get; private set; }
     public string? Accuracy99Operation { get; private set; }
+    public string? R18Operation { get; private set; }
     public string? Accuracy99Root { get; private set; }
     public string? Accuracy99GoldPath { get; private set; }
     public string? Accuracy99PredictionPath { get; private set; }
@@ -152,7 +153,7 @@ public sealed class CommandLineOptions
 
         int i = 0;
         if (!args[0].StartsWith('-') &&
-            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-hierarchy-facts" or "pdf-hierarchy-marker-counterfactual" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-hierarchy-facts-eval" or "pdf-shadow-compare" or "pdf-human-audit-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt" or "accuracy99")
+            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-hierarchy-facts" or "pdf-hierarchy-marker-counterfactual" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-hierarchy-facts-eval" or "pdf-shadow-compare" or "pdf-human-audit-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt" or "accuracy99" or "r18")
         {
             o.Command = args[0];
             i = 1;
@@ -163,6 +164,10 @@ public sealed class CommandLineOptions
         if (o.Command == "accuracy99" && i < args.Length && !args[i].StartsWith('-'))
         {
             o.Accuracy99Operation = args[i++];
+        }
+        else if (o.Command == "r18" && i < args.Length && !args[i].StartsWith('-'))
+        {
+            o.R18Operation = args[i++];
         }
 
         for (; i < args.Length; i++)
@@ -176,7 +181,10 @@ public sealed class CommandLineOptions
                 case "-h" or "--help": o.ShowHelp = true; break;
                 case "-m" or "--model": llama.ModelPath = Next(a); break;
                 case "-o" or "--out": o.OutputPath = Next(a); break;
-                case "--operation": o.Accuracy99Operation = Next(a); break;
+                case "--operation":
+                    if (o.Command == "r18") o.R18Operation = Next(a);
+                    else o.Accuracy99Operation = Next(a);
+                    break;
                 case "--root": o.Accuracy99Root = Next(a); break;
                 case "--accuracy-gold": o.Accuracy99GoldPath = Next(a); break;
                 case "--prediction": o.Accuracy99PredictionPath = Next(a); break;
@@ -492,6 +500,8 @@ public sealed class CommandLineOptions
           dhx accuracy99 baseline <file.docx> --profile structural --out <baseline.json>
                                               # General-heading accuracy infrastructure; Human Gold
                                               # is never inferred from .key/silver artifacts.
+          dhx r18 ownership <file.docx> --out <report.json>
+                                              # Evaluation-only decision ownership audit; never calls a provider.
 
         Tuỳ chọn chính:
           -m, --model <path.gguf>   Mô hình GGUF (mặc định: biến DHX_MODEL, appsettings.json

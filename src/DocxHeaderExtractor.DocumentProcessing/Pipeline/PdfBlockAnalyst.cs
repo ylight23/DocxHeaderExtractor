@@ -153,7 +153,8 @@ internal static class PdfBlockAnalyst
                     batchDeadline.CancelAfter(batchTimeout);
                     try
                     {
-                        partial = await AnalyzeAsync(classifier, batch, batchContexts, batchDeadline.Token, laneOptions, checkpoint);
+                    partial = await AnalyzeAsync(classifier, batch, batchContexts, batchDeadline.Token,
+                        laneOptions, checkpoint);
                     }
                     catch (OperationCanceledException) when (!ct.IsCancellationRequested)
                     {
@@ -373,7 +374,8 @@ internal static class PdfBlockAnalyst
         return JsonSerializer.Serialize(new { blocks = payload });
     }
 
-    private static IReadOnlyDictionary<string, object> BuildRoleContext(PdfCandidateContext context)
+    private static IReadOnlyDictionary<string, object> BuildRoleContext(
+        PdfCandidateContext context)
     {
         var result = new Dictionary<string, object>
         {
@@ -434,7 +436,8 @@ internal static class PdfBlockAnalyst
     private static string PromptSourceText(string text) => text.Length <= 360 ? text : text[..360];
 
     private static string AddRetryPrompt(IReadOnlyList<PdfSemanticBlock> blocks,
-        IReadOnlyDictionary<string, PdfCandidateContext>? contexts, ICollection<string> contracts)
+        IReadOnlyDictionary<string, PdfCandidateContext>? contexts,
+        ICollection<string> contracts)
     {
         var prompt = BuildUserPrompt(blocks, contexts);
         contracts.Add(prompt);
