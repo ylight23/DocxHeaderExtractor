@@ -223,6 +223,7 @@ internal static class DocxAuthorityPipeline
             {
                 Marker = marker,
                 LineIds = [sourceParagraph.SourceId],
+                SourceTextRuns = sourceParagraph.TextSpans,
                 EvidenceDetails = evidence.Select(item => new PdfObservedEvidence(item, "true",
                     item.StartsWith("marker:", StringComparison.Ordinal) ? "marker_parser" :
                     item is "built_in_heading_style" || item.StartsWith("outline_level:", StringComparison.Ordinal) ||

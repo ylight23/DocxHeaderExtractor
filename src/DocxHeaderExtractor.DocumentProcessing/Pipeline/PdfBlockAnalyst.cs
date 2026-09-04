@@ -86,10 +86,10 @@ internal static class PdfBlockAnalyst
 
     private const string PointerSpanSystemPrompt =
         "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\n" +
-        "The span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\n" +
-        "Choose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\n" +
-        "Never rewrite, normalize, or return heading text. If a heading span cannot be determined from source_text, return null.\n" +
-        "Format: {\"blocks\":[{\"id\":\"b1\",\"heading_span\":{\"start\":0,\"end\":19}}]}.";
+        "For a block with candidates, choose exactly one supplied candidate_id or null; never return start/end. The code resolves candidate_id to the parser-owned span.\n" +
+        "For other blocks, choose start only from allowed_start_offsets and end only from allowed_end_offsets supplied for that block.\n" +
+        "Never rewrite, normalize, or return heading text or source_slice. Unknown candidate_id, malformed output, or injected text is unresolved.\n" +
+        "Format: {\"blocks\":[{\"id\":\"b1\",\"candidate_id\":\"c2\"}]}.";
 
     private const string CriticSystemPrompt =
         "You audit heading proposals that already have a valid source pointer. Decide whether each proposal should remain a document-outline heading.\n" +
@@ -251,15 +251,28 @@ internal static class PdfBlockAnalyst
             byId.TryGetValue(block.Id, out var decision) && decision.Role == PdfBlockRole.HeadingTopic).ToArray();
         if (headingBlocks.Length == 0) return new PdfBlockAnalysis(blocks, roleDecisions, []);
 
+        var semanticExtentIds = headingBlocks
+            .Where(block => byId[block.Id].SemanticRole is
+                PdfSemanticRole.LegalChapter or PdfSemanticRole.LegalSection or
+                PdfSemanticRole.LegalArticle or PdfSemanticRole.SectionHeading)
+            .Select(block => block.Id)
+            .ToHashSet(StringComparer.Ordinal);
+
         var rawResponses = new List<string>();
         var inputContracts = new List<string>();
         string? providerFailure = null;
         foreach (var batch in headingBlocks.Chunk(4))
         {
             string raw;
+            var semanticMenus = batch
+                .Where(block => semanticExtentIds.Contains(block.Id))
+                .ToDictionary(block => block.Id, block => PdfSemanticExtentCandidateMenu.For(
+                    block.Text,
+                    contexts.TryGetValue(block.Id, out var context) ? context.Source.SourceTextRuns : null),
+                    StringComparer.Ordinal);
             try
             {
-                var prompt = BuildPointerSpanPrompt(batch, contexts);
+                var prompt = BuildPointerSpanPrompt(batch, contexts, semanticExtentIds);
                 inputContracts.Add(prompt);
                 ct.ThrowIfCancellationRequested();
                 raw = await classifier.BoundaryCutAsync(PointerSpanSystemPrompt, prompt, ct);
@@ -285,7 +298,7 @@ internal static class PdfBlockAnalyst
             }
 
             rawResponses.Add(raw);
-            foreach (var (id, span) in ParsePointerSpans(raw, batch))
+            foreach (var (id, span) in ParsePointerSpans(raw, batch, semanticExtentIds, semanticMenus))
             {
                 if (!byId.TryGetValue(id, out var decision)) continue;
                 byId[id] = decision with { HeadingSpan = span };
@@ -393,23 +406,52 @@ internal static class PdfBlockAnalyst
 
     internal static string BuildPointerSpanPrompt(
         IReadOnlyList<PdfSemanticBlock> blocks,
-        IReadOnlyDictionary<string, PdfCandidateContext> contexts)
+        IReadOnlyDictionary<string, PdfCandidateContext> contexts,
+        IReadOnlySet<string>? semanticExtentIds = null)
     {
-        var payload = blocks.Select(block => new
+        var payload = blocks.Select(block =>
         {
-            id = block.Id,
-            source_text = block.Text,
-            source_length = block.Text.Length,
-            allowed_start_offsets = PdfSpanBoundaryMap.For(block.Text),
-            allowed_end_offsets = PdfSpanBoundaryMap.For(block.Text),
-            context = contexts.TryGetValue(block.Id, out var context)
+            var context = contexts.TryGetValue(block.Id, out var found)
                 ? new
                 {
-                    scope = context.Source.StructuralScope,
-                    previous_blocks = context.PreviousBlocks,
-                    next_blocks = context.NextBlocks,
+                    scope = found.Source.StructuralScope,
+                    previous_blocks = found.PreviousBlocks,
+                    next_blocks = found.NextBlocks,
                 }
-                : null,
+                : null;
+            if (semanticExtentIds?.Contains(block.Id) == true)
+            {
+                var candidates = PdfSemanticExtentCandidateMenu.For(
+                    block.Text,
+                    contexts.TryGetValue(block.Id, out var sourceContext) ? sourceContext.Source.SourceTextRuns : null);
+                return (object)new
+                {
+                    id = block.Id,
+                    source_text = block.Text,
+                    source_length = block.Text.Length,
+                    candidates = candidates.Select(candidate => new
+                    {
+                        id = candidate.Id,
+                        start = candidate.Start,
+                        end = candidate.End,
+                        kind = candidate.Kind,
+                        preview = candidate.Preview.Length <= 180
+                            ? candidate.Preview
+                            : candidate.Preview[..180],
+                    }),
+                    context,
+                };
+            }
+
+            return (object)new
+            {
+                id = block.Id,
+                source_text = block.Text,
+                source_length = block.Text.Length,
+                allowed_start_offsets = PdfSpanBoundaryMap.For(block.Text),
+                allowed_end_offsets = PdfSpanBoundaryMap.For(block.Text),
+                context,
+            };
         });
         return JsonSerializer.Serialize(new { blocks = payload });
     }
@@ -495,7 +537,9 @@ internal static class PdfBlockAnalyst
 
     internal static IReadOnlyList<(string Id, DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan? Span)> ParsePointerSpans(
         string raw,
-        IReadOnlyList<PdfSemanticBlock> blocks)
+        IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlySet<string>? semanticExtentIds = null,
+        IReadOnlyDictionary<string, IReadOnlyList<PdfSemanticExtentCandidate>>? semanticMenus = null)
     {
         var byId = blocks.ToDictionary(block => block.Id, StringComparer.Ordinal);
         var result = new List<(string Id, DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan? Span)>();
@@ -509,6 +553,32 @@ internal static class PdfBlockAnalyst
                 if (item.ValueKind != JsonValueKind.Object) continue;
                 var id = item.TryGetProperty("id", out var idProp) ? idProp.GetString() ?? "" : "";
                 if (!byId.TryGetValue(id, out var block)) continue;
+
+                if (semanticExtentIds?.Contains(id) == true && semanticMenus?.TryGetValue(id, out var candidates) == true)
+                {
+                    if (item.TryGetProperty("heading_text", out _) || item.TryGetProperty("source_slice", out _) ||
+                        item.TryGetProperty("start", out _) || item.TryGetProperty("end", out _) ||
+                        item.TryGetProperty("heading_span", out _))
+                    {
+                        result.Add((id, null));
+                        continue;
+                    }
+
+                    if (!item.TryGetProperty("candidate_id", out var candidateId) ||
+                        candidateId.ValueKind == JsonValueKind.Null ||
+                        candidateId.ValueKind != JsonValueKind.String)
+                    {
+                        result.Add((id, null));
+                        continue;
+                    }
+
+                    var selected = candidates.FirstOrDefault(candidate =>
+                        string.Equals(candidate.Id, candidateId.GetString(), StringComparison.Ordinal));
+                    result.Add(selected is null
+                        ? (id, null)
+                        : (id, new DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan(selected.Start, selected.End)));
+                    continue;
+                }
 
                 var span = TryParseSpan(item);
                 if (span is not null &&
