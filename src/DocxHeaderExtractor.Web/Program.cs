@@ -368,6 +368,7 @@ app.MapPost("/api/extract", async (
                 AllowExternalDataTransfer:
                     !options.DisableLlm && provider.SendsDataExternally)
             {
+                UserPrompt = form["userPrompt"].ToString().Trim() is { Length: > 0 } prompt ? prompt : null,
                 WritebackTargetPath = writebackTarget,
             };
             var run = Task.Run(() => harness.RunAsync(request, ct), ct);

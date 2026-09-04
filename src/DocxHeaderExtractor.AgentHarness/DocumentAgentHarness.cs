@@ -130,7 +130,8 @@ public sealed class DocumentAgentHarness
             var proposal = _intentProducer.Propose(request);
             var genericRequest = GenericTaskRequestAdapter.FromDocumentRequest(request);
             await EmitAsync("intent.proposal", AgentRunEventKind.Completed,
-                $"Intent {proposal.Operation} cho {genericRequest.Resources.Count} resource.");
+                $"Intent {proposal.Operation} cho {genericRequest.Resources.Count} resource."
+                + (string.IsNullOrWhiteSpace(request.UserPrompt) ? "" : " User goal đã được ghi nhận."));
             var intentValidation = IntentValidator.Validate(proposal);
             if (!intentValidation.IsExecutable && intentValidation.Intent is null)
                 throw new InvalidOperationException(

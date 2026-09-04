@@ -17,13 +17,14 @@ public sealed class Phase2RuntimeVerificationTests
     public void Intent_producer_is_provider_neutral_and_returns_a_validated_shape()
     {
         var proposal = new DocumentIntentProposalProducer().Propose(
-            new DocumentAgentRequest("fixture.docx"));
+            new DocumentAgentRequest("fixture.docx") { UserPrompt = "Trích cấu trúc dạng cây." });
 
         var validation = IntentValidator.Validate(proposal);
 
         Assert.Equal("extract-document-structure", proposal.Operation);
         Assert.True(validation.IsExecutable);
         Assert.Equal(IntentState.Executable, validation.State);
+        Assert.Contains("user-goal:Trích cấu trúc dạng cây.", proposal.Constraints);
     }
 
     [Fact]

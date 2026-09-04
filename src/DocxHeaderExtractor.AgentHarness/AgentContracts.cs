@@ -30,6 +30,9 @@ public sealed record DocumentAgentRequest(
     string InputPath,
     bool AllowExternalDataTransfer = false)
 {
+    /// <summary>Optional user goal shown to the provider-neutral intent stage and trace.</summary>
+    public string? UserPrompt { get; init; }
+
     /// <summary>Đường dẫn .docx đích cho writeback; null nghĩa là run chỉ đọc.</summary>
     public string? WritebackTargetPath { get; init; }
 

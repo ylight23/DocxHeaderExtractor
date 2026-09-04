@@ -21,6 +21,9 @@ public sealed class DocumentIntentProposalProducer : IIntentProposalProducer
     public IntentProposal Propose(DocumentAgentRequest request)
     {
         ArgumentNullException.ThrowIfNull(request);
+        var constraints = string.IsNullOrWhiteSpace(request.UserPrompt)
+            ? Array.Empty<string>()
+            : [$"user-goal:{request.UserPrompt.Trim()}"];
         return new(
             "extract-document-structure",
             ["document-structure"],
@@ -28,7 +31,7 @@ public sealed class DocumentIntentProposalProducer : IIntentProposalProducer
             "document",
             null,
             "outline",
-            [],
+            constraints,
             request.WantsAction);
     }
 }

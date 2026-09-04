@@ -123,6 +123,20 @@ public class WebUiScriptSyntaxTests
             "Ô có trong HTML nhưng JS không gửi: " + string.Join(", ", thieu));
     }
 
+    [Fact]
+    public void Prompt_harness_log_tabs_and_raw_privacy_defaults_are_present()
+    {
+        var html = File.ReadAllText(IndexHtmlPath());
+
+        Assert.Contains("id=\"userPrompt\"", html);
+        Assert.Contains("id=\"cancelRun\"", html);
+        Assert.Contains("data-log-filter=\"all\"", html);
+        Assert.Contains("data-log-filter=\"agent\"", html);
+        Assert.Contains("data-log-filter=\"raw\"", html);
+        Assert.Contains("data-workspace-mode=\"developer\"", html);
+        Assert.DoesNotContain("id=\"showRaw\" checked", html, StringComparison.Ordinal);
+    }
+
     /// <summary>Ô không phải tuỳ chọn pipeline — file, hiển thị, hoặc do server điền.</summary>
     private static readonly HashSet<string> BoQua = new(StringComparer.Ordinal)
     {
