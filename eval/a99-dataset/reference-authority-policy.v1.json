@@ -4,13 +4,33 @@
   "providerCalls": 0,
   "trueBlindAvailable": false,
   "tiers": {
-    "HUMAN_GOLD": ["official accuracy claim", "precision/recall", "hierarchy accuracy"],
-    "HUMAN_KEY": ["engineering regression", "role/level diagnostics", "family evidence when completeness is documented"],
-    "SOURCE_STRUCTURAL_REFERENCE": ["strict deterministic structural regression"],
-    "MODEL_ASSISTED_SILVER": ["development diagnostics", "semantic comparison"],
-    "HEURISTIC_REFERENCE": ["proxy diagnostics only"],
-    "UNLABELED": ["runtime/profile/family statistics only"],
+    "HUMAN_GOLD": [
+      "official accuracy claim",
+      "precision/recall",
+      "hierarchy accuracy"
+    ],
+    "HUMAN_KEY": [
+      "engineering regression",
+      "role/level diagnostics"
+    ],
+    "SOURCE_STRUCTURAL_REFERENCE": [
+      "strict deterministic structural regression"
+    ],
+    "MODEL_ASSISTED_SILVER": [
+      "development diagnostics",
+      "semantic comparison"
+    ],
+    "HEURISTIC_REFERENCE": [
+      "proxy diagnostics only"
+    ],
+    "UNLABELED": [
+      "runtime/profile/family statistics only"
+    ],
     "INVALID_REFERENCE": []
   },
-  "prohibitions": ["silver cannot become HUMAN_GOLD", "accessible committed references are not true blind", "family fingerprints exclude gold, predictions, confidence and benchmark scores"]
+  "prohibitions": [
+    "silver cannot become HUMAN_GOLD",
+    "accessible committed references are not true blind",
+    "family fingerprints exclude gold, predictions, confidence and benchmark scores"
+  ]
 }

@@ -10,4 +10,5 @@ if(@($fam.documents|Where-Object { $_.PSObject.Properties.Name -match 'predictio
 if(@($fam.documents|Where-Object {$_.familyAssignmentAuthority -notin @('PATH_HINT','SOURCE_FACTS','MIXED','UNKNOWN')}).Count){throw 'invalid family authority'}
 $policy=Get-Content (Join-Path $out 'reference-authority-policy.v1.json') -Raw; if($policy -match 'MODEL_ASSISTED_SILVER[^\]]*HUMAN_GOLD'){throw 'silver promoted to gold'}
 $freeze=Get-Content (Join-Path $out 'dataset-freeze.v1.json')|ConvertFrom-Json; if($freeze.crossSplitLeakage -ne 0 -or $freeze.providerCalls -ne 0){throw 'freeze invariant failed'}
+$policyHash=(Get-FileHash (Join-Path $out 'reference-authority-policy.v1.json')).Hash.ToLowerInvariant(); if($freeze.referenceAuthorityPolicySha256 -ne $policyHash){throw 'policy hash not bound'}
 Write-Host "A99 focused tests PASS ($($names.Count) artifact checks; groups=$($groups.metadata.uniqueDocumentGroups); leakage=0; providers=0)"
