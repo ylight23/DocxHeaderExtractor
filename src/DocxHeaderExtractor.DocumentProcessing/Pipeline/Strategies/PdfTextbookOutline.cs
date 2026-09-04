@@ -91,27 +91,7 @@ public static class PdfTextbookOutline
     public static string? FindSiblingPdf(string inputPath)
     {
         var direct = Path.ChangeExtension(inputPath, ".pdf");
-        if (File.Exists(direct)) return direct;
-
-        var normalized = inputPath.Replace('\\', '/');
-        const string wordSegment = "/heading_corpus_95_word/";
-        if (normalized.Contains(wordSegment, StringComparison.OrdinalIgnoreCase))
-        {
-            var candidate = normalized.Replace(wordSegment, "/heading_corpus_100/", StringComparison.OrdinalIgnoreCase);
-            candidate = Path.ChangeExtension(candidate, ".pdf");
-            if (File.Exists(candidate)) return candidate;
-        }
-
-        var fileName = Path.GetFileNameWithoutExtension(inputPath) + ".pdf";
-        for (var dir = new DirectoryInfo(Directory.GetCurrentDirectory()); dir is not null; dir = dir.Parent)
-        {
-            var corpusRoot = Path.Combine(dir.FullName, "todo10_8", "heading_corpus_100");
-            if (!Directory.Exists(corpusRoot)) continue;
-            var match = Directory.EnumerateFiles(corpusRoot, fileName, SearchOption.AllDirectories).FirstOrDefault();
-            if (match is not null) return match;
-        }
-
-        return null;
+        return File.Exists(direct) ? direct : null;
     }
 
     private static bool IsFontStrong(IReadOnlyList<PdfLine> lines, out double bodyFont)
