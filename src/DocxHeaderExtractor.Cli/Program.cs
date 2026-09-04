@@ -252,9 +252,7 @@ static async Task DumpChunksAsync(DocxPolicyState policyState, CommandLineOption
     long chars = 0, tokens = 0;
     for (var i = 0; i < chunks.Count; i++)
     {
-        var view = NeutralDocumentViewSerializer.WrapChunk(
-            chunks[i].Lines, chunks[i].Number, chunks.Count,
-            o.Pipeline.IncludeDocumentModeEvidence ? policyState.Mode : null);
+        var view = NeutralDocumentViewSerializer.WrapChunk(chunks[i].Lines, chunks[i].Number, chunks.Count);
         var body = HeaderPrompt.WithIdConstraint(view, chunks[i].CandidateIndexes);
         File.WriteAllText(Path.Combine(directory, $"chunk-{i + 1:00}.txt"), body);
         chars += view.Length;
@@ -322,9 +320,7 @@ static async Task<int> RunDumpXmlAsync(CommandLineOptions o, CancellationToken c
                     ? policyState.Paragraphs.Where(p => p.Role != ParagraphRole.Empty).Select(p => p.Index).ToHashSet()
                     : null;
                 var lines = NeutralDocumentViewSerializer.BuildLines(policyState, o.Pipeline.Extraction, review);
-                Console.WriteLine(NeutralDocumentViewSerializer.WrapChunk(
-                    lines, 1, 1,
-                    o.Pipeline.IncludeDocumentModeEvidence ? policyState.Mode : null));
+                Console.WriteLine(NeutralDocumentViewSerializer.WrapChunk(lines, 1, 1));
             }
             else
             {

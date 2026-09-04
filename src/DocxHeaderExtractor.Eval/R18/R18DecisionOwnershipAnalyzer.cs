@@ -20,6 +20,7 @@ public static class R18DecisionOwnershipAnalyzer
         var observations = BuildObservations(source, execution).Select(AssignOwnership).ToArray();
         var firstLosses = observations.Select(AssignFirstLoss).ToArray();
         var firstLossSummary = BuildFirstLossSummary(firstLosses);
+        var deterministicDiagnostics = R18DeterministicDiagnostics.Analyze(source, execution, firstLosses);
         var mode = outline.DocumentMode;
         return new R18DecisionOwnershipReport
         {
@@ -33,6 +34,7 @@ public static class R18DecisionOwnershipAnalyzer
             Observations = firstLosses,
             DisagreementMetrics = BuildDisagreementMetrics(firstLosses),
             FirstLossSummary = firstLossSummary,
+            DeterministicDiagnostics = deterministicDiagnostics,
             ProviderCalls = execution.Result.Provenance.ProviderCalls,
             ReferenceAuthorityObserved = firstLosses.Select(item => item.Reference.Authority)
                 .Distinct().OrderBy(item => item).ToArray(),

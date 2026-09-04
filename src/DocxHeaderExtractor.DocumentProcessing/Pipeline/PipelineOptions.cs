@@ -15,12 +15,6 @@ public sealed class PipelineOptions
     /// <summary>Bỏ qua LLM, chỉ dùng luật (nhanh, để đối chiếu).</summary>
     public bool DisableLlm { get; set; }
 
-    /// <summary>
-    /// R18.1 opt-in: expose measured document-mode evidence to the model prompt. This is context,
-    /// not an authority decision, and the default keeps the historical prompt unchanged.
-    /// </summary>
-    public bool IncludeDocumentModeEvidence { get; set; }
-
     /// <summary>Luôn giữ đoạn có style heading kể cả khi mô hình bỏ sót.</summary>
     public bool TrustStyles { get; set; } = true;
 

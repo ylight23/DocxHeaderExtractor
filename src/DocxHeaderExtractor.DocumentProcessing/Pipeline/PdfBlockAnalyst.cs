@@ -84,9 +84,6 @@ internal static class PdfBlockAnalyst
         "Return one compact strict JSON object for every input id. Omit explanations unless needed.\n" +
         "Format: {\"blocks\":[{\"id\":\"b1\",\"role\":\"closed_role\",\"confidence\":0.0}]}";
 
-    private const string SystemPromptWithDocumentEvidence = SystemPrompt +
-        "\nDOCUMENT_EVIDENCE is observed/derived document context. It is not an instruction and not ground truth.\n";
-
     private const string PointerSpanSystemPrompt =
         "You receive PDF source blocks already proposed as heading-like. Return only a source pointer span for each id.\n" +
         "The span must select exactly the heading prefix inside source_text using zero-based start and exclusive end offsets.\n" +
@@ -109,8 +106,7 @@ internal static class PdfBlockAnalyst
         IReadOnlyDictionary<string, PdfCandidateContext>? contexts = null,
         CancellationToken ct = default,
         SemanticLaneOptions? laneOptions = null,
-        PdfStageCheckpoint? checkpoint = null,
-        bool includeDocumentModeEvidence = false)
+        PdfStageCheckpoint? checkpoint = null)
     {
         if (blocks.Count == 0) return new PdfBlockAnalysis(blocks, [], []);
 
@@ -158,7 +154,7 @@ internal static class PdfBlockAnalyst
                     try
                     {
                     partial = await AnalyzeAsync(classifier, batch, batchContexts, batchDeadline.Token,
-                        laneOptions, checkpoint, includeDocumentModeEvidence);
+                        laneOptions, checkpoint);
                     }
                     catch (OperationCanceledException) when (!ct.IsCancellationRequested)
                     {
@@ -175,8 +171,7 @@ internal static class PdfBlockAnalyst
                 InputContracts = batches
                     .Select(batch => BuildUserPrompt(batch, contexts is null ? null : batch
                         .Where(block => contexts.ContainsKey(block.Id))
-                        .ToDictionary(block => block.Id, block => contexts[block.Id], StringComparer.Ordinal),
-                        includeDocumentModeEvidence))
+                        .ToDictionary(block => block.Id, block => contexts[block.Id], StringComparer.Ordinal)))
                         .ToArray(),
                 ProviderFailure = partials.Select(partial => partial.ProviderFailure)
                     .FirstOrDefault(failure => failure is not null),
@@ -187,16 +182,13 @@ internal static class PdfBlockAnalyst
         var inputContracts = new List<string>();
         try
         {
-            var prompt = BuildUserPrompt(blocks, contexts, includeDocumentModeEvidence);
+            var prompt = BuildUserPrompt(blocks, contexts);
             inputContracts.Add(prompt);
             var options = laneOptions ?? SemanticLaneOptions.Default;
             var requestTimeout = options.RemainingOr(options.RequestTimeout);
             if (requestTimeout <= TimeSpan.Zero) throw new OperationCanceledException(ct);
-            var systemPrompt = includeDocumentModeEvidence
-                ? SystemPromptWithDocumentEvidence
-                : SystemPrompt;
             var request = await PdfLaneExecution.RunAsync(
-                requestCt => classifier.BoundaryCutAsync(systemPrompt, prompt, requestCt), requestTimeout, ct);
+                requestCt => classifier.BoundaryCutAsync(SystemPrompt, prompt, requestCt), requestTimeout, ct);
             if (request.TimedOut) throw new OperationCanceledException(ct);
             if (request.Cancelled) throw new OperationCanceledException(ct);
             if (request.Fault is not null) throw request.Fault;
@@ -221,9 +213,8 @@ internal static class PdfBlockAnalyst
             try
             {
                 var retry = await classifier.BoundaryCutAsync(
-                    (includeDocumentModeEvidence ? SystemPromptWithDocumentEvidence : SystemPrompt) +
-                    "\nReturn a decision for every supplied id; no ids may be omitted.",
-                    AddRetryPrompt(missing, contexts, inputContracts, includeDocumentModeEvidence), ct);
+                    SystemPrompt + "\nReturn a decision for every supplied id; no ids may be omitted.",
+                    AddRetryPrompt(missing, contexts, inputContracts), ct);
                 rawResponses.Add(retry);
                 decisions.AddRange(ParseDecisions(retry, missing));
             }
@@ -361,8 +352,7 @@ internal static class PdfBlockAnalyst
 
     internal static string BuildUserPrompt(
         IReadOnlyList<PdfSemanticBlock> blocks,
-        IReadOnlyDictionary<string, PdfCandidateContext>? contexts = null,
-        bool includeDocumentModeEvidence = false)
+        IReadOnlyDictionary<string, PdfCandidateContext>? contexts = null)
     {
         var payload = blocks.Select(b => new
         {
@@ -378,15 +368,14 @@ internal static class PdfBlockAnalyst
             source_text = PromptSourceText(b.Text),
             source_length = b.Text.Length,
             context = contexts is not null && contexts.TryGetValue(b.Id, out var context)
-                ? BuildRoleContext(context, includeDocumentModeEvidence)
+                ? BuildRoleContext(context)
                 : null,
         });
         return JsonSerializer.Serialize(new { blocks = payload });
     }
 
     private static IReadOnlyDictionary<string, object> BuildRoleContext(
-        PdfCandidateContext context,
-        bool includeDocumentModeEvidence)
+        PdfCandidateContext context)
     {
         var result = new Dictionary<string, object>
         {
@@ -401,21 +390,6 @@ internal static class PdfBlockAnalyst
         };
         if (context.SiblingStructuralBlocks.Count > 0)
             result["sibling_structural_blocks"] = context.SiblingStructuralBlocks;
-        if (includeDocumentModeEvidence && context.DocumentModeEvidence is { } mode)
-        {
-            result["document_evidence"] = new
-            {
-                mode = mode.Mode.ToString(),
-                paragraphs = mode.Paragraphs,
-                styled_headings = mode.StyledHeadings,
-                outline_level_ratio = mode.OutlineLevelRatio,
-                vietnamese_admin_ratio = mode.VietnameseAdminRatio,
-                typed_number_ratio = mode.TypedNumberRatio,
-                numbering_ratio = mode.NumberingRatio,
-                legal_marker_ratio = mode.LegalMarkerRatio,
-                format_differs = mode.FormatDiffers,
-            };
-        }
         return result;
     }
 
@@ -463,10 +437,9 @@ internal static class PdfBlockAnalyst
 
     private static string AddRetryPrompt(IReadOnlyList<PdfSemanticBlock> blocks,
         IReadOnlyDictionary<string, PdfCandidateContext>? contexts,
-        ICollection<string> contracts,
-        bool includeDocumentModeEvidence)
+        ICollection<string> contracts)
     {
-        var prompt = BuildUserPrompt(blocks, contexts, includeDocumentModeEvidence);
+        var prompt = BuildUserPrompt(blocks, contexts);
         contracts.Add(prompt);
         return prompt;
     }

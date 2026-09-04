@@ -177,6 +177,7 @@ public sealed record R18DecisionOwnershipReport
     [JsonPropertyName("observations")] public required IReadOnlyList<R18DecisionObservation> Observations { get; init; }
     [JsonPropertyName("disagreementMetrics")] public required R18DisagreementMetrics DisagreementMetrics { get; init; }
     [JsonPropertyName("firstLossSummary")] public required R18FirstLossSummary FirstLossSummary { get; init; }
+    [JsonPropertyName("deterministicDiagnostics")] public required R18DeterministicDiagnosticsReport DeterministicDiagnostics { get; init; }
     [JsonPropertyName("providerCalls")] public int ProviderCalls { get; init; }
     [JsonPropertyName("referenceAuthorityObserved")] public IReadOnlyList<R18ReferenceAuthority> ReferenceAuthorityObserved { get; init; } = [];
     [JsonPropertyName("referenceBackedObservationCount")] public int ReferenceBackedObservationCount { get; init; }

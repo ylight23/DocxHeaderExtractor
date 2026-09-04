@@ -165,8 +165,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 }
                 case AuthorityRoute.DocxAuthority:
                 {
-                    authority = await DocxAuthorityPipeline.RunAsync(
-                        policyState, mode, analyst, ct, _options.IncludeDocumentModeEvidence);
+                    authority = await DocxAuthorityPipeline.RunAsync(policyState, mode, analyst, ct);
                     authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
                     audit = authority.Audit;
                     route = "docx-authority-v1";

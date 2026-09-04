@@ -214,7 +214,6 @@ public sealed class CommandLineOptions
                 case "--critique-all": o.Pipeline.HighPrecisionMode = true; break;
                 case "-f" or "--format": o.Format = ParseFormat(Next(a)); break;
                 case "--no-llm": o.Pipeline.DisableLlm = true; break;
-                case "--document-mode-evidence": o.Pipeline.IncludeDocumentModeEvidence = true; break;
                 case "--pdf-bold-fallback": o.Pipeline.PdfBoldLabelFallback = true; break;
                 case "--pdf-layout-evidence": o.Pipeline.PdfLayoutEvidenceFallback = true; break;
                 case "--pdf-layout-analyst": o.Pipeline.PdfLayoutAnalystFallback = true; break;
@@ -517,7 +516,6 @@ public sealed class CommandLineOptions
               --training-out <path> Với review-key: nơi ghi JSONL nhãn vàng (mặc định cạnh .key)
           -f, --format <fmt>        json | md | txt | xml | csv   (mặc định json)
               --no-llm              Chỉ dùng luật OpenXML, bỏ qua mô hình
-              --document-mode-evidence  R18.1 opt-in: gửi bằng chứng mode đo được cùng prompt
               --openrouter          Gọi OpenRouter RPC; đọc key từ OPENROUTER_API_KEY
               --openrouter-model m  Model slug (mặc định qwen/qwen3.5-9b)
               --lmstudio            Gọi LM Studio OpenAI-compatible trên loopback

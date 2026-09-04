@@ -55,13 +55,13 @@ public sealed class SglangHeaderExtractor : IHeaderClassifier
         string documentView,
         IReadOnlyList<int> allowedIndexes,
         CancellationToken ct = default) =>
-        SendAsync(HeaderPrompt.SystemFor(documentView), HeaderPrompt.BuildUser(documentView), allowedIndexes, roles: true, ct);
+        SendAsync(HeaderPrompt.System, HeaderPrompt.BuildUser(documentView), allowedIndexes, roles: true, ct);
 
     public Task<ChunkResult> CritiqueAsync(
         string documentView,
         IReadOnlyList<int> allowedIndexes,
         CancellationToken ct = default) =>
-        SendAsync(HeaderPrompt.CriticSystemFor(documentView), HeaderPrompt.BuildCriticUser(documentView), allowedIndexes, roles: true, ct);
+        SendAsync(HeaderPrompt.CriticSystem, HeaderPrompt.BuildCriticUser(documentView), allowedIndexes, roles: true, ct);
 
     public Task<ChunkResult> ClassifyHierarchyAsync(
         IReadOnlyList<HierarchyItem> context,

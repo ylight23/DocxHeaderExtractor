@@ -13,22 +13,18 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// </summary>
 internal static class DocxAuthorityPipeline
 {
-    internal static DocxAuthoritySource BuildForAudit(
-        DocxPolicyState policyState,
-        DocumentModeReport mode,
-        bool includeDocumentModeEvidence = false) =>
+    internal static DocxAuthoritySource BuildForAudit(DocxPolicyState policyState, DocumentModeReport mode) =>
         Build(policyState.Source,
             policyState.Paragraphs.ToDictionary<DocxPolicyParagraph, string, IPolicyParagraph>(p => p.Source.SourceId, p => p),
-            mode, (id, text) => PdfMarkerFactsParser.Parse(text), includeDocumentModeEvidence);
+            mode, (id, text) => PdfMarkerFactsParser.Parse(text));
 
     public static async Task<StructuralAuthorityResult> RunAsync(
         DocxPolicyState policyState,
         DocumentModeReport mode,
         IHeaderClassifier? analyst,
-        CancellationToken ct = default,
-        bool includeDocumentModeEvidence = false)
+        CancellationToken ct = default)
     {
-        var source = BuildForAudit(policyState, mode, includeDocumentModeEvidence);
+        var source = BuildForAudit(policyState, mode);
         return await RunCoreAsync(source, analyst, ct);
     }
 
@@ -57,9 +53,7 @@ internal static class DocxAuthorityPipeline
         }
         else
         {
-            roles = await PdfBlockAnalyst.AnalyzeAsync(
-                analyst, source.Blocks, source.ModelContexts, ct,
-                includeDocumentModeEvidence: source.ModelContexts.Values.Any(item => item.DocumentModeEvidence is not null));
+            roles = await PdfBlockAnalyst.AnalyzeAsync(analyst, source.Blocks, source.ModelContexts, ct);
             if (roles.ProviderFailure is not null)
                 throw new InvalidOperationException(
                     $"provider-failure: semantic role analysis failed ({roles.ProviderFailure}).");
@@ -192,8 +186,7 @@ internal static class DocxAuthorityPipeline
         SourceDocument sourceDocument,
         IReadOnlyDictionary<string, IPolicyParagraph> policyParagraphs,
         DocumentModeReport mode,
-        Func<string, string, PdfMarkerFact?> markerFor,
-        bool includeDocumentModeEvidence)
+        Func<string, string, PdfMarkerFact?> markerFor)
     {
         var compatibilityById = policyParagraphs;
         var paragraphs = sourceDocument.Paragraphs
@@ -241,10 +234,7 @@ internal static class DocxAuthorityPipeline
             var previous = paragraphs.Take(index).TakeLast(3).Select(item => Excerpt(item.Source.Text)).ToArray();
             var next = paragraphs.Skip(index + 1).Take(3).Select(item => Excerpt(item.Source.Text)).ToArray();
             var parents = paragraphs.Take(index).TakeLast(8).Select(item => item.Source.SourceId).ToArray();
-            var modelContext = new PdfCandidateContext(facts, previous, next, parents, mode.Mode.ToString(), activeStack.TakeLast(4).ToArray())
-            {
-                DocumentModeEvidence = includeDocumentModeEvidence ? mode : null,
-            };
+            var modelContext = new PdfCandidateContext(facts, previous, next, parents, mode.Mode.ToString(), activeStack.TakeLast(4).ToArray());
             var context = new DocxAuthorityContext(sourceParagraph, paragraph, scope, modelContext);
             result.Add(id, context);
             modelContexts.Add(id, modelContext);

@@ -1,0 +1,47 @@
+{
+  "artifactKind": "r18_document_mode_evidence_experiment",
+  "schemaVersion": "r18-mode-evidence-v1",
+  "baseRevision": "324663fe2608207086a0ac830eaea7db7dc66f98",
+  "implementationRevision": "267308bcd4d1e932cb0230018a47d86bde8c06c7",
+  "backend": "OpenRouter",
+  "model": "qwen/qwen3.5-9b",
+  "corpusDocuments": 10,
+  "repetitionsPerArm": 3,
+  "configuration": {
+    "temperature": 0,
+    "seed": 1234,
+    "sameCorpus": true,
+    "sameModel": true,
+    "sameRuntimeProfile": true,
+    "onlyIntendedDelta": "document mode evidence in the model prompt"
+  },
+  "baseline": {
+    "runs": [
+      { "precision": 0.904, "recall": 0.904, "f1": 0.904, "macroF1": 0.905 },
+      { "precision": 0.940, "recall": 0.904, "f1": 0.922, "macroF1": 0.923 },
+      { "precision": 0.941, "recall": 0.923, "f1": 0.932, "macroF1": 0.930 }
+    ],
+    "mean": { "precision": 0.9283333333, "recall": 0.9103333333, "f1": 0.9193333333, "macroF1": 0.9193333333 },
+    "populationStdDev": { "precision": 0.0172111075, "recall": 0.0089566859, "f1": 0.0115854315, "macroF1": 0.0105303793 }
+  },
+  "modeEvidence": {
+    "runs": [
+      { "precision": 0.920, "recall": 0.885, "f1": 0.902, "macroF1": 0.894 },
+      { "precision": 0.906, "recall": 0.923, "f1": 0.914, "macroF1": 0.914 },
+      { "precision": 0.979, "recall": 0.904, "f1": 0.940, "macroF1": 0.936 }
+    ],
+    "mean": { "precision": 0.935, "recall": 0.904, "f1": 0.9186666667, "macroF1": 0.9146666667 },
+    "populationStdDev": { "precision": 0.0316333158, "recall": 0.0155134350, "f1": 0.0158605030, "macroF1": 0.0171529071 }
+  },
+  "roleMetrics": "NOT_MEASURED: answer keys do not encode explicit role labels",
+  "levelMetrics": "NOT_A_PRIMARY_TARGET",
+  "providerCallsObserved": true,
+  "providerCallCount": null,
+  "providerCallCountStatus": "NOT_EMITTED_BY_RUNNER",
+  "decision": "NO_EVIDENCE",
+  "keepGate": "REJECTED",
+  "reason": "Mean F1 is effectively unchanged, recall is lower, and mode-evidence variance is wider; no role-level improvement was measurable.",
+  "defaultRemainsDisabled": true,
+  "productionBehaviorReverted": true,
+  "accuracy99Claim": "NOT_MEASURED"
+}

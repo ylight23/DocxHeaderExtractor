@@ -61,33 +61,12 @@ public static class NeutralDocumentViewSerializer
         return lines;
     }
 
-    public static string WrapChunk(
-        IEnumerable<XmlLine> lines,
-        int chunkNo,
-        int chunkTotal,
-        DocumentModeReport? documentEvidence = null)
+    public static string WrapChunk(IEnumerable<XmlLine> lines, int chunkNo, int chunkTotal)
     {
         var sb = new StringBuilder();
         sb.Append("DOCUMENT_VIEW ")
             .Append(JsonSerializer.Serialize(new { part = chunkNo, totalParts = chunkTotal }, JsonOptions))
             .AppendLine();
-        if (documentEvidence is not null)
-        {
-            sb.AppendLine("DOCUMENT_EVIDENCE");
-            sb.AppendLine(JsonSerializer.Serialize(new
-            {
-                mode = documentEvidence.Mode.ToString(),
-                paragraphs = documentEvidence.Paragraphs,
-                styled_headings = documentEvidence.StyledHeadings,
-                outline_level_ratio = documentEvidence.OutlineLevelRatio,
-                vietnamese_admin_ratio = documentEvidence.VietnameseAdminRatio,
-                typed_number_ratio = documentEvidence.TypedNumberRatio,
-                numbering_ratio = documentEvidence.NumberingRatio,
-                legal_marker_ratio = documentEvidence.LegalMarkerRatio,
-                format_differs = documentEvidence.FormatDiffers,
-            }, JsonOptions));
-            sb.AppendLine("END_DOCUMENT_EVIDENCE");
-        }
         foreach (var line in lines) sb.AppendLine(line.Text);
         sb.Append("END_DOCUMENT_VIEW");
         return sb.ToString();
