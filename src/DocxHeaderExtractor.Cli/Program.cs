@@ -37,7 +37,7 @@ if (options.ShowHelp)
     return 0;
 }
 // `sample`/`bench`/`eval` có đích mặc định, `info` tự dò mô hình – không cần đầu vào.
-if (options.Inputs.Count == 0 && options.Command is not ("sample" or "info" or "bench" or "eval" or "accuracy99"))
+if (options.Inputs.Count == 0 && options.Command is not ("sample" or "info" or "bench" or "eval" or "accuracy99" or "r18"))
 {
     Console.Error.WriteLine("Chưa chỉ định file đầu vào.");
     return 2;
@@ -57,6 +57,7 @@ try
         "bench" => RunBench(options),
         "eval" => await RunEvalAsync(options, cts.Token),
         "accuracy99" => await Accuracy99Runner.RunAsync(options, cts.Token),
+        "r18" => await R18Runner.RunAsync(options, cts.Token),
         "review" => await RunReviewAsync(options, cts.Token),
         "review-key" => RunReviewKey(options),
         "toc-keys" => RunTocKeys(options),
@@ -251,7 +252,9 @@ static async Task DumpChunksAsync(DocxPolicyState policyState, CommandLineOption
     long chars = 0, tokens = 0;
     for (var i = 0; i < chunks.Count; i++)
     {
-        var view = NeutralDocumentViewSerializer.WrapChunk(chunks[i].Lines, chunks[i].Number, chunks.Count);
+        var view = NeutralDocumentViewSerializer.WrapChunk(
+            chunks[i].Lines, chunks[i].Number, chunks.Count,
+            o.Pipeline.IncludeDocumentModeEvidence ? policyState.Mode : null);
         var body = HeaderPrompt.WithIdConstraint(view, chunks[i].CandidateIndexes);
         File.WriteAllText(Path.Combine(directory, $"chunk-{i + 1:00}.txt"), body);
         chars += view.Length;
@@ -319,7 +322,9 @@ static async Task<int> RunDumpXmlAsync(CommandLineOptions o, CancellationToken c
                     ? policyState.Paragraphs.Where(p => p.Role != ParagraphRole.Empty).Select(p => p.Index).ToHashSet()
                     : null;
                 var lines = NeutralDocumentViewSerializer.BuildLines(policyState, o.Pipeline.Extraction, review);
-                Console.WriteLine(NeutralDocumentViewSerializer.WrapChunk(lines, 1, 1));
+                Console.WriteLine(NeutralDocumentViewSerializer.WrapChunk(
+                    lines, 1, 1,
+                    o.Pipeline.IncludeDocumentModeEvidence ? policyState.Mode : null));
             }
             else
             {

@@ -341,7 +341,7 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     {
         var view = HeaderPrompt.WithIdConstraint(chunkXml, allowedIndexes);
         return await ClassifyRolesAsync(
-            HeaderPrompt.System, Think(HeaderPrompt.BuildUser(view)), view, allowedIndexes, ct);
+            HeaderPrompt.SystemFor(view), Think(HeaderPrompt.BuildUser(view)), view, allowedIndexes, ct);
     }
 
     public async Task<ChunkResult> CritiqueAsync(
@@ -351,7 +351,7 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     {
         var view = HeaderPrompt.WithIdConstraint(chunkXml, allowedIndexes);
         return await ClassifyRolesAsync(
-            HeaderPrompt.CriticSystem, Think(HeaderPrompt.BuildCriticUser(view)), view, allowedIndexes, ct);
+            HeaderPrompt.CriticSystemFor(view), Think(HeaderPrompt.BuildCriticUser(view)), view, allowedIndexes, ct);
     }
 
     /// <summary>Chỉ thị bật thinking của họ Qwen3; không có tác dụng với model không hiểu nó.</summary>

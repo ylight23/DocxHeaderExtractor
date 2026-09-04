@@ -37,13 +37,13 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         string chunkXml,
         IReadOnlyList<int> allowedIndexes,
         CancellationToken ct = default) =>
-        SendAsync(HeaderPrompt.System, HeaderPrompt.BuildUser(chunkXml), allowedIndexes, roles: true, ct);
+        SendAsync(HeaderPrompt.SystemFor(chunkXml), HeaderPrompt.BuildUser(chunkXml), allowedIndexes, roles: true, ct);
 
     public Task<ChunkResult> CritiqueAsync(
         string chunkXml,
         IReadOnlyList<int> allowedIndexes,
         CancellationToken ct = default) =>
-        SendAsync(HeaderPrompt.CriticSystem, HeaderPrompt.BuildCriticUser(chunkXml), allowedIndexes, roles: true, ct);
+        SendAsync(HeaderPrompt.CriticSystemFor(chunkXml), HeaderPrompt.BuildCriticUser(chunkXml), allowedIndexes, roles: true, ct);
 
     public Task<ChunkResult> ClassifyHierarchyAsync(
         IReadOnlyList<HierarchyItem> context,

@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -65,6 +66,9 @@ internal sealed record PdfCandidateContext(
     string DocumentRegime,
     IReadOnlyList<string> ActiveHeadingStack)
 {
+    /// <summary>Opt-in R18.1 evidence; null means the baseline prompt is unchanged.</summary>
+    public DocumentModeReport? DocumentModeEvidence { get; init; }
+
     /// <summary>
     /// Nearby source-only blocks that independently passed a generic structural-looking shape.
     /// Used only by the bounded semantic-recovery context experiment; never an asserted heading.
