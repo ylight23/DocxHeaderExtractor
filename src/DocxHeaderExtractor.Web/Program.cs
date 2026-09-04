@@ -14,11 +14,13 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.Application.Runtime;
 using DocxHeaderExtractor.Application.Feedback;
+using DocxHeaderExtractor.Application.Review;
 using DocxHeaderExtractor.Application.Semantics;
 using DocxHeaderExtractor.Application.Tasks;
 using DocxHeaderExtractor.Infrastructure.Runtime;
 using DocxHeaderExtractor.Infrastructure.Sources;
 using DocxHeaderExtractor.Infrastructure.Feedback;
+using DocxHeaderExtractor.Infrastructure.Review;
 using DocxHeaderExtractor.Web;
 using DocumentFormat.OpenXml.Packaging;
 using Microsoft.AspNetCore.Http.Features;
@@ -43,6 +45,9 @@ builder.Services.AddSingleton<LlamaModelCache>();
 builder.Services.AddSingleton(_ => new CorrectionMemory(CorrectionMemory.DefaultPath()));
 builder.Services.AddSingleton<IHumanFeedbackStore>(sp =>
     new CorrectionMemoryFeedbackStore(sp.GetRequiredService<CorrectionMemory>()));
+builder.Services.AddSingleton<IHumanReviewStore>(_ =>
+    new JsonFileHumanReviewStore(RuntimeStatePaths.ReviewDirectory));
+builder.Services.AddSingleton<HumanReviewService>();
 builder.Services.AddSingleton<DocumentAgentHarnessFactory>();
 builder.Services.AddSingleton<LmStudioModelDiscovery>();
 builder.Services.AddSingleton<WritebackStore>();
@@ -220,6 +225,8 @@ app.MapGet("/api/outline/{runId:guid}.docx", (Guid runId, WritebackStore store) 
             entry.FileName);
 });
 
+app.MapHumanReviewEndpoints(json);
+
 app.MapPost("/api/extract", async (
     HttpRequest req,
     HttpResponse res,
@@ -228,6 +235,7 @@ app.MapPost("/api/extract", async (
     IHttpClientFactory httpClientFactory,
     CorrectionMemory correctionMemory,
     WritebackStore writebackStore,
+    HumanReviewService humanReviewService,
     CancellationToken ct) =>
 {
     if (!req.HasFormContentType)
@@ -382,6 +390,8 @@ app.MapPost("/api/extract", async (
 
             var agentRun = await run;
             var outline = agentRun.TaskResult.Value;
+            var humanReview = AuthorityOutlineReviewProjection.Project(outline, source);
+            await humanReviewService.PublishAsync(humanReview, ct);
 
             // Đọc vào bộ nhớ trước khi finally xoá thư mục tạm; link chỉ tải được đúng một lần.
             string? download = null;
@@ -400,6 +410,8 @@ app.MapPost("/api/extract", async (
                 outline,
                 stats = Stats.From(outline),
                 review = ReviewBundle.Create(outline, source),
+                humanReview,
+                humanReviewUrl = $"/review.html?documentId={Uri.EscapeDataString(humanReview.DocumentId)}",
                 agent = new
                 {
                     runId = agentRun.RunId,

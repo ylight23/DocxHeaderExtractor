@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Human review</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; }
+    body { margin: 0; color: #202124; background: #f5f6f8; }
+    main { width: min(1100px, calc(100% - 32px)); margin: 32px auto; }
+    header { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+    h1 { font-size: 1.5rem; margin: 0; }
+    .meta { color: #5f6368; font-size: .9rem; }
+    .notice, .error { padding: 12px 14px; border: 1px solid #d8dce3; background: white; margin: 18px 0; }
+    .error { border-color: #c62828; color: #8e1b1b; }
+    table { width: 100%; border-collapse: collapse; background: white; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid #e4e7eb; text-align: left; vertical-align: top; }
+    th { font-size: .82rem; color: #5f6368; text-transform: uppercase; }
+    td code { white-space: nowrap; }
+    button { border: 1px solid #8a9099; background: white; padding: 7px 10px; cursor: pointer; }
+    button:hover { background: #edf1f5; }
+    .actions { display: flex; gap: 6px; flex-wrap: wrap; }
+    .pending { color: #8a4b00; font-weight: 600; }
+    .done { color: #216e39; }
+    @media (max-width: 700px) {
+      main { width: min(100% - 20px, 1100px); margin: 20px auto; }
+      th:nth-child(1), td:nth-child(1), th:nth-child(5), td:nth-child(5) { display: none; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Human review</h1>
+    <span class="meta" id="document"></span>
+  </header>
+  <div class="notice">Quyết định được ghi nối tiếp và không sửa tài liệu nguồn hay kết quả extraction.</div>
+  <div id="message" class="error" hidden></div>
+  <table>
+    <thead><tr><th>ID</th><th>Text</th><th>Level</th><th>Confidence</th><th>Status</th><th>Evidence / provenance</th><th>Action</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+</main>
+<script>
+const params = new URLSearchParams(location.search);
+const documentId = params.get("documentId");
+const message = document.getElementById("message");
+const showError = text => { message.textContent = text; message.hidden = false; };
+const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "\"":"&quot;", "'":"&#39;" }[c]));
+
+async function load() {
+  if (!documentId) return showError("Thiếu documentId.");
+  document.getElementById("document").textContent = documentId;
+  const response = await fetch("/api/review/" + encodeURIComponent(documentId));
+  if (!response.ok) return showError("Không tìm thấy phiên review.");
+  const review = await response.json();
+  const decisionsResponse = await fetch("/api/review/" + encodeURIComponent(documentId) + "/decisions");
+  const decisions = decisionsResponse.ok ? await decisionsResponse.json() : [];
+  const latest = new Map(decisions.map(record => [record.decision.headingId, record]));
+  document.getElementById("rows").innerHTML = review.validatedHeadings.map(heading => {
+    const record = latest.get(heading.headingId);
+    const state = record?.state ?? heading.status;
+    return "<tr>" +
+      "<td><code>" + escapeHtml(heading.headingId) + "</code></td>" +
+      "<td>" + escapeHtml(heading.text) + "<br><span class=\"meta\">" + heading.span.start + ".." + heading.span.end + "</span></td>" +
+      "<td>" + heading.level + "</td>" +
+      "<td>" + Number(heading.confidence).toFixed(2) + "</td>" +
+      "<td class=\"" + (state === "Pending" || state === "RequiresReview" ? "pending" : "done") + "\">" + escapeHtml(state) + "</td>" +
+      "<td>" + escapeHtml(heading.provenance.sourceType + " / " + heading.provenance.sourceId + " / " + heading.provenance.basis) +
+        "<br><span class=\"meta\">" + heading.evidence.map(item => escapeHtml(item.kind + "=" + item.value)).join(", ") + "</span></td>" +
+      "<td><div class=\"actions\">" +
+        "<button data-action=\"Accept\" data-id=\"" + escapeHtml(heading.headingId) + "\">Accept</button>" +
+        "<button data-action=\"Reject\" data-id=\"" + escapeHtml(heading.headingId) + "\">Reject</button>" +
+        "<button data-action=\"Correct\" data-id=\"" + escapeHtml(heading.headingId) + "\">Correct</button>" +
+      "</div></td></tr>";
+  }).join("");
+  document.querySelectorAll("button[data-action]").forEach(button => button.addEventListener("click", () => decide(button.dataset.id, button.dataset.action)));
+}
+
+async function decide(headingId, action) {
+  const correctedText = action === "Correct" ? prompt("Văn bản sửa (bỏ trống nếu chỉ sửa level):") : null;
+  if (action === "Correct" && correctedText === null) return;
+  const correctedLevel = action === "Correct" ? Number(prompt("Level sửa (1..9, bỏ trống để giữ level):") || 0) : null;
+  const body = { headingId, action, correctedText: correctedText || null, correctedLevel: correctedLevel || null, comment: null };
+  const response = await fetch("/api/review/" + encodeURIComponent(documentId) + "/decisions", {
+    method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body)
+  });
+  if (!response.ok) return showError("Quyết định không hợp lệ hoặc phiên review đã hết hạn.");
+  await load();
+}
+load().catch(error => showError(error.message));
+</script>
+</body>
+</html>
