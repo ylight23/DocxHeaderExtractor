@@ -67,8 +67,9 @@ public sealed class PdfRound4SemanticPoolFeasibilityProbe
             )
         };
 
-        Directory.CreateDirectory(directory);
-        File.WriteAllText(output, result.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
+        var expected = result.ToJsonString(new JsonSerializerOptions { WriteIndented = true });
+        var committed = File.ReadAllText(output);
+        Assert.Equal(committed, expected);
     }
 
     private static JsonObject BuildRun(string root, int k)
