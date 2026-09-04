@@ -70,6 +70,8 @@ internal static class DocxAuthorityPipeline
         var semanticHierarchy = analyst is null
             ? new PdfSemanticHierarchyResult(markerStructures, [], [], [])
             : await PdfSemanticHierarchyFallback.ResolveAsync(analyst, validated, markerStructures, source.ModelContexts, ct);
+        var lossInstrumentation = PdfProposalValidator.BuildLossInstrumentation(
+            source.ModelContexts, spans.Decisions, traces, semanticHierarchy.Audit);
         var structures = semanticHierarchy.Structures.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
         var structuralAuthority = MaterializeStructuralAuthority(validated, structures, source.Contexts);
         var audit = new RouteExecutionAudit(
@@ -92,6 +94,8 @@ internal static class DocxAuthorityPipeline
             ValidatedStructures = semanticHierarchy.Structures,
             HierarchyProposals = semanticHierarchy.Audit,
             HierarchyFacts = hierarchyFacts,
+            SpanRequestInstrumentation = spans.SpanRequestInstrumentation,
+            LossInstrumentation = lossInstrumentation,
             SemanticLane = analyst is null ? null : new RouteLaneExecutionAudit("complete", source.Blocks.Count,
                 roles.Decisions.Count, 0, 0),
             SpanLane = analyst is null ? null : new RouteLaneExecutionAudit("complete", roles.Decisions.Count,
@@ -223,6 +227,7 @@ internal static class DocxAuthorityPipeline
             {
                 Marker = marker,
                 LineIds = [sourceParagraph.SourceId],
+                SourceOrdinal = sourceParagraph.SourceOrdinal,
                 SourceTextRuns = sourceParagraph.TextSpans,
                 EvidenceDetails = evidence.Select(item => new PdfObservedEvidence(item, "true",
                     item.StartsWith("marker:", StringComparison.Ordinal) ? "marker_parser" :

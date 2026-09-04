@@ -316,6 +316,15 @@ public sealed class PdfBlockAnalystTests
                 decision => Assert.Null(decision.HeadingSpan));
             Assert.All(analysis.Decisions.Where(d => d.Id is "b5" or "b6" or "b7" or "b8"),
                 decision => Assert.NotNull(decision.HeadingSpan));
+            Assert.Equal(2, analysis.SpanRequestInstrumentation.Count);
+            var requestFailure = analysis.SpanRequestInstrumentation[0];
+            Assert.Equal("provider-fault", requestFailure.Outcome);
+            Assert.Equal("System.InvalidOperationException", requestFailure.ExceptionType);
+            Assert.False(requestFailure.ResponseReceived);
+            Assert.Equal(4, requestFailure.SourceCount);
+            Assert.Equal(4, requestFailure.SourceIds.Count);
+            Assert.True(requestFailure.PromptUtf8Bytes > 0);
+            Assert.All(analysis.SpanRequestInstrumentation, item => Assert.True(item.ElapsedMs >= 0));
 
             var entries = File.ReadLines(path).Select(line => JsonDocument.Parse(line)).ToArray();
             Assert.Equal(2, entries.Length);

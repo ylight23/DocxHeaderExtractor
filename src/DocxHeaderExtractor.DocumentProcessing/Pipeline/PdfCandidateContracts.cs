@@ -36,6 +36,9 @@ internal sealed record PdfSourceFacts(
     /// <summary>Stable parser line identities retained for source/audit correlation.</summary>
     public IReadOnlyList<string> LineIds { get; init; } = [];
 
+    /// <summary>Stable source ordinal when the source adapter exposes one, for example DOCX.</summary>
+    public int? SourceOrdinal { get; init; }
+
     /// <summary>Parser-owned normalized source run boundaries used by semantic extent candidates.</summary>
     public IReadOnlyList<SourceTextRunSpan> SourceTextRuns { get; init; } = [];
 
@@ -520,6 +523,110 @@ internal static class PdfProposalValidator
 
         reason = null;
         return "valid";
+    }
+
+    public static PdfLossInstrumentation BuildLossInstrumentation(
+        IReadOnlyDictionary<string, PdfCandidateContext> contexts,
+        IReadOnlyList<PdfBlockDecision> decisions,
+        IReadOnlyList<PdfCandidateStageTrace> traces,
+        IReadOnlyList<PdfHierarchyProposalAudit>? hierarchyProposals = null)
+    {
+        var byDecision = decisions.GroupBy(decision => decision.Id)
+            .ToDictionary(group => group.Key, group => group.First(), StringComparer.Ordinal);
+        var byTrace = traces.ToDictionary(trace => trace.Id, StringComparer.Ordinal);
+        var byHierarchy = (hierarchyProposals ?? [])
+            .ToDictionary(proposal => proposal.Id, StringComparer.Ordinal);
+        var items = contexts.Values
+            .OrderBy(context => context.Source.SourceOrdinal ?? int.MaxValue)
+            .ThenBy(context => context.Source.SourceId, StringComparer.Ordinal)
+            .Select(context => BuildLossObservation(context, byDecision, byTrace, byHierarchy))
+            .ToArray();
+        var rejectedByReason = items.Where(item => item.ValidatorStatus == "rejected")
+            .GroupBy(item => item.ValidatorReason ?? "unspecified", StringComparer.Ordinal)
+            .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal);
+        return new PdfLossInstrumentation(
+            decisions.Count,
+            decisions.Count(decision => decision.SemanticRole == PdfSemanticRole.Unknown &&
+                !string.IsNullOrWhiteSpace(decision.RawRole)),
+            decisions.Count(decision => decision.AliasNormalized),
+            decisions.Count(decision => decision.Role == PdfBlockRole.HeadingTopic),
+            items.Count(item => item.SpanStatus == "null"),
+            items.Count(item => item.SpanStatus == "malformed"),
+            items.Count(item => item.SpanStatus == "invalid-boundary"),
+            items.Count(item => item.SpanStatus == "invalid-pair"),
+            items.Count(item => item.SpanStatus is "valid-boundary" or "valid-candidate"),
+            items.Count(item => item.ValidatorStatus == "accepted"),
+            items.Count(item => item.ValidatorStatus == "rejected"),
+            rejectedByReason,
+            byHierarchy.Count,
+            byHierarchy.Values.Count(proposal => proposal.Resolution == "accepted-review-only"),
+            items);
+    }
+
+    private static PdfLossObservation BuildLossObservation(
+        PdfCandidateContext context,
+        IReadOnlyDictionary<string, PdfBlockDecision> decisions,
+        IReadOnlyDictionary<string, PdfCandidateStageTrace> traces,
+        IReadOnlyDictionary<string, PdfHierarchyProposalAudit> hierarchy)
+    {
+        var source = context.Source;
+        if (!decisions.TryGetValue(source.SourceId, out var decision))
+            return new PdfLossObservation(source.SourceId, source.SourceOrdinal, null,
+                PdfSemanticRole.Unknown.ToString(), false, null, "null", null,
+                "not-evaluated", "missing-model-proposal", hierarchy.GetValueOrDefault(source.SourceId)?.Resolution,
+                "ROLE_MISSING");
+
+        var trace = traces.GetValueOrDefault(source.SourceId);
+        var validatorStatus = trace?.ValidationStatus == "eligible" ? "accepted" :
+            decision.Role == PdfBlockRole.HeadingTopic && trace?.ValidationStatus == "unresolved" ? "rejected" :
+            "not-applicable";
+        var spanStatus = decision.Role == PdfBlockRole.HeadingTopic
+            ? decision.SpanResponseStatus
+            : "not-requested";
+        bool? allowedBoundary = spanStatus switch
+        {
+            "valid-boundary" or "valid-candidate" => true,
+            "invalid-boundary" or "invalid-pair" => false,
+            _ => null,
+        };
+        return new PdfLossObservation(
+            source.SourceId,
+            source.SourceOrdinal,
+            decision.RawRole,
+            decision.SemanticRole.ToString(),
+            decision.AliasNormalized,
+            decision.ProposedSpan ?? decision.HeadingSpan,
+            spanStatus,
+            allowedBoundary,
+            validatorStatus,
+            trace?.Reason,
+            hierarchy.GetValueOrDefault(source.SourceId)?.Resolution,
+            FirstLoss(decision, spanStatus, validatorStatus, trace?.Reason,
+                hierarchy.GetValueOrDefault(source.SourceId)));
+    }
+
+    private static string? FirstLoss(
+        PdfBlockDecision decision,
+        string spanStatus,
+        string validatorStatus,
+        string? validatorReason,
+        PdfHierarchyProposalAudit? hierarchy)
+    {
+        if (decision.SemanticRole == PdfSemanticRole.Unknown)
+            return string.IsNullOrWhiteSpace(decision.RawRole) ? "ROLE_MALFORMED" : "ROLE_UNKNOWN";
+        if (decision.Role != PdfBlockRole.HeadingTopic) return "ROLE_NON_HEADING";
+        return spanStatus switch
+        {
+            "null" => "SPAN_NULL",
+            "malformed" => "SPAN_MALFORMED",
+            "invalid-boundary" => "INVALID_BOUNDARY",
+            "invalid-pair" => "INVALID_PAIR",
+            "invalid-span" => "SPAN_INVALID",
+            "request-failed" => "SPAN_REQUEST_FAILED",
+            _ when validatorStatus == "rejected" => $"VALIDATOR_REJECTED:{validatorReason ?? "unspecified"}",
+            _ when hierarchy?.Resolution == "rejected-parent-pointer" => "HIERARCHY_REJECTED",
+            _ => null,
+        };
     }
 }
 

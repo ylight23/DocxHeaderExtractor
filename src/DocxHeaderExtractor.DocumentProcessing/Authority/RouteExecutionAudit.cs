@@ -75,7 +75,77 @@ public sealed record RouteExecutionAudit(
     /// </summary>
     [JsonPropertyName("spanLane")]
     public RouteLaneExecutionAudit? SpanLane { get; init; }
+
+    /// <summary>Observability-only first-loss detail; never consulted by extraction decisions.</summary>
+    [JsonPropertyName("lossInstrumentation")]
+    public PdfLossInstrumentation? LossInstrumentation { get; init; }
+
+    /// <summary>Observability-only request facts for each pointer-span provider call.</summary>
+    [JsonPropertyName("spanRequestInstrumentation")]
+    public IReadOnlyList<PdfSpanRequestInstrumentation> SpanRequestInstrumentation { get; init; } = [];
 }
+
+public sealed record PdfSpanRequestInstrumentation(
+    [property: JsonPropertyName("requestId")] string RequestId,
+    [property: JsonPropertyName("batchIndex")] int BatchIndex,
+    [property: JsonPropertyName("sourceIds")] IReadOnlyList<string> SourceIds,
+    [property: JsonPropertyName("sourceOrdinals")] IReadOnlyList<int?> SourceOrdinals,
+    [property: JsonPropertyName("semanticRoles")] IReadOnlyList<string> SemanticRoles,
+    [property: JsonPropertyName("sourceCount")] int SourceCount,
+    [property: JsonPropertyName("promptChars")] int PromptChars,
+    [property: JsonPropertyName("promptUtf8Bytes")] int PromptUtf8Bytes,
+    [property: JsonPropertyName("allowedSpanCountTotal")] int AllowedSpanCountTotal,
+    [property: JsonPropertyName("allowedSpanCountPerSource")] IReadOnlyDictionary<string, int> AllowedSpanCountPerSource,
+    [property: JsonPropertyName("sourceSliceCharsTotal")] int SourceSliceCharsTotal,
+    [property: JsonPropertyName("startedUtc")] DateTimeOffset StartedUtc,
+    [property: JsonPropertyName("completedUtc")] DateTimeOffset CompletedUtc,
+    [property: JsonPropertyName("elapsedMs")] long ElapsedMs,
+    [property: JsonPropertyName("configuredRequestTimeoutMs")] long? ConfiguredRequestTimeoutMs,
+    [property: JsonPropertyName("remainingBudgetMsAtStart")] long? RemainingBudgetMsAtStart,
+    [property: JsonPropertyName("outcome")] string Outcome,
+    [property: JsonPropertyName("exceptionType")] string? ExceptionType,
+    [property: JsonPropertyName("sanitizedExceptionMessage")] string? SanitizedExceptionMessage,
+    [property: JsonPropertyName("httpStatus")] int? HttpStatus,
+    [property: JsonPropertyName("cancellationRequestedBefore")] bool CancellationRequestedBefore,
+    [property: JsonPropertyName("cancellationRequestedAfter")] bool CancellationRequestedAfter,
+    [property: JsonPropertyName("responseReceived")] bool ResponseReceived,
+    [property: JsonPropertyName("responseBytes")] int? ResponseBytes,
+    [property: JsonPropertyName("returnedIds")] IReadOnlyList<string> ReturnedIds,
+    [property: JsonPropertyName("nullSpanIds")] IReadOnlyList<string> NullSpanIds,
+    [property: JsonPropertyName("malformedIds")] IReadOnlyList<string> MalformedIds,
+    [property: JsonPropertyName("invalidBoundaryIds")] IReadOnlyList<string> InvalidBoundaryIds,
+    [property: JsonPropertyName("invalidPairIds")] IReadOnlyList<string> InvalidPairIds);
+
+public sealed record PdfLossInstrumentation(
+    [property: JsonPropertyName("roleProposalsTotal")] int RoleProposalsTotal,
+    [property: JsonPropertyName("unknownRoleCount")] int UnknownRoleCount,
+    [property: JsonPropertyName("aliasNormalizedCount")] int AliasNormalizedCount,
+    [property: JsonPropertyName("spanRequested")] int SpanRequested,
+    [property: JsonPropertyName("spanResponseNull")] int SpanResponseNull,
+    [property: JsonPropertyName("spanMalformed")] int SpanMalformed,
+    [property: JsonPropertyName("spanInvalidBoundary")] int SpanInvalidBoundary,
+    [property: JsonPropertyName("spanInvalidPair")] int SpanInvalidPair,
+    [property: JsonPropertyName("spanValidBoundary")] int SpanValidBoundary,
+    [property: JsonPropertyName("validatorAccepted")] int ValidatorAccepted,
+    [property: JsonPropertyName("validatorRejected")] int ValidatorRejected,
+    [property: JsonPropertyName("validatorRejectedByReason")] IReadOnlyDictionary<string, int> ValidatorRejectedByReason,
+    [property: JsonPropertyName("hierarchyProposals")] int HierarchyProposals,
+    [property: JsonPropertyName("hierarchyAccepted")] int HierarchyAccepted,
+    [property: JsonPropertyName("items")] IReadOnlyList<PdfLossObservation> Items);
+
+public sealed record PdfLossObservation(
+    [property: JsonPropertyName("sourceId")] string SourceId,
+    [property: JsonPropertyName("sourceOrdinal")] int? SourceOrdinal,
+    [property: JsonPropertyName("rawRole")] string? RawRole,
+    [property: JsonPropertyName("canonicalRole")] string CanonicalRole,
+    [property: JsonPropertyName("aliasNormalized")] bool AliasNormalized,
+    [property: JsonPropertyName("proposedSpan")] TextOffsetSpan? ProposedSpan,
+    [property: JsonPropertyName("spanStatus")] string SpanStatus,
+    [property: JsonPropertyName("allowedBoundary")] bool? AllowedBoundary,
+    [property: JsonPropertyName("validatorStatus")] string ValidatorStatus,
+    [property: JsonPropertyName("validatorReason")] string? ValidatorReason,
+    [property: JsonPropertyName("hierarchyStatus")] string? HierarchyStatus,
+    [property: JsonPropertyName("firstLoss")] string? FirstLoss);
 
 public sealed record PdfSelectedSourceIdentity(
     [property: JsonPropertyName("candidateIdDiagnostic")] string CandidateIdDiagnostic,

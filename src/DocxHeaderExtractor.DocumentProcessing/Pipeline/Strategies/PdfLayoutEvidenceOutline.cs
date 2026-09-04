@@ -232,7 +232,7 @@ public static class PdfLayoutEvidenceOutline
             var roleLane = SemanticLaneOptions.Default with { MaxBatchSize = options.RoleBatchSize };
             var roles = await PdfBlockAnalyst.AnalyzeAsync(analyst, selection.EligibleBlocks, contexts, ct, roleLane);
             var spans = await PdfBlockAnalyst.ResolveHeadingSpansAsync(analyst, selection.EligibleBlocks,
-                roles.Decisions, contexts, ct);
+                roles.Decisions, contexts, ct, configuredRequestTimeout: roleLane.RequestTimeout);
             var traces = PdfProposalValidator.Trace(contexts, spans.Decisions)
                 .ToDictionary(trace => trace.Id, StringComparer.Ordinal);
             var accepted = PdfProposalValidator.Validate(contexts, spans.Decisions)
@@ -678,7 +678,7 @@ public static class PdfLayoutEvidenceOutline
         {
             var spanRun = await PdfLaneExecution.RunAsync(
                 laneCt => PdfBlockAnalyst.ResolveHeadingSpansAsync(analyst, selected, resolvedRoles.Decisions,
-                    candidateContexts, laneCt, checkpoint),
+                    candidateContexts, laneCt, checkpoint, semanticOptions.RequestTimeout, semanticOptions.DeadlineUtc),
                 semanticOptions.RemainingOr(semanticOptions.RequestTimeout), ct);
             spanLaneStatus = spanRun.TimedOut ? "partial_timeout" : "complete";
             if (spanRun.DetachedTask is not null) detachedTasks.Add(spanRun.DetachedTask);
@@ -752,6 +752,8 @@ public static class PdfLayoutEvidenceOutline
         }
         var hierarchyChanges = PdfMarkerHierarchyResolver.Apply(recoveredHeadings);
         structures = structures.Concat(visualRecovery.Structures).ToArray();
+        var lossInstrumentation = PdfProposalValidator.BuildLossInstrumentation(
+            candidateContexts, spanAnalysis.Decisions, stageTraces, semanticHierarchy.Audit);
 
         var lane = includeAllVisualStyles ? "wide" : "broad";
         if (includeSupplementCandidates) lane += "+supplement";
@@ -783,6 +785,8 @@ public static class PdfLayoutEvidenceOutline
             ProposalResolutions = resolvedRoles.Audit,
             HierarchyProposals = semanticHierarchy.Audit,
             HierarchyFacts = hierarchyFacts,
+            SpanRequestInstrumentation = spanAnalysis.SpanRequestInstrumentation,
+            LossInstrumentation = lossInstrumentation,
             TextLayerRecoveries = alignment.TextLayerRecoveries.Concat(visualRecovery.Audit).ToArray(),
             VisualEvidence = visual.Decisions.Select(decision => new RouteVisualEvidenceAudit(
                 decision.Id, decision.Role.ToString(), decision.Confidence, decision.Evidence,
