@@ -20,7 +20,7 @@
       "assertionType": "count_at_least",
       "expected": "\u003E= 67",
       "actualCount": 0,
-      "actualRoute": "pdf-first-authority-v1",
+      "actualRoute": "docx-authority-v1",
       "directAnalyzer": {
         "Accepted": true,
         "DictionaryEntries": 67,
@@ -55,7 +55,7 @@
       "assertionType": "named_headings",
       "expected": "12. IANA Considerations, 13. References, Appendix A Collected ABNF, Appendix B Differences between HTTP and MIME, B.1. MIME-Version, B.6. MHTML and Line Length Limitations, Appendix C Changes from Previous RFCs, C.2.1. Multihomed Web Servers, C.3. Changes from RFC 7230",
       "actualCount": 0,
-      "actualRoute": "pdf-first-authority-v1",
+      "actualRoute": "docx-authority-v1",
       "directAnalyzer": {
         "Accepted": true,
         "DictionaryEntries": 73,
@@ -130,7 +130,7 @@
       "assertionType": "count_at_least",
       "expected": "\u003E= 97",
       "actualCount": 0,
-      "actualRoute": "pdf-first-authority-v1",
+      "actualRoute": "docx-authority-v1",
       "directAnalyzer": {
         "Accepted": false,
         "DictionaryEntries": 97,
