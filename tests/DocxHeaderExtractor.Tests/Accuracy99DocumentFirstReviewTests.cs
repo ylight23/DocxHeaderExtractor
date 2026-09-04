@@ -77,4 +77,3 @@ public sealed class Accuracy99DocumentFirstReviewTests
         return directory?.FullName ?? throw new InvalidOperationException("Repository root not found.");
     }
 }
-

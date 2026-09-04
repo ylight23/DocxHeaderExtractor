@@ -113,4 +113,3 @@
   document.addEventListener('keydown', event => { if (event.target.matches('input,textarea,select') || frozen) return; const key = event.key.toLowerCase(); if (LABELS.find(label => label[0].toLowerCase() === key)) setLabel(LABELS.find(label => label[0].toLowerCase() === key)); else if (event.key === 'ArrowLeft') $('previous').click(); else if (event.key === 'ArrowRight') $('next').click(); });
   if (sessionId) loadSession(sessionId).catch(error => setNotice(error.message, true));
 })();
-
