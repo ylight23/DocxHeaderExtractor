@@ -295,6 +295,7 @@
     <button class="secondary" data-workspace-mode="correction">Correction · model visible</button>
     <button class="secondary" data-workspace-mode="gold">Blind Gold · source-only</button>
     <button class="secondary" data-workspace-mode="developer">Developer / Evaluation</button>
+    <a class="secondary" href="accuracy99/adjudication.html">Accuracy-99 Human Adjudication</a>
     <span class="note" id="workspaceModeNote">Trích xuất và kiểm tra kết quả hệ thống.</span>
   </div>
   <!-- Không còn h1/mô tả: tên app đã nằm ở <title> của tab, còn định dạng nhận được thì ô kéo thả
@@ -411,6 +412,7 @@
 
     <div class="actions">
       <button id="inspectMode" class="secondary" disabled>Kiểm tra mode</button>
+      <button id="humanReview" class="secondary" disabled>Human Review</button>
       <button id="run" disabled>Thực hiện</button>
       <button id="cancelRun" class="cancel-button hidden">Hủy</button>
     </div>
@@ -1059,8 +1061,25 @@ function setFile(f) {
   $('workState').textContent = 'Sẵn sàng phân tích';
   $('workHint').textContent = 'Pipeline sẽ đọc OpenXML, lọc ứng viên rồi gọi LLM cho phần chưa chắc chắn.';
   $('inspectMode').disabled = false;
+  $('humanReview').disabled = false;
   $('run').disabled = false;
 }
+
+$('humanReview').onclick = async () => {
+  if (!picked) return;
+  $('humanReview').disabled = true;
+  const form = new FormData(); form.append('file', picked);
+  try {
+    const response = await fetch('/api/accuracy99/review/source', { method: 'POST', body: form });
+    if (!response.ok) throw new Error((await response.json().catch(() => ({}))).message || 'Không tạo được phiên Human Review.');
+    const session = response.headers.get('X-DHX-Review-Session');
+    if (!session) throw new Error('Backend không trả về review session identity.');
+    window.location.href = `/accuracy99/adjudication.html?session=${encodeURIComponent(session)}`;
+  } catch (error) {
+    showError(error.message);
+    $('humanReview').disabled = false;
+  }
+};
 
 // ---------- mặc định + danh sách mô hình ----------
 // Mặc định lấy từ máy chủ (đọc thẳng Core) để giao diện không lệch khỏi CLI.
