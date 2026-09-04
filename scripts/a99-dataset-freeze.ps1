@@ -1,6 +1,6 @@
-param([string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path)
+param([string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path, [string]$OutputDirectory = '')
 $ErrorActionPreference = 'Stop'
-$out = Join-Path $RepoRoot 'eval\a99-dataset'
+$out = if($OutputDirectory){(Resolve-Path $OutputDirectory -ErrorAction SilentlyContinue).Path}; if(!$out){$out=Join-Path $RepoRoot 'eval\a99-dataset'}
 New-Item -ItemType Directory -Force -Path $out | Out-Null
 
 function Sha256([string]$p) { (Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash.ToLowerInvariant() }
@@ -19,7 +19,9 @@ function SourceKind([string]$p) { if($p -match '\.docx$|\.docm$') {'DOCX'} elsei
 $files=Get-ChildItem -LiteralPath $RepoRoot -Recurse -File | Where-Object { $_.FullName -notmatch '\\(bin|obj|TestResults|\.git)\\' -and $_.Extension -match '^\.(docx|docm|doc|pdf)$' }
 $rows=@(); $i=0
 foreach($f in $files) { $i++; $sha=Sha256 $f.FullName; $text=if((SourceKind $f.FullName) -eq 'DOCX'){DocxText $f.FullName}else{''}; $fp=if($text){(Sha256 ([IO.Path]::GetTempFileName()))}else{$sha}; $rel=$f.FullName.Substring($RepoRoot.Length+1); $family='UNKNOWN'; if($rel -match '01_phap_quy|legal'){ $family='VN_LEGAL_MARKER' } elseif($rel -match '05_bien_ban_hop'){ $family='VN_ADMIN_TYPED' } elseif($rel -match 'heading_corpus_100.*\.pdf$'){ $family='PDF_NATIVE_LAYOUT' } elseif($rel -match 'heading_corpus_95_word|generated-docx'){ $family='PDF_CONVERTED' } elseif($rel -match '04_giao_trinh|07_system_generated'){ $family='SEMANTIC_ONLY' } elseif($rel -match 'bench'){ $family='DOCX_NATIVE_STRUCTURED' }; $rows += [ordered]@{documentId=('DOC-{0:D4}' -f $i);sourcePath=$rel;mediaType=SourceKind $f.FullName;sourceSha256=$sha;normalizedContentFingerprint=$fp;referenceArtifactPath=$null;referenceSha256=$null;referenceKind='NONE';referenceAuthority=Authority $f.FullName;validationStatus='NOT_APPLICABLE';documentGroupId=$null;duplicateKind='UNIQUE';familyId=$family;familyEvidence='deterministic path/source-kind rule';familyConfidence=if($family -eq 'UNKNOWN'){'LOW'}else{'MEDIUM'};paragraphCount=$null;tableDensity=$null;outlineLevelRatio=$null;styledHeadingCount=$null;numberingRatio=$null;tocPresence=$false} }
-# Exact byte groups are authoritative; normalized fingerprints are populated for DOCX by XML text hash in a later version.
+# Family labels are conservative path hints; no production DocumentMode is changed.
+foreach($r in $rows){$r['familyAssignmentAuthority']=if($r['familyId'] -eq 'UNKNOWN'){'UNKNOWN'}else{'PATH_HINT'}}
+# Exact byte groups are authoritative. Derivative and overlap grouping is intentionally not claimed.
 $groups=@(); $bySha=$rows | Group-Object { $_['sourceSha256'] }; $g=0
 foreach($grp in $bySha){$g++;$gid=('GROUP-{0:D4}'-f $g);foreach($r in $grp.Group){$r['documentGroupId']=$gid;if($grp.Count -gt 1){$r['duplicateKind']='EXACT_BYTES'}};$groups += [ordered]@{documentGroupId=$gid;documentIds=@($grp.Group|ForEach-Object {$_['documentId']});duplicateKind=if($grp.Count -gt 1){'EXACT_BYTES'}else{'UNIQUE'};evidence='sourceSha256'}}
 $meta=[ordered]@{schemaVersion='1.0';createdFromCodeSha=(git -C $RepoRoot rev-parse HEAD).Trim();generationMode='DETERMINISTIC';providerCalls=0;totalFiles=$rows.Count;uniqueDocumentGroups=$groups.Count;trueBlindAvailable=$false}
