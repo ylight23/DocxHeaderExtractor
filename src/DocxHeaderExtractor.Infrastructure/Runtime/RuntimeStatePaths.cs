@@ -9,5 +9,7 @@ public static class RuntimeStatePaths
 
     public static string RunDirectory => Path.Combine(RootDirectory, "runs");
 
+    public static string ReviewDirectory => Path.Combine(RootDirectory, "reviews");
+
     public static string TelemetryPath => Path.Combine(RootDirectory, "telemetry.jsonl");
 }
