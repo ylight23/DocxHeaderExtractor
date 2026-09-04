@@ -1,0 +1,2220 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "createdFromCodeSha": "1e21d3f3f0fbdded34cf83d3b830efa642ed2eea",
+    "generationMode": "DETERMINISTIC",
+    "providerCalls": 0,
+    "totalFiles": 352,
+    "uniqueDocumentGroups": 265,
+    "trueBlindAvailable": false
+  },
+  "groups": [
+    {
+      "documentGroupId": "GROUP-0001",
+      "documentIds": [
+        "DOC-0057",
+        "DOC-0240"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0002",
+      "documentIds": [
+        "DOC-0154"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0003",
+      "documentIds": [
+        "DOC-0058",
+        "DOC-0241"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0004",
+      "documentIds": [
+        "DOC-0288"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0005",
+      "documentIds": [
+        "DOC-0298"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0006",
+      "documentIds": [
+        "DOC-0139"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0007",
+      "documentIds": [
+        "DOC-0053",
+        "DOC-0234"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0008",
+      "documentIds": [
+        "DOC-0097"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0009",
+      "documentIds": [
+        "DOC-0287"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0010",
+      "documentIds": [
+        "DOC-0148"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0011",
+      "documentIds": [
+        "DOC-0068",
+        "DOC-0256"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0012",
+      "documentIds": [
+        "DOC-0133"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0013",
+      "documentIds": [
+        "DOC-0114"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0014",
+      "documentIds": [
+        "DOC-0023",
+        "DOC-0192"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0015",
+      "documentIds": [
+        "DOC-0080",
+        "DOC-0270"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0016",
+      "documentIds": [
+        "DOC-0116",
+        "DOC-0211"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0017",
+      "documentIds": [
+        "DOC-0008",
+        "DOC-0009",
+        "DOC-0010"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0018",
+      "documentIds": [
+        "DOC-0001"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0019",
+      "documentIds": [
+        "DOC-0326"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0020",
+      "documentIds": [
+        "DOC-0125",
+        "DOC-0220"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0021",
+      "documentIds": [
+        "DOC-0110"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0022",
+      "documentIds": [
+        "DOC-0076",
+        "DOC-0266"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0023",
+      "documentIds": [
+        "DOC-0106"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0024",
+      "documentIds": [
+        "DOC-0149"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0025",
+      "documentIds": [
+        "DOC-0078",
+        "DOC-0268"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0026",
+      "documentIds": [
+        "DOC-0293"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0027",
+      "documentIds": [
+        "DOC-0286"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0028",
+      "documentIds": [
+        "DOC-0101"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0029",
+      "documentIds": [
+        "DOC-0071",
+        "DOC-0259"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0030",
+      "documentIds": [
+        "DOC-0345"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0031",
+      "documentIds": [
+        "DOC-0330"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0032",
+      "documentIds": [
+        "DOC-0264"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0033",
+      "documentIds": [
+        "DOC-0062",
+        "DOC-0250"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0034",
+      "documentIds": [
+        "DOC-0299"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0035",
+      "documentIds": [
+        "DOC-0127"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0036",
+      "documentIds": [
+        "DOC-0214"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0037",
+      "documentIds": [
+        "DOC-0348"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0038",
+      "documentIds": [
+        "DOC-0094"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0039",
+      "documentIds": [
+        "DOC-0074",
+        "DOC-0263"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0040",
+      "documentIds": [
+        "DOC-0091"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0041",
+      "documentIds": [
+        "DOC-0350"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0042",
+      "documentIds": [
+        "DOC-0332"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0043",
+      "documentIds": [
+        "DOC-0060",
+        "DOC-0246"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0044",
+      "documentIds": [
+        "DOC-0177"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0045",
+      "documentIds": [
+        "DOC-0334"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0046",
+      "documentIds": [
+        "DOC-0120"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0047",
+      "documentIds": [
+        "DOC-0048",
+        "DOC-0229"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0048",
+      "documentIds": [
+        "DOC-0034",
+        "DOC-0203"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0049",
+      "documentIds": [
+        "DOC-0089"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0050",
+      "documentIds": [
+        "DOC-0165"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0051",
+      "documentIds": [
+        "DOC-0113"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0052",
+      "documentIds": [
+        "DOC-0039",
+        "DOC-0212"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0053",
+      "documentIds": [
+        "DOC-0296"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0054",
+      "documentIds": [
+        "DOC-0168"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0055",
+      "documentIds": [
+        "DOC-0316"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0056",
+      "documentIds": [
+        "DOC-0111",
+        "DOC-0206"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0057",
+      "documentIds": [
+        "DOC-0324"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0058",
+      "documentIds": [
+        "DOC-0100"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0059",
+      "documentIds": [
+        "DOC-0140"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0060",
+      "documentIds": [
+        "DOC-0065",
+        "DOC-0253"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0061",
+      "documentIds": [
+        "DOC-0284"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0062",
+      "documentIds": [
+        "DOC-0242"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0063",
+      "documentIds": [
+        "DOC-0280"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0064",
+      "documentIds": [
+        "DOC-0347"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0065",
+      "documentIds": [
+        "DOC-0171"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0066",
+      "documentIds": [
+        "DOC-0037",
+        "DOC-0209"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0067",
+      "documentIds": [
+        "DOC-0321"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0068",
+      "documentIds": [
+        "DOC-0059",
+        "DOC-0245"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0069",
+      "documentIds": [
+        "DOC-0064",
+        "DOC-0252"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0070",
+      "documentIds": [
+        "DOC-0314"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0071",
+      "documentIds": [
+        "DOC-0282"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0072",
+      "documentIds": [
+        "DOC-0243"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0073",
+      "documentIds": [
+        "DOC-0167",
+        "DOC-0262"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0074",
+      "documentIds": [
+        "DOC-0294"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0075",
+      "documentIds": [
+        "DOC-0308"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0076",
+      "documentIds": [
+        "DOC-0013",
+        "DOC-0182"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0077",
+      "documentIds": [
+        "DOC-0052",
+        "DOC-0233"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0078",
+      "documentIds": [
+        "DOC-0040",
+        "DOC-0215"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0079",
+      "documentIds": [
+        "DOC-0129"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0080",
+      "documentIds": [
+        "DOC-0022",
+        "DOC-0191"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0081",
+      "documentIds": [
+        "DOC-0118",
+        "DOC-0213"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0082",
+      "documentIds": [
+        "DOC-0117"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0083",
+      "documentIds": [
+        "DOC-0291"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0084",
+      "documentIds": [
+        "DOC-0329"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0085",
+      "documentIds": [
+        "DOC-0028",
+        "DOC-0197"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0086",
+      "documentIds": [
+        "DOC-0044",
+        "DOC-0224"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0087",
+      "documentIds": [
+        "DOC-0045",
+        "DOC-0226"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0088",
+      "documentIds": [
+        "DOC-0169"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0089",
+      "documentIds": [
+        "DOC-0325"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0090",
+      "documentIds": [
+        "DOC-0025",
+        "DOC-0194"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0091",
+      "documentIds": [
+        "DOC-0176"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0092",
+      "documentIds": [
+        "DOC-0104"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0093",
+      "documentIds": [
+        "DOC-0170"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0094",
+      "documentIds": [
+        "DOC-0143"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0095",
+      "documentIds": [
+        "DOC-0235"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0096",
+      "documentIds": [
+        "DOC-0281"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0097",
+      "documentIds": [
+        "DOC-0049",
+        "DOC-0230"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0098",
+      "documentIds": [
+        "DOC-0312"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0099",
+      "documentIds": [
+        "DOC-0164"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0100",
+      "documentIds": [
+        "DOC-0083",
+        "DOC-0273"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0101",
+      "documentIds": [
+        "DOC-0352"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0102",
+      "documentIds": [
+        "DOC-0351"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0103",
+      "documentIds": [
+        "DOC-0138"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0104",
+      "documentIds": [
+        "DOC-0162"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0105",
+      "documentIds": [
+        "DOC-0035",
+        "DOC-0204"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0106",
+      "documentIds": [
+        "DOC-0024",
+        "DOC-0193"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0107",
+      "documentIds": [
+        "DOC-0276"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0108",
+      "documentIds": [
+        "DOC-0142"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0109",
+      "documentIds": [
+        "DOC-0161"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0110",
+      "documentIds": [
+        "DOC-0248"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0111",
+      "documentIds": [
+        "DOC-0303"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0112",
+      "documentIds": [
+        "DOC-0108"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0113",
+      "documentIds": [
+        "DOC-0090"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0114",
+      "documentIds": [
+        "DOC-0290"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0115",
+      "documentIds": [
+        "DOC-0095"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0116",
+      "documentIds": [
+        "DOC-0070",
+        "DOC-0258"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0117",
+      "documentIds": [
+        "DOC-0130"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0118",
+      "documentIds": [
+        "DOC-0136"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0119",
+      "documentIds": [
+        "DOC-0333"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0120",
+      "documentIds": [
+        "DOC-0152"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0121",
+      "documentIds": [
+        "DOC-0285"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0122",
+      "documentIds": [
+        "DOC-0131"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0123",
+      "documentIds": [
+        "DOC-0179"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0124",
+      "documentIds": [
+        "DOC-0050",
+        "DOC-0231"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0125",
+      "documentIds": [
+        "DOC-0173"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0126",
+      "documentIds": [
+        "DOC-0043",
+        "DOC-0223"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0127",
+      "documentIds": [
+        "DOC-0098"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0128",
+      "documentIds": [
+        "DOC-0004"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0129",
+      "documentIds": [
+        "DOC-0031",
+        "DOC-0200"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0130",
+      "documentIds": [
+        "DOC-0331"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0131",
+      "documentIds": [
+        "DOC-0073",
+        "DOC-0261"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0132",
+      "documentIds": [
+        "DOC-0002"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0133",
+      "documentIds": [
+        "DOC-0289"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0134",
+      "documentIds": [
+        "DOC-0088"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0135",
+      "documentIds": [
+        "DOC-0335"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0136",
+      "documentIds": [
+        "DOC-0310"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0137",
+      "documentIds": [
+        "DOC-0328"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0138",
+      "documentIds": [
+        "DOC-0018",
+        "DOC-0187"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0139",
+      "documentIds": [
+        "DOC-0122",
+        "DOC-0217"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0140",
+      "documentIds": [
+        "DOC-0047",
+        "DOC-0228"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0141",
+      "documentIds": [
+        "DOC-0072",
+        "DOC-0260"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0142",
+      "documentIds": [
+        "DOC-0344"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0143",
+      "documentIds": [
+        "DOC-0020",
+        "DOC-0189"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0144",
+      "documentIds": [
+        "DOC-0054",
+        "DOC-0236"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0145",
+      "documentIds": [
+        "DOC-0337"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0146",
+      "documentIds": [
+        "DOC-0155"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0147",
+      "documentIds": [
+        "DOC-0157"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0148",
+      "documentIds": [
+        "DOC-0135"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0149",
+      "documentIds": [
+        "DOC-0087"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0150",
+      "documentIds": [
+        "DOC-0041",
+        "DOC-0221"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0151",
+      "documentIds": [
+        "DOC-0093"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0152",
+      "documentIds": [
+        "DOC-0147"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0153",
+      "documentIds": [
+        "DOC-0317"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0154",
+      "documentIds": [
+        "DOC-0069",
+        "DOC-0257"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0155",
+      "documentIds": [
+        "DOC-0105"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0156",
+      "documentIds": [
+        "DOC-0172"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0157",
+      "documentIds": [
+        "DOC-0159"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0158",
+      "documentIds": [
+        "DOC-0030",
+        "DOC-0199"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0159",
+      "documentIds": [
+        "DOC-0307"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0160",
+      "documentIds": [
+        "DOC-0046",
+        "DOC-0227"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0161",
+      "documentIds": [
+        "DOC-0007",
+        "DOC-0011"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0162",
+      "documentIds": [
+        "DOC-0166"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0163",
+      "documentIds": [
+        "DOC-0099"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0164",
+      "documentIds": [
+        "DOC-0096"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0165",
+      "documentIds": [
+        "DOC-0115"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0166",
+      "documentIds": [
+        "DOC-0123",
+        "DOC-0218"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0167",
+      "documentIds": [
+        "DOC-0119"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0168",
+      "documentIds": [
+        "DOC-0103"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0169",
+      "documentIds": [
+        "DOC-0084",
+        "DOC-0274"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0170",
+      "documentIds": [
+        "DOC-0323"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0171",
+      "documentIds": [
+        "DOC-0313"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0172",
+      "documentIds": [
+        "DOC-0247"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0173",
+      "documentIds": [
+        "DOC-0075",
+        "DOC-0265"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0174",
+      "documentIds": [
+        "DOC-0205"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0175",
+      "documentIds": [
+        "DOC-0225"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0176",
+      "documentIds": [
+        "DOC-0175"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0177",
+      "documentIds": [
+        "DOC-0178"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0178",
+      "documentIds": [
+        "DOC-0085",
+        "DOC-0275"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0179",
+      "documentIds": [
+        "DOC-0145"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0180",
+      "documentIds": [
+        "DOC-0112",
+        "DOC-0207"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0181",
+      "documentIds": [
+        "DOC-0277"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0182",
+      "documentIds": [
+        "DOC-0086"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0183",
+      "documentIds": [
+        "DOC-0304"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0184",
+      "documentIds": [
+        "DOC-0126"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0185",
+      "documentIds": [
+        "DOC-0082",
+        "DOC-0272"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0186",
+      "documentIds": [
+        "DOC-0121",
+        "DOC-0216"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0187",
+      "documentIds": [
+        "DOC-0244"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0188",
+      "documentIds": [
+        "DOC-0322"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0189",
+      "documentIds": [
+        "DOC-0015",
+        "DOC-0184"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0190",
+      "documentIds": [
+        "DOC-0081",
+        "DOC-0271"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0191",
+      "documentIds": [
+        "DOC-0150"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0192",
+      "documentIds": [
+        "DOC-0163"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0193",
+      "documentIds": [
+        "DOC-0109"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0194",
+      "documentIds": [
+        "DOC-0160"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0195",
+      "documentIds": [
+        "DOC-0151"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0196",
+      "documentIds": [
+        "DOC-0309"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0197",
+      "documentIds": [
+        "DOC-0141"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0198",
+      "documentIds": [
+        "DOC-0056",
+        "DOC-0239"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0199",
+      "documentIds": [
+        "DOC-0092"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0200",
+      "documentIds": [
+        "DOC-0061",
+        "DOC-0249"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0201",
+      "documentIds": [
+        "DOC-0320"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0202",
+      "documentIds": [
+        "DOC-0029",
+        "DOC-0198"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0203",
+      "documentIds": [
+        "DOC-0021",
+        "DOC-0190"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0204",
+      "documentIds": [
+        "DOC-0279"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0205",
+      "documentIds": [
+        "DOC-0132"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0206",
+      "documentIds": [
+        "DOC-0032",
+        "DOC-0201"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0207",
+      "documentIds": [
+        "DOC-0019",
+        "DOC-0188"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0208",
+      "documentIds": [
+        "DOC-0102"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0209",
+      "documentIds": [
+        "DOC-0342"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0210",
+      "documentIds": [
+        "DOC-0063",
+        "DOC-0251"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0211",
+      "documentIds": [
+        "DOC-0005"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0212",
+      "documentIds": [
+        "DOC-0038",
+        "DOC-0210"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0213",
+      "documentIds": [
+        "DOC-0300"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0214",
+      "documentIds": [
+        "DOC-0295"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0215",
+      "documentIds": [
+        "DOC-0340"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0216",
+      "documentIds": [
+        "DOC-0137"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0217",
+      "documentIds": [
+        "DOC-0012",
+        "DOC-0181"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0218",
+      "documentIds": [
+        "DOC-0134"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0219",
+      "documentIds": [
+        "DOC-0003"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0220",
+      "documentIds": [
+        "DOC-0292"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0221",
+      "documentIds": [
+        "DOC-0301"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0222",
+      "documentIds": [
+        "DOC-0319"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0223",
+      "documentIds": [
+        "DOC-0315"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0224",
+      "documentIds": [
+        "DOC-0327"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0225",
+      "documentIds": [
+        "DOC-0042",
+        "DOC-0222"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0226",
+      "documentIds": [
+        "DOC-0014",
+        "DOC-0183"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0227",
+      "documentIds": [
+        "DOC-0302"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0228",
+      "documentIds": [
+        "DOC-0006"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0229",
+      "documentIds": [
+        "DOC-0107"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0230",
+      "documentIds": [
+        "DOC-0343"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0231",
+      "documentIds": [
+        "DOC-0338"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0232",
+      "documentIds": [
+        "DOC-0318"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0233",
+      "documentIds": [
+        "DOC-0339"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0234",
+      "documentIds": [
+        "DOC-0055",
+        "DOC-0238"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0235",
+      "documentIds": [
+        "DOC-0341"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0236",
+      "documentIds": [
+        "DOC-0158"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0237",
+      "documentIds": [
+        "DOC-0349"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0238",
+      "documentIds": [
+        "DOC-0066",
+        "DOC-0254"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0239",
+      "documentIds": [
+        "DOC-0027",
+        "DOC-0196"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0240",
+      "documentIds": [
+        "DOC-0144"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0241",
+      "documentIds": [
+        "DOC-0079",
+        "DOC-0269"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0242",
+      "documentIds": [
+        "DOC-0180"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0243",
+      "documentIds": [
+        "DOC-0278"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0244",
+      "documentIds": [
+        "DOC-0305"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0245",
+      "documentIds": [
+        "DOC-0051",
+        "DOC-0232"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0246",
+      "documentIds": [
+        "DOC-0146"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0247",
+      "documentIds": [
+        "DOC-0017",
+        "DOC-0186"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0248",
+      "documentIds": [
+        "DOC-0297"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0249",
+      "documentIds": [
+        "DOC-0346"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0250",
+      "documentIds": [
+        "DOC-0174"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0251",
+      "documentIds": [
+        "DOC-0067",
+        "DOC-0255"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0252",
+      "documentIds": [
+        "DOC-0153"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0253",
+      "documentIds": [
+        "DOC-0311"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0254",
+      "documentIds": [
+        "DOC-0036",
+        "DOC-0208"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0255",
+      "documentIds": [
+        "DOC-0237"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0256",
+      "documentIds": [
+        "DOC-0033",
+        "DOC-0202"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0257",
+      "documentIds": [
+        "DOC-0016",
+        "DOC-0185"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0258",
+      "documentIds": [
+        "DOC-0077",
+        "DOC-0267"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0259",
+      "documentIds": [
+        "DOC-0026",
+        "DOC-0195"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0260",
+      "documentIds": [
+        "DOC-0306"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0261",
+      "documentIds": [
+        "DOC-0283"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0262",
+      "documentIds": [
+        "DOC-0124",
+        "DOC-0219"
+      ],
+      "duplicateKind": "EXACT_BYTES",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0263",
+      "documentIds": [
+        "DOC-0128"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0264",
+      "documentIds": [
+        "DOC-0156"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    },
+    {
+      "documentGroupId": "GROUP-0265",
+      "documentIds": [
+        "DOC-0336"
+      ],
+      "duplicateKind": "UNIQUE",
+      "evidence": "sourceSha256"
+    }
+  ]
+}

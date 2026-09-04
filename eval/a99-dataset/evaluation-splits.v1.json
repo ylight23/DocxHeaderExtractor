@@ -1,0 +1,1338 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "createdFromCodeSha": "1e21d3f3f0fbdded34cf83d3b830efa642ed2eea",
+    "generationMode": "DETERMINISTIC",
+    "providerCalls": 0,
+    "totalFiles": 352,
+    "uniqueDocumentGroups": 265,
+    "trueBlindAvailable": false
+  },
+  "splits": [
+    {
+      "documentGroupId": "GROUP-0001",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0002",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0003",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0004",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0005",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0006",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0007",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0008",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0009",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0010",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0011",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0012",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0013",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0014",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0015",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0016",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0017",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0018",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0019",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0020",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0021",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0022",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0023",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0024",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0025",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0026",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0027",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0028",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0029",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0030",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0031",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0032",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0033",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0034",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0035",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0036",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0037",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0038",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0039",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0040",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0041",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0042",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0043",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0044",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0045",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0046",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0047",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0048",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0049",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0050",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0051",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0052",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0053",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0054",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0055",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0056",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0057",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0058",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0059",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0060",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0061",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0062",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0063",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0064",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0065",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0066",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0067",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0068",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0069",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0070",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0071",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0072",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0073",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0074",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0075",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0076",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0077",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0078",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0079",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0080",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0081",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0082",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0083",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0084",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0085",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0086",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0087",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0088",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0089",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0090",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0091",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0092",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0093",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0094",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0095",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0096",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0097",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0098",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0099",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0100",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0101",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0102",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0103",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0104",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0105",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0106",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0107",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0108",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0109",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0110",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0111",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0112",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0113",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0114",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0115",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0116",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0117",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0118",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0119",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0120",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0121",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0122",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0123",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0124",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0125",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0126",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0127",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0128",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0129",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0130",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0131",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0132",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0133",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0134",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0135",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0136",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0137",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0138",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0139",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0140",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0141",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0142",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0143",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0144",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0145",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0146",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0147",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0148",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0149",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0150",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0151",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0152",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0153",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0154",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0155",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0156",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0157",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0158",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0159",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0160",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0161",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0162",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0163",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0164",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0165",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0166",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0167",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0168",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0169",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0170",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0171",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0172",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0173",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0174",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0175",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0176",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0177",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0178",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0179",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0180",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0181",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0182",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0183",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0184",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0185",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0186",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0187",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0188",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0189",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0190",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0191",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0192",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0193",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0194",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0195",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0196",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0197",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0198",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0199",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0200",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0201",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0202",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0203",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0204",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0205",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0206",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0207",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0208",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0209",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0210",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0211",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0212",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0213",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0214",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0215",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0216",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0217",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0218",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0219",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0220",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0221",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0222",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0223",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0224",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0225",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0226",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0227",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0228",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0229",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0230",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0231",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0232",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0233",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0234",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0235",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0236",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0237",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0238",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0239",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0240",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0241",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0242",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0243",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0244",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0245",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0246",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0247",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0248",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0249",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0250",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0251",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0252",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0253",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0254",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0255",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0256",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0257",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0258",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0259",
+      "split": "RESERVED_UNLABELED",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0260",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0261",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0262",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0263",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0264",
+      "split": "DEV",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    },
+    {
+      "documentGroupId": "GROUP-0265",
+      "split": "GENERALIZATION_HOLDOUT",
+      "reason": "deterministic stable group ordinal; review family balance before freeze"
+    }
+  ]
+}

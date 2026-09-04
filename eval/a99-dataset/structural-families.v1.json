@@ -1,0 +1,2125 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "createdFromCodeSha": "1e21d3f3f0fbdded34cf83d3b830efa642ed2eea",
+    "generationMode": "DETERMINISTIC",
+    "providerCalls": 0,
+    "totalFiles": 352,
+    "uniqueDocumentGroups": 265,
+    "trueBlindAvailable": false
+  },
+  "documents": [
+    {
+      "documentId": "DOC-0001",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0002",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0003",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0004",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0005",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0006",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0007",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0008",
+      "familyId": "DOCX_NATIVE_STRUCTURED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0009",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0010",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0011",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0012",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0013",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0014",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0015",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0016",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0017",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0018",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0019",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0020",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0021",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0022",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0023",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0024",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0025",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0026",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0027",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0028",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0029",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0030",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0031",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0032",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0033",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0034",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0035",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0036",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0037",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0038",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0039",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0040",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0041",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0042",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0043",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0044",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0045",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0046",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0047",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0048",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0049",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0050",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0051",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0052",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0053",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0054",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0055",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0056",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0057",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0058",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0059",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0060",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0061",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0062",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0063",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0064",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0065",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0066",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0067",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0068",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0069",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0070",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0071",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0072",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0073",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0074",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0075",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0076",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0077",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0078",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0079",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0080",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0081",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0082",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0083",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0084",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0085",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0086",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0087",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0088",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0089",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0090",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0091",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0092",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0093",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0094",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0095",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0096",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0097",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0098",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0099",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0100",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0101",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0102",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0103",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0104",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0105",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0106",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0107",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0108",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0109",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0110",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0111",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0112",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0113",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0114",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0115",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0116",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0117",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0118",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0119",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0120",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0121",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0122",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0123",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0124",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0125",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0126",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0127",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0128",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0129",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0130",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0131",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0132",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0133",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0134",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0135",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0136",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0137",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0138",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0139",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0140",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0141",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0142",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0143",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0144",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0145",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0146",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0147",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0148",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0149",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0150",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0151",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0152",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0153",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0154",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0155",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0156",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0157",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0158",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0159",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0160",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0161",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0162",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0163",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0164",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0165",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0166",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0167",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0168",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0169",
+      "familyId": "UNKNOWN",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "LOW"
+    },
+    {
+      "documentId": "DOC-0170",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0171",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0172",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0173",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0174",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0175",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0176",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0177",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0178",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0179",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0180",
+      "familyId": "PDF_NATIVE_LAYOUT",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0181",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0182",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0183",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0184",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0185",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0186",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0187",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0188",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0189",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0190",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0191",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0192",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0193",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0194",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0195",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0196",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0197",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0198",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0199",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0200",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0201",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0202",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0203",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0204",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0205",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0206",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0207",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0208",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0209",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0210",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0211",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0212",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0213",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0214",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0215",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0216",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0217",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0218",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0219",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0220",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0221",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0222",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0223",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0224",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0225",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0226",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0227",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0228",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0229",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0230",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0231",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0232",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0233",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0234",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0235",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0236",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0237",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0238",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0239",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0240",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0241",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0242",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0243",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0244",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0245",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0246",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0247",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0248",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0249",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0250",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0251",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0252",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0253",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0254",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0255",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0256",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0257",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0258",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0259",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0260",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0261",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0262",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0263",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0264",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0265",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0266",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0267",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0268",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0269",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0270",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0271",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0272",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0273",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0274",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0275",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0276",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0277",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0278",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0279",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0280",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0281",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0282",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0283",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0284",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0285",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0286",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0287",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0288",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0289",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0290",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0291",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0292",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0293",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0294",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0295",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0296",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0297",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0298",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0299",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0300",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0301",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0302",
+      "familyId": "VN_LEGAL_MARKER",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0303",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0304",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0305",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0306",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0307",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0308",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0309",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0310",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0311",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0312",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0313",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0314",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0315",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0316",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0317",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0318",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0319",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0320",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0321",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0322",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0323",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0324",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0325",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0326",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0327",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0328",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0329",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0330",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0331",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0332",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0333",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0334",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0335",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0336",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0337",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0338",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0339",
+      "familyId": "VN_ADMIN_TYPED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0340",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0341",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0342",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0343",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0344",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0345",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0346",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0347",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0348",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0349",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0350",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0351",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    },
+    {
+      "documentId": "DOC-0352",
+      "familyId": "PDF_CONVERTED",
+      "familyEvidence": "deterministic path/source-kind rule",
+      "familyConfidence": "MEDIUM"
+    }
+  ]
+}
