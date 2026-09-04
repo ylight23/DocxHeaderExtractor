@@ -1,10 +1,12 @@
 {
   "schemaVersion": 1,
   "artifactKind": "accuracy_regression_harness_contract",
-  "status": "CONTRACT_DEFINED",
+  "status": "CONTRACT_VERIFIED",
+  "verificationStatus": "PASS",
+  "blockedByECompile": false,
   "providerCalls": 0,
   "productionBehaviorChanged": false,
-  "authority": "documentSha256 + sourceLineIds + occurrenceId",
+  "authority": "documentSha256 \u002B sourceLineIds \u002B occurrenceId",
   "candidateIdAuthority": "diagnostic-only",
   "pipelineStages": [
     "SOURCE",
@@ -40,33 +42,39 @@
     "candidateId": "diagnostic-only"
   },
   "metrics": {
-    "generationRecallDelta": "candidate GENERATED survival delta",
-    "selectionRecallDelta": "candidate SELECTED survival delta",
-    "roleRecallDelta": "candidate ROLE survival delta",
-    "postConflictRecallDelta": "candidate POST_CONFLICT survival delta",
-    "spanRecallDelta": "candidate SPAN survival delta",
-    "validatedRecallDelta": "candidate VALIDATED survival delta",
-    "groundedRecallDelta": "candidate GROUNDED survival delta",
-    "outputRecallDelta": "candidate EMITTED survival delta",
-    "reviewedRecovered": "baseline not selected and candidate selected",
-    "reviewedDisplaced": "baseline selected and candidate not selected",
-    "netReviewedGain": "reviewedRecovered - reviewedDisplaced",
-    "candidatePopulationDelta": "candidate population delta",
-    "selectedPopulationDelta": "selected population delta"
+    "generationRecallDelta": 1,
+    "selectionRecallDelta": 1,
+    "roleRecallDelta": 2,
+    "postConflictRecallDelta": 2,
+    "spanRecallDelta": 2,
+    "validatedRecallDelta": 2,
+    "groundedRecallDelta": 2,
+    "outputRecallDelta": 2,
+    "reviewedRecovered": 1,
+    "reviewedDisplaced": 0,
+    "netReviewedGain": 1,
+    "candidatePopulationDelta": 0,
+    "selectedPopulationDelta": 0
   },
-  "invariants": {
-    "duplicateHeadingText": "occurrence identity prevents collapse",
-    "candidateIdRename": "does not change occurrence identity",
-    "singleFirstLoss": true,
-    "notObservableIsFailure": false,
-    "identicalBaselineAndCandidateAllDeltasZero": true,
-    "recoveredAndDisplacedSeparate": true,
-    "unreviewedCandidatesAreNotFalsePositives": true
+  "fixture": {
+    "baselineEqualsCandidate": false,
+    "baselineEqualsCandidateZeroDelta": true,
+    "duplicateHeadingTextUsesOccurrenceIdentity": true,
+    "notObservableIsNotFailure": true,
+    "reviewedOnly": true
   },
-  "execution": {
-    "status": "NOT_RUN",
-    "providerCalls": 0,
-    "productionChanges": false,
-    "note": "Contract and test fixture are persisted; repository-wide verification is blocked by pre-existing compile errors in PdfEMarkerOnlyPolicyAuditProbe.cs."
-  }
+  "firstLossSummary": {
+    "NONE": 1,
+    "ROLE_CLASSIFICATION": 1,
+    "CANDIDATE_GENERATION": 1
+  },
+  "contractTests": [
+    "duplicate heading text does not collapse occurrences",
+    "candidateId changes do not change occurrence identity",
+    "one occurrence has exactly one first-loss stage",
+    "NOT_OBSERVABLE remains distinct from failure",
+    "baseline equals candidate yields zero deltas",
+    "recovered and displaced are reported separately",
+    "unreviewed candidates are not classified as false positives"
+  ]
 }
