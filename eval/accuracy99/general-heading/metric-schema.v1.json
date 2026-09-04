@@ -1,0 +1,29 @@
+{
+  "artifactKind": "accuracy99_metric_schema",
+  "schemaVersion": "accuracy99-metrics-v1",
+  "accuracyClaim": "NOT_YET_ESTABLISHED",
+  "requiredMetrics": [
+    "truePositives",
+    "falsePositives",
+    "falseNegatives",
+    "precision",
+    "recall",
+    "f1",
+    "exactSpanMatches",
+    "levelCorrect",
+    "parentCorrect",
+    "hierarchyCorrect",
+    "documentExactMatch",
+    "firstLosses"
+  ],
+  "aggregation": [
+    "micro",
+    "macro_per_document"
+  ],
+  "denominatorPolicy": {
+    "ambiguous": "excluded",
+    "notObservable": "excluded",
+    "unjoined": "reported_separately",
+    "missingSpan": "unmeasured"
+  }
+}

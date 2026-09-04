@@ -10,6 +10,11 @@ public sealed class CommandLineOptions
     public string Command { get; private set; } = "extract";
     public List<string> Inputs { get; } = [];
     public string? OutputPath { get; private set; }
+    public string? Accuracy99Operation { get; private set; }
+    public string? Accuracy99Root { get; private set; }
+    public string? Accuracy99GoldPath { get; private set; }
+    public string? Accuracy99PredictionPath { get; private set; }
+    public string? Accuracy99Profile { get; private set; }
     public string? TrainingOutputPath { get; private set; }
     public string? CalibrationOutputPath { get; private set; }
     public OutlineFormat Format { get; private set; } = OutlineFormat.Json;
@@ -147,7 +152,7 @@ public sealed class CommandLineOptions
 
         int i = 0;
         if (!args[0].StartsWith('-') &&
-            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-hierarchy-facts" or "pdf-hierarchy-marker-counterfactual" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-hierarchy-facts-eval" or "pdf-shadow-compare" or "pdf-human-audit-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt")
+            args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-stage-eval" or "pdf-hierarchy-facts" or "pdf-hierarchy-marker-counterfactual" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-hierarchy-facts-eval" or "pdf-shadow-compare" or "pdf-human-audit-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt" or "accuracy99")
         {
             o.Command = args[0];
             i = 1;
@@ -155,6 +160,10 @@ public sealed class CommandLineOptions
         if (o.Command == "help") { o.ShowHelp = true; return o; }
 
         var explicitChunkTokens = false;
+        if (o.Command == "accuracy99" && i < args.Length && !args[i].StartsWith('-'))
+        {
+            o.Accuracy99Operation = args[i++];
+        }
 
         for (; i < args.Length; i++)
         {
@@ -167,6 +176,11 @@ public sealed class CommandLineOptions
                 case "-h" or "--help": o.ShowHelp = true; break;
                 case "-m" or "--model": llama.ModelPath = Next(a); break;
                 case "-o" or "--out": o.OutputPath = Next(a); break;
+                case "--operation": o.Accuracy99Operation = Next(a); break;
+                case "--root": o.Accuracy99Root = Next(a); break;
+                case "--accuracy-gold": o.Accuracy99GoldPath = Next(a); break;
+                case "--prediction": o.Accuracy99PredictionPath = Next(a); break;
+                case "--profile": o.Accuracy99Profile = Next(a); break;
                 case "--training-out": o.TrainingOutputPath = Next(a); break;
                 case "--calibration-out": o.CalibrationOutputPath = Next(a); break;
                 case "--calibration-profile": o.Pipeline.CalibrationProfilePath = Next(a); break;
@@ -472,6 +486,12 @@ public sealed class CommandLineOptions
           dhx verify-corrupt <file.docx>       # cổng chẩn đoán VLM: đoạn bị is_doubled gắn cờ là lỗi
                                               # thật ở nguồn (render+nhìn) hay lỗi tầng đọc — cần PDF
                                               # anh em + --vlm-model/--vlm-mmproj (xem handoff §173)
+          dhx accuracy99 packet <file.docx> --out <packet.json>
+          dhx accuracy99 inventory <dataset-root> --out <manifest.json>
+          dhx accuracy99 evaluate <file.docx> --accuracy-gold <gold.json> --prediction <outline.json>
+          dhx accuracy99 baseline <file.docx> --profile structural --out <baseline.json>
+                                              # General-heading accuracy infrastructure; Human Gold
+                                              # is never inferred from .key/silver artifacts.
 
         Tuỳ chọn chính:
           -m, --model <path.gguf>   Mô hình GGUF (mặc định: biến DHX_MODEL, appsettings.json

@@ -37,7 +37,7 @@ if (options.ShowHelp)
     return 0;
 }
 // `sample`/`bench`/`eval` có đích mặc định, `info` tự dò mô hình – không cần đầu vào.
-if (options.Inputs.Count == 0 && options.Command is not ("sample" or "info" or "bench" or "eval"))
+if (options.Inputs.Count == 0 && options.Command is not ("sample" or "info" or "bench" or "eval" or "accuracy99"))
 {
     Console.Error.WriteLine("Chưa chỉ định file đầu vào.");
     return 2;
@@ -56,6 +56,7 @@ try
         "sample" => RunSample(options),
         "bench" => RunBench(options),
         "eval" => await RunEvalAsync(options, cts.Token),
+        "accuracy99" => await Accuracy99Runner.RunAsync(options, cts.Token),
         "review" => await RunReviewAsync(options, cts.Token),
         "review-key" => RunReviewKey(options),
         "toc-keys" => RunTocKeys(options),
