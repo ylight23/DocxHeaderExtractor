@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "createdFromCodeSha": "9a2819db24e8d4c79b470cf7e7b422bc35d35954",
+  "generationMode": "DETERMINISTIC",
+  "providerCalls": 0,
+  "trueBlindAvailable": false,
+  "crossSplitLeakage": 0,
+  "sourceInventorySha256": "0c80035f5c7f7948533c909552a480818ea14b26983de438e0567709d26505e1",
+  "referenceAuthorityPolicySha256": "86ed477374d4cc0d100619a7f17667d8b57d4eb847c7aeb882b107a977f5a795",
+  "artifacts": [
+    "reference-authority-policy.v1.json",
+    "document-inventory.v1.json",
+    "document-groups.v1.json",
+    "structural-families.v1.json",
+    "family-coverage.v1.json",
+    "evaluation-splits.v1.json"
+  ]
+}
