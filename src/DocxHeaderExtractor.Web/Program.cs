@@ -295,7 +295,7 @@ app.MapPost("/api/extract", async (
                 Console.WriteLine($"[{DateTimeOffset.Now:yyyy-MM-dd HH:mm:ss}] [DHX] {m}");
                 events.Writer.TryWrite(new { type = "log", message = m });
             };
-        if (provider.Backend == InferenceBackend.LmStudio && options.ShowRawOutput)
+        if ((provider.Backend is InferenceBackend.LmStudio or InferenceBackend.OpenRouter) && options.ShowRawOutput)
             provider.Remote.DebugLog = options.Log;
         // Mọi backend áp dụng correction khớp chính xác sau suy luận. Local GGUF và LM Studio
         // được retrieval ví dụ tương tự; pipeline không gửi lịch sử correction ra OpenRouter.
@@ -356,6 +356,7 @@ app.MapPost("/api/extract", async (
                     type = "agent",
                     runId = evt.RunId,
                     sequence = evt.Sequence,
+                    timestamp = evt.Timestamp,
                     stage = evt.Stage,
                     kind = evt.Kind.ToString(),
                     message = evt.Message,
@@ -368,7 +369,9 @@ app.MapPost("/api/extract", async (
                 AllowExternalDataTransfer:
                     !options.DisableLlm && provider.SendsDataExternally)
             {
-                UserPrompt = form["userPrompt"].ToString().Trim() is { Length: > 0 } prompt ? prompt : null,
+                UserPrompt = form["userPrompt"].ToString().Trim() is { Length: > 0 } prompt
+                    ? prompt
+                    : "Extract the document structure.",
                 WritebackTargetPath = writebackTarget,
             };
             var run = Task.Run(() => harness.RunAsync(request, ct), ct);
@@ -400,6 +403,7 @@ app.MapPost("/api/extract", async (
                 agent = new
                 {
                     runId = agentRun.RunId,
+                    planId = agentRun.TaskResult.PlanId,
                     outcome = agentRun.Outcome.ToString(),
                     steps = agentRun.Steps,
                     repairAttempts = agentRun.RepairAttempts,

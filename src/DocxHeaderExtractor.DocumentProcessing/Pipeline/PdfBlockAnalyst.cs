@@ -41,6 +41,7 @@ internal sealed record PdfBlockAnalysis(
     IReadOnlyList<string> RawResponses)
 {
     public IReadOnlyList<string> InputContracts { get; init; } = [];
+    public string? ProviderFailure { get; init; }
     public IReadOnlySet<string> HeadingBlockIds => Decisions
         .Where(d => d.Role == PdfBlockRole.HeadingTopic && d.Confidence >= 0.65)
         .Select(d => d.Id)
@@ -169,7 +170,9 @@ internal static class PdfBlockAnalyst
                     .Select(batch => BuildUserPrompt(batch, contexts is null ? null : batch
                         .Where(block => contexts.ContainsKey(block.Id))
                         .ToDictionary(block => block.Id, block => contexts[block.Id], StringComparer.Ordinal)))
-                    .ToArray(),
+                        .ToArray(),
+                ProviderFailure = partials.Select(partial => partial.ProviderFailure)
+                    .FirstOrDefault(failure => failure is not null),
             };
         }
 
@@ -193,9 +196,9 @@ internal static class PdfBlockAnalyst
         {
             throw;
         }
-        catch
+        catch (Exception ex)
         {
-            return new PdfBlockAnalysis(blocks, [], []);
+            return new PdfBlockAnalysis(blocks, [], []) { ProviderFailure = ex.GetType().Name };
         }
 
         var decisions = ParseDecisions(raw, blocks).ToList();
@@ -249,6 +252,7 @@ internal static class PdfBlockAnalyst
 
         var rawResponses = new List<string>();
         var inputContracts = new List<string>();
+        string? providerFailure = null;
         foreach (var batch in headingBlocks.Chunk(4))
         {
             string raw;
@@ -275,6 +279,7 @@ internal static class PdfBlockAnalyst
                     await checkpoint.RecordSpanBatchAsync(
                         batch.Select(b => (b.Id, b.Page, LineIdOf(b), LineIdsOf(b), (TextOffsetSpan?)null)).ToArray(),
                         ex.GetType().Name, ct);
+                providerFailure ??= ex.GetType().Name;
                 continue;
             }
 
@@ -298,7 +303,7 @@ internal static class PdfBlockAnalyst
         }
 
         return new PdfBlockAnalysis(blocks, blocks.Where(block => byId.ContainsKey(block.Id)).Select(block => byId[block.Id]).ToArray(), rawResponses)
-        { InputContracts = inputContracts };
+        { InputContracts = inputContracts, ProviderFailure = providerFailure };
     }
 
     /// <summary>Source-line identity for a block, so a checkpoint row can be matched across runs.</summary>

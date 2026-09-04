@@ -22,6 +22,9 @@
     margin: 0; background: var(--bg); color: var(--ink);
     font: 15px/1.55 "Segoe UI", system-ui, -apple-system, sans-serif;
   }
+  .appbar { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin: 0 0 12px; }
+  .appbrand { font-size: 12px; font-weight: 750; letter-spacing: .11em; color: var(--ink); }
+  .appcontext { color: var(--muted); font-size: 12px; }
   .wrap { max-width: none; margin: 0; padding: 12px 14px 32px; }
   .panel {
     background: var(--panel); border: 1px solid var(--line);
@@ -85,6 +88,20 @@
     background: var(--bg); border: 1px solid var(--line); border-radius: 7px; padding: 11px 13px;
     flex: 1 1 auto; min-height: 0;
   }
+  .log-tabs { display: flex; gap: 6px; margin: 0 0 9px; }
+  .log-tabs button { margin: 0; padding: 5px 10px; font-size: 12px; border-radius: 5px; }
+  .log-tabs button.active { background: var(--ink); color: var(--panel); }
+  .event-log { display: flex; flex-direction: column; gap: 7px; }
+  .log-entry { white-space: pre-wrap; overflow-wrap: anywhere; padding: 6px 8px; border-left: 2px solid var(--line); }
+  .log-entry.agent { border-left-color: var(--accent); background: color-mix(in srgb, var(--accbg) 45%, transparent); }
+  .log-entry.raw { border-left-color: var(--muted); }
+  .llm-event { padding: 0 8px 6px; border-left: 2px solid var(--muted); }
+  .llm-event summary { cursor: pointer; color: var(--muted); font: 11px ui-monospace, Consolas, monospace; }
+  .llm-event pre { margin: 6px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; color: var(--ink); }
+  .log-head { display: flex; gap: 8px; align-items: baseline; color: var(--muted); font: 11px ui-monospace, Consolas, monospace; }
+  .log-kind { color: var(--accent); font-weight: 700; }
+  .log-body { margin-top: 2px; }
+  .raw-hidden { color: var(--muted); padding: 9px 2px; font-size: 12px; }
   .devbar { display: flex; align-items: center; gap: 9px; margin: -3px 0 8px; }
   .devdot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); flex: 0 0 auto; }
   .devdot.live { background: var(--accent); box-shadow: 0 0 0 4px var(--accbg); }
@@ -126,6 +143,27 @@
   .stage.done .sdot { background: var(--ok); }
   .stage.live { color: var(--ink); font-weight: 650; }
   .stage.live .sdot { background: var(--accent); box-shadow: 0 0 0 4px var(--accbg); }
+  .harness-stage { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: 8px; align-items: center; width: 100%; padding: 7px 6px; border: 0; border-radius: 6px; background: transparent; color: var(--muted); text-align: left; font: inherit; font-size: 12.5px; cursor: pointer; }
+  .harness-stage:hover, .harness-stage.selected { background: var(--accbg); }
+  .harness-stage .stage-number { color: var(--muted); font: 11px ui-monospace, Consolas, monospace; }
+  .harness-stage .stage-status { font-size: 11px; font-weight: 650; }
+  .harness-stage.done { color: var(--ink); }
+  .harness-stage.live { color: var(--ink); font-weight: 650; }
+  .harness-stage.failed { color: var(--bad); }
+  .harness-stage .sdot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); display: block; }
+  .harness-stage.done .sdot { background: var(--ok); }
+  .harness-stage.live .sdot { background: var(--accent); box-shadow: 0 0 0 4px var(--accbg); }
+  .harness-detail { margin-top: 10px; padding: 10px 11px; border: 1px solid var(--line); border-radius: 7px; background: var(--bg); font-size: 12px; }
+  .harness-heading { display: flex; align-items: baseline; gap: 9px; margin: 1px 0 9px; }
+  .harness-heading strong { font-size: 12px; letter-spacing: .06em; }
+  .harness-heading .note { margin: 0; }
+  .harness-detail h3 { margin: 0 0 8px; font-size: 13px; }
+  .harness-facts { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 4px 10px; }
+  .harness-facts dt { color: var(--muted); }
+  .harness-facts dd { margin: 0; overflow-wrap: anywhere; }
+  .prompt-box { margin-top: 14px; }
+  .prompt-box textarea { min-height: 74px; font: inherit; font-size: 13.5px; }
+  .prompt-box .note { margin: 5px 0 0; }
   .spacer { flex: 1 1 auto; }
 
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -157,6 +195,10 @@
   details#advanced[open] > summary { margin-bottom: 4px; }
   details#advanced .opts { margin-top: 10px; }
   details#advanced .note { margin-top: 5px; }
+  details#developerSettings, details#developerPanel { margin-top: 14px; border: 1px solid var(--line); border-radius: 7px; padding: 10px 13px; }
+  details#developerSettings > summary, details#developerPanel > summary { cursor: pointer; font-size: 13px; color: var(--muted); font-weight: 650; }
+  details#developerSettings[open] > summary, details#developerPanel[open] > summary { margin-bottom: 8px; }
+  details#developerPanel > .panel:first-of-type { margin-top: 0; }
   textarea {
     width: 100%; min-height: 86px; padding: 9px 11px; border: 1px solid var(--line);
     border-radius: 7px; background: var(--bg); color: var(--ink); resize: vertical;
@@ -244,7 +286,10 @@
 </head>
 <body>
 <div class="wrap">
-  <header class="brand"><strong>DOCUMENT AI</strong><span>Automatic Harness</span></header>
+  <header class="appbar">
+    <div class="appbrand">DOCUMENT AI / AUTOMATIC HARNESS</div>
+    <div class="appcontext">Prompt-driven document structure</div>
+  </header>
   <div class="workspace-nav" aria-label="Workspace mode">
     <button class="secondary active" data-workspace-mode="extract">Trích xuất</button>
     <button class="secondary" data-workspace-mode="correction">Correction · model visible</button>
@@ -268,9 +313,14 @@
     </div>
     <input id="file" type="file" class="hidden" accept=".docx,.docm,.doc,.rtf,.odt">
 
-    <label class="prompt-label" for="userPrompt">Bạn muốn làm gì?</label>
-    <textarea id="userPrompt" placeholder="Ví dụ: Trích Chương, Điều và Khoản liên quan đến bảo mật, trả kết quả dạng cây."></textarea>
+    <div class="prompt-box">
+      <label class="f" for="userPrompt">User prompt</label>
+      <textarea id="userPrompt" placeholder="Describe the structure or concepts to extract.">Extract the document structure as a tree.</textarea>
+      <p class="note">The prompt is carried in the task trace; validator and source grounding remain authoritative.</p>
+    </div>
 
+    <details id="developerSettings">
+      <summary>Developer / Model settings</summary>
     <div class="opts">
       <div>
         <label class="f" for="backend">Backend suy luận</label>
@@ -351,12 +401,13 @@
         <label><input type="checkbox" id="structuralOnly" checked> Bỏ luật từ ngữ</label>
         <label><input type="checkbox" id="noTrustStyles"> Không khôi phục theo style</label>
         <label title="Tài liệu chuyển từ PDF thường gộp cả trang vào một đoạn; 83/95 file corpus thuộc dạng này và 67% mục có ranh giới heading nằm giữa đoạn."><input type="checkbox" id="splitMerged"> Cắt đoạn bị gộp (tài liệu từ PDF)</label>
-        <label title="Raw prompt/response có thể chứa nội dung tài liệu; chỉ bật trong môi trường developer phù hợp."><input type="checkbox" id="showRaw"> Hiện raw prompt/response (developer)</label>
+        <label><input type="checkbox" id="showRaw"> Hiện JSON LLM trả về (debug)</label>
       </div>
       <p class="note">"Không khôi phục theo style" là nút để đánh giá riêng chất lượng mô hình:
         với một lần chạy bình thường nó chỉ có thể làm mất heading mà chính Word đã khẳng định.</p>
     </details>
-    
+    </details>
+
 
     <div class="actions">
       <button id="inspectMode" class="secondary" disabled>Kiểm tra mode</button>
@@ -371,7 +422,8 @@
     </div>
 
     <div class="panel" id="workCard">
-      <h2>Harness đang làm gì</h2>
+      <h2>Automatic Harness execution <span class="chip acc">Intent → Plan → Tool → Validator → Source</span></h2>
+      <div class="harness-heading"><strong>HARNESS EXECUTION</strong><span class="note">Intent -> Plan -> Capabilities -> Policy -> Stages</span></div>
       <div class="workgrid">
         <div class="workitem"><span class="worklabel">Trạng thái</span><span id="workState" class="workvalue">Chờ tài liệu</span></div>
         <div class="workitem"><span class="worklabel">Tài liệu</span><span id="workFile" class="workvalue">Chưa chọn file</span></div>
@@ -379,21 +431,22 @@
         <div class="workitem"><span class="worklabel">Context / batch</span><span id="workConfig" class="workvalue">—</span></div>
       </div>
       <ol class="stages" id="stages"></ol>
+      <div class="harness-detail" id="harnessDetail"><h3>Harness trace</h3><p class="note" style="margin:0">Select a stage to inspect its contract and emitted events.</p></div>
       <div class="spacer"></div>
       <p id="workHint">Chọn tài liệu để bắt đầu một lượt phân tích có thể theo dõi.</p>
     </div>
     </div>
 
     <div class="panel" id="progressPanel">
-      <h2>Backend / LLM live log</h2>
+      <h2>Live backend / LLM log</h2>
       <div class="devbar"><span id="devDot" class="devdot"></span><span id="devState">Đang chờ</span><span id="devElapsed">0 s</span></div>
       <p id="devMeta">Chưa có lượt xử lý.</p>
       <div class="log-tabs" role="tablist" aria-label="Log filter">
-        <button class="secondary active" data-log-filter="all">Tất cả</button>
-        <button class="secondary" data-log-filter="agent">Agent</button>
-        <button class="secondary" data-log-filter="raw">LLM raw</button>
+        <button class="secondary active" data-log-tab="all" role="tab">All</button>
+        <button class="secondary" data-log-tab="agent" role="tab">Agent</button>
+        <button class="secondary" data-log-tab="raw" role="tab">LLM raw</button>
       </div>
-      <div id="log"></div>
+      <div id="log" class="event-log" aria-live="polite"></div>
     </div>
   </div>
 
@@ -408,7 +461,9 @@
     <p class="note hidden" id="downloadNote">Link chỉ dùng được một lần; tải xong là bản ghi rời khỏi bộ nhớ server.</p>
   </div>
 
-  <div class="panel hidden" id="auditPanel">
+  <details id="developerPanel">
+    <summary>Developer / Evaluation</summary>
+  <div class="panel" id="auditPanel">
     <h2>6D-D · Remaining-cohort adjudication <span class="tag dis">silver-positive cohort</span></h2>
     <p class="note" style="margin: 0 0 12px">
       Đây là adjudication bổ sung cho packet đã có silver positive. Nó không phải independent human gold; dùng workspace Blind Gold bên dưới cho review độc lập.
@@ -513,18 +568,148 @@
     <p class="note" id="traceNote"></p>
     <div class="scroll"><table id="traceTable"></table></div>
   </div>
+</details>
 </div>
 
 <script>
 const $ = id => document.getElementById(id);
 let picked = null, outline = null, reviewBundle = null, serverError = false;
 let defaults = null, gpuBaseNote = '', gpuBaseLabel = '';
-let devStarted = 0, devLogLines = 0, runController = null;
-let liveEvents = [], logFilter = 'all';
+let devStarted = 0, devLogLines = 0;
+let logEvents = [], harnessEvents = [], activeLogTab = 'all', harnessSelectedStage = null, harnessStagePinned = false;
+let rawDataVisible = false;
 let auditPacket = null, auditItems = [], auditIndex = 0;
 let goldPacket = null, goldItems = [], goldIndex = 0;
 let workspaceMode = 'extract';
 let traceExpected = null;
+
+const HARNESS_STAGE_DEFS = [
+  { key: 'intent.proposal', label: 'Intent proposal', match: e => e.stage === 'intent.proposal', contract: 'IntentProposal' },
+  { key: 'intent.validation', label: 'Intent validation', match: e => e.stage === 'intent.validation', contract: 'ValidatedIntent / IntentState' },
+  { key: 'semantic.resolve', label: 'Semantic resolution', match: e => e.stage === 'semantic.resolve', contract: 'Semantic registry' },
+  { key: 'plan', label: 'Capability planning', match: e => e.stage.startsWith('plan.') || e.stage === 'capability.resolve', contract: 'SemanticTaskPlan / ExecutionPlan' },
+  { key: 'policy.approval', label: 'Policy', match: e => e.stage === 'policy.approval', contract: 'PolicyDecision' },
+  { key: 'tool', label: 'Capability execution', match: e => e.stage.startsWith('tool.') || e.stage === 'capability.execute', contract: 'Capability tool' },
+  { key: 'validation', label: 'Validation & source grounding', match: e => e.stage.startsWith('validator.') || e.stage === 'validation.source-authority' || e.stage === 'gate.human_review', contract: 'Validator / source authority / review gate' },
+  { key: 'projection.prompt-driven', label: 'Projection', match: e => e.stage === 'projection.prompt-driven', contract: 'PromptDrivenProjection<DocumentOutline>' },
+];
+
+function stageEvents(def) { return harnessEvents.filter(def.match); }
+
+function stageState(events) {
+  if (!events.length) return 'pending';
+  const latest = events[events.length - 1];
+  if (latest.kind === 'Failed' || latest.kind === 'Blocked') return 'failed';
+  if (latest.kind === 'Started' || latest.kind === 'Repairing') return 'live';
+  return 'done';
+}
+
+function renderHarnessStages() {
+  const current = harnessEvents.length ? harnessEvents[harnessEvents.length - 1] : null;
+  const currentDef = current && HARNESS_STAGE_DEFS.find(def => def.match(current));
+  const currentKey = currentDef?.key;
+  $('stages').innerHTML = HARNESS_STAGE_DEFS.map((def, index) => {
+    const events = stageEvents(def), state = stageState(events);
+    const selected = (harnessSelectedStage || currentKey) === def.key;
+    const status = state === 'done' ? 'DONE' : state === 'live' ? 'RUNNING' : state === 'failed' ? 'BLOCKED' : 'PENDING';
+    return `<li><button class="harness-stage ${state} ${selected ? 'selected' : ''}" data-harness-stage="${def.key}">
+      <span class="sdot"></span><span><span class="stage-number">${index + 1}.</span> ${esc(def.label)}</span><span class="stage-status">${status}</span>
+    </button></li>`;
+  }).join('');
+  document.querySelectorAll('[data-harness-stage]').forEach(button => button.onclick = () => {
+    harnessSelectedStage = button.dataset.harnessStage;
+    harnessStagePinned = true;
+    renderHarnessStages();
+    renderHarnessDetail(harnessSelectedStage);
+  });
+  if (!harnessSelectedStage && currentKey) harnessSelectedStage = currentKey;
+}
+
+function renderHarnessDetail(key) {
+  const def = HARNESS_STAGE_DEFS.find(item => item.key === key) || HARNESS_STAGE_DEFS[0];
+  const events = stageEvents(def);
+  const latest = events[events.length - 1];
+  const prompt = $('userPrompt')?.value.trim() || 'Extract the document structure as a tree.';
+  const facts = [
+    ['State', latest ? latest.kind.toUpperCase() : 'PENDING'],
+    ['Contract', def.contract],
+    ['Stage', def.key],
+    ['Latest event', latest?.message || 'Chưa có event'],
+  ];
+  if (key === 'intent.validation') facts.push(['Operation', 'extract-document-structure'], ['Granularity', 'document / hierarchical'], ['OutputShape', 'outline'], ['Predicate', prompt]);
+  if (key === 'plan') facts.push(['Capabilities', 'inspect_document · extract_structure · semantic_filter · project_result']);
+  if (key === 'policy.approval') facts.push(['Decision', latest?.message || 'PENDING']);
+  $('harnessDetail').innerHTML = `<h3>${esc(def.label)}</h3><dl class="harness-facts">${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(String(v))}</dd>`).join('')}</dl>`;
+}
+
+function formatEventTime(value) {
+  const date = value ? new Date(value) : new Date();
+  return Number.isNaN(date.getTime()) ? '--:--:--' : date.toLocaleTimeString([], { hour12: false });
+}
+
+function looksLikeRaw(message) {
+  return />>>\s*(REQUEST|PROMPT)|<<<\s*(RESPONSE|OUTPUT)|prompt tokens|raw json|^\s*[\[{]/i.test(String(message));
+}
+
+function renderLog() {
+  const all = [...logEvents].sort((a, b) => a.order - b.order);
+  const rawCount = all.filter(item => item.category === 'raw' && looksLikeRaw(item.message)).length;
+  const visible = all.filter(item => activeLogTab === 'all'
+    ? rawDataVisible || !looksLikeRaw(item.message) || item.category === 'agent'
+    : activeLogTab === item.category && (activeLogTab !== 'raw' || rawDataVisible || !looksLikeRaw(item.message)));
+  const hiddenNote = activeLogTab === 'raw' && !rawDataVisible
+    ? `<div class="raw-hidden">Raw LLM content is hidden by default. Enable “Show raw LLM data” in Developer / Model settings to inspect it. ${rawCount} raw block(s) available.</div>` : '';
+  $('log').innerHTML = hiddenNote + visible.map(item => {
+    const agent = item.category === 'agent';
+    if (!agent && looksLikeRaw(item.message)) {
+      return `<details class="llm-event"><summary>${esc(formatEventTime(item.timestamp))} · LLM raw event</summary><pre>${esc(item.message)}</pre></details>`;
+    }
+    return `<div class="log-entry ${agent ? 'agent' : 'raw'}"><div class="log-head"><span>${esc(formatEventTime(item.timestamp))}</span><span class="log-kind">${esc(agent ? item.stage.toUpperCase() : 'BACKEND')}</span>${agent ? `<span>${esc(item.kind)}</span>` : ''}</div><div class="log-body">${esc(item.message)}</div></div>`;
+  }).join('') || (hiddenNote ? '' : '<div class="raw-hidden">No events yet.</div>');
+  $('log').scrollTop = $('log').scrollHeight;
+}
+
+// Presentation adapter for the two existing NDJSON event types.
+function handleStreamEvent(evt) {
+  if (evt.type === 'log') {
+    devLogLines++;
+    updateDevState(evt.message);
+    logEvents.push({ category: 'raw', message: String(evt.message || ''), timestamp: Date.now(), order: logEvents.length });
+    renderLog();
+  } else if (evt.type === 'agent') {
+    const event = { ...evt, category: 'agent', timestamp: evt.timestamp || Date.now(), order: logEvents.length };
+    harnessEvents.push(event);
+    logEvents.push(event);
+    if (!harnessStagePinned) {
+      harnessSelectedStage = HARNESS_STAGE_DEFS.find(def => def.match(event))?.key || harnessSelectedStage;
+    }
+    $('devState').textContent = `${evt.stage} · ${evt.kind}`;
+    renderHarnessStages();
+    renderHarnessDetail(harnessSelectedStage || 'intent.proposal');
+    renderLog();
+  } else if (evt.type === 'error') {
+    serverError = true;
+    $('devDot').className = 'devdot error';
+    $('devState').textContent = 'Processing error';
+    $('workState').textContent = 'Error';
+    $('workHint').textContent = evt.message;
+    showError(evt.message);
+  } else if (evt.type === 'result') {
+    $('devDot').className = 'devdot done';
+    $('devState').textContent = 'Completed · ' + devLogLines + ' events';
+    renderStages(true);
+    renderHarnessStages();
+    $('workState').textContent = 'Completed';
+    $('workHint').textContent = 'Pipeline complete; inspect the validated result and source evidence below.';
+    outline = evt.outline;
+    if (evt.agent) {
+      const event = { category: 'agent', stage: 'run', kind: 'Completed', message: evt.agent.message || 'Run completed.', timestamp: Date.now(), order: logEvents.length };
+      logEvents.push(event);
+      renderLog();
+    }
+    render(evt.outline, evt.stats, evt.review, evt.agent);
+  }
+}
 
 const workspaceNotes = {
   extract: 'Trích xuất và kiểm tra kết quả hệ thống.',
@@ -533,6 +718,15 @@ const workspaceNotes = {
   developer: 'Cấu hình runtime, evaluation và log chi tiết dành cho developer.'
 };
 
+// Raw/backend messages and harness events already share one streamed response. The UI keeps
+// those records separate only for presentation, then merges them by arrival/timestamp in All.
+document.querySelectorAll('[data-log-tab]').forEach(button => button.onclick = () => {
+  activeLogTab = button.dataset.logTab;
+  document.querySelectorAll('[data-log-tab]').forEach(tab => tab.classList.toggle('active', tab === button));
+  renderLog();
+});
+$('showRaw').checked = false;
+
 function setWorkspaceMode(mode) {
   workspaceMode = mode;
   document.querySelectorAll('[data-workspace-mode]').forEach(button => button.classList.toggle('active', button.dataset.workspaceMode === mode));
@@ -540,7 +734,7 @@ function setWorkspaceMode(mode) {
   const blind = mode === 'gold';
   const developer = mode === 'developer';
   document.body.classList.toggle('gold-mode', blind);
-  $('auditPanel').classList.toggle('hidden', !developer);
+  $('developerPanel').open = mode !== 'extract';
   $('goldPanel').classList.toggle('hidden', !blind);
   $('evalPanel').classList.toggle('hidden', !developer || !outline);
   $('outputTracePanel').classList.toggle('hidden', !developer || !outline);
@@ -1079,9 +1273,14 @@ $('run').onclick = async () => {
   $('cancelRun').classList.remove('hidden');
   runController = new AbortController();
   outline = null; serverError = false;
-  ['statsPanel', 'treePanel', 'evalPanel', 'reviewPanel', 'outputTracePanel', 'errBox'].forEach(id => $(id).classList.add('hidden'));
-  liveEvents = [];
-  renderLiveLog();
+  ['statsPanel', 'treePanel', 'evalPanel', 'reviewPanel', 'errBox'].forEach(id => $(id).classList.add('hidden'));
+  logEvents = [];
+  harnessEvents = [];
+  harnessSelectedStage = null;
+  harnessStagePinned = false;
+  rawDataVisible = $('showRaw').checked;
+  $('log').textContent = '';
+  $('harnessDetail').innerHTML = '<h3>Harness trace</h3><p class="note" style="margin:0">Select a stage to inspect its contract and emitted events.</p>';
   devStarted = Date.now(); devLogLines = 0;
   stageIndex = 0; renderStages();
   $('devDot').className = 'devdot live';
@@ -1096,6 +1295,7 @@ $('run').onclick = async () => {
   const fd = new FormData();
   fd.append('file', picked);
   fd.append('backend', $('backend').value);
+  fd.append('userPrompt', $('userPrompt').value.trim());
   fd.append('model', $('model').value);
   fd.append('lmStudioModel', $('lmStudioModel').value);
   fd.append('ctx', $('ctx').value);
@@ -1237,6 +1437,17 @@ function updateDevState(message) {
   $('devState').textContent = hit < 0 ? 'Đang xử lý…' : STAGES[hit][2];
   if (hit > stageIndex) { stageIndex = hit; renderStages(); }
 }
+
+// Keep the legacy function names used by the run lifecycle, but route rendering through the
+// contract-aware harness view above.
+function renderStages(allDone = false) { renderHarnessStages(); }
+function updateDevState(message) {
+  const latest = harnessEvents[harnessEvents.length - 1];
+  $('devState').textContent = latest ? `${latest.stage} · ${latest.kind}` : 'Processing...';
+}
+function handle(evt) { handleStreamEvent(evt); }
+renderHarnessStages();
+renderHarnessDetail(harnessSelectedStage);
 
 function showError(msg) {
   $('errBox').classList.remove('hidden');

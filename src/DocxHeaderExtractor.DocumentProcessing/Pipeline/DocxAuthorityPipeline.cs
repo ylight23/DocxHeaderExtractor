@@ -54,7 +54,13 @@ internal static class DocxAuthorityPipeline
         else
         {
             roles = await PdfBlockAnalyst.AnalyzeAsync(analyst, source.Blocks, source.ModelContexts, ct);
+            if (roles.ProviderFailure is not null)
+                throw new InvalidOperationException(
+                    $"provider-failure: semantic role analysis failed ({roles.ProviderFailure}).");
             spans = await PdfBlockAnalyst.ResolveHeadingSpansAsync(analyst, source.Blocks, roles.Decisions, source.ModelContexts, ct);
+            if (spans.ProviderFailure is not null)
+                throw new InvalidOperationException(
+                    $"provider-failure: heading span analysis failed ({spans.ProviderFailure}).");
         }
 
         var traces = PdfProposalValidator.Trace(source.ModelContexts, spans.Decisions);

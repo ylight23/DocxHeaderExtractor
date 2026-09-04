@@ -9,15 +9,7 @@ namespace DocxHeaderExtractor.AgentHarness;
 internal static class DocumentTaskAdapters
 {
     public static IntentProposal Propose(DocumentAgentRequest request) =>
-        new(
-            "extract-document-structure",
-            ["document-structure"],
-            [],
-            "document",
-            null,
-            "outline",
-            [],
-            request.WantsAction);
+        new DocumentIntentProposalProducer().Propose(request);
 
     public static CompiledTaskPlan Compile(
         AgentTaskRequest request,

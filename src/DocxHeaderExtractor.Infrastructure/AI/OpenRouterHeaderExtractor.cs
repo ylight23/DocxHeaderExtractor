@@ -123,12 +123,15 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             };
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
             request.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor");
+            _options.DebugLog?.Invoke($"[OpenRouter] LLM REQUEST model={_options.Model} payload={JsonSerializer.Serialize(body)}");
 
             var sw = Stopwatch.StartNew();
             using var response = await _http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct);
             var responseText = await response.Content.ReadAsStringAsync(ct);
             sw.Stop();
             elapsedMs += sw.ElapsedMilliseconds;
+            _options.DebugLog?.Invoke(
+                $"[OpenRouter] LLM RESPONSE status={(int)response.StatusCode} elapsedMs={sw.ElapsedMilliseconds} payload={SafeDebug(responseText)}");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -220,9 +223,12 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         };
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
         request.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor");
+        _options.DebugLog?.Invoke($"[OpenRouter] LLM REQUEST model={_options.Model} payload={JsonSerializer.Serialize(body)}");
 
         using var response = await _http.SendAsync(request, ct);
         var responseText = await response.Content.ReadAsStringAsync(ct);
+        _options.DebugLog?.Invoke(
+            $"[OpenRouter] LLM RESPONSE status={(int)response.StatusCode} payload={SafeDebug(responseText)}");
         if (!response.IsSuccessStatusCode)
             throw new HttpRequestException(
                 $"OpenRouter trả {(int)response.StatusCode} {response.ReasonPhrase}: {SafeError(responseText)}",
@@ -267,6 +273,12 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         if (string.IsNullOrWhiteSpace(text)) return "<rỗng>";
         var oneLine = text.ReplaceLineEndings(" ").Trim();
         return oneLine.Length <= 800 ? oneLine : oneLine[..800] + "…";
+    }
+
+    private static string SafeDebug(string text)
+    {
+        var oneLine = string.IsNullOrWhiteSpace(text) ? "<empty>" : text.ReplaceLineEndings(" ").Trim();
+        return oneLine.Length <= 16_000 ? oneLine : oneLine[..16_000] + "…[truncated]";
     }
 
     private static string? GetDiagnosticHeader(HttpResponseMessage response, string name)

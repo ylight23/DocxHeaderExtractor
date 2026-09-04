@@ -129,15 +129,25 @@ public class WebUiScriptSyntaxTests
         var html = File.ReadAllText(IndexHtmlPath());
 
         Assert.Contains("id=\"userPrompt\"", html);
-        Assert.Contains("id=\"cancelRun\"", html);
-        Assert.Contains("data-log-filter=\"all\"", html);
-        Assert.Contains("data-log-filter=\"agent\"", html);
-        Assert.Contains("data-log-filter=\"raw\"", html);
+        Assert.Contains("data-log-tab=\"all\"", html);
+        Assert.Contains("data-log-tab=\"agent\"", html);
+        Assert.Contains("data-log-tab=\"raw\"", html);
         Assert.Contains("data-workspace-mode=\"developer\"", html);
         Assert.DoesNotContain("id=\"showRaw\" checked", html, StringComparison.Ordinal);
     }
 
     /// <summary>Ô không phải tuỳ chọn pipeline — file, hiển thị, hoặc do server điền.</summary>
+    [Fact]
+    public void Index_html_khong_chua_chuoi_mojibake_utf8()
+    {
+        var html = File.ReadAllText(IndexHtmlPath());
+        var signatures = new[] { "Ã", "â†", "Ä‘", "Táº", "Chá»" };
+        var hits = signatures.Where(html.Contains).ToArray();
+
+        Assert.True(hits.Length == 0,
+            "index.html chứa chuỗi encoding lỗi: " + string.Join(", ", hits));
+    }
+
     private static readonly HashSet<string> BoQua = new(StringComparer.Ordinal)
     {
         "file", "model", "backend", "lmStudioModel", "openrouterModel",

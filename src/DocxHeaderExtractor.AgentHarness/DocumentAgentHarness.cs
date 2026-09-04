@@ -130,15 +130,24 @@ public sealed class DocumentAgentHarness
             var proposal = _intentProducer.Propose(request);
             var genericRequest = GenericTaskRequestAdapter.FromDocumentRequest(request);
             await EmitAsync("intent.proposal", AgentRunEventKind.Completed,
-                $"Intent {proposal.Operation} cho {genericRequest.Resources.Count} resource."
-                + (string.IsNullOrWhiteSpace(request.UserPrompt) ? "" : " User goal đã được ghi nhận."));
+                $"IntentProposal operation={proposal.Operation}; granularity={proposal.Granularity}; " +
+                $"output={proposal.OutputShape}; depth={proposal.StructuralDepth?.ToString() ?? "default"}; " +
+                $"resources={genericRequest.Resources.Count}.");
             var intentValidation = IntentValidator.Validate(proposal);
-            if (!intentValidation.IsExecutable && intentValidation.Intent is null)
+            if (!intentValidation.IsExecutable)
+            {
+                await EmitAsync("intent.validation",
+                    intentValidation.Intent is null ? AgentRunEventKind.Blocked : AgentRunEventKind.Completed,
+                    $"IntentState={intentValidation.State}; reasons={string.Join(",", intentValidation.Reasons)}.");
+            }
+            if (intentValidation.Intent is null)
                 throw new InvalidOperationException(
-                    $"Intent không thực thi được: {string.Join(", ", intentValidation.Reasons)}.");
+                    $"Intent không thực thi được ({intentValidation.State}): {string.Join(", ", intentValidation.Reasons)}.");
             var intent = intentValidation.Intent!;
-            await EmitAsync("intent.validation", AgentRunEventKind.Passed,
-                "Intent hợp lệ; chưa cấp quyền thực thi hay tạo authority.");
+            if (intentValidation.IsExecutable)
+                await EmitAsync("intent.validation", AgentRunEventKind.Passed,
+                    $"ValidatedIntent operation={intent.Operation}; output={intent.OutputShape}; " +
+                    $"depth={intent.StructuralDepth?.ToString() ?? "default"}; state={intentValidation.State}.");
 
             if (_semanticRegistry is not null)
             {
@@ -176,7 +185,8 @@ public sealed class DocumentAgentHarness
             var compiledPlan = DocumentTaskAdapters.Compile(genericRequest, intent, selection);
             var semanticPlan = compiledPlan.Semantic;
             await EmitAsync("plan.semantic", AgentRunEventKind.Completed,
-                $"SemanticTaskPlan={semanticPlan.TaskName}.");
+                $"SemanticTaskPlan={semanticPlan.TaskName}; planId={semanticPlan.PlanId}; " +
+                $"depth={semanticPlan.Intent.StructuralDepth?.ToString() ?? "default"}.");
             var executionPlan = compiledPlan.Execution;
             planId = semanticPlan.PlanId;
             capability = tool.Descriptor;

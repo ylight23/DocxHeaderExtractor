@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Application.Tasks;
+using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
@@ -21,17 +22,78 @@ public sealed class DocumentIntentProposalProducer : IIntentProposalProducer
     public IntentProposal Propose(DocumentAgentRequest request)
     {
         ArgumentNullException.ThrowIfNull(request);
-        var constraints = string.IsNullOrWhiteSpace(request.UserPrompt)
-            ? Array.Empty<string>()
-            : [$"user-goal:{request.UserPrompt.Trim()}"];
+        var prompt = string.IsNullOrWhiteSpace(request.UserPrompt)
+            ? "Extract the document structure."
+            : request.UserPrompt.Trim();
+        var normalized = prompt.ToLowerInvariant();
+        var structureRequested = ContainsAny(normalized,
+            "structure", "outline", "heading", "hierarchy", "tree",
+            "cấu trúc", "tiêu đề", "cây");
+        var unsupportedOperation = ContainsAny(normalized,
+            "translate", "summarize", "summary", "classify", "rewrite", "delete", "convert");
+
+        if (unsupportedOperation)
+        {
+            return new(
+                "unsupported-document-operation",
+                [],
+                [],
+                "document",
+                null,
+                "outline",
+                [prompt],
+                request.WantsAction);
+        }
+
+        if (!structureRequested)
+        {
+            return new(
+                "",
+                [],
+                [],
+                "",
+                null,
+                "",
+                [prompt],
+                request.WantsAction);
+        }
+
+        var depth = ParseStructuralDepth(normalized);
+        var outputShape = "outline";
+
         return new(
             "extract-document-structure",
             ["document-structure"],
-            [],
+            ["requested-structure"],
             "document",
-            null,
-            "outline",
-            constraints,
+            depth,
+            outputShape,
+            [$"user-goal:{prompt}"],
             request.WantsAction);
+    }
+
+    private static bool ContainsAny(string value, params string[] terms) =>
+        terms.Any(value.Contains);
+
+    private static int? ParseStructuralDepth(string prompt)
+    {
+        var match = Regex.Match(prompt,
+            @"\b(?:to|up\s+to|through|at\s+most)\s+(?<depth>-?\d+|one|two|three|four|five|six|seven|eight|nine)\s+levels?\b",
+            RegexOptions.CultureInvariant);
+        if (!match.Success) return null;
+
+        return match.Groups["depth"].Value switch
+        {
+            "one" => 1,
+            "two" => 2,
+            "three" => 3,
+            "four" => 4,
+            "five" => 5,
+            "six" => 6,
+            "seven" => 7,
+            "eight" => 8,
+            "nine" => 9,
+            var numeric => int.Parse(numeric, System.Globalization.CultureInfo.InvariantCulture),
+        };
     }
 }
