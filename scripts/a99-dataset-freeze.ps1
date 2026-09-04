@@ -29,7 +29,7 @@ function WriteJson($name,$obj){$obj | ConvertTo-Json -Depth 20 | Set-Content -Li
 WriteJson 'document-inventory.v1.json' ([ordered]@{metadata=$meta;documents=$rows})
 WriteJson 'document-groups.v1.json' ([ordered]@{metadata=$meta;groups=$groups})
 $families=$rows | Group-Object familyId | ForEach-Object {[ordered]@{familyId=$_.Name;documents=$_.Count;uniqueGroups=(@($_.Group.documentGroupId)|Sort-Object -Unique).Count;humanBackedGroups=0;sourceStructuralBackedGroups=0;silverOnly=0;unlabeled=$_.Count}}
-WriteJson 'structural-families.v1.json' ([ordered]@{metadata=$meta;documents=$rows|ForEach-Object {[ordered]@{documentId=$_.documentId;familyId=$_.familyId;familyEvidence=$_.familyEvidence;familyConfidence=$_.familyConfidence}}})
+WriteJson 'structural-families.v1.json' ([ordered]@{metadata=$meta;documents=$rows|ForEach-Object {[ordered]@{documentId=$_.documentId;familyId=$_.familyId;familyEvidence=$_.familyEvidence;familyConfidence=$_.familyConfidence;familyAssignmentAuthority=$_.familyAssignmentAuthority}}})
 WriteJson 'family-coverage.v1.json' ([ordered]@{metadata=$meta;families=$families})
 $splits=$groups | ForEach-Object -Begin {$n=0} -Process {$n++;$class=if($n%5 -eq 0){'GENERALIZATION_HOLDOUT'}elseif($n%7 -eq 0){'RESERVED_UNLABELED'}else{'DEV'};[ordered]@{documentGroupId=$_.documentGroupId;split=$class;reason='deterministic stable group ordinal; review family balance before freeze'}}
 WriteJson 'evaluation-splits.v1.json' ([ordered]@{metadata=$meta;splits=$splits})
