@@ -1,0 +1,18 @@
+{
+  "artifactKind": "a99_final_decision",
+  "schemaVersion": "1.0",
+  "status": "HUMAN_REFERENCE_REQUIRED",
+  "baseRevision": "ee6d68373f63545f4f31e91509f2c00d1033ae05",
+  "executionRevision": "1eb0338017d3e7065a6e5c8f462101e25ecb799c",
+  "accuracy99Claim": "A99_NOT_MEASURED",
+  "autoPipeline99": "NOT_MEASURED",
+  "observabilityGate": "PASS",
+  "humanGold": false,
+  "trueBlindAvailable": false,
+  "knownFrozenFailures": ["N15"],
+  "newFailures": 0,
+  "primaryRemainingBottleneck": "HUMAN_REFERENCE_REQUIRED",
+  "nextAction": "Import independently reviewed exhaustive DEV gold and freeze an independent holdout before any accuracy tuning.",
+  "architectureChanges": 0,
+  "providerCalls": 0
+}

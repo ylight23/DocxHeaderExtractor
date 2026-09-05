@@ -1,0 +1,25 @@
+{
+  "artifactKind": "a99_full_suite_reconciliation",
+  "schemaVersion": "1.0",
+  "status": "PASS_WITH_FROZEN_N15",
+  "executionRevision": "1eb0338017d3e7065a6e5c8f462101e25ecb799c",
+  "total": 1080,
+  "passed": 1079,
+  "failed": 1,
+  "skipped": 0,
+  "knownFrozenFailures": [
+    {
+      "id": "N15",
+      "fullyQualifiedName": "DocxHeaderExtractor.Tests.PdfN15RankingLossDiagnosisProbe.CommittedDiagnosisReproducesByteForByte",
+      "classification": "FROZEN_ARTIFACT_HASH_DRIFT",
+      "expectedArtifactSha256": "8b0811e4059b6398f548ee384373ff64faa8cc2e888010eaf53f54b0ca004846",
+      "currentArtifactSha256": "0344222652051f26954a616965e1b6767af51a4882877f7475b6143bc8fd58e2",
+      "rebaselined": false
+    }
+  ],
+  "newFailures": 0,
+  "changedFingerprints": 0,
+  "unjoinedFailures": 0,
+  "providerCalls": 0,
+  "expectedChanged": false
+}

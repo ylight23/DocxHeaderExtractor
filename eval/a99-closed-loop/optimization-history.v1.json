@@ -1,0 +1,13 @@
+{
+  "artifactKind": "a99_optimization_history",
+  "schemaVersion": "1.0",
+  "status": "OBSERVABILITY_ONLY",
+  "baseRevision": "ee6d68373f63545f4f31e91509f2c00d1033ae05",
+  "iterations": 0,
+  "accepted": 0,
+  "rejected": 0,
+  "productionBehaviorChanges": 0,
+  "providerCalls": 0,
+  "entries": [],
+  "reason": "No accuracy intervention is authorized before reference sufficiency and the blind/holdout gates exist."
+}

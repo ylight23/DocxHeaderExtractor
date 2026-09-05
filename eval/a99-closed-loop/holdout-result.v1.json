@@ -1,0 +1,11 @@
+{
+  "artifactKind": "a99_holdout_result",
+  "schemaVersion": "1.0",
+  "status": "TRUE_BLIND_REQUIRED",
+  "executionRevision": "1eb0338017d3e7065a6e5c8f462101e25ecb799c",
+  "holdoutDocuments": 0,
+  "holdoutGroups": 0,
+  "trueBlindAvailable": false,
+  "metrics": null,
+  "reason": "No frozen independent holdout with exhaustive reference is present."
+}

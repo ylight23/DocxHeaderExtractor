@@ -1,0 +1,21 @@
+{
+  "artifactKind": "a99_error_ownership",
+  "schemaVersion": "1.0",
+  "status": "NOT_MEASURED",
+  "executionRevision": "1eb0338017d3e7065a6e5c8f462101e25ecb799c",
+  "ownership": {
+    "SOURCE_OWNED": null,
+    "REPRESENTATION_OWNED": null,
+    "CANDIDATE_OWNED": null,
+    "MODEL_ROLE_OWNED": null,
+    "MODEL_LEVEL_OWNED": null,
+    "MODEL_PARENT_OWNED": null,
+    "MODEL_SPAN_OWNED": null,
+    "VALIDATOR_OWNED": null,
+    "MARKER_OWNED": null,
+    "STRUCTURAL_OWNED": null,
+    "FINAL_PROJECTION_OWNED": null,
+    "UNKNOWN": null
+  },
+  "reason": "No official prediction/reference join is available; observability coverage is not correctness attribution."
+}

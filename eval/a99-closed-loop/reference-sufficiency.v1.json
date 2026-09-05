@@ -1,0 +1,18 @@
+{
+  "artifactKind": "a99_reference_sufficiency",
+  "schemaVersion": "1.0",
+  "status": "HUMAN_REFERENCE_REQUIRED",
+  "baseRevision": "ee6d68373f63545f4f31e91509f2c00d1033ae05",
+  "trustedMeasurementDocuments": 3,
+  "trustedMeasurementGroups": 3,
+  "observedSourceOccurrences": 1168,
+  "devDocumentsWithExhaustiveHumanGold": 0,
+  "holdoutDocumentsWithExhaustiveHumanGold": 0,
+  "humanGoldImported": false,
+  "humanKeyImported": false,
+  "sourceStructuralReference": "HISTORICAL_AND_NON_EXHAUSTIVE",
+  "negativeOpportunitiesAvailable": false,
+  "precisionRecallF1Measurable": false,
+  "blockedMetrics": ["AUTO_HEADING_PRECISION", "AUTO_HEADING_RECALL", "AUTO_HEADING_F1", "AUTO_LEVEL_ACCURACY", "AUTO_PARENT_ACCURACY", "AUTO_HIERARCHY_ACCURACY", "AUTO_HANDLED_RATE"],
+  "reason": "The trusted population has parser-owned source observations but no independently reviewed exhaustive heading existence/role reference or frozen blind holdout."
+}

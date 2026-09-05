@@ -1,0 +1,16 @@
+{
+  "artifactKind": "a99_autonomous_coverage",
+  "schemaVersion": "1.0",
+  "status": "NOT_MEASURED",
+  "executionRevision": "1eb0338017d3e7065a6e5c8f462101e25ecb799c",
+  "observability": {
+    "routeObservableRate": 1.0,
+    "modelExposureObservableRate": 1.0,
+    "finalLineageObservableRate": 1.0,
+    "providerCalls": 0
+  },
+  "autoHandledRate": null,
+  "abstained": null,
+  "humanReviewRequired": null,
+  "reason": "Coverage of telemetry is not an autonomous correctness or handling-rate measurement."
+}
