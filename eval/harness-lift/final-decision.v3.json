@@ -3,6 +3,7 @@
   "schemaVersion": "3.0",
   "status": "MEASURED_WITH_LIMITATIONS",
   "baseRevision": "fcf44b824fe51590f9c987d41b58d71cd4028341",
+  "executionRevision": "9e45d89395df24a4cfdbb80edddd2a8bc3310f75",
   "frozenInputSha256": {
     "eval/harness-lift/final-decision.v2.json": "f3934f6add2acfc0923879664e1e494347066328248d5b20b857b4ee6c9cc24b",
     "eval/harness-lift/reference-occurrence-bridge.v1.json": "bb39e96a5f8f2d90925bac6716056d3f1864afbeb4c7dd24d029e8ed7fecde67",
@@ -78177,5 +78178,33 @@
   },
   "productionSourceDelta": 0,
   "noN15Rebaseline": true,
-  "frozenHumanReviewQueue": true
+  "frozenHumanReviewQueue": true,
+  "terminalVerification": {
+    "releaseBuild": "PASS",
+    "diffCheck": "PASS",
+    "focused": {
+      "harnessLift": "84/84",
+      "r18": "10/10",
+      "accuracy99": "20/20",
+      "authorityPipeline": "26/26",
+      "reviewWriteback": "68/68",
+      "hostE2e": "2/2"
+    },
+    "fullSuite": {
+      "total": 1076,
+      "passed": 1075,
+      "failed": 1,
+      "skipped": 0,
+      "newFailures": 0,
+      "changedFailureFingerprints": 0,
+      "unjoinedFailures": 0,
+      "knownFrozenFailures": [
+        "DocxHeaderExtractor.Tests.PdfN15RankingLossDiagnosisProbe.CommittedDiagnosisReproducesByteForByte"
+      ]
+    },
+    "providerCalls": 0,
+    "productionSourceDelta": 0,
+    "artifactRepeatability": "PASS",
+    "n15Rebased": false
+  }
 }

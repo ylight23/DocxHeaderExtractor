@@ -6,6 +6,12 @@ The official flow is: reference positive -> source presence -> route owner -> de
 
 Human review remains frozen: no new human keys or gold labels were created. This report is measurement only; it authorizes no production remediation.
 
+## Terminal verification
+
+The exact execution revision was `9e45d89395df24a4cfdbb80edddd2a8bc3310f75`. Release build and diff check passed. Focused HL3/HL2, R18, A99, authority/pipeline, review/writeback, and host checks passed. The terminal suite measured `1076/1075/1/0`; its only failure is the pre-existing frozen N15 diagnosis test. `NEW_FAILURES=0`, `CHANGED_FAILURE_FINGERPRINTS=0`, `UNJOINED_FAILURES=0`, `PROVIDER_CALLS=0`, and `N15_REBASED=false`.
+
+See `eval/harness-lift/hl3-closure.v1.json` for the publication record.
+
 ## Decision snapshot
 
 ```json

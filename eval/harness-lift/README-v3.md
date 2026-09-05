@@ -4,6 +4,14 @@ HL3 replaces the coarse HL2 CandidateLoss bucket with route-aware, provenance-sa
 
 Provider calls: 0. HL2 artifacts, the 42-packet review queue, holdout labels, and N15 history remain immutable.
 
+## Terminal verification
+
+Execution revision: `9e45d89395df24a4cfdbb80edddd2a8bc3310f75`.
+
+Focused HL3/HL2, R18, A99, authority/pipeline, review/writeback, and host checks passed. The Release build and diff check passed. The terminal full suite measured `1076 total / 1075 passed / 1 failed / 0 skipped`; the sole failure is the frozen N15 diagnosis test. No new failures, changed fingerprints, or unjoined failures were observed, and N15 was not rebaselined.
+
+The closure record is `eval/harness-lift/hl3-closure.v1.json`. HL3 is measurement-only and does not authorize production remediation.
+
 ```json
 {
   "artifactKind": "harness_lift_final_decision",
