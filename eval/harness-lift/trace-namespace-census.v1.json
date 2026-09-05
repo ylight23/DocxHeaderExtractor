@@ -1,0 +1,1874 @@
+{
+  "artifactKind": "harness_lift_hl3_trace_namespace_census",
+  "schemaVersion": "3.0",
+  "identityPolicy": "exact intersections are descriptive; similar strings are not equivalence",
+  "aggregate": {
+    "namespaces": {
+      "SOURCE_SOURCE_IDS": 1563,
+      "SOURCE_STABLE_IDS": 1563,
+      "CANDIDATE_BLOCK_IDS": 1156,
+      "SELECTED_CANDIDATE_IDS": 1156,
+      "BLOCK_DECISION_IDS": 0,
+      "CANDIDATE_STAGE_IDS": 1156,
+      "HIERARCHY_FACT_IDS": 0,
+      "FINAL_SOURCE_IDS": 0,
+      "FINAL_ELEMENT_IDS": 0,
+      "COMPATIBILITY_HEADING_IDS": 0
+    },
+    "comparisons": [
+      {
+        "namespaceA": "BLOCK_DECISION_IDS",
+        "namespaceB": "CANDIDATE_BLOCK_IDS",
+        "countA": 0,
+        "countB": 1156,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1156,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "BLOCK_DECISION_IDS",
+        "namespaceB": "CANDIDATE_STAGE_IDS",
+        "countA": 0,
+        "countB": 1156,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1156,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "BLOCK_DECISION_IDS",
+        "namespaceB": "COMPATIBILITY_HEADING_IDS",
+        "countA": 0,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "BLOCK_DECISION_IDS",
+        "namespaceB": "FINAL_ELEMENT_IDS",
+        "countA": 0,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "BLOCK_DECISION_IDS",
+        "namespaceB": "FINAL_SOURCE_IDS",
+        "countA": 0,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "BLOCK_DECISION_IDS",
+        "namespaceB": "HIERARCHY_FACT_IDS",
+        "countA": 0,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "BLOCK_DECISION_IDS",
+        "namespaceB": "SELECTED_CANDIDATE_IDS",
+        "countA": 0,
+        "countB": 1156,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1156,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "BLOCK_DECISION_IDS",
+        "namespaceB": "SOURCE_SOURCE_IDS",
+        "countA": 0,
+        "countB": 1563,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1563,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "BLOCK_DECISION_IDS",
+        "namespaceB": "SOURCE_STABLE_IDS",
+        "countA": 0,
+        "countB": 1563,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1563,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "CANDIDATE_BLOCK_IDS",
+        "namespaceB": "CANDIDATE_STAGE_IDS",
+        "countA": 1156,
+        "countB": 1156,
+        "exactIntersection": 1156,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 1
+      },
+      {
+        "namespaceA": "CANDIDATE_BLOCK_IDS",
+        "namespaceB": "COMPATIBILITY_HEADING_IDS",
+        "countA": 1156,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 1156,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "CANDIDATE_BLOCK_IDS",
+        "namespaceB": "FINAL_ELEMENT_IDS",
+        "countA": 1156,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 1156,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "CANDIDATE_BLOCK_IDS",
+        "namespaceB": "FINAL_SOURCE_IDS",
+        "countA": 1156,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 1156,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "CANDIDATE_BLOCK_IDS",
+        "namespaceB": "HIERARCHY_FACT_IDS",
+        "countA": 1156,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 1156,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "CANDIDATE_BLOCK_IDS",
+        "namespaceB": "SELECTED_CANDIDATE_IDS",
+        "countA": 1156,
+        "countB": 1156,
+        "exactIntersection": 1156,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 1
+      },
+      {
+        "namespaceA": "CANDIDATE_BLOCK_IDS",
+        "namespaceB": "SOURCE_SOURCE_IDS",
+        "countA": 1156,
+        "countB": 1563,
+        "exactIntersection": 1156,
+        "aOnly": 0,
+        "bOnly": 407,
+        "intersectionRate": 1
+      },
+      {
+        "namespaceA": "CANDIDATE_BLOCK_IDS",
+        "namespaceB": "SOURCE_STABLE_IDS",
+        "countA": 1156,
+        "countB": 1563,
+        "exactIntersection": 1156,
+        "aOnly": 0,
+        "bOnly": 407,
+        "intersectionRate": 1
+      },
+      {
+        "namespaceA": "CANDIDATE_STAGE_IDS",
+        "namespaceB": "COMPATIBILITY_HEADING_IDS",
+        "countA": 1156,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 1156,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "CANDIDATE_STAGE_IDS",
+        "namespaceB": "FINAL_ELEMENT_IDS",
+        "countA": 1156,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 1156,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "CANDIDATE_STAGE_IDS",
+        "namespaceB": "FINAL_SOURCE_IDS",
+        "countA": 1156,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 1156,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "CANDIDATE_STAGE_IDS",
+        "namespaceB": "HIERARCHY_FACT_IDS",
+        "countA": 1156,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 1156,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "CANDIDATE_STAGE_IDS",
+        "namespaceB": "SELECTED_CANDIDATE_IDS",
+        "countA": 1156,
+        "countB": 1156,
+        "exactIntersection": 1156,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 1
+      },
+      {
+        "namespaceA": "CANDIDATE_STAGE_IDS",
+        "namespaceB": "SOURCE_SOURCE_IDS",
+        "countA": 1156,
+        "countB": 1563,
+        "exactIntersection": 1156,
+        "aOnly": 0,
+        "bOnly": 407,
+        "intersectionRate": 1
+      },
+      {
+        "namespaceA": "CANDIDATE_STAGE_IDS",
+        "namespaceB": "SOURCE_STABLE_IDS",
+        "countA": 1156,
+        "countB": 1563,
+        "exactIntersection": 1156,
+        "aOnly": 0,
+        "bOnly": 407,
+        "intersectionRate": 1
+      },
+      {
+        "namespaceA": "COMPATIBILITY_HEADING_IDS",
+        "namespaceB": "FINAL_ELEMENT_IDS",
+        "countA": 0,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "COMPATIBILITY_HEADING_IDS",
+        "namespaceB": "FINAL_SOURCE_IDS",
+        "countA": 0,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "COMPATIBILITY_HEADING_IDS",
+        "namespaceB": "HIERARCHY_FACT_IDS",
+        "countA": 0,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "COMPATIBILITY_HEADING_IDS",
+        "namespaceB": "SELECTED_CANDIDATE_IDS",
+        "countA": 0,
+        "countB": 1156,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1156,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "COMPATIBILITY_HEADING_IDS",
+        "namespaceB": "SOURCE_SOURCE_IDS",
+        "countA": 0,
+        "countB": 1563,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1563,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "COMPATIBILITY_HEADING_IDS",
+        "namespaceB": "SOURCE_STABLE_IDS",
+        "countA": 0,
+        "countB": 1563,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1563,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "FINAL_ELEMENT_IDS",
+        "namespaceB": "FINAL_SOURCE_IDS",
+        "countA": 0,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "FINAL_ELEMENT_IDS",
+        "namespaceB": "HIERARCHY_FACT_IDS",
+        "countA": 0,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "FINAL_ELEMENT_IDS",
+        "namespaceB": "SELECTED_CANDIDATE_IDS",
+        "countA": 0,
+        "countB": 1156,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1156,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "FINAL_ELEMENT_IDS",
+        "namespaceB": "SOURCE_SOURCE_IDS",
+        "countA": 0,
+        "countB": 1563,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1563,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "FINAL_ELEMENT_IDS",
+        "namespaceB": "SOURCE_STABLE_IDS",
+        "countA": 0,
+        "countB": 1563,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1563,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "FINAL_SOURCE_IDS",
+        "namespaceB": "HIERARCHY_FACT_IDS",
+        "countA": 0,
+        "countB": 0,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "FINAL_SOURCE_IDS",
+        "namespaceB": "SELECTED_CANDIDATE_IDS",
+        "countA": 0,
+        "countB": 1156,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1156,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "FINAL_SOURCE_IDS",
+        "namespaceB": "SOURCE_SOURCE_IDS",
+        "countA": 0,
+        "countB": 1563,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1563,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "FINAL_SOURCE_IDS",
+        "namespaceB": "SOURCE_STABLE_IDS",
+        "countA": 0,
+        "countB": 1563,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1563,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "HIERARCHY_FACT_IDS",
+        "namespaceB": "SELECTED_CANDIDATE_IDS",
+        "countA": 0,
+        "countB": 1156,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1156,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "HIERARCHY_FACT_IDS",
+        "namespaceB": "SOURCE_SOURCE_IDS",
+        "countA": 0,
+        "countB": 1563,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1563,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "HIERARCHY_FACT_IDS",
+        "namespaceB": "SOURCE_STABLE_IDS",
+        "countA": 0,
+        "countB": 1563,
+        "exactIntersection": 0,
+        "aOnly": 0,
+        "bOnly": 1563,
+        "intersectionRate": 0
+      },
+      {
+        "namespaceA": "SELECTED_CANDIDATE_IDS",
+        "namespaceB": "SOURCE_SOURCE_IDS",
+        "countA": 1156,
+        "countB": 1563,
+        "exactIntersection": 1156,
+        "aOnly": 0,
+        "bOnly": 407,
+        "intersectionRate": 1
+      },
+      {
+        "namespaceA": "SELECTED_CANDIDATE_IDS",
+        "namespaceB": "SOURCE_STABLE_IDS",
+        "countA": 1156,
+        "countB": 1563,
+        "exactIntersection": 1156,
+        "aOnly": 0,
+        "bOnly": 407,
+        "intersectionRate": 1
+      },
+      {
+        "namespaceA": "SOURCE_SOURCE_IDS",
+        "namespaceB": "SOURCE_STABLE_IDS",
+        "countA": 1563,
+        "countB": 1563,
+        "exactIntersection": 1563,
+        "aOnly": 0,
+        "bOnly": 0,
+        "intersectionRate": 1
+      }
+    ]
+  },
+  "documents": [
+    {
+      "documentId": "DOC-0066",
+      "namespaces": {
+        "SOURCE_SOURCE_IDS": 25,
+        "SOURCE_STABLE_IDS": 25,
+        "CANDIDATE_BLOCK_IDS": 24,
+        "SELECTED_CANDIDATE_IDS": 24,
+        "BLOCK_DECISION_IDS": 0,
+        "CANDIDATE_STAGE_IDS": 24,
+        "HIERARCHY_FACT_IDS": 0,
+        "FINAL_SOURCE_IDS": 0,
+        "FINAL_ELEMENT_IDS": 0,
+        "COMPATIBILITY_HEADING_IDS": 0
+      },
+      "comparisons": [
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "CANDIDATE_BLOCK_IDS",
+          "countA": 0,
+          "countB": 24,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 24,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "CANDIDATE_STAGE_IDS",
+          "countA": 0,
+          "countB": 24,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 24,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "COMPATIBILITY_HEADING_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "FINAL_ELEMENT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 24,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 24,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 25,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 25,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 25,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 25,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "CANDIDATE_STAGE_IDS",
+          "countA": 24,
+          "countB": 24,
+          "exactIntersection": 24,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "COMPATIBILITY_HEADING_IDS",
+          "countA": 24,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 24,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "FINAL_ELEMENT_IDS",
+          "countA": 24,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 24,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 24,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 24,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 24,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 24,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 24,
+          "countB": 24,
+          "exactIntersection": 24,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 24,
+          "countB": 25,
+          "exactIntersection": 24,
+          "aOnly": 0,
+          "bOnly": 1,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 24,
+          "countB": 25,
+          "exactIntersection": 24,
+          "aOnly": 0,
+          "bOnly": 1,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "COMPATIBILITY_HEADING_IDS",
+          "countA": 24,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 24,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "FINAL_ELEMENT_IDS",
+          "countA": 24,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 24,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 24,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 24,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 24,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 24,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 24,
+          "countB": 24,
+          "exactIntersection": 24,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 24,
+          "countB": 25,
+          "exactIntersection": 24,
+          "aOnly": 0,
+          "bOnly": 1,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 24,
+          "countB": 25,
+          "exactIntersection": 24,
+          "aOnly": 0,
+          "bOnly": 1,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "FINAL_ELEMENT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 24,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 24,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 25,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 25,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 25,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 25,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 24,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 24,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 25,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 25,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 25,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 25,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_SOURCE_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_SOURCE_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 24,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 24,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_SOURCE_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 25,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 25,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_SOURCE_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 25,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 25,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "HIERARCHY_FACT_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 24,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 24,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "HIERARCHY_FACT_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 25,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 25,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "HIERARCHY_FACT_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 25,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 25,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "SELECTED_CANDIDATE_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 24,
+          "countB": 25,
+          "exactIntersection": 24,
+          "aOnly": 0,
+          "bOnly": 1,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "SELECTED_CANDIDATE_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 24,
+          "countB": 25,
+          "exactIntersection": 24,
+          "aOnly": 0,
+          "bOnly": 1,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "SOURCE_SOURCE_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 25,
+          "countB": 25,
+          "exactIntersection": 25,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 1
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0082",
+      "namespaces": {
+        "SOURCE_SOURCE_IDS": 1555,
+        "SOURCE_STABLE_IDS": 1555,
+        "CANDIDATE_BLOCK_IDS": 1141,
+        "SELECTED_CANDIDATE_IDS": 1141,
+        "BLOCK_DECISION_IDS": 0,
+        "CANDIDATE_STAGE_IDS": 1141,
+        "HIERARCHY_FACT_IDS": 0,
+        "FINAL_SOURCE_IDS": 0,
+        "FINAL_ELEMENT_IDS": 0,
+        "COMPATIBILITY_HEADING_IDS": 0
+      },
+      "comparisons": [
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "CANDIDATE_BLOCK_IDS",
+          "countA": 0,
+          "countB": 1141,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1141,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "CANDIDATE_STAGE_IDS",
+          "countA": 0,
+          "countB": 1141,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1141,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "COMPATIBILITY_HEADING_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "FINAL_ELEMENT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 1141,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1141,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 1555,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1555,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 1555,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1555,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "CANDIDATE_STAGE_IDS",
+          "countA": 1141,
+          "countB": 1141,
+          "exactIntersection": 1141,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "COMPATIBILITY_HEADING_IDS",
+          "countA": 1141,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 1141,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "FINAL_ELEMENT_IDS",
+          "countA": 1141,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 1141,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 1141,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 1141,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 1141,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 1141,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 1141,
+          "countB": 1141,
+          "exactIntersection": 1141,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 1141,
+          "countB": 1555,
+          "exactIntersection": 1141,
+          "aOnly": 0,
+          "bOnly": 414,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 1141,
+          "countB": 1555,
+          "exactIntersection": 1141,
+          "aOnly": 0,
+          "bOnly": 414,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "COMPATIBILITY_HEADING_IDS",
+          "countA": 1141,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 1141,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "FINAL_ELEMENT_IDS",
+          "countA": 1141,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 1141,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 1141,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 1141,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 1141,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 1141,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 1141,
+          "countB": 1141,
+          "exactIntersection": 1141,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 1141,
+          "countB": 1555,
+          "exactIntersection": 1141,
+          "aOnly": 0,
+          "bOnly": 414,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 1141,
+          "countB": 1555,
+          "exactIntersection": 1141,
+          "aOnly": 0,
+          "bOnly": 414,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "FINAL_ELEMENT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 1141,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1141,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 1555,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1555,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 1555,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1555,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 1141,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1141,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 1555,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1555,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 1555,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1555,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_SOURCE_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_SOURCE_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 1141,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1141,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_SOURCE_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 1555,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1555,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_SOURCE_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 1555,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1555,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "HIERARCHY_FACT_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 1141,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1141,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "HIERARCHY_FACT_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 1555,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1555,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "HIERARCHY_FACT_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 1555,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 1555,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "SELECTED_CANDIDATE_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 1141,
+          "countB": 1555,
+          "exactIntersection": 1141,
+          "aOnly": 0,
+          "bOnly": 414,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "SELECTED_CANDIDATE_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 1141,
+          "countB": 1555,
+          "exactIntersection": 1141,
+          "aOnly": 0,
+          "bOnly": 414,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "SOURCE_SOURCE_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 1555,
+          "countB": 1555,
+          "exactIntersection": 1555,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 1
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0205",
+      "namespaces": {
+        "SOURCE_SOURCE_IDS": 4,
+        "SOURCE_STABLE_IDS": 4,
+        "CANDIDATE_BLOCK_IDS": 3,
+        "SELECTED_CANDIDATE_IDS": 3,
+        "BLOCK_DECISION_IDS": 0,
+        "CANDIDATE_STAGE_IDS": 3,
+        "HIERARCHY_FACT_IDS": 0,
+        "FINAL_SOURCE_IDS": 0,
+        "FINAL_ELEMENT_IDS": 0,
+        "COMPATIBILITY_HEADING_IDS": 0
+      },
+      "comparisons": [
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "CANDIDATE_BLOCK_IDS",
+          "countA": 0,
+          "countB": 3,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 3,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "CANDIDATE_STAGE_IDS",
+          "countA": 0,
+          "countB": 3,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 3,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "COMPATIBILITY_HEADING_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "FINAL_ELEMENT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 3,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 3,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 4,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 4,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "BLOCK_DECISION_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 4,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 4,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "CANDIDATE_STAGE_IDS",
+          "countA": 3,
+          "countB": 3,
+          "exactIntersection": 3,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "COMPATIBILITY_HEADING_IDS",
+          "countA": 3,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 3,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "FINAL_ELEMENT_IDS",
+          "countA": 3,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 3,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 3,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 3,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 3,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 3,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 3,
+          "countB": 3,
+          "exactIntersection": 3,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 3,
+          "countB": 4,
+          "exactIntersection": 3,
+          "aOnly": 0,
+          "bOnly": 1,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_BLOCK_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 3,
+          "countB": 4,
+          "exactIntersection": 3,
+          "aOnly": 0,
+          "bOnly": 1,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "COMPATIBILITY_HEADING_IDS",
+          "countA": 3,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 3,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "FINAL_ELEMENT_IDS",
+          "countA": 3,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 3,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 3,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 3,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 3,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 3,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 3,
+          "countB": 3,
+          "exactIntersection": 3,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 3,
+          "countB": 4,
+          "exactIntersection": 3,
+          "aOnly": 0,
+          "bOnly": 1,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "CANDIDATE_STAGE_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 3,
+          "countB": 4,
+          "exactIntersection": 3,
+          "aOnly": 0,
+          "bOnly": 1,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "FINAL_ELEMENT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 3,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 3,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 4,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 4,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "COMPATIBILITY_HEADING_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 4,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 4,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "FINAL_SOURCE_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 3,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 3,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 4,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 4,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_ELEMENT_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 4,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 4,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_SOURCE_IDS",
+          "namespaceB": "HIERARCHY_FACT_IDS",
+          "countA": 0,
+          "countB": 0,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_SOURCE_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 3,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 3,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_SOURCE_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 4,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 4,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "FINAL_SOURCE_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 4,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 4,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "HIERARCHY_FACT_IDS",
+          "namespaceB": "SELECTED_CANDIDATE_IDS",
+          "countA": 0,
+          "countB": 3,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 3,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "HIERARCHY_FACT_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 0,
+          "countB": 4,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 4,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "HIERARCHY_FACT_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 0,
+          "countB": 4,
+          "exactIntersection": 0,
+          "aOnly": 0,
+          "bOnly": 4,
+          "intersectionRate": 0
+        },
+        {
+          "namespaceA": "SELECTED_CANDIDATE_IDS",
+          "namespaceB": "SOURCE_SOURCE_IDS",
+          "countA": 3,
+          "countB": 4,
+          "exactIntersection": 3,
+          "aOnly": 0,
+          "bOnly": 1,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "SELECTED_CANDIDATE_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 3,
+          "countB": 4,
+          "exactIntersection": 3,
+          "aOnly": 0,
+          "bOnly": 1,
+          "intersectionRate": 1
+        },
+        {
+          "namespaceA": "SOURCE_SOURCE_IDS",
+          "namespaceB": "SOURCE_STABLE_IDS",
+          "countA": 4,
+          "countB": 4,
+          "exactIntersection": 4,
+          "aOnly": 0,
+          "bOnly": 0,
+          "intersectionRate": 1
+        }
+      ]
+    }
+  ]
+}

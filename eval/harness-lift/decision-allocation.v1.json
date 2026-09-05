@@ -1,0 +1,17 @@
+{
+  "artifactKind": "harness_lift_hl3_decision_allocation",
+  "schemaVersion": "3.0",
+  "referencePositives": 88,
+  "deterministicRoute": 0,
+  "modelRequiredRoute": 1,
+  "mixedRoute": 0,
+  "routeUnknown": 87,
+  "deterministicHandled": 0,
+  "deterministicCorrect": 0,
+  "deterministicWrong": 0,
+  "modelExposed": 1,
+  "finalCorrect": 0,
+  "finalWrong": 0,
+  "finalUnknown": 88,
+  "note": "counts use unique trusted official source occurrences; route ownership is evidence-based and unknown is retained"
+}

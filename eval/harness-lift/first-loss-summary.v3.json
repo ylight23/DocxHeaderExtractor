@@ -1,0 +1,26 @@
+{
+  "artifactKind": "harness_lift_hl3_first_loss_summary",
+  "schemaVersion": "3.0",
+  "referencePositiveOccurrences": 88,
+  "observedRows": 264,
+  "byFirstLoss": {
+    "SourceNotVisible": 0,
+    "RepresentationNotBridged": 51,
+    "CandidateNotConstructed": 0,
+    "CandidateConstructedNotSelected": 0,
+    "SelectionRankingBudgetLoss": 0,
+    "DeterministicBypassCorrect": 0,
+    "DeterministicBypassWrong": 0,
+    "ModelExposed": 0,
+    "ModelProposalWrong": 3,
+    "ProposalValidationRejection": 0,
+    "MarkerResolutionError": 0,
+    "StructuralResolutionError": 0,
+    "FinalProjectionError": 0,
+    "TraceNotObservable": 210,
+    "NoLoss": 0
+  },
+  "hl2CandidateLoss": 261,
+  "truePreModelLoss": 0,
+  "routeAwareRule": "deterministic route is evaluated before candidate/model stages; unknown is never coerced into loss"
+}
