@@ -1,0 +1,86 @@
+{
+  "artifactKind": "a99_early_dev_gold_validation_report",
+  "schemaVersion": "a99-early-dev-gold-validation-v2",
+  "status": "HUMAN_REFERENCE_REQUIRED",
+  "expectedDocuments": 15,
+  "validDocuments": 0,
+  "errorCount": 15,
+  "documents": [
+    {
+      "documentId": "DOC-0264",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0265",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0219",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0216",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0243",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0255",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0259",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0258",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0252",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0256",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0205",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0202",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0201",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0185",
+      "status": "MISSING",
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0200",
+      "status": "MISSING",
+      "error": "gold-missing"
+    }
+  ],
+  "providerCalls": 0
+}

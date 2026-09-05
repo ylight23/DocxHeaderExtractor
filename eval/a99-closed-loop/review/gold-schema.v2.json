@@ -1,0 +1,29 @@
+{
+  "artifactKind": "a99_human_gold_schema",
+  "schemaVersion": "a99-human-gold-v2",
+  "positiveSetOnly": true,
+  "exhaustiveCertificate": [
+    "reviewedEntireDocument",
+    "headingSetExhaustive",
+    "independentOfModelPrediction"
+  ],
+  "requiredHeadingFields": [
+    "sourceId",
+    "stableId",
+    "sourceOrdinal",
+    "sourceSpan",
+    "sourceTextHash",
+    "headingSpan",
+    "role",
+    "level",
+    "parentOccurrenceId"
+  ],
+  "unsureSourceIds": "optional; any value blocks final HUMAN_GOLD certification",
+  "forbidden": [
+    "prediction",
+    "candidate",
+    "confidence",
+    "validatorOutput",
+    "decision"
+  ]
+}
