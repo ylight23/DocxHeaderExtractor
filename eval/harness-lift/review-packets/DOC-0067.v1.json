@@ -1,0 +1,2078 @@
+{
+  "artifactKind": "harness_lift_source_first_blind_review_packet",
+  "schemaVersion": "1.0",
+  "authorityClass": "PARSER_SOURCE_FACTS",
+  "documentId": "DOC-0067",
+  "documentGroupId": "GROUP-0251",
+  "sourceSha256": "f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+  "reviewInstructions": {
+    "question": "Which source occurrences are document outline headings?",
+    "allowedLabels": [
+      "REVIEWED_HEADING",
+      "REVIEWED_NON_HEADING",
+      "UNCERTAIN"
+    ],
+    "prohibitedEvidence": [
+      "model prediction",
+      "candidate ranking",
+      "confidence",
+      "final output",
+      "silver label",
+      "expected answer"
+    ]
+  },
+  "occurrences": [
+    {
+      "sourceId": "body[1]/p[1]",
+      "sourceOrdinal": 0,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[2]",
+      "sourceOrdinal": 1,
+      "rawText": "MEETING MINUTES Governing Committee (GC) of theFacilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+      "fullSpan": {
+        "start": 0,
+        "end": 162
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[3]",
+      "sourceOrdinal": 2,
+      "rawText": "Date: November 21, 2024",
+      "fullSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "rawText": "Opening: The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, in Washington DC with participants joining remotely",
+      "fullSpan": {
+        "start": 0,
+        "end": 145
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[5]",
+      "sourceOrdinal": 4,
+      "rawText": "Present:",
+      "fullSpan": {
+        "start": 0,
+        "end": 8
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[6]",
+      "sourceOrdinal": 5,
+      "rawText": "Governing Committee: Philippe Hall; Savithri Wesche (Canada); Masaya Hatoma (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, Maria Longi (United States).",
+      "fullSpan": {
+        "start": 0,
+        "end": 164
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[7]",
+      "sourceOrdinal": 6,
+      "rawText": "Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta",
+      "fullSpan": {
+        "start": 0,
+        "end": 77
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[8]",
+      "sourceOrdinal": 7,
+      "rawText": "Trustee: Traci Phillips, Ashish Makkar",
+      "fullSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[9]",
+      "sourceOrdinal": 8,
+      "rawText": "World Bank Legal: Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings",
+      "fullSpan": {
+        "start": 0,
+        "end": 68
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[10]",
+      "sourceOrdinal": 9,
+      "rawText": "These minutes summarize the discussion and decisions of the first meeting of the F.O.R.T.I.S. Ukraine FIF following its endorsement of the proposed agenda (attached).",
+      "fullSpan": {
+        "start": 0,
+        "end": 166
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[11]",
+      "sourceOrdinal": 10,
+      "rawText": "Item 1: Document Approval. The Governing Committee provisionally approved the (i) Standard Provisions of the template Contribution Agreement/Arrangement; (ii) Financial Procedures Agreement (FPA) template; and (iii) the Funding Request Template. Further, there was provisional approval on all aspects of the (iv) Governance Framework; and (v) Operations Manual, except for paragraphs related to contribution thresholds and the mechanism for the potential determination of voting rights for new contributors.",
+      "fullSpan": {
+        "start": 0,
+        "end": 507
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[12]",
+      "sourceOrdinal": 11,
+      "rawText": "For the areas with provisional approval, the following was noted:",
+      "fullSpan": {
+        "start": 0,
+        "end": 65
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[13]",
+      "sourceOrdinal": 12,
+      "rawText": "- For the Funding Request Template, language will be proposed by Ukraine on the process for endorsing proposals and will be inserted accordingly.",
+      "fullSpan": {
+        "start": 0,
+        "end": 145
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[14]",
+      "sourceOrdinal": 13,
+      "rawText": "- For the Financial Procedures Agreement template, language in sections 4.1 (a) and 4.7 is accepted. It was agreed that in deciding on specific Funding Request Proposals, the Governing Committee can request clarifications from the Implementing Entities in advance of approving funding requests that would permit Governing Committee members to confirm that the use of the FIF funds would be aligned with contributors\u2019 funding mandates.",
+      "fullSpan": {
+        "start": 0,
+        "end": 434
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[15]",
+      "sourceOrdinal": 14,
+      "rawText": "World Bank counsel noted that the use of bilateral side letters is exceptional and inconsistent with the nature of a pooled fund vehicle but acknowledged the World Bank had accepted side emails in respect of regular trust fund financing for the PEACE facility,",
+      "fullSpan": {
+        "start": 0,
+        "end": 260
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[16]",
+      "sourceOrdinal": 15,
+      "rawText": "1",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[17]",
+      "sourceOrdinal": 16,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[18]",
+      "sourceOrdinal": 17,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[19]",
+      "sourceOrdinal": 18,
+      "rawText": "and further acknowledged that for the F.O.R.T.I.S. Ukraine FIF the Governing Committee can specify, in the context of its guidance to Implementing Entities regarding its consideration of funding requests, the nature of eligible expenditures under projects to be",
+      "fullSpan": {
+        "start": 0,
+        "end": 261
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "sourceOrdinal": 19,
+      "rawText": "financed",
+      "fullSpan": {
+        "start": 0,
+        "end": 8
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "right"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[2]/p[1]",
+      "sourceOrdinal": 20,
+      "rawText": "by",
+      "fullSpan": {
+        "start": 0,
+        "end": 2
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[3]/p[1]",
+      "sourceOrdinal": 21,
+      "rawText": "the",
+      "fullSpan": {
+        "start": 0,
+        "end": 3
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[4]/p[1]",
+      "sourceOrdinal": 22,
+      "rawText": "FIF.",
+      "fullSpan": {
+        "start": 0,
+        "end": 4
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": true,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[5]/p[1]",
+      "sourceOrdinal": 23,
+      "rawText": "For",
+      "fullSpan": {
+        "start": 0,
+        "end": 3
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[6]/p[1]",
+      "sourceOrdinal": 24,
+      "rawText": "the",
+      "fullSpan": {
+        "start": 0,
+        "end": 3
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[7]/p[1]",
+      "sourceOrdinal": 25,
+      "rawText": "Standard",
+      "fullSpan": {
+        "start": 0,
+        "end": 8
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[8]/p[1]",
+      "sourceOrdinal": 26,
+      "rawText": "Provisions",
+      "fullSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[9]/p[1]",
+      "sourceOrdinal": 27,
+      "rawText": "of",
+      "fullSpan": {
+        "start": 0,
+        "end": 2
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[10]/p[1]",
+      "sourceOrdinal": 28,
+      "rawText": "the",
+      "fullSpan": {
+        "start": 0,
+        "end": 3
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[11]/p[1]",
+      "sourceOrdinal": 29,
+      "rawText": "Contribution",
+      "fullSpan": {
+        "start": 0,
+        "end": 12
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[20]",
+      "sourceOrdinal": 30,
+      "rawText": "Agreement/Arrangements, there are no changes.",
+      "fullSpan": {
+        "start": 0,
+        "end": 45
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[21]",
+      "sourceOrdinal": 31,
+      "rawText": "- For the Operations Manual, the last sentence of the paragraph \u201CConsultation Prior to Contributor Cancellation\u201D will be replaced with the following: \u201CFor the avoidance of doubt, the provisions of Section 6 of the Standard Provisions to the Contribution Agreement/Arrangement will apply.\u201D During the discussion, the GC agreed that this language does not suggest that a Contributor will require the approval of the GC to withdraw funds.",
+      "fullSpan": {
+        "start": 0,
+        "end": 435
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[22]",
+      "sourceOrdinal": 32,
+      "rawText": "The Secretariat will make the above changes and update the documents for any consistency issues or minor factual or typographical corrections. A clean version will be circulated by cob Friday November 22. The GC agreed to respond to the revised documents by cob Monday November 25, including the possibility of an affirmative approval with a request to fix a specific typo or to correct a specific error. If the Voting Members do not approve, the Chair and the Secretariat will agree on a way forward.",
+      "fullSpan": {
+        "start": 0,
+        "end": 501
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[23]",
+      "sourceOrdinal": 33,
+      "rawText": "However, approval of the full suite of documents requires resolution of the outstanding issue related to membership in and governance of the GC as related to new contributors. During the meeting, the GC clarified: (i) that contributions of all amounts from World Bank member countries are welcomed, and (ii) that it would be acceptable for new contributors contributing at least $50 million equivalent to have Observer status to the Governing Committee. The World Bank team noted the GC\u2019s concern with specifying a threshold for voting membership without the GC also having the authority to decide on new Voting Members. The World Bank agreed to consult internally on what (if any) alternative language can be accepted and will communicate this to the GC as soon as feasible. Depending on the outcome, and the GC\u2019s view of the outcome, either: (i) agreed text will be inserted and/or confirmed or (ii) the GC and World Bank will continue deliberations to seek resolution. The resolution of this issue will need to be reflected in both the Governance Framework and Operations Manual in several places.",
+      "fullSpan": {
+        "start": 0,
+        "end": 1100
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[24]",
+      "sourceOrdinal": 34,
+      "rawText": "Item 2: Operating Context. The GC welcomed the overview provided by the GC Members representing the Government of Ukraine indicating Ukraine\u2019s budget and financing gap needs during 2025 and 2026 and the importance of the F.O.R.T.I.S. Ukraine FIF in ensuring adherence to the IMF Extended Fund Facility Arrangement on which the Ukrainian authorities and IMF staff have reached Staff Level Agreement on the Sixth Review; and for helping sustain the provision of humanitarian and social services.",
+      "fullSpan": {
+        "start": 0,
+        "end": 493
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[25]",
+      "sourceOrdinal": 35,
+      "rawText": "Item 3: Strategic Directions. GC Members representing the Government of Ukraine indicated initial financing through the F.O.R.T.I.S Ukraine FIF is envisioned to be directed to direct budget support (DBS), but noted flexibility should be maintained to be able to shift financing as appropriate to recovery and reconstruction needs. Ukraine highlighted that funds from the F.O.R.T.I.S. Ukraine FIF are key in supporting Ukraine\u2019s IMF program and cautioned that the downside financing needs scenario would require substantial DBS from the F.O.R.T.I.S. Ukraine",
+      "fullSpan": {
+        "start": 0,
+        "end": 556
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[26]",
+      "sourceOrdinal": 36,
+      "rawText": "2",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[27]",
+      "sourceOrdinal": 37,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[28]",
+      "sourceOrdinal": 38,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[29]",
+      "sourceOrdinal": 39,
+      "rawText": "FIF to flexibly meet Ukraine\u2019s needs in 2025. Ukraine noted that DBS is key to keeping Ukraine afloat in the near term, particularly given the recent escalation of attacks by Russia. Ukraine noted that first and foremost, they need donor funds to ensure financial sustainability, including covering social expenditures. Ukraine indicated that it is very familiar with existing Bank tools that could be used for budget support and providing accountability and transparency on the use of funds.",
+      "fullSpan": {
+        "start": 0,
+        "end": 492
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[30]",
+      "sourceOrdinal": 40,
+      "rawText": "The Government of Ukraine GC members also committed to provide a short note (2-3 pages) describing the Government\u2019s proposed Strategic Directions for the F.O.R.T.I.S. Ukraine FIF.",
+      "fullSpan": {
+        "start": 0,
+        "end": 179
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[31]",
+      "sourceOrdinal": 41,
+      "rawText": "Item 4: Work Plan, Budget, and Fees. The GC agreed that the work plan and budget for the Secretariat and Trustee should be submitted by December 6, and that its approval can be made through Decision without a Meeting by December 13. The Secretariat committed to provide a note to the GC by December 6 describing the agreed approach to fees for the Secretariat, Trustee and the World Bank as Implementing Entity, and that its approval can be made through Decision without a Meeting by December 13.",
+      "fullSpan": {
+        "start": 0,
+        "end": 496
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[32]",
+      "sourceOrdinal": 42,
+      "rawText": "Item 5: Communications Strategy. The GC agreed that the Secretariat will provide a plan and timeline for developing and making operational a web page by December 6, and that it can proceed with implementation of the plan through Decision without a Meeting. GC members noted that they may wish to exchange views on any early public communications.",
+      "fullSpan": {
+        "start": 0,
+        "end": 346
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[33]",
+      "sourceOrdinal": 43,
+      "rawText": "Item 6: Appointment of the Chair. The GC selected the United States representative Brian McCauley as Chair of the F.O.R.T.I.S. FIF Ukraine for a period of one year.",
+      "fullSpan": {
+        "start": 0,
+        "end": 164
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[34]",
+      "sourceOrdinal": 44,
+      "rawText": "3",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[35]",
+      "sourceOrdinal": 45,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[36]",
+      "sourceOrdinal": 46,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[37]",
+      "sourceOrdinal": 47,
+      "rawText": "Attachment:Agreed Agenda",
+      "fullSpan": {
+        "start": 0,
+        "end": 24
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": true,
+        "underline": true,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[38]",
+      "sourceOrdinal": 48,
+      "rawText": "AGENDA for FIRST MEETING Governing Committee (GC) of theFacilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+      "fullSpan": {
+        "start": 0,
+        "end": 171
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[39]",
+      "sourceOrdinal": 49,
+      "rawText": "Agenda Items",
+      "fullSpan": {
+        "start": 0,
+        "end": 12
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[40]",
+      "sourceOrdinal": 50,
+      "rawText": "1. Document Approval. Does the GC approve the (i) Governance Framework; (ii) Operations Manual; (iii) Standard Provisions of the Contribution Arrangement; (iv) Financial Procedures Agreement; and (iv) Funding Request Template.",
+      "fullSpan": {
+        "start": 0,
+        "end": 226
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[41]",
+      "sourceOrdinal": 51,
+      "rawText": "2. Operating Context. The Government of Ukraine will take the floor to provide a general overview of the current operating context in Ukraine and Ukraine\u2019s most pressing needs.",
+      "fullSpan": {
+        "start": 0,
+        "end": 176
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[42]",
+      "sourceOrdinal": 52,
+      "rawText": "3. Strategic Directions. Does the GC agree that in setting strategic directions, this should include a discussion of Ukraine\u2019s anticipated financing and recovery needs over the next three years, with a primary focus on the next 12 months, and how the FIF can best address those needs. The Government of Ukraine will submit a short Strategic Directions Note to the GC for comment and the Strategic Directions will be agreed by the GC prior to first disbursement.",
+      "fullSpan": {
+        "start": 0,
+        "end": 461
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[43]",
+      "sourceOrdinal": 53,
+      "rawText": "4. Work Plan, Budget, and Fees. Does the GC agree that the work plan and budget for the Secretariat and Trustee should be submitted by December 6, and that its approval can be made through Decision without a Meeting by December 13? Does the GC agree that the Secretariat should provide a short note on the agreements reached around fees by December 6, and that its approval can be made through Decision without a Meeting by December 13",
+      "fullSpan": {
+        "start": 0,
+        "end": 435
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[44]",
+      "sourceOrdinal": 54,
+      "rawText": "5. Communications Strategy. Does the GC agree that the Secretariat should provide a plan and timeline for developing a web page by December 6 and proceed with implementing the plan through Decision without a Meeting? Are there any other elements of an approach to communications that the GC wants to discuss/consider?",
+      "fullSpan": {
+        "start": 0,
+        "end": 317
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[45]",
+      "sourceOrdinal": 55,
+      "rawText": "6. Appointment of the Chair. Does the GC approve the appointment of [Nominee] as the Chair for a period of one year?",
+      "fullSpan": {
+        "start": 0,
+        "end": 116
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[46]",
+      "sourceOrdinal": 56,
+      "rawText": "4",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    }
+  ]
+}

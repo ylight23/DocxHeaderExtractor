@@ -1,0 +1,60 @@
+{
+  "groups": [
+    {
+      "key": "VietnameseLegal",
+      "documents": 23,
+      "candidateEligible": 26631,
+      "candidateSelected": 26631,
+      "providerCalls": 0
+    },
+    {
+      "key": "SemanticOnly",
+      "documents": 4,
+      "candidateEligible": 4,
+      "candidateSelected": 4,
+      "providerCalls": 0
+    },
+    {
+      "key": "Unknown",
+      "documents": 2,
+      "candidateEligible": 128,
+      "candidateSelected": 0,
+      "providerCalls": 0
+    },
+    {
+      "key": "VietnameseAdministrative",
+      "documents": 3,
+      "candidateEligible": 9730,
+      "candidateSelected": 9730,
+      "providerCalls": 0
+    },
+    {
+      "key": "FormatDriven",
+      "documents": 25,
+      "candidateEligible": 61991,
+      "candidateSelected": 61991,
+      "providerCalls": 0
+    },
+    {
+      "key": "TypedNumbering",
+      "documents": 14,
+      "candidateEligible": 40595,
+      "candidateSelected": 40595,
+      "providerCalls": 0
+    },
+    {
+      "key": "OutlineLevelDriven",
+      "documents": 19,
+      "candidateEligible": 121723,
+      "candidateSelected": 121723,
+      "providerCalls": 0
+    },
+    {
+      "key": "TocAnchored",
+      "documents": 5,
+      "candidateEligible": 37672,
+      "candidateSelected": 37672,
+      "providerCalls": 0
+    }
+  ]
+}

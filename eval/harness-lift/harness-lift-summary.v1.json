@@ -1,0 +1,39 @@
+{
+  "artifactKind": "harness_lift_summary",
+  "schemaVersion": "1.0",
+  "codeSha": "2c99c35a5f9c8c06d1e854263b5200f868c4105d",
+  "corpusDocuments": 95,
+  "referenceCounts": {
+    "ModelAssistedSilver": 9,
+    "HumanKey": 25,
+    "SourceStructuralReference": 7,
+    "HeuristicReference": 9
+  },
+  "preModel": {
+    "documents": 95,
+    "sourceReferenceHeadings": 781,
+    "sourceVisible": 781,
+    "sourceLost": 0,
+    "candidateEligible": 298474,
+    "candidateSelected": 298346,
+    "candidateLost": 128,
+    "modelExposureEligible": 0,
+    "providerCalls": 0
+  },
+  "model": {
+    "status": "MEASURED_ON_TRUSTED_SUBSET_WITH_LIMITATIONS",
+    "trustedDocuments": 3,
+    "providerCalls": 132,
+    "requestCount": 132,
+    "role": "NOT_MEASURED",
+    "level": "NOT_MEASURED",
+    "parent": "NOT_MEASURED",
+    "span": "NOT_MEASURED",
+    "modelErrors": "NOT_MEASURED",
+    "harnessRecovery": "NOT_MEASURED",
+    "observedLift": "NOT_MEASURED"
+  },
+  "finalSystem": "NOT_MEASURED_WITHOUT_EXHAUSTIVE_REFERENCE_FIELDS",
+  "accuracy99Claim": "NOT_MEASURED",
+  "providerCalls": 132
+}
