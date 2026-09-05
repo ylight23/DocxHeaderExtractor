@@ -524,6 +524,10 @@ public sealed class CommandLineOptions
           dhx accuracy99 baseline <file.docx> --profile structural --out <baseline.json>
                                               # General-heading accuracy infrastructure; Human Gold
                                               # is never inferred from .key/silver artifacts.
+          dhx accuracy99 early-dev-campaign    # freeze the stratified 12-20 document DEV review set
+          dhx accuracy99 gold validate-v2       # validate only the frozen early DEV gold set
+          dhx accuracy99 gold import-dev-v2     # import valid early DEV gold; never opens holdout
+          dhx accuracy99 review-ui              # copy the source-first v2 reviewer UI
           dhx r18 ownership <file.docx> --out <report.json>
                                               # Evaluation-only decision ownership audit; never calls a provider.
 

@@ -122,6 +122,88 @@ public sealed record A99HumanGoldDocument
     [JsonPropertyName("rows")] public required IReadOnlyList<A99GoldOccurrence> Rows { get; init; }
 }
 
+/// <summary>
+/// Version 2 keeps the review packet exhaustive but stores only the positive heading set.
+/// Completeness is a signed human assertion, not an implicit label for every body paragraph.
+/// </summary>
+public sealed record A99GoldV2Heading
+{
+    [JsonPropertyName("sourceId")] public required string SourceId { get; init; }
+    [JsonPropertyName("stableId")] public required string StableId { get; init; }
+    [JsonPropertyName("sourceOrdinal")] public int SourceOrdinal { get; init; }
+    [JsonPropertyName("sourceSpan")] public required A99ReviewSpan SourceSpan { get; init; }
+    [JsonPropertyName("sourceTextHash")] public required string SourceTextHash { get; init; }
+    [JsonPropertyName("headingSpan")] public required A99ReviewSpan HeadingSpan { get; init; }
+    [JsonPropertyName("role")] public required string Role { get; init; }
+    [JsonPropertyName("level")] public required int Level { get; init; }
+    [JsonPropertyName("parentOccurrenceId")] public string? ParentOccurrenceId { get; init; }
+}
+
+public sealed record A99HumanGoldV2Document
+{
+    [JsonPropertyName("artifactKind")] public string ArtifactKind { get; init; } = "a99_human_gold";
+    [JsonPropertyName("authorityClass")] public string AuthorityClass { get; init; } = "HUMAN_GOLD";
+    [JsonPropertyName("goldSchemaVersion")] public string GoldSchemaVersion { get; init; } = "a99-human-gold-v2";
+    [JsonPropertyName("reviewerAlias")] public required string ReviewerAlias { get; init; }
+    [JsonPropertyName("reviewedAt")] public required DateTimeOffset ReviewedAt { get; init; }
+    [JsonPropertyName("reviewVersion")] public required string ReviewVersion { get; init; }
+    [JsonPropertyName("reviewedEntireDocument")] public bool ReviewedEntireDocument { get; init; }
+    [JsonPropertyName("headingSetExhaustive")] public bool HeadingSetExhaustive { get; init; }
+    [JsonPropertyName("independentOfModelPrediction")] public bool IndependentOfModelPrediction { get; init; }
+    [JsonPropertyName("documentId")] public required string DocumentId { get; init; }
+    [JsonPropertyName("documentGroupId")] public required string DocumentGroupId { get; init; }
+    [JsonPropertyName("split")] public required string Split { get; init; }
+    [JsonPropertyName("sourceDocumentSha256")] public required string SourceDocumentSha256 { get; init; }
+    [JsonPropertyName("packetSha256")] public required string PacketSha256 { get; init; }
+    [JsonPropertyName("goldVersion")] public string GoldVersion { get; init; } = "a99-human-gold-v2";
+    [JsonPropertyName("derivedFromHumanKey")] public bool DerivedFromHumanKey { get; init; }
+    [JsonPropertyName("unsureSourceIds")] public IReadOnlyList<string> UnsureSourceIds { get; init; } = [];
+    [JsonPropertyName("rows")] public required IReadOnlyList<A99GoldV2Heading> Rows { get; init; }
+}
+
+public sealed record A99EarlyDevDocument
+{
+    [JsonPropertyName("documentId")] public required string DocumentId { get; init; }
+    [JsonPropertyName("documentGroupId")] public required string DocumentGroupId { get; init; }
+    [JsonPropertyName("split")] public required string Split { get; init; }
+    [JsonPropertyName("familyId")] public required string FamilyId { get; init; }
+    [JsonPropertyName("sourceKind")] public required string SourceKind { get; init; }
+    [JsonPropertyName("sizeBand")] public required string SizeBand { get; init; }
+    [JsonPropertyName("sourcePath")] public required string SourcePath { get; init; }
+    [JsonPropertyName("sourceSha256")] public required string SourceSha256 { get; init; }
+    [JsonPropertyName("sourceOccurrenceCount")] public int SourceOccurrenceCount { get; init; }
+    [JsonPropertyName("packetPath")] public required string PacketPath { get; init; }
+    [JsonPropertyName("packetSha256")] public required string PacketSha256 { get; init; }
+}
+
+public sealed record A99EarlyDevCampaign
+{
+    [JsonPropertyName("artifactKind")] public string ArtifactKind { get; init; } = "a99_early_dev_campaign";
+    [JsonPropertyName("schemaVersion")] public string SchemaVersion { get; init; } = "a99-early-dev-campaign-v1";
+    [JsonPropertyName("createdFromRevision")] public required string CreatedFromRevision { get; init; }
+    [JsonPropertyName("selectionPolicy")] public required string SelectionPolicy { get; init; }
+    [JsonPropertyName("targetDocuments")] public int TargetDocuments { get; init; }
+    [JsonPropertyName("documents")] public required IReadOnlyList<A99EarlyDevDocument> Documents { get; init; }
+    [JsonPropertyName("sourceOccurrences")] public int SourceOccurrences { get; init; }
+    [JsonPropertyName("familiesCovered")] public required IReadOnlyList<string> FamiliesCovered { get; init; }
+    [JsonPropertyName("providerCalls")] public int ProviderCalls { get; init; }
+}
+
+public sealed record A99EarlyGoldImportCoverage
+{
+    [JsonPropertyName("artifactKind")] public string ArtifactKind { get; init; } = "a99_early_dev_gold_coverage";
+    [JsonPropertyName("schemaVersion")] public string SchemaVersion { get; init; } = "a99-early-dev-gold-coverage-v2";
+    [JsonPropertyName("status")] public required string Status { get; init; }
+    [JsonPropertyName("documentsExpected")] public int DocumentsExpected { get; init; }
+    [JsonPropertyName("documentsValidated")] public int DocumentsValidated { get; init; }
+    [JsonPropertyName("sourceOccurrencesExpected")] public int SourceOccurrencesExpected { get; init; }
+    [JsonPropertyName("sourceOccurrencesValidated")] public int SourceOccurrencesValidated { get; init; }
+    [JsonPropertyName("headingPositives")] public int HeadingPositives { get; init; }
+    [JsonPropertyName("unsureDocuments")] public int UnsureDocuments { get; init; }
+    [JsonPropertyName("errors")] public IReadOnlyList<string> Errors { get; init; } = [];
+    [JsonPropertyName("providerCalls")] public int ProviderCalls { get; init; }
+}
+
 public sealed record A99GoldValidationResult(bool IsValid, IReadOnlyList<string> Errors)
 {
     public void ThrowIfInvalid()

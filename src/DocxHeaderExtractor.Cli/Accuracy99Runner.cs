@@ -27,7 +27,7 @@ internal static class Accuracy99Runner
         var operation = options.Accuracy99Operation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, review-ui, gold-validate, gold-import-dev");
+            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2");
             return 0;
         }
 
@@ -39,11 +39,69 @@ internal static class Accuracy99Runner
             "baseline" => await BuildBaselineAsync(options, cancellationToken),
             "observability" => await BuildObservabilityAsync(options, cancellationToken),
             "reference-campaign" => await BuildReferenceCampaignAsync(options, cancellationToken),
+            "early-dev-campaign" => await BuildEarlyDevCampaignAsync(options, cancellationToken),
             "review-ui" => BuildReviewUi(options),
             "gold-validate" => await ValidateGoldAsync(options, cancellationToken),
             "gold-import-dev" => await ImportDevGoldAsync(options, cancellationToken),
+            "gold-validate-v2" => await ValidateEarlyDevGoldV2Async(options, cancellationToken),
+            "gold-import-dev-v2" => await ImportEarlyDevGoldV2Async(options, cancellationToken),
             _ => throw new ArgumentException($"accuracy99 operation không hợp lệ: {operation}"),
         };
+    }
+
+    private static async Task<int> BuildEarlyDevCampaignAsync(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var campaign = LoadCampaign(repoRoot);
+        var early = A99EarlyDevCampaignBuilder.Build(campaign, GitRevision(repoRoot) ?? "UNRESOLVED");
+        var artifactRoot = Path.Combine(repoRoot, "eval", "a99-closed-loop");
+        Directory.CreateDirectory(Path.Combine(artifactRoot, "review"));
+        await WriteAsync(Path.Combine(artifactRoot, "early-dev-campaign.v1.json"), A99ReviewJson.Serialize(early), cancellationToken);
+        await WriteAsync(Path.Combine(artifactRoot, "review", "gold-schema.v2.json"), JsonSerializer.Serialize(new
+        {
+            artifactKind = "a99_human_gold_schema",
+            schemaVersion = "a99-human-gold-v2",
+            positiveSetOnly = true,
+            exhaustiveCertificate = new[] { "reviewedEntireDocument", "headingSetExhaustive", "independentOfModelPrediction" },
+            requiredHeadingFields = new[] { "sourceId", "stableId", "sourceOrdinal", "sourceSpan", "sourceTextHash", "headingSpan", "role", "level", "parentOccurrenceId" },
+            unsureSourceIds = "optional; any value blocks final HUMAN_GOLD certification",
+            forbidden = new[] { "prediction", "candidate", "confidence", "validatorOutput", "decision" },
+        }, JsonOptions), cancellationToken);
+        await WriteAsync(Path.Combine(artifactRoot, "early-dev-reference-audit.v1.json"), JsonSerializer.Serialize(new
+        {
+            artifactKind = "a99_early_dev_reference_audit",
+            schemaVersion = "a99-early-dev-reference-audit-v1",
+            policy = "existing references are provenance clues only; never auto-promoted to HUMAN_GOLD",
+            entries = early.Documents.Select(document =>
+            {
+                var sourcePath = Path.Combine(repoRoot, document.SourcePath.Replace('/', Path.DirectorySeparatorChar));
+                var stem = Path.Combine(Path.GetDirectoryName(sourcePath)!, Path.GetFileNameWithoutExtension(sourcePath));
+                var v1Gold = stem + ".human-gold.json";
+                var v2Gold = stem + ".human-gold-v2.json";
+                var humanKey = stem + ".key";
+                var reviewPacket = Path.Combine(repoRoot, "eval", "harness-lift", "review-packets-v2", document.DocumentId + ".v2.json");
+                var classification = File.Exists(v2Gold) ? "V2_HUMAN_GOLD_PRESENT_REQUIRES_VALIDATION"
+                    : File.Exists(v1Gold) ? "V1_HUMAN_GOLD_PRESENT_NOT_AUTO_PROMOTED"
+                    : File.Exists(humanKey) ? "HUMAN_KEY_PRESENT_NOT_AUTO_PROMOTED"
+                    : File.Exists(reviewPacket) ? "EXHAUSTIVE_PACKET_REFERENCE_NOT_GOLD"
+                    : "NONE_FOUND";
+                return new
+                {
+                    documentId = document.DocumentId,
+                    sourcePath = document.SourcePath,
+                    classification,
+                    v1GoldPresent = File.Exists(v1Gold),
+                    v2GoldPresent = File.Exists(v2Gold),
+                    humanKeyPresent = File.Exists(humanKey),
+                    existingReviewPacketPresent = File.Exists(reviewPacket),
+                };
+            }).ToArray(),
+            providerCalls = 0,
+        }, JsonOptions), cancellationToken);
+        Console.WriteLine($"A99 early DEV campaign ready: {early.Documents.Count} docs/{early.SourceOccurrences} occurrences; families={string.Join(",", early.FamiliesCovered)}; status=HUMAN_REFERENCE_REQUIRED");
+        return 0;
     }
 
     private static async Task<int> BuildReferenceCampaignAsync(
@@ -226,11 +284,90 @@ internal static class Accuracy99Runner
         return coverage.Status == "READY" ? 0 : 1;
     }
 
+    private static async Task<int> ValidateEarlyDevGoldV2Async(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var early = LoadEarlyDevCampaign(repoRoot);
+        var packetRoot = options.Accuracy99PacketRoot ?? Path.Combine("C:\\A99-Gold", "packets");
+        var goldRoot = options.Accuracy99GoldRoot ?? options.Accuracy99GoldPath ?? Path.Combine("C:\\A99-Gold", "dev-v2");
+        A99GoldStoreGuard.EnsureDevPath(packetRoot);
+        A99GoldStoreGuard.EnsureDevPath(goldRoot);
+        var results = new List<object>();
+        var valid = 0;
+        var errors = 0;
+        foreach (var document in early.Documents)
+        {
+            var packetPath = Path.Combine(Path.GetFullPath(packetRoot), "dev", document.DocumentId + ".v1.json");
+            if (!File.Exists(packetPath)) packetPath = Path.Combine(Path.GetFullPath(packetRoot), document.DocumentId + ".v1.json");
+            var goldPath = Path.Combine(Path.GetFullPath(goldRoot), document.DocumentId + ".human-gold-v2.json");
+            if (!File.Exists(goldPath)) { errors++; results.Add(new { documentId = document.DocumentId, status = "MISSING", error = "gold-missing" }); continue; }
+            if (!File.Exists(packetPath)) { errors++; results.Add(new { documentId = document.DocumentId, status = "INVALID", error = "packet-missing" }); continue; }
+            try
+            {
+                var packet = A99ReviewJson.Deserialize<A99ReviewPacket>(await File.ReadAllTextAsync(packetPath, cancellationToken));
+                var gold = A99ReviewJson.Deserialize<A99HumanGoldV2Document>(await File.ReadAllTextAsync(goldPath, cancellationToken));
+                var validation = A99HumanGoldV2Validator.Validate(packet, gold);
+                if (!string.Equals(packet.SourceDocumentSha256, document.SourceSha256, StringComparison.OrdinalIgnoreCase))
+                {
+                    validation = new A99GoldValidationResult(false, [.. validation.Errors, "packet-source-sha-not-bound-to-early-campaign"]);
+                }
+                if (!string.Equals(packet.PacketSha256, document.PacketSha256, StringComparison.OrdinalIgnoreCase))
+                {
+                    validation = new A99GoldValidationResult(false, [.. validation.Errors, "packet-sha-not-bound-to-early-campaign"]);
+                }
+                if (validation.IsValid) valid++; else errors += validation.Errors.Count;
+                results.Add(new { documentId = document.DocumentId, status = validation.IsValid ? "VALID" : "INVALID", errors = validation.Errors });
+            }
+            catch (Exception ex) when (ex is JsonException or InvalidDataException or IOException)
+            {
+                errors++; results.Add(new { documentId = document.DocumentId, status = "INVALID", error = ex.Message });
+            }
+        }
+        var report = new
+        {
+            artifactKind = "a99_early_dev_gold_validation_report",
+            schemaVersion = "a99-early-dev-gold-validation-v2",
+            status = errors == 0 && valid == early.Documents.Count ? "READY_FOR_BASELINE" : "HUMAN_REFERENCE_REQUIRED",
+            expectedDocuments = early.Documents.Count,
+            validDocuments = valid,
+            errorCount = errors,
+            documents = results,
+            providerCalls = 0,
+        };
+        await WriteAsync(options.OutputPath ?? Path.Combine(repoRoot, "eval", "a99-closed-loop", "early-dev-gold-validation.v2.json"), JsonSerializer.Serialize(report, JsonOptions), cancellationToken);
+        return errors == 0 && valid == early.Documents.Count ? 0 : 1;
+    }
+
+    private static async Task<int> ImportEarlyDevGoldV2Async(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var early = LoadEarlyDevCampaign(repoRoot);
+        var coverage = A99GoldImportService.ValidateAndImportEarlyDevV2(
+            early,
+            options.Accuracy99PacketRoot ?? Path.Combine("C:\\A99-Gold", "packets"),
+            options.Accuracy99GoldRoot ?? options.Accuracy99GoldPath ?? Path.Combine("C:\\A99-Gold", "dev-v2"),
+            Path.Combine(repoRoot, "eval", "a99-closed-loop"));
+        await WriteAsync(options.OutputPath, JsonSerializer.Serialize(coverage, JsonOptions), cancellationToken);
+        Console.WriteLine($"Early DEV v2 gold: {coverage.DocumentsValidated}/{coverage.DocumentsExpected} documents, {coverage.HeadingPositives} positives, status={coverage.Status}");
+        return coverage.Status == "READY_FOR_BASELINE" ? 0 : 1;
+    }
+
     private static A99ReferenceCampaign LoadCampaign(string repoRoot)
     {
         var path = Path.Combine(repoRoot, "eval", "a99-closed-loop", "reference-campaign.v1.json");
         if (!File.Exists(path)) throw new FileNotFoundException("Run accuracy99 reference-campaign first.", path);
         return A99ReviewJson.Deserialize<A99ReferenceCampaign>(File.ReadAllText(path));
+    }
+
+    private static A99EarlyDevCampaign LoadEarlyDevCampaign(string repoRoot)
+    {
+        var path = Path.Combine(repoRoot, "eval", "a99-closed-loop", "early-dev-campaign.v1.json");
+        if (!File.Exists(path)) throw new FileNotFoundException("Run accuracy99 early-dev-campaign first.", path);
+        return A99ReviewJson.Deserialize<A99EarlyDevCampaign>(File.ReadAllText(path));
     }
 
     private static async Task WriteReviewSchemasAsync(string reviewRoot, CancellationToken cancellationToken)

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A99 source-first reviewer</title>
+  <title>A99 source-first heading reviewer v2</title>
   <style>
     :root { color-scheme: light; font: 14px system-ui, sans-serif; }
     body { margin: 0; background: #f5f7fa; color: #18212b; }
@@ -13,97 +13,141 @@
     button, input, select { font: inherit; }
     button { border: 1px solid #b8c2cc; border-radius: 4px; background: white; padding: 7px 10px; cursor: pointer; }
     button.primary { background: #1769aa; color: white; border-color: #1769aa; }
+    button.danger { color: #a12622; }
     input, select { border: 1px solid #b8c2cc; border-radius: 3px; padding: 5px; background: white; }
     .meta { margin: 8px 0; color: #52606d; }
-    .row { display: grid; grid-template-columns: 42px minmax(260px, 1fr) 170px 230px 240px; gap: 8px; align-items: start; padding: 10px; margin: 8px 0; border: 1px solid #d8dee5; border-radius: 4px; background: white; }
-    .row.current { outline: 2px solid #1769aa; }
-    .row.done { border-left: 4px solid #2e8540; }
-    .text { white-space: pre-wrap; overflow-wrap: anywhere; }
-    .facts { color: #52606d; font-size: 12px; line-height: 1.45; }
-    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
-    .fields label { display: flex; flex-direction: column; gap: 2px; color: #52606d; font-size: 12px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 16px; }
+    .panel { border: 1px solid #d8dee5; border-radius: 4px; background: white; padding: 14px; }
+    .source { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 18px; line-height: 1.5; min-height: 120px; }
+    .facts { color: #52606d; font-size: 12px; line-height: 1.5; }
+    .context { display: grid; gap: 8px; margin-top: 12px; }
+    .context > div { border-left: 3px solid #d8dee5; padding: 7px 10px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .context .current { border-left-color: #1769aa; background: #eef6fc; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .fields label { display: flex; flex-direction: column; gap: 3px; color: #52606d; font-size: 12px; }
     .fields .wide { grid-column: 1 / -1; }
-    .hotkeys { font-size: 12px; color: #d8e2eb; }
-    @media (max-width: 900px) { .row { grid-template-columns: 32px 1fr; } .facts, .fields { grid-column: 2; } }
+    .heading-state { margin-top: 14px; padding-top: 12px; border-top: 1px solid #d8dee5; }
+    .heading-state.active { border-left: 4px solid #2e8540; padding-left: 10px; }
+    .sidebar-list { max-height: 60vh; overflow: auto; display: grid; gap: 4px; margin-top: 8px; }
+    .sidebar-list button { text-align: left; padding: 5px 7px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sidebar-list button.current { outline: 2px solid #1769aa; }
+    .certs { display: grid; gap: 8px; margin-top: 16px; }
+    .certs label { display: flex; gap: 8px; align-items: flex-start; }
+    .status { margin-top: 10px; min-height: 20px; color: #52606d; }
+    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .fields { grid-template-columns: 1fr; } .fields .wide { grid-column: auto; } }
   </style>
 </head>
 <body>
 <header>
   <div class="toolbar">
     <input id="packetFile" type="file" accept="application/json,.json">
+    <button id="previous">Previous</button>
+    <button id="next">Next</button>
+    <label>Jump <input id="jump" type="number" min="1" value="1" style="width:70px"></label>
+    <label>Search <input id="search" type="search" placeholder="source text" style="width:170px"></label>
+    <button id="find">Find next</button>
     <button id="save">Save progress</button>
-    <button id="download" class="primary">Download HUMAN_GOLD</button>
-    <span class="hotkeys">Keys: 1=YES, 2=NO, 3=UNSURE, J/K=next/previous</span>
+    <button id="download" class="primary">Download HUMAN_GOLD v2</button>
   </div>
 </header>
 <main>
   <div id="meta" class="meta">Open one source-first packet. This page reads no model trace or prediction.</div>
   <div id="reviewer" class="toolbar" hidden>
     <label>Reviewer <input id="reviewerAlias" autocomplete="off"></label>
-    <label>Version <input id="reviewVersion" value="a99-human-gold-v1" autocomplete="off"></label>
+    <label>Version <input id="reviewVersion" value="a99-human-gold-v2" autocomplete="off"></label>
     <span id="progress"></span>
   </div>
-  <div id="rows"></div>
+  <div id="layout" class="layout" hidden>
+    <section>
+      <div class="panel">
+        <div id="source" class="source"></div>
+        <div id="facts" class="facts"></div>
+        <div id="context" class="context"></div>
+        <div id="headingState" class="heading-state"></div>
+      </div>
+      <div id="certs" class="panel certs">
+        <strong>End-of-document certification</strong>
+        <label><input id="certEntire" type="checkbox"> I reviewed the entire document.</label>
+        <label><input id="certExhaustive" type="checkbox"> This heading list is exhaustive.</label>
+        <label><input id="certIndependent" type="checkbox"> I did not use model or system predictions.</label>
+        <div id="status" class="status"></div>
+      </div>
+    </section>
+    <aside class="panel">
+      <strong>Heading list</strong>
+      <div id="headingCount" class="facts"></div>
+      <div id="headingList" class="sidebar-list"></div>
+    </aside>
+  </div>
 </main>
 <script>
 (() => {
   'use strict';
   let packet = null;
-  let state = {};
+  let state = { headings: {}, unsure: {}, certEntire: false, certExhaustive: false, certIndependent: false, reviewerAlias: '', reviewVersion: 'a99-human-gold-v2' };
   let current = 0;
   const $ = id => document.getElementById(id);
-  const key = () => packet ? `a99-review:${packet.documentId}:${packet.packetSha256}` : '';
+  const occurrence = () => packet?.occurrences[current];
+  const heading = id => state.headings[id];
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const rowState = id => state[id] || (state[id] = { label: 'UNSURE', role: '', start: '', end: '', level: '', parent: '' });
-  function loadState() { try { state = JSON.parse(localStorage.getItem(key()) || '{}'); } catch (_) { state = {}; } }
-  function persist() { if (packet) localStorage.setItem(key(), JSON.stringify(state)); renderProgress(); }
+  const storageKey = () => packet ? `a99-review-v2:${packet.documentId}:${packet.packetSha256}` : '';
+  function loadState() {
+    try { state = {...state, ...JSON.parse(localStorage.getItem(storageKey()) || '{}')}; } catch (_) { state = {...state}; }
+    $('reviewerAlias').value = state.reviewerAlias || '';
+    $('reviewVersion').value = state.reviewVersion || 'a99-human-gold-v2';
+    $('certEntire').checked = !!state.certEntire; $('certExhaustive').checked = !!state.certExhaustive; $('certIndependent').checked = !!state.certIndependent;
+  }
+  function persist() {
+    if (!packet) return;
+    state.reviewerAlias = $('reviewerAlias').value; state.reviewVersion = $('reviewVersion').value;
+    state.certEntire = $('certEntire').checked; state.certExhaustive = $('certExhaustive').checked; state.certIndependent = $('certIndependent').checked;
+    localStorage.setItem(storageKey(), JSON.stringify(state)); renderProgress();
+  }
   function renderProgress() {
     if (!packet) return;
-    const values = packet.occurrences.map(x => rowState(x.sourceId));
-    const answered = values.filter(x => x.label === 'YES' || x.label === 'NO').length;
-    $('progress').textContent = `${answered}/${values.length} explicit YES/NO; UNSURE remains visible and is excluded from official denominators.`;
+    $('progress').textContent = `source ${current + 1}/${packet.occurrences.length} | headings ${Object.keys(state.headings || {}).length} | unsure ${Object.keys(state.unsure || {}).length}`;
   }
-  function setLabel(id, label) {
-    const s = rowState(id); s.label = label;
-    if (label !== 'YES') { s.role = label === 'NO' ? 'body' : ''; s.start = ''; s.end = ''; s.level = ''; s.parent = ''; }
-    render(); persist();
+  function move(delta) { if (!packet) return; current = Math.max(0, Math.min(packet.occurrences.length - 1, current + delta)); render(); }
+  function setCurrent(index) { if (!packet) return; current = Math.max(0, Math.min(packet.occurrences.length - 1, index)); render(); }
+  function addHeading() { const o = occurrence(); if (!o) return; state.headings[o.sourceId] = state.headings[o.sourceId] || { role:'heading', start:0, end:o.sourceText.length, level:1, parent:'UNKNOWN' }; delete state.unsure[o.sourceId]; render(); persist(); }
+  function removeHeading() { const o = occurrence(); if (!o) return; delete state.headings[o.sourceId]; render(); persist(); }
+  function markUnsure() { const o = occurrence(); if (!o) return; delete state.headings[o.sourceId]; state.unsure[o.sourceId] = true; render(); persist(); }
+  function parentOptions(id, selected) {
+    const options = ['ROOT', 'UNKNOWN', ...Object.keys(state.headings || {}).filter(x => x !== id)];
+    return options.map(x => `<option value="${esc(x)}" ${x === selected ? 'selected' : ''}>${esc(x)}</option>`).join('');
   }
-  function move(delta) { if (!packet) return; current = Math.max(0, Math.min(packet.occurrences.length - 1, current + delta)); render(); document.querySelector('.row.current')?.scrollIntoView({block:'center'}); }
   function render() {
     if (!packet) return;
-    $('reviewer').hidden = false;
-    $('meta').textContent = `${packet.documentId} | ${packet.split} | ${packet.familyId} | ${packet.occurrences.length} source occurrences | ${packet.sourceDocumentSha256}`;
-    $('rows').innerHTML = packet.occurrences.map((o, i) => {
-      const s = rowState(o.sourceId); const done = s.label === 'YES' || s.label === 'NO';
-      const roleOptions = s.label === 'YES' ? ['heading','title','caption','label','other'] : ['body','non-heading','other'];
-      return `<article class="row ${i === current ? 'current' : ''} ${done ? 'done' : ''}" data-id="${esc(o.sourceId)}">
-        <div>${i + 1}</div>
-        <div><div class="text">${esc(o.sourceText) || '<em>(empty source occurrence)</em>'}</div><div class="facts">${esc(o.sourceId)} | ordinal ${o.sourceOrdinal}<br>style=${esc(o.style.styleName || o.style.styleId || '')}, num=${esc(o.numbering.numberingId)}, ilvl=${esc(o.numbering.ilvl)}, tableDepth=${o.layout.tableDepth}<br>prev=${esc(o.previousText)}<br>next=${esc(o.nextText)}</div></div>
-        <div><button data-label="YES" data-id="${esc(o.sourceId)}">YES</button> <button data-label="NO" data-id="${esc(o.sourceId)}">NO</button> <button data-label="UNSURE" data-id="${esc(o.sourceId)}">UNSURE</button><div class="facts">current: ${esc(s.label)}</div></div>
-        <div class="fields">
-          <label>Role<select data-field="role" data-id="${esc(o.sourceId)}"><option value=""></option>${roleOptions.map(x => `<option ${s.role === x ? 'selected' : ''}>${x}</option>`).join('')}</select></label>
-          <label>Level<input data-field="level" data-id="${esc(o.sourceId)}" type="number" min="1" max="9" value="${esc(s.level)}"></label>
-          <label>Span start<input data-field="start" data-id="${esc(o.sourceId)}" type="number" min="0" max="${o.sourceText.length}" value="${esc(s.start)}"></label>
-          <label>Span end<input data-field="end" data-id="${esc(o.sourceId)}" type="number" min="0" max="${o.sourceText.length}" value="${esc(s.end)}"></label>
-          <label class="wide">Parent source ID (ROOT, UNKNOWN, or an earlier YES occurrence)<input data-field="parent" data-id="${esc(o.sourceId)}" value="${esc(s.parent)}"></label>
-        </div>
-        <div class="facts">source span 0..${o.sourceText.length}<br>text sha ${esc(o.sourceTextHash)}</div>
-      </article>`;
-    }).join('');
+    const o = occurrence(); const h = heading(o.sourceId);
+    $('layout').hidden = false; $('reviewer').hidden = false; $('meta').textContent = `${packet.documentId} | ${packet.split} | ${packet.familyId} | ${packet.occurrences.length} source occurrences | ${packet.sourceDocumentSha256}`; $('jump').value = current + 1;
+    $('source').textContent = o.sourceText || '(empty source occurrence)';
+    $('facts').innerHTML = `${esc(o.sourceId)} | stable ${esc(o.stableId)} | ordinal ${o.sourceOrdinal} | source span 0..${o.sourceText.length}<br>style=${esc(o.style.styleName || o.style.styleId || '')}, builtIn=${esc(o.style.builtInHeadingStyleLevel)}, outline=${esc(o.style.outlineLevel)}, numbering=${esc(o.numbering.numberingId)}, ilvl=${esc(o.numbering.ilvl)}, tableDepth=${o.layout.tableDepth}<br>text sha ${esc(o.sourceTextHash)}`;
+    $('context').innerHTML = `<div>Previous: ${esc(o.previousText || '(none)')}</div><div class="current">Current source occurrence</div><div>Next: ${esc(o.nextText || '(none)')}</div>`;
+    $('headingState').className = `heading-state ${h ? 'active' : ''}`;
+    $('headingState').innerHTML = h
+      ? `<div class="toolbar"><strong>Included heading</strong><button id="removeHeading" class="danger">Remove heading</button><button id="markUnsure">Mark UNSURE</button></div><div class="fields"><label>Role<select data-field="role"><option ${h.role === 'heading' ? 'selected' : ''}>heading</option><option ${h.role === 'title' ? 'selected' : ''}>title</option><option ${h.role === 'caption' ? 'selected' : ''}>caption</option><option ${h.role === 'label' ? 'selected' : ''}>label</option><option ${h.role === 'other' ? 'selected' : ''}>other</option></select></label><label>Level<input data-field="level" type="number" min="1" max="9" value="${esc(h.level)}"></label><label>Heading span start<input data-field="start" type="number" min="0" max="${o.sourceText.length}" value="${esc(h.start)}"></label><label>Heading span end<input data-field="end" type="number" min="0" max="${o.sourceText.length}" value="${esc(h.end)}"></label><label class="wide">Parent occurrence<select data-field="parent">${parentOptions(o.sourceId, h.parent)}</select></label></div>`
+      : `<div class="toolbar"><strong>Not in heading set</strong><button id="addHeading" class="primary">Add heading</button><button id="markUnsure">Mark UNSURE</button></div>`;
+    $('headingList').innerHTML = Object.keys(state.headings || {}).map(id => { const index = packet.occurrences.findIndex(x => x.sourceId === id); const source = packet.occurrences[index]; return `<button class="${index === current ? 'current' : ''}" data-jump="${index}">${index + 1}. ${esc(source?.sourceText || id)}</button>`; }).join('') || '<div class="facts">No headings added yet.</div>';
+    $('headingCount').textContent = `${Object.keys(state.headings || {}).length} positive headings; ${Object.keys(state.unsure || {}).length} UNSURE.`;
     renderProgress();
   }
-  function update(event) { const id = event.target.dataset.id; const field = event.target.dataset.field; if (!id || !field) return; rowState(id)[field] = event.target.value; persist(); }
-  $('packetFile').addEventListener('change', async event => { const file = event.target.files[0]; if (!file) return; packet = JSON.parse(await file.text()); loadState(); current = 0; render(); });
-  $('rows').addEventListener('click', event => { const button = event.target.closest('[data-label]'); if (button) setLabel(button.dataset.id, button.dataset.label); });
-  $('rows').addEventListener('input', update); $('rows').addEventListener('change', update);
-  document.addEventListener('keydown', event => { if (event.target.matches('input,select')) return; if (event.key === '1') setLabel(packet.occurrences[current].sourceId, 'YES'); else if (event.key === '2') setLabel(packet.occurrences[current].sourceId, 'NO'); else if (event.key === '3') setLabel(packet.occurrences[current].sourceId, 'UNSURE'); else if (event.key.toLowerCase() === 'j') move(1); else if (event.key.toLowerCase() === 'k') move(-1); });
-  $('save').addEventListener('click', () => { persist(); $('meta').textContent += ' | progress saved locally'; });
-  $('download').addEventListener('click', () => {
-    if (!packet) return alert('Open a packet first.');
-    const rows = packet.occurrences.map(o => { const s = rowState(o.sourceId); const yes = s.label === 'YES'; return { sourceId:o.sourceId, stableId:o.stableId, sourceOrdinal:o.sourceOrdinal, sourceSpan:o.sourceSpan, sourceTextHash:o.sourceTextHash, isHeading:s.label, role:s.role || null, headingSpan:yes && s.start !== '' && s.end !== '' ? {start:Number(s.start),end:Number(s.end)} : null, level:yes && s.level !== '' ? Number(s.level) : null, parentOccurrenceId:yes ? (s.parent || 'UNKNOWN') : null }; });
-    const value = { artifactKind:'a99_human_gold', authorityClass:'HUMAN_GOLD', goldSchemaVersion:'a99-human-gold-v1', reviewerAlias:$('reviewerAlias').value, reviewedAt:new Date().toISOString(), reviewVersion:$('reviewVersion').value, independentOfModelPrediction:true, documentId:packet.documentId, documentGroupId:packet.documentGroupId, split:packet.split, sourceDocumentSha256:packet.sourceDocumentSha256, packetSha256:packet.packetSha256, rows };
-    const blob = new Blob([JSON.stringify(value, null, 2) + '\n'], {type:'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `${packet.documentId}.human-gold.json`; a.click(); URL.revokeObjectURL(a.href);
-  });
+  function updateField(event) { const field = event.target.dataset.field; const o = occurrence(); if (!field || !o || !state.headings[o.sourceId]) return; state.headings[o.sourceId][field] = field === 'level' || field === 'start' || field === 'end' ? Number(event.target.value) : event.target.value; persist(); }
+  function findNext() { if (!packet) return; const query = $('search').value.trim().toLowerCase(); if (!query) return; for (let step = 1; step <= packet.occurrences.length; step++) { const index = (current + step) % packet.occurrences.length; if (packet.occurrences[index].sourceText.toLowerCase().includes(query)) { setCurrent(index); return; } } $('status').textContent = 'No source occurrence matched the search.'; }
+  function downloadGold() {
+    if (!packet) return alert('Open a packet first.'); persist(); const unsureIds = Object.keys(state.unsure || {});
+    if (!$('reviewerAlias').value.trim() || !$('reviewVersion').value.trim()) return alert('Reviewer and version are required.');
+    if (!$('certEntire').checked || !$('certExhaustive').checked || !$('certIndependent').checked) return alert('All three end-of-document certifications are required.');
+    if (unsureIds.length) return alert('Resolve every UNSURE occurrence before certifying HUMAN_GOLD.');
+    const rows = Object.keys(state.headings || {}).map(id => { const o = packet.occurrences.find(x => x.sourceId === id); const h = state.headings[id]; return { sourceId:id, stableId:o.stableId, sourceOrdinal:o.sourceOrdinal, sourceSpan:o.sourceSpan, sourceTextHash:o.sourceTextHash, headingSpan:{start:Number(h.start), end:Number(h.end)}, role:h.role, level:Number(h.level), parentOccurrenceId:h.parent || 'UNKNOWN' }; }).sort((a,b) => a.sourceOrdinal - b.sourceOrdinal);
+    const value = { artifactKind:'a99_human_gold', authorityClass:'HUMAN_GOLD', goldSchemaVersion:'a99-human-gold-v2', reviewerAlias:$('reviewerAlias').value.trim(), reviewedAt:new Date().toISOString(), reviewVersion:$('reviewVersion').value.trim(), reviewedEntireDocument:true, headingSetExhaustive:true, independentOfModelPrediction:true, documentId:packet.documentId, documentGroupId:packet.documentGroupId, split:packet.split, sourceDocumentSha256:packet.sourceDocumentSha256, packetSha256:packet.packetSha256, goldVersion:'a99-human-gold-v2', derivedFromHumanKey:false, unsureSourceIds:[], rows };
+    const blob = new Blob([JSON.stringify(value, null, 2) + '\n'], {type:'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `${packet.documentId}.human-gold-v2.json`; a.click(); URL.revokeObjectURL(a.href);
+  }
+  $('packetFile').addEventListener('change', async event => { const file = event.target.files[0]; if (!file) return; packet = JSON.parse(await file.text()); state = { headings:{}, unsure:{}, certEntire:false, certExhaustive:false, certIndependent:false, reviewerAlias:'', reviewVersion:'a99-human-gold-v2' }; loadState(); current = 0; render(); });
+  $('previous').addEventListener('click', () => move(-1)); $('next').addEventListener('click', () => move(1)); $('find').addEventListener('click', findNext); $('jump').addEventListener('change', () => setCurrent(Number($('jump').value || 1) - 1)); $('save').addEventListener('click', () => { persist(); $('status').textContent = 'Progress saved locally.'; }); $('download').addEventListener('click', downloadGold);
+  $('reviewer').addEventListener('input', persist); $('reviewer').addEventListener('change', persist); $('certs').addEventListener('change', persist);
+  $('headingState').addEventListener('click', event => { if (event.target.id === 'addHeading') addHeading(); else if (event.target.id === 'removeHeading') removeHeading(); else if (event.target.id === 'markUnsure') markUnsure(); }); $('headingState').addEventListener('input', updateField); $('headingState').addEventListener('change', updateField);
+  $('headingList').addEventListener('click', event => { const button = event.target.closest('[data-jump]'); if (button) setCurrent(Number(button.dataset.jump)); });
+  document.addEventListener('keydown', event => { if (!packet || event.target.matches('input,select,textarea')) return; const key = event.key.toLowerCase(); if (key === 'j') move(1); else if (key === 'k') move(-1); else if (key === 'a') addHeading(); else if (key === 'u') markUnsure(); });
 })();
 </script>
 </body>
