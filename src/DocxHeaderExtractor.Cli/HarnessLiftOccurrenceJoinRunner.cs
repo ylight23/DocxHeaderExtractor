@@ -798,7 +798,10 @@ internal static class HarnessLiftOccurrenceJoinRunner
                 final = FinalValue(field, trace),
             })).ToArray();
         var modelExposed = observations.Where(item => item.trace.ModelExposed && item.model is not null).ToArray();
-        var finalObserved = observations.Where(item => item.trace.FinalIncluded && item.final is not null).ToArray();
+        // A successful pipeline trace with FinalIncluded=false is an observed negative outcome for
+        // a joined positive occurrence. It must count as a final error, rather than disappearing
+        // from the denominator as if the final stage had not run.
+        var finalObserved = observations.ToArray();
         var modelCorrect = modelExposed.Count(item => EqualValue(field, item.model, item.expected));
         var finalCorrect = finalObserved.Count(item => EqualValue(field, item.final, item.expected));
         var modelErrors = modelExposed.Length - modelCorrect;
