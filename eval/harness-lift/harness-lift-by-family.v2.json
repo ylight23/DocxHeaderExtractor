@@ -1,0 +1,34 @@
+{
+  "artifactKind": "harness_lift_by_family",
+  "schemaVersion": "2.0",
+  "groups": [
+    {
+      "key": "PDF_CONVERTED",
+      "documents": 50,
+      "joinedOfficialOccurrences": 1151,
+      "modelTraceRows": 4665,
+      "status": "MEASURED_WITH_FIELD_SEPARATION"
+    },
+    {
+      "key": "UNKNOWN",
+      "documents": 10,
+      "joinedOfficialOccurrences": 1108,
+      "modelTraceRows": 0,
+      "status": "MEASURED_WITH_FIELD_SEPARATION"
+    },
+    {
+      "key": "VN_ADMIN_TYPED",
+      "documents": 10,
+      "joinedOfficialOccurrences": 182,
+      "modelTraceRows": 75,
+      "status": "MEASURED_WITH_FIELD_SEPARATION"
+    },
+    {
+      "key": "VN_LEGAL_MARKER",
+      "documents": 25,
+      "joinedOfficialOccurrences": 729,
+      "modelTraceRows": 12,
+      "status": "MEASURED_WITH_FIELD_SEPARATION"
+    }
+  ]
+}

@@ -1,0 +1,1004 @@
+{
+  "artifactKind": "harness_lift_unknown_gap_manifest",
+  "schemaVersion": "2.0",
+  "gapsBefore": 124,
+  "resolved": 1,
+  "remaining": 123,
+  "resolvedRows": [
+    {
+      "documentId": "DOC-0243",
+      "documentGroupId": "GROUP-0072",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": true,
+      "resolvedBySourceStructural": true
+    }
+  ],
+  "gaps": [
+    {
+      "documentId": "DOC-0012",
+      "documentGroupId": "GROUP-0217",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0012",
+      "documentGroupId": "GROUP-0217",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0013",
+      "documentGroupId": "GROUP-0076",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0014",
+      "documentGroupId": "GROUP-0226",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0015",
+      "documentGroupId": "GROUP-0189",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0016",
+      "documentGroupId": "GROUP-0257",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0017",
+      "documentGroupId": "GROUP-0247",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0018",
+      "documentGroupId": "GROUP-0138",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0019",
+      "documentGroupId": "GROUP-0207",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0020",
+      "documentGroupId": "GROUP-0143",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0021",
+      "documentGroupId": "GROUP-0203",
+      "missing": "Span",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0021",
+      "documentGroupId": "GROUP-0203",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0021",
+      "documentGroupId": "GROUP-0203",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0022",
+      "documentGroupId": "GROUP-0080",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0023",
+      "documentGroupId": "GROUP-0014",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0024",
+      "documentGroupId": "GROUP-0106",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0025",
+      "documentGroupId": "GROUP-0090",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0026",
+      "documentGroupId": "GROUP-0259",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0027",
+      "documentGroupId": "GROUP-0239",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0028",
+      "documentGroupId": "GROUP-0085",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0029",
+      "documentGroupId": "GROUP-0202",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0030",
+      "documentGroupId": "GROUP-0158",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0031",
+      "documentGroupId": "GROUP-0129",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0032",
+      "documentGroupId": "GROUP-0206",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0033",
+      "documentGroupId": "GROUP-0256",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0034",
+      "documentGroupId": "GROUP-0048",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0035",
+      "documentGroupId": "GROUP-0105",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0205",
+      "documentGroupId": "GROUP-0174",
+      "missing": "Span",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0205",
+      "documentGroupId": "GROUP-0174",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0205",
+      "documentGroupId": "GROUP-0174",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0111",
+      "documentGroupId": "GROUP-0056",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0112",
+      "documentGroupId": "GROUP-0180",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0036",
+      "documentGroupId": "GROUP-0254",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0036",
+      "documentGroupId": "GROUP-0254",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0037",
+      "documentGroupId": "GROUP-0066",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0038",
+      "documentGroupId": "GROUP-0212",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0116",
+      "documentGroupId": "GROUP-0016",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0039",
+      "documentGroupId": "GROUP-0052",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0118",
+      "documentGroupId": "GROUP-0081",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0214",
+      "documentGroupId": "GROUP-0036",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0040",
+      "documentGroupId": "GROUP-0078",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0121",
+      "documentGroupId": "GROUP-0186",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0122",
+      "documentGroupId": "GROUP-0139",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0123",
+      "documentGroupId": "GROUP-0166",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0124",
+      "documentGroupId": "GROUP-0262",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0125",
+      "documentGroupId": "GROUP-0020",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0041",
+      "documentGroupId": "GROUP-0150",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0041",
+      "documentGroupId": "GROUP-0150",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0042",
+      "documentGroupId": "GROUP-0225",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0043",
+      "documentGroupId": "GROUP-0126",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0044",
+      "documentGroupId": "GROUP-0086",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0225",
+      "documentGroupId": "GROUP-0175",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0045",
+      "documentGroupId": "GROUP-0087",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0046",
+      "documentGroupId": "GROUP-0160",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0047",
+      "documentGroupId": "GROUP-0140",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0048",
+      "documentGroupId": "GROUP-0047",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0049",
+      "documentGroupId": "GROUP-0097",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0050",
+      "documentGroupId": "GROUP-0124",
+      "missing": "Span",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0050",
+      "documentGroupId": "GROUP-0124",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0050",
+      "documentGroupId": "GROUP-0124",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0051",
+      "documentGroupId": "GROUP-0245",
+      "missing": "Span",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0051",
+      "documentGroupId": "GROUP-0245",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0051",
+      "documentGroupId": "GROUP-0245",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0052",
+      "documentGroupId": "GROUP-0077",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0053",
+      "documentGroupId": "GROUP-0007",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0053",
+      "documentGroupId": "GROUP-0007",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0235",
+      "documentGroupId": "GROUP-0095",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0054",
+      "documentGroupId": "GROUP-0144",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0054",
+      "documentGroupId": "GROUP-0144",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0237",
+      "documentGroupId": "GROUP-0255",
+      "missing": "Span",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0237",
+      "documentGroupId": "GROUP-0255",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0237",
+      "documentGroupId": "GROUP-0255",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0055",
+      "documentGroupId": "GROUP-0234",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0056",
+      "documentGroupId": "GROUP-0198",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0057",
+      "documentGroupId": "GROUP-0001",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0058",
+      "documentGroupId": "GROUP-0003",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0242",
+      "documentGroupId": "GROUP-0062",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0243",
+      "documentGroupId": "GROUP-0072",
+      "missing": "Span",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0243",
+      "documentGroupId": "GROUP-0072",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0244",
+      "documentGroupId": "GROUP-0187",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0059",
+      "documentGroupId": "GROUP-0068",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0060",
+      "documentGroupId": "GROUP-0043",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0247",
+      "documentGroupId": "GROUP-0172",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0248",
+      "documentGroupId": "GROUP-0110",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0061",
+      "documentGroupId": "GROUP-0200",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0062",
+      "documentGroupId": "GROUP-0033",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0063",
+      "documentGroupId": "GROUP-0210",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0064",
+      "documentGroupId": "GROUP-0069",
+      "missing": "Span",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0064",
+      "documentGroupId": "GROUP-0069",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0064",
+      "documentGroupId": "GROUP-0069",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0065",
+      "documentGroupId": "GROUP-0060",
+      "missing": "Span",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0065",
+      "documentGroupId": "GROUP-0060",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0065",
+      "documentGroupId": "GROUP-0060",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0066",
+      "documentGroupId": "GROUP-0238",
+      "missing": "Span",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0066",
+      "documentGroupId": "GROUP-0238",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0066",
+      "documentGroupId": "GROUP-0238",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0067",
+      "documentGroupId": "GROUP-0251",
+      "missing": "Span",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0067",
+      "documentGroupId": "GROUP-0251",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0067",
+      "documentGroupId": "GROUP-0251",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0069",
+      "documentGroupId": "GROUP-0154",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0070",
+      "documentGroupId": "GROUP-0116",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0070",
+      "documentGroupId": "GROUP-0116",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0071",
+      "documentGroupId": "GROUP-0029",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0072",
+      "documentGroupId": "GROUP-0141",
+      "missing": "Span",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0072",
+      "documentGroupId": "GROUP-0141",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0072",
+      "documentGroupId": "GROUP-0141",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0073",
+      "documentGroupId": "GROUP-0131",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0167",
+      "documentGroupId": "GROUP-0073",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0074",
+      "documentGroupId": "GROUP-0039",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0264",
+      "documentGroupId": "GROUP-0032",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0075",
+      "documentGroupId": "GROUP-0173",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0076",
+      "documentGroupId": "GROUP-0022",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0077",
+      "documentGroupId": "GROUP-0258",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0078",
+      "documentGroupId": "GROUP-0025",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0079",
+      "documentGroupId": "GROUP-0241",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0080",
+      "documentGroupId": "GROUP-0015",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0081",
+      "documentGroupId": "GROUP-0190",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0082",
+      "documentGroupId": "GROUP-0185",
+      "missing": "Span",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0082",
+      "documentGroupId": "GROUP-0185",
+      "missing": "Parent",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0082",
+      "documentGroupId": "GROUP-0185",
+      "missing": "Hierarchy",
+      "reason": "joined references do not support this field",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0083",
+      "documentGroupId": "GROUP-0100",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0084",
+      "documentGroupId": "GROUP-0169",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    },
+    {
+      "documentId": "DOC-0085",
+      "documentGroupId": "GROUP-0178",
+      "missing": "exhaustive heading existence/role reference",
+      "reason": "no official reference joined by source identity",
+      "resolvedByReferenceJoin": false,
+      "resolvedBySourceStructural": false
+    }
+  ],
+  "noHoldoutLabelsAdded": true
+}

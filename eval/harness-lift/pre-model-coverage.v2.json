@@ -1,0 +1,23 @@
+{
+  "artifactKind": "harness_lift_pre_model_coverage",
+  "schemaVersion": "2.0",
+  "sourceRecall": {
+    "status": "NOT_MEASURED",
+    "reason": "retained references are positive-only; exhaustive negatives are absent",
+    "positiveJoinedOccurrences": 3170
+  },
+  "candidateConstruction": {
+    "status": "POSITIVE_OCCURRENCE_TRACE_ONLY",
+    "exhaustiveRecall": false
+  },
+  "candidateSelection": {
+    "status": "POSITIVE_OCCURRENCE_TRACE_ONLY",
+    "exhaustiveRecall": false
+  },
+  "modelExposure": {
+    "status": "POSITIVE_OCCURRENCE_TRACE_ONLY",
+    "exhaustiveRecall": false
+  },
+  "corpusDocuments": 95,
+  "noNewHoldoutLabels": true
+}

@@ -1,0 +1,86 @@
+{
+  "artifactKind": "harness_lift_runs",
+  "schemaVersion": "2.0",
+  "codeRevision": "224f954ac2b246e613322353488c02559bca5231",
+  "reusePreviousRuns": "NO",
+  "status": "MEASURED_ON_TRUSTED_SUBSET",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.5-9b",
+  "repeats": 3,
+  "providerCalls": 314,
+  "runs": [
+    {
+      "runId": "repeat-1-DOC-0066",
+      "repeat": 1,
+      "documentId": "DOC-0066",
+      "providerCalls": 6,
+      "traceCount": 25,
+      "status": "COMPLETED"
+    },
+    {
+      "runId": "repeat-1-DOC-0082",
+      "repeat": 1,
+      "documentId": "DOC-0082",
+      "providerCalls": 124,
+      "traceCount": 1555,
+      "status": "COMPLETED"
+    },
+    {
+      "runId": "repeat-1-DOC-0205",
+      "repeat": 1,
+      "documentId": "DOC-0205",
+      "providerCalls": 2,
+      "traceCount": 4,
+      "status": "COMPLETED"
+    },
+    {
+      "runId": "repeat-2-DOC-0066",
+      "repeat": 2,
+      "documentId": "DOC-0066",
+      "providerCalls": 6,
+      "traceCount": 25,
+      "status": "COMPLETED"
+    },
+    {
+      "runId": "repeat-2-DOC-0082",
+      "repeat": 2,
+      "documentId": "DOC-0082",
+      "providerCalls": 72,
+      "traceCount": 1555,
+      "status": "COMPLETED"
+    },
+    {
+      "runId": "repeat-2-DOC-0205",
+      "repeat": 2,
+      "documentId": "DOC-0205",
+      "providerCalls": 2,
+      "traceCount": 4,
+      "status": "COMPLETED"
+    },
+    {
+      "runId": "repeat-3-DOC-0066",
+      "repeat": 3,
+      "documentId": "DOC-0066",
+      "providerCalls": 6,
+      "traceCount": 25,
+      "status": "COMPLETED"
+    },
+    {
+      "runId": "repeat-3-DOC-0082",
+      "repeat": 3,
+      "documentId": "DOC-0082",
+      "providerCalls": 94,
+      "traceCount": 1555,
+      "status": "COMPLETED"
+    },
+    {
+      "runId": "repeat-3-DOC-0205",
+      "repeat": 3,
+      "documentId": "DOC-0205",
+      "providerCalls": 2,
+      "traceCount": 4,
+      "status": "COMPLETED"
+    }
+  ],
+  "errors": []
+}
