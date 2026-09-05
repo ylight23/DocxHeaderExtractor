@@ -55,6 +55,25 @@ public sealed class RouteOccurrenceTraceTests
     }
 
     [Fact]
+    public void Trace_does_not_turn_a_document_response_into_per_occurrence_model_exposure()
+    {
+        var catalog = Catalog("source-1", "Deterministic heading");
+        var structure = Structure("source-1", "element-1", emitted: true);
+        var audit = Audit(candidateId: "candidate-1") with
+        {
+            RawAnalystResponses = ["a document-level response with no request membership"],
+        };
+
+        var trace = Assert.Single(RouteOccurrenceTraceBuilder.Build(
+            "document-1", "sha256", catalog, structure, new HashSet<string>(["element-1"]), audit,
+            routeOwner: "DOCX_AUTHORITY_ROUTE"));
+
+        Assert.Empty(trace.ModelRequestIds);
+        Assert.Equal("NOT_REQUESTED", trace.ModelRequestMembership);
+        Assert.Null(trace.ModelProposalPresent);
+    }
+
+    [Fact]
     public void Observability_fields_do_not_change_compatibility_audit_json_shape()
     {
         var json = JsonSerializer.Serialize(Audit(
