@@ -267,6 +267,8 @@ public static class HarnessHumanReviewValidator
         if (string.IsNullOrWhiteSpace(decision.DocumentId))
             return new(false, "document-id-missing");
         if (string.IsNullOrWhiteSpace(decision.SourceId)) return new(false, "source-id-missing");
+        if (!string.Equals(decision.SourceId.Trim().TrimStart('@'), source.SourceId.Trim().TrimStart('@'), StringComparison.Ordinal))
+            return new(false, "source-id-mismatch");
         if (decision.SourceOrdinal is { } ordinal && ordinal != source.SourceOrdinal)
             return new(false, "source-ordinal-mismatch");
         if (string.IsNullOrWhiteSpace(decision.ReviewerId)) return new(false, "reviewer-id-missing");

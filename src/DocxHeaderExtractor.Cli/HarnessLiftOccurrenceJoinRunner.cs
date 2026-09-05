@@ -716,6 +716,7 @@ internal static class HarnessLiftOccurrenceJoinRunner
         var elements = execution.Result.Structure.Elements;
         var finalBySource = elements.SelectMany(element => element.Sources.Select(sourceRef => (sourceRef.SourceId, Element: element)))
             .GroupBy(item => item.SourceId, StringComparer.Ordinal).ToDictionary(group => group.Key, group => group.First().Element, StringComparer.Ordinal);
+        var compatibilityHeadings = execution.CompatibilityOutline.Headings;
         var modelCalled = audit?.RawAnalystResponses.Count > 0;
         return source.Paragraphs.Select(paragraph =>
         {
@@ -725,6 +726,12 @@ internal static class HarnessLiftOccurrenceJoinRunner
             factsById.TryGetValue(paragraph.SourceId, out var facts);
             finalBySource.TryGetValue(paragraph.SourceId, out var element);
             var finalParent = element?.ParentId is null ? null : elements.FirstOrDefault(item => item.Id == element.ParentId)?.Sources.FirstOrDefault()?.SourceId ?? element.ParentId;
+            var compatibilityHeading = compatibilityHeadings.FirstOrDefault(heading =>
+                string.Equals(heading.SourceId, paragraph.SourceId, StringComparison.Ordinal) ||
+                string.Equals(heading.StableId, paragraph.StableId, StringComparison.Ordinal));
+            if (compatibilityHeading is null)
+                compatibilityHeading = compatibilityHeadings.FirstOrDefault(heading => heading.Index == paragraph.SourceOrdinal);
+            var finalIncluded = element is not null || compatibilityHeading is not null;
             return new HarnessModelOccurrenceTrace
             {
                 RunId = $"repeat-{repeat}-{document.DocumentId}",
@@ -748,13 +755,17 @@ internal static class HarnessLiftOccurrenceJoinRunner
                 AfterMarkerLevel = facts?.ResolvedLevel,
                 AfterMarkerParent = facts?.MarkerPrefixParentCandidate,
                 AfterStructuralRole = null,
-                AfterStructuralLevel = element?.Level,
+                AfterStructuralLevel = element?.Level ?? compatibilityHeading?.Level,
                 AfterStructuralParent = finalParent,
-                FinalIncluded = element is not null,
-                FinalRole = element?.Role.ToString() ?? element?.Type.ToString(),
-                FinalLevel = element?.Level,
+                FinalIncluded = finalIncluded,
+                FinalRole = element?.Role.ToString() ?? element?.Type.ToString() ?? (compatibilityHeading is null ? null : "heading"),
+                FinalLevel = element?.Level ?? compatibilityHeading?.Level,
                 FinalParent = finalParent,
-                FinalSpan = element?.Sources.FirstOrDefault() is { } sourceRef ? new HarnessSpan(sourceRef.Span.Start, sourceRef.Span.End) : null,
+                FinalSpan = element?.Sources.FirstOrDefault() is { } sourceRef
+                    ? new HarnessSpan(sourceRef.Span.Start, sourceRef.Span.End)
+                    : compatibilityHeading?.HeadingSpan is { } headingSpan
+                        ? new HarnessSpan(headingSpan.Start, headingSpan.End)
+                        : null,
             };
         }).ToArray();
     }
