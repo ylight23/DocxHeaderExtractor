@@ -1,0 +1,4922 @@
+{
+  "artifactKind": "harness_lift_source_first_blind_review_packet",
+  "schemaVersion": "1.0",
+  "authorityClass": "PARSER_SOURCE_FACTS",
+  "documentId": "DOC-0072",
+  "documentGroupId": "GROUP-0141",
+  "sourceSha256": "99d7e5189f4bfb90eda6f69770a9b4c1941a6b1ab9c8b58d79009ebe832f8663",
+  "reviewInstructions": {
+    "question": "Which source occurrences are document outline headings?",
+    "allowedLabels": [
+      "REVIEWED_HEADING",
+      "REVIEWED_NON_HEADING",
+      "UNCERTAIN"
+    ],
+    "prohibitedEvidence": [
+      "model prediction",
+      "candidate ranking",
+      "confidence",
+      "final output",
+      "silver label",
+      "expected answer"
+    ]
+  },
+  "occurrences": [
+    {
+      "sourceId": "body[1]/p[1]",
+      "sourceOrdinal": 0,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[2]",
+      "sourceOrdinal": 1,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[3]",
+      "sourceOrdinal": 2,
+      "rawText": "INTERNATIONAL COMPARISON PROGRAM (ICP)",
+      "fullSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": true,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "rawText": "MEETING OF THE GOVERNING BOARD",
+      "fullSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": true,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[5]",
+      "sourceOrdinal": 4,
+      "rawText": "FEBRUARY 26, 2023",
+      "fullSpan": {
+        "start": 0,
+        "end": 17
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": true,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[6]",
+      "sourceOrdinal": 5,
+      "rawText": "MEETING MINUTES",
+      "fullSpan": {
+        "start": 0,
+        "end": 15
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": true,
+        "fontSizePt": 12,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[7]",
+      "sourceOrdinal": 6,
+      "rawText": "The third meeting of the International Comparison Program (ICP) Governing Board for the 2021 cycle took place on February 26, 2023, at the Millennium Hilton New York One UN Plaza, New York, United States, as a hybrid event.",
+      "fullSpan": {
+        "start": 0,
+        "end": 223
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[8]",
+      "sourceOrdinal": 7,
+      "rawText": "The main objectives of the meeting were to review the status of the 2021 cycle at the global and regional levels. In attendance were the Board members and observers, and Board secretariat staff, as listed in Annex 2. The agenda and presentation accompanying the meeting are available",
+      "fullSpan": {
+        "start": 0,
+        "end": 283
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[9]",
+      "sourceOrdinal": 8,
+      "rawText": "Welcome address, opening remarks and adoption of the agenda",
+      "fullSpan": {
+        "start": 0,
+        "end": 59
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[10]",
+      "sourceOrdinal": 9,
+      "rawText": "The Chair, Mr. Markus Sovala, Director General of Statistics Finland, opened the meeting. He invited Ms. Haishan Fu, Chief Statistician and Director of the Development Data Group, World Bank, to provide opening remarks. She noted the positive progress with the ICP 2021 cycle despite the setbacks caused by both the COVID-19 pandemic and the war in Ukraine and looked forward to the timely publication of results.",
+      "fullSpan": {
+        "start": 0,
+        "end": 413
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[11]",
+      "sourceOrdinal": 10,
+      "rawText": "The Chair presented the proposed to the Board for adoption.",
+      "fullSpan": {
+        "start": 0,
+        "end": 59
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[12]",
+      "sourceOrdinal": 11,
+      "rawText": "The Governing Board adopted the proposed meeting agenda.",
+      "fullSpan": {
+        "start": 0,
+        "end": 56
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": true,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[13]",
+      "sourceOrdinal": 12,
+      "rawText": "Global progress with ICP 2021 cycle",
+      "fullSpan": {
+        "start": 0,
+        "end": 35
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[14]",
+      "sourceOrdinal": 13,
+      "rawText": "Ms. Nada Hamadeh, Manager, Economic, Debt and Price Data Unit, World Bank, presented the for the ICP 2021 cycle, covering the 2021 cycle timeline and milestones, participation and data submission status, governance activities, risks and mitigation measures, replicability and transparency of ICP results, and uses and outreach.",
+      "fullSpan": {
+        "start": 0,
+        "end": 327
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[15]",
+      "sourceOrdinal": 14,
+      "rawText": "The number of participating economies for the ICP 2021 cycle is expected to be similar to the ICP 2017 cycle, during which 176 economies participated. Operational activities are still ongoing in all ICP regions according to schedule, despite the delays in selected regions and economies caused mainly by the disruptions brought about by the COVID-19 pandemic.",
+      "fullSpan": {
+        "start": 0,
+        "end": 359
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[16]",
+      "sourceOrdinal": 15,
+      "rawText": "1",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[17]",
+      "sourceOrdinal": 16,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[18]",
+      "sourceOrdinal": 17,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[19]",
+      "sourceOrdinal": 18,
+      "rawText": "Meeting frequency for all governance and coordination bodies is expected to increase in this final year of the cycle, with a 4th quarter of 2023 virtual meeting envisaged for the Governing Board. Results are scheduled to be released by the end of2023, with outreach activities anticipated for the first half of 2024. The submitted for information to the United Nations Statistical Commission\u2019s 54th session invites members to ensure the timely completion of the 2021 cycle, begin preparations for the 2024 cycle, and incorporate the ICP into national statistical programs.",
+      "fullSpan": {
+        "start": 0,
+        "end": 572
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[20]",
+      "sourceOrdinal": 19,
+      "rawText": "Ms. Hamadeh updated the Board on Sir Angus Deaton\u2019s intention to step down as Technical Advisory Group (TAG) Chair and that Mr. Paul Schreyer, Chief Statistician and Director of Statistics and Data Directorate, Organisation for Economic Cooperation and Development (OECD), and current TAG Alternate Chair, has agreed to take up the role of TAG Chair going forward. She noted that a few vacant membership positions existed on the TAG.",
+      "fullSpan": {
+        "start": 0,
+        "end": 433
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[21]",
+      "sourceOrdinal": 20,
+      "rawText": "Mr. Schreyer updated the Board on the most recent meeting of the TAG, held in December 2022, which discussed the impact of COVID-19 and war in Ukraine on ICP, the ICP Research Agenda, and new uses of PPPs and ICP data. Regarding the impact of the pandemic on data collected by Eurostat and OECD, Mr. Schreyer noted a negligible effect on annual average prices, but a more pronounced effect on expenditure weights. Furthermore, as Russia is no longer participating in the OECD comparison, and thereby preventing the linking of the Commonwealth of Independent States (CIS) region through Russia, experiments are underway to link the CIS region directly to the global program, following the standard ICP linking methodology. The next TAG meeting is scheduled for summer 2023.",
+      "fullSpan": {
+        "start": 0,
+        "end": 772
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[22]",
+      "sourceOrdinal": 21,
+      "rawText": "Ms. Hamadeh noted recent uses of purchasing power parities (PPPs) and ICP data, including the World Bank update of the international poverty lines to 2017 PPPs, which recognized the stability of the ICP methodology and results between the most recent ICP cycles. She also noted the use of ICP food price and expenditure data in new diet cost and affordability indicators published by the Food Prices for Nutrition project and used by United Nations agencies in monitoring food security.",
+      "fullSpan": {
+        "start": 0,
+        "end": 486
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[23]",
+      "sourceOrdinal": 22,
+      "rawText": "She also noted a forthcoming World Bank paper exploring the use of PPPs, instead of market exchange rates through the Atlas method, in classifying economies by income level. The classification is used both for operational purposes, to determine lending terms, and for analytical purposes, to broadly group countries by level of development. A consultation on the paper is currently underway.",
+      "fullSpan": {
+        "start": 0,
+        "end": 391
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[24]",
+      "sourceOrdinal": 23,
+      "rawText": "Ms. Hamadeh closed her presentation by suggesting that the Board consider sending a letter to National Statistical Offices (NSOs) urging them to complete the 2021 cycle in a timely manner and to begin preparations for the 2024 cycle.",
+      "fullSpan": {
+        "start": 0,
+        "end": 233
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[25]",
+      "sourceOrdinal": 24,
+      "rawText": "The ICP Governing Board noted: - the progress made with the ICP 2021 cycle, despite the Covid-19 pandemic and the war in Ukraine; - the need to identify a new approach to link the CIS region into the global set of ICP results; - the need to approach the NSOs on completing the ICP 2021 cycle activities in a timely manner and to begin preparations for the ICP 2024 cycle; - the need to identify sustained funding for the program and to strengthen advocacy efforts; and - the current and anticipated uses of PPPs.",
+      "fullSpan": {
+        "start": 0,
+        "end": 512
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": true,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[26]",
+      "sourceOrdinal": 25,
+      "rawText": "2",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[27]",
+      "sourceOrdinal": 26,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[28]",
+      "sourceOrdinal": 27,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[29]",
+      "sourceOrdinal": 28,
+      "rawText": "Regional progress reports",
+      "fullSpan": {
+        "start": 0,
+        "end": 25
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[30]",
+      "sourceOrdinal": 29,
+      "rawText": "Africa Mr. Louis Kouakou, Acting Director, Statistics Department, African Development Bank (AfDB), briefed the Board on the implementation of the 2021 cycle in the Africa region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He emphasized the need to have a sufficient lead time for each cycle to ensure countries had sufficient time to prepare and find resources. He also noted that countries needed support in leveraging consumer price index (CPI) data for ICP price collection.",
+      "fullSpan": {
+        "start": 0,
+        "end": 566
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[31]",
+      "sourceOrdinal": 30,
+      "rawText": "Asia and Pacific Mr. Kaushal Joshi, Principal Statistician, Statistics and Data Innovation, Asian Development Bank (ADB), briefed the Board on the implementation of the 2021 cycle in the including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted that where surveys were delayed beyond 2021 a standardized methodology for backcasting data had been adopted, while regular regional workshops continue, and bespoke technical assistance has been carried out in several economies. Mr. Joshi noted the use of the ICP Asia Pacific data management tool by economies and the development and piloting of a CAPI tool for household data collection, and initiated work on web-scraping.",
+      "fullSpan": {
+        "start": 0,
+        "end": 753
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[32]",
+      "sourceOrdinal": 31,
+      "rawText": "Commonwealth of Independent States Mr. Andrey Kosarev, Deputy Chairman, Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT), briefed the Board on the implementation of the 2021 cycle in the CIS region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted the need for the CIS linking to the global program to be modified, and the preference of not applying productivity adjustment at reginal stage. Furthermore, he said it was important to minimize the breaks for the CIS economies in the global ICP time series.",
+      "fullSpan": {
+        "start": 0,
+        "end": 634
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[33]",
+      "sourceOrdinal": 32,
+      "rawText": "Latin America and the Caribbean Mr. Ronaldo Ocampo, Director, Statistics Division, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC), briefed the Board on the implementation of the 2021 cycle in the Latin America and the Caribbean region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted that some economies have faced natural disasters and complex political situations, which have had an impact on their statistical operations, and the support of the Caribbean Community and Common Market (CARICOM) for the program. Technical assistance has been provided to economies on the compilation of expenditures and price surveys and frequent regional workshops continue throughout the cycle.",
+      "fullSpan": {
+        "start": 0,
+        "end": 808
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[34]",
+      "sourceOrdinal": 33,
+      "rawText": "Western Asia Mr. Majed Skaini, Statistician, Statistics Division, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), briefed the Board on the implementation of the 2021 cycle in the Western Asia region, including the status of data and metadata submissions and validation, and workshops and technical assistance provided to countries. He noted that advocacy to integrate the ICP with other statistical programs had helped participation rates, while positioning the ICP as an ongoing activity helped to secure regional support. He also noted that the United Arab Emirates are producing subnational PPPs and are harmonizing data collection with subnational CPI lists for that purpose. Regional workshops and",
+      "fullSpan": {
+        "start": 0,
+        "end": 729
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[35]",
+      "sourceOrdinal": 34,
+      "rawText": "3",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[36]",
+      "sourceOrdinal": 35,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[37]",
+      "sourceOrdinal": 36,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[38]",
+      "sourceOrdinal": 37,
+      "rawText": "economy-specific technical assistance continues, while the region works with AfDB on dual-participating economies and collaborates with UN-ECLAC on ICP and CPI activities.",
+      "fullSpan": {
+        "start": 0,
+        "end": 171
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[39]",
+      "sourceOrdinal": 38,
+      "rawText": "Eurostat-OECD PPP Programme Ms. Mariana Kotzeva, Director General, Eurostat, First, an update of the Eurostat-OECD methodological manual on PPPs is currently underway and will be published in 2023. Second, Georgia and Ukraine are participating in the Programme under Eurostat\u2019s coordination. Efforts are underway to secure all required datasets for Ukraine\u2019s full participation in the ICP 2021 cycle.",
+      "fullSpan": {
+        "start": 0,
+        "end": 400
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[40]",
+      "sourceOrdinal": 39,
+      "rawText": "The Governing Board noted: - the progress made with implementing the ICP 2021 cycle in each region; and - the importance of ICP results and participation benefits the Program brings in terms of strengthening statistical capacity.",
+      "fullSpan": {
+        "start": 0,
+        "end": 229
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": true,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[41]",
+      "sourceOrdinal": 40,
+      "rawText": "Next meeting and any other business",
+      "fullSpan": {
+        "start": 0,
+        "end": 35
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[42]",
+      "sourceOrdinal": 41,
+      "rawText": "Mr. Sovala suggested that the next ICP Governing Board meeting be held virtually in 4th quarter of 2023. He closed the meeting by thanking the Board members and observers for their participation and contributions.",
+      "fullSpan": {
+        "start": 0,
+        "end": 213
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[43]",
+      "sourceOrdinal": 42,
+      "rawText": "The Governing Board agreed to hold the next meetingvirtually in 4th quarter of 2023.",
+      "fullSpan": {
+        "start": 0,
+        "end": 84
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": true,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[44]",
+      "sourceOrdinal": 43,
+      "rawText": "4",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[45]",
+      "sourceOrdinal": 44,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[46]",
+      "sourceOrdinal": 45,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[47]",
+      "sourceOrdinal": 46,
+      "rawText": "Annex 1: Meeting Agenda",
+      "fullSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[48]",
+      "sourceOrdinal": 47,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[49]",
+      "sourceOrdinal": 48,
+      "rawText": "International Comparison Program (ICP)",
+      "fullSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 16,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[50]",
+      "sourceOrdinal": 49,
+      "rawText": "Meeting of the Governing Board",
+      "fullSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 16,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[51]",
+      "sourceOrdinal": 50,
+      "rawText": "February 26, 2023",
+      "fullSpan": {
+        "start": 0,
+        "end": 17
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[52]",
+      "sourceOrdinal": 51,
+      "rawText": "Millennium Hilton New York One UN Plaza",
+      "fullSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[53]",
+      "sourceOrdinal": 52,
+      "rawText": "New York, USA",
+      "fullSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[54]",
+      "sourceOrdinal": 53,
+      "rawText": "Agenda",
+      "fullSpan": {
+        "start": 0,
+        "end": 6
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[55]",
+      "sourceOrdinal": 54,
+      "rawText": "5:00 \u2013 5:15 pm Opening remarks and adoption of the agenda, Meeting Chair",
+      "fullSpan": {
+        "start": 0,
+        "end": 72
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[56]",
+      "sourceOrdinal": 55,
+      "rawText": "5:15 \u2013 6.00 pm Overall progress with ICP 2021 cycle, ICP Global Office",
+      "fullSpan": {
+        "start": 0,
+        "end": 70
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[57]",
+      "sourceOrdinal": 56,
+      "rawText": "6:00 \u2013 6:45 pm Regional progress with ICP 2021 cycle, Regional Implementing Agencies",
+      "fullSpan": {
+        "start": 0,
+        "end": 84
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[58]",
+      "sourceOrdinal": 57,
+      "rawText": "6:45 \u2013 7:00 pm Any other Business and Closing remarks, Meeting Chair",
+      "fullSpan": {
+        "start": 0,
+        "end": 68
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[59]",
+      "sourceOrdinal": 58,
+      "rawText": "5",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[60]",
+      "sourceOrdinal": 59,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[61]",
+      "sourceOrdinal": 60,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[62]",
+      "sourceOrdinal": 61,
+      "rawText": "Annex 2: List of Participants",
+      "fullSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "sourceOrdinal": 62,
+      "rawText": "Country / Organization",
+      "fullSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[2]/p[1]",
+      "sourceOrdinal": 63,
+      "rawText": "Participant",
+      "fullSpan": {
+        "start": 0,
+        "end": 11
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[2]/tc[1]/p[1]",
+      "sourceOrdinal": 64,
+      "rawText": "Argentina",
+      "fullSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[2]/tc[2]/p[1]",
+      "sourceOrdinal": 65,
+      "rawText": "Marco Lavagna, Director, National Institute of Statistics and Censuses (INDEC) of Argentina",
+      "fullSpan": {
+        "start": 0,
+        "end": 91
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[3]/tc[1]/p[1]",
+      "sourceOrdinal": 66,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[3]/tc[2]/p[1]",
+      "sourceOrdinal": 67,
+      "rawText": "Pedro Lines, Technical Director, INDEC",
+      "fullSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[4]/tc[1]/p[1]",
+      "sourceOrdinal": 68,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[4]/tc[2]/p[1]",
+      "sourceOrdinal": 69,
+      "rawText": "Santiago Boffi, National Director of Price Statistics, INDEC",
+      "fullSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[5]/tc[1]/p[1]",
+      "sourceOrdinal": 70,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[5]/tc[2]/p[1]",
+      "sourceOrdinal": 71,
+      "rawText": "Mart\u00EDn Chojo, Director of Institutional and International Relations, INDEC",
+      "fullSpan": {
+        "start": 0,
+        "end": 74
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[6]/tc[1]/p[1]",
+      "sourceOrdinal": 72,
+      "rawText": "Finland (Co-Chair)",
+      "fullSpan": {
+        "start": 0,
+        "end": 18
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[6]/tc[2]/p[1]",
+      "sourceOrdinal": 73,
+      "rawText": "Markus Sovala, Director General, Statistics Finland, Co-Chair",
+      "fullSpan": {
+        "start": 0,
+        "end": 61
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[7]/tc[1]/p[1]",
+      "sourceOrdinal": 74,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[7]/tc[2]/p[1]",
+      "sourceOrdinal": 75,
+      "rawText": "Timo Koskimaki, Director of International Affairs, Statistics Finland",
+      "fullSpan": {
+        "start": 0,
+        "end": 69
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[8]/tc[1]/p[1]",
+      "sourceOrdinal": 76,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[8]/tc[2]/p[1]",
+      "sourceOrdinal": 77,
+      "rawText": "Mari Yla-Jarkko, Director, Business Statistics, Statistics Finland",
+      "fullSpan": {
+        "start": 0,
+        "end": 66
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[9]/tc[1]/p[1]",
+      "sourceOrdinal": 78,
+      "rawText": "Malaysia",
+      "fullSpan": {
+        "start": 0,
+        "end": 8
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[9]/tc[2]/p[1]",
+      "sourceOrdinal": 79,
+      "rawText": "Mohd Uzir Mahidin, Chief Statistician, Department of Statistics Malaysia",
+      "fullSpan": {
+        "start": 0,
+        "end": 72
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[10]/tc[1]/p[1]",
+      "sourceOrdinal": 80,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[10]/tc[2]/p[1]",
+      "sourceOrdinal": 81,
+      "rawText": "Ms. Ezatul Nisha Abul Rahman, Director of Strategic",
+      "fullSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[10]/tc[2]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "sourceOrdinal": 82,
+      "rawText": "Communication",
+      "fullSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 2,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[10]/tc[2]/tbl[1]/tr[1]/tc[2]/p[1]",
+      "sourceOrdinal": 83,
+      "rawText": "and",
+      "fullSpan": {
+        "start": 0,
+        "end": 3
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 2,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[10]/tc[2]/tbl[1]/tr[1]/tc[3]/p[1]",
+      "sourceOrdinal": 84,
+      "rawText": "International",
+      "fullSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 2,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[10]/tc[2]/tbl[1]/tr[1]/tc[4]/p[1]",
+      "sourceOrdinal": 85,
+      "rawText": "Statistics",
+      "fullSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 2,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[10]/tc[2]/tbl[1]/tr[1]/tc[5]/p[1]",
+      "sourceOrdinal": 86,
+      "rawText": "Division,",
+      "fullSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 2,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[10]/tc[2]/p[2]",
+      "sourceOrdinal": 87,
+      "rawText": "Department of Statistics Malaysia",
+      "fullSpan": {
+        "start": 0,
+        "end": 33
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[11]/tc[1]/p[1]",
+      "sourceOrdinal": 88,
+      "rawText": "Mexico",
+      "fullSpan": {
+        "start": 0,
+        "end": 6
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[11]/tc[2]/p[1]",
+      "sourceOrdinal": 89,
+      "rawText": "Arturo Blancas, Director General, Economic Statistics, Instituto Nacional de Estadistica y Georgrafia (INEGI)",
+      "fullSpan": {
+        "start": 0,
+        "end": 109
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[12]/tc[1]/p[1]",
+      "sourceOrdinal": 90,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[12]/tc[2]/p[1]",
+      "sourceOrdinal": 91,
+      "rawText": "Jorge Reyes, Deputy Director General of Prices Indices, INEGI",
+      "fullSpan": {
+        "start": 0,
+        "end": 61
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[13]/tc[1]/p[1]",
+      "sourceOrdinal": 92,
+      "rawText": "African Development Bank",
+      "fullSpan": {
+        "start": 0,
+        "end": 24
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[13]/tc[2]/p[1]",
+      "sourceOrdinal": 93,
+      "rawText": "Kouakou K. Louis, Acting Director, Statistics Department",
+      "fullSpan": {
+        "start": 0,
+        "end": 56
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[14]/tc[1]/p[1]",
+      "sourceOrdinal": 94,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[14]/tc[2]/p[1]",
+      "sourceOrdinal": 95,
+      "rawText": "Ben Paul Mungyereza, Manager, Statistics Department",
+      "fullSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[15]/tc[1]/p[1]",
+      "sourceOrdinal": 96,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[15]/tc[2]/p[1]",
+      "sourceOrdinal": 97,
+      "rawText": "Gregoire Mboya De Loubassou, Senior Statistician, Statistics Department",
+      "fullSpan": {
+        "start": 0,
+        "end": 71
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[16]/tc[1]/p[1]",
+      "sourceOrdinal": 98,
+      "rawText": "Asian Development Bank",
+      "fullSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[16]/tc[2]/p[1]",
+      "sourceOrdinal": 99,
+      "rawText": "Elaine Tan, Advisor, Office of the Chief Economist and Director General, and Head, Statistics and Data Innovation",
+      "fullSpan": {
+        "start": 0,
+        "end": 113
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[17]/tc[1]/p[1]",
+      "sourceOrdinal": 100,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[17]/tc[2]/p[1]",
+      "sourceOrdinal": 101,
+      "rawText": "Kaushal Joshi, Principal Statistician, Statistics and Data Innovation",
+      "fullSpan": {
+        "start": 0,
+        "end": 69
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[18]/tc[1]/p[1]",
+      "sourceOrdinal": 102,
+      "rawText": "Eurostat",
+      "fullSpan": {
+        "start": 0,
+        "end": 8
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[18]/tc[2]/p[1]",
+      "sourceOrdinal": 103,
+      "rawText": "Mariana Kotzeva, Director General, Eurostat",
+      "fullSpan": {
+        "start": 0,
+        "end": 43
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[19]/tc[1]/p[1]",
+      "sourceOrdinal": 104,
+      "rawText": "International Monetary Fund",
+      "fullSpan": {
+        "start": 0,
+        "end": 27
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[19]/tc[2]/p[1]",
+      "sourceOrdinal": 105,
+      "rawText": "Albert Kroese, Chief Statistician",
+      "fullSpan": {
+        "start": 0,
+        "end": 33
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[20]/tc[1]/p[1]",
+      "sourceOrdinal": 106,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[20]/tc[2]/p[1]",
+      "sourceOrdinal": 107,
+      "rawText": "Brian Graf, Senior Economist, Real Sector Statistics Division",
+      "fullSpan": {
+        "start": 0,
+        "end": 61
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[21]/tc[1]/p[1]",
+      "sourceOrdinal": 108,
+      "rawText": "Interstate Statistical Committee of the Commonwealth of Independent States",
+      "fullSpan": {
+        "start": 0,
+        "end": 74
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[21]/tc[2]/p[1]",
+      "sourceOrdinal": 109,
+      "rawText": "Andrey Kosarev, Deputy Chairman",
+      "fullSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[22]/tc[1]/p[1]",
+      "sourceOrdinal": 110,
+      "rawText": "Organization for Economic Co-operation and Development",
+      "fullSpan": {
+        "start": 0,
+        "end": 54
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[22]/tc[2]/p[1]",
+      "sourceOrdinal": 111,
+      "rawText": "Paul Schreyer, Chief Statistician and Director of Statistics and Data Directorate",
+      "fullSpan": {
+        "start": 0,
+        "end": 81
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[23]/tc[1]/p[1]",
+      "sourceOrdinal": 112,
+      "rawText": "United Nations Economic and Social Commission for Western Asia",
+      "fullSpan": {
+        "start": 0,
+        "end": 62
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[23]/tc[2]/p[1]",
+      "sourceOrdinal": 113,
+      "rawText": "Haidar Fraihat, Cluster Leader of the Statistics, Information Society and Technology Cluster",
+      "fullSpan": {
+        "start": 0,
+        "end": 92
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[24]/tc[1]/p[1]",
+      "sourceOrdinal": 114,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[24]/tc[2]/p[1]",
+      "sourceOrdinal": 115,
+      "rawText": "Majed Skaini, Statistician, Statistics Division",
+      "fullSpan": {
+        "start": 0,
+        "end": 47
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[25]/tc[1]/p[1]",
+      "sourceOrdinal": 116,
+      "rawText": "United Nations Economic Commission for Latin America and the Caribbean",
+      "fullSpan": {
+        "start": 0,
+        "end": 70
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[25]/tc[2]/p[1]",
+      "sourceOrdinal": 117,
+      "rawText": "Rolando Ocampo, Director, Statistics Division",
+      "fullSpan": {
+        "start": 0,
+        "end": 45
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[26]/tc[1]/p[1]",
+      "sourceOrdinal": 118,
+      "rawText": "United Nations Statistics Division",
+      "fullSpan": {
+        "start": 0,
+        "end": 34
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[26]/tc[2]/p[1]",
+      "sourceOrdinal": 119,
+      "rawText": "Stefan Schweinfest, Director, Statistics Division",
+      "fullSpan": {
+        "start": 0,
+        "end": 49
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[27]/tc[1]/p[1]",
+      "sourceOrdinal": 120,
+      "rawText": "World Bank",
+      "fullSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[27]/tc[2]/p[1]",
+      "sourceOrdinal": 121,
+      "rawText": "Haishan Fu, Chief Statistician, and Director, Development Data Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 68
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[63]",
+      "sourceOrdinal": 122,
+      "rawText": "6",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "right"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[64]",
+      "sourceOrdinal": 123,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[65]",
+      "sourceOrdinal": 124,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "sourceOrdinal": 125,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[1]",
+      "sourceOrdinal": 126,
+      "rawText": "Nada Hamadeh, Manager, Economic, Debt and Price Data Unit, Development Data Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 81
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[2]/tc[1]/p[1]",
+      "sourceOrdinal": 127,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+      "sourceOrdinal": 128,
+      "rawText": "Marko Rissanen, ICP Program Lead and Senior Statistician, Development Data Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 80
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[3]/tc[1]/p[1]",
+      "sourceOrdinal": 129,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[3]/tc[2]/p[1]",
+      "sourceOrdinal": 130,
+      "rawText": "Edie Purdie, Consultant, Development Data Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 47
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[4]/tc[1]/p[1]",
+      "sourceOrdinal": 131,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[4]/tc[2]/p[1]",
+      "sourceOrdinal": 132,
+      "rawText": "Nancy Kebe, Development Data Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 34
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[5]/tc[1]/p[1]",
+      "sourceOrdinal": 133,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[5]/tc[2]/p[1]",
+      "sourceOrdinal": 134,
+      "rawText": "Catherine Van Rompaey, Program Manager, Development Data Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 62
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[66]",
+      "sourceOrdinal": 135,
+      "rawText": "7",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "right"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    }
+  ]
+}

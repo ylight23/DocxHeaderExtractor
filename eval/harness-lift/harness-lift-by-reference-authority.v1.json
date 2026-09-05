@@ -1,0 +1,53 @@
+{
+  "rows": [
+    {
+      "authority": "HumanGold",
+      "documents": 0,
+      "referenceRecords": 0,
+      "officialDenominator": true,
+      "finalMetrics": "NOT_MEASURED_UNLESS_REFERENCE_SUPPORTS_FIELD"
+    },
+    {
+      "authority": "HumanKey",
+      "documents": 15,
+      "referenceRecords": 25,
+      "officialDenominator": true,
+      "finalMetrics": "NOT_MEASURED_UNLESS_REFERENCE_SUPPORTS_FIELD"
+    },
+    {
+      "authority": "SourceStructuralReference",
+      "documents": 7,
+      "referenceRecords": 7,
+      "officialDenominator": true,
+      "finalMetrics": "NOT_MEASURED_UNLESS_REFERENCE_SUPPORTS_FIELD"
+    },
+    {
+      "authority": "ModelAssistedSilver",
+      "documents": 8,
+      "referenceRecords": 9,
+      "officialDenominator": false,
+      "finalMetrics": "NOT_MEASURED_UNLESS_REFERENCE_SUPPORTS_FIELD"
+    },
+    {
+      "authority": "HeuristicReference",
+      "documents": 9,
+      "referenceRecords": 9,
+      "officialDenominator": false,
+      "finalMetrics": "NOT_MEASURED_UNLESS_REFERENCE_SUPPORTS_FIELD"
+    },
+    {
+      "authority": "Unlabeled",
+      "documents": 0,
+      "referenceRecords": 0,
+      "officialDenominator": false,
+      "finalMetrics": "NOT_MEASURED_UNLESS_REFERENCE_SUPPORTS_FIELD"
+    },
+    {
+      "authority": "InvalidReference",
+      "documents": 0,
+      "referenceRecords": 0,
+      "officialDenominator": false,
+      "finalMetrics": "NOT_MEASURED_UNLESS_REFERENCE_SUPPORTS_FIELD"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "artifactKind": "harness_lift_full_suite_reconciliation",
+  "schemaVersion": "1.0",
+  "executionRevision": "2c99c35a5f9c8c06d1e854263b5200f868c4105d",
+  "command": "dotnet test tests/DocxHeaderExtractor.Tests/DocxHeaderExtractor.Tests.csproj -c Release --no-build --no-restore",
+  "resultsDirectory": "external:C:/Temp/dhx-harness-lift-fullsuite-2c99",
+  "total": 1012,
+  "passed": 1011,
+  "failed": 1,
+  "skipped": 0,
+  "status": "NOT_FULLY_GREEN_KNOWN_FROZEN_FAILURE",
+  "knownFailures": [
+    {
+      "fqn": "DocxHeaderExtractor.Tests.PdfN15RankingLossDiagnosisProbe.CommittedDiagnosisReproducesByteForByte",
+      "lineage": "N15_RANKING_DIAGNOSIS_ARTIFACT_HASH",
+      "classification": "KNOWN_FROZEN_PREEXISTING_CHANGED_ARTIFACT_FINGERPRINT",
+      "expectedCensusArtifactSha256": "8b0811e4059b6398f548ee384373ff64faa8cc2e888010eaf53f54b0ca004846",
+      "committedArtifactCensusArtifactSha256": "0344222652051f26954a616965e1b6767af51a4882877f7475b6143bc8fd58e2",
+      "expectedChanged": false,
+      "productionBehaviorChanged": false,
+      "action": "preserved without changing expected or historical artifact"
+    }
+  ],
+  "newFailures": 0,
+  "changedFingerprints": 1,
+  "unjoined": 0,
+  "providerCalls": 0,
+  "testInventory": "current measured inventory; no test was excluded",
+  "note": "The only failure is the pre-existing frozen N15 diagnosis artifact drift. Harness-Lift does not rebase it or claim a fully green suite."
+}

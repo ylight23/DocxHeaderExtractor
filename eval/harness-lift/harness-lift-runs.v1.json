@@ -1,0 +1,111 @@
+{
+  "status": "MEASURED_ON_TRUSTED_SUBSET_WITH_LIMITATIONS",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.5-9b",
+  "providerCalls": 132,
+  "requestCount": 132,
+  "repeats": 3,
+  "trustedDocuments": 3,
+  "trustedDocumentsCount": 3,
+  "runs": [
+    {
+      "runId": "repeat-1-DOC-0066",
+      "repeat": 1,
+      "documentId": "DOC-0066",
+      "providerCalls": 5,
+      "expected": 1,
+      "matched": 0,
+      "requestCount": 5,
+      "proposalJoinStatus": "MODEL_PROPOSAL_OCCURRENCE_JOIN_NOT_OBSERVABLE"
+    },
+    {
+      "runId": "repeat-1-DOC-0205",
+      "repeat": 1,
+      "documentId": "DOC-0205",
+      "providerCalls": 1,
+      "expected": 1,
+      "matched": 0,
+      "requestCount": 1,
+      "proposalJoinStatus": "MODEL_PROPOSAL_OCCURRENCE_JOIN_NOT_OBSERVABLE"
+    },
+    {
+      "runId": "repeat-1-DOC-0082",
+      "repeat": 1,
+      "documentId": "DOC-0082",
+      "providerCalls": 0,
+      "expected": 0,
+      "matched": 0,
+      "requestCount": 0,
+      "proposalJoinStatus": "ERROR:InvalidOperationException"
+    },
+    {
+      "runId": "repeat-2-DOC-0066",
+      "repeat": 2,
+      "documentId": "DOC-0066",
+      "providerCalls": 6,
+      "expected": 1,
+      "matched": 0,
+      "requestCount": 6,
+      "proposalJoinStatus": "MODEL_PROPOSAL_OCCURRENCE_JOIN_NOT_OBSERVABLE"
+    },
+    {
+      "runId": "repeat-2-DOC-0205",
+      "repeat": 2,
+      "documentId": "DOC-0205",
+      "providerCalls": 2,
+      "expected": 1,
+      "matched": 0,
+      "requestCount": 2,
+      "proposalJoinStatus": "MODEL_PROPOSAL_OCCURRENCE_JOIN_NOT_OBSERVABLE"
+    },
+    {
+      "runId": "repeat-2-DOC-0082",
+      "repeat": 2,
+      "documentId": "DOC-0082",
+      "providerCalls": 0,
+      "expected": 0,
+      "matched": 0,
+      "requestCount": 0,
+      "proposalJoinStatus": "ERROR:InvalidOperationException"
+    },
+    {
+      "runId": "repeat-3-DOC-0066",
+      "repeat": 3,
+      "documentId": "DOC-0066",
+      "providerCalls": 6,
+      "expected": 1,
+      "matched": 0,
+      "requestCount": 6,
+      "proposalJoinStatus": "MODEL_PROPOSAL_OCCURRENCE_JOIN_NOT_OBSERVABLE"
+    },
+    {
+      "runId": "repeat-3-DOC-0205",
+      "repeat": 3,
+      "documentId": "DOC-0205",
+      "providerCalls": 2,
+      "expected": 1,
+      "matched": 0,
+      "requestCount": 2,
+      "proposalJoinStatus": "MODEL_PROPOSAL_OCCURRENCE_JOIN_NOT_OBSERVABLE"
+    },
+    {
+      "runId": "repeat-3-DOC-0082",
+      "repeat": 3,
+      "documentId": "DOC-0082",
+      "providerCalls": 110,
+      "expected": 86,
+      "matched": 0,
+      "requestCount": 110,
+      "proposalJoinStatus": "MODEL_PROPOSAL_OCCURRENCE_JOIN_NOT_OBSERVABLE"
+    }
+  ],
+  "finalRecall": {
+    "count": 7,
+    "mean": 0,
+    "min": 0,
+    "max": 0,
+    "stddev": 0
+  },
+  "modelProposalMetrics": "NOT_MEASURED: current RouteExecutionAudit does not preserve an occurrence-level model proposal join",
+  "harnessLift": "NOT_MEASURED: same occurrence-level model proposal and final pair is unavailable"
+}
