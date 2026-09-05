@@ -1,0 +1,17 @@
+{
+  "artifactKind": "a99_reference_sufficiency",
+  "schemaVersion": "2.0",
+  "status": "HUMAN_REFERENCE_REQUIRED",
+  "devDocumentsSelected": 61,
+  "devOccurrencesSelected": 216155,
+  "holdoutDocumentsSelected": 23,
+  "holdoutOccurrencesSelected": 143087,
+  "devDocumentsValidated": 0,
+  "explicitNegatives": 0,
+  "headingPositives": 0,
+  "unsure": 0,
+  "preferredMinimumDevDocuments": 12,
+  "preferredMinimumFamilies": 3,
+  "goldMustBeExhaustive": true,
+  "providerCalls": 0
+}

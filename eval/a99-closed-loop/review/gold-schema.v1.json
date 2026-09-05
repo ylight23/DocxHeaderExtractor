@@ -1,0 +1,36 @@
+{
+  "artifactKind": "a99_human_gold_schema",
+  "schemaVersion": "a99-human-gold-v1",
+  "labels": [
+    "YES",
+    "NO",
+    "UNSURE"
+  ],
+  "required": [
+    "reviewerAlias",
+    "reviewedAt",
+    "reviewVersion",
+    "independentOfModelPrediction",
+    "sourceDocumentSha256",
+    "packetSha256",
+    "rows"
+  ],
+  "yes": {
+    "role": "heading|title|caption|label|other",
+    "headingSpan": "required",
+    "level": "1..9",
+    "parentOccurrenceId": "ROOT|sourceId|UNKNOWN"
+  },
+  "no": {
+    "role": "body|non-heading|other",
+    "headingSpan": "absent",
+    "level": "absent",
+    "parentOccurrenceId": "absent"
+  },
+  "unsure": {
+    "headingSpan": "absent",
+    "level": "absent",
+    "parentOccurrenceId": "absent",
+    "excludedFromOfficialDenominator": true
+  }
+}

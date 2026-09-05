@@ -18,6 +18,9 @@ public sealed class CommandLineOptions
     public int HarnessLiftRepeats { get; private set; } = 3;
     public string? Accuracy99Root { get; private set; }
     public string? Accuracy99GoldPath { get; private set; }
+    public string? Accuracy99PacketRoot { get; private set; }
+    public string? Accuracy99GoldRoot { get; private set; }
+    public string? Accuracy99ReviewerOutput { get; private set; }
     public string? Accuracy99PredictionPath { get; private set; }
     public string? Accuracy99Profile { get; private set; }
     public string? TrainingOutputPath { get; private set; }
@@ -168,6 +171,9 @@ public sealed class CommandLineOptions
         if (o.Command == "accuracy99" && i < args.Length && !args[i].StartsWith('-'))
         {
             o.Accuracy99Operation = args[i++];
+            if (o.Accuracy99Operation.Equals("gold", StringComparison.OrdinalIgnoreCase) &&
+                i < args.Length && !args[i].StartsWith('-'))
+                o.Accuracy99Operation = $"gold-{args[i++]}";
         }
         else if (o.Command == "r18" && i < args.Length && !args[i].StartsWith('-'))
         {
@@ -199,6 +205,9 @@ public sealed class CommandLineOptions
                 case "--harness-run-model": o.HarnessLiftRunModel = true; break;
                 case "--harness-repeats": o.HarnessLiftRepeats = Math.Clamp(int.Parse(Next(a)), 3, 5); break;
                 case "--accuracy-gold": o.Accuracy99GoldPath = Next(a); break;
+                case "--packets" or "--packet-root": o.Accuracy99PacketRoot = Next(a); break;
+                case "--gold-dir" or "--gold-root": o.Accuracy99GoldRoot = Next(a); break;
+                case "--reviewer-output": o.Accuracy99ReviewerOutput = Next(a); break;
                 case "--prediction": o.Accuracy99PredictionPath = Next(a); break;
                 case "--profile": o.Accuracy99Profile = Next(a); break;
                 case "--training-out": o.TrainingOutputPath = Next(a); break;
@@ -263,7 +272,10 @@ public sealed class CommandLineOptions
                 case "--pdf-visual-probe-list": o.PdfVisualProbeList = true; break;
                 case "--pdf-visual-page": o.PdfVisualPage = Math.Max(1, int.Parse(Next(a))); break;
                 case "--pdf-visual-line-list": o.PdfVisualLineList = true; break;
-                case "--gold": o.PdfVisualRepresentationGoldPath = Next(a); break;
+                case "--gold":
+                    if (o.Command == "accuracy99") o.Accuracy99GoldPath = Next(a);
+                    else o.PdfVisualRepresentationGoldPath = Next(a);
+                    break;
                 case "--hierarchy-gold": o.PdfHierarchyGoldPath = Next(a); break;
                 case "--recovery-baseline-artifact": o.PdfSemanticRecoveryBaselineArtifact = Next(a); break;
                 case "--semantic-recovery-profile": o.PdfSemanticRecoveryProfile = Next(a); break;

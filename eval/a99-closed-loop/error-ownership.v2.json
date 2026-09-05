@@ -1,0 +1,18 @@
+{
+  "artifactKind": "a99_error_ownership",
+  "schemaVersion": "2.0",
+  "status": "NOT_MEASURED",
+  "reason": "valid exhaustive DEV HUMAN_GOLD is required before quality measurement",
+  "stages": [
+    "SourceReading",
+    "CandidateGeneration",
+    "Proposal",
+    "Validation",
+    "Span",
+    "Level",
+    "Parent",
+    "FinalProjection",
+    "Unmeasured"
+  ],
+  "providerCalls": 0
+}

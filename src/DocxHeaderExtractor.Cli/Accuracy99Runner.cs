@@ -27,7 +27,7 @@ internal static class Accuracy99Runner
         var operation = options.Accuracy99Operation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability");
+            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, review-ui, gold-validate, gold-import-dev");
             return 0;
         }
 
@@ -38,8 +38,236 @@ internal static class Accuracy99Runner
             "evaluate" => await EvaluateAsync(options, cancellationToken),
             "baseline" => await BuildBaselineAsync(options, cancellationToken),
             "observability" => await BuildObservabilityAsync(options, cancellationToken),
+            "reference-campaign" => await BuildReferenceCampaignAsync(options, cancellationToken),
+            "review-ui" => BuildReviewUi(options),
+            "gold-validate" => await ValidateGoldAsync(options, cancellationToken),
+            "gold-import-dev" => await ImportDevGoldAsync(options, cancellationToken),
             _ => throw new ArgumentException($"accuracy99 operation không hợp lệ: {operation}"),
         };
+    }
+
+    private static async Task<int> BuildReferenceCampaignAsync(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var packetRoot = options.Accuracy99PacketRoot ?? Path.Combine("C:\\A99-Gold", "packets");
+        var campaign = A99ReferenceCampaignBuilder.Build(repoRoot, packetRoot, createdFromRevision: GitRevision(repoRoot));
+        var manifests = A99ReferenceCampaignBuilder.BuildReviewManifests(campaign, packetRoot);
+        var artifactRoot = Path.Combine(repoRoot, "eval", "a99-closed-loop");
+        var reviewRoot = Path.Combine(artifactRoot, "review");
+        Directory.CreateDirectory(reviewRoot);
+        await WriteAsync(Path.Combine(artifactRoot, "reference-campaign.v1.json"), A99ReviewJson.Serialize(campaign), cancellationToken);
+        await WriteAsync(Path.Combine(reviewRoot, "dev-manifest.v1.json"), A99ReviewJson.Serialize(manifests.Dev), cancellationToken);
+        await WriteAsync(Path.Combine(reviewRoot, "holdout-manifest.v1.json"), A99ReviewJson.Serialize(manifests.Holdout), cancellationToken);
+        await WriteReviewSchemasAsync(reviewRoot, cancellationToken);
+
+        var coverage = A99GoldImportService.ValidateAndImportDev(
+            campaign,
+            packetRoot,
+            options.Accuracy99GoldRoot ?? Path.Combine("C:\\A99-Gold", "dev"),
+            artifactRoot);
+        await WritePhaseBArtifactsAsync(repoRoot, campaign, coverage, cancellationToken);
+        Console.WriteLine($"A99 reference campaign ready: DEV={campaign.DevDocuments.Count} docs/{campaign.DevDocuments.Sum(x => x.SourceOccurrenceCount)} occurrences; " +
+                          $"HOLDOUT={campaign.HoldoutDocuments.Count} docs/{campaign.HoldoutDocuments.Sum(x => x.SourceOccurrenceCount)} occurrences; " +
+                          $"DEV gold={coverage.DevDocumentsValidated}/{coverage.DevDocumentsExpected}; status={coverage.Status}");
+        Console.WriteLine(coverage.Status == "READY"
+            ? "DEV gold is sufficient for the next baseline command."
+            : "HUMAN_REFERENCE_REQUIRED: review source-first DEV packets before evaluation.");
+        return 0;
+    }
+
+    private static async Task WritePhaseBArtifactsAsync(
+        string repoRoot,
+        A99ReferenceCampaign campaign,
+        A99GoldImportCoverage coverage,
+        CancellationToken cancellationToken)
+    {
+        var artifactRoot = Path.Combine(repoRoot, "eval", "a99-closed-loop");
+        var devDocuments = campaign.DevDocuments.Count;
+        var holdoutDocuments = campaign.HoldoutDocuments.Count;
+        var devOccurrences = campaign.DevDocuments.Sum(x => x.SourceOccurrenceCount);
+        var holdoutOccurrences = campaign.HoldoutDocuments.Sum(x => x.SourceOccurrenceCount);
+        var goldStatus = coverage.Status;
+
+        await WriteAsync(Path.Combine(artifactRoot, "reference-sufficiency.v2.json"), JsonSerializer.Serialize(new
+        {
+            artifactKind = "a99_reference_sufficiency",
+            schemaVersion = "2.0",
+            status = goldStatus == "READY" ? "READY_FOR_BASELINE" : "HUMAN_REFERENCE_REQUIRED",
+            devDocumentsSelected = devDocuments,
+            devOccurrencesSelected = devOccurrences,
+            holdoutDocumentsSelected = holdoutDocuments,
+            holdoutOccurrencesSelected = holdoutOccurrences,
+            devDocumentsValidated = coverage.DevDocumentsValidated,
+            explicitNegatives = coverage.HeadingNo,
+            headingPositives = coverage.HeadingYes,
+            unsure = coverage.HeadingUnsure,
+            preferredMinimumDevDocuments = 12,
+            preferredMinimumFamilies = campaign.FamilySummary.Count,
+            goldMustBeExhaustive = true,
+            providerCalls = 0,
+        }, JsonOptions), cancellationToken);
+
+        await WriteAsync(Path.Combine(artifactRoot, "baseline-manifest.v2.json"), JsonSerializer.Serialize(new
+        {
+            artifactKind = "a99_baseline_manifest",
+            schemaVersion = "2.0",
+            status = "HUMAN_REFERENCE_REQUIRED",
+            codeSha = GitRevision(repoRoot) ?? "UNRESOLVED",
+            sourceCorpus = campaign.SourceCorpus,
+            splitAuthority = "eval/a99-dataset/evaluation-splits.v1.json",
+            devDocumentIds = campaign.DevDocuments.Select(x => x.DocumentId),
+            model = "NOT_RUN_UNTIL_VALID_HUMAN_GOLD",
+            provider = "NOT_RUN_UNTIL_VALID_HUMAN_GOLD",
+            promptIdentity = "NOT_RUN_UNTIL_VALID_HUMAN_GOLD",
+            candidatePolicy = "CURRENT_PRODUCTION_CONFIG_AT_BASELINE_RUN",
+            validationPolicy = "CURRENT_PRODUCTION_CONFIG_AT_BASELINE_RUN",
+            repairPolicy = "CURRENT_PRODUCTION_CONFIG_AT_BASELINE_RUN",
+            goldStatus,
+            providerCalls = 0,
+        }, JsonOptions), cancellationToken);
+
+        var notMeasured = new
+        {
+            status = "NOT_MEASURED",
+            reason = "valid exhaustive DEV HUMAN_GOLD is required before quality measurement",
+            devDocuments = devDocuments,
+            devOccurrences,
+            providerCalls = 0,
+        };
+        await WriteAsync(Path.Combine(artifactRoot, "baseline-result.v2.json"), JsonSerializer.Serialize(new { artifactKind = "a99_baseline_result", schemaVersion = "2.0", notMeasured }, JsonOptions), cancellationToken);
+        await WriteAsync(Path.Combine(artifactRoot, "error-ownership.v2.json"), JsonSerializer.Serialize(new { artifactKind = "a99_error_ownership", schemaVersion = "2.0", status = "NOT_MEASURED", reason = notMeasured.reason, stages = Enum.GetNames<Accuracy99FirstLossStage>(), providerCalls = 0 }, JsonOptions), cancellationToken);
+        await WriteAsync(Path.Combine(artifactRoot, "optimization-history.v2.json"), JsonSerializer.Serialize(new { artifactKind = "a99_optimization_history", schemaVersion = "2.0", status = "BLOCKED_ON_REFERENCE", iterations = Array.Empty<object>(), accepted = 0, rejected = 0, providerCalls = 0 }, JsonOptions), cancellationToken);
+        await WriteAsync(Path.Combine(artifactRoot, "best-dev-result.v2.json"), JsonSerializer.Serialize(new { artifactKind = "a99_best_dev_result", schemaVersion = "2.0", status = "NOT_MEASURED", reason = notMeasured.reason, providerCalls = 0 }, JsonOptions), cancellationToken);
+        await WriteAsync(Path.Combine(artifactRoot, "release-candidate-manifest.v2.json"), JsonSerializer.Serialize(new { artifactKind = "a99_release_candidate_manifest", schemaVersion = "2.0", status = "NOT_FROZEN", reason = "DEV gate has not been measured", providerCalls = 0 }, JsonOptions), cancellationToken);
+        await WriteAsync(Path.Combine(artifactRoot, "holdout-result.v2.json"), JsonSerializer.Serialize(new { artifactKind = "a99_holdout_result", schemaVersion = "2.0", status = "TRUE_BLIND_REQUIRED", statusReason = "release candidate is not frozen", providerCalls = 0 }, JsonOptions), cancellationToken);
+        await WriteAsync(Path.Combine(artifactRoot, "autonomous-coverage.v2.json"), JsonSerializer.Serialize(new { artifactKind = "a99_autonomous_coverage", schemaVersion = "2.0", status = "NOT_MEASURED", devDocuments, devOccurrences, holdoutDocuments, holdoutOccurrences, providerCalls = 0 }, JsonOptions), cancellationToken);
+        await WriteAsync(Path.Combine(artifactRoot, "final-a99-decision.v2.json"), JsonSerializer.Serialize(new { artifactKind = "a99_final_decision", schemaVersion = "2.0", status = "HUMAN_REFERENCE_REQUIRED", accuracyClaim = "A99_NOT_MEASURED", trueBlindAvailable = false, providerCalls = 0 }, JsonOptions), cancellationToken);
+    }
+
+    private static int BuildReviewUi(CommandLineOptions options)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var source = Path.Combine(repoRoot, "tools", "accuracy99-reviewer", "index.html");
+        if (!File.Exists(source)) throw new FileNotFoundException("A99 reviewer UI source missing", source);
+        var destination = options.Accuracy99ReviewerOutput ?? Path.Combine("C:\\A99-Gold", "reviewer", "index.html");
+        var directory = Path.GetDirectoryName(Path.GetFullPath(destination));
+        if (!string.IsNullOrWhiteSpace(directory)) Directory.CreateDirectory(directory);
+        File.Copy(source, destination, overwrite: true);
+        Console.WriteLine(Path.GetFullPath(destination));
+        return 0;
+    }
+
+    private static async Task<int> ValidateGoldAsync(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var packetRoot = options.Accuracy99PacketRoot ?? Path.Combine("C:\\A99-Gold", "packets");
+        var goldRoot = options.Accuracy99GoldRoot ?? options.Accuracy99GoldPath ?? Path.Combine("C:\\A99-Gold", "dev");
+        A99GoldStoreGuard.EnsureDevPath(packetRoot);
+        A99GoldStoreGuard.EnsureDevPath(goldRoot);
+        var campaign = LoadCampaign(repoRoot);
+        var results = new List<object>();
+        var valid = 0;
+        var errors = 0;
+        foreach (var goldPath in Directory.Exists(goldRoot)
+                     ? Directory.EnumerateFiles(goldRoot, "*.human-gold.json", SearchOption.AllDirectories).OrderBy(x => x, StringComparer.OrdinalIgnoreCase).ToArray()
+                     : Array.Empty<string>())
+        {
+            var documentId = Path.GetFileName(goldPath).Split('.', StringSplitOptions.RemoveEmptyEntries)[0];
+            var campaignDocument = campaign.DevDocuments.Concat(campaign.HoldoutDocuments)
+                .FirstOrDefault(x => x.DocumentId.Equals(documentId, StringComparison.Ordinal));
+            if (campaignDocument is null) { errors++; results.Add(new { documentId, status = "INVALID", error = "document-not-in-campaign" }); continue; }
+            var packetPath = Path.Combine(Path.GetFullPath(packetRoot), campaignDocument.Split == "DEV" ? "dev" : "holdout-sealed", documentId + ".v1.json");
+            if (!File.Exists(packetPath)) { errors++; results.Add(new { documentId, status = "INVALID", error = "packet-missing" }); continue; }
+            try
+            {
+                var packet = A99ReviewJson.Deserialize<A99ReviewPacket>(await File.ReadAllTextAsync(packetPath, cancellationToken));
+                var gold = A99ReviewJson.Deserialize<A99HumanGoldDocument>(await File.ReadAllTextAsync(goldPath, cancellationToken));
+                var validation = A99HumanGoldValidator.Validate(packet, gold);
+                if (validation.IsValid) valid++; else errors += validation.Errors.Count;
+                results.Add(new { documentId, status = validation.IsValid ? "VALID" : "INVALID", errors = validation.Errors });
+            }
+            catch (Exception ex) when (ex is JsonException or InvalidDataException or IOException)
+            {
+                errors++; results.Add(new { documentId, status = "INVALID", error = ex.Message });
+            }
+        }
+        var report = new
+        {
+            artifactKind = "a99_human_gold_validation_report",
+            status = errors == 0 && valid > 0 ? "PASS" : "HUMAN_REFERENCE_REQUIRED",
+            packetRoot,
+            goldRoot,
+            validDocuments = valid,
+            errorCount = errors,
+            documents = results,
+            providerCalls = 0,
+        };
+        await WriteAsync(options.OutputPath, JsonSerializer.Serialize(report, JsonOptions), cancellationToken);
+        return errors == 0 && valid > 0 ? 0 : 1;
+    }
+
+    private static async Task<int> ImportDevGoldAsync(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var campaign = LoadCampaign(repoRoot);
+        var coverage = A99GoldImportService.ValidateAndImportDev(
+            campaign,
+            options.Accuracy99PacketRoot ?? Path.Combine("C:\\A99-Gold", "packets"),
+            options.Accuracy99GoldRoot ?? options.Accuracy99GoldPath ?? Path.Combine("C:\\A99-Gold", "dev"),
+            Path.Combine(repoRoot, "eval", "a99-closed-loop"));
+        await WriteAsync(options.OutputPath, JsonSerializer.Serialize(coverage, JsonOptions), cancellationToken);
+        Console.WriteLine($"DEV gold: {coverage.DevDocumentsValidated}/{coverage.DevDocumentsExpected} documents, status={coverage.Status}");
+        return coverage.Status == "READY" ? 0 : 1;
+    }
+
+    private static A99ReferenceCampaign LoadCampaign(string repoRoot)
+    {
+        var path = Path.Combine(repoRoot, "eval", "a99-closed-loop", "reference-campaign.v1.json");
+        if (!File.Exists(path)) throw new FileNotFoundException("Run accuracy99 reference-campaign first.", path);
+        return A99ReviewJson.Deserialize<A99ReferenceCampaign>(File.ReadAllText(path));
+    }
+
+    private static async Task WriteReviewSchemasAsync(string reviewRoot, CancellationToken cancellationToken)
+    {
+        var packetSchema = new
+        {
+            artifactKind = "a99_review_packet_schema",
+            schemaVersion = "a99-review-packet-v1",
+            authority = "PARSER_SOURCE_FACTS_ONLY",
+            required = new[] { "documentId", "documentGroupId", "split", "familyId", "sourceDocumentSha256", "occurrences" },
+            occurrenceRequired = new[] { "sourceId", "stableId", "sourceOrdinal", "sourceSpan", "sourceTextHash", "sourceText", "style", "numbering", "layout" },
+            forbidden = new[] { "prediction", "candidate", "confidence", "selected", "validated", "goldLabel", "headingSpan", "parentSourceId" },
+        };
+        var goldSchema = new
+        {
+            artifactKind = "a99_human_gold_schema",
+            schemaVersion = "a99-human-gold-v1",
+            labels = new[] { "YES", "NO", "UNSURE" },
+            required = new[] { "reviewerAlias", "reviewedAt", "reviewVersion", "independentOfModelPrediction", "sourceDocumentSha256", "packetSha256", "rows" },
+            yes = new { role = "heading|title|caption|label|other", headingSpan = "required", level = "1..9", parentOccurrenceId = "ROOT|sourceId|UNKNOWN" },
+            no = new { role = "body|non-heading|other", headingSpan = "absent", level = "absent", parentOccurrenceId = "absent" },
+            unsure = new { headingSpan = "absent", level = "absent", parentOccurrenceId = "absent", excludedFromOfficialDenominator = true },
+        };
+        var policy = new
+        {
+            artifactKind = "a99_gold_validation_policy",
+            schemaVersion = "a99-human-gold-validation-policy-v1",
+            exhaustive = true,
+            sourceShaAndPacketShaRequired = true,
+            duplicateActiveOccurrence = false,
+            sourceFirst = true,
+            independentOfModelPrediction = true,
+            holdoutSealedUntilReleaseFreeze = true,
+        };
+        await WriteAsync(Path.Combine(reviewRoot, "packet-schema.v1.json"), JsonSerializer.Serialize(packetSchema, JsonOptions), cancellationToken);
+        await WriteAsync(Path.Combine(reviewRoot, "gold-schema.v1.json"), JsonSerializer.Serialize(goldSchema, JsonOptions), cancellationToken);
+        await WriteAsync(Path.Combine(reviewRoot, "gold-validation-policy.v1.json"), JsonSerializer.Serialize(policy, JsonOptions), cancellationToken);
     }
 
     private static async Task<int> BuildObservabilityAsync(

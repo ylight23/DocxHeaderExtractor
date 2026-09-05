@@ -1,0 +1,1295 @@
+{
+  "artifactKind": "a99_reference_campaign",
+  "schemaVersion": "a99-reference-campaign-v1",
+  "createdFromRevision": "c49b8e19c8cfb56c7635502710a1dd15741443fb",
+  "sourceCorpus": "todo10_8/heading_corpus_95_word/",
+  "selectionPolicy": "ALL_ELIGIBLE_DOCX_IN_FROZEN_DEV_AND_GENERALIZATION_HOLDOUT_SPLITS; RESERVED_UNLABELED_EXCLUDED",
+  "devDocuments": [
+    {
+      "documentId": "DOC-0182",
+      "documentGroupId": "GROUP-0076",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\002_Bo_luat_Lao_dong_45-2019-QH14.docx",
+      "sourceSha256": "527e96865acf73847abc23c6e80208e92242215a94824388d8f575dd226372dd",
+      "sourceOccurrenceCount": 166,
+      "packetPath": "dev/DOC-0182.v1.json",
+      "packetSha256": "d78893a8c65437dd7734a14687ca9ef9d140df094a180b98007d353b170338ba",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0183",
+      "documentGroupId": "GROUP-0226",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\003_Luat_Doanh_nghiep_59-2020-QH14.docx",
+      "sourceSha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+      "sourceOccurrenceCount": 2053,
+      "packetPath": "dev/DOC-0183.v1.json",
+      "packetSha256": "0167218aa3e9e14a36385e3ea861ee4ebe3af6186f323bcb2e14424b58de5e69",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0185",
+      "documentGroupId": "GROUP-0257",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\005_Luat_Dau_thau_22-2023-QH15_EN.docx",
+      "sourceSha256": "f842861bb7966cd94c8ce12f2064709936c064b7fa5825d133bd77f6ffb5f895",
+      "sourceOccurrenceCount": 1319,
+      "packetPath": "dev/DOC-0185.v1.json",
+      "packetSha256": "e77c73a252e34f3785663b5073a7f55a5a57fc50805931ce086976394f45e59a",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0186",
+      "documentGroupId": "GROUP-0247",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\006_Luat_Dat_dai_31-2024-QH15.docx",
+      "sourceSha256": "f25f82b870cc78275c44d1fc2fd8a47ff8eceb26936cdc1ded3a71ac0217f2c7",
+      "sourceOccurrenceCount": 1318,
+      "packetPath": "dev/DOC-0186.v1.json",
+      "packetSha256": "f317d93c6f01fd0c3e17fd853da3538f5a2a2c118bc1649c1a0388495e9614df",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0187",
+      "documentGroupId": "GROUP-0138",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\007_Luat_Nha_o_27-2023-QH15.docx",
+      "sourceSha256": "93a6d2d2a66842116eb7dc9f7a423441d5e4a8332e10b5bfa3f8a97f2e2a8912",
+      "sourceOccurrenceCount": 1446,
+      "packetPath": "dev/DOC-0187.v1.json",
+      "packetSha256": "42cfe2b25f5c4169df571b4fa2c464c51a0ad516659530246da3e60739e4774f",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0188",
+      "documentGroupId": "GROUP-0207",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\008_Luat_Kinh_doanh_BDS_29-2023-QH15.docx",
+      "sourceSha256": "cbf9f8d5d76db4e2973165997984e1592551ddbed60bc043332f54ecbe32b2b8",
+      "sourceOccurrenceCount": 1012,
+      "packetPath": "dev/DOC-0188.v1.json",
+      "packetSha256": "7bc1d5e04c74d12a44035780adb0b96f23f596f3ec1347a8914fdff0a5d9b810",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0189",
+      "documentGroupId": "GROUP-0143",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\009_Luat_Giao_dich_dien_tu_20-2023-QH15.docx",
+      "sourceSha256": "9bf6686b0b4c6a4fcdb7abed1a2ab2f8c0292a6c3de4b2163aa1e2a3e71f708d",
+      "sourceOccurrenceCount": 472,
+      "packetPath": "dev/DOC-0189.v1.json",
+      "packetSha256": "30035ff5c9827be99f956a2b3cb49ab2f76424621bf165f01d414af3ec66df24",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0193",
+      "documentGroupId": "GROUP-0106",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\013_Luat_Quan_ly_thue_38-2019-QH14.docx",
+      "sourceSha256": "6faf050939f595ce301b2b2c1e8b1be13583745da1f8b21c92d7d8022ff3d61a",
+      "sourceOccurrenceCount": 1179,
+      "packetPath": "dev/DOC-0193.v1.json",
+      "packetSha256": "4a26c118b1d165ae2afd55987b8c523da6d228ea90260c2f4fe9c8eae86feceb",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0196",
+      "documentGroupId": "GROUP-0239",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\016_ND_13-2023_Bao_ve_du_lieu_ca_nhan.docx",
+      "sourceSha256": "e963e6a494e7b1b12d688b8e71eb2babcaf1462e8f26408f93ce6ad1e7e49b44",
+      "sourceOccurrenceCount": 73,
+      "packetPath": "dev/DOC-0196.v1.json",
+      "packetSha256": "1d784070079b7cfba724a01ad3c69ef9ac7d865525b0ad8e74939dadcfcb046d",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0198",
+      "documentGroupId": "GROUP-0202",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\018_ND_70-2025_Sua_doi_hoa_don_EN.docx",
+      "sourceSha256": "c825543b2d722a7fc986b7d4eadbaae13b037c2944bf18d3322f88c517cd0c8e",
+      "sourceOccurrenceCount": 598,
+      "packetPath": "dev/DOC-0198.v1.json",
+      "packetSha256": "bac2ff2eb534ef453eee6679699b6ac3f6b6b36d1d18d62564ba822164c518c1",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0199",
+      "documentGroupId": "GROUP-0158",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\019_TT_200-2014_Che_do_ke_toan_DN.docx",
+      "sourceSha256": "a7f327a7ca6d5e9b170ccf4548a4782cbdf165adb7f98930c0cfcdbf4ed542d5",
+      "sourceOccurrenceCount": 10410,
+      "packetPath": "dev/DOC-0199.v1.json",
+      "packetSha256": "d343bd05b1fad4f354a7b3b8b505d8e7af0e40e015b6056f9bbdb029692689ca",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0200",
+      "documentGroupId": "GROUP-0129",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\020_TT_133-2016_Che_do_ke_toan_SME.docx",
+      "sourceSha256": "8ac2c82dbaac57ad889e72e8883d884907bc63d0f55172b0d44da1c1941c7835",
+      "sourceOccurrenceCount": 10841,
+      "packetPath": "dev/DOC-0200.v1.json",
+      "packetSha256": "001b8fb9626e7b8235dad6419fcc423fe6b4a1895c6986a7461b5d3b64851434",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0201",
+      "documentGroupId": "GROUP-0206",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\021_TT_78-2021_Hoa_don_dien_tu.docx",
+      "sourceSha256": "cb6c4e0878a899688fc1054b268fed1a8e6cb45c36b350d36c7448efecd8964d",
+      "sourceOccurrenceCount": 1062,
+      "packetPath": "dev/DOC-0201.v1.json",
+      "packetSha256": "5818b538e4c9267e88c290397ffc46079df0a4bc18cddb3eb4caef419dc4d221",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0202",
+      "documentGroupId": "GROUP-0256",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\022_ND_01-2021_Dang_ky_doanh_nghiep.docx",
+      "sourceSha256": "f8197a069ea9dfbd6e6c8f6ddb5af9c49fafe3328d7fae90544abe3a3dc86a81",
+      "sourceOccurrenceCount": 170,
+      "packetPath": "dev/DOC-0202.v1.json",
+      "packetSha256": "8df485446c42fffba2ff50d7e78ecb5e663bcda2bc720d06106a370481266c9a",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0203",
+      "documentGroupId": "GROUP-0048",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\023_ND_23-2015_Chung_thuc.docx",
+      "sourceSha256": "29d8ec5a4037a7ad386940a3f9de5222564a9ce05343467b781d1018a714dc4e",
+      "sourceOccurrenceCount": 102,
+      "packetPath": "dev/DOC-0203.v1.json",
+      "packetSha256": "b1ca5f8c1840e4559b2a6c67f7e8dd18255c3b95075dca5d7c076af8f4e00f7e",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0205",
+      "documentGroupId": "GROUP-0174",
+      "split": "DEV",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\025_ND_47-2020_Chia_se_du_lieu_so.docx",
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "sourceOccurrenceCount": 4,
+      "packetPath": "dev/DOC-0205.v1.json",
+      "packetSha256": "da81e5506f8433a40916308cbfdca85faff07bc50352bc94c46ca5e75bcc8caa",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0208",
+      "documentGroupId": "GROUP-0254",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\028_WB_RFB_Works_Without_Prequal_2017.docx",
+      "sourceSha256": "f769b70bfb6a7f0ac7d62aea78ce9914eba629a5a781d73369e84a85fed47634",
+      "sourceOccurrenceCount": 7538,
+      "packetPath": "dev/DOC-0208.v1.json",
+      "packetSha256": "3d954bf4777a9fa60ea9ca7413daf5e3e4364faf5e24efb46c47dc6723de40c2",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0209",
+      "documentGroupId": "GROUP-0066",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\029_WB_RFP_Works_DesignBuild_2021.docx",
+      "sourceSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+      "sourceOccurrenceCount": 5216,
+      "packetPath": "dev/DOC-0209.v1.json",
+      "packetSha256": "12e10a197f0aaeedaadd004b4af4c07d494d14142d07e4b7c6ced12e25d829c2",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0210",
+      "documentGroupId": "GROUP-0212",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\030_WB_RFP_Consulting_Services_2019.docx",
+      "sourceSha256": "d5910ed7031dd07acbfd6a2129a91419013dad1f207ed0a03b68bf1c246ed564",
+      "sourceOccurrenceCount": 4998,
+      "packetPath": "dev/DOC-0210.v1.json",
+      "packetSha256": "f1d63cb7989174087bc3c7c22f6b887a67678c58e2b51d3dd971a2732aac1ed2",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0211",
+      "documentGroupId": "GROUP-0016",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\031_WB_Framework_Agreement_Consulting_2025.docx",
+      "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+      "sourceOccurrenceCount": 3590,
+      "packetPath": "dev/DOC-0211.v1.json",
+      "packetSha256": "738ad51fd2d041ad08696cc4e7f584f2078895e6bab0abed3258a843b1f58c99",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0212",
+      "documentGroupId": "GROUP-0052",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\032_WB_Plant_TwoStage_2020.docx",
+      "sourceSha256": "2e6e3205fab5bc28e112db146acd43bb78fa01df7b2bec59f00fcb75f84dd12e",
+      "sourceOccurrenceCount": 5460,
+      "packetPath": "dev/DOC-0212.v1.json",
+      "packetSha256": "a89bee77b6d285aea4d390c3079cc8d7b45814ce7c9233a6a63cd904adc5e593",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0213",
+      "documentGroupId": "GROUP-0081",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\033_WB_EPC_Turnkey_TwoStage_2025.docx",
+      "sourceSha256": "5abbe28669f6722072f19bc74ce0a0465eac4e9bd9e32a71efac705a77d447e7",
+      "sourceOccurrenceCount": 5239,
+      "packetPath": "dev/DOC-0213.v1.json",
+      "packetSha256": "09e8edcbb87ce9aacec71205276806afa5fc5910ae77fe4f51c4d62597fbcc3b",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0214",
+      "documentGroupId": "GROUP-0036",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\034_WB_Plant_Without_Prequal_2016.docx",
+      "sourceSha256": "220471240a65f4ecafc3d8cb7d47a7fd9d7ff8b15d3d3ee30ce8f74a7eebd798",
+      "sourceOccurrenceCount": 6749,
+      "packetPath": "dev/DOC-0214.v1.json",
+      "packetSha256": "6f715a5d550196d2260fe3f389d67ae9605bcc8b2bd0010e683f6052b6fb277b",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0215",
+      "documentGroupId": "GROUP-0078",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\035_WB_EPC_Turnkey_SingleStage_2021.docx",
+      "sourceSha256": "54b00f1d798f7e3db41fbf1a36878ba9a2db7a468cb6fc062ae311c0e6e2a888",
+      "sourceOccurrenceCount": 5460,
+      "packetPath": "dev/DOC-0215.v1.json",
+      "packetSha256": "3ebd85ae3581f1ed38ca24b732eb90fac7043a3b38f189170cb06ddf89795a3b",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0216",
+      "documentGroupId": "GROUP-0186",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\036_WB_Plant_SingleStage_2025.docx",
+      "sourceSha256": "be8f4e037fb609cb21e8ed22d4b3c6a17ea47598860876d734367ea0a5531cb6",
+      "sourceOccurrenceCount": 5753,
+      "packetPath": "dev/DOC-0216.v1.json",
+      "packetSha256": "80ee4560b9e152556f14e7b337e4fed509768f1a70848fb55c06b684c4875a29",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0217",
+      "documentGroupId": "GROUP-0139",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\037_WB_Plant_TwoStage_2025.docx",
+      "sourceSha256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+      "sourceOccurrenceCount": 5958,
+      "packetPath": "dev/DOC-0217.v1.json",
+      "packetSha256": "1003587543731d696b37e407b4348857b9d457c1c55ade44715b0ee71465ea71",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0218",
+      "documentGroupId": "GROUP-0166",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\038_WB_Works_DB_SingleStage_NoSEASH_2025.docx",
+      "sourceSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+      "sourceOccurrenceCount": 4479,
+      "packetPath": "dev/DOC-0218.v1.json",
+      "packetSha256": "596a86384dc99d127295c478c02e787ecad5f2789b5a84b225c483a4808bdc56",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0219",
+      "documentGroupId": "GROUP-0262",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\039_WB_EPC_Turnkey_SingleStage_2025.docx",
+      "sourceSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+      "sourceOccurrenceCount": 4907,
+      "packetPath": "dev/DOC-0219.v1.json",
+      "packetSha256": "aa58a13b4bce94e283ce7b1a6567017180f8e78eace2a7b7f34da5a291f3a4aa",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0224",
+      "documentGroupId": "GROUP-0086",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\03_tai_chinh_ke_toan\\044_IDA_Financial_Statements_June_2024.docx",
+      "sourceSha256": "5efa3602fc399a2c3c07bf13f07ed6c1ebb956fefd48008907dcc06e544abf7d",
+      "sourceOccurrenceCount": 8868,
+      "packetPath": "dev/DOC-0224.v1.json",
+      "packetSha256": "f9f501c19b944cb86c6af8c81cd910eb4c5bbc00e3f94ac2dac7cd4cf36ce0aa",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0226",
+      "documentGroupId": "GROUP-0087",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\03_tai_chinh_ke_toan\\046_IBRD_Financial_Statements_September_2024.docx",
+      "sourceSha256": "5f72fd7c056490638d216d37050354770348557bd01171669185fe89085cf87f",
+      "sourceOccurrenceCount": 5657,
+      "packetPath": "dev/DOC-0226.v1.json",
+      "packetSha256": "e8d5a2aef960097951862b6ffd15988a4d5bdc84454f0471087a71ca32d9a65a",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0229",
+      "documentGroupId": "GROUP-0047",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\03_tai_chinh_ke_toan\\049_IDA_Financial_Statements_September_2024.docx",
+      "sourceSha256": "295f710893c3cf3d9cc99d043f0eea2b14c7a230500f611cf42b53d940ad16e2",
+      "sourceOccurrenceCount": 4969,
+      "packetPath": "dev/DOC-0229.v1.json",
+      "packetSha256": "5f824a914127f989301efd7cc82c4f5ba49364fbe66e0e0d2bdaf430d8b9c0fb",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0230",
+      "documentGroupId": "GROUP-0097",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\03_tai_chinh_ke_toan\\050_IDA_Financial_Statements_March_2025.docx",
+      "sourceSha256": "679e2385fbc8776367f4a4fbb92cb3e20013e879471b9d06a473857c0f4fcd9f",
+      "sourceOccurrenceCount": 5143,
+      "packetPath": "dev/DOC-0230.v1.json",
+      "packetSha256": "4c0d3ed502e8474cbee80fb169053aa12388e2f6d70a10e5b8efc2cba422f2f1",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0231",
+      "documentGroupId": "GROUP-0124",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\03_tai_chinh_ke_toan\\051_WBG_Trust_Fund_FIS_June_2024.docx",
+      "sourceSha256": "854c000b9566e69463bcc4271ce9920991daba29eb684115c095e73b54533834",
+      "sourceOccurrenceCount": 1155,
+      "packetPath": "dev/DOC-0231.v1.json",
+      "packetSha256": "8a95e945d6f37d73e7c8e4749b73d810626c6bdb1864bbc450ddb9e41d281914",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0236",
+      "documentGroupId": "GROUP-0144",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\056_OpenStax_Business_Law_I_Essentials.docx",
+      "sourceSha256": "9d567332514f7ed149f9b1e56830972b5080ffbec692ff26f1d675486dd0b683",
+      "sourceOccurrenceCount": 3151,
+      "packetPath": "dev/DOC-0236.v1.json",
+      "packetSha256": "d0c11ba51cf052f1434c4f42c4898c606e6ae460669315feed0482c85f361baa",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0238",
+      "documentGroupId": "GROUP-0234",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\058_Machine_Learning_Lecture_Note.docx",
+      "sourceSha256": "e5b3b3173a587827a3dfa41081e1b812b927507f5768b2ad9e6bfcda72206949",
+      "sourceOccurrenceCount": 4999,
+      "packetPath": "dev/DOC-0238.v1.json",
+      "packetSha256": "59f4aee96b0860679a410da744c2aea7b08aca28929b8af294dcaf2493401f92",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0239",
+      "documentGroupId": "GROUP-0198",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\059_Lectures_on_Statistics_in_Theory.docx",
+      "sourceSha256": "c5abda5ed788a2406c7f9919392f21e6ca62e1c8922fe69c87aab76402621d88",
+      "sourceOccurrenceCount": 2155,
+      "packetPath": "dev/DOC-0239.v1.json",
+      "packetSha256": "8af8845bd909465abd5e703b154c221afc13f186abbc48db85aad733bc436114",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0240",
+      "documentGroupId": "GROUP-0001",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\060_Elements_of_Linear_Algebra_Lecture_Notes.docx",
+      "sourceSha256": "0081c8d6b7b910262277e24e2d76629746aefb0f0902189aee964444deedb774",
+      "sourceOccurrenceCount": 1600,
+      "packetPath": "dev/DOC-0240.v1.json",
+      "packetSha256": "b545763d86e2fbd27c9891d76ccffb4eb58a19d8b0582c59e6b00cf84b2fdfaf",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0241",
+      "documentGroupId": "GROUP-0003",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\061_Introduction_to_Business_Mathematics.docx",
+      "sourceSha256": "011cc5d01e07583487ea32676e55d39f3fde5120df304df5cfbc2b3a44315d07",
+      "sourceOccurrenceCount": 2817,
+      "packetPath": "dev/DOC-0241.v1.json",
+      "packetSha256": "946fc4521238758cd4be35a96a52a9fa69da70cc2671afabed5b398be7388abb",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0242",
+      "documentGroupId": "GROUP-0062",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\062_Lectures_on_Probability_Theory.docx",
+      "sourceSha256": "411f1303ff8dc0a6db448683ca349d7cf25c96467a6debc52845a82cee135c00",
+      "sourceOccurrenceCount": 13949,
+      "packetPath": "dev/DOC-0242.v1.json",
+      "packetSha256": "5bc58e054adb952ad7ffabf3e7d6cb37c8ecfe61c3d65cc34c3d7f79a50313b9",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0243",
+      "documentGroupId": "GROUP-0072",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\063_Advanced_Linear_Algebra.docx",
+      "sourceSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+      "sourceOccurrenceCount": 20279,
+      "packetPath": "dev/DOC-0243.v1.json",
+      "packetSha256": "ced7db18b773ff2d7622c89fee45e514abbc82fd632d8590a0c7f40f5638e41d",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0244",
+      "documentGroupId": "GROUP-0187",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\064_Machine_Learning_with_Neural_Networks.docx",
+      "sourceSha256": "bf467fc6c13d3efc3c5be3718032d508d88d5d06d45dc1ee00846f1affa73308",
+      "sourceOccurrenceCount": 8639,
+      "packetPath": "dev/DOC-0244.v1.json",
+      "packetSha256": "f731084b2fc1a144b2270c5f36c512b127c56364589e266f0fcb2421cbf86d11",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0245",
+      "documentGroupId": "GROUP-0068",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\065_Numerical_Linear_Algebra_Lecture_Notes.docx",
+      "sourceSha256": "4c6a39a6273c04bf06ab7aecb154936b657460e104fc2a609dbf1358e18a58ea",
+      "sourceOccurrenceCount": 4203,
+      "packetPath": "dev/DOC-0245.v1.json",
+      "packetSha256": "3db85906ae0ef4d50833e992cc3869a613f9133fb1ebc6c14a3f92938821230e",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0246",
+      "documentGroupId": "GROUP-0043",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\066_Linear_Neural_Networks_Lecture_Notes.docx",
+      "sourceSha256": "26402cdd2f8d217b52410c4b3320f3b27ed661b917935133f6846c8e03be0a2b",
+      "sourceOccurrenceCount": 1045,
+      "packetPath": "dev/DOC-0246.v1.json",
+      "packetSha256": "59533d2f229d67403df4ebf06125c109b2e1d9b04be11d5ac0b3b6b0391c9afd",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0247",
+      "documentGroupId": "GROUP-0172",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\067_Algorithms_for_Massive_Data_Lecture_Notes.docx",
+      "sourceSha256": "afe1210d62ff6ee399fb0af9632aeb2e5cb5d79e61c237b7e48e2c269b546981",
+      "sourceOccurrenceCount": 7463,
+      "packetPath": "dev/DOC-0247.v1.json",
+      "packetSha256": "06701c603f4c98a267eb53e3fa7badeebc2acb78206f22d41646bde6130913de",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0250",
+      "documentGroupId": "GROUP-0033",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\070_Lectures_on_Optimization_Yale.docx",
+      "sourceSha256": "1f1fa18612a4c6f42111950bfd2b3238785aad0118328dd8bdff620dfee2ebd7",
+      "sourceOccurrenceCount": 5918,
+      "packetPath": "dev/DOC-0250.v1.json",
+      "packetSha256": "87f0e9152725d3f524fd4106375a9e7a7cdc2e57ae925becb71d1d36bfc3ae15",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0252",
+      "documentGroupId": "GROUP-0069",
+      "split": "DEV",
+      "familyId": "VN_ADMIN_TYPED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\072_ICP_TAG_Minutes_Mar_2025.docx",
+      "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+      "sourceOccurrenceCount": 244,
+      "packetPath": "dev/DOC-0252.v1.json",
+      "packetSha256": "d51c7e1f7c8d133862a331b924a0ef2f761407ca39de7228f8de849be9f77d2d",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0255",
+      "documentGroupId": "GROUP-0251",
+      "split": "DEV",
+      "familyId": "VN_ADMIN_TYPED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\075_FORTIS_GC_Minutes_Nov21_2024.docx",
+      "sourceSha256": "f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+      "sourceOccurrenceCount": 57,
+      "packetPath": "dev/DOC-0255.v1.json",
+      "packetSha256": "4cea6f0ed1792027e4cd613429b9970a8c82c966e392fc6f405117c6585b3acb",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0256",
+      "documentGroupId": "GROUP-0011",
+      "split": "DEV",
+      "familyId": "VN_ADMIN_TYPED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\076_ICP_IACG08_Minutes_2023.docx",
+      "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+      "sourceOccurrenceCount": 258,
+      "packetPath": "dev/DOC-0256.v1.json",
+      "packetSha256": "88c3f7caeed622f82d704ae71bfb1879eb307e4575261b9549f8de25f69ac96d",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0258",
+      "documentGroupId": "GROUP-0116",
+      "split": "DEV",
+      "familyId": "VN_ADMIN_TYPED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\078_ICP_IACG07_Minutes_May_2023.docx",
+      "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "sourceOccurrenceCount": 173,
+      "packetPath": "dev/DOC-0258.v1.json",
+      "packetSha256": "6c73cc1c60ceff2e7718ffafc23c7a59211e6400f65d87686abc18b959ec10ad",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0259",
+      "documentGroupId": "GROUP-0029",
+      "split": "DEV",
+      "familyId": "VN_ADMIN_TYPED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\079_ICP_TAG_Minutes_Apr_2024.docx",
+      "sourceSha256": "1c946a0ed13bd27cafb4ef281807ecfed6605340fca51029e72a904cf651c777",
+      "sourceOccurrenceCount": 120,
+      "packetPath": "dev/DOC-0259.v1.json",
+      "packetSha256": "6eafb5de305a31fa5ac30101cb92d441a2160402f3cb6ac66c01d8f81fa2f2dd",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0260",
+      "documentGroupId": "GROUP-0141",
+      "split": "DEV",
+      "familyId": "VN_ADMIN_TYPED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\080_ICP_Governing_Board_Minutes_Feb_2023.docx",
+      "sourceSha256": "99d7e5189f4bfb90eda6f69770a9b4c1941a6b1ab9c8b58d79009ebe832f8663",
+      "sourceOccurrenceCount": 136,
+      "packetPath": "dev/DOC-0260.v1.json",
+      "packetSha256": "e11fb132cd7c32fcc7136d3ccf98c8ba4a6e196ae8166cb072c10217710f14e9",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0261",
+      "documentGroupId": "GROUP-0131",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\06_dich_song_ngu\\081_Luat_Doanh_nghiep_2020_EN.docx",
+      "sourceSha256": "8d8fd7eb8db68d64de25eb075d24a39710cbd9666d75dd884c445dd6f100d937",
+      "sourceOccurrenceCount": 2392,
+      "packetPath": "dev/DOC-0261.v1.json",
+      "packetSha256": "d9de6b7784f7bb0d488c09798c26d307c1c5f0d7d7deafe780ad840571806376",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0262",
+      "documentGroupId": "GROUP-0073",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\06_dich_song_ngu\\082_Bo_luat_Lao_dong_2019_EN.docx",
+      "sourceSha256": "50c53006f6d41a7f58376435ceb11a83e8d8c7c7959c0f734ae8d9ffeb0141d7",
+      "sourceOccurrenceCount": 1372,
+      "packetPath": "dev/DOC-0262.v1.json",
+      "packetSha256": "8d929ca0dc72bcb401c1aef87a193780ec3c75ba2d71ca9d135479e4dad46f5c",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0263",
+      "documentGroupId": "GROUP-0039",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\06_dich_song_ngu\\083_Luat_An_ninh_mang_2018_EN.docx",
+      "sourceSha256": "248cb4182cc175bb929ce3dcc5721823be64ad939882581268e503af4245c782",
+      "sourceOccurrenceCount": 641,
+      "packetPath": "dev/DOC-0263.v1.json",
+      "packetSha256": "faadf7845bcecadbc27bc223e2d44f3db20bbfca2421dd8c4939ae21423b8f79",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0264",
+      "documentGroupId": "GROUP-0032",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\06_dich_song_ngu\\084_Luat_Chung_khoan_2019_EN.docx",
+      "sourceSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+      "sourceOccurrenceCount": 4,
+      "packetPath": "dev/DOC-0264.v1.json",
+      "packetSha256": "723a334b261bc3e50a0c8f8f1ac9f0f9513d5626f170cae61944868c872fb467",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0265",
+      "documentGroupId": "GROUP-0173",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\06_dich_song_ngu\\085_Luat_Nha_o_2023_EN.docx",
+      "sourceSha256": "b066db0170eab1d65805f9e76da79034eecf6d46d8fda08e374fcc45c485e1e6",
+      "sourceOccurrenceCount": 2208,
+      "packetPath": "dev/DOC-0265.v1.json",
+      "packetSha256": "5f0b3ec930a60f576ff38b2a697a41c191c970234f1eab3493c5aba0806cf124",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0266",
+      "documentGroupId": "GROUP-0022",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\06_dich_song_ngu\\086_Luat_Dau_tu_2020_EN_alt.docx",
+      "sourceSha256": "141b4d01fa950ab61ee2900485871e918ee25ddf97f963913464f886f76eef4b",
+      "sourceOccurrenceCount": 1842,
+      "packetPath": "dev/DOC-0266.v1.json",
+      "packetSha256": "238fd0244d166615de62fb9d220a125402e62c44087510fc1f648c9c16e2e055",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0267",
+      "documentGroupId": "GROUP-0258",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\06_dich_song_ngu\\087_ND_53-2022_An_ninh_mang_EN.docx",
+      "sourceSha256": "f85eca8c9392de645f699e20642f940d5e3f1cee045c08653ddcc60f1cf4c22b",
+      "sourceOccurrenceCount": 699,
+      "packetPath": "dev/DOC-0267.v1.json",
+      "packetSha256": "0c03151166f70746da32eeec131d1f935a0663d4a3de6093e4e14b889db6beab",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0269",
+      "documentGroupId": "GROUP-0241",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\06_dich_song_ngu\\089_ND_195-2013_Luat_Xuat_ban_EN.docx",
+      "sourceSha256": "ea6f6bd9eddb6f30915ba59668fc7533a0695428ff29e3e5ff07a8e10cc5671c",
+      "sourceOccurrenceCount": 288,
+      "packetPath": "dev/DOC-0269.v1.json",
+      "packetSha256": "a6bc863cb3b3491a8daf0824f5b463ca24c43a090235fb277bca6c98e2933ff3",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0274",
+      "documentGroupId": "GROUP-0169",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\07_system_generated\\094_RFC9113_HTTP_2.docx",
+      "sourceSha256": "adcacef2bc27da5a4ca0dd854eca13ebe89d8022b9a35e4c3ab2dbc38e5e0b41",
+      "sourceOccurrenceCount": 3491,
+      "packetPath": "dev/DOC-0274.v1.json",
+      "packetSha256": "52e17f77255d155d3058ee6bbd056b9a1d74237f90e58fa91f9101021bedff21",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0275",
+      "documentGroupId": "GROUP-0178",
+      "split": "DEV",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\07_system_generated\\095_RFC9114_HTTP_3.docx",
+      "sourceSha256": "b263cd1c33ac8d7f730eb0c7747907efb9643b5813a1e6d2a64d56a8bb50099f",
+      "sourceOccurrenceCount": 2648,
+      "packetPath": "dev/DOC-0275.v1.json",
+      "packetSha256": "ff07c2c01d72d4a001b1dae398c3807237a22215d1e19f3833d971ac59f1d3ba",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    }
+  ],
+  "holdoutDocuments": [
+    {
+      "documentId": "DOC-0191",
+      "documentGroupId": "GROUP-0080",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\011_Luat_An_toan_thong_tin_mang_86-2015-QH13.docx",
+      "sourceSha256": "5a7ab944618861645727669ecb05f6a808ddf57b4f82ba48f2283a051c63ce33",
+      "sourceOccurrenceCount": 55,
+      "packetPath": "holdout-sealed/DOC-0191.v1.json",
+      "packetSha256": "2ec7e12275b4f99a2341a7e2d21cd38aef6f29568a313f86c29ce9b5890be96d",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0194",
+      "documentGroupId": "GROUP-0090",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\014_Luat_Chung_khoan_54-2019-QH14.docx",
+      "sourceSha256": "60892a6c8b4b050ac6a29d3e3f21aaa51ef118fb111a0ed918c8c290ae8bd468",
+      "sourceOccurrenceCount": 186,
+      "packetPath": "holdout-sealed/DOC-0194.v1.json",
+      "packetSha256": "003285ca858acb1f91a0575157c2a7684a6a0cb8ba9ca89fe83099d0b01da328",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0197",
+      "documentGroupId": "GROUP-0085",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\017_ND_123-2020_Hoa_don_chung_tu.docx",
+      "sourceSha256": "5ef426b898edb9405d08808e89ebf8f4ff038914a6e588459923212dc34cbd14",
+      "sourceOccurrenceCount": 3643,
+      "packetPath": "holdout-sealed/DOC-0197.v1.json",
+      "packetSha256": "348402f093378bf06f46d98cd95a7abb863835647431b32901a4d1419632aae4",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0204",
+      "documentGroupId": "GROUP-0105",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "VN_LEGAL_MARKER",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\01_phap_quy\\024_ND_15-2020_Xu_phat_BC_VT_CNTT.docx",
+      "sourceSha256": "6f9e4e7d92cbce33fc6adb26266df901aab860917ae510531b6fac10e99d7529",
+      "sourceOccurrenceCount": 1732,
+      "packetPath": "holdout-sealed/DOC-0204.v1.json",
+      "packetSha256": "b456233a7304cb405b327b166056ca80f964399fb516b1638280e69cf6907418",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0207",
+      "documentGroupId": "GROUP-0180",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\027_WB_RFB_NonConsulting_2021.docx",
+      "sourceSha256": "b5744019f84038d82241c57b172d1d462e8899a9bc32e8a1a4d7b36d8fa8f272",
+      "sourceOccurrenceCount": 2650,
+      "packetPath": "holdout-sealed/DOC-0207.v1.json",
+      "packetSha256": "f04c2351c3236a69314d3a30a4df8ddf8a6e68e1b5b0f1b850250b246ae7eec3",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0220",
+      "documentGroupId": "GROUP-0020",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\02_hop_dong_mua_sam\\040_WB_Works_DB_SingleStage_2023.docx",
+      "sourceSha256": "10489781a06acf5ef66e3213ec2f0dbd38755a0ad9380f0f2777c9ee1214fb81",
+      "sourceOccurrenceCount": 4523,
+      "packetPath": "holdout-sealed/DOC-0220.v1.json",
+      "packetSha256": "224093dc856d5e23f95d14296274395c1ece1cab1a36ac1c143382369db0d11f",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0221",
+      "documentGroupId": "GROUP-0150",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\03_tai_chinh_ke_toan\\041_IBRD_Financial_Statements_June_2025.docx",
+      "sourceSha256": "a28a2845317be67e0edd675e7730f683fedbe8febc94ebd12a4971a3a36a32d1",
+      "sourceOccurrenceCount": 14068,
+      "packetPath": "holdout-sealed/DOC-0221.v1.json",
+      "packetSha256": "5e744a91fac1541258fa97a9aaf18afde88fe087968829665fc14a57a7f42771",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0222",
+      "documentGroupId": "GROUP-0225",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\03_tai_chinh_ke_toan\\042_IDA_Financial_Statements_June_2025.docx",
+      "sourceSha256": "de60d5623893a9c50534a7e9f1dc101687b493d241ab7bad674a7b5a40708787",
+      "sourceOccurrenceCount": 9631,
+      "packetPath": "holdout-sealed/DOC-0222.v1.json",
+      "packetSha256": "32ba99a3edf4fa3ebb1e2825073335c280aa60b70287e0567b0fc6daadc1f209",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0225",
+      "documentGroupId": "GROUP-0175",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\03_tai_chinh_ke_toan\\045_IBRD_Financial_Statements_June_2023.docx",
+      "sourceSha256": "b19e9cd35ffc86b5977b34f4a3dd6746c61fc484c574a03bba5c7d4859f7849b",
+      "sourceOccurrenceCount": 13264,
+      "packetPath": "holdout-sealed/DOC-0225.v1.json",
+      "packetSha256": "bf744e16d0d712169068e04cd62faa76029c609a466f94d6b8b36594e4df427c",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0227",
+      "documentGroupId": "GROUP-0160",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\03_tai_chinh_ke_toan\\047_IBRD_Financial_Statements_December_2024.docx",
+      "sourceSha256": "aa1c14d9f82d5b281c29ad7b2fc002dff6658c44c5d21e665a3f1a097f6ba1a4",
+      "sourceOccurrenceCount": 6555,
+      "packetPath": "holdout-sealed/DOC-0227.v1.json",
+      "packetSha256": "5bcfc1dd596cc14c5147b02a357561378e4575af50ab76cfad4d100a2dc7611d",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0228",
+      "documentGroupId": "GROUP-0140",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\03_tai_chinh_ke_toan\\048_IBRD_Financial_Statements_March_2025.docx",
+      "sourceSha256": "99bebeb535d37b83b05c2cc06339e67d7e02682c2db7c473555cd52cfe51ddc2",
+      "sourceOccurrenceCount": 6610,
+      "packetPath": "holdout-sealed/DOC-0228.v1.json",
+      "packetSha256": "167d34ee4bafa2ce9f866a2e61a23fc44b4d73a131ebe2a85c6c4468795539fb",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0232",
+      "documentGroupId": "GROUP-0245",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\03_tai_chinh_ke_toan\\052_WBG_Trust_Fund_FIS_December_2025.docx",
+      "sourceSha256": "f17f2835cf66f18622c87456d5ee03c7fc5f5a5e2e70d8b05548471962ae6be5",
+      "sourceOccurrenceCount": 1139,
+      "packetPath": "holdout-sealed/DOC-0232.v1.json",
+      "packetSha256": "78bca1dce0f98cd64e341463dfd6c066a395e8286908b55a062402f22cbbf505",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0235",
+      "documentGroupId": "GROUP-0095",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\03_tai_chinh_ke_toan\\055_IDA_External_Review_FY25.docx",
+      "sourceSha256": "63bc2df86bfc222c763dd8e90f81ffd5c0d7e78b9b9746cfa2eeba5b183f3b8e",
+      "sourceOccurrenceCount": 23636,
+      "packetPath": "holdout-sealed/DOC-0235.v1.json",
+      "packetSha256": "8b1566fdaf3479be071a3125bcc1340f02a71c6554161bc5fa7bcdedbed1a42f",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0237",
+      "documentGroupId": "GROUP-0255",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\057_Quantitative_Methods_in_Finance_Lecture_Notes.docx",
+      "sourceSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+      "sourceOccurrenceCount": 27990,
+      "packetPath": "holdout-sealed/DOC-0237.v1.json",
+      "packetSha256": "84e3ccd6bdcb1c6cab8e0969e97b20f134fd8e1136023d824c110c2458598020",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0248",
+      "documentGroupId": "GROUP-0110",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\068_SDEs_for_Finance_Course_Notes.docx",
+      "sourceSha256": "72327cf85d214bc30e57353b537bb7044af4d2ae4a4508d997bef64771af4c75",
+      "sourceOccurrenceCount": 6619,
+      "packetPath": "holdout-sealed/DOC-0248.v1.json",
+      "packetSha256": "e182ac8becc441b1abfac81f88a4428aac2c9d47337b020bb1cb4438ed2c8b35",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0249",
+      "documentGroupId": "GROUP-0200",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\04_giao_trinh\\069_Course_in_Dynamic_Optimization.docx",
+      "sourceSha256": "c73131947b5153b7cdf9a8f0ae60792e1c112f62971e65c47c25c72ecbd8bb51",
+      "sourceOccurrenceCount": 3534,
+      "packetPath": "holdout-sealed/DOC-0249.v1.json",
+      "packetSha256": "9d39b69a96191d6f6b1d90e444fe385304948eeaedb5b635c2f0b272b6cb0bd7",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0251",
+      "documentGroupId": "GROUP-0210",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "VN_ADMIN_TYPED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\071_ICP_IACG_Minutes_Oct_2025.docx",
+      "sourceSha256": "cfb85d7aedf635838b658dafc6fc17bab4d08ce42ffd7fd6417ab31b238d91f0",
+      "sourceOccurrenceCount": 348,
+      "packetPath": "holdout-sealed/DOC-0251.v1.json",
+      "packetSha256": "a09cbea5aa6655d4e2c6f5401b01680a8fd497f7358e639d4d9c1d43c1d11691",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0253",
+      "documentGroupId": "GROUP-0060",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "VN_ADMIN_TYPED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\05_bien_ban_hop\\073_FORTIS_GC_Minutes_Mar_2026.docx",
+      "sourceSha256": "3bad8832d728ae8d94368cc5024850828dc504f458b76657f6b86ac1e9c6bdda",
+      "sourceOccurrenceCount": 25,
+      "packetPath": "holdout-sealed/DOC-0253.v1.json",
+      "packetSha256": "8e9f441f5318355f108bed37314ca4efd4942a69d48af19ea29f368a6796f7f7",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0268",
+      "documentGroupId": "GROUP-0025",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\06_dich_song_ngu\\088_ND_69-2018_Ngoai_thuong_EN.docx",
+      "sourceSha256": "15909ff8685c85e2473c6d8bdd8a9857cf52843d7cf358f5c76f414d94bff836",
+      "sourceOccurrenceCount": 3045,
+      "packetPath": "holdout-sealed/DOC-0268.v1.json",
+      "packetSha256": "61666e92d83d5d37ae331d73b443c14ad3f518ecd0a1556def1e1dc56a63cccd",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0270",
+      "documentGroupId": "GROUP-0015",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\06_dich_song_ngu\\090_ND_155-2018_Sua_doi_Bo_Y_te_EN.docx",
+      "sourceSha256": "0a62eb30ab68d035952ee314bba18e5a429e83c9ce9b588579973650153fcd0d",
+      "sourceOccurrenceCount": 1041,
+      "packetPath": "holdout-sealed/DOC-0270.v1.json",
+      "packetSha256": "6fd3f48d80c483614c68925f69a924c9f6aa085da9d67a27904a9c79f028f42a",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0271",
+      "documentGroupId": "GROUP-0190",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\07_system_generated\\091_RFC9110_HTTP_Semantics.docx",
+      "sourceSha256": "c2bdbf91a6bd16e848f6f3c4d690534eb7449cb5f0cd3bc39c5afa6610264641",
+      "sourceOccurrenceCount": 9029,
+      "packetPath": "holdout-sealed/DOC-0271.v1.json",
+      "packetSha256": "0ef424e613de6d5e9db8052bd4816fc4e0486b2326a3eda1277e2995c7f5af0d",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0272",
+      "documentGroupId": "GROUP-0185",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\07_system_generated\\092_RFC9111_HTTP_Caching.docx",
+      "sourceSha256": "be530ba0606f4837be9beeca1286a44c4259df5c334877e6bc58e81817869ecb",
+      "sourceOccurrenceCount": 1555,
+      "packetPath": "holdout-sealed/DOC-0272.v1.json",
+      "packetSha256": "90d88277cb2d1d58a85bd1a1edb12b65efd95df7b30802404baff667d4889435",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    },
+    {
+      "documentId": "DOC-0273",
+      "documentGroupId": "GROUP-0100",
+      "split": "GENERALIZATION_HOLDOUT",
+      "familyId": "PDF_CONVERTED",
+      "sourcePath": "todo10_8\\heading_corpus_95_word\\07_system_generated\\093_RFC9112_HTTP_1_1.docx",
+      "sourceSha256": "68ec3f2464844732489bcc6d30760f67df1403acce88eb3750badc57fb6f1f3c",
+      "sourceOccurrenceCount": 2209,
+      "packetPath": "holdout-sealed/DOC-0273.v1.json",
+      "packetSha256": "2d64bb491dad0869ed70faf0d04a2b41667257749ae03ef928bec426e46be8f5",
+      "packetStatus": "READY_FOR_HUMAN_REVIEW"
+    }
+  ],
+  "familySummary": [
+    {
+      "familyId": "PDF_CONVERTED",
+      "documents": 56,
+      "groups": 56,
+      "sourceOccurrences": 320040
+    },
+    {
+      "familyId": "VN_ADMIN_TYPED",
+      "documents": 8,
+      "groups": 8,
+      "sourceOccurrences": 1361
+    },
+    {
+      "familyId": "VN_LEGAL_MARKER",
+      "documents": 20,
+      "groups": 20,
+      "sourceOccurrences": 37841
+    }
+  ],
+  "existingPacketAudit": [
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0013.v2.json",
+      "documentId": "DOC-0013",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0014.v2.json",
+      "documentId": "DOC-0014",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0016.v2.json",
+      "documentId": "DOC-0016",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0017.v2.json",
+      "documentId": "DOC-0017",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0018.v2.json",
+      "documentId": "DOC-0018",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0019.v2.json",
+      "documentId": "DOC-0019",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0020.v2.json",
+      "documentId": "DOC-0020",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0024.v2.json",
+      "documentId": "DOC-0024",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0027.v2.json",
+      "documentId": "DOC-0027",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0029.v2.json",
+      "documentId": "DOC-0029",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0030.v2.json",
+      "documentId": "DOC-0030",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0031.v2.json",
+      "documentId": "DOC-0031",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0032.v2.json",
+      "documentId": "DOC-0032",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0033.v2.json",
+      "documentId": "DOC-0033",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0034.v2.json",
+      "documentId": "DOC-0034",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0036.v2.json",
+      "documentId": "DOC-0036",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0037.v2.json",
+      "documentId": "DOC-0037",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0038.v2.json",
+      "documentId": "DOC-0038",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0039.v2.json",
+      "documentId": "DOC-0039",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0040.v2.json",
+      "documentId": "DOC-0040",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0044.v2.json",
+      "documentId": "DOC-0044",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0045.v2.json",
+      "documentId": "DOC-0045",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0048.v2.json",
+      "documentId": "DOC-0048",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0049.v2.json",
+      "documentId": "DOC-0049",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0054.v2.json",
+      "documentId": "DOC-0054",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0055.v2.json",
+      "documentId": "DOC-0055",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0056.v2.json",
+      "documentId": "DOC-0056",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0057.v2.json",
+      "documentId": "DOC-0057",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0058.v2.json",
+      "documentId": "DOC-0058",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0059.v2.json",
+      "documentId": "DOC-0059",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0060.v2.json",
+      "documentId": "DOC-0060",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0062.v2.json",
+      "documentId": "DOC-0062",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0071.v2.json",
+      "documentId": "DOC-0071",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0073.v2.json",
+      "documentId": "DOC-0073",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0074.v2.json",
+      "documentId": "DOC-0074",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0075.v2.json",
+      "documentId": "DOC-0075",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0076.v2.json",
+      "documentId": "DOC-0076",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0077.v2.json",
+      "documentId": "DOC-0077",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0079.v2.json",
+      "documentId": "DOC-0079",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0084.v2.json",
+      "documentId": "DOC-0084",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0085.v2.json",
+      "documentId": "DOC-0085",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    },
+    {
+      "packetPath": "eval/harness-lift/review-packets-v2/DOC-0264.v2.json",
+      "documentId": "DOC-0264",
+      "classification": "EXHAUSTIVE_COMPATIBLE",
+      "reason": "source-first-coverage-confirmed; split=DEV"
+    }
+  ],
+  "reservedDocumentsExcluded": 11,
+  "providerCalls": 0
+}

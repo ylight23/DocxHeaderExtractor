@@ -1,0 +1,10 @@
+{
+  "artifactKind": "a99_gold_validation_policy",
+  "schemaVersion": "a99-human-gold-validation-policy-v1",
+  "exhaustive": true,
+  "sourceShaAndPacketShaRequired": true,
+  "duplicateActiveOccurrence": false,
+  "sourceFirst": true,
+  "independentOfModelPrediction": true,
+  "holdoutSealedUntilReleaseFreeze": true
+}

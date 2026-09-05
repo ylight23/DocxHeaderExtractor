@@ -1,0 +1,34 @@
+{
+  "artifactKind": "a99_review_packet_schema",
+  "schemaVersion": "a99-review-packet-v1",
+  "authority": "PARSER_SOURCE_FACTS_ONLY",
+  "required": [
+    "documentId",
+    "documentGroupId",
+    "split",
+    "familyId",
+    "sourceDocumentSha256",
+    "occurrences"
+  ],
+  "occurrenceRequired": [
+    "sourceId",
+    "stableId",
+    "sourceOrdinal",
+    "sourceSpan",
+    "sourceTextHash",
+    "sourceText",
+    "style",
+    "numbering",
+    "layout"
+  ],
+  "forbidden": [
+    "prediction",
+    "candidate",
+    "confidence",
+    "selected",
+    "validated",
+    "goldLabel",
+    "headingSpan",
+    "parentSourceId"
+  ]
+}
