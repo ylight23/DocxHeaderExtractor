@@ -838,7 +838,7 @@ internal static class HarnessLiftOccurrenceJoinRunner
         foreach (var item in observations)
         {
             var before = stage == "marker" ? item.trace.AfterMarkerLevel : item.trace.AfterStructuralLevel;
-            var after = stage == "marker" ? item.trace.AfterStructuralLevel : item.trace.finalLevel;
+            var after = stage == "marker" ? item.trace.AfterStructuralLevel : item.trace.FinalLevel;
             if (field == "level" && before is not null && after is not null && !Equals(before, after) && EqualValue(field, after, item.expected)) count++;
         }
         return count;
