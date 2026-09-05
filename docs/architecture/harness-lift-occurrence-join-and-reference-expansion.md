@@ -418,7 +418,7 @@ This document records an evaluation-only measurement boundary. Parser-owned sour
       "N15"
     ],
     "newFailures": 0,
-    "changedFingerprints": 0,
+    "changedFingerprints": 1,
     "unjoined": 0,
     "trx": "C:\\Temp\\DocxHeaderExtractor-hl2-fullsuite-224f954\\hl2-full-suite.trx"
   },
