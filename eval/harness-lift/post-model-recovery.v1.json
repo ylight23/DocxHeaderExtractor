@@ -1,0 +1,13 @@
+{
+  "artifactKind": "harness_lift_hl3_post_model_recovery",
+  "schemaVersion": "3.0",
+  "sameExactModelExposedPopulation": true,
+  "modelExposed": 1,
+  "modelCorrect": 0,
+  "finalCorrect": 0,
+  "modelProposalCorrectRate": 0,
+  "finalCorrectRateSamePopulation": 0,
+  "observedPostModelHarnessLift": "0/1",
+  "deterministicAutomationExcluded": true,
+  "modelNotExposedExcluded": true
+}

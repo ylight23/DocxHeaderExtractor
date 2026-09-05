@@ -1,0 +1,37 @@
+{
+  "artifactKind": "harness_lift_hl3_positive_recall",
+  "schemaVersion": "3.0",
+  "source": {
+    "status": "POSITIVE_OCCURRENCE_RECALL",
+    "numerator": 88,
+    "denominator": 88,
+    "recall": 1
+  },
+  "representation": {
+    "status": "POSITIVE_OCCURRENCE_RECALL",
+    "numerator": 88,
+    "denominator": 88,
+    "recall": 1
+  },
+  "candidateRequiredRoute": {
+    "status": "POSITIVE_OCCURRENCE_TRACE_ONLY",
+    "numerator": 1,
+    "denominator": 1,
+    "recall": 1
+  },
+  "modelRequiredRouteExposure": {
+    "status": "POSITIVE_OCCURRENCE_TRACE_ONLY",
+    "numerator": 1,
+    "denominator": 1,
+    "recall": 1
+  },
+  "final": {
+    "status": "NOT_MEASURED_FINAL_LINEAGE_UNKNOWN",
+    "numerator": 0,
+    "denominator": 0,
+    "recall": null
+  },
+  "precision": "NOT_MEASURED",
+  "f1": "NOT_MEASURED",
+  "reason": "official trusted references are positive-only; no exhaustive negative denominator"
+}

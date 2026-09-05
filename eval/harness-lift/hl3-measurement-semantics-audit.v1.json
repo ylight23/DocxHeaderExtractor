@@ -1,0 +1,115 @@
+{
+  "artifactKind": "harness_lift_hl3_measurement_semantics_audit",
+  "schemaVersion": "3.0",
+  "baseRevision": "fcf44b824fe51590f9c987d41b58d71cd4028341",
+  "frozenInputSha256": {
+    "eval/harness-lift/final-decision.v2.json": "f3934f6add2acfc0923879664e1e494347066328248d5b20b857b4ee6c9cc24b",
+    "eval/harness-lift/reference-occurrence-bridge.v1.json": "bb39e96a5f8f2d90925bac6716056d3f1864afbeb4c7dd24d029e8ed7fecde67",
+    "eval/harness-lift/model-occurrence-bridge.v1.json": "c0146507737efe24c3b009a463678cd3c2dab67e07c1b61813992b675fb78a22",
+    "eval/harness-lift/current-measurement-manifest.v2.json": "06812aa6fdcae7cbbe3089d11eff383e60c97538c9076163dec0133626a7756d",
+    "eval/harness-lift/harness-lift-runs.v2.json": "ee402c5df7e01769695f7be49b7308e6c2e702419fd4eeebfd672cf349b9b852",
+    "eval/harness-lift/harness-lift-by-field.v1.json": "1423c4b7696e49ee0b274917874aaf8931e22e9c7d2015630263bf07d4618fe1",
+    "eval/harness-lift/first-loss-summary.v2.json": "f715ad4dc6b3431b94c1ee181070565bc4acb56a67347e160656a757bc67d626",
+    "eval/harness-lift/pre-model-coverage.v2.json": "10c3bb5f558d2f48b10d8b5d3a3866a58853a86ded262f858131e7aa81f95576",
+    "eval/harness-lift/source-structural-reference-expansion.v1.json": "606bcb705f06e1c4fbbc23be769020d522e1a5b896a9afd96b3a1fcd353c05d9",
+    "eval/harness-lift/unknown-gap-manifest.v2.json": "c850cfdbfcd52df08d0291ace58a92a82b9b77c91cf0a817f734dc9826d632b6",
+    "eval/harness-lift/review-manifest.v2.json": "2487ee42c525d49ce244bb0ede7086eb9bc2cd599fd1bf5fa3bf9ae115dafe78"
+  },
+  "providerCalls": 0,
+  "providerTraceReuse": "HL2_COMMITTED_TRACES_ONLY",
+  "trustedDocuments": [
+    "DOC-0066",
+    "DOC-0082",
+    "DOC-0205"
+  ],
+  "modelRunOccurredInDocuments": [
+    "DOC-0066",
+    "DOC-0082",
+    "DOC-0205"
+  ],
+  "review": {
+    "packetCount": 42,
+    "packetHashes": {
+      "eval/harness-lift/review-packets-v2/DOC-0013.v2.json": "a8cfcbe880d061e869bc05c6e56c187bdb0fb7e681ff8afd47a388fd46a5644f",
+      "eval/harness-lift/review-packets-v2/DOC-0014.v2.json": "df218bbed3f5a553e24ea084bef19a9d170c035891e386d5f1a681cab1fa748e",
+      "eval/harness-lift/review-packets-v2/DOC-0016.v2.json": "1f780388d7e2320070ec9cf8a159d05a30a324aa501e53e0b9866d6920953449",
+      "eval/harness-lift/review-packets-v2/DOC-0017.v2.json": "226763cd164e453abfdc6ae9e586f48c29961b9c19a8820c4732eaa1babddb0b",
+      "eval/harness-lift/review-packets-v2/DOC-0018.v2.json": "3f5044ec7957fbf24ef59ac425c90b50296f38a1a5e53483293e40b66272805d",
+      "eval/harness-lift/review-packets-v2/DOC-0019.v2.json": "937c7d5e49c1016f10b357fdaa9a2a42a993ec69b245fffb903c2c691bf08f71",
+      "eval/harness-lift/review-packets-v2/DOC-0020.v2.json": "4d1366078638175d347baf7e4f397d5a1a7246c33c7a014e1e2c823eb342771d",
+      "eval/harness-lift/review-packets-v2/DOC-0024.v2.json": "2c8e85e4e5a3df3726bbf0f819f834de259be658cb1acb3cb084587549a3b389",
+      "eval/harness-lift/review-packets-v2/DOC-0027.v2.json": "9a031071744095e4e3dd6af014e269aa57b5a102022a08e141a6e15b3a5a6b81",
+      "eval/harness-lift/review-packets-v2/DOC-0029.v2.json": "d81502e1ad11ee38099a4a98f4b413980fde6f4211a271d8d5dff749ca7b7a4f",
+      "eval/harness-lift/review-packets-v2/DOC-0030.v2.json": "2281867be2b1564540f1062012306a08a537f7dfd527843a779abbbf10c5b9f1",
+      "eval/harness-lift/review-packets-v2/DOC-0031.v2.json": "14f4cb12d5df28e4df1e5d5eca9e30b533c00641647a5910e8dc1968bbbd17e1",
+      "eval/harness-lift/review-packets-v2/DOC-0032.v2.json": "4513e86bed42a1ce441740b8d45f92f4d935d54541ae508a399ee19d12719c31",
+      "eval/harness-lift/review-packets-v2/DOC-0033.v2.json": "18f9a69a585a16c5a390ce9d76388c661c77ab9fc45fd5284032a22fc1e0a5a9",
+      "eval/harness-lift/review-packets-v2/DOC-0034.v2.json": "91ff9c358f22fe25020504c6aa7d6777a787b7c091a00f5b955a73e2276e40f6",
+      "eval/harness-lift/review-packets-v2/DOC-0036.v2.json": "e5abc978377fc42e1913daa021b2f2238ff60ec7b2da54903fdbf90c67030cc7",
+      "eval/harness-lift/review-packets-v2/DOC-0037.v2.json": "5300aa5c0b2d876d20e9e1e9cee33148c6f4180bf8496a4f9d02e580c69f1a20",
+      "eval/harness-lift/review-packets-v2/DOC-0038.v2.json": "4a4a305d399df0e1a8ab4946075548fac875dde218dd97b198043f5562f24806",
+      "eval/harness-lift/review-packets-v2/DOC-0039.v2.json": "1dc4b9c1d8cb6bb06b7fd6ff299f6cf1a0b74a941d8b9bbf8b8e347388315272",
+      "eval/harness-lift/review-packets-v2/DOC-0040.v2.json": "e11cf945ff57c51ebe37973440bd9a27f40ca96b8cb39dd98f270853e519ad69",
+      "eval/harness-lift/review-packets-v2/DOC-0044.v2.json": "5050f29b79987814491591d792bd1c655dd274b3f2a3e9e02ff32501129d9eca",
+      "eval/harness-lift/review-packets-v2/DOC-0045.v2.json": "f60361014b52a858eef353ef17a4e0ec6291474a1bf52e141f57c08c65f5ba83",
+      "eval/harness-lift/review-packets-v2/DOC-0048.v2.json": "5dec0155fd9a1475b00ce0bc141842c8750c38d9c1d14c826f2956f01c9de223",
+      "eval/harness-lift/review-packets-v2/DOC-0049.v2.json": "4a3862a1ac1837a0572d61fe9edf5e3290fcfff39ab50d352abc7faeadfdd3f8",
+      "eval/harness-lift/review-packets-v2/DOC-0054.v2.json": "2d47a3bb4ac7df3bf47c007c46a4b687ef369d0567df166de3b3406a0c89402e",
+      "eval/harness-lift/review-packets-v2/DOC-0055.v2.json": "f768ae283f4d09d05612255c8da14af5111c44de1824a34276491f1bc232249c",
+      "eval/harness-lift/review-packets-v2/DOC-0056.v2.json": "4df1edc301130b44182f71e00fe7fd8cd9768245ef606cec46d314d6619a6b2f",
+      "eval/harness-lift/review-packets-v2/DOC-0057.v2.json": "d89e36912f9e7fa653ff0639232dc083db9cc68539470fc1e4713ada18ba8590",
+      "eval/harness-lift/review-packets-v2/DOC-0058.v2.json": "b23c0631bd7ea15066c7293ff78619c6d8d1f954f571c1fad5601e51d3557490",
+      "eval/harness-lift/review-packets-v2/DOC-0059.v2.json": "6cb64abbfc33b7519ec95cd05a71744389c264c800dc8b858517587e29a6cb4c",
+      "eval/harness-lift/review-packets-v2/DOC-0060.v2.json": "5b96a75e5fd239a93e05ae677697804f46c5d74b1db3bb2502c148cf294834ee",
+      "eval/harness-lift/review-packets-v2/DOC-0062.v2.json": "8d1db96debe3367886fadc2423918c4e80fe4b1b8501439a6b485ea1fbf97b0a",
+      "eval/harness-lift/review-packets-v2/DOC-0071.v2.json": "82f1a5f2bdd33ee5781c3bf78e54aa4425bb9cf246e288cc197204e6ce9de507",
+      "eval/harness-lift/review-packets-v2/DOC-0073.v2.json": "7e308808ae66cb0cbc3dbdfc83ef87178d2d822c1af6f49bdcc3b3cc8135c846",
+      "eval/harness-lift/review-packets-v2/DOC-0074.v2.json": "3d1a49d4955e5f2e0efaed66b2cda20db46fe0a242e699721b33487e67f8757e",
+      "eval/harness-lift/review-packets-v2/DOC-0075.v2.json": "2ad2eb47f8cdee18850a4326b9501b94a87efb849f8e192d41a2dd32ec78c6aa",
+      "eval/harness-lift/review-packets-v2/DOC-0076.v2.json": "79dd69e195a0eb3b7ce511e3c0c6dbf953b272e4288c6f7d4760d0c2d6e31420",
+      "eval/harness-lift/review-packets-v2/DOC-0077.v2.json": "5b8b3a2b2017f4fcfcafb217e3d17e23f6a394ac72fcddd9ccc14f12413bb99e",
+      "eval/harness-lift/review-packets-v2/DOC-0079.v2.json": "b0f664453d6c07bd8ee5f485e4692b3da39d3b5038b75ff04da324b9ce5268f3",
+      "eval/harness-lift/review-packets-v2/DOC-0084.v2.json": "d4a615eafff3d963e7b7b7a42cd6752925f3959f8b76e9cc961a4671c83a09c2",
+      "eval/harness-lift/review-packets-v2/DOC-0085.v2.json": "f63ef73f0a61f2c454c5799530527f48b5e6a9698ff943c8233cafed36b2100d",
+      "eval/harness-lift/review-packets-v2/DOC-0264.v2.json": "d55ce4d47b8b2114d9bc506e5f9672907d9d500c119285803952de3379a0671e"
+    },
+    "humanReviewQueuePreserved": true,
+    "newHumanKeys": 0,
+    "newHumanGold": 0,
+    "newHoldoutLabels": 0,
+    "newReservedLabels": 0,
+    "adjudication": "HL3 measurement only; no Codex/LLM/human adjudication"
+  },
+  "assumptions": [
+    {
+      "assumption": "CandidateBlocks.Id is the same namespace as SourceDocument.Paragraph.SourceId",
+      "evidence": "HL3 live namespace census compares exact sets; no string-shape inference",
+      "validity": "PARTIAL",
+      "impactOnHl2": "candidate flags are not accepted as source-level loss without an explicit intersection"
+    },
+    {
+      "assumption": "RawAnalystResponses.Count \u003E 0 proves every occurrence was exposed",
+      "evidence": "HL2 model trace has 9 retained per-occurrence roles and many rows with no retained proposal",
+      "validity": "INVALID",
+      "impactOnHl2": "document model execution cannot populate per-occurrence exposure"
+    },
+    {
+      "assumption": "CandidateSelected=false is a candidate loss",
+      "evidence": "HL3 requires candidate-required route, proven construction and proven selection namespace",
+      "validity": "INVALID",
+      "impactOnHl2": "261 historical rows require reclassification"
+    },
+    {
+      "assumption": "final source identity must equal raw paragraph SourceId",
+      "evidence": "HL3 accepts explicit parser-owned source/span lineage and compatibility projection separately",
+      "validity": "PARTIAL",
+      "impactOnHl2": "final absence is not inferred from an unproven identity equality"
+    },
+    {
+      "assumption": "fuzzy text or nearest paragraph can close an occurrence",
+      "evidence": "occurrence identity contract and HL3 lineage policy forbid fuzzy joins",
+      "validity": "INVALID",
+      "impactOnHl2": "unproven lineage remains UNKNOWN"
+    }
+  ]
+}
