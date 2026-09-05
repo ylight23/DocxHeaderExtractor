@@ -1,0 +1,126 @@
+{
+  "artifactKind": "harness_lift_by_field",
+  "schemaVersion": "1.0",
+  "fields": {
+    "role": {
+      "field": "role",
+      "referenceOccurrencePopulation": 1098,
+      "runObservationCount": 264,
+      "modelExposed": 3,
+      "modelCorrect": 0,
+      "modelErrors": 3,
+      "modelAccuracy": 0,
+      "finalObserved": 264,
+      "finalCorrect": 0,
+      "finalErrors": 264,
+      "finalAccuracy": 0,
+      "harnessLift": 0,
+      "status": "MEASURED_POSITIVE_OCCURRENCES_ONLY",
+      "repeated": {
+        "count": 3,
+        "mean": 0,
+        "min": 0,
+        "max": 0,
+        "stddev": 0
+      },
+      "recovery": {
+        "modelErrorsTotal": 3,
+        "correctedByMarker": 0,
+        "correctedByStructural": 0,
+        "rejectedByValidator": 0,
+        "introducedByDeterministicStage": 0,
+        "modelErrorsSurvivedFinal": 3
+      }
+    },
+    "level": {
+      "field": "level",
+      "referenceOccurrencePopulation": 2152,
+      "runObservationCount": 264,
+      "modelExposed": 0,
+      "modelCorrect": 0,
+      "modelErrors": 0,
+      "modelAccuracy": null,
+      "finalObserved": 264,
+      "finalCorrect": 0,
+      "finalErrors": 264,
+      "finalAccuracy": 0,
+      "harnessLift": null,
+      "status": "MEASURED_POSITIVE_OCCURRENCES_ONLY",
+      "repeated": {
+        "count": 3,
+        "mean": 0,
+        "min": 0,
+        "max": 0,
+        "stddev": 0
+      },
+      "recovery": {
+        "modelErrorsTotal": 0,
+        "correctedByMarker": 0,
+        "correctedByStructural": 0,
+        "rejectedByValidator": 0,
+        "introducedByDeterministicStage": 0,
+        "modelErrorsSurvivedFinal": 3
+      }
+    },
+    "parent": {
+      "field": "parent",
+      "referenceOccurrencePopulation": 1349,
+      "runObservationCount": 0,
+      "modelExposed": 0,
+      "modelCorrect": 0,
+      "modelErrors": 0,
+      "modelAccuracy": null,
+      "finalObserved": 0,
+      "finalCorrect": 0,
+      "finalErrors": 0,
+      "finalAccuracy": null,
+      "harnessLift": null,
+      "status": "MEASURED_POSITIVE_OCCURRENCES_ONLY",
+      "repeated": {
+        "count": 0,
+        "mean": null,
+        "min": null,
+        "max": null,
+        "stddev": null
+      },
+      "recovery": {
+        "modelErrorsTotal": 0,
+        "correctedByMarker": 0,
+        "correctedByStructural": 0,
+        "rejectedByValidator": 0,
+        "introducedByDeterministicStage": 0,
+        "modelErrorsSurvivedFinal": 0
+      }
+    },
+    "span": {
+      "field": "span",
+      "referenceOccurrencePopulation": 0,
+      "runObservationCount": 0,
+      "modelExposed": 0,
+      "modelCorrect": 0,
+      "modelErrors": 0,
+      "modelAccuracy": null,
+      "finalObserved": 0,
+      "finalCorrect": 0,
+      "finalErrors": 0,
+      "finalAccuracy": null,
+      "harnessLift": null,
+      "status": "NOT_MEASURED",
+      "repeated": {
+        "count": 0,
+        "mean": null,
+        "min": null,
+        "max": null,
+        "stddev": null
+      },
+      "recovery": {
+        "modelErrorsTotal": 0,
+        "correctedByMarker": 0,
+        "correctedByStructural": 0,
+        "rejectedByValidator": 0,
+        "introducedByDeterministicStage": 0,
+        "modelErrorsSurvivedFinal": 0
+      }
+    }
+  }
+}

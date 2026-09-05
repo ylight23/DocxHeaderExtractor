@@ -36,10 +36,13 @@ internal static class HarnessLiftRunner
         var operation = options.HarnessLiftOperation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("harness-lift operations: reconcile");
+            Console.WriteLine("harness-lift operations: reconcile | occurrence-join");
             Console.WriteLine("  dhx harness-lift reconcile --root <repo> [--harness-run-model --harness-repeats 3]");
+            Console.WriteLine("  dhx harness-lift occurrence-join --root <repo> [--harness-run-model --harness-repeats 3]");
             return 0;
         }
+        if (operation is "occurrence-join" or "hl2")
+            return await HarnessLiftOccurrenceJoinRunner.RunAsync(options, cancellationToken);
         if (operation is not "reconcile")
             throw new ArgumentException($"harness-lift operation không hợp lệ: {operation}");
 

@@ -1,0 +1,11 @@
+{
+  "artifactKind": "harness_lift_first_loss_summary",
+  "schemaVersion": "2.0",
+  "referencePositiveRows": 1098,
+  "observedRows": 264,
+  "byFirstLoss": {
+    "CandidateLoss": 261,
+    "ModelRole": 3
+  },
+  "unknown": null
+}

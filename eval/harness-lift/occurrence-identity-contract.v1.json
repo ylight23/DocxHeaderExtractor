@@ -1,0 +1,33 @@
+{
+  "artifactKind": "harness_lift_occurrence_identity_contract",
+  "schemaVersion": "1.0",
+  "codeRevision": "224f954ac2b246e613322353488c02559bca5231",
+  "allowedStrategies": [
+    {
+      "name": "EXACT_SOURCE_ID",
+      "strength": 4,
+      "requirement": "current parser SourceId or StableId matches"
+    },
+    {
+      "name": "EXACT_SPAN",
+      "strength": 3,
+      "requirement": "one current source occurrence owns the exact span"
+    },
+    {
+      "name": "EXACT_ORDINAL_TEXT",
+      "strength": 2,
+      "requirement": "source ordinal and normalized full text both match"
+    },
+    {
+      "name": "UNIQUE_EXACT_TEXT",
+      "strength": 1,
+      "requirement": "normalized full text is unique in the document"
+    }
+  ],
+  "ambiguousIsUnknown": true,
+  "sourceShaMustMatch": true,
+  "fuzzyJoin": false,
+  "filenameJoin": false,
+  "pdfLineIndexAsDocxOrdinal": false,
+  "sourceTextIsNeverReconstructedFromStructure": true
+}

@@ -1,0 +1,1004 @@
+{
+  "artifactKind": "harness_lift_reference_coverage",
+  "schemaVersion": "2.0",
+  "priorReferenceCounts": {
+    "ModelAssistedSilver": 9,
+    "HumanKey": 25,
+    "SourceStructuralReference": 7,
+    "HeuristicReference": 9
+  },
+  "occurrenceJoinStatus": {
+    "Ambiguous": 60,
+    "ExactSourceId": 3271,
+    "NotFound": 327,
+    "UniqueExactText": 642
+  },
+  "sourceStructuralExpansion": {
+    "referencesAdded": 1672,
+    "occurrences": 1672
+  },
+  "references": [
+    {
+      "referenceId": "eval/benchmark-n0/silver-labels/003-n1.2-silver-model-assisted.v1.json",
+      "documentId": "DOC-0014",
+      "documentGroupId": "GROUP-0226",
+      "authority": "MODEL_ASSISTED_SILVER",
+      "sourcePath": "eval/benchmark-n0/silver-labels/003-n1.2-silver-model-assisted.v1.json",
+      "sourceSha256": "81df05cc978193c15f703579d99efc156e40d6bc7b0c04dd7a2a7c20916bede7",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "model-assisted label artifact",
+      "notes": "diagnostic only; never an official denominator"
+    },
+    {
+      "referenceId": "eval/benchmark-n0/silver-labels/029-n1.2-silver-model-assisted.v1.json",
+      "documentId": "DOC-0037",
+      "documentGroupId": "GROUP-0066",
+      "authority": "MODEL_ASSISTED_SILVER",
+      "sourcePath": "eval/benchmark-n0/silver-labels/029-n1.2-silver-model-assisted.v1.json",
+      "sourceSha256": "245c4c7b9b57d0e5331c740ab0f9df7baf0e2d7fca2408e4000226f9546ef1f9",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "model-assisted label artifact",
+      "notes": "diagnostic only; never an official denominator"
+    },
+    {
+      "referenceId": "eval/benchmark-n0/silver-labels/042-n1.2-silver-model-assisted.v1.json",
+      "documentId": "DOC-0042",
+      "documentGroupId": "GROUP-0225",
+      "authority": "MODEL_ASSISTED_SILVER",
+      "sourcePath": "eval/benchmark-n0/silver-labels/042-n1.2-silver-model-assisted.v1.json",
+      "sourceSha256": "da7b4899d92d710200b49028dee19de93a89ac0e6e8cb33e85b482015a407340",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "model-assisted label artifact",
+      "notes": "diagnostic only; never an official denominator"
+    },
+    {
+      "referenceId": "eval/benchmark-n0/silver-labels/057-n1.2-silver-model-assisted.v1.json",
+      "documentId": "DOC-0237",
+      "documentGroupId": "GROUP-0255",
+      "authority": "MODEL_ASSISTED_SILVER",
+      "sourcePath": "eval/benchmark-n0/silver-labels/057-n1.2-silver-model-assisted.v1.json",
+      "sourceSha256": "ad4a9d4e2d1abbcd4d86293a9b36f237d68717d7be0123a92b1b7e6b364cce9f",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "model-assisted label artifact",
+      "notes": "diagnostic only; never an official denominator"
+    },
+    {
+      "referenceId": "eval/benchmark-n0/silver-labels/n1.2-silver-bundle-manifest.v1.json",
+      "documentId": null,
+      "documentGroupId": null,
+      "authority": "MODEL_ASSISTED_SILVER",
+      "sourcePath": "eval/benchmark-n0/silver-labels/n1.2-silver-bundle-manifest.v1.json",
+      "sourceSha256": "c8131050d73b14d6587788ac670c0decac1d9211ac3f01f3f75b675dbeaad0d3",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "model-assisted label artifact",
+      "notes": "diagnostic only; never an official denominator"
+    },
+    {
+      "referenceId": "eval/benchmark-n3/silver-labels/004-n3.2-silver-model-assisted.v1.json",
+      "documentId": "DOC-0015",
+      "documentGroupId": "GROUP-0189",
+      "authority": "MODEL_ASSISTED_SILVER",
+      "sourcePath": "eval/benchmark-n3/silver-labels/004-n3.2-silver-model-assisted.v1.json",
+      "sourceSha256": "555f652b394c71f5532b7a7d378d5864626f33e66b66b932b6faf551cc342dee",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "model-assisted label artifact",
+      "notes": "diagnostic only; never an official denominator"
+    },
+    {
+      "referenceId": "eval/benchmark-n3/silver-labels/030-n3.2-silver-model-assisted.v1.json",
+      "documentId": "DOC-0038",
+      "documentGroupId": "GROUP-0212",
+      "authority": "MODEL_ASSISTED_SILVER",
+      "sourcePath": "eval/benchmark-n3/silver-labels/030-n3.2-silver-model-assisted.v1.json",
+      "sourceSha256": "83171e4a676659595bb95ac6ba1aed5c9de105038baf745bf45ad966521952e2",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "model-assisted label artifact",
+      "notes": "diagnostic only; never an official denominator"
+    },
+    {
+      "referenceId": "eval/benchmark-n3/silver-labels/043-n3.2-silver-model-assisted.v1.json",
+      "documentId": "DOC-0043",
+      "documentGroupId": "GROUP-0126",
+      "authority": "MODEL_ASSISTED_SILVER",
+      "sourcePath": "eval/benchmark-n3/silver-labels/043-n3.2-silver-model-assisted.v1.json",
+      "sourceSha256": "1f2a7d77dadba59e97db15ef175fc46c4f924c261b14a937ec627f21b69d0d71",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "model-assisted label artifact",
+      "notes": "diagnostic only; never an official denominator"
+    },
+    {
+      "referenceId": "eval/benchmark-n3/silver-labels/058-n3.2-silver-model-assisted.v1.json",
+      "documentId": "DOC-0055",
+      "documentGroupId": "GROUP-0234",
+      "authority": "MODEL_ASSISTED_SILVER",
+      "sourcePath": "eval/benchmark-n3/silver-labels/058-n3.2-silver-model-assisted.v1.json",
+      "sourceSha256": "80d01953380b320d7732bfdaac8b17320f6d37cbc6b627ac8b1565ab13f650c5",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "model-assisted label artifact",
+      "notes": "diagnostic only; never an official denominator"
+    },
+    {
+      "referenceId": "keys/bao-cao-thuc-tap.key",
+      "documentId": null,
+      "documentGroupId": null,
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/bao-cao-thuc-tap.key",
+      "sourceSha256": "c3c19e578d0052471e16b20a472a910363f040675a50f3b903784e3e55acd2e6",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+      "documentId": "DOC-0064",
+      "documentGroupId": "GROUP-0069",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+      "sourceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/format-driven-human/073_FORTIS_GC_Minutes_Mar_2026.key",
+      "documentId": "DOC-0065",
+      "documentGroupId": "GROUP-0060",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/format-driven-human/073_FORTIS_GC_Minutes_Mar_2026.key",
+      "sourceSha256": "9987912ada04ec46de46f028efb3ee6ac5e5826ebf04638e306d258e4595577d",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/format-driven-human/074_FORTIS_GC_Minutes_Nov27_2024.key",
+      "documentId": "DOC-0066",
+      "documentGroupId": "GROUP-0238",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/format-driven-human/074_FORTIS_GC_Minutes_Nov27_2024.key",
+      "sourceSha256": "f1ddc4f9f2ba94934dd1a3c2aa4a97aae3cf72c8c8d3d78d18d0b4a4c0711a45",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/format-driven-human/075_FORTIS_GC_Minutes_Nov21_2024.key",
+      "documentId": "DOC-0067",
+      "documentGroupId": "GROUP-0251",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/format-driven-human/075_FORTIS_GC_Minutes_Nov21_2024.key",
+      "sourceSha256": "e10a0010301a3e749dc4d1725accbaa324eb8c61a3dfe3bb616c43635b437bd2",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/format-driven-human/080_ICP_Governing_Board_Minutes_Feb_2023.key",
+      "documentId": "DOC-0072",
+      "documentGroupId": "GROUP-0141",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/format-driven-human/080_ICP_Governing_Board_Minutes_Feb_2023.key",
+      "sourceSha256": "52afc3868ff47f552af6fcb9d684688c2aa98e19ccee4e99a981ce6aae27d8e5",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/hierarchy/076_ICP_IACG08_Minutes_2023.hierarchy.json",
+      "documentId": "DOC-0068",
+      "documentGroupId": "GROUP-0011",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/hierarchy/076_ICP_IACG08_Minutes_2023.hierarchy.json",
+      "sourceSha256": "3179da378bbd19ef687a705433aa75a41228a768052ee593328ef91a1650bcf0",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "level",
+        "parent",
+        "hierarchy"
+      ],
+      "provenance": "retained hierarchy reference",
+      "notes": "source/human provenance retained from the original artifact"
+    },
+    {
+      "referenceId": "keys/kltn-style.key",
+      "documentId": null,
+      "documentGroupId": null,
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/kltn-style.key",
+      "sourceSha256": "5bd2d812b9aa163842f5d8c4e32afa63671755f790babd7564693c71e6c46d27",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/legal-human/010_Luat_An_ninh_mang_24-2018-QH14.key",
+      "documentId": "DOC-0021",
+      "documentGroupId": "GROUP-0203",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/legal-human/010_Luat_An_ninh_mang_24-2018-QH14.key",
+      "sourceSha256": "eabc133e9de05619261f86cff21bea07006ab943587bb303fe37693ba90e2c9d",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+      "documentId": "DOC-0205",
+      "documentGroupId": "GROUP-0174",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+      "sourceSha256": "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/occurrence-bridge/001_Bo_luat_Dan_su_91-2015-QH13.occurrence-bridge.json",
+      "documentId": "DOC-0012",
+      "documentGroupId": "GROUP-0217",
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "keys/occurrence-bridge/001_Bo_luat_Dan_su_91-2015-QH13.occurrence-bridge.json",
+      "sourceSha256": "d7929900b0c210e5e892cdeda041927fbe2883c618bd8347b7b297b3a1e97a52",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "span",
+        "level"
+      ],
+      "provenance": "source occurrence bridge",
+      "notes": "exactness is limited to fields actually present in the artifact"
+    },
+    {
+      "referenceId": "keys/occurrence-bridge/028_WB_RFB_Works_Without_Prequal_2017.occurrence-bridge.json",
+      "documentId": "DOC-0036",
+      "documentGroupId": "GROUP-0254",
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "keys/occurrence-bridge/028_WB_RFB_Works_Without_Prequal_2017.occurrence-bridge.json",
+      "sourceSha256": "3fa70ff39ce62298615a718a9fbca523da2528b30b2fcf06196c7c4a8c59b16d",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "span",
+        "level"
+      ],
+      "provenance": "source occurrence bridge",
+      "notes": "exactness is limited to fields actually present in the artifact"
+    },
+    {
+      "referenceId": "keys/occurrence-bridge/041_IBRD_Financial_Statements_June_2025.occurrence-bridge.json",
+      "documentId": "DOC-0041",
+      "documentGroupId": "GROUP-0150",
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "keys/occurrence-bridge/041_IBRD_Financial_Statements_June_2025.occurrence-bridge.json",
+      "sourceSha256": "d45978c7acce4a4ddeb28577150eb20530be99821ca0b7daf3215c35dea7718b",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "span",
+        "level"
+      ],
+      "provenance": "source occurrence bridge",
+      "notes": "exactness is limited to fields actually present in the artifact"
+    },
+    {
+      "referenceId": "keys/occurrence-bridge/054_IBRD_Information_Statement_FY25.occurrence-bridge.json",
+      "documentId": "DOC-0053",
+      "documentGroupId": "GROUP-0007",
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "keys/occurrence-bridge/054_IBRD_Information_Statement_FY25.occurrence-bridge.json",
+      "sourceSha256": "761bf35300b68f20fbf9338cdef831525e4adb49460300ebd008cbd95c1e024a",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "span",
+        "level"
+      ],
+      "provenance": "source occurrence bridge",
+      "notes": "exactness is limited to fields actually present in the artifact"
+    },
+    {
+      "referenceId": "keys/occurrence-bridge/056_OpenStax_Business_Law_I_Essentials.occurrence-bridge.json",
+      "documentId": "DOC-0054",
+      "documentGroupId": "GROUP-0144",
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "keys/occurrence-bridge/056_OpenStax_Business_Law_I_Essentials.occurrence-bridge.json",
+      "sourceSha256": "c93e20c62a65ebf4067d43e7127d5e802fae531c91d9fa5c70b338513390ba14",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "span",
+        "level"
+      ],
+      "provenance": "source occurrence bridge",
+      "notes": "exactness is limited to fields actually present in the artifact"
+    },
+    {
+      "referenceId": "keys/partial-human/051_WBG_Trust_Fund_FIS_June_2024.key",
+      "documentId": "DOC-0050",
+      "documentGroupId": "GROUP-0124",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/partial-human/051_WBG_Trust_Fund_FIS_June_2024.key",
+      "sourceSha256": "f6fdeb9aeaeb2472e27fea97808d7816cc8099cc305293b45d38dfb9edcca639",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "human key marked partial",
+      "notes": "positive labels only; exhaustive negatives are not established"
+    },
+    {
+      "referenceId": "keys/partial-human/052_WBG_Trust_Fund_FIS_December_2025.key",
+      "documentId": "DOC-0051",
+      "documentGroupId": "GROUP-0245",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/partial-human/052_WBG_Trust_Fund_FIS_December_2025.key",
+      "sourceSha256": "74dded5b45a708ae9f78f9402166c434c34ce6f61a6d25193dbe829331efd2a1",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "human key marked partial",
+      "notes": "positive labels only; exhaustive negatives are not established"
+    },
+    {
+      "referenceId": "keys/partial-human/057_Quantitative_Methods_in_Finance_Lecture_Notes.key",
+      "documentId": "DOC-0237",
+      "documentGroupId": "GROUP-0255",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/partial-human/057_Quantitative_Methods_in_Finance_Lecture_Notes.key",
+      "sourceSha256": "10da14cb5094669a69e2b9a50d3df5d49f3b8d0933977f429f55092ed6016ea4",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "human key marked partial",
+      "notes": "positive labels only; exhaustive negatives are not established"
+    },
+    {
+      "referenceId": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+      "documentId": "DOC-0243",
+      "documentGroupId": "GROUP-0072",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/partial-human/063_Advanced_Linear_Algebra.key",
+      "sourceSha256": "9d10fc824f5c76fdc7a2e502b6fea0e277d7971dc856aeb67babbb21fa5549f7",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "human key marked partial",
+      "notes": "positive labels only; exhaustive negatives are not established"
+    },
+    {
+      "referenceId": "keys/rebased/010_Luat_An_ninh_mang_24-2018-QH14.v2-regenerated-docx.key",
+      "documentId": "DOC-0021",
+      "documentGroupId": "GROUP-0203",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/rebased/010_Luat_An_ninh_mang_24-2018-QH14.v2-regenerated-docx.key",
+      "sourceSha256": "13c29b072451adb490d84ecc4f4a0df8dde835901bd33cc3a9c32b1276784b60",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/rebased/054_IBRD_Information_Statement_FY25.v3-occurrence-reviewed.key",
+      "documentId": "DOC-0053",
+      "documentGroupId": "GROUP-0007",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/rebased/054_IBRD_Information_Statement_FY25.v3-occurrence-reviewed.key",
+      "sourceSha256": "99c65f0ca8e1a070bc80c9a20d5d780d75097a536660d355746ffc52e3f2d197",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/rebased/076_ICP_IACG08_Minutes_2023.v2-regenerated-docx.key",
+      "documentId": "DOC-0068",
+      "documentGroupId": "GROUP-0011",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/rebased/076_ICP_IACG08_Minutes_2023.v2-regenerated-docx.key",
+      "sourceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/rebased/092_RFC9111_HTTP_Caching.v2-regenerated-docx.key",
+      "documentId": "DOC-0082",
+      "documentGroupId": "GROUP-0185",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/rebased/092_RFC9111_HTTP_Caching.v2-regenerated-docx.key",
+      "sourceSha256": "eca24c9c6019e88458c0f25f85680dc42f3e3ea533f25f8772fe68c30453ed0a",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+      "documentId": "DOC-0068",
+      "documentGroupId": "GROUP-0011",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key",
+      "sourceSha256": "a712335c2fa6cc4f12f35a4bc76a00ff7fec741db62452b1c798799b364d60a4",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/rebased/m712/092_RFC9111_HTTP_Caching.key",
+      "documentId": "DOC-0082",
+      "documentGroupId": "GROUP-0185",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/rebased/m712/092_RFC9111_HTTP_Caching.key",
+      "sourceSha256": "eca24c9c6019e88458c0f25f85680dc42f3e3ea533f25f8772fe68c30453ed0a",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/superseded/054_IBRD_Information_Statement_FY25.key",
+      "documentId": "DOC-0053",
+      "documentGroupId": "GROUP-0007",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/superseded/054_IBRD_Information_Statement_FY25.key",
+      "sourceSha256": "988b55e871887ea00e280ed2c3b4f7b5dd89e21dcadc84934b632ab2a75f7b39",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/superseded/054_IBRD_Information_Statement_FY25.v2-regenerated-docx.key",
+      "documentId": "DOC-0053",
+      "documentGroupId": "GROUP-0007",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/superseded/054_IBRD_Information_Statement_FY25.v2-regenerated-docx.key",
+      "sourceSha256": "988b55e871887ea00e280ed2c3b4f7b5dd89e21dcadc84934b632ab2a75f7b39",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/tagged-pdf-coverage/076_ICP_IACG08_Minutes_2023.key",
+      "documentId": "DOC-0068",
+      "documentGroupId": "GROUP-0011",
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "keys/tagged-pdf-coverage/076_ICP_IACG08_Minutes_2023.key",
+      "sourceSha256": "6c99f8096c7aa81cc1ce81d6c624dd119ec6b38ba33c9fe8cbe0ec317363159d",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "span",
+        "level"
+      ],
+      "provenance": "source occurrence bridge",
+      "notes": "exactness is limited to fields actually present in the artifact"
+    },
+    {
+      "referenceId": "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+      "documentId": "DOC-0070",
+      "documentGroupId": "GROUP-0116",
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+      "sourceSha256": "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "span",
+        "level"
+      ],
+      "provenance": "source occurrence bridge",
+      "notes": "exactness is limited to fields actually present in the artifact"
+    },
+    {
+      "referenceId": "keys/toc-derived/026_WB_RFB_Goods_One_Envelope_2017.key",
+      "documentId": "DOC-0111",
+      "documentGroupId": "GROUP-0056",
+      "authority": "HEURISTIC_REFERENCE",
+      "sourcePath": "keys/toc-derived/026_WB_RFB_Goods_One_Envelope_2017.key",
+      "sourceSha256": "18498da84468ac9114c23320925dd087b2259af936ba13f40c0b97db3738b70c",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence"
+      ],
+      "provenance": "TOC-derived proxy",
+      "notes": "heuristic proxy; not an exhaustive human reference"
+    },
+    {
+      "referenceId": "keys/toc-derived/027_WB_RFB_NonConsulting_2021.key",
+      "documentId": "DOC-0112",
+      "documentGroupId": "GROUP-0180",
+      "authority": "HEURISTIC_REFERENCE",
+      "sourcePath": "keys/toc-derived/027_WB_RFB_NonConsulting_2021.key",
+      "sourceSha256": "797e8bca56dffdb3b6b20cc5ed3e5a2c0e183fe8191578302d489a48eb00a84b",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence"
+      ],
+      "provenance": "TOC-derived proxy",
+      "notes": "heuristic proxy; not an exhaustive human reference"
+    },
+    {
+      "referenceId": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+      "documentId": "DOC-0116",
+      "documentGroupId": "GROUP-0016",
+      "authority": "HEURISTIC_REFERENCE",
+      "sourcePath": "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+      "sourceSha256": "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence"
+      ],
+      "provenance": "TOC-derived proxy",
+      "notes": "heuristic proxy; not an exhaustive human reference"
+    },
+    {
+      "referenceId": "keys/toc-derived/033_WB_EPC_Turnkey_TwoStage_2025.key",
+      "documentId": "DOC-0118",
+      "documentGroupId": "GROUP-0081",
+      "authority": "HEURISTIC_REFERENCE",
+      "sourcePath": "keys/toc-derived/033_WB_EPC_Turnkey_TwoStage_2025.key",
+      "sourceSha256": "884e8da4880cc695bfe7ce6031340ed7558249eb3d44c9133324a5aee5e0349b",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence"
+      ],
+      "provenance": "TOC-derived proxy",
+      "notes": "heuristic proxy; not an exhaustive human reference"
+    },
+    {
+      "referenceId": "keys/toc-derived/036_WB_Plant_SingleStage_2025.key",
+      "documentId": "DOC-0121",
+      "documentGroupId": "GROUP-0186",
+      "authority": "HEURISTIC_REFERENCE",
+      "sourcePath": "keys/toc-derived/036_WB_Plant_SingleStage_2025.key",
+      "sourceSha256": "aa545808b913b856575a463740257f6eb00b018755b225b107baefe56db9b082",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence"
+      ],
+      "provenance": "TOC-derived proxy",
+      "notes": "heuristic proxy; not an exhaustive human reference"
+    },
+    {
+      "referenceId": "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+      "documentId": "DOC-0122",
+      "documentGroupId": "GROUP-0139",
+      "authority": "HEURISTIC_REFERENCE",
+      "sourcePath": "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+      "sourceSha256": "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence"
+      ],
+      "provenance": "TOC-derived proxy",
+      "notes": "heuristic proxy; not an exhaustive human reference"
+    },
+    {
+      "referenceId": "keys/toc-derived/038_WB_Works_DB_SingleStage_NoSEASH_2025.key",
+      "documentId": "DOC-0123",
+      "documentGroupId": "GROUP-0166",
+      "authority": "HEURISTIC_REFERENCE",
+      "sourcePath": "keys/toc-derived/038_WB_Works_DB_SingleStage_NoSEASH_2025.key",
+      "sourceSha256": "bbf68aec709994c36e397aceb430e55473c6eb450efe1ef73d4e2b71f78bc178",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence"
+      ],
+      "provenance": "TOC-derived proxy",
+      "notes": "heuristic proxy; not an exhaustive human reference"
+    },
+    {
+      "referenceId": "keys/toc-derived/039_WB_EPC_Turnkey_SingleStage_2025.key",
+      "documentId": "DOC-0124",
+      "documentGroupId": "GROUP-0262",
+      "authority": "HEURISTIC_REFERENCE",
+      "sourcePath": "keys/toc-derived/039_WB_EPC_Turnkey_SingleStage_2025.key",
+      "sourceSha256": "8a7433f64b51e5c35a2452e524ab33b25b10f1ac3381941c64ad62fe092a3363",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence"
+      ],
+      "provenance": "TOC-derived proxy",
+      "notes": "heuristic proxy; not an exhaustive human reference"
+    },
+    {
+      "referenceId": "keys/toc-derived/040_WB_Works_DB_SingleStage_2023.key",
+      "documentId": "DOC-0125",
+      "documentGroupId": "GROUP-0020",
+      "authority": "HEURISTIC_REFERENCE",
+      "sourcePath": "keys/toc-derived/040_WB_Works_DB_SingleStage_2023.key",
+      "sourceSha256": "49bb4c08a1a48ac72c0a3cba7bcc48cec4326cffff7b0e46d0329ddfdec18c28",
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "headingExistence"
+      ],
+      "provenance": "TOC-derived proxy",
+      "notes": "heuristic proxy; not an exhaustive human reference"
+    },
+    {
+      "referenceId": "keys/typed-human/054_IBRD_Information_Statement_FY25.key",
+      "documentId": "DOC-0053",
+      "documentGroupId": "GROUP-0007",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/typed-human/054_IBRD_Information_Statement_FY25.key",
+      "sourceSha256": "d1bf652d0839de9e17a9fe96dbace82cfa3cbd29951e2174c4d4179485dfcde6",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/typed-human/056_OpenStax_Business_Law_I_Essentials.key",
+      "documentId": "DOC-0054",
+      "documentGroupId": "GROUP-0144",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/typed-human/056_OpenStax_Business_Law_I_Essentials.key",
+      "sourceSha256": "eaa9d75e0e255d08c94b9074032970f2d90b445d8bacf0ffd6a47b1533fd3068",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "keys/typed-human/092_RFC9111_HTTP_Caching.key",
+      "documentId": "DOC-0082",
+      "documentGroupId": "GROUP-0185",
+      "authority": "HUMAN_KEY",
+      "sourcePath": "keys/typed-human/092_RFC9111_HTTP_Caching.key",
+      "sourceSha256": "e85396db4aede40c77da37f97c6ea33124f67940df8621b8f70a72d5843efc72",
+      "coverage": "FULL",
+      "supportedMetrics": [
+        "headingExistence",
+        "role",
+        "level"
+      ],
+      "provenance": "retained human key",
+      "notes": "full for listed heading fields; span/parent remain unsupported unless explicitly present"
+    },
+    {
+      "referenceId": "source-structural-expansion:DOC-0116",
+      "documentId": "DOC-0116",
+      "documentGroupId": null,
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "eval/harness-lift/source-structural-reference-expansion.v1.json",
+      "sourceSha256": null,
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "level",
+        "parent",
+        "hierarchy"
+      ],
+      "provenance": "parser-owned style outline level",
+      "notes": "positive structural evidence only; not exhaustive existence/role gold"
+    },
+    {
+      "referenceId": "source-structural-expansion:DOC-0118",
+      "documentId": "DOC-0118",
+      "documentGroupId": null,
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "eval/harness-lift/source-structural-reference-expansion.v1.json",
+      "sourceSha256": null,
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "level",
+        "parent",
+        "hierarchy"
+      ],
+      "provenance": "parser-owned style outline level",
+      "notes": "positive structural evidence only; not exhaustive existence/role gold"
+    },
+    {
+      "referenceId": "source-structural-expansion:DOC-0121",
+      "documentId": "DOC-0121",
+      "documentGroupId": null,
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "eval/harness-lift/source-structural-reference-expansion.v1.json",
+      "sourceSha256": null,
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "level",
+        "parent",
+        "hierarchy"
+      ],
+      "provenance": "parser-owned style outline level",
+      "notes": "positive structural evidence only; not exhaustive existence/role gold"
+    },
+    {
+      "referenceId": "source-structural-expansion:DOC-0122",
+      "documentId": "DOC-0122",
+      "documentGroupId": null,
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "eval/harness-lift/source-structural-reference-expansion.v1.json",
+      "sourceSha256": null,
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "level",
+        "parent",
+        "hierarchy"
+      ],
+      "provenance": "parser-owned style outline level",
+      "notes": "positive structural evidence only; not exhaustive existence/role gold"
+    },
+    {
+      "referenceId": "source-structural-expansion:DOC-0123",
+      "documentId": "DOC-0123",
+      "documentGroupId": null,
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "eval/harness-lift/source-structural-reference-expansion.v1.json",
+      "sourceSha256": null,
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "level",
+        "parent",
+        "hierarchy"
+      ],
+      "provenance": "parser-owned style outline level",
+      "notes": "positive structural evidence only; not exhaustive existence/role gold"
+    },
+    {
+      "referenceId": "source-structural-expansion:DOC-0124",
+      "documentId": "DOC-0124",
+      "documentGroupId": null,
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "eval/harness-lift/source-structural-reference-expansion.v1.json",
+      "sourceSha256": null,
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "level",
+        "parent",
+        "hierarchy"
+      ],
+      "provenance": "parser-owned style outline level",
+      "notes": "positive structural evidence only; not exhaustive existence/role gold"
+    },
+    {
+      "referenceId": "source-structural-expansion:DOC-0167",
+      "documentId": "DOC-0167",
+      "documentGroupId": null,
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "eval/harness-lift/source-structural-reference-expansion.v1.json",
+      "sourceSha256": null,
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "level",
+        "parent",
+        "hierarchy"
+      ],
+      "provenance": "parser-owned style outline level",
+      "notes": "positive structural evidence only; not exhaustive existence/role gold"
+    },
+    {
+      "referenceId": "source-structural-expansion:DOC-0214",
+      "documentId": "DOC-0214",
+      "documentGroupId": null,
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "eval/harness-lift/source-structural-reference-expansion.v1.json",
+      "sourceSha256": null,
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "level",
+        "parent",
+        "hierarchy"
+      ],
+      "provenance": "parser-owned style outline level",
+      "notes": "positive structural evidence only; not exhaustive existence/role gold"
+    },
+    {
+      "referenceId": "source-structural-expansion:DOC-0242",
+      "documentId": "DOC-0242",
+      "documentGroupId": null,
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "eval/harness-lift/source-structural-reference-expansion.v1.json",
+      "sourceSha256": null,
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "level",
+        "parent",
+        "hierarchy"
+      ],
+      "provenance": "parser-owned style outline level",
+      "notes": "positive structural evidence only; not exhaustive existence/role gold"
+    },
+    {
+      "referenceId": "source-structural-expansion:DOC-0243",
+      "documentId": "DOC-0243",
+      "documentGroupId": null,
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "eval/harness-lift/source-structural-reference-expansion.v1.json",
+      "sourceSha256": null,
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "level",
+        "parent",
+        "hierarchy"
+      ],
+      "provenance": "parser-owned style outline level",
+      "notes": "positive structural evidence only; not exhaustive existence/role gold"
+    },
+    {
+      "referenceId": "source-structural-expansion:DOC-0244",
+      "documentId": "DOC-0244",
+      "documentGroupId": null,
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "eval/harness-lift/source-structural-reference-expansion.v1.json",
+      "sourceSha256": null,
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "level",
+        "parent",
+        "hierarchy"
+      ],
+      "provenance": "parser-owned style outline level",
+      "notes": "positive structural evidence only; not exhaustive existence/role gold"
+    },
+    {
+      "referenceId": "source-structural-expansion:DOC-0247",
+      "documentId": "DOC-0247",
+      "documentGroupId": null,
+      "authority": "SOURCE_STRUCTURAL_REFERENCE",
+      "sourcePath": "eval/harness-lift/source-structural-reference-expansion.v1.json",
+      "sourceSha256": null,
+      "coverage": "PARTIAL",
+      "supportedMetrics": [
+        "level",
+        "parent",
+        "hierarchy"
+      ],
+      "provenance": "parser-owned style outline level",
+      "notes": "positive structural evidence only; not exhaustive existence/role gold"
+    }
+  ]
+}

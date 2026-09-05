@@ -1,0 +1,4586 @@
+{
+  "artifactKind": "harness_lift_source_first_blind_review_packet",
+  "schemaVersion": "2.0",
+  "reviewOnly": true,
+  "documentId": "DOC-0071",
+  "documentGroupId": "GROUP-0029",
+  "split": "DEV",
+  "familyId": "VN_ADMIN_TYPED",
+  "sourceSha256": "1c946a0ed13bd27cafb4ef281807ecfed6605340fca51029e72a904cf651c777",
+  "priorityTier": "P0",
+  "authorityClass": "PARSER_SOURCE_FACTS_ONLY",
+  "prohibitedEvidence": [
+    "model prediction",
+    "candidate ranking",
+    "silver label",
+    "existing expected answer",
+    "final output"
+  ],
+  "allowedLabels": [
+    "REVIEWED_HEADING",
+    "REVIEWED_NON_HEADING",
+    "UNCERTAIN"
+  ],
+  "occurrences": [
+    {
+      "sourceId": "body[1]/p[1]",
+      "sourceOrdinal": 0,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": null,
+      "nextSourceId": "body[1]/p[2]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[2]",
+      "sourceOrdinal": 1,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[1]",
+      "nextSourceId": "body[1]/p[3]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[3]",
+      "sourceOrdinal": 2,
+      "rawText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "fullSpan": {
+        "start": 0,
+        "end": 47
+      },
+      "previousSourceId": "body[1]/p[2]",
+      "nextSourceId": "body[1]/p[4]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": true,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "rawText": "TECHNICAL ADVISORY GROUP",
+      "fullSpan": {
+        "start": 0,
+        "end": 24
+      },
+      "previousSourceId": "body[1]/p[3]",
+      "nextSourceId": "body[1]/p[5]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": true,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[5]",
+      "sourceOrdinal": 4,
+      "rawText": "APRIL 30, 2024",
+      "fullSpan": {
+        "start": 0,
+        "end": 14
+      },
+      "previousSourceId": "body[1]/p[4]",
+      "nextSourceId": "body[1]/p[6]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": true,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[6]",
+      "sourceOrdinal": 5,
+      "rawText": "Online meeting",
+      "fullSpan": {
+        "start": 0,
+        "end": 14
+      },
+      "previousSourceId": "body[1]/p[5]",
+      "nextSourceId": "body[1]/p[7]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[7]",
+      "sourceOrdinal": 6,
+      "rawText": "Welcome and meeting objectives",
+      "fullSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "previousSourceId": "body[1]/p[6]",
+      "nextSourceId": "body[1]/p[8]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[8]",
+      "sourceOrdinal": 7,
+      "rawText": "The Technical Advisory Group (TAG) of the International Comparison Program (ICP) held an online meeting on April 30, 2024.",
+      "fullSpan": {
+        "start": 0,
+        "end": 122
+      },
+      "previousSourceId": "body[1]/p[7]",
+      "nextSourceId": "body[1]/p[9]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[9]",
+      "sourceOrdinal": 8,
+      "rawText": "The main objectives of the meeting were to update the Group on the progress of the current ICP 2021 cycle, discuss the final results of the 2021 cycle, and the plans for the release of the results, as per the meeting agenda provided in Annex 1. In attendance were the TAG Chair, members and observers, representatives from the Regional Implementing Agencies (RIAs), and staff from the World Bank ICP Global Office, which serves as TAG secretariat, and other World Bank staff, as listed in Annex 2. The public meeting documents and presentations are available on the",
+      "fullSpan": {
+        "start": 0,
+        "end": 565
+      },
+      "previousSourceId": "body[1]/p[8]",
+      "nextSourceId": "body[1]/p[10]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[10]",
+      "sourceOrdinal": 9,
+      "rawText": "Paul Schreyer, TAG Chair, welcomed all participants and provided an overview of the agenda, including the main ICP 2021 benchmark results and estimates for more recent years, revised ICP 2017 results, 2017-2021 time series, and non-benchmark country estimates. The Chair also highlighted the confidentiality of all shared and presented results.",
+      "fullSpan": {
+        "start": 0,
+        "end": 344
+      },
+      "previousSourceId": "body[1]/p[9]",
+      "nextSourceId": "body[1]/p[11]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[11]",
+      "sourceOrdinal": 10,
+      "rawText": "Session I: ICP 2021 cycle results",
+      "fullSpan": {
+        "start": 0,
+        "end": 33
+      },
+      "previousSourceId": "body[1]/p[10]",
+      "nextSourceId": "body[1]/p[12]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[12]",
+      "sourceOrdinal": 11,
+      "rawText": "ICP 2021 results and forecasts",
+      "fullSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "previousSourceId": "body[1]/p[11]",
+      "nextSourceId": "body[1]/p[13]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[13]",
+      "sourceOrdinal": 12,
+      "rawText": "Marko Rissanen, World Bank, presented the ICP 2021 cycle results and PPP estimates for more recent years. The presentation was divided into four parts: (i) general updates; (ii) data quality assurance and the results of simulations discussed in previous TAG meetings, (iii) benchmark ICP 2021 global results; and (iv) PPP estimates for 2022-2026 period.",
+      "fullSpan": {
+        "start": 0,
+        "end": 353
+      },
+      "previousSourceId": "body[1]/p[12]",
+      "nextSourceId": "body[1]/p[14]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[14]",
+      "sourceOrdinal": 13,
+      "rawText": "On general updates, it was announced that Kosovo will be included as a benchmark country, based on available Eurostat-OECD PPPs for household consumption: this increases the total number of participating economies in the ICP 2021 cycle to 176. The outcomes of both the latest United Nations Statistical Commission (UNSC) Session and the Governing Board meeting that took place after the previous TAG meeting were also presented.",
+      "fullSpan": {
+        "start": 0,
+        "end": 428
+      },
+      "previousSourceId": "body[1]/p[13]",
+      "nextSourceId": "body[1]/p[15]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[15]",
+      "sourceOrdinal": 14,
+      "rawText": "1",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "previousSourceId": "body[1]/p[14]",
+      "nextSourceId": "body[1]/p[16]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[16]",
+      "sourceOrdinal": 15,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[15]",
+      "nextSourceId": "body[1]/p[17]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 0
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[17]",
+      "sourceOrdinal": 16,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[16]",
+      "nextSourceId": "body[1]/p[18]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[18]",
+      "sourceOrdinal": 17,
+      "rawText": "Regarding data submissions and quality assurance, it was noted that most regions had submitted updated data in April, which had a positive impact on the overall input data quality. The presented input data quality metrics included the number of priced items across regions; basic heading and item coefficients of variation number; and the regional and global shares of \u201Cpotentially problematic items\u201D. It was noted that the input data quality metrics had improved since the last TAG meeting in February and that they were at the level of, or partially exceeding, the final ICP 2017 results.",
+      "fullSpan": {
+        "start": 0,
+        "end": 590
+      },
+      "previousSourceId": "body[1]/p[17]",
+      "nextSourceId": "body[1]/p[19]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[19]",
+      "sourceOrdinal": 18,
+      "rawText": "The standard ICP methodology has been largely maintained between the most recent ICP 2011, 2017, and 2021 cycles. However, in ICP 2021, the Commonwealth of Independent States (CIS) region was linked through the standard global core list approach, unlike in ICP 2017, when the CIS region was linked through the Russian Federation, which participated at that time in both the OECD and CIS comparisons. For ICP 2017, the Russian Federation results are based on the OECD comparison, while for the ICP 2021, they are based on the CIS comparison.1 Furthermore, the Asia and Pacific region moved to the standard ICP approach for estimating housing PPPs based on rental and volume data during the ICP 2021 cycle. Following the TAG\u2019s endorsement, the hybrid approach was utilized for the revised ICP 2017 results and ICP 2021 results, both at the regional and global levels, instead of the previously utilized reference volume approach. As previously discussed by the TAG, a series of simulations were conducted by the ICP Global Office in order to evaluate the impact of methodological changes on the results to the extent possible.",
+      "fullSpan": {
+        "start": 0,
+        "end": 1124
+      },
+      "previousSourceId": "body[1]/p[18]",
+      "nextSourceId": "body[1]/p[20]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[20]",
+      "sourceOrdinal": 19,
+      "rawText": "The results of both simulations were in line with the previous simulation results. That is, the impact of introducing CIS as the sixth region for global linking had negligible impact on the other regions\u2019 results. For the countries within the CIS region, the impact of moving from the OECD-Russia linking to global core list linking, or the impact of the Russian Federation from moving from the OECD to CIS comparison, cannot be simulated due to the lack of data; however, the differences between extrapolated and benchmark were considered to fall under typical results, although the average difference was not close to or equal to one. As for the impact of the new hybrid housing approach in the Asia and Pacific region, the introduction of the approach had a negligible impact on other regions\u2019 results. For countries within the Asia and Pacific region, the impact reflects the regional results due to the fixity.",
+      "fullSpan": {
+        "start": 0,
+        "end": 915
+      },
+      "previousSourceId": "body[1]/p[19]",
+      "nextSourceId": "body[1]/p[21]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[21]",
+      "sourceOrdinal": 20,
+      "rawText": "The presentation of the ICP 2021 results began by recasting the differences between extrapolated 2011 PPPs, using national deflators and consumer price indices (CPIs) to benchmark 2017 PPP results. The previously observed spectrum of differences and lack of any systematic patterns was highlighted. Given this context, the ICP 2021 results were presented and compared to extrapolated 2017 PPPs, showing that differences for this cycle fall within the expected margins. Furthermore, additional charts were presented: (i) the relation between Price Level Indices to GDP per capita in PPP terms; (ii) the difference in Price Level Indices by region between 2017 and 2021; (iii) the share of the world GDP in PPP terms by region; (iv) the ranking of countries by share of global GDP in PPP terms; (v) the ranking of countries by GDP per capita in PPP terms; and (vi) the Gini Coefficient for the world between each ICP benchmark cycle since 2011.",
+      "fullSpan": {
+        "start": 0,
+        "end": 942
+      },
+      "previousSourceId": "body[1]/p[20]",
+      "nextSourceId": "body[1]/p[22]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[22]",
+      "sourceOrdinal": 21,
+      "rawText": "On the topic of PPP estimates for years beyond 2021, following the earlier discussions with the TAG, the ICP Global Office estimated a series of GDP PPPs from 2022 to 2026. These estimates were based on the 2021 benchmark PPPs, GDP deflators, GDP estimates, population, and exchange rates, with data sourced from the World Bank Macro Poverty Outlook (MPO) and the International Monetary Fund (IMF) World Economic Outlook Database (WEO). The GDP PPP forecasts were then estimated by applying the",
+      "fullSpan": {
+        "start": 0,
+        "end": 494
+      },
+      "previousSourceId": "body[1]/p[21]",
+      "nextSourceId": "body[1]/p[23]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[23]",
+      "sourceOrdinal": 22,
+      "rawText": "1 This results in selected methodological differences, as the Eurostat-OECD PPP Programme employs different approaches from the other ICP regions on selected GDP components.",
+      "fullSpan": {
+        "start": 0,
+        "end": 173
+      },
+      "previousSourceId": "body[1]/p[22]",
+      "nextSourceId": "body[1]/p[24]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 10,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[24]",
+      "sourceOrdinal": 23,
+      "rawText": "2",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "previousSourceId": "body[1]/p[23]",
+      "nextSourceId": "body[1]/p[25]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[25]",
+      "sourceOrdinal": 24,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[24]",
+      "nextSourceId": "body[1]/p[26]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 1
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[26]",
+      "sourceOrdinal": 25,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[25]",
+      "nextSourceId": "body[1]/p[27]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[27]",
+      "sourceOrdinal": 26,
+      "rawText": "difference between each country\u0027s inflation rate relative to the US, following the standard World Development Indicators (WDI) method.",
+      "fullSpan": {
+        "start": 0,
+        "end": 134
+      },
+      "previousSourceId": "body[1]/p[26]",
+      "nextSourceId": "body[1]/p[28]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[28]",
+      "sourceOrdinal": 27,
+      "rawText": "The TAG discussed each point presented and concluded the following:",
+      "fullSpan": {
+        "start": 0,
+        "end": 67
+      },
+      "previousSourceId": "body[1]/p[27]",
+      "nextSourceId": "body[1]/p[29]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[29]",
+      "sourceOrdinal": 28,
+      "rawText": "\u2013 Regarding the topic of methodological changes introduced in the ICP 2021, aside from discussion on the impacts, these changes constitute a standardization and, thus, an improvement to the consistency of the applied ICP methodology. Thus, the impact can be considered to be a correction.",
+      "fullSpan": {
+        "start": 0,
+        "end": 288
+      },
+      "previousSourceId": "body[1]/p[28]",
+      "nextSourceId": "body[1]/p[30]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[30]",
+      "sourceOrdinal": 29,
+      "rawText": "\u2013 Regarding the ICP 2021 benchmark results, the TAG considered them reasonable and consistent with differences observed during previous ICP cycles between the extrapolated and benchmark results. The TAG also discussed various aspects of these results, namely the country rankings and the factors affecting the differences relative to extrapolated results. The TAG also discussed the coming uses of the ICP 2021 cycle PPPs, including poverty.",
+      "fullSpan": {
+        "start": 0,
+        "end": 441
+      },
+      "previousSourceId": "body[1]/p[29]",
+      "nextSourceId": "body[1]/p[31]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[31]",
+      "sourceOrdinal": 30,
+      "rawText": "\u2013 As for PPPs beyond the most recent ICP benchmark year (2021), the TAG noted that the estimates should not go beyond 2023 and should be based on extrapolations of available statistical data rather than forecasted or otherwise estimated data, following the established extrapolation approach for the WDI.2 Furthermore, published Eurostat and OECD results for 2022 and 2023 should be incorporated.3 The Global Office agreed to construct the 2022 and 2023 series accordingly.",
+      "fullSpan": {
+        "start": 0,
+        "end": 473
+      },
+      "previousSourceId": "body[1]/p[30]",
+      "nextSourceId": "body[1]/p[32]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[32]",
+      "sourceOrdinal": 31,
+      "rawText": "Lastly, Yuri Dikhanov, World Bank, presented the feedback from the Computation Task Team, suggesting potential future research agenda topics for the next ICP cycles: (i) revisiting the approach on dual participation countries; (ii) revisiting the approach on productivity adjustments; (iii) revisiting the linking approach for education and healthcare; and (iv) broader research on applied index numbers. The TAG acknowledged the relevance of these topics. It was recommended that a written proposal on each point would be drafted for TAG\u2019s further consideration. As recommended by the TAG at previous meetings, a methodological Task Force will be established for the ICP 2024 cycle.",
+      "fullSpan": {
+        "start": 0,
+        "end": 683
+      },
+      "previousSourceId": "body[1]/p[31]",
+      "nextSourceId": "body[1]/p[33]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[33]",
+      "sourceOrdinal": 32,
+      "rawText": "Revised ICP 2017 results",
+      "fullSpan": {
+        "start": 0,
+        "end": 24
+      },
+      "previousSourceId": "body[1]/p[32]",
+      "nextSourceId": "body[1]/p[34]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[34]",
+      "sourceOrdinal": 33,
+      "rawText": "Mr. Rissanen presented a recap of the approach to produce revised benchmark results. Previously, revised 2011 regional results were produced based on revised national accounts expenditures, while global 2011 results were revised based on revised regional PPPs, national accounts expenditures, and finetuning of the linking approach. For the 2021 cycle, the TAG supported recalculating linking factors when the previous ICP benchmark year results are revised as best practice, also allowing for updating the housing linking factors. Additionally, it was noted that the Asia and the Pacific 2017 regional PPPs include the new \u201Chybrid\u201D approach to housing, as was agreed by the TAG in the previous meeting.",
+      "fullSpan": {
+        "start": 0,
+        "end": 703
+      },
+      "previousSourceId": "body[1]/p[33]",
+      "nextSourceId": "body[1]/p[35]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[35]",
+      "sourceOrdinal": 34,
+      "rawText": "The presentation demonstrated the percentage changes between the original and revised 2017 data for expenditures, global PPPs, and population estimates. The range of global PPP revisions typically stood at around plus or minus five percent, and no systematic patterns were observed. The TAG noted several",
+      "fullSpan": {
+        "start": 0,
+        "end": 304
+      },
+      "previousSourceId": "body[1]/p[34]",
+      "nextSourceId": "body[1]/p[36]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[36]",
+      "sourceOrdinal": 35,
+      "rawText": "2 3 This is possible as the Eurostat-OECD is the base region for the ICP.",
+      "fullSpan": {
+        "start": 0,
+        "end": 73
+      },
+      "previousSourceId": "body[1]/p[35]",
+      "nextSourceId": "body[1]/p[37]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 10,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[37]",
+      "sourceOrdinal": 36,
+      "rawText": "3",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "previousSourceId": "body[1]/p[36]",
+      "nextSourceId": "body[1]/p[38]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[38]",
+      "sourceOrdinal": 37,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[37]",
+      "nextSourceId": "body[1]/p[39]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 2
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[39]",
+      "sourceOrdinal": 38,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[38]",
+      "nextSourceId": "body[1]/p[40]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[40]",
+      "sourceOrdinal": 39,
+      "rawText": "factors that impact the PPP revisions, namely, the national accounts expenditure revisions and their impact on regional PPPs, population estimates revisions, the revision of Productivity Adjustment Factors (PAFs), and the Asia and the Pacific hybrid approach to housing services.",
+      "fullSpan": {
+        "start": 0,
+        "end": 279
+      },
+      "previousSourceId": "body[1]/p[39]",
+      "nextSourceId": "body[1]/p[41]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[41]",
+      "sourceOrdinal": 40,
+      "rawText": "Revised ICP 2017 \u2013 ICP 2021 PPP time series",
+      "fullSpan": {
+        "start": 0,
+        "end": 43
+      },
+      "previousSourceId": "body[1]/p[40]",
+      "nextSourceId": "body[1]/p[42]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[42]",
+      "sourceOrdinal": 41,
+      "rawText": "Giovanni Tonutti, World Bank, presented the results of the time series calculations of global PPPs for the years 2017 to 2021. The approach follows the methodology developed by Inklaar and Rao (2019), which was adopted to estimate the global PPP time series for 2011 to 2017 during the ICP 2017 cycle. Two methodological developments have been introduced and previously approved by the TAG in relation to the new approach for linking the CIS region in the global comparison and the implications of the impact of COVID-19 on expenditures for interpolating missing information.",
+      "fullSpan": {
+        "start": 0,
+        "end": 575
+      },
+      "previousSourceId": "body[1]/p[41]",
+      "nextSourceId": "body[1]/p[43]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[43]",
+      "sourceOrdinal": 42,
+      "rawText": "Following these methodological considerations, results were presented with two approaches: (i) comparing the extrapolated PPPs, currently available in the WDI database, with the estimation of interpolated PPPs; and (ii) comparing the estimation of interpolated PPP from the basic heading level (standard approach) to the interpolated PPPs at the GDP level only. At the aggregate level, the results display similarities to the differences observed for the ICP 2011-2017 time series. At the country level, while the PPP time series remains stable for most countries, there were selected cases where volatile inflation, exchange rates, or both caused significant variations over the PPP time series as well. The impact of changing the CIS linking approach was demonstrated to be small.",
+      "fullSpan": {
+        "start": 0,
+        "end": 782
+      },
+      "previousSourceId": "body[1]/p[42]",
+      "nextSourceId": "body[1]/p[44]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[44]",
+      "sourceOrdinal": 43,
+      "rawText": "The TAG acknowledged the 2017 \u2013 2021 time series results as plausible, yielding expected patterns and results.",
+      "fullSpan": {
+        "start": 0,
+        "end": 110
+      },
+      "previousSourceId": "body[1]/p[43]",
+      "nextSourceId": "body[1]/p[45]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[45]",
+      "sourceOrdinal": 44,
+      "rawText": "Furthermore, the revision of the 2012 \u2013 2016 PPP series was raised in the discussion. Initially, these series were not planned to be updated; however, since the 2017 benchmark PPPs were revised, a suggestion was made to link the 2012 \u2013 2016 series to the revised 2017 benchmark PPPs to ensure consistency of the time series. The Global Office agreed to review the feasibility of revising the said historical series and consult the TAG members as needed.",
+      "fullSpan": {
+        "start": 0,
+        "end": 453
+      },
+      "previousSourceId": "body[1]/p[44]",
+      "nextSourceId": "body[1]/p[46]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[46]",
+      "sourceOrdinal": 45,
+      "rawText": "Revised ICP 2017 and ICP 2021 non-benchmark country estimates",
+      "fullSpan": {
+        "start": 0,
+        "end": 61
+      },
+      "previousSourceId": "body[1]/p[45]",
+      "nextSourceId": "body[1]/p[47]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[47]",
+      "sourceOrdinal": 46,
+      "rawText": "Mizuki Yamanaka, World Bank, presented the results of non-benchmark PPP estimates based on revised 2017 and 2021 benchmark results. Firstly, the estimation methods were summarized, as follows: (i) detailed time series estimate for countries that participated in either ICP 2017 or ICP 2021 cycle but not for both; (ii) standard non-benchmark imputation for counties with no participation in any recent cycles; (iii) estimation for countries that have limited participation for household consumption (HHC) only; and (iv) extrapolation from ICP 2011 results for countries that participated in ICP 2011 only.",
+      "fullSpan": {
+        "start": 0,
+        "end": 605
+      },
+      "previousSourceId": "body[1]/p[46]",
+      "nextSourceId": "body[1]/p[48]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[48]",
+      "sourceOrdinal": 47,
+      "rawText": "Following the summary of the estimation methods, a series of charts plotting the relation of GDP per capita and price level for the non-benchmark countries, along with those of benchmark countries, were presented for the GDP, HHC, and Actual Individual Consumption (AIC) levels to review if the estimated results were plausible. It was summarized that, in general, imputation for GDP, AIC, and HHC are in line with benchmark results as expected; however, it was also noted that the model returns unreliable results for a few countries with a GDP per capita much higher or lower than any benchmark countries as they are beyond the boundary of the model. Lastly, the non-benchmark time series estimates were deemed plausible; however, a few cases require further review of input data for some components.",
+      "fullSpan": {
+        "start": 0,
+        "end": 802
+      },
+      "previousSourceId": "body[1]/p[47]",
+      "nextSourceId": "body[1]/p[49]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[49]",
+      "sourceOrdinal": 48,
+      "rawText": "4",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "previousSourceId": "body[1]/p[48]",
+      "nextSourceId": "body[1]/p[50]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[50]",
+      "sourceOrdinal": 49,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[49]",
+      "nextSourceId": "body[1]/p[51]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 3
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[51]",
+      "sourceOrdinal": 50,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[50]",
+      "nextSourceId": "body[1]/p[52]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[52]",
+      "sourceOrdinal": 51,
+      "rawText": "The TAG acknowledged the difficulty of estimation for some cases presented and agreed to omit estimates for the cases where available input data returns extreme results, as the imputation would not be able to fit them in the model in a reliable manner, or when the reliability of input data was questionable. The TAG also recommended conducting a further review of input data for the few limited cases for detailed time series estimates to ensure the plausibility of results. Regarding the countries with limited participation, Eurostat suggested including Kosovo\u2019s HHC-level data without any estimation beyond 2021. The TAG also stressed the importance of having metadata to clarify the limitation of non-benchmark estimation, as these results were approximations with less reliability than benchmark results.",
+      "fullSpan": {
+        "start": 0,
+        "end": 810
+      },
+      "previousSourceId": "body[1]/p[51]",
+      "nextSourceId": "body[1]/p[53]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[53]",
+      "sourceOrdinal": 52,
+      "rawText": "Session II: Closing",
+      "fullSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "previousSourceId": "body[1]/p[52]",
+      "nextSourceId": "body[1]/p[54]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[54]",
+      "sourceOrdinal": 53,
+      "rawText": "Next steps, any other business, and closing remarks",
+      "fullSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "previousSourceId": "body[1]/p[53]",
+      "nextSourceId": "body[1]/p[55]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[55]",
+      "sourceOrdinal": 54,
+      "rawText": "In closing, it was noted that any remaining minor regional updates would be incorporated prior to the release of results. The ICP Global Office will work closely with the regional implementing agencies to release the ICP 2021 cycle results by the end of May 2024. The TAG also discussed regional release plans and other organizational matters surrounding the release.",
+      "fullSpan": {
+        "start": 0,
+        "end": 367
+      },
+      "previousSourceId": "body[1]/p[54]",
+      "nextSourceId": "body[1]/p[56]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[56]",
+      "sourceOrdinal": 55,
+      "rawText": "The planned global release assets are: \u2013 World Bank press release, blog, and social media \u2013 FAQ, factsheets, and results highlights \u2013 Interactive portal for main charts and figures \u2013 World Bank ICP Databank: o45 publication headings o16 indicator series o6 publication headings for PPP timeseries \u2013 World Development Indicators (WDI) DataBank update for GDP and household consumption PPPs.",
+      "fullSpan": {
+        "start": 0,
+        "end": 389
+      },
+      "previousSourceId": "body[1]/p[55]",
+      "nextSourceId": "body[1]/p[57]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[57]",
+      "sourceOrdinal": 56,
+      "rawText": "The complete ICP 2021 cycle report is scheduled for Q3 2024.",
+      "fullSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "previousSourceId": "body[1]/p[56]",
+      "nextSourceId": "body[1]/p[58]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[58]",
+      "sourceOrdinal": 57,
+      "rawText": "The Chair concluded the meeting by noting the need to develop a specific research agenda for the future, after the publication of ICP 2021 results, and reiterated the acknowledgment of the work conducted by all ICP implementing agencies at the national, regional, and global levels in successfully concluding the cycle.",
+      "fullSpan": {
+        "start": 0,
+        "end": 319
+      },
+      "previousSourceId": "body[1]/p[57]",
+      "nextSourceId": "body[1]/p[59]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "both"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[59]",
+      "sourceOrdinal": 58,
+      "rawText": "5",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "previousSourceId": "body[1]/p[58]",
+      "nextSourceId": "body[1]/p[60]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[60]",
+      "sourceOrdinal": 59,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[59]",
+      "nextSourceId": "body[1]/p[61]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 4
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[61]",
+      "sourceOrdinal": 60,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[60]",
+      "nextSourceId": "body[1]/p[62]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[62]",
+      "sourceOrdinal": 61,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[61]",
+      "nextSourceId": "body[1]/p[63]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[63]",
+      "sourceOrdinal": 62,
+      "rawText": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG) Online Meeting April 30, 2024 Agenda",
+      "fullSpan": {
+        "start": 0,
+        "end": 106
+      },
+      "previousSourceId": "body[1]/p[62]",
+      "nextSourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 16,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "sourceOrdinal": 63,
+      "rawText": "Tuesday, April 30, 2024",
+      "fullSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "previousSourceId": "body[1]/p[63]",
+      "nextSourceId": "body[1]/tbl[1]/tr[2]/tc[1]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[2]/tc[1]/p[1]",
+      "sourceOrdinal": 64,
+      "rawText": "08:00 \u2013 08:10",
+      "fullSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "previousSourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "nextSourceId": "body[1]/tbl[1]/tr[2]/tc[2]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[1]/tr[2]/tc[2]/p[1]",
+      "sourceOrdinal": 65,
+      "rawText": "Welcome and opening remarks",
+      "fullSpan": {
+        "start": 0,
+        "end": 27
+      },
+      "previousSourceId": "body[1]/tbl[1]/tr[2]/tc[1]/p[1]",
+      "nextSourceId": "body[1]/p[64]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[64]",
+      "sourceOrdinal": 66,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/tbl[1]/tr[2]/tc[2]/p[1]",
+      "nextSourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "sourceOrdinal": 67,
+      "rawText": "SESSION I: ICP 2021 cycle results",
+      "fullSpan": {
+        "start": 0,
+        "end": 33
+      },
+      "previousSourceId": "body[1]/p[64]",
+      "nextSourceId": "body[1]/tbl[2]/tr[2]/tc[1]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[2]/tc[1]/p[1]",
+      "sourceOrdinal": 68,
+      "rawText": "08:10 \u2013 09:20",
+      "fullSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "previousSourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "nextSourceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+      "sourceOrdinal": 69,
+      "rawText": "ICP 2021 results and forecasts",
+      "fullSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "previousSourceId": "body[1]/tbl[2]/tr[2]/tc[1]/p[1]",
+      "nextSourceId": "body[1]/tbl[2]/tr[3]/tc[1]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[3]/tc[1]/p[1]",
+      "sourceOrdinal": 70,
+      "rawText": "09:20 \u2013 09:40",
+      "fullSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "previousSourceId": "body[1]/tbl[2]/tr[2]/tc[2]/p[1]",
+      "nextSourceId": "body[1]/tbl[2]/tr[3]/tc[2]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[3]/tc[2]/p[1]",
+      "sourceOrdinal": 71,
+      "rawText": "Revised ICP 2017 results",
+      "fullSpan": {
+        "start": 0,
+        "end": 24
+      },
+      "previousSourceId": "body[1]/tbl[2]/tr[3]/tc[1]/p[1]",
+      "nextSourceId": "body[1]/tbl[2]/tr[4]/tc[1]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[4]/tc[1]/p[1]",
+      "sourceOrdinal": 72,
+      "rawText": "09:40 \u2013 10:00",
+      "fullSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "previousSourceId": "body[1]/tbl[2]/tr[3]/tc[2]/p[1]",
+      "nextSourceId": "body[1]/tbl[2]/tr[4]/tc[2]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[4]/tc[2]/p[1]",
+      "sourceOrdinal": 73,
+      "rawText": "Revised ICP 2017 \u2013 ICP 2021 PPP time series",
+      "fullSpan": {
+        "start": 0,
+        "end": 43
+      },
+      "previousSourceId": "body[1]/tbl[2]/tr[4]/tc[1]/p[1]",
+      "nextSourceId": "body[1]/tbl[2]/tr[5]/tc[1]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[5]/tc[1]/p[1]",
+      "sourceOrdinal": 74,
+      "rawText": "10:00 \u2013 10:20",
+      "fullSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "previousSourceId": "body[1]/tbl[2]/tr[4]/tc[2]/p[1]",
+      "nextSourceId": "body[1]/tbl[2]/tr[5]/tc[2]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[2]/tr[5]/tc[2]/p[1]",
+      "sourceOrdinal": 75,
+      "rawText": "Revised ICP 2017 and ICP 2021 non-benchmark country estimates",
+      "fullSpan": {
+        "start": 0,
+        "end": 61
+      },
+      "previousSourceId": "body[1]/tbl[2]/tr[5]/tc[1]/p[1]",
+      "nextSourceId": "body[1]/p[65]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[65]",
+      "sourceOrdinal": 76,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/tbl[2]/tr[5]/tc[2]/p[1]",
+      "nextSourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+      "sourceOrdinal": 77,
+      "rawText": "SESSION II: Closing",
+      "fullSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "previousSourceId": "body[1]/p[65]",
+      "nextSourceId": "body[1]/tbl[3]/tr[1]/tc[2]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[2]/p[1]",
+      "sourceOrdinal": 78,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+      "nextSourceId": "body[1]/tbl[3]/tr[2]/tc[1]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[2]/tc[1]/p[1]",
+      "sourceOrdinal": 79,
+      "rawText": "10:20 \u2013 10:30",
+      "fullSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "previousSourceId": "body[1]/tbl[3]/tr[1]/tc[2]/p[1]",
+      "nextSourceId": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+      "sourceOrdinal": 80,
+      "rawText": "Next steps, any other business, and closing remarks",
+      "fullSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "previousSourceId": "body[1]/tbl[3]/tr[2]/tc[1]/p[1]",
+      "nextSourceId": "body[1]/p[66]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 1,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[66]",
+      "sourceOrdinal": 81,
+      "rawText": "6",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "previousSourceId": "body[1]/tbl[3]/tr[2]/tc[2]/p[1]",
+      "nextSourceId": "body[1]/p[67]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[67]",
+      "sourceOrdinal": 82,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[66]",
+      "nextSourceId": "body[1]/p[68]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 5
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[68]",
+      "sourceOrdinal": 83,
+      "rawText": "",
+      "fullSpan": {
+        "start": 0,
+        "end": 0
+      },
+      "previousSourceId": "body[1]/p[67]",
+      "nextSourceId": "body[1]/p[69]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": null
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[69]",
+      "sourceOrdinal": 84,
+      "rawText": "Annex 2: List of Participants",
+      "fullSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "previousSourceId": "body[1]/p[68]",
+      "nextSourceId": "body[1]/p[70]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[70]",
+      "sourceOrdinal": 85,
+      "rawText": "ICP Technical Advisory Group members",
+      "fullSpan": {
+        "start": 0,
+        "end": 36
+      },
+      "previousSourceId": "body[1]/p[69]",
+      "nextSourceId": "body[1]/p[71]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": true,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[71]",
+      "sourceOrdinal": 86,
+      "rawText": "\u2013 Paul Schreyer, Organization for Economic Co-operation and Development (OECD) (Chair)",
+      "fullSpan": {
+        "start": 0,
+        "end": 86
+      },
+      "previousSourceId": "body[1]/p[70]",
+      "nextSourceId": "body[1]/p[72]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[72]",
+      "sourceOrdinal": 87,
+      "rawText": "\u2013 Paul Konijn, Statistical Office of the European Union (Eurostat)",
+      "fullSpan": {
+        "start": 0,
+        "end": 66
+      },
+      "previousSourceId": "body[1]/p[71]",
+      "nextSourceId": "body[1]/p[73]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[73]",
+      "sourceOrdinal": 88,
+      "rawText": "\u2013 Prasada Rao, University of Queensland",
+      "fullSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "previousSourceId": "body[1]/p[72]",
+      "nextSourceId": "body[1]/p[74]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[74]",
+      "sourceOrdinal": 89,
+      "rawText": "\u2013 Robert Inklaar, University of Groningen",
+      "fullSpan": {
+        "start": 0,
+        "end": 41
+      },
+      "previousSourceId": "body[1]/p[73]",
+      "nextSourceId": "body[1]/p[75]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[75]",
+      "sourceOrdinal": 90,
+      "rawText": "\u2013 Xianchun Xu, Tsinghua University",
+      "fullSpan": {
+        "start": 0,
+        "end": 34
+      },
+      "previousSourceId": "body[1]/p[74]",
+      "nextSourceId": "body[1]/p[76]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[76]",
+      "sourceOrdinal": 91,
+      "rawText": "ICP experts, guest speakers, and observers",
+      "fullSpan": {
+        "start": 0,
+        "end": 42
+      },
+      "previousSourceId": "body[1]/p[75]",
+      "nextSourceId": "body[1]/p[77]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": true,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[77]",
+      "sourceOrdinal": 92,
+      "rawText": "\u2013 Brian Graf, International Monetary Fund",
+      "fullSpan": {
+        "start": 0,
+        "end": 41
+      },
+      "previousSourceId": "body[1]/p[76]",
+      "nextSourceId": "body[1]/p[78]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[78]",
+      "sourceOrdinal": 93,
+      "rawText": "\u2013 Sergey Sergeev, Independent Expert",
+      "fullSpan": {
+        "start": 0,
+        "end": 36
+      },
+      "previousSourceId": "body[1]/p[77]",
+      "nextSourceId": "body[1]/p[79]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[79]",
+      "sourceOrdinal": 94,
+      "rawText": "\u2013 Yang Wang, Tsinghua University",
+      "fullSpan": {
+        "start": 0,
+        "end": 32
+      },
+      "previousSourceId": "body[1]/p[78]",
+      "nextSourceId": "body[1]/p[80]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[80]",
+      "sourceOrdinal": 95,
+      "rawText": "ICP Inter-Agency Coordination Group (IACG)",
+      "fullSpan": {
+        "start": 0,
+        "end": 42
+      },
+      "previousSourceId": "body[1]/p[79]",
+      "nextSourceId": "body[1]/p[81]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": true,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[81]",
+      "sourceOrdinal": 96,
+      "rawText": "\u2013 African Development Bank (AfDB): Gregoire Mboya De Loubassou",
+      "fullSpan": {
+        "start": 0,
+        "end": 62
+      },
+      "previousSourceId": "body[1]/p[80]",
+      "nextSourceId": "body[1]/p[82]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[82]",
+      "sourceOrdinal": 97,
+      "rawText": "\u2013 Asian Development Bank (ADB): Kaushal Joshi",
+      "fullSpan": {
+        "start": 0,
+        "end": 45
+      },
+      "previousSourceId": "body[1]/p[81]",
+      "nextSourceId": "body[1]/p[83]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[83]",
+      "sourceOrdinal": 98,
+      "rawText": "\u2013 Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT):",
+      "fullSpan": {
+        "start": 0,
+        "end": 88
+      },
+      "previousSourceId": "body[1]/p[82]",
+      "nextSourceId": "body[1]/p[84]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[84]",
+      "sourceOrdinal": 99,
+      "rawText": "Andrey Kosarev, Valerica Accibas",
+      "fullSpan": {
+        "start": 0,
+        "end": 32
+      },
+      "previousSourceId": "body[1]/p[83]",
+      "nextSourceId": "body[1]/p[85]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[85]",
+      "sourceOrdinal": 100,
+      "rawText": "\u2013 Statistical Office of the European Union (Eurostat): Mihai Iulian Gheorghe",
+      "fullSpan": {
+        "start": 0,
+        "end": 76
+      },
+      "previousSourceId": "body[1]/p[84]",
+      "nextSourceId": "body[1]/p[86]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[86]",
+      "sourceOrdinal": 101,
+      "rawText": "\u2013 Organization for Economic Co-operation and Development (OECD): Jarmila Botev",
+      "fullSpan": {
+        "start": 0,
+        "end": 78
+      },
+      "previousSourceId": "body[1]/p[85]",
+      "nextSourceId": "body[1]/p[87]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[87]",
+      "sourceOrdinal": 102,
+      "rawText": "\u2013 United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC): Alfonso",
+      "fullSpan": {
+        "start": 0,
+        "end": 92
+      },
+      "previousSourceId": "body[1]/p[86]",
+      "nextSourceId": "body[1]/p[88]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[88]",
+      "sourceOrdinal": 103,
+      "rawText": "Zeron, Claudia Andrea De Camino Ferrario, Ernestina Brigida Perez Ardiles, Giannina Lopez, Lady",
+      "fullSpan": {
+        "start": 0,
+        "end": 95
+      },
+      "previousSourceId": "body[1]/p[87]",
+      "nextSourceId": "body[1]/p[89]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[89]",
+      "sourceOrdinal": 104,
+      "rawText": "Infante",
+      "fullSpan": {
+        "start": 0,
+        "end": 7
+      },
+      "previousSourceId": "body[1]/p[88]",
+      "nextSourceId": "body[1]/p[90]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[90]",
+      "sourceOrdinal": 105,
+      "rawText": "\u2013 United Nations Economic Commission for Western Asia: Majed Skaini",
+      "fullSpan": {
+        "start": 0,
+        "end": 67
+      },
+      "previousSourceId": "body[1]/p[89]",
+      "nextSourceId": "body[1]/p[91]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[91]",
+      "sourceOrdinal": 106,
+      "rawText": "World Bank",
+      "fullSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "previousSourceId": "body[1]/p[90]",
+      "nextSourceId": "body[1]/p[92]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": true,
+        "italic": false,
+        "underline": true,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[92]",
+      "sourceOrdinal": 107,
+      "rawText": "\u2013 Haishan Fu, World Bank Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "previousSourceId": "body[1]/p[91]",
+      "nextSourceId": "body[1]/p[93]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[93]",
+      "sourceOrdinal": 108,
+      "rawText": "\u2013 Evis Rucaj, World Bank Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "previousSourceId": "body[1]/p[92]",
+      "nextSourceId": "body[1]/p[94]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[94]",
+      "sourceOrdinal": 109,
+      "rawText": "\u2013 Marko Rissanen , World Bank Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 35
+      },
+      "previousSourceId": "body[1]/p[93]",
+      "nextSourceId": "body[1]/p[95]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[95]",
+      "sourceOrdinal": 110,
+      "rawText": "\u2013 Yan Bai, World Bank Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 27
+      },
+      "previousSourceId": "body[1]/p[94]",
+      "nextSourceId": "body[1]/p[96]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[96]",
+      "sourceOrdinal": 111,
+      "rawText": "\u2013 Rui Costa, World Bank Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "previousSourceId": "body[1]/p[95]",
+      "nextSourceId": "body[1]/p[97]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[97]",
+      "sourceOrdinal": 112,
+      "rawText": "\u2013 Yuri Dikhanov, World Bank Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 33
+      },
+      "previousSourceId": "body[1]/p[96]",
+      "nextSourceId": "body[1]/p[98]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[98]",
+      "sourceOrdinal": 113,
+      "rawText": "\u2013 Nancy Kebe, World Bank Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "previousSourceId": "body[1]/p[97]",
+      "nextSourceId": "body[1]/p[99]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[99]",
+      "sourceOrdinal": 114,
+      "rawText": "\u2013 Maurice Nsabimana, World Bank Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 37
+      },
+      "previousSourceId": "body[1]/p[98]",
+      "nextSourceId": "body[1]/p[100]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[100]",
+      "sourceOrdinal": 115,
+      "rawText": "\u2013 Edie Purdie, World Bank Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "previousSourceId": "body[1]/p[99]",
+      "nextSourceId": "body[1]/p[101]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[101]",
+      "sourceOrdinal": 116,
+      "rawText": "\u2013 Inyoung Song, World Bank Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 32
+      },
+      "previousSourceId": "body[1]/p[100]",
+      "nextSourceId": "body[1]/p[102]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[102]",
+      "sourceOrdinal": 117,
+      "rawText": "\u2013 Giovanni Tonutti, World Bank Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 36
+      },
+      "previousSourceId": "body[1]/p[101]",
+      "nextSourceId": "body[1]/p[103]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[103]",
+      "sourceOrdinal": 118,
+      "rawText": "\u2013 Mizuki Yamanaka, World Bank Group",
+      "fullSpan": {
+        "start": 0,
+        "end": 35
+      },
+      "previousSourceId": "body[1]/p[102]",
+      "nextSourceId": "body[1]/p[104]",
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "left"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    },
+    {
+      "sourceId": "body[1]/p[104]",
+      "sourceOrdinal": 119,
+      "rawText": "7",
+      "fullSpan": {
+        "start": 0,
+        "end": 1
+      },
+      "previousSourceId": "body[1]/p[103]",
+      "nextSourceId": null,
+      "style": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "builtInHeadingStyleLevel": null,
+        "outlineLevel": null,
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11,
+        "alignment": "center"
+      },
+      "numbering": {
+        "numberingId": null,
+        "numberingLevel": null,
+        "numberLabel": null,
+        "numberingFormat": null,
+        "numberingStyleHeadingLevel": null
+      },
+      "layout": {
+        "inContentControl": false,
+        "keepNext": false,
+        "pageBreakBefore": false,
+        "tableDepth": 0,
+        "sectionIndex": 6
+      },
+      "inTableOfContents": false
+    }
+  ]
+}
