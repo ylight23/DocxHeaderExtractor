@@ -59,7 +59,10 @@ public sealed class RouteOccurrenceTraceTests
     {
         var catalog = Catalog("source-1", "Deterministic heading");
         var structure = Structure("source-1", "element-1", emitted: true);
-        var audit = Audit(candidateId: "candidate-1") with
+        var audit = Audit(
+            candidateId: "candidate-1",
+            representation: new RouteSourceRepresentation(
+                "source-1", "representation-1", "DOCX_SOURCE_PARAGRAPH", "candidate-1", "PARSER_OWNED_LINEAGE")) with
         {
             RawAnalystResponses = ["a document-level response with no request membership"],
         };
