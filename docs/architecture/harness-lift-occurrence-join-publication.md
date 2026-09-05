@@ -36,6 +36,7 @@ newHumanKeysImported = 0
 
 fullSuite = 1052/1051/1/0
 knownFailures = N15
+changedFingerprints = 1 (frozen N15 artifact drift)
 newFailures = 0
 productionBehaviorChanged = NO
 accuracy99Claim = NOT_MEASURED
