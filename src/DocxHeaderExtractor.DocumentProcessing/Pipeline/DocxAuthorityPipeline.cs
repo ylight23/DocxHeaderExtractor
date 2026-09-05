@@ -81,13 +81,20 @@ internal static class DocxAuthorityPipeline
             source.Blocks.Select(block => new RouteBlockAudit(block.Id, 0, block.DisplayText)).ToArray(),
             source.Blocks.Select(block => new RouteBlockAudit(block.Id, 0, block.DisplayText)).ToArray(),
             [],
-            spans.Decisions.Select(decision => new RouteBlockDecisionAudit(decision.Id, decision.Role.ToString(), decision.Confidence)).ToArray(),
+            spans.Decisions.Select(decision => new RouteBlockDecisionAudit(
+                decision.Id, decision.Role.ToString(), decision.Confidence)
+            {
+                SemanticRole = decision.SemanticRole.ToString(),
+                ProposedParentId = decision.ProposedParentId,
+                ProposedSourceSpan = decision.ProposedSourceSpan,
+            }).ToArray(),
             validated.Select(item => item.SourceId).ToArray(),
             [],
             validated.Select(item => item.SourceId).ToArray())
         {
             RawAnalystResponses = roles.RawResponses.Concat(spans.RawResponses).Concat(semanticHierarchy.RawResponses).ToArray(),
             ModelInputContracts = roles.InputContracts.Concat(spans.InputContracts).Concat(semanticHierarchy.InputContracts).ToArray(),
+            ModelRequests = roles.ModelRequests.Concat(spans.ModelRequests).Concat(semanticHierarchy.ModelRequests).ToArray(),
             CandidateStageTraces = traces,
             ValidatedStructures = semanticHierarchy.Structures,
             HierarchyProposals = semanticHierarchy.Audit,

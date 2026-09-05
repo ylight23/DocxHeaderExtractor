@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.Core.Models;
@@ -41,6 +43,7 @@ internal sealed record PdfBlockAnalysis(
     IReadOnlyList<string> RawResponses)
 {
     public IReadOnlyList<string> InputContracts { get; init; } = [];
+    public IReadOnlyList<RouteModelRequestAudit> ModelRequests { get; init; } = [];
     public string? ProviderFailure { get; init; }
     public IReadOnlySet<string> HeadingBlockIds => Decisions
         .Where(d => d.Role == PdfBlockRole.HeadingTopic && d.Confidence >= 0.65)
@@ -106,7 +109,8 @@ internal static class PdfBlockAnalyst
         IReadOnlyDictionary<string, PdfCandidateContext>? contexts = null,
         CancellationToken ct = default,
         SemanticLaneOptions? laneOptions = null,
-        PdfStageCheckpoint? checkpoint = null)
+        PdfStageCheckpoint? checkpoint = null,
+        string requestStage = "semantic-role")
     {
         if (blocks.Count == 0) return new PdfBlockAnalysis(blocks, [], []);
 
@@ -154,7 +158,7 @@ internal static class PdfBlockAnalyst
                     try
                     {
                     partial = await AnalyzeAsync(classifier, batch, batchContexts, batchDeadline.Token,
-                        laneOptions, checkpoint);
+                        laneOptions, checkpoint, requestStage);
                     }
                     catch (OperationCanceledException) when (!ct.IsCancellationRequested)
                     {
@@ -173,6 +177,7 @@ internal static class PdfBlockAnalyst
                         .Where(block => contexts.ContainsKey(block.Id))
                         .ToDictionary(block => block.Id, block => contexts[block.Id], StringComparer.Ordinal)))
                         .ToArray(),
+                ModelRequests = partials.SelectMany(partial => partial.ModelRequests).ToArray(),
                 ProviderFailure = partials.Select(partial => partial.ProviderFailure)
                     .FirstOrDefault(failure => failure is not null),
             };
@@ -180,6 +185,11 @@ internal static class PdfBlockAnalyst
 
         string raw;
         var inputContracts = new List<string>();
+        var modelRequests = new List<RouteModelRequestAudit>();
+        var requestId = RequestId(requestStage, blocks, 1);
+        modelRequests.Add(new RouteModelRequestAudit(
+            requestId, requestStage, blocks.Select(block => block.Id).ToArray(),
+            ProviderCallAttempted: true, ResponseObserved: false, Status: "STARTED"));
         try
         {
             var prompt = BuildUserPrompt(blocks, contexts);
@@ -193,6 +203,7 @@ internal static class PdfBlockAnalyst
             if (request.Cancelled) throw new OperationCanceledException(ct);
             if (request.Fault is not null) throw request.Fault;
             raw = request.Value!;
+            modelRequests[0] = modelRequests[0] with { ResponseObserved = true, Status = "COMPLETED" };
         }
         catch (OperationCanceledException)
         {
@@ -200,7 +211,12 @@ internal static class PdfBlockAnalyst
         }
         catch (Exception ex)
         {
-            return new PdfBlockAnalysis(blocks, [], []) { ProviderFailure = ex.GetType().Name };
+            modelRequests[0] = modelRequests[0] with { Status = "FAILED" };
+            return new PdfBlockAnalysis(blocks, [], [])
+            {
+                ModelRequests = modelRequests,
+                ProviderFailure = ex.GetType().Name,
+            };
         }
 
         var decisions = ParseDecisions(raw, blocks).ToList();
@@ -212,9 +228,14 @@ internal static class PdfBlockAnalyst
             // must become an explicit Uncertain proposal, never an invisible extraction loss.
             try
             {
+                var retryRequestId = RequestId(requestStage, missing, 2);
+                modelRequests.Add(new RouteModelRequestAudit(
+                    retryRequestId, requestStage, missing.Select(block => block.Id).ToArray(),
+                    ProviderCallAttempted: true, ResponseObserved: false, Status: "STARTED"));
                 var retry = await classifier.BoundaryCutAsync(
                     SystemPrompt + "\nReturn a decision for every supplied id; no ids may be omitted.",
                     AddRetryPrompt(missing, contexts, inputContracts), ct);
+                modelRequests[^1] = modelRequests[^1] with { ResponseObserved = true, Status = "COMPLETED" };
                 rawResponses.Add(retry);
                 decisions.AddRange(ParseDecisions(retry, missing));
             }
@@ -225,13 +246,19 @@ internal static class PdfBlockAnalyst
             catch
             {
                 // The explicit uncertainty below preserves the failure in the audit trace.
+                if (modelRequests.Count > 1)
+                    modelRequests[^1] = modelRequests[^1] with { Status = "FAILED" };
             }
         }
 
         foreach (var block in blocks.Where(block => decisions.All(decision => decision.Id != block.Id)))
             decisions.Add(new PdfBlockDecision(block.Id, PdfBlockRole.Uncertain, 0, "missing-model-decision"));
 
-        return new PdfBlockAnalysis(blocks, decisions, rawResponses) { InputContracts = inputContracts };
+        return new PdfBlockAnalysis(blocks, decisions, rawResponses)
+        {
+            InputContracts = inputContracts,
+            ModelRequests = modelRequests,
+        };
     }
 
     /// <summary>
@@ -254,10 +281,15 @@ internal static class PdfBlockAnalyst
 
         var rawResponses = new List<string>();
         var inputContracts = new List<string>();
+        var modelRequests = new List<RouteModelRequestAudit>();
         string? providerFailure = null;
         foreach (var batch in headingBlocks.Chunk(4))
         {
             string raw;
+            var requestId = RequestId("heading-span", batch, modelRequests.Count + 1);
+            modelRequests.Add(new RouteModelRequestAudit(
+                requestId, "heading-span", batch.Select(block => block.Id).ToArray(),
+                ProviderCallAttempted: true, ResponseObserved: false, Status: "STARTED"));
             try
             {
                 var prompt = BuildPointerSpanPrompt(batch, contexts);
@@ -267,6 +299,7 @@ internal static class PdfBlockAnalyst
                 // A provider may ignore cancellation. A late response must not become a durable
                 // span fact after the lane deadline has already been crossed.
                 ct.ThrowIfCancellationRequested();
+                modelRequests[^1] = modelRequests[^1] with { ResponseObserved = true, Status = "COMPLETED" };
             }
             catch (OperationCanceledException)
             {
@@ -282,6 +315,7 @@ internal static class PdfBlockAnalyst
                         batch.Select(b => (b.Id, b.Page, LineIdOf(b), LineIdsOf(b), (TextOffsetSpan?)null)).ToArray(),
                         ex.GetType().Name, ct);
                 providerFailure ??= ex.GetType().Name;
+                modelRequests[^1] = modelRequests[^1] with { Status = "FAILED" };
                 continue;
             }
 
@@ -305,7 +339,11 @@ internal static class PdfBlockAnalyst
         }
 
         return new PdfBlockAnalysis(blocks, blocks.Where(block => byId.ContainsKey(block.Id)).Select(block => byId[block.Id]).ToArray(), rawResponses)
-        { InputContracts = inputContracts, ProviderFailure = providerFailure };
+        {
+            InputContracts = inputContracts,
+            ModelRequests = modelRequests,
+            ProviderFailure = providerFailure,
+        };
     }
 
     /// <summary>Source-line identity for a block, so a checkpoint row can be matched across runs.</summary>
@@ -314,6 +352,13 @@ internal static class PdfBlockAnalyst
 
     private static IReadOnlyList<string> LineIdsOf(PdfSemanticBlock block) =>
         block.Lines.Select(PdfCandidateProvenance.LineId).ToArray();
+
+    private static string RequestId(string stage, IEnumerable<PdfSemanticBlock> blocks, int attempt)
+    {
+        var candidateIds = string.Join("|", blocks.Select(block => block.Id).OrderBy(id => id, StringComparer.Ordinal));
+        var payload = Encoding.UTF8.GetBytes($"{stage}|{attempt}|{candidateIds}");
+        return $"{stage}:{Convert.ToHexString(SHA256.HashData(payload)).ToLowerInvariant()[..16]}";
+    }
 
     /// <summary>Conflict pass for source-grounded proposals. It can only retain or lower a proposal.</summary>
     public static async Task<PdfBlockAnalysis> CritiqueHeadingProposalsAsync(

@@ -1,4 +1,7 @@
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -36,13 +39,25 @@ internal static class PdfSemanticHierarchyFallback
                 .ToHashSet(StringComparer.Ordinal),
             StringComparer.Ordinal);
         var prompt = BuildPrompt(unresolved, contexts, allowedByChild);
+        var requestId = RequestId(unresolved.Select(item => item.SourceId));
+        var modelRequest = new RouteModelRequestAudit(
+            requestId, "hierarchy", unresolved.Select(item => item.SourceId).ToArray(),
+            ProviderCallAttempted: true, ResponseObserved: false, Status: "STARTED");
         string raw;
         try
         {
             raw = await classifier.BoundaryCutAsync(SystemPrompt, prompt, ct);
+            modelRequest = modelRequest with { ResponseObserved = true, Status = "COMPLETED" };
         }
         catch (OperationCanceledException) { throw; }
-        catch { return new PdfSemanticHierarchyResult(structures, [], [], ["hierarchy-model-call-failed"]); }
+        catch
+        {
+            modelRequest = modelRequest with { Status = "FAILED" };
+            return new PdfSemanticHierarchyResult(structures, [], [], ["hierarchy-model-call-failed"])
+            {
+                ModelRequests = [modelRequest],
+            };
+        }
 
         var proposals = Parse(raw, unresolved.Select(item => item.SourceId).ToHashSet(StringComparer.Ordinal));
         var position = headings.ToDictionary(heading => heading.SourceId, heading => PositionOf(contexts[heading.SourceId]), StringComparer.Ordinal);
@@ -73,7 +88,10 @@ internal static class PdfSemanticHierarchyFallback
                 : parentId is null ? "unresolved" : "rejected-parent-pointer";
             return new PdfHierarchyProposalAudit(item.SourceId, parentId, final.ParentId, status);
         }).ToArray();
-        return new PdfSemanticHierarchyResult(resolved, audit, [raw], [prompt]);
+        return new PdfSemanticHierarchyResult(resolved, audit, [raw], [prompt])
+        {
+            ModelRequests = [modelRequest],
+        };
     }
 
     internal static string BuildPrompt(
@@ -124,13 +142,22 @@ internal static class PdfSemanticHierarchyFallback
         var y = left.InvertedY.CompareTo(right.InvertedY);
         return y != 0 ? y : StringComparer.Ordinal.Compare(left.Id, right.Id);
     }
+
+    private static string RequestId(IEnumerable<string> candidateIds)
+    {
+        var payload = Encoding.UTF8.GetBytes("hierarchy|" + string.Join("|", candidateIds.OrderBy(id => id, StringComparer.Ordinal)));
+        return $"hierarchy:{Convert.ToHexString(SHA256.HashData(payload)).ToLowerInvariant()[..16]}";
+    }
 }
 
 internal sealed record PdfSemanticHierarchyResult(
     IReadOnlyList<PdfValidatedStructure> Structures,
     IReadOnlyList<PdfHierarchyProposalAudit> Audit,
     IReadOnlyList<string> RawResponses,
-    IReadOnlyList<string> InputContracts);
+    IReadOnlyList<string> InputContracts)
+{
+    public IReadOnlyList<RouteModelRequestAudit> ModelRequests { get; init; } = [];
+}
 
 public sealed record PdfHierarchyProposalAudit(
     string Id,

@@ -18,6 +18,18 @@ public sealed record RouteExecutionAudit(
     [property: JsonPropertyName("groundingRejections")] IReadOnlyList<RouteBlockRejectionAudit> GroundingRejections,
     [property: JsonPropertyName("alignedBlockIds")] IReadOnlyList<string> AlignedBlockIds)
 {
+    /// <summary>Explicit source-to-representation lineage captured at the route boundary.</summary>
+    [JsonIgnore]
+    public IReadOnlyList<RouteSourceRepresentation> SourceRepresentations { get; init; } = [];
+
+    /// <summary>Provider request membership without retaining prompts or raw completions.</summary>
+    [JsonIgnore]
+    public IReadOnlyList<RouteModelRequestAudit> ModelRequests { get; init; } = [];
+
+    /// <summary>One row per parser-owned source occurrence, including unknown stages.</summary>
+    [JsonIgnore]
+    public IReadOnlyList<RouteOccurrenceTrace> OccurrenceTraces { get; init; } = [];
+
     /// <summary>Source identities selected before any provider execution; candidate id is diagnostic only.</summary>
     [JsonPropertyName("selectedSourceIdentities")]
     public IReadOnlyList<PdfSelectedSourceIdentity> SelectedSourceIdentities { get; init; } = [];
@@ -84,6 +96,58 @@ public sealed record PdfSelectedSourceIdentity(
     [property: JsonPropertyName("sourceText")] string SourceText,
     [property: JsonPropertyName("sourceSpan")] TextOffsetSpan? SourceSpan = null);
 
+public sealed record RouteSourceRepresentation(
+    [property: JsonPropertyName("sourceId")] string SourceId,
+    [property: JsonPropertyName("representationId")] string RepresentationId,
+    [property: JsonPropertyName("representationKind")] string RepresentationKind,
+    [property: JsonPropertyName("candidateId")] string? CandidateId,
+    [property: JsonPropertyName("lineageMethod")] string LineageMethod);
+
+public sealed record RouteModelRequestAudit(
+    [property: JsonPropertyName("requestId")] string RequestId,
+    [property: JsonPropertyName("stage")] string Stage,
+    [property: JsonPropertyName("candidateIds")] IReadOnlyList<string> CandidateIds,
+    [property: JsonPropertyName("providerCallAttempted")] bool ProviderCallAttempted,
+    [property: JsonPropertyName("responseObserved")] bool ResponseObserved,
+    [property: JsonPropertyName("status")] string Status);
+
+public sealed record RouteOccurrenceTrace
+{
+    [JsonPropertyName("documentId")] public required string DocumentId { get; init; }
+    [JsonPropertyName("documentGroupId")] public required string DocumentGroupId { get; init; }
+    [JsonPropertyName("sourceSha256")] public required string SourceSha256 { get; init; }
+    [JsonPropertyName("sourceId")] public required string SourceId { get; init; }
+    [JsonPropertyName("stableId")] public string? StableId { get; init; }
+    [JsonPropertyName("sourceOrdinal")] public required int SourceOrdinal { get; init; }
+    [JsonPropertyName("sourceSpan")] public required TextOffsetSpan SourceSpan { get; init; }
+    [JsonPropertyName("representationId")] public string? RepresentationId { get; init; }
+    [JsonPropertyName("representationKind")] public string? RepresentationKind { get; init; }
+    [JsonPropertyName("candidateId")] public string? CandidateId { get; init; }
+    [JsonPropertyName("routeOwner")] public required string RouteOwner { get; init; }
+    [JsonPropertyName("candidateConstructed")] public bool? CandidateConstructed { get; init; }
+    [JsonPropertyName("candidateSelected")] public bool? CandidateSelected { get; init; }
+    [JsonPropertyName("modelRequestIds")] public IReadOnlyList<string> ModelRequestIds { get; init; } = [];
+    [JsonPropertyName("modelRequestMembership")] public required string ModelRequestMembership { get; init; }
+    [JsonPropertyName("modelProposalPresent")] public bool? ModelProposalPresent { get; init; }
+    [JsonPropertyName("modelRole")] public string? ModelRole { get; init; }
+    [JsonPropertyName("modelLevel")] public int? ModelLevel { get; init; }
+    [JsonPropertyName("modelParent")] public string? ModelParent { get; init; }
+    [JsonPropertyName("modelSpan")] public TextOffsetSpan? ModelSpan { get; init; }
+    [JsonPropertyName("validationStatus")] public string? ValidationStatus { get; init; }
+    [JsonPropertyName("validationIssues")] public IReadOnlyList<string> ValidationIssues { get; init; } = [];
+    [JsonPropertyName("markerBefore")] public string? MarkerBefore { get; init; }
+    [JsonPropertyName("markerAfter")] public string? MarkerAfter { get; init; }
+    [JsonPropertyName("markerReason")] public string? MarkerReason { get; init; }
+    [JsonPropertyName("structuralBefore")] public string? StructuralBefore { get; init; }
+    [JsonPropertyName("structuralAfter")] public string? StructuralAfter { get; init; }
+    [JsonPropertyName("structuralReason")] public string? StructuralReason { get; init; }
+    [JsonPropertyName("finalIncluded")] public bool FinalIncluded { get; init; }
+    [JsonPropertyName("finalRole")] public string? FinalRole { get; init; }
+    [JsonPropertyName("finalLevel")] public int? FinalLevel { get; init; }
+    [JsonPropertyName("finalParent")] public string? FinalParent { get; init; }
+    [JsonPropertyName("finalSpan")] public TextOffsetSpan? FinalSpan { get; init; }
+}
+
 public sealed record RouteLaneExecutionAudit(
     [property: JsonPropertyName("status")] string Status,
     [property: JsonPropertyName("scheduled")] int Scheduled,
@@ -101,7 +165,12 @@ public sealed record RouteBlockDecisionAudit(
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("role")] string Role,
     [property: JsonPropertyName("confidence")] double Confidence,
-    [property: JsonPropertyName("reason")] string? Reason = null);
+    [property: JsonPropertyName("reason")] string? Reason = null)
+{
+    [JsonIgnore] public string? SemanticRole { get; init; }
+    [JsonIgnore] public string? ProposedParentId { get; init; }
+    [JsonIgnore] public TextOffsetSpan? ProposedSourceSpan { get; init; }
+}
 
 public sealed record RouteBlockRejectionAudit(
     [property: JsonPropertyName("id")] string Id,

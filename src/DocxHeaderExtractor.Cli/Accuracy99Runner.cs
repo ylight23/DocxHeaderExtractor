@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -26,7 +27,7 @@ internal static class Accuracy99Runner
         var operation = options.Accuracy99Operation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline");
+            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability");
             return 0;
         }
 
@@ -36,8 +37,156 @@ internal static class Accuracy99Runner
             "inventory" => await BuildInventoryAsync(options, cancellationToken),
             "evaluate" => await EvaluateAsync(options, cancellationToken),
             "baseline" => await BuildBaselineAsync(options, cancellationToken),
+            "observability" => await BuildObservabilityAsync(options, cancellationToken),
             _ => throw new ArgumentException($"accuracy99 operation không hợp lệ: {operation}"),
         };
+    }
+
+    private static async Task<int> BuildObservabilityAsync(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var manifestPath = Path.Combine(repoRoot, "eval", "harness-lift", "current-measurement-manifest.v2.json");
+        var corpusPath = Path.Combine(repoRoot, "eval", "harness-lift", "corpus-map.v1.json");
+        if (!File.Exists(manifestPath) || !File.Exists(corpusPath))
+            throw new FileNotFoundException("A99 observability cần current-measurement-manifest.v2.json và corpus-map.v1.json.");
+
+        var trustedDocumentIds = ReadStringArray(manifestPath, "documentIds");
+        var corpus = ReadCorpus(corpusPath)
+            .Where(item => trustedDocumentIds.Contains(item.DocumentId, StringComparer.Ordinal))
+            .OrderBy(item => item.DocumentId, StringComparer.Ordinal)
+            .ToArray();
+        var missing = trustedDocumentIds
+            .Where(id => corpus.All(item => !string.Equals(item.DocumentId, id, StringComparison.Ordinal)))
+            .ToArray();
+        if (missing.Length > 0)
+            throw new InvalidDataException($"Trusted document không có exact corpus mapping: {string.Join(", ", missing)}");
+
+        var documents = new List<object>();
+        var allTraces = new List<RouteOccurrenceTrace>();
+        var errors = new List<object>();
+        var providerCalls = 0;
+        foreach (var item in corpus)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var inputPath = Path.Combine(repoRoot, item.Path.Replace('/', Path.DirectorySeparatorChar));
+            if (!File.Exists(inputPath))
+            {
+                errors.Add(new { item.DocumentId, item.Path, error = "source-file-missing" });
+                continue;
+            }
+
+            var actualSha = HumanGoldValidator.ComputeSha256(inputPath);
+            if (!string.Equals(actualSha, item.SourceSha256, StringComparison.OrdinalIgnoreCase))
+            {
+                errors.Add(new { item.DocumentId, item.Path, error = "source-sha-mismatch", expected = item.SourceSha256, actual = actualSha });
+                continue;
+            }
+
+            var pipelineOptions = options.Pipeline;
+            pipelineOptions.DisableLlm = true;
+            try
+            {
+                using var pipeline = new AuthorityExtractionPipeline(pipelineOptions);
+                var execution = await pipeline.RunDocumentExecutionAsync(inputPath, ct: cancellationToken);
+                var audit = execution.CompatibilityOutline.RouteAudit;
+                var traces = (audit?.OccurrenceTraces ?? [])
+                    .Select(trace => trace with
+                    {
+                        DocumentId = item.DocumentId,
+                        DocumentGroupId = item.DocumentGroupId ?? item.DocumentId,
+                    })
+                    .ToArray();
+                providerCalls += execution.Result.Provenance.ProviderCalls;
+                allTraces.AddRange(traces);
+                documents.Add(new
+                {
+                    documentId = item.DocumentId,
+                    documentGroupId = item.DocumentGroupId ?? item.DocumentId,
+                    split = item.Split,
+                    sourceSha256 = actualSha,
+                    route = execution.CompatibilityOutline.DeterministicRoute,
+                    occurrenceCount = traces.Length,
+                    routeObservable = traces.Count(trace => trace.RouteOwner is not "UNKNOWN_ROUTE" and not "ROUTE_NOT_OBSERVABLE"),
+                    finalLineageObservable = traces.Count(trace => trace.RepresentationId is not null),
+                    modelExposureObservable = traces.Count(trace => trace.ModelRequestMembership is not "UNKNOWN"),
+                    traces,
+                });
+            }
+            catch (Exception ex)
+            {
+                errors.Add(new { item.DocumentId, item.Path, error = ex.GetType().Name, message = ex.Message });
+            }
+        }
+
+        var total = allTraces.Count;
+        var routeObservable = allTraces.Count(trace => trace.RouteOwner is not "UNKNOWN_ROUTE" and not "ROUTE_NOT_OBSERVABLE");
+        var finalLineageObservable = allTraces.Count(trace => trace.RepresentationId is not null);
+        var modelExposureObservable = allTraces.Count(trace => trace.ModelRequestMembership is not "UNKNOWN");
+        var executionRevision = GitRevision(repoRoot) ?? "UNRESOLVED";
+        var artifact = new
+        {
+            artifactKind = "a99_observability_audit",
+            schemaVersion = "1.0",
+            status = errors.Count == 0 && total > 0 ? "PASS" : "BLOCKED",
+            baseRevision = "ee6d68373f63545f4f31e91509f2c00d1033ae05",
+            executionRevision,
+            population = new
+            {
+                source = "eval/harness-lift/current-measurement-manifest.v2.json",
+                documentIds = trustedDocumentIds,
+                documents = documents.Count,
+                traces = total,
+            },
+            coverage = new
+            {
+                routeObservable,
+                routeObservableRate = Rate(routeObservable, total),
+                modelExposureObservable,
+                modelExposureObservableRate = Rate(modelExposureObservable, total),
+                finalLineageObservable,
+                finalLineageObservableRate = Rate(finalLineageObservable, total),
+                representationMismatchRemaining = allTraces.Count(trace => trace.RepresentationId is null),
+                traceUnknownRemaining = allTraces.Count(trace => trace.ModelRequestMembership == "UNKNOWN"),
+                knownFinalAbsenceIsObservable = true,
+            },
+            providerCalls,
+            productionOutputDelta = 0,
+            expectedChanged = false,
+            humanGold = "NOT_IMPORTED",
+            trueBlindAvailable = false,
+            errors,
+            documents,
+        };
+
+        var artifactPath = options.OutputPath ?? Path.Combine(repoRoot, "eval", "a99-closed-loop", "observability-audit.v1.json");
+        await WriteAsync(artifactPath, JsonSerializer.Serialize(artifact, JsonOptions), cancellationToken);
+        var schema = new
+        {
+            artifactKind = "a99_canonical_decision_trace_schema",
+            schemaVersion = "1.0",
+            authority = new
+            {
+                source = "parser-owned source occurrence",
+                joins = new[] { "EXACT_SOURCE_ID", "EXACT_STABLE_ID", "EXACT_SPAN", "EXPLICIT_BLOCK_SOURCE_REFERENCE", "EXPLICIT_ALIGNMENT", "PARSER_OWNED_LINEAGE" },
+                fuzzyJoins = false,
+                unknownMustBeRetained = true,
+                modelExposureRequiresExplicitRequestMembership = true,
+                humanGoldMustNotEnterRuntimeReasoning = true,
+            },
+            occurrenceFields = new[]
+            {
+                "documentId", "documentGroupId", "sourceSha256", "sourceId", "stableId", "sourceOrdinal", "sourceSpan",
+                "representationId", "representationKind", "candidateId", "routeOwner", "candidateConstructed", "candidateSelected",
+                "modelRequestIds", "modelRequestMembership", "modelProposalPresent", "modelRole", "modelLevel", "modelParent", "modelSpan",
+                "validationStatus", "validationIssues", "markerBefore", "markerAfter", "markerReason", "structuralBefore", "structuralAfter",
+                "structuralReason", "finalIncluded", "finalRole", "finalLevel", "finalParent", "finalSpan",
+            },
+        };
+        var schemaPath = Path.Combine(repoRoot, "eval", "a99-closed-loop", "canonical-decision-trace-schema.v1.json");
+        await WriteAsync(schemaPath, JsonSerializer.Serialize(schema, JsonOptions), cancellationToken);
+        return errors.Count == 0 && total > 0 && providerCalls == 0 ? 0 : 1;
     }
 
     private static async Task<int> BuildPacketAsync(
@@ -165,6 +314,65 @@ internal static class Accuracy99Runner
             throw new ArgumentException($"{operation} cần một input path.");
         return options.Inputs[0];
     }
+
+    private static string FindRepositoryRoot(string start)
+    {
+        var directory = new DirectoryInfo(Path.GetFullPath(start));
+        while (directory is not null)
+        {
+            if (File.Exists(Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")) &&
+                File.Exists(Path.Combine(directory.FullName, "eval", "harness-lift", "corpus-map.v1.json")))
+                return directory.FullName;
+            directory = directory.Parent;
+        }
+        throw new DirectoryNotFoundException($"Không tìm thấy repository từ {start}.");
+    }
+
+    private static IReadOnlyList<string> ReadStringArray(string path, string propertyName)
+    {
+        using var document = JsonDocument.Parse(File.ReadAllText(path));
+        return document.RootElement.GetProperty(propertyName).EnumerateArray()
+            .Select(item => item.GetString() ?? throw new InvalidDataException($"{propertyName} chứa giá trị rỗng."))
+            .ToArray();
+    }
+
+    private static IReadOnlyList<ObservabilityCorpusEntry> ReadCorpus(string path)
+    {
+        using var document = JsonDocument.Parse(File.ReadAllText(path));
+        return document.RootElement.GetProperty("documents").EnumerateArray().Select(item => new ObservabilityCorpusEntry(
+            item.GetProperty("documentId").GetString() ?? throw new InvalidDataException("corpus documentId missing"),
+            item.GetProperty("path").GetString() ?? throw new InvalidDataException("corpus path missing"),
+            item.GetProperty("sourceSha256").GetString() ?? throw new InvalidDataException("corpus sourceSha256 missing"),
+            item.TryGetProperty("documentGroupId", out var group) ? group.GetString() : null,
+            item.TryGetProperty("split", out var split) ? split.GetString() : null)).ToArray();
+    }
+
+    private static string? GitRevision(string repoRoot)
+    {
+        using var process = Process.Start(new ProcessStartInfo
+        {
+            FileName = "git",
+            Arguments = "rev-parse HEAD",
+            WorkingDirectory = repoRoot,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+        });
+        if (process is null) return null;
+        var output = process.StandardOutput.ReadToEnd().Trim();
+        process.WaitForExit();
+        return process.ExitCode == 0 && output.Length > 0 ? output : null;
+    }
+
+    private static double Rate(int numerator, int denominator) => denominator == 0 ? 0 : (double)numerator / denominator;
+
+    private sealed record ObservabilityCorpusEntry(
+        string DocumentId,
+        string Path,
+        string SourceSha256,
+        string? DocumentGroupId,
+        string? Split);
 
     private static async Task WriteAsync(
         string? outputPath,

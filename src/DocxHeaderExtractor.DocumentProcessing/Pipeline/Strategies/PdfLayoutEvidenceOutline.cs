@@ -346,10 +346,18 @@ public static class PdfLayoutEvidenceOutline
                 context.Candidates.Select(ToAudit).ToArray(),
                 candidates.Select(ToAudit).ToArray(),
                 context.Candidates.Where(b => !candidates.Any(selected => selected.Id == b.Id)).Select(ToAudit).ToArray(),
-                blockAnalysis.Decisions.Select(d => new RouteBlockDecisionAudit(d.Id, d.Role.ToString(), d.Confidence)).ToArray(),
+                blockAnalysis.Decisions.Select(d => new RouteBlockDecisionAudit(d.Id, d.Role.ToString(), d.Confidence)
+                {
+                    SemanticRole = d.SemanticRole.ToString(),
+                    ProposedParentId = d.ProposedParentId,
+                    ProposedSourceSpan = d.ProposedSourceSpan,
+                }).ToArray(),
                 accepted.Select(b => b.Id).ToArray(),
                 grounded.Rejected.Select(r => new RouteBlockRejectionAudit(r.Id, r.Role, r.Confidence, r.Reason)).ToArray(),
-                alignment.AlignedBlockIds.ToArray()));
+                alignment.AlignedBlockIds.ToArray())
+            {
+                ModelRequests = blockAnalysis.ModelRequests,
+            });
     }
 
     /// <summary>
@@ -697,6 +705,11 @@ public static class PdfLayoutEvidenceOutline
         {
             Decisions = spanAnalysis.Decisions,
             RawResponses = roleAnalysis.RawResponses.Concat(spanAnalysis.RawResponses).Concat(visual.RawResponses).ToArray(),
+            ModelRequests = roleAnalysis.ModelRequests
+                .Concat(spanAnalysis.ModelRequests)
+                .GroupBy(request => request.RequestId, StringComparer.Ordinal)
+                .Select(group => group.First())
+                .ToArray(),
         };
         var stageTraces = PdfProposalValidator.Trace(candidateContexts, blockAnalysis.Decisions);
         var validated = PdfProposalValidator.Validate(candidateContexts, blockAnalysis.Decisions);
@@ -713,6 +726,11 @@ public static class PdfLayoutEvidenceOutline
         {
             RawResponses = blockAnalysis.RawResponses.Concat(semanticHierarchy.RawResponses).ToArray(),
             InputContracts = roleAnalysis.InputContracts.Concat(spanAnalysis.InputContracts).Concat(semanticHierarchy.InputContracts).ToArray(),
+            ModelRequests = blockAnalysis.ModelRequests
+                .Concat(semanticHierarchy.ModelRequests)
+                .GroupBy(request => request.RequestId, StringComparer.Ordinal)
+                .Select(group => group.First())
+                .ToArray(),
         };
         var eligibleIds = validated.Select(item => item.SourceId).ToHashSet(StringComparer.Ordinal);
         var eligibleDecisions = blockAnalysis.Decisions.Where(decision => eligibleIds.Contains(decision.Id)).ToArray();
@@ -770,13 +788,19 @@ public static class PdfLayoutEvidenceOutline
             context.Candidates.Select(ToAudit).ToArray(),
             selected.Select(ToAudit).ToArray(),
             context.Candidates.Where(b => !selected.Any(choice => choice.Id == b.Id)).Select(ToAudit).ToArray(),
-            blockAnalysis.Decisions.Select(d => new RouteBlockDecisionAudit(d.Id, d.Role.ToString(), d.Confidence, d.Reason)).ToArray(),
+            blockAnalysis.Decisions.Select(d => new RouteBlockDecisionAudit(d.Id, d.Role.ToString(), d.Confidence, d.Reason)
+            {
+                SemanticRole = d.SemanticRole.ToString(),
+                ProposedParentId = d.ProposedParentId,
+                ProposedSourceSpan = d.ProposedSourceSpan,
+            }).ToArray(),
             accepted.Select(b => b.Id).ToArray(),
             grounded.Rejected.Select(r => new RouteBlockRejectionAudit(r.Id, r.Role, r.Confidence, r.Reason)).ToArray(),
             alignment.AlignedBlockIds.ToArray())
         {
             RawAnalystResponses = blockAnalysis.RawResponses.Concat(visualRecovery.RawResponses).ToArray(),
             ModelInputContracts = roleAnalysis.InputContracts.Concat(spanAnalysis.InputContracts).ToArray(),
+            ModelRequests = blockAnalysis.ModelRequests,
             CandidateStageTraces = stageTraces,
             ValidatedStructures = structures,
             RankedCandidates = ranked,

@@ -207,6 +207,23 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             var sourceCatalog = authorityRoute == AuthorityRoute.PdfAuthority
                 ? routeSourceCatalog ?? throw new InvalidOperationException("pdf-source-catalog-missing")
                 : DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument);
+            if (audit is not null)
+            {
+                var sourceRepresentations = BuildSourceRepresentations(sourceCatalog, audit, authorityRoute);
+                var traceAudit = audit with { SourceRepresentations = sourceRepresentations };
+                var traces = RouteOccurrenceTraceBuilder.Build(
+                    sourceDocument.DocumentId,
+                    FileSha256(inputPath),
+                    sourceCatalog,
+                    structural.Structure,
+                    structural.EmittedElementIds,
+                    traceAudit,
+                    routeOwner: authorityRoute == AuthorityRoute.PdfAuthority
+                        ? "PDF_AUTHORITY_ROUTE"
+                        : "DOCX_AUTHORITY_ROUTE");
+                audit = traceAudit with { OccurrenceTraces = traces };
+                authority = authority with { Audit = audit };
+            }
             var sections = StructuralSectionProjection.Project(structural.Structure, sourceCatalog);
             var chunks = SectionChunkProjection.Project(
                 sections, sourceCatalog, structural.Structure,
@@ -261,6 +278,27 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         return PdfFinalStructureProjection.Project(
             FileSha256(docxPath), audit.ValidatedStructures, audit.HierarchyFacts,
             PdfCanonicalGrounding.FromValidatedStructure(structure));
+    }
+
+    private static IReadOnlyList<RouteSourceRepresentation> BuildSourceRepresentations(
+        DocumentSourceCatalog sourceCatalog,
+        RouteExecutionAudit audit,
+        AuthorityRoute authorityRoute)
+    {
+        var candidateIds = audit.CandidateBlocks
+            .Select(block => block.Id)
+            .ToHashSet(StringComparer.Ordinal);
+        var kind = authorityRoute == AuthorityRoute.PdfAuthority
+            ? "PDF_PARSER_BLOCK"
+            : "DOCX_SOURCE_PARAGRAPH";
+        return sourceCatalog.Units
+            .Select(unit => new RouteSourceRepresentation(
+                unit.SourceId,
+                unit.SourceId,
+                kind,
+                candidateIds.Contains(unit.SourceId) ? unit.SourceId : null,
+                "PARSER_OWNED_LINEAGE"))
+            .ToArray();
     }
 
     internal static StructuralAuthorityResult ApplyStructuralQuarantine(
