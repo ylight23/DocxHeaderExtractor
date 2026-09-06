@@ -10,7 +10,7 @@
   "errors": 15,
   "results": [
     {
-      "documentId": "DOC-0264",
+      "documentId": "DOC-0116",
       "status": "MISSING",
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
@@ -18,17 +18,17 @@
       "representability": {
         "status": "CharacterSpanRepresentable",
         "reason": "packet-has-non-trivial-source-backed-character-text",
-        "occurrenceCount": 4,
-        "nonEmptyOccurrenceCount": 3,
-        "nonEmptyTextCharacters": 224731,
-        "nonEmptyOccurrenceRatio": 0.75,
+        "occurrenceCount": 3590,
+        "nonEmptyOccurrenceCount": 1921,
+        "nonEmptyTextCharacters": 213930,
+        "nonEmptyOccurrenceRatio": 0.5350974930362117,
         "packetTextCorrespondence": true,
         "providerCalls": 0
       },
       "error": "gold-missing"
     },
     {
-      "documentId": "DOC-0265",
+      "documentId": "DOC-0122",
       "status": "MISSING",
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
@@ -36,136 +36,10 @@
       "representability": {
         "status": "CharacterSpanRepresentable",
         "reason": "packet-has-non-trivial-source-backed-character-text",
-        "occurrenceCount": 2208,
-        "nonEmptyOccurrenceCount": 1934,
-        "nonEmptyTextCharacters": 366431,
-        "nonEmptyOccurrenceRatio": 0.8759057971014492,
-        "packetTextCorrespondence": true,
-        "providerCalls": 0
-      },
-      "error": "gold-missing"
-    },
-    {
-      "documentId": "DOC-0219",
-      "status": "MISSING",
-      "validatorStatus": "MISSING",
-      "referenceAuthority": "NOT_REVIEWED",
-      "eligibleForStrictA99Claim": false,
-      "representability": {
-        "status": "CharacterSpanRepresentable",
-        "reason": "packet-has-non-trivial-source-backed-character-text",
-        "occurrenceCount": 4907,
-        "nonEmptyOccurrenceCount": 3376,
-        "nonEmptyTextCharacters": 361872,
-        "nonEmptyOccurrenceRatio": 0.6879967393519462,
-        "packetTextCorrespondence": true,
-        "providerCalls": 0
-      },
-      "error": "gold-missing"
-    },
-    {
-      "documentId": "DOC-0216",
-      "status": "MISSING",
-      "validatorStatus": "MISSING",
-      "referenceAuthority": "NOT_REVIEWED",
-      "eligibleForStrictA99Claim": false,
-      "representability": {
-        "status": "CharacterSpanRepresentable",
-        "reason": "packet-has-non-trivial-source-backed-character-text",
-        "occurrenceCount": 5753,
-        "nonEmptyOccurrenceCount": 3491,
-        "nonEmptyTextCharacters": 482056,
-        "nonEmptyOccurrenceRatio": 0.6068138362593429,
-        "packetTextCorrespondence": true,
-        "providerCalls": 0
-      },
-      "error": "gold-missing"
-    },
-    {
-      "documentId": "DOC-0243",
-      "status": "MISSING",
-      "validatorStatus": "MISSING",
-      "referenceAuthority": "NOT_REVIEWED",
-      "eligibleForStrictA99Claim": false,
-      "representability": {
-        "status": "CharacterSpanRepresentable",
-        "reason": "packet-has-non-trivial-source-backed-character-text",
-        "occurrenceCount": 20279,
-        "nonEmptyOccurrenceCount": 17207,
-        "nonEmptyTextCharacters": 651180,
-        "nonEmptyOccurrenceRatio": 0.848513240297845,
-        "packetTextCorrespondence": true,
-        "providerCalls": 0
-      },
-      "error": "gold-missing"
-    },
-    {
-      "documentId": "DOC-0258",
-      "status": "MISSING",
-      "validatorStatus": "MISSING",
-      "referenceAuthority": "NOT_REVIEWED",
-      "eligibleForStrictA99Claim": false,
-      "representability": {
-        "status": "CharacterSpanRepresentable",
-        "reason": "packet-has-non-trivial-source-backed-character-text",
-        "occurrenceCount": 173,
-        "nonEmptyOccurrenceCount": 146,
-        "nonEmptyTextCharacters": 31703,
-        "nonEmptyOccurrenceRatio": 0.8439306358381503,
-        "packetTextCorrespondence": true,
-        "providerCalls": 0
-      },
-      "error": "gold-missing"
-    },
-    {
-      "documentId": "DOC-0252",
-      "status": "MISSING",
-      "validatorStatus": "MISSING",
-      "referenceAuthority": "NOT_REVIEWED",
-      "eligibleForStrictA99Claim": false,
-      "representability": {
-        "status": "CharacterSpanRepresentable",
-        "reason": "packet-has-non-trivial-source-backed-character-text",
-        "occurrenceCount": 244,
-        "nonEmptyOccurrenceCount": 210,
-        "nonEmptyTextCharacters": 49561,
-        "nonEmptyOccurrenceRatio": 0.860655737704918,
-        "packetTextCorrespondence": true,
-        "providerCalls": 0
-      },
-      "error": "gold-missing"
-    },
-    {
-      "documentId": "DOC-0256",
-      "status": "MISSING",
-      "validatorStatus": "MISSING",
-      "referenceAuthority": "NOT_REVIEWED",
-      "eligibleForStrictA99Claim": false,
-      "representability": {
-        "status": "CharacterSpanRepresentable",
-        "reason": "packet-has-non-trivial-source-backed-character-text",
-        "occurrenceCount": 258,
-        "nonEmptyOccurrenceCount": 225,
-        "nonEmptyTextCharacters": 34937,
-        "nonEmptyOccurrenceRatio": 0.872093023255814,
-        "packetTextCorrespondence": true,
-        "providerCalls": 0
-      },
-      "error": "gold-missing"
-    },
-    {
-      "documentId": "DOC-0205",
-      "status": "MISSING",
-      "validatorStatus": "MISSING",
-      "referenceAuthority": "NOT_REVIEWED",
-      "eligibleForStrictA99Claim": false,
-      "representability": {
-        "status": "CharacterSpanRepresentable",
-        "reason": "packet-has-non-trivial-source-backed-character-text",
-        "occurrenceCount": 4,
-        "nonEmptyOccurrenceCount": 3,
-        "nonEmptyTextCharacters": 60919,
-        "nonEmptyOccurrenceRatio": 0.75,
+        "occurrenceCount": 5958,
+        "nonEmptyOccurrenceCount": 3617,
+        "nonEmptyTextCharacters": 507300,
+        "nonEmptyOccurrenceRatio": 0.6070829137294395,
         "packetTextCorrespondence": true,
         "providerCalls": 0
       },
@@ -184,24 +58,6 @@
         "nonEmptyOccurrenceCount": 3214,
         "nonEmptyTextCharacters": 353182,
         "nonEmptyOccurrenceRatio": 0.7175708863585621,
-        "packetTextCorrespondence": true,
-        "providerCalls": 0
-      },
-      "error": "gold-missing"
-    },
-    {
-      "documentId": "DOC-0201",
-      "status": "MISSING",
-      "validatorStatus": "MISSING",
-      "referenceAuthority": "NOT_REVIEWED",
-      "eligibleForStrictA99Claim": false,
-      "representability": {
-        "status": "CharacterSpanRepresentable",
-        "reason": "packet-has-non-trivial-source-backed-character-text",
-        "occurrenceCount": 1062,
-        "nonEmptyOccurrenceCount": 605,
-        "nonEmptyTextCharacters": 47739,
-        "nonEmptyOccurrenceRatio": 0.5696798493408662,
         "packetTextCorrespondence": true,
         "providerCalls": 0
       },
@@ -244,22 +100,184 @@
       "error": "gold-missing"
     },
     {
-      "documentId": "DOC-0116",
+      "documentId": "DOC-0201",
       "status": "MISSING",
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
-      "representability": null,
-      "error": "packet-missing"
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 1062,
+        "nonEmptyOccurrenceCount": 605,
+        "nonEmptyTextCharacters": 47739,
+        "nonEmptyOccurrenceRatio": 0.5696798493408662,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
+      "error": "gold-missing"
     },
     {
-      "documentId": "DOC-0122",
+      "documentId": "DOC-0205",
       "status": "MISSING",
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
-      "representability": null,
-      "error": "packet-missing"
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 4,
+        "nonEmptyOccurrenceCount": 3,
+        "nonEmptyTextCharacters": 60919,
+        "nonEmptyOccurrenceRatio": 0.75,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0216",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 5753,
+        "nonEmptyOccurrenceCount": 3491,
+        "nonEmptyTextCharacters": 482056,
+        "nonEmptyOccurrenceRatio": 0.6068138362593429,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0219",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 4907,
+        "nonEmptyOccurrenceCount": 3376,
+        "nonEmptyTextCharacters": 361872,
+        "nonEmptyOccurrenceRatio": 0.6879967393519462,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0243",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 20279,
+        "nonEmptyOccurrenceCount": 17207,
+        "nonEmptyTextCharacters": 651180,
+        "nonEmptyOccurrenceRatio": 0.848513240297845,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0252",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 244,
+        "nonEmptyOccurrenceCount": 210,
+        "nonEmptyTextCharacters": 49561,
+        "nonEmptyOccurrenceRatio": 0.860655737704918,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0256",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 258,
+        "nonEmptyOccurrenceCount": 225,
+        "nonEmptyTextCharacters": 34937,
+        "nonEmptyOccurrenceRatio": 0.872093023255814,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0258",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 173,
+        "nonEmptyOccurrenceCount": 146,
+        "nonEmptyTextCharacters": 31703,
+        "nonEmptyOccurrenceRatio": 0.8439306358381503,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0264",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 4,
+        "nonEmptyOccurrenceCount": 3,
+        "nonEmptyTextCharacters": 224731,
+        "nonEmptyOccurrenceRatio": 0.75,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0265",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 2208,
+        "nonEmptyOccurrenceCount": 1934,
+        "nonEmptyTextCharacters": 366431,
+        "nonEmptyOccurrenceRatio": 0.8759057971014492,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
+      "error": "gold-missing"
     },
     {
       "documentId": "DOC-0255",

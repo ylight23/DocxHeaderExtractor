@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Models;
@@ -28,7 +29,7 @@ internal static class Accuracy99Runner
         var operation = options.Accuracy99Operation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, doc-0205-canary, mode-stratification, doc-0027-support-canary");
+            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, gold-preflight-strict-dev, doc-0205-canary, mode-stratification, doc-0027-support-canary");
             return 0;
         }
 
@@ -51,6 +52,7 @@ internal static class Accuracy99Runner
             "gold-import-dev-v3" => await ImportEarlyDevGoldV3Async(options, cancellationToken),
             "gold-validate-strict-v3" => await ValidateStrictEarlyDevGoldV3Async(options, cancellationToken, import: false),
             "gold-import-strict-dev-v3" => await ValidateStrictEarlyDevGoldV3Async(options, cancellationToken, import: true),
+            "gold-preflight-strict-dev" => await PreflightStrictDevCohortAsync(options, cancellationToken),
             "doc-0205-canary" => await RunDoc0205CanaryAsync(options, cancellationToken),
             "mode-stratification" => await BuildModeStratificationAsync(options, cancellationToken),
             "doc-0027-support-canary" => await RunDoc0027SupportCanaryAsync(options, cancellationToken),
@@ -491,6 +493,368 @@ internal static class Accuracy99Runner
         await WriteAsync(options.OutputPath ?? Path.Combine(repoRoot, "eval", "a99-closed-loop", "early-dev-gold-coverage.v3.json"), JsonSerializer.Serialize(report, JsonOptions), cancellationToken);
         Console.WriteLine($"Early DEV v3 gold: {validated}/{early.Documents.Count} documents, {positives} positives, status={status}");
         return status == "READY_FOR_BASELINE" ? 0 : 1;
+    }
+
+    private static async Task<int> PreflightStrictDevCohortAsync(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var sourceRoot = Path.GetFullPath(options.Accuracy99SourceRoot ?? "C:\\DocxHeaderExtractor-harness-lift-v2");
+        var packetRoot = Path.GetFullPath(options.Accuracy99PacketRoot ?? Path.Combine("C:\\A99-Gold", "packets"));
+        A99GoldStoreGuard.EnsureDevPath(packetRoot);
+        if (!Directory.Exists(sourceRoot)) throw new DirectoryNotFoundException($"A99 source root missing: {sourceRoot}");
+
+        var cohortPath = Path.Combine(repoRoot, "eval", "a99-closed-loop", "strict-dev-gold-cohort.v1.json");
+        var cohortNode = JsonNode.Parse(await File.ReadAllTextAsync(cohortPath, cancellationToken))?.AsObject()
+                         ?? throw new InvalidDataException("strict cohort JSON is not an object");
+        var cohort = DeserializeRequired<A99StrictDevGoldCohortArtifact>(cohortNode.ToJsonString());
+        if (cohort.StrictCohortDocumentCount != 15 || cohort.StrictCohort.Count != 15)
+            throw new InvalidDataException("strict-cohort-must-contain-15-documents");
+        if (!string.Equals(cohort.Holdout, "SEALED", StringComparison.Ordinal))
+            throw new InvalidDataException("strict-cohort-holdout-must-be-sealed");
+
+        var inventory = ReadStrictPreflightInventory(Path.Combine(repoRoot, "eval", "a99-dataset", "document-inventory.v1.json"));
+        var splits = ReadSplits(Path.Combine(repoRoot, "eval", "a99-dataset", "evaluation-splits.v1.json"));
+        var assisted = new HashSet<string>(cohort.AssistedPilotDocumentIds, StringComparer.Ordinal);
+        var activeIds = cohort.StrictCohort.Select(x => x.DocumentId).ToHashSet(StringComparer.Ordinal);
+        var replacementPool = inventory
+            .Where(x => string.Equals(x.MediaType, "DOCX", StringComparison.OrdinalIgnoreCase) ||
+                        string.Equals(x.MediaType, "DOCM", StringComparison.OrdinalIgnoreCase))
+            .Where(x => splits.TryGetValue(x.DocumentGroupId, out var split) && string.Equals(split, "DEV", StringComparison.Ordinal))
+            .Where(x => !activeIds.Contains(x.DocumentId) && !assisted.Contains(x.DocumentId))
+            .OrderBy(x => x.DocumentId, StringComparer.Ordinal)
+            .ToList();
+
+        var activeRows = cohort.StrictCohort.ToDictionary(x => x.DocumentId, StringComparer.Ordinal);
+        var results = new List<StrictPreflightReport>();
+        var replacements = new List<object>();
+        var usedReplacementIds = new HashSet<string>(StringComparer.Ordinal);
+
+        foreach (var original in cohort.StrictCohort)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var current = ToStrictPreflightCandidate(original);
+            var attempt = TryCreateStrictPreflightPacket(current, sourceRoot);
+            var selected = current;
+            var replaced = false;
+
+            if (!attempt.IsRepresentable)
+            {
+                StrictPreflightAttempt? replacementAttempt = null;
+                StrictPreflightCandidate? replacement = null;
+                foreach (var candidate in replacementPool.Where(x => !usedReplacementIds.Contains(x.DocumentId)))
+                {
+                    var candidateValue = new StrictPreflightCandidate(
+                        candidate.DocumentId, candidate.DocumentGroupId, candidate.SourcePath,
+                        candidate.SourceSha256, candidate.FamilyId, candidate.FamilyAssignmentAuthority);
+                    var candidateAttempt = TryCreateStrictPreflightPacket(candidateValue, sourceRoot);
+                    if (candidateAttempt.IsRepresentable)
+                    {
+                        replacement = candidateValue;
+                        replacementAttempt = candidateAttempt;
+                        break;
+                    }
+                }
+
+                if (replacement is null || replacementAttempt is null)
+                    throw new InvalidDataException($"strict-cohort-cannot-replace:{original.DocumentId}:{attempt.FailureReason}");
+
+                usedReplacementIds.Add(replacement.DocumentId);
+                replacements.Add(new
+                {
+                    replacedDocumentId = original.DocumentId,
+                    replacementDocumentId = replacement.DocumentId,
+                    originalStatus = attempt.Representability?.Status.ToString() ?? "RepresentationIndeterminate",
+                    originalReason = attempt.FailureReason,
+                    replacementStatus = replacementAttempt.Representability!.Status.ToString(),
+                    replacementReason = replacementAttempt.Representability.Reason,
+                });
+                selected = replacement;
+                attempt = replacementAttempt;
+                replaced = true;
+            }
+
+            var packetPath = Path.Combine(packetRoot, "dev", selected.DocumentId + ".v1.json");
+            Directory.CreateDirectory(Path.GetDirectoryName(packetPath)!);
+            await File.WriteAllTextAsync(
+                packetPath,
+                A99ReviewJson.Serialize(attempt.Packet!) + Environment.NewLine,
+                new UTF8Encoding(false),
+                cancellationToken);
+
+            var report = new StrictPreflightReport
+            {
+                DocumentId = selected.DocumentId,
+                OriginalDocumentId = replaced ? original.DocumentId : null,
+                DocumentGroupId = selected.DocumentGroupId,
+                SourcePath = selected.SourcePath,
+                SourceSha256 = attempt.ActualSourceSha256 ?? selected.SourceSha256,
+                SourceHashReconciled = attempt.SourceHashReconciled,
+                PacketPath = Path.Combine("dev", selected.DocumentId + ".v1.json").Replace('\\', '/'),
+                PacketSha256 = attempt.Packet!.PacketSha256!,
+                SourceOccurrenceCount = attempt.Packet.Occurrences.Count,
+                Representability = attempt.Representability!,
+                Disposition = replaced ? "REPLACEMENT_ACTIVE_STRICT" : "RETAINED_REPRESENTABLE",
+            };
+            results.Add(report);
+            activeRows.Remove(original.DocumentId);
+            activeRows[selected.DocumentId] = new A99StrictCohortDocument
+            {
+                DocumentId = selected.DocumentId,
+                DocumentGroupId = selected.DocumentGroupId,
+                Split = "DEV",
+                FamilyId = selected.FamilyId,
+                FamilyAssignmentAuthority = selected.FamilyAssignmentAuthority,
+                SourcePath = selected.SourcePath,
+                SourceSha256 = report.SourceSha256,
+                PacketPath = report.PacketPath,
+                PacketSha256 = report.PacketSha256,
+                SelectionRole = report.Disposition,
+                Reason = replaced
+                    ? $"Replacement selected by strict representability preflight for {original.DocumentId}; source-only and DEV metadata constrained."
+                    : original.Reason,
+                ExposureStatus = "NOT_MODEL_ASSISTED",
+            };
+        }
+
+        if (activeRows.Count != 15 || results.Count != 15 || results.Any(x => x.Representability.Status != A99SourceRepresentabilityStatus.CharacterSpanRepresentable))
+            throw new InvalidDataException("strict-review-queue-not-exactly-15-representable-documents");
+
+        UpdateStrictCohortJson(cohortNode, activeRows.Values.OrderBy(x => x.DocumentId, StringComparer.Ordinal).ToArray(), replacements);
+        await WriteAsync(cohortPath, cohortNode.ToJsonString(new JsonSerializerOptions { WriteIndented = true }), cancellationToken);
+
+        var ordered = results
+            .OrderBy(x => x.SourceOccurrenceCount)
+            .ThenBy(x => x.DocumentId, StringComparer.Ordinal)
+            .Select((x, index) => new
+            {
+                rank = index + 1,
+                documentId = x.DocumentId,
+                originalDocumentId = x.OriginalDocumentId,
+                x.DocumentGroupId,
+                split = "DEV",
+                x.SourcePath,
+                sourceDocumentSha256 = x.SourceSha256,
+                packetPath = Path.GetFullPath(Path.Combine(packetRoot, "dev", x.DocumentId + ".v1.json")),
+                x.PacketSha256,
+                sourceOccurrenceCount = x.SourceOccurrenceCount,
+                representability = x.Representability,
+                disposition = x.Disposition,
+            }).ToArray();
+
+        var artifactRoot = Path.Combine(repoRoot, "eval", "a99-closed-loop");
+        var preflight = new
+        {
+            artifactKind = "a99_strict_cohort_preflight",
+            schemaVersion = "a99-strict-cohort-preflight-v1",
+            status = "PASS_FROZEN_FOR_HUMAN_REVIEW",
+            strictCohortDocumentCount = ordered.Length,
+            representableDocuments = ordered.Length,
+            imageOnlyOrIndeterminateReplacements = replacements.Count,
+            documents = ordered,
+            replacements,
+            ordering = "SOURCE_OCCURRENCE_COUNT_ASCENDING_THEN_DOCUMENT_ID",
+            humanReview = "REQUIRED_15_OF_15",
+            holdoutTouched = false,
+            providerCalls = 0,
+            sourceMetadataReconciliations = results.Where(x => x.SourceHashReconciled).Select(x => new
+            {
+                x.DocumentId,
+                declaredSha256 = cohort.StrictCohort.FirstOrDefault(y => y.DocumentId == (x.OriginalDocumentId ?? x.DocumentId))?.SourceSha256,
+                actualSha256 = x.SourceSha256,
+                reason = "source-file-hash-is-authoritative; stale cohort metadata corrected without replacing the DEV document",
+            }).Where(x => x.declaredSha256 is not null && !string.Equals(x.declaredSha256, x.actualSha256, StringComparison.OrdinalIgnoreCase)).ToArray(),
+        };
+        var queue = new
+        {
+            artifactKind = "a99_strict_review_queue",
+            schemaVersion = "a99-strict-review-queue-v1",
+            status = "FROZEN_FOR_HUMAN_REVIEW",
+            split = "DEV",
+            documentCount = ordered.Length,
+            order = "SMALL_TO_LARGE_SOURCE_OCCURRENCE_COUNT",
+            entries = ordered,
+            allTextNative = true,
+            holdoutTouched = false,
+            providerCalls = 0,
+            nextAction = $"HUMAN_REVIEW_{ordered[0].documentId}",
+        };
+        await WriteAsync(Path.Combine(artifactRoot, "strict-cohort-preflight.v1.json"), JsonSerializer.Serialize(preflight, JsonOptions), cancellationToken);
+        await WriteAsync(Path.Combine(artifactRoot, "strict-review-queue.v1.json"), JsonSerializer.Serialize(queue, JsonOptions), cancellationToken);
+
+        var first = ordered[0];
+        var nextReview = new
+        {
+            artifactKind = "a99_next_strict_human_review",
+            schemaVersion = "a99-next-strict-review-v1",
+            status = "READY_FOR_SOURCE_ONLY_REVIEW",
+            nextAction = $"HUMAN_REVIEW_{first.documentId}",
+            documentId = first.documentId,
+            documentGroupId = first.DocumentGroupId,
+            split = "DEV",
+            sourcePath = first.SourcePath,
+            sourceDocumentSha256 = first.sourceDocumentSha256,
+            packetPath = first.packetPath,
+            packetSha256 = first.PacketSha256,
+            packetArtifactKind = "a99_exhaustive_source_first_review_packet",
+            sourceOnly = true,
+            modelSuggestionsIncluded = false,
+            predictionFieldsIncluded = false,
+            providerCalls = 0,
+            holdoutTouched = false,
+            reviewOutput = Path.Combine("C:\\A99-Gold", "dev-v3", first.documentId + ".human-gold-v3.json"),
+            queueArtifact = Path.Combine(artifactRoot, "strict-review-queue.v1.json"),
+        };
+        await WriteAsync(Path.Combine(artifactRoot, "next-strict-review.v1.json"), JsonSerializer.Serialize(nextReview, JsonOptions), cancellationToken);
+
+        var markdown = new StringBuilder()
+            .AppendLine("# A99 Strict Cohort Preflight")
+            .AppendLine()
+            .AppendLine("The DEV strict queue is frozen only after parser-owned source representability passed for every active slot.")
+            .AppendLine()
+            .AppendLine($"- Active documents: {ordered.Length}")
+            .AppendLine($"- Representable documents: {ordered.Length}")
+            .AppendLine($"- Replacements: {replacements.Count}")
+            .AppendLine("- Holdout touched: false")
+            .AppendLine("- Provider calls: 0")
+            .AppendLine()
+            .AppendLine("## Review order")
+            .AppendLine()
+            .AppendLine("| Rank | Document | Occurrences | Source | Status |")
+            .AppendLine("| ---: | --- | ---: | --- | --- |")
+            .ToString();
+        foreach (var entry in ordered)
+            markdown += $"| {entry.rank} | `{entry.documentId}` | {entry.sourceOccurrenceCount} | `{entry.SourcePath}` | `{entry.representability.Status}` |{Environment.NewLine}";
+        markdown += Environment.NewLine + "Human review remains required; no Gold, baseline, holdout, or accuracy claim was generated by this preflight." + Environment.NewLine;
+        await WriteAsync(Path.Combine(repoRoot, "docs", "accuracy", "accuracy99-strict-cohort-preflight.md"), markdown, cancellationToken);
+
+        Console.WriteLine($"A99 strict preflight: {ordered.Length}/{ordered.Length} representable; replacements={replacements.Count}; queue=frozen; first={first.documentId}; providerCalls=0; holdoutTouched=false");
+        return 0;
+    }
+
+    private static StrictPreflightAttempt TryCreateStrictPreflightPacket(
+        StrictPreflightCandidate candidate,
+        string sourceRoot)
+    {
+        try
+        {
+            var sourcePath = Path.Combine(sourceRoot, candidate.SourcePath.Replace('/', Path.DirectorySeparatorChar).Replace('\\', Path.DirectorySeparatorChar));
+            if (!File.Exists(sourcePath)) return StrictPreflightAttempt.Failed("source-missing");
+            var actualSha = HumanGoldValidator.ComputeSha256(sourcePath);
+            var sourceHashReconciled = !actualSha.Equals(candidate.SourceSha256, StringComparison.OrdinalIgnoreCase);
+            var effectiveCandidate = candidate with { SourceSha256 = actualSha };
+            var source = new OpenXmlDocumentSource().Read(sourcePath);
+            var packet = A99ReviewPacketBuilder.Create(new A99CampaignDocument
+            {
+                DocumentId = effectiveCandidate.DocumentId,
+                DocumentGroupId = effectiveCandidate.DocumentGroupId,
+                Split = "DEV",
+                FamilyId = effectiveCandidate.FamilyId,
+                SourcePath = sourcePath,
+                SourceSha256 = effectiveCandidate.SourceSha256,
+                SourceOccurrenceCount = source.Paragraphs.Count,
+                PacketPath = $"dev/{effectiveCandidate.DocumentId}.v1.json",
+                PacketSha256 = "",
+            }, source);
+            var representability = A99SourceRepresentabilityGate.Evaluate(packet);
+            return new StrictPreflightAttempt(packet, representability, representability.Status == A99SourceRepresentabilityStatus.CharacterSpanRepresentable, representability.Reason, actualSha, sourceHashReconciled);
+        }
+        catch (Exception ex) when (ex is InvalidDataException or IOException or JsonException or ArgumentException)
+        {
+            return StrictPreflightAttempt.Failed(ex.Message);
+        }
+    }
+
+    private static void UpdateStrictCohortJson(JsonObject root, IReadOnlyList<A99StrictCohortDocument> documents, IReadOnlyList<object> replacements)
+    {
+        root["status"] = "FROZEN_FOR_HUMAN_REVIEW_PREFLIGHT_PASS";
+        root["strictCohortDocumentCount"] = documents.Count;
+        root["providerCalls"] = 0;
+        var rows = new JsonArray();
+        foreach (var document in documents)
+            rows.Add(JsonNode.Parse(A99ReviewJson.Serialize(document)));
+        root["strictCohort"] = rows;
+        if (replacements.Count > 0)
+        {
+            var history = root["preflightReplacements"] as JsonArray ?? new JsonArray();
+            foreach (var replacement in replacements)
+                history.Add(JsonNode.Parse(JsonSerializer.Serialize(replacement, JsonOptions)));
+            root["preflightReplacements"] = history;
+        }
+    }
+
+    private static IReadOnlyList<StrictPreflightInventoryItem> ReadStrictPreflightInventory(string path)
+    {
+        using var document = JsonDocument.Parse(File.ReadAllText(path));
+        return document.RootElement.GetProperty("documents").EnumerateArray().Select(item => new StrictPreflightInventoryItem(
+            item.GetProperty("documentId").GetString()!,
+            item.GetProperty("documentGroupId").GetString()!,
+            item.GetProperty("sourcePath").GetString()!,
+            item.GetProperty("sourceSha256").GetString()!,
+            item.GetProperty("familyId").GetString()!,
+            item.TryGetProperty("familyAssignmentAuthority", out var authority) ? authority.GetString() ?? "CAMPAIGN_METADATA" : "CAMPAIGN_METADATA",
+            item.GetProperty("mediaType").GetString()!)).ToArray();
+    }
+
+    private static IReadOnlyDictionary<string, string> ReadSplits(string path)
+    {
+        using var document = JsonDocument.Parse(File.ReadAllText(path));
+        return document.RootElement.GetProperty("splits").EnumerateArray().ToDictionary(
+            item => item.GetProperty("documentGroupId").GetString()!,
+            item => item.GetProperty("split").GetString()!,
+            StringComparer.Ordinal);
+    }
+
+    private static StrictPreflightCandidate ToStrictPreflightCandidate(A99StrictCohortDocument document) => new(
+        document.DocumentId,
+        document.DocumentGroupId,
+        document.SourcePath,
+        document.SourceSha256,
+        document.FamilyId,
+        document.FamilyAssignmentAuthority);
+
+    private sealed record StrictPreflightCandidate(
+        string DocumentId,
+        string DocumentGroupId,
+        string SourcePath,
+        string SourceSha256,
+        string FamilyId,
+        string FamilyAssignmentAuthority);
+
+    private sealed record StrictPreflightInventoryItem(
+        string DocumentId,
+        string DocumentGroupId,
+        string SourcePath,
+        string SourceSha256,
+        string FamilyId,
+        string FamilyAssignmentAuthority,
+        string MediaType);
+
+    private sealed record StrictPreflightAttempt(
+        A99ReviewPacket? Packet,
+        A99SourceRepresentabilityResult? Representability,
+        bool IsRepresentable,
+        string FailureReason,
+        string? ActualSourceSha256 = null,
+        bool SourceHashReconciled = false)
+    {
+        public static StrictPreflightAttempt Failed(string reason) => new(null, null, false, reason);
+    }
+
+    private sealed record StrictPreflightReport
+    {
+        public required string DocumentId { get; init; }
+        public string? OriginalDocumentId { get; init; }
+        public required string DocumentGroupId { get; init; }
+        public required string SourcePath { get; init; }
+        public required string SourceSha256 { get; init; }
+        public bool SourceHashReconciled { get; init; }
+        public required string PacketPath { get; init; }
+        public required string PacketSha256 { get; init; }
+        public int SourceOccurrenceCount { get; init; }
+        public required A99SourceRepresentabilityResult Representability { get; init; }
+        public required string Disposition { get; init; }
     }
 
     private static async Task<int> ValidateStrictEarlyDevGoldV3Async(

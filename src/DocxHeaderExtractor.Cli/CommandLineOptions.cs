@@ -17,6 +17,7 @@ public sealed class CommandLineOptions
     public bool HarnessLiftRunModel { get; private set; }
     public int HarnessLiftRepeats { get; private set; } = 3;
     public string? Accuracy99Root { get; private set; }
+    public string? Accuracy99SourceRoot { get; private set; }
     public string? Accuracy99GoldPath { get; private set; }
     public string? Accuracy99PacketRoot { get; private set; }
     public string? Accuracy99GoldRoot { get; private set; }
@@ -201,6 +202,7 @@ public sealed class CommandLineOptions
                     else o.Accuracy99Operation = Next(a);
                     break;
                 case "--root": o.Accuracy99Root = Next(a); break;
+                case "--source-root": o.Accuracy99SourceRoot = Next(a); break;
                 case "--harness-root": o.HarnessLiftRoot = Next(a); break;
                 case "--harness-run-model": o.HarnessLiftRunModel = true; break;
                 case "--harness-repeats": o.HarnessLiftRepeats = Math.Clamp(int.Parse(Next(a)), 3, 5); break;
