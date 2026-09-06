@@ -1,0 +1,761 @@
+{
+    "artifactKind":  "a99_canonical_strict_gold",
+    "schemaVersion":  "a99-strict-gold-v4",
+    "policyVersion":  "USER_PROMOTED_STRICT_GOLD_V4",
+    "documentId":  "DOC-0205",
+    "documentGroupId":  "GROUP-0174",
+    "split":  "DEV",
+    "fileName":  "025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "sourceSha256":  "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+    "packetSha256":  "da81e5506f8433a40916308cbfdca85faff07bc50352bc94c46ca5e75bcc8caa",
+    "packetPath":  "C:\\A99-Gold\\packets\\dev\\DOC-0205.v1.json",
+    "goldStatus":  "STRICT_GOLD",
+    "finalAuthority":  "USER",
+    "userFinalApproval":  true,
+    "referenceProvenance":  "HUMAN_ONLY",
+    "originalReferenceAuthority":  "USER",
+    "originalReferencePaths":  [
+                                   "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                                   "eval/harness-lift/reference-coverage.v2.json",
+                                   "docs/accuracy/accuracy99-b3-pre-review.md"
+                               ],
+    "promotionReason":  "USER_BLANKET_FINAL_APPROVAL",
+    "evidenceClass":  "FULL_REVIEWED_REFERENCE",
+    "coverage":  "EXHAUSTIVE",
+    "reviewedEntireDocument":  true,
+    "headingSetExhaustive":  true,
+    "unresolvedSemanticUncertainty":  false,
+    "semanticHeadingTotal":  71,
+    "observedHeadingCount":  71,
+    "headings":  [
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-8",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "ChÆ°Æ¡ng I QUY Äá»ŠNH CHUNG",
+                         "role":  "chapter",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-9",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 1. Pháº¡m vi Ä‘iá»u chá»‰nh",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-10",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 2. Äá»‘i tÆ°á»£ng Ã¡p dá»¥ng",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-11",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 3. Giáº£i thÃ­ch tá»« ngá»¯",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-12",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 4. GiÃ¡ trá»‹ phÃ¡p lÃ½ cá»§a dá»¯ liá»‡u Ä‘Æ°á»£c chia sáº»",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-13",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 5. NguyÃªn táº¯c chung vá» quáº£n lÃ½, káº¿t ná»‘i vÃ  chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-14",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 6. Thá»±c hiá»‡n káº¿t ná»‘i, chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-15",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 7. YÃªu cáº§u trong viá»‡c quáº£n lÃ½, káº¿t ná»‘i, chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-16",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 8. CÃ¡c hÃ nh vi khÃ´ng Ä‘Æ°á»£c lÃ m",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-17",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "ChÆ°Æ¡ng II QUáº¢N LÃ Dá»® LIá»†U, CÆ  Sá»ž Dá»® LIá»†U, QUáº¢N TRá»Š Dá»® LIá»†U TRONG CÆ  QUAN NHÃ€ NÆ¯á»šC VÃ€ Báº¢O Äáº¢M KHáº¢ NÄ‚NG Sáº´N SÃ€NG Káº¾T Ná»I, CHIA Sáºº Dá»® LIá»†U",
+                         "role":  "chapter",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-18",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Má»¥c 1. QUáº¢N LÃ Dá»® LIá»†U, CÆ  Sá»ž Dá»® LIá»†U TRONG CÆ  QUAN NHÃ€ NÆ¯á»šC",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-19",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 9. NguyÃªn táº¯c quáº£n lÃ½ dá»¯ liá»‡u, cÆ¡ sá»Ÿ dá»¯ liá»‡u trong cÆ¡ quan nhÃ  nÆ°á»›c",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-20",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 10. Tá»• chá»©c, quáº£n lÃ½ dá»¯ liá»‡u, cÆ¡ sá»Ÿ dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-21",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 11. CÆ¡ sá»Ÿ dá»¯ liá»‡u trong cÆ¡ quan nhÃ  nÆ°á»›c",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-22",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 12. Danh má»¥c cÆ¡ sá»Ÿ dá»¯ liá»‡u quá»‘c gia, duy trÃ¬ danh má»¥c cÆ¡ sá»Ÿ dá»¯ liá»‡u quá»‘c gia",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-23",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 13. Cá»•ng dá»¯ liá»‡u quá»‘c gia",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-24",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Má»¥c 2. QUáº¢N TRá»Š Dá»® LIá»†U, QUáº¢N TRá»Š CHIA Sáºº, KHAI THÃC Dá»® LIá»†U",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-25",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 14. Hoáº¡t Ä‘á»™ng quáº£n trá»‹ dá»¯ liá»‡u, quáº£n trá»‹ chia sáº», khai thÃ¡c dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-26",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 15. Thanh tra, kiá»ƒm tra, giÃ¡m sÃ¡t quÃ¡ trÃ¬nh káº¿t ná»‘i, chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-27",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 16. Kiá»ƒm tra, Ä‘Ã¡nh giÃ¡, duy trÃ¬ dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-28",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Má»¥c 3. Dá»® LIá»†U Má»ž Cá»¦A CÆ  QUAN NHÃ€ NÆ¯á»šC",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-29",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 17. NguyÃªn táº¯c cung cáº¥p dá»¯ liá»‡u má»Ÿ cá»§a cÆ¡ quan nhÃ  nÆ°á»›c",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-30",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 18. Quy Ä‘á»‹nh sá»­ dá»¥ng dá»¯ liá»‡u má»Ÿ cá»§a cÆ¡ quan nhÃ  nÆ°á»›c",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-31",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 19. Káº¿ hoáº¡ch vÃ  triá»ƒn khai dá»¯ liá»‡u má»Ÿ cá»§a cÃ¡c cÆ¡ quan nhÃ  nÆ°á»›c",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-32",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 20. YÃªu cáº§u trong viá»‡c cÃ´ng bá»‘ dá»¯ liá»‡u má»Ÿ cá»§a cÆ¡ quan nhÃ  nÆ°á»›c",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-33",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 21. PhÆ°Æ¡ng thá»©c, cÃ¡ch thá»©c cÃ´ng bá»‘ dá»¯ liá»‡u má»Ÿ cá»§a cÆ¡ quan nhÃ  nÆ°á»›c",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-34",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Má»¥c 4. Báº¢O Äáº¢M KHáº¢ NÄ‚NG Sáº´N SÃ€NG Káº¾T Ná»I, CHIA Sáºº Dá»® LIá»†U",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-35",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 22. Quy cháº¿ khai thÃ¡c, sá»­ dá»¥ng dá»¯ liá»‡u chia sáº»",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-36",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 23. PhÆ°Æ¡ng thá»©c chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-37",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 24. Dá»‹ch vá»¥ chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-38",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 25. CÃ´ng khai thÃ´ng tin vá» dá»‹ch vá»¥ chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-39",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 26. Há»‡ thá»‘ng quáº£n lÃ½ dá»‹ch vá»¥ chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-40",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 27. Háº¡ táº§ng káº¿t ná»‘i, chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-41",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 28. Báº£o Ä‘áº£m an toÃ n trong quÃ¡ trÃ¬nh káº¿t ná»‘i, chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-42",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 29. Kinh phÃ­ báº£o Ä‘áº£m káº¿t ná»‘i, chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-43",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 30. Nguá»“n nhÃ¢n lá»±c báº£o Ä‘áº£m káº¿t ná»‘i, chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-44",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "ChÆ°Æ¡ng III THá»°C HIá»†N Káº¾T Ná»I, CHIA Sáºº, Sá»¬ Dá»¤NG Dá»® LIá»†U",
+                         "role":  "chapter",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-45",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Má»¥c 1. Tá»” CHá»¨C Káº¾T Ná»I, CHIA Sáºº Dá»® LIá»†U",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-46",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 31. Káº¿t ná»‘i, chia sáº» dá»¯ liá»‡u giá»¯a cÃ¡c bá»™, cÆ¡ quan ngang bá»™, cÆ¡ quan thuá»™c ChÃ­nh phá»§, cÃ¡c tá»‰nh, thÃ nh phá»‘ trá»±c thuá»™c trung Æ°Æ¡ng",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-47",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 32. Káº¿t ná»‘i, chia sáº» dá»¯ liá»‡u trong ná»™i bá»™ cá»§a bá»™, cÆ¡ quan ngang bá»™, cÆ¡ quan thuá»™c ChÃ­nh phá»§, cÃ¡c tá»‰nh, thÃ nh phá»‘ trá»±c thuá»™c trung Æ°Æ¡ng",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-48",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Má»¥c 2. CHIA Sáºº Dá»® LIá»†U Máº¶C Äá»ŠNH",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-49",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 33. Chuáº©n bá»‹ vÃ  thá»±c hiá»‡n cung cáº¥p dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-50",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 34. Dá»¯ liá»‡u chia sáº» theo hÃ¬nh thá»©c chia sáº» máº·c Ä‘á»‹nh",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-51",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 35. Gá»­i yÃªu cáº§u káº¿t ná»‘i, khai thÃ¡c dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-52",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Má»¥c 3. CHIA Sáºº Dá»® LIá»†U THEO YÃŠU Cáº¦U Äáº¶C THÃ™",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-53",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 36. NguyÃªn táº¯c chia sáº» dá»¯ liá»‡u theo yÃªu cáº§u Ä‘áº·c thÃ¹",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-54",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 37. TrÃ¬nh tá»± chuáº©n bá»‹ káº¿t ná»‘i, chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-55",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 38. Ná»™i dung thá»‘ng nháº¥t chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-56",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 39. Thá»±c hiá»‡n káº¿t ná»‘i, chia sáº», sá»­ dá»¥ng dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-57",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Má»¥c 4. QUáº¢N LÃ Káº¾T Ná»I, CHIA Sáºº Dá»® LIá»†U",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-58",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 40. TÃ i khoáº£n vÃ  quáº£n lÃ½ tÃ i khoáº£n káº¿t ná»‘i",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-59",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 41. Thá»i háº¡n sá»­ dá»¥ng dá»¯ liá»‡u sau khi khai thÃ¡c",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-60",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 42. LÆ°u trá»¯ dá»¯ liá»‡u khi káº¿t ná»‘i, khai thÃ¡c",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-61",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 43. Táº¡m ngá»«ng káº¿t ná»‘i, cung cáº¥p dá»¯ liá»‡u trÃªn mÃ´i trÆ°á»ng máº¡ng do cÆ¡ quan cung cáº¥p",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-62",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 44. Cháº¥m dá»©t káº¿t ná»‘i, chia sáº» dá»¯ liá»‡u qua mÃ´i trÆ°á»ng máº¡ng",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-63",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 45. LÆ°u trá»¯ nháº­t kÃ½ chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-64",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 46. MÃ´ hÃ¬nh káº¿t ná»‘i, chia sáº» dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-65",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Má»¥c 5. GIáº¢I QUYáº¾T VÆ¯á»šNG Máº®C Káº¾T Ná»I, CHIA Sáºº Dá»® LIá»†U",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-66",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 47. VÆ°á»›ng máº¯c khi káº¿t ná»‘i, chia sáº» vÃ  khai thÃ¡c dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-67",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 48. Tháº©m quyá»n tiáº¿p nháº­n, giáº£i quyáº¿t vÆ°á»›ng máº¯c",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-68",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 49. TrÃ¬nh tá»± xá»­ lÃ½ vÆ°á»›ng máº¯c",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-69",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 50. PhÆ°Æ¡ng Ã¡n giáº£i quyáº¿t vÃ  triá»ƒn khai tuÃ¢n thá»§ phÆ°Æ¡ng Ã¡n xá»­ lÃ½ vÆ°á»›ng máº¯c",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-70",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "ChÆ°Æ¡ng IV QUYá»€N, TRÃCH NHIá»†M TRONG Káº¾T Ná»I, CHIA Sáºº Dá»® LIá»†U",
+                         "role":  "chapter",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-71",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 51. Quyá»n vÃ  trÃ¡ch nhiá»‡m cá»§a cÆ¡ quan cung cáº¥p dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-72",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 52. Quyá»n vÃ  trÃ¡ch nhiá»‡m cá»§a tá»• chá»©c, cÃ¡ nhÃ¢n khai thÃ¡c, sá»­ dá»¥ng dá»¯ liá»‡u",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-73",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 53. TrÃ¡ch nhiá»‡m cá»§a cÃ¡c bá»™, cÆ¡ quan ngang bá»™, cÆ¡ quan thuá»™c ChÃ­nh phá»§",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-74",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 54. TrÃ¡ch nhiá»‡m cá»§a á»¦y ban nhÃ¢n dÃ¢n cÃ¡c tá»‰nh, thÃ nh phá»‘ trá»±c thuá»™c trung Æ°Æ¡ng",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-75",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "ChÆ°Æ¡ng V ÄIá»€U KHOáº¢N THI HÃ€NH",
+                         "role":  "chapter",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-76",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 55. Äiá»u khoáº£n chuyá»ƒn tiáº¿p",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-77",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 56. Hiá»‡u lá»±c thi hÃ nh",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-78",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Äiá»u 57. TrÃ¡ch nhiá»‡m thi hÃ nh",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     }
+                 ],
+    "capabilities":  {
+                         "semanticEvaluable":  true,
+                         "occurrenceEvaluable":  false,
+                         "characterSpanEvaluable":  false,
+                         "roleEvaluable":  true,
+                         "levelEvaluable":  true,
+                         "parentEvaluable":  false,
+                         "hierarchyEvaluable":  false
+                     },
+    "referenceHashes":  {
+                            "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82",
+                            "eval/harness-lift/reference-coverage.v2.json":  "7f5e1ed97fe86d612408d9ca2f350b62923a624dda9e123ec4b90be8c8d507eb",
+                            "docs/accuracy/accuracy99-b3-pre-review.md":  "a95cef3b0e985bdfe7644836aa760b2694b4245a34678d019636666ae932cb93",
+                            "C:\\A99-Gold\\packets\\dev\\DOC-0205.v1.json":  "da81e5506f8433a40916308cbfdca85faff07bc50352bc94c46ca5e75bcc8caa"
+                        },
+    "exactApprovedHeadingListMaterialized":  true,
+    "materializationNote":  "Existing reviewed reference materialized without changing its approved answer.",
+    "holdoutTouched":  false,
+    "providerCalls":  0
+}

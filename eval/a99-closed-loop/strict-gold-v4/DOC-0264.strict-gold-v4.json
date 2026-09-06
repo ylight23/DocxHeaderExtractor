@@ -1,0 +1,52 @@
+{
+    "artifactKind":  "a99_canonical_strict_gold",
+    "schemaVersion":  "a99-strict-gold-v4",
+    "policyVersion":  "USER_PROMOTED_STRICT_GOLD_V4",
+    "documentId":  "DOC-0264",
+    "documentGroupId":  "GROUP-0032",
+    "split":  "DEV",
+    "fileName":  "084_Luat_Chung_khoan_2019_EN.docx",
+    "sourceSha256":  "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+    "packetSha256":  "723a334b261bc3e50a0c8f8f1ac9f0f9513d5626f170cae61944868c872fb467",
+    "packetPath":  "C:\\A99-Gold\\packets\\dev\\DOC-0264.v1.json",
+    "goldStatus":  "STRICT_GOLD",
+    "finalAuthority":  "USER",
+    "userFinalApproval":  true,
+    "referenceProvenance":  "HUMAN_ONLY",
+    "originalReferenceAuthority":  "USER",
+    "originalReferencePaths":  [
+                                   "eval/a99-closed-loop/strict-review-queue.v1.json",
+                                   "docs/accuracy/accuracy99-strict-cohort-preflight.md",
+                                   "user-approved-adjudication: DOC-0264 semantic total 158"
+                               ],
+    "promotionReason":  "USER_BLANKET_FINAL_APPROVAL",
+    "evidenceClass":  "USER_APPROVED_TOTAL_AND_TAXONOMY_WITHOUT_COMMITTED_HEADING_LIST",
+    "coverage":  "EXHAUSTIVE",
+    "reviewedEntireDocument":  true,
+    "headingSetExhaustive":  true,
+    "unresolvedSemanticUncertainty":  false,
+    "semanticHeadingTotal":  158,
+    "observedHeadingCount":  0,
+    "headings":  [
+
+                 ],
+    "capabilities":  {
+                         "semanticEvaluable":  true,
+                         "occurrenceEvaluable":  false,
+                         "characterSpanEvaluable":  false,
+                         "roleEvaluable":  true,
+                         "levelEvaluable":  true,
+                         "parentEvaluable":  false,
+                         "hierarchyEvaluable":  false
+                     },
+    "referenceHashes":  {
+                            "eval/a99-closed-loop/strict-review-queue.v1.json":  "e5709397d72a663b66eceb144f98586f1d0eb6bda1979d88b55eb370df0adafa",
+                            "docs/accuracy/accuracy99-strict-cohort-preflight.md":  "82427882376045b06cb69977bb5440a515115e5f0436f0a51defd2c3126c96cc",
+                            "eval/harness-lift/review-packets-v2/DOC-0264.v2.json":  "d55ce4d47b8b2114d9bc506e5f9672907d9d500c119285803952de3379a0671e",
+                            "C:\\A99-Gold\\packets\\dev\\DOC-0264.v1.json":  "723a334b261bc3e50a0c8f8f1ac9f0f9513d5626f170cae61944868c872fb467"
+                        },
+    "exactApprovedHeadingListMaterialized":  false,
+    "materializationNote":  "User-approved total/taxonomy is frozen; individual heading list is not present in committed evidence.",
+    "holdoutTouched":  false,
+    "providerCalls":  0
+}

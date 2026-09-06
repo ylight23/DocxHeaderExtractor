@@ -1,0 +1,294 @@
+{
+    "artifactKind":  "a99_canonical_strict_gold",
+    "schemaVersion":  "a99-strict-gold-v4",
+    "policyVersion":  "USER_PROMOTED_STRICT_GOLD_V4",
+    "documentId":  "DOC-0258",
+    "documentGroupId":  "GROUP-0116",
+    "split":  "DEV",
+    "fileName":  "078_ICP_IACG07_Minutes_May_2023.docx",
+    "sourceSha256":  "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+    "packetSha256":  "6c73cc1c60ceff2e7718ffafc23c7a59211e6400f65d87686abc18b959ec10ad",
+    "packetPath":  "C:\\A99-Gold\\packets\\dev\\DOC-0258.v1.json",
+    "goldStatus":  "STRICT_GOLD",
+    "finalAuthority":  "USER",
+    "userFinalApproval":  true,
+    "referenceProvenance":  "HUMAN_ONLY",
+    "originalReferenceAuthority":  "USER",
+    "originalReferencePaths":  [
+                                   "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                                   "eval/a99-dataset/document-groups.v1.json",
+                                   "user-approved-adjudication: DOC-0258 content-heading total 24"
+                               ],
+    "promotionReason":  "USER_BLANKET_FINAL_APPROVAL",
+    "evidenceClass":  "FULL_REVIEWED_REFERENCE",
+    "coverage":  "EXHAUSTIVE",
+    "reviewedEntireDocument":  true,
+    "headingSetExhaustive":  true,
+    "unresolvedSemanticUncertainty":  false,
+    "semanticHeadingTotal":  24,
+    "observedHeadingCount":  24,
+    "headings":  [
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[3]@0:87",
+                         "sourceId":  "body[1]/p[3]",
+                         "headingSpan":  {
+                                             "start":  0,
+                                             "end":  87
+                                         },
+                         "exactText":  "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+                         "role":  "title",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "eval/harness-lift/review-packets/DOC-0070.v1.json",
+                         "sourceReferenceSha":  "c598bd784acc46ff55078967e3b07b54e98bab2dab1c6f0387aeb4abd9cefb8a"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[4]#key-line-6",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Welcome and meeting objectives",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[4]#key-line-7",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Regional updates on the ICP 2021 cycle implementation",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[4]#key-line-8",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Africa",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[4]#key-line-9",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Asia and the Pacific",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[6]#key-line-10",
+                         "sourceId":  "body[1]/p[6]",
+                         "exactText":  "Eurostat-OECD PPP Program",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[6]#key-line-11",
+                         "sourceId":  "body[1]/p[6]",
+                         "exactText":  "Commonwealth of Independent States",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[6]#key-line-12",
+                         "sourceId":  "body[1]/p[6]",
+                         "exactText":  "Latin America and the Caribbean",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[8]#key-line-13",
+                         "sourceId":  "body[1]/p[8]",
+                         "exactText":  "Western Asia",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[8]#key-line-14",
+                         "sourceId":  "body[1]/p[8]",
+                         "exactText":  "Global updates on the ICP 2021 cycle implementation",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[10]#key-line-15",
+                         "sourceId":  "body[1]/p[10]",
+                         "exactText":  "Data review: Household consumption price and importance data",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[12]#key-line-16",
+                         "sourceId":  "body[1]/p[12]",
+                         "exactText":  "Data review: Housing prices and volumes",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[12]#key-line-17",
+                         "sourceId":  "body[1]/p[12]",
+                         "exactText":  "Data review: Private Education",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[14]#key-line-18",
+                         "sourceId":  "body[1]/p[14]",
+                         "exactText":  "Data review: Government compensation and productivity adjustment",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[14]#key-line-19",
+                         "sourceId":  "body[1]/p[14]",
+                         "exactText":  "Data review: Machinery and equipment and construction",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[14]#key-line-20",
+                         "sourceId":  "body[1]/p[14]",
+                         "exactText":  "Data review: 2017-2021 National Accounts expenditures",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[16]#key-line-21",
+                         "sourceId":  "body[1]/p[16]",
+                         "exactText":  "Data review: 2017-2021 Population and market exchange rates",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[16]#key-line-22",
+                         "sourceId":  "body[1]/p[16]",
+                         "exactText":  "Results review: draft revised 2017 and 2021 results",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[16]#key-line-23",
+                         "sourceId":  "body[1]/p[16]",
+                         "exactText":  "Planning for the ICP 2024 cycle",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[18]#key-line-24",
+                         "sourceId":  "body[1]/p[18]",
+                         "exactText":  "Planning for the 2023 governance activities and ICP 2021 cycle release",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[20]#key-line-25",
+                         "sourceId":  "body[1]/p[20]",
+                         "exactText":  "Planning for an approach to produce annual ICP results and forecasts",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[20]#key-line-26",
+                         "sourceId":  "body[1]/p[20]",
+                         "exactText":  "Any other business",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[22]#key-line-27",
+                         "sourceId":  "body[1]/p[22]",
+                         "exactText":  "Annex 1: Meeting Agenda",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0258:body[1]/p[26]#key-line-32",
+                         "sourceId":  "body[1]/p[26]",
+                         "exactText":  "Annex 2: List of participants",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key",
+                         "sourceReferenceSha":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11"
+                     }
+                 ],
+    "capabilities":  {
+                         "semanticEvaluable":  true,
+                         "occurrenceEvaluable":  false,
+                         "characterSpanEvaluable":  false,
+                         "roleEvaluable":  true,
+                         "levelEvaluable":  true,
+                         "parentEvaluable":  false,
+                         "hierarchyEvaluable":  false
+                     },
+    "referenceHashes":  {
+                            "keys/tagged-pdf-coverage/078_ICP_IACG07_Minutes_May_2023.key":  "d1711b254252d641f3e2e34699c5cb319df2eb1a8fef010f9c686525e09b7d11",
+                            "eval/a99-dataset/document-groups.v1.json":  "b5087c847dd7076c8b00032ab42bf6fdc50d317d2dfe1d13a114e57f2c7e9307",
+                            "C:\\A99-Gold\\packets\\dev\\DOC-0258.v1.json":  "6c73cc1c60ceff2e7718ffafc23c7a59211e6400f65d87686abc18b959ec10ad"
+                        },
+    "exactApprovedHeadingListMaterialized":  true,
+    "materializationNote":  "Existing reviewed reference materialized without changing its approved answer.",
+    "holdoutTouched":  false,
+    "providerCalls":  0
+}

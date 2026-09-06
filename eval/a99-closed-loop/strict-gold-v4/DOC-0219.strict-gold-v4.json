@@ -1,0 +1,51 @@
+{
+    "artifactKind":  "a99_canonical_strict_gold",
+    "schemaVersion":  "a99-strict-gold-v4",
+    "policyVersion":  "USER_PROMOTED_STRICT_GOLD_V4",
+    "documentId":  "DOC-0219",
+    "documentGroupId":  "GROUP-0262",
+    "split":  "DEV",
+    "fileName":  "039_WB_EPC_Turnkey_SingleStage_2025.docx",
+    "sourceSha256":  "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+    "packetSha256":  "aa58a13b4bce94e283ce7b1a6567017180f8e78eace2a7b7f34da5a291f3a4aa",
+    "packetPath":  "C:\\A99-Gold\\packets\\dev\\DOC-0219.v1.json",
+    "goldStatus":  "STRICT_GOLD",
+    "finalAuthority":  "USER",
+    "userFinalApproval":  true,
+    "referenceProvenance":  "HISTORICAL_REVIEWED_REFERENCE",
+    "originalReferenceAuthority":  "NONE",
+    "originalReferencePaths":  [
+                                   "eval/a99-closed-loop/strict-review-queue.v1.json",
+                                   "eval/harness-lift/reference-coverage.v2.json"
+                               ],
+    "promotionReason":  "USER_BLANKET_FINAL_APPROVAL",
+    "evidenceClass":  "SOURCE_FIRST_REVIEW_PACKET_WITHOUT_STORED_HEADING_LIST",
+    "coverage":  "PARTIAL",
+    "reviewedEntireDocument":  false,
+    "headingSetExhaustive":  false,
+    "unresolvedSemanticUncertainty":  true,
+    "semanticHeadingTotal":  null,
+    "observedHeadingCount":  0,
+    "headings":  [
+
+                 ],
+    "capabilities":  {
+                         "semanticEvaluable":  false,
+                         "occurrenceEvaluable":  false,
+                         "characterSpanEvaluable":  false,
+                         "roleEvaluable":  false,
+                         "levelEvaluable":  false,
+                         "parentEvaluable":  false,
+                         "hierarchyEvaluable":  false
+                     },
+    "referenceHashes":  {
+                            "eval/a99-closed-loop/strict-review-queue.v1.json":  "e5709397d72a663b66eceb144f98586f1d0eb6bda1979d88b55eb370df0adafa",
+                            "eval/harness-lift/reference-coverage.v2.json":  "7f5e1ed97fe86d612408d9ca2f350b62923a624dda9e123ec4b90be8c8d507eb",
+                            "eval/harness-lift/review-packets/DOC-0124.v1.json":  "b578245c7d13537ad0436ff0bc1036f110d43cac80d773cf945822f06292d999",
+                            "C:\\A99-Gold\\packets\\dev\\DOC-0219.v1.json":  "aa58a13b4bce94e283ce7b1a6567017180f8e78eace2a7b7f34da5a291f3a4aa"
+                        },
+    "exactApprovedHeadingListMaterialized":  false,
+    "materializationNote":  "Blanket promotion preserves the reviewed/reference packet; no heading list was stored in committed evidence.",
+    "holdoutTouched":  false,
+    "providerCalls":  0
+}

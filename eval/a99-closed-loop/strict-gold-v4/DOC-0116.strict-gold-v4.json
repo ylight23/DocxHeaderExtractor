@@ -1,0 +1,269 @@
+{
+    "artifactKind":  "a99_canonical_strict_gold",
+    "schemaVersion":  "a99-strict-gold-v4",
+    "policyVersion":  "USER_PROMOTED_STRICT_GOLD_V4",
+    "documentId":  "DOC-0116",
+    "documentGroupId":  "GROUP-0016",
+    "split":  "DEV",
+    "fileName":  "031_WB_Framework_Agreement_Consulting_2025.docx",
+    "sourceSha256":  "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+    "packetSha256":  "77cd061024bac19631d1af3232a0a81f399e8c0e229b0537143d3bfb29954e04",
+    "packetPath":  "C:\\A99-Gold\\packets\\dev\\DOC-0116.v1.json",
+    "goldStatus":  "STRICT_GOLD",
+    "finalAuthority":  "USER",
+    "userFinalApproval":  true,
+    "referenceProvenance":  "HISTORICAL_REVIEWED_REFERENCE",
+    "originalReferenceAuthority":  "NONE",
+    "originalReferencePaths":  [
+                                   "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                                   "eval/harness-lift/source-structural-reference-expansion.v1.json"
+                               ],
+    "promotionReason":  "USER_BLANKET_FINAL_APPROVAL",
+    "evidenceClass":  "TOC_DERIVED_PARTIAL_KEY",
+    "coverage":  "PARTIAL",
+    "reviewedEntireDocument":  false,
+    "headingSetExhaustive":  false,
+    "unresolvedSemanticUncertainty":  true,
+    "semanticHeadingTotal":  null,
+    "observedHeadingCount":  22,
+    "headings":  [
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/p[145]#key-line-6",
+                         "sourceId":  "body[1]/p[145]",
+                         "exactText":  "Section 1. Request for Proposal Letter",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/p[248]#key-line-7",
+                         "sourceId":  "body[1]/p[248]",
+                         "exactText":  "A. General Provisions",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/p[251]#key-line-8",
+                         "sourceId":  "body[1]/p[251]",
+                         "exactText":  "E. Data Sheet",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[16]/tc[1]/p[1]#key-line-9",
+                         "sourceId":  "body[1]/tbl[1]/tr[16]/tc[1]/p[1]",
+                         "exactText":  "General Considerations",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[20]/tc[1]/p[1]#key-line-10",
+                         "sourceId":  "body[1]/tbl[1]/tr[20]/tc[1]/p[1]",
+                         "exactText":  "Only One Proposal",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[21]/tc[1]/p[1]#key-line-11",
+                         "sourceId":  "body[1]/tbl[1]/tr[21]/tc[1]/p[1]",
+                         "exactText":  "Proposal Validity",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[26]/tc[1]/p[1]#key-line-12",
+                         "sourceId":  "body[1]/tbl[1]/tr[26]/tc[1]/p[1]",
+                         "exactText":  "Preparation of Proposals Specific Considerations",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[27]/tc[1]/p[1]#key-line-13",
+                         "sourceId":  "body[1]/tbl[1]/tr[27]/tc[1]/p[1]",
+                         "exactText":  "Technical Proposal Format and Content",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[28]/tc[1]/p[1]#key-line-14",
+                         "sourceId":  "body[1]/tbl[1]/tr[28]/tc[1]/p[1]",
+                         "exactText":  "Financial Proposal",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[31]/tc[1]/p[1]#key-line-15",
+                         "sourceId":  "body[1]/tbl[1]/tr[31]/tc[1]/p[1]",
+                         "exactText":  "Submission, Sealing, and Marking of Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[33]/tc[1]/p[1]#key-line-16",
+                         "sourceId":  "body[1]/tbl[1]/tr[33]/tc[1]/p[1]",
+                         "exactText":  "Opening of Technical Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[34]/tc[1]/p[1]#key-line-17",
+                         "sourceId":  "body[1]/tbl[1]/tr[34]/tc[1]/p[1]",
+                         "exactText":  "Proposals Evaluation",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[35]/tc[1]/p[1]#key-line-18",
+                         "sourceId":  "body[1]/tbl[1]/tr[35]/tc[1]/p[1]",
+                         "exactText":  "Evaluation of Technical Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[37]/tc[1]/p[1]#key-line-19",
+                         "sourceId":  "body[1]/tbl[1]/tr[37]/tc[1]/p[1]",
+                         "exactText":  "Negotiations",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[43]/tc[1]/p[1]#key-line-20",
+                         "sourceId":  "body[1]/tbl[1]/tr[43]/tc[1]/p[1]",
+                         "exactText":  "Notification of Intention to Conclude a Framework Agreement",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[44]/tc[1]/p[1]#key-line-21",
+                         "sourceId":  "body[1]/tbl[1]/tr[44]/tc[1]/p[1]",
+                         "exactText":  "Framework Agreement Criteria",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[45]/tc[1]/p[1]#key-line-22",
+                         "sourceId":  "body[1]/tbl[1]/tr[45]/tc[1]/p[1]",
+                         "exactText":  "No Obligation to Procure",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[46]/tc[1]/p[1]#key-line-23",
+                         "sourceId":  "body[1]/tbl[1]/tr[46]/tc[1]/p[1]",
+                         "exactText":  "Non-exclusivity",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[50]/tc[1]/p[1]#key-line-24",
+                         "sourceId":  "body[1]/tbl[1]/tr[50]/tc[1]/p[1]",
+                         "exactText":  "Publication of the Conclusion of Framework Agreement Notice",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[51]/tc[1]/p[1]#key-line-25",
+                         "sourceId":  "body[1]/tbl[1]/tr[51]/tc[1]/p[1]",
+                         "exactText":  "Procurement Related Complaint",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[7]/tc[1]/p[1]#key-line-26",
+                         "sourceId":  "body[1]/tbl[1]/tr[7]/tc[1]/p[1]",
+                         "exactText":  "Unfair Competitive Advantage",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0116:body[1]/tbl[1]/tr[9]/tc[1]/p[1]#key-line-27",
+                         "sourceId":  "body[1]/tbl[1]/tr[9]/tc[1]/p[1]",
+                         "exactText":  "Eligibility",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key",
+                         "sourceReferenceSha":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee"
+                     }
+                 ],
+    "capabilities":  {
+                         "semanticEvaluable":  true,
+                         "occurrenceEvaluable":  false,
+                         "characterSpanEvaluable":  false,
+                         "roleEvaluable":  true,
+                         "levelEvaluable":  true,
+                         "parentEvaluable":  false,
+                         "hierarchyEvaluable":  false
+                     },
+    "referenceHashes":  {
+                            "keys/toc-derived/031_WB_Framework_Agreement_Consulting_2025.key":  "aae07338f89cc24f5a330d0a2ac2166156602fc78a6b18b9d793808d8a5296ee",
+                            "eval/harness-lift/source-structural-reference-expansion.v1.json":  "606bcb705f06e1c4fbbc23be769020d522e1a5b896a9afd96b3a1fcd353c05d9",
+                            "C:\\A99-Gold\\packets\\dev\\DOC-0116.v1.json":  "77cd061024bac19631d1af3232a0a81f399e8c0e229b0537143d3bfb29954e04"
+                        },
+    "exactApprovedHeadingListMaterialized":  true,
+    "materializationNote":  "Only historically retained positive/reference occurrences are materialized; missing headings and negatives are not inferred.",
+    "holdoutTouched":  false,
+    "providerCalls":  0
+}

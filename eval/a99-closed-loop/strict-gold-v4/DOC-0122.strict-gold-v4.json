@@ -1,0 +1,1309 @@
+{
+    "artifactKind":  "a99_canonical_strict_gold",
+    "schemaVersion":  "a99-strict-gold-v4",
+    "policyVersion":  "USER_PROMOTED_STRICT_GOLD_V4",
+    "documentId":  "DOC-0122",
+    "documentGroupId":  "GROUP-0139",
+    "split":  "DEV",
+    "fileName":  "037_WB_Plant_TwoStage_2025.docx",
+    "sourceSha256":  "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+    "packetSha256":  "e028a2959ec5b1e16fe38c554b76c0e4a16398a7d0b8edc94c2fec43953a350c",
+    "packetPath":  "C:\\A99-Gold\\packets\\dev\\DOC-0122.v1.json",
+    "goldStatus":  "STRICT_GOLD",
+    "finalAuthority":  "USER",
+    "userFinalApproval":  true,
+    "referenceProvenance":  "HISTORICAL_REVIEWED_REFERENCE",
+    "originalReferenceAuthority":  "NONE",
+    "originalReferencePaths":  [
+                                   "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                                   "eval/harness-lift/reference-coverage.v2.json"
+                               ],
+    "promotionReason":  "USER_BLANKET_FINAL_APPROVAL",
+    "evidenceClass":  "TOC_DERIVED_PARTIAL_KEY",
+    "coverage":  "PARTIAL",
+    "reviewedEntireDocument":  false,
+    "headingSetExhaustive":  false,
+    "unresolvedSemanticUncertainty":  true,
+    "semanticHeadingTotal":  null,
+    "observedHeadingCount":  126,
+    "headings":  [
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[1003]#key-line-6",
+                         "sourceId":  "body[1]/p[1003]",
+                         "exactText":  "Specifications",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[1061]#key-line-7",
+                         "sourceId":  "body[1]/p[1061]",
+                         "exactText":  "Forms and Procedures",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[1063]#key-line-8",
+                         "sourceId":  "body[1]/p[1063]",
+                         "exactText":  "Form of Completion Certificate",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[1091]#key-line-9",
+                         "sourceId":  "body[1]/p[1091]",
+                         "exactText":  "Form of Operational Acceptance Certificate",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[1586]#key-line-10",
+                         "sourceId":  "body[1]/p[1586]",
+                         "exactText":  "Supplementary Information",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[2422]#key-line-11",
+                         "sourceId":  "body[1]/p[2422]",
+                         "exactText":  "Performance Security Form – Bank Guarantee",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[244]#key-line-12",
+                         "sourceId":  "body[1]/p[244]",
+                         "exactText":  "B. Contents of RFP Document",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[2455]#key-line-13",
+                         "sourceId":  "body[1]/p[2455]",
+                         "exactText":  "Performance Security Form - Conditional Bank Guarantee",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[245]#key-line-14",
+                         "sourceId":  "body[1]/p[245]",
+                         "exactText":  "C. Preparation of First Stage Technical Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[247]#key-line-15",
+                         "sourceId":  "body[1]/p[247]",
+                         "exactText":  "E. Opening and Evaluation of First Stage TECHNICAL PROPOSALS",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[248]#key-line-16",
+                         "sourceId":  "body[1]/p[248]",
+                         "exactText":  "F Invitation to Second Stage Combined Technical and Financial Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[249]#key-line-17",
+                         "sourceId":  "body[1]/p[249]",
+                         "exactText":  "G Preparation of Second Stage Technical and Financial Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[250]#key-line-18",
+                         "sourceId":  "body[1]/p[250]",
+                         "exactText":  "H. Submission of Second Stage Technical and Financial Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[251]#key-line-19",
+                         "sourceId":  "body[1]/p[251]",
+                         "exactText":  "I. Second Stage: Public Opening of Technical Parts",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[253]#key-line-20",
+                         "sourceId":  "body[1]/p[253]",
+                         "exactText":  "J. Second Stage: Evaluation of Technical Part",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[254]#key-line-21",
+                         "sourceId":  "body[1]/p[254]",
+                         "exactText":  "K. Second Stage: Opening of Financial Parts",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[255]#key-line-22",
+                         "sourceId":  "body[1]/p[255]",
+                         "exactText":  "L. Second Stage: Evaluation of Financial Part",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[256]#key-line-23",
+                         "sourceId":  "body[1]/p[256]",
+                         "exactText":  "M. Stage 2: Evaluation of Combined Technical and Financial Part",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[257]#key-line-24",
+                         "sourceId":  "body[1]/p[257]",
+                         "exactText":  "N. Award of Contract",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[285]#key-line-25",
+                         "sourceId":  "body[1]/p[285]",
+                         "exactText":  "First Stage Technical Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[287]#key-line-26",
+                         "sourceId":  "body[1]/p[287]",
+                         "exactText":  "1. Evaluation (ITP 24.1 (e))",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[290]#key-line-27",
+                         "sourceId":  "body[1]/p[290]",
+                         "exactText":  "2. Qualification",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[319]#key-line-28",
+                         "sourceId":  "body[1]/p[319]",
+                         "exactText":  "Second Stage Financial and Technical Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[321]#key-line-29",
+                         "sourceId":  "body[1]/p[321]",
+                         "exactText":  "Evaluation of Technical Part (ITP 43)",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[364]#key-line-30",
+                         "sourceId":  "body[1]/p[364]",
+                         "exactText":  "Evaluation of Financial Part (ITP 51.1(f) )",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[449]#key-line-31",
+                         "sourceId":  "body[1]/p[449]",
+                         "exactText":  "Proposal Forms",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[569]#key-line-32",
+                         "sourceId":  "body[1]/p[569]",
+                         "exactText":  "Schedules of Rates and Prices",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[570]#key-line-33",
+                         "sourceId":  "body[1]/p[570]",
+                         "exactText":  "Schedule No. 1. Plant and Mandatory Spare Parts Supplied from Abroad",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[576]#key-line-34",
+                         "sourceId":  "body[1]/p[576]",
+                         "exactText":  "Schedule No. 2. Plant and Mandatory Spare Parts Supplied from Within the Employer’s Country",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[585]#key-line-35",
+                         "sourceId":  "body[1]/p[585]",
+                         "exactText":  "Schedule No. 4. Installation and Other Services",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[589]#key-line-36",
+                         "sourceId":  "body[1]/p[589]",
+                         "exactText":  "Schedule No. 5. Grand Summary",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[597]#key-line-37",
+                         "sourceId":  "body[1]/p[597]",
+                         "exactText":  "Price Adjustment",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[603]#key-line-38",
+                         "sourceId":  "body[1]/p[603]",
+                         "exactText":  "Technical Proposal Forms",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[713]#key-line-39",
+                         "sourceId":  "body[1]/p[713]",
+                         "exactText":  "Technical Proposal - Plant",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[718]#key-line-40",
+                         "sourceId":  "body[1]/p[718]",
+                         "exactText":  "Proposer Information Sheet",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[725]#key-line-41",
+                         "sourceId":  "body[1]/p[725]",
+                         "exactText":  "Party to JV Information Sheet",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[734]#key-line-42",
+                         "sourceId":  "body[1]/p[734]",
+                         "exactText":  "Historical Contract Non-Performance, Pending Litigation and Litigation History",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[748]#key-line-43",
+                         "sourceId":  "body[1]/p[748]",
+                         "exactText":  "Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment Performance Declaration",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[792]#key-line-44",
+                         "sourceId":  "body[1]/p[792]",
+                         "exactText":  "Resume of Proposed Key Personnel",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[850]#key-line-45",
+                         "sourceId":  "body[1]/p[850]",
+                         "exactText":  "Form of Proposal Security (Bank Guarantee)",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[871]#key-line-46",
+                         "sourceId":  "body[1]/p[871]",
+                         "exactText":  "Form of Proposal Security (Proposal Bond)",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[884]#key-line-47",
+                         "sourceId":  "body[1]/p[884]",
+                         "exactText":  "Form of Proposal-Securing Declaration",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[973]#key-line-48",
+                         "sourceId":  "body[1]/p[973]",
+                         "exactText":  "Employer’s Requirements",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/p[999]#key-line-49",
+                         "sourceId":  "body[1]/p[999]",
+                         "exactText":  "Scope of Supply of Plant and Installation Services by the Contractor",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[10]/tr[11]/tc[1]/p[1]#key-line-50",
+                         "sourceId":  "body[1]/tbl[10]/tr[11]/tc[1]/p[1]",
+                         "exactText":  "Notification of evaluation of Technical Parts",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[10]/tr[9]/tc[1]/p[1]#key-line-51",
+                         "sourceId":  "body[1]/tbl[10]/tr[9]/tc[1]/p[1]",
+                         "exactText":  "Evaluation of Technical Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[11]/tr[1]/tc[1]/p[1]#key-line-52",
+                         "sourceId":  "body[1]/tbl[11]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "Public Opening of Financial Parts when BAFO or negotiations do not apply",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[11]/tr[2]/tc[1]/p[1]#key-line-53",
+                         "sourceId":  "body[1]/tbl[11]/tr[2]/tc[1]/p[1]",
+                         "exactText":  "Opening of Financial Parts when BAFO or negotiations apply",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[12]/tr[11]/tc[1]/p[1]#key-line-54",
+                         "sourceId":  "body[1]/tbl[12]/tr[11]/tc[1]/p[1]",
+                         "exactText":  "Unbalanced or Front Loaded Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[12]/tr[1]/tc[1]/p[1]#key-line-55",
+                         "sourceId":  "body[1]/tbl[12]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "Nonmaterial Nonconformities",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[12]/tr[2]/tc[1]/p[1]#key-line-56",
+                         "sourceId":  "body[1]/tbl[12]/tr[2]/tc[1]/p[1]",
+                         "exactText":  "Arithmetic Correction",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[12]/tr[6]/tc[1]/p[1]#key-line-57",
+                         "sourceId":  "body[1]/tbl[12]/tr[6]/tc[1]/p[1]",
+                         "exactText":  "Evaluation Process Financial Parts",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[12]/tr[9]/tc[1]/p[1]#key-line-58",
+                         "sourceId":  "body[1]/tbl[12]/tr[9]/tc[1]/p[1]",
+                         "exactText":  "Abnormally Low Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[13]/tr[1]/tc[1]/p[1]#key-line-59",
+                         "sourceId":  "body[1]/tbl[13]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "Evaluation of Combined Technical and Financial Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[13]/tr[2]/tc[1]/p[1]#key-line-60",
+                         "sourceId":  "body[1]/tbl[13]/tr[2]/tc[1]/p[1]",
+                         "exactText":  "Best and Final Offer (BAFO)",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[13]/tr[4]/tc[1]/p[1]#key-line-61",
+                         "sourceId":  "body[1]/tbl[13]/tr[4]/tc[1]/p[1]",
+                         "exactText":  "Negotiations",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[13]/tr[5]/tc[1]/p[1]#key-line-62",
+                         "sourceId":  "body[1]/tbl[13]/tr[5]/tc[1]/p[1]",
+                         "exactText":  "Employer’s Right to Accept Any Proposal, and to Reject Any or All Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[14]/tr[11]/tc[1]/p[1]#key-line-63",
+                         "sourceId":  "body[1]/tbl[14]/tr[11]/tc[1]/p[1]",
+                         "exactText":  "Procurement Related Complaint",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[14]/tr[1]/tc[1]/p[1]#key-line-64",
+                         "sourceId":  "body[1]/tbl[14]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "Award Criteria",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[14]/tr[2]/tc[1]/p[1]#key-line-65",
+                         "sourceId":  "body[1]/tbl[14]/tr[2]/tc[1]/p[1]",
+                         "exactText":  "Notification of Award",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[14]/tr[6]/tc[1]/p[1]#key-line-66",
+                         "sourceId":  "body[1]/tbl[14]/tr[6]/tc[1]/p[1]",
+                         "exactText":  "Signing of Contract",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[1]/tr[17]/tc[1]/p[1]#key-line-67",
+                         "sourceId":  "body[1]/tbl[1]/tr[17]/tc[1]/p[1]",
+                         "exactText":  "Eligible Goods and Services",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[1]/tr[1]/tc[1]/p[1]#key-line-68",
+                         "sourceId":  "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "Scope of Proposal",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[1]/tr[4]/tc[1]/p[1]#key-line-69",
+                         "sourceId":  "body[1]/tbl[1]/tr[4]/tc[1]/p[1]",
+                         "exactText":  "Source of Funds",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[1]/tr[7]/tc[1]/p[1]#key-line-70",
+                         "sourceId":  "body[1]/tbl[1]/tr[7]/tc[1]/p[1]",
+                         "exactText":  "Eligible Proposers",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[2]/tr[1]/tc[1]/p[1]#key-line-71",
+                         "sourceId":  "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "Sections of RFP Document",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[2]/tr[5]/tc[1]/p[1]#key-line-72",
+                         "sourceId":  "body[1]/tbl[2]/tr[5]/tc[1]/p[1]",
+                         "exactText":  "Amendment of RFP Document",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[3]/tr[12]/tc[1]/p[1]#key-line-73",
+                         "sourceId":  "body[1]/tbl[3]/tr[12]/tc[1]/p[1]",
+                         "exactText":  "Alternative Technical Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[3]/tr[15]/tc[1]/p[1]#key-line-74",
+                         "sourceId":  "body[1]/tbl[3]/tr[15]/tc[1]/p[1]",
+                         "exactText":  "First Stage Technical- Proposal Submission Form",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[3]/tr[16]/tc[1]/p[1]#key-line-75",
+                         "sourceId":  "body[1]/tbl[3]/tr[16]/tc[1]/p[1]",
+                         "exactText":  "Format and Signing of First Stage Proposal",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[49]/tr[10]/tc[1]/p[1]#key-line-76",
+                         "sourceId":  "body[1]/tbl[49]/tr[10]/tc[1]/p[1]",
+                         "exactText":  "9. Contractor’s Responsibilities",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[49]/tr[11]/tc[1]/p[1]#key-line-77",
+                         "sourceId":  "body[1]/tbl[49]/tr[11]/tc[1]/p[1]",
+                         "exactText":  "10. Employer’s Responsibilities",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[49]/tr[1]/tc[2]/p[33]#key-line-78",
+                         "sourceId":  "body[1]/tbl[49]/tr[1]/tc[2]/p[33]",
+                         "exactText":  "“ES” means Environmental and Social (including Sexual Exploitation and Abuse (SEA), and Sexual Harassment (SH)).",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[49]/tr[1]/tc[2]/p[34]#key-line-79",
+                         "sourceId":  "body[1]/tbl[49]/tr[1]/tc[2]/p[34]",
+                         "exactText":  "“Sexual Exploitation and Abuse” “(SEA)” means the following:",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[49]/tr[2]/tc[1]/p[1]#key-line-80",
+                         "sourceId":  "body[1]/tbl[49]/tr[2]/tc[1]/p[1]",
+                         "exactText":  "2. Contract Documents",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[49]/tr[3]/tc[1]/p[1]#key-line-81",
+                         "sourceId":  "body[1]/tbl[49]/tr[3]/tc[1]/p[1]",
+                         "exactText":  "3. Interpretation",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[49]/tr[4]/tc[1]/p[1]#key-line-82",
+                         "sourceId":  "body[1]/tbl[49]/tr[4]/tc[1]/p[1]",
+                         "exactText":  "4. Communications",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[49]/tr[5]/tc[1]/p[1]#key-line-83",
+                         "sourceId":  "body[1]/tbl[49]/tr[5]/tc[1]/p[1]",
+                         "exactText":  "5. Law and Language",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[49]/tr[8]/tc[1]/p[1]#key-line-84",
+                         "sourceId":  "body[1]/tbl[49]/tr[8]/tc[1]/p[1]",
+                         "exactText":  "7. Scope of Facilities",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[49]/tr[9]/tc[1]/p[1]#key-line-85",
+                         "sourceId":  "body[1]/tbl[49]/tr[9]/tc[1]/p[1]",
+                         "exactText":  "8. Time for Commencement and Completion",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[4]/tr[1]/tc[1]/p[1]#key-line-86",
+                         "sourceId":  "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "Sealing and Marking of First Stage Technical Proposal",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[4]/tr[6]/tc[1]/p[1]#key-line-87",
+                         "sourceId":  "body[1]/tbl[4]/tr[6]/tc[1]/p[1]",
+                         "exactText":  "Withdrawal, Substitution, and Modification of Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[50]/tr[1]/tc[1]/p[1]#key-line-88",
+                         "sourceId":  "body[1]/tbl[50]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "11. Contract Price",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[50]/tr[3]/tc[1]/p[1]#key-line-89",
+                         "sourceId":  "body[1]/tbl[50]/tr[3]/tc[1]/p[1]",
+                         "exactText":  "13. Securities",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[50]/tr[4]/tc[1]/p[1]#key-line-90",
+                         "sourceId":  "body[1]/tbl[50]/tr[4]/tc[1]/p[1]",
+                         "exactText":  "14. Taxes and Duties",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[51]/tr[1]/tc[1]/p[1]#key-line-91",
+                         "sourceId":  "body[1]/tbl[51]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "15. License/Use of Technical Information",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[51]/tr[2]/tc[1]/p[1]#key-line-92",
+                         "sourceId":  "body[1]/tbl[51]/tr[2]/tc[1]/p[1]",
+                         "exactText":  "16. Confidential Information",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[52]/tr[1]/tc[1]/p[1]#key-line-93",
+                         "sourceId":  "body[1]/tbl[52]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "17. Representatives",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[52]/tr[2]/tc[1]/p[1]#key-line-94",
+                         "sourceId":  "body[1]/tbl[52]/tr[2]/tc[1]/p[1]",
+                         "exactText":  "18. Work Program",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[52]/tr[3]/tc[1]/p[1]#key-line-95",
+                         "sourceId":  "body[1]/tbl[52]/tr[3]/tc[1]/p[1]",
+                         "exactText":  "19. Subcontracting",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[52]/tr[4]/tc[1]/p[1]#key-line-96",
+                         "sourceId":  "body[1]/tbl[52]/tr[4]/tc[1]/p[1]",
+                         "exactText":  "20. Design and Engineering",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[52]/tr[5]/tc[1]/p[1]#key-line-97",
+                         "sourceId":  "body[1]/tbl[52]/tr[5]/tc[1]/p[1]",
+                         "exactText":  "21. Procurement",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[52]/tr[6]/tc[1]/p[1]#key-line-98",
+                         "sourceId":  "body[1]/tbl[52]/tr[6]/tc[1]/p[1]",
+                         "exactText":  "22. Installation",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[52]/tr[7]/tc[1]/p[1]#key-line-99",
+                         "sourceId":  "body[1]/tbl[52]/tr[7]/tc[1]/p[1]",
+                         "exactText":  "23. Test and Inspection",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[52]/tr[8]/tc[1]/p[1]#key-line-100",
+                         "sourceId":  "body[1]/tbl[52]/tr[8]/tc[1]/p[1]",
+                         "exactText":  "24. Completion of the Facilities",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[52]/tr[9]/tc[1]/p[1]#key-line-101",
+                         "sourceId":  "body[1]/tbl[52]/tr[9]/tc[1]/p[1]",
+                         "exactText":  "25. Commissioning and Operational Acceptance",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[53]/tr[1]/tc[1]/p[1]#key-line-102",
+                         "sourceId":  "body[1]/tbl[53]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "26. Completion Time Guarantee",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[53]/tr[2]/tc[1]/p[1]#key-line-103",
+                         "sourceId":  "body[1]/tbl[53]/tr[2]/tc[1]/p[1]",
+                         "exactText":  "27. Defect Liability",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[53]/tr[4]/tc[1]/p[1]#key-line-104",
+                         "sourceId":  "body[1]/tbl[53]/tr[4]/tc[1]/p[1]",
+                         "exactText":  "29. Patent Indemnity",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[54]/tr[1]/tc[1]/p[1]#key-line-105",
+                         "sourceId":  "body[1]/tbl[54]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "31. Transfer of Ownership",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[54]/tr[2]/tc[1]/p[1]#key-line-106",
+                         "sourceId":  "body[1]/tbl[54]/tr[2]/tc[1]/p[1]",
+                         "exactText":  "32. Care of Facilities",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[54]/tr[3]/tc[1]/p[1]#key-line-107",
+                         "sourceId":  "body[1]/tbl[54]/tr[3]/tc[1]/p[1]",
+                         "exactText":  "33. Loss of or Damage to Property; Accident or Injury to Workers; Indemnification",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[54]/tr[4]/tc[1]/p[1]#key-line-108",
+                         "sourceId":  "body[1]/tbl[54]/tr[4]/tc[1]/p[1]",
+                         "exactText":  "34. Insurance",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[54]/tr[5]/tc[1]/p[1]#key-line-109",
+                         "sourceId":  "body[1]/tbl[54]/tr[5]/tc[1]/p[1]",
+                         "exactText":  "35. Unforeseen Conditions",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[54]/tr[6]/tc[1]/p[1]#key-line-110",
+                         "sourceId":  "body[1]/tbl[54]/tr[6]/tc[1]/p[1]",
+                         "exactText":  "36. Change in Laws and Regulations",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[54]/tr[7]/tc[1]/p[1]#key-line-111",
+                         "sourceId":  "body[1]/tbl[54]/tr[7]/tc[1]/p[1]",
+                         "exactText":  "37. Force Majeure",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[54]/tr[8]/tc[1]/p[1]#key-line-112",
+                         "sourceId":  "body[1]/tbl[54]/tr[8]/tc[1]/p[1]",
+                         "exactText":  "38. War Risks",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[55]/tr[1]/tc[1]/p[1]#key-line-113",
+                         "sourceId":  "body[1]/tbl[55]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "39. Change in the Facilities",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[55]/tr[2]/tc[1]/p[1]#key-line-114",
+                         "sourceId":  "body[1]/tbl[55]/tr[2]/tc[1]/p[1]",
+                         "exactText":  "40. Extension of Time for Completion",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[55]/tr[3]/tc[1]/p[1]#key-line-115",
+                         "sourceId":  "body[1]/tbl[55]/tr[3]/tc[1]/p[1]",
+                         "exactText":  "41. Suspension",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[55]/tr[5]/tc[1]/p[1]#key-line-116",
+                         "sourceId":  "body[1]/tbl[55]/tr[5]/tc[1]/p[1]",
+                         "exactText":  "43. Assignment",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[55]/tr[6]/tc[1]/p[1]#key-line-117",
+                         "sourceId":  "body[1]/tbl[55]/tr[6]/tc[1]/p[1]",
+                         "exactText":  "44. Export Restrictions",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[56]/tr[1]/tc[1]/p[1]#key-line-118",
+                         "sourceId":  "body[1]/tbl[56]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "45. Contractor’s Claims",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[56]/tr[2]/tc[1]/p[1]#key-line-119",
+                         "sourceId":  "body[1]/tbl[56]/tr[2]/tc[1]/p[1]",
+                         "exactText":  "46. Disputes and Arbitration",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[56]/tr[9]/tc[1]/p[1]#key-line-120",
+                         "sourceId":  "body[1]/tbl[56]/tr[9]/tc[1]/p[1]",
+                         "exactText":  "47. Cyber Security",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[5]/tr[1]/tc[1]/p[1]#key-line-121",
+                         "sourceId":  "body[1]/tbl[5]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "Opening of First Stage Technical Proposals by Employer",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[5]/tr[4]/tc[1]/p[1]#key-line-122",
+                         "sourceId":  "body[1]/tbl[5]/tr[4]/tc[1]/p[1]",
+                         "exactText":  "Technical Evaluation of First Stage Technical Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[5]/tr[6]/tc[1]/p[1]#key-line-123",
+                         "sourceId":  "body[1]/tbl[5]/tr[6]/tc[1]/p[1]",
+                         "exactText":  "Evaluation of Proposer’s Qualification",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[7]/tr[14]/tc[1]/p[1]#key-line-124",
+                         "sourceId":  "body[1]/tbl[7]/tr[14]/tc[1]/p[1]",
+                         "exactText":  "Proposal Currencies",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[7]/tr[15]/tc[1]/p[1]#key-line-125",
+                         "sourceId":  "body[1]/tbl[7]/tr[15]/tc[1]/p[1]",
+                         "exactText":  "Securing the Proposal",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[7]/tr[29]/tc[1]/p[1]#key-line-126",
+                         "sourceId":  "body[1]/tbl[7]/tr[29]/tc[1]/p[1]",
+                         "exactText":  "Period of Validity of Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[7]/tr[31]/tc[1]/p[1]#key-line-127",
+                         "sourceId":  "body[1]/tbl[7]/tr[31]/tc[1]/p[1]",
+                         "exactText":  "Format and Signing of Second Stage Technical and Financial Proposal",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[7]/tr[4]/tc[1]/p[1]#key-line-128",
+                         "sourceId":  "body[1]/tbl[7]/tr[4]/tc[1]/p[1]",
+                         "exactText":  "Proposal Prices",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[8]/tr[1]/tc[1]/p[1]#key-line-129",
+                         "sourceId":  "body[1]/tbl[8]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "Submission, Sealing and Marking of Proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[8]/tr[5]/tc[1]/p[1]#key-line-130",
+                         "sourceId":  "body[1]/tbl[8]/tr[5]/tc[1]/p[1]",
+                         "exactText":  "Withdrawal, Substitution, and Modification of Stage 2 proposals",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0122:body[1]/tbl[9]/tr[1]/tc[1]/p[1]#key-line-131",
+                         "sourceId":  "body[1]/tbl[9]/tr[1]/tc[1]/p[1]",
+                         "exactText":  "Public Opening Second Stage of Technical Part",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/toc-derived/037_WB_Plant_TwoStage_2025.key",
+                         "sourceReferenceSha":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0"
+                     }
+                 ],
+    "capabilities":  {
+                         "semanticEvaluable":  true,
+                         "occurrenceEvaluable":  false,
+                         "characterSpanEvaluable":  false,
+                         "roleEvaluable":  true,
+                         "levelEvaluable":  true,
+                         "parentEvaluable":  false,
+                         "hierarchyEvaluable":  false
+                     },
+    "referenceHashes":  {
+                            "keys/toc-derived/037_WB_Plant_TwoStage_2025.key":  "7e3e7596353da72b90fcee7125db6fe4acd76e728d9aac68bbbd976a457dbfe0",
+                            "eval/harness-lift/reference-coverage.v2.json":  "7f5e1ed97fe86d612408d9ca2f350b62923a624dda9e123ec4b90be8c8d507eb",
+                            "C:\\A99-Gold\\packets\\dev\\DOC-0122.v1.json":  "e028a2959ec5b1e16fe38c554b76c0e4a16398a7d0b8edc94c2fec43953a350c"
+                        },
+    "exactApprovedHeadingListMaterialized":  true,
+    "materializationNote":  "Only historically retained positive/reference occurrences are materialized; missing headings and negatives are not inferred.",
+    "holdoutTouched":  false,
+    "providerCalls":  0
+}

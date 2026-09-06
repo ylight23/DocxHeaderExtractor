@@ -1,0 +1,50 @@
+{
+    "artifactKind":  "a99_strict_gold_authority_policy",
+    "schemaVersion":  "a99-strict-gold-authority-policy-v4",
+    "policyVersion":  "USER_PROMOTED_STRICT_GOLD_V4",
+    "baseRevision":  "fbfbf6710a8055cb84011ce7d5bba422f072b382",
+    "priorRevision":  "162a0bcd1c9513a4a58e7efe819d79260c865686",
+    "activeStrictCohort":  [
+                               "DOC-0001",
+                               "DOC-0116",
+                               "DOC-0122",
+                               "DOC-0185",
+                               "DOC-0200",
+                               "DOC-0201",
+                               "DOC-0205",
+                               "DOC-0216",
+                               "DOC-0219",
+                               "DOC-0243",
+                               "DOC-0252",
+                               "DOC-0256",
+                               "DOC-0258",
+                               "DOC-0264",
+                               "DOC-0265"
+                           ],
+    "activeStrictCohortDocumentCount":  15,
+    "userPromotionApproval":  true,
+    "promotionReason":  "USER_BLANKET_FINAL_APPROVAL",
+    "pendingHumanReviewCount":  0,
+    "provenanceDoesNotControlGoldStatus":  true,
+    "allowedReferenceProvenance":  [
+                                       "HUMAN_ONLY",
+                                       "HUMAN_WITH_MODEL_ASSISTANCE",
+                                       "SOURCE_STRUCTURAL",
+                                       "DETERMINISTIC",
+                                       "HISTORICAL_REVIEWED_REFERENCE"
+                                   ],
+    "coverageRules":  {
+                          "strictGoldIndependentOfCoverage":  true,
+                          "partialReferencesRemainStrictGold":  true,
+                          "exhaustiveRequiresReviewedEntireDocumentAndHeadingSetExhaustive":  true,
+                          "unsupportedDimensionsRemainNotEvaluable":  true
+                      },
+    "forbidden":  [
+                      "production_predictions_as_gold",
+                      "provider_calls",
+                      "holdout_access",
+                      "cohort_membership_change",
+                      "new_model_labels",
+                      "n15_rebaseline"
+                  ]
+}

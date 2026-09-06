@@ -1,0 +1,120 @@
+{
+    "artifactKind":  "a99_canonical_strict_gold",
+    "schemaVersion":  "a99-strict-gold-v4",
+    "policyVersion":  "USER_PROMOTED_STRICT_GOLD_V4",
+    "documentId":  "DOC-0001",
+    "documentGroupId":  "GROUP-0018",
+    "split":  "DEV",
+    "fileName":  "01-style-chuan.docx",
+    "sourceSha256":  "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+    "packetSha256":  "330c7449bd8e5c743bfbc1cb98a161f7d788e96bd63b7c666c0c39c2342efaa1",
+    "packetPath":  "C:\\A99-Gold\\packets\\dev\\DOC-0001.v1.json",
+    "goldStatus":  "STRICT_GOLD",
+    "finalAuthority":  "USER",
+    "userFinalApproval":  true,
+    "referenceProvenance":  "DETERMINISTIC",
+    "originalReferenceAuthority":  "USER",
+    "originalReferencePaths":  [
+                                   "bench/01-style-chuan.key",
+                                   "eval/a99-closed-loop/strict-review-queue.v1.json",
+                                   "user-approved-adjudication: DOC-0001 semantic total 7"
+                               ],
+    "promotionReason":  "USER_BLANKET_FINAL_APPROVAL",
+    "evidenceClass":  "FULL_REVIEWED_REFERENCE",
+    "coverage":  "EXHAUSTIVE",
+    "reviewedEntireDocument":  true,
+    "headingSetExhaustive":  true,
+    "unresolvedSemanticUncertainty":  false,
+    "semanticHeadingTotal":  7,
+    "observedHeadingCount":  7,
+    "headings":  [
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[0]#key-line-3",
+                         "sourceId":  "paragraph[0]",
+                         "exactText":  "ChÆ°Æ¡ng 1. Quy Ä‘á»‹nh chung",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[2]#key-line-4",
+                         "sourceId":  "paragraph[2]",
+                         "exactText":  "1.1. Pháº¡m vi Ä‘iá»u chá»‰nh",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[4]#key-line-5",
+                         "sourceId":  "paragraph[4]",
+                         "exactText":  "1.2. Äá»‘i tÆ°á»£ng Ã¡p dá»¥ng",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[6]#key-line-6",
+                         "sourceId":  "paragraph[6]",
+                         "exactText":  "1.2.1. CÆ¡ quan quáº£n lÃ½",
+                         "role":  "heading",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[8]#key-line-7",
+                         "sourceId":  "paragraph[8]",
+                         "exactText":  "1.2.2. ÄÆ¡n vá»‹ trá»±c thuá»™c",
+                         "role":  "heading",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[10]#key-line-8",
+                         "sourceId":  "paragraph[10]",
+                         "exactText":  "ChÆ°Æ¡ng 2. Tá»• chá»©c thá»±c hiá»‡n",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[12]#key-line-9",
+                         "sourceId":  "paragraph[12]",
+                         "exactText":  "2.1. PhÃ¢n cÃ´ng trÃ¡ch nhiá»‡m",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     }
+                 ],
+    "capabilities":  {
+                         "semanticEvaluable":  true,
+                         "occurrenceEvaluable":  false,
+                         "characterSpanEvaluable":  false,
+                         "roleEvaluable":  true,
+                         "levelEvaluable":  true,
+                         "parentEvaluable":  false,
+                         "hierarchyEvaluable":  false
+                     },
+    "referenceHashes":  {
+                            "bench/01-style-chuan.key":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+                            "eval/a99-closed-loop/strict-review-queue.v1.json":  "e5709397d72a663b66eceb144f98586f1d0eb6bda1979d88b55eb370df0adafa",
+                            "C:\\A99-Gold\\packets\\dev\\DOC-0001.v1.json":  "330c7449bd8e5c743bfbc1cb98a161f7d788e96bd63b7c666c0c39c2342efaa1"
+                        },
+    "exactApprovedHeadingListMaterialized":  true,
+    "materializationNote":  "Existing reviewed reference materialized without changing its approved answer.",
+    "holdoutTouched":  false,
+    "providerCalls":  0
+}

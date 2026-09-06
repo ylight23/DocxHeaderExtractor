@@ -1,0 +1,319 @@
+{
+    "artifactKind":  "a99_canonical_strict_gold",
+    "schemaVersion":  "a99-strict-gold-v4",
+    "policyVersion":  "USER_PROMOTED_STRICT_GOLD_V4",
+    "documentId":  "DOC-0252",
+    "documentGroupId":  "GROUP-0069",
+    "split":  "DEV",
+    "fileName":  "072_ICP_TAG_Minutes_Mar_2025.docx",
+    "sourceSha256":  "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+    "packetSha256":  "d51c7e1f7c8d133862a331b924a0ef2f761407ca39de7228f8de849be9f77d2d",
+    "packetPath":  "C:\\A99-Gold\\packets\\dev\\DOC-0252.v1.json",
+    "goldStatus":  "STRICT_GOLD",
+    "finalAuthority":  "USER",
+    "userFinalApproval":  true,
+    "referenceProvenance":  "HUMAN_ONLY",
+    "originalReferenceAuthority":  "USER",
+    "originalReferencePaths":  [
+                                   "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                                   "eval/a99-dataset/document-groups.v1.json"
+                               ],
+    "promotionReason":  "USER_BLANKET_FINAL_APPROVAL",
+    "evidenceClass":  "FULL_REVIEWED_REFERENCE",
+    "coverage":  "EXHAUSTIVE",
+    "reviewedEntireDocument":  true,
+    "headingSetExhaustive":  true,
+    "unresolvedSemanticUncertainty":  false,
+    "semanticHeadingTotal":  27,
+    "observedHeadingCount":  27,
+    "headings":  [
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[4]#key-line-13",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Session I: Welcome and meeting objectives",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[4]#key-line-14",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Session II: Update on the ICP 2021 Cycle",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[4]#key-line-15",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "1. Global office update",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[8]#key-line-16",
+                         "sourceId":  "body[1]/p[8]",
+                         "exactText":  "2. Regional updates",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[8]#key-line-17",
+                         "sourceId":  "body[1]/p[8]",
+                         "exactText":  "Africa",
+                         "role":  "heading",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[8]#key-line-18",
+                         "sourceId":  "body[1]/p[8]",
+                         "exactText":  "Asia and the Pacific",
+                         "role":  "heading",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[8]#key-line-19",
+                         "sourceId":  "body[1]/p[8]",
+                         "exactText":  "Commonwealth of Independent States (CIS)",
+                         "role":  "heading",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[10]#key-line-20",
+                         "sourceId":  "body[1]/p[10]",
+                         "exactText":  "Eurostatâ€“OECD PPP Program",
+                         "role":  "heading",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[10]#key-line-21",
+                         "sourceId":  "body[1]/p[10]",
+                         "exactText":  "Latin America and the Caribbean",
+                         "role":  "heading",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[10]#key-line-22",
+                         "sourceId":  "body[1]/p[10]",
+                         "exactText":  "Western Asia",
+                         "role":  "heading",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[12]#key-line-23",
+                         "sourceId":  "body[1]/p[12]",
+                         "exactText":  "Session III: Short- and Long-Term Research and Development Agenda",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[12]#key-line-24",
+                         "sourceId":  "body[1]/p[12]",
+                         "exactText":  "1. Research Topics Emerging from the Previous ICP Cycles",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[14]#key-line-25",
+                         "sourceId":  "body[1]/p[14]",
+                         "exactText":  "2. Forthcoming Research Topics",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[16]#key-line-26",
+                         "sourceId":  "body[1]/p[16]",
+                         "exactText":  "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[16]#key-line-27",
+                         "sourceId":  "body[1]/p[16]",
+                         "exactText":  "1. TAG Composition and Terms of Reference",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[16]#key-line-28",
+                         "sourceId":  "body[1]/p[16]",
+                         "exactText":  "2. Terms of Reference for a Task Force on Annual PPP Production",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[18]#key-line-29",
+                         "sourceId":  "body[1]/p[18]",
+                         "exactText":  "3. Terms of Reference for a Task Force on ICP Classification Update",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[18]#key-line-30",
+                         "sourceId":  "body[1]/p[18]",
+                         "exactText":  "Session V: Current Research",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[18]#key-line-31",
+                         "sourceId":  "body[1]/p[18]",
+                         "exactText":  "1. The Treatment of Import and Export Prices in International Comparisons",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[20]#key-line-32",
+                         "sourceId":  "body[1]/p[20]",
+                         "exactText":  "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[20]#key-line-33",
+                         "sourceId":  "body[1]/p[20]",
+                         "exactText":  "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[22]#key-line-34",
+                         "sourceId":  "body[1]/p[22]",
+                         "exactText":  "4. Treatment of Negative Expenditures in ICP",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[22]#key-line-35",
+                         "sourceId":  "body[1]/p[22]",
+                         "exactText":  "5. Fine Tuning Global Linking Procedures",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[26]#key-line-36",
+                         "sourceId":  "body[1]/p[26]",
+                         "exactText":  "6. Improving Reliability of Price Comparisons",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[26]#key-line-37",
+                         "sourceId":  "body[1]/p[26]",
+                         "exactText":  "Session VI: Any Other Business",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[28]#key-line-38",
+                         "sourceId":  "body[1]/p[28]",
+                         "exactText":  "Agenda",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0252:body[1]/p[32]#key-line-39",
+                         "sourceId":  "body[1]/p[32]",
+                         "exactText":  "Annex 2: List of Participants",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key",
+                         "sourceReferenceSha":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f"
+                     }
+                 ],
+    "capabilities":  {
+                         "semanticEvaluable":  true,
+                         "occurrenceEvaluable":  false,
+                         "characterSpanEvaluable":  false,
+                         "roleEvaluable":  true,
+                         "levelEvaluable":  true,
+                         "parentEvaluable":  false,
+                         "hierarchyEvaluable":  false
+                     },
+    "referenceHashes":  {
+                            "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key":  "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+                            "eval/a99-dataset/document-groups.v1.json":  "b5087c847dd7076c8b00032ab42bf6fdc50d317d2dfe1d13a114e57f2c7e9307",
+                            "C:\\A99-Gold\\packets\\dev\\DOC-0252.v1.json":  "d51c7e1f7c8d133862a331b924a0ef2f761407ca39de7228f8de849be9f77d2d"
+                        },
+    "exactApprovedHeadingListMaterialized":  true,
+    "materializationNote":  "Existing reviewed reference materialized without changing its approved answer.",
+    "holdoutTouched":  false,
+    "providerCalls":  0
+}
