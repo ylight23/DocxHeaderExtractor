@@ -1,0 +1,21 @@
+{
+  "artifactKind": "a99_next_strict_human_review",
+  "schemaVersion": "a99-next-strict-review-v1",
+  "status": "READY_FOR_SOURCE_ONLY_REVIEW",
+  "nextAction": "HUMAN_REVIEW_DOC_0202",
+  "documentId": "DOC-0202",
+  "documentGroupId": "GROUP-0256",
+  "split": "DEV",
+  "familyId": "VN_LEGAL_MARKER",
+  "sourcePath": "todo10_8/heading_corpus_95_word/01_phap_quy/022_ND_01-2021_Dang_ky_doanh_nghiep.docx",
+  "sourceDocumentSha256": "f8197a069ea9dfbd6e6c8f6ddb5af9c49fafe3328d7fae90544abe3a3dc86a81",
+  "packetPath": "C:\\A99-Gold\\packets\\dev\\DOC-0202.v1.json",
+  "packetSha256": "8df485446c42fffba2ff50d7e78ecb5e663bcda2bc720d06106a370481266c9a",
+  "packetArtifactKind": "a99_exhaustive_source_first_review_packet",
+  "sourceOnly": true,
+  "modelSuggestionsIncluded": false,
+  "predictionFieldsIncluded": false,
+  "providerCalls": 0,
+  "holdoutTouched": false,
+  "reviewOutput": "C:\\A99-Gold\\dev-v3\\DOC-0202.human-gold-v3.json"
+}

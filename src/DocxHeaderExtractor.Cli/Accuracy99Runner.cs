@@ -28,7 +28,7 @@ internal static class Accuracy99Runner
         var operation = options.Accuracy99Operation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, doc-0205-canary, mode-stratification, doc-0027-support-canary");
+            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, doc-0205-canary, mode-stratification, doc-0027-support-canary");
             return 0;
         }
 
@@ -49,6 +49,8 @@ internal static class Accuracy99Runner
             "gold-import-dev-v2" => await ImportEarlyDevGoldV2Async(options, cancellationToken),
             "gold-validate-v3" => await ValidateEarlyDevGoldV3Async(options, cancellationToken),
             "gold-import-dev-v3" => await ImportEarlyDevGoldV3Async(options, cancellationToken),
+            "gold-validate-strict-v3" => await ValidateStrictEarlyDevGoldV3Async(options, cancellationToken, import: false),
+            "gold-import-strict-dev-v3" => await ValidateStrictEarlyDevGoldV3Async(options, cancellationToken, import: true),
             "doc-0205-canary" => await RunDoc0205CanaryAsync(options, cancellationToken),
             "mode-stratification" => await BuildModeStratificationAsync(options, cancellationToken),
             "doc-0027-support-canary" => await RunDoc0027SupportCanaryAsync(options, cancellationToken),
@@ -489,6 +491,142 @@ internal static class Accuracy99Runner
         await WriteAsync(options.OutputPath ?? Path.Combine(repoRoot, "eval", "a99-closed-loop", "early-dev-gold-coverage.v3.json"), JsonSerializer.Serialize(report, JsonOptions), cancellationToken);
         Console.WriteLine($"Early DEV v3 gold: {validated}/{early.Documents.Count} documents, {positives} positives, status={status}");
         return status == "READY_FOR_BASELINE" ? 0 : 1;
+    }
+
+    private static async Task<int> ValidateStrictEarlyDevGoldV3Async(
+        CommandLineOptions options,
+        CancellationToken cancellationToken,
+        bool import)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var cohortPath = Path.Combine(repoRoot, "eval", "a99-closed-loop", "strict-dev-gold-cohort.v1.json");
+        var authorityPath = Path.Combine(repoRoot, "eval", "a99-closed-loop", "strict-gold-authority.v1.json");
+        var cohort = DeserializeRequired<A99StrictDevGoldCohortArtifact>(await File.ReadAllTextAsync(cohortPath, cancellationToken));
+        var authority = DeserializeRequired<A99StrictGoldAuthorityArtifact>(await File.ReadAllTextAsync(authorityPath, cancellationToken));
+        if (cohort.StrictCohortDocumentCount != 15 || cohort.StrictCohort.Count != 15)
+            throw new InvalidDataException("strict-cohort-must-contain-15-documents");
+        if (!string.Equals(cohort.Holdout, "SEALED", StringComparison.Ordinal))
+            throw new InvalidDataException("strict-cohort-holdout-must-be-sealed");
+
+        var packetRoot = Path.GetFullPath(options.Accuracy99PacketRoot ?? Path.Combine("C:\\A99-Gold", "packets"));
+        var goldRoot = Path.GetFullPath(options.Accuracy99GoldRoot ?? options.Accuracy99GoldPath ?? Path.Combine("C:\\A99-Gold", "dev-v3"));
+        A99GoldStoreGuard.EnsureDevPath(packetRoot);
+        A99GoldStoreGuard.EnsureDevPath(goldRoot);
+        var results = new List<object>();
+        var strictValid = 0;
+        var strictEligible = 0;
+        var schemaValidAssisted = 0;
+        var errors = 0;
+
+        foreach (var document in cohort.StrictCohort)
+        {
+            var authorityEntry = authority.Documents.SingleOrDefault(x => string.Equals(x.DocumentId, document.DocumentId, StringComparison.Ordinal));
+            if (authorityEntry is null)
+            {
+                errors++;
+                results.Add(new { documentId = document.DocumentId, status = "INVALID", error = "authority-entry-missing" });
+                continue;
+            }
+
+            var packetRelativePath = document.PacketPath ?? $"dev/{document.DocumentId}.v1.json";
+            var packetPath = Path.Combine(packetRoot, packetRelativePath.Replace('/', Path.DirectorySeparatorChar));
+            var goldPath = Path.Combine(goldRoot, document.DocumentId + ".human-gold-v3.json");
+            if (!File.Exists(packetPath) || !File.Exists(goldPath))
+            {
+                errors++;
+                results.Add(new
+                {
+                    documentId = document.DocumentId,
+                    status = "MISSING",
+                    validatorStatus = authorityEntry.ValidatorStatus,
+                    referenceAuthority = authorityEntry.ReferenceAuthority,
+                    eligibleForStrictA99Claim = false,
+                    error = !File.Exists(packetPath) ? "packet-missing" : "gold-missing",
+                });
+                continue;
+            }
+
+            try
+            {
+                var packet = A99ReviewJson.Deserialize<A99ReviewPacket>(await File.ReadAllTextAsync(packetPath, cancellationToken));
+                var gold = A99ReviewJson.Deserialize<A99HumanGoldV3Document>(await File.ReadAllTextAsync(goldPath, cancellationToken));
+                var validation = A99HumanGoldV3Validator.Validate(packet, gold);
+                var campaignBound = string.Equals(packet.SourceDocumentSha256, document.SourceSha256, StringComparison.OrdinalIgnoreCase) &&
+                                    string.Equals(packet.PacketSha256, document.PacketSha256, StringComparison.OrdinalIgnoreCase);
+                var eligible = validation.IsValid && campaignBound &&
+                               A99StrictGoldAuthorityRules.IsEligible(
+                                   authorityEntry.ValidatorStatus,
+                                   authorityEntry.ReferenceAuthority,
+                                   authorityEntry.EligibleForStrictA99Claim);
+                if (validation.IsValid && campaignBound) strictValid++;
+                if (eligible) strictEligible++;
+                if (!eligible) errors++;
+                results.Add(new
+                {
+                    documentId = document.DocumentId,
+                    status = validation.IsValid && campaignBound ? "VALID_SCHEMA" : "INVALID",
+                    validatorStatus = authorityEntry.ValidatorStatus,
+                    referenceAuthority = authorityEntry.ReferenceAuthority,
+                    eligibleForStrictA99Claim = eligible,
+                    errors = validation.Errors,
+                });
+            }
+            catch (Exception ex) when (ex is JsonException or InvalidDataException or IOException)
+            {
+                errors++;
+                results.Add(new { documentId = document.DocumentId, status = "INVALID", error = ex.Message });
+            }
+        }
+
+        foreach (var documentId in authority.AssistedPilotDocumentIds)
+        {
+            var packetPath = Path.Combine(packetRoot, "dev", documentId + ".v1.json");
+            var goldPath = Path.Combine(goldRoot, documentId + ".human-gold-v3.json");
+            if (!File.Exists(packetPath) || !File.Exists(goldPath))
+            {
+                errors++;
+                results.Add(new { documentId, status = "MISSING_ASSISTED_PILOT" });
+                continue;
+            }
+            try
+            {
+                var packet = A99ReviewJson.Deserialize<A99ReviewPacket>(await File.ReadAllTextAsync(packetPath, cancellationToken));
+                var gold = A99ReviewJson.Deserialize<A99HumanGoldV3Document>(await File.ReadAllTextAsync(goldPath, cancellationToken));
+                var validation = A99HumanGoldV3Validator.Validate(packet, gold);
+                if (validation.IsValid) schemaValidAssisted++;
+                else errors += validation.Errors.Count;
+                results.Add(new { documentId, status = validation.IsValid ? "VALID_SCHEMA_ASSISTED" : "INVALID_ASSISTED", errors = validation.Errors });
+            }
+            catch (Exception ex) when (ex is JsonException or InvalidDataException or IOException)
+            {
+                errors++;
+                results.Add(new { documentId, status = "INVALID_ASSISTED", error = ex.Message });
+            }
+        }
+
+        var ready = strictEligible == cohort.StrictCohortDocumentCount &&
+                    strictValid == cohort.StrictCohortDocumentCount &&
+                    schemaValidAssisted == authority.AssistedPilotDocumentIds.Count &&
+                    errors == 0;
+        var report = new
+        {
+            artifactKind = import ? "a99_strict_dev_gold_coverage" : "a99_strict_gold_validation_report",
+            schemaVersion = import ? "a99-strict-dev-gold-coverage-v1" : "a99-strict-gold-validation-v1",
+            status = ready ? "STRICT_READY_FOR_BASELINE" : "HUMAN_REFERENCE_REQUIRED",
+            strictCohortDocuments = cohort.StrictCohortDocumentCount,
+            strictHumanGoldValid = strictValid,
+            strictEligibleForClaim = strictEligible,
+            schemaValidAssisted = schemaValidAssisted,
+            assistedPilotDocuments = authority.AssistedPilotDocumentIds.Count,
+            errors,
+            results,
+            holdoutTouched = false,
+            providerCalls = 0,
+            baseline = "NOT_RUN",
+        };
+        var defaultName = import ? "strict-dev-gold-coverage.v1.json" : "strict-gold-validation.v1.json";
+        await WriteAsync(options.OutputPath ?? Path.Combine(repoRoot, "eval", "a99-closed-loop", defaultName), JsonSerializer.Serialize(report, JsonOptions), cancellationToken);
+        return ready ? 0 : 1;
     }
 
     private static async Task<int> RunDoc0205CanaryAsync(

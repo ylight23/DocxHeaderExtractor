@@ -1,0 +1,146 @@
+{
+  "artifactKind": "a99_strict_gold_validation_report",
+  "schemaVersion": "a99-strict-gold-validation-v1",
+  "status": "HUMAN_REFERENCE_REQUIRED",
+  "strictCohortDocuments": 15,
+  "strictHumanGoldValid": 0,
+  "strictEligibleForClaim": 0,
+  "schemaValidAssisted": 2,
+  "assistedPilotDocuments": 2,
+  "errors": 15,
+  "results": [
+    {
+      "documentId": "DOC-0264",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0265",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0219",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0216",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0243",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0258",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0252",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0256",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0205",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0202",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0201",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0185",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0200",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "gold-missing"
+    },
+    {
+      "documentId": "DOC-0116",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "packet-missing"
+    },
+    {
+      "documentId": "DOC-0122",
+      "status": "MISSING",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "error": "packet-missing"
+    },
+    {
+      "documentId": "DOC-0255",
+      "status": "VALID_SCHEMA_ASSISTED",
+      "errors": []
+    },
+    {
+      "documentId": "DOC-0259",
+      "status": "VALID_SCHEMA_ASSISTED",
+      "errors": []
+    }
+  ],
+  "holdoutTouched": false,
+  "providerCalls": 0,
+  "baseline": "NOT_RUN"
+}
