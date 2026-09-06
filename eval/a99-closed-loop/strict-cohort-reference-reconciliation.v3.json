@@ -2,7 +2,7 @@
   "artifactKind": "a99_strict_cohort_reference_reconciliation",
   "schemaVersion": "a99-strict-cohort-reference-reconciliation-v3",
   "policy": "USER_FINALIZED_STRICT_GOLD_V3",
-  "baseRevision": "b7bfce18564e4161fbf965ac6030106f793c4ea1",
+  "baseRevision": "162a0bcd1c9513a4a58e7efe819d79260c865686",
   "cohortSource": "eval/a99-closed-loop/strict-review-queue.v1.json",
   "cohortDocumentCount": 15,
   "holdoutTouched": false,
@@ -10,6 +10,11 @@
   "semanticBaselineReadyDocumentCount": 6,
   "pendingHumanReferenceDocumentCount": 9,
   "status": "HUMAN_REFERENCE_REQUIRED",
+  "canonicalGoldMaterializedCount": 5,
+  "canonicalGoldMaterializationStatus": "BLOCKED",
+  "canonicalGoldMaterializationBlockers": [
+    "CANONICAL_GOLD_MATERIALIZATION_REQUIRED=DOC-0264"
+  ],
   "documents": [
     {
       "documentId": "DOC-0205",
@@ -75,7 +80,7 @@
       "reviewedEntireDocument": true,
       "headingSetExhaustive": true,
       "unresolvedSemanticUncertainty": false,
-      "remainingBlocker": "NONE_FOR_SEMANTIC_BASELINE; exact source spans are not represented by a committed reference artifact"
+      "remainingBlocker": "CANONICAL_GOLD_MATERIALIZATION_REQUIRED=DOC-0264"
     },
     {
       "documentId": "DOC-0001",

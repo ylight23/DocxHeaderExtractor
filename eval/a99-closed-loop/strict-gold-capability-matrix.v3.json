@@ -2,9 +2,14 @@
   "artifactKind": "a99_strict_gold_capability_matrix",
   "schemaVersion": "a99-strict-gold-capability-matrix-v3",
   "policyVersion": "USER_FINALIZED_STRICT_GOLD_V3",
-  "baseRevision": "b7bfce18564e4161fbf965ac6030106f793c4ea1",
+  "baseRevision": "162a0bcd1c9513a4a58e7efe819d79260c865686",
   "activeStrictCohortDocumentCount": 15,
   "status": "HUMAN_REFERENCE_REQUIRED",
+  "canonicalGoldMaterializedDocumentCount": 5,
+  "canonicalGoldMaterializationStatus": "BLOCKED",
+  "canonicalGoldMaterializationBlockers": [
+    "CANONICAL_GOLD_MATERIALIZATION_REQUIRED=DOC-0264"
+  ],
   "denominators": {
     "semantic": { "eligible": 6, "pending": 9 },
     "occurrence": { "eligible": 0, "pending": 15 },

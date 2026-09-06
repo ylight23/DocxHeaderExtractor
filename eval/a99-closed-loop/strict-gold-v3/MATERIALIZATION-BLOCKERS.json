@@ -1,0 +1,16 @@
+{
+    "artifactKind":  "a99_canonical_strict_gold_v3_materialization_blockers",
+    "schemaVersion":  "a99-canonical-strict-gold-v3",
+    "baseRevision":  "162a0bcd1c9513a4a58e7efe819d79260c865686",
+    "status":  "BLOCKED",
+    "blockers":  [
+                     {
+                         "code":  "CANONICAL_GOLD_MATERIALIZATION_REQUIRED",
+                         "documentId":  "DOC-0264",
+                         "reason":  "The approved total and taxonomy exist, but the exact approved 158-heading list is not present in committed evidence; source facts cannot be promoted to Gold.",
+                         "requiredInput":  "Already-approved exact heading list or a committed user-approved canonical artifact"
+                     }
+                 ],
+    "providerCalls":  0,
+    "holdoutTouched":  false
+}

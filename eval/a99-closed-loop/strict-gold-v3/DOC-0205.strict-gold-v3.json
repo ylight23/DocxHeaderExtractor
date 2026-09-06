@@ -1,0 +1,744 @@
+{
+    "schemaVersion":  "a99-canonical-strict-gold-v3",
+    "documentGroupId":  "GROUP-0174",
+    "projectionDefinition":  "Historical reviewed content hierarchy; source spans and parent occurrences are not claimed.",
+    "referenceProvenance":  "HUMAN_ONLY",
+    "unresolvedSemanticUncertainty":  false,
+    "goldStatus":  "STRICT_GOLD",
+    "materialization":  {
+                            "sourceOfTruth":  "committed historical reviewed reference plus explicit user-approved projection",
+                            "productionPredictionsUsed":  false,
+                            "providerCalls":  0
+                        },
+    "headings":  [
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-8",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Chương I QUY ĐỊNH CHUNG",
+                         "role":  "chapter",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-9",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 1. Phạm vi điều chỉnh",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-10",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 2. Đối tượng áp dụng",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-11",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 3. Giải thích từ ngữ",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-12",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 4. Giá trị pháp lý của dữ liệu được chia sẻ",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-13",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 5. Nguyên tắc chung về quản lý, kết nối và chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-14",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 6. Thực hiện kết nối, chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-15",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 7. Yêu cầu trong việc quản lý, kết nối, chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-16",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 8. Các hành vi không được làm",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-17",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Chương II QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU, QUẢN TRỊ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC VÀ BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+                         "role":  "chapter",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-18",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Mục 1. QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-19",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 9. Nguyên tắc quản lý dữ liệu, cơ sở dữ liệu trong cơ quan nhà nước",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-20",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 10. Tổ chức, quản lý dữ liệu, cơ sở dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-21",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 11. Cơ sở dữ liệu trong cơ quan nhà nước",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-22",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 12. Danh mục cơ sở dữ liệu quốc gia, duy trì danh mục cơ sở dữ liệu quốc gia",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-23",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 13. Cổng dữ liệu quốc gia",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-24",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Mục 2. QUẢN TRỊ DỮ LIỆU, QUẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-25",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 14. Hoạt động quản trị dữ liệu, quản trị chia sẻ, khai thác dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-26",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 15. Thanh tra, kiểm tra, giám sát quá trình kết nối, chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-27",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 16. Kiểm tra, đánh giá, duy trì dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-28",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Mục 3. DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-29",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 17. Nguyên tắc cung cấp dữ liệu mở của cơ quan nhà nước",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-30",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 18. Quy định sử dụng dữ liệu mở của cơ quan nhà nước",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-31",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 19. Kế hoạch và triển khai dữ liệu mở của các cơ quan nhà nước",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-32",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 20. Yêu cầu trong việc công bố dữ liệu mở của cơ quan nhà nước",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-33",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 21. Phương thức, cách thức công bố dữ liệu mở của cơ quan nhà nước",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-34",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Mục 4. BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-35",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 22. Quy chế khai thác, sử dụng dữ liệu chia sẻ",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-36",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 23. Phương thức chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-37",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 24. Dịch vụ chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-38",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 25. Công khai thông tin về dịch vụ chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-39",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 26. Hệ thống quản lý dịch vụ chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-40",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 27. Hạ tầng kết nối, chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-41",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 28. Bảo đảm an toàn trong quá trình kết nối, chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-42",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 29. Kinh phí bảo đảm kết nối, chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-43",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 30. Nguồn nhân lực bảo đảm kết nối, chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-44",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Chương III THỰC HIỆN KẾT NỐI, CHIA SẺ, SỬ DỤNG DỮ LIỆU",
+                         "role":  "chapter",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-45",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Mục 1. TỔ CHỨC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-46",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 31. Kết nối, chia sẻ dữ liệu giữa các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-47",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 32. Kết nối, chia sẻ dữ liệu trong nội bộ của bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-48",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Mục 2. CHIA SẺ DỮ LIỆU MẶC ĐỊNH",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-49",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 33. Chuẩn bị và thực hiện cung cấp dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-50",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 34. Dữ liệu chia sẻ theo hình thức chia sẻ mặc định",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-51",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 35. Gửi yêu cầu kết nối, khai thác dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-52",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Mục 3. CHIA SẺ DỮ LIỆU THEO YÊU CẦU ĐẶC THÙ",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-53",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 36. Nguyên tắc chia sẻ dữ liệu theo yêu cầu đặc thù",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-54",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 37. Trình tự chuẩn bị kết nối, chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-55",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 38. Nội dung thống nhất chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-56",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 39. Thực hiện kết nối, chia sẻ, sử dụng dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-57",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Mục 4. QUẢN LÝ KẾT NỐI, CHIA SẺ DỮ LIỆU",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-58",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 40. Tài khoản và quản lý tài khoản kết nối",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-59",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 41. Thời hạn sử dụng dữ liệu sau khi khai thác",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-60",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 42. Lưu trữ dữ liệu khi kết nối, khai thác",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-61",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 43. Tạm ngừng kết nối, cung cấp dữ liệu trên môi trường mạng do cơ quan cung cấp",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-62",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 44. Chấm dứt kết nối, chia sẻ dữ liệu qua môi trường mạng",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-63",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 45. Lưu trữ nhật ký chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-64",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 46. Mô hình kết nối, chia sẻ dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-65",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Mục 5. GIẢI QUYẾT VƯỚNG MẮC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+                         "role":  "section",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-66",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 47. Vướng mắc khi kết nối, chia sẻ và khai thác dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-67",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 48. Thẩm quyền tiếp nhận, giải quyết vướng mắc",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-68",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 49. Trình tự xử lý vướng mắc",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-69",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 50. Phương án giải quyết và triển khai tuân thủ phương án xử lý vướng mắc",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-70",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Chương IV QUYỀN, TRÁCH NHIỆM TRONG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+                         "role":  "chapter",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-71",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 51. Quyền và trách nhiệm của cơ quan cung cấp dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-72",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 52. Quyền và trách nhiệm của tổ chức, cá nhân khai thác, sử dụng dữ liệu",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-73",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 53. Trách nhiệm của các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-74",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 54. Trách nhiệm của Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-75",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Chương V ĐIỀU KHOẢN THI HÀNH",
+                         "role":  "chapter",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-76",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 55. Điều khoản chuyển tiếp",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-77",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 56. Hiệu lực thi hành",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0205:body[1]/p[4]#key-line-78",
+                         "sourceId":  "body[1]/p[4]",
+                         "exactText":  "Điều 57. Trách nhiệm thi hành",
+                         "role":  "article",
+                         "level":  4,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "keys/legal-human/025_ND_47-2020_Chia_se_du_lieu_so.key",
+                         "sourceReferenceSha":  "924a2675e0b1e97eef50c6e9705e7d45dd41d917a90b8eae937d2095a2341c82"
+                     }
+                 ],
+    "taxonomyVersion":  "legal-content-v1",
+    "sourceSha256":  "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+    "semanticHeadingTotal":  71,
+    "artifactKind":  "a99_canonical_strict_gold_v3",
+    "coverage":  "EXHAUSTIVE",
+    "headingSetExhaustive":  true,
+    "capabilities":  {
+                         "semanticEvaluable":  true,
+                         "occurrenceEvaluable":  false,
+                         "characterSpanEvaluable":  false,
+                         "roleEvaluable":  true,
+                         "levelEvaluable":  true,
+                         "parentEvaluable":  false,
+                         "hierarchyEvaluable":  false
+                     },
+    "reviewedEntireDocument":  true,
+    "userFinalApproval":  true,
+    "documentId":  "DOC-0205",
+    "finalAuthority":  "USER"
+}

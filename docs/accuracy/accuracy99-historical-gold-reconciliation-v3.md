@@ -24,6 +24,25 @@ The complete normalized records are in:
 - `eval/a99-closed-loop/strict-review-remaining.v3.json`
 - `eval/a99-closed-loop/strict-gold-authority-policy.v3.json`
 
+## Canonical Strict Gold V3 materialization
+
+Five of the six promoted references now have immutable per-document artifacts under
+`eval/a99-closed-loop/strict-gold-v3/`, with complete `headings[]` arrays. `DOC-0258`
+uses the explicitly approved 24-heading projection: the historical 27-entry key is
+retained as separate evidence, its four `DAY` navigation entries are excluded, and
+the reviewed document title is included from the committed exact-byte packet.
+
+`DOC-0264` is intentionally not materialized. Its approved total and taxonomy are
+known, but the exact approved 158-heading list is not present in committed evidence;
+promoting source facts or production predictions would violate the fail-closed rule.
+The blocker is recorded as
+`CANONICAL_GOLD_MATERIALIZATION_REQUIRED=DOC-0264` in the reconciliation and
+capability manifests.
+
+The key-derived artifacts preserve semantic, role, and level evaluation only.
+`occurrenceEvaluable`, character-span, parent, and hierarchy capabilities remain
+false unless the committed reference carries the corresponding exact identity.
+
 ## Promoted cohort references
 
 The following six active-cohort references are Strict Gold for semantic evaluation:

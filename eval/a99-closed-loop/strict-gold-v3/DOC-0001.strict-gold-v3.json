@@ -1,0 +1,104 @@
+{
+    "schemaVersion":  "a99-canonical-strict-gold-v3",
+    "documentGroupId":  "GROUP-0018",
+    "projectionDefinition":  "Historical reviewed style key; paragraph identity is retained without inferred character spans.",
+    "referenceProvenance":  "DETERMINISTIC_GENERATED",
+    "unresolvedSemanticUncertainty":  false,
+    "goldStatus":  "STRICT_GOLD",
+    "materialization":  {
+                            "sourceOfTruth":  "committed historical reviewed reference plus explicit user-approved projection",
+                            "productionPredictionsUsed":  false,
+                            "providerCalls":  0
+                        },
+    "headings":  [
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[0]#key-line-3",
+                         "sourceId":  "paragraph[0]",
+                         "exactText":  "Chương 1. Quy định chung",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[2]#key-line-4",
+                         "sourceId":  "paragraph[2]",
+                         "exactText":  "1.1. Phạm vi điều chỉnh",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[4]#key-line-5",
+                         "sourceId":  "paragraph[4]",
+                         "exactText":  "1.2. Đối tượng áp dụng",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[6]#key-line-6",
+                         "sourceId":  "paragraph[6]",
+                         "exactText":  "1.2.1. Cơ quan quản lý",
+                         "role":  "heading",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[8]#key-line-7",
+                         "sourceId":  "paragraph[8]",
+                         "exactText":  "1.2.2. Đơn vị trực thuộc",
+                         "role":  "heading",
+                         "level":  3,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[10]#key-line-8",
+                         "sourceId":  "paragraph[10]",
+                         "exactText":  "Chương 2. Tổ chức thực hiện",
+                         "role":  "heading",
+                         "level":  1,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     },
+                     {
+                         "headingOccurrenceId":  "DOC-0001:paragraph[12]#key-line-9",
+                         "sourceId":  "paragraph[12]",
+                         "exactText":  "2.1. Phân công trách nhiệm",
+                         "role":  "heading",
+                         "level":  2,
+                         "parentHeadingOccurrenceId":  null,
+                         "sourceReferencePath":  "bench/01-style-chuan.key",
+                         "sourceReferenceSha":  "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7"
+                     }
+                 ],
+    "taxonomyVersion":  "heading-v1",
+    "sourceSha256":  "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+    "semanticHeadingTotal":  7,
+    "artifactKind":  "a99_canonical_strict_gold_v3",
+    "coverage":  "EXHAUSTIVE",
+    "headingSetExhaustive":  true,
+    "capabilities":  {
+                         "semanticEvaluable":  true,
+                         "occurrenceEvaluable":  false,
+                         "characterSpanEvaluable":  false,
+                         "roleEvaluable":  true,
+                         "levelEvaluable":  true,
+                         "parentEvaluable":  false,
+                         "hierarchyEvaluable":  false
+                     },
+    "reviewedEntireDocument":  true,
+    "userFinalApproval":  true,
+    "documentId":  "DOC-0001",
+    "finalAuthority":  "USER"
+}
