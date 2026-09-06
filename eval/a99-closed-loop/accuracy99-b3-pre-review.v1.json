@@ -1,0 +1,59 @@
+{
+  "artifactKind": "a99_b3_pre_review_closure",
+  "schemaVersion": "a99-b3-pre-review-v1",
+  "status": "HUMAN_REFERENCE_REQUIRED",
+  "branch": "accuracy99/autonomous-closed-loop",
+  "executionRevision": "a31a78258d1ec3684bdabd411d3fe3a18f2d44f8",
+  "headingIdentity": {
+    "physicalSourceOccurrenceId": "documentId + sourceId",
+    "headingOccurrenceId": "sourceId@headingSpan.start:headingSpan.end",
+    "documentScopeBound": true,
+    "textFilenameFuzzyIdentity": "FORBIDDEN"
+  },
+  "identityGates": {
+    "sameSourceDistinctSpans": "PASS",
+    "sameSourceDuplicateSpan": "REJECTED",
+    "parentOccurrenceIdentity": "PASS",
+    "cycleDetectionByOccurrenceId": "PASS",
+    "exactEvaluatorTwoSameSourceOccurrences": "PASS",
+    "unsureSpanBlocksExhaustiveCertificate": "PASS"
+  },
+  "doc0205": {
+    "representability": "PASS",
+    "referenceCount": 71,
+    "provenSourceReadingLoss": 0,
+    "provenRepresentationLoss": 0,
+    "provenCandidateConstructionLoss": 0,
+    "provenCandidateSelectionLoss": 0,
+    "provenModelNotExposed": 0,
+    "provenFinalProjectionLoss": 0,
+    "noProvenPremodelLoss": 0,
+    "unresolved": 71,
+    "status": "BLOCKED_ON_REFERENCE_SPAN_EVIDENCE",
+    "humanGoldPromotion": "FORBIDDEN"
+  },
+  "doc0027": {
+    "status": "AUDIT_ONLY",
+    "referenceStatus": "NOT_AVAILABLE",
+    "documentMode": "Unknown",
+    "reliabilityStatus": "SUPPORT_NOT_PROVEN"
+  },
+  "modeStratification": {
+    "status": "PASS",
+    "authorizedDevDocuments": 61,
+    "qualityMetricStatus": "NOT_MEASURED",
+    "holdout": "SEALED"
+  },
+  "verification": {
+    "focusedTests": { "total": 372, "passed": 372, "failed": 0, "skipped": 0 },
+    "releaseBuild": "PASS",
+    "diffCheck": "PASS",
+    "fullSuite": { "total": 1111, "passed": 1110, "failed": 1, "skipped": 0, "frozenFailures": ["N15"], "newFailures": 0 },
+    "providerCalls": 0,
+    "expectedChanged": false
+  },
+  "reviewer": "C:\\A99-Gold\\reviewer-v3\\index.html",
+  "goldDirectory": "C:\\A99-Gold\\dev-v3",
+  "validGoldDocuments": 0,
+  "nextAction": "HUMAN_REVIEW"
+}
