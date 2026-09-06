@@ -1,0 +1,23 @@
+{
+  "artifactKind": "a99_strict_cohort_preflight_publication",
+  "schemaVersion": "a99-strict-cohort-preflight-publication-v1",
+  "status": "PASS_FROZEN_FOR_HUMAN_REVIEW",
+  "baseRevision": "63efedc25be9aeea754949312f0881a070cc127c",
+  "executionRevision": "2dcbd4a552a99678be9a3ad3aa74610e8f960724",
+  "publicationRevision": "SELF",
+  "strictCohortDocuments": 15,
+  "representableDocuments": 15,
+  "replacements": 0,
+  "sourceMetadataReconciliations": [
+    {
+      "documentId": "DOC-0219",
+      "reason": "stale cohort SHA metadata corrected to the actual parser source SHA; document retained"
+    }
+  ],
+  "reviewQueueArtifact": "eval/a99-closed-loop/strict-review-queue.v1.json",
+  "humanGold": "REQUIRED_15_OF_15",
+  "holdoutTouched": false,
+  "providerCalls": 0,
+  "baseline": "NOT_RUN",
+  "accuracyClaim": "A99_NOT_MEASURED"
+}
