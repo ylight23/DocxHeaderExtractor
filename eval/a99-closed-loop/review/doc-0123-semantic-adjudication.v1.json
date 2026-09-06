@@ -1,0 +1,43 @@
+{
+  "artifactKind": "a99_semantic_reference_adjudication",
+  "schemaVersion": "a99-semantic-reference-adjudication-v1",
+  "documentId": "DOC-0123",
+  "documentGroupId": "GROUP-0166",
+  "split": "DEV",
+  "sourceDocumentSha256": "ac85908c86aa5b37d40b60d514229d546f61a20bc966f32cf0ad08f9de2798e1",
+  "packetSha256": "c2a037fc61244d3bc0e88b089ddd84dac2cb6ae23451c66e7f17b6f3e9e85852",
+  "referenceAuthority": "HUMAN_REVIEWED_MODEL_ASSISTED",
+  "strictGoldEligible": false,
+  "semanticHeadingTotal": 317,
+  "tableOfFormsIncluded": false,
+  "tocEntriesIncluded": false,
+  "taxonomy": "heading hierarchy only; repeated text remains occurrence-level; page-number entries are excluded",
+  "sectionBreakdown": {
+    "FRONT_MATTER": 15,
+    "PART_1": 1,
+    "SECTION_I": 68,
+    "SECTION_II": 11,
+    "SECTION_III": 19,
+    "SECTION_IV": 49,
+    "SECTION_V": 1,
+    "SECTION_VI": 3,
+    "PART_2": 1,
+    "SECTION_VII": 18,
+    "PART_3": 1,
+    "SECTION_VIII": 1,
+    "SECTION_IX": 119,
+    "SECTION_X": 10
+  },
+  "excludedEvidence": [
+    "Table of Forms in Section IV",
+    "Table of Forms in Section X",
+    "local TOC/index entries with page numbers",
+    "page-number-only paragraphs"
+  ],
+  "reviewNotes": [
+    "Repeated heading text is retained as separate body occurrences.",
+    "Malformed or companion source headings are retained only where the reviewed occurrence is a real body heading.",
+    "This artifact is a semantic reference only and must not be imported as strict Human Gold."
+  ],
+  "providerCalls": 0
+}
