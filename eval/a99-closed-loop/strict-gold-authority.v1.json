@@ -2,6 +2,7 @@
   "artifactKind": "a99_strict_gold_authority",
   "schemaVersion": "a99-strict-gold-authority-v1",
   "status": "FROZEN_COHORT_NOT_READY_FOR_BASELINE",
+  "cohortRevision": "v2",
   "strictCohortDocumentCount": 15,
   "documents": [
     { "documentId": "DOC-0264", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
@@ -13,7 +14,7 @@
     { "documentId": "DOC-0252", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
     { "documentId": "DOC-0256", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
     { "documentId": "DOC-0205", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
-    { "documentId": "DOC-0202", "validatorStatus": "MISSING", "referenceAuthority": "HUMAN_REVIEWED_MODEL_ASSISTED", "eligibleForStrictA99Claim": false, "exposureStatus": "MODEL_ASSISTED", "semanticReview": "FINAL", "semanticHeadingTotal": 111, "documentTitleCount": 1, "chapterCount": 9, "articleCount": 101, "representationStatus": "CURRENT_PACKET_NOT_SPAN_REPRESENTABLE", "note": "Semantic review is final. The packet does not yet represent canonical heading spans and occurrence IDs; excluded from strict Human Gold." },
+    { "documentId": "DOC-0123", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Replacement strict slot; source packet passed representability gate; human review pending." },
     { "documentId": "DOC-0201", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
     { "documentId": "DOC-0185", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
     { "documentId": "DOC-0200", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
@@ -24,5 +25,15 @@
   ],
   "assistedPilotDocumentIds": [ "DOC-0255", "DOC-0259" ],
   "holdoutStatus": "SEALED",
-  "providerCalls": 0
+  "providerCalls": 0,
+  "replacedDocuments": [
+    {
+      "documentId": "DOC-0202",
+      "referenceAuthority": "HUMAN_REVIEWED_MODEL_ASSISTED",
+      "semanticReview": "FINAL",
+      "semanticHeadingTotal": 111,
+      "strictGoldEligible": false,
+      "representationStatus": "IMAGE_ONLY_NOT_CHARACTER_SPAN_REPRESENTABLE"
+    }
+  ]
 }

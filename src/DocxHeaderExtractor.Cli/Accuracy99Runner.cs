@@ -531,6 +531,38 @@ internal static class Accuracy99Runner
             var packetRelativePath = document.PacketPath ?? $"dev/{document.DocumentId}.v1.json";
             var packetPath = Path.Combine(packetRoot, packetRelativePath.Replace('/', Path.DirectorySeparatorChar));
             var goldPath = Path.Combine(goldRoot, document.DocumentId + ".human-gold-v3.json");
+
+            A99SourceRepresentabilityResult? representability = null;
+            if (File.Exists(packetPath))
+            {
+                try
+                {
+                    var packet = A99ReviewJson.Deserialize<A99ReviewPacket>(await File.ReadAllTextAsync(packetPath, cancellationToken));
+                    representability = A99SourceRepresentabilityGate.Evaluate(packet);
+                }
+                catch (Exception ex) when (ex is JsonException or InvalidDataException or IOException)
+                {
+                    errors++;
+                    results.Add(new { documentId = document.DocumentId, status = "INVALID", error = ex.Message });
+                    continue;
+                }
+            }
+
+            if (representability is not null && representability.Status != A99SourceRepresentabilityStatus.CharacterSpanRepresentable)
+            {
+                errors++;
+                results.Add(new
+                {
+                    documentId = document.DocumentId,
+                    status = "NOT_REPRESENTABLE",
+                    validatorStatus = authorityEntry.ValidatorStatus,
+                    referenceAuthority = authorityEntry.ReferenceAuthority,
+                    eligibleForStrictA99Claim = false,
+                    representability,
+                });
+                continue;
+            }
+
             if (!File.Exists(packetPath) || !File.Exists(goldPath))
             {
                 errors++;
@@ -541,6 +573,7 @@ internal static class Accuracy99Runner
                     validatorStatus = authorityEntry.ValidatorStatus,
                     referenceAuthority = authorityEntry.ReferenceAuthority,
                     eligibleForStrictA99Claim = false,
+                    representability,
                     error = !File.Exists(packetPath) ? "packet-missing" : "gold-missing",
                 });
                 continue;
@@ -568,6 +601,7 @@ internal static class Accuracy99Runner
                     validatorStatus = authorityEntry.ValidatorStatus,
                     referenceAuthority = authorityEntry.ReferenceAuthority,
                     eligibleForStrictA99Claim = eligible,
+                    representability,
                     errors = validation.Errors,
                 });
             }

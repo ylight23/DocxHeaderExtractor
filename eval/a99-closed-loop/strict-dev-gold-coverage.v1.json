@@ -15,6 +15,16 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 4,
+        "nonEmptyOccurrenceCount": 3,
+        "nonEmptyTextCharacters": 224731,
+        "nonEmptyOccurrenceRatio": 0.75,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
       "error": "gold-missing"
     },
     {
@@ -23,6 +33,16 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 2208,
+        "nonEmptyOccurrenceCount": 1934,
+        "nonEmptyTextCharacters": 366431,
+        "nonEmptyOccurrenceRatio": 0.8759057971014492,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
       "error": "gold-missing"
     },
     {
@@ -31,6 +51,16 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 4907,
+        "nonEmptyOccurrenceCount": 3376,
+        "nonEmptyTextCharacters": 361872,
+        "nonEmptyOccurrenceRatio": 0.6879967393519462,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
       "error": "gold-missing"
     },
     {
@@ -39,6 +69,16 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 5753,
+        "nonEmptyOccurrenceCount": 3491,
+        "nonEmptyTextCharacters": 482056,
+        "nonEmptyOccurrenceRatio": 0.6068138362593429,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
       "error": "gold-missing"
     },
     {
@@ -47,6 +87,16 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 20279,
+        "nonEmptyOccurrenceCount": 17207,
+        "nonEmptyTextCharacters": 651180,
+        "nonEmptyOccurrenceRatio": 0.848513240297845,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
       "error": "gold-missing"
     },
     {
@@ -55,6 +105,16 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 173,
+        "nonEmptyOccurrenceCount": 146,
+        "nonEmptyTextCharacters": 31703,
+        "nonEmptyOccurrenceRatio": 0.8439306358381503,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
       "error": "gold-missing"
     },
     {
@@ -63,6 +123,16 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 244,
+        "nonEmptyOccurrenceCount": 210,
+        "nonEmptyTextCharacters": 49561,
+        "nonEmptyOccurrenceRatio": 0.860655737704918,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
       "error": "gold-missing"
     },
     {
@@ -71,6 +141,16 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 258,
+        "nonEmptyOccurrenceCount": 225,
+        "nonEmptyTextCharacters": 34937,
+        "nonEmptyOccurrenceRatio": 0.872093023255814,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
       "error": "gold-missing"
     },
     {
@@ -79,14 +159,34 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 4,
+        "nonEmptyOccurrenceCount": 3,
+        "nonEmptyTextCharacters": 60919,
+        "nonEmptyOccurrenceRatio": 0.75,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
       "error": "gold-missing"
     },
     {
-      "documentId": "DOC-0202",
+      "documentId": "DOC-0123",
       "status": "MISSING",
       "validatorStatus": "MISSING",
-      "referenceAuthority": "HUMAN_REVIEWED_MODEL_ASSISTED",
+      "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 4479,
+        "nonEmptyOccurrenceCount": 3214,
+        "nonEmptyTextCharacters": 353182,
+        "nonEmptyOccurrenceRatio": 0.7175708863585621,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
       "error": "gold-missing"
     },
     {
@@ -95,6 +195,16 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 1062,
+        "nonEmptyOccurrenceCount": 605,
+        "nonEmptyTextCharacters": 47739,
+        "nonEmptyOccurrenceRatio": 0.5696798493408662,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
       "error": "gold-missing"
     },
     {
@@ -103,6 +213,16 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 1319,
+        "nonEmptyOccurrenceCount": 1126,
+        "nonEmptyTextCharacters": 199174,
+        "nonEmptyOccurrenceRatio": 0.8536770280515542,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
       "error": "gold-missing"
     },
     {
@@ -111,6 +231,16 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": {
+        "status": "CharacterSpanRepresentable",
+        "reason": "packet-has-non-trivial-source-backed-character-text",
+        "occurrenceCount": 10841,
+        "nonEmptyOccurrenceCount": 7823,
+        "nonEmptyTextCharacters": 684693,
+        "nonEmptyOccurrenceRatio": 0.7216123973803155,
+        "packetTextCorrespondence": true,
+        "providerCalls": 0
+      },
       "error": "gold-missing"
     },
     {
@@ -119,6 +249,7 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": null,
       "error": "packet-missing"
     },
     {
@@ -127,6 +258,7 @@
       "validatorStatus": "MISSING",
       "referenceAuthority": "NOT_REVIEWED",
       "eligibleForStrictA99Claim": false,
+      "representability": null,
       "error": "packet-missing"
     },
     {

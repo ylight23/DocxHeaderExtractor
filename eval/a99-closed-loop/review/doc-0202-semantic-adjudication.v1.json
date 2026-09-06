@@ -32,6 +32,14 @@
   "independentOfModelPrediction": false,
   "spanAuthority": "PENDING_PACKET_REPRESENTATION_REPAIR",
   "occurrenceIdentity": "PENDING_SOURCE_ID_PLUS_EXACT_HEADING_SPAN",
+  "representationReconciliation": {
+    "status": "IMAGE_ONLY_NOT_CHARACTER_SPAN_REPRESENTABLE",
+    "cause": "SOURCE_CONTAINS_PAGE_IMAGES_WITHOUT_CHARACTER_TEXT",
+    "currentB3ContractCompatible": false,
+    "sourceStructureArtifact": "eval/a99-closed-loop/representation/doc-0202-source-structure.v1.json",
+    "replacementDocumentId": "DOC-0123",
+    "replacementRepresentability": "CHARACTER_SPAN_REPRESENTABLE"
+  },
   "providerCalls": 0,
   "holdoutTouched": false,
   "note": "The semantic set is adjudicated at 1 title, 9 chapters, and 101 articles. Do not materialize strict Human Gold until canonical source spans and occurrence IDs are available."
