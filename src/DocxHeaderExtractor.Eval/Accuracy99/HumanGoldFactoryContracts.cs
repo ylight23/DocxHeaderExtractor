@@ -129,6 +129,7 @@ public sealed record A99HumanGoldDocument
 public sealed record A99GoldV2Heading
 {
     [JsonPropertyName("sourceId")] public required string SourceId { get; init; }
+    [JsonPropertyName("headingOccurrenceId")] public required string HeadingOccurrenceId { get; init; }
     [JsonPropertyName("stableId")] public required string StableId { get; init; }
     [JsonPropertyName("sourceOrdinal")] public int SourceOrdinal { get; init; }
     [JsonPropertyName("sourceSpan")] public required A99ReviewSpan SourceSpan { get; init; }

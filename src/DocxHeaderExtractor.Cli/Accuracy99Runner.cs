@@ -27,7 +27,7 @@ internal static class Accuracy99Runner
         var operation = options.Accuracy99Operation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2");
+            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, doc-0205-canary");
             return 0;
         }
 
@@ -45,6 +45,7 @@ internal static class Accuracy99Runner
             "gold-import-dev" => await ImportDevGoldAsync(options, cancellationToken),
             "gold-validate-v2" => await ValidateEarlyDevGoldV2Async(options, cancellationToken),
             "gold-import-dev-v2" => await ImportEarlyDevGoldV2Async(options, cancellationToken),
+            "doc-0205-canary" => await RunDoc0205CanaryAsync(options, cancellationToken),
             _ => throw new ArgumentException($"accuracy99 operation không hợp lệ: {operation}"),
         };
     }
@@ -65,7 +66,7 @@ internal static class Accuracy99Runner
             schemaVersion = "a99-human-gold-v2",
             positiveSetOnly = true,
             exhaustiveCertificate = new[] { "reviewedEntireDocument", "headingSetExhaustive", "independentOfModelPrediction" },
-            requiredHeadingFields = new[] { "sourceId", "stableId", "sourceOrdinal", "sourceSpan", "sourceTextHash", "headingSpan", "role", "level", "parentOccurrenceId" },
+            requiredHeadingFields = new[] { "sourceId", "headingOccurrenceId", "stableId", "sourceOrdinal", "sourceSpan", "sourceTextHash", "headingSpan", "role", "level", "parentOccurrenceId" },
             unsureSourceIds = "optional; any value blocks final HUMAN_GOLD certification",
             forbidden = new[] { "prediction", "candidate", "confidence", "validatorOutput", "decision" },
         }, JsonOptions), cancellationToken);
@@ -354,6 +355,20 @@ internal static class Accuracy99Runner
         await WriteAsync(options.OutputPath, JsonSerializer.Serialize(coverage, JsonOptions), cancellationToken);
         Console.WriteLine($"Early DEV v2 gold: {coverage.DocumentsValidated}/{coverage.DocumentsExpected} documents, {coverage.HeadingPositives} positives, status={coverage.Status}");
         return coverage.Status == "READY_FOR_BASELINE" ? 0 : 1;
+    }
+
+    private static async Task<int> RunDoc0205CanaryAsync(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var report = A99Doc0205ReconciliationCanary.Run(
+            Path.Combine(repoRoot, "eval", "harness-lift", "reference-occurrence-bridge.v1.json"),
+            Path.Combine(repoRoot, "eval", "harness-lift", "model-occurrence-bridge.v1.json"));
+        var output = options.OutputPath ?? Path.Combine(repoRoot, "eval", "a99-closed-loop", "doc-0205-reconciliation-canary.v1.json");
+        await WriteAsync(output, JsonSerializer.Serialize(report, JsonOptions), cancellationToken);
+        Console.WriteLine($"DOC-0205 canary: {report.ReferenceCount} references, status={report.Status}, unresolved={report.ClassificationCounts.GetValueOrDefault(A99Doc0205CanaryClassification.Unresolved)}");
+        return 0;
     }
 
     private static A99ReferenceCampaign LoadCampaign(string repoRoot)

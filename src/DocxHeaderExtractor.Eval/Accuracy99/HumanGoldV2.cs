@@ -47,9 +47,13 @@ public static class A99HumanGoldV2Validator
         var headingById = new Dictionary<string, A99GoldV2Heading>(StringComparer.Ordinal);
         foreach (var heading in gold.Rows)
         {
-            if (!headingById.TryAdd(heading.SourceId, heading))
+            var expectedHeadingOccurrenceId = A99HeadingOccurrenceIdentity.Create(heading.SourceId, heading.HeadingSpan);
+            if (!string.Equals(heading.HeadingOccurrenceId, expectedHeadingOccurrenceId, StringComparison.Ordinal))
+                errors.Add($"heading-occurrence-id-mismatch:{heading.SourceId}");
+
+            if (!headingById.TryAdd(expectedHeadingOccurrenceId, heading))
             {
-                errors.Add($"duplicate-gold-heading-identity:{heading.SourceId}");
+                errors.Add($"duplicate-gold-heading-identity:{expectedHeadingOccurrenceId}");
                 continue;
             }
 
@@ -71,7 +75,8 @@ public static class A99HumanGoldV2Validator
         {
             if (!unsureIds.Add(sourceId)) errors.Add($"duplicate-unsure-source-identity:{sourceId}");
             if (!packetById.ContainsKey(sourceId)) errors.Add($"unsure-source-not-found:{sourceId}");
-            if (headingById.ContainsKey(sourceId)) errors.Add($"heading-and-unsure-overlap:{sourceId}");
+            if (gold.Rows.Any(heading => string.Equals(heading.SourceId, sourceId, StringComparison.Ordinal)))
+                errors.Add($"heading-and-unsure-overlap:{sourceId}");
         }
         if (unsureIds.Count > 0) errors.Add("unsure-prevents-exhaustive-certification");
 
@@ -105,14 +110,14 @@ public static class A99HumanGoldV2Validator
         {
             var parentId = heading.ParentOccurrenceId;
             if (parentId is null || RootParents.Contains(parentId)) continue;
-            if (!headingById.ContainsKey(parentId)) errors.Add($"parent-not-heading:{heading.SourceId}");
-            if (string.Equals(parentId, heading.SourceId, StringComparison.Ordinal)) errors.Add($"parent-self:{heading.SourceId}");
+            if (!headingById.ContainsKey(parentId)) errors.Add($"parent-not-heading:{heading.HeadingOccurrenceId}");
+            if (string.Equals(parentId, heading.HeadingOccurrenceId, StringComparison.Ordinal)) errors.Add($"parent-self:{heading.HeadingOccurrenceId}");
 
-            var seen = new HashSet<string>(StringComparer.Ordinal) { heading.SourceId };
+            var seen = new HashSet<string>(StringComparer.Ordinal) { heading.HeadingOccurrenceId };
             var cursor = parentId;
             while (cursor is not null && !RootParents.Contains(cursor))
             {
-                if (!seen.Add(cursor)) { errors.Add($"hierarchy-cycle:{heading.SourceId}"); break; }
+                if (!seen.Add(cursor)) { errors.Add($"hierarchy-cycle:{heading.HeadingOccurrenceId}"); break; }
                 if (!headingById.TryGetValue(cursor, out var parent)) break;
                 cursor = parent.ParentOccurrenceId;
             }

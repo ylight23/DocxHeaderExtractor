@@ -16,6 +16,87 @@ public sealed class Accuracy99GoldV2Tests
     }
 
     [Fact]
+    public void Same_source_with_two_different_heading_spans_is_valid()
+    {
+        var packet = Packet();
+        var rows = new[]
+        {
+            Heading(packet, "p1", new(0, 2)) with { ParentOccurrenceId = "ROOT" },
+            Heading(packet, "p1", new(2, 4)) with { ParentOccurrenceId = "ROOT" },
+        };
+
+        var result = A99HumanGoldV2Validator.Validate(packet, Gold(packet, rows));
+
+        Assert.True(result.IsValid, string.Join("; ", result.Errors));
+    }
+
+    [Fact]
+    public void Same_source_with_same_heading_span_is_duplicate()
+    {
+        var packet = Packet();
+        var row = Heading(packet, "p1", new(0, 2)) with { ParentOccurrenceId = "ROOT" };
+
+        var result = A99HumanGoldV2Validator.Validate(packet, Gold(packet, [row, row]));
+
+        Assert.False(result.IsValid);
+        Assert.Contains("duplicate-gold-heading-identity:p1@0:2", result.Errors);
+    }
+
+    [Fact]
+    public void Positive_set_metrics_match_each_logical_heading_occurrence()
+    {
+        var packet = Packet();
+        var rows = new[]
+        {
+            Heading(packet, "p1", new(0, 2)) with { ParentOccurrenceId = "ROOT" },
+            Heading(packet, "p1", new(2, 4)) with { ParentOccurrenceId = "ROOT" },
+        };
+        var gold = Gold(packet, rows);
+
+        var metrics = A99PositiveSetEvaluator.Evaluate(gold,
+        [
+            new("p1", new(0, 2), 1, "heading", "ROOT"),
+            new("p1", new(2, 4), 1, "heading", "ROOT"),
+        ]);
+
+        Assert.Equal(2, metrics.TruePositives);
+        Assert.Equal(0, metrics.FalsePositives);
+        Assert.Equal(0, metrics.FalseNegatives);
+    }
+
+    [Fact]
+    public void Doc0205_canary_keeps_missing_reference_span_unresolved()
+    {
+        var classification = A99Doc0205ReconciliationCanary.Classify(new(
+            ExactReferenceSpanKnown: false,
+            OwningPhysicalSourceId: "body[1]/p[4]",
+            LogicalSegmentExists: null,
+            CandidateConstructed: true,
+            CandidateSelected: true,
+            RequestMembership: null,
+            ModelExposed: true,
+            FinalLineagePresent: false));
+
+        Assert.Equal(A99Doc0205CanaryClassification.Unresolved, classification);
+    }
+
+    [Fact]
+    public void Doc0205_canary_assigns_candidate_loss_only_when_proven()
+    {
+        var classification = A99Doc0205ReconciliationCanary.Classify(new(
+            ExactReferenceSpanKnown: true,
+            OwningPhysicalSourceId: "body[1]/p[4]",
+            LogicalSegmentExists: true,
+            CandidateConstructed: false,
+            CandidateSelected: null,
+            RequestMembership: null,
+            ModelExposed: null,
+            FinalLineagePresent: null));
+
+        Assert.Equal(A99Doc0205CanaryClassification.ProvenCandidateConstructionLoss, classification);
+    }
+
+    [Fact]
     public void Unsure_blocks_exhaustive_certification_without_becoming_NO()
     {
         var packet = Packet();
@@ -64,16 +145,16 @@ public sealed class Accuracy99GoldV2Tests
         var packet = Packet();
         var rows = new[]
         {
-            Heading(packet, "p0") with { ParentOccurrenceId = "p1" },
-            Heading(packet, "p1") with { ParentOccurrenceId = "p0" },
-            Heading(packet, "p2") with { ParentOccurrenceId = "p2" },
+            Heading(packet, "p0") with { ParentOccurrenceId = "p1@0:4" },
+            Heading(packet, "p1") with { ParentOccurrenceId = "p0@0:4" },
+            Heading(packet, "p2") with { ParentOccurrenceId = "p2@0:5" },
         };
 
         var result = A99HumanGoldV2Validator.Validate(packet, Gold(packet, rows));
 
         Assert.False(result.IsValid);
-        Assert.Contains("hierarchy-cycle:p0", result.Errors);
-        Assert.Contains("parent-self:p2", result.Errors);
+        Assert.Contains("hierarchy-cycle:p0@0:4", result.Errors);
+        Assert.Contains("parent-self:p2@0:5", result.Errors);
     }
 
     [Fact]
@@ -163,17 +244,21 @@ public sealed class Accuracy99GoldV2Tests
     };
 
     private static A99GoldV2Heading Heading(A99ReviewPacket packet, string sourceId) =>
+        Heading(packet, sourceId, packet.Occurrences.Single(x => x.SourceId == sourceId).SourceSpan);
+
+    private static A99GoldV2Heading Heading(A99ReviewPacket packet, string sourceId, A99ReviewSpan headingSpan) =>
         new()
         {
             SourceId = sourceId,
+            HeadingOccurrenceId = A99HeadingOccurrenceIdentity.Create(sourceId, headingSpan),
             StableId = sourceId,
             SourceOrdinal = packet.Occurrences.Single(x => x.SourceId == sourceId).SourceOrdinal,
             SourceSpan = packet.Occurrences.Single(x => x.SourceId == sourceId).SourceSpan,
             SourceTextHash = packet.Occurrences.Single(x => x.SourceId == sourceId).SourceTextHash,
-            HeadingSpan = packet.Occurrences.Single(x => x.SourceId == sourceId).SourceSpan,
+            HeadingSpan = headingSpan,
             Role = "heading",
             Level = sourceId == "p0" ? 1 : 2,
-            ParentOccurrenceId = sourceId == "p0" ? "ROOT" : "p0",
+            ParentOccurrenceId = sourceId == "p0" ? "ROOT" : "p0@0:4",
         };
 
     private static A99HumanGoldV2Document Gold(A99ReviewPacket packet, IReadOnlyList<A99GoldV2Heading> rows) => new()

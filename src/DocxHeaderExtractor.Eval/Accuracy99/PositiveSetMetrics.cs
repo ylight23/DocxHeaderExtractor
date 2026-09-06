@@ -7,8 +7,15 @@ public sealed record A99PositivePrediction(
     Accuracy99Span? Span,
     int? Level,
     string? Role = null,
-    string? ParentSourceId = null,
-    bool ResolvedWithoutHuman = true);
+    string? ParentOccurrenceId = null,
+    bool ResolvedWithoutHuman = true)
+{
+    [JsonPropertyName("headingOccurrenceId")]
+    public string? HeadingOccurrenceId => Span is null ? null : A99HeadingOccurrenceIdentity.Create(SourceId, Span);
+
+    [JsonIgnore]
+    public string? ParentSourceId => ParentOccurrenceId;
+}
 
 public sealed record A99PositiveSetMetrics
 {
@@ -55,19 +62,20 @@ public static class A99PositiveSetEvaluator
         ArgumentNullException.ThrowIfNull(gold);
         ArgumentNullException.ThrowIfNull(predictions);
         var candidates = predictions.ToArray();
-        var goldById = gold.Rows.ToDictionary(x => x.SourceId, StringComparer.Ordinal);
+        var goldById = gold.Rows.ToDictionary(x => x.HeadingOccurrenceId, StringComparer.Ordinal);
         var matched = new Dictionary<string, A99PositivePrediction>(StringComparer.Ordinal);
         var falsePositives = 0;
 
         foreach (var prediction in candidates)
         {
-            if (string.IsNullOrWhiteSpace(prediction.SourceId) ||
-                !goldById.ContainsKey(prediction.SourceId) ||
-                !matched.TryAdd(prediction.SourceId, prediction))
+            var occurrenceId = prediction.HeadingOccurrenceId;
+            if (string.IsNullOrWhiteSpace(occurrenceId) ||
+                !goldById.ContainsKey(occurrenceId) ||
+                !matched.TryAdd(occurrenceId, prediction))
                 falsePositives++;
         }
 
-        var falseNegatives = gold.Rows.Count(row => !matched.ContainsKey(row.SourceId));
+        var falseNegatives = gold.Rows.Count(row => !matched.ContainsKey(row.HeadingOccurrenceId));
         var roleCorrect = 0;
         var roleEvaluated = 0;
         var levelCorrect = 0;
@@ -78,8 +86,8 @@ public static class A99PositiveSetEvaluator
         var parentEvaluated = 0;
         var hierarchyCorrect = 0;
         var hierarchyEvaluated = 0;
-        var predictionParents = matched.ToDictionary(x => x.Key, x => x.Value.ParentSourceId, StringComparer.Ordinal);
-        var goldParents = gold.Rows.ToDictionary(x => x.SourceId, x => x.ParentOccurrenceId, StringComparer.Ordinal);
+        var predictionParents = matched.ToDictionary(x => x.Key, x => x.Value.ParentOccurrenceId, StringComparer.Ordinal);
+        var goldParents = gold.Rows.ToDictionary(x => x.HeadingOccurrenceId, x => x.ParentOccurrenceId, StringComparer.Ordinal);
 
         foreach (var pair in matched)
         {
@@ -100,12 +108,12 @@ public static class A99PositiveSetEvaluator
                 spanEvaluated++;
                 if (prediction.Span == new Accuracy99Span(expected.HeadingSpan.Start, expected.HeadingSpan.End)) exactSpanMatches++;
             }
-            if (prediction.ParentSourceId is not null)
+            if (prediction.ParentOccurrenceId is not null)
             {
                 parentEvaluated++;
-                if (string.Equals(prediction.ParentSourceId, expected.ParentOccurrenceId, StringComparison.Ordinal)) parentCorrect++;
+                if (string.Equals(prediction.ParentOccurrenceId, expected.ParentOccurrenceId, StringComparison.Ordinal)) parentCorrect++;
                 hierarchyEvaluated++;
-                if (string.Equals(BuildPath(pair.Key, prediction.ParentSourceId, predictionParents), BuildPath(pair.Key, expected.ParentOccurrenceId, goldParents), StringComparison.Ordinal))
+                if (string.Equals(BuildPath(pair.Key, prediction.ParentOccurrenceId, predictionParents), BuildPath(pair.Key, expected.ParentOccurrenceId, goldParents), StringComparison.Ordinal))
                     hierarchyCorrect++;
             }
         }
@@ -144,7 +152,7 @@ public static class A99PositiveSetEvaluator
         var evaluatedRows = evaluated.ToArray();
         var goldHeadingCount = evaluatedRows.Sum(x => x.Gold.Rows.Count);
         var resolved = evaluatedRows.Sum(x => x.Gold.Rows.Count(gold =>
-            x.Predictions.Count(prediction => prediction.ResolvedWithoutHuman && prediction.SourceId == gold.SourceId) > 0));
+            x.Predictions.Count(prediction => prediction.ResolvedWithoutHuman && prediction.HeadingOccurrenceId == gold.HeadingOccurrenceId) > 0));
         return new A99AutonomyMetrics
         {
             EvaluatedDocuments = documentRows.Length,
