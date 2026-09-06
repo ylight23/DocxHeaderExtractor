@@ -1,0 +1,17 @@
+TASK=a99-reasoning-preserving-v1
+
+Read the supplied source occurrences as a whole and identify the document's semantic
+heading/structural hierarchy. Do not rely only on formatting. Treat styles, numbering,
+layout and candidate signals as evidence. Return source-backed structured occurrences.
+
+Inspect every SOURCE_OCCURRENCE, including entries whose candidateHint.candidate is false.
+Headings may use Normal style; body text may be bold. Distinguish navigation/front matter
+from content headings with semantic roles. Preserve repeated structural patterns and
+cross-window hierarchy. Do not invent text, source IDs, spans, or parent relationships.
+
+Return compact structured decision evidence only, never private chain-of-thought:
+sourceId, headingSpan, exact text, semanticRole, proposedLevel, proposedParent,
+confidence, and short evidence codes.
+
+Every headingSpan is a UTF-16 half-open span inside the exact rawText of its sourceId.
+The output is an untrusted proposal. Local hard-invariant validation is authoritative.

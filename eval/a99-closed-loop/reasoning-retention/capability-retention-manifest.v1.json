@@ -1,0 +1,54 @@
+{
+  "artifactKind": "a99_reasoning_capability_retention_manifest",
+  "schemaVersion": "a99-reasoning-capability-retention-v1",
+  "baseRevision": "a7db1b8b163c0061fe636656c7c938c9b60e14ab",
+  "status": "IMPLEMENTATION_READY_NOT_EVALUABLE",
+  "activeStrictGold": 15,
+  "diagnosticExhaustiveDocuments": [
+    "DOC-0001",
+    "DOC-0205",
+    "DOC-0252",
+    "DOC-0256",
+    "DOC-0258",
+    "DOC-0264"
+  ],
+  "metricEvaluableDocuments": [],
+  "notMetricEvaluableDocuments": [
+    {
+      "documentId": "DOC-0001",
+      "reason": "STRICT_GOLD_V4_CAPABILITY_OCCURRENCE_AND_CHARACTER_SPAN_FALSE"
+    },
+    {
+      "documentId": "DOC-0205",
+      "reason": "STRICT_GOLD_V4_CAPABILITY_OCCURRENCE_AND_CHARACTER_SPAN_FALSE"
+    },
+    {
+      "documentId": "DOC-0252",
+      "reason": "STRICT_GOLD_V4_CAPABILITY_OCCURRENCE_AND_CHARACTER_SPAN_FALSE"
+    },
+    {
+      "documentId": "DOC-0256",
+      "reason": "STRICT_GOLD_V4_CAPABILITY_OCCURRENCE_AND_CHARACTER_SPAN_FALSE"
+    },
+    {
+      "documentId": "DOC-0258",
+      "reason": "STRICT_GOLD_V4_CAPABILITY_OCCURRENCE_AND_CHARACTER_SPAN_FALSE"
+    },
+    {
+      "documentId": "DOC-0264",
+      "reason": "STRICT_GOLD_V4_HAS_SEMANTIC_TOTAL_BUT_NO_MATERIALIZED_HEADING_OCCURRENCES"
+    }
+  ],
+  "routes": [
+    "MODEL_CAPABILITY_CEILING",
+    "PRODUCTION_SYSTEM",
+    "REASONING_PRESERVING_SHADOW"
+  ],
+  "providerCalls": 0,
+  "holdoutTouched": false,
+  "goldVisibleToRuntime": false,
+  "productionExtractionSemanticDelta": 0,
+  "baseline": "NOT_RUN",
+  "claim": "A99_NOT_MEASURED",
+  "diagnosticStatus": "NOT_EVALUABLE_NO_EXACT_SPAN_DENOMINATOR"
+}
