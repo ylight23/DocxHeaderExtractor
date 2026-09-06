@@ -3,8 +3,8 @@
   "schemaVersion": "a99-early-dev-gold-validation-v3",
   "status": "HUMAN_REFERENCE_REQUIRED",
   "expectedDocuments": 15,
-  "validDocuments": 1,
-  "errorCount": 14,
+  "validDocuments": 2,
+  "errorCount": 13,
   "documents": [
     {
       "documentId": "DOC-0264",
@@ -38,8 +38,8 @@
     },
     {
       "documentId": "DOC-0259",
-      "status": "MISSING",
-      "error": "gold-missing"
+      "status": "VALID",
+      "errors": []
     },
     {
       "documentId": "DOC-0258",
