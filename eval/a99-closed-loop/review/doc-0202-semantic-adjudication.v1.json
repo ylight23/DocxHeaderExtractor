@@ -1,0 +1,38 @@
+{
+  "artifactKind": "a99_semantic_adjudication",
+  "schemaVersion": "a99-semantic-adjudication-v1",
+  "documentId": "DOC-0202",
+  "documentGroupId": "GROUP-0256",
+  "semanticReview": "FINAL",
+  "referenceAuthority": "HUMAN_REVIEWED_MODEL_ASSISTED",
+  "strictGoldEligible": false,
+  "representationStatus": "CURRENT_PACKET_NOT_SPAN_REPRESENTABLE",
+  "semanticHeadingTotal": 111,
+  "counts": {
+    "documentTitle": 1,
+    "chapters": 9,
+    "articles": 101
+  },
+  "taxonomy": {
+    "title": { "level": 1, "parent": "ROOT" },
+    "chapter": { "level": 2, "parent": "documentTitle" },
+    "article": { "level": 3, "parent": "currentChapter" }
+  },
+  "excludedCategories": [
+    "legal_preambles",
+    "metadata",
+    "article_clauses",
+    "article_points",
+    "page_numbers",
+    "distribution_list",
+    "signatures"
+  ],
+  "reviewedEntireDocument": true,
+  "headingSetExhaustive": true,
+  "independentOfModelPrediction": false,
+  "spanAuthority": "PENDING_PACKET_REPRESENTATION_REPAIR",
+  "occurrenceIdentity": "PENDING_SOURCE_ID_PLUS_EXACT_HEADING_SPAN",
+  "providerCalls": 0,
+  "holdoutTouched": false,
+  "note": "The semantic set is adjudicated at 1 title, 9 chapters, and 101 articles. Do not materialize strict Human Gold until canonical source spans and occurrence IDs are available."
+}
