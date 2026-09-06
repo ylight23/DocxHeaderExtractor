@@ -7,6 +7,7 @@ public static class A99StrictGoldAuthorityRules
     public const string StrictGold = "STRICT_GOLD";
     public const string NotReviewedGold = "NOT_REVIEWED";
     public const string UserFinalizedStrictGold = "USER_FINALIZED_STRICT_GOLD";
+    public const string UserFinalizedStrictGoldV3 = "USER_FINALIZED_STRICT_GOLD_V3";
     public const string StrictHumanGold = "STRICT_HUMAN_GOLD";
     public const string HumanReviewedModelAssisted = "HUMAN_REVIEWED_MODEL_ASSISTED";
     public const string NotReviewed = "NOT_REVIEWED";
@@ -14,6 +15,9 @@ public static class A99StrictGoldAuthorityRules
     public const string NoFinalAuthority = "NONE";
     public const string HumanOnlyProvenance = "HUMAN_ONLY";
     public const string HumanWithModelAssistanceProvenance = "HUMAN_WITH_MODEL_ASSISTANCE";
+    public const string SourceStructuralProvenance = "SOURCE_STRUCTURAL";
+    public const string DeterministicGeneratedProvenance = "DETERMINISTIC_GENERATED";
+    public const string OtherProvenance = "OTHER";
 
     public static bool IsEligible(
         string? validatorStatus,

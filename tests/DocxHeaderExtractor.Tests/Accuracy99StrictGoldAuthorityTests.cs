@@ -5,6 +5,14 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class Accuracy99StrictGoldAuthorityTests
 {
     [Fact]
+    public void V3_policy_preserves_truthful_provenance_without_disqualifying_user_finalization()
+    {
+        Assert.Equal("USER_FINALIZED_STRICT_GOLD_V3", A99StrictGoldAuthorityRules.UserFinalizedStrictGoldV3);
+        Assert.Equal("SOURCE_STRUCTURAL", A99StrictGoldAuthorityRules.SourceStructuralProvenance);
+        Assert.Equal("DETERMINISTIC_GENERATED", A99StrictGoldAuthorityRules.DeterministicGeneratedProvenance);
+    }
+
+    [Fact]
     public void Assisted_schema_valid_reference_is_strictly_eligible_after_user_finalization()
     {
         Assert.True(A99StrictGoldAuthorityRules.IsEligible(

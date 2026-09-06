@@ -1,0 +1,43 @@
+{
+  "artifactKind": "a99_strict_gold_capability_matrix",
+  "schemaVersion": "a99-strict-gold-capability-matrix-v3",
+  "policyVersion": "USER_FINALIZED_STRICT_GOLD_V3",
+  "baseRevision": "b7bfce18564e4161fbf965ac6030106f793c4ea1",
+  "activeStrictCohortDocumentCount": 15,
+  "status": "HUMAN_REFERENCE_REQUIRED",
+  "denominators": {
+    "semantic": { "eligible": 6, "pending": 9 },
+    "occurrence": { "eligible": 0, "pending": 15 },
+    "characterSpan": { "eligible": 0, "pending": 15 },
+    "role": { "eligible": 6, "pending": 9 },
+    "level": { "eligible": 6, "pending": 9 },
+    "parent": { "eligible": 0, "pending": 15 },
+    "hierarchy": { "eligible": 0, "pending": 15 }
+  },
+  "semanticBaselineReady": false,
+  "baselineBlocker": "Nine active-cohort documents lack exhaustive reviewed semantic references.",
+  "documents": [
+    { "documentId": "DOC-0205", "semanticEvaluable": true, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": true, "levelEvaluable": true, "parentEvaluable": false, "hierarchyEvaluable": false, "semanticBaselineReady": true },
+    { "documentId": "DOC-0264", "semanticEvaluable": true, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": true, "levelEvaluable": true, "parentEvaluable": false, "hierarchyEvaluable": false, "semanticBaselineReady": true },
+    { "documentId": "DOC-0001", "semanticEvaluable": true, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": true, "levelEvaluable": true, "parentEvaluable": false, "hierarchyEvaluable": false, "semanticBaselineReady": true },
+    { "documentId": "DOC-0258", "semanticEvaluable": true, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": true, "levelEvaluable": true, "parentEvaluable": false, "hierarchyEvaluable": false, "semanticBaselineReady": true },
+    { "documentId": "DOC-0252", "semanticEvaluable": true, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": true, "levelEvaluable": true, "parentEvaluable": false, "hierarchyEvaluable": false, "semanticBaselineReady": true },
+    { "documentId": "DOC-0256", "semanticEvaluable": true, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": true, "levelEvaluable": true, "parentEvaluable": false, "hierarchyEvaluable": false, "semanticBaselineReady": true },
+    { "documentId": "DOC-0201", "semanticEvaluable": false, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": false, "levelEvaluable": false, "parentEvaluable": false, "hierarchyEvaluable": false, "semanticBaselineReady": false },
+    { "documentId": "DOC-0185", "semanticEvaluable": false, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": false, "levelEvaluable": false, "parentEvaluable": false, "hierarchyEvaluable": false, "semanticBaselineReady": false },
+    { "documentId": "DOC-0265", "semanticEvaluable": false, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": false, "levelEvaluable": false, "parentEvaluable": false, "hierarchyEvaluable": false, "semanticBaselineReady": false },
+    { "documentId": "DOC-0116", "semanticEvaluable": false, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": false, "levelEvaluable": true, "parentEvaluable": true, "hierarchyEvaluable": true, "semanticBaselineReady": false },
+    { "documentId": "DOC-0219", "semanticEvaluable": false, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": false, "levelEvaluable": false, "parentEvaluable": false, "hierarchyEvaluable": false, "semanticBaselineReady": false },
+    { "documentId": "DOC-0216", "semanticEvaluable": false, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": false, "levelEvaluable": false, "parentEvaluable": false, "hierarchyEvaluable": false, "semanticBaselineReady": false },
+    { "documentId": "DOC-0122", "semanticEvaluable": false, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": false, "levelEvaluable": false, "parentEvaluable": false, "hierarchyEvaluable": false, "semanticBaselineReady": false },
+    { "documentId": "DOC-0200", "semanticEvaluable": false, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": false, "levelEvaluable": false, "parentEvaluable": false, "hierarchyEvaluable": false, "semanticBaselineReady": false },
+    { "documentId": "DOC-0243", "semanticEvaluable": false, "occurrenceEvaluable": false, "characterSpanEvaluable": false, "roleEvaluable": false, "levelEvaluable": true, "parentEvaluable": true, "hierarchyEvaluable": true, "semanticBaselineReady": false }
+  ],
+  "rules": {
+    "semantic": "A semantic reference can be baseline-ready without span or hierarchy capability.",
+    "characterSpan": "No character-span denominator is opened until exact source spans are retained.",
+    "parentHierarchy": "Parent and hierarchy metrics remain NOT_EVALUABLE until references carry those fields."
+  },
+  "holdoutTouched": false,
+  "providerCalls": 0
+}

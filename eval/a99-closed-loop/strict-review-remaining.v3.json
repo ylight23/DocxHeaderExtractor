@@ -1,0 +1,23 @@
+{
+  "artifactKind": "a99_strict_review_remaining",
+  "schemaVersion": "a99-strict-review-remaining-v3",
+  "baseRevision": "b7bfce18564e4161fbf965ac6030106f793c4ea1",
+  "status": "HUMAN_REFERENCE_REQUIRED",
+  "documentCount": 9,
+  "order": "SMALL_TO_LARGE_SOURCE_OCCURRENCE_COUNT",
+  "holdoutTouched": false,
+  "providerCalls": 0,
+  "entries": [
+    { "rank": 1, "documentId": "DOC-0201", "groupId": "GROUP-0206", "sourceOccurrenceCount": 1062, "sourceSha256": "cb6c4e0878a899688fc1054b268fed1a8e6cb45c36b350d36c7448efecd8964d", "status": "HUMAN_REFERENCE_REQUIRED", "reason": "No exhaustive reviewed semantic reference; exact-byte sibling has no usable exhaustive key." },
+    { "rank": 2, "documentId": "DOC-0185", "groupId": "GROUP-0257", "sourceOccurrenceCount": 1319, "sourceSha256": "f842861bb7966cd94c8ce12f2064709936c064b7fa5825d133bd77f6ffb5f895", "status": "HUMAN_REFERENCE_REQUIRED", "reason": "No exhaustive reviewed semantic reference; exact-byte sibling has no usable exhaustive key." },
+    { "rank": 3, "documentId": "DOC-0265", "groupId": "GROUP-0173", "sourceOccurrenceCount": 2208, "sourceSha256": "b066db0170eab1d65805f9e76da79034eecf6d46d8fda08e374fcc45c485e1e6", "status": "HUMAN_REFERENCE_REQUIRED", "reason": "No exhaustive reviewed semantic reference; exact-byte sibling has no usable exhaustive key." },
+    { "rank": 4, "documentId": "DOC-0116", "groupId": "GROUP-0016", "sourceOccurrenceCount": 3590, "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da", "status": "HUMAN_REFERENCE_REQUIRED", "reason": "TOC-derived and source-structural references are partial only." },
+    { "rank": 5, "documentId": "DOC-0219", "groupId": "GROUP-0262", "sourceOccurrenceCount": 4907, "sourceSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221", "status": "HUMAN_REFERENCE_REQUIRED", "reason": "No exhaustive reviewed semantic reference; exact-byte sibling has no usable exhaustive key." },
+    { "rank": 6, "documentId": "DOC-0216", "groupId": "GROUP-0186", "sourceOccurrenceCount": 5753, "sourceSha256": "be8f4e037fb609cb21e8ed22d4b3c6a17ea47598860876d734367ea0a5531cb6", "status": "HUMAN_REFERENCE_REQUIRED", "reason": "TOC-derived reference is partial only." },
+    { "rank": 7, "documentId": "DOC-0122", "groupId": "GROUP-0139", "sourceOccurrenceCount": 5958, "sourceSha256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab", "status": "HUMAN_REFERENCE_REQUIRED", "reason": "TOC-derived and source-structural references are partial only." },
+    { "rank": 8, "documentId": "DOC-0200", "groupId": "GROUP-0129", "sourceOccurrenceCount": 10841, "sourceSha256": "8ac2c82dbaac57ad889e72e8883d884907bc63d0f55172b0d44da1c1941c7835", "status": "HUMAN_REFERENCE_REQUIRED", "reason": "No exhaustive reviewed semantic reference; exact-byte sibling has no usable exhaustive key." },
+    { "rank": 9, "documentId": "DOC-0243", "groupId": "GROUP-0072", "sourceOccurrenceCount": 20279, "sourceSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7", "status": "HUMAN_REFERENCE_REQUIRED", "reason": "Retained user-TOC key is classified partial and cannot establish exhaustive negatives." }
+  ],
+  "nextAction": "HUMAN_REVIEW_DOC-0201",
+  "baselineStart": "BLOCKED_UNTIL_ALL_15_HAVE_EXHAUSTIVE_SEMANTIC_GOLD"
+}

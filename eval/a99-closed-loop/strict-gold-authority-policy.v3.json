@@ -1,0 +1,40 @@
+{
+  "artifactKind": "a99_strict_gold_authority_policy",
+  "schemaVersion": "a99-strict-gold-authority-v3",
+  "policyVersion": "USER_FINALIZED_STRICT_GOLD_V3",
+  "strictGoldDefinition": "GOLD_STATUS=STRICT_GOLD requires FINAL_AUTHORITY=USER, USER_FINAL_APPROVAL=true, reviewedEntireDocument=true, headingSetExhaustive=true, and unresolvedSemanticUncertainty=false.",
+  "finalAuthorityRule": "User approval establishes authority; model assistance is truthful provenance only and never disqualifies Strict Gold.",
+  "provenanceValues": [
+    "HUMAN_ONLY",
+    "HUMAN_WITH_MODEL_ASSISTANCE",
+    "SOURCE_STRUCTURAL",
+    "DETERMINISTIC_GENERATED",
+    "OTHER"
+  ],
+  "coverageValues": [
+    "EXHAUSTIVE",
+    "PARTIAL"
+  ],
+  "capabilities": [
+    "semanticEvaluable",
+    "occurrenceEvaluable",
+    "characterSpanEvaluable",
+    "roleEvaluable",
+    "levelEvaluable",
+    "parentEvaluable",
+    "hierarchyEvaluable"
+  ],
+  "baselineRules": {
+    "semantic": "STRICT_GOLD + EXHAUSTIVE + headingSetExhaustive=true + semanticEvaluable=true",
+    "characterSpan": "semantic baseline eligibility plus characterSpanEvaluable=true",
+    "hierarchy": "semantic baseline eligibility plus parentEvaluable=true and hierarchyEvaluable=true",
+    "notEvaluable": "reported on a separate capability denominator; never treated as PASS"
+  },
+  "historicalModelAssistedRule": "The explicitly approved frozen N1.2 reviewed bundle is normalized to STRICT_GOLD with FINAL_AUTHORITY=USER and HUMAN_WITH_MODEL_ASSISTANCE provenance; original silver artifacts and metadata remain unchanged.",
+  "activeCohortPolicy": "The frozen 15-document DEV cohort is reconciled in place; historical references do not reselection-bias membership.",
+  "holdoutStatus": "SEALED",
+  "holdoutTouched": false,
+  "providerCalls": 0,
+  "baselineReady": false,
+  "baselineBlocker": "HUMAN_REFERENCE_REQUIRED for unresolved active-cohort documents"
+}

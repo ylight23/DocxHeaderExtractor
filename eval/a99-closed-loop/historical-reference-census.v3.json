@@ -1,0 +1,136 @@
+{
+  "artifactKind": "a99_historical_reference_census",
+  "schemaVersion": "a99-historical-reference-census-v3",
+  "baseRevision": "b7bfce18564e4161fbf965ac6030106f793c4ea1",
+  "policyVersion": "USER_FINALIZED_STRICT_GOLD_V3",
+  "searchScopes": [
+    "keys/**",
+    "eval/benchmark-n0/**",
+    "eval/benchmark-n3/**",
+    "eval/harness-lift/**",
+    "eval/a99-dataset/**",
+    "eval/a99-closed-loop/**",
+    "docs/accuracy/**",
+    "docs/handoff-2026-08-25.md",
+    "docs/handoff-2026-08-26.md",
+    "TODO.md"
+  ],
+  "trackedFileCounts": {
+    "keys": 59,
+    "eval/benchmark-n0": 54,
+    "eval/benchmark-n3": 28,
+    "eval/harness-lift": 286,
+    "eval/a99-dataset": 8,
+    "eval/a99-closed-loop": 57,
+    "docs/accuracy": 22
+  },
+  "referenceCoverageV2": {
+    "sourcePath": "eval/harness-lift/reference-coverage.v2.json",
+    "sha256": "7f5e1ed97fe86d612408d9ca2f350b62923a624dda9e123ec4b90be8c8d507eb",
+    "referenceCount": 62,
+    "authorityCounts": {
+      "HEURISTIC_REFERENCE": 9,
+      "HUMAN_KEY": 25,
+      "MODEL_ASSISTED_SILVER": 9,
+      "SOURCE_STRUCTURAL_REFERENCE": 19
+    },
+    "coverageCounts": { "FULL": 28, "PARTIAL": 34 },
+    "provenanceCounts": {
+      "human key marked partial": 4,
+      "model-assisted label artifact": 9,
+      "parser-owned style outline level": 12,
+      "retained hierarchy reference": 1,
+      "retained human key": 20,
+      "source occurrence bridge": 7,
+      "TOC-derived proxy": 9
+    }
+  },
+  "inputArtifactHashes": {
+    "eval/a99-dataset/document-groups.v1.json": "b5087c847dd7076c8b00032ab42bf6fdc50d317d2dfe1d13a114e57f2c7e9307",
+    "eval/a99-dataset/document-inventory.v1.json": "0c80035f5c7f7948533c909552a480818ea14b26983de438e0567709d26505e1",
+    "eval/a99-closed-loop/strict-review-queue.v1.json": "e5709397d72a663b66eceb144f98586f1d0eb6bda1979d88b55eb370df0adafa",
+    "eval/a99-closed-loop/strict-gold-authority-policy.v2.json": "e65bdbce0c09345bbe6ff732dc359824e03b25f1ea998d169e18d0ce49d322de"
+  },
+  "historicalReviewedArtifacts": [
+    {
+      "referenceId": "N1.2-003",
+      "documentId": "003_Luat_Doanh_nghiep_59-2020-QH14",
+      "path": "eval/benchmark-n0/silver-labels/003-n1.2-silver-model-assisted.v1.json",
+      "manifestPath": "eval/benchmark-n0/silver-labels/n1.2-silver-bundle-manifest.v1.json",
+      "originalStatus": "MODEL_ASSISTED_SILVER",
+      "normalizedStatus": "STRICT_GOLD",
+      "finalAuthority": "USER",
+      "provenance": "HUMAN_WITH_MODEL_ASSISTANCE",
+      "coverage": "EXHAUSTIVE",
+      "semanticHeadingTotal": 230,
+      "capabilities": { "semanticEvaluable": true, "occurrenceEvaluable": true, "characterSpanEvaluable": false, "roleEvaluable": true, "levelEvaluable": true, "parentEvaluable": false, "hierarchyEvaluable": false },
+      "uncertainty": 0,
+      "userApprovalBasis": "explicit blanket approval in the A99 historical reconciliation task"
+    },
+    {
+      "referenceId": "N1.2-029",
+      "documentId": "029_WB_RFP_Works_DesignBuild_2021",
+      "path": "eval/benchmark-n0/silver-labels/029-n1.2-silver-model-assisted.v1.json",
+      "manifestPath": "eval/benchmark-n0/silver-labels/n1.2-silver-bundle-manifest.v1.json",
+      "originalStatus": "MODEL_ASSISTED_SILVER",
+      "normalizedStatus": "STRICT_GOLD",
+      "finalAuthority": "USER",
+      "provenance": "HUMAN_WITH_MODEL_ASSISTANCE",
+      "coverage": "EXHAUSTIVE",
+      "semanticHeadingTotal": 160,
+      "capabilities": { "semanticEvaluable": true, "occurrenceEvaluable": true, "characterSpanEvaluable": false, "roleEvaluable": true, "levelEvaluable": true, "parentEvaluable": false, "hierarchyEvaluable": false },
+      "uncertainty": 0,
+      "userApprovalBasis": "explicit blanket approval in the A99 historical reconciliation task"
+    },
+    {
+      "referenceId": "N1.2-042",
+      "documentId": "042_IDA_Financial_Statements_June_2025",
+      "path": "eval/benchmark-n0/silver-labels/042-n1.2-silver-model-assisted.v1.json",
+      "manifestPath": "eval/benchmark-n0/silver-labels/n1.2-silver-bundle-manifest.v1.json",
+      "originalStatus": "MODEL_ASSISTED_SILVER",
+      "normalizedStatus": "STRICT_GOLD",
+      "finalAuthority": "USER",
+      "provenance": "HUMAN_WITH_MODEL_ASSISTANCE",
+      "coverage": "EXHAUSTIVE",
+      "semanticHeadingTotal": 159,
+      "capabilities": { "semanticEvaluable": true, "occurrenceEvaluable": true, "characterSpanEvaluable": false, "roleEvaluable": true, "levelEvaluable": true, "parentEvaluable": false, "hierarchyEvaluable": false },
+      "uncertainty": 0,
+      "userApprovalBasis": "explicit blanket approval in the A99 historical reconciliation task"
+    },
+    {
+      "referenceId": "N1.2-057",
+      "documentId": "057_Quantitative_Methods_in_Finance_Lecture_Notes",
+      "path": "eval/benchmark-n0/silver-labels/057-n1.2-silver-model-assisted.v1.json",
+      "manifestPath": "eval/benchmark-n0/silver-labels/n1.2-silver-bundle-manifest.v1.json",
+      "originalStatus": "MODEL_ASSISTED_SILVER",
+      "normalizedStatus": "STRICT_GOLD",
+      "finalAuthority": "USER",
+      "provenance": "HUMAN_WITH_MODEL_ASSISTANCE",
+      "coverage": "EXHAUSTIVE",
+      "semanticHeadingTotal": 777,
+      "capabilities": { "semanticEvaluable": true, "occurrenceEvaluable": true, "characterSpanEvaluable": false, "roleEvaluable": true, "levelEvaluable": true, "parentEvaluable": false, "hierarchyEvaluable": false },
+      "uncertainty": 0,
+      "userApprovalBasis": "explicit blanket approval in the A99 historical reconciliation task"
+    },
+    {
+      "referenceId": "N3.2-SILVER-BUNDLE",
+      "documentId": null,
+      "path": "eval/benchmark-n3/silver-labels/004-n3.2-silver-model-assisted.v1.json; eval/benchmark-n3/silver-labels/030-n3.2-silver-model-assisted.v1.json; eval/benchmark-n3/silver-labels/043-n3.2-silver-model-assisted.v1.json; eval/benchmark-n3/silver-labels/058-n3.2-silver-model-assisted.v1.json",
+      "originalStatus": "MODEL_ASSISTED_SILVER",
+      "normalizedStatus": "REFERENCE_ONLY_NOT_PROMOTED",
+      "finalAuthority": "NONE",
+      "provenance": "HUMAN_WITH_MODEL_ASSISTANCE",
+      "coverage": "PARTIAL",
+      "reason": "N3.2 artifacts were discovered but are not the explicitly named N1.2 reviewed bundle and remain diagnostic until separately finalized."
+    }
+  ],
+  "knownStrictGoldOutsideActiveCohort": [
+    { "documentId": "DOC-0255", "source": "existing strict-gold-authority.v1/v2 policy", "provenance": "HUMAN_WITH_MODEL_ASSISTANCE", "semanticHeadingTotal": null },
+    { "documentId": "DOC-0259", "source": "existing strict-gold-authority.v1/v2 policy", "provenance": "HUMAN_WITH_MODEL_ASSISTANCE", "semanticHeadingTotal": null },
+    { "documentId": "DOC-0202", "source": "existing user-finalized adjudication", "provenance": "HUMAN_WITH_MODEL_ASSISTANCE", "semanticHeadingTotal": 111, "characterSpanEvaluable": false },
+    { "documentId": "DOC-0123", "source": "existing user-finalized adjudication", "provenance": "HUMAN_WITH_MODEL_ASSISTANCE", "semanticHeadingTotal": 317, "characterSpanEvaluable": false }
+  ],
+  "activeCohortReferenceDecision": "See strict-cohort-reference-reconciliation.v3.json; six semantic references are exhaustive and nine remain HUMAN_REFERENCE_REQUIRED.",
+  "holdoutTouched": false,
+  "providerCalls": 0
+}
