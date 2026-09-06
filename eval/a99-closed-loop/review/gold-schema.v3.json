@@ -1,0 +1,31 @@
+{
+  "artifactKind": "a99_human_gold_schema",
+  "schemaVersion": "a99-human-gold-v3",
+  "authorityClass": "HUMAN_GOLD",
+  "positiveSetOnly": true,
+  "reviewedEntireDocument": true,
+  "headingSetExhaustive": true,
+  "independentOfModelPrediction": true,
+  "requiredHeadingFields": [
+    "headingOccurrenceId",
+    "sourceId",
+    "stableId",
+    "sourceOrdinal",
+    "sourceSpan",
+    "sourceTextHash",
+    "headingSpan",
+    "role",
+    "level",
+    "parentHeadingOccurrenceId"
+  ],
+  "headingOccurrenceIdentity": "sourceId + exact headingSpan.start + exact headingSpan.end; document id and source SHA scope the packet",
+  "physicalSourceOccurrenceIdentity": "documentId + sourceId",
+  "rootParentSentinel": "ROOT",
+  "unsureSpans": {
+    "field": "unsureSpans",
+    "items": ["sourceId", "span", "reason"],
+    "blocksHeadingSetExhaustive": true
+  },
+  "forbiddenHeadingParentFields": ["ParentSourceId", "parentSourceId", "parentOccurrenceId"],
+  "forbidden": ["prediction", "candidate", "confidence", "validatorOutput", "decision", "filenameIdentity", "fuzzyIdentity"]
+}

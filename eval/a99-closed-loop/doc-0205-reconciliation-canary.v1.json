@@ -1859,5 +1859,14 @@
   ],
   "providerCalls": 0,
   "productionChanged": false,
+  "representationCanary": {
+    "status": "PASS",
+    "physicalSourceId": "body[1]/p[4]",
+    "logicalHeadingOccurrences": 2,
+    "distinctOccurrenceIds": true,
+    "parentChildSharePhysicalSource": true,
+    "evaluatorTruePositives": 2,
+    "evaluatorFalseNegatives": 0
+  },
   "note": "This evaluation-only canary never changes production behavior. The current retained DOC-0205 reference bridge has no exact heading spans, so the canary must remain UNRESOLVED rather than infer a logical segment from a full source paragraph envelope."
 }

@@ -5,13 +5,21 @@ namespace DocxHeaderExtractor.Eval.Accuracy99;
 
 public enum A99Doc0205CanaryClassification
 {
+    [JsonStringEnumMemberName("PROVEN_SOURCE_READING_LOSS")] ProvenSourceReadingLoss,
     [JsonStringEnumMemberName("PROVEN_REPRESENTATION_LOSS")] ProvenRepresentationLoss,
     [JsonStringEnumMemberName("PROVEN_CANDIDATE_CONSTRUCTION_LOSS")] ProvenCandidateConstructionLoss,
-    [JsonStringEnumMemberName("PROVEN_SELECTION_LOSS")] ProvenSelectionLoss,
+    [JsonStringEnumMemberName("PROVEN_CANDIDATE_SELECTION_LOSS")] ProvenCandidateSelectionLoss,
     [JsonStringEnumMemberName("PROVEN_MODEL_NOT_EXPOSED")] ProvenModelNotExposed,
-    [JsonStringEnumMemberName("PROVEN_FINAL_LOSS")] ProvenFinalLoss,
-    [JsonStringEnumMemberName("NO_LOSS")] NoLoss,
+    [JsonStringEnumMemberName("PROVEN_FINAL_PROJECTION_LOSS")] ProvenFinalProjectionLoss,
+    [JsonStringEnumMemberName("NO_PROVEN_PREMODEL_LOSS")] NoProvenPremodelLoss,
     [JsonStringEnumMemberName("UNRESOLVED")] Unresolved,
+
+    [Obsolete("Use ProvenCandidateSelectionLoss.")]
+    ProvenSelectionLoss = ProvenCandidateSelectionLoss,
+    [Obsolete("Use ProvenFinalProjectionLoss.")]
+    ProvenFinalLoss = ProvenFinalProjectionLoss,
+    [Obsolete("Use NoProvenPremodelLoss.")]
+    NoLoss = NoProvenPremodelLoss,
 }
 
 /// <summary>
@@ -66,7 +74,19 @@ public sealed record A99Doc0205ReconciliationCanaryReport
     [JsonPropertyName("entries")] public IReadOnlyList<A99Doc0205CanaryEntry> Entries { get; init; } = [];
     [JsonPropertyName("providerCalls")] public int ProviderCalls { get; init; }
     [JsonPropertyName("productionChanged")] public bool ProductionChanged { get; init; }
+    [JsonPropertyName("representationCanary")] public A99Doc0205RepresentationReport RepresentationCanary { get; init; } = new();
     [JsonPropertyName("note")] public required string Note { get; init; }
+}
+
+public sealed record A99Doc0205RepresentationReport
+{
+    [JsonPropertyName("status")] public string Status { get; init; } = "NOT_RUN";
+    [JsonPropertyName("physicalSourceId")] public string PhysicalSourceId { get; init; } = "body[1]/p[4]";
+    [JsonPropertyName("logicalHeadingOccurrences")] public int LogicalHeadingOccurrences { get; init; }
+    [JsonPropertyName("distinctOccurrenceIds")] public bool DistinctOccurrenceIds { get; init; }
+    [JsonPropertyName("parentChildSharePhysicalSource")] public bool ParentChildSharePhysicalSource { get; init; }
+    [JsonPropertyName("evaluatorTruePositives")] public int EvaluatorTruePositives { get; init; }
+    [JsonPropertyName("evaluatorFalseNegatives")] public int EvaluatorFalseNegatives { get; init; }
 }
 
 public static class A99Doc0205ReconciliationCanary
@@ -80,19 +100,21 @@ public static class A99Doc0205ReconciliationCanary
     {
         ArgumentNullException.ThrowIfNull(evidence);
         if (!evidence.ExactReferenceSpanKnown) return A99Doc0205CanaryClassification.Unresolved;
-        if (string.IsNullOrWhiteSpace(evidence.OwningPhysicalSourceId) || evidence.LogicalSegmentExists == false)
+        if (string.IsNullOrWhiteSpace(evidence.OwningPhysicalSourceId))
+            return A99Doc0205CanaryClassification.ProvenSourceReadingLoss;
+        if (evidence.LogicalSegmentExists == false)
             return A99Doc0205CanaryClassification.ProvenRepresentationLoss;
         if (evidence.LogicalSegmentExists is null) return A99Doc0205CanaryClassification.Unresolved;
         if (evidence.CandidateConstructed == false) return A99Doc0205CanaryClassification.ProvenCandidateConstructionLoss;
         if (evidence.CandidateConstructed is null) return A99Doc0205CanaryClassification.Unresolved;
-        if (evidence.CandidateSelected == false) return A99Doc0205CanaryClassification.ProvenSelectionLoss;
+        if (evidence.CandidateSelected == false) return A99Doc0205CanaryClassification.ProvenCandidateSelectionLoss;
         if (evidence.CandidateSelected is null) return A99Doc0205CanaryClassification.Unresolved;
         if (evidence.ModelExposed == false) return A99Doc0205CanaryClassification.ProvenModelNotExposed;
         if (evidence.ModelExposed is null || evidence.RequestMembership is null) return A99Doc0205CanaryClassification.Unresolved;
         if (evidence.RequestMembership == false) return A99Doc0205CanaryClassification.ProvenModelNotExposed;
-        if (evidence.FinalLineagePresent == false) return A99Doc0205CanaryClassification.ProvenFinalLoss;
+        if (evidence.FinalLineagePresent == false) return A99Doc0205CanaryClassification.ProvenFinalProjectionLoss;
         if (evidence.FinalLineagePresent is null) return A99Doc0205CanaryClassification.Unresolved;
-        return A99Doc0205CanaryClassification.NoLoss;
+        return A99Doc0205CanaryClassification.NoProvenPremodelLoss;
     }
 
     public static A99Doc0205ReconciliationCanaryReport Run(
@@ -124,7 +146,60 @@ public static class A99Doc0205ReconciliationCanary
             Entries = entries,
             ProviderCalls = 0,
             ProductionChanged = false,
+            RepresentationCanary = RunRepresentabilityCanary(),
             Note = "This evaluation-only canary never changes production behavior. The current retained DOC-0205 reference bridge has no exact heading spans, so the canary must remain UNRESOLVED rather than infer a logical segment from a full source paragraph envelope.",
+        };
+    }
+
+    /// <summary>
+    /// Test-only proof that one physical source occurrence can carry multiple logical headings.
+    /// This intentionally uses synthetic spans and never promotes historical references to Gold.
+    /// </summary>
+    public static A99Doc0205RepresentationReport RunRepresentabilityCanary()
+    {
+        var sourceId = "body[1]/p[4]";
+        var firstSpan = new A99ReviewSpan(0, 9);
+        var secondSpan = new A99ReviewSpan(10, 19);
+        var parentId = A99HeadingOccurrenceIdentity.Create(sourceId, firstSpan);
+        var childId = A99HeadingOccurrenceIdentity.Create(sourceId, secondSpan);
+        var gold = new A99HumanGoldV3Document
+        {
+            DocumentId = "DOC-0205-REPRESENTABILITY",
+            DocumentGroupId = "SYNTHETIC",
+            Split = "DEV",
+            ReviewerAlias = "test-only",
+            ReviewedAt = DateTimeOffset.UnixEpoch,
+            ReviewVersion = "canary",
+            SourceDocumentSha256 = "synthetic",
+            PacketSha256 = "synthetic",
+            Rows = [
+                new A99GoldV3Heading
+                {
+                    HeadingOccurrenceId = parentId, SourceId = sourceId, StableId = sourceId,
+                    SourceOrdinal = 4, SourceSpan = new(0, 19), SourceTextHash = "synthetic",
+                    HeadingSpan = firstSpan, Role = "heading", Level = 1, ParentHeadingOccurrenceId = "ROOT",
+                },
+                new A99GoldV3Heading
+                {
+                    HeadingOccurrenceId = childId, SourceId = sourceId, StableId = sourceId,
+                    SourceOrdinal = 4, SourceSpan = new(0, 19), SourceTextHash = "synthetic",
+                    HeadingSpan = secondSpan, Role = "heading", Level = 2, ParentHeadingOccurrenceId = parentId,
+                },
+            ],
+        };
+        var metrics = A99PositiveSetEvaluatorV3.Evaluate(gold, [
+            new A99PositivePrediction(sourceId, new(firstSpan.Start, firstSpan.End), 1, "heading", "ROOT"),
+            new A99PositivePrediction(sourceId, new(secondSpan.Start, secondSpan.End), 2, "heading", parentId),
+        ]);
+        return new A99Doc0205RepresentationReport
+        {
+            Status = metrics.TruePositives == 2 && metrics.FalseNegatives == 0 && parentId != childId
+                ? "PASS" : "FAIL",
+            LogicalHeadingOccurrences = 2,
+            DistinctOccurrenceIds = parentId != childId,
+            ParentChildSharePhysicalSource = true,
+            EvaluatorTruePositives = metrics.TruePositives,
+            EvaluatorFalseNegatives = metrics.FalseNegatives,
         };
     }
 
@@ -196,12 +271,13 @@ public static class A99Doc0205ReconciliationCanary
         classification switch
         {
             A99Doc0205CanaryClassification.Unresolved when exactSpan is null => "exact reference heading span is not retained; source envelope alone cannot prove a logical segment",
+            A99Doc0205CanaryClassification.ProvenSourceReadingLoss => "exact reference exists but no owning physical source was observed",
             A99Doc0205CanaryClassification.ProvenRepresentationLoss => "exact reference span has no owning logical source segment",
             A99Doc0205CanaryClassification.ProvenCandidateConstructionLoss => "exact logical source segment exists but no candidate was constructed",
-            A99Doc0205CanaryClassification.ProvenSelectionLoss => "candidate was constructed but was not selected",
+            A99Doc0205CanaryClassification.ProvenCandidateSelectionLoss => "candidate was constructed but was not selected",
             A99Doc0205CanaryClassification.ProvenModelNotExposed => "selected candidate did not expose a model request/result for the reference occurrence",
-            A99Doc0205CanaryClassification.ProvenFinalLoss => "model/selection evidence exists but final lineage is absent",
-            A99Doc0205CanaryClassification.NoLoss => "all canary stages are proven and final lineage is present",
+            A99Doc0205CanaryClassification.ProvenFinalProjectionLoss => "model/selection evidence exists but final lineage is absent",
+            A99Doc0205CanaryClassification.NoProvenPremodelLoss => "all canary stages are proven and final lineage is present",
             _ => $"stage evidence is incomplete for source {sourceId ?? "UNKNOWN"}",
         };
 

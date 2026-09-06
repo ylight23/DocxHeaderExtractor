@@ -105,6 +105,11 @@ public sealed record DocumentAgentRunResult(
     /// <summary>Kết quả ghi ngược; null khi run chỉ đọc hoặc khi gate chặn hành động ghi.</summary>
     public AgentWritebackReport? Writeback { get; init; }
 
+    /// <summary>Completion and support are intentionally separate output facts.</summary>
+    public string ExtractionStatus { get; init; } = DocumentSupportStatus.Completed;
+
+    public string ReliabilityStatus { get; init; } = DocumentSupportStatus.SupportNotProven;
+
     public int RequiresReview => Outline.Headings.Count(h =>
         h.DecisionStatus == HeadingDecisionStatus.RequiresReview || h.Disputed);
 }

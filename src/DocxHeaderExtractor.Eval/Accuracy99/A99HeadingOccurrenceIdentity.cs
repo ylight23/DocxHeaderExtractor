@@ -6,6 +6,14 @@ namespace DocxHeaderExtractor.Eval.Accuracy99;
 /// </summary>
 public static class A99HeadingOccurrenceIdentity
 {
+    /// <summary>Physical source identity is scoped to a document; the source id alone is not global.</summary>
+    public static string PhysicalSourceOccurrenceId(string documentId, string sourceId)
+    {
+        if (string.IsNullOrWhiteSpace(documentId)) throw new ArgumentException("Document scope is required.", nameof(documentId));
+        if (string.IsNullOrWhiteSpace(sourceId)) throw new ArgumentException("Source identity is required.", nameof(sourceId));
+        return $"{documentId}/{sourceId}";
+    }
+
     public static string Create(string sourceId, Accuracy99Span headingSpan) =>
         Create(sourceId, headingSpan.Start, headingSpan.End);
 

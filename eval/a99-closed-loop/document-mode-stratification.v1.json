@@ -1,0 +1,629 @@
+{
+  "artifactKind": "a99_document_mode_stratification",
+  "schemaVersion": "a99-document-mode-stratification-v1",
+  "status": "PASS",
+  "source": "eval/harness-lift/corpus-map.v1.json",
+  "splitPolicy": "DEV_ONLY; GENERALIZATION_HOLDOUT_NOT_OPENED",
+  "documents": [
+    {
+      "documentId": "DOC-0013",
+      "documentGroupId": "GROUP-0076",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0014",
+      "documentGroupId": "GROUP-0226",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0016",
+      "documentGroupId": "GROUP-0257",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0017",
+      "documentGroupId": "GROUP-0247",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0018",
+      "documentGroupId": "GROUP-0138",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0019",
+      "documentGroupId": "GROUP-0207",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0020",
+      "documentGroupId": "GROUP-0143",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0024",
+      "documentGroupId": "GROUP-0106",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0027",
+      "documentGroupId": "GROUP-0239",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0029",
+      "documentGroupId": "GROUP-0202",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0030",
+      "documentGroupId": "GROUP-0158",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0031",
+      "documentGroupId": "GROUP-0129",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0032",
+      "documentGroupId": "GROUP-0206",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0033",
+      "documentGroupId": "GROUP-0256",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0034",
+      "documentGroupId": "GROUP-0048",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0036",
+      "documentGroupId": "GROUP-0254",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0037",
+      "documentGroupId": "GROUP-0066",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0038",
+      "documentGroupId": "GROUP-0212",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0039",
+      "documentGroupId": "GROUP-0052",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0040",
+      "documentGroupId": "GROUP-0078",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0044",
+      "documentGroupId": "GROUP-0086",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0045",
+      "documentGroupId": "GROUP-0087",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0048",
+      "documentGroupId": "GROUP-0047",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0049",
+      "documentGroupId": "GROUP-0097",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0050",
+      "documentGroupId": "GROUP-0124",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0054",
+      "documentGroupId": "GROUP-0144",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0055",
+      "documentGroupId": "GROUP-0234",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0056",
+      "documentGroupId": "GROUP-0198",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0057",
+      "documentGroupId": "GROUP-0001",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0058",
+      "documentGroupId": "GROUP-0003",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0059",
+      "documentGroupId": "GROUP-0068",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0060",
+      "documentGroupId": "GROUP-0043",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0062",
+      "documentGroupId": "GROUP-0033",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0064",
+      "documentGroupId": "GROUP-0069",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_ADMIN_TYPED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0067",
+      "documentGroupId": "GROUP-0251",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_ADMIN_TYPED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0068",
+      "documentGroupId": "GROUP-0011",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_ADMIN_TYPED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0070",
+      "documentGroupId": "GROUP-0116",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_ADMIN_TYPED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0071",
+      "documentGroupId": "GROUP-0029",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_ADMIN_TYPED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0072",
+      "documentGroupId": "GROUP-0141",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_ADMIN_TYPED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0073",
+      "documentGroupId": "GROUP-0131",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0074",
+      "documentGroupId": "GROUP-0039",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0075",
+      "documentGroupId": "GROUP-0173",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0076",
+      "documentGroupId": "GROUP-0022",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0077",
+      "documentGroupId": "GROUP-0258",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0079",
+      "documentGroupId": "GROUP-0241",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0084",
+      "documentGroupId": "GROUP-0169",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0085",
+      "documentGroupId": "GROUP-0178",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0116",
+      "documentGroupId": "GROUP-0016",
+      "split": "DEV",
+      "provenanceFamilyId": "UNKNOWN",
+      "familyAssignmentAuthority": "UNKNOWN",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0118",
+      "documentGroupId": "GROUP-0081",
+      "split": "DEV",
+      "provenanceFamilyId": "UNKNOWN",
+      "familyAssignmentAuthority": "UNKNOWN",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0121",
+      "documentGroupId": "GROUP-0186",
+      "split": "DEV",
+      "provenanceFamilyId": "UNKNOWN",
+      "familyAssignmentAuthority": "UNKNOWN",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0122",
+      "documentGroupId": "GROUP-0139",
+      "split": "DEV",
+      "provenanceFamilyId": "UNKNOWN",
+      "familyAssignmentAuthority": "UNKNOWN",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0123",
+      "documentGroupId": "GROUP-0166",
+      "split": "DEV",
+      "provenanceFamilyId": "UNKNOWN",
+      "familyAssignmentAuthority": "UNKNOWN",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0124",
+      "documentGroupId": "GROUP-0262",
+      "split": "DEV",
+      "provenanceFamilyId": "UNKNOWN",
+      "familyAssignmentAuthority": "UNKNOWN",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0167",
+      "documentGroupId": "GROUP-0073",
+      "split": "DEV",
+      "provenanceFamilyId": "UNKNOWN",
+      "familyAssignmentAuthority": "UNKNOWN",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0205",
+      "documentGroupId": "GROUP-0174",
+      "split": "DEV",
+      "provenanceFamilyId": "VN_LEGAL_MARKER",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0214",
+      "documentGroupId": "GROUP-0036",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0242",
+      "documentGroupId": "GROUP-0062",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0243",
+      "documentGroupId": "GROUP-0072",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0244",
+      "documentGroupId": "GROUP-0187",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0247",
+      "documentGroupId": "GROUP-0172",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    },
+    {
+      "documentId": "DOC-0264",
+      "documentGroupId": "GROUP-0032",
+      "split": "DEV",
+      "provenanceFamilyId": "PDF_CONVERTED",
+      "familyAssignmentAuthority": "PATH_HINT",
+      "documentMode": null,
+      "documentModeStatus": "NOT_OBSERVED",
+      "modeEvidence": []
+    }
+  ],
+  "aggregates": [
+    {
+      "mode": "NOT_OBSERVED",
+      "documents": 61,
+      "groups": 61
+    }
+  ],
+  "qualityMetricStatus": "NOT_MEASURED",
+  "providerCalls": 0,
+  "note": "Stratification preserves provenance family and structural-mode axis. It is not a performance measurement and does not reinterpret PDF_CONVERTED as a capability family."
+}

@@ -1,0 +1,41 @@
+{
+  "artifactKind": "a99_doc_0027_support_canary",
+  "schemaVersion": "a99-doc-0027-support-canary-v1",
+  "status": "AUDIT_ONLY",
+  "documentId": "DOC-0027",
+  "sourceSha256": "e963e6a494e7b1b12d688b8e71eb2babcaf1462e8f26408f93ce6ad1e7e49b44",
+  "referenceStatus": "NOT_AVAILABLE",
+  "profile": "VN_LEGAL_MARKER",
+  "familyPathHint": "VN_LEGAL_MARKER",
+  "modeEvidence": {
+    "documentMode": "Unknown",
+    "documentModeStatus": "OBSERVED_RUNTIME",
+    "report": {
+      "mode": "Unknown",
+      "paragraphs": 0,
+      "styledHeadings": 0,
+      "outlineLevelRatio": 0,
+      "vietnameseAdminRatio": 0,
+      "typedNumberRatio": 0,
+      "numberingRatio": 0,
+      "formatDiffers": false,
+      "legalMarkerRatio": 0,
+      "status": "Normal"
+    }
+  },
+  "route": "docx-authority-v1",
+  "candidateConstruction": {
+    "available": null,
+    "selected": null,
+    "observed": false
+  },
+  "final": {
+    "headingCount": 0,
+    "empty": true,
+    "extractionStatus": "COMPLETED",
+    "reliabilityStatus": "SUPPORT_NOT_PROVEN"
+  },
+  "providerCalls": 0,
+  "productionChanged": false,
+  "note": "Support-behavior canary only. Historical candidate/selection signatures are retained as context, not expected headings or accuracy labels."
+}

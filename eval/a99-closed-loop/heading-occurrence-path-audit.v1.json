@@ -1,0 +1,34 @@
+{
+  "artifactKind": "a99_heading_occurrence_path_audit",
+  "schemaVersion": "a99-heading-occurrence-path-audit-v1",
+  "branchScope": "accuracy99/autonomous-closed-loop",
+  "activeCliPaths": {
+    "review-ui": "Accuracy99Runner.BuildReviewUi -> tools/accuracy99-reviewer/index.html",
+    "gold-validate-v2": "Accuracy99Runner.ValidateEarlyDevGoldV2Async -> A99HumanGoldV2Validator.Validate",
+    "gold-import-dev-v2": "Accuracy99Runner.ImportEarlyDevGoldV2Async -> A99GoldImportService.ValidateAndImportEarlyDevV2 -> A99HumanGoldV2Validator.Validate",
+    "evaluate": "Accuracy99Runner.EvaluateAsync -> Accuracy99Evaluator.Evaluate (historical v1 compatibility path)",
+    "baseline": "Accuracy99Runner.BuildBaselineAsync -> AuthorityExtractionPipeline -> Accuracy99Evaluator.FromHeading",
+    "doc-0205-canary": "Accuracy99Runner.RunDoc0205CanaryAsync -> A99Doc0205ReconciliationCanary.Run"
+  },
+  "identityContract": {
+    "physicalSourceOccurrenceId": "documentId + sourceId",
+    "headingOccurrenceId": "sourceId@headingSpan.start:headingSpan.end",
+    "documentScope": "documentId + sourceDocumentSha256 must match the packet",
+    "textFilenameFuzzyIdentity": "FORBIDDEN"
+  },
+  "activeIdentityOwners": [
+    "A99HeadingOccurrenceIdentity",
+    "A99HumanGoldV2Validator",
+    "A99HumanGoldV3Validator",
+    "A99PositiveSetEvaluator",
+    "A99PositiveSetEvaluatorV3",
+    "reviewer serialization/storage"
+  ],
+  "historicalPaths": {
+    "v1": "retained for historical compatibility; not a source for v3 Gold",
+    "v2": "retained and not rewritten; v3 is the corrected review contract"
+  },
+  "humanGoldDocuments": 0,
+  "providerCalls": 0,
+  "status": "AUDITED_WITH_V3_PATH_READY"
+}

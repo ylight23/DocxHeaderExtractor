@@ -400,6 +400,8 @@ public sealed class DocumentAgentHarness
                 Skill = _skill,
                 RepairAttempts = attempt - 1,
                 Writeback = writeback,
+                ExtractionStatus = DocumentSupportStatus.From(outline).ExtractionStatus,
+                ReliabilityStatus = DocumentSupportStatus.From(outline).ReliabilityStatus,
             };
         }
         catch (OperationCanceledException)

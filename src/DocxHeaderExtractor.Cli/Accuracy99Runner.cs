@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
@@ -27,7 +28,7 @@ internal static class Accuracy99Runner
         var operation = options.Accuracy99Operation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, doc-0205-canary");
+            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, doc-0205-canary, mode-stratification, doc-0027-support-canary");
             return 0;
         }
 
@@ -41,11 +42,16 @@ internal static class Accuracy99Runner
             "reference-campaign" => await BuildReferenceCampaignAsync(options, cancellationToken),
             "early-dev-campaign" => await BuildEarlyDevCampaignAsync(options, cancellationToken),
             "review-ui" => BuildReviewUi(options),
+            "review-ui-v3" => BuildReviewUiV3(options),
             "gold-validate" => await ValidateGoldAsync(options, cancellationToken),
             "gold-import-dev" => await ImportDevGoldAsync(options, cancellationToken),
             "gold-validate-v2" => await ValidateEarlyDevGoldV2Async(options, cancellationToken),
             "gold-import-dev-v2" => await ImportEarlyDevGoldV2Async(options, cancellationToken),
+            "gold-validate-v3" => await ValidateEarlyDevGoldV3Async(options, cancellationToken),
+            "gold-import-dev-v3" => await ImportEarlyDevGoldV3Async(options, cancellationToken),
             "doc-0205-canary" => await RunDoc0205CanaryAsync(options, cancellationToken),
+            "mode-stratification" => await BuildModeStratificationAsync(options, cancellationToken),
+            "doc-0027-support-canary" => await RunDoc0027SupportCanaryAsync(options, cancellationToken),
             _ => throw new ArgumentException($"accuracy99 operation không hợp lệ: {operation}"),
         };
     }
@@ -218,6 +224,34 @@ internal static class Accuracy99Runner
         return 0;
     }
 
+    private static int BuildReviewUiV3(CommandLineOptions options)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var source = Path.Combine(repoRoot, "tools", "accuracy99-reviewer", "index.html");
+        if (!File.Exists(source)) throw new FileNotFoundException("A99 reviewer UI source missing", source);
+        var destination = options.Accuracy99ReviewerOutput ?? Path.Combine("C:\\A99-Gold", "reviewer-v3", "index.html");
+        var html = File.ReadAllText(source)
+            .Replace("source-first heading reviewer v2", "source-first heading reviewer v3", StringComparison.Ordinal)
+            .Replace("HUMAN_GOLD v2", "HUMAN_GOLD v3", StringComparison.Ordinal)
+            .Replace("a99-human-gold-v2", "a99-human-gold-v3", StringComparison.Ordinal)
+            .Replace("human-gold-v2", "human-gold-v3", StringComparison.Ordinal)
+            .Replace("a99-review-v2:", "a99-review-v3:", StringComparison.Ordinal)
+            .Replace("['ROOT', 'UNKNOWN', ...state.headings", "['ROOT', ...state.headings", StringComparison.Ordinal)
+            .Replace("parentOccurrenceId:h.parent || 'UNKNOWN'", "parentHeadingOccurrenceId:h.parent || 'ROOT'", StringComparison.Ordinal)
+            .Replace("unsureSourceIds:[]", "unsureSpans:[]", StringComparison.Ordinal);
+        html = html.Replace(
+            "const unsureIds = Object.keys(state.unsure || {});",
+            "const unsureSpans = Object.keys(state.unsure || {}).map(sourceId => { const source = packet.occurrences.find(x => x.sourceId === sourceId); return { sourceId, span: { start: 0, end: source?.sourceText.length || 0 }, reason: 'reviewer-marked-uncertain' }; });",
+            StringComparison.Ordinal)
+            .Replace("if (unsureIds.length)", "if (unsureSpans.length)", StringComparison.Ordinal)
+            .Replace("unsureSourceIds:[]", "unsureSpans", StringComparison.Ordinal);
+        var directory = Path.GetDirectoryName(Path.GetFullPath(destination));
+        if (!string.IsNullOrWhiteSpace(directory)) Directory.CreateDirectory(directory);
+        File.WriteAllText(destination, html, new UTF8Encoding(false));
+        Console.WriteLine(Path.GetFullPath(destination));
+        return 0;
+    }
+
     private static async Task<int> ValidateGoldAsync(
         CommandLineOptions options,
         CancellationToken cancellationToken)
@@ -357,6 +391,106 @@ internal static class Accuracy99Runner
         return coverage.Status == "READY_FOR_BASELINE" ? 0 : 1;
     }
 
+    private static async Task<int> ValidateEarlyDevGoldV3Async(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var early = LoadEarlyDevCampaign(repoRoot);
+        var packetRoot = options.Accuracy99PacketRoot ?? Path.Combine("C:\\A99-Gold", "packets");
+        var goldRoot = options.Accuracy99GoldRoot ?? options.Accuracy99GoldPath ?? Path.Combine("C:\\A99-Gold", "dev-v3");
+        A99GoldStoreGuard.EnsureDevPath(packetRoot);
+        A99GoldStoreGuard.EnsureDevPath(goldRoot);
+        var results = new List<object>();
+        var valid = 0;
+        var errors = 0;
+        foreach (var document in early.Documents)
+        {
+            var packetPath = Path.Combine(Path.GetFullPath(packetRoot), "dev", document.DocumentId + ".v1.json");
+            var goldPath = Path.Combine(Path.GetFullPath(goldRoot), document.DocumentId + ".human-gold-v3.json");
+            if (!File.Exists(goldPath)) { errors++; results.Add(new { documentId = document.DocumentId, status = "MISSING", error = "gold-missing" }); continue; }
+            if (!File.Exists(packetPath)) { errors++; results.Add(new { documentId = document.DocumentId, status = "INVALID", error = "packet-missing" }); continue; }
+            try
+            {
+                var packet = A99ReviewJson.Deserialize<A99ReviewPacket>(await File.ReadAllTextAsync(packetPath, cancellationToken));
+                var gold = A99ReviewJson.Deserialize<A99HumanGoldV3Document>(await File.ReadAllTextAsync(goldPath, cancellationToken));
+                var validation = A99HumanGoldV3Validator.Validate(packet, gold);
+                if (!string.Equals(packet.SourceDocumentSha256, document.SourceSha256, StringComparison.OrdinalIgnoreCase))
+                    validation = new A99GoldValidationResult(false, [.. validation.Errors, "packet-source-sha-not-bound-to-early-campaign"]);
+                if (!string.Equals(packet.PacketSha256, document.PacketSha256, StringComparison.OrdinalIgnoreCase))
+                    validation = new A99GoldValidationResult(false, [.. validation.Errors, "packet-sha-not-bound-to-early-campaign"]);
+                if (validation.IsValid) valid++; else errors += validation.Errors.Count;
+                results.Add(new { documentId = document.DocumentId, status = validation.IsValid ? "VALID" : "INVALID", errors = validation.Errors });
+            }
+            catch (Exception ex) when (ex is JsonException or InvalidDataException or IOException)
+            {
+                errors++; results.Add(new { documentId = document.DocumentId, status = "INVALID", error = ex.Message });
+            }
+        }
+        var report = new
+        {
+            artifactKind = "a99_early_dev_gold_validation_report",
+            schemaVersion = "a99-early-dev-gold-validation-v3",
+            status = errors == 0 && valid == early.Documents.Count ? "READY_FOR_BASELINE" : "HUMAN_REFERENCE_REQUIRED",
+            expectedDocuments = early.Documents.Count,
+            validDocuments = valid,
+            errorCount = errors,
+            documents = results,
+            providerCalls = 0,
+        };
+        await WriteAsync(options.OutputPath ?? Path.Combine(repoRoot, "eval", "a99-closed-loop", "early-dev-gold-validation.v3.json"), JsonSerializer.Serialize(report, JsonOptions), cancellationToken);
+        return errors == 0 && valid == early.Documents.Count ? 0 : 1;
+    }
+
+    private static async Task<int> ImportEarlyDevGoldV3Async(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var early = LoadEarlyDevCampaign(repoRoot);
+        var packetRoot = options.Accuracy99PacketRoot ?? Path.Combine("C:\\A99-Gold", "packets");
+        var goldRoot = options.Accuracy99GoldRoot ?? options.Accuracy99GoldPath ?? Path.Combine("C:\\A99-Gold", "dev-v3");
+        A99GoldStoreGuard.EnsureDevPath(packetRoot);
+        A99GoldStoreGuard.EnsureDevPath(goldRoot);
+        var validated = 0;
+        var positives = 0;
+        var errors = new List<string>();
+        foreach (var document in early.Documents)
+        {
+            var packetPath = Path.Combine(Path.GetFullPath(packetRoot), "dev", document.DocumentId + ".v1.json");
+            var goldPath = Path.Combine(Path.GetFullPath(goldRoot), document.DocumentId + ".human-gold-v3.json");
+            if (!File.Exists(packetPath) || !File.Exists(goldPath)) { errors.Add($"{document.DocumentId}:missing"); continue; }
+            try
+            {
+                var packet = A99ReviewJson.Deserialize<A99ReviewPacket>(await File.ReadAllTextAsync(packetPath, cancellationToken));
+                var gold = A99ReviewJson.Deserialize<A99HumanGoldV3Document>(await File.ReadAllTextAsync(goldPath, cancellationToken));
+                var validation = A99HumanGoldV3Validator.Validate(packet, gold);
+                if (!validation.IsValid) { errors.Add($"{document.DocumentId}:{string.Join(",", validation.Errors)}"); continue; }
+                if (!string.Equals(packet.SourceDocumentSha256, document.SourceSha256, StringComparison.OrdinalIgnoreCase) ||
+                    !string.Equals(packet.PacketSha256, document.PacketSha256, StringComparison.OrdinalIgnoreCase))
+                { errors.Add($"{document.DocumentId}:campaign-sha-mismatch"); continue; }
+                validated++; positives += gold.Rows.Count;
+            }
+            catch (Exception ex) when (ex is JsonException or InvalidDataException or IOException)
+            { errors.Add($"{document.DocumentId}:{ex.Message}"); }
+        }
+        var status = validated == early.Documents.Count && errors.Count == 0 ? "READY_FOR_BASELINE" : "HUMAN_REFERENCE_REQUIRED";
+        var report = new
+        {
+            artifactKind = "a99_early_dev_gold_coverage",
+            schemaVersion = "a99-early-dev-gold-coverage-v3",
+            status,
+            documentsExpected = early.Documents.Count,
+            documentsValidated = validated,
+            headingPositives = positives,
+            errors,
+            providerCalls = 0,
+        };
+        await WriteAsync(options.OutputPath ?? Path.Combine(repoRoot, "eval", "a99-closed-loop", "early-dev-gold-coverage.v3.json"), JsonSerializer.Serialize(report, JsonOptions), cancellationToken);
+        Console.WriteLine($"Early DEV v3 gold: {validated}/{early.Documents.Count} documents, {positives} positives, status={status}");
+        return status == "READY_FOR_BASELINE" ? 0 : 1;
+    }
+
     private static async Task<int> RunDoc0205CanaryAsync(
         CommandLineOptions options,
         CancellationToken cancellationToken)
@@ -368,6 +502,112 @@ internal static class Accuracy99Runner
         var output = options.OutputPath ?? Path.Combine(repoRoot, "eval", "a99-closed-loop", "doc-0205-reconciliation-canary.v1.json");
         await WriteAsync(output, JsonSerializer.Serialize(report, JsonOptions), cancellationToken);
         Console.WriteLine($"DOC-0205 canary: {report.ReferenceCount} references, status={report.Status}, unresolved={report.ClassificationCounts.GetValueOrDefault(A99Doc0205CanaryClassification.Unresolved)}");
+        return 0;
+    }
+
+    private static async Task<int> BuildModeStratificationAsync(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var corpusPath = Path.Combine(repoRoot, "eval", "harness-lift", "corpus-map.v1.json");
+        var documents = ReadCorpus(corpusPath)
+            .Where(item => string.Equals(item.Split, "DEV", StringComparison.OrdinalIgnoreCase))
+            .OrderBy(item => item.DocumentId, StringComparer.Ordinal)
+            .Select(item => new
+            {
+                documentId = item.DocumentId,
+                documentGroupId = item.DocumentGroupId ?? item.DocumentId,
+                split = "DEV",
+                provenanceFamilyId = item.FamilyId ?? "UNKNOWN",
+                familyAssignmentAuthority = item.FamilyAssignmentAuthority ?? "NOT_OBSERVED",
+                documentMode = (string?)null,
+                documentModeStatus = "NOT_OBSERVED",
+                modeEvidence = Array.Empty<object>(),
+            }).ToArray();
+        var aggregates = documents
+            .GroupBy(item => item.documentMode ?? "NOT_OBSERVED", StringComparer.Ordinal)
+            .OrderBy(group => group.Key, StringComparer.Ordinal)
+            .Select(group => new
+            {
+                mode = group.Key,
+                documents = group.Count(),
+                groups = group.Select(item => item.documentGroupId).Distinct(StringComparer.Ordinal).Count(),
+            }).ToArray();
+        var artifact = new
+        {
+            artifactKind = "a99_document_mode_stratification",
+            schemaVersion = "a99-document-mode-stratification-v1",
+            status = "PASS",
+            source = "eval/harness-lift/corpus-map.v1.json",
+            splitPolicy = "DEV_ONLY; GENERALIZATION_HOLDOUT_NOT_OPENED",
+            documents,
+            aggregates,
+            qualityMetricStatus = "NOT_MEASURED",
+            providerCalls = 0,
+            note = "Stratification preserves provenance family and structural-mode axis. It is not a performance measurement and does not reinterpret PDF_CONVERTED as a capability family.",
+        };
+        await WriteAsync(options.OutputPath ?? Path.Combine(repoRoot, "eval", "a99-closed-loop", "document-mode-stratification.v1.json"), JsonSerializer.Serialize(artifact, JsonOptions), cancellationToken);
+        Console.WriteLine($"A99 mode stratification: {documents.Length} authorized DEV documents; quality=NOT_MEASURED");
+        return 0;
+    }
+
+    private static async Task<int> RunDoc0027SupportCanaryAsync(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var item = ReadCorpus(Path.Combine(repoRoot, "eval", "harness-lift", "corpus-map.v1.json"))
+            .SingleOrDefault(x => string.Equals(x.DocumentId, "DOC-0027", StringComparison.Ordinal));
+        if (item is null) throw new InvalidDataException("DOC-0027 is not present in the authorized corpus map.");
+        var inputPath = Path.Combine(repoRoot, item.Path.Replace('/', Path.DirectorySeparatorChar));
+        if (!File.Exists(inputPath)) throw new FileNotFoundException("DOC-0027 source file missing.", inputPath);
+        var actualSha = HumanGoldValidator.ComputeSha256(inputPath);
+        if (!string.Equals(actualSha, item.SourceSha256, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidDataException("DOC-0027 source SHA mismatch.");
+        var pipelineOptions = options.Pipeline;
+        pipelineOptions.DisableLlm = true;
+        using var pipeline = new AuthorityExtractionPipeline(pipelineOptions);
+        var execution = await pipeline.RunDocumentExecutionAsync(inputPath, ct: cancellationToken);
+        var outline = execution.CompatibilityOutline;
+        var audit = outline.RouteAudit;
+        var support = DocumentSupportStatus.From(outline);
+        var artifact = new
+        {
+            artifactKind = "a99_doc_0027_support_canary",
+            schemaVersion = "a99-doc-0027-support-canary-v1",
+            status = "AUDIT_ONLY",
+            documentId = item.DocumentId,
+            sourceSha256 = actualSha,
+            referenceStatus = "NOT_AVAILABLE",
+            profile = item.FamilyId ?? "NOT_OBSERVED",
+            familyPathHint = item.FamilyId,
+            modeEvidence = new
+            {
+                documentMode = outline.DocumentMode?.Mode.ToString() ?? "NOT_OBSERVED",
+                documentModeStatus = outline.DocumentMode is null ? "NOT_OBSERVED" : "OBSERVED_RUNTIME",
+                report = outline.DocumentMode,
+            },
+            route = outline.DeterministicRoute ?? "NOT_OBSERVED",
+            candidateConstruction = new
+            {
+                available = audit?.CandidatesAvailable,
+                selected = audit?.CandidatesSelected,
+                observed = audit is not null,
+            },
+            final = new
+            {
+                headingCount = outline.Headings.Count,
+                empty = outline.Headings.Count == 0,
+                extractionStatus = support.ExtractionStatus,
+                reliabilityStatus = support.ReliabilityStatus,
+            },
+            providerCalls = execution.Result.Provenance.ProviderCalls,
+            productionChanged = false,
+            note = "Support-behavior canary only. Historical candidate/selection signatures are retained as context, not expected headings or accuracy labels.",
+        };
+        await WriteAsync(options.OutputPath ?? Path.Combine(repoRoot, "eval", "a99-closed-loop", "doc-0027-support-canary.v1.json"), JsonSerializer.Serialize(artifact, JsonOptions), cancellationToken);
+        Console.WriteLine($"DOC-0027 support canary: mode={outline.DocumentMode?.Mode.ToString() ?? "NOT_OBSERVED"}, headings={outline.Headings.Count}, status={support.ReliabilityStatus}");
         return 0;
     }
 
@@ -724,7 +964,9 @@ internal static class Accuracy99Runner
             item.GetProperty("path").GetString() ?? throw new InvalidDataException("corpus path missing"),
             item.GetProperty("sourceSha256").GetString() ?? throw new InvalidDataException("corpus sourceSha256 missing"),
             item.TryGetProperty("documentGroupId", out var group) ? group.GetString() : null,
-            item.TryGetProperty("split", out var split) ? split.GetString() : null)).ToArray();
+            item.TryGetProperty("split", out var split) ? split.GetString() : null,
+            item.TryGetProperty("familyId", out var family) ? family.GetString() : null,
+            item.TryGetProperty("familyAssignmentAuthority", out var familyAuthority) ? familyAuthority.GetString() : null)).ToArray();
     }
 
     private static string? GitRevision(string repoRoot)
@@ -752,7 +994,9 @@ internal static class Accuracy99Runner
         string Path,
         string SourceSha256,
         string? DocumentGroupId,
-        string? Split);
+        string? Split,
+        string? FamilyId = null,
+        string? FamilyAssignmentAuthority = null);
 
     private static async Task WriteAsync(
         string? outputPath,
