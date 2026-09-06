@@ -30,7 +30,6 @@ public static class A99HumanGoldV2Validator
         if (gold.ReviewedAt == default) errors.Add("reviewed-at-missing");
         if (!gold.ReviewedEntireDocument) errors.Add("reviewed-entire-document-not-certified");
         if (!gold.HeadingSetExhaustive) errors.Add("heading-set-not-certified-exhaustive");
-        if (!gold.IndependentOfModelPrediction) errors.Add("reviewer-independence-not-declared");
         if (gold.ArtifactKind.Contains("silver", StringComparison.OrdinalIgnoreCase) ||
             gold.AuthorityClass.Contains("silver", StringComparison.OrdinalIgnoreCase))
             errors.Add("silver-artifact-rejected");

@@ -91,7 +91,7 @@ public sealed class Accuracy99HumanGoldFactoryTests
     }
 
     [Fact]
-    public void Silver_and_non_independent_artifacts_are_rejected()
+    public void Silver_artifacts_are_rejected_but_assistance_provenance_is_not_a_failure()
     {
         var packet = Packet();
         var result = A99HumanGoldValidator.Validate(packet, Gold(packet, Rows(packet)) with
@@ -102,7 +102,7 @@ public sealed class Accuracy99HumanGoldFactoryTests
 
         Assert.False(result.IsValid);
         Assert.Contains("silver-artifact-rejected", result.Errors);
-        Assert.Contains("reviewer-independence-not-declared", result.Errors);
+        Assert.DoesNotContain("reviewer-independence-not-declared", result.Errors);
     }
 
     [Fact]

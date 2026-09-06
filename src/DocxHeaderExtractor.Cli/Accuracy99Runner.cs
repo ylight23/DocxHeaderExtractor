@@ -29,7 +29,7 @@ internal static class Accuracy99Runner
         var operation = options.Accuracy99Operation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, gold-preflight-strict-dev, doc-0205-canary, mode-stratification, doc-0027-support-canary");
+            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, gold-preflight-strict-dev, gold-authority-policy-v2, doc-0205-canary, mode-stratification, doc-0027-support-canary");
             return 0;
         }
 
@@ -53,6 +53,7 @@ internal static class Accuracy99Runner
             "gold-validate-strict-v3" => await ValidateStrictEarlyDevGoldV3Async(options, cancellationToken, import: false),
             "gold-import-strict-dev-v3" => await ValidateStrictEarlyDevGoldV3Async(options, cancellationToken, import: true),
             "gold-preflight-strict-dev" => await PreflightStrictDevCohortAsync(options, cancellationToken),
+            "gold-authority-policy-v2" => await ReconcileStrictGoldAuthorityPolicyV2Async(options, cancellationToken),
             "doc-0205-canary" => await RunDoc0205CanaryAsync(options, cancellationToken),
             "mode-stratification" => await BuildModeStratificationAsync(options, cancellationToken),
             "doc-0027-support-canary" => await RunDoc0027SupportCanaryAsync(options, cancellationToken),
@@ -75,7 +76,9 @@ internal static class Accuracy99Runner
             artifactKind = "a99_human_gold_schema",
             schemaVersion = "a99-human-gold-v2",
             positiveSetOnly = true,
-            exhaustiveCertificate = new[] { "reviewedEntireDocument", "headingSetExhaustive", "independentOfModelPrediction" },
+            exhaustiveCertificate = new[] { "reviewedEntireDocument", "headingSetExhaustive" },
+            finalAuthority = "USER",
+            provenanceField = "independentOfModelPrediction; truthful audit metadata only",
             requiredHeadingFields = new[] { "sourceId", "headingOccurrenceId", "stableId", "sourceOrdinal", "sourceSpan", "sourceTextHash", "headingSpan", "role", "level", "parentOccurrenceId" },
             unsureSourceIds = "optional; any value blocks final HUMAN_GOLD certification",
             forbidden = new[] { "prediction", "candidate", "confidence", "validatorOutput", "decision" },
@@ -538,9 +541,7 @@ internal static class Accuracy99Runner
         {
             cancellationToken.ThrowIfCancellationRequested();
             var current = ToStrictPreflightCandidate(original);
-            var attempt = HasAssistedSemanticReference(repoRoot, original.DocumentId)
-                ? StrictPreflightAttempt.Failed("assisted-semantic-reference-excluded-from-strict")
-                : TryCreateStrictPreflightPacket(current, sourceRoot);
+            var attempt = TryCreateStrictPreflightPacket(current, sourceRoot);
             var selected = current;
             var replaced = false;
 
@@ -791,26 +792,6 @@ internal static class Accuracy99Runner
         }
     }
 
-    private static bool HasAssistedSemanticReference(string repoRoot, string documentId)
-    {
-        var path = Path.Combine(repoRoot, "eval", "a99-closed-loop", "review", $"{documentId.ToLowerInvariant().Replace("doc-", "doc-")}-semantic-adjudication.v1.json");
-        if (!File.Exists(path)) return false;
-        try
-        {
-            using var document = JsonDocument.Parse(File.ReadAllText(path));
-            var root = document.RootElement;
-            var authority = root.TryGetProperty("referenceAuthority", out var authorityProperty)
-                ? authorityProperty.GetString()
-                : null;
-            var strictEligible = root.TryGetProperty("strictGoldEligible", out var eligibleProperty) && eligibleProperty.GetBoolean();
-            return string.Equals(authority, A99StrictGoldAuthorityRules.HumanReviewedModelAssisted, StringComparison.Ordinal) && !strictEligible;
-        }
-        catch (JsonException)
-        {
-            return true;
-        }
-    }
-
     private static void UpdateStrictAuthorityJson(
         JsonObject root,
         IReadOnlySet<string> previousStrictIds,
@@ -840,6 +821,20 @@ internal static class Accuracy99Runner
                 ["eligibleForStrictA99Claim"] = false,
                 ["exposureStatus"] = "NOT_MODEL_ASSISTED",
                 ["note"] = "Replacement strict slot selected by representability preflight; source-only human review pending.",
+                ["goldStatus"] = A99StrictGoldAuthorityRules.NotReviewedGold,
+                ["finalAuthority"] = A99StrictGoldAuthorityRules.NoFinalAuthority,
+                ["referenceProvenance"] = A99StrictGoldAuthorityRules.HumanOnlyProvenance,
+                ["userFinalApproval"] = false,
+                ["reviewedEntireDocument"] = false,
+                ["headingSetExhaustive"] = false,
+                ["unresolvedSemanticUncertainty"] = false,
+                ["semanticEvaluable"] = false,
+                ["occurrenceEvaluable"] = false,
+                ["characterSpanEvaluable"] = false,
+                ["roleEvaluable"] = false,
+                ["levelEvaluable"] = false,
+                ["parentEvaluable"] = false,
+                ["hierarchyEvaluable"] = false,
             });
         }
 
@@ -923,6 +918,126 @@ internal static class Accuracy99Runner
         public required A99SourceRepresentabilityResult Representability { get; init; }
         public required string Disposition { get; init; }
     }
+
+    private static async Task<int> ReconcileStrictGoldAuthorityPolicyV2Async(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        var authorityPath = Path.Combine(repoRoot, "eval", "a99-closed-loop", "strict-gold-authority.v1.json");
+        var cohortPath = Path.Combine(repoRoot, "eval", "a99-closed-loop", "strict-dev-gold-cohort.v1.json");
+        var authority = JsonNode.Parse(await File.ReadAllTextAsync(authorityPath, cancellationToken))?.AsObject()
+                       ?? throw new InvalidDataException("strict authority JSON is not an object");
+        var cohort = DeserializeRequired<A99StrictDevGoldCohortArtifact>(await File.ReadAllTextAsync(cohortPath, cancellationToken));
+        if (cohort.StrictCohortDocumentCount != 15 || cohort.StrictCohort.Count != 15)
+            throw new InvalidDataException("strict-cohort-must-contain-15-documents");
+
+        var documents = authority["documents"] as JsonArray ?? new JsonArray();
+        var known = new Dictionary<string, (int? SemanticTotal, bool CharacterSpan, bool Occurrence, bool Role, bool Level, bool Parent, bool Hierarchy)>(StringComparer.Ordinal)
+        {
+            ["DOC-0255"] = (null, true, true, true, true, true, true),
+            ["DOC-0259"] = (null, true, true, true, true, true, true),
+            ["DOC-0202"] = (111, false, false, true, true, true, true),
+            ["DOC-0123"] = (317, false, false, false, false, false, false),
+        };
+
+        foreach (var (documentId, capability) in known)
+        {
+            var entry = documents
+                .OfType<JsonObject>()
+                .SingleOrDefault(x => string.Equals(x["documentId"]?.GetValue<string>(), documentId, StringComparison.Ordinal));
+            if (entry is null)
+            {
+                entry = new JsonObject { ["documentId"] = documentId };
+                documents.Add(entry);
+            }
+
+            entry["validatorStatus"] = "VALID";
+            entry["referenceAuthority"] = A99StrictGoldAuthorityRules.UserFinalizedStrictGold;
+            entry["eligibleForStrictA99Claim"] = true;
+            entry["exposureStatus"] = "MODEL_ASSISTED";
+            entry["note"] = "USER-finalized exhaustive reference; assistance remains truthful provenance metadata and does not disqualify Strict Gold.";
+            entry["goldStatus"] = A99StrictGoldAuthorityRules.StrictGold;
+            entry["finalAuthority"] = A99StrictGoldAuthorityRules.UserFinalAuthority;
+            entry["referenceProvenance"] = A99StrictGoldAuthorityRules.HumanWithModelAssistanceProvenance;
+            entry["userFinalApproval"] = true;
+            entry["reviewedEntireDocument"] = true;
+            entry["headingSetExhaustive"] = true;
+            entry["unresolvedSemanticUncertainty"] = false;
+            entry["semanticEvaluable"] = true;
+            entry["occurrenceEvaluable"] = capability.Occurrence;
+            entry["characterSpanEvaluable"] = capability.CharacterSpan;
+            entry["roleEvaluable"] = capability.Role;
+            entry["levelEvaluable"] = capability.Level;
+            entry["parentEvaluable"] = capability.Parent;
+            entry["hierarchyEvaluable"] = capability.Hierarchy;
+            entry["semanticHeadingTotal"] = capability.SemanticTotal;
+        }
+
+        foreach (var entry in documents.OfType<JsonObject>())
+        {
+            entry["goldStatus"] ??= A99StrictGoldAuthorityRules.NotReviewedGold;
+            entry["finalAuthority"] ??= A99StrictGoldAuthorityRules.NoFinalAuthority;
+            entry["referenceProvenance"] ??= A99StrictGoldAuthorityRules.HumanOnlyProvenance;
+            entry["userFinalApproval"] ??= false;
+            entry["reviewedEntireDocument"] ??= false;
+            entry["headingSetExhaustive"] ??= false;
+            entry["unresolvedSemanticUncertainty"] ??= false;
+            entry["semanticEvaluable"] ??= false;
+            entry["occurrenceEvaluable"] ??= false;
+            entry["characterSpanEvaluable"] ??= false;
+            entry["roleEvaluable"] ??= false;
+            entry["levelEvaluable"] ??= false;
+            entry["parentEvaluable"] ??= false;
+            entry["hierarchyEvaluable"] ??= false;
+        }
+
+        var activeIds = cohort.StrictCohort.Select(x => x.DocumentId).ToHashSet(StringComparer.Ordinal);
+        var typedEntries = documents.OfType<JsonObject>().ToArray();
+        var strictEntries = typedEntries.Where(IsCanonicalStrictGold).ToArray();
+        authority["documents"] = documents;
+        authority["policyVersion"] = "USER_FINALIZED_STRICT_GOLD_V2";
+        authority["strictCohortDocumentCount"] = cohort.StrictCohortDocumentCount;
+        authority["globalStrictGoldTotal"] = strictEntries.Length;
+        authority["strictGoldUserFinalized"] = strictEntries.Count(x => string.Equals(x["finalAuthority"]?.GetValue<string>(), A99StrictGoldAuthorityRules.UserFinalAuthority, StringComparison.Ordinal));
+        authority["strictGoldHumanOnly"] = strictEntries.Count(x => string.Equals(x["referenceProvenance"]?.GetValue<string>(), A99StrictGoldAuthorityRules.HumanOnlyProvenance, StringComparison.Ordinal));
+        authority["strictGoldHumanWithModelAssistance"] = strictEntries.Count(x => string.Equals(x["referenceProvenance"]?.GetValue<string>(), A99StrictGoldAuthorityRules.HumanWithModelAssistanceProvenance, StringComparison.Ordinal));
+        authority["activeStrictCohortGoldValid"] = strictEntries.Count(x => activeIds.Contains(x["documentId"]?.GetValue<string>() ?? string.Empty));
+        authority["semanticEvaluableStrictGold"] = strictEntries.Count(x => x["semanticEvaluable"]?.GetValue<bool>() == true);
+        authority["characterSpanEvaluableStrictGold"] = strictEntries.Count(x => x["characterSpanEvaluable"]?.GetValue<bool>() == true);
+        authority["holdoutStatus"] = "SEALED";
+        authority["providerCalls"] = 0;
+        await WriteAsync(authorityPath, authority.ToJsonString(new JsonSerializerOptions { WriteIndented = true }), cancellationToken);
+
+        var policy = new JsonObject
+        {
+            ["artifactKind"] = "a99_strict_gold_authority_policy",
+            ["policyVersion"] = "USER_FINALIZED_STRICT_GOLD_V2",
+            ["strictGoldDefinition"] = "USER_FINAL_APPROVAL plus reviewedEntireDocument plus headingSetExhaustive plus unresolvedSemanticUncertainty=false",
+            ["finalAuthorityRule"] = "FINAL_AUTHORITY=USER is required; model assistance is advisory",
+            ["provenanceRule"] = "REFERENCE_PROVENANCE is truthful audit metadata and does not disqualify Strict Gold",
+            ["capabilityRule"] = "Semantic Gold and character-span evaluation capability are reported independently; unsupported dimensions are NOT_EVALUABLE",
+            ["knownFinalizedDocuments"] = new JsonArray("DOC-0255", "DOC-0259", "DOC-0202", "DOC-0123"),
+            ["activeCohortPolicy"] = "Frozen 15-document DEV cohort is unchanged; historical Strict Gold outside the cohort does not reselection-bias it",
+            ["globalStrictGoldTotal"] = strictEntries.Length,
+            ["activeStrictCohortDocuments"] = cohort.StrictCohortDocumentCount,
+            ["activeStrictCohortGoldValid"] = strictEntries.Count(x => activeIds.Contains(x["documentId"]?.GetValue<string>() ?? string.Empty)),
+            ["holdoutTouched"] = false,
+            ["providerCalls"] = 0,
+        };
+        await WriteAsync(Path.Combine(repoRoot, "eval", "a99-closed-loop", "strict-gold-authority-policy.v2.json"), policy.ToJsonString(new JsonSerializerOptions { WriteIndented = true }), cancellationToken);
+
+        Console.WriteLine($"A99 strict authority policy v2: globalStrictGold={strictEntries.Length}; activeCohort={cohort.StrictCohortDocumentCount}; activeCohortGold={strictEntries.Count(x => activeIds.Contains(x["documentId"]?.GetValue<string>() ?? string.Empty))}; providerCalls=0; holdoutTouched=false");
+        return 0;
+    }
+
+    private static bool IsCanonicalStrictGold(JsonObject entry) =>
+        string.Equals(entry["goldStatus"]?.GetValue<string>(), A99StrictGoldAuthorityRules.StrictGold, StringComparison.Ordinal) &&
+        string.Equals(entry["finalAuthority"]?.GetValue<string>(), A99StrictGoldAuthorityRules.UserFinalAuthority, StringComparison.Ordinal) &&
+        entry["userFinalApproval"]?.GetValue<bool>() == true &&
+        entry["reviewedEntireDocument"]?.GetValue<bool>() == true &&
+        entry["headingSetExhaustive"]?.GetValue<bool>() == true &&
+        entry["unresolvedSemanticUncertainty"]?.GetValue<bool>() != true;
 
     private static async Task<int> ValidateStrictEarlyDevGoldV3Async(
         CommandLineOptions options,
@@ -1018,10 +1133,7 @@ internal static class Accuracy99Runner
                 var campaignBound = string.Equals(packet.SourceDocumentSha256, document.SourceSha256, StringComparison.OrdinalIgnoreCase) &&
                                     string.Equals(packet.PacketSha256, document.PacketSha256, StringComparison.OrdinalIgnoreCase);
                 var eligible = validation.IsValid && campaignBound &&
-                               A99StrictGoldAuthorityRules.IsEligible(
-                                   authorityEntry.ValidatorStatus,
-                                   authorityEntry.ReferenceAuthority,
-                                   authorityEntry.EligibleForStrictA99Claim);
+                               A99StrictGoldAuthorityRules.IsEligible(authorityEntry, referenceValidated: true);
                 if (validation.IsValid && campaignBound) strictValid++;
                 if (eligible) strictEligible++;
                 if (!eligible) errors++;
@@ -1031,6 +1143,9 @@ internal static class Accuracy99Runner
                     status = validation.IsValid && campaignBound ? "VALID_SCHEMA" : "INVALID",
                     validatorStatus = authorityEntry.ValidatorStatus,
                     referenceAuthority = authorityEntry.ReferenceAuthority,
+                    goldStatus = authorityEntry.GoldStatus,
+                    finalAuthority = authorityEntry.FinalAuthority,
+                    referenceProvenance = authorityEntry.ReferenceProvenance,
                     eligibleForStrictA99Claim = eligible,
                     representability,
                     errors = validation.Errors,
@@ -1257,7 +1372,9 @@ internal static class Accuracy99Runner
             sourceShaAndPacketShaRequired = true,
             duplicateActiveOccurrence = false,
             sourceFirst = true,
-            independentOfModelPrediction = true,
+            independentOfModelPrediction = "truthful provenance metadata; not an eligibility requirement",
+            finalAuthority = "USER_FINAL_APPROVAL",
+            provenanceDisqualifiesGold = false,
             holdoutSealedUntilReleaseFreeze = true,
         };
         await WriteAsync(Path.Combine(reviewRoot, "packet-schema.v1.json"), JsonSerializer.Serialize(packetSchema, JsonOptions), cancellationToken);

@@ -4,9 +4,9 @@
   "positiveSetOnly": true,
   "exhaustiveCertificate": [
     "reviewedEntireDocument",
-    "headingSetExhaustive",
-    "independentOfModelPrediction"
+    "headingSetExhaustive"
   ],
+  "provenanceField": "independentOfModelPrediction; truthful audit metadata only",
   "requiredHeadingFields": [
     "sourceId",
     "headingOccurrenceId",

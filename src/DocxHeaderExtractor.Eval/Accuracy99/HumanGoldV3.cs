@@ -36,6 +36,11 @@ public sealed record A99HumanGoldV3Document
     [JsonPropertyName("reviewVersion")] public required string ReviewVersion { get; init; }
     [JsonPropertyName("reviewedEntireDocument")] public bool ReviewedEntireDocument { get; init; }
     [JsonPropertyName("headingSetExhaustive")] public bool HeadingSetExhaustive { get; init; }
+    [JsonPropertyName("unresolvedSemanticUncertainty")] public bool UnresolvedSemanticUncertainty { get; init; }
+    [JsonPropertyName("goldStatus")] public string? GoldStatus { get; init; }
+    [JsonPropertyName("finalAuthority")] public string? FinalAuthority { get; init; }
+    [JsonPropertyName("referenceProvenance")] public string? ReferenceProvenance { get; init; }
+    [JsonPropertyName("userFinalApproval")] public bool? UserFinalApproval { get; init; }
     [JsonPropertyName("independentOfModelPrediction")] public bool IndependentOfModelPrediction { get; init; }
     [JsonPropertyName("documentId")] public required string DocumentId { get; init; }
     [JsonPropertyName("documentGroupId")] public required string DocumentGroupId { get; init; }
@@ -69,7 +74,15 @@ public static class A99HumanGoldV3Validator
         RequireText(gold.PacketSha256, "packet-sha-missing", errors);
         if (gold.ReviewedAt == default) errors.Add("reviewed-at-missing");
         if (!gold.ReviewedEntireDocument) errors.Add("reviewed-entire-document-not-declared");
-        if (!gold.IndependentOfModelPrediction) errors.Add("reviewer-independence-not-declared");
+        if (!gold.HeadingSetExhaustive) errors.Add("heading-set-exhaustive-not-declared");
+        if (gold.UnresolvedSemanticUncertainty) errors.Add("unresolved-semantic-uncertainty");
+        if (gold.UserFinalApproval is false) errors.Add("user-final-approval-not-declared");
+        if (gold.FinalAuthority is not null &&
+            !string.Equals(gold.FinalAuthority, A99StrictGoldAuthorityRules.UserFinalAuthority, StringComparison.Ordinal))
+            errors.Add("final-authority-not-user");
+        if (gold.GoldStatus is not null &&
+            !string.Equals(gold.GoldStatus, A99StrictGoldAuthorityRules.StrictGold, StringComparison.Ordinal))
+            errors.Add("gold-status-not-strict-gold");
         if (gold.ArtifactKind.Contains("silver", StringComparison.OrdinalIgnoreCase) ||
             gold.AuthorityClass.Contains("silver", StringComparison.OrdinalIgnoreCase))
             errors.Add("silver-artifact-rejected");

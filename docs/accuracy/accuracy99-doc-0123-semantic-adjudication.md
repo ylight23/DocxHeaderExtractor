@@ -1,8 +1,8 @@
 # DOC-0123 Semantic Adjudication
 
-The reviewed semantic reference for `DOC-0123` contains **317 heading occurrences**.
+The reviewed semantic reference for `DOC-0123` contains **317 heading occurrences** and is user-finalized Strict Gold for semantic evaluation.
 
-This is a model-assisted human-reviewed reference, not strict Human Gold. The strict queue remains source-only and `DOC-0123` remains `NOT_REVIEWED` until an exhaustive, independent Gold file is supplied and validated.
+Review used model assistance, which remains truthful provenance metadata: `FINAL_AUTHORITY=USER`, `GOLD_STATUS=STRICT_GOLD`, `REFERENCE_PROVENANCE=HUMAN_WITH_MODEL_ASSISTANCE`. Exact occurrence/character-span evaluation remains unavailable until source mappings are validated; no spans are fabricated. `DOC-0123` is outside the frozen 15-document active strict cohort.
 
 ## Policy
 

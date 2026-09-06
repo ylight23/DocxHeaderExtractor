@@ -6,7 +6,7 @@ Execution revision: `c43ad1f` (`accuracy99: reconcile DOC-0202 image-only repres
 
 ## Decision
 
-DOC-0202 is semantically adjudicated at 111 headings:
+DOC-0202 is user-finalized semantic Strict Gold at 111 headings:
 
 - 1 document title
 - 9 chapters
@@ -24,20 +24,20 @@ REPRESENTATION_CAUSE = SOURCE_CONTAINS_PAGE_IMAGES_WITHOUT_CHARACTER_TEXT
 CURRENT_B3_CONTRACT_COMPATIBLE = false
 ```
 
-The semantic adjudication remains preserved as `HUMAN_REVIEWED_MODEL_ASSISTED`, with `STRICT_GOLD_ELIGIBLE=false`. It was not converted into Human Gold v3.
+The semantic adjudication is user-finalized Strict Gold with truthful `HUMAN_WITH_MODEL_ASSISTANCE` provenance. It remains semantic-only because the source is not character-span representable; it is not converted into a fabricated span Gold packet.
 
 ## Cohort Action
 
-DOC-0202 was replaced in the 15-document strict cohort. The replacement is `DOC-0123`, selected from DEV metadata only. Its source packet has 4,479 occurrences, 3,214 non-empty source texts, valid source-text hashes/spans, and passed the pre-review representability gate.
+DOC-0202 remains outside the frozen 15-document active cohort because its source is image-only. It is semantically evaluable but not character-span evaluable; no source spans are fabricated. The active cohort replacement for the later assisted `DOC-0123` exclusion is `DOC-0001`, selected from DEV metadata only.
 
-The next action is source-only human review of DOC-0123. Holdout remains sealed and provider calls remain zero.
+The active queue remains source-only human review of `DOC-0205` first. Holdout remains sealed and provider calls remain zero.
 
 ## Verification
 
 ```text
-Focused representability tests = 9/9 PASS
+Focused A99 tests = 26/26 PASS
 Release build = PASS
-Full suite = 1120 total, 1119 passed, 1 failed, 0 skipped
+Full suite = 1122 total, 1121 passed, 1 failed, 0 skipped
 Known failure = N15
 New failures = 0
 Baseline = NOT_RUN

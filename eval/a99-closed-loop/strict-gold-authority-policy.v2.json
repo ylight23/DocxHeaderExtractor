@@ -1,0 +1,20 @@
+{
+  "artifactKind": "a99_strict_gold_authority_policy",
+  "policyVersion": "USER_FINALIZED_STRICT_GOLD_V2",
+  "strictGoldDefinition": "USER_FINAL_APPROVAL plus reviewedEntireDocument plus headingSetExhaustive plus unresolvedSemanticUncertainty=false",
+  "finalAuthorityRule": "FINAL_AUTHORITY=USER is required; model assistance is advisory",
+  "provenanceRule": "REFERENCE_PROVENANCE is truthful audit metadata and does not disqualify Strict Gold",
+  "capabilityRule": "Semantic Gold and character-span evaluation capability are reported independently; unsupported dimensions are NOT_EVALUABLE",
+  "knownFinalizedDocuments": [
+    "DOC-0255",
+    "DOC-0259",
+    "DOC-0202",
+    "DOC-0123"
+  ],
+  "activeCohortPolicy": "Frozen 15-document DEV cohort is unchanged; historical Strict Gold outside the cohort does not reselection-bias it",
+  "globalStrictGoldTotal": 4,
+  "activeStrictCohortDocuments": 15,
+  "activeStrictCohortGoldValid": 0,
+  "holdoutTouched": false,
+  "providerCalls": 0
+}

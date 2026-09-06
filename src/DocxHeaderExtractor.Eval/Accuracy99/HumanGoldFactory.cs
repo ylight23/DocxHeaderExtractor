@@ -132,7 +132,6 @@ public static class A99HumanGoldValidator
         RequireText(gold.SourceDocumentSha256, "source-sha-missing", errors);
         RequireText(gold.PacketSha256, "packet-sha-missing", errors);
         if (gold.ReviewedAt == default) errors.Add("reviewed-at-missing");
-        if (!gold.IndependentOfModelPrediction) errors.Add("reviewer-independence-not-declared");
         if (gold.ArtifactKind.Contains("silver", StringComparison.OrdinalIgnoreCase) ||
             gold.AuthorityClass.Contains("silver", StringComparison.OrdinalIgnoreCase))
             errors.Add("silver-artifact-rejected");

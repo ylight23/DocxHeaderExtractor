@@ -5,6 +5,9 @@
   "sourceShaAndPacketShaRequired": true,
   "duplicateActiveOccurrence": false,
   "sourceFirst": true,
-  "independentOfModelPrediction": true,
+  "independentOfModelPrediction": "preserve truthful provenance; do not use for Strict Gold eligibility",
+  "strictGoldAuthority": "USER_FINAL_APPROVAL",
+  "provenanceDisqualifiesGold": false,
+  "capabilitiesAreIndependent": true,
   "holdoutSealedUntilReleaseFreeze": true
 }

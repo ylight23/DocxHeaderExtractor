@@ -5,7 +5,18 @@
   "positiveSetOnly": true,
   "reviewedEntireDocument": true,
   "headingSetExhaustive": true,
-  "independentOfModelPrediction": true,
+  "authorityFields": [
+    "goldStatus",
+    "finalAuthority",
+    "referenceProvenance",
+    "userFinalApproval",
+    "reviewedEntireDocument",
+    "headingSetExhaustive",
+    "unresolvedSemanticUncertainty"
+  ],
+  "independentOfModelPrediction": "truthful provenance metadata; not an eligibility requirement",
+  "strictGoldEligibility": "goldStatus=STRICT_GOLD and finalAuthority=USER and userFinalApproval=true and reviewedEntireDocument=true and headingSetExhaustive=true and unresolvedSemanticUncertainty=false",
+  "evaluationCapabilities": ["semanticEvaluable", "occurrenceEvaluable", "characterSpanEvaluable", "roleEvaluable", "levelEvaluable", "parentEvaluable", "hierarchyEvaluable"],
   "requiredHeadingFields": [
     "headingOccurrenceId",
     "sourceId",

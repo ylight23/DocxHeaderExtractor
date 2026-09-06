@@ -90,7 +90,7 @@ public sealed class Accuracy99GoldV3Tests
     }
 
     [Fact]
-    public void Unsure_span_blocks_exhaustive_certificate_without_collapsing_confirmed_spans()
+    public void Unsure_span_fails_closed_for_strict_gold_without_collapsing_confirmed_spans()
     {
         var packet = Packet("prefix heading A and heading B suffix");
         var gold = Gold(packet, Rows(packet)) with
@@ -101,7 +101,8 @@ public sealed class Accuracy99GoldV3Tests
 
         var result = A99HumanGoldV3Validator.Validate(packet, gold);
 
-        Assert.True(result.IsValid, string.Join("; ", result.Errors));
+        Assert.False(result.IsValid);
+        Assert.Contains("heading-set-exhaustive-not-declared", result.Errors);
         Assert.Equal(2, gold.Rows.Count);
         Assert.Single(gold.UnsureSpans);
     }
