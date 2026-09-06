@@ -506,8 +506,11 @@ internal static class Accuracy99Runner
         if (!Directory.Exists(sourceRoot)) throw new DirectoryNotFoundException($"A99 source root missing: {sourceRoot}");
 
         var cohortPath = Path.Combine(repoRoot, "eval", "a99-closed-loop", "strict-dev-gold-cohort.v1.json");
+        var authorityPath = Path.Combine(repoRoot, "eval", "a99-closed-loop", "strict-gold-authority.v1.json");
         var cohortNode = JsonNode.Parse(await File.ReadAllTextAsync(cohortPath, cancellationToken))?.AsObject()
                          ?? throw new InvalidDataException("strict cohort JSON is not an object");
+        var authorityNode = JsonNode.Parse(await File.ReadAllTextAsync(authorityPath, cancellationToken))?.AsObject()
+                            ?? throw new InvalidDataException("strict authority JSON is not an object");
         var cohort = DeserializeRequired<A99StrictDevGoldCohortArtifact>(cohortNode.ToJsonString());
         if (cohort.StrictCohortDocumentCount != 15 || cohort.StrictCohort.Count != 15)
             throw new InvalidDataException("strict-cohort-must-contain-15-documents");
@@ -535,7 +538,9 @@ internal static class Accuracy99Runner
         {
             cancellationToken.ThrowIfCancellationRequested();
             var current = ToStrictPreflightCandidate(original);
-            var attempt = TryCreateStrictPreflightPacket(current, sourceRoot);
+            var attempt = HasAssistedSemanticReference(repoRoot, original.DocumentId)
+                ? StrictPreflightAttempt.Failed("assisted-semantic-reference-excluded-from-strict")
+                : TryCreateStrictPreflightPacket(current, sourceRoot);
             var selected = current;
             var replaced = false;
 
@@ -623,6 +628,8 @@ internal static class Accuracy99Runner
 
         UpdateStrictCohortJson(cohortNode, activeRows.Values.OrderBy(x => x.DocumentId, StringComparer.Ordinal).ToArray(), replacements);
         await WriteAsync(cohortPath, cohortNode.ToJsonString(new JsonSerializerOptions { WriteIndented = true }), cancellationToken);
+        UpdateStrictAuthorityJson(authorityNode, cohort.StrictCohort.Select(x => x.DocumentId).ToHashSet(StringComparer.Ordinal), activeRows.Values);
+        await WriteAsync(authorityPath, authorityNode.ToJsonString(new JsonSerializerOptions { WriteIndented = true }), cancellationToken);
 
         var ordered = results
             .OrderBy(x => x.SourceOccurrenceCount)
@@ -782,6 +789,66 @@ internal static class Accuracy99Runner
                 history.Add(JsonNode.Parse(JsonSerializer.Serialize(replacement, JsonOptions)));
             root["preflightReplacements"] = history;
         }
+    }
+
+    private static bool HasAssistedSemanticReference(string repoRoot, string documentId)
+    {
+        var path = Path.Combine(repoRoot, "eval", "a99-closed-loop", "review", $"{documentId.ToLowerInvariant().Replace("doc-", "doc-")}-semantic-adjudication.v1.json");
+        if (!File.Exists(path)) return false;
+        try
+        {
+            using var document = JsonDocument.Parse(File.ReadAllText(path));
+            var root = document.RootElement;
+            var authority = root.TryGetProperty("referenceAuthority", out var authorityProperty)
+                ? authorityProperty.GetString()
+                : null;
+            var strictEligible = root.TryGetProperty("strictGoldEligible", out var eligibleProperty) && eligibleProperty.GetBoolean();
+            return string.Equals(authority, A99StrictGoldAuthorityRules.HumanReviewedModelAssisted, StringComparison.Ordinal) && !strictEligible;
+        }
+        catch (JsonException)
+        {
+            return true;
+        }
+    }
+
+    private static void UpdateStrictAuthorityJson(
+        JsonObject root,
+        IReadOnlySet<string> previousStrictIds,
+        IEnumerable<A99StrictCohortDocument> activeDocuments)
+    {
+        var active = activeDocuments.ToArray();
+        var activeIds = active.Select(x => x.DocumentId).ToHashSet(StringComparer.Ordinal);
+        var documents = root["documents"] as JsonArray ?? new JsonArray();
+        for (var index = documents.Count - 1; index >= 0; index--)
+        {
+            var id = documents[index]?["documentId"]?.GetValue<string>();
+            if (id is not null && previousStrictIds.Contains(id) && !activeIds.Contains(id))
+                documents.RemoveAt(index);
+        }
+
+        var existing = documents
+            .Select(x => x?["documentId"]?.GetValue<string>())
+            .Where(x => x is not null)
+            .ToHashSet(StringComparer.Ordinal)!;
+        foreach (var document in active.Where(x => !existing.Contains(x.DocumentId)))
+        {
+            documents.Add(new JsonObject
+            {
+                ["documentId"] = document.DocumentId,
+                ["validatorStatus"] = "MISSING",
+                ["referenceAuthority"] = A99StrictGoldAuthorityRules.NotReviewed,
+                ["eligibleForStrictA99Claim"] = false,
+                ["exposureStatus"] = "NOT_MODEL_ASSISTED",
+                ["note"] = "Replacement strict slot selected by representability preflight; source-only human review pending.",
+            });
+        }
+
+        root["documents"] = documents;
+        root["strictCohortDocumentCount"] = active.Length;
+        root["cohortRevision"] = "v3";
+        root["status"] = "FROZEN_COHORT_NOT_READY_FOR_BASELINE";
+        root["holdoutStatus"] = "SEALED";
+        root["providerCalls"] = 0;
     }
 
     private static IReadOnlyList<StrictPreflightInventoryItem> ReadStrictPreflightInventory(string path)

@@ -2,28 +2,150 @@
   "artifactKind": "a99_strict_gold_authority",
   "schemaVersion": "a99-strict-gold-authority-v1",
   "status": "FROZEN_COHORT_NOT_READY_FOR_BASELINE",
-  "cohortRevision": "v2",
+  "cohortRevision": "v3",
   "strictCohortDocumentCount": 15,
   "documents": [
-    { "documentId": "DOC-0264", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
-    { "documentId": "DOC-0265", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
-    { "documentId": "DOC-0219", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
-    { "documentId": "DOC-0216", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
-    { "documentId": "DOC-0243", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
-    { "documentId": "DOC-0258", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
-    { "documentId": "DOC-0252", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
-    { "documentId": "DOC-0256", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
-    { "documentId": "DOC-0205", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
-    { "documentId": "DOC-0123", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Replacement strict slot; source packet passed representability gate; semantic reference 317 is model-assisted and does not replace source-only human review." },
-    { "documentId": "DOC-0201", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
-    { "documentId": "DOC-0185", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
-    { "documentId": "DOC-0200", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Frozen strict cohort; human review pending." },
-    { "documentId": "DOC-0116", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Replacement selected from DEV metadata only; packet/review pending." },
-    { "documentId": "DOC-0122", "validatorStatus": "MISSING", "referenceAuthority": "NOT_REVIEWED", "eligibleForStrictA99Claim": false, "exposureStatus": "NOT_MODEL_ASSISTED", "note": "Replacement selected from DEV metadata only; packet/review pending." },
-    { "documentId": "DOC-0255", "validatorStatus": "VALID", "referenceAuthority": "HUMAN_REVIEWED_MODEL_ASSISTED", "eligibleForStrictA99Claim": false, "exposureStatus": "MODEL_ASSISTED", "note": "Schema-valid assisted pilot; excluded from strict claim." },
-    { "documentId": "DOC-0259", "validatorStatus": "VALID", "referenceAuthority": "HUMAN_REVIEWED_MODEL_ASSISTED", "eligibleForStrictA99Claim": false, "exposureStatus": "MODEL_ASSISTED", "note": "Schema-valid assisted pilot; excluded from strict claim." }
+    {
+      "documentId": "DOC-0264",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Frozen strict cohort; human review pending."
+    },
+    {
+      "documentId": "DOC-0265",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Frozen strict cohort; human review pending."
+    },
+    {
+      "documentId": "DOC-0219",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Frozen strict cohort; human review pending."
+    },
+    {
+      "documentId": "DOC-0216",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Frozen strict cohort; human review pending."
+    },
+    {
+      "documentId": "DOC-0243",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Frozen strict cohort; human review pending."
+    },
+    {
+      "documentId": "DOC-0258",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Frozen strict cohort; human review pending."
+    },
+    {
+      "documentId": "DOC-0252",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Frozen strict cohort; human review pending."
+    },
+    {
+      "documentId": "DOC-0256",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Frozen strict cohort; human review pending."
+    },
+    {
+      "documentId": "DOC-0205",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Frozen strict cohort; human review pending."
+    },
+    {
+      "documentId": "DOC-0201",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Frozen strict cohort; human review pending."
+    },
+    {
+      "documentId": "DOC-0185",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Frozen strict cohort; human review pending."
+    },
+    {
+      "documentId": "DOC-0200",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Frozen strict cohort; human review pending."
+    },
+    {
+      "documentId": "DOC-0116",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Replacement selected from DEV metadata only; packet/review pending."
+    },
+    {
+      "documentId": "DOC-0122",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Replacement selected from DEV metadata only; packet/review pending."
+    },
+    {
+      "documentId": "DOC-0255",
+      "validatorStatus": "VALID",
+      "referenceAuthority": "HUMAN_REVIEWED_MODEL_ASSISTED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "MODEL_ASSISTED",
+      "note": "Schema-valid assisted pilot; excluded from strict claim."
+    },
+    {
+      "documentId": "DOC-0259",
+      "validatorStatus": "VALID",
+      "referenceAuthority": "HUMAN_REVIEWED_MODEL_ASSISTED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "MODEL_ASSISTED",
+      "note": "Schema-valid assisted pilot; excluded from strict claim."
+    },
+    {
+      "documentId": "DOC-0001",
+      "validatorStatus": "MISSING",
+      "referenceAuthority": "NOT_REVIEWED",
+      "eligibleForStrictA99Claim": false,
+      "exposureStatus": "NOT_MODEL_ASSISTED",
+      "note": "Replacement strict slot selected by representability preflight; source-only human review pending."
+    }
   ],
-  "assistedPilotDocumentIds": [ "DOC-0255", "DOC-0259" ],
+  "assistedPilotDocumentIds": [
+    "DOC-0255",
+    "DOC-0259"
+  ],
   "holdoutStatus": "SEALED",
   "providerCalls": 0,
   "replacedDocuments": [

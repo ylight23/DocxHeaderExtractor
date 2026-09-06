@@ -4,7 +4,7 @@ The DEV strict queue is frozen only after parser-owned source representability p
 
 - Active documents: 15
 - Representable documents: 15
-- Replacements: 0
+- Replacements: 1
 - Holdout touched: false
 - Provider calls: 0
 
@@ -14,14 +14,14 @@ The DEV strict queue is frozen only after parser-owned source representability p
 | ---: | --- | ---: | --- | --- |
 | 1 | `DOC-0205` | 4 | `todo10_8/heading_corpus_95_word/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx` | `CharacterSpanRepresentable` |
 | 2 | `DOC-0264` | 4 | `todo10_8/heading_corpus_95_word/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.docx` | `CharacterSpanRepresentable` |
-| 3 | `DOC-0258` | 173 | `todo10_8/heading_corpus_95_word/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx` | `CharacterSpanRepresentable` |
-| 4 | `DOC-0252` | 244 | `todo10_8/heading_corpus_95_word/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.docx` | `CharacterSpanRepresentable` |
-| 5 | `DOC-0256` | 258 | `todo10_8/heading_corpus_95_word/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.docx` | `CharacterSpanRepresentable` |
-| 6 | `DOC-0201` | 1062 | `todo10_8/heading_corpus_95_word/01_phap_quy/021_TT_78-2021_Hoa_don_dien_tu.docx` | `CharacterSpanRepresentable` |
-| 7 | `DOC-0185` | 1319 | `todo10_8/heading_corpus_95_word/01_phap_quy/005_Luat_Dau_thau_22-2023-QH15_EN.docx` | `CharacterSpanRepresentable` |
-| 8 | `DOC-0265` | 2208 | `todo10_8/heading_corpus_95_word/06_dich_song_ngu/085_Luat_Nha_o_2023_EN.docx` | `CharacterSpanRepresentable` |
-| 9 | `DOC-0116` | 3590 | `todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/031_WB_Framework_Agreement_Consulting_2025.docx` | `CharacterSpanRepresentable` |
-| 10 | `DOC-0123` | 4479 | `todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/038_WB_Works_DB_SingleStage_NoSEASH_2025.docx` | `CharacterSpanRepresentable` |
+| 3 | `DOC-0001` | 14 | `bench\01-style-chuan.docx` | `CharacterSpanRepresentable` |
+| 4 | `DOC-0258` | 173 | `todo10_8/heading_corpus_95_word/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx` | `CharacterSpanRepresentable` |
+| 5 | `DOC-0252` | 244 | `todo10_8/heading_corpus_95_word/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.docx` | `CharacterSpanRepresentable` |
+| 6 | `DOC-0256` | 258 | `todo10_8/heading_corpus_95_word/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.docx` | `CharacterSpanRepresentable` |
+| 7 | `DOC-0201` | 1062 | `todo10_8/heading_corpus_95_word/01_phap_quy/021_TT_78-2021_Hoa_don_dien_tu.docx` | `CharacterSpanRepresentable` |
+| 8 | `DOC-0185` | 1319 | `todo10_8/heading_corpus_95_word/01_phap_quy/005_Luat_Dau_thau_22-2023-QH15_EN.docx` | `CharacterSpanRepresentable` |
+| 9 | `DOC-0265` | 2208 | `todo10_8/heading_corpus_95_word/06_dich_song_ngu/085_Luat_Nha_o_2023_EN.docx` | `CharacterSpanRepresentable` |
+| 10 | `DOC-0116` | 3590 | `todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/031_WB_Framework_Agreement_Consulting_2025.docx` | `CharacterSpanRepresentable` |
 | 11 | `DOC-0219` | 4907 | `todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/039_WB_EPC_Turnkey_SingleStage_2025.docx` | `CharacterSpanRepresentable` |
 | 12 | `DOC-0216` | 5753 | `todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/036_WB_Plant_SingleStage_2025.docx` | `CharacterSpanRepresentable` |
 | 13 | `DOC-0122` | 5958 | `todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/037_WB_Plant_TwoStage_2025.docx` | `CharacterSpanRepresentable` |
