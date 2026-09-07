@@ -847,12 +847,20 @@ public static class PdfLayoutEvidenceOutline
                 ? $"audit-only:analyst-low-docx-alignment:{recoveredHeadings.Length}/{accepted.Length}"
                 : summary;
         var parserBlocks = PdfSemanticBlockGrouper.Build(context.Annotations);
-        var sourceCatalog = DocumentSourceCatalogBuilder.FromPdfParserBlocks(parserBlocks);
+        // The authority route may materialize a supplemental/window candidate that is not part of
+        // the standard grouping. Keep every parser-owned representation in the catalog so the
+        // selected PDF block is joined by identity, while retaining physical line order.
+        var sourceCatalog = DocumentSourceCatalogBuilder.FromPdfParserBlocks(
+            parserBlocks.Concat(context.Candidates).ToArray(), context.Lines);
         var finalStructure = PdfFinalStructureProjection.Project(
             FileSha256(originalInputPath), audit.ValidatedStructures, audit.HierarchyFacts,
             PdfCanonicalGrounding.FromGroundedHeadings(recoveredHeadings));
         var decisions = PdfOutputDecisionPolicy.Decide(finalStructure);
-        var materialized = StructuralAuthorityMaterializer.Materialize(finalStructure, decisions, sourceCatalog);
+        var materialized = StructuralAuthorityMaterializer.Materialize(
+            finalStructure,
+            decisions,
+            sourceCatalog,
+            StructuralMaterializationSourceAuthority.PdfParserSource);
         var structuralLane = PdfNonHeadingStructuralProducer.MaterializeLane(selected, blockAnalysis.Decisions, candidateContexts);
         var relationProposals = materialized.Structure.Relations
             .Select(relation => new StructuralRelationProposal(

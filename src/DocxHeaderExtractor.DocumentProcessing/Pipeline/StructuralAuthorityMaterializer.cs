@@ -17,10 +17,19 @@ public static class StructuralAuthorityMaterializer
     public static StructuralMaterializationResult Materialize(
         PdfFinalStructure finalStructure,
         IReadOnlyList<PdfOutputDecision> decisions,
-        DocumentSourceCatalog? sourceCatalog = null)
+        DocumentSourceCatalog? sourceCatalog = null,
+        StructuralMaterializationSourceAuthority? sourceAuthority = null)
     {
         ArgumentNullException.ThrowIfNull(finalStructure);
         ArgumentNullException.ThrowIfNull(decisions);
+
+        // The source-bearing production route supplies this explicitly. The inferred value is
+        // retained only for existing catalog-free compatibility/shadow callers.
+        var authority = sourceAuthority ?? (sourceCatalog is null
+            ? StructuralMaterializationSourceAuthority.CanonicalDocumentSource
+            : StructuralMaterializationSourceAuthority.PdfParserSource);
+        if (authority == StructuralMaterializationSourceAuthority.PdfParserSource && sourceCatalog is null)
+            throw new InvalidOperationException("pdf-source-catalog-missing");
 
         var decisionById = decisions
             .GroupBy(decision => decision.HeadingId, StringComparer.Ordinal)
@@ -31,7 +40,8 @@ public static class StructuralAuthorityMaterializer
 
         foreach (var heading in finalStructure.Headings)
         {
-            if (heading.SourceAnchor is null)
+            if (authority == StructuralMaterializationSourceAuthority.CanonicalDocumentSource &&
+                heading.SourceAnchor is null)
             {
                 sourceUnjoined++;
                 continue;
@@ -44,35 +54,29 @@ public static class StructuralAuthorityMaterializer
                 ? nameof(HeadingDecisionStatus.AutoAcceptedEvidence)
                 : nameof(HeadingDecisionStatus.RequiresReview);
             var reasons = decision?.Reasons ?? [];
-            // The catalog-bearing overload is the production PDF path. The catalog-free form is
-            // retained for the compatibility/shadow oracle: it must continue to project the old
-            // DOCX-grounded identity until those callers migrate.
-            var usesPdfParserSource = sourceCatalog is not null && heading.PdfEvidence is not null;
-            var sourceId = usesPdfParserSource
-                ? heading.PdfEvidence!.BlockId
-                : heading.SourceAnchor.StableId ?? heading.Id;
-            var sourceUnit = usesPdfParserSource
-                ? sourceCatalog?.Units.FirstOrDefault(unit => unit.SourceId == sourceId)
-                : null;
-            var sourceText = sourceUnit?.Text ?? heading.SourceText;
-            var sourceSpan = usesPdfParserSource && heading.PdfEvidence is { } pdfEvidence
-                ? new StructuralSpan(pdfEvidence.Span.Start, pdfEvidence.Span.End)
-                : new StructuralSpan(heading.SourceAnchor.Span.Start, heading.SourceAnchor.Span.End);
+            var source = ResolveSource(heading, authority, sourceCatalog);
+            if (!source.ProposedSpan.IsValidFor(source.Text) ||
+                source.ProposedSpan.Start < source.RawSpan.Start ||
+                source.ProposedSpan.End > source.RawSpan.End)
+            {
+                throw new StructuralMaterializationException(
+                    heading.Id,
+                    authority,
+                    authority == StructuralMaterializationSourceAuthority.PdfParserSource
+                        ? "pdf-source-span-invalid"
+                        : "canonical-source-span-invalid",
+                    source.SourceId,
+                    source.ProposedSpan,
+                    source.Text.Length,
+                    source.SourceUnitFound);
+            }
+
             var sourceFacts = new SourceFacts
             {
-                SourceId = sourceId,
-                RawText = sourceText,
-                Source = new SourceAnchor
-                {
-                    SourceType = usesPdfParserSource ? "pdf" : "docx",
-                    ParagraphId = sourceId,
-                    ParagraphIndex = sourceUnit?.SourceOrdinal ??
-                        (usesPdfParserSource ? PdfBlockOrdinal(sourceId) : heading.SourceAnchor.ParagraphIndex),
-                    Page = usesPdfParserSource ? heading.PdfEvidence?.Page : null,
-                    RenderBlockId = usesPdfParserSource ? heading.PdfEvidence?.BlockId : null,
-                    RenderLineIds = usesPdfParserSource ? heading.PdfEvidence?.LineIds ?? [] : [],
-                },
-                RawSpan = new SourceTextSpan(0, sourceText.Length),
+                SourceId = source.SourceId,
+                RawText = source.Text,
+                Source = source.Anchor,
+                RawSpan = new SourceTextSpan(source.RawSpan.Start, source.RawSpan.End),
             };
             var candidate = new StructuralCandidate
             {
@@ -86,14 +90,27 @@ public static class StructuralAuthorityMaterializer
                 Role = ElementRole(heading.Role),
                 ProposedSources =
                 [
-                    new ProposedSourceReference(sourceId,
-                        sourceSpan),
+                    new ProposedSourceReference(source.SourceId, source.ProposedSpan),
                 ],
                 ProposedParentId = heading.ParentId is { } parent && elementIdByHeadingId.ContainsKey(parent)
                     ? elementIdByHeadingId[parent]
                     : null,
                 ProposedLevel = heading.Level,
             };
+            var validation = StructuralProposalValidator.Validate(
+                candidate, proposal, elementIdByHeadingId.Values.ToHashSet(StringComparer.Ordinal));
+            if (!validation.Accepted)
+            {
+                throw new StructuralMaterializationException(
+                    heading.Id,
+                    authority,
+                    validation.RejectionReason ?? "structural-proposal-rejected",
+                    source.SourceId,
+                    source.ProposedSpan,
+                    source.Text.Length,
+                    source.SourceUnitFound);
+            }
+
             var element = StructuralProposalValidator.Materialize(
                 candidate, proposal, elementId,
                 new StructuralDecision("model", decisionStatus, 1.0, ConfidenceBasis),
@@ -101,11 +118,11 @@ public static class StructuralAuthorityMaterializer
                 new StructuralProjectionMetadata
                 {
                     CompatibilitySourceId = heading.Id,
-                    CompatibilitySourceOrdinal = heading.SourceAnchor.ParagraphIndex,
-                    CompatibilityStableId = heading.SourceAnchor.StableId,
-                    CompatibilityHeadingSpan = new StructuralSpan(
-                        heading.SourceAnchor.Span.Start,
-                        heading.SourceAnchor.Span.End),
+                    CompatibilitySourceOrdinal = heading.SourceAnchor?.ParagraphIndex,
+                    CompatibilityStableId = heading.SourceAnchor?.StableId,
+                    CompatibilityHeadingSpan = heading.SourceAnchor is { } compatibilityAnchor
+                        ? new StructuralSpan(compatibilityAnchor.Span.Start, compatibilityAnchor.Span.End)
+                        : null,
                     CompatibilityText = heading.Text,
                     CompatibilityLevel = heading.Level,
                     CompatibilityLevelIsSet = true,
@@ -114,11 +131,21 @@ public static class StructuralAuthorityMaterializer
                     AcceptanceSignature = reasons.Count > 0 ? string.Join(",", reasons) : null,
                 });
             if (element is null)
-                throw new InvalidOperationException($"Validated PDF heading '{heading.Id}' failed generic materialization.");
+                throw new StructuralMaterializationException(
+                    heading.Id,
+                    authority,
+                    "structural-proposal-materialization-failed",
+                    source.SourceId,
+                    source.ProposedSpan,
+                    source.Text.Length,
+                    source.SourceUnitFound);
 
             elements.Add(element with
             {
-                Sources = element.Sources.Select(item => item with { StableId = heading.SourceAnchor.StableId }).ToArray(),
+                Sources = element.Sources.Select(item => item with
+                {
+                    StableId = source.CompatibilityStableId,
+                }).ToArray(),
             });
         }
 
@@ -144,11 +171,68 @@ public static class StructuralAuthorityMaterializer
 
     private static string ElementId(string headingId) => $"structural:pdf:{headingId}";
 
-    private static int PdfBlockOrdinal(string sourceId) =>
-        sourceId.StartsWith("b", StringComparison.Ordinal) &&
-        int.TryParse(sourceId.AsSpan(1), out var ordinal)
-            ? Math.Max(0, ordinal - 1)
-            : 0;
+    private static MaterializationSource ResolveSource(
+        PdfFinalHeading heading,
+        StructuralMaterializationSourceAuthority authority,
+        DocumentSourceCatalog? sourceCatalog)
+    {
+        if (authority == StructuralMaterializationSourceAuthority.PdfParserSource)
+        {
+            var evidence = heading.PdfEvidence ?? throw new StructuralMaterializationException(
+                heading.Id, authority, "pdf-source-evidence-missing", null, null, null, false);
+            var pdfSourceUnit = sourceCatalog!.Units.FirstOrDefault(unit =>
+                string.Equals(unit.SourceId, evidence.BlockId, StringComparison.Ordinal));
+            if (pdfSourceUnit is null)
+                throw new StructuralMaterializationException(
+                    heading.Id, authority, "pdf-source-not-in-catalog", evidence.BlockId,
+                    new StructuralSpan(evidence.Span.Start, evidence.Span.End), null, false);
+
+            return new MaterializationSource(
+                pdfSourceUnit.SourceId,
+                pdfSourceUnit.Text,
+                pdfSourceUnit.SourceSpan,
+                new StructuralSpan(evidence.Span.Start, evidence.Span.End),
+                pdfSourceUnit.SourceAnchor,
+                pdfSourceUnit.SourceAnchor.ParagraphId,
+                true);
+        }
+
+        var anchor = heading.SourceAnchor ?? throw new StructuralMaterializationException(
+            heading.Id, authority, "canonical-source-anchor-missing", null, null, null, false);
+        var sourceId = anchor.StableId ?? heading.Id;
+        var canonicalUnit = sourceCatalog?.Units.FirstOrDefault(unit =>
+            string.Equals(unit.SourceId, sourceId, StringComparison.Ordinal));
+        if (sourceCatalog is not null && canonicalUnit is null)
+            throw new StructuralMaterializationException(
+                heading.Id, authority, "canonical-source-not-in-catalog", sourceId,
+                new StructuralSpan(anchor.Span.Start, anchor.Span.End), null, false);
+
+        var text = canonicalUnit?.Text ?? heading.SourceText;
+        var sourceSpan = canonicalUnit?.SourceSpan ?? new StructuralSpan(0, text.Length);
+        var sourceAnchor = canonicalUnit?.SourceAnchor ?? new SourceAnchor
+        {
+            SourceType = "docx",
+            ParagraphId = anchor.StableId,
+            ParagraphIndex = anchor.ParagraphIndex,
+        };
+        return new MaterializationSource(
+            sourceId,
+            text,
+            sourceSpan,
+            new StructuralSpan(anchor.Span.Start, anchor.Span.End),
+            sourceAnchor,
+            anchor.StableId,
+            canonicalUnit is not null);
+    }
+
+    private sealed record MaterializationSource(
+        string SourceId,
+        string Text,
+        StructuralSpan RawSpan,
+        StructuralSpan ProposedSpan,
+        SourceAnchor Anchor,
+        string? CompatibilityStableId,
+        bool SourceUnitFound);
 
     private static StructuralElementType ElementType(string role) => role switch
     {
@@ -170,3 +254,54 @@ public sealed record StructuralMaterializationResult(
     IReadOnlySet<string> EmittedElementIds,
     int UnjoinedSourceCount,
     int UnjoinedParentCount);
+
+public enum StructuralMaterializationSourceAuthority
+{
+    CanonicalDocumentSource,
+    PdfParserSource,
+}
+
+public sealed class StructuralMaterializationException : InvalidOperationException
+{
+    public StructuralMaterializationException(
+        string headingId,
+        StructuralMaterializationSourceAuthority sourceAuthority,
+        string reason,
+        string? sourceId,
+        StructuralSpan? proposedSpan,
+        int? sourceTextLength,
+        bool sourceUnitFound)
+        : base(BuildMessage(headingId, sourceAuthority, reason, sourceId, proposedSpan, sourceTextLength,
+            sourceUnitFound))
+    {
+        HeadingId = headingId;
+        SourceAuthority = sourceAuthority;
+        Reason = reason;
+        SourceId = sourceId;
+        ProposedSpan = proposedSpan;
+        SourceTextLength = sourceTextLength;
+        SourceUnitFound = sourceUnitFound;
+    }
+
+    public string HeadingId { get; }
+    public StructuralMaterializationSourceAuthority SourceAuthority { get; }
+    public string Reason { get; }
+    public string? SourceId { get; }
+    public StructuralSpan? ProposedSpan { get; }
+    public int? SourceTextLength { get; }
+    public bool SourceUnitFound { get; }
+
+    private static string BuildMessage(
+        string headingId,
+        StructuralMaterializationSourceAuthority sourceAuthority,
+        string reason,
+        string? sourceId,
+        StructuralSpan? proposedSpan,
+        int? sourceTextLength,
+        bool sourceUnitFound) =>
+        $"Structural materialization failed for heading '{headingId}' using {sourceAuthority}: {reason}; " +
+        $"sourceId='{sourceId ?? "<none>"}'; " +
+        $"span={(proposedSpan is null ? "<none>" : $"{proposedSpan.Start}..{proposedSpan.End}")}; " +
+        $"sourceTextLength={(sourceTextLength?.ToString() ?? "<none>")}; " +
+        $"sourceUnitFound={sourceUnitFound}.";
+}

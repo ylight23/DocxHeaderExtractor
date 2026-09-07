@@ -42,14 +42,57 @@ public static class DocumentSourceCatalogBuilder
                 new StructuralSpan(0, fact.RawText.Length))));
     }
 
-    /// <summary>Builds the PDF catalog from parser-owned semantic blocks, never from structure text.</summary>
-    internal static DocumentSourceCatalog FromPdfParserBlocks(IReadOnlyList<PdfSemanticBlock> blocks)
+    /// <summary>
+    /// Builds the PDF catalog from parser-owned semantic blocks, never from structure text. The
+    /// optional line inventory keeps source ordinals tied to physical parser order even when a
+    /// supplemental/window representation is the selected source unit.
+    /// </summary>
+    internal static DocumentSourceCatalog FromPdfParserBlocks(
+        IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlyList<PdfLine>? sourceLines = null)
     {
         ArgumentNullException.ThrowIfNull(blocks);
-        return FromSourceFacts(blocks.Select((block, index) =>
+        var uniqueBlocks = blocks
+            .GroupBy(block => block.Id, StringComparer.Ordinal)
+            .Select(group =>
+            {
+                var first = group.First();
+                var firstLineIds = first.Lines.Select(PdfCandidateProvenance.LineId).ToArray();
+                if (group.Skip(1).Any(other =>
+                    !firstLineIds.SequenceEqual(other.Lines.Select(PdfCandidateProvenance.LineId)) ||
+                    !string.Equals(first.Text, other.Text, StringComparison.Ordinal)))
+                {
+                    throw new InvalidOperationException(
+                        $"ambiguous_pdf_source_representation: '{first.Id}' has multiple parser representations.");
+                }
+
+                return first;
+            })
+            .ToArray();
+        var lineIndexById = sourceLines is null
+            ? null
+            : sourceLines
+                .Select((line, index) => (Id: PdfCandidateProvenance.LineId(line), Index: index))
+                .GroupBy(item => item.Id, StringComparer.Ordinal)
+                .ToDictionary(group => group.Key, group => group.First().Index, StringComparer.Ordinal);
+
+        return FromSourceFacts(uniqueBlocks.Select((block, index) =>
         {
             var fact = SourceFactsBuilder.FromPdfBlock(block);
-            return fact with { Source = fact.Source with { ParagraphIndex = index } };
+            var sourceOrdinal = block.Lines
+                .Select(PdfCandidateProvenance.LineId)
+                .Where(lineId => lineIndexById?.ContainsKey(lineId) ?? false)
+                .Select(lineId => lineIndexById![lineId])
+                .DefaultIfEmpty(index)
+                .Min();
+            return fact with
+            {
+                Source = fact.Source with
+                {
+                    ParagraphIndex = sourceOrdinal,
+                    RenderLineIds = block.Lines.Select(PdfCandidateProvenance.LineId).ToArray(),
+                },
+            };
         }));
     }
 }

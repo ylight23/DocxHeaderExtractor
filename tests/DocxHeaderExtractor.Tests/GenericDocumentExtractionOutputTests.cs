@@ -215,7 +215,10 @@ public sealed class GenericDocumentExtractionOutputTests
         ]);
 
         var materialized = StructuralAuthorityMaterializer.Materialize(
-            final, PdfOutputDecisionPolicy.Decide(final), catalog);
+            final,
+            PdfOutputDecisionPolicy.Decide(final),
+            catalog,
+            StructuralMaterializationSourceAuthority.PdfParserSource);
         var source = Assert.Single(materialized.Structure.Elements).Sources.Single();
 
         Assert.Equal("b1", source.SourceId);
