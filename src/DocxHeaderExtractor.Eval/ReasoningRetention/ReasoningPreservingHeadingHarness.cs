@@ -145,6 +145,8 @@ public sealed class ReasoningPreservingHeadingHarness
                     UserPrompt = ReasoningPrompt.BuildUser(segment, route == ReasoningRoute.ReasoningPreservingShadow),
                     SourceOccurrenceIds = segment.SourceOccurrenceIds,
                     OwnedSourceOccurrenceIds = segment.OwnedSourceOccurrenceIds,
+                    OwnedStartOrdinal = segment.OwnedStartOrdinal,
+                    OwnedEndOrdinal = segment.OwnedEndOrdinal,
                     ConfigurationSignature = ConfigurationSignature(route),
                 };
 

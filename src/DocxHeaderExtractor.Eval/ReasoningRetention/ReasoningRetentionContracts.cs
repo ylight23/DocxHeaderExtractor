@@ -91,6 +91,8 @@ public sealed record ReasoningModelRequest
     [JsonPropertyName("userPrompt")] public required string UserPrompt { get; init; }
     [JsonPropertyName("sourceOccurrenceIds")] public required IReadOnlyList<string> SourceOccurrenceIds { get; init; }
     [JsonPropertyName("ownedSourceOccurrenceIds")] public required IReadOnlyList<string> OwnedSourceOccurrenceIds { get; init; }
+    [JsonPropertyName("ownedStartOrdinal")] public int? OwnedStartOrdinal { get; init; }
+    [JsonPropertyName("ownedEndOrdinal")] public int? OwnedEndOrdinal { get; init; }
     [JsonPropertyName("configurationSignature")] public required string ConfigurationSignature { get; init; }
 }
 

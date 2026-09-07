@@ -326,6 +326,8 @@ public sealed class ReasoningCompletionIntegrityTests
         UserPrompt = "user",
         SourceOccurrenceIds = ["occurrence"],
         OwnedSourceOccurrenceIds = ["occurrence"],
+        OwnedStartOrdinal = 0,
+        OwnedEndOrdinal = 0,
         ConfigurationSignature = "config",
     };
 
