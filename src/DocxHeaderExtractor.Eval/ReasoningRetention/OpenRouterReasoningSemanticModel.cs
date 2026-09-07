@@ -83,12 +83,16 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
         message.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor Accuracy99");
 
         var responseHeadersReceived = false;
+        using var requestTimeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
+        if (_http.Timeout != Timeout.InfiniteTimeSpan)
+            requestTimeout.CancelAfter(_http.Timeout);
+        var requestToken = requestTimeout.Token;
         try
         {
-            using var response = await _http.SendAsync(message, HttpCompletionOption.ResponseHeadersRead, ct);
+            using var response = await _http.SendAsync(message, HttpCompletionOption.ResponseHeadersRead, requestToken);
             responseHeadersReceived = true;
             telemetry.HttpStatus = (int)response.StatusCode;
-            var responseText = await response.Content.ReadAsStringAsync(ct);
+            var responseText = await response.Content.ReadAsStringAsync(requestToken);
             telemetry.StreamCompletedNormally = true;
             var envelope = ReadEnvelope(responseText, telemetry);
             if (!response.IsSuccessStatusCode)
