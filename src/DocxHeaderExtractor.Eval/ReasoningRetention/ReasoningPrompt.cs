@@ -65,9 +65,15 @@ The candidateHint fields are optional attention hints only. They do not restrict
 Inspect all SOURCE_OCCURRENCE blocks below, including rows whose candidateHint.candidate is false.
 The visible source ordinal range is {segment.VisibleStartOrdinal?.ToString() ?? "empty"}..{segment.VisibleEndOrdinal?.ToString() ?? "empty"}.
 The harness-owned output scope is source={scope?.CanonicalSourceId ?? "none"};
+ownedSourceOccurrenceId={scope?.SourceOccurrenceId ?? "none"};
 rawTextLength={scope?.RawTextLength.ToString() ?? "0"};
 ownedCharacters={scope?.OwnedStart.ToString() ?? "empty"}..{scope?.OwnedEnd.ToString() ?? "empty"}.
 Return local start/end offsets within that owned character range only.
+The headings array is scoped to exactly that one owned source occurrence. Emit headings only
+whose text is contained in that owned occurrence's raw text and whose offsets refer to that
+occurrence; never project a heading from another visible SOURCE_OCCURRENCE into this scope.
+Other visible occurrences are context for reasoning only and must contribute zero output items
+to this response. If the owned occurrence is not a heading, return an empty headings array.
 Emit each exact local span at most once. A source occurrence may have zero or one heading
 proposal in this response; never repeat the same start/end pair, even with a different role.
 If a boundary is uncertain, omit the proposal rather than emitting a duplicate.
