@@ -27,11 +27,20 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
             shadow: false,
             requestId: "request-123",
             semanticPassId: "semantic-456",
-            attemptId: "request-123:attempt-1");
+            attemptId: "request-123:attempt-1",
+            sourceIdentityMap: [new ReasoningSourceIdentity
+            {
+                CanonicalSourceId = "body[1]/p[1]",
+                SourceOccurrenceId = "DOC-1:body[1]/p[1]:1:9",
+                SourceOrdinal = 1,
+                RawTextLength = 9,
+            }]);
 
         Assert.Contains("REQUEST_ID_EXACT=request-123", prompt);
         Assert.Contains("SEMANTIC_PASS_ID_EXACT=semantic-456", prompt);
         Assert.Contains("ATTEMPT_ID_EXACT=request-123:attempt-1", prompt);
+        Assert.Contains("canonicalSourceId=body[1]/p[1]", prompt);
+        Assert.Contains("Never use a file path", prompt);
     }
 
     [Fact]

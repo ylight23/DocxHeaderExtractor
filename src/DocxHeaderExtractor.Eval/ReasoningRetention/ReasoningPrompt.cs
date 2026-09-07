@@ -55,13 +55,26 @@ is an explicit context alias only; do not invent or shorten source identities.
         bool shadow,
         string requestId,
         string semanticPassId,
-        string attemptId) =>
-        $"""
+        string attemptId,
+        IReadOnlyList<ReasoningSourceIdentity>? sourceIdentityMap = null)
+    {
+        var identityTable = sourceIdentityMap is { Count: > 0 }
+            ? string.Join(
+                Environment.NewLine,
+                sourceIdentityMap.Select(item =>
+                    $"- canonicalSourceId={item.CanonicalSourceId} | sourceOccurrenceId={item.SourceOccurrenceId}"))
+            : "(no visible source identities)";
+        return $"""
 TASK={Version}
 route={(shadow ? "REASONING_PRESERVING_SHADOW" : "MODEL_CAPABILITY_CEILING")}
 REQUEST_ID_EXACT={requestId}
 SEMANTIC_PASS_ID_EXACT={semanticPassId}
 ATTEMPT_ID_EXACT={attemptId}
+SOURCE_ID_COPY_RULE: the sourceId field in every heading must be copied character-for-character from a canonicalSourceId below.
+Never use a file path, sourceReferencePath, sourceOccurrenceId, or a span-bearing identifier as sourceId.
+Do not append :start:end to sourceId. Unknown values are invalid.
+CANONICAL_SOURCE_ID_TABLE
+{identityTable}
 The candidateHint fields are optional attention hints only. They do not restrict visibility.
 Inspect all SOURCE_OCCURRENCE blocks below, including rows whose candidateHint.candidate is false.
 The visible source ordinal range is {segment.VisibleStartOrdinal?.ToString() ?? "empty"}..{segment.VisibleEndOrdinal?.ToString() ?? "empty"}.
@@ -70,6 +83,7 @@ Return an ownedRange with those exact inclusive endpoints, and emit no heading o
 
 {segment.Text}
 """;
+    }
 
     public static string BuildRequestId(string documentId, string segmentId, string configurationSignature) =>
         $"{Version}:{documentId}:{segmentId}:{configurationSignature}";

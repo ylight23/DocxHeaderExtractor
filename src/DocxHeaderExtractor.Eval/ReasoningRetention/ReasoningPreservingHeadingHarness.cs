@@ -144,6 +144,13 @@ public sealed class ReasoningPreservingHeadingHarness
                     .Select(id => occurrenceById[id].SourceId)
                     .Distinct(StringComparer.Ordinal)
                     .ToArray();
+                var sourceIdentityMap = visibleOccurrences.Select(item => new ReasoningSourceIdentity
+                {
+                    CanonicalSourceId = item.SourceId,
+                    SourceOccurrenceId = item.SourceOccurrenceId,
+                    SourceOrdinal = item.SourceOrdinal,
+                    RawTextLength = item.RawText.Length,
+                }).ToArray();
                 var request = new ReasoningModelRequest
                 {
                     RequestId = requestId,
@@ -157,19 +164,14 @@ public sealed class ReasoningPreservingHeadingHarness
                         route == ReasoningRoute.ReasoningPreservingShadow,
                         requestId,
                         semanticPassId,
-                        $"{requestId}:attempt-{attemptNumber}"),
+                        $"{requestId}:attempt-{attemptNumber}",
+                        sourceIdentityMap),
                     SourceOccurrenceIds = segment.SourceOccurrenceIds,
                     OwnedSourceOccurrenceIds = segment.OwnedSourceOccurrenceIds,
                     OwnedStartOrdinal = segment.OwnedStartOrdinal,
                     OwnedEndOrdinal = segment.OwnedEndOrdinal,
                     AttemptId = $"{requestId}:attempt-{attemptNumber}",
-                    SourceIdentityMap = visibleOccurrences.Select(item => new ReasoningSourceIdentity
-                    {
-                        CanonicalSourceId = item.SourceId,
-                        SourceOccurrenceId = item.SourceOccurrenceId,
-                        SourceOrdinal = item.SourceOrdinal,
-                        RawTextLength = item.RawText.Length,
-                    }).ToArray(),
+                    SourceIdentityMap = sourceIdentityMap,
                     ConfigurationSignature = ConfigurationSignature(route),
                 };
 
