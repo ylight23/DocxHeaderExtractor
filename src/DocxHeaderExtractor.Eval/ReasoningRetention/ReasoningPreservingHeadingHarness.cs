@@ -155,8 +155,8 @@ public sealed class ReasoningPreservingHeadingHarness
                     var response = await _model.CompleteAsync(request, ct);
                     if (!response.Complete)
                         throw new InvalidDataException("reasoning-response-complete-marker-missing");
-                    ValidateResponseOwnership(response, segment, occurrenceById);
-                    responses.Add(response);
+                    var scopedResponse = ValidateResponseOwnership(response, segment, occurrenceById, completion);
+                    responses.Add(scopedResponse);
                     completion.SuccessfulCompletionCount++;
                     if (semanticPassId.StartsWith("global-", StringComparison.Ordinal))
                         completion.ConsolidationPassCount++;
@@ -188,6 +188,18 @@ public sealed class ReasoningPreservingHeadingHarness
                     }
                     throw WithAttemptHistory(ex);
                 }
+                catch (InvalidDataException ex)
+                {
+                    completion.FailedCompletionCount++;
+                    completion.FailureClasses.Add(ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid);
+                    var telemetry = (_model as IReasoningCompletionTelemetrySource)?.CompletionTelemetry.LastOrDefault()
+                        ?? new ReasoningCompletionTelemetry { FailureClass = ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid };
+                    throw WithAttemptHistory(new ReasoningCompletionException(
+                        ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid,
+                        ex.Message,
+                        telemetry,
+                        ex));
+                }
             }
         }
 
@@ -206,10 +218,11 @@ public sealed class ReasoningPreservingHeadingHarness
             source.CompletionTelemetry.ToArray());
     }
 
-    private static void ValidateResponseOwnership(
+    private static ReasoningModelResponse ValidateResponseOwnership(
         ReasoningModelResponse response,
         ReasoningContextSegment segment,
-        IReadOnlyDictionary<string, ReasoningSourceOccurrence> occurrenceById)
+        IReadOnlyDictionary<string, ReasoningSourceOccurrence> occurrenceById,
+        CompletionAccumulator completion)
     {
         if (response.OwnedRange is { } range &&
             (range.Start != segment.OwnedStartOrdinal || range.End != segment.OwnedEndOrdinal))
@@ -223,13 +236,19 @@ public sealed class ReasoningPreservingHeadingHarness
             .Where(occurrenceById.ContainsKey)
             .Select(id => occurrenceById[id].SourceId)
             .ToHashSet(StringComparer.Ordinal);
+        var scoped = new List<ReasoningHeadingProposal>(response.Headings.Count);
         foreach (var proposal in response.Headings)
         {
             if (!visibleSourceIds.Contains(proposal.SourceId))
                 throw new InvalidDataException("reasoning-response-source-not-visible");
             if (!ownedSourceIds.Contains(proposal.SourceId))
-                throw new InvalidDataException("reasoning-response-outside-owned-range");
+            {
+                completion.OutOfScopeProposalCount++;
+                continue;
+            }
+            scoped.Add(proposal);
         }
+        return response with { Headings = scoped };
     }
 
     private static (ReasoningContextSegment Left, ReasoningContextSegment Right) SplitOwnership(
@@ -296,6 +315,7 @@ public sealed class ReasoningPreservingHeadingHarness
         public int RetryCount { get; set; }
         public int SemanticPassCount { get; set; }
         public int ConsolidationPassCount { get; set; }
+        public int OutOfScopeProposalCount { get; set; }
         public List<string> FailureClasses { get; } = [];
 
         public ReasoningCompletionStats ToStats() => new(
@@ -306,7 +326,8 @@ public sealed class ReasoningPreservingHeadingHarness
                 RangeSplitCount,
                 RetryCount,
                 SemanticPassCount,
-                ConsolidationPassCount),
+                ConsolidationPassCount,
+                OutOfScopeProposalCount),
             FailureClasses.Distinct(StringComparer.Ordinal).ToArray());
     }
 }

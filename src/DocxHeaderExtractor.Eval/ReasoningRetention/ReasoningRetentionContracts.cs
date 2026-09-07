@@ -203,7 +203,8 @@ public sealed record ReasoningCompletionRunStats(
     [property: JsonPropertyName("rangeSplitCount")] int RangeSplitCount = 0,
     [property: JsonPropertyName("retryCount")] int RetryCount = 0,
     [property: JsonPropertyName("semanticPassCount")] int SemanticPassCount = 0,
-    [property: JsonPropertyName("consolidationPassCount")] int ConsolidationPassCount = 0);
+    [property: JsonPropertyName("consolidationPassCount")] int ConsolidationPassCount = 0,
+    [property: JsonPropertyName("outOfScopeProposalCount")] int OutOfScopeProposalCount = 0);
 
 public sealed record ReasoningCompletionStats(
     [property: JsonPropertyName("completion")] ReasoningCompletionRunStats Completion,

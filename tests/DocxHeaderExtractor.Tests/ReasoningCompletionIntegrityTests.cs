@@ -208,12 +208,15 @@ public sealed class ReasoningCompletionIntegrityTests
             null, [], [], OwnedRange: new ReasoningOrdinalRange(90, 91)));
         var state = NativePolicyStateFactory.Create([(0, "A", null, (int?)null)]);
 
-        await Assert.ThrowsAsync<InvalidDataException>(() => new ReasoningPreservingHeadingHarness(model)
+        var exception = await Assert.ThrowsAsync<ReasoningCompletionException>(() => new ReasoningPreservingHeadingHarness(model)
             .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling));
+
+        Assert.Equal(ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid, exception.FailureClass);
+        Assert.IsType<InvalidDataException>(exception.InnerException);
     }
 
     [Fact]
-    public async Task Proposal_outside_owned_range_is_rejected()
+    public async Task Proposal_outside_owned_range_is_excluded_from_that_scope()
     {
         var state = NativePolicyStateFactory.Create([
             (0, "A", null, (int?)null),
@@ -232,8 +235,12 @@ public sealed class ReasoningCompletionIntegrityTests
             }], []);
         });
 
-        await Assert.ThrowsAsync<InvalidDataException>(() => new ReasoningPreservingHeadingHarness(model)
-            .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling));
+        var observation = await new ReasoningPreservingHeadingHarness(model)
+            .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling);
+
+        Assert.Equal(1, observation.CompletionStats.Completion.OutOfScopeProposalCount);
+        Assert.Single(observation.Proposed);
+        Assert.Equal("p[0]", observation.Proposed[0].SourceId);
     }
 
     [Fact]

@@ -175,6 +175,7 @@ public static class ReasoningRetentionRunner
                 .Select(item => item.FailureClass!).Distinct(StringComparer.Ordinal).ToArray(),
             rangeSplitCount = repeats.SelectMany(item => item.CompletionStats()).Sum(item => item.Completion.RangeSplitCount),
             retryCount = repeats.SelectMany(item => item.CompletionStats()).Sum(item => item.Completion.RetryCount),
+            outOfScopeProposalCount = repeats.SelectMany(item => item.CompletionStats()).Sum(item => item.Completion.OutOfScopeProposalCount),
             maxObservedOutputTokens = completionTelemetry.Where(item => item.ReportedOutputTokens is not null)
                 .Select(item => item.ReportedOutputTokens!.Value).DefaultIfEmpty().Max(),
             maxObservedResponseBytes = completionTelemetry.Select(item => item.ReceivedContentBytes).DefaultIfEmpty().Max(),
