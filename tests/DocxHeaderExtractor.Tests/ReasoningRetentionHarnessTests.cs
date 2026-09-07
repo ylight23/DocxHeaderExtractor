@@ -130,7 +130,7 @@ public sealed class ReasoningRetentionHarnessTests
     public void Prompt_parser_accepts_rich_roles_without_private_reasoning()
     {
         var raw = """
-        {"documentSummary":"test","headings":[{"sourceId":"p[0]","headingSpan":{"start":0,"end":7},"text":"Heading","semanticRole":"CONTENT_HEADING","proposedLevel":1,"confidence":0.9,"decisionEvidence":[{"evidenceType":"semantic","sourceReference":"p[0]","shortEvidenceCode":"TOPIC_PHRASE"}]}],"decisionEvidence":[]}
+        {"schemaVersion":"a99-reasoning-bounded-v1","requestId":"request","semanticPassId":"pass","ownedRange":{"start":0,"end":0},"complete":true,"documentSummary":"test","headings":[{"sourceId":"p[0]","headingSpan":{"start":0,"end":7},"text":"Heading","semanticRole":"CONTENT_HEADING","proposedLevel":1,"confidence":0.9,"decisionEvidence":[{"evidenceType":"semantic","sourceReference":"p[0]","shortEvidenceCode":"TOPIC_PHRASE"}]}],"decisionEvidence":[]}
         """;
 
         var response = ReasoningModelResponseParser.Parse(raw);

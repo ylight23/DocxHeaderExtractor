@@ -74,7 +74,7 @@ public static class ReasoningContextBuilder
         var sourceCharacters = occurrences.Sum(o => o.RawText.Length);
         var totalCharacters = lines.Sum(line => line.Length + 1);
         var segments = totalCharacters <= maxContextCharacters
-            ? [BuildSegment(occurrences, 0, lines.Length)]
+            ? [BuildSegment(occurrences, 0, lines.Length, 0, lines.Length)]
             : BuildWindows(occurrences, lines, windowCharacters, overlapOccurrences);
 
         var visibleIds = segments.SelectMany(s => s.SourceOccurrenceIds).ToHashSet(StringComparer.Ordinal);
@@ -124,9 +124,13 @@ public static class ReasoningContextBuilder
     private static ReasoningContextSegment BuildSegment(
         IReadOnlyList<ReasoningSourceOccurrence> occurrences,
         int start,
-        int end)
+        int end,
+        int ownedStart,
+        int ownedEnd,
+        string? idSuffix = null)
     {
         var selected = occurrences.Skip(start).Take(end - start).ToArray();
+        var owned = occurrences.Skip(ownedStart).Take(ownedEnd - ownedStart).ToArray();
         var body = new StringBuilder();
         body.AppendLine("DOCUMENT_CONTEXT");
         foreach (var occurrence in selected)
@@ -138,9 +142,14 @@ public static class ReasoningContextBuilder
         body.Append("END_DOCUMENT_CONTEXT");
         return new ReasoningContextSegment
         {
-            ContextSegmentId = $"segment-{start + 1}-{end}",
+            ContextSegmentId = $"segment-{start + 1}-{end}{idSuffix}",
             Ordinal = start + 1,
             SourceOccurrenceIds = selected.Select(o => o.SourceOccurrenceId).ToArray(),
+            OwnedSourceOccurrenceIds = owned.Select(o => o.SourceOccurrenceId).ToArray(),
+            VisibleStartOrdinal = selected.Length == 0 ? null : selected[0].SourceOrdinal,
+            VisibleEndOrdinal = selected.Length == 0 ? null : selected[^1].SourceOrdinal,
+            OwnedStartOrdinal = owned.Length == 0 ? null : owned[0].SourceOrdinal,
+            OwnedEndOrdinal = owned.Length == 0 ? null : owned[^1].SourceOrdinal,
             Text = body.ToString(),
         };
     }
@@ -151,7 +160,7 @@ public static class ReasoningContextBuilder
         int windowCharacters,
         int overlapOccurrences)
     {
-        var segments = new List<ReasoningContextSegment>();
+        var windows = new List<(int Start, int End)>();
         var start = 0;
         while (start < occurrences.Count)
         {
@@ -165,9 +174,24 @@ public static class ReasoningContextBuilder
                 end++;
             }
             if (end == start) end++;
-            segments.Add(BuildSegment(occurrences, start, end));
+            windows.Add((start, end));
             if (end == occurrences.Count) break;
             start = Math.Max(start + 1, end - Math.Max(0, overlapOccurrences));
+        }
+
+        var segments = new List<ReasoningContextSegment>(windows.Count);
+        for (var index = 0; index < windows.Count; index++)
+        {
+            var window = windows[index];
+            var ownedStart = window.Start;
+            var ownedEnd = index + 1 < windows.Count ? windows[index + 1].Start : window.End;
+            segments.Add(BuildSegment(
+                occurrences,
+                window.Start,
+                window.End,
+                ownedStart,
+                ownedEnd,
+                $"-owned-{ownedStart + 1}-{ownedEnd}"));
         }
         return segments;
     }

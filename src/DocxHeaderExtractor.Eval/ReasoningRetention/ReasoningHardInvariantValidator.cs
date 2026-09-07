@@ -17,7 +17,7 @@ public static class ReasoningHardInvariantValidator
         {
             if (!proposal.HeadingSpan.IsValidFor(text))
                 issues.Add("source-span-invalid");
-            else if (!string.Equals(
+            else if (!string.IsNullOrEmpty(proposal.Text) && !string.Equals(
                 text[proposal.HeadingSpan.Start..proposal.HeadingSpan.End],
                 proposal.Text,
                 StringComparison.Ordinal))

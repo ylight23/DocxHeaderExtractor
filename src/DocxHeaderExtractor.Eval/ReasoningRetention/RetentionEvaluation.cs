@@ -1,6 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Eval.StrictGoldOccurrence;
 
 namespace DocxHeaderExtractor.Eval.ReasoningRetention;
 
@@ -107,6 +108,62 @@ public static class ReasoningGoldArtifactLoader
             result.Add(rootElement.GetProperty("documentId").GetString()!);
         }
         return result;
+    }
+
+    /// <summary>
+    /// Loads the exact occurrence-binding artifact. This is the only Gold loader used by the
+    /// R1-B retention runner: semantic totals or V4 rows without raw source spans are not a
+    /// valid denominator.
+    /// </summary>
+    public static IReadOnlyList<ReasoningGoldOccurrence> LoadOccurrence(string path)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(path);
+        var artifact = JsonSerializer.Deserialize<StrictGoldOccurrenceArtifact>(
+            File.ReadAllText(path), new JsonSerializerOptions(JsonSerializerDefaults.Web))
+            ?? throw new InvalidDataException($"Không đọc được occurrence Gold: {path}");
+        if (!string.Equals(artifact.Status, "PASS", StringComparison.Ordinal) ||
+            artifact.Bindings.Count != artifact.SemanticHeadingTotal ||
+            artifact.Bindings.Any(binding => !binding.ExactRawSubstringVerified ||
+                                             binding.HeadingSpan.Start < 0 ||
+                                             binding.HeadingSpan.End <= binding.HeadingSpan.Start ||
+                                             binding.HeadingSpan.End - binding.HeadingSpan.Start != binding.RawSourceText.Length))
+            throw new InvalidDataException($"Occurrence Gold chưa đủ điều kiện đo: {path}");
+
+        return artifact.Bindings
+            .OrderBy(binding => binding.HeadingOrdinal)
+            .Select(binding => new ReasoningGoldOccurrence
+            {
+                DocumentId = artifact.DocumentId,
+                GoldOccurrenceId = binding.HeadingOccurrenceId,
+                SourceId = binding.SourceId,
+                HeadingSpan = new StructuralSpan(binding.HeadingSpan.Start, binding.HeadingSpan.End),
+                GoldRole = binding.SemanticRole,
+                GoldLevel = binding.Level,
+                GoldParent = binding.ParentHeadingOccurrenceId,
+                ExactText = binding.RawSourceText,
+            })
+            .ToArray();
+    }
+
+    public static IReadOnlyList<string> DiscoverOccurrenceEvaluableDocuments(string root)
+    {
+        var occurrenceRoot = Path.Combine(root, "eval", "a99-closed-loop", "strict-gold-occurrence-v1");
+        if (!Directory.Exists(occurrenceRoot)) return [];
+        var result = new List<string>();
+        foreach (var path in Directory.EnumerateFiles(occurrenceRoot, "*.occurrence-gold-v1.json"))
+        {
+            var artifact = JsonSerializer.Deserialize<StrictGoldOccurrenceArtifact>(
+                File.ReadAllText(path), new JsonSerializerOptions(JsonSerializerDefaults.Web));
+            if (artifact is not null &&
+                artifact.Status == "PASS" &&
+                artifact.Bindings.Count == artifact.SemanticHeadingTotal &&
+                artifact.Bindings.All(binding => binding.ExactRawSubstringVerified &&
+                                                  binding.HeadingSpan.Start >= 0 &&
+                                                  binding.HeadingSpan.End > binding.HeadingSpan.Start &&
+                                                  binding.HeadingSpan.End - binding.HeadingSpan.Start == binding.RawSourceText.Length))
+                result.Add(artifact.DocumentId);
+        }
+        return result.Order(StringComparer.Ordinal).ToArray();
     }
 
     private static bool HasExactHeadingSpan(JsonElement heading) =>

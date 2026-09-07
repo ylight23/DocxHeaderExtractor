@@ -58,6 +58,11 @@ public sealed record ReasoningContextSegment
     [JsonPropertyName("contextSegmentId")] public required string ContextSegmentId { get; init; }
     [JsonPropertyName("ordinal")] public required int Ordinal { get; init; }
     [JsonPropertyName("sourceOccurrenceIds")] public required IReadOnlyList<string> SourceOccurrenceIds { get; init; }
+    [JsonPropertyName("ownedSourceOccurrenceIds")] public IReadOnlyList<string> OwnedSourceOccurrenceIds { get; init; } = [];
+    [JsonPropertyName("visibleStartOrdinal")] public int? VisibleStartOrdinal { get; init; }
+    [JsonPropertyName("visibleEndOrdinal")] public int? VisibleEndOrdinal { get; init; }
+    [JsonPropertyName("ownedStartOrdinal")] public int? OwnedStartOrdinal { get; init; }
+    [JsonPropertyName("ownedEndOrdinal")] public int? OwnedEndOrdinal { get; init; }
     [JsonPropertyName("text")] public required string Text { get; init; }
 }
 
@@ -79,10 +84,13 @@ public sealed record ReasoningModelRequest
 {
     [JsonPropertyName("requestId")] public required string RequestId { get; init; }
     [JsonPropertyName("documentId")] public required string DocumentId { get; init; }
+    [JsonPropertyName("route")] public required string Route { get; init; }
+    [JsonPropertyName("semanticPassId")] public required string SemanticPassId { get; init; }
     [JsonPropertyName("contextSegmentId")] public required string ContextSegmentId { get; init; }
     [JsonPropertyName("systemPrompt")] public required string SystemPrompt { get; init; }
     [JsonPropertyName("userPrompt")] public required string UserPrompt { get; init; }
     [JsonPropertyName("sourceOccurrenceIds")] public required IReadOnlyList<string> SourceOccurrenceIds { get; init; }
+    [JsonPropertyName("ownedSourceOccurrenceIds")] public required IReadOnlyList<string> OwnedSourceOccurrenceIds { get; init; }
     [JsonPropertyName("configurationSignature")] public required string ConfigurationSignature { get; init; }
 }
 
@@ -103,11 +111,101 @@ public sealed record ReasoningHeadingProposal
     [JsonPropertyName("decisionEvidence")] public IReadOnlyList<ReasoningDecisionEvidence> DecisionEvidence { get; init; } = [];
 }
 
+public sealed record ReasoningOrdinalRange(
+    [property: JsonPropertyName("start")] int Start,
+    [property: JsonPropertyName("end")] int End);
+
 public sealed record ReasoningModelResponse(
     [property: JsonPropertyName("documentSummary")] string? DocumentSummary,
     [property: JsonPropertyName("headings")] IReadOnlyList<ReasoningHeadingProposal> Headings,
     [property: JsonPropertyName("decisionEvidence")] IReadOnlyList<ReasoningDecisionEvidence> DecisionEvidence,
-    [property: JsonPropertyName("rawResponseHash")] string? RawResponseHash = null);
+    [property: JsonPropertyName("rawResponseHash")] string? RawResponseHash = null,
+    [property: JsonPropertyName("ownedRange")] ReasoningOrdinalRange? OwnedRange = null,
+    [property: JsonPropertyName("complete")] bool Complete = true,
+    [property: JsonPropertyName("requestId")] string? RequestId = null,
+    [property: JsonPropertyName("semanticPassId")] string? SemanticPassId = null);
+
+public static class ReasoningCompletionFailureClass
+{
+    public const string ProviderOutputLimit = "PROVIDER_OUTPUT_LIMIT";
+    public const string TransportTruncation = "TRANSPORT_TRUNCATION";
+    public const string CompleteResponseSchemaInvalid = "COMPLETE_RESPONSE_SCHEMA_INVALID";
+    public const string Timeout = "TIMEOUT";
+    public const string ProviderUnavailable = "PROVIDER_UNAVAILABLE";
+    public const string ProviderAuthFailure = "PROVIDER_AUTH_FAILURE";
+    public const string OtherProviderFailure = "OTHER_PROVIDER_FAILURE";
+}
+
+public sealed class ReasoningCompletionTelemetry
+{
+    [JsonPropertyName("requestId")] public string RequestId { get; set; } = "";
+    [JsonPropertyName("route")] public string Route { get; set; } = "";
+    [JsonPropertyName("documentId")] public string DocumentId { get; set; } = "";
+    [JsonPropertyName("semanticPassId")] public string SemanticPassId { get; set; } = "";
+    [JsonPropertyName("contextSegmentId")] public string ContextSegmentId { get; set; } = "";
+    [JsonPropertyName("model")] public string Model { get; set; } = "";
+    [JsonPropertyName("provider")] public string Provider { get; set; } = "";
+    [JsonPropertyName("temperature")] public double Temperature { get; set; }
+    [JsonPropertyName("seed")] public int? Seed { get; set; }
+    [JsonPropertyName("inputCharacters")] public int InputCharacters { get; set; }
+    [JsonPropertyName("estimatedInputTokens")] public int? EstimatedInputTokens { get; set; }
+    [JsonPropertyName("configuredMaxOutputTokens")] public int ConfiguredMaxOutputTokens { get; set; }
+    [JsonPropertyName("httpStatus")] public int? HttpStatus { get; set; }
+    [JsonPropertyName("finishReason")] public string? FinishReason { get; set; }
+    [JsonPropertyName("providerRequestId")] public string? ProviderRequestId { get; set; }
+    [JsonPropertyName("reportedInputTokens")] public int? ReportedInputTokens { get; set; }
+    [JsonPropertyName("reportedOutputTokens")] public int? ReportedOutputTokens { get; set; }
+    [JsonPropertyName("reportedTotalTokens")] public int? ReportedTotalTokens { get; set; }
+    [JsonPropertyName("receivedContentCharacters")] public int ReceivedContentCharacters { get; set; }
+    [JsonPropertyName("receivedContentBytes")] public int ReceivedContentBytes { get; set; }
+    [JsonPropertyName("firstContentHash")] public string? FirstContentHash { get; set; }
+    [JsonPropertyName("lastContentHash")] public string? LastContentHash { get; set; }
+    [JsonPropertyName("fullContentSha256")] public string? FullContentSha256 { get; set; }
+    [JsonPropertyName("jsonParseSucceeded")] public bool JsonParseSucceeded { get; set; }
+    [JsonPropertyName("jsonParseErrorOffset")] public long? JsonParseErrorOffset { get; set; }
+    [JsonPropertyName("completionEnvelopeComplete")] public bool CompletionEnvelopeComplete { get; set; }
+    [JsonPropertyName("streamCompletedNormally")] public bool StreamCompletedNormally { get; set; }
+    [JsonPropertyName("transportException")] public string? TransportException { get; set; }
+    [JsonPropertyName("failureClass")] public string? FailureClass { get; set; }
+}
+
+public sealed class ReasoningCompletionException : Exception
+{
+    public ReasoningCompletionException(
+        string failureClass,
+        string message,
+        ReasoningCompletionTelemetry telemetry,
+        Exception? innerException = null,
+        IReadOnlyList<ReasoningCompletionTelemetry>? attemptTelemetry = null)
+        : base(message, innerException)
+    {
+        FailureClass = failureClass;
+        Telemetry = telemetry;
+        AttemptTelemetry = attemptTelemetry ?? [telemetry];
+    }
+
+    public string FailureClass { get; }
+    public ReasoningCompletionTelemetry Telemetry { get; }
+    public IReadOnlyList<ReasoningCompletionTelemetry> AttemptTelemetry { get; }
+}
+
+public interface IReasoningCompletionTelemetrySource
+{
+    IReadOnlyList<ReasoningCompletionTelemetry> CompletionTelemetry { get; }
+}
+
+public sealed record ReasoningCompletionRunStats(
+    [property: JsonPropertyName("attemptCount")] int AttemptCount = 0,
+    [property: JsonPropertyName("successfulCompletionCount")] int SuccessfulCompletionCount = 0,
+    [property: JsonPropertyName("failedCompletionCount")] int FailedCompletionCount = 0,
+    [property: JsonPropertyName("rangeSplitCount")] int RangeSplitCount = 0,
+    [property: JsonPropertyName("retryCount")] int RetryCount = 0,
+    [property: JsonPropertyName("semanticPassCount")] int SemanticPassCount = 0,
+    [property: JsonPropertyName("consolidationPassCount")] int ConsolidationPassCount = 0);
+
+public sealed record ReasoningCompletionStats(
+    [property: JsonPropertyName("completion")] ReasoningCompletionRunStats Completion,
+    [property: JsonPropertyName("failureClasses")] IReadOnlyList<string> FailureClasses);
 
 public interface IReasoningSemanticModel
 {
@@ -132,6 +230,11 @@ public sealed record ReasoningRouteObservation
     [JsonPropertyName("validated")] public required IReadOnlyList<ReasoningValidatedProposal> Validated { get; init; }
     [JsonPropertyName("finalIncluded")] public required IReadOnlySet<string> FinalIncluded { get; init; }
     [JsonPropertyName("providerCalls")] public required int ProviderCalls { get; init; }
+    [JsonPropertyName("completionStats")] public ReasoningCompletionStats CompletionStats { get; init; } =
+        new(new ReasoningCompletionRunStats(), []);
+    [JsonPropertyName("sourceToModelContextCoverage")] public double SourceToModelContextCoverage { get; init; }
+    [JsonPropertyName("sourceToSemanticPassCoverage")] public double SourceToSemanticPassCoverage { get; init; }
+    [JsonPropertyName("sourceOutputOwnershipCoverage")] public double SourceOutputOwnershipCoverage { get; init; }
 }
 
 public sealed record ReasoningGoldOccurrence

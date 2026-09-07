@@ -9,6 +9,7 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Eval.Accuracy99;
+using DocxHeaderExtractor.Eval.ReasoningRetention;
 using DocxHeaderExtractor.Eval.StrictGoldOccurrence;
 
 namespace DocxHeaderExtractor.Cli;
@@ -30,7 +31,7 @@ internal static class Accuracy99Runner
         var operation = options.Accuracy99Operation?.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(operation) || operation is "help" or "-h")
         {
-            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, gold-preflight-strict-dev, gold-authority-policy-v2, gold-occurrence-bindings, doc-0205-canary, mode-stratification, doc-0027-support-canary");
+            Console.WriteLine("accuracy99 operations: packet, inventory, evaluate, baseline, observability, reference-campaign, early-dev-campaign, review-ui, review-ui-v3, gold-validate, gold-import-dev, gold-validate-v2, gold-import-dev-v2, gold-validate-v3, gold-import-dev-v3, gold-validate-strict-v3, gold-import-strict-dev-v3, gold-preflight-strict-dev, gold-authority-policy-v2, gold-occurrence-bindings, reasoning-retention, doc-0205-canary, mode-stratification, doc-0027-support-canary");
             return 0;
         }
 
@@ -56,6 +57,7 @@ internal static class Accuracy99Runner
             "gold-preflight-strict-dev" => await PreflightStrictDevCohortAsync(options, cancellationToken),
             "gold-authority-policy-v2" => await ReconcileStrictGoldAuthorityPolicyV2Async(options, cancellationToken),
             "gold-occurrence-bindings" => MaterializeStrictGoldOccurrences(options),
+            "reasoning-retention" => await RunReasoningRetentionAsync(options, cancellationToken),
             "doc-0205-canary" => await RunDoc0205CanaryAsync(options, cancellationToken),
             "mode-stratification" => await BuildModeStratificationAsync(options, cancellationToken),
             "doc-0027-support-canary" => await RunDoc0027SupportCanaryAsync(options, cancellationToken),
@@ -68,6 +70,14 @@ internal static class Accuracy99Runner
         var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
         StrictGoldOccurrenceMaterializer.WriteAll(repoRoot);
         return 0;
+    }
+
+    private static Task<int> RunReasoningRetentionAsync(
+        CommandLineOptions options,
+        CancellationToken cancellationToken)
+    {
+        var repoRoot = FindRepositoryRoot(options.Accuracy99Root ?? Directory.GetCurrentDirectory());
+        return ReasoningRetentionRunner.RunAsync(repoRoot, options.Provider.Remote, cancellationToken);
     }
 
     private static async Task<int> BuildEarlyDevCampaignAsync(

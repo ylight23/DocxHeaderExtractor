@@ -46,6 +46,10 @@ public static class StrictGoldOccurrenceMaterializer
 
     public static IReadOnlyList<string> DocumentIds => Specs.Select(x => x.Id).ToArray();
 
+    /// <summary>Evaluation corpus mapping shared by the occurrence and retention runners.</summary>
+    public static IReadOnlyDictionary<string, string> SourcePaths =>
+        Specs.ToDictionary(item => item.Id, item => item.SourcePath, StringComparer.Ordinal);
+
     public static StrictGoldOccurrenceMaterializationReport MaterializeAll(string repoRoot, out IReadOnlyList<StrictGoldOccurrenceArtifact> artifacts)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(repoRoot);

@@ -41,6 +41,13 @@ public static class ReasoningProposalMaterializer
                 continue;
             }
 
+            // Compact provider responses may identify a source span without repeating its text.
+            // The parser-owned source remains the only authority for the materialized text.
+            var materializedProposal = string.IsNullOrEmpty(proposal.Text) &&
+                proposal.HeadingSpan.IsValidFor(paragraph.Text)
+                ? proposal with { Text = paragraph.Text[proposal.HeadingSpan.Start..proposal.HeadingSpan.End] }
+                : proposal;
+
             var facts = SourceFactsBuilder.FromParagraph(paragraph);
             var candidate = new StructuralCandidate
             {
@@ -50,11 +57,11 @@ public static class ReasoningProposalMaterializer
             var proposalContract = new StructuralProposal
             {
                 CandidateId = candidate.CandidateId,
-                Type = MapType(proposal.SemanticRole),
-                Role = MapRole(proposal.SemanticRole),
-                ProposedSources = [new ProposedSourceReference(proposal.SourceId, proposal.HeadingSpan)],
-                ProposedParentId = proposal.ProposedParent,
-                ProposedLevel = proposal.ProposedLevel,
+                Type = MapType(materializedProposal.SemanticRole),
+                Role = MapRole(materializedProposal.SemanticRole),
+                ProposedSources = [new ProposedSourceReference(materializedProposal.SourceId, materializedProposal.HeadingSpan)],
+                ProposedParentId = materializedProposal.ProposedParent,
+                ProposedLevel = materializedProposal.ProposedLevel,
             };
             var validation = StructuralProposalValidator.Validate(candidate, proposalContract, elementIds);
             if (!validation.Accepted)
@@ -66,10 +73,10 @@ public static class ReasoningProposalMaterializer
             var element = StructuralProposalValidator.Materialize(
                 candidate,
                 proposalContract,
-                ElementId(proposal),
-                new StructuralDecision("reasoning-preserving-eval", "accepted", proposal.Confidence, "model-proposal"),
+                ElementId(materializedProposal),
+                new StructuralDecision("reasoning-preserving-eval", "accepted", materializedProposal.Confidence, "model-proposal"),
                 elementIds,
-                new StructuralProjectionMetadata { OriginalText = proposal.Text });
+                new StructuralProjectionMetadata { OriginalText = materializedProposal.Text });
             if (element is null)
             {
                 rows.Add(new(proposal, ElementId(proposal), false, "materialization-failed"));
