@@ -1,0 +1,89 @@
+{
+  "artifactKind": "a99_strict_gold_occurrence_materialization",
+  "schemaVersion": "a99-strict-gold-occurrence-materialization-v1",
+  "status": "PASS",
+  "expectedDocuments": 6,
+  "materializedDocuments": 6,
+  "expectedOccurrences": 311,
+  "materializedOccurrences": 311,
+  "perDocument": [
+    {
+      "documentId": "DOC-0001",
+      "expected": 7,
+      "materialized": 7,
+      "ambiguous": 0,
+      "missing": 0,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "parentEvaluable": false,
+      "hierarchyEvaluable": false,
+      "status": "PASS",
+      "discrepancies": []
+    },
+    {
+      "documentId": "DOC-0205",
+      "expected": 71,
+      "materialized": 71,
+      "ambiguous": 0,
+      "missing": 0,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "parentEvaluable": false,
+      "hierarchyEvaluable": false,
+      "status": "PASS",
+      "discrepancies": []
+    },
+    {
+      "documentId": "DOC-0252",
+      "expected": 27,
+      "materialized": 27,
+      "ambiguous": 0,
+      "missing": 0,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "parentEvaluable": false,
+      "hierarchyEvaluable": false,
+      "status": "PASS",
+      "discrepancies": []
+    },
+    {
+      "documentId": "DOC-0256",
+      "expected": 24,
+      "materialized": 24,
+      "ambiguous": 0,
+      "missing": 0,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "parentEvaluable": false,
+      "hierarchyEvaluable": false,
+      "status": "PASS",
+      "discrepancies": []
+    },
+    {
+      "documentId": "DOC-0258",
+      "expected": 24,
+      "materialized": 24,
+      "ambiguous": 0,
+      "missing": 0,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "parentEvaluable": false,
+      "hierarchyEvaluable": false,
+      "status": "PASS",
+      "discrepancies": []
+    },
+    {
+      "documentId": "DOC-0264",
+      "expected": 158,
+      "materialized": 158,
+      "ambiguous": 0,
+      "missing": 0,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "parentEvaluable": false,
+      "hierarchyEvaluable": false,
+      "status": "PASS",
+      "discrepancies": []
+    }
+  ]
+}

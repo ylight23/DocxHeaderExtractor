@@ -1,0 +1,149 @@
+{
+  "artifactKind": "a99_strict_gold_occurrence_binding",
+  "schemaVersion": "a99-strict-gold-occurrence-v1",
+  "status": "PASS",
+  "documentId": "DOC-0001",
+  "documentGroupId": "GROUP-0018",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "strictGoldArtifactPath": "eval/a99-closed-loop/strict-gold-v4/DOC-0001.strict-gold-v4.json",
+  "strictGoldArtifactSha256": "5ac30a82db551a8149ed777390eeca0dc6c6d0bafd9e82468dde32777808dfc8",
+  "semanticHeadingTotal": 7,
+  "materializedOccurrenceCount": 7,
+  "bindings": [
+    {
+      "headingOrdinal": 0,
+      "headingOccurrenceId": "DOC-0001:body[1]/p[1]@0:24",
+      "sourceId": "body[1]/p[1]",
+      "headingSpan": {
+        "start": 0,
+        "end": 24
+      },
+      "rawSourceText": "Ch\u01B0\u01A1ng 1. Quy \u0111\u1ECBnh chung",
+      "approvedHeadingText": "Ch\u00C6\u00B0\u00C6\u00A1ng 1. Quy \u00C4\u2018\u00E1\u00BB\u2039nh chung",
+      "semanticRole": "heading",
+      "level": 1,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "bench/01-style-chuan.key#key-line=3:body[1]/p[1]",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 1,
+      "headingOccurrenceId": "DOC-0001:body[1]/p[3]@0:23",
+      "sourceId": "body[1]/p[3]",
+      "headingSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "rawSourceText": "1.1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+      "approvedHeadingText": "1.1. Ph\u00E1\u00BA\u00A1m vi \u00C4\u2018i\u00E1\u00BB\u0081u ch\u00E1\u00BB\u2030nh",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "bench/01-style-chuan.key#key-line=4:body[1]/p[3]",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 2,
+      "headingOccurrenceId": "DOC-0001:body[1]/p[5]@0:22",
+      "sourceId": "body[1]/p[5]",
+      "headingSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "rawSourceText": "1.2. \u0110\u1ED1i t\u01B0\u1EE3ng \u00E1p d\u1EE5ng",
+      "approvedHeadingText": "1.2. \u00C4\u0090\u00E1\u00BB\u2018i t\u00C6\u00B0\u00E1\u00BB\u00A3ng \u00C3\u00A1p d\u00E1\u00BB\u00A5ng",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "bench/01-style-chuan.key#key-line=5:body[1]/p[5]",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 3,
+      "headingOccurrenceId": "DOC-0001:body[1]/p[7]@0:22",
+      "sourceId": "body[1]/p[7]",
+      "headingSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "rawSourceText": "1.2.1. C\u01A1 quan qu\u1EA3n l\u00FD",
+      "approvedHeadingText": "1.2.1. C\u00C6\u00A1 quan qu\u00E1\u00BA\u00A3n l\u00C3\u00BD",
+      "semanticRole": "heading",
+      "level": 3,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "bench/01-style-chuan.key#key-line=6:body[1]/p[7]",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 4,
+      "headingOccurrenceId": "DOC-0001:body[1]/p[9]@0:24",
+      "sourceId": "body[1]/p[9]",
+      "headingSpan": {
+        "start": 0,
+        "end": 24
+      },
+      "rawSourceText": "1.2.2. \u0110\u01A1n v\u1ECB tr\u1EF1c thu\u1ED9c",
+      "approvedHeadingText": "1.2.2. \u00C4\u0090\u00C6\u00A1n v\u00E1\u00BB\u2039 tr\u00E1\u00BB\u00B1c thu\u00E1\u00BB\u2122c",
+      "semanticRole": "heading",
+      "level": 3,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "bench/01-style-chuan.key#key-line=7:body[1]/p[9]",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 5,
+      "headingOccurrenceId": "DOC-0001:body[1]/p[11]@0:27",
+      "sourceId": "body[1]/p[11]",
+      "headingSpan": {
+        "start": 0,
+        "end": 27
+      },
+      "rawSourceText": "Ch\u01B0\u01A1ng 2. T\u1ED5 ch\u1EE9c th\u1EF1c hi\u1EC7n",
+      "approvedHeadingText": "Ch\u00C6\u00B0\u00C6\u00A1ng 2. T\u00E1\u00BB\u2022 ch\u00E1\u00BB\u00A9c th\u00E1\u00BB\u00B1c hi\u00E1\u00BB\u2021n",
+      "semanticRole": "heading",
+      "level": 1,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "bench/01-style-chuan.key#key-line=8:body[1]/p[11]",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 6,
+      "headingOccurrenceId": "DOC-0001:body[1]/p[13]@0:26",
+      "sourceId": "body[1]/p[13]",
+      "headingSpan": {
+        "start": 0,
+        "end": 26
+      },
+      "rawSourceText": "2.1. Ph\u00E2n c\u00F4ng tr\u00E1ch nhi\u1EC7m",
+      "approvedHeadingText": "2.1. Ph\u00C3\u00A2n c\u00C3\u00B4ng tr\u00C3\u00A1ch nhi\u00E1\u00BB\u2021m",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "bench/01-style-chuan.key#key-line=9:body[1]/p[13]",
+      "sourceReferenceSha256": "d1217bf9f19084b45f835eba82bd109ed41fb6f9fc80d97a0561646b5cd378e7",
+      "exactRawSubstringVerified": true
+    }
+  ],
+  "discrepancies": [],
+  "capabilities": {
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "roleEvaluable": true,
+    "levelEvaluable": true,
+    "parentEvaluable": false,
+    "hierarchyEvaluable": false
+  }
+}

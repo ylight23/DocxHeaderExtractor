@@ -1,0 +1,509 @@
+{
+  "artifactKind": "a99_strict_gold_occurrence_binding",
+  "schemaVersion": "a99-strict-gold-occurrence-v1",
+  "status": "PASS",
+  "documentId": "DOC-0252",
+  "documentGroupId": "GROUP-0069",
+  "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+  "strictGoldArtifactPath": "eval/a99-closed-loop/strict-gold-v4/DOC-0252.strict-gold-v4.json",
+  "strictGoldArtifactSha256": "8dc3a2512ce73dbcc84e045a7f84b6d4996e782638949a68af0254946886e325",
+  "semanticHeadingTotal": 27,
+  "materializedOccurrenceCount": 27,
+  "bindings": [
+    {
+      "headingOrdinal": 0,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[7]@0:41",
+      "sourceId": "body[1]/p[7]",
+      "headingSpan": {
+        "start": 0,
+        "end": 41
+      },
+      "rawSourceText": "Session I: Welcome and meeting objectives",
+      "approvedHeadingText": "Session I: Welcome and meeting objectives",
+      "semanticRole": "heading",
+      "level": 1,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=13:body[1]/p[7]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 1,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[11]@0:40",
+      "sourceId": "body[1]/p[11]",
+      "headingSpan": {
+        "start": 0,
+        "end": 40
+      },
+      "rawSourceText": "Session II: Update on the ICP 2021 Cycle",
+      "approvedHeadingText": "Session II: Update on the ICP 2021 Cycle",
+      "semanticRole": "heading",
+      "level": 1,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=14:body[1]/p[11]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 2,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[12]@0:22",
+      "sourceId": "body[1]/p[12]",
+      "headingSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "rawSourceText": "1.Global office update",
+      "approvedHeadingText": "1. Global office update",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=15:body[1]/p[12]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 3,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[22]@0:18",
+      "sourceId": "body[1]/p[22]",
+      "headingSpan": {
+        "start": 0,
+        "end": 18
+      },
+      "rawSourceText": "2.Regional updates",
+      "approvedHeadingText": "2. Regional updates",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=16:body[1]/p[22]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 4,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[24]@0:6",
+      "sourceId": "body[1]/p[24]",
+      "headingSpan": {
+        "start": 0,
+        "end": 6
+      },
+      "rawSourceText": "Africa",
+      "approvedHeadingText": "Africa",
+      "semanticRole": "heading",
+      "level": 3,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=17:body[1]/p[24]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 5,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[27]@0:20",
+      "sourceId": "body[1]/p[27]",
+      "headingSpan": {
+        "start": 0,
+        "end": 20
+      },
+      "rawSourceText": "Asia and the Pacific",
+      "approvedHeadingText": "Asia and the Pacific",
+      "semanticRole": "heading",
+      "level": 3,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=18:body[1]/p[27]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 6,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[31]@0:40",
+      "sourceId": "body[1]/p[31]",
+      "headingSpan": {
+        "start": 0,
+        "end": 40
+      },
+      "rawSourceText": "Commonwealth of Independent States (CIS)",
+      "approvedHeadingText": "Commonwealth of Independent States (CIS)",
+      "semanticRole": "heading",
+      "level": 3,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=19:body[1]/p[31]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 7,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[39]@0:25",
+      "sourceId": "body[1]/p[39]",
+      "headingSpan": {
+        "start": 0,
+        "end": 25
+      },
+      "rawSourceText": "Eurostat\u2013OECD PPP Program",
+      "approvedHeadingText": "Eurostat\u00E2\u20AC\u201COECD PPP Program",
+      "semanticRole": "heading",
+      "level": 3,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=20:body[1]/p[39]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 8,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[42]@0:31",
+      "sourceId": "body[1]/p[42]",
+      "headingSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "rawSourceText": "Latin America and the Caribbean",
+      "approvedHeadingText": "Latin America and the Caribbean",
+      "semanticRole": "heading",
+      "level": 3,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=21:body[1]/p[42]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 9,
+      "headingOccurrenceId": "DOC-0252:body[1]/tbl[2]/tr[1]/tc[2]/p[6]@182:194",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+      "headingSpan": {
+        "start": 182,
+        "end": 194
+      },
+      "rawSourceText": "Western Asia",
+      "approvedHeadingText": "Western Asia",
+      "semanticRole": "heading",
+      "level": 3,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=22:body[1]/tbl[2]/tr[1]/tc[2]/p[6]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 10,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[54]@0:65",
+      "sourceId": "body[1]/p[54]",
+      "headingSpan": {
+        "start": 0,
+        "end": 65
+      },
+      "rawSourceText": "Session III: Short- and Long-Term Research and Development Agenda",
+      "approvedHeadingText": "Session III: Short- and Long-Term Research and Development Agenda",
+      "semanticRole": "heading",
+      "level": 1,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=23:body[1]/p[54]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 11,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[55]@0:55",
+      "sourceId": "body[1]/p[55]",
+      "headingSpan": {
+        "start": 0,
+        "end": 55
+      },
+      "rawSourceText": "1.Research Topics Emerging from the Previous ICP Cycles",
+      "approvedHeadingText": "1. Research Topics Emerging from the Previous ICP Cycles",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=24:body[1]/p[55]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 12,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[62]@0:29",
+      "sourceId": "body[1]/p[62]",
+      "headingSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "rawSourceText": "2.Forthcoming Research Topics",
+      "approvedHeadingText": "2. Forthcoming Research Topics",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=25:body[1]/p[62]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 13,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[75]@0:66",
+      "sourceId": "body[1]/p[75]",
+      "headingSpan": {
+        "start": 0,
+        "end": 66
+      },
+      "rawSourceText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+      "approvedHeadingText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+      "semanticRole": "heading",
+      "level": 1,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=26:body[1]/p[75]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 14,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[76]@0:40",
+      "sourceId": "body[1]/p[76]",
+      "headingSpan": {
+        "start": 0,
+        "end": 40
+      },
+      "rawSourceText": "1.TAG Composition and Terms of Reference",
+      "approvedHeadingText": "1. TAG Composition and Terms of Reference",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=27:body[1]/p[76]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 15,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[80]@0:62",
+      "sourceId": "body[1]/p[80]",
+      "headingSpan": {
+        "start": 0,
+        "end": 62
+      },
+      "rawSourceText": "2.Terms of Reference for a Task Force on Annual PPP Production",
+      "approvedHeadingText": "2. Terms of Reference for a Task Force on Annual PPP Production",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=28:body[1]/p[80]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 16,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[89]@0:66",
+      "sourceId": "body[1]/p[89]",
+      "headingSpan": {
+        "start": 0,
+        "end": 66
+      },
+      "rawSourceText": "3.Terms of Reference for a Task Force on ICP Classification Update",
+      "approvedHeadingText": "3. Terms of Reference for a Task Force on ICP Classification Update",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=29:body[1]/p[89]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 17,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[94]@0:27",
+      "sourceId": "body[1]/p[94]",
+      "headingSpan": {
+        "start": 0,
+        "end": 27
+      },
+      "rawSourceText": "Session V: Current Research",
+      "approvedHeadingText": "Session V: Current Research",
+      "semanticRole": "heading",
+      "level": 1,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=30:body[1]/p[94]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 18,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[95]@0:72",
+      "sourceId": "body[1]/p[95]",
+      "headingSpan": {
+        "start": 0,
+        "end": 72
+      },
+      "rawSourceText": "1.The Treatment of Import and Export Prices in International Comparisons",
+      "approvedHeadingText": "1. The Treatment of Import and Export Prices in International Comparisons",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=31:body[1]/p[95]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 19,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[105]@0:110",
+      "sourceId": "body[1]/p[105]",
+      "headingSpan": {
+        "start": 0,
+        "end": 110
+      },
+      "rawSourceText": "2.A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+      "approvedHeadingText": "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=32:body[1]/p[105]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 20,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[110]@0:84",
+      "sourceId": "body[1]/p[110]",
+      "headingSpan": {
+        "start": 0,
+        "end": 84
+      },
+      "rawSourceText": "3.Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "approvedHeadingText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=33:body[1]/p[110]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 21,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[120]@0:43",
+      "sourceId": "body[1]/p[120]",
+      "headingSpan": {
+        "start": 0,
+        "end": 43
+      },
+      "rawSourceText": "4.Treatment of Negative Expenditures in ICP",
+      "approvedHeadingText": "4. Treatment of Negative Expenditures in ICP",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=34:body[1]/p[120]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 22,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[125]@0:39",
+      "sourceId": "body[1]/p[125]",
+      "headingSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "rawSourceText": "5.Fine Tuning Global Linking Procedures",
+      "approvedHeadingText": "5. Fine Tuning Global Linking Procedures",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=35:body[1]/p[125]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 23,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[142]@0:44",
+      "sourceId": "body[1]/p[142]",
+      "headingSpan": {
+        "start": 0,
+        "end": 44
+      },
+      "rawSourceText": "6.Improving Reliability of Price Comparisons",
+      "approvedHeadingText": "6. Improving Reliability of Price Comparisons",
+      "semanticRole": "heading",
+      "level": 2,
+      "bindingMethod": "reversible-normalized-text-map;historical-key-bridge",
+      "comparisonRule": "NFC; smart-quote-to-ASCII; NBSP-to-space; whitespace-run-collapse; reversible-offset-map",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=36:body[1]/p[142]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 24,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[151]@0:30",
+      "sourceId": "body[1]/p[151]",
+      "headingSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "rawSourceText": "Session VI: Any Other Business",
+      "approvedHeadingText": "Session VI: Any Other Business",
+      "semanticRole": "heading",
+      "level": 1,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=37:body[1]/p[151]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 25,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[158]@56:62",
+      "sourceId": "body[1]/p[158]",
+      "headingSpan": {
+        "start": 56,
+        "end": 62
+      },
+      "rawSourceText": "Agenda",
+      "approvedHeadingText": "Agenda",
+      "semanticRole": "heading",
+      "level": 1,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=38:body[1]/p[158]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    },
+    {
+      "headingOrdinal": 26,
+      "headingOccurrenceId": "DOC-0252:body[1]/p[174]@0:29",
+      "sourceId": "body[1]/p[174]",
+      "headingSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "rawSourceText": "Annex 2: List of Participants",
+      "approvedHeadingText": "Annex 2: List of Participants",
+      "semanticRole": "heading",
+      "level": 1,
+      "bindingMethod": "exact-raw-text-substring;historical-key-bridge",
+      "comparisonRule": "ordinal",
+      "sourceReferencePath": "keys/format-driven-human/072_ICP_TAG_Minutes_Mar_2025.key#key-line=39:body[1]/p[174]",
+      "sourceReferenceSha256": "0d166af5b2a8eb413aabeb2d99d67c8d6fbc2592d19a6e088393dd869aa5680f",
+      "exactRawSubstringVerified": true
+    }
+  ],
+  "discrepancies": [],
+  "capabilities": {
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "roleEvaluable": true,
+    "levelEvaluable": true,
+    "parentEvaluable": false,
+    "hierarchyEvaluable": false
+  }
+}
