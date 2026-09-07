@@ -63,6 +63,9 @@ public sealed record ReasoningContextSegment
     [JsonPropertyName("visibleEndOrdinal")] public int? VisibleEndOrdinal { get; init; }
     [JsonPropertyName("ownedStartOrdinal")] public int? OwnedStartOrdinal { get; init; }
     [JsonPropertyName("ownedEndOrdinal")] public int? OwnedEndOrdinal { get; init; }
+    [JsonPropertyName("ownedSourceOccurrenceId")] public string? OwnedSourceOccurrenceId { get; init; }
+    [JsonPropertyName("ownedStartCharacter")] public int? OwnedStartCharacter { get; init; }
+    [JsonPropertyName("ownedEndCharacter")] public int? OwnedEndCharacter { get; init; }
     [JsonPropertyName("text")] public required string Text { get; init; }
 }
 
@@ -91,24 +94,22 @@ public sealed record ReasoningModelRequest
     [JsonPropertyName("userPrompt")] public required string UserPrompt { get; init; }
     [JsonPropertyName("sourceOccurrenceIds")] public required IReadOnlyList<string> SourceOccurrenceIds { get; init; }
     [JsonPropertyName("ownedSourceOccurrenceIds")] public required IReadOnlyList<string> OwnedSourceOccurrenceIds { get; init; }
-    [JsonPropertyName("ownedStartOrdinal")] public int? OwnedStartOrdinal { get; init; }
-    [JsonPropertyName("ownedEndOrdinal")] public int? OwnedEndOrdinal { get; init; }
+    [JsonPropertyName("ownedOutputScope")] public required ReasoningOwnedOutputScope OwnedOutputScope { get; init; }
     [JsonPropertyName("attemptId")] public string? AttemptId { get; init; }
-    [JsonPropertyName("sourceIdentityMap")] public IReadOnlyList<ReasoningSourceIdentity> SourceIdentityMap { get; init; } = [];
     [JsonPropertyName("configurationSignature")] public required string ConfigurationSignature { get; init; }
 }
 
 /// <summary>
-/// Exact identity map used by the evaluation harness. The provider may echo the canonical
-/// source id or one explicitly serialized alias, but never an inferred id.
+/// The harness-owned output boundary for one semantic request. Model output uses only local
+/// offsets inside this scope; the harness supplies the canonical source identity.
 /// </summary>
-public sealed record ReasoningSourceIdentity
+public sealed record ReasoningOwnedOutputScope
 {
     [JsonPropertyName("canonicalSourceId")] public required string CanonicalSourceId { get; init; }
     [JsonPropertyName("sourceOccurrenceId")] public required string SourceOccurrenceId { get; init; }
-    [JsonPropertyName("providerSourceAlias")] public string? ProviderSourceAlias { get; init; }
-    [JsonPropertyName("sourceOrdinal")] public required int SourceOrdinal { get; init; }
     [JsonPropertyName("rawTextLength")] public required int RawTextLength { get; init; }
+    [JsonPropertyName("ownedStart")] public required int OwnedStart { get; init; }
+    [JsonPropertyName("ownedEnd")] public required int OwnedEnd { get; init; }
 }
 
 public sealed record ReasoningDecisionEvidence(
@@ -128,20 +129,24 @@ public sealed record ReasoningHeadingProposal
     [JsonPropertyName("decisionEvidence")] public IReadOnlyList<ReasoningDecisionEvidence> DecisionEvidence { get; init; } = [];
 }
 
-public sealed record ReasoningOrdinalRange(
-    [property: JsonPropertyName("start")] int Start,
-    [property: JsonPropertyName("end")] int End);
+/// <summary>
+/// Untrusted semantic data authored by the model. It intentionally has no source or document
+/// identity. The active request scope binds these local offsets to parser-owned source facts.
+/// </summary>
+public sealed record ReasoningModelHeadingProposal
+{
+    [JsonPropertyName("start")] public required int Start { get; init; }
+    [JsonPropertyName("end")] public required int End { get; init; }
+    [JsonPropertyName("semanticRole")] public required string SemanticRole { get; init; }
+    [JsonPropertyName("proposedLevel")] public int? ProposedLevel { get; init; }
+    [JsonPropertyName("confidence")] public double Confidence { get; init; }
+    [JsonPropertyName("decisionEvidence")] public IReadOnlyList<ReasoningDecisionEvidence> DecisionEvidence { get; init; } = [];
+}
 
 public sealed record ReasoningModelResponse(
-    [property: JsonPropertyName("documentSummary")] string? DocumentSummary,
-    [property: JsonPropertyName("headings")] IReadOnlyList<ReasoningHeadingProposal> Headings,
+    [property: JsonPropertyName("headings")] IReadOnlyList<ReasoningModelHeadingProposal> Headings,
     [property: JsonPropertyName("decisionEvidence")] IReadOnlyList<ReasoningDecisionEvidence> DecisionEvidence,
-    [property: JsonPropertyName("rawResponseHash")] string? RawResponseHash = null,
-    [property: JsonPropertyName("ownedRange")] ReasoningOrdinalRange? OwnedRange = null,
-    [property: JsonPropertyName("complete")] bool Complete = true,
-    [property: JsonPropertyName("requestId")] string? RequestId = null,
-    [property: JsonPropertyName("semanticPassId")] string? SemanticPassId = null,
-    [property: JsonPropertyName("attemptId")] string? AttemptId = null);
+    [property: JsonPropertyName("rawResponseHash")] string? RawResponseHash = null);
 
 public static class ReasoningCompletionFailureClass
 {
@@ -197,29 +202,6 @@ public sealed class ReasoningCompletionTelemetry
     [JsonPropertyName("visibleSourceIds")] public IReadOnlyList<string> VisibleSourceIds { get; set; } = [];
     [JsonPropertyName("ownedSourceIds")] public IReadOnlyList<string> OwnedSourceIds { get; set; } = [];
     [JsonPropertyName("failureClass")] public string? FailureClass { get; set; }
-}
-
-/// <summary>
-/// Diagnostic-only identity failure. It carries the exact ids involved without attempting to
-/// repair an unknown provider value by text, ordinal, or nearest-source matching.
-/// </summary>
-public sealed class ReasoningResponseIdentityException : Exception
-{
-    public ReasoningResponseIdentityException(
-        string message,
-        string returnedSourceId,
-        IReadOnlyList<string> visibleSourceIds,
-        IReadOnlyList<string> ownedSourceIds)
-        : base(message)
-    {
-        ReturnedSourceIds = [returnedSourceId];
-        VisibleSourceIds = visibleSourceIds;
-        OwnedSourceIds = ownedSourceIds;
-    }
-
-    public IReadOnlyList<string> ReturnedSourceIds { get; }
-    public IReadOnlyList<string> VisibleSourceIds { get; }
-    public IReadOnlyList<string> OwnedSourceIds { get; }
 }
 
 public sealed class ReasoningCompletionException : Exception

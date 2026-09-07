@@ -73,23 +73,24 @@ public static class ReasoningContextBuilder
         var lines = occurrences.Select(SerializeOccurrence).ToArray();
         var sourceCharacters = occurrences.Sum(o => o.RawText.Length);
         var totalCharacters = lines.Sum(line => line.Length + 1);
-        var segments = totalCharacters <= maxContextCharacters
+        var baseSegments = totalCharacters <= maxContextCharacters
             ? [BuildSegment(occurrences, 0, lines.Length, 0, lines.Length)]
             : BuildWindows(occurrences, lines, windowCharacters, overlapOccurrences);
+        var segments = ExpandOwnedCharacterScopes(baseSegments, occurrences);
 
-        var visibleIds = segments.SelectMany(s => s.SourceOccurrenceIds).ToHashSet(StringComparer.Ordinal);
-        var visibleCharacters = segments.Sum(segment => segment.Text.Length);
+        var visibleIds = baseSegments.SelectMany(s => s.SourceOccurrenceIds).ToHashSet(StringComparer.Ordinal);
+        var visibleCharacters = baseSegments.Sum(segment => segment.Text.Length);
         var overlapCharacters = Math.Max(0, visibleCharacters - totalCharacters);
         return new ReasoningContextPack
         {
             DocumentId = source.DocumentId,
-            ContextStrategy = segments.Count == 1 ? "SINGLE_FULL_CONTEXT" : "HIERARCHICAL_FULL_COVERAGE",
+            ContextStrategy = baseSegments.Count == 1 ? "SINGLE_FULL_CONTEXT" : "HIERARCHICAL_FULL_COVERAGE",
             SourceCharacters = sourceCharacters,
             ModelVisibleCharacters = visibleCharacters,
             SourceOccurrenceCoverage = occurrences.Length == 0 ? 1d : (double)visibleIds.Count / occurrences.Length,
             WindowCount = segments.Count,
             OverlapCharacters = overlapCharacters,
-            GlobalConsolidationUsed = segments.Count > 1,
+            GlobalConsolidationUsed = baseSegments.Count > 1,
             Occurrences = occurrences,
             Segments = segments,
         };
@@ -194,6 +195,33 @@ public static class ReasoningContextBuilder
                 $"-owned-{ownedStart + 1}-{ownedEnd}"));
         }
         return segments;
+    }
+
+    private static IReadOnlyList<ReasoningContextSegment> ExpandOwnedCharacterScopes(
+        IReadOnlyList<ReasoningContextSegment> segments,
+        IReadOnlyList<ReasoningSourceOccurrence> occurrences)
+    {
+        var occurrenceById = occurrences.ToDictionary(item => item.SourceOccurrenceId, StringComparer.Ordinal);
+        var expanded = new List<ReasoningContextSegment>();
+        foreach (var segment in segments)
+        {
+            foreach (var occurrenceId in segment.OwnedSourceOccurrenceIds)
+            {
+                if (!occurrenceById.TryGetValue(occurrenceId, out var occurrence))
+                    throw new InvalidOperationException($"reasoning-owned-source-occurrence-missing:{occurrenceId}");
+                expanded.Add(segment with
+                {
+                    ContextSegmentId = $"{segment.ContextSegmentId}-owned-{occurrence.SourceOrdinal}",
+                    OwnedSourceOccurrenceIds = [occurrence.SourceOccurrenceId],
+                    OwnedSourceOccurrenceId = occurrence.SourceOccurrenceId,
+                    OwnedStartCharacter = 0,
+                    OwnedEndCharacter = occurrence.RawText.Length,
+                    OwnedStartOrdinal = occurrence.SourceOrdinal,
+                    OwnedEndOrdinal = occurrence.SourceOrdinal,
+                });
+            }
+        }
+        return expanded;
     }
 
     private static readonly JsonSerializerOptions JsonOptions = new()

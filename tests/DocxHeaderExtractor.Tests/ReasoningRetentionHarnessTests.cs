@@ -109,10 +109,18 @@ public sealed class ReasoningRetentionHarnessTests
             (0, "Not a candidate", null, (int?)null),
             (1, "A heading", null, (int?)null),
         ]);
-        var model = new FixedReasoningModel(_ => new ReasoningModelResponse(
-            null,
-            [Proposal("p[1]", "A heading", 0, 9, 1)],
-            []));
+        var model = new FixedReasoningModel(request =>
+            request.OwnedOutputScope.CanonicalSourceId == "p[1]"
+                ? new ReasoningModelResponse(
+                    [new ReasoningModelHeadingProposal
+                    {
+                        Start = 0,
+                        End = 9,
+                        SemanticRole = "CONTENT_HEADING",
+                        ProposedLevel = 1,
+                    }],
+                    [])
+                : new ReasoningModelResponse([], []));
         var harness = new ReasoningPreservingHeadingHarness(model);
 
         var observation = await harness.RunAsync(
@@ -123,14 +131,14 @@ public sealed class ReasoningRetentionHarnessTests
         Assert.Equal(2, observation.ContextVisible.Count);
         Assert.Contains(observation.ContextVisible, id => id.Contains("p[0]", StringComparison.Ordinal));
         Assert.Single(observation.Validated);
-        Assert.Equal(1, model.ProviderCalls);
+        Assert.Equal(4, model.ProviderCalls);
     }
 
     [Fact]
     public void Prompt_parser_accepts_rich_roles_without_private_reasoning()
     {
         var raw = """
-        {"schemaVersion":"a99-reasoning-bounded-v1","requestId":"request","semanticPassId":"pass","ownedRange":{"start":0,"end":0},"complete":true,"documentSummary":"test","headings":[{"sourceId":"p[0]","headingSpan":{"start":0,"end":7},"text":"Heading","semanticRole":"CONTENT_HEADING","proposedLevel":1,"confidence":0.9,"decisionEvidence":[{"evidenceType":"semantic","sourceReference":"p[0]","shortEvidenceCode":"TOPIC_PHRASE"}]}],"decisionEvidence":[]}
+        {"schemaVersion":"a99-reasoning-bounded-v2","headings":[{"start":0,"end":7,"semanticRole":"CONTENT_HEADING","proposedLevel":1,"confidence":0.9,"decisionEvidence":[{"evidenceType":"semantic","sourceReference":"context","shortEvidenceCode":"TOPIC_PHRASE"}]}],"decisionEvidence":[]}
         """;
 
         var response = ReasoningModelResponseParser.Parse(raw);

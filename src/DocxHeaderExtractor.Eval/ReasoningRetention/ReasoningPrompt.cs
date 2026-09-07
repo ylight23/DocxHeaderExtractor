@@ -4,7 +4,7 @@ namespace DocxHeaderExtractor.Eval.ReasoningRetention;
 
 public static class ReasoningPrompt
 {
-    public const string Version = "a99-reasoning-preserving-v1";
+    public const string Version = "a99-reasoning-preserving-v2";
 
     public const string System = """
 You are a document-structure extraction evaluator.
@@ -19,19 +19,13 @@ never private chain-of-thought.
 
 Return exactly:
 {
-  "schemaVersion": "a99-reasoning-bounded-v1",
-  "requestId": "exact requestId supplied by the harness",
-  "semanticPassId": "exact semanticPassId supplied by the harness",
-  "ownedRange": { "start": 0, "end": 12 },
-  "complete": true,
+  "schemaVersion": "a99-reasoning-bounded-v2",
   "headings": [
     {
-      "sourceId": "exact supplied sourceId",
       "start": 0,
       "end": 12,
       "semanticRole": "DOCUMENT_TITLE|PART|CHAPTER|SECTION|SUBSECTION|ARTICLE|CLAUSE_HEADING|ANNEX_HEADING|LOCAL_INDEX_TITLE|AGENDA_NAVIGATION_HEADING|TOC_ENTRY|FRONT_MATTER|CONTENT_HEADING|OTHER_STRUCTURAL_LABEL",
       "proposedLevel": 1,
-      "proposedParentKey": "optional structural element id",
       "confidence": 0.0,
       "evidenceCodes": ["SEMANTIC_SECTION_BOUNDARY"]
     }
@@ -39,48 +33,41 @@ Return exactly:
   "decisionEvidence": []
 }
 
-All spans are UTF-16 offsets into the exact rawText of the named sourceId.
-The response may omit duplicated heading text; the harness materializes exact text from rawText.
-Emit headings only when the source ordinal belongs to ownedRange. The full visible context may
-contain other source occurrences for global reasoning, but those occurrences are not owned by
-this response.
+start and end are UTF-16 offsets relative to the harness-owned output range, not document offsets.
+The harness adds the owned range start and binds the result to the canonical source. The response
+must not contain sourceId, sourceOccurrenceId, source paths, request ids, attempt ids, semantic pass
+ids, parent ids, or a completion marker. The response may omit duplicated heading text; the harness
+materializes exact text from parser-owned rawText. The full visible context may contain other
+source occurrences for global reasoning, but those occurrences are not owned by this response.
 The response is an untrusted proposal and will be hard-validated locally.
-
-Use the exact canonical sourceId value from each SOURCE_OCCURRENCE. The sourceOccurrenceId
-is an explicit context alias only; do not invent or shorten source identities.
 """;
 
     public static string BuildUser(
         ReasoningContextSegment segment,
         bool shadow,
-        string requestId,
-        string semanticPassId,
-        string attemptId,
-        IReadOnlyList<ReasoningSourceIdentity>? sourceIdentityMap = null)
+        ReasoningOwnedOutputScope? ownedOutputScope = null)
     {
-        var identityTable = sourceIdentityMap is { Count: > 0 }
-            ? string.Join(
-                Environment.NewLine,
-                sourceIdentityMap.Select(item =>
-                    $"- providerSourceAlias={item.ProviderSourceAlias ?? "(none)"} | " +
-                    $"canonicalSourceId={item.CanonicalSourceId} | sourceOccurrenceId={item.SourceOccurrenceId}"))
-            : "(no visible source identities)";
+        var scope = ownedOutputScope ?? (segment.OwnedSourceOccurrenceId is not null &&
+            segment.OwnedStartCharacter is { } start && segment.OwnedEndCharacter is { } end
+            ? new ReasoningOwnedOutputScope
+            {
+                CanonicalSourceId = segment.OwnedSourceOccurrenceId,
+                SourceOccurrenceId = segment.OwnedSourceOccurrenceId,
+                RawTextLength = end,
+                OwnedStart = start,
+                OwnedEnd = end,
+            }
+            : null);
         return $"""
 TASK={Version}
 route={(shadow ? "REASONING_PRESERVING_SHADOW" : "MODEL_CAPABILITY_CEILING")}
-REQUEST_ID_EXACT={requestId}
-SEMANTIC_PASS_ID_EXACT={semanticPassId}
-ATTEMPT_ID_EXACT={attemptId}
-SOURCE_ID_COPY_RULE: the sourceId field in every heading must be copied character-for-character from a canonicalSourceId below, or be exactly one providerSourceAlias below.
-Never use a file path, sourceReferencePath, sourceOccurrenceId, or a span-bearing identifier as sourceId.
-Do not append :start:end to sourceId. If using an alias, copy only the alias token. Unknown values are invalid.
-CANONICAL_SOURCE_ID_TABLE
-{identityTable}
 The candidateHint fields are optional attention hints only. They do not restrict visibility.
 Inspect all SOURCE_OCCURRENCE blocks below, including rows whose candidateHint.candidate is false.
 The visible source ordinal range is {segment.VisibleStartOrdinal?.ToString() ?? "empty"}..{segment.VisibleEndOrdinal?.ToString() ?? "empty"}.
-The only output-owned range is {segment.OwnedStartOrdinal?.ToString() ?? "empty"}..{segment.OwnedEndOrdinal?.ToString() ?? "empty"}.
-Return an ownedRange with those exact inclusive endpoints, and emit no heading outside it.
+The harness-owned output scope is source={scope?.CanonicalSourceId ?? "none"};
+rawTextLength={scope?.RawTextLength.ToString() ?? "0"};
+ownedCharacters={scope?.OwnedStart.ToString() ?? "empty"}..{scope?.OwnedEnd.ToString() ?? "empty"}.
+Return local start/end offsets within that owned character range only.
 
 {segment.Text}
 """;
@@ -97,50 +84,43 @@ public static class ReasoningModelResponseParser
         var json = ExtractObject(raw);
         using var document = JsonDocument.Parse(json);
         var root = document.RootElement;
-        if (root.ValueKind != JsonValueKind.Object ||
-            !root.TryGetProperty("complete", out var complete) ||
-            complete.ValueKind != JsonValueKind.True)
-            throw new FormatException("reasoning-response-complete-marker-missing");
-
+        foreach (var forbidden in new[]
+        {
+            "requestId", "attemptId", "semanticPassId", "sourceId", "sourceOccurrenceId", "ownedRange"
+        })
+        {
+            if (root.TryGetProperty(forbidden, out _))
+                throw new FormatException($"reasoning-response-control-identity-forbidden:{forbidden}");
+        }
         if (!root.TryGetProperty("headings", out var array) || array.ValueKind != JsonValueKind.Array)
             throw new FormatException("reasoning-response-headings-missing");
 
-        var headings = new List<ReasoningHeadingProposal>();
+        var headings = new List<ReasoningModelHeadingProposal>();
         foreach (var item in array.EnumerateArray())
         {
             if (item.ValueKind != JsonValueKind.Object ||
-                !item.TryGetProperty("sourceId", out var sourceId) || sourceId.ValueKind != JsonValueKind.String ||
-                !TrySpan(item, out var start, out var end) ||
+                item.TryGetProperty("sourceId", out _) ||
+                item.TryGetProperty("sourceOccurrenceId", out _) ||
+                item.TryGetProperty("headingSpan", out _) ||
+                item.TryGetProperty("proposedParent", out _) ||
+                item.TryGetProperty("proposedParentId", out _) ||
+                !TryLocalSpan(item, out var start, out var end) ||
                 !item.TryGetProperty("semanticRole", out var role) || role.ValueKind != JsonValueKind.String)
-                throw new FormatException("reasoning-response-heading-schema-invalid");
-            headings.Add(new ReasoningHeadingProposal
+            throw new FormatException("reasoning-response-heading-schema-invalid");
+            headings.Add(new ReasoningModelHeadingProposal
             {
-                SourceId = sourceId.GetString() ?? "",
-                HeadingSpan = new DocxHeaderExtractor.Core.Models.StructuralSpan(start, end),
-                Text = item.TryGetProperty("text", out var text) && text.ValueKind == JsonValueKind.String
-                    ? text.GetString() ?? "" : "",
+                Start = start,
+                End = end,
                 SemanticRole = role.GetString() ?? "UNKNOWN",
                 ProposedLevel = item.TryGetProperty("proposedLevel", out var level) && level.TryGetInt32(out var l) ? l : null,
-                ProposedParent = item.TryGetProperty("proposedParentKey", out var parentKey)
-                    ? parentKey.GetString()
-                    : item.TryGetProperty("proposedParent", out var parent) ? parent.GetString() : null,
                 Confidence = item.TryGetProperty("confidence", out var confidence) && confidence.TryGetDouble(out var score) ? score : 0,
                 DecisionEvidence = ReadEvidence(item, "decisionEvidence"),
             });
         }
 
-        ReasoningOrdinalRange? ownedRange = null;
-        if (root.TryGetProperty("ownedRange", out var range) && TrySpan(range, out var ownedStart, out var ownedEnd))
-            ownedRange = new ReasoningOrdinalRange(ownedStart, ownedEnd);
         return new ReasoningModelResponse(
-            root.TryGetProperty("documentSummary", out var summary) ? summary.GetString() : null,
             headings,
-            ReadEvidence(root, "decisionEvidence"),
-            OwnedRange: ownedRange,
-            Complete: true,
-            RequestId: root.TryGetProperty("requestId", out var requestId) ? requestId.GetString() : null,
-            SemanticPassId: root.TryGetProperty("semanticPassId", out var semanticPassId) ? semanticPassId.GetString() : null,
-            AttemptId: root.TryGetProperty("attemptId", out var attemptId) ? attemptId.GetString() : null);
+            ReadEvidence(root, "decisionEvidence"));
     }
 
     private static IReadOnlyList<ReasoningDecisionEvidence> ReadEvidence(JsonElement parent, string property)
@@ -156,14 +136,18 @@ public static class ReasoningModelResponseParser
             .ToArray();
     }
 
-    private static bool TrySpan(JsonElement value, out int start, out int end)
+    private static bool TryLocalSpan(JsonElement value, out int start, out int end)
     {
         start = end = 0;
-        if (value.ValueKind != JsonValueKind.Object) return false;
-        if (value.TryGetProperty("headingSpan", out var headingSpan))
-            value = headingSpan;
-        return value.TryGetProperty("start", out var s) && s.TryGetInt32(out start) &&
-            value.TryGetProperty("end", out var e) && e.TryGetInt32(out end);
+        if (value.TryGetProperty("localStart", out var localStart) &&
+            localStart.TryGetInt32(out start) &&
+            value.TryGetProperty("localEnd", out var localEnd) &&
+            localEnd.TryGetInt32(out end))
+            return true;
+        return value.TryGetProperty("start", out var plainStart) &&
+            plainStart.TryGetInt32(out start) &&
+            value.TryGetProperty("end", out var plainEnd) &&
+            plainEnd.TryGetInt32(out end);
     }
 
     private static string ExtractObject(string raw)

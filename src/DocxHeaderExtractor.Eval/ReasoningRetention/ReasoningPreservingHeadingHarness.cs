@@ -57,24 +57,27 @@ public sealed class ReasoningPreservingHeadingHarness
                 "semantic-heading-extraction-v1",
                 completion,
                 ct);
-            allProposals.AddRange(responses.SelectMany(item => item.Headings));
+            allProposals.AddRange(responses);
         }
 
         // Hierarchical mode gets one explicit consolidation pass. It sees every source identity
         // and the window proposals, but it never sees Gold or a candidate-filtered source subset.
         if (pack.Segments.Count > 1)
         {
-            var consolidation = BuildConsolidationSegment(pack, allProposals);
-            var responses = await CompleteWithRecoveryAsync(
-                source,
-                pack,
-                consolidation,
-                route,
-                "global-structural-consolidation-v1",
-                completion,
-                ct);
-            var consolidated = responses.SelectMany(item => item.Headings).ToArray();
-            if (consolidated.Length > 0)
+            var consolidated = new List<ReasoningHeadingProposal>();
+            foreach (var consolidation in BuildConsolidationSegments(pack, allProposals))
+            {
+                var responses = await CompleteWithRecoveryAsync(
+                    source,
+                    pack,
+                    consolidation,
+                    route,
+                    "global-structural-consolidation-v1",
+                    completion,
+                    ct);
+                consolidated.AddRange(responses);
+            }
+            if (consolidated.Count > 0)
                 allProposals = [.. consolidated];
         }
 
@@ -112,7 +115,7 @@ public sealed class ReasoningPreservingHeadingHarness
             $"{ReasoningPrompt.Version}|qwen-compatible|temperature=0|reasoning=none|route={route}")))
             .ToLowerInvariant();
 
-    private async Task<IReadOnlyList<ReasoningModelResponse>> CompleteWithRecoveryAsync(
+    private async Task<IReadOnlyList<ReasoningHeadingProposal>> CompleteWithRecoveryAsync(
         SourceDocument source,
         ReasoningContextPack pack,
         ReasoningContextSegment initialSegment,
@@ -123,7 +126,7 @@ public sealed class ReasoningPreservingHeadingHarness
     {
         var pending = new Queue<ReasoningContextSegment>();
         pending.Enqueue(initialSegment);
-        var responses = new List<ReasoningModelResponse>();
+        var responses = new List<ReasoningHeadingProposal>();
         var occurrenceById = pack.Occurrences.ToDictionary(item => item.SourceOccurrenceId, StringComparer.Ordinal);
 
         while (pending.Count > 0)
@@ -139,19 +142,12 @@ public sealed class ReasoningPreservingHeadingHarness
                 var visibleOccurrences = segment.SourceOccurrenceIds
                     .Select(id => occurrenceById[id])
                     .ToArray();
+                var ownedScope = BuildOwnedOutputScope(segment, occurrenceById);
                 var ownedSourceIdsForTelemetry = segment.OwnedSourceOccurrenceIds
                     .Where(occurrenceById.ContainsKey)
                     .Select(id => occurrenceById[id].SourceId)
                     .Distinct(StringComparer.Ordinal)
                     .ToArray();
-                var sourceIdentityMap = visibleOccurrences.Select((item, index) => new ReasoningSourceIdentity
-                {
-                    CanonicalSourceId = item.SourceId,
-                    SourceOccurrenceId = item.SourceOccurrenceId,
-                    ProviderSourceAlias = $"s{index + 1:D4}",
-                    SourceOrdinal = item.SourceOrdinal,
-                    RawTextLength = item.RawText.Length,
-                }).ToArray();
                 var request = new ReasoningModelRequest
                 {
                     RequestId = requestId,
@@ -163,16 +159,11 @@ public sealed class ReasoningPreservingHeadingHarness
                     UserPrompt = ReasoningPrompt.BuildUser(
                         segment,
                         route == ReasoningRoute.ReasoningPreservingShadow,
-                        requestId,
-                        semanticPassId,
-                        $"{requestId}:attempt-{attemptNumber}",
-                        sourceIdentityMap),
+                        ownedScope),
                     SourceOccurrenceIds = segment.SourceOccurrenceIds,
                     OwnedSourceOccurrenceIds = segment.OwnedSourceOccurrenceIds,
-                    OwnedStartOrdinal = segment.OwnedStartOrdinal,
-                    OwnedEndOrdinal = segment.OwnedEndOrdinal,
+                    OwnedOutputScope = ownedScope,
                     AttemptId = $"{requestId}:attempt-{attemptNumber}",
-                    SourceIdentityMap = sourceIdentityMap,
                     ConfigurationSignature = ConfigurationSignature(route),
                 };
 
@@ -192,10 +183,8 @@ public sealed class ReasoningPreservingHeadingHarness
                             .Order(StringComparer.Ordinal)
                             .ToArray();
                     }
-                    if (!response.Complete)
-                        throw new InvalidDataException("reasoning-response-complete-marker-missing");
                     var scopedResponse = ValidateResponseOwnership(response, request, segment, occurrenceById, completion);
-                    responses.Add(scopedResponse);
+                    responses.AddRange(scopedResponse);
                     completion.SuccessfulCompletionCount++;
                     if (semanticPassId.StartsWith("global-", StringComparison.Ordinal))
                         completion.ConsolidationPassCount++;
@@ -209,7 +198,7 @@ public sealed class ReasoningPreservingHeadingHarness
                     completion.FailureClasses.Add(ex.FailureClass);
                     if (ex.FailureClass == ReasoningCompletionFailureClass.ProviderOutputLimit)
                     {
-                        if (segment.OwnedSourceOccurrenceIds.Count <= 1)
+                        if (!CanSplitOwnedRange(segment, occurrenceById))
                             throw WithAttemptHistory(ex);
                         var split = SplitOwnership(segment, pack.Occurrences);
                         pending.Enqueue(split.Left);
@@ -226,19 +215,13 @@ public sealed class ReasoningPreservingHeadingHarness
                     }
                     throw WithAttemptHistory(ex);
                 }
-                catch (Exception ex) when (ex is InvalidDataException or ReasoningResponseIdentityException)
+                catch (Exception ex) when (ex is InvalidDataException)
                 {
                     completion.FailedCompletionCount++;
                     completion.FailureClasses.Add(ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid);
                     var telemetry = (_model as IReasoningCompletionTelemetrySource)?.CompletionTelemetry.LastOrDefault()
                         ?? new ReasoningCompletionTelemetry { FailureClass = ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid };
                     telemetry.ValidationReason = ex.Message;
-                    if (ex is ReasoningResponseIdentityException identity)
-                    {
-                        telemetry.ReturnedSourceIds = identity.ReturnedSourceIds;
-                        telemetry.VisibleSourceIds = identity.VisibleSourceIds;
-                        telemetry.OwnedSourceIds = identity.OwnedSourceIds;
-                    }
                     throw WithAttemptHistory(new ReasoningCompletionException(
                         ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid,
                         ex.Message,
@@ -263,68 +246,81 @@ public sealed class ReasoningPreservingHeadingHarness
             source.CompletionTelemetry.ToArray());
     }
 
-    private static ReasoningModelResponse ValidateResponseOwnership(
+    private static IReadOnlyList<ReasoningHeadingProposal> ValidateResponseOwnership(
         ReasoningModelResponse response,
         ReasoningModelRequest request,
         ReasoningContextSegment segment,
         IReadOnlyDictionary<string, ReasoningSourceOccurrence> occurrenceById,
         CompletionAccumulator completion)
     {
-        if (response.RequestId is not null && response.RequestId != request.RequestId)
-            throw new InvalidDataException($"reasoning-response-request-id-mismatch; expected={request.RequestId}; actual={response.RequestId}");
-        if (response.SemanticPassId is not null && response.SemanticPassId != request.SemanticPassId)
-            throw new InvalidDataException($"reasoning-response-semantic-pass-id-mismatch; expected={request.SemanticPassId}; actual={response.SemanticPassId}");
-        if (response.AttemptId is not null && response.AttemptId != request.AttemptId)
-            throw new InvalidDataException($"reasoning-response-attempt-id-mismatch; expected={request.AttemptId}; actual={response.AttemptId}");
-        if (response.OwnedRange is { } range &&
-            (range.Start != segment.OwnedStartOrdinal || range.End != segment.OwnedEndOrdinal))
-            throw new InvalidDataException("reasoning-response-owned-range-mismatch");
+        var scope = request.OwnedOutputScope;
+        if (!occurrenceById.TryGetValue(scope.SourceOccurrenceId, out var occurrence) ||
+            !string.Equals(occurrence.SourceId, scope.CanonicalSourceId, StringComparison.Ordinal))
+            throw new InvalidDataException("reasoning-owned-output-source-not-found");
+        if (scope.RawTextLength != occurrence.RawText.Length ||
+            scope.OwnedStart < 0 ||
+            scope.OwnedEnd <= scope.OwnedStart ||
+            scope.OwnedEnd > scope.RawTextLength)
+            throw new InvalidDataException("reasoning-owned-output-scope-invalid");
 
-        var visibleOccurrences = segment.SourceOccurrenceIds
-            .Where(occurrenceById.ContainsKey)
-            .Select(id => occurrenceById[id])
-            .ToArray();
-        var ownedSourceIds = segment.OwnedSourceOccurrenceIds
-            .Where(occurrenceById.ContainsKey)
-            .Select(id => occurrenceById[id].SourceId)
-            .ToHashSet(StringComparer.Ordinal);
         var scoped = new List<ReasoningHeadingProposal>(response.Headings.Count);
         var emittedOccurrences = new HashSet<string>(StringComparer.Ordinal);
         foreach (var proposal in response.Headings)
         {
-            var identity = ReasoningSourceIdentityResolver.Resolve(
-                proposal.SourceId,
-                visibleOccurrences,
-                ownedSourceIds,
-                request.SourceIdentityMap);
-            if (!identity.IsVisible || identity.CanonicalSourceId is null)
-                throw new ReasoningResponseIdentityException(
-                    $"reasoning-response-source-not-visible; returnedSourceId={proposal.SourceId}",
-                    proposal.SourceId,
-                    visibleOccurrences.Select(item => item.SourceId).ToArray(),
-                    ownedSourceIds.Order(StringComparer.Ordinal).ToArray());
-
-            var source = visibleOccurrences.First(item => item.SourceId == identity.CanonicalSourceId);
-            if (!proposal.HeadingSpan.IsValidFor(source.RawText))
+            var localSpan = new StructuralSpan(proposal.Start, proposal.End);
+            if (localSpan.Start < 0 ||
+                localSpan.End <= localSpan.Start ||
+                localSpan.End > scope.OwnedEnd - scope.OwnedStart)
                 throw new InvalidDataException(
-                    $"reasoning-response-span-invalid-for-visible-source; sourceId={source.SourceId}; " +
-                    $"start={proposal.HeadingSpan.Start}; end={proposal.HeadingSpan.End}; rawTextLength={source.RawText.Length}");
+                    $"reasoning-response-local-span-invalid; start={proposal.Start}; end={proposal.End}; " +
+                    $"ownedStart={scope.OwnedStart}; ownedEnd={scope.OwnedEnd}");
 
-            var normalized = proposal with { SourceId = identity.CanonicalSourceId };
-            var occurrenceKey = $"{normalized.SourceId}:{normalized.HeadingSpan.Start}:{normalized.HeadingSpan.End}";
+            var globalSpan = new StructuralSpan(scope.OwnedStart + localSpan.Start, scope.OwnedStart + localSpan.End);
+            var occurrenceKey = $"{scope.CanonicalSourceId}:{globalSpan.Start}:{globalSpan.End}";
             if (!emittedOccurrences.Add(occurrenceKey))
                 throw new InvalidDataException($"reasoning-response-duplicate-occurrence; occurrence={occurrenceKey}");
 
-            if (!ownedSourceIds.Contains(normalized.SourceId))
+            scoped.Add(new ReasoningHeadingProposal
             {
-                completion.OutOfScopeProposalCount++;
-                completion.OwnershipViolationCount++;
-                continue;
-            }
-            scoped.Add(normalized);
+                SourceId = scope.CanonicalSourceId,
+                HeadingSpan = globalSpan,
+                Text = occurrence.RawText[globalSpan.Start..globalSpan.End],
+                SemanticRole = proposal.SemanticRole,
+                ProposedLevel = proposal.ProposedLevel,
+                Confidence = proposal.Confidence,
+                DecisionEvidence = proposal.DecisionEvidence,
+            });
         }
-        return response with { Headings = scoped };
+        return scoped;
     }
+
+    private static ReasoningOwnedOutputScope BuildOwnedOutputScope(
+        ReasoningContextSegment segment,
+        IReadOnlyDictionary<string, ReasoningSourceOccurrence> occurrenceById)
+    {
+        if (segment.OwnedSourceOccurrenceId is null ||
+            segment.OwnedStartCharacter is not { } start ||
+            segment.OwnedEndCharacter is not { } end ||
+            !occurrenceById.TryGetValue(segment.OwnedSourceOccurrenceId, out var occurrence))
+            throw new InvalidDataException("reasoning-owned-output-scope-missing");
+        return new ReasoningOwnedOutputScope
+        {
+            CanonicalSourceId = occurrence.SourceId,
+            SourceOccurrenceId = occurrence.SourceOccurrenceId,
+            RawTextLength = occurrence.RawText.Length,
+            OwnedStart = start,
+            OwnedEnd = end,
+        };
+    }
+
+    private static bool CanSplitOwnedRange(
+        ReasoningContextSegment segment,
+        IReadOnlyDictionary<string, ReasoningSourceOccurrence> occurrenceById) =>
+        segment.OwnedStartCharacter is { } start &&
+        segment.OwnedEndCharacter is { } end &&
+        end - start > 1 &&
+        segment.OwnedSourceOccurrenceId is not null &&
+        occurrenceById.ContainsKey(segment.OwnedSourceOccurrenceId);
 
     private static bool IsTransientProviderFailure(string failureClass) =>
         failureClass is ReasoningCompletionFailureClass.TransportTruncation or
@@ -338,32 +334,31 @@ public sealed class ReasoningPreservingHeadingHarness
         ReasoningContextSegment segment,
         IReadOnlyList<ReasoningSourceOccurrence> occurrences)
     {
-        var owned = segment.OwnedSourceOccurrenceIds.ToArray();
-        var midpoint = owned.Length / 2;
-        var leftIds = owned[..midpoint];
-        var rightIds = owned[midpoint..];
-        return (
-            WithOwnership(segment, occurrences, leftIds, $"-split-{leftIds[0]}-{leftIds[^1]}"),
-            WithOwnership(segment, occurrences, rightIds, $"-split-{rightIds[0]}-{rightIds[^1]}"));
-    }
-
-    private static ReasoningContextSegment WithOwnership(
-        ReasoningContextSegment segment,
-        IReadOnlyList<ReasoningSourceOccurrence> occurrences,
-        IReadOnlyList<string> ownedIds,
-        string suffix)
-    {
-        var owned = ownedIds.Select(id => occurrences.First(item => item.SourceOccurrenceId == id)).ToArray();
-        return segment with
+        if (segment.OwnedSourceOccurrenceId is null ||
+            segment.OwnedStartCharacter is not { } start ||
+            segment.OwnedEndCharacter is not { } end)
+            throw new InvalidDataException("reasoning-owned-output-scope-missing");
+        var midpoint = start + ((end - start) / 2);
+        if (midpoint <= start || midpoint >= end)
+            throw new InvalidDataException("reasoning-owned-output-range-not-splittable");
+        var left = segment with
         {
-            ContextSegmentId = segment.ContextSegmentId + suffix,
-            OwnedSourceOccurrenceIds = ownedIds,
-            OwnedStartOrdinal = owned[0].SourceOrdinal,
-            OwnedEndOrdinal = owned[^1].SourceOrdinal,
+            ContextSegmentId = segment.ContextSegmentId + $"-split-{start}-{midpoint}",
+            OwnedSourceOccurrenceIds = [segment.OwnedSourceOccurrenceId],
+            OwnedStartCharacter = start,
+            OwnedEndCharacter = midpoint,
         };
+        var right = segment with
+        {
+            ContextSegmentId = segment.ContextSegmentId + $"-split-{midpoint}-{end}",
+            OwnedSourceOccurrenceIds = [segment.OwnedSourceOccurrenceId],
+            OwnedStartCharacter = midpoint,
+            OwnedEndCharacter = end,
+        };
+        return (left, right);
     }
 
-    private static ReasoningContextSegment BuildConsolidationSegment(
+    private static IReadOnlyList<ReasoningContextSegment> BuildConsolidationSegments(
         ReasoningContextPack pack,
         IReadOnlyList<ReasoningHeadingProposal> proposals)
     {
@@ -375,7 +370,7 @@ public sealed class ReasoningPreservingHeadingHarness
             sourceOccurrenceIds = pack.Occurrences.Select(o => o.SourceOccurrenceId),
             windowProposals = proposals,
         }));
-        return new ReasoningContextSegment
+        var baseSegment = new ReasoningContextSegment
         {
             ContextSegmentId = "global-consolidation",
             Ordinal = pack.Segments.Count + 1,
@@ -387,6 +382,16 @@ public sealed class ReasoningPreservingHeadingHarness
             OwnedEndOrdinal = pack.Occurrences.Count == 0 ? null : pack.Occurrences[^1].SourceOrdinal,
             Text = sb.ToString(),
         };
+        return pack.Occurrences.Select(occurrence => baseSegment with
+        {
+            ContextSegmentId = $"global-consolidation-owned-{occurrence.SourceOrdinal}",
+            OwnedSourceOccurrenceIds = [occurrence.SourceOccurrenceId],
+            OwnedSourceOccurrenceId = occurrence.SourceOccurrenceId,
+            OwnedStartCharacter = 0,
+            OwnedEndCharacter = occurrence.RawText.Length,
+            OwnedStartOrdinal = occurrence.SourceOrdinal,
+            OwnedEndOrdinal = occurrence.SourceOrdinal,
+        }).ToArray();
     }
 
     private sealed class CompletionAccumulator

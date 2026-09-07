@@ -20,29 +20,31 @@ public sealed class ReasoningCompletionIntegrityTests
     [Fact]
     public void Json_prefix_is_never_partially_scored()
     {
-        var raw = "{\"complete\":true,\"headings\":[{\"sourceId\":\"p[0]\"}";
+        var raw = "{\"headings\":[{\"start\":0}";
         Assert.ThrowsAny<Exception>(() => ReasoningModelResponseParser.Parse(raw));
     }
 
     [Fact]
-    public void Missing_complete_marker_is_rejected()
+    public void Missing_complete_marker_is_accepted_when_schema_is_valid()
     {
-        Assert.Throws<FormatException>(() => ReasoningModelResponseParser.Parse(
-            "{\"headings\":[],\"decisionEvidence\":[]}"));
+        var response = ReasoningModelResponseParser.Parse(
+            "{\"headings\":[],\"decisionEvidence\":[]}");
+        Assert.Empty(response.Headings);
     }
 
     [Fact]
-    public void Complete_false_is_rejected()
+    public void Complete_marker_is_not_transport_authority()
     {
-        Assert.Throws<FormatException>(() => ReasoningModelResponseParser.Parse(
-            "{\"complete\":false,\"headings\":[],\"decisionEvidence\":[]}"));
+        var response = ReasoningModelResponseParser.Parse(
+            "{\"complete\":false,\"headings\":[],\"decisionEvidence\":[]}");
+        Assert.Empty(response.Headings);
     }
 
     [Fact]
     public async Task Finish_reason_length_is_provider_output_limit_not_model_gap()
     {
         var request = Request();
-        var content = "{\"complete\":true,\"headings\":[";
+        var content = "{\"headings\":[";
         using var model = ProviderModel(Envelope(content, "length"));
 
         var exception = await Assert.ThrowsAsync<ReasoningCompletionException>(() => model.CompleteAsync(request));
@@ -71,10 +73,6 @@ public sealed class ReasoningCompletionIntegrityTests
         var inner = JsonSerializer.Serialize(new
         {
             schemaVersion = "a99-reasoning-bounded-v1",
-            requestId = request.RequestId,
-            semanticPassId = request.SemanticPassId,
-            ownedRange = new { start = 0, end = 0 },
-            complete = true,
             headings = Array.Empty<object>(),
             decisionEvidence = Array.Empty<object>(),
         });
@@ -129,22 +127,52 @@ public sealed class ReasoningCompletionIntegrityTests
             }
             return EmptyResponse();
         });
-        var state = NativePolicyStateFactory.Create([
-            (0, "A", null, (int?)null),
-            (1, "B", null, (int?)null),
-            (2, "C", null, (int?)null),
-            (3, "D", null, (int?)null),
-        ]);
+        var state = NativePolicyStateFactory.Create([(0, "ABCD", null, (int?)null)]);
 
         var observation = await new ReasoningPreservingHeadingHarness(model)
             .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling);
 
         Assert.Equal(3, model.Requests.Count);
-        Assert.All(model.Requests, request => Assert.Equal(4, request.SourceOccurrenceIds.Count));
-        Assert.Equal([4, 2, 2], model.Requests.Select(request => request.OwnedSourceOccurrenceIds.Count).ToArray());
+        Assert.All(model.Requests, request => Assert.Equal("p[0]", request.OwnedOutputScope.CanonicalSourceId));
+        Assert.Equal([(0, 4), (0, 2), (2, 4)],
+            model.Requests.Select(request => (request.OwnedOutputScope.OwnedStart, request.OwnedOutputScope.OwnedEnd)));
         Assert.Equal(1, observation.CompletionStats.Completion.RangeSplitCount);
         Assert.Equal(2, observation.CompletionStats.Completion.SuccessfulCompletionCount);
         Assert.Equal(1, observation.CompletionStats.Completion.FailedCompletionCount);
+    }
+
+    [Fact]
+    public async Task Local_span_is_mapped_from_a_nonzero_owned_range()
+    {
+        var first = true;
+        var model = new ProgrammableModel(request =>
+        {
+            if (first)
+            {
+                first = false;
+                throw Completion(ReasoningCompletionFailureClass.ProviderOutputLimit);
+            }
+
+            return request.OwnedOutputScope.OwnedStart == 2
+                ? new ReasoningModelResponse(
+                    [new ReasoningModelHeadingProposal
+                    {
+                        Start = 0,
+                        End = 1,
+                        SemanticRole = "CONTENT_HEADING",
+                    }],
+                    [])
+                : EmptyResponse();
+        });
+        var state = NativePolicyStateFactory.Create([(0, "ABCD", null, (int?)null)]);
+
+        var observation = await new ReasoningPreservingHeadingHarness(model)
+            .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling);
+
+        var validated = Assert.Single(observation.Validated.Where(item => item.Accepted));
+        Assert.Equal("p[0]", validated.Proposal.SourceId);
+        Assert.Equal(new StructuralSpan(2, 3), validated.Proposal.HeadingSpan);
+        Assert.Equal("C", validated.Proposal.Text);
     }
 
     [Fact]
@@ -171,7 +199,7 @@ public sealed class ReasoningCompletionIntegrityTests
             .RunAsync(state.Source, state, ReasoningRoute.ReasoningPreservingShadow);
 
         Assert.All(model.Requests, request => Assert.Equal(4, request.SourceOccurrenceIds.Count));
-        Assert.Contains(model.Requests, request => request.OwnedSourceOccurrenceIds.Count == 2);
+        Assert.All(model.Requests, request => Assert.Equal(1, request.OwnedSourceOccurrenceIds.Count));
     }
 
     [Fact]
@@ -205,7 +233,8 @@ public sealed class ReasoningCompletionIntegrityTests
     public async Task Owned_range_mismatch_is_fail_closed()
     {
         var model = new ProgrammableModel(_ => new ReasoningModelResponse(
-            null, [], [], OwnedRange: new ReasoningOrdinalRange(90, 91)));
+            [new ReasoningModelHeadingProposal { Start = 90, End = 91, SemanticRole = "CONTENT_HEADING" }],
+            []));
         var state = NativePolicyStateFactory.Create([(0, "A", null, (int?)null)]);
 
         var exception = await Assert.ThrowsAsync<ReasoningCompletionException>(() => new ReasoningPreservingHeadingHarness(model)
@@ -216,31 +245,18 @@ public sealed class ReasoningCompletionIntegrityTests
     }
 
     [Fact]
-    public async Task Proposal_outside_owned_range_is_excluded_from_that_scope()
+    public async Task Proposal_outside_owned_range_is_rejected_fail_closed()
     {
-        var state = NativePolicyStateFactory.Create([
-            (0, "A", null, (int?)null),
-            (1, "B", null, (int?)null),
-        ]);
-        var model = new ProgrammableModel(request =>
-        {
-            if (request.OwnedSourceOccurrenceIds.Count > 1)
-                throw Completion(ReasoningCompletionFailureClass.ProviderOutputLimit);
-            return new ReasoningModelResponse(null, [new ReasoningHeadingProposal
-            {
-                SourceId = "p[0]",
-                HeadingSpan = new StructuralSpan(0, 1),
-                Text = "A",
-                SemanticRole = "CONTENT_HEADING",
-            }], []);
-        });
+        var state = NativePolicyStateFactory.Create([(0, "A", null, (int?)null)]);
+        var model = new ProgrammableModel(_ => new ReasoningModelResponse(
+            [new ReasoningModelHeadingProposal { Start = 1, End = 2, SemanticRole = "CONTENT_HEADING" }],
+            []));
 
-        var observation = await new ReasoningPreservingHeadingHarness(model)
-            .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling);
+        var exception = await Assert.ThrowsAsync<ReasoningCompletionException>(() =>
+            new ReasoningPreservingHeadingHarness(model)
+                .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling));
 
-        Assert.Equal(1, observation.CompletionStats.Completion.OutOfScopeProposalCount);
-        Assert.Single(observation.Proposed);
-        Assert.Equal("p[0]", observation.Proposed[0].SourceId);
+        Assert.Contains("reasoning-response-local-span-invalid", exception.Message);
     }
 
     [Fact]
@@ -267,9 +283,9 @@ public sealed class ReasoningCompletionIntegrityTests
     public void Provider_text_is_optional_when_span_is_valid()
     {
         var response = ReasoningModelResponseParser.Parse(
-            "{\"complete\":true,\"headings\":[{\"sourceId\":\"p[0]\",\"start\":7,\"end\":14,\"semanticRole\":\"CONTENT_HEADING\",\"proposedLevel\":1}],\"decisionEvidence\":[]}");
+            "{\"headings\":[{\"start\":7,\"end\":14,\"semanticRole\":\"CONTENT_HEADING\",\"proposedLevel\":1}],\"decisionEvidence\":[]}");
 
-        Assert.Equal("", Assert.Single(response.Headings).Text);
+        Assert.Equal(7, Assert.Single(response.Headings).Start);
     }
 
     [Fact]
@@ -333,12 +349,18 @@ public sealed class ReasoningCompletionIntegrityTests
         UserPrompt = "user",
         SourceOccurrenceIds = ["occurrence"],
         OwnedSourceOccurrenceIds = ["occurrence"],
-        OwnedStartOrdinal = 0,
-        OwnedEndOrdinal = 0,
+        OwnedOutputScope = new ReasoningOwnedOutputScope
+        {
+            CanonicalSourceId = "p[0]",
+            SourceOccurrenceId = "occurrence",
+            RawTextLength = 9,
+            OwnedStart = 0,
+            OwnedEnd = 9,
+        },
         ConfigurationSignature = "config",
     };
 
-    private static ReasoningModelResponse EmptyResponse() => new(null, [], []);
+    private static ReasoningModelResponse EmptyResponse() => new([], []);
 
     private static ReasoningCompletionException Completion(string failureClass) => new(
         failureClass,

@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class ReasoningSourceVisibilityAndLivenessTests
 {
     [Fact]
-    public void Prompt_makes_per_request_identity_explicit()
+    public void Prompt_describes_harness_owned_character_scope_without_response_identity()
     {
         var segment = new ReasoningContextSegment
         {
@@ -25,31 +25,27 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
         var prompt = ReasoningPrompt.BuildUser(
             segment,
             shadow: false,
-            requestId: "request-123",
-            semanticPassId: "semantic-456",
-            attemptId: "request-123:attempt-1",
-            sourceIdentityMap: [new ReasoningSourceIdentity
+            ownedOutputScope: new ReasoningOwnedOutputScope
             {
                 CanonicalSourceId = "body[1]/p[1]",
                 SourceOccurrenceId = "DOC-1:body[1]/p[1]:1:9",
-                ProviderSourceAlias = "s0001",
-                SourceOrdinal = 1,
                 RawTextLength = 9,
-            }]);
+                OwnedStart = 0,
+                OwnedEnd = 9,
+            });
 
-        Assert.Contains("REQUEST_ID_EXACT=request-123", prompt);
-        Assert.Contains("SEMANTIC_PASS_ID_EXACT=semantic-456", prompt);
-        Assert.Contains("ATTEMPT_ID_EXACT=request-123:attempt-1", prompt);
-        Assert.Contains("canonicalSourceId=body[1]/p[1]", prompt);
-        Assert.Contains("providerSourceAlias=s0001", prompt);
-        Assert.Contains("Never use a file path", prompt);
+        Assert.Contains("source=body[1]/p[1]", prompt);
+        Assert.Contains("ownedCharacters=0..9", prompt);
+        Assert.Contains("local start/end offsets", prompt);
+        Assert.DoesNotContain("REQUEST_ID_EXACT", prompt);
+        Assert.DoesNotContain("sourceId field", prompt);
     }
 
     [Fact]
     public async Task Canonical_source_id_visible_is_accepted()
     {
         var state = NativePolicyStateFactory.Create([(0, "A heading", null, (int?)null)]);
-        var model = new ProgrammableModel(request => ProposalResponse("p[0]", 0, 9));
+        var model = new ProgrammableModel(_ => ProposalResponse(0, 9));
 
         var observation = await new ReasoningPreservingHeadingHarness(model)
             .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling);
@@ -59,14 +55,10 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
     }
 
     [Fact]
-    public async Task Explicit_source_occurrence_alias_reverses_to_canonical_source_id()
+    public async Task Harness_binds_local_response_to_active_canonical_source()
     {
         var state = NativePolicyStateFactory.Create([(0, "A heading", null, (int?)null)]);
-        var model = new ProgrammableModel(request =>
-        {
-            var identity = Assert.Single(request.SourceIdentityMap);
-            return ProposalResponse(identity.SourceOccurrenceId, 0, identity.RawTextLength);
-        });
+        var model = new ProgrammableModel(_ => ProposalResponse(0, 9));
 
         var observation = await new ReasoningPreservingHeadingHarness(model)
             .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling);
@@ -75,95 +67,53 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
     }
 
     [Fact]
-    public async Task Explicit_provider_source_alias_reverses_to_canonical_source_id()
+    public void Model_response_parser_rejects_source_identity_fields()
     {
-        var state = NativePolicyStateFactory.Create([(0, "A heading", null, (int?)null)]);
-        var model = new ProgrammableModel(request =>
-        {
-            var identity = Assert.Single(request.SourceIdentityMap);
-            return ProposalResponse(identity.ProviderSourceAlias!, 0, identity.RawTextLength);
-        });
-
-        var observation = await new ReasoningPreservingHeadingHarness(model)
-            .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling);
-
-        Assert.Equal("p[0]", Assert.Single(observation.Proposed).SourceId);
+        Assert.Throws<FormatException>(() => ReasoningModelResponseParser.Parse(
+            "{\"headings\":[{\"sourceId\":\"invented\",\"start\":0,\"end\":1,\"semanticRole\":\"CONTENT_HEADING\"}]}"));
     }
 
     [Fact]
-    public async Task Unknown_source_id_fails_closed_with_exact_visibility_diagnostic()
+    public void Model_response_without_source_identity_is_parseable()
     {
-        var state = NativePolicyStateFactory.Create([(0, "A heading", null, (int?)null)]);
-        var model = new ProgrammableModel(_ => ProposalResponse("invented-source", 0, 1));
-
-        var exception = await Assert.ThrowsAsync<ReasoningCompletionException>(() =>
-            new ReasoningPreservingHeadingHarness(model)
-                .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling));
-
-        Assert.Contains("reasoning-response-source-not-visible", exception.Message);
-        var identity = Assert.IsType<ReasoningResponseIdentityException>(exception.InnerException);
-        Assert.Equal(["invented-source"], identity.ReturnedSourceIds);
-        Assert.Contains("p[0]", identity.VisibleSourceIds);
-        Assert.Contains("p[0]", identity.OwnedSourceIds);
+        var response = ReasoningModelResponseParser.Parse(
+            "{\"headings\":[{\"start\":0,\"end\":1,\"semanticRole\":\"CONTENT_HEADING\"}]}");
+        Assert.Equal(0, Assert.Single(response.Headings).Start);
     }
 
     [Fact]
-    public async Task Visible_but_not_owned_is_classified_separately_from_not_visible()
+    public async Task Invalid_local_span_fails_closed()
     {
-        var first = true;
         var state = NativePolicyStateFactory.Create([
             (0, "A", null, (int?)null),
             (1, "B", null, (int?)null),
         ]);
-        var model = new ProgrammableModel(request =>
-        {
-            if (first)
-            {
-                first = false;
-                throw Completion(ReasoningCompletionFailureClass.ProviderOutputLimit);
-            }
-            return ProposalResponse("p[0]", 0, 1);
-        });
-
-        var observation = await new ReasoningPreservingHeadingHarness(model)
-            .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling);
-
-        Assert.Equal(1, observation.CompletionStats.Completion.OutOfScopeProposalCount);
-        Assert.Equal(1, observation.CompletionStats.Completion.OwnershipViolationCount);
-        Assert.DoesNotContain(ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid,
-            observation.CompletionStats.FailureClasses);
+        var model = new ProgrammableModel(_ => ProposalResponse(0, 99));
+        var exception = await Assert.ThrowsAsync<ReasoningCompletionException>(() =>
+            new ReasoningPreservingHeadingHarness(model)
+                .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling));
+        Assert.Contains("reasoning-response-local-span-invalid", exception.Message);
     }
 
     [Fact]
-    public async Task Returned_span_must_be_valid_for_the_visible_raw_text()
+    public async Task Local_span_must_fit_the_owned_character_range()
     {
         var state = NativePolicyStateFactory.Create([(0, "A heading", null, (int?)null)]);
-        var model = new ProgrammableModel(_ => ProposalResponse("p[0]", 0, 99));
+        var model = new ProgrammableModel(_ => ProposalResponse(0, 99));
 
         var exception = await Assert.ThrowsAsync<ReasoningCompletionException>(() =>
             new ReasoningPreservingHeadingHarness(model)
                 .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling));
 
-        Assert.Contains("reasoning-response-span-invalid-for-visible-source", exception.Message);
+        Assert.Contains("reasoning-response-local-span-invalid", exception.Message);
     }
 
     [Fact]
-    public async Task Response_request_identity_mismatch_is_rejected_as_stale()
+    public void Response_control_identity_is_not_a_model_contract()
     {
         var state = NativePolicyStateFactory.Create([(0, "A heading", null, (int?)null)]);
-        var model = new ProgrammableModel(request => new ReasoningModelResponse(
-            null,
-            [],
-            [],
-            RequestId: "stale-request",
-            SemanticPassId: request.SemanticPassId,
-            AttemptId: request.AttemptId));
-
-        var exception = await Assert.ThrowsAsync<ReasoningCompletionException>(() =>
-            new ReasoningPreservingHeadingHarness(model)
-                .RunAsync(state.Source, state, ReasoningRoute.ModelCapabilityCeiling));
-
-        Assert.Contains("reasoning-response-request-id-mismatch", exception.Message);
+        var response = ReasoningModelResponseParser.Parse("{\"headings\":[]}");
+        Assert.Empty(response.Headings);
     }
 
     [Fact]
@@ -171,8 +121,7 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
     {
         var state = NativePolicyStateFactory.Create([(0, "A heading", null, (int?)null)]);
         var model = new ProgrammableModel(_ => new ReasoningModelResponse(
-            null,
-            [Proposal("p[0]", 0, 9), Proposal("p[0]", 0, 9)],
+            [ModelProposal(0, 9), ModelProposal(0, 9)],
             []));
 
         var exception = await Assert.ThrowsAsync<ReasoningCompletionException>(() =>
@@ -189,9 +138,10 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
             (0, "First", null, (int?)null),
             (1, "Second", null, (int?)null),
         ]);
-        var model = new ProgrammableModel(request => request.SemanticPassId.StartsWith("global-", StringComparison.Ordinal)
-            ? ProposalResponse("p[1]", 0, 6)
-            : new ReasoningModelResponse(null, [], []));
+        var model = new ProgrammableModel(request => request.SemanticPassId.StartsWith("global-", StringComparison.Ordinal) &&
+            request.OwnedOutputScope.CanonicalSourceId == "p[1]"
+            ? ProposalResponse(0, 6)
+            : new ReasoningModelResponse([], []));
 
         var observation = await new ReasoningPreservingHeadingHarness(
                 model,
@@ -338,23 +288,27 @@ public sealed class ReasoningSourceVisibilityAndLivenessTests
         UserPrompt = "user",
         SourceOccurrenceIds = ["occurrence"],
         OwnedSourceOccurrenceIds = ["occurrence"],
-        OwnedStartOrdinal = 0,
-        OwnedEndOrdinal = 0,
+        OwnedOutputScope = new ReasoningOwnedOutputScope
+        {
+            CanonicalSourceId = "p[0]",
+            SourceOccurrenceId = "occurrence",
+            RawTextLength = 9,
+            OwnedStart = 0,
+            OwnedEnd = 9,
+        },
         AttemptId = "request:attempt-1",
         ConfigurationSignature = "config",
     };
 
-    private static ReasoningHeadingProposal Proposal(string sourceId, int start, int end) => new()
+    private static ReasoningModelHeadingProposal ModelProposal(int start, int end) => new()
     {
-        SourceId = sourceId,
-        HeadingSpan = new StructuralSpan(start, end),
-        Text = "",
+        Start = start,
+        End = end,
         SemanticRole = "CONTENT_HEADING",
-        ProposedLevel = 1,
     };
 
-    private static ReasoningModelResponse ProposalResponse(string sourceId, int start, int end) =>
-        new(null, [Proposal(sourceId, start, end)], []);
+    private static ReasoningModelResponse ProposalResponse(int start, int end) =>
+        new([ModelProposal(start, end)], []);
 
     private static ReasoningCompletionException Completion(string failureClass) => new(
         failureClass,

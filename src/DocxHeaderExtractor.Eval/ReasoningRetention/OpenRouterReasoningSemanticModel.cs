@@ -126,29 +126,10 @@ public sealed class OpenRouterReasoningSemanticModel : IReasoningSemanticModel, 
                     telemetry);
 
             var parsed = ReasoningModelResponseParser.Parse(envelope.Content);
-            if (!parsed.Complete ||
-                (parsed.OwnedRange is { } returnedRange &&
-                 (returnedRange.Start != request.OwnedStartOrdinal || returnedRange.End != request.OwnedEndOrdinal)))
-                throw CompletionFailure(
-                    ReasoningCompletionFailureClass.CompleteResponseSchemaInvalid,
-                    "reasoning-response-envelope-identity-invalid",
-                    telemetry);
-
             telemetry.JsonParseSucceeded = true;
-            telemetry.ReturnedSourceIds = parsed.Headings
-                .Select(item => item.SourceId)
-                .Distinct(StringComparer.Ordinal)
-                .ToArray();
             return parsed with
             {
                 RawResponseHash = telemetry.FullContentSha256,
-                RequestId = parsed.RequestId ?? request.RequestId,
-                SemanticPassId = parsed.SemanticPassId ?? request.SemanticPassId,
-                AttemptId = parsed.AttemptId ?? request.AttemptId,
-                OwnedRange = parsed.OwnedRange ??
-                    (request.OwnedStartOrdinal is { } start && request.OwnedEndOrdinal is { } end
-                        ? new ReasoningOrdinalRange(start, end)
-                        : null),
             };
         }
         catch (ReasoningCompletionException)

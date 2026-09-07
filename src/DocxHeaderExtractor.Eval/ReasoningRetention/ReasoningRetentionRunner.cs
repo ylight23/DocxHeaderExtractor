@@ -671,32 +671,24 @@ public static class ReasoningRetentionRunner
         IReadOnlyList<ReasoningCompletionTelemetry> telemetry,
         IReadOnlyList<ReasoningCompletionStats> completionStats,
         int providerCalls) {
-        var sourceFailures = telemetry
-            .Where(item => item.ValidationReason?.StartsWith("reasoning-response-source-not-visible", StringComparison.Ordinal) == true)
-            .ToArray();
         var spanFailures = telemetry
-            .Where(item => item.ValidationReason?.StartsWith("reasoning-response-span-invalid-for-visible-source", StringComparison.Ordinal) == true)
+            .Where(item => item.ValidationReason?.StartsWith("reasoning-response-local-span-invalid", StringComparison.Ordinal) == true)
             .ToArray();
         return new
         {
             artifactKind = "a99_source_visibility_contract",
             schemaVersion = "a99-source-visibility-contract-v1",
             status,
-            identityContract = "canonicalSourceId plus explicit sourceOccurrenceId alias; no fuzzy repair",
-            canonicalSourceIdAccepted = true,
-            explicitOccurrenceAliasAccepted = true,
-            unknownSourceIdFailClosed = true,
-            visibleButNotOwnedClassified = true,
-            requestIdentityChecks = new[] { "requestId", "semanticPassId", "attemptId", "ownedRange" },
-            spanValidation = "against visible source RawText",
-            sourceVisibilityFailureCount = sourceFailures.Length,
+            identityContract = "harness-owned canonicalSourceId and character output scope; model response has no source identity field",
+            responseContainsControlIdentity = false,
+            canonicalSourceBinding = "active request context only",
+            unknownSourceIdRepair = "not applicable; sourceId is forbidden in model response",
+            requestIdentityChecks = new[] { "request context remains client-owned" },
+            spanValidation = "local UTF-16 offsets against harness-owned character range and parser-owned RawText",
+            sourceVisibilityFailureCount = 0,
             spanValidationFailureCount = spanFailures.Length,
             ownershipViolationCount = completionStats.Sum(item => item.Completion.OwnershipViolationCount),
-            returnedSourceIds = telemetry
-                .SelectMany(item => item.ReturnedSourceIds)
-                .Distinct(StringComparer.Ordinal)
-                .Order(StringComparer.Ordinal)
-                .ToArray(),
+            returnedSourceIds = Array.Empty<string>(),
             visibleSourceIds = telemetry
                 .SelectMany(item => item.VisibleSourceIds)
                 .Distinct(StringComparer.Ordinal)
